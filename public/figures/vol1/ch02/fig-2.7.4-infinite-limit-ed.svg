@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" width="400" height="340">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="340" fill="#ffffff"/>
+  
+  <!-- Grid (subtle) -->
+  <g stroke="#e2e8f0" stroke-width="0.5">
+    <line x1="50" y1="50" x2="50" y2="250"/>
+    <line x1="100" y1="50" x2="100" y2="250"/>
+    <line x1="150" y1="50" x2="150" y2="250"/>
+    <line x1="200" y1="50" x2="200" y2="250"/>
+    <line x1="250" y1="50" x2="250" y2="250"/>
+    <line x1="300" y1="50" x2="300" y2="250"/>
+    <line x1="350" y1="50" x2="350" y2="250"/>
+    <line x1="50" y1="70" x2="370" y2="70"/>
+    <line x1="50" y1="120" x2="370" y2="120"/>
+    <line x1="50" y1="170" x2="370" y2="170"/>
+    <line x1="50" y1="220" x2="370" y2="220"/>
+  </g>
+  
+  <!-- Axes -->
+  <line x1="30" y1="170" x2="385" y2="170" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="200" y1="270" x2="200" y2="30" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="390" y="175" font-family="serif" font-size="14" font-style="italic" fill="#1e293b">x</text>
+  <text x="195" y="22" font-family="serif" font-size="14" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- Origin -->
+  <text x="205" y="185" font-family="serif" font-size="11" fill="#1e293b">0</text>
+  
+  <!-- y = M horizontal line (the "challenge" level) -->
+  <line x1="30" y1="90" x2="385" y2="90" stroke="#f59e0b" stroke-width="2" stroke-dasharray="6,4"/>
+  <text x="15" y="95" font-family="serif" font-size="12" fill="#f59e0b">M</text>
+  
+  <!-- Function f(x) = 1/x² -->
+  <!-- Left branch -->
+  <path d="M 100 40 Q 130 50, 150 70 Q 170 100, 185 150 Q 195 200, 199 250" 
+        stroke="#2563eb" stroke-width="2.5" fill="none"/>
+  
+  <!-- Right branch -->
+  <path d="M 201 250 Q 205 200, 215 150 Q 230 100, 250 70 Q 270 50, 300 40" 
+        stroke="#2563eb" stroke-width="2.5" fill="none"/>
+  
+  <!-- δ-band around x = 0 -->
+  <rect x="175" y="40" width="50" height="130" fill="#dbeafe" fill-opacity="0.4"/>
+  <line x1="175" y1="40" x2="175" y2="170" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="225" y1="40" x2="225" y2="170" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5,3"/>
+  
+  <!-- δ labels -->
+  <text x="165" y="190" font-family="serif" font-size="10" fill="#2563eb">−δ</text>
+  <text x="225" y="190" font-family="serif" font-size="10" fill="#2563eb">δ</text>
+  
+  <!-- Shaded region above M -->
+  <rect x="175" y="40" width="50" height="50" fill="#fef3c7" fill-opacity="0.5"/>
+  
+  <!-- Annotation: f(x) > M in δ-band -->
+  <path d="M 210 65 L 260 60" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="265" y="55" font-family="serif" font-size="11" fill="#dc2626">f(x) &gt; M</text>
+  <text x="265" y="70" font-family="serif" font-size="11" fill="#dc2626">when 0 &lt; |x| &lt; δ</text>
+  
+  <!-- Function label -->
+  <text x="300" y="120" font-family="serif" font-size="13" fill="#2563eb">f(x) = </text>
+  <text x="355" y="115" font-family="serif" font-size="12" fill="#2563eb">1</text>
+  <line x1="350" y1="118" x2="375" y2="118" stroke="#2563eb" stroke-width="1"/>
+  <text x="355" y="132" font-family="serif" font-size="12" fill="#2563eb">x²</text>
+  
+  <!-- Definition box -->
+  <rect x="30" y="280" width="340" height="50" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="45" y="298" font-family="serif" font-size="11" fill="#1e293b">
+    Definition: lim f(x) = ∞ means: for every M &gt; 0, there exists δ &gt; 0
+  </text>
+  <text x="45" y="315" font-family="serif" font-size="11" fill="#1e293b">
+    x→0
+  </text>
+  <text x="95" y="315" font-family="serif" font-size="11" fill="#1e293b">
+    such that f(x) &gt; M whenever 0 &lt; |x| &lt; δ
+  </text>
+  
+  <!-- δ = 1/√M note -->
+  <text x="50" y="250" font-family="serif" font-size="11" fill="#059669">
+    Choose δ = 1/√M: then 1/x² &gt; M when |x| &lt; 1/√M
+  </text>
+</svg>

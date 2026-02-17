@@ -13,7 +13,7 @@
   "content": [
     {
       "type": "paragraph",
-      "text": "In the previous section we computed the area under $f(x) = x^2$ on \n$[0, 1]$ by forming Riemann sums and taking the limit as $n \\to \\infty$. \nThe answer was $\\frac{1}{3}$—a definite number, not a family of \nfunctions. The limit of the Riemann sum deserves its own name and \nnotation, for it is one of the central objects of all mathematics."
+      "text": "In the previous section we computed the area under $f(x) = x^2$ on \n$[0, 1]$ by forming Riemann sums and taking the limit as $n \\to \\infty$. \nThe answer was $\\frac{1}{3}$\u2014a definite number, not a family of \nfunctions. The limit of the Riemann sum deserves its own name and \nnotation, for it is one of the central objects of all mathematics."
     },
     {
       "type": "heading",
@@ -35,7 +35,7 @@
       "type": "list",
       "ordered": false,
       "items": [
-        "The symbol $\\displaystyle\\int$ is the elongated \"S\" for \n *summa*—a sum.",
+        "The symbol $\\displaystyle\\int$ is the elongated \"S\" for \n *summa*\u2014a sum.",
         "$a$ and $b$ are the **limits of integration**: $a$ is the \n lower limit, $b$ the upper.",
         "$f(x)$ is the **integrand**.",
         "$\\dx$ indicates the variable and reminds us of $\\Delta x$ in the \n Riemann sum."
@@ -55,7 +55,7 @@
     },
     {
       "type": "paragraph",
-      "text": "This is a deep theorem—its proof uses the uniform continuity of $f$ \non a closed interval. We state it without proof and note that most \nfunctions we encounter in practice are continuous, so the definite integral \nexists for them."
+      "text": "This is a deep theorem\u2014its proof uses the uniform continuity of $f$ \non a closed interval. We state it without proof and note that most \nfunctions we encounter in practice are continuous, so the definite integral \nexists for them."
     },
     {
       "type": "paragraph",
@@ -74,7 +74,7 @@
       "id": "warning-6.3",
       "number": null,
       "title": "Definite vs.\\ indefinite integrals",
-      "content": "The definite integral $\\displaystyle\\int_a^b f(x)\\dx$ is a \n*number*—the limit of Riemann sums. The indefinite integral \n$\\displaystyle\\int f(x)\\dx$ is a *family of functions* (the \ngeneral antiderivative $F(x) + C$). The notations are similar because \nthey are deeply connected—but they are different objects. We will \ndiscover the precise connection in Section [sec:ftc]."
+      "content": "The definite integral $\\displaystyle\\int_a^b f(x)\\dx$ is a \n*number*\u2014the limit of Riemann sums. The indefinite integral \n$\\displaystyle\\int f(x)\\dx$ is a *family of functions* (the \ngeneral antiderivative $F(x) + C$). The notations are similar because \nthey are deeply connected\u2014but they are different objects. We will \ndiscover the precise connection in Section [sec:ftc]."
     },
     {
       "type": "heading",
@@ -217,7 +217,7 @@
       "number": "6.9",
       "title": "Average value of a function",
       "problem": "Find the average value of $f(x) = 3$ on $[1, 5]$ and the average value \nof $g(x) = 4 - x$ on $[0, 4]$.",
-      "solution": "For $f$:\n$\\displaystyle f_{\\mathrm{avg}} = \\frac{1}{5-1}\\int_1^5 3\\dx \n= \\frac{1}{4}\\cdot 12 = 3$.\nNo surprise—the average of a constant is that constant.\n\nFor $g$: the region under $g(x) = 4 - x$ on $[0, 4]$ is a triangle \nwith area $\\frac{1}{2}(4)(4) = 8$.\n$\\displaystyle g_{\\mathrm{avg}} = \\frac{1}{4-0}\\cdot 8 = 2$."
+      "solution": "For $f$:\n$\\displaystyle f_{\\mathrm{avg}} = \\frac{1}{5-1}\\int_1^5 3\\dx \n= \\frac{1}{4}\\cdot 12 = 3$.\nNo surprise\u2014the average of a constant is that constant.\n\nFor $g$: the region under $g(x) = 4 - x$ on $[0, 4]$ is a triangle \nwith area $\\frac{1}{2}(4)(4) = 8$.\n$\\displaystyle g_{\\mathrm{avg}} = \\frac{1}{4-0}\\cdot 8 = 2$."
     },
     {
       "type": "heading",
@@ -263,7 +263,21 @@
     },
     {
       "type": "paragraph",
-      "text": "In the next section, we will discover that antiderivatives—the \nfunctions from Section [sec:antiderivatives] that reverse \ndifferentiation—provide a breathtakingly efficient method for \ncomputing *any* definite integral. The connection is the \nFundamental Theorem of Calculus, and it changes everything."
+      "text": "In the next section, we will discover that antiderivatives\u2014the \nfunctions from Section [sec:antiderivatives] that reverse \ndifferentiation\u2014provide a breathtakingly efficient method for \ncomputing *any* definite integral. The connection is the \nFundamental Theorem of Calculus, and it changes everything."
+    },
+    {
+      "type": "figure",
+      "id": "fig-6.3.2",
+      "src": "/figures/vol1/ch06/fig-6.3.2-additivity.svg",
+      "caption": "The additivity property: an integral over $[a,b]$ can be split at any intermediate point~$c$. The total area equals the sum of the parts.",
+      "alt": "A coordinate plane showing a continuous curve above the x-axis from x equals a to x equals b. The region under the curve is divided into two parts at an intermediate point c. The left portion from a to c is shaded in one color and labeled as the integral from a to c of f of x dx. The right portion from c to b is shaded in a different color and labeled as the integral from c to b of f of x dx. Below the graph, an equation shows that the sum of these two integrals equals the integral from a to b, demonstrating the additivity property of definite integrals."
+    },
+    {
+      "type": "figure",
+      "id": "fig-6.3.3",
+      "src": "/figures/vol1/ch06/fig-6.3.3-area-between-curves.svg",
+      "caption": "The area between two curves $f(x)$ and $g(x)$, where $f(x) \\geq g(x)$ on $[a,b]$, is found by integrating the difference $f(x) - g(x)$.",
+      "alt": "A coordinate plane showing two curves: f of x on top and g of x below. The region between the two curves from x equals a to x equals b is shaded. The curves intersect at the left boundary a and the right boundary b. At a sample point x, a vertical line segment connects the two curves, with its length labeled as f of x minus g of x, representing the height of a typical rectangle in the Riemann sum. The shaded area represents the integral from a to b of f of x minus g of x, which gives the total area between the curves."
     }
   ],
   "marginNotes": [
@@ -275,7 +289,7 @@
     {
       "type": "scripture",
       "reference": "Psalm 139:8--9",
-      "text": "If I go up to the heavens, you are there; \nif I make my bed in the depths, you are there. If I rise on the wings \nof the dawn, if I settle on the far side of the sea…"
+      "text": "If I go up to the heavens, you are there; \nif I make my bed in the depths, you are there. If I rise on the wings \nof the dawn, if I settle on the far side of the sea\u2026"
     },
     {
       "type": "scripture",

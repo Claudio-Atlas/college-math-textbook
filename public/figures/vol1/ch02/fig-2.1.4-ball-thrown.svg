@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 340" width="420" height="340">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="420" height="340" fill="#ffffff"/>
+  
+  <!-- Axes -->
+  <line x1="50" y1="280" x2="400" y2="280" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="50" y1="290" x2="50" y2="40" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="390" y="300" font-family="serif" font-size="14" fill="#1e293b">t (seconds)</text>
+  <text x="60" y="35" font-family="serif" font-size="14" fill="#1e293b">s(t) (feet)</text>
+  
+  <!-- Grid lines -->
+  <g stroke="#e2e8f0" stroke-width="0.5">
+    <line x1="130" y1="280" x2="130" y2="50"/>
+    <line x1="210" y1="280" x2="210" y2="50"/>
+    <line x1="290" y1="280" x2="290" y2="50"/>
+    <line x1="370" y1="280" x2="370" y2="50"/>
+    <line x1="50" y1="230" x2="390" y2="230"/>
+    <line x1="50" y1="180" x2="390" y2="180"/>
+    <line x1="50" y1="130" x2="390" y2="130"/>
+    <line x1="50" y1="80" x2="390" y2="80"/>
+  </g>
+  
+  <!-- x-axis ticks -->
+  <line x1="130" y1="277" x2="130" y2="283" stroke="#1e293b" stroke-width="1"/>
+  <text x="127" y="297" font-family="serif" font-size="11" fill="#1e293b">1</text>
+  <line x1="210" y1="277" x2="210" y2="283" stroke="#1e293b" stroke-width="1"/>
+  <text x="207" y="297" font-family="serif" font-size="11" fill="#1e293b">2</text>
+  <line x1="290" y1="277" x2="290" y2="283" stroke="#1e293b" stroke-width="1"/>
+  <text x="287" y="297" font-family="serif" font-size="11" fill="#1e293b">3</text>
+  <line x1="370" y1="277" x2="370" y2="283" stroke="#1e293b" stroke-width="1"/>
+  <text x="367" y="297" font-family="serif" font-size="11" fill="#1e293b">4</text>
+  
+  <!-- y-axis ticks -->
+  <line x1="47" y1="230" x2="53" y2="230" stroke="#1e293b" stroke-width="1"/>
+  <text x="30" y="235" font-family="serif" font-size="10" fill="#1e293b">48</text>
+  <line x1="47" y1="130" x2="53" y2="130" stroke="#1e293b" stroke-width="1"/>
+  <text x="25" y="135" font-family="serif" font-size="10" fill="#1e293b">112</text>
+  
+  <!-- s(t) = -16t² + 64t + 48 parabola -->
+  <!-- t=0: s=48 (y=230); t=2: s=112 (y=130); t=4: s=48 (y=230) -->
+  <path d="M 50 230 Q 130 130, 210 80 Q 290 130, 370 230" 
+        stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Key points -->
+  <!-- Starting point (0, 48) -->
+  <circle cx="50" cy="230" r="4" fill="#2563eb"/>
+  <text x="60" y="250" font-family="serif" font-size="10" fill="#2563eb">(0, 48)</text>
+  
+  <!-- Maximum (2, 112) -->
+  <circle cx="210" cy="80" r="5" fill="#f97316"/>
+  <text x="215" y="75" font-family="serif" font-size="11" fill="#f97316">max: (2, 112)</text>
+  
+  <!-- Return to 48 ft -->
+  <circle cx="370" cy="230" r="4" fill="#2563eb"/>
+  <text x="340" y="250" font-family="serif" font-size="10" fill="#2563eb">(4, 48)</text>
+  
+  <!-- Dashed line at starting height -->
+  <line x1="50" y1="230" x2="370" y2="230" stroke="#94a3b8" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="375" y="235" font-family="serif" font-size="10" fill="#94a3b8">starting height</text>
+  
+  <!-- Function label -->
+  <text x="280" y="315" font-family="serif" font-size="12" fill="#2563eb">s(t) = −16t² + 64t + 48</text>
+</svg>

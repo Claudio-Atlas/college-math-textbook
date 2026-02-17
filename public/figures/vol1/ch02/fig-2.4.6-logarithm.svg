@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="300" fill="#ffffff"/>
+  
+  <!-- Axes -->
+  <line x1="40" y1="180" x2="380" y2="180" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="40" y1="280" x2="40" y2="30" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="385" y="185" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">x</text>
+  <text x="35" y="25" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- x-axis ticks -->
+  <line x1="100" y1="177" x2="100" y2="183" stroke="#1e293b" stroke-width="1"/>
+  <text x="97" y="198" font-family="serif" font-size="11" fill="#1e293b">1</text>
+  
+  <line x1="160" y1="177" x2="160" y2="183" stroke="#1e293b" stroke-width="1"/>
+  <text x="157" y="198" font-family="serif" font-size="11" fill="#1e293b">2</text>
+  
+  <line x1="220" y1="177" x2="220" y2="183" stroke="#1e293b" stroke-width="1"/>
+  <text x="217" y="198" font-family="serif" font-size="11" fill="#1e293b">3</text>
+  
+  <!-- Vertical asymptote at x = 1 (pixel 100) -->
+  <line x1="100" y1="40" x2="100" y2="270" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,4"/>
+  
+  <!-- y = ln(x-1) -->
+  <!-- Domain: x > 1. At x = 2, y = 0; at x = e+1 ≈ 3.7, y = 1 -->
+  <path d="M 105 265 Q 115 220, 130 170 Q 150 130, 180 105 Q 220 75, 280 55 Q 340 40, 370 35" 
+        stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Horizontal line y = 0 reference -->
+  <line x1="100" y1="180" x2="370" y2="180" stroke="#94a3b8" stroke-width="0.5"/>
+  
+  <!-- Point (2, 0) -->
+  <circle cx="160" cy="180" r="4" fill="#2563eb"/>
+  <text x="165" y="175" font-family="serif" font-size="10" fill="#2563eb">(2, 0)</text>
+  
+  <!-- Arrow showing approach to -∞ -->
+  <path d="M 107 250 L 103 265" stroke="#7c3aed" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="70" y="255" font-family="serif" font-size="12" fill="#7c3aed">−∞</text>
+  
+  <!-- VA label -->
+  <text x="105" y="55" font-family="serif" font-size="11" fill="#dc2626">VA: x = 1</text>
+  
+  <!-- Function label -->
+  <text x="280" y="75" font-family="serif" font-size="14" fill="#2563eb">y = ln(x − 1)</text>
+  
+  <!-- Limit annotation -->
+  <text x="150" y="245" font-family="serif" font-size="11" fill="#1e293b">lim ln(x−1) = −∞</text>
+  <text x="150" y="232" font-family="serif" font-size="9" fill="#1e293b">x→1⁺</text>
+</svg>

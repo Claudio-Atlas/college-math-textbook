@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 280" width="380" height="280">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="380" height="280" fill="#ffffff"/>
+  
+  <!-- Axes -->
+  <line x1="40" y1="180" x2="350" y2="180" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="190" y1="250" x2="190" y2="40" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="355" y="185" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">t</text>
+  <text x="195" y="35" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">H(t)</text>
+  
+  <!-- Origin and tick marks -->
+  <text x="195" y="195" font-family="serif" font-size="12" fill="#1e293b">0</text>
+  
+  <line x1="187" y1="100" x2="193" y2="100" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="175" y="105" font-family="serif" font-size="12" fill="#1e293b">1</text>
+  
+  <!-- H(t) = 0 for t < 0 -->
+  <line x1="50" y1="180" x2="185" y2="180" stroke="#2563eb" stroke-width="3"/>
+  
+  <!-- H(t) = 1 for t ≥ 0 -->
+  <line x1="190" y1="100" x2="340" y2="100" stroke="#2563eb" stroke-width="3"/>
+  
+  <!-- Open circle at (0, 0) - limit from left approaches 0 -->
+  <circle cx="190" cy="180" r="5" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+  
+  <!-- Filled circle at (0, 1) - function value -->
+  <circle cx="190" cy="100" r="5" fill="#2563eb"/>
+  
+  <!-- Dashed vertical line showing jump -->
+  <line x1="190" y1="100" x2="190" y2="180" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5,3"/>
+  
+  <!-- Limit annotations -->
+  <text x="80" y="200" font-family="serif" font-size="11" fill="#1e293b">lim H(t) = 0</text>
+  <text x="80" y="185" font-family="serif" font-size="9" fill="#1e293b">t→0⁻</text>
+  
+  <text x="250" y="90" font-family="serif" font-size="11" fill="#1e293b">lim H(t) = 1</text>
+  <text x="250" y="75" font-family="serif" font-size="9" fill="#1e293b">t→0⁺</text>
+  
+  <!-- Jump annotation -->
+  <text x="200" y="145" font-family="serif" font-size="10" fill="#dc2626">jump</text>
+  
+  <!-- Title -->
+  <text x="190" y="245" font-family="serif" font-size="13" fill="#1e293b" text-anchor="middle">
+    Heaviside Step Function: H(t) = 0 if t &lt; 0, H(t) = 1 if t ≥ 0
+  </text>
+</svg>

@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" width="400" height="340">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="340" fill="#ffffff"/>
+  
+  <!-- Grid (subtle) -->
+  <g stroke="#e2e8f0" stroke-width="0.5">
+    <line x1="50" y1="50" x2="50" y2="250"/>
+    <line x1="100" y1="50" x2="100" y2="250"/>
+    <line x1="150" y1="50" x2="150" y2="250"/>
+    <line x1="200" y1="50" x2="200" y2="250"/>
+    <line x1="250" y1="50" x2="250" y2="250"/>
+    <line x1="300" y1="50" x2="300" y2="250"/>
+    <line x1="350" y1="50" x2="350" y2="250"/>
+    <line x1="50" y1="70" x2="370" y2="70"/>
+    <line x1="50" y1="120" x2="370" y2="120"/>
+    <line x1="50" y1="170" x2="370" y2="170"/>
+    <line x1="50" y1="220" x2="370" y2="220"/>
+  </g>
+  
+  <!-- Axes -->
+  <line x1="50" y1="220" x2="385" y2="220" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="50" y1="260" x2="50" y2="40" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="390" y="225" font-family="serif" font-size="14" font-style="italic" fill="#1e293b">x</text>
+  <text x="45" y="32" font-family="serif" font-size="14" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- x = 2 marker -->
+  <text x="195" y="238" font-family="serif" font-size="12" fill="#1e293b">2</text>
+  <line x1="200" y1="217" x2="200" y2="223" stroke="#1e293b" stroke-width="1.5"/>
+  
+  <!-- y = 4 marker (the limit L) -->
+  <line x1="47" y1="120" x2="53" y2="120" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="30" y="125" font-family="serif" font-size="12" fill="#1e293b">4</text>
+  
+  <!-- Parabola f(x) = x² -->
+  <path d="M 60 212 Q 100 190, 130 150 Q 160 100, 200 120 Q 240 145, 280 190 Q 320 250, 350 300" 
+        stroke="#2563eb" stroke-width="2.5" fill="none"/>
+  
+  <!-- Actually draw x^2 more accurately -->
+  <path d="M 50 220 Q 80 195, 100 180 Q 130 140, 160 110 Q 180 90, 200 80 Q 220 70, 240 65 Q 280 55, 320 50" 
+        stroke="#2563eb" stroke-width="2.5" fill="none"/>
+  
+  <!-- ε-band (horizontal strip around L = 4) -->
+  <rect x="50" y="100" width="320" height="40" fill="#fef3c7" fill-opacity="0.5"/>
+  <line x1="50" y1="100" x2="370" y2="100" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="50" y1="140" x2="370" y2="140" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="5,3"/>
+  
+  <!-- ε labels -->
+  <text x="375" y="105" font-family="serif" font-size="10" fill="#f59e0b">L + ε</text>
+  <text x="375" y="145" font-family="serif" font-size="10" fill="#f59e0b">L − ε</text>
+  <text x="25" y="75" font-family="serif" font-size="11" fill="#f59e0b">ε</text>
+  <line x1="40" y1="100" x2="40" y2="120" stroke="#f59e0b" stroke-width="1"/>
+  <line x1="38" y1="100" x2="42" y2="100" stroke="#f59e0b" stroke-width="1"/>
+  <line x1="38" y1="120" x2="42" y2="120" stroke="#f59e0b" stroke-width="1"/>
+  
+  <!-- δ-band (vertical strip around a = 2) -->
+  <rect x="175" y="50" width="50" height="170" fill="#dbeafe" fill-opacity="0.4"/>
+  <line x1="175" y1="50" x2="175" y2="220" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="225" y1="50" x2="225" y2="220" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5,3"/>
+  
+  <!-- δ labels -->
+  <text x="167" y="248" font-family="serif" font-size="10" fill="#2563eb">a−δ</text>
+  <text x="217" y="248" font-family="serif" font-size="10" fill="#2563eb">a+δ</text>
+  
+  <!-- Point at (2, 4) -->
+  <circle cx="200" cy="120" r="5" fill="#dc2626"/>
+  <text x="208" y="118" font-family="serif" font-size="11" fill="#dc2626">(2, 4)</text>
+  
+  <!-- Function and limit info -->
+  <text x="280" y="280" font-family="serif" font-size="12" fill="#2563eb">f(x) = x²</text>
+  <text x="50" y="280" font-family="serif" font-size="11" fill="#1e293b">lim x² = 4</text>
+  <text x="50" y="295" font-family="serif" font-size="11" fill="#1e293b">x→2</text>
+  
+  <!-- δ = min(1, ε/5) note -->
+  <rect x="50" y="305" width="300" height="25" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" rx="3"/>
+  <text x="60" y="322" font-family="serif" font-size="11" fill="#1e293b">
+    Choose δ = min(1, ε/5) to ensure |x² − 4| &lt; ε when |x − 2| &lt; δ
+  </text>
+</svg>

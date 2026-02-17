@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="400" height="320">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="320" fill="#ffffff"/>
+  
+  <!-- Grid (subtle) -->
+  <g stroke="#e2e8f0" stroke-width="0.5">
+    <line x1="50" y1="50" x2="50" y2="270"/>
+    <line x1="100" y1="50" x2="100" y2="270"/>
+    <line x1="150" y1="50" x2="150" y2="270"/>
+    <line x1="200" y1="50" x2="200" y2="270"/>
+    <line x1="250" y1="50" x2="250" y2="270"/>
+    <line x1="300" y1="50" x2="300" y2="270"/>
+    <line x1="350" y1="50" x2="350" y2="270"/>
+    <line x1="50" y1="70" x2="370" y2="70"/>
+    <line x1="50" y1="120" x2="370" y2="120"/>
+    <line x1="50" y1="170" x2="370" y2="170"/>
+    <line x1="50" y1="220" x2="370" y2="220"/>
+  </g>
+  
+  <!-- Axes -->
+  <line x1="50" y1="220" x2="385" y2="220" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="200" y1="290" x2="200" y2="30" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="390" y="225" font-family="serif" font-size="14" font-style="italic" fill="#1e293b">x</text>
+  <text x="195" y="22" font-family="serif" font-size="14" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- Origin label -->
+  <text x="195" y="235" font-family="serif" font-size="12" fill="#1e293b">0</text>
+  
+  <!-- Horizontal asymptote at y = 3 (y = 170 in svg, since 220 is 0 and up is positive) -->
+  <line x1="50" y1="170" x2="385" y2="170" stroke="#dc2626" stroke-width="2" stroke-dasharray="8,4"/>
+  <text x="15" y="175" font-family="serif" font-size="12" fill="#dc2626">y = 3</text>
+  
+  <!-- y = 8 marker (at x = 0, f(0) = 3 + 5 = 8) -->
+  <line x1="47" y1="95" x2="53" y2="95" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="30" y="100" font-family="serif" font-size="11" fill="#1e293b">8</text>
+  
+  <!-- Function f(x) = 3 + 5e^(-x) -->
+  <!-- Exponential decay curve -->
+  <path d="M 50 40 Q 80 50, 100 65 Q 130 90, 160 115 Q 200 150, 250 163 Q 300 168, 350 169 Q 380 170, 390 170" 
+        stroke="#2563eb" stroke-width="2.5" fill="none"/>
+  
+  <!-- Point at x = 0 -->
+  <circle cx="200" cy="95" r="5" fill="#f97316"/>
+  <text x="208" y="90" font-family="serif" font-size="11" fill="#1e293b">(0, 8)</text>
+  
+  <!-- Limit annotations -->
+  <text x="320" y="155" font-family="serif" font-size="11" fill="#059669">lim f(x) = 3</text>
+  <text x="320" y="140" font-family="serif" font-size="11" fill="#059669">x→+∞</text>
+  
+  <text x="55" y="55" font-family="serif" font-size="11" fill="#059669">x→−∞</text>
+  <text x="55" y="70" font-family="serif" font-size="11" fill="#059669">f(x)→+∞</text>
+  
+  <!-- Function label -->
+  <text x="260" y="250" font-family="serif" font-size="13" fill="#2563eb">f(x) = 3 + 5e</text>
+  <text x="353" y="245" font-family="serif" font-size="10" fill="#2563eb">−x</text>
+  
+  <!-- Decay arrow annotation -->
+  <path d="M 245 130 L 300 155" stroke="#f97316" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="255" y="120" font-family="serif" font-size="10" fill="#f97316">decays</text>
+  <text x="255" y="133" font-family="serif" font-size="10" fill="#f97316">toward 3</text>
+  
+  <!-- Description -->
+  <text x="200" y="285" font-family="serif" font-size="11" fill="#64748b" text-anchor="middle">
+    Exponential decay: e^(−x) → 0 as x → +∞
+  </text>
+</svg>

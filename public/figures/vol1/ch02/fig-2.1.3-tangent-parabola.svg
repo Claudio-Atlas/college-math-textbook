@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 350" width="400" height="350">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="350" fill="#ffffff"/>
+  
+  <!-- Grid -->
+  <g stroke="#e2e8f0" stroke-width="0.5">
+    <line x1="200" y1="50" x2="200" y2="300"/>
+    <line x1="100" y1="50" x2="100" y2="300"/>
+    <line x1="300" y1="50" x2="300" y2="300"/>
+    <line x1="50" y1="100" x2="370" y2="100"/>
+    <line x1="50" y1="200" x2="370" y2="200"/>
+  </g>
+  
+  <!-- Axes -->
+  <line x1="50" y1="300" x2="380" y2="300" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="200" y1="310" x2="200" y2="40" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="385" y="305" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">x</text>
+  <text x="205" y="35" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- Origin label -->
+  <text x="190" y="315" font-family="serif" font-size="12" fill="#1e293b">0</text>
+  
+  <!-- Tick marks -->
+  <line x1="300" y1="297" x2="300" y2="303" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="297" y="315" font-family="serif" font-size="12" fill="#1e293b">1</text>
+  <line x1="197" y1="200" x2="203" y2="200" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="185" y="205" font-family="serif" font-size="12" fill="#1e293b">1</text>
+  
+  <!-- Parabola f(x) = x^2 -->
+  <!-- y = x^2, scaled: at x=1 (pixel 300), y=1 (pixel 200); at x=0 (pixel 200), y=0 (pixel 300) -->
+  <!-- Scaling: x: 100px per unit, y: 100px per unit, origin at (200, 300) -->
+  <path d="M 50 77.5 Q 100 175, 150 237.5 Q 175 268.75, 200 300 Q 225 268.75, 250 237.5 Q 300 175, 350 77.5" 
+        stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Point (1, 1) -->
+  <circle cx="300" cy="200" r="5" fill="#f97316"/>
+  <text x="310" y="195" font-family="serif" font-size="13" fill="#f97316">(1, 1)</text>
+  
+  <!-- Tangent line y = 2x - 1: at x=0, y=-1; at x=1, y=1; at x=2, y=3 -->
+  <!-- At pixel x=200, y=400 (off screen); at pixel x=300, y=200; at pixel x=350, y=100 -->
+  <line x1="150" y1="300" x2="380" y2="70" stroke="#dc2626" stroke-width="2"/>
+  
+  <!-- Dashed lines to axes from point -->
+  <line x1="300" y1="200" x2="300" y2="300" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="300" y1="200" x2="200" y2="200" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,3"/>
+  
+  <!-- Labels -->
+  <text x="100" y="80" font-family="serif" font-size="15" font-style="italic" fill="#2563eb">f(x) = x²</text>
+  <text x="345" y="65" font-family="serif" font-size="13" fill="#dc2626">y = 2x − 1</text>
+  <text x="345" y="82" font-family="serif" font-size="11" fill="#dc2626">(tangent line)</text>
+  
+  <!-- Slope annotation -->
+  <text x="60" y="330" font-family="serif" font-size="13" fill="#1e293b">Slope at (1,1): m = 2</text>
+</svg>

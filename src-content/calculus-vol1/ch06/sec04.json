@@ -13,15 +13,15 @@
   "content": [
     {
       "type": "paragraph",
-      "text": "We have now built two seemingly separate towers of thought. In \nSection [sec:antiderivatives], we learned to reverse differentiation: \ngiven $f'$, find $f$. In Sections [sec:riemann-sums] \nand [sec:definite-integral], we defined the definite integral \n$\\int_a^b f(x)\\dx$ as the limit of Riemann sums—a painstaking process \nof slicing, summing, and taking limits."
+      "text": "We have now built two seemingly separate towers of thought. In \nSection [sec:antiderivatives], we learned to reverse differentiation: \ngiven $f'$, find $f$. In Sections [sec:riemann-sums] \nand [sec:definite-integral], we defined the definite integral \n$\\int_a^b f(x)\\dx$ as the limit of Riemann sums\u2014a painstaking process \nof slicing, summing, and taking limits."
     },
     {
       "type": "paragraph",
-      "text": "These two ideas—antiderivatives and area—look completely unrelated. \nOne is algebraic (undo the derivative), the other geometric (add up \ninfinitely many rectangles). But they are not unrelated. They are, \nin fact, two faces of a single profound truth."
+      "text": "These two ideas\u2014antiderivatives and area\u2014look completely unrelated. \nOne is algebraic (undo the derivative), the other geometric (add up \ninfinitely many rectangles). But they are not unrelated. They are, \nin fact, two faces of a single profound truth."
     },
     {
       "type": "paragraph",
-      "text": "The **Fundamental Theorem of Calculus** is the bridge between them. It is, by any measure, the most \nimportant theorem in calculus—and one of the most beautiful results \nin all of mathematics."
+      "text": "The **Fundamental Theorem of Calculus** is the bridge between them. It is, by any measure, the most \nimportant theorem in calculus\u2014and one of the most beautiful results \nin all of mathematics."
     },
     {
       "type": "heading",
@@ -38,7 +38,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Now ask: *how fast is the area accumulating?* That is, what is \n$g'(x)$—the rate of change of the accumulated area with respect to $x$?"
+      "text": "Now ask: *how fast is the area accumulating?* That is, what is \n$g'(x)$\u2014the rate of change of the accumulated area with respect to $x$?"
     },
     {
       "type": "paragraph",
@@ -79,7 +79,7 @@
       "number": "6.1",
       "title": "Differentiating an integral",
       "problem": "Find $\\displaystyle\\deriv{}{x}\\left[\\int_1^x t^3\\dt\\right]$.",
-      "solution": "By the FTC Part 1, with $f(t) = t^3$:\n\\[\n \\deriv{}{x}\\left[\\int_1^x t^3\\dt\\right] = x^3.\n\\]\nThat's it. No Riemann sums, no antiderivative formulas—just the \ntheorem."
+      "solution": "By the FTC Part 1, with $f(t) = t^3$:\n\\[\n \\deriv{}{x}\\left[\\int_1^x t^3\\dt\\right] = x^3.\n\\]\nThat's it. No Riemann sums, no antiderivative formulas\u2014just the \ntheorem."
     },
     {
       "type": "example",
@@ -135,11 +135,11 @@
     },
     {
       "type": "proof",
-      "content": "Let $g(x) = \\int_a^x f(t)\\dt$. By Part 1, $g'(x) = f(x)$, so $g$ is \nan antiderivative of $f$. Since $F$ is also an antiderivative of $f$, \nTheorem [thm:general-antiderivative] tells us that \n$F(x) = g(x) + C$ for some constant $C$.\n\nEvaluate at $x = a$: $F(a) = g(a) + C = 0 + C = C$, since \n$g(a) = \\int_a^a f(t)\\dt = 0$.\n\nEvaluate at $x = b$: $F(b) = g(b) + C = \\int_a^b f(t)\\dt + C$.\n\nSubtracting:\n\\[\n F(b) - F(a) = \\int_a^b f(t)\\dt + C - C = \\int_a^b f(t)\\dt.\n\\]\nThe constant $C$ cancels—*it does not matter which antiderivative \nwe use.*"
+      "content": "Let $g(x) = \\int_a^x f(t)\\dt$. By Part 1, $g'(x) = f(x)$, so $g$ is \nan antiderivative of $f$. Since $F$ is also an antiderivative of $f$, \nTheorem [thm:general-antiderivative] tells us that \n$F(x) = g(x) + C$ for some constant $C$.\n\nEvaluate at $x = a$: $F(a) = g(a) + C = 0 + C = C$, since \n$g(a) = \\int_a^a f(t)\\dt = 0$.\n\nEvaluate at $x = b$: $F(b) = g(b) + C = \\int_a^b f(t)\\dt + C$.\n\nSubtracting:\n\\[\n F(b) - F(a) = \\int_a^b f(t)\\dt + C - C = \\int_a^b f(t)\\dt.\n\\]\nThe constant $C$ cancels\u2014*it does not matter which antiderivative \nwe use.*"
     },
     {
       "type": "paragraph",
-      "text": "This is a watershed moment. The Fundamental Theorem transforms the \nproblem of computing a definite integral—which previously required \nconstructing Riemann sums, applying summation formulas, and evaluating \na limit—into finding an antiderivative and subtracting two numbers."
+      "text": "This is a watershed moment. The Fundamental Theorem transforms the \nproblem of computing a definite integral\u2014which previously required \nconstructing Riemann sums, applying summation formulas, and evaluating \na limit\u2014into finding an antiderivative and subtracting two numbers."
     },
     {
       "type": "example",
@@ -179,7 +179,7 @@
       "number": "6.9",
       "title": "Total area using absolute value",
       "problem": "Find the *total area* between $f(x) = x^2 - 1$ and the $x$-axis \non $[-1, 2]$.",
-      "solution": "First find where $f$ crosses the axis: $x^2 - 1 = 0$ gives $x = \\pm 1$. \nOn $[-1, 1]$, $f(x) \\leq 0$ (the parabola dips below the axis). \nOn $[1, 2]$, $f(x) \\geq 0$.\n\nTotal area $= \\displaystyle\\int_{-1}^{1}\\abs{x^2 - 1}\\dx \n+ \\int_1^2 (x^2 - 1)\\dx$.\n\nOn $[-1, 1]$: $\\abs{x^2-1} = 1 - x^2$, so\n\\[\n \\int_{-1}^{1}(1 - x^2)\\dx = \\left[x - \\frac{x^3}{3}\\right]_{-1}^{1} \n = \\left(1 - \\frac{1}{3}\\right) - \\left(-1 + \\frac{1}{3}\\right) \n = \\frac{2}{3} + \\frac{2}{3} = \\frac{4}{3}.\n\\]\n\nOn $[1, 2]$:\n\\[\n \\int_1^2(x^2 - 1)\\dx = \\left[\\frac{x^3}{3} - x\\right]_1^2 \n = \\left(\\frac{8}{3} - 2\\right) - \\left(\\frac{1}{3} - 1\\right) \n = \\frac{2}{3} + \\frac{2}{3} = \\frac{4}{3}.\n\\]\n\nTotal area $= \\frac{4}{3} + \\frac{4}{3} = \\frac{8}{3}$.\n\n(Note: the *signed* integral $\\int_{-1}^{2}(x^2-1)\\dx = \n-\\frac{4}{3} + \\frac{4}{3} = 0$ would give zero—the total area \nrequires splitting at the root.)"
+      "solution": "First find where $f$ crosses the axis: $x^2 - 1 = 0$ gives $x = \\pm 1$. \nOn $[-1, 1]$, $f(x) \\leq 0$ (the parabola dips below the axis). \nOn $[1, 2]$, $f(x) \\geq 0$.\n\nTotal area $= \\displaystyle\\int_{-1}^{1}\\abs{x^2 - 1}\\dx \n+ \\int_1^2 (x^2 - 1)\\dx$.\n\nOn $[-1, 1]$: $\\abs{x^2-1} = 1 - x^2$, so\n\\[\n \\int_{-1}^{1}(1 - x^2)\\dx = \\left[x - \\frac{x^3}{3}\\right]_{-1}^{1} \n = \\left(1 - \\frac{1}{3}\\right) - \\left(-1 + \\frac{1}{3}\\right) \n = \\frac{2}{3} + \\frac{2}{3} = \\frac{4}{3}.\n\\]\n\nOn $[1, 2]$:\n\\[\n \\int_1^2(x^2 - 1)\\dx = \\left[\\frac{x^3}{3} - x\\right]_1^2 \n = \\left(\\frac{8}{3} - 2\\right) - \\left(\\frac{1}{3} - 1\\right) \n = \\frac{2}{3} + \\frac{2}{3} = \\frac{4}{3}.\n\\]\n\nTotal area $= \\frac{4}{3} + \\frac{4}{3} = \\frac{8}{3}$.\n\n(Note: the *signed* integral $\\int_{-1}^{2}(x^2-1)\\dx = \n-\\frac{4}{3} + \\frac{4}{3} = 0$ would give zero\u2014the total area \nrequires splitting at the root.)"
     },
     {
       "type": "heading",
@@ -192,18 +192,18 @@
     },
     {
       "type": "paragraph",
-      "text": "Slopes and areas. Rates and accumulation. Taking apart and putting \ntogether. They are not independent concepts—they are mirror images of \none another."
+      "text": "Slopes and areas. Rates and accumulation. Taking apart and putting \ntogether. They are not independent concepts\u2014they are mirror images of \none another."
     },
     {
       "type": "paragraph",
-      "text": "This unity is intellectually stunning. It is as if you discovered that \ntwo friends who grew up on opposite sides of the world, who speak \ndifferent languages and have different lives, turn out to be \nsiblings—children of the same truth."
+      "text": "This unity is intellectually stunning. It is as if you discovered that \ntwo friends who grew up on opposite sides of the world, who speak \ndifferent languages and have different lives, turn out to be \nsiblings\u2014children of the same truth."
     },
     {
       "type": "historical",
       "id": "historical-6.4",
       "number": null,
       "title": "Newton and Leibniz (late 1600s)",
-      "content": "Isaac Newton (1643–1727) and Gottfried Wilhelm Leibniz (1646–1716) \nindependently discovered the Fundamental Theorem in the late seventeenth \ncentury, though earlier mathematicians—notably Isaac Barrow and James \nGregory—had glimpsed parts of the connection.\n\nNewton, a devout Christian (though unorthodox in some of his theology), \napproached the theorem through physics: he saw integration as the inverse \nof his \"fluxions\" (rates of change). Leibniz, approaching from \nphilosophy and formal notation, introduced the $\\int$ symbol and the \n$\\frac{dy}{dx}$ notation we still use today.\n\nA bitter priority dispute between their followers consumed decades and \ndivided European mathematics into British and Continental camps. \nHistory has judged them co-discoverers—each arriving at the same \nprofound truth by a different path.\n\nLeibniz wrote in a letter: \"Taking mathematics from the beginning of \nthe world to the time when Newton lived, what he had done was much the \nbetter half.\" Newton, for his part, said of his achievements: \"If I \nhave seen further, it is by standing on the shoulders of giants.\" \nBoth men, in their better moments, recognized that mathematical truth \ntranscends its discoverers."
+      "content": "Isaac Newton (1643\u20131727) and Gottfried Wilhelm Leibniz (1646\u20131716) \nindependently discovered the Fundamental Theorem in the late seventeenth \ncentury, though earlier mathematicians\u2014notably Isaac Barrow and James \nGregory\u2014had glimpsed parts of the connection.\n\nNewton, a devout Christian (though unorthodox in some of his theology), \napproached the theorem through physics: he saw integration as the inverse \nof his \"fluxions\" (rates of change). Leibniz, approaching from \nphilosophy and formal notation, introduced the $\\int$ symbol and the \n$\\frac{dy}{dx}$ notation we still use today.\n\nA bitter priority dispute between their followers consumed decades and \ndivided European mathematics into British and Continental camps. \nHistory has judged them co-discoverers\u2014each arriving at the same \nprofound truth by a different path.\n\nLeibniz wrote in a letter: \"Taking mathematics from the beginning of \nthe world to the time when Newton lived, what he had done was much the \nbetter half.\" Newton, for his part, said of his achievements: \"If I \nhave seen further, it is by standing on the shoulders of giants.\" \nBoth men, in their better moments, recognized that mathematical truth \ntranscends its discoverers."
     },
     {
       "type": "heading",
@@ -263,6 +263,20 @@
       "title": "Integral involving absolute value",
       "problem": "Evaluate $\\displaystyle\\int_{-2}^{3}\\abs{x}\\dx$.",
       "solution": "Since $\\abs{x} = -x$ for $x < 0$ and $\\abs{x} = x$ for $x \\geq 0$:\n\\[\n \\int_{-2}^{3}\\abs{x}\\dx = \\int_{-2}^{0}(-x)\\dx + \\int_0^3 x\\dx \n = \\left[-\\frac{x^2}{2}\\right]_{-2}^{0} + \\left[\\frac{x^2}{2}\\right]_0^3 \n = (0 - (-2)) + \\left(\\frac{9}{2} - 0\\right) = 2 + \\frac{9}{2} \n = \\frac{13}{2}.\n\\]"
+    },
+    {
+      "type": "figure",
+      "id": "fig-6.4.3",
+      "src": "/figures/vol1/ch06/fig-6.4.3-thin-strip.svg",
+      "caption": "The rate of area accumulation: when the boundary moves from $x$ to $x+h$, the area increases by a thin strip of approximate area $f(x)\\cdot h$. Therefore $g'(x) = f(x)$.",
+      "alt": "A coordinate plane showing a continuous curve y equals f of t above the horizontal axis. The region from t equals a to t equals x is shaded, representing the accumulated area g of x. An additional thin vertical strip is highlighted from t equals x to t equals x plus h, with width labeled h and height approximately f of x. This strip represents the change in area when the right boundary moves from x to x plus h. The area of this thin strip is approximately f of x times h, leading to the conclusion that the derivative g prime of x equals f of x. This illustrates the Fundamental Theorem of Calculus Part 1."
+    },
+    {
+      "type": "figure",
+      "id": "fig-6.4.2",
+      "src": "/figures/vol1/ch06/fig-6.4.2-ftc-net-change.svg",
+      "caption": "The Fundamental Theorem of Calculus, Part~2: The definite integral $\\int_a^b f(x)\\dx$ equals $F(b) - F(a)$, the net change in any antiderivative~$F$.",
+      "alt": "Two coordinate planes side by side illustrating the Fundamental Theorem of Calculus Part 2. The left panel shows the integrand f of x as a curve with the area under it shaded from a to b, representing the definite integral. The right panel shows the antiderivative F of x. Two points are marked on the antiderivative curve: F of a at x equals a and F of b at x equals b. A vertical arrow between these points shows the difference F of b minus F of a, which equals the shaded area from the left panel. This demonstrates that the definite integral equals the net change in the antiderivative."
     }
   ],
   "marginNotes": [
@@ -284,7 +298,7 @@
     {
       "type": "quote",
       "author": "Richard Courant",
-      "text": "The Fundamental Theorem of Calculus is \nindeed fundamental—it connects the two central concepts of calculus \nin a deep and surprising way."
+      "text": "The Fundamental Theorem of Calculus is \nindeed fundamental\u2014it connects the two central concepts of calculus \nin a deep and surprising way."
     },
     {
       "type": "quote",

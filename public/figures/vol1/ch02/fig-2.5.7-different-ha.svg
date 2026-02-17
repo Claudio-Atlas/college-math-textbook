@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" width="420" height="300">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="420" height="300" fill="#ffffff"/>
+  
+  <!-- Axes -->
+  <line x1="40" y1="150" x2="400" y2="150" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="210" y1="270" x2="210" y2="30" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="405" y="155" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">x</text>
+  <text x="215" y="25" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- Origin -->
+  <text x="215" y="165" font-family="serif" font-size="12" fill="#1e293b">0</text>
+  
+  <!-- y-axis ticks -->
+  <line x1="207" y1="80" x2="213" y2="80" stroke="#1e293b" stroke-width="1"/>
+  <text x="193" y="85" font-family="serif" font-size="11" fill="#1e293b">1</text>
+  
+  <line x1="207" y1="220" x2="213" y2="220" stroke="#1e293b" stroke-width="1"/>
+  <text x="185" y="225" font-family="serif" font-size="11" fill="#1e293b">−1</text>
+  
+  <!-- Horizontal asymptote y = 1 (right side) -->
+  <line x1="210" y1="80" x2="400" y2="80" stroke="#059669" stroke-width="2" stroke-dasharray="6,4"/>
+  
+  <!-- Horizontal asymptote y = -1 (left side) -->
+  <line x1="40" y1="220" x2="210" y2="220" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6,4"/>
+  
+  <!-- f(x) = x/√(x²+1) -->
+  <!-- As x→+∞, f(x)→1; as x→-∞, f(x)→-1 -->
+  <path d="M 45 215 Q 80 210, 120 200 Q 160 180, 210 150 Q 260 120, 300 100 Q 340 90, 380 85" 
+        stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Arrows showing approach -->
+  <path d="M 365 88 L 390 82" stroke="#059669" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 65 213 L 45 218" stroke="#7c3aed" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Function label -->
+  <text x="280" y="50" font-family="serif" font-size="14" fill="#2563eb">f(x) = </text>
+  <text x="335" y="42" font-family="serif" font-size="13" fill="#2563eb">x</text>
+  <line x1="325" y1="47" x2="375" y2="47" stroke="#2563eb" stroke-width="1"/>
+  <text x="327" y="62" font-family="serif" font-size="13" fill="#2563eb">√(x² + 1)</text>
+  
+  <!-- HA labels -->
+  <text x="340" y="100" font-family="serif" font-size="11" fill="#059669">HA: y = 1</text>
+  <text x="50" y="240" font-family="serif" font-size="11" fill="#7c3aed">HA: y = −1</text>
+  
+  <!-- Limit annotations -->
+  <text x="310" y="125" font-family="serif" font-size="10" fill="#1e293b">lim f(x) = 1</text>
+  <text x="310" y="115" font-family="serif" font-size="8" fill="#1e293b">x→+∞</text>
+  
+  <text x="70" y="195" font-family="serif" font-size="10" fill="#1e293b">lim f(x) = −1</text>
+  <text x="70" y="185" font-family="serif" font-size="8" fill="#1e293b">x→−∞</text>
+  
+  <!-- Note -->
+  <text x="210" y="285" font-family="serif" font-size="11" fill="#64748b" text-anchor="middle">
+    A function can have different horizontal asymptotes for x → +∞ and x → −∞
+  </text>
+</svg>

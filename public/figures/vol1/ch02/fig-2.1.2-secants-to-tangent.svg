@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 350" width="450" height="350">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="450" height="350" fill="#ffffff"/>
+  
+  <!-- Axes -->
+  <line x1="40" y1="300" x2="420" y2="300" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="40" y1="310" x2="40" y2="30" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="425" y="305" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">x</text>
+  <text x="35" y="20" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- The curve y = f(x) - parabola-like -->
+  <path d="M 50 280 Q 100 250, 150 180 Q 200 110, 250 90 Q 300 70, 350 80 Q 400 90, 420 120" 
+        stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Fixed point P -->
+  <circle cx="150" cy="180" r="6" fill="#f97316"/>
+  <text x="135" y="200" font-family="serif" font-size="14" font-weight="bold" fill="#f97316">P</text>
+  
+  <!-- Moving points Q1, Q2, Q3 -->
+  <circle cx="320" cy="75" r="4" fill="#94a3b8"/>
+  <circle cx="260" cy="85" r="4" fill="#94a3b8"/>
+  <circle cx="200" cy="110" r="4" fill="#94a3b8"/>
+  
+  <!-- Point labels -->
+  <text x="325" y="70" font-family="serif" font-size="12" font-style="italic" fill="#64748b">Q₁</text>
+  <text x="265" y="80" font-family="serif" font-size="12" font-style="italic" fill="#64748b">Q₂</text>
+  <text x="205" y="105" font-family="serif" font-size="12" font-style="italic" fill="#64748b">Q₃</text>
+  
+  <!-- Secant lines (progressively getting closer to tangent) -->
+  <!-- Secant through P and Q1 -->
+  <line x1="70" y1="230" x2="380" y2="37" stroke="#94a3b8" stroke-width="1.5" stroke-opacity="0.5"/>
+  
+  <!-- Secant through P and Q2 -->
+  <line x1="70" y1="218" x2="350" y2="35" stroke="#94a3b8" stroke-width="1.5" stroke-opacity="0.7"/>
+  
+  <!-- Secant through P and Q3 -->
+  <line x1="70" y1="205" x2="320" y2="50" stroke="#94a3b8" stroke-width="1.5" stroke-opacity="0.85"/>
+  
+  <!-- THE TANGENT LINE (limit) -->
+  <line x1="50" y1="257" x2="300" y2="55" stroke="#dc2626" stroke-width="2.5"/>
+  
+  <!-- Arrow showing Q approaching P -->
+  <path d="M 300 140 Q 250 155, 180 170" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <text x="260" y="135" font-family="serif" font-size="13" fill="#059669">Q → P</text>
+  
+  <!-- Labels -->
+  <text x="285" y="50" font-family="serif" font-size="13" fill="#dc2626" font-weight="bold">tangent line</text>
+  <text x="340" y="45" font-family="serif" font-size="11" fill="#64748b">secant lines</text>
+  
+  <!-- Curve label -->
+  <text x="390" y="135" font-family="serif" font-size="14" font-style="italic" fill="#2563eb">y = f(x)</text>
+  
+  <!-- Explanation text -->
+  <text x="225" y="330" font-family="serif" font-size="13" fill="#1e293b" text-anchor="middle">
+    As Q approaches P, the secant lines approach the tangent line.
+  </text>
+  
+  <!-- x-axis tick for point P -->
+  <line x1="150" y1="297" x2="150" y2="303" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="147" y="315" font-family="serif" font-size="12" font-style="italic" fill="#1e293b">a</text>
+  
+  <!-- Dashed line from P to x-axis -->
+  <line x1="150" y1="180" x2="150" y2="297" stroke="#f97316" stroke-width="1" stroke-dasharray="4,3"/>
+</svg>

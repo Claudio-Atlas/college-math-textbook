@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 340" width="420" height="340">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="420" height="340" fill="#ffffff"/>
+  
+  <!-- Epsilon band (horizontal) -->
+  <rect x="40" y="95" width="340" height="70" fill="#dcfce7" fill-opacity="0.4"/>
+  
+  <!-- Delta band (vertical) -->
+  <rect x="175" y="50" width="70" height="230" fill="#dbeafe" fill-opacity="0.4"/>
+  
+  <!-- Axes -->
+  <line x1="40" y1="260" x2="390" y2="260" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="40" y1="280" x2="40" y2="40" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="395" y="265" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">x</text>
+  <text x="35" y="35" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- Horizontal dashed lines for ε band -->
+  <line x1="40" y1="130" x2="380" y2="130" stroke="#059669" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="40" y1="95" x2="380" y2="95" stroke="#059669" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="40" y1="165" x2="380" y2="165" stroke="#059669" stroke-width="1.5" stroke-dasharray="5,3"/>
+  
+  <!-- Vertical dashed lines for δ band -->
+  <line x1="210" y1="50" x2="210" y2="260" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="175" y1="50" x2="175" y2="260" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="245" y1="50" x2="245" y2="260" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5,3"/>
+  
+  <!-- The line f(x) = 4x - 5 -->
+  <!-- At x = 3, f(3) = 7 (the limit) -->
+  <!-- Scale: x from 0-5 (40 pixels per unit), y from 0-15 (14 pixels per unit) -->
+  <line x1="55" y1="235" x2="350" y2="60" stroke="#1e293b" stroke-width="3"/>
+  
+  <!-- Point (3, 7) -->
+  <circle cx="210" cy="130" r="5" fill="#f97316"/>
+  
+  <!-- Y-axis labels -->
+  <text x="12" y="100" font-family="serif" font-size="11" fill="#059669">7 + ε</text>
+  <text x="25" y="135" font-family="serif" font-size="11" font-weight="bold" fill="#1e293b">7</text>
+  <text x="12" y="170" font-family="serif" font-size="11" fill="#059669">7 − ε</text>
+  
+  <!-- X-axis labels -->
+  <text x="168" y="278" font-family="serif" font-size="11" fill="#2563eb">3−δ</text>
+  <text x="205" y="278" font-family="serif" font-size="11" font-weight="bold" fill="#1e293b">3</text>
+  <text x="238" y="278" font-family="serif" font-size="11" fill="#2563eb">3+δ</text>
+  
+  <!-- Slope calculation annotation -->
+  <text x="280" y="85" font-family="serif" font-size="12" fill="#1e293b">slope = 4</text>
+  <text x="280" y="102" font-family="serif" font-size="12" fill="#1e293b">so δ = ε/4</text>
+  
+  <!-- Function label -->
+  <text x="310" y="145" font-family="serif" font-size="14" fill="#1e293b">f(x) = 4x − 5</text>
+  
+  <!-- Title -->
+  <text x="210" y="315" font-family="serif" font-size="12" fill="#1e293b" text-anchor="middle">
+    ε-δ proof for linear function: Given ε > 0, let δ = ε/4
+  </text>
+  <text x="210" y="332" font-family="serif" font-size="11" fill="#64748b" text-anchor="middle">
+    If |x − 3| &lt; δ, then |f(x) − 7| = |4x − 12| = 4|x − 3| &lt; 4δ = ε
+  </text>
+</svg>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 420" width="450" height="420">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="450" height="420" fill="#ffffff"/>
+  
+  <!-- Circle center at (180, 200), radius 150 -->
+  <!-- Unit circle -->
+  <circle cx="180" cy="200" r="150" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+  
+  <!-- Axes through origin O = (180, 200) -->
+  <line x1="20" y1="200" x2="400" y2="200" stroke="#1e293b" stroke-width="1.5"/>
+  <line x1="180" y1="360" x2="180" y2="40" stroke="#1e293b" stroke-width="1.5"/>
+  
+  <!-- Point O (origin) -->
+  <circle cx="180" cy="200" r="3" fill="#1e293b"/>
+  <text x="165" y="218" font-family="serif" font-size="14" font-weight="bold" fill="#1e293b">O</text>
+  
+  <!-- Point A at (1, 0) = (330, 200) -->
+  <circle cx="330" cy="200" r="4" fill="#1e293b"/>
+  <text x="338" y="205" font-family="serif" font-size="14" font-weight="bold" fill="#1e293b">A</text>
+  
+  <!-- Angle x (roughly 35°) -->
+  <!-- Point B at (cos x, sin x) ≈ (0.82, 0.57) scaled: (180+123, 200-86) = (303, 114) -->
+  <circle cx="303" cy="114" r="4" fill="#2563eb"/>
+  <text x="308" y="108" font-family="serif" font-size="14" font-weight="bold" fill="#2563eb">B</text>
+  
+  <!-- Point C at (1, tan x) = (330, 200-tan(35°)*150) ≈ (330, 95) -->
+  <circle cx="330" cy="95" r="4" fill="#dc2626"/>
+  <text x="338" y="100" font-family="serif" font-size="14" font-weight="bold" fill="#dc2626">C</text>
+  
+  <!-- Arc from A to B showing angle x -->
+  <path d="M 330 200 A 150 150 0 0 0 303 114" stroke="#2563eb" stroke-width="2" fill="none"/>
+  
+  <!-- Triangle OAB (inner triangle) - shaded -->
+  <polygon points="180,200 330,200 303,114" fill="#dbeafe" fill-opacity="0.5" stroke="#2563eb" stroke-width="2"/>
+  
+  <!-- Triangle OAC (outer triangle) -->
+  <polygon points="180,200 330,200 330,95" fill="none" stroke="#dc2626" stroke-width="2"/>
+  
+  <!-- Dashed line from B to x-axis (sin x) -->
+  <line x1="303" y1="114" x2="303" y2="200" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <text x="285" y="160" font-family="serif" font-size="12" fill="#2563eb">sin x</text>
+  
+  <!-- Line from A to C (tan x) -->
+  <line x1="330" y1="200" x2="330" y2="95" stroke="#dc2626" stroke-width="2"/>
+  <text x="340" y="150" font-family="serif" font-size="12" fill="#dc2626">tan x</text>
+  
+  <!-- Angle arc at O -->
+  <path d="M 210 200 A 30 30 0 0 0 205 183" stroke="#64748b" stroke-width="1.5" fill="none"/>
+  <text x="215" y="188" font-family="serif" font-size="12" font-style="italic" fill="#64748b">x</text>
+  
+  <!-- Radius = 1 label -->
+  <text x="240" y="245" font-family="serif" font-size="11" fill="#64748b">radius = 1</text>
+  
+  <!-- Areas panel on right side -->
+  <rect x="255" y="260" width="180" height="130" fill="#f8fafc" stroke="#e2e8f0" stroke-width="1" rx="5"/>
+  
+  <text x="265" y="280" font-family="serif" font-size="12" font-weight="bold" fill="#1e293b">Areas:</text>
+  
+  <!-- Triangle OAB area -->
+  <text x="265" y="300" font-family="serif" font-size="11" fill="#2563eb">△OAB = ½ sin x</text>
+  
+  <!-- Sector OAB area -->
+  <text x="265" y="320" font-family="serif" font-size="11" fill="#7c3aed">Sector = ½ x</text>
+  
+  <!-- Triangle OAC area -->
+  <text x="265" y="340" font-family="serif" font-size="11" fill="#dc2626">△OAC = ½ tan x</text>
+  
+  <!-- Inequality -->
+  <text x="265" y="365" font-family="serif" font-size="11" fill="#1e293b">△OAB ≤ Sector ≤ △OAC</text>
+  <text x="265" y="382" font-family="serif" font-size="11" fill="#1e293b">½sin x ≤ ½x ≤ ½tan x</text>
+  
+  <!-- Final result at bottom -->
+  <text x="225" y="405" font-family="serif" font-size="13" fill="#1e293b" text-anchor="middle">
+    Dividing by ½ sin x and taking limit: lim (sin x)/x = 1
+  </text>
+  <text x="285" y="412" font-family="serif" font-size="9" fill="#1e293b">x→0</text>
+</svg>

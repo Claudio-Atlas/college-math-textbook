@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" width="420" height="300">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="420" height="300" fill="#ffffff"/>
+  
+  <!-- Axes -->
+  <line x1="40" y1="150" x2="400" y2="150" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="210" y1="280" x2="210" y2="30" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="405" y="155" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">x</text>
+  <text x="215" y="25" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- y = 1 and y = -1 bounds -->
+  <line x1="40" y1="70" x2="400" y2="70" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="40" y1="230" x2="400" y2="230" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,3"/>
+  
+  <text x="25" y="75" font-family="serif" font-size="11" fill="#94a3b8">1</text>
+  <text x="20" y="235" font-family="serif" font-size="11" fill="#94a3b8">−1</text>
+  
+  <!-- sin(1/x) - oscillating wildly near x = 0 -->
+  <!-- Left side (x < 0) -->
+  <path d="M 50 130 Q 60 70, 70 150 Q 80 230, 90 150 Q 100 70, 110 150 
+           Q 120 230, 130 150 Q 140 70, 150 150 Q 160 230, 170 150 
+           Q 180 70, 190 150 Q 195 200, 200 170 Q 203 155, 206 152" 
+        stroke="#2563eb" stroke-width="2" fill="none"/>
+  
+  <!-- Right side (x > 0) -->
+  <path d="M 214 148 Q 217 145, 220 130 Q 225 100, 230 150 Q 240 230, 250 150 
+           Q 260 70, 270 150 Q 280 230, 290 150 Q 300 70, 310 150 
+           Q 320 230, 330 150 Q 340 70, 350 150 Q 360 200, 380 170" 
+        stroke="#2563eb" stroke-width="2" fill="none"/>
+  
+  <!-- Shaded region near x = 0 showing infinite oscillation -->
+  <rect x="195" y="70" width="30" height="160" fill="#dbeafe" fill-opacity="0.3"/>
+  
+  <!-- Arrow indicating faster oscillation near 0 -->
+  <text x="195" y="260" font-family="serif" font-size="10" fill="#64748b" text-anchor="middle">oscillates</text>
+  <text x="195" y="272" font-family="serif" font-size="10" fill="#64748b" text-anchor="middle">infinitely fast</text>
+  
+  <!-- Function label -->
+  <text x="320" y="55" font-family="serif" font-size="14" fill="#2563eb">g(x) = sin(1/x)</text>
+  
+  <!-- Limit does not exist annotation -->
+  <text x="60" y="45" font-family="serif" font-size="12" fill="#dc2626">lim sin(1/x) does not exist</text>
+  <text x="60" y="30" font-family="serif" font-size="9" fill="#dc2626">x→0</text>
+</svg>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 360" width="420" height="360">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="420" height="360" fill="#ffffff"/>
+  
+  <!-- Axes -->
+  <line x1="40" y1="180" x2="400" y2="180" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="40" y1="340" x2="40" y2="30" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="405" y="185" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">x</text>
+  <text x="35" y="20" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- x-axis tick at x = 3 (pixel 220) -->
+  <line x1="220" y1="177" x2="220" y2="183" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="217" y="198" font-family="serif" font-size="13" fill="#1e293b">3</text>
+  
+  <!-- Origin -->
+  <text x="45" y="195" font-family="serif" font-size="12" fill="#1e293b">0</text>
+  
+  <!-- Vertical asymptote at x = 3 -->
+  <line x1="220" y1="320" x2="220" y2="40" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,4"/>
+  
+  <!-- Horizontal asymptote at y = 0 -->
+  <line x1="40" y1="180" x2="400" y2="180" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,3"/>
+  
+  <!-- f(x) = 1/(x-3) -->
+  <!-- Left branch: as x→3⁻, f(x)→-∞ (below x-axis) -->
+  <path d="M 50 175 Q 80 174, 120 173 Q 160 170, 180 160 Q 195 140, 205 100 Q 210 70, 214 50" 
+        stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Continue left branch going to -∞ -->
+  <path d="M 50 185 Q 80 186, 120 187 Q 160 190, 180 200 Q 195 220, 205 260 Q 210 290, 214 310" 
+        stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Right branch: as x→3⁺, f(x)→+∞ (above x-axis) -->
+  <path d="M 226 50 Q 230 70, 235 100 Q 245 140, 260 160 Q 280 170, 320 173 Q 360 174, 390 175" 
+        stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Right branch below axis going to 0 -->
+  <path d="M 226 310 Q 230 290, 235 260 Q 245 220, 260 200 Q 280 190, 320 187 Q 360 186, 390 185" 
+        stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Arrows showing approach -->
+  <path d="M 207 75 L 212 50" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M 233 75 L 228 50" stroke="#f97316" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <path d="M 207 285 L 212 310" stroke="#7c3aed" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- +∞ and -∞ labels -->
+  <text x="235" y="50" font-family="serif" font-size="14" fill="#f97316">+∞</text>
+  <text x="175" y="310" font-family="serif" font-size="14" fill="#7c3aed">−∞</text>
+  
+  <!-- Function label -->
+  <text x="300" y="90" font-family="serif" font-size="15" fill="#2563eb">f(x) = </text>
+  <text x="355" y="82" font-family="serif" font-size="14" fill="#2563eb">1</text>
+  <line x1="345" y1="87" x2="385" y2="87" stroke="#2563eb" stroke-width="1"/>
+  <text x="352" y="102" font-family="serif" font-size="14" fill="#2563eb">x − 3</text>
+  
+  <!-- Asymptote label -->
+  <text x="230" y="150" font-family="serif" font-size="12" fill="#dc2626">VA: x = 3</text>
+  
+  <!-- Limit annotations -->
+  <text x="60" y="55" font-family="serif" font-size="12" fill="#1e293b">lim f(x) = −∞</text>
+  <text x="60" y="40" font-family="serif" font-size="10" fill="#1e293b">x→3⁻</text>
+  
+  <text x="60" y="85" font-family="serif" font-size="12" fill="#1e293b">lim f(x) = +∞</text>
+  <text x="60" y="70" font-family="serif" font-size="10" fill="#1e293b">x→3⁺</text>
+  
+  <!-- Explanation -->
+  <text x="210" y="340" font-family="serif" font-size="12" fill="#1e293b" text-anchor="middle">
+    Odd power in denominator: opposite signs from each side
+  </text>
+</svg>

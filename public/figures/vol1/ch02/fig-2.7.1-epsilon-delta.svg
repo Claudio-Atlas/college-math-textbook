@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 400" width="480" height="400">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+    <pattern id="hatch" patternUnits="userSpaceOnUse" width="4" height="4">
+      <path d="M-1,1 l2,-2 M0,4 l4,-4 M3,5 l2,-2" stroke="#2563eb" stroke-width="0.5" stroke-opacity="0.3"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="480" height="400" fill="#ffffff"/>
+  
+  <!-- Epsilon band (horizontal strip around y = L) -->
+  <rect x="40" y="110" width="400" height="80" fill="#dcfce7" fill-opacity="0.4"/>
+  
+  <!-- Delta band (vertical strip around x = a, excluding x = a) -->
+  <rect x="190" y="50" width="80" height="270" fill="#dbeafe" fill-opacity="0.4"/>
+  
+  <!-- Axes -->
+  <line x1="40" y1="300" x2="450" y2="300" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="40" y1="320" x2="40" y2="40" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="455" y="305" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">x</text>
+  <text x="35" y="30" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- Horizontal dashed lines for L-ε, L, L+ε -->
+  <line x1="40" y1="150" x2="440" y2="150" stroke="#059669" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="40" y1="110" x2="440" y2="110" stroke="#059669" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="40" y1="190" x2="440" y2="190" stroke="#059669" stroke-width="1.5" stroke-dasharray="5,3"/>
+  
+  <!-- Vertical dashed lines for a-δ, a, a+δ -->
+  <line x1="230" y1="50" x2="230" y2="300" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="190" y1="50" x2="190" y2="300" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="270" y1="50" x2="270" y2="300" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="5,3"/>
+  
+  <!-- The function curve - enters horizontal strip when in vertical strip -->
+  <path d="M 60 270 Q 120 240, 170 200 Q 200 170, 230 150 Q 260 130, 290 115 Q 350 95, 420 75" 
+        stroke="#1e293b" stroke-width="3" fill="none"/>
+  
+  <!-- Open circle at (a, f(a)) to show limit definition doesn't require f(a) = L -->
+  <circle cx="230" cy="150" r="5" fill="#ffffff" stroke="#f97316" stroke-width="2"/>
+  
+  <!-- Y-axis labels -->
+  <text x="15" y="115" font-family="serif" font-size="12" fill="#059669">L + ε</text>
+  <text x="25" y="155" font-family="serif" font-size="12" font-weight="bold" fill="#1e293b">L</text>
+  <text x="15" y="195" font-family="serif" font-size="12" fill="#059669">L − ε</text>
+  
+  <!-- X-axis labels -->
+  <text x="182" y="318" font-family="serif" font-size="12" fill="#2563eb">a−δ</text>
+  <text x="225" y="318" font-family="serif" font-size="12" font-weight="bold" fill="#1e293b">a</text>
+  <text x="262" y="318" font-family="serif" font-size="12" fill="#2563eb">a+δ</text>
+  
+  <!-- Epsilon bracket on right -->
+  <line x1="445" y1="110" x2="450" y2="110" stroke="#059669" stroke-width="2"/>
+  <line x1="450" y1="110" x2="450" y2="190" stroke="#059669" stroke-width="2"/>
+  <line x1="445" y1="190" x2="450" y2="190" stroke="#059669" stroke-width="2"/>
+  <text x="455" y="155" font-family="serif" font-size="14" fill="#059669">2ε</text>
+  
+  <!-- Delta bracket on bottom -->
+  <line x1="190" y1="330" x2="190" y2="335" stroke="#2563eb" stroke-width="2"/>
+  <line x1="190" y1="335" x2="270" y2="335" stroke="#2563eb" stroke-width="2"/>
+  <line x1="270" y1="330" x2="270" y2="335" stroke="#2563eb" stroke-width="2"/>
+  <text x="220" y="350" font-family="serif" font-size="14" fill="#2563eb">2δ</text>
+  
+  <!-- Annotations -->
+  <text x="315" y="145" font-family="serif" font-size="12" fill="#059669">ε-neighborhood</text>
+  <text x="315" y="160" font-family="serif" font-size="12" fill="#059669">of L (target)</text>
+  
+  <text x="275" y="245" font-family="serif" font-size="12" fill="#2563eb">δ-neighborhood</text>
+  <text x="285" y="260" font-family="serif" font-size="12" fill="#2563eb">of a (input)</text>
+  
+  <!-- Function label -->
+  <text x="385" y="70" font-family="serif" font-size="14" font-style="italic" fill="#1e293b">y = f(x)</text>
+  
+  <!-- Title -->
+  <text x="240" y="385" font-family="serif" font-size="13" fill="#1e293b" text-anchor="middle" font-weight="bold">
+    If 0 &lt; |x − a| &lt; δ, then |f(x) − L| &lt; ε
+  </text>
+</svg>

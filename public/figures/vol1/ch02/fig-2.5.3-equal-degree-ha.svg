@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 300" width="420" height="300">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="420" height="300" fill="#ffffff"/>
+  
+  <!-- Axes -->
+  <line x1="40" y1="200" x2="400" y2="200" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="210" y1="280" x2="210" y2="30" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="405" y="205" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">x</text>
+  <text x="215" y="25" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- Origin -->
+  <text x="215" y="215" font-family="serif" font-size="12" fill="#1e293b">0</text>
+  
+  <!-- Horizontal asymptote at y = 3/5 = 0.6 -->
+  <!-- At pixel scale, y = 0.6 * 100 = 60 pixels up from y = 200, so y = 140 -->
+  <line x1="40" y1="140" x2="400" y2="140" stroke="#059669" stroke-width="2" stroke-dasharray="6,4"/>
+  
+  <!-- y-axis tick at 3/5 -->
+  <line x1="207" y1="140" x2="213" y2="140" stroke="#1e293b" stroke-width="1"/>
+  <text x="180" y="145" font-family="serif" font-size="11" fill="#059669">3/5</text>
+  
+  <!-- f(x) = (3x² + 1)/(5x² - 2) -->
+  <!-- Has HA at y = 3/5. Near x=0, f(0) = 1/(-2) = -0.5 -->
+  <!-- Vertical asymptotes at x = ±√(2/5) ≈ ±0.63 -->
+  
+  <!-- Left portion (x < -√0.4) -->
+  <path d="M 45 135 Q 80 130, 120 125 Q 150 120, 170 110 Q 185 95, 195 65" 
+        stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Middle portion (between asymptotes) -->
+  <path d="M 215 250 Q 210 240, 210 230" 
+        stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Right portion (x > √0.4) -->
+  <path d="M 225 65 Q 235 95, 250 110 Q 270 120, 300 125 Q 340 130, 380 135" 
+        stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Function label -->
+  <text x="280" y="60" font-family="serif" font-size="14" fill="#2563eb">f(x) = </text>
+  <text x="335" y="50" font-family="serif" font-size="13" fill="#2563eb">3x² + 1</text>
+  <line x1="335" y1="55" x2="395" y2="55" stroke="#2563eb" stroke-width="1"/>
+  <text x="337" y="72" font-family="serif" font-size="13" fill="#2563eb">5x² − 2</text>
+  
+  <!-- HA label -->
+  <text x="340" y="155" font-family="serif" font-size="12" fill="#059669">HA: y = 3/5</text>
+  
+  <!-- Explanation -->
+  <text x="210" y="280" font-family="serif" font-size="11" fill="#1e293b" text-anchor="middle">
+    Equal degrees: HA at y = (leading coeff. of num.)/(leading coeff. of denom.)
+  </text>
+</svg>

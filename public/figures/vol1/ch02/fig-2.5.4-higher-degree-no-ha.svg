@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 320" width="400" height="320">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="320" fill="#ffffff"/>
+  
+  <!-- Grid (subtle) -->
+  <g stroke="#e2e8f0" stroke-width="0.5">
+    <line x1="50" y1="50" x2="50" y2="270"/>
+    <line x1="100" y1="50" x2="100" y2="270"/>
+    <line x1="150" y1="50" x2="150" y2="270"/>
+    <line x1="200" y1="50" x2="200" y2="270"/>
+    <line x1="250" y1="50" x2="250" y2="270"/>
+    <line x1="300" y1="50" x2="300" y2="270"/>
+    <line x1="350" y1="50" x2="350" y2="270"/>
+    <line x1="50" y1="70" x2="370" y2="70"/>
+    <line x1="50" y1="120" x2="370" y2="120"/>
+    <line x1="50" y1="160" x2="370" y2="160"/>
+    <line x1="50" y1="210" x2="370" y2="210"/>
+    <line x1="50" y1="260" x2="370" y2="260"/>
+  </g>
+  
+  <!-- Axes -->
+  <line x1="30" y1="160" x2="385" y2="160" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="200" y1="290" x2="200" y2="30" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="390" y="165" font-family="serif" font-size="14" font-style="italic" fill="#1e293b">x</text>
+  <text x="195" y="22" font-family="serif" font-size="14" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- Function f(x) = (x³ - 2x)/(4x² + 1) - grows without bound -->
+  <!-- Left branch: going to -∞ as x → -∞ -->
+  <path d="M 40 40 Q 70 80, 100 120 Q 130 145, 160 155 Q 180 158, 200 160" 
+        stroke="#2563eb" stroke-width="2.5" fill="none"/>
+  
+  <!-- Right branch: going to +∞ as x → +∞ -->
+  <path d="M 200 160 Q 220 162, 240 165 Q 270 155, 300 120 Q 340 70, 380 30" 
+        stroke="#2563eb" stroke-width="2.5" fill="none"/>
+  
+  <!-- Infinity arrows -->
+  <text x="45" y="35" font-family="serif" font-size="14" fill="#dc2626">−∞</text>
+  <path d="M 55 45 Q 50 50, 45 55" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <text x="365" y="35" font-family="serif" font-size="14" fill="#dc2626">+∞</text>
+  <path d="M 370 45 Q 375 40, 378 35" stroke="#dc2626" stroke-width="1.5" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- No HA annotation -->
+  <text x="280" y="200" font-family="serif" font-size="12" fill="#dc2626">No horizontal</text>
+  <text x="280" y="215" font-family="serif" font-size="12" fill="#dc2626">asymptote</text>
+  
+  <!-- Function label -->
+  <text x="55" y="230" font-family="serif" font-size="12" fill="#2563eb">f(x) = </text>
+  <text x="100" y="225" font-family="serif" font-size="11" fill="#2563eb">x³ − 2x</text>
+  <line x1="95" y1="228" x2="155" y2="228" stroke="#2563eb" stroke-width="1"/>
+  <text x="102" y="242" font-family="serif" font-size="11" fill="#2563eb">4x² + 1</text>
+  
+  <!-- Case explanation -->
+  <rect x="30" y="260" width="340" height="45" fill="#f1f5f9" stroke="#cbd5e1" stroke-width="1" rx="4"/>
+  <text x="45" y="280" font-family="serif" font-size="12" fill="#1e293b">
+    Case: deg(numerator) &gt; deg(denominator)
+  </text>
+  <text x="45" y="297" font-family="serif" font-size="12" fill="#1e293b">
+    Result: No horizontal asymptote (unbounded growth)
+  </text>
+</svg>

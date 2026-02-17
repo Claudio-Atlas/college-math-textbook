@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280" width="400" height="280">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="400" height="280" fill="#ffffff"/>
+  
+  <!-- Axes -->
+  <line x1="40" y1="200" x2="380" y2="200" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="40" y1="210" x2="40" y2="40" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="385" y="205" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">x</text>
+  <text x="35" y="35" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- x-axis ticks -->
+  <line x1="100" y1="197" x2="100" y2="203" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="95" y="218" font-family="serif" font-size="13" font-style="italic" fill="#1e293b">a</text>
+  
+  <line x1="320" y1="197" x2="320" y2="203" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="315" y="218" font-family="serif" font-size="13" font-style="italic" fill="#1e293b">b</text>
+  
+  <!-- The interval [a,b] highlighted on x-axis -->
+  <line x1="100" y1="200" x2="320" y2="200" stroke="#059669" stroke-width="4"/>
+  
+  <!-- Continuous curve on [a,b] -->
+  <path d="M 100 140 Q 150 100, 200 120 Q 250 140, 280 80 Q 300 50, 320 90" 
+        stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Filled endpoints -->
+  <circle cx="100" cy="140" r="5" fill="#2563eb"/>
+  <circle cx="320" cy="90" r="5" fill="#2563eb"/>
+  
+  <!-- Dashed extensions showing the function might continue -->
+  <path d="M 60 170 Q 80 155, 100 140" stroke="#2563eb" stroke-width="2" stroke-dasharray="4,3" fill="none"/>
+  <path d="M 320 90 Q 340 75, 360 85" stroke="#2563eb" stroke-width="2" stroke-dasharray="4,3" fill="none"/>
+  
+  <!-- Endpoint labels -->
+  <text x="60" y="145" font-family="serif" font-size="11" fill="#2563eb">(a, f(a))</text>
+  <text x="325" y="85" font-family="serif" font-size="11" fill="#2563eb">(b, f(b))</text>
+  
+  <!-- Continuity notation -->
+  <text x="100" y="250" font-family="serif" font-size="11" fill="#64748b">continuous</text>
+  <text x="100" y="263" font-family="serif" font-size="11" fill="#64748b">from right</text>
+  
+  <text x="280" y="250" font-family="serif" font-size="11" fill="#64748b">continuous</text>
+  <text x="280" y="263" font-family="serif" font-size="11" fill="#64748b">from left</text>
+  
+  <!-- Title -->
+  <text x="200" y="30" font-family="serif" font-size="13" fill="#1e293b" text-anchor="middle" font-weight="bold">
+    f continuous on [a, b]
+  </text>
+</svg>

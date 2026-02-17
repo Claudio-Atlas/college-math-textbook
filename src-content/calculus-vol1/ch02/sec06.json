@@ -18,7 +18,7 @@
     },
     {
       "type": "paragraph",
-      "text": "In our study of limits so far, we have relied on algebraic manipulation: factoring,\nrationalizing, simplifying, and applying limit laws. These techniques are powerful,\nbut they have a boundary. Some functions resist every algebraic trick in our arsenal\n— not because they lack a limit, but because their behavior is too *wild* to\ntame by direct computation."
+      "text": "In our study of limits so far, we have relied on algebraic manipulation: factoring,\nrationalizing, simplifying, and applying limit laws. These techniques are powerful,\nbut they have a boundary. Some functions resist every algebraic trick in our arsenal\n\u2014 not because they lack a limit, but because their behavior is too *wild* to\ntame by direct computation."
     },
     {
       "type": "paragraph",
@@ -26,7 +26,7 @@
     },
     {
       "type": "paragraph",
-      "text": "This is the idea behind the *Squeeze Theorem*: if a function is pinched between\ntwo others that converge to the same value, it has no choice but to converge there too.\nThe technique is ancient — Archimedes used a version of it over two thousand years ago\nto compute the area of a circle — and it remains one of the most elegant tools in\nanalysis."
+      "text": "This is the idea behind the *Squeeze Theorem*: if a function is pinched between\ntwo others that converge to the same value, it has no choice but to converge there too.\nThe technique is ancient \u2014 Archimedes used a version of it over two thousand years ago\nto compute the area of a circle \u2014 and it remains one of the most elegant tools in\nanalysis."
     },
     {
       "type": "heading",
@@ -43,7 +43,7 @@
     },
     {
       "type": "paragraph",
-      "text": "*Geometric picture.**\nImagine two curves, $y = g(x)$ and $y = h(x)$, that both approach the height $L$ as\n$x \\to a$. The graph of $f$ is trapped between them — above $g$ and below $h$ —\nlike a narrow corridor whose ceiling and floor converge. No matter how $f$ weaves and\noscillates within this corridor, as the walls close to a single point at height $L$,\nthe function $f$ is *squeezed* to the same value."
+      "text": "*Geometric picture.**\nImagine two curves, $y = g(x)$ and $y = h(x)$, that both approach the height $L$ as\n$x \\to a$. The graph of $f$ is trapped between them \u2014 above $g$ and below $h$ \u2014\nlike a narrow corridor whose ceiling and floor converge. No matter how $f$ weaves and\noscillates within this corridor, as the walls close to a single point at height $L$,\nthe function $f$ is *squeezed* to the same value."
     },
     {
       "type": "proof",
@@ -183,7 +183,35 @@
       "id": "historical-2.6",
       "number": null,
       "title": "Archimedes of Syracuse (c.\\ 287--212 BC)",
-      "content": "The Squeeze Theorem is a modern formulation of an idea far older than calculus.\nArchimedes of Syracuse used the *method of exhaustion* — trapping a curved\narea between inscribed and circumscribed polygons — to prove that the area of a\ncircle equals $\\pi r^2$. By increasing the number of polygon sides, Archimedes\nsqueezed the polygon areas ever closer to the true area.\n\nThis was, in essence, the first limit argument in history. Two thousand years\nbefore Weierstrass formalized the $\\varepsilon$-$\\delta$ definition, Archimedes\nwas already reasoning with the same logical structure: bound the unknown quantity\nabove and below by known quantities that converge.\n\nArchimedes considered his discovery of the volume and surface area of the sphere\nto be his greatest achievement. He requested that a sphere inscribed in a cylinder\nbe carved on his tombstone — a monument to the power of squeezing the infinite\nbetween the finite."
+      "content": "The Squeeze Theorem is a modern formulation of an idea far older than calculus.\nArchimedes of Syracuse used the *method of exhaustion* \u2014 trapping a curved\narea between inscribed and circumscribed polygons \u2014 to prove that the area of a\ncircle equals $\\pi r^2$. By increasing the number of polygon sides, Archimedes\nsqueezed the polygon areas ever closer to the true area.\n\nThis was, in essence, the first limit argument in history. Two thousand years\nbefore Weierstrass formalized the $\\varepsilon$-$\\delta$ definition, Archimedes\nwas already reasoning with the same logical structure: bound the unknown quantity\nabove and below by known quantities that converge.\n\nArchimedes considered his discovery of the volume and surface area of the sphere\nto be his greatest achievement. He requested that a sphere inscribed in a cylinder\nbe carved on his tombstone \u2014 a monument to the power of squeezing the infinite\nbetween the finite."
+    },
+    {
+      "type": "figure",
+      "id": "fig-2.6.1",
+      "src": "/figures/vol1/ch02/fig-2.6.1-squeeze-theorem.svg",
+      "caption": "The Squeeze Theorem: if $g(x) \\le f(x) \\le h(x)$ and both $g, h \\to L$, then $f \\to L$.",
+      "alt": "A coordinate plane illustrating the Squeeze Theorem. Three functions are shown: g of x as the lower bound, h of x as the upper bound, and f of x squeezed between them. All three functions converge to the same limit L as x approaches a. The squeeze is indicated by the narrowing gap between the bounding functions near x equals a."
+    },
+    {
+      "type": "figure",
+      "id": "fig-2.6.2",
+      "src": "/figures/vol1/ch02/fig-2.6.2-x2-sin-squeeze.svg",
+      "caption": "Squeezing $x^2\\sin(1/x)$ between $\\pm x^2$ shows the limit is zero.",
+      "alt": "A coordinate plane showing f of x equals x squared times sine of 1 over x. The oscillating function is squeezed between the parabolas y equals x squared and y equals negative x squared. As x approaches zero, all three curves converge to zero, demonstrating that the limit is zero by the Squeeze Theorem."
+    },
+    {
+      "type": "figure",
+      "id": "fig-2.6.3",
+      "src": "/figures/vol1/ch02/fig-2.6.3-sinx-over-x-proof.svg",
+      "caption": "Geometric proof that $\\lim_{x \\to 0} \\frac{\\sin x}{x} = 1$.",
+      "alt": "A unit circle diagram used to prove that the limit of sine x over x as x approaches zero equals 1. The diagram shows a unit circle with center at the origin, a radius to a point P on the circle making angle x with the positive x-axis. The vertical segment from P to the x-axis has length sine x. A tangent line at (1, 0) intersects the extended radius at point T, creating a segment of length tangent x. The areas of the inner triangle, circular sector, and outer triangle are compared."
+    },
+    {
+      "type": "figure",
+      "id": "fig-2.6.4",
+      "src": "/figures/vol1/ch02/fig-2.6.4-sinx-over-x-graph.svg",
+      "caption": "The function $\\frac{\\sin x}{x}$ approaches $1$ as $x \\to 0$.",
+      "alt": "A coordinate plane showing the graph of f of x equals sine x divided by x. The function has a removable discontinuity at x equals zero, but the limit as x approaches zero is 1. The graph oscillates with decreasing amplitude as x moves away from zero, approaching zero as x goes to infinity."
     }
   ],
   "marginNotes": [

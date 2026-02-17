@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 340" width="420" height="340">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+    <marker id="arrowgreen" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#059669"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="420" height="340" fill="#ffffff"/>
+  
+  <!-- Axes -->
+  <line x1="50" y1="250" x2="400" y2="250" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="50" y1="260" x2="50" y2="30" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="405" y="255" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">x</text>
+  <text x="45" y="20" font-family="serif" font-size="16" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- Tick marks -->
+  <line x1="200" y1="247" x2="200" y2="253" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="195" y="268" font-family="serif" font-size="13" font-style="italic" fill="#1e293b">a</text>
+  
+  <!-- y-axis ticks for L1 and L2 -->
+  <line x1="47" y1="180" x2="53" y2="180" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="25" y="185" font-family="serif" font-size="13" fill="#1e293b">L₁</text>
+  <line x1="47" y1="100" x2="53" y2="100" stroke="#1e293b" stroke-width="1.5"/>
+  <text x="25" y="105" font-family="serif" font-size="13" fill="#1e293b">L₂</text>
+  
+  <!-- Left branch of function approaching L1 -->
+  <path d="M 60 230 Q 100 220, 130 200 Q 160 185, 195 180" 
+        stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Right branch of function approaching L2 -->
+  <path d="M 205 100 Q 240 98, 280 90 Q 320 82, 360 70" 
+        stroke="#2563eb" stroke-width="3" fill="none"/>
+  
+  <!-- Open circles at the jump -->
+  <circle cx="200" cy="180" r="5" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="200" cy="100" r="5" fill="#ffffff" stroke="#2563eb" stroke-width="2"/>
+  
+  <!-- Dashed horizontal lines for limits -->
+  <line x1="50" y1="180" x2="200" y2="180" stroke="#f97316" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="50" y1="100" x2="200" y2="100" stroke="#f97316" stroke-width="1.5" stroke-dasharray="5,3"/>
+  
+  <!-- Dashed vertical line at x = a -->
+  <line x1="200" y1="100" x2="200" y2="250" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,3"/>
+  
+  <!-- Approach arrows -->
+  <path d="M 120 205 L 165 185" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#arrowgreen)"/>
+  <path d="M 280 95 L 235 98" stroke="#059669" stroke-width="2" fill="none" marker-end="url(#arrowgreen)"/>
+  
+  <!-- Left limit annotation -->
+  <text x="70" y="160" font-family="serif" font-size="13" fill="#1e293b">lim f(x) = L₁</text>
+  <text x="70" y="145" font-family="serif" font-size="10" fill="#1e293b">x→a⁻</text>
+  
+  <!-- Right limit annotation -->
+  <text x="240" y="75" font-family="serif" font-size="13" fill="#1e293b">lim f(x) = L₂</text>
+  <text x="240" y="60" font-family="serif" font-size="10" fill="#1e293b">x→a⁺</text>
+  
+  <!-- Function label -->
+  <text x="350" y="55" font-family="serif" font-size="15" font-style="italic" fill="#2563eb">y = f(x)</text>
+  
+  <!-- Explanation -->
+  <text x="210" y="295" font-family="serif" font-size="12" fill="#1e293b" text-anchor="middle">
+    Since L₁ ≠ L₂, the two-sided limit does not exist.
+  </text>
+  <text x="210" y="315" font-family="serif" font-size="13" fill="#dc2626" text-anchor="middle">
+    lim f(x) does not exist
+  </text>
+  <text x="145" y="322" font-family="serif" font-size="10" fill="#dc2626">x→a</text>
+</svg>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" width="480" height="300">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#1e293b"/>
+    </marker>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="480" height="300" fill="#ffffff"/>
+  
+  <!-- Axes -->
+  <line x1="30" y1="150" x2="460" y2="150" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  <line x1="240" y1="280" x2="240" y2="20" stroke="#1e293b" stroke-width="2" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="465" y="155" font-family="serif" font-size="14" font-style="italic" fill="#1e293b">x</text>
+  <text x="245" y="15" font-family="serif" font-size="14" font-style="italic" fill="#1e293b">y</text>
+  
+  <!-- x-axis ticks for π values -->
+  <line x1="160" y1="147" x2="160" y2="153" stroke="#1e293b" stroke-width="1"/>
+  <text x="150" y="168" font-family="serif" font-size="10" fill="#1e293b">−π/2</text>
+  
+  <line x1="320" y1="147" x2="320" y2="153" stroke="#1e293b" stroke-width="1"/>
+  <text x="313" y="168" font-family="serif" font-size="10" fill="#1e293b">π/2</text>
+  
+  <line x1="400" y1="147" x2="400" y2="153" stroke="#1e293b" stroke-width="1"/>
+  <text x="390" y="168" font-family="serif" font-size="10" fill="#1e293b">3π/2</text>
+  
+  <line x1="80" y1="147" x2="80" y2="153" stroke="#1e293b" stroke-width="1"/>
+  <text x="75" y="168" font-family="serif" font-size="10" fill="#1e293b">−π</text>
+  
+  <!-- Vertical asymptotes -->
+  <line x1="160" y1="30" x2="160" y2="270" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="320" y1="30" x2="320" y2="270" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <line x1="400" y1="30" x2="400" y2="270" stroke="#dc2626" stroke-width="1.5" stroke-dasharray="5,3"/>
+  
+  <!-- tan(x) curves -->
+  <!-- Period 1: from -π to -π/2 -->
+  <path d="M 45 145 Q 80 140, 100 130 Q 120 110, 135 70 Q 145 45, 155 35" 
+        stroke="#2563eb" stroke-width="2.5" fill="none"/>
+  
+  <!-- Period 2: from -π/2 to π/2 -->
+  <path d="M 165 270 Q 175 230, 190 180 Q 210 155, 240 150 Q 270 145, 290 120 Q 305 80, 315 35" 
+        stroke="#2563eb" stroke-width="2.5" fill="none"/>
+  
+  <!-- Period 3: from π/2 to 3π/2 -->
+  <path d="M 325 270 Q 335 230, 350 180 Q 370 155, 360 150 Q 370 145, 385 110 Q 393 70, 397 35" 
+        stroke="#2563eb" stroke-width="2.5" fill="none"/>
+  
+  <!-- Period 4 start -->
+  <path d="M 403 270 Q 413 220, 430 170 Q 450 145, 455 140" 
+        stroke="#2563eb" stroke-width="2.5" fill="none"/>
+  
+  <!-- Function label -->
+  <text x="50" y="45" font-family="serif" font-size="14" fill="#2563eb">y = tan x</text>
+  
+  <!-- VA label -->
+  <text x="165" y="240" font-family="serif" font-size="10" fill="#dc2626">VA</text>
+  <text x="325" y="240" font-family="serif" font-size="10" fill="#dc2626">VA</text>
+  
+  <!-- Note -->
+  <text x="240" y="290" font-family="serif" font-size="11" fill="#64748b" text-anchor="middle">
+    Vertical asymptotes at x = π/2 + nπ (where cos x = 0)
+  </text>
+</svg>
