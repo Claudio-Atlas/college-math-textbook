@@ -51,12 +51,17 @@
 
 | Agent | Chapters | Sections | Status | Issues |
 |-------|----------|----------|--------|--------|
-| 1A | 1-2 | 13 | ⏳ | — |
-| 1B | 3-4 | 13 | ⏳ | — |
-| 1C | 5-6 | 13 | ⏳ | — |
+| 1A | 1-2 | 13 | 🔄 Running | — |
+| 1B | 3-4 | 13 | 🔄 Running | — |
+| 1C | 5-6 | 13 | 🔄 Running | — |
 
-**Started:** —  
+**Started:** 2026-02-17 09:53 MST  
 **Completed:** —
+
+**Session Keys:**
+- 1A: `agent:main:subagent:e296a2ce-1256-433a-84ec-ce321fc5b1e9`
+- 1B: `agent:main:subagent:073993dd-7039-4937-b06c-a0f291132e41`
+- 1C: `agent:main:subagent:420e22f2-bda9-42ad-9c0b-db4c9c321b8f`
 
 **Notes:**
 ```
@@ -184,4 +189,7 @@
   - Updated `src/pages/index.astro`
 - Ready for Wave 1
 
-**09:53** - Preparing to spawn Wave 1 sub-agents (Figure Audit)
+**09:53** - Spawned Wave 1 sub-agents (Figure Audit)
+- 1A: Chapters 1-2 → Running
+- 1B: Chapters 3-4 → Running
+- 1C: Chapters 5-6 → Running
