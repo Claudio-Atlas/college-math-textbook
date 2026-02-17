@@ -10,9 +10,20 @@
 | Asset | Status | Count |
 |-------|--------|-------|
 | Section JSONs | ✅ Complete | 39/39 |
-| TikZ → SVG Figures | ✅ Complete | 38/38 verified |
+| TikZ → SVG Figures | ⚠️ **75 MISSING** | 38/113 in JSON |
 | Dynamic Routing | ✅ Complete | All routes working |
 | Chapter QA | ⏳ Wave 2 | 0/6 |
+
+### ⚠️ CRITICAL: Figure Extraction Bug
+
+The `latex_converter.py` skips most figures:
+- **113 figures** exist in LaTeX source (with alt text!)
+- **38 figures** manually added to JSON during initial setup
+- **75 figures** never extracted (converter bugs)
+
+**Root cause:** TikZ figures `return None`, `\input{figures/...}` not followed.
+
+**Solution:** Wave 1.5 — write extraction script before QA.
 
 ---
 
