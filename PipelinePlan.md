@@ -13,8 +13,8 @@
 | Wave 0: Infrastructure | ✅ COMPLETE | 2026-02-17 09:52 MST |
 | Wave 1: Figure Audit | ✅ COMPLETE | 2026-02-17 09:56 MST |
 | Wave 1.5: Extract Figs to JSON | ✅ COMPLETE | 2026-02-17 10:15 MST |
-| **Wave 1.6: Generate SVGs Ch3-6** | ⏳ **NEXT** | — |
-| Wave 2: Chapter QA | ⏳ Pending | — |
+| Wave 1.6: Generate SVGs Ch3-6 | ✅ COMPLETE | 2026-02-17 10:30 MST |
+| **Wave 2: Chapter QA** | ⏳ **READY** | — |
 | Wave 3: Fixes | ⏳ Pending | — |
 | Wave 4: Final Review | ⏳ Pending | — |
 
@@ -103,13 +103,32 @@
 |---------|-----------------|----------------|
 | Ch 1 | 18 (manual) | 18 ✅ |
 | Ch 2 | 47 | 47 ✅ |
-| Ch 3 | 8 | 0 ⚠️ |
-| Ch 4 | 3 | 0 ⚠️ |
-| Ch 5 | 6 | 0 ⚠️ |
-| Ch 6 | 7 | 0 ⚠️ |
-| **Total** | **89** | **65** |
+| Ch 3 | 8 | 8 ✅ |
+| Ch 4 | 3 | 3 ✅ |
+| Ch 5 | 6 | 6 ✅ |
+| Ch 6 | 7 | 7 ✅ |
+| **Total** | **89** | **89** ✅ |
 
-**Next:** Generate TikZ → SVG for Chapters 3-6 (24 figures)
+---
+
+## Wave 1.6: Compile TikZ → SVG (Orchestrator)
+
+**Goal:** Generate SVG files for chapters 3-6 TikZ figures
+
+**Status:** ✅ COMPLETE (2026-02-17 10:30 MST)
+
+**Results:**
+- [x] Created `pipeline/compile_tikz_figures.py`
+- [x] Compiled 24 TikZ figures to SVG using pdflatex + pdf2svg
+
+| Chapter | Figures | Status |
+|---------|---------|--------|
+| Ch 3 | 8 | ✅ |
+| Ch 4 | 3 | ✅ |
+| Ch 5 | 6 | ✅ |
+| Ch 6 | 7 | ✅ |
+
+**All 89 figures now have SVG files!**
 
 ---
 
