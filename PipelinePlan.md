@@ -12,6 +12,7 @@
 |------|--------|-----------|
 | Wave 0: Infrastructure | ✅ COMPLETE | 2026-02-17 09:52 MST |
 | Wave 1: Figure Audit | ✅ COMPLETE | 2026-02-17 09:56 MST |
+| **Wave 1.5: Extract 75 Missing Figs** | ⏳ **NEXT** | — |
 | Wave 2: Chapter QA | ⏳ Pending | — |
 | Wave 3: Fixes | ⏳ Pending | — |
 | Wave 4: Final Review | ⏳ Pending | — |
@@ -60,14 +61,48 @@
 **Completed:** 2026-02-17 09:56 MST
 
 **Results:**
-- All 38 figures across Vol 1 exist in correct locations
-- No missing or broken figure references
-- Chapter 2 has no figures (text/math only) - this is by design
+- 38 figures in JSON have matching SVGs ✅
+- **BUT: 75 figures MISSING from JSON entirely!**
+
+### ⚠️ CRITICAL: Converter Bug Discovered
+
+| Source | Count |
+|--------|-------|
+| LaTeX source figures | **113** (with alt text!) |
+| JSON figures | 38 (manually added) |
+| **MISSING** | **75** |
+
+**Root cause:** `latex_converter.py` bugs:
+- Line 476: TikZ figures explicitly `return None`
+- `\input{figures/...}` external refs not followed
+- `_parse_figure()` only handles `\includegraphics`
+
+**Next step:** Write extraction script before Wave 2
 
 **Notes:**
 ```
 (Will update after Wave 1)
 ```
+
+---
+
+## Wave 1.5: Figure Extraction Script (Orchestrator)
+
+**Goal:** Extract the 75 missing figures from LaTeX to JSON
+
+**Status:** ⏳ NEXT
+
+**Tasks:**
+- [ ] Write `pipeline/extract_missing_figures.py` script
+- [ ] Scan all LaTeX for `\input{...figures/fig-...}` references
+- [ ] Parse each figure `.tex` file for `\caption{}`, `\label{}`, `\Description{}`
+- [ ] Generate SVG paths using naming convention
+- [ ] Insert figure blocks into corresponding section JSONs
+- [ ] Run TikZ → SVG extraction for new figures
+- [ ] Verify all 113 figures now in JSON
+
+**Started:** —  
+**Completed:** —
 
 ---
 
