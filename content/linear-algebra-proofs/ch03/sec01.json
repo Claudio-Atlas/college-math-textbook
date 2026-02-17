@@ -1,0 +1,165 @@
+{
+  "id": "linear-algebra-proofs-ch03-sec01",
+  "title": "Definition and Examples",
+  "chapter": 3,
+  "section": 1,
+  "book": "linear-algebra-proofs",
+  "content": [
+    {
+      "type": "definition",
+      "id": "definition-3.1",
+      "number": "3.1",
+      "title": "Linear Transformation",
+      "content": "Let $V$ and $W$ be vector spaces over the same field $\\FF$. A function \n$T: V \\to W$ is a **linear transformation** \n(or **linear map**) if:\n\n1. **Additivity:** $T(u + v) = T(u) + T(v)$ for all $u, v \\in V$\n\n2. **Homogeneity:** $T(\\alpha v) = \\alpha T(v)$ for all $\\alpha \\in \\FF$, $v \\in V$\n\nEquivalently, $T(\\alpha u + \\beta v) = \\alpha T(u) + \\beta T(v)$ for all \nscalars $\\alpha, \\beta$ and vectors $u, v$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "Basic Properties",
+      "content": "Let $T: V \\to W$ be linear. Then:\n\n1. $T(0) = 0$\n\n2. $T(-v) = -T(v)$ for all $v \\in V$\n\n3. $T(\\alpha_1 v_1 + \\cdots + \\alpha_n v_n) = \\alpha_1 T(v_1) + \\cdots + \\alpha_n T(v_n)$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(a) $T(0) = T(0 \\cdot 0) = 0 \\cdot T(0) = 0$.\n\n(b) $T(-v) = T((-1)v) = (-1)T(v) = -T(v)$.\n\n(c) By induction using additivity and homogeneity."
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Zero and Identity Maps",
+      "problem": "For any vector spaces $V, W$:\n\n- The **zero map** $0: V \\to W$ defined by $0(v) = 0$ is linear.\n\n- The **identity map** $I: V \\to V$ defined by $I(v) = v$ is linear.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Differentiation",
+      "problem": "The derivative $D: \\mathcal{P}(\\RR) \\to \\mathcal{P}(\\RR)$ defined by \n$D(p) = p'$ is linear:\n\\[\nD(p + q) = (p + q)' = p' + q' = D(p) + D(q)\n\\]\n\\[\nD(\\alpha p) = (\\alpha p)' = \\alpha p' = \\alpha D(p)\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-3.3",
+      "number": "3.3",
+      "title": "Integration",
+      "problem": "The definite integral $T: C([0,1]) \\to \\RR$ defined by \n$T(f) = \\int_0^1 f(x)\\, dx$ is linear.",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.2",
+      "number": "3.2",
+      "title": "Determined by Basis",
+      "content": "Let $(v_1, \\ldots, v_n)$ be a basis for $V$, and let $w_1, \\ldots, w_n$ \nbe any vectors in $W$. Then there exists a unique linear transformation \n$T: V \\to W$ such that $T(v_i) = w_i$ for $i = 1, \\ldots, n$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "*Existence:* Define $T(\\alpha_1 v_1 + \\cdots + \\alpha_n v_n) = \\alpha_1 w_1 + \\cdots + \\alpha_n w_n$. \nThis is well-defined since every vector has a unique representation \nin the basis. Linearity follows directly from the definition.\n\n*Uniqueness:* If $S$ also satisfies $S(v_i) = w_i$, then for any \n$v = \\sum \\alpha_i v_i$:\n\\[\nS(v) = S\\left(\\sum \\alpha_i v_i\\right) = \\sum \\alpha_i S(v_i) = \\sum \\alpha_i w_i = T(v). \\qedhere\n\\]"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.2",
+      "number": "3.2",
+      "title": "Kernel and Image",
+      "content": "Let $T: V \\to W$ be a linear transformation.\n\n- The **kernel** (or **null space**) of $T$ is\n\\[\n\\ker(T) = \\{v \\in V : T(v) = 0\\}\n\\]\n\n- The **image** (or **range**) of $T$ is\n\\[\n\\im(T) = \\{T(v) : v \\in V\\} = \\{w \\in W : w = T(v) \\text{ for some } v \\in V\\}\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.3",
+      "number": "3.3",
+      "title": "Kernel and Image are Subspaces",
+      "content": "For any linear $T: V \\to W$:\n\n1. $\\ker(T)$ is a subspace of $V$\n\n2. $\\im(T)$ is a subspace of $W$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(a) Since $T(0) = 0$, we have $0 \\in \\ker(T)$. If $u, v \\in \\ker(T)$ \nand $\\alpha, \\beta \\in \\FF$, then\n\\[\nT(\\alpha u + \\beta v) = \\alpha T(u) + \\beta T(v) = \\alpha \\cdot 0 + \\beta \\cdot 0 = 0\n\\]\nso $\\alpha u + \\beta v \\in \\ker(T)$.\n\n(b) Since $T(0) = 0$, we have $0 \\in \\im(T)$. If $w_1, w_2 \\in \\im(T)$, \nsay $w_i = T(v_i)$, then\n\\[\n\\alpha w_1 + \\beta w_2 = \\alpha T(v_1) + \\beta T(v_2) = T(\\alpha v_1 + \\beta v_2) \\in \\im(T). \\qedhere\n\\]"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.3",
+      "number": "3.3",
+      "title": "Rank and Nullity",
+      "content": "For a linear transformation $T: V \\to W$:\n\n- The **nullity** of $T$ is $\\nullity(T) = \\dim(\\ker(T))$\n\n- The **rank** of $T$ is $\\rank(T) = \\dim(\\im(T))$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.4",
+      "number": "3.4",
+      "title": "Rank-Nullity Theorem",
+      "content": "Let $T: V \\to W$ be a linear transformation with $V$ finite-dimensional. Then\n\\[\n\\dim V = \\nullity(T) + \\rank(T)\n\\]\nor equivalently, $\\dim V = \\dim(\\ker T) + \\dim(\\im T)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $n = \\dim V$ and $k = \\dim(\\ker T)$. Let $(u_1, \\ldots, u_k)$ be a \nbasis for $\\ker T$. Extend to a basis $(u_1, \\ldots, u_k, v_1, \\ldots, v_m)$ \nfor $V$, where $m = n - k$.\n\nWe claim $(T(v_1), \\ldots, T(v_m))$ is a basis for $\\im T$.\n\n*Spanning:* Let $w \\in \\im T$, say $w = T(x)$ for some $x \\in V$. \nWrite $x = \\sum_{i=1}^k \\alpha_i u_i + \\sum_{j=1}^m \\beta_j v_j$. Then\n\\[\nw = T(x) = \\sum \\alpha_i T(u_i) + \\sum \\beta_j T(v_j) = \\sum \\beta_j T(v_j)\n\\]\nsince $T(u_i) = 0$.\n\n*Independence:* Suppose $\\sum_{j=1}^m \\gamma_j T(v_j) = 0$. Then \n$T(\\sum \\gamma_j v_j) = 0$, so $\\sum \\gamma_j v_j \\in \\ker T$. Thus\n\\[\n\\sum_{j=1}^m \\gamma_j v_j = \\sum_{i=1}^k \\delta_i u_i\n\\]\nfor some scalars $\\delta_i$. Rearranging: \n$\\sum \\delta_i u_i - \\sum \\gamma_j v_j = 0$. By independence of the \nfull basis, all $\\delta_i = 0$ and all $\\gamma_j = 0$.\n\nThus $\\rank(T) = m = n - k = \\dim V - \\nullity(T)$."
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-3.1",
+      "number": "3.1",
+      "title": "Injectivity Criterion",
+      "content": "A linear map $T: V \\to W$ is injective if and only if $\\ker(T) = \\{0\\}$.",
+      "label": "Corollary"
+    },
+    {
+      "type": "proof",
+      "content": "$T$ is injective iff $T(u) = T(v) \\Rightarrow u = v$ iff \n$T(u - v) = 0 \\Rightarrow u - v = 0$ iff $\\ker(T) = \\{0\\}$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.4",
+      "number": "3.4",
+      "title": "Isomorphism",
+      "content": "A linear transformation $T: V \\to W$ is an **isomorphism** \nif it is bijective (both injective and surjective).\n\nTwo vector spaces are **isomorphic**, written \n$V \\cong W$, if there exists an isomorphism between them."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.5",
+      "number": "3.5",
+      "title": "Isomorphism Inverse",
+      "content": "If $T: V \\to W$ is an isomorphism, then $T^{-1}: W \\to V$ is also \nan isomorphism.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$T^{-1}$ is bijective since $T$ is. For linearity, let $w_1, w_2 \\in W$ \nand $\\alpha, \\beta \\in \\FF$. Let $v_i = T^{-1}(w_i)$. Then\n$$\nT^{-1}(\\alpha w_1 + \\beta w_2) &= T^{-1}(\\alpha T(v_1) + \\beta T(v_2)) \\\\\n&= T^{-1}(T(\\alpha v_1 + \\beta v_2)) \\\\\n&= \\alpha v_1 + \\beta v_2 \\\\\n&= \\alpha T^{-1}(w_1) + \\beta T^{-1}(w_2). \\qedhere\n$$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.6",
+      "number": "3.6",
+      "title": "Dimension and Isomorphism",
+      "content": "Two finite-dimensional vector spaces over $\\FF$ are isomorphic if and \nonly if they have the same dimension.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "($\\Rightarrow$) If $T: V \\to W$ is an isomorphism and $(v_1, \\ldots, v_n)$ \nis a basis for $V$, then $(T(v_1), \\ldots, T(v_n))$ is a basis for $W$. \n(Injectivity gives independence; surjectivity gives spanning.)\n\n($\\Leftarrow$) If $\\dim V = \\dim W = n$, let $(v_1, \\ldots, v_n)$ and \n$(w_1, \\ldots, w_n)$ be bases. Define $T(v_i) = w_i$ and extend linearly. \nThen $T$ is an isomorphism."
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-3.2",
+      "number": "3.2",
+      "title": "Classification of Finite-Dimensional Spaces",
+      "content": "Every $n$-dimensional vector space over $\\FF$ is isomorphic to $\\FF^n$.",
+      "label": "Corollary"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.7",
+      "number": "3.7",
+      "title": "Space of Linear Maps",
+      "content": "$\\mathcal{L}(V, W)$ is a vector space under pointwise operations:\n\\[\n(S + T)(v) = S(v) + T(v), \\qquad (\\alpha T)(v) = \\alpha \\cdot T(v)\n\\]\nIf $\\dim V = n$ and $\\dim W = m$, then $\\dim \\mathcal{L}(V, W) = mn$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Verification of vector space axioms is routine.\n\nFor dimension: fix bases of $V$ and $W$. By Theorem [thm:determined-by-basis], \na linear map is determined by its values on the $n$ basis vectors of $V$, \neach of which can be any of the $m$-dimensional vectors in $W$. This \ngives an isomorphism $\\mathcal{L}(V, W) \\cong M_{m \\times n}(\\FF)$."
+    }
+  ]
+}

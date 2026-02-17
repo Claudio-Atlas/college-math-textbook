@@ -1,0 +1,112 @@
+{
+  "id": "abstract-algebra-ch06-sec03",
+  "title": "The Isomorphism Theorems",
+  "chapter": 6,
+  "section": 3,
+  "book": "abstract-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"So we, though many, are one body in Christ, and \nindividually members one of another.\"*{Romans 12:5}{*\"The isomorphism theorems reveal that $G/\\ker\\phi \\cong \\mathrm{im}\\,\\phi$—form follows function.\"*}{Emmy Noether}\n\n*\"The isomorphism theorems are the Rosetta Stone of group theory.\"*{— Mathematical folklore}"
+    },
+    {
+      "type": "paragraph",
+      "text": "The isomorphism theorems are the crown jewels of basic group theory. \nThey reveal deep relationships between quotients, subgroups, and \nhomomorphisms, providing powerful tools for analyzing group structure."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The First Isomorphism Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "First Isomorphism Theorem",
+      "content": "Let $\\phi: G \\to H$ be a group homomorphism. Then:\n\\[\n G/\\ker(\\phi) \\cong \\text{Im}(\\phi)\n\\]\nMore precisely, the map $\\bar{\\phi}: G/\\ker(\\phi) \\to \\text{Im}(\\phi)$ \ndefined by $\\bar{\\phi}(g\\ker(\\phi)) = \\phi(g)$ is an isomorphism.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $K = \\ker(\\phi)$.\n\n**Well-defined:** If $aK = bK$, then $b^{-1}a \\in K$, so \n$\\phi(b^{-1}a) = e_H$, hence $\\phi(a) = \\phi(b)$.\n\n**Homomorphism:** $\\bar{\\phi}(aK \\cdot bK) = \\bar{\\phi}((ab)K) = \n\\phi(ab) = \\phi(a)\\phi(b) = \\bar{\\phi}(aK)\\bar{\\phi}(bK)$.\n\n**Injective:** If $\\bar{\\phi}(aK) = e_H$, then $\\phi(a) = e_H$, \nso $a \\in K$, hence $aK = K$.\n\n**Surjective:** For any $\\phi(g) \\in \\text{Im}(\\phi)$, we have \n$\\bar{\\phi}(gK) = \\phi(g)$."
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Applying the First Isomorphism Theorem",
+      "problem": "The determinant map $\\det: GL_n(\\R) \\to \\R^*$ has kernel $SL_n(\\R)$. \nSince $\\det$ is surjective onto $\\R^*$:\n\\[\n GL_n(\\R)/SL_n(\\R) \\cong \\R^*\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Second Isomorphism Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Second Isomorphism Theorem",
+      "content": "Let $H \\leq G$ and $N \\trianglelefteq G$. Then:\n\n1. $HN = \\{hn : h \\in H, n \\in N\\}$ is a subgroup of $G$\n\n2. $H \\cap N \\trianglelefteq H$\n\n3. $HN/N \\cong H/(H \\cap N)$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Define $\\phi: H \\to HN/N$ by $\\phi(h) = hN$. This is a homomorphism. \nIts kernel is $\\{h \\in H : hN = N\\} = H \\cap N$. Since $\\phi$ is \nsurjective onto $HN/N$, the First Isomorphism Theorem gives the result."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Third Isomorphism Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.3",
+      "number": "6.3",
+      "title": "Third Isomorphism Theorem",
+      "content": "Let $N \\trianglelefteq G$ and $K \\trianglelefteq G$ with $N \\leq K$. Then:\n\\[\n (G/N)/(K/N) \\cong G/K\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Define $\\phi: G/N \\to G/K$ by $\\phi(gN) = gK$. This is a well-defined \nsurjective homomorphism with kernel $K/N$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Correspondence Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.4",
+      "number": "6.4",
+      "title": "Correspondence Theorem (Fourth Isomorphism Theorem)",
+      "content": "Let $N \\trianglelefteq G$. There is a bijection between:\n\n- Subgroups of $G$ containing $N$\n\n- Subgroups of $G/N$\ngiven by $H \\mapsto H/N$ (where $N \\leq H \\leq G$). This bijection \npreserves normality, indices, and containment.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Use the First Isomorphism Theorem to prove $\\Z/n\\Z \\cong \\Z_n$.",
+        "Show that $S_n/A_n \\cong \\Z_2$.",
+        "Apply the Second Isomorphism Theorem with $H = \\langle (1\\ 2) \n \\rangle$ and $N = A_3$ in $S_3$.",
+        "Use the Third Isomorphism Theorem to show \n $(\\Z/6\\Z)/(\\langle 2 \\rangle/6\\Z) \\cong \\Z/\\langle 2 \\rangle \n \\cong \\Z_2$.",
+        "List all subgroups of $\\Z_{12}/\\langle 4 \\rangle$ and identify \n the corresponding subgroups of $\\Z_{12}$."
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 12:12",
+      "text": "For just as the body is one and \nhas many members, and all the members of the body, though many, are \none body, so it is with Christ."
+    }
+  ]
+}

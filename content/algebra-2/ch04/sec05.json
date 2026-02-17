@@ -1,0 +1,185 @@
+{
+  "id": "algebra-2-ch04-sec05",
+  "title": "Graphing Polynomial Functions",
+  "chapter": 4,
+  "section": 5,
+  "book": "algebra-2",
+  "epigraph": {
+    "text": "For everything there is a season, and a time for every \nmatter under heaven.",
+    "reference": "Ecclesiastes 3:1"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The graph of a polynomial tells its story visually: where it crosses \naxes, how it rises and falls, where it turns around. Understanding these \nfeatures helps us sketch accurate graphs and interpret real-world models."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "End Behavior"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "End Behavior",
+      "content": "The **end behavior** of a polynomial describes \nwhat happens to $f(x)$ as $x \\to \\infty$ and as $x \\to -\\infty$."
+    },
+    {
+      "type": "paragraph",
+      "text": "End behavior depends on the degree and leading coefficient:"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Degree**",
+        "**Leading Coeff.**",
+        "**End Behavior**"
+      ],
+      "rows": [
+        [
+          "Even",
+          "Positive",
+          "$\\uparrow \\uparrow$ (both ends up)"
+        ],
+        [
+          "Even",
+          "Negative",
+          "$\\downarrow \\downarrow$ (both ends down)"
+        ],
+        [
+          "Odd",
+          "Positive",
+          "$\\downarrow \\uparrow$ (left down, right up)"
+        ],
+        [
+          "Odd",
+          "Negative",
+          "$\\uparrow \\downarrow$ (left up, right down)"
+        ]
+      ],
+      "alignment": [
+        "center",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Determining end behavior",
+      "problem": "Describe the end behavior of each polynomial:\n\n(a) $f(x) = 2x^4 - 3x^2 + 1$ (b) $g(x) = -x^3 + 4x$ \n(c) $h(x) = -2x^6 + x^4$",
+      "solution": "(a) Degree 4 (even), leading coefficient 2 (positive): both ends up\n\\[\n \\text{As } x \\to -\\infty, f(x) \\to \\infty; \\quad \\text{as } x \\to \\infty, f(x) \\to \\infty\n\\]\n\n(b) Degree 3 (odd), leading coefficient $-1$ (negative): left up, right down\n\\[\n \\text{As } x \\to -\\infty, g(x) \\to \\infty; \\quad \\text{as } x \\to \\infty, g(x) \\to -\\infty\n\\]\n\n(c) Degree 6 (even), leading coefficient $-2$ (negative): both ends down\n\\[\n \\text{As } x \\to -\\infty, h(x) \\to -\\infty; \\quad \\text{as } x \\to \\infty, h(x) \\to -\\infty\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Finding Intercepts"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **$y$-intercept** is $f(0)$—substitute $x = 0$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The **$x$-intercepts** are the zeros—solve $f(x) = 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "Finding intercepts",
+      "problem": "Find all intercepts of $f(x) = x^3 - 4x^2 - 4x + 16$.",
+      "solution": "**$y$-intercept:** $f(0) = 16$, so the $y$-intercept is $(0, 16)$.\n\n**$x$-intercepts:** Solve $x^3 - 4x^2 - 4x + 16 = 0$\n\nFactor by grouping:\n\\[\n x^2(x - 4) - 4(x - 4) = (x - 4)(x^2 - 4) = (x - 4)(x + 2)(x - 2)\n\\]\n\n$x$-intercepts: $(-2, 0)$, $(2, 0)$, $(4, 0)$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Turning Points"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **turning point** is where the graph changes from increasing to \ndecreasing or vice versa. A polynomial of degree $n$ has at most $n - 1$ \nturning points."
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": "Counting turning points",
+      "problem": "What is the maximum number of turning points for:\n\n(a) $f(x) = x^4 - 3x^2 + 1$ (b) $g(x) = 2x^5 - x^3 + x$",
+      "solution": "(a) Degree 4: at most $4 - 1 = 3$ turning points\n\n(b) Degree 5: at most $5 - 1 = 4$ turning points"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Behavior at Zeros"
+    },
+    {
+      "type": "paragraph",
+      "text": "The graph's behavior at each zero depends on its multiplicity:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Multiplicity 1:** Graph crosses the $x$-axis",
+        "**Multiplicity 2:** Graph touches and bounces off",
+        "**Multiplicity 3:** Graph crosses with an inflection point",
+        "**Even multiplicity:** Touch and turn around",
+        "**Odd multiplicity:** Cross through"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-4.4",
+      "number": "4.4",
+      "title": "Analyzing behavior at zeros",
+      "problem": "Describe the behavior at each zero of $f(x) = (x + 2)^2(x - 1)^3(x - 4)$.",
+      "solution": "- At $x = -2$ (multiplicity 2): touches and bounces\n\n- At $x = 1$ (multiplicity 3): crosses with flattening\n\n- At $x = 4$ (multiplicity 1): crosses normally\nTotal degree: $2 + 3 + 1 = 6$ (even), so both ends go the same direction.\n\nLeading coefficient is positive (multiply leading terms: $1 \\cdot 1 \\cdot 1 = 1$), \nso both ends point up."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Graphing Strategy"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-4.5",
+      "number": null,
+      "title": "Graphing a Polynomial",
+      "content": "1. Find the degree and leading coefficient (determines end behavior)\n\n2. Find the $y$-intercept: evaluate $f(0)$\n\n3. Find the $x$-intercepts (zeros) and their multiplicities\n\n4. Plot key points and additional points as needed\n\n5. Connect with a smooth curve, respecting:\n itemize\n\n6. End behavior\n\n7. Behavior at each zero (cross vs. touch)\n\n8. Maximum number of turning points\n itemize"
+    },
+    {
+      "type": "example",
+      "id": "example-4.5",
+      "number": "4.5",
+      "title": "Complete graphing analysis",
+      "problem": "Sketch the graph of $f(x) = -x^3 + 4x$.",
+      "solution": "**1. End behavior:** Degree 3 (odd), leading coefficient $-1$ (negative)\n\nAs $x \\to -\\infty$, $f(x) \\to \\infty$; as $x \\to \\infty$, $f(x) \\to -\\infty$\n\n**2. $y$-intercept:** $f(0) = 0$, point $(0, 0)$\n\n**3. $x$-intercepts:** $-x^3 + 4x = 0$\n\\[\n -x(x^2 - 4) = -x(x + 2)(x - 2) = 0\n\\]\nZeros: $x = -2, 0, 2$ (all multiplicity 1, so graph crosses at each)\n\n**4. Additional points:**\n\n- $f(-1) = -(-1) + 4(-1) = 1 - 4 = -3$\n\n- $f(1) = -(1) + 4(1) = -1 + 4 = 3$\n\n**5. Turning points:** At most 2 turning points.\n\nThe graph rises from left, crosses at $(-2, 0)$, rises to a local max \nnear $x = -1.15$, falls through $(0, 0)$, continues to a local min near \n$x = 1.15$, then crosses at $(2, 0)$ and falls to the right."
+    },
+    {
+      "type": "example",
+      "id": "example-4.6",
+      "number": "4.6",
+      "title": "Polynomial with repeated zeros",
+      "problem": "Sketch $f(x) = (x + 1)^2(x - 2)$.",
+      "solution": "**1. End behavior:** Degree 3, leading coefficient 1 (positive)\n\nAs $x \\to -\\infty$, $f(x) \\to -\\infty$; as $x \\to \\infty$, $f(x) \\to \\infty$\n\n**2. $y$-intercept:** $f(0) = (1)^2(-2) = -2$, point $(0, -2)$\n\n**3. Zeros:**\n\n- $x = -1$ (multiplicity 2): touches and bounces\n\n- $x = 2$ (multiplicity 1): crosses\n\n**4. Additional points:**\n\n- $f(-2) = (-1)^2(-4) = -4$\n\n- $f(1) = (2)^2(-1) = -4$\n\n- $f(3) = (4)^2(1) = 16$\n\nThe graph rises from left, touches at $(-1, 0)$ and bounces, falls \nthrough $(0, -2)$, crosses at $(2, 0)$, and rises to the right."
+    },
+    {
+      "type": "example",
+      "id": "example-4.7",
+      "number": "4.7",
+      "title": "Higher degree polynomial",
+      "problem": "Analyze and sketch $f(x) = x^4 - 4x^2$.",
+      "solution": "**1. End behavior:** Degree 4 (even), leading coefficient 1 (positive)\n\nBoth ends point up.\n\n**2. $y$-intercept:** $f(0) = 0$\n\n**3. Factor:** $f(x) = x^2(x^2 - 4) = x^2(x + 2)(x - 2)$\n\nZeros: $x = 0$ (mult. 2), $x = -2$ (mult. 1), $x = 2$ (mult. 1)\n\n**4. Behavior:**\n\n- At $x = -2$: crosses\n\n- At $x = 0$: touches and bounces\n\n- At $x = 2$: crosses\n\n**5. Additional points:**\n\n- $f(-1) = 1 - 4 = -3$\n\n- $f(1) = 1 - 4 = -3$\n\nThe graph comes from up on the left, crosses at $(-2, 0)$, dips to a \nlocal min around $(-1.4, -4)$, rises to touch $(0, 0)$, dips to another \nlocal min around $(1.4, -4)$, crosses at $(2, 0)$, and rises to the right."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 19:1",
+      "text": "The heavens declare the glory of God; the \nskies proclaim the work of His hands."
+    }
+  ]
+}

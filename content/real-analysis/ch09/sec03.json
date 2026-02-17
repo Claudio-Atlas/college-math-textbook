@@ -1,0 +1,61 @@
+{
+  "id": "real-analysis-ch09-sec03",
+  "title": "The Contraction Mapping Principle",
+  "chapter": 9,
+  "section": 3,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Fixed Point Theorems"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Contraction",
+      "content": "A function $f: X \\to X$ on a metric space $(X, d)$ is a **contraction** \n(or *contraction mapping*) if there exists $0 \\leq c < 1$ such that\n\\[\nd(f(x), f(y)) \\leq c \\cdot d(x, y) \\quad \\text{for all } x, y \\in X.\n\\]\nThe constant $c$ is called the **contraction constant**."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Banach Fixed Point Theorem",
+      "content": "Let $(X, d)$ be a complete metric space and $f: X \\to X$ a contraction \nwith constant $c$. Then:\n\n1. $f$ has a unique fixed point $x^* \\in X$ (i.e., $f(x^*) = x^*$).\n\n2. For any $x_0 \\in X$, the sequence $x_n = f(x_{n-1})$ converges to $x^*$.\n\n3. $d(x_n, x^*) \\leq \\frac{c^n}{1 - c} d(x_0, x_1)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "**Existence:** Let $x_0 \\in X$ be arbitrary and define $x_n = f(x_{n-1})$.\n\nWe have $d(x_{n+1}, x_n) = d(f(x_n), f(x_{n-1})) \\leq c \\cdot d(x_n, x_{n-1})$.\n\nBy induction: $d(x_{n+1}, x_n) \\leq c^n d(x_1, x_0)$.\n\nFor $m > n$:\n$$\nd(x_m, x_n) &\\leq \\sum_{k=n}^{m-1} d(x_{k+1}, x_k) \\leq \\sum_{k=n}^{m-1} c^k d(x_1, x_0) \\\\\n&\\leq \\frac{c^n}{1 - c} d(x_1, x_0) \\to 0.\n$$\nThus $(x_n)$ is Cauchy. Since $X$ is complete, $x_n \\to x^*$ for some $x^* \\in X$.\n\nSince $f$ is continuous (contractions are Lipschitz): \n$f(x^*) = f(\\lim x_n) = \\lim f(x_n) = \\lim x_{n+1} = x^*$.\n\n**Uniqueness:** If $f(x^*) = x^*$ and $f(y^*) = y^*$, then \n$d(x^*, y^*) = d(f(x^*), f(y^*)) \\leq c \\cdot d(x^*, y^*)$. Since $c < 1$, \nthis implies $d(x^*, y^*) = 0$, so $x^* = y^*$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications"
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Existence and Uniqueness for ODEs",
+      "problem": "Consider the IVP: $y' = f(x, y)$, $y(x_0) = y_0$, where $f$ is Lipschitz \nin $y$. Define $T(y)(x) = y_0 + \\int_{x_0}^x f(t, y(t))\\,dt$.\n\nOn an appropriate space of continuous functions with supremum metric, \n$T$ is a contraction for $x$ near $x_0$. The fixed point is the solution.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Newton's Method",
+      "problem": "Finding $\\sqrt{2}$: iterate $f(x) = \\frac{1}{2}\\left(x + \\frac{2}{x}\\right)$.\n\nNear $\\sqrt{2}$, this is a contraction, so iterations converge rapidly.",
+      "solution": ""
+    },
+    {
+      "type": "historical",
+      "id": "historical-9.3",
+      "number": null,
+      "title": "Stefan Banach (1892--1945)",
+      "content": "The Polish mathematician Stefan Banach is considered one of the founders \nof functional analysis. His 1922 thesis introduced the spaces now bearing \nhis name and proved the contraction mapping theorem. Despite working under \nNazi occupation, he continued his research until his death in 1945."
+    }
+  ]
+}

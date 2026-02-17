@@ -1,0 +1,161 @@
+{
+  "id": "diff-eq-ch02-sec05",
+  "title": "Substitution Methods",
+  "chapter": 2,
+  "section": 5,
+  "book": "diff-eq",
+  "objectives": [
+    "Recognize homogeneous equations and apply the substitution $v = y/x$",
+    "Transform Bernoulli equations into linear equations",
+    "Use substitutions to convert equations to separable or linear form",
+    "Develop problem-solving intuition for choosing appropriate substitutions"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Homogeneous Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "The term \"homogeneous\" has several meanings in differential equations. Here we use it in a specific sense related to the algebraic structure of the equation."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Homogeneous Function",
+      "content": "A function $f(x,y)$ is **homogeneous of degree $n$** if for all $t > 0$:\n\\[\nf(tx, ty) = t^n f(x, y)\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Testing for Homogeneity",
+      "problem": "1. $f(x,y) = x^2 + xy + y^2$ is homogeneous of degree 2:\n \\[\n f(tx, ty) = (tx)^2 + (tx)(ty) + (ty)^2 = t^2(x^2 + xy + y^2) = t^2 f(x,y)\n \\]\n\n2. $f(x,y) = \\sqrt{x^2 + y^2}$ is homogeneous of degree 1:\n \\[\n f(tx, ty) = \\sqrt{t^2x^2 + t^2y^2} = |t|\\sqrt{x^2 + y^2} = t\\,f(x,y) \\text{ for } t > 0\n \\]\n\n3. $f(x,y) = x + y + 1$ is **not** homogeneous:\n \\[\n f(tx, ty) = tx + ty + 1 \\neq t^n(x + y + 1) \\text{ for any } n\n \\]\n\n4. $f(x,y) = \\frac{y}{x} + \\frac{x}{y}$ is homogeneous of degree 0:\n \\[\n f(tx, ty) = \\frac{ty}{tx} + \\frac{tx}{ty} = \\frac{y}{x} + \\frac{x}{y} = t^0 f(x,y)\n \\]",
+      "solution": ""
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "Homogeneous Differential Equation",
+      "content": "A first-order differential equation is **homogeneous** if it can be written as:\n\\[\n\\frac{dy}{dx} = F\\left(\\frac{y}{x}\\right)\n\\]\nwhere $F$ is a function of the single variable $y/x$.\n\nEquivalently, $\\frac{dy}{dx} = \\frac{M(x,y)}{N(x,y)}$ is homogeneous if $M$ and $N$ are both homogeneous of the same degree."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Solving Homogeneous Equations",
+      "content": "For a homogeneous equation $\\displaystyle\\frac{dy}{dx} = F\\left(\\frac{y}{x}\\right)$, the substitution $v = \\frac{y}{x}$ (so $y = vx$) transforms it into a separable equation.",
+      "label": "Theorem"
+    },
+    {
+      "type": "method",
+      "id": "method-2.5",
+      "number": null,
+      "title": "The Substitution $v = y/x$",
+      "content": "1. Substitute $y = vx$, so $\\displaystyle\\frac{dy}{dx} = v + x\\frac{dv}{dx}$\n\n2. The equation becomes $v + x\\frac{dv}{dx} = F(v)$\n\n3. Separate: $\\displaystyle\\frac{dv}{F(v) - v} = \\frac{dx}{x}$\n\n4. Integrate and substitute back $v = y/x$"
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Solving a Homogeneous Equation",
+      "problem": "Solve $\\displaystyle\\frac{dy}{dx} = \\frac{x^2 + y^2}{xy}$.\n\n**Solution.**\n\n**Step 1: Verify homogeneity.**\n\nBoth $x^2 + y^2$ and $xy$ are homogeneous of degree 2, so the equation is homogeneous. We can write:\n\\[\n\\frac{dy}{dx} = \\frac{x^2 + y^2}{xy} = \\frac{x}{y} + \\frac{y}{x} = \\frac{1}{y/x} + \\frac{y}{x}\n\\]\nThis is indeed a function of $y/x$.\n\n**Step 2: Substitute $y = vx$.**\n\\[\n\\frac{dy}{dx} = v + x\\frac{dv}{dx}\n\\]\n\nThe equation becomes:\n\\[\nv + x\\frac{dv}{dx} = \\frac{1}{v} + v\n\\]\n\\[\nx\\frac{dv}{dx} = \\frac{1}{v}\n\\]\n\n**Step 3: Separate and integrate.**\n\\[\nv\\,dv = \\frac{dx}{x}\n\\]\n\\[\n\\int v\\,dv = \\int \\frac{dx}{x}\n\\]\n\\[\n\\frac{v^2}{2} = \\ln|x| + C_1\n\\]\n\n**Step 4: Substitute back.**\n\\[\n\\frac{1}{2}\\left(\\frac{y}{x}\\right)^2 = \\ln|x| + C_1\n\\]\n\\[\n\\frac{y^2}{2x^2} = \\ln|x| + C_1\n\\]\n\\[\ny^2 = 2x^2\\ln|x| + Cx^2\n\\]\n\nThe general solution is $y^2 = x^2(2\\ln|x| + C)$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Homogeneous IVP",
+      "problem": "Solve $\\displaystyle(x - y)\\,dx + x\\,dy = 0$, $y(1) = 2$.\n\n**Solution.**\n\nRewrite: $\\displaystyle\\frac{dy}{dx} = \\frac{y - x}{x} = \\frac{y}{x} - 1$\n\nThis is $F(y/x)$ with $F(v) = v - 1$.\n\n**Substitute $y = vx$:**\n\\[\nv + x\\frac{dv}{dx} = v - 1\n\\]\n\\[\nx\\frac{dv}{dx} = -1\n\\]\n\\[\ndv = -\\frac{dx}{x}\n\\]\n\\[\nv = -\\ln|x| + C\n\\]\n\n**Substitute back:**\n\\[\n\\frac{y}{x} = -\\ln|x| + C\n\\]\n\\[\ny = -x\\ln|x| + Cx\n\\]\n\n**Apply initial condition:** $y(1) = 2$:\n\\[\n2 = -1 \\cdot \\ln 1 + C \\cdot 1 = 0 + C \\implies C = 2\n\\]\n\n**Solution:** $y = x(2 - \\ln|x|)$",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "A More Complex Homogeneous Equation",
+      "problem": "Solve $\\displaystyle\\frac{dy}{dx} = \\frac{y + \\sqrt{x^2 + y^2}}{x}$.\n\n**Solution.**\n\n**Check homogeneity:** $\\sqrt{x^2 + y^2}$ is degree 1, $y$ is degree 1, $x$ is degree 1. Homogeneous! $\\checkmark$\n\nLet $v = y/x$:\n\\[\nv + x\\frac{dv}{dx} = \\frac{vx + \\sqrt{x^2 + v^2x^2}}{x} = v + \\sqrt{1 + v^2}\n\\]\n\\[\nx\\frac{dv}{dx} = \\sqrt{1 + v^2}\n\\]\n\n**Separate:**\n\\[\n\\frac{dv}{\\sqrt{1 + v^2}} = \\frac{dx}{x}\n\\]\n\n**Integrate:** Using $\\int \\frac{dv}{\\sqrt{1+v^2}} = \\sinh^{-1}(v) = \\ln(v + \\sqrt{1+v^2})$:\n\\[\n\\ln(v + \\sqrt{1 + v^2}) = \\ln|x| + C_1\n\\]\n\\[\nv + \\sqrt{1 + v^2} = Cx \\quad \\text{where } C = e^{C_1}\n\\]\n\n**Substitute back** ($v = y/x$):\n\\[\n\\frac{y}{x} + \\sqrt{1 + \\frac{y^2}{x^2}} = Cx\n\\]\n\\[\n\\frac{y + \\sqrt{x^2 + y^2}}{x} = Cx\n\\]\n\\[\ny + \\sqrt{x^2 + y^2} = Cx^2\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Bernoulli Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "Another important class of equations can be transformed to linear equations by a clever substitution."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.3",
+      "number": "2.3",
+      "title": "Bernoulli Equation",
+      "content": "A **Bernoulli equation** has the form:\n\\[\n\\frac{dy}{dx} + P(x)y = Q(x)y^n\n\\]\nwhere $n \\neq 0, 1$ (when $n = 0$ or $n = 1$, the equation is already linear)."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Solving Bernoulli Equations",
+      "content": "The substitution $w = y^{1-n}$ transforms the Bernoulli equation into a linear equation in $w$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Starting with $y' + P(x)y = Q(x)y^n$, multiply both sides by $(1-n)y^{-n}$:\n\\[\n(1-n)y^{-n}y' + (1-n)P(x)y^{1-n} = (1-n)Q(x)\n\\]\n\nLet $w = y^{1-n}$. Then $\\frac{dw}{dx} = (1-n)y^{-n}\\frac{dy}{dx}$, so:\n\\[\n\\frac{dw}{dx} + (1-n)P(x)w = (1-n)Q(x)\n\\]\n\nThis is a linear equation in $w$!"
+    },
+    {
+      "type": "method",
+      "id": "method-2.5",
+      "number": null,
+      "title": "Solving Bernoulli Equations",
+      "content": "Given $y' + P(x)y = Q(x)y^n$:\n\n1. Substitute $w = y^{1-n}$\n\n2. The equation becomes $w' + (1-n)P(x)w = (1-n)Q(x)$\n\n3. Solve this linear equation for $w(x)$\n\n4. Substitute back: $y = w^{1/(1-n)}$"
+    },
+    {
+      "type": "example",
+      "id": "example-2.5",
+      "number": "2.5",
+      "title": "Solving a Bernoulli Equation",
+      "problem": "Solve $\\displaystyle\\frac{dy}{dx} + y = xy^3$.\n\n**Solution.**\n\nThis is Bernoulli with $P(x) = 1$, $Q(x) = x$, $n = 3$.\n\n**Substitution:** Let $w = y^{1-3} = y^{-2}$.\n\nThen $\\frac{dw}{dx} = -2y^{-3}\\frac{dy}{dx}$, so $\\frac{dy}{dx} = -\\frac{1}{2}y^3\\frac{dw}{dx}$.\n\nThe transformed equation is:\n\\[\n\\frac{dw}{dx} + (1-3)(1)w = (1-3)(x)\n\\]\n\\[\n\\frac{dw}{dx} - 2w = -2x\n\\]\n\n**Solve the linear equation:** Integrating factor: $\\mu = e^{-2x}$\n\\[\ne^{-2x}\\frac{dw}{dx} - 2e^{-2x}w = -2xe^{-2x}\n\\]\n\\[\n\\frac{d}{dx}(e^{-2x}w) = -2xe^{-2x}\n\\]\n\nIntegrate by parts ($\\int xe^{-2x}dx = -\\frac{1}{2}xe^{-2x} - \\frac{1}{4}e^{-2x}$):\n\\[\ne^{-2x}w = -2\\left(-\\frac{1}{2}xe^{-2x} - \\frac{1}{4}e^{-2x}\\right) + C = xe^{-2x} + \\frac{1}{2}e^{-2x} + C\n\\]\n\\[\nw = x + \\frac{1}{2} + Ce^{2x}\n\\]\n\n**Substitute back:** $w = y^{-2}$\n\\[\ny^{-2} = x + \\frac{1}{2} + Ce^{2x}\n\\]\n\\[\ny^2 = \\frac{1}{x + \\frac{1}{2} + Ce^{2x}} = \\frac{2}{2x + 1 + 2Ce^{2x}}\n\\]\n\nThe general solution is $y = \\pm\\sqrt{\\frac{2}{2x + 1 + Ae^{2x}}}$ where $A = 2C$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-2.6",
+      "number": "2.6",
+      "title": "Bernoulli with $n = 2$",
+      "problem": "Solve $\\displaystyle\\frac{dy}{dx} - \\frac{y}{x} = -\\frac{y^2}{x^2}$.\n\n**Solution.**\n\nBernoulli with $P = -1/x$, $Q = -1/x^2$, $n = 2$.\n\n**Substitute** $w = y^{-1}$:\n\\[\nw' + (-1)(-\\frac{1}{x})w = (-1)(-\\frac{1}{x^2})\n\\]\n\\[\nw' + \\frac{w}{x} = \\frac{1}{x^2}\n\\]\n\n**Integrating factor:** $\\mu = e^{\\int dx/x} = x$\n\\[\nxw' + w = \\frac{1}{x}\n\\]\n\\[\n(xw)' = \\frac{1}{x}\n\\]\n\\[\nxw = \\ln|x| + C\n\\]\n\\[\nw = \\frac{\\ln|x| + C}{x}\n\\]\n\n**Substitute back:** $y = 1/w$\n\\[\ny = \\frac{x}{\\ln|x| + C}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Other Substitutions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Sometimes ad-hoc substitutions work when standard methods don't apply."
+    },
+    {
+      "type": "example",
+      "id": "example-2.7",
+      "number": "2.7",
+      "title": "Equations of the Form $y' = f(ax + by + c)$",
+      "problem": "Solve $\\displaystyle\\frac{dy}{dx} = (x + y + 1)^2$.\n\n**Solution.**\n\nLet $u = x + y + 1$. Then $\\frac{du}{dx} = 1 + \\frac{dy}{dx}$, so $\\frac{dy}{dx} = \\frac{du}{dx} - 1$.\n\nThe equation becomes:\n\\[\n\\frac{du}{dx} - 1 = u^2\n\\]\n\\[\n\\frac{du}{dx} = u^2 + 1\n\\]\n\nThis is separable:\n\\[\n\\frac{du}{u^2 + 1} = dx\n\\]\n\\[\n\\arctan(u) = x + C\n\\]\n\\[\nu = \\tan(x + C)\n\\]\n\n**Substitute back:**\n\\[\nx + y + 1 = \\tan(x + C)\n\\]\n\\[\ny = \\tan(x + C) - x - 1\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-2.8",
+      "number": "2.8",
+      "title": "Riccati Equations (Special Case)",
+      "problem": "A **Riccati equation** has the form $y' = P(x) + Q(x)y + R(x)y^2$. If we know one particular solution $y_1$, the substitution $y = y_1 + \\frac{1}{v}$ reduces it to a linear equation.\n\nSolve $y' = 1 + y - y^2$, given that $y_1 = 1$ is a solution.\n\n**Solution.**\n\n**Verify:** $y_1 = 1 \\implies y_1' = 0$, and $1 + 1 - 1 = 1 \\neq 0$. \n\nWait, let me check: $1 + y_1 - y_1^2 = 1 + 1 - 1 = 1$, but $y_1' = 0$. This doesn't match!\n\nLet me try $y_1 = -1$: $1 + (-1) - (-1)^2 = 1 - 1 - 1 = -1 \\neq 0$. Still wrong.\n\nActually, for constant solutions: $0 = 1 + y - y^2 \\implies y^2 - y - 1 = 0 \\implies y = \\frac{1 \\pm \\sqrt{5}}{2}$.\n\nSo $y_1 = \\frac{1 + \\sqrt{5}}{2} = \\phi$ (the golden ratio) is a particular solution.\n\n**Substitute** $y = \\phi + \\frac{1}{v}$:\n\\[\ny' = -\\frac{v'}{v^2}\n\\]\n\\[\n-\\frac{v'}{v^2} = 1 + \\phi + \\frac{1}{v} - \\left(\\phi + \\frac{1}{v}\\right)^2\n\\]\n\nExpanding $(\\phi + \\frac{1}{v})^2 = \\phi^2 + \\frac{2\\phi}{v} + \\frac{1}{v^2}$:\n\\[\n-\\frac{v'}{v^2} = 1 + \\phi + \\frac{1}{v} - \\phi^2 - \\frac{2\\phi}{v} - \\frac{1}{v^2}\n\\]\n\nSince $\\phi^2 = \\phi + 1$ (property of golden ratio):\n\\[\n-\\frac{v'}{v^2} = 1 + \\phi - \\phi - 1 + \\frac{1 - 2\\phi}{v} - \\frac{1}{v^2}\n\\]\n\\[\n-\\frac{v'}{v^2} = \\frac{1 - 2\\phi}{v} - \\frac{1}{v^2}\n\\]\n\nMultiply by $-v^2$:\n\\[\nv' = (2\\phi - 1)v + 1\n\\]\n\nSince $2\\phi - 1 = 2 \\cdot \\frac{1+\\sqrt{5}}{2} - 1 = \\sqrt{5}$:\n\\[\nv' - \\sqrt{5}v = 1\n\\]\n\nThis is linear! Integrating factor: $\\mu = e^{-\\sqrt{5}x}$\n\\[\nv = Ce^{\\sqrt{5}x} - \\frac{1}{\\sqrt{5}}\n\\]\n\n**Substitute back:**\n\\[\ny = \\phi + \\frac{1}{Ce^{\\sqrt{5}x} - \\frac{1}{\\sqrt{5}}} = \\frac{1 + \\sqrt{5}}{2} + \\frac{\\sqrt{5}}{\\sqrt{5}Ce^{\\sqrt{5}x} - 1}\n\\]",
+      "solution": ""
+    }
+  ]
+}

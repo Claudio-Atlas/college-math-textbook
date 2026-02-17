@@ -1,0 +1,142 @@
+{
+  "id": "diff-eq-ch02-sec02",
+  "title": "Linear First-Order Equations",
+  "chapter": 2,
+  "section": 2,
+  "book": "diff-eq",
+  "objectives": [
+    "Identify linear first-order differential equations",
+    "Derive and apply the integrating factor method",
+    "Solve initial value problems for linear equations",
+    "Understand the structure of solutions: homogeneous plus particular"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Standard Form and the Integrating Factor"
+    },
+    {
+      "type": "paragraph",
+      "text": "A first-order differential equation is **linear** if it can be written with the unknown function and its derivative appearing only to the first power, with no products of $y$ and $y'$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Linear First-Order Equation",
+      "content": "A **linear first-order differential equation** has the standard form:\n\\[\n\\frac{dy}{dx} + P(x)y = Q(x)\n\\]\nwhere $P(x)$ and $Q(x)$ are functions of $x$ alone (not involving $y$)."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Identifying Linear Equations",
+      "problem": "Determine which equations are linear:\n\n1. $\\displaystyle\\frac{dy}{dx} + 3y = e^x$ **Linear:** $P(x) = 3$, $Q(x) = e^x$\n\n2. $\\displaystyle\\frac{dy}{dx} = y^2 + x$ **Not linear:** contains $y^2$\n\n3. $\\displaystyle x\\frac{dy}{dx} - 2y = x^3$ **Linear:** Divide by $x$ to get $y' - \\frac{2}{x}y = x^2$\n\n4. $\\displaystyle y\\frac{dy}{dx} + y^2 = \\sin x$ **Not linear:** $y$ multiplies $y'$\n\n5. $\\displaystyle\\frac{dy}{dx} + y\\cos x = \\sin 2x$ **Linear:** $P(x) = \\cos x$, $Q(x) = \\sin 2x$",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "The key to solving linear equations is the **integrating factor method**. The idea is to multiply both sides by a function that makes the left side a perfect derivative."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Integrating Factor Method",
+      "content": "For the linear equation $\\displaystyle\\frac{dy}{dx} + P(x)y = Q(x)$:\n\n1. The **integrating factor** is $\\displaystyle\\mu(x) = e^{\\int P(x)\\,dx}$\n\n2. Multiplying by $\\mu(x)$ gives $\\displaystyle\\frac{d}{dx}[\\mu(x)y] = \\mu(x)Q(x)$\n\n3. The general solution is $\\displaystyle y = \\frac{1}{\\mu(x)}\\left[\\int \\mu(x)Q(x)\\,dx + C\\right]$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We seek a function $\\mu(x)$ such that when we multiply \n\\[\n\\frac{dy}{dx} + P(x)y = Q(x)\n\\]\nby $\\mu(x)$, the left side becomes the derivative of a product. We want:\n\\[\n\\mu(x)\\frac{dy}{dx} + \\mu(x)P(x)y = \\frac{d}{dx}[\\mu(x)y]\n\\]\n\nExpanding the right side using the product rule:\n\\[\n\\frac{d}{dx}[\\mu(x)y] = \\mu(x)\\frac{dy}{dx} + \\frac{d\\mu}{dx}y\n\\]\n\nComparing terms, we need:\n\\[\n\\mu(x)P(x) = \\frac{d\\mu}{dx}\n\\]\n\nThis is a separable equation for $\\mu$:\n\\[\n\\frac{d\\mu}{\\mu} = P(x)\\,dx\n\\]\n\\[\n\\ln|\\mu| = \\int P(x)\\,dx\n\\]\n\\[\n\\mu(x) = e^{\\int P(x)\\,dx}\n\\]\n\nWe take the positive solution (the constant of integration can be absorbed into $C$ later).\n\nWith this choice of $\\mu$, our equation becomes:\n\\[\n\\frac{d}{dx}[\\mu(x)y] = \\mu(x)Q(x)\n\\]\n\nIntegrating:\n\\[\n\\mu(x)y = \\int \\mu(x)Q(x)\\,dx + C\n\\]\n\\[\ny = \\frac{1}{\\mu(x)}\\left[\\int \\mu(x)Q(x)\\,dx + C\\right]\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Solving a Linear Equation",
+      "problem": "Solve $\\displaystyle\\frac{dy}{dx} + 2y = e^{3x}$.\n\n**Solution.** This is linear with $P(x) = 2$ and $Q(x) = e^{3x}$.\n\n**Step 1: Find the integrating factor.**\n\\[\n\\mu(x) = e^{\\int 2\\,dx} = e^{2x}\n\\]\n\n**Step 2: Multiply through by $\\mu(x)$.**\n\\[\ne^{2x}\\frac{dy}{dx} + 2e^{2x}y = e^{2x} \\cdot e^{3x}\n\\]\n\\[\n\\frac{d}{dx}\\left[e^{2x}y\\right] = e^{5x}\n\\]\n\n**Step 3: Integrate both sides.**\n\\[\ne^{2x}y = \\int e^{5x}\\,dx = \\frac{1}{5}e^{5x} + C\n\\]\n\n**Step 4: Solve for $y$.**\n\\[\ny = e^{-2x}\\left(\\frac{1}{5}e^{5x} + C\\right) = \\frac{1}{5}e^{3x} + Ce^{-2x}\n\\]\n\n**Verification:** $y' = \\frac{3}{5}e^{3x} - 2Ce^{-2x}$\n\n$y' + 2y = \\frac{3}{5}e^{3x} - 2Ce^{-2x} + \\frac{2}{5}e^{3x} + 2Ce^{-2x} = e^{3x}$",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Variable Coefficient Linear Equation",
+      "problem": "Solve $\\displaystyle x\\frac{dy}{dx} + 2y = x^3$, $x > 0$.\n\n**Solution.** First, write in standard form by dividing by $x$:\n\\[\n\\frac{dy}{dx} + \\frac{2}{x}y = x^2\n\\]\n\nHere $P(x) = \\frac{2}{x}$ and $Q(x) = x^2$.\n\n**Integrating factor:**\n\\[\n\\mu(x) = e^{\\int \\frac{2}{x}\\,dx} = e^{2\\ln x} = e^{\\ln x^2} = x^2\n\\]\n\n**Multiply through:**\n\\[\nx^2\\frac{dy}{dx} + 2xy = x^4\n\\]\n\\[\n\\frac{d}{dx}\\left[x^2 y\\right] = x^4\n\\]\n\n**Integrate:**\n\\[\nx^2 y = \\frac{x^5}{5} + C\n\\]\n\\[\ny = \\frac{x^3}{5} + \\frac{C}{x^2}\n\\]\n\nThe general solution is $y = \\frac{x^3}{5} + Cx^{-2}$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Initial Value Problems"
+    },
+    {
+      "type": "paragraph",
+      "text": "For an initial value problem, we use the initial condition to determine the constant $C$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "Initial Value Problem",
+      "problem": "Solve $\\displaystyle\\frac{dy}{dx} - 3y = e^{2x}$, $y(0) = 1$.\n\n**Solution.** Here $P(x) = -3$, $Q(x) = e^{2x}$.\n\n**Integrating factor:**\n\\[\n\\mu(x) = e^{\\int (-3)\\,dx} = e^{-3x}\n\\]\n\n**Multiply and simplify:**\n\\[\ne^{-3x}\\frac{dy}{dx} - 3e^{-3x}y = e^{-3x} \\cdot e^{2x} = e^{-x}\n\\]\n\\[\n\\frac{d}{dx}\\left[e^{-3x}y\\right] = e^{-x}\n\\]\n\n**Integrate:**\n\\[\ne^{-3x}y = \\int e^{-x}\\,dx = -e^{-x} + C\n\\]\n\\[\ny = e^{3x}(-e^{-x} + C) = -e^{2x} + Ce^{3x}\n\\]\n\n**Apply initial condition:** $y(0) = 1$:\n\\[\n1 = -e^0 + Ce^0 = -1 + C \\implies C = 2\n\\]\n\nThe solution is $y = -e^{2x} + 2e^{3x} = e^{2x}(2e^x - 1)$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Structure of Solutions"
+    },
+    {
+      "type": "paragraph",
+      "text": "The general solution of a linear equation has a characteristic structure that provides insight into the behavior of solutions."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Solution Structure",
+      "content": "The general solution of $\\displaystyle\\frac{dy}{dx} + P(x)y = Q(x)$ can be written as:\n\\[\ny = y_h + y_p\n\\]\nwhere:\n\n- $y_h = Ce^{-\\int P(x)\\,dx}$ is the **homogeneous solution** (solving $y' + Py = 0$)\n\n- $y_p$ is any **particular solution** (solving $y' + Py = Q$)",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-2.5",
+      "number": "2.5",
+      "title": "Decomposing the Solution",
+      "problem": "For the equation $\\displaystyle\\frac{dy}{dx} + 2y = e^{3x}$ solved earlier, we found $y = \\frac{1}{5}e^{3x} + Ce^{-2x}$.\n\n- **Homogeneous solution:** $y_h = Ce^{-2x}$ solves $y' + 2y = 0$\n\n- **Particular solution:** $y_p = \\frac{1}{5}e^{3x}$ solves $y' + 2y = e^{3x}$\n\nThe homogeneous solution $Ce^{-2x} \\to 0$ as $x \\to \\infty$, so for large $x$, all solutions approach the particular solution $\\frac{1}{5}e^{3x}$. This is an example of a **transient** and **steady-state** decomposition.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Special Cases and Techniques"
+    },
+    {
+      "type": "example",
+      "id": "example-2.6",
+      "number": "2.6",
+      "title": "Integrating Factor with Trigonometric Functions",
+      "problem": "Solve $\\displaystyle\\frac{dy}{dx} + y\\tan x = \\sec x$, $-\\frac{\\pi}{2} < x < \\frac{\\pi}{2}$.\n\n**Solution.** Here $P(x) = \\tan x$, $Q(x) = \\sec x$.\n\n**Integrating factor:**\n\\[\n\\mu(x) = e^{\\int \\tan x\\,dx} = e^{\\ln|\\sec x|} = |\\sec x| = \\sec x \\quad \\text{(for } |x| < \\frac{\\pi}{2}\\text{)}\n\\]\n\n**Multiply:**\n\\[\n\\sec x \\frac{dy}{dx} + y \\sec x \\tan x = \\sec^2 x\n\\]\n\\[\n\\frac{d}{dx}[y \\sec x] = \\sec^2 x\n\\]\n\n**Integrate:**\n\\[\ny \\sec x = \\tan x + C\n\\]\n\\[\ny = \\sin x + C\\cos x\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-2.7",
+      "number": "2.7",
+      "title": "A More Complex Integrating Factor",
+      "problem": "Solve $\\displaystyle\\frac{dy}{dx} + \\frac{2x}{1+x^2}y = \\frac{1}{(1+x^2)^2}$.\n\n**Solution.** The integrating factor is:\n\\[\n\\mu(x) = e^{\\int \\frac{2x}{1+x^2}\\,dx} = e^{\\ln(1+x^2)} = 1 + x^2\n\\]\n\n**Multiply:**\n\\[\n(1+x^2)\\frac{dy}{dx} + 2xy = \\frac{1}{1+x^2}\n\\]\n\\[\n\\frac{d}{dx}[(1+x^2)y] = \\frac{1}{1+x^2}\n\\]\n\n**Integrate:**\n\\[\n(1+x^2)y = \\arctan x + C\n\\]\n\\[\ny = \\frac{\\arctan x + C}{1+x^2}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-2.8",
+      "number": "2.8",
+      "title": "When $Q(x) = 0$: Homogeneous Linear Equations",
+      "problem": "Solve $\\displaystyle\\frac{dy}{dx} = ky$ where $k$ is a constant.\n\n**Solution.** This is $\\frac{dy}{dx} - ky = 0$, a homogeneous linear equation.\n\n**Integrating factor:** $\\mu = e^{-kx}$\n\n**Multiply:** $\\frac{d}{dx}[e^{-kx}y] = 0$\n\n**Integrate:** $e^{-kx}y = C$, so $y = Ce^{kx}$.\n\nNote: This could also be solved by separation of variables. The integrating factor method always works for linear equations, but may not be the most efficient approach for simple cases.",
+      "solution": ""
+    }
+  ]
+}

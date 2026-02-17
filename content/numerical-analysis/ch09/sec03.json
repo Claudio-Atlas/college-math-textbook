@@ -1,0 +1,219 @@
+{
+  "id": "numerical-analysis-ch09-sec03",
+  "title": "QR Decomposition",
+  "chapter": 9,
+  "section": 3,
+  "book": "numerical-analysis",
+  "objectives": [
+    "Understand the QR decomposition and its role in numerical linear algebra",
+    "Implement Classical and Modified Gram-Schmidt orthogonalization",
+    "Construct Householder reflections and use them for stable QR factorization",
+    "Apply Givens rotations for targeted elimination of matrix entries",
+    "Compare the stability and efficiency of different QR algorithms"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The QR Decomposition"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "QR Decomposition Existence",
+      "content": "Every matrix $A \\in \\mathbb{R}^{m \\times n}$ with $m \\geq n$ can be factored as\n\\[\nA = QR\n\\]\nwhere $Q \\in \\mathbb{R}^{m \\times n}$ has orthonormal columns ($Q^T Q = I_n$) and $R \\in \\mathbb{R}^{n \\times n}$ is upper triangular. If $A$ has full column rank, this factorization is unique up to signs of the diagonal of $R$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "QR Decomposition Structure",
+      "problem": "For a $4 \\times 3$ matrix:\n\\[\n\\underbrace{\\begin{pmatrix} * & * & * \\\\ * & * & * \\\\ * & * & * \\\\ * & * & * \\end{pmatrix}}_{A} = \n\\underbrace{\\begin{pmatrix} * & * & * \\\\ * & * & * \\\\ * & * & * \\\\ * & * & * \\end{pmatrix}}_{Q} \n\\underbrace{\\begin{pmatrix} * & * & * \\\\ 0 & * & * \\\\ 0 & 0 & * \\end{pmatrix}}_{R}\n\\]\nThe columns of $Q$ form an orthonormal basis for the column space of $A$.",
+      "solution": ""
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Full vs.\\ Reduced QR",
+      "content": "**Reduced QR:** $A = Q_1 R_1$ where $Q_1 \\in \\mathbb{R}^{m \\times n}$, $R_1 \\in \\mathbb{R}^{n \\times n}$.\n\n**Full QR:** $A = Q R$ where $Q \\in \\mathbb{R}^{m \\times m}$ is square orthogonal and\n\\[\nR = \\begin{pmatrix} R_1 \\\\ 0 \\end{pmatrix} \\in \\mathbb{R}^{m \\times n}\n\\]\nThe extra columns of $Q$ span the left nullspace of $A^T$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Gram-Schmidt Orthogonalization"
+    },
+    {
+      "type": "paragraph",
+      "text": "The classical Gram-Schmidt process constructs an orthonormal basis from linearly independent vectors by successively removing components in previously computed directions."
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-9.3",
+      "number": null,
+      "title": "Classical Gram-Schmidt (CGS)",
+      "content": "**Input:** Matrix $A = [a_1 | a_2 | \\cdots | a_n]$ with linearly independent columns\n\n**Output:** $Q$ with orthonormal columns, upper triangular $R$, such that $A = QR$\n\nalgorithmic[1]\n$j = 1, 2, \\ldots, n$\n $v_j \\gets a_j$\n $i = 1, 2, \\ldots, j-1$\n $r_{ij} \\gets q_i^T a_j$ Project onto $q_i$\n $v_j \\gets v_j - r_{ij} q_i$ Remove component\n \n $r_{jj} \\gets \\|v_j\\|_2$\n $q_j \\gets v_j / r_{jj}$ Normalize\n\n $Q = [q_1 | \\cdots | q_n]$, $R = (r_{ij})$\nalgorithmic"
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Classical Gram-Schmidt",
+      "problem": "Compute the QR decomposition of $A = \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 0 & 1 \\\\ 1 & 1 & 0 \\end{pmatrix}$.",
+      "solution": "**Column 1:**\n$v_1 = (1, 1, 1)^T$, $r_{11} = \\|v_1\\| = \\sqrt{3}$, $q_1 = \\frac{1}{\\sqrt{3}}(1, 1, 1)^T$\n\n**Column 2:**\n$r_{12} = q_1^T a_2 = \\frac{1}{\\sqrt{3}}(1 + 0 + 1) = \\frac{2}{\\sqrt{3}}$\n$v_2 = a_2 - r_{12} q_1 = (1, 0, 1)^T - \\frac{2}{3}(1, 1, 1)^T = \\frac{1}{3}(1, -2, 1)^T$\n$r_{22} = \\|v_2\\| = \\frac{\\sqrt{6}}{3}$, $q_2 = \\frac{1}{\\sqrt{6}}(1, -2, 1)^T$\n\n**Column 3:**\n$r_{13} = q_1^T a_3 = \\frac{2}{\\sqrt{3}}$\n$r_{23} = q_2^T a_3 = \\frac{1}{\\sqrt{6}}(1 - 2 + 0) = \\frac{-1}{\\sqrt{6}}$\n$v_3 = a_3 - r_{13} q_1 - r_{23} q_2 = (1, 1, 0)^T - \\frac{2}{3}(1, 1, 1)^T + \\frac{1}{6}(1, -2, 1)^T$\n$= \\frac{1}{2}(1, 0, -1)^T$\n$r_{33} = \\frac{1}{\\sqrt{2}}$, $q_3 = \\frac{1}{\\sqrt{2}}(1, 0, -1)^T$\n\nFinal result:\n\\[\nQ = \\begin{pmatrix} 1/\\sqrt{3} & 1/\\sqrt{6} & 1/\\sqrt{2} \\\\ 1/\\sqrt{3} & -2/\\sqrt{6} & 0 \\\\ 1/\\sqrt{3} & 1/\\sqrt{6} & -1/\\sqrt{2} \\end{pmatrix}, \\quad\nR = \\begin{pmatrix} \\sqrt{3} & 2/\\sqrt{3} & 2/\\sqrt{3} \\\\ 0 & \\sqrt{6}/3 & -1/\\sqrt{6} \\\\ 0 & 0 & 1/\\sqrt{2} \\end{pmatrix}\n\\]"
+    },
+    {
+      "type": "warning",
+      "id": "warning-9.3",
+      "number": null,
+      "title": "Instability of Classical Gram-Schmidt",
+      "content": "In floating-point arithmetic, Classical Gram-Schmidt suffers from **loss of orthogonality**. The computed $Q$ may have $\\|Q^T Q - I\\| \\gg \\varepsilon_{\\text{machine}}$, especially for ill-conditioned matrices. This happens because we subtract projections from the original vector $a_j$, accumulating errors."
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-9.3",
+      "number": null,
+      "title": "Modified Gram-Schmidt (MGS)",
+      "content": "The key change: subtract projections from the *current* vector $v_j$, not the original $a_j$.\n\nalgorithmic[1]\n$j = 1, 2, \\ldots, n$\n $v_j \\gets a_j$\n $i = 1, 2, \\ldots, j-1$\n $r_{ij} \\gets q_i^T v_j$ Note: $v_j$, not $a_j$\n $v_j \\gets v_j - r_{ij} q_i$\n \n $r_{jj} \\gets \\|v_j\\|_2$\n $q_j \\gets v_j / r_{jj}$\n\nalgorithmic"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "MGS Stability",
+      "content": "Modified Gram-Schmidt produces $Q$ and $R$ such that:\n\n1. The computed $R$ satisfies $\\|A - QR\\| = \\mathcal{O}(\\varepsilon_{\\text{machine}} \\|A\\|)$\n\n2. However, $\\|Q^T Q - I\\| = \\mathcal{O}(\\varepsilon_{\\text{machine}} \\kappa(A))$\nMGS is **backward stable for solving least squares** but not for computing $Q$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Householder Reflections"
+    },
+    {
+      "type": "paragraph",
+      "text": "Householder reflections provide the most numerically stable way to compute QR decompositions."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Householder Reflector",
+      "content": "A **Householder reflector** (or Householder transformation) is a matrix of the form\n\\[\nH = I - 2\\frac{vv^T}{v^T v} = I - 2uu^T\n\\]\nwhere $u = v/\\|v\\|$ is a unit vector. $H$ reflects vectors across the hyperplane orthogonal to $v$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.3",
+      "number": "9.3",
+      "title": "Householder Properties",
+      "content": "1. $H$ is symmetric: $H^T = H$\n\n2. $H$ is orthogonal: $H^T H = I$\n\n3. $H$ is an involution: $H^2 = I$\n\n4. $Hx$ reflects $x$ across the hyperplane $\\{y : v^T y = 0\\}$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Symmetry follows from the formula. For orthogonality:\n\\[\nH^T H = H^2 = (I - 2uu^T)^2 = I - 4uu^T + 4u(u^T u)u^T = I - 4uu^T + 4uu^T = I\n\\]\nsince $u^T u = 1$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.4",
+      "number": "9.4",
+      "title": "Householder QR Construction",
+      "content": "Given a nonzero vector $x$, we can choose $v$ such that\n\\[\nHx = \\|x\\|_2 e_1\n\\]\nwhere $e_1 = (1, 0, \\ldots, 0)^T$. The choice is:\n\\[\nv = x + \\text{sign}(x_1) \\|x\\|_2 e_1\n\\]\n(Choose the sign to avoid cancellation when $x \\approx e_1$.)",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Constructing a Householder Reflector",
+      "problem": "Find $H$ such that $Hx = \\alpha e_1$ for $x = (3, 4, 0)^T$.",
+      "solution": "$\\|x\\|_2 = 5$, so $\\alpha = -5$ (using $-\\text{sign}(x_1) = -1$).\n\n$v = x - \\alpha e_1 = (3, 4, 0)^T - (-5)(1, 0, 0)^T = (8, 4, 0)^T$\n\n$u = v/\\|v\\| = (8, 4, 0)^T/\\sqrt{80} = (2, 1, 0)^T/\\sqrt{5}$\n\n$H = I - 2uu^T = I - \\frac{2}{5}\\begin{pmatrix} 4 & 2 & 0 \\\\ 2 & 1 & 0 \\\\ 0 & 0 & 0 \\end{pmatrix} = \\begin{pmatrix} -3/5 & -4/5 & 0 \\\\ -4/5 & 3/5 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix}$\n\nVerify: $Hx = (-3/5)(3) + (-4/5)(4), \\ldots) = (-9/5 - 16/5, \\ldots) = (-5, 0, 0)^T$"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-9.3",
+      "number": null,
+      "title": "Householder QR",
+      "content": "**Input:** Matrix $A \\in \\mathbb{R}^{m \\times n}$\n\n**Output:** Orthogonal $Q$ and upper triangular $R$ with $A = QR$\n\nalgorithmic[1]\n $R \\gets A$\n$k = 1, 2, \\ldots, n$\n $x \\gets R_{k:m, k}$ Subcolumn from row $k$ to $m$\n $v_k \\gets x + \\text{sign}(x_1)\\|x\\|_2 e_1$\n $v_k \\gets v_k / \\|v_k\\|_2$\n $R_{k:m, k:n} \\gets R_{k:m, k:n} - 2v_k(v_k^T R_{k:m, k:n})$\n\n Form $Q = H_1 H_2 \\cdots H_n$ (or store $v_k$'s implicitly)\n $Q$, $R_{1:n, 1:n}$\nalgorithmic"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.5",
+      "number": "9.5",
+      "title": "Householder Stability",
+      "content": "Householder QR is **backward stable**: the computed factors $\\hat{Q}$ and $\\hat{R}$ satisfy\n\\[\n\\hat{Q}\\hat{R} = A + \\delta A \\quad \\text{where} \\quad \\|\\delta A\\| = \\mathcal{O}(\\varepsilon_{\\text{machine}} \\|A\\|)\n\\]\nMoreover, $\\hat{Q}$ is orthogonal to working precision: $\\|\\hat{Q}^T \\hat{Q} - I\\| = \\mathcal{O}(\\varepsilon_{\\text{machine}})$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Givens Rotations"
+    },
+    {
+      "type": "paragraph",
+      "text": "When we need to eliminate just one element, Givens rotations are more efficient than Householder reflections."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.3",
+      "number": "9.3",
+      "title": "Givens Rotation",
+      "content": "A **Givens rotation** $G(i, j, \\theta)$ is the identity matrix with four entries modified:\n\\[\nG_{ii} = G_{jj} = \\cos\\theta, \\quad G_{ij} = \\sin\\theta, \\quad G_{ji} = -\\sin\\theta\n\\]\nThis is an orthogonal matrix that rotates in the $(i, j)$ plane by angle $\\theta$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.4",
+      "number": "9.4",
+      "title": "Givens Rotation Matrix",
+      "problem": "For $n = 4$, $i = 2$, $j = 3$:\n\\[\nG(2, 3, \\theta) = \\begin{pmatrix}\n1 & 0 & 0 & 0 \\\\\n0 & c & s & 0 \\\\\n0 & -s & c & 0 \\\\\n0 & 0 & 0 & 1\n\\end{pmatrix}\n\\]\nwhere $c = \\cos\\theta$ and $s = \\sin\\theta$.",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.6",
+      "number": "9.6",
+      "title": "Givens Elimination",
+      "content": "To eliminate element $a_j$ in a vector $(a_i, a_j)^T$ (making it zero while preserving $a_i$), choose:\n\\[\nc = \\frac{a_i}{\\sqrt{a_i^2 + a_j^2}}, \\quad s = \\frac{a_j}{\\sqrt{a_i^2 + a_j^2}}\n\\]\nThen $G(i,j,\\theta) \\cdot (\\ldots, a_i, \\ldots, a_j, \\ldots)^T = (\\ldots, \\sqrt{a_i^2 + a_j^2}, \\ldots, 0, \\ldots)^T$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-9.3",
+      "number": null,
+      "title": "Givens QR",
+      "content": "algorithmic[1]\n $R \\gets A$, $Q \\gets I$\n$j = 1, 2, \\ldots, n$\n $i = m, m-1, \\ldots, j+1$\n Compute $G = G(i-1, i, \\theta)$ to eliminate $r_{ij}$\n $R \\gets G \\cdot R$\n $Q \\gets Q \\cdot G^T$ Accumulate $Q$\n \n\n $Q$, $R$\nalgorithmic"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of QR"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Least squares:** Solve $\\|Ax - b\\|_2$ by $Rx = Q^T b$ (see Section [sec:least-squares])",
+        "**Eigenvalues:** The QR algorithm (Section [sec:eigenvalues]) uses repeated QR decomposition",
+        "**Linear system solving:** For $Ax = b$ with square $A$: $QRx = b \\Rightarrow Rx = Q^T b$. More stable than LU for ill-conditioned systems (at 2× the cost)",
+        "**Computing orthonormal bases:** $Q$ provides an orthonormal basis for $\\text{col}(A)$",
+        "**Rank determination:** The diagonal of $R$ reveals rank deficiency"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-9.5",
+      "number": "9.5",
+      "title": "Rank Detection via QR",
+      "problem": "For the matrix $A = \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{pmatrix}$, which has rank 2:\n\nAfter QR with column pivoting:\n\\[\nR = \\begin{pmatrix} 12.88 & 14.59 & 10.16 \\\\ 0 & 1.04 & 2.08 \\\\ 0 & 0 & 10^{-15} \\end{pmatrix}\n\\]\n\nThe near-zero $r_{33}$ indicates rank deficiency.",
+      "solution": ""
+    },
+    {
+      "type": "historical",
+      "id": "historical-9.3",
+      "number": null,
+      "title": "Householder Transformations",
+      "content": "Alston Householder introduced these reflections in 1958 while at Oak Ridge National Laboratory. His method revolutionized numerical linear algebra by providing stable algorithms for QR decomposition, eigenvalue problems, and least squares. The *Householder* name became synonymous with numerically stable orthogonal transformations."
+    }
+  ]
+}

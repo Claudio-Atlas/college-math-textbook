@@ -1,0 +1,330 @@
+{
+  "id": "geometry-ch06-sec01",
+  "title": "Angles of Polygons",
+  "chapter": 6,
+  "section": 1,
+  "book": "geometry",
+  "epigraph": {
+    "text": "Count the cost.",
+    "reference": "Luke 14:28"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "When we studied triangles, we discovered that the sum of interior \nangles is always $180°$—a fundamental truth that underlies all \nof Euclidean geometry. But what about figures with more sides? \nQuadrilaterals have four angles, pentagons have five, hexagons \nhave six. Is there a pattern that governs these angle sums?"
+    },
+    {
+      "type": "paragraph",
+      "text": "The answer reveals one of geometry's most elegant relationships: \nevery polygon's angle sum connects back to the triangle. By \ndividing any polygon into triangles, we can unlock the secret \nof its angles. This triangulation principle appears throughout \nmathematics and has practical applications in architecture, \nengineering, and computer graphics."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Polygons and Their Names"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Polygon",
+      "content": "A **polygon** is a closed plane figure formed \nby three or more line segments called **sides**, \nwhere:\n\n- Each side intersects exactly two other sides\n\n- The intersections occur only at endpoints (called **vertices**)\n\n- No two sides with a common vertex are collinear"
+    },
+    {
+      "type": "paragraph",
+      "text": "The word \"polygon\" comes from the Greek *poly* (many) and \n*gonia* (angle). Thus a polygon is literally a \"many-angled\" \nfigure. We name polygons by their number of sides, using Greek \nprefixes:"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Sides**",
+        "**Name**",
+        "**Etymology**",
+        "**Sides**",
+        "**Name**",
+        "**Etymology**"
+      ],
+      "rows": [
+        [
+          "3",
+          "Triangle",
+          "*tri* = three",
+          "8",
+          "Octagon",
+          "*octo* = eight"
+        ],
+        [
+          "4",
+          "Quadrilateral",
+          "*quadri* = four",
+          "9",
+          "Nonagon",
+          "*nona* = nine"
+        ],
+        [
+          "5",
+          "Pentagon",
+          "*penta* = five",
+          "10",
+          "Decagon",
+          "*deca* = ten"
+        ],
+        [
+          "6",
+          "Hexagon",
+          "*hexa* = six",
+          "12",
+          "Dodecagon",
+          "*dodeca* = twelve"
+        ],
+        [
+          "7",
+          "Heptagon",
+          "*hepta* = seven",
+          "$n$",
+          "$n$-gon",
+          "general term"
+        ]
+      ],
+      "alignment": [
+        "center",
+        "left",
+        "center",
+        "center",
+        "left",
+        "center"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Convex and Concave Polygons"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.2",
+      "number": "6.2",
+      "title": "Convex and Concave Polygons",
+      "content": "A polygon is **convex** if no diagonal \nlies outside the polygon—equivalently, if all interior angles \nare less than $180°$.\n\nA polygon is **concave** (or \n**non-convex**) if at least one diagonal lies outside the \npolygon, which means at least one interior angle exceeds $180°$."
+    },
+    {
+      "type": "paragraph",
+      "text": "An intuitive way to think about convexity: if you stand inside a \nconvex polygon, you can see every part of every wall. In a concave \npolygon, parts of some walls are hidden from certain viewpoints."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Interior Angle Sum"
+    },
+    {
+      "type": "paragraph",
+      "text": "How can we find the sum of interior angles for any polygon? The key \ninsight is *triangulation*: we can divide any convex polygon \ninto non-overlapping triangles by drawing diagonals from a single \nvertex."
+    },
+    {
+      "type": "paragraph",
+      "text": "Notice the pattern: a polygon with $n$ sides can be divided into \nexactly $(n-2)$ triangles. Since each triangle contributes $180°$ \nto the total, we get:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Polygon Interior Angle Sum",
+      "content": "The sum of the interior angles of a convex polygon with $n$ sides is:\n\\[\n S = (n - 2) \\cdot 180°\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "From any vertex of a convex $n$-gon, we can draw diagonals to all \nnon-adjacent vertices. This creates $(n-2)$ non-overlapping triangles. \nThe angles of all these triangles together form the interior angles \nof the polygon. Since each triangle has angle sum $180°$, the total is:\n\\[\n (n-2) \\cdot 180°\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Finding angle sums",
+      "problem": "Find the sum of interior angles of:\n\n1. A pentagon\n\n2. An octagon\n\n3. A 20-gon",
+      "solution": "Using $S = (n-2) \\cdot 180°$:\n\n1. Pentagon ($n=5$): $(5 - 2) \\cdot 180° = 3 \\cdot 180° = 540°$\n\n2. Octagon ($n=8$): $(8 - 2) \\cdot 180° = 6 \\cdot 180° = 1080°$\n\n3. 20-gon ($n=20$): $(20 - 2) \\cdot 180° = 18 \\cdot 180° = 3240°$"
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Finding number of sides from angle sum",
+      "problem": "A polygon has an interior angle sum of $1800°$. How many sides does \nit have?",
+      "solution": "We solve $(n-2) \\cdot 180° = 1800°$:\n$$\n (n-2) \\cdot 180 &= 1800 \\\\\n n - 2 &= 10 \\\\\n n &= 12\n$$\nThe polygon has 12 sides (a dodecagon)."
+    },
+    {
+      "type": "example",
+      "id": "example-6.3",
+      "number": "6.3",
+      "title": "Finding a missing angle",
+      "problem": "In pentagon $ABCDE$, angles $A$, $B$, $C$, and $D$ measure $108°$, \n$92°$, $135°$, and $87°$ respectively. Find $m\\angle E$.",
+      "solution": "The sum of interior angles in a pentagon is $(5-2) \\cdot 180° = 540°$.\n\nTherefore:\n$$\n 108° + 92° + 135° + 87° + m\\angle E &= 540° \\\\\n 422° + m\\angle E &= 540° \\\\\n m\\angle E &= 118°\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Regular Polygons"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.3",
+      "number": "6.3",
+      "title": "Regular Polygon",
+      "content": "A **regular polygon** is a polygon in \nwhich:\n\n- All sides are congruent (equilateral)\n\n- All angles are congruent (equiangular)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Regular polygons possess the highest degree of symmetry among all \npolygons with the same number of sides. The ancient Greeks were \nfascinated by regular polygons, seeing in their perfect symmetry \na reflection of divine order."
+    },
+    {
+      "type": "paragraph",
+      "text": "Since all angles of a regular $n$-gon are congruent, we can find \neach interior angle by dividing the total by $n$:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Interior Angle of a Regular Polygon",
+      "content": "Each interior angle of a regular $n$-gon measures:\n\\[\n \\frac{(n-2) \\cdot 180°}{n}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.4",
+      "number": "6.4",
+      "title": "Regular polygon angles",
+      "problem": "Find each interior angle of:\n\n1. A regular hexagon\n\n2. A regular decagon",
+      "solution": "1. Hexagon ($n=6$): \n $\\displaystyle\\frac{(6-2) \\cdot 180°}{6} = \\frac{720°}{6} = 120°$\n\n2. Decagon ($n=10$): \n $\\displaystyle\\frac{(10-2) \\cdot 180°}{10} = \\frac{1440°}{10} = 144°$"
+    },
+    {
+      "type": "example",
+      "id": "example-6.5",
+      "number": "6.5",
+      "title": "Finding sides from interior angle",
+      "problem": "Each interior angle of a regular polygon measures $150°$. How many \nsides does it have?",
+      "solution": "Using the formula $\\displaystyle\\frac{(n-2) \\cdot 180°}{n} = 150°$:\n$$\n (n-2) \\cdot 180 &= 150n \\\\\n 180n - 360 &= 150n \\\\\n 30n &= 360 \\\\\n n &= 12\n$$\nThe polygon has 12 sides (a regular dodecagon)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exterior Angles"
+    },
+    {
+      "type": "paragraph",
+      "text": "At each vertex of a polygon, an **exterior angle** \nis formed by one side and the extension of the adjacent side."
+    },
+    {
+      "type": "paragraph",
+      "text": "Notice that at each vertex, the interior angle and exterior angle \nare supplementary (they form a linear pair and sum to $180°$)."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.3",
+      "number": "6.3",
+      "title": "Exterior Angle Sum",
+      "content": "The sum of the exterior angles of any convex polygon (one at each \nvertex) is always:\n\\[\n 360°\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This remarkable theorem says that no matter how many sides a polygon \nhas—whether three or three hundred—its exterior angles always \nsum to exactly $360°$, one full rotation."
+    },
+    {
+      "type": "proof",
+      "content": "At each vertex, the interior and exterior angles are supplementary. \nFor an $n$-gon, the sum of all interior and exterior angle pairs is:\n\\[\n n \\cdot 180°\n\\]\nThe sum of interior angles is $(n-2) \\cdot 180°$. Therefore, the \nsum of exterior angles is:\n$$\n n \\cdot 180° - (n-2) \\cdot 180° &= 180°[n - (n-2)] \\\\\n &= 180° \\cdot 2 \\\\\n &= 360°\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-6.6",
+      "number": "6.6",
+      "title": "Exterior angles of regular polygons",
+      "problem": "Find each exterior angle of:\n\n1. A regular hexagon\n\n2. A regular 15-gon",
+      "solution": "Since all exterior angles of a regular polygon are congruent, each \nmeasures $\\displaystyle\\frac{360°}{n}$:\n\n1. Hexagon: $\\displaystyle\\frac{360°}{6} = 60°$\n\n2. 15-gon: $\\displaystyle\\frac{360°}{15} = 24°$"
+    },
+    {
+      "type": "example",
+      "id": "example-6.7",
+      "number": "6.7",
+      "title": "Using exterior angles to find sides",
+      "problem": "Each exterior angle of a regular polygon measures $20°$. How many \nsides does it have?",
+      "solution": "Since exterior angles sum to $360°$:\n\\[\n n = \\frac{360°}{20°} = 18\n\\]\nThe polygon has 18 sides."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Regular Tessellations"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **tessellation** (or **tiling**) is \nan arrangement of polygons that covers a plane with no gaps or \noverlaps. When can regular polygons tessellate?"
+    },
+    {
+      "type": "paragraph",
+      "text": "For regular polygons to fit around a point without gaps, their \ninterior angles must divide evenly into $360°$. This only works for:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Equilateral triangles ($60°$ × 6 = $360°$)",
+        "Squares ($90°$ × 4 = $360°$)",
+        "Regular hexagons ($120°$ × 3 = $360°$)"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "These are the only three regular polygons that tessellate the plane \nby themselves. The hexagonal tessellation appears in nature in \nhoneycombs—bees instinctively use the most efficient shape for \nstoring honey while using minimal wax."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:1",
+      "text": "There is a time for everything, \nand a season for every activity under heaven."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 4:25",
+      "text": "Let your eyes look straight ahead; \nfix your gaze directly before you."
+    },
+    {
+      "type": "scripture",
+      "reference": "Romans 11:36",
+      "text": "For from him and through him and \nfor him are all things."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 19:1",
+      "text": "The heavens declare the glory of God; \nthe skies proclaim the work of his hands."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:22",
+      "text": "He stretches out the heavens like a \ncanopy, and spreads them out like a tent to live in."
+    },
+    {
+      "type": "scripture",
+      "reference": "Genesis 1:31",
+      "text": "God saw all that he had made, and it \nwas very good."
+    },
+    {
+      "type": "quote",
+      "author": "Euclid",
+      "text": "The whole is greater than the part."
+    },
+    {
+      "type": "quote",
+      "author": "Plato",
+      "text": "God ever geometrizes."
+    },
+    {
+      "type": "quote",
+      "author": "Proclus",
+      "text": "The whole becomes known through its parts."
+    },
+    {
+      "type": "quote",
+      "author": "M.C. Escher",
+      "text": "We adore chaos because we love to produce order."
+    }
+  ]
+}

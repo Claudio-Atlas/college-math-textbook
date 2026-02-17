@@ -1,0 +1,80 @@
+{
+  "id": "linear-algebra-ch06-sec02",
+  "title": "The Characteristic Equation",
+  "chapter": 6,
+  "section": 2,
+  "book": "linear-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "{The lot is cast into the lap, but its every decision is from the Lord.}{Proverbs 16:33}\n {The theory of determinants is the central part of algebra.}{— Arthur Cayley}"
+    },
+    {
+      "type": "paragraph",
+      "text": "To find eigenvalues, we solve a polynomial equation derived from \nthe matrix."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Derivation"
+    },
+    {
+      "type": "paragraph",
+      "text": "From $A\\vect{v} = \\lambda\\vect{v}$ with $\\vect{v} \\neq \\vect{0}$:\n\\[\nA\\vect{v} - \\lambda\\vect{v} = \\vect{0} \\implies (A - \\lambda I)\\vect{v} = \\vect{0}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This has a nonzero solution iff $A - \\lambda I$ is singular, i.e., \n$\\det(A - \\lambda I) = 0$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Characteristic Polynomial and Equation",
+      "content": "The **characteristic polynomial** \nof an $n \\times n$ matrix $A$ is:\n\\[\np(\\lambda) = \\det(A - \\lambda I)\n\\]\nThe **characteristic equation** \nis $\\det(A - \\lambda I) = 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Finding eigenvalues",
+      "problem": "Find the eigenvalues of $A = \\begin{bmatrix} 4 & -2 \\\\ 1 & 1 \\end{bmatrix}$.",
+      "solution": "\\[\n\\det(A - \\lambda I) = \\det\\begin{bmatrix} 4-\\lambda & -2 \\\\ 1 & 1-\\lambda \\end{bmatrix}\n= (4-\\lambda)(1-\\lambda) + 2 = \\lambda^2 - 5\\lambda + 6\n\\]\nSetting $\\lambda^2 - 5\\lambda + 6 = 0$: $(\\lambda - 2)(\\lambda - 3) = 0$.\n\nEigenvalues: $\\lambda_1 = 2$, $\\lambda_2 = 3$."
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Finding eigenvectors",
+      "problem": "Find eigenvectors for the eigenvalues found above.",
+      "solution": "For $\\lambda = 2$: Solve $(A - 2I)\\vect{v} = \\vect{0}$:\n\\[\n\\begin{bmatrix} 2 & -2 \\\\ 1 & -1 \\end{bmatrix}\\vect{v} = \\vect{0}\n\\implies \\vect{v} = t\\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix}\n\\]\n\nFor $\\lambda = 3$: Solve $(A - 3I)\\vect{v} = \\vect{0}$:\n\\[\n\\begin{bmatrix} 1 & -2 \\\\ 1 & -2 \\end{bmatrix}\\vect{v} = \\vect{0}\n\\implies \\vect{v} = t\\begin{bmatrix} 2 \\\\ 1 \\end{bmatrix}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Multiplicity"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.2",
+      "number": "6.2",
+      "title": "Algebraic and Geometric Multiplicity",
+      "content": "- The **algebraic multiplicity** \n of eigenvalue $\\lambda$ is its multiplicity as a root of the \n characteristic polynomial.\n\n- The **geometric multiplicity** \n is $\\dim(E_\\lambda)$, the dimension of the eigenspace."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Multiplicity Inequality",
+      "content": "$1 \\leq \\text{geometric multiplicity} \\leq \\text{algebraic multiplicity}$",
+      "label": "Theorem"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 7:14",
+      "text": "In the day of prosperity be joyful, \nand in the day of adversity consider."
+    }
+  ]
+}

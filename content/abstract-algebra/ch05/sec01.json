@@ -1,0 +1,132 @@
+{
+  "id": "abstract-algebra-ch05-sec01",
+  "title": "Normal Subgroups",
+  "chapter": 5,
+  "section": 1,
+  "book": "abstract-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"There is neither Jew nor Gentile... for you are \nall one in Christ Jesus.\"*{Galatians 3:28}{*\"The study of symmetry is the heart of mathematics.\"*}{Hermann Weyl}\n\n*\"The study of symmetry is the heart of mathematics.\"*{— Hermann Weyl}"
+    },
+    {
+      "type": "paragraph",
+      "text": "A normal subgroup is one that is \"well-centered\" within its parent \ngroup—invariant under conjugation by any group element. This property \nis essential for constructing quotient groups."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition and Equivalent Conditions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Normal Subgroup",
+      "content": "A subgroup $N$ of $G$ is **normal** in $G$, \nwritten $N \\trianglelefteq G$, if for all $g \\in G$ and $n \\in N$:\n\\[\n gng^{-1} \\in N\n\\]\nEquivalently, $gNg^{-1} = N$ for all $g \\in G$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Equivalent Conditions for Normality",
+      "content": "For a subgroup $N \\leq G$, the following are equivalent:\n\n1. $N \\trianglelefteq G$\n\n2. $gN = Ng$ for all $g \\in G$ (left cosets equal right cosets)\n\n3. $gNg^{-1} \\subseteq N$ for all $g \\in G$\n\n4. $N$ is a union of conjugacy classes of $G$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We prove (i) $\\Leftrightarrow$ (ii).\n\n$(\\text{i}) \\Rightarrow (\\text{ii})$: If $gn \\in gN$, then \n$gn = (gng^{-1})g \\in Ng$ since $gng^{-1} \\in N$. Thus $gN \\subseteq Ng$. \nSimilarly, $Ng \\subseteq gN$.\n\n$(\\text{ii}) \\Rightarrow (\\text{i})$: If $gN = Ng$, then $gng^{-1} \\in \ngNg^{-1} = Ngg^{-1} = N$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Examples of Normal Subgroups"
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Normal subgroups in abelian groups",
+      "problem": "In any abelian group $G$, every subgroup is normal, since \n$gng^{-1} = gg^{-1}n = n \\in N$ for all $n \\in N$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "The alternating group $A_n \\trianglelefteq S_n$",
+      "problem": "$A_n$ is normal in $S_n$ because it has index $2$. Alternatively, \n$\\sigma A_n \\sigma^{-1} = A_n$ for all $\\sigma \\in S_n$ because \nconjugation preserves parity.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Non-normal subgroup",
+      "problem": "In $S_3$, let $H = \\{e, (1\\ 2)\\}$. Then \n$(1\\ 3)(1\\ 2)(1\\ 3)^{-1} = (1\\ 3)(1\\ 2)(1\\ 3) = (2\\ 3) \\notin H$.\nThus $H$ is not normal in $S_3$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Center and Commutator Subgroup"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.2",
+      "number": "5.2",
+      "title": "Center of a Group",
+      "content": "The **center** of $G$ is\n\\[\n Z(G) = \\{z \\in G : zg = gz \\text{ for all } g \\in G\\}\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "The Center is Normal",
+      "content": "For any group $G$, $Z(G) \\trianglelefteq G$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "For $z \\in Z(G)$ and $g \\in G$: $gzg^{-1} = zgg^{-1} = z \\in Z(G)$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.3",
+      "number": "5.3",
+      "title": "Commutator Subgroup",
+      "content": "The **commutator subgroup** (or derived \nsubgroup) of $G$ is\n\\[\n G' = [G, G] = \\langle aba^{-1}b^{-1} : a, b \\in G \\rangle\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.3",
+      "number": "5.3",
+      "title": "$G'$ is Normal",
+      "content": "For any group $G$, $G' \\trianglelefteq G$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Prove that if $N \\trianglelefteq G$ and $H \\leq G$, then \n $N \\cap H \\trianglelefteq H$.",
+        "Show that $Z(S_3) = \\{e\\}$.",
+        "Find the center of $D_4$ (the dihedral group of order $8$).",
+        "Prove that $SL_n(\\R) \\trianglelefteq GL_n(\\R)$.",
+        "Show that the only normal subgroups of $S_3$ are $\\{e\\}$, \n $A_3$, and $S_3$."
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 119:165",
+      "text": "Great peace have those who love your \nlaw, and nothing can make them stumble."
+    }
+  ]
+}

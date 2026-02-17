@@ -1,0 +1,96 @@
+{
+  "id": "real-analysis-ch03-sec02",
+  "title": "Convergence Tests",
+  "chapter": 3,
+  "section": 2,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Comparison Tests"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "Comparison Test",
+      "content": "Suppose $0 \\leq a_n \\leq b_n$ for all $n$.\n\n1. If $\\sum b_n$ converges, then $\\sum a_n$ converges.\n\n2. If $\\sum a_n$ diverges, then $\\sum b_n$ diverges.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(a) The partial sums of $\\sum a_n$ are increasing (since $a_n \\geq 0$) and \nbounded above by $\\sum b_n$. By the Monotone Convergence Theorem, $\\sum a_n$ \nconverges."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.2",
+      "number": "3.2",
+      "title": "Limit Comparison Test",
+      "content": "Suppose $a_n, b_n > 0$ and $\\displaystyle\\lim_{n \\to \\infty} \\frac{a_n}{b_n} = L$ \nwhere $0 < L < \\infty$. Then $\\sum a_n$ converges if and only if $\\sum b_n$ \nconverges.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Since $a_n/b_n \\to L > 0$, there exists $N$ such that $\\frac{L}{2} < \\frac{a_n}{b_n} < 2L$ \nfor $n \\geq N$. Thus $\\frac{L}{2}b_n < a_n < 2Lb_n$. Apply the comparison test."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Ratio and Root Tests"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.3",
+      "number": "3.3",
+      "title": "Ratio Test",
+      "content": "Let $\\sum a_n$ be a series with $a_n > 0$, and let \n$\\displaystyle L = \\lim_{n \\to \\infty} \\frac{a_{n+1}}{a_n}$ (if it exists).\n\n1. If $L < 1$, the series converges.\n\n2. If $L > 1$, the series diverges.\n\n3. If $L = 1$, the test is inconclusive.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(a) Suppose $L < 1$. Choose $r$ with $L < r < 1$. For large $n$, \n$a_{n+1}/a_n < r$, so $a_{n+1} < ra_n$. By induction, $a_{n+k} < r^k a_n$. \nThus $\\sum a_n$ converges by comparison with a geometric series.\n\n(b) If $L > 1$, then $a_{n+1} > a_n$ eventually, so $a_n \\not\\to 0$, and \nthe series diverges."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.4",
+      "number": "3.4",
+      "title": "Root Test",
+      "content": "Let $\\sum a_n$ be a series with $a_n \\geq 0$, and let \n$\\displaystyle L = \\limsup_{n \\to \\infty} \\sqrt[n]{a_n}$.\n\n1. If $L < 1$, the series converges.\n\n2. If $L > 1$, the series diverges.\n\n3. If $L = 1$, the test is inconclusive.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(a) If $L < 1$, choose $r$ with $L < r < 1$. Then $\\sqrt[n]{a_n} < r$ for \nlarge $n$, so $a_n < r^n$. Compare with the geometric series."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Integral Test"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.5",
+      "number": "3.5",
+      "title": "Integral Test",
+      "content": "Let $f$ be a positive, decreasing function on $[1, \\infty)$ with \n$f(n) = a_n$. Then $\\sum_{n=1}^{\\infty} a_n$ converges if and only if \n$\\int_1^{\\infty} f(x)\\,dx$ converges.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Since $f$ is decreasing, $f(n+1) \\leq f(x) \\leq f(n)$ for $x \\in [n, n+1]$.\nIntegrating:\n\\[\nf(n+1) \\leq \\int_n^{n+1} f(x)\\,dx \\leq f(n).\n\\]\nSumming from $n = 1$ to $N$:\n\\[\n\\sum_{n=2}^{N+1} a_n \\leq \\int_1^{N+1} f(x)\\,dx \\leq \\sum_{n=1}^{N} a_n.\n\\]\nThus the partial sums and partial integrals are bounded together."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.6",
+      "number": "3.6",
+      "title": "$p$-Series",
+      "content": "The series $\\displaystyle\\sum_{n=1}^{\\infty} \\frac{1}{n^p}$ converges if \n$p > 1$ and diverges if $p \\leq 1$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Apply the integral test: $\\int_1^{\\infty} x^{-p}\\,dx$ converges iff $p > 1$."
+    }
+  ]
+}

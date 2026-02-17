@@ -1,0 +1,315 @@
+{
+  "id": "numerical-analysis-ch06-sec04",
+  "title": "Gaussian Quadrature",
+  "chapter": 6,
+  "section": 4,
+  "book": "numerical-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Newton-Cotes formulas fix the nodes at equally-spaced points and then determine optimal weights. But what if we could choose *both* the nodes and the weights? Gaussian quadrature answers this question, achieving remarkably high accuracy with few function evaluations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Maximum Degree of Precision"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Degree of Precision Upper Bound",
+      "content": "Any quadrature rule $Q_n[f] = \\sum_{i=0}^{n} w_i f(x_i)$ with $n+1$ nodes has degree of precision at most $2n + 1$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "A quadrature rule with $n + 1$ nodes has $2(n+1) = 2n + 2$ free parameters: the nodes $x_0, \\ldots, x_n$ and the weights $w_0, \\ldots, w_n$.\n\nFor the rule to be exact for $f(x) = 1, x, x^2, \\ldots, x^d$, we need\n\\[\n\\sum_{i=0}^{n} w_i x_i^k = \\int_a^b x^k\\,dx \\quad \\text{for } k = 0, 1, \\ldots, d\n\\]\nThese are $d + 1$ equations. With $2n + 2$ parameters, we can hope to satisfy at most $2n + 2$ equations, corresponding to $d = 2n + 1$.\n\nTo see this bound is tight, consider the polynomial $p(x) = \\prod_{i=0}^{n}(x - x_i)^2$ of degree $2n + 2$. Since $p(x) \\geq 0$ and $p(x_i) = 0$ for all nodes:\n\\[\nQ_n[p] = \\sum_{i=0}^{n} w_i p(x_i) = 0\n\\]\nBut $\\int_a^b p(x)\\,dx > 0$ since $p$ is positive except at finitely many points. Thus no $n+1$-point rule can be exact for all polynomials of degree $2n + 2$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Gaussian Quadrature Achieves Maximum Precision",
+      "content": "There exist unique nodes $x_0, \\ldots, x_n \\in (a, b)$ and positive weights $w_0, \\ldots, w_n$ such that\n\\[\nQ_n[f] = \\sum_{i=0}^{n} w_i f(x_i)\n\\]\nhas degree of precision exactly $2n + 1$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Orthogonal Polynomials and Gauss Nodes"
+    },
+    {
+      "type": "paragraph",
+      "text": "The key to finding optimal nodes is the theory of orthogonal polynomials."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Orthogonal Polynomials",
+      "content": "Polynomials $\\{P_n(x)\\}_{n=0}^{\\infty}$ are **orthogonal** on $[a, b]$ with respect to weight function $w(x) > 0$ if\n\\[\n\\int_a^b w(x) P_m(x) P_n(x)\\,dx = 0 \\quad \\text{whenever } m \\neq n\n\\]\nand each $P_n$ has degree exactly $n$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.3",
+      "number": "6.3",
+      "title": "Legendre Polynomials",
+      "content": "The **Legendre polynomials** $\\{P_n(x)\\}$ are orthogonal on $[-1, 1]$ with weight $w(x) = 1$:\n\\[\n\\int_{-1}^{1} P_m(x) P_n(x)\\,dx = \\begin{cases} 0 & m \\neq n \\\\ \\frac{2}{2n+1} & m = n \\end{cases}\n\\]\nThey satisfy the recurrence:\n$$\n\n(n+1)P_{n+1}(x) = (2n+1)xP_n(x) - nP_{n-1}(x)\n$$\nwith $P_0(x) = 1$ and $P_1(x) = x$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The first several Legendre polynomials are:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$P_0(x) &= 1 \\\\\nP_1(x) &= x \\\\\nP_2(x) &= \\frac{1}{2}(3x^2 - 1) \\\\\nP_3(x) &= \\frac{1}{2}(5x^3 - 3x) \\\\\nP_4(x) &= \\frac{1}{8}(35x^4 - 30x^2 + 3) \\\\\nP_5(x) &= \\frac{1}{8}(63x^5 - 70x^3 + 15x)$$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.4",
+      "number": "6.4",
+      "title": "Gauss-Legendre Nodes",
+      "content": "The $n+1$ nodes for Gauss-Legendre quadrature on $[-1, 1]$ are the roots of the Legendre polynomial $P_{n+1}(x)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $x_0, \\ldots, x_n$ be the roots of $P_{n+1}(x)$. For any polynomial $q(x)$ of degree $\\leq 2n + 1$, divide by $P_{n+1}$:\n\\[\nq(x) = P_{n+1}(x) \\cdot s(x) + r(x)\n\\]\nwhere $\\deg(s) \\leq n$ and $\\deg(r) \\leq n$.\n\nThen:\n\\[\n\\int_{-1}^{1} q(x)\\,dx = \\int_{-1}^{1} P_{n+1}(x) s(x)\\,dx + \\int_{-1}^{1} r(x)\\,dx\n\\]\n\nThe first integral vanishes by orthogonality: $P_{n+1}$ is orthogonal to all polynomials of degree $\\leq n$.\n\nFor the second integral, since $r$ has degree $\\leq n$, we can interpolate it exactly at $n + 1$ points. Choosing the roots of $P_{n+1}$ and using Lagrange interpolation:\n\\[\n\\int_{-1}^{1} r(x)\\,dx = \\sum_{i=0}^{n} w_i r(x_i) = \\sum_{i=0}^{n} w_i q(x_i)\n\\]\nsince $q(x_i) = r(x_i)$ (as $P_{n+1}(x_i) = 0$)."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.5",
+      "number": "6.5",
+      "title": "Gauss-Legendre Weights",
+      "content": "The weights for Gauss-Legendre quadrature are\n$$\n\nw_i = \\frac{2}{(1 - x_i^2)[P_{n+1}'(x_i)]^2}\n$$\nwhere $x_i$ are the roots of $P_{n+1}(x)$. All weights are positive.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The weight $w_i$ equals $\\int_{-1}^{1} L_i(x)^2\\,dx$ where $L_i$ is the Lagrange basis polynomial. Since $L_i^2 \\geq 0$ and is positive on an interval, $w_i > 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Gauss-Legendre Tables"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "$n+1$",
+        "Nodes $x_i$",
+        "Weights $w_i$"
+      ],
+      "rows": [
+        [
+          "1",
+          "$0$",
+          "$2$"
+        ],
+        [
+          "2",
+          "$\\pm \\frac{1}{\\sqrt{3}} \\approx \\pm 0.57735$",
+          "$1$"
+        ],
+        [
+          "3",
+          "$0$",
+          "$\\frac{8}{9} \\approx 0.88889$"
+        ],
+        [
+          "",
+          "$\\pm \\sqrt{\\frac{3}{5}} \\approx \\pm 0.77460$",
+          "$\\frac{5}{9} \\approx 0.55556$"
+        ],
+        [
+          "4",
+          "$\\pm \\sqrt{\\frac{3 - 2\\sqrt{6/5}}{7}} \\approx \\pm 0.33998$",
+          "$\\frac{18 + \\sqrt{30}}{36} \\approx 0.65215$"
+        ],
+        [
+          "",
+          "$\\pm \\sqrt{\\frac{3 + 2\\sqrt{6/5}}{7}} \\approx \\pm 0.86114$",
+          "$\\frac{18 - \\sqrt{30}}{36} \\approx 0.34785$"
+        ],
+        [
+          "5",
+          "$0$",
+          "$\\frac{128}{225} \\approx 0.56889$"
+        ],
+        [
+          "",
+          "$\\pm \\frac{1}{3}\\sqrt{5 - 2\\sqrt{10/7}} \\approx \\pm 0.53847$",
+          "$\\frac{322 + 13\\sqrt{70}}{900} \\approx 0.47863$"
+        ],
+        [
+          "",
+          "$\\pm \\frac{1}{3}\\sqrt{5 + 2\\sqrt{10/7}} \\approx \\pm 0.90618$",
+          "$\\frac{322 - 13\\sqrt{70}}{900} \\approx 0.23693$"
+        ]
+      ],
+      "alignment": [
+        "center",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Change of Interval"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.6",
+      "number": "6.6",
+      "title": "Transformation to $[a, b",
+      "content": "$]\n\nTo apply Gauss-Legendre quadrature on $[a, b]$, use the linear transformation\n__MATH_BLOCK_0__\nmapping $t [-1, 1]$ to $x [a, b]$. Then:\n$$\n\n\\int_a^b f(x)\\,dx = \\frac{b-a}{2} \\int_{-1}^{1} f\\left(\\frac{b-a}{2}t + \\frac{a+b}{2}\\right)dt \\approx \\frac{b-a}{2} \\sum_{i=0}^{n} w_i f\\left(\\frac{b-a}{2}t_i + \\frac{a+b}{2}\\right)\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Gauss-Legendre Quadrature",
+      "problem": "Approximate $\\int_0^1 e^{-x^2}\\,dx$ using 3-point Gauss-Legendre quadrature.",
+      "solution": "Transform: $x = \\frac{1}{2}t + \\frac{1}{2}$, so $dx = \\frac{1}{2}dt$.\n\\[\n\\int_0^1 e^{-x^2}\\,dx = \\frac{1}{2}\\int_{-1}^{1} e^{-(t/2 + 1/2)^2}\\,dt\n\\]\n\nThe 3-point nodes and weights are:\n\n- $t_0 = 0$, $w_0 = 8/9$\n\n- $t_1 = -\\sqrt{3/5} \\approx -0.7746$, $w_1 = 5/9$\n\n- $t_2 = +\\sqrt{3/5} \\approx +0.7746$, $w_2 = 5/9$\n\nTransform to $[0, 1]$: $x_i = \\frac{t_i + 1}{2}$\n\n- $x_0 = 0.5$, $f(x_0) = e^{-0.25} \\approx 0.7788$\n\n- $x_1 \\approx 0.1127$, $f(x_1) = e^{-0.0127} \\approx 0.9874$\n\n- $x_2 \\approx 0.8873$, $f(x_2) = e^{-0.7873} \\approx 0.4550$\n\nThe approximation:\n\\[\n\\frac{1}{2}\\left[\\frac{8}{9}(0.7788) + \\frac{5}{9}(0.9874) + \\frac{5}{9}(0.4550)\\right] = \\frac{1}{2}(0.6923 + 0.5486 + 0.2528) = 0.7468\n\\]\n\nThis matches the exact value to 4 decimal places with only 3 function evaluations!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Error Analysis"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.7",
+      "number": "6.7",
+      "title": "Gauss-Legendre Error",
+      "content": "For $(n+1)$-point Gauss-Legendre quadrature on $[-1, 1]$:\n$$\n\n\\int_{-1}^{1} f(x)\\,dx - Q_n[f] = \\frac{2^{2n+3}[(n+1)!]^4}{(2n+3)[(2n+2)!]^3} f^{(2n+2)}(\\xi)\n$$\nfor some $\\xi \\in (-1, 1)$, assuming $f \\in C^{2n+2}[-1, 1]$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Comparison with Simpson's Rule",
+      "problem": "Compare 3-point Gauss-Legendre with Simpson's rule (also 3 points) for $\\int_{-1}^{1} e^x\\,dx$.",
+      "solution": "**Simpson's rule:** Uses nodes $-1, 0, 1$ with weights $1/3, 4/3, 1/3$:\n\\[\nS = \\frac{1}{3}(e^{-1} + 4e^0 + e^1) = \\frac{1}{3}(0.3679 + 4 + 2.7183) = 2.3621\n\\]\nError: $|e^1 - e^{-1} - 2.3621| = |2.3504 - 2.3621| = 0.0117$\n\n**Gauss-Legendre:** Uses nodes $0, \\pm\\sqrt{3/5}$ with weights $8/9, 5/9, 5/9$:\n$$\nG &= \\frac{8}{9}e^0 + \\frac{5}{9}e^{-\\sqrt{3/5}} + \\frac{5}{9}e^{\\sqrt{3/5}} \\\\\n&= \\frac{8}{9}(1) + \\frac{5}{9}(0.4604) + \\frac{5}{9}(2.1722) \\\\\n&= 0.8889 + 0.2558 + 1.2068 = 2.3514\n$$\nError: $|2.3504 - 2.3514| = 0.0010$\n\nGauss-Legendre is about 12 times more accurate with the same number of function evaluations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Other Gaussian Quadrature Rules"
+    },
+    {
+      "type": "paragraph",
+      "text": "Different weight functions lead to different families of orthogonal polynomials and quadrature rules."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.2",
+      "number": "6.2",
+      "title": "Gauss-Chebyshev Quadrature",
+      "content": "For integrals of the form $\\int_{-1}^{1} \\frac{f(x)}{\\sqrt{1-x^2}}\\,dx$, use nodes at the roots of Chebyshev polynomials $T_{n+1}(x)$:\n\\[\nx_k = \\cos\\left(\\frac{2k+1}{2n+2}\\pi\\right), \\quad w_k = \\frac{\\pi}{n+1}\n\\]\nAll weights are equal!"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.3",
+      "number": "6.3",
+      "title": "Gauss-Laguerre Quadrature",
+      "content": "For integrals of the form $\\int_0^{\\infty} e^{-x} f(x)\\,dx$, use nodes at the roots of Laguerre polynomials $L_{n+1}(x)$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.4",
+      "number": "6.4",
+      "title": "Gauss-Hermite Quadrature",
+      "content": "For integrals of the form $\\int_{-\\infty}^{\\infty} e^{-x^2} f(x)\\,dx$, use nodes at the roots of Hermite polynomials $H_{n+1}(x)$."
+    },
+    {
+      "type": "table",
+      "headers": [
+        "Name",
+        "Interval",
+        "Weight $w(x)$",
+        "Orthogonal Polynomials"
+      ],
+      "rows": [
+        [
+          "Gauss-Legendre",
+          "$[-1, 1]$",
+          "$1$",
+          "Legendre $P_n(x)$"
+        ],
+        [
+          "Gauss-Chebyshev",
+          "$[-1, 1]$",
+          "$(1-x^2)^{-1/2}$",
+          "Chebyshev $T_n(x)$"
+        ],
+        [
+          "Gauss-Laguerre",
+          "$[0, \\infty)$",
+          "$e^{-x}$",
+          "Laguerre $L_n(x)$"
+        ],
+        [
+          "Gauss-Hermite",
+          "$(-\\infty, \\infty)$",
+          "$e^{-x^2}$",
+          "Hermite $H_n(x)$"
+        ],
+        [
+          "Gauss-Jacobi",
+          "$[-1, 1]$",
+          "$(1-x)^\\alpha(1+x)^\\beta$",
+          "Jacobi $P_n^{(\\alpha,\\beta)}(x)$"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "center",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Composite Gaussian Quadrature"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.5",
+      "number": "6.5",
+      "title": "Composite Gauss-Legendre",
+      "content": "For higher accuracy, partition $[a, b]$ into subintervals and apply Gaussian quadrature to each:\n\\[\n\\int_a^b f(x)\\,dx \\approx \\sum_{j=1}^{m} \\frac{h}{2}\\sum_{i=0}^{n} w_i f\\left(\\frac{h}{2}t_i + x_{j-1/2}\\right)\n\\]\nwhere $h = (b-a)/m$ and $x_{j-1/2}$ is the midpoint of the $j$-th subinterval."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.8",
+      "number": "6.8",
+      "title": "Composite Gauss-Legendre Error",
+      "content": "Composite $(n+1)$-point Gauss-Legendre quadrature on $m$ subintervals has error $O(h^{2n+2})$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Historical Note"
+    },
+    {
+      "type": "historical",
+      "id": "historical-6.4",
+      "number": null,
+      "title": "Carl Friedrich Gauss (1777--1855)",
+      "content": "Gauss developed his quadrature formula around 1814, but did not publish it until 1816. He proved the remarkable result that $n$ optimally-chosen nodes could exactly integrate polynomials of degree $2n-1$—twice the degree possible with equally-spaced nodes. The connection to orthogonal polynomials was later clarified by Jacobi. Gauss's insight that the *location* of sample points matters as much as their number revolutionized numerical integration."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ]
+}

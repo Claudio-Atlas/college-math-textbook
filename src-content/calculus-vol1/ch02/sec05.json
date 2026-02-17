@@ -1,0 +1,350 @@
+{
+  "id": "vol1-ch02-sec05",
+  "title": "Limits at Infinity and Horizontal Asymptotes",
+  "chapter": 2,
+  "section": 5,
+  "book": "vol1",
+  "epigraph": {
+    "text": "He has made everything beautiful in its time. He has also set eternity in the human heart; yet no one can fathom what God has done from beginning to end.",
+    "reference": "Ecclesiastes 3:11",
+    "quote": "The infinite! No other question has ever moved so profoundly the spirit of man.",
+    "quoteAuthor": "David Hilbert"
+  },
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Looking Far Away"
+    },
+    {
+      "type": "paragraph",
+      "text": "In Section 2.4, we studied what happens when a function's *output* blows\nup—the values escape to infinity near a finite trouble spot. Now we ask\nthe complementary question: what happens to the output when the *input*\ngoes to infinity? If we travel far, far along the $x$-axis, does the function\neventually settle down?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us be perfectly clear about the distinction, because students often\nconfuse these two ideas:"
+    },
+    {
+      "type": "warning",
+      "id": "warning-2.5",
+      "number": null,
+      "title": "The Two Infinities --- Do Not Confuse Them!",
+      "content": "**Infinite limits** (Section 2.4):\n\n$x \\to a$ (input approaches a finite number)\n$f(x) \\to \\pm\\infty$ (output blows up)\nGraphical signature: **vertical asymptote** at $x = a$.\n\n**Limits at infinity** (this section):\n\n$x \\to \\pm\\infty$ (input goes to infinity)\n$f(x) \\to L$ (output settles down to a finite number)\nGraphical signature: **horizontal asymptote** at $y = L$.\n\n**Memory aid:** \"Infinite limit\" $=$ *infinite output*.\n\"Limit at infinity\" $=$ *at infinite input*.\nThe word *at* tells you which quantity is going to infinity."
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider the function $f(x) = \\dfrac{1}{x}$. We already know (from\nSection 2.4) that $f$ has a vertical asymptote at $x = 0$. But what\nhappens on the other end—as $x$ grows very large?"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "$x$",
+        "$1/x$",
+        "$x$",
+        "$1/x$"
+      ],
+      "rows": [
+        [
+          "$10$",
+          "$0.1$",
+          "$-10$",
+          "$-0.1$"
+        ],
+        [
+          "$100$",
+          "$0.01$",
+          "$-100$",
+          "$-0.01$"
+        ],
+        [
+          "$1{,}000$",
+          "$0.001$",
+          "$-1{,}000$",
+          "$-0.001$"
+        ],
+        [
+          "$10{,}000$",
+          "$0.0001$",
+          "$-10{,}000$",
+          "$-0.0001$"
+        ]
+      ],
+      "alignment": [
+        "right",
+        "right",
+        "right",
+        "right"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "As $x$ grows without bound in either direction, $f(x)$ approaches $0$. The\nfunction settles down; the line $y = 0$ acts like a \"landing strip\" that\nthe graph approaches but never quite reaches. We write:\n\\[\n \\limto{x \\to \\infty} \\frac{1}{x} = 0,\n \\qquad\n \\limto{x \\to -\\infty} \\frac{1}{x} = 0.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Formal Definitions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Limit at Infinity",
+      "content": "Let $f$ be a function defined on some interval $(a, \\infty)$. We write\n\\[\n \\limto{x \\to \\infty} f(x) = L\n\\]\nif for every $\\varepsilon > 0$ there exists a number $N$ such that\n\\[\n x > N \\implies \\abs{f(x) - L} < \\varepsilon.\n\\]\nIn words: we can make $f(x)$ as close to $L$ as we wish by taking $x$\nsufficiently large.\n\nSimilarly, $\\limto{x \\to -\\infty} f(x) = L$ means that for every\n$\\varepsilon > 0$ there exists a number $N$ such that\n$x < N \\implies \\abs{f(x) - L} < \\varepsilon$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "Horizontal Asymptote",
+      "content": "The line $y = L$ is a **horizontal asymptote** of the graph of $f$ if\n\\[\n \\limto{x \\to \\infty} f(x) = L\n \\qquad\\text{or}\\qquad\n \\limto{x \\to -\\infty} f(x) = L\n \\qquad\\text{(or both).}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Note two important facts:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "A function can have *at most two* horizontal asymptotes—one as\n $x \\to \\infty$ and one as $x \\to -\\infty$. (It could have zero, one,\n or two.) This contrasts with vertical asymptotes, of which a function\n may have infinitely many (consider $\\tan x$).",
+        "A function *can* cross a horizontal asymptote. The HA describes\n *end behavior*—what happens far out along the $x$-axis. Near\n the origin, the function may cross the line $y = L$ freely."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Fundamental Building Block"
+    },
+    {
+      "type": "paragraph",
+      "text": "The following result is the key to evaluating almost every limit at infinity\nfor rational functions:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Limits of $1/x^n$ at Infinity",
+      "content": "For any positive integer $n$,\n\\[\n \\limto{x \\to \\infty} \\frac{1}{x^n} = 0\n \\qquad\\text{and}\\qquad\n \\limto{x \\to -\\infty} \\frac{1}{x^n} = 0.\n\\]\nMore generally, for any positive real number $r$,\n$\\limto{x \\to \\infty} \\dfrac{1}{x^r} = 0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This theorem, combined with limit laws (which apply to limits at infinity\njust as they do to ordinary limits), is the basis of the master technique\nfor rational functions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Master Technique: Divide by the Highest Power"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-2.5",
+      "number": null,
+      "title": "Limits at Infinity for Rational Functions",
+      "content": "To evaluate $\\limto{x \\to \\infty} \\dfrac{p(x)}{q(x)}$ where $p$ and $q$ are\npolynomials, **divide every term in the numerator and denominator by\nthe highest power of $x$ appearing in the denominator.** Then apply\nTheorem [thm:one-over-xn]: every term with $x$ in the denominator\nvanishes, and you are left with the answer."
+    },
+    {
+      "type": "paragraph",
+      "text": "This technique yields a clean rule that depends only on comparing the\n*degrees* of the numerator and denominator:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Horizontal Asymptotes of Rational Functions",
+      "content": "Let $f(x) = \\dfrac{a_n x^n + \\cdots + a_0}{b_m x^m + \\cdots + b_0}$ with\n$a_n \\ne 0$ and $b_m \\ne 0$.\n\n1. If $n < m$ (degree of numerator $<$ degree of denominator), then\n \\[\n \\limto{x \\to \\pm\\infty} f(x) = 0.\n \\]\n Horizontal asymptote: $y = 0$.\n\n2. If $n = m$ (degrees equal), then\n \\[\n \\limto{x \\to \\pm\\infty} f(x) = \\frac{a_n}{b_m}.\n \\]\n Horizontal asymptote: $y = a_n / b_m$ (ratio of leading coefficients).\n\n3. If $n > m$ (degree of numerator $>$ degree of denominator), then\n \\[\n \\limto{x \\to \\pm\\infty} f(x) = \\pm\\infty.\n \\]\n No horizontal asymptote. The function grows without bound.",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-2.5",
+      "number": null,
+      "title": "The Rule Is a Shortcut, Not a Replacement",
+      "content": "The degree-comparison rule in Theorem [thm:rational-ha] is a wonderful\nshortcut, but you should understand *why* it works (the divide-by-highest-power\ntechnique) and be able to carry out the full calculation when asked.\nOn exams, you may be required to show the work, not just state the rule."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Worked Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Degree of numerator less than denominator",
+      "problem": "Evaluate $\\limto{x \\to \\infty} \\dfrac{2x + 5}{x^2 - 3}$.",
+      "solution": "The highest power of $x$ in the denominator is $x^2$. Divide every term by $x^2$:\n\\[\n \\frac{2x + 5}{x^2 - 3}\n = \\frac{\\dfrac{2x}{x^2} + \\dfrac{5}{x^2}}{\\dfrac{x^2}{x^2} - \\dfrac{3}{x^2}}\n = \\frac{\\dfrac{2}{x} + \\dfrac{5}{x^2}}{1 - \\dfrac{3}{x^2}}.\n\\]\nAs $x \\to \\infty$, each term with $x$ in the denominator approaches $0$:\n\\[\n \\limto{x \\to \\infty} \\frac{\\dfrac{2}{x} + \\dfrac{5}{x^2}}{1 - \\dfrac{3}{x^2}}\n = \\frac{0 + 0}{1 - 0} = 0.\n\\]\nThis confirms case (i) of Theorem [thm:rational-ha]: degree $1 <$ degree $2$,\nso the horizontal asymptote is $y = 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Equal degrees --- the most common case",
+      "problem": "Evaluate $\\limto{x \\to \\infty} \\dfrac{3x^2 + 1}{5x^2 - 2}$.",
+      "solution": "The highest power of $x$ in the denominator is $x^2$. Divide every term by $x^2$:\n\\[\n \\frac{3x^2 + 1}{5x^2 - 2}\n = \\frac{3 + \\dfrac{1}{x^2}}{5 - \\dfrac{2}{x^2}}.\n\\]\nAs $x \\to \\infty$:\n\\[\n \\limto{x \\to \\infty} \\frac{3 + \\dfrac{1}{x^2}}{5 - \\dfrac{2}{x^2}}\n = \\frac{3 + 0}{5 - 0} = \\frac{3}{5}.\n\\]\nThe horizontal asymptote is $y = 3/5$. Note that this is simply the ratio\nof the leading coefficients, exactly as Theorem [thm:rational-ha](ii)\npredicts.\n\nThe same computation works for $x \\to -\\infty$, since $1/x^2 \\to 0$ regardless\nof the sign of $x$. So the horizontal asymptote is the same on both sides."
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Degree of numerator greater than denominator",
+      "problem": "Evaluate $\\limto{x \\to \\infty} \\dfrac{x^3 - 2x}{4x^2 + 1}$.",
+      "solution": "Divide every term by $x^2$ (the highest power in the denominator):\n\\[\n \\frac{x^3 - 2x}{4x^2 + 1}\n = \\frac{x - \\dfrac{2}{x}}{4 + \\dfrac{1}{x^2}}.\n\\]\nAs $x \\to \\infty$, the numerator $\\to \\infty$ while the denominator $\\to 4$.\nTherefore:\n\\[\n \\limto{x \\to \\infty} \\frac{x^3 - 2x}{4x^2 + 1} = \\infty.\n\\]\nThere is no horizontal asymptote. The function grows without bound as\n$x \\to \\infty$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "Both vertical and horizontal asymptotes",
+      "problem": "Find *all* asymptotes of $f(x) = \\dfrac{2x - 1}{x + 3}$ and evaluate\nthe relevant limits.",
+      "solution": "**Horizontal asymptote:** The numerator and denominator both have\ndegree $1$. By Theorem [thm:rational-ha](ii):\n\\[\n \\limto{x \\to \\infty} \\frac{2x - 1}{x + 3} = \\frac{2}{1} = 2,\n \\qquad\n \\limto{x \\to -\\infty} \\frac{2x - 1}{x + 3} = 2.\n\\]\nHorizontal asymptote: $y = 2$.\n\n**Vertical asymptote:** The denominator is zero at $x = -3$, and the\nnumerator $2(-3) - 1 = -7 \\ne 0$, so $x = -3$ is a vertical asymptote.\n\n- As $x \\to -3^+$: $(x + 3) \\to 0^+$ and numerator $\\to -7$.\n So $f(x) \\to \\dfrac{-7}{0^+} = -\\infty$.\n\n- As $x \\to -3^-$: $(x + 3) \\to 0^-$ and numerator $\\to -7$.\n So $f(x) \\to \\dfrac{-7}{0^-} = +\\infty$.\n\nThis function has one vertical asymptote ($x = -3$) and one horizontal\nasymptote ($y = 2$). The graph approaches the horizontal line $y = 2$ far\nto the left and far to the right, while blowing up near $x = -3$."
+    },
+    {
+      "type": "historical",
+      "id": "historical-2.5",
+      "number": null,
+      "title": "Pierre de Fermat (1601--1665)",
+      "content": "Long before the formal development of limits, Pierre de Fermat—a French\nlawyer and amateur mathematician—developed methods for finding tangent lines\nand maxima/minima that implicitly used limiting processes. Fermat also studied\nthe curve $y = 1/x$ (the \"hyperbola of Fermat\") and investigated the area\nunder it, discovering what we now recognize as the connection between the\nhyperbola and the natural logarithm. His work on the long-run behavior of\ncurves anticipated the modern study of asymptotes. Fermat was a devout Catholic\nwho saw mathematics as a noble pursuit of truth, famously scribbling his most\ntantalizing conjecture—Fermat's Last Theorem—in the margin of his copy of\nDiophantus."
+    },
+    {
+      "type": "example",
+      "id": "example-2.5",
+      "number": "2.5",
+      "title": "A limit at infinity involving a square root",
+      "problem": "Evaluate $\\limto{x \\to \\infty} \\bigl(\\sqrt{x^2 + 4x} - x\\bigr)$.",
+      "solution": "This is an \"$\\infty - \\infty$\" indeterminate form. As $x \\to \\infty$,\nboth $\\sqrt{x^2 + 4x}$ and $x$ go to infinity, so we cannot simply subtract.\n\nThe technique is to **rationalize**—multiply and divide by the conjugate:\n\\[\n \\sqrt{x^2 + 4x} - x\n = \\frac{\\bigl(\\sqrt{x^2 + 4x} - x\\bigr)\\bigl(\\sqrt{x^2 + 4x} + x\\bigr)}\n {\\sqrt{x^2 + 4x} + x}\n = \\frac{(x^2 + 4x) - x^2}{\\sqrt{x^2 + 4x} + x}\n = \\frac{4x}{\\sqrt{x^2 + 4x} + x}.\n\\]\nNow divide numerator and denominator by $x$ (which is positive for $x \\to \\infty$):\n\\[\n = \\frac{4}{\\dfrac{\\sqrt{x^2 + 4x}}{x} + 1}\n = \\frac{4}{\\sqrt{1 + \\dfrac{4}{x}} + 1}.\n\\]\nAs $x \\to \\infty$, $\\dfrac{4}{x} \\to 0$, so:\n\\[\n \\limto{x \\to \\infty} \\bigl(\\sqrt{x^2 + 4x} - x\\bigr)\n = \\frac{4}{\\sqrt{1 + 0} + 1} = \\frac{4}{2} = 2.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-2.6",
+      "number": "2.6",
+      "title": "Exponential decay",
+      "problem": "Evaluate $\\limto{x \\to \\infty} (3 + 5e^{-x})$.",
+      "solution": "Recall that $e^{-x} = \\dfrac{1}{e^x}$. As $x \\to \\infty$, $e^x$ grows\nwithout bound, so $e^{-x} \\to 0$. Therefore:\n\\[\n \\limto{x \\to \\infty} (3 + 5e^{-x}) = 3 + 5(0) = 3.\n\\]\nThe line $y = 3$ is a horizontal asymptote. Physically, if this function\nmodels a cooling process, the object approaches a steady-state temperature\nof $3$ (in whatever units).\n\nWhat about $x \\to -\\infty$? As $x \\to -\\infty$, $e^{-x} = e^{|x|} \\to \\infty$,\nso $3 + 5e^{-x} \\to \\infty$. There is no horizontal asymptote on the left—the\nfunction grows without bound. This function has *different* behavior at\n$+\\infty$ and $-\\infty$, which is why we must check both directions."
+    },
+    {
+      "type": "example",
+      "id": "example-2.7",
+      "number": "2.7",
+      "title": "A slant (oblique) asymptote",
+      "problem": "Find all asymptotes of $f(x) = \\dfrac{x^2 + 2x + 1}{x - 1}$.",
+      "solution": "**Vertical asymptote:** The denominator is zero at $x = 1$, and\n$p(1) = 1 + 2 + 1 = 4 \\ne 0$, so $x = 1$ is a vertical asymptote.\n\n**Horizontal asymptote:** The degree of the numerator ($2$) is\ngreater than the degree of the denominator ($1$), so by\nTheorem [thm:rational-ha](iii), there is *no* horizontal asymptote.\n\nBut something more interesting is happening. When the degree of the numerator\nexceeds the degree of the denominator by *exactly one*, the graph\napproaches a *slant* (oblique) asymptote—a line $y = mx + b$.\n\nTo find it, perform polynomial long division:\n\\[\n \\frac{x^2 + 2x + 1}{x - 1} = x + 3 + \\frac{4}{x - 1}.\n\\]\nAs $x \\to \\pm\\infty$, the remainder term $\\dfrac{4}{x - 1} \\to 0$, so\n\\[\n f(x) \\approx x + 3 \\qquad \\text{for large } \\abs{x}.\n\\]\nThe line $y = x + 3$ is a **slant asymptote**. The graph of $f$\napproaches this line as $x \\to \\pm\\infty$, getting ever closer but never\nquite coinciding.\n\n**Summary of asymptotes:**\n\n- Vertical asymptote: $x = 1$\n\n- Slant asymptote: $y = x + 3$\n\n- No horizontal asymptote"
+    },
+    {
+      "type": "example",
+      "id": "example-2.8",
+      "number": "2.8",
+      "title": "Complete asymptote analysis",
+      "problem": "Find all asymptotes of $f(x) = \\dfrac{3x^2 - 12}{x^2 - x - 2}$ and\ndescribe the end behavior.",
+      "solution": "Factor:\n\\[\n f(x) = \\frac{3(x^2 - 4)}{(x - 2)(x + 1)}\n = \\frac{3(x - 2)(x + 2)}{(x - 2)(x + 1)}.\n\\]\nCancel $(x - 2)$:\n\\[\n f(x) = \\frac{3(x + 2)}{x + 1}, \\qquad x \\ne 2.\n\\]\n\n**Hole:** At $x = 2$, the common factor was cancelled.\nThe $y$-value of the hole: $\\dfrac{3(4)}{3} = 4$.\nHole at $(2, 4)$.\n\n**Vertical asymptote:** At $x = -1$: numerator $= 3(-1 + 2) = 3 \\ne 0$.\nSo $x = -1$ is a vertical asymptote.\n\n- $x \\to -1^+$: $(x + 1) \\to 0^+$, so $f(x) \\to 3/0^+ = +\\infty$.\n\n- $x \\to -1^-$: $(x + 1) \\to 0^-$, so $f(x) \\to 3/0^- = -\\infty$.\n\n**Horizontal asymptote:** In the simplified form, both numerator\nand denominator have degree $1$. The leading coefficients are $3$ and $1$.\n\\[\n \\limto{x \\to \\pm\\infty} \\frac{3(x + 2)}{x + 1} = \\frac{3}{1} = 3.\n\\]\nHorizontal asymptote: $y = 3$.\n\n**Summary:**\n\n- Hole at $(2, 4)$\n\n- Vertical asymptote: $x = -1$\n\n- Horizontal asymptote: $y = 3$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Dominance Hierarchy"
+    },
+    {
+      "type": "paragraph",
+      "text": "When dealing with limits at infinity for non-rational functions, it helps to\nknow which functions \"grow fastest.\" As $x \\to \\infty$:"
+    },
+    {
+      "type": "paragraph",
+      "text": "\\[\n \\ln x \\quad\\ll\\quad x^n \\quad\\ll\\quad e^x \\quad\\ll\\quad x^x\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "where $\\ll$ means \"grows much slower than.\" More precisely:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.3",
+      "number": "2.3",
+      "title": "Exponential Dominates Polynomial",
+      "content": "For any positive integer $n$,\n\\[\n \\limto{x \\to \\infty} \\frac{x^n}{e^x} = 0.\n\\]\nExponential growth eventually overwhelms any polynomial growth.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.4",
+      "number": "2.4",
+      "title": "Polynomial Dominates Logarithmic",
+      "content": "For any positive real numbers $r$ and $s$,\n\\[\n \\limto{x \\to \\infty} \\frac{(\\ln x)^s}{x^r} = 0.\n\\]\nEven a small polynomial power eventually overwhelms any power of the logarithm.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "These results will be proved rigorously using L'H\\^opital's Rule in\nChapter 4, but they are intuitive: the exponential function $e^x$ grows\nso aggressively that no polynomial can keep up, and the logarithm $\\ln x$\ngrows so sluggishly that any positive power of $x$ eventually dwarfs it."
+    },
+    {
+      "type": "historical",
+      "id": "historical-2.5",
+      "number": null,
+      "title": "John Wallis (1616--1703)",
+      "content": "The symbol $\\infty$ for infinity was introduced by the English mathematician\nJohn Wallis in his 1655 work *Tractatus de Sectionibus Conicis*. An\nordained priest in the Church of England and Savilian Professor of Geometry\nat Oxford, Wallis also contributed the foundational ideas that led to the\ncalculus of Newton and Leibniz. His infinite product formula\n$\\dfrac{\\pi}{2} = \\dfrac{2}{1}\\cdot\\dfrac{2}{3}\\cdot\\dfrac{4}{3}\\cdot\n\\dfrac{4}{5}\\cdot\\dfrac{6}{5}\\cdot\\dfrac{6}{7}\\cdots$\nremains one of the most beautiful results connecting infinity to the finite.\nWallis understood that the infinite could be tamed through careful reasoning—a\nlesson this chapter teaches in the language of limits."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Oblique (Slant) Asymptotes"
+    },
+    {
+      "type": "paragraph",
+      "text": "When the degree of the numerator exceeds the degree of the denominator by\nexactly one, the function does not have a horizontal asymptote, but it does\napproach a *line*:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.3",
+      "number": "2.3",
+      "title": "Oblique (Slant) Asymptote",
+      "content": "The line $y = mx + b$ (with $m \\ne 0$) is an **oblique asymptote**\n(or **slant asymptote**) of $f$ if\n\\[\n \\limto{x \\to \\infty} \\bigl[f(x) - (mx + b)\\bigr] = 0\n \\qquad\\text{or}\\qquad\n \\limto{x \\to -\\infty} \\bigl[f(x) - (mx + b)\\bigr] = 0.\n\\]"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-2.5",
+      "number": null,
+      "title": "Finding Slant Asymptotes",
+      "content": "If $f(x) = \\dfrac{p(x)}{q(x)}$ where $\\deg(p) = \\deg(q) + 1$, perform\npolynomial long division to write\n\\[\n f(x) = (mx + b) + \\frac{r(x)}{q(x)},\n\\]\nwhere the degree of the remainder $r(x)$ is less than the degree of $q(x)$.\nThen $\\dfrac{r(x)}{q(x)} \\to 0$ as $x \\to \\pm\\infty$, so $y = mx + b$ is\nthe slant asymptote."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Putting It All Together"
+    },
+    {
+      "type": "paragraph",
+      "text": "Recall the chapter devotional: the builders of Babel raised their tower\ntoward heaven, but heaven remained above—an asymptote they could\napproach but never reach. In exactly this way, a horizontal asymptote\nrepresents a boundary the function eternally approaches. The outputs\n$f(x)$ draw closer and closer to $L$ as the input grows without bound,\nyet there is always a gap, however small. The tower rises forever;\nheaven remains above."
+    },
+    {
+      "type": "paragraph",
+      "text": "And so we see two faces of infinity in the calculus of limits. In\nSection 2.4, the function's values *become* infinite—they escape\nevery bound as we approach a finite trouble spot. Here in Section 2.5,\nwe *travel* toward infinity along the $x$-axis and ask whether the\nfunction settles down. Both involve the infinite, but from opposite\ndirections. Together, they give us a complete picture of a function's\nglobal behavior: its explosions and its calms, its vertical walls and\nits distant horizons."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 103:12",
+      "text": "As far as the east is from the west, so far\nhas he removed our transgressions from us."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 25:2",
+      "text": "It is the glory of God to conceal a matter;\nto search out a matter is the glory of kings."
+    },
+    {
+      "type": "scripture",
+      "reference": "Romans 11:33",
+      "text": "Oh, the depth of the riches of the wisdom and\nknowledge of God! How unsearchable his judgments, and his paths beyond\ntracing out!"
+    },
+    {
+      "type": "quote",
+      "author": "Blaise Pascal (1623--1662)",
+      "text": "The eternal silence of these infinite\nspaces fills me with dread."
+    },
+    {
+      "type": "quote",
+      "author": "Georg Cantor (1845--1918)",
+      "text": "The fear of infinity is a form of\nmyopia that destroys the possibility of seeing the actual infinite, even though\nit in its highest form has created and sustains us."
+    }
+  ]
+}

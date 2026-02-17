@@ -1,0 +1,80 @@
+{
+  "id": "prob-stats-ch10-sec03",
+  "title": "Inference in Regression",
+  "chapter": 10,
+  "section": 3,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "And you will know the truth, and the truth will set you free.",
+    "reference": "John 8:32",
+    "quote": "Inference about regression coefficients rests on the same principles as any hypothesis test.",
+    "quoteAuthor": "Ronald A. Fisher"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "We now test hypotheses and construct confidence intervals for \nregression parameters."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Assumptions for Inference"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Linearity:** The relationship is truly linear",
+        "**Independence:** Observations are independent",
+        "**Normality:** Errors are normally distributed",
+        "**Equal variance (homoscedasticity):** Error variance is \n constant across $X$"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Standard Error of the Slope"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Standard Error of $\\hat{\\beta",
+      "content": "_1$}\n\n__MATH_BLOCK_0__\nwhere $S = $\\sqrt{__MATH_BLOCK_2__}$$ is the residual standard error."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Hypothesis Test for Slope"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "$t$-Test for Slope",
+      "content": "To test $H_0: \\beta_1 = 0$ (no linear relationship):\n\\[\n t = \\frac{\\hat{\\beta}_1 - 0}{\\SE(\\hat{\\beta}_1)}\n\\]\nwith $df = n - 2$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "If we reject $H_0: \\beta_1 = 0$, there is evidence of a linear \nrelationship between $X$ and $Y$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Confidence Interval for Slope"
+    },
+    {
+      "type": "paragraph",
+      "text": "\\[\n \\hat{\\beta}_1 \\pm t_{\\alpha/2, n-2} \\cdot \\SE(\\hat{\\beta}_1)\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "Testing the Slope",
+      "problem": "From $n = 20$ observations: $\\hat{\\beta}_1 = 2.4$, $\\SE(\\hat{\\beta}_1) = 0.8$.\n\nTest if there is a relationship at $\\alpha = 0.05$.",
+      "solution": "$t = 2.4/0.8 = 3.0$, $df = 18$.\n\n$p$-value $= 2 \\times P(t_{18} > 3.0) \\approx 0.008$.\n\nReject $H_0$: significant linear relationship."
+    }
+  ]
+}

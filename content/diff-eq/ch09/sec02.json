@@ -1,0 +1,144 @@
+{
+  "id": "diff-eq-ch09-sec02",
+  "title": "Separation of Variables",
+  "chapter": 9,
+  "section": 2,
+  "book": "diff-eq",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The most powerful elementary technique for solving linear PDEs is \n**separation of variables**. The key idea is to seek solutions that \nare products of functions, each depending on only one variable. This \ntransforms the PDE into separate ODEs, which we can solve using familiar \nmethods."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Basic Idea"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Product Solution",
+      "content": "A **product solution** (or **separated solution**) to a PDE in \nvariables $x$ and $t$ is a solution of the form\n\\[\nu(x,t) = X(x)T(t)\n\\]\nwhere $X$ depends only on $x$ and $T$ depends only on $t$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Not every solution to a PDE has this form, but many important ones do. \nMoreover, by the superposition principle, we can often build general \nsolutions by combining (possibly infinitely many) product solutions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Separation of the Heat Equation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider the one-dimensional heat equation:\n\\[\n\\frac{\\partial u}{\\partial t} = k\\frac{\\partial^2 u}{\\partial x^2}\n\\]\nWe seek solutions of the form $u(x,t) = X(x)T(t)$. Substituting:\n\\[\nX(x)T'(t) = kX''(x)T(t)\n\\]\nDivide both sides by $kX(x)T(t)$ (assuming neither is zero):\n\\[\n\\frac{T'(t)}{kT(t)} = \\frac{X''(x)}{X(x)}\n\\]\nThe left side depends only on $t$; the right side depends only on $x$. \nFor these to be equal for all $x$ and $t$, both sides must equal the \nsame constant, which we call the **separation constant** $\\lambda$:\n\\[\n\\frac{T'}{kT} = \\frac{X''}{X} = -\\lambda\n\\]\n(The minus sign is conventional and simplifies later formulas.)"
+    },
+    {
+      "type": "paragraph",
+      "text": "This gives us two ODEs:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$X'' + \\lambda X &= 0 \\\\\nT' + k\\lambda T &= 0$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Role of Boundary Conditions"
+    },
+    {
+      "type": "paragraph",
+      "text": "The value of $\\lambda$ is determined by the boundary conditions. Consider \na rod of length $L$ with both ends held at zero temperature:\n\\[\nu(0,t) = 0, \\qquad u(L,t) = 0\n\\]\nFor $u(x,t) = X(x)T(t)$:\n\\[\nX(0)T(t) = 0, \\qquad X(L)T(t) = 0\n\\]\nAssuming $T(t) \\neq 0$ (otherwise $u \\equiv 0$, a trivial solution), we need:\n\\[\nX(0) = 0, \\qquad X(L) = 0\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This gives us a **boundary value problem** for $X$:\n\\[\nX'' + \\lambda X = 0, \\qquad X(0) = 0, \\quad X(L) = 0\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving the Eigenvalue Problem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The boundary value problem for $X$ is an **eigenvalue problem**. We \nmust find values of $\\lambda$ (eigenvalues) for which nontrivial solutions \n$X$ (eigenfunctions) exist."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Finding eigenvalues and eigenfunctions",
+      "problem": "Solve $X'' + \\lambda X = 0$ with $X(0) = 0$ and $X(L) = 0$.\n\n**Case 1:** $\\lambda < 0$. Write $\\lambda = -\\mu^2$ where $\\mu > 0$. Then\n\\[\nX'' - \\mu^2 X = 0 \\implies X(x) = Ae^{\\mu x} + Be^{-\\mu x}\n\\]\nFrom $X(0) = 0$: $A + B = 0$, so $B = -A$.\n\\[\nX(x) = A(e^{\\mu x} - e^{-\\mu x}) = 2A\\sinh(\\mu x)\n\\]\nFrom $X(L) = 0$: $2A\\sinh(\\mu L) = 0$. Since $\\sinh(\\mu L) \\neq 0$ for \n$\\mu > 0$, we need $A = 0$. Only the trivial solution exists.\n\n**Case 2:** $\\lambda = 0$. Then $X'' = 0$, so $X(x) = Ax + B$.\nFrom $X(0) = 0$: $B = 0$.\nFrom $X(L) = 0$: $AL = 0$, so $A = 0$. Again, only the trivial solution.\n\n**Case 3:** $\\lambda > 0$. Write $\\lambda = \\mu^2$ where $\\mu > 0$. Then\n\\[\nX'' + \\mu^2 X = 0 \\implies X(x) = A\\cos(\\mu x) + B\\sin(\\mu x)\n\\]\nFrom $X(0) = 0$: $A = 0$, so $X(x) = B\\sin(\\mu x)$.\nFrom $X(L) = 0$: $B\\sin(\\mu L) = 0$.\n\nFor a nontrivial solution ($B \\neq 0$), we need $\\sin(\\mu L) = 0$, which \nmeans $\\mu L = n\\pi$ for positive integers $n$. Thus:\n\\[\n\\mu_n = \\frac{n\\pi}{L}, \\qquad \\lambda_n = \\left(\\frac{n\\pi}{L}\\right)^2, \\quad n = 1, 2, 3, \\ldots\n\\]\n\nThe eigenvalues are $\\lambda_n = n^2\\pi^2/L^2$ and the corresponding \neigenfunctions are:\n\\[\nX_n(x) = \\sin\\left(\\frac{n\\pi x}{L}\\right)\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving the Time Equation"
+    },
+    {
+      "type": "paragraph",
+      "text": "For each eigenvalue $\\lambda_n = n^2\\pi^2/L^2$, the time equation \n$T' + k\\lambda_n T = 0$ has solution:\n\\[\nT_n(t) = e^{-k\\lambda_n t} = e^{-kn^2\\pi^2 t/L^2}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Each product $u_n(x,t) = X_n(x)T_n(t)$ is a solution:\n\\[\nu_n(x,t) = \\sin\\left(\\frac{n\\pi x}{L}\\right)e^{-kn^2\\pi^2 t/L^2}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The General Solution"
+    },
+    {
+      "type": "paragraph",
+      "text": "By superposition, any linear combination of the $u_n$ is also a solution:\n\\[\nu(x,t) = \\sum_{n=1}^{\\infty} b_n \\sin\\left(\\frac{n\\pi x}{L}\\right)e^{-kn^2\\pi^2 t/L^2}\n\\]\nThe coefficients $b_n$ are determined by the initial condition $u(x,0) = f(x)$:\n\\[\nu(x,0) = \\sum_{n=1}^{\\infty} b_n \\sin\\left(\\frac{n\\pi x}{L}\\right) = f(x)\n\\]\nThis is a Fourier sine series! Finding the $b_n$ requires Fourier analysis, \nwhich we develop in Section [sec:fourier]."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Summary of the Method"
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Complete separation example",
+      "problem": "Solve the heat equation $u_t = 4u_{xx}$ on $0 < x < 2$ with boundary \nconditions $u(0,t) = u(2,t) = 0$ and initial condition $u(x,0) = \\sin(\\pi x)$.\n\n**Solution.** Here $k = 4$ and $L = 2$. Following our procedure:\n\nThe eigenvalues are $\\lambda_n = n^2\\pi^2/4$ with eigenfunctions \n$X_n(x) = \\sin(n\\pi x/2)$.\n\nThe time functions are $T_n(t) = e^{-4n^2\\pi^2 t/4} = e^{-n^2\\pi^2 t}$.\n\nThe general solution is:\n\\[\nu(x,t) = \\sum_{n=1}^{\\infty} b_n \\sin\\left(\\frac{n\\pi x}{2}\\right)e^{-n^2\\pi^2 t}\n\\]\n\nAt $t = 0$:\n\\[\n\\sum_{n=1}^{\\infty} b_n \\sin\\left(\\frac{n\\pi x}{2}\\right) = \\sin(\\pi x) = \\sin\\left(\\frac{2\\pi x}{2}\\right)\n\\]\n\nComparing, we see that only $b_2 = 1$ and all other $b_n = 0$. Therefore:\n\\[\n\\boxed{u(x,t) = \\sin(\\pi x)\\, e^{-4\\pi^2 t}}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Separation for the Wave Equation"
+    },
+    {
+      "type": "paragraph",
+      "text": "The wave equation $u_{tt} = c^2 u_{xx}$ separates similarly. Setting \n$u(x,t) = X(x)T(t)$:\n\\[\nX(x)T''(t) = c^2 X''(x)T(t) \\implies \\frac{T''}{c^2 T} = \\frac{X''}{X} = -\\lambda\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This gives:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$X'' + \\lambda X &= 0 \\\\\nT'' + c^2\\lambda T &= 0$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "With boundary conditions $u(0,t) = u(L,t) = 0$, we get the same eigenvalues \n$\\lambda_n = n^2\\pi^2/L^2$ and eigenfunctions $X_n = \\sin(n\\pi x/L)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "For the time equation with $\\lambda_n > 0$:\n\\[\nT'' + \\frac{n^2\\pi^2 c^2}{L^2}T = 0\n\\]\nThe general solution is:\n\\[\nT_n(t) = A_n\\cos\\left(\\frac{n\\pi ct}{L}\\right) + B_n\\sin\\left(\\frac{n\\pi ct}{L}\\right)\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The general solution to the wave equation is:\n\\[\nu(x,t) = \\sum_{n=1}^{\\infty} \\sin\\left(\\frac{n\\pi x}{L}\\right)\\left[A_n\\cos\\left(\\frac{n\\pi ct}{L}\\right) + B_n\\sin\\left(\\frac{n\\pi ct}{L}\\right)\\right]\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Two initial conditions are needed: $u(x,0) = f(x)$ and $u_t(x,0) = g(x)$."
+    }
+  ]
+}

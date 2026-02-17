@@ -1,0 +1,84 @@
+{
+  "id": "prob-stats-ch07-sec02",
+  "title": "Bias, Variance, and Mean Squared Error",
+  "chapter": 7,
+  "section": 2,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "A just balance and scales are the Lord's; all the weights in the bag are his work.",
+    "reference": "Proverbs 16:11",
+    "quote": "The mean squared error is bias squared plus variance.",
+    "quoteAuthor": "Harald Cramér"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "We now quantify how \"close\" an estimator typically comes to the \ntrue parameter."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Bias"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Bias",
+      "content": "The **bias** of an estimator $\\hat{\\theta}$ for $\\theta$ is:\n\\[\n \\Bias(\\hat{\\theta}) = \\E[\\hat{\\theta}] - \\theta\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "An unbiased estimator has $\\Bias(\\hat{\\theta}) = 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Biased Estimator",
+      "problem": "Consider $\\tilde{\\sigma}^2 = \\frac{1}{n}\\sum(X_i - \\xbar)^2$, the \n\"naive\" variance estimator.\n\nWe have $\\E[\\tilde{\\sigma}^2] = \\frac{n-1}{n}\\sigma^2 \\neq \\sigma^2$.\n\nBias: $\\E[\\tilde{\\sigma}^2] - \\sigma^2 = -\\frac{\\sigma^2}{n}$.\n\nThis is why we use $S^2 = \\frac{1}{n-1}\\sum(X_i - \\xbar)^2$ instead.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Mean Squared Error"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.2",
+      "number": "7.2",
+      "title": "Mean Squared Error",
+      "content": "The **mean squared error** of $\\hat{\\theta}$ is:\n\\[\n \\MSE(\\hat{\\theta}) = \\E[(\\hat{\\theta} - \\theta)^2]\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Bias-Variance Decomposition",
+      "content": "\\[\n \\MSE(\\hat{\\theta}) = \\Var(\\hat{\\theta}) + [\\Bias(\\hat{\\theta})]^2\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$$\n \\MSE(\\hat{\\theta}) &= \\E[(\\hat{\\theta} - \\theta)^2] \\\\\n &= \\E[(\\hat{\\theta} - \\E[\\hat{\\theta}] + \\E[\\hat{\\theta}] - \\theta)^2] \\\\\n &= \\E[(\\hat{\\theta} - \\E[\\hat{\\theta}])^2] + (\\E[\\hat{\\theta}] - \\theta)^2 \\\\\n &= \\Var(\\hat{\\theta}) + [\\Bias(\\hat{\\theta})]^2\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Bias-Variance Tradeoff"
+    },
+    {
+      "type": "paragraph",
+      "text": "Sometimes a slightly biased estimator with lower variance has smaller \nMSE than an unbiased estimator. This is the **bias-variance tradeoff**."
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Comparing Estimators",
+      "problem": "For estimating $\\sigma^2$:\n\n- $S^2 = \\frac{1}{n-1}\\sum(X_i - \\xbar)^2$ is unbiased\n\n- $\\tilde{\\sigma}^2 = \\frac{1}{n}\\sum(X_i - \\xbar)^2$ is biased \n but has lower variance\nFor small $n$, the biased estimator may have smaller MSE.",
+      "solution": ""
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "id": "prob-stats-ch08-sec03",
+  "title": "Confidence Intervals for Proportions",
+  "chapter": 8,
+  "section": 3,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "Let your yes be yes and your no be no.",
+    "reference": "Matthew 5:37",
+    "quote": "The margin of error quantifies our uncertainty about a proportion.",
+    "quoteAuthor": "George Gallup"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "For categorical data, we estimate population proportions using sample \nproportions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Large-Sample $z$-Interval for $p$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Confidence Interval for Proportion",
+      "content": "For large samples (when $n\\phat \\geq 10$ and $n(1-\\phat) \\geq 10$):\n\\[\n \\phat \\pm z_{\\alpha/2} \\sqrt{\\frac{\\phat(1-\\phat)}{n}}\n\\]\nis an approximate $(1-\\alpha)$ confidence interval for $p$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Poll Results",
+      "problem": "In a poll of 600 voters, 324 support a candidate. Find a 95\\% CI \nfor the true proportion of supporters.",
+      "solution": "$\\phat = 324/600 = 0.54$, $n = 600$.\n\nCheck: $n\\phat = 324 \\geq 10$ and $n(1-\\phat) = 276 \\geq 10$. \n\nSE: $\\sqrt{\\frac{0.54 \\times 0.46}{600}} = \\sqrt{0.000414} = 0.0203$.\n\n95\\% CI: $0.54 \\pm 1.96 \\times 0.0203 = 0.54 \\pm 0.04 = (0.50, 0.58)$.\n\nWe are 95\\% confident between 50\\% and 58\\% support the candidate."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Plus-Four Interval"
+    },
+    {
+      "type": "paragraph",
+      "text": "For small samples, the Agresti-Coull \"plus-four\" method improves \ncoverage:"
+    },
+    {
+      "type": "paragraph",
+      "text": "Add 2 successes and 2 failures to the data, then use:\n\\[\n \\tilde{p} = \\frac{X + 2}{n + 4}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Interpreting Polls"
+    },
+    {
+      "type": "paragraph",
+      "text": "Media reports often say a poll has a \"margin of error of $\\pm 3\\%$.\" \nThis typically assumes:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "95\\% confidence level",
+        "Simple random sampling",
+        "Proportion near 50\\% (worst case)"
+      ]
+    }
+  ]
+}

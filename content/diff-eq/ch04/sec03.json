@@ -1,0 +1,192 @@
+{
+  "id": "diff-eq-ch04-sec03",
+  "title": "Complex Roots and Euler's Formula",
+  "chapter": 4,
+  "section": 3,
+  "book": "diff-eq",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "When the discriminant $b^2 - 4ac < 0$, the characteristic equation has no real roots. Instead, we obtain complex conjugate roots, which lead to solutions involving sines and cosines — the mathematics of oscillation."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Complex Exponentials and Euler's Formula"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Euler's Formula",
+      "content": "For any real number $\\theta$:\n$$\n\ne^{i\\theta} = \\cos\\theta + i\\sin\\theta\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This remarkable formula connects exponential and trigonometric functions through the imaginary unit $i = \\sqrt{-1}$."
+    },
+    {
+      "type": "proof",
+      "content": "Recall the power series:\n$$\ne^x &= 1 + x + \\frac{x^2}{2!} + \\frac{x^3}{3!} + \\frac{x^4}{4!} + \\cdots \\\\\n\\cos\\theta &= 1 - \\frac{\\theta^2}{2!} + \\frac{\\theta^4}{4!} - \\frac{\\theta^6}{6!} + \\cdots \\\\\n\\sin\\theta &= \\theta - \\frac{\\theta^3}{3!} + \\frac{\\theta^5}{5!} - \\frac{\\theta^7}{7!} + \\cdots\n$$\n\nSubstituting $x = i\\theta$ into the exponential series:\n$$\ne^{i\\theta} &= 1 + i\\theta + \\frac{(i\\theta)^2}{2!} + \\frac{(i\\theta)^3}{3!} + \\frac{(i\\theta)^4}{4!} + \\cdots \\\\\n&= 1 + i\\theta - \\frac{\\theta^2}{2!} - i\\frac{\\theta^3}{3!} + \\frac{\\theta^4}{4!} + i\\frac{\\theta^5}{5!} - \\cdots \\\\\n&= \\left(1 - \\frac{\\theta^2}{2!} + \\frac{\\theta^4}{4!} - \\cdots\\right) + i\\left(\\theta - \\frac{\\theta^3}{3!} + \\frac{\\theta^5}{5!} - \\cdots\\right) \\\\\n&= \\cos\\theta + i\\sin\\theta\n$$"
+    },
+    {
+      "type": "proof",
+      "content": "Using properties of exponents:\n\\[\ne^{(\\alpha + i\\beta)x} = e^{\\alpha x} \\cdot e^{i\\beta x} = e^{\\alpha x}(\\cos\\beta x + i\\sin\\beta x)\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving Equations with Complex Roots"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Complex Roots Solution",
+      "content": "If the characteristic equation $ar^2 + br + c = 0$ has complex conjugate roots $r = \\alpha \\pm i\\beta$ (where $\\beta \\neq 0$), then the general solution of $ay'' + by' + cy = 0$ is:\n$$\n\ny = e^{\\alpha x}(c_1 \\cos\\beta x + c_2 \\sin\\beta x)\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Since complex roots of polynomials with real coefficients come in conjugate pairs, if $r_1 = \\alpha + i\\beta$ is a root, so is $r_2 = \\alpha - i\\beta$.\n\nFormally, the complex-valued solutions are:\n$$\n\\tilde{y}_1 &= e^{(\\alpha + i\\beta)x} = e^{\\alpha x}(\\cos\\beta x + i\\sin\\beta x) \\\\\n\\tilde{y}_2 &= e^{(\\alpha - i\\beta)x} = e^{\\alpha x}(\\cos\\beta x - i\\sin\\beta x)\n$$\n\nWe can form real-valued solutions by taking linear combinations:\n$$\ny_1 &= \\frac{\\tilde{y}_1 + \\tilde{y}_2}{2} = e^{\\alpha x}\\cos\\beta x \\\\\ny_2 &= \\frac{\\tilde{y}_1 - \\tilde{y}_2}{2i} = e^{\\alpha x}\\sin\\beta x\n$$\n\nTo verify these are indeed solutions, we check directly. For $y_1 = e^{\\alpha x}\\cos\\beta x$:\n$$\ny_1' &= \\alpha e^{\\alpha x}\\cos\\beta x - \\beta e^{\\alpha x}\\sin\\beta x \\\\\ny_1'' &= (\\alpha^2 - \\beta^2)e^{\\alpha x}\\cos\\beta x - 2\\alpha\\beta e^{\\alpha x}\\sin\\beta x\n$$\n\nSubstituting into the differential equation and using $\\alpha = -b/(2a)$ and $\\beta^2 = (4ac - b^2)/(4a^2)$ confirms that $y_1$ is a solution. Similarly for $y_2$.\n\nTo verify linear independence, compute the Wronskian:\n$$\nW[y_1, y_2] &= y_1 y_2' - y_1' y_2 \\\\\n&= e^{\\alpha x}\\cos\\beta x \\cdot (\\alpha e^{\\alpha x}\\sin\\beta x + \\beta e^{\\alpha x}\\cos\\beta x) \\\\\n&\\quad - (\\alpha e^{\\alpha x}\\cos\\beta x - \\beta e^{\\alpha x}\\sin\\beta x) \\cdot e^{\\alpha x}\\sin\\beta x \\\\\n&= e^{2\\alpha x}[\\alpha\\cos\\beta x\\sin\\beta x + \\beta\\cos^2\\beta x - \\alpha\\cos\\beta x\\sin\\beta x + \\beta\\sin^2\\beta x] \\\\\n&= e^{2\\alpha x} \\cdot \\beta(\\cos^2\\beta x + \\sin^2\\beta x) \\\\\n&= \\beta e^{2\\alpha x}\n$$\n\nSince $\\beta \\neq 0$, the Wronskian is never zero, confirming linear independence."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Finding Complex Roots"
+    },
+    {
+      "type": "paragraph",
+      "text": "When $b^2 - 4ac < 0$, the quadratic formula gives:\n\\[\nr = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a} = \\frac{-b \\pm i\\sqrt{4ac - b^2}}{2a}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Thus:\n\\[\n\\alpha = -\\frac{b}{2a}, \\qquad \\beta = \\frac{\\sqrt{4ac - b^2}}{2a}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": null,
+      "problem": "Solve $y'' + 4y = 0$.\n\n**Solution:** Characteristic equation: $r^2 + 4 = 0 \\implies r^2 = -4 \\implies r = \\pm 2i$\n\nHere $\\alpha = 0$ and $\\beta = 2$. The general solution is:\n\\[\ny = e^{0 \\cdot x}(c_1 \\cos 2x + c_2 \\sin 2x) = \\boxed{c_1 \\cos 2x + c_2 \\sin 2x}\n\\]\n\nThis is **simple harmonic motion** — pure oscillation without growth or decay.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": null,
+      "problem": "Solve $y'' + 2y' + 5y = 0$.\n\n**Solution:** Characteristic equation: $r^2 + 2r + 5 = 0$\n\nUsing the quadratic formula:\n\\[\nr = \\frac{-2 \\pm \\sqrt{4 - 20}}{2} = \\frac{-2 \\pm \\sqrt{-16}}{2} = \\frac{-2 \\pm 4i}{2} = -1 \\pm 2i\n\\]\n\nHere $\\alpha = -1$ and $\\beta = 2$. The general solution is:\n\\[\n\\boxed{y = e^{-x}(c_1 \\cos 2x + c_2 \\sin 2x)}\n\\]\n\nThe factor $e^{-x}$ causes the oscillations to decay — this is **damped oscillation**.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": null,
+      "problem": "Solve $y'' - 4y' + 13y = 0$.\n\n**Solution:** Characteristic equation: $r^2 - 4r + 13 = 0$\n\\[\nr = \\frac{4 \\pm \\sqrt{16 - 52}}{2} = \\frac{4 \\pm \\sqrt{-36}}{2} = \\frac{4 \\pm 6i}{2} = 2 \\pm 3i\n\\]\n\nHere $\\alpha = 2$ and $\\beta = 3$. The general solution is:\n\\[\n\\boxed{y = e^{2x}(c_1 \\cos 3x + c_2 \\sin 3x)}\n\\]\n\nThe factor $e^{2x}$ causes the oscillations to grow — this describes an unstable oscillating system.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-4.4",
+      "number": "4.4",
+      "title": null,
+      "problem": "Solve the IVP: $y'' + 9y = 0$, $y(0) = 2$, $y'(0) = -6$.\n\n**Solution:** Characteristic equation: $r^2 + 9 = 0 \\implies r = \\pm 3i$\n\nGeneral solution: $y = c_1 \\cos 3x + c_2 \\sin 3x$\n\nApplying initial conditions:\n$$\ny(0) = 2: \\quad & c_1 \\cos 0 + c_2 \\sin 0 = c_1 = 2 \\\\\ny'(0) = -6: \\quad & -3c_1 \\sin 0 + 3c_2 \\cos 0 = 3c_2 = -6 \\implies c_2 = -2\n$$\n\n**Answer:**\n\\[\n\\boxed{y = 2\\cos 3x - 2\\sin 3x}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-4.5",
+      "number": "4.5",
+      "title": null,
+      "problem": "Solve the IVP: $y'' + 2y' + 2y = 0$, $y(0) = 1$, $y'(0) = -1$.\n\n**Solution:** Characteristic equation: $r^2 + 2r + 2 = 0$\n\\[\nr = \\frac{-2 \\pm \\sqrt{4-8}}{2} = \\frac{-2 \\pm 2i}{2} = -1 \\pm i\n\\]\n\nGeneral solution: $y = e^{-x}(c_1 \\cos x + c_2 \\sin x)$\n\nComputing the derivative:\n\\[\ny' = -e^{-x}(c_1 \\cos x + c_2 \\sin x) + e^{-x}(-c_1 \\sin x + c_2 \\cos x)\n\\]\n\nAt $x = 0$:\n$$\ny(0) = 1: \\quad & c_1 = 1 \\\\\ny'(0) = -1: \\quad & -c_1 + c_2 = -1 \\implies c_2 = 0\n$$\n\n**Answer:**\n\\[\n\\boxed{y = e^{-x}\\cos x}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Amplitude-Phase Form"
+    },
+    {
+      "type": "paragraph",
+      "text": "Any expression $c_1 \\cos\\beta x + c_2 \\sin\\beta x$ can be written in a more revealing form."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.3",
+      "number": "4.3",
+      "title": "Amplitude-Phase Form",
+      "content": "For any real constants $c_1$ and $c_2$ (not both zero):\n$$\n\nc_1 \\cos\\beta x + c_2 \\sin\\beta x = A\\cos(\\beta x - \\phi)\n$$\nwhere the **amplitude** is $A = \\sqrt{c_1^2 + c_2^2}$ and the **phase angle** $\\phi$ satisfies\n\\[\n\\cos\\phi = \\frac{c_1}{A}, \\qquad \\sin\\phi = \\frac{c_2}{A}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Expand $A\\cos(\\beta x - \\phi)$ using the cosine addition formula:\n$$\nA\\cos(\\beta x - \\phi) &= A(\\cos\\beta x\\cos\\phi + \\sin\\beta x\\sin\\phi) \\\\\n&= (A\\cos\\phi)\\cos\\beta x + (A\\sin\\phi)\\sin\\beta x\n$$\n\nMatching coefficients: $c_1 = A\\cos\\phi$ and $c_2 = A\\sin\\phi$.\n\nFrom these: $c_1^2 + c_2^2 = A^2(\\cos^2\\phi + \\sin^2\\phi) = A^2$, so $A = \\sqrt{c_1^2 + c_2^2}$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.6",
+      "number": "4.6",
+      "title": null,
+      "problem": "Express the solution $y = 2\\cos 3x - 2\\sin 3x$ in amplitude-phase form.\n\n**Solution:** Here $c_1 = 2$, $c_2 = -2$, $\\beta = 3$.\n\nAmplitude: $A = \\sqrt{4 + 4} = 2\\sqrt{2}$\n\nPhase: $\\cos\\phi = \\frac{2}{2\\sqrt{2}} = \\frac{1}{\\sqrt{2}}$, $\\sin\\phi = \\frac{-2}{2\\sqrt{2}} = -\\frac{1}{\\sqrt{2}}$\n\nSo $\\phi = -\\frac{\\pi}{4}$ (fourth quadrant).\n\n**Answer:**\n\\[\ny = 2\\sqrt{2}\\cos\\left(3x + \\frac{\\pi}{4}\\right)\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Physical Interpretation"
+    },
+    {
+      "type": "paragraph",
+      "text": "The complex roots case describes oscillatory motion:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$\\beta$ is the **angular frequency** of oscillation",
+        "The **period** is $T = 2\\pi/\\beta$",
+        "The **frequency** is $f = \\beta/(2\\pi)$ cycles per unit time",
+        "$|\\alpha|$ determines the rate of growth ($\\alpha > 0$) or decay ($\\alpha < 0$)",
+        "$\\alpha = 0$ gives pure oscillation (undamped)"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Summary"
+    },
+    {
+      "type": "paragraph",
+      "text": "For $ay'' + by' + cy = 0$ with complex roots $\\alpha \\pm i\\beta$:"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Roots**",
+        "**General Solution**"
+      ],
+      "rows": [
+        [
+          "$r = \\pm i\\beta$ (pure imaginary)",
+          "$y = c_1\\cos\\beta x + c_2\\sin\\beta x$"
+        ],
+        [
+          "$r = \\alpha \\pm i\\beta$ ($\\alpha \\neq 0$)",
+          "$y = e^{\\alpha x}(c_1\\cos\\beta x + c_2\\sin\\beta x)$"
+        ]
+      ],
+      "alignment": [
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ]
+}

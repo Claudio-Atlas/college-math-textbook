@@ -1,0 +1,103 @@
+{
+  "id": "discrete-math-ch06-sec05",
+  "title": "Advanced Counting Techniques",
+  "chapter": 6,
+  "section": 5,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"In my Father's house are many rooms.\"*{John 14:2}{If more pigeons than pigeonholes exist, some hole must contain more than one pigeon.}{Peter Gustav Lejeune Dirichlet}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Several powerful techniques extend basic counting: inclusion-exclusion, \nthe pigeonhole principle, and generating functions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Inclusion-Exclusion Principle"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Inclusion-Exclusion",
+      "content": "For finite sets $A_1, A_2, \\ldots, A_n$:\n$$\n|A_1 \\cup A_2 \\cup \\cdots \\cup A_n| &= \\sum_i |A_i| - \\sum_{i < j} |A_i \\cap A_j| \\\\\n&+ \\sum_{i < j < k} |A_i \\cap A_j \\cap A_k| - \\cdots \\\\\n&+ (-1)^{n+1} |A_1 \\cap A_2 \\cap \\cdots \\cap A_n|\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Two sets",
+      "problem": "$|A \\cup B| = |A| + |B| - |A \\cap B|$.\n\nIf $|A| = 30$, $|B| = 25$, $|A \\cap B| = 10$:\n$|A \\cup B| = 30 + 25 - 10 = 45$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Counting derangements",
+      "problem": "A **derangement** is a permutation where no \nelement remains in its original position.\n\nFor $n$ elements, the number of derangements is:\n\\[ D_n = n! \\sum_{k=0}^{n} \\frac{(-1)^k}{k!} \\approx \\frac{n!}{e} \\]\n\n$D_4 = 24(1 - 1 + 1/2 - 1/6 + 1/24) = 24 \\cdot 9/24 = 9$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Pigeonhole Principle"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Pigeonhole Principle",
+      "content": "If $n$ items are placed into $k$ containers and $n > k$, then at least \none container has more than one item.\n\n**Generalized:** If $n$ items go into $k$ containers, at least one \ncontainer has $\\lceil n/k \\rceil$ or more items.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.3",
+      "number": "6.3",
+      "title": "Birthday problem",
+      "problem": "In any group of 367 people, at least two share a birthday.\n\n(There are at most 366 distinct birthdays.)",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-6.4",
+      "number": "6.4",
+      "title": "Subset sums",
+      "problem": "From any 10 integers, some nonempty subset has sum divisible by 10.\n\nproof\nConsider partial sums $S_0 = 0$, $S_1 = a_1$, $S_2 = a_1 + a_2$, …, \n$S_{10} = a_1 + \\cdots + a_{10}$.\n\nThese 11 sums have remainders mod 10 in $\\{0, 1, \\ldots, 9\\}$ (10 values).\n\nBy pigeonhole, two have the same remainder: $S_i \\equiv S_j \\pmod{10}$ \nfor some $i < j$.\n\nThen $S_j - S_i = a_{i+1} + \\cdots + a_j$ is divisible by 10.\nproof",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Stars and Bars"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.3",
+      "number": "6.3",
+      "title": "Stars and Bars",
+      "content": "The number of ways to distribute $n$ identical objects into $k$ distinct \nbins is $\\binom{n + k - 1}{k - 1}$.\n\nWith at least one object per bin: $\\binom{n - 1}{k - 1}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.5",
+      "number": "6.5",
+      "title": "Distributing candy",
+      "problem": "How many ways can 10 identical candies be distributed among 4 children?\n\n$\\binom{10 + 4 - 1}{4 - 1} = \\binom{13}{3} = 286$.",
+      "solution": ""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:26",
+      "text": "Lift up your eyes and look to the heavens: \nWho created all these? He who brings out the starry host one by one and \ncalls forth each of them by name."
+    }
+  ]
+}

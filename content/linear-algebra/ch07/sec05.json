@@ -1,0 +1,52 @@
+{
+  "id": "linear-algebra-ch07-sec05",
+  "title": "Least Squares Problems",
+  "chapter": 7,
+  "section": 5,
+  "book": "linear-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "{For my yoke is easy, and my burden is light.}{Matthew 11:30}\n {The method of least squares is the automobile of modern statistical analysis.}{— Stephen Stigler}"
+    },
+    {
+      "type": "paragraph",
+      "text": "When $A\\vect{x} = \\vect{b}$ has no exact solution, we find the \n**least squares** solution that minimizes error."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Problem"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Least Squares Solution",
+      "content": "A **least squares solution** of \n$A\\vect{x} = \\vect{b}$ is $\\hat{\\vect{x}}$ that minimizes \n$\\norm{A\\vect{x} - \\vect{b}}$, the distance from $\\vect{b}$ to $A\\vect{x}$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Normal Equations",
+      "content": "The least squares solutions of $A\\vect{x} = \\vect{b}$ are exactly \nthe solutions of:\n\\[\nA\\transpose A\\hat{\\vect{x}} = A\\transpose\\vect{b}\n\\]\nIf columns of $A$ are independent, there is a unique solution:\n\\[\n\\hat{\\vect{x}} = (A\\transpose A)\\inv A\\transpose\\vect{b}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Line of best fit",
+      "problem": "Find the line $y = mx + c$ that best fits $(0, 1), (1, 1), (2, 3)$.",
+      "solution": "Set up $A = \\begin{bmatrix} 0 & 1 \\\\ 1 & 1 \\\\ 2 & 1 \\end{bmatrix}$, \n$\\vect{b} = \\begin{bmatrix} 1 \\\\ 1 \\\\ 3 \\end{bmatrix}$, \n$\\vect{x} = \\begin{bmatrix} m \\\\ c \\end{bmatrix}$.\n\nSolve normal equations to find $m = 1$, $c = \\frac{1}{3}$."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Romans 8:28",
+      "text": "And we know that for those who love God \nall things work together for good."
+    }
+  ]
+}

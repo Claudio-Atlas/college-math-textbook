@@ -1,0 +1,237 @@
+{
+  "id": "geometry-ch09-sec03",
+  "title": "Arcs and Chords",
+  "chapter": 9,
+  "section": 3,
+  "book": "geometry",
+  "epigraph": {
+    "text": "Who has measured the waters in the hollow of his hand and marked off the heavens with a span?",
+    "reference": "Isaiah 40:12"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "We have seen that angles and arcs in a circle are intimately connected. \nIn this section, we explore the relationships between arcs and chords—the \nsegments that span across a circle. These relationships have practical \napplications in engineering, architecture, and even music theory \n(where the frequencies of musical notes relate to divisions of vibrating \nstrings)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Arc Measure versus Arc Length"
+    },
+    {
+      "type": "paragraph",
+      "text": "It is crucial to distinguish between two different ways of describing arcs."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Arc Measure",
+      "content": "The **measure of an arc** is the degree measure \nof its central angle. Arc measure is given in degrees."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Arc Length",
+      "content": "The **length of an arc** is the distance along \nthe curved path of the arc. Arc length is given in linear units \n(centimeters, inches, etc.)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider a $90°$ arc. In a small circle (radius 1 cm), this arc is \nquite short. In a large circle (radius 100 m), the same $90°$ arc is \nvery long. Both have the same arc *measure* but vastly different \narc *lengths*."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Arc Length Formula"
+    },
+    {
+      "type": "paragraph",
+      "text": "Since the circumference of a circle is $C = 2\\pi r$, and an arc is a \nfraction of the circle, we can calculate arc length as a fraction of \nthe circumference."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Arc Length Formula",
+      "content": "The length $s$ of an arc with central angle $\\theta$ (in degrees) in \na circle of radius $r$ is:\n\\[\n s = \\frac{\\theta}{360°} \\cdot 2\\pi r = \\frac{\\theta \\pi r}{180}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The formula makes sense: $\\frac{\\theta}{360°}$ gives the fraction of \nthe full circle that the arc represents, and we multiply this by the \nfull circumference $2\\pi r$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Finding arc length",
+      "problem": "Find the length of a $60°$ arc in a circle with radius 9 cm.",
+      "solution": "Using the arc length formula:\n$$\n s &= \\frac{\\theta}{360°} \\cdot 2\\pi r \\\\\n &= \\frac{60°}{360°} \\cdot 2\\pi(9) \\\\\n &= \\frac{1}{6} \\cdot 18\\pi \\\\\n &= 3\\pi \\text{ cm}\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Finding arc length with different angles",
+      "problem": "A clock has a minute hand 10 inches long. How far does the tip of \nthe minute hand travel in 20 minutes?\n\ncenter\ntikzpicture[scale=0.8]\n (0,0) circle (2);\n ll[AtlasTeal] (0,0) circle (2pt);\n \n % Clock face marks\n in {0,30,...,330} {\n (:1.8) – (:2);\n }\n \n % Minute hand at 12\n (0,0) – (90:2);\n % Minute hand at 20 min position (120° from 12)\n (0,0) – (-30:2);\n \n % Arc traveled\n (90:2) arc (90:-30:2);\n \n at (90:2.2) {12};\n at (-30:2.2) {4};\ntikzpicture\ncenter",
+      "solution": "In 20 minutes, the minute hand moves $\\frac{20}{60} = \\frac{1}{3}$ \nof the way around the clock. This corresponds to:\n\\[\\theta = \\frac{1}{3} \\cdot 360° = 120°\\]\n\nThe arc length is:\n$$\n s &= \\frac{120°}{360°} \\cdot 2\\pi(10) \\\\\n &= \\frac{1}{3} \\cdot 20\\pi \\\\\n &= \\frac{20\\pi}{3} \\text{ inches} \\approx 20.9 \\text{ inches}\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Sector Area"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **sector** of a circle is the region bounded by \ntwo radii and the arc between them—like a slice of pie."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.3",
+      "number": "9.3",
+      "title": "Sector",
+      "content": "A **sector** of a circle is the region bounded by two radii \nand their intercepted arc."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "Sector Area Formula",
+      "content": "The area $A$ of a sector with central angle $\\theta$ (in degrees) \nin a circle of radius $r$ is:\n\\[\n A = \\frac{\\theta}{360°} \\cdot \\pi r^2\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Finding sector area",
+      "problem": "Find the area of a sector with a $72°$ central angle in a circle \nwith radius 10 cm.",
+      "solution": "Using the sector area formula:\n$$\n A &= \\frac{\\theta}{360°} \\cdot \\pi r^2 \\\\\n &= \\frac{72°}{360°} \\cdot \\pi(10)^2 \\\\\n &= \\frac{1}{5} \\cdot 100\\pi \\\\\n &= 20\\pi \\text{ cm}^2\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-9.4",
+      "number": "9.4",
+      "title": "Pizza problem",
+      "problem": "A 16-inch diameter pizza is cut into 8 equal slices. Find:\n\n1. The area of one slice\n\n2. The length of the crust on one slice",
+      "solution": "The radius is $r = 8$ inches. Each slice has central angle \n$\\theta = \\frac{360°}{8} = 45°$.\n\n1. Area of one slice (sector):\n $$\n A &= \\frac{45°}{360°} \\cdot \\pi(8)^2 \\\\\n &= \\frac{1}{8} \\cdot 64\\pi \\\\\n &= 8\\pi \\text{ in}^2 \\approx 25.1 \\text{ in}^2\n $$\n\n2. Length of crust (arc length):\n $$\n s &= \\frac{45°}{360°} \\cdot 2\\pi(8) \\\\\n &= \\frac{1}{8} \\cdot 16\\pi \\\\\n &= 2\\pi \\text{ inches} \\approx 6.3 \\text{ inches}\n $$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Chord Properties"
+    },
+    {
+      "type": "paragraph",
+      "text": "Chords exhibit several elegant properties related to their arcs and \ntheir distance from the center."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.3",
+      "number": "9.3",
+      "title": "Congruent Chords and Arcs",
+      "content": "In the same circle or in congruent circles:\n\n1. Congruent chords have congruent arcs.\n\n2. Congruent arcs have congruent chords.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.4",
+      "number": "9.4",
+      "title": "Diameter Perpendicular to a Chord",
+      "content": "If a diameter is perpendicular to a chord, then the diameter bisects \nthe chord and its arc.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "*Proof:* Let diameter $\\overline{DE}$ be perpendicular to chord \n$\\overline{AB}$ at point $M$. Draw radii $\\overline{OA}$ and $\\overline{OB}$. \nSince $OA = OB$ (radii), $OM$ is common, and $\\angle OMA = \\angle OMB = 90°$, \ntriangles $OMA$ and $OMB$ are congruent by HL. Therefore $AM = MB$, so the \nchord is bisected."
+    },
+    {
+      "type": "paragraph",
+      "text": "For the arc: Since $\\triangle OMA \\cong \\triangle OMB$, we have \n$\\angle AOM = \\angle BOM$, so $m\\widearc{AE} = m\\widearc{BE}$. Similarly, \n$m\\widearc{AD} = m\\widearc{BD}$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.5",
+      "number": "9.5",
+      "title": "Equidistant Chords",
+      "content": "In the same circle or in congruent circles, chords equidistant from \nthe center are congruent. Conversely, congruent chords are equidistant \nfrom the center.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-9.5",
+      "number": "9.5",
+      "title": "Finding chord length",
+      "problem": "A chord is 6 cm from the center of a circle with radius 10 cm. \nFind the length of the chord.\n\ncenter\ntikzpicture[scale=0.8]\n (0,0) circle (2.5);\n ll[AtlasTeal] (0,0) circle (2pt) node[below left] {$O$};\n \n % Chord\n (-2,1.5) – (2,1.5);\n ll[AtlasTeal] (-2,1.5) circle (2pt) node[left] {$A$};\n ll[AtlasTeal] (2,1.5) circle (2pt) node[right] {$B$};\n \n % Perpendicular from center\n (0,0) – (0,1.5);\n ll[AtlasTeal] (0,1.5) circle (2pt) node[above right] {$M$};\n \n % Radius to A\n (0,0) – (-2,1.5);\n \n % Labels\n at (-0.2,0.75) {$6$};\n at (-1,0.75) {$10$};\n \n % Right angle\n (-0.15,1.5) – (-0.15,1.35) – (0,1.35);\ntikzpicture\ncenter",
+      "solution": "Let $M$ be the midpoint of the chord (the foot of the perpendicular \nfrom $O$). In right triangle $OMA$:\n\n- $OA = 10$ (radius)\n\n- $OM = 6$ (distance from center)\n\nBy the Pythagorean Theorem:\n$$\n AM^2 + OM^2 &= OA^2 \\\\\n AM^2 + 36 &= 100 \\\\\n AM^2 &= 64 \\\\\n AM &= 8\n$$\n\nSince $M$ is the midpoint of $\\overline{AB}$:\n\\[AB = 2 \\cdot AM = 2(8) = 16 \\text{ cm}\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.6",
+      "number": "9.6",
+      "title": "Finding distance from center",
+      "problem": "A chord of length 24 is in a circle with radius 13. How far is the \nchord from the center?",
+      "solution": "The perpendicular from the center bisects the chord, so each half \nhas length $\\frac{24}{2} = 12$.\n\nLet $d$ be the distance from the center to the chord. By the \nPythagorean Theorem:\n$$\n d^2 + 12^2 &= 13^2 \\\\\n d^2 + 144 &= 169 \\\\\n d^2 &= 25 \\\\\n d &= 5\n$$\n\nThe chord is 5 units from the center."
+    },
+    {
+      "type": "example",
+      "id": "example-9.7",
+      "number": "9.7",
+      "title": "Comparing chord distances",
+      "problem": "In a circle, chord $\\overline{AB}$ has length 10 and chord $\\overline{CD}$ \nhas length 14. Which chord is closer to the center?",
+      "solution": "By Theorem [thm:equidistant-chords], congruent chords are equidistant \nfrom the center. Since $\\overline{CD}$ is longer than $\\overline{AB}$, \nthey are not equidistant.\n\nIntuitively, longer chords are closer to the center (the diameter, the \nlongest chord, passes through the center). Therefore, $\\overline{CD}$ \n(length 14) is closer to the center than $\\overline{AB}$ (length 10)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Arc Addition"
+    },
+    {
+      "type": "paragraph",
+      "text": "Just as we can add segment lengths and angle measures, we can add \narc measures."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.6",
+      "number": "9.6",
+      "title": "Arc Addition Postulate",
+      "content": "The measure of an arc formed by two adjacent arcs is the sum of \nthe measures of the two arcs.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "If points $A$, $B$, and $C$ appear in order on a circle, then:\n\\[m\\widearc{AC} = m\\widearc{AB} + m\\widearc{BC}\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.8",
+      "number": "9.8",
+      "title": "Using arc addition",
+      "problem": "Points $A$, $B$, $C$, and $D$ are on a circle in that order. If \n$m\\widearc{AB} = 70°$, $m\\widearc{BC} = 85°$, and $m\\widearc{CD} = 110°$, \nfind $m\\widearc{DA}$.",
+      "solution": "The four arcs together form the complete circle:\n$$\n m\\widearc{AB} + m\\widearc{BC} + m\\widearc{CD} + m\\widearc{DA} &= 360° \\\\\n 70° + 85° + 110° + m\\widearc{DA} &= 360° \\\\\n 265° + m\\widearc{DA} &= 360° \\\\\n m\\widearc{DA} &= 95°\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 19:1",
+      "text": "The heavens declare the glory of God, \nand the sky above proclaims his handiwork."
+    },
+    {
+      "type": "scripture",
+      "reference": "Genesis 9:13",
+      "text": "I have set my bow in the cloud, and \nit shall be a sign of the covenant between me and the earth."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 8:29",
+      "text": "When he assigned to the sea its limit, \nso that the waters might not transgress his command."
+    }
+  ]
+}

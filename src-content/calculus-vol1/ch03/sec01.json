@@ -1,0 +1,357 @@
+{
+  "id": "vol1-ch03-sec01",
+  "title": "Derivatives and Rates of Change",
+  "chapter": 3,
+  "section": 1,
+  "book": "vol1",
+  "epigraph": {
+    "text": "See, I am doing a new thing! Now it springs up; do you \nnot perceive it?",
+    "reference": "Isaiah 43:19"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "In Section [sec:tangent-velocity] we computed slopes of secant lines and \nwatched them converge as the two points drew closer together. In \nSection [sec:limit-of-function] we gave that convergence a name: the \n*limit*. Now we take the final step. Armed with the full machinery of \nlimits—limit laws, algebraic techniques, and even the rigorous \n$\\varepsilon$-$\\delta$ definition—we return to the tangent problem and the \nvelocity problem and solve them *completely*."
+    },
+    {
+      "type": "paragraph",
+      "text": "What emerges is the single most important concept in all of calculus: the \n**derivative**. It unifies the tangent problem and the velocity problem \ninto one idea, and it opens the door to an extraordinary range of \napplications—from physics to economics, from biology to engineering. Every \ncomputation in this section will use the limit definition directly. This is \ndeliberate. Before we earn shortcuts, we must understand what the shortcuts \nare shortcutting."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Tangent Problem, Revisited"
+    },
+    {
+      "type": "paragraph",
+      "text": "Recall the central question from Section [sec:tangent-velocity]: given a \ncurve $y = f(x)$, what is the slope of the tangent line at a particular \npoint? We answered this question informally by computing slopes of secant \nlines through $(a, f(a))$ and a nearby point $(a+h, f(a+h))$ and letting $h$ \nshrink toward zero. The slope of each secant line was\n\\[\n m_{\\mathrm{sec}} = \\frac{f(a+h) - f(a)}{h},\n\\]\nand we observed that these slopes seemed to converge to a single number as \n$h \\to 0$. At the time, we lacked the formal tools to make this precise. \nNow we have them."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.1",
+      "number": "3.1",
+      "title": "Slope of the Tangent Line",
+      "content": "The **tangent line** to the curve $y = f(x)$ at \nthe point $P = (a, f(a))$ is the line through $P$ with slope\n\\[\n m = \\limtozero{h} \\frac{f(a+h) - f(a)}{h},\n\\]\nprovided this limit exists."
+    },
+    {
+      "type": "paragraph",
+      "text": "The expression $\\dfrac{f(a+h)-f(a)}{h}$ is called the **difference \nquotient**. It measures the average rate of change \nof $f$ over the interval from $a$ to $a+h$. The limit transforms this \naverage into an *instantaneous* rate—the slope of the curve at the \nsingle point $x = a$."
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Tangent line to a parabola",
+      "problem": "Find the equation of the tangent line to $f(x) = x^{2}$ at the point \n$(1, 1)$.",
+      "solution": "We compute the slope of the tangent line using the limit definition:\nalign*\n m &= h $\\frac{f(1+h) - f(1)}{h}$ \\\\[6pt]\n &= \\limtozero{h} \\frac{(1+h)^{2} - 1}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{1 + 2h + h^{2} - 1}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{2h + h^{2}}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{h(2 + h)}{h} \\\\[6pt]\n &= \\limtozero{h} (2 + h) \\\\[6pt]\n &= 2.\n\\end{align*}\n\nThe tangent line passes through $(1, 1)$ with slope $m = 2$, so its \nequation in point-slope form is\n\\[\n y - 1 = 2(x - 1), \\qquad\\text{or equivalently}\\qquad y = 2x - 1.\n\\]\nIn Section [sec:tangent-velocity], we guessed this answer by computing \nsecant slopes and watching them approach $2$. Now we have *proved* it."
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Tangent to a cubic",
+      "problem": "Find the slope of the tangent line to $f(x) = x^{3}$ at $x = 2$.",
+      "solution": "We form the difference quotient and take the limit:\n$$\n m &= \\limtozero{h} \\frac{f(2+h) - f(2)}{h} \\__MATH_BLOCK_0__\nSubstituting:\n\\begin{align*}\n m &= \\limtozero{h} \\frac{8 + 12h + 6h^{2} + h^{3} - 8}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{12h + 6h^{2} + h^{3}}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{h(12 + 6h + h^{2})}{h} \\\\[6pt]\n &= \\limtozero{h} (12 + 6h + h^{2}) \\\\[6pt]\n &= 12.\n$$\nThe tangent line to $y = x^{3}$ at $(2, 8)$ has slope $12$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Derivative at a Point"
+    },
+    {
+      "type": "paragraph",
+      "text": "The limit we have been computing—the slope of the tangent line—appears in \nso many contexts and with such frequency that it deserves its own name."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.2",
+      "number": "3.2",
+      "title": "The Derivative of $f$ at $a$",
+      "content": "The **derivative of $f$ at $a$**, denoted \n$f'(a)$ (read \"$f$ prime of $a$\"), is\n\\[\n f'(a) = \\limtozero{h} \\frac{f(a+h) - f(a)}{h},\n\\]\nprovided this limit exists. If $f'(a)$ exists, we say that $f$ is \n**differentiable** at $a$."
+    },
+    {
+      "type": "paragraph",
+      "text": "There is an equivalent formulation that is sometimes more convenient. If we \nwrite $x = a + h$, then $h = x - a$ and $h \\to 0$ corresponds to \n$x \\to a$. The definition becomes:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.3",
+      "number": "3.3",
+      "title": "The Derivative (Alternate Form)",
+      "content": "\\[\n f'(a) = \\limto{x \\to a} \\frac{f(x) - f(a)}{x - a}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Both forms define the same quantity. Use whichever is more natural for the \nproblem at hand. When the function involves $x$ directly, the alternate form \noften avoids heavy algebra; when the function involves a composition, the \n$h$-form may be simpler."
+    },
+    {
+      "type": "historical",
+      "id": "historical-3.1",
+      "number": null,
+      "title": "Isaac Newton (1643--1727) and Gottfried Wilhelm Leibniz (1646--1716)",
+      "content": "The derivative was discovered independently by Isaac Newton in England and \nGottfried Wilhelm Leibniz in Germany during the 1660s and 1670s. Newton \ncalled derivatives *fluxions* and thought of them as instantaneous \nvelocities of quantities \"flowing\" through time. Leibniz developed the \n$dy/dx$ notation and conceived of the derivative as a ratio of \ninfinitesimal changes. Their approaches looked different but captured the \nsame mathematical truth. The bitter priority dispute that followed \novershadowed one of the most remarkable coincidences in intellectual \nhistory: two minds, working independently, arrived at the same \nrevolutionary idea."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Computing Derivatives at a Point"
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us now put the definition to serious work. We compute $f'(a)$ for \nseveral fundamental functions, showing every algebraic step."
+    },
+    {
+      "type": "example",
+      "id": "example-3.3",
+      "number": "3.3",
+      "title": "Derivative of $f(x) = x^{2}$ at $x = a$",
+      "problem": "Find $f'(a)$ for $f(x) = x^{2}$ at an arbitrary point $x = a$.",
+      "solution": "$$\n f'(a) &= \\limtozero{h} \\frac{f(a+h) - f(a)}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{(a+h)^{2} - a^{2}}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{a^{2} + 2ah + h^{2} - a^{2}}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{2ah + h^{2}}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{h(2a + h)}{h} \\\\[6pt]\n &= \\limtozero{h} (2a + h) \\\\[6pt]\n &= 2a.\n$$\nFor example, $f'(1) = 2$, $f'(3) = 6$, and $f'(-2) = -4$. The derivative \nof $x^{2}$ at any point $a$ is $2a$."
+    },
+    {
+      "type": "example",
+      "id": "example-3.4",
+      "number": "3.4",
+      "title": "Derivative of $f(x) = x^{3}$ at $x = a$",
+      "problem": "Find $f'(a)$ for $f(x) = x^{3}$.",
+      "solution": "Using the alternate form of the definition:\n$$\n f'(a) &= \\limto{x \\to a} \\frac{f(x) - f(a)}{x - a} \\__MATH_BLOCK_0__\nTherefore:\n\\begin{align*}\n f'(a) &= \\limto{x \\to a} \\frac{(x - a)(x^{2} + ax + a^{2})}{x - a} \\\\[6pt]\n &= \\limto{x \\to a} (x^{2} + ax + a^{2}) \\\\[6pt]\n &= a^{2} + a \\cdot a + a^{2} \\\\[6pt]\n &= 3a^{2}.\n$$\nFor example, $f'(2) = 3(4) = 12$, which confirms our earlier \ncalculation in Example [ex:tangent-x3-at-2]."
+    },
+    {
+      "type": "example",
+      "id": "example-3.5",
+      "number": "3.5",
+      "title": "Derivative of $f(x) = \\dfrac{1}{x}$ at $x = a$",
+      "problem": "Find $f'(a)$ for $f(x) = \\dfrac{1}{x}$, where $a \\neq 0$.",
+      "solution": "$$\n f'(a) &= \\limtozero{h} \\frac{f(a+h) - f(a)}{h} \\__MATH_BLOCK_0__\nSubstituting:\n\\begin{align*}\n f'(a) &= \\limtozero{h} \\frac{1}{h} \\cdot \\frac{-h}{a(a+h)} \\\\[6pt]\n &= \\limtozero{h} \\frac{-1}{a(a+h)} \\\\[6pt]\n &= \\frac{-1}{a \\cdot a} \\\\[6pt]\n &= -\\frac{1}{a^{2}}.\n$$\nThe derivative of $\\dfrac{1}{x}$ at $x = a$ is $-\\dfrac{1}{a^{2}}$. Notice \nthe negative sign: the function $\\dfrac{1}{x}$ is *decreasing* for \n$x > 0$ (and also for $x < 0$), which is consistent with a negative \nderivative."
+    },
+    {
+      "type": "example",
+      "id": "example-3.6",
+      "number": "3.6",
+      "title": "Derivative of $f(x) = \\sqrt{x}$ at $x = a$",
+      "problem": "Find $f'(a)$ for $f(x) = \\sqrt{x}$, where $a > 0$.",
+      "solution": "$$\n f'(a) &= \\limtozero{h} \\frac{f(a+h) - f(a)}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{\\sqrt{a+h} - \\sqrt{a}}{h}.\n$$\nDirect substitution gives $\\frac{0}{0}$, so we *rationalize the \nnumerator* by multiplying by the conjugate:\n$$\n f'(a) &= \\limtozero{h} \\frac{\\sqrt{a+h} - \\sqrt{a}}{h} \\cdot \n \\frac{\\sqrt{a+h} + \\sqrt{a}}{\\sqrt{a+h} + \\sqrt{a}} \\\\[6pt]\n &= \\limtozero{h} \\frac{(a+h) - a}{h\\bigl(\\sqrt{a+h} + \\sqrt{a}\\bigr)} \\\\[6pt]\n &= \\limtozero{h} \\frac{h}{h\\bigl(\\sqrt{a+h} + \\sqrt{a}\\bigr)} \\\\[6pt]\n &= \\limtozero{h} \\frac{1}{\\sqrt{a+h} + \\sqrt{a}} \\\\[6pt]\n &= \\frac{1}{\\sqrt{a} + \\sqrt{a}} \\\\[6pt]\n &= \\frac{1}{2\\sqrt{a}}.\n$$\nFor example, $f'(4) = \\dfrac{1}{2\\sqrt{4}} = \\dfrac{1}{4}$ and \n$f'(9) = \\dfrac{1}{2\\sqrt{9}} = \\dfrac{1}{6}$. As $a$ increases, the \nderivative decreases—the curve $y = \\sqrt{x}$ flattens out as $x$ grows, \nwhich matches its graph."
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us collect what we have found so far:"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "$f(x)$",
+        "$f'(a)$"
+      ],
+      "rows": [
+        [
+          "$x^{2}$",
+          "$2a$"
+        ],
+        [
+          "$x^{3}$",
+          "$3a^{2}$"
+        ],
+        [
+          "$\\dfrac{1}{x}$",
+          "$-\\dfrac{1}{a^{2}}$"
+        ],
+        [
+          "$\\sqrt{x}$",
+          "$\\dfrac{1}{2\\sqrt{a}}$"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "left"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Do you notice a pattern? The derivative of $x^{n}$ at $a$ seems \nto be $na^{n-1}$—this works for $n = 2$, $n = 3$, $n = -1$ (since \n$\\frac{1}{x} = x^{-1}$ and $-1 \\cdot a^{-2} = -\\frac{1}{a^{2}}$), and \n$n = \\frac{1}{2}$ (since $\\frac{1}{2}a^{-1/2} = \\frac{1}{2\\sqrt{a}}$). \nWe will return to this striking pattern in Section 3.4."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Instantaneous Velocity"
+    },
+    {
+      "type": "paragraph",
+      "text": "In Section [sec:tangent-velocity] we studied an object moving along a \nstraight line with position function $s(t)$. The average velocity over an \ninterval $[a, a+h]$ was\n\\[\n v_{\\mathrm{avg}} = \\frac{s(a+h) - s(a)}{h}.\n\\]\nThe *instantaneous velocity* at time $t = a$ is the limit of these \naverages as the time interval shrinks to zero:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.4",
+      "number": "3.4",
+      "title": "Instantaneous Velocity",
+      "content": "If $s(t)$ denotes the position of an object at time $t$, then the \n**instantaneous velocity** at $t = a$ is\n\\[\n v(a) = s'(a) = \\limtozero{h} \\frac{s(a+h) - s(a)}{h},\n\\]\nprovided this limit exists. The **speed** at $t = a$ is \n$\\abs{v(a)}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The derivative *is* the instantaneous velocity. This is not a metaphor \nor an approximation—it is an exact identity. The velocity of an object at a \nprecise instant is the derivative of its position function at that instant."
+    },
+    {
+      "type": "example",
+      "id": "example-3.7",
+      "number": "3.7",
+      "title": "Instantaneous velocity of a falling stone",
+      "problem": "A stone is dropped from a 400-foot cliff. Its height after $t$ seconds is \n$s(t) = 400 - 16t^{2}$. Find the instantaneous velocity at $t = 3$ seconds.",
+      "solution": "$$\n v(3) = s'(3) &= \\limtozero{h} \\frac{s(3+h) - s(3)}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{[400 - 16(3+h)^{2}] - [400 - 16(9)]}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{400 - 16(9 + 6h + h^{2}) - 400 + 144}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{-144 - 96h - 16h^{2} + 144}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{-96h - 16h^{2}}{h} \\\\[6pt]\n &= \\limtozero{h} (-96 - 16h) \\\\[6pt]\n &= -96.\n$$\nThe instantaneous velocity at $t = 3$ is $-96$ ft/s. The negative sign \nindicates that the stone is moving *downward* (its height is \ndecreasing). Its speed at that instant is $\\abs{-96} = 96$ ft/s."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Rates of Change in Other Contexts"
+    },
+    {
+      "type": "paragraph",
+      "text": "The tangent problem and the velocity problem are two faces of the same coin: \nboth ask for an instantaneous rate of change. The derivative provides a \nunified answer."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.5",
+      "number": "3.5",
+      "title": "Instantaneous Rate of Change",
+      "content": "The **instantaneous rate of change** \nof $f$ at $a$ is $f'(a)$. Equivalently, $f'(a)$ is the slope of the \ntangent line to $y = f(x)$ at $x = a$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The derivative can represent velocity, growth rate, marginal cost, reaction \nrate, or any quantity that measures how fast an output changes with respect \nto an input. The interpretation depends on the context; the mathematics is \nalways the same."
+    },
+    {
+      "type": "example",
+      "id": "example-3.8",
+      "number": "3.8",
+      "title": "Rate of change of area",
+      "problem": "A circular oil spill on still water has radius $r$ meters. Its area is \n$A(r) = \\pi r^{2}$. Find the rate at which the area changes with respect \nto the radius when $r = 5$ meters.",
+      "solution": "$$\n A'(5) &= \\limtozero{h} \\frac{A(5+h) - A(5)}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{\\pi(5+h)^{2} - 25\\pi}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{\\pi(25 + 10h + h^{2}) - 25\\pi}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{10\\pi h + \\pi h^{2}}{h} \\\\[6pt]\n &= \\limtozero{h} (10\\pi + \\pi h) \\\\[6pt]\n &= 10\\pi.\n$$\nWhen the radius is 5 meters, the area is increasing at a rate of \n$10\\pi \\approx 31.4$ square meters per meter of radius. Each additional \nmeter of radius adds roughly $31.4\\,\\mathrm{m}^{2}$ to the spill."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Tangent Lines and Normal Lines"
+    },
+    {
+      "type": "paragraph",
+      "text": "We have defined the tangent line as the line through $(a, f(a))$ with slope \n$f'(a)$. The **normal line** at the same point is \nperpendicular to the tangent line."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.6",
+      "number": "3.6",
+      "title": "Normal Line",
+      "content": "The **normal line** to $y = f(x)$ at $(a, f(a))$ is the line through \n$(a, f(a))$ perpendicular to the tangent line. If $f'(a) \\neq 0$, the \nnormal line has slope $-\\dfrac{1}{f'(a)}$. If $f'(a) = 0$, the tangent \nline is horizontal and the normal line is the vertical line $x = a$."
+    },
+    {
+      "type": "example",
+      "id": "example-3.9",
+      "number": "3.9",
+      "title": "Tangent and normal lines to $1/x$",
+      "problem": "Find the equations of the tangent line and the normal line to \n$f(x) = \\dfrac{1}{x}$ at the point $(2, \\tfrac{1}{2})$.",
+      "solution": "From Example [ex:deriv-1overx-at-a], we know that \n$f'(a) = -\\dfrac{1}{a^{2}}$, so\n\\[\n f'(2) = -\\frac{1}{4}.\n\\]\nThe tangent line through $(2, \\frac{1}{2})$ with slope $-\\frac{1}{4}$ is\n\\[\n y - \\tfrac{1}{2} = -\\tfrac{1}{4}(x - 2),\n \\qquad\\text{or equivalently}\\qquad\n y = -\\tfrac{1}{4}x + 1.\n\\]\nThe normal line has slope $-\\dfrac{1}{f'(2)} = -\\dfrac{1}{-1/4} = 4$, so\n\\[\n y - \\tfrac{1}{2} = 4(x - 2),\n \\qquad\\text{or equivalently}\\qquad\n y = 4x - \\tfrac{15}{2}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-3.10",
+      "number": "3.10",
+      "title": "Tangent line to the square root function",
+      "problem": "Find the equation of the tangent line to $f(x) = \\sqrt{x}$ at $(4, 2)$.",
+      "solution": "From Example [ex:deriv-sqrt-at-a], $f'(a) = \\dfrac{1}{2\\sqrt{a}}$, so\n\\[\n f'(4) = \\frac{1}{2\\sqrt{4}} = \\frac{1}{4}.\n\\]\nThe tangent line is\n\\[\n y - 2 = \\tfrac{1}{4}(x - 4), \\qquad\\text{or}\\qquad y = \\tfrac{1}{4}x + 1.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "When Does the Derivative Fail to Exist?"
+    },
+    {
+      "type": "paragraph",
+      "text": "The derivative $f'(a)$ is defined as a limit, and limits do not always exist. \nThere are four common geometric situations in which a function fails to be \ndifferentiable at a point."
+    },
+    {
+      "type": "paragraph",
+      "text": "*1.\\ Corner.** The function $f(x) = \\abs{x}$ \nhas a sharp corner at $x = 0$. The left-hand secant slopes approach $-1$ \nwhile the right-hand secant slopes approach $+1$:\n\\[\n \\limto{h \\to 0^{-}} \\frac{\\abs{0+h} - \\abs{0}}{h} \n = \\limto{h \\to 0^{-}} \\frac{-h}{h} = -1,\n \\qquad\n \\limto{h \\to 0^{+}} \\frac{\\abs{0+h} - \\abs{0}}{h} \n = \\limto{h \\to 0^{+}} \\frac{h}{h} = 1.\n\\]\nSince the one-sided limits disagree, $f'(0)$ does not exist."
+    },
+    {
+      "type": "paragraph",
+      "text": "*2.\\ Cusp.** The function $f(x) = x^{2/3}$ has \na cusp at $x = 0$. The difference quotient\n\\[\n \\frac{f(0+h) - f(0)}{h} = \\frac{h^{2/3}}{h} = \\frac{1}{h^{1/3}}\n\\]\ntends to $+\\infty$ as $h \\to 0^{+}$ and to $-\\infty$ as $h \\to 0^{-}$. The \nlimit does not exist (even as an infinite limit), so $f'(0)$ is undefined. \nGeometrically, the tangent line would be vertical, but the curve approaches \nit from different sides."
+    },
+    {
+      "type": "paragraph",
+      "text": "*3.\\ Vertical tangent.** The \nfunction $f(x) = x^{1/3}$ has a vertical tangent at $x = 0$:\n\\[\n \\frac{f(0+h) - f(0)}{h} = \\frac{h^{1/3}}{h} = \\frac{1}{h^{2/3}} \n \\to +\\infty \\quad\\text{as } h \\to 0.\n\\]\nThe one-sided limits both tend to $+\\infty$, so the tangent line is vertical: \n$x = 0$. Since the slope is not a real number, $f'(0)$ does not exist."
+    },
+    {
+      "type": "paragraph",
+      "text": "*4.\\ Discontinuity.** If $f$ is not \ncontinuous at $a$, then $f$ is certainly not differentiable at $a$. (We will \nprove this in Section 3.2.) For example, the Heaviside step function \n$H(x) ="
+    },
+    {
+      "type": "paragraph",
+      "text": "$ has a jump \ndiscontinuity at $x = 0$ and is not differentiable there."
+    },
+    {
+      "type": "warning",
+      "id": "warning-3.1",
+      "number": null,
+      "title": "Differentiable is ``stronger'' than continuous",
+      "content": "Every differentiable function is continuous (Theorem [thm:diff-implies-cont] \nin Section 3.2), but a continuous function need not be differentiable. The \nfunction $f(x) = \\abs{x}$ is continuous everywhere but not differentiable at \n$x = 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-3.11",
+      "number": "3.11",
+      "title": "Where is $f(x) = \\abs{x - 3}$ not differentiable?",
+      "problem": "Determine where $f(x) = \\abs{x - 3}$ fails to be differentiable.",
+      "solution": "We can write\n\\[\n f(x) = \\begin{cases} -(x-3) = 3 - x & \\text{if } x < 3, \\\\\n x - 3 & \\text{if } x \\ge 3. \\end{cases}\n\\]\nFor $x \\neq 3$, the function is a linear function on each piece, so it is \ndifferentiable there. At $x = 3$:\n\\[\n \\limto{h \\to 0^{-}} \\frac{f(3+h) - f(3)}{h} \n = \\limto{h \\to 0^{-}} \\frac{\\abs{h}}{h} \n = \\limto{h \\to 0^{-}} \\frac{-h}{h} = -1,\n\\]\n\\[\n \\limto{h \\to 0^{+}} \\frac{f(3+h) - f(3)}{h} \n = \\limto{h \\to 0^{+}} \\frac{h}{h} = 1.\n\\]\nSince $-1 \\neq 1$, the limit does not exist and $f'(3)$ does not exist. \nThe function has a corner at $x = 3$."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-3.1",
+      "number": null,
+      "title": "Finding the Derivative at a Point",
+      "content": "To compute $f'(a)$:\n\n1. Write the difference quotient $\\dfrac{f(a+h) - f(a)}{h}$.\n\n2. Simplify the expression algebraically (expand, factor, rationalize, \n combine fractions) until you can cancel the $h$ in the denominator.\n\n3. Evaluate $\\limtozero{h}$ of the simplified expression.\n*Alternatively*, use the form $\\dfrac{f(x) - f(a)}{x - a}$ and take \n$\\limto{x \\to a}$. Choose whichever form leads to simpler algebra."
+    },
+    {
+      "type": "example",
+      "id": "example-3.12",
+      "number": "3.12",
+      "title": "A derivative that does not exist",
+      "problem": "Show that $f(x) = (x - 1)^{2/3}$ is not differentiable at $x = 1$.",
+      "solution": "$$\n \\frac{f(1+h) - f(1)}{h} \n &= \\frac{(1+h-1)^{2/3} - 0}{h} \\\\[6pt]\n &= \\frac{h^{2/3}}{h} \\\\[6pt]\n &= \\frac{1}{h^{1/3}}.\n$$\nAs $h \\to 0^{+}$, $h^{1/3} \\to 0^{+}$, so $1/h^{1/3} \\to +\\infty$. \nAs $h \\to 0^{-}$, $h^{1/3} \\to 0^{-}$, so $1/h^{1/3} \\to -\\infty$. \nThe limit does not exist, and $f'(1)$ is undefined. The graph has a cusp \nat $(1, 0)$."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Hebrews 4:12",
+      "text": "For the word of God is living and active, \nsharper than any two-edged sword, piercing to the division of soul and \nof spirit, of joints and of marrow, and discerning the thoughts and \nintentions of the heart."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 139:17--18",
+      "text": "How precious to me are your thoughts, \nO God! How vast is the sum of them! If I would count them, they are more \nthan the sand."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 9:11",
+      "text": "The race is not to the swift, nor the \nbattle to the strong, but time and chance happen to them all."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 4:26--27",
+      "text": "Give careful thought to the paths \nfor your feet and be steadfast in all your ways. Do not turn to the \nright or the left."
+    },
+    {
+      "type": "quote",
+      "author": "Isaac Newton",
+      "text": "If I have seen further, it is by standing on \nthe shoulders of giants."
+    },
+    {
+      "type": "quote",
+      "author": "Gottfried Wilhelm Leibniz",
+      "text": "It is unworthy of excellent men \nto lose hours like slaves in the labor of calculation which could safely \nbe relegated to anyone else if machines were used."
+    },
+    {
+      "type": "quote",
+      "author": "Blaise Pascal",
+      "text": "The heart has its reasons of which reason \nknows nothing."
+    }
+  ]
+}

@@ -1,0 +1,468 @@
+{
+  "id": "vol1-ch06-sec02",
+  "title": "The Area Problem and Riemann Sums",
+  "chapter": 6,
+  "section": 2,
+  "book": "vol1",
+  "epigraph": {
+    "text": "Who has measured the waters in the hollow of his hand, or with the breadth of his hand marked off the heavens?",
+    "reference": "Isaiah 40:12",
+    "quote": "The art of doing mathematics consists in finding that special case which contains all the germs of generality.",
+    "quoteAuthor": "David Hilbert"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "How do you find the area of a rectangle? Multiply base times height. A \ntriangle? Half of base times height. A circle? $\\pi r^2$. These \nformulas are ancient\u2014Euclid knew them all."
+    },
+    {
+      "type": "paragraph",
+      "text": "But what about the area under a *curve*? Consider the region bounded \nby $y = x^2$, the $x$-axis, and the vertical lines $x = 0$ and $x = 1$. \nIt is not a rectangle, not a triangle, not a circle. It has a curved \nboundary. No formula from geometry covers it."
+    },
+    {
+      "type": "paragraph",
+      "text": "In this section, we develop a strategy that is both simple and profound: \n*approximate the curved region with rectangles, then take better and \nbetter approximations.* This idea\u2014known as a \n**Riemann sum**\u2014is one of the most powerful in all of mathematics."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Idea: Rectangles Under a Curve"
+    },
+    {
+      "type": "paragraph",
+      "text": "Suppose we want the area under $f(x) = x^2$ from $x = 0$ to $x = 1$. \nWe cannot compute it directly, but we can *approximate* it."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 1: Divide the interval.** Cut $[0, 1]$ into $n$ equal \nsubintervals, each of width\n$$\n \\Delta x = \\frac{1 - 0}{n} = \\frac{1}{n}.\n$$\nThe subintervals are \n$\\bigl[0, \\tfrac{1}{n}\\bigr],\\; \n\\bigl[\\tfrac{1}{n}, \\tfrac{2}{n}\\bigr],\\; \\ldots,\\; \n\\bigl[\\tfrac{n-1}{n}, 1\\bigr]$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 2: Build rectangles.** On each subinterval, erect a \nrectangle whose height equals the value of $f$ at some point in that \nsubinterval. The area of the rectangle over the $i$-th subinterval is \n$f(x_i^*)\\,\\Delta x$, where $x_i^*$ is the chosen sample point."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 3: Add them up.** The sum of all rectangle areas \napproximates the area under the curve:\n$$\n A \\approx \\sum_{i=1}^{n} f(x_i^*)\\,\\Delta x.\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The key insight: the more rectangles we use, the better the approximation. \nAs $n \\to \\infty$, the rectangles become infinitely thin and the \napproximation becomes *exact*."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Left and Right Riemann Sums"
+    },
+    {
+      "type": "paragraph",
+      "text": "The choice of sample point $x_i^*$ matters for the approximation (though \nnot for the limit). The two most natural choices:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Left and Right Riemann Sums",
+      "content": "Let $f$ be defined on $[a, b]$. Divide $[a, b]$ into $n$ equal \nsubintervals of width $\\Delta x = \\frac{b-a}{n}$, and let \n$x_i = a + i\\,\\Delta x$ for $i = 0, 1, \\ldots, n$.\n\nThe **left Riemann sum** is\n$$\n L_n = \\sum_{i=0}^{n-1} f(x_i)\\,\\Delta x \n = \\sum_{i=0}^{n-1} f(a + i\\,\\Delta x)\\,\\Delta x.\n$$\nThe **right Riemann sum** is\n$$\n R_n = \\sum_{i=1}^{n} f(x_i)\\,\\Delta x \n = \\sum_{i=1}^{n} f(a + i\\,\\Delta x)\\,\\Delta x.\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "For the left sum, each rectangle's height is the function value at the \n*left* endpoint of its subinterval. For the right sum, we use the \n*right* endpoint."
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Left and right sums with $n = 4$",
+      "problem": "Approximate the area under $f(x) = x^2$ on $[0, 1]$ using $n = 4$ \nsubintervals with (a) a left Riemann sum and (b) a right Riemann sum.",
+      "solution": "With $n = 4$, we have $\\Delta x = \\frac{1}{4}$ and the partition points \nare $x_0 = 0,\\; x_1 = \\frac{1}{4},\\; x_2 = \\frac{1}{2},\\; \nx_3 = \\frac{3}{4},\\; x_4 = 1$.\n\n**(a) Left Riemann sum:** We evaluate $f$ at the left endpoints \n$x_0, x_1, x_2, x_3$:\n$$\n L_4 &= f(0)\\cdot\\tfrac{1}{4} + f(\\tfrac{1}{4})\\cdot\\tfrac{1}{4} \n + f(\\tfrac{1}{2})\\cdot\\tfrac{1}{4} \n + f(\\tfrac{3}{4})\\cdot\\tfrac{1}{4} \\\\\n &= 0\\cdot\\tfrac{1}{4} + \\tfrac{1}{16}\\cdot\\tfrac{1}{4} \n + \\tfrac{1}{4}\\cdot\\tfrac{1}{4} \n + \\tfrac{9}{16}\\cdot\\tfrac{1}{4} \\\\\n &= 0 + \\tfrac{1}{64} + \\tfrac{1}{16} + \\tfrac{9}{64} \n = \\frac{0 + 1 + 4 + 9}{64} = \\frac{14}{64} = \\frac{7}{32} \n \\approx 0.2188.\n$$\n\n**(b) Right Riemann sum:** We evaluate $f$ at the right endpoints \n$x_1, x_2, x_3, x_4$:\n$$\n R_4 &= f(\\tfrac{1}{4})\\cdot\\tfrac{1}{4} \n + f(\\tfrac{1}{2})\\cdot\\tfrac{1}{4} \n + f(\\tfrac{3}{4})\\cdot\\tfrac{1}{4} \n + f(1)\\cdot\\tfrac{1}{4} \\\\\n &= \\tfrac{1}{16}\\cdot\\tfrac{1}{4} \n + \\tfrac{1}{4}\\cdot\\tfrac{1}{4} \n + \\tfrac{9}{16}\\cdot\\tfrac{1}{4} \n + 1\\cdot\\tfrac{1}{4} \\\\\n &= \\frac{1 + 4 + 9 + 16}{64} = \\frac{30}{64} = \\frac{15}{32} \n \\approx 0.4688.\n$$\n\nThe true area lies between $L_4 = 0.2188$ and $R_4 = 0.4688$. \n(Since $f(x) = x^2$ is increasing on $[0,1]$, the left sum \nunderestimates and the right sum overestimates.)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Sigma Notation Review"
+    },
+    {
+      "type": "paragraph",
+      "text": "To work with Riemann sums formally, we need the compact language of \nsigma notation."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.2",
+      "number": "6.2",
+      "title": "Sigma Notation",
+      "content": "If $a_m, a_{m+1}, \\ldots, a_n$ are real numbers and $m \\leq n$, then\n$$\n \\sum_{i=m}^{n} a_i = a_m + a_{m+1} + \\cdots + a_n.\n$$\nThe letter $i$ is the **index of summation**, \n$m$ is the **lower limit**, and $n$ is the **upper limit**."
+    },
+    {
+      "type": "paragraph",
+      "text": "We will need three summation formulas. Each can be proved by mathematical \ninduction (see the exercises)."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Summation Formulas",
+      "content": "For any positive integer $n$:\n\n1. $\\displaystyle\\sum_{i=1}^{n} 1 = n$\n\n2. $\\displaystyle\\sum_{i=1}^{n} i \n = \\frac{n(n+1)}{2}$\n\n3. $\\displaystyle\\sum_{i=1}^{n} i^2 \n = \\frac{n(n+1)(2n+1)}{6}$\n\n4. $\\displaystyle\\sum_{i=1}^{n} i^3 \n = \\left[\\frac{n(n+1)}{2}\\right]^{\\!2}$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Linearity also applies: $\\sum_{i=1}^{n}(ca_i + b_i) = c\\sum_{i=1}^{n}a_i \n+ \\sum_{i=1}^{n}b_i$."
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Using summation formulas",
+      "problem": "Evaluate $\\displaystyle\\sum_{i=1}^{100} i$ and \n$\\displaystyle\\sum_{i=1}^{10} i^2$.",
+      "solution": "By the formulas:\n$$\n \\sum_{i=1}^{100} i = \\frac{100 \\cdot 101}{2} = 5050,\n \\qquad\n \\sum_{i=1}^{10} i^2 = \\frac{10 \\cdot 11 \\cdot 21}{6} = 385.\n$$"
+    },
+    {
+      "type": "historical",
+      "id": "historical-6.2",
+      "number": null,
+      "title": "Carl Friedrich Gauss (1777--1855)",
+      "content": "The story goes that young Gauss, asked to sum the integers from $1$ to \n$100$ as a busywork assignment, instantly wrote $5050$ on his slate. \nHe had noticed that the numbers could be paired: $1 + 100 = 101$, \n$2 + 99 = 101$, $\\ldots$, $50 + 51 = 101$\u2014giving $50 \\times 101 = \n5050$. Gauss, a devout Lutheran, later wrote: \"There are problems to \nwhose solution I would attach an infinitely greater importance than to \nthose of mathematics, for example, those of ethics, or of our relation \nto God.\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Computing a Riemann Sum in Closed Form"
+    },
+    {
+      "type": "paragraph",
+      "text": "Now we combine sigma notation with our summation formulas to find the \nright Riemann sum for $f(x) = x^2$ on $[0, 1]$ with $n$ rectangles, \nand then take the limit as $n \\to \\infty$."
+    },
+    {
+      "type": "example",
+      "id": "example-6.3",
+      "number": "6.3",
+      "title": "Area under $x^2$ by Riemann sums",
+      "problem": "Find the area under $f(x) = x^2$ on $[0, 1]$ using the limit of right \nRiemann sums.",
+      "solution": "We have $\\Delta x = \\frac{1}{n}$ and the right endpoints are \n$x_i = \\frac{i}{n}$ for $i = 1, 2, \\ldots, n$. The right Riemann sum is:\n$$\n R_n &= \\sum_{i=1}^{n} f(x_i)\\,\\Delta x \n = \\sum_{i=1}^{n} \\left(\\frac{i}{n}\\right)^{\\!2} \\cdot \\frac{1}{n} \n = \\sum_{i=1}^{n} \\frac{i^2}{n^3} \\\\\n &= \\frac{1}{n^3} \\sum_{i=1}^{n} i^2 \n = \\frac{1}{n^3} \\cdot \\frac{n(n+1)(2n+1)}{6} \\\\\n &= \\frac{(n+1)(2n+1)}{6n^2}.\n$$\n\nLet us expand and simplify:\n$$\n R_n = \\frac{2n^2 + 3n + 1}{6n^2} \n = \\frac{2}{6} + \\frac{3}{6n} + \\frac{1}{6n^2}\n = \\frac{1}{3} + \\frac{1}{2n} + \\frac{1}{6n^2}.\n$$\n\nNow take the limit:\n$$\n A = \\lim_{n\\to\\infty} R_n \n = \\lim_{n\\to\\infty}\\left(\\frac{1}{3} + \\frac{1}{2n} \n + \\frac{1}{6n^2}\\right) \n = \\frac{1}{3}.\n$$\n\nThe area under $y = x^2$ from $x = 0$ to $x = 1$ is exactly \n$\\dfrac{1}{3}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us verify with the left Riemann sum."
+    },
+    {
+      "type": "example",
+      "id": "example-6.4",
+      "number": "6.4",
+      "title": "Left Riemann sum confirms the area",
+      "problem": "Compute $L_n$ for $f(x) = x^2$ on $[0,1]$ and verify that \n$\\lim_{n\\to\\infty} L_n = \\frac{1}{3}$.",
+      "solution": "The left endpoints are $x_i = \\frac{i}{n}$ for $i = 0, 1, \\ldots, n-1$:\n$$\n L_n &= \\sum_{i=0}^{n-1} \\left(\\frac{i}{n}\\right)^{\\!2}\\cdot\\frac{1}{n} \n = \\frac{1}{n^3}\\sum_{i=0}^{n-1} i^2 \n = \\frac{1}{n^3}\\cdot\\frac{(n-1)n(2n-1)}{6} \\\\\n &= \\frac{(n-1)(2n-1)}{6n^2} \n = \\frac{2n^2 - 3n + 1}{6n^2} \n = \\frac{1}{3} - \\frac{1}{2n} + \\frac{1}{6n^2}.\n$$\nAs $n \\to \\infty$, we get $L_n \\to \\frac{1}{3}$. Both the left and \nright sums converge to the same value."
+    },
+    {
+      "type": "paragraph",
+      "text": "Notice: for any finite $n$, $L_n < \\frac{1}{3} < R_n$ (since $f$ is \nincreasing on $[0,1]$). The left sum underestimates, the right sum \noverestimates, and they *squeeze* together as $n \\to \\infty$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "More Riemann Sum Computations"
+    },
+    {
+      "type": "example",
+      "id": "example-6.5",
+      "number": "6.5",
+      "title": "Area under a linear function",
+      "problem": "Use right Riemann sums to find the area under $f(x) = 2x + 1$ on $[0, 3]$.",
+      "solution": "We have $\\Delta x = \\frac{3}{n}$ and $x_i = \\frac{3i}{n}$.\n$$\n R_n &= \\sum_{i=1}^{n} f\\!\\left(\\frac{3i}{n}\\right)\\cdot\\frac{3}{n}\n = \\sum_{i=1}^{n}\\left(\\frac{6i}{n} + 1\\right)\\cdot\\frac{3}{n} \\\\\n &= \\frac{3}{n}\\sum_{i=1}^{n}\\frac{6i}{n} \n + \\frac{3}{n}\\sum_{i=1}^{n} 1\n = \\frac{18}{n^2}\\cdot\\frac{n(n+1)}{2} + \\frac{3}{n}\\cdot n \\\\\n &= \\frac{9(n+1)}{n} + 3 \n = 9 + \\frac{9}{n} + 3 = 12 + \\frac{9}{n}.\n$$\nTaking the limit: $A = \\lim_{n\\to\\infty}\\bigl(12 + \\frac{9}{n}\\bigr) = 12$.\n\n**Check with geometry:** The region under $f(x) = 2x + 1$ on \n$[0, 3]$ is a trapezoid with parallel sides $f(0) = 1$ and $f(3) = 7$ \nand width $3$. The area is $\\frac{1}{2}(1 + 7)(3) = 12$."
+    },
+    {
+      "type": "example",
+      "id": "example-6.6",
+      "number": "6.6",
+      "title": "Area under $x^3$",
+      "problem": "Use right Riemann sums to find the area under $f(x) = x^3$ on $[0, 2]$.",
+      "solution": "Here $\\Delta x = \\frac{2}{n}$ and $x_i = \\frac{2i}{n}$.\n$$\n R_n &= \\sum_{i=1}^{n}\\left(\\frac{2i}{n}\\right)^{\\!3}\\cdot\\frac{2}{n}\n = \\frac{16}{n^4}\\sum_{i=1}^{n}i^3 \n = \\frac{16}{n^4}\\cdot\\left[\\frac{n(n+1)}{2}\\right]^{\\!2} \\\\\n &= \\frac{16}{n^4}\\cdot\\frac{n^2(n+1)^2}{4} \n = \\frac{4(n+1)^2}{n^2} = 4\\left(1 + \\frac{1}{n}\\right)^{\\!2}.\n$$\nAs $n \\to \\infty$: $A = 4(1)^2 = 4$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Midpoint Sum"
+    },
+    {
+      "type": "paragraph",
+      "text": "Instead of using left or right endpoints, we can evaluate $f$ at the \n**midpoint** of each subinterval."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.3",
+      "number": "6.3",
+      "title": "Midpoint Riemann Sum",
+      "content": "With the same partition as before, the \n**midpoint Riemann sum** is\n$$\n M_n = \\sum_{i=1}^{n} f(\\bar{x}_i)\\,\\Delta x,\n \\qquad\\text{where } \\bar{x}_i = \\frac{x_{i-1} + x_i}{2}\n$$\nis the midpoint of the $i$-th subinterval."
+    },
+    {
+      "type": "paragraph",
+      "text": "The midpoint sum often gives a better approximation than either the left \nor right sum for the same value of $n$, because the overestimates and \nunderestimates on each subinterval tend to partially cancel."
+    },
+    {
+      "type": "example",
+      "id": "example-6.7",
+      "number": "6.7",
+      "title": "Midpoint approximation",
+      "problem": "Approximate the area under $f(x) = x^2$ on $[0, 1]$ using the midpoint \nsum with $n = 4$.",
+      "solution": "With $\\Delta x = \\frac{1}{4}$, the midpoints are $\\bar{x}_1 = \\frac{1}{8}$, \n$\\bar{x}_2 = \\frac{3}{8}$, $\\bar{x}_3 = \\frac{5}{8}$, \n$\\bar{x}_4 = \\frac{7}{8}$.\n$$\n M_4 &= \\left[\\left(\\tfrac{1}{8}\\right)^{\\!2} \n + \\left(\\tfrac{3}{8}\\right)^{\\!2} \n + \\left(\\tfrac{5}{8}\\right)^{\\!2} \n + \\left(\\tfrac{7}{8}\\right)^{\\!2}\\right]\\cdot\\tfrac{1}{4} \\\\\n &= \\left[\\tfrac{1}{64} + \\tfrac{9}{64} + \\tfrac{25}{64} \n + \\tfrac{49}{64}\\right]\\cdot\\tfrac{1}{4} \n = \\frac{84}{64}\\cdot\\frac{1}{4} = \\frac{84}{256} \n = \\frac{21}{64} \\approx 0.3281.\n$$\nThis is already quite close to the true value of $\\frac{1}{3} \\approx \n0.3333$\u2014much closer than either $L_4 \\approx 0.2188$ or \n$R_4 \\approx 0.4688$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The General Riemann Sum"
+    },
+    {
+      "type": "paragraph",
+      "text": "We now state the most general version of the Riemann sum, allowing \n*any* partition and *any* choice of sample points."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.4",
+      "number": "6.4",
+      "title": "Riemann Sum",
+      "content": "Let $f$ be defined on $[a, b]$. A **partition** of \n$[a, b]$ is a set of points \n$a = x_0 < x_1 < x_2 < \\cdots < x_n = b$. The \n**norm** of the partition is \n$\\|\\Delta\\| = \\max_{1 \\leq i \\leq n} \\Delta x_i$, where \n$\\Delta x_i = x_i - x_{i-1}$.\n\nA **Riemann sum** for $f$ with respect to this \npartition is any sum of the form\n$$\n S = \\sum_{i=1}^{n} f(x_i^*)\\,\\Delta x_i,\n$$\nwhere $x_i^*$ is a point chosen in the subinterval $[x_{i-1}, x_i]$."
+    },
+    {
+      "type": "paragraph",
+      "text": "When the partition is uniform ($\\Delta x_i = \\Delta x$ for all $i$), this \nreduces to what we have been computing. The general definition allows \nsubintervals of different widths, which is important for the theory."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Upper and Lower Sums"
+    },
+    {
+      "type": "paragraph",
+      "text": "For a continuous function on a closed interval, we can make a special choice \nof sample point that gives the largest or smallest possible rectangle on \neach subinterval."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.5",
+      "number": "6.5",
+      "title": "Upper and Lower Sums",
+      "content": "Let $f$ be continuous on $[a, b]$. For a given partition:\n\n- The **upper sum** $U_n$ uses the maximum \n value of $f$ on each subinterval: \n $U_n = \\sum_{i=1}^{n} M_i\\,\\Delta x_i$, where \n $M_i = \\max_{[x_{i-1},x_i]} f(x)$.\n\n- The **lower sum** $\\ell_n$ uses the minimum \n value: $\\ell_n = \\sum_{i=1}^{n} m_i\\,\\Delta x_i$, where \n $m_i = \\min_{[x_{i-1},x_i]} f(x)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "For any Riemann sum $S$ with the same partition, \n$\\ell_n \\leq S \\leq U_n$. If $f$ is continuous on $[a,b]$, then as the \npartition gets finer, both upper and lower sums converge to the same \nlimit\u2014the area under the curve. This \"squeezing\" is what makes the \nRiemann integral well-defined."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-6.2",
+      "number": null,
+      "title": "Computing Area via Riemann Sums",
+      "content": "To find the area under $y = f(x)$ on $[a, b]$:\n\n1. Divide $[a, b]$ into $n$ equal subintervals: \n $\\Delta x = \\frac{b-a}{n}$, $x_i = a + i\\,\\Delta x$.\n\n2. Form the Riemann sum \n $\\displaystyle S_n = \\sum_{i=1}^{n} f(x_i^*)\\,\\Delta x$ \n (choose left, right, or midpoint).\n\n3. Use summation formulas to write $S_n$ in closed form \n (no summation sign).\n\n4. Evaluate $\\displaystyle A = \\lim_{n\\to\\infty} S_n$."
+    },
+    {
+      "type": "paragraph",
+      "text": "This process works\u2014but it is laborious. Computing the area under even a \nsimple polynomial requires summation formulas and careful algebra. Surely \nthere must be a better way."
+    },
+    {
+      "type": "paragraph",
+      "text": "There is. In Section [sec:definite-integral] we will give a name \nto the limit of the Riemann sum\u2014the *definite integral*. And in \nSection [sec:ftc], we will discover an astonishing shortcut: \nthe Fundamental Theorem of Calculus, which connects this area problem \nto the antiderivatives we studied in Section [sec:antiderivatives]. \nThe fragments are about to become whole."
+    },
+    {
+      "type": "figure",
+      "id": "fig-6.2-standalone-2",
+      "src": "/figures/vol1/ch06/sec02-standalone-2.svg",
+      "caption": "",
+      "alt": "Figure: Standalone 2"
+    },
+    {
+      "type": "figure",
+      "id": "fig-6.2-standalone-3",
+      "src": "/figures/vol1/ch06/sec02-standalone-3.svg",
+      "caption": "",
+      "alt": "Figure: Standalone 3"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.1",
+      "number": "1",
+      "problem": "Write in sigma notation: $1 + 4 + 9 + 16 + 25$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.2",
+      "number": "2",
+      "problem": "Write in sigma notation: $2 + 4 + 6 + 8 + \\cdots + 40$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.3",
+      "number": "3",
+      "problem": "Evaluate $\\displaystyle\\sum_{i=1}^{5}(2i - 1)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.4",
+      "number": "4",
+      "problem": "Evaluate $\\displaystyle\\sum_{i=1}^{50} i$ using the summation formula."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.5",
+      "number": "5",
+      "problem": "Evaluate $\\displaystyle\\sum_{i=1}^{6} i^2$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.6",
+      "number": "6",
+      "problem": "Use the summation formulas to evaluate \n$\\displaystyle\\sum_{i=1}^{n}(3i^2 + 2i)$ in closed form."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.7",
+      "number": "7",
+      "problem": "Approximate the area under $f(x) = x$ on $[0, 4]$ using a left Riemann \nsum with $n = 4$. Compare with the exact geometric area."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.8",
+      "number": "8",
+      "problem": "Approximate the area under $f(x) = x^2$ on $[0, 2]$ using a right \nRiemann sum with $n = 4$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.9",
+      "number": "9",
+      "problem": "Approximate the area under $f(x) = \\sqrt{x}$ on $[0, 4]$ using a \nmidpoint sum with $n = 4$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.10",
+      "number": "10",
+      "problem": "Approximate the area under $f(x) = \\cos x$ on $[0, \\pi/2]$ using a \nright Riemann sum with $n = 4$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.11",
+      "number": "11",
+      "problem": "For $f(x) = x^2$ on $[0, 1]$, compute $R_n$ using the formula from \nExample \\ref{ex:area-x-squared} for $n = 10$, $n = 100$, and $n = 1000$. \nObserve the convergence to $\\frac{1}{3}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.12",
+      "number": "12",
+      "problem": "Use right Riemann sums and the limit process to find the exact area \nunder $f(x) = x$ on $[0, 4]$. Verify with geometry."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.13",
+      "number": "13",
+      "problem": "Use right Riemann sums and the limit process to find the exact area \nunder $f(x) = 3x + 2$ on $[1, 5]$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.14",
+      "number": "14",
+      "problem": "Use right Riemann sums and the limit process to find the exact area \nunder $f(x) = x^2$ on $[0, 3]$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.15",
+      "number": "15",
+      "problem": "Use right Riemann sums and the limit process to find the exact area \nunder $f(x) = x^2 + 1$ on $[0, 2]$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.16",
+      "number": "16",
+      "problem": "Use right Riemann sums and the limit process to find the exact area \nunder $f(x) = x^3$ on $[0, 1]$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.17",
+      "number": "17",
+      "problem": "Use right Riemann sums to find the area under $f(x) = x^2 + 2x$ on \n$[0, 3]$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.18",
+      "number": "18",
+      "problem": "Show that the midpoint sum $M_n$ for $f(x) = x^2$ on $[0, 1]$ equals \n$\\frac{1}{3} - \\frac{1}{12n^2}$, and verify that $M_n \\to \\frac{1}{3}$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.19",
+      "number": "19",
+      "problem": "If $f$ is increasing on $[a, b]$, explain why $L_n \\leq A \\leq R_n$ \nfor all $n$. What if $f$ is decreasing?",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.20",
+      "number": "20",
+      "problem": "Use mathematical induction to prove that \n$\\displaystyle\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$.",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.21",
+      "number": "21",
+      "problem": "Use mathematical induction to prove that \n$\\displaystyle\\sum_{i=1}^{n} i^2 = \\frac{n(n+1)(2n+1)}{6}$.",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.22",
+      "number": "22",
+      "problem": "Prove that if $f$ is continuous on $[a, b]$ and $\\ell_n$, $U_n$ denote \nthe lower and upper sums for a uniform partition with $n$ subintervals, \nthen $U_n - \\ell_n \\to 0$ as $n \\to \\infty$. \n(Hint: use uniform continuity.)",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.23",
+      "number": "23",
+      "problem": "The rate of water flow into a reservoir is measured \n(in gallons per hour) at two-hour intervals:\n\n\\medskip\n\\begin{center}\n\\begin{tabular}{ccccccc}\n\\toprule\n$t$ (hr) & 0 & 2 & 4 & 6 & 8 & 10 \\\\\n\\midrule\nRate (gal/hr) & 40 & 55 & 63 & 58 & 47 & 35 \\\\\n\\bottomrule\n\\end{tabular}\n\\end{center}\n\\medskip\nUse a left Riemann sum with five subintervals to estimate the total water \nthat flowed into the reservoir over the $10$-hour period.",
+      "creationReveals": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.2.24",
+      "number": "24",
+      "problem": "A biologist measures the growth rate of a plant (in \ncm/day) over one week:\n\n\\medskip\n\\begin{center}\n\\begin{tabular}{cccccccc}\n\\toprule\nDay & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\\\\n\\midrule\nRate (cm/day) & 0.2 & 0.5 & 0.8 & 1.1 & 0.9 & 0.6 & 0.3 \\\\\n\\bottomrule\n\\end{tabular}\n\\end{center}\n\\medskip\nUse a right Riemann sum to estimate the total growth over $6$ days.",
+      "creationReveals": true
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 4:18",
+      "text": "The path of the righteous is like the \nmorning sun, shining ever brighter till the full light of day."
+    },
+    {
+      "type": "scripture",
+      "reference": "Genesis 15:5",
+      "text": "He took him outside and said, \"Look up \nat the sky and count the stars\u2014if indeed you can count them.\" Then \nhe said to him, \"So shall your offspring be.\""
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 11:7--8",
+      "text": "Can you fathom the mysteries of God? \nCan you probe the limits of the Almighty? They are higher than the \nheavens above\u2014what can you do?"
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 12:12",
+      "text": "Just as a body, though one, has \nmany parts, but all its many parts form one body, so it is with Christ."
+    },
+    {
+      "type": "quote",
+      "author": "Archimedes",
+      "text": "Give me a lever long enough and a fulcrum on \nwhich to place it, and I shall move the world."
+    },
+    {
+      "type": "quote",
+      "author": "Blaise Pascal",
+      "text": "The heart has its reasons which reason \ndoes not know."
+    }
+  ]
+}

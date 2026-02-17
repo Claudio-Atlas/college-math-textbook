@@ -1,0 +1,310 @@
+{
+  "id": "geometry-ch05-sec04",
+  "title": "Medians, Altitudes, Centroid, and Orthocenter",
+  "chapter": 5,
+  "section": 4,
+  "book": "geometry",
+  "epigraph": {
+    "text": "Let all things be done decently and in order.",
+    "reference": "1 Corinthians 14:40"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "We have seen that perpendicular bisectors meet at the circumcenter \nand angle bisectors meet at the incenter. Now we explore two more \nspecial lines in a triangle: medians and altitudes. Each type of \nline has its own point of concurrency, giving us the centroid and \northocenter."
+    },
+    {
+      "type": "paragraph",
+      "text": "These four points—circumcenter, incenter, centroid, and orthocenter—are \nthe classical **triangle centers**. Euler discovered a remarkable \nfact: three of these points (circumcenter, centroid, and orthocenter) \nalways lie on a single line, now called the **Euler line**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Medians"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Median",
+      "content": "A **median** of a triangle is a segment from a \nvertex to the midpoint of the opposite side."
+    },
+    {
+      "type": "paragraph",
+      "text": "Every triangle has exactly three medians, one from each vertex."
+    },
+    {
+      "type": "paragraph",
+      "text": "$, which we denote $M_A$. Similarly for the other medians.}"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Centroid"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Centroid Theorem",
+      "content": "The medians of a triangle meet at a single point called the \n**centroid**, denoted $G$. The centroid divides \neach median in the ratio $2:1$ from the vertex to the midpoint.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "That is, if $G$ is the centroid and $M$ is the midpoint of the \nopposite side, then:\n\\[\n AG = \\frac{2}{3} \\cdot AM \\quad \\text{and} \\quad GM = \\frac{1}{3} \\cdot AM\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "or **balance point**. A triangular plate of uniform density \nwould balance perfectly on a pin placed at its centroid.}"
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Using the centroid theorem",
+      "problem": "In $\\triangle ABC$, $G$ is the centroid and $M$ is the midpoint of \n$\\overline{BC}$. If $AM = 12$, find $AG$ and $GM$.",
+      "solution": "The centroid divides the median in ratio $2:1$ from vertex to midpoint:\n$$\n AG &= \\frac{2}{3} \\cdot AM = \\frac{2}{3} \\cdot 12 = 8 \\\\\n GM &= \\frac{1}{3} \\cdot AM = \\frac{1}{3} \\cdot 12 = 4\n$$\n\nCheck: $AG + GM = 8 + 4 = 12 = AM$ $\\checkmark$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "Working backward from centroid distance",
+      "problem": "In $\\triangle PQR$, $G$ is the centroid. If $PG = 10$, find the \nlength of the median from $P$.",
+      "solution": "Since $PG = \\frac{2}{3}$ of the median from $P$:\n\\[\n 10 = \\frac{2}{3} \\cdot (\\text{median}) \\implies \\text{median} = 10 \\cdot \\frac{3}{2} = 15\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Finding the centroid with coordinates",
+      "problem": "Find the centroid of the triangle with vertices $A(0, 0)$, $B(6, 0)$, \nand $C(3, 9)$.",
+      "solution": "The centroid has coordinates equal to the average of the vertices:\n\\[\n G = \\left( \\frac{x_A + x_B + x_C}{3}, \\frac{y_A + y_B + y_C}{3} \\right)\n\\]\n\n\\[\n G = \\left( \\frac{0 + 6 + 3}{3}, \\frac{0 + 0 + 9}{3} \\right) = \\left( 3, 3 \\right)\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Centroid Coordinate Formula",
+      "content": "The centroid of a triangle with vertices $(x_1, y_1)$, $(x_2, y_2)$, \nand $(x_3, y_3)$ has coordinates:\n\\[\n G = \\left( \\frac{x_1 + x_2 + x_3}{3}, \\frac{y_1 + y_2 + y_3}{3} \\right)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This formula makes intuitive sense: the centroid is at the \"average\" \nposition of the three vertices."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Altitudes"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.2",
+      "number": "5.2",
+      "title": "Altitude",
+      "content": "An **altitude** of a triangle is a perpendicular \nsegment from a vertex to the line containing the opposite side. The \nfoot of the altitude is the point where it meets the opposite side \n(or its extension)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Every triangle has three altitudes, one from each vertex."
+    },
+    {
+      "type": "paragraph",
+      "text": "containing the opposite side, even if the foot lies on an extension \nof that side.}"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Orthocenter"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.3",
+      "number": "5.3",
+      "title": "Orthocenter Theorem",
+      "content": "The lines containing the altitudes of a triangle meet at a single \npoint called the **orthocenter**, denoted $H$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The orthocenter's location depends on the type of triangle:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Acute triangle:** orthocenter is *inside*",
+        "**Right triangle:** orthocenter is *at the vertex* \n of the right angle",
+        "**Obtuse triangle:** orthocenter is *outside*"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-5.4",
+      "number": "5.4",
+      "title": "Orthocenter of a right triangle",
+      "problem": "Find the orthocenter of the right triangle with vertices $A(0, 0)$, \n$B(6, 0)$, and $C(0, 8)$.",
+      "solution": "This is a right triangle with the right angle at $A$.\n\nIn a right triangle, the orthocenter is at the vertex of the right \nangle. Therefore, the orthocenter is $H = (0, 0) = A$.\n\n**Verification:** \n\n- The altitude from $A$ is perpendicular to $\\overline{BC}$ \n and passes through $A$.\n\n- The altitude from $B$ is along the line $x = 6$ (perpendicular \n to $\\overline{AC}$), but the altitude to the line $y = 0$ from $B$ \n actually means... Let's reconsider.\n\n- The legs $\\overline{AB}$ and $\\overline{AC}$ are perpendicular. \n The altitude from $B$ perpendicular to $\\overline{AC}$ is horizontal, \n which passes through $A$. The altitude from $C$ perpendicular to \n $\\overline{AB}$ is vertical, also passing through $A$. $\\checkmark$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.5",
+      "number": "5.5",
+      "title": "Finding the orthocenter with coordinates",
+      "problem": "Find the orthocenter of the triangle with vertices $A(0, 0)$, $B(4, 0)$, \nand $C(2, 6)$.",
+      "solution": "We find where two altitudes intersect.\n\n**Altitude from $C$ to $\\overline{AB}$:**\n\n- $\\overline{AB}$ lies on the $x$-axis (slope 0)\n\n- The altitude is vertical (undefined slope), passing through $C(2,6)$\n\n- Equation: $x = 2$\n\n**Altitude from $A$ to $\\overline{BC}$:**\n\n- Slope of $\\overline{BC} = \\frac{6-0}{2-4} = \\frac{6}{-2} = -3$\n\n- Slope of altitude $= \\frac{1}{3}$ (negative reciprocal)\n\n- Passes through $A(0,0)$: $y = \\frac{1}{3}x$\n\n**Intersection:**\nSubstitute $x = 2$ into $y = \\frac{1}{3}x$:\n\\[\n y = \\frac{1}{3}(2) = \\frac{2}{3}\n\\]\n\nThe orthocenter is $H = \\left(2, \\frac{2}{3}\\right)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Summary: The Four Triangle Centers"
+    },
+    {
+      "type": "paragraph",
+      "text": "We have now studied all four classical triangle centers:"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Center**",
+        "**Constructed From**",
+        "**Property**",
+        "**Location**"
+      ],
+      "rows": [
+        [
+          "Circumcenter",
+          "Perp. bisectors of sides",
+          "Equidistant from vertices",
+          "Varies"
+        ],
+        [
+          "Incenter",
+          "Angle bisectors",
+          "Equidistant from sides",
+          "Always inside"
+        ],
+        [
+          "Centroid",
+          "Medians",
+          "Center of gravity",
+          "Always inside"
+        ],
+        [
+          "Orthocenter",
+          "Altitudes",
+          "—",
+          "Varies"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "left",
+        "left",
+        "left"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "\" — \n**C**ircumcenter from perpendicular bisectors, \n**I**ncenter from angle bisectors, \n**C**entroid from medians, \n**O**rthocenter from altitudes.}"
+    },
+    {
+      "type": "example",
+      "id": "example-5.6",
+      "number": "5.6",
+      "title": "All four centers for a specific triangle",
+      "problem": "For the triangle with vertices $A(0, 0)$, $B(8, 0)$, $C(0, 6)$:\n\n1. Find the circumcenter\n\n2. Find the incenter\n\n3. Find the centroid\n\n4. Find the orthocenter",
+      "solution": "This is a right triangle with the right angle at $A$.\n\n1. **Circumcenter:** For a right triangle, the circumcenter \n is the midpoint of the hypotenuse.\n \n Hypotenuse $\\overline{BC}$ has endpoints $B(8,0)$ and $C(0,6)$.\n \n Circumcenter: $\\left(\\frac{8+0}{2}, \\frac{0+6}{2}\\right) = (4, 3)$\n\n2. **Incenter:** Side lengths are $a = BC = 10$, $b = AC = 6$, $c = AB = 8$.\n \n Incenter: $\\left(\\frac{10(0)+6(8)+8(0)}{24}, \\frac{10(0)+6(0)+8(6)}{24}\\right) = (2, 2)$\n\n3. **Centroid:** Average of vertices.\n \n Centroid: $\\left(\\frac{0+8+0}{3}, \\frac{0+0+6}{3}\\right) = \\left(\\frac{8}{3}, 2\\right)$\n\n4. **Orthocenter:** For a right triangle, the orthocenter is \n at the right-angle vertex.\n \n Orthocenter: $(0, 0) = A$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Euler Line"
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the most beautiful results in triangle geometry is that three \nof the four centers lie on a single line."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.4",
+      "number": "5.4",
+      "title": "Euler Line",
+      "content": "In any triangle, the circumcenter ($O$), centroid ($G$), and \northocenter ($H$) are collinear. The line they lie on is called \nthe **Euler line**. Moreover, $G$ divides \n$\\overline{OH}$ in the ratio $1:2$, so $OG:GH = 1:2$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "generally lie on the Euler \nline. The only triangle where all four centers coincide is the \nequilateral triangle.}"
+    },
+    {
+      "type": "example",
+      "id": "example-5.7",
+      "number": "5.7",
+      "title": "Verifying the Euler line",
+      "problem": "For the triangle with vertices $A(0, 0)$, $B(8, 0)$, $C(0, 6)$ from \nExample [ex:all-centers], verify that the circumcenter, centroid, \nand orthocenter are collinear.",
+      "solution": "We found:\n\n- Circumcenter: $O = (4, 3)$\n\n- Centroid: $G = \\left(\\frac{8}{3}, 2\\right)$\n\n- Orthocenter: $H = (0, 0)$\n\nTo verify collinearity, we check if the slope from $H$ to $G$ equals \nthe slope from $G$ to $O$.\n\nSlope $HG = \\frac{2 - 0}{\\frac{8}{3} - 0} = \\frac{2}{\\frac{8}{3}} = \\frac{6}{8} = \\frac{3}{4}$\n\nSlope $GO = \\frac{3 - 2}{4 - \\frac{8}{3}} = \\frac{1}{\\frac{12-8}{3}} = \\frac{1}{\\frac{4}{3}} = \\frac{3}{4}$\n\nThe slopes are equal, so $H$, $G$, and $O$ are collinear. $\\checkmark$\n\nAlso verify the $1:2$ ratio:\n$$\n OG &= \\sqrt{\\left(4-\\frac{8}{3}\\right)^2 + (3-2)^2} = \\sqrt{\\frac{16}{9} + 1} = \\sqrt{\\frac{25}{9}} = \\frac{5}{3} \\\\\n GH &= \\sqrt{\\left(\\frac{8}{3}\\right)^2 + 2^2} = \\sqrt{\\frac{64}{9} + 4} = \\sqrt{\\frac{100}{9}} = \\frac{10}{3}\n$$\n\nIndeed, $OG : GH = \\frac{5}{3} : \\frac{10}{3} = 1 : 2$. $\\checkmark$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Special Case: The Equilateral Triangle"
+    },
+    {
+      "type": "paragraph",
+      "text": "For an equilateral triangle, all four centers coincide at a single \npoint. This makes the equilateral triangle uniquely symmetric."
+    },
+    {
+      "type": "example",
+      "id": "example-5.8",
+      "number": "5.8",
+      "title": "Centers of an equilateral triangle",
+      "problem": "Show that for an equilateral triangle, the circumcenter, incenter, \ncentroid, and orthocenter are all the same point.",
+      "solution": "Consider an equilateral triangle with vertices $A$, $B$, $C$.\n\nBy symmetry, the median from each vertex also:\n\n- Bisects the opposite side perpendicularly (so it's a \n perpendicular bisector)\n\n- Bisects the angle at the vertex (so it's an angle bisector)\n\n- Is perpendicular to the opposite side (so it's an altitude)\n\nSince each median is simultaneously all four types of special lines, \nall four centers are at the intersection of the medians—the centroid."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Colossians 1:17",
+      "text": "He is before all things, and in \nhim all things hold together."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 104:5",
+      "text": "He set the earth on its foundations; \nit can never be moved."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 16:11",
+      "text": "Honest scales and balances belong \nto the Lord; all the weights in the bag are of his making."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 38:5",
+      "text": "Who determined its measurements—surely \nyou know! Or who stretched the line upon it?"
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 3:19",
+      "text": "By wisdom the Lord laid the earth's \nfoundations, by understanding he set the heavens in place."
+    },
+    {
+      "type": "scripture",
+      "reference": "Romans 11:33",
+      "text": "Oh, the depth of the riches of the \nwisdom and knowledge of God! How unsearchable his judgments, and \nhis paths beyond tracing out!"
+    },
+    {
+      "type": "quote",
+      "author": "Leonardo da Vinci",
+      "text": "Simplicity is the ultimate sophistication."
+    },
+    {
+      "type": "quote",
+      "author": "Leonhard Euler",
+      "text": "Mathematicians have tried in vain to \ndiscover some order in the sequence of prime numbers."
+    }
+  ]
+}

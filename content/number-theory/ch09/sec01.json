@@ -1,0 +1,98 @@
+{
+  "id": "number-theory-ch09-sec01",
+  "title": "Classical Ciphers",
+  "chapter": 9,
+  "section": 1,
+  "book": "number-theory",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Before modern cryptography, ciphers relied on simple transformations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Substitution Ciphers"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Caesar Cipher",
+      "content": "The **Caesar cipher** shifts each letter by a fixed amount: if \n$x$ is the numerical value of a letter (A=0, B=1, ..., Z=25), the \nencrypted letter is $E(x) = x + k \\pmod{26}$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Caesar Cipher",
+      "problem": "With $k = 3$: ATTACK becomes DWWDFN.",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "The Caesar cipher is trivially broken: there are only 26 possible keys."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Affine Cipher",
+      "content": "The **affine cipher** uses $E(x) = ax + b \\pmod{26}$ where \n$\\gcd(a, 26) = 1$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Decryption: $D(y) = a^{-1}(y - b) \\pmod{26}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "There are $\\phi(26) \\cdot 26 = 12 \\cdot 26 = 312$ affine ciphers."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Attacks on Classical Ciphers"
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Frequency Analysis",
+      "problem": "In English text, E is the most common letter ( 12\\%), followed by T, A, O, I, N.\n\nIf the most frequent letter in ciphertext is W, we guess W decrypts to E, \nyielding $k = 22 - 4 = 18$ for a Caesar cipher.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Vigenère Cipher"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.3",
+      "number": "9.3",
+      "title": "Vigenère Cipher",
+      "content": "The **Vigenère cipher** uses a keyword. If the keyword is KEY and \nthe plaintext is ATTACK:\n\n| A | T | T | A | C | K |\n| K | E | Y | K | E | Y |\n| K | X | R | K | G | I |\n\nEach plaintext letter is shifted by the corresponding keyword letter."
+    },
+    {
+      "type": "paragraph",
+      "text": "The Vigenère cipher resisted analysis for centuries, but was eventually \nbroken using the **Kasiski examination** (finding repeated patterns) \nand **index of coincidence**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "One-Time Pad"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Perfect Secrecy",
+      "content": "If the key is truly random, as long as the message, and used only once, \nthe Vigenère cipher (one-time pad) is **perfectly secure**—the \nciphertext reveals nothing about the plaintext.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The practical difficulty is key distribution: how do sender and receiver \nsecurely share a key as long as every message they'll ever exchange?"
+    }
+  ]
+}

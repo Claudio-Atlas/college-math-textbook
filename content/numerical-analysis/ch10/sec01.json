@@ -1,0 +1,249 @@
+{
+  "id": "numerical-analysis-ch10-sec01",
+  "title": "Golden Section Search",
+  "chapter": 10,
+  "section": 1,
+  "book": "numerical-analysis",
+  "objectives": [
+    "Understand the concept of unimodal functions and bracketing for minima",
+    "Derive the golden section search algorithm from optimality considerations",
+    "Analyze the convergence rate and compare with alternative strategies",
+    "Implement Fibonacci search as a finite-horizon optimal method"
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "When derivatives are unavailable or expensive to compute, we need optimization methods that rely solely on function evaluations. Golden section search is the one-dimensional analog of the bisection method for root-finding: it systematically reduces the interval containing the minimum."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Unimodal Functions and Bracketing"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Unimodal Function",
+      "content": "A function $f: [a, b] \\to \\R$ is **unimodal** on $[a, b]$ if there exists a unique minimizer $x^* \\in [a, b]$ such that $f$ is strictly decreasing on $[a, x^*]$ and strictly increasing on $[x^*, b]$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.2",
+      "number": "10.2",
+      "title": "Bracketing Triple",
+      "content": "A **bracketing triple** for a minimum consists of three points $a < c < b$ such that $f(c) < f(a)$ and $f(c) < f(b)$. The minimum must lie in $(a, b)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The bracketing condition ensures we have trapped a local minimum. Unlike root-finding, where a sign change brackets a root, minimization requires a point lower than its neighbors."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Interval Reduction Strategy"
+    },
+    {
+      "type": "paragraph",
+      "text": "Given a bracket $[a, b]$ with interior point $c$, we evaluate $f$ at a new point $x$ and use the results to shrink the bracket."
+    },
+    {
+      "type": "method",
+      "id": "method-10.1",
+      "number": null,
+      "title": "Bracket Reduction",
+      "content": "Given $a < c < b$ with $f(c) < \\min\\{f(a), f(b)\\}$, choose a new point $x$ in the larger subinterval:\n\n- If $c - a > b - c$, place $x \\in (a, c)$\n\n- If $b - c > c - a$, place $x \\in (c, b)$\nAfter evaluating $f(x)$:\n\n- If $f(x) < f(c)$: new bracket contains $x$ as the interior point\n\n- If $f(x) > f(c)$: new bracket uses $c$ as interior point, discarding the side containing $x$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The key question: where should we place $x$ to minimize the worst-case interval after each iteration?"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Derivation of the Golden Ratio"
+    },
+    {
+      "type": "paragraph",
+      "text": "Let the interval $[a, b]$ have length $L$. We seek a strategy that reduces the interval by the same fraction at each step, regardless of which comparison wins."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "Optimal Symmetric Search",
+      "content": "For symmetric interval reduction, the optimal fractional distance from each endpoint is\n\\[\n\\rho = \\frac{3 - \\sqrt{5}}{2} = \\frac{1}{\\phi^2} \\approx 0.382\n\\]\nwhere $\\phi = \\frac{1 + \\sqrt{5}}{2}$ is the golden ratio. The reduction factor per iteration is $\\phi^{-1} \\approx 0.618$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Place the first two interior points at distances $\\rho L$ from each end, where $\\rho < 1/2$. After one function evaluation, suppose we keep the interval containing the lower value. For the method to be self-similar (the remaining interior point at the same fractional position in the new interval), we need:\n\\[\n\\frac{\\rho L}{(1 - \\rho)L} = \\rho \\quad \\Rightarrow \\quad \\rho = (1 - \\rho)\\rho\n\\]\n\\[\n\\rho = \\rho - \\rho^2 \\quad \\text{gives} \\quad \\rho^2 + \\rho - 1 = 0... \\text{(incorrect setup)}\n\\]\n\nLet's redo this carefully. Place points at $c = a + \\rho L$ and $x = b - \\rho L$ where $L = b - a$. For the method to be reusable, after discarding one end, the remaining interior point should be at fraction $\\rho$ from one end of the new interval.\n\nIf we discard $[b - \\rho L, b]$, the new interval is $[a, b - \\rho L]$ with length $(1-\\rho)L$. The remaining point $c = a + \\rho L$ should satisfy:\n\\[\n\\frac{c - a}{(1-\\rho)L} = 1 - \\rho \\quad \\Rightarrow \\quad \\frac{\\rho L}{(1-\\rho)L} = 1 - \\rho\n\\]\n\\[\n\\rho = (1 - \\rho)^2 \\quad \\Rightarrow \\quad \\rho = 1 - 2\\rho + \\rho^2\n\\]\n\\[\n\\rho^2 - 3\\rho + 1 = 0 \\quad \\Rightarrow \\quad \\rho = \\frac{3 - \\sqrt{5}}{2} \\approx 0.382\n\\]\nThe reduction factor per iteration is $1 - \\rho = \\frac{\\sqrt{5} - 1}{2} = \\phi^{-1} \\approx 0.618$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.3",
+      "number": "10.3",
+      "title": "Golden Ratio",
+      "content": "The **golden ratio** is\n\\[\n\\phi = \\frac{1 + \\sqrt{5}}{2} \\approx 1.618033988749895\n\\]\nIt satisfies $\\phi^2 = \\phi + 1$ and $\\phi^{-1} = \\phi - 1 \\approx 0.618$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Golden Section Algorithm"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-10.1",
+      "number": null,
+      "title": "Golden Section Search",
+      "content": "algorithmic[1]\n Unimodal function $f$, bracket $[a, b]$, tolerance $\\varepsilon$\n Approximate minimizer $x^*$ with uncertainty $< \\varepsilon$\n $\\phi \\gets (1 + \\sqrt{5})/2$\n $\\rho \\gets 2 - \\phi$ $\\rho \\approx 0.382$\n $c \\gets a + \\rho(b - a)$\n $d \\gets b - \\rho(b - a)$\n $f_c \\gets f(c)$; $f_d \\gets f(d)$\n$b - a > \\varepsilon$\n $f_c < f_d$\n $b \\gets d$; $d \\gets c$; $f_d \\gets f_c$\n $c \\gets a + \\rho(b - a)$\n $f_c \\gets f(c)$\n \n $a \\gets c$; $c \\gets d$; $f_c \\gets f_d$\n $d \\gets b - \\rho(b - a)$\n $f_d \\gets f(d)$\n \n\n $(a + b)/2$\nalgorithmic"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Worked Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "Minimizing a Polynomial",
+      "problem": "Find the minimum of $f(x) = (x - 2)^2 + 1$ on $[0, 4]$ using golden section search.\n\n**Solution.** The true minimum is at $x^* = 2$. Let $\\phi \\approx 1.618$, $\\rho = 2 - \\phi \\approx 0.382$.\n\nInitial points:\n$$\nc &= 0 + 0.382(4) = 1.528 \\\\\nd &= 4 - 0.382(4) = 2.472\n$$\n\nEvaluations: $f(1.528) = (1.528 - 2)^2 + 1 = 1.223$, $f(2.472) = 1.223$.\n\nSince $f_c = f_d$ (by symmetry), say we choose $f_c < f_d$:\n\n- New interval: $[0, 2.472]$, length $2.472$\n\n- Keep $d = c = 1.528$, compute new $c = 0 + 0.382(2.472) = 0.944$\n\n- $f(0.944) = (0.944 - 2)^2 + 1 = 2.115$\n\nNow $f(0.944) = 2.115 > f(1.528) = 1.223$, so:\n\n- New interval: $[0.944, 2.472]$, length $1.528$\n\n- Continue...\n\n| Iter | $a$ | $b$ | $b - a$ |\n| 0 | 0.000 | 4.000 | 4.000 |\n| 1 | 0.000 | 2.472 | 2.472 |\n| 2 | 0.944 | 2.472 | 1.528 |\n| 3 | 0.944 | 1.888 | 0.944 |\n| 4 | 1.305 | 1.888 | 0.583 |\n| 5 | 1.305 | 1.666 | 0.361 |\n\nEach interval is approximately $\\phi^{-1} \\approx 0.618$ times the previous.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-10.2",
+      "number": "10.2",
+      "title": "A Transcendental Function",
+      "problem": "Minimize $f(x) = x - \\ln x$ on $[0.5, 2]$.\n\n**Solution.** The derivative is $f'(x) = 1 - 1/x = 0$ when $x = 1$. So $x^* = 1$.\n\nApplying golden section:\n\n| $k$ | $a$ | $c$ | $d$ | $b$ | $f(c)$ vs $f(d)$ |\n| 0 | 0.500 | 1.073 | 1.427 | 2.000 | $f(c) < f(d)$ |\n| 1 | 0.500 | 0.854 | 1.073 | 1.427 | $f(c) > f(d)$ |\n| 2 | 0.854 | 0.990 | 1.073 | 1.208 | $f(c) < f(d)$ |\n| 3 | 0.854 | 0.939 | 0.990 | 1.073 | $f(c) > f(d)$ |\n| 4 | 0.939 | 0.971 | 0.990 | 1.021 | $f(c) < f(d)$ |\n\nAfter 10 iterations, $|b - a| < 0.02$, giving $x^* \\approx 1.00$ with 2-digit accuracy.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Convergence Analysis"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.2",
+      "number": "10.2",
+      "title": "Golden Section Convergence Rate",
+      "content": "Let $L_k = b_k - a_k$ be the interval length after $k$ iterations of golden section search. Then:\n\\[\nL_k = \\phi^{-k} L_0\n\\]\nwhere $\\phi = (1 + \\sqrt{5})/2$. The method has linear convergence with rate $\\phi^{-1} \\approx 0.618$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Each iteration reduces the interval by factor $\\phi^{-1}$. After $k$ iterations:\n\\[\nL_k = \\phi^{-1} L_{k-1} = \\phi^{-2} L_{k-2} = \\cdots = \\phi^{-k} L_0.\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.3",
+      "number": "10.3",
+      "title": "Iteration Count for Golden Section",
+      "content": "To reduce the uncertainty to $\\varepsilon$, golden section search requires\n\\[\nk \\geq \\frac{\\ln(L_0/\\varepsilon)}{\\ln \\phi} \\approx 2.078 \\ln\\left(\\frac{L_0}{\\varepsilon}\\right)\n\\]\niterations.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-10.3",
+      "number": "10.3",
+      "title": "Comparing with Bisection",
+      "problem": "For tolerance $\\varepsilon = 10^{-6}$ on initial interval $[0, 1]$:\n\n- **Bisection** (for root-finding): $k = \\log_2(10^6) \\approx 20$ iterations\n\n- **Golden section**: $k = \\log_\\phi(10^6) \\approx 29$ iterations\nGolden section is slower because it reduces by factor $0.618$ instead of $0.5$ per iteration.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Fibonacci Search"
+    },
+    {
+      "type": "paragraph",
+      "text": "If the number of iterations is known in advance, we can do slightly better than golden section."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.4",
+      "number": "10.4",
+      "title": "Fibonacci Numbers",
+      "content": "The **Fibonacci sequence** is defined by $F_0 = 1$, $F_1 = 1$, and $F_n = F_{n-1} + F_{n-2}$ for $n \\geq 2$:\n\\[\n1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, \\ldots\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.4",
+      "number": "10.4",
+      "title": "Fibonacci Search Optimality",
+      "content": "For exactly $n$ function evaluations (beyond an initial pair), Fibonacci search achieves the minimum possible final interval length:\n\\[\nL_n = \\frac{L_0}{F_{n+1}}\n\\]\nNo other strategy using $n$ evaluations can guarantee a smaller interval.",
+      "label": "Theorem"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-10.1",
+      "number": null,
+      "title": "Fibonacci Search",
+      "content": "algorithmic[1]\n Unimodal function $f$, bracket $[a, b]$, number of iterations $n$\n Approximate minimizer in final bracket\n Compute $F_1, F_2, \\ldots, F_{n+1}$\n $L \\gets b - a$\n $c \\gets a + (F_{n-1}/F_{n+1}) L$\n $d \\gets a + (F_n/F_{n+1}) L$\n $f_c \\gets f(c)$; $f_d \\gets f(d)$\n$k = 1$ **to** $n$\n $f_c < f_d$\n $b \\gets d$; $d \\gets c$; $f_d \\gets f_c$\n $c \\gets a + (F_{n-k-1}/F_{n-k+1})(b - a)$\n $f_c \\gets f(c)$\n \n $a \\gets c$; $c \\gets d$; $f_c \\gets f_d$\n $d \\gets a + (F_{n-k}/F_{n-k+1})(b - a)$\n $f_d \\gets f(d)$\n \n\n $(a + b)/2$\nalgorithmic"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Comparison and Implementation Notes"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Method**",
+        "**Reduction Factor**",
+        "**Best Use**"
+      ],
+      "rows": [
+        [
+          "Golden section",
+          "$\\phi^{-1} \\approx 0.618$",
+          "Unknown iteration count"
+        ],
+        [
+          "Fibonacci",
+          "$F_n/F_{n+1}$",
+          "Fixed iteration count"
+        ],
+        [
+          "Trisection (naive)",
+          "$2/3 \\approx 0.667$",
+          "Never (suboptimal)"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "warning",
+      "id": "warning-10.1",
+      "number": null,
+      "title": "Non-Unimodal Functions",
+      "content": "Golden section search assumes unimodality. For functions with multiple local minima, it will find one local minimum, but not necessarily the global minimum. Multistart strategies (running from multiple initial brackets) can help explore the search space."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Extensions: Brent's Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "For smooth functions, we can accelerate convergence by fitting parabolas through evaluated points."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.5",
+      "number": "10.5",
+      "title": "Successive Parabolic Interpolation",
+      "content": "Given three points $(a, f(a))$, $(b, f(b))$, $(c, f(c))$, fit a parabola and take its vertex as the next approximation:\n\\[\nx_{\\text{new}} = b - \\frac{1}{2} \\frac{(b-a)^2[f(b)-f(c)] - (b-c)^2[f(b)-f(a)]}{(b-a)[f(b)-f(c)] - (b-c)[f(b)-f(a)]}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Brent's method combines parabolic interpolation (when it predicts a point safely inside the bracket) with golden section search (as a fallback). This achieves superlinear convergence for smooth functions while maintaining the robustness of golden section."
+    }
+  ]
+}

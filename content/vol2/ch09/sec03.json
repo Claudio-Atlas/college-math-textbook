@@ -1,0 +1,359 @@
+{
+  "id": "vol2-ch09-sec03",
+  "title": "Infinite Series",
+  "chapter": 9,
+  "section": 3,
+  "book": "vol2",
+  "epigraph": {
+    "text": "Better is the end of a thing than its beginning.",
+    "reference": "Ecclesiastes 7:8"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Now we take the leap: from infinite lists (sequences) to infinite sums\n(series). Given a sequence $\\{a_{n}\\}$, can we make sense of adding all its\nterms? The answer depends on whether the partial sums converge."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition of an Infinite Series"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Infinite Series",
+      "content": "Given a sequence $\\{a_{n}\\}$, the **infinite series**\n$\\displaystyle\\sum_{n=1}^{\\infty}a_{n}$ is defined as\n\\[\n \\sum_{n=1}^{\\infty}a_{n}\n = \\limto{N\\to\\infty}\\sum_{n=1}^{N}a_{n}\n = \\limto{N\\to\\infty}s_{N},\n\\]\nwhere $s_{N} = a_{1} + a_{2} + \\cdots + a_{N}$ is the **$N$th partial\nsum**.\n\n- If the limit exists and is finite, the series **converges** to\n that limit.\n\n- If the limit does not exist (or is $\\pm\\infty$), the series\n **diverges**."
+    },
+    {
+      "type": "paragraph",
+      "text": "In other words, an infinite series is really a *sequence of partial\nsums*, and the series converges if and only if that sequence converges."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "A simple convergent series",
+      "problem": "Evaluate $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{2^{n}}$.",
+      "solution": "The partial sums are:\n$$\n s_{1} &= \\frac{1}{2}, \\\\\n s_{2} &= \\frac{1}{2} + \\frac{1}{4} = \\frac{3}{4}, \\\\\n s_{3} &= \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} = \\frac{7}{8}, \\\\\n &\\vdots \\\\\n s_{N} &= \\frac{1}{2} + \\frac{1}{4} + \\cdots + \\frac{1}{2^{N}}\n = 1 - \\frac{1}{2^{N}}.\n$$\n(We will derive this formula shortly using geometric series.)\nAs $N \\to \\infty$, $s_{N} \\to 1 - 0 = 1$. Therefore,\n\\[\n \\sum_{n=1}^{\\infty}\\frac{1}{2^{n}} = 1.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Computing partial sums",
+      "problem": "Find the first five partial sums of the series \n$\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)}$.",
+      "solution": "The terms are $a_{n} = \\frac{1}{n(n+1)}$:\n$$\ns_{1} &= \\frac{1}{1 \\cdot 2} = \\frac{1}{2}, \\\\\ns_{2} &= \\frac{1}{2} + \\frac{1}{2 \\cdot 3} = \\frac{1}{2} + \\frac{1}{6} \n= \\frac{2}{3}, \\\\\ns_{3} &= \\frac{2}{3} + \\frac{1}{3 \\cdot 4} = \\frac{2}{3} + \\frac{1}{12} \n= \\frac{3}{4}, \\\\\ns_{4} &= \\frac{3}{4} + \\frac{1}{4 \\cdot 5} = \\frac{3}{4} + \\frac{1}{20} \n= \\frac{4}{5}, \\\\\ns_{5} &= \\frac{4}{5} + \\frac{1}{5 \\cdot 6} = \\frac{4}{5} + \\frac{1}{30} \n= \\frac{5}{6}.\n$$\nWe notice the pattern: $s_{N} = \\frac{N}{N+1}$. This suggests \n$\\limto{N\\to\\infty}s_{N} = 1$, so the series converges to $1$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Geometric Series"
+    },
+    {
+      "type": "paragraph",
+      "text": "The most important example of an infinite series is the **geometric\nseries**, where each term is a constant multiple of the previous one."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Geometric Series",
+      "content": "The geometric series $\\displaystyle\\sum_{n=0}^{\\infty}ar^{n}\n= a + ar + ar^{2} + ar^{3} + \\cdots$ has the following behavior:\n\n- If $|r| < 1$, the series converges to $\\displaystyle\\frac{a}{1-r}$.\n\n- If $|r| \\geq 1$, the series diverges.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The $N$th partial sum (starting from $n = 0$) is\n\\[\n s_{N} = a + ar + ar^{2} + \\cdots + ar^{N}.\n\\]\nMultiply both sides by $r$:\n\\[\n r\\cdot s_{N} = ar + ar^{2} + ar^{3} + \\cdots + ar^{N+1}.\n\\]\nSubtract:\n\\[\n s_{N} - r\\cdot s_{N} = a - ar^{N+1},\n\\]\nso (for $r \\neq 1$):\n\\[\n s_{N} = \\frac{a(1 - r^{N+1})}{1-r}.\n\\]\nIf $|r| < 1$, then $r^{N+1} \\to 0$ as $N \\to \\infty$, so\n$s_{N} \\to \\frac{a}{1-r}$.\n\nIf $|r| \\geq 1$ and $r \\neq 1$, then $|r^{N+1}| \\to \\infty$, so the partial\nsums diverge.\n\nIf $r = 1$, then $s_{N} = a(N+1) \\to \\infty$ (assuming $a \\neq 0$).\n\nIf $r = -1$, the partial sums oscillate: $a, 0, a, 0, \\ldots$ (assuming\n$a \\neq 0$), so the series diverges."
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Geometric series with $|r| < 1$",
+      "problem": "Evaluate $\\displaystyle\\sum_{n=0}^{\\infty}\\frac{1}{3^{n}}$.",
+      "solution": "This is a geometric series with $a = 1$ and $r = \\frac{1}{3}$. Since\n$|r| = \\frac{1}{3} < 1$:\n\\[\n \\sum_{n=0}^{\\infty}\\frac{1}{3^{n}}\n = \\frac{1}{1 - \\frac{1}{3}} = \\frac{1}{\\frac{2}{3}} = \\frac{3}{2}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.4",
+      "number": "9.4",
+      "title": "Geometric series with different starting index",
+      "problem": "Evaluate $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{2}{5^{n}}$.",
+      "solution": "Factor out to match the standard form:\n\\[\n \\sum_{n=1}^{\\infty}\\frac{2}{5^{n}}\n = \\sum_{n=1}^{\\infty}2\\cdot\\left(\\frac{1}{5}\\right)^{n}\n = 2\\sum_{n=1}^{\\infty}\\left(\\frac{1}{5}\\right)^{n}.\n\\]\nThe series starts at $n = 1$, so we need the sum\n$\\frac{1}{5} + \\frac{1}{25} + \\frac{1}{125} + \\cdots$. This is geometric with\nfirst term $a = \\frac{1}{5}$ and ratio $r = \\frac{1}{5}$:\n\\[\n \\sum_{n=1}^{\\infty}\\left(\\frac{1}{5}\\right)^{n}\n = \\frac{1/5}{1 - 1/5} = \\frac{1/5}{4/5} = \\frac{1}{4}.\n\\]\nTherefore, $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{2}{5^{n}} = 2 \\cdot \\frac{1}{4}\n= \\frac{1}{2}$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.5",
+      "number": "9.5",
+      "title": "Geometric series with negative ratio",
+      "problem": "Evaluate $\\displaystyle\\sum_{n=0}^{\\infty}\\frac{(-1)^{n}}{2^{n}}$.",
+      "solution": "Rewrite: $\\frac{(-1)^{n}}{2^{n}} = \\left(-\\frac{1}{2}\\right)^{n}$.\nThis is geometric with $a = 1$ and $r = -\\frac{1}{2}$. Since $|r| = \n\\frac{1}{2} < 1$:\n\\[\n\\sum_{n=0}^{\\infty}\\left(-\\frac{1}{2}\\right)^{n} = \\frac{1}{1 - (-1/2)}\n= \\frac{1}{1 + 1/2} = \\frac{1}{3/2} = \\frac{2}{3}.\n\\]\n\nWe can verify with partial sums: $s_{0} = 1$, $s_{1} = 1 - \\frac{1}{2} = \n\\frac{1}{2}$, $s_{2} = \\frac{1}{2} + \\frac{1}{4} = \\frac{3}{4}$,\n$s_{3} = \\frac{3}{4} - \\frac{1}{8} = \\frac{5}{8}$, and so on. These \noscillate around and approach $\\frac{2}{3}$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.6",
+      "number": "9.6",
+      "title": "Geometric series with larger ratio",
+      "problem": "Determine whether $\\displaystyle\\sum_{n=0}^{\\infty}2 \\cdot \n\\left(\\frac{3}{2}\\right)^{n}$ converges or diverges.",
+      "solution": "Here $a = 2$ and $r = \\frac{3}{2}$. Since $|r| = \\frac{3}{2} > 1$, the \nseries **diverges**.\n\nThe partial sums grow without bound:\n$s_{0} = 2$, $s_{1} = 2 + 3 = 5$, $s_{2} = 5 + \\frac{9}{2} = \\frac{19}{2}$,\n$s_{3} = \\frac{19}{2} + \\frac{27}{4} = \\frac{65}{4}$, etc."
+    },
+    {
+      "type": "example",
+      "id": "example-9.7",
+      "number": "9.7",
+      "title": "Repeating decimals as geometric series",
+      "problem": "Express $0.272727\\ldots = 0.\\overline{27}$ as a fraction.",
+      "solution": "\\[\n 0.\\overline{27} = 0.27 + 0.0027 + 0.000027 + \\cdots\n = \\frac{27}{100} + \\frac{27}{10000} + \\frac{27}{1000000} + \\cdots\n\\]\nThis is geometric with $a = \\frac{27}{100}$ and $r = \\frac{1}{100}$:\n\\[\n 0.\\overline{27} = \\frac{27/100}{1 - 1/100}\n = \\frac{27/100}{99/100} = \\frac{27}{99} = \\frac{3}{11}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.8",
+      "number": "9.8",
+      "title": "More repeating decimals",
+      "problem": "Express each repeating decimal as a fraction.\n\n**(a)** $0.\\overline{9}$ \n**(b)** $0.\\overline{142857}$ \n**(c)** $0.5\\overline{3}$",
+      "solution": "**(a)** $0.\\overline{9} = 0.9 + 0.09 + 0.009 + \\cdots = \n\\frac{0.9}{1 - 0.1} = \\frac{0.9}{0.9} = 1$.\n\nThis famous result shows that $0.999\\ldots = 1$ exactly! Many students \nfind this surprising, but it follows directly from the definition of \ninfinite series.\n\n**(b)** $0.\\overline{142857} = \\frac{142857}{999999}$. Simplifying: \n$142857 \\times 7 = 999999$, so $\\frac{142857}{999999} = \\frac{1}{7}$.\n\nIndeed, $\\frac{1}{7} = 0.142857142857\\ldots$ is well-known for its \nrepeating pattern.\n\n**(c)** $0.5\\overline{3} = 0.5 + 0.0\\overline{3} = \\frac{1}{2} + \n\\frac{1}{10} \\cdot \\frac{1/3}{1} = \\frac{1}{2} + \\frac{1}{30} = \n\\frac{15 + 1}{30} = \\frac{16}{30} = \\frac{8}{15}$.\n\nAlternatively: Let $x = 0.5\\overline{3}$. Then $10x = 5.\\overline{3}$ and \n$100x = 53.\\overline{3}$. Subtracting: $90x = 48$, so $x = \\frac{48}{90} \n= \\frac{8}{15}$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-9.3",
+      "number": null,
+      "title": "Common ratio must have $|r| < 1$",
+      "content": "The formula $\\frac{a}{1-r}$ only applies when $|r| < 1$. Writing\n\"$1 + 2 + 4 + 8 + \\cdots = \\frac{1}{1-2} = -1$\" is nonsense—the series\ndiverges. Always check convergence first!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Telescoping Series"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **telescoping series** is one where most terms in the partial sum\ncancel."
+    },
+    {
+      "type": "example",
+      "id": "example-9.9",
+      "number": "9.9",
+      "title": "Telescoping series",
+      "problem": "Evaluate $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)}$.",
+      "solution": "Use partial fractions:\n\\[\n \\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}.\n\\]\nThe partial sum is:\n$$\n s_{N} &= \\sum_{n=1}^{N}\\left(\\frac{1}{n} - \\frac{1}{n+1}\\right) \\\\\n &= \\left(1 - \\frac{1}{2}\\right)\n + \\left(\\frac{1}{2} - \\frac{1}{3}\\right)\n + \\left(\\frac{1}{3} - \\frac{1}{4}\\right)\n + \\cdots\n + \\left(\\frac{1}{N} - \\frac{1}{N+1}\\right) \\\\\n &= 1 - \\frac{1}{N+1}.\n$$\nMost terms cancel (telescope), leaving only the first and last. As\n$N \\to \\infty$:\n\\[\n \\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)} = 1 - 0 = 1.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.10",
+      "number": "9.10",
+      "title": "Another telescoping series",
+      "problem": "Evaluate $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n(n+2)}$.",
+      "solution": "Partial fractions:\n\\[\n \\frac{1}{n(n+2)} = \\frac{1}{2}\\left(\\frac{1}{n} - \\frac{1}{n+2}\\right).\n\\]\nThe partial sum is:\n$$\n s_{N} &= \\frac{1}{2}\\sum_{n=1}^{N}\\left(\\frac{1}{n} - \\frac{1}{n+2}\\right) \\\\\n &= \\frac{1}{2}\\left[\\left(1 - \\frac{1}{3}\\right)\n + \\left(\\frac{1}{2} - \\frac{1}{4}\\right)\n + \\left(\\frac{1}{3} - \\frac{1}{5}\\right)\n + \\cdots\n + \\left(\\frac{1}{N} - \\frac{1}{N+2}\\right)\\right].\n$$\nGrouping carefully: most terms cancel except $1$, $\\frac{1}{2}$,\n$\\frac{1}{N+1}$, and $\\frac{1}{N+2}$. As $N \\to \\infty$:\n\\[\n s_{N} \\to \\frac{1}{2}\\left(1 + \\frac{1}{2}\\right)\n = \\frac{1}{2} \\cdot \\frac{3}{2} = \\frac{3}{4}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.11",
+      "number": "9.11",
+      "title": "Telescoping with square roots",
+      "problem": "Evaluate $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{\\sqrt{n}+\\sqrt{n+1}}$.",
+      "solution": "Rationalize:\n\\[\n \\frac{1}{\\sqrt{n}+\\sqrt{n+1}}\n = \\frac{\\sqrt{n+1}-\\sqrt{n}}{(\\sqrt{n}+\\sqrt{n+1})(\\sqrt{n+1}-\\sqrt{n})}\n = \\frac{\\sqrt{n+1}-\\sqrt{n}}{(n+1)-n}\n = \\sqrt{n+1}-\\sqrt{n}.\n\\]\nThe partial sum telescopes:\n\\[\n s_{N} = \\sum_{n=1}^{N}(\\sqrt{n+1}-\\sqrt{n})\n = \\sqrt{N+1} - 1.\n\\]\nAs $N \\to \\infty$, $s_{N} \\to \\infty$. The series **diverges**."
+    },
+    {
+      "type": "example",
+      "id": "example-9.12",
+      "number": "9.12",
+      "title": "Telescoping with cubes",
+      "problem": "Evaluate $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{3n^{2} + 3n + 1}{n^{3}(n+1)^{3}}$.",
+      "solution": "Notice that $3n^{2} + 3n + 1 = (n+1)^{3} - n^{3}$ (verify by expanding).\nThus:\n\\[\n\\frac{3n^{2} + 3n + 1}{n^{3}(n+1)^{3}} = \\frac{(n+1)^{3} - n^{3}}{n^{3}(n+1)^{3}}\n= \\frac{1}{n^{3}} - \\frac{1}{(n+1)^{3}}.\n\\]\n\nThe series telescopes:\n\\[\ns_{N} = \\left(1 - \\frac{1}{8}\\right) + \\left(\\frac{1}{8} - \\frac{1}{27}\\right)\n+ \\cdots + \\left(\\frac{1}{N^{3}} - \\frac{1}{(N+1)^{3}}\\right) \n= 1 - \\frac{1}{(N+1)^{3}}.\n\\]\n\nAs $N \\to \\infty$: $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{3n^{2}+3n+1}\n{n^{3}(n+1)^{3}} = 1$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.13",
+      "number": "9.13",
+      "title": "Logarithmic telescoping",
+      "problem": "Evaluate $\\displaystyle\\sum_{n=2}^{\\infty}\\ln\\frac{n}{n-1}$.",
+      "solution": "Since $\\ln\\frac{n}{n-1} = \\ln n - \\ln(n-1)$, the partial sum is:\n$$\ns_{N} &= \\sum_{n=2}^{N}(\\ln n - \\ln(n-1)) \\\\\n&= (\\ln 2 - \\ln 1) + (\\ln 3 - \\ln 2) + (\\ln 4 - \\ln 3) + \\cdots + \n(\\ln N - \\ln(N-1)) \\\\\n&= \\ln N - \\ln 1 = \\ln N.\n$$\n\nAs $N \\to \\infty$, $\\ln N \\to \\infty$. The series **diverges**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Harmonic Series"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "Divergence of the Harmonic Series",
+      "content": "The harmonic series $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n}\n= 1 + \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} + \\cdots$ diverges.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Group the terms:\n$$\n \\sum_{n=1}^{\\infty}\\frac{1}{n}\n &= 1 + \\frac{1}{2}\n + \\left(\\frac{1}{3} + \\frac{1}{4}\\right)\n + \\left(\\frac{1}{5} + \\frac{1}{6} + \\frac{1}{7} + \\frac{1}{8}\\right)\n + \\cdots \\\\\n &> 1 + \\frac{1}{2}\n + \\left(\\frac{1}{4} + \\frac{1}{4}\\right)\n + \\left(\\frac{1}{8} + \\frac{1}{8} + \\frac{1}{8} + \\frac{1}{8}\\right)\n + \\cdots \\\\\n &= 1 + \\frac{1}{2} + \\frac{1}{2} + \\frac{1}{2} + \\cdots.\n$$\nThis last sum has infinitely many $\\frac{1}{2}$'s, so it diverges. Therefore,\nthe harmonic series diverges."
+    },
+    {
+      "type": "paragraph",
+      "text": "This result is surprising: even though the terms $1/n \\to 0$, the series\ndiverges. The terms don't shrink *fast enough*."
+    },
+    {
+      "type": "historical",
+      "id": "historical-9.3",
+      "number": null,
+      "title": "Nicole Oresme (c.~1320--1382)",
+      "content": "The proof that the harmonic series diverges was discovered by Nicole Oresme,\na French bishop, mathematician, and economist who worked at the University\nof Paris. Oresme also developed early forms of coordinate geometry and\nstudied fractional exponents—ideas that would not be fully developed until\ncenturies later. He saw mathematics as a path to understanding God's\ncreation and wrote treatises on physics, astronomy, and theology. His proof \nof the harmonic series' divergence predates the rigorous development of \ncalculus by over three centuries."
+    },
+    {
+      "type": "example",
+      "id": "example-9.14",
+      "number": "9.14",
+      "title": "How slowly does the harmonic series diverge?",
+      "problem": "The partial sums of the harmonic series grow extremely slowly. To exceed \n$10$, we need approximately $12{,}367$ terms. To exceed $20$, we need \nabout $272$ million terms. To exceed $100$, we would need more than \n$10^{43}$ terms—far more than the number of atoms in the observable \nuniverse!\n\nThis illustrates a key principle: divergence can be very slow. The harmonic \nseries diverges, but so gradually that it might appear to converge if we \nonly compute finitely many terms.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-9.15",
+      "number": "9.15",
+      "title": "The Euler-Mascheroni constant",
+      "problem": "Although the harmonic series diverges, the sequence\n\\[\n\\gamma_{n} = 1 + \\frac{1}{2} + \\frac{1}{3} + \\cdots + \\frac{1}{n} - \\ln n\n\\]\nconverges! Its limit is called the **Euler-Mascheroni constant**:\n\\[\n\\gamma = \\limto{n\\to\\infty}\\left(\\sum_{k=1}^{n}\\frac{1}{k} - \\ln n\\right) \n\\approx 0.5772156649\\ldots\n\\]\n\nIt is unknown whether $\\gamma$ is rational or irrational. This remains \none of the great open problems in mathematics.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of Convergent Series"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.3",
+      "number": "9.3",
+      "title": "Algebraic Properties of Series",
+      "content": "If $\\sum a_{n} = A$ and $\\sum b_{n} = B$ are convergent series, then:\n\n1. $\\displaystyle\\sum_{n=1}^{\\infty}(a_{n} + b_{n}) = A + B$\n (Sum Rule)\n\n2. $\\displaystyle\\sum_{n=1}^{\\infty}(a_{n} - b_{n}) = A - B$\n (Difference Rule)\n\n3. $\\displaystyle\\sum_{n=1}^{\\infty}c\\cdot a_{n} = c\\cdot A$ for any\n constant $c$ (Constant Multiple Rule)",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-9.3",
+      "number": null,
+      "title": "No Product or Quotient Rule",
+      "content": "There is no simple \"Product Rule\" or \"Quotient Rule\" for series. If\n$\\sum a_{n}$ and $\\sum b_{n}$ both converge, it does *not* follow that\n$\\sum a_{n}b_{n}$ converges, or that the sum (if it exists) equals $AB$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.16",
+      "number": "9.16",
+      "title": "Using series properties",
+      "problem": "Evaluate $\\displaystyle\\sum_{n=1}^{\\infty}\\left(\\frac{1}{2^{n}} + \\frac{1}{3^{n}}\\right)$.",
+      "solution": "By the Sum Rule:\n\\[\n \\sum_{n=1}^{\\infty}\\left(\\frac{1}{2^{n}} + \\frac{1}{3^{n}}\\right)\n = \\sum_{n=1}^{\\infty}\\frac{1}{2^{n}} + \\sum_{n=1}^{\\infty}\\frac{1}{3^{n}}.\n\\]\nEach is a geometric series:\n\\[\n \\sum_{n=1}^{\\infty}\\frac{1}{2^{n}} = \\frac{1/2}{1-1/2} = 1,\n \\qquad\n \\sum_{n=1}^{\\infty}\\frac{1}{3^{n}} = \\frac{1/3}{1-1/3} = \\frac{1}{2}.\n\\]\nTherefore, the sum is $1 + \\frac{1}{2} = \\frac{3}{2}$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.17",
+      "number": "9.17",
+      "title": "Evaluating a mixed series",
+      "problem": "Evaluate $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{2 \\cdot 3^{n} + 5}{4^{n}}$.",
+      "solution": "Split the series:\n\\[\n \\sum_{n=1}^{\\infty}\\frac{2 \\cdot 3^{n} + 5}{4^{n}}\n = 2\\sum_{n=1}^{\\infty}\\left(\\frac{3}{4}\\right)^{n}\n + 5\\sum_{n=1}^{\\infty}\\left(\\frac{1}{4}\\right)^{n}.\n\\]\nBoth are geometric series:\n$$\n \\sum_{n=1}^{\\infty}\\left(\\frac{3}{4}\\right)^{n}\n &= \\frac{3/4}{1-3/4} = 3, \\\\\n \\sum_{n=1}^{\\infty}\\left(\\frac{1}{4}\\right)^{n}\n &= \\frac{1/4}{1-1/4} = \\frac{1}{3}.\n$$\nTherefore, the sum is $2(3) + 5\\left(\\frac{1}{3}\\right) = 6 + \\frac{5}{3}\n= \\frac{23}{3}$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.18",
+      "number": "9.18",
+      "title": "Series with mixed geometric terms",
+      "problem": "Evaluate $\\displaystyle\\sum_{n=0}^{\\infty}\\frac{2^{n} + (-1)^{n}}{3^{n}}$.",
+      "solution": "Split and simplify:\n\\[\n\\sum_{n=0}^{\\infty}\\frac{2^{n} + (-1)^{n}}{3^{n}} = \n\\sum_{n=0}^{\\infty}\\left(\\frac{2}{3}\\right)^{n} + \n\\sum_{n=0}^{\\infty}\\left(-\\frac{1}{3}\\right)^{n}.\n\\]\n\nBoth are geometric series with $|r| < 1$:\n\\[\n\\sum_{n=0}^{\\infty}\\left(\\frac{2}{3}\\right)^{n} = \\frac{1}{1 - 2/3} = 3, \n\\qquad\n\\sum_{n=0}^{\\infty}\\left(-\\frac{1}{3}\\right)^{n} = \\frac{1}{1 - (-1/3)} = \n\\frac{1}{4/3} = \\frac{3}{4}.\n\\]\n\nTherefore, the sum is $3 + \\frac{3}{4} = \\frac{15}{4}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Shifting the Index"
+    },
+    {
+      "type": "paragraph",
+      "text": "The starting index of a series does not affect convergence—only finitely\nmany terms are affected, which can only change the sum by a finite amount."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.4",
+      "number": "9.4",
+      "title": "Index Shift",
+      "content": "Adding or removing finitely many terms from a series does not affect\nwhether it converges or diverges. (If it converges, the sum will change.)",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-9.19",
+      "number": "9.19",
+      "title": "Reindexing a series",
+      "problem": "Evaluate $\\displaystyle\\sum_{n=4}^{\\infty}\\frac{1}{2^{n}}$.",
+      "solution": "Method 1: Subtract the first three terms from the full series:\n\\[\n \\sum_{n=4}^{\\infty}\\frac{1}{2^{n}}\n = \\sum_{n=1}^{\\infty}\\frac{1}{2^{n}}\n - \\left(\\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8}\\right)\n = 1 - \\frac{7}{8} = \\frac{1}{8}.\n\\]\n\nMethod 2: Substitute $m = n - 3$ (so $n = 4$ gives $m = 1$):\n\\[\n \\sum_{n=4}^{\\infty}\\frac{1}{2^{n}}\n = \\sum_{m=1}^{\\infty}\\frac{1}{2^{m+3}}\n = \\frac{1}{8}\\sum_{m=1}^{\\infty}\\frac{1}{2^{m}}\n = \\frac{1}{8} \\cdot 1 = \\frac{1}{8}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.20",
+      "number": "9.20",
+      "title": "Reindexing with different starting point",
+      "problem": "Evaluate $\\displaystyle\\sum_{n=5}^{\\infty}\\frac{3}{4^{n-3}}$.",
+      "solution": "Let $m = n - 3$, so when $n = 5$, $m = 2$:\n\\[\n\\sum_{n=5}^{\\infty}\\frac{3}{4^{n-3}} = \\sum_{m=2}^{\\infty}\\frac{3}{4^{m}}\n= 3\\sum_{m=2}^{\\infty}\\left(\\frac{1}{4}\\right)^{m}.\n\\]\n\nWe can compute $\\sum_{m=2}^{\\infty}(1/4)^{m} = \\sum_{m=0}^{\\infty}(1/4)^{m} \n- 1 - \\frac{1}{4} = \\frac{1}{1-1/4} - \\frac{5}{4} = \\frac{4}{3} - \n\\frac{5}{4} = \\frac{16-15}{12} = \\frac{1}{12}$.\n\nTherefore, the sum is $3 \\cdot \\frac{1}{12} = \\frac{1}{4}$."
+    },
+    {
+      "type": "historical",
+      "id": "historical-9.3",
+      "number": null,
+      "title": "The Long Road to Rigorous Infinite Series",
+      "content": "The history of infinite series stretches from ancient India to modern \nmathematics. Around 1350, Madhava of Sangamagrama in India discovered \nseries for sine, cosine, and arctangent—three centuries before Newton \nand Leibniz. His students found $\\pi = 4(1 - \\frac{1}{3} + \\frac{1}{5} \n- \\frac{1}{7} + \\cdots)$, now called the Leibniz formula.\n\nIn Europe, the Bernoulli brothers (Jacob and Johann) and later Euler \ndeveloped series methods extensively in the 17th and 18th centuries. Euler \nwas particularly bold, manipulating divergent series as if they were \nconvergent and often getting correct answers by invalid means. His famous \nresult $1 + 2 + 3 + 4 + \\cdots = -\\frac{1}{12}$ (using a particular \nregularization) seems absurd but has applications in string theory!\n\nThe rigorous foundations came in the 19th century with Cauchy, who \ninsisted on proving convergence before summing, and Weierstrass, who \nformalized the $\\epsilon$-$\\delta$ language. Their work transformed \nanalysis from an art into a science."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Matthew 10:30",
+      "text": "But even the hairs of your head are all\nnumbered."
+    },
+    {
+      "type": "scripture",
+      "reference": "James 1:17",
+      "text": "Every good gift and every perfect gift is from\nabove, coming down from the Father of lights, with whom there is no\nvariation or shadow due to change."
+    },
+    {
+      "type": "scripture",
+      "reference": "Luke 12:7",
+      "text": "Why, even the hairs of your head are all \nnumbered. Fear not; you are of more value than many sparrows."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:26",
+      "text": "Lift up your eyes on high and see: who\ncreated these? He who brings out their host by number, calling them all by\nname; by the greatness of his might and because he is strong in power, not\none is missing."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 147:4--5",
+      "text": "He determines the number of the stars; he \ngives to all of them their names. Great is our Lord, and abundant in power; \nhis understanding is beyond measure."
+    },
+    {
+      "type": "scripture",
+      "reference": "Colossians 1:17",
+      "text": "And he is before all things, and in him\nall things hold together."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:14",
+      "text": "I perceived that whatever God does \nendures forever; nothing can be added to it, nor anything taken from it."
+    },
+    {
+      "type": "quote",
+      "author": "Leonhard Euler",
+      "text": "For since the fabric of the universe is most\nperfect and the work of a most wise Creator, nothing at all takes place in\nthe universe in which some rule of maximum or minimum does not appear."
+    },
+    {
+      "type": "quote",
+      "author": "Georg Cantor",
+      "text": "In mathematics the art of asking questions is \nmore valuable than solving problems."
+    },
+    {
+      "type": "quote",
+      "author": "George Pólya",
+      "text": "Mathematics consists in proving the most obvious\nthing in the least obvious way."
+    },
+    {
+      "type": "quote",
+      "author": "Nicole Oresme",
+      "text": "I indeed know nothing except that I know that I\nknow nothing."
+    }
+  ]
+}

@@ -1,0 +1,280 @@
+{
+  "id": "vol3-ch15-sec03",
+  "title": "Double Integrals in Polar Coordinates",
+  "chapter": 15,
+  "section": 3,
+  "book": "vol3",
+  "epigraph": {
+    "text": "He has made everything beautiful in its time.",
+    "reference": "Ecclesiastes 3:11"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "When a region possesses circular or radial symmetry, rectangular coordinates often lead to unwieldy computations. The transformation to polar coordinates can simplify such integrals dramatically, transforming complex boundaries into simple ones and revealing the underlying structure of the problem."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Area Element in Polar Coordinates"
+    },
+    {
+      "type": "paragraph",
+      "text": "Recall that polar coordinates $(r, \\theta)$ are related to rectangular coordinates $(x, y)$ by\n\\[\n x = r\\cos\\theta, \\qquad y = r\\sin\\theta.\n\\]\nIn rectangular coordinates, we partition a region into small rectangles of area $dA = dx\\,dy$. In polar coordinates, the natural partition uses \"polar rectangles.\""
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider a small region bounded by arcs at radii $r$ and $r + \\Delta r$, and by rays at angles $\\theta$ and $\\theta + \\Delta\\theta$. This polar rectangle has:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Inner arc length: $r \\Delta\\theta$",
+        "Outer arc length: $(r + \\Delta r)\\Delta\\theta$",
+        "Radial width: $\\Delta r$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The area of this polar rectangle is approximately\n\\[\n \\Delta A \\approx r \\cdot \\Delta r \\cdot \\Delta\\theta\n\\]\nwhere we use the average radius $r$ times the arc length factor. As $\\Delta r \\to 0$ and $\\Delta\\theta \\to 0$, we obtain the **polar area element**:\n\\[\n \\boxed{dA = r\\,dr\\,d\\theta}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "**The factor of $r$ is crucial!** It accounts for the fact that polar rectangles far from the origin are larger than those near the origin, even if they have the same $\\Delta r$ and $\\Delta\\theta$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-15.1",
+      "number": "15.1",
+      "title": "Double Integral in Polar Coordinates",
+      "content": "If $f$ is continuous on a polar region $D = \\{(r, \\theta) : \\alpha \\leq \\theta \\leq \\beta, h_1(\\theta) \\leq r \\leq h_2(\\theta)\\}$, then\n\\[\n \\iint_D f(x, y)\\,dA = \\int_\\alpha^\\beta \\int_{h_1(\\theta)}^{h_2(\\theta)} f(r\\cos\\theta, r\\sin\\theta)\\,r\\,dr\\,d\\theta.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "This follows from the general change of variables formula (Section 15.7). The Jacobian of the transformation is\n\\[\n \\frac{\\partial(x, y)}{\\partial(r, \\theta)} = \\begin{vmatrix} \\cos\\theta & -r\\sin\\theta \\\\ \\sin\\theta & r\\cos\\theta \\end{vmatrix} = r\\cos^2\\theta + r\\sin^2\\theta = r.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Summary of the conversion process:**"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Replace $x$ with $r\\cos\\theta$",
+        "Replace $y$ with $r\\sin\\theta$",
+        "Replace $x^2 + y^2$ with $r^2$",
+        "Replace $dA$ with $r\\,dr\\,d\\theta$ (the extra $r$ is essential!)",
+        "Determine the polar limits for the region"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Types of Polar Regions"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Type I: Polar rectangles.** $D = \\{(r, \\theta) : a \\leq r \\leq b, \\alpha \\leq \\theta \\leq \\beta\\}$"
+    },
+    {
+      "type": "paragraph",
+      "text": "These are the simplest regions, bounded by two circles and two rays."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Type II: Radial sectors.** $D = \\{(r, \\theta) : \\alpha \\leq \\theta \\leq \\beta, 0 \\leq r \\leq h(\\theta)\\}$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The outer boundary is given by a polar curve $r = h(\\theta)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Type III: Annular regions.** $D = \\{(r, \\theta) : 0 \\leq \\theta \\leq 2\\pi, a \\leq r \\leq b\\}$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Full circles centered at the origin."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Type IV: Between curves.** $D = \\{(r, \\theta) : \\alpha \\leq \\theta \\leq \\beta, h_1(\\theta) \\leq r \\leq h_2(\\theta)\\}$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The region between two polar curves."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Basic Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-15.1",
+      "number": "15.1",
+      "title": "Integral over a disk",
+      "problem": "Evaluate $\\displaystyle\\iint_D (x^2 + y^2)\\,dA$ where $D$ is the disk $x^2 + y^2 \\leq 4$.",
+      "solution": "In polar coordinates: $x^2 + y^2 = r^2$, and the disk becomes $D = \\{(r, \\theta) : 0 \\leq r \\leq 2, 0 \\leq \\theta \\leq 2\\pi\\}$.\n\n$$\n \\iint_D (x^2 + y^2)\\,dA &= \\int_0^{2\\pi} \\int_0^2 r^2 \\cdot r\\,dr\\,d\\theta \\\\\n &= \\int_0^{2\\pi} \\int_0^2 r^3\\,dr\\,d\\theta \\\\\n &= \\int_0^{2\\pi} \\left[\\frac{r^4}{4}\\right]_0^2 d\\theta \\\\\n &= \\int_0^{2\\pi} 4\\,d\\theta = 8\\pi.\n$$\n\nCompare this to the rectangular approach, which would require\n\\[\n \\int_{-2}^2 \\int_{-\\sqrt{4-x^2}}^{\\sqrt{4-x^2}} (x^2 + y^2)\\,dy\\,dx,\n\\]\na much more complicated calculation."
+    },
+    {
+      "type": "example",
+      "id": "example-15.2",
+      "number": "15.2",
+      "title": "Semicircular region",
+      "problem": "Evaluate $\\displaystyle\\iint_D e^{-(x^2+y^2)}\\,dA$ over the upper half of the unit disk.",
+      "solution": "The upper half of the unit disk is $D = \\{(r, \\theta) : 0 \\leq r \\leq 1, 0 \\leq \\theta \\leq \\pi\\}$.\n\n$$\n \\iint_D e^{-(x^2+y^2)}\\,dA &= \\int_0^\\pi \\int_0^1 e^{-r^2} \\cdot r\\,dr\\,d\\theta\n$$\n\nFor the inner integral, let $u = -r^2$, so $du = -2r\\,dr$:\n$$\n \\int_0^1 e^{-r^2} r\\,dr &= -\\frac{1}{2}\\left[e^{-r^2}\\right]_0^1 = -\\frac{1}{2}(e^{-1} - 1) = \\frac{1 - e^{-1}}{2}.\n$$\n\nTherefore:\n\\[\n \\iint_D e^{-(x^2+y^2)}\\,dA = \\int_0^\\pi \\frac{1 - e^{-1}}{2}\\,d\\theta = \\frac{\\pi(1 - e^{-1})}{2} \\approx 0.993.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-15.3",
+      "number": "15.3",
+      "title": "Cardioid region",
+      "problem": "Find the area enclosed by the cardioid $r = 1 + \\cos\\theta$.",
+      "solution": "The cardioid is traced once as $\\theta$ goes from $0$ to $2\\pi$. Area is the integral of 1:\n$$\n \\text{Area} &= \\iint_D 1\\,dA = \\int_0^{2\\pi} \\int_0^{1+\\cos\\theta} r\\,dr\\,d\\theta \\\\\n &= \\int_0^{2\\pi} \\left[\\frac{r^2}{2}\\right]_0^{1+\\cos\\theta} d\\theta \\\\\n &= \\int_0^{2\\pi} \\frac{(1+\\cos\\theta)^2}{2}\\,d\\theta \\\\\n &= \\frac{1}{2}\\int_0^{2\\pi} (1 + 2\\cos\\theta + \\cos^2\\theta)\\,d\\theta.\n$$\n\nUsing $\\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}$:\n$$\n &= \\frac{1}{2}\\int_0^{2\\pi} \\left(1 + 2\\cos\\theta + \\frac{1 + \\cos 2\\theta}{2}\\right)\\,d\\theta \\\\\n &= \\frac{1}{2}\\int_0^{2\\pi} \\left(\\frac{3}{2} + 2\\cos\\theta + \\frac{\\cos 2\\theta}{2}\\right)\\,d\\theta \\\\\n &= \\frac{1}{2}\\left[\\frac{3\\theta}{2} + 2\\sin\\theta + \\frac{\\sin 2\\theta}{4}\\right]_0^{2\\pi} \\\\\n &= \\frac{1}{2} \\cdot 3\\pi = \\frac{3\\pi}{2}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-15.4",
+      "number": "15.4",
+      "title": "Annular region",
+      "problem": "Evaluate $\\displaystyle\\iint_D \\frac{1}{x^2 + y^2}\\,dA$ where $D$ is the annulus $1 \\leq x^2 + y^2 \\leq 4$.",
+      "solution": "In polar coordinates, $\\frac{1}{x^2 + y^2} = \\frac{1}{r^2}$, and $D = \\{(r, \\theta) : 1 \\leq r \\leq 2, 0 \\leq \\theta \\leq 2\\pi\\}$.\n\n$$\n \\iint_D \\frac{1}{x^2 + y^2}\\,dA &= \\int_0^{2\\pi} \\int_1^2 \\frac{1}{r^2} \\cdot r\\,dr\\,d\\theta \\\\\n &= \\int_0^{2\\pi} \\int_1^2 \\frac{1}{r}\\,dr\\,d\\theta \\\\\n &= \\int_0^{2\\pi} [\\ln r]_1^2\\,d\\theta \\\\\n &= \\int_0^{2\\pi} \\ln 2\\,d\\theta = 2\\pi\\ln 2.\n$$\n\nNote: The integral $\\displaystyle\\iint \\frac{1}{x^2+y^2}\\,dA$ over a disk *including* the origin would diverge."
+    },
+    {
+      "type": "example",
+      "id": "example-15.5",
+      "number": "15.5",
+      "title": "Quarter disk with $xy$",
+      "problem": "Evaluate $\\displaystyle\\iint_D xy\\,dA$ where $D$ is the portion of the disk $x^2 + y^2 \\leq 4$ in the first quadrant.",
+      "solution": "In polar: $xy = r\\cos\\theta \\cdot r\\sin\\theta = r^2\\cos\\theta\\sin\\theta = \\frac{r^2\\sin 2\\theta}{2}$.\n\nThe first quadrant corresponds to $0 \\leq \\theta \\leq \\frac{\\pi}{2}$:\n$$\n \\iint_D xy\\,dA &= \\int_0^{\\pi/2} \\int_0^2 \\frac{r^2\\sin 2\\theta}{2} \\cdot r\\,dr\\,d\\theta \\\\\n &= \\frac{1}{2}\\int_0^{\\pi/2} \\sin 2\\theta \\left(\\int_0^2 r^3\\,dr\\right) d\\theta \\\\\n &= \\frac{1}{2}\\int_0^{\\pi/2} \\sin 2\\theta \\cdot 4\\,d\\theta \\\\\n &= 2\\left[-\\frac{\\cos 2\\theta}{2}\\right]_0^{\\pi/2} \\\\\n &= -[\\cos\\pi - \\cos 0] = -[-1 - 1] = 2.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-15.6",
+      "number": "15.6",
+      "title": "Rose curve",
+      "problem": "Find the area of one petal of the rose $r = \\sin 3\\theta$.",
+      "solution": "One petal corresponds to $0 \\leq \\theta \\leq \\frac{\\pi}{3}$ (where $\\sin 3\\theta \\geq 0$).\n\n$$\n \\text{Area} &= \\int_0^{\\pi/3} \\int_0^{\\sin 3\\theta} r\\,dr\\,d\\theta \\\\\n &= \\int_0^{\\pi/3} \\frac{\\sin^2 3\\theta}{2}\\,d\\theta \\\\\n &= \\frac{1}{2}\\int_0^{\\pi/3} \\frac{1 - \\cos 6\\theta}{2}\\,d\\theta \\\\\n &= \\frac{1}{4}\\left[\\theta - \\frac{\\sin 6\\theta}{6}\\right]_0^{\\pi/3} \\\\\n &= \\frac{1}{4}\\left(\\frac{\\pi}{3} - 0\\right) = \\frac{\\pi}{12}.\n$$\n\nSince the rose has three petals (trace from $\\theta = 0$ to $\\pi$), the total area is $\\frac{\\pi}{4}$."
+    },
+    {
+      "type": "example",
+      "id": "example-15.7",
+      "number": "15.7",
+      "title": "Limaçon with inner loop",
+      "problem": "Find the area inside the inner loop of $r = 1 - 2\\cos\\theta$.",
+      "solution": "The inner loop occurs where $r$ is positive and the curve crosses itself. Setting $r = 0$: $1 - 2\\cos\\theta = 0$, so $\\cos\\theta = \\frac{1}{2}$, giving $\\theta = \\frac{\\pi}{3}$ or $\\theta = \\frac{5\\pi}{3}$.\n\nBetween $\\theta = \\frac{\\pi}{3}$ and $\\theta = \\frac{5\\pi}{3}$, we have $\\cos\\theta < \\frac{1}{2}$, so $r > 0$.\n\nBut wait—the inner loop is where $r$ goes negative and then positive again. Actually, for $-\\frac{\\pi}{3} < \\theta < \\frac{\\pi}{3}$, we have $\\cos\\theta > \\frac{1}{2}$, so $r < 0$.\n\nThe inner loop area is computed by integrating over the angular range where the curve traces the inner loop. By symmetry about the $x$-axis, we compute:\n$$\n \\text{Area} &= \\int_{-\\pi/3}^{\\pi/3} \\int_0^{|1-2\\cos\\theta|} r\\,dr\\,d\\theta \\\\\n &= \\int_{-\\pi/3}^{\\pi/3} \\frac{(2\\cos\\theta - 1)^2}{2}\\,d\\theta \\\\\n &= \\int_{-\\pi/3}^{\\pi/3} \\frac{4\\cos^2\\theta - 4\\cos\\theta + 1}{2}\\,d\\theta.\n$$\n\nUsing $\\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}$ and symmetry:\n$$\n &= 2\\int_0^{\\pi/3} \\left(\\cos 2\\theta + 1 - 2\\cos\\theta + \\frac{1}{2}\\right)\\,d\\theta \\\\\n &= 2\\left[\\frac{\\sin 2\\theta}{2} + \\frac{3\\theta}{2} - 2\\sin\\theta\\right]_0^{\\pi/3} \\\\\n &= 2\\left(\\frac{\\sqrt{3}/2}{2} + \\frac{\\pi}{2} - \\sqrt{3}\\right) \\\\\n &= 2\\left(\\frac{\\sqrt{3}}{4} + \\frac{\\pi}{2} - \\sqrt{3}\\right) = \\pi - \\frac{3\\sqrt{3}}{2}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-15.8",
+      "number": "15.8",
+      "title": "Volume under a paraboloid",
+      "problem": "Find the volume of the solid under $z = 4 - x^2 - y^2$ above the $xy$-plane.",
+      "solution": "The paraboloid intersects the $xy$-plane where $z = 0$, i.e., $x^2 + y^2 = 4$. This is a disk of radius 2.\n\n$$\n V &= \\iint_D (4 - x^2 - y^2)\\,dA \\\\\n &= \\int_0^{2\\pi} \\int_0^2 (4 - r^2) \\cdot r\\,dr\\,d\\theta \\\\\n &= \\int_0^{2\\pi} \\int_0^2 (4r - r^3)\\,dr\\,d\\theta \\\\\n &= \\int_0^{2\\pi} \\left[2r^2 - \\frac{r^4}{4}\\right]_0^2 d\\theta \\\\\n &= \\int_0^{2\\pi} (8 - 4)\\,d\\theta = 4 \\cdot 2\\pi = 8\\pi.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Converting Rectangular Integrals to Polar"
+    },
+    {
+      "type": "paragraph",
+      "text": "Sometimes we are given a double integral in rectangular coordinates where the limits or integrand suggest polar coordinates would be simpler."
+    },
+    {
+      "type": "example",
+      "id": "example-15.9",
+      "number": "15.9",
+      "title": "Converting limits",
+      "problem": "Convert and evaluate: $\\displaystyle\\int_0^2 \\int_0^{\\sqrt{4-x^2}} (x^2 + y^2)\\,dy\\,dx$.",
+      "solution": "**Step 1: Identify the region.**\n\n- $x$ ranges from $0$ to $2$\n\n- $y$ ranges from $0$ to $\\sqrt{4-x^2}$\nThis describes the quarter-disk in the first quadrant with radius 2.\n\n**Step 2: Convert to polar.**\nIn polar: $0 \\leq r \\leq 2$, $0 \\leq \\theta \\leq \\frac{\\pi}{2}$.\n\n**Step 3: Convert the integrand.**\n$x^2 + y^2 = r^2$\n\n**Step 4: Evaluate.**\n$$\n \\int_0^{\\pi/2} \\int_0^2 r^2 \\cdot r\\,dr\\,d\\theta &= \\int_0^{\\pi/2} \\left[\\frac{r^4}{4}\\right]_0^2 d\\theta \\\\\n &= \\int_0^{\\pi/2} 4\\,d\\theta = 2\\pi.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-15.10",
+      "number": "15.10",
+      "title": "The Gaussian integral",
+      "problem": "Convert and evaluate: $\\displaystyle\\int_{-\\infty}^{\\infty} \\int_{-\\infty}^{\\infty} e^{-(x^2+y^2)}\\,dy\\,dx$.",
+      "solution": "This is an improper integral over all of $\\mathbb{R}^2$. In polar coordinates:\n$$\n \\int_0^{2\\pi} \\int_0^\\infty e^{-r^2} \\cdot r\\,dr\\,d\\theta &= \\int_0^{2\\pi} \\left[-\\frac{1}{2}e^{-r^2}\\right]_0^\\infty d\\theta \\\\\n &= \\int_0^{2\\pi} \\frac{1}{2}\\,d\\theta = \\pi.\n$$\n\nThis is a famous result! Since the double integral equals $\\left(\\int_{-\\infty}^{\\infty} e^{-x^2}\\,dx\\right)^2$, we conclude\n\\[\n \\int_{-\\infty}^{\\infty} e^{-x^2}\\,dx = \\sqrt{\\pi}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-15.11",
+      "number": "15.11",
+      "title": "Shifted circle",
+      "problem": "Evaluate $\\displaystyle\\iint_D \\sqrt{x^2+y^2}\\,dA$ where $D$ is the disk $(x-1)^2 + y^2 \\leq 1$.",
+      "solution": "The disk is centered at $(1, 0)$ with radius 1. In polar coordinates, this circle has equation $r = 2\\cos\\theta$ (verify: $x^2 + y^2 = 2x$ becomes $r^2 = 2r\\cos\\theta$, so $r = 2\\cos\\theta$).\n\nThe disk is traced for $-\\frac{\\pi}{2} \\leq \\theta \\leq \\frac{\\pi}{2}$.\n\n$$\n \\iint_D \\sqrt{x^2+y^2}\\,dA &= \\int_{-\\pi/2}^{\\pi/2} \\int_0^{2\\cos\\theta} r \\cdot r\\,dr\\,d\\theta \\\\\n &= \\int_{-\\pi/2}^{\\pi/2} \\left[\\frac{r^3}{3}\\right]_0^{2\\cos\\theta} d\\theta \\\\\n &= \\int_{-\\pi/2}^{\\pi/2} \\frac{8\\cos^3\\theta}{3}\\,d\\theta.\n$$\n\nUsing $\\cos^3\\theta = \\cos\\theta(1 - \\sin^2\\theta)$:\n$$\n &= \\frac{8}{3}\\int_{-\\pi/2}^{\\pi/2} \\cos\\theta(1 - \\sin^2\\theta)\\,d\\theta \\\\\n &= \\frac{8}{3}\\left[\\sin\\theta - \\frac{\\sin^3\\theta}{3}\\right]_{-\\pi/2}^{\\pi/2} \\\\\n &= \\frac{8}{3}\\left[\\left(1 - \\frac{1}{3}\\right) - \\left(-1 + \\frac{1}{3}\\right)\\right] \\\\\n &= \\frac{8}{3} \\cdot \\frac{4}{3} = \\frac{32}{9}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-15.12",
+      "number": "15.12",
+      "title": "Between two circles",
+      "problem": "Evaluate $\\displaystyle\\iint_D x\\,dA$ where $D$ is the region inside $r = 2\\cos\\theta$ but outside $r = 1$.",
+      "solution": "First, find where the circles intersect: $2\\cos\\theta = 1$, so $\\cos\\theta = \\frac{1}{2}$, giving $\\theta = \\pm\\frac{\\pi}{3}$.\n\nIn the region, $r$ goes from $1$ to $2\\cos\\theta$, and $\\theta$ goes from $-\\frac{\\pi}{3}$ to $\\frac{\\pi}{3}$.\n\n$$\n \\iint_D x\\,dA &= \\int_{-\\pi/3}^{\\pi/3} \\int_1^{2\\cos\\theta} r\\cos\\theta \\cdot r\\,dr\\,d\\theta \\\\\n &= \\int_{-\\pi/3}^{\\pi/3} \\cos\\theta \\left[\\frac{r^3}{3}\\right]_1^{2\\cos\\theta} d\\theta \\\\\n &= \\int_{-\\pi/3}^{\\pi/3} \\cos\\theta \\cdot \\frac{8\\cos^3\\theta - 1}{3}\\,d\\theta \\\\\n &= \\frac{1}{3}\\int_{-\\pi/3}^{\\pi/3} (8\\cos^4\\theta - \\cos\\theta)\\,d\\theta.\n$$\n\nUsing $\\cos^4\\theta = \\frac{3 + 4\\cos 2\\theta + \\cos 4\\theta}{8}$ and symmetry:\n$$\n &= \\frac{2}{3}\\int_0^{\\pi/3} \\left(3 + 4\\cos 2\\theta + \\cos 4\\theta - \\cos\\theta\\right)\\,d\\theta \\\\\n &= \\frac{2}{3}\\left[3\\theta + 2\\sin 2\\theta + \\frac{\\sin 4\\theta}{4} - \\sin\\theta\\right]_0^{\\pi/3} \\\\\n &= \\frac{2}{3}\\left(\\pi + \\sqrt{3} - \\frac{\\sqrt{3}}{8} - \\frac{\\sqrt{3}}{2}\\right) \\\\\n &= \\frac{2}{3}\\left(\\pi + \\frac{3\\sqrt{3}}{8}\\right) = \\frac{2\\pi}{3} + \\frac{\\sqrt{3}}{4}.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications"
+    },
+    {
+      "type": "example",
+      "id": "example-15.13",
+      "number": "15.13",
+      "title": "Mass of a circular plate",
+      "problem": "A circular plate of radius $a$ has density $\\rho(x,y) = k(x^2 + y^2)$ where $k$ is a constant. Find its total mass.",
+      "solution": "$$\n M &= \\iint_D \\rho(x,y)\\,dA = \\int_0^{2\\pi} \\int_0^a kr^2 \\cdot r\\,dr\\,d\\theta \\\\\n &= k\\int_0^{2\\pi} \\left[\\frac{r^4}{4}\\right]_0^a d\\theta = k\\int_0^{2\\pi} \\frac{a^4}{4}\\,d\\theta = \\frac{\\pi ka^4}{2}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-15.14",
+      "number": "15.14",
+      "title": "Center of mass",
+      "problem": "Find the center of mass of the semicircular region $y \\geq 0$, $x^2 + y^2 \\leq a^2$ with uniform density.",
+      "solution": "By symmetry, $\\bar{x} = 0$.\n\nFor $\\bar{y}$:\n$$\n M &= \\int_0^\\pi \\int_0^a r\\,dr\\,d\\theta = \\frac{\\pi a^2}{2} \\\\[1ex]\n M_x &= \\iint_D y\\,dA = \\int_0^\\pi \\int_0^a r\\sin\\theta \\cdot r\\,dr\\,d\\theta \\\\\n &= \\int_0^\\pi \\sin\\theta \\cdot \\frac{a^3}{3}\\,d\\theta = \\frac{a^3}{3}[-\\cos\\theta]_0^\\pi = \\frac{2a^3}{3}\n$$\n\nTherefore $\\bar{y} = \\frac{M_x}{M} = \\frac{2a^3/3}{\\pi a^2/2} = \\frac{4a}{3\\pi}$.\n\nThe center of mass is at $\\left(0, \\frac{4a}{3\\pi}\\right)$."
+    },
+    {
+      "type": "example",
+      "id": "example-15.15",
+      "number": "15.15",
+      "title": "Moment of inertia",
+      "problem": "Find the moment of inertia about the $z$-axis for a uniform disk of radius $R$ and mass $M$.",
+      "solution": "The moment of inertia about the $z$-axis is $I_z = \\iint_D (x^2 + y^2)\\rho\\,dA$.\n\nWith uniform density $\\rho = \\frac{M}{\\pi R^2}$:\n$$\n I_z &= \\frac{M}{\\pi R^2} \\int_0^{2\\pi} \\int_0^R r^2 \\cdot r\\,dr\\,d\\theta \\\\\n &= \\frac{M}{\\pi R^2} \\cdot 2\\pi \\cdot \\frac{R^4}{4} = \\frac{MR^2}{2}.\n$$\n\nThis is the familiar formula for a disk's moment of inertia."
+    },
+    {
+      "type": "example",
+      "id": "example-15.16",
+      "number": "15.16",
+      "title": "Light intensity",
+      "problem": "The intensity of light from a circular lamp at distance $r$ from the center varies as $I(r) = \\frac{I_0}{1 + r^2}$. Find the total light output over a disk of radius $R$.",
+      "solution": "$$\n \\text{Total light} &= \\int_0^{2\\pi} \\int_0^R \\frac{I_0}{1 + r^2} \\cdot r\\,dr\\,d\\theta\n$$\n\nFor the inner integral, let $u = 1 + r^2$:\n$$\n \\int_0^R \\frac{r}{1 + r^2}\\,dr &= \\frac{1}{2}\\ln(1 + R^2).\n$$\n\nTherefore:\n\\[\n \\text{Total light} = I_0 \\cdot 2\\pi \\cdot \\frac{1}{2}\\ln(1 + R^2) = \\pi I_0 \\ln(1 + R^2).\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Common Mistakes to Avoid"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Forgetting the $r$ factor.** The most common error is writing $dA = dr\\,d\\theta$ instead of $dA = r\\,dr\\,d\\theta$.",
+        "**Wrong limits for $\\theta$.** Make sure the angular range covers the region exactly once.",
+        "**Not converting the integrand.** Every $x$ must become $r\\cos\\theta$, every $y$ must become $r\\sin\\theta$.",
+        "**Using polar for non-circular regions.** Polar coordinates aren't always simpler—use them when the region or integrand has circular symmetry."
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ezekiel 1:16",
+      "text": "The appearance of the wheels and their construction was like the gleaming of beryl."
+    }
+  ]
+}

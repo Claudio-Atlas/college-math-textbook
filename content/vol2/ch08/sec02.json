@@ -1,0 +1,442 @@
+{
+  "id": "vol2-ch08-sec02",
+  "title": "Trigonometric Integrals",
+  "chapter": 8,
+  "section": 2,
+  "book": "vol2",
+  "epigraph": {
+    "text": "He determines the number of the stars; he gives to all of \nthem their names.",
+    "reference": "Psalm 147:4"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Integration by parts gave us a powerful way to handle products like\n$x\\,e^{x}$. But what about an integral like\n\\[\n \\int \\sin^{5}x\\,\\cos^{2}x\\dx\\,?\n\\]\nThis is a product of trigonometric functions raised to powers. No single\n$u$-substitution immediately works, and integration by parts would be\npainful. Instead, we will exploit the *Pythagorean identities* and\n*half-angle formulas* to reduce these integrals to manageable forms.\nThe key insight is that the strategy depends on whether the powers are\n**odd** or **even**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Fundamental Trigonometric Identities"
+    },
+    {
+      "type": "paragraph",
+      "text": "Before diving into examples, let us collect the identities we will need."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.1",
+      "number": "8.1",
+      "title": "Key Trigonometric Identities",
+      "content": "**Pythagorean identities:**\n$$\n \\sin^{2}x + \\cos^{2}x &= 1 \\\\\n 1 + \\tan^{2}x &= \\sec^{2}x \\\\\n 1 + \\cot^{2}x &= \\csc^{2}x\n$$\n\n**Half-angle (power-reducing) identities:**\n$$\n \\sin^{2}x &= \\frac{1 - \\cos 2x}{2} \\\\\n \\cos^{2}x &= \\frac{1 + \\cos 2x}{2}\n$$\n\n**Double-angle identities:**\n$$\n \\sin 2x &= 2\\sin x\\cos x \\\\\n \\cos 2x &= \\cos^{2}x - \\sin^{2}x = 2\\cos^{2}x - 1 = 1 - 2\\sin^{2}x\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The half-angle identities are particularly important: they convert squares\ninto first-degree expressions, making integration possible."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Integrals of $^{n"
+    },
+    {
+      "type": "paragraph",
+      "text": "We treat three cases based on the parity of $n$ and $m$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Case 1: The power of sine is odd ($n$ odd).** Factor out one\n$\\sin x$ to pair with $dx$, and convert the remaining even powers of\n$\\sin x$ using $\\sin^{2}x = 1 - \\cos^{2}x$. Then let $u = \\cos x$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "$\\displaystyle\\int \\sin^{3}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sin^{3}x\\dx$.",
+      "solution": "Factor out one $\\sin x$:\n\\[\n \\int \\sin^{3}x\\dx = \\int \\sin^{2}x \\cdot \\sin x\\dx\n = \\int (1 - \\cos^{2}x)\\sin x\\dx.\n\\]\nLet $u = \\cos x$, $du = -\\sin x\\dx$:\n$$\n &= -\\int (1 - u^{2})\\,du = -\\left(u - \\frac{u^{3}}{3}\\right) + C \\\\\n &= -\\cos x + \\frac{\\cos^{3}x}{3} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "$\\displaystyle\\int \\sin^{3}x\\,\\cos^{4}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sin^{3}x\\,\\cos^{4}x\\dx$.",
+      "solution": "The power of $\\sin x$ is odd (3). Factor out one $\\sin x$:\n\\[\n \\int \\sin^{3}x\\,\\cos^{4}x\\dx\n = \\int \\sin^{2}x\\,\\cos^{4}x\\,\\sin x\\dx.\n\\]\nReplace $\\sin^{2}x = 1 - \\cos^{2}x$:\n\\[\n = \\int (1 - \\cos^{2}x)\\,\\cos^{4}x\\,\\sin x\\dx.\n\\]\nLet $u = \\cos x$, $du = -\\sin x\\dx$:\n$$\n &= -\\int (1 - u^{2})\\,u^{4}\\,du\n = -\\int (u^{4} - u^{6})\\,du \\\\[4pt]\n &= -\\frac{u^{5}}{5} + \\frac{u^{7}}{7} + C\n = -\\frac{\\cos^{5}x}{5} + \\frac{\\cos^{7}x}{7} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "$\\displaystyle\\int \\sin^{5}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sin^{5}x\\dx$.",
+      "solution": "Write $\\sin^{5}x = \\sin^{4}x \\cdot \\sin x = (1 - \\cos^{2}x)^{2}\\sin x$.\nLet $u = \\cos x$:\n$$\n \\int \\sin^{5}x\\dx\n &= -\\int (1 - u^{2})^{2}\\,du = -\\int (1 - 2u^{2} + u^{4})\\,du \\\\\n &= -u + \\frac{2u^{3}}{3} - \\frac{u^{5}}{5} + C \\\\\n &= -\\cos x + \\frac{2\\cos^{3}x}{3} - \\frac{\\cos^{5}x}{5} + C.\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Case 2: The power of cosine is odd ($m$ odd).** Factor out one\n$\\cos x$, convert the remaining even powers using $\\cos^{2}x = 1 - \\sin^{2}x$,\nand substitute $u = \\sin x$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.4",
+      "number": "8.4",
+      "title": "$\\displaystyle\\int \\cos^{5}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\cos^{5}x\\dx$.",
+      "solution": "Write $\\cos^{5}x = \\cos^{4}x \\cdot \\cos x = (1 - \\sin^{2}x)^{2}\\cos x$.\nLet $u = \\sin x$, $du = \\cos x\\dx$:\n$$\n \\int \\cos^{5}x\\dx\n &= \\int (1 - u^{2})^{2}\\,du = \\int (1 - 2u^{2} + u^{4})\\,du \\\\\n &= u - \\frac{2u^{3}}{3} + \\frac{u^{5}}{5} + C \\\\\n &= \\sin x - \\frac{2\\sin^{3}x}{3} + \\frac{\\sin^{5}x}{5} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.5",
+      "number": "8.5",
+      "title": "$\\displaystyle\\int \\sin^{2}x\\,\\cos^{3}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sin^{2}x\\,\\cos^{3}x\\dx$.",
+      "solution": "The power of $\\cos x$ is odd (3). Factor out one $\\cos x$:\n\\[\n \\int \\sin^{2}x\\,\\cos^{3}x\\dx\n = \\int \\sin^{2}x\\,\\cos^{2}x\\,\\cos x\\dx\n = \\int \\sin^{2}x\\,(1-\\sin^{2}x)\\,\\cos x\\dx.\n\\]\nLet $u = \\sin x$, $du = \\cos x\\dx$:\n$$\n &= \\int u^{2}(1 - u^{2})\\,du\n = \\int (u^{2} - u^{4})\\,du \\\\[4pt]\n &= \\frac{u^{3}}{3} - \\frac{u^{5}}{5} + C\n = \\frac{\\sin^{3}x}{3} - \\frac{\\sin^{5}x}{5} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.6",
+      "number": "8.6",
+      "title": "$\\displaystyle\\int \\sin^{4}x\\,\\cos^{5}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sin^{4}x\\,\\cos^{5}x\\dx$.",
+      "solution": "The power of $\\cos x$ is odd. Factor out one $\\cos x$:\n\\[\n \\int \\sin^{4}x\\,\\cos^{5}x\\dx = \\int \\sin^{4}x\\,(1-\\sin^{2}x)^{2}\\cos x\\dx.\n\\]\nLet $u = \\sin x$:\n$$\n &= \\int u^{4}(1 - u^{2})^{2}\\,du = \\int u^{4}(1 - 2u^{2} + u^{4})\\,du \\\\\n &= \\int (u^{4} - 2u^{6} + u^{8})\\,du \\\\\n &= \\frac{u^{5}}{5} - \\frac{2u^{7}}{7} + \\frac{u^{9}}{9} + C \\\\\n &= \\frac{\\sin^{5}x}{5} - \\frac{2\\sin^{7}x}{7} + \\frac{\\sin^{9}x}{9} + C.\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Case 3: Both powers are even.** When both $m$ and $n$ are even,\nno simple $u$-substitution works. Instead, we use the\n**half-angle identities** to reduce powers."
+    },
+    {
+      "type": "example",
+      "id": "example-8.7",
+      "number": "8.7",
+      "title": "$\\displaystyle\\int \\sin^{2}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sin^{2}x\\dx$.",
+      "solution": "Apply the half-angle identity:\n$$\n \\int \\sin^{2}x\\dx\n &= \\int \\frac{1 - \\cos 2x}{2}\\dx\n = \\frac{1}{2}\\int (1 - \\cos 2x)\\dx \\\\[4pt]\n &= \\frac{1}{2}\\left(x - \\frac{\\sin 2x}{2}\\right) + C\n = \\frac{x}{2} - \\frac{\\sin 2x}{4} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.8",
+      "number": "8.8",
+      "title": "$\\displaystyle\\int \\cos^{2}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\cos^{2}x\\dx$.",
+      "solution": "Apply the half-angle identity:\n$$\n \\int \\cos^{2}x\\dx\n &= \\int \\frac{1 + \\cos 2x}{2}\\dx\n = \\frac{1}{2}\\int (1 + \\cos 2x)\\dx \\\\[4pt]\n &= \\frac{1}{2}\\left(x + \\frac{\\sin 2x}{2}\\right) + C\n = \\frac{x}{2} + \\frac{\\sin 2x}{4} + C.\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "when the morning stars sang together and all the sons of\nGod shouted for joy?}"
+    },
+    {
+      "type": "example",
+      "id": "example-8.9",
+      "number": "8.9",
+      "title": "$\\displaystyle\\int \\sin^{4}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sin^{4}x\\dx$.",
+      "solution": "Write $\\sin^{4}x = (\\sin^{2}x)^{2}$ and apply the half-angle identity:\n\\[\n \\sin^{4}x = \\left(\\frac{1 - \\cos 2x}{2}\\right)^{2}\n = \\frac{1 - 2\\cos 2x + \\cos^{2}2x}{4}.\n\\]\nNow apply the half-angle identity to $\\cos^{2}2x$:\n\\[\n \\cos^{2}2x = \\frac{1 + \\cos 4x}{2}.\n\\]\nSubstituting:\n\\[\n \\sin^{4}x = \\frac{1}{4}\\left(1 - 2\\cos 2x + \\frac{1 + \\cos 4x}{2}\\right)\n = \\frac{1}{4}\\left(\\frac{3}{2} - 2\\cos 2x + \\frac{\\cos 4x}{2}\\right).\n\\]\nIntegrating:\n$$\n \\int \\sin^{4}x\\dx\n &= \\frac{1}{4}\\left(\\frac{3x}{2} - \\sin 2x + \\frac{\\sin 4x}{8}\\right) + C \\\\\n &= \\frac{3x}{8} - \\frac{\\sin 2x}{4} + \\frac{\\sin 4x}{32} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.10",
+      "number": "8.10",
+      "title": "$\\displaystyle\\int \\cos^{4}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\cos^{4}x\\dx$.",
+      "solution": "Write $\\cos^{4}x = (\\cos^{2}x)^{2} = \\left(\\frac{1 + \\cos 2x}{2}\\right)^{2}\n= \\frac{1 + 2\\cos 2x + \\cos^{2}2x}{4}$.\n\nUsing $\\cos^{2}2x = \\frac{1 + \\cos 4x}{2}$:\n\\[\n \\cos^{4}x = \\frac{1}{4}\\left(1 + 2\\cos 2x + \\frac{1 + \\cos 4x}{2}\\right)\n = \\frac{1}{4}\\left(\\frac{3}{2} + 2\\cos 2x + \\frac{\\cos 4x}{2}\\right).\n\\]\nIntegrating:\n$$\n \\int \\cos^{4}x\\dx\n &= \\frac{1}{4}\\left(\\frac{3x}{2} + \\sin 2x + \\frac{\\sin 4x}{8}\\right) + C \\\\\n &= \\frac{3x}{8} + \\frac{\\sin 2x}{4} + \\frac{\\sin 4x}{32} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.11",
+      "number": "8.11",
+      "title": "$\\displaystyle\\int \\sin^{2}x\\,\\cos^{2}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sin^{2}x\\,\\cos^{2}x\\dx$.",
+      "solution": "We may use the double-angle identity $\\sin x\\cos x = \\tfrac{1}{2}\\sin 2x$:\n\\[\n \\sin^{2}x\\,\\cos^{2}x = (\\sin x\\cos x)^{2}\n = \\left(\\frac{\\sin 2x}{2}\\right)^{\\!2}\n = \\frac{\\sin^{2}2x}{4}.\n\\]\nNow apply the half-angle identity to $\\sin^{2}2x$:\n$$\n \\int \\frac{\\sin^{2}2x}{4}\\dx\n &= \\frac{1}{4}\\int \\frac{1 - \\cos 4x}{2}\\dx\n = \\frac{1}{8}\\int (1 - \\cos 4x)\\dx \\\\[4pt]\n &= \\frac{1}{8}\\left(x - \\frac{\\sin 4x}{4}\\right) + C\n = \\frac{x}{8} - \\frac{\\sin 4x}{32} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.12",
+      "number": "8.12",
+      "title": "$\\displaystyle\\int \\sin^{2}x\\,\\cos^{4}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sin^{2}x\\,\\cos^{4}x\\dx$.",
+      "solution": "Both powers are even. Write:\n\\[\n \\sin^{2}x\\,\\cos^{4}x = \\sin^{2}x\\,\\cos^{2}x\\,\\cos^{2}x\n = \\frac{\\sin^{2}2x}{4} \\cdot \\cos^{2}x.\n\\]\nAlternatively, convert everything using half-angle formulas:\n$$\n \\sin^{2}x\\,\\cos^{4}x\n &= \\frac{1 - \\cos 2x}{2} \\cdot \\left(\\frac{1 + \\cos 2x}{2}\\right)^{2} \\\\\n &= \\frac{(1 - \\cos 2x)(1 + \\cos 2x)^{2}}{8}.\n$$\nLet $c = \\cos 2x$ for brevity. Then:\n\\[\n (1 - c)(1 + c)^{2} = (1 - c)(1 + 2c + c^{2}) = 1 + 2c + c^{2} - c - 2c^{2} - c^{3}\n = 1 + c - c^{2} - c^{3}.\n\\]\nSo:\n\\[\n \\sin^{2}x\\,\\cos^{4}x = \\frac{1 + \\cos 2x - \\cos^{2}2x - \\cos^{3}2x}{8}.\n\\]\nFor $\\cos^{2}2x$, use $\\cos^{2}2x = \\frac{1 + \\cos 4x}{2}$.\nFor $\\cos^{3}2x$, use $\\cos^{3}2x = \\cos 2x \\cdot \\frac{1 + \\cos 4x}{2}\n= \\frac{\\cos 2x + \\cos 2x\\cos 4x}{2}$.\n\nUsing the product-to-sum formula:\n$\\cos 2x\\cos 4x = \\frac{1}{2}(\\cos 6x + \\cos 2x)$.\n\nAfter careful algebra:\n\\[\n \\int \\sin^{2}x\\,\\cos^{4}x\\dx = \\frac{x}{16} - \\frac{\\sin 4x}{64}\n + \\frac{\\sin^{3}2x}{48} + C.\n\\]\n(Or equivalently: $\\frac{x}{16} - \\frac{\\sin 4x}{64} - \\frac{\\sin 6x}{192}\n+ \\frac{\\sin 2x}{64} + C$.)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Powers of Tangent and Secant"
+    },
+    {
+      "type": "paragraph",
+      "text": "The pair $\\tan x$ and $\\sec x$ are linked by the identity\n$\\sec^{2}x = 1 + \\tan^{2}x$, just as $\\sin x$ and $\\cos x$ are linked\nby $\\sin^{2}x + \\cos^{2}x = 1$. We also have the key derivative facts:\n\\[\n \\deriv{}{x}\\tan x = \\sec^{2}x,\n \\qquad\n \\deriv{}{x}\\sec x = \\sec x\\,\\tan x.\n\\]"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-8.2",
+      "number": null,
+      "title": "Powers of Tangent and Secant",
+      "content": "**For $\\displaystyle\\int \\tan^{n}x\\,\\sec^{m}x\\dx$:**\n\n1. If $m$ is even: factor out $\\sec^{2}x$, convert remaining\n $\\sec^{2}x$ factors using $\\sec^{2}x = 1 + \\tan^{2}x$, let $u = \\tan x$.\n\n2. If $n$ is odd: factor out $\\sec x\\,\\tan x$, convert remaining\n $\\tan^{2}x$ factors using $\\tan^{2}x = \\sec^{2}x - 1$, let $u = \\sec x$.\n\n3. Otherwise: reduce using $\\tan^{2}x = \\sec^{2}x - 1$ or\n integration by parts."
+    },
+    {
+      "type": "example",
+      "id": "example-8.13",
+      "number": "8.13",
+      "title": "$\\displaystyle\\int \\tan^{2}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\tan^{2}x\\dx$.",
+      "solution": "Write $\\tan^{2}x = \\sec^{2}x - 1$:\n\\[\n \\int \\tan^{2}x\\dx = \\int (\\sec^{2}x - 1)\\dx\n = \\tan x - x + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.14",
+      "number": "8.14",
+      "title": "$\\displaystyle\\int \\tan^{3}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\tan^{3}x\\dx$.",
+      "solution": "Write $\\tan^{3}x = \\tan x \\cdot \\tan^{2}x = \\tan x(\\sec^{2}x - 1)$:\n$$\n \\int \\tan^{3}x\\dx\n &= \\int \\tan x\\,\\sec^{2}x\\dx - \\int \\tan x\\dx \\\\\n &= \\frac{\\tan^{2}x}{2} - \\ln|\\sec x| + C\n = \\frac{\\tan^{2}x}{2} + \\ln|\\cos x| + C.\n$$\nFor the first integral, we used $u = \\tan x$, $du = \\sec^{2}x\\dx$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.15",
+      "number": "8.15",
+      "title": "$\\displaystyle\\int \\tan^{4}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\tan^{4}x\\dx$.",
+      "solution": "Write $\\tan^{4}x = \\tan^{2}x \\cdot \\tan^{2}x = \\tan^{2}x(\\sec^{2}x - 1)$:\n$$\n \\int \\tan^{4}x\\dx\n &= \\int \\tan^{2}x\\,\\sec^{2}x\\dx - \\int \\tan^{2}x\\dx \\\\\n &= \\frac{\\tan^{3}x}{3} - (\\tan x - x) + C \\\\\n &= \\frac{\\tan^{3}x}{3} - \\tan x + x + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.16",
+      "number": "8.16",
+      "title": "$\\displaystyle\\int \\sec^{4}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sec^{4}x\\dx$.",
+      "solution": "The power of $\\sec x$ is even. Factor out $\\sec^{2}x$:\n\\[\n \\int \\sec^{4}x\\dx = \\int \\sec^{2}x \\cdot \\sec^{2}x\\dx\n = \\int (1 + \\tan^{2}x)\\sec^{2}x\\dx.\n\\]\nLet $u = \\tan x$, $du = \\sec^{2}x\\dx$:\n\\[\n = \\int (1 + u^{2})\\,du = u + \\frac{u^{3}}{3} + C\n = \\tan x + \\frac{\\tan^{3}x}{3} + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.17",
+      "number": "8.17",
+      "title": "$\\displaystyle\\int \\tan^{5}x\\,\\sec^{4}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\tan^{5}x\\,\\sec^{4}x\\dx$.",
+      "solution": "Since the power of $\\sec x$ is even, factor out $\\sec^{2}x$ and convert\nthe rest using $\\sec^{2}x = 1 + \\tan^{2}x$:\n\\[\n \\int \\tan^{5}x\\,\\sec^{4}x\\dx\n = \\int \\tan^{5}x\\,\\sec^{2}x\\,\\sec^{2}x\\dx\n = \\int \\tan^{5}x\\,(1+\\tan^{2}x)\\,\\sec^{2}x\\dx.\n\\]\nLet $u = \\tan x$, $du = \\sec^{2}x\\dx$:\n$$\n &= \\int u^{5}(1 + u^{2})\\,du\n = \\int (u^{5} + u^{7})\\,du \\\\[4pt]\n &= \\frac{u^{6}}{6} + \\frac{u^{8}}{8} + C\n = \\frac{\\tan^{6}x}{6} + \\frac{\\tan^{8}x}{8} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.18",
+      "number": "8.18",
+      "title": "$\\displaystyle\\int \\tan^{2}x\\,\\sec^{4}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\tan^{2}x\\,\\sec^{4}x\\dx$.",
+      "solution": "Factor out $\\sec^{2}x$:\n\\[\n \\int \\tan^{2}x\\,\\sec^{4}x\\dx = \\int \\tan^{2}x(1 + \\tan^{2}x)\\sec^{2}x\\dx.\n\\]\nLet $u = \\tan x$:\n$$\n &= \\int u^{2}(1 + u^{2})\\,du = \\int (u^{2} + u^{4})\\,du \\\\\n &= \\frac{u^{3}}{3} + \\frac{u^{5}}{5} + C\n = \\frac{\\tan^{3}x}{3} + \\frac{\\tan^{5}x}{5} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.19",
+      "number": "8.19",
+      "title": "$\\displaystyle\\int \\tan^{3}x\\,\\sec^{3}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\tan^{3}x\\,\\sec^{3}x\\dx$.",
+      "solution": "When the power of $\\tan x$ is odd, factor out $\\sec x\\,\\tan x$ (for the\nsubstitution $u = \\sec x$, $du = \\sec x\\,\\tan x\\dx$). Rewrite:\n\\[\n \\int \\tan^{3}x\\,\\sec^{3}x\\dx\n = \\int \\tan^{2}x\\,\\sec^{2}x\\,(\\sec x\\,\\tan x)\\dx.\n\\]\nReplace $\\tan^{2}x = \\sec^{2}x - 1$:\n\\[\n = \\int (\\sec^{2}x - 1)\\,\\sec^{2}x\\,(\\sec x\\,\\tan x)\\dx.\n\\]\nLet $u = \\sec x$, $du = \\sec x\\,\\tan x\\dx$:\n$$\n &= \\int (u^{2} - 1)\\,u^{2}\\,du\n = \\int (u^{4} - u^{2})\\,du \\\\[4pt]\n &= \\frac{u^{5}}{5} - \\frac{u^{3}}{3} + C\n = \\frac{\\sec^{5}x}{5} - \\frac{\\sec^{3}x}{3} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.20",
+      "number": "8.20",
+      "title": "$\\displaystyle\\int \\tan^{3}x\\,\\sec x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\tan^{3}x\\,\\sec x\\dx$.",
+      "solution": "Factor out $\\sec x\\tan x$:\n\\[\n \\int \\tan^{3}x\\,\\sec x\\dx = \\int \\tan^{2}x \\cdot \\sec x\\,\\tan x\\dx\n = \\int (\\sec^{2}x - 1)\\sec x\\,\\tan x\\dx.\n\\]\nLet $u = \\sec x$:\n$$\n &= \\int (u^{2} - 1)\\,du = \\frac{u^{3}}{3} - u + C\n = \\frac{\\sec^{3}x}{3} - \\sec x + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.21",
+      "number": "8.21",
+      "title": "$\\displaystyle\\int \\sec^{3}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sec^{3}x\\dx$.",
+      "solution": "This important integral requires integration by parts. Let\n$u = \\sec x$, $dv = \\sec^{2}x\\dx$, so $du = \\sec x\\,\\tan x\\dx$,\n$v = \\tan x$. Then\n$$\n \\int \\sec^{3}x\\dx\n &= \\sec x\\,\\tan x - \\int \\tan x \\cdot \\sec x\\,\\tan x\\dx \\\\\n &= \\sec x\\,\\tan x - \\int \\sec x\\,\\tan^{2}x\\dx \\\\\n &= \\sec x\\,\\tan x - \\int \\sec x\\,(\\sec^{2}x - 1)\\dx \\\\\n &= \\sec x\\,\\tan x - \\int \\sec^{3}x\\dx + \\int \\sec x\\dx.\n$$\nAdd $\\displaystyle\\int \\sec^{3}x\\dx$ to both sides:\n\\[\n 2\\int \\sec^{3}x\\dx = \\sec x\\,\\tan x + \\ln\\abs{\\sec x + \\tan x}.\n\\]\nTherefore,\n\\[\n \\int \\sec^{3}x\\dx\n = \\frac{1}{2}\\bigl(\\sec x\\,\\tan x\n + \\ln\\abs{\\sec x + \\tan x}\\bigr) + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.22",
+      "number": "8.22",
+      "title": "$\\displaystyle\\int \\sec^{5}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sec^{5}x\\dx$.",
+      "solution": "Use integration by parts with $u = \\sec^{3}x$ and $dv = \\sec^{2}x\\dx$.\nThen $du = 3\\sec^{3}x\\tan x\\dx$ and $v = \\tan x$.\n$$\n \\int \\sec^{5}x\\dx\n &= \\sec^{3}x\\tan x - 3\\int \\sec^{3}x\\tan^{2}x\\dx \\\\\n &= \\sec^{3}x\\tan x - 3\\int \\sec^{3}x(\\sec^{2}x - 1)\\dx \\\\\n &= \\sec^{3}x\\tan x - 3\\int \\sec^{5}x\\dx + 3\\int \\sec^{3}x\\dx.\n$$\nSolving for $\\int\\sec^{5}x\\dx$:\n\\[\n 4\\int \\sec^{5}x\\dx = \\sec^{3}x\\tan x + 3\\int \\sec^{3}x\\dx.\n\\]\nUsing the result from Example [ex:trig-sec3]:\n$$\n \\int \\sec^{5}x\\dx\n &= \\frac{1}{4}\\sec^{3}x\\tan x\n + \\frac{3}{8}\\bigl(\\sec x\\tan x + \\ln|\\sec x + \\tan x|\\bigr) + C.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Powers of Cotangent and Cosecant"
+    },
+    {
+      "type": "paragraph",
+      "text": "The techniques for $\\cot x$ and $\\csc x$ parallel those for $\\tan x$ and\n$\\sec x$. The key identity is $\\csc^{2}x = 1 + \\cot^{2}x$, and the\nderivatives are:\n\\[\n \\deriv{}{x}\\cot x = -\\csc^{2}x,\n \\qquad\n \\deriv{}{x}\\csc x = -\\csc x\\,\\cot x.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.23",
+      "number": "8.23",
+      "title": "$\\displaystyle\\int \\cot^{2}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\cot^{2}x\\dx$.",
+      "solution": "Write $\\cot^{2}x = \\csc^{2}x - 1$:\n\\[\n \\int \\cot^{2}x\\dx = \\int (\\csc^{2}x - 1)\\dx = -\\cot x - x + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.24",
+      "number": "8.24",
+      "title": "$\\displaystyle\\int \\csc^{4}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\csc^{4}x\\dx$.",
+      "solution": "Factor out $\\csc^{2}x$:\n\\[\n \\int \\csc^{4}x\\dx = \\int (1 + \\cot^{2}x)\\csc^{2}x\\dx.\n\\]\nLet $u = \\cot x$, $du = -\\csc^{2}x\\dx$:\n$$\n &= -\\int (1 + u^{2})\\,du = -u - \\frac{u^{3}}{3} + C\n = -\\cot x - \\frac{\\cot^{3}x}{3} + C.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Products of Sines and Cosines with Different Arguments"
+    },
+    {
+      "type": "paragraph",
+      "text": "How do we evaluate integrals like $\\int \\sin(3x)\\cos(5x)\\dx$? The\n**product-to-sum formulas** convert such products into sums."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.2",
+      "number": "8.2",
+      "title": "Product-to-Sum Formulas",
+      "content": "$$\n \\sin A\\,\\cos B &= \\tfrac{1}{2}\\bigl[\\sin(A+B) + \\sin(A-B)\\bigr], \\\\\n \\sin A\\,\\sin B &= \\tfrac{1}{2}\\bigl[\\cos(A-B) - \\cos(A+B)\\bigr], \\\\\n \\cos A\\,\\cos B &= \\tfrac{1}{2}\\bigl[\\cos(A-B) + \\cos(A+B)\\bigr].\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "These formulas are derived from the angle-addition formulas and are\nessential in Fourier analysis, signal processing, and acoustics."
+    },
+    {
+      "type": "example",
+      "id": "example-8.25",
+      "number": "8.25",
+      "title": "$\\displaystyle\\int \\sin(3x)\\cos(5x)\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sin(3x)\\cos(5x)\\dx$.",
+      "solution": "Apply the first product-to-sum formula:\n$$\n \\int \\sin(3x)\\cos(5x)\\dx\n &= \\frac{1}{2}\\int\\bigl[\\sin(8x) + \\sin(-2x)\\bigr]\\dx \\\\[4pt]\n &= \\frac{1}{2}\\int\\bigl[\\sin(8x) - \\sin(2x)\\bigr]\\dx \\\\[4pt]\n &= \\frac{1}{2}\\left(-\\frac{\\cos 8x}{8} + \\frac{\\cos 2x}{2}\\right) + C \\\\[4pt]\n &= -\\frac{\\cos 8x}{16} + \\frac{\\cos 2x}{4} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.26",
+      "number": "8.26",
+      "title": "$\\displaystyle\\int \\sin(4x)\\sin(6x)\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sin(4x)\\sin(6x)\\dx$.",
+      "solution": "Using $\\sin A\\sin B = \\frac{1}{2}[\\cos(A-B) - \\cos(A+B)]$:\n$$\n \\int \\sin(4x)\\sin(6x)\\dx\n &= \\frac{1}{2}\\int\\bigl[\\cos(4x - 6x) - \\cos(4x + 6x)\\bigr]\\dx \\\\\n &= \\frac{1}{2}\\int\\bigl[\\cos(-2x) - \\cos(10x)\\bigr]\\dx \\\\\n &= \\frac{1}{2}\\int\\bigl[\\cos(2x) - \\cos(10x)\\bigr]\\dx \\\\\n &= \\frac{1}{2}\\left(\\frac{\\sin 2x}{2} - \\frac{\\sin 10x}{10}\\right) + C \\\\\n &= \\frac{\\sin 2x}{4} - \\frac{\\sin 10x}{20} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.27",
+      "number": "8.27",
+      "title": "$\\displaystyle\\int \\cos(2x)\\cos(5x)\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\cos(2x)\\cos(5x)\\dx$.",
+      "solution": "Using $\\cos A\\cos B = \\frac{1}{2}[\\cos(A-B) + \\cos(A+B)]$:\n$$\n \\int \\cos(2x)\\cos(5x)\\dx\n &= \\frac{1}{2}\\int\\bigl[\\cos(2x - 5x) + \\cos(2x + 5x)\\bigr]\\dx \\\\\n &= \\frac{1}{2}\\int\\bigl[\\cos(-3x) + \\cos(7x)\\bigr]\\dx \\\\\n &= \\frac{1}{2}\\int\\bigl[\\cos(3x) + \\cos(7x)\\bigr]\\dx \\\\\n &= \\frac{1}{2}\\left(\\frac{\\sin 3x}{3} + \\frac{\\sin 7x}{7}\\right) + C \\\\\n &= \\frac{\\sin 3x}{6} + \\frac{\\sin 7x}{14} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.28",
+      "number": "8.28",
+      "title": "$\\displaystyle\\int \\sin x\\sin(2x)\\sin(3x)\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sin x\\sin(2x)\\sin(3x)\\dx$.",
+      "solution": "First combine $\\sin x\\sin(2x)$:\n\\[\n \\sin x\\sin(2x) = \\frac{1}{2}[\\cos(x - 2x) - \\cos(x + 2x)]\n = \\frac{1}{2}[\\cos x - \\cos 3x].\n\\]\nSo:\n$$\n \\sin x\\sin(2x)\\sin(3x)\n &= \\frac{1}{2}[\\cos x - \\cos 3x]\\sin 3x \\\\\n &= \\frac{1}{2}\\cos x\\sin 3x - \\frac{1}{2}\\cos 3x\\sin 3x.\n$$\nFor $\\cos x\\sin 3x$: $\\cos x\\sin 3x = \\frac{1}{2}[\\sin 4x + \\sin 2x]$.\n\nFor $\\cos 3x\\sin 3x = \\frac{1}{2}\\sin 6x$.\n\nThus:\n$$\n \\sin x\\sin(2x)\\sin(3x)\n &= \\frac{1}{4}[\\sin 4x + \\sin 2x] - \\frac{1}{4}\\sin 6x \\\\\n &= \\frac{1}{4}[\\sin 2x + \\sin 4x - \\sin 6x].\n$$\nIntegrating:\n\\[\n \\int \\sin x\\sin(2x)\\sin(3x)\\dx\n = \\frac{1}{4}\\left(-\\frac{\\cos 2x}{2} - \\frac{\\cos 4x}{4}\n + \\frac{\\cos 6x}{6}\\right) + C.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definite Integrals and Orthogonality"
+    },
+    {
+      "type": "paragraph",
+      "text": "The definite integrals of trigonometric products over certain intervals\nreveal remarkable *orthogonality* properties that underlie Fourier\nanalysis."
+    },
+    {
+      "type": "example",
+      "id": "example-8.29",
+      "number": "8.29",
+      "title": "$\\displaystyle\\defint{0}^{\\pi/2}\\sin^{3}x\\cos^{2}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\defint{0}^{\\pi/2}\\sin^{3}x\\cos^{2}x\\dx$.",
+      "solution": "Using $\\sin^{3}x = (1 - \\cos^{2}x)\\sin x$ and $u = \\cos x$:\n$$\n \\defint{0}^{\\pi/2}\\sin^{3}x\\cos^{2}x\\dx\n &= -\\defint{1}{0}(1 - u^{2})u^{2}\\,du = \\defint{0}{1}(u^{2} - u^{4})\\,du \\\\\n &= \\left[\\frac{u^{3}}{3} - \\frac{u^{5}}{5}\\right]_{0}^{1}\n = \\frac{1}{3} - \\frac{1}{5} = \\frac{2}{15}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.30",
+      "number": "8.30",
+      "title": "$\\displaystyle\\defint{0}^{\\pi}\\sin^{2}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\defint{0}^{\\pi}\\sin^{2}x\\dx$.",
+      "solution": "Using the half-angle formula:\n$$\n \\defint{0}^{\\pi}\\sin^{2}x\\dx\n &= \\defint{0}^{\\pi}\\frac{1 - \\cos 2x}{2}\\dx\n = \\frac{1}{2}\\left[x - \\frac{\\sin 2x}{2}\\right]_{0}^{\\pi} \\\\\n &= \\frac{1}{2}\\bigl[(\\pi - 0) - (0 - 0)\\bigr] = \\frac{\\pi}{2}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.31",
+      "number": "8.31",
+      "title": "$\\displaystyle\\defint{0}^{\\pi/2}\\cos^{4}x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\defint{0}^{\\pi/2}\\cos^{4}x\\dx$.",
+      "solution": "Using the result from Example [ex:trig-cos4]:\n$$\n \\defint{0}^{\\pi/2}\\cos^{4}x\\dx\n &= \\left[\\frac{3x}{8} + \\frac{\\sin 2x}{4} + \\frac{\\sin 4x}{32}\n \\right]_{0}^{\\pi/2} \\\\\n &= \\frac{3\\pi/2}{8} + 0 + 0 - 0 = \\frac{3\\pi}{16}.\n$$"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-8.2",
+      "number": null,
+      "title": "Trigonometric Integrals",
+      "content": "**For $\\displaystyle\\int \\sin^{n}x\\,\\cos^{m}x\\dx$:**\n\n1. If $n$ is odd: factor out $\\sin x$, use $\\sin^{2}x = 1 - \\cos^{2}x$,\n let $u = \\cos x$.\n\n2. If $m$ is odd: factor out $\\cos x$, use $\\cos^{2}x = 1 - \\sin^{2}x$,\n let $u = \\sin x$.\n\n3. If both are even: use half-angle identities to reduce powers.\n\n**For $\\displaystyle\\int \\tan^{n}x\\,\\sec^{m}x\\dx$:**\n\n1. If $m$ is even: factor out $\\sec^{2}x$, use\n $\\sec^{2}x = 1 + \\tan^{2}x$, let $u = \\tan x$.\n\n2. If $n$ is odd: factor out $\\sec x\\,\\tan x$, use\n $\\tan^{2}x = \\sec^{2}x - 1$, let $u = \\sec x$.\n\n3. Otherwise: reduce using $\\tan^{2}x = \\sec^{2}x - 1$ or\n integration by parts (e.g., $\\int \\sec^{3}x\\dx$).\n\n**For $\\displaystyle\\int \\sin(mx)\\cos(nx)\\dx$** (different arguments):\nuse product-to-sum formulas."
+    },
+    {
+      "type": "historical",
+      "id": "historical-8.2",
+      "number": null,
+      "title": "Joseph Fourier (1768--1830)",
+      "content": "Joseph Fourier discovered that *any* periodic function can be\nrepresented as a sum of sines and cosines—the celebrated *Fourier\nseries*. The integrals in this section, particularly the product-to-sum\nformulas and integrals of $\\sin(mx)\\cos(nx)$, lie at the heart of Fourier\nanalysis. Fourier was deeply motivated by physical problems: his work on\nheat conduction transformed both mathematics and physics. He accompanied\nNapoleon to Egypt and later became a Baron and secretary of the French\nAcademy of Sciences."
+    },
+    {
+      "type": "historical",
+      "id": "historical-8.2",
+      "number": null,
+      "title": "The Ancient Roots of Trigonometry",
+      "content": "Trigonometry has ancient origins in Babylonian and Greek astronomy.\nHipparchus of Nicaea (c. 190–120 BCE) compiled the first trigonometric\ntables to predict celestial phenomena. The word \"sine\" comes from a\nfascinating linguistic journey: the Sanskrit *jya* (bowstring) was\ntransliterated into Arabic as *jiba*, which was then mistaken for\nthe Arabic word *jayb* (bay or fold) and translated into Latin as\n*sinus*. Thus our mathematical terminology preserves an ancient\nerror!"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Romans 1:20",
+      "text": "For his invisible attributes, namely, his\neternal power and divine nature, have been clearly perceived, ever since the\ncreation of the world, in the things that have been made."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 19:1",
+      "text": "The heavens declare the glory of God, and the\nsky above proclaims his handiwork."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 38:4--7",
+      "text": "Where were you when I laid the foundation of\nthe earth? …{"
+    },
+    {
+      "type": "scripture",
+      "reference": "James 1:5",
+      "text": "If any of you lacks wisdom, let him ask God, who\ngives generously to all without reproach, and it will be given him."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 2:6",
+      "text": "For the Lord gives wisdom; from his mouth\ncome knowledge and understanding."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 7:25",
+      "text": "I turned my heart to know and to search\nout and to seek wisdom and the scheme of things."
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 14:7",
+      "text": "If even lifeless instruments, such as\nthe flute or the harp, do not give distinct notes, how will anyone know what\nis played?"
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:26",
+      "text": "Lift up your eyes on high and see: who created\nthese? He who brings out their host by number, calling them all by name."
+    },
+    {
+      "type": "quote",
+      "author": "Leonhard Euler",
+      "text": "Nothing takes place in the world whose meaning\nis not that of some maximum or minimum."
+    },
+    {
+      "type": "quote",
+      "author": "Pierre-Simon Laplace",
+      "text": "Read Euler, read Euler, he is the master\nof us all."
+    },
+    {
+      "type": "quote",
+      "author": "Joseph Fourier",
+      "text": "Mathematics compares the most diverse phenomena\nand discovers the secret analogies that unite them."
+    }
+  ]
+}

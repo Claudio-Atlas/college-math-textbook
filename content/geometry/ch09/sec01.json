@@ -1,0 +1,191 @@
+{
+  "id": "geometry-ch09-sec01",
+  "title": "Circle Basics",
+  "chapter": 9,
+  "section": 1,
+  "book": "geometry",
+  "epigraph": {
+    "text": "When he established the heavens, I was there; when he drew a circle on the face of the deep.",
+    "reference": "Proverbs 8:27"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The circle has fascinated mathematicians, philosophers, and artists for \nmillennia. Its perfect symmetry—every point equidistant from the \ncenter—makes it unique among geometric figures. The ancient Greeks \nbelieved the circle represented divine perfection, and indeed, we find \ncircles everywhere in God's creation: in the orbits of planets, the \nripples on a pond, and the iris of an eye."
+    },
+    {
+      "type": "paragraph",
+      "text": "In this chapter, we will explore the properties of circles, uncovering \nrelationships that have been known since antiquity yet remain as \nbeautiful and useful today as they were to Euclid and Archimedes."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Circle and Its Parts"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Circle",
+      "content": "A **circle** is the set of all points in a plane \nthat are equidistant from a fixed point called the **center**%\n. The common distance from the center to \nany point on the circle is called the **radius** \n(plural: *radii*)."
+    },
+    {
+      "type": "paragraph",
+      "text": "We denote a circle with center $O$ as $\\odot O$ (read \"circle $O$\"). \nIf the radius has length $r$, we may write $\\odot O$ with radius $r$. \nThe radius can refer either to the distance or to any segment from the \ncenter to the circle itself."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Parts of a Circle",
+      "content": "Let $\\odot O$ be a circle. The following terms describe important \nparts and related segments:\n\n- A **chord** is a segment whose endpoints \n both lie on the circle.\n\n- A **diameter** is a chord that passes \n through the center. The diameter has length $d = 2r$.\n\n- A **secant** is a line that intersects \n the circle at exactly two points.\n\n- A **tangent** is a line that intersects \n the circle at exactly one point, called the **point of \n tangency**.\n\n- An **arc** is a portion of the circle \n between two points.\n\n- A **semicircle** is an arc that \n is exactly half the circle (cut by a diameter)."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Identifying circle parts",
+      "problem": "In circle $O$, identify each of the following:\n\n1. Two radii\n\n2. A chord that is not a diameter\n\n3. The diameter\n\ncenter\ntikzpicture[scale=1.2]\n (0,0) circle (1.5);\n ll[AtlasTeal] (0,0) circle (2pt) node[below left] {$O$};\n \n ll[AtlasTeal] (1.5,0) circle (2pt) node[right] {$A$};\n ll[AtlasTeal] (-1.5,0) circle (2pt) node[left] {$B$};\n ll[AtlasTeal] (0,1.5) circle (2pt) node[above] {$C$};\n ll[AtlasTeal] (1.06,-1.06) circle (2pt) node[below right] {$D$};\n ll[AtlasTeal] (-1.06,1.06) circle (2pt) node[above left] {$E$};\n \n (-1.5,0) – (1.5,0);\n (0,0) – (0,1.5);\n (0,0) – (1.06,-1.06);\n (-1.06,1.06) – (1.06,-1.06);\ntikzpicture\ncenter",
+      "solution": "1. $\\overline{OC}$ and $\\overline{OD}$ are radii (segments from \n the center to the circle).\n\n2. $\\overline{ED}$ is a chord that does not pass through $O$.\n\n3. $\\overline{AB}$ is the diameter (it passes through center $O$)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Arcs and Their Notation"
+    },
+    {
+      "type": "paragraph",
+      "text": "When two points on a circle are identified, they divide the circle \ninto two arcs. We need a way to distinguish between them."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.3",
+      "number": "9.3",
+      "title": "Minor and Major Arcs",
+      "content": "Given two points $A$ and $B$ on a circle (where $\\overline{AB}$ is \nnot a diameter):\n\n- The **minor arc** is the shorter arc. \n We denote it $\\widearc{AB}$.\n\n- The **major arc** is the longer arc. \n We denote it using three letters, such as $\\widearc{ACB}$, where \n $C$ is any point on the major arc.\nIf $\\overline{AB}$ is a diameter, the two arcs are equal and each \nis a **semicircle**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Circumference"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **circumference** of a circle is the \ndistance around it—the perimeter of the circle. Ancient mathematicians \ndiscovered a remarkable fact: the ratio of circumference to diameter \nis the same for *every* circle, regardless of its size."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Circumference of a Circle",
+      "content": "The circumference $C$ of a circle with radius $r$ (and diameter $d = 2r$) is:\n\\[\n C = \\pi d = 2\\pi r\n\\]\nwhere $\\pi \\approx 3.14159\\ldots$ is the constant ratio of circumference \nto diameter.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The number $\\pi$ is one of the most important constants in mathematics. \nIt is an *irrational number*, meaning its decimal representation \nnever terminates or repeats. For calculations, we often use $\\pi \\approx \n3.14$ or $\\pi \\approx \\frac{22}{7}$, though exact answers should be \nleft in terms of $\\pi$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Finding circumference",
+      "problem": "Find the circumference of each circle. Give exact answers in terms of $\\pi$.\n\n1. A circle with radius 7 cm\n\n2. A circle with diameter 15 inches",
+      "solution": "1. Using $C = 2\\pi r$: \n \\[C = 2\\pi(7) = 14\\pi \\text{ cm}\\]\n\n2. Using $C = \\pi d$:\n \\[C = \\pi(15) = 15\\pi \\text{ inches}\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Finding radius from circumference",
+      "problem": "A circular track has a circumference of 400 meters. Find its radius \nto the nearest tenth of a meter.",
+      "solution": "Using $C = 2\\pi r$, we solve for $r$:\n$$\n 400 &= 2\\pi r \\\\\n r &= \\frac{400}{2\\pi} \\\\\n r &= \\frac{200}{\\pi} \\\\\n r &\\approx 63.7 \\text{ meters}\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Area of a Circle"
+    },
+    {
+      "type": "paragraph",
+      "text": "The formula for the area of a circle was discovered by Archimedes \naround 250 BCE. He showed that a circle's area equals that of a \ntriangle whose base is the circumference and whose height is the radius."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "Area of a Circle",
+      "content": "The area $A$ of a circle with radius $r$ is:\n\\[\n A = \\pi r^2\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-9.4",
+      "number": "9.4",
+      "title": "Finding area",
+      "problem": "Find the area of each circle. Give exact answers in terms of $\\pi$.\n\n1. A circle with radius 5\n\n2. A circle with diameter 12",
+      "solution": "1. Using $A = \\pi r^2$:\n \\[A = \\pi(5)^2 = 25\\pi\\]\n\n2. First find the radius: $r = \\frac{d}{2} = \\frac{12}{2} = 6$. Then:\n \\[A = \\pi(6)^2 = 36\\pi\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.5",
+      "number": "9.5",
+      "title": "Working backward from area",
+      "problem": "A circular pizza has an area of $64\\pi$ square inches. Find the \ndiameter of the pizza.",
+      "solution": "Using $A = \\pi r^2$:\n$$\n 64\\pi &= \\pi r^2 \\\\\n 64 &= r^2 \\\\\n r &= 8 \\text{ inches}\n$$\nThe diameter is $d = 2r = 16$ inches."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Congruent and Concentric Circles"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.4",
+      "number": "9.4",
+      "title": "Congruent Circles",
+      "content": "Two circles are **congruent** if and \nonly if they have equal radii."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.5",
+      "number": "9.5",
+      "title": "Concentric Circles",
+      "content": "**Concentric circles** are circles \nthat share the same center but have different radii."
+    },
+    {
+      "type": "paragraph",
+      "text": "The region between two concentric circles is called an **annulus**%\n (plural: *annuli*). Think of the shape of a washer \nor a ring."
+    },
+    {
+      "type": "example",
+      "id": "example-9.6",
+      "number": "9.6",
+      "title": "Area of an annulus",
+      "problem": "Find the area of the annulus (ring) formed by two concentric circles \nwith radii 10 cm and 6 cm.\n\ncenter\ntikzpicture[scale=0.5]\n ll[AtlasTeal!20] (0,0) circle (3);\n ll[white] (0,0) circle (1.8);\n (0,0) circle (3);\n (0,0) circle (1.8);\n ll[AtlasTeal] (0,0) circle (3pt);\n (0,0) – (3,0);\n at (1.5,0) {$10$};\n (0,0) – (0,1.8);\n at (0,0.9) {$6$};\ntikzpicture\ncenter",
+      "solution": "The area of the annulus is the difference of the two circle areas:\n$$\n A_{\\text{annulus}} &= A_{\\text{outer}} - A_{\\text{inner}} \\\\\n &= \\pi(10)^2 - \\pi(6)^2 \\\\\n &= 100\\pi - 36\\pi \\\\\n &= 64\\pi \\text{ cm}^2\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:22",
+      "text": "It is he who sits above the circle of \nthe earth, and its inhabitants are like grasshoppers."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 1:6",
+      "text": "The wind blows to the south and \ngoes around to the north; around and around goes the wind, and on \nits circuits the wind returns."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 26:10",
+      "text": "He has inscribed a circle on the face of \nthe waters at the boundary between light and darkness."
+    }
+  ]
+}

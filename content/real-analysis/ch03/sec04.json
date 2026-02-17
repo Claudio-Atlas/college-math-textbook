@@ -1,0 +1,68 @@
+{
+  "id": "real-analysis-ch03-sec04",
+  "title": "Rearrangements of Series",
+  "chapter": 3,
+  "section": 4,
+  "book": "real-analysis",
+  "devotional": {
+    "title": "Order and Meaning",
+    "scripture": "1 Corinthians 14:40",
+    "content": "{AtlasWarmL}{et} \nall things be done decently and in order.\n\nThe Riemann Rearrangement Theorem reveals something startling: for \nconditionally convergent series, the *order* of the terms determines \nthe *sum*. Change the order, and you can get any answer you want.\n\nThis is not true for absolutely convergent series, where order is \nirrelevant. Absolute convergence is \"robust\"—the truth is the same \nregardless of how you approach it. Conditional convergence is \"fragile\"—\nthe result depends on the path.\n\nThere is a spiritual parallel. Some truths are absolute: they remain true \nregardless of perspective or approach. The existence of God, the \nresurrection of Christ, the moral law—these do not change depending on \nhow we examine them.\n\nOther matters are more context-dependent. The application of biblical \nprinciples to specific situations, the ordering of worship, the structure \nof church governance—these may vary without compromising the underlying \ntruth.\n\nWisdom lies in discerning which is which. The mathematician distinguishes \nabsolute from conditional convergence because they behave differently. The \nChristian distinguishes essential doctrines from prudential applications \nfor the same reason.",
+    "reflection": "The same terms, rearranged, give different sums. How \ndoes this mathematical fact illuminate the importance of context and order \nin interpreting Scripture, or in applying moral principles to complex \nsituations?"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "One of the most striking differences between absolute and conditional \nconvergence concerns *rearrangements*—changing the order of terms."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Rearrangements"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.1",
+      "number": "3.1",
+      "title": "Rearrangement",
+      "content": "A **rearrangement** of a series $\\sum a_n$ is a \nseries $\\sum a_{\\sigma(n)}$ where $\\sigma: \\mathbb{N} \\to \\mathbb{N}$ is a \nbijection."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "Absolute Convergence and Rearrangements",
+      "content": "If $\\sum a_n$ converges absolutely to $S$, then every rearrangement also \nconverges absolutely to $S$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\sum a_{\\sigma(n)}$ be a rearrangement. Given $\\varepsilon > 0$, \nchoose $N$ such that $\\sum_{n=N+1}^{\\infty} |a_n| < \\varepsilon$.\n\nLet $M$ be large enough that $\\{1, 2, \\ldots, N\\} \\subseteq \\{\\sigma(1), \\ldots, \\sigma(M)\\}$. \nThen for $m > M$, the partial sum $\\sum_{n=1}^{m} a_{\\sigma(n)}$ differs from \n$S$ by at most $\\sum_{n=N+1}^{\\infty} |a_n| < \\varepsilon$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Riemann Rearrangement Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.2",
+      "number": "3.2",
+      "title": "Riemann Rearrangement Theorem",
+      "content": "If $\\sum a_n$ converges conditionally, then for any $L \\in \\mathbb{R}$ \n(including $L = \\pm\\infty$), there exists a rearrangement of $\\sum a_n$ \nthat converges to $L$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $p_n$ denote the positive terms and $q_n$ the absolute values of the \nnegative terms, in their original order. Since $\\sum a_n$ converges \nconditionally:\n\n- Both $\\sum p_n$ and $\\sum q_n$ diverge (otherwise $\\sum a_n$ would \nconverge absolutely).\n\n- Both $p_n \\to 0$ and $q_n \\to 0$.\n\nTo reach a target $L$: add positive terms until the partial sum exceeds $L$, \nthen subtract negative terms until it drops below $L$, then add more positive \nterms, and so on. Since both $\\sum p_n$ and $\\sum q_n$ diverge, we can always \ncontinue. Since $p_n, q_n \\to 0$, the oscillations around $L$ shrink to zero."
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Rearranging the Alternating Harmonic Series",
+      "problem": "The alternating harmonic series converges to $\\ln 2$. But consider the \nrearrangement:\n\\[\n1 + \\frac{1}{3} - \\frac{1}{2} + \\frac{1}{5} + \\frac{1}{7} - \\frac{1}{4} + \\cdots\n\\]\n(two positive terms, then one negative term, repeating). This converges \nto $\\frac{3}{2}\\ln 2$!",
+      "solution": ""
+    }
+  ]
+}

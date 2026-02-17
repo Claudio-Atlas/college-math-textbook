@@ -1,0 +1,535 @@
+{
+  "id": "vol1-ch02-sec08",
+  "title": "Continuity",
+  "chapter": 2,
+  "section": 8,
+  "book": "vol1",
+  "objectives": [
+    "Define continuity at a point using the three-condition definition and verify whether a function is continuous at a given point",
+    "Classify discontinuities as removable, jump, infinite, or oscillatory based on limit behavior",
+    "Apply properties of continuous functions including sums, products, quotients, and compositions to identify where functions are continuous",
+    "Use the Intermediate Value Theorem to prove that equations have solutions in specified intervals"
+  ],
+  "devotional": {
+    "title": "The Unchanging One",
+    "scripture": "Hebrews 13:8",
+    "content": "\"Jesus Christ is the same yesterday and today and forever.\" In mathematics, continuity captures the idea of consistency—a function with no breaks, no jumps, no sudden changes. The continuous function at a point has a value that matches what we expect as we approach from either direction. How much more should we find comfort in the perfect continuity of Christ! While the world around us changes, while our circumstances shift and our understanding grows, He remains constant. The God who met Abraham is the same God who walks with us today. In studying continuity, we glimpse a shadow of divine faithfulness—the mathematical certainty that some things can be depended upon completely."
+  },
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Motivation"
+    },
+    {
+      "type": "paragraph",
+      "text": "We have spent this entire chapter developing the theory of limits. We have learned to evaluate limits algebraically, to handle infinite limits and limits at infinity, to squeeze difficult limits between simpler ones, and even to write rigorous $\\varepsilon$-$\\delta$ proofs. Now we turn to a fundamental question: *when does the limit simply equal the function value?*"
+    },
+    {
+      "type": "paragraph",
+      "text": "In other words, when can we evaluate a limit by direct substitution—$\\lim_{x \\to a} f(x) = f(a)$—with no tricks or special techniques required? The answer is: when $f$ is **continuous** at $a$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Continuity is one of the most important concepts in all of mathematics. It captures the intuitive idea of a function whose graph can be drawn \"without lifting the pencil\"—no breaks, no jumps, no holes. As we will see, continuity is not just a convenience; it is the foundation upon which derivatives and integrals are built. Every major theorem of calculus requires it."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Continuity at a Point"
+    },
+    {
+      "type": "definition",
+      "id": "def-2.17",
+      "number": "2.17",
+      "title": "Continuity at a Point",
+      "content": "A function $f$ is **continuous at** $a$ if the following three conditions are all satisfied:\n\n1. $f(a)$ is defined *(the function has a value at $a$)*\n2. $\\lim_{x \\to a} f(x)$ exists *(the limit from both sides exists and agrees)*\n3. $\\lim_{x \\to a} f(x) = f(a)$ *(the limit equals the function value)*\n\nIf any of these conditions fails, we say $f$ is **discontinuous at** $a$, or that $f$ **has a discontinuity at** $a$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**In compact notation:** $f$ is continuous at $a$ if and only if\n\n$$\\lim_{x \\to a} f(x) = f(a).$$\n\nThis single equation encompasses all three conditions: the right side requires $f(a)$ to exist, the left side requires the limit to exist, and the equals sign requires them to agree."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.33",
+      "number": "2.33",
+      "title": "Checking continuity at a point",
+      "problem": "Is $f(x) = x^2 - 3x + 1$ continuous at $x = 2$?",
+      "solution": "We verify the three conditions:\n\n1. $f(2) = 4 - 6 + 1 = -1$. ✓ (defined)\n2. $\\lim_{x \\to 2}(x^2 - 3x + 1) = 4 - 6 + 1 = -1$. ✓ (limit exists)\n3. $\\lim_{x \\to 2} f(x) = -1 = f(2)$. ✓ (they agree)\n\nTherefore $f$ is continuous at $x = 2$."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.34",
+      "number": "2.34",
+      "title": "Discontinuity from a missing value",
+      "problem": "Let $g(x) = \\frac{x^2 - 1}{x - 1}$ for $x \\neq 1$. Is $g$ continuous at $x = 1$?",
+      "solution": "Condition (1) fails immediately: $g(1)$ is not defined (we have $0/0$). Therefore $g$ is discontinuous at $x = 1$.\n\nNote, however, that $\\lim_{x \\to 1} g(x) = \\lim_{x \\to 1} \\frac{(x-1)(x+1)}{x-1} = \\lim_{x \\to 1}(x + 1) = 2$. The limit exists, but there is no function value to match it. The graph has a \"hole\" at $(1, 2)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Types of Discontinuity"
+    },
+    {
+      "type": "paragraph",
+      "text": "Not all discontinuities are created equal. Understanding the different types helps us classify how a function \"breaks\" and whether the break can be repaired."
+    },
+    {
+      "type": "definition",
+      "id": "def-2.18",
+      "number": "2.18",
+      "title": "Classification of Discontinuities",
+      "content": "Suppose $f$ is discontinuous at $a$. The discontinuity is called:\n\n- **Removable** if $\\lim_{x \\to a} f(x)$ exists (but either $f(a)$ is undefined or $f(a) \\neq \\lim_{x \\to a} f(x)$). The discontinuity can be \"removed\" by redefining $f(a)$ to equal the limit.\n\n- **Jump** if $\\lim_{x \\to a^-} f(x)$ and $\\lim_{x \\to a^+} f(x)$ both exist but are not equal. The function \"jumps\" from one value to another.\n\n- **Infinite** if $\\lim_{x \\to a^+} f(x) = \\pm\\infty$ or $\\lim_{x \\to a^-} f(x) = \\pm\\infty$ (a vertical asymptote).\n\n- **Oscillatory** if the limit fails to exist due to the function oscillating without settling down (e.g., $\\sin(1/x)$ near $x = 0$)."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.35",
+      "number": "2.35",
+      "title": "Classifying discontinuities",
+      "problem": "Classify the discontinuity of each function at the given point.\n\n**(a)** $f(x) = \\frac{x^2 - 4}{x - 2}$ at $x = 2$.\n\n**(b)** $g(x) = \\begin{cases} x + 1 & \\text{if } x < 3, \\\\ 5 & \\text{if } x = 3, \\\\ 2x - 2 & \\text{if } x > 3, \\end{cases}$ at $x = 3$.\n\n**(c)** $h(x) = \\frac{1}{(x-1)^2}$ at $x = 1$.",
+      "solution": "**(a)** We have $\\lim_{x \\to 2} \\frac{x^2-4}{x-2} = \\lim_{x \\to 2}(x+2) = 4$, but $f(2)$ is undefined. The limit exists, so this is a **removable** discontinuity. Defining $f(2) = 4$ would repair it.\n\n**(b)** $\\lim_{x \\to 3^-} g(x) = 3 + 1 = 4$ and $\\lim_{x \\to 3^+} g(x) = 2(3) - 2 = 4$. The one-sided limits agree, so $\\lim_{x \\to 3} g(x) = 4$. But $g(3) = 5 \\neq 4$. The limit exists but disagrees with the function value: this is **removable**.\n\n**(c)** $\\lim_{x \\to 1} \\frac{1}{(x-1)^2} = \\infty$. This is an **infinite** discontinuity (vertical asymptote)."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.36",
+      "number": "2.36",
+      "title": "A jump discontinuity",
+      "problem": "Let $f(x) = \\begin{cases} x^2 & \\text{if } x < 1, \\\\ x + 1 & \\text{if } x \\geq 1. \\end{cases}$ Classify the discontinuity at $x = 1$.",
+      "solution": "$\\lim_{x \\to 1^-} f(x) = 1^2 = 1$ and $\\lim_{x \\to 1^+} f(x) = 1 + 1 = 2$. Since the one-sided limits differ ($1 \\neq 2$), this is a **jump** discontinuity. No redefinition of $f(1)$ can repair it."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Continuity on an Interval"
+    },
+    {
+      "type": "definition",
+      "id": "def-2.19",
+      "number": "2.19",
+      "title": "Continuity on an Interval",
+      "content": "- $f$ is **continuous on an open interval** $(a,b)$ if $f$ is continuous at every point in $(a,b)$.\n\n- $f$ is **continuous on a closed interval** $[a,b]$ if $f$ is continuous on $(a,b)$ and, in addition,\n$$\\lim_{x \\to a^+} f(x) = f(a) \\quad\\text{and}\\quad \\lim_{x \\to b^-} f(x) = f(b).$$\n(At the endpoints, we require one-sided continuity.)\n\nA function is **continuous on its domain** (or simply **continuous**) if it is continuous at every point where it is defined."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of Continuous Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "The limit laws from Section 2.3 translate directly into continuity properties."
+    },
+    {
+      "type": "theorem",
+      "id": "thm-2.9",
+      "number": "2.9",
+      "title": "Algebra of Continuous Functions",
+      "content": "If $f$ and $g$ are continuous at $a$, then the following are also continuous at $a$:\n\n1. $f + g$ (sum)\n2. $f - g$ (difference)\n3. $c \\cdot f$ for any constant $c$ (constant multiple)\n4. $f \\cdot g$ (product)\n5. $\\frac{f}{g}$, provided $g(a) \\neq 0$ (quotient)"
+    },
+    {
+      "type": "proof",
+      "content": "For the sum, since $f$ and $g$ are continuous at $a$:\n$$\\lim_{x \\to a}[f(x) + g(x)] = \\lim_{x \\to a} f(x) + \\lim_{x \\to a} g(x) = f(a) + g(a) = (f + g)(a).$$\nThe other properties follow similarly from the corresponding limit laws."
+    },
+    {
+      "type": "theorem",
+      "id": "thm-2.10",
+      "number": "2.10",
+      "title": "Continuity of Compositions",
+      "content": "If $g$ is continuous at $a$ and $f$ is continuous at $g(a)$, then the composition $f \\circ g$ is continuous at $a$:\n$$\\lim_{x \\to a} f(g(x)) = f\\left(\\lim_{x \\to a} g(x)\\right) = f(g(a)).$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "These theorems have powerful consequences. We can immediately identify broad families of continuous functions."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Recognizing Continuous Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "The following functions are continuous on their domains:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Polynomials** — continuous everywhere (on all of $\\mathbb{R}$).",
+        "**Rational functions** $p(x)/q(x)$ — continuous wherever $q(x) \\neq 0$.",
+        "**Root functions** $\\sqrt[n]{x}$ — continuous on their domains.",
+        "**Trigonometric functions** $\\sin x$, $\\cos x$, $\\tan x$, etc. — continuous on their domains.",
+        "**Exponential functions** $a^x$ — continuous on $\\mathbb{R}$.",
+        "**Logarithmic functions** $\\log_a x$ — continuous on $(0, \\infty)$.",
+        "**Compositions, sums, products, and quotients** of continuous functions — continuous on the appropriate domains."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "In practice, most functions encountered in calculus are continuous wherever they are defined. Discontinuities arise primarily from piecewise definitions, division by zero, and certain pathological constructions."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.37",
+      "number": "2.37",
+      "title": "Continuity of a composition",
+      "problem": "Where is $f(x) = \\sin(x^2 + 1)$ continuous?",
+      "solution": "The function $g(x) = x^2 + 1$ is a polynomial, hence continuous everywhere. The function $\\sin(u)$ is continuous everywhere. By the composition theorem (Theorem 2.10), $f(x) = \\sin(g(x))$ is continuous on all of $\\mathbb{R}$."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.38",
+      "number": "2.38",
+      "title": "Finding a constant for continuity",
+      "problem": "Find the value of the constant $c$ that makes the function\n$$f(x) = \\begin{cases} cx + 1 & \\text{if } x \\leq 2, \\\\ x^2 - 3 & \\text{if } x > 2, \\end{cases}$$\ncontinuous at $x = 2$.",
+      "solution": "For continuity at $x = 2$, we need $\\lim_{x \\to 2} f(x) = f(2)$.\n\nThe left-hand limit is $\\lim_{x \\to 2^-}(cx + 1) = 2c + 1$.\n\nThe right-hand limit is $\\lim_{x \\to 2^+}(x^2 - 3) = 4 - 3 = 1$.\n\nThe function value is $f(2) = 2c + 1$ (using the first piece).\n\nFor the limit to exist, we need $2c + 1 = 1$, giving $c = 0$.\n\nWe verify: with $c = 0$, we have $f(2) = 1$, $\\lim_{x \\to 2^-} f(x) = 1$, and $\\lim_{x \\to 2^+} f(x) = 1$. All three conditions are satisfied, so $f$ is continuous at $x = 2$ when $c = 0$."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.39",
+      "number": "2.39",
+      "title": "Polynomial continuity via limit laws",
+      "problem": "Prove that $f(x) = 3x^2 - 2x + 5$ is continuous at every real number $a$.",
+      "solution": "By the limit laws:\n$$\\lim_{x \\to a} f(x) = \\lim_{x \\to a}(3x^2 - 2x + 5) = 3a^2 - 2a + 5 = f(a).$$\nSince $\\lim_{x \\to a} f(x) = f(a)$ for every $a \\in \\mathbb{R}$, the function $f$ is continuous on $\\mathbb{R}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Intermediate Value Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "We now come to one of the deepest consequences of continuity: the *Intermediate Value Theorem*. In intuitive terms, it says that a continuous function cannot \"skip\" a value. If the function is negative at one point and positive at another, it must pass through zero somewhere in between. A continuous curve cannot cross from below the $x$-axis to above it without touching it."
+    },
+    {
+      "type": "theorem",
+      "id": "thm-2.11",
+      "number": "2.11",
+      "title": "The Intermediate Value Theorem (IVT)",
+      "content": "If $f$ is continuous on the closed interval $[a, b]$ and $N$ is any number between $f(a)$ and $f(b)$ (i.e., $f(a) < N < f(b)$ or $f(b) < N < f(a)$), then there exists at least one number $c \\in (a, b)$ such that $f(c) = N$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Geometric meaning.** Draw any horizontal line $y = N$ between the values $f(a)$ and $f(b)$. If $f$ is continuous on $[a,b]$, the graph of $f$ must cross this horizontal line at least once. The curve has no breaks, so it cannot \"jump over\" the line."
+    },
+    {
+      "type": "caution",
+      "title": "The IVT Requires Continuity",
+      "content": "The IVT is *not* true for discontinuous functions. The function $f(x) = \\begin{cases} -1 & \\text{if } x < 0, \\\\ 1 & \\text{if } x \\geq 0 \\end{cases}$ satisfies $f(-1) = -1 < 0 < 1 = f(1)$, but there is no $c \\in (-1, 1)$ with $f(c) = 0$. Continuity is the essential hypothesis."
+    },
+    {
+      "type": "paragraph",
+      "text": "**The most common application:** The IVT is most frequently used in the special case $N = 0$: if $f$ is continuous and $f(a)$ and $f(b)$ have opposite signs, then $f$ has at least one root in $(a,b)$."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.40",
+      "number": "2.40",
+      "title": "Proving a root exists",
+      "problem": "Show that the equation $x^3 + x - 1 = 0$ has a solution in the interval $(0, 1)$.",
+      "solution": "Let $f(x) = x^3 + x - 1$. This is a polynomial, hence continuous on $[0, 1]$.\n\nEvaluate at the endpoints:\n$$f(0) = 0 + 0 - 1 = -1 < 0, \\qquad f(1) = 1 + 1 - 1 = 1 > 0.$$\n\nSince $f$ is continuous on $[0,1]$ and $f(0) < 0 < f(1)$, the Intermediate Value Theorem guarantees there exists $c \\in (0, 1)$ such that $f(c) = 0$. Therefore $x^3 + x - 1 = 0$ has at least one solution in $(0, 1)$."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.41",
+      "number": "2.41",
+      "title": "Narrowing the interval",
+      "problem": "Show that $x^3 + x - 1 = 0$ has a solution in $(0.6, 0.7)$.",
+      "solution": "Continuing with $f(x) = x^3 + x - 1$:\n$$f(0.6) = 0.216 + 0.6 - 1 = -0.184 < 0,$$\n$$f(0.7) = 0.343 + 0.7 - 1 = 0.043 > 0.$$\n\nSince $f$ is continuous and changes sign on $[0.6, 0.7]$, the IVT guarantees a root $c \\in (0.6, 0.7)$.\n\nThis process—evaluating $f$ at smaller and smaller intervals—is the **bisection method**, one of the oldest and most reliable algorithms for approximating roots. Each step halves the interval, producing one additional decimal digit of accuracy roughly every three steps."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.42",
+      "number": "2.42",
+      "title": "IVT with a general target value",
+      "problem": "Show that $\\cos x = x$ has a solution in $(0, \\pi/2)$.",
+      "solution": "Define $f(x) = \\cos x - x$. Then $f$ is continuous on $[0, \\pi/2]$.\n$$f(0) = \\cos 0 - 0 = 1 > 0, \\qquad f(\\pi/2) = \\cos(\\pi/2) - \\pi/2 = 0 - \\pi/2 = -\\pi/2 < 0.$$\n\nSince $f$ changes sign on $[0, \\pi/2]$, the IVT guarantees there exists $c \\in (0, \\pi/2)$ with $f(c) = 0$, i.e., $\\cos c = c$."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.43",
+      "number": "2.43",
+      "title": "A real-world application of the IVT",
+      "problem": "At 6:00 AM, the temperature in Flagstaff, Arizona was $38°\\text{F}$. By 2:00 PM, it had risen to $72°\\text{F}$. Must the temperature have been exactly $55°\\text{F}$ at some point during this interval?",
+      "solution": "Yes. Temperature is a continuous function of time (it cannot \"jump\" instantaneously from one value to another). Since $T(6\\text{AM}) = 38 < 55 < 72 = T(2\\text{PM})$, the IVT guarantees there is some time $t$ between 6:00 AM and 2:00 PM when $T(t) = 55°\\text{F}$."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Historical Note: Bernard Bolzano (1781–1848)"
+    },
+    {
+      "type": "paragraph",
+      "text": "The first rigorous proof of the Intermediate Value Theorem was given in 1817 by Bernard Bolzano, a Bohemian priest, philosopher, and mathematician. Bolzano was a Catholic clergyman who held the chair of the philosophy of religion at the University of Prague, yet he made contributions to mathematics that were decades ahead of their time."
+    },
+    {
+      "type": "paragraph",
+      "text": "Bolzano recognized that the IVT, which seems geometrically \"obvious,\" actually requires a deep property of the real numbers—*completeness*—for its proof. His insistence on proving the \"obvious\" anticipated the rigor that Weierstrass would bring to all of analysis a generation later."
+    },
+    {
+      "type": "paragraph",
+      "text": "For Bolzano, mathematical truth and theological truth shared a common character: both demanded honest reasoning, and both rewarded those who refused to accept intuition as a substitute for proof. His mathematical work was largely ignored in his lifetime, suppressed in part because of his progressive political and religious views, but history has vindicated his vision."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Looking Ahead: From Continuity to the Derivative"
+    },
+    {
+      "type": "paragraph",
+      "text": "With continuity, we have completed our study of limits and built the foundation upon which the rest of calculus stands. We can now describe precisely when a function has no breaks or jumps. But we can ask a subtler question: even if a function is continuous—even if it has no gaps—can it still have a \"corner\"? Can it fail to be *smooth*?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider the function $f(x) = |x|$. It is continuous everywhere; its graph has no breaks. Yet at $x = 0$, the graph makes a sharp turn. There is no single tangent line at the origin. The function is continuous but not \"differentiable.\""
+    },
+    {
+      "type": "paragraph",
+      "text": "In Chapter 3, we formalize this idea. We will define the **derivative** of a function at a point as the limit\n$$f'(a) = \\lim_{h \\to 0} \\frac{f(a + h) - f(a)}{h},$$\nand we will ask: when does this limit exist? The answer will depend on every concept we have developed in this chapter—limit evaluation, the Squeeze Theorem, the $\\varepsilon$-$\\delta$ definition, and above all, continuity."
+    },
+    {
+      "type": "paragraph",
+      "text": "The journey from limits to derivatives is short but profound. We have learned to describe how functions behave *near* a point. Now we will learn to describe how functions *change* at a point. This is the step from approach to motion, from nearness to rate—the step that makes calculus calculus."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Continuity from Formulas"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.1",
+      "number": "1",
+      "problem": "Determine all points where $f(x) = \\dfrac{x+1}{x^2 - 4}$ is continuous."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.2",
+      "number": "2",
+      "problem": "Determine all points where $g(x) = \\dfrac{\\sqrt{x}}{x - 3}$ is continuous."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.3",
+      "number": "3",
+      "problem": "Determine all points where $h(x) = \\tan(x)$ is continuous."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.4",
+      "number": "4",
+      "problem": "Is $f(x) = \\dfrac{x^2 - 9}{x - 3}$ continuous at $x = 3$? Classify the discontinuity."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.5",
+      "number": "5",
+      "problem": "Is $f(x) = \\dfrac{|x|}{x}$ continuous at $x = 0$? Classify the discontinuity."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Piecewise Functions"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.6",
+      "number": "6",
+      "problem": "Determine whether the function $f(x) = \\begin{cases} 2x + 1 & \\text{if } x < 1, \\\\ 3 & \\text{if } x = 1, \\\\ x^2 + 1 & \\text{if } x > 1, \\end{cases}$ is continuous at $x = 1$. If not, classify the discontinuity."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.7",
+      "number": "7",
+      "problem": "Find the value of $c$ so that $f(x) = \\begin{cases} cx^2 + 1 & \\text{if } x < 2, \\\\ 3x + c & \\text{if } x \\geq 2, \\end{cases}$ is continuous at $x = 2$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.8",
+      "number": "8",
+      "problem": "Find values of $a$ and $b$ so that $f(x) = \\begin{cases} 2x & \\text{if } x < 1, \\\\ ax + b & \\text{if } 1 \\leq x < 3, \\\\ -2x + 14 & \\text{if } x \\geq 3, \\end{cases}$ is continuous everywhere."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.9",
+      "number": "9",
+      "problem": "Find the value of $k$ so that $f(x) = \\begin{cases} \\dfrac{\\sin(2x)}{x} & \\text{if } x \\neq 0, \\\\[6pt] k & \\text{if } x = 0, \\end{cases}$ is continuous at $x = 0$."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Classifying Discontinuities"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.10",
+      "number": "10",
+      "problem": "For $f(x) = \\dfrac{x^2 - x - 2}{x - 2}$, identify and classify the discontinuity at $x = 2$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.11",
+      "number": "11",
+      "problem": "For $g(x) = \\lfloor x \\rfloor$ (the greatest integer function), identify all discontinuities on $(-3, 3)$ and classify each one."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Continuity of Compositions"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.12",
+      "number": "12",
+      "problem": "Where is $f(x) = \\ln(\\sin x)$ continuous?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.13",
+      "number": "13",
+      "problem": "Where is $f(x) = \\sqrt{4 - x^2}$ continuous?"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Intermediate Value Theorem"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.14",
+      "number": "14",
+      "problem": "Use the Intermediate Value Theorem to show that $x^5 - 3x + 1 = 0$ has a solution in the interval $(-2, -1)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.15",
+      "number": "15",
+      "problem": "Use the IVT to show that $e^x = 3 - x$ has a solution in $(0, 1)$. (*Hint:* consider $f(x) = e^x - 3 + x$.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.16",
+      "number": "16",
+      "problem": "Use the IVT to show that $\\cos x = x^2$ has a solution in $(0, 1)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.17",
+      "number": "17",
+      "problem": "Use the IVT to show that every positive real number has a positive square root. That is, for any $c > 0$, the equation $x^2 = c$ has a solution $x > 0$. (*Hint:* choose the interval $[0, \\max(1, c)]$ and apply the IVT to $f(x) = x^2 - c$.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.18",
+      "number": "18",
+      "problem": "A hiker begins at the bottom of a mountain at 7:00 AM and reaches the summit at 5:00 PM. She descends the next day, leaving the summit at 7:00 AM and arriving at the bottom at 5:00 PM. Must there be some time of day at which she was at the same elevation on both days? Explain using the IVT. (*Hint:* define $g(t) = f_1(t) - f_2(t)$, where $f_1$ and $f_2$ are her elevation functions on the two days.)"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Conceptual and Theoretical"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.19",
+      "number": "19",
+      "problem": "True or false: if $\\lim_{x \\to 3} f(x) = 7$, then $f$ is continuous at $x = 3$. Explain."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.20",
+      "number": "20",
+      "problem": "True or false: if $f$ is continuous at $a$ and $f(a) > 0$, then there exists an interval $(a - \\delta, a + \\delta)$ on which $f(x) > 0$. Explain. (*Hint:* use the definition of continuity with a suitable $\\varepsilon$.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.21",
+      "number": "21",
+      "challenging": true,
+      "problem": "Give an example of a function that is continuous on $(-1, 0) \\cup (0, 1)$ but has a discontinuity at $x = 0$ of each type: (a) removable, (b) jump, (c) infinite, (d) oscillatory."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Proofs"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.22",
+      "number": "22",
+      "proof": true,
+      "problem": "Prove that if $f$ and $g$ are continuous at $a$, then $f \\cdot g$ is continuous at $a$. (*Hint:* use the product rule for limits.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.23",
+      "number": "23",
+      "proof": true,
+      "problem": "Prove that every polynomial $p(x) = a_n x^n + \\cdots + a_1 x + a_0$ is continuous on $\\mathbb{R}$. (*Hint:* use induction on degree and the algebra of continuous functions.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.24",
+      "number": "24",
+      "proof": true,
+      "problem": "Prove that if $f$ is continuous on $[a, b]$ and $f(x) > 0$ for all $x \\in [a, b]$, then $\\dfrac{1}{f}$ is continuous on $[a, b]$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.25",
+      "number": "25",
+      "challenging": true,
+      "problem": "Show that the equation $x^{101} + x^{51} + x - 1 = 0$ has a solution in $(0, 1)$."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Creation Reveals"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.26",
+      "number": "26",
+      "challenging": true,
+      "creation_reveals": true,
+      "problem": "The population of a bacterial colony grows continuously from 200 cells at $t = 0$ hours to 5,000 cells at $t = 12$ hours. Use the IVT to explain why there must have been a time when the population was exactly 1,000 cells."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.27",
+      "number": "27",
+      "challenging": true,
+      "creation_reveals": true,
+      "problem": "The depth of water in a tidal bay varies continuously over a 12-hour tidal cycle. At low tide, the depth is 1.2 meters; at high tide, it is 3.8 meters. A boat requires a depth of at least 2.5 meters to navigate the channel safely. Explain, using the IVT, why there must be a time interval during which the depth is exactly 2.5 meters."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.28",
+      "number": "28",
+      "problem": "Determine all values of $x$ at which the function $f(x) = \\dfrac{x^2 + x - 6}{x^2 - x - 2}$ is discontinuous, and classify each discontinuity as removable, jump, or infinite."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.29",
+      "number": "29",
+      "problem": "Where is $f(x) = \\dfrac{1}{\\ln x}$ continuous? Identify and classify any discontinuities."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.30",
+      "number": "30",
+      "problem": "Determine whether $f(x) = \\dfrac{\\sin x}{x}$ (with $f(0) = 1$) is continuous at $x = 0$. Justify using the fundamental trigonometric limit."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.8.31",
+      "number": "31",
+      "proof": true,
+      "challenging": true,
+      "problem": "Suppose $f$ is continuous on $[0, 1]$ with $f(0) = f(1)$. Prove that $f$ must have a \"fixed-like\" property: specifically, if $g(x) = f(x) - f(x + \\tfrac{1}{2})$ is defined on $[0, \\tfrac{1}{2}]$, show that there exists $c \\in [0, \\tfrac{1}{2}]$ with $g(c) = 0$, meaning $f(c) = f(c + \\tfrac{1}{2})$. (*Hint:* consider $g(0) + g(\\tfrac{1}{2})$ and apply the IVT.)"
+    }
+  ]
+}

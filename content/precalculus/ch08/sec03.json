@@ -1,0 +1,408 @@
+{
+  "id": "precalculus-ch08-sec03",
+  "title": "Vectors",
+  "chapter": 8,
+  "section": 3,
+  "book": "precalculus",
+  "devotional": {
+    "title": "Magnitude and Direction",
+    "scripture": "Philippians 3:12--14",
+    "content": "{AtlasWarmV}{ectors}\nteach us that *how much* without *which way* is incomplete. \nSpeed without direction is just motion; velocity with direction is a \njourney. Effort without purpose is just energy expended; work toward \na goal is progress.\n\nThe Apostle Paul understood this: \"Not that I have already obtained all \nthis, or have already arrived at my goal, but I press on to take hold of \nthat for which Christ Jesus took hold of me. Brothers and sisters, I do \nnot consider myself yet to have taken hold of it. But one thing I do: \nForgetting what is behind and straining toward what is ahead, I press \non toward the goal.\"\n\nPaul's life was a vector, not a scalar. He didn't just have intensity; \nhe had direction. He wasn't just moving; he was moving *toward*. \nThe Christian life is vectorial: it matters not only how earnestly we \npursue, but *what* we pursue.\n\nZeal without knowledge, Scripture warns, leads nowhere good. Energy \nwithout aim dissipates. But purpose combined with passion—magnitude \nwith direction—that's a life with momentum.",
+    "reflection": "In your spiritual life, do you focus more on \nmagnitude (how much effort, how much time) or direction (toward what \ngoal, for what purpose)? How might attending to both transform your \njourney?"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Where there is no guidance, a people falls, but in \nan abundance of counselors there is safety.\"*{Proverbs 11:14}{Vectors are to physics what bread is to butter.}{William Rowan Hamilton}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Until now, the numbers we've worked with have been *scalars*—quantities \ndescribed by a single number. The temperature is $72°$. The distance is 5 miles. \nThe area is 24 square meters. One number, one measurement, done."
+    },
+    {
+      "type": "paragraph",
+      "text": "But many quantities in the physical world refuse to be captured by a single \nnumber. If someone asks, \"Which way is the wind blowing?\" the answer \n\"20 mph\" is incomplete. *From which direction?* A 20 mph wind from \nthe north is very different from a 20 mph wind from the south, even though \nboth have the same speed."
+    },
+    {
+      "type": "paragraph",
+      "text": "Such quantities—those requiring both magnitude *and* direction—are \ncalled **vectors**. Velocity, force, acceleration, displacement: all \nare vectors. To describe them fully, we need two pieces of information: \nhow much and which way."
+    },
+    {
+      "type": "paragraph",
+      "text": "The mathematics of vectors is surprisingly rich. Vectors can be added \n(how do two forces combine?), scaled (what happens if we double the force?), \nand multiplied in multiple ways. The *dot product* connects vectors to \nangles and projections. The *cross product* (which we'll see in later \ncourses) creates new vectors perpendicular to the originals."
+    },
+    {
+      "type": "paragraph",
+      "text": "In this section, we develop the fundamentals of vector algebra. Though we \nwork primarily in two dimensions, the ideas extend seamlessly to three \ndimensions and beyond—the language of vectors is the native tongue of \nphysics and engineering."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Introduction to Vectors"
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.1",
+      "number": "8.1",
+      "title": "Vector",
+      "content": "A **vector** is a quantity with both **magnitude** \n(size, length) and **direction**. Geometrically, a vector is represented \nas an arrow."
+    },
+    {
+      "type": "paragraph",
+      "text": "Vectors are written with an arrow over the letter ($\\vec{v}$) or in boldface \n($\\mathbf{v}$). The magnitude of vector $\\vec{v}$ is written $|\\vec{v}|$ or \n$\\|\\vec{v}\\|$ and is always nonnegative."
+    },
+    {
+      "type": "paragraph",
+      "text": "A vector with magnitude zero is called the **zero vector**, written \n$\\vec{0}$. The zero vector has no defined direction."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Vectors in Component Form"
+    },
+    {
+      "type": "paragraph",
+      "text": "While the geometric view of vectors is intuitive, calculations require \na more algebraic representation. We describe a vector by its \n**components**—its horizontal and vertical displacements."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.2",
+      "number": "8.2",
+      "title": "Component Form",
+      "content": "A vector $\\vec{v}$ in the plane can be written in **component form**:\n\\[\n \\vec{v} = \\langle a, b \\rangle\n\\]\nwhere $a$ is the horizontal component and $b$ is the vertical component.\n\nIf a vector has initial point $P_1 = (x_1, y_1)$ and terminal point \n$P_2 = (x_2, y_2)$, then:\n\\[\n \\vec{v} = \\langle x_2 - x_1, y_2 - y_1 \\rangle\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Finding component form",
+      "problem": "Find the component form of the vector from $P(-2, 3)$ to $Q(5, -1)$.",
+      "solution": "Using the formula for components:\n\\[\n \\vec{PQ} = \\langle 5 - (-2), -1 - 3 \\rangle = \\langle 7, -4 \\rangle\n\\]\n\nThe vector has horizontal component 7 (moves right) and vertical \ncomponent $-4$ (moves down)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Magnitude and Direction"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **magnitude** of a vector tells us how long it is—the distance \nfrom tail to tip. The **direction angle** tells us which way it points."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Magnitude of a Vector",
+      "content": "The magnitude of $\\vec{v} = \\langle a, b \\rangle$ is:\n\\[\n |\\vec{v}| = \\sqrt{a^2 + b^2}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is just the distance formula—the Pythagorean theorem in disguise."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.2",
+      "number": "8.2",
+      "title": "Direction Angle",
+      "content": "The direction angle $\\theta$ of $\\vec{v} = \\langle a, b \\rangle$ (measured \ncounterclockwise from the positive $x$-axis) satisfies:\n\\[\n \\tan\\theta = \\frac{b}{a}\n\\]\nWhen finding $\\theta$, consider the quadrant where the vector lies to \nchoose the correct angle.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "Magnitude and direction",
+      "problem": "Find the magnitude and direction angle of $\\vec{v} = \\langle -3, 4 \\rangle$.",
+      "solution": "**Magnitude:**\n\\[\n |\\vec{v}| = \\sqrt{(-3)^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5\n\\]\n\n**Direction angle:**\n\nThe reference angle is:\n\\[\n \\alpha = \\arctan\\left|\\frac{4}{-3}\\right| = \\arctan\\frac{4}{3} \\approx 53.1°\n\\]\n\nSince $a < 0$ and $b > 0$, the vector is in Quadrant II. Therefore:\n\\[\n \\theta = 180° - 53.1° = 126.9°\n\\]\n\nThe vector has magnitude $5$ and direction angle approximately $126.9°$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "Converting from magnitude and direction",
+      "problem": "A vector has magnitude 10 and direction angle $220°$. Find its component \nform.",
+      "solution": "The components are:\n$$\n a &= |\\vec{v}|\\cos\\theta = 10\\cos 220° = 10(-0.766) \\approx -7.66 \\\\\n b &= |\\vec{v}|\\sin\\theta = 10\\sin 220° = 10(-0.643) \\approx -6.43\n$$\n\nThus $\\vec{v} \\approx \\langle -7.66, -6.43 \\rangle$.\n\nWe can verify: $\\sqrt{(-7.66)^2 + (-6.43)^2} = \\sqrt{100} = 10$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Vector Operations"
+    },
+    {
+      "type": "paragraph",
+      "text": "Vectors can be added, subtracted, and multiplied by scalars. These \noperations have natural geometric interpretations."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.3",
+      "number": "8.3",
+      "title": "Vector Addition",
+      "content": "For vectors $\\vec{u} = \\langle u_1, u_2 \\rangle$ and $\\vec{v} = \\langle v_1, v_2 \\rangle$:\n\\[\n \\vec{u} + \\vec{v} = \\langle u_1 + v_1, u_2 + v_2 \\rangle\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Geometrically, we add vectors using the **tip-to-tail** method: place \nthe tail of $\\vec{v}$ at the tip of $\\vec{u}$. The sum $\\vec{u} + \\vec{v}$ \ngoes from the tail of $\\vec{u}$ to the tip of $\\vec{v}$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.4",
+      "number": "8.4",
+      "title": "Scalar Multiplication",
+      "content": "For vector $\\vec{v} = \\langle v_1, v_2 \\rangle$ and scalar $c$:\n\\[\n c\\vec{v} = \\langle cv_1, cv_2 \\rangle\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Multiplying by a positive scalar $c$ stretches or shrinks the vector by \nfactor $|c|$ without changing direction. Multiplying by a negative scalar \nalso reverses direction."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.5",
+      "number": "8.5",
+      "title": "Vector Subtraction",
+      "content": "\\[\n \\vec{u} - \\vec{v} = \\vec{u} + (-\\vec{v}) = \\langle u_1 - v_1, u_2 - v_2 \\rangle\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-8.4",
+      "number": "8.4",
+      "title": "Vector operations",
+      "problem": "Let $\\vec{u} = \\langle 3, -2 \\rangle$ and $\\vec{v} = \\langle -1, 4 \\rangle$. Find:\n\n1. $\\vec{u} + \\vec{v}$\n\n2. $\\vec{u} - \\vec{v}$\n\n3. $3\\vec{u} - 2\\vec{v}$\n\n4. $|\\vec{u} + \\vec{v}|$",
+      "solution": "1. $\\vec{u} + \\vec{v} = \\langle 3 + (-1), -2 + 4 \\rangle = \\langle 2, 2 \\rangle$\n\n2. $\\vec{u} - \\vec{v} = \\langle 3 - (-1), -2 - 4 \\rangle = \\langle 4, -6 \\rangle$\n\n3. First compute each scalar multiple:\n $$\n 3\\vec{u} &= \\langle 9, -6 \\rangle \\\\\n 2\\vec{v} &= \\langle -2, 8 \\rangle\n $$\n Then subtract:\n \\[\n 3\\vec{u} - 2\\vec{v} = \\langle 9 - (-2), -6 - 8 \\rangle = \\langle 11, -14 \\rangle\n \\]\n\n4. From part (a), $\\vec{u} + \\vec{v} = \\langle 2, 2 \\rangle$.\n \\[\n |\\vec{u} + \\vec{v}| = \\sqrt{2^2 + 2^2} = \\sqrt{8} = 2\\sqrt{2} \\approx 2.83\n \\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Unit Vectors"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **unit vector** has magnitude 1. Unit vectors are useful for \nspecifying direction without affecting magnitude."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.3",
+      "number": "8.3",
+      "title": "Unit Vector",
+      "content": "A **unit vector** is a vector with magnitude 1. \nThe unit vector in the direction of nonzero vector $\\vec{v}$ is:\n\\[\n \\hat{v} = \\frac{\\vec{v}}{|\\vec{v}|}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The notation $\\hat{v}$ (\"v-hat\") indicates a unit vector."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.6",
+      "number": "8.6",
+      "title": "Standard Unit Vectors",
+      "content": "The **standard unit vectors** in the plane are:\n\\[\n \\vec{i} = \\langle 1, 0 \\rangle \\quad \\text{and} \\quad \\vec{j} = \\langle 0, 1 \\rangle\n\\]\nAny vector $\\vec{v} = \\langle a, b \\rangle$ can be written as:\n\\[\n \\vec{v} = a\\vec{i} + b\\vec{j}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "$-$j$ notation is standard in physics and \nengineering. It emphasizes that any vector is a combination of horizontal \nand vertical components.}"
+    },
+    {
+      "type": "example",
+      "id": "example-8.5",
+      "number": "8.5",
+      "title": "Unit vector in a given direction",
+      "problem": "Find the unit vector in the direction of $\\vec{v} = \\langle 5, -12 \\rangle$.",
+      "solution": "First, find the magnitude:\n\\[\n |\\vec{v}| = \\sqrt{5^2 + (-12)^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13\n\\]\n\nThe unit vector is:\n\\[\n \\hat{v} = \\frac{\\vec{v}}{|\\vec{v}|} = \\frac{1}{13}\\langle 5, -12 \\rangle = \\left\\langle \\frac{5}{13}, -\\frac{12}{13} \\right\\rangle\n\\]\n\nWe can verify: $\\sqrt{(5/13)^2 + (-12/13)^2} = \\sqrt{25/169 + 144/169} = \\sqrt{169/169} = 1$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Dot Product"
+    },
+    {
+      "type": "paragraph",
+      "text": "While vectors cannot be \"multiplied\" in the ordinary sense, there are \nseveral useful products defined on vectors. The most important for our \npurposes is the **dot product** (also called the **scalar product** \nbecause it produces a scalar, not a vector)."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.4",
+      "number": "8.4",
+      "title": "Dot Product",
+      "content": "The **dot product** of vectors $\\vec{u} = \\langle u_1, u_2 \\rangle$ \nand $\\vec{v} = \\langle v_1, v_2 \\rangle$ is:\n\\[\n \\vec{u} \\cdot \\vec{v} = u_1 v_1 + u_2 v_2\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Note that the dot product of two vectors is a *number* (scalar), not \na vector."
+    },
+    {
+      "type": "example",
+      "id": "example-8.6",
+      "number": "8.6",
+      "title": "Computing dot products",
+      "problem": "Find $\\vec{u} \\cdot \\vec{v}$ for:\n\n1. $\\vec{u} = \\langle 3, 4 \\rangle$, $\\vec{v} = \\langle 2, -5 \\rangle$\n\n2. $\\vec{u} = \\langle 6, 2 \\rangle$, $\\vec{v} = \\langle -1, 3 \\rangle$",
+      "solution": "1. $\\vec{u} \\cdot \\vec{v} = (3)(2) + (4)(-5) = 6 - 20 = -14$\n\n2. $\\vec{u} \\cdot \\vec{v} = (6)(-1) + (2)(3) = -6 + 6 = 0$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The dot product has remarkable properties—most importantly, it reveals \nthe angle between vectors."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.7",
+      "number": "8.7",
+      "title": "Geometric Interpretation of the Dot Product",
+      "content": "For any vectors $\\vec{u}$ and $\\vec{v}$:\n\\[\n \\vec{u} \\cdot \\vec{v} = |\\vec{u}||\\vec{v}|\\cos\\theta\n\\]\nwhere $\\theta$ is the angle between the vectors ($0° \\leq \\theta \\leq 180°$).",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This beautiful formula connects algebra (the component formula) with \ngeometry (the angle between vectors)."
+    },
+    {
+      "type": "paragraph",
+      "text": "v = |u||v|$ \nshows that the dot product measures how much the vectors \"agree\" in \ndirection. Parallel vectors (same direction) maximize the dot product; \nantiparallel vectors (opposite directions) minimize it.}"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.8",
+      "number": "8.8",
+      "title": "Angle Between Vectors",
+      "content": "The angle $\\theta$ between nonzero vectors $\\vec{u}$ and $\\vec{v}$ satisfies:\n\\[\n \\cos\\theta = \\frac{\\vec{u} \\cdot \\vec{v}}{|\\vec{u}||\\vec{v}|}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-8.7",
+      "number": "8.7",
+      "title": "Finding the angle between vectors",
+      "problem": "Find the angle between $\\vec{u} = \\langle 2, 3 \\rangle$ and $\\vec{v} = \\langle -4, 1 \\rangle$.",
+      "solution": "**Step 1: Compute the dot product.**\n\\[\n \\vec{u} \\cdot \\vec{v} = (2)(-4) + (3)(1) = -8 + 3 = -5\n\\]\n\n**Step 2: Compute the magnitudes.**\n\\[\n |\\vec{u}| = \\sqrt{4 + 9} = \\sqrt{13}\n\\]\n\\[\n |\\vec{v}| = \\sqrt{16 + 1} = \\sqrt{17}\n\\]\n\n**Step 3: Apply the formula.**\n\\[\n \\cos\\theta = \\frac{-5}{\\sqrt{13}\\sqrt{17}} = \\frac{-5}{\\sqrt{221}} \\approx \\frac{-5}{14.87} \\approx -0.336\n\\]\n\\[\n \\theta = \\arccos(-0.336) \\approx 109.6°\n\\]\n\nThe angle between the vectors is approximately $109.6°$ (obtuse, as \nsuggested by the negative dot product)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Orthogonal Vectors"
+    },
+    {
+      "type": "paragraph",
+      "text": "When the dot product of two vectors is zero, something special happens."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.9",
+      "number": "8.9",
+      "title": "Orthogonality",
+      "content": "Nonzero vectors $\\vec{u}$ and $\\vec{v}$ are **orthogonal** (perpendicular) \nif and only if:\n\\[\n \\vec{u} \\cdot \\vec{v} = 0\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This follows from $\\vec{u} \\cdot \\vec{v} = |\\vec{u}||\\vec{v}|\\cos\\theta$: \nif the vectors are nonzero, the only way for the dot product to be zero \nis for $\\cos\\theta = 0$, meaning $\\theta = 90°$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.8",
+      "number": "8.8",
+      "title": "Checking orthogonality",
+      "problem": "Are $\\vec{u} = \\langle 4, 3 \\rangle$ and $\\vec{v} = \\langle 6, -8 \\rangle$ orthogonal?",
+      "solution": "\\[\n \\vec{u} \\cdot \\vec{v} = (4)(6) + (3)(-8) = 24 - 24 = 0\n\\]\n\nYes, the vectors are orthogonal."
+    },
+    {
+      "type": "example",
+      "id": "example-8.9",
+      "number": "8.9",
+      "title": "Finding an orthogonal vector",
+      "problem": "Find a vector orthogonal to $\\vec{v} = \\langle 5, -2 \\rangle$.",
+      "solution": "Let the orthogonal vector be $\\vec{u} = \\langle a, b \\rangle$. We need:\n\\[\n \\vec{u} \\cdot \\vec{v} = 5a + (-2)b = 0 \\quad \\Longrightarrow \\quad 5a = 2b\n\\]\n\nAny vector satisfying this works. The simplest choices are:\n\\[\n \\vec{u} = \\langle 2, 5 \\rangle \\quad \\text{or} \\quad \\vec{u} = \\langle -2, -5 \\rangle\n\\]\n\nIn general, if $\\vec{v} = \\langle a, b \\rangle$, then $\\langle -b, a \\rangle$ \nand $\\langle b, -a \\rangle$ are orthogonal to $\\vec{v}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Vector Projections"
+    },
+    {
+      "type": "paragraph",
+      "text": "The dot product allows us to decompose one vector into components parallel \nand perpendicular to another vector. This is called **projection**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.5",
+      "number": "8.5",
+      "title": "Vector Projection",
+      "content": "The **projection of $\\vec{u}$ onto $\\vec{v}$**, written $\\text{proj}_{\\vec{v}}\\vec{u}$, \nis the vector component of $\\vec{u}$ in the direction of $\\vec{v}$:\n\\[\n \\text{proj}_{\\vec{v}}\\vec{u} = \\frac{\\vec{u} \\cdot \\vec{v}}{|\\vec{v}|^2}\\vec{v} = \\frac{\\vec{u} \\cdot \\vec{v}}{\\vec{v} \\cdot \\vec{v}}\\vec{v}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "$ points in \nthe direction of $v$?\" This is crucial in physics for computing \nwork and in computer graphics for lighting calculations.}"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **scalar projection** (or component of $\\vec{u}$ along $\\vec{v}$) \nis the signed length of the projection:\n\\[\n \\text{comp}_{\\vec{v}}\\vec{u} = \\frac{\\vec{u} \\cdot \\vec{v}}{|\\vec{v}|}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.10",
+      "number": "8.10",
+      "title": "Vector projection",
+      "problem": "Find the projection of $\\vec{u} = \\langle 4, 3 \\rangle$ onto $\\vec{v} = \\langle 2, 1 \\rangle$.",
+      "solution": "**Step 1: Compute $\\vec{u} \\cdot \\vec{v}$.**\n\\[\n \\vec{u} \\cdot \\vec{v} = (4)(2) + (3)(1) = 8 + 3 = 11\n\\]\n\n**Step 2: Compute $|\\vec{v}|^2$.**\n\\[\n |\\vec{v}|^2 = 2^2 + 1^2 = 5\n\\]\n\n**Step 3: Apply the formula.**\n\\[\n \\text{proj}_{\\vec{v}}\\vec{u} = \\frac{11}{5}\\langle 2, 1 \\rangle = \\left\\langle \\frac{22}{5}, \\frac{11}{5} \\right\\rangle = \\langle 4.4, 2.2 \\rangle\n\\]\n\nThe scalar projection is:\n\\[\n \\text{comp}_{\\vec{v}}\\vec{u} = \\frac{11}{\\sqrt{5}} \\approx 4.92\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of Vectors"
+    },
+    {
+      "type": "paragraph",
+      "text": "Vectors appear throughout physics, engineering, and navigation. Let's \nexplore some classic applications."
+    },
+    {
+      "type": "example",
+      "id": "example-8.11",
+      "number": "8.11",
+      "title": "Resultant velocity",
+      "problem": "An airplane has an airspeed (speed relative to the air) of 400 mph heading \ndue north. A wind blows from the west at 50 mph. Find the plane's actual \nvelocity relative to the ground.",
+      "solution": "Let $\\vec{p}$ be the plane's velocity and $\\vec{w}$ be the wind velocity. \nWe set up a coordinate system with east as positive $x$ and north as \npositive $y$.\n\nThe plane's airspeed is north, so:\n\\[\n \\vec{p} = \\langle 0, 400 \\rangle\n\\]\n\nThe wind blows *from* the west, meaning it blows *toward* the \neast:\n\\[\n \\vec{w} = \\langle 50, 0 \\rangle\n\\]\n\nThe resultant velocity is:\n\\[\n \\vec{v} = \\vec{p} + \\vec{w} = \\langle 0 + 50, 400 + 0 \\rangle = \\langle 50, 400 \\rangle\n\\]\n\nThe ground speed (magnitude) is:\n\\[\n |\\vec{v}| = \\sqrt{50^2 + 400^2} = \\sqrt{2500 + 160000} = \\sqrt{162500} \\approx 403.1 \\text{ mph}\n\\]\n\nThe direction angle (from east) is:\n\\[\n \\theta = \\arctan\\frac{400}{50} = \\arctan(8) \\approx 82.9°\n\\]\n\nSo the plane travels approximately $403$ mph at a bearing of about \nN$7.1°$E (that is, $90° - 82.9° = 7.1°$ east of north)."
+    },
+    {
+      "type": "example",
+      "id": "example-8.12",
+      "number": "8.12",
+      "title": "Work done by a force",
+      "problem": "A force $\\vec{F} = \\langle 40, 30 \\rangle$ (in newtons) is applied to an \nobject, which moves along the displacement $\\vec{d} = \\langle 10, 6 \\rangle$ \n(in meters). Find the work done.",
+      "solution": "Work is defined as the dot product of force and displacement:\n\\[\n W = \\vec{F} \\cdot \\vec{d} = (40)(10) + (30)(6) = 400 + 180 = 580 \\text{ joules}\n\\]\n\nThe work done is **580 J**."
+    },
+    {
+      "type": "example",
+      "id": "example-8.13",
+      "number": "8.13",
+      "title": "Inclined plane",
+      "problem": "A 500-newton weight sits on a ramp inclined at $20°$ to the horizontal. \nFind the components of the weight parallel and perpendicular to the ramp.",
+      "solution": "The weight vector points straight down: $\\vec{W} = \\langle 0, -500 \\rangle$ \nin standard position.\n\nLet's set up a coordinate system aligned with the ramp, where $\\vec{r}$ \npoints down the ramp (the direction of potential sliding).\n\nThe component of weight parallel to the ramp (tending to cause sliding) is:\n\\[\n W_{\\parallel} = |\\vec{W}|\\sin 20° = 500 \\times 0.342 \\approx 171 \\text{ N}\n\\]\n\nThe component perpendicular to the ramp (pressing into the surface) is:\n\\[\n W_{\\perp} = |\\vec{W}|\\cos 20° = 500 \\times 0.940 \\approx 470 \\text{ N}\n\\]\n\nThese can be verified: $\\sqrt{171^2 + 470^2} \\approx 500$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.14",
+      "number": "8.14",
+      "title": "Navigation: course correction",
+      "problem": "A boat needs to cross a river that flows east at 5 mph. The boat can \ntravel at 12 mph in still water. At what angle (relative to straight \nacross) should the boat head to reach a point directly across the river?",
+      "solution": "Let \"north\" be directly across the river. The boat's velocity relative \nto water must have a westward component to cancel the eastward current.\n\nIf the boat heads at angle $\\theta$ west of north with speed 12:\n\\[\n \\vec{b} = \\langle -12\\sin\\theta, 12\\cos\\theta \\rangle\n\\]\n\nThe current is:\n\\[\n \\vec{c} = \\langle 5, 0 \\rangle\n\\]\n\nFor the resultant to point due north (no east-west component):\n\\[\n -12\\sin\\theta + 5 = 0 \\quad \\Longrightarrow \\quad \\sin\\theta = \\frac{5}{12}\n\\]\n\\[\n \\theta = \\arcsin\\frac{5}{12} \\approx 24.6°\n\\]\n\nThe boat should head approximately $24.6°$ west of north.\n\nThe actual crossing speed (northward component) is:\n\\[\n 12\\cos 24.6° \\approx 12 \\times 0.909 \\approx 10.9 \\text{ mph}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Exodus 13:21",
+      "text": "By day the Lord went ahead of them in a \npillar of cloud to guide them on their way."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 4:12",
+      "text": "Though one may be overpowered, two \ncan defend themselves. A cord of three strands is not quickly broken."
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "id": "linear-algebra-ch07-sec04",
+  "title": "The Gram-Schmidt Process",
+  "chapter": 7,
+  "section": 4,
+  "book": "linear-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "{Make straight paths for your feet.}{Hebrews 12:13}\n {It is not knowledge, but the act of learning, which grants the greatest enjoyment.}{— Carl Friedrich Gauss}"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **Gram-Schmidt process** converts any basis into an \northogonal basis."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Algorithm"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-7.4",
+      "number": null,
+      "title": "Gram-Schmidt Process",
+      "content": "Given linearly independent $\\{\\vect{x}_1, \\ldots, \\vect{x}_p\\}$, \nproduce orthogonal $\\{\\vect{v}_1, \\ldots, \\vect{v}_p\\}$:\n$$\n\\vect{v}_1 &= \\vect{x}_1 \\\\\n\\vect{v}_2 &= \\vect{x}_2 - \\proj_{\\vect{v}_1}\\vect{x}_2 \\\\\n\\vect{v}_3 &= \\vect{x}_3 - \\proj_{\\vect{v}_1}\\vect{x}_3 - \\proj_{\\vect{v}_2}\\vect{x}_3 \\\\\n&\\vdots\n$$\nEach step subtracts projections onto previous vectors."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Gram-Schmidt",
+      "problem": "Apply Gram-Schmidt to $\\vect{x}_1 = (1, 1, 0)$, $\\vect{x}_2 = (1, 0, 1)$.",
+      "solution": "$\\vect{v}_1 = (1, 1, 0)$.\n\n$\\vect{v}_2 = (1, 0, 1) - \\frac{1}{2}(1, 1, 0) = (\\frac{1}{2}, -\\frac{1}{2}, 1)$.\n\nCheck: $\\vect{v}_1 \\cdot \\vect{v}_2 = \\frac{1}{2} - \\frac{1}{2} = 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "QR Factorization"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "QR Factorization",
+      "content": "Any $m \\times n$ matrix $A$ with independent columns can be written \nas $A = QR$ where $Q$ has orthonormal columns and $R$ is upper triangular.",
+      "label": "Theorem"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:3",
+      "text": "In the wilderness prepare the way of \nthe Lord; make straight in the desert a highway for our God."
+    }
+  ]
+}

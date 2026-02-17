@@ -1,0 +1,250 @@
+{
+  "id": "vol2-ch10-sec04",
+  "title": "Working with Taylor Series",
+  "chapter": 10,
+  "section": 4,
+  "book": "vol2",
+  "epigraph": {
+    "text": "The plans of the diligent lead surely to abundance, but \neveryone who is hasty comes only to poverty.",
+    "reference": "Proverbs 21:5"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "In the previous section, we derived the fundamental Maclaurin series by\ncomputing derivatives at $x = 0$. But direct computation is often tedious\nor impractical. In this section, we develop techniques for manipulating\nknown series to obtain new ones: substitution, algebraic operations, and\nterm-by-term differentiation and integration. We then explore powerful\napplications: evaluating limits, computing integrals that have no closed\nform, and solving differential equations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Substitution"
+    },
+    {
+      "type": "paragraph",
+      "text": "The simplest way to find a new series is to substitute an expression into a\nknown series."
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "Substitution: $e^{-x^{2}}$",
+      "problem": "Find the Maclaurin series for $e^{-x^{2}}$.",
+      "solution": "We know $e^{u} = \\displaystyle\\sum_{n=0}^{\\infty}\\frac{u^{n}}{n!}$ for all $u$.\nSubstituting $u = -x^{2}$:\n$$\n e^{-x^{2}} &= \\sum_{n=0}^{\\infty}\\frac{(-x^{2})^{n}}{n!}\n = \\sum_{n=0}^{\\infty}\\frac{(-1)^{n}x^{2n}}{n!} \\\\[4pt]\n &= 1 - x^{2} + \\frac{x^{4}}{2!} - \\frac{x^{6}}{3!} + \\frac{x^{8}}{4!} - \\cdots\n$$\nThis converges for all $x \\in \\R$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.2",
+      "number": "10.2",
+      "title": "Substitution: $\\sin(x^{2})$",
+      "problem": "Find the Maclaurin series for $\\sin(x^{2})$.",
+      "solution": "Substitute $u = x^{2}$ into\n$\\sin u = u - \\dfrac{u^{3}}{3!} + \\dfrac{u^{5}}{5!} - \\cdots$:\n\\[\n \\sin(x^{2}) = x^{2} - \\frac{x^{6}}{3!} + \\frac{x^{10}}{5!} - \\frac{x^{14}}{7!} + \\cdots\n = \\sum_{n=0}^{\\infty}\\frac{(-1)^{n}x^{4n+2}}{(2n+1)!}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.3",
+      "number": "10.3",
+      "title": "Substitution: $\\dfrac{1}{1+x^{2}}$",
+      "problem": "Find the Maclaurin series for $\\dfrac{1}{1+x^{2}}$.",
+      "solution": "Substitute $u = -x^{2}$ into $\\dfrac{1}{1-u} = \\displaystyle\\sum_{n=0}^{\\infty}u^{n}$:\n\\[\n \\frac{1}{1+x^{2}} = \\frac{1}{1-(-x^{2})} = \\sum_{n=0}^{\\infty}(-x^{2})^{n}\n = \\sum_{n=0}^{\\infty}(-1)^{n}x^{2n}\n = 1 - x^{2} + x^{4} - x^{6} + \\cdots\n\\]\nfor $|x| < 1$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Addition, Subtraction, and Multiplication"
+    },
+    {
+      "type": "paragraph",
+      "text": "Power series can be added, subtracted, and multiplied like polynomials,\nwithin their common interval of convergence."
+    },
+    {
+      "type": "example",
+      "id": "example-10.4",
+      "number": "10.4",
+      "title": "Adding series: $e^{x} + e^{-x}$",
+      "problem": "Find the Maclaurin series for $\\cosh x = \\dfrac{e^{x} + e^{-x}}{2}$.",
+      "solution": "align*\n e^{x} &= 1 + x + x^{2}{2!} + x^{3}{3!} + x^{4}{4!} + \\\\[4pt]\n e^{-x} &= 1 - x + \\frac{x^{2}}{2!} - \\frac{x^{3}}{3!} + \\frac{x^{4}}{4!} - \\cdots\n\\end{align*}\nAdding and dividing by 2:\n\\[\n \\cosh x = \\frac{e^{x} + e^{-x}}{2}\n = 1 + \\frac{x^{2}}{2!} + \\frac{x^{4}}{4!} + \\frac{x^{6}}{6!} + \\cdots\n = \\sum_{n=0}^{\\infty}\\frac{x^{2n}}{(2n)!}.\n\\]\nSimilarly, $\\sinh x = \\dfrac{e^{x} - e^{-x}}{2} = \\displaystyle\\sum_{n=0}^{\\infty}\\frac{x^{2n+1}}{(2n+1)!}$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.5",
+      "number": "10.5",
+      "title": "Multiplying series: $e^{x}\\sin x$",
+      "problem": "Find the first four nonzero terms of the Maclaurin series for $e^{x}\\sin x$.",
+      "solution": "$$\n e^{x} &= 1 + x + \\frac{x^{2}}{2} + \\frac{x^{3}}{6} + \\frac{x^{4}}{24} + \\cdots \\\\[4pt]\n \\sin x &= x - \\frac{x^{3}}{6} + \\frac{x^{5}}{120} - \\cdots\n$$\nMultiplying (collecting terms by degree):\n$$\n e^{x}\\sin x &= \\left(1 + x + \\frac{x^{2}}{2} + \\frac{x^{3}}{6} + \\cdots\\right)\n \\left(x - \\frac{x^{3}}{6} + \\cdots\\right) \\\\[4pt]\n &= x + x^{2} + \\left(\\frac{1}{2} - \\frac{1}{6}\\right)x^{3}\n + \\left(\\frac{1}{6} - \\frac{1}{6}\\right)x^{4} + \\cdots \\\\[4pt]\n &= x + x^{2} + \\frac{1}{3}x^{3} - \\frac{1}{30}x^{5} + \\cdots\n$$"
+    },
+    {
+      "type": "warning",
+      "id": "warning-10.4",
+      "number": null,
+      "title": "Keep track of degree",
+      "content": "When multiplying series, it's easy to miss terms. Organize your work by\ncollecting all terms of each degree systematically."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Division of Series"
+    },
+    {
+      "type": "paragraph",
+      "text": "Dividing series is like long division of polynomials."
+    },
+    {
+      "type": "example",
+      "id": "example-10.6",
+      "number": "10.6",
+      "title": "Division: $\\tan x$",
+      "problem": "Find the first three nonzero terms of the Maclaurin series for $\\tan x$.",
+      "solution": "We have $\\tan x = \\dfrac{\\sin x}{\\cos x}$. We need to divide:\n\\[\n \\frac{x - \\frac{x^{3}}{6} + \\frac{x^{5}}{120} - \\cdots}\n {1 - \\frac{x^{2}}{2} + \\frac{x^{4}}{24} - \\cdots}\n\\]\nAlternatively, if $\\tan x = a_{1}x + a_{3}x^{3} + a_{5}x^{5} + \\cdots$\n(only odd terms by symmetry), then\n\\[\n \\sin x = \\tan x \\cdot \\cos x.\n\\]\nMatching coefficients:\n$$\n &\\left(a_{1}x + a_{3}x^{3} + a_{5}x^{5} + \\cdots\\right)\n \\left(1 - \\frac{x^{2}}{2} + \\frac{x^{4}}{24} - \\cdots\\right)\n = x - \\frac{x^{3}}{6} + \\frac{x^{5}}{120} - \\cdots\n$$\n\nCoefficient of $x$: $a_{1} = 1$.\n\nCoefficient of $x^{3}$: $a_{3} - \\dfrac{a_{1}}{2} = -\\dfrac{1}{6}$,\nso $a_{3} = -\\dfrac{1}{6} + \\dfrac{1}{2} = \\dfrac{1}{3}$.\n\nCoefficient of $x^{5}$: $a_{5} - \\dfrac{a_{3}}{2} + \\dfrac{a_{1}}{24} = \\dfrac{1}{120}$,\nso $a_{5} = \\dfrac{1}{120} + \\dfrac{1}{6} - \\dfrac{1}{24}\n= \\dfrac{1}{120} + \\dfrac{20}{120} - \\dfrac{5}{120} = \\dfrac{16}{120} = \\dfrac{2}{15}$.\n\nTherefore,\n\\[\n \\tan x = x + \\frac{x^{3}}{3} + \\frac{2x^{5}}{15} + \\cdots\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.7",
+      "number": "10.7",
+      "title": "Division: $\\sec x$",
+      "problem": "Find the first three nonzero terms of the Maclaurin series for $\\sec x$.",
+      "solution": "We seek $\\sec x = a_{0} + a_{2}x^{2} + a_{4}x^{4} + \\cdots$ (even terms only)\nsuch that $\\sec x \\cdot \\cos x = 1$.\n\n\\[\n (a_{0} + a_{2}x^{2} + a_{4}x^{4} + \\cdots)\n \\left(1 - \\frac{x^{2}}{2} + \\frac{x^{4}}{24} - \\cdots\\right) = 1.\n\\]\n\nConstant: $a_{0} = 1$.\n\nCoefficient of $x^{2}$: $a_{2} - \\dfrac{a_{0}}{2} = 0$, so $a_{2} = \\dfrac{1}{2}$.\n\nCoefficient of $x^{4}$: $a_{4} - \\dfrac{a_{2}}{2} + \\dfrac{a_{0}}{24} = 0$,\nso $a_{4} = \\dfrac{1}{4} - \\dfrac{1}{24} = \\dfrac{6-1}{24} = \\dfrac{5}{24}$.\n\nTherefore,\n\\[\n \\sec x = 1 + \\frac{x^{2}}{2} + \\frac{5x^{4}}{24} + \\cdots\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Evaluating Limits with Series"
+    },
+    {
+      "type": "paragraph",
+      "text": "Power series provide an elegant alternative to L'H\\^opital's Rule for\nevaluating indeterminate limits."
+    },
+    {
+      "type": "example",
+      "id": "example-10.8",
+      "number": "10.8",
+      "title": "Limit: $\\displaystyle\\limtozero{x}\\frac{\\sin x - x}{x^{3}}$",
+      "problem": "Evaluate $\\displaystyle\\limtozero{x}\\frac{\\sin x - x}{x^{3}}$.",
+      "solution": "Substitute the series for $\\sin x$:\n$$\n \\frac{\\sin x - x}{x^{3}}\n &= \\frac{\\left(x - \\frac{x^{3}}{6} + \\frac{x^{5}}{120} - \\cdots\\right) - x}{x^{3}} \\\\[4pt]\n &= \\frac{-\\frac{x^{3}}{6} + \\frac{x^{5}}{120} - \\cdots}{x^{3}} \\\\[4pt]\n &= -\\frac{1}{6} + \\frac{x^{2}}{120} - \\cdots\n$$\nAs $x \\to 0$, this approaches $-\\dfrac{1}{6}$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.9",
+      "number": "10.9",
+      "title": "Limit: $\\displaystyle\\limtozero{x}\\frac{e^{x} - 1 - x}{x^{2}}$",
+      "problem": "Evaluate $\\displaystyle\\limtozero{x}\\frac{e^{x} - 1 - x}{x^{2}}$.",
+      "solution": "$$\n \\frac{e^{x} - 1 - x}{x^{2}}\n &= \\frac{\\left(1 + x + \\frac{x^{2}}{2} + \\frac{x^{3}}{6} + \\cdots\\right) - 1 - x}{x^{2}} \\\\[4pt]\n &= \\frac{\\frac{x^{2}}{2} + \\frac{x^{3}}{6} + \\cdots}{x^{2}}\n = \\frac{1}{2} + \\frac{x}{6} + \\cdots \\to \\frac{1}{2}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.10",
+      "number": "10.10",
+      "title": "Limit: $\\displaystyle\\limtozero{x}\\frac{1 - \\cos x}{x\\sin x}$",
+      "problem": "Evaluate $\\displaystyle\\limtozero{x}\\frac{1 - \\cos x}{x\\sin x}$.",
+      "solution": "align*\n 1 - x &= 1 - (1 - x^{2}{2} + x^{4}{24} - )\n = x^{2}{2} - x^{4}{24} + \\\\[4pt]\n x\\sin x &= x\\left(x - \\frac{x^{3}}{6} + \\cdots\\right)\n = x^{2} - \\frac{x^{4}}{6} + \\cdots\n\\end{align*}\nTherefore,\n\\[\n \\frac{1 - \\cos x}{x\\sin x}\n = \\frac{\\frac{x^{2}}{2} - \\frac{x^{4}}{24} + \\cdots}{x^{2} - \\frac{x^{4}}{6} + \\cdots}\n = \\frac{\\frac{1}{2} - \\frac{x^{2}}{24} + \\cdots}{1 - \\frac{x^{2}}{6} + \\cdots}\n \\to \\frac{1/2}{1} = \\frac{1}{2}.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Integration Using Series"
+    },
+    {
+      "type": "paragraph",
+      "text": "Some integrals, like $\\int e^{-x^{2}}\\dx$, cannot be expressed in terms of\nelementary functions. Power series let us compute them anyway."
+    },
+    {
+      "type": "example",
+      "id": "example-10.11",
+      "number": "10.11",
+      "title": "The Gaussian integral approximation",
+      "problem": "Find the first four nonzero terms in the Maclaurin series for\n$\\displaystyle F(x) = \\int_{0}^{x}e^{-t^{2}}\\dt$.",
+      "solution": "From Example [ex:wt-sub-ex2]:\n\\[\n e^{-t^{2}} = 1 - t^{2} + \\frac{t^{4}}{2!} - \\frac{t^{6}}{3!} + \\cdots\n\\]\nIntegrating term by term:\n$$\n F(x) = \\int_{0}^{x}e^{-t^{2}}\\dt\n &= \\left[t - \\frac{t^{3}}{3} + \\frac{t^{5}}{5\\cdot 2!} - \\frac{t^{7}}{7\\cdot 3!} + \\cdots\\right]_{0}^{x} \\\\[4pt]\n &= x - \\frac{x^{3}}{3} + \\frac{x^{5}}{10} - \\frac{x^{7}}{42} + \\cdots\n$$\nThis series converges for all $x$ and provides an excellent way to compute\nvalues of this important function."
+    },
+    {
+      "type": "example",
+      "id": "example-10.12",
+      "number": "10.12",
+      "title": "Integrating $\\dfrac{\\sin x}{x}$",
+      "problem": "Find the Maclaurin series for the **sine integral**\n$\\text{Si}(x) = \\displaystyle\\int_{0}^{x}\\frac{\\sin t}{t}\\dt$.",
+      "solution": "First, find the series for $\\dfrac{\\sin t}{t}$:\n\\[\n \\frac{\\sin t}{t} = \\frac{1}{t}\\left(t - \\frac{t^{3}}{6} + \\frac{t^{5}}{120} - \\cdots\\right)\n = 1 - \\frac{t^{2}}{6} + \\frac{t^{4}}{120} - \\cdots\n\\]\nIntegrating:\n\\[\n \\text{Si}(x) = x - \\frac{x^{3}}{3\\cdot 6} + \\frac{x^{5}}{5\\cdot 120} - \\frac{x^{7}}{7\\cdot 5040} + \\cdots\n = x - \\frac{x^{3}}{18} + \\frac{x^{5}}{600} - \\frac{x^{7}}{35280} + \\cdots\n\\]\nMore compactly: $\\text{Si}(x) = \\displaystyle\\sum_{n=0}^{\\infty}\\frac{(-1)^{n}x^{2n+1}}{(2n+1)(2n+1)!}$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.13",
+      "number": "10.13",
+      "title": "Computing a definite integral",
+      "problem": "Estimate $\\displaystyle\\int_{0}^{1}e^{-x^{2}}\\dx$ to within $0.001$.",
+      "solution": "From our series:\n\\[\n \\int_{0}^{1}e^{-x^{2}}\\dx = 1 - \\frac{1}{3} + \\frac{1}{10} - \\frac{1}{42} + \\frac{1}{216} - \\cdots\n\\]\nThis is an alternating series, so the error is bounded by the first omitted\nterm. Computing:\n$$\n &1 - 0.333\\overline{3} + 0.1 - 0.0238\\ldots + 0.00463\\ldots - 0.00076\\ldots \\\\\n &\\approx 0.7468 + 0.00463 - 0.00076 \\approx 0.747\n$$\nThe error from stopping here is less than the next term, about $0.0001$.\nThe value is approximately $\\boxed{0.747}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving Differential Equations with Series"
+    },
+    {
+      "type": "paragraph",
+      "text": "Power series provide a powerful method for solving differential equations,\nespecially when closed-form solutions don't exist."
+    },
+    {
+      "type": "example",
+      "id": "example-10.14",
+      "number": "10.14",
+      "title": "Airy's equation",
+      "problem": "Find the first several terms of a power series solution to\n**Airy's equation**: $y'' - xy = 0$.",
+      "solution": "Assume $y = \\displaystyle\\sum_{n=0}^{\\infty}a_{n}x^{n} = a_{0} + a_{1}x + a_{2}x^{2} + a_{3}x^{3} + \\cdots$\n\nThen $y'' = \\displaystyle\\sum_{n=2}^{\\infty}n(n-1)a_{n}x^{n-2}\n= 2a_{2} + 6a_{3}x + 12a_{4}x^{2} + 20a_{5}x^{3} + \\cdots$\n\nAnd $xy = a_{0}x + a_{1}x^{2} + a_{2}x^{3} + a_{3}x^{4} + \\cdots$\n\nSubstituting into $y'' - xy = 0$:\n\\[\n (2a_{2}) + (6a_{3} - a_{0})x + (12a_{4} - a_{1})x^{2} + (20a_{5} - a_{2})x^{3} + \\cdots = 0.\n\\]\nAll coefficients must be zero:\n$$\n 2a_{2} &= 0 \\implies a_{2} = 0 \\\\\n 6a_{3} - a_{0} &= 0 \\implies a_{3} = \\frac{a_{0}}{6} \\\\\n 12a_{4} - a_{1} &= 0 \\implies a_{4} = \\frac{a_{1}}{12} \\\\\n 20a_{5} - a_{2} &= 0 \\implies a_{5} = 0 \\\\\n 30a_{6} - a_{3} &= 0 \\implies a_{6} = \\frac{a_{3}}{30} = \\frac{a_{0}}{180}\n$$\nThe general solution is\n\\[\n y = a_{0}\\left(1 + \\frac{x^{3}}{6} + \\frac{x^{6}}{180} + \\cdots\\right)\n + a_{1}\\left(x + \\frac{x^{4}}{12} + \\cdots\\right),\n\\]\nwhere $a_{0}$ and $a_{1}$ are arbitrary constants (initial conditions)."
+    },
+    {
+      "type": "example",
+      "id": "example-10.15",
+      "number": "10.15",
+      "title": "Verifying $y = e^{x}$ satisfies $y' = y$",
+      "problem": "Use series to show that $y = e^{x}$ satisfies $y' = y$.",
+      "solution": "\\[\n y = e^{x} = 1 + x + \\frac{x^{2}}{2!} + \\frac{x^{3}}{3!} + \\frac{x^{4}}{4!} + \\cdots\n\\]\nDifferentiating term by term:\n\\[\n y' = 0 + 1 + x + \\frac{x^{2}}{2!} + \\frac{x^{3}}{3!} + \\cdots = e^{x} = y. \\checkmark\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.16",
+      "number": "10.16",
+      "title": "Finding $y' = y$ solutions from scratch",
+      "problem": "Find a power series solution to $y' = y$ with $y(0) = 1$.",
+      "solution": "Let $y = \\displaystyle\\sum_{n=0}^{\\infty}a_{n}x^{n}$. Then $y' = \\displaystyle\\sum_{n=1}^{\\infty}na_{n}x^{n-1}$.\n\nFrom $y' = y$:\n\\[\n \\sum_{n=1}^{\\infty}na_{n}x^{n-1} = \\sum_{n=0}^{\\infty}a_{n}x^{n}.\n\\]\nShifting the index on the left ($m = n-1$):\n\\[\n \\sum_{m=0}^{\\infty}(m+1)a_{m+1}x^{m} = \\sum_{n=0}^{\\infty}a_{n}x^{n}.\n\\]\nMatching coefficients: $(n+1)a_{n+1} = a_{n}$, so $a_{n+1} = \\dfrac{a_{n}}{n+1}$.\n\nWith $a_{0} = y(0) = 1$:\n\\[\n a_{1} = 1, \\quad a_{2} = \\frac{1}{2}, \\quad a_{3} = \\frac{1}{6}, \\quad\n a_{n} = \\frac{1}{n!}.\n\\]\nThus $y = \\displaystyle\\sum_{n=0}^{\\infty}\\frac{x^{n}}{n!} = e^{x}$."
+    },
+    {
+      "type": "historical",
+      "id": "historical-10.4",
+      "number": null,
+      "title": "George Biddell Airy (1801--1892)",
+      "content": "Airy's equation arises in optics and quantum mechanics (describing light\nnear caustics and quantum tunneling). Airy was Astronomer Royal of Britain\nfor 46 years and a devout Christian who saw science as glorifying the\nCreator. The Airy functions $\\text{Ai}(x)$ and $\\text{Bi}(x)$ are named\nfor him."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 25:2",
+      "text": "It is the glory of God to conceal a matter;\nto search out a matter is the glory of kings."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:11",
+      "text": "He hath made every thing beautiful in his\ntime: also he hath set the world in their heart, so that no man can find out\nthe work that God maketh from the beginning to the end."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 38:36",
+      "text": "Who hath put wisdom in the inward parts? or who\nhath given understanding to the heart?"
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 104:24",
+      "text": "O Lord, how manifold are thy works! in wisdom\nhast thou made them all: the earth is full of thy riches."
+    },
+    {
+      "type": "quote",
+      "author": "George P\\'olya",
+      "text": "The first rule of discovery is to have brains\nand good luck. The second rule of discovery is to sit tight and wait till\nyou get a bright idea."
+    },
+    {
+      "type": "quote",
+      "author": "Pierre-Simon Laplace",
+      "text": "What we know is a drop, what we don't know\nis an ocean."
+    },
+    {
+      "type": "quote",
+      "author": "Richard Feynman",
+      "text": "The imagination of nature is far, far greater\nthan the imagination of man."
+    }
+  ]
+}

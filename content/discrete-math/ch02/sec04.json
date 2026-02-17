@@ -1,0 +1,152 @@
+{
+  "id": "discrete-math-ch02-sec04",
+  "title": "Properties of Functions",
+  "chapter": 2,
+  "section": 4,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"The lot is cast into the lap, but its every decision \nis from the Lord.\"*{Proverbs 16:33}{The distinction between injective, surjective, and bijective functions is fundamental to understanding cardinality.}{Georg Cantor}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Different functions have different structural properties. Three properties \nare particularly important: injectivity, surjectivity, and bijectivity."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Injective Functions (One-to-One)"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Injective Function",
+      "content": "A function $f: A \\to B$ is **injective** (or \n**one-to-one**) if different inputs always produce \ndifferent outputs:\n\\[ \\forall a_1, a_2 \\in A,\\; f(a_1) = f(a_2) \\limplies a_1 = a_2 \\]\n\nEquivalently (contrapositive): $a_1 \\neq a_2 \\limplies f(a_1) \\neq f(a_2)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "An injective function never maps two different inputs to the same output. \nEach element in the range has exactly one preimage."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Injective functions",
+      "problem": "1. $f: \\R \\to \\R$, $f(x) = 2x + 1$ is **injective**. If \n $2a + 1 = 2b + 1$, then $a = b$.\n\n2. $g: \\R \\to \\R$, $g(x) = x^2$ is **not injective**. We have \n $g(-2) = g(2) = 4$ but $-2 \\neq 2$.\n\n3. $h: [0, \\infty) \\to \\R$, $h(x) = x^2$ is **injective** \n (restricting the domain removes the problem).",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Surjective Functions (Onto)"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "Surjective Function",
+      "content": "A function $f: A \\to B$ is **surjective** (or \n**onto**) if every element of the codomain is an output \nfor some input:\n\\[ \\forall b \\in B,\\; \\exists a \\in A,\\; f(a) = b \\]\n\nEquivalently: range$(f) = B$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Surjective functions",
+      "problem": "1. $f: \\R \\to \\R$, $f(x) = 2x + 1$ is **surjective**. For any \n $y \\in \\R$, take $x = (y-1)/2$; then $f(x) = y$.\n\n2. $g: \\R \\to \\R$, $g(x) = x^2$ is **not surjective**. No real \n $x$ satisfies $x^2 = -1$.\n\n3. $h: \\R \\to [0, \\infty)$, $h(x) = x^2$ is **surjective** \n (changing the codomain to match the range).",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Bijective Functions (One-to-One Correspondence)"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.3",
+      "number": "2.3",
+      "title": "Bijective Function",
+      "content": "A function $f: A \\to B$ is **bijective** (or a \n**one-to-one correspondence**) if \nit is both injective and surjective."
+    },
+    {
+      "type": "paragraph",
+      "text": "A bijection pairs each element of $A$ with exactly one element of $B$, \nand vice versa. Bijections are essential for comparing the \"sizes\" of \nsets."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Bijection and Cardinality",
+      "content": "For finite sets $A$ and $B$, there exists a bijection $f: A \\to B$ if and \nonly if $\\card{A} = \\card{B}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Bijection",
+      "problem": "$f: \\R \\to \\R$ defined by $f(x) = 2x + 1$ is a **bijection**.\n\n- Injective: shown earlier\n\n- Surjective: shown earlier",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Composition of Functions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.4",
+      "number": "2.4",
+      "title": "Function Composition",
+      "content": "Given $f: A \\to B$ and $g: B \\to C$, the **composition** \n$g \\circ f: A \\to C$ is defined by:\n\\[ (g \\circ f)(a) = g(f(a)) \\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Read $g \\circ f$ as \"$g$ after $f$\": first apply $f$, then apply $g$ to \nthe result."
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "Composition",
+      "problem": "Let $f(x) = x^2$ and $g(x) = x + 3$.\n\n- $(g \\circ f)(x) = g(f(x)) = g(x^2) = x^2 + 3$\n\n- $(f \\circ g)(x) = f(g(x)) = f(x + 3) = (x + 3)^2$\n\nNote: $g \\circ f \\neq f \\circ g$ in general!",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Inverse Functions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.5",
+      "number": "2.5",
+      "title": "Inverse Function",
+      "content": "If $f: A \\to B$ is a bijection, its **inverse** \n$f^{-1}: B \\to A$ is the function that reverses $f$:\n\\[ f^{-1}(b) = a \\iff f(a) = b \\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Properties of Inverses",
+      "content": "If $f: A \\to B$ is a bijection with inverse $f^{-1}: B \\to A$, then:\n\n1. $f^{-1} \\circ f = \\text{id}_A$ (the identity on $A$)\n\n2. $f \\circ f^{-1} = \\text{id}_B$ (the identity on $B$)\n\n3. $(f^{-1})^{-1} = f$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-2.5",
+      "number": "2.5",
+      "title": "Inverse",
+      "problem": "Let $f: \\R \\to \\R$, $f(x) = 2x + 1$.\n\nTo find $f^{-1}$: solve $y = 2x + 1$ for $x$: $x = (y - 1)/2$.\n\nThus $f^{-1}(y) = (y - 1)/2$.\n\nCheck: $f(f^{-1}(y)) = f((y-1)/2) = 2 \\cdot \\frac{y-1}{2} + 1 = y$. $\\checkmark$",
+      "solution": ""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Matthew 7:13--14",
+      "text": "Enter through the narrow gate. For wide \nis the gate and broad is the road that leads to destruction."
+    }
+  ]
+}

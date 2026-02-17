@@ -1,0 +1,552 @@
+{
+  "id": "vol1-ch04-sec04",
+  "title": "The Chain Rule",
+  "chapter": 4,
+  "section": 4,
+  "book": "vol1",
+  "objectives": [
+    "Apply the Chain Rule to differentiate composite functions",
+    "Identify inner and outer functions in a composition",
+    "Use Leibniz notation to express and compute derivatives of compositions",
+    "Combine the Chain Rule with Product, Quotient, and Power Rules"
+  ],
+  "devotional": {
+    "title": "Strands Woven Together",
+    "scripture": "Ecclesiastes 4:12",
+    "content": "\"A cord of three strands is not quickly broken.\" The Chain Rule reveals how functions can be woven together—an outer function wrapped around an inner function, each contributing to the whole. Just as a cord gains strength from its intertwined strands, composite functions combine simpler pieces into powerful new expressions. When we differentiate such compositions, we honor each strand: the derivative of the outer function, evaluated at the inner, multiplied by the derivative of the inner. This layered structure reflects the interconnectedness God has woven throughout creation—where nothing exists in isolation, and understanding the whole requires understanding how the parts relate."
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "What is $\\frac{d}{dx}[\\sin(x^{2})]$?"
+    },
+    {
+      "type": "paragraph",
+      "text": "We know $\\frac{d}{dx}[\\sin x] = \\cos x$, and we know $\\frac{d}{dx}[x^{2}] = 2x$. But $\\sin(x^{2})$ is not a sum, product, or quotient of simpler functions—it is a **composition**: the function $\\sin u$ applied to the inner function $u = x^{2}$. None of our rules so far can handle this."
+    },
+    {
+      "type": "paragraph",
+      "edition": "christian",
+      "text": "*\"I praise you because I am fearfully and wonderfully made; your works are wonderful, I know that full well.\"* —Psalm 139:14"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Chain Rule fills this gap. It is arguably the most important differentiation rule—and the one students find most challenging. Master it, and you can differentiate *any* composition of functions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Motivation and Statement"
+    },
+    {
+      "type": "paragraph",
+      "text": "Suppose a car's position depends on time, and the fuel consumption depends on position. To find how fuel consumption changes with time, we multiply the rates:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$\\frac{d(\\text{fuel})}{dt} = \\frac{d(\\text{fuel})}{d(\\text{position})} \\cdot \\frac{d(\\text{position})}{dt}.$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "This \"chain\" of rates is the key idea."
+    },
+    {
+      "type": "theorem",
+      "id": "thm-4.11",
+      "number": "4.11",
+      "title": "The Chain Rule",
+      "content": "If $g$ is differentiable at $x$ and $f$ is differentiable at $g(x)$, then the composite function $F(x) = f(g(x))$ is differentiable at $x$ and\n\n$$F'(x) = f'(g(x)) \\cdot g'(x).$$\n\nIn Leibniz notation, if $y = f(u)$ and $u = g(x)$, then\n\n$$\\frac{dy}{dx} = \\frac{dy}{du} \\cdot \\frac{du}{dx}.$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "In words: differentiate the **outer function** (evaluated at the inner function), then **multiply by the derivative of the inner function**."
+    },
+    {
+      "type": "proof",
+      "content": "**Proof sketch.** The full proof requires careful handling of the case $g(x+h) - g(x) = 0$ for values of $h$ near $0$. We present the essential idea.\n\nIf $\\Delta u = g(x+h) - g(x)$ and $\\Delta u \\neq 0$, then\n\n$$\\frac{dy}{dx} = \\lim_{h \\to 0}\\frac{f(g(x+h)) - f(g(x))}{h}$$\n\n$$= \\lim_{h \\to 0}\\frac{f(g(x) + \\Delta u) - f(g(x))}{\\Delta u} \\cdot \\frac{\\Delta u}{h}$$\n\n$$= \\lim_{h \\to 0}\\frac{f(g(x) + \\Delta u) - f(g(x))}{\\Delta u} \\cdot \\lim_{h \\to 0}\\frac{g(x+h) - g(x)}{h}.$$\n\nSince $g$ is continuous (being differentiable), $\\Delta u \\to 0$ as $h \\to 0$. The first factor becomes $f'(g(x))$, and the second is $g'(x)$. Therefore $\\frac{dy}{dx} = f'(g(x)) \\cdot g'(x)$.\n\nA fully rigorous proof avoids the division by $\\Delta u$ by introducing a function that absorbs the potential zero; we defer this to a more advanced course."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Basic Examples"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.29",
+      "number": "4.29",
+      "title": "The Motivating Problem",
+      "problem": "Differentiate $F(x) = \\sin(x^{2})$.",
+      "solution": "Identify the outer and inner functions:\n\n$$\\text{Outer: } f(u) = \\sin u, \\qquad \\text{Inner: } u = g(x) = x^{2}.$$\n\nBy the Chain Rule:\n\n$$F'(x) = f'(g(x)) \\cdot g'(x) = \\cos(x^{2}) \\cdot 2x = 2x\\cos(x^{2}).$$"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.30",
+      "number": "4.30",
+      "title": "Power of a Function",
+      "problem": "Differentiate $y = (3x + 1)^{5}$.",
+      "solution": "Outer: $f(u) = u^{5}$, inner: $u = 3x + 1$.\n\n$$y' = 5(3x+1)^{4} \\cdot 3 = 15(3x+1)^{4}.$$"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.31",
+      "number": "4.31",
+      "title": "Exponential with a Linear Argument",
+      "problem": "Differentiate $y = e^{3x}$.",
+      "solution": "Outer: $f(u) = e^{u}$, inner: $u = 3x$.\n\n$$y' = e^{3x} \\cdot 3 = 3e^{3x}.$$"
+    },
+    {
+      "type": "definition",
+      "id": "strategy-4.1",
+      "number": "Strategy",
+      "title": "Applying the Chain Rule",
+      "content": "1. **Identify the composition:** Ask \"what is the outermost operation?\" That is the outer function $f$. Everything inside is the inner function $g$.\n\n2. **Differentiate the outer function,** leaving the inner function unchanged (evaluate $f'$ at $g(x)$).\n\n3. **Multiply by the derivative of the inner function** ($g'(x)$).\n\n4. If there are multiple layers of composition, repeat from the outside in."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.32",
+      "number": "4.32",
+      "title": "Square Root of a Polynomial",
+      "problem": "Differentiate $f(x) = \\sqrt{x^{2} + 1}$.",
+      "solution": "Write $f(x) = (x^{2} + 1)^{1/2}$. Outer: $u^{1/2}$, inner: $u = x^{2} + 1$.\n\n$$f'(x) = \\frac{1}{2}(x^{2}+1)^{-1/2} \\cdot 2x = \\frac{2x}{2\\sqrt{x^{2}+1}} = \\frac{x}{\\sqrt{x^{2}+1}}.$$"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.33",
+      "number": "4.33",
+      "title": "Trig Function with Chain Rule",
+      "problem": "Differentiate $g(x) = \\cos(5x)$.",
+      "solution": "Outer: $\\cos u$, inner: $u = 5x$.\n\n$$g'(x) = -\\sin(5x) \\cdot 5 = -5\\sin(5x).$$"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.34",
+      "number": "4.34",
+      "title": "Tangent with Quadratic Argument",
+      "problem": "Differentiate $h(x) = \\tan(x^{2} + 1)$.",
+      "solution": "Outer: $\\tan u$, inner: $u = x^{2} + 1$.\n\n$$h'(x) = \\sec^{2}(x^{2}+1) \\cdot 2x = 2x\\sec^{2}(x^{2}+1).$$"
+    },
+    {
+      "type": "paragraph",
+      "edition": "christian",
+      "text": "*\"All this also comes from the Lord Almighty, whose plan is wonderful, whose wisdom is magnificent.\"* —Isaiah 28:29"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Combining the Chain Rule with Other Rules"
+    },
+    {
+      "type": "paragraph",
+      "text": "Most real-world derivatives require the Chain Rule in combination with the Product or Quotient Rule."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.35",
+      "number": "4.35",
+      "title": "Product Rule and Chain Rule Together",
+      "problem": "Differentiate $y = x^{3}\\sin(2x)$.",
+      "solution": "Use the Product Rule first, then the Chain Rule for $\\sin(2x)$:\n\n$$y' = 3x^{2}\\sin(2x) + x^{3} \\cdot \\frac{d}{dx}[\\sin(2x)]$$\n\n$$= 3x^{2}\\sin(2x) + x^{3} \\cdot \\cos(2x) \\cdot 2$$\n\n$$= 3x^{2}\\sin(2x) + 2x^{3}\\cos(2x).$$"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.36",
+      "number": "4.36",
+      "title": "Quotient Rule and Chain Rule",
+      "problem": "Differentiate $f(x) = \\dfrac{e^{2x}}{x^{2} + 1}$.",
+      "solution": "The numerator $e^{2x}$ requires the Chain Rule: $\\frac{d}{dx}[e^{2x}] = 2e^{2x}$.\n\n$$f'(x) = \\frac{2e^{2x}(x^{2}+1) - e^{2x}(2x)}{(x^{2}+1)^{2}}$$\n\n$$= \\frac{e^{2x}(2x^{2} + 2 - 2x)}{(x^{2}+1)^{2}}$$\n\n$$= \\frac{2e^{2x}(x^{2} - x + 1)}{(x^{2}+1)^{2}}.$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Multiple Applications of the Chain Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "When functions are nested several layers deep, we apply the Chain Rule repeatedly, peeling off one layer at a time from the outside."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.37",
+      "number": "4.37",
+      "title": "Double Application of Chain Rule",
+      "problem": "Differentiate $y = \\sin^{2}(3x)$, which means $[\\sin(3x)]^{2}$.",
+      "solution": "There are three layers: squaring, sine, and $3x$. We differentiate from the outside in.\n\n$$y' = 2[\\sin(3x)]^{1} \\cdot \\frac{d}{dx}[\\sin(3x)]$$\n\n$$= 2\\sin(3x) \\cdot \\cos(3x) \\cdot 3$$\n\n$$= 6\\sin(3x)\\cos(3x)$$\n\n$$= 3\\sin(6x).$$\n\nIn the last step, we used the double-angle identity $2\\sin\\theta\\cos\\theta = \\sin(2\\theta)$."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.38",
+      "number": "4.38",
+      "title": "Exponential of a Trig Function",
+      "problem": "Differentiate $f(x) = e^{\\sin x}$.",
+      "solution": "Outer: $e^{u}$, inner: $u = \\sin x$.\n\n$$f'(x) = e^{\\sin x} \\cdot \\cos x.$$"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.39",
+      "number": "4.39",
+      "title": "Three Nested Layers",
+      "problem": "Differentiate $g(x) = \\cos\\left(e^{x^{2}}\\right)$.",
+      "solution": "Layer 1 (outermost): $\\cos u$. Layer 2: $e^{v}$. Layer 3 (innermost): $v = x^{2}$.\n\n$$g'(x) = -\\sin\\left(e^{x^{2}}\\right) \\cdot \\frac{d}{dx}\\left[e^{x^{2}}\\right]$$\n\n$$= -\\sin\\left(e^{x^{2}}\\right) \\cdot e^{x^{2}} \\cdot 2x$$\n\n$$= -2x\\,e^{x^{2}}\\sin\\left(e^{x^{2}}\\right).$$"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.40",
+      "number": "4.40",
+      "title": "Square Root of a Trig Expression",
+      "problem": "Differentiate $h(x) = \\sqrt{1 + \\cos^{2} x}$.",
+      "solution": "Write $h(x) = (1 + \\cos^{2} x)^{1/2}$. The Chain Rule gives\n\n$$h'(x) = \\frac{1}{2}(1 + \\cos^{2} x)^{-1/2} \\cdot \\frac{d}{dx}[1 + \\cos^{2} x].$$\n\nFor $\\frac{d}{dx}[\\cos^{2} x]$, apply the Chain Rule again with outer $u^{2}$ and inner $u = \\cos x$:\n\n$$\\frac{d}{dx}[\\cos^{2} x] = 2\\cos x \\cdot (-\\sin x) = -2\\sin x\\cos x.$$\n\nTherefore,\n\n$$h'(x) = \\frac{-2\\sin x\\cos x}{2\\sqrt{1 + \\cos^{2} x}} = \\frac{-\\sin x\\cos x}{\\sqrt{1 + \\cos^{2} x}}.$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Chain Rule in Leibniz Notation"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Leibniz notation makes the Chain Rule look almost obvious. If $y = f(u)$ and $u = g(x)$, then"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$\\frac{dy}{dx} = \\frac{dy}{du}\\cdot\\frac{du}{dx}.$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "It appears as though the \"$du$\" cancels, like fractions. While $\\frac{dy}{du}$ and $\\frac{du}{dx}$ are *not* actually fractions, the notation is designed to make the Chain Rule natural."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.41",
+      "number": "4.41",
+      "title": "Leibniz Notation",
+      "problem": "If $y = u^{4}$ and $u = 3x^{2} + 1$, find $\\frac{dy}{dx}$.",
+      "solution": "$$\\frac{dy}{du} = 4u^{3}, \\qquad \\frac{du}{dx} = 6x.$$\n\nTherefore,\n\n$$\\frac{dy}{dx} = 4u^{3} \\cdot 6x = 24x(3x^{2}+1)^{3}.$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The General Power Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "A particularly common application of the Chain Rule combines it with the Power Rule."
+    },
+    {
+      "type": "theorem",
+      "id": "thm-4.12",
+      "number": "4.12",
+      "title": "The General Power Rule",
+      "content": "If $g$ is differentiable and $n$ is any real number, then\n\n$$\\frac{d}{dx}[g(x)]^{n} = n[g(x)]^{n-1}\\cdot g'(x).$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is simply the Chain Rule with outer function $u^{n}$."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.42",
+      "number": "4.42",
+      "title": "General Power Rule",
+      "problem": "Differentiate $f(x) = (x^{3} - 4x + 7)^{10}$.",
+      "solution": "$$f'(x) = 10(x^{3} - 4x + 7)^{9} \\cdot (3x^{2} - 4).$$\n\nWithout the Chain Rule, we would need to expand a tenth power—a nightmarish computation."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.43",
+      "number": "4.43",
+      "title": "Negative Power with Chain Rule",
+      "problem": "Differentiate $g(x) = \\dfrac{1}{(2x+5)^{3}}$.",
+      "solution": "Write $g(x) = (2x+5)^{-3}$. Then\n\n$$g'(x) = -3(2x+5)^{-4} \\cdot 2 = \\frac{-6}{(2x+5)^{4}}.$$"
+    },
+    {
+      "type": "definition",
+      "id": "caution-4.1",
+      "number": "Caution",
+      "title": "Do Not Forget the Inner Derivative",
+      "content": "The most common Chain Rule error is to forget the factor $g'(x)$. For instance, $\\frac{d}{dx}[\\sin(3x)] = \\cos(3x) \\cdot 3$, **not** just $\\cos(3x)$. Always ask: \"Did I multiply by the derivative of the inside?\""
+    },
+    {
+      "type": "example",
+      "id": "ex-4.44",
+      "number": "4.44",
+      "title": "Tangent Line Using Chain Rule",
+      "problem": "Find the equation of the tangent line to $y = (2x-1)^{4}$ at $x = 1$.",
+      "solution": "**Point:** At $x = 1$, $y = (2(1)-1)^{4} = 1^{4} = 1$.\n\n**Slope:** $y' = 4(2x-1)^{3} \\cdot 2 = 8(2x-1)^{3}$. At $x = 1$, $y' = 8(1)^{3} = 8$.\n\n**Equation:** $y - 1 = 8(x-1)$, i.e., $y = 8x - 7$."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.45",
+      "number": "4.45",
+      "title": "A Comprehensive Example",
+      "problem": "Differentiate $F(x) = \\dfrac{\\sin(2x)}{(x^{2}+1)^{3}}$.",
+      "solution": "Use the Quotient Rule, with Chain Rule for both numerator and denominator.\n\nNumerator: $\\sin(2x)$, derivative $= 2\\cos(2x)$.\n\nDenominator: $(x^{2}+1)^{3}$, derivative $= 3(x^{2}+1)^{2}\\cdot 2x = 6x(x^{2}+1)^{2}$.\n\n$$F'(x) = \\frac{2\\cos(2x)(x^{2}+1)^{3} - \\sin(2x)\\cdot 6x(x^{2}+1)^{2}}{(x^{2}+1)^{6}}$$\n\n$$= \\frac{(x^{2}+1)^{2}[2\\cos(2x)(x^{2}+1) - 6x\\sin(2x)]}{(x^{2}+1)^{6}}$$\n\n$$= \\frac{2\\cos(2x)(x^{2}+1) - 6x\\sin(2x)}{(x^{2}+1)^{4}}$$\n\n$$= \\frac{2(x^{2}+1)\\cos(2x) - 6x\\sin(2x)}{(x^{2}+1)^{4}}.$$"
+    },
+    {
+      "type": "paragraph",
+      "edition": "christian",
+      "text": "*\"In whom are hidden all the treasures of wisdom and knowledge.\"* —Colossians 2:3"
+    },
+    {
+      "type": "definition",
+      "id": "hist-4.1",
+      "number": "Historical Note",
+      "title": "The Chain Rule's Many Discoverers",
+      "content": "The Chain Rule appeared implicitly in the work of both Newton and Leibniz. Leibniz's notation $\\frac{dy}{dx} = \\frac{dy}{du}\\cdot\\frac{du}{dx}$ made the rule visually obvious, leading some to call it \"trivial\"—but this masks the deep analysis required for a rigorous proof. The first fully rigorous proof was given by Constantin Carathéodory in the early twentieth century."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.1",
+      "number": "1",
+      "problem": "Differentiate $f(x) = (2x+3)^{4}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.2",
+      "number": "2",
+      "problem": "Differentiate $g(x) = (x^{2} - 1)^{6}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.3",
+      "number": "3",
+      "problem": "Differentiate $h(x) = (5x^{3} + 2)^{7}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.4",
+      "number": "4",
+      "problem": "Differentiate $y = \\sqrt{4x + 1}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.5",
+      "number": "5",
+      "problem": "Differentiate $f(x) = (x^{2} + 3x)^{1/3}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.6",
+      "number": "6",
+      "problem": "Differentiate $y = \\frac{1}{(3x-2)^{4}}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.7",
+      "number": "7",
+      "problem": "Differentiate $f(x) = \\sin(3x)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.8",
+      "number": "8",
+      "problem": "Differentiate $g(x) = \\cos(x^{3})$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.9",
+      "number": "9",
+      "problem": "Differentiate $h(x) = \\tan(2x + 1)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.10",
+      "number": "10",
+      "problem": "Differentiate $y = \\sin(x^{2} + 1)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.11",
+      "number": "11",
+      "problem": "Differentiate $f(x) = e^{5x}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.12",
+      "number": "12",
+      "problem": "Differentiate $g(x) = e^{-x^{2}}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.13",
+      "number": "13",
+      "problem": "Differentiate $h(x) = e^{\\sin x}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.14",
+      "number": "14",
+      "problem": "Differentiate $y = \\sin^{3}(x)$ (that is, $[\\sin x]^{3}$)."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.15",
+      "number": "15",
+      "problem": "Differentiate $f(x) = \\cos^{4}(2x)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.16",
+      "number": "16",
+      "problem": "Differentiate $g(x) = \\sec(3x)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.17",
+      "number": "17",
+      "problem": "Differentiate $h(x) = \\sqrt{\\sin x}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.18",
+      "number": "18",
+      "problem": "Differentiate $y = \\sqrt{x^{2} + e^{x}}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.19",
+      "number": "19",
+      "problem": "Differentiate $f(x) = x^{2}\\sin(3x)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.20",
+      "number": "20",
+      "problem": "Differentiate $g(x) = e^{2x}\\cos(5x)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.21",
+      "number": "21",
+      "problem": "Differentiate $h(x) = (x+1)^{3}(x-2)^{4}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.22",
+      "number": "22",
+      "problem": "Differentiate $y = \\frac{\\sin x}{(x^{2}+1)^{2}}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.23",
+      "number": "23",
+      "problem": "Differentiate $f(x) = \\frac{e^{3x}}{x + 1}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.24",
+      "number": "24",
+      "problem": "Find the equation of the tangent line to $y = \\sqrt{x^{2}+5}$ at $x = 2$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.25",
+      "number": "25",
+      "problem": "Find the equation of the tangent line to $y = \\sin^{2}(x)$ at $x = \\pi/4$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.26",
+      "number": "26",
+      "problem": "Find $\\frac{dy}{dx}$ if $y = u^{3}$ and $u = x^{2} + 1$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.27",
+      "number": "27",
+      "problem": "Find all $x$ in $[0, 2\\pi)$ where $f(x) = \\sin(2x)$ has a horizontal tangent."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.28",
+      "number": "28",
+      "problem": "Differentiate $y = \\sin(\\cos x)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.29",
+      "number": "29",
+      "problem": "Differentiate $f(x) = e^{e^{x}}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.30",
+      "number": "30",
+      "problem": "Differentiate $g(x) = \\cos\\!\\left(\\sqrt{x}\\right)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.31",
+      "number": "31",
+      "problem": "Differentiate $y = \\sin^{2}(\\cos(3x))$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.32",
+      "number": "32",
+      "problem": "Differentiate $f(x) = \\left(\\frac{x+1}{x-1}\\right)^{5}$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.33",
+      "number": "33",
+      "problem": "Differentiate $g(x) = \\sqrt[3]{\\tan(x^{2})}$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.34",
+      "number": "34",
+      "problem": "Find $\\frac{d^2y}{dx^2}$ if $y = \\sin(x^{2})$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.35",
+      "number": "35",
+      "problem": "Differentiate $h(x) = e^{\\sin(x^{2})}$ and evaluate $h'(0)$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.36",
+      "number": "36",
+      "problem": "If $f(x) = [g(x)]^{3}$ and $g(2) = 5$, $g'(2) = -1$, find $f'(2)$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.37",
+      "number": "37",
+      "problem": "If $h(x) = f(g(x))$, $f'(3) = 7$, $g(1) = 3$, and $g'(1) = -2$, find $h'(1)$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.38",
+      "number": "38",
+      "problem": "Verify the Chain Rule for $f(g(x))$ where $f(u) = u^{2}$ and $g(x) = 3x + 1$ by computing the derivative directly (expand and differentiate) and by the Chain Rule.",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.39",
+      "number": "39",
+      "problem": "The atmospheric pressure at altitude $h$ (in km) above sea level can be modeled by $P(h) = 101.3\\,e^{-0.12h}$ kPa. A weather balloon rises at a rate of $\\frac{dh}{dt} = 2$ km/hr. Use the Chain Rule to find $\\frac{dP}{dt}$ when $h = 5$ km. Interpret your answer.",
+      "proof": true,
+      "creation_reveals": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.4.40",
+      "number": "40",
+      "problem": "Show that if $y = f(ax + b)$ where $a$ and $b$ are constants and $f$ is differentiable, then $y' = a\\,f'(ax+b)$.",
+      "proof": true
+    }
+  ]
+}

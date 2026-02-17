@@ -1,0 +1,240 @@
+{
+  "id": "precalculus-ch03-sec03",
+  "title": "Graphing Rational Functions",
+  "chapter": 3,
+  "section": 3,
+  "book": "precalculus",
+  "objectives": [
+    "Apply a systematic strategy to graph rational functions",
+    "Find $x$-intercepts, $y$-intercepts, and asymptotes",
+    "Determine the behavior of a graph in each region",
+    "Sketch accurate graphs of rational functions by hand",
+    "Use symmetry to simplify graphing when applicable",
+    "Analyze graphs to determine possible function formulas\nitemize"
+  ],
+  "devotional": {
+    "title": "Seeing the Whole Picture",
+    "scripture": "1 Corinthians 13:12; Psalm 119:105",
+    "content": "{AtlasWarmN}{ow \nwe see only a reflection} as in a mirror; then we shall see face to face. \nNow I know in part; then I shall know fully, even as I am fully known.\n\nWhen we graph a function, we create a visual representation of an \nabstract relationship. The graph reveals patterns, boundaries, and \nbehaviors that might not be obvious from the formula alone. Yet even \nthe most detailed graph is only a partial picture—we can never draw \nevery point, never capture every nuance.\n\nGraphing rational functions requires us to consider many features: \nintercepts where the function touches the axes, asymptotes that mark \nforbidden boundaries, and the careful behavior of the curve as it \nnavigates between these constraints. Each piece of information \ncontributes to our understanding of the whole.\n\nIn the same way, our understanding of truth and meaning comes piece by \npiece. The Psalmist writes that God's word is a lamp to our feet and a \nlight to our path—not a floodlight illuminating everything at once, \nbut a lamp providing enough light for the next step. We graph our \nunderstanding of life one insight at a time.\n\nAs you work through these graphs, remember that the goal is not just \nto draw curves but to understand relationships. Each graph tells a \nstory about how one quantity depends on another.",
+    "reflection": "Graphing requires integrating many pieces of \ninformation into a coherent whole. How do you integrate different \nsources of knowledge—reason, experience, Scripture, community—into \na coherent understanding of truth?"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"The boundary lines have fallen for me in pleasant \nplaces.\"*{Psalm 16:6}%\n{A mathematician, like a painter or poet, is a maker of patterns.}{G. H. Hardy}"
+    },
+    {
+      "type": "paragraph",
+      "text": "With asymptotes and intercepts as guides, we can sketch accurate graphs \nof rational functions by understanding their key features. This section \npresents a systematic approach to graphing."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Graphing Strategy"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-3.3",
+      "number": null,
+      "title": "Graphing Rational Functions",
+      "content": "To graph a rational function $f(x) = \\dfrac{P(x)}{Q(x)}$:\n\n1. **Factor** both numerator and denominator completely.\n\n2. **Simplify** if possible; note any holes (cancelled factors).\n\n3. **Find the domain** (exclude zeros of the original denominator).\n\n4. **Find intercepts:**\n itemize\n\n5. $y$-intercept: Evaluate $f(0)$ if $0$ is in the domain\n\n6. $x$-intercepts: Solve $P(x) = 0$ (zeros of the numerator that are in the domain)\n itemize\n\n7. **Find asymptotes:**\n itemize\n\n8. Vertical: Zeros of the denominator (after simplification)\n\n9. Horizontal or slant: Compare degrees (or use long division)\n itemize\n\n10. **Check for symmetry:**\n itemize\n\n11. If $f(-x) = f(x)$: even function (symmetric about $y$-axis)\n\n12. If $f(-x) = -f(x)$: odd function (symmetric about origin)\n itemize\n\n13. **Plot additional points** as needed, especially between and beyond asymptotes.\n\n14. **Sketch** the graph, connecting points while respecting asymptotes."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Basic Graphs"
+    },
+    {
+      "type": "paragraph",
+      "text": "Let's begin with some fundamental rational functions that serve as \nbuilding blocks."
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "The reciprocal function",
+      "problem": "Graph $f(x) = \\dfrac{1}{x}$.",
+      "solution": "**Step 1:** Already in lowest terms.\n\n**Step 2:** No cancellation, no holes.\n\n**Step 3:** Domain: $(-\\infty, 0) \\cup (0, \\infty)$\n\n**Step 4:** Intercepts:\n\n- $y$-intercept: $f(0)$ is undefined. No $y$-intercept.\n\n- $x$-intercept: $\\frac{1}{x} = 0$ has no solution. No $x$-intercept.\n\n**Step 5:** Asymptotes:\n\n- Vertical: $x = 0$\n\n- Horizontal: $y = 0$ (degree $0 < 1$)\n\n**Step 6:** Symmetry: $f(-x) = \\frac{1}{-x} = -\\frac{1}{x} = -f(x)$. \nOdd function—symmetric about the origin.\n\n**Step 7:** Additional points: $f(1) = 1$, $f(2) = 0.5$, $f(-1) = -1$, $f(-2) = -0.5$\n\n**Step 8:** Sketch:\n\ncenter\ntikzpicture[scale=0.8]\n (-4,0) – (4,0) node[right] {$x$};\n (0,-4) – (0,4) node[above] {$y$};\n \n % Asymptotes\n (-4,0) – (4,0);\n \n % Function\n plot (, {1/});\n plot (, {1/});\n \n % Key points\n lldraw (1,1) circle (2pt) node[above right] {$(1,1)$};\n lldraw (-1,-1) circle (2pt) node[below left] {$(-1,-1)$};\n \n % Labels\n at (2.5,2.5) {$f(x) = \\frac{1}{x}$};\ntikzpicture\ncenter\n\nThis is the **parent function** for rational functions. Note the \ntwo branches in Quadrants I and III, reflecting the odd symmetry."
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "The squared reciprocal",
+      "problem": "Graph $g(x) = \\dfrac{1}{x^2}$.",
+      "solution": "**Intercepts:** None (same reasoning as $\\frac{1}{x}$).\n\n**Asymptotes:** Vertical at $x = 0$; horizontal at $y = 0$.\n\n**Symmetry:** $g(-x) = \\frac{1}{(-x)^2} = \\frac{1}{x^2} = g(x)$. \nEven function—symmetric about the $y$-axis.\n\n**Key difference from $\\frac{1}{x}$:** Since $x^2 > 0$ for all \n$x \\neq 0$, we have $g(x) > 0$ always. Both branches are above the \n$x$-axis.\n\ncenter\ntikzpicture[scale=0.8]\n (-4,0) – (4,0) node[right] {$x$};\n (0,-0.5) – (0,4) node[above] {$y$};\n \n % Function\n plot (, {1/()});\n plot (, {1/()});\n \n % Key points\n lldraw (1,1) circle (2pt) node[right] {$(1,1)$};\n lldraw (-1,1) circle (2pt) node[left] {$(-1,1)$};\n \n % Labels\n at (2.5,2.5) {$g(x) = \\frac{1}{x^2}$};\ntikzpicture\ncenter\n\nNote how the even symmetry places both branches in the same position \nrelative to the $y$-axis, and both branches approach $+\\infty$ near the \nvertical asymptote."
+    },
+    {
+      "type": "paragraph",
+      "text": "{x}$ and $$\\frac{1}{x^2}$$: The odd function \nhas branches in opposite quadrants; the even function has branches in \nthe same quadrants relative to the $y$-axis.}"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Complete Graphing Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-3.3",
+      "number": "3.3",
+      "title": "Graph with one vertical asymptote",
+      "problem": "Sketch the graph of $f(x) = \\dfrac{2x + 1}{x - 1}$.",
+      "solution": "**Factor:** Already in simplest form.\n\n**Domain:** $(-\\infty, 1) \\cup (1, \\infty)$\n\n**Intercepts:**\n\n- $y$-intercept: $f(0) = \\frac{1}{-1} = -1$. Point: $(0, -1)$\n\n- $x$-intercept: $2x + 1 = 0 \\Rightarrow x = -\\frac{1}{2}$. Point: $(-\\frac{1}{2}, 0)$\n\n**Asymptotes:**\n\n- Vertical: $x = 1$\n\n- Horizontal: $y = \\frac{2}{1} = 2$ (equal degrees)\n\n**Behavior near $x = 1$:**\n\n- At $x = 0.9$: $f(0.9) = \\frac{2.8}{-0.1} = -28 \\to -\\infty$\n\n- At $x = 1.1$: $f(1.1) = \\frac{3.2}{0.1} = 32 \\to +\\infty$\n\n**Additional points:**\n\n- $f(-2) = \\frac{-3}{-3} = 1$\n\n- $f(3) = \\frac{7}{2} = 3.5$\n\ncenter\ntikzpicture[scale=0.6]\n (-5,0) – (6,0) node[right] {$x$};\n (0,-5) – (0,6) node[above] {$y$};\n \n % Asymptotes\n (1,-5) – (1,6);\n (-5,2) – (6,2);\n \n % Function\n plot (, {(2*+1)/(-1)});\n plot (, {(2*+1)/(-1)});\n \n % Key points\n lldraw (0,-1) circle (3pt);\n lldraw (-0.5,0) circle (3pt);\n \n % Labels\n at (1,-5.5) { $x=1$};\n at (6.5,2) { $y=2$};\ntikzpicture\ncenter"
+    },
+    {
+      "type": "example",
+      "id": "example-3.4",
+      "number": "3.4",
+      "title": "Graph with two vertical asymptotes",
+      "problem": "Sketch the graph of $f(x) = \\dfrac{x - 1}{x^2 - 4}$.",
+      "solution": "**Factor:** $f(x) = \\dfrac{x - 1}{(x-2)(x+2)}$. No cancellation.\n\n**Domain:** $(-\\infty, -2) \\cup (-2, 2) \\cup (2, \\infty)$\n\n**Intercepts:**\n\n- $y$-intercept: $f(0) = \\frac{-1}{-4} = \\frac{1}{4}$. Point: $(0, \\frac{1}{4})$\n\n- $x$-intercept: $x - 1 = 0 \\Rightarrow x = 1$. Point: $(1, 0)$\n\n**Asymptotes:**\n\n- Vertical: $x = 2$ and $x = -2$\n\n- Horizontal: $y = 0$ (degree 1 < degree 2)\n\n**Behavior analysis:** Test points in each region:\n\n| Interval | Test point | $f(x)$ value | Sign |\n| $(-\\infty, -2)$ | $x = -3$ | $\\frac{-4}{5} = -0.8$ | negative |\n| $(-2, 1)$ | $x = 0$ | $\\frac{1}{4}$ | positive |\n| $(1, 2)$ | $x = 1.5$ | $\\frac{0.5}{-1.75} \\approx -0.29$ | negative |\n| $(2, \\infty)$ | $x = 3$ | $\\frac{2}{5} = 0.4$ | positive |\n\ncenter\ntikzpicture[scale=0.55]\n (-5,0) – (5,0) node[right] {$x$};\n (0,-4) – (0,4) node[above] {$y$};\n \n % Asymptotes\n (-2,-4) – (-2,4);\n (2,-4) – (2,4);\n \n % Function pieces\n \n plot (, {(-1)/((-2)*(+2))});\n \n plot (, {(-1)/((-2)*(+2))});\n \n plot (, {(-1)/((-2)*(+2))});\n \n % Key points\n lldraw (1,0) circle (3pt);\n lldraw (0,0.25) circle (3pt);\n \n at (-2,-4.5) { $x=-2$};\n at (2,-4.5) { $x=2$};\ntikzpicture\ncenter"
+    },
+    {
+      "type": "example",
+      "id": "example-3.5",
+      "number": "3.5",
+      "title": "Graph with a hole",
+      "problem": "Sketch the graph of $g(x) = \\dfrac{x^2 - 4}{x - 2}$.",
+      "solution": "**Factor:** $g(x) = \\dfrac{(x-2)(x+2)}{x-2} = x + 2$, for $x \\neq 2$.\n\n**Analysis:** The graph is the line $y = x + 2$ with a hole at \n$x = 2$.\n\n**Hole coordinates:** At $x = 2$, the simplified form gives \n$y = 2 + 2 = 4$. Hole at $(2, 4)$.\n\n**No asymptotes:** The simplified function is a polynomial.\n\ncenter\ntikzpicture[scale=0.6]\n (-3,0) – (5,0) node[right] {$x$};\n (0,-1) – (0,6) node[above] {$y$};\n \n % Line y = x + 2\n plot (, { + 2});\n \n % Hole at (2, 4)\n (2,4) circle (4pt);\n \n % Label\n at (2.3,4) {$(2, 4)$};\n \n % Grid marks\n in {-2,-1,1,2,3,4} (,0.1) – (,-0.1) node[below] { $\\x$};\n in {1,2,3,4,5} (0.1,) – (-0.1,) node[left] { $\\y$};\ntikzpicture\ncenter"
+    },
+    {
+      "type": "example",
+      "id": "example-3.6",
+      "number": "3.6",
+      "title": "Graph with slant asymptote",
+      "problem": "Sketch the graph of $h(x) = \\dfrac{x^2 - 1}{x - 2}$.",
+      "solution": "**Factor numerator:** $h(x) = \\dfrac{(x-1)(x+1)}{x-2}$. No cancellation.\n\n**Domain:** $(-\\infty, 2) \\cup (2, \\infty)$\n\n**Intercepts:**\n\n- $y$-intercept: $h(0) = \\frac{-1}{-2} = \\frac{1}{2}$. Point: $(0, \\frac{1}{2})$\n\n- $x$-intercepts: $x = 1$ and $x = -1$. Points: $(1, 0)$ and $(-1, 0)$\n\n**Asymptotes:**\n\n- Vertical: $x = 2$\n\n- Slant: Perform long division:\n \\[\n \\frac{x^2 - 1}{x - 2} = x + 2 + \\frac{3}{x - 2}\n \\]\n Slant asymptote: $y = x + 2$\n\n**Behavior near $x = 2$:**\n\n- At $x = 1.9$: $h(1.9) = \\frac{2.61}{-0.1} = -26.1 \\to -\\infty$\n\n- At $x = 2.1$: $h(2.1) = \\frac{3.41}{0.1} = 34.1 \\to +\\infty$\n\ncenter\ntikzpicture[scale=0.5]\n (-5,0) – (7,0) node[right] {$x$};\n (0,-6) – (0,8) node[above] {$y$};\n \n % Asymptotes\n (2,-6) – (2,8);\n plot (, { + 2});\n \n % Function\n \n plot (, {( - 1)/( - 2)});\n \n plot (, {( - 1)/( - 2)});\n \n % Key points\n lldraw (1,0) circle (3pt);\n lldraw (-1,0) circle (3pt);\n lldraw (0,0.5) circle (3pt);\n \n at (2,-6.5) { $x=2$};\n at (5.5,7) { $y=x+2$};\ntikzpicture\ncenter\n\nNotice how the graph approaches the slant asymptote $y = x + 2$ as \n$x \\to \\pm\\infty$, curving away near the vertical asymptote."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Using Symmetry"
+    },
+    {
+      "type": "paragraph",
+      "text": "Symmetry can significantly reduce the work needed to graph a function. \nIf a function has symmetry, you only need to graph half of it and \nreflect."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "Symmetry of Rational Functions",
+      "content": "For a rational function $f(x) = \\dfrac{P(x)}{Q(x)}$:\n\n- $f$ is **even** (symmetric about the $y$-axis) if both $P$ \n and $Q$ contain only even powers of $x$.\n\n- $f$ is **odd** (symmetric about the origin) if one of $P$, \n $Q$ has only even powers and the other has only odd powers.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-3.7",
+      "number": "3.7",
+      "title": "Graphing with symmetry",
+      "problem": "Sketch $f(x) = \\dfrac{x}{x^2 - 4}$ using symmetry.",
+      "solution": "Check for symmetry:\n\\[\n f(-x) = \\frac{-x}{(-x)^2 - 4} = \\frac{-x}{x^2 - 4} = -f(x)\n\\]\nThe function is odd (origin symmetry).\n\n**Only graph the right half, then reflect through the origin.**\n\n**For $x > 0$:**\n\n- Domain issue at $x = 2$ (vertical asymptote)\n\n- $x$-intercept at $x = 0$ (on the axis of symmetry)\n\n- Horizontal asymptote at $y = 0$\n\n- $f(1) = \\frac{1}{-3} = -\\frac{1}{3}$\n\n- $f(3) = \\frac{3}{5}$\n\ncenter\ntikzpicture[scale=0.6]\n (-5,0) – (5,0) node[right] {$x$};\n (0,-4) – (0,4) node[above] {$y$};\n \n % Asymptotes\n (2,-4) – (2,4);\n (-2,-4) – (-2,4);\n \n % Function\n \n plot (, {/(() - 4)});\n \n plot (, {/(() - 4)});\n \n plot (, {/(() - 4)});\n \n lldraw (0,0) circle (3pt);\n \n at (3.5,2.5) { odd symmetry};\ntikzpicture\ncenter"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Writing Functions from Graphs"
+    },
+    {
+      "type": "paragraph",
+      "text": "Given a graph with its key features, we can work backward to find a \npossible function formula."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-3.3",
+      "number": null,
+      "title": "Finding a Rational Function from Its Graph",
+      "content": "1. Identify vertical asymptotes at $x = a, b, \\ldots$; these give \n factors $(x - a), (x - b), \\ldots$ in the denominator.\n\n2. Identify $x$-intercepts at $x = r, s, \\ldots$; these give \n factors $(x - r), (x - s), \\ldots$ in the numerator.\n\n3. Use the horizontal asymptote to determine the ratio of leading \n coefficients or if extra factors are needed.\n\n4. Use another point on the graph to find any constant multiplier."
+    },
+    {
+      "type": "example",
+      "id": "example-3.8",
+      "number": "3.8",
+      "title": "Finding a function from a graph",
+      "problem": "Find a rational function with:\n\n- Vertical asymptotes at $x = -1$ and $x = 3$\n\n- $x$-intercept at $x = 1$\n\n- Horizontal asymptote at $y = 2$",
+      "solution": "From the asymptotes and intercepts:\n\n- Denominator factors: $(x + 1)(x - 3)$\n\n- Numerator factor: $(x - 1)$\n\nFor horizontal asymptote $y = 2$ with degree of numerator = degree of \ndenominator, we need the numerator to also be degree 2. Add another \nlinear factor and adjust the leading coefficient:\n\n\\[\n f(x) = \\frac{2(x - 1)(x - a)}{(x + 1)(x - 3)}\n\\]\n\nIf we want the simplest case with one $x$-intercept, we can use:\n\\[\n f(x) = \\frac{2(x - 1)^2}{(x + 1)(x - 3)}\n\\]\n\nCheck: As $x \\to \\infty$, $f(x) \\to \\frac{2x^2}{x^2} = 2$. ✓\n\nThis is one possible answer. Others exist depending on additional \nconstraints."
+    },
+    {
+      "type": "example",
+      "id": "example-3.9",
+      "number": "3.9",
+      "title": "Complete reconstruction",
+      "problem": "Find a rational function whose graph has:\n\n- Vertical asymptote at $x = 2$\n\n- Hole at $x = -1$\n\n- Horizontal asymptote at $y = 1$\n\n- Passes through the origin",
+      "solution": "**Step 1:** Vertical asymptote at $x = 2$ means $(x - 2)$ is in \nthe denominator (but not the numerator).\n\n**Step 2:** Hole at $x = -1$ means $(x + 1)$ is in both numerator \nand denominator.\n\n**Step 3:** For horizontal asymptote $y = 1$ with equal degrees, \nwe need equal leading coefficients.\n\nTentative form:\n\\[\n f(x) = \\frac{(x + 1)(\\text{something})}{(x + 1)(x - 2)}\n\\]\n\nFor equal degrees and leading coefficient ratio = 1, let's try:\n\\[\n f(x) = \\frac{(x + 1)(x + a)}{(x + 1)(x - 2)} = \\frac{x + a}{x - 2} \\quad (x \\neq -1)\n\\]\n\n**Step 4:** Passes through origin means $f(0) = 0$:\n\\[\n f(0) = \\frac{0 + a}{0 - 2} = \\frac{a}{-2} = 0 \\implies a = 0\n\\]\n\n**Final answer:**\n\\[\n f(x) = \\frac{x(x + 1)}{(x + 1)(x - 2)} = \\frac{x}{x - 2}, \\quad x \\neq -1\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of Graphing"
+    },
+    {
+      "type": "paragraph",
+      "text": "Understanding rational function graphs helps us analyze real-world \nsituations."
+    },
+    {
+      "type": "example",
+      "id": "example-3.10",
+      "number": "3.10",
+      "title": "Average cost function",
+      "problem": "A company has fixed costs of \\$5000 and variable costs of \\$20 per unit. \nThe average cost per unit is:\n\\[\n \\bar{C}(x) = \\frac{5000 + 20x}{x} = \\frac{5000}{x} + 20\n\\]\nAnalyze this function graphically.",
+      "solution": "**Domain:** $x > 0$ (can't produce negative units; $x = 0$ undefined)\n\n**Asymptotes:**\n\n- Vertical: $x = 0$ (can't produce zero units)\n\n- Horizontal: $y = 20$ (as production increases, average cost \n approaches variable cost)\n\n**Key points:**\nitemize\n $\\bar{C}(100) = 50 + 20 = \\$70$ per unit\n \\item $C(500) = 10 + 20 = \\$30$ per unit\n $\\bar{C}(1000) = 5 + 20 = \\$25$ per unit\n\\end{itemize}\n\n\\textbf{Interpretation:} As production increases, the fixed costs are \nspread over more units, so average cost decreases toward \\$20. This \nillustrates *economies of scale*."
+    },
+    {
+      "type": "summary",
+      "id": "summary-3.3",
+      "number": null,
+      "title": "Section 3.3 Summary",
+      "content": "- Follow a systematic strategy: factor, simplify, find domain, \n intercepts, asymptotes, and test points.\n\n- Use symmetry (even or odd) to reduce graphing work.\n\n- Vertical asymptotes: graph approaches $\\pm\\infty$; test signs \n to determine direction.\n\n- Horizontal/slant asymptotes: describe end behavior.\n\n- Holes: single missing points; use simplified form to find \n coordinates.\n\n- To find a function from a graph: use asymptotes for denominator \n factors, intercepts for numerator factors."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Basic Graphing**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Complete Graphing**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Symmetry**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Finding Functions**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Behavior Analysis**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Applications**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Challenge Problems**"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 4:26",
+      "text": "Give careful thought to the paths for \nyour feet and be steadfast in all your ways."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 15:22",
+      "text": "Plans fail for lack of counsel, but \nwith many advisers they succeed."
+    },
+    {
+      "type": "scripture",
+      "reference": "Luke 14:28",
+      "text": "Suppose one of you wants to build a tower. \nWon't you first sit down and estimate the cost to see if you have \nenough money to complete it?"
+    }
+  ]
+}

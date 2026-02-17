@@ -1,0 +1,340 @@
+{
+  "id": "precalculus-ch03-sec02",
+  "title": "Asymptotes",
+  "chapter": 3,
+  "section": 2,
+  "book": "precalculus",
+  "objectives": [
+    "Find vertical asymptotes of rational functions",
+    "Distinguish between holes (removable discontinuities) and vertical asymptotes",
+    "Find horizontal asymptotes using degree comparison",
+    "Find slant (oblique) asymptotes using polynomial division",
+    "Determine the behavior of a function near its asymptotes",
+    "Use asymptotes to understand end behavior\nitemize"
+  ],
+  "devotional": {
+    "title": "Approaching the Infinite",
+    "scripture": "Isaiah 55:8--9; Psalm 147:5",
+    "content": "{AtlasWarmT}{he \nprophet Isaiah} reminds us that God's ways are higher than our ways, \nHis thoughts higher than our thoughts. The gap between finite human \nunderstanding and infinite divine wisdom is unbridgeable—we can \napproach, but never fully arrive.\n\nAsymptotes in mathematics capture this same idea. An asymptote is a \nline that a curve approaches but never reaches, getting infinitely \nclose yet forever separated. The function $f(x) = \\frac{1}{x}$ \napproaches the $x$-axis as $x$ grows large, coming within any distance \nyou name, yet never touching it.\n\nThis mathematical phenomenon points to a deep truth: some things can \nonly be approached asymptotically. Perfect virtue, complete understanding, \ninfinite love—these are asymptotes of the human soul. We grow ever \ncloser, yet the gap remains. This is not cause for despair but for \nhumility and continued striving.\n\nThe vertical asymptote presents a different picture: a boundary that \ncannot be crossed, a wall where the function explodes to infinity. \nHere we encounter the mathematical analogue of forbidden territory—the \ndivision by zero that makes no sense.\n\nGreat is our Lord and mighty in power; His understanding has no limit \n(Psalm 147:5). Where our functions have asymptotes, God's knowledge \nhas none.",
+    "reflection": "What are the \"asymptotes\" in your pursuit of \nwisdom and virtue? How does the concept of approaching without arriving \nshape your understanding of spiritual growth?"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"As the heavens are higher than the earth, so are my \nways higher than your ways and my thoughts than your thoughts.\"*{Isaiah 55:9}%\n{In mathematics the art of proposing a question must be held of higher value than solving it.}{Georg Cantor}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Asymptotes are lines that a graph approaches but never (or only momentarily) \nreaches. They reveal the behavior of rational functions near forbidden \ninputs and at extreme values. Understanding asymptotes is essential for \nsketching accurate graphs and analyzing function behavior."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Vertical Asymptotes"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.1",
+      "number": "3.1",
+      "title": "Vertical Asymptote",
+      "content": "The line $x = a$ is a **vertical asymptote** \nof the function $f$ if $f(x) \\to +\\infty$ or $f(x) \\to -\\infty$ as $x$ \napproaches $a$ from either side."
+    },
+    {
+      "type": "paragraph",
+      "text": "For a rational function $f(x) = \\frac{P(x)}{Q(x)}$ written in lowest \nterms (no common factors), vertical asymptotes occur at the zeros of \n$Q(x)$—precisely where the denominator is zero but the numerator is \nnot."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "Finding Vertical Asymptotes",
+      "content": "Let $f(x) = \\frac{P(x)}{Q(x)}$ be a rational function reduced to lowest \nterms. The graph of $f$ has a vertical asymptote at $x = a$ if and only \nif $Q(a) = 0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Finding vertical asymptotes---basic",
+      "problem": "Find the vertical asymptotes of each function.\n\n1. $f(x) = \\dfrac{1}{x - 3}$\n\n2. $g(x) = \\dfrac{x + 1}{x^2 - 4}$\n\n3. $h(x) = \\dfrac{2x}{x^2 + 1}$",
+      "solution": "1. Set $x - 3 = 0 \\Rightarrow x = 3$. \n \n Vertical asymptote: $\\boxed{x = 3}$\n\n2. Factor: $x^2 - 4 = (x-2)(x+2) = 0 \\Rightarrow x = \\pm 2$. \n \n Since neither value makes the numerator zero, both give asymptotes.\n \n Vertical asymptotes: $\\boxed{x = 2 \\text{ and } x = -2}$\n\n3. Set $x^2 + 1 = 0 \\Rightarrow x^2 = -1$. This has no real \n solutions (the sum of a square and a positive is always positive).\n \n Vertical asymptotes: $\\boxed{\\text{None}}$"
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Finding vertical asymptotes---factoring required",
+      "problem": "Find the vertical asymptotes of $f(x) = \\dfrac{x + 2}{x^2 + 5x + 6}$.",
+      "solution": "Factor the denominator:\n\\[\n x^2 + 5x + 6 = (x + 2)(x + 3)\n\\]\n\nSet each factor to zero: $x = -2$ or $x = -3$.\n\nBut wait! The numerator is $x + 2$, which is zero when $x = -2$. So the \nfactor $(x + 2)$ cancels:\n\\[\n f(x) = \\frac{x + 2}{(x+2)(x+3)} = \\frac{1}{x + 3}, \\quad x \\neq -2\n\\]\n\nIn lowest terms, only $x = -3$ gives a zero denominator.\n\nVertical asymptote: $\\boxed{x = -3}$\n\n(At $x = -2$, there is a hole, not an asymptote—see the next subsection.)"
+    },
+    {
+      "type": "example",
+      "id": "example-3.3",
+      "number": "3.3",
+      "title": "Multiple asymptotes from higher-degree denominator",
+      "problem": "Find all vertical asymptotes of $g(x) = \\dfrac{x}{x^3 - 4x}$.",
+      "solution": "Factor the denominator:\n\\[\n x^3 - 4x = x(x^2 - 4) = x(x-2)(x+2)\n\\]\n\nSetting each factor to zero: $x = 0$, $x = 2$, $x = -2$.\n\nCheck the numerator: $x = 0$ when $x = 0$. So the factor $x$ cancels:\n\\[\n g(x) = \\frac{x}{x(x-2)(x+2)} = \\frac{1}{(x-2)(x+2)}, \\quad x \\neq 0\n\\]\n\nVertical asymptotes: $\\boxed{x = 2 \\text{ and } x = -2}$\n\n(At $x = 0$, there is a hole.)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Holes (Removable Discontinuities)"
+    },
+    {
+      "type": "paragraph",
+      "text": "If a factor cancels from both the numerator and denominator, the result \nis a **hole** (also called a **removable \ndiscontinuity**) rather than a vertical \nasymptote. The function is undefined at that point, but the graph has a \nsingle missing point rather than asymptotic behavior."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.2",
+      "number": "3.2",
+      "title": "Holes vs. Vertical Asymptotes",
+      "content": "For a rational function $f(x) = \\frac{P(x)}{Q(x)}$:\n\n- If $(x - a)$ is a factor of both $P(x)$ and $Q(x)$, then \n $x = a$ is a **hole**.\n\n- If $(x - a)$ is a factor of $Q(x)$ but not $P(x)$, then \n $x = a$ is a **vertical asymptote**.\nTo find the $y$-coordinate of a hole, evaluate the simplified function \nat $x = a$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-3.4",
+      "number": "3.4",
+      "title": "Distinguishing holes from asymptotes",
+      "problem": "Analyze $f(x) = \\dfrac{x^2 - 1}{x - 1}$ for holes and asymptotes.",
+      "solution": "Factor the numerator:\n\\[\n f(x) = \\frac{(x-1)(x+1)}{x-1} = x + 1, \\quad x \\neq 1\n\\]\n\nThe factor $(x - 1)$ cancels, creating a hole at $x = 1$, not a vertical \nasymptote.\n\nTo find the $y$-coordinate of the hole, use the simplified form:\n$y = 1 + 1 = 2$.\n\nThe graph is the line $y = x + 1$ with a hole at the point $(1, 2)$.\n\ncenter\ntikzpicture[scale=0.7]\n (-2,0) – (4,0) node[right] {$x$};\n (0,-1) – (0,4) node[above] {$y$};\n \n % The line y = x + 1\n plot (, { + 1});\n \n % Hole at (1, 2)\n (1,2) circle (3pt);\n \n % Labels\n at (1,2) {$(1, 2)$};\ntikzpicture\ncenter"
+    },
+    {
+      "type": "example",
+      "id": "example-3.5",
+      "number": "3.5",
+      "title": "Function with both a hole and an asymptote",
+      "problem": "Find all holes and vertical asymptotes of $g(x) = \\dfrac{x^2 - 9}{x^2 - x - 6}$.",
+      "solution": "Factor completely:\n$$\n g(x) &= \\frac{(x-3)(x+3)}{(x-3)(x+2)}\n$$\n\nThe factor $(x - 3)$ appears in both numerator and denominator, so \n$x = 3$ is a **hole**.\n\nThe factor $(x + 2)$ appears only in the denominator, so $x = -2$ is a \n**vertical asymptote**.\n\nSimplified form: $g(x) = \\dfrac{x+3}{x+2}$, $x \\neq 3$\n\nHole coordinates: At $x = 3$, $y = \\dfrac{3+3}{3+2} = \\dfrac{6}{5}$. \nHole at $\\left(3, \\dfrac{6}{5}\\right)$."
+    },
+    {
+      "type": "example",
+      "id": "example-3.6",
+      "number": "3.6",
+      "title": "Higher multiplicity",
+      "problem": "Analyze $h(x) = \\dfrac{x^2 - 4x + 4}{x^3 - 8}$ for holes and asymptotes.",
+      "solution": "Factor:\n$$\n \\text{Numerator: } & x^2 - 4x + 4 = (x-2)^2 \\\\\n \\text{Denominator: } & x^3 - 8 = (x-2)(x^2 + 2x + 4)\n$$\n\nSo:\n\\[\n h(x) = \\frac{(x-2)^2}{(x-2)(x^2 + 2x + 4)} = \\frac{x-2}{x^2 + 2x + 4}, \\quad x \\neq 2\n\\]\n\nThe factor $(x - 2)$ cancelled once, leaving a hole at $x = 2$.\n\nCheck if $x^2 + 2x + 4 = 0$ has real solutions:\n$\\Delta = 4 - 16 = -12 < 0$. No real solutions.\n\nResult:\n\n- Hole at $x = 2$, with $y = \\dfrac{2-2}{4+4+4} = \\dfrac{0}{12} = 0$. \n Hole at $(2, 0)$.\n\n- No vertical asymptotes."
+    },
+    {
+      "type": "warning",
+      "id": "warning-3.2",
+      "number": null,
+      "title": "Always Reduce to Lowest Terms First",
+      "content": "Before identifying vertical asymptotes, you must factor and cancel any \ncommon factors. A common mistake is to find the zeros of the original \ndenominator and call them all vertical asymptotes. Some may be holes!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Horizontal Asymptotes"
+    },
+    {
+      "type": "paragraph",
+      "text": "While vertical asymptotes describe behavior near forbidden $x$-values, \nhorizontal asymptotes describe the **end behavior**—what \nhappens as $x \\to \\pm\\infty$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.2",
+      "number": "3.2",
+      "title": "Horizontal Asymptote",
+      "content": "The line $y = b$ is a **horizontal asymptote** of the function $f$ if\n\\[\n \\lim_{x \\to \\infty} f(x) = b \\quad \\text{or} \\quad \\lim_{x \\to -\\infty} f(x) = b\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "For rational functions, horizontal asymptotes depend on comparing the \ndegrees of the numerator and denominator."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.3",
+      "number": "3.3",
+      "title": "Finding Horizontal Asymptotes",
+      "content": "For the rational function $f(x) = \\dfrac{a_n x^n + \\cdots + a_0}{b_m x^m + \\cdots + b_0}$ \nwhere $a_n \\neq 0$ and $b_m \\neq 0$:\n\n- If $n < m$ (degree of numerator less than degree of denominator): \n Horizontal asymptote at $y = 0$.\n\n- If $n = m$ (degrees equal): Horizontal asymptote at \n $y = \\dfrac{a_n}{b_m}$ (ratio of leading coefficients).\n\n- If $n > m$ (degree of numerator greater than degree of denominator): \n No horizontal asymptote.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-3.7",
+      "number": "3.7",
+      "title": "Horizontal asymptotes by degree comparison",
+      "problem": "Find the horizontal asymptote of each function.\n\n1. $f(x) = \\dfrac{2x + 1}{3x - 5}$\n\n2. $g(x) = \\dfrac{x^2 + 1}{x^3 - 1}$\n\n3. $h(x) = \\dfrac{4x^3 - x}{2x^3 + 5}$",
+      "solution": "1. Degree of numerator = 1, degree of denominator = 1. Equal degrees.\n \n Horizontal asymptote: $y = \\dfrac{2}{3}$\n\n2. Degree of numerator = 2, degree of denominator = 3. Numerator \n degree is smaller.\n \n Horizontal asymptote: $y = 0$\n\n3. Degree of numerator = 3, degree of denominator = 3. Equal degrees.\n \n Horizontal asymptote: $y = \\dfrac{4}{2} = 2$"
+    },
+    {
+      "type": "example",
+      "id": "example-3.8",
+      "number": "3.8",
+      "title": "No horizontal asymptote",
+      "problem": "Show that $f(x) = \\dfrac{x^2 - 4}{x + 1}$ has no horizontal asymptote.",
+      "solution": "Degree of numerator = 2, degree of denominator = 1.\n\nSince $2 > 1$, there is no horizontal asymptote.\n\nAs $x \\to \\infty$, the function grows without bound. The end behavior \nis dominated by $\\frac{x^2}{x} = x$, which goes to infinity."
+    },
+    {
+      "type": "example",
+      "id": "example-3.9",
+      "number": "3.9",
+      "title": "Understanding end behavior",
+      "problem": "Analyze the end behavior of $f(x) = \\dfrac{5x^2 - 3x + 1}{2x^2 + x - 4}$.",
+      "solution": "Both numerator and denominator have degree 2.\n\nHorizontal asymptote: $y = \\dfrac{5}{2}$\n\nTo verify, we can divide each term by $x^2$:\n\\[\n f(x) = \\frac{5 - \\frac{3}{x} + \\frac{1}{x^2}}{2 + \\frac{1}{x} - \\frac{4}{x^2}}\n\\]\n\nAs $x \\to \\pm\\infty$, the terms with $x$ in the denominator approach 0:\n\\[\n f(x) \\to \\frac{5 - 0 + 0}{2 + 0 - 0} = \\frac{5}{2}\n\\]\n\nThe graph levels off at height $y = \\frac{5}{2}$ for large $|x|$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Slant (Oblique) Asymptotes"
+    },
+    {
+      "type": "paragraph",
+      "text": "When the degree of the numerator is exactly one more than the degree of \nthe denominator, the function has a **slant asymptote** (also called an **oblique asymptote**). This is a \nnon-horizontal line that the graph approaches as $x \\to \\pm\\infty$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.4",
+      "number": "3.4",
+      "title": "Finding Slant Asymptotes",
+      "content": "If the degree of the numerator is exactly one more than the degree of \nthe denominator, divide the numerator by the denominator using polynomial \nlong division. The quotient (ignoring the remainder) is the slant asymptote.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-3.10",
+      "number": "3.10",
+      "title": "Finding a slant asymptote",
+      "problem": "Find the slant asymptote of $f(x) = \\dfrac{x^2 + 2x + 1}{x - 1}$.",
+      "solution": "Since degree 2 = degree 1 + 1, there is a slant asymptote.\n\nPerform polynomial long division:\n\\[\n\\begin{array}{r}\nx + 3 \\\\\nx - 1 \\overline{\\smash{)} x^2 + 2x + 1} \\\\\n\\underline{-(x^2 - x)} \\\\\n3x + 1 \\\\\n\\underline{-(3x - 3)} \\\\\n4\n\\end{array}\n\\]\n\nSo $\\dfrac{x^2 + 2x + 1}{x - 1} = x + 3 + \\dfrac{4}{x - 1}$\n\nAs $x \\to \\pm\\infty$, the term $\\dfrac{4}{x-1} \\to 0$.\n\nSlant asymptote: $\\boxed{y = x + 3}$"
+    },
+    {
+      "type": "example",
+      "id": "example-3.11",
+      "number": "3.11",
+      "title": "Another slant asymptote",
+      "problem": "Find the slant asymptote of $g(x) = \\dfrac{2x^2 - 3x + 5}{x + 2}$.",
+      "solution": "Degree of numerator = 2, degree of denominator = 1. Difference is 1, so \nthere's a slant asymptote.\n\nLong division:\n\\[\n\\begin{array}{r}\n2x - 7 \\\\\nx + 2 \\overline{\\smash{)} 2x^2 - 3x + 5} \\\\\n\\underline{-(2x^2 + 4x)} \\\\\n-7x + 5 \\\\\n\\underline{-(-7x - 14)} \\\\\n19\n\\end{array}\n\\]\n\nSo $g(x) = 2x - 7 + \\dfrac{19}{x + 2}$\n\nSlant asymptote: $\\boxed{y = 2x - 7}$"
+    },
+    {
+      "type": "example",
+      "id": "example-3.12",
+      "number": "3.12",
+      "title": "Slant asymptote with quadratic denominator",
+      "problem": "Find the slant asymptote of $h(x) = \\dfrac{x^3 - 2x^2 + x - 1}{x^2 + 1}$.",
+      "solution": "Degree of numerator = 3, degree of denominator = 2. Difference is 1.\n\nLong division:\n\\[\n\\begin{array}{r}\nx - 2 \\\\\nx^2 + 1 \\overline{\\smash{)} x^3 - 2x^2 + x - 1} \\\\\n\\underline{-(x^3 + x)} \\\\\n-2x^2 + 0 - 1 \\\\\n\\underline{-(-2x^2 - 2)} \\\\\n1\n\\end{array}\n\\]\n\nSo $h(x) = x - 2 + \\dfrac{1}{x^2 + 1}$\n\nSlant asymptote: $\\boxed{y = x - 2}$"
+    },
+    {
+      "type": "summary",
+      "id": "summary-3.2",
+      "number": null,
+      "title": "Types of Asymptotes",
+      "content": "| Degree Comparison | Type | Equation |\n| $\\deg(P) < \\deg(Q)$ | Horizontal | $y = 0$ |\n| $\\deg(P) = \\deg(Q)$ | Horizontal | $y = \\frac{\\text{leading coeff of } P}{\\text{leading coeff of } Q}$ |\n| $\\deg(P) = \\deg(Q) + 1$ | Slant | Quotient from long division |\n| $\\deg(P) > \\deg(Q) + 1$ | None | Function grows without bound |"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Behavior Near Asymptotes"
+    },
+    {
+      "type": "paragraph",
+      "text": "To sketch an accurate graph, we need to know not just where asymptotes \nare, but also *how* the function approaches them. Does it go to \n$+\\infty$ or $-\\infty$? Does it approach from above or below?"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-3.2",
+      "number": null,
+      "title": "Determining Behavior Near a Vertical Asymptote",
+      "content": "To determine whether $f(x) \\to +\\infty$ or $f(x) \\to -\\infty$ near a \nvertical asymptote at $x = a$:\n\n1. Choose a test value slightly less than $a$ (like $a - 0.1$)\n\n2. Choose a test value slightly greater than $a$ (like $a + 0.1$)\n\n3. Determine the sign of $f$ at each test value"
+    },
+    {
+      "type": "example",
+      "id": "example-3.13",
+      "number": "3.13",
+      "title": "Analyzing behavior near asymptotes",
+      "problem": "Describe the behavior of $f(x) = \\dfrac{1}{x - 2}$ near $x = 2$.",
+      "solution": "Test a value just less than 2: Let $x = 1.9$.\n\\[\n f(1.9) = \\frac{1}{1.9 - 2} = \\frac{1}{-0.1} = -10\n\\]\nAs $x \\to 2^-$, $f(x) \\to -\\infty$.\n\nTest a value just greater than 2: Let $x = 2.1$.\n\\[\n f(2.1) = \\frac{1}{2.1 - 2} = \\frac{1}{0.1} = 10\n\\]\nAs $x \\to 2^+$, $f(x) \\to +\\infty$.\n\nThe graph falls toward $-\\infty$ from the left and rises toward $+\\infty$ \nfrom the right."
+    },
+    {
+      "type": "example",
+      "id": "example-3.14",
+      "number": "3.14",
+      "title": "Even vs. odd multiplicity",
+      "problem": "Compare the behavior of $f(x) = \\dfrac{1}{(x-1)^2}$ and $g(x) = \\dfrac{1}{x-1}$ \nnear $x = 1$.",
+      "solution": "For $f(x) = \\dfrac{1}{(x-1)^2}$:\n\nThe denominator $(x-1)^2$ is always positive (it's a square), so $f(x) > 0$ \nfor all $x \\neq 1$.\n\nAs $x \\to 1^-$ or $x \\to 1^+$, $(x-1)^2 \\to 0^+$, so $f(x) \\to +\\infty$.\n\nThe graph approaches $+\\infty$ from **both sides**.\n\nFor $g(x) = \\dfrac{1}{x-1}$:\n\nWhen $x < 1$: $(x-1) < 0$, so $g(x) < 0$. Thus $g(x) \\to -\\infty$ as $x \\to 1^-$.\n\nWhen $x > 1$: $(x-1) > 0$, so $g(x) > 0$. Thus $g(x) \\to +\\infty$ as $x \\to 1^+$.\n\nThe graph approaches $-\\infty$ from the left and $+\\infty$ from the right."
+    },
+    {
+      "type": "paragraph",
+      "text": "$n$, the function approaches the same infinity from both \nsides. With *odd* $n$, it approaches opposite infinities.}"
+    },
+    {
+      "type": "example",
+      "id": "example-3.15",
+      "number": "3.15",
+      "title": "Complete asymptote analysis",
+      "problem": "Find all asymptotes and describe the behavior of $f(x) = \\dfrac{2x}{x^2 - 1}$.",
+      "solution": "Factor: $f(x) = \\dfrac{2x}{(x-1)(x+1)}$\n\n**Vertical asymptotes:** $x = 1$ and $x = -1$\n\n**Horizontal asymptote:** Degree 1 < Degree 2, so $y = 0$.\n\n**Behavior near $x = 1$:**\n\n- At $x = 0.9$: $f(0.9) = \\frac{1.8}{(-0.1)(1.9)} = \\frac{1.8}{-0.19} \\approx -9.5$\n\n- At $x = 1.1$: $f(1.1) = \\frac{2.2}{(0.1)(2.1)} = \\frac{2.2}{0.21} \\approx 10.5$\nNear $x = 1$: approaches $-\\infty$ from left, $+\\infty$ from right.\n\n**Behavior near $x = -1$:**\n\n- At $x = -1.1$: $f(-1.1) = \\frac{-2.2}{(-2.1)(-0.1)} = \\frac{-2.2}{0.21} \\approx -10.5$\n\n- At $x = -0.9$: $f(-0.9) = \\frac{-1.8}{(-1.9)(0.1)} = \\frac{-1.8}{-0.19} \\approx 9.5$\nNear $x = -1$: approaches $-\\infty$ from left, $+\\infty$ from right."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Can a Graph Cross Its Asymptote?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A common misconception is that a graph can never touch or cross its \nasymptote. While this is true for vertical asymptotes (the function is \nundefined there), a graph **can cross a horizontal asymptote**."
+    },
+    {
+      "type": "example",
+      "id": "example-3.16",
+      "number": "3.16",
+      "title": "A function that crosses its horizontal asymptote",
+      "problem": "Show that $f(x) = \\dfrac{x}{x^2 + 1}$ crosses its horizontal asymptote.",
+      "solution": "The horizontal asymptote is $y = 0$ (degree 1 < degree 2).\n\nDoes the graph cross $y = 0$? We need to solve $f(x) = 0$:\n\\[\n \\frac{x}{x^2 + 1} = 0 \\implies x = 0\n\\]\n\nYes! The graph crosses its horizontal asymptote at the origin $(0, 0)$.\n\nThe asymptote describes behavior at the extremes ($x \\to \\pm\\infty$), \nnot necessarily what happens for moderate values of $x$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-3.2",
+      "number": null,
+      "title": "Vertical vs. Horizontal Asymptotes",
+      "content": "- A graph **never crosses** a vertical asymptote (the \n function is undefined there).\n\n- A graph **may cross** a horizontal or slant asymptote \n for finite values of $x$.\n\n- As $x \\to \\pm\\infty$, the graph approaches (but may have \n already crossed) its horizontal/slant asymptote."
+    },
+    {
+      "type": "summary",
+      "id": "summary-3.2",
+      "number": null,
+      "title": "Section 3.2 Summary",
+      "content": "- **Vertical asymptotes** occur where the denominator (in \n lowest terms) is zero. The graph approaches $\\pm\\infty$.\n\n- **Holes** occur where a factor cancels from both numerator \n and denominator. The graph has a single missing point.\n\n- **Horizontal asymptotes** describe end behavior:\n itemize\n\n- $\\deg(P) < \\deg(Q)$: $y = 0$\n\n- $\\deg(P) = \\deg(Q)$: $y = \\frac{\\text{leading coefficients}}{}$\n\n- $\\deg(P) > \\deg(Q)$: None\n \n **Slant asymptotes** exist when $\\deg(P) = \\deg(Q) + 1$. \n Use polynomial division to find them.\n \n Test points near asymptotes to determine the sign of the function.\nitemize"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Vertical Asymptotes**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Horizontal Asymptotes**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Slant Asymptotes**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Complete Analysis**"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 90:2",
+      "text": "Before the mountains were born or you brought \nforth the whole world, from everlasting to everlasting you are God."
+    },
+    {
+      "type": "scripture",
+      "reference": "Luke 15:4",
+      "text": "Suppose one of you has a hundred sheep and \nloses one of them. Doesn't he leave the ninety-nine in the open country \nand go after the lost sheep until he finds it?"
+    },
+    {
+      "type": "scripture",
+      "reference": "Romans 11:33",
+      "text": "Oh, the depth of the riches of the wisdom \nand knowledge of God! How unsearchable his judgments, and his paths \nbeyond tracing out!"
+    }
+  ]
+}

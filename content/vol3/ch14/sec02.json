@@ -1,0 +1,250 @@
+{
+  "id": "vol3-ch14-sec02",
+  "title": "Limits and Continuity",
+  "chapter": 14,
+  "section": 2,
+  "book": "vol3",
+  "epigraph": {
+    "text": "Draw near to God, and he will draw near to you.",
+    "reference": "James 4:8"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The concepts of limits and continuity extend from one variable to several, but with important new subtleties. In one dimension, a point can only be approached from two directions—left and right. In two dimensions, a point can be approached from infinitely many directions, and a limit must exist and agree along *all* of them."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Limits of Functions of Two Variables"
+    },
+    {
+      "type": "definition",
+      "id": "definition-14.1",
+      "number": "14.1",
+      "title": "Limit of a Function of Two Variables",
+      "content": "We write\n\\[\n \\lim_{(x,y) \\to (a,b)} f(x,y) = L\n\\]\nif for every $\\epsilon > 0$ there exists $\\delta > 0$ such that\n\\[\n |f(x,y) - L| < \\epsilon \\quad \\text{whenever} \\quad 0 < \\sqrt{(x-a)^2 + (y-b)^2} < \\delta.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The key insight is that $(x, y)$ can approach $(a, b)$ along any path whatsoever. The limit exists only if $f(x, y)$ approaches $L$ along *every* such path."
+    },
+    {
+      "type": "example",
+      "id": "example-14.1",
+      "number": "14.1",
+      "title": "A limit that exists",
+      "problem": "Find $\\displaystyle\\lim_{(x,y) \\to (0,0)} \\frac{x^2 y}{x^2 + y^2}$.",
+      "solution": "Let's check a few paths to guess the limit:\n\n**Along $y = 0$:** $\\dfrac{x^2 \\cdot 0}{x^2 + 0} = 0$.\n\n**Along $x = 0$:** $\\dfrac{0 \\cdot y}{0 + y^2} = 0$.\n\n**Along $y = x$:** $\\dfrac{x^2 \\cdot x}{x^2 + x^2} = \\dfrac{x^3}{2x^2} = \\dfrac{x}{2} \\to 0$.\n\nThe limit appears to be $0$. To prove this:\n\\[\n \\left|\\frac{x^2 y}{x^2 + y^2}\\right| = \\frac{x^2}{x^2 + y^2} |y| \\leq |y| \\leq \\sqrt{x^2 + y^2}.\n\\]\nSo as $(x, y) \\to (0, 0)$, the expression $\\to 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Showing a Limit Does Not Exist"
+    },
+    {
+      "type": "paragraph",
+      "text": "To show a limit does *not* exist, find two paths to the point that give different limiting values."
+    },
+    {
+      "type": "example",
+      "id": "example-14.2",
+      "number": "14.2",
+      "title": "A limit that does not exist",
+      "problem": "Show that $\\displaystyle\\lim_{(x,y) \\to (0,0)} \\frac{xy}{x^2 + y^2}$ does not exist.",
+      "solution": "**Along $y = 0$:** $\\dfrac{x \\cdot 0}{x^2 + 0} = 0 \\to 0$.\n\n**Along $y = x$:** $\\dfrac{x \\cdot x}{x^2 + x^2} = \\dfrac{x^2}{2x^2} = \\dfrac{1}{2} \\to \\dfrac{1}{2}$.\n\nSince different paths give different limits ($0$ vs.\\ $1/2$), the limit does not exist."
+    },
+    {
+      "type": "example",
+      "id": "example-14.3",
+      "number": "14.3",
+      "title": "A more subtle non-existence",
+      "problem": "Show that $\\displaystyle\\lim_{(x,y) \\to (0,0)} \\frac{x^2 y}{x^4 + y^2}$ does not exist.",
+      "solution": "**Along any line $y = mx$:**\n\\[\n \\frac{x^2 \\cdot mx}{x^4 + m^2x^2} = \\frac{mx^3}{x^2(x^2 + m^2)} = \\frac{mx}{x^2 + m^2} \\to 0.\n\\]\n\nBut wait—all straight-line paths give limit $0$! We need to try a curved path.\n\n**Along the parabola $y = x^2$:**\n\\[\n \\frac{x^2 \\cdot x^2}{x^4 + (x^2)^2} = \\frac{x^4}{2x^4} = \\frac{1}{2}.\n\\]\n\nSince the straight-line paths give $0$ and the parabolic path gives $1/2$, the limit does not exist."
+    },
+    {
+      "type": "warning",
+      "id": "warning-14.2",
+      "number": null,
+      "title": "Checking paths is not enough to prove existence",
+      "content": "If every path you check gives the same limit, the limit *might* exist—but you haven't proved it. To prove existence, you need an $\\epsilon$-$\\delta$ argument or some other technique (like the Squeeze Theorem)."
+    },
+    {
+      "type": "example",
+      "id": "example-14.4",
+      "number": "14.4",
+      "title": "Another path-dependent limit",
+      "problem": "Investigate $\\displaystyle\\lim_{(x,y) \\to (0,0)} \\frac{x^2 + \\sin^2 y}{2x^2 + y^2}$.",
+      "solution": "**Along $y = 0$:** $\\dfrac{x^2 + 0}{2x^2 + 0} = \\dfrac{1}{2} \\to \\dfrac{1}{2}$.\n\n**Along $x = 0$:** $\\dfrac{0 + \\sin^2 y}{0 + y^2} = \\dfrac{\\sin^2 y}{y^2} = \\left(\\dfrac{\\sin y}{y}\\right)^2 \\to 1$.\n\nSince different paths give $1/2$ and $1$, the limit does not exist."
+    },
+    {
+      "type": "example",
+      "id": "example-14.5",
+      "number": "14.5",
+      "title": "A tricky limit that exists",
+      "problem": "Evaluate $\\displaystyle\\lim_{(x,y) \\to (0,0)} \\frac{x^2 y^2}{x^2 y^2 + (x - y)^2}$.",
+      "solution": "Let's check some paths:\n\n**Along $y = 0$:** $\\dfrac{0}{0 + x^2} = 0 \\to 0$.\n\n**Along $x = y$:** $\\dfrac{x^4}{x^4 + 0} = 1 \\to 1$.\n\nThe paths $y = 0$ and $x = y$ give different values ($0$ and $1$), so the limit does not exist.\n\nThis example shows that even when we suspect the limit might exist, we should check paths systematically—including the special path where the denominator might simplify dramatically."
+    },
+    {
+      "type": "example",
+      "id": "example-14.6",
+      "number": "14.6",
+      "title": "Approaching from infinitely many directions",
+      "problem": "Consider $f(x, y) = \\dfrac{x^2}{x^2 + y^2}$ near the origin. Along the line $y = mx$, what is the limit?",
+      "solution": "Along $y = mx$ (where $m$ is any constant):\n\\[\n f(x, mx) = \\frac{x^2}{x^2 + m^2x^2} = \\frac{1}{1 + m^2}.\n\\]\nThis limit depends on $m$:\n\n- $m = 0$ (along $x$-axis): limit is $1$\n\n- $m = 1$ (along $y = x$): limit is $1/2$\n\n- $m \\to \\infty$ (approaching $y$-axis): limit is $0$\n\nThe limit at $(0,0)$ depends on the direction of approach. From infinitely many directions, we get infinitely many different \"limits\"—the true limit does not exist.\n\nThis illustrates a profound mathematical concept: approaching truth requires consistency from all perspectives. Scripture similarly teaches that God's truth is consistent from every angle—\"Jesus Christ is the same yesterday and today and forever\" (Hebrews 13:8)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Techniques for Evaluating Limits"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-14.2",
+      "number": null,
+      "title": "Evaluating Limits of Two Variables",
+      "content": "1. **Try direct substitution.** If $f$ is a polynomial, rational function, or composition of continuous functions, and the point is in the domain, just substitute.\n\n2. **Check paths.** If direct substitution fails (e.g., $0/0$), try several paths. If they give different values, the limit DNE.\n\n3. **Convert to polar.** Near the origin, letting $x = r\\cos\\theta$, $y = r\\sin\\theta$ can help. If the result is $L$ for all $\\theta$ as $r \\to 0^+$, the limit is $L$.\n\n4. **Use bounds and Squeeze Theorem.** Find upper/lower bounds that go to $L$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.7",
+      "number": "14.7",
+      "title": "Using polar coordinates",
+      "problem": "Evaluate $\\displaystyle\\lim_{(x,y) \\to (0,0)} \\frac{x^2 - y^2}{x^2 + y^2}$.",
+      "solution": "Using polar coordinates: $x = r\\cos\\theta$, $y = r\\sin\\theta$, and $x^2 + y^2 = r^2$.\n\\[\n \\frac{x^2 - y^2}{x^2 + y^2} = \\frac{r^2\\cos^2\\theta - r^2\\sin^2\\theta}{r^2} = \\cos^2\\theta - \\sin^2\\theta = \\cos 2\\theta.\n\\]\nAs $r \\to 0$, this equals $\\cos 2\\theta$, which depends on $\\theta$. Different approach directions give different values, so the limit does not exist."
+    },
+    {
+      "type": "example",
+      "id": "example-14.8",
+      "number": "14.8",
+      "title": "Polar coordinates showing existence",
+      "problem": "Evaluate $\\displaystyle\\lim_{(x,y) \\to (0,0)} \\frac{x^3}{x^2 + y^2}$.",
+      "solution": "In polar: $\\dfrac{r^3\\cos^3\\theta}{r^2} = r\\cos^3\\theta$.\n\nSince $|\\cos^3\\theta| \\leq 1$, we have $|r\\cos^3\\theta| \\leq r \\to 0$ as $r \\to 0^+$.\n\nBy the Squeeze Theorem, the limit is $0$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.9",
+      "number": "14.9",
+      "title": "Polar coordinates with higher powers",
+      "problem": "Evaluate $\\displaystyle\\lim_{(x,y) \\to (0,0)} \\frac{x^2y}{x^4 + y^2}$.",
+      "solution": "In polar: $x = r\\cos\\theta$, $y = r\\sin\\theta$:\n\\[\n \\frac{x^2 y}{x^4 + y^2} = \\frac{r^3\\cos^2\\theta\\sin\\theta}{r^4\\cos^4\\theta + r^2\\sin^2\\theta} = \\frac{r^3\\cos^2\\theta\\sin\\theta}{r^2(r^2\\cos^4\\theta + \\sin^2\\theta)}.\n\\]\n\\[\n = \\frac{r\\cos^2\\theta\\sin\\theta}{r^2\\cos^4\\theta + \\sin^2\\theta}.\n\\]\n\nAs $r \\to 0$, the denominator approaches $\\sin^2\\theta$ (unless $\\sin\\theta = 0$), so the expression approaches $0$ when $\\sin\\theta \\neq 0$.\n\nBut when $\\sin\\theta = 0$ (i.e., along the $x$-axis), both numerator and denominator involve different powers of $r$. Let's check the path $y = x^2$:\n\\[\n \\frac{x^2 \\cdot x^2}{x^4 + x^4} = \\frac{x^4}{2x^4} = \\frac{1}{2}.\n\\]\n\nSince straight-line paths give $0$ but the parabola $y = x^2$ gives $1/2$, the limit does not exist."
+    },
+    {
+      "type": "example",
+      "id": "example-14.10",
+      "number": "14.10",
+      "title": "Using the Squeeze Theorem directly",
+      "problem": "Prove that $\\displaystyle\\lim_{(x,y) \\to (0,0)} \\frac{|x|^{3/2} y^2}{x^2 + y^4} = 0$.",
+      "solution": "We'll bound the expression. Note that $y^4 \\leq x^2 + y^4$, so:\n\\[\n \\left|\\frac{|x|^{3/2} y^2}{x^2 + y^4}\\right| \\leq \\frac{|x|^{3/2} y^2}{y^4} = \\frac{|x|^{3/2}}{y^2} \\quad \\text{(when } y \\neq 0\\text{)}.\n\\]\nThis bound goes to infinity as $y \\to 0$, so it's not useful.\n\nInstead, note that $x^2 \\leq x^2 + y^4$, so:\n\\[\n \\left|\\frac{|x|^{3/2} y^2}{x^2 + y^4}\\right| \\leq \\frac{|x|^{3/2} y^2}{x^2} = \\frac{y^2}{|x|^{1/2}} \\quad \\text{(when } x \\neq 0\\text{)}.\n\\]\nThis also goes to infinity as $x \\to 0$, so this bound is also not useful by itself.\n\nA better approach: In polar coordinates,\n\\[\n \\frac{|r\\cos\\theta|^{3/2} \\cdot r^2\\sin^2\\theta}{r^2\\cos^2\\theta + r^4\\sin^4\\theta} = \\frac{r^{7/2}|\\cos\\theta|^{3/2}\\sin^2\\theta}{r^2(\\cos^2\\theta + r^2\\sin^4\\theta)}.\n\\]\n\\[\n = \\frac{r^{3/2}|\\cos\\theta|^{3/2}\\sin^2\\theta}{\\cos^2\\theta + r^2\\sin^4\\theta}.\n\\]\n\nSince the denominator $\\cos^2\\theta + r^2\\sin^4\\theta \\geq \\cos^2\\theta$ (and is at least $\\sin^4\\theta$ when $\\cos\\theta = 0$), and the numerator involves $r^{3/2} \\to 0$, the limit is $0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Continuity"
+    },
+    {
+      "type": "definition",
+      "id": "definition-14.2",
+      "number": "14.2",
+      "title": "Continuity at a Point",
+      "content": "A function $f(x, y)$ is **continuous at $(a, b)$** if:\n\n1. $(a, b)$ is in the domain of $f$\n\n2. $\\displaystyle\\lim_{(x,y) \\to (a,b)} f(x,y)$ exists\n\n3. $\\displaystyle\\lim_{(x,y) \\to (a,b)} f(x,y) = f(a, b)$\n$f$ is **continuous on a set $D$** if it is continuous at every point of $D$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.1",
+      "number": "14.1",
+      "title": "Continuity of Standard Functions",
+      "content": "The following are continuous on their domains:\n\n- Polynomials in $x$ and $y$\n\n- Rational functions (quotients of polynomials)\n\n- $e^{f(x,y)}$, $\\ln f(x,y)$, $\\sin f(x,y)$, $\\cos f(x,y)$, etc., where $f$ is continuous\n\n- Sums, products, quotients (where defined), and compositions of continuous functions",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-14.11",
+      "number": "14.11",
+      "title": "Checking continuity",
+      "problem": "Where is $f(x, y) = \\dfrac{\\ln(x+y)}{x^2 + y^2 - 1}$ continuous?",
+      "solution": "We need:\n\n- $x + y > 0$ (for the logarithm)\n\n- $x^2 + y^2 \\neq 1$ (to avoid division by zero)\nThe function is continuous on $\\{(x, y) : x + y > 0 \\text{ and } x^2 + y^2 \\neq 1\\}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Important Theorems"
+    },
+    {
+      "type": "paragraph",
+      "text": "The following theorems extend familiar results from single-variable calculus."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.2",
+      "number": "14.2",
+      "title": "Extreme Value Theorem",
+      "content": "If $f$ is continuous on a closed and bounded set $D$ in $\\R^2$, then $f$ attains both an absolute maximum and an absolute minimum on $D$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-14.12",
+      "number": "14.12",
+      "title": "Extending a function to be continuous",
+      "problem": "The function $f(x, y) = \\dfrac{\\sin(x^2 + y^2)}{x^2 + y^2}$ is undefined at $(0, 0)$. Can we define $f(0, 0)$ to make $f$ continuous at the origin?",
+      "solution": "We need to find $\\displaystyle\\lim_{(x,y) \\to (0,0)} \\frac{\\sin(x^2 + y^2)}{x^2 + y^2}$.\n\nLet $u = x^2 + y^2$. As $(x, y) \\to (0, 0)$, we have $u \\to 0$. The limit becomes:\n\\[\n \\lim_{u \\to 0^+} \\frac{\\sin u}{u} = 1.\n\\]\n\nTherefore, if we define $f(0, 0) = 1$, then $f$ becomes continuous at the origin."
+    },
+    {
+      "type": "example",
+      "id": "example-14.13",
+      "number": "14.13",
+      "title": "A function continuous except on a curve",
+      "problem": "Where is $f(x, y) = \\dfrac{x - y}{x + y}$ continuous?",
+      "solution": "The function is a rational function, so it is continuous wherever the denominator is nonzero, i.e., wherever $x + y \\neq 0$.\n\nThe function is continuous on $\\{(x, y) : x + y \\neq 0\\}$—the entire plane except the line $y = -x$.\n\nNote that along the line $y = -x$, the function has a discontinuity that cannot be removed: approaching $(1, -1)$ from different directions gives different limits."
+    },
+    {
+      "type": "example",
+      "id": "example-14.14",
+      "number": "14.14",
+      "title": "Limit involving absolute values",
+      "problem": "Evaluate $\\displaystyle\\lim_{(x,y) \\to (0,0)} \\frac{|x| + |y|}{x^2 + y^2}$, or show it does not exist.",
+      "solution": "**Along $y = 0$:** $\\dfrac{|x|}{x^2} = \\dfrac{1}{|x|} \\to \\infty$ as $x \\to 0$.\n\nSince the function is unbounded near the origin, the limit does not exist (or we say it is $+\\infty$).\n\nThis is intuitive: near the origin, $|x| + |y| \\approx r$ while $x^2 + y^2 = r^2$, so the ratio $\\approx 1/r \\to \\infty$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.3",
+      "number": "14.3",
+      "title": "Intermediate Value Property",
+      "content": "If $f$ is continuous on a connected set $D$ and takes values $f(P) = a$ and $f(Q) = b$ at points $P, Q \\in D$, then $f$ takes every value between $a$ and $b$ at some point of $D$.",
+      "label": "Theorem"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 139:7--8",
+      "text": "Where shall I go from your Spirit? Or where shall I flee from your presence? If I ascend to heaven, you are there! If I make my bed in Sheol, you are there!"
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 2:3--5",
+      "text": "Yes, if you call out for insight and raise your voice for understanding, if you seek it like silver and search for it as for hidden treasures, then you will understand the fear of the Lord and find the knowledge of God."
+    },
+    {
+      "type": "scripture",
+      "reference": "James 1:17",
+      "text": "Every good gift and every perfect gift is from above, coming down from the Father of lights, with whom there is no variation or shadow due to change."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 4:25--26",
+      "text": "Let your eyes look directly forward, and your gaze be straight before you. Ponder the path of your feet; then all your ways will be sure."
+    },
+    {
+      "type": "quote",
+      "author": "Karl Weierstrass",
+      "text": "A mathematician who is not also something of a poet will never be a complete mathematician."
+    },
+    {
+      "type": "quote",
+      "author": "Augustin-Louis Cauchy",
+      "text": "One must be able to say at every instant: instead of points, planes, lines, we may say chairs, tables, beer mugs."
+    }
+  ]
+}

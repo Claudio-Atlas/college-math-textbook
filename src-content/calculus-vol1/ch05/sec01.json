@@ -1,0 +1,240 @@
+{
+  "id": "vol1-ch05-sec01",
+  "title": "Maximum and Minimum Values",
+  "chapter": 5,
+  "section": 1,
+  "book": "vol1",
+  "epigraph": {
+    "text": "The Lord gives wisdom; from his mouth come knowledge \nand understanding. He holds success in store for the upright.",
+    "reference": "Proverbs 2:6--7"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Every business wants to maximize profit. Every engineer wants to minimize \ncost. Every curve has peaks and valleys. How do we find them?"
+    },
+    {
+      "type": "paragraph",
+      "text": "These are among the most natural questions one can ask about a function: \nwhere does it reach its highest point? Its lowest? You have been reading \ngraphs since algebra, identifying hills and valleys by sight. Now calculus \ngives us an exact, algebraic method to locate these extreme values—and to \n*prove* that we have found them."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Absolute and Local Extrema"
+    },
+    {
+      "type": "paragraph",
+      "text": "Before we develop tools, we need precise language. Consider a mountain \nrange: one peak is the highest of all (the *absolute* maximum), while \nother peaks are merely the highest in their immediate neighborhood (the \n*local* maxima). We make this distinction precise."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Absolute (Global) Maximum and Minimum",
+      "content": "Let $f$ be a function with domain $D$.\n\n- $f$ has an **absolute maximum** at \n $c$ if $f(c) \\geq f(x)$ for every $x$ in $D$. The value $f(c)$ is \n called the **maximum value** of $f$ on $D$.\n\n- $f$ has an **absolute minimum** at \n $c$ if $f(c) \\leq f(x)$ for every $x$ in $D$. The value $f(c)$ is \n called the **minimum value** of $f$ on $D$.\nThe absolute maximum and minimum values are together called the \n**extreme values** of $f$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.2",
+      "number": "5.2",
+      "title": "Local (Relative) Maximum and Minimum",
+      "content": "Let $f$ be a function defined on some domain $D$ and let $c \\in D$.\n\n- $f$ has a **local maximum** at $c$ if \n $f(c) \\geq f(x)$ for all $x$ in some open interval containing $c$.\n\n- $f$ has a **local minimum** at $c$ if \n $f(c) \\leq f(x)$ for all $x$ in some open interval containing $c$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Every absolute extremum is also a local extremum (unless it occurs at an \nendpoint), but the converse is false: a function can have many local maxima \nwhile only one of them is the absolute maximum."
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Identifying extrema from a graph",
+      "problem": "Consider the function $f$ whose graph is shown below, defined on \n$[0, 5]$.\n\ncenter\ntikzpicture\naxis[\n width=10cm, height=6cm,\n axis lines=middle,\n xlabel={$x$}, ylabel={$y$},\n xmin=-0.3, xmax=5.5,\n ymin=-0.5, ymax=5,\n xtick={0,1,2,3,4,5},\n ytick={1,2,3,4},\n every axis x label/.style={at={(ticklabel* cs:1)}, anchor=west},\n every axis y label/.style={at={(ticklabel* cs:1)}, anchor=south},\n]\n \n {-0.4*(x-1)*(x-3)*(x-4.5) + 2};\n coordinates \n {(0,0.6) (1,2) (3,2) (4.18,4.05) (5,3)};\naxis\ntikzpicture\ncenter",
+      "solution": "Reading the graph, we identify:\n\n- **Local maxima** at $x \\approx 1$ and $x \\approx 4.2$.\n\n- **Local minimum** at $x = 3$.\n\n- The **absolute maximum** occurs at $x \\approx 4.2$, where the \n function reaches its highest value on $[0,5]$.\n\n- The **absolute minimum** occurs at $x = 0$ (the left endpoint), \n where $f$ has its smallest value on $[0,5]$.\nNotice that the absolute minimum occurs at an endpoint, not at a local \nminimum. This is an important possibility to keep in mind."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Extreme Value Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Do extreme values always exist? Not necessarily. The function \n$f(x) = 1/x$ on $(0, 1)$ has no maximum: as $x \\to 0^{+}$, $f(x)$ grows \nwithout bound. The function $g(x) = x$ on $(0,1)$ never actually attains \nthe values $0$ or $1$. What conditions *guarantee* that a function \nattains its extreme values?"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "The Extreme Value Theorem",
+      "content": "If $f$ is continuous on a closed interval $[a, b]$, then $f$ attains an \nabsolute maximum value $f(c)$ and an absolute minimum value $f(d)$ at some \nnumbers $c$ and $d$ in $[a, b]$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The proof of this theorem relies on the completeness of the real numbers \nand is given in Appendix A. But the intuitive content is clear: if you \ndraw a continuous curve from the point $(a, f(a))$ to $(b, f(b))$ without \nlifting your pen, the curve must reach a highest point and a lowest point \nsomewhere along the way."
+    },
+    {
+      "type": "warning",
+      "id": "warning-5.1",
+      "number": null,
+      "title": "Both hypotheses are essential",
+      "content": "The Extreme Value Theorem requires *two* conditions: the function must \nbe continuous, and the interval must be closed. If either is dropped, the \nconclusion can fail.\n\n- $f(x) = x$ on the *open* interval $(0,1)$: continuous, but \n no maximum or minimum is attained.\n\n- $f(x) = \\begin{cases} x & 0 \\leq x < 1 \\\\ 0 & x = 1 \\end{cases}$ \n on $[0,1]$: the interval is closed, but $f$ is discontinuous at $x=1$ \n and has no maximum."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Fermat's Theorem and Critical Numbers"
+    },
+    {
+      "type": "paragraph",
+      "text": "We know that extreme values exist on closed intervals (by the Extreme Value \nTheorem), but *where* should we look for them? The following result \nnarrows the search dramatically."
+    },
+    {
+      "type": "paragraph",
+      "text": "Think about what happens geometrically at a local maximum. If the function \nis smooth (differentiable) at that point, the tangent line must be \nhorizontal. If it were tilted upward to the right, the function would still \nbe increasing—so we would not be at a peak. Similarly for a tilt downward \nto the right."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Fermat's Theorem",
+      "content": "If $f$ has a local maximum or local minimum at $c$, and if $f'(c)$ exists, \nthen $f'(c) = 0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Suppose $f$ has a local maximum at $c$ and $f'(c)$ exists. Then there is \nan open interval $(c - \\delta, c + \\delta)$ in which $f(c) \\geq f(x)$ for \nall $x$.\n\nFor $0 < h < \\delta$, we have $f(c+h) \\leq f(c)$, so \n$\\dfrac{f(c+h) - f(c)}{h} \\leq 0$. Taking the limit as $h \\to 0^{+}$:\n\\[\n f'(c) = \\lim_{h \\to 0^{+}} \\frac{f(c+h) - f(c)}{h} \\leq 0.\n\\]\n\nFor $-\\delta < h < 0$, we have $f(c+h) \\leq f(c)$ and $h < 0$, so \n$\\dfrac{f(c+h) - f(c)}{h} \\geq 0$. Taking the limit as $h \\to 0^{-}$:\n\\[\n f'(c) = \\lim_{h \\to 0^{-}} \\frac{f(c+h) - f(c)}{h} \\geq 0.\n\\]\n\nSince $f'(c) \\leq 0$ and $f'(c) \\geq 0$, we conclude $f'(c) = 0$.\n\nThe proof for a local minimum is analogous (with the inequalities reversed)."
+    },
+    {
+      "type": "warning",
+      "id": "warning-5.1",
+      "number": null,
+      "title": "The converse of Fermat's Theorem is false",
+      "content": "Fermat's Theorem says: local extremum with derivative $\\implies$ derivative \nis zero. It does *not* say that every point where $f'(c) = 0$ is an \nextremum. For instance, $f(x) = x^{3}$ has $f'(0) = 0$, but $x = 0$ is \n*not* a local maximum or minimum—it is an inflection point."
+    },
+    {
+      "type": "paragraph",
+      "text": "Fermat's Theorem also misses extrema where the derivative *does not \nexist*. Consider $f(x) = \\abs{x}$: this function has an absolute minimum \nat $x = 0$, but $f'(0)$ does not exist. We therefore broaden our search."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.3",
+      "number": "5.3",
+      "title": "Critical Number",
+      "content": "A number $c$ in the domain of $f$ is called a **critical \nnumber** of $f$ if either\n\\[\n f'(c) = 0 \\qquad \\text{or} \\qquad f'(c) \\text{ does not exist.}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "With this definition, we can restate Fermat's Theorem more usefully:"
+    },
+    {
+      "type": "paragraph",
+      "text": "*If $f$ has a local extremum at $c$, then $c$ is a critical number \nof $f$.*"
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "Finding critical numbers",
+      "problem": "Find the critical numbers of $f(x) = x^{3} - 3x + 1$.",
+      "solution": "Differentiate: $f'(x) = 3x^{2} - 3 = 3(x^{2} - 1) = 3(x-1)(x+1)$.\n\nSince $f'$ is a polynomial, it exists everywhere. Setting $f'(x) = 0$:\n\\[\n 3(x - 1)(x + 1) = 0 \\implies x = -1 \\quad\\text{or}\\quad x = 1.\n\\]\nThe critical numbers are $x = -1$ and $x = 1$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Critical numbers where the derivative does not exist",
+      "problem": "Find the critical numbers of $f(x) = x^{2/3}$.",
+      "solution": "Using the power rule, $f'(x) = \\tfrac{2}{3}x^{-1/3} = \\dfrac{2}{3x^{1/3}}$.\n\nSetting $f'(x) = 0$: the numerator is the constant $2$, which is never \nzero, so $f'(x) \\neq 0$ for any $x$.\n\nHowever, $f'(0)$ does not exist (the denominator is zero at $x = 0$), and \n$x = 0$ is in the domain of $f$. Therefore $x = 0$ is the only critical \nnumber.\n\nIndeed, the graph of $f(x) = x^{2/3}$ has a cusp at the origin, and \n$f(0) = 0$ is an absolute minimum."
+    },
+    {
+      "type": "example",
+      "id": "example-5.4",
+      "number": "5.4",
+      "title": "Critical numbers of a rational function",
+      "problem": "Find the critical numbers of $g(x) = \\dfrac{x^{2}}{x - 1}$ for $x \\neq 1$.",
+      "solution": "Using the quotient rule:\n\\[\n g'(x) = \\frac{2x(x-1) - x^{2}(1)}{(x-1)^{2}} \n = \\frac{2x^{2} - 2x - x^{2}}{(x-1)^{2}} \n = \\frac{x^{2} - 2x}{(x-1)^{2}} \n = \\frac{x(x-2)}{(x-1)^{2}}.\n\\]\n\nSetting the numerator equal to zero: $x(x - 2) = 0$ gives $x = 0$ or \n$x = 2$.\n\nThe derivative does not exist at $x = 1$, but $x = 1$ is not in the domain \nof $g$, so it is not a critical number.\n\nThe critical numbers are $x = 0$ and $x = 2$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Closed Interval Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "We now combine the Extreme Value Theorem (which guarantees that extreme \nvalues exist on $[a,b]$) with Fermat's Theorem (which tells us where to \nlook) to produce a foolproof algorithm."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-5.1",
+      "number": null,
+      "title": "Finding Absolute Extrema on a Closed Interval",
+      "content": "To find the absolute maximum and minimum values of a continuous function \n$f$ on $[a, b]$:\n\n1. Find the critical numbers of $f$ in the open interval $(a, b)$.\n\n2. Evaluate $f$ at each critical number.\n\n3. Evaluate $f$ at the endpoints $a$ and $b$.\n\n4. Compare all values from Steps 2 and 3. The largest is the absolute \n maximum; the smallest is the absolute minimum."
+    },
+    {
+      "type": "paragraph",
+      "text": "Why does this work? By the Extreme Value Theorem, $f$ attains its extreme \nvalues somewhere on $[a, b]$. By Fermat's Theorem, if an extreme value \noccurs in the interior $(a, b)$, it must occur at a critical number. The \nonly other possibilities are the endpoints. So by checking all critical \nnumbers and both endpoints, we are guaranteed to find the absolute extrema."
+    },
+    {
+      "type": "example",
+      "id": "example-5.5",
+      "number": "5.5",
+      "title": "Closed Interval Method --- polynomial",
+      "problem": "Find the absolute maximum and minimum values of $f(x) = x^{3} - 3x + 1$ \non the interval $[-2, 2]$.",
+      "solution": "**Step 1.** We found in Example [ex:critical-numbers-1] that \nthe critical numbers are $x = -1$ and $x = 1$. Both lie in $(-2, 2)$.\n\n**Steps 2–3.** Evaluate $f$ at the critical numbers and endpoints:\n\\[\n\\begin{aligned}\n f(-2) &= (-2)^{3} - 3(-2) + 1 = -8 + 6 + 1 = -1, \\\\\n f(-1) &= (-1)^{3} - 3(-1) + 1 = -1 + 3 + 1 = 3, \\\\\n f(1) &= 1^{3} - 3(1) + 1 = 1 - 3 + 1 = -1, \\\\\n f(2) &= 2^{3} - 3(2) + 1 = 8 - 6 + 1 = 3.\n\\end{aligned}\n\\]\n\n**Step 4.** Comparing, the largest value is $3$ (attained at both \n$x = -1$ and $x = 2$) and the smallest value is $-1$ (attained at both \n$x = -2$ and $x = 1$).\n\nTherefore:\n\n- Absolute maximum value: $3$, at $x = -1$ and $x = 2$.\n\n- Absolute minimum value: $-1$, at $x = -2$ and $x = 1$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.6",
+      "number": "5.6",
+      "title": "Closed Interval Method --- involving a radical",
+      "problem": "Find the absolute extrema of $f(x) = x\\sqrt{4 - x^{2}}$ on $[-2, 2]$.",
+      "solution": "**Step 1.** Using the product rule:\nalign*\n f'(x) &= $\\sqrt{4 - x^{2}$} + x $\\frac{-2x}{2\\sqrt{4 - x^{2}$}} \\\\[4pt]\n &= \\sqrt{4 - x^{2}} - \\frac{x^{2}}{\\sqrt{4 - x^{2}}} \\\\[4pt]\n &= \\frac{4 - x^{2} - x^{2}}{\\sqrt{4 - x^{2}}} \n = \\frac{4 - 2x^{2}}{\\sqrt{4 - x^{2}}}.\n\\end{align*}\n\nSetting the numerator to zero: $4 - 2x^{2} = 0$ gives $x^{2} = 2$, so \n$x = \\pm\\sqrt{2}$.\n\nThe derivative does not exist at $x = \\pm 2$ (the denominator is zero), \nbut these are the endpoints.\n\nThe critical numbers in $(-2, 2)$ are $x = -\\sqrt{2}$ and $x = \\sqrt{2}$.\n\n\\textbf{Steps 2--3.} Evaluate:\n\\[\n\\begin{aligned}\n f(-2) &= (-2)\\sqrt{4-4} = 0, \\\\\n f(-\\sqrt{2}) &= -\\sqrt{2}\\,\\sqrt{4 - 2} = -\\sqrt{2}\\cdot\\sqrt{2} = -2, \\\\\n f(\\sqrt{2}) &= \\sqrt{2}\\,\\sqrt{4 - 2} = \\sqrt{2}\\cdot\\sqrt{2} = 2, \\\\\n f(2) &= 2\\sqrt{4 - 4} = 0.\n\\end{aligned}\n\\]\n\n**Step 4.** The absolute maximum value is $2$ at $x = \\sqrt{2}$; \nthe absolute minimum value is $-2$ at $x = -\\sqrt{2}$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.7",
+      "number": "5.7",
+      "title": "Closed Interval Method --- trigonometric function",
+      "problem": "Find the absolute extrema of $f(x) = 2\\cos x + \\sin 2x$ on $[0, \\pi]$.",
+      "solution": "**Step 1.** Differentiate:\n\\[\n f'(x) = -2\\sin x + 2\\cos 2x.\n\\]\nRecall the identity $\\cos 2x = 1 - 2\\sin^{2} x$. Substituting:\n\\[\n f'(x) = -2\\sin x + 2(1 - 2\\sin^{2} x) = -4\\sin^{2} x - 2\\sin x + 2.\n\\]\nLet $u = \\sin x$:\n\\[\n -4u^{2} - 2u + 2 = 0 \\implies 4u^{2} + 2u - 2 = 0 \\implies 2u^{2} + u - 1 = 0.\n\\]\nFactoring: $(2u - 1)(u + 1) = 0$, so $u = 1/2$ or $u = -1$.\n\n- $\\sin x = 1/2$ on $[0, \\pi]$: $x = \\pi/6$ or $x = 5\\pi/6$.\n\n- $\\sin x = -1$ on $[0, \\pi]$: no solution (since $\\sin x \\geq 0$ on \n this interval).\n\nCritical numbers in $(0, \\pi)$: $x = \\pi/6$ and $x = 5\\pi/6$.\n\n**Steps 2–3.** Evaluate:\n\\[\n\\begin{aligned}\n f(0) &= 2\\cos 0 + \\sin 0 = 2, \\\\\n f(\\pi/6) &= 2\\cos(\\pi/6) + \\sin(\\pi/3) = 2\\cdot\\frac{\\sqrt{3}}{2} + \\frac{\\sqrt{3}}{2} = \\frac{3\\sqrt{3}}{2} \\approx 2.598, \\\\\n f(5\\pi/6) &= 2\\cos(5\\pi/6) + \\sin(5\\pi/3) = 2\\bigl(-\\tfrac{\\sqrt{3}}{2}\\bigr) + \\bigl(-\\tfrac{\\sqrt{3}}{2}\\bigr) = -\\frac{3\\sqrt{3}}{2} \\approx -2.598, \\\\\n f(\\pi) &= 2\\cos\\pi + \\sin 2\\pi = -2 + 0 = -2.\n\\end{aligned}\n\\]\n\n**Step 4.** The absolute maximum value is $\\dfrac{3\\sqrt{3}}{2}$ at \n$x = \\pi/6$; the absolute minimum value is $-\\dfrac{3\\sqrt{3}}{2}$ at \n$x = 5\\pi/6$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.8",
+      "number": "5.8",
+      "title": "An applied maximum--minimum problem",
+      "problem": "A farmer has 200 feet of fencing and wants to enclose a rectangular area \nalong a river (no fence needed on the river side). What dimensions maximize \nthe enclosed area?",
+      "solution": "Let $x$ be the length of the side perpendicular to the river and $y$ be the \nlength of the side parallel to it. The fencing constraint is $2x + y = 200$, \nso $y = 200 - 2x$.\n\nThe area is:\n\\[\n A(x) = xy = x(200 - 2x) = 200x - 2x^{2}, \\quad 0 \\leq x \\leq 100.\n\\]\n\n**Step 1.** $A'(x) = 200 - 4x$. Setting $A'(x) = 0$ gives \n$x = 50$.\n\n**Steps 2–3.** Evaluate:\n\\[\n A(0) = 0, \\qquad A(50) = 200(50) - 2(50)^{2} = 5000, \\qquad A(100) = 0.\n\\]\n\n**Step 4.** The maximum area is $5000$ square feet, when \n$x = 50$ feet and $y = 200 - 100 = 100$ feet."
+    },
+    {
+      "type": "historical",
+      "id": "historical-5.1",
+      "number": null,
+      "title": "Pierre de Fermat (1601--1665)",
+      "content": "The French lawyer and amateur mathematician Pierre de Fermat developed the \nfirst general method for finding maxima and minima of functions, anticipating \nthe differential calculus by several decades. His \"method of adequality\" \n(from the Latin *adaequalitas*) was essentially the technique of \nsetting a derivative equal to zero—though the formal concept of a \nderivative had not yet been invented. Fermat also made foundational \ncontributions to number theory, probability, and analytic geometry. His \nfamous \"Last Theorem\" resisted proof for over 350 years until Andrew \nWiles settled it in 1995."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 95:4",
+      "text": "In his hand are the depths of the earth, and \nthe mountain peaks belong to him."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 2:3--5",
+      "text": "If you call out for insight and cry \naloud for understanding, and if you look for it as for silver and search \nfor it as for hidden treasure, then you will understand the fear of the Lord \nand find the knowledge of God."
+    },
+    {
+      "type": "quote",
+      "author": "Karl Weierstrass",
+      "text": "A mathematician who is not also something \nof a poet will never be a complete mathematician."
+    },
+    {
+      "type": "quote",
+      "author": "Pierre de Fermat",
+      "text": "I have discovered a truly marvelous proof \nof this, which this margin is too narrow to contain."
+    }
+  ]
+}

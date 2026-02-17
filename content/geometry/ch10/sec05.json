@@ -1,0 +1,223 @@
+{
+  "id": "geometry-ch10-sec05",
+  "title": "Areas of Composite Figures",
+  "chapter": 10,
+  "section": 5,
+  "book": "geometry",
+  "epigraph": {
+    "text": "For we are God's handiwork, created in Christ Jesus to do good works, which God prepared in advance for us to do.",
+    "reference": "Ephesians 2:10"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Real-world shapes are rarely simple rectangles or perfect circles. \nBuildings, gardens, lakes, and artwork typically combine multiple \ngeometric forms. In this section, we learn systematic strategies \nfor calculating the areas of such **composite figures**—shapes \nmade up of two or more simpler shapes."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Problem-Solving Strategies"
+    },
+    {
+      "type": "paragraph",
+      "text": "There are two main approaches to finding the area of a composite figure:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Addition Method",
+      "content": "**Addition:** Divide the figure into non-overlapping simple shapes, \ncalculate each area separately, and add them together."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.2",
+      "number": "10.2",
+      "title": "Subtraction Method",
+      "content": "**Subtraction:** Enclose the figure in a larger simple shape \n(like a rectangle), then subtract the areas of the \"extra\" regions."
+    },
+    {
+      "type": "paragraph",
+      "text": "Both methods work; choose whichever seems simpler for the given figure."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "A Systematic Approach"
+    },
+    {
+      "type": "paragraph",
+      "text": "When facing a composite figure, follow these steps:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Analyze** the figure. Identify its component shapes.",
+        "**Decide** whether to use addition or subtraction.",
+        "**Find** all necessary dimensions (you may need to \n calculate some from given information).",
+        "**Calculate** each component area.",
+        "**Combine** the areas (add or subtract as appropriate).",
+        "**Check** that your answer is reasonable."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "L-Shaped Regions"
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "L-shaped room",
+      "problem": "Find the area of the L-shaped figure shown below.\n\ncenter\ntikzpicture[scale=0.5]\n \n (0,0) – (8,0) – (8,3) – (3,3) – (3,6) – (0,6) – cycle;\n \n % Dimensions\n at (4,0) {8};\n at (8,1.5) {3};\n at (5.5,3) {5};\n at (3,4.5) {3};\n at (1.5,6) {3};\n at (0,3) {6};\ntikzpicture\ncenter",
+      "solution": "**Method 1 (Addition):** Divide into two rectangles.\n\ncenter\ntikzpicture[scale=0.4]\n \n (0,0) – (8,0) – (8,3) – (0,3) – cycle;\n \n (0,3) – (3,3) – (3,6) – (0,6) – cycle;\n (0,3) – (8,3);\n at (4,1.5) {$8 \\times 3 = 24$};\n at (1.5,4.5) {$3 \\times 3 = 9$};\ntikzpicture\ncenter\n\\[\n A = 24 + 9 = 33 \\text{ square units}\n\\]\n\n**Method 2 (Subtraction):** Start with a large rectangle, \nsubtract the missing corner.\n\ncenter\ntikzpicture[scale=0.4]\n \n (0,0) rectangle (8,6);\n ll[white] (3,3) rectangle (8,6);\n (3,3) rectangle (8,6);\n at (2,3) {$8 \\times 6$};\n at (5.5,4.5) {$5 \\times 3$};\ntikzpicture\ncenter\n\\[\n A = (8 \\times 6) - (5 \\times 3) = 48 - 15 = 33 \\text{ square units}\n\\]\n\nBoth methods give the same answer: $A = 33$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Figures with Curved Parts"
+    },
+    {
+      "type": "paragraph",
+      "text": "Many composite figures include circles or parts of circles (semicircles, \nquarter circles, etc.)."
+    },
+    {
+      "type": "example",
+      "id": "example-10.2",
+      "number": "10.2",
+      "title": "Semicircle on a rectangle",
+      "problem": "Find the area of a figure consisting of a rectangle 10 by 8 with \na semicircle attached to one end.\n\ncenter\ntikzpicture[scale=0.4]\n % Rectangle\n \n (0,0) rectangle (10,8);\n % Semicircle\n ll[AtlasGold, opacity=0.2] (10,4) arc (-90:90:4) – (10,8) – cycle;\n (10,0) arc (-90:90:4);\n \n at (5,0) {10};\n at (0,4) {8};\n at (14,4) {$r=4$};\ntikzpicture\ncenter",
+      "solution": "The rectangle has dimensions $10 \\times 8$, so its area is 80.\n\nThe semicircle has diameter 8 (the width of the rectangle), so \nradius $r = 4$. A semicircle's area is half a full circle:\n\\[\n A_{\\text{semicircle}} = \\frac{1}{2}\\pi r^2 = \\frac{1}{2}\\pi(4)^2 = 8\\pi\n\\]\n\nTotal area:\n\\[\n A = 80 + 8\\pi \\approx 80 + 25.13 \\approx 105.13 \\text{ square units}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.3",
+      "number": "10.3",
+      "title": "Rectangle with circular hole",
+      "problem": "A rectangular metal plate measures 20 cm by 15 cm. A circular \nhole with diameter 6 cm is cut from the center. Find the remaining area.\n\ncenter\ntikzpicture[scale=0.25]\n \n (0,0) rectangle (20,15);\n ll[white] (10,7.5) circle (3);\n (10,7.5) circle (3);\n \n at (10,0) {20 cm};\n at (0,7.5) {15 cm};\n at (10,7.5) {$d=6$};\ntikzpicture\ncenter",
+      "solution": "Rectangle area: $A_{\\text{rect}} = 20 \\times 15 = 300$ cm²\n\nCircle area (with $r = 3$): $A_{\\text{circle}} = \\pi(3)^2 = 9\\pi$ cm²\n\nRemaining area:\n\\[\n A = 300 - 9\\pi \\approx 300 - 28.27 \\approx 271.73 \\text{ cm}^2\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Running Tracks and Similar Shapes"
+    },
+    {
+      "type": "example",
+      "id": "example-10.4",
+      "number": "10.4",
+      "title": "Running track",
+      "problem": "A running track consists of a rectangle with semicircles at \neach end. The straight sections are 100 m long, and the track \nis 40 m wide. Find the total area enclosed by the track.\n\ncenter\ntikzpicture[scale=0.04]\n % Rectangle\n \n (0,0) rectangle (100,40);\n % Semicircles\n ll[AtlasGold, opacity=0.2] (0,20) arc (90:270:20) – cycle;\n ll[AtlasGold, opacity=0.2] (100,20) arc (-90:90:20) – cycle;\n (0,0) arc (270:90:20);\n (100,40) arc (90:-90:20);\n \n at (50,20) {100 m};\n at (-25,20) {40 m};\ntikzpicture\ncenter",
+      "solution": "The figure consists of:\n\n- A rectangle: $100 \\times 40 = 4000$ m²\n\n- Two semicircles (together forming one full circle) with \n diameter 40 m, so radius $r = 20$ m: $\\pi(20)^2 = 400\\pi$ m²\n\nTotal area:\n\\[\n A = 4000 + 400\\pi \\approx 4000 + 1256.64 \\approx 5256.64 \\text{ m}^2\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Figures with Triangular Components"
+    },
+    {
+      "type": "example",
+      "id": "example-10.5",
+      "number": "10.5",
+      "title": "House shape",
+      "problem": "Find the area of the \"house\" shape below: a rectangle topped \nby an isosceles triangle.\n\ncenter\ntikzpicture[scale=0.5]\n % Rectangle\n \n (0,0) rectangle (8,5);\n % Triangle\n \n (0,5) – (4,8) – (8,5) – cycle;\n \n at (4,0) {8};\n at (0,2.5) {5};\n at (6,6.5) {3};\n (4,5) – (4,8);\n at (4,6.5) {3};\ntikzpicture\ncenter",
+      "solution": "Rectangle area: $A_{\\text{rect}} = 8 \\times 5 = 40$\n\nTriangle area (base 8, height 3): \n$A_{\\text{tri}} = \\frac{1}{2}(8)(3) = 12$\n\nTotal area:\n\\[\n A = 40 + 12 = 52 \\text{ square units}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.6",
+      "number": "10.6",
+      "title": "Arrow shape",
+      "problem": "Find the area of the arrow-shaped figure shown.\n\ncenter\ntikzpicture[scale=0.4]\n \n (0,2) – (0,6) – (6,6) – (6,8) – (10,4) – (6,0) – (6,2) – cycle;\n \n % Dimensions\n at (0,4) {4};\n at (3,2) {6};\n at (6,1) {2};\n at (6,7) {2};\n at (8,6) {4};\n at (8,2) {4};\ntikzpicture\ncenter",
+      "solution": "The arrow consists of:\n\n- A rectangle (the \"shaft\"): $6 \\times 4 = 24$\n\n- A triangle (the \"point\"): base $8$, height $4$, \n so $\\frac{1}{2}(8)(4) = 16$\n\nTotal area:\n\\[\n A = 24 + 16 = 40 \\text{ square units}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Decomposing Regular Polygons"
+    },
+    {
+      "type": "example",
+      "id": "example-10.7",
+      "number": "10.7",
+      "title": "Hexagon as triangles",
+      "problem": "Find the area of a regular hexagon with side length 6 by \ndecomposing it into equilateral triangles.\n\ncenter\ntikzpicture[scale=0.6]\n in {0,60,120,180,240,300} {\n (V) at (:2);\n }\n \n (V0) – (V60) – (V120) – (V180) – (V240) – (V300) – cycle;\n \n % Radii\n in {0,60,120,180,240,300} {\n (0,0) – (V);\n }\n \n ll[AtlasTeal] (0,0) circle (2pt);\n at (1,-0.2) {6};\ntikzpicture\ncenter",
+      "solution": "The hexagon divides into 6 equilateral triangles, each with \nside length 6.\n\nArea of one equilateral triangle:\n\\[\n A_{\\triangle} = \\frac{s^2\\sqrt{3}}{4} = \\frac{6^2\\sqrt{3}}{4} = \\frac{36\\sqrt{3}}{4} = 9\\sqrt{3}\n\\]\n\nTotal area:\n\\[\n A = 6 \\times 9\\sqrt{3} = 54\\sqrt{3} \\approx 93.53\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Finding Shaded Regions"
+    },
+    {
+      "type": "example",
+      "id": "example-10.8",
+      "number": "10.8",
+      "title": "Shaded region between circles",
+      "problem": "Two circles have the same center. The larger has radius 10, \nthe smaller has radius 6. Find the area of the shaded region \nbetween them (the annulus).\n\ncenter\ntikzpicture[scale=0.3]\n ll[AtlasTealLight, opacity=0.4] (0,0) circle (10);\n ll[white] (0,0) circle (6);\n (0,0) circle (10);\n (0,0) circle (6);\n ll[AtlasTeal] (0,0) circle (3pt);\n \n (0,0) – (0:6) node[midway, below] {6};\n (0,0) – (45:10) node[midway, above left] {10};\ntikzpicture\ncenter",
+      "solution": "Large circle area: $\\pi(10)^2 = 100\\pi$\n\nSmall circle area: $\\pi(6)^2 = 36\\pi$\n\nShaded area:\n\\[\n A = 100\\pi - 36\\pi = 64\\pi \\approx 201.06\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.9",
+      "number": "10.9",
+      "title": "Circle inscribed in square",
+      "problem": "A circle with radius 5 is inscribed in a square. Find the \narea of the region inside the square but outside the circle.\n\ncenter\ntikzpicture[scale=0.3]\n ll[AtlasTealLight, opacity=0.4] (-5,-5) rectangle (5,5);\n ll[white] (0,0) circle (5);\n (-5,-5) rectangle (5,5);\n (0,0) circle (5);\n \n (0,0) – (0:5) node[midway, below] {5};\n at (5,-5) {10};\ntikzpicture\ncenter",
+      "solution": "The diameter of the inscribed circle equals the side of the \nsquare, so the square has side $2(5) = 10$.\n\nSquare area: $10^2 = 100$\n\nCircle area: $\\pi(5)^2 = 25\\pi$\n\nShaded area:\n\\[\n A = 100 - 25\\pi \\approx 100 - 78.54 \\approx 21.46\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.10",
+      "number": "10.10",
+      "title": "Square inscribed in circle",
+      "problem": "A square is inscribed in a circle of radius 10. Find the \narea inside the circle but outside the square.\n\ncenter\ntikzpicture[scale=0.25]\n ll[AtlasTealLight, opacity=0.4] (0,0) circle (10);\n ll[white] (45:10) – (135:10) – (225:10) – (315:10) – cycle;\n (0,0) circle (10);\n (45:10) – (135:10) – (225:10) – (315:10) – cycle;\n \n (0,0) – (45:10) node[midway, above left] {10};\ntikzpicture\ncenter",
+      "solution": "The diagonal of the inscribed square equals the diameter of \nthe circle: $d = 2(10) = 20$.\n\nFor a square with diagonal $d$, the side is $s = \\frac{d}{\\sqrt{2}} = \\frac{20}{\\sqrt{2}} = 10\\sqrt{2}$.\n\nSquare area: $s^2 = (10\\sqrt{2})^2 = 200$\n\nCircle area: $\\pi(10)^2 = 100\\pi$\n\nShaded area:\n\\[\n A = 100\\pi - 200 \\approx 314.16 - 200 = 114.16\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Perimeter of Composite Figures"
+    },
+    {
+      "type": "paragraph",
+      "text": "Finding the perimeter of a composite figure requires identifying \nand measuring all the *outer* boundary segments."
+    },
+    {
+      "type": "example",
+      "id": "example-10.11",
+      "number": "10.11",
+      "title": "Track perimeter",
+      "problem": "Find the perimeter of the running track from Example [ex:running-track] \n(rectangle 100 m by 40 m with semicircles at each end).",
+      "solution": "The perimeter consists of:\n\n- Two straight sides of 100 m each: $2(100) = 200$ m\n\n- Two semicircles (forming one full circle) with \n diameter 40, so circumference $\\pi d = 40\\pi$ m\n\nTotal perimeter:\n\\[\n P = 200 + 40\\pi \\approx 200 + 125.66 \\approx 325.66 \\text{ m}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 16:3",
+      "text": "Commit to the Lord whatever you do, \nand he will establish your plans."
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 3:10",
+      "text": "By the grace God has given me, \nI laid a foundation as a wise builder, and someone else is building \non it."
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 9:24",
+      "text": "Do you not know that in a race \nall the runners run, but only one gets the prize? Run in such a \nway as to get the prize."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:1",
+      "text": "There is a time for everything, \nand a season for every activity under the heavens."
+    }
+  ]
+}

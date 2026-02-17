@@ -1,0 +1,253 @@
+{
+  "id": "vol2-ch07-sec01",
+  "title": "Area Between Curves",
+  "chapter": 7,
+  "section": 1,
+  "book": "vol2",
+  "epigraph": {
+    "text": "The lines have fallen for me in pleasant places; indeed, \nI have a beautiful inheritance.",
+    "reference": "Psalm 16:6"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "In Chapter 6, we discovered that the definite integral $\\defint{a}{b} f(x)\\dx$ \ncomputes the *signed area* between the graph of $f$ and the $x$-axis. \nThat was already powerful—but the world is not made of regions bounded by a \nsingle curve and a coordinate axis. Rivers meander between banks. The space \nbetween two mountain ridges forms a valley. The area enclosed by supply and \ndemand curves measures economic surplus."
+    },
+    {
+      "type": "paragraph",
+      "text": "What about the area *between* two curves?"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is our first harvest from the seeds of integration, and it follows the \nuniversal pattern you will see in every section of this chapter:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Slice** the region into thin vertical (or horizontal) strips.",
+        "**Approximate** each strip as a rectangle.",
+        "**Sum** the areas of all the rectangles (Riemann sum).",
+        "**Take the limit** to obtain a definite integral."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Developing the Formula"
+    },
+    {
+      "type": "paragraph",
+      "text": "Suppose $f(x) \\ge g(x)$ for all $x$ in $[a,b]$. Consider the region $R$ \nbounded above by $y = f(x)$, below by $y = g(x)$, and on the sides by the \nvertical lines $x = a$ and $x = b$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 1: Slice.** Divide $[a,b]$ into $n$ subintervals of width \n$\\Delta x = (b-a)/n$. Each subinterval determines a thin vertical strip \nof the region."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 2: Approximate.** On the $k$th subinterval, the strip is \napproximately a rectangle whose height is the distance between the curves:\n\\[\n \\text{height} = f(x_k^*) - g(x_k^*),\n\\]\nwhere $x_k^*$ is a sample point in the $k$th subinterval. The width is \n$\\Delta x$, so the approximate area of this strip is\n\\[\n \\Delta A_k \\approx \\bigl[f(x_k^*) - g(x_k^*)\\bigr]\\,\\Delta x.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 3: Sum.** Adding the areas of all $n$ rectangles:\n\\[\n A \\approx \\sum_{k=1}^{n} \\bigl[f(x_k^*) - g(x_k^*)\\bigr]\\,\\Delta x.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 4: Take the limit.** As $n \\to \\infty$ (equivalently, as \n$\\Delta x \\to 0$), the Riemann sum converges to a definite integral."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Area Between Two Curves (Vertical Slices)",
+      "content": "If $f$ and $g$ are continuous on $[a,b]$ and $f(x) \\ge g(x)$ for all \n$x$ in $[a,b]$, then the **area** of the \nregion bounded by $y = f(x)$, $y = g(x)$, $x = a$, and $x = b$ is\n\\[\n A = \\defint{a}{b} \\bigl[f(x) - g(x)\\bigr]\\dx.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Archimedes (c.\\,287–212 bc){Give me a place to \nstand and I will move the earth.}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Notice that we subtract the *lower* curve from the *upper* curve \nto ensure the integrand is nonnegative. If you mix up the order, you simply \nget the negative of the area."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Area between a parabola and a line",
+      "problem": "Find the area of the region enclosed by $y = x^2$ and $y = x + 2$.",
+      "solution": "**Find the intersection points.** Set $x^2 = x + 2$:\n\\[\n x^2 - x - 2 = 0 \\implies (x-2)(x+1) = 0 \\implies x = -1,\\; x = 2.\n\\]\nOn $[-1, 2]$, which curve is on top? Check a test point, say $x = 0$: \n$f(0) = 0 + 2 = 2$ and $g(0) = 0^2 = 0$, so the line is above the parabola.\n\n**Set up and evaluate the integral.**\n$$\n A &= \\defint{-1}{2} \\bigl[(x+2) - x^2\\bigr]\\dx \\\\\n &= \\left[\\frac{x^2}{2} + 2x - \\frac{x^3}{3}\\right]_{-1}^{2} \\\\\n &= \\left(\\frac{4}{2} + 4 - \\frac{8}{3}\\right) \n - \\left(\\frac{1}{2} - 2 + \\frac{1}{3}\\right) \\\\\n &= \\left(2 + 4 - \\frac{8}{3}\\right) \n - \\left(\\frac{1}{2} - 2 + \\frac{1}{3}\\right) \\\\\n &= \\frac{10}{3} - \\left(-\\frac{7}{6}\\right) \n = \\frac{10}{3} + \\frac{7}{6} = \\frac{20}{6} + \\frac{7}{6} \n = \\frac{27}{6} = \\frac{9}{2}.\n$$\nThe area is $\\dfrac{9}{2}$ square units."
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Area between two polynomials",
+      "problem": "Find the area enclosed by $y = x^3 - x$ and $y = x$.",
+      "solution": "**Intersection points.** Set $x^3 - x = x$, so $x^3 - 2x = 0$, \ngiving $x(x^2 - 2) = 0$, hence $x = 0,\\; x = \\pm\\sqrt{2}$.\n\nWe must determine which function is on top in each subinterval.\n\nOn $[-\\sqrt{2}, 0]$: test $x = -1$. We get $f(-1) = -1 + 1 = 0$ and \n$g(-1) = -1$, so $x^3 - x \\ge x$ on this interval (the cubic is above the \nline).\n\nOn $[0, \\sqrt{2}]$: test $x = 1$. We get $f(1) = 1 - 1 = 0$ and \n$g(1) = 1$, so $x \\ge x^3 - x$ on this interval (the line is above the \ncubic).\n\nBy symmetry (or direct calculation):\n$$\n A &= \\defint{-\\sqrt{2}}{0} \\bigl[(x^3 - x) - x\\bigr]\\dx \n + \\defint{0}{\\sqrt{2}} \\bigl[x - (x^3 - x)\\bigr]\\dx \\\\\n &= \\defint{-\\sqrt{2}}{0} (x^3 - 2x)\\dx \n + \\defint{0}{\\sqrt{2}} (2x - x^3)\\dx.\n$$\nEvaluating the first integral:\n\\[\n \\left[\\frac{x^4}{4} - x^2\\right]_{-\\sqrt{2}}^{0} \n = 0 - \\left(\\frac{4}{4} - 2\\right) = 0 - (-1) = 1.\n\\]\nEvaluating the second integral:\n\\[\n \\left[x^2 - \\frac{x^4}{4}\\right]_{0}^{\\sqrt{2}} \n = \\left(2 - \\frac{4}{4}\\right) - 0 = 2 - 1 = 1.\n\\]\nThe total area is $A = 1 + 1 = 2$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-7.1",
+      "number": null,
+      "title": "Always check which curve is on top",
+      "content": "If the curves cross within the interval, you *must* split the integral \nat the crossing point(s). The integral $\\defint{a}{b}\\bigl[f(x)-g(x)\\bigr]\\dx$ \ncan give a negative contribution where $g > f$, and the positive and negative \nparts may cancel. To find *area*, compute\n\\[\n A = \\defint{a}{b} \\abs{f(x) - g(x)}\\dx,\n\\]\nwhich in practice means splitting into subintervals where the sign is constant."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Finding Intersection Points"
+    },
+    {
+      "type": "paragraph",
+      "text": "Euclid (c.\\,300 bc){What has been affirmed without \nproof can also be denied without proof.}"
+    },
+    {
+      "type": "paragraph",
+      "text": "The limits of integration are often determined by the intersection points \nof the two curves. Setting $f(x) = g(x)$ and solving for $x$ gives the \nboundaries of the enclosed region."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-7.1",
+      "number": null,
+      "title": "Finding Area Between Two Curves",
+      "content": "1. **Sketch** the curves (even a rough sketch helps).\n\n2. **Find intersection points** by solving $f(x) = g(x)$.\n\n3. **Determine which curve is on top** on each subinterval \n (use a test point).\n\n4. **Integrate:**\n $A = \\defint{a}{b}\\bigl[\\text{top} - \\text{bottom}\\bigr]\\dx.$\n\n5. If the curves cross, **split** the integral at each crossing point."
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "Area requiring intersection points",
+      "problem": "Find the area of the region enclosed by $y = \\sin x$ and $y = \\cos x$ \nbetween $x = 0$ and $x = \\pi/2$.",
+      "solution": "**Intersection.** Set $\\sin x = \\cos x$, so $\\tan x = 1$, giving \n$x = \\pi/4$ on $[0, \\pi/2]$.\n\nOn $[0, \\pi/4]$: $\\cos x \\ge \\sin x$ (check $x = 0$: $\\cos 0 = 1 > 0 = \\sin 0$).\n\nOn $[\\pi/4, \\pi/2]$: $\\sin x \\ge \\cos x$ (check $x = \\pi/2$: $\\sin(\\pi/2) = 1 > 0 = \\cos(\\pi/2)$).\n\n$$\n A &= \\defint{0}{\\pi/4} (\\cos x - \\sin x)\\dx \n + \\defint{\\pi/4}{\\pi/2} (\\sin x - \\cos x)\\dx \\\\\n &= \\bigl[\\sin x + \\cos x\\bigr]_0^{\\pi/4} \n + \\bigl[-\\cos x - \\sin x\\bigr]_{\\pi/4}^{\\pi/2} \\\\\n &= \\left(\\frac{\\sqrt{2}}{2} + \\frac{\\sqrt{2}}{2}\\right) - (0 + 1) \n + \\left(-0 - 1\\right) - \\left(-\\frac{\\sqrt{2}}{2} - \\frac{\\sqrt{2}}{2}\\right) \\\\\n &= (\\sqrt{2} - 1) + (-1 + \\sqrt{2}) = 2\\sqrt{2} - 2.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Integrating with Respect to $y$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Sometimes the boundary curves are more naturally expressed as functions of \n$y$, or the region is easier to slice into *horizontal* strips. In \nsuch cases, we integrate with respect to $y$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 1: Slice** the region into thin horizontal strips of thickness \n$\\Delta y$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 2: Approximate** each strip as a rectangle with width \n$[\\text{right curve}] - [\\text{left curve}]$ and height $\\Delta y$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 3: Sum** and **Step 4: Take the limit**:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.2",
+      "number": "7.2",
+      "title": "Area Between Curves (Horizontal Slices)",
+      "content": "If $x = f(y)$ and $x = g(y)$ are continuous on $[c,d]$ (in $y$) and \n$f(y) \\ge g(y)$, then the area of the region between them is\n\\[\n A = \\defint{c}{d} \\bigl[f(y) - g(y)\\bigr]\\dy.\n\\]\nHere $f(y)$ is the **right** curve and $g(y)$ is the **left** curve."
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "Area using horizontal slices",
+      "problem": "Find the area enclosed by $x = y^2$ and $x = y + 2$.",
+      "solution": "**Intersection points.** Set $y^2 = y + 2$, so $y^2 - y - 2 = 0$, \ngiving $(y-2)(y+1) = 0$, hence $y = -1$ and $y = 2$.\n\nFor $y$ in $[-1,2]$, the line $x = y + 2$ is to the *right* of the \nparabola $x = y^2$ (check $y = 0$: $0 + 2 = 2 > 0$). So:\n$$\n A &= \\defint{-1}{2} \\bigl[(y + 2) - y^2\\bigr]\\dy \\\\\n &= \\left[\\frac{y^2}{2} + 2y - \\frac{y^3}{3}\\right]_{-1}^{2} \\\\\n &= \\left(2 + 4 - \\frac{8}{3}\\right) \n - \\left(\\frac{1}{2} - 2 + \\frac{1}{3}\\right) \\\\\n &= \\frac{10}{3} + \\frac{7}{6} = \\frac{27}{6} = \\frac{9}{2}.\n$$\n\n*Remark.* This is the same region as Example [ex:area-parabola-line], \nviewed from a different perspective. With vertical slices we would have \nneeded to split the region, but horizontal slices give a single integral. \nChoosing the right direction of integration can greatly simplify the work."
+    },
+    {
+      "type": "example",
+      "id": "example-7.5",
+      "number": "7.5",
+      "title": "When horizontal slices are essential",
+      "problem": "Find the area of the region enclosed by $x = y^2 - 4$ and $x = 6 - 3y^2$.",
+      "solution": "**Intersection.** Set $y^2 - 4 = 6 - 3y^2$:\n\\[\n 4y^2 = 10 \\implies y^2 = \\frac{5}{2} \n \\implies y = \\pm\\sqrt{\\frac{5}{2}}.\n\\]\n\nWhich is the right curve? Test $y = 0$: $0 - 4 = -4$ and $6 - 0 = 6$, so \n$x = 6 - 3y^2$ is to the right.\n$$\n A &= \\defint{-\\sqrt{5/2}}{\\sqrt{5/2}} \n \\bigl[(6 - 3y^2) - (y^2 - 4)\\bigr]\\dy \\\\\n &= \\defint{-\\sqrt{5/2}}{\\sqrt{5/2}} (10 - 4y^2)\\dy \\\\\n &= 2\\defint{0}{\\sqrt{5/2}} (10 - 4y^2)\\dy \n \\quad\\text{(even function, symmetric interval)} \\\\\n &= 2\\left[10y - \\frac{4y^3}{3}\\right]_0^{\\sqrt{5/2}} \\\\\n &= 2\\left(10\\sqrt{\\frac{5}{2}} \n - \\frac{4}{3}\\left(\\frac{5}{2}\\right)^{3/2}\\right) \\\\\n &= 2\\left(10\\cdot\\frac{\\sqrt{10}}{2} \n - \\frac{4}{3}\\cdot\\frac{5\\sqrt{10}}{4}\\right) \\\\\n &= 2\\left(5\\sqrt{10} - \\frac{5\\sqrt{10}}{3}\\right) \n = 2\\cdot\\frac{10\\sqrt{10}}{3} = \\frac{20\\sqrt{10}}{3}.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Regions Requiring Multiple Integrals"
+    },
+    {
+      "type": "paragraph",
+      "text": "When the \"top\" and \"bottom\" curves switch roles at one or more crossing \npoints, we must split the region into subregions and add the areas."
+    },
+    {
+      "type": "example",
+      "id": "example-7.6",
+      "number": "7.6",
+      "title": "Curves that cross: absolute value",
+      "problem": "Find the area between $y = x^3$ and $y = x$ on $[-1, 1]$.",
+      "solution": "**Intersections.** $x^3 = x$ gives $x(x^2 - 1) = 0$, so \n$x = -1, 0, 1$.\n\nOn $[-1, 0]$: test $x = -1/2$. $(-1/2)^3 = -1/8$ and $-1/2$, \nso $x^3 > x$ (the cubic is above the line).\n\nOn $[0, 1]$: test $x = 1/2$. $(1/2)^3 = 1/8$ and $1/2$, \nso $x > x^3$ (the line is above the cubic).\n$$\n A &= \\defint{-1}{0} (x^3 - x)\\dx + \\defint{0}{1} (x - x^3)\\dx \\\\\n &= \\left[\\frac{x^4}{4} - \\frac{x^2}{2}\\right]_{-1}^{0} \n + \\left[\\frac{x^2}{2} - \\frac{x^4}{4}\\right]_0^1 \\\\\n &= \\left(0 - \\frac{1}{4} + \\frac{1}{2}\\right) \n + \\left(\\frac{1}{2} - \\frac{1}{4}\\right) \n = \\frac{1}{4} + \\frac{1}{4} = \\frac{1}{2}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.7",
+      "number": "7.7",
+      "title": "Region bounded by three curves",
+      "problem": "Find the area of the region bounded by $y = \\sqrt{x}$, $y = 0$, and \n$x + y = 6$ (i.e., $y = 6 - x$).",
+      "solution": "First, we find where the curves meet:\n\n- $\\sqrt{x} = 6 - x$: squaring, $x = 36 - 12x + x^2$, so \n $x^2 - 13x + 36 = 0$, giving $(x-4)(x-9) = 0$. Since $\\sqrt{x} = 6-x$ \n requires $6-x \\ge 0$, we need $x \\le 6$. Check: $x=4$ gives \n $\\sqrt{4}=2$ and $6-4=2$ (); $x=9$ gives $\\sqrt{9}=3$ and \n $6-9=-3$ (55). So $x = 4$.\n\n- $\\sqrt{x} = 0$ at $x = 0$.\n\n- $6 - x = 0$ at $x = 6$.\n\nThe region has two parts:\n\n- For $0 \\le x \\le 4$: bounded above by $y = \\sqrt{x}$, below by $y = 0$.\n\n- For $4 \\le x \\le 6$: bounded above by $y = 6-x$, below by $y = 0$.\n$$\n A &= \\defint{0}{4} \\sqrt{x}\\dx + \\defint{4}{6} (6-x)\\dx \\\\\n &= \\left[\\frac{2}{3}x^{3/2}\\right]_0^4 \n + \\left[6x - \\frac{x^2}{2}\\right]_4^6 \\\\\n &= \\frac{2}{3}(8) + \\left[(36 - 18) - (24 - 8)\\right] \\\\\n &= \\frac{16}{3} + (18 - 16) = \\frac{16}{3} + 2 = \\frac{22}{3}.\n$$"
+    },
+    {
+      "type": "historical",
+      "id": "historical-7.1",
+      "number": null,
+      "title": "Archimedes and the Parabolic Segment (c.\\,250 \\textsc{bc",
+      "content": ")}\nOver two thousand years before the invention of calculus, Archimedes proved \nthat the area of a parabolic segment (the region between a parabola and a \nchord) is $\\frac{4}{3}$ times the area of the inscribed triangle. His method \nof exhaustion—filling the region with smaller and smaller triangles—was \nessentially the limiting process we use today. Our integral formula for the \narea between $y = x^2$ and $y = x+2$ would have delighted him."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Additional Worked Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-7.8",
+      "number": "7.8",
+      "title": "Area between exponential and linear",
+      "problem": "Find the area between $y = e^x$, $y = 1$, and $x = 2$.",
+      "solution": "The region is bounded above by $y = e^x$, below by $y = 1$, from $x = 0$ \n(where $e^0 = 1$) to $x = 2$.\n\\[\n A = \\defint{0}{2} (e^x - 1)\\dx = \\bigl[e^x - x\\bigr]_0^2 \n = (e^2 - 2) - (1 - 0) = e^2 - 3.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.9",
+      "number": "7.9",
+      "title": "Area enclosed by two parabolas",
+      "problem": "Find the area enclosed by $y = x^2$ and $y = 2x - x^2$.",
+      "solution": "**Intersections.** $x^2 = 2x - x^2$ gives $2x^2 - 2x = 0$, so \n$2x(x-1) = 0$ and $x = 0, 1$.\n\nOn $[0,1]$: test $x = 1/2$. $f(1/2) = 1/4$ and $g(1/2) = 1 - 1/4 = 3/4$, \nso $2x - x^2 \\ge x^2$.\n$$\n A &= \\defint{0}{1} \\bigl[(2x - x^2) - x^2\\bigr]\\dx \n = \\defint{0}{1} (2x - 2x^2)\\dx \\\\\n &= \\left[x^2 - \\frac{2x^3}{3}\\right]_0^1 = 1 - \\frac{2}{3} = \\frac{1}{3}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.10",
+      "number": "7.10",
+      "title": "Choosing vertical vs.\\ horizontal slices",
+      "problem": "Find the area enclosed by $y = x$ and $y^2 = x + 2$.",
+      "solution": "Rewrite as $x = y^2 - 2$ and $x = y$.\n\n**With horizontal slices,** we integrate with respect to $y$. \nIntersection: $y^2 - 2 = y$, so $y^2 - y - 2 = 0$ and $(y-2)(y+1) = 0$, \ngiving $y = -1, 2$.\n\nOn $[-1,2]$: test $y = 0$. Right curve: $x = y = 0$. Left curve: \n$x = y^2 - 2 = -2$. So $x = y$ is to the right.\n$$\n A &= \\defint{-1}{2}\\bigl[y - (y^2 - 2)\\bigr]\\dy \n = \\defint{-1}{2}(y - y^2 + 2)\\dy \\\\\n &= \\left[\\frac{y^2}{2} - \\frac{y^3}{3} + 2y\\right]_{-1}^{2} \n = \\left(2 - \\frac{8}{3} + 4\\right) \n - \\left(\\frac{1}{2} + \\frac{1}{3} - 2\\right) \\\\\n &= \\frac{10}{3} + \\frac{7}{6} = \\frac{9}{2}.\n$$\nA single integral—clean and efficient."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:2",
+      "text": "A time to plant and a time to uproot."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 3:13--14",
+      "text": "Blessed are those who find wisdom, those \nwho gain understanding, for she is more profitable than silver and yields \nbetter returns than gold."
+    },
+    {
+      "type": "scripture",
+      "reference": "Matthew 13:8",
+      "text": "Still other seed fell on good soil, where it \nproduced a crop—a hundred, sixty or thirty times what was sown."
+    },
+    {
+      "type": "quote",
+      "author": "Blaise Pascal (1623--1662)",
+      "text": "The heart has its reasons which \nreason does not know."
+    }
+  ]
+}

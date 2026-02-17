@@ -1,0 +1,508 @@
+{
+  "id": "vol1-ch02-sec02",
+  "title": "The Limit of a Function",
+  "chapter": 2,
+  "section": 2,
+  "book": "vol1",
+  "objectives": [
+    "Define the limit of a function using the intuitive definition and explain why the value of f(a) is irrelevant to the limit as x approaches a",
+    "Evaluate one-sided limits (left-hand and right-hand) and use them to determine whether a two-sided limit exists",
+    "Identify the three ways a limit can fail to exist: jump discontinuities, unbounded behavior, and oscillation",
+    "Use limit notation correctly, including \\lim_{x \\to a} f(x) = L for two-sided limits and \\lim_{x \\to a^-} and \\lim_{x \\to a^+} for one-sided limits"
+  ],
+  "devotional": {
+    "title": "Seeds and Limits",
+    "scripture": "Matthew 13:32",
+    "content": "\"Though it is the smallest of all seeds, yet when it grows, it is the largest of garden plants and becomes a tree.\" Jesus's parable of the mustard seed reveals a profound mathematical truth: small beginnings can lead to magnificent ends. The concept of a limit captures this same wonder—we examine what happens as values get infinitesimally close to a point, and from these tiny approaches, we discover the true nature of change itself. Just as the Kingdom of Heaven grows from the smallest seed into the largest tree, calculus builds from the humble limit into the magnificent edifice of the higher mathematics. Augustin-Louis Cauchy, who first made limits rigorous, understood this when he wrote: \"The concept of limit is the foundation of the higher calculus.\""
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "In Section 2.1 we repeatedly encountered expressions like $\\lim_{h \\to 0}(2+h)$ and declared, without formal justification, that such a quantity \"approaches\" a particular value. We computed secant slopes for smaller and smaller values of $h$, watched the numbers converge, and trusted the pattern. But mathematics demands more than trust in patterns. In this section we give the concept of a limit its proper name and explore what it means for a function to approach a value—even at points where the function itself may not be defined."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "An Intuitive Definition of Limits"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider the function $$f(x) = \\frac{x^2 - 1}{x - 1}.$$ This function is undefined at $x = 1$ because substitution yields $\\frac{0}{0}$. But what happens to $f(x)$ as $x$ gets *close to* $1$ without actually equaling $1$? Let us investigate with a table."
+    },
+    {
+      "type": "paragraph",
+      "text": "**From the left ($x < 1$):** $f(0.9) = 1.9$, $f(0.99) = 1.99$, $f(0.999) = 1.999$, $f(0.9999) = 1.9999$"
+    },
+    {
+      "type": "paragraph",
+      "text": "**From the right ($x > 1$):** $f(1.1) = 2.1$, $f(1.01) = 2.01$, $f(1.001) = 2.001$, $f(1.0001) = 2.0001$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The values of $f(x)$ get closer and closer to $2$ as $x$ approaches $1$ from either side. We can verify this algebraically: for $x \\neq 1$, $$f(x) = \\frac{x^2-1}{x-1} = \\frac{(x-1)(x+1)}{x-1} = x + 1.$$ So $f$ agrees with the function $g(x) = x + 1$ everywhere except at $x = 1$, where $f$ is undefined and $g(1) = 2$. The graph of $f$ is the line $y = x+1$ with a hole at the point $(1, 2)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "We write $$\\lim_{x \\to 1} \\frac{x^2-1}{x-1} = 2,$$ and we say \"the limit of $f(x)$ as $x$ approaches $1$ is $2$.\""
+    },
+    {
+      "type": "definition",
+      "id": "def-2.4",
+      "number": "2.4",
+      "title": "Limit of a Function (Intuitive)",
+      "content": "We write $$\\lim_{x \\to a} f(x) = L$$ and say \"the **limit** of $f(x)$, as $x$ approaches $a$, equals $L$\" if we can make the values of $f(x)$ *arbitrarily close* to $L$ by restricting $x$ to be *sufficiently close* to $a$ (on either side) but not equal to $a$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Caution: The limit does not care about $f(a)$.** The value of $\\lim_{x \\to a} f(x)$ depends only on the values of $f$ *near* $a$, not on the value of $f$ *at* $a$ (which may not even exist). In the example above, $f(1)$ is undefined, yet $\\lim_{x \\to 1} f(x) = 2$. Even if $f$ were defined at $a$ with a \"wrong\" value—say $f(1) = 17$—the limit as $x \\to 1$ would *still* be $2$."
+    },
+    {
+      "type": "paragraph",
+      "text": "This connects directly to Section 2.1. When we wrote $\\lim_{h \\to 0}(2+h) = 2$, we were computing a limit: the values of $2+h$ approach $2$ as $h$ approaches $0$. The limit gave meaning to a difference quotient that was undefined at $h = 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Estimating Limits Numerically and Graphically"
+    },
+    {
+      "type": "example",
+      "id": "ex-2.5",
+      "number": "2.5",
+      "title": "Estimating a limit from a table",
+      "problem": "Estimate $\\displaystyle\\lim_{x \\to 0}\\frac{\\sin x}{x}$ using a table of values. (*Use radian mode.*)",
+      "solution": "**From the left ($x \\to 0^-$):**\n- $x = -1.0$: $\\frac{\\sin x}{x} = 0.84147$\n- $x = -0.5$: $\\frac{\\sin x}{x} = 0.95885$\n- $x = -0.1$: $\\frac{\\sin x}{x} = 0.99833$\n- $x = -0.01$: $\\frac{\\sin x}{x} = 0.99998$\n- $x = -0.001$: $\\frac{\\sin x}{x} = 1.00000$\n\n**From the right ($x \\to 0^+$):**\n- $x = 1.0$: $\\frac{\\sin x}{x} = 0.84147$\n- $x = 0.5$: $\\frac{\\sin x}{x} = 0.95885$\n- $x = 0.1$: $\\frac{\\sin x}{x} = 0.99833$\n- $x = 0.01$: $\\frac{\\sin x}{x} = 0.99998$\n- $x = 0.001$: $\\frac{\\sin x}{x} = 1.00000$\n\nThe values clearly approach $1$. We write $\\lim_{x \\to 0}\\frac{\\sin x}{x} = 1$. (We will prove this rigorously using the Squeeze Theorem in a later section.)"
+    },
+    {
+      "type": "example",
+      "id": "ex-2.6",
+      "number": "2.6",
+      "title": "Estimating a limit from a graph",
+      "problem": "Let $f$ be defined by $$f(x) = \\begin{cases} x + 1 & \\text{if } x < 2, \\\\ 5 & \\text{if } x = 2, \\\\ 7 - x & \\text{if } x > 2. \\end{cases}$$ Find $\\lim_{x \\to 2} f(x)$.",
+      "solution": "As $x$ approaches $2$ from the left, $f(x) = x+1$ approaches $2+1=3$. As $x$ approaches $2$ from the right, $f(x) = 7-x$ approaches $7-2=5$.\n\nThe left-hand approach gives $3$ and the right-hand approach gives $5$. Since these are different, the limit **does not exist**.\n\nNote that $f(2) = 5$, but this is irrelevant to the limit question. The function value at the point does not determine the limit."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "One-Sided Limits"
+    },
+    {
+      "type": "paragraph",
+      "text": "The previous example reveals that the behavior of a function as $x$ approaches $a$ may differ depending on whether $x$ approaches from the left or from the right. This motivates the notion of *one-sided limits*."
+    },
+    {
+      "type": "definition",
+      "id": "def-2.5",
+      "number": "2.5",
+      "title": "One-Sided Limits",
+      "content": "We write $$\\lim_{x \\to a^-} f(x) = L$$ and say \"the **left-hand limit** of $f(x)$ as $x$ approaches $a$ is $L$\" if $f(x)$ can be made arbitrarily close to $L$ by taking $x$ sufficiently close to $a$ with $x < a$.\n\nSimilarly, $$\\lim_{x \\to a^+} f(x) = L$$ is the **right-hand limit**, requiring $x > a$."
+    },
+    {
+      "type": "paragraph",
+      "text": "In Example 2.6, we found $\\lim_{x \\to 2^-} f(x) = 3$ and $\\lim_{x \\to 2^+} f(x) = 5$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The following theorem connects one-sided limits to the two-sided limit."
+    },
+    {
+      "type": "theorem",
+      "id": "thm-2.1",
+      "number": "2.1",
+      "title": "Existence of a Two-Sided Limit",
+      "content": "$\\lim_{x \\to a} f(x) = L$ if and only if $\\lim_{x \\to a^-} f(x) = L$ and $\\lim_{x \\to a^+} f(x) = L$."
+    },
+    {
+      "type": "paragraph",
+      "text": "In other words, the two-sided limit exists and equals $L$ precisely when both one-sided limits exist and agree on the same value. When the one-sided limits disagree—as in Example 2.6—the two-sided limit does not exist."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.7",
+      "number": "2.7",
+      "title": "The Heaviside step function",
+      "problem": "The **Heaviside function** is defined by $$H(t) = \\begin{cases} 0 & \\text{if } t < 0, \\\\ 1 & \\text{if } t \\geq 0. \\end{cases}$$ Evaluate $\\lim_{t \\to 0^-} H(t)$, $\\lim_{t \\to 0^+} H(t)$, and $\\lim_{t \\to 0} H(t)$.",
+      "solution": "For $t < 0$ (approaching from the left), $H(t) = 0$, so $\\lim_{t \\to 0^-} H(t) = 0$.\n\nFor $t > 0$ (approaching from the right), $H(t) = 1$, so $\\lim_{t \\to 0^+} H(t) = 1$.\n\nSince $0 \\neq 1$, the one-sided limits disagree, and by Theorem 2.1, $\\lim_{t \\to 0} H(t)$ does not exist.\n\nThe Heaviside function models an abrupt switch—a light turning on, an electrical circuit closing. The \"jump\" at $t=0$ is precisely what prevents the two-sided limit from existing."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "When Limits Fail to Exist"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Historical Note: Zeno of Elea (c. 490–430 BC).** The Greek philosopher Zeno devised a series of famous paradoxes about motion. In the paradox of Achilles and the Tortoise, swift Achilles can never overtake the slow tortoise because he must first reach the point where the tortoise was, by which time the tortoise has moved ahead. The resolution of Zeno's paradoxes requires the concept of a limit—in particular, the fact that an infinite sum can have a *finite* value. Zeno's arguments troubled mathematicians and philosophers for over two millennia, until the rigorous theory of limits, developed by Cauchy and Weierstrass in the 19th century, laid them to rest."
+    },
+    {
+      "type": "paragraph",
+      "text": "Not every limit exists. There are three common ways a limit can fail."
+    },
+    {
+      "type": "paragraph",
+      "text": "**1. Different one-sided limits (a jump).** We saw this with the Heaviside function and the piecewise function in Example 2.6."
+    },
+    {
+      "type": "paragraph",
+      "text": "**2. Unbounded behavior.** Consider $f(x) = 1/x^2$ near $x=0$. As $x \\to 0$, the values of $f(x)$ grow without bound: $f(0.1) = 100$, $f(0.01) = 10{,}000$, $f(0.001) = 1{,}000{,}000$, and so on. The function does not approach any finite number $L$, so $\\lim_{x \\to 0}\\frac{1}{x^2}$ does not exist (as a finite limit). We sometimes write $\\lim_{x \\to 0}\\frac{1}{x^2} = \\infty$ to indicate the unbounded growth, but this is *not* saying the limit exists—$\\infty$ is not a real number. We study these *infinite limits* in detail in a later section."
+    },
+    {
+      "type": "paragraph",
+      "text": "**3. Oscillation.** Consider $g(x) = \\sin(1/x)$ near $x = 0$. As $x \\to 0$, the argument $1/x$ grows without bound, causing $\\sin(1/x)$ to oscillate between $-1$ and $1$ infinitely often. The function never settles toward any single value, so $\\lim_{x \\to 0}\\sin(1/x)$ does not exist."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.8",
+      "number": "2.8",
+      "title": "A limit involving 1/x",
+      "problem": "Investigate $\\displaystyle\\lim_{x \\to 0}\\frac{1}{x}$.",
+      "solution": "As $x \\to 0^+$ (positive values approaching zero), $1/x$ grows without bound: $1/0.1 = 10$, $1/0.01 = 100$, $1/0.001 = 1000$, etc.\n\nAs $x \\to 0^-$ (negative values approaching zero), $1/x$ decreases without bound: $1/(-0.1) = -10$, $1/(-0.01) = -100$, etc.\n\nThe one-sided limits diverge in opposite directions: $$\\lim_{x \\to 0^+} \\frac{1}{x} = +\\infty, \\qquad \\lim_{x \\to 0^-} \\frac{1}{x} = -\\infty.$$ Therefore $\\lim_{x \\to 0}\\frac{1}{x}$ does not exist (even as an infinite limit, since the two sides disagree)."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Strategy: Estimating Limits Numerically.** To estimate $\\lim_{x \\to a} f(x)$ using a table of values:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Choose values of $x$ approaching $a$ from the left: $a - 0.1$, $a - 0.01$, $a - 0.001$, ...",
+        "Choose values approaching from the right: $a + 0.1$, $a + 0.01$, $a + 0.001$, ...",
+        "Compute $f(x)$ for each.",
+        "If both columns approach the same value $L$, estimate the limit as $L$. If they approach different values (or grow unbounded, or oscillate), the two-sided limit does not exist."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "More Examples"
+    },
+    {
+      "type": "example",
+      "id": "ex-2.9",
+      "number": "2.9",
+      "title": "A limit that exists despite a hole",
+      "problem": "Evaluate $\\displaystyle\\lim_{x \\to 3}\\frac{x^2 - 9}{x - 3}$.",
+      "solution": "Direct substitution gives $\\frac{0}{0}$, which is indeterminate. We factor: $$\\frac{x^2-9}{x-3} = \\frac{(x-3)(x+3)}{x-3} = x + 3 \\qquad (x \\neq 3).$$ Since $f(x) = x+3$ for all $x \\neq 3$, and we only care about values *near* $3$ (not at $3$): $$\\lim_{x \\to 3}\\frac{x^2-9}{x-3} = \\lim_{x \\to 3}(x+3) = 6.$$"
+    },
+    {
+      "type": "example",
+      "id": "ex-2.10",
+      "number": "2.10",
+      "title": "A limit involving absolute value",
+      "problem": "Evaluate $\\displaystyle\\lim_{x \\to 0}\\frac{|x|}{x}$.",
+      "solution": "Recall that $|x| = x$ when $x > 0$ and $|x| = -x$ when $x < 0$.\n\n**From the right** ($x > 0$): $\\frac{|x|}{x} = \\frac{x}{x} = 1$, so $\\lim_{x \\to 0^+}\\frac{|x|}{x} = 1$.\n\n**From the left** ($x < 0$): $\\frac{|x|}{x} = \\frac{-x}{x} = -1$, so $\\lim_{x \\to 0^-}\\frac{|x|}{x} = -1$.\n\nSince $1 \\neq -1$, the two-sided limit does not exist."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.11",
+      "number": "2.11",
+      "title": "One-sided limits of a piecewise function",
+      "problem": "Let $$g(x) = \\begin{cases} x^2 & \\text{if } x < 1, \\\\ 2 & \\text{if } x = 1, \\\\ 3 - x & \\text{if } x > 1. \\end{cases}$$ Find $\\lim_{x \\to 1^-} g(x)$, $\\lim_{x \\to 1^+} g(x)$, and $\\lim_{x \\to 1} g(x)$.",
+      "solution": "**Left-hand limit:** As $x \\to 1^-$, we use the rule $g(x) = x^2$, so $\\lim_{x \\to 1^-} g(x) = 1^2 = 1$.\n\n**Right-hand limit:** As $x \\to 1^+$, we use $g(x) = 3-x$, so $\\lim_{x \\to 1^+} g(x) = 3 - 1 = 2$.\n\nSince $1 \\neq 2$, the two-sided limit $\\lim_{x \\to 1} g(x)$ does not exist.\n\nAgain, the value $g(1) = 2$ plays no role in the limit computation."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.12",
+      "number": "2.12",
+      "title": "A limit where one-sided limits agree",
+      "problem": "Let $$f(x) = \\begin{cases} x^2 + 1 & \\text{if } x \\leq 2, \\\\ 4x - 3 & \\text{if } x > 2. \\end{cases}$$ Evaluate $\\lim_{x \\to 2} f(x)$.",
+      "solution": "**Left-hand limit:** $\\lim_{x \\to 2^-} f(x) = 2^2+1 = 5$.\n\n**Right-hand limit:** $\\lim_{x \\to 2^+} f(x) = 4(2)-3 = 5$.\n\nBoth one-sided limits equal $5$, so by Theorem 2.1: $$\\lim_{x \\to 2} f(x) = 5.$$ Moreover, $f(2) = 2^2+1 = 5$ also equals $5$, so in this case the function value and the limit happen to agree. (They need not—but when they do, we will later call $f$ *continuous* at $x=2$.)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Infinite Limits: A First Look"
+    },
+    {
+      "type": "paragraph",
+      "text": "Although we will study infinite limits thoroughly in a later section, it is worth noting the notation here."
+    },
+    {
+      "type": "paragraph",
+      "text": "When the values of $f(x)$ grow without bound as $x \\to a$, we write $\\lim_{x \\to a} f(x) = \\infty$ (or $-\\infty$). This is a descriptive shorthand, not a claim that the limit \"equals infinity.\" The symbol $\\infty$ is not a real number; the limit does not exist in the usual sense. We say $f$ has a **vertical asymptote** at $x = a$ in this situation."
+    },
+    {
+      "type": "example",
+      "id": "ex-2.13",
+      "number": "2.13",
+      "title": "Vertical asymptote",
+      "problem": "Describe the behavior of $f(x) = \\dfrac{1}{(x-3)^2}$ near $x = 3$.",
+      "solution": "As $x \\to 3$ from either side, $(x-3)^2$ is a small *positive* number, so $\\frac{1}{(x-3)^2}$ is a large positive number. We write $$\\lim_{x \\to 3}\\frac{1}{(x-3)^2} = \\infty.$$ The graph has a vertical asymptote at $x = 3$. Since both one-sided limits tend to $+\\infty$, we can write the two-sided statement.\n\nCompare with $g(x) = \\frac{1}{x-3}$, where $\\lim_{x \\to 3^+} g(x) = +\\infty$ and $\\lim_{x \\to 3^-} g(x) = -\\infty$. Here the two sides disagree (in sign), so we would simply say $\\lim_{x \\to 3} g(x)$ does not exist."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Historical Note: Augustin-Louis Cauchy (1789–1857).** It was the French mathematician Cauchy who first gave a clear, rigorous definition of the limit in his 1821 textbook *Cours d'analyse*. Before Cauchy, calculus had been practiced successfully for over 150 years using intuitive (and sometimes contradictory) notions of infinitesimals. Cauchy insisted on logical precision: a quantity \"has the limit $L$\" if the difference between it and $L$ can be made \"as small as one wishes.\" His student Karl Weierstrass later refined this into the formal $\\varepsilon$-$\\delta$ definition we study in a later section. Cauchy, a devout Catholic, saw no conflict between faith and rigorous mathematics. He wrote: \"I am a Christian; that is to say, I believe in the divinity of Jesus Christ, as did Tycho Brahe, Copernicus, Descartes, Newton, Fermat, Leibniz, Pascal...\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Limits from Tables and Graphs"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.1",
+      "number": "1",
+      "problem": "Use a table of values to estimate $\\displaystyle\\lim_{x \\to 2}\\frac{x^{2}-4}{x-2}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.2",
+      "number": "2",
+      "problem": "Use a table of values to estimate $\\displaystyle\\lim_{x \\to 0}\\frac{\\sqrt{x+4}-2}{x}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.3",
+      "number": "3",
+      "problem": "Use a table of values to estimate $\\displaystyle\\lim_{t \\to 0}\\frac{e^{t}-1}{t}$. (*Use a calculator.*)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.4",
+      "number": "4",
+      "problem": "A function $f$ satisfies $f(2.9) = 4.7$, $f(2.99) = 4.97$, $f(2.999) = 4.997$, $f(3.001) = 5.003$, $f(3.01) = 5.03$, $f(3.1) = 5.3$. Estimate $\\lim_{x \\to 3} f(x)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.5",
+      "number": "5",
+      "problem": "Use a table of values to estimate $\\displaystyle\\lim_{x \\to 0}\\frac{\\sin(3x)}{x}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.6",
+      "number": "6",
+      "problem": "Use a table of values to estimate $\\displaystyle\\lim_{x \\to 0}\\,x\\ln|x|$."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Evaluating Limits"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.7",
+      "number": "7",
+      "problem": "Evaluate $\\displaystyle\\lim_{x \\to 5}(3x-7)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.8",
+      "number": "8",
+      "problem": "Evaluate $\\displaystyle\\lim_{x \\to -1}(x^{2}+2x+1)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.9",
+      "number": "9",
+      "problem": "Evaluate $\\displaystyle\\lim_{x \\to 4}\\frac{x^{2}-16}{x-4}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.10",
+      "number": "10",
+      "problem": "Evaluate $\\displaystyle\\lim_{x \\to -3}\\frac{x^{2}+5x+6}{x+3}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.11",
+      "number": "11",
+      "problem": "Evaluate $\\displaystyle\\lim_{x \\to 0}\\frac{(2+x)^{2}-4}{x}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.12",
+      "number": "12",
+      "problem": "Evaluate $\\displaystyle\\lim_{x \\to 1}\\frac{x^{3}-1}{x-1}$."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "One-Sided Limits"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.13",
+      "number": "13",
+      "problem": "Let $f(x) = \\begin{cases} x+2 & \\text{if } x < 1, \\\\ x^{2} & \\text{if } x \\geq 1. \\end{cases}$ Find $\\lim_{x \\to 1^{-}} f(x)$, $\\lim_{x \\to 1^{+}} f(x)$, and $\\lim_{x \\to 1} f(x)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.14",
+      "number": "14",
+      "problem": "Let $g(x) = \\begin{cases} 2x+1 & \\text{if } x < 3, \\\\ 10-x & \\text{if } x \\geq 3. \\end{cases}$ Find $\\lim_{x \\to 3} g(x)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.15",
+      "number": "15",
+      "problem": "Let $f(x) = \\begin{cases} \\sqrt{1-x} & \\text{if } x < 1, \\\\ (x-1)^{2} & \\text{if } x > 1. \\end{cases}$ Find $\\lim_{x \\to 1^{-}} f(x)$ and $\\lim_{x \\to 1^{+}} f(x)$. Does $\\lim_{x \\to 1} f(x)$ exist?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.16",
+      "number": "16",
+      "problem": "Evaluate $\\displaystyle\\lim_{x \\to 0^{+}} \\frac{|x|}{x}$ and $\\displaystyle\\lim_{x \\to 0^{-}} \\frac{|x|}{x}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.17",
+      "number": "17",
+      "problem": "Let $f(x) = \\begin{cases} x^{2}-1 & \\text{if } x \\leq 2, \\\\ 2x+k & \\text{if } x > 2. \\end{cases}$ Find the value of $k$ that makes $\\lim_{x \\to 2} f(x)$ exist."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.18",
+      "number": "18",
+      "problem": "Let $f(x) = \\begin{cases} ax+1 & \\text{if } x < -1, \\\\ x^{2}+2 & \\text{if } x \\geq -1. \\end{cases}$ Find $a$ so that $\\lim_{x \\to -1} f(x)$ exists."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Limits that Don't Exist"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.19",
+      "number": "19",
+      "problem": "Explain why $\\displaystyle\\lim_{x \\to 0}\\frac{1}{x^{2}}$ does not exist as a finite limit. What happens to $f(x)$ as $x \\to 0$?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.20",
+      "number": "20",
+      "problem": "Investigate the behavior of $f(x) = \\sin\\!\\left(\\dfrac{1}{x}\\right)$ as $x \\to 0$ by evaluating $f$ at $x = \\frac{2}{\\pi}$, $\\frac{2}{3\\pi}$, $\\frac{2}{5\\pi}$, $\\frac{2}{7\\pi}$. Does the limit exist?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.21",
+      "number": "21",
+      "problem": "Let $f(x) = \\begin{cases} 1 & \\text{if } x \\text{ is rational}, \\\\ 0 & \\text{if } x \\text{ is irrational}. \\end{cases}$ (This is the *Dirichlet function*.) Explain why $\\lim_{x \\to a} f(x)$ does not exist for any value of $a$."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Challenging Problems"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.22",
+      "number": "22",
+      "challenging": true,
+      "problem": "Evaluate $\\displaystyle\\lim_{x \\to 1}\\frac{\\sqrt{x}-1}{x-1}$ without a calculator. (*Hint:* Rationalize.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.23",
+      "number": "23",
+      "challenging": true,
+      "problem": "Evaluate $\\displaystyle\\lim_{x \\to -2}\\frac{x^{3}+8}{x+2}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.24",
+      "number": "24",
+      "challenging": true,
+      "problem": "Use a table or algebra to evaluate $\\displaystyle\\lim_{h \\to 0}\\frac{(3+h)^{2}-9}{h}$. Interpret this limit as the slope of a tangent line."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.25",
+      "number": "25",
+      "challenging": true,
+      "problem": "The *signum* function is defined by $\\operatorname{sgn}(x) = \\begin{cases} -1 & x<0,\\\\ 0 & x=0,\\\\ 1 & x>0.\\end{cases}$ Determine $\\lim_{x \\to 0}\\operatorname{sgn}(x)$ and each one-sided limit."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.26",
+      "number": "26",
+      "challenging": true,
+      "problem": "Suppose $\\lim_{x \\to a} f(x) = L$ and $\\lim_{x \\to a} f(x) = M$. Using the intuitive definition, argue that $L = M$. (*This shows limits, when they exist, are unique.*)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.27",
+      "number": "27",
+      "challenging": true,
+      "problem": "Let $f(x) = \\dfrac{|x-2|}{x-2}$. Find the one-sided limits at $x=2$ and explain why the two-sided limit does not exist."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.28",
+      "number": "28",
+      "challenging": true,
+      "problem": "Evaluate $\\displaystyle\\lim_{x \\to 0}\\frac{\\sqrt{1+x}-\\sqrt{1-x}}{x}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.29",
+      "number": "29",
+      "challenging": true,
+      "problem": "Sketch a graph of a function $f$ that satisfies *all* of the following:\n\n(i) $f(1) = 3$,\n\n(ii) $\\lim_{x \\to 1^{-}} f(x) = 2$,\n\n(iii) $\\lim_{x \\to 1^{+}} f(x) = 4$,\n\n(iv) $\\lim_{x \\to 3} f(x) = 5$,\n\n(v) $f(3)$ is undefined."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Proofs"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.30",
+      "number": "30",
+      "proof": true,
+      "problem": "Prove that $\\lim_{x \\to a} c = c$ for any constant $c$ using the intuitive definition. (*Explain why $f(x)=c$ is \"arbitrarily close to $c$\" for all $x$.*)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.31",
+      "number": "31",
+      "proof": true,
+      "problem": "Suppose $\\lim_{x \\to a} f(x) = L$ and $f(x) \\geq 0$ for all $x$ near $a$. Argue intuitively that $L \\geq 0$. (*What would happen if $L < 0$?*)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.32",
+      "number": "32",
+      "proof": true,
+      "problem": "Suppose $f(x) \\leq g(x)$ for all $x$ near $a$ and both limits exist. Argue that $\\lim_{x \\to a} f(x) \\leq \\lim_{x \\to a} g(x)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.33",
+      "number": "33",
+      "proof": true,
+      "problem": "Give an example of a function $f$ such that $\\lim_{x \\to 0} f(x)$ exists but $f(0)$ is undefined. Then give an example where $\\lim_{x \\to 0} f(x)$ exists and $f(0)$ is defined, but $\\lim_{x \\to 0} f(x) \\neq f(0)$."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Creation Reveals"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.34",
+      "number": "34",
+      "creation_reveals": true,
+      "problem": "When a skydiver jumps from a plane, air resistance eventually balances gravity, and the diver reaches a *terminal velocity*. A model for the velocity (in ft/s) at time $t$ seconds is $$v(t) = 176\\!\\left(1 - e^{-0.18t}\\right).$$\n\n**(a)** Compute $v(5)$, $v(10)$, $v(20)$, $v(40)$.\n\n**(b)** What value does $v(t)$ approach as $t$ increases? (This is a \"limit at infinity,\" which we study later—but you can estimate it from the pattern.)\n\n**(c)** Why does it make physical sense that velocity has a limiting value?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.35",
+      "number": "35",
+      "creation_reveals": true,
+      "problem": "The concentration (in mg/L) of a medication in a patient's bloodstream $t$ hours after injection is modeled by $$C(t) = \\frac{5t}{t^{2}+1}.$$\n\n**(a)** Compute $C(t)$ for $t = 0.5, 1, 2, 3, 5, 10$.\n\n**(b)** Estimate $\\lim_{t \\to 1} C(t)$ from your table. Does the function value agree?\n\n**(c)** Describe in everyday language what happens to the drug concentration over time."
+    },
+    {
+      "type": "exercise",
+      "id": "ex2.2.36",
+      "number": "36",
+      "creation_reveals": true,
+      "problem": "The length of daylight (in hours) in a city at latitude $40°$N on day $d$ of the year can be modeled approximately by $$L(d) = 12 + 2.8\\sin\\!\\left(\\frac{2\\pi}{365}(d - 80)\\right).$$\n\n**(a)** Find $\\lim_{d \\to 80} L(d)$. What does this represent?\n\n**(b)** Find $\\lim_{d \\to 172} L(d)$. What does this represent?\n\n**(c)** Does $L$ have any values of $d$ where the limit fails to exist? Why or why not?"
+    }
+  ]
+}

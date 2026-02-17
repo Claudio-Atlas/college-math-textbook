@@ -1,0 +1,89 @@
+{
+  "id": "real-analysis-ch10-sec03",
+  "title": "Lebesgue Measurable Sets",
+  "chapter": 10,
+  "section": 3,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Carathéodory Criterion"
+    },
+    {
+      "type": "paragraph",
+      "text": "Outer measure is subadditive but not additive in general. We restrict to \nsets where additivity holds:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Lebesgue Measurable",
+      "content": "A set $E \\subseteq \\mathbb{R}$ is **Lebesgue measurable** \nif for every set $A \\subseteq \\mathbb{R}$:\n\\[\nm^*(A) = m^*(A \\cap E) + m^*(A \\cap E^c).\n\\]\nThis is the **Carathéodory criterion**."
+    },
+    {
+      "type": "paragraph",
+      "text": "Intuitively: $E$ is measurable if it \"splits\" every set $A$ cleanly \nin terms of outer measure."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "Basic Measurable Sets",
+      "content": "1. Every interval is measurable.\n\n2. Every set of outer measure zero is measurable.\n\n3. Every open set is measurable.\n\n4. Every closed set is measurable.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.2",
+      "number": "10.2",
+      "title": "Measurable Sets Form a $\\sigma$-Algebra",
+      "content": "The collection $\\mathcal{M}$ of Lebesgue measurable sets satisfies:\n\n1. $\\emptyset, \\mathbb{R} \\in \\mathcal{M}$.\n\n2. $E \\in \\mathcal{M} \\implies E^c \\in \\mathcal{M}$.\n\n3. If $E_1, E_2, \\ldots \\in \\mathcal{M}$, then \n$\\bigcup_{n=1}^\\infty E_n \\in \\mathcal{M}$ and \n$\\bigcap_{n=1}^\\infty E_n \\in \\mathcal{M}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Lebesgue Measure"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.2",
+      "number": "10.2",
+      "title": "Lebesgue Measure",
+      "content": "The **Lebesgue measure** of a measurable \nset $E$ is $m(E) = m^*(E)$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.3",
+      "number": "10.3",
+      "title": "Properties of Lebesgue Measure",
+      "content": "On measurable sets:\n\n1. **Countable additivity:** If $E_1, E_2, \\ldots$ are disjoint \nmeasurable sets, then $m\\left(\\bigcup E_n\\right) = \\sum m(E_n)$.\n\n2. **Continuity from below:** If $E_1 \\subseteq E_2 \\subseteq \\cdots$, \nthen $m\\left(\\bigcup E_n\\right) = \\lim m(E_n)$.\n\n3. **Continuity from above:** If $E_1 \\supseteq E_2 \\supseteq \\cdots$ \nand $m(E_1) < \\infty$, then $m\\left(\\bigcap E_n\\right) = \\lim m(E_n)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Non-Measurable Sets"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.4",
+      "number": "10.4",
+      "title": "Existence of Non-Measurable Sets",
+      "content": "Assuming the Axiom of Choice, there exist sets that are not Lebesgue \nmeasurable.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Define an equivalence relation on $[0, 1]$: $x \\sim y$ iff $x - y \\in \\mathbb{Q}$.\n\nBy the Axiom of Choice, select one representative from each equivalence \nclass to form a set $V$.\n\nIf $V$ were measurable with $m(V) = c$, consider $V + r$ for $r \\in \\mathbb{Q} \\cap [-1, 1]$. \nThese are disjoint and their union covers $[0, 1]$. By countable additivity \nand translation invariance, we need $\\sum c = 1$, which is impossible \n(either $c = 0$ and the sum is $0$, or $c > 0$ and the sum is $\\infty$)."
+    },
+    {
+      "type": "historical",
+      "id": "historical-10.3",
+      "number": null,
+      "title": "Henri Lebesgue (1875--1941)",
+      "content": "Lebesgue developed his measure and integral in his 1902 thesis, \nrevolutionizing analysis. His work enabled the integration of far more \nfunctions than Riemann's approach, and the Lebesgue integral became \nfoundational for probability theory and functional analysis."
+    }
+  ]
+}

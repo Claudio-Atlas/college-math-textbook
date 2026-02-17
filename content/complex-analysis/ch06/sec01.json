@@ -1,0 +1,97 @@
+{
+  "id": "complex-analysis-ch06-sec01",
+  "title": "Power Series",
+  "chapter": 6,
+  "section": 1,
+  "book": "complex-analysis",
+  "epigraph": {
+    "text": "His dominion is an everlasting dominion, and his kingdom endures from generation to generation.",
+    "reference": "Daniel 4:34",
+    "quote": "A power series is a polynomial of infinite degree—if it converges.",
+    "quoteAuthor": "Karl Weierstrass"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "We begin with the general theory of power series: convergence, the \nradius of convergence, and term-by-term differentiation."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definitions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Power Series",
+      "content": "A **power series** centered at $z_0$ is an \nexpression of the form\n\\[\n \\sum_{n=0}^{\\infty} a_n (z - z_0)^n = a_0 + a_1(z - z_0) + a_2(z - z_0)^2 + \\cdots\n\\]\nwhere the **coefficients** $a_n \\in \\C$."
+    },
+    {
+      "type": "paragraph",
+      "text": "For which values of $z$ does this series converge? The answer is \nbeautifully geometric."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Radius of Convergence"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Radius of Convergence",
+      "content": "For any power series $\\sum a_n(z - z_0)^n$, there exists a number \n$R \\in [0, \\infty]$ (the **radius of convergence**) \nsuch that:\n\n1. The series converges absolutely for $|z - z_0| < R$.\n\n2. The series diverges for $|z - z_0| > R$.\n\n3. On $|z - z_0| = R$, behavior varies.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The set $\\{z : |z - z_0| < R\\}$ is the **disk of convergence**. \nUnlike real analysis where intervals suffice, in $\\C$ convergence \nregions are always disks (possibly of infinite radius)."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Formulas for the Radius",
+      "content": "The radius of convergence is given by:\n\\[\n R = \\frac{1}{\\limsup_{n \\to \\infty} |a_n|^{1/n}}\n\\]\n(Cauchy-Hadamard formula), or equivalently when the limit exists:\n\\[\n R = \\lim_{n \\to \\infty} \\left|\\frac{a_n}{a_{n+1}}\\right|.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": null,
+      "problem": "Find the radius of convergence of $\\displaystyle\\sum_{n=0}^{\\infty} \\frac{z^n}{n!}$.",
+      "solution": "Using the ratio test: $\\left|\\frac{a_{n+1}}{a_n}\\right| = \\frac{n!}{(n+1)!} = \\frac{1}{n+1} \\to 0$.\n\nThus $R = 1/0 = \\infty$. The series converges for all $z \\in \\C$—this \nis $e^z$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Differentiation and Integration"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.3",
+      "number": "6.3",
+      "title": "Term-by-Term Operations",
+      "content": "Within the disk of convergence:\n\n1. $f(z) = \\sum a_n(z-z_0)^n$ is analytic.\n\n2. $f'(z) = \\sum n a_n(z-z_0)^{n-1}$ (same radius of convergence).\n\n3. $\\int f(z)\\,dz = \\sum \\frac{a_n}{n+1}(z-z_0)^{n+1}$ (same radius).",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Power series are \"as nice as polynomials\"—we can differentiate and \nintegrate them term by term."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 1:7",
+      "text": "All streams run to the sea, but the \nsea is not full; to the place where the streams flow, there they flow again."
+    },
+    {
+      "type": "quote",
+      "author": "Karl Weierstrass",
+      "text": "Power series are the natural language of \nanalysis."
+    }
+  ]
+}

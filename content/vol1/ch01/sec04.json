@@ -1,0 +1,277 @@
+{
+  "id": "vol1-ch01-sec04",
+  "title": "Inverse Functions",
+  "chapter": 1,
+  "section": 4,
+  "book": "vol1",
+  "objectives": [
+    "Define one-to-one (injective) functions and explain why this property is necessary for a function to have an inverse",
+    "Apply the horizontal line test to determine whether a function is one-to-one",
+    "Find the inverse of a one-to-one function algebraically using the swap-and-solve method",
+    "Describe the graphical relationship between a function and its inverse as reflections across the line $y = x$"
+  ],
+  "devotional": {
+    "title": "Reversing the Path",
+    "scripture": "Ecclesiastes 1:9",
+    "content": "\"What has been will be again, what has been done will be done again; there is nothing new under the sun.\" Just as creation follows patterns that can be traced forward and backward, inverse functions reveal the beautiful symmetry built into mathematics. Every meaningful transformation has a way back\u2014a reversal that restores what was changed. This reflects a deeper truth: God's redemptive work is the ultimate \"inverse function,\" restoring what sin transformed and bringing us back to our original purpose."
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "If you add $3$ to a number, you can recover the original by subtracting $3$. If you multiply by $5$, you undo the operation by dividing by $5$. Every arithmetic operation has a natural *reverse*\u2014and the same idea extends to functions. Given a function $f$ that transforms an input $x$ into an output $y$, can we find a function that starts with $y$ and recovers $x$? When such a reverse exists, we call it the **inverse** of $f$. Understanding inverses is essential preparation for calculus: we will need the inverse of the exponential function (the logarithm) and the inverses of the trigonometric functions, and these inverses will appear throughout our integration techniques."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "One-to-One Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Not every function can be reversed. Consider $f(x) = x^2$: both $3$ and $-3$ map to $9$, so if we know the output is $9$, we cannot determine whether the input was $3$ or $-3$. The function is \"many-to-one,\" and a reversal would be \"one-to-many\"\u2014which is not a function at all."
+    },
+    {
+      "type": "paragraph",
+      "text": "For an inverse to exist, the original function must never reuse an output value."
+    },
+    {
+      "type": "definition",
+      "id": "def-1.4.1",
+      "number": "1.4.1",
+      "title": "One-to-One (Injective) Function",
+      "content": "A function $f$ is **one-to-one** (or **injective**) if different inputs always produce different outputs:\n\n$$x_1 \\neq x_2 \\quad\\Longrightarrow\\quad f(x_1) \\neq f(x_2).$$\n\nEquivalently, $f(x_1) = f(x_2)$ implies $x_1 = x_2$."
+    },
+    {
+      "type": "theorem",
+      "id": "thm-1.4.1",
+      "number": "1.4.1",
+      "title": "The Horizontal Line Test",
+      "content": "A function is one-to-one if and only if no horizontal line intersects its graph more than once."
+    },
+    {
+      "type": "paragraph",
+      "text": "The logic mirrors the vertical line test: a horizontal line at height $y = c$ collects all inputs that map to $c$. If the line hits the graph twice, two different inputs share the same output\u2014so the function is not one-to-one."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.4.1",
+      "number": "1.4.1",
+      "title": "Testing for One-to-One",
+      "problem": "Determine whether each function is one-to-one.\n\n**(a)** $f(x) = 3x - 7$\n\n**(b)** $g(x) = x^3$\n\n**(c)** $h(x) = x^2 - 4$",
+      "solution": "**(a)** Suppose $f(x_1) = f(x_2)$. Then $3x_1 - 7 = 3x_2 - 7$, giving $x_1 = x_2$. **One-to-one.** (Every non-constant linear function is one-to-one.)\n\n**(b)** Suppose $x_1^3 = x_2^3$. Taking cube roots, $x_1 = x_2$. **One-to-one.**\n\n**(c)** $h(2) = 0 = h(-2)$, yet $2 \\neq -2$. **Not one-to-one.**"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Inverse Function"
+    },
+    {
+      "type": "definition",
+      "id": "def-1.4.2",
+      "number": "1.4.2",
+      "title": "Inverse Function",
+      "content": "Let $f$ be a one-to-one function with domain $A$ and range $B$. The **inverse function** $f^{-1}$ is defined by\n\n$$f^{-1}(y) = x \\quad \\Longleftrightarrow \\quad f(x) = y,$$\n\nfor every $y \\in B$. The domain of $f^{-1}$ is $B$ and its range is $A$."
+    },
+    {
+      "type": "paragraph",
+      "text": "In other words, $f^{-1}$ \"reverses\" $f$:\n\n$$f^{-1}\\bigl(f(x)\\bigr) = x \\quad \\text{for all } x \\in A, \\qquad f\\bigl(f^{-1}(y)\\bigr) = y \\quad \\text{for all } y \\in B.$$"
+    },
+    {
+      "type": "caution",
+      "title": "The exponent \u22121 does not mean reciprocal",
+      "content": "The notation $f^{-1}(x)$ does **not** mean $\\frac{1}{f(x)}$. The superscript $-1$ denotes the *inverse function*, not the reciprocal. To avoid confusion, we write the reciprocal as $\\bigl[f(x)\\bigr]^{-1}$ or $\\frac{1}{f(x)}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Finding Inverses Algebraically"
+    },
+    {
+      "type": "strategy",
+      "title": "Finding the Inverse of a One-to-One Function",
+      "content": "1. Write $y = f(x)$.\n2. Swap $x$ and $y$: write $x = f(y)$.\n3. Solve the resulting equation for $y$.\n4. The solution is $y = f^{-1}(x)$."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.4.2",
+      "number": "1.4.2",
+      "title": "Finding an Inverse",
+      "problem": "Find the inverse of $f(x) = 2x + 5$.",
+      "solution": "1. Write $y = 2x + 5$.\n2. Swap: $x = 2y + 5$.\n3. Solve for $y$: $y = \\dfrac{x - 5}{2}$.\n\nTherefore $f^{-1}(x) = \\dfrac{x-5}{2}$.\n\n**Check:** $f(f^{-1}(x)) = 2\\left(\\dfrac{x-5}{2}\\right) + 5 = (x-5) + 5 = x.\\;\\checkmark$"
+    },
+    {
+      "type": "example",
+      "id": "ex-1.4.3",
+      "number": "1.4.3",
+      "title": "Inverse of a Rational Function",
+      "problem": "Find the inverse of $f(x) = \\dfrac{3x - 1}{x + 2}$ and state its domain.",
+      "solution": "1. Write $y = \\dfrac{3x - 1}{x + 2}$.\n2. Swap: $x = \\dfrac{3y - 1}{y + 2}$.\n3. Solve for $y$:\n\n$$\\begin{aligned} x(y+2) &= 3y - 1 \\\\ xy + 2x &= 3y - 1 \\\\ xy - 3y &= -1 - 2x \\\\ y(x - 3) &= -2x - 1 \\\\ y &= \\frac{-2x - 1}{x - 3}. \\end{aligned}$$\n\nTherefore $f^{-1}(x) = \\dfrac{-2x - 1}{x - 3}$. The domain is all $x \\neq 3$.\n\n**Check:** The domain of $f$ is $x \\neq -2$; the range of $f$ is $y \\neq 3$ (the horizontal asymptote). This matches the domain of $f^{-1}$: $x \\neq 3.\\;\\checkmark$"
+    },
+    {
+      "type": "example",
+      "id": "ex-1.4.4",
+      "number": "1.4.4",
+      "title": "Restricting the Domain to Create an Inverse",
+      "problem": "The function $f(x) = x^2$ is not one-to-one on $(-\\infty, \\infty)$. Find an inverse by restricting the domain to $[0, \\infty)$.",
+      "solution": "On $[0, \\infty)$, $f$ is one-to-one (it is increasing). Write $y = x^2$ with $x \\geq 0$, swap to get $x = y^2$ with $y \\geq 0$, and solve:\n\n$$y = \\sqrt{x}.$$\n\nTherefore $f^{-1}(x) = \\sqrt{x}$ with domain $[0, \\infty)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Graphs of Inverse Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "If the point $(a, b)$ lies on the graph of $f$, then $f(a) = b$, so $f^{-1}(b) = a$, meaning $(b, a)$ lies on the graph of $f^{-1}$. Swapping coordinates $(a,b) \\mapsto (b,a)$ is the geometric operation of **reflecting across the line $y = x$**."
+    },
+    {
+      "type": "theorem",
+      "id": "thm-1.4.2",
+      "number": "1.4.2",
+      "title": "Graph of the Inverse",
+      "content": "The graph of $f^{-1}$ is the reflection of the graph of $f$ across the line $y = x$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Looking Ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Inverse functions will appear throughout calculus. The natural logarithm $\\ln x$ is defined precisely as the inverse of $e^x$. We will encounter the inverse trigonometric functions $\\arcsin x$, $\\arccos x$, and $\\arctan x$\u2014created by restricting the domains of $\\sin$, $\\cos$, and $\\tan$ so that they become one-to-one. And we will learn a powerful formula for computing the derivative of *any* inverse function."
+    },
+    {
+      "type": "historical",
+      "title": "John Napier (1550\u20131617)",
+      "content": "The Scottish mathematician John Napier invented logarithms to simplify the enormous calculations required by astronomy and navigation. His *Mirifici Logarithmorum Canonis Descriptio* (1614) introduced the world to the idea that multiplication could be converted to addition by passing through an \"inverse\" relationship between exponential and logarithmic scales. A devout Presbyterian, Napier considered his theological writings to be his most important work, yet his mathematical invention transformed science. The astronomer Pierre-Simon Laplace later remarked that logarithms \"doubled the life of astronomers\" by halving the labor of their calculations."
+    },
+    {
+      "type": "figure",
+      "id": "fig-1.4-horizontal-line-test",
+      "src": "/figures/vol1/ch01/sec04-horizontal-line-test.svg",
+      "caption": "Left: $f(x) = \\frac{1}{2}x^{2} + \\frac{1}{2}$ restricted to $[0,\\infty)$ is one-to-one. Right: the same formula on all of $\\R$ fails the horizontal line test.",
+      "alt": "Figure: Horizontal Line Test"
+    },
+    {
+      "type": "figure",
+      "id": "fig-1.4-inverse-graph",
+      "src": "/figures/vol1/ch01/sec04-inverse-graph.svg",
+      "caption": "The graphs of $f(x) = x^2$ (on $[0,\\infty)$) and its inverse $f^{-1}(x) = \\sqrt{x}$ are reflections of each other across $y = x$. Note: $(2, 4)$ on $f$ corresponds to $(4, 2)$ on $f^{-1}$.",
+      "alt": "Figure: Inverse Graph"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "exercises",
+      "exercises": [
+        {
+          "id": "ex-1.4-1",
+          "number": "1",
+          "problem": "Determine whether each function is one-to-one. Justify your answer using either the definition or the horizontal line test.\n\n**(a)** $f(x) = 5x + 2$\n\n**(b)** $g(x) = x^4$\n\n**(c)** $h(x) = \\sqrt[3]{x}$\n\n**(d)** $k(x) = |x|$"
+        },
+        {
+          "id": "ex-1.4-2",
+          "number": "2",
+          "problem": "Is $f(x) = x^2 - 6x + 8$ one-to-one on $(-\\infty, \\infty)$? On $[3, \\infty)$? Explain."
+        },
+        {
+          "id": "ex-1.4-3",
+          "number": "3",
+          "problem": "If $f$ is strictly decreasing on its domain, must it be one-to-one? Explain."
+        },
+        {
+          "id": "ex-1.4-4",
+          "number": "4",
+          "problem": "Find the inverse of each function.\n\n**(a)** $f(x) = 4x - 3$\n\n**(b)** $g(x) = \\dfrac{x+1}{x-1}$\n\n**(c)** $h(x) = x^3 + 2$\n\n**(d)** $k(x) = \\sqrt{x - 5}$"
+        },
+        {
+          "id": "ex-1.4-5",
+          "number": "5",
+          "problem": "Find $f^{-1}(x)$ if $f(x) = \\dfrac{2x+3}{5x-1}$. State the domain of $f^{-1}$."
+        },
+        {
+          "id": "ex-1.4-6",
+          "number": "6",
+          "problem": "Let $f(x) = x^2 + 4x + 3$, $x \\geq -2$. Find $f^{-1}(x)$. *Hint:* Complete the square."
+        },
+        {
+          "id": "ex-1.4-7",
+          "number": "7",
+          "problem": "Let $f(x) = \\dfrac{1}{x+1}$ for $x \\neq -1$. Find $f^{-1}$ and verify that $f(f^{-1}(x)) = x$."
+        },
+        {
+          "id": "ex-1.4-8",
+          "number": "8",
+          "problem": "Verify that $f(x) = 3x - 6$ and $g(x) = \\frac{1}{3}x + 2$ are inverses of each other by showing $(f \\circ g)(x) = x$ and $(g \\circ f)(x) = x$."
+        },
+        {
+          "id": "ex-1.4-9",
+          "number": "9",
+          "problem": "Show that $f(x) = \\dfrac{1}{1-x}$ is its own inverse on the appropriate domain. What is that domain?"
+        },
+        {
+          "id": "ex-1.4-10",
+          "number": "10",
+          "problem": "Let $f(x) = \\dfrac{x}{x+1}$ for $x \\neq -1$. Find $f^{-1}$ and verify the cancellation identities $f(f^{-1}(x)) = x$ and $f^{-1}(f(x)) = x$."
+        },
+        {
+          "id": "ex-1.4-11",
+          "number": "11",
+          "problem": "Sketch the graph of $f(x) = 2x + 1$ and its inverse on the same axes. Include the line $y = x$."
+        },
+        {
+          "id": "ex-1.4-12",
+          "number": "12",
+          "problem": "The graph of a one-to-one function $f$ passes through the points $(1, 3)$, $(2, 5)$, and $(4, 9)$. Find three points on the graph of $f^{-1}$."
+        },
+        {
+          "id": "ex-1.4-13",
+          "number": "13",
+          "problem": "If the point $(a, b)$ is on the graph of $f$ and $f$ is one-to-one, what point is guaranteed to be on the graph of $f^{-1}$?"
+        },
+        {
+          "id": "ex-1.4-14",
+          "number": "14",
+          "problem": "If $f$ has domain $[-3, 7]$ and range $[0, 10]$, what are the domain and range of $f^{-1}$?"
+        },
+        {
+          "id": "ex-1.4-15",
+          "number": "15",
+          "problem": "Find the domain and range of both $f(x) = \\sqrt{x + 2}$ and its inverse."
+        },
+        {
+          "id": "ex-1.4-16",
+          "number": "16",
+          "starred": true,
+          "problem": "Show that if $f$ is one-to-one, then $f^{-1}$ is also one-to-one, and $(f^{-1})^{-1} = f$."
+        },
+        {
+          "id": "ex-1.4-17",
+          "number": "17",
+          "starred": true,
+          "problem": "Let $f(x) = ax + b$ with $a \\neq 0$. Find $f^{-1}(x)$. For what values of $a$ and $b$ does $f = f^{-1}$?"
+        },
+        {
+          "id": "ex-1.4-18",
+          "number": "18",
+          "starred": true,
+          "problem": "A function $f$ satisfies $f(f(x)) = x$ for all $x$ in its domain (such a function is called an **involution**). Show that $f$ is its own inverse. Give two examples of involutions."
+        },
+        {
+          "id": "ex-1.4-19",
+          "number": "19",
+          "proof": true,
+          "problem": "Prove that if $f$ is one-to-one and $f$ is increasing, then $f^{-1}$ is also increasing."
+        },
+        {
+          "id": "ex-1.4-20",
+          "number": "20",
+          "creation": true,
+          "problem": "The relationship between temperature in Celsius ($C$) and Fahrenheit ($F$) is $F = \\frac{9}{5}C + 32$. Find the inverse function that converts Fahrenheit to Celsius. Verify your answer using the fact that water boils at $100^\\circ$C $= 212^\\circ$F."
+        }
+      ]
+    }
+  ]
+}

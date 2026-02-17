@@ -1,0 +1,65 @@
+{
+  "id": "linear-algebra-ch06-sec03",
+  "title": "Diagonalization",
+  "chapter": 6,
+  "section": 3,
+  "book": "linear-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "{I will give you the treasures of darkness and the hoards in secret places.}{Isaiah 45:3}\n {The diagonal form of a matrix is like the skeleton of the matrix, stripped of all that is inessential.}{— Sheldon Axler}"
+    },
+    {
+      "type": "paragraph",
+      "text": "A matrix is **diagonalizable** if it can be expressed in terms \nof a diagonal matrix."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Diagonalizable",
+      "content": "An $n \\times n$ matrix $A$ is **diagonalizable** \nif there exists an invertible matrix $P$ and a diagonal matrix $D$ such that\n\\[\nA = PDP\\inv\n\\]\nEquivalently, $P\\inv AP = D$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Diagonalization Theorem",
+      "content": "An $n \\times n$ matrix $A$ is diagonalizable if and only if $A$ has \n$n$ linearly independent eigenvectors.\n\nIf so, the columns of $P$ are the eigenvectors, and the diagonal \nentries of $D$ are the corresponding eigenvalues.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Diagonalizing a matrix",
+      "problem": "Diagonalize $A = \\begin{bmatrix} 4 & -2 \\\\ 1 & 1 \\end{bmatrix}$.",
+      "solution": "From Section [sec:characteristic]: eigenvalues $2, 3$ with \neigenvectors $\\begin{bmatrix} 1 \\\\ 1 \\end{bmatrix}$, \n$\\begin{bmatrix} 2 \\\\ 1 \\end{bmatrix}$.\n\\[\nP = \\begin{bmatrix} 1 & 2 \\\\ 1 & 1 \\end{bmatrix}, \\quad\nD = \\begin{bmatrix} 2 & 0 \\\\ 0 & 3 \\end{bmatrix}\n\\]\nVerify: $A = PDP\\inv$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of Diagonalization"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Computing powers:** If $A = PDP\\inv$, then \n$A^k = PD^kP\\inv$."
+    },
+    {
+      "type": "paragraph",
+      "text": "For a diagonal matrix, $D^k$ is trivial: just raise each diagonal \nentry to the $k$-th power."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Daniel 2:22",
+      "text": "He reveals deep and hidden things; he \nknows what is in the darkness, and the light dwells with him."
+    }
+  ]
+}

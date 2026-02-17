@@ -1,0 +1,112 @@
+{
+  "id": "number-theory-ch02-sec01",
+  "title": "The Fundamental Theorem of Arithmetic",
+  "chapter": 2,
+  "section": 1,
+  "book": "number-theory",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Prime numbers are the irreducible building blocks from which all integers \nare constructed."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Prime and Composite Numbers"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Prime and Composite",
+      "content": "An integer $n > 1$ is **prime** if its only \npositive divisors are 1 and $n$ itself.\n\nAn integer $n > 1$ that is not prime is called **composite**."
+    },
+    {
+      "type": "paragraph",
+      "text": "The integer 1 is neither prime nor composite—it is a **unit**."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Primes and Composites",
+      "problem": "- $2, 3, 5, 7, 11, 13$ are prime.\n\n- $4, 6, 8, 9, 10, 12$ are composite.\n\n- 2 is the only even prime (every other even number is divisible by 2).",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Infinitude of Primes"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Euclid's Theorem",
+      "content": "There are infinitely many prime numbers.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Suppose, for contradiction, that there are only finitely many primes: \n$p_1, p_2, \\ldots, p_n$. Consider the integer\n\\[\nN = p_1 p_2 \\cdots p_n + 1.\n\\]\nSince $N > p_i$ for all $i$, we have $N \\neq p_i$ for any prime in our \nlist. By the Division Algorithm, for each $p_i$:\n\\[\nN = p_i \\cdot (p_1 \\cdots p_{i-1} \\cdot p_{i+1} \\cdots p_n) + 1,\n\\]\nso $p_i \\nmid N$.\n\nBut every integer greater than 1 is divisible by some prime. If $N$ is \nprime, we have found a prime not in our list. If $N$ is composite, it \nhas a prime factor not in our list. Either way, contradiction."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Euclid's Lemma"
+    },
+    {
+      "type": "paragraph",
+      "text": "A crucial property of primes is that they cannot divide a product without \ndividing at least one factor."
+    },
+    {
+      "type": "lemma",
+      "id": "lemma-2.1",
+      "number": "2.1",
+      "title": "Euclid's Lemma",
+      "content": "If $p$ is prime and $p \\mid ab$, then $p \\mid a$ or $p \\mid b$.",
+      "label": "Lemma"
+    },
+    {
+      "type": "proof",
+      "content": "Suppose $p \\nmid a$. Since $p$ is prime, $\\gcd(p, a) = 1$. By Bézout's \nidentity, $px + ay = 1$ for some integers $x, y$. Multiplying by $b$:\n\\[\npbx + aby = b.\n\\]\nSince $p \\mid p$ and $p \\mid ab$, we have $p \\mid b$."
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-2.1",
+      "number": "2.1",
+      "title": "",
+      "content": "If $p$ is prime and $p \\mid a_1 a_2 \\cdots a_n$, then $p \\mid a_i$ for \nsome $i$.",
+      "label": "Corollary"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Fundamental Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Fundamental Theorem of Arithmetic",
+      "content": "Every integer $n > 1$ can be written as a product of primes:\n\\[\nn = p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k}\n\\]\nwhere $p_1 < p_2 < \\cdots < p_k$ are primes and $e_i \\geq 1$. Moreover, \nthis representation is **unique**.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "*Existence.* We use strong induction on $n$. The base case $n = 2$ \nis immediate (2 is prime).\n\nFor the inductive step, assume every integer from 2 to $n-1$ can be written \nas a product of primes. If $n$ is prime, we are done. If $n$ is composite, \nthen $n = ab$ for some $1 < a, b < n$. By the inductive hypothesis, both \n$a$ and $b$ are products of primes, hence so is $n$.\n\n*Uniqueness.* Suppose $n = p_1 p_2 \\cdots p_r = q_1 q_2 \\cdots q_s$ \n(allowing repetitions). We prove $r = s$ and the primes are the same (with \nsame multiplicities) by induction on $r$.\n\nIf $r = 1$, then $n = p_1$ is prime, so $s = 1$ and $q_1 = p_1$.\n\nFor $r > 1$: since $p_1 \\mid q_1 q_2 \\cdots q_s$, by Euclid's Lemma, \n$p_1 \\mid q_j$ for some $j$. Since $q_j$ is prime, $p_1 = q_j$. Dividing \nboth factorizations by $p_1$, the inductive hypothesis gives that the \nremaining primes match."
+    },
+    {
+      "type": "paragraph",
+      "text": "The representation $n = p_1^{e_1} \\cdots p_k^{e_k}$ is called the \n**prime factorization** of $n$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Prime Factorizations",
+      "problem": "- $360 = 2^3 \\cdot 3^2 \\cdot 5$\n\n- $1001 = 7 \\cdot 11 \\cdot 13$\n\n- $2^{10} - 1 = 1023 = 3 \\cdot 11 \\cdot 31$",
+      "solution": ""
+    }
+  ]
+}

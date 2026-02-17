@@ -1,0 +1,169 @@
+{
+  "id": "discrete-math-ch03-sec04",
+  "title": "Complexity Analysis",
+  "chapter": 3,
+  "section": 4,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Teach us to number our days, that we may gain a heart \nof wisdom.\"*{Psalm 90:12}{Beware of bugs in the above code; I have only proved it correct, not tried it.}{Donald Knuth}"
+    },
+    {
+      "type": "paragraph",
+      "text": "How do we measure the efficiency of an algorithm? We use **asymptotic \nnotation** to describe how running time or \nspace usage grows with input size."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Big-O Notation"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.1",
+      "number": "3.1",
+      "title": "Big-O",
+      "content": "Let $f$ and $g$ be functions from $\\N$ to $\\R^+$. We say $f(n) = O(g(n))$ \n(read \"$f$ is big-O of $g$\") if there exist constants $C > 0$ and $n_0$ \nsuch that:\n\\[ f(n) \\leq C \\cdot g(n) \\quad \\text{for all } n \\geq n_0 \\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Big-O provides an **upper bound** on growth. If $f(n) = O(g(n))$, \nthen $f$ grows no faster than $g$ (up to a constant factor) for large $n$."
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Big-O examples",
+      "problem": "1. $3n + 5 = O(n)$. Choose $C = 4$, $n_0 = 5$: for $n \\geq 5$, \n $3n + 5 \\leq 4n$.\n\n2. $n^2 + 100n = O(n^2)$. For large $n$, the $n^2$ term dominates.\n\n3. $\\log_2 n = O(\\log n)$. All logarithms differ by a constant \n factor, so we omit the base.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Big-$\\Omega$ and Big-$\\Theta$"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.2",
+      "number": "3.2",
+      "title": "Big-Omega and Big-Theta",
+      "content": "$f(n) = \\Omega(g(n))$ (\"big-Omega\") if there exist $C > 0$ and $n_0$ \nsuch that $f(n) \\geq C \\cdot g(n)$ for all $n \\geq n_0$. This provides a \n**lower bound**.\n\n$f(n) = \\Theta(g(n))$ (\"big-Theta\") if $f(n) = O(g(n))$ and \n$f(n) = \\Omega(g(n))$. This provides a **tight bound**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Common Complexity Classes"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Notation**",
+        "**Name**",
+        "**Example**"
+      ],
+      "rows": [
+        [
+          "$O(1)$",
+          "Constant",
+          "Array access"
+        ],
+        [
+          "$O(\\log n)$",
+          "Logarithmic",
+          "Binary search"
+        ],
+        [
+          "$O(n)$",
+          "Linear",
+          "Linear search"
+        ],
+        [
+          "$O(n \\log n)$",
+          "Linearithmic",
+          "Merge sort"
+        ],
+        [
+          "$O(n^2)$",
+          "Quadratic",
+          "Bubble sort"
+        ],
+        [
+          "$O(n^3)$",
+          "Cubic",
+          "Matrix multiplication (naive)"
+        ],
+        [
+          "$O(2^n)$",
+          "Exponential",
+          "Subset enumeration"
+        ],
+        [
+          "$O(n!)$",
+          "Factorial",
+          "Permutation enumeration"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "left",
+        "center"
+      ]
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "Growth Rate Ordering",
+      "content": "For large $n$:\n\\[ 1 < \\log n < \\sqrt{n} < n < n \\log n < n^2 < n^3 < 2^n < n! < n^n \\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Analyzing Algorithms"
+    },
+    {
+      "type": "paragraph",
+      "text": "To find the time complexity:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Count the basic operations (comparisons, assignments, etc.).",
+        "Express the count as a function of input size $n$.",
+        "Simplify using big-O notation."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Analyzing nested loops",
+      "problem": "verbatim\n for i from 1 to n do\n for j from 1 to n do\n print(i, j)\n end for\n end for\nverbatim\n\nThe inner loop runs $n$ times for each of $n$ iterations of the outer \nloop. Total: $n \\times n = n^2$ print operations. Time complexity: $O(n^2)$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-3.3",
+      "number": "3.3",
+      "title": "Dependent loops",
+      "problem": "verbatim\n for i from 1 to n do\n for j from 1 to i do\n print(i, j)\n end for\n end for\nverbatim\n\nTotal operations: $1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2} = O(n^2)$.",
+      "solution": ""
+    },
+    {
+      "type": "warning",
+      "id": "warning-3.4",
+      "number": null,
+      "title": "Best, Worst, and Average Case",
+      "content": "An algorithm may perform differently on different inputs of the same size.\n\n- **Best case**: minimum time (often unrealistic)\n\n- **Worst case**: maximum time (guaranteed upper bound)\n\n- **Average case**: expected time over all inputs\nWhen we give a single complexity, we usually mean worst case."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 9:11",
+      "text": "The race is not to the swift or the \nbattle to the strong... but time and chance happen to them all."
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+{
+  "id": "diff-eq-ch06-sec01",
+  "title": "Definition and Basic Properties",
+  "chapter": 6,
+  "section": 1,
+  "book": "diff-eq",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The Laplace transform converts a function of time into a function of a \ncomplex variable $s$. This transformation has the remarkable property of \nconverting differentiation into multiplication, which allows us to solve \ndifferential equations using algebra."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Definition"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "The Laplace Transform",
+      "content": "Let $f(t)$ be a function defined for $t \\geq 0$. The **Laplace transform** \nof $f$, denoted $\\mathcal{L}\\{f(t)\\}$ or $F(s)$, is defined by the improper integral\n\\[\n\\mathcal{L}\\{f(t)\\} = F(s) = \\int_0^{\\infty} e^{-st} f(t)\\, dt\n\\]\nprovided this integral converges."
+    },
+    {
+      "type": "paragraph",
+      "text": "The variable $s$ is typically taken to be real, though in more advanced \ntreatments it may be complex. We call $f(t)$ the **original function** \n(or **object function**) and $F(s)$ the **transformed function** \n(or **image function**)."
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Computing $\\mathcal{L}\\{1\\}$",
+      "problem": "Let $f(t) = 1$ for $t \\geq 0$. Then\n$$\n\\mathcal{L}\\{1\\} &= \\int_0^{\\infty} e^{-st} \\cdot 1\\, dt \\\\\n&= \\lim_{b \\to \\infty} \\int_0^{b} e^{-st}\\, dt \\\\\n&= \\lim_{b \\to \\infty} \\left[-\\frac{1}{s}e^{-st}\\right]_0^{b} \\\\\n&= \\lim_{b \\to \\infty} \\left(-\\frac{1}{s}e^{-sb} + \\frac{1}{s}\\right)\n$$\nFor $s > 0$, we have $e^{-sb} \\to 0$ as $b \\to \\infty$, so\n\\[\n\\mathcal{L}\\{1\\} = \\frac{1}{s}, \\quad s > 0\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Computing $\\mathcal{L}\\{e^{at}\\}$",
+      "problem": "Let $f(t) = e^{at}$ where $a$ is a constant. Then\n$$\n\\mathcal{L}\\{e^{at}\\} &= \\int_0^{\\infty} e^{-st} e^{at}\\, dt \\\\\n&= \\int_0^{\\infty} e^{-(s-a)t}\\, dt \\\\\n&= \\lim_{b \\to \\infty} \\left[-\\frac{1}{s-a}e^{-(s-a)t}\\right]_0^{b}\n$$\nFor this limit to exist and equal a finite value, we need $s - a > 0$, i.e., $s > a$. \nIn that case,\n\\[\n\\mathcal{L}\\{e^{at}\\} = \\frac{1}{s-a}, \\quad s > a\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Existence of the Laplace Transform"
+    },
+    {
+      "type": "paragraph",
+      "text": "Not every function has a Laplace transform. For the integral to converge, \n$f(t)$ must not grow too rapidly as $t \\to \\infty$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.2",
+      "number": "6.2",
+      "title": "Exponential Order",
+      "content": "A function $f(t)$ is of **exponential order** $\\alpha$ if there exist \nconstants $M > 0$ and $T \\geq 0$ such that\n\\[\n|f(t)| \\leq M e^{\\alpha t} \\quad \\text{for all } t \\geq T\n\\]\nWe write $f(t) = O(e^{\\alpha t})$ as $t \\to \\infty$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.3",
+      "number": "6.3",
+      "title": "Piecewise Continuous",
+      "content": "A function $f(t)$ is **piecewise continuous** on an interval $[a, b]$ \nif the interval can be divided into finitely many subintervals on each of \nwhich $f$ is continuous, and $f$ has finite left-hand and right-hand limits \nat each point of discontinuity."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Existence of the Laplace Transform",
+      "content": "If $f(t)$ is piecewise continuous on $[0, \\infty)$ and of exponential order \n$\\alpha$, then the Laplace transform $\\mathcal{L}\\{f(t)\\}$ exists for $s > \\alpha$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Since $f$ is piecewise continuous and of exponential order $\\alpha$, there \nexist $M > 0$ and $T \\geq 0$ such that $|f(t)| \\leq Me^{\\alpha t}$ for $t \\geq T$. \nFor $s > \\alpha$:\n$$\n\\left|\\int_0^{\\infty} e^{-st}f(t)\\,dt\\right| &\\leq \\int_0^{T} e^{-st}|f(t)|\\,dt + \\int_T^{\\infty} e^{-st}|f(t)|\\,dt \\\\\n&\\leq \\int_0^{T} e^{-st}|f(t)|\\,dt + M\\int_T^{\\infty} e^{-st}e^{\\alpha t}\\,dt \\\\\n&= \\int_0^{T} e^{-st}|f(t)|\\,dt + M\\int_T^{\\infty} e^{-(s-\\alpha)t}\\,dt\n$$\nThe first integral is finite since $f$ is piecewise continuous on the bounded \ninterval $[0, T]$. The second integral converges because $s - \\alpha > 0$:\n\\[\n\\int_T^{\\infty} e^{-(s-\\alpha)t}\\,dt = \\frac{e^{-(s-\\alpha)T}}{s - \\alpha} < \\infty\n\\]\nTherefore, $\\mathcal{L}\\{f(t)\\}$ exists for $s > \\alpha$."
+    },
+    {
+      "type": "example",
+      "id": "example-6.3",
+      "number": "6.3",
+      "title": "A function without a Laplace transform",
+      "problem": "Consider $f(t) = e^{t^2}$. For any $\\alpha$, we have\n\\[\n\\lim_{t \\to \\infty} \\frac{e^{t^2}}{e^{\\alpha t}} = \\lim_{t \\to \\infty} e^{t^2 - \\alpha t} = \\infty\n\\]\nTherefore, $e^{t^2}$ is not of exponential order for any $\\alpha$, and its \nLaplace transform does not exist.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Linearity of the Laplace Transform"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Linearity",
+      "content": "The Laplace transform is a linear operator. If $\\mathcal{L}\\{f(t)\\} = F(s)$ \nand $\\mathcal{L}\\{g(t)\\} = G(s)$ exist for $s > \\alpha$, and if $a$ and $b$ \nare constants, then\n\\[\n\\mathcal{L}\\{af(t) + bg(t)\\} = aF(s) + bG(s), \\quad s > \\alpha\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "By the linearity of integration:\n$$\n\\mathcal{L}\\{af(t) + bg(t)\\} &= \\int_0^{\\infty} e^{-st}[af(t) + bg(t)]\\,dt \\\\\n&= a\\int_0^{\\infty} e^{-st}f(t)\\,dt + b\\int_0^{\\infty} e^{-st}g(t)\\,dt \\\\\n&= aF(s) + bG(s) \\qedhere\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-6.4",
+      "number": "6.4",
+      "title": "Using linearity",
+      "problem": "Find $\\mathcal{L}\\{5e^{2t} - 3\\}$.\n\n**Solution.** Using linearity and our known transforms:\n$$\n\\mathcal{L}\\{5e^{2t} - 3\\} &= 5\\mathcal{L}\\{e^{2t}\\} - 3\\mathcal{L}\\{1\\} \\\\\n&= 5 \\cdot \\frac{1}{s-2} - 3 \\cdot \\frac{1}{s} \\\\\n&= \\frac{5}{s-2} - \\frac{3}{s}\n$$\nThis is valid for $s > 2$ (since that's required for both terms).",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Behavior at Infinity"
+    },
+    {
+      "type": "paragraph",
+      "text": "The following result is useful for checking calculations and understanding \nthe nature of Laplace transforms."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.3",
+      "number": "6.3",
+      "title": "Limit at Infinity",
+      "content": "If $f(t)$ is piecewise continuous on $[0, \\infty)$ and of exponential order, then\n\\[\n\\lim_{s \\to \\infty} F(s) = 0\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This tells us that if a proposed transform does not approach zero as $s \\to \\infty$, \nit cannot be the Laplace transform of any piecewise continuous function of \nexponential order."
+    },
+    {
+      "type": "historical",
+      "id": "historical-6.1",
+      "number": null,
+      "title": "",
+      "content": "Pierre-Simon Laplace (1749–1827) introduced this transform in his work \non probability theory in the 1780s. However, the transform gained its full \npower as a tool for solving differential equations through the work of \nOliver Heaviside in the late 19th century. Heaviside, a self-taught \nelectrical engineer, developed operational methods for circuit analysis \nthat were later justified rigorously using the Laplace transform."
+    }
+  ]
+}

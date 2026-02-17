@@ -1,0 +1,294 @@
+{
+  "id": "vol3-ch14-sec03",
+  "title": "Partial Derivatives",
+  "chapter": 14,
+  "section": 3,
+  "book": "vol3",
+  "epigraph": {
+    "text": "Teach me your way, Lord, that I may rely on your faithfulness; give me an undivided heart.",
+    "reference": "Psalm 86:11"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "How do we differentiate a function of two variables? The answer: one variable at a time. By holding one variable constant and differentiating with respect to the other, we obtain **partial derivatives**—the fundamental tools for analyzing functions of several variables."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Partial Derivatives"
+    },
+    {
+      "type": "definition",
+      "id": "definition-14.1",
+      "number": "14.1",
+      "title": "Partial Derivatives",
+      "content": "If $f(x, y)$ is a function of two variables, its **partial derivatives** are:\n$$\n \\frac{\\partial f}{\\partial x} &= f_x = \\lim_{h \\to 0} \\frac{f(x+h, y) - f(x, y)}{h}, \\\\\n \\frac{\\partial f}{\\partial y} &= f_y = \\lim_{h \\to 0} \\frac{f(x, y+h) - f(x, y)}{h}.\n$$\n$f_x$ is computed by differentiating $f$ with respect to $x$, treating $y$ as a constant.\n$f_y$ is computed by differentiating $f$ with respect to $y$, treating $x$ as a constant."
+    },
+    {
+      "type": "example",
+      "id": "example-14.1",
+      "number": "14.1",
+      "title": "Finding partial derivatives",
+      "problem": "Find $f_x$ and $f_y$ for $f(x, y) = x^3 + 2x^2y - y^3$.",
+      "solution": "**For $f_x$:** treat $y$ as constant:\n\\[\n f_x = \\frac{\\partial}{\\partial x}(x^3 + 2x^2y - y^3) = 3x^2 + 4xy.\n\\]\n**For $f_y$:** treat $x$ as constant:\n\\[\n f_y = \\frac{\\partial}{\\partial y}(x^3 + 2x^2y - y^3) = 2x^2 - 3y^2.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-14.2",
+      "number": "14.2",
+      "title": "Partial derivatives involving other rules",
+      "problem": "Find $f_x$ and $f_y$ for $f(x, y) = e^{xy}\\sin(x + y)$.",
+      "solution": "For $f_x$, use the product rule (treating $y$ as constant):\n$$\n f_x &= \\frac{\\partial}{\\partial x}(e^{xy}) \\cdot \\sin(x+y) + e^{xy} \\cdot \\frac{\\partial}{\\partial x}(\\sin(x+y)) \\\\\n &= ye^{xy}\\sin(x+y) + e^{xy}\\cos(x+y).\n$$\nFor $f_y$:\n$$\n f_y &= xe^{xy}\\sin(x+y) + e^{xy}\\cos(x+y).\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-14.3",
+      "number": "14.3",
+      "title": "Evaluating at a point",
+      "problem": "Let $f(x, y) = x^2y + y^3$. Find $f_x(2, 1)$ and $f_y(2, 1)$.",
+      "solution": "\\[\n f_x = 2xy, \\quad f_y = x^2 + 3y^2.\n\\]\n\\[\n f_x(2, 1) = 2(2)(1) = 4, \\quad f_y(2, 1) = 4 + 3 = 7.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-14.4",
+      "number": "14.4",
+      "title": "Quotient involving partial derivatives",
+      "problem": "Find $f_x$ and $f_y$ for $f(x, y) = \\dfrac{x^2 + y^2}{x - y}$.",
+      "solution": "Using the quotient rule for $f_x$ (treating $y$ as constant):\n$$\n f_x &= \\frac{(2x)(x - y) - (x^2 + y^2)(1)}{(x - y)^2} = \\frac{2x^2 - 2xy - x^2 - y^2}{(x - y)^2} = \\frac{x^2 - 2xy - y^2}{(x - y)^2}.\n$$\nUsing the quotient rule for $f_y$ (treating $x$ as constant):\n$$\n f_y &= \\frac{(2y)(x - y) - (x^2 + y^2)(-1)}{(x - y)^2} = \\frac{2xy - 2y^2 + x^2 + y^2}{(x - y)^2} = \\frac{x^2 + 2xy - y^2}{(x - y)^2}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-14.5",
+      "number": "14.5",
+      "title": "Implicit partial derivatives",
+      "problem": "If $z = f(x, y)$ is defined implicitly by $x^2 + y^2 + z^2 = 1$, find $\\dfrac{\\partial z}{\\partial x}$ and $\\dfrac{\\partial z}{\\partial y}$.",
+      "solution": "Differentiate both sides with respect to $x$, treating $y$ as constant and $z$ as a function of $x$ and $y$:\n\\[\n 2x + 0 + 2z\\frac{\\partial z}{\\partial x} = 0 \\implies \\frac{\\partial z}{\\partial x} = -\\frac{x}{z}.\n\\]\nSimilarly, differentiating with respect to $y$:\n\\[\n 0 + 2y + 2z\\frac{\\partial z}{\\partial y} = 0 \\implies \\frac{\\partial z}{\\partial y} = -\\frac{y}{z}.\n\\]\nThese formulas are valid when $z \\neq 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.6",
+      "number": "14.6",
+      "title": "Composite functions",
+      "problem": "Find $f_x$ and $f_y$ for $f(x, y) = \\ln(\\sin(x^2 + y))$.",
+      "solution": "Using the chain rule:\n\\[\n f_x = \\frac{1}{\\sin(x^2 + y)} \\cdot \\cos(x^2 + y) \\cdot 2x = \\frac{2x\\cos(x^2 + y)}{\\sin(x^2 + y)} = 2x\\cot(x^2 + y).\n\\]\n\\[\n f_y = \\frac{1}{\\sin(x^2 + y)} \\cdot \\cos(x^2 + y) \\cdot 1 = \\cot(x^2 + y).\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-14.7",
+      "number": "14.7",
+      "title": "Partial derivatives in physics",
+      "problem": "The gravitational potential energy of a mass $m$ at position $(x, y, z)$ due to a mass $M$ at the origin is\n\\[\n U(x, y, z) = -\\frac{GMm}{\\sqrt{x^2 + y^2 + z^2}}.\n\\]\nFind the partial derivatives and interpret them physically.",
+      "solution": "Let $r = \\sqrt{x^2 + y^2 + z^2}$, so $U = -GMm/r$. Then:\n\\[\n \\frac{\\partial U}{\\partial x} = -GMm \\cdot \\frac{\\partial}{\\partial x}(r^{-1}) = -GMm \\cdot (-r^{-2}) \\cdot \\frac{x}{r} = \\frac{GMm \\cdot x}{r^3}.\n\\]\nSimilarly:\n\\[\n \\frac{\\partial U}{\\partial y} = \\frac{GMm \\cdot y}{r^3}, \\quad \\frac{\\partial U}{\\partial z} = \\frac{GMm \\cdot z}{r^3}.\n\\]\n\nThe force is $\\vect{F} = -\\nabla U = -\\left\\langle \\dfrac{\\partial U}{\\partial x}, \\dfrac{\\partial U}{\\partial y}, \\dfrac{\\partial U}{\\partial z} \\right\\rangle = -\\dfrac{GMm}{r^3}\\langle x, y, z \\rangle$.\n\nThis is Newton's law of gravitation: the force points toward the origin (toward mass $M$) with magnitude $GMm/r^2$. The regularity and precision of gravitational attraction reflects the orderly nature of God's creation (Colossians 1:17)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Geometric Interpretation"
+    },
+    {
+      "type": "paragraph",
+      "text": "The partial derivative $f_x(a, b)$ is the slope of the tangent line to the curve formed by intersecting the surface $z = f(x, y)$ with the plane $y = b$. Similarly, $f_y(a, b)$ is the slope along the curve in the plane $x = a$."
+    },
+    {
+      "type": "paragraph",
+      "text": "In other words:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$f_x$ tells how fast $f$ changes when you move in the $x$-direction (east-west)",
+        "$f_y$ tells how fast $f$ changes when you move in the $y$-direction (north-south)"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Higher-Order Partial Derivatives"
+    },
+    {
+      "type": "paragraph",
+      "text": "We can differentiate partial derivatives again to get second-order (and higher) derivatives."
+    },
+    {
+      "type": "definition",
+      "id": "definition-14.2",
+      "number": "14.2",
+      "title": "Second-Order Partial Derivatives",
+      "content": "$$\n f_{xx} = \\frac{\\partial^2 f}{\\partial x^2} &= \\frac{\\partial}{\\partial x}\\left(\\frac{\\partial f}{\\partial x}\\right), \\\\\n f_{yy} = \\frac{\\partial^2 f}{\\partial y^2} &= \\frac{\\partial}{\\partial y}\\left(\\frac{\\partial f}{\\partial y}\\right), \\\\\n f_{xy} = \\frac{\\partial^2 f}{\\partial y \\partial x} &= \\frac{\\partial}{\\partial y}\\left(\\frac{\\partial f}{\\partial x}\\right), \\\\\n f_{yx} = \\frac{\\partial^2 f}{\\partial x \\partial y} &= \\frac{\\partial}{\\partial x}\\left(\\frac{\\partial f}{\\partial y}\\right).\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-14.8",
+      "number": "14.8",
+      "title": "Second-order partial derivatives",
+      "problem": "Find all second-order partial derivatives of $f(x, y) = x^3y^2 - 2xy^4$.",
+      "solution": "First derivatives:\n\\[\n f_x = 3x^2y^2 - 2y^4, \\quad f_y = 2x^3y - 8xy^3.\n\\]\nSecond derivatives:\n$$\n f_{xx} &= 6xy^2, \\\\\n f_{yy} &= 2x^3 - 24xy^2, \\\\\n f_{xy} &= \\frac{\\partial}{\\partial y}(3x^2y^2 - 2y^4) = 6x^2y - 8y^3, \\\\\n f_{yx} &= \\frac{\\partial}{\\partial x}(2x^3y - 8xy^3) = 6x^2y - 8y^3.\n$$\nNote that $f_{xy} = f_{yx}$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.9",
+      "number": "14.9",
+      "title": "Third-order partial derivatives",
+      "problem": "For $f(x, y) = e^x \\sin y$, find $f_{xxy}$ and $f_{yxx}$.",
+      "solution": "First, find the needed first and second derivatives:\n\\[\n f_x = e^x \\sin y, \\quad f_{xx} = e^x \\sin y.\n\\]\nThen:\n\\[\n f_{xxy} = \\frac{\\partial}{\\partial y}(e^x \\sin y) = e^x \\cos y.\n\\]\nAlternatively:\n\\[\n f_y = e^x \\cos y, \\quad f_{yx} = e^x \\cos y, \\quad f_{yxx} = e^x \\cos y.\n\\]\nAs expected by Clairaut's theorem (applied twice), $f_{xxy} = f_{yxx}$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.10",
+      "number": "14.10",
+      "title": "When mixed partials differ",
+      "problem": "Consider the function\n\\[\n f(x, y) = \\begin{cases} \\dfrac{xy(x^2 - y^2)}{x^2 + y^2} & (x, y) \\neq (0, 0) \\\\ 0 & (x, y) = (0, 0) \\end{cases}\n\\]\nShow that $f_{xy}(0, 0) \\neq f_{yx}(0, 0)$.",
+      "solution": "First, note that $f(x, 0) = 0$ and $f(0, y) = 0$ for all $x$ and $y$.\n\nAt the origin:\n\\[\n f_x(0, 0) = \\lim_{h \\to 0} \\frac{f(h, 0) - f(0, 0)}{h} = \\lim_{h \\to 0} \\frac{0}{h} = 0.\n\\]\nSimilarly, $f_y(0, 0) = 0$.\n\nFor $y \\neq 0$: $f_x(0, y) = \\lim_{h \\to 0} \\frac{f(h, y) - f(0, y)}{h} = \\lim_{h \\to 0} \\frac{h \\cdot y(h^2 - y^2)/(h^2 + y^2)}{h} = \\frac{-y^3}{y^2} = -y$.\n\nThus:\n\\[\n f_{xy}(0, 0) = \\lim_{k \\to 0} \\frac{f_x(0, k) - f_x(0, 0)}{k} = \\lim_{k \\to 0} \\frac{-k - 0}{k} = -1.\n\\]\n\nBy a similar calculation (which we leave as an exercise), $f_{yx}(0, 0) = 1$.\n\nThe mixed partials differ because they are not continuous at the origin—Clairaut's theorem does not apply."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.1",
+      "number": "14.1",
+      "title": "Clairaut's Theorem (Equality of Mixed Partials)",
+      "content": "If $f$ is defined on an open set containing $(a, b)$, and both $f_{xy}$ and $f_{yx}$ are continuous there, then\n\\[\n f_{xy}(a, b) = f_{yx}(a, b).\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This powerful theorem says that the order of differentiation doesn't matter (under reasonable conditions). We can write $f_{xy}$ without ambiguity."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Functions of Three or More Variables"
+    },
+    {
+      "type": "paragraph",
+      "text": "For $f(x, y, z)$, we have three partial derivatives:\n\\[\n \\frac{\\partial f}{\\partial x}, \\quad \\frac{\\partial f}{\\partial y}, \\quad \\frac{\\partial f}{\\partial z}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-14.11",
+      "number": "14.11",
+      "title": "Three variables",
+      "problem": "Find the partial derivatives of $f(x, y, z) = xy^2z^3 + x\\sin(yz)$.",
+      "solution": "$$\n f_x &= y^2z^3 + \\sin(yz), \\\\\n f_y &= 2xyz^3 + xz\\cos(yz), \\\\\n f_z &= 3xy^2z^2 + xy\\cos(yz).\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Differentiability"
+    },
+    {
+      "type": "paragraph",
+      "text": "Having partial derivatives is not quite the same as being differentiable. In one variable, the existence of $f'(a)$ guarantees that $f$ is well-approximated by a linear function near $a$. In several variables, we need a stronger condition."
+    },
+    {
+      "type": "definition",
+      "id": "definition-14.3",
+      "number": "14.3",
+      "title": "Differentiability",
+      "content": "$f(x, y)$ is **differentiable at $(a, b)$** if\n\\[\n f(x, y) = f(a, b) + f_x(a, b)(x - a) + f_y(a, b)(y - b) + \\epsilon_1(x - a) + \\epsilon_2(y - b),\n\\]\nwhere $\\epsilon_1 \\to 0$ and $\\epsilon_2 \\to 0$ as $(x, y) \\to (a, b)$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.2",
+      "number": "14.2",
+      "title": "Sufficient Condition for Differentiability",
+      "content": "If $f_x$ and $f_y$ exist and are continuous on an open set containing $(a, b)$, then $f$ is differentiable at $(a, b)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.3",
+      "number": "14.3",
+      "title": "Differentiability Implies Continuity",
+      "content": "If $f$ is differentiable at $(a, b)$, then $f$ is continuous at $(a, b)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-14.3",
+      "number": null,
+      "title": "Partial derivatives don't imply differentiability",
+      "content": "A function can have partial derivatives at a point without being differentiable—or even continuous—there. Example: $f(x, y) = \\frac{xy}{x^2 + y^2}$ (with $f(0,0) = 0$) has $f_x(0,0) = f_y(0,0) = 0$, but $f$ is not continuous at the origin."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Notation for Partial Derivatives"
+    },
+    {
+      "type": "paragraph",
+      "text": "Several notations are used for partial derivatives:"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**First derivatives:**",
+        "$f_x$, $\\dfrac{\\partial f}{\\partial x}$, $\\partial_x f$, $D_x f$, $D_1 f$"
+      ],
+      "rows": [
+        [
+          "**Second derivatives:**",
+          "$f_{xx}$, $\\dfrac{\\partial^2 f}{\\partial x^2}$, $\\partial_{xx} f$, $D_{xx} f$, $D_{11} f$"
+        ],
+        [
+          "**Mixed derivatives:**",
+          "$f_{xy}$, $\\dfrac{\\partial^2 f}{\\partial y \\partial x}$, $\\partial_{xy} f$, $D_{xy} f$, $D_{12} f$"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "left"
+      ]
+    },
+    {
+      "type": "warning",
+      "id": "warning-14.3",
+      "number": null,
+      "title": "Order of differentiation in Leibniz notation",
+      "content": "In the notation $\\dfrac{\\partial^2 f}{\\partial y \\partial x}$, we differentiate **first with respect to $x$, then with respect to $y$**—reading right to left. This matches the subscript notation $f_{xy}$, where we also read left to right: first $x$, then $y$. Be careful: some textbooks use the opposite convention!"
+    },
+    {
+      "type": "example",
+      "id": "example-14.12",
+      "number": "14.12",
+      "title": "Heat conduction in a rod",
+      "problem": "Consider a thin rod along the $x$-axis. If $u(x, t)$ represents the temperature at position $x$ and time $t$, the heat equation is\n\\[\n \\frac{\\partial u}{\\partial t} = k\\frac{\\partial^2 u}{\\partial x^2},\n\\]\nwhere $k > 0$ is the thermal diffusivity. Verify that $u(x, t) = e^{-kt}\\sin x$ is a solution.",
+      "solution": "Compute the partial derivatives:\n\\[\n \\frac{\\partial u}{\\partial t} = -ke^{-kt}\\sin x.\n\\]\n\\[\n \\frac{\\partial u}{\\partial x} = e^{-kt}\\cos x, \\quad \\frac{\\partial^2 u}{\\partial x^2} = -e^{-kt}\\sin x.\n\\]\nCheck: $k\\dfrac{\\partial^2 u}{\\partial x^2} = k(-e^{-kt}\\sin x) = -ke^{-kt}\\sin x = \\dfrac{\\partial u}{\\partial t}$. $\\checkmark$\n\nThe heat equation models how temperature gradients smooth out over time—heat flows from hot to cold regions, eventually reaching equilibrium. This diffusion process reflects the second law of thermodynamics, which some see as connected to the principle that creation is \"subjected to futility\" (Romans 8:20) yet sustained by God's ongoing providence."
+    },
+    {
+      "type": "example",
+      "id": "example-14.13",
+      "number": "14.13",
+      "title": "The two-dimensional wave equation",
+      "problem": "A vibrating membrane (like a drumhead) satisfies the wave equation\n\\[\n \\frac{\\partial^2 u}{\\partial t^2} = c^2\\left(\\frac{\\partial^2 u}{\\partial x^2} + \\frac{\\partial^2 u}{\\partial y^2}\\right),\n\\]\nwhere $u(x, y, t)$ is the displacement and $c$ is the wave speed. Verify that $u = \\sin(x + y - \\sqrt{2}ct)$ is a solution.",
+      "solution": "Let $\\theta = x + y - \\sqrt{2}ct$. Then $u = \\sin\\theta$.\n\\[\n \\frac{\\partial u}{\\partial t} = \\cos\\theta \\cdot (-\\sqrt{2}c), \\quad \\frac{\\partial^2 u}{\\partial t^2} = -\\sin\\theta \\cdot 2c^2 = -2c^2\\sin\\theta.\n\\]\n\\[\n \\frac{\\partial u}{\\partial x} = \\cos\\theta, \\quad \\frac{\\partial^2 u}{\\partial x^2} = -\\sin\\theta.\n\\]\n\\[\n \\frac{\\partial u}{\\partial y} = \\cos\\theta, \\quad \\frac{\\partial^2 u}{\\partial y^2} = -\\sin\\theta.\n\\]\nCheck: $c^2\\left(\\dfrac{\\partial^2 u}{\\partial x^2} + \\dfrac{\\partial^2 u}{\\partial y^2}\\right) = c^2(-\\sin\\theta - \\sin\\theta) = -2c^2\\sin\\theta = \\dfrac{\\partial^2 u}{\\partial t^2}$. $\\checkmark$\n\nThis represents a plane wave traveling in the direction $\\langle 1, 1 \\rangle$ with speed $c$."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Matthew 7:7",
+      "text": "Ask, and it will be given to you; seek, and you will find; knock, and it will be opened to you."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 7:25",
+      "text": "I applied my heart to know and to search out and to seek wisdom and the scheme of things."
+    },
+    {
+      "type": "quote",
+      "author": "Henri Lebesgue",
+      "text": "Reduced to their most general form, the problems of geometry are problems about the relationships of spatial magnitudes."
+    },
+    {
+      "type": "quote",
+      "author": "Bernhard Riemann",
+      "text": "If only I had the theorems! Then I should find the proofs easily enough."
+    },
+    {
+      "type": "quote",
+      "author": "Leibniz",
+      "text": "The art of discovering the causes of phenomena, or true hypotheses, is like the art of deciphering, in which an ingenious conjecture greatly shortens the road."
+    }
+  ]
+}

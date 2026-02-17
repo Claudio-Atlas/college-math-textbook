@@ -1,0 +1,130 @@
+{
+  "id": "abstract-algebra-ch05-sec02",
+  "title": "Quotient Groups",
+  "chapter": 5,
+  "section": 2,
+  "book": "abstract-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Therefore, if anyone is in Christ, the new creation \nhas come: The old has gone, the new is here!\"*{2 Corinthians 5:17}{*\"The quotient group collapses structure to reveal what remains essential.\"*}{Emmy Noether}\n\n*\"Simplicity is the ultimate sophistication.\"*{— Leonardo da Vinci}"
+    },
+    {
+      "type": "paragraph",
+      "text": "When $N$ is a normal subgroup of $G$, we can turn the set of cosets \ninto a group. This **quotient group** captures the essential \nstructure of $G$ modulo the \"insignificant\" details collapsed into $N$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Coset Multiplication"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Coset Product",
+      "content": "For $N \\trianglelefteq G$, define multiplication of cosets by:\n\\[\n (aN)(bN) = (ab)N\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Well-Definedness",
+      "content": "If $N \\trianglelefteq G$, the coset product is well-defined: if \n$aN = a'N$ and $bN = b'N$, then $(ab)N = (a'b')N$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Suppose $aN = a'N$ and $bN = b'N$. Then $a' = an_1$ and $b' = bn_2$ \nfor some $n_1, n_2 \\in N$.\n\nWe have $a'b' = an_1 bn_2 = a(n_1 b)n_2$. Since $N$ is normal, \n$n_1 b = b n_3$ for some $n_3 \\in N$. Thus:\n\\[\n a'b' = abn_3 n_2 = ab(n_3 n_2) \\in abN\n\\]\nSo $(a'b')N = (ab)N$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Quotient Group",
+      "content": "If $N \\trianglelefteq G$, then the set of left cosets \n$G/N = \\{gN : g \\in G\\}$ forms a group under coset multiplication, \ncalled the **quotient group** (or factor \ngroup) of $G$ by $N$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "**Closure:** $(aN)(bN) = (ab)N \\in G/N$.\n\n**Associativity:** $((aN)(bN))(cN) = (ab)N \\cdot cN = (abc)N = \naN \\cdot (bc)N = (aN)((bN)(cN))$.\n\n**Identity:** $N = eN$ is the identity: $(eN)(aN) = (ea)N = aN$.\n\n**Inverses:** $(aN)^{-1} = a^{-1}N$: $(aN)(a^{-1}N) = (aa^{-1})N = N$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Examples of Quotient Groups"
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "$\\Z/n\\Z$",
+      "problem": "The group $\\Z$ with normal subgroup $n\\Z$ gives the quotient \n$\\Z/n\\Z = \\{0 + n\\Z, 1 + n\\Z, \\ldots, (n-1) + n\\Z\\}$, which is \nisomorphic to $\\Z_n$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "$S_3/A_3$",
+      "problem": "Since $A_3 \\trianglelefteq S_3$ with $[S_3 : A_3] = 2$, the quotient \n$S_3/A_3$ has order $2$ and is isomorphic to $\\Z_2$.\n\nThe cosets are $A_3 = \\{e, (1\\ 2\\ 3), (1\\ 3\\ 2)\\}$ and \n$(1\\ 2)A_3 = \\{(1\\ 2), (1\\ 3), (2\\ 3)\\}$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "$GL_n(\\R)/SL_n(\\R)$",
+      "problem": "Since $SL_n(\\R) = \\{A : \\det(A) = 1\\}$ is normal in $GL_n(\\R)$, we \ncan form $GL_n(\\R)/SL_n(\\R)$. This quotient is isomorphic to \n$\\R^* = \\R \\setminus \\{0\\}$ under multiplication.\n\nTwo matrices are in the same coset iff they have the same determinant.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of Quotient Groups"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.3",
+      "number": "5.3",
+      "title": "Order of Quotient Group",
+      "content": "If $G$ is finite and $N \\trianglelefteq G$, then $|G/N| = |G|/|N| = [G:N]$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.4",
+      "number": "5.4",
+      "title": "Quotient of Abelian is Abelian",
+      "content": "If $G$ is abelian and $N \\trianglelefteq G$, then $G/N$ is abelian.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$(aN)(bN) = (ab)N = (ba)N = (bN)(aN)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Find all elements of $\\Z_{12}/\\langle 4 \\rangle$ and construct \n its Cayley table.",
+        "Prove that $(\\Q, +)/(\\Z, +)$ is an infinite group.",
+        "Show that $D_4/Z(D_4) \\cong \\Z_2 \\times \\Z_2$.",
+        "If $|G| = 20$ and $|N| = 4$, describe the possible structures \n of $G/N$.",
+        "Prove that if $G/Z(G)$ is cyclic, then $G$ is abelian."
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "John 3:3",
+      "text": "Jesus replied, \"Very truly I tell you, no \none can see the kingdom of God unless they are born again.\""
+    }
+  ]
+}

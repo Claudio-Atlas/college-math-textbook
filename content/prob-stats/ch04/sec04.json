@@ -1,0 +1,95 @@
+{
+  "id": "prob-stats-ch04-sec04",
+  "title": "Exponential and Gamma Distributions",
+  "chapter": 4,
+  "section": 4,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "For everything there is a season, and a time for every matter under heaven.",
+    "reference": "Ecclesiastes 3:1",
+    "quote": "Time is what keeps everything from happening at once.",
+    "quoteAuthor": "Ray Cummings"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The exponential distribution models waiting times—the time until the \nnext event in a Poisson process. The gamma distribution generalizes \nthis to the time until multiple events."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Exponential Distribution"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "Exponential Distribution",
+      "content": "A random variable $X$ has the **exponential distribution** \nwith rate $\\lambda > 0$, written $X \\sim \\Exp(\\lambda)$, if:\n\\[\n f(x) = \\lambda e^{-\\lambda x}, \\quad x \\geq 0\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Exponential Mean and Variance",
+      "content": "If $X \\sim \\Exp(\\lambda)$:\n\\[\n \\E[X] = \\frac{1}{\\lambda} \\qquad \\text{and} \\qquad \\Var(X) = \\frac{1}{\\lambda^2}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Exponential Probability",
+      "problem": "Customers arrive at a store at rate 4 per hour (Poisson process). \nWhat is the probability that the time between arrivals exceeds 30 minutes?",
+      "solution": "Let $X$ = time until next arrival (in hours). $X \\sim \\Exp(4)$.\n\\[\n P(X > 0.5) = \\int_{0.5}^{\\infty} 4e^{-4x} \\, dx = e^{-4(0.5)} = e^{-2} \\approx 0.135\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Memoryless Property"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Memoryless Property of Exponential",
+      "content": "If $X \\sim \\Exp(\\lambda)$, then for all $s, t > 0$:\n\\[\n P(X > s + t \\mid X > s) = P(X > t)\n\\]\nThe exponential is the *only* continuous memoryless distribution.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "If you've been waiting 10 minutes for a bus, the remaining wait time \nhas the same distribution as if you'd just arrived."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Gamma Distribution"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.2",
+      "number": "4.2",
+      "title": "Gamma Distribution",
+      "content": "$X$ has a **gamma distribution** with \nshape $\\alpha > 0$ and rate $\\lambda > 0$, written $X \\sim \\Gamma(\\alpha, \\lambda)$, if:\n\\[\n f(x) = \\frac{\\lambda^\\alpha}{\\Gamma(\\alpha)} x^{\\alpha-1} e^{-\\lambda x}, \\quad x > 0\n\\]\nwhere $\\Gamma(\\alpha) = \\int_0^\\infty t^{\\alpha-1} e^{-t} \\, dt$ is the \ngamma function."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.3",
+      "number": "4.3",
+      "title": "Gamma Mean and Variance",
+      "content": "If $X \\sim \\Gamma(\\alpha, \\lambda)$:\n\\[\n \\E[X] = \\frac{\\alpha}{\\lambda} \\qquad \\text{and} \\qquad \\Var(X) = \\frac{\\alpha}{\\lambda^2}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The exponential is $\\Gamma(1, \\lambda)$. The sum of $n$ independent \n$\\Exp(\\lambda)$ variables is $\\Gamma(n, \\lambda)$."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 31:15",
+      "text": "My times are in your hand."
+    }
+  ]
+}

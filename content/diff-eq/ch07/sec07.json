@@ -1,0 +1,221 @@
+{
+  "id": "diff-eq-ch07-sec07",
+  "title": "Phase Plane Analysis",
+  "chapter": 7,
+  "section": 7,
+  "book": "diff-eq",
+  "objectives": [
+    "Visualize solutions as trajectories in the phase plane",
+    "Classify equilibrium points based on eigenvalues",
+    "Sketch phase portraits for linear systems",
+    "Understand stability concepts\nitemize"
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The **phase plane** provides a geometric way to visualize all solutions of a 2D system simultaneously. Instead of plotting $x(t)$ and $y(t)$ separately against $t$, we plot $y$ versus $x$, showing how the state evolves in the $(x, y)$ plane."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Trajectories and Phase Portraits"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Phase Plane and Trajectory",
+      "content": "For a system\n$$\n\\frac{dx}{dt} &= f(x, y) \\\\[4pt]\n\\frac{dy}{dt} &= g(x, y)\n$$\nthe **phase plane** is the $xy$-plane where we view $(x, y)$ as the state of the system.\n\nA **trajectory** (or **orbit**) is a curve traced by a solution $(x(t), y(t))$ as $t$ varies.\n\nA **phase portrait** is a collection of representative trajectories showing the qualitative behavior of all solutions."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.2",
+      "number": "7.2",
+      "title": "Equilibrium Point",
+      "content": "An **equilibrium point** (or **critical point**, **fixed point**) is a point $(x_0, y_0)$ where $f(x_0, y_0) = g(x_0, y_0) = 0$.\n\nAt an equilibrium, $dx/dt = dy/dt = 0$, so the system remains stationary. For $\\mathbf{x}' = A\\mathbf{x}$, the only equilibrium is $\\mathbf{x} = \\mathbf{0}$ (assuming $A$ is invertible)."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.3",
+      "number": "7.3",
+      "title": "Direction Field",
+      "content": "At each point $(x, y)$, the vector $(f(x,y), g(x,y))$ indicates the direction of motion. Plotting these vectors creates the **direction field** or **vector field**.\n\nTrajectories are curves that are everywhere tangent to this field."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Classification of Equilibria"
+    },
+    {
+      "type": "paragraph",
+      "text": "For the linear system $\\mathbf{x}' = A\\mathbf{x}$, the eigenvalues of $A$ completely determine the type of equilibrium at the origin."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Classification by Eigenvalues",
+      "content": "Let $\\lambda_1$ and $\\lambda_2$ be the eigenvalues of $A$. The equilibrium at $\\mathbf{0}$ is classified as:\n\n**Real Distinct Eigenvalues:**\n\n- **Node** (same sign): Both $\\lambda_1, \\lambda_2 > 0$ (unstable) or both $< 0$ (stable)\n\n- **Saddle point** (opposite signs): $\\lambda_1 < 0 < \\lambda_2$ (always unstable)\n\n**Complex Eigenvalues $\\alpha \\pm \\beta i$:**\n\n- **Spiral** (focus): $\\alpha \\neq 0$; stable if $\\alpha < 0$, unstable if $\\alpha > 0$\n\n- **Center**: $\\alpha = 0$ (pure imaginary eigenvalues); neutrally stable\n\n**Repeated Eigenvalues $\\lambda = \\lambda_1 = \\lambda_2$:**\n\n- **Star node** (proper node): Two independent eigenvectors\n\n- **Degenerate node** (improper node): Only one eigenvector",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Nodes"
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Stable Node",
+      "problem": "Consider $\\mathbf{x}' = \\begin{pmatrix} -3 & 0 \\\\ 0 & -1 \\end{pmatrix}\\mathbf{x}$.\n\nEigenvalues: $\\lambda_1 = -3$, $\\lambda_2 = -1$ (both negative)\n\nEigenvectors: $\\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$, $\\mathbf{v}_2 = \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}$\n\nSolution: $\\mathbf{x}(t) = c_1 e^{-3t}\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} + c_2 e^{-t}\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}$\n\n**Behavior:** All trajectories approach the origin as $t \\to \\infty$.\n\n- Along $\\mathbf{v}_1$ (the $x$-axis), decay is faster ($e^{-3t}$)\n\n- Along $\\mathbf{v}_2$ (the $y$-axis), decay is slower ($e^{-t}$)\n\n- As $t \\to \\infty$, the slower decay dominates, so trajectories become tangent to the $y$-axis near the origin\nThis is a **stable node** (or **sink**).",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Unstable Node",
+      "problem": "For $\\mathbf{x}' = \\begin{pmatrix} 2 & 0 \\\\ 0 & 5 \\end{pmatrix}\\mathbf{x}$, both eigenvalues are positive.\n\nTrajectories move away from the origin. This is an **unstable node** (or **source**).",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Saddle Points"
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "Saddle Point",
+      "problem": "Consider $\\mathbf{x}' = \\begin{pmatrix} 1 & 0 \\\\ 0 & -2 \\end{pmatrix}\\mathbf{x}$.\n\nEigenvalues: $\\lambda_1 = 1 > 0$, $\\lambda_2 = -2 < 0$ (opposite signs)\n\nEigenvectors: $\\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$, $\\mathbf{v}_2 = \\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}$\n\nSolution: $\\mathbf{x}(t) = c_1 e^{t}\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} + c_2 e^{-2t}\\begin{pmatrix} 0 \\\\ 1 \\end{pmatrix}$\n\n**Behavior:**\n\n- Along $\\mathbf{v}_1$ (the $x$-axis): trajectories move **away** from origin\n\n- Along $\\mathbf{v}_2$ (the $y$-axis): trajectories move **toward** origin\n\n- General trajectories approach along the stable direction, then veer away along the unstable direction\n\nThe eigenvector directions are called:\n\n- **Stable manifold**: Direction of $\\mathbf{v}_2$ (negative eigenvalue) — trajectories approach origin\n\n- **Unstable manifold**: Direction of $\\mathbf{v}_1$ (positive eigenvalue) — trajectories leave origin\n\nThis is a **saddle point**, always unstable.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Spirals and Centers"
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "Stable Spiral",
+      "problem": "Consider $\\mathbf{x}' = \\begin{pmatrix} -1 & -2 \\\\ 2 & -1 \\end{pmatrix}\\mathbf{x}$.\n\nEigenvalues: $\\lambda = -1 \\pm 2i$ (complex with negative real part)\n\n**Behavior:** Solutions spiral toward the origin as $t \\to \\infty$.\n\n- $|\\alpha| = 1$ determines the rate of spiral (decay/growth)\n\n- $\\beta = 2$ determines the rotation rate (angular velocity)\n\n- Period of rotation: $T = \\frac{2\\pi}{\\beta} = \\pi$\n\nThis is a **stable spiral** (or **stable focus**).",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-7.5",
+      "number": "7.5",
+      "title": "Unstable Spiral",
+      "problem": "For eigenvalues $\\lambda = 1 \\pm 2i$ (positive real part), trajectories spiral outward. This is an **unstable spiral**.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-7.6",
+      "number": "7.6",
+      "title": "Center",
+      "problem": "Consider $\\mathbf{x}' = \\begin{pmatrix} 0 & -3 \\\\ 3 & 0 \\end{pmatrix}\\mathbf{x}$.\n\nEigenvalues: $\\lambda = \\pm 3i$ (pure imaginary)\n\nSolution involves only $\\cos 3t$ and $\\sin 3t$ with no exponential growth or decay.\n\n**Behavior:** Trajectories are closed curves (ellipses) around the origin.\n\nThis is a **center**, which is neutrally stable—trajectories neither approach nor leave the origin but orbit around it perpetually.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Repeated Eigenvalues"
+    },
+    {
+      "type": "example",
+      "id": "example-7.7",
+      "number": "7.7",
+      "title": "Star Node",
+      "problem": "Consider $A = \\begin{pmatrix} -2 & 0 \\\\ 0 & -2 \\end{pmatrix}$.\n\nEigenvalue $\\lambda = -2$ (repeated), with two independent eigenvectors.\n\nEvery direction is an eigenvector direction! Trajectories are straight lines through the origin.\n\nThis is a **star node** (or **proper node**).",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-7.8",
+      "number": "7.8",
+      "title": "Degenerate Node",
+      "problem": "Consider $A = \\begin{pmatrix} -2 & 1 \\\\ 0 & -2 \\end{pmatrix}$.\n\nEigenvalue $\\lambda = -2$ (repeated), with only one eigenvector $\\mathbf{v} = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$.\n\nSolution: $\\mathbf{x}(t) = c_1 e^{-2t}\\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix} + c_2 e^{-2t}\\begin{pmatrix} t \\\\ 1 \\end{pmatrix}$\n\nTrajectories approach the origin but curve toward the eigenvector direction.\n\nThis is a **degenerate node** (or **improper node**).",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Stability Summary"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.4",
+      "number": "7.4",
+      "title": "Types of Stability",
+      "content": "An equilibrium $\\mathbf{x}_0$ is:\n\n- **Stable**: Trajectories starting near $\\mathbf{x}_0$ stay near $\\mathbf{x}_0$\n\n- **Asymptotically stable**: Stable, and trajectories approach $\\mathbf{x}_0$ as $t \\to \\infty$\n\n- **Unstable**: Some trajectories starting near $\\mathbf{x}_0$ eventually leave any neighborhood"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "Stability Criterion for Linear Systems",
+      "content": "For $\\mathbf{x}' = A\\mathbf{x}$:\n\n1. The origin is **asymptotically stable** $\\Leftrightarrow$ all eigenvalues have negative real part\n\n2. The origin is **unstable** $\\Leftrightarrow$ at least one eigenvalue has positive real part\n\n3. Centers (pure imaginary eigenvalues) are **stable but not asymptotically stable**",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Sketching Phase Portraits"
+    },
+    {
+      "type": "example",
+      "id": "example-7.9",
+      "number": "7.9",
+      "title": "Complete Phase Portrait Analysis",
+      "problem": "Sketch the phase portrait for $\\mathbf{x}' = \\begin{pmatrix} 1 & 3 \\\\ 1 & -1 \\end{pmatrix}\\mathbf{x}$.\n\n**Solution:**\n\n**Step 1: Eigenvalues.**\n\\[\n\\det(A - \\lambda I) = (1-\\lambda)(-1-\\lambda) - 3 = \\lambda^2 - 4 = 0\n\\]\n$\\lambda_1 = 2$, $\\lambda_2 = -2$ (opposite signs — **saddle point**)\n\n**Step 2: Eigenvectors.**\n\nFor $\\lambda_1 = 2$: $(A - 2I)\\mathbf{v} = \\begin{pmatrix} -1 & 3 \\\\ 1 & -3 \\end{pmatrix}\\mathbf{v} = \\mathbf{0}$\n\n$-v_1 + 3v_2 = 0 \\Rightarrow \\mathbf{v}_1 = \\begin{pmatrix} 3 \\\\ 1 \\end{pmatrix}$ (unstable direction)\n\nFor $\\lambda_2 = -2$: $(A + 2I)\\mathbf{v} = \\begin{pmatrix} 3 & 3 \\\\ 1 & 1 \\end{pmatrix}\\mathbf{v} = \\mathbf{0}$\n\n$v_1 + v_2 = 0 \\Rightarrow \\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}$ (stable direction)\n\n**Step 3-6: Sketch.**\n\n- Draw line through origin in direction $(3, 1)$ — **unstable manifold** (arrows away from origin)\n\n- Draw line through origin in direction $(1, -1)$ — **stable manifold** (arrows toward origin)\n\n- Trajectories approach along stable manifold, curve away along unstable manifold",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Trace-Determinant Analysis"
+    },
+    {
+      "type": "paragraph",
+      "text": "An alternative to computing eigenvalues explicitly uses the trace and determinant."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.3",
+      "number": "7.3",
+      "title": "Trace-Determinant Criterion",
+      "content": "For $A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$, let $\\tau = \\text{tr}(A) = a + d$ and $\\Delta = \\det(A) = ad - bc$.\n\nThe eigenvalues satisfy $\\lambda^2 - \\tau\\lambda + \\Delta = 0$, so:\n\\[\n\\lambda = \\frac{\\tau \\pm \\sqrt{\\tau^2 - 4\\Delta}}{2}\n\\]\n\nClassification:\n\n- $\\Delta < 0$: **Saddle** (eigenvalues real, opposite signs)\n\n- $\\Delta > 0$, $\\tau^2 - 4\\Delta > 0$: **Node** (eigenvalues real, same sign)\n itemize\n\n- $\\tau < 0$: Stable node\n\n- $\\tau > 0$: Unstable node\n $\\Delta > 0$, $\\tau^2 - 4\\Delta < 0$: **Spiral or center** (complex eigenvalues)\n \n\n- $\\tau < 0$: Stable spiral\n\n- $\\tau > 0$: Unstable spiral\n\n- $\\tau = 0$: Center\nitemize",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Nonlinear Systems: Linearization"
+    },
+    {
+      "type": "paragraph",
+      "text": "For nonlinear systems, we can understand local behavior near equilibria by linearization."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.4",
+      "number": "7.4",
+      "title": "Linearization",
+      "content": "Consider the nonlinear system $\\mathbf{x}' = \\mathbf{f}(\\mathbf{x})$ with equilibrium at $\\mathbf{x}_0$ (where $\\mathbf{f}(\\mathbf{x}_0) = \\mathbf{0}$).\n\nThe **Jacobian matrix** at $\\mathbf{x}_0$ is:\n\\[\nJ = \\begin{pmatrix} \\partial f_1/\\partial x & \\partial f_1/\\partial y \\\\ \\partial f_2/\\partial x & \\partial f_2/\\partial y \\end{pmatrix}\\bigg|_{\\mathbf{x}_0}\n\\]\n\nThe linearized system $\\mathbf{u}' = J\\mathbf{u}$ (where $\\mathbf{u} = \\mathbf{x} - \\mathbf{x}_0$) approximates behavior near $\\mathbf{x}_0$.\n\nIf all eigenvalues of $J$ have nonzero real part, the nonlinear system has the same qualitative behavior as its linearization near $\\mathbf{x}_0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-7.10",
+      "number": "7.10",
+      "title": "Linearization of Predator-Prey",
+      "problem": "The predator-prey system\n$$\nx' &= x(1 - y) \\\\\ny' &= y(x - 1)\n$$\nhas equilibrium at $(1, 1)$.\n\nJacobian: $J = \\begin{pmatrix} 1-y & -x \\\\ y & x-1 \\end{pmatrix}$\n\nAt $(1,1)$: $J = \\begin{pmatrix} 0 & -1 \\\\ 1 & 0 \\end{pmatrix}$\n\nEigenvalues: $\\pm i$ (center)\n\nThe linearization predicts periodic orbits, and indeed the nonlinear system has closed trajectories around $(1,1)$.",
+      "solution": ""
+    }
+  ]
+}

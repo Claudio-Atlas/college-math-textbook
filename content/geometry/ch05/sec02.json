@@ -1,0 +1,249 @@
+{
+  "id": "geometry-ch05-sec02",
+  "title": "Perpendicular Bisectors and Circumcenter",
+  "chapter": 5,
+  "section": 2,
+  "book": "geometry",
+  "epigraph": {
+    "text": "He is before all things, and in him all things hold together.",
+    "reference": "Colossians 1:17"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The perpendicular bisector of a segment has a remarkable property: \nevery point on it is equidistant from the endpoints. This simple fact, \nwhen applied to the three sides of a triangle, leads us to discover \na special point—the circumcenter—that is equidistant from all \nthree vertices."
+    },
+    {
+      "type": "paragraph",
+      "text": "This point becomes the center of a circle that passes through all \nthree vertices, a circle the Greeks called the \"circumscribed circle.\" \nThe existence of such a circle for every triangle is itself a wonder: \nany three non-collinear points determine exactly one circle."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Perpendicular Bisectors"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Perpendicular Bisector",
+      "content": "The **perpendicular bisector** of \na segment is the line that:\n\n1. Passes through the midpoint of the segment\n\n2. Is perpendicular to the segment"
+    },
+    {
+      "type": "paragraph",
+      "text": "The perpendicular bisector is the locus of all points equidistant \nfrom the two endpoints. This is formalized in the following theorem."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Perpendicular Bisector Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Perpendicular Bisector Theorem",
+      "content": "If a point is on the perpendicular bisector of a segment, then it \nis equidistant from the endpoints of the segment.\n\n**Converse:** If a point is equidistant from the endpoints of \na segment, then it is on the perpendicular bisector of the segment.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "the set of points equidistant \nfrom the endpoints—no more, no less.}"
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\ell$ be the perpendicular bisector of $\\overline{AB}$, meeting \n$\\overline{AB}$ at midpoint $M$. Let $P$ be any point on $\\ell$.\n\nSince $M$ is the midpoint, $AM = MB$.\n\nSince $\\ell \\perp \\overline{AB}$, we have $\\angle PMA = \\angle PMB = 90°$.\n\nBy the reflexive property, $PM = PM$.\n\nTherefore, $\\triangle PMA \\cong \\triangle PMB$ by SAS (Side-Angle-Side).\n\nBy CPCTC, $PA = PB$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Using the theorem",
+      "problem": "$\\overleftrightarrow{CD}$ is the perpendicular bisector of \n$\\overline{AB}$. If $PA = 15$, find $PB$ for any point $P$ on \n$\\overleftrightarrow{CD}$.",
+      "solution": "By the Perpendicular Bisector Theorem, any point on the perpendicular \nbisector is equidistant from the endpoints. Therefore:\n\\[\n PB = PA = 15\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "Finding points on the perpendicular bisector",
+      "problem": "$\\overline{AB}$ has endpoints $A(-3, 1)$ and $B(5, 1)$.\n\n1. Find the equation of the perpendicular bisector of $\\overline{AB}$.\n\n2. Verify that the point $(1, 7)$ lies on the perpendicular bisector.",
+      "solution": "1. The midpoint of $\\overline{AB}$ is:\n \\[\n M = \\left( \\frac{-3+5}{2}, \\frac{1+1}{2} \\right) = (1, 1)\n \\]\n \n The slope of $\\overline{AB}$ is:\n \\[\n m_{AB} = \\frac{1-1}{5-(-3)} = \\frac{0}{8} = 0\n \\]\n \n Since $\\overline{AB}$ is horizontal (slope 0), the perpendicular \n bisector is vertical. A vertical line through $(1, 1)$ has equation \n $x = 1$.\n\n2. The point $(1, 7)$ satisfies $x = 1$, so it lies on the \n perpendicular bisector.\n \n We can verify: $PA = \\sqrt{(1-(-3))^2 + (7-1)^2} = \\sqrt{16+36} = \\sqrt{52}$\n \n $PB = \\sqrt{(1-5)^2 + (7-1)^2} = \\sqrt{16+36} = \\sqrt{52}$ $\\checkmark$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Using the converse",
+      "problem": "Point $P$ is equidistant from points $A(-2, 3)$ and $B(4, 3)$. If \n$P$ has $y$-coordinate 8, find the $x$-coordinate of $P$.",
+      "solution": "Since $P$ is equidistant from $A$ and $B$, by the converse of the \nPerpendicular Bisector Theorem, $P$ lies on the perpendicular bisector \nof $\\overline{AB}$.\n\nThe midpoint of $\\overline{AB}$ is:\n\\[\n M = \\left( \\frac{-2+4}{2}, \\frac{3+3}{2} \\right) = (1, 3)\n\\]\n\nSince $\\overline{AB}$ is horizontal, the perpendicular bisector is \nthe vertical line $x = 1$.\n\nTherefore, $P$ has coordinates $(1, 8)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Circumcenter"
+    },
+    {
+      "type": "paragraph",
+      "text": "When we construct the perpendicular bisectors of all three sides of \na triangle, something remarkable happens: they all meet at a single \npoint."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Circumcenter Theorem",
+      "content": "The perpendicular bisectors of the sides of a triangle meet at a \nsingle point called the **circumcenter**. \nThis point is equidistant from all three vertices of the triangle.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The circumcenter is the center of the **circumscribed circle** \n(or **circumcircle**)—the unique circle \nthat passes through all three vertices of the triangle."
+    },
+    {
+      "type": "paragraph",
+      "text": "(around) + *scribere* (to write/draw). A circumscribed circle \nis drawn \"around\" the triangle.}"
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\triangle ABC$ be a triangle. Let $\\ell$ be the perpendicular \nbisector of $\\overline{AB}$ and let $m$ be the perpendicular bisector \nof $\\overline{BC}$.\n\nSince $\\ell$ and $m$ are not parallel (they pass through different \nsides of the triangle), they intersect at some point $O$.\n\nSince $O$ lies on the perpendicular bisector of $\\overline{AB}$:\n\\[\n OA = OB \\quad \\text{(by the Perpendicular Bisector Theorem)}\n\\]\n\nSince $O$ lies on the perpendicular bisector of $\\overline{BC}$:\n\\[\n OB = OC \\quad \\text{(by the Perpendicular Bisector Theorem)}\n\\]\n\nTherefore, $OA = OB = OC$, which means $O$ is equidistant from all \nthree vertices.\n\nBy the converse of the Perpendicular Bisector Theorem, since $O$ is \nequidistant from $A$ and $C$, point $O$ must lie on the perpendicular \nbisector of $\\overline{AC}$ as well.\n\nThus, all three perpendicular bisectors meet at point $O$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.4",
+      "number": "5.4",
+      "title": "Finding the circumcenter",
+      "problem": "In $\\triangle ABC$, the circumcenter $P$ has $PA = 10$. Find $PB$ \nand $PC$.",
+      "solution": "Since $P$ is the circumcenter, it is equidistant from all vertices:\n\\[\n PA = PB = PC = 10\n\\]\nThis common distance is called the **circumradius**."
+    },
+    {
+      "type": "example",
+      "id": "example-5.5",
+      "number": "5.5",
+      "title": "Circumcenter with coordinates",
+      "problem": "Find the circumcenter of the triangle with vertices $A(0, 0)$, \n$B(6, 0)$, and $C(0, 8)$.",
+      "solution": "We find where two perpendicular bisectors intersect.\n\n**Perpendicular bisector of $\\overline{AB}$:**\n\n- Midpoint of $\\overline{AB}$: $(3, 0)$\n\n- $\\overline{AB}$ is horizontal, so its perpendicular bisector \n is vertical: $x = 3$\n\n**Perpendicular bisector of $\\overline{AC}$:**\n\n- Midpoint of $\\overline{AC}$: $(0, 4)$\n\n- $\\overline{AC}$ is vertical, so its perpendicular bisector \n is horizontal: $y = 4$\n\nThe circumcenter is at the intersection: $(3, 4)$.\n\n**Verification:**\n$$\n \\text{Distance to } A &= \\sqrt{3^2 + 4^2} = 5 \\\\\n \\text{Distance to } B &= \\sqrt{(3-6)^2 + 4^2} = \\sqrt{9+16} = 5 \\\\\n \\text{Distance to } C &= \\sqrt{3^2 + (4-8)^2} = \\sqrt{9+16} = 5 \\quad \\checkmark\n$$\n\nThe circumradius is 5."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Location of the Circumcenter"
+    },
+    {
+      "type": "paragraph",
+      "text": "The circumcenter's location depends on the type of triangle:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Acute triangle:** circumcenter is *inside* the triangle",
+        "**Right triangle:** circumcenter is *on* the hypotenuse \n (at its midpoint)",
+        "**Obtuse triangle:** circumcenter is *outside* the triangle"
+      ]
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.3",
+      "number": "5.3",
+      "title": "Circumcenter of a Right Triangle",
+      "content": "The circumcenter of a right triangle is the midpoint of the hypotenuse.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-5.6",
+      "number": "5.6",
+      "title": "Circumcenter of a right triangle",
+      "problem": "In right triangle $ABC$ with the right angle at $C$, the hypotenuse \n$\\overline{AB}$ has length 26. Find the circumradius.",
+      "solution": "The circumcenter is at the midpoint of the hypotenuse. The circumradius \nis the distance from this midpoint to each vertex.\n\nSince the midpoint of $\\overline{AB}$ is equidistant from $A$ and $B$, \nand this distance is half of $AB$:\n\\[\n R = \\frac{AB}{2} = \\frac{26}{2} = 13\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-5.7",
+      "number": "5.7",
+      "title": "Finding an inscribed right triangle",
+      "problem": "A circle has diameter $\\overline{AB}$ with $A(-5, 0)$ and $B(5, 0)$. \nPoint $C(3, 4)$ lies on the circle. Verify that $\\triangle ABC$ is \na right triangle.",
+      "solution": "**Method 1: Check if $C$ lies on the circle**\n\nThe center is at the midpoint of $\\overline{AB}$: $(0, 0)$\nThe radius is $\\frac{10}{2} = 5$.\n\nDistance from center to $C$: $\\sqrt{3^2 + 4^2} = \\sqrt{25} = 5$ $\\checkmark$\n\nSince $C$ lies on the semicircle and $\\overline{AB}$ is the diameter, \n$\\angle ACB$ must be a right angle.\n\n**Method 2: Direct verification**\n$$\n AC &= \\sqrt{(3-(-5))^2 + (4-0)^2} = \\sqrt{64+16} = \\sqrt{80} \\\\\n BC &= \\sqrt{(3-5)^2 + (4-0)^2} = \\sqrt{4+16} = \\sqrt{20} \\\\\n AB &= 10\n$$\n\nCheck: $AC^2 + BC^2 = 80 + 20 = 100 = AB^2$ $\\checkmark$\n\nBy the Pythagorean Theorem, $\\triangle ABC$ is a right triangle with \nthe right angle at $C$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Compass and Straightedge Construction"
+    },
+    {
+      "type": "paragraph",
+      "text": "The circumcenter and circumcircle can be constructed with compass \nand straightedge alone—a fact known to Euclid."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications"
+    },
+    {
+      "type": "example",
+      "id": "example-5.8",
+      "number": "5.8",
+      "title": "Location problem",
+      "problem": "Three towns $A$, $B$, and $C$ form a triangle. A water tower is to \nbe built equidistant from all three towns. Where should it be located?",
+      "solution": "The water tower should be located at the circumcenter of $\\triangle ABC$. \nThis is the unique point equidistant from all three vertices.\n\nIf the towns form an obtuse triangle, the circumcenter lies outside \nthe triangle, which might make the location impractical."
+    },
+    {
+      "type": "example",
+      "id": "example-5.9",
+      "number": "5.9",
+      "title": "Finding the circumradius algebraically",
+      "problem": "In $\\triangle ABC$ with sides $a$, $b$, $c$ and area $K$, the \ncircumradius is given by:\n\\[\n R = \\frac{abc}{4K}\n\\]\n\nA triangle has sides 5, 12, and 13. Find its circumradius.",
+      "solution": "First, verify this is a right triangle: $5^2 + 12^2 = 25 + 144 = 169 = 13^2$ $\\checkmark$\n\nFor a right triangle, the area is:\n\\[\n K = \\frac{1}{2} \\cdot 5 \\cdot 12 = 30\n\\]\n\nUsing the formula:\n\\[\n R = \\frac{5 \\cdot 12 \\cdot 13}{4 \\cdot 30} = \\frac{780}{120} = 6.5\n\\]\n\n**Verification:** Since this is a right triangle, the circumradius \nequals half the hypotenuse: $R = \\frac{13}{2} = 6.5$ $\\checkmark$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.10",
+      "number": "5.10",
+      "title": "Navigation application",
+      "problem": "A ship receives signals from three coastal stations $A$, $B$, and \n$C$. The ship knows it is equidistant from all three stations. What \ncan the navigator conclude about the ship's position?",
+      "solution": "The ship must be located at the circumcenter of $\\triangle ABC$. If \nthe stations' positions are known (as coordinates on a nautical chart), \nthe navigator can calculate this unique position.\n\nThe navigator can find the circumcenter by:\n\n1. Finding two perpendicular bisectors of the triangle's sides\n\n2. Computing their intersection point"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 139:3",
+      "text": "You discern my going out and my lying \ndown; you are familiar with all my ways."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:12",
+      "text": "Who has measured the waters in the \nhollow of his hand and marked off the heavens with a span?"
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:22",
+      "text": "He sits enthroned above the circle \nof the earth."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 103:19",
+      "text": "The Lord has established his throne \nin heaven, and his kingdom rules over all."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 8:27",
+      "text": "When he prepared the heavens, I was \nthere: when he set a compass upon the face of the depth."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 38:5",
+      "text": "Who determined its measurements—surely \nyou know! Or who stretched the line upon it?"
+    },
+    {
+      "type": "quote",
+      "author": "Euclid",
+      "text": "To describe a circle about a given triangle."
+    },
+    {
+      "type": "quote",
+      "author": "Archimedes",
+      "text": "Give me a place to stand, and I shall move \nthe earth."
+    }
+  ]
+}

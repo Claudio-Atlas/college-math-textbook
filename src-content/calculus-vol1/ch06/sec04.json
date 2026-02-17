@@ -1,0 +1,295 @@
+{
+  "id": "vol1-ch06-sec04",
+  "title": "The Fundamental Theorem of Calculus",
+  "chapter": 6,
+  "section": 4,
+  "book": "vol1",
+  "epigraph": {
+    "text": "He is before all things, and in him all things hold together.",
+    "reference": "Colossians 1:17",
+    "quote": "The calculus was the first achievement of modern mathematics, and it is difficult to overestimate its importance.",
+    "quoteAuthor": "John von Neumann"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "We have now built two seemingly separate towers of thought. In \nSection [sec:antiderivatives], we learned to reverse differentiation: \ngiven $f'$, find $f$. In Sections [sec:riemann-sums] \nand [sec:definite-integral], we defined the definite integral \n$\\int_a^b f(x)\\dx$ as the limit of Riemann sums—a painstaking process \nof slicing, summing, and taking limits."
+    },
+    {
+      "type": "paragraph",
+      "text": "These two ideas—antiderivatives and area—look completely unrelated. \nOne is algebraic (undo the derivative), the other geometric (add up \ninfinitely many rectangles). But they are not unrelated. They are, \nin fact, two faces of a single profound truth."
+    },
+    {
+      "type": "paragraph",
+      "text": "The **Fundamental Theorem of Calculus** is the bridge between them. It is, by any measure, the most \nimportant theorem in calculus—and one of the most beautiful results \nin all of mathematics."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Accumulation Function"
+    },
+    {
+      "type": "paragraph",
+      "text": "Before we state the theorem, let us build the intuition that makes it \nfeel inevitable."
+    },
+    {
+      "type": "paragraph",
+      "text": "Suppose $f$ is a continuous, nonnegative function on $[a, b]$. For each \n$x$ in $[a, b]$, define a new function:\n\\[\n g(x) = \\int_a^x f(t)\\dt.\n\\]\nWhat does $g(x)$ measure? It is the *area under the curve $f$ from \n$a$ to $x$*. As $x$ increases, the region gets wider, and $g(x)$ \naccumulates more area. We call $g$ an \n**accumulation function**."
+    },
+    {
+      "type": "paragraph",
+      "text": "Now ask: *how fast is the area accumulating?* That is, what is \n$g'(x)$—the rate of change of the accumulated area with respect to $x$?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Think about it physically. When we move the right boundary from $x$ to \n$x + h$ (for a tiny $h > 0$), the area increases by a thin vertical \nstrip of width $h$ and approximate height $f(x)$. The area of this \nstrip is approximately $f(x)\\cdot h$. Therefore:\n\\[\n g(x + h) - g(x) \\approx f(x)\\cdot h\n \\qquad\\Longrightarrow\\qquad\n \\frac{g(x+h) - g(x)}{h} \\approx f(x).\n\\]\nAs $h \\to 0$, this approximation becomes exact:\n\\[\n g'(x) = \\lim_{h \\to 0}\\frac{g(x+h) - g(x)}{h} = f(x).\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "*The rate at which area accumulates is simply the height of the \nfunction.* The derivative of the area function is the original function. \nDifferentiation undoes integration."
+    },
+    {
+      "type": "paragraph",
+      "text": "This is the heart of the Fundamental Theorem. Let us now state and \nprove it rigorously."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Fundamental Theorem of Calculus, Part 1"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Fundamental Theorem of Calculus, Part 1",
+      "content": "If $f$ is continuous on $[a, b]$, then the function $g$ defined by\n\\[\n g(x) = \\int_a^x f(t)\\dt, \\qquad a \\leq x \\leq b,\n\\]\nis continuous on $[a, b]$, differentiable on $(a, b)$, and\n\\[\n g'(x) = f(x).\n\\]\nIn Leibniz notation:\n\\[\n \\deriv{}{x}\\left[\\int_a^x f(t)\\dt\\right] = f(x).\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "In words: *if you integrate a continuous function and then \ndifferentiate the result, you get back the original function.* \nIntegration and differentiation are inverse operations."
+    },
+    {
+      "type": "proof",
+      "content": "Let $f$ be continuous on $[a, b]$ and define $g(x) = \\int_a^x f(t)\\dt$. \nWe must show that $g'(x) = f(x)$.\n\nBy the definition of the derivative:\n\\[\n g'(x) = \\lim_{h \\to 0}\\frac{g(x+h) - g(x)}{h}.\n\\]\nNow compute $g(x+h) - g(x)$:\n$$\n g(x+h) - g(x) \n &= \\int_a^{x+h} f(t)\\dt - \\int_a^x f(t)\\dt \\\\\n &= \\int_x^{x+h} f(t)\\dt,\n$$\nwhere we used the additivity property: $\\int_a^{x+h} = \\int_a^x + \n\\int_x^{x+h}$.\n\nSince $f$ is continuous on $[x, x+h]$, the Extreme Value Theorem \nguarantees that $f$ attains a minimum value $m_h$ and a maximum value \n$M_h$ on this interval. By the bounding property of integrals:\n\\[\n m_h \\cdot h \\;\\leq\\; \\int_x^{x+h} f(t)\\dt \\;\\leq\\; M_h \\cdot h\n \\qquad\\text{(for $h > 0$).}\n\\]\nDividing by $h$:\n\\[\n m_h \\;\\leq\\; \\frac{g(x+h) - g(x)}{h} \\;\\leq\\; M_h.\n\\]\nAs $h \\to 0^+$, the interval $[x, x+h]$ shrinks to the single point \n$x$, and the continuity of $f$ forces both $m_h \\to f(x)$ and \n$M_h \\to f(x)$. By the Squeeze Theorem:\n\\[\n \\lim_{h \\to 0^+}\\frac{g(x+h) - g(x)}{h} = f(x).\n\\]\nA similar argument handles $h \\to 0^-$ (with the inequalities reversed). \nTherefore $g'(x) = f(x)$."
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Differentiating an integral",
+      "problem": "Find $\\displaystyle\\deriv{}{x}\\left[\\int_1^x t^3\\dt\\right]$.",
+      "solution": "By the FTC Part 1, with $f(t) = t^3$:\n\\[\n \\deriv{}{x}\\left[\\int_1^x t^3\\dt\\right] = x^3.\n\\]\nThat's it. No Riemann sums, no antiderivative formulas—just the \ntheorem."
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "FTC Part 1 with other integrands",
+      "problem": "Find each derivative.\n\n1. $\\displaystyle\\deriv{}{x}\\left[\\int_0^x \\sqrt{1 + t^4}\\dt\\right]$\n\n2. $\\displaystyle\\deriv{}{x}\\left[\\int_2^x e^{-t^2}\\dt\\right]$",
+      "solution": "By the FTC Part 1:\n\n1. $\\displaystyle\\deriv{}{x}\\left[\\int_0^x \\sqrt{1+t^4}\\dt\\right] \n = \\sqrt{1 + x^4}.$\n\n2. $\\displaystyle\\deriv{}{x}\\left[\\int_2^x e^{-t^2}\\dt\\right] \n = e^{-x^2}.$\nNotice that in part (b), we do not know a formula for the antiderivative \nof $e^{-t^2}$ (it cannot be expressed in terms of elementary functions!), \nyet the FTC still tells us the derivative."
+    },
+    {
+      "type": "example",
+      "id": "example-6.3",
+      "number": "6.3",
+      "title": "FTC Part 1 with the chain rule",
+      "problem": "Find $\\displaystyle\\deriv{}{x}\\left[\\int_0^{x^2} \\sin(t)\\dt\\right]$.",
+      "solution": "Let $u = x^2$ and define $g(u) = \\int_0^u \\sin(t)\\dt$. By the FTC, \n$g'(u) = \\sin(u)$. Then by the chain rule:\n\\[\n \\deriv{}{x}\\left[\\int_0^{x^2}\\sin(t)\\dt\\right] \n = g'(u)\\cdot\\deriv{u}{x} \n = \\sin(u)\\cdot 2x \n = 2x\\sin(x^2).\n\\]"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-6.4",
+      "number": null,
+      "title": "FTC Part 1 with a Composite Upper Limit",
+      "content": "If $u(x)$ is a differentiable function and $f$ is continuous, then\n\\[\n \\deriv{}{x}\\left[\\int_a^{u(x)} f(t)\\dt\\right] \n = f\\bigl(u(x)\\bigr)\\cdot u'(x).\n\\]\nThis is the FTC combined with the chain rule."
+    },
+    {
+      "type": "example",
+      "id": "example-6.4",
+      "number": "6.4",
+      "title": "Chain rule variant",
+      "problem": "Find $\\displaystyle\\deriv{}{x}\\left[\\int_1^{\\tan x} \n\\frac{1}{1 + t^2}\\dt\\right]$.",
+      "solution": "Let $u = \\tan x$. Then:\n\\[\n \\deriv{}{x}\\left[\\int_1^{\\tan x}\\frac{1}{1+t^2}\\dt\\right] \n = \\frac{1}{1 + \\tan^2 x}\\cdot\\sec^2 x \n = \\frac{\\sec^2 x}{\\sec^2 x} = 1.\n\\]\n(We used the identity $1 + \\tan^2 x = \\sec^2 x$.)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Fundamental Theorem of Calculus, Part 2"
+    },
+    {
+      "type": "paragraph",
+      "text": "Part 1 told us that the accumulation function $g(x) = \\int_a^x f(t)\\dt$ \nis an antiderivative of $f$. Part 2 tells us how to *evaluate* any \ndefinite integral using *any* antiderivative we can find."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Fundamental Theorem of Calculus, Part 2",
+      "content": "If $f$ is continuous on $[a, b]$ and $F$ is *any* antiderivative \nof $f$ (that is, $F' = f$), then\n\\[\n \\int_a^b f(x)\\dx = F(b) - F(a).\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "We write $F(b) - F(a)$ using the evaluation notation:\n\\[\n \\bigl[F(x)\\bigr]_a^b = F(b) - F(a),\n \\qquad\\text{or equivalently,}\\qquad\n F(x)\\eval{x=a}^{x=b}.\n\\]"
+    },
+    {
+      "type": "proof",
+      "content": "Let $g(x) = \\int_a^x f(t)\\dt$. By Part 1, $g'(x) = f(x)$, so $g$ is \nan antiderivative of $f$. Since $F$ is also an antiderivative of $f$, \nTheorem [thm:general-antiderivative] tells us that \n$F(x) = g(x) + C$ for some constant $C$.\n\nEvaluate at $x = a$: $F(a) = g(a) + C = 0 + C = C$, since \n$g(a) = \\int_a^a f(t)\\dt = 0$.\n\nEvaluate at $x = b$: $F(b) = g(b) + C = \\int_a^b f(t)\\dt + C$.\n\nSubtracting:\n\\[\n F(b) - F(a) = \\int_a^b f(t)\\dt + C - C = \\int_a^b f(t)\\dt.\n\\]\nThe constant $C$ cancels—*it does not matter which antiderivative \nwe use.*"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is a watershed moment. The Fundamental Theorem transforms the \nproblem of computing a definite integral—which previously required \nconstructing Riemann sums, applying summation formulas, and evaluating \na limit—into finding an antiderivative and subtracting two numbers."
+    },
+    {
+      "type": "example",
+      "id": "example-6.5",
+      "number": "6.5",
+      "title": "Confirming our Riemann sum result",
+      "problem": "Evaluate $\\displaystyle\\int_0^1 x^2\\dx$.",
+      "solution": "An antiderivative of $x^2$ is $F(x) = \\frac{x^3}{3}$. By the FTC:\n\\[\n \\int_0^1 x^2\\dx = \\left[\\frac{x^3}{3}\\right]_0^1 \n = \\frac{1^3}{3} - \\frac{0^3}{3} = \\frac{1}{3} - 0 = \\frac{1}{3}.\n\\]\nWe labored through Riemann sums in Section [sec:riemann-sums] to get \nthis answer. With the FTC, it takes one line."
+    },
+    {
+      "type": "example",
+      "id": "example-6.6",
+      "number": "6.6",
+      "title": "Basic FTC evaluations",
+      "problem": "Evaluate each integral.\n\n1. $\\displaystyle\\int_1^4 \\sqrt{x}\\dx$\n\n2. $\\displaystyle\\int_0^{\\pi} \\sin x\\dx$\n\n3. $\\displaystyle\\int_1^e \\frac{1}{x}\\dx$",
+      "solution": "1. $\\displaystyle\\int_1^4 x^{1/2}\\dx \n = \\left[\\frac{x^{3/2}}{3/2}\\right]_1^4 \n = \\frac{2}{3}\\!\\left[x^{3/2}\\right]_1^4 \n = \\frac{2}{3}(8 - 1) = \\frac{14}{3}.$\n\n2. $\\displaystyle\\int_0^{\\pi}\\sin x\\dx \n = \\bigl[-\\cos x\\bigr]_0^{\\pi} \n = (-\\cos\\pi) - (-\\cos 0) = -(-1) - (-1) = 1 + 1 = 2.$\n \n So the area under one arch of $\\sin x$ is exactly $2$.\n\n3. $\\displaystyle\\int_1^e\\frac{1}{x}\\dx \n = \\bigl[\\ln x\\bigr]_1^e = \\ln e - \\ln 1 = 1 - 0 = 1.$"
+    },
+    {
+      "type": "example",
+      "id": "example-6.7",
+      "number": "6.7",
+      "title": "More FTC evaluations",
+      "problem": "Evaluate each integral.\n\n1. $\\displaystyle\\int_0^1 (3x^2 - 4x + 5)\\dx$\n\n2. $\\displaystyle\\int_0^{\\pi/4} \\sec^2 x\\dx$\n\n3. $\\displaystyle\\int_1^3 \\frac{1}{x^2}\\dx$\n\n4. $\\displaystyle\\int_0^2 e^x\\dx$",
+      "solution": "1. $\\displaystyle\\int_0^1 (3x^2 - 4x + 5)\\dx \n = \\bigl[x^3 - 2x^2 + 5x\\bigr]_0^1 = (1 - 2 + 5) - 0 = 4.$\n\n2. $\\displaystyle\\int_0^{\\pi/4}\\sec^2 x\\dx \n = \\bigl[\\tan x\\bigr]_0^{\\pi/4} = \\tan\\frac{\\pi}{4} - \\tan 0 \n = 1 - 0 = 1.$\n\n3. $\\displaystyle\\int_1^3 x^{-2}\\dx \n = \\left[-\\frac{1}{x}\\right]_1^3 \n = -\\frac{1}{3} - \\left(-1\\right) = \\frac{2}{3}.$\n\n4. $\\displaystyle\\int_0^2 e^x\\dx \n = \\bigl[e^x\\bigr]_0^2 = e^2 - e^0 = e^2 - 1 \\approx 6.389.$"
+    },
+    {
+      "type": "example",
+      "id": "example-6.8",
+      "number": "6.8",
+      "title": "Signed area verified by the FTC",
+      "problem": "Evaluate $\\displaystyle\\int_0^{2\\pi}\\sin x\\dx$.",
+      "solution": "\\[\n \\int_0^{2\\pi}\\sin x\\dx = \\bigl[-\\cos x\\bigr]_0^{2\\pi} \n = (-\\cos 2\\pi) - (-\\cos 0) = -1 - (-1) = 0.\n\\]\nThis confirms our geometric reasoning in \nExample [ex:signed-area]: the positive and negative areas cancel."
+    },
+    {
+      "type": "example",
+      "id": "example-6.9",
+      "number": "6.9",
+      "title": "Total area using absolute value",
+      "problem": "Find the *total area* between $f(x) = x^2 - 1$ and the $x$-axis \non $[-1, 2]$.",
+      "solution": "First find where $f$ crosses the axis: $x^2 - 1 = 0$ gives $x = \\pm 1$. \nOn $[-1, 1]$, $f(x) \\leq 0$ (the parabola dips below the axis). \nOn $[1, 2]$, $f(x) \\geq 0$.\n\nTotal area $= \\displaystyle\\int_{-1}^{1}\\abs{x^2 - 1}\\dx \n+ \\int_1^2 (x^2 - 1)\\dx$.\n\nOn $[-1, 1]$: $\\abs{x^2-1} = 1 - x^2$, so\n\\[\n \\int_{-1}^{1}(1 - x^2)\\dx = \\left[x - \\frac{x^3}{3}\\right]_{-1}^{1} \n = \\left(1 - \\frac{1}{3}\\right) - \\left(-1 + \\frac{1}{3}\\right) \n = \\frac{2}{3} + \\frac{2}{3} = \\frac{4}{3}.\n\\]\n\nOn $[1, 2]$:\n\\[\n \\int_1^2(x^2 - 1)\\dx = \\left[\\frac{x^3}{3} - x\\right]_1^2 \n = \\left(\\frac{8}{3} - 2\\right) - \\left(\\frac{1}{3} - 1\\right) \n = \\frac{2}{3} + \\frac{2}{3} = \\frac{4}{3}.\n\\]\n\nTotal area $= \\frac{4}{3} + \\frac{4}{3} = \\frac{8}{3}$.\n\n(Note: the *signed* integral $\\int_{-1}^{2}(x^2-1)\\dx = \n-\\frac{4}{3} + \\frac{4}{3} = 0$ would give zero—the total area \nrequires splitting at the root.)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Unity of Calculus"
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us pause and appreciate what we have discovered. The Fundamental \nTheorem of Calculus says:"
+    },
+    {
+      "type": "paragraph",
+      "text": "Slopes and areas. Rates and accumulation. Taking apart and putting \ntogether. They are not independent concepts—they are mirror images of \none another."
+    },
+    {
+      "type": "paragraph",
+      "text": "This unity is intellectually stunning. It is as if you discovered that \ntwo friends who grew up on opposite sides of the world, who speak \ndifferent languages and have different lives, turn out to be \nsiblings—children of the same truth."
+    },
+    {
+      "type": "historical",
+      "id": "historical-6.4",
+      "number": null,
+      "title": "Newton and Leibniz (late 1600s)",
+      "content": "Isaac Newton (1643–1727) and Gottfried Wilhelm Leibniz (1646–1716) \nindependently discovered the Fundamental Theorem in the late seventeenth \ncentury, though earlier mathematicians—notably Isaac Barrow and James \nGregory—had glimpsed parts of the connection.\n\nNewton, a devout Christian (though unorthodox in some of his theology), \napproached the theorem through physics: he saw integration as the inverse \nof his \"fluxions\" (rates of change). Leibniz, approaching from \nphilosophy and formal notation, introduced the $\\int$ symbol and the \n$\\frac{dy}{dx}$ notation we still use today.\n\nA bitter priority dispute between their followers consumed decades and \ndivided European mathematics into British and Continental camps. \nHistory has judged them co-discoverers—each arriving at the same \nprofound truth by a different path.\n\nLeibniz wrote in a letter: \"Taking mathematics from the beginning of \nthe world to the time when Newton lived, what he had done was much the \nbetter half.\" Newton, for his part, said of his achievements: \"If I \nhave seen further, it is by standing on the shoulders of giants.\" \nBoth men, in their better moments, recognized that mathematical truth \ntranscends its discoverers."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Net Change Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The FTC Part 2 has a powerful physical interpretation. If $F'(x) = f(x)$, \nthen\n\\[\n \\int_a^b f(x)\\dx = F(b) - F(a).\n\\]\nThe integral of a *rate of change* gives the *net change*."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.3",
+      "number": "6.3",
+      "title": "Net Change Theorem",
+      "content": "If $F'$ is continuous on $[a, b]$, then\n\\[\n \\int_a^b F'(x)\\dx = F(b) - F(a).\n\\]\nIn words: the integral of a rate of change equals the net change in \nthe quantity.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is just a restatement of the FTC Part 2, but the interpretation is \nimportant:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "If $v(t) = s'(t)$ is velocity, then \n $\\int_a^b v(t)\\dt = s(b) - s(a)$ is the net displacement.",
+        "If $R(t)$ is the rate at which water flows into a tank, then \n $\\int_a^b R(t)\\dt$ is the total water added.",
+        "If $C'(x)$ is the marginal cost, then $\\int_a^b C'(x)\\dx = \n C(b) - C(a)$ is the change in cost."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-6.10",
+      "number": "6.10",
+      "title": "Displacement from velocity",
+      "problem": "A particle has velocity $v(t) = t^2 - 4t + 3$ m/s. Find the net \ndisplacement and total distance traveled on $[0, 5]$.",
+      "solution": "**Net displacement:**\n\\[\n \\int_0^5 (t^2 - 4t + 3)\\dt \n = \\left[\\frac{t^3}{3} - 2t^2 + 3t\\right]_0^5 \n = \\frac{125}{3} - 50 + 15 = \\frac{125 - 150 + 45}{3} \n = \\frac{20}{3}\\text{ m}.\n\\]\n\n**Total distance:** First find when $v(t) = 0$: \n$t^2 - 4t + 3 = (t-1)(t-3) = 0$, so $t = 1$ and $t = 3$.\n\nOn $[0,1]$, $v > 0$; on $[1,3]$, $v < 0$; on $[3,5]$, $v > 0$.\n$$\n \\text{distance} &= \\int_0^1(t^2-4t+3)\\dt \n + \\int_1^3\\abs{t^2-4t+3}\\dt + \\int_3^5(t^2-4t+3)\\dt \\\\\n &= \\int_0^1(t^2-4t+3)\\dt - \\int_1^3(t^2-4t+3)\\dt \n + \\int_3^5(t^2-4t+3)\\dt.\n$$\nComputing each:\n$$\n \\int_0^1(t^2-4t+3)\\dt &= \\frac{1}{3} - 2 + 3 = \\frac{4}{3}, \\\\\n \\int_1^3(t^2-4t+3)\\dt &= \\left(\\frac{27}{3}-18+9\\right) \n - \\left(\\frac{1}{3}-2+3\\right) = 0 - \\frac{4}{3} = -\\frac{4}{3}, \\\\\n \\int_3^5(t^2-4t+3)\\dt &= \\frac{20}{3} - 0 - \\left(-\\frac{4}{3}\\right) \n = \\frac{20}{3} + \\frac{4}{3} = \\frac{20}{3} + \\frac{4}{3}.\n$$\nLet us recompute more carefully:\n\\[\n \\int_1^3(t^2-4t+3)\\dt = \\left[\\frac{t^3}{3}-2t^2+3t\\right]_1^3 \n = (9-18+9) - \\left(\\frac{1}{3}-2+3\\right) = 0 - \\frac{4}{3} \n = -\\frac{4}{3}.\n\\]\n\\[\n \\int_3^5(t^2-4t+3)\\dt = \\frac{20}{3} - 0 = \\frac{20}{3}.\n\\]\nTotal distance $= \\frac{4}{3} + \\frac{4}{3} + \\frac{20}{3} \n= \\frac{28}{3} \\approx 9.33$ m."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "More Practice with the FTC"
+    },
+    {
+      "type": "example",
+      "id": "example-6.11",
+      "number": "6.11",
+      "title": "Integral of a sum with roots",
+      "problem": "Evaluate $\\displaystyle\\int_1^9 \\frac{x^2 + \\sqrt{x}}{x}\\dx$.",
+      "solution": "Simplify the integrand:\n$\\displaystyle\\frac{x^2 + \\sqrt{x}}{x} = x + x^{-1/2}$.\n\\[\n \\int_1^9\\!\\left(x + x^{-1/2}\\right)\\dx \n = \\left[\\frac{x^2}{2} + 2x^{1/2}\\right]_1^9 \n = \\left(\\frac{81}{2} + 6\\right) - \\left(\\frac{1}{2} + 2\\right) \n = \\frac{81}{2} + 6 - \\frac{1}{2} - 2 = 40 + 4 = 44.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-6.12",
+      "number": "6.12",
+      "title": "Integral involving absolute value",
+      "problem": "Evaluate $\\displaystyle\\int_{-2}^{3}\\abs{x}\\dx$.",
+      "solution": "Since $\\abs{x} = -x$ for $x < 0$ and $\\abs{x} = x$ for $x \\geq 0$:\n\\[\n \\int_{-2}^{3}\\abs{x}\\dx = \\int_{-2}^{0}(-x)\\dx + \\int_0^3 x\\dx \n = \\left[-\\frac{x^2}{2}\\right]_{-2}^{0} + \\left[\\frac{x^2}{2}\\right]_0^3 \n = (0 - (-2)) + \\left(\\frac{9}{2} - 0\\right) = 2 + \\frac{9}{2} \n = \\frac{13}{2}.\n\\]"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Luke 6:38",
+      "text": "Give, and it will be given to you. A good \nmeasure, pressed down, shaken together and running over, will be \npoured into your lap."
+    },
+    {
+      "type": "scripture",
+      "reference": "Revelation 21:6",
+      "text": "He said to me: \"It is done. I am \nthe Alpha and the Omega, the Beginning and the End.\""
+    },
+    {
+      "type": "scripture",
+      "reference": "Colossians 1:17",
+      "text": "He is before all things, and in him \nall things hold together."
+    },
+    {
+      "type": "quote",
+      "author": "Richard Courant",
+      "text": "The Fundamental Theorem of Calculus is \nindeed fundamental—it connects the two central concepts of calculus \nin a deep and surprising way."
+    },
+    {
+      "type": "quote",
+      "author": "James Clerk Maxwell",
+      "text": "The true logic of this world is in \nthe calculus of probabilities."
+    }
+  ]
+}

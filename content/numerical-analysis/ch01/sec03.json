@@ -1,0 +1,355 @@
+{
+  "id": "numerical-analysis-ch01-sec03",
+  "title": "Error Analysis and Conditioning",
+  "chapter": 1,
+  "section": 3,
+  "book": "numerical-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "In numerical computation, errors arise from multiple sources. Understanding \nthese sources and how errors propagate is essential for producing reliable \nresults and understanding their limitations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Types of Error"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.1",
+      "number": "1.1",
+      "title": "Error Taxonomy",
+      "content": "The main types of error in numerical computation are:\n\n1. **Round-off error:** Error from representing real numbers \n in finite precision and from rounding in arithmetic operations.\n\n2. **Truncation error:** Error from approximating a mathematical \n process (like an infinite series or continuous process) by a finite one.\n\n3. **Data error:** Uncertainty in input data, whether from \n measurement or prior computation.\n\n4. **Modeling error:** Discrepancy between the mathematical \n model and the physical reality it represents."
+    },
+    {
+      "type": "paragraph",
+      "text": "This section focuses primarily on understanding and quantifying round-off \nerror and its propagation. Truncation error will be analyzed throughout \nthe text as we develop specific numerical methods."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Absolute and Relative Error"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.2",
+      "number": "1.2",
+      "title": "Absolute and Relative Error",
+      "content": "If $\\tilde{x}$ is an approximation to the exact value $x$, the \n**absolute error** is\n\\[\nE_{\\text{abs}} = |x - \\tilde{x}|\n\\]\nand the **relative error** is\n\\[\nE_{\\text{rel}} = \\frac{|x - \\tilde{x}|}{|x|}, \\quad x \\neq 0.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Relative error is generally more meaningful because it is scale-independent. \nAn error of $0.001$ is negligible when measuring the distance to the sun \nbut catastrophic when measuring the width of a hair."
+    },
+    {
+      "type": "example",
+      "id": "example-1.1",
+      "number": "1.1",
+      "title": "Absolute vs. relative error",
+      "problem": "Suppose we approximate $x_1 = 1000000$ by $\\tilde{x}_1 = 1000001$ and \n$x_2 = 0.00001$ by $\\tilde{x}_2 = 0.00002$.",
+      "solution": "The absolute errors are:\n\\[\nE_{\\text{abs},1} = |x_1 - \\tilde{x}_1| = 1, \\quad \nE_{\\text{abs},2} = |x_2 - \\tilde{x}_2| = 0.00001.\n\\]\n\nThe relative errors are:\n\\[\nE_{\\text{rel},1} = \\frac{1}{1000000} = 10^{-6}, \\quad \nE_{\\text{rel},2} = \\frac{0.00001}{0.00001} = 1 = 100\\%.\n\\]\n\nThe first approximation is excellent (six correct significant digits); \nthe second is terrible (100\\% error, completely wrong order of magnitude)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Significant Digits"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.3",
+      "number": "1.3",
+      "title": "Significant Digits",
+      "content": "The approximation $\\tilde{x}$ has $n$ **significant digits** (or \n**significant figures**) of accuracy if the relative error satisfies\n\\[\n\\frac{|x - \\tilde{x}|}{|x|} < 5 \\times 10^{-n}.\n\\]\nEquivalently, $\\tilde{x}$ approximates $x$ to $n$ significant digits if \nthey agree when both are rounded to $n$ digits in scientific notation."
+    },
+    {
+      "type": "example",
+      "id": "example-1.2",
+      "number": "1.2",
+      "title": "Counting significant digits",
+      "problem": "How many significant digits does $\\tilde{\\pi} = 3.14159$ have as an \napproximation to $\\pi = 3.14159265\\ldots$?",
+      "solution": "The relative error is:\n\\[\n\\frac{|\\pi - 3.14159|}{|\\pi|} = \\frac{0.00000265\\ldots}{3.14159\\ldots} \n\\approx 8.4 \\times 10^{-7}.\n\\]\nSince $8.4 \\times 10^{-7} < 5 \\times 10^{-6}$ but $> 5 \\times 10^{-7}$, \nthe approximation has $6$ significant digits."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Error Propagation in Arithmetic"
+    },
+    {
+      "type": "paragraph",
+      "text": "When we perform calculations with approximate quantities, how do the \nerrors propagate through our computations?"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.1",
+      "number": "1.1",
+      "title": "Error Propagation in Basic Operations",
+      "content": "Let $\\tilde{x} = x(1 + \\delta_x)$ and $\\tilde{y} = y(1 + \\delta_y)$ be \napproximations with relative errors $|\\delta_x|, |\\delta_y| \\leq \\eps$.\n\n**Multiplication:**\n\\[\n\\tilde{x} \\cdot \\tilde{y} = xy(1 + \\delta_x + \\delta_y + \\delta_x\\delta_y) \n\\approx xy(1 + \\delta_x + \\delta_y).\n\\]\nRelative errors add (to first order).\n\n**Division:**\n\\[\n\\frac{\\tilde{x}}{\\tilde{y}} = \\frac{x}{y}(1 + \\delta_x - \\delta_y + \\bigo{\\eps^2}).\n\\]\nRelative errors add (to first order).\n\n**Addition/Subtraction:** Let $\\Delta x = \\tilde{x} - x$ and $\\Delta y = \\tilde{y} - y$.\n\\[\n\\tilde{x} \\pm \\tilde{y} = (x \\pm y) + (\\Delta x \\pm \\Delta y).\n\\]\nAbsolute errors add, but relative error behavior depends on $|x \\pm y|$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The key observation is that multiplication and division are \"safe\"—relative \nerrors grow slowly. But subtraction of nearly equal numbers can be catastrophic."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Catastrophic Cancellation"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.4",
+      "number": "1.4",
+      "title": "Catastrophic Cancellation",
+      "content": "**Catastrophic cancellation** occurs when subtracting two nearly equal \nquantities. The leading significant digits cancel, leaving a result dominated \nby the errors in the trailing digits."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.2",
+      "number": "1.2",
+      "title": "Cancellation Error Amplification",
+      "content": "If $\\tilde{x} \\approx x$ and $\\tilde{y} \\approx y$ with $x \\approx y$, then \nthe relative error in $\\tilde{x} - \\tilde{y}$ is amplified by a factor of \napproximately $\\frac{|x|}{|x - y|}$ relative to the errors in $\\tilde{x}$ \nand $\\tilde{y}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-1.3",
+      "number": "1.3",
+      "title": "Catastrophic cancellation in action",
+      "problem": "Suppose we compute in 8-digit decimal arithmetic. Let \n\\[\nx = 1.2345678, \\quad y = 1.2345677.\n\\]\nBoth are stored exactly in 8 digits. Their difference is $x - y = 0.0000001 = 10^{-7}$.\n\nNow suppose both had relative errors of $5 \\times 10^{-8}$ (one part in the \nlast digit). The absolute errors are about $6 \\times 10^{-8}$.",
+      "solution": "The worst-case absolute error in $x - y$ is $2 \\times 6 \\times 10^{-8} = \n1.2 \\times 10^{-7}$. The relative error in the result is:\n\\[\n\\frac{1.2 \\times 10^{-7}}{10^{-7}} = 1.2 = 120\\%.\n\\]\nWe've gone from 8 significant digits to essentially zero! The amplification \nfactor was $\\frac{1.23}{10^{-7}} \\approx 10^{7}$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-1.3",
+      "number": null,
+      "title": "Watch for cancellation",
+      "content": "Catastrophic cancellation is one of the most common sources of numerical \nerror. Always be alert when subtracting quantities that may be nearly equal, \nand look for algebraic reformulations that avoid the subtraction."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Avoiding Catastrophic Cancellation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Several strategies can mitigate or eliminate catastrophic cancellation:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Algebraic reformulation:** Rewrite expressions to avoid \n subtraction of nearly equal quantities.",
+        "**Taylor series substitution:** Use series expansions when \n arguments are small.",
+        "**Alternative algorithms:** Choose algorithms that are \n numerically stable.",
+        "**Higher precision:** Perform intermediate calculations in \n extended precision."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-1.4",
+      "number": "1.4",
+      "title": "Avoiding cancellation in the quadratic formula",
+      "problem": "The quadratic formula gives roots of $ax^2 + bx + c = 0$ as\n\\[\nx = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}.\n\\]\nWhen $b^2 \\gg 4ac$, we have $\\sqrt{b^2 - 4ac} \\approx |b|$, and one of \nthe roots involves subtracting nearly equal quantities.",
+      "solution": "**Strategy:** Compute the root that *avoids* cancellation:\n\\[\nx_1 = \\frac{-b - \\sign(b)\\sqrt{b^2-4ac}}{2a}.\n\\]\nThis always adds two quantities of the same sign. Then use Vieta's formula \n$x_1 x_2 = c/a$ to find the other root:\n\\[\nx_2 = \\frac{c}{a x_1}.\n\\]\nThis avoids catastrophic cancellation in both roots."
+    },
+    {
+      "type": "example",
+      "id": "example-1.5",
+      "number": "1.5",
+      "title": "Taylor series to avoid cancellation",
+      "problem": "Consider computing $f(x) = \\frac{1 - \\cos x}{x^2}$ for small $x$.\n\nFor $x = 0.001$, we have $\\cos(0.001) = 0.9999995000000\\ldots$, so \n$1 - \\cos(0.001) = 0.0000005000000\\ldots$ The subtraction loses many \nsignificant digits.",
+      "solution": "Use the Taylor series: $\\cos x = 1 - \\frac{x^2}{2} + \\frac{x^4}{24} - \\cdots$, so\n\\[\n1 - \\cos x = \\frac{x^2}{2} - \\frac{x^4}{24} + \\frac{x^6}{720} - \\cdots\n\\]\nTherefore:\n\\[\nf(x) = \\frac{1 - \\cos x}{x^2} = \\frac{1}{2} - \\frac{x^2}{24} + \\frac{x^4}{720} - \\cdots\n\\]\nFor $x = 0.001$: $f(0.001) \\approx \\frac{1}{2} - \\frac{10^{-6}}{24} = 0.4999999583\\ldots$\n\nThis avoids the cancellation entirely and gives full precision."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Error Propagation in Function Evaluation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Suppose $\\tilde{x} = x + \\Delta x$ is an approximation to $x$, and we \nwish to compute $f(x)$. Using Taylor's theorem:\n\\[\nf(\\tilde{x}) = f(x + \\Delta x) = f(x) + f'(x)\\Delta x + \\bigo{(\\Delta x)^2}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The absolute error in $f$ is approximately\n\\[\n|f(\\tilde{x}) - f(x)| \\approx |f'(x)||\\Delta x|.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The relative error is\n\\[\n\\frac{|f(\\tilde{x}) - f(x)|}{|f(x)|} \\approx \\left|\\frac{xf'(x)}{f(x)}\\right| \n\\cdot \\frac{|\\Delta x|}{|x|}.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Condition Numbers"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.5",
+      "number": "1.5",
+      "title": "Condition Number of a Function",
+      "content": "The **condition number** of $f$ at $x$ is\n\\[\n\\kappa(x) = \\left|\\frac{xf'(x)}{f(x)}\\right|.\n\\]\nIt measures how sensitive $f$ is to relative perturbations in $x$: a \nrelative error of $\\delta$ in $x$ produces a relative error of approximately \n$\\kappa(x) \\cdot \\delta$ in $f(x)$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.6",
+      "number": "1.6",
+      "title": "Well-Conditioned and Ill-Conditioned",
+      "content": "A problem is **well-conditioned** if $\\kappa$ is small (say, $\\kappa \\leq 10$). \nIt is **ill-conditioned** if $\\kappa$ is large. An ill-conditioned problem \namplifies input errors significantly in the output."
+    },
+    {
+      "type": "example",
+      "id": "example-1.6",
+      "number": "1.6",
+      "title": "Condition number of $f(x) = \\sqrt{x}$",
+      "problem": "For $f(x) = \\sqrt{x}$, we have $f'(x) = \\frac{1}{2\\sqrt{x}}$, so\n\\[\n\\kappa(x) = \\left|\\frac{x \\cdot \\frac{1}{2\\sqrt{x}}}{\\sqrt{x}}\\right| = \n\\left|\\frac{\\sqrt{x}}{2\\sqrt{x}}\\right| = \\frac{1}{2}.\n\\]",
+      "solution": "The condition number is $1/2$ for all $x > 0$. This means the square \nroot function is *well-conditioned*: relative errors are \nactually reduced (halved) when taking square roots."
+    },
+    {
+      "type": "example",
+      "id": "example-1.7",
+      "number": "1.7",
+      "title": "Condition number of $f(x) = \\ln x$",
+      "problem": "For $f(x) = \\ln x$, we have $f'(x) = 1/x$, so\n\\[\n\\kappa(x) = \\left|\\frac{x \\cdot \\frac{1}{x}}{\\ln x}\\right| = \\frac{1}{|\\ln x|}.\n\\]",
+      "solution": "The condition number is $1/|\\ln x|$. Near $x = 1$, where $\\ln x \\approx 0$, \nthe condition number becomes arbitrarily large—the logarithm is \n*ill-conditioned* near $x = 1$. This makes sense: $\\ln(1) = 0$, \nand even tiny changes in $x$ near 1 produce values that are large relative \nto zero."
+    },
+    {
+      "type": "example",
+      "id": "example-1.8",
+      "number": "1.8",
+      "title": "Condition number of $f(x) = x^n$",
+      "problem": "For $f(x) = x^n$, we have $f'(x) = nx^{n-1}$, so\n\\[\n\\kappa(x) = \\left|\\frac{x \\cdot nx^{n-1}}{x^n}\\right| = |n|.\n\\]",
+      "solution": "The condition number is exactly $|n|$, independent of $x$. Raising to \na power $n$ amplifies relative errors by a factor of $|n|$. Computing \n$x^{100}$ amplifies errors 100-fold—be cautious with large exponents!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Conditioning vs. Stability"
+    },
+    {
+      "type": "paragraph",
+      "text": "Two related but distinct concepts govern the reliability of numerical \ncomputation."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.7",
+      "number": "1.7",
+      "title": "Well-Posed Problem",
+      "content": "A mathematical problem is **well-posed** (in the sense of Hadamard) if:\n\n1. A solution exists\n\n2. The solution is unique\n\n3. The solution depends continuously on the data\nIf condition 3 fails significantly, the problem is **ill-conditioned**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.8",
+      "number": "1.8",
+      "title": "Stable Algorithm",
+      "content": "An algorithm is **(numerically) stable** if it produces results \nclose to the correct answer for the given input data, even in the \npresence of rounding errors. An algorithm is **unstable** if \nrounding errors are magnified unacceptably."
+    },
+    {
+      "type": "warning",
+      "id": "warning-1.3",
+      "number": null,
+      "title": "Conditioning vs. Stability",
+      "content": "**Conditioning** is a property of the *problem*; \n**stability** is a property of the *algorithm*. \n\n- A well-conditioned problem solved by an unstable algorithm \n gives bad results.\n\n- An ill-conditioned problem cannot be solved accurately by \n *any* algorithm.\n\n- The ideal: a stable algorithm for a well-conditioned problem."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.3",
+      "number": "1.3",
+      "title": "Backward Error Analysis Principle",
+      "content": "A stable algorithm produces a result that is the *exact* answer \nto a *nearby* problem. If the algorithm has backward error $\\eta$, \nthe forward error is bounded by approximately $\\kappa \\cdot \\eta$, where \n$\\kappa$ is the condition number.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This principle, developed by James Wilkinson, is fundamental to modern \nnumerical analysis. Instead of tracking how errors accumulate (forward \nerror analysis), we ask: \"What slightly perturbed problem did we actually \nsolve?\" (backward error analysis)."
+    },
+    {
+      "type": "historical",
+      "id": "historical-1.3",
+      "number": null,
+      "title": "James Hardy Wilkinson (1919--1986)",
+      "content": "James Wilkinson was a British mathematician who revolutionized our \nunderstanding of numerical stability. Working at the National Physical \nLaboratory on early computers, he developed backward error analysis \nas a practical tool for understanding rounding errors in linear algebra. \nHis books, *Rounding Errors in Algebraic Processes* and \n*The Algebraic Eigenvalue Problem*, remain classics."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Computational Exercises**"
+    },
+    {
+      "type": "paragraph",
+      "text": "Calculate the absolute and relative error when $\\pi$ is \napproximated by $22/7$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Calculate the absolute and relative error when $e$ is \napproximated by $2.718$."
+    },
+    {
+      "type": "paragraph",
+      "text": "How many significant digits of accuracy does the approximation \n$\\sqrt{2} \\approx 1.41421$ have?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A measurement yields $x = 3.14 \\pm 0.005$. What is the maximum \nrelative error?"
+    },
+    {
+      "type": "paragraph",
+      "text": "If a quantity is known to 6 significant digits, what is the \nmaximum relative error?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Compute the condition number of $f(x) = e^x$ at $x = 1$ and \n$x = -10$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Compute the condition number of $f(x) = \\sin x$ at $x = \\pi/4$ \nand at $x = \\pi/2$."
+    },
+    {
+      "type": "paragraph",
+      "text": "For what values of $x$ is $f(x) = \\tan x$ ill-conditioned?"
+    },
+    {
+      "type": "paragraph",
+      "text": "If $x = 2.0$ with relative error $10^{-8}$, estimate the \nrelative error in $f(x) = x^{10}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Cancellation Problems**"
+    },
+    {
+      "type": "paragraph",
+      "text": "Two nearly equal numbers are $x = 1.23456789$ and $y = 1.23456788$. \nIf each has relative error $10^{-9}$, estimate the relative error in $x - y$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The quadratic formula $x = \\frac{-b + \\sqrt{b^2-4ac}}{2a}$ is \nused to find a root of $x^2 - 100x + 1 = 0$."
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Compute this root using the formula (to 10 digits).",
+        "Explain why cancellation occurs.",
+        "Use the alternative formula from Example [ex:quadratic-stable] \n to find the root more accurately."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider computing $f(x) = 1 - \\cos x$ for small $x$."
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Why is this computation problematic for small $x$?",
+        "Use the identity $1 - \\cos x = 2\\sin^2(x/2)$ to avoid the problem.",
+        "Use the Taylor series as in Example [ex:taylor-cancellation]."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Rewrite $\\sqrt{x+1} - \\sqrt{x}$ in a form that avoids cancellation \nfor large $x$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Theoretical Exercises**"
+    }
+  ]
+}

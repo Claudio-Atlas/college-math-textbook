@@ -1,0 +1,97 @@
+{
+  "id": "algebra-1-ch06-sec04",
+  "title": "Special Systems: No Solution and Infinite Solutions",
+  "chapter": 6,
+  "section": 4,
+  "book": "algebra-1",
+  "epigraph": {
+    "text": "There is a way that appears to be right, but in the \nend it leads to death.",
+    "reference": "Proverbs 14:12",
+    "quote": "It is not enough to have a good mind; the main thing is to use it well.",
+    "quoteAuthor": "Ren\\'e Descartes"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "{It is not enough to have a good mind; the main thing is to use it well.}{Ren\\'e Descartes}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Not every system has a single, unique solution. Some systems have no \nsolution at all; others have infinitely many. Understanding these \nspecial cases completes our picture of linear systems."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Inconsistent Systems (No Solution)"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Inconsistent System",
+      "content": "A system of equations is **inconsistent** \nif it has no solution. Graphically, the lines are parallel and never \nintersect."
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Recognizing an inconsistent system",
+      "problem": "Solve the system:\n\\[\n\\begin{cases}\n 2x + 3y = 6 \\\\\n 2x + 3y = 12\n\\end{cases}\n\\]",
+      "solution": "**Using elimination:** Subtract the first equation from the second:\n\\[\n (2x + 3y) - (2x + 3y) = 12 - 6\n\\]\n\\[\n 0 = 6 \\quad \\text{(False!)}\n\\]\n\nThis contradiction means no solution exists.\n\n**Graphically:** Converting to slope-intercept form:\n$$\n y &= -\\frac{2}{3}x + 2 \\\\\n y &= -\\frac{2}{3}x + 4\n$$\n\nBoth lines have slope $-\\frac{2}{3}$ but different $y$-intercepts. \nThey are parallel.\n\ncenter\ntikzpicture[scale=0.5]\n (-1,-1) grid (5,5);\n (-1.5,0) – (5.5,0) node[right] {$x$};\n (0,-1.5) – (0,5.5) node[above] {$y$};\n \n (-0.5,2.33) – (4.5,-1);\n (-0.5,4.33) – (4.5,1);\n \n at (4,0) {$2x+3y=6$};\n at (4,2) {$2x+3y=12$};\ntikzpicture\ncenter\n\nThe system has **no solution**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Dependent Systems (Infinitely Many Solutions)"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.2",
+      "number": "6.2",
+      "title": "Dependent System",
+      "content": "A system is **dependent** if the equations \nrepresent the same line. Every point on the line is a solution, so there \nare infinitely many solutions."
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Recognizing a dependent system",
+      "problem": "Solve the system:\n\\[\n\\begin{cases}\n x - 2y = 4 \\\\\n 3x - 6y = 12\n\\end{cases}\n\\]",
+      "solution": "**Using elimination:** Multiply the first equation by $-3$:\n$$\n -3x + 6y &= -12 \\\\\n 3x - 6y &= 12 \\\\\n \\hline\n 0 &= 0 \\quad \\text{(Always true!)}\n$$\n\nThis identity means the equations describe the same line.\n\n**Verification:** The second equation is exactly $3$ times the first:\n\\[\n 3(x - 2y) = 3(4) \\implies 3x - 6y = 12\n\\]\n\nConverting both to slope-intercept form gives $y = \\frac{1}{2}x - 2$.\n\nThe system has **infinitely many solutions**. We can express them as:\n\\[\n \\{(x, y) \\mid x - 2y = 4\\} \\quad \\text{or} \\quad \\left\\{(x, y) \\;\\middle|\\; y = \\frac{1}{2}x - 2\\right\\}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Classifying Systems"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Recognizing Special Systems"
+    },
+    {
+      "type": "paragraph",
+      "text": "For the system $"
+    },
+    {
+      "type": "example",
+      "id": "example-6.3",
+      "number": "6.3",
+      "title": "Classifying without solving",
+      "problem": "Classify each system without solving.\n\n1. $\\begin{cases} 4x + 6y = 10 \\\\ 6x + 9y = 15 \\end{cases}$\n\n2. $\\begin{cases} 3x - 5y = 7 \\\\ 6x - 10y = 8 \\end{cases}$\n\n3. $\\begin{cases} 2x + 7y = 3 \\\\ 5x - 2y = 11 \\end{cases}$",
+      "solution": "1. $\\dfrac{4}{6} = \\dfrac{6}{9} = \\dfrac{2}{3}$ and \n $\\dfrac{10}{15} = \\dfrac{2}{3}$. All ratios equal. \n **Dependent** (infinitely many solutions).\n\n2. $\\dfrac{3}{6} = \\dfrac{1}{2}$ and $\\dfrac{-5}{-10} = \\dfrac{1}{2}$, \n but $\\dfrac{7}{8} \\neq \\dfrac{1}{2}$.\n Coefficient ratios equal, constant ratios differ. \n **Inconsistent** (no solution).\n\n3. $\\dfrac{2}{5} \\neq \\dfrac{7}{-2}$. Coefficient ratios differ. \n **Independent** (one solution)."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Matthew 7:14",
+      "text": "Small is the gate and narrow the road \nthat leads to life."
+    },
+    {
+      "type": "quote",
+      "author": "G.H. Hardy",
+      "text": "A mathematician, like a painter or a poet, is \na maker of patterns."
+    }
+  ]
+}

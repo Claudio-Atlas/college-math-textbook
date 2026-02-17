@@ -1,0 +1,329 @@
+{
+  "id": "vol1-ch04-sec05",
+  "title": "Implicit Differentiation",
+  "chapter": 4,
+  "section": 5,
+  "book": "vol1",
+  "objectives": [
+    "Recognize implicit functions and explain why explicit solutions are not always possible or practical",
+    "Apply the technique of implicit differentiation using the Chain Rule to find derivatives",
+    "Use implicit differentiation to find equations of tangent lines to curves defined implicitly",
+    "Prove the Power Rule for rational exponents using implicit differentiation"
+  ],
+  "devotional": {
+    "title": "Seeing Through a Mirror",
+    "scripture": "1 Corinthians 13:12",
+    "content": "\"For now we see only a reflection as in a mirror; then we shall see face to face.\" Sometimes mathematical relationships are hidden from direct view—we cannot solve explicitly for $y$ in terms of $x$. Yet the relationship is still there, still true, still beautiful. Implicit differentiation allows us to work with these hidden relationships, extracting precise information about slopes and tangent lines even when we cannot see the function directly. In our spiritual lives, too, we often work with truths we cannot fully see or comprehend. We trust in God's promises and walk by faith, knowing that one day we will see face to face what we now perceive only dimly."
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Consider the circle $x^2 + y^2 = 25$. This is not the graph of a function—it fails the vertical line test. Yet the circle clearly has a tangent line at every point, and that tangent line has a well-defined slope. How do we find it?"
+    },
+    {
+      "type": "paragraph",
+      "text": "One approach: solve for $y = \\pm\\sqrt{25 - x^2}$ and differentiate. But this is awkward (we get two branches) and for many curves, solving for $y$ explicitly is impossible."
+    },
+    {
+      "type": "paragraph",
+      "edition": "christian",
+      "text": "As Job 38:4–5 reminds us: \"Where were you when I laid the earth's foundation? Tell me, if you understand. Who marked off its dimensions? Surely you know!\" Just as we cannot always comprehend God's full design, we cannot always solve explicitly for every variable—yet we can still work with the relationships we're given."
+    },
+    {
+      "type": "paragraph",
+      "text": "A better approach is **implicit differentiation**: we differentiate both sides of the equation *as they stand*, treating $y$ as a function of $x$ and applying the Chain Rule."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Technique of Implicit Differentiation"
+    },
+    {
+      "type": "definition",
+      "id": "def-4.5.1",
+      "number": "4.5.1",
+      "title": "Implicit Differentiation",
+      "content": "Given an equation relating $x$ and $y$:\n\n1. Differentiate both sides with respect to $x$.\n2. Every time you differentiate a term involving $y$, apply the Chain Rule: the \"inner function\" is $y(x)$, so you multiply by $\\frac{dy}{dx}$.\n3. Collect all terms containing $\\frac{dy}{dx}$ on one side.\n4. Factor out $\\frac{dy}{dx}$ and solve."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.5.1",
+      "number": "4.5.1",
+      "title": "The Circle",
+      "problem": "Find $\\frac{dy}{dx}$ for the circle $x^2 + y^2 = 25$.",
+      "solution": "Differentiate both sides with respect to $x$:\n\n$$\\frac{d}{dx}[x^2] + \\frac{d}{dx}[y^2] = \\frac{d}{dx}[25]$$\n\nFor the term $y^2$, we treat $y$ as a function of $x$ and apply the Chain Rule: $\\frac{d}{dx}[y^2] = 2y\\frac{dy}{dx}$. Therefore,\n\n$$2x + 2y\\frac{dy}{dx} = 0$$\n\nSolving for $\\frac{dy}{dx}$:\n\n$$\\frac{dy}{dx} = -\\frac{2x}{2y} = -\\frac{x}{y}$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us verify this result. At the point $(3, 4)$ on the circle (since $9 + 16 = 25$), the slope of the tangent line is"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$\\left.\\frac{dy}{dx}\\right|_{(3,4)} = -\\frac{3}{4}$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The tangent to a circle at a point is perpendicular to the radius at that point. The radius from $(0,0)$ to $(3,4)$ has slope $4/3$, and indeed $-3/4$ is the negative reciprocal. The formula checks out beautifully."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.5.2",
+      "number": "4.5.2",
+      "title": "A More Complex Implicit Equation",
+      "problem": "Find $\\frac{dy}{dx}$ if $x^3 + y^3 = 6xy$.",
+      "solution": "This is the *folium of Descartes*, a famous curve. Differentiate both sides:\n\n$$3x^2 + 3y^2\\frac{dy}{dx} = 6y + 6x\\frac{dy}{dx}$$\n\nOn the right, we used the Product Rule on $6xy$: $\\frac{d}{dx}[6xy] = 6y + 6x\\frac{dy}{dx}$.\n\nCollect $\\frac{dy}{dx}$ terms:\n\n$$3y^2\\frac{dy}{dx} - 6x\\frac{dy}{dx} = 6y - 3x^2$$\n\nFactor and solve:\n\n$$\\frac{dy}{dx}(3y^2 - 6x) = 6y - 3x^2 \\implies \\frac{dy}{dx} = \\frac{6y - 3x^2}{3y^2 - 6x} = \\frac{2y - x^2}{y^2 - 2x}$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "As René Descartes observed: \"Each problem that I solved became a rule which served afterwards to solve other problems.\""
+    },
+    {
+      "type": "example",
+      "id": "ex-4.5.3",
+      "number": "4.5.3",
+      "title": "Finding a Tangent Line Implicitly",
+      "problem": "Find the equation of the tangent line to the curve $x^2 + xy + y^2 = 7$ at the point $(1, 2)$.",
+      "solution": "First verify the point: $1 + 2 + 4 = 7$. ✓\n\nDifferentiate implicitly:\n\n$$2x + \\left(y + x\\frac{dy}{dx}\\right) + 2y\\frac{dy}{dx} = 0$$\n\nFor the $xy$ term, we used the Product Rule: $\\frac{d}{dx}[xy] = y + x\\frac{dy}{dx}$.\n\nSolve for $\\frac{dy}{dx}$:\n\n$$x\\frac{dy}{dx} + 2y\\frac{dy}{dx} = -2x - y \\implies \\frac{dy}{dx} = \\frac{-2x - y}{x + 2y}$$\n\nAt $(1, 2)$:\n\n$$\\frac{dy}{dx} = \\frac{-2 - 2}{1 + 4} = \\frac{-4}{5}$$\n\nThe tangent line is $y - 2 = -\\frac{4}{5}(x - 1)$, or $y = -\\frac{4}{5}x + \\frac{14}{5}$."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.5.4",
+      "number": "4.5.4",
+      "title": "Implicit Differentiation with Exponential",
+      "problem": "Find $\\frac{dy}{dx}$ if $e^y = x + y$.",
+      "solution": "Differentiate both sides:\n\n$$e^y\\frac{dy}{dx} = 1 + \\frac{dy}{dx}$$\n\nCollect terms:\n\n$$e^y\\frac{dy}{dx} - \\frac{dy}{dx} = 1 \\implies \\frac{dy}{dx}(e^y - 1) = 1 \\implies \\frac{dy}{dx} = \\frac{1}{e^y - 1}$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Implicit Differentiation with Trigonometric Functions"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.5.5",
+      "number": "4.5.5",
+      "title": "Trig in an Implicit Equation",
+      "problem": "Find $\\frac{dy}{dx}$ if $\\sin(xy) = x$.",
+      "solution": "Differentiate both sides. On the left, we need the Chain Rule: the outer function is sine, and the inner function is $xy$ (which itself requires the Product Rule).\n\n$$\\cos(xy) \\cdot \\frac{d}{dx}[xy] = 1$$\n\nNow $\\frac{d}{dx}[xy] = y + x\\frac{dy}{dx}$, so\n\n$$\\cos(xy)\\left(y + x\\frac{dy}{dx}\\right) = 1$$\n\nExpand and solve:\n\n$$y\\cos(xy) + x\\cos(xy)\\frac{dy}{dx} = 1 \\implies \\frac{dy}{dx} = \\frac{1 - y\\cos(xy)}{x\\cos(xy)}$$"
+    },
+    {
+      "type": "paragraph",
+      "edition": "christian",
+      "text": "Proverbs 25:2 tells us: \"It is the glory of God to conceal a matter; to search out a matter is the glory of kings.\" The hidden relationships in implicit equations invite us to search out their secrets through careful mathematical reasoning."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Proving the Power Rule for Rational Exponents"
+    },
+    {
+      "type": "paragraph",
+      "text": "Implicit differentiation lets us extend the Power Rule beyond positive integers."
+    },
+    {
+      "type": "theorem",
+      "id": "thm-4.5.1",
+      "number": "4.5.1",
+      "title": "Power Rule for Rational Exponents",
+      "content": "If $n = p/q$ where $p$ and $q$ are integers with $q \\neq 0$, then\n\n$$\\frac{d}{dx}[x^{p/q}] = \\frac{p}{q}x^{p/q - 1}$$\n\nwherever $x^{p/q}$ is defined and the derivative exists."
+    },
+    {
+      "type": "proof",
+      "content": "Let $y = x^{p/q}$. Then $y^q = x^p$. Differentiate both sides implicitly:\n\n$$qy^{q-1}\\frac{dy}{dx} = px^{p-1}$$\n\nSolve for $\\frac{dy}{dx}$:\n\n$$\\frac{dy}{dx} = \\frac{px^{p-1}}{qy^{q-1}}$$\n\nSince $y = x^{p/q}$, we have $y^{q-1} = x^{p(q-1)/q}$. Therefore,\n\n$$\\frac{dy}{dx} = \\frac{px^{p-1}}{qx^{p(q-1)/q}} = \\frac{p}{q}x^{p-1 - p(q-1)/q} = \\frac{p}{q}x^{p/q - 1}$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "This confirms that the Power Rule $\\frac{d}{dx}[x^n] = nx^{n-1}$ holds for all rational exponents."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Higher-Order Implicit Derivatives"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.5.6",
+      "number": "4.5.6",
+      "title": "Second Derivative Implicitly",
+      "problem": "Find $\\frac{d^2y}{dx^2}$ if $x^2 + y^2 = 25$.",
+      "solution": "From Example 4.5.1, we have $\\frac{dy}{dx} = -\\frac{x}{y}$.\n\nDifferentiate again using the Quotient Rule:\n\n$$\\frac{d^2y}{dx^2} = \\frac{d}{dx}\\left[-\\frac{x}{y}\\right] = -\\frac{y \\cdot 1 - x \\cdot \\frac{dy}{dx}}{y^2}$$\n\n$$= -\\frac{y - x\\left(-\\frac{x}{y}\\right)}{y^2} = -\\frac{y + \\frac{x^2}{y}}{y^2}$$\n\n$$= -\\frac{\\frac{y^2 + x^2}{y}}{y^2} = -\\frac{x^2 + y^2}{y^3} = -\\frac{25}{y^3}$$\n\nIn the last step, we used $x^2 + y^2 = 25$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Historical Note: René Descartes (1596–1650)**"
+    },
+    {
+      "type": "paragraph",
+      "text": "The folium of Descartes, $x^3 + y^3 = 6xy$, was proposed by Descartes in 1638 as a challenge to Pierre de Fermat. Descartes, a devout Catholic, is best known for his philosophy (\"I think, therefore I am\") but made profound contributions to mathematics, including the coordinate system that bears his name. The folium beautifully illustrates why implicit differentiation is necessary: solving $x^3 + y^3 = 6xy$ for $y$ explicitly is extraordinarily difficult."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.1",
+      "number": "1",
+      "problem": "Find $\\frac{dy}{dx}$ by implicit differentiation: $x^{2} + y^{2} = 16$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.2",
+      "number": "2",
+      "problem": "Find $\\frac{dy}{dx}$: $x^{3} + y^{3} = 1$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.3",
+      "number": "3",
+      "problem": "Find $\\frac{dy}{dx}$: $x^{2}y + xy^{2} = 6$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.4",
+      "number": "4",
+      "problem": "Find $\\frac{dy}{dx}$: $\\sqrt{x} + \\sqrt{y} = 4$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.5",
+      "number": "5",
+      "problem": "Find $\\frac{dy}{dx}$: $x^{2} - xy + y^{2} = 3$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.6",
+      "number": "6",
+      "problem": "Find $\\frac{dy}{dx}$: $y^{3} - y = x^{2}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.7",
+      "number": "7",
+      "problem": "Find $\\frac{dy}{dx}$: $e^{y} = x^{2} + y$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.8",
+      "number": "8",
+      "problem": "Find $\\frac{dy}{dx}$: $\\sin y = x$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.9",
+      "number": "9",
+      "problem": "Find $\\frac{dy}{dx}$: $\\cos(xy) = 1 + \\sin y$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.10",
+      "number": "10",
+      "problem": "Find $\\frac{dy}{dx}$: $x\\,e^{y} = x - y$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.11",
+      "number": "11",
+      "problem": "Find the equation of the tangent line to $x^{2} + y^{2} = 25$ at the point $(3, -4)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.12",
+      "number": "12",
+      "problem": "Find the equation of the tangent line to $x^{3} + y^{3} = 6xy$ at the point $(3, 3)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.13",
+      "number": "13",
+      "problem": "Find the equation of the tangent line to $x^{2} + xy + y^{2} = 3$ at the point $(1, 1)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.14",
+      "number": "14",
+      "problem": "Find the equation of the tangent line to $y^{2} = x^{3}(2 - x)$ at the point $(1, 1)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.15",
+      "number": "15",
+      "problem": "Find all points on $x^{2} + y^{2} = 25$ where the tangent line is horizontal."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.16",
+      "number": "16",
+      "problem": "Find all points on $x^{2} + y^{2} = 25$ where the tangent line is vertical."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.17",
+      "number": "17",
+      "problem": "If $x^{2} + 4y^{2} = 16$ (an ellipse), find the slope of the tangent line at $(\\sqrt{8}, \\sqrt{2})$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.18",
+      "number": "18",
+      "problem": "Find $\\frac{d^2y}{dx^2}$ if $x^{2} + y^{2} = r^{2}$ (constant $r$).",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.19",
+      "number": "19",
+      "problem": "Find $\\frac{d^2y}{dx^2}$ if $x^{3} + y^{3} = 1$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.20",
+      "number": "20",
+      "problem": "Find $\\frac{dy}{dx}$ if $\\tan(x + y) = x$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.21",
+      "number": "21",
+      "problem": "Use implicit differentiation to show that the tangent line to the ellipse $\\frac{x^{2}}{a^{2}} + \\frac{y^{2}}{b^{2}} = 1$ at the point $(x_{0}, y_{0})$ is $\\frac{x_{0}\\,x}{a^{2}} + \\frac{y_{0}\\,y}{b^{2}} = 1$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.22",
+      "number": "22",
+      "problem": "Use implicit differentiation to prove the Power Rule for rational exponents: if $y = x^{p/q}$, then $y' = \\frac{p}{q}\\,x^{p/q-1}$.",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.23",
+      "number": "23",
+      "problem": "If $f$ is differentiable and $f'(x) \\neq 0$, and $g$ is the inverse function of $f$, use implicit differentiation on $f(g(x)) = x$ to show that $g'(x) = \\frac{1}{f'(g(x))}$.",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.24",
+      "number": "24",
+      "problem": "A satellite orbits Earth in an elliptical path given by $\\frac{x^{2}}{42{,}000^{2}} + \\frac{y^{2}}{36{,}000^{2}} = 1$ (in km). Find $\\frac{dy}{dx}$ at the point where $x = 21{,}000$ and $y > 0$. What does the slope tell you about the satellite's trajectory?",
+      "proof": true,
+      "creation_reveals": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.25",
+      "number": "25",
+      "problem": "Find $\\frac{dy}{dx}$: $y\\sin x + x\\cos y = 1$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.5.26",
+      "number": "26",
+      "problem": "Find $\\frac{dy}{dx}$: $e^{xy} = x + y$."
+    }
+  ]
+}

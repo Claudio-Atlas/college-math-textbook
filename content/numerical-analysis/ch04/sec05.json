@@ -1,0 +1,166 @@
+{
+  "id": "numerical-analysis-ch04-sec05",
+  "title": "Chebyshev Nodes and Optimal Interpolation",
+  "chapter": 4,
+  "section": 5,
+  "book": "numerical-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The choice of interpolation nodes profoundly affects both the accuracy and stability of polynomial interpolation. Equally-spaced nodes lead to Runge's phenomenon for certain functions. **Chebyshev nodes** provide an optimal remedy, minimizing the maximum interpolation error."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Runge's Phenomenon"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Runge's Phenomenon",
+      "content": "For the function $f(x) = \\frac{1}{1 + 25x^2}$ on $[-1, 1]$ with $n+1$ equally-spaced nodes $x_k = -1 + \\frac{2k}{n}$, the polynomial interpolation error satisfies:\n\\[\n\\lim_{n \\to \\infty} \\max_{x \\in [-1,1]} |P_n(x) - f(x)| = \\infty\n\\]\nThe interpolating polynomials diverge despite $f$ being smooth.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Chebyshev Polynomials"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "Chebyshev Polynomials of the First Kind",
+      "content": "The **Chebyshev polynomial** $T_n(x)$ is defined for $x \\in [-1, 1]$ by:\n$$\n\nT_n(x) = \\cos(n \\arccos x), \\quad n = 0, 1, 2, \\ldots\n$$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Properties of Chebyshev Polynomials",
+      "content": "1. $T_n(x)$ is a polynomial of degree exactly $n$\n\n2. $|T_n(x)| \\le 1$ for $x \\in [-1, 1]$\n\n3. $T_n(x) = 2xT_{n-1}(x) - T_{n-2}(x)$ for $n \\ge 2$ (recurrence)\n\n4. $T_n(x)$ has $n$ simple zeros in $(-1, 1)$\n\n5. Leading coefficient: $T_n(x) = 2^{n-1}x^n + \\text{lower terms}$ for $n \\ge 1$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(1) Set $x = \\cos\\theta$. Then $T_n(\\cos\\theta) = \\cos(n\\theta)$. Using the identity:\n\\[\n\\cos(n\\theta) = 2\\cos\\theta \\cos((n-1)\\theta) - \\cos((n-2)\\theta)\n\\]\nwe get the recurrence $T_n(x) = 2xT_{n-1}(x) - T_{n-2}(x)$ with $T_0(x) = 1$, $T_1(x) = x$.\n\nThis shows $T_n$ is a polynomial. Induction on the recurrence shows $\\deg T_n = n$.\n\n(2) Since $|\\cos(n\\arccos x)| \\le 1$ for all $x \\in [-1, 1]$.\n\n(3) The recurrence relation above.\n\n(4) $T_n(x) = 0$ iff $\\cos(n\\arccos x) = 0$ iff $n\\arccos x = (2k+1)\\frac{\\pi}{2}$ for integer $k$. This gives $x = \\cos\\frac{(2k+1)\\pi}{2n}$ for $k = 0, 1, \\ldots, n-1$: exactly $n$ zeros.\n\n(5) From the recurrence: if $T_{n-1}$ has leading coefficient $2^{n-2}$, then $T_n = 2x \\cdot 2^{n-2}x^{n-1} - \\cdots$ has leading coefficient $2^{n-1}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The first several Chebyshev polynomials:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$T_0(x) &= 1 \\\\\nT_1(x) &= x \\\\\nT_2(x) &= 2x^2 - 1 \\\\\nT_3(x) &= 4x^3 - 3x \\\\\nT_4(x) &= 8x^4 - 8x^2 + 1 \\\\\nT_5(x) &= 16x^5 - 20x^3 + 5x$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Chebyshev Nodes"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.2",
+      "number": "4.2",
+      "title": "Chebyshev Nodes",
+      "content": "The **Chebyshev nodes** (or **Chebyshev points**) of the first kind are the zeros of $T_{n+1}(x)$:\n$$\n\nx_k = \\cos\\left(\\frac{(2k+1)\\pi}{2(n+1)}\\right), \\quad k = 0, 1, \\ldots, n\n$$\n\nThe **Chebyshev nodes of the second kind** (or **Chebyshev-Lobatto points**) include the endpoints:\n$$\n\nx_k = \\cos\\left(\\frac{k\\pi}{n}\\right), \\quad k = 0, 1, \\ldots, n\n$$\nThese are the extrema of $T_n(x)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Optimality of Chebyshev Nodes"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.3",
+      "number": "4.3",
+      "title": "Minimax Property of Chebyshev Polynomials",
+      "content": "Among all monic polynomials of degree $n$, the polynomial $\\frac{1}{2^{n-1}}T_n(x)$ has the smallest maximum absolute value on $[-1, 1]$:\n$$\n\n\\min_{\\substack{p \\text{ monic} \\\\ \\deg p = n}} \\max_{x \\in [-1,1]} |p(x)| = \\frac{1}{2^{n-1}}\n$$\nThe minimum is achieved uniquely by $\\frac{1}{2^{n-1}}T_n(x)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\tilde{T}_n(x) = \\frac{1}{2^{n-1}}T_n(x)$, the monic Chebyshev polynomial. Then $|\\tilde{T}_n(x)| \\le \\frac{1}{2^{n-1}}$ on $[-1, 1]$.\n\nMoreover, $\\tilde{T}_n$ attains the values $\\pm\\frac{1}{2^{n-1}}$ at $n+1$ points: the extrema of $T_n$ at $x_k = \\cos\\frac{k\\pi}{n}$ for $k = 0, \\ldots, n$, with alternating signs.\n\nSuppose $p(x)$ is another monic polynomial of degree $n$ with $\\|p\\|_\\infty < \\frac{1}{2^{n-1}}$. Consider $q(x) = \\tilde{T}_n(x) - p(x)$. This has degree $< n$ (the leading terms cancel).\n\nAt the $n+1$ alternating extrema of $\\tilde{T}_n$, the sign of $\\tilde{T}_n$ alternates while $|p| < |\\tilde{T}_n|$. Thus $q$ has the same sign as $\\tilde{T}_n$ at these points, meaning $q$ alternates in sign at $n+1$ points. By the Intermediate Value Theorem, $q$ has at least $n$ zeros.\n\nBut $\\deg q < n$, which is a contradiction. Hence no such $p$ exists."
+    },
+    {
+      "type": "proof",
+      "content": "The node polynomial $\\omega(x) = \\prod_{k=0}^{n}(x-x_k)$ is monic of degree $n+1$. By Theorem [thm:chebyshev-minimax], its minimum max-norm is achieved when $\\omega = \\frac{1}{2^n}T_{n+1}$, i.e., when the nodes are zeros of $T_{n+1}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Error Bound with Chebyshev Nodes"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.4",
+      "number": "4.4",
+      "title": "Interpolation Error with Chebyshev Nodes",
+      "content": "Let $f \\in C^{n+1}[-1,1]$ and let $P_n$ be the interpolating polynomial at the Chebyshev nodes. Then:\n$$\n\n\\|f - P_n\\|_\\infty \\le \\frac{M_{n+1}}{2^n (n+1)!}\n$$\nwhere $M_{n+1} = \\|f^{(n+1)}\\|_\\infty$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "By the interpolation error formula:\n\\[\n|f(x) - P_n(x)| \\le \\frac{M_{n+1}}{(n+1)!} |\\omega_n(x)|\n\\]\n\nWith Chebyshev nodes, $\\omega_n = \\frac{1}{2^n}T_{n+1}$, and $|T_{n+1}(x)| \\le 1$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Transformation to General Intervals"
+    },
+    {
+      "type": "paragraph",
+      "text": "For interpolation on $[a, b]$ instead of $[-1, 1]$, use the linear transformation:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$x = \\frac{b-a}{2}t + \\frac{a+b}{2}, \\quad t = \\frac{2x - (a+b)}{b-a}$$"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.3",
+      "number": "4.3",
+      "title": "Chebyshev Nodes on $[a,b",
+      "content": "$]\nThe Chebyshev nodes on $[a, b]$ are:\n$$\n\nx_k = \\frac{b-a}{2}\\cos\\left(\\frac{(2k+1)\\pi}{2(n+1)}\\right) + \\frac{a+b}{2}, \\quad k = 0, \\ldots, n\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Chebyshev interpolation of Runge's function",
+      "problem": "Interpolate $f(x) = \\frac{1}{1+25x^2}$ on $[-1, 1]$ using $n+1$ Chebyshev nodes.\n\n| $n$ | Equally-spaced error | Chebyshev error |\n| 5 | 0.43 | 0.11 |\n| 10 | 1.0 | 0.016 |\n| 15 | 5.2 | 0.0022 |\n| 20 | 60 | 0.00030 |\n| 30 | $> 10^4$ | $5.5 \\times 10^{-6}$ |\n\nWith Chebyshev nodes, the error decreases geometrically rather than exploding.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Chebyshev Series"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.4",
+      "number": "4.4",
+      "title": "Chebyshev Expansion",
+      "content": "Any function $f \\in C[-1,1]$ can be expanded as:\n$$\n\nf(x) = \\sum_{k=0}^{\\infty} c_k T_k(x)\n$$\nwhere the **Chebyshev coefficients** are:\n$$\n\nc_k = \\frac{2}{\\pi}\\int_{-1}^{1} \\frac{f(x)T_k(x)}{\\sqrt{1-x^2}}\\,dx \\quad (c_0 \\text{ has factor } 1/\\pi)\n$$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.5",
+      "number": "4.5",
+      "title": "Convergence of Chebyshev Series",
+      "content": "If $f$ is analytic on $[-1,1]$ and can be extended analytically to an ellipse with foci at $\\pm 1$, then its Chebyshev series converges geometrically:\n\\[\n|c_k| = O(\\rho^{-k})\n\\]\nwhere $\\rho > 1$ depends on the size of the ellipse of analyticity.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Practical Considerations"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ]
+}

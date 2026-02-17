@@ -1,0 +1,294 @@
+{
+  "id": "precalculus-ch08-sec01",
+  "title": "Law of Sines",
+  "chapter": 8,
+  "section": 1,
+  "book": "precalculus",
+  "devotional": {
+    "title": "Unity in Diversity",
+    "scripture": "Romans 12:4--5",
+    "content": "{AtlasWarmT}{he}\nLaw of Sines reveals something profound: despite the infinite variety of \ntriangles—tall ones, squat ones, acute and obtuse—they all share a \ncommon proportional relationship. Three different ratios, yet all equal.\n\nThe Apostle Paul wrote, \"For just as each of us has one body with many \nmembers, and these members do not all have the same function, so in Christ \nwe, though many, form one body, and each member belongs to all the others.\"\n\nIn a triangle, each side is different—different length, different \nposition—yet they're bound together by a common relationship. In the \nBody of Christ, each person is different—different gifts, different \ncallings—yet we're bound together by a common Savior. Mathematics \nmirrors spiritual truth: unity doesn't require uniformity. The diversity \nof the parts serves the harmony of the whole.",
+    "reflection": "Consider how different members of your community \ncontribute differently yet are bound by shared purpose. How does this \nmathematical picture of \"different yet proportionally related\" illuminate \nyour understanding of Christian community?"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Direct my footsteps according to your word.\"*{Psalm 119:133}{The study of the properties of triangles led to the development of the whole of trigonometry.}{Regiomontanus}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Until now, our work with trigonometry has focused on right triangles—those \nobliging shapes where the Pythagorean theorem and basic trigonometric ratios \nsolve every problem. But the real world rarely offers such convenience. When \na surveyor measures the distance across a canyon, when an astronomer calculates \nthe distance to a nearby star, when a navigator plots a course across the ocean, \nthey encounter *oblique* triangles: triangles with no right angle at all."
+    },
+    {
+      "type": "paragraph",
+      "text": "How do we solve such triangles? The ancient astronomers and surveyors discovered \nthat the familiar SOHCAHTOA relationships, which depend on having a right angle, \ndon't apply directly. They needed new tools—relationships that work for \n*any* triangle, regardless of its angles. The Law of Sines is the first \nof these powerful tools."
+    },
+    {
+      "type": "paragraph",
+      "text": "This elegant law reveals a beautiful proportion hidden in every triangle: the \nratio of each side to the sine of its opposite angle is constant. Whether the \ntriangle is acute, obtuse, tall, or flat, this proportion holds. It's a \nremarkable example of unity beneath apparent diversity—a theme that echoes \nthroughout mathematics."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Deriving the Law of Sines"
+    },
+    {
+      "type": "paragraph",
+      "text": "Before stating the law formally, let's discover where it comes from. The \nderivation is beautifully simple and reveals why the law works."
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider any triangle $ABC$ with sides $a$, $b$, $c$ opposite angles $A$, \n$B$, $C$ respectively. Drop an altitude $h$ from vertex $C$ to side $c$ \n(or its extension, if the triangle is obtuse)."
+    },
+    {
+      "type": "paragraph",
+      "text": "altitude $h$ using \n*two different* right triangles.}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Looking at right triangle $ACD$, we can express $h$ using angle $A$:\n\\[\n \\sin A = \\frac{h}{b} \\quad \\Longrightarrow \\quad h = b \\sin A\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Looking at right triangle $BCD$, we can express the same height $h$ using angle $B$:\n\\[\n \\sin B = \\frac{h}{a} \\quad \\Longrightarrow \\quad h = a \\sin B\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Since both expressions equal $h$, they equal each other:\n\\[\n b \\sin A = a \\sin B\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Dividing both sides by $\\sin A \\cdot \\sin B$:\n\\[\n \\frac{b}{\\sin B} = \\frac{a}{\\sin A}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "If we drop an altitude from a different vertex and repeat the argument, we \ncan include side $c$ and angle $C$ as well. This gives us the complete Law \nof Sines."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Law of Sines",
+      "content": "In any triangle with sides $a$, $b$, $c$ opposite angles $A$, $B$, $C$:\n\\[\n \\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}\n\\]\nEquivalently:\n\\[\n \\frac{\\sin A}{a} = \\frac{\\sin B}{b} = \\frac{\\sin C}{c}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The two forms are equivalent—use whichever is more convenient for the \nproblem at hand. When solving for a side, the first form (sides in numerators) \nis usually easier. When solving for an angle, the second form (sines in \nnumerators) can be more convenient."
+    },
+    {
+      "type": "warning",
+      "id": "warning-8.1",
+      "number": null,
+      "title": "Angles Must Be in Correct Units",
+      "content": "When using the Law of Sines, ensure your calculator is in the correct \nmode (degrees or radians) for your problem. Most applied problems use \ndegrees, but theoretical work often uses radians. A mismatch will give \nwildly incorrect answers."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving Triangles: AAS and ASA Cases"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Law of Sines is particularly useful when we know two angles and one \nside. There are two configurations:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**AAS (Angle-Angle-Side):** Two angles and a side not \n between them.",
+        "**ASA (Angle-Side-Angle):** Two angles and the side \n between them."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "In both cases, finding the third angle is straightforward (since angles \nsum to $180°$), and then the Law of Sines gives us the remaining sides."
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Solving an AAS triangle",
+      "problem": "In triangle $ABC$, $A = 42°$, $B = 75°$, and $a = 12$. Find all remaining \nparts of the triangle.",
+      "solution": "**Step 1: Find the third angle.**\n\nThe sum of angles in a triangle is $180°$:\n\\[\n C = 180° - A - B = 180° - 42° - 75° = 63°\n\\]\n\n**Step 2: Find side $b$ using the Law of Sines.**\n\nWe know $a$ and $A$, and we want $b$:\n\\[\n \\frac{b}{\\sin B} = \\frac{a}{\\sin A}\n\\]\n\\[\n b = \\frac{a \\sin B}{\\sin A} = \\frac{12 \\sin 75°}{\\sin 42°}\n\\]\n\nComputing (with calculator in degree mode):\n\\[\n b = \\frac{12 \\times 0.9659}{0.6691} = \\frac{11.591}{0.6691} \\approx 17.32\n\\]\n\n**Step 3: Find side $c$ using the Law of Sines.**\n\n\\[\n c = \\frac{a \\sin C}{\\sin A} = \\frac{12 \\sin 63°}{\\sin 42°} = \\frac{12 \\times 0.8910}{0.6691} \\approx 15.98\n\\]\n\n**Summary:**\n\\[\n C = 63°, \\quad b \\approx 17.32, \\quad c \\approx 15.98\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "Solving an ASA triangle",
+      "problem": "Solve triangle $ABC$ if $A = 35°$, $C = 62°$, and $b = 8$.",
+      "solution": "**Step 1: Find angle $B$.**\n\\[\n B = 180° - A - C = 180° - 35° - 62° = 83°\n\\]\n\nNotice that side $b$ is opposite angle $B$—this is the \"included\" \nside in the ASA configuration. We now have a complete angle-side pair \nto use as our reference.\n\n**Step 2: Find side $a$.**\n\\[\n a = \\frac{b \\sin A}{\\sin B} = \\frac{8 \\sin 35°}{\\sin 83°} = \\frac{8 \\times 0.5736}{0.9925} \\approx 4.62\n\\]\n\n**Step 3: Find side $c$.**\n\\[\n c = \\frac{b \\sin C}{\\sin B} = \\frac{8 \\sin 62°}{\\sin 83°} = \\frac{8 \\times 0.8829}{0.9925} \\approx 7.12\n\\]\n\n**Summary:**\n\\[\n B = 83°, \\quad a \\approx 4.62, \\quad c \\approx 7.12\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Ambiguous Case (SSA)"
+    },
+    {
+      "type": "paragraph",
+      "text": "The most subtle application of the Law of Sines occurs when we know two \nsides and an angle opposite one of them. This is called the **SSA \ncase** (Side-Side-Angle) or, tellingly, the **ambiguous case**."
+    },
+    {
+      "type": "paragraph",
+      "text": "Why \"ambiguous\"? Because the given information may determine:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**No triangle** (the given parts are impossible)",
+        "**Exactly one triangle** (the solution is unique)",
+        "**Two triangles** (two different triangles fit the data)"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "configuration where the Law \nof Sines can yield multiple solutions. AAS, ASA, SAS, and SSS always give \nunique triangles (if any exist).}"
+    },
+    {
+      "type": "paragraph",
+      "text": "To understand why this happens, imagine you're given angle $A$, side $a$ \n(opposite $A$), and side $b$ (adjacent to $A$). You draw angle $A$ and mark \noff side $b$ from the vertex. Now you need to draw side $a$ from the endpoint \nof $b$ back to the ray forming angle $A$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The question is: where does a segment of length $a$ intersect that ray? \nDepending on the value of $a$, there might be zero, one, or two intersection \npoints."
+    },
+    {
+      "type": "paragraph",
+      "text": "Here's how to analyze the SSA case systematically. Suppose we're given \nangle $A$, side $a$ (opposite $A$), and side $b$."
+    },
+    {
+      "type": "summary",
+      "id": "summary-8.1",
+      "number": null,
+      "title": "Analyzing the Ambiguous Case (SSA)",
+      "content": "Let $h = b \\sin A$ (the altitude from $C$ if a triangle exists).\n\n**If $A$ is acute:**\n\n- $a < h$: No solution\n\n- $a = h$: One solution (right triangle at $B$)\n\n- $h < a < b$: Two solutions\n\n- $a \\geq b$: One solution\n\n**If $A$ is obtuse:**\n\n- $a \\leq b$: No solution\n\n- $a > b$: One solution"
+    },
+    {
+      "type": "paragraph",
+      "text": "While the analysis above helps us understand *why* ambiguity occurs, \nin practice we can simply proceed with the calculation and let the math \ntell us what's happening:"
+    },
+    {
+      "type": "summary",
+      "id": "summary-8.1",
+      "number": null,
+      "title": "Practical Approach to SSA",
+      "content": "1. Use the Law of Sines to compute $\\sin B = \\frac{b \\sin A}{a}$.\n\n2. **If $\\sin B > 1$:** No solution exists.\n\n3. **If $\\sin B = 1$:** One solution ($B = 90°$).\n\n4. **If $\\sin B < 1$:** Two potential values for $B$:\n itemize\n\n5. $B_1 = \\arcsin(\\sin B)$ (acute angle)\n\n6. $B_2 = 180° - B_1$ (obtuse supplement)\n itemize\n Check whether each value of $B$ yields a valid triangle (i.e., $A + B < 180°$)."
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "Ambiguous case: two solutions",
+      "problem": "Solve the triangle with $A = 40°$, $a = 10$, $b = 14$.",
+      "solution": "**Step 1: Find $\\sin B$ using the Law of Sines.**\n\\[\n \\frac{\\sin B}{b} = \\frac{\\sin A}{a} \\quad \\Longrightarrow \\quad \n \\sin B = \\frac{b \\sin A}{a} = \\frac{14 \\sin 40°}{10}\n\\]\n\\[\n \\sin B = \\frac{14 \\times 0.6428}{10} = 0.8999\n\\]\n\nSince $\\sin B \\approx 0.90 < 1$, at least one solution exists.\n\n**Step 2: Find the possible values of $B$.**\n\\[\n B_1 = \\arcsin(0.8999) \\approx 64.2°\n\\]\n\\[\n B_2 = 180° - 64.2° = 115.8°\n\\]\n\n**Step 3: Check validity.**\n\nFor $B_1 = 64.2°$: $A + B_1 = 40° + 64.2° = 104.2° < 180°$ \n\nFor $B_2 = 115.8°$: $A + B_2 = 40° + 115.8° = 155.8° < 180°$ \n\nBoth values are valid, so we have **two solutions**.\n\n**Solution 1:** $B \\approx 64.2°$\n\\[\n C = 180° - 40° - 64.2° = 75.8°\n\\]\n\\[\n c = \\frac{a \\sin C}{\\sin A} = \\frac{10 \\sin 75.8°}{\\sin 40°} = \\frac{10 \\times 0.9689}{0.6428} \\approx 15.07\n\\]\n\n**Solution 2:** $B \\approx 115.8°$\n\\[\n C = 180° - 40° - 115.8° = 24.2°\n\\]\n\\[\n c = \\frac{10 \\sin 24.2°}{\\sin 40°} = \\frac{10 \\times 0.4102}{0.6428} \\approx 6.38\n\\]\n\n**Summary:**\n\n| Triangle | $B$ | $C$ | $c$ |\n| 1 | $64.2°$ | $75.8°$ | $15.07$ |\n| 2 | $115.8°$ | $24.2°$ | $6.38$ |"
+    },
+    {
+      "type": "example",
+      "id": "example-8.4",
+      "number": "8.4",
+      "title": "Ambiguous case: one solution",
+      "problem": "Solve the triangle with $A = 60°$, $a = 10$, $b = 8$.",
+      "solution": "**Step 1: Find $\\sin B$.**\n\\[\n \\sin B = \\frac{b \\sin A}{a} = \\frac{8 \\sin 60°}{10} = \\frac{8 \\times 0.8660}{10} = 0.6928\n\\]\n\n**Step 2: Find possible values of $B$.**\n\\[\n B_1 = \\arcsin(0.6928) \\approx 43.8°\n\\]\n\\[\n B_2 = 180° - 43.8° = 136.2°\n\\]\n\n**Step 3: Check validity.**\n\nFor $B_1 = 43.8°$: $A + B_1 = 60° + 43.8° = 103.8° < 180°$ \n\nFor $B_2 = 136.2°$: $A + B_2 = 60° + 136.2° = 196.2° > 180°$ 55\n\nOnly $B_1$ is valid, so we have **one solution**.\n\n**Complete the solution:**\n\\[\n C = 180° - 60° - 43.8° = 76.2°\n\\]\n\\[\n c = \\frac{10 \\sin 76.2°}{\\sin 60°} = \\frac{10 \\times 0.9711}{0.8660} \\approx 11.21\n\\]\n\n**Summary:**\n\\[\n B \\approx 43.8°, \\quad C \\approx 76.2°, \\quad c \\approx 11.21\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.5",
+      "number": "8.5",
+      "title": "Ambiguous case: no solution",
+      "problem": "Solve the triangle with $A = 50°$, $a = 6$, $b = 10$.",
+      "solution": "**Step 1: Find $\\sin B$.**\n\\[\n \\sin B = \\frac{b \\sin A}{a} = \\frac{10 \\sin 50°}{6} = \\frac{10 \\times 0.7660}{6} = 1.277\n\\]\n\nSince $\\sin B > 1$ is impossible (the sine function never exceeds 1), \n**no triangle exists** with these measurements.\n\nGeometrically, this means side $a = 6$ is too short to reach from the \nendpoint of side $b$ back to the ray forming angle $A$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-8.1",
+      "number": null,
+      "title": "Don't Forget the Supplement!",
+      "content": "When solving SSA problems, always check the supplementary angle \n$180° - B$. Students often find one solution and stop, missing the \nsecond triangle when two solutions exist."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of the Law of Sines"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Law of Sines is fundamental to surveying, navigation, and astronomy. \nLet's explore some classic applications."
+    },
+    {
+      "type": "example",
+      "id": "example-8.6",
+      "number": "8.6",
+      "title": "Fire tower triangulation",
+      "problem": "Two fire lookout towers are positioned 30 miles apart along a straight \nroad that runs east–west. A ranger in the western tower spots smoke at \nan angle of $65°$ east of north. A ranger in the eastern tower spots the \nsame smoke at an angle of $70°$ west of north. How far is the fire from \neach tower?",
+      "solution": "Let's set up the problem carefully. Let $W$ be the western tower, $E$ be \nthe eastern tower, and $F$ be the fire.\n\ncenter\ntikzpicture[scale=0.9]\n (W) at (0,0);\n (E) at (6,0);\n (F) at (2.5,4);\n \n % Road\n (-0.5,0) – (6.5,0);\n \n % Triangle\n (W) – (E) – (F) – cycle;\n \n % North arrows\n (W) – (0,2.5);\n (E) – (6,2.5);\n at (0,2.3) { N};\n at (6,2.3) { N};\n \n % Angle markers\n (0,0.7) arc (90:58:0.7);\n at (0.35,1.1) { $65°$};\n \n (6,0.7) arc (90:122:0.7);\n at (5.6,1.1) { $70°$};\n \n % Interior angles\n (0.6,0) arc (0:58:0.6);\n at (0.9,0.3) { $25°$};\n \n (5.4,0) arc (180:122:0.6);\n at (5.1,0.3) { $20°$};\n \n % Labels\n at (W) {$W$};\n at (E) {$E$};\n at (F) {$F$};\n at (3,0) {30 mi};\n \n % Distance labels\n at ($(W)!0.5!(F)$) {$d_W$};\n at ($(E)!0.5!(F)$) {$d_E$};\ntikzpicture\ncenter\n\nThe interior angles at each tower are:\n\n- At $W$: The angle from the road to the fire is $90° - 65° = 25°$\n\n- At $E$: The angle from the road to the fire is $90° - 70° = 20°$\n\nThe angle at $F$ is:\n\\[\n F = 180° - 25° - 20° = 135°\n\\]\n\nNow we apply the Law of Sines with $WE = 30$ miles opposite angle $F$:\n\\[\n \\frac{WE}{\\sin F} = \\frac{d_W}{\\sin E} = \\frac{d_E}{\\sin W}\n\\]\n\nDistance from western tower to fire:\n\\[\n d_W = \\frac{WE \\cdot \\sin E}{\\sin F} = \\frac{30 \\sin 20°}{\\sin 135°} = \\frac{30 \\times 0.342}{0.707} \\approx 14.5 \\text{ miles}\n\\]\n\nDistance from eastern tower to fire:\n\\[\n d_E = \\frac{30 \\sin 25°}{\\sin 135°} = \\frac{30 \\times 0.423}{0.707} \\approx 17.9 \\text{ miles}\n\\]\n\nThe fire is approximately **14.5 miles** from the western tower \nand **17.9 miles** from the eastern tower."
+    },
+    {
+      "type": "example",
+      "id": "example-8.7",
+      "number": "8.7",
+      "title": "Height of a mountain",
+      "problem": "A surveyor wants to measure the height of a mountain peak. From point $A$ \non level ground, she measures the angle of elevation to the peak as $22°$. \nShe then walks 1000 meters directly toward the mountain to point $B$, where \nthe angle of elevation is $34°$. How high is the peak?",
+      "solution": "Let $P$ be the peak and $C$ be the point on the ground directly below $P$.\n\ncenter\ntikzpicture[scale=0.8]\n (A) at (0,0);\n (B) at (3,0);\n (C) at (7,0);\n (P) at (7,3.5);\n \n % Ground line\n (-0.5,0) – (7.5,0);\n \n % Triangle ABP\n (A) – (P) – (B);\n (P) – (C);\n \n % Angle markers\n (0.8,0) arc (0:22:0.8);\n at (1.2,0.25) { $22°$};\n \n (3.8,0) arc (0:34:0.8);\n at (4.3,0.35) { $34°$};\n \n % Right angle\n (7,0.3) – (6.7,0.3) – (6.7,0);\n \n % Labels\n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n at (P) {$P$};\n at (1.5,0) {1000 m};\n at (7,1.75) {$h$};\ntikzpicture\ncenter\n\nIn triangle $ABP$:\n\n- Angle at $A$ is $22°$ (the angle of elevation)\n\n- Angle at $B$ is $180° - 34° = 146°$ (supplementary to elevation)\n\n- Angle at $P$ is $180° - 22° - 146° = 12°$\n\n- Side $AB = 1000$ m\n\nUsing the Law of Sines to find $BP$:\n\\[\n \\frac{BP}{\\sin 22°} = \\frac{1000}{\\sin 12°}\n\\]\n\\[\n BP = \\frac{1000 \\sin 22°}{\\sin 12°} = \\frac{1000 \\times 0.3746}{0.2079} \\approx 1802 \\text{ m}\n\\]\n\nNow in right triangle $BPC$:\n\\[\n h = BP \\sin 34° = 1802 \\times 0.5592 \\approx 1008 \\text{ m}\n\\]\n\nThe mountain peak is approximately **1008 meters** above the ground level."
+    },
+    {
+      "type": "paragraph",
+      "text": ". It was used \nextensively in the Great Trigonometric Survey of India (1802–1871), \nwhich mapped the subcontinent and determined the height of Mount Everest.}"
+    },
+    {
+      "type": "example",
+      "id": "example-8.8",
+      "number": "8.8",
+      "title": "Sailing bearing problem",
+      "problem": "A ship leaves port and sails 80 nautical miles on a bearing of N$40°$W. \nIt then changes course and sails 60 nautical miles on a bearing of S$30°$W. \nHow far is the ship from port, and what bearing would take it directly \nback to port?",
+      "solution": "Let $P$ be the port, $Q$ be the position after the first leg, and $R$ \nbe the final position.\n\nFirst, we need to find the angle at $Q$ in triangle $PQR$. The ship \ninitially traveled N$40°$W (so $40°$ west of north), then turned to \nS$30°$W (so $30°$ west of south).\n\nThe angle between \"north\" and \"south\" is $180°$. The angle at $Q$ \nbetween the two paths is:\n\\[\n \\angle PQR = 180° - 40° - 30° = 110°\n\\]\n\nWait—that's the exterior angle. The interior angle is actually the \nchange in bearing. When you're heading N$40°$W and turn to head S$30°$W, \nyou turn through:\n\\[\n \\angle Q = 40° + 30° = 70° \\quad \\text{(the angle between the two course lines)}\n\\]\n\nActually, let's reconsider. The angle at $Q$ measured inside the triangle \nis $180° - 70° = 110°$ (the supplement of the turn angle).\n\nHmm, let's think more carefully with a diagram:\n\ncenter\ntikzpicture[scale=0.06]\n (P) at (0,0);\n (Q) at (-51.4,61.3);\n (R) at (-81.4,9.4);\n \n % Triangle\n (P) – (Q) – (R) – cycle;\n \n % North arrows\n (P) – (0,40);\n (Q) – (-51.4,101.3);\n \n % Labels\n at (P) {$P$};\n at (Q) {$Q$};\n at (R) {$R$};\n \n % Distances\n at (-25,35) {80};\n at (-70,40) {60};\ntikzpicture\ncenter\n\nThe angle at $Q$ inside the triangle: traveling from $P$ toward $Q$, you're \nheading N$40°$W. At $Q$, if you were to continue straight, you'd still be \nheading N$40°$W. But you turn to head S$30°$W.\n\nThe angle between N$40°$W (continued) and S$30°$W:\n$$\n \\text{N}40°\\text{W extended backward} &= \\text{S}40°\\text{E} \\\\\n \\text{Turn from S}40°\\text{E to S}30°\\text{W} &= 40° + 30° = 70°\n$$\n\nSo the interior angle at $Q$ is $180° - 70° = 110°$.\n\nUsing the Law of Cosines (which we'll study next section) would be more \ndirect, but with the Law of Sines, we can set up:\n\nActually, since we have SAS (two sides and the included angle), the Law \nof Cosines is the better tool here. Let's modify the problem.\n\n*We'll return to this type of problem after developing the Law of \nCosines in Section 8.2.*"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Circumscribed Circle Connection"
+    },
+    {
+      "type": "paragraph",
+      "text": "There's a beautiful geometric interpretation of the Law of Sines that \nconnects it to the circumscribed circle of a triangle."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.2",
+      "number": "8.2",
+      "title": "Law of Sines and the Circumradius",
+      "content": "In any triangle $ABC$ with circumradius $R$ (the radius of the \ncircumscribed circle):\n\\[\n \\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This remarkable result says that the common value of all those ratios \nis exactly twice the circumradius. Every triangle has a unique circle \npassing through its three vertices, and the Law of Sines constant equals \nthe diameter of that circle."
+    },
+    {
+      "type": "example",
+      "id": "example-8.9",
+      "number": "8.9",
+      "title": "Finding the circumradius",
+      "problem": "Find the radius of the circle circumscribed about a triangle with \n$A = 45°$, $B = 60°$, and $a = 10$.",
+      "solution": "Using the extended Law of Sines:\n\\[\n 2R = \\frac{a}{\\sin A} = \\frac{10}{\\sin 45°} = \\frac{10}{0.7071} \\approx 14.14\n\\]\n\\[\n R \\approx 7.07\n\\]\n\nThe circumscribed circle has radius approximately $7.07$ units."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:12",
+      "text": "Who has measured the waters in the hollow \nof his hand, or with the breadth of his hand marked off the heavens?"
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 3:5--6",
+      "text": "Trust in the Lord with all your heart \nand lean not on your own understanding; in all your ways submit to him, \nand he will make your paths straight."
+    }
+  ]
+}

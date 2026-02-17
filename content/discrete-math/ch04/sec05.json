@@ -1,0 +1,90 @@
+{
+  "id": "discrete-math-ch04-sec05",
+  "title": "Applications of Number Theory",
+  "chapter": 4,
+  "section": 5,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"The secret things belong to the Lord our God, but the \nthings revealed belong to us.\"*{Deuteronomy 29:29}{Cryptography is the art of creating mathematical assurances for who can do what with data.}{Ronald Rivest}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Number theory, once considered the purest of pure mathematics, now has \nvital practical applications in cryptography, computer science, and \ncoding theory."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Check Digits"
+    },
+    {
+      "type": "paragraph",
+      "text": "Many identification numbers include a **check digit** to detect errors. Modular arithmetic makes this possible."
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "ISBN-10 Check Digit",
+      "problem": "An ISBN-10 $d_1 d_2 \\ldots d_{10}$ satisfies:\n\\[ \\sum_{i=1}^{10} i \\cdot d_i \\equiv 0 \\pmod{11} \\]\n\nFor ISBN 0-201-31452-?, find the check digit.\n$$\n&1(0) + 2(2) + 3(0) + 4(1) + 5(3) + 6(1) + 7(4) + 8(5) + 9(2) + 10(?) \\\\\n&= 0 + 4 + 0 + 4 + 15 + 6 + 28 + 40 + 18 + 10x = 115 + 10x\n$$\nWe need $115 + 10x \\equiv 0 \\pmod{11}$, i.e., $10x \\equiv -115 \\equiv 6 \\pmod{11}$.\n\nSince $10 \\equiv -1 \\pmod{11}$: $-x \\equiv 6$, so $x \\equiv 5 \\pmod{11}$.\n\nCheck digit: 5.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Cryptography: RSA"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **RSA cryptosystem** is the foundation of secure \ninternet communication. Its security rests on the difficulty of factoring \nlarge numbers."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-4.5",
+      "number": null,
+      "title": "RSA Key Generation",
+      "content": "1. Choose two large primes $p$ and $q$.\n\n2. Compute $n = pq$ and $\\phi(n) = (p-1)(q-1)$.\n\n3. Choose $e$ with $\\gcd(e, \\phi(n)) = 1$.\n\n4. Compute $d$ such that $ed \\equiv 1 \\pmod{\\phi(n)}$.\n\n5. **Public key**: $(n, e)$. **Private key**: $d$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Encryption**: $C \\equiv M^e \\pmod{n}$"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Decryption**: $M \\equiv C^d \\pmod{n}$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "Simplified RSA",
+      "problem": "Let $p = 5$, $q = 11$. Then $n = 55$ and $\\phi(55) = 4 \\cdot 10 = 40$.\n\nChoose $e = 3$ (coprime to 40). Find $d$: $3d \\equiv 1 \\pmod{40}$.\n\nSince $3 \\cdot 27 = 81 = 2 \\cdot 40 + 1$, we have $d = 27$.\n\nTo encrypt $M = 7$: $C = 7^3 \\mod 55 = 343 \\mod 55 = 13$.\n\nTo decrypt: $13^{27} \\mod 55 = 7$. $\\checkmark$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Hashing"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Hash functions** map data to fixed-size \nvalues, often using modular arithmetic."
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": "Simple hash",
+      "problem": "Hash function: $h(k) = k \\mod 13$.\n\nKeys 27, 13, 55, 40 hash to: $h(27) = 1$, $h(13) = 0$, $h(55) = 3$, $h(40) = 1$.\n\nNote: 27 and 40 **collide**—they hash to the same value.",
+      "solution": ""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 25:2",
+      "text": "It is the glory of God to conceal a matter; \nto search out a matter is the glory of kings."
+    }
+  ]
+}

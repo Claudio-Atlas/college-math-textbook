@@ -1,0 +1,440 @@
+{
+  "id": "algebra-2-ch09-sec02",
+  "title": "Geometric Sequences and Series",
+  "chapter": 9,
+  "section": 2,
+  "book": "algebra-2",
+  "devotional": {
+    "title": "Exponential Blessing",
+    "scripture": "Genesis 17:2",
+    "content": "{AtlasWarmI}{ will}\nmake you very fruitful; I will make nations of you, and kings will \ncome from you.\n\nGod's promise to Abraham was geometric, not arithmetic. He didn't \npromise to add descendants but to multiply them—\"as numerous as the \nstars.\" Geometric growth starts slowly but accelerates without bound.\n\nAbraham and Sarah had one son of promise. From Isaac came Jacob, then \ntwelve sons, then the tribes of Israel. Each generation multiplied. \nToday, Abraham's spiritual descendants include all who share his faith.\n\nGeometric sequences teach us about multiplication and growth that \ncompounds over time. A small seed, given time and the right conditions, \nbecomes an abundant harvest. Faith the size of a mustard seed can \nmove mountains.",
+    "reflection": "Geometric growth starts small but becomes vast. \nHow does this pattern encourage patience in spiritual growth and \nkingdom work?"
+  },
+  "epigraph": {
+    "text": "So shall your offspring be.",
+    "reference": "Genesis 15:5"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "While arithmetic sequences grow by addition, geometric sequences grow \nby multiplication. This leads to exponential behavior—growth or decay \nthat accelerates over time. Geometric sequences model population growth, \nradioactive decay, and perhaps most importantly, compound interest. \nUnderstanding geometric sequences is essential for financial literacy \nand for grasping many natural phenomena."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Defining Geometric Sequences"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Geometric Sequence",
+      "content": "A **geometric sequence** is a sequence \nwhere consecutive terms have a constant ratio called the **common \nratio** $r$:\n\\[\n \\frac{a_n}{a_{n-1}} = r\n\\]\nEquivalently, each term is obtained by multiplying the previous term by $r$:\n\\[\n a_1, \\quad a_1 r, \\quad a_1 r^2, \\quad a_1 r^3, \\quad \\ldots\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The common ratio $r$ determines the behavior of the sequence:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "If $r > 1$, the sequence grows exponentially (terms increase rapidly).",
+        "If $0 < r < 1$, the sequence decays exponentially (terms approach 0).",
+        "If $r = 1$, the sequence is constant (every term equals $a_1$).",
+        "If $-1 < r < 0$, terms alternate in sign and approach 0.",
+        "If $r < -1$, terms alternate and grow in absolute value.",
+        "If $r = -1$, terms alternate between $a_1$ and $-a_1$."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Identifying geometric sequences",
+      "problem": "Determine whether each sequence is geometric. If so, find the common ratio.\n\n1. $3, 6, 12, 24, 48, \\ldots$\n\n2. $100, 50, 25, 12.5, \\ldots$\n\n3. $2, 6, 18, 54, 162, \\ldots$\n\n4. $1, 4, 9, 16, 25, \\ldots$",
+      "solution": "1. $\\frac{6}{3}=2$, $\\frac{12}{6}=2$, $\\frac{24}{12}=2$, $\\frac{48}{24}=2$ \\\\ \n Geometric with $r = 2$\n\n2. $\\frac{50}{100}=\\frac{1}{2}$, $\\frac{25}{50}=\\frac{1}{2}$, $\\frac{12.5}{25}=\\frac{1}{2}$ \\\\ \n Geometric with $r = \\frac{1}{2}$\n\n3. $\\frac{6}{2}=3$, $\\frac{18}{6}=3$, $\\frac{54}{18}=3$, $\\frac{162}{54}=3$ \\\\ \n Geometric with $r = 3$\n\n4. $\\frac{4}{1}=4$, $\\frac{9}{4}=2.25$, $\\frac{16}{9}\\approx 1.78$ \\\\ \n Not geometric (ratios are not constant)"
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "More identification practice",
+      "problem": "Determine whether each sequence is geometric and find $r$ if so.\n\n1. $-4, 8, -16, 32, -64, \\ldots$\n\n2. $1, 1, 1, 1, 1, \\ldots$\n\n3. $81, 27, 9, 3, 1, \\ldots$\n\n4. $1, 2, 4, 7, 11, \\ldots$",
+      "solution": "1. $\\frac{8}{-4}=-2$, $\\frac{-16}{8}=-2$, $\\frac{32}{-16}=-2$, $\\frac{-64}{32}=-2$ \\\\\n Geometric with $r = -2$ (alternating signs)\n\n2. $\\frac{1}{1}=1$ for all consecutive pairs \\\\\n Geometric with $r = 1$ (constant sequence)\n\n3. $\\frac{27}{81}=\\frac{1}{3}$, $\\frac{9}{27}=\\frac{1}{3}$, $\\frac{3}{9}=\\frac{1}{3}$, $\\frac{1}{3}=\\frac{1}{3}$ \\\\\n Geometric with $r = \\frac{1}{3}$\n\n4. $\\frac{2}{1}=2$, $\\frac{4}{2}=2$, $\\frac{7}{4}=1.75$, $\\frac{11}{7}\\approx 1.57$ \\\\\n Not geometric (differences are $1, 2, 3, 4, \\ldots$—this is neither arithmetic nor geometric)"
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Writing terms of a geometric sequence",
+      "problem": "Write the first six terms of the geometric sequence with $a_1 = 5$ \nand $r = -2$.",
+      "solution": "Starting with $a_1 = 5$ and multiplying by $r = -2$ repeatedly:\n$$\n a_1 &= 5 \\\\\n a_2 &= 5 \\cdot (-2) = -10 \\\\\n a_3 &= -10 \\cdot (-2) = 20 \\\\\n a_4 &= 20 \\cdot (-2) = -40 \\\\\n a_5 &= -40 \\cdot (-2) = 80 \\\\\n a_6 &= 80 \\cdot (-2) = -160\n$$\nThe sequence is $5, -10, 20, -40, 80, -160, \\ldots$ (alternating signs)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The $n$th Term Formula"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Explicit Formula for Geometric Sequences",
+      "content": "The $n$th term of a geometric sequence with first term $a_1$ and \ncommon ratio $r$ is:\n\\[\n a_n = a_1 \\cdot r^{n-1}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Building the sequence term by term:\n$$\n a_1 &= a_1 = a_1 \\cdot r^0 \\\\\n a_2 &= a_1 \\cdot r = a_1 \\cdot r^1 \\\\\n a_3 &= a_1 \\cdot r^2 \\\\\n &\\vdots \\\\\n a_n &= a_1 \\cdot r^{n-1}\n$$\nEach term is obtained by multiplying $a_1$ by $r$ exactly $(n-1)$ times."
+    },
+    {
+      "type": "example",
+      "id": "example-9.4",
+      "number": "9.4",
+      "title": "Finding specific terms",
+      "problem": "For the geometric sequence with $a_1 = 4$ and $r = 3$:\n\n1. Find the 6th term\n\n2. Find the 10th term\n\n3. Which term equals 8748?",
+      "solution": "1. $a_6 = 4 \\cdot 3^5 = 4 \\cdot 243 = 972$\n\n2. $a_{10} = 4 \\cdot 3^9 = 4 \\cdot 19683 = 78732$\n\n3. Solve $8748 = 4 \\cdot 3^{n-1}$:\n \\[\n 3^{n-1} = 2187 = 3^7 \\implies n-1 = 7 \\implies n = 8\n \\]\n The 8th term equals 8748."
+    },
+    {
+      "type": "example",
+      "id": "example-9.5",
+      "number": "9.5",
+      "title": "Working with decay",
+      "problem": "A radioactive substance has a half-life of 1 hour. Starting with 1000 \ngrams:\n\n1. Write a formula for the amount remaining after $n$ hours.\n\n2. How much remains after 8 hours?\n\n3. When does less than 1 gram remain?",
+      "solution": "This is geometric with $a_1 = 1000$ (initial amount) and $r = \\frac{1}{2}$ \n(halves each hour).\n\n1. After $n$ hours, the amount is $a_{n+1} = 1000 \\cdot \\left(\\frac{1}{2}\\right)^n$ \n grams. (We use $n+1$ since $a_1$ is at time 0.)\n \n Or more naturally: $A(t) = 1000 \\cdot \\left(\\frac{1}{2}\\right)^t$ where \n $t$ is time in hours.\n\n2. $A(8) = 1000 \\cdot \\left(\\frac{1}{2}\\right)^8 = 1000 \\cdot \\frac{1}{256} \\approx 3.91$ grams\n\n3. Solve $1000 \\cdot \\left(\\frac{1}{2}\\right)^t < 1$:\n \\[\n \\left(\\frac{1}{2}\\right)^t < \\frac{1}{1000}\n \\]\n \\[\n 2^t > 1000\n \\]\n \\[\n t > \\log_2(1000) = \\frac{\\ln 1000}{\\ln 2} \\approx 9.97\n \\]\n Less than 1 gram remains after about 10 hours."
+    },
+    {
+      "type": "example",
+      "id": "example-9.6",
+      "number": "9.6",
+      "title": "Finding the formula from terms",
+      "problem": "A geometric sequence has $a_3 = 20$ and $a_6 = 540$. Find $a_1$, $r$, \nand $a_n$.",
+      "solution": "Using $a_n = a_1 r^{n-1}$:\n$$\n a_3 &= a_1 r^2 = 20 \\\\\n a_6 &= a_1 r^5 = 540\n$$\n\nDivide the second equation by the first:\n\\[\n \\frac{a_1 r^5}{a_1 r^2} = \\frac{540}{20} \\implies r^3 = 27 \\implies r = 3\n\\]\n\nSubstitute back: $a_1 \\cdot 9 = 20 \\implies a_1 = \\frac{20}{9}$\n\nThe explicit formula is $a_n = \\frac{20}{9} \\cdot 3^{n-1}$.\n\nCheck: $a_3 = \\frac{20}{9} \\cdot 9 = 20$ \n$a_6 = \\frac{20}{9} \\cdot 243 = 540$"
+    },
+    {
+      "type": "example",
+      "id": "example-9.7",
+      "number": "9.7",
+      "title": "Finding $a_1$ and $r$ from non-consecutive terms",
+      "problem": "A geometric sequence has $a_4 = 24$ and $a_7 = 192$. Find the explicit \nformula.",
+      "solution": "$$\n a_4 &= a_1 r^3 = 24 \\\\\n a_7 &= a_1 r^6 = 192\n$$\n\nDividing: $\\frac{a_1 r^6}{a_1 r^3} = \\frac{192}{24}$\n\n$r^3 = 8 \\implies r = 2$\n\nSubstituting: $a_1 \\cdot 8 = 24 \\implies a_1 = 3$\n\nThe formula is $a_n = 3 \\cdot 2^{n-1}$.\n\nCheck: $a_4 = 3 \\cdot 2^3 = 24$ , $a_7 = 3 \\cdot 2^6 = 192$"
+    },
+    {
+      "type": "example",
+      "id": "example-9.8",
+      "number": "9.8",
+      "title": "Geometric means",
+      "problem": "Insert two geometric means between 2 and 54.",
+      "solution": "We need a sequence: $2, \\_, \\_, 54$ with 4 terms total.\n\nHere $a_1 = 2$ and $a_4 = 54$:\n\\[\n 54 = 2 \\cdot r^3 \\implies r^3 = 27 \\implies r = 3\n\\]\n\nThe sequence is: $2, 6, 18, 54$\n\nThe two geometric means are $6$ and $18$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.9",
+      "number": "9.9",
+      "title": "Multiple geometric means",
+      "problem": "Insert four geometric means between 3 and 96.",
+      "solution": "The sequence has 6 terms: $3, \\_, \\_, \\_, \\_, 96$ with $a_1 = 3$ and $a_6 = 96$.\n\n\\[\n 96 = 3 \\cdot r^5 \\implies r^5 = 32 \\implies r = 2\n\\]\n\nThe sequence is: $3, 6, 12, 24, 48, 96$\n\nThe four geometric means are $6, 12, 24, 48$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Geometric Mean of Two Numbers",
+      "content": "The **geometric mean** of two positive \nnumbers $a$ and $b$ is:\n\\[\n \\text{Geometric Mean} = \\sqrt{ab}\n\\]\nThis is the single geometric mean between $a$ and $b$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.10",
+      "number": "9.10",
+      "title": "Single geometric mean",
+      "problem": "Find the geometric mean between 4 and 16.",
+      "solution": "\\[\n \\text{Geometric Mean} = \\sqrt{4 \\cdot 16} = \\sqrt{64} = 8\n\\]\nThe sequence $4, 8, 16$ is geometric with $r = 2$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-9.2",
+      "number": null,
+      "title": "Geometric Mean vs.\\ Arithmetic Mean",
+      "content": "For the numbers 4 and 16:\n\n- Arithmetic mean: $\\frac{4 + 16}{2} = 10$\n\n- Geometric mean: $\\sqrt{4 \\cdot 16} = 8$\nThe geometric mean is always less than or equal to the arithmetic mean \n(with equality only when $a = b$). This is the AM-GM inequality."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Finite Geometric Series"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.3",
+      "number": "9.3",
+      "title": "Geometric Series",
+      "content": "A **geometric series** is the sum of \nthe terms of a geometric sequence:\n\\[\n S_n = a_1 + a_1 r + a_1 r^2 + \\cdots + a_1 r^{n-1}\n\\]\nThe value $S_n$ is the **$n$th partial sum**."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "Sum of a Finite Geometric Series",
+      "content": "For $r \\neq 1$, the sum of the first $n$ terms of a geometric sequence is:\n\\[\n S_n = a_1 \\cdot \\frac{1 - r^n}{1 - r} = a_1 \\cdot \\frac{r^n - 1}{r - 1}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $S_n = a_1 + a_1 r + a_1 r^2 + \\cdots + a_1 r^{n-1}$.\n\nMultiply both sides by $r$:\n\\[\n rS_n = a_1 r + a_1 r^2 + a_1 r^3 + \\cdots + a_1 r^n\n\\]\n\nSubtract the first equation from the second:\n\\[\n rS_n - S_n = a_1 r^n - a_1\n\\]\n\\[\n S_n(r - 1) = a_1(r^n - 1)\n\\]\n\\[\n S_n = a_1 \\cdot \\frac{r^n - 1}{r - 1}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.11",
+      "number": "9.11",
+      "title": "Sum of geometric series",
+      "problem": "Find the sum $2 + 6 + 18 + 54 + \\cdots + 4374$.",
+      "solution": "Here $a_1 = 2$ and $r = 3$. First find $n$:\n\\[\n 4374 = 2 \\cdot 3^{n-1} \\implies 3^{n-1} = 2187 = 3^7 \\implies n = 8\n\\]\n\nThen:\n\\[\n S_8 = 2 \\cdot \\frac{3^8 - 1}{3 - 1} = 2 \\cdot \\frac{6561 - 1}{2} = 6560\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.12",
+      "number": "9.12",
+      "title": "Sum with $r < 1$",
+      "problem": "Find the sum $100 + 50 + 25 + 12.5 + \\cdots$ (first 8 terms).",
+      "solution": "Here $a_1 = 100$ and $r = \\frac{1}{2}$:\n\\[\n S_8 = 100 \\cdot \\frac{1 - (1/2)^8}{1 - 1/2} = 100 \\cdot \\frac{1 - 1/256}{1/2} = 200 \\cdot \\frac{255}{256} = \\frac{51000}{256} \\approx 199.22\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.13",
+      "number": "9.13",
+      "title": "Sum with negative ratio",
+      "problem": "Find the sum of the first 10 terms of $6, -12, 24, -48, \\ldots$",
+      "solution": "Here $a_1 = 6$ and $r = -2$:\n\\[\n S_{10} = 6 \\cdot \\frac{1 - (-2)^{10}}{1 - (-2)} = 6 \\cdot \\frac{1 - 1024}{3} = 6 \\cdot \\frac{-1023}{3} = -2046\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.14",
+      "number": "9.14",
+      "title": "Finding $n$ given the sum",
+      "problem": "For the geometric series with $a_1 = 5$ and $r = 2$, find $n$ if $S_n = 635$.",
+      "solution": "\\[\n 635 = 5 \\cdot \\frac{2^n - 1}{2 - 1} = 5(2^n - 1)\n\\]\n\\[\n 127 = 2^n - 1 \\implies 2^n = 128 = 2^7 \\implies n = 7\n\\]\n\nCheck: $S_7 = 5 + 10 + 20 + 40 + 80 + 160 + 320 = 635$"
+    },
+    {
+      "type": "example",
+      "id": "example-9.15",
+      "number": "9.15",
+      "title": "Finding $a_1$ given the sum",
+      "problem": "A geometric series has $r = 3$, $n = 5$, and $S_5 = 605$. Find $a_1$.",
+      "solution": "\\[\n 605 = a_1 \\cdot \\frac{3^5 - 1}{3 - 1} = a_1 \\cdot \\frac{243 - 1}{2} = a_1 \\cdot \\frac{242}{2} = 121a_1\n\\]\n\\[\n a_1 = \\frac{605}{121} = 5\n\\]\n\nThe sequence is $5, 15, 45, 135, 405$ with sum $605$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Infinite Geometric Series and Convergence"
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the most remarkable results in mathematics is that some infinite \nsums have finite values. When $|r| < 1$, the terms of a geometric \nsequence get smaller and smaller, allowing the sum to approach a limit."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.3",
+      "number": "9.3",
+      "title": "Sum of an Infinite Geometric Series",
+      "content": "If $|r| < 1$, the infinite geometric series converges to:\n\\[\n S_\\infty = \\sum_{n=1}^{\\infty} a_1 r^{n-1} = \\frac{a_1}{1 - r}\n\\]\nIf $|r| \\geq 1$, the series diverges (has no finite sum).",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "For the partial sums, we have:\n\\[\n S_n = a_1 \\cdot \\frac{1 - r^n}{1 - r}\n\\]\n\nWhen $|r| < 1$, as $n \\to \\infty$, we have $r^n \\to 0$. Therefore:\n\\[\n S_\\infty = \\lim_{n \\to \\infty} S_n = \\lim_{n \\to \\infty} a_1 \\cdot \\frac{1 - r^n}{1 - r} = \\frac{a_1 \\cdot (1 - 0)}{1 - r} = \\frac{a_1}{1 - r}\n\\]"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.4",
+      "number": "9.4",
+      "title": "Convergence and Divergence",
+      "content": "A series **converges** if its partial sums \napproach a finite limit. A series **diverges** \nif its partial sums grow without bound or fail to approach a single value."
+    },
+    {
+      "type": "example",
+      "id": "example-9.16",
+      "number": "9.16",
+      "title": "Infinite sum",
+      "problem": "Find the sum $\\sum_{n=1}^{\\infty} 8 \\cdot \\left(\\frac{1}{4}\\right)^{n-1}$.",
+      "solution": "Here $a_1 = 8$ and $r = \\frac{1}{4}$. Since $|r| = \\frac{1}{4} < 1$:\n\\[\n S_\\infty = \\frac{8}{1 - 1/4} = \\frac{8}{3/4} = \\frac{32}{3}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.17",
+      "number": "9.17",
+      "title": "Visualizing convergence",
+      "problem": "For the series $1 + \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} + \\cdots$, \ncompute several partial sums and verify convergence to 2.",
+      "solution": "Here $a_1 = 1$ and $r = \\frac{1}{2}$:\n$$\n S_1 &= 1 \\\\\n S_2 &= 1 + 0.5 = 1.5 \\\\\n S_3 &= 1.5 + 0.25 = 1.75 \\\\\n S_4 &= 1.75 + 0.125 = 1.875 \\\\\n S_5 &= 1.875 + 0.0625 = 1.9375 \\\\\n S_{10} &\\approx 1.998\n$$\n\nThe partial sums approach $S_\\infty = \\frac{1}{1 - 1/2} = 2$.\n\nGeometrically: If you walk half the remaining distance to a wall \nrepeatedly, you get closer and closer but the total distance approaches \na fixed limit."
+    },
+    {
+      "type": "example",
+      "id": "example-9.18",
+      "number": "9.18",
+      "title": "Divergence example",
+      "problem": "Explain why $2 + 4 + 8 + 16 + \\cdots$ diverges.",
+      "solution": "Here $r = 2 > 1$, so the terms grow larger instead of smaller. The \npartial sums grow without bound:\n$$\n S_1 &= 2 \\\\\n S_5 &= 2 + 4 + 8 + 16 + 32 = 62 \\\\\n S_{10} &= 2(2^{10} - 1) = 2046\n$$\n\nThere is no finite value for this infinite sum."
+    },
+    {
+      "type": "example",
+      "id": "example-9.19",
+      "number": "9.19",
+      "title": "Repeating decimal",
+      "problem": "Write $0.\\overline{36} = 0.363636\\ldots$ as a fraction.",
+      "solution": "\\[\n 0.\\overline{36} = 0.36 + 0.0036 + 0.000036 + \\cdots\n\\]\n\nThis is geometric with $a_1 = 0.36$ and $r = 0.01$:\n\\[\n S_\\infty = \\frac{0.36}{1 - 0.01} = \\frac{0.36}{0.99} = \\frac{36}{99} = \\frac{4}{11}\n\\]\n\nCheck: $\\frac{4}{11} = 0.363636\\ldots$"
+    },
+    {
+      "type": "example",
+      "id": "example-9.20",
+      "number": "9.20",
+      "title": "Converting repeating decimals",
+      "problem": "Write $0.7\\overline{23} = 0.72323\\ldots$ as a fraction.",
+      "solution": "\\[\n 0.7\\overline{23} = 0.7 + 0.023 + 0.00023 + 0.0000023 + \\cdots\n\\]\n\nThe repeating part is geometric with $a_1 = 0.023$ and $r = 0.01$:\n\\[\n 0.023 + 0.00023 + \\cdots = \\frac{0.023}{1 - 0.01} = \\frac{0.023}{0.99} = \\frac{23}{990}\n\\]\n\nTotal:\n\\[\n 0.7\\overline{23} = \\frac{7}{10} + \\frac{23}{990} = \\frac{693}{990} + \\frac{23}{990} = \\frac{716}{990} = \\frac{358}{495}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.21",
+      "number": "9.21",
+      "title": "Bouncing ball",
+      "problem": "A ball is dropped from a height of 10 feet and bounces to 80\\% of its \nprevious height on each bounce. Find the total vertical distance \ntraveled by the ball.",
+      "solution": "The ball falls 10 ft, rises 8 ft, falls 8 ft, rises 6.4 ft, falls 6.4 ft, etc.\n\nTotal distance = 10 + $2(8 + 6.4 + 5.12 + \\cdots)$\n\nThe series $8 + 6.4 + \\cdots$ is geometric with $a_1 = 8$ and $r = 0.8$:\n\\[\n S_\\infty = \\frac{8}{1 - 0.8} = \\frac{8}{0.2} = 40\n\\]\n\nTotal distance $= 10 + 2(40) = 90$ feet"
+    },
+    {
+      "type": "example",
+      "id": "example-9.22",
+      "number": "9.22",
+      "title": "More bouncing ball variations",
+      "problem": "A superball dropped from 20 meters bounces to 90\\% of its previous height. \nFind the total distance traveled.",
+      "solution": "Falls: 20 m initially. Then bounces form: $18 + 16.2 + 14.58 + \\cdots$ \n(geometric with $a_1 = 18$, $r = 0.9$)\n\nDistance from bounces (each up and down): $2 \\cdot \\frac{18}{1 - 0.9} = 2 \\cdot 180 = 360$ m\n\nTotal distance $= 20 + 360 = 380$ meters."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications: Compound Interest"
+    },
+    {
+      "type": "paragraph",
+      "text": "Perhaps the most important application of geometric sequences is \ncompound interest—the foundation of savings, loans, and investments."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.5",
+      "number": "9.5",
+      "title": "Compound Interest Formula",
+      "content": "An investment of principal $P$ at annual interest rate $r$ (as a decimal), \ncompounded $n$ times per year, has value after $t$ years:\n\\[\n A = P\\left(1 + \\frac{r}{n}\\right)^{nt}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.23",
+      "number": "9.23",
+      "title": "Compound interest",
+      "problem": "You invest \\$5000 at 6\\% annual interest compounded annually. Find the \nvalue after 10 years and the total amount after making this investment \neach year for 10 years.",
+      "solution": "**Single investment:**\nThe value after $n$ years is $a_n = 5000 \\cdot 1.06^n$.\nAfter 10 years: $a_{10} = 5000 \\cdot 1.06^{10} \\approx \\$8954.24$\n\n\\textbf{Annual investments:}\nThe 1st investment grows for 10 years: $5000 1.06^{10}$\nThe 2nd investment grows for 9 years: $5000 1.06^9$\n\\vdots\nThe 10th investment grows for 1 year: $5000 1.06^1$\n\nTotal:\n\\[\n S = 5000(1.06 + 1.06^2 + \\cdots + 1.06^{10}) = 5000 \\cdot 1.06 \\cdot \\frac{1.06^{10} - 1}{1.06 - 1}\n\\]\n\\[\n S = 5000 \\cdot 1.06 \\cdot \\frac{0.7908}{0.06} \\approx \\$69,858\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.24",
+      "number": "9.24",
+      "title": "Comparing compounding frequencies",
+      "problem": "Compare the value after 5 years of \\$10,000 invested at 8\\% with:\n\n1. Annual compounding\n\n2. Monthly compounding\n\n3. Daily compounding",
+      "solution": "1. Annual ($n = 1$): $A = 10000(1.08)^5 = \\$14,693.28$\n \n \\item Monthly ($n = 12$): $A = 10000(1 + $\\frac{0.08}{12}$)^{60} = \\$14,898.46$\n\n2. Daily ($n = 365$): $A = 10000\\left(1 + \\frac{0.08}{365}\\right)^{1825} = \\$14,918.25$\n\nMore frequent compounding yields more growth, but with diminishing returns."
+    },
+    {
+      "type": "example",
+      "id": "example-9.25",
+      "number": "9.25",
+      "title": "Future value of annuity",
+      "problem": "You deposit \\$200 monthly into an account earning 6\\% annual interest \ncompounded monthly. How much will you have after 20 years?",
+      "solution": "Monthly rate: $r = \\frac{0.06}{12} = 0.005$\n\nNumber of deposits: $n = 20 \\times 12 = 240$\n\nEach deposit grows as a geometric sequence. The first deposit grows for \n240 months, the last grows for 1 month.\n\nFuture value of annuity:\n\\[\n FV = PMT \\cdot \\frac{(1 + r)^n - 1}{r} = 200 \\cdot \\frac{(1.005)^{240} - 1}{0.005}\n\\]\n\\[\n FV = 200 \\cdot \\frac{3.310 - 1}{0.005} = 200 \\cdot 462.04 = \\$92,408\n\\]\n\nYou deposited $200 \\times 240 = \\$48,000$ but earned nearly \\$44,408 in interest!"
+    },
+    {
+      "type": "example",
+      "id": "example-9.26",
+      "number": "9.26",
+      "title": "The Rule of 72",
+      "problem": "The \"Rule of 72\" states that money doubles in approximately $\\frac{72}{r}$ \nyears at $r\\%$ interest. Verify this for 6\\% interest.",
+      "solution": "At 6\\% interest compounded annually, we want $2P = P(1.06)^t$:\n\\[\n 2 = 1.06^t \\implies t = \\frac{\\ln 2}{\\ln 1.06} \\approx 11.9 \\text{ years}\n\\]\n\nRule of 72 prediction: $\\frac{72}{6} = 12$ years\n\nThe rule gives an excellent approximation!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications: Population Growth"
+    },
+    {
+      "type": "example",
+      "id": "example-9.27",
+      "number": "9.27",
+      "title": "Population growth",
+      "problem": "A bacterial culture doubles every 3 hours. Starting with 500 bacteria, \nfind:\n\n1. The population after 24 hours\n\n2. When the population exceeds 1 million",
+      "solution": "The sequence is geometric with $a_1 = 500$ and $r = 2$. The number of \ndoublings in $t$ hours is $t/3$.\n\n1. After 24 hours, there are $24/3 = 8$ doublings:\n \\[\n a_9 = 500 \\cdot 2^8 = 500 \\cdot 256 = 128{,}000 \\text{ bacteria}\n \\]\n\n2. Solve $500 \\cdot 2^n > 1{,}000{,}000$:\n \\[\n 2^n > 2000 \\implies n > \\log_2(2000) \\approx 10.97\n \\]\n So $n = 11$ doublings needed, which takes $33$ hours."
+    },
+    {
+      "type": "example",
+      "id": "example-9.28",
+      "number": "9.28",
+      "title": "Population decline",
+      "problem": "A wildlife population decreases by 8\\% each year due to habitat loss. \nStarting with 12,000 animals:\n\n1. Find the population after 10 years.\n\n2. When will the population fall below 1,000?",
+      "solution": "Geometric with $a_1 = 12000$ and $r = 1 - 0.08 = 0.92$.\n\n1. $a_{11} = 12000 \\cdot (0.92)^{10} = 12000 \\cdot 0.434 \\approx 5209$ animals\n\n2. Solve $12000 \\cdot (0.92)^n < 1000$:\n \\[\n (0.92)^n < \\frac{1}{12}\n \\]\n \\[\n n \\ln(0.92) < \\ln\\left(\\frac{1}{12}\\right)\n \\]\n \\[\n n > \\frac{\\ln(1/12)}{\\ln(0.92)} = \\frac{-2.485}{-0.0834} \\approx 29.8\n \\]\n The population falls below 1,000 after about 30 years."
+    },
+    {
+      "type": "example",
+      "id": "example-9.29",
+      "number": "9.29",
+      "title": "Medication decay",
+      "problem": "A patient takes 400 mg of medication. Each hour, 15\\% of the medication \nis eliminated from the body.\n\n1. How much remains after 6 hours?\n\n2. When does less than 50 mg remain?",
+      "solution": "Geometric with $a_1 = 400$ and $r = 1 - 0.15 = 0.85$.\n\n1. $a_7 = 400 \\cdot (0.85)^6 = 400 \\cdot 0.377 \\approx 151$ mg\n\n2. Solve $400 \\cdot (0.85)^n < 50$:\n \\[\n (0.85)^n < 0.125\n \\]\n \\[\n n > \\frac{\\ln(0.125)}{\\ln(0.85)} \\approx 12.8\n \\]\n Less than 50 mg remains after about 13 hours."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Comparing Arithmetic and Geometric Sequences"
+    },
+    {
+      "type": "example",
+      "id": "example-9.30",
+      "number": "9.30",
+      "title": "When geometric overtakes arithmetic",
+      "problem": "Compare the sequences: arithmetic with $a_1 = 100$, $d = 50$ and \ngeometric with $a_1 = 1$, $r = 2$. When does the geometric sequence \nexceed the arithmetic?",
+      "solution": "| $n$ | Arithmetic: $100 + 50(n-1)$ | Geometric: $2^{n-1}$ |\n| 1 | 100 | 1 |\n| 5 | 300 | 16 |\n| 10 | 550 | 512 |\n| 11 | 600 | 1024 |\n\nThe geometric sequence first exceeds the arithmetic at $n = 10$.\n\nFor large $n$, geometric growth always eventually exceeds arithmetic \ngrowth (when $r > 1$), no matter how large the arithmetic's head start."
+    },
+    {
+      "type": "example",
+      "id": "example-9.31",
+      "number": "9.31",
+      "title": "Salary comparison",
+      "problem": "Job A offers \\$50,000 with \\$3,000 annual raises (arithmetic). \nJob B offers \\$30,000 with 10\\% annual raises (geometric).\n\n1. When does Job B's salary exceed Job A's?\n\n2. Compare total earnings over 20 years.",
+      "solution": "Job A: $a_n = 50000 + 3000(n-1) = 47000 + 3000n$\n\nJob B: $b_n = 30000 \\cdot (1.1)^{n-1}$\n\n1. Solving $b_n > a_n$ numerically:\n \n\n| Year | Job A | Job B |\n| 1 | 50,000 | 30,000 |\n| 5 | 62,000 | 43,923 |\n| 10 | 77,000 | 70,685 |\n| 12 | 83,000 | 85,603 |\n\n \n Job B exceeds Job A in year 12.\n\n2. Job A total (arithmetic series):\n \\[\n S_{20} = \\frac{20}{2}(50000 + 107000) = 10 \\cdot 157000 = \\$1,570,000\n \\]\n \n Job B total (geometric series):\n \\[\n S_{20} = 30000 \\cdot \\frac{(1.1)^{20} - 1}{0.1} = 30000 \\cdot \\frac{6.727 - 1}{0.1} = \\$1,718,100\n \\]\n \n Job B pays \\$148,100 more over 20 years despite the lower start."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Genesis 22:17",
+      "text": "I will surely bless you and make your \ndescendants as numerous as the stars in the sky and as the sand on the seashore."
+    },
+    {
+      "type": "scripture",
+      "reference": "Matthew 13:8",
+      "text": "Still other seed fell on good soil, where \nit produced a crop—a hundred, sixty or thirty times what was sown."
+    },
+    {
+      "type": "scripture",
+      "reference": "Deuteronomy 1:10",
+      "text": "The Lord your God has increased your \nnumbers so that today you are as numerous as the stars in the sky."
+    },
+    {
+      "type": "scripture",
+      "reference": "Luke 6:38",
+      "text": "Give, and it will be given to you. A good \nmeasure, pressed down, shaken together and running over, will be \npoured into your lap."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 147:5",
+      "text": "Great is our Lord and mighty in power; \nHis understanding has no limit."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 21:20",
+      "text": "The wise store up choice food and \nolive oil, but fools gulp theirs down."
+    }
+  ]
+}

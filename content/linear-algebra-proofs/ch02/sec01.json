@@ -1,0 +1,222 @@
+{
+  "id": "linear-algebra-proofs-ch02-sec01",
+  "title": "Linear Combinations and Span",
+  "chapter": 2,
+  "section": 1,
+  "book": "linear-algebra-proofs",
+  "content": [
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Linear Combination",
+      "content": "Let $V$ be a vector space over $\\FF$ and let $v_1, \\ldots, v_n \\in V$. \nA **linear combination** of $v_1, \\ldots, v_n$ \nis any vector of the form\n\\[\n\\alpha_1 v_1 + \\alpha_2 v_2 + \\cdots + \\alpha_n v_n\n\\]\nwhere $\\alpha_1, \\ldots, \\alpha_n \\in \\FF$. The scalars $\\alpha_i$ are \ncalled the **coefficients** of the linear combination."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "Span",
+      "content": "The **span** of a set $S = \\{v_1, \\ldots, v_n\\} \\subseteq V$ is \nthe set of all linear combinations of vectors in $S$:\n\\[\n\\spn(S) = \\spn\\{v_1, \\ldots, v_n\\} = \\{\\alpha_1 v_1 + \\cdots + \\alpha_n v_n : \\alpha_i \\in \\FF\\}\n\\]\nBy convention, $\\spn(\\emptyset) = \\{0\\}$.\n\nWe say that $S$ **spans** $V$ (or that $S$ is a **spanning set** \nfor $V$) if $\\spn(S) = V$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Span is a Subspace",
+      "content": "For any subset $S$ of a vector space $V$, $\\spn(S)$ is a subspace of $V$. \nMoreover, $\\spn(S)$ is the smallest subspace of $V$ containing $S$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We verify the subspace criteria. The zero vector is in $\\spn(S)$ \n(take all coefficients equal to zero).\n\nLet $u, w \\in \\spn(S)$, say $u = \\sum \\alpha_i v_i$ and $w = \\sum \\beta_i v_i$. \nFor any $\\gamma, \\delta \\in \\FF$:\n\\[\n\\gamma u + \\delta w = \\sum (\\gamma\\alpha_i + \\delta\\beta_i) v_i \\in \\spn(S)\n\\]\n\nFor minimality: any subspace containing $S$ must contain all linear \ncombinations of elements of $S$, hence must contain $\\spn(S)$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Standard Spanning Set",
+      "problem": "The vectors $e_1 = (1, 0, \\ldots, 0)$, $e_2 = (0, 1, \\ldots, 0)$, \n…, $e_n = (0, 0, \\ldots, 1)$ span $\\FF^n$:\n\\[\n(a_1, \\ldots, a_n) = a_1 e_1 + \\cdots + a_n e_n\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.3",
+      "number": "2.3",
+      "title": "Linear Independence",
+      "content": "A list $(v_1, \\ldots, v_n)$ of vectors in $V$ is **linearly \nindependent** if the only solution to\n\\[\n\\alpha_1 v_1 + \\alpha_2 v_2 + \\cdots + \\alpha_n v_n = 0\n\\]\nis $\\alpha_1 = \\alpha_2 = \\cdots = \\alpha_n = 0$ (the **trivial solution**).\n\nA list is **linearly dependent** if it \nis not linearly independent—that is, if there exist scalars \n$\\alpha_1, \\ldots, \\alpha_n$, not all zero, such that \n$\\sum \\alpha_i v_i = 0$."
+    },
+    {
+      "type": "remark",
+      "id": "remark-2.1",
+      "number": null,
+      "title": "",
+      "content": "The empty list is linearly independent by convention."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Characterization of Dependence",
+      "content": "A list $(v_1, \\ldots, v_n)$ with $n \\geq 1$ is linearly dependent if \nand only if some $v_j$ can be written as a linear combination of \nthe preceding vectors $v_1, \\ldots, v_{j-1}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "($\\Leftarrow$) If $v_j = \\sum_{i=1}^{j-1} \\alpha_i v_i$, then\n$\\sum_{i=1}^{j-1} \\alpha_i v_i - v_j + 0 \\cdot v_{j+1} + \\cdots = 0$\nis a nontrivial linear combination equal to zero.\n\n($\\Rightarrow$) Suppose $\\sum_{i=1}^n \\alpha_i v_i = 0$ with not all \n$\\alpha_i = 0$. Let $j$ be the largest index with $\\alpha_j \\neq 0$. Then\n\\[\n\\alpha_j v_j = -\\sum_{i=1}^{j-1} \\alpha_i v_i\n\\]\nso $v_j = \\sum_{i=1}^{j-1} (-\\alpha_i/\\alpha_j) v_i$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.3",
+      "number": "2.3",
+      "title": "Independence Inherited by Subsets",
+      "content": "If $(v_1, \\ldots, v_n)$ is linearly independent, then so is any \nsublist $(v_{i_1}, \\ldots, v_{i_k})$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If $\\sum_{s=1}^k \\alpha_s v_{i_s} = 0$, extend to the full list by \nsetting missing coefficients to zero. By independence of the full \nlist, all coefficients are zero."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.4",
+      "number": "2.4",
+      "title": "Dependence with Zero Vector",
+      "content": "Any list containing the zero vector is linearly dependent.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If $v_j = 0$, then $0 \\cdot v_1 + \\cdots + 1 \\cdot v_j + \\cdots + 0 \\cdot v_n = 0$ \nis a nontrivial linear combination."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.4",
+      "number": "2.4",
+      "title": "Basis",
+      "content": "A **basis** of a vector space $V$ is a list of \nvectors in $V$ that is both linearly independent and spanning."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.5",
+      "number": "2.5",
+      "title": "Unique Representation",
+      "content": "A list $(v_1, \\ldots, v_n)$ is a basis of $V$ if and only if every \n$v \\in V$ can be written *uniquely* as\n\\[\nv = \\alpha_1 v_1 + \\cdots + \\alpha_n v_n\n\\]\nfor some $\\alpha_1, \\ldots, \\alpha_n \\in \\FF$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "($\\Rightarrow$) Since $(v_1, \\ldots, v_n)$ spans $V$, every $v$ has \nat least one representation. For uniqueness, suppose\n\\[\nv = \\alpha_1 v_1 + \\cdots + \\alpha_n v_n = \\beta_1 v_1 + \\cdots + \\beta_n v_n\n\\]\nThen $\\sum (\\alpha_i - \\beta_i) v_i = 0$. By independence, \n$\\alpha_i - \\beta_i = 0$ for all $i$.\n\n($\\Leftarrow$) If every vector has at least one representation, the \nlist spans. If every vector has at most one representation, applying \nthis to $v = 0$ shows that $\\sum \\alpha_i v_i = 0$ implies all \n$\\alpha_i = 0$, so the list is independent."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.5",
+      "number": "2.5",
+      "title": "Coordinates",
+      "content": "If $(v_1, \\ldots, v_n)$ is a basis of $V$ and $v = \\sum \\alpha_i v_i$, \nthen the scalars $\\alpha_1, \\ldots, \\alpha_n$ are the \n**coordinates** of $v$ with respect to this basis."
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Standard Basis",
+      "problem": "The **standard basis** of $\\FF^n$ is \n$(e_1, \\ldots, e_n)$ where $e_i$ has a 1 in position $i$ and 0 elsewhere. \nThe coordinates of $(a_1, \\ldots, a_n)$ are simply $a_1, \\ldots, a_n$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Polynomial Basis",
+      "problem": "The list $(1, x, x^2, \\ldots, x^n)$ is a basis of $\\mathcal{P}_n(\\FF)$.",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "The following lemma is the key to proving that all bases have the \nsame size."
+    },
+    {
+      "type": "lemma",
+      "id": "lemma-2.1",
+      "number": "2.1",
+      "title": "Exchange Lemma (Steinitz)",
+      "content": "Let $V$ be a vector space spanned by a list $(w_1, \\ldots, w_m)$. \nIf $(v_1, \\ldots, v_n)$ is linearly independent in $V$, then $n \\leq m$.",
+      "label": "Lemma"
+    },
+    {
+      "type": "proof",
+      "content": "We prove this by showing that we can successively replace $w$'s \nby $v$'s while maintaining a spanning list.\n\nSince $(w_1, \\ldots, w_m)$ spans $V$, we can write \n$v_1 = \\sum_{j=1}^m \\alpha_j w_j$. Since $v_1 \\neq 0$ (as part of \nan independent list), some $\\alpha_j \\neq 0$. Reordering, assume \n$\\alpha_1 \\neq 0$. Then\n\\[\nw_1 = \\alpha_1^{-1} v_1 - \\sum_{j=2}^m (\\alpha_1^{-1}\\alpha_j) w_j\n\\]\nso $(v_1, w_2, \\ldots, w_m)$ still spans $V$.\n\nNow $v_2 = \\beta_1 v_1 + \\sum_{j=2}^m \\beta_j w_j$. Since $v_2$ is \nnot in $\\spn\\{v_1\\}$ (by independence), some $\\beta_j \\neq 0$ for \n$j \\geq 2$. Reorder so $\\beta_2 \\neq 0$, and solve for $w_2$. \nThen $(v_1, v_2, w_3, \\ldots, w_m)$ spans.\n\nContinue this process. After $k$ steps, $(v_1, \\ldots, v_k, w_{k+1}, \\ldots, w_m)$ \nspans. If $n > m$, we would run out of $w$'s before placing all $v$'s, \nbut then $v_{m+1}$ would be in $\\spn\\{v_1, \\ldots, v_m\\}$, contradicting \nindependence. Hence $n \\leq m$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.6",
+      "number": "2.6",
+      "title": "All Bases Have the Same Size",
+      "content": "Any two bases of a finite-dimensional vector space have the same \nnumber of elements.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $(v_1, \\ldots, v_n)$ and $(w_1, \\ldots, w_m)$ be two bases of $V$. \nApplying the Exchange Lemma with the $v$'s as the independent list \nand the $w$'s as the spanning list gives $n \\leq m$. Reversing roles \ngives $m \\leq n$. Hence $m = n$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.6",
+      "number": "2.6",
+      "title": "Dimension",
+      "content": "The **dimension** of a finite-dimensional vector \nspace $V$, denoted $\\dim V$, is the number of vectors in any basis of $V$.\n\nBy convention, $\\dim\\{0\\} = 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "Standard Dimensions",
+      "problem": "- $\\dim \\FF^n = n$\n\n- $\\dim \\mathcal{P}_n(\\FF) = n + 1$\n\n- $\\dim M_{m \\times n}(\\FF) = mn$",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.7",
+      "number": "2.7",
+      "title": "Subspace Dimension",
+      "content": "If $W$ is a subspace of a finite-dimensional space $V$, then \n$\\dim W \\leq \\dim V$.\n\nMoreover, $\\dim W = \\dim V$ if and only if $W = V$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Any linearly independent list in $W$ is also linearly independent \nin $V$, so by the Exchange Lemma, its length is at most $\\dim V$. \nHence $\\dim W \\leq \\dim V$.\n\nIf $\\dim W = \\dim V = n$, let $(w_1, \\ldots, w_n)$ be a basis of $W$. \nThis is an independent list of length $n$ in $V$, hence a basis of $V$ \n(by the theorem below). Thus $W = \\spn\\{w_1, \\ldots, w_n\\} = V$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.8",
+      "number": "2.8",
+      "title": "Basis Extension and Truncation",
+      "content": "Let $V$ be a finite-dimensional vector space with $\\dim V = n$.\n\n1. Any linearly independent list can be extended to a basis.\n\n2. Any spanning list can be reduced to a basis.\n\n3. Any linearly independent list of length $n$ is a basis.\n\n4. Any spanning list of length $n$ is a basis.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(a) Let $(v_1, \\ldots, v_k)$ be independent. If it spans, we're done. \nOtherwise, there exists $v_{k+1} \\notin \\spn\\{v_1, \\ldots, v_k\\}$, \nand $(v_1, \\ldots, v_{k+1})$ is independent. Continue until the \nlist spans; this must happen by the time we have $n$ vectors.\n\n(b) If $(w_1, \\ldots, w_m)$ spans but is dependent, by \nTheorem [thm:dependence-characterization] some $w_j$ is a \nlinear combination of earlier vectors. Remove it; the remaining \nlist still spans. Continue until independent.\n\n(c) By the Exchange Lemma, an independent list of length $n$ must \nspan (otherwise we could extend it, getting an independent list \nof length $> n$, contradicting $\\dim V = n$).\n\n(d) If a spanning list of length $n$ were dependent, we could \nremove a vector and still span, obtaining a spanning list of \nlength $< n$, contradicting $\\dim V = n$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.9",
+      "number": "2.9",
+      "title": "Dimension of Sum",
+      "content": "If $U$ and $W$ are subspaces of a finite-dimensional space $V$, then\n\\[\n\\dim(U + W) = \\dim U + \\dim W - \\dim(U \\cap W)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $(v_1, \\ldots, v_k)$ be a basis of $U \\cap W$. Extend to a \nbasis $(v_1, \\ldots, v_k, u_1, \\ldots, u_r)$ of $U$ and to a \nbasis $(v_1, \\ldots, v_k, w_1, \\ldots, w_s)$ of $W$.\n\nWe claim $(v_1, \\ldots, v_k, u_1, \\ldots, u_r, w_1, \\ldots, w_s)$ \nis a basis of $U + W$.\n\n*Spanning:* Any $x \\in U + W$ can be written $x = u + w$ \nwith $u \\in U$, $w \\in W$. Express $u$ and $w$ in their respective \nbases; this gives $x$ as a linear combination of the claimed basis.\n\n*Independence:* Suppose $\\sum \\alpha_i v_i + \\sum \\beta_j u_j + \\sum \\gamma_\\ell w_\\ell = 0$. \nThen $\\sum \\gamma_\\ell w_\\ell = -\\sum \\alpha_i v_i - \\sum \\beta_j u_j \\in U$. \nBut also $\\sum \\gamma_\\ell w_\\ell \\in W$, so $\\sum \\gamma_\\ell w_\\ell \\in U \\cap W$. \nThus $\\sum \\gamma_\\ell w_\\ell = \\sum \\delta_i v_i$ for some scalars $\\delta_i$, \ngiving $\\sum \\gamma_\\ell w_\\ell - \\sum \\delta_i v_i = 0$. By independence \nof the basis of $W$, all $\\gamma_\\ell = 0$. Then \n$\\sum \\alpha_i v_i + \\sum \\beta_j u_j = 0$, so by independence of \nthe basis of $U$, all $\\alpha_i = 0$ and $\\beta_j = 0$.\n\nTherefore $\\dim(U + W) = k + r + s = (k + r) + (k + s) - k = \\dim U + \\dim W - \\dim(U \\cap W)$."
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-2.1",
+      "number": "2.1",
+      "title": "Dimension of Direct Sum",
+      "content": "If $V = U \\oplus W$, then $\\dim V = \\dim U + \\dim W$.",
+      "label": "Corollary"
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+{
+  "id": "vol1-ch04-sec03",
+  "title": "Derivatives of Trigonometric Functions",
+  "chapter": 4,
+  "section": 3,
+  "book": "vol1",
+  "epigraph": {
+    "text": "He set the earth on its foundations; it can never be moved.",
+    "reference": "Psalm 104:5",
+    "quote": "The study of mathematics, like the Nile, begins in minuteness but ends in magnificence.",
+    "quoteAuthor": "Charles Caleb Colton"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Consider the graph of $y = \\sin x$. Where is the slope positive? At \n$x = 0$, the sine curve rises steeply—slope is positive and at its \nmaximum. At $x = \\pi/2$, the curve levels off at its peak—slope is \nzero. At $x = \\pi$, the curve descends steeply—slope is negative \nand at its most negative. At $x = 3\\pi/2$, the curve levels off at \nits trough—slope is zero again."
+    },
+    {
+      "type": "paragraph",
+      "text": "If we sketch these slope values, we see a curve that starts at $1$, \ndrops to $0$, continues to $-1$, returns to $0$, and rises back to $1$. \nThis is precisely the graph of $\\cos x$. The derivative of $\\sin x$ \nappears to be $\\cos x$—and it is. Let us prove it."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Derivative of Sine"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Derivative of Sine",
+      "content": "\\[\n \\deriv{}{x}[\\sin x] = \\cos x.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "From the limit definition:\n$$\n \\deriv{}{x}[\\sin x]\n &= \\limtozero{h}\\frac{\\sin(x+h) - \\sin x}{h}.\n$$\nUsing the angle addition formula $\\sin(x+h) = \\sin x \\cos h + \\cos x \\sin h$:\nalign*\n &= h$\\frac{\\sin x \\cos h + \\cos x \\sin h - \\sin x}{h}$ \\\\[6pt]\n &= \\limtozero{h}\\frac{\\sin x(\\cos h - 1) + \\cos x \\sin h}{h} \\\\[6pt]\n &= \\limtozero{h}\\left[\\sin x \\cdot \\frac{\\cos h - 1}{h} + \\cos x \\cdot \\frac{\\sin h}{h}\\right] \\\\[6pt]\n &= \\sin x \\cdot \\limtozero{h}\\frac{\\cos h - 1}{h} + \\cos x \\cdot \\limtozero{h}\\frac{\\sin h}{h}.\n\\end{align*}\nIn Section~\\ref{sec:squeeze-theorem} (the Squeeze Theorem), we established two \ncritical limits:\n\\[\n \\limtozero{h}\\frac{\\sin h}{h} = 1\n \\qquad\\text{and}\\qquad\n \\limtozero{h}\\frac{\\cos h - 1}{h} = 0.\n\\]\nTherefore,\n\\[\n \\deriv{}{x}[\\sin x] = \\sin x \\cdot 0 + \\cos x \\cdot 1 = \\cos x.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Notice how the entire proof rests on the two special limits from \nChapter [ch:limits]. Every tool we build rests on earlier foundations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Derivative of Cosine"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Derivative of Cosine",
+      "content": "\\[\n \\deriv{}{x}[\\cos x] = -\\sin x.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The argument parallels the proof for sine. Using \n$\\cos(x+h) = \\cos x \\cos h - \\sin x \\sin h$:\n$$\n \\deriv{}{x}[\\cos x]\n &= \\limtozero{h}\\frac{\\cos(x+h) - \\cos x}{h} \\\\[6pt]\n &= \\limtozero{h}\\frac{\\cos x \\cos h - \\sin x \\sin h - \\cos x}{h} \\\\[6pt]\n &= \\limtozero{h}\\left[\\cos x \\cdot \\frac{\\cos h - 1}{h} - \\sin x \\cdot \\frac{\\sin h}{h}\\right] \\\\[6pt]\n &= \\cos x \\cdot 0 - \\sin x \\cdot 1 \\\\[6pt]\n &= -\\sin x.\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The negative sign in $\\deriv{}{x}[\\cos x] = -\\sin x$ is essential and \neasily forgotten. It reflects the fact that when $\\sin x$ is positive \n(and hence the cosine is *decreasing*), the derivative of cosine \nshould be negative."
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Basic trig derivatives",
+      "problem": "Differentiate each function.\n\n1. $f(x) = 3\\sin x + 2\\cos x$\n\n2. $g(x) = x^{2} - \\cos x$\n\n3. $h(x) = e^{x}\\sin x$",
+      "solution": "1. $f'(x) = 3\\cos x + 2(-\\sin x) = 3\\cos x - 2\\sin x$.\n\n2. $g'(x) = 2x - (-\\sin x) = 2x + \\sin x$.\n\n3. By the Product Rule:\n $h'(x) = e^{x}\\sin x + e^{x}\\cos x = e^{x}(\\sin x + \\cos x)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Derivatives of the Remaining Trigonometric Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Since $\\tan x = \\dfrac{\\sin x}{\\cos x}$, we can derive its derivative \nusing the Quotient Rule."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.3",
+      "number": "4.3",
+      "title": "Derivative of Tangent",
+      "content": "\\[\n \\deriv{}{x}[\\tan x] = \\sec^{2} x.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$$\n \\deriv{}{x}[\\tan x]\n &= \\deriv{}{x}\\left[\\frac{\\sin x}{\\cos x}\\right] \\\\[8pt]\n &= \\frac{\\cos x \\cdot \\cos x - \\sin x \\cdot (-\\sin x)}{\\cos^{2} x} \\\\[8pt]\n &= \\frac{\\cos^{2} x + \\sin^{2} x}{\\cos^{2} x} \\\\[8pt]\n &= \\frac{1}{\\cos^{2} x} = \\sec^{2} x.\n$$\nWe used the Pythagorean identity $\\cos^{2} x + \\sin^{2} x = 1$ in the \npenultimate step."
+    },
+    {
+      "type": "paragraph",
+      "text": "The derivatives of the remaining three functions follow similarly from the \nQuotient Rule."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.4",
+      "number": "4.4",
+      "title": "Derivatives of Cotangent, Secant, and Cosecant",
+      "content": "$$\n \\deriv{}{x}[\\cot x] &= -\\csc^{2} x, \\\\[8pt]\n \\deriv{}{x}[\\sec x] &= \\sec x \\tan x, \\\\[8pt]\n \\deriv{}{x}[\\csc x] &= -\\csc x \\cot x.\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Write $\\sec x = \\dfrac{1}{\\cos x}$ and apply the Quotient Rule with \n$f(x) = 1$ and $g(x) = \\cos x$:\n$$\n \\deriv{}{x}[\\sec x]\n &= \\frac{0 \\cdot \\cos x - 1 \\cdot (-\\sin x)}{\\cos^{2} x} \n = \\frac{\\sin x}{\\cos^{2} x}\n = \\frac{1}{\\cos x}\\cdot\\frac{\\sin x}{\\cos x}\n = \\sec x \\tan x.\n$$\nThe proofs for cotangent and cosecant are similar and are left as \nexercises."
+    },
+    {
+      "type": "warning",
+      "id": "warning-4.3",
+      "number": null,
+      "title": "Negative signs in trig derivatives",
+      "content": "Notice the pattern: the derivatives of the three \"co-\" functions \n($\\cos$, $\\cot$, $\\csc$) all have a **negative sign**. The \nderivatives of $\\sin$, $\\tan$, and $\\sec$ do not. This is worth \nmemorizing."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Summary of Trigonometric Derivatives"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Function**",
+        "**Derivative**",
+        "**Function**",
+        "**Derivative**"
+      ],
+      "rows": [
+        [
+          "$\\sin x$",
+          "$\\cos x$",
+          "$\\cos x$",
+          "$-\\sin x$"
+        ],
+        [
+          "$\\tan x$",
+          "$\\sec^{2} x$",
+          "$\\cot x$",
+          "$-\\csc^{2} x$"
+        ],
+        [
+          "$\\sec x$",
+          "$\\sec x \\tan x$",
+          "$\\csc x$",
+          "$-\\csc x \\cot x$"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "left",
+        "left",
+        "left"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "Combining trig with other rules",
+      "problem": "Differentiate $f(x) = x^{2}\\sin x$.",
+      "solution": "By the Product Rule:\n$$\n f'(x) &= 2x\\sin x + x^{2}\\cos x.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": "Quotient with trig",
+      "problem": "Differentiate $g(x) = \\dfrac{\\sin x}{1 + \\cos x}$.",
+      "solution": "By the Quotient Rule:\n$$\n g'(x) &= \\frac{\\cos x(1 + \\cos x) - \\sin x(-\\sin x)}{(1+\\cos x)^{2}} \\\\[8pt]\n &= \\frac{\\cos x + \\cos^{2} x + \\sin^{2} x}{(1+\\cos x)^{2}} \\\\[8pt]\n &= \\frac{\\cos x + 1}{(1+\\cos x)^{2}} \\\\[8pt]\n &= \\frac{1}{1 + \\cos x}.\n$$\nWe used $\\cos^{2} x + \\sin^{2} x = 1$ to simplify."
+    },
+    {
+      "type": "example",
+      "id": "example-4.4",
+      "number": "4.4",
+      "title": "Tangent line to a trig function",
+      "problem": "Find the equation of the tangent line to $y = \\sec x$ at $x = \\pi/3$.",
+      "solution": "**Point:** $y = \\sec(\\pi/3) = \\dfrac{1}{\\cos(\\pi/3)} = \\dfrac{1}{1/2} = 2$.\n\n**Slope:** $y' = \\sec x \\tan x$, so\n\\[\n y'\\!\\left(\\frac{\\pi}{3}\\right) = \\sec\\frac{\\pi}{3}\\cdot\\tan\\frac{\\pi}{3} = 2\\sqrt{3}.\n\\]\n\n**Equation:** $y - 2 = 2\\sqrt{3}\\!\\left(x - \\dfrac{\\pi}{3}\\right)$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.5",
+      "number": "4.5",
+      "title": "Second derivative of sine",
+      "problem": "Find $\\dderiv{}{x}[\\sin x]$ and $\\dfrac{d^{4}}{dx^{4}}[\\sin x]$.",
+      "solution": "alignat*{2}\n {x}[ x] &= x, &\n {x}[ x] &= - x, \\\\[4pt]\n d^{3}{dx^{3}}[ x] &= - x, &\n d^{4}{dx^{4}}[ x] &= x.\nalignat*\nAfter four derivatives, we return to $\\sin x$. The derivatives of sine \ncycle with period $4$: $\\sin x \\to \\cos x \\to -\\sin x \\to -\\cos x \\to \\sin x$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.6",
+      "number": "4.6",
+      "title": "Trig with exponential",
+      "problem": "Differentiate $h(x) = e^{x}\\cos x$.",
+      "solution": "By the Product Rule:\n$$\n h'(x) &= e^{x}\\cos x + e^{x}(-\\sin x) \\\\\n &= e^{x}(\\cos x - \\sin x).\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.7",
+      "number": "4.7",
+      "title": "Finding where slope equals zero",
+      "problem": "Find all values of $x$ in $[0, 2\\pi)$ where $f(x) = 2\\sin x + \\cos x$ \nhas a horizontal tangent.",
+      "solution": "We need $f'(x) = 0$:\n\\[\n f'(x) = 2\\cos x - \\sin x = 0 \\qquad\\Longrightarrow\\qquad\n \\sin x = 2\\cos x \\qquad\\Longrightarrow\\qquad \\tan x = 2.\n\\]\nSo $x = \\arctan(2)$ and $x = \\pi + \\arctan(2)$, both in $[0, 2\\pi)$.\n\nNumerically, $x \\approx 1.107$ and $x \\approx 4.249$."
+    },
+    {
+      "type": "historical",
+      "id": "historical-4.3",
+      "number": null,
+      "title": "Madhava of Sangamagrama (c.\\ 1340--1425)",
+      "content": "The series expansions of $\\sin x$ and $\\cos x$ were first discovered by \nMadhava, an Indian mathematician and astronomer, roughly 250 years before \nNewton and Leibniz. Working in Kerala, India, Madhava and his school \ndeveloped infinite series, convergence tests, and what we would now call \nTaylor series—all motivated by the desire to compute accurate \nastronomical tables for navigation and calendar design."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 19:1",
+      "text": "The heavens declare the glory of God; the \nskies proclaim the work of his hands."
+    },
+    {
+      "type": "scripture",
+      "reference": "Romans 1:20",
+      "text": "For since the creation of the world God's \ninvisible qualities—his eternal power and divine nature—have been \nclearly seen, being understood from what has been made."
+    },
+    {
+      "type": "quote",
+      "author": "Joseph Fourier",
+      "text": "Mathematics compares the most diverse \nphenomena and discovers the secret analogies that unite them."
+    },
+    {
+      "type": "quote",
+      "author": "Brook Taylor",
+      "text": "If we consider the notion of a vibrating \nstring, we find the analysis leads us to the sine and cosine."
+    }
+  ]
+}

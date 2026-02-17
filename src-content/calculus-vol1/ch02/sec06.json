@@ -1,0 +1,206 @@
+{
+  "id": "vol1-ch02-sec06",
+  "title": "The Squeeze Theorem",
+  "chapter": 2,
+  "section": 6,
+  "book": "vol1",
+  "epigraph": {
+    "text": "You hem me in behind and before, and you lay your hand upon me.",
+    "reference": "Psalm 139:5",
+    "quote": "Give me a place to stand, and I will move the earth.",
+    "quoteAuthor": "Archimedes of Syracuse"
+  },
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Motivation"
+    },
+    {
+      "type": "paragraph",
+      "text": "In our study of limits so far, we have relied on algebraic manipulation: factoring,\nrationalizing, simplifying, and applying limit laws. These techniques are powerful,\nbut they have a boundary. Some functions resist every algebraic trick in our arsenal\n— not because they lack a limit, but because their behavior is too *wild* to\ntame by direct computation."
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider the function $f(x) = x^2 \\sin\\!\\left(\\frac{1}{x}\\right)$. As $x \\to 0$,\nthe factor $\\sin(1/x)$ oscillates between $-1$ and $1$ with ever-increasing frequency.\nNo amount of factoring will calm this oscillation. Yet if we can trap $f(x)$ between\ntwo simpler functions that both converge to the same limit, we can determine the limit\nof $f(x)$ without ever simplifying it directly."
+    },
+    {
+      "type": "paragraph",
+      "text": "This is the idea behind the *Squeeze Theorem*: if a function is pinched between\ntwo others that converge to the same value, it has no choice but to converge there too.\nThe technique is ancient — Archimedes used a version of it over two thousand years ago\nto compute the area of a circle — and it remains one of the most elegant tools in\nanalysis."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Statement of the Squeeze Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "The Squeeze Theorem",
+      "content": "Suppose that\n\\[\n g(x) \\leq f(x) \\leq h(x)\n\\]\nfor all $x$ in some open interval containing $a$, except possibly at $x = a$ itself.\nIf\n\\[\n \\limto{x \\to a} g(x) = L \\quad\\text{and}\\quad \\limto{x \\to a} h(x) = L,\n\\]\nthen\n\\[\n \\limto{x \\to a} f(x) = L.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "*Geometric picture.**\nImagine two curves, $y = g(x)$ and $y = h(x)$, that both approach the height $L$ as\n$x \\to a$. The graph of $f$ is trapped between them — above $g$ and below $h$ —\nlike a narrow corridor whose ceiling and floor converge. No matter how $f$ weaves and\noscillates within this corridor, as the walls close to a single point at height $L$,\nthe function $f$ is *squeezed* to the same value."
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\varepsilon > 0$ be given. Since $\\limto{x \\to a} g(x) = L$, there exists\n$\\delta_1 > 0$ such that\n\\[\n 0 < \\abs{x - a} < \\delta_1 \\implies \\abs{g(x) - L} < \\varepsilon,\n\\]\nwhich means $L - \\varepsilon < g(x)$. Similarly, since $\\limto{x \\to a} h(x) = L$,\nthere exists $\\delta_2 > 0$ such that\n\\[\n 0 < \\abs{x - a} < \\delta_2 \\implies \\abs{h(x) - L} < \\varepsilon,\n\\]\nwhich means $h(x) < L + \\varepsilon$. Let $\\delta = \\min(\\delta_1, \\delta_2)$.\nThen for $0 < \\abs{x - a} < \\delta$, we have\n\\[\n L - \\varepsilon < g(x) \\leq f(x) \\leq h(x) < L + \\varepsilon,\n\\]\nso $\\abs{f(x) - L} < \\varepsilon$. Since $\\varepsilon$ was arbitrary,\n$\\limto{x \\to a} f(x) = L$."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-2.6",
+      "number": null,
+      "title": "Applying the Squeeze Theorem",
+      "content": "To evaluate $\\limto{x \\to a} f(x)$ using the Squeeze Theorem:\n\n1. **Identify the oscillating or difficult factor** in $f(x)$.\n\n2. **Bound** that factor between two constants. For instance,\n $-1 \\leq \\sin(\\cdot) \\leq 1$ and $-1 \\leq \\cos(\\cdot) \\leq 1$.\n\n3. **Multiply** the inequality through by the remaining factor(s),\n being careful about sign (if the remaining factor changes sign, the\n inequality direction may reverse).\n\n4. **Evaluate the limits** of the bounding functions.\n\n5. If both bounds yield the same limit $L$, conclude $\\limto{x \\to a} f(x) = L$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "A classic squeeze",
+      "problem": "Evaluate $\\displaystyle\\limto{x \\to 0}\\, x^2 \\sin\\!\\left(\\frac{1}{x}\\right)$.",
+      "solution": "Since $-1 \\leq \\sin(1/x) \\leq 1$ for all $x \\neq 0$, we multiply through by\n$x^2 \\geq 0$:\n\\[\n -x^2 \\leq x^2 \\sin\\!\\left(\\frac{1}{x}\\right) \\leq x^2.\n\\]\nNow $\\limto{x \\to 0} (-x^2) = 0$ and $\\limto{x \\to 0}\\, x^2 = 0$. By the Squeeze\nTheorem,\n\\[\n \\limto{x \\to 0}\\, x^2 \\sin\\!\\left(\\frac{1}{x}\\right) = 0.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Constructing a squeeze",
+      "problem": "Evaluate $\\displaystyle\\limto{x \\to 0}\\, x^4 \\cos\\!\\left(\\frac{2}{x}\\right)$.",
+      "solution": "The cosine factor satisfies $-1 \\leq \\cos(2/x) \\leq 1$, so\n\\[\n -x^4 \\leq x^4 \\cos\\!\\left(\\frac{2}{x}\\right) \\leq x^4.\n\\]\nBoth $\\limto{x \\to 0} (-x^4) = 0$ and $\\limto{x \\to 0}\\, x^4 = 0$.\nBy the Squeeze Theorem, the limit is $0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Fundamental Trigonometric Limit"
+    },
+    {
+      "type": "paragraph",
+      "text": "We now turn to one of the most important limits in all of calculus:\n\\[\n \\limto{x \\to 0} \\frac{\\sin x}{x} = 1.\n\\]\nThis result is not merely a curiosity. It is the linchpin upon which the\nderivatives of every trigonometric function depend. When we reach Chapter 3 and\nask \"What is the derivative of $\\sin x$?\", the answer will rest squarely on\nthis limit."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "The Sine Limit",
+      "content": "\\[\n \\limto{x \\to 0} \\frac{\\sin x}{x} = 1.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We give a geometric proof using areas on the unit circle. Assume first that\n$0 < x < \\pi/2$, with $x$ measured in radians.\n\nConsider the unit circle centered at the origin. Let $A$ be the point $(1, 0)$,\nand let $B$ be the point $(\\cos x, \\sin x)$ on the circle. Let $C$ be the point\n$(1, \\tan x)$, where the terminal side of the angle $x$ intersects the vertical\nline $x = 1$.\n\nThree regions are nested:\n\n1. **Triangle $OAB$** (inside the sector), with area\n \\[\n \\text{Area}(\\triangle OAB) = \\frac{1}{2}(1)(\\sin x) = \\frac{\\sin x}{2}.\n \\]\n\n2. **Circular sector $OAB$**, with area\n \\[\n \\text{Area}(\\text{sector}) = \\frac{1}{2}(1)^2(x) = \\frac{x}{2}.\n \\]\n\n3. **Triangle $OAC$** (enclosing the sector), with area\n \\[\n \\text{Area}(\\triangle OAC) = \\frac{1}{2}(1)(\\tan x) = \\frac{\\tan x}{2}.\n \\]\n\nSince $\\triangle OAB \\subseteq \\text{sector } OAB \\subseteq \\triangle OAC$, we\nhave the inequality:\n\\[\n \\frac{\\sin x}{2} \\leq \\frac{x}{2} \\leq \\frac{\\tan x}{2}.\n\\]\nMultiplying through by $\\dfrac{2}{\\sin x} > 0$ (valid since $\\sin x > 0$ for\n$0 < x < \\pi/2$):\n\\[\n 1 \\leq \\frac{x}{\\sin x} \\leq \\frac{1}{\\cos x}.\n\\]\nTaking reciprocals (and reversing the inequalities):\n\\[\n \\cos x \\leq \\frac{\\sin x}{x} \\leq 1.\n\\]\nNow we apply the Squeeze Theorem. Since\n\\[\n \\limto{x \\to 0^+} \\cos x = 1 \\quad\\text{and}\\quad \\limto{x \\to 0^+} 1 = 1,\n\\]\nwe conclude that $\\displaystyle\\limto{x \\to 0^+} \\frac{\\sin x}{x} = 1$.\n\nFor $x < 0$, let $u = -x > 0$. Then\n\\[\n \\frac{\\sin x}{x} = \\frac{\\sin(-u)}{-u} = \\frac{-\\sin u}{-u} = \\frac{\\sin u}{u},\n\\]\nso the left-hand limit equals the right-hand limit. Therefore\n\\[\n \\limto{x \\to 0} \\frac{\\sin x}{x} = 1. \\qedhere\n\\]"
+    },
+    {
+      "type": "warning",
+      "id": "warning-2.6",
+      "number": null,
+      "title": "Radians Required",
+      "content": "The limit $\\limto{x \\to 0} \\frac{\\sin x}{x} = 1$ holds **only when $x$ is\nmeasured in radians**. If $x$ is in degrees, then\n$\\limto{x \\to 0} \\frac{\\sin x^\\circ}{x} = \\frac{\\pi}{180}$. This is one of the\nmost important reasons we use radians throughout calculus."
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Using the sine limit",
+      "problem": "Evaluate $\\displaystyle\\limto{x \\to 0} \\frac{\\sin 3x}{x}$.",
+      "solution": "We multiply and divide to create the fundamental form:\n\\[\n \\frac{\\sin 3x}{x} = 3 \\cdot \\frac{\\sin 3x}{3x}.\n\\]\nLet $u = 3x$. As $x \\to 0$, we have $u \\to 0$, so\n\\[\n \\limto{x \\to 0} \\frac{\\sin 3x}{x}\n = 3 \\limto{u \\to 0} \\frac{\\sin u}{u}\n = 3 \\cdot 1 = 3.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "A ratio of sines",
+      "problem": "Evaluate $\\displaystyle\\limto{x \\to 0} \\frac{\\sin 5x}{\\sin 2x}$.",
+      "solution": "We write the expression in terms of the fundamental limit:\n\\[\n \\frac{\\sin 5x}{\\sin 2x}\n = \\frac{\\sin 5x}{5x} \\cdot \\frac{2x}{\\sin 2x} \\cdot \\frac{5x}{2x}\n = \\frac{\\sin 5x}{5x} \\cdot \\frac{2x}{\\sin 2x} \\cdot \\frac{5}{2}.\n\\]\nAs $x \\to 0$, both $\\frac{\\sin 5x}{5x} \\to 1$ and $\\frac{2x}{\\sin 2x} \\to 1$,\nso\n\\[\n \\limto{x \\to 0} \\frac{\\sin 5x}{\\sin 2x} = 1 \\cdot 1 \\cdot \\frac{5}{2}\n = \\frac{5}{2}.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Related Cosine Limit"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.3",
+      "number": "2.3",
+      "title": "The Cosine Limit",
+      "content": "\\[\n \\limto{x \\to 0} \\frac{1 - \\cos x}{x} = 0.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We use the conjugate technique:\n\\[\n \\frac{1 - \\cos x}{x}\n = \\frac{1 - \\cos x}{x} \\cdot \\frac{1 + \\cos x}{1 + \\cos x}\n = \\frac{1 - \\cos^2 x}{x(1 + \\cos x)}\n = \\frac{\\sin^2 x}{x(1 + \\cos x)}.\n\\]\nRewriting:\n\\[\n \\frac{1 - \\cos x}{x}\n = \\frac{\\sin x}{x} \\cdot \\frac{\\sin x}{1 + \\cos x}.\n\\]\nNow as $x \\to 0$:\n\\[\n \\limto{x \\to 0} \\frac{\\sin x}{x} = 1\n \\quad\\text{and}\\quad\n \\limto{x \\to 0} \\frac{\\sin x}{1 + \\cos x} = \\frac{0}{1 + 1} = 0.\n\\]\nBy the product rule for limits,\n\\[\n \\limto{x \\to 0} \\frac{1 - \\cos x}{x} = 1 \\cdot 0 = 0. \\qedhere\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-2.5",
+      "number": "2.5",
+      "title": "Applying the cosine limit",
+      "problem": "Evaluate $\\displaystyle\\limto{x \\to 0} \\frac{1 - \\cos x}{x^2}$.",
+      "solution": "We factor as before:\n\\[\n \\frac{1 - \\cos x}{x^2}\n = \\frac{\\sin^2 x}{x^2(1 + \\cos x)}\n = \\left(\\frac{\\sin x}{x}\\right)^2 \\cdot \\frac{1}{1 + \\cos x}.\n\\]\nAs $x \\to 0$:\n\\[\n \\limto{x \\to 0} \\frac{1 - \\cos x}{x^2}\n = (1)^2 \\cdot \\frac{1}{1 + 1}\n = \\frac{1}{2}.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Further Applications of the Squeeze Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-2.6",
+      "number": "2.6",
+      "title": "The tangent limit",
+      "problem": "Evaluate $\\displaystyle\\limto{x \\to 0} \\frac{\\tan x}{x}$.",
+      "solution": "We write $\\tan x = \\sin x / \\cos x$:\n\\[\n \\frac{\\tan x}{x} = \\frac{\\sin x}{x} \\cdot \\frac{1}{\\cos x}.\n\\]\nAs $x \\to 0$, we have $\\frac{\\sin x}{x} \\to 1$ and $\\frac{1}{\\cos x} \\to 1$, so\n\\[\n \\limto{x \\to 0} \\frac{\\tan x}{x} = 1 \\cdot 1 = 1.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-2.7",
+      "number": "2.7",
+      "title": "Squeeze with absolute values",
+      "problem": "Evaluate $\\displaystyle\\limto{x \\to 0}\\, \\sqrt{x^3 + x^2}\\, \\sin\\!\\left(\\frac{\\pi}{x}\\right)$.",
+      "solution": "For $x$ near $0$ with $x > 0$ (so the square root is defined), note that\n$\\abs{\\sin(\\pi/x)} \\leq 1$, which gives us\n\\[\n -\\sqrt{x^3 + x^2} \\leq \\sqrt{x^3 + x^2}\\, \\sin\\!\\left(\\frac{\\pi}{x}\\right)\n \\leq \\sqrt{x^3 + x^2}.\n\\]\nSince $\\sqrt{x^3 + x^2} = \\abs{x}\\sqrt{x + 1} \\to 0$ as $x \\to 0^+$, both bounds\napproach $0$. By the Squeeze Theorem, the limit is $0$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.8",
+      "number": "2.8",
+      "title": "Finding bounds for a squeeze",
+      "problem": "Evaluate $\\displaystyle\\limto{x \\to \\infty} \\frac{\\sin x}{x}$.",
+      "solution": "Since $-1 \\leq \\sin x \\leq 1$ for all $x$, dividing by $x > 0$ gives\n\\[\n \\frac{-1}{x} \\leq \\frac{\\sin x}{x} \\leq \\frac{1}{x}.\n\\]\nBoth $-1/x \\to 0$ and $1/x \\to 0$ as $x \\to \\infty$, so by the Squeeze Theorem,\n\\[\n \\limto{x \\to \\infty} \\frac{\\sin x}{x} = 0.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-2.9",
+      "number": "2.9",
+      "title": "A less obvious squeeze",
+      "problem": "Show that $\\displaystyle\\limto{x \\to 0^+} \\sqrt{x}\\, \\cos\\!\\left(\\frac{1}{x^2}\\right) = 0$.",
+      "solution": "The key observation is that $\\abs{\\cos(1/x^2)} \\leq 1$, even though $\\cos(1/x^2)$\noscillates wildly as $x \\to 0^+$. Therefore\n\\[\n -\\sqrt{x} \\leq \\sqrt{x}\\, \\cos\\!\\left(\\frac{1}{x^2}\\right) \\leq \\sqrt{x}.\n\\]\nSince $\\limto{x \\to 0^+} \\sqrt{x} = 0$ and $\\limto{x \\to 0^+} (-\\sqrt{x}) = 0$,\nthe Squeeze Theorem gives\n\\[\n \\limto{x \\to 0^+} \\sqrt{x}\\, \\cos\\!\\left(\\frac{1}{x^2}\\right) = 0.\n\\]"
+    },
+    {
+      "type": "historical",
+      "id": "historical-2.6",
+      "number": null,
+      "title": "Archimedes of Syracuse (c.\\ 287--212 BC)",
+      "content": "The Squeeze Theorem is a modern formulation of an idea far older than calculus.\nArchimedes of Syracuse used the *method of exhaustion* — trapping a curved\narea between inscribed and circumscribed polygons — to prove that the area of a\ncircle equals $\\pi r^2$. By increasing the number of polygon sides, Archimedes\nsqueezed the polygon areas ever closer to the true area.\n\nThis was, in essence, the first limit argument in history. Two thousand years\nbefore Weierstrass formalized the $\\varepsilon$-$\\delta$ definition, Archimedes\nwas already reasoning with the same logical structure: bound the unknown quantity\nabove and below by known quantities that converge.\n\nArchimedes considered his discovery of the volume and surface area of the sphere\nto be his greatest achievement. He requested that a sphere inscribed in a cylinder\nbe carved on his tombstone — a monument to the power of squeezing the infinite\nbetween the finite."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 4:25--27",
+      "text": "Let your eyes look straight ahead; fix your gaze\ndirectly before you. Give careful thought to the paths for your feet and be steadfast\nin all your ways. Do not turn to the right or the left."
+    },
+    {
+      "type": "quote",
+      "author": "Archimedes",
+      "text": "Those who claim to discover everything but produce no proofs\nof the same may be confuted as having actually pretended to discover the impossible."
+    },
+    {
+      "type": "quote",
+      "author": "Leonhard Euler",
+      "text": "For since the fabric of the universe is most perfect\nand the work of a most wise Creator, nothing at all takes place in the universe\nin which some rule of maximum or minimum does not appear."
+    }
+  ]
+}

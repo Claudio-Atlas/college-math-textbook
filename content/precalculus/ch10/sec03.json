@@ -1,0 +1,331 @@
+{
+  "id": "precalculus-ch10-sec03",
+  "title": "The Hyperbola",
+  "chapter": 10,
+  "section": 3,
+  "book": "precalculus",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"He alone stretches out the heavens and treads \non the waves of the sea.\"*{Job 9:8}{Comets that never return follow \nhyperbolic paths through the solar system.}{Isaac Newton}"
+    },
+    {
+      "type": "paragraph",
+      "text": "The hyperbola is the most dramatic of the conic sections—a curve that \nsplits into two separate branches, sweeping outward toward infinity. \nWhile ellipses are the orbits of bound objects (planets, satellites), \nhyperbolas are the trajectories of unbound visitors: comets that pass \nthrough the solar system once and never return, or spacecraft using \ngravity assists to slingshot toward the outer planets."
+    },
+    {
+      "type": "paragraph",
+      "text": "At first glance, hyperbolas might seem like \"broken ellipses,\" but \nthey're defined by their own elegant distance property. Where an ellipse \nis defined by a constant *sum* of distances to two foci, a hyperbola \nis defined by a constant *difference*."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Geometric Definition"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Hyperbola",
+      "content": "A **hyperbola** is the set of all points in a plane \nsuch that the absolute difference of the distances from two fixed points \n(called **foci**) is constant."
+    },
+    {
+      "type": "paragraph",
+      "text": "If $F_1$ and $F_2$ are the foci and $2a$ is the constant difference, \nthen for any point $P$ on the hyperbola:\n\\[\n \\bigl| |PF_1| - |PF_2| \\bigr| = 2a\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The absolute value is essential: for some points, $P$ is closer to $F_1$; \nfor others, closer to $F_2$. But the *difference* is always $2a$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Why two branches? Consider: if $P$ is on the right branch, then $P$ is \ncloser to $F_2$ than to $F_1$, so $|PF_1| - |PF_2| = 2a$ (positive). \nIf $P$ is on the left branch, then $P$ is closer to $F_1$, so \n$|PF_1| - |PF_2| = -2a$. In both cases, the absolute difference is $2a$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Anatomy of a Hyperbola"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.2",
+      "number": "10.2",
+      "title": "Parts of a Hyperbola",
+      "content": "For a hyperbola:\n\n- The **center** is the midpoint of \n the segment joining the foci.\n\n- The **transverse axis** is the \n segment connecting the two vertices. Its length is $2a$.\n\n- The **conjugate axis** is \n perpendicular to the transverse axis, through the center. Its length \n is $2b$.\n\n- The **vertices** are the points \n where the hyperbola crosses the transverse axis.\n\n- The distance from center to each focus is $c$.\n\n- The **asymptotes** are lines \n that the hyperbola approaches but never touches."
+    },
+    {
+      "type": "paragraph",
+      "text": "The relationship between $a$, $b$, and $c$ for a hyperbola differs from \nthat of an ellipse:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "The Hyperbola Relationship",
+      "content": "For any hyperbola with semi-transverse axis $a$, semi-conjugate axis $b$, \nand focal distance $c$:\n\\[\n c^2 = a^2 + b^2\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-10.3",
+      "number": null,
+      "title": "",
+      "content": "Note the **plus** sign! For hyperbolas: $c^2 = a^2 + b^2$. For \nellipses: $c^2 = a^2 - b^2$. This difference matters."
+    },
+    {
+      "type": "paragraph",
+      "text": "the vertices, so $c > a$. That requires adding something \nto $a^2$: $c^2 = a^2 + b^2$.}"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Standard Form Equations"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.2",
+      "number": "10.2",
+      "title": "Standard Form of a Hyperbola (Center at Origin)",
+      "content": "A hyperbola centered at the origin has one of these equations:\n\n**Horizontal transverse axis** (opens left and right):\n\\[\n \\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1\n\\]\n\n- Vertices: $(\\pm a, 0)$\n\n- Foci: $(\\pm c, 0)$ where $c = \\sqrt{a^2 + b^2}$\n\n- Asymptotes: $y = \\pm\\frac{b}{a}x$\n\n**Vertical transverse axis** (opens up and down):\n\\[\n \\frac{y^2}{a^2} - \\frac{x^2}{b^2} = 1\n\\]\n\n- Vertices: $(0, \\pm a)$\n\n- Foci: $(0, \\pm c)$ where $c = \\sqrt{a^2 + b^2}$\n\n- Asymptotes: $y = \\pm\\frac{a}{b}x$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The key to recognizing orientation: look at which term is **positive**. \nIf $x^2$ is positive and $y^2$ is negative, the transverse axis is \nhorizontal. If $y^2$ is positive and $x^2$ is negative, the transverse \naxis is vertical."
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "Analyzing a hyperbola",
+      "problem": "Find the vertices, foci, and asymptotes of $\\frac{x^2}{9} - \\frac{y^2}{16} = 1$.",
+      "solution": "The $x^2$ term is positive, so the transverse axis is horizontal.\n\nFrom the equation: $a^2 = 9$, $b^2 = 16$, so $a = 3$, $b = 4$.\n\n- Vertices: $(\\pm a, 0) = (\\pm 3, 0)$\n\n- $c = \\sqrt{a^2 + b^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5$\n\n- Foci: $(\\pm c, 0) = (\\pm 5, 0)$\n\n- Asymptotes: $y = \\pm\\frac{b}{a}x = \\pm\\frac{4}{3}x$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.2",
+      "number": "10.2",
+      "title": "Vertical transverse axis",
+      "problem": "Find the vertices, foci, and asymptotes of $\\frac{y^2}{25} - \\frac{x^2}{4} = 1$.",
+      "solution": "The $y^2$ term is positive, so the transverse axis is vertical.\n\nFrom the equation: $a^2 = 25$, $b^2 = 4$, so $a = 5$, $b = 2$.\n\n- Vertices: $(0, \\pm a) = (0, \\pm 5)$\n\n- $c = \\sqrt{a^2 + b^2} = \\sqrt{25 + 4} = \\sqrt{29}$\n\n- Foci: $(0, \\pm \\sqrt{29})$\n\n- Asymptotes: $y = \\pm\\frac{a}{b}x = \\pm\\frac{5}{2}x$\n\nNote that for vertical transverse axis, the asymptote slope is $\\frac{a}{b}$, \nnot $\\frac{b}{a}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Understanding Asymptotes"
+    },
+    {
+      "type": "paragraph",
+      "text": "The asymptotes are perhaps the most distinctive feature of hyperbolas. \nAs a point moves along the hyperbola, farther from the center, the curve \ngets closer and closer to the asymptotes—but never actually reaches them."
+    },
+    {
+      "type": "paragraph",
+      "text": "Why do hyperbolas have asymptotes? Consider $\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1$. \nFor very large $|x|$:\n\\[\n \\frac{y^2}{b^2} = \\frac{x^2}{a^2} - 1 \\approx \\frac{x^2}{a^2}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "So $y \\approx \\pm\\frac{b}{a}x$ when $|x|$ is large. The lines \n$y = \\pm\\frac{b}{a}x$ are the asymptotes."
+    },
+    {
+      "type": "paragraph",
+      "text": "A useful technique for graphing: draw the **central rectangle** \nwith vertices at $(\\pm a, \\pm b)$. The asymptotes are the diagonals of \nthis rectangle (extended)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Shifted Hyperbolas"
+    },
+    {
+      "type": "paragraph",
+      "text": "When the center is at $(h, k)$ instead of the origin:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.3",
+      "number": "10.3",
+      "title": "Standard Form of a Hyperbola (General Center)",
+      "content": "A hyperbola centered at $(h, k)$ has one of these equations:\n\n**Horizontal transverse axis:**\n\\[\n \\frac{(x-h)^2}{a^2} - \\frac{(y-k)^2}{b^2} = 1\n\\]\nVertices: $(h \\pm a, k)$; Foci: $(h \\pm c, k)$; Asymptotes: $y - k = \\pm\\frac{b}{a}(x - h)$\n\n**Vertical transverse axis:**\n\\[\n \\frac{(y-k)^2}{a^2} - \\frac{(x-h)^2}{b^2} = 1\n\\]\nVertices: $(h, k \\pm a)$; Foci: $(h, k \\pm c)$; Asymptotes: $y - k = \\pm\\frac{a}{b}(x - h)$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-10.3",
+      "number": "10.3",
+      "title": "Analyzing a shifted hyperbola",
+      "problem": "Find the center, vertices, foci, and asymptotes of \n$\\frac{(x+2)^2}{16} - \\frac{(y-3)^2}{9} = 1$.",
+      "solution": "Center: $(h, k) = (-2, 3)$\n\nThe $(x+2)^2$ term is positive, so transverse axis is horizontal.\n\nFrom the equation: $a^2 = 16$, $b^2 = 9$, so $a = 4$, $b = 3$.\n\n- Vertices: $(h \\pm a, k) = (-2 \\pm 4, 3) = (2, 3)$ and $(-6, 3)$\n\n- $c = \\sqrt{a^2 + b^2} = \\sqrt{16 + 9} = 5$\n\n- Foci: $(h \\pm c, k) = (-2 \\pm 5, 3) = (3, 3)$ and $(-7, 3)$\n\n- Asymptotes: $y - 3 = \\pm\\frac{3}{4}(x + 2)$, or equivalently:\n $$\n y &= \\frac{3}{4}(x + 2) + 3 = \\frac{3}{4}x + \\frac{9}{2} \\\\\n y &= -\\frac{3}{4}(x + 2) + 3 = -\\frac{3}{4}x + \\frac{3}{2}\n $$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.4",
+      "number": "10.4",
+      "title": "Writing an equation from properties",
+      "problem": "Write the equation of the hyperbola with vertices $(0, -3)$ and $(0, 3)$, \nand foci $(0, -5)$ and $(0, 5)$.",
+      "solution": "The vertices and foci are on the $y$-axis, so the transverse axis is \nvertical and the center is at the origin.\n\nFrom the vertices: $a = 3$.\nFrom the foci: $c = 5$.\n\nFind $b$:\n\\[\n b^2 = c^2 - a^2 = 25 - 9 = 16 \\implies b = 4\n\\]\n\nThe equation is:\n\\[\n \\frac{y^2}{9} - \\frac{x^2}{16} = 1\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Converting from General Form"
+    },
+    {
+      "type": "example",
+      "id": "example-10.5",
+      "number": "10.5",
+      "title": "Completing the square for a hyperbola",
+      "problem": "Write $4x^2 - 9y^2 + 24x + 18y - 9 = 0$ in standard form and identify \nall key features.",
+      "solution": "Group and rearrange:\n\\[\n 4x^2 + 24x - 9y^2 + 18y = 9\n\\]\n\nFactor out coefficients:\n\\[\n 4(x^2 + 6x) - 9(y^2 - 2y) = 9\n\\]\n\nComplete the square in each group:\n$$\n 4(x^2 + 6x + 9 - 9) - 9(y^2 - 2y + 1 - 1) &= 9 \\\\\n 4(x + 3)^2 - 36 - 9(y - 1)^2 + 9 &= 9 \\\\\n 4(x + 3)^2 - 9(y - 1)^2 &= 36\n$$\n\nDivide by 36:\n\\[\n \\frac{(x + 3)^2}{9} - \\frac{(y - 1)^2}{4} = 1\n\\]\n\nNow we can identify:\n\n- Center: $(-3, 1)$\n\n- $a^2 = 9$, $b^2 = 4$, so $a = 3$, $b = 2$\n\n- Transverse axis is horizontal\n\n- $c = \\sqrt{9 + 4} = \\sqrt{13}$\n\n- Vertices: $(-3 \\pm 3, 1) = (0, 1)$ and $(-6, 1)$\n\n- Foci: $(-3 \\pm \\sqrt{13}, 1)$\n\n- Asymptotes: $y - 1 = \\pm\\frac{2}{3}(x + 3)$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Eccentricity of Hyperbolas"
+    },
+    {
+      "type": "paragraph",
+      "text": "Like ellipses, hyperbolas have eccentricity—but with a different range."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.3",
+      "number": "10.3",
+      "title": "Eccentricity of a Hyperbola",
+      "content": "The **eccentricity** of a hyperbola is:\n\\[\n e = \\frac{c}{a}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Since the foci lie outside the vertices (beyond the transverse axis), \nwe have $c > a$, which means:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.4",
+      "number": "10.4",
+      "title": "Range of Eccentricity for Hyperbolas",
+      "content": "For any hyperbola, $e > 1$.\n\n- As $e \\to 1^+$, the hyperbola becomes \"narrower\" (asymptotes \n have gentle slopes; branches are close together near center).\n\n- As $e \\to \\infty$, the hyperbola becomes \"wider\" (asymptotes \n approach vertical; branches nearly parallel to the $y$-axis).",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-10.6",
+      "number": "10.6",
+      "title": "Comparing hyperbola eccentricities",
+      "problem": "Find the eccentricity of each hyperbola.\n\n**(a)** $\\frac{x^2}{9} - \\frac{y^2}{16} = 1$ \n**(b)** $\\frac{x^2}{9} - \\frac{y^2}{1} = 1$",
+      "solution": "**(a)** Here $a^2 = 9$, $b^2 = 16$, so $a = 3$, $b = 4$.\n\\[\n c = \\sqrt{9 + 16} = 5\n\\]\n\\[\n e = \\frac{c}{a} = \\frac{5}{3} \\approx 1.67\n\\]\n\n**(b)** Here $a^2 = 9$, $b^2 = 1$, so $a = 3$, $b = 1$.\n\\[\n c = \\sqrt{9 + 1} = \\sqrt{10}\n\\]\n\\[\n e = \\frac{\\sqrt{10}}{3} \\approx 1.05\n\\]\n\nThe second hyperbola has eccentricity closer to 1, so its branches are \nmore \"closed\" (asymptotes have gentler slopes)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Rectangular (Equilateral) Hyperbolas"
+    },
+    {
+      "type": "paragraph",
+      "text": "A special case occurs when $a = b$:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.4",
+      "number": "10.4",
+      "title": "Rectangular Hyperbola",
+      "content": "A **rectangular** or **equilateral hyperbola** is one where $a = b$. Its asymptotes are perpendicular."
+    },
+    {
+      "type": "paragraph",
+      "text": "For a rectangular hyperbola centered at the origin with $a = b$:\n\\[\n \\frac{x^2}{a^2} - \\frac{y^2}{a^2} = 1 \\implies x^2 - y^2 = a^2\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The asymptotes are $y = \\pm x$, which form a $90°$ angle—hence \n\"rectangular.\""
+    },
+    {
+      "type": "paragraph",
+      "text": "If we rotate a rectangular hyperbola $45°$, we get the familiar curve \n$xy = k$, which is the graph of an inverse variation. This connects \nhyperbolas to a function type you've likely seen before."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of Hyperbolas"
+    },
+    {
+      "type": "paragraph",
+      "text": "Hyperbolas appear in several important contexts:"
+    },
+    {
+      "type": "paragraph",
+      "text": "**1. Unbound orbits.** When an object has enough energy to escape a \ngravitational field, its path is hyperbolic. Voyager 1 and 2, now leaving \nthe solar system, follow hyperbolic trajectories relative to the Sun."
+    },
+    {
+      "type": "paragraph",
+      "text": "**2. LORAN navigation.** Before GPS, ships used LORAN (Long Range \nNavigation) to determine position. Two radio stations broadcast signals; \nthe difference in arrival times places the ship on a hyperbola with the \nstations as foci. A third station gives a second hyperbola; their \nintersection is the ship's location."
+    },
+    {
+      "type": "paragraph",
+      "text": "**3. Sonic booms.** When a supersonic aircraft passes overhead, the \nshock wave creates a cone in space. The intersection of this cone with \nthe ground is a hyperbola."
+    },
+    {
+      "type": "paragraph",
+      "text": "**4. Cooling towers.** The characteristic shape of nuclear power plant \ncooling towers is a hyperboloid—a surface generated by rotating a \nhyperbola. This shape is structurally efficient and promotes air circulation."
+    },
+    {
+      "type": "example",
+      "id": "example-10.7",
+      "number": "10.7",
+      "title": "LORAN navigation",
+      "problem": "Two LORAN stations are located at $A(-100, 0)$ and $B(100, 0)$ (in miles). \nA ship receives signals and determines it is 80 miles closer to $A$ than \nto $B$. Write the equation of the hyperbola containing the ship's possible \npositions.",
+      "solution": "The ship lies on a hyperbola with foci at $A$ and $B$. The difference \nof distances is:\n\\[\n |PA| - |PB| = -80 \\text{ (since ship is closer to $A$)}\n\\]\n\nSo the constant difference is $|{-80}| = 80 = 2a$, giving $a = 40$.\n\nThe foci are at $(\\pm 100, 0)$, so $c = 100$.\n\nFind $b$:\n\\[\n b^2 = c^2 - a^2 = 10000 - 1600 = 8400\n\\]\n\nThe equation is:\n\\[\n \\frac{x^2}{1600} - \\frac{y^2}{8400} = 1\n\\]\n\nThe ship is on this hyperbola (specifically, the branch closer to station $A$)."
+    },
+    {
+      "type": "example",
+      "id": "example-10.8",
+      "number": "10.8",
+      "title": "Hyperbolic orbits",
+      "problem": "A comet follows a hyperbolic path with the Sun at one focus. At its \nclosest approach (perihelion), the comet is 0.5 AU from the Sun. The \neccentricity is $e = 2$. Find the equation of the orbit.",
+      "solution": "For a hyperbola, the perihelion distance (closest approach to the focus) \nis $c - a$ (distance from focus to near vertex).\n\nWe have:\n\n- Perihelion: $c - a = 0.5$ AU\n\n- Eccentricity: $e = c/a = 2$, so $c = 2a$\n\nSubstituting:\n\\[\n 2a - a = 0.5 \\implies a = 0.5 \\text{ AU}\n\\]\n\\[\n c = 2(0.5) = 1 \\text{ AU}\n\\]\n\nFind $b$:\n\\[\n b^2 = c^2 - a^2 = 1 - 0.25 = 0.75\n\\]\n\nWith the Sun at a focus on the positive $x$-axis, the comet approaches \nfrom the left branch. The equation is:\n\\[\n \\frac{x^2}{0.25} - \\frac{y^2}{0.75} = 1\n\\]\n\nOr equivalently: $4x^2 - \\frac{4y^2}{3} = 1$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Reflective Property of Hyperbolas"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.5",
+      "number": "10.5",
+      "title": "Reflective Property of a Hyperbola",
+      "content": "Any ray directed toward one focus of a hyperbola, upon reflection from \nthe hyperbola, travels as if it came from the other focus.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This property is used in some telescope designs (Cassegrain telescopes), \nwhere a hyperbolic secondary mirror redirects light from the primary \nparabolic mirror."
+    },
+    {
+      "type": "summary",
+      "id": "summary-10.3",
+      "number": null,
+      "title": "The Hyperbola",
+      "content": "- A hyperbola is the set of points where the absolute difference \n of distances to two foci equals $2a$.\n\n- Standard form (horizontal transverse axis): \n $\\displaystyle\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1$\n\n- Standard form (vertical transverse axis): \n $\\displaystyle\\frac{y^2}{a^2} - \\frac{x^2}{b^2} = 1$\n\n- The positive term determines the transverse axis direction.\n\n- Key relationship: $c^2 = a^2 + b^2$ (note: plus sign).\n\n- Asymptotes: $y = \\pm\\frac{b}{a}x$ (horizontal) or \n $y = \\pm\\frac{a}{b}x$ (vertical).\n\n- Eccentricity: $e = c/a$ with $e > 1$.\n\n- Hyperbolas describe unbound orbits and have applications in \n navigation, acoustics, and engineering."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:22",
+      "text": "He sits enthroned above the circle of the \nearth, and its people are like grasshoppers. He stretches out the heavens \nlike a canopy, and spreads them out like a tent to live in."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 19:6",
+      "text": "It rises at one end of the heavens and makes \nits circuit to the other; nothing is deprived of its warmth."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 38:33",
+      "text": "Do you know the laws of the heavens? Can you \nset up God's dominion over the earth?"
+    }
+  ]
+}

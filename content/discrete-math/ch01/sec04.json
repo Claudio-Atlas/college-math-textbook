@@ -1,0 +1,104 @@
+{
+  "id": "discrete-math-ch01-sec04",
+  "title": "Logical Equivalence",
+  "chapter": 1,
+  "section": 4,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"A false balance is an abomination to the Lord, but a \njust weight is His delight.\"*{Proverbs 11:1}{Logic is the anatomy of thought.}{John Locke}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Two propositions that always have the same truth value are said to be \n**logically equivalent**. This concept is fundamental to simplifying \nlogical expressions and constructing valid arguments."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.1",
+      "number": "1.1",
+      "title": "Logical Equivalence",
+      "content": "Two compound propositions $P$ and $Q$ are **logically equivalent**, \nwritten $P \\equiv Q$, if they have the same truth value for every possible \nassignment of truth values to their propositional variables."
+    },
+    {
+      "type": "paragraph",
+      "text": "Logical equivalence means that $P$ and $Q$ are interchangeable in any \nlogical expression. We can verify equivalence by showing that $P \\liff Q$ \nis a tautology, or by comparing truth tables."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "De Morgan's Laws"
+    },
+    {
+      "type": "paragraph",
+      "text": "The most important equivalences are De Morgan's Laws, which relate \nnegation to conjunction and disjunction."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.1",
+      "number": "1.1",
+      "title": "De Morgan's Laws",
+      "content": "For any propositions $p$ and $q$:\n$$\n\\lnot(p \\land q) &\\equiv \\lnot p \\lor \\lnot q \\\\\n\\lnot(p \\lor q) &\\equiv \\lnot p \\land \\lnot q \n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We verify eq:demorgan1 by truth table:\n\n| $p$ | $q$ | $p \\land q$ | $\\lnot(p \\land q)$ | $\\lnot p$ | $\\lnot q$ | $\\lnot p \\lor \\lnot q$ |\n| $\\T$ | $\\T$ | $\\T$ | $\\F$ | $\\F$ | $\\F$ | $\\F$ |\n| $\\T$ | $\\F$ | $\\F$ | $\\T$ | $\\F$ | $\\T$ | $\\T$ |\n| $\\F$ | $\\T$ | $\\F$ | $\\T$ | $\\T$ | $\\F$ | $\\T$ |\n| $\\F$ | $\\F$ | $\\F$ | $\\T$ | $\\T$ | $\\T$ | $\\T$ |\n\nThe columns for $\\lnot(p \\land q)$ and $\\lnot p \\lor \\lnot q$ are identical. \nThe proof of eq:demorgan2 is similar."
+    },
+    {
+      "type": "historical",
+      "id": "historical-1.4",
+      "number": null,
+      "title": "Augustus De Morgan (1806--1871)",
+      "content": "De Morgan was a British mathematician and logician who helped establish \nsymbolic logic as a rigorous discipline. A devout Christian, De Morgan \nsaw no conflict between faith and logical inquiry. He once wrote that \nmathematics \"has no need of the supernatural\" yet operates on principles \nthat point beyond the material world."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Important Logical Equivalences"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.2",
+      "number": "1.2",
+      "title": "Fundamental Equivalences",
+      "content": "Let $p$, $q$, and $r$ be propositions. The following equivalences hold:\n\n**Double Negation:**\n\\[ \\lnot(\\lnot p) \\equiv p \\]\n\n**Commutative Laws:**\n$$\np \\land q &\\equiv q \\land p & p \\lor q &\\equiv q \\lor p\n$$\n\n**Associative Laws:**\n$$\n(p \\land q) \\land r &\\equiv p \\land (q \\land r) & \n(p \\lor q) \\lor r &\\equiv p \\lor (q \\lor r)\n$$\n\n**Distributive Laws:**\n$$\np \\land (q \\lor r) &\\equiv (p \\land q) \\lor (p \\land r) \\\\\np \\lor (q \\land r) &\\equiv (p \\lor q) \\land (p \\lor r)\n$$\n\n**Identity Laws:**\n$$\np \\land \\T &\\equiv p & p \\lor \\F &\\equiv p\n$$\n\n**Domination Laws:**\n$$\np \\land \\F &\\equiv \\F & p \\lor \\T &\\equiv \\T\n$$\n\n**Idempotent Laws:**\n$$\np \\land p &\\equiv p & p \\lor p &\\equiv p\n$$\n\n**Absorption Laws:**\n$$\np \\land (p \\lor q) &\\equiv p & p \\lor (p \\land q) &\\equiv p\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Conditional Equivalences"
+    },
+    {
+      "type": "paragraph",
+      "text": "The conditional can be expressed using other connectives:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.3",
+      "number": "1.3",
+      "title": "Conditional Equivalences",
+      "content": "$$\np \\limplies q &\\equiv \\lnot p \\lor q \\\\\np \\limplies q &\\equiv \\lnot q \\limplies \\lnot p \\quad\\text{(contrapositive)} \n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The equivalence eq:contrapositive is especially important: a \nconditional is equivalent to its **contrapositive**. \nThis fact underlies the proof technique of contraposition."
+    },
+    {
+      "type": "warning",
+      "id": "warning-1.4",
+      "number": null,
+      "title": "Converse and Inverse Are Not Equivalent",
+      "content": "Given $p \\limplies q$:\n\n- The **converse** is $q \\limplies p$ (not equivalent)\n\n- The **inverse** is $\\lnot p \\limplies \\lnot q$ (not equivalent)\n\n- The **contrapositive** is $\\lnot q \\limplies \\lnot p$ (equivalent!)\nA common logical error is assuming the converse is true when the original \nconditional is true."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Matthew 5:37",
+      "text": "Let your `Yes' be `Yes,' and your `No,' `No.'"
+    }
+  ]
+}

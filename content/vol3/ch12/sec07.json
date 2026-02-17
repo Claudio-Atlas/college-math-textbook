@@ -1,0 +1,232 @@
+{
+  "id": "vol3-ch12-sec07",
+  "title": "Cylindrical and Spherical Coordinates",
+  "chapter": 12,
+  "section": 7,
+  "book": "vol3",
+  "epigraph": {
+    "text": "He sits enthroned above the circle of the earth, and its people are like grasshoppers.",
+    "reference": "Isaiah 40:22"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Rectangular coordinates are not always the most natural choice. When a problem has circular or spherical symmetry, calculations become far simpler in coordinate systems designed to exploit that symmetry. In this section, we introduce two such systems: **cylindrical coordinates**, which extend polar coordinates into three dimensions, and **spherical coordinates**, which describe points by their distance from the origin and two angles."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Cylindrical Coordinates"
+    },
+    {
+      "type": "paragraph",
+      "text": "Cylindrical coordinates are the three-dimensional extension of polar coordinates. We keep the polar coordinates $(r, \\theta)$ in the $xy$-plane and add the Cartesian $z$-coordinate for height."
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.1",
+      "number": "12.1",
+      "title": "Cylindrical Coordinates",
+      "content": "A point $P$ in space is represented by the ordered triple $(r, \\theta, z)$, where:\n\n- $r \\geq 0$ is the distance from $P$ to the $z$-axis\n\n- $\\theta$ is the angle from the positive $x$-axis to the projection of $P$ onto the $xy$-plane\n\n- $z$ is the signed distance from the $xy$-plane to $P$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The conversion formulas follow directly from polar coordinates:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.1",
+      "number": "12.1",
+      "title": "Conversion: Cylindrical $\\leftrightarrow$ Rectangular",
+      "content": "**Cylindrical to Rectangular:**\n\\[\n x = r\\cos\\theta, \\quad y = r\\sin\\theta, \\quad z = z.\n\\]\n**Rectangular to Cylindrical:**\n\\[\n r = \\sqrt{x^2 + y^2}, \\quad \\tan\\theta = \\frac{y}{x}, \\quad z = z.\n\\]\n(As with polar coordinates, choose $\\theta$ based on the quadrant of $(x, y)$.)",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-12.1",
+      "number": "12.1",
+      "title": "Converting to cylindrical coordinates",
+      "problem": "Convert the point $(3, 3, 7)$ from rectangular to cylindrical coordinates.",
+      "solution": "We have:\n\\[\n r = \\sqrt{3^2 + 3^2} = \\sqrt{18} = 3\\sqrt{2}.\n\\]\nSince $x = y = 3 > 0$, the point is in the first quadrant:\n\\[\n \\theta = \\arctan\\left(\\frac{3}{3}\\right) = \\arctan(1) = \\frac{\\pi}{4}.\n\\]\nThe $z$-coordinate remains unchanged: $z = 7$.\n\nThus $(3, 3, 7) = \\left(3\\sqrt{2}, \\frac{\\pi}{4}, 7\\right)$ in cylindrical coordinates."
+    },
+    {
+      "type": "example",
+      "id": "example-12.2",
+      "number": "12.2",
+      "title": "Converting to rectangular coordinates",
+      "problem": "Convert the point $\\left(4, \\frac{2\\pi}{3}, -2\\right)$ from cylindrical to rectangular coordinates.",
+      "solution": "Using the conversion formulas:\n$$\n x &= r\\cos\\theta = 4\\cos\\frac{2\\pi}{3} = 4 \\cdot \\left(-\\frac{1}{2}\\right) = -2, \\\\\n y &= r\\sin\\theta = 4\\sin\\frac{2\\pi}{3} = 4 \\cdot \\frac{\\sqrt{3}}{2} = 2\\sqrt{3}, \\\\\n z &= -2.\n$$\nThe rectangular coordinates are $(-2, 2\\sqrt{3}, -2)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Surfaces in Cylindrical Coordinates"
+    },
+    {
+      "type": "paragraph",
+      "text": "Surfaces with cylindrical symmetry have simple equations in cylindrical coordinates."
+    },
+    {
+      "type": "example",
+      "id": "example-12.3",
+      "number": "12.3",
+      "title": "Surfaces in cylindrical coordinates",
+      "problem": "Describe the following surfaces:\n\n1. $r = 3$\n\n2. $\\theta = \\pi/4$\n\n3. $z = r$",
+      "solution": "1. $r = 3$ means the distance to the $z$-axis is constant at $3$. This is a **circular cylinder** of radius $3$ centered on the $z$-axis.\n\n2. $\\theta = \\pi/4$ means the angle from the positive $x$-axis is constant. This is a **half-plane** emanating from the $z$-axis, making a $45°$ angle with the $xz$-plane.\n\n3. $z = r$ means $z = \\sqrt{x^2 + y^2}$, or $z^2 = x^2 + y^2$ with $z \\geq 0$. This is the upper half of a **circular cone** with vertex at the origin, opening upward."
+    },
+    {
+      "type": "example",
+      "id": "example-12.4",
+      "number": "12.4",
+      "title": "Converting equations",
+      "problem": "Write the equation $x^2 + y^2 = 4z$ in cylindrical coordinates.",
+      "solution": "Since $x^2 + y^2 = r^2$, the equation becomes simply:\n\\[\n r^2 = 4z \\quad \\text{or} \\quad z = \\frac{r^2}{4}.\n\\]\nThis is a circular paraboloid opening upward."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Spherical Coordinates"
+    },
+    {
+      "type": "paragraph",
+      "text": "Spherical coordinates describe a point by its distance from the origin and two angles—like giving directions on Earth using latitude, longitude, and altitude."
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.2",
+      "number": "12.2",
+      "title": "Spherical Coordinates",
+      "content": "A point $P$ in space is represented by the ordered triple $(\\rho, \\theta, \\phi)$, where:\n\n- $\\rho \\geq 0$ is the distance from the origin to $P$\n\n- $\\theta$ is the angle from the positive $x$-axis to the projection of $P$ onto the $xy$-plane (same as in cylindrical coordinates)\n\n- $\\phi$ is the angle from the positive $z$-axis to the line segment $\\overline{OP}$, with $0 \\leq \\phi \\leq \\pi$"
+    },
+    {
+      "type": "warning",
+      "id": "warning-12.7",
+      "number": null,
+      "title": "Convention warning",
+      "content": "Different textbooks use different notations! Some use $(\\rho, \\phi, \\theta)$ with reversed angle meanings, or use $r$ instead of $\\rho$. Physics texts often use $(r, \\theta, \\phi)$. Always check the definitions when consulting other sources."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.2",
+      "number": "12.2",
+      "title": "Conversion: Spherical $\\leftrightarrow$ Rectangular",
+      "content": "**Spherical to Rectangular:**\n\\[\n x = \\rho\\sin\\phi\\cos\\theta, \\quad y = \\rho\\sin\\phi\\sin\\theta, \\quad z = \\rho\\cos\\phi.\n\\]\n**Rectangular to Spherical:**\n\\[\n \\rho = \\sqrt{x^2 + y^2 + z^2}, \\quad \\tan\\theta = \\frac{y}{x}, \\quad \\cos\\phi = \\frac{z}{\\rho}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Consider a point $P$ with spherical coordinates $(\\rho, \\theta, \\phi)$. The distance from $P$ to the $z$-axis (the cylindrical $r$) is:\n\\[\n r = \\rho\\sin\\phi.\n\\]\nThe height $z$ is:\n\\[\n z = \\rho\\cos\\phi.\n\\]\nFrom cylindrical to rectangular, $x = r\\cos\\theta$ and $y = r\\sin\\theta$, so:\n\\[\n x = \\rho\\sin\\phi\\cos\\theta, \\quad y = \\rho\\sin\\phi\\sin\\theta.\n\\]\nFor the reverse conversion, $\\rho^2 = x^2 + y^2 + z^2$ follows from the distance formula, and $\\cos\\phi = z/\\rho$ from the definition of $\\phi$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.3",
+      "number": "12.3",
+      "title": "Conversion: Spherical $\\leftrightarrow$ Cylindrical",
+      "content": "**Spherical to Cylindrical:**\n\\[\n r = \\rho\\sin\\phi, \\quad \\theta = \\theta, \\quad z = \\rho\\cos\\phi.\n\\]\n**Cylindrical to Spherical:**\n\\[\n \\rho = \\sqrt{r^2 + z^2}, \\quad \\theta = \\theta, \\quad \\cos\\phi = \\frac{z}{\\rho}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-12.5",
+      "number": "12.5",
+      "title": "Converting to spherical coordinates",
+      "problem": "Convert the point $(0, 2\\sqrt{3}, -2)$ from rectangular to spherical coordinates.",
+      "solution": "First, find $\\rho$:\n\\[\n \\rho = \\sqrt{0^2 + (2\\sqrt{3})^2 + (-2)^2} = \\sqrt{0 + 12 + 4} = \\sqrt{16} = 4.\n\\]\nNext, find $\\theta$. Since $x = 0$ and $y = 2\\sqrt{3} > 0$, the point lies on the positive $y$-axis, so $\\theta = \\pi/2$.\n\nFinally, find $\\phi$:\n\\[\n \\cos\\phi = \\frac{z}{\\rho} = \\frac{-2}{4} = -\\frac{1}{2}, \\quad \\text{so} \\quad \\phi = \\frac{2\\pi}{3}.\n\\]\nThe spherical coordinates are $\\left(4, \\frac{\\pi}{2}, \\frac{2\\pi}{3}\\right)$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.6",
+      "number": "12.6",
+      "title": "Converting to rectangular coordinates",
+      "problem": "Convert the point $\\left(8, \\frac{\\pi}{4}, \\frac{\\pi}{3}\\right)$ from spherical to rectangular coordinates.",
+      "solution": "Using the conversion formulas with $\\rho = 8$, $\\theta = \\pi/4$, $\\phi = \\pi/3$:\n$$\n x &= \\rho\\sin\\phi\\cos\\theta = 8 \\sin\\frac{\\pi}{3} \\cos\\frac{\\pi}{4} = 8 \\cdot \\frac{\\sqrt{3}}{2} \\cdot \\frac{\\sqrt{2}}{2} = 2\\sqrt{6}, \\\\\n y &= \\rho\\sin\\phi\\sin\\theta = 8 \\sin\\frac{\\pi}{3} \\sin\\frac{\\pi}{4} = 8 \\cdot \\frac{\\sqrt{3}}{2} \\cdot \\frac{\\sqrt{2}}{2} = 2\\sqrt{6}, \\\\\n z &= \\rho\\cos\\phi = 8\\cos\\frac{\\pi}{3} = 8 \\cdot \\frac{1}{2} = 4.\n$$\nThe rectangular coordinates are $(2\\sqrt{6}, 2\\sqrt{6}, 4)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Surfaces in Spherical Coordinates"
+    },
+    {
+      "type": "paragraph",
+      "text": "Surfaces with spherical symmetry have elegant representations in spherical coordinates."
+    },
+    {
+      "type": "example",
+      "id": "example-12.7",
+      "number": "12.7",
+      "title": "Surfaces in spherical coordinates",
+      "problem": "Describe the following surfaces:\n\n1. $\\rho = 5$\n\n2. $\\phi = \\pi/6$\n\n3. $\\theta = \\pi/3$",
+      "solution": "1. $\\rho = 5$ means the distance from the origin is constant at $5$. This is a **sphere** of radius $5$ centered at the origin.\n\n2. $\\phi = \\pi/6$ means the angle from the positive $z$-axis is constant at $30°$. This is a **cone** with vertex at the origin, opening upward with half-angle $30°$. (The surface consists of all rays from the origin making an angle of $\\pi/6$ with the $z$-axis.)\n\n3. $\\theta = \\pi/3$ is the same as in cylindrical coordinates: a **half-plane** emanating from the $z$-axis, making a $60°$ angle with the positive $x$-axis."
+    },
+    {
+      "type": "example",
+      "id": "example-12.8",
+      "number": "12.8",
+      "title": "Converting equations to spherical form",
+      "problem": "Write the equation $x^2 + y^2 + z^2 = 9$ in spherical coordinates.",
+      "solution": "Since $x^2 + y^2 + z^2 = \\rho^2$, the equation becomes simply:\n\\[\n \\rho^2 = 9 \\quad \\text{or} \\quad \\rho = 3.\n\\]\nThis is a sphere of radius $3$ centered at the origin—exactly as we would expect."
+    },
+    {
+      "type": "example",
+      "id": "example-12.9",
+      "number": "12.9",
+      "title": "Converting a cone equation",
+      "problem": "Write the equation $z^2 = x^2 + y^2$ in spherical coordinates.",
+      "solution": "We have $z = \\rho\\cos\\phi$ and $x^2 + y^2 = \\rho^2\\sin^2\\phi$, so:\n\\[\n \\rho^2\\cos^2\\phi = \\rho^2\\sin^2\\phi.\n\\]\nFor $\\rho \\neq 0$, this gives $\\cos^2\\phi = \\sin^2\\phi$, or $\\tan^2\\phi = 1$, so $\\tan\\phi = \\pm 1$.\n\nSince $0 \\leq \\phi \\leq \\pi$, we have $\\phi = \\pi/4$ (upper nappe) or $\\phi = 3\\pi/4$ (lower nappe).\n\nThe double cone $z^2 = x^2 + y^2$ corresponds to $\\phi = \\pi/4$ and $\\phi = 3\\pi/4$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Choosing the Right Coordinate System"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-12.7",
+      "number": null,
+      "title": "Choosing Coordinates",
+      "content": "- Use **rectangular coordinates** when the region or function involves polynomials without obvious symmetry, or when you need to work with standard formulas.\n\n- Use **cylindrical coordinates** when the problem has *axial symmetry*—that is, symmetry about a line (usually the $z$-axis). Common indicators: cylinders, cones, helices, or equations involving $x^2 + y^2$.\n\n- Use **spherical coordinates** when the problem has *central symmetry*—that is, symmetry about a point (usually the origin). Common indicators: spheres, balls, equations involving $x^2 + y^2 + z^2$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.10",
+      "number": "12.10",
+      "title": "Describing a region",
+      "problem": "Describe the region bounded by the cone $z = \\sqrt{x^2 + y^2}$ and the sphere $x^2 + y^2 + z^2 = 8$ using (a) cylindrical and (b) spherical coordinates.",
+      "solution": "**(a) Cylindrical coordinates:**\n\n- The cone: $z = r$ (with $z \\geq 0$)\n\n- The sphere: $r^2 + z^2 = 8$\nTo find where they intersect, substitute $z = r$:\n\\[\n r^2 + r^2 = 8 \\implies r^2 = 4 \\implies r = 2, \\, z = 2.\n\\]\nThe region is:\n\\[\n \\{(r, \\theta, z) : 0 \\leq \\theta \\leq 2\\pi, \\; 0 \\leq r \\leq 2, \\; r \\leq z \\leq \\sqrt{8 - r^2}\\}.\n\\]\n\n**(b) Spherical coordinates:**\n\n- The sphere: $\\rho = \\sqrt{8} = 2\\sqrt{2}$\n\n- The cone: $\\rho\\cos\\phi = \\rho\\sin\\phi$ gives $\\phi = \\pi/4$\nThe region is:\n\\[\n \\{(\\rho, \\theta, \\phi) : 0 \\leq \\theta \\leq 2\\pi, \\; 0 \\leq \\phi \\leq \\pi/4, \\; 0 \\leq \\rho \\leq 2\\sqrt{2}\\}.\n\\]\nThis spherical description is considerably simpler!"
+    },
+    {
+      "type": "historical",
+      "id": "historical-12.7",
+      "number": null,
+      "title": "Coordinate Systems Through History",
+      "content": "While René Descartes introduced rectangular coordinates in the 17th century, spherical coordinates have ancient roots in astronomy. The Greek astronomers used angles to specify star positions, and latitude-longitude systems date back at least to Hipparchus (c.\\ 190–120 BCE). The formal development of cylindrical and spherical coordinates for calculus came later, as mathematicians like Euler (1707–1783) and Lagrange (1736–1813) developed the tools needed for physics problems with symmetry."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ezekiel 1:16",
+      "text": "The appearance of the wheels and their construction was like the gleaming of beryl. And the four had the same likeness, their appearance and construction being as it were a wheel within a wheel."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:22",
+      "text": "It is he who sits above the circle of the earth, and its inhabitants are like grasshoppers; who stretches out the heavens like a curtain, and spreads them like a tent to dwell in."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 103:11--12",
+      "text": "For as high as the heavens are above the earth, so great is his steadfast love toward those who fear him; as far as the east is from the west, so far does he remove our transgressions from us."
+    },
+    {
+      "type": "quote",
+      "author": "G.H. Hardy",
+      "text": "A mathematician, like a painter or poet, is a maker of patterns."
+    },
+    {
+      "type": "quote",
+      "author": "Henri Poincaré",
+      "text": "Mathematics is the art of giving the same name to different things."
+    }
+  ]
+}

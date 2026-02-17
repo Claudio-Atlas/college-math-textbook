@@ -1,0 +1,221 @@
+{
+  "id": "diff-eq-ch05-sec05",
+  "title": "Applications: Beam Deflection and Beyond",
+  "chapter": 5,
+  "section": 5,
+  "book": "diff-eq",
+  "objectives": [
+    "Derive the fourth-order beam equation from physical principles",
+    "Solve beam deflection problems with various boundary conditions",
+    "Explore coupled oscillations leading to higher-order equations",
+    "Appreciate the physical significance of higher-order models"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Euler-Bernoulli Beam Equation"
+    },
+    {
+      "type": "paragraph",
+      "text": "When a beam is subjected to a transverse load, it bends. The relationship between the applied load and the resulting deflection involves a fourth-order differential equation."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Beam Deflection Equation",
+      "content": "For a uniform beam with flexural rigidity $EI$ (where $E$ is Young's modulus and $I$ is the moment of inertia of the cross-section), the deflection $y(x)$ satisfies:\n\\[\nEI\\, \\frac{d^4 y}{dx^4} = w(x)\n\\]\nwhere $w(x)$ is the distributed load (force per unit length)."
+    },
+    {
+      "type": "paragraph",
+      "text": "The physical quantities are related as follows:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$y(x) &= \\text{deflection (displacement)} \\\\\ny'(x) &= \\text{slope} \\\\\nEI\\, y''(x) &= M(x) = \\text{bending moment} \\\\\nEI\\, y'''(x) &= V(x) = \\text{shear force} \\\\\nEI\\, y^{(4)}(x) &= w(x) = \\text{applied load}$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Boundary Conditions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Beam problems require four boundary conditions. Common types include:"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Support Type**",
+        "**Physical Constraint**",
+        "**Mathematical Condition**"
+      ],
+      "rows": [
+        [
+          "Fixed (clamped) end",
+          "No displacement, no slope",
+          "$y = 0$, $y' = 0$"
+        ],
+        [
+          "Simply supported (pinned)",
+          "No displacement, no moment",
+          "$y = 0$, $y'' = 0$"
+        ],
+        [
+          "Free end",
+          "No moment, no shear",
+          "$y'' = 0$, $y''' = 0$"
+        ],
+        [
+          "Guided end",
+          "No slope, no shear",
+          "$y' = 0$, $y''' = 0$"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "left",
+        "left"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Cantilever Beam with Uniform Load"
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": null,
+      "problem": "A cantilever beam of length $L$ is fixed at $x = 0$ and free at $x = L$. A uniform load $w_0$ (constant) is applied. Find the deflection $y(x)$.\n\n**Solution.**\n\nThe governing equation is:\n\\[\nEI\\, y^{(4)} = w_0\n\\]\n\n**Boundary conditions:**\n\n- Fixed at $x = 0$: $y(0) = 0$, $y'(0) = 0$\n\n- Free at $x = L$: $y''(L) = 0$, $y'''(L) = 0$\n\n**General solution:**\nIntegrating four times:\n$$\nEI\\, y''' &= w_0 x + C_1 \\\\\nEI\\, y'' &= \\frac{w_0 x^2}{2} + C_1 x + C_2 \\\\\nEI\\, y' &= \\frac{w_0 x^3}{6} + \\frac{C_1 x^2}{2} + C_2 x + C_3 \\\\\nEI\\, y &= \\frac{w_0 x^4}{24} + \\frac{C_1 x^3}{6} + \\frac{C_2 x^2}{2} + C_3 x + C_4\n$$\n\n**Applying boundary conditions:**\n\nFrom $y(0) = 0$: $C_4 = 0$.\n\nFrom $y'(0) = 0$: $C_3 = 0$.\n\nFrom $y'''(L) = 0$: $w_0 L + C_1 = 0 \\implies C_1 = -w_0 L$.\n\nFrom $y''(L) = 0$: $\\frac{w_0 L^2}{2} + (-w_0 L)L + C_2 = 0 \\implies C_2 = \\frac{w_0 L^2}{2}$.\n\n**Final solution:**\n\\[\nEI\\, y = \\frac{w_0 x^4}{24} - \\frac{w_0 L x^3}{6} + \\frac{w_0 L^2 x^2}{4}\n\\]\n\\[\n\\boxed{y(x) = \\frac{w_0}{24EI}(x^4 - 4Lx^3 + 6L^2 x^2) = \\frac{w_0 x^2}{24EI}(x^2 - 4Lx + 6L^2)}\n\\]\n\nThe maximum deflection occurs at the free end:\n\\[\ny(L) = \\frac{w_0}{24EI}(L^4 - 4L^4 + 6L^4) = \\frac{w_0 L^4}{8EI}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Simply Supported Beam with Point Load"
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": null,
+      "problem": "A beam of length $L$ is simply supported at both ends. A concentrated load $P$ is applied at the center ($x = L/2$). Find the deflection.\n\n**Solution.**\n\nFor a point load, we treat the beam in two segments and match conditions at $x = L/2$.\n\n**For $0 \\leq x \\leq L/2$:** No distributed load, so $y^{(4)} = 0$.\n\nGeneral solution: $y_1 = A_0 + A_1 x + A_2 x^2 + A_3 x^3$.\n\n**For $L/2 \\leq x \\leq L$:** Similarly, $y_2 = B_0 + B_1 x + B_2 x^2 + B_3 x^3$.\n\n**Boundary conditions at $x = 0$:**\n\\[\ny_1(0) = 0 \\implies A_0 = 0\n\\]\n\\[\ny_1''(0) = 0 \\implies 2A_2 = 0 \\implies A_2 = 0\n\\]\n\nSo $y_1 = A_1 x + A_3 x^3$.\n\n**Boundary conditions at $x = L$:**\n\\[\ny_2(L) = 0, \\quad y_2''(L) = 0\n\\]\n\n**Matching conditions at $x = L/2$:**\n\n1. Continuity of deflection: $y_1(L/2) = y_2(L/2)$\n\n2. Continuity of slope: $y_1'(L/2) = y_2'(L/2)$\n\n3. Continuity of moment: $y_1''(L/2) = y_2''(L/2)$\n\n4. Jump in shear: $EI[y_2'''(L/2) - y_1'''(L/2)] = -P$\n\nBy symmetry (the load is at the center), we can use $y(-x + L) = y(x)$. This simplifies to:\n\\[\ny = \\frac{P}{48EI}(3L^2 x - 4x^3) \\quad \\text{for } 0 \\leq x \\leq L/2\n\\]\n\nBy symmetry, reflect for $L/2 \\leq x \\leq L$.\n\nThe maximum deflection is at the center:\n\\[\n\\boxed{y_{\\max} = y(L/2) = \\frac{PL^3}{48EI}}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Vibrating Beams"
+    },
+    {
+      "type": "paragraph",
+      "text": "For a beam undergoing transverse vibrations, the time-dependent deflection $y(x,t)$ satisfies a fourth-order PDE:\n\\[\nEI\\, \\frac{\\partial^4 y}{\\partial x^4} + \\rho A\\, \\frac{\\partial^2 y}{\\partial t^2} = 0\n\\]\nwhere $\\rho$ is the density and $A$ is the cross-sectional area."
+    },
+    {
+      "type": "paragraph",
+      "text": "Using separation of variables $y(x,t) = X(x)T(t)$, we obtain:\n\\[\n\\frac{EI}{X}\\frac{d^4 X}{dx^4} = -\\frac{\\rho A}{T}\\frac{d^2 T}{dt^2} = \\omega^2 \\rho A\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This gives the fourth-order spatial ODE:\n\\[\n\\frac{d^4 X}{dx^4} = \\beta^4 X, \\quad \\text{where } \\beta^4 = \\frac{\\omega^2 \\rho A}{EI}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The characteristic equation $r^4 = \\beta^4$ has roots $r = \\pm\\beta, \\pm i\\beta$, yielding:\n\\[\nX(x) = C_1 \\cosh\\beta x + C_2 \\sinh\\beta x + C_3 \\cos\\beta x + C_4 \\sin\\beta x\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Boundary conditions determine the natural frequencies $\\omega_n$ and mode shapes."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Coupled Oscillators"
+    },
+    {
+      "type": "paragraph",
+      "text": "Higher-order equations arise naturally in coupled systems."
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": null,
+      "problem": "Two masses $m$ are connected by springs in series (spring constants $k$). The displacements $x_1(t)$ and $x_2(t)$ satisfy:\n$$\nm\\ddot{x}_1 &= -kx_1 + k(x_2 - x_1) = -2kx_1 + kx_2 \\\\\nm\\ddot{x}_2 &= -k(x_2 - x_1) = kx_1 - kx_2\n$$\n\nEliminating $x_2$: From the second equation, $x_2 = x_1 + (m/k)\\ddot{x}_2$.\n\nDifferentiating the first equation twice and substituting leads to:\n\\[\nm^2 x_1^{(4)} + 3mk\\, x_1'' + k^2 x_1 = 0\n\\]\n\nWith $\\omega_0^2 = k/m$, this becomes:\n\\[\nx_1^{(4)} + 3\\omega_0^2 x_1'' + \\omega_0^4 x_1 = 0\n\\]\n\nThe characteristic equation is:\n\\[\nr^4 + 3\\omega_0^2 r^2 + \\omega_0^4 = 0\n\\]\n\nLet $u = r^2$: $u^2 + 3\\omega_0^2 u + \\omega_0^4 = 0$\n\nUsing the quadratic formula:\n\\[\nu = \\frac{-3\\omega_0^2 \\pm \\sqrt{9\\omega_0^4 - 4\\omega_0^4}}{2} = \\frac{-3\\omega_0^2 \\pm \\omega_0^2\\sqrt{5}}{2}\n\\]\n\nBoth values of $u$ are negative, giving purely imaginary roots for $r$.\n\nLet $\\omega_1^2 = -u_1 = \\frac{(3-\\sqrt{5})\\omega_0^2}{2}$ and $\\omega_2^2 = \\frac{(3+\\sqrt{5})\\omega_0^2}{2}$.\n\nThe general solution is:\n\\[\n\\boxed{x_1(t) = A\\cos\\omega_1 t + B\\sin\\omega_1 t + C\\cos\\omega_2 t + D\\sin\\omega_2 t}\n\\]\n\nThe motion is a superposition of two normal modes with frequencies $\\omega_1$ and $\\omega_2$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Control Systems and Higher Derivatives"
+    },
+    {
+      "type": "paragraph",
+      "text": "In control theory, the response of a system may involve higher-order dynamics."
+    },
+    {
+      "type": "example",
+      "id": "example-5.4",
+      "number": "5.4",
+      "title": null,
+      "problem": "A position servo system with a flexible coupling has transfer function:\n\\[\n\\frac{Y(s)}{U(s)} = \\frac{1}{s^2(s^2 + \\omega^2)}\n\\]\n\nIn the time domain, the output $y(t)$ satisfies:\n\\[\ny^{(4)} + \\omega^2 y'' = u(t)\n\\]\n\nFor a unit step input $u(t) = 1$ (for $t \\geq 0$), find the response.\n\n**Solution.**\n\nCharacteristic equation: $r^4 + \\omega^2 r^2 = r^2(r^2 + \\omega^2) = 0$.\n\nRoots: $r = 0$ (double), $r = \\pm i\\omega$.\n\\[\ny_c = c_1 + c_2 t + c_3 \\cos\\omega t + c_4 \\sin\\omega t\n\\]\n\nFor the particular solution, try $y_p = At^2$ (since constant is in $y_c$, modify by $t^2$):\n\\[\ny_p^{(4)} = 0, \\quad y_p'' = 2A\n\\]\n\\[\n0 + \\omega^2(2A) = 1 \\implies A = \\frac{1}{2\\omega^2}\n\\]\n\nGeneral solution:\n\\[\ny = c_1 + c_2 t + c_3 \\cos\\omega t + c_4 \\sin\\omega t + \\frac{t^2}{2\\omega^2}\n\\]\n\nWith zero initial conditions $y(0) = y'(0) = y''(0) = y'''(0) = 0$:\n\n$y(0) = 0$: $c_1 + c_3 = 0$\n\n$y'(0) = 0$: $c_2 + c_4 \\omega = 0$\n\n$y''(0) = 0$: $-c_3 \\omega^2 + \\frac{1}{\\omega^2} = 0 \\implies c_3 = \\frac{1}{\\omega^4}$\n\n$y'''(0) = 0$: $c_4 \\omega^3 = 0 \\implies c_4 = 0$, hence $c_2 = 0$\n\nAnd $c_1 = -c_3 = -\\frac{1}{\\omega^4}$.\n\nThe step response is:\n\\[\n\\boxed{y(t) = \\frac{t^2}{2\\omega^2} + \\frac{1}{\\omega^4}(\\cos\\omega t - 1) = \\frac{t^2}{2\\omega^2} - \\frac{2\\sin^2(\\omega t/2)}{\\omega^4}}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Elastic Curves and Buckling"
+    },
+    {
+      "type": "paragraph",
+      "text": "When a column is subjected to axial compression, the critical buckling load is determined by a boundary value problem involving the fourth derivative."
+    },
+    {
+      "type": "paragraph",
+      "text": "For a column of length $L$ with pinned ends under axial load $P$:\n\\[\nEI\\, y^{(4)} + P\\, y'' = 0\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The characteristic equation $EI\\, r^4 + P\\, r^2 = 0$ gives $r^2(EI\\, r^2 + P) = 0$, with roots:\n\\[\nr = 0, 0, \\pm i\\sqrt{P/EI} = \\pm i\\lambda, \\quad \\text{where } \\lambda = \\sqrt{P/EI}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "General solution: $y = c_1 + c_2 x + c_3 \\cos\\lambda x + c_4 \\sin\\lambda x$."
+    },
+    {
+      "type": "paragraph",
+      "text": "With pinned-pinned boundary conditions ($y(0) = y''(0) = y(L) = y''(L) = 0$), non-trivial solutions exist only when $\\sin\\lambda L = 0$, giving:\n\\[\n\\lambda_n L = n\\pi \\implies P_n = \\frac{n^2 \\pi^2 EI}{L^2}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The critical (Euler) buckling load is:\n\\[\n\\boxed{P_{cr} = \\frac{\\pi^2 EI}{L^2}}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Chapter Summary"
+    },
+    {
+      "type": "paragraph",
+      "text": "In this chapter, we extended our theory of linear differential equations to arbitrary order $n$:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**General Theory**: $n$-th order equations have $n$-dimensional solution spaces. The Wronskian tests linear independence, and Abel's formula connects it to the leading coefficient.",
+        "**Constant Coefficients**: The characteristic polynomial has $n$ roots (counting multiplicity). Each root contributes fundamental solutions according to its multiplicity and whether it's real or complex.",
+        "**Undetermined Coefficients**: The method extends directly, with the modification rule using the multiplicity of overlapping characteristic roots.",
+        "**Variation of Parameters**: For any forcing function, Cramer's rule applied to the Wronskian system yields the particular solution.",
+        "**Applications**: Fourth-order equations govern beam deflection, vibrating beams, coupled oscillators, and buckling—all phenomena where higher derivatives capture essential physics."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The unity of the theory across all orders is remarkable. What works for $n = 2$ works for $n = 20$. The algebra grows, but the principles remain unchanged—a testimony to the deep structure underlying linear differential equations."
+    }
+  ]
+}

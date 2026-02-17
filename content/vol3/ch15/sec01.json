@@ -1,0 +1,313 @@
+{
+  "id": "vol3-ch15-sec01",
+  "title": "Double Integrals over Rectangular Regions",
+  "chapter": 15,
+  "section": 1,
+  "book": "vol3",
+  "epigraph": {
+    "text": "The boundary lines have fallen for me in pleasant places; surely I have a delightful inheritance.",
+    "reference": "Psalm 16:6"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Just as the definite integral $\\int_a^b f(x)\\,dx$ sums infinitely many infinitesimal contributions along an interval, the **double integral** sums contributions over a two-dimensional region. This natural generalization opens a vast new territory of applications: computing volumes, masses, centers of gravity, and countless other quantities defined over planar regions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition of the Double Integral"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider a function $f(x, y) \\geq 0$ defined on a rectangle $R = [a, b] \\times [c, d]$. The graph $z = f(x, y)$ forms a surface above $R$, and we want to find the volume of the solid bounded below by $R$ and above by this surface."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Approach:** Divide and conquer. Partition the rectangle into many small pieces, approximate the volume above each piece, and sum."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 1:** Partition $[a, b]$ into $m$ subintervals of width $\\Delta x = \\frac{b-a}{m}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 2:** Partition $[c, d]$ into $n$ subintervals of width $\\Delta y = \\frac{d-c}{n}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "This creates $mn$ small rectangles $R_{ij}$, each with area $\\Delta A = \\Delta x \\cdot \\Delta y$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 3:** In each $R_{ij}$, choose a sample point $(x_{ij}^*, y_{ij}^*)$ and form the Riemann sum:\n\\[\n \\sum_{i=1}^{m} \\sum_{j=1}^{n} f(x_{ij}^*, y_{ij}^*) \\Delta A\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This approximates the total volume by $mn$ rectangular boxes."
+    },
+    {
+      "type": "definition",
+      "id": "definition-15.1",
+      "number": "15.1",
+      "title": "Double Integral over a Rectangle",
+      "content": "Let $f$ be defined on the closed rectangle $R = [a, b] \\times [c, d]$. The **double integral** of $f$ over $R$ is\n\\[\n \\iint_R f(x, y)\\,dA = \\lim_{\\substack{m \\to \\infty \\\\ n \\to \\infty}} \\sum_{i=1}^{m} \\sum_{j=1}^{n} f(x_{ij}^*, y_{ij}^*)\\Delta A\n\\]\nprovided this limit exists and has the same value for all choices of partitions and sample points. When this limit exists, we say $f$ is **integrable** over $R$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Notation:** The symbols $dA$, $dA$, and $dx\\,dy$ all represent the \"area element.\""
+    },
+    {
+      "type": "paragraph",
+      "text": "**Geometric interpretation:**"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "If $f(x, y) \\geq 0$, then $\\iint_R f(x, y)\\,dA$ is the volume under the surface $z = f(x, y)$ above $R$.",
+        "If $f$ takes both positive and negative values, the integral gives the \"signed volume\"—volume above minus volume below."
+      ]
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-15.1",
+      "number": "15.1",
+      "title": "Integrability",
+      "content": "If $f$ is continuous on $R$, or if $f$ is bounded and discontinuous only on a finite union of smooth curves, then $f$ is integrable over $R$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Estimating Double Integrals"
+    },
+    {
+      "type": "paragraph",
+      "text": "Before learning to compute double integrals exactly, let's practice approximating them."
+    },
+    {
+      "type": "example",
+      "id": "example-15.1",
+      "number": "15.1",
+      "title": "Riemann sum approximation",
+      "problem": "Estimate $\\displaystyle\\iint_R (4 - x^2 - y^2)\\,dA$ where $R = [0, 2] \\times [0, 2]$ using a $2 \\times 2$ partition with the midpoints of each subrectangle as sample points.",
+      "solution": "Partition $[0, 2]$ into 2 subintervals: $[0, 1]$ and $[1, 2]$. Same for $y$.\n\nThis creates 4 subrectangles, each with $\\Delta A = 1 \\cdot 1 = 1$.\n\nMidpoints: $(0.5, 0.5)$, $(1.5, 0.5)$, $(0.5, 1.5)$, $(1.5, 1.5)$.\n\n$$\n f(0.5, 0.5) &= 4 - 0.25 - 0.25 = 3.5 \\\\\n f(1.5, 0.5) &= 4 - 2.25 - 0.25 = 1.5 \\\\\n f(0.5, 1.5) &= 4 - 0.25 - 2.25 = 1.5 \\\\\n f(1.5, 1.5) &= 4 - 2.25 - 2.25 = -0.5\n$$\n\nRiemann sum: $(3.5 + 1.5 + 1.5 - 0.5) \\cdot 1 = 6$.\n\n(The exact value is $\\frac{16}{3} \\approx 5.33$, so our estimate is reasonable.)"
+    },
+    {
+      "type": "example",
+      "id": "example-15.2",
+      "number": "15.2",
+      "title": "Using a table of values",
+      "problem": "A function $f(x, y)$ has the following values:\n\n| $y = 0$ | $y = 1$ | $y = 2$ |\n| $x = 0$ | 1 | 2 | 4 |\n| $x = 1$ | 3 | 4 | 5 |\n| $x = 2$ | 4 | 6 | 8 |\n\nEstimate $\\iint_R f(x, y)\\,dA$ over $R = [0, 2] \\times [0, 2]$ using the lower-left corner of each subrectangle (with $\\Delta x = \\Delta y = 1$).",
+      "solution": "The four subrectangles have lower-left corners at $(0, 0)$, $(1, 0)$, $(0, 1)$, $(1, 1)$.\n\n\\[\n \\text{Estimate} = [f(0,0) + f(1,0) + f(0,1) + f(1,1)] \\cdot 1 = (1 + 3 + 2 + 4) \\cdot 1 = 10.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Iterated Integrals and Fubini's Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Computing double integrals directly from the definition (as limits of Riemann sums) is impractical. The key insight is that we can reduce a double integral to *two single integrals* performed in sequence."
+    },
+    {
+      "type": "definition",
+      "id": "definition-15.2",
+      "number": "15.2",
+      "title": "Iterated Integral",
+      "content": "An **iterated integral** is computed by integrating with respect to one variable while treating the other as a constant, then integrating the result:\n\\[\n \\int_a^b \\int_c^d f(x, y)\\,dy\\,dx = \\int_a^b \\left[ \\int_c^d f(x, y)\\,dy \\right] dx\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "**The inner integral:** $\\int_c^d f(x, y)\\,dy$ is computed first, treating $x$ as a constant. The result is a function of $x$ alone."
+    },
+    {
+      "type": "paragraph",
+      "text": "**The outer integral:** We then integrate this function of $x$ from $a$ to $b$."
+    },
+    {
+      "type": "example",
+      "id": "example-15.3",
+      "number": "15.3",
+      "title": "Computing an iterated integral",
+      "problem": "Evaluate $\\displaystyle\\int_0^2 \\int_1^3 x^2y\\,dy\\,dx$.",
+      "solution": "**Inner integral** (integrate with respect to $y$, treating $x$ as constant):\n\\[\n \\int_1^3 x^2y\\,dy = x^2 \\int_1^3 y\\,dy = x^2 \\left[\\frac{y^2}{2}\\right]_1^3 = x^2 \\left(\\frac{9}{2} - \\frac{1}{2}\\right) = 4x^2.\n\\]\n\n**Outer integral**:\n\\[\n \\int_0^2 4x^2\\,dx = 4 \\left[\\frac{x^3}{3}\\right]_0^2 = 4 \\cdot \\frac{8}{3} = \\frac{32}{3}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The fundamental theorem connecting double integrals to iterated integrals is:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-15.2",
+      "number": "15.2",
+      "title": "Fubini's Theorem (for Rectangles)",
+      "content": "If $f$ is continuous on the rectangle $R = [a, b] \\times [c, d]$, then\n\\[\n \\iint_R f(x, y)\\,dA = \\int_a^b \\int_c^d f(x, y)\\,dy\\,dx = \\int_c^d \\int_a^b f(x, y)\\,dx\\,dy\n\\]\nBoth iterated integrals equal the double integral, and hence equal each other.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Important:** The order of integration can be reversed. Sometimes one order is much easier than the other!"
+    },
+    {
+      "type": "example",
+      "id": "example-15.4",
+      "number": "15.4",
+      "title": "Basic double integral",
+      "problem": "Evaluate $\\displaystyle\\iint_R (x^2 + y)\\,dA$ where $R = [0, 2] \\times [1, 3]$.",
+      "solution": "$$\n \\iint_R (x^2 + y)\\,dA &= \\int_0^2 \\int_1^3 (x^2 + y)\\,dy\\,dx \\\\\n &= \\int_0^2 \\left[x^2y + \\frac{y^2}{2}\\right]_{y=1}^{y=3} dx \\\\\n &= \\int_0^2 \\left[(3x^2 + \\frac{9}{2}) - (x^2 + \\frac{1}{2})\\right] dx \\\\\n &= \\int_0^2 (2x^2 + 4)\\,dx \\\\\n &= \\left[\\frac{2x^3}{3} + 4x\\right]_0^2 \\\\\n &= \\frac{16}{3} + 8 = \\frac{40}{3}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-15.5",
+      "number": "15.5",
+      "title": "Verifying Fubini's Theorem",
+      "problem": "Evaluate $\\displaystyle\\iint_R xy^2\\,dA$ where $R = [0, 1] \\times [0, 2]$ using both orders of integration.",
+      "solution": "**Order 1:** $dy$ first, then $dx$:\n$$\n \\int_0^1 \\int_0^2 xy^2\\,dy\\,dx &= \\int_0^1 x\\left[\\frac{y^3}{3}\\right]_0^2 dx \\\\\n &= \\int_0^1 x \\cdot \\frac{8}{3}\\,dx = \\frac{8}{3}\\left[\\frac{x^2}{2}\\right]_0^1 = \\frac{4}{3}.\n$$\n\n**Order 2:** $dx$ first, then $dy$:\n$$\n \\int_0^2 \\int_0^1 xy^2\\,dx\\,dy &= \\int_0^2 y^2\\left[\\frac{x^2}{2}\\right]_0^1 dy \\\\\n &= \\int_0^2 y^2 \\cdot \\frac{1}{2}\\,dy = \\frac{1}{2}\\left[\\frac{y^3}{3}\\right]_0^2 = \\frac{1}{2} \\cdot \\frac{8}{3} = \\frac{4}{3}. \\quad \\checkmark\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-15.6",
+      "number": "15.6",
+      "title": "Product functions",
+      "problem": "Evaluate $\\displaystyle\\iint_R e^x \\sin y\\,dA$ where $R = [0, 1] \\times [0, \\pi]$.",
+      "solution": "When the integrand is a product $f(x, y) = g(x) \\cdot h(y)$, the double integral factors:\n$$\n \\iint_R e^x \\sin y\\,dA &= \\left(\\int_0^1 e^x\\,dx\\right) \\cdot \\left(\\int_0^\\pi \\sin y\\,dy\\right) \\\\\n &= [e^x]_0^1 \\cdot [-\\cos y]_0^\\pi \\\\\n &= (e - 1)(1 - (-1)) = 2(e - 1).\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-15.7",
+      "number": "15.7",
+      "title": "More complex integrand",
+      "problem": "Evaluate $\\displaystyle\\iint_R (x^2 + 2xy + y^2)\\,dA$ where $R = [0, 1] \\times [0, 2]$.",
+      "solution": "Note that $x^2 + 2xy + y^2 = (x + y)^2$.\n\n$$\n \\int_0^1 \\int_0^2 (x + y)^2\\,dy\\,dx &= \\int_0^1 \\left[\\frac{(x+y)^3}{3}\\right]_0^2 dx \\\\\n &= \\int_0^1 \\frac{1}{3}\\left[(x+2)^3 - x^3\\right] dx \\\\\n &= \\frac{1}{3} \\left[\\frac{(x+2)^4}{4} - \\frac{x^4}{4}\\right]_0^1 \\\\\n &= \\frac{1}{12}\\left[(81 - 1) - (16 - 0)\\right] \\\\\n &= \\frac{1}{12}(64) = \\frac{16}{3}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-15.8",
+      "number": "15.8",
+      "title": "Trigonometric integrand",
+      "problem": "Evaluate $\\displaystyle\\iint_R \\cos(x + 2y)\\,dA$ where $R = [0, \\pi] \\times [0, \\pi/2]$.",
+      "solution": "$$\n \\int_0^\\pi \\int_0^{\\pi/2} \\cos(x + 2y)\\,dy\\,dx &= \\int_0^\\pi \\left[\\frac{\\sin(x + 2y)}{2}\\right]_0^{\\pi/2} dx \\\\\n &= \\int_0^\\pi \\frac{1}{2}\\left[\\sin(x + \\pi) - \\sin x\\right] dx \\\\\n &= \\int_0^\\pi \\frac{1}{2}(-\\sin x - \\sin x)\\,dx \\\\\n &= -\\int_0^\\pi \\sin x\\,dx = -[-\\cos x]_0^\\pi = -(1 - (-1)) = -2.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-15.9",
+      "number": "15.9",
+      "title": "Rational function",
+      "problem": "Evaluate $\\displaystyle\\iint_R \\frac{x}{1 + xy}\\,dA$ where $R = [0, 1] \\times [0, 1]$.",
+      "solution": "Integrate with respect to $y$ first (treating $x$ as constant):\n\nLet $u = 1 + xy$, so $du = x\\,dy$, meaning $dy = \\frac{du}{x}$.\n\n\\[\n \\int_0^1 \\frac{x}{1 + xy}\\,dy = \\int_1^{1+x} \\frac{1}{u}\\,du = \\ln(1 + x) - \\ln 1 = \\ln(1 + x).\n\\]\n\nNow:\n$$\n \\int_0^1 \\ln(1 + x)\\,dx &= \\left[x\\ln(1+x)\\right]_0^1 - \\int_0^1 \\frac{x}{1+x}\\,dx \\\\\n &= \\ln 2 - \\int_0^1 \\left(1 - \\frac{1}{1+x}\\right)dx \\\\\n &= \\ln 2 - \\left[x - \\ln(1+x)\\right]_0^1 \\\\\n &= \\ln 2 - (1 - \\ln 2) = 2\\ln 2 - 1.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-15.10",
+      "number": "15.10",
+      "title": "Requiring a specific order",
+      "problem": "Evaluate $\\displaystyle\\iint_R ye^{xy}\\,dA$ where $R = [0, 1] \\times [0, 2]$.",
+      "solution": "**Attempt with $dy$ first:**\n\\[\n \\int_0^2 ye^{xy}\\,dy \\text{ (treating $x$ as constant)}\n\\]\nThis requires integration by parts or recognizing that $\\frac{\\partial}{\\partial y}(e^{xy}) = xe^{xy}$, not $ye^{xy}$.\n\n**Try $dx$ first instead:**\n\\[\n \\int_0^1 ye^{xy}\\,dx = y \\cdot \\frac{e^{xy}}{y}\\Big|_0^1 = e^y - 1.\n\\]\n\nNow:\n\\[\n \\int_0^2 (e^y - 1)\\,dy = [e^y - y]_0^2 = (e^2 - 2) - (1 - 0) = e^2 - 3.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Volume Calculations"
+    },
+    {
+      "type": "paragraph",
+      "text": "When $f(x, y) \\geq 0$, the double integral $\\iint_R f(x, y)\\,dA$ gives the volume of the solid under the surface $z = f(x, y)$ and above the rectangle $R$."
+    },
+    {
+      "type": "example",
+      "id": "example-15.11",
+      "number": "15.11",
+      "title": "Volume under a plane",
+      "problem": "Find the volume of the solid under the plane $z = 4 - x - 2y$ above the rectangle $R = [0, 2] \\times [0, 1]$.",
+      "solution": "We need to verify that $z \\geq 0$ on $R$. At $(2, 1)$: $z = 4 - 2 - 2 = 0$. At $(0, 0)$: $z = 4$. So $z \\geq 0$ on $R$.\n\n$$\n V &= \\iint_R (4 - x - 2y)\\,dA = \\int_0^2 \\int_0^1 (4 - x - 2y)\\,dy\\,dx \\\\\n &= \\int_0^2 \\left[4y - xy - y^2\\right]_0^1 dx \\\\\n &= \\int_0^2 (4 - x - 1)\\,dx = \\int_0^2 (3 - x)\\,dx \\\\\n &= \\left[3x - \\frac{x^2}{2}\\right]_0^2 = 6 - 2 = 4.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-15.12",
+      "number": "15.12",
+      "title": "Volume under a paraboloid",
+      "problem": "Find the volume under the paraboloid $z = x^2 + y^2$ above the rectangle $R = [0, 1] \\times [0, 2]$.",
+      "solution": "$$\n V &= \\iint_R (x^2 + y^2)\\,dA = \\int_0^1 \\int_0^2 (x^2 + y^2)\\,dy\\,dx \\\\\n &= \\int_0^1 \\left[x^2y + \\frac{y^3}{3}\\right]_0^2 dx \\\\\n &= \\int_0^1 \\left(2x^2 + \\frac{8}{3}\\right) dx \\\\\n &= \\left[\\frac{2x^3}{3} + \\frac{8x}{3}\\right]_0^1 = \\frac{2}{3} + \\frac{8}{3} = \\frac{10}{3}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-15.13",
+      "number": "15.13",
+      "title": "Volume between surfaces",
+      "problem": "Find the volume of the solid between $z = x^2 + y^2$ and $z = 4$ above $R = [-1, 1] \\times [-1, 1]$.",
+      "solution": "The volume is:\n$$\n V &= \\iint_R (4 - x^2 - y^2)\\,dA \\\\\n &= \\int_{-1}^1 \\int_{-1}^1 (4 - x^2 - y^2)\\,dy\\,dx \\\\\n &= \\int_{-1}^1 \\left[4y - x^2y - \\frac{y^3}{3}\\right]_{-1}^1 dx \\\\\n &= \\int_{-1}^1 \\left[(4 - x^2 - \\frac{1}{3}) - (-4 + x^2 + \\frac{1}{3})\\right] dx \\\\\n &= \\int_{-1}^1 \\left(8 - 2x^2 - \\frac{2}{3}\\right) dx \\\\\n &= \\int_{-1}^1 \\left(\\frac{22}{3} - 2x^2\\right) dx \\\\\n &= \\left[\\frac{22x}{3} - \\frac{2x^3}{3}\\right]_{-1}^1 \\\\\n &= \\left(\\frac{22}{3} - \\frac{2}{3}\\right) - \\left(-\\frac{22}{3} + \\frac{2}{3}\\right) = \\frac{40}{3}.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Average Value"
+    },
+    {
+      "type": "definition",
+      "id": "definition-15.3",
+      "number": "15.3",
+      "title": "Average Value over a Rectangle",
+      "content": "The **average value** of $f$ over the rectangle $R$ is\n\\[\n f_{\\text{avg}} = \\frac{1}{\\text{Area}(R)} \\iint_R f(x, y)\\,dA\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This generalizes the average value of a function of one variable: $\\frac{1}{b-a}\\int_a^b f(x)\\,dx$."
+    },
+    {
+      "type": "example",
+      "id": "example-15.14",
+      "number": "15.14",
+      "title": "Average value",
+      "problem": "Find the average value of $f(x, y) = xy$ over $R = [0, 4] \\times [0, 2]$.",
+      "solution": "$\\text{Area}(R) = 4 \\times 2 = 8$.\n\n\\[\n \\iint_R xy\\,dA = \\int_0^4 \\int_0^2 xy\\,dy\\,dx = \\int_0^4 x\\left[\\frac{y^2}{2}\\right]_0^2 dx = \\int_0^4 2x\\,dx = [x^2]_0^4 = 16.\n\\]\n\n$f_{\\text{avg}} = \\frac{16}{8} = 2$."
+    },
+    {
+      "type": "example",
+      "id": "example-15.15",
+      "number": "15.15",
+      "title": "Average temperature",
+      "problem": "The temperature distribution on a rectangular metal plate $R = [0, 10] \\times [0, 8]$ (in cm) is given by $T(x, y) = 50 + 2x - y$ degrees Celsius. Find the average temperature.",
+      "solution": "$\\text{Area}(R) = 10 \\times 8 = 80$ cm$^2$.\n\n$$\n \\iint_R T\\,dA &= \\int_0^{10} \\int_0^8 (50 + 2x - y)\\,dy\\,dx \\\\\n &= \\int_0^{10} \\left[50y + 2xy - \\frac{y^2}{2}\\right]_0^8 dx \\\\\n &= \\int_0^{10} (400 + 16x - 32)\\,dx \\\\\n &= \\int_0^{10} (368 + 16x)\\,dx = [368x + 8x^2]_0^{10} = 3680 + 800 = 4480.\n$$\n\n$T_{\\text{avg}} = \\frac{4480}{80} = 56°$C."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of Double Integrals"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-15.3",
+      "number": "15.3",
+      "title": "Properties of Double Integrals",
+      "content": "Let $f$ and $g$ be integrable functions over the rectangle $R$, and let $c$ be a constant. Then:\n\n1. **Linearity:** $\\displaystyle\\iint_R [f + g]\\,dA = \\iint_R f\\,dA + \\iint_R g\\,dA$\n\n2. **Constant multiple:** $\\displaystyle\\iint_R cf\\,dA = c\\iint_R f\\,dA$\n\n3. **Comparison:** If $f(x,y) \\leq g(x,y)$ for all $(x,y)$ in $R$, then $\\displaystyle\\iint_R f\\,dA \\leq \\iint_R g\\,dA$\n\n4. **Area:** $\\displaystyle\\iint_R 1\\,dA = \\text{Area}(R)$\n\n5. **Absolute value:** $\\displaystyle\\left|\\iint_R f\\,dA\\right| \\leq \\iint_R |f|\\,dA$\n\n6. **Bounds:** If $m \\leq f(x,y) \\leq M$ on $R$, then $m \\cdot \\text{Area}(R) \\leq \\iint_R f\\,dA \\leq M \\cdot \\text{Area}(R)$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-15.16",
+      "number": "15.16",
+      "title": "Using properties",
+      "problem": "Without computing, determine whether $\\displaystyle\\iint_R (x^2 + y^2 + 1)\\,dA > 0$ for $R = [-1, 1] \\times [-1, 1]$.",
+      "solution": "Since $x^2 \\geq 0$, $y^2 \\geq 0$, we have $x^2 + y^2 + 1 \\geq 1 > 0$ everywhere on $R$.\n\nBy the comparison property:\n\\[\n \\iint_R (x^2 + y^2 + 1)\\,dA \\geq \\iint_R 1\\,dA = \\text{Area}(R) = 4 > 0.\n\\]"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "1 Kings 6:2",
+      "text": "The house that King Solomon built for the Lord was sixty cubits long, twenty cubits wide, and thirty cubits high."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ezekiel 45:10",
+      "text": "You shall have just balances, a just ephah, and a just bath."
+    },
+    {
+      "type": "quote",
+      "author": "Cavalieri",
+      "text": "A plane figure is made up of all the lines it contains."
+    }
+  ]
+}

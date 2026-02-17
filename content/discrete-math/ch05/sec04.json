@@ -1,0 +1,83 @@
+{
+  "id": "discrete-math-ch05-sec04",
+  "title": "Structural Induction",
+  "chapter": 5,
+  "section": 4,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Unless the Lord builds the house, the builders labor \nin vain.\"*{Psalm 127:1}{Structural induction is a generalization of mathematical induction to recursively defined structures.}{John McCarthy}"
+    },
+    {
+      "type": "paragraph",
+      "text": "When a set is defined recursively, we can prove properties of its elements \nusing **structural induction**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Structural Induction",
+      "content": "To prove that all elements of a recursively defined set $S$ have property \n$P$:\n\n1. **Base Case:** Prove $P$ holds for all basis elements.\n\n2. **Inductive Step:** For each recursive rule that builds new \n elements from old, prove that if the old elements have $P$, so do the \n new ones."
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Balanced parentheses",
+      "problem": "Define the **depth** of a balanced parentheses string as the maximum \nnesting level. Prove: Every balanced string has equal numbers of `(' and `)'.\n\nproof\nLet $L(s)$ and $R(s)$ count left and right parentheses in $s$.\n\n**Base Case:** $s = \\epsilon$. $L(\\epsilon) = R(\\epsilon) = 0$. $\\checkmark$\n\n**Inductive Step:**\n\n- If $s$ is balanced with $L(s) = R(s)$, then for $(s)$:\n $L((s)) = L(s) + 1 = R(s) + 1 = R((s))$. $\\checkmark$\n\n- If $s$ and $t$ are balanced with $L(s) = R(s)$ and $L(t) = R(t)$, \n then for $st$:\n $L(st) = L(s) + L(t) = R(s) + R(t) = R(st)$. $\\checkmark$\nproof",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Trees and Structural Induction"
+    },
+    {
+      "type": "paragraph",
+      "text": "Rooted trees are naturally defined recursively, making them ideal for \nstructural induction."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.2",
+      "number": "5.2",
+      "title": "Rooted Tree (Recursive)",
+      "content": "A **rooted tree** $T$ is:\n\n1. A single vertex (the root), or\n\n2. A root vertex $r$ connected to roots of rooted trees $T_1, \\ldots, T_k$ \n (the subtrees)."
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "Counting vertices and edges",
+      "problem": "Prove: A rooted tree with $n$ vertices has exactly $n - 1$ edges.\n\nproof\n**Base Case:** A tree with 1 vertex has 0 edges. $1 - 1 = 0$. $\\checkmark$\n\n**Inductive Step:** Suppose the theorem holds for trees with fewer \nthan $n$ vertices. A tree $T$ with $n$ vertices consists of a root \nconnected to subtrees $T_1, \\ldots, T_k$.\n\nLet $n_i$ be the number of vertices in $T_i$. Then $n = 1 + \\sum_i n_i$.\n\nBy IH, $T_i$ has $n_i - 1$ edges. Total edges:\n\\[ k + \\sum_{i=1}^{k} (n_i - 1) = k + \\sum_i n_i - k = \\sum_i n_i = n - 1 \\]\nproof",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Strings and Languages"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.3",
+      "number": "5.3",
+      "title": "Strings Over an Alphabet",
+      "content": "Let $\\Sigma$ be an alphabet (finite set of symbols). The set $\\Sigma^*$ \nof all strings over $\\Sigma$ is defined:\n\n1. **Basis:** $\\epsilon \\in \\Sigma^*$ (empty string).\n\n2. **Recursive:** If $w \\in \\Sigma^*$ and $a \\in \\Sigma$, then \n $wa \\in \\Sigma^*$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Length of concatenation",
+      "problem": "Let $|w|$ denote the length of string $w$. Prove: $|uv| = |u| + |v|$.\n\nproof\nBy induction on $|v|$.\n\n**Base:** $|v| = 0$, so $v = \\epsilon$. $|u\\epsilon| = |u| = |u| + 0$. $\\checkmark$\n\n**Inductive:** Suppose true when $|v| = k$. If $|v| = k + 1$, write \n$v = wa$ where $|w| = k$.\n\n$|uv| = |uwa| = |uw| + 1 = (|u| + |w|) + 1 = |u| + (|w| + 1) = |u| + |v|$. $\\checkmark$\nproof",
+      "solution": ""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 3:10--11",
+      "text": "By the grace God has given me, I \nlaid a foundation as a wise builder... For no one can lay any foundation \nother than the one already laid, which is Jesus Christ."
+    }
+  ]
+}

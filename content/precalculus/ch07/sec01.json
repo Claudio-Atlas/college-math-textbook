@@ -1,0 +1,266 @@
+{
+  "id": "precalculus-ch07-sec01",
+  "title": "Verifying Trigonometric Identities",
+  "chapter": 7,
+  "section": 1,
+  "book": "precalculus",
+  "objectives": [
+    "Distinguish between conditional equations and identities",
+    "Apply fundamental trigonometric identities strategically",
+    "Develop fluency in transforming trigonometric expressions",
+    "Master techniques for verifying identities: converting to sine/cosine, \n using conjugates, factoring, and combining fractions"
+  ],
+  "content": [
+    {
+      "type": "connection",
+      "id": "connection-7.1",
+      "number": null,
+      "title": "Truth That Endures",
+      "content": "The equation $2x + 3 = 7$ is true only when $x = 2$. But the equation \n$\\sin^2\\theta + \\cos^2\\theta = 1$ is true for *every* value of $\\theta$. \nThis distinction between conditional truth and universal truth mirrors a \nspiritual reality. Many things in life depend on circumstances—our moods, \nour circumstances, our earthly fortunes. But the character of God, as revealed \nin Scripture, remains constant: \"Jesus Christ is the same yesterday and today \nand forever\" (Hebrews 13:8). As you learn to work with identities—statements \nthat hold universally—consider what truths in your own life remain unchanged \nregardless of circumstance."
+    },
+    {
+      "type": "paragraph",
+      "text": "When you first learned algebra, you solved equations by finding specific values \nthat made statements true. The equation $x^2 - 4 = 0$ has solutions $x = \\pm 2$, \nand for any other value, the equation fails. A *trigonometric identity* \nis fundamentally different: it's an equation involving trigonometric functions \nthat is true for *all* values where both sides are defined."
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider the equation $\\tan\\theta = \\dfrac{\\sin\\theta}{\\cos\\theta}$. This isn't \na puzzle to solve—there's no special angle that makes it work. Rather, it's \na statement about the *structure* of the tangent function. Tangent is \ndefined as the ratio of sine to cosine, so this equation holds for every angle \nwhere cosine isn't zero."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Trigonometric Identity",
+      "content": "A **trigonometric identity** is an equation involving trigonometric \nfunctions that is true for all values of the variable(s) for which both \nsides of the equation are defined. The set of values where an expression \nis defined is called its **domain**."
+    },
+    {
+      "type": "paragraph",
+      "text": "The key phrase is \"where both sides are defined.\" For instance, \n$\\tan\\theta = \\dfrac{\\sin\\theta}{\\cos\\theta}$ is an identity, but we \nmust exclude values where $\\cos\\theta = 0$ (namely, odd multiples of \n$\\frac{\\pi}{2}$). At those points, neither side of the equation exists."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Fundamental Identities"
+    },
+    {
+      "type": "paragraph",
+      "text": "Before we can verify complex identities, we need a toolkit—a collection \nof basic identities that serve as building blocks. You've encountered most \nof these before, but let's gather them systematically."
+    },
+    {
+      "type": "summary",
+      "id": "summary-7.1",
+      "number": null,
+      "title": "Fundamental Trigonometric Identities",
+      "content": "**Reciprocal Identities:**\n\\[\n\\csc\\theta = \\frac{1}{\\sin\\theta}, \\quad \n\\sec\\theta = \\frac{1}{\\cos\\theta}, \\quad \n\\cot\\theta = \\frac{1}{\\tan\\theta}\n\\]\n\n**Quotient Identities:**\n\\[\n\\tan\\theta = \\frac{\\sin\\theta}{\\cos\\theta}, \\quad \n\\cot\\theta = \\frac{\\cos\\theta}{\\sin\\theta}\n\\]\n\n**Pythagorean Identities:**\n$$\n\\sin^2\\theta + \\cos^2\\theta &= 1 \\\\\n1 + \\tan^2\\theta &= \\sec^2\\theta \\\\\n1 + \\cot^2\\theta &= \\csc^2\\theta\n$$\n\n**Cofunction Identities:**\n$$\n\\sin\\left(\\frac{\\pi}{2} - \\theta\\right) &= \\cos\\theta & \n\\cos\\left(\\frac{\\pi}{2} - \\theta\\right) &= \\sin\\theta \\\\\n\\tan\\left(\\frac{\\pi}{2} - \\theta\\right) &= \\cot\\theta &\n\\cot\\left(\\frac{\\pi}{2} - \\theta\\right) &= \\tan\\theta\n$$\n\n**Even-Odd Identities:**\n$$\n\\sin(-\\theta) &= -\\sin\\theta & \\text{(sine is odd)} \\\\\n\\cos(-\\theta) &= \\cos\\theta & \\text{(cosine is even)} \\\\\n\\tan(-\\theta) &= -\\tan\\theta & \\text{(tangent is odd)}\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Pythagorean identities deserve special attention. The first one, \n$\\sin^2\\theta + \\cos^2\\theta = 1$, comes directly from the Pythagorean \ntheorem applied to the unit circle. If a point $(\\cos\\theta, \\sin\\theta)$ \nlies on the unit circle, then $\\cos^2\\theta + \\sin^2\\theta = 1^2$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The other two Pythagorean identities follow from dividing the first by \n$\\cos^2\\theta$ or $\\sin^2\\theta$:\n\\[\n\\frac{\\sin^2\\theta}{\\cos^2\\theta} + \\frac{\\cos^2\\theta}{\\cos^2\\theta} = \n\\frac{1}{\\cos^2\\theta} \\implies \\tan^2\\theta + 1 = \\sec^2\\theta\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Art of Verification"
+    },
+    {
+      "type": "paragraph",
+      "text": "Verifying an identity is not quite like solving an equation. When you \nsolve $2x + 3 = 7$, you perform the same operations on both sides to \nisolate $x$. When you verify an identity, you typically work on \n*one side only*, transforming it until it matches the other side."
+    },
+    {
+      "type": "warning",
+      "id": "warning-7.1",
+      "number": null,
+      "title": "Never ``cross-multiply'' in identity proofs",
+      "content": "A common error is treating an identity verification like an equation \nand performing operations on both sides simultaneously. This approach \nis logically flawed because you're *assuming* the identity is true \nto prove it's true—circular reasoning. Instead, start with one side \nand use valid algebraic and trigonometric manipulations to transform \nit into the other side."
+    },
+    {
+      "type": "paragraph",
+      "text": "Think of it this way: if someone claims that two different routes \nlead to the same destination, you don't need to walk both routes \nsimultaneously. You can start at one end and show it leads to the \nsame place as the other."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-7.1",
+      "number": null,
+      "title": "Verifying Trigonometric Identities",
+      "content": "1. **Start with the more complicated side.** It's generally \n easier to simplify a complex expression than to make a simple one \n more complex.\n\n2. **Convert everything to sines and cosines.** This \n provides a common language and often reveals hidden simplifications.\n\n3. **Look for Pythagorean identity opportunities.** \n Expressions like $1 - \\sin^2\\theta$ or $\\sec^2\\theta - 1$ are \n immediate candidates.\n\n4. **Factor when possible.** Difference of squares, \n common factors, and trinomial factoring all remain useful.\n\n5. **Multiply by conjugates.** When you see $1 + \\sin\\theta$, \n $1 - \\cos\\theta$, or similar expressions in denominators, multiplying \n by the conjugate often helps.\n\n6. **Combine fractions.** Finding common denominators can \n transform complex expressions into simpler ones.\n\n7. **Work toward the target.** Keep the goal in mind and \n look for opportunities to move closer to it."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Worked Examples"
+    },
+    {
+      "type": "paragraph",
+      "text": "Let's work through several identities, demonstrating various techniques."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Converting to sines and cosines",
+      "problem": "Verify: $\\tan\\theta\\cos\\theta = \\sin\\theta$",
+      "solution": "We'll work with the left side, converting tangent to its definition:\n$$\n\\tan\\theta\\cos\\theta &= \\frac{\\sin\\theta}{\\cos\\theta} \\cdot \\cos\\theta \\\\\n&= \\sin\\theta \\quad \\checkmark\n$$\nThe $\\cos\\theta$ in the numerator and denominator cancel (for values \nwhere $\\cos\\theta \\neq 0$), leaving us with $\\sin\\theta$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Using a Pythagorean identity",
+      "problem": "Verify: $\\dfrac{1 - \\sin^2\\theta}{\\cos\\theta} = \\cos\\theta$",
+      "solution": "The numerator $1 - \\sin^2\\theta$ immediately suggests the Pythagorean \nidentity. Since $\\sin^2\\theta + \\cos^2\\theta = 1$, we have \n$1 - \\sin^2\\theta = \\cos^2\\theta$.\n$$\n\\frac{1 - \\sin^2\\theta}{\\cos\\theta} &= \\frac{\\cos^2\\theta}{\\cos\\theta} \\\\\n&= \\cos\\theta \\quad \\checkmark\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "Multiplying by a conjugate",
+      "problem": "Verify: $\\dfrac{\\sin\\theta}{1 + \\cos\\theta} = \\dfrac{1 - \\cos\\theta}{\\sin\\theta}$",
+      "solution": "The left side has $1 + \\cos\\theta$ in the denominator. To transform \nit, we multiply by the conjugate $\\dfrac{1 - \\cos\\theta}{1 - \\cos\\theta}$:\n$$\n\\frac{\\sin\\theta}{1 + \\cos\\theta} &= \n\\frac{\\sin\\theta}{1 + \\cos\\theta} \\cdot \\frac{1 - \\cos\\theta}{1 - \\cos\\theta} \\\\\n&= \\frac{\\sin\\theta(1 - \\cos\\theta)}{1 - \\cos^2\\theta}\n$$\nNow we recognize the denominator: $1 - \\cos^2\\theta = \\sin^2\\theta$.\n$$\n&= \\frac{\\sin\\theta(1 - \\cos\\theta)}{\\sin^2\\theta} \\\\\n&= \\frac{1 - \\cos\\theta}{\\sin\\theta} \\quad \\checkmark\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "Combining fractions",
+      "problem": "Verify: $\\dfrac{1}{1 - \\sin\\theta} + \\dfrac{1}{1 + \\sin\\theta} = 2\\sec^2\\theta$",
+      "solution": "We combine the fractions on the left side using a common denominator:\n$$\n\\frac{1}{1 - \\sin\\theta} + \\frac{1}{1 + \\sin\\theta} \n&= \\frac{(1 + \\sin\\theta) + (1 - \\sin\\theta)}{(1 - \\sin\\theta)(1 + \\sin\\theta)} \\\\\n&= \\frac{2}{1 - \\sin^2\\theta}\n$$\nUsing the Pythagorean identity $1 - \\sin^2\\theta = \\cos^2\\theta$:\n$$\n&= \\frac{2}{\\cos^2\\theta} \\\\\n&= 2\\sec^2\\theta \\quad \\checkmark\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.5",
+      "number": "7.5",
+      "title": "Factoring difference of squares",
+      "problem": "Verify: $\\sec^4\\theta - \\tan^4\\theta = \\sec^2\\theta + \\tan^2\\theta$",
+      "solution": "The left side is a difference of fourth powers, which factors as a \ndifference of squares:\n$$\n\\sec^4\\theta - \\tan^4\\theta \n&= (\\sec^2\\theta)^2 - (\\tan^2\\theta)^2 \\\\\n&= (\\sec^2\\theta + \\tan^2\\theta)(\\sec^2\\theta - \\tan^2\\theta)\n$$\nNow, from the Pythagorean identity $1 + \\tan^2\\theta = \\sec^2\\theta$, \nwe get $\\sec^2\\theta - \\tan^2\\theta = 1$. Therefore:\n$$\n&= (\\sec^2\\theta + \\tan^2\\theta)(1) \\\\\n&= \\sec^2\\theta + \\tan^2\\theta \\quad \\checkmark\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.6",
+      "number": "7.6",
+      "title": "A multi-step verification",
+      "problem": "Verify: $\\dfrac{\\tan\\theta + \\cot\\theta}{\\sec\\theta\\csc\\theta} = 1$",
+      "solution": "This problem requires converting to sines and cosines and then \nsimplifying systematically. Let's start with the numerator:\n\\[\n\\tan\\theta + \\cot\\theta = \\frac{\\sin\\theta}{\\cos\\theta} + \n\\frac{\\cos\\theta}{\\sin\\theta} = \\frac{\\sin^2\\theta + \\cos^2\\theta}{\\sin\\theta\\cos\\theta}\n= \\frac{1}{\\sin\\theta\\cos\\theta}\n\\]\n\nNow the denominator:\n\\[\n\\sec\\theta\\csc\\theta = \\frac{1}{\\cos\\theta} \\cdot \\frac{1}{\\sin\\theta} \n= \\frac{1}{\\sin\\theta\\cos\\theta}\n\\]\n\nPutting it together:\n\\[\n\\frac{\\tan\\theta + \\cot\\theta}{\\sec\\theta\\csc\\theta} = \n\\frac{\\frac{1}{\\sin\\theta\\cos\\theta}}{\\frac{1}{\\sin\\theta\\cos\\theta}} = 1 \\quad \\checkmark\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.7",
+      "number": "7.7",
+      "title": "Working with secant and cosecant",
+      "problem": "Verify: $\\sec\\theta - \\cos\\theta = \\tan\\theta\\sin\\theta$",
+      "solution": "Let's work with the left side and convert to sines and cosines:\n$$\n\\sec\\theta - \\cos\\theta &= \\frac{1}{\\cos\\theta} - \\cos\\theta \\\\\n&= \\frac{1 - \\cos^2\\theta}{\\cos\\theta} \\\\\n&= \\frac{\\sin^2\\theta}{\\cos\\theta}\n$$\nNow we rewrite this to match the target:\n$$\n&= \\frac{\\sin\\theta}{\\cos\\theta} \\cdot \\sin\\theta \\\\\n&= \\tan\\theta\\sin\\theta \\quad \\checkmark\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.8",
+      "number": "7.8",
+      "title": "Creating a common structure",
+      "problem": "Verify: $\\csc\\theta - \\sin\\theta = \\cot\\theta\\cos\\theta$",
+      "solution": "This is parallel to the previous example. On the left:\n$$\n\\csc\\theta - \\sin\\theta &= \\frac{1}{\\sin\\theta} - \\sin\\theta \\\\\n&= \\frac{1 - \\sin^2\\theta}{\\sin\\theta} \\\\\n&= \\frac{\\cos^2\\theta}{\\sin\\theta} \\\\\n&= \\frac{\\cos\\theta}{\\sin\\theta} \\cdot \\cos\\theta \\\\\n&= \\cot\\theta\\cos\\theta \\quad \\checkmark\n$$"
+    },
+    {
+      "type": "remark",
+      "id": "remark-7.1",
+      "number": null,
+      "title": "Patterns in God's Creation",
+      "content": "Notice the beautiful symmetry between Examples [ex:sec-csc] and \n[ex:common-structure]. By interchanging sine and cosine (and \ncorrespondingly, tangent and cotangent, secant and cosecant), we get \nparallel truths. This duality—the cofunctions—reflects a deeper \norder in mathematics. The Psalmist wrote, \"The heavens declare the \nglory of God; the skies proclaim the work of his hands\" (Psalm 19:1). \nPerhaps the elegant patterns of trigonometry also whisper of a \nDesigner who delights in order and beauty."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Common Pitfalls"
+    },
+    {
+      "type": "paragraph",
+      "text": "As you practice verifying identities, watch out for these frequent errors:"
+    },
+    {
+      "type": "warning",
+      "id": "warning-7.1",
+      "number": null,
+      "title": "Algebraic Errors",
+      "content": "- $\\sin^2\\theta \\neq \\sin\\theta^2$ (the first means \n $(\\sin\\theta)^2$; the second is ambiguous)\n\n- $\\sin(\\theta + \\phi) \\neq \\sin\\theta + \\sin\\phi$ (this is \n the \"freshman's dream\" error)\n\n- $\\dfrac{1}{\\sin\\theta + \\cos\\theta} \\neq \\csc\\theta + \\sec\\theta$ \n (you cannot distribute a reciprocal over addition)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "Simplify each expression to a single trigonometric function."
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\tan\\theta\\cos\\theta$",
+        "$\\cot\\theta\\sin\\theta$",
+        "$\\sin\\theta\\sec\\theta$",
+        "$\\cos\\theta\\csc\\theta$",
+        "$\\sec\\theta\\cot\\theta\\sin\\theta$",
+        "$\\csc\\theta\\tan\\theta\\cos\\theta$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Verify each identity."
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\tan\\theta\\cot\\theta = 1$",
+        "$\\sin\\theta\\csc\\theta = 1$",
+        "$\\cos\\theta\\sec\\theta = 1$",
+        "$\\dfrac{\\sec\\theta}{\\csc\\theta} = \\tan\\theta$",
+        "$\\dfrac{\\cot\\theta}{\\csc\\theta} = \\cos\\theta$",
+        "$\\dfrac{\\tan\\theta}{\\sec\\theta} = \\sin\\theta$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Verify each identity."
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\dfrac{1 - \\cos^2\\theta}{\\sin\\theta} = \\sin\\theta$",
+        "$\\dfrac{\\sin^2\\theta}{1 - \\cos\\theta} = 1 + \\cos\\theta$",
+        "$\\dfrac{1 - \\sin^2\\theta}{1 - \\cos\\theta} = \\dfrac{\\cos^2\\theta}{1 - \\cos\\theta}$",
+        "$\\dfrac{\\tan^2\\theta}{\\sec\\theta + 1} = \\sec\\theta - 1$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Verify each identity."
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\csc^2\\theta(1 - \\cos^2\\theta) = 1$",
+        "$\\sec^2\\theta(1 - \\sin^2\\theta) = 1$",
+        "$(\\sin\\theta + \\cos\\theta)^2 = 1 + 2\\sin\\theta\\cos\\theta$",
+        "$(\\sin\\theta - \\cos\\theta)^2 = 1 - 2\\sin\\theta\\cos\\theta$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Verify each identity."
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\dfrac{\\sin\\theta}{1 - \\cos\\theta} + \\dfrac{1 - \\cos\\theta}{\\sin\\theta} = 2\\csc\\theta$",
+        "$\\dfrac{\\cos\\theta}{1 + \\sin\\theta} + \\dfrac{1 + \\sin\\theta}{\\cos\\theta} = 2\\sec\\theta$",
+        "$\\dfrac{1 - \\tan^2\\theta}{1 + \\tan^2\\theta} = \\cos^2\\theta - \\sin^2\\theta$"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "id": "discrete-math-ch03-sec02",
+  "title": "Pseudocode",
+  "chapter": 3,
+  "section": 2,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Let all things be done decently and in order.\"*{1 Corinthians 14:40}{Programs must be written for people to read, and only incidentally for machines to execute.}{Harold Abelson}"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Pseudocode** is a notation for expressing \nalgorithms that is more structured than plain English but less formal \nthan a programming language. It allows us to focus on logic without \nworrying about syntax details."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Basic Constructs"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Assignment**: The statement `x $\\gets$ value` assigns \n`value` to variable `x`."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Conditional**: The if-then-else structure:"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Loops**: The for-loop and while-loop:"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Return**: The statement `return value` outputs a result and \nterminates the algorithm."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Example Algorithms"
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Sum of array elements",
+      "problem": "verbatim\n Algorithm SUM(A[1..n])\n Input: Array A of n numbers\n Output: Sum of all elements\n \n total <- 0\n for i from 1 to n do\n total <- total + A[i]\n end for\n return total\nverbatim",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Euclidean algorithm for GCD",
+      "problem": "verbatim\n Algorithm GCD(a, b)\n Input: Non-negative integers a, b (not both zero)\n Output: gcd(a, b)\n \n while b != 0 do\n r <- a mod b\n a <- b\n b <- r\n end while\n return a\nverbatim\n\nTrace for GCD(48, 18):\n\n| $a$ | $b$ | $r = a \\mod b$ |\n| 48 | 18 | 12 |\n| 18 | 12 | 6 |\n| 12 | 6 | 0 |\n| 6 | 0 | (done) |\n\nOutput: GCD(48, 18) = 6.",
+      "solution": ""
+    },
+    {
+      "type": "historical",
+      "id": "historical-3.2",
+      "number": null,
+      "title": "Euclid's Algorithm (c. 300 BC)",
+      "content": "The algorithm in Example [ex:euclidean-gcd] appears in Book VII of \nEuclid's *Elements* and is one of the oldest known algorithms still \nin common use. It is remarkably efficient, requiring at most \n$O(\\log(\\min(a,b)))$ steps. Euclid described it geometrically, finding \nthe greatest common measure of two line segments."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Recursion"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **recursive algorithm** calls itself with smaller \ninputs. Every recursive algorithm needs:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Base case(s)**: inputs for which the answer is immediate.",
+        "**Recursive case**: the algorithm calls itself with reduced input."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-3.3",
+      "number": "3.3",
+      "title": "Recursive factorial",
+      "problem": "verbatim\n Algorithm FACTORIAL(n)\n Input: Non-negative integer n\n Output: n!\n \n if n = 0 then\n return 1\n else\n return n * FACTORIAL(n - 1)\n end if\nverbatim",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-3.4",
+      "number": "3.4",
+      "title": "Recursive Fibonacci",
+      "problem": "verbatim\n Algorithm FIB(n)\n Input: Non-negative integer n\n Output: n-th Fibonacci number\n \n if n <= 1 then\n return n\n else\n return FIB(n-1) + FIB(n-2)\n end if\nverbatim\n\nThis is correct but inefficient—it recalculates the same values many \ntimes.",
+      "solution": ""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 24:27",
+      "text": "Put your outdoor work in order and get \nyour fields ready; after that, build your house."
+    }
+  ]
+}

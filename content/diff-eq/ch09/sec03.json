@@ -1,0 +1,149 @@
+{
+  "id": "diff-eq-ch09-sec03",
+  "title": "The Heat Equation",
+  "chapter": 9,
+  "section": 3,
+  "book": "diff-eq",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The **heat equation** (or **diffusion equation**) is the \nprototypical parabolic PDE. It describes how heat spreads through a \nmaterial over time, but the same equation governs diffusion of chemicals, \nspread of populations, and even the evolution of probability distributions \nin random processes."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Physical Derivation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider a thin rod of length $L$ with uniform cross-sectional area $A$, \ndensity $\\rho$, specific heat $c$, and thermal conductivity $\\kappa$. \nWe assume the rod is insulated along its length so that heat flows only \nin the $x$-direction."
+    },
+    {
+      "type": "paragraph",
+      "text": "Let $u(x,t)$ denote the temperature at position $x$ and time $t$. Consider \na small segment of the rod from $x$ to $x + \\Delta x$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Heat energy in the segment:** The thermal energy in this segment is\n\\[\nQ = \\rho c A \\Delta x \\cdot u(x,t)\n\\]\nThe rate of change of heat energy is:\n\\[\n\\frac{\\partial Q}{\\partial t} = \\rho c A \\Delta x \\cdot \\frac{\\partial u}{\\partial t}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Heat flux:** By **Fourier's law**, heat flows from hot to cold \nat a rate proportional to the temperature gradient:\n\\[\n\\text{Heat flux} = -\\kappa A \\frac{\\partial u}{\\partial x}\n\\]\nThe minus sign indicates flow from high to low temperature."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Conservation of energy:** The rate of heat entering the segment \nat $x$ minus the rate leaving at $x + \\Delta x$ equals the rate of \naccumulation:\n\\[\n-\\kappa A\\frac{\\partial u}{\\partial x}\\bigg|_x + \\kappa A\\frac{\\partial u}{\\partial x}\\bigg|_{x+\\Delta x} = \\rho c A \\Delta x \\frac{\\partial u}{\\partial t}\n\\]\nDividing by $\\Delta x$ and taking the limit as $\\Delta x \\to 0$:\n\\[\n\\kappa A \\frac{\\partial^2 u}{\\partial x^2} = \\rho c A \\frac{\\partial u}{\\partial t}\n\\]\nSimplifying:\n\\[\n\\frac{\\partial u}{\\partial t} = k\\frac{\\partial^2 u}{\\partial x^2}\n\\]\nwhere $k = \\kappa/(\\rho c)$ is the **thermal diffusivity**."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "The Heat Equation",
+      "content": "The temperature $u(x,t)$ in a one-dimensional conductor satisfies:\n\\[\n\\frac{\\partial u}{\\partial t} = k\\frac{\\partial^2 u}{\\partial x^2}\n\\]\nwhere $k > 0$ is the thermal diffusivity (units: length$^2$/time).",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Boundary Value Problems for the Heat Equation"
+    },
+    {
+      "type": "paragraph",
+      "text": "A well-posed problem for the heat equation requires:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "The PDE: $u_t = ku_{xx}$ for $0 < x < L$, $t > 0$",
+        "Boundary conditions at $x = 0$ and $x = L$",
+        "An initial condition: $u(x,0) = f(x)$"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Heat equation with Dirichlet conditions",
+      "problem": "**Problem.** Solve:\n$$\nu_t &= ku_{xx}, \\quad 0 < x < L, \\quad t > 0 \\\\\nu(0,t) &= 0, \\quad u(L,t) = 0 \\\\\nu(x,0) &= f(x)\n$$\n\n**Solution.** By separation of variables (Section [sec:separation]), \nthe solution is:\n\\[\nu(x,t) = \\sum_{n=1}^{\\infty} b_n \\sin\\left(\\frac{n\\pi x}{L}\\right) e^{-kn^2\\pi^2 t/L^2}\n\\]\nwhere the coefficients $b_n$ are the Fourier sine coefficients of $f(x)$:\n\\[\nb_n = \\frac{2}{L}\\int_0^L f(x)\\sin\\left(\\frac{n\\pi x}{L}\\right)\\,dx\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Physical Interpretation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Each term $u_n(x,t) = b_n\\sin(n\\pi x/L)e^{-kn^2\\pi^2 t/L^2}$ is a \n**normal mode** of heat distribution. The spatial factor \n$\\sin(n\\pi x/L)$ describes the shape; the temporal factor \n$e^{-kn^2\\pi^2 t/L^2}$ describes exponential decay."
+    },
+    {
+      "type": "paragraph",
+      "text": "Key observations:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Higher modes ($n$ large) decay faster because of the $n^2$ in \n the exponent. Fine-scale temperature variations smooth out quickly.",
+        "The fundamental mode ($n=1$) decays slowest and dominates at \n large times.",
+        "As $t \\to \\infty$, $u(x,t) \\to 0$. The rod equilibrates to the \n boundary temperature."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Specific initial temperature",
+      "problem": "A rod of length $\\pi$ has thermal diffusivity $k = 1$. The ends are held \nat $0°$C, and the initial temperature is $u(x,0) = x(\\pi - x)$. Find $u(x,t)$.\n\n**Solution.** We need the Fourier sine series of $f(x) = x(\\pi - x)$:\n\\[\nb_n = \\frac{2}{\\pi}\\int_0^\\pi x(\\pi - x)\\sin(nx)\\,dx\n\\]\nIntegration by parts (twice) gives:\n\\[\nb_n = \\frac{4}{n^3\\pi}[1 - (-1)^n] = \\begin{cases}\n\\frac{8}{n^3\\pi} & n \\text{ odd}\\\\\n0 & n \\text{ even}\n\\end{cases}\n\\]\nTherefore:\n\\[\nu(x,t) = \\frac{8}{\\pi}\\sum_{n=1,3,5,\\ldots}^{\\infty} \\frac{1}{n^3}\\sin(nx)e^{-n^2 t}\n\\]\nor equivalently:\n\\[\n\\boxed{u(x,t) = \\frac{8}{\\pi}\\sum_{m=0}^{\\infty} \\frac{1}{(2m+1)^3}\\sin[(2m+1)x]e^{-(2m+1)^2 t}}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Insulated Boundaries (Neumann Conditions)"
+    },
+    {
+      "type": "paragraph",
+      "text": "If the rod is insulated at both ends, no heat escapes:\n\\[\nu_x(0,t) = 0, \\qquad u_x(L,t) = 0\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Heat equation with Neumann conditions",
+      "problem": "Solve $u_t = ku_{xx}$ with $u_x(0,t) = u_x(L,t) = 0$ and $u(x,0) = f(x)$.\n\n**Solution.** Separation with Neumann conditions gives eigenvalue \nproblem $X'' + \\lambda X = 0$ with $X'(0) = X'(L) = 0$.\n\nThe eigenvalues are $\\lambda_n = n^2\\pi^2/L^2$ for $n = 0, 1, 2, \\ldots$ \n(including $n = 0$!) with eigenfunctions:\n\\[\nX_0 = 1, \\qquad X_n = \\cos\\left(\\frac{n\\pi x}{L}\\right) \\text{ for } n \\geq 1\n\\]\n\nThe general solution is:\n\\[\nu(x,t) = a_0 + \\sum_{n=1}^{\\infty} a_n \\cos\\left(\\frac{n\\pi x}{L}\\right) e^{-kn^2\\pi^2 t/L^2}\n\\]\n\nNote that $a_0$ (the $n=0$ term) does not decay! This represents the \naverage temperature, which is conserved when no heat escapes through \nthe boundaries.\n\nThe coefficients are Fourier cosine coefficients:\n\\[\na_0 = \\frac{1}{L}\\int_0^L f(x)\\,dx, \\qquad \na_n = \\frac{2}{L}\\int_0^L f(x)\\cos\\left(\\frac{n\\pi x}{L}\\right)\\,dx\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Nonhomogeneous Boundary Conditions"
+    },
+    {
+      "type": "paragraph",
+      "text": "When the boundary temperatures are nonzero constants, we decompose the \nsolution into a steady-state part and a transient part."
+    },
+    {
+      "type": "example",
+      "id": "example-9.4",
+      "number": "9.4",
+      "title": "Nonzero boundary temperatures",
+      "problem": "Solve: $u_t = u_{xx}$ with $u(0,t) = 0$, $u(1,t) = 100$, and $u(x,0) = 0$.\n\n**Solution.** \n**Step 1: Find the steady state.** As $t \\to \\infty$, the temperature \napproaches a steady state $u_s(x)$ satisfying $u_{xx} = 0$ with \n$u_s(0) = 0$, $u_s(1) = 100$:\n\\[\nu_s(x) = 100x\n\\]\n\n**Step 2: Define the transient.** Let $v(x,t) = u(x,t) - u_s(x)$. Then:\n$$\nv_t &= u_t = u_{xx} = (v + u_s)_{xx} = v_{xx} + 0 = v_{xx}\\\\\nv(0,t) &= u(0,t) - u_s(0) = 0 - 0 = 0\\\\\nv(1,t) &= u(1,t) - u_s(1) = 100 - 100 = 0\\\\\nv(x,0) &= u(x,0) - u_s(x) = 0 - 100x = -100x\n$$\n\n**Step 3: Solve for $v$.** We have the standard problem with \nhomogeneous BCs:\n\\[\nv(x,t) = \\sum_{n=1}^{\\infty} b_n \\sin(n\\pi x)e^{-n^2\\pi^2 t}\n\\]\nwhere $b_n = 2\\int_0^1 (-100x)\\sin(n\\pi x)\\,dx = -\\frac{200}{n\\pi}(-1)^{n+1} = \\frac{200(-1)^n}{n\\pi}$.\n\n**Step 4: Combine.**\n\\[\n\\boxed{u(x,t) = 100x + \\sum_{n=1}^{\\infty} \\frac{200(-1)^n}{n\\pi}\\sin(n\\pi x)e^{-n^2\\pi^2 t}}\n\\]\nAs $t \\to \\infty$, the series vanishes and $u \\to 100x$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Higher Dimensions"
+    },
+    {
+      "type": "paragraph",
+      "text": "In two dimensions, the heat equation becomes:\n\\[\nu_t = k(u_{xx} + u_{yy}) = k\\nabla^2 u\n\\]\nwhere $\\nabla^2 = \\frac{\\partial^2}{\\partial x^2} + \\frac{\\partial^2}{\\partial y^2}$ \nis the **Laplacian**."
+    },
+    {
+      "type": "paragraph",
+      "text": "Separation of variables works with $u(x,y,t) = X(x)Y(y)T(t)$, leading to \ndouble Fourier series solutions. The details are beyond our scope but \nfollow the same principles."
+    }
+  ]
+}

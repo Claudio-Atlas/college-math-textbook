@@ -1,0 +1,103 @@
+{
+  "id": "number-theory-ch08-sec03",
+  "title": "Pell's Equation",
+  "chapter": 8,
+  "section": 3,
+  "book": "number-theory",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Continued fractions provide a complete solution to Pell's equation."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Equation"
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.1",
+      "number": "8.1",
+      "title": "Pell's Equation",
+      "content": "**Pell's equation** is $x^2 - dy^2 = 1$ where $d$ is a positive \ninteger that is not a perfect square."
+    },
+    {
+      "type": "paragraph",
+      "text": "The name is historical; Pell had little to do with it. The equation \nwas studied by Brahmagupta, Bhaskara II, and Fermat, and solved \ncompletely by Lagrange."
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Pell's Equation for $d = 2$",
+      "problem": "Solutions to $x^2 - 2y^2 = 1$: $(1, 0), (3, 2), (17, 12), (99, 70), \\ldots$\n\nNote: $3^2 - 2 \\cdot 2^2 = 9 - 8 = 1$ $\\checkmark$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solution via Continued Fractions"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Fundamental Solution",
+      "content": "Let $\\sqrt{d} = [a_0; \\overline{a_1, \\ldots, a_r}]$ have period $r$.\n\nIf $r$ is even: $(x_1, y_1) = (p_{r-1}, q_{r-1})$ is the fundamental \nsolution (smallest with $x, y > 0$).\n\nIf $r$ is odd: $(x_1, y_1) = (p_{2r-1}, q_{2r-1})$ is fundamental.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "Solving $x^2 - 7y^2 = 1$",
+      "problem": "$\\sqrt{7} = [2; \\overline{1, 1, 1, 4}]$ has period 4 (even).\n\nComputing convergents:\n$$\np_0 &= 2, & q_0 &= 1 \\\\\np_1 &= 3, & q_1 &= 1 \\\\\np_2 &= 5, & q_2 &= 2 \\\\\np_3 &= 8, & q_3 &= 3\n$$\n\nFundamental solution: $(8, 3)$. Check: $64 - 7 \\cdot 9 = 64 - 63 = 1$ $\\checkmark$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "All Solutions"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.2",
+      "number": "8.2",
+      "title": "General Solution",
+      "content": "If $(x_1, y_1)$ is the fundamental solution, then all positive solutions \nare $(x_n, y_n)$ where\n\\[\nx_n + y_n\\sqrt{d} = (x_1 + y_1\\sqrt{d})^n.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "Generating Solutions",
+      "problem": "For $d = 2$: fundamental solution $(3, 2)$.\n\n$(3 + 2\\sqrt{2})^2 = 9 + 12\\sqrt{2} + 8 = 17 + 12\\sqrt{2}$, so $(17, 12)$.\n\n$(3 + 2\\sqrt{2})^3 = (17 + 12\\sqrt{2})(3 + 2\\sqrt{2}) = 99 + 70\\sqrt{2}$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Negative Pell Equation"
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.2",
+      "number": "8.2",
+      "title": "Negative Pell Equation",
+      "content": "The **negative Pell equation** is $x^2 - dy^2 = -1$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.3",
+      "number": "8.3",
+      "title": "",
+      "content": "The negative Pell equation $x^2 - dy^2 = -1$ has solutions if and only \nif the period of $\\sqrt{d}$'s continued fraction is odd.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "For $d = 2$: period is 1 (odd), so $x^2 - 2y^2 = -1$ has solutions. \nIndeed, $(1, 1)$: $1 - 2 = -1$."
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "id": "real-analysis-ch05-sec02",
+  "title": "Continuity",
+  "chapter": 5,
+  "section": 2,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition and Basic Properties"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Continuity at a Point",
+      "content": "A function $f: A \\to \\mathbb{R}$ is **continuous** \nat $c \\in A$ if for every $\\varepsilon > 0$, there exists $\\delta > 0$ \nsuch that\n\\[\n|x - c| < \\delta \\text{ and } x \\in A \\implies |f(x) - f(c)| < \\varepsilon.\n\\]\nEquivalently (when $c$ is a limit point of $A$): $\\lim_{x \\to c} f(x) = f(c)$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.2",
+      "number": "5.2",
+      "title": "Continuous Function",
+      "content": "A function $f: A \\to \\mathbb{R}$ is **continuous on $A$** if it is \ncontinuous at every point of $A$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Sequential Characterization of Continuity",
+      "content": "$f$ is continuous at $c$ if and only if for every sequence $(x_n)$ in the \ndomain with $x_n \\to c$, we have $f(x_n) \\to f(c)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Topological Characterization",
+      "content": "$f: A \\to \\mathbb{R}$ is continuous if and only if for every open set \n$O \\subseteq \\mathbb{R}$, the preimage $f^{-1}(O) = \\{x \\in A : f(x) \\in O\\}$ \nis open in $A$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.3",
+      "number": "5.3",
+      "title": "Algebra of Continuous Functions",
+      "content": "If $f$ and $g$ are continuous at $c$, then so are $f + g$, $fg$, $kf$ \n(for any constant $k$), and $f/g$ (provided $g(c) \\neq 0$).",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.4",
+      "number": "5.4",
+      "title": "Composition of Continuous Functions",
+      "content": "If $f$ is continuous at $c$ and $g$ is continuous at $f(c)$, then \n$g \\circ f$ is continuous at $c$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Fundamental Theorems"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.5",
+      "number": "5.5",
+      "title": "Extreme Value Theorem",
+      "content": "If $f: [a, b] \\to \\mathbb{R}$ is continuous, then $f$ attains its maximum \nand minimum: there exist $x_M, x_m \\in [a, b]$ such that \n$f(x_m) \\leq f(x) \\leq f(x_M)$ for all $x \\in [a, b]$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "By Theorem [thm:heine-borel], $[a, b]$ is compact. We show $f([a, b])$ \nis compact (closed and bounded).\n\n**Bounded:** If $f([a,b])$ were unbounded, there would exist $(x_n)$ \nin $[a,b]$ with $|f(x_n)| \\to \\infty$. By Bolzano-Weierstrass, $(x_n)$ has \na convergent subsequence $x_{n_k} \\to c \\in [a,b]$. By continuity, \n$f(x_{n_k}) \\to f(c)$, contradicting $|f(x_n)| \\to \\infty$.\n\n**Closed:** Let $y_n \\in f([a,b])$ with $y_n \\to y$. Write $y_n = f(x_n)$ \nfor $x_n \\in [a,b]$. A subsequence $x_{n_k} \\to c \\in [a,b]$, and \n$f(x_{n_k}) \\to f(c)$. Since $f(x_{n_k}) = y_{n_k} \\to y$, we have $y = f(c) \\in f([a,b])$.\n\nSince $f([a,b])$ is closed and bounded, $\\sup f([a,b])$ and $\\inf f([a,b])$ \nare attained."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.6",
+      "number": "5.6",
+      "title": "Intermediate Value Theorem",
+      "content": "If $f: [a, b] \\to \\mathbb{R}$ is continuous and $L$ is between $f(a)$ and \n$f(b)$, then there exists $c \\in (a, b)$ with $f(c) = L$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Assume $f(a) < L < f(b)$ (the other case is similar). Let \n$S = \\{x \\in [a,b] : f(x) < L\\}$. Then $a \\in S$ (so $S \\neq \\emptyset$) \nand $S$ is bounded above by $b$.\n\nLet $c = \\sup S$. We show $f(c) = L$.\n\n**Claim: $f(c) \\geq L$.** If $f(c) < L$, by continuity there exists \n$\\delta > 0$ such that $f(x) < L$ for $x \\in (c - \\delta, c + \\delta) \\cap [a,b]$. \nThis contradicts $c = \\sup S$ since elements of $S$ would exist past $c$.\n\n**Claim: $f(c) \\leq L$.** If $f(c) > L$, by continuity there exists \n$\\delta > 0$ such that $f(x) > L$ for $x \\in (c - \\delta, c + \\delta) \\cap [a,b]$. \nThen $c - \\delta$ would be an upper bound for $S$, contradicting $c = \\sup S$.\n\nThus $f(c) = L$."
+    }
+  ]
+}

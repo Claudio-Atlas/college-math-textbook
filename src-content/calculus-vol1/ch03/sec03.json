@@ -1,0 +1,303 @@
+{
+  "id": "vol1-ch03-sec03",
+  "title": "What the Derivative Tells Us",
+  "chapter": 3,
+  "section": 3,
+  "book": "vol1",
+  "epigraph": {
+    "text": "The purposes of a person's heart are deep waters, but \none who has insight draws them out.",
+    "reference": "Proverbs 20:5"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "If a function is a story, its derivative is the narrator's commentary: it \ntells us, at every moment, whether the story is rising or falling, \naccelerating or slowing, reaching a peak or plunging to a valley. In \nSection [sec:deriv-as-function] we learned to compute $f'$ as a \nfunction and to graph it alongside $f$. Now we develop the language to \ndescribe exactly what $f'$ reveals about $f$."
+    },
+    {
+      "type": "paragraph",
+      "text": "This section is a *preview*. We will establish the key vocabulary—increasing, \ndecreasing, critical point, concavity, inflection point—and illustrate each \nidea with functions whose derivatives we can compute from the limit definition. \nIn Chapter 5, once we have the differentiation rules of Chapter 4, we will \ndevelop these ideas into a complete theory."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Position, Velocity, and Acceleration"
+    },
+    {
+      "type": "paragraph",
+      "text": "The most vivid interpretation of derivatives comes from motion along a \nstraight line. If an object's position at time $t$ is given by \n$s(t)$, then:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "The **velocity** is $v(t) = s'(t)$—the rate of change of \n position.",
+        "The **acceleration** is $a(t) = v'(t) = s''(t)$—the rate of \n change of velocity.",
+        "The **speed** is $\\abs{v(t)}$—velocity without regard to \n direction."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Velocity tells us *how fast* and *in which direction* the object \nmoves. Acceleration tells us how the velocity itself is changing: is the \nobject speeding up, slowing down, or maintaining a constant speed?"
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Position, velocity, and acceleration",
+      "problem": "A ball is thrown upward with initial velocity $64$ ft/s from a height of \n$80$ feet. Its position is $s(t) = 80 + 64t - 16t^{2}$. Analyze its \nmotion.",
+      "solution": "**Velocity.** We compute $v(t) = s'(t)$ from the definition:\n$$\n s'(t) &= \\limtozero{h} \\frac{[80 + 64(t+h) - 16(t+h)^{2}] - [80 + 64t - 16t^{2}]}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{64h - 16(2th + h^{2})}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{64h - 32th - 16h^{2}}{h} \\\\[6pt]\n &= \\limtozero{h} (64 - 32t - 16h) \\\\[6pt]\n &= 64 - 32t.\n$$\nSo $v(t) = 64 - 32t$.\n\n*Acceleration.** We differentiate $v(t)$:\n$$\n a(t) = v'(t) &= \\limtozero{h} \\frac{[64 - 32(t+h)] - [64 - 32t]}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{-32h}{h} = -32.\n$$\nThe acceleration is a constant $-32$ ft/s$^{2}$ (gravity).\n\n*Analysis.**\n\n- At $t = 0$: $v(0) = 64$ ft/s (moving upward).\n\n- The ball reaches its peak when $v(t) = 0$: \n $64 - 32t = 0 \\implies t = 2$ seconds.\n\n- At $t = 2$: $s(2) = 80 + 128 - 64 = 144$ feet (maximum height).\n\n- For $t > 2$: $v(t) < 0$ (the ball is falling).\n\n- The constant negative acceleration means the velocity decreases at \n a steady rate of $32$ ft/s every second."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Increasing and Decreasing Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "In Section [sec:deriv-as-function] we observed a simple but powerful \npattern: where $f$ rises, $f'$ is positive; where $f$ falls, $f'$ is \nnegative. Let us now make this precise."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.1",
+      "number": "3.1",
+      "title": "Increasing and Decreasing Functions",
+      "content": "A function $f$ is **increasing** on an \ninterval $I$ if, for every pair $x_{1}, x_{2}$ in $I$ with $x_{1} < x_{2}$, \nwe have $f(x_{1}) < f(x_{2})$.\n\nA function $f$ is **decreasing** on an \ninterval $I$ if, for every pair $x_{1}, x_{2}$ in $I$ with $x_{1} < x_{2}$, \nwe have $f(x_{1}) > f(x_{2})$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The connection to the derivative is intuitively clear and will be proved \nrigorously in Chapter 5 (using the Mean Value Theorem):"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "The Increasing/Decreasing Test (Preview)",
+      "content": "Let $f$ be continuous on $[a,b]$ and differentiable on $(a,b)$.\n\n- If $f'(x) > 0$ for all $x$ in $(a,b)$, then $f$ is increasing \n on $[a,b]$.\n\n- If $f'(x) < 0$ for all $x$ in $(a,b)$, then $f$ is decreasing \n on $[a,b]$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "*We will prove this theorem in Chapter 5 once we have the \nMean Value Theorem. For now, accept it as geometrically obvious: a function \nwith positive slope everywhere must be rising.*"
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Finding where $f$ increases and decreases",
+      "problem": "Let $f(x) = x^{2}$. We know $f'(x) = 2x$.\n\n- $f'(x) > 0$ when $x > 0$, so $f$ is increasing on $(0, \\infty)$.\n\n- $f'(x) < 0$ when $x < 0$, so $f$ is decreasing on $(-\\infty, 0)$.\n\n- $f'(0) = 0$: the tangent is horizontal at the vertex.\nThis matches the familiar parabola opening upward.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-3.3",
+      "number": "3.3",
+      "title": "Increasing and decreasing intervals for $x^{2} + 3x$",
+      "problem": "Let $f(x) = x^{2} + 3x$. We showed in Example [ex:deriv-fn-x2plus3x] \nthat $f'(x) = 2x + 3$.\n\n- $f'(x) = 0$ when $x = -\\dfrac{3}{2}$.\n\n- $f'(x) > 0$ when $x > -\\dfrac{3}{2}$: $f$ is increasing.\n\n- $f'(x) < 0$ when $x < -\\dfrac{3}{2}$: $f$ is decreasing.\nThe function has a minimum at $x = -\\dfrac{3}{2}$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Critical Points and Local Extrema"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.2",
+      "number": "3.2",
+      "title": "Critical Point",
+      "content": "A number $c$ in the domain of $f$ is a **critical point** \n(or **critical number**) of $f$ if either $f'(c) = 0$ or $f'(c)$ \ndoes not exist."
+    },
+    {
+      "type": "paragraph",
+      "text": "Critical points are the \"candidates\" for local maxima and minima. At a \nlocal maximum, the function stops increasing and begins decreasing—so the \nderivative is zero (assuming it exists). At a corner or cusp, the \nderivative fails to exist, but the function can still have a peak or valley."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.3",
+      "number": "3.3",
+      "title": "Local Maximum and Minimum",
+      "content": "A function $f$ has a **local maximum** at $c$ if \n$f(c) \\ge f(x)$ for all $x$ near $c$ (in some open interval containing $c$).\n\nA function $f$ has a **local minimum** at $c$ if \n$f(c) \\le f(x)$ for all $x$ near $c$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.2",
+      "number": "3.2",
+      "title": "Fermat's Theorem (Preview)",
+      "content": "If $f$ has a local maximum or minimum at $c$, and if $f'(c)$ exists, \nthen $f'(c) = 0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "*The proof will appear in Chapter 5. The intuition is \nstraightforward: at a peak, the tangent line is horizontal.*"
+    },
+    {
+      "type": "warning",
+      "id": "warning-3.3",
+      "number": null,
+      "title": "The converse of Fermat's Theorem is false",
+      "content": "A point where $f'(c) = 0$ is not necessarily a local extremum. For \nexample, $f(x) = x^{3}$ has $f'(0) = 0$, but $x = 0$ is neither a \nlocal max nor a local min—the function passes right through, continuing \nto increase."
+    },
+    {
+      "type": "example",
+      "id": "example-3.4",
+      "number": "3.4",
+      "title": "Identifying critical points",
+      "problem": "Find the critical points of each function:\n\n1. $f(x) = x^{2} - 4x$\n\n2. $g(x) = x^{3}$\n\n3. $h(x) = \\abs{x}$",
+      "solution": "1. We compute $f'(x)$ from the limit definition:\n $$\n f'(x) &= \\limtozero{h} \\frac{[(x+h)^{2} - 4(x+h)] - [x^{2} - 4x]}{h} \\\\[6pt]\n &= \\limtozero{h} \\frac{2xh + h^{2} - 4h}{h} = 2x - 4.\n $$\n Setting $f'(x) = 0$: $2x - 4 = 0 \\implies x = 2$. The only critical \n point is $x = 2$. Since $f'$ changes from negative to positive at \n $x = 2$, this is a local minimum.\n\n2. We know $g'(x) = 3x^{2}$. Setting $g'(x) = 0$: \n $3x^{2} = 0 \\implies x = 0$. The critical point is $x = 0$. But \n $g'(x) = 3x^{2} \\ge 0$ on both sides of $0$, so $g$ does not change \n direction—$x = 0$ is *not* a local extremum.\n\n3. We know $h'(x) = 1$ for $x > 0$ and $h'(x) = -1$ for $x < 0$, \n and $h'(0)$ does not exist. So $x = 0$ is a critical point (because \n the derivative does not exist there). Since $h'$ changes from $-1$ \n to $+1$, $x = 0$ is a local minimum."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Concavity and the Second Derivative"
+    },
+    {
+      "type": "paragraph",
+      "text": "The first derivative tells us whether $f$ is increasing or decreasing. The \nsecond derivative tells us *how* $f$ is increasing or decreasing—is \nthe curve bending upward or downward?"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.4",
+      "number": "3.4",
+      "title": "Concavity",
+      "content": "A function $f$ is **concave up** on an \ninterval $I$ if $f'$ is increasing on $I$. Geometrically, the curve \n\"opens upward\" and lies above its tangent lines.\n\nA function $f$ is **concave down** on \n$I$ if $f'$ is decreasing on $I$. The curve \"opens downward\" and lies \nbelow its tangent lines."
+    },
+    {
+      "type": "paragraph",
+      "text": "Since $f'$ is increasing precisely when its derivative $(f')' = f''$ is \npositive, we get the following test:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.3",
+      "number": "3.3",
+      "title": "Concavity Test (Preview)",
+      "content": "Let $f$ be twice differentiable on an interval $I$.\n\n- If $f''(x) > 0$ on $I$, then $f$ is concave up on $I$.\n\n- If $f''(x) < 0$ on $I$, then $f$ is concave down on $I$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-3.5",
+      "number": "3.5",
+      "title": "Concavity of $x^{2}$",
+      "problem": "For $f(x) = x^{2}$, we have $f'(x) = 2x$ and $f''(x) = 2$. Since \n$f''(x) = 2 > 0$ for all $x$, the parabola is concave up everywhere. \nThis matches the familiar \"U-shape\" of the graph.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-3.6",
+      "number": "3.6",
+      "title": "Concavity of $x^{3}$",
+      "problem": "For $f(x) = x^{3}$, we have $f'(x) = 3x^{2}$ and $f''(x) = 6x$.\n\n- $f''(x) > 0$ when $x > 0$: concave up.\n\n- $f''(x) < 0$ when $x < 0$: concave down.\n\n- $f''(0) = 0$: the concavity changes at the origin.\nThe point $(0, 0)$ is where the curve transitions from bending downward \n(for $x < 0$) to bending upward (for $x > 0$).",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Inflection Points"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.5",
+      "number": "3.5",
+      "title": "Inflection Point",
+      "content": "A point $(c, f(c))$ is an **inflection point** \nof $f$ if $f$ is continuous at $c$ and the concavity of $f$ changes at $c$ \n(from up to down, or from down to up)."
+    },
+    {
+      "type": "paragraph",
+      "text": "At an inflection point, the second derivative typically changes sign. If \n$f''$ exists at the inflection point, then $f''(c) = 0$. However, \n$f''(c) = 0$ alone does not guarantee an inflection point—the sign of \n$f''$ must actually *change*."
+    },
+    {
+      "type": "example",
+      "id": "example-3.7",
+      "number": "3.7",
+      "title": "Inflection point of $x^{3}$",
+      "problem": "We showed that $f(x) = x^{3}$ has $f''(x) = 6x$. Since $f''$ changes \nsign at $x = 0$ (negative for $x < 0$, positive for $x > 0$), the point \n$(0, 0)$ is an inflection point.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-3.8",
+      "number": "3.8",
+      "title": "No inflection despite $f''(c) = 0$",
+      "problem": "Consider $f(x) = x^{4}$. Using the limit definition (or assuming the \npattern from our earlier computations): $f'(x) = 4x^{3}$ and \n$f''(x) = 12x^{2}$. We have $f''(0) = 0$, but $f''(x) = 12x^{2} \\ge 0$ \nfor all $x$—the sign does not change. So $(0, 0)$ is *not* an \ninflection point; the function is concave up on both sides of the origin.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Graphical Analysis: From $f$ to $f'$ and Back"
+    },
+    {
+      "type": "paragraph",
+      "text": "A powerful skill is reading the graph of $f$ and deducing the graph of \n$f'$—and vice versa."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-3.3",
+      "number": null,
+      "title": "Sketching $f'$ from the Graph of $f$",
+      "content": "Given the graph of $f$:\n\n1. Identify where $f$ has horizontal tangents ($f' = 0$): mark these \n as $x$-intercepts of $f'$.\n\n2. Identify where $f$ is increasing ($f' > 0$) and decreasing \n ($f' < 0$): the graph of $f'$ is above/below the $x$-axis.\n\n3. Estimate the steepness of $f$ to judge the magnitude of $f'$.\n\n4. Identify where $f$ has corners or cusps: $f'$ has jumps or \n vertical asymptotes at those points."
+    },
+    {
+      "type": "example",
+      "id": "example-3.9",
+      "number": "3.9",
+      "title": "Sketching $f'$ from a graph of $f$",
+      "problem": "Consider the graph of $f$ shown below: a smooth curve with a local \nmaximum at $x = 1$ and a local minimum at $x = 3$.\n\ncenter\ntikzpicture\n axis[\n axis lines=middle,\n xlabel={$x$},\n ylabel={$y$},\n xmin=-0.5, xmax=5,\n ymin=-3, ymax=5,\n width=10cm, height=6cm,\n samples=100,\n grid=both,\n grid style={AtlasBorder, very thin},\n tick style={AtlasSecondary},\n tick label style={font=, AtlasSecondary},\n xtick={1,2,3,4},\n title={ Graph of $f$},\n title style={at={(0.5,1.05)}},\n ]\n \n {(1/3)*x^3 - 2*x^2 + 3*x + 1};\n axis\ntikzpicture\ncenter",
+      "solution": "Reading the graph of $f$:\n\n- $f$ increases on $(0, 1)$, so $f'(x) > 0$ there.\n\n- $f$ has a horizontal tangent at $x = 1$, so $f'(1) = 0$.\n\n- $f$ decreases on $(1, 3)$, so $f'(x) < 0$ there.\n\n- $f$ has a horizontal tangent at $x = 3$, so $f'(3) = 0$.\n\n- $f$ increases on $(3, \\infty)$, so $f'(x) > 0$ there.\n\nThe graph of $f'$ crosses the $x$-axis at $x = 1$ and $x = 3$, is \npositive before $x = 1$ and after $x = 3$, and is negative between them:\n\ncenter\ntikzpicture\n axis[\n axis lines=middle,\n xlabel={$x$},\n ylabel={$y$},\n xmin=-0.5, xmax=5,\n ymin=-2, ymax=4,\n width=10cm, height=5cm,\n samples=100,\n grid=both,\n grid style={AtlasBorder, very thin},\n tick style={AtlasSecondary},\n tick label style={font=, AtlasSecondary},\n xtick={1,2,3,4},\n title={ Graph of $f'$},\n title style={at={(0.5,1.05)}},\n ]\n {x^2 - 4*x + 3};\n axis\ntikzpicture\ncenter\n\nThe derivative $f'$ is itself a parabola opening upward, which is \nconsistent with the original function being a cubic."
+    },
+    {
+      "type": "example",
+      "id": "example-3.10",
+      "number": "3.10",
+      "title": "Complete analysis of $s(t) = t^{3} - 6t^{2} + 9t$",
+      "problem": "A particle moves along a line with position \n$s(t) = t^{3} - 6t^{2} + 9t$ meters at time $t \\ge 0$ seconds. \nAnalyze the motion completely.",
+      "solution": "**Velocity.** Using the limit definition (or the results we've \nbuilt):\n$$\n v(t) = s'(t) &= \\limtozero{h} \n \\frac{[(t+h)^{3} - 6(t+h)^{2} + 9(t+h)] - [t^{3} - 6t^{2} + 9t]}{h}.\n$$\nExpanding $(t+h)^{3} = t^{3} + 3t^{2}h + 3th^{2} + h^{3}$ and \n$(t+h)^{2} = t^{2} + 2th + h^{2}$:\nalign*\n s'(t) &= h \n 3t^{2h + 3th^{2} + h^{3} - 12th - 6h^{2} + 9h}{h} \\\\[6pt]\n &= \\limtozero{h} (3t^{2} + 3th + h^{2} - 12t - 6h + 9) \\\\[6pt]\n &= 3t^{2} - 12t + 9.\n\\end{align*}\nFactor: $v(t) = 3(t^{2} - 4t + 3) = 3(t - 1)(t - 3)$.\n\n\\medskip\\noindent\\textbf{Acceleration.}\n\\[\n a(t) = v'(t) = 6t - 12.\n\\]\n\n*Critical points of $s$:** $v(t) = 0$ when \n$t = 1$ and $t = 3$.\n\n*Increasing/decreasing analysis:**\n\n| Interval | Sign of $v(t)$ | Direction | $s$ is … |\n| $(0, 1)$ | $+$ | rightward | increasing |\n| $(1, 3)$ | $-$ | leftward | decreasing |\n| $(3, \\infty)$ | $+$ | rightward | increasing |\n\n*Extrema:**\n\n- At $t = 1$: $s(1) = 1 - 6 + 9 = 4$ meters (local maximum of position).\n\n- At $t = 3$: $s(3) = 27 - 54 + 27 = 0$ meters (local minimum of position).\n\n*Concavity:** $a(t) = 6t - 12 = 0$ when $t = 2$.\n\n- For $t < 2$: $a(t) < 0$, velocity is decreasing (decelerating).\n\n- For $t > 2$: $a(t) > 0$, velocity is increasing (accelerating).\n\n- $t = 2$ is an inflection point of the position graph, and the \n moment when the particle's deceleration switches to acceleration.\n\nThe particle starts at the origin, moves right to position $4$ m at $t=1$, \nreverses direction, returns to the origin at $t=3$, then moves right \nindefinitely."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "A Look Ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "The ideas in this section—increasing/decreasing behavior, critical points, \nconcavity, inflection points—form the backbone of what is called \n**curve sketching**, which we develop fully in \nChapter 5. The reason we cannot go further now is simple: to analyze \ninteresting functions (polynomials of degree four or higher, rational \nfunctions, trigonometric functions), we need faster ways to compute \nderivatives. Computing $f'$ from the limit definition every time is \npossible in principle but excruciatingly slow in practice. In the next \nsection, and then in all of Chapter 4, we develop the rules that make \ndifferentiation efficient."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:31",
+      "text": "But those who hope in the Lord will renew \ntheir strength. They will soar on wings like eagles; they will run and \nnot grow weary, they will walk and not be faint."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 37:23--24",
+      "text": "The Lord makes firm the steps of the \none who delights in him; though he may stumble, he will not fall, for \nthe Lord upholds him with his hand."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 3:5--6",
+      "text": "Trust in the Lord with all your heart \nand lean not on your own understanding; in all your ways submit to him, \nand he will make your paths straight."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:1",
+      "text": "There is a time for everything, and \na season for every activity under the heavens."
+    },
+    {
+      "type": "quote",
+      "author": "Pierre-Simon Laplace",
+      "text": "All the effects of Nature are only \nthe mathematical consequences of a small number of immutable laws."
+    },
+    {
+      "type": "quote",
+      "author": "Isaac Newton",
+      "text": "To explain all nature is too difficult a task \nfor any one man or even for any one age."
+    },
+    {
+      "type": "quote",
+      "author": "Leonhard Euler",
+      "text": "Mathematicians have tried in vain to this \nday to discover some order in the sequence of prime numbers, and we have \nreason to believe that it is a mystery into which the human mind will \nnever penetrate."
+    }
+  ]
+}

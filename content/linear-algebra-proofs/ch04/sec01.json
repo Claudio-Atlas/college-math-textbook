@@ -1,0 +1,137 @@
+{
+  "id": "linear-algebra-proofs-ch04-sec01",
+  "title": "The Matrix of a Linear Transformation",
+  "chapter": 4,
+  "section": 1,
+  "book": "linear-algebra-proofs",
+  "content": [
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "Matrix Representation",
+      "content": "Let $V$ and $W$ be finite-dimensional vector spaces with ordered bases \n$\\mathcal{B} = (v_1, \\ldots, v_n)$ and $\\mathcal{C} = (w_1, \\ldots, w_m)$ \nrespectively. Let $T: V \\to W$ be linear.\n\nThe **matrix of $T$ with respect to $\\mathcal{B}$ and $\\mathcal{C}$**, \ndenoted $[T]_{\\mathcal{B}}^{\\mathcal{C}}$ or $\\mathcal{M}(T, \\mathcal{B}, \\mathcal{C})$, \nis the $m \\times n$ matrix whose $j$-th column consists of the coordinates \nof $T(v_j)$ with respect to $\\mathcal{C}$:\n\\[\nT(v_j) = \\sum_{i=1}^m a_{ij} w_i \\implies [T]_{\\mathcal{B}}^{\\mathcal{C}} = (a_{ij})\n\\]\nWhen $V = W$ and $\\mathcal{B} = \\mathcal{C}$, we write simply $[T]_{\\mathcal{B}}$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Matrix-Vector Multiplication",
+      "content": "Let $T: V \\to W$ be linear with matrix $A = [T]_{\\mathcal{B}}^{\\mathcal{C}}$. \nIf $v \\in V$ has coordinate vector $[v]_{\\mathcal{B}} = x \\in \\FF^n$, then\n\\[\n[T(v)]_{\\mathcal{C}} = A \\cdot x\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $v = \\sum_{j=1}^n x_j v_j$ and $T(v_j) = \\sum_{i=1}^m a_{ij} w_i$. Then\n\\[\nT(v) = T\\left(\\sum_j x_j v_j\\right) = \\sum_j x_j T(v_j) = \\sum_j x_j \\sum_i a_{ij} w_i = \\sum_i \\left(\\sum_j a_{ij} x_j\\right) w_i\n\\]\nThe coefficient of $w_i$ is $\\sum_j a_{ij} x_j = (Ax)_i$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Composition and Matrix Multiplication",
+      "content": "Let $S: U \\to V$ and $T: V \\to W$ be linear maps. Then\n\\[\n[T \\circ S]_{\\mathcal{A}}^{\\mathcal{C}} = [T]_{\\mathcal{B}}^{\\mathcal{C}} \\cdot [S]_{\\mathcal{A}}^{\\mathcal{B}}\n\\]\nwhere $\\mathcal{A}$, $\\mathcal{B}$, $\\mathcal{C}$ are bases for $U$, $V$, $W$ respectively.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "For any $u \\in U$:\n\\[\n[(T \\circ S)(u)]_{\\mathcal{C}} = [T(S(u))]_{\\mathcal{C}} = [T]_{\\mathcal{B}}^{\\mathcal{C}} [S(u)]_{\\mathcal{B}} = [T]_{\\mathcal{B}}^{\\mathcal{C}} [S]_{\\mathcal{A}}^{\\mathcal{B}} [u]_{\\mathcal{A}}\n\\]\nSince this holds for all $u$, the matrices are equal."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.2",
+      "number": "4.2",
+      "title": "Change of Basis Matrix",
+      "content": "Let $\\mathcal{B} = (v_1, \\ldots, v_n)$ and $\\mathcal{B}' = (v_1', \\ldots, v_n')$ \nbe two bases for $V$. The **change of basis matrix** from \n$\\mathcal{B}'$ to $\\mathcal{B}$, denoted $P_{\\mathcal{B}' \\to \\mathcal{B}}$, \nis the $n \\times n$ matrix whose $j$-th column is $[v_j']_{\\mathcal{B}}$.\n\nThat is, if $v_j' = \\sum_{i=1}^n p_{ij} v_i$, then $P = (p_{ij})$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.3",
+      "number": "4.3",
+      "title": "Coordinate Transformation",
+      "content": "If $P = P_{\\mathcal{B}' \\to \\mathcal{B}}$, then for any $v \\in V$:\n\\[\n[v]_{\\mathcal{B}} = P \\cdot [v]_{\\mathcal{B}'}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $[v]_{\\mathcal{B}'} = (x_1', \\ldots, x_n')^T$, so $v = \\sum_j x_j' v_j'$. \nSubstituting $v_j' = \\sum_i p_{ij} v_i$:\n\\[\nv = \\sum_j x_j' \\sum_i p_{ij} v_i = \\sum_i \\left(\\sum_j p_{ij} x_j'\\right) v_i\n\\]\nThus $[v]_{\\mathcal{B}} = P \\cdot [v]_{\\mathcal{B}'}$."
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-4.1",
+      "number": "4.1",
+      "title": "Invertibility of Change of Basis",
+      "content": "$P_{\\mathcal{B}' \\to \\mathcal{B}}$ is invertible, and \n$(P_{\\mathcal{B}' \\to \\mathcal{B}})^{-1} = P_{\\mathcal{B} \\to \\mathcal{B}'}$.",
+      "label": "Corollary"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.4",
+      "number": "4.4",
+      "title": "Change of Basis for Operators",
+      "content": "Let $T: V \\to V$ be a linear operator. If $\\mathcal{B}$ and $\\mathcal{B}'$ \nare bases for $V$ with change of basis matrix $P = P_{\\mathcal{B}' \\to \\mathcal{B}}$, then\n\\[\n[T]_{\\mathcal{B}'} = P^{-1} [T]_{\\mathcal{B}} P\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $A = [T]_{\\mathcal{B}}$ and $A' = [T]_{\\mathcal{B}'}$. For any $v \\in V$:\n$$\nA' [v]_{\\mathcal{B}'} &= [T(v)]_{\\mathcal{B}'} = P^{-1} [T(v)]_{\\mathcal{B}} \\\\\n&= P^{-1} A [v]_{\\mathcal{B}} = P^{-1} A P [v]_{\\mathcal{B}'}\n$$\nSince this holds for all $v$, we have $A' = P^{-1} A P$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.3",
+      "number": "4.3",
+      "title": "Similar Matrices",
+      "content": "Two $n \\times n$ matrices $A$ and $B$ are **similar** \nif there exists an invertible matrix $P$ such that $B = P^{-1} A P$.\n\nWe write $A \\sim B$ to indicate that $A$ and $B$ are similar."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.5",
+      "number": "4.5",
+      "title": "Similarity is an Equivalence Relation",
+      "content": "Similarity is an equivalence relation on $M_n(\\FF)$:\n\n1. Reflexive: $A \\sim A$\n\n2. Symmetric: $A \\sim B$ implies $B \\sim A$\n\n3. Transitive: $A \\sim B$ and $B \\sim C$ implies $A \\sim C$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(a) $A = I^{-1} A I$.\n\n(b) If $B = P^{-1} A P$, then $A = P B P^{-1} = (P^{-1})^{-1} B (P^{-1})$.\n\n(c) If $B = P^{-1} A P$ and $C = Q^{-1} B Q$, then \n$C = Q^{-1}(P^{-1} A P)Q = (PQ)^{-1} A (PQ)$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.6",
+      "number": "4.6",
+      "title": "Invariants of Similarity",
+      "content": "If $A \\sim B$, then:\n\n1. $\\tr(A) = \\tr(B)$\n\n2. $\\det(A) = \\det(B)$\n\n3. $\\rank(A) = \\rank(B)$\n\n4. $A$ and $B$ have the same characteristic polynomial\n\n5. $A$ and $B$ have the same eigenvalues (with multiplicities)",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $B = P^{-1} A P$.\n\n(a) $\\tr(B) = \\tr(P^{-1} A P) = \\tr(A P P^{-1}) = \\tr(A)$ using \n$\\tr(XY) = \\tr(YX)$.\n\n(b) $\\det(B) = \\det(P^{-1}) \\det(A) \\det(P) = \\det(A)$.\n\n(c) The linear maps represented by $A$ and $B$ have the same image \ndimension.\n\n(d) $\\det(B - \\lambda I) = \\det(P^{-1}(A - \\lambda I)P) = \\det(A - \\lambda I)$.\n\n(e) Follows from (d)."
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-4.1",
+      "number": null,
+      "title": "Computing $P_{\\mathcal{B}' \\to \\mathcal{B}}$",
+      "content": "To find the change of basis matrix from $\\mathcal{B}' = (v_1', \\ldots, v_n')$ \nto $\\mathcal{B} = (v_1, \\ldots, v_n)$:\n\n1. Form the augmented matrix $[v_1 | v_2 | \\cdots | v_n \\mid v_1' | v_2' | \\cdots | v_n']$\n\n2. Row reduce the left half to the identity\n\n3. The right half becomes $P$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Change of Basis in $\\RR^2$",
+      "problem": "Let $\\mathcal{B} = ((1,0), (0,1))$ (standard) and \n$\\mathcal{B}' = ((1,1), (1,-1))$.\n\nThe change of basis matrix $P$ from $\\mathcal{B}'$ to $\\mathcal{B}$ has \ncolumns $[v_1']_{\\mathcal{B}} = (1,1)^T$ and $[v_2']_{\\mathcal{B}} = (1,-1)^T$:\n\\[\nP = \\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.7",
+      "number": "4.7",
+      "title": "Diagonalization Criterion",
+      "content": "An operator $T: V \\to V$ is **diagonalizable** \n(i.e., $[T]_{\\mathcal{B}}$ is diagonal for some basis $\\mathcal{B}$) if \nand only if $V$ has a basis of eigenvectors of $T$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "($\\Rightarrow$) If $[T]_{\\mathcal{B}} = \\diag(\\lambda_1, \\ldots, \\lambda_n)$, \nthen $T(v_i) = \\lambda_i v_i$, so each $v_i$ is an eigenvector.\n\n($\\Leftarrow$) If $(v_1, \\ldots, v_n)$ is a basis of eigenvectors with \n$T(v_i) = \\lambda_i v_i$, then $[T]_{\\mathcal{B}} = \\diag(\\lambda_1, \\ldots, \\lambda_n)$."
+    }
+  ]
+}

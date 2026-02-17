@@ -1,0 +1,217 @@
+{
+  "id": "numerical-analysis-ch04-sec06",
+  "title": "Multidimensional Interpolation",
+  "chapter": 4,
+  "section": 6,
+  "book": "numerical-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Many applications require interpolation of functions of two or more variables: terrain elevation from scattered measurements, image processing, and data defined on grids. The key techniques extend one-dimensional methods through tensor products and triangulation."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Interpolation on Rectangular Grids"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "Rectangular Grid",
+      "content": "A **rectangular grid** (or **tensor product grid**) in $\\RR^2$ is the Cartesian product of two one-dimensional grids:\n\\[\n\\{(x_i, y_j) : i = 0, \\ldots, m, \\; j = 0, \\ldots, n\\}\n\\]\nwhere $x_0 < x_1 < \\cdots < x_m$ and $y_0 < y_1 < \\cdots < y_n$.\n\nWe write $f_{ij} = f(x_i, y_j)$ for the data values."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Bilinear Interpolation"
+    },
+    {
+      "type": "paragraph",
+      "text": "The simplest method uses piecewise linear interpolation in each direction."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.2",
+      "number": "4.2",
+      "title": "Bilinear Interpolation",
+      "content": "On the rectangle $[x_i, x_{i+1}] \\times [y_j, y_{j+1}]$, the **bilinear interpolant** is:\n$$\n\nP(x, y) = (1-s)(1-t)f_{ij} + s(1-t)f_{i+1,j} + (1-s)t f_{i,j+1} + st f_{i+1,j+1}\n$$\nwhere $s = \\frac{x - x_i}{x_{i+1} - x_i}$ and $t = \\frac{y - y_j}{y_{j+1} - y_j}$ are the local coordinates normalized to $[0,1]$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Properties of Bilinear Interpolation",
+      "content": "1. $P(x_i, y_j) = f_{ij}$ (interpolation at corners)\n\n2. $P$ is linear along lines parallel to the $x$- or $y$-axis\n\n3. $P$ is continuous across rectangle boundaries\n\n4. $P(x,y) = a_0 + a_1 x + a_2 y + a_3 xy$ on each rectangle (degree $(1,1)$)",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(1) At $(s,t) = (0,0)$: $P = f_{ij}$. Similarly for other corners.\n\n(2) Fix $t$. Then $P = [(1-t)f_{ij} + t f_{i,j+1}](1-s) + [(1-t)f_{i+1,j} + t f_{i+1,j+1}]s$ is linear in $s$.\n\n(3) On the edge $x = x_{i+1}$ (where $s = 1$):\n\\[\nP(x_{i+1}, y) = (1-t)f_{i+1,j} + t f_{i+1,j+1}\n\\]\nThis matches the value from the adjacent rectangle (where $s = 0$).\n\n(4) Expanding eq:bilinear in terms of $x$ and $y$ gives a polynomial with terms $1, x, y, xy$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Bilinear interpolation",
+      "problem": "Given:\n\n| $y=0$ | $y=1$ |\n| $x=0$ | 1 | 2 |\n| $x=2$ | 3 | 5 |\n\nFind $P(1, 0.5)$.\n\n**Solution:** Here $s = (1-0)/(2-0) = 0.5$ and $t = (0.5-0)/(1-0) = 0.5$.\n\n$$\nP(1, 0.5) &= (0.5)(0.5) \\cdot 1 + (0.5)(0.5) \\cdot 3 + (0.5)(0.5) \\cdot 2 + (0.5)(0.5) \\cdot 5 \\\\\n&= 0.25(1 + 3 + 2 + 5) = 0.25 \\cdot 11 = 2.75\n$$\n\nAlternatively: First interpolate along $y = 0$: $(0.5)(1) + (0.5)(3) = 2$. Along $y = 1$: $(0.5)(2) + (0.5)(5) = 3.5$. Then interpolate in $y$: $(0.5)(2) + (0.5)(3.5) = 2.75$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Bicubic Interpolation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Higher accuracy uses cubic polynomials, matching not just values but also derivatives."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.3",
+      "number": "4.3",
+      "title": "Bicubic Interpolation",
+      "content": "**Bicubic interpolation** constructs a polynomial of degree $(3,3)$:\n\\[\nP(x,y) = \\sum_{k=0}^{3}\\sum_{\\ell=0}^{3} a_{k\\ell} x^k y^\\ell\n\\]\nwith 16 coefficients determined by matching 16 quantities at the four corners:\n\n- Function values: $f$\n\n- First partial derivatives: $f_x$, $f_y$\n\n- Mixed partial derivative: $f_{xy}$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Bicubic Basis Functions",
+      "content": "On the unit square $[0,1]^2$, define the cubic Hermite basis:\n$$\nh_0(t) &= 2t^3 - 3t^2 + 1 \\\\\nh_1(t) &= -2t^3 + 3t^2 \\\\\n\\hat{h}_0(t) &= t^3 - 2t^2 + t \\\\\n\\hat{h}_1(t) &= t^3 - t^2\n$$\n\nThe bicubic interpolant is:\n$$\nP(s,t) &= \\sum_{i=0}^{1}\\sum_{j=0}^{1} f_{ij} h_i(s) h_j(t) \\\\\n&\\quad + \\sum_{i=0}^{1}\\sum_{j=0}^{1} (f_x)_{ij} \\hat{h}_i(s) h_j(t) \\cdot \\Delta x \\notag \\\\\n&\\quad + \\sum_{i=0}^{1}\\sum_{j=0}^{1} (f_y)_{ij} h_i(s) \\hat{h}_j(t) \\cdot \\Delta y \\notag \\\\\n&\\quad + \\sum_{i=0}^{1}\\sum_{j=0}^{1} (f_{xy})_{ij} \\hat{h}_i(s) \\hat{h}_j(t) \\cdot \\Delta x \\Delta y \\notag\n$$\nwhere $s$, $t$ are normalized coordinates and $\\Delta x$, $\\Delta y$ are cell sizes.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "Image Scaling with Bicubic Interpolation",
+      "problem": "Digital images are grids of pixel values. To enlarge an image by factor $k$, evaluate the bicubic interpolant at $k$ times as many points. This produces smoother results than bilinear interpolation, which tends to blur edges.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Tensor Product Splines"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.4",
+      "number": "4.4",
+      "title": "Tensor Product Spline",
+      "content": "A **tensor product spline** combines one-dimensional splines in each direction:\n\\[\nS(x,y) = \\sum_{i=0}^{m}\\sum_{j=0}^{n} c_{ij} B_i(x) B_j(y)\n\\]\nwhere $B_i$ and $B_j$ are B-spline basis functions in the $x$ and $y$ directions."
+    },
+    {
+      "type": "paragraph",
+      "text": "For cubic tensor product splines on a rectangular grid:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.3",
+      "number": "4.3",
+      "title": "Bicubic Spline Properties",
+      "content": "The bicubic tensor product spline $S(x,y)$ satisfies:\n\n1. $S(x_i, y_j) = f_{ij}$ for all grid points\n\n2. $S \\in C^2$ globally (continuous through second mixed partials)\n\n3. On each rectangle, $S$ is a polynomial of degree $(3,3)$",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Scattered Data Interpolation"
+    },
+    {
+      "type": "paragraph",
+      "text": "When data is not on a regular grid, more general methods are needed."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.5",
+      "number": "4.5",
+      "title": "Scattered Data Problem",
+      "content": "Given $N$ points $(x_k, y_k)$ with values $f_k$, find a smooth function $F(x,y)$ such that:\n\\[\nF(x_k, y_k) = f_k, \\quad k = 1, \\ldots, N\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Triangulation Methods"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.6",
+      "number": "4.6",
+      "title": "Delaunay Triangulation",
+      "content": "The **Delaunay triangulation** of a point set is a triangulation such that no point lies inside the circumcircle of any triangle. It maximizes the minimum angle among all triangulations."
+    },
+    {
+      "type": "paragraph",
+      "text": "Radial Basis Function Interpolation"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.7",
+      "number": "4.7",
+      "title": "Radial Basis Function (RBF) Interpolation",
+      "content": "The interpolant has the form:\n$$\n\nF(x, y) = \\sum_{k=1}^{N} w_k \\phi(\\|(x,y) - (x_k, y_k)\\|)\n$$\nwhere $\\phi(r)$ is a radial basis function and the weights $w_k$ are determined by the interpolation conditions."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.4",
+      "number": "4.4",
+      "title": "Common Radial Basis Functions",
+      "content": "| Name | $\\phi(r)$ |\n| Gaussian | $e^{-(\\varepsilon r)^2}$ |\n| Multiquadric | $\\sqrt{1 + (\\varepsilon r)^2}$ |\n| Inverse multiquadric | $1/\\sqrt{1 + (\\varepsilon r)^2}$ |\n| Polyharmonic spline ($k$ odd) | $r^k$ |\n| Thin plate spline | $r^2 \\log r$ |\n\nThe parameter $\\varepsilon$ controls the shape.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The interpolation conditions $F(x_k, y_k) = f_k$ lead to a linear system:\n\\["
+    },
+    {
+      "type": "paragraph",
+      "text": "\\]\nwhere $r_{ij} = \\|(x_i, y_i) - (x_j, y_j)\\|$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.5",
+      "number": "4.5",
+      "title": "Positive Definiteness",
+      "content": "The Gaussian and inverse multiquadric RBFs generate positive definite interpolation matrices for any distinct point set, guaranteeing unique solvability.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Higher Dimensions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.8",
+      "number": "4.8",
+      "title": "Multilinear Interpolation in $d$ Dimensions",
+      "content": "On a $d$-dimensional hypercube with $2^d$ corners, multilinear interpolation is:\n$$\n\nP(\\mathbf{x}) = \\sum_{\\mathbf{k} \\in \\{0,1\\}^d} f_{\\mathbf{k}} \\prod_{i=1}^{d} \\left[(1-t_i)^{1-k_i} t_i^{k_i}\\right]\n$$\nwhere $t_i$ is the normalized coordinate in dimension $i$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Error Analysis"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.6",
+      "number": "4.6",
+      "title": "Bilinear Interpolation Error",
+      "content": "Let $f \\in C^2$ on a rectangle with side lengths $h_x$ and $h_y$. The bilinear interpolant $P$ satisfies:\n$$\n\n\\|f - P\\|_\\infty \\le \\frac{1}{8}\\left(h_x^2 \\|f_{xx}\\|_\\infty + h_y^2 \\|f_{yy}\\|_\\infty\\right)\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.7",
+      "number": "4.7",
+      "title": "Bicubic Interpolation Error",
+      "content": "For $f \\in C^4$, the bicubic interpolant satisfies:\n$$\n\n\\|f - P\\|_\\infty = O(h^4)\n$$\nwhere $h = \\max(h_x, h_y)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ]
+}

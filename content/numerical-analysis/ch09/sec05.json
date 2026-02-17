@@ -1,0 +1,255 @@
+{
+  "id": "numerical-analysis-ch09-sec05",
+  "title": "Least Squares Problems",
+  "chapter": 9,
+  "section": 5,
+  "book": "numerical-analysis",
+  "objectives": [
+    "Formulate the linear least squares problem geometrically and algebraically",
+    "Derive and solve the normal equations",
+    "Apply QR factorization for numerically stable least squares",
+    "Use the SVD and pseudoinverse for rank-deficient problems",
+    "Understand conditioning and error analysis for least squares"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Least Squares Problem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Many applications produce overdetermined linear systems—more equations than unknowns—which typically have no exact solution. Least squares finds the best approximate solution."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Linear Least Squares Problem",
+      "content": "Given $A \\in \\mathbb{R}^{m \\times n}$ with $m > n$ and $b \\in \\mathbb{R}^m$, the **linear least squares problem** is:\n\\[\n\\min_{x \\in \\mathbb{R}^n} \\|Ax - b\\|_2^2\n\\]\nThe minimizer $x^*$ is called the **least squares solution**."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Data Fitting as Least Squares",
+      "problem": "Given data points $(t_1, y_1), \\ldots, (t_m, y_m)$, find the best-fit line $y = c_0 + c_1 t$.\n\nThe system $c_0 + c_1 t_i = y_i$ for all $i$ can be written as:\n\\[\n\\underbrace{\\begin{pmatrix} 1 & t_1 \\\\ 1 & t_2 \\\\ \\vdots & \\vdots \\\\ 1 & t_m \\end{pmatrix}}_{A}\n\\underbrace{\\begin{pmatrix} c_0 \\\\ c_1 \\end{pmatrix}}_{x}\n= \\underbrace{\\begin{pmatrix} y_1 \\\\ y_2 \\\\ \\vdots \\\\ y_m \\end{pmatrix}}_{b}\n\\]\n\nFor $m > 2$, this is typically overdetermined. Least squares minimizes the sum of squared vertical distances from data points to the line.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Geometric Interpretation"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Least Squares Geometry",
+      "content": "The least squares solution $x^*$ satisfies:\n\n1. $Ax^*$ is the orthogonal projection of $b$ onto $\\text{col}(A)$\n\n2. The residual $r = b - Ax^*$ is orthogonal to $\\text{col}(A)$\n\n3. $\\|b - Ax^*\\|_2 = \\text{dist}(b, \\text{col}(A))$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The function $f(x) = \\|Ax - b\\|_2^2$ is minimized when $Ax^*$ is as close to $b$ as possible within $\\text{col}(A)$. This occurs when $b - Ax^*$ is orthogonal to $\\text{col}(A)$, i.e., orthogonal to every column $a_j$ of $A$.\n\nThis means $a_j^T(b - Ax^*) = 0$ for all $j$, or equivalently $A^T(b - Ax^*) = 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Normal Equations"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "Normal Equations",
+      "content": "The least squares solution $x^*$ satisfies:\n\\[\nA^T A x^* = A^T b\n\\]\nThese are the **normal equations**. If $A$ has full column rank, then $A^T A$ is invertible and:\n\\[\nx^* = (A^T A)^{-1} A^T b\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "From Theorem [thm:ls-geometry], $A^T(b - Ax^*) = 0$, which gives $A^T A x^* = A^T b$.\n\nIf $\\text{rank}(A) = n$, then $A^T A \\in \\mathbb{R}^{n \\times n}$ has $\\text{null}(A^T A) = \\text{null}(A) = \\{0\\}$, so $A^T A$ is invertible."
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-9.5",
+      "number": null,
+      "title": "Normal Equations Method",
+      "content": "algorithmic[1]\n Compute $C = A^T A$ $\\mathcal{O}(mn^2)$\n Compute $d = A^T b$ $\\mathcal{O}(mn)$\n Factor $C = LL^T$ (Cholesky) $\\mathcal{O}(n^3/3)$\n Solve $LL^T x = d$ $\\mathcal{O}(n^2)$\n $x$\nalgorithmic"
+    },
+    {
+      "type": "warning",
+      "id": "warning-9.5",
+      "number": null,
+      "title": "Normal Equations Instability",
+      "content": "The condition number satisfies $\\kappa(A^T A) = \\kappa(A)^2$. If $\\kappa(A) = 10^8$, then $\\kappa(A^T A) = 10^{16}$, which exceeds double precision! The normal equations can lose all accuracy for ill-conditioned problems."
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Ill-Conditioning in Normal Equations",
+      "problem": "Consider fitting a polynomial $p(t) = c_0 + c_1 t + \\cdots + c_9 t^9$ to data at $t = 0, 0.1, 0.2, \\ldots, 1.0$.\n\nThe Vandermonde matrix $A$ with $a_{ij} = t_i^{j-1}$ has $\\kappa_2(A) \\approx 10^{12}$.\n\nNormal equations: $\\kappa_2(A^T A) \\approx 10^{24}$—completely unusable in standard precision.\n\nQR-based methods work with $\\kappa_2(A) \\approx 10^{12}$, which is difficult but potentially manageable.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "QR Factorization Approach"
+    },
+    {
+      "type": "paragraph",
+      "text": "The QR factorization provides a more stable way to solve least squares problems."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.3",
+      "number": "9.3",
+      "title": "Least Squares via QR",
+      "content": "Let $A = QR$ where $Q \\in \\mathbb{R}^{m \\times n}$ has orthonormal columns and $R \\in \\mathbb{R}^{n \\times n}$ is upper triangular. The least squares solution is:\n\\[\nx^* = R^{-1} Q^T b\n\\]\nequivalently, solve $Rx^* = Q^T b$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Since $Q$ has orthonormal columns:\n\\[\n\\|Ax - b\\|_2^2 = \\|QRx - b\\|_2^2 = \\|Rx - Q^T b\\|_2^2 + \\|b - QQ^T b\\|_2^2\n\\]\n\nThe first term is minimized (to zero, if $R$ is invertible) by $Rx = Q^T b$. The second term is the squared distance from $b$ to $\\text{col}(A) = \\text{col}(Q)$, independent of $x$."
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-9.5",
+      "number": null,
+      "title": "QR Method for Least Squares",
+      "content": "algorithmic[1]\n Factor $A = QR$ (Householder) $\\mathcal{O}(2mn^2 - 2n^3/3)$\n Compute $c = Q^T b$ $\\mathcal{O}(2mn)$\n Solve $Rx = c$ (back substitution) $\\mathcal{O}(n^2)$\n $x$, residual $\\|b\\|_2^2 - \\|c_{1:n}\\|_2^2$\nalgorithmic"
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Least Squares via QR",
+      "problem": "Solve $\\begin{pmatrix} 1 & 1 \\\\ 1 & 2 \\\\ 1 & 3 \\end{pmatrix} x = \\begin{pmatrix} 1 \\\\ 2 \\\\ 2 \\end{pmatrix}$ by QR.",
+      "solution": "**QR Factorization:**\n$A = QR$ where (computing via Gram-Schmidt or Householder):\n\\[\nQ = \\frac{1}{\\sqrt{3}}\\begin{pmatrix} 1 & -1 \\\\ 1 & 0 \\\\ 1 & 1 \\end{pmatrix} \\cdot \\text{normalization}, \\quad\nR = \\begin{pmatrix} \\sqrt{3} & 2\\sqrt{3} \\\\ 0 & \\sqrt{2} \\end{pmatrix}\n\\]\n\nActually: $q_1 = (1,1,1)^T/\\sqrt{3}$, and $a_2 - (q_1^T a_2)q_1 = (1,2,3)^T - 2(1,1,1)^T = (-1,0,1)^T$, giving $q_2 = (-1,0,1)^T/\\sqrt{2}$.\n\nSo $R = \\begin{pmatrix} \\sqrt{3} & 6/\\sqrt{3} \\\\ 0 & \\sqrt{2} \\end{pmatrix}$.\n\n**Solve:**\n$c = Q^T b = \\begin{pmatrix} (1+2+2)/\\sqrt{3} \\\\ (-1+0+2)/\\sqrt{2} \\end{pmatrix} = \\begin{pmatrix} 5/\\sqrt{3} \\\\ 1/\\sqrt{2} \\end{pmatrix}$\n\nBack substitution: $\\sqrt{2} x_2 = 1/\\sqrt{2} \\Rightarrow x_2 = 1/2$\n\n$\\sqrt{3} x_1 + (6/\\sqrt{3})(1/2) = 5/\\sqrt{3} \\Rightarrow x_1 = 5/3 - 1 = 2/3$\n\nSolution: $x^* = (2/3, 1/2)^T$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "SVD Approach"
+    },
+    {
+      "type": "paragraph",
+      "text": "For rank-deficient problems, the SVD provides the most robust approach."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.4",
+      "number": "9.4",
+      "title": "Least Squares via SVD",
+      "content": "Let $A = U\\Sigma V^T$ with $\\text{rank}(A) = r$. The minimum-norm least squares solution is:\n\\[\nx^* = A^+ b = V\\Sigma^+ U^T b = \\sum_{i=1}^r \\frac{u_i^T b}{\\sigma_i} v_i\n\\]\nThe residual is $\\|b - Ax^*\\|_2 = \\sqrt{\\sum_{i=r+1}^m (u_i^T b)^2}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-9.5",
+      "number": null,
+      "title": "SVD Method for Least Squares",
+      "content": "algorithmic[1]\n Compute SVD: $A = U\\Sigma V^T$ $\\mathcal{O}(mn^2 + n^3)$\n $c \\gets U^T b$\n$i = 1, \\ldots, r$\n $y_i \\gets c_i / \\sigma_i$\n\n $y_{r+1:n} \\gets 0$ Minimum norm choice\n $x \\gets Vy$\n $x$\nalgorithmic"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Regularization"
+    },
+    {
+      "type": "paragraph",
+      "text": "When the problem is ill-conditioned, small singular values amplify noise. **Regularization** addresses this by damping small singular value contributions."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Truncated SVD",
+      "content": "The **truncated SVD (TSVD)** solution uses only the $k$ largest singular values:\n\\[\nx_k = \\sum_{i=1}^k \\frac{u_i^T b}{\\sigma_i} v_i = V_k \\Sigma_k^{-1} U_k^T b\n\\]\nTerms with small $\\sigma_i$ (which amplify noise) are discarded."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.3",
+      "number": "9.3",
+      "title": "Tikhonov Regularization",
+      "content": "**Tikhonov regularization** (also called ridge regression) solves:\n\\[\n\\min_x \\|Ax - b\\|_2^2 + \\lambda^2 \\|x\\|_2^2\n\\]\nThe solution is:\n\\[\nx_\\lambda = (A^T A + \\lambda^2 I)^{-1} A^T b = \\sum_{i=1}^r \\frac{\\sigma_i}{\\sigma_i^2 + \\lambda^2} (u_i^T b) v_i\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.5",
+      "number": "9.5",
+      "title": "Tikhonov as Filtered SVD",
+      "content": "Tikhonov regularization applies a **filter function** $\\phi_i = \\sigma_i^2 / (\\sigma_i^2 + \\lambda^2)$ to each SVD component. As $\\lambda \\to 0$, $x_\\lambda \\to x^*$. As $\\lambda \\to \\infty$, $x_\\lambda \\to 0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-9.4",
+      "number": "9.4",
+      "title": "Effect of Regularization",
+      "problem": "For a problem with singular values $\\sigma = (10, 1, 0.1, 0.01)$ and noisy data:\n\n| $\\lambda$ | $\\phi_1$ | $\\phi_2$ | $\\phi_3$ | $\\phi_4$ | Effect |\n| 0 | 1.00 | 1.00 | 1.00 | 1.00 | Unregularized (noisy) |\n| 0.1 | 1.00 | 0.99 | 0.50 | 0.01 | Damps small $\\sigma$ |\n| 1 | 0.99 | 0.50 | 0.01 | 0.00 | Strong regularization |\n\nRegularization trades bias (systematic error) for reduced variance (noise sensitivity).",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Conditioning of Least Squares"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.6",
+      "number": "9.6",
+      "title": "Least Squares Sensitivity",
+      "content": "For the least squares problem with solution $x^*$ and residual $r = b - Ax^*$:\n\n1. Perturbations in $b$: $\\frac{\\|\\delta x\\|}{\\|x^*\\|} \\lesssim \\frac{\\kappa(A)}{\\cos\\theta} \\frac{\\|\\delta b\\|}{\\|b\\|}$\n\n2. Perturbations in $A$: $\\frac{\\|\\delta x\\|}{\\|x^*\\|} \\lesssim \\left(\\kappa(A)^2 \\tan\\theta + \\kappa(A)\\right) \\frac{\\|\\delta A\\|}{\\|A\\|}$\nwhere $\\theta$ is the angle between $b$ and $\\text{col}(A)$, with $\\tan\\theta = \\|r\\|_2 / \\|Ax^*\\|_2$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Method Comparison"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Method**",
+        "**Cost**",
+        "**Stability**",
+        "**Best For**"
+      ],
+      "rows": [
+        [
+          "Normal equations",
+          "$mn^2 + n^3/3$",
+          "Poor",
+          "Well-conditioned, $m \\gg n$"
+        ],
+        [
+          "QR factorization",
+          "$2mn^2$",
+          "Good",
+          "General full-rank"
+        ],
+        [
+          "SVD",
+          "$mn^2 + n^3$",
+          "Excellent",
+          "Rank-deficient, need $\\kappa$"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "center",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "historical",
+      "id": "historical-9.5",
+      "number": null,
+      "title": "Gauss and Least Squares",
+      "content": "Carl Friedrich Gauss developed the method of least squares around 1795 to determine the orbit of Ceres from limited astronomical observations. Legendre independently published the method in 1805. Gauss later showed that least squares gives the optimal linear unbiased estimator when errors are normally distributed—the foundation of regression analysis."
+    }
+  ]
+}

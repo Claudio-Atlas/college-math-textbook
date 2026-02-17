@@ -1,0 +1,235 @@
+{
+  "id": "vol3-ch16-sec03",
+  "title": "Conservative Vector Fields and Independence of Path",
+  "chapter": 16,
+  "section": 3,
+  "book": "vol3",
+  "epigraph": {
+    "text": "I am the Alpha and the Omega, the First and the Last, the Beginning and the End.",
+    "reference": "Revelation 22:13"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Some vector fields have a remarkable property: the line integral between two points is the same regardless of the path taken. Such fields are called **conservative**, and they arise from potential functions. This section develops criteria for recognizing conservative fields and techniques for finding their potentials."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Path Independence"
+    },
+    {
+      "type": "definition",
+      "id": "definition-16.1",
+      "number": "16.1",
+      "title": "Path Independence",
+      "content": "A line integral $\\int_C \\vect{F} \\dotp d\\vect{r}$ is **independent of path** in a region $D$ if for any two points $A$ and $B$ in $D$, the integral has the same value along every path from $A$ to $B$ within $D$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-16.1",
+      "number": "16.1",
+      "title": "Fundamental Theorem for Line Integrals",
+      "content": "If $\\vect{F} = \\grad f$ on a region $D$, and $C$ is any smooth path in $D$ from $A$ to $B$, then\n\\[\n \\int_C \\vect{F} \\dotp d\\vect{r} = f(B) - f(A).\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is the line-integral analogue of $\\int_a^b f'(x)\\,dx = f(b) - f(a)$."
+    },
+    {
+      "type": "example",
+      "id": "example-16.1",
+      "number": "16.1",
+      "title": "Using the fundamental theorem",
+      "problem": "Evaluate $\\int_C \\langle 2x, 2y, 2z \\rangle \\dotp d\\vect{r}$ from $(1,0,0)$ to $(0,1,1)$.",
+      "solution": "We recognize $\\vect{F} = \\grad f$ where $f = x^2 + y^2 + z^2$.\n\nBy the fundamental theorem:\n\\[\n \\int_C \\vect{F} \\dotp d\\vect{r} = f(0,1,1) - f(1,0,0) = (0+1+1) - (1+0+0) = 1.\n\\]\nNo parametrization needed!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Conservative Fields and Closed Curves"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-16.2",
+      "number": "16.2",
+      "title": "Equivalent Conditions",
+      "content": "The following are equivalent for a vector field $\\vect{F}$ on an open connected region $D$:\n\n1. $\\vect{F}$ is conservative (i.e., $\\vect{F} = \\grad f$ for some $f$)\n\n2. $\\int_C \\vect{F} \\dotp d\\vect{r}$ is independent of path in $D$\n\n3. $\\oint_C \\vect{F} \\dotp d\\vect{r} = 0$ for every closed curve $C$ in $D$",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Testing for Conservative Fields"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-16.3",
+      "number": "16.3",
+      "title": "Test for Conservative Field (2D)",
+      "content": "If $\\vect{F} = \\langle P, Q \\rangle$ has continuous first partial derivatives on a simply connected region, then $\\vect{F}$ is conservative if and only if\n\\[\n \\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-16.4",
+      "number": "16.4",
+      "title": "Test for Conservative Field (3D)",
+      "content": "If $\\vect{F} = \\langle P, Q, R \\rangle$ has continuous first partials on a simply connected region, then $\\vect{F}$ is conservative if and only if\n\\[\n \\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x}, \\quad \\frac{\\partial Q}{\\partial z} = \\frac{\\partial R}{\\partial y}, \\quad \\frac{\\partial P}{\\partial z} = \\frac{\\partial R}{\\partial x}.\n\\]\nEquivalently: $\\curl\\vect{F} = \\vect{0}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-16.2",
+      "number": "16.2",
+      "title": "Testing a field",
+      "problem": "Is $\\vect{F} = \\langle y^2 + 2x, 2xy - 3 \\rangle$ conservative?",
+      "solution": "$P = y^2 + 2x$, $Q = 2xy - 3$.\n\n$P_y = 2y$, $Q_x = 2y$.\n\nSince $P_y = Q_x$, the field is conservative."
+    },
+    {
+      "type": "example",
+      "id": "example-16.3",
+      "number": "16.3",
+      "title": "Testing a 3D field",
+      "problem": "Is $\\vect{F} = \\langle yz, xz + 2y, xy + 3z^2 \\rangle$ conservative?",
+      "solution": "Check all three conditions:\n$$\n P_y &= z, & Q_x &= z \\quad \\checkmark \\\\\n Q_z &= x + 0 = x, & R_y &= x \\quad \\checkmark \\\\\n P_z &= y, & R_x &= y \\quad \\checkmark\n$$\nAll conditions satisfied, so $\\vect{F}$ is conservative."
+    },
+    {
+      "type": "example",
+      "id": "example-16.4",
+      "number": "16.4",
+      "title": "A non-conservative field",
+      "problem": "Is $\\vect{F} = \\langle y, x + z, y + 1 \\rangle$ conservative?",
+      "solution": "Check: $Q_z = 1$ but $R_y = 1$. $\\checkmark$\n\n$P_y = 1$ and $Q_x = 1$. $\\checkmark$\n\n$P_z = 0$ and $R_x = 0$. $\\checkmark$\n\nAll conditions are satisfied! So $\\vect{F}$ is conservative.\n\n(We can verify: $f = xy + yz + z$ gives $\\nabla f = \\langle y, x + z, y + 1 \\rangle = \\vect{F}$.)"
+    },
+    {
+      "type": "example",
+      "id": "example-16.5",
+      "number": "16.5",
+      "title": "Definitely not conservative",
+      "problem": "Is $\\vect{F} = \\langle y^2, 2xy + z, y \\rangle$ conservative?",
+      "solution": "Check: $P_y = 2y$ and $Q_x = 2y$. $\\checkmark$\n\n$Q_z = 1$ and $R_y = 1$. $\\checkmark$\n\n$P_z = 0$ and $R_x = 0$. $\\checkmark$\n\nAll conditions pass! So $\\vect{F}$ *is* conservative.\n\nActually, let's verify: We need $f_x = y^2$, $f_y = 2xy + z$, $f_z = y$.\n\nFrom $f_z = y$: $f = yz + g(x, y)$.\nFrom $f_y = z + g_y = 2xy + z$: $g_y = 2xy$, so $g = xy^2 + h(x)$.\nFrom $f_x = y^2 + h'(x) = y^2$: $h'(x) = 0$, so $h$ is constant.\n\nThus $f = yz + xy^2 + C$."
+    },
+    {
+      "type": "example",
+      "id": "example-16.6",
+      "number": "16.6",
+      "title": "Path independence and providence",
+      "problem": "Consider the gravitational field $\\vect{F} = -mg\\vectk$. Is it conservative?",
+      "solution": "$\\vect{F} = \\langle 0, 0, -mg \\rangle$.\n\n$\\curl\\vect{F} = \\langle 0 - 0, 0 - 0, 0 - 0 \\rangle = \\vect{0}$.\n\nYes, it's conservative with potential $f = mgz$ (so $\\vect{F} = -\\nabla f$).\n\nThe work done by gravity depends only on height change, not on the path taken. This path independence reflects a deeper order in creation—as Colossians 1:17 says, \"in him all things hold together.\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Finding Potential Functions"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-16.3",
+      "number": null,
+      "title": "Finding $f$ from $\\grad f = \\vect{F",
+      "content": "$}\nGiven $F = P, Q $ (conservative):\n\\begin{enumerate}[label=\\textbf{Step \\arabic*.}]\n \\item Integrate $P$ with respect to $x$: $f(x,y) = P\\,dx + g(y)$.\n \\item Differentiate with respect to $y$: $f_y = $\\frac{\\partial}{\\partial y}$ P\\,dx + g'(y)$.\n \\item Set $f_y = Q$ and solve for $g'(y)$.\n \\item Integrate to find $g(y)$.\nenumerate"
+    },
+    {
+      "type": "example",
+      "id": "example-16.7",
+      "number": "16.7",
+      "title": "Finding a potential function",
+      "problem": "Find $f$ such that $\\grad f = \\langle 2xy + y^2, x^2 + 2xy \\rangle$.",
+      "solution": "**Step 1:** $f = \\int (2xy + y^2)\\,dx = x^2y + xy^2 + g(y)$.\n\n**Step 2:** $f_y = x^2 + 2xy + g'(y)$.\n\n**Step 3:** Set equal to $Q = x^2 + 2xy$: $g'(y) = 0$.\n\n**Step 4:** $g(y) = C$.\n\nThus $f(x, y) = x^2y + xy^2 + C$."
+    },
+    {
+      "type": "example",
+      "id": "example-16.8",
+      "number": "16.8",
+      "title": "Potential function in 3D",
+      "problem": "Find $f$ such that $\\grad f = \\langle yz, xz, xy \\rangle$.",
+      "solution": "**Step 1:** $f = \\int yz\\,dx = xyz + g(y, z)$.\n\n**Step 2:** $f_y = xz + g_y(y, z)$. Compare with $Q = xz$: $g_y = 0$.\n\nSo $g = h(z)$ (function of $z$ only).\n\n**Step 3:** $f = xyz + h(z)$, so $f_z = xy + h'(z)$. Compare with $R = xy$: $h'(z) = 0$.\n\nSo $h(z) = C$.\n\nThus $f(x, y, z) = xyz + C$."
+    },
+    {
+      "type": "example",
+      "id": "example-16.9",
+      "number": "16.9",
+      "title": "Exponential potential",
+      "problem": "Find $f$ such that $\\grad f = \\langle e^x\\cos y, -e^x\\sin y \\rangle$.",
+      "solution": "$f = \\int e^x\\cos y\\,dx = e^x\\cos y + g(y)$.\n\n$f_y = -e^x\\sin y + g'(y)$. Compare with $Q = -e^x\\sin y$: $g'(y) = 0$.\n\nThus $f = e^x\\cos y + C$.\n\nWe can verify: $\\nabla f = \\langle e^x\\cos y, -e^x\\sin y \\rangle$. $\\checkmark$"
+    },
+    {
+      "type": "example",
+      "id": "example-16.10",
+      "number": "16.10",
+      "title": "Using the potential to evaluate a line integral",
+      "problem": "Evaluate $\\int_C (2xy\\,dx + x^2\\,dy)$ where $C$ is any path from $(1, 2)$ to $(3, 4)$.",
+      "solution": "First check if conservative: $P = 2xy$, $Q = x^2$. $P_y = 2x = Q_x$. $\\checkmark$\n\nFind the potential: $f = \\int 2xy\\,dx = x^2y + g(y)$.\n$f_y = x^2 + g'(y) = x^2$, so $g'(y) = 0$, $g = C$.\n\nThus $f = x^2y$.\n\nBy the Fundamental Theorem:\n\\[\n \\int_C (2xy\\,dx + x^2\\,dy) = f(3, 4) - f(1, 2) = 9(4) - 1(2) = 36 - 2 = 34.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-16.11",
+      "number": "16.11",
+      "title": "Work done by a conservative force",
+      "problem": "A force field $\\vect{F} = \\langle 2x + y, x + 2y \\rangle$ acts on a particle that moves from $(0, 0)$ to $(2, 1)$ along any path. Find the work done.",
+      "solution": "Check: $P_y = 1 = Q_x$. Conservative!\n\nFind $f$: $f = \\int (2x + y)\\,dx = x^2 + xy + g(y)$.\n$f_y = x + g'(y) = x + 2y$, so $g'(y) = 2y$, $g = y^2$.\n\nThus $f = x^2 + xy + y^2$.\n\nWork $= f(2, 1) - f(0, 0) = (4 + 2 + 1) - 0 = 7$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Simply Connected Domains"
+    },
+    {
+      "type": "paragraph",
+      "text": "The test $P_y = Q_x$ guarantees a potential function only in **simply connected** regions—regions with no holes."
+    },
+    {
+      "type": "definition",
+      "id": "definition-16.2",
+      "number": "16.2",
+      "title": "Simply Connected",
+      "content": "A region $D$ is **simply connected** if every simple closed curve in $D$ can be continuously shrunk to a point while staying in $D$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Examples:**"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$\\R^2$ is simply connected.",
+        "A disk is simply connected.",
+        "$\\R^2$ minus a point is *not* simply connected (a curve around the missing point can't be shrunk).",
+        "An annulus is not simply connected."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-16.12",
+      "number": "16.12",
+      "title": "The classic counterexample",
+      "problem": "Consider $\\vect{F} = \\dfrac{\\langle -y, x \\rangle}{x^2 + y^2}$ on the punctured plane $\\R^2 \\setminus \\{(0,0)\\}$.\n\n$P = -y/(x^2+y^2)$, $Q = x/(x^2+y^2)$.\n\n$P_y = \\dfrac{y^2 - x^2}{(x^2+y^2)^2} = Q_x$. The condition is satisfied!\n\nYet $\\oint_C \\vect{F} \\dotp d\\vect{r} = 2\\pi$ around the unit circle—not zero!\n\n**Lesson:** The domain matters. This field is *locally* conservative but not *globally* conservative on the punctured plane.",
+      "solution": ""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 3:5--6",
+      "text": "Trust in the Lord with all your heart, and do not lean on your own understanding. In all your ways acknowledge him, and he will make straight your paths."
+    },
+    {
+      "type": "scripture",
+      "reference": "Matthew 7:7",
+      "text": "Ask, and it will be given to you; seek, and you will find."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:4",
+      "text": "Every valley shall be raised up, every mountain and hill made low; the rough ground shall become level, the rugged places a plain."
+    },
+    {
+      "type": "quote",
+      "author": "Kelvin",
+      "text": "When you can measure what you are speaking about...you know something about it."
+    }
+  ]
+}

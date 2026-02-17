@@ -1,0 +1,420 @@
+{
+  "id": "vol1-ch04-sec08",
+  "title": "Related Rates",
+  "chapter": 4,
+  "section": 8,
+  "book": "vol1",
+  "objectives": [
+    "Set up and solve related rates problems using the five-step strategy",
+    "Apply the Chain Rule to differentiate equations involving multiple time-dependent variables",
+    "Translate geometric relationships (Pythagorean theorem, similar triangles, volume formulas) into rate equations",
+    "Interpret the sign and magnitude of rate answers in physical contexts"
+  ],
+  "devotional": {
+    "title": "Sharpening One Another",
+    "scripture": "Proverbs 27:17",
+    "content": "As iron sharpens iron, so one person sharpens another. In related rates problems, we see how quantities that seem independent are actually deeply connected—the motion of one affects the motion of another through an underlying relationship. Just as believers sharpen one another through fellowship and accountability, mathematical quantities sharpen our understanding when we trace the connections between them. The Chain Rule reveals these hidden dependencies, showing us that nothing changes in isolation."
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "A 10-foot ladder leans against a wall. The base of the ladder begins sliding outward at a rate of $2$ ft/s. How fast is the top of the ladder sliding *down* the wall at the moment the base is $6$ feet from the wall?"
+    },
+    {
+      "type": "paragraph",
+      "edition": "christian",
+      "text": "*He is before all things, and in him all things hold together.* —Colossians 1:17"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is a **related rates** problem. Two quantities—the distance of the base from the wall and the height of the top of the ladder—are both changing with time, and they are *related* by a geometric equation (the Pythagorean theorem). If we differentiate that equation with respect to time, the Chain Rule ties their rates together."
+    },
+    {
+      "type": "paragraph",
+      "text": "Related rates problems are where the tools of this chapter converge. You will use the Chain Rule, implicit differentiation, and many of the algebraic and trigonometric derivative formulas you have been building. The mathematics is not new; the *art* is in setting up the problem."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "A Strategy for Related Rates"
+    },
+    {
+      "type": "strategy",
+      "id": "strat-4.8",
+      "title": "Solving Related Rates Problems",
+      "content": [
+        "**Step 1.** Draw a diagram and label all relevant quantities with variables. Do *not* assign specific numerical values yet (unless a quantity is *constant*).",
+        "**Step 2.** Identify the rates. Write down what rates are *given* (e.g., $\\frac{dx}{dt} = 2$) and what rate is *asked for* (e.g., find $\\frac{dy}{dt}$).",
+        "**Step 3.** Write an equation relating the variables whose rates you care about. This is often a geometric formula (Pythagorean theorem, similar triangles, volume, area) or a trigonometric identity.",
+        "**Step 4.** Differentiate both sides with respect to $t$. This is implicit differentiation! Every variable that depends on $t$ contributes a $\\frac{d}{dt}$ term via the Chain Rule.",
+        "**Step 5.** Substitute the known numerical values *after* differentiating, and solve for the unknown rate."
+      ]
+    },
+    {
+      "type": "caution",
+      "title": "Substitute AFTER differentiating",
+      "content": "A common mistake is to plug in numerical values *before* differentiating. If you replace a changing variable by a constant number, its derivative becomes zero and you lose the rate information. Always differentiate first, then substitute."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Sliding Ladder"
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us solve the opening problem in full."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.27",
+      "number": "4.27",
+      "title": "The sliding ladder",
+      "problem": "A 10-foot ladder leans against a vertical wall. The bottom slides outward at $2$ ft/s. How fast is the top sliding down the wall when the base is $6$ feet from the wall?",
+      "solution": "**Step 1.** Draw the wall, floor, and ladder forming a right triangle. Let $x(t)$ be the distance from the wall to the base and $y(t)$ the height of the top.\n\n**Step 2.** Given: $\\frac{dx}{dt} = 2$ ft/s. Find: $\\frac{dy}{dt}$ when $x = 6$.\n\n**Step 3.** The Pythagorean theorem relates $x$, $y$, and the ladder length:\n$$x^{2} + y^{2} = 10^{2} = 100.$$\n\n**Step 4.** Differentiate both sides with respect to $t$:\n$$2x\\frac{dx}{dt} + 2y\\frac{dy}{dt} = 0.$$\n\n**Step 5.** When $x = 6$, we find $y$ from the Pythagorean theorem: $y = \\sqrt{100 - 36} = \\sqrt{64} = 8$. Now substitute:\n$$2(6)(2) + 2(8)\\frac{dy}{dt} = 0 \\quad\\Longrightarrow\\quad 24 + 16\\frac{dy}{dt} = 0 \\quad\\Longrightarrow\\quad \\frac{dy}{dt} = -\\frac{24}{16} = -\\frac{3}{2}.$$\n\nThe top of the ladder is sliding *down* at $\\frac{3}{2}$ ft/s. The negative sign confirms the downward direction (since $y$ is decreasing)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Filling and Draining: Conical Tanks"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.28",
+      "number": "4.28",
+      "title": "Filling a conical tank",
+      "problem": "Water is poured into an inverted circular cone at a rate of $3$ ft³/min. The cone has height $10$ ft and radius $5$ ft at the top. How fast is the water level rising when the water is $4$ ft deep?",
+      "solution": "**Step 1.** Let $h(t)$ be the depth of the water, and let $r(t)$ be the radius of the water surface at depth $h$.\n\n**Step 2.** Given: $\\frac{dV}{dt} = 3$ ft³/min. Find: $\\frac{dh}{dt}$ when $h = 4$.\n\n**Step 3.** The volume of a cone of height $h$ and radius $r$ is\n$$V = \\frac{1}{3}\\pi r^{2} h.$$\nBut we have *two* variables ($r$ and $h$) besides $V$. By similar triangles, the cone's dimensions give us $\\frac{r}{h} = \\frac{5}{10} = \\frac{1}{2}$, so $r = \\frac{h}{2}$. Substituting:\n$$V = \\frac{1}{3}\\pi\\left(\\frac{h}{2}\\right)^{2}h = \\frac{\\pi h^{3}}{12}.$$\nNow $V$ depends only on $h$.\n\n**Step 4.** Differentiate with respect to $t$:\n$$\\frac{dV}{dt} = \\frac{\\pi}{12} \\cdot 3h^{2}\\frac{dh}{dt} = \\frac{\\pi h^{2}}{4}\\frac{dh}{dt}.$$\n\n**Step 5.** Substitute $\\frac{dV}{dt} = 3$ and $h = 4$:\n$$3 = \\frac{\\pi(16)}{4}\\frac{dh}{dt} = 4\\pi\\frac{dh}{dt} \\quad\\Longrightarrow\\quad \\frac{dh}{dt} = \\frac{3}{4\\pi} \\approx 0.239 \\text{ ft/min}.$$\n\nThe water level is rising at about $0.24$ ft/min. Notice that as the cone widens, the same inflow rate produces a slower rise in water level—exactly what our intuition predicts."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Expanding Circular Ripples"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.29",
+      "number": "4.29",
+      "title": "Expanding ripple",
+      "problem": "A stone is thrown into a still pond, creating a circular ripple that expands outward. The radius of the ripple increases at a constant rate of $3$ ft/s. How fast is the *area* of the circle increasing when the radius is $10$ ft?",
+      "solution": "Let $r(t)$ be the radius and $A(t)$ the area. We are given $\\frac{dr}{dt} = 3$ and want $\\frac{dA}{dt}$ when $r = 10$.\n\nThe area of a circle is $A = \\pi r^{2}$. Differentiating with respect to $t$:\n$$\\frac{dA}{dt} = 2\\pi r\\frac{dr}{dt}.$$\n\nAt $r = 10$:\n$$\\frac{dA}{dt} = 2\\pi(10)(3) = 60\\pi \\approx 188.5 \\text{ ft}^{2}\\text{/s}.$$"
+    },
+    {
+      "type": "paragraph",
+      "edition": "christian",
+      "text": "*Who has measured the waters in the hollow of his hand, or with the breadth of his hand marked off the heavens?* —Isaiah 40:12"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Two Ships Departing"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.30",
+      "number": "4.30",
+      "title": "Two ships",
+      "problem": "At noon, Ship A is $100$ miles due west of Ship B. Ship A sails east at $25$ mph and Ship B sails north at $20$ mph. How fast is the distance between them changing at 2:00 PM?",
+      "solution": "Set up coordinates with Ship B's noon position at the origin. At time $t$ hours after noon:\n- Ship A is at $(-100 + 25t, 0)$,\n- Ship B is at $(0, 20t)$.\n\nThe distance between them is\n$$D = \\sqrt{(-100 + 25t)^{2} + (20t)^{2}}.$$\n\nRather than differentiating the square root, it is cleaner to work with $D^{2}$:\n$$D^{2} = (-100 + 25t)^{2} + (20t)^{2}.$$\n\nDifferentiate with respect to $t$:\n$$2D\\frac{dD}{dt} = 2(-100 + 25t)(25) + 2(20t)(20) = 50(-100 + 25t) + 800t.$$\n\nAt $t = 2$:\n$$-100 + 25(2) = -50, \\quad 20(2) = 40,$$\n$$D = \\sqrt{(-50)^{2} + 40^{2}} = \\sqrt{2500 + 1600} = \\sqrt{4100} = 10\\sqrt{41}.$$\n\nSubstituting:\n$$2(10\\sqrt{41})\\frac{dD}{dt} = 50(-50) + 800(2) = -2500 + 1600 = -900.$$\n$$\\frac{dD}{dt} = \\frac{-900}{20\\sqrt{41}} = \\frac{-45}{\\sqrt{41}} \\approx -7.03 \\text{ mph}.$$\n\nThe negative sign tells us the ships are getting *closer* at 2:00 PM. Ship A is closing the east–west gap faster than Ship B is opening a north–south gap."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Expanding Balloon"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.31",
+      "number": "4.31",
+      "title": "Inflating a balloon",
+      "problem": "Air is pumped into a spherical balloon at a rate of $100$ cm³/s. How fast is the radius increasing when the radius is $15$ cm?",
+      "solution": "The volume of a sphere is $V = \\frac{4}{3}\\pi r^{3}$. Differentiating with respect to $t$:\n$$\\frac{dV}{dt} = 4\\pi r^{2}\\frac{dr}{dt}.$$\n\nWe are given $\\frac{dV}{dt} = 100$ and want $\\frac{dr}{dt}$ when $r = 15$:\n$$100 = 4\\pi(15)^{2}\\frac{dr}{dt} = 900\\pi\\frac{dr}{dt} \\quad\\Longrightarrow\\quad \\frac{dr}{dt} = \\frac{100}{900\\pi} = \\frac{1}{9\\pi} \\approx 0.0354 \\text{ cm/s}.$$\n\nAs the balloon gets larger, each cubic centimeter of air spreads over a larger surface area, so the radius grows more and more slowly."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Lamppost and the Shadow"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.32",
+      "number": "4.32",
+      "title": "Shadow of a walking person",
+      "problem": "A person $6$ ft tall walks away from a $15$-ft lamppost at $4$ ft/s. How fast is (a) the tip of the shadow moving, and (b) the length of the shadow increasing?",
+      "solution": "**Setup.** Let $x(t)$ be the person's distance from the lamppost and $s(t)$ the length of the shadow. The tip of the shadow is at distance $x + s$ from the lamppost.\n\n**Step 3.** By similar triangles (the lamppost–tip triangle and the person–tip triangle):\n$$\\frac{15}{x + s} = \\frac{6}{s}.$$\n\nCross-multiplying: $15s = 6(x + s) = 6x + 6s$, so $9s = 6x$, giving\n$$s = \\frac{2}{3}x.$$\n\n**Step 4.** Differentiate with respect to $t$:\n$$\\frac{ds}{dt} = \\frac{2}{3}\\frac{dx}{dt}.$$\n\n**Step 5.** Since $\\frac{dx}{dt} = 4$:\n$$\\frac{ds}{dt} = \\frac{2}{3}(4) = \\frac{8}{3} \\approx 2.67 \\text{ ft/s}.$$\n\nThe shadow is lengthening at $\\frac{8}{3}$ ft/s.\n\nFor part (a), the tip moves at rate\n$$\\frac{d}{dt}(x + s) = \\frac{dx}{dt} + \\frac{ds}{dt} = 4 + \\frac{8}{3} = \\frac{20}{3} \\approx 6.67 \\text{ ft/s}.$$\n\nNotice a surprising fact: the rates do *not* depend on $x$. The shadow lengthens at the same rate regardless of how far the person is from the lamppost. This is because the similar-triangle relation is *linear* in $x$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "A Plane Overhead"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.33",
+      "number": "4.33",
+      "title": "Angle of elevation",
+      "problem": "An airplane flies horizontally at an altitude of $3$ miles and a speed of $500$ mph. It passes directly over a radar station. How fast is the **angle of elevation** $\\theta$ (from the station to the plane) decreasing when the plane is $5$ miles from the station (measured along the ground)?",
+      "solution": "Let $x(t)$ be the horizontal distance from the station to the plane (so $\\frac{dx}{dt} = 500$ mph), and let $\\theta$ be the angle of elevation.\n\nThe altitude is constant at $3$ miles. Using trigonometry:\n$$\\tan\\theta = \\frac{3}{x}.$$\n\nDifferentiate with respect to $t$:\n$$\\sec^{2}\\theta \\cdot \\frac{d\\theta}{dt} = -\\frac{3}{x^{2}}\\frac{dx}{dt}.$$\n\nWhen $x = 5$: $\\tan\\theta = 3/5$, so $\\sec^{2}\\theta = 1 + \\tan^{2}\\theta = 1 + 9/25 = 34/25$.\n\nSubstituting:\n$$\\frac{34}{25}\\frac{d\\theta}{dt} = -\\frac{3}{25} \\cdot 500 = -60 \\quad\\Longrightarrow\\quad \\frac{d\\theta}{dt} = -60 \\cdot \\frac{25}{34} = -\\frac{1500}{34} = -\\frac{750}{17} \\approx -44.1 \\text{ rad/hr}.$$\n\nConverting: $\\frac{d\\theta}{dt} \\approx -44.1$ radians per hour, or about $-0.74$ radians per minute. The angle is decreasing (as expected—the plane is flying away and getting lower in the sky relative to the observer)."
+    },
+    {
+      "type": "paragraph",
+      "edition": "christian",
+      "text": "*The heavens declare the glory of God; the skies proclaim the work of his hands.* —Psalm 19:1"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Draining: Working Backwards"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.34",
+      "number": "4.34",
+      "title": "Draining a conical tank",
+      "problem": "Water drains from the bottom of an inverted conical tank (same dimensions as Example 4.28: height $10$ ft, top radius $5$ ft). When the water depth is $6$ ft, the water level is falling at $0.2$ ft/min. At what rate is water draining from the tank?",
+      "solution": "From our earlier work, $V = \\frac{\\pi h^{3}}{12}$ and $\\frac{dV}{dt} = \\frac{\\pi h^{2}}{4}\\frac{dh}{dt}$.\n\nHere $h = 6$ and $\\frac{dh}{dt} = -0.2$ (negative because the level is falling):\n$$\\frac{dV}{dt} = \\frac{\\pi(36)}{4}(-0.2) = -1.8\\pi \\approx -5.65 \\text{ ft}^{3}\\text{/min}.$$\n\nWater is leaving at approximately $5.65$ ft³/min."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Looking Back"
+    },
+    {
+      "type": "paragraph",
+      "text": "Every related rates problem reduces to the same five-step process. The mathematical engine is always the Chain Rule applied to an equation relating the variables. The creative challenge is in Step 3: choosing the right equation. Here is a short reference of the geometric formulas that appear most often:"
+    },
+    {
+      "type": "table",
+      "caption": "Common Geometric Formulas for Related Rates",
+      "headers": [
+        "Geometry",
+        "Formula"
+      ],
+      "rows": [
+        [
+          "Pythagorean theorem",
+          "$a^{2} + b^{2} = c^{2}$"
+        ],
+        [
+          "Circle: area, circumference",
+          "$A = \\pi r^{2}$, $C = 2\\pi r$"
+        ],
+        [
+          "Sphere: volume, surface area",
+          "$V = \\frac{4}{3}\\pi r^{3}$, $S = 4\\pi r^{2}$"
+        ],
+        [
+          "Cone: volume",
+          "$V = \\frac{1}{3}\\pi r^{2}h$"
+        ],
+        [
+          "Cylinder: volume",
+          "$V = \\pi r^{2}h$"
+        ],
+        [
+          "Similar triangles",
+          "$\\frac{a}{b} = \\frac{c}{d}$"
+        ],
+        [
+          "Trigonometric relations",
+          "$\\tan\\theta = \\text{opp}/\\text{adj}$, etc."
+        ]
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.1",
+      "number": "1",
+      "problem": "A $13$-foot ladder leans against a wall. The bottom slides outward at $3$ ft/s. How fast is the top sliding down when the bottom is $5$ ft from the wall?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.2",
+      "number": "2",
+      "problem": "In Exercise~1, how fast is the angle between the ladder and the ground changing at the same instant?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.3",
+      "number": "3",
+      "problem": "A $20$-foot ladder leans against a wall. The top slides down at $1$ ft/s. How fast is the bottom moving outward when the top is $12$ ft above the ground? %--- Area and Perimeter ---"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.4",
+      "number": "4",
+      "problem": "The radius of a circle increases at $2$ cm/s. How fast is the area increasing when the radius is $5$ cm?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.5",
+      "number": "5",
+      "problem": "A square's side length increases at $3$ cm/s. How fast is the area increasing when the side is $10$ cm?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.6",
+      "number": "6",
+      "problem": "The area of a circle increases at $6\\pi$ cm$^{2}$/s. How fast is the radius increasing when the area is $25\\pi$ cm$^{2}$? %--- Volume Problems ---"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.7",
+      "number": "7",
+      "problem": "Air is pumped into a spherical balloon at $50$ cm$^{3}$/s. How fast is the radius increasing when the radius is $10$ cm?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.8",
+      "number": "8",
+      "problem": "A spherical snowball melts so that its volume decreases at $2$ cm$^{3}$/min. How fast is the radius decreasing when the radius is $8$ cm?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.9",
+      "number": "9",
+      "problem": "A cylindrical tank of radius $5$ ft is being filled at $10$ ft$^{3}$/min. How fast is the water level rising?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.10",
+      "number": "10",
+      "problem": "Water flows into an inverted cone (height $12$ ft, top radius $4$ ft) at $5$ ft$^{3}$/min. How fast is the depth increasing when the water is $6$ ft deep? %--- Distance and Motion ---"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.11",
+      "number": "11",
+      "problem": "Two cars start from the same intersection. Car A heads east at $60$ mph and Car B heads north at $45$ mph. How fast is the distance between them increasing after $2$ hours?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.12",
+      "number": "12",
+      "problem": "A boat is pulled toward a dock by a rope attached to the bow of the boat and passing through a pulley on the dock that is $6$ ft above the bow. The rope is pulled in at $2$ ft/s. How fast is the boat approaching the dock when $10$ ft of rope are out?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.13",
+      "number": "13",
+      "problem": "A police car sits $30$ ft from a straight road. A car travels along the road at $80$ ft/s. How fast is the distance between the police car and the moving car increasing when the car is $40$ ft past the point on the road closest to the police car? %--- Shadow Problems ---"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.14",
+      "number": "14",
+      "problem": "A $5$-ft-tall child walks away from a $12$-ft lamppost at $3$ ft/s. How fast is the child's shadow lengthening?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.15",
+      "number": "15",
+      "problem": "A spotlight on the ground is $20$ ft from a wall. A person $6$ ft tall walks toward the wall at $4$ ft/s. How fast is the shadow on the wall shrinking when the person is $8$ ft from the wall? %--- Angle Problems ---"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.16",
+      "number": "16",
+      "problem": "A balloon rises vertically at $5$ ft/s from a point $100$ ft from an observer at ground level. How fast is the angle of elevation changing when the balloon is $100$ ft high?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.17",
+      "number": "17",
+      "problem": "A searchlight is $200$ m from a straight wall. The light rotates at $2$ revolutions per minute. How fast is the beam moving along the wall when the beam makes a $45^{\\circ}$ angle with the wall? %--- Conical Tank Variations ---"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.18",
+      "number": "18",
+      "problem": "A conical pile of sand has height always equal to its radius. Sand is added at $10$ ft$^{3}$/min. How fast is the height increasing when the pile is $5$ ft tall?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.19",
+      "number": "19",
+      "problem": "Coffee drains from a conical filter (height $6$ in, radius $3$ in) into a cylindrical pot (radius $4$ in) at $2$ in$^{3}$/min. How fast is the coffee level *in the pot* rising? %--- Challenging Problems ---"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.20",
+      "number": "20",
+      "problem": "A trough is $10$ ft long with a triangular cross-section: the top is $4$ ft wide and the depth is $2$ ft. Water is poured in at $3$ ft$^{3}$/min. How fast is the surface level rising when the water is $1$ ft deep?",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.21",
+      "number": "21",
+      "problem": "Two sides of a triangle are $5$ m and $8$ m. The included angle $\\theta$ increases at $0.06$ rad/s. How fast is the area increasing when $\\theta = \\pi/3$? (Hint: $A = \\frac{1}{2}ab\\sin\\theta$.)",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.22",
+      "number": "22",
+      "problem": "A particle moves along the curve $y = \\sqrt{1+x^{3}}$. As it passes through the point $(2, 3)$, the $x$-coordinate increases at $5$ cm/s. How fast is the $y$-coordinate changing?",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.23",
+      "number": "23",
+      "problem": "A kite flies at a height of $150$ ft while the wind carries it horizontally at $8$ ft/s. String is let out at the rate that keeps it taut. When $250$ ft of string are out, how fast is string being released?",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.24",
+      "number": "24",
+      "problem": "A man $6$ ft tall walks at $4$ ft/s toward a street light $20$ ft high. At what rate is the tip of his shadow moving? At what rate is the length of his shadow changing? (Compare with Example~\\ref{ex:shadow}.)",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.25",
+      "number": "25",
+      "problem": "Water drains from a hemispherical bowl of radius $10$ in at $3$ in$^{3}$/min. How fast is the depth decreasing when the water is $5$ inches deep? (Hint: The volume of water in a hemisphere of radius $R$ with depth $h$ is $V = \\pi h^{2}(R - h/3)$.)",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.26",
+      "number": "26",
+      "problem": "A lighthouse is $2$ miles offshore. Its beam rotates at $3$ revolutions per minute. How fast is the illuminated spot on the shoreline moving when it is $1$ mile from the point on shore nearest the lighthouse? %--- Proof and Theoretical ---",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.27",
+      "number": "27",
+      "problem": "Suppose $x^{2} + y^{2} = r^{2}$ where $r$ is constant. Show that $x\\,\\frac{dx}{dt} + y\\,\\frac{dy}{dt} = 0$. Interpret this geometrically: if a point moves on a circle, the velocity vector is perpendicular to the radius vector.",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.28",
+      "number": "28",
+      "problem": "Let $A = \\frac{1}{2}bh$ where both $b$ and $h$ change with time. Derive the product-rule-style formula $\\frac{dA}{dt} = \\frac{1}{2}\\!\\left(b\\,\\frac{dh}{dt} + h\\,\\frac{db}{dt}\\right)$. Give a geometric interpretation.",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.29",
+      "number": "29",
+      "problem": "Suppose three quantities $x$, $y$, $z$ satisfy $F(x,y,z) = 0$ and all change with time. Explain why implicit differentiation gives \\[ \\frac{\\partial F}{\\partial x}\\,\\frac{dx}{dt} + \\frac{\\partial F}{\\partial y}\\,\\frac{dy}{dt} + \\frac{\\partial F}{\\partial z}\\,\\frac{dz}{dt} = 0. \\] (This is a preview of the **multivariable Chain Rule**.) %--- Creation Reveals ---",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.8.30",
+      "number": "30",
+      "problem": "The volume of a growing spherical cell increases at a rate proportional to its surface area: $\\frac{dV}{dt} = kS$ where $S = 4\\pi r^{2}$. Show that $\\frac{dr}{dt} = k$ (the radius grows at a constant rate). Explain what this reveals about how cells grow.",
+      "creation_reveals": true
+    }
+  ]
+}

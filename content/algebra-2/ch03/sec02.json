@@ -1,0 +1,198 @@
+{
+  "id": "algebra-2-ch03-sec02",
+  "title": "Solving Quadratic Equations",
+  "chapter": 3,
+  "section": 2,
+  "book": "algebra-2",
+  "epigraph": {
+    "text": "Ask and it will be given to you; seek and you will \nfind.",
+    "reference": "Matthew 7:7"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "A **quadratic equation** is an equation of the form $ax^2 + bx + c = 0$ \nwhere $a \\neq 0$. The solutions are also called **roots** or \n**zeros**. In this section, we explore multiple methods for finding \nthese solutions, each with its own advantages."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Method 1: Solving by Factoring"
+    },
+    {
+      "type": "paragraph",
+      "text": "Factoring relies on a fundamental property of real numbers:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "Zero Product Property",
+      "content": "If $A \\cdot B = 0$, then $A = 0$ or $B = 0$ (or both).",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This property allows us to solve quadratic equations by factoring the \nleft side and setting each factor equal to zero."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-3.2",
+      "number": null,
+      "title": "Solving by Factoring",
+      "content": "1. Write the equation in standard form: $ax^2 + bx + c = 0$\n\n2. Factor the left side completely\n\n3. Set each factor containing a variable equal to zero\n\n4. Solve each resulting linear equation\n\n5. Check your solutions in the original equation"
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Basic factoring",
+      "problem": "Solve: $x^2 - 5x + 6 = 0$",
+      "solution": "Factor the trinomial:\n\\[\n (x - 2)(x - 3) = 0\n\\]\n\nApply the zero product property:\n\\[\n x - 2 = 0 \\quad \\text{or} \\quad x - 3 = 0\n\\]\n\\[\n x = 2 \\quad \\text{or} \\quad x = 3\n\\]\n\n**Check:** $2^2 - 5(2) + 6 = 4 - 10 + 6 = 0$ \n\n$3^2 - 5(3) + 6 = 9 - 15 + 6 = 0$ \n\nSolutions: $\\boxed{x = 2 \\text{ or } x = 3}$"
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Factoring with leading coefficient",
+      "problem": "Solve: $2x^2 + 7x + 3 = 0$",
+      "solution": "We need factors of $2 \\cdot 3 = 6$ that add to $7$: namely, $6$ and $1$.\n\nRewrite the middle term and factor by grouping:\n\\[\n 2x^2 + 6x + x + 3 = 0\n\\]\n\\[\n 2x(x + 3) + 1(x + 3) = 0\n\\]\n\\[\n (2x + 1)(x + 3) = 0\n\\]\n\nSo $2x + 1 = 0$ or $x + 3 = 0$, giving $x = -\\frac{1}{2}$ or $x = -3$."
+    },
+    {
+      "type": "example",
+      "id": "example-3.3",
+      "number": "3.3",
+      "title": "Greatest common factor first",
+      "problem": "Solve: $3x^2 - 12x = 0$",
+      "solution": "Factor out the GCF:\n\\[\n 3x(x - 4) = 0\n\\]\n\nSet each factor to zero:\n\\[\n 3x = 0 \\quad \\text{or} \\quad x - 4 = 0\n\\]\n\\[\n x = 0 \\quad \\text{or} \\quad x = 4\n\\]\n\n**Important:** Don't forget the solution $x = 0$! A common mistake \nis to divide both sides by $x$, which loses this solution."
+    },
+    {
+      "type": "example",
+      "id": "example-3.4",
+      "number": "3.4",
+      "title": "Difference of squares",
+      "problem": "Solve: $4x^2 - 25 = 0$",
+      "solution": "Recognize the difference of squares: $4x^2 - 25 = (2x)^2 - 5^2$\n\\[\n (2x + 5)(2x - 5) = 0\n\\]\n\\[\n x = -\\frac{5}{2} \\quad \\text{or} \\quad x = \\frac{5}{2}\n\\]"
+    },
+    {
+      "type": "warning",
+      "id": "warning-3.2",
+      "number": null,
+      "title": "When Factoring Fails",
+      "content": "Not all quadratic expressions factor nicely over the integers. For \nexample, $x^2 + x + 1$ cannot be factored using integers. In such cases, \nwe need other methods."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Method 2: The Square Root Property"
+    },
+    {
+      "type": "paragraph",
+      "text": "When a quadratic equation has the form $x^2 = k$, we can solve directly \nby taking square roots."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.2",
+      "number": "3.2",
+      "title": "Square Root Property",
+      "content": "If $x^2 = k$ where $k \\geq 0$, then\n\\[\n x = \\pm\\sqrt{k}\n\\]\nThis means $x = \\sqrt{k}$ or $x = -\\sqrt{k}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-3.5",
+      "number": "3.5",
+      "title": "Simple square root",
+      "problem": "Solve: $x^2 = 49$",
+      "solution": "\\[\n x = \\pm\\sqrt{49} = \\pm 7\n\\]\n\nSolutions: $x = 7$ or $x = -7$"
+    },
+    {
+      "type": "example",
+      "id": "example-3.6",
+      "number": "3.6",
+      "title": "Square root with binomial",
+      "problem": "Solve: $(x - 4)^2 = 25$",
+      "solution": "Take square roots:\n\\[\n x - 4 = \\pm 5\n\\]\n\nSolve each case:\n\\[\n x - 4 = 5 \\implies x = 9\n\\]\n\\[\n x - 4 = -5 \\implies x = -1\n\\]\n\nSolutions: $x = 9$ or $x = -1$"
+    },
+    {
+      "type": "example",
+      "id": "example-3.7",
+      "number": "3.7",
+      "title": "Irrational solutions",
+      "problem": "Solve: $(2x + 3)^2 = 18$",
+      "solution": "\\[\n 2x + 3 = \\pm\\sqrt{18} = \\pm 3\\sqrt{2}\n\\]\n\\[\n 2x = -3 \\pm 3\\sqrt{2}\n\\]\n\\[\n x = \\frac{-3 \\pm 3\\sqrt{2}}{2}\n\\]\n\nThe exact solutions are $x = \\frac{-3 + 3\\sqrt{2}}{2} \\approx 0.621$ \nand $x = \\frac{-3 - 3\\sqrt{2}}{2} \\approx -3.621$."
+    },
+    {
+      "type": "example",
+      "id": "example-3.8",
+      "number": "3.8",
+      "title": "No real solutions",
+      "problem": "Solve: $x^2 = -16$",
+      "solution": "Since no real number squared gives a negative result, there are \n**no real solutions**.\n\nWe write: $x = \\pm\\sqrt{-16}$, which involves imaginary numbers \n(covered in Section [sec:complex-numbers])."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Method 3: Solving by Graphing"
+    },
+    {
+      "type": "paragraph",
+      "text": "The solutions to $ax^2 + bx + c = 0$ are the $x$-intercepts of \n$y = ax^2 + bx + c$. Graphing can give approximate solutions and \nhelps us understand how many solutions exist."
+    },
+    {
+      "type": "example",
+      "id": "example-3.9",
+      "number": "3.9",
+      "title": "Graphical interpretation",
+      "problem": "Use a graph to solve $x^2 - 2x - 3 = 0$.",
+      "solution": "Graph $y = x^2 - 2x - 3$.\n\nThe vertex is at $x = 1$, $y = 1 - 2 - 3 = -4$.\n\nThe parabola opens upward and crosses the $x$-axis where $y = 0$.\n\nReading from the graph (or factoring): $(x - 3)(x + 1) = 0$\n\nThe $x$-intercepts are at $x = 3$ and $x = -1$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of Quadratic Equations"
+    },
+    {
+      "type": "example",
+      "id": "example-3.10",
+      "number": "3.10",
+      "title": "Area problem",
+      "problem": "A rectangular garden has length 3 meters more than its width. If the \narea is 70 square meters, find the dimensions.",
+      "solution": "Let $w$ = width. Then length = $w + 3$.\n\nArea equation: $w(w + 3) = 70$\n\\[\n w^2 + 3w - 70 = 0\n\\]\n\\[\n (w + 10)(w - 7) = 0\n\\]\n\\[\n w = -10 \\quad \\text{or} \\quad w = 7\n\\]\n\nSince width must be positive, $w = 7$ meters.\n\nLength = $7 + 3 = 10$ meters.\n\nThe garden is **7 meters by 10 meters**."
+    },
+    {
+      "type": "example",
+      "id": "example-3.11",
+      "number": "3.11",
+      "title": "Number problem",
+      "problem": "The product of two consecutive positive integers is 182. Find the integers.",
+      "solution": "Let $n$ = first integer. Then $n + 1$ = second integer.\n\n$n(n + 1) = 182$\n\\[\n n^2 + n - 182 = 0\n\\]\n\\[\n (n + 14)(n - 13) = 0\n\\]\n\\[\n n = -14 \\quad \\text{or} \\quad n = 13\n\\]\n\nSince we need positive integers, $n = 13$.\n\nThe integers are **13 and 14**."
+    },
+    {
+      "type": "example",
+      "id": "example-3.12",
+      "number": "3.12",
+      "title": "Pythagorean theorem",
+      "problem": "The hypotenuse of a right triangle is 13 cm. One leg is 7 cm longer \nthan the other. Find the lengths of both legs.",
+      "solution": "Let $x$ = shorter leg. Then $x + 7$ = longer leg.\n\nBy the Pythagorean theorem:\n\\[\n x^2 + (x + 7)^2 = 13^2\n\\]\n\\[\n x^2 + x^2 + 14x + 49 = 169\n\\]\n\\[\n 2x^2 + 14x - 120 = 0\n\\]\n\\[\n x^2 + 7x - 60 = 0\n\\]\n\\[\n (x + 12)(x - 5) = 0\n\\]\n\nSo $x = 5$ (rejecting $x = -12$).\n\nThe legs are **5 cm and 12 cm**.\n\nCheck: $5^2 + 12^2 = 25 + 144 = 169 = 13^2$"
+    },
+    {
+      "type": "historical",
+      "id": "historical-3.2",
+      "number": null,
+      "title": "The Babylonians (c.\\ 1800 BCE)",
+      "content": "The ancient Babylonians could solve quadratic equations using geometric \nmethods on clay tablets nearly 4000 years ago. They used \"completing \nthe square\" geometrically, visualizing algebraic operations as areas \nof rectangles. This approach predates algebraic notation by millennia."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 2:4--5",
+      "text": "If you look for it as for silver and \nsearch for it as for hidden treasure, then you will understand the \nfear of the Lord and find the knowledge of God."
+    },
+    {
+      "type": "quote",
+      "author": "Albert Einstein",
+      "text": "Pure mathematics is, in its way, the \npoetry of logical ideas."
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "id": "geometry-ch07-sec03",
+  "title": "Proving Triangles Similar: AA",
+  "chapter": 7,
+  "section": 3,
+  "book": "geometry",
+  "epigraph": {
+    "text": "For we walk by faith, not by sight.",
+    "reference": "2 Corinthians 5:7"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "In the previous section, we defined similar polygons using two \nconditions: congruent corresponding angles and proportional \ncorresponding sides. For triangles, however, we can prove similarity \nmore efficiently. In this section, we discover that for triangles, \nangles alone are sufficient to guarantee similarity."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The AA Similarity Postulate"
+    },
+    {
+      "type": "postulate",
+      "id": "postulate-7.3",
+      "number": null,
+      "title": "AA (Angle-Angle) Similarity",
+      "content": "If two angles of one triangle are congruent to two angles of \nanother triangle, then the triangles are similar.",
+      "label": "Postulate"
+    },
+    {
+      "type": "paragraph",
+      "text": "This postulate is remarkably powerful. Unlike congruence, where we \nneed information about sides (SSS, SAS, ASA, AAS), similarity for \ntriangles requires only angle information."
+    },
+    {
+      "type": "paragraph",
+      "text": ", but you need side lengths to \nfix the *size*.}"
+    },
+    {
+      "type": "paragraph",
+      "text": "But wait—why do we only need *two* angles? The answer lies \nin the Triangle Sum Theorem."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Third Angle Corollary",
+      "content": "If two angles of one triangle are congruent to two angles of another \ntriangle, then the third pair of angles must also be congruent.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\triangle ABC$ and $\\triangle DEF$ have $\\angle A \\cong \\angle D$ \nand $\\angle B \\cong \\angle E$.\n\nBy the Triangle Sum Theorem:\n$$\n\\angle A + \\angle B + \\angle C &= 180° \\\\\n\\angle D + \\angle E + \\angle F &= 180°\n$$\n\nSubtracting the first equation from the second, and using the fact \nthat $\\angle A = \\angle D$ and $\\angle B = \\angle E$:\n\\[\n\\angle C = 180° - \\angle A - \\angle B = 180° - \\angle D - \\angle E = \\angle F\n\\]\n\nTherefore $\\angle C \\cong \\angle F$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Using AA Similarity"
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Basic AA application",
+      "problem": "In $\\triangle ABC$, $\\angle A = 35°$ and $\\angle B = 75°$. In \n$\\triangle DEF$, $\\angle D = 35°$ and $\\angle F = 70°$. Are the \ntriangles similar?",
+      "solution": "First, find the missing angles.\n\nIn $\\triangle ABC$: $\\angle C = 180° - 35° - 75° = 70°$\n\nIn $\\triangle DEF$: $\\angle E = 180° - 35° - 70° = 75°$\n\nNow compare:\n\n- $\\angle A = 35° = \\angle D$ \n\n- $\\angle B = 75° = \\angle E$ \n\n- $\\angle C = 70° = \\angle F$ \n\nSince two pairs of angles are congruent (in fact, all three are), \nby AA Similarity: $\\triangle ABC \\sim \\triangle DEF$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "AA with parallel lines",
+      "problem": "In the figure, $\\overline{DE} \\parallel \\overline{BC}$. Prove that \n$\\triangle ADE \\sim \\triangle ABC$.\n\ncenter\ntikzpicture[scale=1.0]\n (A) at (2,3);\n (B) at (0,0);\n (C) at (5,0);\n (D) at (0.8,1.2);\n (E) at (3.2,1.2);\n \n (A) – (B) – (C) – cycle;\n (D) – (E);\n \n ll[AtlasTeal] (A) circle (2pt);\n ll[AtlasTeal] (B) circle (2pt);\n ll[AtlasTeal] (C) circle (2pt);\n ll[AtlasGold] (D) circle (2pt);\n ll[AtlasGold] (E) circle (2pt);\n \n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n at (D) {$D$};\n at (E) {$E$};\n \n % Parallel marks\n (1.9,1.2) – (2,1.35) – (2.1,1.2);\n (2.4,0) – (2.5,0.15) – (2.6,0);\ntikzpicture\ncenter",
+      "solution": "Since $\\overline{DE} \\parallel \\overline{BC}$:\n\n- $\\angle ADE \\cong \\angle ABC$ (corresponding angles)\n\n- $\\angle AED \\cong \\angle ACB$ (corresponding angles)\n\nAlso, $\\angle A$ is shared by both triangles (reflexive property).\n\nBy AA Similarity: $\\triangle ADE \\sim \\triangle ABC$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "AA with right triangles",
+      "problem": "In the figure, $\\angle ACB$ and $\\angle DCE$ are right angles. \nProve that $\\triangle ABC \\sim \\triangle DEC$.\n\ncenter\ntikzpicture[scale=0.8]\n (A) at (0,0);\n (B) at (4,0);\n (C) at (4,3);\n (D) at (6,3);\n (E) at (4,5);\n \n (A) – (B) – (C) – cycle;\n (D) – (E) – (C) – cycle;\n \n % Right angle marks\n (3.7,0) – (3.7,0.3) – (4,0.3);\n (4.3,3) – (4.3,3.3) – (4,3.3);\n \n ll[AtlasTeal] (A) circle (2pt);\n ll[AtlasTeal] (B) circle (2pt);\n ll[AtlasTeal] (C) circle (2pt);\n ll[AtlasGold] (D) circle (2pt);\n ll[AtlasGold] (E) circle (2pt);\n \n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n at (D) {$D$};\n at (E) {$E$};\ntikzpicture\ncenter",
+      "solution": "- $\\angle ACB \\cong \\angle DCE$ (both are $90°$)\n\n- $\\angle ABC \\cong \\angle DEC$ (both are formed by the same \n transversal cutting parallel horizontal lines—or this can be \n given directly)\n\nWith two pairs of congruent angles, by AA Similarity:\n$\\triangle ABC \\sim \\triangle DEC$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Indirect Measurement"
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the most practical applications of similar triangles is \n**indirect measurement**—determining \nlengths that cannot be measured directly. The ancient mathematician \nThales reportedly used this technique to measure the height of the \nEgyptian pyramids."
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "Shadow method",
+      "problem": "A 6-foot tall person casts an 8-foot shadow at the same time that \na tree casts a 40-foot shadow. How tall is the tree?\n\ncenter\ntikzpicture[scale=0.4]\n % Person\n (0,0) – (0,3);\n (-0.3,2.7) – (0,3) – (0.3,2.7);\n (-0.3,1.5) – (0,1.5) – (0.3,1.5);\n ll[AtlasTeal] (0,3.2) circle (4pt);\n \n % Person's shadow\n (0,0) – (4,0);\n (0,-0.5) – (4,-0.5);\n at (2,-0.5) {8 ft};\n at (-0.3,1.5) {6 ft};\n \n % Sun rays\n (-1,4) – (0,3);\n (3,4) – (4,0);\n \n % Tree\n (10,0) – (10,8) – (9.5,8) – \n (10,10) – (10.5,8) – (10,8);\n (10,0) – (10,8);\n \n % Tree's shadow\n (10,0) – (20,0);\n (10,-0.5) – (20,-0.5);\n at (15,-0.5) {40 ft};\n at (9.7,4) {$h$};\n \n % Sun rays to tree\n (9,11) – (10,10);\n (19,11) – (20,0);\ntikzpicture\ncenter",
+      "solution": "The sun's rays are essentially parallel, creating similar triangles. \nBoth the person and the tree stand perpendicular to the ground, so \nboth triangles have right angles at their base.\n\nThe angle of the sun's rays is the same for both, giving us a \nsecond pair of congruent angles.\n\nBy AA Similarity, the triangles are similar, so:\n\\[\n\\frac{\\text{person's height}}{\\text{person's shadow}} = \n\\frac{\\text{tree's height}}{\\text{tree's shadow}}\n\\]\n\\[\n\\frac{6}{8} = \\frac{h}{40}\n\\]\n\nCross multiply: $8h = 240$, so $h = 30$ feet."
+    },
+    {
+      "type": "example",
+      "id": "example-7.5",
+      "number": "7.5",
+      "title": "Mirror method",
+      "problem": "To find the height of a flagpole, you place a mirror on the ground \nand stand where you can see the top of the flagpole in the mirror. \nYou are 2 meters from the mirror, and your eyes are 1.5 meters above \nthe ground. The mirror is 8 meters from the base of the flagpole. \nHow tall is the flagpole?\n\ncenter\ntikzpicture[scale=0.5]\n % Ground\n (-1,0) – (12,0);\n \n % Person\n (0,0) – (0,3);\n (-0.3,2.7) – (0,3) – (0.3,2.7);\n ll[AtlasTeal] (0,3.2) circle (4pt);\n \n % Eye level marker\n ll[AtlasGold] (0,3) circle (3pt);\n at (-0.2,1.5) { 1.5 m};\n \n % Mirror\n ll[AtlasGold] (2,0) ellipse (0.3 and 0.1);\n at (2,-0.3) { mirror};\n \n % Flagpole\n (10,0) – (10,6);\n (10,6) – (10.5,5.5);\n at (10.2,3) {$h$};\n \n % Light rays\n (0,3) – (2,0) – (10,6);\n \n % Distance markers\n (0,-0.7) – (2,-0.7);\n at (1,-0.7) { 2 m};\n (2,-0.7) – (10,-0.7);\n at (6,-0.7) { 8 m};\ntikzpicture\ncenter",
+      "solution": "By the law of reflection, the angle at which light hits the mirror \nequals the angle at which it reflects. This creates two similar \nright triangles.\n\nThe triangles have:\n\n- Right angles at the ground\n\n- Equal angles at the mirror (law of reflection)\n\nBy AA Similarity:\n\\[\n\\frac{\\text{eye height}}{\\text{distance from person to mirror}} = \n\\frac{\\text{flagpole height}}{\\text{distance from mirror to flagpole}}\n\\]\n\\[\n\\frac{1.5}{2} = \\frac{h}{8}\n\\]\n\nCross multiply: $2h = 12$, so $h = 6$ meters."
+    },
+    {
+      "type": "example",
+      "id": "example-7.6",
+      "number": "7.6",
+      "title": "River width",
+      "problem": "To find the width of a river, a surveyor marks points as shown. \nIf $AC = 50$ m, $CD = 20$ m, and $DE = 30$ m, find the river width $AB$.\n\ncenter\ntikzpicture[scale=0.6]\n % River\n ll[blue!10] (-1,-0.5) rectangle (8,0.5);\n (-1,-0.5) – (8,-0.5);\n (-1,0.5) – (8,0.5);\n \n % Points\n (A) at (2,0.5);\n (B) at (2,3);\n (C) at (2,-2);\n (D) at (2,-3.5);\n (E) at (5,-3.5);\n \n (A) – (C);\n (C) – (D);\n (D) – (E);\n (B) – (C);\n (E) – (C);\n (A) – (B);\n (B) – (E);\n \n ll (A) circle (3pt);\n ll (B) circle (3pt);\n ll (C) circle (3pt);\n ll (D) circle (3pt);\n ll (E) circle (3pt);\n \n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n at (D) {$D$};\n at (E) {$E$};\n \n at (2,-0.75) { 50 m};\n at (2,-2.75) { 20 m};\n at (3.5,-3.5) { 30 m};\n at (2.1,1.75) { ?};\ntikzpicture\ncenter",
+      "solution": "By setting up the angles properly, $\\triangle ABC \\sim \\triangle EDC$ \n(by AA—vertical angles at $C$ and right angles at $A$ and $D$).\n\nThe triangles are similar with correspondence:\n\\[\n\\frac{AB}{DE} = \\frac{AC}{DC}\n\\]\n\\[\n\\frac{AB}{30} = \\frac{50}{20}\n\\]\n\\[\nAB = \\frac{30 \\times 50}{20} = 75 \\text{ meters}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Special Cases of Similar Triangles"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "All Equilateral Triangles are Similar",
+      "content": "Any two equilateral triangles are similar.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Every equilateral triangle has three $60°$ angles. Given any two \nequilateral triangles, we have:\n\n- First angle = $60° = 60°$ = First angle\n\n- Second angle = $60° = 60°$ = Second angle\nBy AA Similarity, the triangles are similar."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.3",
+      "number": "7.3",
+      "title": "All Isosceles Right Triangles are Similar",
+      "content": "Any two isosceles right triangles (45-45-90 triangles) are similar.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "An isosceles right triangle has angles $45°$, $45°$, and $90°$. Any \ntwo such triangles share these angle measures, so by AA Similarity, \nthey are similar."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Hebrews 11:1",
+      "text": "Now faith is the assurance of things \nhoped for, the conviction of things not seen."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 19:1",
+      "text": "The heavens declare the glory of God, \nand the sky above proclaims his handiwork."
+    },
+    {
+      "type": "scripture",
+      "reference": "Matthew 7:2",
+      "text": "For with the measure you use, it will \nbe measured to you."
+    }
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "id": "numerical-analysis-ch07-sec05",
+  "title": "Stability Analysis",
+  "chapter": 7,
+  "section": 5,
+  "book": "numerical-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Accuracy alone is not sufficient for a numerical method. A method must \nalso be **stable**: small perturbations should not grow catastrophically. \nThis section develops the theory of stability regions and applies it to \nunderstand stiff differential equations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Model Problem"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Dahlquist Test Equation",
+      "content": "The **Dahlquist test equation** (or model problem) is:\n\\[\ny' = \\lambda y, \\qquad y(0) = 1\n\\]\nwhere $\\lambda \\in \\CC$ with $\\text{Re}(\\lambda) < 0$.\n\nThe exact solution is $y(t) = e^{\\lambda t}$, which decays to zero as \n$t \\to \\infty$ since $\\text{Re}(\\lambda) < 0$."
+    },
+    {
+      "type": "remark",
+      "id": "remark-7.5",
+      "number": null,
+      "title": "",
+      "content": "The test equation models the behavior of linear (or linearized) systems \nnear equilibrium. Understanding a method's behavior on this simple problem \npredicts its behavior on more complex equations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Stability Regions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.2",
+      "number": "7.2",
+      "title": "Absolute Stability",
+      "content": "A numerical method is **absolutely stable** for a given $h\\lambda$ \nif applying the method to $y' = \\lambda y$ produces $y_n \\to 0$ as $n \\to \\infty$.\n\nThe **stability region** (or region of absolute stability) is:\n\\[\nS = \\{z \\in \\CC : \\text{method is absolutely stable for } h\\lambda = z\\}\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Forward Euler Stability Region",
+      "content": "For forward Euler applied to $y' = \\lambda y$:\n\\[\ny_{n+1} = y_n + h\\lambda y_n = (1 + h\\lambda)y_n = (1 + z)^{n+1} y_0\n\\]\nwhere $z = h\\lambda$.\n\nStability requires $|1 + z| < 1$. The stability region is:\n\\[\nS = \\{z \\in \\CC : |z + 1| < 1\\}\n\\]\na disk of radius 1 centered at $z = -1$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The recurrence $y_{n+1} = (1 + z)y_n$ gives $y_n = (1+z)^n y_0$.\nFor $y_n \\to 0$ we need $|1 + z| < 1$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Forward Euler Stability Constraint",
+      "problem": "For $y' = -10y$ ($\\lambda = -10$, real negative), forward Euler requires:\n\\[\n|1 + h(-10)| < 1 \\implies |1 - 10h| < 1 \\implies -1 < 1 - 10h < 1\n\\]\nThis gives $0 < h < 0.2$.\n\nWith $h = 0.25 > 0.2$: $|1 - 2.5| = 1.5 > 1$. The method is unstable!\nSolutions oscillate with growing amplitude.",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "Backward Euler Stability Region",
+      "content": "For backward Euler applied to $y' = \\lambda y$:\n\\[\ny_{n+1} = y_n + h\\lambda y_{n+1} \\implies y_{n+1} = \\frac{y_n}{1 - z}\n\\]\nStability requires $|1/(1-z)| < 1$, i.e., $|1 - z| > 1$.\n\nThe stability region is:\n\\[\nS = \\{z \\in \\CC : |z - 1| > 1\\}\n\\]\nthe **exterior** of the disk of radius 1 centered at $z = 1$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "remark",
+      "id": "remark-7.5",
+      "number": null,
+      "title": "",
+      "content": "The backward Euler stability region includes the entire left half-plane \n$\\text{Re}(z) < 0$. This is dramatically better than forward Euler for \nproblems with $\\text{Re}(\\lambda) \\ll 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Stability Function"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.3",
+      "number": "7.3",
+      "title": "Stability Function",
+      "content": "For a one-step method applied to $y' = \\lambda y$, the relation \n$y_{n+1} = R(z)y_n$ for some function $R(z)$ with $z = h\\lambda$.\nThe function $R(z)$ is the **stability function**.\n\nThe stability region is $S = \\{z \\in \\CC : |R(z)| < 1\\}$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Stability Functions for Common Methods",
+      "problem": "| Method | $R(z)$ | Notes |\n| Forward Euler | $1 + z$ | Disk $|z+1| < 1$ |\n| Backward Euler | $\\frac{1}{1-z}$ | $|z-1| > 1$ |\n| Trapezoidal | $\\frac{1 + z/2}{1 - z/2}$ | $\\text{Re}(z) < 0$ |\n| Midpoint (RK2) | $1 + z + \\frac{z^2}{2}$ | Lens-shaped |\n| RK4 | $1 + z + \\frac{z^2}{2} + \\frac{z^3}{6} + \\frac{z^4}{24}$ | Larger region |",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.3",
+      "number": "7.3",
+      "title": "RK4 Stability Region",
+      "content": "The classical RK4 has stability function:\n\\[\nR(z) = 1 + z + \\frac{z^2}{2} + \\frac{z^3}{6} + \\frac{z^4}{24}\n\\]\n(the first 5 terms of $e^z$).\n\nFor real negative $\\lambda$: stability requires $-2.785 < h\\lambda < 0$.\n\nFor purely imaginary $\\lambda = i\\omega$: stability requires $-2.828 < h\\omega < 2.828$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "remark",
+      "id": "remark-7.5",
+      "number": null,
+      "title": "",
+      "content": "The RK4 stability region is much larger than forward Euler's, explaining \nwhy RK4 can use larger step sizes in practice. However, it's still \nbounded—very stiff problems will require small steps."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "A-Stability and L-Stability"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.4",
+      "number": "7.4",
+      "title": "A-Stability",
+      "content": "A method is **A-stable** if its stability region contains the \nentire left half-plane:\n\\[\n\\CC^- = \\{z \\in \\CC : \\text{Re}(z) < 0\\} \\subseteq S\n\\]\nAn A-stable method is stable for *any* step size $h$ on problems \nwith $\\text{Re}(\\lambda) < 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "A-Stable Methods",
+      "problem": "A-stable methods include:\n\n- Backward Euler\n\n- Trapezoidal (Crank-Nicolson)\n\n- Implicit midpoint\n\n- BDF1, BDF2\nForward Euler, RK4, and higher-order Adams methods are **not** A-stable.",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.4",
+      "number": "7.4",
+      "title": "Dahlquist's Second Barrier",
+      "content": "1. No explicit linear multistep method is A-stable.\n\n2. An A-stable linear multistep method has order at most 2.\n\n3. Among A-stable linear multistep methods of order 2, the trapezoidal \nmethod has the smallest error constant.",
+      "label": "Theorem"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.5",
+      "number": "7.5",
+      "title": "L-Stability",
+      "content": "A method is **L-stable** if it is A-stable and additionally:\n\\[\nR(z) \\to 0 \\quad \\text{as} \\quad \\text{Re}(z) \\to -\\infty\n\\]\nL-stable methods strongly damp very stiff components."
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "L-Stability Comparison",
+      "problem": "- **Backward Euler:** $R(z) = 1/(1-z) \\to 0$ as $z \\to -\\infty$. \n**L-stable**.\n\n- **Trapezoidal:** $R(z) = (1+z/2)/(1-z/2) \\to -1$ as $z \\to -\\infty$. \nA-stable but **not L-stable**. Stiff components oscillate instead of decaying.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Stiff Differential Equations"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.6",
+      "number": "7.6",
+      "title": "Stiff Equation (Informal)",
+      "content": "A differential equation is **stiff** if explicit methods require \nstep sizes far smaller than accuracy demands, due to stability constraints.\n\nEquivalently: the equation has components with vastly different time scales."
+    },
+    {
+      "type": "example",
+      "id": "example-7.5",
+      "number": "7.5",
+      "title": "A Classic Stiff Problem",
+      "problem": "Consider the system:\n\\[\n\\begin{pmatrix} y_1' \\\\ y_2' \\end{pmatrix} = \n\\begin{pmatrix} -1000 & 999 \\\\ 1 & -2 \\end{pmatrix}\n\\begin{pmatrix} y_1 \\\\ y_2 \\end{pmatrix}\n\\]\nEigenvalues: $\\lambda_1 \\approx -1000.998$, $\\lambda_2 \\approx -1.002$.\n\nThe $\\lambda_1$ component decays in $\\tau_1 \\approx 0.001$ time units.\nThe $\\lambda_2$ component decays in $\\tau_2 \\approx 1$ time unit.\n\n**Stiffness ratio:** $|\\lambda_1/\\lambda_2| \\approx 1000$.\n\nTo integrate to $t = 10$:\n\n- **Forward Euler:** Needs $h < 2/1000 = 0.002$ for stability. \nThat's $10/0.002 = 5000$ steps.\n\n- **Backward Euler:** A-stable, so $h = 0.1$ works fine (100 steps).\nAfter $t \\approx 0.01$, the fast component has decayed, but forward Euler \nstill needs tiny steps!",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.5",
+      "number": "7.5",
+      "title": "Stiffness and Implicit Methods",
+      "content": "For stiff problems:\n\n- Explicit methods are **impractical**: step size limited by \nfastest component, even when that component has died out.\n\n- Implicit methods are **necessary**: A-stability allows step \nsizes governed by accuracy, not stability.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-7.6",
+      "number": "7.6",
+      "title": "Chemical Kinetics (Robertson Problem)",
+      "problem": "The Robertson chemical kinetics problem:\n$$\ny_1' &= -0.04 y_1 + 10^4 y_2 y_3 \\\\\ny_2' &= 0.04 y_1 - 10^4 y_2 y_3 - 3 \\times 10^7 y_2^2 \\\\\ny_3' &= 3 \\times 10^7 y_2^2\n$$\nwith $y(0) = (1, 0, 0)^T$.\n\nTime scales range from $10^{-5}$ to $10^5$. The stiffness ratio exceeds \n$10^{10}$. Only stiff solvers (BDF methods, implicit Runge-Kutta) can \nhandle this problem efficiently.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Stability of Multistep Methods"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.7",
+      "number": "7.7",
+      "title": "Stability Region for Multistep Methods",
+      "content": "For a linear multistep method applied to $y' = \\lambda y$, substitute \n$y_n = \\zeta^n$ to get the characteristic equation:\n\\[\n\\sum_{j=0}^{k} \\alpha_j \\zeta^{k-j} = z \\sum_{j=0}^{k} \\beta_j \\zeta^{k-j}\n\\]\nwhere $z = h\\lambda$. This is $\\rho(\\zeta) = z\\sigma(\\zeta)$.\n\nThe method is stable for $z$ if all roots $\\zeta$ of this equation \nsatisfy $|\\zeta| \\leq 1$ (with simple roots on $|\\zeta| = 1$)."
+    },
+    {
+      "type": "example",
+      "id": "example-7.7",
+      "number": "7.7",
+      "title": "Stability Regions for BDF Methods",
+      "problem": "| Method | Order | Stability |\n| BDF1 | 1 | A-stable |\n| BDF2 | 2 | A-stable |\n| BDF3 | 3 | Not A-stable, large region |\n| BDF4 | 4 | Not A-stable, includes $\\text{Re}(z) < 0$ near axis |\n| BDF5 | 5 | Barely stable for some $\\text{Re}(z) < 0$ |\n| BDF6 | 6 | Not zero-stable! Should not be used. |",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Practical Stability Considerations"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-7.5",
+      "number": null,
+      "title": "Choosing a Method for Stiff Problems",
+      "content": "algorithmic[1]\n Problem $y' = f(t, y)$, estimate of stiffness\nProblem is non-stiff (or mildly stiff)\n Use explicit method (RK45, Adams-Bashforth)\nProblem is moderately stiff\n Use BDF2 or implicit Runge-Kutta (DIRK)\nProblem is very stiff\n Use BDF methods (up to BDF5) or high-order implicit RK\nProblem has very stiff transients\n Use L-stable method (backward Euler, SDIRK)\n\nalgorithmic"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Error Control and Stability"
+    },
+    {
+      "type": "warning",
+      "id": "warning-7.5",
+      "number": null,
+      "title": "Stability vs Accuracy Trade-off",
+      "content": "A-stable methods often sacrifice accuracy for stability:\n\n- Backward Euler: First-order, but works on any stiff problem.\n\n- Trapezoidal: Second-order, A-stable, but oscillations possible.\n\n- BDF methods: Up to order 6, but lose A-stability beyond order 2.\nModern codes use variable-order BDF: start with high order, reduce if \nstability issues arise."
+    },
+    {
+      "type": "example",
+      "id": "example-7.8",
+      "number": "7.8",
+      "title": "Step Size Selection for Stiff Problems",
+      "problem": "For $y' = -1000y + \\sin(t)$ with $y(0) = 1$:\n\nThe homogeneous solution $e^{-1000t}$ decays rapidly. The particular \nsolution varies on scale $O(1)$.\n\n**Forward Euler:** $h < 0.002$ for stability, giving 5000 steps \nfor $t \\in [0, 10]$.\n\n**Backward Euler:** Step size determined by accuracy. Since solution \nvaries slowly after $t > 0.01$, can use $h = 0.1$, giving 100 steps.\n\nThe backward Euler solution is less accurate *per step*, but \nfar more efficient overall.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Summary: Stability Hierarchy"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Method**",
+        "**Order**",
+        "**A-stable?**",
+        "**L-stable?**"
+      ],
+      "rows": [
+        [
+          "Forward Euler",
+          "1",
+          "No",
+          "No"
+        ],
+        [
+          "Backward Euler",
+          "1",
+          "Yes",
+          "Yes"
+        ],
+        [
+          "Trapezoidal",
+          "2",
+          "Yes",
+          "No"
+        ],
+        [
+          "RK4",
+          "4",
+          "No",
+          "No"
+        ],
+        [
+          "BDF1",
+          "1",
+          "Yes",
+          "Yes"
+        ],
+        [
+          "BDF2",
+          "2",
+          "Yes",
+          "Yes"
+        ],
+        [
+          "BDF3",
+          "3",
+          "No",
+          "No"
+        ],
+        [
+          "BDF4-5",
+          "4-5",
+          "No",
+          "No"
+        ],
+        [
+          "Radau IIA (3-stage)",
+          "5",
+          "Yes",
+          "Yes"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "center",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "remark",
+      "id": "remark-7.5",
+      "number": null,
+      "title": "",
+      "content": "For general-purpose stiff solving, BDF methods and implicit Runge-Kutta \n(particularly Radau methods) are the standard choices. The trade-off \nbetween order and stability determines the best method for each problem."
+    }
+  ]
+}

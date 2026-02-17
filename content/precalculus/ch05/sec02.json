@@ -1,0 +1,293 @@
+{
+  "id": "precalculus-ch05-sec02",
+  "title": "Properties of Logarithms",
+  "chapter": 5,
+  "section": 2,
+  "book": "precalculus",
+  "objectives": [
+    "Apply the product, quotient, and power rules for logarithms",
+    "Expand logarithmic expressions into sums and differences",
+    "Condense sums and differences of logarithms into single logarithms",
+    "Use the change of base formula to evaluate logarithms",
+    "Understand why these properties work based on exponential rules",
+    "Apply logarithmic properties to simplify complex expressions\nitemize"
+  ],
+  "devotional": {
+    "title": "Multiplication Made Simple",
+    "scripture": "Matthew 11:28--30",
+    "content": "{AtlasWarmC}{ome \nto me, all you who are weary} and burdened, and I will give you rest.\" \nBefore electronic calculators, scientists and navigators faced exhausting \ncalculations. Multiplying large numbers by hand—the kind needed for \nastronomy, navigation, and surveying—could take hours and introduce \nerrors at every step.\n\nThen came logarithms, and everything changed.\n\nThe fundamental property of logarithms is this: the logarithm of a \nproduct equals the sum of the logarithms. $\\log(ab) = \\log a + \\log b$. \nThis means that multiplication—that slow, error-prone operation—could \nbe replaced by addition, which is far simpler. An astronomer who once \nspent hours multiplying could now look up two numbers in a table, add \nthem, and look up the result. Laplace said logarithms \"doubled the life \nof the astronomer.\"\n\nThere is something almost gracious about logarithms. They take what is \nhard and make it easy. They transform a heavy burden into a light one. \nThey offer a simpler path to the same destination.\n\nThis is what Christ offers us. The burden of sin, of self-righteousness, \nof trying to earn our way—it is exhausting. But He says, \"My yoke is \neasy and my burden is light.\" He doesn't change the destination (we \nstill need to be made righteous), but He changes the path entirely.",
+    "reflection": "Logarithms convert difficult operations into simpler \nones. How has God simplified what seemed impossibly complex in your own \nlife? Where might you be carrying burdens He wants to transform?"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Teach us to number our days, that we may gain a \nheart of wisdom.\"*{Psalm 90:12}{Logarithms are the indices or exponents of ratios considered as produced by ratios.}{John Napier}"
+    },
+    {
+      "type": "paragraph",
+      "text": "The properties of logarithms aren't arbitrary rules to memorize—they \nflow directly from the properties of exponents. Since logarithms are \nexponents, they inherit the elegant relationships that govern exponential \nexpressions. In this section, we'll develop these properties and learn \nto use them to simplify and manipulate logarithmic expressions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Basic Properties"
+    },
+    {
+      "type": "paragraph",
+      "text": "We begin with two properties that follow immediately from the definition \nof logarithm."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Basic Logarithmic Identities",
+      "content": "For any valid base $b$ (that is, $b > 0$ and $b \\neq 1$):\n$$\n \\log_b 1 &= 0 \\qquad \\text{because } b^0 = 1 \\\\[0.5em]\n \\log_b b &= 1 \\qquad \\text{because } b^1 = b\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "These are worth committing to memory. The logarithm of 1 is always 0, \nregardless of the base. And the logarithm of the base itself is always 1."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Three Main Properties"
+    },
+    {
+      "type": "paragraph",
+      "text": "The real power of logarithms comes from three properties that transform \nthe operations of multiplication, division, and exponentiation into \nsimpler operations."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Properties of Logarithms",
+      "content": "For $b > 0$, $b \\neq 1$, and positive numbers $M$ and $N$:\n\n$$\n \\log_b(MN) &= \\log_b M + \\log_b N && \\text{(Product Rule)} \\\\[0.5em]\n \\log_b\\left(\\frac{M}{N}\\right) &= \\log_b M - \\log_b N && \\text{(Quotient Rule)} \\\\[0.5em]\n \\log_b(M^p) &= p \\cdot \\log_b M && \\text{(Power Rule)} \n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "These properties are the mathematical equivalent of labor-saving devices. \nThey let us:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Replace multiplication with addition",
+        "Replace division with subtraction",
+        "Replace exponentiation with multiplication"
+      ]
+    },
+    {
+      "type": "warning",
+      "id": "warning-5.2",
+      "number": null,
+      "title": "The Argument Must Be Positive",
+      "content": "These properties only work when all arguments are positive. There is \nno way to simplify $\\log_b(-3)$ or $\\log_b(0)$—these expressions are \nundefined for real numbers.\n\nAlso note: $\\log_b(M + N) \\neq \\log_b M + \\log_b N$. The product rule \napplies to products, not sums!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Why Do These Properties Work?"
+    },
+    {
+      "type": "paragraph",
+      "text": "The properties of logarithms come directly from the properties of \nexponents. Let's see why the product rule works."
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\log_b M = x$ and $\\log_b N = y$.\n\nBy the definition of logarithm:\n\\[\n b^x = M \\quad \\text{and} \\quad b^y = N\n\\]\n\nMultiply these equations:\n\\[\n M \\cdot N = b^x \\cdot b^y = b^{x+y}\n\\]\n\nNow take $\\log_b$ of both sides:\n\\[\n \\log_b(MN) = \\log_b(b^{x+y}) = x + y = \\log_b M + \\log_b N\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "$, and the power rule uses $(b^x)^p = b^{xp}$.}"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Expanding Logarithmic Expressions"
+    },
+    {
+      "type": "paragraph",
+      "text": "To \"expand\" a logarithm means to write it as a sum and/or difference \nof simpler logarithms, with any coefficients placed in front using the \npower rule."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-5.2",
+      "number": null,
+      "title": "Expanding Logarithms",
+      "content": "1. Use the quotient rule to separate fractions into differences\n\n2. Use the product rule to separate products into sums\n\n3. Use the power rule to bring exponents out as coefficients\n\n4. Simplify any logarithms of known values (like $\\log_b b = 1$)"
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Expanding logarithms---basic",
+      "problem": "Expand each logarithm completely.\n\n1. $\\log_2(8x)$\n\n2. $\\ln\\left(\\dfrac{x}{e^2}\\right)$\n\n3. $\\log_5(25x^3)$",
+      "solution": "1. Using the product rule:\n \\[\n \\log_2(8x) = \\log_2 8 + \\log_2 x = 3 + \\log_2 x\n \\]\n (since $\\log_2 8 = 3$)\n\n2. Using the quotient rule, then simplifying:\n $$\n \\ln\\left(\\frac{x}{e^2}\\right) &= \\ln x - \\ln e^2 \\\\\n &= \\ln x - 2\n $$\n (since $\\ln e^2 = 2$)\n\n3. Using product and power rules:\n $$\n \\log_5(25x^3) &= \\log_5 25 + \\log_5 x^3 \\\\\n &= 2 + 3\\log_5 x\n $$\n (since $\\log_5 25 = 2$)"
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "Expanding logarithms---complex",
+      "problem": "Expand each logarithm completely. Assume all variables represent positive \nnumbers.\n\n1. $\\ln\\left(\\dfrac{x^3}{y^2}\\right)$\n\n2. $\\log\\sqrt{xy}$\n\n3. $\\log_2\\left(\\dfrac{x^2 y}{z^3}\\right)$\n\n4. $\\ln\\sqrt[4]{\\dfrac{x^3}{y^2 z}}$",
+      "solution": "1. Apply the quotient rule, then the power rule:\n $$\n \\ln\\left(\\frac{x^3}{y^2}\\right) &= \\ln x^3 - \\ln y^2 \\\\\n &= 3\\ln x - 2\\ln y\n $$\n\n2. First rewrite the radical as an exponent:\n $$\n \\log\\sqrt{xy} &= \\log(xy)^{1/2} \\\\\n &= \\frac{1}{2}\\log(xy) \\\\\n &= \\frac{1}{2}(\\log x + \\log y) \\\\\n &= \\frac{1}{2}\\log x + \\frac{1}{2}\\log y\n $$\n\n3. Apply quotient and product rules:\n $$\n \\log_2\\left(\\frac{x^2 y}{z^3}\\right) &= \\log_2(x^2 y) - \\log_2 z^3 \\\\\n &= \\log_2 x^2 + \\log_2 y - \\log_2 z^3 \\\\\n &= 2\\log_2 x + \\log_2 y - 3\\log_2 z\n $$\n\n4. This one has nested operations. Work from outside in:\n $$\n \\ln\\sqrt[4]{\\frac{x^3}{y^2 z}} &= \\ln\\left(\\frac{x^3}{y^2 z}\\right)^{1/4} \\\\\n &= \\frac{1}{4}\\ln\\left(\\frac{x^3}{y^2 z}\\right) \\\\\n &= \\frac{1}{4}\\left(\\ln x^3 - \\ln(y^2 z)\\right) \\\\\n &= \\frac{1}{4}\\left(\\ln x^3 - \\ln y^2 - \\ln z\\right) \\\\\n &= \\frac{1}{4}\\left(3\\ln x - 2\\ln y - \\ln z\\right) \\\\\n &= \\frac{3}{4}\\ln x - \\frac{1}{2}\\ln y - \\frac{1}{4}\\ln z\n $$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Condensing Logarithmic Expressions"
+    },
+    {
+      "type": "paragraph",
+      "text": "To \"condense\" logarithms means to combine a sum or difference of \nlogarithms into a single logarithm. This is the reverse of expanding."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-5.2",
+      "number": null,
+      "title": "Condensing Logarithms",
+      "content": "1. Use the power rule in reverse: coefficients become exponents\n\n2. Use the product rule in reverse: sums become products\n\n3. Use the quotient rule in reverse: differences become quotients\nThe order matters: handle powers first, then products and quotients."
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Condensing logarithms---basic",
+      "problem": "Write each expression as a single logarithm.\n\n1. $\\log x + \\log y$\n\n2. $\\ln a - \\ln b$\n\n3. $3\\log_2 x$",
+      "solution": "1. Using the product rule in reverse:\n \\[\n \\log x + \\log y = \\log(xy)\n \\]\n\n2. Using the quotient rule in reverse:\n \\[\n \\ln a - \\ln b = \\ln\\left(\\frac{a}{b}\\right)\n \\]\n\n3. Using the power rule in reverse:\n \\[\n 3\\log_2 x = \\log_2 x^3\n \\]"
+    },
+    {
+      "type": "example",
+      "id": "example-5.4",
+      "number": "5.4",
+      "title": "Condensing logarithms---complex",
+      "problem": "Write each expression as a single logarithm with coefficient 1.\n\n1. $\\log x + 2\\log y$\n\n2. $3\\ln a - \\ln b - 2\\ln c$\n\n3. $\\frac{1}{2}(\\log x - 3\\log y + \\log z)$\n\n4. $2\\log_3 x + \\log_3(x-1) - \\log_3 5$",
+      "solution": "1. First apply the power rule to the coefficient:\n \\[\n \\log x + 2\\log y = \\log x + \\log y^2 = \\log(xy^2)\n \\]\n\n2. Apply power rule first, then combine:\n $$\n 3\\ln a - \\ln b - 2\\ln c &= \\ln a^3 - \\ln b - \\ln c^2 \\\\\n &= \\ln a^3 - (\\ln b + \\ln c^2) \\\\\n &= \\ln a^3 - \\ln(bc^2) \\\\\n &= \\ln\\left(\\frac{a^3}{bc^2}\\right)\n $$\n\n3. Work inside the parentheses first:\n $$\n \\frac{1}{2}(\\log x - 3\\log y + \\log z) &= \\frac{1}{2}(\\log x - \\log y^3 + \\log z) \\\\\n &= \\frac{1}{2}\\log\\left(\\frac{xz}{y^3}\\right) \\\\\n &= \\log\\left(\\frac{xz}{y^3}\\right)^{1/2} \\\\\n &= \\log\\sqrt{\\frac{xz}{y^3}}\n $$\n\n4. Step by step:\n $$\n 2\\log_3 x + \\log_3(x-1) - \\log_3 5 &= \\log_3 x^2 + \\log_3(x-1) - \\log_3 5 \\\\\n &= \\log_3\\left(\\frac{x^2(x-1)}{5}\\right)\n $$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.5",
+      "number": "5.5",
+      "title": "Recognizing when condensing is possible",
+      "problem": "Which expressions can be condensed to a single logarithm?\n\n1. $\\log_2 x + \\log_3 y$\n\n2. $\\log 5 + \\log 20$\n\n3. $\\log(x + y)$\n\n4. $\\ln x + \\ln y + \\ln z$",
+      "solution": "1. **Cannot condense.** The bases are different (2 and 3). \n The product rule only works when all logarithms have the same base.\n\n2. **Can condense:** $\\log 5 + \\log 20 = \\log(5 \\cdot 20) = \\log 100 = 2$\n\n3. **Already a single logarithm.** Note that $\\log(x+y)$ \n cannot be simplified further—there is no \"sum rule\" for logarithms.\n\n4. **Can condense:** $\\ln x + \\ln y + \\ln z = \\ln(xyz)$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Change of Base Formula"
+    },
+    {
+      "type": "paragraph",
+      "text": "Most calculators only have buttons for $\\log$ (base 10) and $\\ln$ \n(base $e$). So how do we evaluate logarithms with other bases, like \n$\\log_5 17$?"
+    },
+    {
+      "type": "paragraph",
+      "text": "The answer is the change of base formula, which allows us to convert \nany logarithm to a different base."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.3",
+      "number": "5.3",
+      "title": "Change of Base Formula",
+      "content": "For any positive numbers $a$ and $b$ (both $\\neq 1$) and positive $x$:\n\\[\n \\log_b x = \\frac{\\log_a x}{\\log_a b}\n\\]\nMost commonly, we use base 10 or base $e$:\n\\[\n \\log_b x = \\frac{\\log x}{\\log b} = \\frac{\\ln x}{\\ln b}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $y = \\log_b x$, so $b^y = x$.\n\nTake $\\log_a$ of both sides:\n\\[\n \\log_a(b^y) = \\log_a x\n\\]\n\nApply the power rule:\n\\[\n y \\cdot \\log_a b = \\log_a x\n\\]\n\nSolve for $y$:\n\\[\n y = \\frac{\\log_a x}{\\log_a b}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-5.6",
+      "number": "5.6",
+      "title": "Using change of base",
+      "problem": "Evaluate each logarithm using a calculator. Round to 4 decimal places.\n\n1. $\\log_5 17$\n\n2. $\\log_3 50$\n\n3. $\\log_2 \\pi$",
+      "solution": "1. Using natural logarithms:\n \\[\n \\log_5 17 = \\frac{\\ln 17}{\\ln 5} = \\frac{2.8332...}{1.6094...} \\approx \\boxed{1.7604}\n \\]\n\n2. Using common logarithms:\n \\[\n \\log_3 50 = \\frac{\\log 50}{\\log 3} = \\frac{1.6989...}{0.4771...} \\approx \\boxed{3.5609}\n \\]\n\n3. Either method works:\n \\[\n \\log_2 \\pi = \\frac{\\ln \\pi}{\\ln 2} = \\frac{1.1447...}{0.6931...} \\approx \\boxed{1.6515}\n \\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The change of base formula also reveals an elegant relationship between \nlogarithms with reciprocal bases."
+    },
+    {
+      "type": "example",
+      "id": "example-5.7",
+      "number": "5.7",
+      "title": "Reciprocal base relationship",
+      "problem": "Show that $\\log_a b \\cdot \\log_b a = 1$.",
+      "solution": "Using the change of base formula:\n\\[\n \\log_a b = \\frac{\\ln b}{\\ln a}\n\\]\nand\n\\[\n \\log_b a = \\frac{\\ln a}{\\ln b}\n\\]\n\nMultiplying these:\n\\[\n \\log_a b \\cdot \\log_b a = \\frac{\\ln b}{\\ln a} \\cdot \\frac{\\ln a}{\\ln b} = 1\n\\]\n\nThis means $\\log_b a = \\dfrac{1}{\\log_a b}$—the logarithms are \nreciprocals of each other."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applying the Properties"
+    },
+    {
+      "type": "paragraph",
+      "text": "Let's work through some more sophisticated problems that combine multiple \nproperties."
+    },
+    {
+      "type": "example",
+      "id": "example-5.8",
+      "number": "5.8",
+      "title": "Simplifying with numerical values",
+      "problem": "Simplify each expression completely.\n\n1. $\\log_2 8 + \\log_2 4$\n\n2. $\\log 1000 - \\log 10$\n\n3. $3\\log_5 5^2$\n\n4. $\\log_4 8 + \\log_4 2$",
+      "solution": "1. **Method 1:** Evaluate each and add: $3 + 2 = 5$\n \n **Method 2:** Combine first: $\\log_2(8 \\cdot 4) = \\log_2 32 = 5$\n\n2. $\\log 1000 - \\log 10 = \\log\\left(\\frac{1000}{10}\\right) = \\log 100 = 2$\n \n Or: $3 - 1 = 2$\n\n3. $3\\log_5 5^2 = 3 \\cdot 2 = 6$\n \n Or: $\\log_5(5^2)^3 = \\log_5 5^6 = 6$\n\n4. $\\log_4 8 + \\log_4 2 = \\log_4(8 \\cdot 2) = \\log_4 16 = 2$\n \n (since $4^2 = 16$)"
+    },
+    {
+      "type": "example",
+      "id": "example-5.9",
+      "number": "5.9",
+      "title": "Evaluating logarithms without a calculator",
+      "problem": "Given that $\\log 2 \\approx 0.301$ and $\\log 3 \\approx 0.477$, find:\n\n1. $\\log 6$\n\n2. $\\log 1.5$\n\n3. $\\log 8$\n\n4. $\\log 12$",
+      "solution": "We use the properties to express each number in terms of 2 and 3.\n\n1. $\\log 6 = \\log(2 \\cdot 3) = \\log 2 + \\log 3 \\approx 0.301 + 0.477 = \\boxed{0.778}$\n\n2. $\\log 1.5 = \\log\\frac{3}{2} = \\log 3 - \\log 2 \\approx 0.477 - 0.301 = \\boxed{0.176}$\n\n3. $\\log 8 = \\log 2^3 = 3\\log 2 \\approx 3(0.301) = \\boxed{0.903}$\n\n4. $\\log 12 = \\log(4 \\cdot 3) = \\log 2^2 + \\log 3 = 2\\log 2 + \\log 3$\n \n $\\approx 2(0.301) + 0.477 = 0.602 + 0.477 = \\boxed{1.079}$"
+    },
+    {
+      "type": "paragraph",
+      "text": "This example illustrates how logarithm tables worked historically. By \nknowing just a few key values, one could compute logarithms of many \nother numbers."
+    },
+    {
+      "type": "historical",
+      "id": "historical-5.2",
+      "number": null,
+      "title": "Logarithm Tables and Slide Rules",
+      "content": "For over 300 years (1614–1970s), logarithm tables were essential tools \nfor scientists, engineers, and navigators. A typical table listed \n$\\log x$ for $x$ from 1 to 10 in small increments. To multiply two \nnumbers, you'd look up their logarithms, add them, then find the \nantilogarithm of the result.\n\nThe slide rule, invented shortly after logarithms, encoded these tables \non sliding scales. By aligning numbers on different scales, one could \nmultiply, divide, and compute powers and roots—all without batteries. \nEvery engineer carried a slide rule until electronic calculators made \nthem obsolete in the 1970s."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Common Mistakes to Avoid"
+    },
+    {
+      "type": "warning",
+      "id": "warning-5.2",
+      "number": null,
+      "title": "Logarithm Pitfalls",
+      "content": "The following are **NOT** valid properties:\n\n- $\\log_b(M + N) \\neq \\log_b M + \\log_b N$ (no \"sum rule\"!)\n\n- $\\log_b(M - N) \\neq \\log_b M - \\log_b N$ (no \"difference rule\"!)\n\n- $\\dfrac{\\log_b M}{\\log_b N} \\neq \\log_b\\left(\\dfrac{M}{N}\\right)$ (quotient rule works the other way)\n\n- $(\\log_b M)^n \\neq n \\log_b M$ (power rule applies to the argument, not the result)\n\nRemember: The product rule turns a product *inside* the logarithm \ninto a sum *outside*. It doesn't work in reverse!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 119:160",
+      "text": "All your words are true; all your \nrighteous laws are eternal."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 16:11",
+      "text": "Honest scales and balances belong to \nthe Lord; all the weights in the bag are of his making."
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 12:4--6",
+      "text": "There are different kinds of \ngifts, but the same Spirit distributes them. There are different kinds \nof service, but the same Lord."
+    }
+  ]
+}

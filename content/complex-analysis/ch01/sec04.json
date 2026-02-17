@@ -1,0 +1,148 @@
+{
+  "id": "complex-analysis-ch01-sec04",
+  "title": "Topology of the Complex Plane",
+  "chapter": 1,
+  "section": 4,
+  "book": "complex-analysis",
+  "epigraph": {
+    "text": "Ask, and it will be given to you; seek, and you will find; knock, and it will be opened to you.",
+    "reference": "Matthew 7:7",
+    "quote": "The essence of mathematics lies in its freedom.",
+    "quoteAuthor": "Georg Cantor"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Before developing calculus in the complex plane, we need the language of \ntopology: open sets, closed sets, connectedness, and compactness. These \nconcepts, while abstract, are essential for rigorous analysis."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Open and Closed Sets"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.1",
+      "number": "1.1",
+      "title": "Neighborhoods and Interior Points",
+      "content": "An **open disk** (or **neighborhood**) centered \nat $z_0$ with radius $r > 0$ is\n\\[\n D(z_0, r) = \\{z \\in \\C : |z - z_0| < r\\}.\n\\]\nA point $z_0$ is an **interior point** of a set \n$S$ if some disk centered at $z_0$ is contained entirely in $S$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.2",
+      "number": "1.2",
+      "title": "Open and Closed Sets",
+      "content": "A set $S \\subset \\C$ is **open** if every point of $S$ \nis an interior point. A set $S$ is **closed** if its \ncomplement $\\C \\setminus S$ is open."
+    },
+    {
+      "type": "example",
+      "id": "example-1.1",
+      "number": "1.1",
+      "title": "Open and closed sets",
+      "problem": "- The open disk $D(0, 1) = \\{z : |z| < 1\\}$ is open.\n\n- The closed disk $\\overline{D}(0, 1) = \\{z : |z| \\leq 1\\}$ is closed.\n\n- The punctured disk $\\{z : 0 < |z| < 1\\}$ is open.\n\n- The set $\\{z : |z| < 1\\} \\cup \\{1\\}$ is neither open nor closed.\n\n- $\\C$ and $\\emptyset$ are both open and closed.",
+      "solution": ""
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.3",
+      "number": "1.3",
+      "title": "Boundary",
+      "content": "A point $z_0$ is a **boundary point** of $S$ if \nevery disk centered at $z_0$ contains points in $S$ and points not in $S$. \nThe set of all boundary points is the **boundary** of \n$S$, denoted $\\partial S$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The boundary of the disk $D(0, 1)$ is the circle $\\{z : |z| = 1\\}$. A set \nis closed if and only if it contains all its boundary points."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Connected Sets"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.4",
+      "number": "1.4",
+      "title": "Connectedness",
+      "content": "An open set $S$ is **connected** if any two points \nin $S$ can be joined by a polygonal path lying entirely within $S$. A \nconnected open set is called a **domain** or **region**."
+    },
+    {
+      "type": "example",
+      "id": "example-1.2",
+      "number": "1.2",
+      "title": "Connected and disconnected sets",
+      "problem": "- Any open disk is connected.\n\n- The set $\\{z : 1 < |z| < 2\\}$ (an annulus) is connected.\n\n- The set $\\{z : |z| < 1\\} \\cup \\{z : |z - 3| < 1\\}$ is not connected.",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "The concept of connectedness will be crucial when we study analytic \ncontinuation and the behavior of functions on domains."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Bounded Sets and Compactness"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.5",
+      "number": "1.5",
+      "title": "Bounded Sets",
+      "content": "A set $S$ is **bounded** if there exists $M > 0$ \nsuch that $|z| \\leq M$ for all $z \\in S$. Equivalently, $S$ is contained \nin some disk."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.6",
+      "number": "1.6",
+      "title": "Compact Sets",
+      "content": "A set $S \\subset \\C$ is **compact** if it is closed \nand bounded."
+    },
+    {
+      "type": "paragraph",
+      "text": "The Heine-Borel theorem (from real analysis) extends to $\\C$: a set is \ncompact if and only if every open cover has a finite subcover."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.1",
+      "number": "1.1",
+      "title": "Properties of Compact Sets",
+      "content": "Let $K \\subset \\C$ be compact.\n\n1. Every sequence in $K$ has a convergent subsequence with limit in $K$.\n\n2. If $f: K \\to \\C$ is continuous, then $f$ is bounded and attains its \n maximum and minimum modulus.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Extended Complex Plane"
+    },
+    {
+      "type": "paragraph",
+      "text": "It is often useful to adjoin a \"point at infinity\" to the complex plane."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.7",
+      "number": "1.7",
+      "title": "Riemann Sphere",
+      "content": "The **extended complex plane** (or \n**Riemann sphere**) is \n$\\hat{\\C} = \\C \\cup \\{\\infty\\}$, where $\\infty$ is a single point \nrepresenting \"infinity in all directions.\""
+    },
+    {
+      "type": "paragraph",
+      "text": "The Riemann sphere can be visualized via stereographic projection: place a \nunit sphere on the complex plane with its south pole at the origin. For each \npoint $z \\in \\C$, draw a line from the north pole through $z$; it intersects \nthe sphere at a unique point. The north pole itself corresponds to $\\infty$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Under this identification, the Riemann sphere is topologically a sphere, \nand \"going to infinity\" becomes approaching the north pole."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 4:12",
+      "text": "A threefold cord is not quickly broken."
+    },
+    {
+      "type": "quote",
+      "author": "Felix Hausdorff",
+      "text": "A set is a Many that allows itself to be \nthought of as a One."
+    }
+  ]
+}

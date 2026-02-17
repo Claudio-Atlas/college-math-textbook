@@ -1,0 +1,73 @@
+{
+  "id": "linear-algebra-ch05-sec02",
+  "title": "The Matrix of a Linear Transformation",
+  "chapter": 5,
+  "section": 2,
+  "book": "linear-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "{In the beginning was the Word.}{John 1:1}\n {Mathematics, rightly viewed, possesses not only truth, but supreme beauty.}{— Bertrand Russell}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Every linear transformation from $\\R^n$ to $\\R^m$ can be represented \nby an $m \\times n$ matrix."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "From Transformation to Matrix"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Matrix Representation",
+      "content": "Let $T: \\R^n \\to \\R^m$ be a linear transformation. Then there exists \na unique $m \\times n$ matrix $A$ such that $T(\\vect{x}) = A\\vect{x}$ \nfor all $\\vect{x} \\in \\R^n$.\n\nThe matrix $A$ is called the **standard matrix** \nof $T$, and its columns are $T(\\vect{e}_1), T(\\vect{e}_2), \\ldots, T(\\vect{e}_n)$:\n\\[\nA = \\begin{bmatrix} T(\\vect{e}_1) & T(\\vect{e}_2) & \\cdots & T(\\vect{e}_n) \\end{bmatrix}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "For any $\\vect{x} = x_1\\vect{e}_1 + \\cdots + x_n\\vect{e}_n$:\n\\[\nT(\\vect{x}) = x_1T(\\vect{e}_1) + \\cdots + x_nT(\\vect{e}_n) = A\\vect{x}\n\\]\nwhere $A$ has columns $T(\\vect{e}_i)$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Finding the standard matrix",
+      "problem": "Find the standard matrix of $T: \\R^2 \\to \\R^3$ defined by \n$T(x, y) = (x + 2y, 3x - y, x)$.",
+      "solution": "\\[\nT(\\vect{e}_1) = T(1, 0) = (1, 3, 1), \\quad T(\\vect{e}_2) = T(0, 1) = (2, -1, 0)\n\\]\n\\[\nA = \\begin{bmatrix} 1 & 2 \\\\ 3 & -1 \\\\ 1 & 0 \\end{bmatrix}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "General Vector Spaces"
+    },
+    {
+      "type": "paragraph",
+      "text": "For linear transformations between general finite-dimensional vector \nspaces, we need to choose bases."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Matrix Relative to Bases",
+      "content": "Let $T: V \\to W$ be linear, $\\mathcal{B}$ a basis for $V$, and \n$\\mathcal{C}$ a basis for $W$. The **matrix of $T$ relative to \n$\\mathcal{B}$ and $\\mathcal{C}$**, denoted $[T]_{\\mathcal{C} \\leftarrow \\mathcal{B}}$, \nis the matrix whose $j$-th column is $[T(\\vect{b}_j)]_\\mathcal{C}$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Matrix-Vector Correspondence",
+      "content": "$[T(\\vect{v})]_\\mathcal{C} = [T]_{\\mathcal{C} \\leftarrow \\mathcal{B}} [\\vect{v}]_\\mathcal{B}$",
+      "label": "Theorem"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Colossians 1:17",
+      "text": "In him all things hold together."
+    }
+  ]
+}

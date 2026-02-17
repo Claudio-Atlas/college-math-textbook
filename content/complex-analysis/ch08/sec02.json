@@ -1,0 +1,109 @@
+{
+  "id": "complex-analysis-ch08-sec02",
+  "title": "Möbius Transformations",
+  "chapter": 8,
+  "section": 2,
+  "book": "complex-analysis",
+  "epigraph": {
+    "text": "Better is a little with righteousness than great revenues with injustice.",
+    "reference": "Proverbs 16:8",
+    "quote": "Möbius transformations are the simplest conformal maps that are not affine.",
+    "quoteAuthor": "August Ferdinand Möbius"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Möbius transformations (also called linear fractional transformations) \nform a rich family of conformal maps with elegant algebraic and geometric \nproperties."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition"
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.1",
+      "number": "8.1",
+      "title": "Möbius Transformation",
+      "content": "A **Möbius transformation** is a \nfunction of the form\n\\[\n T(z) = \\frac{az + b}{cz + d}, \\quad \\text{where } ad - bc \\neq 0.\n\\]\nThe condition $ad - bc \\neq 0$ ensures $T$ is not constant."
+    },
+    {
+      "type": "paragraph",
+      "text": "We extend $T$ to the Riemann sphere $\\hat{\\C}$ by defining \n$T(-d/c) = \\infty$ and $T(\\infty) = a/c$ (or $\\infty$ if $c = 0$)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Properties of Möbius Transformations",
+      "content": "1. Möbius transformations form a group under composition.\n\n2. Every Möbius transformation is conformal on $\\hat{\\C}$.\n\n3. Möbius transformations map circles and lines to circles and lines.\n\n4. Given any two sets of three distinct points $\\{z_1, z_2, z_3\\}$ \n and $\\{w_1, w_2, w_3\\}$, there exists a unique Möbius \n transformation with $T(z_k) = w_k$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Every Möbius transformation is a composition of translations $z \\mapsto z + b$, \ndilations $z \\mapsto az$ ($a \\neq 0$), and inversions $z \\mapsto 1/z$.\n\nTranslations and dilations obviously preserve circles and lines. For \ninversion: the equation $|z - a| = r$ (a circle) transforms under \n$w = 1/z$ to another circle or line, as can be verified algebraically."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Cross-Ratio"
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.2",
+      "number": "8.2",
+      "title": "Cross-Ratio",
+      "content": "The **cross-ratio** of four distinct points \n$z_1, z_2, z_3, z_4$ is\n\\[\n (z_1, z_2; z_3, z_4) = \\frac{(z_1 - z_3)(z_2 - z_4)}{(z_1 - z_4)(z_2 - z_3)}.\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.2",
+      "number": "8.2",
+      "title": "Cross-Ratio is Preserved",
+      "content": "Möbius transformations preserve cross-ratios:\n\\[\n (T(z_1), T(z_2); T(z_3), T(z_4)) = (z_1, z_2; z_3, z_4).\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This invariant is key to constructing Möbius transformations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Special Mappings"
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Upper half-plane to unit disk",
+      "problem": "The Möbius transformation\n\\[\n T(z) = \\frac{z - i}{z + i}\n\\]\nmaps the upper half-plane $\\{\\im(z) > 0\\}$ conformally onto the unit \ndisk $\\{|w| < 1\\}$, with $T(i) = 0$ and $T(\\infty) = 1$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "Disk automorphisms",
+      "problem": "All conformal automorphisms of the unit disk have the form\n\\[\n T(z) = e^{i\\theta} \\frac{z - a}{1 - \\bar{a}z}, \\quad |a| < 1, \\theta \\in \\R.\n\\]",
+      "solution": ""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 8:27",
+      "text": "When he established the heavens, I was \nthere; when he drew a circle on the face of the deep."
+    },
+    {
+      "type": "quote",
+      "author": "August Ferdinand Möbius",
+      "text": "These transformations preserve \nthe fundamental structure of the sphere."
+    }
+  ]
+}

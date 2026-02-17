@@ -1,0 +1,140 @@
+{
+  "id": "algebra-2-ch02-sec04",
+  "title": "Solving Systems by Elimination",
+  "chapter": 2,
+  "section": 4,
+  "book": "algebra-2",
+  "epigraph": {
+    "text": "The Lord brings the counsel of the nations to nothing; \nhe frustrates the plans of the peoples.",
+    "reference": "Psalm 33:10"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The substitution method works well when one variable is easily isolated. \nBut what if neither equation lends itself to easy isolation? The \n**elimination method** (also called the *addition method*) \noffers another powerful approach: we add or subtract equations to \neliminate a variable entirely."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Elimination Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "The key insight is that if $a = b$, then adding the same quantity to both \nsides preserves equality. If we have two equations that are both true, \nwe can add them together to create a new true equation."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-2.4",
+      "number": null,
+      "title": "Solving Systems by Elimination",
+      "content": "1. Arrange both equations in standard form: $Ax + By = C$\n\n2. If necessary, multiply one or both equations by constants so that \n one variable has opposite coefficients\n\n3. Add the equations to eliminate that variable\n\n4. Solve for the remaining variable\n\n5. Substitute back to find the other variable\n\n6. Check in both original equations"
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Opposite coefficients ready",
+      "problem": "Solve the system:\n$$\n x + y &= 7 \\\\\n x - y &= 3\n$$",
+      "solution": "Notice that $y$ and $-y$ are opposites. Add the equations:\n$$\n x + y &= 7 \\\\\n x - y &= 3 \\\\\n \\hline\n 2x &= 10\n$$\n\nSo $x = 5$.\n\nSubstitute into the first equation: $5 + y = 7$, giving $y = 2$.\n\nThe solution is $(5, 2)$.\n\n**Check:** $5 + 2 = 7$ and $5 - 2 = 3$"
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Multiplying one equation",
+      "problem": "Solve the system:\n$$\n 2x + 3y &= 16 \\\\\n 4x + y &= 14\n$$",
+      "solution": "To eliminate $y$, we need opposite coefficients. Multiply the second \nequation by $-3$:\n$$\n 2x + 3y &= 16 \\\\\n -12x - 3y &= -42\n$$\n\nAdd:\n$$\n 2x + 3y &= 16 \\\\\n -12x - 3y &= -42 \\\\\n \\hline\n -10x &= -26\n$$\n\nSo $x = \\frac{26}{10} = \\frac{13}{5}$.\n\nSubstitute into the second original equation:\n\\[\n 4\\left(\\frac{13}{5}\\right) + y = 14\n\\]\n\\[\n \\frac{52}{5} + y = 14\n\\]\n\\[\n y = 14 - \\frac{52}{5} = \\frac{70 - 52}{5} = \\frac{18}{5}\n\\]\n\nThe solution is $\\left(\\frac{13}{5}, \\frac{18}{5}\\right)$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Multiplying both equations",
+      "problem": "Solve the system:\n$$\n 3x + 4y &= 10 \\\\\n 5x + 6y &= 16\n$$",
+      "solution": "Neither variable has a coefficient of $\\pm 1$. To eliminate $x$, we can \nmultiply the first equation by 5 and the second by $-3$:\n$$\n 15x + 20y &= 50 \\\\\n -15x - 18y &= -48\n$$\n\nAdd:\n$$\n 15x + 20y &= 50 \\\\\n -15x - 18y &= -48 \\\\\n \\hline\n 2y &= 2\n$$\n\nSo $y = 1$.\n\nSubstitute into the first original equation:\n\\[\n 3x + 4(1) = 10 \\implies 3x = 6 \\implies x = 2\n\\]\n\nThe solution is $(2, 1)$.\n\n**Check:** $3(2) + 4(1) = 6 + 4 = 10$ \n\n$5(2) + 6(1) = 10 + 6 = 16$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Special Cases"
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "No solution (inconsistent)",
+      "problem": "Solve the system:\n$$\n 3x - 2y &= 6 \\\\\n -6x + 4y &= 5\n$$",
+      "solution": "Multiply the first equation by 2:\n$$\n 6x - 4y &= 12 \\\\\n -6x + 4y &= 5\n$$\n\nAdd:\n$$\n 6x - 4y &= 12 \\\\\n -6x + 4y &= 5 \\\\\n \\hline\n 0 &= 17 \\quad \\text{FALSE!}\n$$\n\nThe contradiction indicates **no solution**. The lines are parallel."
+    },
+    {
+      "type": "example",
+      "id": "example-2.5",
+      "number": "2.5",
+      "title": "Infinitely many solutions (dependent)",
+      "problem": "Solve the system:\n$$\n 2x + 5y &= 10 \\\\\n 4x + 10y &= 20\n$$",
+      "solution": "Multiply the first equation by $-2$:\n$$\n -4x - 10y &= -20 \\\\\n 4x + 10y &= 20\n$$\n\nAdd:\n$$\n -4x - 10y &= -20 \\\\\n 4x + 10y &= 20 \\\\\n \\hline\n 0 &= 0 \\quad \\text{Always TRUE!}\n$$\n\nThe identity indicates **infinitely many solutions**. The equations \nrepresent the same line.\n\nSolutions: $\\left\\{(x, y) : 2x + 5y = 10\\right\\}$ or parametrically \n$(t, \\frac{10-2t}{5})$ for any real $t$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Elimination vs. Substitution"
+    },
+    {
+      "type": "paragraph",
+      "text": "When should you use each method?"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Use substitution when:** One equation is already solved \n for a variable, or one variable has coefficient 1 or $-1$",
+        "**Use elimination when:** Both equations are in standard form, \n or coefficients align nicely for elimination",
+        "**Either works:** When coefficients are similar, personal \n preference may guide your choice"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-2.6",
+      "number": "2.6",
+      "title": "Choosing a method",
+      "problem": "For each system, decide which method seems more efficient.\n\n(a) $y = 4x - 1$ and $3x + 2y = 8$\n\n(b) $5x - 3y = 12$ and $2x + 3y = 9$\n\n(c) $\\frac{x}{2} + y = 3$ and $x - \\frac{y}{3} = 1$",
+      "solution": "(a) **Substitution** — the first equation is already solved for $y$.\n\n(b) **Elimination** — the $y$ terms are already opposites ($-3y$ and $+3y$).\n\n(c) **Either** — but first clear fractions by multiplying. Equation 1 \nby 2: $x + 2y = 6$. Equation 2 by 3: $3x - y = 3$. Now elimination works well."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications"
+    },
+    {
+      "type": "example",
+      "id": "example-2.7",
+      "number": "2.7",
+      "title": "Distance-rate-time problem",
+      "problem": "A plane flew 600 miles with a tailwind in 2 hours. The return trip against \nthe wind took 3 hours. Find the speed of the plane in still air and the \nspeed of the wind.",
+      "solution": "Let $p$ = plane's speed in still air, $w$ = wind speed.\n\nWith tailwind: effective speed $= p + w$, so $(p + w) \\cdot 2 = 600$\n\nAgainst wind: effective speed $= p - w$, so $(p - w) \\cdot 3 = 600$\n\n**System:**\n$$\n p + w &= 300 \\\\\n p - w &= 200\n$$\n\nAdd the equations:\n\\[\n 2p = 500 \\implies p = 250\n\\]\n\nSubstitute: $250 + w = 300 \\implies w = 50$\n\n**Answer:** The plane's speed is 250 mph; the wind speed is 50 mph."
+    },
+    {
+      "type": "example",
+      "id": "example-2.8",
+      "number": "2.8",
+      "title": "Supply and demand",
+      "problem": "The demand equation for a product is $p = 100 - 2q$ and the supply \nequation is $p = 20 + 3q$, where $p$ is price and $q$ is quantity. Find \nthe equilibrium price and quantity.",
+      "solution": "At equilibrium, supply equals demand, so both equations hold with the \nsame $p$ and $q$.\n\n**System:**\n$$\n p + 2q &= 100 \\\\\n p - 3q &= 20\n$$\n\nSubtract the second from the first (or multiply the second by $-1$ and add):\n\\[\n 5q = 80 \\implies q = 16\n\\]\n\nSubstitute: $p = 100 - 2(16) = 100 - 32 = 68$\n\n**Answer:** Equilibrium quantity is 16 units at price \\$68."
+    },
+    {
+      "type": "example",
+      "id": "example-2.9",
+      "number": "2.9",
+      "title": "Nutrition problem",
+      "problem": "A dietitian wants to create a meal with exactly 40 grams of protein and \n50 grams of carbohydrates. Food A has 8g protein and 5g carbs per serving. \nFood B has 4g protein and 10g carbs per serving. How many servings of each?",
+      "solution": "Let $a$ = servings of Food A, $b$ = servings of Food B.\n\n**System:**\n$$\n 8a + 4b &= 40 \\quad \\text{(protein)} \\\\\n 5a + 10b &= 50 \\quad \\text{(carbs)}\n$$\n\nSimplify each equation:\n$$\n 2a + b &= 10 \\\\\n a + 2b &= 10\n$$\n\nMultiply the second by $-2$:\n$$\n 2a + b &= 10 \\\\\n -2a - 4b &= -20 \\\\\n \\hline\n -3b &= -10\n$$\n\nSo $b = \\frac{10}{3} \\approx 3.33$ servings.\n\nThen $a = 10 - 2\\left(\\frac{10}{3}\\right) = 10 - \\frac{20}{3} = \\frac{10}{3}$ servings.\n\n**Answer:** $\\frac{10}{3}$ servings each (about 3.33 servings)."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Colossians 3:2",
+      "text": "Set your minds on things that are above, \nnot on things that are on earth."
+    }
+  ]
+}

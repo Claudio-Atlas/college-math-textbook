@@ -1,0 +1,375 @@
+{
+  "id": "precalculus-ch07-sec03",
+  "title": "Double-Angle and Half-Angle Formulas",
+  "chapter": 7,
+  "section": 3,
+  "book": "precalculus",
+  "objectives": [
+    "Derive double-angle formulas from the sum formulas",
+    "Apply double-angle formulas in simplification and computation",
+    "Derive half-angle formulas from double-angle formulas",
+    "Determine correct signs in half-angle formulas using quadrant analysis",
+    "Use power-reducing formulas to simplify expressions"
+  ],
+  "content": [
+    {
+      "type": "connection",
+      "id": "connection-7.3",
+      "number": null,
+      "title": "Doubling and Halving",
+      "content": "In the parable of the talents (Matthew 25:14-30), the servants who \ninvested their money saw it double. One received five talents and \ngained five more; another received two and gained two more. There's \nsomething mathematically elegant about doubling—and something \ncorrespondingly profound about halving. In this section, we explore \nhow the trigonometric functions behave when angles are doubled or \nhalved. These aren't simple operations: $\\sin 2\\theta \\neq 2\\sin\\theta$. \nInstead, we discover intricate relationships that reveal deeper \nstructure. Similarly, spiritual growth isn't always linear—sometimes \na single insight doubles our understanding, while patient reflection \nhelps us discern finer distinctions."
+    },
+    {
+      "type": "paragraph",
+      "text": "Having developed the sum formulas, we can now derive formulas for special \ncases: what happens when both angles are the same ($\\sin(\\theta + \\theta)$), \nand what happens when we work backward to find functions of half an angle."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Double-Angle Formulas"
+    },
+    {
+      "type": "paragraph",
+      "text": "The double-angle formulas arise naturally from the sum formulas when \nwe set $\\alpha = \\beta = \\theta$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Sine Double-Angle:**"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$\\sin 2\\theta &= \\sin(\\theta + \\theta) \\\\\n&= \\sin\\theta\\cos\\theta + \\cos\\theta\\sin\\theta \\\\\n&= 2\\sin\\theta\\cos\\theta$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Cosine Double-Angle:**"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$\\cos 2\\theta &= \\cos(\\theta + \\theta) \\\\\n&= \\cos\\theta\\cos\\theta - \\sin\\theta\\sin\\theta \\\\\n&= \\cos^2\\theta - \\sin^2\\theta$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The cosine double-angle formula can be rewritten using the Pythagorean \nidentity. Since $\\sin^2\\theta + \\cos^2\\theta = 1$:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$\\cos 2\\theta &= \\cos^2\\theta - \\sin^2\\theta \\\\\n&= (1 - \\sin^2\\theta) - \\sin^2\\theta = 1 - 2\\sin^2\\theta \\\\\n&= \\cos^2\\theta - (1 - \\cos^2\\theta) = 2\\cos^2\\theta - 1$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Tangent Double-Angle:**"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$\\tan 2\\theta &= \\tan(\\theta + \\theta) = \\frac{\\tan\\theta + \\tan\\theta}{1 - \\tan\\theta\\tan\\theta} \\\\\n&= \\frac{2\\tan\\theta}{1 - \\tan^2\\theta}$$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Double-Angle Formulas",
+      "content": "For any angle $\\theta$:\n$$\n\\sin 2\\theta &= 2\\sin\\theta\\cos\\theta \\\\[6pt]\n\\cos 2\\theta &= \\cos^2\\theta - \\sin^2\\theta \\\\\n&= 1 - 2\\sin^2\\theta \\\\\n&= 2\\cos^2\\theta - 1 \\\\[6pt]\n\\tan 2\\theta &= \\frac{2\\tan\\theta}{1 - \\tan^2\\theta}\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-7.3",
+      "number": null,
+      "title": "Common Error",
+      "content": "$\\sin 2\\theta \\neq 2\\sin\\theta$. The factor of 2 \"distributes\" differently \nin trigonometry than in algebra. For example, $\\sin 60° = \\frac{\\sqrt{3}}{2}$, \nbut $2\\sin 30° = 2 \\cdot \\frac{1}{2} = 1$. These are not equal!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applying Double-Angle Formulas"
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Computing double-angle values",
+      "problem": "If $\\sin\\theta = \\dfrac{3}{5}$ and $\\theta$ is in Quadrant I, find \n$\\sin 2\\theta$, $\\cos 2\\theta$, and $\\tan 2\\theta$.",
+      "solution": "First, find $\\cos\\theta$. Since $\\theta$ is in QI, cosine is positive:\n\\[\n\\cos\\theta = \\sqrt{1 - \\sin^2\\theta} = \\sqrt{1 - \\frac{9}{25}} = \\sqrt{\\frac{16}{25}} = \\frac{4}{5}\n\\]\n\nNow apply the double-angle formulas:\nalign*\n 2 &= 2 = 2 $\\frac{3}{5}$ $\\frac{4}{5}$ = $\\frac{24}{25}$ \\\\[6pt]\n\\cos 2\\theta &= \\cos^2\\theta - \\sin^2\\theta = \\frac{16}{25} - \\frac{9}{25} = \\frac{7}{25} \\\\[6pt]\n\\tan 2\\theta &= \\frac{\\sin 2\\theta}{\\cos 2\\theta} = \\frac{24/25}{7/25} = \\frac{24}{7}\n\\end{align*}\n\nWe can verify using the tangent formula directly. First, $\\tan\\theta = \\frac{3/5}{4/5} = \\frac{3}{4}$.\n\\[\n\\tan 2\\theta = \\frac{2\\tan\\theta}{1 - \\tan^2\\theta} = \\frac{2 \\cdot \\frac{3}{4}}{1 - \\frac{9}{16}} = \\frac{\\frac{3}{2}}{\\frac{7}{16}} = \\frac{3}{2} \\cdot \\frac{16}{7} = \\frac{24}{7} \\quad \\checkmark\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Double angle in Quadrant III",
+      "problem": "If $\\cos\\theta = -\\dfrac{5}{13}$ and $\\theta$ is in Quadrant III, find \n$\\sin 2\\theta$ and $\\cos 2\\theta$. In what quadrant is $2\\theta$?",
+      "solution": "Since $\\theta$ is in QIII, sine is negative:\n\\[\n\\sin\\theta = -\\sqrt{1 - \\cos^2\\theta} = -\\sqrt{1 - \\frac{25}{169}} = -\\sqrt{\\frac{144}{169}} = -\\frac{12}{13}\n\\]\n\nApplying the formulas:\n$$\n\\sin 2\\theta &= 2\\sin\\theta\\cos\\theta = 2\\left(-\\frac{12}{13}\\right)\\left(-\\frac{5}{13}\\right) = \\frac{120}{169} \\\\[6pt]\n\\cos 2\\theta &= \\cos^2\\theta - \\sin^2\\theta = \\frac{25}{169} - \\frac{144}{169} = -\\frac{119}{169}\n$$\n\nSince $\\sin 2\\theta > 0$ and $\\cos 2\\theta < 0$, the angle $2\\theta$ is in Quadrant II.\n\n**Checking the quadrant:** If $\\theta$ is in QIII, then \n$\\pi < \\theta < \\frac{3\\pi}{2}$, so $2\\pi < 2\\theta < 3\\pi$. \nThis means $2\\theta$ is between $2\\pi$ and $3\\pi$. After subtracting \n$2\\pi$, we get an angle between $0$ and $\\pi$, with cosine negative—that's QII."
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "Simplifying with double-angle formulas",
+      "problem": "Simplify: $\\cos^2\\theta - \\sin^2\\theta$",
+      "solution": "This is exactly the form of $\\cos 2\\theta$:\n\\[\n\\cos^2\\theta - \\sin^2\\theta = \\cos 2\\theta\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "Recognizing double-angle patterns",
+      "problem": "Simplify: $\\dfrac{2\\tan 3x}{1 - \\tan^2 3x}$",
+      "solution": "This matches the tangent double-angle formula with $\\theta = 3x$:\n\\[\n\\frac{2\\tan 3x}{1 - \\tan^2 3x} = \\tan(2 \\cdot 3x) = \\tan 6x\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Power-Reducing Formulas"
+    },
+    {
+      "type": "paragraph",
+      "text": "Rearranging the cosine double-angle formulas gives us formulas that \nreduce powers of sine and cosine:"
+    },
+    {
+      "type": "paragraph",
+      "text": "From $\\cos 2\\theta = 1 - 2\\sin^2\\theta$:\n\\[\n\\sin^2\\theta = \\frac{1 - \\cos 2\\theta}{2}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "From $\\cos 2\\theta = 2\\cos^2\\theta - 1$:\n\\[\n\\cos^2\\theta = \\frac{1 + \\cos 2\\theta}{2}\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "Power-Reducing Formulas",
+      "content": "$$\n\\sin^2\\theta &= \\frac{1 - \\cos 2\\theta}{2} \\\\[6pt]\n\\cos^2\\theta &= \\frac{1 + \\cos 2\\theta}{2} \\\\[6pt]\n\\tan^2\\theta &= \\frac{1 - \\cos 2\\theta}{1 + \\cos 2\\theta}\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-7.5",
+      "number": "7.5",
+      "title": "Using power-reducing formulas",
+      "problem": "Rewrite $\\cos^4\\theta$ without powers greater than 1.",
+      "solution": "We apply the power-reducing formula twice:\n$$\n\\cos^4\\theta &= (\\cos^2\\theta)^2 \\\\\n&= \\left(\\frac{1 + \\cos 2\\theta}{2}\\right)^2 \\\\\n&= \\frac{1 + 2\\cos 2\\theta + \\cos^2 2\\theta}{4}\n$$\nNow we need to reduce $\\cos^2 2\\theta$:\n\\[\n\\cos^2 2\\theta = \\frac{1 + \\cos 4\\theta}{2}\n\\]\nSubstituting:\n$$\n\\cos^4\\theta &= \\frac{1 + 2\\cos 2\\theta + \\frac{1 + \\cos 4\\theta}{2}}{4} \\\\\n&= \\frac{2 + 4\\cos 2\\theta + 1 + \\cos 4\\theta}{8} \\\\\n&= \\frac{3 + 4\\cos 2\\theta + \\cos 4\\theta}{8}\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Half-Angle Formulas"
+    },
+    {
+      "type": "paragraph",
+      "text": "The power-reducing formulas, with a change of variable, become \nhalf-angle formulas. If we let $\\theta = \\frac{\\alpha}{2}$, then \n$2\\theta = \\alpha$, and:\n\\[\n\\sin^2\\frac{\\alpha}{2} = \\frac{1 - \\cos\\alpha}{2}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Taking square roots:\n\\[\n\\sin\\frac{\\alpha}{2} = \\pm\\sqrt{\\frac{1 - \\cos\\alpha}{2}}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The $\\pm$ sign is determined by the quadrant in which $\\frac{\\alpha}{2}$ lies."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.3",
+      "number": "7.3",
+      "title": "Half-Angle Formulas",
+      "content": "$$\n\\sin\\frac{\\theta}{2} &= \\pm\\sqrt{\\frac{1 - \\cos\\theta}{2}} \\\\[6pt]\n\\cos\\frac{\\theta}{2} &= \\pm\\sqrt{\\frac{1 + \\cos\\theta}{2}} \\\\[6pt]\n\\tan\\frac{\\theta}{2} &= \\frac{1 - \\cos\\theta}{\\sin\\theta} = \\frac{\\sin\\theta}{1 + \\cos\\theta}\n$$\nThe sign of the sine and cosine half-angle formulas depends on the \nquadrant in which $\\frac{\\theta}{2}$ lies.",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-7.3",
+      "number": null,
+      "title": "Determining the Sign",
+      "content": "When using the half-angle formulas for sine and cosine, you must \ndetermine the correct sign:\n\n1. Identify the interval containing $\\theta$.\n\n2. Divide by 2 to find the interval containing $\\frac{\\theta}{2}$.\n\n3. Determine which quadrant $\\frac{\\theta}{2}$ is in.\n\n4. Use ASTC to determine the sign of sine or cosine in that quadrant."
+    },
+    {
+      "type": "example",
+      "id": "example-7.6",
+      "number": "7.6",
+      "title": "Finding $\\cos 22.5°$",
+      "problem": "Find the exact value of $\\cos 22.5°$.",
+      "solution": "We note that $22.5° = \\frac{45°}{2}$, so we use the half-angle formula \nwith $\\theta = 45°$.\n\nSince $22.5°$ is in Quadrant I, cosine is positive, so we take the \npositive square root:\n$$\n\\cos 22.5° &= \\cos\\frac{45°}{2} = +\\sqrt{\\frac{1 + \\cos 45°}{2}} \\\\\n&= \\sqrt{\\frac{1 + \\frac{\\sqrt{2}}{2}}{2}} \\\\\n&= \\sqrt{\\frac{\\frac{2 + \\sqrt{2}}{2}}{2}} \\\\\n&= \\sqrt{\\frac{2 + \\sqrt{2}}{4}} \\\\\n&= \\frac{\\sqrt{2 + \\sqrt{2}}}{2}\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.7",
+      "number": "7.7",
+      "title": "Finding $\\sin 15°$",
+      "problem": "Find the exact value of $\\sin 15°$ using the half-angle formula.",
+      "solution": "Since $15° = \\frac{30°}{2}$ and $15°$ is in QI (sine positive):\n$$\n\\sin 15° &= +\\sqrt{\\frac{1 - \\cos 30°}{2}} \\\\\n&= \\sqrt{\\frac{1 - \\frac{\\sqrt{3}}{2}}{2}} \\\\\n&= \\sqrt{\\frac{\\frac{2 - \\sqrt{3}}{2}}{2}} \\\\\n&= \\sqrt{\\frac{2 - \\sqrt{3}}{4}} \\\\\n&= \\frac{\\sqrt{2 - \\sqrt{3}}}{2}\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.8",
+      "number": "7.8",
+      "title": "Finding $\\tan\\frac{\\pi}{8}$",
+      "problem": "Find the exact value of $\\tan\\dfrac{\\pi}{8}$.",
+      "solution": "We use the tangent half-angle formula with $\\theta = \\frac{\\pi}{4}$:\n\\[\n\\tan\\frac{\\pi}{8} = \\tan\\frac{\\pi/4}{2} = \\frac{1 - \\cos\\frac{\\pi}{4}}{\\sin\\frac{\\pi}{4}}\n= \\frac{1 - \\frac{\\sqrt{2}}{2}}{\\frac{\\sqrt{2}}{2}}\n\\]\nSimplifying:\n\\[\n= \\frac{\\frac{2 - \\sqrt{2}}{2}}{\\frac{\\sqrt{2}}{2}} = \\frac{2 - \\sqrt{2}}{\\sqrt{2}}\n= \\frac{(2 - \\sqrt{2})\\sqrt{2}}{2} = \\frac{2\\sqrt{2} - 2}{2} = \\sqrt{2} - 1\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.9",
+      "number": "7.9",
+      "title": "Half-angle with sign determination",
+      "problem": "If $\\cos\\theta = -\\dfrac{4}{5}$ and $\\pi < \\theta < \\frac{3\\pi}{2}$, \nfind $\\sin\\dfrac{\\theta}{2}$ and $\\cos\\dfrac{\\theta}{2}$.",
+      "solution": "First, determine the quadrant of $\\frac{\\theta}{2}$. Since $\\pi < \\theta < \\frac{3\\pi}{2}$:\n\\[\n\\frac{\\pi}{2} < \\frac{\\theta}{2} < \\frac{3\\pi}{4}\n\\]\nThis means $\\frac{\\theta}{2}$ is in Quadrant II, where sine is positive \nand cosine is negative.\n\n$$\n\\sin\\frac{\\theta}{2} &= +\\sqrt{\\frac{1 - \\cos\\theta}{2}} = +\\sqrt{\\frac{1 - (-\\frac{4}{5})}{2}} \n= +\\sqrt{\\frac{1 + \\frac{4}{5}}{2}} = +\\sqrt{\\frac{9/5}{2}} = +\\sqrt{\\frac{9}{10}} = \\frac{3}{\\sqrt{10}} = \\frac{3\\sqrt{10}}{10} \\\\[6pt]\n\\cos\\frac{\\theta}{2} &= -\\sqrt{\\frac{1 + \\cos\\theta}{2}} = -\\sqrt{\\frac{1 + (-\\frac{4}{5})}{2}} \n= -\\sqrt{\\frac{1/5}{2}} = -\\sqrt{\\frac{1}{10}} = -\\frac{1}{\\sqrt{10}} = -\\frac{\\sqrt{10}}{10}\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Verifying Identities with Double and Half Angles"
+    },
+    {
+      "type": "example",
+      "id": "example-7.10",
+      "number": "7.10",
+      "title": "Simplifying with double-angle",
+      "problem": "Simplify: $\\dfrac{1 - \\cos 2x}{\\sin 2x}$",
+      "solution": "We use the identities $1 - \\cos 2x = 2\\sin^2 x$ and $\\sin 2x = 2\\sin x\\cos x$:\n$$\n\\frac{1 - \\cos 2x}{\\sin 2x} &= \\frac{2\\sin^2 x}{2\\sin x\\cos x} \\\\\n&= \\frac{\\sin x}{\\cos x} \\\\\n&= \\tan x\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.11",
+      "number": "7.11",
+      "title": "A double-angle identity",
+      "problem": "Verify: $\\dfrac{\\sin 2\\theta}{1 + \\cos 2\\theta} = \\tan\\theta$",
+      "solution": "Using $\\sin 2\\theta = 2\\sin\\theta\\cos\\theta$ and $1 + \\cos 2\\theta = 2\\cos^2\\theta$:\n$$\n\\frac{\\sin 2\\theta}{1 + \\cos 2\\theta} &= \\frac{2\\sin\\theta\\cos\\theta}{2\\cos^2\\theta} \\\\\n&= \\frac{\\sin\\theta}{\\cos\\theta} \\\\\n&= \\tan\\theta \\quad \\checkmark\n$$"
+    },
+    {
+      "type": "remark",
+      "id": "remark-7.3",
+      "number": null,
+      "title": "Multiple Representations",
+      "content": "The cosine double-angle formula has three equivalent forms: \n$\\cos^2\\theta - \\sin^2\\theta$, $2\\cos^2\\theta - 1$, and $1 - 2\\sin^2\\theta$. \nEach says the same thing differently. This multiplicity of representations \nmirrors how Scripture often presents the same truth from different angles. \nThe four Gospels tell one story through four perspectives. A skilled \nmathematician (or theologian) learns when each form is most useful."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "If $\\cos\\theta = \\dfrac{4}{5}$ and $\\theta$ is in Quadrant IV, find:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\sin 2\\theta$",
+        "$\\cos 2\\theta$",
+        "$\\tan 2\\theta$",
+        "In what quadrant is $2\\theta$?"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "If $\\sin\\theta = -\\dfrac{7}{25}$ and $\\theta$ is in Quadrant III, find:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\sin 2\\theta$",
+        "$\\cos 2\\theta$",
+        "$\\tan 2\\theta$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Find the exact value using half-angle formulas:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\sin 15°$",
+        "$\\cos 15°$",
+        "$\\tan 15°$",
+        "$\\sin 67.5°$",
+        "$\\cos 67.5°$",
+        "$\\tan 22.5°$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Find the exact value:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\sin\\dfrac{\\pi}{8}$",
+        "$\\cos\\dfrac{\\pi}{8}$",
+        "$\\tan\\dfrac{\\pi}{12}$",
+        "$\\cos\\dfrac{5\\pi}{8}$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Simplify to a single trigonometric function:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$2\\sin 3x\\cos 3x$",
+        "$\\cos^2 5\\theta - \\sin^2 5\\theta$",
+        "$1 - 2\\sin^2 4t$",
+        "$2\\cos^2\\dfrac{x}{2} - 1$",
+        "$\\dfrac{2\\tan 2\\alpha}{1 - \\tan^2 2\\alpha}$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Simplify each expression:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\dfrac{\\sin 2x}{\\cos x}$",
+        "$\\dfrac{1 - \\cos 2\\theta}{2}$",
+        "$\\dfrac{\\sin 2\\theta}{2\\cos\\theta}$",
+        "$\\dfrac{1 + \\cos 2\\alpha}{2}$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "If $\\cos\\theta = \\dfrac{3}{5}$ and $\\dfrac{3\\pi}{2} < \\theta < 2\\pi$, find:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\sin\\dfrac{\\theta}{2}$",
+        "$\\cos\\dfrac{\\theta}{2}$",
+        "$\\tan\\dfrac{\\theta}{2}$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Rewrite without powers higher than 1:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\sin^2 3x$",
+        "$\\cos^4 x$",
+        "$\\sin^2 x\\cos^2 x$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Verify each identity:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\sin 2\\theta = \\dfrac{2\\tan\\theta}{1 + \\tan^2\\theta}$",
+        "$\\cos 2\\theta = \\dfrac{1 - \\tan^2\\theta}{1 + \\tan^2\\theta}$",
+        "$\\cot\\theta - \\tan\\theta = 2\\cot 2\\theta$"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "id": "number-theory-ch09-sec02",
+  "title": "RSA Cryptography",
+  "chapter": 9,
+  "section": 2,
+  "book": "number-theory",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "RSA, invented in 1977 by Rivest, Shamir, and Adleman, revolutionized \ncryptography by enabling *public-key* encryption."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Key Generation"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-9.2",
+      "number": null,
+      "title": "RSA Key Generation",
+      "content": "1. Choose two large distinct primes $p$ and $q$.\n\n2. Compute $n = pq$ and $\\phi(n) = (p-1)(q-1)$.\n\n3. Choose $e$ with $1 < e < \\phi(n)$ and $\\gcd(e, \\phi(n)) = 1$.\n\n4. Compute $d = e^{-1} \\pmod{\\phi(n)}$.\n\n5. **Public key:** $(n, e)$. **Private key:** $(n, d)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Encryption and Decryption"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-9.2",
+      "number": null,
+      "title": "RSA Encryption/Decryption",
+      "content": "**Encryption:** Given plaintext $m$ (as an integer with $0 \\leq m < n$), \ncompute ciphertext $c = m^e \\bmod n$.\n\n**Decryption:** Compute $m = c^d \\bmod n$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "RSA Correctness",
+      "content": "For any $m$ with $\\gcd(m, n) = 1$: $(m^e)^d \\equiv m \\pmod{n}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Since $ed \\equiv 1 \\pmod{\\phi(n)}$, we have $ed = 1 + k\\phi(n)$ for some $k$.\n\nBy Euler's theorem, $m^{\\phi(n)} \\equiv 1 \\pmod{n}$ (when $\\gcd(m, n) = 1$).\n\nThus $m^{ed} = m^{1+k\\phi(n)} = m \\cdot (m^{\\phi(n)})^k \\equiv m \\cdot 1^k = m$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Small RSA Example",
+      "problem": "Let $p = 5$, $q = 11$. Then $n = 55$, $\\phi(n) = 40$.\n\nChoose $e = 3$ ($\\gcd(3, 40) = 1$). Compute $d = 3^{-1} \\bmod 40 = 27$ \n(since $3 \\cdot 27 = 81 = 2 \\cdot 40 + 1$).\n\nPublic key: $(55, 3)$. Private key: $(55, 27)$.\n\nEncrypt $m = 2$: $c = 2^3 = 8$.\n\nDecrypt: $8^{27} \\bmod 55$. Using repeated squaring:\n$8^2 = 64 \\equiv 9$, $8^4 \\equiv 81 \\equiv 26$, $8^8 \\equiv 676 \\equiv 16$, \n$8^{16} \\equiv 256 \\equiv 36$.\n\n$8^{27} = 8^{16} \\cdot 8^8 \\cdot 8^2 \\cdot 8 \\equiv 36 \\cdot 16 \\cdot 9 \\cdot 8 \\pmod{55}$.\n\n$36 \\cdot 16 = 576 \\equiv 576 - 10 \\cdot 55 = 26$. $26 \\cdot 9 = 234 \\equiv 14$. \n$14 \\cdot 8 = 112 \\equiv 2$. $\\checkmark$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Security of RSA"
+    },
+    {
+      "type": "paragraph",
+      "text": "RSA's security relies on the difficulty of:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Factoring:** Given $n = pq$, finding $p$ and $q$.",
+        "**RSA problem:** Given $(n, e)$ and $c = m^e \\bmod n$, finding $m$."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "No polynomial-time algorithm for factoring is known. RSA with 2048-bit \nkeys is currently considered secure."
+    }
+  ]
+}

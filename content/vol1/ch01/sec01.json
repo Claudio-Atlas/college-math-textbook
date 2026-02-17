@@ -1,0 +1,453 @@
+{
+  "id": "vol1-ch01-sec01",
+  "title": "What Is a Function?",
+  "chapter": 1,
+  "section": 1,
+  "book": "vol1",
+  "objectives": [
+    "Define a function and explain the key requirements that distinguish functions from other relations",
+    "Evaluate functions using proper function notation, including expressions like $f(a+1)$ and difference quotients",
+    "Determine the natural domain and range of a function given by a formula",
+    "Identify and evaluate piecewise-defined functions, including the absolute value function"
+  ],
+  "devotional": {
+    "title": "Order in Time and Mathematics",
+    "scripture": "Ecclesiastes 3:1",
+    "content": "\"For everything there is a season, and a time for every matter under heaven.\" Just as God has ordained a specific time for every purpose, a function assigns a specific output to every input. There is order, intention, and reliability in this design. The vending machine always gives pretzels when you press B3\u2014not randomly, not capriciously, but faithfully. In the same way, God's creation operates with consistency and order. When we study functions, we glimpse the mathematical structure underlying a universe designed by a God who is the same yesterday, today, and forever."
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Consider a vending machine. You press a button\u2014say, **B3**\u2014and out drops a bag of pretzels. Every time you press **B3**, you get pretzels. Not chips, not a candy bar, not nothing at all: pretzels, always pretzels. Each button corresponds to exactly one product. You would never trust a machine that dispensed a different snack every time you pressed the same button."
+    },
+    {
+      "type": "paragraph",
+      "text": "This simple expectation\u2014*one input, one definite output*\u2014is the heart of one of the most important ideas in all of mathematics. It is the idea of a **function**, and it will be the language in which we write every theorem, every formula, and every calculation in this course."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Functions as Mappings"
+    },
+    {
+      "type": "paragraph",
+      "text": "Functions are everywhere in daily life, even when we do not call them by name. The scanner at the grocery store assigns a price to each barcode. Your phone's GPS assigns a location to each moment in time. The tax code assigns a tax owed to each level of income. In every case, a rule takes an *input* and produces exactly one *output*."
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us give this idea a precise name."
+    },
+    {
+      "type": "definition",
+      "id": "def-1.1",
+      "number": "1.1",
+      "title": "Function",
+      "content": "A **function** $f$ from a set $A$ to a set $B$ is a rule that assigns to each element $x$ in $A$ exactly one element, called $f(x)$, in $B$. The set $A$ is called the **domain** of $f$. The set of all output values $\\{f(x) : x \\in A\\}$ is called the **range** of $f$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Two features of this definition deserve emphasis:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Every** element of the domain must have an output. The function cannot \"skip\" an input.",
+        "Each input produces **exactly one** output. A single input cannot yield two different outputs."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Notice what the definition does *not* require: it does not say that different inputs must produce different outputs. The function $f(x) = x^{2}$ sends both $3$ and $-3$ to $9$, and that is perfectly acceptable. What matters is that each input has *one* output, not that each output comes from one input."
+    },
+    {
+      "type": "figure",
+      "id": "fig-1.1-mapping-diagram",
+      "src": "/figures/vol1/ch01/sec01-mapping-diagram.svg",
+      "caption": "A mapping diagram for $f(x) = x^{2}$ with domain $\\{1,2,3,4\\}$. Each element on the left maps to exactly one element on the right.",
+      "alt": "Figure: Mapping Diagram"
+    },
+    {
+      "type": "paragraph",
+      "text": "A mapping diagram makes the definition visual: every element on the left has exactly one arrow leaving it."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.1",
+      "number": "1.1",
+      "title": "Deciding whether a rule is a function",
+      "problem": "Which of the following rules define functions from the given domain to $\\mathbb{R}$?\n\n**(a)** The rule that assigns to each real number $x$ the value $\\sqrt{x}$. Domain: $\\mathbb{R}$.\n\n**(b)** The rule that assigns to each nonnegative real number $x$ the value $\\sqrt{x}$. Domain: $[0, \\infty)$.\n\n**(c)** The rule that assigns to each person their biological mother. Domain: all living people.",
+      "solution": "**(a)** **Not a function** on the stated domain. The input $x = -4$ has no real-number output, so the rule fails to assign a value to every element of $\\mathbb{R}$.\n\n**(b)** **Yes, a function.** Every nonnegative number has exactly one nonnegative square root. The domain $[0,\\infty)$ has been chosen so that each input produces exactly one output.\n\n**(c)** **Yes, a function.** Every person has exactly one biological mother. (Two people may share the same mother\u2014that is fine; the definition only requires uniqueness of output for each input.)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Function Notation"
+    },
+    {
+      "type": "paragraph",
+      "text": "When we write $f(x) = 3x + 5$, we are doing two things at once: naming the function ($f$) and giving the rule (\"multiply the input by $3$ and add $5$\"). The symbol $f(x)$ is read \"$f$ of $x$\" and denotes *the output of $f$ when the input is $x$*."
+    },
+    {
+      "type": "caution",
+      "title": "The parentheses in $f(x)$ do not mean multiplication",
+      "content": "The notation $f(x)$ does **not** mean \"$f$ times $x$.\" The parentheses indicate *function evaluation*: we are feeding $x$ into the rule $f$. This distinction will matter enormously when we study the product of two functions later in this chapter."
+    },
+    {
+      "type": "paragraph",
+      "text": "To **evaluate** a function at a particular input, we substitute that value for $x$ everywhere it appears and simplify."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.2",
+      "number": "1.2",
+      "title": "Evaluating a function",
+      "problem": "Let $f(x) = x^{2} - 4x + 7$. Find each of the following.\n\n**(a)** $f(3)$\n\n**(b)** $f(-2)$\n\n**(c)** $f(a+1)$",
+      "solution": "**(a)** $f(3) = (3)^{2} - 4(3) + 7 = 9 - 12 + 7 = 4.$\n\n**(b)** $f(-2) = (-2)^{2} - 4(-2) + 7 = 4 + 8 + 7 = 19.$\n\n**(c)** We replace every $x$ with $(a+1)$:\n$$\\begin{aligned} f(a+1) &= (a+1)^{2} - 4(a+1) + 7 \\\\ &= a^{2} + 2a + 1 - 4a - 4 + 7 \\\\ &= a^{2} - 2a + 4. \\end{aligned}$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Part (c) above is especially important. In calculus we will frequently evaluate functions at expressions like $x + h$, $a + \\Delta x$, or $\\cos\\theta$. The key skill is *mechanical substitution*: replace the variable with the given expression and simplify."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.3",
+      "number": "1.3",
+      "title": "The difference quotient",
+      "problem": "Let $f(x) = x^{2}$. Compute and simplify the **difference quotient**\n$$\\frac{f(x+h) - f(x)}{h}, \\qquad h \\neq 0.$$",
+      "solution": "First, $f(x+h) = (x+h)^{2} = x^{2} + 2xh + h^{2}$. Then\n$$\\frac{f(x+h) - f(x)}{h} = \\frac{(x^{2} + 2xh + h^{2}) - x^{2}}{h} = \\frac{2xh + h^{2}}{h} = 2x + h.$$\nThis expression will appear again when we define the derivative of $f(x) = x^{2}$. For now, practice the algebra."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Domain and Range"
+    },
+    {
+      "type": "paragraph",
+      "text": "When a function is given by a formula without a stated domain, we adopt the convention that the domain is the **natural domain**: the largest set of real numbers for which the formula produces a real-number output."
+    },
+    {
+      "type": "strategy",
+      "title": "Finding the Natural Domain",
+      "content": "To find the natural domain of a function given by a formula:\n\n1. Start with all real numbers: $(-\\infty, \\infty)$.\n2. **Exclude** values that create division by zero (set each denominator $\\neq 0$).\n3. **Exclude** values that produce a negative number under an even root (set the radicand $\\geq 0$).\n4. **Exclude** values that produce a negative or zero argument in a logarithm (set the argument $> 0$)."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.4",
+      "number": "1.4",
+      "title": "Finding natural domains",
+      "problem": "Find the domain of each function.\n\n**(a)** $f(x) = \\dfrac{1}{x^{2} - 9}$\n\n**(b)** $g(x) = \\sqrt{5 - x}$\n\n**(c)** $h(x) = \\dfrac{\\sqrt{x+3}}{x-1}$",
+      "solution": "**(a)** We need $x^{2} - 9 \\neq 0$, so $x \\neq \\pm 3$. The domain is $(-\\infty,-3) \\cup (-3,3) \\cup (3,\\infty)$.\n\n**(b)** We need $5 - x \\geq 0$, so $x \\leq 5$. The domain is $(-\\infty, 5]$.\n\n**(c)** We need *both* $x + 3 \\geq 0$ (for the square root) *and* $x - 1 \\neq 0$ (for the denominator). From the first condition, $x \\geq -3$. From the second, $x \\neq 1$. The domain is $[-3, 1) \\cup (1, \\infty)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The **range** of a function is often harder to determine. For a function given by a graph, the range is the set of $y$-values that actually appear on the graph\u2014read it off the vertical axis. For a formula, we sometimes must reason about what outputs are possible."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.5",
+      "number": "1.5",
+      "title": "Finding the range from a formula",
+      "problem": "Find the range of $f(x) = x^{2} + 1$.",
+      "solution": "Since $x^{2} \\geq 0$ for all real $x$, we have $f(x) = x^{2} + 1 \\geq 1$. Moreover, $f(0) = 1$, so the value $1$ is achieved. As $x \\to \\pm\\infty$, $f(x) \\to \\infty$, so every value $\\geq 1$ is in the range. The range is $[1, \\infty)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Four Ways to Represent a Function"
+    },
+    {
+      "type": "paragraph",
+      "text": "A function can be described in four ways, and a good mathematician moves fluently among all of them."
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Verbally** (a description in words): \"$T$ is the temperature in Phoenix at time $t$ hours after midnight.\"",
+        "**Numerically** (a table of values): recording temperature readings every hour gives a table of $(t, T)$ pairs.",
+        "**Visually** (a graph): plotting the table produces a curve in the $tT$-plane.",
+        "**Algebraically** (an explicit formula): $T(t) = 75 + 20\\sin\\!\\bigl(\\frac{\\pi}{12}(t - 14)\\bigr)$ might approximate the daily temperature cycle."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Not every function comes with a tidy formula. The temperature function above is perfectly well-defined even if we can only measure it from a thermometer and record it in a table. In calculus, we will often study functions that are defined by physical processes\u2014position, velocity, population\u2014and learn to extract information from whichever representation is available."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Vertical Line Test"
+    },
+    {
+      "type": "paragraph",
+      "text": "Not every curve in the $xy$-plane is the graph of a function. A circle, for instance, assigns two $y$-values to most $x$-values. The following test makes this visual."
+    },
+    {
+      "type": "theorem",
+      "id": "thm-1.1",
+      "number": "1.1",
+      "title": "The Vertical Line Test",
+      "content": "A curve in the $xy$-plane is the graph of a function of $x$ if and only if no vertical line intersects the curve more than once."
+    },
+    {
+      "type": "paragraph",
+      "text": "The reasoning is direct: a vertical line at $x = a$ collects all points $(a, y)$ on the curve. If there is more than one such point, the curve assigns multiple $y$-values to the input $a$, violating the definition of a function."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Piecewise-Defined Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Sometimes a single formula cannot capture the behavior of a function across its entire domain. In such cases, we use different formulas on different parts of the domain."
+    },
+    {
+      "type": "definition",
+      "id": "def-1.2",
+      "number": "1.2",
+      "title": "Piecewise-Defined Function",
+      "content": "A **piecewise-defined function** uses different formulas for different intervals of its domain:\n$$f(x) = \\begin{cases} \\text{formula}_1, & \\text{if } x \\in I_1, \\\\ \\text{formula}_2, & \\text{if } x \\in I_2, \\\\ \\vdots & \\\\ \\text{formula}_n, & \\text{if } x \\in I_n. \\end{cases}$$\nThe intervals $I_1, I_2, \\ldots, I_n$ must not overlap (to preserve the \"exactly one output\" requirement) and together they form the domain."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.6",
+      "number": "1.6",
+      "title": "Evaluating a piecewise function",
+      "problem": "Let\n$$f(x) = \\begin{cases} x + 2, & \\text{if } x < 0, \\\\ x^{2}, & \\text{if } 0 \\leq x \\leq 3, \\\\ 2x + 3, & \\text{if } x > 3. \\end{cases}$$\nFind $f(-1)$, $f(0)$, $f(2)$, and $f(5)$.",
+      "solution": "\u2022 $f(-1)$: Since $-1 < 0$, use the first piece: $f(-1) = (-1) + 2 = 1$.\n\n\u2022 $f(0)$: Since $0 \\leq 0 \\leq 3$, use the second piece: $f(0) = 0^{2} = 0$.\n\n\u2022 $f(2)$: Since $0 \\leq 2 \\leq 3$, use the second piece: $f(2) = 2^{2} = 4$.\n\n\u2022 $f(5)$: Since $5 > 3$, use the third piece: $f(5) = 2(5) + 3 = 13$."
+    },
+    {
+      "type": "figure",
+      "id": "fig-1.1-absolute-value",
+      "src": "/figures/vol1/ch01/sec01-absolute-value.svg",
+      "caption": "The graph of $f(x) = \\abs{x}$.",
+      "alt": "Figure: Absolute Value"
+    },
+    {
+      "type": "example",
+      "id": "ex-1.7",
+      "number": "1.7",
+      "title": "The absolute value function",
+      "problem": "Express the absolute value function as a piecewise function and describe its graph.",
+      "solution": "The **absolute value function** is a piecewise function hiding in plain sight:\n$$|x| = \\begin{cases} x, & \\text{if } x \\geq 0, \\\\ -x, & \\text{if } x < 0. \\end{cases}$$\nIts graph forms a \"V\" shape, with vertex at the origin. We will encounter this function again when we study limits, because its sharp corner presents a challenge for differentiation."
+    },
+    {
+      "type": "historical",
+      "title": "Peter Gustav Lejeune Dirichlet (1805\u20131859)",
+      "content": "The modern definition of a function\u2014as a rule assigning to each input exactly one output, with no requirement of a single formula\u2014is largely due to Dirichlet. Before him, mathematicians often assumed that \"function\" meant \"given by a formula.\" Dirichlet showed that the concept is far more general: even a rule with no closed-form expression can be a perfectly valid function. His insight freed mathematics from the tyranny of formulas and opened the door to the rigorous analysis that underlies modern calculus."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Looking Ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Functions are the vocabulary we will use to describe *change*. In later chapters we will ask: what happens to $f(x)$ as $x$ approaches a particular value? We will measure how fast $f(x)$ is changing at a single instant. We will learn to accumulate those changes into areas, volumes, and totals. Every one of these ideas begins with a function."
+    },
+    {
+      "type": "paragraph",
+      "text": "The rest of this chapter surveys the functions you will need\u2014polynomials, exponentials, logarithms, trigonometric functions\u2014and reviews the algebra of combining, transforming, and inverting them. Think of what follows as assembling a toolkit: the richer your collection of functions, the more phenomena you can model and the more problems you can solve."
+    },
+    {
+      "type": "figure",
+      "id": "fig-1.1-vertical-line-test",
+      "src": "/figures/vol1/ch01/sec01-vertical-line-test.svg",
+      "caption": "Left: the parabola passes the vertical line test (one intersection). Right: the circle fails (two intersections at $x = 1$).",
+      "alt": "Figure: Vertical Line Test"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.1",
+      "number": "1",
+      "problem": "In your own words, explain why the rule \"assign to each real number $x$ a value $y$ such that $y^{2} = x$\" does *not* define a function from $\\mathbb{R}$ to $\\mathbb{R}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.2",
+      "number": "2",
+      "problem": "A function $f$ has domain $\\{1, 2, 3, 4\\}$ and is defined by the table\n$$\\begin{array}{c|cccc} x & 1 & 2 & 3 & 4 \\\\ \\hline f(x) & 7 & 7 & 3 & 5 \\end{array}$$\nIs this a valid function? What is its range?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.3",
+      "number": "3",
+      "problem": "Decide whether each rule defines a function. Explain.\n\n**(a)** Assign to each student in the class their birthday.\n\n**(b)** Assign to each date on the calendar every student whose birthday falls on that date."
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.4",
+      "number": "4",
+      "problem": "Draw a mapping diagram for the function $g = \\{(a,2), (b,4), (c,2), (d,6)\\}$. What is the domain? What is the range?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.5",
+      "number": "5",
+      "problem": "Sketch a curve in the $xy$-plane that passes the vertical line test, and another that fails it. Explain why each does or does not represent a function."
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.6",
+      "number": "6",
+      "problem": "Let $f(x) = 2x^{2} - 3x + 1$. Evaluate:\n\n**(a)** $f(0)$ **(b)** $f(-1)$ **(c)** $f(3)$ **(d)** $f(a)$"
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.7",
+      "number": "7",
+      "problem": "Let $g(t) = \\dfrac{t+1}{t-2}$. Evaluate $g(0)$, $g(3)$, and $g(a+1)$. For what value(s) of $t$ is $g$ undefined?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.8",
+      "number": "8",
+      "problem": "Let $h(x) = \\sqrt{x+4}$. Evaluate $h(0)$, $h(5)$, and $h(a^{2})$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.9",
+      "number": "9",
+      "problem": "Let $f(x) = 3x - 7$. Solve $f(x) = 5$ for $x$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.10",
+      "number": "10",
+      "problem": "Let $f(x) = x^{2} + 1$. Compute and simplify:\n\n**(a)** $f(x+h)$\n\n**(b)** $f(x+h) - f(x)$\n\n**(c)** $\\dfrac{f(x+h) - f(x)}{h}$, $h \\neq 0$"
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.11",
+      "number": "11",
+      "problem": "Repeat the previous exercise with $f(x) = \\dfrac{1}{x}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.12",
+      "number": "12",
+      "problem": "Find the natural domain of each function.\n\n**(a)** $f(x) = \\dfrac{3}{x + 4}$\n\n**(b)** $g(x) = \\sqrt{2x - 6}$\n\n**(c)** $h(x) = \\dfrac{1}{\\sqrt{x - 1}}$"
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.13",
+      "number": "13",
+      "problem": "Find the natural domain:\n\n**(a)** $f(x) = \\dfrac{x}{x^{2} - 4}$\n\n**(b)** $g(x) = \\sqrt{9 - x^{2}}$\n\n**(c)** $h(x) = \\dfrac{\\sqrt{x}}{x^{2} - 5x + 6}$"
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.14",
+      "number": "14",
+      "problem": "Find the domain and range of $f(x) = \\sqrt{x - 2}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.15",
+      "number": "15",
+      "problem": "Find the domain and range of $g(x) = 3 - |x|$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.16",
+      "number": "16",
+      "problem": "A function $f$ has domain $[-2, 5]$ and range $[0, 7]$. What are the domain and range of $g(x) = f(x) + 3$?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.17",
+      "number": "17",
+      "problem": "Let $f(x) = \\begin{cases} 2x + 1, & x < 1, \\\\ 4 - x, & x \\geq 1. \\end{cases}$\n\n**(a)** Evaluate $f(-2)$, $f(1)$, and $f(4)$.\n\n**(b)** Sketch the graph of $f$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.18",
+      "number": "18",
+      "problem": "Let $g(x) = \\begin{cases} x^{2}, & x \\leq 0, \\\\ \\sqrt{x}, & x > 0. \\end{cases}$ Evaluate $g(-3)$, $g(0)$, and $g(9)$. Is $g$ continuous at $x = 0$? (Use your intuition\u2014we will make \"continuous\" precise later.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.19",
+      "number": "19",
+      "problem": "Write a piecewise definition for the function whose graph is the letter V with vertex at $(2, 0)$ and slopes $\\pm 1$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.20",
+      "number": "20",
+      "problem": "The function\n$$C(w) = \\begin{cases} 3.50, & 0 < w \\leq 1, \\\\ 3.50 + 0.75(w-1), & w > 1, \\end{cases}$$\ngives the cost (in dollars) of mailing a package of weight $w$ pounds. Find $C(0.5)$, $C(1)$, and $C(3.5)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.21",
+      "number": "21",
+      "problem": "The graph of a relation is the upper and lower halves of a circle of radius 3 centered at the origin. Does this relation define $y$ as a function of $x$? Explain."
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.22",
+      "number": "22",
+      "problem": "Use the vertical line test to determine whether each curve represents a function.\n\n**(a)** $y = x^{3} - x$\n\n**(b)** $x = y^{2}$\n\n**(c)** $x^{2} + y^{2} = 25$"
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.23",
+      "number": "23",
+      "problem": "Compute and simplify the difference quotient $\\dfrac{f(x+h) - f(x)}{h}$ for each function.\n\n**(a)** $f(x) = 5x - 2$\n\n**(b)** $f(x) = x^{2} + 3x$\n\n**(c)** $f(x) = x^{3}$"
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.24",
+      "number": "24",
+      "problem": "Compute and simplify $\\dfrac{f(a+h) - f(a)}{h}$ for $f(x) = \\sqrt{x}$. *Hint:* Rationalize the numerator."
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.25",
+      "number": "25",
+      "problem": "Find the domain of $f(x) = \\dfrac{1}{\\sqrt{x^{2} - 5x + 6}}$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.26",
+      "number": "26",
+      "problem": "A function $f$ satisfies $f(x) + 2f(1-x) = x^{2}$ for all $x$. Find $f(x)$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.27",
+      "number": "27",
+      "problem": "Give an example of a function whose domain is all of $\\mathbb{R}$ and whose range is the single interval $(0, 1]$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.28",
+      "number": "28",
+      "problem": "Prove that if $f$ and $g$ are functions with the same domain $D$ and $f(x) = g(x)$ for all $x \\in D$, then $f = g$. Why is this statement obvious from the definition, and why is it still worth stating?",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.29",
+      "number": "29",
+      "problem": "Let $f(x) = x^{2}$. Prove algebraically that $\\dfrac{f(a) - f(b)}{a - b} = a + b$ for $a \\neq b$.",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex1.1.30",
+      "number": "30",
+      "problem": "The table below shows the average monthly temperature $T$ (in degrees Fahrenheit) in Phoenix, Arizona.\n$$\\begin{array}{c|cccccc} \\text{Month} & \\text{Jan} & \\text{Mar} & \\text{May} & \\text{Jul} & \\text{Sep} & \\text{Nov} \\\\ \\hline T & 56 & 65 & 86 & 106 & 99 & 67 \\end{array}$$\n\n**(a)** Is $T$ a function of the month? Explain.\n\n**(b)** Estimate the domain and range of $T$ if we extend the table to all 12 months.\n\n**(c)** Would the month be a function of the temperature? Why or why not?",
+      "creation_reveals": true
+    }
+  ]
+}

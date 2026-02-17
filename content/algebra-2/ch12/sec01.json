@@ -1,0 +1,233 @@
+{
+  "id": "algebra-2-ch12-sec01",
+  "title": "Circles",
+  "chapter": 12,
+  "section": 1,
+  "book": "algebra-2",
+  "epigraph": {
+    "text": "He has inscribed a circle on the face of the waters at \nthe boundary between light and darkness.",
+    "reference": "Job 26:10"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The circle is perhaps the most recognizable shape in all of mathematics. \nFrom the sun and moon in the sky to the wheels on a cart, circles appear \nthroughout nature and human invention. Ancient mathematicians recognized \nthe circle's perfection—every point on a circle is exactly the same \ndistance from its center, giving it a symmetry unmatched by any other curve."
+    },
+    {
+      "type": "paragraph",
+      "text": "In this section, we develop the algebraic representation of circles. By \ntranslating the geometric definition into coordinate equations, we gain \npowerful tools for analyzing circular paths, designing circular objects, \nand understanding the first and simplest of the conic sections."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Definition of a Circle"
+    },
+    {
+      "type": "paragraph",
+      "text": "A circle is defined by two pieces of information: its center and its radius."
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.1",
+      "number": "12.1",
+      "title": "Circle",
+      "content": "A **circle** is the set of all points in a plane that \nare equidistant from a fixed point called the **center**. \nThe constant distance from the center to any point on the circle is called \nthe **radius** (plural: radii)."
+    },
+    {
+      "type": "paragraph",
+      "text": "This definition has profound implications. Every point on a circle satisfies \nexactly the same distance condition. If we place the center at point $(h, k)$ \nand call the radius $r$, then any point $(x, y)$ on the circle must satisfy:\n\\[\n \\text{distance from $(x, y)$ to $(h, k)$} = r\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Using the distance formula, this becomes:\n\\[\n \\sqrt{(x - h)^2 + (y - k)^2} = r\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Squaring both sides eliminates the square root:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.1",
+      "number": "12.1",
+      "title": "Standard Form of a Circle",
+      "content": "The **standard form** of the equation of \na circle with center $(h, k)$ and radius $r$ is:\n\\[\n (x - h)^2 + (y - k)^2 = r^2\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Notice the structure of the standard form: if the center is at the \n*origin* $(0, 0)$, the equation simplifies to $x^2 + y^2 = r^2$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Writing Equations of Circles"
+    },
+    {
+      "type": "paragraph",
+      "text": "Given the center and radius, we can immediately write the circle's equation."
+    },
+    {
+      "type": "example",
+      "id": "example-12.1",
+      "number": "12.1",
+      "title": "Writing a circle equation from center and radius",
+      "problem": "Write the equation of the circle with center $(-3, 4)$ and radius $5$.",
+      "solution": "We substitute directly into the standard form $(x - h)^2 + (y - k)^2 = r^2$:\n\n- Center: $(h, k) = (-3, 4)$, so $h = -3$ and $k = 4$\n\n- Radius: $r = 5$, so $r^2 = 25$\n\nThe equation is:\n\\[\n (x - (-3))^2 + (y - 4)^2 = 25\n\\]\n\\[\n \\boxed{(x + 3)^2 + (y - 4)^2 = 25}\n\\]\n\nNote how $(x - (-3))$ simplifies to $(x + 3)$. The signs in the standard \nform are subtractions, so a negative $h$ value produces a plus sign in \nthe equation."
+    },
+    {
+      "type": "example",
+      "id": "example-12.2",
+      "number": "12.2",
+      "title": "Circle centered at the origin",
+      "problem": "Write the equation of the circle centered at the origin with radius $7$.",
+      "solution": "With center $(0, 0)$ and radius $7$:\n\\[\n (x - 0)^2 + (y - 0)^2 = 7^2\n\\]\n\\[\n \\boxed{x^2 + y^2 = 49}\n\\]\n\nThis elegant form appears frequently in mathematics and physics."
+    },
+    {
+      "type": "paragraph",
+      "text": "Sometimes we're given two pieces of information that require us to first \ndetermine the center or radius."
+    },
+    {
+      "type": "example",
+      "id": "example-12.3",
+      "number": "12.3",
+      "title": "Circle through a given point",
+      "problem": "Write the equation of the circle with center $(2, -1)$ that passes through \nthe point $(5, 3)$.",
+      "solution": "We know the center but need to find the radius. The radius is the distance \nfrom the center to any point on the circle, including $(5, 3)$:\n\\[\n r = \\sqrt{(5 - 2)^2 + (3 - (-1))^2} = \\sqrt{3^2 + 4^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5\n\\]\n\nNow we can write the equation:\n\\[\n \\boxed{(x - 2)^2 + (y + 1)^2 = 25}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-12.4",
+      "number": "12.4",
+      "title": "Circle with diameter endpoints",
+      "problem": "Find the equation of the circle whose diameter has endpoints $A(-2, 3)$ and $B(4, -1)$.",
+      "solution": "The center of a circle is the midpoint of any diameter. Using the midpoint formula:\n\\[\n \\text{Center} = \\left(\\frac{-2 + 4}{2}, \\frac{3 + (-1)}{2}\\right) = \\left(\\frac{2}{2}, \\frac{2}{2}\\right) = (1, 1)\n\\]\n\nThe radius is half the diameter length. First, find the diameter:\n\\[\n d = \\sqrt{(4 - (-2))^2 + (-1 - 3)^2} = \\sqrt{6^2 + (-4)^2} = \\sqrt{36 + 16} = \\sqrt{52} = 2\\sqrt{13}\n\\]\n\nSo $r = \\sqrt{13}$ and $r^2 = 13$.\n\nThe equation is:\n\\[\n \\boxed{(x - 1)^2 + (y - 1)^2 = 13}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Graphing Circles from Standard Form"
+    },
+    {
+      "type": "paragraph",
+      "text": "Given an equation in standard form, we can extract the center and radius \nto graph the circle."
+    },
+    {
+      "type": "example",
+      "id": "example-12.5",
+      "number": "12.5",
+      "title": "Graphing from standard form",
+      "problem": "Graph the circle $(x - 2)^2 + (y + 3)^2 = 16$.",
+      "solution": "Reading from the equation:\n\n- Center: $(h, k) = (2, -3)$ (note the sign change for $k$)\n\n- Radius: $r^2 = 16$, so $r = 4$\n\nTo graph:\n\n1. Plot the center at $(2, -3)$\n\n2. From the center, count $4$ units in each direction (up, down, left, right)\n\n3. Connect these four points with a smooth curve\n\ncenter\ntikzpicture[scale=0.6]\n % Grid\n (-4,-8) grid (8,2);\n % Axes\n (-4.5,0) – (8.5,0) node[right] {$x$};\n (0,-8.5) – (0,2.5) node[above] {$y$};\n % Circle\n (2,-3) circle (4);\n % Center\n ll[AtlasWarm] (2,-3) circle (4pt);\n at (2.2,-3) {$(2, -3)$};\n % Cardinal points\n ll[AtlasSage] (2,1) circle (3pt);\n ll[AtlasSage] (2,-7) circle (3pt);\n ll[AtlasSage] (-2,-3) circle (3pt);\n ll[AtlasSage] (6,-3) circle (3pt);\n % Tick marks\n in {-4,-3,-2,-1,1,2,3,4,5,6,7,8} {\n (,0.1) – (,-0.1);\n }\n in {-8,-7,-6,-5,-4,-3,-2,-1,1,2} {\n (0.1,) – (-0.1,);\n }\ntikzpicture\ncenter\n\nThe circle passes through $(2, 1)$, $(2, -7)$, $(-2, -3)$, and $(6, -3)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "General Form of a Circle"
+    },
+    {
+      "type": "paragraph",
+      "text": "When we expand the standard form, we get the **general form**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.2",
+      "number": "12.2",
+      "title": "General Form of a Circle",
+      "content": "The **general form** of a circle's equation is:\n\\[\n x^2 + y^2 + Dx + Ey + F = 0\n\\]\nwhere $D$, $E$, and $F$ are constants."
+    },
+    {
+      "type": "paragraph",
+      "text": "To convert from general form to standard form, we use **completing \nthe square**—a technique from Chapter 3."
+    },
+    {
+      "type": "example",
+      "id": "example-12.6",
+      "number": "12.6",
+      "title": "Converting to standard form",
+      "problem": "Write $x^2 + y^2 - 6x + 4y - 12 = 0$ in standard form and identify the \ncenter and radius.",
+      "solution": "We complete the square for both $x$ and $y$ terms.\n\n**Step 1:** Group the $x$ terms and $y$ terms, moving the constant:\n\\[\n (x^2 - 6x) + (y^2 + 4y) = 12\n\\]\n\n**Step 2:** Complete the square for $x$:\n\n- Take half of $-6$: $\\frac{-6}{2} = -3$\n\n- Square it: $(-3)^2 = 9$\n\n- Add $9$ to both sides\n\n**Step 3:** Complete the square for $y$:\n\n- Take half of $4$: $\\frac{4}{2} = 2$\n\n- Square it: $2^2 = 4$\n\n- Add $4$ to both sides\n\n**Step 4:** Write as perfect squares:\n\\[\n (x^2 - 6x + 9) + (y^2 + 4y + 4) = 12 + 9 + 4\n\\]\n\\[\n (x - 3)^2 + (y + 2)^2 = 25\n\\]\n\n**Result:** Center $(3, -2)$, radius $5$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.7",
+      "number": "12.7",
+      "title": "General form with coefficients",
+      "problem": "Rewrite $x^2 + y^2 + 8x - 2y + 8 = 0$ in standard form.",
+      "solution": "Group and rearrange:\n\\[\n (x^2 + 8x) + (y^2 - 2y) = -8\n\\]\n\nComplete the square for $x$: half of $8$ is $4$, and $4^2 = 16$.\n\nComplete the square for $y$: half of $-2$ is $-1$, and $(-1)^2 = 1$.\n\n\\[\n (x^2 + 8x + 16) + (y^2 - 2y + 1) = -8 + 16 + 1\n\\]\n\\[\n (x + 4)^2 + (y - 1)^2 = 9\n\\]\n\n**Result:** Center $(-4, 1)$, radius $3$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.8",
+      "number": "12.8",
+      "title": "Determining if an equation represents a circle",
+      "problem": "Determine whether $x^2 + y^2 - 4x + 6y + 13 = 0$ represents a circle, a \npoint, or no graph.",
+      "solution": "Complete the square:\n\\[\n (x^2 - 4x) + (y^2 + 6y) = -13\n\\]\n\\[\n (x^2 - 4x + 4) + (y^2 + 6y + 9) = -13 + 4 + 9\n\\]\n\\[\n (x - 2)^2 + (y + 3)^2 = 0\n\\]\n\nThis equation says $(x - 2)^2 + (y + 3)^2 = 0$. Since squares are always \nnon-negative, both squares must equal zero. This means $x = 2$ and $y = -3$.\n\n**Result:** This represents a single point $(2, -3)$—a \n*degenerate circle* with radius $0$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-12.1",
+      "number": null,
+      "title": "",
+      "content": "If completing the square yields $r^2 < 0$, the equation has no real \nsolutions and represents no graph (the empty set). For example, \n$(x-1)^2 + (y-2)^2 = -4$ has no points because a sum of squares cannot \nbe negative."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of Circles"
+    },
+    {
+      "type": "paragraph",
+      "text": "Circles model many real-world situations: broadcast ranges, irrigation \nsystems, orbits, and more."
+    },
+    {
+      "type": "example",
+      "id": "example-12.9",
+      "number": "12.9",
+      "title": "Radio broadcast range",
+      "problem": "A radio station's broadcast tower is located at coordinates $(5, -2)$ on \na map where each unit represents 10 miles. The station's signal reaches \na radius of 80 miles. Write an equation for the boundary of the broadcast \narea. Can the signal reach a town at coordinates $(11, 6)$?",
+      "solution": "The radius in map units is $\\frac{80}{10} = 8$ units.\n\nThe boundary equation is:\n\\[\n (x - 5)^2 + (y + 2)^2 = 64\n\\]\n\nTo check if the town at $(11, 6)$ receives the signal, find its distance \nfrom the tower:\n\\[\n d = \\sqrt{(11 - 5)^2 + (6 - (-2))^2} = \\sqrt{36 + 64} = \\sqrt{100} = 10\n\\]\n\nSince $10 > 8$, the town is **outside** the broadcast range and \ncannot receive the signal."
+    },
+    {
+      "type": "example",
+      "id": "example-12.10",
+      "number": "12.10",
+      "title": "Earthquake epicenter",
+      "problem": "An earthquake's epicenter is detected at distances of 50 km from Station A \nat $(20, 10)$ and 30 km from Station B at $(60, 30)$. Write equations for \nthe circles centered at each station. (In practice, a third station would \npinpoint the exact epicenter.)",
+      "solution": "Circle centered at Station A:\n\\[\n (x - 20)^2 + (y - 10)^2 = 2500\n\\]\n\nCircle centered at Station B:\n\\[\n (x - 60)^2 + (y - 30)^2 = 900\n\\]\n\nThe epicenter lies at an intersection point of these circles."
+    },
+    {
+      "type": "historical",
+      "id": "historical-12.1",
+      "number": null,
+      "title": "The Circle in Ancient Mathematics",
+      "content": "The ancient Greeks considered the circle the most perfect of all shapes. \nPlato believed that the heavenly bodies must move in perfect circles \nbecause the heavens were the realm of perfection. This assumption persisted \nfor nearly two thousand years until Johannes Kepler, a devout Christian, \ndiscovered that planetary orbits are actually ellipses. Kepler wrote, \n\"I was merely thinking God's thoughts after Him,\" recognizing that \nGod's design surpassed even the Greeks' notion of geometric perfection.\n\nThe ancient Greeks considered the circle the most perfect of all shapes. \nThis influenced astronomical theory for nearly two thousand years, with \nastronomers assuming planetary orbits must be circular. Johannes Kepler \nfinally proved in 1609 that orbits are actually elliptical, a discovery \nthat revolutionized our understanding of celestial mechanics."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:22",
+      "text": "He sits enthroned above the circle of the \nearth, and its people are like grasshoppers."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 8:27",
+      "text": "When he established the heavens, I was \nthere; when he drew a circle on the face of the deep."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ezekiel 1:16",
+      "text": "The appearance of the wheels and their \nwork was like unto the colour of a beryl: and they four had one likeness."
+    },
+    {
+      "type": "quote",
+      "author": "Blaise Pascal",
+      "text": "The heart has its reasons which reason \nknows nothing of... We know truth not only by reason but by the heart."
+    }
+  ]
+}

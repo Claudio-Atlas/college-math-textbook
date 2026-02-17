@@ -1,0 +1,66 @@
+{
+  "id": "real-analysis-ch02-sec05",
+  "title": "Cauchy Sequences",
+  "chapter": 2,
+  "section": 5,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The definition of convergence requires knowledge of the limit $L$. \nCauchy sequences provide a way to verify convergence *without* \nknowing the limit."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Cauchy Criterion"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Cauchy Sequence",
+      "content": "A sequence $(a_n)$ is a **Cauchy sequence** if \nfor every $\\varepsilon > 0$, there exists $N \\in \\mathbb{N}$ such that\n\\[\nm, n \\geq N \\implies |a_m - a_n| < \\varepsilon.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "In words: the terms of a Cauchy sequence become arbitrarily close to \n*each other* for large $n$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Cauchy Criterion for Convergence",
+      "content": "A sequence of real numbers converges if and only if it is a Cauchy sequence.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$(\\Rightarrow)$ Suppose $a_n \\to L$. Let $\\varepsilon > 0$. There exists \n$N$ such that $n \\geq N$ implies $|a_n - L| < \\varepsilon/2$. Then for \n$m, n \\geq N$:\n\\[\n|a_m - a_n| \\leq |a_m - L| + |L - a_n| < \\frac{\\varepsilon}{2} + \\frac{\\varepsilon}{2} = \\varepsilon.\n\\]\n\n$(\\Leftarrow)$ Suppose $(a_n)$ is Cauchy. We show it converges.\n\n**Step 1:** Every Cauchy sequence is bounded.\n\nTaking $\\varepsilon = 1$, there exists $N$ such that $|a_m - a_n| < 1$ for \n$m, n \\geq N$. Thus $|a_n| \\leq |a_N| + 1$ for $n \\geq N$. Let \n$M = \\max\\{|a_1|, \\ldots, |a_{N-1}|, |a_N| + 1\\}$.\n\n**Step 2:** By Bolzano-Weierstrass, $(a_n)$ has a convergent \nsubsequence $(a_{n_k}) \\to L$.\n\n**Step 3:** We show $a_n \\to L$.\n\nLet $\\varepsilon > 0$. Since $(a_n)$ is Cauchy, there exists $N_1$ such \nthat $|a_m - a_n| < \\varepsilon/2$ for $m, n \\geq N_1$. Since \n$a_{n_k} \\to L$, there exists $K$ such that $|a_{n_k} - L| < \\varepsilon/2$ \nfor $k \\geq K$.\n\nChoose $k$ large enough that $n_k \\geq N_1$. Then for $n \\geq N_1$:\n\\[\n|a_n - L| \\leq |a_n - a_{n_k}| + |a_{n_k} - L| < \\frac{\\varepsilon}{2} + \\frac{\\varepsilon}{2} = \\varepsilon. \\qedhere\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of the Cauchy Criterion"
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Showing Divergence",
+      "problem": "Prove that the harmonic series partial sums $H_n = 1 + \\frac{1}{2} + \\cdots + \\frac{1}{n}$ \ndiverge.",
+      "solution": "We show $(H_n)$ is not Cauchy. Consider:\n\\[\nH_{2n} - H_n = \\frac{1}{n+1} + \\frac{1}{n+2} + \\cdots + \\frac{1}{2n} \\geq n \\cdot \\frac{1}{2n} = \\frac{1}{2}.\n\\]\nSo no matter how large $N$ is, we can find $m = 2n$ and $n \\geq N$ with \n$|H_m - H_n| \\geq 1/2$. Thus $(H_n)$ is not Cauchy, hence diverges."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Contractive Sequences",
+      "content": "Let $(a_n)$ be a sequence satisfying $|a_{n+2} - a_{n+1}| \\leq c \\cdot |a_{n+1} - a_n|$ \nfor some $0 < c < 1$ and all $n$. Then $(a_n)$ is Cauchy (and hence convergent).",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "By induction, $|a_{n+1} - a_n| \\leq c^{n-1}|a_2 - a_1|$.\n\nFor $m > n$:\n$$\n|a_m - a_n| &\\leq |a_m - a_{m-1}| + \\cdots + |a_{n+1} - a_n| \\\\\n&\\leq (c^{m-2} + \\cdots + c^{n-1})|a_2 - a_1| \\\\\n&\\leq \\frac{c^{n-1}}{1 - c}|a_2 - a_1|.\n$$\nSince $c^{n-1} \\to 0$, this can be made arbitrarily small."
+    }
+  ]
+}

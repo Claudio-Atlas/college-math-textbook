@@ -1,0 +1,346 @@
+{
+  "id": "precalculus-ch07-sec04",
+  "title": "Trigonometric Equations",
+  "chapter": 7,
+  "section": 4,
+  "book": "precalculus",
+  "objectives": [
+    "Distinguish between identities and conditional equations",
+    "Solve basic trigonometric equations using inverse functions",
+    "Find all solutions in a given interval",
+    "Solve equations involving multiple angles",
+    "Apply factoring and quadratic techniques to trigonometric equations",
+    "Use identities to transform and solve complex equations"
+  ],
+  "content": [
+    {
+      "type": "connection",
+      "id": "connection-7.4",
+      "number": null,
+      "title": "Seeking and Finding",
+      "content": "\"Ask and it will be given to you; seek and you will find; knock and \nthe door will be opened to you\" (Matthew 7:7). Solving an equation \nis a form of seeking—we search for the specific values that make a \nstatement true. Unlike identities, which are universally true, equations \nhave particular solutions. The discipline of carefully working through \npossibilities, checking each answer, and accounting for all cases \ndevelops habits of mind that serve us well beyond mathematics. In \nspiritual life too, the seeker who persists—who asks, seeks, and \nknocks—finds what they're looking for."
+    },
+    {
+      "type": "paragraph",
+      "text": "Throughout this chapter, we've worked with identities—equations true \nfor all values. Now we turn to equations that are true only for \n*specific* values. The equation $2\\sin\\theta = 1$ isn't always true; \nit's true only when $\\sin\\theta = \\frac{1}{2}$, which happens at \nparticular angles."
+    },
+    {
+      "type": "paragraph",
+      "text": "Solving trigonometric equations combines algebraic techniques with \nknowledge of the unit circle. The key insight is that trigonometric \nfunctions are periodic, so there are typically infinitely many solutions. \nOften we're asked to find all solutions in a specific interval, most \ncommonly $[0, 2\\pi)$ or $[0°, 360°)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Linear Trigonometric Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "The simplest trigonometric equations have the form $\\sin\\theta = k$ or \n$\\cos\\theta = k$ for some constant $k$."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-7.4",
+      "number": null,
+      "title": "Solving Basic Trigonometric Equations",
+      "content": "1. **Isolate the trigonometric function.** Get the equation \n in the form $\\sin\\theta = k$, $\\cos\\theta = k$, or $\\tan\\theta = k$.\n\n2. **Find the reference angle.** Use inverse functions to \n find the acute angle whose function value equals $|k|$.\n\n3. **Identify all solutions.** Use the unit circle and ASTC \n to find all angles in the required interval.\n\n4. **Check for extraneous solutions.** Especially important \n when you've squared both sides or used identities."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Basic sine equation",
+      "problem": "Solve $2\\sin\\theta - 1 = 0$ for $0 \\le \\theta < 2\\pi$.",
+      "solution": "First, isolate sine:\n\\[\n2\\sin\\theta = 1 \\implies \\sin\\theta = \\frac{1}{2}\n\\]\n\nThe reference angle where $\\sin\\theta = \\frac{1}{2}$ is $\\frac{\\pi}{6}$ (or $30°$).\n\nSine is positive in Quadrants I and II. The solutions are:\n\n- Quadrant I: $\\theta = \\frac{\\pi}{6}$\n\n- Quadrant II: $\\theta = \\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}$\n\n**Solutions:** $\\theta = \\dfrac{\\pi}{6}, \\dfrac{5\\pi}{6}$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Basic cosine equation",
+      "problem": "Solve $2\\cos\\theta + \\sqrt{3} = 0$ for $0 \\le \\theta < 2\\pi$.",
+      "solution": "Isolate cosine:\n\\[\n2\\cos\\theta = -\\sqrt{3} \\implies \\cos\\theta = -\\frac{\\sqrt{3}}{2}\n\\]\n\nThe reference angle where $\\cos\\theta = \\frac{\\sqrt{3}}{2}$ is $\\frac{\\pi}{6}$.\n\nCosine is negative in Quadrants II and III:\n\n- Quadrant II: $\\theta = \\pi - \\frac{\\pi}{6} = \\frac{5\\pi}{6}$\n\n- Quadrant III: $\\theta = \\pi + \\frac{\\pi}{6} = \\frac{7\\pi}{6}$\n\n**Solutions:** $\\theta = \\dfrac{5\\pi}{6}, \\dfrac{7\\pi}{6}$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "Basic tangent equation",
+      "problem": "Solve $\\tan\\theta + 1 = 0$ for $0 \\le \\theta < 2\\pi$.",
+      "solution": "Isolate tangent:\n\\[\n\\tan\\theta = -1\n\\]\n\nThe reference angle where $\\tan\\theta = 1$ is $\\frac{\\pi}{4}$.\n\nTangent is negative in Quadrants II and IV:\n\n- Quadrant II: $\\theta = \\pi - \\frac{\\pi}{4} = \\frac{3\\pi}{4}$\n\n- Quadrant IV: $\\theta = 2\\pi - \\frac{\\pi}{4} = \\frac{7\\pi}{4}$\n\n**Solutions:** $\\theta = \\dfrac{3\\pi}{4}, \\dfrac{7\\pi}{4}$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Quadratic Trigonometric Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "When a trigonometric equation involves squares, treat it like a quadratic \nequation in the trig function."
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "Factoring a quadratic",
+      "problem": "Solve $2\\cos^2\\theta - \\cos\\theta - 1 = 0$ for $0 \\le \\theta < 2\\pi$.",
+      "solution": "This factors like a quadratic. Let $u = \\cos\\theta$:\n\\[\n2u^2 - u - 1 = 0 \\implies (2u + 1)(u - 1) = 0\n\\]\n\nSo $u = -\\frac{1}{2}$ or $u = 1$, meaning $\\cos\\theta = -\\frac{1}{2}$ or $\\cos\\theta = 1$.\n\n**Case 1:** $\\cos\\theta = -\\frac{1}{2}$\n\nReference angle: $\\frac{\\pi}{3}$. Cosine negative in QII and QIII:\n\\[\n\\theta = \\frac{2\\pi}{3} \\quad \\text{or} \\quad \\theta = \\frac{4\\pi}{3}\n\\]\n\n**Case 2:** $\\cos\\theta = 1$\n\nThis occurs at $\\theta = 0$.\n\n**Solutions:** $\\theta = 0, \\dfrac{2\\pi}{3}, \\dfrac{4\\pi}{3}$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.5",
+      "number": "7.5",
+      "title": "Sine quadratic",
+      "problem": "Solve $2\\sin^2\\theta - \\sin\\theta = 0$ for $0 \\le \\theta < 2\\pi$.",
+      "solution": "Factor out $\\sin\\theta$:\n\\[\n\\sin\\theta(2\\sin\\theta - 1) = 0\n\\]\n\nSo $\\sin\\theta = 0$ or $\\sin\\theta = \\frac{1}{2}$.\n\n**Case 1:** $\\sin\\theta = 0$\n\\[\n\\theta = 0, \\pi\n\\]\n\n**Case 2:** $\\sin\\theta = \\frac{1}{2}$\n\nReference angle: $\\frac{\\pi}{6}$. Sine positive in QI and QII:\n\\[\n\\theta = \\frac{\\pi}{6}, \\frac{5\\pi}{6}\n\\]\n\n**Solutions:** $\\theta = 0, \\dfrac{\\pi}{6}, \\dfrac{5\\pi}{6}, \\pi$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.6",
+      "number": "7.6",
+      "title": "Using the quadratic formula",
+      "problem": "Solve $\\cos^2\\theta + 3\\cos\\theta + 1 = 0$ for $0 \\le \\theta < 2\\pi$.",
+      "solution": "This doesn't factor nicely, so we use the quadratic formula with $u = \\cos\\theta$:\n\\[\nu = \\frac{-3 \\pm \\sqrt{9 - 4}}{2} = \\frac{-3 \\pm \\sqrt{5}}{2}\n\\]\n\nSo $u = \\frac{-3 + \\sqrt{5}}{2} \\approx -0.382$ or $u = \\frac{-3 - \\sqrt{5}}{2} \\approx -2.618$.\n\nSince $-1 \\le \\cos\\theta \\le 1$, only $\\cos\\theta = \\frac{-3 + \\sqrt{5}}{2}$ is valid.\n\nThe reference angle is $\\theta_{\\text{ref}} = \\arccos\\left(\\frac{3 - \\sqrt{5}}{2}\\right) \\approx 1.176$ rad.\n\nCosine is negative in QII and QIII:\n\\[\n\\theta \\approx \\pi - 1.176 \\approx 1.966 \\quad \\text{and} \\quad \\theta \\approx \\pi + 1.176 \\approx 4.318\n\\]\n\n**Solutions:** $\\theta = \\pi - \\arccos\\left(\\dfrac{3-\\sqrt{5}}{2}\\right), \\pi + \\arccos\\left(\\dfrac{3-\\sqrt{5}}{2}\\right)$"
+    },
+    {
+      "type": "warning",
+      "id": "warning-7.4",
+      "number": null,
+      "title": "No Solution Cases",
+      "content": "If solving a quadratic in $\\sin\\theta$ or $\\cos\\theta$ gives a value \noutside $[-1, 1]$, that value produces no solutions. Don't forget to \ncheck that your answers are within the valid range."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Using Identities to Solve Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "Sometimes an equation involves multiple trigonometric functions. Use \nidentities to rewrite everything in terms of a single function."
+    },
+    {
+      "type": "example",
+      "id": "example-7.7",
+      "number": "7.7",
+      "title": "Converting to a single function",
+      "problem": "Solve $2\\sin^2\\theta + 3\\cos\\theta - 3 = 0$ for $0 \\le \\theta < 2\\pi$.",
+      "solution": "Use the Pythagorean identity $\\sin^2\\theta = 1 - \\cos^2\\theta$:\n$$\n2(1 - \\cos^2\\theta) + 3\\cos\\theta - 3 &= 0 \\\\\n2 - 2\\cos^2\\theta + 3\\cos\\theta - 3 &= 0 \\\\\n-2\\cos^2\\theta + 3\\cos\\theta - 1 &= 0 \\\\\n2\\cos^2\\theta - 3\\cos\\theta + 1 &= 0\n$$\n\nFactor:\n\\[\n(2\\cos\\theta - 1)(\\cos\\theta - 1) = 0\n\\]\n\nSo $\\cos\\theta = \\frac{1}{2}$ or $\\cos\\theta = 1$.\n\n**Case 1:** $\\cos\\theta = \\frac{1}{2}$ gives $\\theta = \\frac{\\pi}{3}, \\frac{5\\pi}{3}$\n\n**Case 2:** $\\cos\\theta = 1$ gives $\\theta = 0$\n\n**Solutions:** $\\theta = 0, \\dfrac{\\pi}{3}, \\dfrac{5\\pi}{3}$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.8",
+      "number": "7.8",
+      "title": "Using a tangent identity",
+      "problem": "Solve $\\sec^2\\theta = 2\\tan\\theta$ for $0 \\le \\theta < 2\\pi$.",
+      "solution": "Use $\\sec^2\\theta = 1 + \\tan^2\\theta$:\n$$\n1 + \\tan^2\\theta &= 2\\tan\\theta \\\\\n\\tan^2\\theta - 2\\tan\\theta + 1 &= 0 \\\\\n(\\tan\\theta - 1)^2 &= 0\n$$\n\nSo $\\tan\\theta = 1$.\n\nTangent equals 1 at $\\theta = \\frac{\\pi}{4}$ and $\\theta = \\frac{5\\pi}{4}$.\n\n**Solutions:** $\\theta = \\dfrac{\\pi}{4}, \\dfrac{5\\pi}{4}$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Equations with Multiple Angles"
+    },
+    {
+      "type": "paragraph",
+      "text": "When the argument of the trig function is $n\\theta$ instead of $\\theta$, \nwe must account for the compressed period."
+    },
+    {
+      "type": "example",
+      "id": "example-7.9",
+      "number": "7.9",
+      "title": "Double angle equation",
+      "problem": "Solve $\\sin 2\\theta = \\dfrac{\\sqrt{3}}{2}$ for $0 \\le \\theta < 2\\pi$.",
+      "solution": "Let $u = 2\\theta$. Then $\\sin u = \\frac{\\sqrt{3}}{2}$.\n\nSince $0 \\le \\theta < 2\\pi$, we have $0 \\le u < 4\\pi$.\n\nThe reference angle is $\\frac{\\pi}{3}$. In the interval $[0, 4\\pi)$, \nsine equals $\\frac{\\sqrt{3}}{2}$ at:\n\\[\nu = \\frac{\\pi}{3}, \\quad \\frac{2\\pi}{3}, \\quad \\frac{\\pi}{3} + 2\\pi = \\frac{7\\pi}{3}, \\quad \\frac{2\\pi}{3} + 2\\pi = \\frac{8\\pi}{3}\n\\]\n\nDivide by 2 to get $\\theta$:\n\\[\n\\theta = \\frac{\\pi}{6}, \\quad \\frac{\\pi}{3}, \\quad \\frac{7\\pi}{6}, \\quad \\frac{4\\pi}{3}\n\\]\n\n**Solutions:** $\\theta = \\dfrac{\\pi}{6}, \\dfrac{\\pi}{3}, \\dfrac{7\\pi}{6}, \\dfrac{4\\pi}{3}$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.10",
+      "number": "7.10",
+      "title": "Triple angle equation",
+      "problem": "Solve $\\cos 3x = -1$ for $0 \\le x < 2\\pi$.",
+      "solution": "Let $u = 3x$. Since $0 \\le x < 2\\pi$, we have $0 \\le u < 6\\pi$.\n\nCosine equals $-1$ at $u = \\pi, 3\\pi, 5\\pi$ (odd multiples of $\\pi$ up to $6\\pi$).\n\nDivide by 3:\n\\[\nx = \\frac{\\pi}{3}, \\quad \\pi, \\quad \\frac{5\\pi}{3}\n\\]\n\n**Solutions:** $x = \\dfrac{\\pi}{3}, \\pi, \\dfrac{5\\pi}{3}$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.11",
+      "number": "7.11",
+      "title": "Equation with $\\sin 3x = 0$",
+      "problem": "Solve $\\sin 3x = 0$ for $0 \\le x < 2\\pi$.",
+      "solution": "Let $u = 3x$. In $[0, 6\\pi)$, sine equals 0 at:\n\\[\nu = 0, \\pi, 2\\pi, 3\\pi, 4\\pi, 5\\pi\n\\]\n\nDivide by 3:\n\\[\nx = 0, \\frac{\\pi}{3}, \\frac{2\\pi}{3}, \\pi, \\frac{4\\pi}{3}, \\frac{5\\pi}{3}\n\\]\n\n**Solutions:** $x = 0, \\dfrac{\\pi}{3}, \\dfrac{2\\pi}{3}, \\pi, \\dfrac{4\\pi}{3}, \\dfrac{5\\pi}{3}$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Special Techniques"
+    },
+    {
+      "type": "paragraph",
+      "text": "Some equations require clever manipulation or the use of identities \nin non-obvious ways."
+    },
+    {
+      "type": "example",
+      "id": "example-7.12",
+      "number": "7.12",
+      "title": "Using a double-angle identity",
+      "problem": "Solve $\\cos 2x = \\cos x$ for $0 \\le x < 2\\pi$.",
+      "solution": "Rewrite $\\cos 2x$ using the identity $\\cos 2x = 2\\cos^2 x - 1$:\n$$\n2\\cos^2 x - 1 &= \\cos x \\\\\n2\\cos^2 x - \\cos x - 1 &= 0 \\\\\n(2\\cos x + 1)(\\cos x - 1) &= 0\n$$\n\nSo $\\cos x = -\\frac{1}{2}$ or $\\cos x = 1$.\n\n**Case 1:** $\\cos x = -\\frac{1}{2}$ gives $x = \\frac{2\\pi}{3}, \\frac{4\\pi}{3}$\n\n**Case 2:** $\\cos x = 1$ gives $x = 0$\n\n**Solutions:** $x = 0, \\dfrac{2\\pi}{3}, \\dfrac{4\\pi}{3}$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.13",
+      "number": "7.13",
+      "title": "Factoring with double-angle",
+      "problem": "Solve $2\\sin\\theta\\cos\\theta = 1$ for $0 \\le \\theta < 2\\pi$.",
+      "solution": "Recognize that $2\\sin\\theta\\cos\\theta = \\sin 2\\theta$:\n\\[\n\\sin 2\\theta = 1\n\\]\n\nLet $u = 2\\theta$. In $[0, 4\\pi)$, sine equals 1 at:\n\\[\nu = \\frac{\\pi}{2}, \\quad \\frac{5\\pi}{2}\n\\]\n\nDivide by 2:\n\\[\n\\theta = \\frac{\\pi}{4}, \\quad \\frac{5\\pi}{4}\n\\]\n\n**Solutions:** $\\theta = \\dfrac{\\pi}{4}, \\dfrac{5\\pi}{4}$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.14",
+      "number": "7.14",
+      "title": "An equation with sine and cosine sum",
+      "problem": "Solve $\\sin\\theta + \\cos\\theta = 1$ for $0 \\le \\theta < 2\\pi$.",
+      "solution": "Square both sides (we'll need to check for extraneous solutions):\n$$\n(\\sin\\theta + \\cos\\theta)^2 &= 1 \\\\\n\\sin^2\\theta + 2\\sin\\theta\\cos\\theta + \\cos^2\\theta &= 1 \\\\\n1 + 2\\sin\\theta\\cos\\theta &= 1 \\\\\n\\sin 2\\theta &= 0\n$$\n\nSo $2\\theta = 0, \\pi, 2\\pi, 3\\pi$, giving $\\theta = 0, \\frac{\\pi}{2}, \\pi, \\frac{3\\pi}{2}$.\n\n**Check each in the original equation:**\n\n- $\\theta = 0$: $\\sin 0 + \\cos 0 = 0 + 1 = 1$ \n\n- $\\theta = \\frac{\\pi}{2}$: $\\sin\\frac{\\pi}{2} + \\cos\\frac{\\pi}{2} = 1 + 0 = 1$ \n\n- $\\theta = \\pi$: $\\sin\\pi + \\cos\\pi = 0 + (-1) = -1$ 55\n\n- $\\theta = \\frac{3\\pi}{2}$: $\\sin\\frac{3\\pi}{2} + \\cos\\frac{3\\pi}{2} = -1 + 0 = -1$ 55\n\n**Solutions:** $\\theta = 0, \\dfrac{\\pi}{2}$"
+    },
+    {
+      "type": "warning",
+      "id": "warning-7.4",
+      "number": null,
+      "title": "Always Check After Squaring",
+      "content": "Squaring both sides of an equation can introduce extraneous solutions. \nAlways substitute your answers back into the original equation to verify."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "General Solutions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Sometimes we want all solutions, not just those in one period."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "General Solution",
+      "content": "The **general solution** of a trigonometric equation includes all \npossible solutions, typically expressed using an integer parameter $n$.\n\nFor $\\sin\\theta = k$ with particular solutions $\\theta_1$ and $\\pi - \\theta_1$:\n\\[\n\\theta = \\theta_1 + 2\\pi n \\quad \\text{or} \\quad \\theta = (\\pi - \\theta_1) + 2\\pi n, \\quad n \\in \\mathbb{Z}\n\\]\n\nFor $\\tan\\theta = k$ with particular solution $\\theta_1$:\n\\[\n\\theta = \\theta_1 + \\pi n, \\quad n \\in \\mathbb{Z}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.15",
+      "number": "7.15",
+      "title": "General solution",
+      "problem": "Find the general solution of $\\tan\\theta = \\sqrt{3}$.",
+      "solution": "The reference angle is $\\frac{\\pi}{3}$. Since tangent has period $\\pi$:\n\\[\n\\theta = \\frac{\\pi}{3} + \\pi n, \\quad n \\in \\mathbb{Z}\n\\]\nThis represents all solutions: $\\ldots, -\\frac{2\\pi}{3}, \\frac{\\pi}{3}, \\frac{4\\pi}{3}, \\frac{7\\pi}{3}, \\ldots$"
+    },
+    {
+      "type": "remark",
+      "id": "remark-7.4",
+      "number": null,
+      "title": "Infinite Solutions",
+      "content": "General solutions remind us that trigonometric functions cycle forever. \nThe equation $\\sin\\theta = \\frac{1}{2}$ has infinitely many solutions, \none in each period of sine. This periodicity reflects the circular \nnature of these functions—and perhaps echoes the cycles we see \nthroughout creation: seasons, tides, the rhythm of day and night. \n\"For everything there is a season\" (Ecclesiastes 3:1)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "Solve for $0 \\le \\theta < 2\\pi$:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\sin\\theta = \\dfrac{\\sqrt{2}}{2}$",
+        "$\\cos\\theta = -\\dfrac{1}{2}$",
+        "$\\tan\\theta = -\\sqrt{3}$",
+        "$2\\sin\\theta + 1 = 0$",
+        "$\\sqrt{3}\\tan\\theta - 1 = 0$",
+        "$2\\cos\\theta = \\sqrt{2}$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Solve for $0 \\le x < 2\\pi$:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\sin^2 x = 1$",
+        "$\\cos^2 x = \\dfrac{1}{4}$",
+        "$\\tan^2 x = 3$",
+        "$4\\sin^2 x - 3 = 0$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Solve for $0 \\le \\theta < 2\\pi$:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$2\\sin^2\\theta - \\sin\\theta = 0$",
+        "$\\cos^2\\theta - \\cos\\theta - 2 = 0$",
+        "$2\\cos^2\\theta + \\cos\\theta - 1 = 0$",
+        "$\\sin^2\\theta + \\sin\\theta - 2 = 0$",
+        "$\\tan^2\\theta - \\tan\\theta = 0$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Solve for $0 \\le \\theta < 2\\pi$:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\sin 2\\theta = 0$",
+        "$\\cos 2\\theta = -\\dfrac{1}{2}$",
+        "$\\tan 2\\theta = 1$",
+        "$\\sin 3x = \\dfrac{1}{2}$",
+        "$\\cos 2x = 1$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Solve for $0 \\le x < 2\\pi$:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\sin^2 x - \\cos^2 x = 0$",
+        "$\\sec^2 x - 2 = 0$",
+        "$\\csc^2 x = 2$",
+        "$\\cot x = -1$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Solve for $0 \\le \\theta < 2\\pi$:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$2\\cos^2\\theta + \\sin\\theta = 1$",
+        "$\\cos 2\\theta + \\sin\\theta = 0$",
+        "$\\cos 2\\theta = \\sin\\theta$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Find the general solution:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\sin\\theta = 0$",
+        "$\\cos\\theta = \\dfrac{1}{2}$",
+        "$\\tan\\theta = -1$"
+      ]
+    }
+  ]
+}

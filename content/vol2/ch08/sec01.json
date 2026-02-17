@@ -1,0 +1,428 @@
+{
+  "id": "vol2-ch08-sec01",
+  "title": "Integration by Parts",
+  "chapter": 8,
+  "section": 1,
+  "book": "vol2",
+  "epigraph": {
+    "text": "Two are better than one, because they have a good reward \nfor their toil.",
+    "reference": "Ecclesiastes 4:9"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "$U$-substitution reversed the Chain Rule and unlocked an entire family of\nintegrals. But consider the integral\n\\[\n \\int x\\, e^{x}\\dx.\n\\]\nNo substitution will untangle the product $x \\cdot e^{x}$. If we set\n$u = x$, then $du = dx$, and the $e^{x}$ remains with nothing to absorb.\nIf we set $u = e^{x}$, then $du = e^{x}\\dx$, and the $x$ has nowhere to go.\nWe need a new tool—one that reverses not the Chain Rule, but the\n**Product Rule**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Deriving the Formula"
+    },
+    {
+      "type": "paragraph",
+      "text": "Recall the Product Rule for derivatives: if $u$ and $v$ are differentiable\nfunctions of $x$, then\n\\[\n \\deriv{}{x}\\bigl[u(x)\\,v(x)\\bigr]\n = u(x)\\,v'(x) + v(x)\\,u'(x).\n\\]\nWe rearrange to isolate the term $u\\,v'$:\n\\[\n u(x)\\,v'(x)\n = \\deriv{}{x}\\bigl[u(x)\\,v(x)\\bigr] - v(x)\\,u'(x).\n\\]\nNow integrate both sides with respect to $x$:\n\\[\n \\int u(x)\\,v'(x)\\dx\n = u(x)\\,v(x) - \\int v(x)\\,u'(x)\\dx.\n\\]\nWriting $dv = v'(x)\\dx$ and $du = u'(x)\\dx$, we arrive at the compact form."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Integration by Parts",
+      "content": "If $u$ and $v$ are differentiable functions, then\n\\[\n \\int u\\, dv = uv - \\int v\\, du.\n\\]\nFor definite integrals,\n\\[\n \\defint{a}{b} u\\, dv\n = \\bigl[uv\\bigr]_{a}^{b} - \\defint{a}{b} v\\, du.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The strategy is this: given a product that resists $u$-substitution, we split\nit into a part $u$ (which we differentiate) and a part $dv$ (which we\nintegrate). If we choose wisely, the new integral $\\int v\\,du$ will be\nsimpler than the original."
+    },
+    {
+      "type": "warning",
+      "id": "warning-8.1",
+      "number": null,
+      "title": "Integration by parts transforms, it doesn't always solve",
+      "content": "Integration by parts converts one integral into another. The goal is to make\nthe new integral $\\int v\\,du$ *easier* than the original $\\int u\\,dv$.\nA poor choice of $u$ and $dv$ can make things worse. Always ask: \"Does my\nchoice simplify the problem?\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Choosing $u$ and $dv$ — The LIATE Guideline"
+    },
+    {
+      "type": "paragraph",
+      "text": "The success of integration by parts hinges on a wise choice of $u$. The\nfollowing mnemonic ranks function types in the order they should typically be\nchosen for $u$:"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-8.1",
+      "number": null,
+      "title": "LIATE Guideline for Choosing $u$",
+      "content": "When applying integration by parts, let $u$ be the first type that appears\nin your integrand, reading down this list:\n\n1. **L**ogarithmic functions: $\\ln x$, $\\log_{b} x$\n\n2. **I**nverse trigonometric functions: $\\arctan x$, $\\arcsin x$, etc.\n\n3. **A**lgebraic functions: $x$, $x^{2}$, $x^{n}$, polynomials\n\n4. **T**rigonometric functions: $\\sin x$, $\\cos x$, $\\tan x$, etc.\n\n5. **E**xponential functions: $e^{x}$, $2^{x}$, $a^{x}$\nEverything not chosen as $u$ becomes part of $dv$.\n\n**Why does this work?** Logarithmic and inverse trig functions are hard\nto integrate but easy to differentiate—so we want to differentiate them\n(put them in $u$). Exponentials are trivial to integrate—so we want to\nintegrate them (put them in $dv$)."
+    },
+    {
+      "type": "warning",
+      "id": "warning-8.1",
+      "number": null,
+      "title": "LIATE is a guideline, not a law",
+      "content": "LIATE works in the vast majority of cases, but there are exceptions. Always\ncheck: does your choice of $u$ and $dv$ make $\\int v\\,du$ simpler? If not,\ntry a different split."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "First Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "$\\displaystyle\\int x\\,e^{x}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int x\\, e^{x}\\dx$.",
+      "solution": "By LIATE, the algebraic factor $x$ is chosen as $u$:\n\\[\n u = x, \\qquad dv = e^{x}\\dx,\n \\qquad\\Longrightarrow\\qquad\n du = dx, \\qquad v = e^{x}.\n\\]\nApplying the formula:\n$$\n \\int x\\, e^{x}\\dx\n &= x\\,e^{x} - \\int e^{x}\\dx \\\\\n &= x\\,e^{x} - e^{x} + C \\\\\n &= e^{x}(x - 1) + C.\n$$\nWe can verify by differentiating: $\\deriv{}{x}\\bigl[e^{x}(x-1)\\bigr]\n= e^{x}(x-1) + e^{x} = x\\,e^{x}$.\\;"
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "$\\displaystyle\\int x\\sin x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int x\\sin x\\dx$.",
+      "solution": "Again, LIATE directs us to let $u = x$:\n\\[\n u = x, \\qquad dv = \\sin x\\dx,\n \\qquad\\Longrightarrow\\qquad\n du = dx, \\qquad v = -\\cos x.\n\\]\nThen\n$$\n \\int x\\sin x\\dx\n &= -x\\cos x - \\int (-\\cos x)\\dx \\\\\n &= -x\\cos x + \\int \\cos x\\dx \\\\\n &= -x\\cos x + \\sin x + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "$\\displaystyle\\int x\\cos(3x)\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int x\\cos(3x)\\dx$.",
+      "solution": "Let $u = x$ and $dv = \\cos(3x)\\dx$. Then $du = dx$ and\n$v = \\frac{1}{3}\\sin(3x)$. Applying integration by parts:\n$$\n \\int x\\cos(3x)\\dx\n &= x\\cdot\\frac{\\sin(3x)}{3} - \\int \\frac{\\sin(3x)}{3}\\dx \\\\[4pt]\n &= \\frac{x\\sin(3x)}{3} + \\frac{\\cos(3x)}{9} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.4",
+      "number": "8.4",
+      "title": "$\\displaystyle\\int \\ln x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\ln x\\dx$.",
+      "solution": "At first glance this is not a product. But we can write $\\ln x = \\ln x\n\\cdot 1$ and apply integration by parts with\n\\[\n u = \\ln x, \\qquad dv = dx,\n \\qquad\\Longrightarrow\\qquad\n du = \\frac{1}{x}\\dx, \\qquad v = x.\n\\]\nThen\n$$\n \\int \\ln x\\dx\n &= x\\ln x - \\int x \\cdot \\frac{1}{x}\\dx \\\\\n &= x\\ln x - \\int 1\\dx \\\\\n &= x\\ln x - x + C.\n$$\nThis is a technique worth remembering: *integration by parts can handle\nintegrands that are not obvious products by pairing them with $dv = dx$.*"
+    },
+    {
+      "type": "example",
+      "id": "example-8.5",
+      "number": "8.5",
+      "title": "$\\displaystyle\\int \\ln(x^{2})\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\ln(x^{2})\\dx$ for $x > 0$.",
+      "solution": "First simplify using logarithm properties: $\\ln(x^{2}) = 2\\ln x$. Therefore\n\\[\n \\int \\ln(x^{2})\\dx = 2\\int \\ln x\\dx = 2(x\\ln x - x) + C\n = 2x\\ln x - 2x + C.\n\\]\nAlternatively, we could write this as $x\\ln(x^{2}) - 2x + C$ to match the\noriginal form."
+    },
+    {
+      "type": "example",
+      "id": "example-8.6",
+      "number": "8.6",
+      "title": "$\\displaystyle\\int \\arctan x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\arctan x\\dx$.",
+      "solution": "By LIATE, the inverse trig function takes priority:\n\\[\n u = \\arctan x, \\qquad dv = dx,\n \\qquad\\Longrightarrow\\qquad\n du = \\frac{1}{1+x^{2}}\\dx, \\qquad v = x.\n\\]\nThen\n$$\n \\int \\arctan x\\dx\n &= x\\arctan x - \\int \\frac{x}{1+x^{2}}\\dx.\n$$\nThe remaining integral yields to the substitution $w = 1 + x^{2}$,\n$dw = 2x\\dx$:\n\\[\n \\int \\frac{x}{1+x^{2}}\\dx = \\frac{1}{2}\\ln(1+x^{2}) + C.\n\\]\nTherefore,\n\\[\n \\int \\arctan x\\dx = x\\arctan x - \\frac{1}{2}\\ln(1+x^{2}) + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.7",
+      "number": "8.7",
+      "title": "$\\displaystyle\\int \\arcsin x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\arcsin x\\dx$.",
+      "solution": "Let $u = \\arcsin x$ and $dv = dx$, so $du = \\frac{1}{\\sqrt{1-x^{2}}}\\dx$ \nand $v = x$. Then\n$$\n \\int \\arcsin x\\dx\n &= x\\arcsin x - \\int \\frac{x}{\\sqrt{1-x^{2}}}\\dx.\n$$\nFor the remaining integral, let $w = 1 - x^{2}$, $dw = -2x\\dx$:\n\\[\n \\int \\frac{x}{\\sqrt{1-x^{2}}}\\dx = -\\frac{1}{2}\\int w^{-1/2}\\,dw\n = -\\sqrt{w} = -\\sqrt{1-x^{2}} + C.\n\\]\nTherefore,\n\\[\n \\int \\arcsin x\\dx = x\\arcsin x + \\sqrt{1-x^{2}} + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.8",
+      "number": "8.8",
+      "title": "$\\displaystyle\\int x\\,2^{x}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int x\\,2^{x}\\dx$.",
+      "solution": "Let $u = x$ and $dv = 2^{x}\\dx$. Then $du = dx$. For $v$, recall that\n$\\int a^{x}\\dx = \\frac{a^{x}}{\\ln a} + C$ when $a > 0$, $a \\neq 1$. So\n$v = \\frac{2^{x}}{\\ln 2}$.\n\nApplying integration by parts:\n$$\n \\int x\\,2^{x}\\dx\n &= \\frac{x\\cdot 2^{x}}{\\ln 2} - \\int \\frac{2^{x}}{\\ln 2}\\dx \\\\[4pt]\n &= \\frac{x\\cdot 2^{x}}{\\ln 2} - \\frac{2^{x}}{(\\ln 2)^{2}} + C \\\\[4pt]\n &= \\frac{2^{x}}{\\ln 2}\\left(x - \\frac{1}{\\ln 2}\\right) + C.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Repeated Integration by Parts"
+    },
+    {
+      "type": "paragraph",
+      "text": "Some integrals require integration by parts more than once. The principle is\nthe same: each application should produce a simpler integral."
+    },
+    {
+      "type": "example",
+      "id": "example-8.9",
+      "number": "8.9",
+      "title": "$\\displaystyle\\int x^{2}\\,e^{x}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int x^{2}\\,e^{x}\\dx$.",
+      "solution": "**First application.** Let $u = x^{2}$, $dv = e^{x}\\dx$,\nso $du = 2x\\dx$, $v = e^{x}$.\n\\[\n \\int x^{2}\\,e^{x}\\dx\n = x^{2}\\,e^{x} - 2\\int x\\,e^{x}\\dx.\n\\]\nThe integral $\\int x\\,e^{x}\\dx$ is the one we evaluated in\nExample [ex:ibp-xex].\n\n**Second application.** From Example [ex:ibp-xex],\n$\\int x\\,e^{x}\\dx = e^{x}(x-1) + C$. Therefore\n$$\n \\int x^{2}\\,e^{x}\\dx\n &= x^{2}\\,e^{x} - 2\\bigl[e^{x}(x-1)\\bigr] + C \\\\\n &= x^{2}\\,e^{x} - 2x\\,e^{x} + 2\\,e^{x} + C \\\\\n &= e^{x}(x^{2} - 2x + 2) + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.10",
+      "number": "8.10",
+      "title": "$\\displaystyle\\int x^{2}\\cos x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int x^{2}\\cos x\\dx$.",
+      "solution": "**First application.** Let $u = x^{2}$, $dv = \\cos x\\dx$,\nso $du = 2x\\dx$, $v = \\sin x$.\n\\[\n \\int x^{2}\\cos x\\dx = x^{2}\\sin x - 2\\int x\\sin x\\dx.\n\\]\n\n**Second application.** For $\\int x\\sin x\\dx$, let $u = x$,\n$dv = \\sin x\\dx$, so $du = dx$, $v = -\\cos x$.\n\\[\n \\int x\\sin x\\dx = -x\\cos x + \\int \\cos x\\dx = -x\\cos x + \\sin x + C.\n\\]\n\n**Combining:**\n$$\n \\int x^{2}\\cos x\\dx\n &= x^{2}\\sin x - 2(-x\\cos x + \\sin x) + C \\\\\n &= x^{2}\\sin x + 2x\\cos x - 2\\sin x + C \\\\\n &= (x^{2} - 2)\\sin x + 2x\\cos x + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.11",
+      "number": "8.11",
+      "title": "$\\displaystyle\\int x^{2}\\sin(2x)\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int x^{2}\\sin(2x)\\dx$.",
+      "solution": "**First application.** Let $u = x^{2}$, $dv = \\sin(2x)\\dx$,\nso $du = 2x\\dx$, $v = -\\frac{1}{2}\\cos(2x)$.\n\\[\n \\int x^{2}\\sin(2x)\\dx = -\\frac{x^{2}}{2}\\cos(2x) + \\int x\\cos(2x)\\dx.\n\\]\n\n**Second application.** For $\\int x\\cos(2x)\\dx$, let $u = x$,\n$dv = \\cos(2x)\\dx$, so $du = dx$, $v = \\frac{1}{2}\\sin(2x)$.\n\\[\n \\int x\\cos(2x)\\dx = \\frac{x}{2}\\sin(2x) - \\frac{1}{2}\\int \\sin(2x)\\dx\n = \\frac{x}{2}\\sin(2x) + \\frac{1}{4}\\cos(2x) + C.\n\\]\n\n**Combining:**\n$$\n \\int x^{2}\\sin(2x)\\dx\n &= -\\frac{x^{2}}{2}\\cos(2x) + \\frac{x}{2}\\sin(2x) + \\frac{1}{4}\\cos(2x) + C \\\\\n &= \\frac{1}{4}(1 - 2x^{2})\\cos(2x) + \\frac{x}{2}\\sin(2x) + C.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Tabular Integration (The Fast Track)"
+    },
+    {
+      "type": "paragraph",
+      "text": "When one factor is a polynomial and the other is easily integrated\nrepeatedly (such as $e^{x}$, $\\sin x$, $\\cos x$), **tabular\nintegration** provides a compact shortcut."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-8.1",
+      "number": null,
+      "title": "Tabular Integration",
+      "content": "To evaluate $\\int p(x)\\,f(x)\\dx$ where $p(x)$ is a polynomial:\n\n1. List successive derivatives of $p(x)$ in a column until you reach $0$.\n\n2. List successive antiderivatives of $f(x)$ in a parallel column.\n\n3. Draw diagonal arrows from each derivative to the antiderivative one\n row below, alternating signs: $+$, $-$, $+$, $-$, …\n\n4. The answer is the sum of the diagonal products."
+    },
+    {
+      "type": "example",
+      "id": "example-8.12",
+      "number": "8.12",
+      "title": "Tabular method for $\\displaystyle\\int x^{3}\\,e^{2x}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int x^{3}\\,e^{2x}\\dx$ using the tabular method.",
+      "solution": "We differentiate $x^{3}$ repeatedly and antidifferentiate $e^{2x}$ repeatedly:\n\n| Sign | Derivatives of $x^{3}$ | Antiderivatives of $e^{2x}$ |\n| $+$ | $x^{3}$ | $\\tfrac{1}{2}e^{2x}$ |\n| $-$ | $3x^{2}$ | $\\tfrac{1}{4}e^{2x}$ |\n| $+$ | $6x$ | $\\tfrac{1}{8}e^{2x}$ |\n| $-$ | $6$ | $\\tfrac{1}{16}e^{2x}$ |\n| $0$ |\n\nReading off the diagonal products:\n$$\n \\int x^{3}\\,e^{2x}\\dx\n &= (+)\\,x^{3}\\cdot\\tfrac{1}{2}e^{2x}\n + (-)\\,3x^{2}\\cdot\\tfrac{1}{4}e^{2x}\n + (+)\\,6x\\cdot\\tfrac{1}{8}e^{2x}\n + (-)\\,6\\cdot\\tfrac{1}{16}e^{2x} + C \\\\[4pt]\n &= e^{2x}\\!\\left(\\frac{x^{3}}{2}\n - \\frac{3x^{2}}{4}\n + \\frac{6x}{8}\n - \\frac{6}{16}\\right) + C \\\\[4pt]\n &= e^{2x}\\!\\left(\\frac{x^{3}}{2}\n - \\frac{3x^{2}}{4}\n + \\frac{3x}{4}\n - \\frac{3}{8}\\right) + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.13",
+      "number": "8.13",
+      "title": "Tabular method for $\\displaystyle\\int x^{4}\\cos x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int x^{4}\\cos x\\dx$ using the tabular method.",
+      "solution": "| Sign | Derivatives of $x^{4}$ | Antiderivatives of $\\cos x$ |\n| $+$ | $x^{4}$ | $\\sin x$ |\n| $-$ | $4x^{3}$ | $-\\cos x$ |\n| $+$ | $12x^{2}$ | $-\\sin x$ |\n| $-$ | $24x$ | $\\cos x$ |\n| $+$ | $24$ | $\\sin x$ |\n| $0$ |\n\nReading off the products:\n$$\n \\int x^{4}\\cos x\\dx\n &= x^{4}\\sin x - 4x^{3}(-\\cos x) + 12x^{2}(-\\sin x) \\\\\n &\\quad {} - 24x(\\cos x) + 24(\\sin x) + C \\\\[4pt]\n &= x^{4}\\sin x + 4x^{3}\\cos x - 12x^{2}\\sin x - 24x\\cos x + 24\\sin x + C \\\\[4pt]\n &= (x^{4} - 12x^{2} + 24)\\sin x + (4x^{3} - 24x)\\cos x + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.14",
+      "number": "8.14",
+      "title": "Tabular method for $\\displaystyle\\int (x^{2}+3x)\\,e^{-x}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int (x^{2}+3x)\\,e^{-x}\\dx$.",
+      "solution": "| Sign | Derivatives of $x^{2}+3x$ | Antiderivatives of $e^{-x}$ |\n| $+$ | $x^{2}+3x$ | $-e^{-x}$ |\n| $-$ | $2x+3$ | $e^{-x}$ |\n| $+$ | $2$ | $-e^{-x}$ |\n| $0$ |\n\n$$\n \\int (x^{2}+3x)\\,e^{-x}\\dx\n &= (x^{2}+3x)(-e^{-x}) - (2x+3)(e^{-x}) + 2(-e^{-x}) + C \\\\\n &= -e^{-x}\\bigl[(x^{2}+3x) + (2x+3) + 2\\bigr] + C \\\\\n &= -e^{-x}(x^{2} + 5x + 5) + C.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The \"Going in Circles\" Technique"
+    },
+    {
+      "type": "paragraph",
+      "text": "Some integrals do not simplify after one or two applications of integration\nby parts—they *return to the original integral*. Far from a dead end,\nthis is actually a gift: it gives us an equation we can solve."
+    },
+    {
+      "type": "example",
+      "id": "example-8.15",
+      "number": "8.15",
+      "title": "$\\displaystyle\\int e^{x}\\sin x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int e^{x}\\sin x\\dx$.",
+      "solution": "Let $I = \\int e^{x}\\sin x\\dx$.\n\n**First application.** Let $u = \\sin x$, $dv = e^{x}\\dx$,\nso $du = \\cos x\\dx$, $v = e^{x}$.\n\\[\n I = e^{x}\\sin x - \\int e^{x}\\cos x\\dx.\n\\]\n\n**Second application.** For the remaining integral, let $u = \\cos x$,\n$dv = e^{x}\\dx$, so $du = -\\sin x\\dx$, $v = e^{x}$.\n\\[\n \\int e^{x}\\cos x\\dx\n = e^{x}\\cos x - \\int e^{x}(-\\sin x)\\dx\n = e^{x}\\cos x + \\int e^{x}\\sin x\\dx\n = e^{x}\\cos x + I.\n\\]\nSubstituting back:\n\\[\n I = e^{x}\\sin x - \\bigl(e^{x}\\cos x + I\\bigr)\n = e^{x}\\sin x - e^{x}\\cos x - I.\n\\]\nNow solve for $I$:\n\\[\n 2I = e^{x}(\\sin x - \\cos x),\n \\qquad\\Longrightarrow\\qquad\n I = \\frac{e^{x}(\\sin x - \\cos x)}{2} + C.\n\\]"
+    },
+    {
+      "type": "warning",
+      "id": "warning-8.1",
+      "number": null,
+      "title": "Consistency in the circular method",
+      "content": "When applying integration by parts twice in the circular method, you must\nmake the *same type of choice* each time. If you let $u$ be the\ntrigonometric factor in the first step, you must also let $u$ be the\ntrigonometric factor in the second step. Switching choices will simply undo\nyour work and yield $0 = 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.16",
+      "number": "8.16",
+      "title": "$\\displaystyle\\int e^{x}\\cos x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int e^{x}\\cos x\\dx$.",
+      "solution": "Let $J = \\int e^{x}\\cos x\\dx$.\n\n**First application.** Let $u = \\cos x$, $dv = e^{x}\\dx$,\nso $du = -\\sin x\\dx$, $v = e^{x}$.\n\\[\n J = e^{x}\\cos x + \\int e^{x}\\sin x\\dx.\n\\]\n\n**Second application.** For $\\int e^{x}\\sin x\\dx$, let $u = \\sin x$,\n$dv = e^{x}\\dx$:\n\\[\n \\int e^{x}\\sin x\\dx = e^{x}\\sin x - \\int e^{x}\\cos x\\dx = e^{x}\\sin x - J.\n\\]\n\nSubstituting back:\n\\[\n J = e^{x}\\cos x + e^{x}\\sin x - J.\n\\]\nSolving for $J$:\n\\[\n 2J = e^{x}(\\cos x + \\sin x),\n \\qquad\\Longrightarrow\\qquad\n J = \\frac{e^{x}(\\cos x + \\sin x)}{2} + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.17",
+      "number": "8.17",
+      "title": "$\\displaystyle\\int e^{2x}\\sin(3x)\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int e^{2x}\\sin(3x)\\dx$.",
+      "solution": "Let $I = \\int e^{2x}\\sin(3x)\\dx$.\n\n**First application.** Let $u = \\sin(3x)$, $dv = e^{2x}\\dx$,\nso $du = 3\\cos(3x)\\dx$, $v = \\frac{1}{2}e^{2x}$.\n\\[\n I = \\frac{1}{2}e^{2x}\\sin(3x) - \\frac{3}{2}\\int e^{2x}\\cos(3x)\\dx.\n\\]\n\n**Second application.** For $\\int e^{2x}\\cos(3x)\\dx$, let\n$u = \\cos(3x)$, $dv = e^{2x}\\dx$:\n\\[\n \\int e^{2x}\\cos(3x)\\dx = \\frac{1}{2}e^{2x}\\cos(3x)\n + \\frac{3}{2}\\int e^{2x}\\sin(3x)\\dx\n = \\frac{1}{2}e^{2x}\\cos(3x) + \\frac{3}{2}I.\n\\]\n\nSubstituting back:\n\\[\n I = \\frac{1}{2}e^{2x}\\sin(3x)\n - \\frac{3}{2}\\left(\\frac{1}{2}e^{2x}\\cos(3x) + \\frac{3}{2}I\\right)\n = \\frac{1}{2}e^{2x}\\sin(3x) - \\frac{3}{4}e^{2x}\\cos(3x) - \\frac{9}{4}I.\n\\]\n\nSolving:\n\\[\n I + \\frac{9}{4}I = \\frac{1}{2}e^{2x}\\sin(3x) - \\frac{3}{4}e^{2x}\\cos(3x),\n \\qquad\n \\frac{13}{4}I = \\frac{e^{2x}}{4}\\bigl(2\\sin(3x) - 3\\cos(3x)\\bigr).\n\\]\n\\[\n I = \\frac{e^{2x}(2\\sin(3x) - 3\\cos(3x))}{13} + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.18",
+      "number": "8.18",
+      "title": "$\\displaystyle\\int e^{-x}\\cos(2x)\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int e^{-x}\\cos(2x)\\dx$.",
+      "solution": "Let $I = \\int e^{-x}\\cos(2x)\\dx$.\n\n**First application.** Let $u = \\cos(2x)$, $dv = e^{-x}\\dx$:\n\\[\n I = -e^{-x}\\cos(2x) - 2\\int e^{-x}\\sin(2x)\\dx.\n\\]\n\n**Second application.** For $\\int e^{-x}\\sin(2x)\\dx$:\n\\[\n \\int e^{-x}\\sin(2x)\\dx = -e^{-x}\\sin(2x) + 2\\int e^{-x}\\cos(2x)\\dx\n = -e^{-x}\\sin(2x) + 2I.\n\\]\n\nSubstituting back:\n\\[\n I = -e^{-x}\\cos(2x) - 2(-e^{-x}\\sin(2x) + 2I)\n = -e^{-x}\\cos(2x) + 2e^{-x}\\sin(2x) - 4I.\n\\]\n\nSolving:\n\\[\n 5I = e^{-x}(2\\sin(2x) - \\cos(2x)),\n \\qquad\n I = \\frac{e^{-x}(2\\sin(2x) - \\cos(2x))}{5} + C.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Reduction Formulas"
+    },
+    {
+      "type": "paragraph",
+      "text": "Integration by parts can produce **reduction formulas**—recursive\nidentities that express an integral in terms of a simpler integral of the\nsame type."
+    },
+    {
+      "type": "example",
+      "id": "example-8.19",
+      "number": "8.19",
+      "title": "Reduction formula for $\\displaystyle\\int \\sin^{n}x\\dx$",
+      "problem": "Derive a reduction formula for $\\displaystyle\\int \\sin^{n}x\\dx$, where\n$n \\geq 2$.",
+      "solution": "Write $\\sin^{n}x = \\sin^{n-1}x \\cdot \\sin x$ and let\n\\[\n u = \\sin^{n-1}x, \\qquad dv = \\sin x\\dx,\n\\]\nso $du = (n-1)\\sin^{n-2}x\\,\\cos x\\dx$ and $v = -\\cos x$. Then\n$$\n \\int \\sin^{n}x\\dx\n &= -\\sin^{n-1}x\\,\\cos x + (n-1)\\int \\sin^{n-2}x\\,\\cos^{2}x\\dx.\n$$\nReplace $\\cos^{2}x = 1 - \\sin^{2}x$:\n$$\n \\int \\sin^{n}x\\dx\n &= -\\sin^{n-1}x\\,\\cos x\n + (n-1)\\int \\sin^{n-2}x\\dx\n - (n-1)\\int \\sin^{n}x\\dx.\n$$\nMove the last term to the left side:\n\\[\n n\\int \\sin^{n}x\\dx\n = -\\sin^{n-1}x\\,\\cos x + (n-1)\\int \\sin^{n-2}x\\dx.\n\\]\nDividing by $n$:\n\\[\n \\int \\sin^{n}x\\dx\n = -\\frac{\\sin^{n-1}x\\,\\cos x}{n}\n + \\frac{n-1}{n}\\int \\sin^{n-2}x\\dx.\n\\]\nEach application reduces the exponent by $2$, eventually reaching\n$\\int \\sin x\\dx$ or $\\int 1\\dx$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.20",
+      "number": "8.20",
+      "title": "Using the reduction formula",
+      "problem": "Evaluate $\\displaystyle\\int \\sin^{4}x\\dx$.",
+      "solution": "Using the reduction formula with $n = 4$:\n\\[\n \\int \\sin^{4}x\\dx = -\\frac{\\sin^{3}x\\cos x}{4}\n + \\frac{3}{4}\\int \\sin^{2}x\\dx.\n\\]\nNow apply it again with $n = 2$:\n\\[\n \\int \\sin^{2}x\\dx = -\\frac{\\sin x\\cos x}{2} + \\frac{1}{2}\\int 1\\dx\n = -\\frac{\\sin x\\cos x}{2} + \\frac{x}{2} + C.\n\\]\nTherefore:\n$$\n \\int \\sin^{4}x\\dx\n &= -\\frac{\\sin^{3}x\\cos x}{4}\n + \\frac{3}{4}\\left(-\\frac{\\sin x\\cos x}{2} + \\frac{x}{2}\\right) + C \\\\\n &= -\\frac{\\sin^{3}x\\cos x}{4} - \\frac{3\\sin x\\cos x}{8} + \\frac{3x}{8} + C.\n$$\nUsing $\\sin x\\cos x = \\frac{1}{2}\\sin(2x)$, this can be written as\n\\[\n \\int \\sin^{4}x\\dx = \\frac{3x}{8} - \\frac{\\sin(2x)}{4}\n + \\frac{\\sin(4x)}{32} + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.21",
+      "number": "8.21",
+      "title": "Reduction formula for $\\displaystyle\\int (\\ln x)^{n}\\dx$",
+      "problem": "Derive a reduction formula for $\\displaystyle\\int (\\ln x)^{n}\\dx$.",
+      "solution": "Let $u = (\\ln x)^{n}$ and $dv = dx$, so $du = \\frac{n(\\ln x)^{n-1}}{x}\\dx$\nand $v = x$.\n$$\n \\int (\\ln x)^{n}\\dx\n &= x(\\ln x)^{n} - \\int x \\cdot \\frac{n(\\ln x)^{n-1}}{x}\\dx \\\\\n &= x(\\ln x)^{n} - n\\int (\\ln x)^{n-1}\\dx.\n$$\nThis gives the reduction formula:\n\\[\n \\int (\\ln x)^{n}\\dx = x(\\ln x)^{n} - n\\int (\\ln x)^{n-1}\\dx.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.22",
+      "number": "8.22",
+      "title": "Using the logarithm reduction formula",
+      "problem": "Evaluate $\\displaystyle\\int (\\ln x)^{3}\\dx$.",
+      "solution": "Applying the reduction formula repeatedly:\n$$\n \\int (\\ln x)^{3}\\dx &= x(\\ln x)^{3} - 3\\int (\\ln x)^{2}\\dx \\\\\n &= x(\\ln x)^{3} - 3\\left[x(\\ln x)^{2} - 2\\int \\ln x\\dx\\right] \\\\\n &= x(\\ln x)^{3} - 3x(\\ln x)^{2} + 6\\int \\ln x\\dx \\\\\n &= x(\\ln x)^{3} - 3x(\\ln x)^{2} + 6(x\\ln x - x) + C \\\\\n &= x(\\ln x)^{3} - 3x(\\ln x)^{2} + 6x\\ln x - 6x + C \\\\\n &= x\\bigl[(\\ln x)^{3} - 3(\\ln x)^{2} + 6\\ln x - 6\\bigr] + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.23",
+      "number": "8.23",
+      "title": "Reduction formula for $\\displaystyle\\int x^{n}e^{x}\\dx$",
+      "problem": "Derive and use a reduction formula for $\\displaystyle\\int x^{n}e^{x}\\dx$.",
+      "solution": "Let $u = x^{n}$ and $dv = e^{x}\\dx$, so $du = nx^{n-1}\\dx$ and $v = e^{x}$.\n\\[\n \\int x^{n}e^{x}\\dx = x^{n}e^{x} - n\\int x^{n-1}e^{x}\\dx.\n\\]\nFor example, with $n = 4$:\n$$\n \\int x^{4}e^{x}\\dx\n &= x^{4}e^{x} - 4\\int x^{3}e^{x}\\dx \\\\\n &= x^{4}e^{x} - 4\\left(x^{3}e^{x} - 3\\int x^{2}e^{x}\\dx\\right) \\\\\n &= x^{4}e^{x} - 4x^{3}e^{x} + 12\\left(x^{2}e^{x} - 2\\int xe^{x}\\dx\\right) \\\\\n &= x^{4}e^{x} - 4x^{3}e^{x} + 12x^{2}e^{x} - 24(xe^{x} - e^{x}) + C \\\\\n &= e^{x}(x^{4} - 4x^{3} + 12x^{2} - 24x + 24) + C.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definite Integrals Using Integration by Parts"
+    },
+    {
+      "type": "example",
+      "id": "example-8.24",
+      "number": "8.24",
+      "title": "Definite integral using IBP",
+      "problem": "Evaluate $\\displaystyle\\defint{1}{e} x^{2}\\ln x\\dx$.",
+      "solution": "By LIATE, let $u = \\ln x$ and $dv = x^{2}\\dx$, so $du = \\dfrac{1}{x}\\dx$\nand $v = \\dfrac{x^{3}}{3}$. Then\n$$\n \\defint{1}{e} x^{2}\\ln x\\dx\n &= \\left[\\frac{x^{3}}{3}\\ln x\\right]_{1}^{e}\n - \\defint{1}{e} \\frac{x^{3}}{3}\\cdot\\frac{1}{x}\\dx \\\\[4pt]\n &= \\left[\\frac{x^{3}}{3}\\ln x\\right]_{1}^{e}\n - \\frac{1}{3}\\defint{1}{e} x^{2}\\dx \\\\[4pt]\n &= \\left(\\frac{e^{3}}{3}\\cdot 1 - \\frac{1}{3}\\cdot 0\\right)\n - \\frac{1}{3}\\left[\\frac{x^{3}}{3}\\right]_{1}^{e} \\\\[4pt]\n &= \\frac{e^{3}}{3}\n - \\frac{1}{9}\\bigl(e^{3} - 1\\bigr)\n = \\frac{3e^{3} - e^{3} + 1}{9}\n = \\frac{2e^{3} + 1}{9}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.25",
+      "number": "8.25",
+      "title": "$\\displaystyle\\defint{0}{\\pi}x\\sin x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\defint{0}{\\pi}x\\sin x\\dx$.",
+      "solution": "Let $u = x$, $dv = \\sin x\\dx$, so $du = dx$, $v = -\\cos x$.\n$$\n \\defint{0}{\\pi}x\\sin x\\dx\n &= \\bigl[-x\\cos x\\bigr]_{0}^{\\pi} + \\defint{0}{\\pi}\\cos x\\dx \\\\\n &= \\bigl[-\\pi\\cos\\pi - 0\\bigr] + \\bigl[\\sin x\\bigr]_{0}^{\\pi} \\\\\n &= -\\pi(-1) + (0 - 0) = \\pi.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.26",
+      "number": "8.26",
+      "title": "$\\displaystyle\\defint{0}{1}x\\,e^{-x}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\defint{0}{1}x\\,e^{-x}\\dx$.",
+      "solution": "Let $u = x$, $dv = e^{-x}\\dx$, so $du = dx$, $v = -e^{-x}$.\n$$\n \\defint{0}{1}x\\,e^{-x}\\dx\n &= \\bigl[-xe^{-x}\\bigr]_{0}^{1} + \\defint{0}{1}e^{-x}\\dx \\\\\n &= -e^{-1} - 0 + \\bigl[-e^{-x}\\bigr]_{0}^{1} \\\\\n &= -e^{-1} + (-e^{-1} + 1) = 1 - 2e^{-1} = 1 - \\frac{2}{e}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.27",
+      "number": "8.27",
+      "title": "$\\displaystyle\\defint{0}^{\\pi/2}x^{2}\\cos x\\dx$",
+      "problem": "Evaluate $\\displaystyle\\defint{0}^{\\pi/2}x^{2}\\cos x\\dx$.",
+      "solution": "Using the result from Example [ex:ibp-x2cosx]:\n\\[\n \\int x^{2}\\cos x\\dx = (x^{2}-2)\\sin x + 2x\\cos x + C.\n\\]\nTherefore:\n$$\n \\defint{0}^{\\pi/2}x^{2}\\cos x\\dx\n &= \\bigl[(x^{2}-2)\\sin x + 2x\\cos x\\bigr]_{0}^{\\pi/2} \\\\\n &= \\left[\\left(\\frac{\\pi^{2}}{4} - 2\\right)(1) + \\pi(0)\\right]\n - \\bigl[(-2)(0) + 0\\bigr] \\\\\n &= \\frac{\\pi^{2}}{4} - 2.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.28",
+      "number": "8.28",
+      "title": "$\\displaystyle\\defint{1}{e^{2}}(\\ln x)^{2}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\defint{1}{e^{2}}(\\ln x)^{2}\\dx$.",
+      "solution": "From the reduction formula:\n$\\int(\\ln x)^{2}\\dx = x(\\ln x)^{2} - 2(x\\ln x - x) + C\n= x(\\ln x)^{2} - 2x\\ln x + 2x + C$.\n\nTherefore:\n$$\n \\defint{1}{e^{2}}(\\ln x)^{2}\\dx\n &= \\bigl[x(\\ln x)^{2} - 2x\\ln x + 2x\\bigr]_{1}^{e^{2}} \\\\\n &= \\bigl[e^{2}(4) - 2e^{2}(2) + 2e^{2}\\bigr] - [0 - 0 + 2] \\\\\n &= 4e^{2} - 4e^{2} + 2e^{2} - 2 = 2e^{2} - 2 = 2(e^{2} - 1).\n$$"
+    },
+    {
+      "type": "historical",
+      "id": "historical-8.1",
+      "number": null,
+      "title": "Brook Taylor (1685--1731)",
+      "content": "Brook Taylor, remembered today for Taylor series, also contributed to the\ndevelopment of integration by parts. His 1715 work *Methodus\nIncrementorum Directa et Inversa* systematized many of the finite-difference\nand summation-by-parts techniques that preceded the integral version. Taylor\nwas a devout Anglican who saw mathematics as a window into divine order. He\nwrote: \"An equation of a curve is its innermost essence made manifest.\""
+    },
+    {
+      "type": "historical",
+      "id": "historical-8.1",
+      "number": null,
+      "title": "Gottfried Wilhelm Leibniz (1646--1716)",
+      "content": "Leibniz, co-inventor of calculus, developed the notation $\\int u\\,dv$ that\nmakes integration by parts so elegant. His notation was designed to be\n\"suggestive\"—to guide the mind toward correct manipulation. Leibniz was\na polymath who made contributions to philosophy, logic, physics, and\ndiplomacy. He believed in a pre-established harmony between mind and nature,\nordained by God, that made mathematics possible."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 25:2",
+      "text": "It is the glory of God to conceal a matter;\nto search out a matter is the glory of kings."
+    },
+    {
+      "type": "scripture",
+      "reference": "Colossians 3:23",
+      "text": "Whatever you do, work heartily, as for the\nLord and not for men."
+    },
+    {
+      "type": "scripture",
+      "reference": "Romans 12:2",
+      "text": "Do not be conformed to this world, but be\ntransformed by the renewal of your mind."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:1",
+      "text": "For everything there is a season, and a\ntime for every matter under heaven."
+    },
+    {
+      "type": "scripture",
+      "reference": "Galatians 6:9",
+      "text": "And let us not grow weary of doing good, for\nin due season we will reap, if we do not give up."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 111:2",
+      "text": "Great are the works of the Lord, studied by all\nwho delight in them."
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 9:24",
+      "text": "Do you not know that in a race all the\nrunners run, but only one receives the prize? So run that you may obtain it."
+    },
+    {
+      "type": "scripture",
+      "reference": "Philippians 3:14",
+      "text": "I press on toward the goal for the prize\nof the upward call of God in Christ Jesus."
+    },
+    {
+      "type": "quote",
+      "author": "George P\\'olya",
+      "text": "If you can't solve a problem, then there is an\neasier problem you can solve: find it."
+    },
+    {
+      "type": "quote",
+      "author": "Isaac Newton",
+      "text": "If I have seen further, it is by standing on the\nshoulders of giants."
+    },
+    {
+      "type": "quote",
+      "author": "Blaise Pascal",
+      "text": "I have made this letter longer than usual because\nI lack the time to make it shorter."
+    },
+    {
+      "type": "quote",
+      "author": "Leonhard Euler",
+      "text": "Nothing takes place in the world whose meaning\nis not that of some maximum or minimum."
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "id": "number-theory-ch09-sec03",
+  "title": "Diffie-Hellman Key Exchange",
+  "chapter": 9,
+  "section": 3,
+  "book": "number-theory",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Diffie-Hellman enables two parties to establish a shared secret over \na public channel."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Protocol"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-9.3",
+      "number": null,
+      "title": "Diffie-Hellman Key Exchange",
+      "content": "**Public parameters:** A large prime $p$ and a generator $g$ of \n$(\\mathbb{Z}/p\\mathbb{Z})^*$.\n\n**Alice:**\n\n1. Choose secret $a$ randomly.\n\n2. Compute $A = g^a \\bmod p$ and send $A$ to Bob.\n\n**Bob:**\n\n1. Choose secret $b$ randomly.\n\n2. Compute $B = g^b \\bmod p$ and send $B$ to Alice.\n\n**Shared secret:** Alice computes $K = B^a = g^{ab}$. Bob computes \n$K = A^b = g^{ab}$. Both have the same key!"
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Diffie-Hellman",
+      "problem": "Let $p = 23$, $g = 5$ (a primitive root mod 23).\n\nAlice: $a = 6$, $A = 5^6 = 15625 \\equiv 8 \\pmod{23}$.\n\nBob: $b = 15$, $B = 5^{15} \\equiv 19 \\pmod{23}$.\n\nAlice computes: $K = 19^6 \\equiv 2 \\pmod{23}$.\n\nBob computes: $K = 8^{15} \\equiv 2 \\pmod{23}$.\n\nShared secret: $K = 2$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Security"
+    },
+    {
+      "type": "paragraph",
+      "text": "An eavesdropper sees $p$, $g$, $A = g^a$, and $B = g^b$. To find $K = g^{ab}$, \nthey would need to solve the **discrete logarithm problem**: \ngiven $g^a$, find $a$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Discrete Logarithm Problem",
+      "content": "No polynomial-time algorithm is known for computing discrete logarithms \nin general groups.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The security of Diffie-Hellman rests on the (conjectured) hardness of \nthe **Computational Diffie-Hellman problem**: given $g^a$ and $g^b$, \ncompute $g^{ab}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "ElGamal Encryption"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-9.3",
+      "number": null,
+      "title": "ElGamal Encryption",
+      "content": "**Key generation:** Choose prime $p$, generator $g$, secret $a$. \nPublic key: $(p, g, A = g^a)$. Private key: $a$.\n\n**Encryption of $m$:**\n\n1. Choose random $k$.\n\n2. Compute $c_1 = g^k$ and $c_2 = m \\cdot A^k \\bmod p$.\n\n3. Ciphertext: $(c_1, c_2)$.\n\n**Decryption:**\n$m = c_2 \\cdot (c_1^a)^{-1} = c_2 \\cdot c_1^{-a} \\bmod p$."
+    },
+    {
+      "type": "proof",
+      "content": "$c_1^a = g^{ka}$ and $c_2 = m \\cdot g^{ak}$, so \n$c_2 / c_1^a = m \\cdot g^{ak} / g^{ka} = m$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Elliptic Curve Cryptography"
+    },
+    {
+      "type": "paragraph",
+      "text": "Modern cryptosystems often use **elliptic curves** \ninstead of $(\\mathbb{Z}/p\\mathbb{Z})^*$. The discrete logarithm problem \non elliptic curves is believed to be harder, allowing shorter keys."
+    }
+  ]
+}

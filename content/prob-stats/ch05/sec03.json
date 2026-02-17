@@ -1,0 +1,83 @@
+{
+  "id": "prob-stats-ch05-sec03",
+  "title": "Covariance and Correlation",
+  "chapter": 5,
+  "section": 3,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "Iron sharpens iron, and one man sharpens another.",
+    "reference": "Proverbs 27:17",
+    "quote": "Correlation is the most powerful tool for prediction that statisticians possess.",
+    "quoteAuthor": "Francis Galton"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "How do we measure the strength and direction of the linear relationship \nbetween two random variables?"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Covariance"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Covariance",
+      "content": "The **covariance** of $X$ and $Y$ is:\n\\[\n \\Cov(X, Y) = \\E[(X - \\mu_X)(Y - \\mu_Y)] = \\E[XY] - \\E[X]\\E[Y]\n\\]"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$\\Cov(X, Y) > 0$: $X$ and $Y$ tend to increase together",
+        "$\\Cov(X, Y) < 0$: when $X$ increases, $Y$ tends to decrease",
+        "$\\Cov(X, Y) = 0$: no linear association (but may still be related!)"
+      ]
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Properties of Covariance",
+      "content": "1. $\\Cov(X, X) = \\Var(X)$\n\n2. $\\Cov(X, Y) = \\Cov(Y, X)$\n\n3. $\\Cov(aX + b, cY + d) = ac \\cdot \\Cov(X, Y)$\n\n4. $\\Var(X + Y) = \\Var(X) + \\Var(Y) + 2\\Cov(X, Y)$",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Correlation"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.2",
+      "number": "5.2",
+      "title": "Correlation",
+      "content": "The **correlation** (or Pearson correlation \ncoefficient) is the standardized covariance:\n\\[\n \\rho_{XY} = \\Corr(X, Y) = \\frac{\\Cov(X, Y)}{\\sigma_X \\sigma_Y}\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Properties of Correlation",
+      "content": "1. $-1 \\leq \\rho \\leq 1$\n\n2. $|\\rho| = 1$ if and only if $Y = aX + b$ for some constants\n\n3. $\\rho = 0$ does not imply independence (see caveat below)\n\n4. Correlation is unitless",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-5.3",
+      "number": null,
+      "title": "Correlation Measures Linear Association Only",
+      "content": "$\\rho = 0$ means no *linear* relationship. Variables can have \nstrong nonlinear relationships yet have $\\rho = 0$. For example, if \n$Y = X^2$ and $X$ is symmetric about 0, then $\\Cov(X, Y) = 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Computing Covariance",
+      "problem": "If $\\E[X] = 3$, $\\E[Y] = 5$, $\\E[XY] = 17$, $\\Var(X) = 4$, $\\Var(Y) = 9$, \nfind the correlation.",
+      "solution": "$\\Cov(X, Y) = \\E[XY] - \\E[X]\\E[Y] = 17 - (3)(5) = 2$\n\n$\\rho = \\frac{2}{\\sqrt{4} \\cdot \\sqrt{9}} = \\frac{2}{6} = \\frac{1}{3}$"
+    }
+  ]
+}

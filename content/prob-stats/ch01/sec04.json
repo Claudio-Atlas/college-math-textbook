@@ -1,0 +1,185 @@
+{
+  "id": "prob-stats-ch01-sec04",
+  "title": "Measures of Spread",
+  "chapter": 1,
+  "section": 4,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "The heavens declare the glory of God, and the sky above proclaims his handiwork.",
+    "reference": "Psalm 19:1",
+    "quote": "It is strange that astronomers have not drawn attention to the remarkable character of certain facts.",
+    "quoteAuthor": "Karl Pearson"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Knowing the center of a distribution tells only half the story. Two \ndistributions can have the same mean but very different spreads. A \ncomplete description requires measures of variability."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Range"
+    },
+    {
+      "type": "paragraph",
+      "text": "The simplest measure of spread is the **range**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.1",
+      "number": "1.1",
+      "title": "Range",
+      "content": "The **range** of a dataset is the difference between the largest \nand smallest observations:\n\\[\n \\text{Range} = \\text{Maximum} - \\text{Minimum}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The range is easy to compute but uses only two values, making it \nextremely sensitive to outliers."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Percentiles and Quartiles"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.2",
+      "number": "1.2",
+      "title": "Percentiles and Quartiles",
+      "content": "The **$p$th percentile** is a value such that \n$p\\%$ of the observations fall at or below it.\n\nThe **quartiles** divide the data into four \nequal parts:\n\n- $Q_1$ (first quartile) = 25th percentile\n\n- $Q_2$ (second quartile) = median = 50th percentile\n\n- $Q_3$ (third quartile) = 75th percentile"
+    },
+    {
+      "type": "paragraph",
+      "text": "To find quartiles: first locate the median, then find the median of \nthe lower half (for $Q_1$) and the median of the upper half (for $Q_3$)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Five-Number Summary and Boxplots"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.3",
+      "number": "1.3",
+      "title": "Five-Number Summary",
+      "content": "The **five-number summary** of a \ndataset consists of:\n\\[\n \\text{Minimum}, \\quad Q_1, \\quad \\text{Median}, \\quad Q_3, \\quad \\text{Maximum}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **boxplot** (or box-and-whisker plot) displays \nthe five-number summary graphically:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "A box spans from $Q_1$ to $Q_3$",
+        "A line inside the box marks the median",
+        "\"Whiskers\" extend to the minimum and maximum"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-1.1",
+      "number": "1.1",
+      "title": "Constructing a Boxplot",
+      "problem": "The ages of 12 participants in a study are: 22, 25, 27, 29, 31, 34, \n36, 38, 41, 45, 52, 61. Find the five-number summary and sketch a \nboxplot.",
+      "solution": "**Minimum:** 22 **Maximum:** 61\n\n**Median:** With $n = 12$, the median is the average of positions \n6 and 7: $\\text{Median} = \\frac{34 + 36}{2} = 35$\n\n**$Q_1$:** Median of lower half (22, 25, 27, 29, 31, 34) is \n$\\frac{27 + 29}{2} = 28$\n\n**$Q_3$:** Median of upper half (36, 38, 41, 45, 52, 61) is \n$\\frac{41 + 45}{2} = 43$\n\nFive-number summary: 22, 28, 35, 43, 61\n\nThe boxplot shows the distribution is slightly skewed right, with \nthe upper whisker longer than the lower."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Interquartile Range (IQR)"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.4",
+      "number": "1.4",
+      "title": "Interquartile Range",
+      "content": "The **interquartile range** is\n\\[\n \\text{IQR} = Q_3 - Q_1\n\\]\nThe IQR measures the spread of the middle 50\\% of the data."
+    },
+    {
+      "type": "paragraph",
+      "text": "The IQR is resistant to outliers since it ignores the extreme 25\\% \non each end."
+    },
+    {
+      "type": "paragraph",
+      "text": "The 1.5 $\\times$ IQR Rule for Outliers"
+    },
+    {
+      "type": "paragraph",
+      "text": "A common rule for identifying potential outliers:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.5",
+      "number": "1.5",
+      "title": "The 1.5 $\\times$ IQR Rule",
+      "content": "An observation is a suspected **outlier** if it \nfalls more than $1.5 \\times \\text{IQR}$ below $Q_1$ or above $Q_3$.\n\nLower fence: $Q_1 - 1.5 \\times \\text{IQR}$\n\nUpper fence: $Q_3 + 1.5 \\times \\text{IQR}$"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Modified boxplots** show whiskers extending to the most extreme \nnon-outlier values, with outliers plotted as individual points."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Variance and Standard Deviation"
+    },
+    {
+      "type": "paragraph",
+      "text": "The most important measures of spread are based on deviations from \nthe mean."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.6",
+      "number": "1.6",
+      "title": "Sample Variance and Standard Deviation",
+      "content": "The **sample variance** of observations \n$x_1, x_2, \\ldots, x_n$ with mean $\\xbar$ is\n\\[\n s^2 = \\frac{\\sum_{i=1}^{n}(x_i - \\xbar)^2}{n-1}\n\\]\n\nThe **sample standard deviation** is\n\\[\n s = \\sqrt{s^2} = \\sqrt{\\frac{\\sum_{i=1}^{n}(x_i - \\xbar)^2}{n-1}}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Why $n-1$ instead of $n$? We lose one \"degree of freedom\" because \nwe use $\\xbar$ (estimated from the data) rather than the true \npopulation mean $\\mu$. This adjustment makes $s^2$ an unbiased \nestimator of the population variance $\\sigma^2$."
+    },
+    {
+      "type": "example",
+      "id": "example-1.2",
+      "number": "1.2",
+      "title": "Computing Variance and Standard Deviation",
+      "problem": "Find $s^2$ and $s$ for the data: 4, 7, 9, 12, 13.",
+      "solution": "First, find the mean: $\\xbar = \\frac{4+7+9+12+13}{5} = 9$\n\nNext, compute deviations and squared deviations:\n\n| $x_i$ | $x_i - \\xbar$ | $(x_i - \\xbar)^2$ |\n| 4 | $-5$ | 25 |\n| 7 | $-2$ | 4 |\n| 9 | 0 | 0 |\n| 12 | 3 | 9 |\n| 13 | 4 | 16 |\n| Sum: | 54 |\n\n\\[\n s^2 = \\frac{54}{5-1} = \\frac{54}{4} = 13.5\n\\]\n\\[\n s = \\sqrt{13.5} \\approx 3.67\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of Standard Deviation"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$s \\geq 0$, with $s = 0$ only when all observations are identical.",
+        "$s$ has the same units as the original data.",
+        "$s$ is *not* resistant—outliers inflate it substantially.",
+        "The mean and standard deviation are natural partners; use them \n together for symmetric distributions."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Choosing Measures of Spread"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-1.4",
+      "number": null,
+      "title": "Which Spread Measure to Use?",
+      "content": "- For **symmetric distributions without outliers**: use \n the standard deviation $s$ (paired with the mean $\\xbar$).\n\n- For **skewed distributions or data with outliers**: use \n the IQR (paired with the median)."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 20:10",
+      "text": "Unequal weights and unequal measures \nare both alike an abomination to the Lord."
+    }
+  ]
+}

@@ -1,0 +1,195 @@
+{
+  "id": "diff-eq-ch03-sec01",
+  "title": "Population Models",
+  "chapter": 3,
+  "section": 1,
+  "book": "diff-eq",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The study of population dynamics is among the oldest and most important applications of differential equations. From predicting human population growth to managing fisheries, from understanding bacterial colonies to modeling the spread of diseases, population models help us make sense of the living world."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Malthusian Model: Exponential Growth"
+    },
+    {
+      "type": "paragraph",
+      "text": "In 1798, the English economist Thomas Malthus proposed a simple but powerful model: the rate of population growth is proportional to the current population size."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.1",
+      "number": "3.1",
+      "title": "Malthusian Growth Model",
+      "content": "If $P(t)$ denotes the population at time $t$, the **Malthusian** or **exponential growth model** states:\n\\[\n\\frac{dP}{dt} = kP\n\\]\nwhere $k > 0$ is the **growth rate constant**, representing the difference between birth and death rates per individual per unit time."
+    },
+    {
+      "type": "paragraph",
+      "text": "This is a separable first-order equation. Separating variables:\n\\[\n\\frac{dP}{P} = k\\,dt\n\\]\nIntegrating both sides:\n\\[\n\\ln|P| = kt + C\n\\]\nIf $P(0) = P_0$ is the initial population, we find $C = \\ln P_0$, giving us:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "Solution to Malthusian Model",
+      "content": "The solution to the initial value problem\n\\[\n\\frac{dP}{dt} = kP, \\quad P(0) = P_0\n\\]\nis the exponential function\n\\[\nP(t) = P_0 e^{kt}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "When $k > 0$, the population grows without bound. When $k < 0$, the population decays to zero. The quantity $\\tau = 1/|k|$ is called the **time constant**, and the **doubling time** (when $k > 0$) is $T_2 = \\ln 2 / k$."
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Bacterial Growth",
+      "problem": "A bacterial culture initially contains 1000 cells. After 3 hours, the population has grown to 8000 cells. Assuming exponential growth:\n\n1. Find the growth rate constant $k$.\n\n2. Find the population after 5 hours.\n\n3. Find the doubling time.\n\n**Solution.**\n\n(a) We have $P_0 = 1000$ and $P(3) = 8000$. Using $P(t) = P_0 e^{kt}$:\n\\[\n8000 = 1000 e^{3k}\n\\]\n\\[\n8 = e^{3k} \\implies 3k = \\ln 8 = 3\\ln 2\n\\]\n\\[\nk = \\ln 2 \\approx 0.693 \\text{ per hour}\n\\]\n\n(b) The population after 5 hours:\n\\[\nP(5) = 1000 e^{5 \\ln 2} = 1000 \\cdot 2^5 = 32{,}000 \\text{ cells}\n\\]\n\n(c) The doubling time:\n\\[\nT_2 = \\frac{\\ln 2}{k} = \\frac{\\ln 2}{\\ln 2} = 1 \\text{ hour}\n\\]\nThis confirms our model: starting from 1000, doubling each hour gives 2000, 4000, 8000 at $t = 1, 2, 3$ hours.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Radioactive Decay",
+      "problem": "Carbon-14 has a half-life of 5730 years. A sample initially contains 100 mg of C-14.\n\n1. Find the decay constant $k$.\n\n2. How much remains after 10,000 years?\n\n3. If a fossil contains 15\\% of its original C-14, how old is it?\n\n**Solution.**\n\n(a) For decay, we have $k < 0$ and the half-life satisfies $P(T_{1/2}) = P_0/2$:\n\\[\n\\frac{P_0}{2} = P_0 e^{k \\cdot 5730}\n\\]\n\\[\n\\frac{1}{2} = e^{5730k} \\implies k = \\frac{\\ln(1/2)}{5730} = -\\frac{\\ln 2}{5730} \\approx -0.000121 \\text{ per year}\n\\]\n\n(b) After 10,000 years:\n\\[\nP(10000) = 100 e^{-0.000121 \\times 10000} = 100 e^{-1.21} \\approx 29.8 \\text{ mg}\n\\]\n\n(c) If $P(t) = 0.15 P_0$:\n\\[\n0.15 = e^{kt} \\implies t = \\frac{\\ln 0.15}{k} = \\frac{\\ln 0.15}{-\\ln 2 / 5730} = \\frac{5730 \\ln 0.15}{-\\ln 2}\n\\]\n\\[\nt = \\frac{5730 \\times (-1.897)}{-0.693} \\approx 15{,}683 \\text{ years}\n\\]\nThe fossil is approximately 15,700 years old.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Logistic Model: Limited Growth"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Malthusian model predicts unbounded growth, but no real population can grow forever. Resources are finite. Competition, disease, and predation limit growth. In 1838, the Belgian mathematician Pierre-François Verhulst proposed a more realistic model."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.2",
+      "number": "3.2",
+      "title": "Logistic Growth Model",
+      "content": "The **logistic equation** is:\n\\[\n\\frac{dP}{dt} = rP\\left(1 - \\frac{P}{K}\\right)\n\\]\nwhere:\n\n- $r > 0$ is the **intrinsic growth rate**\n\n- $K > 0$ is the **carrying capacity** — the maximum sustainable population"
+    },
+    {
+      "type": "paragraph",
+      "text": "The factor $(1 - P/K)$ modifies the exponential growth:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "When $P \\ll K$: $(1 - P/K) \\approx 1$, so $dP/dt \\approx rP$ (nearly exponential growth)",
+        "When $P = K$: $(1 - P/K) = 0$, so $dP/dt = 0$ (equilibrium)",
+        "When $P > K$: $(1 - P/K) < 0$, so $dP/dt < 0$ (population decreases)"
+      ]
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.2",
+      "number": "3.2",
+      "title": "Solution to the Logistic Equation",
+      "content": "The solution to the logistic equation with initial condition $P(0) = P_0$ is:\n\\[\nP(t) = \\frac{K}{1 + \\left(\\frac{K - P_0}{P_0}\\right)e^{-rt}} = \\frac{KP_0}{P_0 + (K - P_0)e^{-rt}}\n\\]\nAs $t \\to \\infty$, $P(t) \\to K$ regardless of the initial population (provided $P_0 > 0$).",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The logistic equation is separable. Using partial fractions:\n\\[\n\\frac{dP}{P(1 - P/K)} = r\\,dt\n\\]\n\\[\n\\frac{dP}{P} + \\frac{dP/K}{1 - P/K} = r\\,dt\n\\]\n\\[\n\\int \\frac{1}{P}\\,dP + \\int \\frac{1}{K - P}\\,dP = \\int r\\,dt\n\\]\n\\[\n\\ln P - \\ln(K - P) = rt + C\n\\]\n\\[\n\\ln \\frac{P}{K - P} = rt + C\n\\]\nWith $P(0) = P_0$, we get $C = \\ln\\frac{P_0}{K - P_0}$. Solving for $P$:\n\\[\n\\frac{P}{K - P} = \\frac{P_0}{K - P_0}e^{rt}\n\\]\nAlgebraic manipulation yields the stated formula."
+    },
+    {
+      "type": "example",
+      "id": "example-3.3",
+      "number": "3.3",
+      "title": "Yeast Population Growth",
+      "problem": "A yeast culture in a closed container has a carrying capacity of $K = 665$ cells (in millions). The initial population is $P_0 = 10$ million cells, and after 6 hours the population is 100 million. Find:\n\n1. The intrinsic growth rate $r$\n\n2. The population after 12 hours\n\n3. When the population reaches 600 million\n\n**Solution.**\n\n(a) Using the logistic solution:\n\\[\n100 = \\frac{665 \\times 10}{10 + (665 - 10)e^{-6r}} = \\frac{6650}{10 + 655e^{-6r}}\n\\]\n\\[\n10 + 655e^{-6r} = 66.5\n\\]\n\\[\ne^{-6r} = \\frac{56.5}{655} = 0.0863\n\\]\n\\[\nr = -\\frac{\\ln(0.0863)}{6} = \\frac{2.45}{6} \\approx 0.408 \\text{ per hour}\n\\]\n\n(b) After 12 hours:\n\\[\nP(12) = \\frac{6650}{10 + 655e^{-12 \\times 0.408}} = \\frac{6650}{10 + 655(0.00745)} = \\frac{6650}{14.88} \\approx 447 \\text{ million}\n\\]\n\n(c) Setting $P(t) = 600$:\n\\[\n600 = \\frac{6650}{10 + 655e^{-0.408t}}\n\\]\n\\[\n10 + 655e^{-0.408t} = 11.08\n\\]\n\\[\ne^{-0.408t} = \\frac{1.08}{655} = 0.00165\n\\]\n\\[\nt = -\\frac{\\ln(0.00165)}{0.408} = \\frac{6.41}{0.408} \\approx 15.7 \\text{ hours}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "The logistic curve has a characteristic S-shape (sigmoid). The **inflection point** occurs at $P = K/2$, where the growth rate $dP/dt$ is maximum."
+    },
+    {
+      "type": "example",
+      "id": "example-3.4",
+      "number": "3.4",
+      "title": "U.S. Population Modeling",
+      "problem": "Historical data suggests the U.S. population follows a logistic model with $K \\approx 400$ million. In 1900, the population was 76 million; in 1950 it was 151 million. Predict the population in 2000 and 2050.\n\n**Solution.**\n\nLet $t = 0$ correspond to 1900. Then $P_0 = 76$ and $P(50) = 151$.\n\\[\n151 = \\frac{400 \\times 76}{76 + (400 - 76)e^{-50r}} = \\frac{30400}{76 + 324e^{-50r}}\n\\]\n\\[\n76 + 324e^{-50r} = 201.3\n\\]\n\\[\ne^{-50r} = \\frac{125.3}{324} = 0.387\n\\]\n\\[\nr = -\\frac{\\ln(0.387)}{50} = 0.019 \\text{ per year}\n\\]\n\nFor $t = 100$ (year 2000):\n\\[\nP(100) = \\frac{30400}{76 + 324e^{-1.9}} = \\frac{30400}{76 + 324(0.1496)} = \\frac{30400}{124.5} \\approx 244 \\text{ million}\n\\]\n\nFor $t = 150$ (year 2050):\n\\[\nP(150) = \\frac{30400}{76 + 324e^{-2.85}} = \\frac{30400}{76 + 324(0.058)} = \\frac{30400}{94.8} \\approx 321 \\text{ million}\n\\]\n\nNote: The actual 2000 U.S. population was 281 million, suggesting immigration and other factors not captured by the simple logistic model.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Harvesting Models"
+    },
+    {
+      "type": "paragraph",
+      "text": "Many populations are subject to harvesting—fishing, hunting, logging, or other forms of removal. The most basic model adds a constant harvesting term."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.3",
+      "number": "3.3",
+      "title": "Logistic Model with Constant Harvesting",
+      "content": "If a population is harvested at a constant rate $H > 0$ (individuals per unit time), the model becomes:\n\\[\n\\frac{dP}{dt} = rP\\left(1 - \\frac{P}{K}\\right) - H\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The equilibrium points are found by setting $dP/dt = 0$:\n\\[\nrP\\left(1 - \\frac{P}{K}\\right) = H\n\\]\n\\[\nrP - \\frac{rP^2}{K} = H\n\\]\n\\[\nP^2 - KP + \\frac{KH}{r} = 0\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "By the quadratic formula:\n\\[\nP = \\frac{K \\pm \\sqrt{K^2 - 4KH/r}}{2}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This has real solutions only when $K^2 - 4KH/r \\geq 0$, i.e., when:\n\\[\nH \\leq \\frac{rK}{4} = H_{\\max}\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.3",
+      "number": "3.3",
+      "title": "Maximum Sustainable Yield",
+      "content": "For the logistic model with constant harvesting:\n\n- If $H < rK/4$: two equilibria exist; the larger one is stable\n\n- If $H = rK/4$: one equilibrium at $P = K/2$ (semi-stable)\n\n- If $H > rK/4$: no equilibrium exists; the population declines to extinction\nThe **maximum sustainable yield** is $H_{\\max} = rK/4$, achieved when the population is maintained at $P = K/2$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-3.5",
+      "number": "3.5",
+      "title": "Sustainable Fishing",
+      "problem": "A fish population in a lake follows logistic growth with $r = 0.5$ per year and carrying capacity $K = 10{,}000$ fish.\n\n1. What is the maximum sustainable harvest rate?\n\n2. If 800 fish per year are harvested, find the equilibrium populations.\n\n3. If 1500 fish per year are harvested, what happens?\n\n**Solution.**\n\n(a) Maximum sustainable yield:\n\\[\nH_{\\max} = \\frac{rK}{4} = \\frac{0.5 \\times 10000}{4} = 1250 \\text{ fish per year}\n\\]\n\n(b) With $H = 800 < H_{\\max}$:\n\\[\nP^2 - 10000P + \\frac{10000 \\times 800}{0.5} = 0\n\\]\n\\[\nP^2 - 10000P + 16{,}000{,}000 = 0\n\\]\n\\[\nP = \\frac{10000 \\pm \\sqrt{100{,}000{,}000 - 64{,}000{,}000}}{2} = \\frac{10000 \\pm 6000}{2}\n\\]\n\\[\nP_1 = 2000 \\quad \\text{(unstable)}, \\quad P_2 = 8000 \\quad \\text{(stable)}\n\\]\nIf the population exceeds 2000, it stabilizes at 8000. If it drops below 2000, it goes extinct.\n\n(c) With $H = 1500 > H_{\\max}$, there is no equilibrium. The population will inevitably decline to extinction, regardless of the starting population. This is the danger of over-harvesting.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Competing Species: The Lotka-Volterra Model"
+    },
+    {
+      "type": "paragraph",
+      "text": "When two species compete for the same resources, their populations interact. The simplest model for two competing species introduces coupling between their growth equations."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.4",
+      "number": "3.4",
+      "title": "Lotka-Volterra Competition Model",
+      "content": "For two competing species with populations $x(t)$ and $y(t)$:\n\\[\n\\frac{dx}{dt} = r_1 x \\left(1 - \\frac{x + \\alpha y}{K_1}\\right)\n\\]\n\\[\n\\frac{dy}{dt} = r_2 y \\left(1 - \\frac{y + \\beta x}{K_2}\\right)\n\\]\nwhere $\\alpha$ and $\\beta$ are **competition coefficients** measuring interspecific competition."
+    },
+    {
+      "type": "paragraph",
+      "text": "Analysis of this system (a topic for systems of differential equations in later chapters) reveals different outcomes:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "One species may drive the other to extinction",
+        "Both species may coexist at a stable equilibrium",
+        "The outcome may depend on initial populations"
+      ]
+    }
+  ]
+}

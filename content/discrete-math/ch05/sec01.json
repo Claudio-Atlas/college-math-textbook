@@ -1,0 +1,63 @@
+{
+  "id": "discrete-math-ch05-sec01",
+  "title": "Mathematical Induction",
+  "chapter": 5,
+  "section": 1,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"One generation commends your works to another; they \ntell of your mighty acts.\"*{Psalm 145:4}{Mathematical induction proves an infinite sequence of propositions by finite means.}{Blaise Pascal}"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Mathematical induction** is a proof \ntechnique for establishing that a statement holds for all natural numbers."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Principle of Mathematical Induction",
+      "content": "Let $P(n)$ be a statement about natural number $n$. To prove $P(n)$ for \nall $n \\geq n_0$:\n\n1. **Base Case:** Prove $P(n_0)$.\n\n2. **Inductive Step:** Prove that for all $k \\geq n_0$, if \n $P(k)$ is true, then $P(k+1)$ is true.\nThen $P(n)$ holds for all $n \\geq n_0$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The inductive step assumes $P(k)$ (the **inductive hypothesis**) \nand proves $P(k+1)$. This is not circular reasoning—we prove the \n*implication* $P(k) \\Rightarrow P(k+1)$, not $P(k)$ itself."
+    },
+    {
+      "type": "paragraph",
+      "text": "Think of induction like dominoes: the base case tips the first domino, \nand the inductive step ensures each domino tips the next."
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Sum of first $n$ integers",
+      "problem": "Prove: $\\displaystyle\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$ for all $n \\geq 1$.\n\nproof\nLet $P(n)$ be the statement $\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$.\n\n**Base Case:** $P(1)$: $\\sum_{i=1}^{1} i = 1 = \\frac{1 \\cdot 2}{2}$. $\\checkmark$\n\n**Inductive Step:** Assume $P(k)$: $\\sum_{i=1}^{k} i = \\frac{k(k+1)}{2}$.\n\nWe must prove $P(k+1)$: $\\sum_{i=1}^{k+1} i = \\frac{(k+1)(k+2)}{2}$.\n\n$$\n\\sum_{i=1}^{k+1} i &= \\left(\\sum_{i=1}^{k} i\\right) + (k+1) \\\\\n&= \\frac{k(k+1)}{2} + (k+1) \\quad \\text{(by IH)} \\\\\n&= \\frac{k(k+1) + 2(k+1)}{2} = \\frac{(k+1)(k+2)}{2}\n$$\n\nBy induction, $P(n)$ holds for all $n \\geq 1$.\nproof",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "Sum of squares",
+      "problem": "Prove: $\\displaystyle\\sum_{i=1}^{n} i^2 = \\frac{n(n+1)(2n+1)}{6}$.\n\nproof\n**Base Case:** $n = 1$: $1^2 = 1 = \\frac{1 \\cdot 2 \\cdot 3}{6}$. $\\checkmark$\n\n**Inductive Step:** Assume true for $k$. Then:\n$$\n\\sum_{i=1}^{k+1} i^2 &= \\frac{k(k+1)(2k+1)}{6} + (k+1)^2 \\\\\n&= \\frac{k(k+1)(2k+1) + 6(k+1)^2}{6} \\\\\n&= \\frac{(k+1)[k(2k+1) + 6(k+1)]}{6} \\\\\n&= \\frac{(k+1)(2k^2 + 7k + 6)}{6} \\\\\n&= \\frac{(k+1)(k+2)(2k+3)}{6}\n$$\nwhich equals $\\frac{(k+1)((k+1)+1)(2(k+1)+1)}{6}$. $\\checkmark$\nproof",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Inequality",
+      "problem": "Prove: $2^n > n$ for all $n \\geq 1$.\n\nproof\n**Base Case:** $2^1 = 2 > 1$. $\\checkmark$\n\n**Inductive Step:** Assume $2^k > k$. Then:\n\\[ 2^{k+1} = 2 \\cdot 2^k > 2k \\geq k + 1 \\]\n(since $k \\geq 1$ implies $2k \\geq k + 1$).\nproof",
+      "solution": ""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Deuteronomy 6:7",
+      "text": "Impress them on your children. Talk \nabout them when you sit at home and when you walk along the road."
+    }
+  ]
+}

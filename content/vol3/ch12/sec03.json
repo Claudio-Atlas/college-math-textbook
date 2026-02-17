@@ -1,0 +1,400 @@
+{
+  "id": "vol3-ch12-sec03",
+  "title": "The Dot Product",
+  "chapter": 12,
+  "section": 3,
+  "book": "vol3",
+  "epigraph": {
+    "text": "How good and pleasant it is when God's people live together in unity!",
+    "reference": "Psalm 133:1"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "We can add vectors and multiply them by scalars, but can we multiply two vectors together? The answer is yes—and there are two fundamentally different ways to do it. In this section, we study the **dot product** (also called the **scalar product** or **inner product**), which takes two vectors and produces a *number*. The next section introduces the cross product, which produces a *vector*."
+    },
+    {
+      "type": "paragraph",
+      "text": "The dot product is one of the most useful tools in applied mathematics. It appears whenever we need to measure angles, project one quantity onto another, or compute work. It is the mathematical way of asking: \"How much do these two vectors point in the same direction?\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition of the Dot Product"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.1",
+      "number": "12.1",
+      "title": "Dot Product (Algebraic Definition)",
+      "content": "The **dot product** (or **scalar product**) of vectors $\\vect{u} = \\langle u_1, u_2, u_3 \\rangle$ and $\\vect{v} = \\langle v_1, v_2, v_3 \\rangle$ is the scalar\n\\[\n \\vect{u} \\dotp \\vect{v} = u_1v_1 + u_2v_2 + u_3v_3.\n\\]\nIn two dimensions, $\\langle u_1, u_2 \\rangle \\dotp \\langle v_1, v_2 \\rangle = u_1v_1 + u_2v_2$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Notice that the dot product takes *two vectors* as input and produces a *scalar* (a number) as output. This is fundamentally different from vector addition or scalar multiplication."
+    },
+    {
+      "type": "example",
+      "id": "example-12.1",
+      "number": "12.1",
+      "title": "Computing dot products",
+      "problem": "Let $\\vect{u} = \\langle 2, -3, 1 \\rangle$ and $\\vect{v} = \\langle 4, 1, -2 \\rangle$. Find $\\vect{u} \\dotp \\vect{v}$.",
+      "solution": "\\[\n \\vect{u} \\dotp \\vect{v} = (2)(4) + (-3)(1) + (1)(-2) = 8 - 3 - 2 = 3.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-12.2",
+      "number": "12.2",
+      "title": "More dot product computations",
+      "problem": "Calculate:\n\n1. $\\langle 5, -2 \\rangle \\dotp \\langle 3, 7 \\rangle$\n\n2. $(2\\vecti - 3\\vectj + 4\\vectk) \\dotp (\\vecti + 2\\vectj - \\vectk)$\n\n3. $\\langle 1, 0, 0 \\rangle \\dotp \\langle 0, 1, 0 \\rangle$",
+      "solution": "1. $\\langle 5, -2 \\rangle \\dotp \\langle 3, 7 \\rangle = (5)(3) + (-2)(7) = 15 - 14 = 1$.\n\n2. Convert to components: $\\langle 2, -3, 4 \\rangle \\dotp \\langle 1, 2, -1 \\rangle = 2 - 6 - 4 = -8$.\n\n3. $\\langle 1, 0, 0 \\rangle \\dotp \\langle 0, 1, 0 \\rangle = 0 + 0 + 0 = 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.3",
+      "number": "12.3",
+      "title": "Dot product with basis vectors",
+      "problem": "Find $\\vecti \\dotp \\vectj$, $\\vecti \\dotp \\vecti$, and $\\vectj \\dotp \\vectk$.",
+      "solution": "$$\n \\vecti \\dotp \\vectj &= \\langle 1, 0, 0 \\rangle \\dotp \\langle 0, 1, 0 \\rangle = 0 + 0 + 0 = 0. \\\\\n \\vecti \\dotp \\vecti &= \\langle 1, 0, 0 \\rangle \\dotp \\langle 1, 0, 0 \\rangle = 1 + 0 + 0 = 1. \\\\\n \\vectj \\dotp \\vectk &= \\langle 0, 1, 0 \\rangle \\dotp \\langle 0, 0, 1 \\rangle = 0 + 0 + 0 = 0.\n$$\n\nIn general:\n\n- Different basis vectors have dot product 0 (they are **orthogonal**)\n\n- Each basis vector dotted with itself gives 1 (they are **unit vectors**)\n\nThis can be summarized as: $\\vecti \\dotp \\vecti = \\vectj \\dotp \\vectj = \\vectk \\dotp \\vectk = 1$ and $\\vecti \\dotp \\vectj = \\vectj \\dotp \\vectk = \\vectk \\dotp \\vecti = 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of the Dot Product"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.1",
+      "number": "12.1",
+      "title": "Properties of the Dot Product",
+      "content": "For vectors $\\vect{u}$, $\\vect{v}$, $\\vect{w}$ and scalar $c$:\n\n1. $\\vect{u} \\dotp \\vect{v} = \\vect{v} \\dotp \\vect{u}$ (Commutativity)\n\n2. $\\vect{u} \\dotp (\\vect{v} + \\vect{w}) = \\vect{u} \\dotp \\vect{v} + \\vect{u} \\dotp \\vect{w}$ (Distributivity)\n\n3. $(c\\vect{u}) \\dotp \\vect{v} = c(\\vect{u} \\dotp \\vect{v}) = \\vect{u} \\dotp (c\\vect{v})$ (Scalar Association)\n\n4. $\\vect{v} \\dotp \\vect{v} = |\\vect{v}|^2$ (Relation to Magnitude)\n\n5. $\\vect{0} \\dotp \\vect{v} = 0$ (Zero Vector)",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If $\\vect{v} = \\langle v_1, v_2, v_3 \\rangle$, then\n\\[\n \\vect{v} \\dotp \\vect{v} = v_1^2 + v_2^2 + v_3^2 = |\\vect{v}|^2.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Property 4 is particularly useful: it gives us an alternative way to compute magnitude:\n\\[\n |\\vect{v}| = \\sqrt{\\vect{v} \\dotp \\vect{v}}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-12.4",
+      "number": "12.4",
+      "title": "Using dot product properties",
+      "problem": "Let $\\vect{u} = \\langle 1, 2, 2 \\rangle$ and $\\vect{v} = \\langle 3, 0, 4 \\rangle$. Find $|\\vect{u}|$, $(2\\vect{u}) \\dotp \\vect{v}$, and $(\\vect{u} + \\vect{v}) \\dotp (\\vect{u} - \\vect{v})$.",
+      "solution": "**Magnitude:** $|\\vect{u}| = \\sqrt{\\vect{u} \\dotp \\vect{u}} = \\sqrt{1 + 4 + 4} = 3$.\n\n**Scalar association:** $(2\\vect{u}) \\dotp \\vect{v} = 2(\\vect{u} \\dotp \\vect{v}) = 2(3 + 0 + 8) = 2(11) = 22$.\n\n**Using distributivity:**\n$$\n (\\vect{u} + \\vect{v}) \\dotp (\\vect{u} - \\vect{v}) &= \\vect{u} \\dotp \\vect{u} - \\vect{u} \\dotp \\vect{v} + \\vect{v} \\dotp \\vect{u} - \\vect{v} \\dotp \\vect{v} \\\\\n &= |\\vect{u}|^2 - |\\vect{v}|^2 \\quad \\text{(since __MATH_BLOCK_2__)} \\\\\n &= 9 - 25 = -16.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Angle Between Vectors"
+    },
+    {
+      "type": "paragraph",
+      "text": "The algebraic definition of the dot product is easy to compute, but its geometric meaning is what makes it powerful."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.2",
+      "number": "12.2",
+      "title": "Geometric Formula for the Dot Product",
+      "content": "If $\\theta$ is the angle between nonzero vectors $\\vect{u}$ and $\\vect{v}$ (with $0 \\leq \\theta \\leq \\pi$), then\n\\[\n \\vect{u} \\dotp \\vect{v} = |\\vect{u}||\\vect{v}|\\cos\\theta.\n\\]\nEquivalently,\n\\[\n \\cos\\theta = \\frac{\\vect{u} \\dotp \\vect{v}}{|\\vect{u}||\\vect{v}|}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Consider the triangle formed by the vectors $\\vect{u}$, $\\vect{v}$, and $\\vect{u} - \\vect{v}$, where $\\vect{u}$ and $\\vect{v}$ share the same initial point. The angle $\\theta$ is at this shared vertex. By the Law of Cosines:\n\\[\n |\\vect{u} - \\vect{v}|^2 = |\\vect{u}|^2 + |\\vect{v}|^2 - 2|\\vect{u}||\\vect{v}|\\cos\\theta.\n\\]\nNow we expand the left side using Property 4:\n$$\n |\\vect{u} - \\vect{v}|^2 &= (\\vect{u} - \\vect{v}) \\dotp (\\vect{u} - \\vect{v}) \\\\\n &= \\vect{u} \\dotp \\vect{u} - 2\\vect{u} \\dotp \\vect{v} + \\vect{v} \\dotp \\vect{v} \\\\\n &= |\\vect{u}|^2 - 2\\vect{u} \\dotp \\vect{v} + |\\vect{v}|^2.\n$$\nSetting the two expressions equal:\n\\[\n |\\vect{u}|^2 - 2\\vect{u} \\dotp \\vect{v} + |\\vect{v}|^2 = |\\vect{u}|^2 + |\\vect{v}|^2 - 2|\\vect{u}||\\vect{v}|\\cos\\theta.\n\\]\nSimplifying: $-2\\vect{u} \\dotp \\vect{v} = -2|\\vect{u}||\\vect{v}|\\cos\\theta$, which gives $\\vect{u} \\dotp \\vect{v} = |\\vect{u}||\\vect{v}|\\cos\\theta$."
+    },
+    {
+      "type": "paragraph",
+      "text": "This theorem tells us:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "If $\\theta = 0$ (vectors point same direction): $\\vect{u} \\dotp \\vect{v} = |\\vect{u}||\\vect{v}|$ (maximum positive)",
+        "If $\\theta = \\pi/2$ (vectors perpendicular): $\\vect{u} \\dotp \\vect{v} = 0$",
+        "If $\\theta = \\pi$ (vectors point opposite directions): $\\vect{u} \\dotp \\vect{v} = -|\\vect{u}||\\vect{v}|$ (maximum negative)"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-12.5",
+      "number": "12.5",
+      "title": "Finding the angle between vectors",
+      "problem": "Find the angle between $\\vect{u} = \\langle 1, 2, 2 \\rangle$ and $\\vect{v} = \\langle 3, 4, 0 \\rangle$.",
+      "solution": "First compute the ingredients:\n$$\n \\vect{u} \\dotp \\vect{v} &= (1)(3) + (2)(4) + (2)(0) = 3 + 8 + 0 = 11, \\\\\n |\\vect{u}| &= \\sqrt{1 + 4 + 4} = \\sqrt{9} = 3, \\\\\n |\\vect{v}| &= \\sqrt{9 + 16 + 0} = \\sqrt{25} = 5.\n$$\nThen:\n\\[\n \\cos\\theta = \\frac{11}{(3)(5)} = \\frac{11}{15} \\approx 0.7333.\n\\]\nTherefore, $\\theta = \\arccos\\left(\\frac{11}{15}\\right) \\approx 42.8°$ or about $0.748$ radians."
+    },
+    {
+      "type": "example",
+      "id": "example-12.6",
+      "number": "12.6",
+      "title": "Angle between position vectors",
+      "problem": "Find the angle between the vectors from the origin to $A(1, 2, 3)$ and to $B(-1, 1, 2)$.",
+      "solution": "The position vectors are $\\vect{a} = \\langle 1, 2, 3 \\rangle$ and $\\vect{b} = \\langle -1, 1, 2 \\rangle$.\n$$\n \\vect{a} \\dotp \\vect{b} &= -1 + 2 + 6 = 7, \\\\\n |\\vect{a}| &= \\sqrt{1 + 4 + 9} = \\sqrt{14}, \\\\\n |\\vect{b}| &= \\sqrt{1 + 1 + 4} = \\sqrt{6}.\n$$\n\\[\n \\cos\\theta = \\frac{7}{\\sqrt{14}\\sqrt{6}} = \\frac{7}{\\sqrt{84}} = \\frac{7}{2\\sqrt{21}} \\approx 0.764.\n\\]\nThus $\\theta = \\arccos(0.764) \\approx 40.2°$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.7",
+      "number": "12.7",
+      "title": "Finding angles of a triangle",
+      "problem": "Find the interior angles of the triangle with vertices $A(1, 0, 0)$, $B(0, 2, 0)$, and $C(0, 0, 3)$.",
+      "solution": "At each vertex, we need the vectors along the two sides meeting there, then find the angle between them.\n\n**Angle at $A$:** The sides from $A$ are $\\overrightarrow{AB} = \\langle -1, 2, 0 \\rangle$ and $\\overrightarrow{AC} = \\langle -1, 0, 3 \\rangle$.\n$$\n \\overrightarrow{AB} \\dotp \\overrightarrow{AC} &= 1 + 0 + 0 = 1, \\\\\n |\\overrightarrow{AB}| &= \\sqrt{5}, \\quad |\\overrightarrow{AC}| = \\sqrt{10}.\n$$\n\\[\n \\cos A = \\frac{1}{\\sqrt{5}\\sqrt{10}} = \\frac{1}{\\sqrt{50}} = \\frac{1}{5\\sqrt{2}}, \\quad A \\approx 81.9°.\n\\]\n\n**Angle at $B$:** $\\overrightarrow{BA} = \\langle 1, -2, 0 \\rangle$ and $\\overrightarrow{BC} = \\langle 0, -2, 3 \\rangle$.\n\\[\n \\overrightarrow{BA} \\dotp \\overrightarrow{BC} = 0 + 4 + 0 = 4, \\quad |\\overrightarrow{BA}| = \\sqrt{5}, \\quad |\\overrightarrow{BC}| = \\sqrt{13}.\n\\]\n\\[\n \\cos B = \\frac{4}{\\sqrt{65}}, \\quad B \\approx 60.3°.\n\\]\n\n**Angle at $C$:** $\\overrightarrow{CA} = \\langle 1, 0, -3 \\rangle$ and $\\overrightarrow{CB} = \\langle 0, 2, -3 \\rangle$.\n\\[\n \\overrightarrow{CA} \\dotp \\overrightarrow{CB} = 0 + 0 + 9 = 9, \\quad |\\overrightarrow{CA}| = \\sqrt{10}, \\quad |\\overrightarrow{CB}| = \\sqrt{13}.\n\\]\n\\[\n \\cos C = \\frac{9}{\\sqrt{130}}, \\quad C \\approx 37.9°.\n\\]\n\nCheck: $81.9° + 60.3° + 37.9° \\approx 180°$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Orthogonal Vectors"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.2",
+      "number": "12.2",
+      "title": "Orthogonal (Perpendicular) Vectors",
+      "content": "Vectors $\\vect{u}$ and $\\vect{v}$ are **orthogonal** (or **perpendicular**), written $\\vect{u} \\perp \\vect{v}$, if $\\vect{u} \\dotp \\vect{v} = 0$."
+    },
+    {
+      "type": "paragraph",
+      "text": "This definition includes the zero vector: $\\vect{0}$ is orthogonal to every vector (including itself). For nonzero vectors, orthogonality means the angle between them is exactly $90°$, since $\\cos\\theta = 0$ implies $\\theta = \\pi/2$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.8",
+      "number": "12.8",
+      "title": "Testing orthogonality",
+      "problem": "Determine whether $\\vect{u} = \\langle 2, -1, 3 \\rangle$ and $\\vect{v} = \\langle 3, 9, 1 \\rangle$ are orthogonal.",
+      "solution": "\\[\n \\vect{u} \\dotp \\vect{v} = (2)(3) + (-1)(9) + (3)(1) = 6 - 9 + 3 = 0.\n\\]\nSince $\\vect{u} \\dotp \\vect{v} = 0$, the vectors are orthogonal."
+    },
+    {
+      "type": "example",
+      "id": "example-12.9",
+      "number": "12.9",
+      "title": "Finding value for orthogonality",
+      "problem": "Find all values of $c$ such that $\\vect{u} = \\langle 2, c, -1 \\rangle$ is orthogonal to $\\vect{v} = \\langle c, 4, c \\rangle$.",
+      "solution": "Set the dot product equal to zero:\n\\[\n \\vect{u} \\dotp \\vect{v} = 2c + 4c - c = 5c = 0.\n\\]\nThus $c = 0$ is the only value making the vectors orthogonal."
+    },
+    {
+      "type": "example",
+      "id": "example-12.10",
+      "number": "12.10",
+      "title": "Finding an orthogonal vector",
+      "problem": "Find a nonzero vector orthogonal to both $\\vect{u} = \\langle 1, 0, 1 \\rangle$ and $\\vect{v} = \\langle 0, 1, 1 \\rangle$.",
+      "solution": "We seek $\\vect{w} = \\langle a, b, c \\rangle$ with $\\vect{u} \\dotp \\vect{w} = 0$ and $\\vect{v} \\dotp \\vect{w} = 0$:\n$$\n \\vect{u} \\dotp \\vect{w} &= a + c = 0 \\implies a = -c, \\\\\n \\vect{v} \\dotp \\vect{w} &= b + c = 0 \\implies b = -c.\n$$\nTaking $c = 1$, we get $\\vect{w} = \\langle -1, -1, 1 \\rangle$.\n\nWe can verify: $\\vect{u} \\dotp \\vect{w} = -1 + 0 + 1 = 0$ and $\\vect{v} \\dotp \\vect{w} = 0 - 1 + 1 = 0$. \n\n(Note: Any scalar multiple of $\\vect{w}$ also works. In the next section, we'll see that the cross product provides this vector directly.)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Direction Angles and Direction Cosines"
+    },
+    {
+      "type": "paragraph",
+      "text": "Every nonzero vector in 3D makes a definite angle with each coordinate axis. These angles completely determine the direction of the vector."
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.3",
+      "number": "12.3",
+      "title": "Direction Angles and Direction Cosines",
+      "content": "The **direction angles** $\\alpha$, $\\beta$, $\\gamma$ of a nonzero vector $\\vect{v} = \\langle a, b, c \\rangle$ are the angles that $\\vect{v}$ makes with the positive $x$-, $y$-, and $z$-axes, respectively (each between $0$ and $\\pi$).\n\nThe **direction cosines** are:\n\\[\n \\cos\\alpha = \\frac{a}{|\\vect{v}|}, \\qquad\n \\cos\\beta = \\frac{b}{|\\vect{v}|}, \\qquad\n \\cos\\gamma = \\frac{c}{|\\vect{v}|}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "These formulas follow from the geometric dot product formula. For example, the angle $\\alpha$ between $\\vect{v}$ and $\\vecti$ satisfies:\n\\[\n \\cos\\alpha = \\frac{\\vect{v} \\dotp \\vecti}{|\\vect{v}||\\vecti|} = \\frac{a}{|\\vect{v}|}.\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.3",
+      "number": "12.3",
+      "title": "Properties of Direction Cosines",
+      "content": "For any nonzero vector $\\vect{v}$:\n\n1. $\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1$\n\n2. The unit vector in the direction of $\\vect{v}$ is $\\hat{\\vect{v}} = \\langle \\cos\\alpha, \\cos\\beta, \\cos\\gamma \\rangle$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If $\\vect{v} = \\langle a, b, c \\rangle$ with $|\\vect{v}| = r$, then:\n\\[\n \\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = \\frac{a^2}{r^2} + \\frac{b^2}{r^2} + \\frac{c^2}{r^2} = \\frac{a^2 + b^2 + c^2}{r^2} = \\frac{r^2}{r^2} = 1.\n\\]\nFor part 2, $\\hat{\\vect{v}} = \\frac{1}{|\\vect{v}|}\\langle a, b, c \\rangle = \\langle \\frac{a}{r}, \\frac{b}{r}, \\frac{c}{r} \\rangle = \\langle \\cos\\alpha, \\cos\\beta, \\cos\\gamma \\rangle$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.11",
+      "number": "12.11",
+      "title": "Finding direction angles",
+      "problem": "Find the direction cosines and direction angles of $\\vect{v} = \\langle 2, 3, 6 \\rangle$.",
+      "solution": "First, $|\\vect{v}| = \\sqrt{4 + 9 + 36} = \\sqrt{49} = 7$. Then:\n\\[\n \\cos\\alpha = \\frac{2}{7}, \\quad\n \\cos\\beta = \\frac{3}{7}, \\quad\n \\cos\\gamma = \\frac{6}{7}.\n\\]\nThe direction angles are:\n$$\n \\alpha &= \\arccos\\left(\\frac{2}{7}\\right) \\approx 73.4°, \\\\\n \\beta &= \\arccos\\left(\\frac{3}{7}\\right) \\approx 64.6°, \\\\\n \\gamma &= \\arccos\\left(\\frac{6}{7}\\right) \\approx 31.0°.\n$$\n\nCheck: $\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = \\frac{4}{49} + \\frac{9}{49} + \\frac{36}{49} = \\frac{49}{49} = 1$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.12",
+      "number": "12.12",
+      "title": "Finding a vector from direction angles",
+      "problem": "A vector has direction angles $\\alpha = 60°$ and $\\beta = 45°$ and magnitude $10$. Find the vector.",
+      "solution": "Using $\\cos^2\\alpha + \\cos^2\\beta + \\cos^2\\gamma = 1$:\n\\[\n \\cos^2 60° + \\cos^2 45° + \\cos^2\\gamma = 1.\n\\]\n\\[\n \\frac{1}{4} + \\frac{1}{2} + \\cos^2\\gamma = 1 \\implies \\cos^2\\gamma = \\frac{1}{4} \\implies \\cos\\gamma = \\pm\\frac{1}{2}.\n\\]\nThis gives $\\gamma = 60°$ or $\\gamma = 120°$ (two possible vectors).\n\nFor $\\gamma = 60°$:\n\\[\n \\vect{v} = 10\\langle \\cos 60°, \\cos 45°, \\cos 60° \\rangle = 10\\left\\langle \\frac{1}{2}, \\frac{\\sqrt{2}}{2}, \\frac{1}{2} \\right\\rangle = \\langle 5, 5\\sqrt{2}, 5 \\rangle.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Projections"
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the most important applications of the dot product is computing **projections**—decomposing one vector into components parallel and perpendicular to another. This is fundamental in physics, computer graphics, and many other applications."
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.4",
+      "number": "12.4",
+      "title": "Scalar and Vector Projections",
+      "content": "Let $\\vect{u}$ and $\\vect{v}$ be vectors with $\\vect{v} \\neq \\vect{0}$.\n\nThe **scalar projection** (or **component**) of $\\vect{u}$ onto $\\vect{v}$ is\n\\[\n \\text{comp}_{\\vect{v}}\\vect{u} = \\frac{\\vect{u} \\dotp \\vect{v}}{|\\vect{v}|} = |\\vect{u}|\\cos\\theta.\n\\]\n\nThe **vector projection** of $\\vect{u}$ onto $\\vect{v}$ is\n\\[\n \\text{proj}_{\\vect{v}}\\vect{u} = \\frac{\\vect{u} \\dotp \\vect{v}}{|\\vect{v}|^2}\\vect{v} \n = \\frac{\\vect{u} \\dotp \\vect{v}}{\\vect{v} \\dotp \\vect{v}}\\vect{v}\n = \\left(\\text{comp}_{\\vect{v}}\\vect{u}\\right)\\hat{\\vect{v}}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Geometrically, imagine shining a light perpendicular to the line containing $\\vect{v}$. The shadow of $\\vect{u}$ on this line is $\\text{proj}_{\\vect{v}}\\vect{u}$."
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "The scalar projection gives the *signed length* of this shadow (positive if $\\vect{u}$ has a component in the direction of $\\vect{v}$, negative if opposite).",
+        "The vector projection gives the actual shadow *as a vector*."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-12.13",
+      "number": "12.13",
+      "title": "Computing projections",
+      "problem": "Find the scalar and vector projections of $\\vect{u} = \\langle 3, 4, 0 \\rangle$ onto $\\vect{v} = \\langle 2, 0, 0 \\rangle$.",
+      "solution": "Compute:\n\\[\n \\vect{u} \\dotp \\vect{v} = 6 + 0 + 0 = 6, \\qquad\n |\\vect{v}| = 2, \\qquad\n |\\vect{v}|^2 = 4.\n\\]\n**Scalar projection:** $\\text{comp}_{\\vect{v}}\\vect{u} = \\dfrac{6}{2} = 3$.\n\n**Vector projection:** $\\text{proj}_{\\vect{v}}\\vect{u} = \\dfrac{6}{4}\\langle 2, 0, 0 \\rangle = \\langle 3, 0, 0 \\rangle$.\n\nNote that $\\vect{v}$ points along the $x$-axis, so projecting $\\vect{u}$ onto $\\vect{v}$ extracts the $x$-component of $\\vect{u}$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.14",
+      "number": "12.14",
+      "title": "Projection onto a non-axis direction",
+      "problem": "Find the vector projection of $\\vect{u} = \\langle 4, 2, 0 \\rangle$ onto $\\vect{v} = \\langle 1, 1, 0 \\rangle$.",
+      "solution": "$$\n \\vect{u} \\dotp \\vect{v} &= 4 + 2 + 0 = 6, \\\\\n |\\vect{v}|^2 &= 1 + 1 + 0 = 2.\n$$\n\\[\n \\text{proj}_{\\vect{v}}\\vect{u} = \\frac{6}{2}\\langle 1, 1, 0 \\rangle = 3\\langle 1, 1, 0 \\rangle = \\langle 3, 3, 0 \\rangle.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-12.15",
+      "number": "12.15",
+      "title": "Orthogonal decomposition",
+      "problem": "Write $\\vect{u} = \\langle 2, 3, 1 \\rangle$ as the sum of a vector parallel to $\\vect{v} = \\langle 1, 1, 1 \\rangle$ and a vector orthogonal to $\\vect{v}$.",
+      "solution": "The parallel component is the vector projection:\n\\[\n \\vect{u}_\\parallel = \\text{proj}_{\\vect{v}}\\vect{u} \n = \\frac{\\vect{u} \\dotp \\vect{v}}{|\\vect{v}|^2}\\vect{v}\n = \\frac{2+3+1}{1+1+1}\\langle 1, 1, 1 \\rangle\n = 2\\langle 1, 1, 1 \\rangle\n = \\langle 2, 2, 2 \\rangle.\n\\]\nThe orthogonal component is what remains:\n\\[\n \\vect{u}_\\perp = \\vect{u} - \\vect{u}_\\parallel \n = \\langle 2, 3, 1 \\rangle - \\langle 2, 2, 2 \\rangle\n = \\langle 0, 1, -1 \\rangle.\n\\]\n\n**Verification:** \n\n- $\\vect{u}_\\parallel + \\vect{u}_\\perp = \\langle 2, 2, 2 \\rangle + \\langle 0, 1, -1 \\rangle = \\langle 2, 3, 1 \\rangle = \\vect{u}$. \n\n- $\\vect{u}_\\perp \\dotp \\vect{v} = 0 + 1 - 1 = 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.16",
+      "number": "12.16",
+      "title": "Distance from point to line",
+      "problem": "Find the distance from the point $P(1, 2, 3)$ to the line through the origin in the direction of $\\vect{v} = \\langle 1, 1, 0 \\rangle$.",
+      "solution": "Let $\\vect{u} = \\overrightarrow{OP} = \\langle 1, 2, 3 \\rangle$ be the position vector of $P$.\n\nThe projection of $\\vect{u}$ onto the line is:\n\\[\n \\text{proj}_{\\vect{v}}\\vect{u} = \\frac{\\vect{u} \\dotp \\vect{v}}{|\\vect{v}|^2}\\vect{v} = \\frac{1 + 2 + 0}{2}\\langle 1, 1, 0 \\rangle = \\frac{3}{2}\\langle 1, 1, 0 \\rangle = \\left\\langle \\frac{3}{2}, \\frac{3}{2}, 0 \\right\\rangle.\n\\]\n\nThe perpendicular component (from the line to $P$) is:\n\\[\n \\vect{u}_\\perp = \\vect{u} - \\text{proj}_{\\vect{v}}\\vect{u} = \\left\\langle 1 - \\frac{3}{2}, 2 - \\frac{3}{2}, 3 - 0 \\right\\rangle = \\left\\langle -\\frac{1}{2}, \\frac{1}{2}, 3 \\right\\rangle.\n\\]\n\nThe distance is:\n\\[\n |\\vect{u}_\\perp| = \\sqrt{\\frac{1}{4} + \\frac{1}{4} + 9} = \\sqrt{\\frac{19}{2}} = \\frac{\\sqrt{38}}{2} \\approx 3.08.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Work as a Dot Product"
+    },
+    {
+      "type": "paragraph",
+      "text": "In physics, when a constant force $\\vect{F}$ moves an object through a displacement $\\vect{d}$, the **work** done by the force is defined as:\n\\[\n W = \\vect{F} \\dotp \\vect{d} = |\\vect{F}||\\vect{d}|\\cos\\theta,\n\\]\nwhere $\\theta$ is the angle between the force and displacement vectors."
+    },
+    {
+      "type": "paragraph",
+      "text": "This definition captures an important physical insight: only the component of force in the direction of motion does work. A force perpendicular to motion (like the normal force on a sliding object) does no work."
+    },
+    {
+      "type": "example",
+      "id": "example-12.17",
+      "number": "12.17",
+      "title": "Computing work",
+      "problem": "A force $\\vect{F} = \\langle 40, 30, 0 \\rangle$ N moves an object from $(0, 0, 0)$ to $(5, 2, 0)$ m. Find the work done.",
+      "solution": "The displacement is $\\vect{d} = \\langle 5, 2, 0 \\rangle$ m. The work is:\n\\[\n W = \\vect{F} \\dotp \\vect{d} = (40)(5) + (30)(2) + (0)(0) = 200 + 60 = 260 \\text{ J}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-12.18",
+      "number": "12.18",
+      "title": "Work with angle",
+      "problem": "A sled is pulled 100 m along level ground by a rope held at an angle of $30°$ above horizontal. The tension in the rope is 200 N. Find the work done.",
+      "solution": "Let the displacement be along the positive $x$-axis: $\\vect{d} = \\langle 100, 0 \\rangle$ m.\n\nThe force makes angle $30°$ with horizontal, so:\n\\[\n \\vect{F} = \\langle 200\\cos 30°, 200\\sin 30° \\rangle = \\langle 100\\sqrt{3}, 100 \\rangle \\text{ N}.\n\\]\n\nWork:\n\\[\n W = \\vect{F} \\dotp \\vect{d} = (100\\sqrt{3})(100) + (100)(0) = 10000\\sqrt{3} \\approx 17{,}320 \\text{ J}.\n\\]\n\nAlternatively, using the geometric formula:\n\\[\n W = |\\vect{F}||\\vect{d}|\\cos\\theta = (200)(100)\\cos 30° = 20000 \\cdot \\frac{\\sqrt{3}}{2} = 10000\\sqrt{3} \\text{ J}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-12.19",
+      "number": "12.19",
+      "title": "Work in 3D",
+      "problem": "A force $\\vect{F} = \\langle 10, -5, 20 \\rangle$ N moves an object from $A(1, 2, 0)$ to $B(4, 0, 3)$. Find the work done.",
+      "solution": "Displacement: $\\vect{d} = \\overrightarrow{AB} = \\langle 4-1, 0-2, 3-0 \\rangle = \\langle 3, -2, 3 \\rangle$ m.\n\nWork:\n\\[\n W = \\vect{F} \\dotp \\vect{d} = (10)(3) + (-5)(-2) + (20)(3) = 30 + 10 + 60 = 100 \\text{ J}.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Important Inequalities"
+    },
+    {
+      "type": "paragraph",
+      "text": "Two fundamental inequalities follow from the properties of the dot product."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.4",
+      "number": "12.4",
+      "title": "Cauchy--Schwarz Inequality",
+      "content": "For any vectors $\\vect{u}$ and $\\vect{v}$:\n\\[\n |\\vect{u} \\dotp \\vect{v}| \\leq |\\vect{u}||\\vect{v}|.\n\\]\nEquality holds if and only if one vector is a scalar multiple of the other (i.e., they are parallel).",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "For nonzero vectors, $|\\vect{u} \\dotp \\vect{v}| = |\\vect{u}||\\vect{v}||\\cos\\theta|$. Since $|\\cos\\theta| \\leq 1$, we get $|\\vect{u} \\dotp \\vect{v}| \\leq |\\vect{u}||\\vect{v}|$. Equality occurs when $|\\cos\\theta| = 1$, i.e., $\\theta = 0$ or $\\theta = \\pi$, meaning the vectors are parallel."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.5",
+      "number": "12.5",
+      "title": "Triangle Inequality (via Dot Product)",
+      "content": "For any vectors $\\vect{u}$ and $\\vect{v}$:\n\\[\n |\\vect{u} + \\vect{v}| \\leq |\\vect{u}| + |\\vect{v}|.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$$\n |\\vect{u} + \\vect{v}|^2 &= (\\vect{u} + \\vect{v}) \\dotp (\\vect{u} + \\vect{v}) \\\\\n &= |\\vect{u}|^2 + 2\\vect{u} \\dotp \\vect{v} + |\\vect{v}|^2 \\\\\n &\\leq |\\vect{u}|^2 + 2|\\vect{u}||\\vect{v}| + |\\vect{v}|^2 \\quad \\text{(by Cauchy--Schwarz)} \\\\\n &= (|\\vect{u}| + |\\vect{v}|)^2.\n$$\nTaking square roots gives the result."
+    },
+    {
+      "type": "historical",
+      "id": "historical-12.3",
+      "number": null,
+      "title": "Josiah Willard Gibbs (1839--1903)",
+      "content": "The modern notation and formulation of vector algebra is largely due to Josiah Willard Gibbs, a Yale physicist. Gibbs developed vector analysis as a simplification of Hamilton's quaternions, introducing the dot and cross products in the forms we use today. His privately printed pamphlet *Elements of Vector Analysis* (1881–84) became the foundation of the subject, though its influence spread slowly until physicist Oliver Heaviside independently developed similar notation.\n\nGibbs was a remarkably versatile scientist, making fundamental contributions to thermodynamics, statistical mechanics, and optics. His work on vector analysis was motivated by practical needs in physics: he wanted a notation that was both computationally efficient and geometrically intuitive."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Romans 8:28",
+      "text": "And we know that for those who love God all things work together for good, for those who are called according to his purpose."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:1",
+      "text": "For everything there is a season, and a time for every matter under heaven."
+    },
+    {
+      "type": "scripture",
+      "reference": "Colossians 3:23",
+      "text": "Whatever you do, work heartily, as for the Lord and not for men."
+    },
+    {
+      "type": "quote",
+      "author": "David Hilbert",
+      "text": "A mathematical theory is not to be considered complete until you have made it so clear that you can explain it to the first man whom you meet on the street."
+    },
+    {
+      "type": "quote",
+      "author": "Isaac Newton",
+      "text": "If I have seen further, it is by standing on the shoulders of giants."
+    }
+  ]
+}

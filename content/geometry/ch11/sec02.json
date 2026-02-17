@@ -1,0 +1,307 @@
+{
+  "id": "geometry-ch11-sec02",
+  "title": "Pyramids and Cones",
+  "chapter": 11,
+  "section": 2,
+  "book": "geometry",
+  "epigraph": {
+    "text": "The heavens declare the glory of God, and the sky above proclaims his handiwork.",
+    "reference": "Psalm 19:1"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The pyramids of Egypt stand as monuments to humanity's earliest \nachievements in geometry and engineering. These massive structures, \nbuilt over four thousand years ago, demonstrate the practical \napplication of geometric principles we will explore in this section. \nFrom the base of each pyramid, four triangular faces rise to meet \nat a single point—the apex, reaching toward the heavens."
+    },
+    {
+      "type": "paragraph",
+      "text": "In this section, we study pyramids and their circular counterpart, \ncones. Both share a distinctive feature: lateral surfaces that \nconverge to a single point called the *apex* or *vertex*. \nThis convergence leads to an important relationship—the volumes \nof pyramids and cones are exactly one-third the volume of corresponding \nprisms and cylinders with the same base and height."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Pyramids: Definition and Classification"
+    },
+    {
+      "type": "definition",
+      "id": "definition-11.1",
+      "number": "11.1",
+      "title": "Pyramid",
+      "content": "A **pyramid** is a polyhedron consisting of a \npolygonal **base** and triangular \n**lateral faces** that meet \nat a common point called the **apex** (or **vertex**)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Like prisms, pyramids are named according to the shape of their bases:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-11.2",
+      "number": "11.2",
+      "title": "Height and Slant Height of a Pyramid",
+      "content": "The **height** (or **altitude**) \nof a pyramid is the perpendicular distance from the apex to the \nplane of the base.\n\nFor a **regular pyramid** (one whose \nbase is a regular polygon and whose apex lies directly above the \ncenter of the base), the **slant height**, \ndenoted $\\ell$, is the height of any lateral face, measured from \nthe apex to the midpoint of a base edge."
+    },
+    {
+      "type": "paragraph",
+      "text": "For a regular pyramid with base edge $s$, height $h$, and apothem \n$a$ (the distance from the center of the base to the midpoint of \na side), the slant height is related to these quantities by the \nPythagorean Theorem:\n\\[\n\\ell^2 = h^2 + a^2\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Lateral Area and Surface Area of Regular Pyramids"
+    },
+    {
+      "type": "paragraph",
+      "text": "For a regular pyramid, all lateral faces are congruent isosceles \ntriangles. If the base has $n$ sides each of length $s$, and the \nslant height is $\\ell$, then each lateral face has area \n$\\frac{1}{2}s\\ell$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-11.1",
+      "number": "11.1",
+      "title": "Lateral and Surface Area of a Regular Pyramid",
+      "content": "Let a regular pyramid have base perimeter $P$, base area $B$, and \nslant height $\\ell$. Then:\n\n- **Lateral Area:** $L = \\frac{1}{2}P\\ell$\n\n- **Surface Area:** $S = L + B = \\frac{1}{2}P\\ell + B$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If the base is a regular $n$-gon with side length $s$, then:\n\n- Each of the $n$ lateral faces is an isosceles triangle \n with base $s$ and height $\\ell$ (the slant height).\n\n- The area of each lateral face is $\\frac{1}{2}s\\ell$.\n\n- The total lateral area is $n \\cdot \\frac{1}{2}s\\ell = \n \\frac{1}{2}(ns)\\ell = \\frac{1}{2}P\\ell$.\nAdding the base: $S = \\frac{1}{2}P\\ell + B$."
+    },
+    {
+      "type": "example",
+      "id": "example-11.1",
+      "number": "11.1",
+      "title": "Surface area of a square pyramid",
+      "problem": "Find the surface area of a regular square pyramid with base edge \n10 cm and slant height 13 cm.\n\ncenter\ntikzpicture[scale=0.5]\n (A) at (-2,0);\n (B) at (2,0);\n (C) at (3,1.5);\n (D) at (-1,1.5);\n (V) at (0.5,5);\n \n (A) – (B) – (C) – (D) – cycle;\n (A) – (V) – (B);\n (C) – (V) – (D);\n (A) – (D);\n \n % Labels\n at (0,0) {10};\n (V) – (0,0);\n at (0.3,2.5) {$\\ell = 13$};\ntikzpicture\ncenter",
+      "solution": "The base perimeter is $P = 4 \\times 10 = 40$ cm.\n\nThe base area is $B = 10^2 = 100$ cm$^2$.\n\nThe lateral area is:\n\\[\nL = \\frac{1}{2}P\\ell = \\frac{1}{2}(40)(13) = 260 \\text{ cm}^2\n\\]\n\nThe surface area is:\n\\[\nS = L + B = 260 + 100 = 360 \\text{ cm}^2\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-11.2",
+      "number": "11.2",
+      "title": "Finding slant height",
+      "problem": "A regular square pyramid has base edge 8 m and height 9 m. Find \nthe slant height and the lateral surface area.",
+      "solution": "For a square pyramid, the apothem of the base equals half the \nside length: $a = 4$ m.\n\nUsing the Pythagorean Theorem with the right triangle formed by \nthe height, apothem, and slant height:\n\\[\n\\ell^2 = h^2 + a^2 = 9^2 + 4^2 = 81 + 16 = 97\n\\]\n\\[\n\\ell = \\sqrt{97} \\approx 9.85 \\text{ m}\n\\]\n\nThe perimeter is $P = 4 \\times 8 = 32$ m.\n\nThe lateral area is:\n\\[\nL = \\frac{1}{2}P\\ell = \\frac{1}{2}(32)(\\sqrt{97}) = 16\\sqrt{97} \\approx 157.6 \\text{ m}^2\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Volume of a Pyramid"
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the most remarkable results in solid geometry is that the \nvolume of a pyramid is exactly one-third the volume of a prism \nwith the same base and height. This relationship was known to the \nancient Egyptians empirically and was proved rigorously by Eudoxus \naround 400 BCE."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-11.2",
+      "number": "11.2",
+      "title": "Volume of a Pyramid",
+      "content": "The volume of a pyramid with base area $B$ and height $h$ is:\n\\[\nV = \\frac{1}{3}Bh\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "*Why one-third?* One elegant proof involves dissecting a \ncube into three congruent pyramids. Consider a cube with vertices \nat the origin. Three pyramids, each with one face of the cube as \nbase and the center of the cube as apex, exactly fill the cube. \nSince they are congruent, each has volume $\\frac{1}{3}$ of the cube."
+    },
+    {
+      "type": "paragraph",
+      "text": "By Cavalieri's Principle, this one-third relationship holds for \n*all* pyramids, not just regular ones."
+    },
+    {
+      "type": "paragraph",
+      "text": "{3}$ appears because a pyramid \n``tapers'' uniformly from base to apex. The cross-sectional area \nat height $x$ is $B(1-x/h)^2$, and integrating this from $0$ to $h$ \ngives $$\\frac{1}{3}$Bh$.}"
+    },
+    {
+      "type": "example",
+      "id": "example-11.3",
+      "number": "11.3",
+      "title": "Volume of a square pyramid",
+      "problem": "The Great Pyramid of Giza originally had a square base with side \nlength approximately 230 meters and a height of 147 meters. Find \nits volume.",
+      "solution": "The base area is:\n\\[\nB = 230^2 = 52{,}900 \\text{ m}^2\n\\]\n\nThe volume is:\n\\[\nV = \\frac{1}{3}Bh = \\frac{1}{3}(52{,}900)(147) = \\frac{7{,}776{,}300}{3} = 2{,}592{,}100 \\text{ m}^3\n\\]\n\nThis is approximately 2.6 million cubic meters!"
+    },
+    {
+      "type": "example",
+      "id": "example-11.4",
+      "number": "11.4",
+      "title": "Volume of a triangular pyramid",
+      "problem": "Find the volume of a pyramid whose base is an equilateral triangle \nwith side length 6 and whose height is 8.",
+      "solution": "The area of an equilateral triangle with side $s$ is:\n\\[\nB = \\frac{\\sqrt{3}}{4}s^2 = \\frac{\\sqrt{3}}{4}(36) = 9\\sqrt{3}\n\\]\n\nThe volume is:\n\\[\nV = \\frac{1}{3}Bh = \\frac{1}{3}(9\\sqrt{3})(8) = 24\\sqrt{3} \\approx 41.6\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Cones"
+    },
+    {
+      "type": "paragraph",
+      "text": "Just as a cylinder is a \"circular prism,\" a cone is a \"circular \npyramid\"—a pyramid with a circular base."
+    },
+    {
+      "type": "definition",
+      "id": "definition-11.3",
+      "number": "11.3",
+      "title": "Cone",
+      "content": "A **cone** is a solid with a circular base and a \nlateral surface that narrows smoothly to a point called the \n**apex** (or **vertex**). The \n**axis** is the segment from the apex to \nthe center of the base."
+    },
+    {
+      "type": "definition",
+      "id": "definition-11.4",
+      "number": "11.4",
+      "title": "Right Cone",
+      "content": "A **right cone** is a cone whose axis is \nperpendicular to the base. The **slant height**, \ndenoted $\\ell$, is the distance from the apex to any point on the \nedge of the base."
+    },
+    {
+      "type": "paragraph",
+      "text": "For a right cone, the relationship between radius $r$, height $h$, \nand slant height $\\ell$ is given by the Pythagorean Theorem:\n\\[\n\\ell^2 = r^2 + h^2\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Lateral and Surface Area of a Right Cone"
+    },
+    {
+      "type": "paragraph",
+      "text": "If we \"unroll\" the lateral surface of a cone, we obtain a sector \nof a circle. This sector has radius equal to the slant height $\\ell$ \nand arc length equal to the circumference of the base, $2\\pi r$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The area of a sector with radius $\\ell$ and arc length $s$ is \n$\\frac{1}{2}\\ell s$. Since the arc length is $2\\pi r$:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-11.3",
+      "number": "11.3",
+      "title": "Lateral and Surface Area of a Right Cone",
+      "content": "The lateral area and surface area of a right cone with radius $r$ \nand slant height $\\ell$ are:\n\n- **Lateral Area:** $L = \\pi r\\ell$\n\n- **Surface Area:** $S = \\pi r\\ell + \\pi r^2 = \\pi r(\\ell + r)$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-11.5",
+      "number": "11.5",
+      "title": "Surface area of a cone",
+      "problem": "Find the surface area of a cone with radius 6 cm and slant height 10 cm.",
+      "solution": "The lateral area is:\n\\[\nL = \\pi r\\ell = \\pi(6)(10) = 60\\pi \\text{ cm}^2\n\\]\n\nThe base area is:\n\\[\nB = \\pi r^2 = \\pi(36) = 36\\pi \\text{ cm}^2\n\\]\n\nThe surface area is:\n\\[\nS = L + B = 60\\pi + 36\\pi = 96\\pi \\text{ cm}^2 \\approx 301.6 \\text{ cm}^2\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-11.6",
+      "number": "11.6",
+      "title": "Finding slant height from height",
+      "problem": "A cone has radius 5 m and height 12 m. Find the slant height and \nlateral surface area.",
+      "solution": "Using the Pythagorean Theorem:\n\\[\n\\ell = \\sqrt{r^2 + h^2} = \\sqrt{25 + 144} = \\sqrt{169} = 13 \\text{ m}\n\\]\n\nThe lateral area is:\n\\[\nL = \\pi r\\ell = \\pi(5)(13) = 65\\pi \\text{ m}^2 \\approx 204.2 \\text{ m}^2\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Volume of a Cone"
+    },
+    {
+      "type": "paragraph",
+      "text": "Since a cone is a \"circular pyramid,\" its volume is one-third \nthe volume of a cylinder with the same base and height."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-11.4",
+      "number": "11.4",
+      "title": "Volume of a Cone",
+      "content": "The volume of a cone with radius $r$ and height $h$ is:\n\\[\nV = \\frac{1}{3}\\pi r^2 h\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "By Cavalieri's Principle, this formula applies to both right and \noblique cones."
+    },
+    {
+      "type": "example",
+      "id": "example-11.7",
+      "number": "11.7",
+      "title": "Volume of a cone",
+      "problem": "Find the volume of a cone with radius 6 and height 10.",
+      "solution": "\\[\nV = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi(36)(10) = \\frac{360\\pi}{3} = 120\\pi \\approx 377.0\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-11.8",
+      "number": "11.8",
+      "title": "Finding height from volume",
+      "problem": "A conical tank has volume $48\\pi$ cubic feet and radius 4 feet. \nFind its height.",
+      "solution": "Let $h$ be the height. Using $V = \\frac{1}{3}\\pi r^2 h$:\n$$\n48\\pi &= \\frac{1}{3}\\pi(16)h \\\\\n48\\pi &= \\frac{16\\pi h}{3} \\\\\n48 &= \\frac{16h}{3} \\\\\n144 &= 16h \\\\\nh &= 9 \\text{ feet}\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-11.9",
+      "number": "11.9",
+      "title": "Comparing cone and cylinder",
+      "problem": "A cone and a cylinder have the same radius (5 cm) and the same \nheight (12 cm). How do their volumes compare?",
+      "solution": "Volume of the cylinder:\n\\[\nV_{\\text{cyl}} = \\pi r^2 h = \\pi(25)(12) = 300\\pi \\text{ cm}^3\n\\]\n\nVolume of the cone:\n\\[\nV_{\\text{cone}} = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}(300\\pi) = 100\\pi \\text{ cm}^3\n\\]\n\nThe cone has exactly one-third the volume of the cylinder."
+    },
+    {
+      "type": "example",
+      "id": "example-11.10",
+      "number": "11.10",
+      "title": "Ice cream cone problem",
+      "problem": "An ice cream cone has diameter 6 cm and height 12 cm. A spherical \nscoop of ice cream with diameter 6 cm is placed on top. If the ice \ncream melts completely into the cone, will it overflow?",
+      "solution": "The cone has radius 3 cm and height 12 cm:\n\\[\nV_{\\text{cone}} = \\frac{1}{3}\\pi(9)(12) = 36\\pi \\text{ cm}^3\n\\]\n\nThe sphere has radius 3 cm:\n\\[\nV_{\\text{sphere}} = \\frac{4}{3}\\pi(27) = 36\\pi \\text{ cm}^3\n\\]\n\nThe volumes are equal! The melted ice cream will exactly fill the \ncone without overflowing."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Frustums"
+    },
+    {
+      "type": "definition",
+      "id": "definition-11.5",
+      "number": "11.5",
+      "title": "Frustum",
+      "content": "A **frustum** of a cone or pyramid is the \nportion remaining when the top is cut off by a plane parallel \nto the base."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-11.5",
+      "number": "11.5",
+      "title": "Volume of a Frustum of a Cone",
+      "content": "The volume of a frustum of a cone with height $h$, lower base \nradius $R$, and upper base radius $r$ is:\n\\[\nV = \\frac{1}{3}\\pi h(R^2 + Rr + r^2)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-11.11",
+      "number": "11.11",
+      "title": "Volume of a frustum",
+      "problem": "A frustum of a cone has height 6, lower radius 8, and upper radius 4. \nFind its volume.",
+      "solution": "Using the frustum formula:\n$$\nV &= \\frac{1}{3}\\pi h(R^2 + Rr + r^2) \\\\\n &= \\frac{1}{3}\\pi(6)(64 + 32 + 16) \\\\\n &= \\frac{1}{3}\\pi(6)(112) \\\\\n &= \\frac{672\\pi}{3} \\\\\n &= 224\\pi \\approx 703.7\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Genesis 11:4",
+      "text": "Then they said, \"Come, let us build \nourselves a city and a tower with its top in the heavens.\""
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 24:3--4",
+      "text": "By wisdom a house is built, and \nby understanding it is established; by knowledge the rooms are \nfilled with all precious and pleasant riches."
+    },
+    {
+      "type": "scripture",
+      "reference": "Matthew 7:24",
+      "text": "Everyone then who hears these words \nof mine and does them will be like a wise man who built his house \non the rock."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 28:16",
+      "text": "Behold, I am the one who has laid \nas a foundation in Zion, a stone, a tested stone, a precious \ncornerstone, of a sure foundation."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 11:1",
+      "text": "A false balance is an abomination \nto the Lord, but a just weight is his delight."
+    }
+  ]
+}

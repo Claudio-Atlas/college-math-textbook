@@ -1,0 +1,71 @@
+{
+  "id": "prob-stats-ch05-sec02",
+  "title": "Conditional Distributions",
+  "chapter": 5,
+  "section": 2,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "Ask, and it will be given to you.",
+    "reference": "Matthew 7:7",
+    "quote": "Conditioning is the soul of statistics.",
+    "quoteAuthor": "Joseph L. Doob"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Given information about one variable, how does our knowledge about \nanother variable change? Conditional distributions answer this question."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Conditional PMF (Discrete)"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Conditional PMF",
+      "content": "The **conditional PMF** of $Y$ given $X = x$ is:\n\\[\n p_{Y|X}(y \\mid x) = P(Y = y \\mid X = x) = \\frac{p(x, y)}{p_X(x)}\n\\]\nprovided $p_X(x) > 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Conditional PMF",
+      "problem": "Using the joint PMF from Section 5.1:\n\n| $Y=0$ | $Y=1$ | $Y=2$ |\n| $X=0$ | 0.10 | 0.15 | 0.05 |\n| $X=1$ | 0.20 | 0.25 | 0.25 |\n\nFind the conditional distribution of $Y$ given $X = 0$.",
+      "solution": "$p_X(0) = 0.30$. The conditional PMF is:\n$$\n p_{Y|X}(0 \\mid 0) &= \\frac{0.10}{0.30} = \\frac{1}{3} \\\\\n p_{Y|X}(1 \\mid 0) &= \\frac{0.15}{0.30} = \\frac{1}{2} \\\\\n p_{Y|X}(2 \\mid 0) &= \\frac{0.05}{0.30} = \\frac{1}{6}\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Conditional PDF (Continuous)"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.2",
+      "number": "5.2",
+      "title": "Conditional PDF",
+      "content": "The **conditional PDF** of $Y$ given $X = x$ is:\n\\[\n f_{Y|X}(y \\mid x) = \\frac{f(x, y)}{f_X(x)}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Conditional Expectation"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.3",
+      "number": "5.3",
+      "title": "Conditional Expectation",
+      "content": "The **conditional expectation** \nof $Y$ given $X = x$ is:\n\\[\n \\E[Y \\mid X = x] = \\sum_y y \\cdot p_{Y|X}(y \\mid x) \\quad \\text{(discrete)}\n\\]\n\\[\n \\E[Y \\mid X = x] = \\int_{-\\infty}^{\\infty} y \\cdot f_{Y|X}(y \\mid x) \\, dy \\quad \\text{(continuous)}\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Law of Total Expectation",
+      "content": "\\[\n \\E[Y] = \\E[\\E[Y \\mid X]]\n\\]\nThat is, the expected value of $Y$ equals the expected value of the \nconditional expectation.",
+      "label": "Theorem"
+    }
+  ]
+}

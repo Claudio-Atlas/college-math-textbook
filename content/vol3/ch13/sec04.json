@@ -1,0 +1,245 @@
+{
+  "id": "vol3-ch13-sec04",
+  "title": "Motion in Space",
+  "chapter": 13,
+  "section": 4,
+  "book": "vol3",
+  "epigraph": {
+    "text": "In him we live and move and have our being.",
+    "reference": "Acts 17:28"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "When an object moves through space, its position, velocity, and acceleration are all vectors. This section applies the calculus of vector-valued functions to the study of motion—the mathematics that underlies physics, engineering, and our understanding of everything from thrown baseballs to orbiting planets."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Velocity and Acceleration Vectors"
+    },
+    {
+      "type": "paragraph",
+      "text": "If $\\vect{r}(t)$ gives the position of a particle at time $t$, then its velocity and acceleration are the first and second derivatives."
+    },
+    {
+      "type": "definition",
+      "id": "definition-13.1",
+      "number": "13.1",
+      "title": "Velocity and Acceleration",
+      "content": "If $\\vect{r}(t)$ is the position vector of a moving particle, then:\n\n- The **velocity** is $\\vect{v}(t) = \\vect{r}'(t)$.\n\n- The **speed** is $|\\vect{v}(t)| = |\\vect{r}'(t)|$.\n\n- The **acceleration** is $\\vect{a}(t) = \\vect{v}'(t) = \\vect{r}''(t)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The velocity vector points in the direction of motion; its magnitude is the speed. Acceleration measures how the velocity changes—in magnitude, direction, or both."
+    },
+    {
+      "type": "example",
+      "id": "example-13.1",
+      "number": "13.1",
+      "title": "Motion on a helix",
+      "problem": "A particle moves along the helix $\\vect{r}(t) = \\langle 3\\cos t, 3\\sin t, 2t \\rangle$ meters, where $t$ is in seconds. Find the velocity, speed, and acceleration at $t = \\pi/2$.",
+      "solution": "$$\n \\vect{v}(t) &= \\vect{r}'(t) = \\langle -3\\sin t, 3\\cos t, 2 \\rangle, \\\\\n \\vect{a}(t) &= \\vect{r}''(t) = \\langle -3\\cos t, -3\\sin t, 0 \\rangle.\n$$\nAt $t = \\pi/2$:\n$$\n \\vect{v}(\\pi/2) &= \\langle -3, 0, 2 \\rangle \\text{ m/s}, \\\\\n |\\vect{v}(\\pi/2)| &= \\sqrt{9 + 0 + 4} = \\sqrt{13} \\text{ m/s}, \\\\\n \\vect{a}(\\pi/2) &= \\langle 0, -3, 0 \\rangle \\text{ m/s}^2.\n$$\nThe particle is moving in the direction $\\langle -3, 0, 2 \\rangle$ at speed $\\sqrt{13} \\approx 3.6$ m/s, while accelerating toward the $z$-axis."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Projectile Motion"
+    },
+    {
+      "type": "paragraph",
+      "text": "The simplest application of three-dimensional kinematics is projectile motion under constant gravitational acceleration."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-13.1",
+      "number": "13.1",
+      "title": "Projectile Motion",
+      "content": "If a projectile is launched from position $\\vect{r}_0$ with initial velocity $\\vect{v}_0$ under constant gravitational acceleration $\\vect{g} = \\langle 0, 0, -g \\rangle$, then:\n$$\n \\vect{a}(t) &= \\langle 0, 0, -g \\rangle, \\\\\n \\vect{v}(t) &= \\vect{v}_0 + t\\vect{g} = \\vect{v}_0 + \\langle 0, 0, -gt \\rangle, \\\\\n \\vect{r}(t) &= \\vect{r}_0 + t\\vect{v}_0 + \\tfrac{1}{2}t^2\\vect{g} = \\vect{r}_0 + t\\vect{v}_0 + \\langle 0, 0, -\\tfrac{1}{2}gt^2 \\rangle.\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-13.2",
+      "number": "13.2",
+      "title": "Projectile motion",
+      "problem": "A ball is thrown from ground level with initial velocity $\\langle 10, 8, 20 \\rangle$ m/s. Find (a) the time of flight, (b) the range, and (c) the maximum height. Use $g = 10$ m/s$^2$.",
+      "solution": "With $\\vect{r}_0 = \\langle 0, 0, 0 \\rangle$ and $\\vect{v}_0 = \\langle 10, 8, 20 \\rangle$:\n\\[\n \\vect{r}(t) = \\langle 10t, 8t, 20t - 5t^2 \\rangle.\n\\]\n\n**(a) Time of flight:** The ball lands when $z = 0$:\n\\[\n 20t - 5t^2 = 0 \\implies 5t(4 - t) = 0 \\implies t = 0 \\text{ or } t = 4.\n\\]\nTime of flight: 4 seconds.\n\n**(b) Range:** At $t = 4$:\n\\[\n \\vect{r}(4) = \\langle 40, 32, 0 \\rangle.\n\\]\nHorizontal distance from origin: $\\sqrt{40^2 + 32^2} = \\sqrt{2624} = 4\\sqrt{164} \\approx 51.2$ m.\n\n**(c) Maximum height:** Occurs when $v_z = 0$:\n\\[\n v_z = 20 - 10t = 0 \\implies t = 2.\n\\]\nHeight at $t = 2$: $z(2) = 20(2) - 5(4) = 20$ m."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Tangential and Normal Components of Acceleration"
+    },
+    {
+      "type": "paragraph",
+      "text": "Acceleration can change an object's speed (tangential acceleration) or its direction (normal acceleration). We can decompose acceleration into these two components."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-13.2",
+      "number": "13.2",
+      "title": "Components of Acceleration",
+      "content": "The acceleration vector can be written as\n\\[\n \\vect{a} = a_T\\vect{T} + a_N\\vect{N},\n\\]\nwhere $\\vect{T}$ is the unit tangent vector, $\\vect{N}$ is the unit normal vector, and:\n$$\n a_T &= \\frac{d|\\vect{v}|}{dt} = \\frac{\\vect{v} \\dotp \\vect{a}}{|\\vect{v}|} \\quad \\text{(tangential component)}, \\\\\n a_N &= \\kappa|\\vect{v}|^2 = \\frac{|\\vect{v} \\crossp \\vect{a}|}{|\\vect{v}|} \\quad \\text{(normal component)}.\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The tangential component $a_T$ measures how fast the *speed* is changing—it is positive when speeding up, negative when slowing down."
+    },
+    {
+      "type": "paragraph",
+      "text": "The normal component $a_N$ measures the centripetal acceleration that turns the velocity vector. It is always non-negative and points toward the center of curvature."
+    },
+    {
+      "type": "example",
+      "id": "example-13.3",
+      "number": "13.3",
+      "title": "Decomposing acceleration",
+      "problem": "A particle moves along $\\vect{r}(t) = \\langle t^2, t^3 \\rangle$. Find $a_T$ and $a_N$ at $t = 1$.",
+      "solution": "$$\n \\vect{v}(t) &= \\langle 2t, 3t^2 \\rangle, & \\vect{v}(1) &= \\langle 2, 3 \\rangle, \\\\\n \\vect{a}(t) &= \\langle 2, 6t \\rangle, & \\vect{a}(1) &= \\langle 2, 6 \\rangle, \\\\\n |\\vect{v}(1)| &= \\sqrt{4 + 9} = \\sqrt{13}.\n$$\nTangential component:\n\\[\n a_T = \\frac{\\vect{v} \\dotp \\vect{a}}{|\\vect{v}|} = \\frac{(2)(2) + (3)(6)}{\\sqrt{13}} = \\frac{22}{\\sqrt{13}}.\n\\]\nFor $a_N$, we use the cross product (treating the 2D vectors as 3D with $z = 0$):\n\\[\n \\vect{v} \\crossp \\vect{a} = (2)(6) - (3)(2) = 6 \\quad \\text{(the $z$-component)}.\n\\]\n\\[\n a_N = \\frac{|\\vect{v} \\crossp \\vect{a}|}{|\\vect{v}|} = \\frac{6}{\\sqrt{13}}.\n\\]\nWe can verify: $a_T^2 + a_N^2 = \\dfrac{484 + 36}{13} = \\dfrac{520}{13} = 40 = |\\vect{a}|^2$. $\\checkmark$"
+    },
+    {
+      "type": "example",
+      "id": "example-13.4",
+      "number": "13.4",
+      "title": "Acceleration on a helix",
+      "problem": "For the helix $\\vect{r}(t) = \\langle 4\\cos t, 4\\sin t, 3t \\rangle$, decompose the acceleration into tangential and normal components.",
+      "solution": "$$\n \\vect{v}(t) &= \\langle -4\\sin t, 4\\cos t, 3 \\rangle, \\\\\n \\vect{a}(t) &= \\langle -4\\cos t, -4\\sin t, 0 \\rangle.\n$$\nSpeed: $|\\vect{v}| = \\sqrt{16\\sin^2 t + 16\\cos^2 t + 9} = \\sqrt{16 + 9} = 5$.\n\nSince the speed is constant, $a_T = \\dfrac{d|\\vect{v}|}{dt} = 0$.\n\nFor $a_N$:\n\\[\n \\vect{v} \\dotp \\vect{a} = 16\\sin t\\cos t - 16\\sin t\\cos t + 0 = 0 \\quad \\checkmark\n\\]\n(This confirms $a_T = 0$ since $a_T = (\\vect{v} \\dotp \\vect{a})/|\\vect{v}|$.)\n\nSince $|\\vect{a}|^2 = a_T^2 + a_N^2$:\n\\[\n a_N = |\\vect{a}| = \\sqrt{16\\cos^2 t + 16\\sin^2 t} = 4.\n\\]\n\nThe entire acceleration is centripetal, pointing toward the $z$-axis."
+    },
+    {
+      "type": "example",
+      "id": "example-13.5",
+      "number": "13.5",
+      "title": "When is a particle speeding up?",
+      "problem": "A particle moves along $\\vect{r}(t) = \\langle t^3 - 3t, t^2 \\rangle$. When is it speeding up?",
+      "solution": "$$\n \\vect{v}(t) &= \\langle 3t^2 - 3, 2t \\rangle, \\\\\n \\vect{a}(t) &= \\langle 6t, 2 \\rangle.\n$$\nThe particle is speeding up when $a_T > 0$, i.e., when $\\vect{v} \\dotp \\vect{a} > 0$:\n\\[\n \\vect{v} \\dotp \\vect{a} = (3t^2 - 3)(6t) + (2t)(2) = 18t^3 - 18t + 4t = 18t^3 - 14t = 2t(9t^2 - 7).\n\\]\n\nThis is positive when:\n\n- $t > 0$ and $t^2 > 7/9$, i.e., $t > \\sqrt{7}/3 \\approx 0.88$, or\n\n- $t < 0$ and $t^2 < 7/9$, i.e., $-\\sqrt{7}/3 < t < 0$.\n\nThe particle is speeding up when $t \\in (-\\sqrt{7}/3, 0) \\cup (\\sqrt{7}/3, \\infty)$."
+    },
+    {
+      "type": "example",
+      "id": "example-13.6",
+      "number": "13.6",
+      "title": "Modeling a thrown stone",
+      "problem": "Consider the parable of the sower (Matthew 13). If a sower throws seed with initial velocity $\\langle 4, 0, 3 \\rangle$ m/s from height 1.5 m, find where the seed lands (assuming no air resistance, with $g = 10$ m/s$^2$).",
+      "solution": "With $\\vect{r}_0 = \\langle 0, 0, 1.5 \\rangle$ and $\\vect{v}_0 = \\langle 4, 0, 3 \\rangle$:\n\\[\n \\vect{r}(t) = \\langle 4t, 0, 1.5 + 3t - 5t^2 \\rangle.\n\\]\nThe seed lands when $z = 0$:\n\\[\n 1.5 + 3t - 5t^2 = 0 \\implies 5t^2 - 3t - 1.5 = 0.\n\\]\nUsing the quadratic formula:\n\\[\n t = \\frac{3 + \\sqrt{9 + 30}}{10} = \\frac{3 + \\sqrt{39}}{10} \\approx 0.924 \\text{ s}.\n\\]\nThe horizontal distance is $x = 4(0.924) \\approx 3.7$ m.\n\nThis simple physics problem, of course, ignores many real-world factors—yet the mathematical model captures the essential behavior. As scientists, we use simplified models to understand creation, always recognizing their limitations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Circular and Orbital Motion"
+    },
+    {
+      "type": "paragraph",
+      "text": "For motion on a circle of radius $R$ with speed $v$, the normal acceleration has a special form."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-13.3",
+      "number": "13.3",
+      "title": "Centripetal Acceleration",
+      "content": "For circular motion with speed $v$ and radius $R$:\n\\[\n a_N = \\frac{v^2}{R}.\n\\]\nThe acceleration points toward the center of the circle.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "For a circle, $\\kappa = 1/R$, so $a_N = \\kappa v^2 = v^2/R$."
+    },
+    {
+      "type": "example",
+      "id": "example-13.7",
+      "number": "13.7",
+      "title": "Uniform circular motion",
+      "problem": "A particle moves counterclockwise around a circle of radius 5 at constant angular velocity $\\omega = 2$ rad/s. Find its position, velocity, and acceleration.",
+      "solution": "Position: $\\vect{r}(t) = \\langle 5\\cos(2t), 5\\sin(2t) \\rangle$.\n\nVelocity: $\\vect{v}(t) = \\langle -10\\sin(2t), 10\\cos(2t) \\rangle$. Speed $|\\vect{v}| = 10$ m/s.\n\nAcceleration: $\\vect{a}(t) = \\langle -20\\cos(2t), -20\\sin(2t) \\rangle = -4\\vect{r}(t)$.\n\nThe acceleration has magnitude $20$ m/s$^2$ and points toward the origin (the center). This matches $a_N = v^2/R = 100/5 = 20$. Since speed is constant, $a_T = 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-13.8",
+      "number": "13.8",
+      "title": "Non-uniform circular motion",
+      "problem": "A particle moves on a circle of radius 4 with angular position $\\theta(t) = t^2$ radians. Find the velocity, speed, and acceleration at $t = 1$.",
+      "solution": "Position: $\\vect{r}(t) = \\langle 4\\cos(t^2), 4\\sin(t^2) \\rangle$.\n\nVelocity: Using the chain rule,\n\\[\n \\vect{v}(t) = \\langle -4\\sin(t^2) \\cdot 2t, 4\\cos(t^2) \\cdot 2t \\rangle = 8t\\langle -\\sin(t^2), \\cos(t^2) \\rangle.\n\\]\nAt $t = 1$: $\\vect{v}(1) = 8\\langle -\\sin 1, \\cos 1 \\rangle \\approx \\langle -6.73, 4.32 \\rangle$.\n\nSpeed: $|\\vect{v}(t)| = 8t$ (since $|\\langle -\\sin\\theta, \\cos\\theta \\rangle| = 1$).\nAt $t = 1$: speed $= 8$ m/s.\n\nAcceleration:\n$$\n \\vect{a}(t) &= 8\\langle -\\sin(t^2), \\cos(t^2) \\rangle + 8t \\cdot 2t\\langle -\\cos(t^2), -\\sin(t^2) \\rangle \\\\\n &= 8\\langle -\\sin(t^2), \\cos(t^2) \\rangle - 16t^2\\langle \\cos(t^2), \\sin(t^2) \\rangle.\n$$\nAt $t = 1$:\n\\[\n \\vect{a}(1) = 8\\langle -\\sin 1, \\cos 1 \\rangle - 16\\langle \\cos 1, \\sin 1 \\rangle \\approx \\langle -15.37, -9.11 \\rangle.\n\\]\n\nWe can decompose: $a_T = d|\\vect{v}|/dt = 8$ (the particle is speeding up) and $a_N = |\\vect{v}|^2/R = 64/4 = 16$."
+    },
+    {
+      "type": "example",
+      "id": "example-13.9",
+      "number": "13.9",
+      "title": "Escape velocity",
+      "problem": "What minimum speed is needed for a projectile launched from Earth's surface to escape Earth's gravity?",
+      "solution": "A projectile escapes if its kinetic energy exceeds the work needed to overcome gravity. Using conservation of energy:\n\\[\n \\frac{1}{2}mv_{\\text{esc}}^2 - \\frac{GMm}{R} = 0,\n\\]\nwhere $G$ is the gravitational constant, $M$ is Earth's mass, and $R$ is Earth's radius.\n\nSolving for escape velocity:\n\\[\n v_{\\text{esc}} = \\sqrt{\\frac{2GM}{R}} = \\sqrt{2gR},\n\\]\nwhere $g = GM/R^2 \\approx 9.8$ m/s$^2$.\n\nWith $R \\approx 6.371 \\times 10^6$ m:\n\\[\n v_{\\text{esc}} = \\sqrt{2 \\times 9.8 \\times 6.371 \\times 10^6} \\approx 11,180 \\text{ m/s} \\approx 11.2 \\text{ km/s}.\n\\]\n\nThis is about 40,000 km/h—far beyond any projectile but achievable by rockets."
+    },
+    {
+      "type": "example",
+      "id": "example-13.10",
+      "number": "13.10",
+      "title": "Banking angle for a curve",
+      "problem": "A car travels around a circular curve of radius $R$ at speed $v$. At what angle $\\theta$ should the road be banked so that no friction is required?",
+      "solution": "On a banked curve, the normal force $\\vect{N}$ from the road has two components:\n\n- Vertical component $N\\cos\\theta$ balances gravity: $N\\cos\\theta = mg$.\n\n- Horizontal component $N\\sin\\theta$ provides centripetal force: $N\\sin\\theta = mv^2/R$.\n\nDividing:\n\\[\n \\tan\\theta = \\frac{v^2}{gR}.\n\\]\n\nFor example, at $v = 30$ m/s and $R = 200$ m:\n\\[\n \\tan\\theta = \\frac{900}{9.8 \\times 200} \\approx 0.459, \\quad \\theta \\approx 24.7°.\n\\]\n\nThis is why highway entrance ramps are banked—the physics of circular motion determines the geometry of roads."
+    },
+    {
+      "type": "historical",
+      "id": "historical-13.4",
+      "number": null,
+      "title": "Newton and Orbital Mechanics",
+      "content": "Isaac Newton (1643–1727) showed that an inverse-square gravitational force produces elliptical orbits—explaining Kepler's laws of planetary motion. Newton realized that the Moon is constantly \"falling\" toward Earth, but its tangential velocity carries it around the curve of its orbit. The mathematics of centripetal acceleration was key to this insight: the Moon's acceleration toward Earth exactly matches what gravitational theory predicts."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Kepler's Laws (Optional)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Kepler's three laws describe planetary motion:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Law of Ellipses:** Planets orbit the Sun in ellipses with the Sun at one focus.",
+        "**Law of Equal Areas:** A line from the Sun to a planet sweeps out equal areas in equal times.",
+        "**Law of Periods:** The square of the orbital period is proportional to the cube of the semi-major axis."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Newton proved that these laws follow from the inverse-square law of gravitation combined with his laws of motion. This was one of the greatest triumphs of mathematical physics."
+    },
+    {
+      "type": "paragraph",
+      "text": "The second law has a beautiful vector interpretation: if $\\vect{r}$ is the position relative to the Sun, then\n\\[\n \\frac{dA}{dt} = \\frac{1}{2}|\\vect{r} \\crossp \\vect{v}| = \\text{constant}.\n\\]\nThis is equivalent to conservation of angular momentum."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 147:4--5",
+      "text": "He determines the number of the stars; he gives to all of them their names. Great is our Lord, and abundant in power; his understanding is beyond measure."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 26:7",
+      "text": "He stretches out the north over the void and hangs the earth on nothing."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 8:3--4",
+      "text": "When I look at your heavens, the work of your fingers, the moon and the stars, which you have set in place, what is man that you are mindful of him?"
+    },
+    {
+      "type": "scripture",
+      "reference": "Genesis 1:14",
+      "text": "And God said, \"Let there be lights in the expanse of the heavens to separate the day from the night. And let them be for signs and for seasons, and for days and years.\""
+    },
+    {
+      "type": "quote",
+      "author": "Galileo",
+      "text": "All truths are easy to understand once they are discovered; the point is to discover them."
+    },
+    {
+      "type": "quote",
+      "author": "Kepler",
+      "text": "I used to measure the heavens, now I measure the shadows of Earth."
+    }
+  ]
+}

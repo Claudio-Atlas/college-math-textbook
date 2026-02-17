@@ -1,0 +1,232 @@
+{
+  "id": "algebra-2-ch06-sec02",
+  "title": "The Natural Base $e$",
+  "chapter": 6,
+  "section": 2,
+  "book": "algebra-2",
+  "epigraph": {
+    "text": "I am the Alpha and the Omega, the First and the Last, \nthe Beginning and the End.",
+    "reference": "Revelation 22:13"
+  },
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Discovering the Number $e$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Imagine you invest \\$1 at 100\\% interest for one year. How much do you \nhave at the end, depending on how often interest is compounded?"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Compounding**",
+        "**Formula**",
+        "**Amount**"
+      ],
+      "rows": [
+        [
+          "Annually",
+          "$(1 + 1)^1$",
+          "\\$2.00"
+        ],
+        [
+          "Semiannually",
+          "$(1 + 0.5)^2$",
+          "\\$2.25"
+        ],
+        [
+          "Quarterly",
+          "$(1 + 0.25)^4$",
+          "\\$2.4414"
+        ],
+        [
+          "Monthly",
+          "$(1 + 1/12)^{12}$",
+          "\\$2.6130"
+        ],
+        [
+          "Daily",
+          "$(1 + 1/365)^{365}$",
+          "\\$2.7146"
+        ],
+        [
+          "Hourly",
+          "$(1 + 1/8760)^{8760}$",
+          "\\$2.7181"
+        ],
+        [
+          "Every minute",
+          "$(1 + 1/525600)^{525600}$",
+          "\\$2.71828"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "As we compound more and more frequently, the amount approaches a limiting \nvalue: approximately \\$2.71828... This number is $e$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "The Number $e$",
+      "content": "The number $e$ is defined as:\n\\[\n e = \\lim_{n \\to \\infty} \\left(1 + \\frac{1}{n}\\right)^n \\approx 2.71828182845904...\n\\]\nLike $\\pi$, the number $e$ is **irrational**—its decimal expansion \nnever terminates or repeats."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Why $e$ Is Natural"
+    },
+    {
+      "type": "paragraph",
+      "text": "The base $e$ earns its name \"natural\" because it arises naturally in \ncalculus and many natural phenomena. The function $f(x) = e^x$ has a \nremarkable property: **its rate of change at any point equals its \nvalue at that point**. No other exponential function has this property."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "The Special Property of $e^x$",
+      "content": "The function $f(x) = e^x$ satisfies:\n\\[\n f'(x) = f(x)\n\\]\nThat is, the derivative (rate of change) of $e^x$ is $e^x$ itself.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This makes $e^x$ the \"perfect\" exponential function for modeling \ncontinuous growth or decay."
+    },
+    {
+      "type": "historical",
+      "id": "historical-6.2",
+      "number": null,
+      "title": "Leonhard Euler (1707--1783)",
+      "content": "The Swiss mathematician Leonhard Euler was one of the most prolific \nmathematicians in history, publishing over 800 papers and books. \nA devout Christian, Euler saw his mathematical work as exploring God's \ncreation. He wrote, \"Since the fabric of the universe is most perfect, \nand is the work of a most wise Creator, nothing whatsoever takes place \nin the universe in which some relation of maximum and minimum does not appear.\"\n\nEuler gave the constant $e$ its name and discovered its remarkable \nproperties. His famous formula $e^{i\\pi} + 1 = 0$ connects five of \nmathematics' most important constants."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Graphing $y = e^x$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The function $f(x) = e^x$ is called the **natural exponential function**."
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Graphing the natural exponential",
+      "problem": "Create a table of values for $f(x) = e^x$ and sketch the graph.",
+      "solution": "Using $e \\approx 2.718$:\n\n| $x$ | $-2$ | $-1$ | $0$ | $1$ | $2$ | $3$ |\n| $e^x$ | $0.135$ | $0.368$ | $1$ | $2.718$ | $7.389$ | $20.086$ |\n\nKey features:\n\n- Domain: $(-\\infty, \\infty)$\n\n- Range: $(0, \\infty)$\n\n- $y$-intercept: $(0, 1)$\n\n- Horizontal asymptote: $y = 0$\n\n- Increasing throughout\n\nThe graph of $e^x$ lies between $2^x$ and $3^x$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Transformations of $e^x$"
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Transforming the natural exponential",
+      "problem": "Graph each function and describe how it relates to $y = e^x$:\n\n1. $y = e^{-x}$\n\n2. $y = e^x + 2$\n\n3. $y = e^{x-3}$\n\n4. $y = 2e^x$\n\n5. $y = -e^x + 4$",
+      "solution": "1. $y = e^{-x}$: Reflection across the $y$-axis. This represents \n exponential decay with base $e$.\n\n2. $y = e^x + 2$: Vertical shift up 2 units. Asymptote: $y = 2$.\n\n3. $y = e^{x-3}$: Horizontal shift right 3 units. Now passes through $(3, 1)$.\n\n4. $y = 2e^x$: Vertical stretch by factor 2. $y$-intercept: $(0, 2)$.\n\n5. $y = -e^x + 4$: Reflection across $x$-axis, then shift up 4. \n Range: $(-\\infty, 4)$. Asymptote: $y = 4$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Evaluating Powers of $e$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Most calculators have an $e^x$ button (often labeled `exp` or accessible \nvia `2nd LN`)."
+    },
+    {
+      "type": "example",
+      "id": "example-6.3",
+      "number": "6.3",
+      "title": "Evaluating powers of $e$",
+      "problem": "Use a calculator to evaluate:\n\n1. $e^2$\n\n2. $e^{-1}$\n\n3. $e^{0.5}$\n\n4. $e^{-2.3}$",
+      "solution": "1. $e^2 \\approx 7.389$\n\n2. $e^{-1} \\approx 0.368$\n\n3. $e^{0.5} = \\sqrt{e} \\approx 1.649$\n\n4. $e^{-2.3} \\approx 0.100$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Number $e$ in Nature and Science"
+    },
+    {
+      "type": "example",
+      "id": "example-6.4",
+      "number": "6.4",
+      "title": "Population growth",
+      "problem": "A population growing at a rate proportional to its size follows the model:\n\\[\n P(t) = P_0 e^{kt}\n\\]\nwhere $P_0$ is the initial population and $k$ is the growth rate.\n\nIf a bacterial culture starts with 1000 cells and has a growth rate of \n$k = 0.3$ per hour, find the population after 5 hours.",
+      "solution": "\\[\n P(5) = 1000 \\cdot e^{0.3 \\times 5} = 1000 \\cdot e^{1.5} \\approx 1000 \\times 4.482 = 4482 \\text{ cells}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-6.5",
+      "number": "6.5",
+      "title": "Radioactive decay",
+      "problem": "Radioactive substances decay according to:\n\\[\n A(t) = A_0 e^{-kt}\n\\]\nwhere $k > 0$ is the decay constant.\n\nIf a 100-gram sample of a radioactive isotope has decay constant \n$k = 0.05$ per year, how much remains after 20 years?",
+      "solution": "\\[\n A(20) = 100 \\cdot e^{-0.05 \\times 20} = 100 \\cdot e^{-1} \\approx 100 \\times 0.368 = 36.8 \\text{ grams}\n\\]"
+    },
+    {
+      "type": "context",
+      "id": "context-6.2",
+      "number": null,
+      "title": "The Divine Proportion",
+      "content": "The number $e$ appears in countless natural phenomena: population growth, \nradioactive decay, the shape of hanging chains, the spiral of shells, \nthe distribution of primes, the bell curve of statistics. Like $\\pi$, \nit seems woven into the fabric of creation.\n\nEuler, contemplating such mathematical constants, wrote of \"the most \nwise Creator\" whose works display mathematical beauty. The ubiquity of \n$e$ in nature suggests a coherent mathematical structure underlying the \nphysical world—what Galileo called \"the language in which God has \nwritten the universe.\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Comparing $e^x$ to Other Exponential Functions"
+    },
+    {
+      "type": "example",
+      "id": "example-6.6",
+      "number": "6.6",
+      "title": "Comparison of bases",
+      "problem": "Compare the values of $2^x$, $e^x$, and $3^x$ for several values of $x$.",
+      "solution": "| $x$ | $2^x$ | $e^x$ | $3^x$ |\n| $-2$ | $0.25$ | $0.135$ | $0.111$ |\n| $-1$ | $0.5$ | $0.368$ | $0.333$ |\n| $0$ | $1$ | $1$ | $1$ |\n| $1$ | $2$ | $2.718$ | $3$ |\n| $2$ | $4$ | $7.389$ | $9$ |\n| $3$ | $8$ | $20.09$ | $27$ |\n\nSince $2 < e < 3$, the graph of $e^x$ lies between those of $2^x$ and $3^x$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving Equations Involving $e$"
+    },
+    {
+      "type": "example",
+      "id": "example-6.7",
+      "number": "6.7",
+      "title": "Solving equations with base $e$",
+      "problem": "Solve: $e^{2x} = e^{x+5}$",
+      "solution": "Since the bases are the same, set the exponents equal:\n\\[\n 2x = x + 5\n\\]\n\\[\n x = 5\n\\]\n\n**Check:** $e^{10} = e^{10}$."
+    },
+    {
+      "type": "example",
+      "id": "example-6.8",
+      "number": "6.8",
+      "title": "More complex equation",
+      "problem": "Solve: $e^{x^2} = e^{4x-3}$",
+      "solution": "Set exponents equal:\n\\[\n x^2 = 4x - 3\n\\]\n\\[\n x^2 - 4x + 3 = 0\n\\]\n\\[\n (x-1)(x-3) = 0\n\\]\n\\[\n x = 1 \\text{ or } x = 3\n\\]\n\n**Check:** $e^1 = e^{4-3} = e^1$ and $e^9 = e^{12-3} = e^9$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Practice Problems"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 147:5",
+      "text": "Great is our Lord and mighty in power; \nhis understanding has no limit."
+    }
+  ]
+}

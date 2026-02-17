@@ -1,0 +1,116 @@
+{
+  "id": "prob-stats-ch03-sec02",
+  "title": "Expected Value and Variance",
+  "chapter": 3,
+  "section": 2,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "For which of you, desiring to build a tower, does not first sit down and count the cost?",
+    "reference": "Luke 14:28",
+    "quote": "Expectation is the foundation of rational decision-making under uncertainty.",
+    "quoteAuthor": "Daniel Bernoulli"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Just as we summarized data with mean and standard deviation, we \nsummarize random variables with **expected value** and \n**variance**. These quantities describe the center and spread \nof the probability distribution."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Expected Value"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.1",
+      "number": "3.1",
+      "title": "Expected Value (Mean)",
+      "content": "The **expected value** (or **mean**) \nof a discrete random variable $X$ with PMF $p(x)$ is:\n\\[\n \\E[X] = \\mu_X = \\sum_{\\text{all } x} x \\cdot p(x)\n\\]\nThe expected value is the probability-weighted average of all possible \nvalues."
+    },
+    {
+      "type": "paragraph",
+      "text": "The expected value represents the long-run average: if we repeated \nthe random experiment many times, the average of the observed values \nwould approach $\\E[X]$."
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Computing Expected Value",
+      "problem": "Find the expected value of $X$ = number of heads in 3 coin flips.",
+      "solution": "Using the PMF from Section 3.1:\n\\[\n \\E[X] = 0 \\cdot \\frac{1}{8} + 1 \\cdot \\frac{3}{8} + 2 \\cdot \\frac{3}{8} \n + 3 \\cdot \\frac{1}{8} = \\frac{0 + 3 + 6 + 3}{8} = \\frac{12}{8} = 1.5\n\\]\nOn average, we expect 1.5 heads in 3 flips."
+    },
+    {
+      "type": "warning",
+      "id": "warning-3.2",
+      "number": null,
+      "title": "Expected Value May Not Be a Possible Value",
+      "content": "The expected value $\\E[X] = 1.5$ is not a value that $X$ can actually \ntake (you can't get 1.5 heads). The expected value is a theoretical \naverage, not a typical outcome."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Expected Value of a Function"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "Expected Value of $g(X)$",
+      "content": "If $X$ is a discrete random variable and $g$ is any function, then:\n\\[\n \\E[g(X)] = \\sum_{\\text{all } x} g(x) \\cdot p(x)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of Expected Value"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.2",
+      "number": "3.2",
+      "title": "Linearity of Expectation",
+      "content": "For any random variable $X$ and constants $a$ and $b$:\n\\[\n \\E[aX + b] = a \\cdot \\E[X] + b\n\\]\nFor any random variables $X$ and $Y$ (even if dependent):\n\\[\n \\E[X + Y] = \\E[X] + \\E[Y]\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Variance and Standard Deviation"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.2",
+      "number": "3.2",
+      "title": "Variance and Standard Deviation",
+      "content": "The **variance** of a random \nvariable $X$ is:\n\\[\n \\Var(X) = \\sigma_X^2 = \\E[(X - \\mu_X)^2] = \\sum_{\\text{all } x} (x - \\mu_X)^2 \\cdot p(x)\n\\]\nEquivalently:\n\\[\n \\Var(X) = \\E[X^2] - (\\E[X])^2\n\\]\nThe **standard deviation** \nis $\\SD(X) = \\sigma_X = \\sqrt{\\Var(X)}$."
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Computing Variance",
+      "problem": "Find the variance of $X$ = number of heads in 3 coin flips.",
+      "solution": "We found $\\E[X] = 1.5$. Now compute $\\E[X^2]$:\n\\[\n \\E[X^2] = 0^2 \\cdot \\frac{1}{8} + 1^2 \\cdot \\frac{3}{8} + 2^2 \\cdot \\frac{3}{8} \n + 3^2 \\cdot \\frac{1}{8} = \\frac{0 + 3 + 12 + 9}{8} = 3\n\\]\n\nTherefore:\n\\[\n \\Var(X) = \\E[X^2] - (\\E[X])^2 = 3 - (1.5)^2 = 3 - 2.25 = 0.75\n\\]\n\\[\n \\SD(X) = \\sqrt{0.75} \\approx 0.866\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of Variance"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.3",
+      "number": "3.3",
+      "title": "Properties of Variance",
+      "content": "For any random variable $X$ and constants $a$ and $b$:\n\\[\n \\Var(aX + b) = a^2 \\Var(X)\n\\]\n(Adding a constant doesn't change spread; multiplying scales by $a^2$.)\n\nFor **independent** random variables $X$ and $Y$:\n\\[\n \\Var(X + Y) = \\Var(X) + \\Var(Y)\n\\]",
+      "label": "Theorem"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 27:1",
+      "text": "Do not boast about tomorrow, for you \ndo not know what a day may bring."
+    }
+  ]
+}

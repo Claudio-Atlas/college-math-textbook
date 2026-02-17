@@ -1,0 +1,156 @@
+{
+  "id": "vol2-ch08-sec05",
+  "title": "Numerical Integration",
+  "chapter": 8,
+  "section": 5,
+  "book": "vol2",
+  "epigraph": {
+    "text": "It is the glory of God to conceal things, but the glory of \nkings is to search things out.",
+    "reference": "Proverbs 25:2"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Some integrals have *no* closed-form antiderivative. The function\n$e^{-x^{2}}$ is perfectly well-defined, continuous, and smooth—yet no\ncombination of elementary functions equals $\\int e^{-x^{2}}\\dx$. And this\nis not an obscure curiosity: the integral\n$\\int_{-\\infty}^{\\infty}e^{-x^{2}}\\dx = \\sqrt{\\pi}$ lies at the heart of\nprobability theory and statistics. Every bell curve, every normal\ndistribution depends on it."
+    },
+    {
+      "type": "paragraph",
+      "text": "Other times we have no formula at all—only data points collected from an\nexperiment. A physicist measures velocity at discrete times; an engineer\nrecords stress at measured positions. To find the total displacement or the\ntotal force, we must integrate a function known only through a table."
+    },
+    {
+      "type": "paragraph",
+      "text": "In such situations, we turn to **numerical methods**: systematic\napproximations that estimate $\\defint{a}{b}f(x)\\dx$ to any desired accuracy."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Review: Riemann Sums"
+    },
+    {
+      "type": "paragraph",
+      "text": "Recall from Chapter 6 that $\\defint{a}{b}f(x)\\dx$ is defined as a limit of\nRiemann sums. Partition $[a,b]$ into $n$ equal subintervals of width\n$\\Delta x = (b-a)/n$ with endpoints $x_{0}=a, x_{1}, \\ldots, x_{n}=b$.\nThe **left** and **right Riemann sums** are\n\\[\n L_{n} = \\sum_{i=0}^{n-1}f(x_{i})\\,\\Delta x,\n \\qquad\n R_{n} = \\sum_{i=1}^{n}f(x_{i})\\,\\Delta x.\n\\]\nBoth converge to the integral as $n \\to \\infty$, but for moderate $n$ their\naccuracy is limited. We can do better."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Trapezoid Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "Instead of approximating $f$ by a constant on each subinterval (a rectangle),\nwe approximate by a *straight line* (a trapezoid). On $[x_{i},\nx_{i+1}]$, the trapezoid has area\n\\[\n \\frac{\\Delta x}{2}\\bigl[f(x_{i}) + f(x_{i+1})\\bigr].\n\\]\nSumming over all subintervals gives the **Trapezoid Rule**."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "The Trapezoid Rule",
+      "content": "\\[\n T_{n} = \\frac{\\Delta x}{2}\n \\bigl[f(x_{0}) + 2f(x_{1}) + 2f(x_{2}) + \\cdots + 2f(x_{n-1})\n + f(x_{n})\\bigr],\n\\]\nwhere $\\Delta x = (b-a)/n$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Note the pattern: the first and last function values appear once; all\ninterior values appear twice. This is simply the average of the left and\nright Riemann sums: $T_{n} = (L_{n}+R_{n})/2$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Trapezoid Rule",
+      "problem": "Approximate $\\displaystyle\\defint{1}{3}\\frac{1}{x}\\dx$ using $T_{4}$.",
+      "solution": "We have $a = 1$, $b = 3$, $n = 4$, $\\Delta x = 0.5$. The partition\npoints are $x_{0}=1$, $x_{1}=1.5$, $x_{2}=2$, $x_{3}=2.5$, $x_{4}=3$.\n\n| $i$ | 0 | 1 | 2 | 3 | 4 |\n| $x_{i}$ | 1 | 1.5 | 2 | 2.5 | 3 |\n| $f(x_{i})$ | 1 | 0.6667 | 0.5 | 0.4 | 0.3333 |\n\n$$\n T_{4} &= \\frac{0.5}{2}\\bigl[1 + 2(0.6667) + 2(0.5) + 2(0.4)\n + 0.3333\\bigr] \\\\[4pt]\n &= 0.25\\bigl[1 + 1.3333 + 1 + 0.8 + 0.3333\\bigr]\n = 0.25(4.4667) \\\\[4pt]\n &\\approx 1.1167.\n$$\nThe exact value is $\\ln 3 \\approx 1.0986$. The error is about $0.018$—a\nsignificant improvement over left or right Riemann sums with $n=4$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Simpson's Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "Why stop at straight lines? If we approximate $f$ by a *parabola*\non each pair of subintervals, we get a far more accurate method."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.2",
+      "number": "8.2",
+      "title": "Simpson's Rule",
+      "content": "With $n$ **even** and $\\Delta x = (b-a)/n$:\n\\[\n S_{n} = \\frac{\\Delta x}{3}\n \\bigl[f(x_{0}) + 4f(x_{1}) + 2f(x_{2}) + 4f(x_{3}) + 2f(x_{4})\n + \\cdots + 4f(x_{n-1}) + f(x_{n})\\bigr].\n\\]\nThe coefficients follow the pattern $1, 4, 2, 4, 2, \\ldots, 4, 2, 4, 1$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-8.5",
+      "number": null,
+      "title": "$n$ must be even for Simpson's Rule",
+      "content": "Simpson's Rule fits a parabola to each consecutive triple of points,\nrequiring an even number of subintervals."
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "Simpson's Rule",
+      "problem": "Approximate $\\displaystyle\\defint{1}{3}\\frac{1}{x}\\dx$ using $S_{4}$.",
+      "solution": "Using the same partition as Example [ex:trap-basic]:\n$$\n S_{4} &= \\frac{0.5}{3}\\bigl[1 + 4(0.6667) + 2(0.5)\n + 4(0.4) + 0.3333\\bigr] \\\\[4pt]\n &= \\frac{0.5}{3}\\bigl[1 + 2.6667 + 1 + 1.6 + 0.3333\\bigr]\n = \\frac{0.5}{3}(6.6) \\\\[4pt]\n &= \\frac{3.3}{3} = 1.1.\n$$\nThe exact value is $\\ln 3 \\approx 1.0986$. Simpson's Rule gives an error\nof only $0.0014$—more than ten times better than the Trapezoid Rule with\nthe same $n$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "Comparing methods",
+      "problem": "For $\\displaystyle\\defint{0}{1}e^{-x^{2}}\\dx$ (no closed-form\nantiderivative!), approximate using $n=4$ with each method.",
+      "solution": "$\\Delta x = 0.25$. The function values:\n\n| $i$ | 0 | 1 | 2 | 3 | 4 |\n| $x_{i}$ | 0 | 0.25 | 0.5 | 0.75 | 1 |\n| $f(x_{i}) = e^{-x_{i}^{2}}$ | 1 | 0.9394 | 0.7788 | 0.5698 | 0.3679 |\n\n**Left Riemann:** $L_{4} = 0.25(1 + 0.9394 + 0.7788 + 0.5698)\n= 0.8220$.\n\n**Right Riemann:** $R_{4} = 0.25(0.9394 + 0.7788 + 0.5698 + 0.3679)\n= 0.6640$.\n\n**Trapezoid:** $T_{4} = (L_{4}+R_{4})/2 = 0.7430$.\n\n**Simpson's:**\n$S_{4} = \\frac{0.25}{3}[1 + 4(0.9394) + 2(0.7788) + 4(0.5698) + 0.3679]\n= \\frac{0.25}{3}(8.9536) \\approx 0.7461$.\n\nThe true value (to four decimal places) is $0.7468$. Simpson's Rule with\nonly four subintervals is accurate to the third decimal place!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Error Bounds"
+    },
+    {
+      "type": "paragraph",
+      "text": "How accurate are these approximations? The following bounds tell us."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.3",
+      "number": "8.3",
+      "title": "Error Bounds for Numerical Integration",
+      "content": "Suppose $f$ has continuous derivatives on $[a,b]$. Let\n$\\Delta x = (b-a)/n$.\n\n**Trapezoid Rule:** If $\\abs{f''(x)} \\leq K_{2}$ on $[a,b]$, then\n\\[\n \\abs{\\defint{a}{b}f(x)\\dx - T_{n}}\n \\leq \\frac{K_{2}(b-a)^{3}}{12n^{2}}.\n\\]\n\n**Simpson's Rule:** If $\\abs{f^{(4)}(x)} \\leq K_{4}$ on $[a,b]$,\nthen\n\\[\n \\abs{\\defint{a}{b}f(x)\\dx - S_{n}}\n \\leq \\frac{K_{4}(b-a)^{5}}{180n^{4}}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Notice the key difference: the Trapezoid error decreases like $1/n^{2}$\n(doubling $n$ cuts the error by a factor of $4$), while Simpson's error\ndecreases like $1/n^{4}$ (doubling $n$ cuts the error by a factor\nof $16$). This explains why Simpson's Rule is so much more efficient."
+    },
+    {
+      "type": "example",
+      "id": "example-8.4",
+      "number": "8.4",
+      "title": "How many subintervals?",
+      "problem": "How many subintervals are needed to approximate\n$\\displaystyle\\defint{1}{3}\\frac{1}{x}\\dx$ to within $10^{-6}$ using\n(a) the Trapezoid Rule and (b) Simpson's Rule?",
+      "solution": "For $f(x) = 1/x$ on $[1,3]$:\n$f''(x) = 2/x^{3}$, so $\\abs{f''(x)} \\leq 2$ on $[1,3]$.\n$f^{(4)}(x) = 24/x^{5}$, so $\\abs{f^{(4)}(x)} \\leq 24$ on $[1,3]$.\n\n**(a) Trapezoid:** We need\n$\\dfrac{2 \\cdot 8}{12n^{2}} < 10^{-6}$, i.e.,\n$n^{2} > \\dfrac{16}{12 \\cdot 10^{-6}} = 1.33\\times 10^{6}$,\nso $n > 1155$. We need $n \\geq 1156$.\n\n**(b) Simpson's:** We need\n$\\dfrac{24 \\cdot 32}{180n^{4}} < 10^{-6}$, i.e.,\n$n^{4} > \\dfrac{768}{180 \\cdot 10^{-6}} = 4.27\\times 10^{6}$,\nso $n > 45.4$. We need $n \\geq 46$ (even), so $n = 46$.\n\nSimpson's Rule achieves the same accuracy with $46$ subintervals instead of\n$1{,}156$—a dramatic difference."
+    },
+    {
+      "type": "historical",
+      "id": "historical-8.5",
+      "number": null,
+      "title": "Thomas Simpson (1710--1761)",
+      "content": "Thomas Simpson, a self-taught English mathematician, published the rule\nbearing his name in 1743, though Newton and Cotes had discovered equivalent\nformulas earlier. Simpson came from a weaving family and taught himself\nmathematics from textbooks. His story reminds us that mathematical talent\nknows no social boundary—a truth consistent with the imago Dei, the image\nof God in every human person."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 27:23",
+      "text": "Know well the condition of your flocks, and\ngive attention to your herds."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 11:1",
+      "text": "A false balance is an abomination to the\nLord, but a just weight is his delight."
+    },
+    {
+      "type": "quote",
+      "author": "Isaac Newton",
+      "text": "If I have seen further, it is by standing on the\nshoulders of giants."
+    }
+  ]
+}

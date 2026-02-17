@@ -1,0 +1,292 @@
+{
+  "id": "vol1-ch04-sec09",
+  "title": "Linear Approximations and Differentials",
+  "chapter": 4,
+  "section": 9,
+  "book": "vol1",
+  "epigraph": {
+    "text": "The Lord is near to all who call on him, to all who call on him in truth.",
+    "reference": "Psalm 145:18",
+    "quote": "Nothing is too wonderful to be true, if it be consistent with the laws of nature.",
+    "quoteAuthor": "Michael Faraday"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The tangent line is the **best linear approximation** to a function \nnear the point of tangency."
+    },
+    {
+      "type": "paragraph",
+      "text": "We have been computing tangent lines since Chapter [ch:derivative]. \nBut we always treated the tangent as a geometric object—a line that \ntouches the curve. In this section, we turn the tangent line into a \n**computational tool**: we use it to *approximate* complicated \nquantities like $\\sqrt{4.02}$, $\\sin(0.01)$, and $\\ln(1.05)$ with \nnothing more than arithmetic and the derivative."
+    },
+    {
+      "type": "paragraph",
+      "text": "This idea—replacing a complicated function by its tangent line—is \none of the most powerful in all of applied mathematics. It is the \nfoundation of error analysis, numerical methods, and much of physics."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Linearization"
+    },
+    {
+      "type": "paragraph",
+      "text": "Suppose $f$ is differentiable at $x = a$. The tangent line to $y = f(x)$ \nat $x = a$ has equation\n\\[\n y = f(a) + f'(a)(x - a).\n\\]\nWhen $x$ is *close* to $a$, the tangent line stays close to the \ncurve. We formalize this observation."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "Linearization",
+      "content": "If $f$ is differentiable at $a$, then the **linearization** of $f$ \nat $a$ is\n\\[\n L(x) = f(a) + f'(a)(x - a).\n\\]\nThe approximation $f(x) \\approx L(x)$ is called the **linear \napproximation** (or **tangent-line approximation**) of $f$ near $a$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Approximating a square root",
+      "problem": "Use a linear approximation to estimate $\\sqrt{4.02}$.",
+      "solution": "Let $f(x) = \\sqrt{x}$. We want to approximate $f(4.02)$. The nearest \n\"nice\" value is $a = 4$, where $f(4) = 2$.\n\nWe compute:\n\\[\n f'(x) = \\frac{1}{2\\sqrt{x}}, \\qquad f'(4) = \\frac{1}{2\\cdot 2} = \\frac{1}{4}.\n\\]\nThe linearization at $a = 4$ is\n\\[\n L(x) = 2 + \\frac{1}{4}(x - 4).\n\\]\nTherefore:\n\\[\n \\sqrt{4.02} \\approx L(4.02) = 2 + \\frac{1}{4}(0.02) = 2 + 0.005 = 2.005.\n\\]\nThe actual value is $\\sqrt{4.02} = 2.004994\\ldots$\\,, so our \napproximation is accurate to four decimal places!"
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us try several more approximations to build fluency."
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "Several linear approximations",
+      "problem": "Estimate each quantity using a linear approximation.\n\n**(a)** $\\sin(0.01)$.\n\n**(b)** $(1.01)^{5}$.\n\n**(c)** $\\ln(1.05)$.",
+      "solution": "**(a)** Let $f(x) = \\sin x$, $a = 0$. Then $f(0) = 0$, \n$f'(x) = \\cos x$, $f'(0) = 1$. The linearization is\n\\[\n L(x) = 0 + 1 \\cdot (x - 0) = x.\n\\]\nSo $\\sin(0.01) \\approx 0.01$. (Actual: $0.0099998\\ldots$\\,.) This is \nthe famous small-angle approximation: $\\sin x \\approx x$ for $x$ near $0$.\n\n**(b)** Let $f(x) = x^{5}$, $a = 1$. Then $f(1) = 1$, \n$f'(x) = 5x^{4}$, $f'(1) = 5$. The linearization is\n\\[\n L(x) = 1 + 5(x - 1).\n\\]\nSo $(1.01)^{5} \\approx 1 + 5(0.01) = 1.05$. (Actual: $1.05101\\ldots$\\,.)\n\n**(c)** Let $f(x) = \\ln x$, $a = 1$. Then $f(1) = 0$, \n$f'(x) = 1/x$, $f'(1) = 1$. The linearization is\n\\[\n L(x) = 0 + 1 \\cdot (x - 1) = x - 1.\n\\]\nSo $\\ln(1.05) \\approx 1.05 - 1 = 0.05$. (Actual: $0.04879\\ldots$\\,.)"
+    },
+    {
+      "type": "warning",
+      "id": "warning-4.9",
+      "number": null,
+      "title": "Know your base point",
+      "content": "The quality of the approximation depends on how close $x$ is to $a$. \nThe farther $x$ strays from $a$, the worse the linear approximation \nbecomes. For instance, $\\sin x \\approx x$ is excellent for \n$x = 0.01$ but poor for $x = 1$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "How Good Is the Approximation?"
+    },
+    {
+      "type": "paragraph",
+      "text": "We have claimed that the tangent line is the \"best\" linear approximation \nnear $a$. Let us make this more precise."
+    },
+    {
+      "type": "paragraph",
+      "text": "The **error** in the linear approximation is\n\\[\n E(x) = f(x) - L(x) = f(x) - f(a) - f'(a)(x-a).\n\\]\nIt can be shown (and will be proved rigorously when we study Taylor \npolynomials) that if $f''$ exists and is continuous near $a$, then\n\\[\n \\abs{E(x)} \\leq \\frac{M}{2}(x - a)^{2},\n\\]\nwhere $M = \\max\\abs{f''(c)}$ for $c$ between $a$ and $x$. The key \nobservation: the error is roughly *proportional to $(x-a)^{2}$*. \nThis means that if you halve the distance from $a$, you cut the error \nby a factor of four."
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": "Error bound for square root",
+      "problem": "Bound the error in our earlier approximation $\\sqrt{4.02} \\approx 2.005$.",
+      "solution": "We have $f(x) = \\sqrt{x}$, $a = 4$, $x = 4.02$.\n\\[\n f''(x) = -\\frac{1}{4x^{3/2}}.\n\\]\nFor $x$ in $[4, 4.02]$:\n\\[\n \\abs{f''(x)} = \\frac{1}{4x^{3/2}} \\leq \\frac{1}{4(4)^{3/2}} \n = \\frac{1}{4 \\cdot 8} = \\frac{1}{32}.\n\\]\nTherefore:\n\\[\n \\abs{E} \\leq \\frac{1/32}{2}(0.02)^{2} = \\frac{1}{64}(0.0004) \n = 0.00000625.\n\\]\nOur approximation is guaranteed accurate to within $0.0000063$—well \nwithin five decimal places."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Differentials"
+    },
+    {
+      "type": "paragraph",
+      "text": "Linear approximation has an elegant reformulation in the language of \n**differentials**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.2",
+      "number": "4.2",
+      "title": "Differentials",
+      "content": "Let $y = f(x)$ where $f$ is differentiable. The **differential** \n$dx$ is an independent variable (representing a small change in $x$), \nand the **differential** $dy$ is defined by\n\\[\n dy = f'(x)\\,dx.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The differential $dy$ is the change in $y$ *along the tangent line*. \nIt is *not* the same as the actual change $\\Delta y = f(x + dx) - f(x)$, \nbut when $dx$ is small, $dy \\approx \\Delta y$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The figure makes the relationship clear:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$\\Delta y = f(a + dx) - f(a)$ is the actual change along the \n *curve*.",
+        "$dy = f'(a)\\,dx$ is the change along the *tangent line*.",
+        "When $dx$ is small, $\\Delta y \\approx dy$."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The linear approximation $f(a + dx) \\approx f(a) + f'(a)\\,dx$ is simply \nthe statement $\\Delta y \\approx dy$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.4",
+      "number": "4.4",
+      "title": "Computing with differentials",
+      "problem": "Let $y = x^{3} + 2x$. Compute $dy$ when $x = 2$ and $dx = 0.1$. \nCompare with $\\Delta y$.",
+      "solution": "We have $f'(x) = 3x^{2} + 2$, so $f'(2) = 14$. The differential is\n\\[\n dy = f'(2)\\,dx = 14(0.1) = 1.4.\n\\]\nThe actual change is\n\\[\n \\Delta y = f(2.1) - f(2) = [(2.1)^{3} + 2(2.1)] - [8 + 4] \n = [9.261 + 4.2] - 12 = 13.461 - 12 = 1.461.\n\\]\nThe differential $dy = 1.4$ approximates $\\Delta y = 1.461$ with an \nerror of $0.061$—about $4\\%$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Error Estimation and Propagation"
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the most practical applications of differentials is \n**error propagation**: if there is a small error in a measured \nquantity $x$, how does that error affect a computed quantity $y = f(x)$?"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.3",
+      "number": "4.3",
+      "title": "Error Terminology",
+      "content": "If $x$ is the true value and $x + \\Delta x$ is the measured value, then:\n\n1. **Absolute error** in $x$: $\\abs{\\Delta x}$.\n\n2. **Relative error** in $x$: $\\dfrac{\\abs{\\Delta x}}{\\abs{x}}$.\n\n3. **Percentage error** in $x$: $\\dfrac{\\abs{\\Delta x}}{\\abs{x}} \\times 100\\%$.\nIf $y = f(x)$, then the approximate absolute error in $y$ is \n$\\abs{dy} = \\abs{f'(x)}\\,\\abs{dx}$, and the approximate relative error \nin $y$ is $\\dfrac{\\abs{dy}}{\\abs{y}}$."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-4.9",
+      "number": null,
+      "title": "Error Propagation via Differentials",
+      "content": "To estimate how a measurement error $\\Delta x$ in $x$ affects a \ncomputed quantity $y = f(x)$:\n\n1. Compute $f'(x)$.\n\n2. Set $dx = \\Delta x$ (the measurement error).\n\n3. The approximate error in $y$ is $dy = f'(x)\\,dx$.\n\n4. The approximate relative error in $y$ is $\\dfrac{dy}{y} = \\dfrac{f'(x)\\,dx}{f(x)}$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.5",
+      "number": "4.5",
+      "title": "Error in a sphere's volume",
+      "problem": "The radius of a sphere is measured as $r = 10$ cm with a possible error \nof $\\pm 0.05$ cm. Estimate the maximum error in the computed volume.",
+      "solution": "The volume is $V = \\dfrac{4}{3}\\pi r^{3}$, so $\\deriv{V}{r} = 4\\pi r^{2}$.\n\nThe approximate error in $V$ is\n\\[\n dV = 4\\pi r^{2}\\,dr = 4\\pi(100)(0.05) = 20\\pi \\approx 62.8 \\text{ cm}^{3}.\n\\]\nThe actual volume is $V = \\dfrac{4}{3}\\pi(1000) = \\dfrac{4000\\pi}{3} \\approx 4189$ cm$^{3}$.\n\nThe relative error is approximately\n\\[\n \\frac{dV}{V} = \\frac{20\\pi}{4000\\pi/3} = \\frac{20 \\cdot 3}{4000} \n = \\frac{60}{4000} = 0.015 = 1.5\\%.\n\\]\nA $0.5\\%$ error in the radius produces a $1.5\\%$ error in the volume. \nNotice that the factor of $3$ comes from the exponent in $r^{3}$—this \nis a general pattern."
+    },
+    {
+      "type": "example",
+      "id": "example-4.6",
+      "number": "4.6",
+      "title": "Error in a pendulum period",
+      "problem": "The period of a simple pendulum of length $L$ is \n$T = 2\\pi\\sqrt{L/g}$, where $g \\approx 9.8$ m/s$^{2}$. If $L$ is \nmeasured as $1.00$ m with a possible error of $\\pm 0.01$ m, estimate the \npercentage error in the computed period.",
+      "solution": "Writing $T = 2\\pi g^{-1/2}\\,L^{1/2}$, we differentiate with respect to $L$:\n\\[\n \\deriv{T}{L} = 2\\pi g^{-1/2} \\cdot \\frac{1}{2}L^{-1/2} \n = \\frac{\\pi}{\\sqrt{gL}}.\n\\]\nThe relative error in $T$ is\n\\[\n \\frac{dT}{T} = \\frac{(\\pi/\\sqrt{gL})\\,dL}{2\\pi\\sqrt{L/g}} \n = \\frac{dL}{2L}.\n\\]\nWith $dL = 0.01$ and $L = 1.00$:\n\\[\n \\frac{dT}{T} = \\frac{0.01}{2(1.00)} = 0.005 = 0.5\\%.\n\\]\nA $1\\%$ error in $L$ produces only a $0.5\\%$ error in $T$, because $T$ \ndepends on $\\sqrt{L}$, and the square root \"dampens\" the error by a \nfactor of $\\frac{1}{2}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "A Table of Useful Linearizations"
+    },
+    {
+      "type": "paragraph",
+      "text": "Several linearizations near $a = 0$ (or $a = 1$ for $\\ln x$) arise so \noften in science and engineering that they are worth memorizing."
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Function**",
+        "**Linearization near** $a$",
+        "**Approximation**"
+      ],
+      "rows": [
+        [
+          "$\\sin x$",
+          "$a = 0$",
+          "$\\sin x \\approx x$"
+        ],
+        [
+          "$\\cos x$",
+          "$a = 0$",
+          "$\\cos x \\approx 1$"
+        ],
+        [
+          "$\\tan x$",
+          "$a = 0$",
+          "$\\tan x \\approx x$"
+        ],
+        [
+          "$e^{x}$",
+          "$a = 0$",
+          "$e^{x} \\approx 1 + x$"
+        ],
+        [
+          "$\\ln(1+x)$",
+          "$a = 0$",
+          "$\\ln(1+x) \\approx x$"
+        ],
+        [
+          "$(1+x)^{n}$",
+          "$a = 0$",
+          "$(1+x)^{n} \\approx 1 + nx$"
+        ],
+        [
+          "$\\sqrt{1+x}$",
+          "$a = 0$",
+          "$\\sqrt{1+x} \\approx 1 + \\frac{x}{2}$"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "center",
+        "left"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The last formula deserves special notice. Setting $n = 1/2$ in \n$(1+x)^{n} \\approx 1 + nx$ gives $\\sqrt{1+x} \\approx 1 + x/2$—the \nvery formula we used to estimate $\\sqrt{4.02}$ (after writing \n$\\sqrt{4.02} = 2\\sqrt{1 + 0.005}$)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Looking Ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "We have now assembled a formidable toolkit. Over the course of this \nchapter, you have learned to differentiate polynomials, exponentials, \ntrigonometric functions, logarithms, inverse trigonometric functions, \ncompositions (Chain Rule), implicit curves, and combinations of all of \nthese. You have seen the derivative at work across the sciences \n(Section [sec:rates-science]), solved related rates problems \n(Section [sec:related-rates]), and used the derivative to build \nlinear approximations and estimate errors."
+    },
+    {
+      "type": "paragraph",
+      "text": "Now that we have all these tools, what can we *do* with derivatives? \nChapter [ch:applications] answers this question with some of the \nmost beautiful applications in all of mathematics: finding maximum and \nminimum values of functions, sketching curves with precision, solving \noptimization problems from geometry and physics, and establishing the \ndeep connection between derivatives and the shape of a graph."
+    },
+    {
+      "type": "paragraph",
+      "text": "The rules of differentiation are your instruments. It is time to play \nthe symphony."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 25:2",
+      "text": "It is the glory of God to conceal a \nmatter; to search out a matter is the glory of kings."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 147:4--5",
+      "text": "He determines the number of the stars \nand calls them each by name. Great is our Lord and mighty in power; \nhis understanding has no limit."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 11:1",
+      "text": "The Lord detests dishonest scales, but \naccurate weights find favor with him."
+    },
+    {
+      "type": "scripture",
+      "reference": "Philippians 3:14",
+      "text": "I press on toward the goal to win the \nprize for which God has called me heavenward in Christ Jesus."
+    },
+    {
+      "type": "quote",
+      "author": "Isaac Newton",
+      "text": "If I have seen further, it is by standing on \nthe shoulders of giants."
+    },
+    {
+      "type": "quote",
+      "author": "Pierre-Simon Laplace",
+      "text": "What we know is not much. What we \ndo not know is immense."
+    },
+    {
+      "type": "quote",
+      "author": "Carl Friedrich Gauss",
+      "text": "It is not knowledge, but the act of \nlearning, not possession but the act of getting there, which grants the \ngreatest enjoyment."
+    }
+  ]
+}

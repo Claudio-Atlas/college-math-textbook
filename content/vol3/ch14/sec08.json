@@ -1,0 +1,191 @@
+{
+  "id": "vol3-ch14-sec08",
+  "title": "Lagrange Multipliers",
+  "chapter": 14,
+  "section": 8,
+  "book": "vol3",
+  "epigraph": {
+    "text": "Come to me, all you who are weary and burdened, and I will give you rest.",
+    "reference": "Matthew 11:28"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Many optimization problems come with constraints: maximize profit subject to a budget; minimize energy subject to conservation laws. The method of **Lagrange multipliers** elegantly handles such constrained optimization problems."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Method of Lagrange Multipliers"
+    },
+    {
+      "type": "paragraph",
+      "text": "Suppose we want to find the extreme values of $f(x, y)$ subject to the constraint $g(x, y) = k$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.1",
+      "number": "14.1",
+      "title": "Lagrange Multipliers (Two Variables)",
+      "content": "Suppose $f$ and $g$ are differentiable, and $\\grad g \\neq \\vect{0}$ on the constraint curve $g(x, y) = k$. If $f$ has an extremum at $(a, b)$ on this curve, then there exists a number $\\lambda$ (called a **Lagrange multiplier**) such that\n\\[\n \\grad f(a, b) = \\lambda \\grad g(a, b).\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "At an extremum, the gradient of $f$ must be perpendicular to the constraint curve. (If it weren't, we could move along the constraint in a direction that increases or decreases $f$.) But $\\grad g$ is also perpendicular to the constraint curve. Therefore $\\grad f$ and $\\grad g$ must be parallel: $\\grad f = \\lambda \\grad g$."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-14.8",
+      "number": null,
+      "title": "Using Lagrange Multipliers",
+      "content": "To find the extrema of $f(x, y)$ subject to $g(x, y) = k$:\n\n1. Write the equations $\\grad f = \\lambda \\grad g$ and $g = k$:\n $$\n f_x &= \\lambda g_x, \\\\\n f_y &= \\lambda g_y, \\\\\n g(x, y) &= k.\n $$\n\n2. Solve this system for $x$, $y$, and $\\lambda$.\n\n3. Evaluate $f$ at each solution to find the maximum and minimum."
+    },
+    {
+      "type": "example",
+      "id": "example-14.1",
+      "number": "14.1",
+      "title": "Basic Lagrange multipliers",
+      "problem": "Find the extreme values of $f(x, y) = x^2 + y^2$ subject to $xy = 1$.",
+      "solution": "Let $g(x, y) = xy$. We need $\\grad f = \\lambda \\grad g$:\n$$\n 2x &= \\lambda y, \\\\\n 2y &= \\lambda x, \\\\\n xy &= 1.\n$$\nFrom the first two equations: $2x/y = \\lambda = 2y/x$, so $x^2 = y^2$, giving $y = \\pm x$.\n\n**Case 1:** $y = x$. Then $xy = x^2 = 1$, so $x = \\pm 1$, $y = \\pm 1$.\nSolutions: $(1, 1)$ and $(-1, -1)$, both giving $f = 2$.\n\n**Case 2:** $y = -x$. Then $xy = -x^2 = 1$, impossible.\n\nThe minimum value of $f$ is $2$, occurring at $(\\pm 1, \\pm 1)$. (There is no maximum—$f$ can be arbitrarily large on the hyperbola $xy = 1$.)"
+    },
+    {
+      "type": "example",
+      "id": "example-14.2",
+      "number": "14.2",
+      "title": "Optimizing distance",
+      "problem": "Find the point on the line $2x + 3y = 6$ closest to the origin.",
+      "solution": "Minimize $f(x, y) = x^2 + y^2$ (or equivalently, distance) subject to $g(x, y) = 2x + 3y = 6$.\n$$\n 2x &= 2\\lambda, \\\\\n 2y &= 3\\lambda, \\\\\n 2x + 3y &= 6.\n$$\nFrom the first two: $x = \\lambda$, $y = 3\\lambda/2$.\n\nSubstituting into constraint: $2\\lambda + 3(3\\lambda/2) = 6 \\implies 2\\lambda + 9\\lambda/2 = 6 \\implies 13\\lambda/2 = 6 \\implies \\lambda = 12/13$.\n\nSo $x = 12/13$, $y = 18/13$.\n\nThe closest point is $(12/13, 18/13)$, at distance $\\sqrt{144/169 + 324/169} = \\sqrt{468/169} = 6/\\sqrt{13}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Three Variables, One Constraint"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.2",
+      "number": "14.2",
+      "title": "Lagrange Multipliers (Three Variables)",
+      "content": "To find extrema of $f(x, y, z)$ subject to $g(x, y, z) = k$, solve:\n\\[\n \\grad f = \\lambda \\grad g, \\quad g(x, y, z) = k.\n\\]\nThis gives four equations in four unknowns ($x$, $y$, $z$, $\\lambda$).",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-14.3",
+      "number": "14.3",
+      "title": "Optimizing on a sphere",
+      "problem": "Find the maximum and minimum of $f(x, y, z) = x + 2y + 3z$ on the sphere $x^2 + y^2 + z^2 = 1$.",
+      "solution": "$\\grad f = \\langle 1, 2, 3 \\rangle$, $\\grad g = \\langle 2x, 2y, 2z \\rangle$.\n\nEquations:\n$$\n 1 &= 2\\lambda x, \\\\\n 2 &= 2\\lambda y, \\\\\n 3 &= 2\\lambda z, \\\\\n x^2 + y^2 + z^2 &= 1.\n$$\nFrom the first three: $x = 1/(2\\lambda)$, $y = 1/\\lambda$, $z = 3/(2\\lambda)$.\n\nSubstitute into constraint:\n\\[\n \\frac{1}{4\\lambda^2} + \\frac{1}{\\lambda^2} + \\frac{9}{4\\lambda^2} = 1 \\implies \\frac{1 + 4 + 9}{4\\lambda^2} = 1 \\implies \\lambda^2 = \\frac{14}{4} = \\frac{7}{2}.\n\\]\n$\\lambda = \\pm\\sqrt{7/2}$.\n\nFor $\\lambda = \\sqrt{7/2}$: $(x, y, z) = \\dfrac{1}{\\sqrt{14}}(1, 2, 3)$, $f = \\dfrac{1 + 4 + 9}{\\sqrt{14}} = \\sqrt{14}$.\n\nFor $\\lambda = -\\sqrt{7/2}$: $(x, y, z) = \\dfrac{-1}{\\sqrt{14}}(1, 2, 3)$, $f = -\\sqrt{14}$.\n\nMaximum: $\\sqrt{14}$ at $(1, 2, 3)/\\sqrt{14}$. Minimum: $-\\sqrt{14}$ at $(-1, -2, -3)/\\sqrt{14}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Two Constraints"
+    },
+    {
+      "type": "paragraph",
+      "text": "Sometimes we have two constraints. The method generalizes with two multipliers."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.3",
+      "number": "14.3",
+      "title": "Lagrange Multipliers (Two Constraints)",
+      "content": "To find extrema of $f(x, y, z)$ subject to $g(x, y, z) = k$ and $h(x, y, z) = c$, solve:\n\\[\n \\grad f = \\lambda \\grad g + \\mu \\grad h,\n\\]\nalong with both constraints.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-14.4",
+      "number": "14.4",
+      "title": "Two constraints",
+      "problem": "Find the maximum of $f(x, y, z) = xyz$ subject to $x + y + z = 6$ and $xy + yz + xz = 11$.",
+      "solution": "$\\grad f = \\langle yz, xz, xy \\rangle$.\n$\\grad g = \\langle 1, 1, 1 \\rangle$, $\\grad h = \\langle y + z, x + z, x + y \\rangle$.\n\nEquations:\n$$\n yz &= \\lambda + \\mu(y + z), \\\\\n xz &= \\lambda + \\mu(x + z), \\\\\n xy &= \\lambda + \\mu(x + y), \\\\\n x + y + z &= 6, \\\\\n xy + yz + xz &= 11.\n$$\nSubtracting the first two: $z(y - x) = \\mu(y - x)$. If $y \\neq x$, then $\\mu = z$.\n\nSimilarly from other pairs: $\\mu = y$ or $\\mu = x$.\n\nThis suggests $x = y = z$. From $x + y + z = 6$: $x = y = z = 2$.\nCheck: $xy + yz + xz = 4 + 4 + 4 = 12 \\neq 11$. Contradiction!\n\nSo we need a different approach. Assume $x = y \\neq z$. Then $2x + z = 6$ and $x^2 + 2xz = 11$.\nFrom first: $z = 6 - 2x$. Substitute: $x^2 + 2x(6 - 2x) = 11 \\implies x^2 + 12x - 4x^2 = 11 \\implies -3x^2 + 12x - 11 = 0$.\n$3x^2 - 12x + 11 = 0 \\implies x = \\dfrac{12 \\pm \\sqrt{144 - 132}}{6} = \\dfrac{12 \\pm \\sqrt{12}}{6} = 2 \\pm \\dfrac{\\sqrt{3}}{3}$.\n\nMaximum occurs at one of these critical points. Computing $xyz = x^2 z = x^2(6 - 2x)$ and evaluating gives the maximum."
+    },
+    {
+      "type": "example",
+      "id": "example-14.5",
+      "number": "14.5",
+      "title": "Cobb-Douglas production",
+      "problem": "A company's production is given by $P = L^{0.6}K^{0.4}$ where $L$ is labor and $K$ is capital. If labor costs \\$20 per unit, capital costs \\$40 per unit, and the budget is \\$2000, find the optimal allocation.",
+      "solution": "Maximize $P = L^{0.6}K^{0.4}$ subject to $20L + 40K = 2000$.\n\n$\\nabla P = \\langle 0.6L^{-0.4}K^{0.4}, 0.4L^{0.6}K^{-0.6} \\rangle$, $\\nabla g = \\langle 20, 40 \\rangle$.\n\nEquations:\n$$\n 0.6L^{-0.4}K^{0.4} &= 20\\lambda, \\\\\n 0.4L^{0.6}K^{-0.6} &= 40\\lambda, \\\\\n 20L + 40K &= 2000.\n$$\n\nDividing the first equation by the second:\n\\[\n \\frac{0.6L^{-0.4}K^{0.4}}{0.4L^{0.6}K^{-0.6}} = \\frac{20}{40} = \\frac{1}{2}.\n\\]\n\\[\n \\frac{0.6K}{0.4L} = \\frac{1}{2} \\implies \\frac{3K}{2L} = \\frac{1}{2} \\implies K = \\frac{L}{3}.\n\\]\n\nSubstitute into constraint: $20L + 40(L/3) = 2000 \\implies 20L + \\frac{40L}{3} = 2000$.\n$\\frac{100L}{3} = 2000 \\implies L = 60$, $K = 20$.\n\nThe optimal allocation is $L = 60$ units of labor and $K = 20$ units of capital."
+    },
+    {
+      "type": "example",
+      "id": "example-14.6",
+      "number": "14.6",
+      "title": "Parable of the talents",
+      "problem": "In Matthew 25:14–30, three servants are given different amounts to invest. Suppose a servant has 5 talents to invest in two ventures with returns $r_1(x) = \\sqrt{x}$ and $r_2(y) = \\sqrt{2y}$. Find the optimal allocation to maximize total return $R = \\sqrt{x} + \\sqrt{2y}$ subject to $x + y = 5$.",
+      "solution": "$\\nabla R = \\langle \\frac{1}{2\\sqrt{x}}, \\frac{1}{\\sqrt{2y}} \\rangle$, $\\nabla g = \\langle 1, 1 \\rangle$.\n\n\\[\n \\frac{1}{2\\sqrt{x}} = \\lambda, \\quad \\frac{1}{\\sqrt{2y}} = \\lambda.\n\\]\n\nTherefore $\\frac{1}{2\\sqrt{x}} = \\frac{1}{\\sqrt{2y}}$, giving $\\sqrt{2y} = 2\\sqrt{x}$, so $2y = 4x$, $y = 2x$.\n\nWith $x + y = 5$: $x + 2x = 5$, $x = 5/3$, $y = 10/3$.\n\nMaximum return: $R = \\sqrt{5/3} + \\sqrt{20/3} = \\sqrt{5/3}(1 + 2) = 3\\sqrt{5/3} \\approx 3.87$.\n\nThis illustrates wise stewardship: diversify investments according to their marginal returns."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Interpretation of $\\lambda$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Lagrange multiplier $\\lambda$ has a useful interpretation: it is the rate of change of the optimal value with respect to the constraint constant."
+    },
+    {
+      "type": "paragraph",
+      "text": "If $M(k)$ is the maximum of $f$ subject to $g = k$, then approximately:\n\\[\n \\lambda \\approx \\frac{dM}{dk}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "In economics, $\\lambda$ is called the **shadow price**—it measures how much the objective would improve if the constraint were relaxed by one unit."
+    },
+    {
+      "type": "example",
+      "id": "example-14.7",
+      "number": "14.7",
+      "title": "Interpreting the Lagrange multiplier",
+      "problem": "A factory produces $P = 10L^{0.5}K^{0.5}$ units with $L$ workers and $K$ machines. If workers cost \\$50/day and machines cost \\$200/day, and the budget is \\$10{,}000/day, find the optimal allocation and interpret $$.",
+      "solution": "Maximize $P = 10L^{0.5}K^{0.5}$ subject to $50L + 200K = 10000$.\n\n$\\nabla P = \\langle 5L^{-0.5}K^{0.5}, 5L^{0.5}K^{-0.5} \\rangle$, $\\nabla g = \\langle 50, 200 \\rangle$.\n\nFrom $\\nabla P = \\lambda \\nabla g$:\n\\[\n 5L^{-0.5}K^{0.5} = 50\\lambda, \\quad 5L^{0.5}K^{-0.5} = 200\\lambda.\n\\]\n\nDividing: $\\dfrac{K}{L} = \\dfrac{50}{200} = \\dfrac{1}{4}$, so $L = 4K$.\n\nConstraint: $50(4K) + 200K = 10000 \\implies 400K = 10000 \\implies K = 25$, $L = 100$.\n\nMaximum production: $P = 10(100)^{0.5}(25)^{0.5} = 10(10)(5) = 500$ units.\n\nFinding $\\lambda$: From the first equation, $\\lambda = \\dfrac{5(25)^{0.5}}{50(100)^{0.5}} = \\dfrac{5 \\cdot 5}{50 \\cdot 10} = \\dfrac{1}{20} = 0.05$.\n\n**Interpretation:** If the budget increases by \\$1, production would increase by approximately $0.05$ units. Equivalently, each additional unit of production would cost about \\$20 in budget."
+    },
+    {
+      "type": "example",
+      "id": "example-14.8",
+      "number": "14.8",
+      "title": "Minimizing distance to a surface",
+      "problem": "Find the point on the surface $xy = 4$ (in the first quadrant) closest to the origin.",
+      "solution": "Minimize $f(x, y) = x^2 + y^2$ (distance squared) subject to $g(x, y) = xy = 4$.\n\n$\\nabla f = \\langle 2x, 2y \\rangle$, $\\nabla g = \\langle y, x \\rangle$.\n\nSetting $\\nabla f = \\lambda \\nabla g$:\n\\[\n 2x = \\lambda y, \\quad 2y = \\lambda x.\n\\]\n\nMultiplying: $4xy = \\lambda^2 xy$. Since $xy = 4 \\neq 0$, we have $\\lambda^2 = 4$, so $\\lambda = \\pm 2$.\n\nFrom $2x = \\lambda y$ and $2y = \\lambda x$: dividing gives $x/y = y/x$, so $x^2 = y^2$.\n\nIn the first quadrant, $x = y > 0$. From $xy = 4$: $x^2 = 4$, so $x = y = 2$.\n\nThe closest point is $(2, 2)$, at distance $\\sqrt{8} = 2\\sqrt{2}$ from the origin."
+    },
+    {
+      "type": "example",
+      "id": "example-14.9",
+      "number": "14.9",
+      "title": "Constrained optimization with inequality thinking",
+      "problem": "Find the dimensions of the rectangular box of maximum volume that fits inside the ellipsoid $\\dfrac{x^2}{9} + \\dfrac{y^2}{4} + \\dfrac{z^2}{1} = 1$ with faces parallel to the coordinate planes.",
+      "solution": "A box with corners at $(\\pm x, \\pm y, \\pm z)$ has volume $V = 8xyz$.\n\nBy symmetry, we maximize in the first octant: the corner $(x, y, z)$ lies on the ellipsoid.\n\nMaximize $f = xyz$ subject to $g = \\dfrac{x^2}{9} + \\dfrac{y^2}{4} + z^2 = 1$.\n\n$\\nabla f = \\langle yz, xz, xy \\rangle$, $\\nabla g = \\langle \\dfrac{2x}{9}, \\dfrac{y}{2}, 2z \\rangle$.\n\nSetting $\\nabla f = \\lambda \\nabla g$:\n\\[\n yz = \\frac{2\\lambda x}{9}, \\quad xz = \\frac{\\lambda y}{2}, \\quad xy = 2\\lambda z.\n\\]\n\nMultiply first by $x$: $xyz = \\dfrac{2\\lambda x^2}{9}$.\n\nMultiply second by $y$: $xyz = \\dfrac{\\lambda y^2}{2}$.\n\nMultiply third by $z$: $xyz = 2\\lambda z^2$.\n\nSo $\\dfrac{2x^2}{9} = \\dfrac{y^2}{2} = 2z^2$. Call this common value $k$.\n\nThen $x^2 = \\dfrac{9k}{2}$, $y^2 = 2k$, $z^2 = \\dfrac{k}{2}$.\n\nConstraint: $\\dfrac{1}{9} \\cdot \\dfrac{9k}{2} + \\dfrac{1}{4} \\cdot 2k + \\dfrac{k}{2} = 1$.\n$\\dfrac{k}{2} + \\dfrac{k}{2} + \\dfrac{k}{2} = 1 \\implies \\dfrac{3k}{2} = 1 \\implies k = \\dfrac{2}{3}$.\n\nSo $x = \\sqrt{3}$, $y = \\sqrt{4/3} = \\dfrac{2}{\\sqrt{3}}$, $z = \\sqrt{1/3} = \\dfrac{1}{\\sqrt{3}}$.\n\nMaximum volume: $V = 8xyz = 8 \\cdot \\sqrt{3} \\cdot \\dfrac{2}{\\sqrt{3}} \\cdot \\dfrac{1}{\\sqrt{3}} = \\dfrac{16}{\\sqrt{3}} = \\dfrac{16\\sqrt{3}}{3}$."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Matthew 6:33",
+      "text": "But seek first the kingdom of God and his righteousness, and all these things will be added to you."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 11:1",
+      "text": "A false balance is an abomination to the Lord, but a just weight is his delight."
+    },
+    {
+      "type": "scripture",
+      "reference": "Luke 14:28",
+      "text": "For which of you, desiring to build a tower, does not first sit down and count the cost, whether he has enough to complete it?"
+    },
+    {
+      "type": "quote",
+      "author": "Lagrange",
+      "text": "When we have eliminated the impossible, whatever remains, however improbable, must be the truth."
+    },
+    {
+      "type": "quote",
+      "author": "John von Neumann",
+      "text": "In mathematics you don't understand things. You just get used to them."
+    }
+  ]
+}

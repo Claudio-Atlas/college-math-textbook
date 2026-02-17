@@ -1,0 +1,316 @@
+{
+  "id": "precalculus-ch09-sec01",
+  "title": "Systems of Linear Equations",
+  "chapter": 9,
+  "section": 1,
+  "book": "precalculus",
+  "objectives": [
+    "Understand what a system of equations represents graphically and algebraically",
+    "Solve systems of two linear equations using the substitution method",
+    "Solve systems of two linear equations using the elimination method",
+    "Classify systems as consistent, inconsistent, independent, or dependent",
+    "Interpret solutions geometrically as intersections of lines",
+    "Extend techniques to systems of three or more equations",
+    "Apply systems of equations to real-world problems\nitemize"
+  ],
+  "devotional": {
+    "title": "Constraints and Freedom",
+    "scripture": "Galatians 5:13--14; Matthew 22:37--40",
+    "content": "{AtlasWarmY}{ou, \nmy brothers and sisters,} were called to be free. But do not use your \nfreedom to indulge the flesh; rather, serve one another humbly in love. \nFor the entire law is fulfilled in keeping this one command: \"Love your \nneighbor as yourself.\"\n\nA system of equations presents us with multiple constraints that must all \nbe satisfied at once. At first glance, this might seem restrictive—surely \nhaving more equations means less freedom? But here lies a beautiful paradox: \nthe right constraints don't imprison us; they guide us to truth.\n\nConsider a single linear equation like $x + y = 5$. There are infinitely \nmany solutions: $(0, 5)$, $(2, 3)$, $(10, -5)$, and countless others. We \nhave freedom, but no clarity. Add a second constraint, $x - y = 1$, and \nsuddenly the fog lifts. There is exactly one point, $(3, 2)$, that honors \nboth equations. The constraints have not robbed us of an answer—they \nhave revealed it.\n\nJesus summarized all of God's law in two commands: love God with all your \nheart, and love your neighbor as yourself. These are not arbitrary \nrestrictions but the very equations that, when solved together, yield the \nabundant life God intends. Without such constraints, we wander through \ninfinite possibilities, never arriving anywhere meaningful.",
+    "reflection": "Systems of equations find truth at the intersection \nof multiple constraints. How do the \"constraints\" of Scripture—the \ncommands to love God and neighbor—actually guide us to freedom rather \nthan bondage?"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Plans fail for lack of counsel, but with many \nadvisers they succeed.\"*{Proverbs 15:22}{The art of doing mathematics \nis forgetting about the superfluous information.}{Terence Tao}"
+    },
+    {
+      "type": "paragraph",
+      "text": "When we encounter a single equation in two variables, like $2x + 3y = 6$, \nwe find infinitely many solutions forming a line in the plane. But many \nreal-world problems involve multiple conditions that must be satisfied \nsimultaneously. A system of equations captures these interconnected \nconstraints."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "What Is a System of Equations?"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "System of Equations",
+      "content": "A **system of equations** is a collection \nof two or more equations involving the same variables. A **solution** \nto the system is an ordered set of values that satisfies *every* \nequation in the system simultaneously."
+    },
+    {
+      "type": "paragraph",
+      "text": "For a system of two linear equations in two variables:\n\\["
+    },
+    {
+      "type": "paragraph",
+      "text": "\\]\na solution is an ordered pair $(x, y)$ that makes both equations true."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Verifying a solution",
+      "problem": "Determine whether $(2, 3)$ is a solution to the system:\n\\[\n\\begin{cases}\n 3x + 2y = 12 \\\\\n x - y = -1\n\\end{cases}\n\\]",
+      "solution": "We substitute $x = 2$ and $y = 3$ into each equation:\n\n**First equation:** $3(2) + 2(3) = 6 + 6 = 12$ \n\n**Second equation:** $2 - 3 = -1$ \n\nSince both equations are satisfied, $(2, 3)$ is a solution to the system."
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Non-solution verification",
+      "problem": "Is $(4, 0)$ a solution to the system in Example [ex:verify-solution]?",
+      "solution": "Check the first equation: $3(4) + 2(0) = 12 + 0 = 12$ \n\nCheck the second equation: $4 - 0 = 4 \\neq -1$ ✗\n\nAlthough $(4, 0)$ satisfies the first equation, it fails the second. \nA solution must satisfy *all* equations, so $(4, 0)$ is not a \nsolution to the system."
+    },
+    {
+      "type": "historical",
+      "id": "historical-9.1",
+      "number": null,
+      "title": "Ancient Systems of Equations",
+      "content": "Systems of linear equations appear in some of humanity's earliest \nmathematical texts. Babylonian clay tablets from around 1800 BCE contain \nproblems equivalent to systems of two equations. The Chinese text \n*Nine Chapters on the Mathematical Art* (c. 200 BCE) presents \nsystematic methods for solving systems of equations, including techniques \nremarkably similar to modern Gaussian elimination—nearly two millennia \nbefore Gauss was born."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Geometric Interpretation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Each linear equation in two variables represents a line in the coordinate \nplane. When we solve a system of two such equations, we are finding where \nthese lines intersect. This geometric perspective illuminates why systems \ncan have one solution, no solution, or infinitely many solutions."
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**One solution:** The lines intersect at exactly one point. \n The system is **consistent** (has solutions) and **independent** \n (the equations give different information).",
+        "**No solution:** The lines are parallel and never meet. The \n system is **inconsistent**—there is no point satisfying both \n equations.",
+        "**Infinitely many solutions:** The lines are identical \n (coincident). The system is **consistent** but **dependent**—the \n equations represent the same geometric object."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Classifying by inspection",
+      "problem": "Without solving, classify each system as having one solution, no solution, \nor infinitely many solutions.\n\n1. $\\begin{cases} 2x + 4y = 8 \\\\ x + 2y = 4 \\end{cases}$\n\n2. $\\begin{cases} 3x - y = 5 \\\\ 6x - 2y = 7 \\end{cases}$\n\n3. $\\begin{cases} x + y = 3 \\\\ 2x - y = 0 \\end{cases}$",
+      "solution": "1. Divide the first equation by 2: $x + 2y = 4$. This is identical \n to the second equation! The lines are the same, so there are \n **infinitely many solutions**.\n\n2. Divide the second equation by 2: $3x - y = 3.5$. Compare to the \n first: $3x - y = 5$. These are parallel lines (same slope, different \n intercept), so there is **no solution**.\n\n3. The equations have different slopes (we can rewrite them as \n $y = -x + 3$ and $y = 2x$). These lines must intersect at exactly \n **one point**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving by Substitution"
+    },
+    {
+      "type": "paragraph",
+      "text": "The substitution method solves a system by expressing one variable in \nterms of the other, then substituting this expression into the remaining \nequation. This reduces a two-variable problem to a one-variable problem."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-9.1",
+      "number": null,
+      "title": "The Substitution Method",
+      "content": "To solve a system by substitution:\n\n1. Solve one equation for one variable (choose the easiest one).\n\n2. Substitute this expression into the other equation.\n\n3. Solve the resulting single-variable equation.\n\n4. Substitute back to find the other variable.\n\n5. Check your answer in both original equations."
+    },
+    {
+      "type": "example",
+      "id": "example-9.4",
+      "number": "9.4",
+      "title": "Basic substitution",
+      "problem": "Solve the system:\n\\[\n\\begin{cases}\n x + 2y = 7 \\\\\n 3x - y = 4\n\\end{cases}\n\\]",
+      "solution": "**Step 1:** The first equation is easy to solve for $x$:\n\\[\n x = 7 - 2y\n\\]\n\n**Step 2:** Substitute into the second equation:\n\\[\n 3(7 - 2y) - y = 4\n\\]\n\n**Step 3:** Solve for $y$:\n$$\n 21 - 6y - y &= 4 \\\\\n 21 - 7y &= 4 \\\\\n -7y &= -17 \\\\\n y &= \\frac{17}{7}\n$$\n\n**Step 4:** Back-substitute to find $x$:\n\\[\n x = 7 - 2 \\cdot \\frac{17}{7} = 7 - \\frac{34}{7} = \\frac{49 - 34}{7} = \\frac{15}{7}\n\\]\n\n**Step 5:** Verify in both equations:\n\n- First: $\\frac{15}{7} + 2 \\cdot \\frac{17}{7} = \\frac{15 + 34}{7} = \\frac{49}{7} = 7$ \n\n- Second: $3 \\cdot \\frac{15}{7} - \\frac{17}{7} = \\frac{45 - 17}{7} = \\frac{28}{7} = 4$ \n\nThe solution is $\\displaystyle\\left(\\frac{15}{7}, \\frac{17}{7}\\right)$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.5",
+      "number": "9.5",
+      "title": "Substitution with integer solutions",
+      "problem": "Solve the system:\n\\[\n\\begin{cases}\n y = 2x - 3 \\\\\n 4x + 3y = 11\n\\end{cases}\n\\]",
+      "solution": "The first equation already expresses $y$ in terms of $x$—perfect for \nsubstitution!\n\nSubstitute $y = 2x - 3$ into the second equation:\n$$\n 4x + 3(2x - 3) &= 11 \\\\\n 4x + 6x - 9 &= 11 \\\\\n 10x &= 20 \\\\\n x &= 2\n$$\n\nFind $y$: $y = 2(2) - 3 = 1$.\n\n**Check:** First equation: $1 = 2(2) - 3 = 1$ \n\nSecond equation: $4(2) + 3(1) = 8 + 3 = 11$ \n\nThe solution is $(2, 1)$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.6",
+      "number": "9.6",
+      "title": "Recognizing no solution",
+      "problem": "Solve the system:\n\\[\n\\begin{cases}\n 2x - y = 4 \\\\\n 4x - 2y = 5\n\\end{cases}\n\\]",
+      "solution": "From the first equation: $y = 2x - 4$.\n\nSubstitute into the second:\n$$\n 4x - 2(2x - 4) &= 5 \\\\\n 4x - 4x + 8 &= 5 \\\\\n 8 &= 5\n$$\n\nThis is a contradiction! The statement $8 = 5$ is never true, regardless \nof $x$ or $y$. The system has **no solution**.\n\nGeometrically, these are parallel lines: rewriting in slope-intercept \nform gives $y = 2x - 4$ and $y = 2x - 2.5$. Same slope, different \nintercepts."
+    },
+    {
+      "type": "example",
+      "id": "example-9.7",
+      "number": "9.7",
+      "title": "Recognizing infinitely many solutions",
+      "problem": "Solve the system:\n\\[\n\\begin{cases}\n x - 3y = 6 \\\\\n 2x - 6y = 12\n\\end{cases}\n\\]",
+      "solution": "From the first equation: $x = 3y + 6$.\n\nSubstitute into the second:\n$$\n 2(3y + 6) - 6y &= 12 \\\\\n 6y + 12 - 6y &= 12 \\\\\n 12 &= 12\n$$\n\nThis is always true! The equations are not independent—the second is \njust twice the first. Every point on the line $x - 3y = 6$ is a solution.\n\nWe express the **infinitely many solutions** parametrically. If we \nlet $y = t$ for any real number $t$, then $x = 3t + 6$. The solutions are:\n\\[\n (x, y) = (3t + 6, t) \\quad \\text{for all } t \\in \\mathbb{R}\n\\]"
+    },
+    {
+      "type": "warning",
+      "id": "warning-9.1",
+      "number": null,
+      "title": "Check Your Work!",
+      "content": "Always verify your solution in *both* original equations. A common \nerror is solving correctly but making an arithmetic mistake at the end. \nChecking catches these errors and confirms you haven't found an \nextraneous solution."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving by Elimination"
+    },
+    {
+      "type": "paragraph",
+      "text": "The elimination method (also called the addition method) works by adding \nor subtracting equations to eliminate one variable. This approach is \nparticularly efficient when neither equation is already solved for a \nvariable."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-9.1",
+      "number": null,
+      "title": "The Elimination Method",
+      "content": "To solve a system by elimination:\n\n1. Arrange both equations in standard form: $ax + by = c$.\n\n2. Multiply one or both equations by constants so that one variable \n has opposite coefficients.\n\n3. Add the equations to eliminate that variable.\n\n4. Solve for the remaining variable.\n\n5. Substitute back to find the other variable.\n\n6. Check your answer in both original equations."
+    },
+    {
+      "type": "example",
+      "id": "example-9.8",
+      "number": "9.8",
+      "title": "Elimination with direct addition",
+      "problem": "Solve the system:\n\\[\n\\begin{cases}\n x + y = 5 \\\\\n x - y = 1\n\\end{cases}\n\\]",
+      "solution": "The $y$ terms already have opposite coefficients ($+1$ and $-1$). Add:\n\\[\n (x + y) + (x - y) = 5 + 1 \\implies 2x = 6 \\implies x = 3\n\\]\n\nSubstitute into the first equation: $3 + y = 5 \\implies y = 2$.\n\n**Check:** $3 + 2 = 5$ and $3 - 2 = 1$ \n\nThe solution is $(3, 2)$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.9",
+      "number": "9.9",
+      "title": "Elimination requiring multiplication",
+      "problem": "Solve the system:\n\\[\n\\begin{cases}\n 2x + 3y = 13 \\\\\n 5x - 2y = 4\n\\end{cases}\n\\]",
+      "solution": "To eliminate $y$, we need opposite coefficients. Multiply the first \nequation by 2 and the second by 3:\n\\[\n\\begin{cases}\n 4x + 6y = 26 \\\\\n 15x - 6y = 12\n\\end{cases}\n\\]\n\nNow add:\n\\[\n 19x = 38 \\implies x = 2\n\\]\n\nSubstitute into the first original equation:\n\\[\n 2(2) + 3y = 13 \\implies 4 + 3y = 13 \\implies 3y = 9 \\implies y = 3\n\\]\n\n**Check:** $2(2) + 3(3) = 4 + 9 = 13$ \n\n$5(2) - 2(3) = 10 - 6 = 4$ \n\nThe solution is $(2, 3)$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.10",
+      "number": "9.10",
+      "title": "Choosing which variable to eliminate",
+      "problem": "Solve the system:\n\\[\n\\begin{cases}\n 3x + 4y = -1 \\\\\n 2x + 5y = 3\n\\end{cases}\n\\]",
+      "solution": "We could eliminate either variable. Let's eliminate $x$ by finding the \nLCM of 3 and 2, which is 6.\n\nMultiply the first equation by 2 and the second by $-3$:\n\\[\n\\begin{cases}\n 6x + 8y = -2 \\\\\n -6x - 15y = -9\n\\end{cases}\n\\]\n\nAdd:\n\\[\n -7y = -11 \\implies y = \\frac{11}{7}\n\\]\n\nSubstitute into the first equation:\n$$\n 3x + 4 \\cdot \\frac{11}{7} &= -1 \\\\\n 3x + \\frac{44}{7} &= -1 \\\\\n 3x &= -1 - \\frac{44}{7} = -\\frac{7 + 44}{7} = -\\frac{51}{7} \\\\\n x &= -\\frac{17}{7}\n$$\n\nThe solution is $\\displaystyle\\left(-\\frac{17}{7}, \\frac{11}{7}\\right)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Systems of Three Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "The same principles extend to systems with three (or more) equations and \nvariables. Each linear equation in three variables represents a plane in \nthree-dimensional space, and solving the system means finding where these \nplanes intersect."
+    },
+    {
+      "type": "example",
+      "id": "example-9.11",
+      "number": "9.11",
+      "title": "Three equations in three variables",
+      "problem": "Solve the system:\n\\[\n\\begin{cases}\n x + y + z = 6 \\\\\n 2x - y + z = 3 \\\\\n x + 2y - z = 3\n\\end{cases}\n\\]",
+      "solution": "We'll use elimination systematically, reducing to a two-variable system.\n\n**Step 1:** Eliminate $z$ from two pairs of equations.\n\nAdd equations (1) and (3) to eliminate $z$:\n\\[\n (x + y + z) + (x + 2y - z) = 6 + 3 \\implies 2x + 3y = 9 \\tag{4}\n\\]\n\nSubtract equation (1) from equation (2):\n\\[\n (2x - y + z) - (x + y + z) = 3 - 6 \\implies x - 2y = -3 \\tag{5}\n\\]\n\n**Step 2:** Solve the $2 \\times 2$ system (equations 4 and 5).\n\nFrom (5): $x = 2y - 3$. Substitute into (4):\n\\[\n 2(2y - 3) + 3y = 9 \\implies 4y - 6 + 3y = 9 \\implies 7y = 15 \\implies y = \\frac{15}{7}\n\\]\n\nThen $x = 2 \\cdot \\frac{15}{7} - 3 = \\frac{30}{7} - \\frac{21}{7} = \\frac{9}{7}$.\n\n**Step 3:** Find $z$ from any original equation.\n\nUsing equation (1):\n\\[\n \\frac{9}{7} + \\frac{15}{7} + z = 6 \\implies \\frac{24}{7} + z = 6 \\implies z = \\frac{42 - 24}{7} = \\frac{18}{7}\n\\]\n\nThe solution is $\\displaystyle\\left(\\frac{9}{7}, \\frac{15}{7}, \\frac{18}{7}\\right)$.\n\n**Verification** (checking equation 2):\n\\[\n 2 \\cdot \\frac{9}{7} - \\frac{15}{7} + \\frac{18}{7} = \\frac{18 - 15 + 18}{7} = \\frac{21}{7} = 3 \\checkmark\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications"
+    },
+    {
+      "type": "paragraph",
+      "text": "Systems of equations model countless real-world scenarios where multiple \nconditions must be satisfied simultaneously."
+    },
+    {
+      "type": "example",
+      "id": "example-9.12",
+      "number": "9.12",
+      "title": "Number problem",
+      "problem": "Two numbers have a sum of 35 and a difference of 11. Find the numbers.",
+      "solution": "Let $x$ and $y$ be the two numbers, with $x > y$.\n\n\\[\n\\begin{cases}\n x + y = 35 \\\\\n x - y = 11\n\\end{cases}\n\\]\n\nAdding the equations: $2x = 46 \\implies x = 23$.\n\nSubtracting: $2y = 24 \\implies y = 12$.\n\nThe numbers are **23 and 12**.\n\n**Check:** $23 + 12 = 35$ $23 - 12 = 11$"
+    },
+    {
+      "type": "example",
+      "id": "example-9.13",
+      "number": "9.13",
+      "title": "Mixture problem",
+      "problem": "A chemist needs 100 mL of a 30\\% acid solution. She has a 20\\% solution \nand a 50\\% solution available. How much of each should she mix?",
+      "solution": "Let $x$ = mL of 20\\% solution and $y$ = mL of 50\\% solution.\n\n**Total volume:** $x + y = 100$\n\n**Total acid:** $0.20x + 0.50y = 0.30(100) = 30$\n\nFrom the first equation: $y = 100 - x$.\n\nSubstitute into the second:\n$$\n 0.20x + 0.50(100 - x) &= 30 \\\\\n 0.20x + 50 - 0.50x &= 30 \\\\\n -0.30x &= -20 \\\\\n x &= \\frac{200}{3} \\approx 66.67 \\text{ mL}\n$$\n\nThen $y = 100 - \\frac{200}{3} = \\frac{100}{3} \\approx 33.33$ mL.\n\nShe should mix $\\frac{200}{3}$ mL (about 66.67 mL) of the 20\\% solution \nwith $\\frac{100}{3}$ mL (about 33.33 mL) of the 50\\% solution."
+    },
+    {
+      "type": "example",
+      "id": "example-9.14",
+      "number": "9.14",
+      "title": "Investment problem",
+      "problem": "Sarah invests \\$10,000 in two accounts. One pays 4\\% annual interest, \nthe other pays 6\\%. If she earns \\$520 in interest after one year, how \nmuch did she invest in each account?",
+      "solution": "Let $x$ = amount at 4\\% and $y$ = amount at 6\\%.\n\n\\[\n\\begin{cases}\n x + y = 10000 & \\text{(total invested)} \\\\\n 0.04x + 0.06y = 520 & \\text{(total interest)}\n\\end{cases}\n\\]\n\nMultiply the second equation by 100 to clear decimals:\n\\[\n 4x + 6y = 52000\n\\]\n\nFrom the first equation: $x = 10000 - y$. Substitute:\n$$\n 4(10000 - y) + 6y &= 52000 \\\\\n 40000 - 4y + 6y &= 52000 \\\\\n 2y &= 12000 \\\\\n y &= 6000\n$$\n\nThen $x = 10000 - 6000 = 4000$.\n\nSarah invested **\\$4,000 at 4\\%} and \\textbf{\\$6,000 at 6\\%**.\n\n**Check:** $4000(0.04) + 6000(0.06) = 160 + 360 = 520$"
+    },
+    {
+      "type": "example",
+      "id": "example-9.15",
+      "number": "9.15",
+      "title": "Motion problem",
+      "problem": "A boat travels 30 miles downstream in 2 hours. The return trip upstream \ntakes 3 hours. Find the speed of the boat in still water and the speed \nof the current.",
+      "solution": "Let $b$ = boat speed in still water and $c$ = current speed.\n\nDownstream, the current helps: effective speed is $b + c$.\n\nUpstream, the current opposes: effective speed is $b - c$.\n\nUsing distance = rate × time:\n\\[\n\\begin{cases}\n (b + c) \\cdot 2 = 30 & \\text{(downstream)} \\\\\n (b - c) \\cdot 3 = 30 & \\text{(upstream)}\n\\end{cases}\n\\]\n\nSimplify:\n\\[\n\\begin{cases}\n b + c = 15 \\\\\n b - c = 10\n\\end{cases}\n\\]\n\nAdd: $2b = 25 \\implies b = 12.5$ mph.\n\nSubtract: $2c = 5 \\implies c = 2.5$ mph.\n\nThe boat's speed in still water is **12.5 mph**, and the current is \n**2.5 mph**."
+    },
+    {
+      "type": "summary",
+      "id": "summary-9.1",
+      "number": null,
+      "title": "Systems of Linear Equations",
+      "content": "- A **system of equations** requires finding values that \n satisfy all equations simultaneously.\n\n- **Substitution method:** Solve one equation for a variable, \n substitute into the other, solve, then back-substitute.\n\n- **Elimination method:** Multiply equations to create \n opposite coefficients, add to eliminate a variable, solve, then \n back-substitute.\n\n- A system of two linear equations has **one solution** \n (intersecting lines), **no solution** (parallel lines), or \n **infinitely many solutions** (coincident lines).\n\n- **Consistent** systems have solutions; **inconsistent** \n systems do not.\n\n- **Independent** equations give different information; \n **dependent** equations are multiples of each other.\n\n- Always **check** your solution in all original equations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Conceptual Understanding**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Solve by Substitution**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Solve by Elimination**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Classify and Solve**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Three-Variable Systems**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Applications**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Challenge Problems**"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 4:12",
+      "text": "A cord of three strands is not \nquickly broken."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 4:7",
+      "text": "The beginning of wisdom is this: Get \nwisdom. Though it cost all you have, get understanding."
+    },
+    {
+      "type": "scripture",
+      "reference": "Matthew 7:7",
+      "text": "Ask and it will be given to you; seek and \nyou will find; knock and the door will be opened to you."
+    },
+    {
+      "type": "scripture",
+      "reference": "Luke 14:28",
+      "text": "Suppose one of you wants to build a tower. \nWon't you first sit down and estimate the cost?"
+    }
+  ]
+}

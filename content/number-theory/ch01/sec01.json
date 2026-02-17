@@ -1,0 +1,82 @@
+{
+  "id": "number-theory-ch01-sec01",
+  "title": "Divisibility",
+  "chapter": 1,
+  "section": 1,
+  "book": "number-theory",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "We begin with the most fundamental concept in number theory: one integer \ndividing another."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Division Relation"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.1",
+      "number": "1.1",
+      "title": "Divisibility",
+      "content": "Let $a$ and $b$ be integers with $a \\neq 0$. We say that **$a$ divides \n$b$**, written $a \\mid b$, if there exists an integer \n$k$ such that $b = ak$.\n\nIf $a$ does not divide $b$, we write $a \\nmid b$."
+    },
+    {
+      "type": "paragraph",
+      "text": "When $a \\mid b$, we also say that $a$ is a **divisor** \nor **factor** of $b$, or that $b$ is a **multiple** \nof $a$."
+    },
+    {
+      "type": "example",
+      "id": "example-1.1",
+      "number": "1.1",
+      "title": "Basic Divisibility",
+      "problem": "- $3 \\mid 12$ because $12 = 3 \\cdot 4$.\n\n- $7 \\mid 0$ because $0 = 7 \\cdot 0$.\n\n- $5 \\nmid 17$ because no integer $k$ satisfies $17 = 5k$.\n\n- $1 \\mid n$ for every integer $n$, since $n = 1 \\cdot n$.\n\n- $n \\mid n$ for every nonzero integer $n$, since $n = n \\cdot 1$.",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "Note that $a \\mid 0$ for every nonzero $a$, but $0 \\mid b$ only when $b = 0$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.1",
+      "number": "1.1",
+      "title": "Basic Divisibility Properties",
+      "content": "Let $a$, $b$, $c$, $d$ be integers with $a \\neq 0$ and $c \\neq 0$. Then:\n\n1. If $a \\mid b$, then $a \\mid bc$ for any integer $c$.\n\n2. If $a \\mid b$ and $a \\mid c$, then $a \\mid (b + c)$ and $a \\mid (b - c)$.\n\n3. If $a \\mid b$ and $a \\mid c$, then $a \\mid (bx + cy)$ for all integers \n$x, y$.\n\n4. If $a \\mid b$ and $b \\mid c$ (with $b \\neq 0$), then $a \\mid c$.\n\n5. If $a \\mid b$ and $b \\neq 0$, then $|a| \\leq |b|$.\n\n6. If $a \\mid b$ and $b \\mid a$, then $a = \\pm b$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(a) Since $a \\mid b$, we have $b = ak$ for some integer $k$. Then \n$bc = akc = a(kc)$, so $a \\mid bc$.\n\n(b) Write $b = ak$ and $c = am$ for integers $k, m$. Then \n$b + c = a(k + m)$ and $b - c = a(k - m)$, so $a$ divides both.\n\n(c) From part (a), $a \\mid bx$ and $a \\mid cy$. From part (b), \n$a \\mid (bx + cy)$.\n\n(d) Write $b = ak$ and $c = bm = akm$. Since $km$ is an integer, $a \\mid c$.\n\n(e) Write $b = ak$ with $k \\in \\mathbb{Z}$. Since $b \\neq 0$, we have \n$k \\neq 0$, so $|k| \\geq 1$. Thus $|b| = |a||k| \\geq |a|$.\n\n(f) By part (e), $a \\mid b$ implies $|a| \\leq |b|$, and $b \\mid a$ implies \n$|b| \\leq |a|$. Hence $|a| = |b|$, so $a = \\pm b$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Division Algorithm"
+    },
+    {
+      "type": "paragraph",
+      "text": "Every student learns in elementary school that $17 \\div 5$ equals $3$ with \nremainder $2$: we write $17 = 5 \\cdot 3 + 2$. The Division Algorithm \ngeneralizes this familiar process and proves that it always works."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.2",
+      "number": "1.2",
+      "title": "Division Algorithm",
+      "content": "Let $a$ and $b$ be integers with $b > 0$. Then there exist unique integers \n$q$ (the **quotient**) and $r$ (the **remainder**) such that\n\\[\na = bq + r \\quad \\text{and} \\quad 0 \\leq r < b.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "*Existence.* Consider the set $S = \\{a - bk : k \\in \\mathbb{Z}, \\, \na - bk \\geq 0\\}$. This set is nonempty: if $a \\geq 0$, then $a - b \\cdot 0 \n= a \\in S$; if $a < 0$, then $a - b \\cdot a = a(1 - b) \\geq 0$ when $b \\geq 1$, \nso $a - ba \\in S$.\n\nBy the Well-Ordering Principle, $S$ has a least element $r = a - bq$ for \nsome $q$. We claim $r < b$. If $r \\geq b$, then $r - b = a - b(q+1) \\geq 0$, \ncontradicting the minimality of $r$.\n\n*Uniqueness.* Suppose $a = bq_1 + r_1 = bq_2 + r_2$ with \n$0 \\leq r_1, r_2 < b$. Then $b(q_1 - q_2) = r_2 - r_1$. Since \n$|r_2 - r_1| < b$ and $b \\mid (r_2 - r_1)$, we must have $r_2 - r_1 = 0$, \nhence $r_1 = r_2$ and $q_1 = q_2$."
+    },
+    {
+      "type": "example",
+      "id": "example-1.2",
+      "number": "1.2",
+      "title": "Using the Division Algorithm",
+      "problem": "Find the quotient and remainder when $a = -47$ is divided by $b = 8$.",
+      "solution": "We need $-47 = 8q + r$ with $0 \\leq r < 8$. Since $-47 = 8(-6) + 1$, we \nhave $q = -6$ and $r = 1$.\n\nNote that $-47 = 8(-5) + (-7)$ does *not* satisfy the condition \n$r \\geq 0$. The remainder must be nonnegative."
+    }
+  ]
+}

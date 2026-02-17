@@ -1,0 +1,253 @@
+{
+  "id": "numerical-analysis-ch06-sec01",
+  "title": "Newton-Cotes Formulas",
+  "chapter": 6,
+  "section": 1,
+  "book": "numerical-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The Newton-Cotes formulas are the most intuitive approach to numerical integration: fit a polynomial through equally-spaced sample points and integrate the polynomial exactly. The result is a weighted sum of function values that approximates the integral."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The General Framework"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Quadrature Rule",
+      "content": "A **quadrature rule** (or **numerical integration formula**) for approximating $\\int_a^b f(x)\\,dx$ is an expression of the form\n\\[\nQ_n[f] = \\sum_{i=0}^{n} w_i f(x_i)\n\\]\nwhere $x_0, x_1, \\ldots, x_n \\in [a, b]$ are called **nodes** (or **abscissas**) and $w_0, w_1, \\ldots, w_n$ are called **weights** (or **coefficients**)."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.2",
+      "number": "6.2",
+      "title": "Degree of Precision",
+      "content": "The **degree of precision** (or **degree of exactness**) of a quadrature rule is the largest integer $d$ such that\n\\[\nQ_n[p] = \\int_a^b p(x)\\,dx\n\\]\nfor all polynomials $p$ of degree $\\leq d$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Characterization of Degree of Precision",
+      "content": "A quadrature rule $Q_n[f] = \\sum_{i=0}^{n} w_i f(x_i)$ has degree of precision $\\geq d$ if and only if it is exact for $f(x) = 1, x, x^2, \\ldots, x^d$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Necessity is immediate: if the rule is exact for all polynomials of degree $\\leq d$, it is exact for the monomials.\n\nFor sufficiency, let $p(x) = \\sum_{k=0}^{d} a_k x^k$ be any polynomial of degree $\\leq d$. Then by linearity:\n$$\nQ_n[p] &= Q_n\\left[\\sum_{k=0}^{d} a_k x^k\\right] = \\sum_{k=0}^{d} a_k Q_n[x^k] = \\sum_{k=0}^{d} a_k \\int_a^b x^k\\,dx = \\int_a^b p(x)\\,dx\n$$\nwhere we used that $Q_n[x^k] = \\int_a^b x^k\\,dx$ for $k = 0, 1, \\ldots, d$ by hypothesis."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.3",
+      "number": "6.3",
+      "title": "Newton-Cotes Formula",
+      "content": "An **$n$-point Newton-Cotes formula** uses $n+1$ equally-spaced nodes\n\\[\nx_i = a + ih, \\quad i = 0, 1, \\ldots, n, \\quad h = \\frac{b-a}{n}\n\\]\nwith weights derived from integrating the Lagrange interpolating polynomial through these points:\n\\[\nw_i = \\int_a^b \\prod_{j \\neq i} \\frac{x - x_j}{x_i - x_j}\\,dx\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Newton-Cotes Weights",
+      "content": "For the $n$-point Newton-Cotes formula on $[a, b]$ with $h = (b-a)/n$, the weights are\n\\[\nw_i = h \\int_0^n \\prod_{j \\neq i} \\frac{t - j}{i - j}\\,dt\n\\]\nThese depend only on $n$, not on $a$ or $b$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Substituting $x = a + th$ (so $dx = h\\,dt$ and $x_j = a + jh$):\n$$\nw_i &= \\int_a^b \\prod_{j \\neq i} \\frac{x - x_j}{x_i - x_j}\\,dx = \\int_0^n \\prod_{j \\neq i} \\frac{(a + th) - (a + jh)}{(a + ih) - (a + jh)} \\cdot h\\,dt \\\\\n&= h \\int_0^n \\prod_{j \\neq i} \\frac{t - j}{i - j}\\,dt\n$$\nThe result is independent of $a$ and $b$, depending only on the number of points $n$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Trapezoidal Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "The simplest Newton-Cotes formula uses two points (the endpoints) and approximates $f$ by a straight line."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.3",
+      "number": "6.3",
+      "title": "Trapezoidal Rule",
+      "content": "The trapezoidal rule approximates $\\int_a^b f(x)\\,dx$ by the area of the trapezoid with vertices at $(a, 0)$, $(b, 0)$, $(a, f(a))$, and $(b, f(b))$:\n\\[\nT[f] = \\frac{b-a}{2}\\bigl[f(a) + f(b)\\bigr]\n\\]\nThe degree of precision is 1.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "With $n = 1$, we have nodes $x_0 = a$ and $x_1 = b$. The linear Lagrange polynomial is\n\\[\nP_1(x) = f(a)\\frac{x - b}{a - b} + f(b)\\frac{x - a}{b - a}\n\\]\nIntegrating:\n$$\n\\int_a^b P_1(x)\\,dx &= f(a) \\int_a^b \\frac{x - b}{a - b}\\,dx + f(b) \\int_a^b \\frac{x - a}{b - a}\\,dx \\\\\n&= f(a) \\cdot \\frac{1}{a-b}\\left[\\frac{x^2}{2} - bx\\right]_a^b + f(b) \\cdot \\frac{1}{b-a}\\left[\\frac{x^2}{2} - ax\\right]_a^b \\\\\n&= f(a) \\cdot \\frac{b-a}{2} + f(b) \\cdot \\frac{b-a}{2} = \\frac{b-a}{2}[f(a) + f(b)]\n$$\n\nFor degree of precision: The rule is exact for $f(x) = 1$ (giving $b - a$) and $f(x) = x$ (giving $(b^2 - a^2)/2$). For $f(x) = x^2$:\n\\[\nT[x^2] = \\frac{b-a}{2}(a^2 + b^2), \\quad \\int_a^b x^2\\,dx = \\frac{b^3 - a^3}{3}\n\\]\nThese differ, so the degree of precision is exactly 1."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.4",
+      "number": "6.4",
+      "title": "Trapezoidal Rule Error",
+      "content": "If $f \\in C^2[a, b]$, then there exists $\\xi \\in (a, b)$ such that\n\\[\n\\int_a^b f(x)\\,dx = \\frac{b-a}{2}[f(a) + f(b)] - \\frac{(b-a)^3}{12}f''(\\xi)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The interpolation error is $f(x) - P_1(x) = \\frac{f''(\\eta(x))}{2}(x - a)(x - b)$ for some $\\eta(x) \\in (a, b)$.\n\nFor the integral of the error, we need care since $\\eta$ depends on $x$. Define:\n\\[\nE = \\int_a^b [f(x) - P_1(x)]\\,dx = \\int_a^b \\frac{f''(\\eta(x))}{2}(x - a)(x - b)\\,dx\n\\]\n\nSince $(x - a)(x - b) \\leq 0$ on $[a, b]$, the Weighted Mean Value Theorem gives:\n\\[\nE = \\frac{f''(\\xi)}{2}\\int_a^b (x - a)(x - b)\\,dx\n\\]\nfor some $\\xi \\in (a, b)$.\n\nComputing the integral (let $u = x - a$, so $x - b = u - (b - a)$):\n$$\n\\int_a^b (x - a)(x - b)\\,dx &= \\int_0^{b-a} u(u - (b-a))\\,du = \\int_0^{b-a} (u^2 - (b-a)u)\\,du \\\\\n&= \\left[\\frac{u^3}{3} - \\frac{(b-a)u^2}{2}\\right]_0^{b-a} = \\frac{(b-a)^3}{3} - \\frac{(b-a)^3}{2} = -\\frac{(b-a)^3}{6}\n$$\n\nTherefore:\n\\[\nE = \\frac{f''(\\xi)}{2} \\cdot \\left(-\\frac{(b-a)^3}{6}\\right) = -\\frac{(b-a)^3}{12}f''(\\xi)\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Trapezoidal Rule Application",
+      "problem": "Approximate $\\int_0^1 e^{-x^2}\\,dx$ using the trapezoidal rule.",
+      "solution": "We have $a = 0$, $b = 1$, $f(x) = e^{-x^2}$, so $f(0) = 1$ and $f(1) = e^{-1} \\approx 0.3679$.\n\\[\nT[f] = \\frac{1-0}{2}[1 + e^{-1}] = \\frac{1 + e^{-1}}{2} \\approx 0.6839\n\\]\n\nThe exact value is $\\int_0^1 e^{-x^2}\\,dx \\approx 0.7468$ (the error function), so the error is about $0.063$.\n\nFor the error bound: $f''(x) = (4x^2 - 2)e^{-x^2}$, and $|f''(x)| \\leq 2$ on $[0, 1]$. The error bound is\n\\[\n\\left|\\frac{(1-0)^3}{12}\\right| \\cdot 2 = \\frac{1}{6} \\approx 0.167\n\\]\nwhich correctly bounds the actual error of $0.063$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Simpson's Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "Using three equally-spaced points and a quadratic interpolant yields Simpson's rule."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.5",
+      "number": "6.5",
+      "title": "Simpson's Rule",
+      "content": "Simpson's rule approximates $\\int_a^b f(x)\\,dx$ using the midpoint $m = (a+b)/2$:\n\\[\nS[f] = \\frac{b-a}{6}\\left[f(a) + 4f\\left(\\frac{a+b}{2}\\right) + f(b)\\right]\n\\]\nThe degree of precision is 3 (not 2 as one might expect from quadratic interpolation).",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "With nodes $x_0 = a$, $x_1 = (a+b)/2$, and $x_2 = b$ and step size $h = (b-a)/2$, the quadratic Lagrange polynomial through $(x_i, f(x_i))$ is\n\\[\nP_2(x) = f(a)L_0(x) + f(m)L_1(x) + f(b)L_2(x)\n\\]\nwhere $m = (a+b)/2$.\n\nThe weights are found by integrating the Lagrange basis functions. Changing variables to $t = (x - a)/h$ (so $x = a$, $m$, $b$ correspond to $t = 0, 1, 2$):\n$$\nw_0 &= h \\int_0^2 \\frac{(t-1)(t-2)}{(0-1)(0-2)}\\,dt = \\frac{h}{2}\\int_0^2 (t^2 - 3t + 2)\\,dt = \\frac{h}{2}\\left[\\frac{8}{3} - 6 + 4\\right] = \\frac{h}{3} \\\\\nw_1 &= h \\int_0^2 \\frac{(t-0)(t-2)}{(1-0)(1-2)}\\,dt = -h\\int_0^2 (t^2 - 2t)\\,dt = -h\\left[\\frac{8}{3} - 4\\right] = \\frac{4h}{3} \\\\\nw_2 &= h \\int_0^2 \\frac{(t-0)(t-1)}{(2-0)(2-1)}\\,dt = \\frac{h}{2}\\int_0^2 (t^2 - t)\\,dt = \\frac{h}{2}\\left[\\frac{8}{3} - 2\\right] = \\frac{h}{3}\n$$\n\nWith $h = (b-a)/2$:\n\\[\nS[f] = \\frac{h}{3}[f(a) + 4f(m) + f(b)] = \\frac{b-a}{6}[f(a) + 4f(m) + f(b)]\n\\]\n\nFor degree of precision, we verify exactness for $f(x) = x^3$. With $a = -1$, $b = 1$, $m = 0$:\n\\[\nS[x^3] = \\frac{2}{6}[(-1)^3 + 4(0)^3 + 1^3] = \\frac{2}{6}[-1 + 0 + 1] = 0\n\\]\nAnd $\\int_{-1}^{1} x^3\\,dx = 0$ since $x^3$ is odd. So Simpson's rule is exact for cubics.\n\nFor $f(x) = x^4$ on $[-1, 1]$:\n$S[x^4] = \\frac{2}{6}[1 + 4(0) + 1] = \\frac{2}{3}$, but $\\int_{-1}^{1} x^4\\,dx = \\frac{2}{5}$. Not exact.\n\nThus the degree of precision is exactly 3."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.6",
+      "number": "6.6",
+      "title": "Simpson's Rule Error",
+      "content": "If $f \\in C^4[a, b]$, then there exists $\\xi \\in (a, b)$ such that\n\\[\n\\int_a^b f(x)\\,dx = S[f] - \\frac{(b-a)^5}{2880}f^{(4)}(\\xi) = S[f] - \\frac{h^5}{90}f^{(4)}(\\xi)\n\\]\nwhere $h = (b-a)/2$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The proof is more involved than for the trapezoidal rule. One approach uses Peano kernels. \n\nAlternatively, on the symmetric interval $[-h, h]$, expand $f$ in a Taylor series about $0$:\n\\[\nf(x) = f(0) + f'(0)x + \\frac{f''(0)}{2}x^2 + \\frac{f'''(0)}{6}x^3 + \\frac{f^{(4)}(0)}{24}x^4 + O(x^5)\n\\]\n\nSimpson's rule gives:\n\\[\nS[f] = \\frac{h}{3}[f(-h) + 4f(0) + f(h)]\n\\]\n\nSubstituting and using that odd terms cancel:\n\\[\nS[f] = \\frac{h}{3}\\left[2f(0) + f''(0)h^2 + \\frac{f^{(4)}(0)}{12}h^4 + O(h^6) + 4f(0)\\right]\n\\]\nAfter simplification:\n\\[\nS[f] = 2hf(0) + \\frac{h^3}{3}f''(0) + \\frac{h^5}{36}f^{(4)}(0) + O(h^7)\n\\]\n\nThe exact integral:\n\\[\n\\int_{-h}^{h} f(x)\\,dx = 2hf(0) + \\frac{h^3}{3}f''(0) + \\frac{h^5}{60}f^{(4)}(0) + O(h^7)\n\\]\n\nThe difference is:\n\\[\n\\int_{-h}^{h} f(x)\\,dx - S[f] = \\left(\\frac{1}{60} - \\frac{1}{36}\\right)h^5 f^{(4)}(0) + O(h^7) = -\\frac{h^5}{90}f^{(4)}(0) + O(h^7)\n\\]\n\nBy the Intermediate Value Theorem, there exists $\\xi$ such that $f^{(4)}(\\xi)$ replaces $f^{(4)}(0)$ exactly."
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Simpson's Rule Application",
+      "problem": "Approximate $\\int_0^1 e^{-x^2}\\,dx$ using Simpson's rule.",
+      "solution": "We have $a = 0$, $b = 1$, $m = 0.5$, and:\n\\[\nf(0) = 1, \\quad f(0.5) = e^{-0.25} \\approx 0.7788, \\quad f(1) = e^{-1} \\approx 0.3679\n\\]\n\\[\nS[f] = \\frac{1}{6}[1 + 4(0.7788) + 0.3679] = \\frac{1}{6}[1 + 3.1152 + 0.3679] = \\frac{4.4831}{6} \\approx 0.7472\n\\]\n\nThe true value is approximately $0.7468$, so the error is only about $0.0004$—much better than the trapezoidal rule's error of $0.063$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Higher-Order Newton-Cotes Formulas"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.4",
+      "number": "6.4",
+      "title": "Common Newton-Cotes Formulas",
+      "content": "The most common Newton-Cotes formulas are:\n\n**Simpson's 3/8 Rule** ($n = 3$, four points):\n\\[\nS_{3/8}[f] = \\frac{3h}{8}[f_0 + 3f_1 + 3f_2 + f_3], \\quad h = \\frac{b-a}{3}\n\\]\nDegree of precision: 3. Error: $-\\frac{3h^5}{80}f^{(4)}(\\xi)$.\n\n**Boole's Rule** ($n = 4$, five points):\n\\[\nB[f] = \\frac{2h}{45}[7f_0 + 32f_1 + 12f_2 + 32f_3 + 7f_4], \\quad h = \\frac{b-a}{4}\n\\]\nDegree of precision: 5. Error: $-\\frac{8h^7}{945}f^{(6)}(\\xi)$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.7",
+      "number": "6.7",
+      "title": "Newton-Cotes Degree of Precision",
+      "content": "The $n$-point Newton-Cotes formula (with $n+1$ nodes) has degree of precision:\n\n- $n$ if $n$ is odd (as expected from degree-$n$ interpolation)\n\n- $n + 1$ if $n$ is even (one degree higher due to symmetry)",
+      "label": "Theorem"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "$n$",
+        "Name",
+        "Points",
+        "Degree of Precision",
+        "Error Term"
+      ],
+      "rows": [
+        [
+          "1",
+          "Trapezoidal",
+          "2",
+          "1",
+          "$O(h^3)$"
+        ],
+        [
+          "2",
+          "Simpson's",
+          "3",
+          "3",
+          "$O(h^5)$"
+        ],
+        [
+          "3",
+          "Simpson's 3/8",
+          "4",
+          "3",
+          "$O(h^5)$"
+        ],
+        [
+          "4",
+          "Boole's",
+          "5",
+          "5",
+          "$O(h^7)$"
+        ],
+        [
+          "5",
+          "–",
+          "6",
+          "5",
+          "$O(h^7)$"
+        ],
+        [
+          "6",
+          "Weddle's",
+          "7",
+          "7",
+          "$O(h^9)$"
+        ]
+      ],
+      "alignment": [
+        "center",
+        "center",
+        "center",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Derivation via Undetermined Coefficients"
+    },
+    {
+      "type": "paragraph",
+      "text": "An alternative derivation method determines weights by requiring exactness for specific polynomials."
+    },
+    {
+      "type": "example",
+      "id": "example-6.3",
+      "number": "6.3",
+      "title": "Deriving Simpson's Rule via Undetermined Coefficients",
+      "problem": "Find weights $w_0, w_1, w_2$ for nodes $-h, 0, h$ such that $w_0 f(-h) + w_1 f(0) + w_2 f(h) = \\int_{-h}^{h} f(x)\\,dx$ is exact for $f = 1, x, x^2$.",
+      "solution": "For $f(x) = 1$: $w_0 + w_1 + w_2 = 2h$\n\nFor $f(x) = x$: $-hw_0 + 0 + hw_2 = 0$, so $w_0 = w_2$\n\nFor $f(x) = x^2$: $h^2 w_0 + 0 + h^2 w_2 = \\frac{2h^3}{3}$, so $w_0 + w_2 = \\frac{2h}{3}$\n\nFrom symmetry $w_0 = w_2$, we get $2w_0 = \\frac{2h}{3}$, so $w_0 = w_2 = \\frac{h}{3}$.\n\nFrom the first equation: $\\frac{h}{3} + w_1 + \\frac{h}{3} = 2h$, so $w_1 = \\frac{4h}{3}$.\n\nThe formula is $\\frac{h}{3}[f(-h) + 4f(0) + f(h)]$, which is Simpson's rule."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Geometric Interpretation"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ]
+}

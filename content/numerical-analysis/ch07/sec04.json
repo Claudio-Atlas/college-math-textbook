@@ -1,0 +1,274 @@
+{
+  "id": "numerical-analysis-ch07-sec04",
+  "title": "Multistep Methods",
+  "chapter": 7,
+  "section": 4,
+  "book": "numerical-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Runge-Kutta methods use only information at $t_n$ to advance to $t_{n+1}$. \nMultistep methods leverage previously computed values $y_{n-1}, y_{n-2}, \\ldots$ \nto achieve high accuracy with fewer function evaluations per step."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "General Linear Multistep Methods"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Linear $k$-Step Method",
+      "content": "A **linear $k$-step method** has the form:\n\\[\n\\sum_{j=0}^{k} \\alpha_j y_{n-j} = h \\sum_{j=0}^{k} \\beta_j f_{n-j}\n\\]\nwhere $f_{n-j} = f(t_{n-j}, y_{n-j})$, and $\\alpha_0 = 1$ by convention.\n\nRearranging to solve for $y_n$:\n\\[\ny_n = -\\sum_{j=1}^{k} \\alpha_j y_{n-j} + h \\sum_{j=0}^{k} \\beta_j f_{n-j}\n\\]"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.2",
+      "number": "7.2",
+      "title": "Explicit vs Implicit Multistep Methods",
+      "content": "- **Explicit:** $\\beta_0 = 0$. The right side depends only on \nknown values, so $y_n$ computes directly.\n\n- **Implicit:** $\\beta_0 \\neq 0$. The term $hβ_0 f_n = h\\beta_0 f(t_n, y_n)$ \nrequires solving for $y_n$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Adams Methods"
+    },
+    {
+      "type": "paragraph",
+      "text": "Adams methods are the most important family of multistep methods. They \narise from integrating the ODE:\n\\[\ny(t_n) - y(t_{n-1}) = \\int_{t_{n-1}}^{t_n} f(t, y(t))\\, dt\n\\]\nand approximating $f$ by polynomial interpolation."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.3",
+      "number": "7.3",
+      "title": "Adams-Bashforth Methods (Explicit)",
+      "content": "The **Adams-Bashforth** methods approximate $f$ by a polynomial \ninterpolating at $t_n, t_{n-1}, \\ldots, t_{n-k+1}$:\n\n**1-step (Euler):**\n\\[\ny_{n+1} = y_n + hf_n\n\\]\n\n**2-step:**\n\\[\ny_{n+1} = y_n + \\frac{h}{2}(3f_n - f_{n-1})\n\\]\n\n**3-step:**\n\\[\ny_{n+1} = y_n + \\frac{h}{12}(23f_n - 16f_{n-1} + 5f_{n-2})\n\\]\n\n**4-step:**\n\\[\ny_{n+1} = y_n + \\frac{h}{24}(55f_n - 59f_{n-1} + 37f_{n-2} - 9f_{n-3})\n\\]"
+    },
+    {
+      "type": "proof",
+      "content": "Fit a linear polynomial $p(t)$ to $(t_{n-1}, f_{n-1})$ and $(t_n, f_n)$:\n\\[\np(t) = f_{n-1} + \\frac{f_n - f_{n-1}}{h}(t - t_{n-1})\n\\]\n\nIntegrate from $t_n$ to $t_{n+1}$:\n$$\n\\int_{t_n}^{t_{n+1}} p(t)\\, dt &= \\int_{t_n}^{t_{n+1}} \\left[f_{n-1} + \\frac{f_n - f_{n-1}}{h}(t - t_{n-1})\\right] dt \\\\\n&= hf_{n-1} + \\frac{f_n - f_{n-1}}{h} \\cdot \\frac{1}{2}\\left[(t_{n+1} - t_{n-1})^2 - (t_n - t_{n-1})^2\\right] \\\\\n&= hf_{n-1} + \\frac{f_n - f_{n-1}}{h} \\cdot \\frac{1}{2}(4h^2 - h^2) \\\\\n&= hf_{n-1} + \\frac{3h}{2}(f_n - f_{n-1}) = \\frac{h}{2}(3f_n - f_{n-1})\n$$"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.4",
+      "number": "7.4",
+      "title": "Adams-Moulton Methods (Implicit)",
+      "content": "The **Adams-Moulton** methods include $f_{n+1}$ in the interpolation:\n\n**1-step (Backward Euler):**\n\\[\ny_{n+1} = y_n + hf_{n+1}\n\\]\n\n**2-step (Trapezoidal):**\n\\[\ny_{n+1} = y_n + \\frac{h}{2}(f_{n+1} + f_n)\n\\]\n\n**3-step:**\n\\[\ny_{n+1} = y_n + \\frac{h}{12}(5f_{n+1} + 8f_n - f_{n-1})\n\\]\n\n**4-step:**\n\\[\ny_{n+1} = y_n + \\frac{h}{24}(9f_{n+1} + 19f_n - 5f_{n-1} + f_{n-2})\n\\]"
+    },
+    {
+      "type": "remark",
+      "id": "remark-7.4",
+      "number": null,
+      "title": "",
+      "content": "The $k$-step Adams-Bashforth method has order $k$, while the $k$-step \nAdams-Moulton method has order $k+1$. Implicit methods are one order \nhigher for the same number of steps."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Predictor-Corrector Methods"
+    },
+    {
+      "type": "paragraph",
+      "text": "Implicit multistep methods require solving a (possibly nonlinear) equation \nat each step. Predictor-corrector schemes avoid this by combining explicit \nand implicit methods."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.5",
+      "number": "7.5",
+      "title": "Predictor-Corrector Scheme",
+      "content": "A **predictor-corrector** method:\n\n1. **Predict:** Use an explicit method to estimate $y_{n+1}^{(0)}$.\n\n2. **Evaluate:** Compute $f_{n+1}^{(0)} = f(t_{n+1}, y_{n+1}^{(0)})$.\n\n3. **Correct:** Use an implicit method with $f_{n+1}^{(0)}$ to \ncompute improved $y_{n+1}$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Adams-Bashforth-Moulton (ABM4)",
+      "problem": "The fourth-order Adams predictor-corrector:\n\n**Predict (AB4):**\n\\[\ny_{n+1}^{(0)} = y_n + \\frac{h}{24}(55f_n - 59f_{n-1} + 37f_{n-2} - 9f_{n-3})\n\\]\n\n**Evaluate:**\n\\[\nf_{n+1}^{(0)} = f(t_{n+1}, y_{n+1}^{(0)})\n\\]\n\n**Correct (AM4):**\n\\[\ny_{n+1} = y_n + \\frac{h}{24}(9f_{n+1}^{(0)} + 19f_n - 5f_{n-1} + f_{n-2})\n\\]\n\nBoth predictor and corrector are fourth-order, so the combination is \nfourth-order with only 2 function evaluations per step.",
+      "solution": ""
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-7.4",
+      "number": null,
+      "title": "Adams-Bashforth-Moulton (PECE)",
+      "content": "algorithmic[1]\n $f(t,y)$, starting values $(y_0, y_1, y_2, y_3)$ and $(f_0, f_1, f_2, f_3)$, step size $h$\n Sequence $(t_n, y_n)$\n$n = 3, 4, 5, \\ldots$\n **P**redict: $y_{n+1}^P = y_n + \\frac{h}{24}(55f_n - 59f_{n-1} + 37f_{n-2} - 9f_{n-3})$\n **E**valuate: $f_{n+1}^P = f(t_{n+1}, y_{n+1}^P)$\n **C**orrect: $y_{n+1} = y_n + \\frac{h}{24}(9f_{n+1}^P + 19f_n - 5f_{n-1} + f_{n-2})$\n **E**valuate: $f_{n+1} = f(t_{n+1}, y_{n+1})$\n Shift: $(f_{n-3}, f_{n-2}, f_{n-1}, f_n) \\gets (f_{n-2}, f_{n-1}, f_n, f_{n+1})$\n\nalgorithmic"
+    },
+    {
+      "type": "remark",
+      "id": "remark-7.4",
+      "number": null,
+      "title": "",
+      "content": "The PECE pattern (Predict-Evaluate-Correct-Evaluate) uses 2 function \nevaluations per step. The P(EC)$^k$E pattern iterates the correction \nfor greater accuracy, at the cost of more evaluations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Starting Values"
+    },
+    {
+      "type": "warning",
+      "id": "warning-7.4",
+      "number": null,
+      "title": "Multistep methods need startup",
+      "content": "A $k$-step method requires $y_0, y_1, \\ldots, y_{k-1}$ to begin. Only \n$y_0$ is given by the initial condition. The other starting values must \nbe computed by another method."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.6",
+      "number": "7.6",
+      "title": "Starting Procedures",
+      "content": "Common approaches:\n\n1. **Runge-Kutta startup:** Use RK4 (or another one-step method) \nwith the same step size $h$ to compute $y_1, y_2, \\ldots, y_{k-1}$.\n\n2. **Taylor series:** Use high-order Taylor expansion near $t_0$.\n\n3. **Variable-order startup:** Begin with lower-order methods \n(AB1, then AB2, then AB3, ...) as more values become available."
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Starting AB4 with RK4",
+      "problem": "To solve $y' = y$, $y(0) = 1$ using AB4 with $h = 0.1$:\n\n**Step 1:** Given $y_0 = 1$.\n\n**Steps 2-4:** Use RK4 to compute:\n$$\ny_1 &= y(0.1) \\approx 1.1052 \\\\\ny_2 &= y(0.2) \\approx 1.2214 \\\\\ny_3 &= y(0.3) \\approx 1.3499\n$$\n\n**Step 5 onward:** Use AB4 formula.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Backward Differentiation Formulas (BDF)"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.7",
+      "number": "7.7",
+      "title": "Backward Differentiation Formulas",
+      "content": "The **BDF methods** approximate $y'_{n+1}$ by differentiating a \npolynomial fitted to $y_{n+1}, y_n, y_{n-1}, \\ldots$:\n\n**BDF1 (Backward Euler):**\n\\[\ny_{n+1} - y_n = hf_{n+1}\n\\]\n\n**BDF2:**\n\\[\n\\frac{3}{2}y_{n+1} - 2y_n + \\frac{1}{2}y_{n-1} = hf_{n+1}\n\\]\n\n**BDF3:**\n\\[\n\\frac{11}{6}y_{n+1} - 3y_n + \\frac{3}{2}y_{n-1} - \\frac{1}{3}y_{n-2} = hf_{n+1}\n\\]\n\n**BDF4:**\n\\[\n\\frac{25}{12}y_{n+1} - 4y_n + 3y_{n-1} - \\frac{4}{3}y_{n-2} + \\frac{1}{4}y_{n-3} = hf_{n+1}\n\\]"
+    },
+    {
+      "type": "remark",
+      "id": "remark-7.4",
+      "number": null,
+      "title": "",
+      "content": "BDF methods are implicit and have excellent stability properties for \nstiff equations. BDF1 and BDF2 are A-stable (see Section [sec:stability]); \nhigher-order BDF methods have large (but not unlimited) stability regions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Convergence and Zero-Stability"
+    },
+    {
+      "type": "paragraph",
+      "text": "Not every combination of coefficients gives a valid method. Two \nconditions are essential."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.8",
+      "number": "7.8",
+      "title": "Consistency",
+      "content": "A linear multistep method is **consistent** if it has order $\\geq 1$, \nmeaning it satisfies:\n\\[\n\\sum_{j=0}^{k} \\alpha_j = 0, \\qquad \\sum_{j=0}^{k} (j\\alpha_j + \\beta_j) = 0\n\\]\n(with appropriate sign conventions)."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.9",
+      "number": "7.9",
+      "title": "Characteristic Polynomials",
+      "content": "For a linear multistep method, define:\n$$\n\\rho(\\zeta) &= \\sum_{j=0}^{k} \\alpha_j \\zeta^{k-j} = \\alpha_0 \\zeta^k + \\alpha_1 \\zeta^{k-1} + \\cdots + \\alpha_k \\\\\n\\sigma(\\zeta) &= \\sum_{j=0}^{k} \\beta_j \\zeta^{k-j} = \\beta_0 \\zeta^k + \\beta_1 \\zeta^{k-1} + \\cdots + \\beta_k\n$$\nThese are the **first** and **second characteristic polynomials**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.10",
+      "number": "7.10",
+      "title": "Zero-Stability",
+      "content": "A linear multistep method is **zero-stable** if all roots $\\zeta$ \nof $\\rho(\\zeta)$ satisfy:\n\n- $|\\zeta| \\leq 1$\n\n- If $|\\zeta| = 1$, then $\\zeta$ is a simple root\nThis is the **root condition**."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Dahlquist Equivalence Theorem",
+      "content": "A linear multistep method is **convergent** (i.e., $y_n \\to y(t_n)$ \nas $h \\to 0$) if and only if it is both **consistent** and \n**zero-stable**.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "A Zero-Unstable Method",
+      "problem": "Consider the 2-step method:\n\\[\ny_{n+1} - y_{n-1} = 2hf_n\n\\]\n(Midpoint rule variant). Here $\\rho(\\zeta) = \\zeta^2 - 1 = (\\zeta-1)(\\zeta+1)$.\n\nRoots: $\\zeta = 1$ and $\\zeta = -1$, both on the unit circle and simple.\nThe method *is* zero-stable.\n\nBut consider:\n\\[\ny_{n+1} + 4y_n + 3y_{n-1} = h(f_n - f_{n-1})\n\\]\nHere $\\rho(\\zeta) = \\zeta^2 + 4\\zeta + 3 = (\\zeta + 1)(\\zeta + 3)$.\n\nThe root $\\zeta = -3$ has $|\\zeta| > 1$. This method is **not zero-stable** \nand will blow up even for simple problems!",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Error Estimation for Multistep Methods"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "Local Truncation Error for Adams Methods",
+      "content": "The local truncation error for Adams-Bashforth and Adams-Moulton methods:\n\n| Method | Order | LTE coefficient |\n| AB2 | 2 | $\\frac{5}{12}h^3 y'''$ |\n| AB3 | 3 | $\\frac{3}{8}h^4 y^{(4)}$ |\n| AB4 | 4 | $\\frac{251}{720}h^5 y^{(5)}$ |\n| AM2 (Trap) | 2 | $-\\frac{1}{12}h^3 y'''$ |\n| AM3 | 3 | $-\\frac{1}{24}h^4 y^{(4)}$ |\n| AM4 | 4 | $-\\frac{19}{720}h^5 y^{(5)}$ |",
+      "label": "Theorem"
+    },
+    {
+      "type": "remark",
+      "id": "remark-7.4",
+      "number": null,
+      "title": "",
+      "content": "The LTE coefficients for Adams-Moulton are much smaller than for \nAdams-Bashforth of the same order. This is one reason to use predictor-corrector \nmethods: the corrector improves accuracy significantly."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Comparison: Multistep vs Runge-Kutta"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "",
+        "**Multistep**",
+        "**Runge-Kutta**"
+      ],
+      "rows": [
+        [
+          "Function evals/step",
+          "1–2 (typical)",
+          "$s$ (stages)"
+        ],
+        [
+          "Memory",
+          "Stores past values",
+          "Stores only $y_n$"
+        ],
+        [
+          "Startup",
+          "Requires special procedure",
+          "Self-starting"
+        ],
+        [
+          "Step size changes",
+          "Complicated (recalc coeffs)",
+          "Easy"
+        ],
+        [
+          "Stiff problems",
+          "BDF excellent",
+          "Implicit RK good"
+        ],
+        [
+          "Stability regions",
+          "Varies by order",
+          "Can design as needed"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "Efficiency Comparison",
+      "problem": "Solve $y' = -y + t^2$ on $[0, 10]$ to accuracy $10^{-8}$:\n\n| Method | Steps | $f$-evaluations |\n| RK4 | 250 | 1000 |\n| AB4-AM4 | 500 | 1000 |\n| AB4-AM4 | 350 | 700 |\n| DOPRI5 (adaptive) | 180 | $\\sim 900$ |\n\nFor this problem, ABM4 and RK4 are comparable. Adaptive methods often \nwin by using large steps where possible.",
+      "solution": ""
+    }
+  ]
+}

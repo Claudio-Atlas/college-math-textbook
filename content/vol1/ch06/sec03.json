@@ -1,0 +1,484 @@
+{
+  "id": "vol1-ch06-sec03",
+  "title": "The Definite Integral",
+  "chapter": 6,
+  "section": 3,
+  "book": "vol1",
+  "epigraph": {
+    "text": "The boundary lines have fallen for me in pleasant places; surely I have a delightful inheritance.",
+    "reference": "Psalm 16:6",
+    "quote": "The integral calculus is the most beautiful of all mathematical theories.",
+    "quoteAuthor": "Joseph Fourier"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "In the previous section we computed the area under $f(x) = x^2$ on \n$[0, 1]$ by forming Riemann sums and taking the limit as $n \\to \\infty$. \nThe answer was $\\frac{1}{3}$—a definite number, not a family of \nfunctions. The limit of the Riemann sum deserves its own name and \nnotation, for it is one of the central objects of all mathematics."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Definite Integral"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "The Definite Integral",
+      "content": "Let $f$ be a function defined on $[a, b]$. The \n**definite integral** of $f$ from $a$ to $b$ \nis\n$$\n \\int_a^b f(x)\\dx \n = \\lim_{\\|\\Delta\\| \\to 0} \\sum_{i=1}^{n} f(x_i^*)\\,\\Delta x_i,\n$$\nprovided this limit exists (meaning it gives the same value regardless \nof how the partitions and sample points are chosen). When the limit \nexists, we say that $f$ is **integrable** \non $[a, b]$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The notation is rich with meaning:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "The symbol $\\displaystyle\\int$ is the elongated \"S\" for \n *summa*—a sum.",
+        "$a$ and $b$ are the **limits of integration**: $a$ is the \n lower limit, $b$ the upper.",
+        "$f(x)$ is the **integrand**.",
+        "$\\dx$ indicates the variable and reminds us of $\\Delta x$ in the \n Riemann sum."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "For equal subintervals, the definition simplifies: with \n$\\Delta x = \\frac{b-a}{n}$ and $x_i = a + i\\,\\Delta x$,\n$$\n \\int_a^b f(x)\\dx \n = \\lim_{n\\to\\infty} \\sum_{i=1}^{n} f(x_i)\\,\\Delta x.\n$$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Integrability of Continuous Functions",
+      "content": "If $f$ is continuous on $[a, b]$, then $f$ is integrable on $[a, b]$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is a deep theorem—its proof uses the uniform continuity of $f$ \non a closed interval. We state it without proof and note that most \nfunctions we encounter in practice are continuous, so the definite integral \nexists for them."
+    },
+    {
+      "type": "paragraph",
+      "text": "More generally, if $f$ has only finitely many jump discontinuities on \n$[a, b]$ (a *piecewise continuous* function), then $f$ is still \nintegrable."
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Expressing an area as a definite integral",
+      "problem": "Express the area under $f(x) = x^2$ from $x = 0$ to $x = 1$ as a definite \nintegral, and state its value.",
+      "solution": "From Example [ex:area-x-squared], we showed that \n$\\lim_{n\\to\\infty} R_n = \\frac{1}{3}$. Therefore\n$$\n \\int_0^1 x^2\\dx = \\frac{1}{3}.\n$$"
+    },
+    {
+      "type": "warning",
+      "id": "warning-6.3",
+      "number": null,
+      "title": "Definite vs.\\ indefinite integrals",
+      "content": "The definite integral $\\displaystyle\\int_a^b f(x)\\dx$ is a \n*number*—the limit of Riemann sums. The indefinite integral \n$\\displaystyle\\int f(x)\\dx$ is a *family of functions* (the \ngeneral antiderivative $F(x) + C$). The notations are similar because \nthey are deeply connected—but they are different objects. We will \ndiscover the precise connection in Section [sec:ftc]."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of the Definite Integral"
+    },
+    {
+      "type": "paragraph",
+      "text": "The following properties follow from the definition (as limits of Riemann \nsums) and the algebra of limits."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Properties of the Definite Integral",
+      "content": "Let $f$ and $g$ be integrable on $[a, b]$ and let $c$ be a constant.\n\n1. **Constant multiple:** \n $\\displaystyle\\int_a^b c\\, f(x)\\dx = c\\int_a^b f(x)\\dx$\n\n2. **Sum/Difference:** \n $\\displaystyle\\int_a^b \\bigl[f(x) \\pm g(x)\\bigr]\\dx \n = \\int_a^b f(x)\\dx \\pm \\int_a^b g(x)\\dx$\n\n3. **Additivity over intervals:** \n If $f$ is integrable on an interval containing $a$, $b$, and $c$, then\n $\\displaystyle\\int_a^b f(x)\\dx + \\int_b^c f(x)\\dx = \\int_a^c f(x)\\dx$\n\n4. **Zero-width interval:** \n $\\displaystyle\\int_a^a f(x)\\dx = 0$\n\n5. **Reversing limits:** \n $\\displaystyle\\int_a^b f(x)\\dx = -\\int_b^a f(x)\\dx$\n\n6. **Comparison:** \n If $f(x) \\geq 0$ for all $x \\in [a, b]$, then \n $\\displaystyle\\int_a^b f(x)\\dx \\geq 0$.\n \n More generally, if $f(x) \\geq g(x)$ on $[a, b]$, then \n $\\displaystyle\\int_a^b f(x)\\dx \\geq \\int_a^b g(x)\\dx$.\n\n7. **Bounding:** \n If $m \\leq f(x) \\leq M$ on $[a, b]$, then \n $m(b - a) \\leq \\displaystyle\\int_a^b f(x)\\dx \\leq M(b - a)$.\n\n8. **Constant function:** \n $\\displaystyle\\int_a^b c\\dx = c(b - a)$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Property 3 (additivity) is especially useful. It says we can split an \nintegral at any intermediate point. Property 5 (reversing limits) is a \nuseful convention that keeps the algebra clean."
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Using integral properties",
+      "problem": "Given that $\\displaystyle\\int_0^4 f(x)\\dx = 10$ and \n$\\displaystyle\\int_0^4 g(x)\\dx = 3$, evaluate:\n\n1. $\\displaystyle\\int_0^4 \\bigl[2f(x) - 5g(x)\\bigr]\\dx$\n\n2. $\\displaystyle\\int_4^0 f(x)\\dx$",
+      "solution": "1. By linearity:\n $$\n \\int_0^4 \\bigl[2f(x) - 5g(x)\\bigr]\\dx \n = 2(10) - 5(3) = 20 - 15 = 5.\n $$\n\n2. By the reversal property:\n $\\displaystyle\\int_4^0 f(x)\\dx = -\\int_0^4 f(x)\\dx = -10.$"
+    },
+    {
+      "type": "example",
+      "id": "example-6.3",
+      "number": "6.3",
+      "title": "Splitting an integral",
+      "problem": "If $\\displaystyle\\int_0^5 f(x)\\dx = 7$ and \n$\\displaystyle\\int_0^2 f(x)\\dx = 3$, find \n$\\displaystyle\\int_2^5 f(x)\\dx$.",
+      "solution": "By additivity:\n$$\n \\int_0^2 f(x)\\dx + \\int_2^5 f(x)\\dx = \\int_0^5 f(x)\\dx,\n$$\nso $\\displaystyle\\int_2^5 f(x)\\dx = 7 - 3 = 4$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Signed Area: The Geometric Interpretation"
+    },
+    {
+      "type": "paragraph",
+      "text": "When $f(x) \\geq 0$ on $[a, b]$, the definite integral \n$\\int_a^b f(x)\\dx$ equals the area between the curve and the $x$-axis. \nBut what happens when $f$ dips below the $x$-axis?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Each Riemann sum rectangle with $f(x_i^*) < 0$ contributes a \n*negative* term to the sum. Therefore:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.3",
+      "number": "6.3",
+      "title": "Signed Area Interpretation",
+      "content": "The definite integral $\\displaystyle\\int_a^b f(x)\\dx$ equals the \n**signed area** between the graph of $f$ and the \n$x$-axis on $[a, b]$: area above the axis counts as *positive*, \nand area below the axis counts as *negative*.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "If you want the *total area* (treating all regions as positive), you \nmust integrate $\\abs{f(x)}$:\n$$\n \\text{total area} = \\int_a^b \\abs{f(x)}\\dx.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-6.4",
+      "number": "6.4",
+      "title": "Signed area vs.\\ total area",
+      "problem": "Evaluate $\\displaystyle\\int_0^{2\\pi} \\sin x\\dx$ and interpret the result \ngeometrically.",
+      "solution": "We will compute this integral using geometry (the FTC method comes in \nSection [sec:ftc]). The graph of $\\sin x$ on $[0, 2\\pi]$ has one \narch above the $x$-axis on $[0, \\pi]$ and one arch below on \n$[\\pi, 2\\pi]$. By the symmetry of $\\sin x$, both arches enclose equal \narea. The positive area equals the negative area, so\n$$\n \\int_0^{2\\pi} \\sin x\\dx = 0.\n$$\nThe integral is zero because the positive and negative contributions \ncancel perfectly. The *total* area enclosed is $2 \\times 2 = 4$ \n(the area of one arch of $\\sin x$ is $2$, as we will verify in \nSection [sec:ftc])."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Evaluating Integrals Using Geometry"
+    },
+    {
+      "type": "paragraph",
+      "text": "We do not yet have the Fundamental Theorem of Calculus, so we cannot \nuse antiderivatives to evaluate definite integrals. But when the graph \nof $f$ forms a recognizable geometric shape, we can compute the integral \ndirectly from the area formula."
+    },
+    {
+      "type": "example",
+      "id": "example-6.5",
+      "number": "6.5",
+      "title": "Integral of a constant",
+      "problem": "Evaluate $\\displaystyle\\int_1^5 3\\dx$.",
+      "solution": "The graph of $f(x) = 3$ is a horizontal line. The region between the \nline and the $x$-axis on $[1, 5]$ is a rectangle with width $5 - 1 = 4$ \nand height $3$.\n$$\n \\int_1^5 3\\dx = 3 \\times 4 = 12.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-6.6",
+      "number": "6.6",
+      "title": "Integral of a linear function",
+      "problem": "Evaluate $\\displaystyle\\int_0^6 (4 - x)\\dx$.",
+      "solution": "The graph of $f(x) = 4 - x$ is a line crossing the $x$-axis at $x = 4$. \nOn $[0, 4]$, $f$ is positive and the region is a triangle with base $4$ \nand height $4$, so its area is $\\frac{1}{2}(4)(4) = 8$.\n\nOn $[4, 6]$, $f$ is negative. The region is a triangle with base $2$ \nand depth $2$ (since $f(6) = -2$), contributing area \n$-\\frac{1}{2}(2)(2) = -2$ to the signed area.\n\nTherefore $\\displaystyle\\int_0^6(4 - x)\\dx = 8 + (-2) = 6$."
+    },
+    {
+      "type": "example",
+      "id": "example-6.7",
+      "number": "6.7",
+      "title": "Integral involving a semicircle",
+      "problem": "Evaluate $\\displaystyle\\int_{-3}^{3} \\sqrt{9 - x^2}\\dx$.",
+      "solution": "The function $y = \\sqrt{9 - x^2}$ is the upper half of the circle \n$x^2 + y^2 = 9$. The region under this curve from $-3$ to $3$ is a \nsemicircle of radius $3$.\n$$\n \\int_{-3}^{3}\\sqrt{9 - x^2}\\dx \n = \\frac{1}{2}\\pi(3)^2 = \\frac{9\\pi}{2}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-6.8",
+      "number": "6.8",
+      "title": "Combining geometric shapes",
+      "problem": "Evaluate $\\displaystyle\\int_0^5 f(x)\\dx$, where\n$$\n f(x) = \\begin{cases} \n 2x, & 0 \\leq x \\leq 2, \\\\\n 4, & 2 < x \\leq 5.\n \\end{cases}\n$$",
+      "solution": "On $[0, 2]$, the graph is a line from $(0, 0)$ to $(2, 4)$, forming a \ntriangle with area $\\frac{1}{2}(2)(4) = 4$.\n\nOn $[2, 5]$, the graph is the horizontal line $y = 4$, forming a \nrectangle with area $4 \\times 3 = 12$.\n\nBy additivity: $\\displaystyle\\int_0^5 f(x)\\dx = 4 + 12 = 16$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Average Value of a Function"
+    },
+    {
+      "type": "paragraph",
+      "text": "How do you average finitely many numbers? Add them up and divide by \nhow many there are. But what does it mean to average a *continuous* \nfunction over an interval?"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Riemann sum gives us a clue. If we sample $f$ at $n$ equally spaced \npoints $x_1, \\ldots, x_n$ in $[a, b]$, the average of those samples is\n$$\n \\frac{1}{n}\\sum_{i=1}^{n} f(x_i) \n = \\frac{1}{b-a}\\sum_{i=1}^{n} f(x_i)\\,\\Delta x,\n$$\nsince $\\Delta x = \\frac{b-a}{n}$ implies $\\frac{1}{n} = \n\\frac{\\Delta x}{b-a}$. As $n \\to \\infty$, the right side becomes \n$\\frac{1}{b-a}\\int_a^b f(x)\\dx$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.2",
+      "number": "6.2",
+      "title": "Average Value of a Function",
+      "content": "If $f$ is integrable on $[a, b]$, the **average value** of $f$ on $[a, b]$ is\n$$\n f_{\\mathrm{avg}} = \\frac{1}{b - a}\\int_a^b f(x)\\dx.\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Geometrically, $f_{\\mathrm{avg}}$ is the height of the rectangle with \nbase $[a, b]$ whose area equals the area under $f$:\n$$\n f_{\\mathrm{avg}} \\cdot (b - a) = \\int_a^b f(x)\\dx.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-6.9",
+      "number": "6.9",
+      "title": "Average value of a function",
+      "problem": "Find the average value of $f(x) = 3$ on $[1, 5]$ and the average value \nof $g(x) = 4 - x$ on $[0, 4]$.",
+      "solution": "For $f$:\n$\\displaystyle f_{\\mathrm{avg}} = \\frac{1}{5-1}\\int_1^5 3\\dx \n= \\frac{1}{4}\\cdot 12 = 3$.\nNo surprise—the average of a constant is that constant.\n\nFor $g$: the region under $g(x) = 4 - x$ on $[0, 4]$ is a triangle \nwith area $\\frac{1}{2}(4)(4) = 8$.\n$\\displaystyle g_{\\mathrm{avg}} = \\frac{1}{4-0}\\cdot 8 = 2$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Mean Value Theorem for Integrals"
+    },
+    {
+      "type": "paragraph",
+      "text": "Is the average value actually *attained* by the function? For \ncontinuous functions, the answer is yes."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.4",
+      "number": "6.4",
+      "title": "Mean Value Theorem for Integrals",
+      "content": "If $f$ is continuous on $[a, b]$, then there exists at least one number \n$c \\in [a, b]$ such that\n$$\n f(c) = f_{\\mathrm{avg}} = \\frac{1}{b-a}\\int_a^b f(x)\\dx.\n$$\nEquivalently:\n$$\n \\int_a^b f(x)\\dx = f(c)\\,(b - a).\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Since $f$ is continuous on $[a, b]$, by the Extreme Value Theorem it \nattains a minimum $m$ and a maximum $M$ on $[a, b]$. By the bounding \nproperty (Theorem [thm:integral-properties], property 7):\n$$\n m(b-a) \\leq \\int_a^b f(x)\\dx \\leq M(b-a),\n$$\nso $m \\leq f_{\\mathrm{avg}} \\leq M$. Since $f$ is continuous and \nachieves the values $m$ and $M$, the Intermediate Value Theorem \nguarantees a point $c \\in [a, b]$ with $f(c) = f_{\\mathrm{avg}}$."
+    },
+    {
+      "type": "example",
+      "id": "example-6.10",
+      "number": "6.10",
+      "title": "Finding the guaranteed point",
+      "problem": "The average value of $f(x) = x^2$ on $[0, 3]$ is \n$f_{\\mathrm{avg}} = \\frac{1}{3}\\cdot 9 = 3$. (We will verify \n$\\int_0^3 x^2\\dx = 9$ once we have the FTC.) Find the value $c \\in \n[0, 3]$ where $f(c) = 3$.",
+      "solution": "We need $c^2 = 3$, so $c = \\sqrt{3} \\approx 1.732$. This lies in \n$[0, 3]$, confirming the theorem."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Looking Ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "We have given the definite integral a precise definition, established its \nkey properties, and computed several integrals using geometry. But our \ncomputational power is still severely limited. We can only evaluate \n$\\int_a^b f(x)\\dx$ when the graph of $f$ is a simple geometric shape or \nwhen we can carry out the Riemann sum limit by hand."
+    },
+    {
+      "type": "paragraph",
+      "text": "What about $\\int_0^1 e^x\\dx$? Or $\\int_1^4 \\frac{1}{\\sqrt{x}}\\dx$? \nWe cannot evaluate these with geometry or summation formulas."
+    },
+    {
+      "type": "paragraph",
+      "text": "In the next section, we will discover that antiderivatives—the \nfunctions from Section [sec:antiderivatives] that reverse \ndifferentiation—provide a breathtakingly efficient method for \ncomputing *any* definite integral. The connection is the \nFundamental Theorem of Calculus, and it changes everything."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.1",
+      "number": "1",
+      "problem": "Express the area under $f(x) = x^3$ on $[0, 2]$ as a definite integral. \n(You computed the value in Section \\ref{sec:riemann-sums}.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.2",
+      "number": "2",
+      "problem": "Express the limit \n$\\displaystyle\\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\frac{3i^2}{n^3}$ as a \ndefinite integral on $[0, 1]$. (Hint: identify $f(x)$ and $\\Delta x$.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.3",
+      "number": "3",
+      "problem": "Express the limit \n$\\displaystyle\\lim_{n\\to\\infty}\\sum_{i=1}^{n}\\sin\\!\\left(\\frac{i\\pi}{n}\n\\right)\\frac{\\pi}{n}$ as a definite integral."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.4",
+      "number": "4",
+      "problem": "Evaluate $\\displaystyle\\int_2^2 (x^3 + 5)\\dx$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.5",
+      "number": "5",
+      "problem": "Evaluate $\\displaystyle\\int_3^7 5\\dx$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.6",
+      "number": "6",
+      "problem": "Evaluate $\\displaystyle\\int_0^4 x\\dx$ using geometry."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.7",
+      "number": "7",
+      "problem": "Evaluate $\\displaystyle\\int_0^3 (6 - 2x)\\dx$ using geometry."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.8",
+      "number": "8",
+      "problem": "Evaluate $\\displaystyle\\int_{-2}^{2}\\sqrt{4 - x^2}\\dx$ using geometry."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.9",
+      "number": "9",
+      "problem": "Evaluate $\\displaystyle\\int_{-1}^{3}\\abs{x}\\dx$ using geometry."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.10",
+      "number": "10",
+      "problem": "Evaluate $\\displaystyle\\int_0^6 f(x)\\dx$, where \n$f(x) = \\begin{cases} x, & 0 \\leq x \\leq 3,\\\\ 3, & 3 < x \\leq 6.\n\\end{cases}$"
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.11",
+      "number": "11",
+      "problem": "If $\\displaystyle\\int_0^3 f(x)\\dx = 8$ and \n$\\displaystyle\\int_0^3 g(x)\\dx = -2$, evaluate \n$\\displaystyle\\int_0^3[4f(x) + 3g(x)]\\dx$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.12",
+      "number": "12",
+      "problem": "If $\\displaystyle\\int_1^7 f(x)\\dx = 12$ and \n$\\displaystyle\\int_4^7 f(x)\\dx = 5$, find \n$\\displaystyle\\int_1^4 f(x)\\dx$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.13",
+      "number": "13",
+      "problem": "If $\\displaystyle\\int_0^8 f(x)\\dx = 15$, find \n$\\displaystyle\\int_8^0 f(x)\\dx$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.14",
+      "number": "14",
+      "problem": "Evaluate $\\displaystyle\\int_{-3}^{3}(x^3 + 1)\\dx$ using the fact that \n$x^3$ is odd and the geometry of the constant function."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.15",
+      "number": "15",
+      "problem": "Find the average value of $f(x) = x$ on $[0, 6]$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.16",
+      "number": "16",
+      "problem": "Find the average value of $f(x) = \\sqrt{4 - x^2}$ on $[-2, 2]$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.17",
+      "number": "17",
+      "problem": "The temperature over a $12$-hour day is modeled by \n$T(t) = 60 + 15\\sin\\!\\bigl(\\frac{\\pi t}{12}\\bigr)$ degrees \nFahrenheit, $0 \\leq t \\leq 12$. Set up the integral for the average \ntemperature. (You do not need to evaluate it yet.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.18",
+      "number": "18",
+      "problem": "Show that $\\displaystyle 2 \\leq \\int_0^2 \\sqrt{1 + x^2}\\dx \\leq \n2\\sqrt{5}$ by finding appropriate bounds on the integrand."
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.19",
+      "number": "19",
+      "problem": "If $f$ is continuous and $\\displaystyle\\int_0^4 f(x)\\dx = 10$, \ndoes there exist a value $c \\in [0, 4]$ such that $f(c) = 2.5$? \nExplain.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.20",
+      "number": "20",
+      "problem": "Evaluate $\\displaystyle\\int_0^{10}\\abs{x - 4}\\dx$ using geometry.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.21",
+      "number": "21",
+      "problem": "Given $\\displaystyle\\int_0^1 f(x)\\dx = 3$, \n$\\displaystyle\\int_1^3 f(x)\\dx = -1$, \n$\\displaystyle\\int_3^6 f(x)\\dx = 5$, find \n$\\displaystyle\\int_0^6 f(x)\\dx$ and \n$\\displaystyle\\int_6^1 f(x)\\dx$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.22",
+      "number": "22",
+      "problem": "Evaluate $\\displaystyle\\int_{-a}^{a} f(x)\\dx$ if $f$ is an \n*odd* function (i.e., $f(-x) = -f(x)$). Prove your result \nusing a substitution argument.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.23",
+      "number": "23",
+      "problem": "If $0 \\leq f(x) \\leq g(x)$ on $[a, b]$, prove that \n$\\displaystyle\\int_a^b f(x)\\dx \\leq \\int_a^b g(x)\\dx$ directly \nfrom the Riemann sum definition.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.24",
+      "number": "24",
+      "problem": "Prove property 3 of Theorem \\ref{thm:integral-properties} (additivity \nover intervals) for the special case where $a < b < c$ and $f$ is \ncontinuous, by splitting a Riemann sum over $[a, c]$ into sums over \n$[a, b]$ and $[b, c]$.",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.25",
+      "number": "25",
+      "problem": "Prove property 5 of Theorem \\ref{thm:integral-properties}: if we define \n$\\displaystyle\\int_b^a f(x)\\dx = -\\int_a^b f(x)\\dx$ for $a < b$, show \nthat property 3 (additivity) then holds for *any* arrangement of \n$a$, $b$, $c$---not just $a < b < c$.",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.26",
+      "number": "26",
+      "problem": "Prove the Mean Value Theorem for Integrals \n(Theorem \\ref{thm:mvt-integrals}) in detail, carefully citing the \nExtreme Value Theorem and the Intermediate Value Theorem.",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.27",
+      "number": "27",
+      "problem": "The velocity of a migrating bird is measured over \na $6$-hour flight:\n\n\\medskip\n\\begin{center}\n\\begin{tabular}{ccccccc}\n\\toprule\n$t$ (hr) & 0 & 1 & 2 & 3 & 4 & 5 \\\\\n\\midrule\n$v(t)$ (km/hr) & 32 & 38 & 41 & 37 & 34 & 30 \\\\\n\\bottomrule\n\\end{tabular}\n\\end{center}\n\\medskip\nEstimate the total distance traveled using a left Riemann sum. Also \nestimate the bird's average velocity.",
+      "creationReveals": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex6.3.28",
+      "number": "28",
+      "problem": "The daily high temperature (°F) during a week \nin May is: 72, 75, 78, 82, 80, 76, 73. Treating these as the \nvalues of $T(t)$ at $t = 0, 1, \\ldots, 6$ (days), use a left \nRiemann sum to estimate $\\int_0^6 T(t)\\dt$ and find the average \ntemperature for the week.",
+      "creationReveals": true
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 28:16",
+      "text": "So this is what the Sovereign Lord says: \n\"See, I lay a stone in Zion, a tested stone, a precious cornerstone \nfor a sure foundation.\""
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 139:8--9",
+      "text": "If I go up to the heavens, you are there; \nif I make my bed in the depths, you are there. If I rise on the wings \nof the dawn, if I settle on the far side of the sea…"
+    },
+    {
+      "type": "scripture",
+      "reference": "Lamentations 3:22--23",
+      "text": "Because of the Lord's great love \nwe are not consumed, for his compassions never fail. They are new \nevery morning; great is your faithfulness."
+    },
+    {
+      "type": "quote",
+      "author": "Leonhard Euler",
+      "text": "Since the fabric of the universe is most \nperfect and the work of a most wise Creator, nothing at all takes \nplace in the universe in which some rule of maximum or minimum does \nnot appear."
+    },
+    {
+      "type": "quote",
+      "author": "Johannes Kepler",
+      "text": "Geometry is one and eternal shining in the \nmind of God."
+    },
+    {
+      "type": "quote",
+      "author": "Augustin-Louis Cauchy",
+      "text": "One must study the masters and not \nthe pupils."
+    }
+  ]
+}

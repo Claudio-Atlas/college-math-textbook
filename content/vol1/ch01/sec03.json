@@ -1,0 +1,412 @@
+{
+  "id": "vol1-ch01-sec03",
+  "title": "Transformations and Combinations of Functions",
+  "chapter": 1,
+  "section": 3,
+  "book": "vol1",
+  "objectives": [
+    "Apply vertical and horizontal shifts to transform the graph of a function",
+    "Reflect graphs across the x-axis and y-axis, and classify functions as even, odd, or neither",
+    "Use vertical and horizontal stretches and compressions to scale function graphs",
+    "Combine functions using arithmetic operations and composition, and determine domains of combined functions"
+  ],
+  "devotional": {
+    "title": "Transformed by Renewal",
+    "scripture": "Romans 12:2",
+    "content": "\"Do not conform to the pattern of this world, but be transformed by the renewing of your mind.\" Just as we transform functions\u2014shifting, stretching, and reflecting them to create new forms while preserving their essential nature\u2014God transforms us. The parabola remains a parabola whether shifted up or reflected down; its core identity persists through every transformation. Similarly, when God renews our minds, He doesn't erase who we are but repositions us, reorients us, and reshapes us for His purposes. As Galileo observed, \"Mathematics is the language with which God has written the universe.\" In studying transformations, we learn the grammar of that divine language."
+  },
+  "content": [
+    {
+      "type": "figure",
+      "id": "fig-1.3-shifts",
+      "src": "/figures/vol1/ch01/sec03-shifts.svg",
+      "caption": "The parabola $y = x^2$ (dashed) and three shifted versions.",
+      "alt": "Figure: Shifts"
+    },
+    {
+      "type": "paragraph",
+      "text": "You already know how to shift a graph up: add a constant. The graph of $y = x^{2} + 3$ is the parabola $y = x^{2}$ moved up three units. In this section we systematize that instinct, cataloging the full range of geometric transformations\u2014shifts, reflections, stretches, compressions\u2014and showing how each corresponds to an algebraic change in the function's formula. We then turn to arithmetic: given two functions, we can add, subtract, multiply, divide, and *compose* them to build new functions from old. These operations will be our primary construction tools throughout calculus."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Vertical and Horizontal Shifts"
+    },
+    {
+      "type": "paragraph",
+      "text": "Suppose you know the graph of $y = f(x)$. What happens when you replace $f(x)$ with $f(x) + c$ or $f(x + c)$?"
+    },
+    {
+      "type": "theorem",
+      "id": "thm-1.7",
+      "number": "1.7",
+      "title": "Vertical and Horizontal Shifts",
+      "content": "Let $c > 0$.\n\n- $y = f(x) + c$ shifts the graph of $f$ **up** by $c$ units.\n- $y = f(x) - c$ shifts the graph of $f$ **down** by $c$ units.\n- $y = f(x - c)$ shifts the graph of $f$ **right** by $c$ units.\n- $y = f(x + c)$ shifts the graph of $f$ **left** by $c$ units."
+    },
+    {
+      "type": "paragraph",
+      "text": "The vertical shifts are intuitive: adding $c$ to every output lifts the entire graph. The horizontal shifts require more care\u2014and they go in the *opposite* direction from what most students expect."
+    },
+    {
+      "type": "caution",
+      "title": "Horizontal shifts go \"backward\"",
+      "content": "To shift right, we subtract from $x$ inside the function: $f(x - c)$, not $f(x + c)$. Think of it this way: the point that *used to be* at $x = 0$ is now at $x = c$, because $f(c - c) = f(0)$."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.9",
+      "number": "1.9",
+      "title": "Shifting a Parabola",
+      "problem": "Describe the graph of each function in terms of shifts of $y = x^2$.\n\n**(a)** $y = x^2 + 4$\n\n**(b)** $y = (x - 3)^2$\n\n**(c)** $y = (x + 1)^2 - 2$",
+      "solution": "**(a)** Shift the parabola **up 4 units**. Vertex moves from $(0,0)$ to $(0,4)$.\n\n**(b)** Shift **right 3 units**. Vertex moves to $(3,0)$.\n\n**(c)** Shift **left 1 unit** and **down 2 units**. Vertex moves to $(-1, -2)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Reflections"
+    },
+    {
+      "type": "theorem",
+      "id": "thm-1.8",
+      "number": "1.8",
+      "title": "Reflections",
+      "content": "- $y = -f(x)$ reflects the graph of $f$ across the **$x$-axis** (negate every output).\n- $y = f(-x)$ reflects the graph of $f$ across the **$y$-axis** (negate every input)."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.10",
+      "number": "1.10",
+      "title": "Reflections of an Exponential",
+      "problem": "Starting with $y = 2^x$, describe the graphs of $y = -2^x$ and $y = 2^{-x}$.",
+      "solution": "- $y = -2^x$ reflects across the **$x$-axis**. The growth curve, which originally rose to the right, now falls to the right. The range changes from $(0, \\infty)$ to $(-\\infty, 0)$.\n\n- $y = 2^{-x}$ reflects across the **$y$-axis**. The growth curve that rose to the right now rises to the left\u2014this is the exponential decay function $(1/2)^x$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Two important symmetry concepts arise from reflections:"
+    },
+    {
+      "type": "definition",
+      "id": "def-1.5",
+      "number": "1.5",
+      "title": "Even and Odd Functions",
+      "content": "A function $f$ is **even** if $f(-x) = f(x)$ for all $x$ in its domain. Its graph is symmetric about the $y$-axis.\n\nA function $f$ is **odd** if $f(-x) = -f(x)$ for all $x$ in its domain. Its graph is symmetric about the origin."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.11",
+      "number": "1.11",
+      "title": "Testing for Symmetry",
+      "problem": "Determine whether each function is even, odd, or neither.\n\n**(a)** $f(x) = x^4 - 3x^2 + 1$\n\n**(b)** $g(x) = x^3 - x$\n\n**(c)** $h(x) = x^2 + x$",
+      "solution": "**(a)** $f(-x) = (-x)^4 - 3(-x)^2 + 1 = x^4 - 3x^2 + 1 = f(x)$. **Even.**\n\n**(b)** $g(-x) = (-x)^3 - (-x) = -x^3 + x = -(x^3 - x) = -g(x)$. **Odd.**\n\n**(c)** $h(-x) = (-x)^2 + (-x) = x^2 - x$. This equals neither $h(x)$ nor $-h(x)$. **Neither.**"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Vertical and Horizontal Stretches and Compressions"
+    },
+    {
+      "type": "theorem",
+      "id": "thm-1.9",
+      "number": "1.9",
+      "title": "Stretches and Compressions",
+      "content": "Let $c > 1$.\n\n- $y = c\\,f(x)$ **vertically stretches** the graph by a factor of $c$ (pulls it away from the $x$-axis).\n- $y = \\frac{1}{c}\\,f(x)$ **vertically compresses** the graph by a factor of $c$ (pushes it toward the $x$-axis).\n- $y = f(cx)$ **horizontally compresses** the graph by a factor of $c$ (squeezes it toward the $y$-axis).\n- $y = f(x/c)$ **horizontally stretches** the graph by a factor of $c$ (pulls it away from the $y$-axis)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Notice the reversal again: multiplying $x$ by $c > 1$ *compresses* horizontally (the opposite of what many students expect)."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.12",
+      "number": "1.12",
+      "title": "Combining Transformations",
+      "problem": "Starting with $y = |x|$, describe the sequence of transformations that produces $y = -2|x - 1| + 3$.",
+      "solution": "We apply transformations in order:\n\n**1.** **Shift right 1:** $y = |x-1|$.\n\n**2.** **Vertical stretch by 2:** $y = 2|x-1|$.\n\n**3.** **Reflect across the $x$-axis:** $y = -2|x-1|$.\n\n**4.** **Shift up 3:** $y = -2|x-1| + 3$.\n\nThe vertex of the original \"V\" at $(0,0)$ moves to $(1,3)$, and the \"V\" opens downward with slopes $\\pm 2$."
+    },
+    {
+      "type": "strategy",
+      "title": "Order of Transformations",
+      "content": "When multiple transformations are applied, a reliable order is:\n\n**1.** Horizontal shift (inside the function).\n\n**2.** Horizontal stretch/compression and reflection across the $y$-axis (multiply $x$ inside the function).\n\n**3.** Vertical stretch/compression and reflection across the $x$-axis (multiply the whole function).\n\n**4.** Vertical shift (add/subtract outside the function).\n\nAlternatively, work \"inside out\": handle all changes to $x$ first (in reverse order), then handle all changes to $y$ (in normal order)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Arithmetic Combinations of Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Given two functions $f$ and $g$, we can build new functions by the usual arithmetic operations."
+    },
+    {
+      "type": "definition",
+      "id": "def-1.6",
+      "number": "1.6",
+      "title": "Sum, Difference, Product, and Quotient",
+      "content": "Let $f$ and $g$ be functions with domains $D_f$ and $D_g$. For all $x$ in $D_f \\cap D_g$, we define:\n\n$$(f + g)(x) = f(x) + g(x) \\quad \\text{(sum)}$$\n\n$$(f - g)(x) = f(x) - g(x) \\quad \\text{(difference)}$$\n\n$$(f \\cdot g)(x) = f(x) \\cdot g(x) \\quad \\text{(product)}$$\n\n$$\\left(\\frac{f}{g}\\right)(x) = \\frac{f(x)}{g(x)} \\quad \\text{(quotient, } g(x) \\neq 0\\text{)}$$\n\nThe domain of the sum, difference, and product is $D_f \\cap D_g$. The domain of the quotient is $\\{x \\in D_f \\cap D_g : g(x) \\neq 0\\}$."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.13",
+      "number": "1.13",
+      "title": "Arithmetic Combinations and Domains",
+      "problem": "Let $f(x) = \\sqrt{x}$ and $g(x) = \\sqrt{4 - x}$. Find the domain of each combination and evaluate at $x = 1$.\n\n**(a)** $(f + g)(x)$\n\n**(b)** $(f \\cdot g)(x)$\n\n**(c)** $(f / g)(x)$",
+      "solution": "The domain of $f$ is $[0, \\infty)$; the domain of $g$ is $(-\\infty, 4]$. Therefore $D_f \\cap D_g = [0, 4]$.\n\n**(a)** $(f+g)(x) = \\sqrt{x} + \\sqrt{4-x}$. Domain: $[0, 4]$. At $x=1$: $(f+g)(1) = 1 + \\sqrt{3}$.\n\n**(b)** $(f \\cdot g)(x) = \\sqrt{x}\\sqrt{4-x} = \\sqrt{x(4-x)}$. Domain: $[0, 4]$. At $x=1$: $(f \\cdot g)(1) = \\sqrt{3}$.\n\n**(c)** $(f/g)(x) = \\sqrt{x}/\\sqrt{4-x}$. We also need $g(x) \\neq 0$, so $x \\neq 4$. Domain: $[0, 4)$. At $x=1$: $(f/g)(1) = 1/\\sqrt{3} = \\sqrt{3}/3$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Composition of Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "The most powerful way to combine functions is **composition**: feeding the output of one function into the input of another."
+    },
+    {
+      "type": "definition",
+      "id": "def-1.7",
+      "number": "1.7",
+      "title": "Composition",
+      "content": "Given two functions $f$ and $g$, the **composite function** $f \\circ g$ (read \"$f$ composed with $g$\" or \"$f$ of $g$\") is defined by\n\n$$(f \\circ g)(x) = f\\bigl(g(x)\\bigr).$$\n\nThe domain of $f \\circ g$ consists of all $x$ in the domain of $g$ such that $g(x)$ is in the domain of $f$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Think of a composition as a two-step machine: $x$ enters $g$, producing $g(x)$; then $g(x)$ enters $f$, producing $f(g(x))$."
+    },
+    {
+      "type": "caution",
+      "title": "Composition is not commutative",
+      "content": "In general, $f \\circ g \\neq g \\circ f$. The order matters! The function on the *right* acts first."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.14",
+      "number": "1.14",
+      "title": "Computing Compositions",
+      "problem": "Let $f(x) = x^{2}$ and $g(x) = x + 3$. Find $(f \\circ g)(x)$ and $(g \\circ f)(x)$.",
+      "solution": "$$(f \\circ g)(x) = f(g(x)) = f(x+3) = (x+3)^{2} = x^{2} + 6x + 9$$\n\n$$(g \\circ f)(x) = g(f(x)) = g(x^{2}) = x^{2} + 3$$\n\nThese are clearly different functions: $(f \\circ g)(1) = 16$ while $(g \\circ f)(1) = 4$."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.15",
+      "number": "1.15",
+      "title": "Domain of a Composition",
+      "problem": "Let $f(x) = \\sqrt{x}$ and $g(x) = 1 - x^{2}$. Find the domain of $f \\circ g$.",
+      "solution": "We need $x$ in the domain of $g$ (all of $\\mathbb{R}$) and $g(x)$ in the domain of $f$ ($[0,\\infty)$). So we need\n\n$$g(x) \\geq 0 \\quad\\Longrightarrow\\quad 1 - x^{2} \\geq 0 \\quad\\Longrightarrow\\quad x^{2} \\leq 1 \\quad\\Longrightarrow\\quad -1 \\leq x \\leq 1$$\n\nThe domain of $f \\circ g$ is $[-1, 1]$."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.16",
+      "number": "1.16",
+      "title": "Decomposing a Function",
+      "problem": "Express $h(x) = \\sqrt{x^{2} + 1}$ as a composition $f \\circ g$.",
+      "solution": "Let $g(x) = x^{2} + 1$ (the \"inner\" function) and $f(u) = \\sqrt{u}$ (the \"outer\" function). Then\n\n$$(f \\circ g)(x) = f(x^{2}+1) = \\sqrt{x^{2}+1} = h(x)$$\n\nDecomposition is not unique: we could also choose $g(x) = x^2$ and $f(u) = \\sqrt{u+1}$. The first decomposition is more natural and will be the one we use when applying the **Chain Rule** in later chapters."
+    },
+    {
+      "type": "paragraph",
+      "text": "The ability to \"see inside\" a composition\u2014to identify the inner and outer functions\u2014is one of the most important skills for calculus. The Chain Rule, which we will study later, requires exactly this decomposition."
+    },
+    {
+      "type": "historical_note",
+      "title": "Gottfried Wilhelm Leibniz (1646\u20131716)",
+      "content": "Leibniz introduced much of the notation that makes modern calculus possible, including the symbols $\\frac{dy}{dx}$ for the derivative and $\\int$ for the integral. He was also among the first to study the concept of function composition systematically, recognizing that complex relationships could be broken into chains of simpler ones. A devout Lutheran, Leibniz argued in his *Monadology* that the universe was the best possible creation\u2014a view that, while debated philosophically, reflects a deep conviction that mathematical order pervades reality."
+    },
+    {
+      "type": "figure",
+      "id": "fig-1.3-combined-transformations",
+      "src": "/figures/vol1/ch01/sec03-combined-transformations.svg",
+      "caption": "The graph of $y = \\abs{x}$ (dashed) and $y = -2\\abs{x-1}+3$ after applying four transformations.",
+      "alt": "Figure: Combined Transformations"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "exercises",
+      "groups": [
+        {
+          "title": "Shifts",
+          "problems": [
+            {
+              "id": "ex-1.3.1",
+              "problem": "Describe how the graph of each function is obtained from the graph of $y = x^{2}$.\n\n**(a)** $y = x^{2} - 5$\n\n**(b)** $y = (x+2)^{2}$\n\n**(c)** $y = (x-4)^{2} + 1$"
+            },
+            {
+              "id": "ex-1.3.2",
+              "problem": "Write the equation of the function obtained by shifting $y = \\sqrt{x}$ left 3 units and up 2 units."
+            },
+            {
+              "id": "ex-1.3.3",
+              "problem": "The graph of $y = f(x)$ passes through $(1, 4)$. Find a point on the graph of:\n\n**(a)** $y = f(x) + 5$\n\n**(b)** $y = f(x-3)$\n\n**(c)** $y = f(x+2) - 1$"
+            },
+            {
+              "id": "ex-1.3.4",
+              "problem": "Describe how to obtain the graph of $y = |x + 3| - 4$ from $y = |x|$. State the vertex of the resulting graph."
+            }
+          ]
+        },
+        {
+          "title": "Reflections and Symmetry",
+          "problems": [
+            {
+              "id": "ex-1.3.5",
+              "problem": "Starting with $y = \\sqrt{x}$, describe the graph of each function.\n\n**(a)** $y = -\\sqrt{x}$\n\n**(b)** $y = \\sqrt{-x}$\n\n**(c)** $y = -\\sqrt{-x}$"
+            },
+            {
+              "id": "ex-1.3.6",
+              "problem": "Determine whether each function is even, odd, or neither.\n\n**(a)** $f(x) = x^{6} + x^{2}$\n\n**(b)** $g(x) = x^{5} - x^{3}$\n\n**(c)** $h(x) = x^{3} + 1$\n\n**(d)** $k(x) = \\dfrac{x}{x^{2}+1}$"
+            },
+            {
+              "id": "ex-1.3.7",
+              "problem": "If $f$ is an even function and $f(3) = 7$, what is $f(-3)$?"
+            },
+            {
+              "id": "ex-1.3.8",
+              "problem": "If $g$ is an odd function and $g(2) = 5$, what is $g(-2)$? What is $g(0)$?"
+            }
+          ]
+        },
+        {
+          "title": "Stretches and Compressions",
+          "problems": [
+            {
+              "id": "ex-1.3.9",
+              "problem": "Describe how the graph of each function is obtained from $y = \\sin x$.\n\n**(a)** $y = 3\\sin x$\n\n**(b)** $y = \\sin(2x)$\n\n**(c)** $y = \\frac{1}{2}\\sin x$"
+            },
+            {
+              "id": "ex-1.3.10",
+              "problem": "Describe the sequence of transformations that produces $y = -3(x+1)^{2} + 4$ from $y = x^{2}$."
+            }
+          ]
+        },
+        {
+          "title": "Combined Transformations",
+          "problems": [
+            {
+              "id": "ex-1.3.11",
+              "problem": "Starting from $y = \\dfrac{1}{x}$, describe the transformations needed to obtain $y = \\dfrac{2}{x-1} + 3$."
+            },
+            {
+              "id": "ex-1.3.12",
+              "problem": "Starting from $y = \\sqrt{x}$, describe the transformations needed to obtain $y = -\\sqrt{x+4} + 1$."
+            },
+            {
+              "id": "ex-1.3.13",
+              "problem": "Write the equation of the function whose graph is obtained from $y = x^3$ by reflecting across the $x$-axis, shifting right 2 units, and shifting up 5 units."
+            }
+          ]
+        },
+        {
+          "title": "Arithmetic Combinations",
+          "problems": [
+            {
+              "id": "ex-1.3.14",
+              "problem": "Let $f(x) = x^{2}$ and $g(x) = 3x - 1$. Find $(f+g)(2)$, $(f \\cdot g)(-1)$, and $(f/g)(0)$."
+            },
+            {
+              "id": "ex-1.3.15",
+              "problem": "Let $f(x) = \\sqrt{x+1}$ and $g(x) = \\sqrt{3-x}$. Find the domain of $f+g$, $f \\cdot g$, and $f/g$."
+            },
+            {
+              "id": "ex-1.3.16",
+              "problem": "Let $f(x) = \\dfrac{1}{x}$ and $g(x) = \\dfrac{1}{x-2}$. Find and simplify $(f-g)(x)$. What is the domain?"
+            }
+          ]
+        },
+        {
+          "title": "Composition",
+          "problems": [
+            {
+              "id": "ex-1.3.17",
+              "problem": "Let $f(x) = 2x + 1$ and $g(x) = x^{2} - 3$. Find:\n\n**(a)** $(f \\circ g)(x)$\n\n**(b)** $(g \\circ f)(x)$\n\n**(c)** $(f \\circ g)(2)$\n\n**(d)** $(g \\circ f)(2)$"
+            },
+            {
+              "id": "ex-1.3.18",
+              "problem": "Let $f(x) = x^{3}$ and $g(x) = x + 1$. Verify that $f \\circ g \\neq g \\circ f$ by evaluating both at $x = 1$."
+            },
+            {
+              "id": "ex-1.3.19",
+              "problem": "Let $f(x) = \\sqrt{x}$ and $g(x) = x^{2} + 5$. Find $(f \\circ g)(x)$ and state its domain."
+            },
+            {
+              "id": "ex-1.3.20",
+              "problem": "Let $f(x) = \\dfrac{1}{x}$ and $g(x) = x - 4$. Find $(f \\circ g)(x)$ and $(g \\circ f)(x)$. State the domain of each."
+            },
+            {
+              "id": "ex-1.3.21",
+              "problem": "Find the domain of $f \\circ g$ if $f(x) = \\sqrt{x}$ and $g(x) = 2 - x$."
+            },
+            {
+              "id": "ex-1.3.22",
+              "problem": "Find the domain of $f \\circ g$ if $f(x) = \\ln x$ and $g(x) = x^{2} - 4$."
+            }
+          ]
+        },
+        {
+          "title": "Decomposition",
+          "problems": [
+            {
+              "id": "ex-1.3.23",
+              "problem": "Express each function as a composition $f \\circ g$ where $g$ is the \"inner\" function and $f$ is the \"outer\" function.\n\n**(a)** $h(x) = (x + 5)^{3}$\n\n**(b)** $h(x) = \\sqrt{x^{2} - 4}$\n\n**(c)** $h(x) = \\dfrac{1}{x^{2}+1}$\n\n**(d)** $h(x) = \\sin(x^{2})$"
+            },
+            {
+              "id": "ex-1.3.24",
+              "problem": "Express $h(x) = \\sqrt[3]{1 + \\sqrt{x}}$ as a composition of three functions: $h = f \\circ g \\circ k$."
+            }
+          ]
+        },
+        {
+          "title": "Challenging Problems",
+          "problems": [
+            {
+              "id": "ex-1.3.25",
+              "starred": true,
+              "problem": "Let $f(x) = x^{2}$ and $g(x) = |x|$. Show that $f \\circ g = g \\circ f$. Is this always true for even functions?"
+            },
+            {
+              "id": "ex-1.3.26",
+              "starred": true,
+              "problem": "Find all functions $f$ satisfying $f(x) + f(1-x) = 1$ for all $x \\in \\mathbb{R}$. *Hint:* Try $f(x) = \\dfrac{x^n}{x^n + (1-x)^n}$ for suitable $n$."
+            },
+            {
+              "id": "ex-1.3.27",
+              "starred": true,
+              "problem": "Prove that if $f$ is even and $g$ is odd, then $f \\circ g$ is even."
+            },
+            {
+              "id": "ex-1.3.28",
+              "starred": true,
+              "problem": "Let $f$ and $g$ be odd functions. Is $f \\circ g$ odd, even, or neither? Prove your answer."
+            }
+          ]
+        },
+        {
+          "title": "Proofs",
+          "problems": [
+            {
+              "id": "ex-1.3.29",
+              "proof": true,
+              "problem": "Prove that every function $f \\colon \\mathbb{R} \\to \\mathbb{R}$ can be written uniquely as the sum of an even function and an odd function. *Hint:* Consider $E(x) = \\frac{1}{2}[f(x) + f(-x)]$ and $O(x) = \\frac{1}{2}[f(x) - f(-x)]$."
+            },
+            {
+              "id": "ex-1.3.30",
+              "proof": true,
+              "problem": "Prove that the composition of two increasing functions is increasing. That is, if $f$ and $g$ are both increasing on their respective domains, then $f \\circ g$ is increasing on the domain of $g$."
+            }
+          ]
+        },
+        {
+          "title": "Creation Reveals",
+          "problems": [
+            {
+              "id": "ex-1.3.31",
+              "creation_reveals": true,
+              "problem": "The height (in feet) of a ball thrown upward from a cliff is $h(t) = -16t^{2} + 48t + 64$. Express $h$ as a sequence of transformations of $y = t^{2}$. What is the maximum height?"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

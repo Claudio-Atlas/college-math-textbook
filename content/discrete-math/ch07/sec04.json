@@ -1,0 +1,104 @@
+{
+  "id": "discrete-math-ch07-sec04",
+  "title": "Expected Value and Variance",
+  "chapter": 7,
+  "section": 4,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Suppose one of you wants to build a tower. Won't you \nfirst sit down and estimate the cost?\"*{Luke 14:28}{The expected value is the center of gravity of the probability distribution.}{Christiaan Huygens}"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **expected value** summarizes a random \nvariable with a single number—its \"average\" value."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Expected Value",
+      "content": "The **expected value** (or mean) of a discrete random variable $X$ is:\n\\[ E[X] = \\sum_x x \\cdot P(X = x) \\]\nwhere the sum is over all possible values of $X$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Die roll",
+      "problem": "$E[X] = 1 \\cdot \\frac{1}{6} + 2 \\cdot \\frac{1}{6} + \\cdots + 6 \\cdot \\frac{1}{6} = \\frac{21}{6} = 3.5$",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Lottery",
+      "problem": "A lottery ticket costs \\$1. You win \\$1000 with probability 1/5000, \notherwise nothing. What is the expected value?",
+      "solution": "$E[\\text{winnings}] = 1000 \\cdot \\frac{1}{5000} + 0 \\cdot \\frac{4999}{5000} = 0.20$.\n\nExpected profit: $0.20 - 1.00 = -\\$0.80$. On average, you lose 80 cents per ticket."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of Expected Value"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Linearity of Expectation",
+      "content": "For any random variables $X$ and $Y$ and constants $a$, $b$:\n\n1. $E[aX + b] = aE[X] + b$\n\n2. $E[X + Y] = E[X] + E[Y]$ (always, even if not independent!)",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "Sum of dice",
+      "problem": "Let $S$ = sum of two dice. $S = X_1 + X_2$ where each $X_i$ is a die roll.\n\n$E[S] = E[X_1] + E[X_2] = 3.5 + 3.5 = 7$.",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "Expected Values of Common Distributions",
+      "content": "- Binomial$(n, p)$: $E[X] = np$\n\n- Geometric$(p)$: $E[X] = 1/p$",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Variance"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.2",
+      "number": "7.2",
+      "title": "Variance",
+      "content": "The **variance** measures spread around the mean:\n\\[ \\text{Var}(X) = E[(X - E[X])^2] = E[X^2] - (E[X])^2 \\]\n\nThe **standard deviation** is $\\sigma = \\sqrt{\\text{Var}(X)}$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "Variance of a die",
+      "problem": "$E[X^2] = \\frac{1}{6}(1 + 4 + 9 + 16 + 25 + 36) = \\frac{91}{6}$.\n\n$\\text{Var}(X) = \\frac{91}{6} - (3.5)^2 = \\frac{91}{6} - \\frac{49}{4} = \\frac{35}{12} \\approx 2.92$.",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.3",
+      "number": "7.3",
+      "title": "Variance Properties",
+      "content": "1. $\\text{Var}(aX + b) = a^2 \\text{Var}(X)$\n\n2. If $X$ and $Y$ are independent: $\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y)$",
+      "label": "Theorem"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 27:1",
+      "text": "Do not boast about tomorrow, for you do \nnot know what a day may bring."
+    }
+  ]
+}

@@ -1,0 +1,183 @@
+{
+  "id": "diff-eq-ch07-sec01",
+  "title": "Introduction to Systems",
+  "chapter": 7,
+  "section": 1,
+  "book": "diff-eq",
+  "objectives": [
+    "Convert higher-order equations to first-order systems",
+    "Write systems in matrix-vector notation",
+    "Understand the existence and uniqueness theorem for systems",
+    "Identify homogeneous vs. nonhomogeneous linear systems\nitemize"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "What Is a System of Differential Equations?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **system of differential equations** is a collection of equations involving multiple unknown functions and their derivatives. The functions are coupled, meaning each equation may involve several of the unknown functions."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "System of First-Order Equations",
+      "content": "A **first-order system** of $n$ differential equations has the form:\n$$\n\\frac{dx_1}{dt} &= f_1(t, x_1, x_2, \\ldots, x_n) \\\\[4pt]\n\\frac{dx_2}{dt} &= f_2(t, x_1, x_2, \\ldots, x_n) \\\\[4pt]\n&\\vdots \\\\[4pt]\n\\frac{dx_n}{dt} &= f_n(t, x_1, x_2, \\ldots, x_n)\n$$\nwhere $x_1(t), x_2(t), \\ldots, x_n(t)$ are the unknown functions."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "A Simple 2×2 System",
+      "problem": "Consider the system:\nalign*\n$\\frac{dx}{dt}$ &= 3x - 2y \\\\[4pt]\n\\frac{dy}{dt} &= x + y\n\\end{align*}\nHere, $x(t)$ and $y(t)$ are the unknowns. The rate of change of each depends on both functions.\n\n\\textbf{Solution:} We will develop systematic methods to solve such systems. For now, you can verify that\n\\[\nx(t) = e^{2t}, \\quad y(t) = \\frac{1}{2}e^{2t}\n\\]\nis one solution. (Check: $x' = 2e^{2t}$ and $3x - 2y = 3e^{2t} - e^{2t} = 2e^{2t}$. )",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Converting Higher-Order Equations to Systems"
+    },
+    {
+      "type": "paragraph",
+      "text": "Any $n$th-order differential equation can be converted to a system of $n$ first-order equations. This is both theoretically important and practically useful for numerical methods."
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Second-Order to System",
+      "problem": "Convert the equation $y'' + 5y' + 6y = 0$ to a first-order system.\n\n**Solution:** Let $x_1 = y$ and $x_2 = y'$. Then:\n\n- $x_1' = y' = x_2$\n\n- $x_2' = y'' = -5y' - 6y = -6x_1 - 5x_2$\nThe system is:\n$$\nx_1' &= x_2 \\\\\nx_2' &= -6x_1 - 5x_2\n$$",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "Third-Order to System",
+      "problem": "Convert $y''' - 2y'' + y' - 3y = \\cos t$ to a first-order system.\n\n**Solution:** Let $x_1 = y$, $x_2 = y'$, $x_3 = y''$. Then:\n$$\nx_1' &= x_2 \\\\\nx_2' &= x_3 \\\\\nx_3' &= y''' = 3y - y' + 2y'' + \\cos t = 3x_1 - x_2 + 2x_3 + \\cos t\n$$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Matrix-Vector Notation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Linear systems have a particularly elegant form when written using matrices and vectors."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.2",
+      "number": "7.2",
+      "title": "Linear System in Matrix Form",
+      "content": "A **first-order linear system** can be written as:\n\\[\n\\mathbf{x}' = A(t)\\mathbf{x} + \\mathbf{g}(t)\n\\]\nwhere:\n\n- $\\mathbf{x} = \\begin{pmatrix} x_1 \\\\ x_2 \\\\ \\vdots \\\\ x_n \\end{pmatrix}$ is the vector of unknown functions\n\n- $\\mathbf{x}' = \\begin{pmatrix} x_1' \\\\ x_2' \\\\ \\vdots \\\\ x_n' \\end{pmatrix}$ is the vector of derivatives\n\n- $A(t)$ is an $n \\times n$ matrix of coefficients\n\n- $\\mathbf{g}(t)$ is the forcing vector"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.3",
+      "number": "7.3",
+      "title": "Homogeneous vs. Nonhomogeneous",
+      "content": "The system $\\mathbf{x}' = A\\mathbf{x} + \\mathbf{g}(t)$ is:\n\n- **Homogeneous** if $\\mathbf{g}(t) = \\mathbf{0}$\n\n- **Nonhomogeneous** if $\\mathbf{g}(t) \\neq \\mathbf{0}$\nWhen $A$ does not depend on $t$, we call it a **constant coefficient system**."
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "Writing in Matrix Form",
+      "problem": "Write the system \n$$\nx' &= 3x - 2y \\\\\ny' &= x + y\n$$\nin matrix form.\n\n**Solution:**\n\\[\n\\begin{pmatrix} x' \\\\ y' \\end{pmatrix} = \\begin{pmatrix} 3 & -2 \\\\ 1 & 1 \\end{pmatrix} \\begin{pmatrix} x \\\\ y \\end{pmatrix}\n\\]\nOr more compactly: $\\mathbf{x}' = A\\mathbf{x}$ where $A = \\begin{pmatrix} 3 & -2 \\\\ 1 & 1 \\end{pmatrix}$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-7.5",
+      "number": "7.5",
+      "title": "3×3 System in Matrix Form",
+      "problem": "Write the system from the third-order conversion in matrix form.\n\n**Solution:**\n\\[\n\\begin{pmatrix} x_1' \\\\ x_2' \\\\ x_3' \\end{pmatrix} = \\begin{pmatrix} 0 & 1 & 0 \\\\ 0 & 0 & 1 \\\\ 3 & -1 & 2 \\end{pmatrix} \\begin{pmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{pmatrix} + \\begin{pmatrix} 0 \\\\ 0 \\\\ \\cos t \\end{pmatrix}\n\\]\nThis is $\\mathbf{x}' = A\\mathbf{x} + \\mathbf{g}(t)$ with the matrix and forcing vector shown.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Initial Value Problems"
+    },
+    {
+      "type": "paragraph",
+      "text": "Just as with single equations, we often specify initial conditions to obtain a unique solution."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.4",
+      "number": "7.4",
+      "title": "Initial Value Problem for Systems",
+      "content": "An **initial value problem** (IVP) for a system consists of:\n\n- The differential equation: $\\mathbf{x}' = \\mathbf{f}(t, \\mathbf{x})$\n\n- Initial conditions: $\\mathbf{x}(t_0) = \\mathbf{x}_0$\nwhere $\\mathbf{x}_0 = \\begin{pmatrix} x_{1,0} \\\\ x_{2,0} \\\\ \\vdots \\\\ x_{n,0} \\end{pmatrix}$ specifies the values of all unknowns at time $t_0$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Existence and Uniqueness for Systems",
+      "content": "Consider the initial value problem $\\mathbf{x}' = \\mathbf{f}(t, \\mathbf{x})$, $\\mathbf{x}(t_0) = \\mathbf{x}_0$.\n\nIf $\\mathbf{f}$ and all partial derivatives $\\partial f_i/\\partial x_j$ are continuous on an open region containing $(t_0, \\mathbf{x}_0)$, then there exists a unique solution on some interval containing $t_0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "For **linear systems** $\\mathbf{x}' = A(t)\\mathbf{x} + \\mathbf{g}(t)$ where $A(t)$ and $\\mathbf{g}(t)$ have continuous entries, the solution exists and is unique on any interval where these conditions hold."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Superposition Principle"
+    },
+    {
+      "type": "paragraph",
+      "text": "The familiar superposition principle extends to linear systems."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "Superposition for Linear Systems",
+      "content": "For the homogeneous system $\\mathbf{x}' = A\\mathbf{x}$:\n\n1. If $\\mathbf{x}_1(t)$ and $\\mathbf{x}_2(t)$ are solutions, so is $c_1\\mathbf{x}_1(t) + c_2\\mathbf{x}_2(t)$ for any constants $c_1, c_2$.\n\n2. If $\\mathbf{x}_1, \\mathbf{x}_2, \\ldots, \\mathbf{x}_n$ are $n$ linearly independent solutions of an $n \\times n$ system, the general solution is:\n \\[\n \\mathbf{x}(t) = c_1\\mathbf{x}_1(t) + c_2\\mathbf{x}_2(t) + \\cdots + c_n\\mathbf{x}_n(t)\n \\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.5",
+      "number": "7.5",
+      "title": "Fundamental Set and Fundamental Matrix",
+      "content": "A set of $n$ linearly independent solutions $\\{\\mathbf{x}_1, \\mathbf{x}_2, \\ldots, \\mathbf{x}_n\\}$ is called a **fundamental set**.\n\nThe matrix $\\Phi(t) = \\begin{pmatrix} | & | & & | \\\\ \\mathbf{x}_1 & \\mathbf{x}_2 & \\cdots & \\mathbf{x}_n \\\\ | & | & & | \\end{pmatrix}$ whose columns are these solutions is called a **fundamental matrix**.\n\nThe general solution can then be written as $\\mathbf{x}(t) = \\Phi(t)\\mathbf{c}$ where $\\mathbf{c} = \\begin{pmatrix} c_1 \\\\ \\vdots \\\\ c_n \\end{pmatrix}$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.6",
+      "number": "7.6",
+      "title": "Wronskian for Systems",
+      "content": "The **Wronskian** of solutions $\\mathbf{x}_1, \\ldots, \\mathbf{x}_n$ is:\n\\[\nW(t) = \\det(\\Phi(t)) = \\det\\begin{pmatrix} | & | & & | \\\\ \\mathbf{x}_1 & \\mathbf{x}_2 & \\cdots & \\mathbf{x}_n \\\\ | & | & & | \\end{pmatrix}\n\\]\nThe solutions are linearly independent if and only if $W(t) \\neq 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Preview: The Eigenvalue Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "For constant coefficient systems $\\mathbf{x}' = A\\mathbf{x}$, we seek solutions of the form:\n\\[\n\\mathbf{x}(t) = e^{\\lambda t}\\mathbf{v}\n\\]\nwhere $\\lambda$ is a constant and $\\mathbf{v}$ is a constant vector."
+    },
+    {
+      "type": "paragraph",
+      "text": "Substituting into $\\mathbf{x}' = A\\mathbf{x}$:\n\\[\n\\lambda e^{\\lambda t}\\mathbf{v} = A(e^{\\lambda t}\\mathbf{v}) = e^{\\lambda t}(A\\mathbf{v})\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Dividing by $e^{\\lambda t}$ (which is never zero):\n\\[\n\\lambda\\mathbf{v} = A\\mathbf{v}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is the **eigenvalue equation**! The solution method reduces to finding eigenvalues and eigenvectors of the coefficient matrix $A$."
+    }
+  ]
+}

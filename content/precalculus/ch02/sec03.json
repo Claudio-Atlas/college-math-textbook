@@ -1,0 +1,250 @@
+{
+  "id": "precalculus-ch02-sec03",
+  "title": "Polynomial Division",
+  "chapter": 2,
+  "section": 3,
+  "book": "precalculus",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"A false balance is an abomination to the LORD, but a \njust weight is his delight.\"*{Proverbs 11:1}{Mathematics is the art of giving the same name to different things.}{Henri Poincaré}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Just as integers can be divided with a quotient and remainder, so can \npolynomials. This parallel between arithmetic and algebra runs deep—the \nsame division algorithm that works for numbers works for polynomials, and \nit unlocks powerful tools for factoring and finding zeros."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Division Algorithm"
+    },
+    {
+      "type": "paragraph",
+      "text": "When we divide 17 by 5, we get a quotient of 3 and a remainder of 2:\n\\[\n 17 = 5 \\cdot 3 + 2\n\\]\nThe remainder is smaller than the divisor. This same principle applies \nto polynomials, with \"degree\" playing the role of \"size.\""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Division Algorithm for Polynomials",
+      "content": "If $f(x)$ and $d(x)$ are polynomials with $d(x) \\neq 0$, then there exist \nunique polynomials $q(x)$ (the quotient) and $r(x)$ (the remainder) such \nthat\n\\[\n f(x) = d(x) \\cdot q(x) + r(x)\n\\]\nwhere the degree of $r(x)$ is less than the degree of $d(x)$, or \n$r(x) = 0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "than the divisor. For integer division, \"smaller\" means \nnumerically smaller. For polynomials, it means lower degree.}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Let's unpack the notation:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$f(x)$ is the **dividend**—what we're dividing",
+        "$d(x)$ is the **divisor**—what we're dividing by",
+        "$q(x)$ is the **quotient**—how many times $d(x)$ fits",
+        "$r(x)$ is the **remainder**—what's left over"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Polynomial Long Division"
+    },
+    {
+      "type": "paragraph",
+      "text": "The process of polynomial long division mirrors the long division you \nlearned for numbers. We repeatedly:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Divide the leading term of the dividend by the leading term \n of the divisor.",
+        "Multiply the divisor by this result.",
+        "Subtract to get a new, smaller polynomial.",
+        "Repeat until the remainder has degree less than the divisor."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Polynomial long division",
+      "problem": "Divide $f(x) = 2x^3 - 5x^2 + 3x - 7$ by $d(x) = x - 2$.",
+      "solution": "We set up the long division:\n\n\\[\n\\polylongdiv{2x^3 - 5x^2 + 3x - 7}{x - 2}\n\\]\n\n**Step 1:** Divide $2x^3$ by $x$ to get $2x^2$. Write this above.\n\n**Step 2:** Multiply $(x - 2)$ by $2x^2$ to get $2x^3 - 4x^2$. \nSubtract this from $2x^3 - 5x^2$:\n\\[\n (2x^3 - 5x^2) - (2x^3 - 4x^2) = -x^2\n\\]\n\n**Step 3:** Bring down the next term: $-x^2 + 3x$.\n\n**Step 4:** Divide $-x^2$ by $x$ to get $-x$. Multiply \n$(x - 2)$ by $-x$ to get $-x^2 + 2x$. Subtract:\n\\[\n (-x^2 + 3x) - (-x^2 + 2x) = x\n\\]\n\n**Step 5:** Bring down the next term: $x - 7$.\n\n**Step 6:** Divide $x$ by $x$ to get $1$. Multiply $(x - 2)$ by \n$1$ to get $x - 2$. Subtract:\n\\[\n (x - 7) - (x - 2) = -5\n\\]\n\nThe remainder is $-5$, which has degree 0, less than the degree of \n$x - 2$ (which is 1). We're done.\n\n**Result:**\n\\[\n 2x^3 - 5x^2 + 3x - 7 = (x - 2)(2x^2 - x + 1) + (-5)\n\\]\n\nThe quotient is $q(x) = 2x^2 - x + 1$ and the remainder is $r = -5$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-2.3",
+      "number": null,
+      "title": "Missing Terms",
+      "content": "When performing long division, make sure to include terms with \ncoefficient zero as placeholders. For example, when dividing \n$x^3 - 8$ by $x - 2$, write $x^3 + 0x^2 + 0x - 8$ to keep the \ncolumns aligned."
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Division with missing terms",
+      "problem": "Divide $f(x) = x^3 - 8$ by $d(x) = x - 2$.",
+      "solution": "Write with placeholders: $x^3 + 0x^2 + 0x - 8$.\n\n**Step 1:** $x^3 \\div x = x^2$. Multiply: $(x-2)(x^2) = x^3 - 2x^2$.\n\\[\n (x^3 + 0x^2) - (x^3 - 2x^2) = 2x^2\n\\]\n\n**Step 2:** $2x^2 \\div x = 2x$. Multiply: $(x-2)(2x) = 2x^2 - 4x$.\n\\[\n (2x^2 + 0x) - (2x^2 - 4x) = 4x\n\\]\n\n**Step 3:** $4x \\div x = 4$. Multiply: $(x-2)(4) = 4x - 8$.\n\\[\n (4x - 8) - (4x - 8) = 0\n\\]\n\nThe remainder is 0! This means $(x - 2)$ divides evenly into $x^3 - 8$.\n\n**Result:**\n\\[\n x^3 - 8 = (x - 2)(x^2 + 2x + 4)\n\\]\n\n*Note:* This is the factorization of a difference of cubes: \n$a^3 - b^3 = (a - b)(a^2 + ab + b^2)$ with $a = x$ and $b = 2$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Dividing by Higher-Degree Polynomials"
+    },
+    {
+      "type": "paragraph",
+      "text": "The same process works when the divisor has degree greater than 1. The \ndivision ends when the remainder has degree less than the divisor."
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Dividing by a quadratic",
+      "problem": "Divide $f(x) = 2x^4 - 3x^3 + x - 5$ by $d(x) = x^2 + 1$.",
+      "solution": "Write with placeholders: $2x^4 - 3x^3 + 0x^2 + x - 5$.\n\n**Step 1:** $2x^4 \\div x^2 = 2x^2$. \n\\[\n (x^2 + 1)(2x^2) = 2x^4 + 2x^2\n\\]\nSubtract: $(2x^4 - 3x^3 + 0x^2) - (2x^4 + 0x^3 + 2x^2) = -3x^3 - 2x^2$.\n\n**Step 2:** $-3x^3 \\div x^2 = -3x$.\n\\[\n (x^2 + 1)(-3x) = -3x^3 - 3x\n\\]\nSubtract: $(-3x^3 - 2x^2 + x) - (-3x^3 + 0x^2 - 3x) = -2x^2 + 4x$.\n\n**Step 3:** $-2x^2 \\div x^2 = -2$.\n\\[\n (x^2 + 1)(-2) = -2x^2 - 2\n\\]\nSubtract: $(-2x^2 + 4x - 5) - (-2x^2 + 0x - 2) = 4x - 3$.\n\nThe remainder $4x - 3$ has degree 1, which is less than the degree of \n$x^2 + 1$ (which is 2). We're done.\n\n**Result:**\n\\[\n 2x^4 - 3x^3 + x - 5 = (x^2 + 1)(2x^2 - 3x - 2) + (4x - 3)\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Synthetic Division"
+    },
+    {
+      "type": "paragraph",
+      "text": "When dividing by a linear factor $(x - c)$, we can use a streamlined \nmethod called **synthetic division**. \nIt's faster and less error-prone than long division for this special \ncase."
+    },
+    {
+      "type": "paragraph",
+      "text": "The key insight is that when dividing by $(x - c)$, we only need to \ntrack the coefficients. The method uses addition and multiplication \ninstead of the subtraction in long division."
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "Synthetic division",
+      "problem": "Use synthetic division to divide $f(x) = 3x^3 - 2x^2 + 5x - 4$ by \n$(x - 2)$.",
+      "solution": "Set up synthetic division with $c = 2$ and the coefficients of $f(x)$:\n\n\\[\n\\begin{array}{c|cccc}\n2 & 3 & -2 & 5 & -4 \\\\\n & & 6 & 8 & 26 \\\\\n\\hline\n & 3 & 4 & 13 & 22\n\\end{array}\n\\]\n\n**Process:**\n\n1. Bring down the first coefficient: $3$.\n\n2. Multiply $2 \\times 3 = 6$, write under $-2$.\n\n3. Add: $-2 + 6 = 4$.\n\n4. Multiply $2 \\times 4 = 8$, write under $5$.\n\n5. Add: $5 + 8 = 13$.\n\n6. Multiply $2 \\times 13 = 26$, write under $-4$.\n\n7. Add: $-4 + 26 = 22$.\n\nThe bottom row gives the coefficients of the quotient (all but the \nlast number) and the remainder (the last number).\n\n**Result:**\n\\[\n 3x^3 - 2x^2 + 5x - 4 = (x - 2)(3x^2 + 4x + 13) + 22\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-2.5",
+      "number": "2.5",
+      "title": "Synthetic division with negative $c$",
+      "problem": "Divide $f(x) = x^4 + 3x^3 - 2x + 5$ by $(x + 2)$.",
+      "solution": "Since the divisor is $(x + 2) = (x - (-2))$, we use $c = -2$.\n\nDon't forget the missing $x^2$ term! Use 0 as its coefficient.\n\n\\[\n\\begin{array}{c|ccccc}\n-2 & 1 & 3 & 0 & -2 & 5 \\\\\n & & -2 & -2 & 4 & -4 \\\\\n\\hline\n & 1 & 1 & -2 & 2 & 1\n\\end{array}\n\\]\n\n**Result:**\n\\[\n x^4 + 3x^3 - 2x + 5 = (x + 2)(x^3 + x^2 - 2x + 2) + 1\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-2.6",
+      "number": "2.6",
+      "title": "Synthetic division with zero remainder",
+      "problem": "Divide $f(x) = x^3 - 6x^2 + 11x - 6$ by $(x - 1)$.",
+      "solution": "\\[\n\\begin{array}{c|cccc}\n1 & 1 & -6 & 11 & -6 \\\\\n & & 1 & -5 & 6 \\\\\n\\hline\n & 1 & -5 & 6 & 0\n\\end{array}\n\\]\n\nThe remainder is 0, which tells us $(x - 1)$ is a factor!\n\n**Result:**\n\\[\n x^3 - 6x^2 + 11x - 6 = (x - 1)(x^2 - 5x + 6)\n\\]\n\nWe can factor further: $x^2 - 5x + 6 = (x - 2)(x - 3)$.\n\nSo $f(x) = (x - 1)(x - 2)(x - 3)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Remainder Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "There's a beautiful connection between division and evaluation."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Remainder Theorem",
+      "content": "If a polynomial $f(x)$ is divided by $(x - c)$, then the remainder \nis $f(c)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "By the Division Algorithm, $f(x) = (x - c) \\cdot q(x) + r$ where $r$ is \na constant (since the remainder has degree less than 1). Substituting \n$x = c$:\n\\[\n f(c) = (c - c) \\cdot q(c) + r = 0 \\cdot q(c) + r = r\n\\]\nTherefore, the remainder equals $f(c)$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.7",
+      "number": "2.7",
+      "title": "Using the Remainder Theorem",
+      "problem": "Use the Remainder Theorem to find $f(3)$ for \n$f(x) = 2x^4 - 5x^3 + 3x - 7$.",
+      "solution": "By the Remainder Theorem, $f(3)$ equals the remainder when $f(x)$ is \ndivided by $(x - 3)$.\n\n\\[\n\\begin{array}{c|ccccc}\n3 & 2 & -5 & 0 & 3 & -7 \\\\\n & & 6 & 3 & 9 & 36 \\\\\n\\hline\n & 2 & 1 & 3 & 12 & 29\n\\end{array}\n\\]\n\nThe remainder is 29, so $f(3) = 29$.\n\n*Verification:* \n$f(3) = 2(81) - 5(27) + 3(3) - 7 = 162 - 135 + 9 - 7 = 29$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Factor Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Remainder Theorem has an immediate and powerful consequence."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.3",
+      "number": "2.3",
+      "title": "Factor Theorem",
+      "content": "A polynomial $f(x)$ has $(x - c)$ as a factor if and only if $f(c) = 0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "By the Remainder Theorem, dividing $f(x)$ by $(x - c)$ gives remainder \n$f(c)$. So:\n\\[\n f(x) = (x - c) \\cdot q(x) + f(c)\n\\]\n\n$(x - c)$ is a factor if and only if the remainder is zero, which \nhappens if and only if $f(c) = 0$."
+    },
+    {
+      "type": "paragraph",
+      "text": "This theorem connects zeros of a polynomial to its factors: each zero \ncorresponds to a linear factor, and vice versa. It's the key to \nfactoring polynomials systematically."
+    },
+    {
+      "type": "example",
+      "id": "example-2.8",
+      "number": "2.8",
+      "title": "Using the Factor Theorem",
+      "problem": "Verify that $x = 2$ is a zero of $f(x) = x^3 - 6x^2 + 11x - 6$, then \nfactor $f(x)$ completely.",
+      "solution": "**Verification:**\n\\[\n f(2) = 2^3 - 6(2)^2 + 11(2) - 6 = 8 - 24 + 22 - 6 = 0 \\quad \\checkmark\n\\]\n\nBy the Factor Theorem, $(x - 2)$ is a factor. Use synthetic division:\n\n\\[\n\\begin{array}{c|cccc}\n2 & 1 & -6 & 11 & -6 \\\\\n & & 2 & -8 & 6 \\\\\n\\hline\n & 1 & -4 & 3 & 0\n\\end{array}\n\\]\n\nSo $f(x) = (x - 2)(x^2 - 4x + 3)$.\n\nFactor the quadratic: $x^2 - 4x + 3 = (x - 1)(x - 3)$.\n\n**Complete factorization:**\n\\[\n f(x) = (x - 1)(x - 2)(x - 3)\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-2.9",
+      "number": "2.9",
+      "title": "Finding a factor by testing",
+      "problem": "Factor $f(x) = 2x^3 + 3x^2 - 8x - 12$ completely.",
+      "solution": "We need to find a zero. Try simple values:\n\n$f(0) = -12 \\neq 0$\n\n$f(1) = 2 + 3 - 8 - 12 = -15 \\neq 0$\n\n$f(-1) = -2 + 3 + 8 - 12 = -3 \\neq 0$\n\n$f(2) = 16 + 12 - 16 - 12 = 0$ \n\nSo $(x - 2)$ is a factor. Use synthetic division:\n\n\\[\n\\begin{array}{c|cccc}\n2 & 2 & 3 & -8 & -12 \\\\\n & & 4 & 14 & 12 \\\\\n\\hline\n & 2 & 7 & 6 & 0\n\\end{array}\n\\]\n\nSo $f(x) = (x - 2)(2x^2 + 7x + 6)$.\n\nFactor the quadratic (by grouping or formula):\n\\[\n 2x^2 + 7x + 6 = (2x + 3)(x + 2)\n\\]\n\n**Complete factorization:**\n\\[\n f(x) = (x - 2)(2x + 3)(x + 2)\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of Polynomial Division"
+    },
+    {
+      "type": "example",
+      "id": "example-2.10",
+      "number": "2.10",
+      "title": "Finding a coefficient",
+      "problem": "Find the value of $k$ so that $(x - 3)$ is a factor of \n$f(x) = x^3 - kx^2 + 2x + 12$.",
+      "solution": "By the Factor Theorem, $(x - 3)$ is a factor if and only if $f(3) = 0$.\n\n\\[\n f(3) = 3^3 - k(3)^2 + 2(3) + 12 = 27 - 9k + 6 + 12 = 45 - 9k\n\\]\n\nSet $f(3) = 0$:\n\\[\n 45 - 9k = 0 \\implies k = 5\n\\]"
+    },
+    {
+      "type": "summary",
+      "id": "summary-2.3",
+      "number": null,
+      "title": "Polynomial Division",
+      "content": "- **Division Algorithm:** $f(x) = d(x) \\cdot q(x) + r(x)$ \n with $\\deg(r) < \\deg(d)$\n\n- **Long division:** Works for any polynomial divisor\n\n- **Synthetic division:** Fast method for dividing by $(x - c)$\n\n- **Remainder Theorem:** Remainder when dividing by $(x - c)$ \n equals $f(c)$\n\n- **Factor Theorem:** $(x - c)$ is a factor iff $f(c) = 0$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 2:3--5",
+      "text": "If you call out for insight and cry \naloud for understanding, and if you look for it as for silver and search \nfor it as for hidden treasure, then you will understand the fear of the \nLord and find the knowledge of God."
+    }
+  ]
+}

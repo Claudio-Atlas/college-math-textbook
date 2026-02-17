@@ -1,0 +1,130 @@
+{
+  "id": "linear-algebra-ch01-sec03",
+  "title": "Vector Equations",
+  "chapter": 1,
+  "section": 3,
+  "book": "linear-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "{He determines the number of the stars and calls them each by name.}{Psalm 147:4}\n {Mathematics is the science which uses easy words for hard ideas.}{— Edward Kasner}"
+    },
+    {
+      "type": "paragraph",
+      "text": "A profound shift in perspective occurs when we view a system of linear \nequations not as a collection of constraints, but as a question about \n**vectors**. This viewpoint—thinking in terms of vectors rather \nthan individual numbers—is the doorway to all of linear algebra."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Vectors in $\\R^n$"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.1",
+      "number": "1.1",
+      "title": "Vectors in $\\R^n$",
+      "content": "A **vector** in $\\R^n$ is an ordered list of $n$ \nreal numbers, written as a column:\n\\[\n\\vect{v} = \\begin{bmatrix} v_1 \\\\ v_2 \\\\ \\vdots \\\\ v_n \\end{bmatrix}\n\\]\nThe numbers $v_1, v_2, \\ldots, v_n$ are called the **components** \nor **entries** of $\\vect{v}$.\n\nThe set of all vectors with $n$ components is denoted $\\R^n$. Two \nvectors are **equal** if and only if their corresponding \ncomponents are equal."
+    },
+    {
+      "type": "paragraph",
+      "text": "When $n = 2$ or $n = 3$, we can visualize vectors as arrows in the \nplane or in space. The vector $"
+    },
+    {
+      "type": "paragraph",
+      "text": "$ \nrepresents an arrow from the origin to the point $(3, 2)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Vector Addition and Scalar Multiplication"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.2",
+      "number": "1.2",
+      "title": "Vector Operations",
+      "content": "Let $\\vect{u}$ and $\\vect{v}$ be vectors in $\\R^n$ and let $c$ be a scalar. Then:\n\n**Vector addition:**\n\\[\n\\vect{u} + \\vect{v} = \n\\begin{bmatrix} u_1 \\\\ u_2 \\\\ \\vdots \\\\ u_n \\end{bmatrix} + \n\\begin{bmatrix} v_1 \\\\ v_2 \\\\ \\vdots \\\\ v_n \\end{bmatrix} = \n\\begin{bmatrix} u_1 + v_1 \\\\ u_2 + v_2 \\\\ \\vdots \\\\ u_n + v_n \\end{bmatrix}\n\\]\n\n**Scalar multiplication:**\n\\[\nc\\vect{v} = c \\begin{bmatrix} v_1 \\\\ v_2 \\\\ \\vdots \\\\ v_n \\end{bmatrix} = \n\\begin{bmatrix} cv_1 \\\\ cv_2 \\\\ \\vdots \\\\ cv_n \\end{bmatrix}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Geometrically, adding two vectors follows the **parallelogram rule**: \nplace them tail-to-tail, complete the parallelogram, and the sum is the \ndiagonal. Scalar multiplication stretches or shrinks the vector; negative \nscalars reverse its direction."
+    },
+    {
+      "type": "example",
+      "id": "example-1.1",
+      "number": "1.1",
+      "title": "Vector operations",
+      "problem": "Let $\\vect{u} = \\begin{bmatrix} 1 \\\\ -2 \\\\ 3 \\end{bmatrix}$ and \n$\\vect{v} = \\begin{bmatrix} 4 \\\\ 0 \\\\ -1 \\end{bmatrix}$. Find \n$\\vect{u} + \\vect{v}$ and $3\\vect{u} - 2\\vect{v}$.",
+      "solution": "\\[\n\\vect{u} + \\vect{v} = \\begin{bmatrix} 1 + 4 \\\\ -2 + 0 \\\\ 3 + (-1) \\end{bmatrix}\n= \\begin{bmatrix} 5 \\\\ -2 \\\\ 2 \\end{bmatrix}\n\\]\n\\[\n3\\vect{u} - 2\\vect{v} = 3\\begin{bmatrix} 1 \\\\ -2 \\\\ 3 \\end{bmatrix} - \n2\\begin{bmatrix} 4 \\\\ 0 \\\\ -1 \\end{bmatrix} = \n\\begin{bmatrix} 3 \\\\ -6 \\\\ 9 \\end{bmatrix} - \n\\begin{bmatrix} 8 \\\\ 0 \\\\ -2 \\end{bmatrix} = \n\\begin{bmatrix} -5 \\\\ -6 \\\\ 11 \\end{bmatrix}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Linear Combinations"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.3",
+      "number": "1.3",
+      "title": "Linear Combination",
+      "content": "A **linear combination** of vectors \n$\\vect{v}_1, \\vect{v}_2, \\ldots, \\vect{v}_p$ with weights \n$c_1, c_2, \\ldots, c_p$ is the vector\n\\[\nc_1 \\vect{v}_1 + c_2 \\vect{v}_2 + \\cdots + c_p \\vect{v}_p\n\\]\nThe scalars $c_1, \\ldots, c_p$ are called the **weights** of the \nlinear combination."
+    },
+    {
+      "type": "example",
+      "id": "example-1.2",
+      "number": "1.2",
+      "title": "Writing a vector as a linear combination",
+      "problem": "Can the vector $\\vect{b} = \\begin{bmatrix} 7 \\\\ 4 \\\\ -3 \\end{bmatrix}$ \nbe written as a linear combination of \n$\\vect{v}_1 = \\begin{bmatrix} 1 \\\\ -2 \\\\ -5 \\end{bmatrix}$ and \n$\\vect{v}_2 = \\begin{bmatrix} 2 \\\\ 5 \\\\ 6 \\end{bmatrix}$?",
+      "solution": "We need to find scalars $x_1$ and $x_2$ such that \n$x_1 \\vect{v}_1 + x_2 \\vect{v}_2 = \\vect{b}$:\n\\[\nx_1 \\begin{bmatrix} 1 \\\\ -2 \\\\ -5 \\end{bmatrix} + \nx_2 \\begin{bmatrix} 2 \\\\ 5 \\\\ 6 \\end{bmatrix} = \n\\begin{bmatrix} 7 \\\\ 4 \\\\ -3 \\end{bmatrix}\n\\]\nThis vector equation is equivalent to the system:\n$$\nx_1 + 2x_2 &= 7 \\\\\n-2x_1 + 5x_2 &= 4 \\\\\n-5x_1 + 6x_2 &= -3\n$$\nRow reducing the augmented matrix:\n\\[\n\\left[\\begin{array}{cc|c}\n1 & 2 & 7 \\\\\n-2 & 5 & 4 \\\\\n-5 & 6 & -3\n\\end{array}\\right]\n\\to\n\\left[\\begin{array}{cc|c}\n1 & 0 & 3 \\\\\n0 & 1 & 2 \\\\\n0 & 0 & 0\n\\end{array}\\right]\n\\]\nYes! With $x_1 = 3$ and $x_2 = 2$, we have \n$\\vect{b} = 3\\vect{v}_1 + 2\\vect{v}_2$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Span of a Set of Vectors"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.4",
+      "number": "1.4",
+      "title": "Span",
+      "content": "The **span** of vectors $\\vect{v}_1, \\ldots, \\vect{v}_p$, \ndenoted $\\spn\\{\\vect{v}_1, \\ldots, \\vect{v}_p\\}$, is the set of all \nlinear combinations of these vectors:\n\\[\n\\spn\\{\\vect{v}_1, \\ldots, \\vect{v}_p\\} = \n\\{c_1 \\vect{v}_1 + \\cdots + c_p \\vect{v}_p : c_1, \\ldots, c_p \\in \\R\\}\n\\]\nWe say that $\\vect{v}_1, \\ldots, \\vect{v}_p$ **span** a set $H$ \nif $H = \\spn\\{\\vect{v}_1, \\ldots, \\vect{v}_p\\}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Geometrically:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "The span of one nonzero vector is a **line** through the origin.",
+        "The span of two non-parallel vectors in $\\R^3$ is a **plane** \n through the origin.",
+        "The span of three \"truly different\" vectors in $\\R^3$ is all \n of $\\R^3$."
+      ]
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.1",
+      "number": "1.1",
+      "title": "Span and Linear Systems",
+      "content": "A vector $\\vect{b}$ is in $\\spn\\{\\vect{v}_1, \\ldots, \\vect{v}_p\\}$ if \nand only if the system with augmented matrix \n$[\\vect{v}_1 \\cdots \\vect{v}_p | \\vect{b}]$ is consistent.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This theorem bridges two perspectives: the geometric question \"Is \n$\\vect{b}$ in the span?\" is equivalent to the algebraic question \n\"Can we solve this system?\""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Colossians 1:17",
+      "text": "He is before all things, and in him \nall things hold together."
+    },
+    {
+      "type": "quote",
+      "author": "Hermann Weyl (1885--1955)",
+      "text": "Symmetry is one idea by which man \nthrough the ages has tried to comprehend and create order, beauty, and \nperfection."
+    }
+  ]
+}

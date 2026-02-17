@@ -1,0 +1,97 @@
+{
+  "id": "linear-algebra-ch01-sec06",
+  "title": "Applications of Linear Systems",
+  "chapter": 1,
+  "section": 6,
+  "book": "linear-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "{A just balance and scales are the Lord's; all the weights in the bag are his work.}{Proverbs 16:11}\n {Mathematics is the art of giving the same name to different things.}{— Henri Poincaré}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Linear systems appear throughout science, engineering, and economics. \nIn this section, we explore several applications that demonstrate the \npower of the techniques we have developed."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Network Flow"
+    },
+    {
+      "type": "paragraph",
+      "text": "Many real-world situations involve the flow of materials, traffic, or \ninformation through a network of nodes and connections. Conservation \nlaws require that flow into each node equals flow out."
+    },
+    {
+      "type": "example",
+      "id": "example-1.1",
+      "number": "1.1",
+      "title": "Traffic flow",
+      "problem": "The diagram shows traffic flow (cars per hour) at an intersection of \nfour one-way streets. Find the possible values for the unknown flows \n$x_1$, $x_2$, $x_3$, and $x_4$.\n\ncenter\ntikzpicture[scale=1.2]\n % Nodes\n (A) at (0,2) {$A$};\n (B) at (2,2) {$B$};\n (C) at (2,0) {$C$};\n (D) at (0,0) {$D$};\n \n % External flows\n (-1,2) – (A) node[midway, above] {$500$};\n (B) – (3,2) node[midway, above] {$300$};\n (3,0) – (C) node[midway, above] {$400$};\n (D) – (-1,0) node[midway, above] {$600$};\n \n % Internal flows\n (A) – (B) node[midway, above] {$x_1$};\n (B) – (C) node[midway, right] {$x_2$};\n (C) – (D) node[midway, below] {$x_3$};\n (D) – (A) node[midway, left] {$x_4$};\ntikzpicture\ncenter",
+      "solution": "At each node, flow in equals flow out:\n$$\n\\text{Node } A&: 500 + x_4 = x_1 \\\\\n\\text{Node } B&: x_1 = 300 + x_2 \\\\\n\\text{Node } C&: x_2 + 400 = x_3 \\\\\n\\text{Node } D&: x_3 = 600 + x_4\n$$\nRearranging and row reducing:\n\\[\n\\begin{bmatrix}\n1 & 0 & 0 & -1 & 500 \\\\\n1 & -1 & 0 & 0 & 300 \\\\\n0 & 1 & -1 & 0 & -400 \\\\\n0 & 0 & 1 & -1 & 600\n\\end{bmatrix}\n\\to\n\\begin{bmatrix}\n1 & 0 & 0 & -1 & 500 \\\\\n0 & 1 & 0 & -1 & 200 \\\\\n0 & 0 & 1 & -1 & 600 \\\\\n0 & 0 & 0 & 0 & 0\n\\end{bmatrix}\n\\]\nWith $x_4 = t$ as the free parameter:\n\\[\nx_1 = 500 + t, \\quad x_2 = 200 + t, \\quad x_3 = 600 + t, \\quad x_4 = t\n\\]\nSince traffic flows must be nonnegative, we need $t \\geq 0$. Thus there \nare infinitely many solutions, with minimum flows when $t = 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Balancing Chemical Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "Chemical reactions must conserve atoms of each element. Finding the \ncorrect stoichiometric coefficients is a linear algebra problem."
+    },
+    {
+      "type": "example",
+      "id": "example-1.2",
+      "number": "1.2",
+      "title": "Combustion of propane",
+      "problem": "Balance the equation for the combustion of propane:\n\\[\nx_1 \\,\\text{C}_3\\text{H}_8 + x_2\\,\\text{O}_2 \\to \nx_3\\,\\text{CO}_2 + x_4\\,\\text{H}_2\\text{O}\n\\]",
+      "solution": "Conservation of each element gives:\n$$\n\\text{Carbon}&: 3x_1 = x_3 \\\\\n\\text{Hydrogen}&: 8x_1 = 2x_4 \\\\\n\\text{Oxygen}&: 2x_2 = 2x_3 + x_4\n$$\nMoving all terms to one side:\n\\[\n\\begin{bmatrix}\n3 & 0 & -1 & 0 \\\\\n8 & 0 & 0 & -2 \\\\\n0 & 2 & -2 & -1\n\\end{bmatrix}\n\\begin{bmatrix} x_1 \\\\ x_2 \\\\ x_3 \\\\ x_4 \\end{bmatrix} = \n\\begin{bmatrix} 0 \\\\ 0 \\\\ 0 \\end{bmatrix}\n\\]\nRow reducing:\n\\[\n\\begin{bmatrix}\n1 & 0 & 0 & -1/4 \\\\\n0 & 1 & 0 & -5/4 \\\\\n0 & 0 & 1 & -3/4\n\\end{bmatrix}\n\\]\nWith $x_4 = 4t$: $x_1 = t$, $x_2 = 5t$, $x_3 = 3t$, $x_4 = 4t$.\n\nTaking $t = 1$ gives the balanced equation:\n\\[\n\\text{C}_3\\text{H}_8 + 5\\,\\text{O}_2 \\to 3\\,\\text{CO}_2 + 4\\,\\text{H}_2\\text{O}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Economic Input-Output Models"
+    },
+    {
+      "type": "paragraph",
+      "text": "The economist Wassily Leontief won the Nobel Prize for developing \ninput-output analysis, which uses linear algebra to model how \nindustries depend on each other."
+    },
+    {
+      "type": "example",
+      "id": "example-1.3",
+      "number": "1.3",
+      "title": "Simple economy",
+      "problem": "An economy has two sectors: manufacturing and energy. To produce \n\\$1 of manufacturing output requires \\$0.20 of manufacturing and \n\\$0.30 of energy. To produce \\$1 of energy requires \\$0.40 of \nmanufacturing and \\$0.10 of energy. If external demand is \\$50 \nmillion for manufacturing and \\$30 million for energy, what total \noutput is needed from each sector?",
+      "solution": "Let $x_1$ = manufacturing output and $x_2$ = energy output (in millions).\n\nThe **consumption matrix** is:\n\\[\nC = \\begin{bmatrix} 0.2 & 0.4 \\\\ 0.3 & 0.1 \\end{bmatrix}\n\\]\nTotal output must satisfy:\n\\[\n\\vect{x} = C\\vect{x} + \\vect{d}\n\\]\nwhere $\\vect{d} = \\begin{bmatrix} 50 \\\\ 30 \\end{bmatrix}$ is external demand.\n\nRearranging: $(I - C)\\vect{x} = \\vect{d}$\n\\[\n\\begin{bmatrix} 0.8 & -0.4 \\\\ -0.3 & 0.9 \\end{bmatrix}\n\\begin{bmatrix} x_1 \\\\ x_2 \\end{bmatrix} = \n\\begin{bmatrix} 50 \\\\ 30 \\end{bmatrix}\n\\]\nRow reducing the augmented matrix:\n\\[\n\\left[\\begin{array}{cc|c}\n0.8 & -0.4 & 50 \\\\\n-0.3 & 0.9 & 30\n\\end{array}\\right]\n\\to\n\\left[\\begin{array}{cc|c}\n1 & 0 & 100 \\\\\n0 & 1 & 70\n\\end{array}\\right]\n\\]\nManufacturing needs \\$100 million output; energy needs \\$70 million."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Polynomial Interpolation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Given $n$ data points, we can find a polynomial of degree $n-1$ \npassing through all of them by solving a linear system."
+    },
+    {
+      "type": "example",
+      "id": "example-1.4",
+      "number": "1.4",
+      "title": "Fitting a parabola",
+      "problem": "Find the parabola $y = ax^2 + bx + c$ passing through the points \n$(1, 2)$, $(2, 3)$, and $(3, 6)$.",
+      "solution": "Substituting each point:\n$$\na(1)^2 + b(1) + c &= 2 \\\\\na(2)^2 + b(2) + c &= 3 \\\\\na(3)^2 + b(3) + c &= 6\n$$\nThis gives:\n\\[\n\\begin{bmatrix}\n1 & 1 & 1 \\\\\n4 & 2 & 1 \\\\\n9 & 3 & 1\n\\end{bmatrix}\n\\begin{bmatrix} a \\\\ b \\\\ c \\end{bmatrix} = \n\\begin{bmatrix} 2 \\\\ 3 \\\\ 6 \\end{bmatrix}\n\\]\nRow reducing: $a = 1$, $b = -2$, $c = 3$.\n\nThe parabola is $y = x^2 - 2x + 3$."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 1:9",
+      "text": "What has been is what will be, and \nwhat has been done is what will be done, and there is nothing new \nunder the sun."
+    },
+    {
+      "type": "quote",
+      "author": "Wassily Leontief (1905--1999)",
+      "text": "The purpose of the \ninput-output model is to establish quantitative interdependence \nbetween the different sectors of production."
+    }
+  ]
+}

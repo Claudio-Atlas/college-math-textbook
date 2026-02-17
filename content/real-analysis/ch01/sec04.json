@@ -1,0 +1,110 @@
+{
+  "id": "real-analysis-ch01-sec04",
+  "title": "Consequences of Completeness",
+  "chapter": 1,
+  "section": 4,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The completeness axiom has far-reaching consequences. In this section, \nwe derive several fundamental properties of $\\mathbb{R}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Archimedean Property"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.1",
+      "number": "1.1",
+      "title": "Archimedean Property",
+      "content": "For any $x \\in \\mathbb{R}$, there exists $n \\in \\mathbb{N}$ such that $n > x$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Suppose, for contradiction, that $x$ is an upper bound for $\\mathbb{N}$. \nBy completeness, $\\alpha = \\sup \\mathbb{N}$ exists.\n\nSince $\\alpha - 1 < \\alpha$, the number $\\alpha - 1$ is not an upper bound \nfor $\\mathbb{N}$ (by minimality of supremum). Thus there exists \n$n \\in \\mathbb{N}$ with $n > \\alpha - 1$, which means $n + 1 > \\alpha$.\n\nBut $n + 1 \\in \\mathbb{N}$, contradicting that $\\alpha$ is an upper bound \nfor $\\mathbb{N}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The Archimedean property says that $\\mathbb{N}$ is unbounded—no real number \nis larger than all natural numbers. This seems obvious, but it *requires* \nthe completeness axiom."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.2",
+      "number": "1.2",
+      "title": "Corollaries of the Archimedean Property",
+      "content": "1. For any $\\varepsilon > 0$, there exists $n \\in \\mathbb{N}$ such that \n$\\displaystyle\\frac{1}{n} < \\varepsilon$.\n\n2. For any $x > 0$, there exists $n \\in \\mathbb{N}$ such that $n - 1 \\leq x < n$.\n\n3. $\\displaystyle\\inf\\left\\{\\frac{1}{n} : n \\in \\mathbb{N}\\right\\} = 0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(a) By the Archimedean property, there exists $n \\in \\mathbb{N}$ with \n$n > 1/\\varepsilon$, i.e., $1/n < \\varepsilon$.\n\n(b) By the Archimedean property, the set $\\{n \\in \\mathbb{N} : n > x\\}$ is \nnonempty. By the well-ordering of $\\mathbb{N}$, it has a least element, \nsay $m$. Then $m > x$ and $m - 1 \\leq x$.\n\n(c) Let $S = \\{1/n : n \\in \\mathbb{N}\\}$. Clearly $0$ is a lower bound. \nIf $\\ell > 0$ were a greater lower bound, then by part (a), there would \nexist $n$ with $1/n < \\ell$, contradicting that $\\ell$ is a lower bound."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Density of the Rationals"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.3",
+      "number": "1.3",
+      "title": "Density of $\\mathbb{Q",
+      "content": "$ in $R$}\n\nBetween any two distinct real numbers, there exists a rational number.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $a < b$ be real numbers. We seek a rational $r = m/n$ with $a < m/n < b$.\n\nBy the Archimedean property, there exists $n \\in \\mathbb{N}$ with \n$n(b - a) > 1$, i.e., $nb - na > 1$. This means the interval $(na, nb)$ \nhas length greater than $1$, so it contains an integer $m$.\n\nThen $na < m < nb$, which gives $a < m/n < b$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.4",
+      "number": "1.4",
+      "title": "Density of Irrationals",
+      "content": "Between any two distinct real numbers, there exists an irrational number.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $a < b$. By Theorem [thm:Q-dense], there exists a rational $r$ with \n$\\displaystyle\\frac{a}{\\sqrt{2}} < r < \\frac{b}{\\sqrt{2}}$.\n\nThen $a < r\\sqrt{2} < b$. Since $r \\neq 0$ (we can choose such an $r$) and \n$\\sqrt{2}$ is irrational, $r\\sqrt{2}$ is irrational."
+    },
+    {
+      "type": "paragraph",
+      "text": "These density theorems tell us that both the rationals and irrationals are \n\"spread throughout\" the real line. You cannot find an interval, no matter \nhow small, that contains only rationals or only irrationals."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Existence of Roots"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.5",
+      "number": "1.5",
+      "title": "Existence of $n$th Roots",
+      "content": "For every $x > 0$ and every $n \\in \\mathbb{N}$, there exists a unique \n$y > 0$ such that $y^n = x$. We write $y = x^{1/n}$ or $y = \\sqrt[n]{x}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "**Uniqueness:** If $y_1^n = y_2^n = x$ with $y_1, y_2 > 0$ and \n$y_1 \\neq y_2$, say $y_1 < y_2$, then $y_1^n < y_2^n$ (since $t \\mapsto t^n$ \nis strictly increasing for $t > 0$), contradiction.\n\n**Existence:** Let $S = \\{t \\in \\mathbb{R} : t > 0 \\text{ and } t^n < x\\}$.\n\n$S$ is nonempty: if $x \\geq 1$, then $1/2 \\in S$; if $x < 1$, then $x \\in S$ \n(since $x^n < x$ for $0 < x < 1$ and $n \\geq 1$).\n\n$S$ is bounded above: if $t > x + 1$, then $t^n \\geq t > x$, so $x + 1$ is \nan upper bound.\n\nLet $y = \\sup S$. We claim $y^n = x$.\n\n**Case 1:** Suppose $y^n < x$. We will find $\\varepsilon > 0$ such that \n$(y + \\varepsilon)^n < x$, contradicting that $y$ is an upper bound for $S$.\n\nBy the binomial theorem,\n\\[\n(y + \\varepsilon)^n = y^n + \\binom{n}{1}y^{n-1}\\varepsilon + \\cdots + \\varepsilon^n < y^n + \\varepsilon[(1+y)^n - y^n]\n\\]\nfor small $\\varepsilon$. Choose $\\varepsilon$ small enough that this is less \nthan $x$.\n\n**Case 2:** Suppose $y^n > x$. A similar argument shows that \n$y - \\varepsilon$ is still an upper bound for $S$ for some $\\varepsilon > 0$, \ncontradicting that $y = \\sup S$.\n\nThus $y^n = x$."
+    },
+    {
+      "type": "historical",
+      "id": "historical-1.4",
+      "number": null,
+      "title": "Richard Dedekind (1831--1916)",
+      "content": "The rigorous treatment of real numbers was largely developed by Richard \nDedekind. His 1872 paper introduced what we now call *Dedekind cuts*: \na way to construct each real number as a partition of the rationals. This \nfinally put the real number system on solid logical foundations, after \ncenturies of intuitive but imprecise use."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:12",
+      "text": "Who has measured the waters in the hollow of \nhis hand, or with the breadth of his hand marked off the heavens?"
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "id": "geometry-ch09-sec02",
+  "title": "Central and Inscribed Angles",
+  "chapter": 9,
+  "section": 2,
+  "book": "geometry",
+  "epigraph": {
+    "text": "The heavens declare the glory of God, and the sky above proclaims his handiwork.",
+    "reference": "Psalm 19:1"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The relationship between angles and arcs in a circle is among the most \nelegant in all of geometry. When we place an angle's vertex at different \npositions relative to a circle—at the center, on the circle, or outside \nthe circle—we discover remarkable patterns that connect the angle to \nthe arc it \"sees.\" These relationships have practical applications in \nastronomy, navigation, and engineering."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Arc Measure"
+    },
+    {
+      "type": "paragraph",
+      "text": "Before studying angles in circles, we need a way to measure arcs."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Arc Measure",
+      "content": "The **measure of an arc** is defined as follows:\n\n- The measure of a **minor arc** equals the measure of \n its central angle.\n\n- The measure of a **major arc** equals $360°$ minus the \n measure of the corresponding minor arc.\n\n- The measure of a **semicircle** is $180°$."
+    },
+    {
+      "type": "paragraph",
+      "text": "We write arc measure using the notation $m\\widearc{AB}$ to denote \"the \nmeasure of arc $AB$.\" Note that arc measure is in degrees, not in \nunits of length. (Arc *length* is a different concept, which \nwe will study later.)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Central Angles"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Central Angle",
+      "content": "A **central angle** of a circle is an angle \nwhose vertex is at the center of the circle."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Central Angle--Arc Relationship",
+      "content": "The measure of a central angle equals the measure of its intercepted arc:\n\\[\n m\\angle AOB = m\\widearc{AB}\n\\]\nwhere $O$ is the center of the circle.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This relationship is essentially definitional—we *define* the \nmeasure of an arc to be the measure of its central angle. This provides \na natural way to measure portions of a circle."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Central angles and arcs",
+      "problem": "In circle $O$, central angle $\\angle AOB$ measures $70°$.\n\n1. Find $m\\widearc{AB}$ (the minor arc).\n\n2. Find $m\\widearc{ADB}$ (the major arc through point $D$).\n\ncenter\ntikzpicture[scale=1.3]\n (0,0) circle (1.5);\n ll[AtlasTeal] (0,0) circle (2pt) node[below] {$O$};\n \n ll[AtlasTeal] (35:1.5) circle (2pt) node[above right] {$A$};\n ll[AtlasTeal] (-35:1.5) circle (2pt) node[below right] {$B$};\n ll[AtlasTeal] (180:1.5) circle (2pt) node[left] {$D$};\n \n (0,0) – (35:1.5);\n (0,0) – (-35:1.5);\n \n (0.4,0) arc (0:35:0.4);\n at (0.5,0.15) { $70°$};\ntikzpicture\ncenter",
+      "solution": "1. The measure of the minor arc equals the central angle:\n \\[m\\widearc{AB} = m\\angle AOB = 70°\\]\n\n2. The major arc is the remainder of the circle:\n \\[m\\widearc{ADB} = 360° - m\\widearc{AB} = 360° - 70° = 290°\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Inscribed Angles"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.3",
+      "number": "9.3",
+      "title": "Inscribed Angle",
+      "content": "An **inscribed angle** is an angle whose \nvertex lies on the circle and whose sides are chords of the circle."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.4",
+      "number": "9.4",
+      "title": "Intercepted Arc",
+      "content": "The arc that lies in the interior of an inscribed angle (between the \ntwo sides) is called the **intercepted arc**."
+    },
+    {
+      "type": "paragraph",
+      "text": "The following theorem reveals a beautiful relationship between inscribed \nangles and their intercepted arcs."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "Inscribed Angle Theorem",
+      "content": "The measure of an inscribed angle is half the measure of its \nintercepted arc:\n\\[\n m\\angle ABC = \\frac{1}{2} m\\widearc{AC}\n\\]\nwhere $B$ is on the circle and $A$, $C$ are the endpoints of the \nintercepted arc.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "*Proof sketch:* We consider three cases depending on the \nposition of the center $O$ relative to the inscribed angle."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Case 1:** One side of the angle passes through the center. \nLet $\\overline{BO}$ be a diameter. Since $\\triangle OBC$ is isosceles \n(radii $OB = OC$), we have $\\angle OBC = \\angle OCB$. The central \nangle $\\angle AOC$ is an exterior angle of $\\triangle OBC$, so \n$\\angle AOC = 2\\angle OBC = 2\\angle ABC$. Thus \n$m\\angle ABC = \\frac{1}{2}m\\widearc{AC}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Cases 2 and 3:** When the center is inside or outside the \ninscribed angle, we draw a diameter through $B$ and apply Case 1 \nto both parts, then add or subtract."
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Using the Inscribed Angle Theorem",
+      "problem": "Find the value of $x$ in each circle.\n\ncenter\ntikzpicture[scale=1.1]\n % Circle (a)\n scope[xshift=0cm]\n (0,0) circle (1.3);\n (A) at (150:1.3);\n (B) at (50:1.3);\n (C) at (-30:1.3);\n (A) – (B) – (C);\n ll[AtlasTeal] (A) circle (2pt) node[left] {$A$};\n ll[AtlasTeal] (B) circle (2pt) node[above right] {$B$};\n ll[AtlasTeal] (C) circle (2pt) node[right] {$C$};\n at (50:0.8) {$x°$};\n (150:1.3) arc (150:-30:1.3);\n at (-120:1) {$100°$};\n at (0,-1.8) {(a)};\n scope\n \n % Circle (b)\n scope[xshift=4cm]\n (0,0) circle (1.3);\n (A) at (160:1.3);\n (B) at (70:1.3);\n (C) at (-40:1.3);\n (A) – (B) – (C);\n ll[AtlasTeal] (A) circle (2pt) node[left] {$A$};\n ll[AtlasTeal] (B) circle (2pt) node[above right] {$B$};\n ll[AtlasTeal] (C) circle (2pt) node[right] {$C$};\n at (70:0.8) {$35°$};\n (160:1.3) arc (160:-40:1.3);\n at (-110:1) {$x°$};\n at (0,-1.8) {(b)};\n scope\ntikzpicture\ncenter",
+      "solution": "1. The inscribed angle is half the intercepted arc:\n \\[x = \\frac{1}{2}(100) = 50°\\]\n\n2. The inscribed angle is half the intercepted arc, so:\n \\[35 = \\frac{1}{2}x \\implies x = 70°\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Corollaries of the Inscribed Angle Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Inscribed Angle Theorem leads to several important corollaries."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.3",
+      "number": "9.3",
+      "title": "Corollary 1: Angles Inscribed in the Same Arc",
+      "content": "If two inscribed angles intercept the same arc, then the angles \nare congruent.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "*Proof:* Both angles have the same intercepted arc $\\widearc{AC}$, \nso by the Inscribed Angle Theorem, both equal $\\frac{1}{2}m\\widearc{AC}$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.4",
+      "number": "9.4",
+      "title": "Corollary 2: Angle Inscribed in a Semicircle",
+      "content": "An angle inscribed in a semicircle is a right angle.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "*Proof:* The inscribed angle intercepts a semicircle, which \nhas measure $180°$. By the Inscribed Angle Theorem:\n\\[m\\angle ACB = \\frac{1}{2}(180°) = 90°\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This beautiful theorem, sometimes called **Thales' Theorem**%\n, is attributed to the ancient Greek philosopher \nThales of Miletus (c. 624–546 BCE)."
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Using Thales' Theorem",
+      "problem": "In the figure, $\\overline{AB}$ is a diameter of circle $O$, and \n$C$ is a point on the circle. If $AC = 5$ and $BC = 12$, find $AB$.\n\ncenter\ntikzpicture[scale=0.9]\n (0,0) circle (2);\n (A) at (-2,0);\n (B) at (2,0);\n (C) at (1.2,1.6);\n \n (A) – (B);\n (A) – (C) – (B);\n \n ll[AtlasTeal] (A) circle (2pt) node[left] {$A$};\n ll[AtlasTeal] (B) circle (2pt) node[right] {$B$};\n ll[AtlasTeal] (C) circle (2pt) node[above] {$C$};\n \n at (-0.4,0.8) {$5$};\n at (1.6,0.8) {$12$};\n \n % Right angle mark\n ($(C)!0.15!(A)$) – ++(0.1,-0.15) – ($(C)!0.15!(B)$);\ntikzpicture\ncenter",
+      "solution": "By Thales' Theorem, $\\angle ACB = 90°$ since it is inscribed in a \nsemicircle. Thus $\\triangle ACB$ is a right triangle with legs \n$AC = 5$ and $BC = 12$. By the Pythagorean Theorem:\n$$\n AB^2 &= AC^2 + BC^2 \\\\\n AB^2 &= 5^2 + 12^2 = 25 + 144 = 169 \\\\\n AB &= 13\n$$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.5",
+      "number": "9.5",
+      "title": "Corollary 3: Inscribed Quadrilateral",
+      "content": "The opposite angles of a quadrilateral inscribed in a circle are \nsupplementary (sum to $180°$).",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "*Proof:* Angle $A$ intercepts arc $BCD$, and angle $C$ intercepts \narc $DAB$. Together, these arcs form the entire circle ($360°$). Thus:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$m\\angle A + m\\angle C &= \\frac{1}{2}m\\widearc{BCD} + \\frac{1}{2}m\\widearc{DAB} \\\\\n    &= \\frac{1}{2}(m\\widearc{BCD} + m\\widearc{DAB}) \\\\\n    &= \\frac{1}{2}(360°) = 180°$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "A similar argument shows $\\angle B + \\angle D = 180°$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.4",
+      "number": "9.4",
+      "title": "Inscribed quadrilateral",
+      "problem": "Quadrilateral $ABCD$ is inscribed in a circle. If $m\\angle A = 85°$ \nand $m\\angle B = 110°$, find $m\\angle C$ and $m\\angle D$.",
+      "solution": "By Corollary 3, opposite angles are supplementary:\n$$\n m\\angle C &= 180° - m\\angle A = 180° - 85° = 95° \\\\\n m\\angle D &= 180° - m\\angle B = 180° - 110° = 70°\n$$\n\nWe can verify: $85° + 110° + 95° + 70° = 360°$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Comparing Central and Inscribed Angles"
+    },
+    {
+      "type": "paragraph",
+      "text": "A key insight is that a central angle and an inscribed angle that \nintercept the same arc are related by a factor of 2."
+    },
+    {
+      "type": "example",
+      "id": "example-9.5",
+      "number": "9.5",
+      "title": "Central vs.\\ inscribed",
+      "problem": "In circle $O$, central angle $\\angle AOC = 84°$. Point $B$ is on \nthe major arc $\\widearc{AC}$. Find the measure of inscribed angle $\\angle ABC$.\n\ncenter\ntikzpicture[scale=1.3]\n (0,0) circle (1.5);\n \n (A) at (130:1.5);\n (C) at (46:1.5);\n (B) at (250:1.5);\n (O) at (0,0);\n \n (O) – (A);\n (O) – (C);\n (A) – (B) – (C);\n \n ll[AtlasTeal] (A) circle (2pt) node[above left] {$A$};\n ll[AtlasTeal] (C) circle (2pt) node[above right] {$C$};\n ll[AtlasTeal] (B) circle (2pt) node[below] {$B$};\n ll[AtlasTeal] (O) circle (2pt) node[above] {$O$};\n \n at (88:0.7) {$84°$};\ntikzpicture\ncenter",
+      "solution": "The central angle equals the arc measure: $m\\widearc{AC} = 84°$.\n\nThe inscribed angle is half the arc:\n\\[m\\angle ABC = \\frac{1}{2}(84°) = 42°\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 147:4",
+      "text": "He determines the number of the stars; \nhe gives to all of them their names."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 8:27",
+      "text": "When he established the heavens, I was \nthere; when he drew a circle on the face of the deep."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:12",
+      "text": "Who has measured the waters in the \nhollow of his hand and marked off the heavens with a span?"
+    }
+  ]
+}

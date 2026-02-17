@@ -1,0 +1,86 @@
+{
+  "id": "diff-eq-ch01-sec03",
+  "title": "Solutions and Initial Value Problems",
+  "chapter": 1,
+  "section": 3,
+  "book": "diff-eq",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "What does it mean to \"solve\" a differential equation? In this section, \nwe make the concept precise."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "What Is a Solution?"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.1",
+      "number": "1.1",
+      "title": "Solution of a Differential Equation",
+      "content": "A **solution** of a differential equation on an interval $I$ is a \nfunction $y = \\phi(x)$ that satisfies the equation when substituted into it, \nfor all $x \\in I$."
+    },
+    {
+      "type": "example",
+      "id": "example-1.1",
+      "number": "1.1",
+      "title": "Verifying a solution",
+      "problem": "Show that $y = e^{2x}$ is a solution to $y' - 2y = 0$.\n\n*Solution.* We compute:\n\\[\ny' = \\frac{d}{dx}(e^{2x}) = 2e^{2x}\n\\]\nSubstituting into the equation:\n\\[\ny' - 2y = 2e^{2x} - 2(e^{2x}) = 0 \\checkmark\n\\]\nSince the equation is satisfied for all $x$, $y = e^{2x}$ is indeed a solution.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-1.2",
+      "number": "1.2",
+      "title": "A family of solutions",
+      "problem": "Show that $y = Ce^{2x}$ is a solution to $y' - 2y = 0$ for any constant $C$.\n\n*Solution.* We compute $y' = 2Ce^{2x}$. Then:\n\\[\ny' - 2y = 2Ce^{2x} - 2Ce^{2x} = 0 \\checkmark\n\\]\nThis works for any value of $C$. We say that $y = Ce^{2x}$ is the \n**general solution**, representing an entire family of solutions.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Initial Value Problems"
+    },
+    {
+      "type": "paragraph",
+      "text": "Differential equations typically have infinitely many solutions (a family \nparameterized by constants). To select a specific solution, we impose \nadditional conditions."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.2",
+      "number": "1.2",
+      "title": "Initial Value Problem (IVP)",
+      "content": "An **initial value problem** consists of a differential equation \ntogether with one or more **initial conditions** specifying the \nvalue of the solution (and its derivatives) at a particular point.\n\nFor a first-order equation:\n\\[\n\\frac{dy}{dx} = f(x, y), \\quad y(x_0) = y_0\n\\]\n\nFor a second-order equation:\n\\[\n\\frac{d^2y}{dx^2} = f(x, y, y'), \\quad y(x_0) = y_0, \\quad y'(x_0) = y_1\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-1.3",
+      "number": "1.3",
+      "title": "Solving an IVP",
+      "problem": "Solve the initial value problem $y' = 2y$, $y(0) = 3$.\n\n*Solution.* The general solution is $y = Ce^{2x}$. Applying the \ninitial condition:\n\\[\ny(0) = Ce^{0} = C = 3\n\\]\nTherefore, the solution to the IVP is $y = 3e^{2x}$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Existence and Uniqueness"
+    },
+    {
+      "type": "paragraph",
+      "text": "A natural question: given an IVP, does a solution always exist? Is it unique?"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.1",
+      "number": "1.1",
+      "title": "Existence and Uniqueness for First-Order IVPs",
+      "content": "Consider the initial value problem\n\\[\n\\frac{dy}{dx} = f(x,y), \\quad y(x_0) = y_0\n\\]\nIf $f$ and $\\partial f/\\partial y$ are continuous in a rectangle \ncontaining $(x_0, y_0)$, then there exists a unique solution \n$y = \\phi(x)$ on some interval containing $x_0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This theorem guarantees that well-behaved differential equations have \nsolutions, and those solutions are determined uniquely by initial conditions."
+    }
+  ]
+}

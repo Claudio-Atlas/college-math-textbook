@@ -1,0 +1,171 @@
+{
+  "id": "diff-eq-ch02-sec06",
+  "title": "Existence and Uniqueness Theorems",
+  "chapter": 2,
+  "section": 6,
+  "book": "diff-eq",
+  "objectives": [
+    "State and understand the Existence and Uniqueness Theorem for first-order IVPs",
+    "Identify conditions that guarantee existence and uniqueness of solutions",
+    "Recognize when solutions may fail to exist or may not be unique",
+    "Apply the theorem to determine intervals of existence"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Why Existence and Uniqueness Matter"
+    },
+    {
+      "type": "paragraph",
+      "text": "So far, we have developed techniques for *finding* solutions to differential equations. But before we search for a solution, we should ask two fundamental questions:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Existence:** Does a solution even exist?",
+        "**Uniqueness:** If a solution exists, is it the only one?"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "These questions matter both theoretically and practically. If we're modeling a physical system with a differential equation and initial condition, we expect reality to determine a unique future—the mathematics should reflect this determinism."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Motivating Example: Non-Uniqueness",
+      "problem": "Consider the initial value problem:\n\\[\n\\frac{dy}{dx} = 3y^{2/3}, \\quad y(0) = 0\n\\]\n\nWe can find solutions:\n\n- $y_1(x) = 0$ (constant solution)\n\n- $y_2(x) = x^3$ (verify: $y_2' = 3x^2 = 3(x^3)^{2/3} = 3y_2^{2/3}$)\n\n- $y_3(x) = \\begin{cases} 0 & x \\leq 0 \\\\ x^3 & x > 0 \\end{cases}$\n\n- $y_4(x) = \\begin{cases} 0 & x \\leq c \\\\ (x-c)^3 & x > c \\end{cases}$ for any $c \\geq 0$\n\nThere are infinitely many solutions! The initial condition $y(0) = 0$ does not determine a unique solution. This is troubling if we're trying to model a deterministic system.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Existence and Uniqueness Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The following theorem tells us precisely when we are guaranteed a unique solution."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Existence and Uniqueness Theorem (Picard-Lindelöf)",
+      "content": "Consider the initial value problem:\n\\[\n\\frac{dy}{dx} = f(x, y), \\quad y(x_0) = y_0\n\\]\n\nLet $R$ be a rectangular region in the $xy$-plane defined by $a < x < b$, $c < y < d$ that contains the point $(x_0, y_0)$ in its interior. If:\n\n1. $f(x, y)$ is continuous on $R$, and\n\n2. $\\frac{\\partial f}{\\partial y}$ is continuous on $R$\nthen there exists an interval $I = (x_0 - h, x_0 + h)$ for some $h > 0$ on which there exists a **unique** solution $y = \\phi(x)$ of the initial value problem.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Applying the Theorem",
+      "problem": "For the IVP $\\displaystyle\\frac{dy}{dx} = x^2 + y^2$, $y(0) = 1$:\n\nHere $f(x, y) = x^2 + y^2$.\n\n- $f$ is continuous for all $(x, y)$ \n\n- $\\frac{\\partial f}{\\partial y} = 2y$ is continuous for all $(x, y)$ \n\nBy the theorem, a unique solution exists on some interval containing $x = 0$.\n\nNote: The theorem doesn't tell us *what* the solution is (this equation is not easily solved analytically), only that it exists and is unique.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "When Uniqueness Fails",
+      "problem": "Return to $\\displaystyle\\frac{dy}{dx} = 3y^{2/3}$, $y(0) = 0$.\n\nHere $f(x, y) = 3y^{2/3}$.\n\n- $f$ is continuous for all $(x, y)$ \n\n- $\\frac{\\partial f}{\\partial y} = 2y^{-1/3} = \\frac{2}{y^{1/3}}$ is undefined at $y = 0$ $\\times$\n\nThe uniqueness condition fails at the initial point $(0, 0)$. This is why multiple solutions exist!",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "When Existence Fails",
+      "problem": "Consider $\\displaystyle\\frac{dy}{dx} = \\frac{1}{x-2}$, $y(2) = 0$.\n\nHere $f(x, y) = \\frac{1}{x-2}$ is not continuous at $x = 2$. The theorem does not apply.\n\nIndeed, trying to solve: $y = \\int \\frac{dx}{x-2} = \\ln|x-2| + C$. This function is undefined at $x = 2$, so no solution passes through $(2, 0)$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Determining Intervals of Existence"
+    },
+    {
+      "type": "paragraph",
+      "text": "The theorem guarantees a solution exists on *some* interval, but doesn't specify how large that interval is. In practice, solutions can be extended until they hit a singularity."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Continuation of Solutions",
+      "content": "A solution to an IVP can be extended until it:\n\n1. Reaches the boundary of the region where $f$ and $f_y$ are continuous, or\n\n2. Blows up (becomes unbounded: $|y| \\to \\infty$), or\n\n3. Reaches a vertical asymptote in finite time",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-2.5",
+      "number": "2.5",
+      "title": "Finite-Time Blowup",
+      "problem": "Solve $\\displaystyle\\frac{dy}{dx} = y^2$, $y(0) = 1$.\n\nThis is separable:\n\\[\n\\frac{dy}{y^2} = dx \\implies -\\frac{1}{y} = x + C \\implies y = \\frac{-1}{x + C}\n\\]\n\nWith $y(0) = 1$: $1 = -1/C \\implies C = -1$.\n\nSo $y = \\frac{1}{1-x}$.\n\nThis solution exists only for $x < 1$. As $x \\to 1^-$, $y \\to +\\infty$.\n\nThe theorem guarantees a unique solution exists on some interval around $x = 0$, but that interval cannot extend past $x = 1$ where the solution blows up.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-2.6",
+      "number": "2.6",
+      "title": "Interval of Existence",
+      "problem": "For the IVP $\\displaystyle\\frac{dy}{dx} = \\frac{y^2}{1-x}$, $y(0) = 1$:\n\nThe function $f(x, y) = \\frac{y^2}{1-x}$ is continuous except where $x = 1$. So continuity fails at $x = 1$.\n\nSolving (separable):\n\\[\n\\frac{dy}{y^2} = \\frac{dx}{1-x}\n\\]\n\\[\n-\\frac{1}{y} = -\\ln|1-x| + C\n\\]\n\\[\ny = \\frac{1}{\\ln|1-x| + C}\n\\]\n\nWith $y(0) = 1$: $1 = \\frac{1}{\\ln 1 + C} = \\frac{1}{C} \\implies C = 1$.\n\nSo $y = \\frac{1}{\\ln|1-x| + 1}$.\n\nThe solution exists for $x < 1 - e^{-1} \\approx 0.632$ (where $\\ln|1-x| + 1 > 0$) and also approaches issues as $x \\to 1^-$.\n\nThe interval of existence is $(-\\infty, 1-e^{-1})$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Alternative Conditions for Uniqueness"
+    },
+    {
+      "type": "paragraph",
+      "text": "The condition that $\\partial f/\\partial y$ be continuous can be replaced by a more general **Lipschitz condition**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Lipschitz Condition",
+      "content": "A function $f(x, y)$ satisfies a **Lipschitz condition in $y$** on a region $R$ if there exists a constant $L > 0$ such that\n\\[\n|f(x, y_1) - f(x, y_2)| \\leq L|y_1 - y_2|\n\\]\nfor all $(x, y_1)$ and $(x, y_2)$ in $R$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.3",
+      "number": "2.3",
+      "title": "Uniqueness via Lipschitz Condition",
+      "content": "If $f(x, y)$ is continuous on $R$ and satisfies a Lipschitz condition in $y$ on $R$, then the IVP has a unique solution.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-2.7",
+      "number": "2.7",
+      "title": "Lipschitz but Not Differentiable",
+      "problem": "$f(x, y) = |y|$ satisfies a Lipschitz condition with $L = 1$ since $||y_1| - |y_2|| \\leq |y_1 - y_2|$. But $\\partial f/\\partial y$ doesn't exist at $y = 0$.\n\nThe IVP $y' = |y|$, $y(0) = y_0$ has a unique solution for any $y_0$, even though the theorem using $f_y$ doesn't directly apply at $y = 0$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Dependence on Initial Conditions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Solutions depend continuously on initial conditions: if we change $y_0$ slightly, the solution changes only slightly (at least for a while)."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.4",
+      "number": "2.4",
+      "title": "Continuous Dependence",
+      "content": "Under the hypotheses of the Existence and Uniqueness Theorem, if $\\phi(x)$ is the solution with $\\phi(x_0) = y_0$ and $\\psi(x)$ is the solution with $\\psi(x_0) = y_1$, then\n\\[\n|\\phi(x) - \\psi(x)| \\leq |y_0 - y_1|e^{L|x - x_0|}\n\\]\nwhere $L$ is the Lipschitz constant.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This tells us that small changes in initial conditions lead to small changes in solutions (at least on bounded intervals). This is crucial for applications: we can never measure initial conditions exactly, so solutions must be robust to small errors."
+    }
+  ]
+}

@@ -1,0 +1,115 @@
+{
+  "id": "linear-algebra-proofs-ch09-sec01",
+  "title": "Bilinear Forms",
+  "chapter": 9,
+  "section": 1,
+  "book": "linear-algebra-proofs",
+  "content": [
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Bilinear Form",
+      "content": "A **bilinear form** on a vector space $V$ \nover $\\FF$ is a function $B: V \\times V \\to \\FF$ satisfying:\n\n1. $B(\\alpha u + \\beta v, w) = \\alpha B(u, w) + \\beta B(v, w)$ (linear in first argument)\n\n2. $B(u, \\alpha v + \\beta w) = \\alpha B(u, v) + \\beta B(u, w)$ (linear in second argument)\nfor all $u, v, w \\in V$ and $\\alpha, \\beta \\in \\FF$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Symmetric and Alternating",
+      "content": "A bilinear form $B$ is:\n\n- **Symmetric** if $B(u, v) = B(v, u)$ for all $u, v$\n\n- **Alternating** if $B(v, v) = 0$ for all $v$\n\n- **Skew-symmetric** if $B(u, v) = -B(v, u)$ for all $u, v$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Matrix of a Bilinear Form",
+      "content": "Let $(e_1, \\ldots, e_n)$ be a basis for $V$. Every bilinear form $B$ \nis represented by a matrix $A = (a_{ij})$ where $a_{ij} = B(e_i, e_j)$:\n\\[\nB(u, v) = [u]^T A [v]\n\\]\nwhere $[u], [v]$ are coordinate vectors.\n\n$B$ is symmetric iff $A = A^T$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "Change of Basis for Bilinear Forms",
+      "content": "If $P$ is the change of basis matrix, then the matrix of $B$ in \nthe new basis is $P^T A P$.\n\nTwo matrices $A$ and $B$ represent the same bilinear form (in \ndifferent bases) iff $B = P^T A P$ for some invertible $P$. \nSuch matrices are called **congruent**.",
+      "label": "Theorem"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.3",
+      "number": "9.3",
+      "title": "Quadratic Form",
+      "content": "A **quadratic form** on $V$ is a function \n$Q: V \\to \\FF$ of the form $Q(v) = B(v, v)$ for some symmetric \nbilinear form $B$.\n\nIn coordinates: if $A$ is symmetric and $x = [v]$, then\n\\[\nQ(v) = x^T A x = \\sum_{i,j} a_{ij} x_i x_j\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.3",
+      "number": "9.3",
+      "title": "Polarization Identity",
+      "content": "Over a field with $\\text{char} \\neq 2$, a symmetric bilinear form \ncan be recovered from its quadratic form:\n\\[\nB(u, v) = \\frac{1}{2}[Q(u + v) - Q(u) - Q(v)]\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Quadratic Form on $\\RR^2$",
+      "problem": "$Q(x, y) = ax^2 + 2bxy + cy^2$ corresponds to symmetric matrix \n$A = \\begin{pmatrix} a & b \\\\ b & c \\end{pmatrix}$.\n\nThis is positive definite iff $a > 0$ and $\\det A = ac - b^2 > 0$.",
+      "solution": ""
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.4",
+      "number": "9.4",
+      "title": "Signature",
+      "content": "The **signature** of a real quadratic form \n(or symmetric matrix) is the triple $(n_+, n_-, n_0)$ where:\n\n- $n_+$ = number of positive eigenvalues\n\n- $n_-$ = number of negative eigenvalues\n\n- $n_0$ = number of zero eigenvalues (nullity)"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.4",
+      "number": "9.4",
+      "title": "Sylvester's Law of Inertia",
+      "content": "Two real symmetric matrices are congruent if and only if they have \nthe same signature. Equivalently, every real symmetric matrix is \ncongruent to a diagonal matrix of the form\n\\[\n\\diag(\\underbrace{1, \\ldots, 1}_{n_+}, \\underbrace{-1, \\ldots, -1}_{n_-}, \\underbrace{0, \\ldots, 0}_{n_0})\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-9.1",
+      "number": "9.1",
+      "title": "Classification over $\\RR$",
+      "content": "Real quadratic forms on $\\RR^n$ are classified up to change of \nvariables by their signature. There are $\\binom{n+2}{2}$ equivalence classes.",
+      "label": "Corollary"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.5",
+      "number": "9.5",
+      "title": "Definite Forms",
+      "content": "A real quadratic form $Q$ is:\n\n- **Positive definite** if $Q(v) > 0$ for all $v \\neq 0$\n\n- **Negative definite** if $Q(v) < 0$ for all $v \\neq 0$\n\n- **Positive semidefinite** if $Q(v) \\geq 0$ for all $v$\n\n- **Indefinite** if $Q$ takes both positive and negative values"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.5",
+      "number": "9.5",
+      "title": "Characterization of Positive Definite",
+      "content": "For a real symmetric matrix $A$, the following are equivalent:\n\n1. $A$ is positive definite\n\n2. All eigenvalues of $A$ are positive\n\n3. All leading principal minors are positive\n\n4. $A = B^T B$ for some invertible matrix $B$",
+      "label": "Theorem"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.6",
+      "number": "9.6",
+      "title": "Non-degenerate",
+      "content": "A bilinear form $B$ is **non-degenerate** if\n\\[\nB(u, v) = 0 \\text{ for all } v \\implies u = 0\n\\]\nEquivalently, its matrix representation is invertible."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.6",
+      "number": "9.6",
+      "title": "Orthogonal Complement for Bilinear Forms",
+      "content": "For a non-degenerate symmetric bilinear form and any subspace $W$:\n\\[\nW^\\perp = \\{v \\in V : B(v, w) = 0 \\text{ for all } w \\in W\\}\n\\]\nis a complement: $V = W \\oplus W^\\perp$ iff $B|_W$ is non-degenerate.",
+      "label": "Theorem"
+    }
+  ]
+}

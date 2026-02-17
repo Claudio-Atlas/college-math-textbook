@@ -1,0 +1,221 @@
+{
+  "id": "vol2-ch11-sec03",
+  "title": "Calculus in Polar Coordinates",
+  "chapter": 11,
+  "section": 3,
+  "book": "vol2",
+  "epigraph": {
+    "text": "One thing have I asked of the Lord, that will I seek \nafter: that I may dwell in the house of the Lord all the days of my life, \nto gaze upon the beauty of the Lord.",
+    "reference": "Psalm 27:4"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Now that we can graph curves in polar coordinates, we turn to the calculus of\nthese curves. How do we find slopes? Areas? Arc lengths? The tools are the\nsame—differentiation and integration—but the forms are different, adapted\nto the radial nature of polar coordinates."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Slopes of Polar Curves"
+    },
+    {
+      "type": "paragraph",
+      "text": "To find $dy/dx$ for a polar curve $r = f(\\theta)$, we treat the curve\nparametrically with $\\theta$ as the parameter. From Section [sec:polar-coordinates]:\n\\[\n x = r\\cos\\theta = f(\\theta)\\cos\\theta, \\qquad\n y = r\\sin\\theta = f(\\theta)\\sin\\theta.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Using the product rule:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$\\deriv{x}{\\theta} &= f'(\\theta)\\cos\\theta - f(\\theta)\\sin\\theta\n    = \\deriv{r}{\\theta}\\cos\\theta - r\\sin\\theta, \\\\\n  \\deriv{y}{\\theta} &= f'(\\theta)\\sin\\theta + f(\\theta)\\cos\\theta\n    = \\deriv{r}{\\theta}\\sin\\theta + r\\cos\\theta.$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "By the parametric derivative formula:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-11.1",
+      "number": "11.1",
+      "title": "Slope of a Polar Curve",
+      "content": "For a polar curve $r = f(\\theta)$ with $f$ differentiable:\n\\[\n \\deriv{y}{x} = \\frac{dy/d\\theta}{dx/d\\theta}\n = \\frac{\\dfrac{dr}{d\\theta}\\sin\\theta + r\\cos\\theta}\n {\\dfrac{dr}{d\\theta}\\cos\\theta - r\\sin\\theta}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-11.1",
+      "number": "11.1",
+      "title": "Slope of a cardioid",
+      "problem": "Find the slope of the cardioid $r = 1 + \\cos\\theta$ at $\\theta = \\pi/2$.",
+      "solution": "We have $r = 1 + \\cos\\theta$ and $\\dfrac{dr}{d\\theta} = -\\sin\\theta$.\n\nAt $\\theta = \\pi/2$:\n\\[\n r = 1 + \\cos(\\pi/2) = 1, \\qquad \\deriv{r}{\\theta} = -\\sin(\\pi/2) = -1.\n\\]\n\nTherefore:\n$$\n \\deriv{y}{x} &= \\frac{(-1)\\sin(\\pi/2) + (1)\\cos(\\pi/2)}\n {(-1)\\cos(\\pi/2) - (1)\\sin(\\pi/2)} \\\\\n &= \\frac{-1 \\cdot 1 + 1 \\cdot 0}{-1 \\cdot 0 - 1 \\cdot 1}\n = \\frac{-1}{-1} = 1.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-11.2",
+      "number": "11.2",
+      "title": "Horizontal and vertical tangents",
+      "problem": "Find all points where the cardioid $r = 1 - \\sin\\theta$ has horizontal or\nvertical tangent lines.",
+      "solution": "We have $dr/d\\theta = -\\cos\\theta$. The numerator and denominator of\n$dy/dx$ are:\nalign*\n Numerator: & r{} + r\n = - + (1-) \\\\\n &= (- + 1 - ) = (1 - 2). \\\\[4pt]\n \\text{Denominator:} &\\quad \\deriv{r}{\\theta}\\cos\\theta - r\\sin\\theta\n = -\\cos^2\\theta - (1-\\sin\\theta)\\sin\\theta \\\\\n &= -\\cos^2\\theta - \\sin\\theta + \\sin^2\\theta = -1 + \\sin^2\\theta - \\sin\\theta + \\sin^2\\theta \\\\\n &= 2\\sin^2\\theta - \\sin\\theta - 1 = (2\\sin\\theta + 1)(\\sin\\theta - 1).\n\\end{align*}\n\n\\textbf{Horizontal tangents} ($dy/dx = 0$): numerator $= 0$, denominator $\\ne 0$.\n\\[\n \\cos\\theta(1 - 2\\sin\\theta) = 0 \\quad\\Longrightarrow\\quad\n \\cos\\theta = 0 \\text{ or } \\sin\\theta = 1/2.\n\\]\n\n- $\\cos\\theta = 0$: $\\theta = \\pi/2$ or $3\\pi/2$.\n At $\\theta = \\pi/2$: $r = 0$ (cusp—handle separately).\n At $\\theta = 3\\pi/2$: $r = 2$, point is $(0, -2)$.\n\n- $\\sin\\theta = 1/2$: $\\theta = \\pi/6$ or $5\\pi/6$.\n At $\\theta = \\pi/6$: $r = 1/2$, point is $(\\sqrt{3}/4, 1/4)$.\n At $\\theta = 5\\pi/6$: $r = 1/2$, point is $(-\\sqrt{3}/4, 1/4)$.\n\n**Vertical tangents** ($dy/dx$ undefined): denominator $= 0$, numerator $\\ne 0$.\n\\[\n (2\\sin\\theta + 1)(\\sin\\theta - 1) = 0 \\quad\\Longrightarrow\\quad\n \\sin\\theta = -1/2 \\text{ or } \\sin\\theta = 1.\n\\]\n\n- $\\sin\\theta = 1$: $\\theta = \\pi/2$, $r = 0$ (cusp).\n\n- $\\sin\\theta = -1/2$: $\\theta = 7\\pi/6$ or $11\\pi/6$.\n These give vertical tangents."
+    },
+    {
+      "type": "warning",
+      "id": "warning-11.3",
+      "number": null,
+      "title": "Tangent lines at the origin",
+      "content": "When $r = 0$, the curve passes through the pole (origin). The tangent line\nat the pole has slope $\\tan\\theta_0$, where $\\theta_0$ is the angle at which\n$r = 0$. If $r = 0$ at multiple angles, there may be multiple tangent lines\nthrough the pole."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Area in Polar Coordinates"
+    },
+    {
+      "type": "paragraph",
+      "text": "The area formula in Cartesian coordinates, $A = \\int_a^b f(x)\\dx$, computes\narea under a curve by summing thin vertical rectangles. In polar coordinates,\nwe sum thin **circular sectors** instead."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Setup:** Consider a region bounded by a polar curve $r = f(\\theta)$\nand two rays $\\theta = \\alpha$ and $\\theta = \\beta$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Slice:** Divide the angular interval $[\\alpha, \\beta]$ into $n$ small\nangles $\\Delta\\theta$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Approximate:** Each slice is nearly a circular sector of radius\n$r = f(\\theta_k)$ and angle $\\Delta\\theta$. The area of such a sector is\n\\[\n \\Delta A \\approx \\frac{1}{2}r^2\\,\\Delta\\theta = \\frac{1}{2}[f(\\theta_k)]^2\\,\\Delta\\theta.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Sum and integrate:**"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-11.2",
+      "number": "11.2",
+      "title": "Area in Polar Coordinates",
+      "content": "If $f$ is continuous and non-negative on $[\\alpha, \\beta]$, the area of the\nregion bounded by $r = f(\\theta)$ and the rays $\\theta = \\alpha$, $\\theta = \\beta$ is\n\\[\n A = \\frac{1}{2}\\defint{\\alpha}{\\beta}r^2\\,d\\theta\n = \\frac{1}{2}\\defint{\\alpha}{\\beta}[f(\\theta)]^2\\,d\\theta.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-11.3",
+      "number": "11.3",
+      "title": "Area of a circular sector",
+      "problem": "Find the area of the region bounded by $r = 4$, $\\theta = 0$, and $\\theta = \\pi/3$.",
+      "solution": "This is a sector of a circle of radius $4$:\n\\[\n A = \\frac{1}{2}\\defint{0}{\\pi/3}16\\,d\\theta\n = 8\\left[\\theta\\right]_0^{\\pi/3} = \\frac{8\\pi}{3}.\n\\]\n**Check:** A full circle has area $\\pi(4)^2 = 16\\pi$. A sector of angle\n$\\pi/3$ is $\\frac{1}{6}$ of the circle: $\\frac{16\\pi}{6} = \\frac{8\\pi}{3}$.\\;"
+    },
+    {
+      "type": "example",
+      "id": "example-11.4",
+      "number": "11.4",
+      "title": "Area enclosed by a cardioid",
+      "problem": "Find the area enclosed by the cardioid $r = 2(1 + \\cos\\theta)$.",
+      "solution": "The cardioid is traced once as $\\theta$ goes from $0$ to $2\\pi$:\n$$\n A &= \\frac{1}{2}\\defint{0}{2\\pi}[2(1+\\cos\\theta)]^2\\,d\\theta\n = \\frac{1}{2}\\defint{0}{2\\pi}4(1 + 2\\cos\\theta + \\cos^2\\theta)\\,d\\theta \\\\\n &= 2\\defint{0}{2\\pi}\\left(1 + 2\\cos\\theta + \\frac{1+\\cos 2\\theta}{2}\\right)d\\theta \\\\\n &= 2\\defint{0}{2\\pi}\\left(\\frac{3}{2} + 2\\cos\\theta + \\frac{\\cos 2\\theta}{2}\\right)d\\theta \\\\\n &= 2\\left[\\frac{3\\theta}{2} + 2\\sin\\theta + \\frac{\\sin 2\\theta}{4}\\right]_0^{2\\pi} \\\\\n &= 2\\left(\\frac{3(2\\pi)}{2} + 0 + 0\\right) = 6\\pi.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-11.5",
+      "number": "11.5",
+      "title": "Area of one petal of a rose",
+      "problem": "Find the area of one petal of the rose $r = 3\\sin(2\\theta)$.",
+      "solution": "The rose has four petals. One petal in the first quadrant is traced as\n$\\theta$ goes from $0$ to $\\pi/2$ (where $r \\ge 0$):\n$$\n A &= \\frac{1}{2}\\defint{0}{\\pi/2}[3\\sin(2\\theta)]^2\\,d\\theta\n = \\frac{9}{2}\\defint{0}{\\pi/2}\\sin^2(2\\theta)\\,d\\theta \\\\\n &= \\frac{9}{2}\\defint{0}{\\pi/2}\\frac{1 - \\cos(4\\theta)}{2}\\,d\\theta\n = \\frac{9}{4}\\left[\\theta - \\frac{\\sin(4\\theta)}{4}\\right]_0^{\\pi/2} \\\\\n &= \\frac{9}{4}\\left(\\frac{\\pi}{2} - 0\\right) = \\frac{9\\pi}{8}.\n$$\nThe total area of all four petals is $4 \\cdot \\frac{9\\pi}{8} = \\frac{9\\pi}{2}$."
+    },
+    {
+      "type": "example",
+      "id": "example-11.6",
+      "number": "11.6",
+      "title": "Area inside a lima\\c{c}on loop",
+      "problem": "Find the area of the inner loop of $r = 1 + 2\\cos\\theta$.",
+      "solution": "The inner loop occurs where $r < 0$, which happens when $1 + 2\\cos\\theta < 0$,\ni.e., $\\cos\\theta < -1/2$. This occurs for $2\\pi/3 < \\theta < 4\\pi/3$.\n\nOn this interval, $r$ is negative, but $r^2$ is still positive, and the area\nformula still works:\n$$\n A &= \\frac{1}{2}\\defint{2\\pi/3}{4\\pi/3}(1 + 2\\cos\\theta)^2\\,d\\theta \\\\\n &= \\frac{1}{2}\\defint{2\\pi/3}{4\\pi/3}(1 + 4\\cos\\theta + 4\\cos^2\\theta)\\,d\\theta \\\\\n &= \\frac{1}{2}\\defint{2\\pi/3}{4\\pi/3}\\left(1 + 4\\cos\\theta + 2(1 + \\cos 2\\theta)\\right)d\\theta \\\\\n &= \\frac{1}{2}\\defint{2\\pi/3}{4\\pi/3}(3 + 4\\cos\\theta + 2\\cos 2\\theta)\\,d\\theta \\\\\n &= \\frac{1}{2}\\left[3\\theta + 4\\sin\\theta + \\sin 2\\theta\\right]_{2\\pi/3}^{4\\pi/3} \\\\\n &= \\frac{1}{2}\\left[\\left(4\\pi - 2\\sqrt{3} + \\frac{\\sqrt{3}}{2}\\right)\n - \\left(2\\pi + 2\\sqrt{3} - \\frac{\\sqrt{3}}{2}\\right)\\right] \\\\\n &= \\frac{1}{2}\\left(2\\pi - 3\\sqrt{3}\\right) = \\pi - \\frac{3\\sqrt{3}}{2}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-11.7",
+      "number": "11.7",
+      "title": "Area between two polar curves",
+      "problem": "Find the area inside the circle $r = 3\\sin\\theta$ and outside the cardioid\n$r = 1 + \\sin\\theta$.",
+      "solution": "First, find intersections: $3\\sin\\theta = 1 + \\sin\\theta$ gives\n$2\\sin\\theta = 1$, so $\\sin\\theta = 1/2$, meaning $\\theta = \\pi/6$ or $5\\pi/6$.\n\nFor $\\pi/6 \\le \\theta \\le 5\\pi/6$, the circle is outside the cardioid:\n$$\n A &= \\frac{1}{2}\\defint{\\pi/6}{5\\pi/6}\\left[(3\\sin\\theta)^2 - (1+\\sin\\theta)^2\\right]d\\theta \\\\\n &= \\frac{1}{2}\\defint{\\pi/6}{5\\pi/6}(9\\sin^2\\theta - 1 - 2\\sin\\theta - \\sin^2\\theta)\\,d\\theta \\\\\n &= \\frac{1}{2}\\defint{\\pi/6}{5\\pi/6}(8\\sin^2\\theta - 2\\sin\\theta - 1)\\,d\\theta \\\\\n &= \\frac{1}{2}\\defint{\\pi/6}{5\\pi/6}\\left(4(1-\\cos 2\\theta) - 2\\sin\\theta - 1\\right)d\\theta \\\\\n &= \\frac{1}{2}\\defint{\\pi/6}{5\\pi/6}(3 - 4\\cos 2\\theta - 2\\sin\\theta)\\,d\\theta \\\\\n &= \\frac{1}{2}\\left[3\\theta - 2\\sin 2\\theta + 2\\cos\\theta\\right]_{\\pi/6}^{5\\pi/6} \\\\\n &= \\frac{1}{2}\\left[\\left(\\frac{5\\pi}{2} + \\sqrt{3} - \\sqrt{3}\\right)\n - \\left(\\frac{\\pi}{2} - \\sqrt{3} + \\sqrt{3}\\right)\\right] = \\pi.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Arc Length in Polar Coordinates"
+    },
+    {
+      "type": "paragraph",
+      "text": "For a polar curve $r = f(\\theta)$, we use the parametric arc length formula\nwith $\\theta$ as the parameter. From our expressions for $dx/d\\theta$ and\n$dy/d\\theta$:\n\\[\n \\left(\\deriv{x}{\\theta}\\right)^2 + \\left(\\deriv{y}{\\theta}\\right)^2\n = \\left(\\deriv{r}{\\theta}\\cos\\theta - r\\sin\\theta\\right)^2\n + \\left(\\deriv{r}{\\theta}\\sin\\theta + r\\cos\\theta\\right)^2.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Expanding and simplifying (using $\\cos^2\\theta + \\sin^2\\theta = 1$):\n\\[\n = \\left(\\deriv{r}{\\theta}\\right)^2 + r^2.\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-11.3",
+      "number": "11.3",
+      "title": "Arc Length in Polar Coordinates",
+      "content": "If $f$ and $f'$ are continuous on $[\\alpha, \\beta]$, the arc length of\n$r = f(\\theta)$ from $\\theta = \\alpha$ to $\\theta = \\beta$ is\n\\[\n L = \\defint{\\alpha}{\\beta}\\sqrt{r^2 + \\left(\\deriv{r}{\\theta}\\right)^2}\\,d\\theta\n = \\defint{\\alpha}{\\beta}\\sqrt{[f(\\theta)]^2 + [f'(\\theta)]^2}\\,d\\theta.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-11.8",
+      "number": "11.8",
+      "title": "Arc length of a circle",
+      "problem": "Verify the circumference of a circle using polar coordinates.",
+      "solution": "For $r = a$ (constant), $dr/d\\theta = 0$:\n\\[\n L = \\defint{0}{2\\pi}\\sqrt{a^2 + 0}\\,d\\theta = a \\cdot 2\\pi = 2\\pi a.\\;\\checkmark\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-11.9",
+      "number": "11.9",
+      "title": "Arc length of a cardioid",
+      "problem": "Find the arc length of the cardioid $r = 1 + \\cos\\theta$.",
+      "solution": "We have $dr/d\\theta = -\\sin\\theta$, so\n$$\n r^2 + \\left(\\deriv{r}{\\theta}\\right)^2\n &= (1 + \\cos\\theta)^2 + \\sin^2\\theta \\\\\n &= 1 + 2\\cos\\theta + \\cos^2\\theta + \\sin^2\\theta \\\\\n &= 2 + 2\\cos\\theta = 2(1 + \\cos\\theta).\n$$\n\nUsing the identity $1 + \\cos\\theta = 2\\cos^2(\\theta/2)$:\n\\[\n \\sqrt{2(1 + \\cos\\theta)} = \\sqrt{4\\cos^2(\\theta/2)} = 2|\\cos(\\theta/2)|.\n\\]\n\nFor $0 \\le \\theta \\le 2\\pi$, we have $0 \\le \\theta/2 \\le \\pi$, so\n$\\cos(\\theta/2) \\ge 0$ for $0 \\le \\theta \\le \\pi$ and $\\cos(\\theta/2) \\le 0$\nfor $\\pi \\le \\theta \\le 2\\pi$. Split the integral:\n$$\n L &= \\defint{0}{\\pi}2\\cos(\\theta/2)\\,d\\theta\n + \\defint{\\pi}{2\\pi}2(-\\cos(\\theta/2))\\,d\\theta \\\\\n &= 2\\left[2\\sin(\\theta/2)\\right]_0^{\\pi}\n - 2\\left[2\\sin(\\theta/2)\\right]_{\\pi}^{2\\pi} \\\\\n &= 4[1 - 0] - 4[0 - 1] = 4 + 4 = 8.\n$$\nThe cardioid $r = 1 + \\cos\\theta$ has arc length $8$."
+    },
+    {
+      "type": "example",
+      "id": "example-11.10",
+      "number": "11.10",
+      "title": "Arc length of a spiral",
+      "problem": "Find the arc length of $r = e^\\theta$ from $\\theta = 0$ to $\\theta = 2\\pi$.",
+      "solution": "We have $dr/d\\theta = e^\\theta$, so\n\\[\n r^2 + \\left(\\deriv{r}{\\theta}\\right)^2 = e^{2\\theta} + e^{2\\theta} = 2e^{2\\theta}.\n\\]\nThus:\n$$\n L &= \\defint{0}{2\\pi}\\sqrt{2e^{2\\theta}}\\,d\\theta\n = \\sqrt{2}\\defint{0}{2\\pi}e^\\theta\\,d\\theta\n = \\sqrt{2}[e^\\theta]_0^{2\\pi}\n = \\sqrt{2}(e^{2\\pi} - 1).\n$$"
+    },
+    {
+      "type": "historical",
+      "id": "historical-11.3",
+      "number": null,
+      "title": "Archimedes and the Spiral",
+      "content": "Archimedes studied the spiral $r = a\\theta$ (now called the Archimedean spiral)\naround 225 BC. He used it to trisect angles and square the circle—problems\nimpossible with compass and straightedge alone. His work *On Spirals*\ncontains early methods of integration, anticipating calculus by nearly two\nmillennia."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 4:26",
+      "text": "Ponder the path of your feet; then all your\nways will be sure."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 24:1",
+      "text": "The earth is the Lord's, and everything in it,\nthe world, and all who live in it."
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Kings 7:23",
+      "text": "He made the Sea of cast metal, circular in\nshape, measuring ten cubits from rim to rim."
+    },
+    {
+      "type": "quote",
+      "author": "Carl Friedrich Gauss (1777--1855)",
+      "text": "Mathematics is the queen of\nthe sciences and number theory is the queen of mathematics."
+    },
+    {
+      "type": "quote",
+      "author": "Archimedes (c.\\ 287--212 BC)",
+      "text": "Give me a place to stand on, and\nI will move the Earth."
+    }
+  ]
+}

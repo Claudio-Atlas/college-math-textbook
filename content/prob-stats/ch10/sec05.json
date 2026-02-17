@@ -1,0 +1,75 @@
+{
+  "id": "prob-stats-ch10-sec05",
+  "title": "Introduction to Multiple Regression",
+  "chapter": 10,
+  "section": 5,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "For by wise guidance you can wage your war, and in abundance of counselors there is victory.",
+    "reference": "Proverbs 24:6",
+    "quote": "Multiple regression allows us to control for confounding variables.",
+    "quoteAuthor": "Francis Galton"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Multiple regression extends simple regression to multiple predictors."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Multiple Regression Model"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Multiple Linear Regression",
+      "content": "\\[\n Y = \\beta_0 + \\beta_1 X_1 + \\beta_2 X_2 + \\cdots + \\beta_k X_k + \\epsilon\n\\]\nEach $\\beta_j$ represents the change in $Y$ for a unit change in $X_j$, \n*holding all other predictors constant*."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Interpreting Coefficients"
+    },
+    {
+      "type": "paragraph",
+      "text": "Unlike simple regression, each coefficient in multiple regression is \na **partial** effect—the effect of one predictor while controlling \nfor others."
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "Multiple Regression",
+      "problem": "A model predicts house price from size and age:\n\\[\n \\hat{\\text{Price}} = 50000 + 100 \\times \\text{Size} - 2000 \\times \\text{Age}\n\\]\nInterpretation:\n\n- Each additional sq.\\ ft.\\ adds \\$100 to predicted price, \n holding age constant.\n \\item Each additional year of age reduces price by \\$2000, holding \n size constant.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Adjusted $R^2$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Adding predictors always increases $R^2$. The **adjusted $R^2$** \npenalizes for the number of predictors:\n\\[\n R^2_{adj} = 1 - \\frac{(1-R^2)(n-1)}{n-k-1}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Multicollinearity"
+    },
+    {
+      "type": "paragraph",
+      "text": "When predictors are highly correlated with each other:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Coefficient estimates become unstable",
+        "Standard errors inflate",
+        "Interpretation becomes difficult"
+      ]
+    }
+  ]
+}

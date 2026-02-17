@@ -1,0 +1,102 @@
+{
+  "id": "prob-stats-ch06-sec03",
+  "title": "The Central Limit Theorem",
+  "chapter": 6,
+  "section": 3,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "One thing I do know, that though I was blind, now I see.",
+    "reference": "John 9:25",
+    "quote": "The Central Limit Theorem is the most important theorem in probability theory.",
+    "quoteAuthor": "George Pólya"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The Central Limit Theorem is perhaps the most important result in \nstatistics. It explains why the normal distribution appears so \npervasively and enables inference even when we don't know the \npopulation distribution."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Statement of the Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Central Limit Theorem",
+      "content": "Let $X_1, X_2, \\ldots, X_n$ be a random sample from *any* \ndistribution with mean $\\mu$ and finite variance $\\sigma^2$. Then \nas $n \\to \\infty$:\n\\[\n Z_n = \\frac{\\xbar - \\mu}{\\sigma/\\sqrt{n}} \\xrightarrow{d} \\Normal(0, 1)\n\\]\nEquivalently, $\\xbar$ is approximately $\\Normal(\\mu, \\sigma^2/n)$ \nfor large $n$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-6.3",
+      "number": null,
+      "title": "The CLT Is About Sums and Averages",
+      "content": "The CLT applies to sums and means of random variables, not to \nindividual observations. The population itself need not be normal."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "How Large Is \"Large Enough\"?"
+    },
+    {
+      "type": "paragraph",
+      "text": "The rate of convergence depends on the population shape:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Symmetric populations:** $n \\geq 15$ often suffices",
+        "**Slightly skewed:** $n \\geq 30$ is a common rule of thumb",
+        "**Highly skewed:** May need $n \\geq 50$ or more",
+        "**Normal populations:** Any $n$ works (exact result)"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "CLT in Action",
+      "problem": "The time between earthquakes in a region follows an \nexponential distribution with mean 100 days. For the next 40 earthquakes, \nfind the probability the average waiting time is less than 90 days.",
+      "solution": "$\\mu = 100$, $\\sigma = 100$ (for exponential, $\\sigma = \\mu$), $n = 40$.\n\nBy CLT, $\\xbar \\approx \\Normal(100, 100^2/40)$, so $\\SE = 100/\\sqrt{40} \\approx 15.81$.\n\n\\[\n z = \\frac{90 - 100}{15.81} \\approx -0.63\n\\]\n\n$P(\\xbar < 90) = P(Z < -0.63) \\approx 0.264$."
+    },
+    {
+      "type": "historical",
+      "id": "historical-6.3",
+      "number": null,
+      "title": "The Central Limit Theorem",
+      "content": "The CLT was first stated by Abraham de Moivre (1733) for binomial \ndistributions, extended by Laplace, and proved in full generality \nby Lyapunov (1901). The name \"Central Limit Theorem\" was coined \nby George Pólya in 1920, reflecting its central importance to \nprobability theory."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Implications for Inference"
+    },
+    {
+      "type": "paragraph",
+      "text": "The CLT justifies using normal-based methods even when:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "The population distribution is unknown",
+        "The population is not normal",
+        "We have only sample data"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "This is why the normal distribution appears throughout statistics."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 19:1--2",
+      "text": "The heavens declare the glory of God, \nand the sky above proclaims his handiwork. Day after day they pour \nforth speech."
+    }
+  ]
+}

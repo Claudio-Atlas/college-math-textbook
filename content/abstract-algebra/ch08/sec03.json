@@ -1,0 +1,123 @@
+{
+  "id": "abstract-algebra-ch08-sec03",
+  "title": "Ring Homomorphisms",
+  "chapter": 8,
+  "section": 3,
+  "book": "abstract-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"I am the way and the truth and the life. No one \ncomes to the Father except through me.\"*{John 14:6}{*\"The kernel of a ring homomorphism is always an ideal.\"*}{Emmy Noether}\n\n*\"A ring homomorphism preserves both addition and multiplication.\"*{— Ring theory definition}"
+    },
+    {
+      "type": "paragraph",
+      "text": "A ring homomorphism preserves both operations—addition and \nmultiplication. The theory parallels group homomorphisms, with ideals \nplaying the role of normal subgroups."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition"
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.1",
+      "number": "8.1",
+      "title": "Ring Homomorphism",
+      "content": "A function $\\phi: R \\to S$ between rings is a **ring \nhomomorphism** if for all $a, b \\in R$:\n\n1. $\\phi(a + b) = \\phi(a) + \\phi(b)$\n\n2. $\\phi(ab) = \\phi(a)\\phi(b)$\nIf $R$ and $S$ have unity and $\\phi(1_R) = 1_S$, then $\\phi$ is a \n**unital homomorphism**."
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Ring homomorphisms",
+      "problem": "- $\\phi: \\Z \\to \\Z_n$ by $\\phi(k) = k \\mod n$ (unital)\n\n- $\\phi: \\R[x] \\to \\R$ by $\\phi(f) = f(3)$ (evaluation at $3$)\n\n- $\\phi: \\C \\to \\C$ by $\\phi(z) = \\bar{z}$ (conjugation)\n\n- $\\phi: R \\to R[x]$ by $\\phi(r) = r$ (constant polynomial)",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Kernels and Images"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Kernel is an Ideal",
+      "content": "If $\\phi: R \\to S$ is a ring homomorphism, then $\\ker(\\phi) = \\{r \\in R : \n\\phi(r) = 0\\}$ is an ideal of $R$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We know $\\ker(\\phi)$ is an additive subgroup. For absorption: if \n$a \\in \\ker(\\phi)$ and $r \\in R$, then \n$\\phi(ra) = \\phi(r)\\phi(a) = \\phi(r) \\cdot 0 = 0$, so $ra \\in \\ker(\\phi)$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "Kernels",
+      "problem": "- $\\ker(\\Z \\to \\Z_n) = n\\Z$\n\n- $\\ker(\\R[x] \\xrightarrow{\\text{eval at } 3} \\R) = (x - 3)$\n\n- $\\ker(\\C \\to \\C \\text{ conjugation}) = \\{0\\}$ (isomorphism)",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "First Isomorphism Theorem for Rings"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.2",
+      "number": "8.2",
+      "title": "First Isomorphism Theorem",
+      "content": "If $\\phi: R \\to S$ is a ring homomorphism, then:\n\\[\n R/\\ker(\\phi) \\cong \\text{Im}(\\phi)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "Application",
+      "problem": "The evaluation map $\\phi: \\R[x] \\to \\C$ defined by $\\phi(f) = f(i)$ \nhas kernel $(x^2 + 1)$ and image $\\C$. Thus:\n\\[\n \\R[x]/(x^2 + 1) \\cong \\C\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Ideals and Homomorphisms"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.3",
+      "number": "8.3",
+      "title": "Ideals are Kernels",
+      "content": "A subset $I \\subseteq R$ is an ideal if and only if $I = \\ker(\\phi)$ \nfor some ring homomorphism $\\phi: R \\to S$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$(\\Leftarrow)$ Proved above.\n\n$(\\Rightarrow)$ If $I$ is an ideal, the quotient map $\\pi: R \\to R/I$ \ndefined by $\\pi(r) = r + I$ is a homomorphism with $\\ker(\\pi) = I$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Show that $\\phi: \\Z[x] \\to \\Z$ by $\\phi(f) = f(0)$ is a \n homomorphism. Find its kernel.",
+        "Prove that $\\Q[x]/(x^3 - 2)$ is a field.",
+        "Find all ring homomorphisms from $\\Z_6$ to $\\Z_{15}$.",
+        "If $\\phi: R \\to S$ is a surjective ring homomorphism and $R$ is \n commutative, prove $S$ is commutative.",
+        "Show that $\\Z[\\sqrt{-5}]/(2, 1 + \\sqrt{-5})$ is a field with \n two elements."
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "John 1:14",
+      "text": "The Word became flesh and made his dwelling \namong us."
+    }
+  ]
+}

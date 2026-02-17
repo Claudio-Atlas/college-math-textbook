@@ -1,0 +1,700 @@
+{
+  "id": "algebra-2-ch10-sec02",
+  "title": "Combinations and the Binomial Theorem",
+  "chapter": 10,
+  "section": 2,
+  "book": "algebra-2",
+  "devotional": {
+    "title": "The Two or Three",
+    "scripture": "Matthew 18:20",
+    "content": "{AtlasWarmF}{or}\nwhere two or three gather in my name, there am I with them.\n\nCombinations count selections without regard to order. Choosing a group \nof 3 from 12 disciples: $\\binom{12}{3} = 220$ possible groups. Yet Jesus \nsingled out Peter, James, and John for special moments—the \nTransfiguration, the raising of Jairus's daughter, the prayer in \nGethsemane.\n\nWhy these three? Why two or three gathered in prayer? The mathematics \ntells us how many groups are possible; it does not tell us which groups \nGod chooses or why. Selection involves purpose beyond mere counting.\n\nThe binomial coefficient $\\binom{n}{k}$ answers \"how many ways?\" but \nnot \"which way?\" or \"why this way?\" Divine wisdom chooses from \namong the combinations for purposes we may not fully understand.",
+    "reflection": "You are one among billions—yet chosen. How does \nunderstanding the vast number of possibilities deepen your appreciation \nfor being specifically selected and called?"
+  },
+  "epigraph": {
+    "text": "Are not five sparrows sold for two pennies? Yet not \none of them is forgotten by God.",
+    "reference": "Luke 12:6"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "While permutations count ordered arrangements, combinations count \nselections where order doesn't matter. Choosing 3 people from a group \nis the same selection regardless of the order in which you name them. \nThe binomial theorem connects combinations to algebra, providing a \npowerful formula for expanding powers of binomials."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Combinations"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Combination",
+      "content": "A **combination** is a selection of objects \nwhere **order does not matter**. The number of combinations of \n$n$ distinct objects taken $r$ at a time is:\n\\[\n C(n, r) = \\binom{n}{r} = \\frac{n!}{r!(n-r)!}\n\\]\nThis is read \"$n$ choose $r$\" and called a **binomial coefficient**."
+    },
+    {
+      "type": "paragraph",
+      "text": "The relationship between permutations and combinations is:\n\\[\n C(n, r) = \\frac{P(n, r)}{r!}\n\\]\nWe divide by $r!$ because each combination corresponds to $r!$ \npermutations (the $r!$ ways to order the selected items)."
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "Combinations vs permutations",
+      "problem": "From 5 people (A, B, C, D, E), we select 3.\n\n1. How many ways to select a president, VP, and secretary?\n\n2. How many ways to select a committee of 3?",
+      "solution": "1. Order matters (different positions), so use permutations:\n \\[\n P(5, 3) = 5 \\times 4 \\times 3 = 60\n \\]\n\n2. Order doesn't matter (just a group), so use combinations:\n \\[\n C(5, 3) = \\frac{5!}{3! \\cdot 2!} = \\frac{120}{6 \\cdot 2} = 10\n \\]\n\nNote: $\\frac{P(5,3)}{3!} = \\frac{60}{6} = 10 = C(5,3)$. Each combination \ncorresponds to $3! = 6$ permutations."
+    },
+    {
+      "type": "example",
+      "id": "example-10.2",
+      "number": "10.2",
+      "title": "Computing combinations",
+      "problem": "Evaluate:\n\n1. $\\binom{8}{3}$\n\n2. $\\binom{10}{7}$\n\n3. $\\binom{6}{0}$\n\n4. $\\binom{n}{n}$\n\n5. $\\binom{n}{1}$",
+      "solution": "1. $\\binom{8}{3} = \\frac{8!}{3! \\cdot 5!} = \\frac{8 \\times 7 \\times 6}{6} = 56$\n\n2. $\\binom{10}{7} = \\binom{10}{3} = \\frac{10 \\times 9 \\times 8}{6} = 120$\n \n (Using symmetry: $\\binom{n}{r} = \\binom{n}{n-r}$)\n\n3. $\\binom{6}{0} = \\frac{6!}{0! \\cdot 6!} = 1$\n \n (There is exactly one way to choose nothing—the empty set)\n\n4. $\\binom{n}{n} = \\frac{n!}{n! \\cdot 0!} = 1$\n \n (There is exactly one way to choose everything)\n\n5. $\\binom{n}{1} = \\frac{n!}{1! \\cdot (n-1)!} = n$\n \n (Choosing 1 from $n$—just $n$ options)"
+    },
+    {
+      "type": "example",
+      "id": "example-10.3",
+      "number": "10.3",
+      "title": "When to use combinations vs permutations",
+      "problem": "Determine whether each problem requires permutations or combinations, \nthen solve.\n\n1. Choosing 4 books to take on vacation from a shelf of 10.\n\n2. Ranking your top 4 favorite movies from a list of 10.\n\n3. Forming a relay team of 4 runners from 10 athletes (order of \n running matters).\n\n4. Selecting 4 students for a study group from a class of 10.",
+      "solution": "1. **Combination.** Order doesn't matter—you're just taking books.\n $\\binom{10}{4} = 210$\n\n2. **Permutation.** Order matters—1st favorite is different from 4th.\n $P(10, 4) = 5040$\n\n3. **Permutation.** Order matters—who runs first, second, etc.\n $P(10, 4) = 5040$\n\n4. **Combination.** Order doesn't matter—just group membership.\n $\\binom{10}{4} = 210$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "Properties of Combinations",
+      "content": "1. **Symmetry:** $\\binom{n}{r} = \\binom{n}{n-r}$\n\n2. **Pascal's Identity:** $\\binom{n}{r} = \\binom{n-1}{r-1} + \\binom{n-1}{r}$\n\n3. **Sum of a row:** $\\sum_{r=0}^{n} \\binom{n}{r} = 2^n$\n\n4. **Boundary values:** $\\binom{n}{0} = \\binom{n}{n} = 1$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The symmetry property $\\binom{n}{r} = \\binom{n}{n-r}$ makes intuitive \nsense: choosing $r$ items to take is the same as choosing $n-r$ items \nto leave behind."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Pascal's Triangle"
+    },
+    {
+      "type": "paragraph",
+      "text": "Pascal's Triangle displays binomial coefficients in a triangular array:"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "n=0",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "1",
+        "",
+        "",
+        "",
+        "",
+        "",
+        ""
+      ],
+      "rows": [
+        [
+          "n=1",
+          "",
+          "",
+          "",
+          "",
+          "1",
+          "",
+          "1",
+          "",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "n=2",
+          "",
+          "",
+          "",
+          "1",
+          "",
+          "2",
+          "",
+          "1",
+          "",
+          "",
+          "",
+          ""
+        ],
+        [
+          "n=3",
+          "",
+          "",
+          "1",
+          "",
+          "3",
+          "",
+          "3",
+          "",
+          "1",
+          "",
+          "",
+          ""
+        ],
+        [
+          "n=4",
+          "",
+          "1",
+          "",
+          "4",
+          "",
+          "6",
+          "",
+          "4",
+          "",
+          "1",
+          "",
+          ""
+        ],
+        [
+          "n=5",
+          "1",
+          "",
+          "5",
+          "",
+          "10",
+          "",
+          "10",
+          "",
+          "5",
+          "",
+          "1",
+          ""
+        ],
+        [
+          "n=6",
+          "1",
+          "6",
+          "",
+          "15",
+          "",
+          "20",
+          "",
+          "15",
+          "",
+          "6",
+          "",
+          "1"
+        ]
+      ],
+      "alignment": [
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Each entry is the sum of the two entries above it (Pascal's Identity). \nThe $r$th entry in row $n$ equals $\\binom{n}{r}$ (counting from 0)."
+    },
+    {
+      "type": "historical",
+      "id": "historical-10.2",
+      "number": null,
+      "title": "Blaise Pascal (1623--1662)",
+      "content": "Although the triangle bears Pascal's name, it was known centuries \nearlier in China (Yang Hui's triangle, c. 1261), Persia (Omar Khayyam), \nand India. Pascal systematically studied its properties and applications, \nincluding its connection to the binomial theorem and probability.\nPascal was also a devout Christian whose *Pensées* contain \nprofound reflections on faith and reason. His famous \"wager\" applied \nprobabilistic reasoning to the question of belief in God."
+    },
+    {
+      "type": "example",
+      "id": "example-10.4",
+      "number": "10.4",
+      "title": "Reading Pascal's Triangle",
+      "problem": "Use Pascal's Triangle to find:\n\n1. $\\binom{5}{2}$\n\n2. The sum $\\binom{4}{0} + \\binom{4}{1} + \\binom{4}{2} + \\binom{4}{3} + \\binom{4}{4}$\n\n3. $\\binom{6}{3}$",
+      "solution": "1. Row 5 (counting from row 0) is: 1, 5, 10, 10, 5, 1\n \n Position 2: $\\binom{5}{2} = 10$\n\n2. Row 4 is: 1, 4, 6, 4, 1\n \n Sum: $1 + 4 + 6 + 4 + 1 = 16 = 2^4$\n\n3. Row 6 is: 1, 6, 15, 20, 15, 6, 1\n \n Position 3: $\\binom{6}{3} = 20$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.5",
+      "number": "10.5",
+      "title": "Using Pascal's Identity",
+      "problem": "Verify that $\\binom{7}{3} = \\binom{6}{2} + \\binom{6}{3}$.",
+      "solution": "Left side: $\\binom{7}{3} = \\frac{7!}{3! \\cdot 4!} = \\frac{7 \\times 6 \\times 5}{6} = 35$\n\nRight side: $\\binom{6}{2} + \\binom{6}{3} = 15 + 20 = 35$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Binomial Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.2",
+      "number": "10.2",
+      "title": "Binomial Theorem",
+      "content": "For any positive integer $n$:\n\\[\n (a + b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^k\n\\]\nExpanded:\n\\[\n (a + b)^n = \\binom{n}{0}a^n + \\binom{n}{1}a^{n-1}b + \\binom{n}{2}a^{n-2}b^2 + \\cdots + \\binom{n}{n}b^n\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Why does this work? When expanding $(a+b)^n$, we multiply $n$ factors \nof $(a+b)$. Each term in the expansion comes from choosing $a$ from \nsome factors and $b$ from others. The coefficient $\\binom{n}{k}$ counts \nthe number of ways to choose $k$ factors to contribute $b$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.6",
+      "number": "10.6",
+      "title": "Expanding binomials",
+      "problem": "Expand $(x + y)^4$.",
+      "solution": "Using the binomial theorem with $n = 4$:\n$$\n (x + y)^4 &= \\binom{4}{0}x^4 + \\binom{4}{1}x^3y + \\binom{4}{2}x^2y^2 + \\binom{4}{3}xy^3 + \\binom{4}{4}y^4 \\\\\n &= 1 \\cdot x^4 + 4x^3y + 6x^2y^2 + 4xy^3 + 1 \\cdot y^4 \\\\\n &= x^4 + 4x^3y + 6x^2y^2 + 4xy^3 + y^4\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.7",
+      "number": "10.7",
+      "title": "Binomial with subtraction",
+      "problem": "Expand $(2x - 3)^5$.",
+      "solution": "Let $a = 2x$ and $b = -3$:\n$$\n (2x - 3)^5 &= \\sum_{k=0}^{5} \\binom{5}{k} (2x)^{5-k} (-3)^k \\\\\n &= \\binom{5}{0}(2x)^5(-3)^0 + \\binom{5}{1}(2x)^4(-3)^1 + \\binom{5}{2}(2x)^3(-3)^2 \\\\\n &\\quad + \\binom{5}{3}(2x)^2(-3)^3 + \\binom{5}{4}(2x)^1(-3)^4 + \\binom{5}{5}(2x)^0(-3)^5 \\\\\n &= 32x^5 + 5(16x^4)(-3) + 10(8x^3)(9) + 10(4x^2)(-27) \\\\\n &\\quad + 5(2x)(81) + 1(1)(-243) \\\\\n &= 32x^5 - 240x^4 + 720x^3 - 1080x^2 + 810x - 243\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.8",
+      "number": "10.8",
+      "title": "Expand with fraction",
+      "problem": "Expand $\\left(x + \\frac{1}{x}\\right)^4$.",
+      "solution": "$$\n \\left(x + \\frac{1}{x}\\right)^4 &= \\binom{4}{0}x^4 + \\binom{4}{1}x^3 \\cdot \\frac{1}{x} + \\binom{4}{2}x^2 \\cdot \\frac{1}{x^2} + \\binom{4}{3}x \\cdot \\frac{1}{x^3} + \\binom{4}{4}\\frac{1}{x^4} \\\\\n &= x^4 + 4x^2 + 6 + \\frac{4}{x^2} + \\frac{1}{x^4}\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.9",
+      "number": "10.9",
+      "title": "Finding a specific term",
+      "problem": "Find the coefficient of $x^4$ in the expansion of $(x + 2)^7$.",
+      "solution": "The general term is $\\binom{7}{k}x^{7-k}(2)^k$.\n\nFor $x^4$, we need $7 - k = 4$, so $k = 3$.\n\nThe term is $\\binom{7}{3}x^4 \\cdot 2^3 = 35 \\cdot 8 \\cdot x^4 = 280x^4$.\n\nThe coefficient is $\\boxed{280}$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.10",
+      "number": "10.10",
+      "title": "Finding the term with $x^3$",
+      "problem": "Find the term containing $x^3$ in the expansion of $(2x - 3)^6$.",
+      "solution": "General term: $\\binom{6}{k}(2x)^{6-k}(-3)^k = \\binom{6}{k}2^{6-k}x^{6-k}(-3)^k$\n\nFor $x^3$, we need $6 - k = 3$, so $k = 3$.\n\nTerm: $\\binom{6}{3}(2)^3(-3)^3 x^3 = 20 \\cdot 8 \\cdot (-27) x^3 = -4320x^3$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.11",
+      "number": "10.11",
+      "title": "Middle term",
+      "problem": "Find the middle term of $(a + b)^6$.",
+      "solution": "For $(a + b)^6$, there are 7 terms (from $k = 0$ to $k = 6$).\n\nThe middle term is at $k = 3$:\n\\[\n \\binom{6}{3}a^3b^3 = 20a^3b^3\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.12",
+      "number": "10.12",
+      "title": "Finding constant term",
+      "problem": "Find the constant term in the expansion of $\\left(x^2 - \\frac{1}{x}\\right)^6$.",
+      "solution": "General term: $\\binom{6}{k}(x^2)^{6-k}\\left(-\\frac{1}{x}\\right)^k = \\binom{6}{k}(-1)^k x^{12-2k} \\cdot x^{-k} = \\binom{6}{k}(-1)^k x^{12-3k}$\n\nFor the constant term, the exponent of $x$ must be 0:\n$12 - 3k = 0 \\Rightarrow k = 4$\n\nConstant term: $\\binom{6}{4}(-1)^4 = 15 \\cdot 1 = 15$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.13",
+      "number": "10.13",
+      "title": "Sum of coefficients",
+      "problem": "Find the sum of all coefficients in the expansion of $(3x + 2)^5$.",
+      "solution": "The sum of coefficients is found by setting $x = 1$:\n\\[\n (3(1) + 2)^5 = 5^5 = 3125\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Binomial Probability"
+    },
+    {
+      "type": "paragraph",
+      "text": "The binomial theorem connects to probability when we have repeated \nindependent trials with two outcomes (success/failure)."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.2",
+      "number": "10.2",
+      "title": "Binomial Probability",
+      "content": "In $n$ independent trials with probability $p$ of success on each trial, \nthe probability of exactly $k$ successes is:\n\\[\n P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}\n\\]\nThis is called the **binomial distribution**."
+    },
+    {
+      "type": "paragraph",
+      "text": "Why this formula? For exactly $k$ successes:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$\\binom{n}{k}$ = number of ways to choose which $k$ trials are successes",
+        "$p^k$ = probability of $k$ successes",
+        "$(1-p)^{n-k}$ = probability of $n-k$ failures"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-10.14",
+      "number": "10.14",
+      "title": "Coin flips",
+      "problem": "A fair coin is flipped 6 times. Find the probability of getting \nexactly 4 heads.",
+      "solution": "Here $n = 6$, $k = 4$, $p = 0.5$:\n\\[\n P(X = 4) = \\binom{6}{4} (0.5)^4 (0.5)^2 = 15 \\cdot 0.0625 \\cdot 0.25 = 15 \\cdot \\frac{1}{64} = \\frac{15}{64} \\approx 0.234\n\\]\nAbout 23.4\\% chance of exactly 4 heads."
+    },
+    {
+      "type": "example",
+      "id": "example-10.15",
+      "number": "10.15",
+      "title": "Multiple-choice test",
+      "problem": "A multiple-choice test has 10 questions, each with 4 choices. If a \nstudent guesses randomly on all questions, find:\n\n1. The probability of getting exactly 5 correct\n\n2. The probability of getting at least 7 correct\n\n3. The probability of passing (at least 6 correct)",
+      "solution": "Here $n = 10$, $p = 0.25$, $q = 1 - p = 0.75$.\n\n1. $P(X = 5) = \\binom{10}{5} (0.25)^5 (0.75)^5$\n \\[\n = 252 \\cdot 0.0009766 \\cdot 0.2373 \\approx 0.0584\n \\]\n About 5.84\\% chance.\n\n2. $P(X \\geq 7) = P(X = 7) + P(X = 8) + P(X = 9) + P(X = 10)$\n $$\n P(7) &= \\binom{10}{7}(0.25)^7(0.75)^3 = 120 \\cdot 0.0000610 \\cdot 0.4219 \\approx 0.00309 \\\\\n P(8) &= \\binom{10}{8}(0.25)^8(0.75)^2 = 45 \\cdot 0.0000153 \\cdot 0.5625 \\approx 0.000386 \\\\\n P(9) &= \\binom{10}{9}(0.25)^9(0.75)^1 = 10 \\cdot 0.00000381 \\cdot 0.75 \\approx 0.0000286 \\\\\n P(10) &= \\binom{10}{10}(0.25)^{10} = 0.000000954\n $$\n Total: approximately $0.35\\%$ chance.\n\n3. $P(X \\geq 6) = P(6) + P(7) + P(8) + P(9) + P(10)$\n \n $P(6) = \\binom{10}{6}(0.25)^6(0.75)^4 = 210 \\cdot 0.000244 \\cdot 0.3164 \\approx 0.0162$\n \n Total: $0.0162 + 0.00309 + 0.000386 + 0.0000286 + 0.000001 \\approx 0.0197$\n \n About 2\\% chance of passing by pure guessing."
+    },
+    {
+      "type": "example",
+      "id": "example-10.16",
+      "number": "10.16",
+      "title": "Free throw shooting",
+      "problem": "A basketball player makes 80\\% of her free throws. In a game, she \nattempts 8 free throws. Find:\n\n1. The probability of making exactly 6\n\n2. The probability of making at least 7\n\n3. The probability of making all 8",
+      "solution": "$n = 8$, $p = 0.8$, $q = 0.2$\n\n1. $P(X = 6) = \\binom{8}{6}(0.8)^6(0.2)^2 = 28 \\cdot 0.2621 \\cdot 0.04 = 0.294$\n\n2. $P(X \\geq 7) = P(7) + P(8)$\n \n $P(7) = \\binom{8}{7}(0.8)^7(0.2)^1 = 8 \\cdot 0.2097 \\cdot 0.2 = 0.336$\n \n $P(8) = \\binom{8}{8}(0.8)^8 = 0.168$\n \n Total: $0.336 + 0.168 = 0.504$ (about 50\\% chance of at least 7)\n\n3. $P(X = 8) = (0.8)^8 = 0.168$ (about 17\\% chance of perfect)"
+    },
+    {
+      "type": "example",
+      "id": "example-10.17",
+      "number": "10.17",
+      "title": "Genetics: Mendel's peas",
+      "problem": "In Mendelian genetics, when two heterozygous plants (Yy) are crossed, \neach offspring has probability 3/4 of expressing the dominant trait. \nIf 5 offspring are produced, find:\n\n1. The probability that exactly 3 express the dominant trait\n\n2. The probability that all 5 express the dominant trait\n\n3. The probability that at least 4 express the dominant trait",
+      "solution": "$n = 5$, $p = 3/4 = 0.75$, $q = 1/4 = 0.25$\n\n1. $P(X = 3) = \\binom{5}{3}(0.75)^3(0.25)^2 = 10 \\cdot 0.4219 \\cdot 0.0625 = 0.264$\n\n2. $P(X = 5) = (0.75)^5 = 0.237$\n\n3. $P(X \\geq 4) = P(4) + P(5)$\n \n $P(4) = \\binom{5}{4}(0.75)^4(0.25)^1 = 5 \\cdot 0.3164 \\cdot 0.25 = 0.396$\n \n $P(5) = 0.237$\n \n Total: $0.396 + 0.237 = 0.633$ (about 63\\%)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of Combinations"
+    },
+    {
+      "type": "example",
+      "id": "example-10.18",
+      "number": "10.18",
+      "title": "Committee selection",
+      "problem": "A club has 15 members. In how many ways can a committee of 5 be \nselected if:\n\n1. There are no restrictions?\n\n2. The president must be on the committee?\n\n3. Two specific members cannot both be on the committee?\n\n4. At least one of two specific members must be on the committee?",
+      "solution": "1. $\\binom{15}{5} = \\frac{15!}{5! \\cdot 10!} = 3003$\n\n2. The president is automatically in. Choose 4 more from the \n remaining 14:\n \\[\n \\binom{14}{4} = 1001\n \\]\n\n3. Total committees minus committees with both specific members:\n \n Committees with both: Choose 3 more from remaining 13 = $\\binom{13}{3} = 286$\n \n Answer: $3003 - 286 = 2717$\n\n4. Total minus committees with neither:\n \n Committees with neither: Choose all 5 from remaining 13 = $\\binom{13}{5} = 1287$\n \n Answer: $3003 - 1287 = 1716$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.19",
+      "number": "10.19",
+      "title": "Mixed committee",
+      "problem": "A committee of 6 is to be formed from 8 men and 7 women. Find the \nnumber of committees with:\n\n1. Exactly 3 men and 3 women\n\n2. At least 4 women\n\n3. More men than women",
+      "solution": "1. Choose 3 men from 8, and 3 women from 7:\n \\[\n \\binom{8}{3} \\times \\binom{7}{3} = 56 \\times 35 = 1960\n \\]\n\n2. At least 4 women means 4, 5, or 6 women:\n $$\n &\\binom{7}{4}\\binom{8}{2} + \\binom{7}{5}\\binom{8}{1} + \\binom{7}{6}\\binom{8}{0} \\\\\n &= 35 \\times 28 + 21 \\times 8 + 7 \\times 1 \\\\\n &= 980 + 168 + 7 = 1155\n $$\n\n3. More men than women means 4, 5, or 6 men:\n $$\n &\\binom{8}{4}\\binom{7}{2} + \\binom{8}{5}\\binom{7}{1} + \\binom{8}{6}\\binom{7}{0} \\\\\n &= 70 \\times 21 + 56 \\times 7 + 28 \\times 1 \\\\\n &= 1470 + 392 + 28 = 1890\n $$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.20",
+      "number": "10.20",
+      "title": "Card hands",
+      "problem": "From a standard 52-card deck, how many 5-card hands contain:\n\n1. Exactly 3 aces?\n\n2. All cards of the same suit (a flush)?\n\n3. Exactly 2 kings and exactly 2 queens?\n\n4. At least one ace?\n\n5. All face cards (J, Q, K)?",
+      "solution": "1. Choose 3 aces from 4: $\\binom{4}{3} = 4$\n \n Choose 2 non-aces from 48: $\\binom{48}{2} = 1128$\n \n Total: $4 \\times 1128 = 4512$\n\n2. Choose 1 suit from 4: $\\binom{4}{1} = 4$\n \n Choose 5 cards from that suit's 13: $\\binom{13}{5} = 1287$\n \n Total: $4 \\times 1287 = 5148$\n\n3. Choose 2 kings from 4: $\\binom{4}{2} = 6$\n \n Choose 2 queens from 4: $\\binom{4}{2} = 6$\n \n Choose 1 other card from remaining 44: $\\binom{44}{1} = 44$\n \n Total: $6 \\times 6 \\times 44 = 1584$\n\n4. Total hands minus hands with no aces:\n \n Total: $\\binom{52}{5} = 2{,}598{,}960$\n \n No aces: $\\binom{48}{5} = 1{,}712{,}304$\n \n At least one ace: $2{,}598{,}960 - 1{,}712{,}304 = 886{,}656$\n\n5. There are 12 face cards (4 jacks, 4 queens, 4 kings):\n \n $\\binom{12}{5} = 792$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.21",
+      "number": "10.21",
+      "title": "Poker hands",
+      "problem": "Calculate the number of 5-card poker hands that are:\n\n1. Four of a kind\n\n2. Full house (three of one rank, two of another)\n\n3. Two pair",
+      "solution": "1. Choose which rank for the four: 13 ways\n \n Choose the fifth card from remaining 48: 48 ways\n \n Total: $13 \\times 48 = 624$\n\n2. Choose rank for the three: 13 ways\n \n Choose 3 suits from 4 for that rank: $\\binom{4}{3} = 4$\n \n Choose rank for the pair (from remaining 12): 12 ways\n \n Choose 2 suits from 4 for the pair: $\\binom{4}{2} = 6$\n \n Total: $13 \\times 4 \\times 12 \\times 6 = 3744$\n\n3. Choose 2 ranks for the pairs: $\\binom{13}{2} = 78$\n \n Choose 2 suits for each pair: $\\binom{4}{2} \\times \\binom{4}{2} = 36$\n \n Choose the fifth card (must be different rank): $\\binom{44}{1} = 44$\n \n Total: $78 \\times 36 \\times 44 = 123{,}552$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.22",
+      "number": "10.22",
+      "title": "Paths on a grid",
+      "problem": "How many shortest paths are there from corner A to corner B on a \n5×4 grid (5 blocks right and 4 blocks up)?",
+      "solution": "Any shortest path requires exactly 5 moves right (R) and 4 moves up (U), \nfor 9 moves total. The path is determined by choosing which 5 of the 9 \npositions are R (or equivalently, which 4 are U):\n\\[\n \\binom{9}{5} = \\binom{9}{4} = 126 \\text{ paths}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.23",
+      "number": "10.23",
+      "title": "Survey sampling",
+      "problem": "A quality control inspector must select 8 items from a batch of 50 for \ntesting. If the batch contains 5 defective items:\n\n1. How many samples contain exactly 2 defective items?\n\n2. How many samples contain at least 1 defective item?",
+      "solution": "1. Choose 2 defective from 5: $\\binom{5}{2} = 10$\n \n Choose 6 good from 45: $\\binom{45}{6} = 8{,}145{,}060$\n \n Total: $10 \\times 8{,}145{,}060 = 81{,}450{,}600$\n\n2. Total samples minus samples with 0 defective:\n \n Total: $\\binom{50}{8} = 536{,}878{,}650$\n \n No defective: $\\binom{45}{8} = 215{,}553{,}195$\n \n At least 1 defective: $536{,}878{,}650 - 215{,}553{,}195 = 321{,}325{,}455$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.24",
+      "number": "10.24",
+      "title": "Ice cream combinations",
+      "problem": "An ice cream shop offers 12 flavors. You can choose a sundae with \nexactly 3 scoops (they can be repeated flavors). How many different \nsundaes are possible if:\n\n1. All three scoops must be different flavors?\n\n2. Scoops can repeat?",
+      "solution": "1. All different: $\\binom{12}{3} = 220$ sundaes\n\n2. With repetition allowed, this is a \"combinations with repetition\" \n problem. The formula is $\\binom{n+r-1}{r}$ where $n$ = types and \n $r$ = selections:\n \\[\n \\binom{12 + 3 - 1}{3} = \\binom{14}{3} = 364 \\text{ sundaes}\n \\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Advanced Binomial Applications"
+    },
+    {
+      "type": "example",
+      "id": "example-10.25",
+      "number": "10.25",
+      "title": "Approximating $(1.02)^{10}$",
+      "problem": "Use the first three terms of the binomial expansion to approximate \n$(1.02)^{10}$.",
+      "solution": "Write $1.02 = 1 + 0.02$:\n$$\n (1 + 0.02)^{10} &\\approx \\binom{10}{0}(1)^{10} + \\binom{10}{1}(1)^9(0.02) + \\binom{10}{2}(1)^8(0.02)^2 \\\\\n &= 1 + 10(0.02) + 45(0.0004) \\\\\n &= 1 + 0.2 + 0.018 = 1.218\n$$\n\nThe actual value is $1.02^{10} = 1.21899...$, so our approximation is \naccurate to 3 decimal places!"
+    },
+    {
+      "type": "example",
+      "id": "example-10.26",
+      "number": "10.26",
+      "title": "Proving an identity",
+      "problem": "Prove that $\\binom{n}{0} + \\binom{n}{1} + \\binom{n}{2} + \\cdots + \\binom{n}{n} = 2^n$.",
+      "solution": "Using the binomial theorem with $a = 1$ and $b = 1$:\n\\[\n (1 + 1)^n = \\sum_{k=0}^{n} \\binom{n}{k} 1^{n-k} \\cdot 1^k = \\sum_{k=0}^{n} \\binom{n}{k}\n\\]\nTherefore $\\sum_{k=0}^{n} \\binom{n}{k} = 2^n$.\n\n*Combinatorial interpretation:* The left side counts all subsets \nof an $n$-element set (choosing 0, 1, 2, ..., or $n$ elements). The \nright side counts the same thing: each element is either in or out \nof the subset (2 choices per element, $n$ elements)."
+    },
+    {
+      "type": "example",
+      "id": "example-10.27",
+      "number": "10.27",
+      "title": "Sum of even-positioned terms",
+      "problem": "Find the sum $\\binom{n}{0} + \\binom{n}{2} + \\binom{n}{4} + \\cdots$",
+      "solution": "Using the binomial theorem:\n$$\n (1+1)^n &= \\binom{n}{0} + \\binom{n}{1} + \\binom{n}{2} + \\binom{n}{3} + \\cdots = 2^n \\\\\n (1-1)^n &= \\binom{n}{0} - \\binom{n}{1} + \\binom{n}{2} - \\binom{n}{3} + \\cdots = 0\n$$\n\nAdding these equations:\n\\[\n 2\\left[\\binom{n}{0} + \\binom{n}{2} + \\binom{n}{4} + \\cdots\\right] = 2^n\n\\]\n\nTherefore: $\\binom{n}{0} + \\binom{n}{2} + \\binom{n}{4} + \\cdots = 2^{n-1}$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Combinations**"
+    },
+    {
+      "type": "paragraph",
+      "text": "Evaluate: (a) $\\binom{9}{4}$ (b) $\\binom{12}{9}$ \n(c) $\\binom{15}{1}$ (d) $\\binom{8}{8}$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Decide if each requires permutations or combinations, then solve:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Choosing 3 books from 8 for vacation reading",
+        "Ranking the top 5 movies of the year from 20 nominees",
+        "Selecting 4 students for a debate team from 12 candidates",
+        "Arranging 5 paintings in a row at a gallery from 10 available"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "A pizza shop offers 10 toppings. How many different pizzas with \nexactly 4 toppings can be made?"
+    },
+    {
+      "type": "paragraph",
+      "text": "From a group of 6 Democrats and 5 Republicans, a committee of 5 is \nformed. How many committees have:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Exactly 3 Democrats?",
+        "A Democratic majority?",
+        "All members from the same party?"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Verify Pascal's Identity: $\\binom{8}{3} = \\binom{7}{2} + \\binom{7}{3}$"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Binomial Theorem**"
+    },
+    {
+      "type": "paragraph",
+      "text": "Expand completely:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$(x + 2)^5$",
+        "$(2a - b)^4$",
+        "$(x + y)^6$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Find the coefficient of:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$x^5$ in $(x + 3)^8$",
+        "$x^4y^2$ in $(x + y)^6$",
+        "$a^3b^5$ in $(2a + b)^8$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Find the constant term in $\\left(x^2 + \\frac{1}{x}\\right)^9$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Find the middle term(s) in $(a + b)^8$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Find the sum of all coefficients in $(2x + 3)^6$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Binomial Probability**"
+    },
+    {
+      "type": "paragraph",
+      "text": "A fair coin is tossed 8 times. Find the probability of:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Exactly 5 heads",
+        "At least 7 heads",
+        "Fewer than 3 heads"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "A basketball player has a 70\\% free throw percentage. If she takes \n10 free throws, find the probability that she makes:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Exactly 8",
+        "At least 8",
+        "Fewer than 6"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "In a certain population, 30\\% carry a recessive gene. \nIf 6 people are randomly selected:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "What is the probability exactly 2 carry the gene?",
+        "What is the probability at least 1 carries the gene?"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "A multiple-choice quiz has 8 questions, each with 5 choices. If you \nguess on every question:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "What is the probability of getting exactly 4 correct?",
+        "What is the probability of passing (5 or more correct)?"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "**Card Problems**"
+    },
+    {
+      "type": "paragraph",
+      "text": "From a standard 52-card deck, a 5-card hand is dealt. Find the number \nof hands containing:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "All hearts",
+        "Exactly 2 hearts and 3 clubs",
+        "At least 3 aces",
+        "No face cards"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "A bridge hand consists of 13 cards. How many bridge hands contain:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Exactly 5 spades?",
+        "All four aces?",
+        "No hearts?"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "**Applications**"
+    },
+    {
+      "type": "paragraph",
+      "text": "A student must answer 8 of 12 questions on an exam. In how many ways \ncan this be done if:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "There are no restrictions?",
+        "The first 2 questions are mandatory?",
+        "At least 5 of the first 7 must be answered?"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "A software team of 5 must be chosen from 7 programmers, 4 analysts, \nand 3 testers. How many teams have at least one person from each category?"
+    },
+    {
+      "type": "paragraph",
+      "text": "How many ways can a coach select a starting lineup of 9 players from \na team of 15 if the captain must be included?"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Challenge Problems**"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Matthew 18:20",
+      "text": "For where two or three gather in my \nname, there am I with them."
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 12:18",
+      "text": "But in fact God has placed the \nparts in the body, every one of them, just as He wanted them to be."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 25:2",
+      "text": "It is the glory of God to conceal a \nmatter; to search out a matter is the glory of kings."
+    },
+    {
+      "type": "scripture",
+      "reference": "Jeremiah 29:11",
+      "text": "For I know the plans I have for you, \ndeclares the Lord, plans to prosper you and not to harm you, plans to \ngive you hope and a future."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 147:4",
+      "text": "He determines the number of the stars and \ncalls them each by name."
+    }
+  ]
+}

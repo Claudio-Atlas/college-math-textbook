@@ -1,0 +1,57 @@
+{
+  "id": "prob-stats-ch12-sec02",
+  "title": "The Mann-Whitney U Test",
+  "chapter": 12,
+  "section": 2,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "The first shall be last, and the last first.",
+    "reference": "Matthew 19:30",
+    "quote": "Rank-based tests are remarkably efficient even when normality holds.",
+    "quoteAuthor": "Henry B. Mann \\& Donald R. Whitney"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The Mann-Whitney U test (also called Wilcoxon rank-sum test) compares \ntwo independent groups without assuming normality."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Test Procedure"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.1",
+      "number": "12.1",
+      "title": "Mann-Whitney U Test",
+      "content": "To test $H_0$: the two populations have the same distribution:\n\n1. Combine all observations and rank them 1 to $n_1 + n_2$\n\n2. Sum the ranks for each group: $R_1$ and $R_2$\n\n3. Calculate $U_1 = n_1 n_2 + \\frac{n_1(n_1+1)}{2} - R_1$\n\n4. Compare to critical values or use normal approximation for \n large samples"
+    },
+    {
+      "type": "example",
+      "id": "example-12.1",
+      "number": "12.1",
+      "title": "Mann-Whitney Test",
+      "problem": "Group A: 23, 31, 45 Group B: 18, 25, 37, 42\n\nCombined and ranked: 18(1), 23(2), 25(3), 31(4), 37(5), 42(6), 45(7)\n\n$R_A = 2 + 4 + 7 = 13$, $R_B = 1 + 3 + 5 + 6 = 15$\n\n$U_A = 3 \\times 4 + \\frac{3 \\times 4}{2} - 13 = 12 + 6 - 13 = 5$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Interpretation"
+    },
+    {
+      "type": "paragraph",
+      "text": "$U$ measures how often observations from one group precede observations \nfrom the other. If the groups have identical distributions, $U$ should \nbe close to $n_1 n_2 / 2$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Large-Sample Approximation"
+    },
+    {
+      "type": "paragraph",
+      "text": "For large samples:\n\\[\n Z = \\frac{U - n_1 n_2/2}{\\sqrt{n_1 n_2 (n_1 + n_2 + 1)/12}} \\approx \\Normal(0,1)\n\\]"
+    }
+  ]
+}

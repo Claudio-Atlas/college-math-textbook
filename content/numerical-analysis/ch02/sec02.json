@@ -1,0 +1,196 @@
+{
+  "id": "numerical-analysis-ch02-sec02",
+  "title": "Fixed-Point Iteration",
+  "chapter": 2,
+  "section": 2,
+  "book": "numerical-analysis",
+  "objectives": [
+    "Understand fixed points and their relationship to root-finding",
+    "Apply the fixed-point iteration algorithm",
+    "State and prove the Contraction Mapping Theorem",
+    "Analyze convergence rates using derivatives"
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Many iterative methods can be understood through the lens of **fixed-point iteration**: start from $x_0$ and repeatedly apply $x_{n+1} = g(x_n)$ for some function $g$. This simple framework unifies our understanding of Newton's method, the secant method, and many others."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Fixed Points and Root-Finding"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Fixed Point",
+      "content": "A value $r$ is a **fixed point** of a function $g$ if $g(r) = r$. Geometrically, the graph of $g$ intersects the line $y = x$ at $(r, r)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The connection to root-finding is immediate: if we rewrite $f(x) = 0$ as $x = g(x)$, then roots of $f$ become fixed points of $g$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Multiple Reformulations",
+      "problem": "Consider $x^3 - x - 2 = 0$ with root $r \\approx 1.5214$. This can be written as:\n\n1. $x = x^3 - 2$, so $g_1(x) = x^3 - 2$\n\n2. $x = (x + 2)^{1/3}$, so $g_2(x) = (x+2)^{1/3}$\n\n3. $x = \\dfrac{2}{x^2 - 1}$, so $g_3(x) = \\dfrac{2}{x^2-1}$\n\n4. $x = \\dfrac{x^3 + 2}{2x^2 + 1}$ (by adding $x$ to both sides and rearranging)\nAll have the same fixed point, but their convergence behaviors differ dramatically.",
+      "solution": ""
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "Fixed-Point Iteration",
+      "content": "Given a function $g$ and initial guess $x_0$, **fixed-point iteration** generates the sequence\n\\[\nx_{n+1} = g(x_n), \\quad n = 0, 1, 2, \\ldots\n\\]\nIf this sequence converges to some limit $r$, and $g$ is continuous, then $r$ is a fixed point of $g$:\n\\[\nr = \\lim_{n\\to\\infty} x_{n+1} = \\lim_{n\\to\\infty} g(x_n) = g\\left(\\lim_{n\\to\\infty} x_n\\right) = g(r).\n\\]"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-2.2",
+      "number": null,
+      "title": "Fixed-Point Iteration",
+      "content": "algorithmic[1]\n Function $g$, initial guess $x_0$, tolerance $\\varepsilon$, max iterations $N$\n Approximate fixed point $x_n$ or failure indication\n$n = 0$ **to** $N-1$\n $x_{n+1} \\gets g(x_n)$\n $|x_{n+1} - x_n| < \\varepsilon$\n $x_{n+1}$\n \n\n Failure Did not converge within $N$ iterations\nalgorithmic"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Contraction Mapping Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The fundamental result guaranteeing convergence is the Contraction Mapping Theorem (also called the Banach Fixed-Point Theorem)."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.3",
+      "number": "2.3",
+      "title": "Contraction Mapping",
+      "content": "A function $g: [a,b] \\to \\mathbb{R}$ is a **contraction** on $[a,b]$ if there exists a constant $L$ with $0 \\leq L < 1$ such that\n\\[\n|g(x) - g(y)| \\leq L|x - y| \\quad \\text{for all } x, y \\in [a,b].\n\\]\nThe constant $L$ is called the **Lipschitz constant** or **contraction factor**."
+    },
+    {
+      "type": "paragraph",
+      "text": "Geometrically, a contraction brings points closer together: the distance between $g(x)$ and $g(y)$ is strictly less than the distance between $x$ and $y$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Contraction Mapping Theorem",
+      "content": "Let $g: [a,b] \\to [a,b]$ be a contraction with factor $L < 1$. Then:\n\n1. $g$ has a *unique* fixed point $r \\in [a,b]$.\n\n2. For any $x_0 \\in [a,b]$, the sequence $x_{n+1} = g(x_n)$ converges to $r$.\n\n3. The error satisfies $|x_n - r| \\leq \\dfrac{L^n}{1-L}|x_1 - x_0|$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "**Existence:** Consider the sequence $x_0, x_1 = g(x_0), x_2 = g(x_1), \\ldots$ For any $n \\geq 1$:\n\\[\n|x_{n+1} - x_n| = |g(x_n) - g(x_{n-1})| \\leq L|x_n - x_{n-1}| \\leq L^n|x_1 - x_0|.\n\\]\nFor $m > n$:\n$$\n|x_m - x_n| &\\leq |x_{m} - x_{m-1}| + |x_{m-1} - x_{m-2}| + \\cdots + |x_{n+1} - x_n| \\\\\n&\\leq (L^{m-1} + L^{m-2} + \\cdots + L^n)|x_1 - x_0| \\\\\n&= L^n \\frac{1 - L^{m-n}}{1-L}|x_1 - x_0| \\leq \\frac{L^n}{1-L}|x_1 - x_0|.\n$$\nSince $L^n \\to 0$, the sequence is Cauchy, hence convergent. Let $r = \\lim x_n$. Since $g([a,b]) \\subseteq [a,b]$, all $x_n \\in [a,b]$, so $r \\in [a,b]$.\n\nTaking limits in $x_{n+1} = g(x_n)$ and using continuity of $g$:\n\\[\nr = \\lim_{n\\to\\infty} x_{n+1} = g\\left(\\lim_{n\\to\\infty} x_n\\right) = g(r).\n\\]\n\n**Uniqueness:** If $r$ and $s$ are both fixed points, then:\n\\[\n|r - s| = |g(r) - g(s)| \\leq L|r - s|.\n\\]\nSince $L < 1$, this implies $|r - s| = 0$, so $r = s$.\n\n**Error bound:** Taking $m \\to \\infty$ in the estimate above:\n\\[\n|x_n - r| = \\lim_{m\\to\\infty}|x_n - x_m| \\leq \\frac{L^n}{1-L}|x_1 - x_0|.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Convergence Rate Analysis"
+    },
+    {
+      "type": "paragraph",
+      "text": "For a differentiable function $g$, we can use the derivative to check the contraction condition."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Derivative Criterion for Convergence",
+      "content": "Let $g$ be continuously differentiable on an interval containing the fixed point $r$. If $|g'(r)| < 1$, then there exists an interval around $r$ in which fixed-point iteration converges for any starting point. Furthermore:\n\n1. The convergence is linear with rate $|g'(r)|$.\n\n2. If $g'(r) = 0$, convergence is at least quadratic.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Since $g'$ is continuous and $|g'(r)| < 1$, there exists $\\delta > 0$ such that $|g'(x)| \\leq L < 1$ for all $x \\in [r-\\delta, r+\\delta]$. By the Mean Value Theorem, for any $x, y$ in this interval:\n\\[\n|g(x) - g(y)| = |g'(\\xi)||x - y| \\leq L|x - y|\n\\]\nfor some $\\xi$ between $x$ and $y$. Thus $g$ is a contraction on a neighborhood of $r$.\n\nFor the rate: let $e_n = x_n - r$ be the error. By Taylor's theorem:\n\\[\ne_{n+1} = x_{n+1} - r = g(x_n) - g(r) = g'(\\xi_n)e_n\n\\]\nfor some $\\xi_n$ between $x_n$ and $r$. As $x_n \\to r$, we have $\\xi_n \\to r$ and $g'(\\xi_n) \\to g'(r)$, so:\n\\[\n\\lim_{n\\to\\infty} \\frac{|e_{n+1}|}{|e_n|} = |g'(r)|.\n\\]\nThis is the definition of linear convergence with asymptotic rate $|g'(r)|$.\n\nIf $g'(r) = 0$, Taylor expansion gives:\n\\[\ne_{n+1} = g(x_n) - g(r) = g'(r)e_n + \\frac{g''(\\xi_n)}{2}e_n^2 = \\frac{g''(\\xi_n)}{2}e_n^2,\n\\]\nshowing quadratic convergence."
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Comparing Fixed-Point Formulations",
+      "problem": "For $x^3 - x - 2 = 0$ with root $r \\approx 1.5214$, compare:\n\n**$g_1(x) = x^3 - 2$:**\n\\[\ng_1'(x) = 3x^2, \\quad |g_1'(r)| = 3(1.5214)^2 \\approx 6.94 > 1.\n\\]\n**Diverges.**\n\n**$g_2(x) = (x+2)^{1/3}$:**\n\\[\ng_2'(x) = \\frac{1}{3}(x+2)^{-2/3}, \\quad |g_2'(r)| = \\frac{1}{3}(3.5214)^{-2/3} \\approx 0.144 < 1.\n\\]\n**Converges** with rate $\\approx 0.144$. Each iteration reduces the error by about 86\\%.\n\nStarting from $x_0 = 1.5$:\n\n| $n$ | $x_n$ | Error |\n| 0 | 1.50000 | $2.14 \\times 10^{-2}$ |\n| 1 | 1.51829 | $3.09 \\times 10^{-3}$ |\n| 2 | 1.52092 | $4.62 \\times 10^{-4}$ |\n| 3 | 1.52131 | $6.91 \\times 10^{-5}$ |\n| 4 | 1.52137 | $1.03 \\times 10^{-5}$ |\n| 5 | 1.52138 | $1.55 \\times 10^{-6}$ |\n\nThe error ratio is approximately $0.144$ as predicted.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Constructing Convergent Formulations"
+    },
+    {
+      "type": "paragraph",
+      "text": "Given $f(x) = 0$, how do we find a $g$ with $|g'(r)| < 1$?"
+    },
+    {
+      "type": "method",
+      "id": "method-2.2",
+      "number": null,
+      "title": "Constructing Good Fixed-Point Functions",
+      "content": "1. **Add $x$ to both sides:** $f(x) = 0 \\Rightarrow x = x + f(x)$. This gives $g(x) = x + f(x)$, with $g'(x) = 1 + f'(x)$. Works if $-2 < f'(r) < 0$.\n\n2. **Multiply by a constant:** $g(x) = x + \\alpha f(x)$ for some $\\alpha \\neq 0$. Then $g'(x) = 1 + \\alpha f'(x)$. Choose $\\alpha$ so that $|1 + \\alpha f'(r)|$ is small.\n\n3. **Optimal $\\alpha$:** If $f'(r) \\neq 0$, set $\\alpha = -1/f'(r)$. Then $g'(r) = 1 + (-1/f'(r))f'(r) = 0$, giving quadratic convergence! This is Newton's method."
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Finding Optimal $\\alpha$",
+      "problem": "For $f(x) = x^2 - 3$ (finding $\\sqrt{3}$), we have $f'(x) = 2x$.\n\nAt the root $r = \\sqrt{3} \\approx 1.732$: $f'(r) = 2\\sqrt{3} \\approx 3.464$.\n\nOptimal $\\alpha = -1/f'(r) \\approx -0.289$. This gives:\n\\[\ng(x) = x - \\frac{x^2 - 3}{2x} = \\frac{x^2 + 3}{2x} = \\frac{1}{2}\\left(x + \\frac{3}{x}\\right).\n\\]\nThis is Newton's method, which we'll study in detail in the next section.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Geometric Interpretation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fixed-point iteration has a beautiful geometric interpretation. Starting from $x_0$ on the $x$-axis:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Move vertically to the curve $y = g(x)$, reaching $(x_0, g(x_0)) = (x_0, x_1)$.",
+        "Move horizontally to the line $y = x$, reaching $(x_1, x_1)$.",
+        "Repeat: move vertically to the curve, then horizontally to the line."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "This creates a \"staircase\" or \"cobweb\" pattern that spirals toward the fixed point (if $g'(r) < 0$) or steps directly toward it (if $g'(r) > 0$)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Error Estimation"
+    },
+    {
+      "type": "paragraph",
+      "text": "The following result helps us know when to stop iterating."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.3",
+      "number": "2.3",
+      "title": "A Posteriori Error Bound",
+      "content": "If $g$ is a contraction with factor $L$, and $x_n, x_{n+1}$ are consecutive iterates, then:\n\\[\n|x_n - r| \\leq \\frac{1}{1-L}|x_{n+1} - x_n| \\quad \\text{and} \\quad |x_{n+1} - r| \\leq \\frac{L}{1-L}|x_{n+1} - x_n|.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We have $|x_{n+1} - r| = |g(x_n) - g(r)| \\leq L|x_n - r|$. Also:\n$$\n|x_{n+1} - x_n| &= |x_{n+1} - r + r - x_n| \\\\\n&\\geq |x_n - r| - |x_{n+1} - r| \\\\\n&\\geq |x_n - r| - L|x_n - r| = (1-L)|x_n - r|.\n$$\nThus $|x_n - r| \\leq \\frac{1}{1-L}|x_{n+1} - x_n|$."
+    },
+    {
+      "type": "paragraph",
+      "text": "This says we can estimate the error from the change between consecutive iterates, if we know the contraction factor $L$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-2.2",
+      "number": null,
+      "title": "Estimating $L$ in Practice",
+      "content": "The theoretical $L$ may be hard to compute. A practical approach: track the ratios $|x_{n+1} - x_n|/|x_n - x_{n-1}|$ over several iterations. If these stabilize near some value, use that as an estimate of $L$."
+    }
+  ]
+}

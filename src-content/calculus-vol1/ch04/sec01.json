@@ -1,0 +1,382 @@
+{
+  "id": "vol1-ch04-sec01",
+  "title": "Derivatives of Polynomials and Exponential Functions",
+  "chapter": 4,
+  "section": 1,
+  "book": "vol1",
+  "epigraph": {
+    "text": "By wisdom the Lord laid the earth's foundations, by \nunderstanding he set the heavens in place.",
+    "reference": "Proverbs 3:19"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Remember computing $\\deriv{}{x}[x^{3}]$ from the limit definition in \nChapter [ch:derivative]? It took half a page of expanding \n$(x+h)^{3}$, canceling terms, and factoring. The answer was $3x^{2}$, \nand it was correct—but the labor was immense."
+    },
+    {
+      "type": "paragraph",
+      "text": "Watch this:\n\\[\n \\deriv{}{x}\\bigl[x^{3}\\bigr] = 3x^{3-1} = 3x^{2}.\n\\]\nOne line. The same answer. Welcome to the **Power Rule**."
+    },
+    {
+      "type": "paragraph",
+      "text": "In this section, we build our first collection of differentiation rules. \nEach rule is *proved* from the limit definition of the derivative \n(the definition does the heavy lifting once, so we never have to repeat \nthe work), and once established, it becomes a permanent tool. By the end \nof this section, you will be able to differentiate any polynomial—and \nthe natural exponential—in seconds."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Constant Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "We start with the simplest possible function: a constant."
+    },
+    {
+      "type": "paragraph",
+      "text": "If $f(x) = c$ for some constant $c$, then the graph of $f$ is a horizontal \nline. Its slope is $0$ everywhere. Let us confirm this from the definition."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "The Constant Rule",
+      "content": "If $c$ is any constant, then\n\\[\n \\deriv{}{x}[c] = 0.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $f(x) = c$. Then\n\\[\n f'(x) = \\limtozero{h} \\frac{f(x+h) - f(x)}{h}\n = \\limtozero{h} \\frac{c - c}{h}\n = \\limtozero{h} \\frac{0}{h}\n = \\limtozero{h} 0\n = 0. \\qedhere\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This should feel obvious: a function that never changes has a rate of \nchange of zero. But notice how quickly the limit definition confirms it."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Power Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Power Rule is arguably the single most useful differentiation formula. \nBefore we state it, let us look at the pattern."
+    },
+    {
+      "type": "paragraph",
+      "text": "In Chapter [ch:derivative], we computed the following derivatives from \nthe limit definition:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$\\deriv{}{x}[x^{1}] &= 1 = 1 \\cdot x^{0}, \\\\[4pt]\n  \\deriv{}{x}[x^{2}] &= 2x = 2 \\cdot x^{1}, \\\\[4pt]\n  \\deriv{}{x}[x^{3}] &= 3x^{2} = 3 \\cdot x^{2}.$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The pattern is unmistakable: the exponent comes down as a coefficient, and \nthe new exponent is one less than the original."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "The Power Rule",
+      "content": "If $n$ is any positive integer, then\n\\[\n \\deriv{}{x}\\bigl[x^{n}\\bigr] = n\\,x^{n-1}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We use the limit definition and the Binomial Theorem. Recall that\n\\[\n (x + h)^{n} = \\sum_{k=0}^{n}\\binom{n}{k} x^{n-k}\\,h^{k}\n = x^{n} + n\\,x^{n-1}\\,h + \\binom{n}{2}x^{n-2}\\,h^{2} + \\cdots + h^{n}.\n\\]\nTherefore,\n$$\n \\deriv{}{x}\\bigl[x^{n}\\bigr]\n &= \\limtozero{h}\\frac{(x+h)^{n} - x^{n}}{h} \\\\[6pt]\n &= \\limtozero{h}\\frac{x^{n} + n\\,x^{n-1}h + \\binom{n}{2}x^{n-2}h^{2} + \\cdots + h^{n} - x^{n}}{h} \\\\[6pt]\n &= \\limtozero{h}\\frac{n\\,x^{n-1}h + \\binom{n}{2}x^{n-2}h^{2} + \\cdots + h^{n}}{h} \\\\[6pt]\n &= \\limtozero{h}\\left[n\\,x^{n-1} + \\binom{n}{2}x^{n-2}h + \\cdots + h^{n-1}\\right] \\\\[6pt]\n &= n\\,x^{n-1}.\n$$\nEvery term after $n\\,x^{n-1}$ contains a factor of $h$, so those terms all \nvanish in the limit."
+    },
+    {
+      "type": "historical",
+      "id": "historical-4.1",
+      "number": null,
+      "title": "Isaac Newton (1643--1727) and Gottfried Leibniz (1646--1716)",
+      "content": "Both Newton and Leibniz discovered the Power Rule independently in the late \n1600s. Newton, a devout Christian who wrote more about theology than \nmathematics, saw his scientific work as uncovering the rational order God \nhad woven into creation. Leibniz, equally devout, described the universe \nas the \"best of all possible worlds\" designed by a perfect Creator. The \nPower Rule was among the earliest fruits of the calculus they both invented."
+    },
+    {
+      "type": "paragraph",
+      "text": "The Power Rule as stated applies to positive integers. We will extend it \nlater to all real exponents, but even now it handles an enormous class of \nfunctions."
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Applying the Power Rule",
+      "problem": "Differentiate $f(x) = x^{7}$.",
+      "solution": "By the Power Rule with $n = 7$,\n\\[\n f'(x) = 7x^{7-1} = 7x^{6}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "Rewriting before differentiating",
+      "problem": "Differentiate $g(x) = \\dfrac{1}{x^{4}}$.",
+      "solution": "We first rewrite $g$ using a negative exponent: $g(x) = x^{-4}$. Applying \nthe Power Rule (which we will prove works for negative integers shortly),\n\\[\n g'(x) = -4\\,x^{-4-1} = -4\\,x^{-5} = -\\frac{4}{x^{5}}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "In fact, the Power Rule holds for *all* real exponents—integer, \nrational, and irrational. We will prove the rational case using implicit \ndifferentiation in Section [sec:implicit-diff] and the general case \nusing logarithmic differentiation in Section [sec:log-invtrig-derivs]. \nFor now, we state the general version."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.3",
+      "number": "4.3",
+      "title": "The Power Rule (General Version)",
+      "content": "If $n$ is any real number, then\n\\[\n \\deriv{}{x}\\bigl[x^{n}\\bigr] = n\\,x^{n-1}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": "Fractional and negative exponents",
+      "problem": "Differentiate each function.\n\n1. $f(x) = \\sqrt{x}$\n\n2. $g(x) = x^{-3}$\n\n3. $h(x) = x^{\\pi}$",
+      "solution": "1. Write $f(x) = x^{1/2}$. Then $f'(x) = \\frac{1}{2}\\,x^{-1/2} \n = \\dfrac{1}{2\\sqrt{x}}$.\n\n2. $g'(x) = -3\\,x^{-4} = -\\dfrac{3}{x^{4}}$.\n\n3. $h'(x) = \\pi\\,x^{\\pi - 1}$. (Yes, $\\pi$ is just a constant exponent.)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Constant Multiple Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "What happens if we multiply a function by a constant? Intuitively, \nmultiplying by $c$ stretches the graph vertically by a factor of $c$, \nwhich should stretch the slope by the same factor."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.4",
+      "number": "4.4",
+      "title": "The Constant Multiple Rule",
+      "content": "If $c$ is a constant and $f$ is differentiable, then\n\\[\n \\deriv{}{x}\\bigl[c\\,f(x)\\bigr] = c\\,f'(x).\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$$\n \\deriv{}{x}\\bigl[c\\,f(x)\\bigr]\n &= \\limtozero{h}\\frac{c\\,f(x+h) - c\\,f(x)}{h} \\\\[6pt]\n &= \\limtozero{h}\\, c \\cdot \\frac{f(x+h) - f(x)}{h} \\\\[6pt]\n &= c \\cdot \\limtozero{h}\\frac{f(x+h) - f(x)}{h} \\\\[6pt]\n &= c\\,f'(x).\n$$\nWe used the Constant Multiple Law for limits \n(Theorem [thm:limit-laws]) in the third step."
+    },
+    {
+      "type": "example",
+      "id": "example-4.4",
+      "number": "4.4",
+      "title": null,
+      "problem": "Differentiate $f(x) = 5x^{8}$.",
+      "solution": "\\[\n f'(x) = 5 \\cdot \\deriv{}{x}\\bigl[x^{8}\\bigr] = 5 \\cdot 8x^{7} = 40x^{7}.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Sum and Difference Rules"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.5",
+      "number": "4.5",
+      "title": "The Sum and Difference Rules",
+      "content": "If $f$ and $g$ are both differentiable, then\n\\[\n \\deriv{}{x}\\bigl[f(x) + g(x)\\bigr] = f'(x) + g'(x)\n \\qquad\\text{and}\\qquad\n \\deriv{}{x}\\bigl[f(x) - g(x)\\bigr] = f'(x) - g'(x).\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We prove the Sum Rule; the Difference Rule follows by writing $f - g = f + (-1)\\cdot g$ \nand applying the Constant Multiple Rule.\n$$\n \\deriv{}{x}\\bigl[f(x) + g(x)\\bigr]\n &= \\limtozero{h}\\frac{\\bigl[f(x+h) + g(x+h)\\bigr] - \\bigl[f(x) + g(x)\\bigr]}{h} \\\\[6pt]\n &= \\limtozero{h}\\left[\\frac{f(x+h) - f(x)}{h} + \\frac{g(x+h) - g(x)}{h}\\right] \\\\[6pt]\n &= \\limtozero{h}\\frac{f(x+h) - f(x)}{h} + \\limtozero{h}\\frac{g(x+h) - g(x)}{h} \\\\[6pt]\n &= f'(x) + g'(x).\n$$\nWe used the Sum Law for limits in the third step."
+    },
+    {
+      "type": "paragraph",
+      "text": "Together, the Constant Multiple, Sum, and Difference Rules tell us that \ndifferentiation is a **linear operation**: it respects addition and \nscalar multiplication. This means we can differentiate any polynomial \n*term by term*."
+    },
+    {
+      "type": "example",
+      "id": "example-4.5",
+      "number": "4.5",
+      "title": "Differentiating a polynomial",
+      "problem": "Differentiate $p(x) = 3x^{5} - 7x^{3} + 2x^{2} - x + 4$.",
+      "solution": "We differentiate term by term:\n$$\n p'(x) &= \\deriv{}{x}\\bigl[3x^{5}\\bigr] - \\deriv{}{x}\\bigl[7x^{3}\\bigr]\n + \\deriv{}{x}\\bigl[2x^{2}\\bigr] - \\deriv{}{x}\\bigl[x\\bigr]\n + \\deriv{}{x}\\bigl[4\\bigr] \\\\[6pt]\n &= 3(5x^{4}) - 7(3x^{2}) + 2(2x) - 1 + 0 \\\\[6pt]\n &= 15x^{4} - 21x^{2} + 4x - 1.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.6",
+      "number": "4.6",
+      "title": "Rewriting radicals and fractions",
+      "problem": "Differentiate $g(t) = \\sqrt{t}\\,(t^{2} + 3)$.",
+      "solution": "First, expand (we will learn the Product Rule in Section [sec:product-quotient], \nbut for now, we expand):\n\\[\n g(t) = t^{1/2} \\cdot t^{2} + 3\\,t^{1/2} = t^{5/2} + 3\\,t^{1/2}.\n\\]\nNow differentiate term by term:\n\\[\n g'(t) = \\frac{5}{2}\\,t^{3/2} + 3 \\cdot \\frac{1}{2}\\,t^{-1/2}\n = \\frac{5}{2}\\,t^{3/2} + \\frac{3}{2\\sqrt{t}}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-4.7",
+      "number": "4.7",
+      "title": "Finding a tangent line",
+      "problem": "Find the equation of the tangent line to $y = x^{4} - 6x^{2} + 1$ at $x = 2$.",
+      "solution": "**Step 1: Find the point.** At $x = 2$,\n\\[\n y = 2^{4} - 6(2)^{2} + 1 = 16 - 24 + 1 = -7.\n\\]\nThe point is $(2, -7)$.\n\n**Step 2: Find the slope.** $y' = 4x^{3} - 12x$, so\n\\[\n y'(2) = 4(8) - 12(2) = 32 - 24 = 8.\n\\]\n\n**Step 3: Write the equation.** Using point-slope form:\n\\[\n y - (-7) = 8(x - 2) \\qquad\\Longrightarrow\\qquad y = 8x - 23.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Derivative of the Natural Exponential Function"
+    },
+    {
+      "type": "paragraph",
+      "text": "We now turn to a function that is fundamentally different from any polynomial: \nthe natural exponential function $f(x) = e^{x}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "In a polynomial like $x^{n}$, the variable is the *base* and the exponent \nis a constant. In $e^{x}$, the base is a constant and the *exponent* is \nthe variable. This difference is profound."
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us apply the limit definition:\n\\[\n \\deriv{}{x}\\bigl[e^{x}\\bigr] \n = \\limtozero{h}\\frac{e^{x+h} - e^{x}}{h}\n = \\limtozero{h}\\frac{e^{x}\\cdot e^{h} - e^{x}}{h}\n = e^{x}\\cdot\\limtozero{h}\\frac{e^{h} - 1}{h}.\n\\]\nEverything depends on the value of $\\limtozero{h}\\dfrac{e^{h} - 1}{h}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "We can estimate this limit numerically:"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "$h$",
+        "$\\dfrac{e^{h} - 1}{h}$"
+      ],
+      "rows": [
+        [
+          "$0.1$",
+          "$1.05171$"
+        ],
+        [
+          "$0.01$",
+          "$1.00502$"
+        ],
+        [
+          "$0.001$",
+          "$1.00050$"
+        ],
+        [
+          "$0.0001$",
+          "$1.00005$"
+        ]
+      ],
+      "alignment": [
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The limit is $1$. In fact, this is one of the defining properties of the \nnumber $e$: it is the unique base for which $\\limtozero{h}\\frac{e^{h} - 1}{h} = 1$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.6",
+      "number": "4.6",
+      "title": "Derivative of the Natural Exponential",
+      "content": "\\[\n \\deriv{}{x}\\bigl[e^{x}\\bigr] = e^{x}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is one of the most remarkable results in all of calculus: *the \nnatural exponential function is its own derivative*. No other function \n(aside from constant multiples of $e^{x}$ and the zero function) has this \nproperty. The rate at which $e^{x}$ grows is *exactly equal* to its \ncurrent value."
+    },
+    {
+      "type": "example",
+      "id": "example-4.8",
+      "number": "4.8",
+      "title": null,
+      "problem": "Differentiate $f(x) = 3e^{x} + 5x^{4} - 2$.",
+      "solution": "\\[\n f'(x) = 3e^{x} + 5(4x^{3}) - 0 = 3e^{x} + 20x^{3}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-4.9",
+      "number": "4.9",
+      "title": "The tangent line to the exponential",
+      "problem": "Find the equation of the tangent line to $y = e^{x}$ at $x = 0$.",
+      "solution": "At $x = 0$: $y = e^{0} = 1$, and $y' = e^{0} = 1$. The tangent line is\n\\[\n y - 1 = 1(x - 0) \\qquad\\Longrightarrow\\qquad y = x + 1.\n\\]\nThis is the linearization of $e^{x}$ near $x = 0$: for small $x$, \n$e^{x} \\approx 1 + x$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.10",
+      "number": "4.10",
+      "title": "Combining rules",
+      "problem": "Differentiate $h(x) = \\dfrac{2e^{x} + x^{3}}{5}$.",
+      "solution": "Since $\\frac{1}{5}$ is a constant factor,\n\\[\n h'(x) = \\frac{1}{5}\\bigl(2e^{x} + 3x^{2}\\bigr) = \\frac{2e^{x} + 3x^{2}}{5}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-4.11",
+      "number": "4.11",
+      "title": "Finding horizontal tangent lines",
+      "problem": "Find all points on the curve $y = x^{3} - 12x + 1$ where the tangent line \nis horizontal.",
+      "solution": "A tangent line is horizontal when $y' = 0$. We have\n\\[\n y' = 3x^{2} - 12 = 3(x^{2} - 4) = 3(x-2)(x+2).\n\\]\nSetting $y' = 0$ gives $x = 2$ or $x = -2$.\n\nAt $x = 2$: $y = 8 - 24 + 1 = -15$. At $x = -2$: $y = -8 + 24 + 1 = 17$.\n\nThe tangent line is horizontal at $(2, -15)$ and $(-2, 17)$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-4.1",
+      "number": null,
+      "title": "The Power Rule vs.\\ the Exponential Rule",
+      "content": "The Power Rule applies when the *base* is the variable: \n$\\deriv{}{x}[x^{n}] = nx^{n-1}$.\n\nThe Exponential Rule applies when the *exponent* is the variable: \n$\\deriv{}{x}[e^{x}] = e^{x}$.\n\nDo **not** confuse them! For instance, $\\deriv{}{x}[x^{5}] = 5x^{4}$ \n(Power Rule), but $\\deriv{}{x}[5^{x}]$ requires techniques we will develop \nin Section [sec:log-invtrig-derivs]."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Summary of Rules So Far"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Function**",
+        "**Derivative**"
+      ],
+      "rows": [
+        [
+          "$c$ (constant)",
+          "$0$"
+        ],
+        [
+          "$x^{n}$",
+          "$n\\,x^{n-1}$"
+        ],
+        [
+          "$c\\,f(x)$",
+          "$c\\,f'(x)$"
+        ],
+        [
+          "$f(x) + g(x)$",
+          "$f'(x) + g'(x)$"
+        ],
+        [
+          "$f(x) - g(x)$",
+          "$f'(x) - g'(x)$"
+        ],
+        [
+          "$e^{x}$",
+          "$e^{x}$"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "left"
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 22:29",
+      "text": "Do you see someone skilled in their work? \nThey will serve before kings; they will not serve before officials of \nlow rank."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 111:2",
+      "text": "Great are the works of the Lord, studied by \nall who delight in them."
+    },
+    {
+      "type": "scripture",
+      "reference": "Genesis 1:22",
+      "text": "God blessed them and said, \"Be fruitful and \nincrease in number and fill the water in the seas, and let the birds increase \non the earth.\""
+    },
+    {
+      "type": "quote",
+      "author": "Isaac Newton",
+      "text": "If I have seen further, it is by standing on \nthe shoulders of giants."
+    },
+    {
+      "type": "quote",
+      "author": "Leonhard Euler",
+      "text": "For since the fabric of the universe is most \nperfect and the work of a most wise Creator, nothing at all takes place in \nthe universe in which some rule of maximum or minimum does not appear."
+    }
+  ]
+}

@@ -1,0 +1,212 @@
+{
+  "id": "discrete-math-ch01-sec02",
+  "title": "Logical Connectives",
+  "chapter": 1,
+  "section": 2,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"If you love me, keep my commands.\"*{John 14:15}{An implication is the fundamental building block of mathematical reasoning.}{Alfred Tarski}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Simple propositions can be combined to form more complex statements using \n**logical connectives**. Just as grammar \nprovides rules for combining words into sentences, logic provides rules \nfor combining propositions into compound statements."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Negation"
+    },
+    {
+      "type": "paragraph",
+      "text": "The simplest connective is **negation**, which simply \nreverses the truth value of a proposition."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.1",
+      "number": "1.1",
+      "title": "Negation",
+      "content": "Let $p$ be a proposition. The **negation** of $p$, denoted $\\lnot p$ \n(read \"not $p$\"), is the proposition that is true when $p$ is false, \nand false when $p$ is true."
+    },
+    {
+      "type": "example",
+      "id": "example-1.1",
+      "number": "1.1",
+      "title": "Negation",
+      "problem": "Let $p$: \"It is raining.\" Then $\\lnot p$: \"It is not raining.\"\n\nIf $p$ is true (it is indeed raining), then $\\lnot p$ is false.\n\nIf $p$ is false (it is not raining), then $\\lnot p$ is true.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Conjunction"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.2",
+      "number": "1.2",
+      "title": "Conjunction",
+      "content": "Let $p$ and $q$ be propositions. The **conjunction** \nof $p$ and $q$, denoted $p \\land q$ (read \"$p$ and $q$\"), is true when \n*both* $p$ and $q$ are true, and false otherwise."
+    },
+    {
+      "type": "paragraph",
+      "text": "The conjunction $p \\land q$ requires both conjuncts to be true. If either \nis false, the whole conjunction is false."
+    },
+    {
+      "type": "example",
+      "id": "example-1.2",
+      "number": "1.2",
+      "title": "Conjunction",
+      "problem": "Let $p$: \"2 is even\" and $q$: \"3 is prime.\"\n\nThen $p \\land q$: \"2 is even and 3 is prime.\"\n\nSince both $p$ and $q$ are true, the conjunction $p \\land q$ is true.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Disjunction"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.3",
+      "number": "1.3",
+      "title": "Disjunction",
+      "content": "Let $p$ and $q$ be propositions. The **disjunction** \nof $p$ and $q$, denoted $p \\lor q$ (read \"$p$ or $q$\"), is true when \n*at least one* of $p$ or $q$ is true, and false only when both are false."
+    },
+    {
+      "type": "paragraph",
+      "text": "This is the **inclusive or**: \"$p$ or $q$ or \nboth.\" In everyday speech, \"or\" is sometimes used exclusively \n(\"soup or salad\" at a restaurant typically means one, not both), but \nin mathematics, \"or\" is always inclusive unless otherwise specified."
+    },
+    {
+      "type": "example",
+      "id": "example-1.3",
+      "number": "1.3",
+      "title": "Disjunction",
+      "problem": "Let $p$: \"Today is Monday\" and $q$: \"Today is Tuesday.\"\n\nThen $p \\lor q$: \"Today is Monday or today is Tuesday.\"\n\nIf today is Monday, then $p \\lor q$ is true (even though $q$ is false).\n\nIf today is Wednesday, then $p \\lor q$ is false (both are false).",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Conditional (Implication)"
+    },
+    {
+      "type": "paragraph",
+      "text": "The conditional is perhaps the most important connective in mathematics, \nas it underlies all theorems of the form \"if… then…\""
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.4",
+      "number": "1.4",
+      "title": "Conditional",
+      "content": "Let $p$ and $q$ be propositions. The **conditional** \n(or **implication**), denoted $p \\limplies q$ (read \"if $p$ then $q$\" \nor \"$p$ implies $q$\"), is false only when $p$ is true and $q$ is false. \nIn all other cases, it is true.\n\nWe call $p$ the **hypothesis** (or antecedent) and \n$q$ the **conclusion** (or consequent)."
+    },
+    {
+      "type": "paragraph",
+      "text": "The truth conditions for the conditional often confuse students. Consider: \n\"If it rains, then the ground is wet.\" This promise is broken only if \nit rains and the ground is *not* wet. If it doesn't rain, the promise \nis not broken regardless of whether the ground is wet."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-1.2",
+      "number": null,
+      "title": "Understanding Conditionals",
+      "content": "Think of $p \\limplies q$ as a promise. The promise is broken (false) only \nwhen the condition $p$ is met but the result $q$ is not delivered. If the \ncondition is never met, the promise is vacuously kept."
+    },
+    {
+      "type": "example",
+      "id": "example-1.4",
+      "number": "1.4",
+      "title": "Conditional",
+      "problem": "Consider the conditional: \"If you score 90\\% or above, then you get an A.\"\n\nLet $p$: \"You score 90\\% or above\" and $q$: \"You get an A.\"\n\n- If you score 95\\% and get an A: $p \\limplies q$ is **true**.\n\n- If you score 95\\% and don't get an A: $p \\limplies q$ is **false** (promise broken!).\n\n- If you score 80\\%: $p \\limplies q$ is **true** regardless of your grade (condition not met).",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Biconditional"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.5",
+      "number": "1.5",
+      "title": "Biconditional",
+      "content": "Let $p$ and $q$ be propositions. The **biconditional**, \ndenoted $p \\liff q$ (read \"$p$ if and only if $q$\"), is true when $p$ \nand $q$ have the same truth value, and false when they differ."
+    },
+    {
+      "type": "paragraph",
+      "text": "The biconditional is often abbreviated as \"iff\". It combines \nboth directions of implication: $p \\liff q$ means $(p \\limplies q) \\land \n(q \\limplies p)$."
+    },
+    {
+      "type": "example",
+      "id": "example-1.5",
+      "number": "1.5",
+      "title": "Biconditional",
+      "problem": "\"An integer is even if and only if it is divisible by 2.\"\n\nThis is a true biconditional: every even integer is divisible by 2 (one \ndirection), and every integer divisible by 2 is even (the other direction).",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Summary of Connectives"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Name**",
+        "**Symbol**",
+        "**Read as**",
+        "**True when**"
+      ],
+      "rows": [
+        [
+          "Negation",
+          "$\\lnot p$",
+          "not $p$",
+          "$p$ is false"
+        ],
+        [
+          "Conjunction",
+          "$p \\land q$",
+          "$p$ and $q$",
+          "both true"
+        ],
+        [
+          "Disjunction",
+          "$p \\lor q$",
+          "$p$ or $q$",
+          "at least one true"
+        ],
+        [
+          "Conditional",
+          "$p \\limplies q$",
+          "if $p$ then $q$",
+          "$p$ false or $q$ true"
+        ],
+        [
+          "Biconditional",
+          "$p \\liff q$",
+          "$p$ iff $q$",
+          "same truth value"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "center",
+        "center",
+        "left"
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Romans 3:4",
+      "text": "Let God be true, and every human being a liar."
+    },
+    {
+      "type": "scripture",
+      "reference": "Matthew 7:7",
+      "text": "Ask and it will be given to you; seek and \nyou will find; knock and the door will be opened to you."
+    }
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "id": "vol1-ch02-sec02",
+  "title": "The Limit of a Function",
+  "chapter": 2,
+  "section": 2,
+  "book": "vol1",
+  "epigraph": {
+    "text": "Though it is the smallest of all seeds, yet when it grows, it is the largest of garden plants and becomes a tree.",
+    "reference": "Matthew 13:32",
+    "quote": "The concept of limit is the foundation of the higher calculus.",
+    "quoteAuthor": "Augustin-Louis Cauchy"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "In Section [sec:tangent-velocity] we repeatedly encountered expressions \nlike $\\limtozero{h}\\,(2+h)$ and declared, without formal justification, that \nsuch a quantity \"approaches\" a particular value. We computed secant slopes \nfor smaller and smaller values of $h$, watched the numbers converge, and \ntrusted the pattern. But mathematics demands more than trust in patterns. \nIn this section we give the concept of a limit its proper name and explore \nwhat it means for a function to approach a value—even at points where the \nfunction itself may not be defined."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "An Intuitive Definition of Limits"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider the function\n\\[\n f(x) = \\frac{x^{2} - 1}{x - 1}.\n\\]\nThis function is undefined at $x = 1$ because substitution yields \n$\\frac{0}{0}$. But what happens to $f(x)$ as $x$ gets *close to* $1$ \nwithout actually equaling $1$? Let us investigate with a table."
+    },
+    {
+      "type": "table",
+      "headers": [
+        "$x < 1$ (from left)",
+        "$x > 1$ (from right)"
+      ],
+      "rows": [
+        [
+          "$x$",
+          "$f(x)$",
+          "$x$",
+          "$f(x)$"
+        ],
+        [
+          "$0.9$",
+          "$1.9$",
+          "$1.1$",
+          "$2.1$"
+        ],
+        [
+          "$0.99$",
+          "$1.99$",
+          "$1.01$",
+          "$2.01$"
+        ],
+        [
+          "$0.999$",
+          "$1.999$",
+          "$1.001$",
+          "$2.001$"
+        ],
+        [
+          "$0.9999$",
+          "$1.9999$",
+          "$1.0001$",
+          "$2.0001$"
+        ]
+      ],
+      "alignment": [
+        "right",
+        "center",
+        "center",
+        "right"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The values of $f(x)$ get closer and closer to $2$ as $x$ approaches $1$ from \neither side. We can verify this algebraically: for $x \\neq 1$,\n\\[\n f(x) = \\frac{x^{2}-1}{x-1} = \\frac{(x-1)(x+1)}{x-1} = x + 1.\n\\]\nSo $f$ agrees with the function $g(x) = x + 1$ everywhere except at $x = 1$, \nwhere $f$ is undefined and $g(1) = 2$. The graph of $f$ is the line $y = x+1$ \nwith a hole at the point $(1, 2)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "We write\n\\[\n \\limto{x \\to 1} \\frac{x^{2}-1}{x-1} = 2,\n\\]\nand we say \"the limit of $f(x)$ as $x$ approaches $1$ is $2$.\""
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Limit of a Function (Intuitive)",
+      "content": "We write\n\\[\n \\limto{x \\to a} f(x) = L\n\\]\nand say \"the **limit** of $f(x)$, as $x$ \napproaches $a$, equals $L$\" if we can make the values of $f(x)$ \n*arbitrarily close* to $L$ by restricting $x$ to be *sufficiently \nclose* to $a$ (on either side) but not equal to $a$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-2.2",
+      "number": null,
+      "title": "The limit does not care about $f(a)$",
+      "content": "The value of $\\limto{x \\to a} f(x)$ depends only on the values of $f$ \n*near* $a$, not on the value of $f$ *at* $a$ (which may not even \nexist). In the example above, $f(1)$ is undefined, yet \n$\\limto{x \\to 1} f(x) = 2$. Even if $f$ were defined at $a$ with a \n\"wrong\" value—say $f(1) = 17$—the limit as $x \\to 1$ would \n*still* be $2$."
+    },
+    {
+      "type": "paragraph",
+      "text": "This connects directly to Section [sec:tangent-velocity]. When we wrote \n$\\limtozero{h}\\,(2+h) = 2$, we were computing a limit: the values of $2+h$ \napproach $2$ as $h$ approaches $0$. The limit gave meaning to a difference \nquotient that was undefined at $h = 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Estimating Limits Numerically and Graphically"
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Estimating a limit from a table",
+      "problem": "Estimate $\\displaystyle\\limtozero{x}\\,\\frac{\\sin x}{x}$ using a table of \nvalues. (*Use radian mode.*)",
+      "solution": "| $x \\to 0^{-}$ | $x \\to 0^{+}$ |\n| $x$ | $\\dfrac{\\sin x}{x}$ | $x$ | $\\dfrac{\\sin x}{x}$ |\n| $-1.0$ | $0.84147$ | $1.0$ | $0.84147$ |\n| $-0.5$ | $0.95885$ | $0.5$ | $0.95885$ |\n| $-0.1$ | $0.99833$ | $0.1$ | $0.99833$ |\n| $-0.01$ | $0.99998$ | $0.01$ | $0.99998$ |\n| $-0.001$ | $1.00000$ | $0.001$ | $1.00000$ |\n\nThe values clearly approach $1$. We write \n$\\limtozero{x}\\dfrac{\\sin x}{x} = 1$. (We will prove this rigorously using \nthe Squeeze Theorem in a later section.)"
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Estimating a limit from a graph",
+      "problem": "Let $f$ be defined by\n\\[\n f(x) = \\begin{cases}\n x + 1 & \\text{if } x < 2, \\\\\n 5 & \\text{if } x = 2, \\\\\n 7 - x & \\text{if } x > 2.\n \\end{cases}\n\\]\nFind $\\limto{x \\to 2} f(x)$.",
+      "solution": "As $x$ approaches $2$ from the left, $f(x) = x+1$ approaches $2+1=3$. As \n$x$ approaches $2$ from the right, $f(x) = 7-x$ approaches $7-2=5$.\n\nThe left-hand approach gives $3$ and the right-hand approach gives $5$. \nSince these are different, the limit *does not exist*.\n\nNote that $f(2) = 5$, but this is irrelevant to the limit question. The \nfunction value at the point does not determine the limit."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "One-Sided Limits"
+    },
+    {
+      "type": "paragraph",
+      "text": "The previous example reveals that the behavior of a function as $x$ \napproaches $a$ may differ depending on whether $x$ approaches from the left \nor from the right. This motivates the notion of *one-sided limits*."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "One-Sided Limits",
+      "content": "We write\n\\[\n \\limto{x \\to a^{-}} f(x) = L\n\\]\nand say \"the **left-hand limit** of $f(x)$ as \n$x$ approaches $a$ is $L$\" if $f(x)$ can be made arbitrarily close to $L$ \nby taking $x$ sufficiently close to $a$ with $x < a$.\n\nSimilarly,\n\\[\n \\limto{x \\to a^{+}} f(x) = L\n\\]\nis the **right-hand limit**, requiring $x > a$."
+    },
+    {
+      "type": "paragraph",
+      "text": "In Example [ex:limit-graph-piecewise], we found \n$\\limto{x \\to 2^{-}} f(x) = 3$ and $\\limto{x \\to 2^{+}} f(x) = 5$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The following theorem connects one-sided limits to the two-sided limit."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Existence of a Two-Sided Limit",
+      "content": "$\\limto{x \\to a} f(x) = L$ \\;\\;if and only if\\;\\; \n$\\limto{x \\to a^{-}} f(x) = L$ \\;\\;and\\;\\; \n$\\limto{x \\to a^{+}} f(x) = L$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "In other words, the two-sided limit exists and equals $L$ precisely when \nboth one-sided limits exist and agree on the same value. When the one-sided \nlimits disagree—as in Example [ex:limit-graph-piecewise]—the \ntwo-sided limit does not exist."
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "The Heaviside step function",
+      "problem": "The **Heaviside function** is defined by\n\\[\n H(t) = \\begin{cases} 0 & \\text{if } t < 0, \\\\ 1 & \\text{if } t \\geq 0. \\end{cases}\n\\]\nEvaluate $\\limto{t \\to 0^{-}} H(t)$, \\;$\\limto{t \\to 0^{+}} H(t)$, \\;and \n$\\limto{t \\to 0} H(t)$.",
+      "solution": "For $t < 0$ (approaching from the left), $H(t) = 0$, so \n$\\limto{t \\to 0^{-}} H(t) = 0$.\n\nFor $t > 0$ (approaching from the right), $H(t) = 1$, so \n$\\limto{t \\to 0^{+}} H(t) = 1$.\n\nSince $0 \\neq 1$, the one-sided limits disagree, and by \nTheorem [thm:two-sided], $\\limto{t \\to 0} H(t)$ does not exist.\n\nThe Heaviside function models an abrupt switch—a light turning on, an \nelectrical circuit closing. The \"jump\" at $t=0$ is precisely what \nprevents the two-sided limit from existing."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "When Limits Fail to Exist"
+    },
+    {
+      "type": "historical",
+      "id": "historical-2.2",
+      "number": null,
+      "title": "Zeno of Elea (c.\\,490--430 BC)",
+      "content": "The Greek philosopher Zeno devised a series of famous paradoxes about \nmotion. In the paradox of Achilles and the Tortoise, swift Achilles can \nnever overtake the slow tortoise because he must first reach the point \nwhere the tortoise was, by which time the tortoise has moved ahead. The \nresolution of Zeno's paradoxes requires the concept of a limit—in \nparticular, the fact that an infinite sum can have a *finite* value. \nZeno's arguments troubled mathematicians and philosophers for over two \nmillennia, until the rigorous theory of limits, developed by Cauchy \nand Weierstrass in the 19th century, laid them to rest."
+    },
+    {
+      "type": "paragraph",
+      "text": "Not every limit exists. There are three common ways a limit can fail."
+    },
+    {
+      "type": "paragraph",
+      "text": "*1. Different one-sided limits (a jump).** \nWe saw this with the Heaviside function and the piecewise function in \nExample [ex:limit-graph-piecewise]."
+    },
+    {
+      "type": "paragraph",
+      "text": "*2. Unbounded behavior.** \nConsider $f(x) = 1/x^{2}$ near $x=0$. As $x \\to 0$, the values of $f(x)$ \ngrow without bound: $f(0.1) = 100$, $f(0.01) = 10{,}000$, \n$f(0.001) = 1{,}000{,}000$, and so on. The function does not approach any \nfinite number $L$, so $\\limtozero{x}\\,\\frac{1}{x^{2}}$ does not exist \n(as a finite limit). We sometimes write \n$\\limtozero{x}\\,\\frac{1}{x^{2}} = \\infty$ to indicate the unbounded growth, \nbut this is *not* saying the limit exists—$\\infty$ is not a real \nnumber. We study these *infinite limits* in detail in \nSection [sec:infinite-limits]."
+    },
+    {
+      "type": "paragraph",
+      "text": "*3. Oscillation.** \nConsider $g(x) = \\sin(1/x)$ near $x = 0$. As $x \\to 0$, the argument \n$1/x$ grows without bound, causing $\\sin(1/x)$ to oscillate between $-1$ \nand $1$ infinitely often. The function never settles toward any single \nvalue, so $\\limtozero{x}\\,\\sin(1/x)$ does not exist."
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "A limit involving $1/x$",
+      "problem": "Investigate $\\limtozero{x}\\,\\dfrac{1}{x}$.",
+      "solution": "As $x \\to 0^{+}$ (positive values approaching zero), $1/x$ grows \nwithout bound: $1/0.1 = 10$, $1/0.01 = 100$, $1/0.001 = 1000$, etc.\n\nAs $x \\to 0^{-}$ (negative values approaching zero), $1/x$ decreases \nwithout bound: $1/(-0.1) = -10$, $1/(-0.01) = -100$, etc.\n\nThe one-sided limits diverge in opposite directions:\n\\[\n \\limto{x \\to 0^{+}} \\frac{1}{x} = +\\infty, \\qquad\n \\limto{x \\to 0^{-}} \\frac{1}{x} = -\\infty.\n\\]\nTherefore $\\limtozero{x}\\,\\dfrac{1}{x}$ does not exist (even as an \ninfinite limit, since the two sides disagree)."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-2.2",
+      "number": null,
+      "title": "Estimating Limits Numerically",
+      "content": "To estimate $\\limto{x \\to a} f(x)$ using a table of values:\n\n1. Choose values of $x$ approaching $a$ from the left: \n $a - 0.1$, $a - 0.01$, $a - 0.001$, …\n\n2. Choose values approaching from the right: \n $a + 0.1$, $a + 0.01$, $a + 0.001$, …\n\n3. Compute $f(x)$ for each.\n\n4. If both columns approach the same value $L$, estimate the limit \n as $L$. If they approach different values (or grow unbounded, or \n oscillate), the two-sided limit does not exist."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "More Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-2.5",
+      "number": "2.5",
+      "title": "A limit that exists despite a hole",
+      "problem": "Evaluate $\\displaystyle\\limto{x \\to 3}\\,\\frac{x^{2} - 9}{x - 3}$.",
+      "solution": "Direct substitution gives $\\frac{0}{0}$, which is indeterminate. We factor:\n\\[\n \\frac{x^{2}-9}{x-3} = \\frac{(x-3)(x+3)}{x-3} = x + 3\n \\qquad (x \\neq 3).\n\\]\nSince $f(x) = x+3$ for all $x \\neq 3$, and we only care about values \n*near* $3$ (not at $3$):\n\\[\n \\limto{x \\to 3}\\,\\frac{x^{2}-9}{x-3} = \\limto{x \\to 3}(x+3) = 6.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-2.6",
+      "number": "2.6",
+      "title": "A limit involving absolute value",
+      "problem": "Evaluate $\\displaystyle\\limtozero{x}\\,\\frac{\\abs{x}}{x}$.",
+      "solution": "Recall that $\\abs{x} = x$ when $x > 0$ and $\\abs{x} = -x$ when $x < 0$.\n\n**From the right** ($x > 0$): \\;\n$\\dfrac{\\abs{x}}{x} = \\dfrac{x}{x} = 1$, \\;so \n$\\limto{x \\to 0^{+}}\\dfrac{\\abs{x}}{x} = 1$.\n\n**From the left** ($x < 0$): \\;\n$\\dfrac{\\abs{x}}{x} = \\dfrac{-x}{x} = -1$, \\;so \n$\\limto{x \\to 0^{-}}\\dfrac{\\abs{x}}{x} = -1$.\n\nSince $1 \\neq -1$, the two-sided limit does not exist."
+    },
+    {
+      "type": "example",
+      "id": "example-2.7",
+      "number": "2.7",
+      "title": "One-sided limits of a piecewise function",
+      "problem": "Let\n\\[\n g(x) = \\begin{cases}\n x^{2} & \\text{if } x < 1, \\\\\n 2 & \\text{if } x = 1, \\\\\n 3 - x & \\text{if } x > 1.\n \\end{cases}\n\\]\nFind $\\limto{x \\to 1^{-}} g(x)$, \\;$\\limto{x \\to 1^{+}} g(x)$, \\;and \n$\\limto{x \\to 1} g(x)$.",
+      "solution": "**Left-hand limit:** As $x \\to 1^{-}$, we use the rule $g(x) = x^{2}$, \nso $\\limto{x \\to 1^{-}} g(x) = 1^{2} = 1$.\n\n**Right-hand limit:** As $x \\to 1^{+}$, we use $g(x) = 3-x$, so \n$\\limto{x \\to 1^{+}} g(x) = 3 - 1 = 2$.\n\nSince $1 \\neq 2$, the two-sided limit $\\limto{x \\to 1} g(x)$ does not exist.\n\nAgain, the value $g(1) = 2$ plays no role in the limit computation."
+    },
+    {
+      "type": "example",
+      "id": "example-2.8",
+      "number": "2.8",
+      "title": "A limit where one-sided limits agree",
+      "problem": "Let\n\\[\n f(x) = \\begin{cases}\n x^{2} + 1 & \\text{if } x \\leq 2, \\\\\n 4x - 3 & \\text{if } x > 2.\n \\end{cases}\n\\]\nEvaluate $\\limto{x \\to 2} f(x)$.",
+      "solution": "**Left-hand limit:** $\\limto{x \\to 2^{-}} f(x) = 2^{2}+1 = 5$.\n\n**Right-hand limit:** $\\limto{x \\to 2^{+}} f(x) = 4(2)-3 = 5$.\n\nBoth one-sided limits equal $5$, so by Theorem [thm:two-sided]:\n\\[\n \\limto{x \\to 2} f(x) = 5.\n\\]\nMoreover, $f(2) = 2^{2}+1 = 5$ also equals $5$, so in this case the \nfunction value and the limit happen to agree. (They need not—but when \nthey do, we will later call $f$ *continuous* at $x=2$.)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Infinite Limits: A First Look"
+    },
+    {
+      "type": "paragraph",
+      "text": "Although we will study infinite limits thoroughly in \nSection [sec:infinite-limits], it is worth noting the notation here."
+    },
+    {
+      "type": "paragraph",
+      "text": "When the values of $f(x)$ grow without bound as $x \\to a$, we write \n$\\limto{x \\to a} f(x) = \\infty$ (or $-\\infty$). This is a descriptive \nshorthand, not a claim that the limit \"equals infinity.\" The symbol \n$\\infty$ is not a real number; the limit does not exist in the usual sense. \nWe say $f$ has a **vertical asymptote** at \n$x = a$ in this situation."
+    },
+    {
+      "type": "example",
+      "id": "example-2.9",
+      "number": "2.9",
+      "title": "Vertical asymptote",
+      "problem": "Describe the behavior of $f(x) = \\dfrac{1}{(x-3)^{2}}$ near $x = 3$.",
+      "solution": "As $x \\to 3$ from either side, $(x-3)^{2}$ is a small *positive* \nnumber, so $\\frac{1}{(x-3)^{2}}$ is a large positive number. We write\n\\[\n \\limto{x \\to 3}\\,\\frac{1}{(x-3)^{2}} = \\infty.\n\\]\nThe graph has a vertical asymptote at $x = 3$. Since both one-sided limits \ntend to $+\\infty$, we can write the two-sided statement.\n\nCompare with $g(x) = \\frac{1}{x-3}$, where \n$\\limto{x \\to 3^{+}} g(x) = +\\infty$ and \n$\\limto{x \\to 3^{-}} g(x) = -\\infty$. Here the two sides disagree \n(in sign), so we would simply say $\\limto{x \\to 3} g(x)$ does not exist."
+    },
+    {
+      "type": "historical",
+      "id": "historical-2.2",
+      "number": null,
+      "title": "Augustin-Louis Cauchy (1789--1857)",
+      "content": "It was the French mathematician Cauchy who first gave a clear, rigorous \ndefinition of the limit in his 1821 textbook *Cours d'analyse*. \nBefore Cauchy, calculus had been practiced successfully for over 150 years \nusing intuitive (and sometimes contradictory) notions of infinitesimals. \nCauchy insisted on logical precision: a quantity \"has the limit $L$\" if \nthe difference between it and $L$ can be made \"as small as one wishes.\" \nHis student Karl Weierstrass later refined this into the formal \n$\\varepsilon$-$\\delta$ definition we study in \nSection [sec:epsilon-delta]. Cauchy, a devout Catholic, saw no conflict \nbetween faith and rigorous mathematics. He wrote: \"I am a Christian; \nthat is to say, I believe in the divinity of Jesus Christ, as did Tycho \nBrahe, Copernicus, Descartes, Newton, Fermat, Leibniz, Pascal…\""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 19:1--2",
+      "text": "The heavens declare the glory of God; the \nskies proclaim the work of his hands. Day after day they pour forth speech; \nnight after night they reveal knowledge."
+    },
+    {
+      "type": "scripture",
+      "reference": "Hebrews 11:1",
+      "text": "Now faith is confidence in what we hope for \nand assurance about what we do not see."
+    },
+    {
+      "type": "quote",
+      "author": "Augustin-Louis Cauchy",
+      "text": "One must give the most \nprecise definition to the word {limit"
+    },
+    {
+      "type": "quote",
+      "author": "Blaise Pascal",
+      "text": "The heart has its reasons, which \nreason does not know."
+    }
+  ]
+}

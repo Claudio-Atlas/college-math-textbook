@@ -1,0 +1,372 @@
+{
+  "id": "vol1-ch04-sec02",
+  "title": "The Product and Quotient Rules",
+  "chapter": 4,
+  "section": 2,
+  "book": "vol1",
+  "objectives": [
+    "Apply the Product Rule to differentiate products of two or more functions",
+    "Apply the Quotient Rule to differentiate quotients of functions",
+    "Determine when to simplify expressions before differentiating versus applying differentiation rules directly",
+    "Find equations of tangent lines and locate horizontal tangents using the Product and Quotient Rules"
+  ],
+  "devotional": {
+    "title": "Fruitful Multiplication",
+    "scripture": "Genesis 1:28",
+    "content": "\"Be fruitful and increase in number; fill the earth and subdue it.\" God's first command to humanity was one of multiplication—to be fruitful and multiply. The Product Rule reveals how growth compounds: when two quantities multiply together, their rate of change involves both contributing their growth while the other holds steady, then switching roles. This mirrors how fruitfulness in God's kingdom often works—our gifts multiply when combined with others', each contribution amplifying the whole. Leibniz, who discovered this rule, saw mathematics as revealing the rational harmony God built into creation."
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "You might guess that the derivative of a product is the product of the derivatives: $\\frac{d}{dx}[f(x) \\cdot g(x)] \\stackrel{?}{=} f'(x) \\cdot g'(x)$. Let us test this guess."
+    },
+    {
+      "type": "paragraph",
+      "text": "We know that $\\frac{d}{dx}[x^2] = 2x$. But $x^2 = x \\cdot x$, so if the guess were correct, we would get $$\\frac{d}{dx}[x \\cdot x] \\stackrel{?}{=} \\frac{d}{dx}[x] \\cdot \\frac{d}{dx}[x] = 1 \\cdot 1 = 1.$$ Since $2x \\neq 1$, the guess is **wrong**. Differentiation does *not* distribute over multiplication so simply. We need a more careful rule."
+    },
+    {
+      "type": "paragraph",
+      "edition": "christian",
+      "text": "*\"Two are better than one, because they have a good return for their labor.\"* — Ecclesiastes 4:9"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Product Rule"
+    },
+    {
+      "type": "theorem",
+      "id": "thm-4.5",
+      "number": "4.5",
+      "title": "The Product Rule",
+      "content": "If $f$ and $g$ are both differentiable, then $$\\frac{d}{dx}[f(x)\\,g(x)] = f'(x)\\,g(x) + f(x)\\,g'(x).$$ In compact notation: $(fg)' = f'g + fg'$."
+    },
+    {
+      "type": "paragraph",
+      "text": "In words: the derivative of a product is the \"derivative of the first times the second, plus the first times the derivative of the second.\""
+    },
+    {
+      "type": "proof",
+      "content": "We start from the limit definition and use an algebraic trick: we *add and subtract* the same quantity to create two recognizable difference quotients. $$\\frac{d}{dx}[f(x)\\,g(x)] = \\lim_{h \\to 0} \\frac{f(x+h)\\,g(x+h) - f(x)\\,g(x)}{h}.$$ We add and subtract $f(x+h)\\,g(x)$ in the numerator: $$= \\lim_{h \\to 0} \\frac{f(x+h)\\,g(x+h) - f(x+h)\\,g(x) + f(x+h)\\,g(x) - f(x)\\,g(x)}{h}$$ $$= \\lim_{h \\to 0} \\left[f(x+h) \\cdot \\frac{g(x+h) - g(x)}{h} + g(x) \\cdot \\frac{f(x+h) - f(x)}{h}\\right].$$ Since $f$ is differentiable at $x$, it is continuous there, so $\\lim_{h \\to 0} f(x+h) = f(x)$. Also, $g(x)$ does not depend on $h$. Therefore, $$= f(x) \\cdot \\lim_{h \\to 0} \\frac{g(x+h) - g(x)}{h} + g(x) \\cdot \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}$$ $$= f(x)\\,g'(x) + g(x)\\,f'(x).$$ This is equivalent to $f'(x)\\,g(x) + f(x)\\,g'(x)$, since addition is commutative."
+    },
+    {
+      "type": "historical_note",
+      "title": "Gottfried Wilhelm Leibniz (1646–1716)",
+      "content": "Leibniz discovered the product rule around 1675 and published it in his landmark 1684 paper, the first published work on calculus. His notation $d(xy) = x\\,dy + y\\,dx$ made the rule visually elegant and easy to remember. A devout Lutheran, Leibniz believed that mathematics revealed the rational harmony God built into the universe, writing that \"the wisdom of God is displayed not only in the structure of the world but also in the abstract sciences.\""
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us verify the Product Rule on our earlier example."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.9",
+      "number": "4.9",
+      "title": "Verifying the Product Rule",
+      "problem": "Let $f(x) = x$ and $g(x) = x$. Verify that the Product Rule gives the correct derivative for $f(x)\\,g(x) = x^2$.",
+      "solution": "We know that $f(x)\\,g(x) = x^2$, whose derivative is $2x$. Using the Product Rule: $$(fg)' = f'g + fg' = (1)(x) + (x)(1) = x + x = 2x. \\quad \\checkmark$$"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.10",
+      "number": "4.10",
+      "title": "Product of Polynomial and Exponential",
+      "problem": "Differentiate $y = x^3 e^x$.",
+      "solution": "Let $f(x) = x^3$ and $g(x) = e^x$. Then $f'(x) = 3x^2$ and $g'(x) = e^x$. By the Product Rule, $$y' = f'(x)\\,g(x) + f(x)\\,g'(x)$$ $$= 3x^2 \\cdot e^x + x^3 \\cdot e^x$$ $$= e^x(3x^2 + x^3)$$ $$= x^2 e^x(3 + x).$$"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.11",
+      "number": "4.11",
+      "title": "Product of Three Factors",
+      "problem": "Differentiate $f(x) = x^2(2x + 1)(x - 3)$.",
+      "solution": "We could expand, but the Product Rule extends. Write $f = u \\cdot v \\cdot w$ where $u = x^2$, $v = 2x + 1$, $w = x - 3$. The derivative is $$f' = u'vw + uv'w + uvw'.$$ Computing: $u' = 2x$, $v' = 2$, $w' = 1$. Therefore, $$f'(x) = 2x(2x+1)(x-3) + x^2(2)(x-3) + x^2(2x+1)(1)$$ $$= 2x(2x+1)(x-3) + 2x^2(x-3) + x^2(2x+1).$$ If desired, we can expand and simplify: $$= 2x(2x^2 - 5x - 3) + 2x^3 - 6x^2 + 2x^3 + x^2$$ $$= 4x^3 - 10x^2 - 6x + 2x^3 - 6x^2 + 2x^3 + x^2$$ $$= 8x^3 - 15x^2 - 6x.$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Quotient Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "Having a rule for products, we naturally ask about quotients. We can derive the Quotient Rule from the Product Rule."
+    },
+    {
+      "type": "theorem",
+      "id": "thm-4.6",
+      "number": "4.6",
+      "title": "The Quotient Rule",
+      "content": "If $f$ and $g$ are differentiable and $g(x) \\neq 0$, then $$\\frac{d}{dx}\\left[\\frac{f(x)}{g(x)}\\right] = \\frac{f'(x)\\,g(x) - f(x)\\,g'(x)}{[g(x)]^2}.$$ In compact notation: $\\left(\\frac{f}{g}\\right)' = \\frac{f'g - fg'}{g^2}$."
+    },
+    {
+      "type": "proof",
+      "content": "Write $q(x) = \\frac{f(x)}{g(x)}$, so that $f(x) = q(x)\\,g(x)$. By the Product Rule, $$f'(x) = q'(x)\\,g(x) + q(x)\\,g'(x).$$ Solving for $q'(x)$: $$q'(x) = \\frac{f'(x) - q(x)\\,g'(x)}{g(x)} = \\frac{f'(x) - \\frac{f(x)}{g(x)} \\cdot g'(x)}{g(x)} = \\frac{f'(x)\\,g(x) - f(x)\\,g'(x)}{[g(x)]^2}.$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "A useful mnemonic: if we call the numerator \"hi\" and the denominator \"lo,\" then the Quotient Rule says $$\\left(\\frac{\\text{hi}}{\\text{lo}}\\right)' = \\frac{\\text{lo} \\cdot d(\\text{hi}) - \\text{hi} \\cdot d(\\text{lo})}{\\text{lo} \\cdot \\text{lo}}.$$ Some students remember: \"lo dee hi minus hi dee lo, over lo lo.\""
+    },
+    {
+      "type": "caution",
+      "title": "Sign in the Quotient Rule",
+      "content": "The Quotient Rule has a **subtraction** in the numerator. The order matters: it is $f'g - fg'$, *not* $fg' - f'g$. Many errors come from reversing this sign. Always start with the derivative of the *numerator*."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.12",
+      "number": "4.12",
+      "title": "A Simple Quotient",
+      "problem": "Differentiate $y = \\frac{x^2}{x + 1}$.",
+      "solution": "Let $f(x) = x^2$ and $g(x) = x + 1$. Then $f'(x) = 2x$ and $g'(x) = 1$. $$y' = \\frac{f'(x)\\,g(x) - f(x)\\,g'(x)}{[g(x)]^2}$$ $$= \\frac{2x(x+1) - x^2(1)}{(x+1)^2}$$ $$= \\frac{2x^2 + 2x - x^2}{(x+1)^2}$$ $$= \\frac{x^2 + 2x}{(x+1)^2}$$ $$= \\frac{x(x + 2)}{(x+1)^2}.$$"
+    },
+    {
+      "type": "paragraph",
+      "edition": "christian",
+      "text": "*\"For the Lord gives wisdom; from his mouth come knowledge and understanding.\"* — Proverbs 2:6"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.13",
+      "number": "4.13",
+      "title": "Quotient Involving Exponential",
+      "problem": "Differentiate $f(x) = \\frac{e^x}{x^2 + 1}$.",
+      "solution": "With numerator $e^x$ (derivative $e^x$) and denominator $x^2 + 1$ (derivative $2x$): $$f'(x) = \\frac{e^x(x^2+1) - e^x(2x)}{(x^2+1)^2}$$ $$= \\frac{e^x(x^2 + 1 - 2x)}{(x^2+1)^2}$$ $$= \\frac{e^x(x-1)^2}{(x^2+1)^2}.$$"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.14",
+      "number": "4.14",
+      "title": "Finding Where a Quotient Has a Horizontal Tangent",
+      "problem": "Find all points where the tangent line to $y = \\frac{x}{x^2+1}$ is horizontal.",
+      "solution": "A horizontal tangent occurs where $y' = 0$. By the Quotient Rule: $$y' = \\frac{(1)(x^2+1) - x(2x)}{(x^2+1)^2} = \\frac{x^2 + 1 - 2x^2}{(x^2+1)^2} = \\frac{1 - x^2}{(x^2+1)^2}.$$ Setting $y' = 0$: the denominator $(x^2+1)^2$ is never zero, so we need $1 - x^2 = 0$, giving $x = \\pm 1$.\n\nAt $x = 1$: $y = \\frac{1}{2}$. At $x = -1$: $y = \\frac{-1}{2}$.\n\nThe tangent line is horizontal at $\\left(1, \\frac{1}{2}\\right)$ and $\\left(-1, -\\frac{1}{2}\\right)$."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.15",
+      "number": "4.15",
+      "title": "A More Complex Quotient",
+      "problem": "Differentiate $g(x) = \\frac{x^3 - 2x}{x^2 + 4}$.",
+      "solution": "Let $f = x^3 - 2x$ (so $f' = 3x^2 - 2$) and $h = x^2 + 4$ (so $h' = 2x$). $$g'(x) = \\frac{(3x^2-2)(x^2+4) - (x^3-2x)(2x)}{(x^2+4)^2}$$ $$= \\frac{3x^4 + 12x^2 - 2x^2 - 8 - 2x^4 + 4x^2}{(x^2+4)^2}$$ $$= \\frac{x^4 + 14x^2 - 8}{(x^2+4)^2}.$$"
+    },
+    {
+      "type": "example",
+      "id": "ex-4.16",
+      "number": "4.16",
+      "title": "When NOT to Use the Quotient Rule",
+      "problem": "Differentiate $y = \\frac{5x^4 - 3x^2}{x}$.",
+      "solution": "We *could* use the Quotient Rule, but simplifying first is easier: $$y = \\frac{5x^4 - 3x^2}{x} = 5x^3 - 3x.$$ Therefore $y' = 15x^2 - 3$.\n\nThe lesson: before reaching for the Quotient Rule, check whether you can simplify."
+    },
+    {
+      "type": "strategy",
+      "title": "Choosing the Right Rule",
+      "content": "1. **Constant multiple, sum, or difference?** Use the basic linearity rules.\n2. **Can you simplify first?** Expanding or canceling common factors is often faster than the Product or Quotient Rule.\n3. **Product of non-simplifiable factors?** Use the Product Rule.\n4. **Quotient that cannot be simplified?** Use the Quotient Rule."
+    },
+    {
+      "type": "example",
+      "id": "ex-4.17",
+      "number": "4.17",
+      "title": "Second Derivative Using the Product Rule",
+      "problem": "Find $f''(x)$ if $f(x) = x^2 e^x$.",
+      "solution": "**First derivative:** $$f'(x) = 2x\\,e^x + x^2\\,e^x = e^x(2x + x^2).$$ **Second derivative** (apply Product Rule to $e^x(x^2 + 2x)$): $$f''(x) = e^x(x^2 + 2x) + e^x(2x + 2)$$ $$= e^x(x^2 + 2x + 2x + 2)$$ $$= e^x(x^2 + 4x + 2).$$"
+    },
+    {
+      "type": "paragraph",
+      "edition": "christian",
+      "text": "*\"If any of you lacks wisdom, you should ask God, who gives generously to all without finding fault, and it will be given to you.\"* — James 1:5"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.1",
+      "number": "1",
+      "problem": "Differentiate $f(x) = x^{2}(3x + 1)$ using the Product Rule."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.2",
+      "number": "2",
+      "problem": "Differentiate $g(x) = (x^{3} + 1)(2x - 5)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.3",
+      "number": "3",
+      "problem": "Differentiate $h(x) = (4x^{2} - x)(x^{3} + 2)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.4",
+      "number": "4",
+      "problem": "Differentiate $y = x\\,e^{x}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.5",
+      "number": "5",
+      "problem": "Differentiate $f(x) = (x^{2} + 3x)\\,e^{x}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.6",
+      "number": "6",
+      "problem": "Differentiate $y = \\sqrt{x}\\,(x^{2} - 1)$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.7",
+      "number": "7",
+      "problem": "Differentiate $f(x) = \\frac{x}{x + 1}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.8",
+      "number": "8",
+      "problem": "Differentiate $g(x) = \\frac{2x + 3}{x - 1}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.9",
+      "number": "9",
+      "problem": "Differentiate $h(x) = \\frac{x^{2} - 1}{x^{2} + 1}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.10",
+      "number": "10",
+      "problem": "Differentiate $y = \\frac{e^{x}}{x}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.11",
+      "number": "11",
+      "problem": "Differentiate $f(x) = \\frac{x^{3}}{x^{2} + 4}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.12",
+      "number": "12",
+      "problem": "Differentiate $g(t) = \\frac{t}{t^{2} + 1}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.13",
+      "number": "13",
+      "problem": "Differentiate $y = \\frac{x^{2} + x + 1}{x^{2} - x + 1}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.14",
+      "number": "14",
+      "problem": "Differentiate $f(x) = \\frac{1 - xe^{x}}{x + e^{x}}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.15",
+      "number": "15",
+      "problem": "Find the equation of the tangent line to $y = \\frac{x}{x+2}$ at $x = 0$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.16",
+      "number": "16",
+      "problem": "Find the equation of the tangent line to $y = x^{2}\\,e^{x}$ at $x = 1$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.17",
+      "number": "17",
+      "problem": "Find all values of $x$ where $f(x) = \\frac{x^{2}}{x + 3}$ has a horizontal tangent line."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.18",
+      "number": "18",
+      "problem": "Find $f''(x)$ if $f(x) = x\\,e^{x}$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.19",
+      "number": "19",
+      "problem": "Differentiate $y = \\frac{ax + b}{cx + d}$ where $a, b, c, d$ are constants. Under what condition is $y' = 0$ for some $x$?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.20",
+      "number": "20",
+      "problem": "Differentiate $f(x) = \\frac{3x^{2} - 5x}{2x + 1}$ and simplify."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.21",
+      "number": "21",
+      "problem": "Verify the Product Rule by differentiating $f(x) = (x^{2}+1)(x^{3}+1)$ both by expanding and by the Product Rule."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.22",
+      "number": "22",
+      "problem": "Verify the Quotient Rule by differentiating $f(x) = \\frac{x^{3}}{x}$ both by simplifying and by the Quotient Rule."
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.23",
+      "number": "23",
+      "problem": "Differentiate $f(x) = (x^{2} + 1)(x^{3} - 1)(2x + 5)$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.24",
+      "number": "24",
+      "problem": "If $f(1) = 3$, $f'(1) = -2$, $g(1) = 5$, $g'(1) = 4$, find $(fg)'(1)$ and $(f/g)'(1)$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.25",
+      "number": "25",
+      "problem": "Find the second derivative of $y = \\frac{x}{x^{2} + 1}$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.26",
+      "number": "26",
+      "problem": "If $h(x) = f(x)\\,g(x)$ and $f(2) = 3$, $f'(2) = -1$, $g(2) = -4$, $g'(2) = 2$, find $h'(2)$.",
+      "challenging": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.27",
+      "number": "27",
+      "problem": "Derive the Quotient Rule directly from the limit definition (without using the Product Rule).",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.28",
+      "number": "28",
+      "problem": "Prove that if $f$ and $g$ are differentiable, then $(fgh)' = f'gh + fg'h + fgh'$.",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.29",
+      "number": "29",
+      "problem": "Show that the derivative of $\\frac{1}{g(x)}$ is $\\frac{-g'(x)}{[g(x)]^{2}}$, and use this to re-derive the Quotient Rule.",
+      "proof": true
+    },
+    {
+      "type": "exercise",
+      "id": "ex4.2.30",
+      "number": "30",
+      "problem": "A certain species of fish has a body mass (in grams) approximated by $M(t) = \\frac{200t}{t + 10}$ where $t$ is the age in months. Find $M'(t)$ and interpret $M'(5)$ in context.",
+      "proof": true,
+      "creation_reveals": true
+    }
+  ]
+}

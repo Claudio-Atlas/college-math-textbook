@@ -1,0 +1,244 @@
+{
+  "id": "linear-algebra-proofs-ch07-sec02",
+  "title": "Singular Value Decomposition",
+  "chapter": 7,
+  "section": 2,
+  "book": "linear-algebra-proofs",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The spectral theorem provides a complete structure theory for normal \noperators. But what about operators that are not normal, or more \ngenerally, linear maps $T: V \\to W$ between *different* inner \nproduct spaces? The Singular Value Decomposition (SVD) extends the \nideas of the spectral theorem to arbitrary linear maps."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Singular Values"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Singular Values",
+      "content": "Let $T: V \\to W$ be a linear map between finite-dimensional inner \nproduct spaces. The **singular values** \nof $T$ are the nonnegative square roots of the eigenvalues of \n$T^*T: V \\to V$. That is, if $\\lambda_1 \\geq \\lambda_2 \\geq \\cdots \\geq \\lambda_n \\geq 0$ \nare the eigenvalues of $T^*T$, then the singular values are\n\\[\n\\sigma_i = \\sqrt{\\lambda_i} \\quad \\text{for } i = 1, \\ldots, n\n\\]\nWe order them as $\\sigma_1 \\geq \\sigma_2 \\geq \\cdots \\geq \\sigma_n \\geq 0$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Properties of $T^*T$",
+      "content": "For any linear map $T: V \\to W$:\n\n1. $T^*T$ is self-adjoint\n\n2. $T^*T$ is positive\n\n3. $\\ker T^*T = \\ker T$\n\n4. The eigenvalues of $T^*T$ are nonnegative",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(a) $(T^*T)^* = T^*(T^*)^* = T^*T$.\n\n(b) $\\langle T^*Tv, v \\rangle = \\langle Tv, Tv \\rangle = \\|Tv\\|^2 \\geq 0$.\n\n(c) $T^*Tv = 0 \\Leftrightarrow \\langle T^*Tv, v \\rangle = 0 \\Leftrightarrow \\|Tv\\|^2 = 0 \\Leftrightarrow Tv = 0$.\n\n(d) Follows from (b) and Theorem [thm:positive-characterization]."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "Singular Values and Eigenvalues of $TT^*$",
+      "content": "The nonzero eigenvalues of $T^*T$ and $TT^*$ coincide (with the same \nmultiplicities). Consequently, if $\\sigma$ is a nonzero singular value \nof $T$, then $\\sigma^2$ is an eigenvalue of both $T^*T$ and $TT^*$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\lambda \\neq 0$ be an eigenvalue of $T^*T$ with eigenvector $v \\neq 0$.\nThen $T^*Tv = \\lambda v$, so\n\\[\nTT^*(Tv) = T(T^*Tv) = T(\\lambda v) = \\lambda (Tv)\n\\]\nSince $\\lambda \\neq 0$ and $v \\in \\ker T^*T = \\ker T$ would require \n$\\lambda v = T^*Tv = 0$, we have $Tv \\neq 0$. Thus $\\lambda$ is an \neigenvalue of $TT^*$ with eigenvector $Tv$.\n\nA symmetric argument (using $(T^*)^*T^* = TT^*$) shows that nonzero \neigenvalues of $TT^*$ are eigenvalues of $T^*T$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Singular Value Decomposition"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.3",
+      "number": "7.3",
+      "title": "Singular Value Decomposition (SVD)",
+      "content": "Let $T: V \\to W$ be a linear map between finite-dimensional inner \nproduct spaces with $\\dim V = n$ and $\\dim W = m$. Then there exist \northonormal bases $(v_1, \\ldots, v_n)$ for $V$ and $(w_1, \\ldots, w_m)$ \nfor $W$ such that\n\\[\nTv_i = \\begin{cases}\n\\sigma_i w_i & \\text{if } i \\leq r \\\\\n0 & \\text{if } i > r\n\\end{cases}\n\\]\nwhere $\\sigma_1 \\geq \\cdots \\geq \\sigma_r > 0$ are the nonzero singular \nvalues of $T$, and $r = \\rank T$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Since $T^*T$ is positive and self-adjoint, by the Spectral Theorem, \nthere exists an orthonormal basis $(v_1, \\ldots, v_n)$ of $V$ \nconsisting of eigenvectors of $T^*T$:\n\\[\nT^*T v_i = \\sigma_i^2 v_i\n\\]\nwhere $\\sigma_1 \\geq \\cdots \\geq \\sigma_r > 0 = \\sigma_{r+1} = \\cdots = \\sigma_n$.\n\nFor $i \\leq r$, define $w_i = \\frac{1}{\\sigma_i} Tv_i$.\n\n**Claim:** $(w_1, \\ldots, w_r)$ is orthonormal.\n\nFor $i, j \\leq r$:\n\\[\n\\langle w_i, w_j \\rangle = \\left\\langle \\frac{Tv_i}{\\sigma_i}, \\frac{Tv_j}{\\sigma_j} \\right\\rangle = \\frac{1}{\\sigma_i \\sigma_j} \\langle Tv_i, Tv_j \\rangle = \\frac{1}{\\sigma_i \\sigma_j} \\langle T^*Tv_i, v_j \\rangle = \\frac{\\sigma_i^2}{\\sigma_i \\sigma_j} \\langle v_i, v_j \\rangle = \\frac{\\sigma_i}{\\sigma_j} \\delta_{ij}\n\\]\nSo $\\langle w_i, w_j \\rangle = \\delta_{ij}$.\n\nExtend $(w_1, \\ldots, w_r)$ to an orthonormal basis $(w_1, \\ldots, w_m)$ of $W$.\n\nFor $i \\leq r$: $Tv_i = \\sigma_i w_i$ by construction.\n\nFor $i > r$: $v_i \\in \\ker T^*T = \\ker T$, so $Tv_i = 0$."
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-7.1",
+      "number": "7.1",
+      "title": "Matrix Form of SVD",
+      "content": "Let $A \\in M_{m \\times n}(\\FF)$. Then there exist unitary matrices \n$U \\in M_{m \\times m}(\\FF)$ and $V \\in M_{n \\times n}(\\FF)$ such that\n\\[\nA = U \\Sigma V^*\n\\]\nwhere $\\Sigma \\in M_{m \\times n}(\\FF)$ is \"diagonal\" with entries \n$\\Sigma_{ii} = \\sigma_i$ for $i = 1, \\ldots, \\min(m,n)$, and all other \nentries zero. The diagonal entries are the singular values, ordered \n$\\sigma_1 \\geq \\sigma_2 \\geq \\cdots \\geq 0$.",
+      "label": "Corollary"
+    },
+    {
+      "type": "proof",
+      "content": "Let $(v_1, \\ldots, v_n)$ and $(w_1, \\ldots, w_m)$ be the orthonormal \nbases from Theorem [thm:svd] for the linear map $T_A: \\FF^n \\to \\FF^m$ \ndefined by $T_A(x) = Ax$. Let $V$ have columns $v_1, \\ldots, v_n$ and \n$U$ have columns $w_1, \\ldots, w_m$. Since these are orthonormal bases, \n$U$ and $V$ are unitary.\n\nThe relation $Av_i = \\sigma_i w_i$ (for $i \\leq r$) and $Av_i = 0$ \n(for $i > r$) translates to $AV = U\\Sigma$, hence $A = U\\Sigma V^*$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "SVD of a 2×3 Matrix",
+      "problem": "Find the SVD of $A = \\begin{pmatrix} 1 & 1 & 0 \\\\ 0 & 1 & 1 \\end{pmatrix}$.\n\n**Step 1:** Compute $A^*A = A^T A = \\begin{pmatrix} 1 & 1 & 0 \\\\ 1 & 2 & 1 \\\\ 0 & 1 & 1 \\end{pmatrix}$.\n\n**Step 2:** Find eigenvalues of $A^TA$.\n\\[\n\\det(A^TA - \\lambda I) = -\\lambda^3 + 4\\lambda^2 - 3\\lambda = -\\lambda(\\lambda - 1)(\\lambda - 3)\n\\]\nEigenvalues: $\\lambda_1 = 3$, $\\lambda_2 = 1$, $\\lambda_3 = 0$.\n\nSingular values: $\\sigma_1 = \\sqrt{3}$, $\\sigma_2 = 1$, $\\sigma_3 = 0$.\n\n**Step 3:** Find orthonormal eigenvectors of $A^TA$.\n$$\n\\lambda = 3: &\\quad v_1 = \\frac{1}{\\sqrt{6}}(1, 2, 1)^T \\\\\n\\lambda = 1: &\\quad v_2 = \\frac{1}{\\sqrt{2}}(1, 0, -1)^T \\\\\n\\lambda = 0: &\\quad v_3 = \\frac{1}{\\sqrt{3}}(1, -1, 1)^T\n$$\n\n**Step 4:** Compute $w_i = \\frac{1}{\\sigma_i}Av_i$ for $\\sigma_i > 0$.\n$$\nw_1 &= \\frac{1}{\\sqrt{3}} A v_1 = \\frac{1}{\\sqrt{3}} \\cdot \\frac{1}{\\sqrt{6}} \\begin{pmatrix} 1 & 1 & 0 \\\\ 0 & 1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 2 \\\\ 1 \\end{pmatrix} = \\frac{1}{\\sqrt{2}} \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} \\\\\nw_2 &= \\frac{1}{1} A v_2 = \\frac{1}{\\sqrt{2}} \\begin{pmatrix} 1 & 1 & 0 \\\\ 0 & 1 & 1 \\end{pmatrix} \\begin{pmatrix} 1 \\\\ 0 \\\\ -1 \\end{pmatrix} = \\frac{1}{\\sqrt{2}} \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}\n$$\n\n**Step 5:** Assemble the decomposition.\n\\[\nU = \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix}, \\quad\n\\Sigma = \\begin{pmatrix} \\sqrt{3} & 0 & 0 \\\\ 0 & 1 & 0 \\end{pmatrix}, \\quad\nV = \\begin{pmatrix} \\frac{1}{\\sqrt{6}} & \\frac{1}{\\sqrt{2}} & \\frac{1}{\\sqrt{3}} \\\\ \\frac{2}{\\sqrt{6}} & 0 & \\frac{-1}{\\sqrt{3}} \\\\ \\frac{1}{\\sqrt{6}} & \\frac{-1}{\\sqrt{2}} & \\frac{1}{\\sqrt{3}} \\end{pmatrix}\n\\]\nVerify: $A = U\\Sigma V^T$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Geometric Interpretation"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.4",
+      "number": "7.4",
+      "title": "Geometric Interpretation of SVD",
+      "content": "Let $T: V \\to W$ with SVD as in Theorem [thm:svd]. Then:\n\n1. The image of the unit ball $\\{v \\in V : \\|v\\| \\leq 1\\}$ under $T$ \nis an ellipsoid in $W$ with semi-axes of lengths $\\sigma_1, \\ldots, \\sigma_r$ \nin directions $w_1, \\ldots, w_r$.\n\n2. $T$ can be decomposed as: rotation/reflection in domain → \nscaling along axes → rotation/reflection in codomain.",
+      "label": "Theorem"
+    },
+    {
+      "type": "remark",
+      "id": "remark-7.2",
+      "number": null,
+      "title": "",
+      "content": "The SVD decomposition $A = U\\Sigma V^*$ expresses every matrix as \nthe composition of three fundamental operations:\n\n1. $V^*$: Rotate/reflect in the domain (change to the $v_i$ basis)\n\n2. $\\Sigma$: Scale by $\\sigma_i$ along each axis (and possibly \nchange dimension)\n\n3. $U$: Rotate/reflect in the codomain (change to the $w_i$ basis)\nThis is the fundamental geometric content of the SVD: every linear \nmap is, in suitable orthonormal coordinates, just a scaling."
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Image of Unit Circle",
+      "problem": "For $A = \\begin{pmatrix} 2 & 0 \\\\ 0 & 1 \\end{pmatrix}$, the unit circle \n$\\{(x,y) : x^2 + y^2 = 1\\}$ maps to the ellipse $\\{(u,v) : (u/2)^2 + v^2 = 1\\}$.\n\nHere $A$ is already in SVD form with $\\sigma_1 = 2$, $\\sigma_2 = 1$, \n$U = V = I$. The semi-axes are 2 and 1.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Moore-Penrose Pseudoinverse"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.2",
+      "number": "7.2",
+      "title": "Pseudoinverse",
+      "content": "Let $T: V \\to W$ have SVD with singular values $\\sigma_1 \\geq \\cdots \\geq \\sigma_r > 0$ \nand orthonormal bases $(v_i)$, $(w_i)$ as in Theorem [thm:svd].\nThe **Moore-Penrose pseudoinverse** $T^+: W \\to V$ is defined by\n\\[\nT^+ w_i = \\begin{cases}\n\\frac{1}{\\sigma_i} v_i & \\text{if } i \\leq r \\\\\n0 & \\text{if } i > r\n\\end{cases}\n\\]"
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-7.2",
+      "number": "7.2",
+      "title": "Matrix Pseudoinverse",
+      "content": "If $A = U\\Sigma V^*$ is the SVD, then $A^+ = V\\Sigma^+ U^*$, where \n$\\Sigma^+$ is obtained from $\\Sigma$ by transposing and taking \nreciprocals of nonzero entries.",
+      "label": "Corollary"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.5",
+      "number": "7.5",
+      "title": "Characterization of the Pseudoinverse",
+      "content": "The Moore-Penrose pseudoinverse $T^+$ is the unique linear map \n$W \\to V$ satisfying the four **Moore-Penrose conditions**:\n\n1. $TT^+T = T$\n\n2. $T^+TT^+ = T^+$\n\n3. $(TT^+)^* = TT^+$ (i.e., $TT^+$ is self-adjoint)\n\n4. $(T^+T)^* = T^+T$ (i.e., $T^+T$ is self-adjoint)",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We verify the conditions using the SVD characterization.\n\n(i) For $v_i$ with $i \\leq r$: $TT^+Tv_i = TT^+(\\sigma_i w_i) = T(\\sigma_i \\cdot \\frac{1}{\\sigma_i} v_i) = Tv_i$.\n\nFor $v_i$ with $i > r$: $Tv_i = 0$ and $TT^+Tv_i = TT^+(0) = 0$.\n\n(ii) Similar verification.\n\n(iii) $TT^+w_i = T(\\frac{1}{\\sigma_i}v_i) = w_i$ for $i \\leq r$, and \n$TT^+w_i = 0$ for $i > r$. So $TT^+$ is the orthogonal projection \nonto $\\im T = \\spn\\{w_1, \\ldots, w_r\\}$, which is self-adjoint.\n\n(iv) $T^+T$ is the orthogonal projection onto $(\\ker T)^\\perp = \\spn\\{v_1, \\ldots, v_r\\}$.\n\nUniqueness requires showing these four conditions determine $T^+$, \nwhich we omit."
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "Pseudoinverse of a Matrix",
+      "problem": "For $A = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$, we have \n$\\sigma_1 = 1$, $\\sigma_2 = 0$, so $\\Sigma^+ = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix}$.\n\nWith $U = V = I$, we get $A^+ = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\end{pmatrix} = A$.\n\nVerify: $AA^+A = A$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of the SVD"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Operator Norm"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.6",
+      "number": "7.6",
+      "title": "Operator Norm and Singular Values",
+      "content": "For a linear map $T: V \\to W$, the **operator norm** is\n\\[\n\\|T\\| = \\sup_{v \\neq 0} \\frac{\\|Tv\\|}{\\|v\\|} = \\sup_{\\|v\\| = 1} \\|Tv\\| = \\sigma_1\n\\]\nwhere $\\sigma_1$ is the largest singular value.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "For any unit vector $v = \\sum_{i=1}^n c_i v_i$ (with $\\sum |c_i|^2 = 1$):\n\\[\n\\|Tv\\|^2 = \\left\\| \\sum_{i=1}^r c_i \\sigma_i w_i \\right\\|^2 = \\sum_{i=1}^r |c_i|^2 \\sigma_i^2 \\leq \\sigma_1^2 \\sum_{i=1}^r |c_i|^2 \\leq \\sigma_1^2\n\\]\nEquality holds when $v = v_1$, so $\\|T\\| = \\sigma_1$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Condition Number"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.3",
+      "number": "7.3",
+      "title": "Condition Number",
+      "content": "For an invertible matrix $A$, the **condition number** is\n\\[\n\\kappa(A) = \\|A\\| \\cdot \\|A^{-1}\\| = \\frac{\\sigma_{\\max}}{\\sigma_{\\min}}\n\\]\nwhere $\\sigma_{\\max}$ and $\\sigma_{\\min}$ are the largest and smallest \nsingular values."
+    },
+    {
+      "type": "remark",
+      "id": "remark-7.2",
+      "number": null,
+      "title": "",
+      "content": "The condition number measures numerical stability. If $\\kappa(A)$ is \nlarge, small perturbations to $b$ can cause large changes in the \nsolution to $Ax = b$. A matrix with $\\kappa(A)$ close to 1 is \n*well-conditioned*; a matrix with large $\\kappa(A)$ is \n*ill-conditioned*."
+    },
+    {
+      "type": "paragraph",
+      "text": "Least Squares Solutions"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.7",
+      "number": "7.7",
+      "title": "Least Squares via Pseudoinverse",
+      "content": "For any $A \\in M_{m \\times n}(\\FF)$ and $b \\in \\FF^m$, the vector \n$x^+ = A^+ b$ is the unique vector that:\n\n1. Minimizes $\\|Ax - b\\|$ (least squares solution)\n\n2. Among all minimizers, has minimal $\\|x\\|$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The minimizers of $\\|Ax - b\\|$ are exactly the solutions to the \n*normal equations* $A^*Ax = A^*b$.\n\nWrite $x = x_0 + z$ where $x_0 \\in (\\ker A)^\\perp$ and $z \\in \\ker A$.\nAny solution satisfies $A^*Ax_0 = A^*b$, and the solutions differ by \nelements of $\\ker A$.\n\nAmong these, $\\|x\\|^2 = \\|x_0\\|^2 + \\|z\\|^2$ is minimized when $z = 0$, \ngiving the unique minimal-norm solution $x_0 = A^+ b$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Low-Rank Approximation"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.8",
+      "number": "7.8",
+      "title": "Eckart-Young Theorem",
+      "content": "Let $A = U\\Sigma V^*$ have singular values $\\sigma_1 \\geq \\cdots \\geq \\sigma_r > 0$.\nFor any $k < r$, the best rank-$k$ approximation to $A$ (in the \noperator norm or Frobenius norm) is\n\\[\nA_k = \\sum_{i=1}^k \\sigma_i u_i v_i^*\n\\]\nwhere $u_i$, $v_i$ are the $i$-th columns of $U$ and $V$.\n\nThe approximation error is $\\|A - A_k\\| = \\sigma_{k+1}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "remark",
+      "id": "remark-7.2",
+      "number": null,
+      "title": "",
+      "content": "The Eckart-Young theorem is the theoretical foundation for:\n\n- Principal Component Analysis (PCA)\n\n- Image compression\n\n- Latent semantic analysis\n\n- Noise reduction\nBy keeping only the largest singular values, we capture the most \n\"significant\" directions while discarding noise."
+    },
+    {
+      "type": "paragraph",
+      "text": "Rank via SVD"
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-7.3",
+      "number": "7.3",
+      "title": "Rank Equals Number of Nonzero Singular Values",
+      "content": "$\\rank A = $ number of nonzero singular values of $A$.",
+      "label": "Corollary"
+    },
+    {
+      "type": "proof",
+      "content": "From the SVD, $\\im A = \\spn\\{w_1, \\ldots, w_r\\}$ has dimension $r$, \nwhich equals the number of positive singular values."
+    }
+  ]
+}

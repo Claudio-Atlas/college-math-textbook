@@ -1,0 +1,97 @@
+{
+  "id": "discrete-math-ch09-sec02",
+  "title": "Graph Connectivity",
+  "chapter": 9,
+  "section": 2,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"I am the vine; you are the branches. If you remain \nin me and I in you, you will bear much fruit.\"*{John 15:5}{A graph is connected if there is a path between every pair of vertices.}{Claude Berge}"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **connected** graph has paths between all pairs of vertices."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Path and Walk",
+      "content": "A **walk** in $G$ is a sequence $v_0, e_1, v_1, e_2, \\ldots, e_k, v_k$ \nwhere each $e_i$ connects $v_{i-1}$ and $v_i$.\n\nA **path** is a walk with no repeated vertices.\n\nA **cycle** is a walk where $v_0 = v_k$ and all other vertices are \ndistinct."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Connected Graph",
+      "content": "A graph is **connected** if there is a path \nbetween every pair of vertices.\n\nA **connected component** is a maximal \nconnected subgraph."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Connectivity",
+      "problem": "$K_5$ is connected (complete).\n\nA graph with vertices $\\{1, 2, 3, 4, 5\\}$ and edges $\\{12, 23, 45\\}$ has \ntwo components: $\\{1, 2, 3\\}$ and $\\{4, 5\\}$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Cut Vertices and Bridges"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.3",
+      "number": "9.3",
+      "title": "Cut Vertex and Bridge",
+      "content": "A **cut vertex** is a vertex whose removal \ndisconnects the graph.\n\nA **bridge** is an edge whose removal disconnects the \ngraph."
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Bridges of Königsberg",
+      "problem": "The graph modeling Königsberg's bridges has 4 vertices (land masses) and \n7 edges (bridges). Removing any single bridge still leaves the graph \nconnected, but removing enough bridges disconnects it.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Graph Isomorphism"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.4",
+      "number": "9.4",
+      "title": "Isomorphism",
+      "content": "Graphs $G_1 = (V_1, E_1)$ and $G_2 = (V_2, E_2)$ are **isomorphic**, \nwritten $G_1 \\cong G_2$, if there is a bijection $f: V_1 \\to V_2$ such that \n$\\{u, v\\} \\in E_1$ iff $\\{f(u), f(v)\\} \\in E_2$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Isomorphic graphs are \"the same\" structurally, differing only in how \nvertices are labeled."
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Non-isomorphic graphs",
+      "problem": "These graphs are NOT isomorphic:\n\n- Different numbers of vertices or edges\n\n- Different degree sequences\n\n- One has a cycle of length 3, the other doesn't",
+      "solution": ""
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-9.2",
+      "number": null,
+      "title": "Proving Graphs Are Not Isomorphic",
+      "content": "Show they differ in a graph invariant:\n\n- Number of vertices or edges\n\n- Degree sequence\n\n- Number of cycles of each length\n\n- Connectivity"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Colossians 2:19",
+      "text": "He has lost connection with the head, \nfrom whom the whole body, supported and held together by its ligaments \nand sinews, grows as God causes it to grow."
+    }
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "id": "prob-stats-ch04-sec02",
+  "title": "Expected Value and Variance for Continuous Variables",
+  "chapter": 4,
+  "section": 2,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "A good measure, pressed down, shaken together and running over.",
+    "reference": "Luke 6:38",
+    "quote": "The expected value is the center of gravity of the probability distribution.",
+    "quoteAuthor": "Christiaan Huygens"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The concepts of expected value and variance extend naturally to \ncontinuous random variables—sums simply become integrals."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Expected Value"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "Expected Value (Continuous)",
+      "content": "The **expected value** of a \ncontinuous random variable $X$ with PDF $f(x)$ is:\n\\[\n \\E[X] = \\int_{-\\infty}^{\\infty} x \\cdot f(x) \\, dx\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Expected Value of Uniform",
+      "problem": "Find $\\E[X]$ for $X \\sim \\Unif(a, b)$.",
+      "solution": "The PDF is $f(x) = \\frac{1}{b-a}$ for $a \\leq x \\leq b$.\n$$\n \\E[X] &= \\int_a^b x \\cdot \\frac{1}{b-a} \\, dx \n = \\frac{1}{b-a} \\left[ \\frac{x^2}{2} \\right]_a^b \\\\\n &= \\frac{1}{b-a} \\cdot \\frac{b^2 - a^2}{2} \n = \\frac{(b+a)(b-a)}{2(b-a)} \n = \\frac{a+b}{2}\n$$\nThe expected value is the midpoint of the interval."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Expected Value of a Function"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Expected Value of $g(X)$",
+      "content": "If $X$ is continuous with PDF $f(x)$ and $g$ is any function:\n\\[\n \\E[g(X)] = \\int_{-\\infty}^{\\infty} g(x) \\cdot f(x) \\, dx\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Variance and Standard Deviation"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.2",
+      "number": "4.2",
+      "title": "Variance (Continuous)",
+      "content": "The **variance** of $X$ is:\n\\[\n \\Var(X) = \\E[(X - \\mu)^2] = \\int_{-\\infty}^{\\infty} (x - \\mu)^2 f(x) \\, dx\n\\]\nEquivalently:\n\\[\n \\Var(X) = \\E[X^2] - (\\E[X])^2\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "Variance of Uniform",
+      "problem": "Find $\\Var(X)$ for $X \\sim \\Unif(a, b)$.",
+      "solution": "We found $\\E[X] = \\frac{a+b}{2}$. Now find $\\E[X^2]$:\n$$\n \\E[X^2] &= \\int_a^b x^2 \\cdot \\frac{1}{b-a} \\, dx \n = \\frac{1}{b-a} \\left[ \\frac{x^3}{3} \\right]_a^b \\\\\n &= \\frac{b^3 - a^3}{3(b-a)} \n = \\frac{(b-a)(b^2 + ab + a^2)}{3(b-a)} \n = \\frac{a^2 + ab + b^2}{3}\n$$\n\nTherefore:\n\\[\n \\Var(X) = \\frac{a^2 + ab + b^2}{3} - \\frac{(a+b)^2}{4} \n = \\frac{(b-a)^2}{12}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties (Same as Discrete)"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Properties of Expectation and Variance",
+      "content": "For constants $a$, $b$ and random variables $X$, $Y$:\n\n1. $\\E[aX + b] = a\\E[X] + b$\n\n2. $\\E[X + Y] = \\E[X] + \\E[Y]$ (always)\n\n3. $\\Var(aX + b) = a^2 \\Var(X)$\n\n4. $\\Var(X + Y) = \\Var(X) + \\Var(Y)$ (if $X$, $Y$ independent)",
+      "label": "Theorem"
+    }
+  ]
+}

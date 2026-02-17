@@ -1,0 +1,302 @@
+{
+  "id": "vol3-ch12-sec04",
+  "title": "The Cross Product",
+  "chapter": 12,
+  "section": 4,
+  "book": "vol3",
+  "epigraph": {
+    "text": "The heavens declare the glory of God; the skies proclaim the work of his hands.",
+    "reference": "Psalm 19:1"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The dot product takes two vectors and produces a scalar. The **cross product** (also called the **vector product**) takes two vectors and produces a third vector—one that is perpendicular to both inputs. This operation exists only in three dimensions (and, in a generalized sense, in seven dimensions), making it intrinsically tied to the geometry of our physical space."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition of the Cross Product"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.1",
+      "number": "12.1",
+      "title": "Cross Product",
+      "content": "The **cross product** of vectors $\\vect{u} = \\langle u_1, u_2, u_3 \\rangle$ and $\\vect{v} = \\langle v_1, v_2, v_3 \\rangle$ is the vector\n\\[\n \\vect{u} \\crossp \\vect{v} = \\langle u_2v_3 - u_3v_2,\\; u_3v_1 - u_1v_3,\\; u_1v_2 - u_2v_1 \\rangle.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This formula can be remembered using the determinant of a $3 \\times 3$ matrix:\n\\[\n u v ="
+    },
+    {
+      "type": "example",
+      "id": "example-12.1",
+      "number": "12.1",
+      "title": "Computing a cross product",
+      "problem": "Find $\\vect{u} \\crossp \\vect{v}$ where $\\vect{u} = \\langle 2, 3, 1 \\rangle$ and $\\vect{v} = \\langle 1, -1, 2 \\rangle$.",
+      "solution": "Using the determinant method:\n\\[\n \\vect{u} \\crossp \\vect{v} = \n \\begin{vmatrix}\n \\vecti & \\vectj & \\vectk \\\\\n 2 & 3 & 1 \\\\\n 1 & -1 & 2\n \\end{vmatrix}\n\\]\n$$\n &= \\vecti\\begin{vmatrix} 3 & 1 \\\\ -1 & 2 \\end{vmatrix}\n - \\vectj\\begin{vmatrix} 2 & 1 \\\\ 1 & 2 \\end{vmatrix}\n + \\vectk\\begin{vmatrix} 2 & 3 \\\\ 1 & -1 \\end{vmatrix} \\\\\n &= \\vecti(6 - (-1)) - \\vectj(4 - 1) + \\vectk(-2 - 3) \\\\\n &= 7\\vecti - 3\\vectj - 5\\vectk \\\\\n &= \\langle 7, -3, -5 \\rangle.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-12.2",
+      "number": "12.2",
+      "title": "Cross products of basis vectors",
+      "problem": "Find $\\vecti \\crossp \\vectj$, $\\vectj \\crossp \\vectk$, and $\\vectk \\crossp \\vecti$.",
+      "solution": "Using the definition or the right-hand rule:\n$$\n \\vecti \\crossp \\vectj &= \\vectk, &\\qquad \\vectj \\crossp \\vecti &= -\\vectk, \\\\\n \\vectj \\crossp \\vectk &= \\vecti, &\\qquad \\vectk \\crossp \\vectj &= -\\vecti, \\\\\n \\vectk \\crossp \\vecti &= \\vectj, &\\qquad \\vecti \\crossp \\vectk &= -\\vectj.\n$$\nThe cross product cycles through $\\vecti \\to \\vectj \\to \\vectk \\to \\vecti$ in the positive direction."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of the Cross Product"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.1",
+      "number": "12.1",
+      "title": "Properties of the Cross Product",
+      "content": "For vectors $\\vect{u}$, $\\vect{v}$, $\\vect{w}$ and scalar $c$:\n\n1. $\\vect{u} \\crossp \\vect{v} = -(\\vect{v} \\crossp \\vect{u})$ (Anticommutativity)\n\n2. $(c\\vect{u}) \\crossp \\vect{v} = c(\\vect{u} \\crossp \\vect{v}) = \\vect{u} \\crossp (c\\vect{v})$ (Scalar Association)\n\n3. $\\vect{u} \\crossp (\\vect{v} + \\vect{w}) = \\vect{u} \\crossp \\vect{v} + \\vect{u} \\crossp \\vect{w}$ (Distributivity)\n\n4. $(\\vect{u} + \\vect{v}) \\crossp \\vect{w} = \\vect{u} \\crossp \\vect{w} + \\vect{v} \\crossp \\vect{w}$ (Distributivity)\n\n5. $\\vect{u} \\crossp \\vect{0} = \\vect{0} \\crossp \\vect{u} = \\vect{0}$ (Zero Vector)\n\n6. $\\vect{u} \\crossp \\vect{u} = \\vect{0}$ (Self-Cross is Zero)",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-12.4",
+      "number": null,
+      "title": "The cross product is not commutative!",
+      "content": "Property 1 shows that $\\vect{u} \\crossp \\vect{v} \\neq \\vect{v} \\crossp \\vect{u}$ in general—they point in opposite directions. Order matters!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Geometric Interpretation"
+    },
+    {
+      "type": "paragraph",
+      "text": "The cross product has two key geometric properties:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.2",
+      "number": "12.2",
+      "title": "Orthogonality of the Cross Product",
+      "content": "The vector $\\vect{u} \\crossp \\vect{v}$ is orthogonal to both $\\vect{u}$ and $\\vect{v}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We verify that $(\\vect{u} \\crossp \\vect{v}) \\dotp \\vect{u} = 0$. Let $\\vect{u} = \\langle u_1, u_2, u_3 \\rangle$ and $\\vect{w} = \\vect{u} \\crossp \\vect{v} = \\langle u_2v_3 - u_3v_2, u_3v_1 - u_1v_3, u_1v_2 - u_2v_1 \\rangle$. Then\n$$\n \\vect{w} \\dotp \\vect{u} &= u_1(u_2v_3 - u_3v_2) + u_2(u_3v_1 - u_1v_3) + u_3(u_1v_2 - u_2v_1) \\\\\n &= u_1u_2v_3 - u_1u_3v_2 + u_2u_3v_1 - u_1u_2v_3 + u_1u_3v_2 - u_2u_3v_1 \\\\\n &= 0.\n$$\nThe proof that $\\vect{w} \\dotp \\vect{v} = 0$ is similar."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.3",
+      "number": "12.3",
+      "title": "Magnitude of the Cross Product",
+      "content": "\\[\n |\\vect{u} \\crossp \\vect{v}| = |\\vect{u}||\\vect{v}|\\sin\\theta,\n\\]\nwhere $\\theta$ is the angle between $\\vect{u}$ and $\\vect{v}$ (with $0 \\leq \\theta \\leq \\pi$).",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This magnitude equals the area of the parallelogram spanned by $\\vect{u}$ and $\\vect{v}$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.3",
+      "number": "12.3",
+      "title": "Verifying orthogonality",
+      "problem": "Verify that $\\vect{u} \\crossp \\vect{v}$ is orthogonal to both $\\vect{u}$ and $\\vect{v}$ for $\\vect{u} = \\langle 2, 3, 1 \\rangle$, $\\vect{v} = \\langle 1, -1, 2 \\rangle$ from the previous example.",
+      "solution": "We found $\\vect{u} \\crossp \\vect{v} = \\langle 7, -3, -5 \\rangle$. Checking:\n$$\n (\\vect{u} \\crossp \\vect{v}) \\dotp \\vect{u} &= (7)(2) + (-3)(3) + (-5)(1) = 14 - 9 - 5 = 0\\;\\checkmark \\\\\n (\\vect{u} \\crossp \\vect{v}) \\dotp \\vect{v} &= (7)(1) + (-3)(-1) + (-5)(2) = 7 + 3 - 10 = 0\\;\\checkmark\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Right-Hand Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "The direction of $\\vect{u} \\crossp \\vect{v}$ is given by the **right-hand rule**: point the fingers of your right hand in the direction of $\\vect{u}$, then curl them toward $\\vect{v}$; your thumb points in the direction of $\\vect{u} \\crossp \\vect{v}$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-12.4",
+      "number": null,
+      "title": "Coordinate systems and handedness",
+      "content": "We use right-handed coordinate systems throughout this text. In a right-handed system, $\\vecti \\crossp \\vectj = \\vectk$. Some engineering and graphics applications use left-handed systems, where $\\vecti \\crossp \\vectj = -\\vectk$. Always verify which convention is in use."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Parallel Vectors"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.2",
+      "number": "12.2",
+      "title": "Parallel Vectors",
+      "content": "Vectors $\\vect{u}$ and $\\vect{v}$ are **parallel** if one is a scalar multiple of the other, i.e., $\\vect{u} = c\\vect{v}$ for some scalar $c$, or if either is the zero vector."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.4",
+      "number": "12.4",
+      "title": "Cross Product Test for Parallel Vectors",
+      "content": "Nonzero vectors $\\vect{u}$ and $\\vect{v}$ are parallel if and only if $\\vect{u} \\crossp \\vect{v} = \\vect{0}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This follows from Theorem [thm:cross-magnitude]: if $\\theta = 0$ or $\\theta = \\pi$, then $\\sin\\theta = 0$, so $|\\vect{u} \\crossp \\vect{v}| = 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Area of a Parallelogram"
+    },
+    {
+      "type": "paragraph",
+      "text": "The magnitude of the cross product gives the area of the parallelogram formed by two vectors:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.5",
+      "number": "12.5",
+      "title": "Area via Cross Product",
+      "content": "The area of the parallelogram with adjacent sides $\\vect{u}$ and $\\vect{v}$ is\n\\[\n A = |\\vect{u} \\crossp \\vect{v}|.\n\\]\nThe area of the triangle with vertices at the origin and at the tips of $\\vect{u}$ and $\\vect{v}$ is\n\\[\n A = \\frac{1}{2}|\\vect{u} \\crossp \\vect{v}|.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-12.4",
+      "number": "12.4",
+      "title": "Area of a parallelogram",
+      "problem": "Find the area of the parallelogram with vertices $P(0, 0, 0)$, $Q(2, 1, 3)$, $R(3, 2, 1)$, and the fourth vertex determined by the parallelogram.",
+      "solution": "The sides from $P$ are $\\overrightarrow{PQ} = \\langle 2, 1, 3 \\rangle$ and $\\overrightarrow{PR} = \\langle 3, 2, 1 \\rangle$. \n\\[\n \\overrightarrow{PQ} \\crossp \\overrightarrow{PR} = \n \\begin{vmatrix}\n \\vecti & \\vectj & \\vectk \\\\\n 2 & 1 & 3 \\\\\n 3 & 2 & 1\n \\end{vmatrix}\n = \\langle 1-6, 9-2, 4-3 \\rangle = \\langle -5, 7, 1 \\rangle.\n\\]\nThe area is $|\\langle -5, 7, 1 \\rangle| = \\sqrt{25 + 49 + 1} = \\sqrt{75} = 5\\sqrt{3}$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.5",
+      "number": "12.5",
+      "title": "Area of a triangle",
+      "problem": "Find the area of the triangle with vertices $A(1, 2, 3)$, $B(4, 0, 1)$, $C(2, 1, -1)$.",
+      "solution": "Compute vectors along two sides:\n$$\n \\overrightarrow{AB} &= \\langle 3, -2, -2 \\rangle \\\\\n \\overrightarrow{AC} &= \\langle 1, -1, -4 \\rangle\n$$\n\\[\n \\overrightarrow{AB} \\crossp \\overrightarrow{AC} = \n \\begin{vmatrix}\n \\vecti & \\vectj & \\vectk \\\\\n 3 & -2 & -2 \\\\\n 1 & -1 & -4\n \\end{vmatrix}\n = \\langle 8+2, -2+12, -3+2 \\rangle = \\langle 10, 10, -1 \\rangle.\n\\]\nThe area of the triangle is\n\\[\n A = \\frac{1}{2}|\\langle 10, 10, -1 \\rangle| = \\frac{1}{2}\\sqrt{100+100+1} = \\frac{\\sqrt{201}}{2}.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Triple Products and Volume"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.3",
+      "number": "12.3",
+      "title": "Scalar Triple Product",
+      "content": "The **scalar triple product** of vectors $\\vect{u}$, $\\vect{v}$, $\\vect{w}$ is\n\\[\n \\vect{u} \\dotp (\\vect{v} \\crossp \\vect{w})\n = \\begin{vmatrix}\n u_1 & u_2 & u_3 \\\\\n v_1 & v_2 & v_3 \\\\\n w_1 & w_2 & w_3\n \\end{vmatrix}.\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.6",
+      "number": "12.6",
+      "title": "Volume of a Parallelepiped",
+      "content": "The volume of the parallelepiped (3D parallelogram) with edges $\\vect{u}$, $\\vect{v}$, $\\vect{w}$ meeting at a vertex is\n\\[\n V = |\\vect{u} \\dotp (\\vect{v} \\crossp \\vect{w})|.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The scalar triple product can be positive or negative; the absolute value gives the volume."
+    },
+    {
+      "type": "example",
+      "id": "example-12.6",
+      "number": "12.6",
+      "title": "Volume of a parallelepiped",
+      "problem": "Find the volume of the parallelepiped with adjacent edges $\\vect{u} = \\langle 1, 0, 0 \\rangle$, $\\vect{v} = \\langle 0, 2, 0 \\rangle$, $\\vect{w} = \\langle 1, 1, 3 \\rangle$.",
+      "solution": "\\[\n V = \\left|\\begin{vmatrix}\n 1 & 0 & 0 \\\\\n 0 & 2 & 0 \\\\\n 1 & 1 & 3\n \\end{vmatrix}\\right|\n = |1(6 - 0) - 0 + 0|\n = 6.\n\\]"
+    },
+    {
+      "type": "warning",
+      "id": "warning-12.4",
+      "number": null,
+      "title": "Coplanar vectors",
+      "content": "If $\\vect{u} \\dotp (\\vect{v} \\crossp \\vect{w}) = 0$, the three vectors are **coplanar**—they all lie in the same plane (and the parallelepiped has zero volume)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Torque"
+    },
+    {
+      "type": "paragraph",
+      "text": "In physics, **torque** (rotational force) is computed as a cross product:\n\\[\n \\boldsymbol{\\tau} = \\vect{r} \\crossp \\vect{F},\n\\]\nwhere $\\vect{r}$ is the position vector from the axis of rotation to the point where force $\\vect{F}$ is applied. The magnitude of torque is $|\\boldsymbol{\\tau}| = |\\vect{r}||\\vect{F}|\\sin\\theta$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.7",
+      "number": "12.7",
+      "title": "Computing torque",
+      "problem": "A wrench of length $0.3$ m applies a force of $100$ N at a $75°$ angle to the wrench. Find the magnitude of the torque.",
+      "solution": "$|\\boldsymbol{\\tau}| = |\\vect{r}||\\vect{F}|\\sin\\theta = (0.3)(100)\\sin 75° \\approx 29.0$ N$\\cdot$m."
+    },
+    {
+      "type": "example",
+      "id": "example-12.8",
+      "number": "12.8",
+      "title": "Angular momentum",
+      "problem": "A particle of mass $m = 2$ kg at position $\\vect{r} = \\langle 3, 4, 0 \\rangle$ m has velocity $\\vect{v} = \\langle -2, 1, 5 \\rangle$ m/s. Find its angular momentum about the origin.",
+      "solution": "Angular momentum is $\\vect{L} = \\vect{r} \\crossp (m\\vect{v}) = m(\\vect{r} \\crossp \\vect{v})$.\n\n$$\n \\vect{r} \\crossp \\vect{v} &= \\begin{vmatrix} \\vecti & \\vectj & \\vectk \\\\ 3 & 4 & 0 \\\\ -2 & 1 & 5 \\end{vmatrix} \\\\\n &= \\vecti(4 \\cdot 5 - 0 \\cdot 1) - \\vectj(3 \\cdot 5 - 0 \\cdot (-2)) + \\vectk(3 \\cdot 1 - 4 \\cdot (-2)) \\\\\n &= \\langle 20, -15, 11 \\rangle \\text{ m}^2/\\text{s}.\n$$\n\nThus $\\vect{L} = 2\\langle 20, -15, 11 \\rangle = \\langle 40, -30, 22 \\rangle$ kg$\\cdot$m$^2$/s.\n\nThe magnitude is $|\\vect{L}| = \\sqrt{1600 + 900 + 484} = \\sqrt{2984} \\approx 54.6$ kg$\\cdot$m$^2$/s."
+    },
+    {
+      "type": "example",
+      "id": "example-12.9",
+      "number": "12.9",
+      "title": "Cross product identity",
+      "problem": "Verify that $|\\vect{u} \\crossp \\vect{v}|^2 + (\\vect{u} \\dotp \\vect{v})^2 = |\\vect{u}|^2 |\\vect{v}|^2$ for $\\vect{u} = \\langle 1, 2, 0 \\rangle$ and $\\vect{v} = \\langle 3, 0, 4 \\rangle$.",
+      "solution": "First compute each quantity:\n\n$\\vect{u} \\crossp \\vect{v} = \\langle 2 \\cdot 4 - 0 \\cdot 0, 0 \\cdot 3 - 1 \\cdot 4, 1 \\cdot 0 - 2 \\cdot 3 \\rangle = \\langle 8, -4, -6 \\rangle$\n\n$|\\vect{u} \\crossp \\vect{v}|^2 = 64 + 16 + 36 = 116$\n\n$\\vect{u} \\dotp \\vect{v} = 1 \\cdot 3 + 2 \\cdot 0 + 0 \\cdot 4 = 3$\n\n$(\\vect{u} \\dotp \\vect{v})^2 = 9$\n\n$|\\vect{u}|^2 = 1 + 4 + 0 = 5$\n\n$|\\vect{v}|^2 = 9 + 0 + 16 = 25$\n\nChecking: $116 + 9 = 125 = 5 \\cdot 25$. $\\checkmark$\n\nThis identity follows from $|\\vect{u} \\crossp \\vect{v}| = |\\vect{u}||\\vect{v}|\\sin\\theta$ and $\\vect{u} \\dotp \\vect{v} = |\\vect{u}||\\vect{v}|\\cos\\theta$, combined with $\\sin^2\\theta + \\cos^2\\theta = 1$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.10",
+      "number": "12.10",
+      "title": "Distance from a point to a line",
+      "problem": "Find the distance from the point $P(1, 1, 1)$ to the line through $A(0, 0, 0)$ and $B(1, 2, 3)$.",
+      "solution": "The distance from $P$ to the line is the length of the perpendicular from $P$ to the line.\n\nLet $\\vect{d} = \\overrightarrow{AB} = \\langle 1, 2, 3 \\rangle$ be the direction of the line, and let $\\vect{a} = \\overrightarrow{AP} = \\langle 1, 1, 1 \\rangle$.\n\nThe distance formula using cross products is:\n\\[\n d = \\frac{|\\vect{a} \\crossp \\vect{d}|}{|\\vect{d}|}.\n\\]\n\nCompute the cross product:\n\\[\n \\vect{a} \\crossp \\vect{d} = \\begin{vmatrix} \\vecti & \\vectj & \\vectk \\\\ 1 & 1 & 1 \\\\ 1 & 2 & 3 \\end{vmatrix} = \\langle 3 - 2, 1 - 3, 2 - 1 \\rangle = \\langle 1, -2, 1 \\rangle.\n\\]\n\n$|\\vect{a} \\crossp \\vect{d}| = \\sqrt{1 + 4 + 1} = \\sqrt{6}$\n\n$|\\vect{d}| = \\sqrt{1 + 4 + 9} = \\sqrt{14}$\n\nDistance: $d = \\dfrac{\\sqrt{6}}{\\sqrt{14}} = \\sqrt{\\dfrac{6}{14}} = \\sqrt{\\dfrac{3}{7}} \\approx 0.655$."
+    },
+    {
+      "type": "historical",
+      "id": "historical-12.4",
+      "number": null,
+      "title": "Oliver Heaviside (1850--1925)",
+      "content": "Oliver Heaviside, a self-taught English electrical engineer, independently developed vector calculus notation around the same time as Gibbs. Heaviside introduced the terms \"divergence,\" \"curl,\" and \"gradient\" that we use today, and he reformulated Maxwell's equations into their modern vector form. Despite lacking formal education, Heaviside made profound contributions to physics and mathematics. His work on transmission lines led to the discovery of the Heaviside layer in the atmosphere."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 55:9",
+      "text": "For as the heavens are higher than the earth, so are my ways higher than your ways and my thoughts than your thoughts."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 139:5",
+      "text": "You hem me in, behind and before, and lay your hand upon me."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:3",
+      "text": "A time to kill, and a time to heal; a time to break down, and a time to build up."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 38:31--32",
+      "text": "Can you bind the chains of the Pleiades or loose the cords of Orion? Can you lead forth the Mazzaroth in their season?"
+    },
+    {
+      "type": "quote",
+      "author": "James Clerk Maxwell",
+      "text": "The cross product gives both the area of a parallelogram and the direction perpendicular to it."
+    },
+    {
+      "type": "quote",
+      "author": "Gottfried Wilhelm Leibniz",
+      "text": "Music is the pleasure the human mind experiences from counting without being aware that it is counting."
+    }
+  ]
+}

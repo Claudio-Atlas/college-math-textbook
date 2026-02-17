@@ -1,0 +1,144 @@
+{
+  "id": "algebra-2-ch02-sec03",
+  "title": "Solving Systems by Substitution",
+  "chapter": 2,
+  "section": 3,
+  "book": "algebra-2",
+  "epigraph": {
+    "text": "If you remain in me and my words remain in you, ask \nwhatever you wish, and it will be done for you.",
+    "reference": "John 15:7"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Graphing gives a visual understanding of systems, but it often lacks \nprecision. When two lines intersect at a point like $(1.37, -2.84)$, \nreading exact coordinates from a graph is difficult. The \n**substitution method** gives us exact solutions algebraically."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Substitution Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "The idea is elegant: solve one equation for one variable, then \n*substitute* that expression into the other equation."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-2.3",
+      "number": null,
+      "title": "Solving Systems by Substitution",
+      "content": "1. Solve one equation for one variable (choose the easiest one).\n\n2. Substitute this expression into the other equation.\n\n3. Solve the resulting equation (it has only one variable).\n\n4. Substitute back to find the other variable.\n\n5. Check your solution in both original equations."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Basic substitution",
+      "problem": "Solve the system:\n$$\n y &= 2x + 1 \\\\\n 3x + y &= 11\n$$",
+      "solution": "The first equation is already solved for $y$, so we substitute $2x + 1$ \nfor $y$ in the second equation:\n\\[\n 3x + (2x + 1) = 11\n\\]\n\\[\n 5x + 1 = 11\n\\]\n\\[\n 5x = 10\n\\]\n\\[\n x = 2\n\\]\n\nNow substitute $x = 2$ back into the first equation:\n\\[\n y = 2(2) + 1 = 5\n\\]\n\nThe solution is $(2, 5)$.\n\n**Check:** In equation 1: $5 = 2(2) + 1 = 5$ \n\nIn equation 2: $3(2) + 5 = 6 + 5 = 11$"
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Solving for a variable first",
+      "problem": "Solve the system:\n$$\n 2x + y &= 7 \\\\\n x - 3y &= -9\n$$",
+      "solution": "The first equation has a coefficient of 1 on $y$, making it easy to solve \nfor $y$:\n\\[\n y = 7 - 2x\n\\]\n\nSubstitute into the second equation:\n\\[\n x - 3(7 - 2x) = -9\n\\]\n\\[\n x - 21 + 6x = -9\n\\]\n\\[\n 7x = 12\n\\]\n\\[\n x = \\frac{12}{7}\n\\]\n\nFind $y$:\n\\[\n y = 7 - 2\\left(\\frac{12}{7}\\right) = 7 - \\frac{24}{7} = \\frac{49}{7} - \\frac{24}{7} = \\frac{25}{7}\n\\]\n\nThe solution is $\\left(\\frac{12}{7}, \\frac{25}{7}\\right)$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Substitution with fractions",
+      "problem": "Solve the system:\n$$\n x &= 3y - 4 \\\\\n 2x - 5y &= -2\n$$",
+      "solution": "Substitute the first equation into the second:\n\\[\n 2(3y - 4) - 5y = -2\n\\]\n\\[\n 6y - 8 - 5y = -2\n\\]\n\\[\n y - 8 = -2\n\\]\n\\[\n y = 6\n\\]\n\nFind $x$:\n\\[\n x = 3(6) - 4 = 18 - 4 = 14\n\\]\n\nThe solution is $(14, 6)$.\n\n**Check:** In equation 1: $14 = 3(6) - 4 = 14$ \n\nIn equation 2: $2(14) - 5(6) = 28 - 30 = -2$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Special Cases: No Solution or Infinitely Many"
+    },
+    {
+      "type": "paragraph",
+      "text": "What happens when the substitution method encounters parallel or \ncoincident lines?"
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "No solution",
+      "problem": "Solve the system:\n$$\n y &= 2x + 3 \\\\\n 4x - 2y &= 10\n$$",
+      "solution": "Substitute $y = 2x + 3$ into the second equation:\n\\[\n 4x - 2(2x + 3) = 10\n\\]\n\\[\n 4x - 4x - 6 = 10\n\\]\n\\[\n -6 = 10 \\quad \\text{FALSE!}\n\\]\n\nThis contradiction means the system has **no solution**. The lines \nare parallel.\n\nWe can verify: rewriting $4x - 2y = 10$ gives $y = 2x - 5$. Both lines \nhave slope 2 but different $y$-intercepts."
+    },
+    {
+      "type": "example",
+      "id": "example-2.5",
+      "number": "2.5",
+      "title": "Infinitely many solutions",
+      "problem": "Solve the system:\n$$\n y &= 3x - 2 \\\\\n 6x - 2y &= 4\n$$",
+      "solution": "Substitute $y = 3x - 2$ into the second equation:\n\\[\n 6x - 2(3x - 2) = 4\n\\]\n\\[\n 6x - 6x + 4 = 4\n\\]\n\\[\n 4 = 4 \\quad \\text{Always TRUE!}\n\\]\n\nThis identity means the system has **infinitely many solutions**. \nThe lines are coincident (the same line).\n\nThe solution set can be written as $\\{(x, 3x - 2) : x \\in \\mathbb{R}\\}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of Substitution"
+    },
+    {
+      "type": "example",
+      "id": "example-2.6",
+      "number": "2.6",
+      "title": "Ticket sales",
+      "problem": "A theater sold 500 tickets for a play. Adult tickets cost \\$12 and \nchildren's tickets cost \\$8. If the total revenue was \\$5,200, how many \nof each type were sold?",
+      "solution": "Let $a$ = number of adult tickets and $c$ = number of children's tickets.\n\n**Set up the system:**\n$$\n a + c &= 500 \\quad \\text{(total tickets)} \\\\\n 12a + 8c &= 5200 \\quad \\text{(total revenue)}\n$$\n\nFrom the first equation: $a = 500 - c$\n\nSubstitute into the second:\n\\[\n 12(500 - c) + 8c = 5200\n\\]\n\\[\n 6000 - 12c + 8c = 5200\n\\]\n\\[\n 6000 - 4c = 5200\n\\]\n\\[\n -4c = -800\n\\]\n\\[\n c = 200\n\\]\n\nThen $a = 500 - 200 = 300$.\n\n**Answer:** 300 adult tickets and 200 children's tickets were sold.\n\n**Check:** $300 + 200 = 500$ and $12(300) + 8(200) = 3600 + 1600 = 5200$"
+    },
+    {
+      "type": "example",
+      "id": "example-2.7",
+      "number": "2.7",
+      "title": "Mixture problem",
+      "problem": "A chemist has a 30\\% acid solution and a 70\\% acid solution. How many \nliters of each should be mixed to produce 100 liters of a 45\\% acid solution?",
+      "solution": "Let $x$ = liters of 30\\% solution and $y$ = liters of 70\\% solution.\n\n**Set up the system:**\n$$\n x + y &= 100 \\quad \\text{(total volume)} \\\\\n 0.30x + 0.70y &= 0.45(100) \\quad \\text{(acid content)}\n$$\n\nThe second equation simplifies to $0.30x + 0.70y = 45$.\n\nFrom the first equation: $x = 100 - y$\n\nSubstitute:\n\\[\n 0.30(100 - y) + 0.70y = 45\n\\]\n\\[\n 30 - 0.30y + 0.70y = 45\n\\]\n\\[\n 30 + 0.40y = 45\n\\]\n\\[\n 0.40y = 15\n\\]\n\\[\n y = 37.5\n\\]\n\nThen $x = 100 - 37.5 = 62.5$.\n\n**Answer:** Mix 62.5 liters of 30\\% solution with 37.5 liters of \n70\\% solution."
+    },
+    {
+      "type": "example",
+      "id": "example-2.8",
+      "number": "2.8",
+      "title": "Investment problem",
+      "problem": "Maria invested \\$10,000 in two accounts. One pays 4\\% annual interest \nand the other pays 6\\% annual interest. If she earned \\$520 in interest \nafter one year, how much did she invest in each account?",
+      "solution": "Let $x$ = amount at 4\\% and $y$ = amount at 6\\%.\n\n**Set up the system:**\n$$\n x + y &= 10000 \\\\\n 0.04x + 0.06y &= 520\n$$\n\nFrom the first equation: $y = 10000 - x$\n\nSubstitute:\n\\[\n 0.04x + 0.06(10000 - x) = 520\n\\]\n\\[\n 0.04x + 600 - 0.06x = 520\n\\]\n\\[\n -0.02x = -80\n\\]\n\\[\n x = 4000\n\\]\n\nThen $y = 10000 - 4000 = 6000$.\n\n**Answer:** Maria invested \\$4,000 at 4\\% and \\$6,000 at 6\\%."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Strategic Choices"
+    },
+    {
+      "type": "paragraph",
+      "text": "When using substitution, choose wisely which equation to solve and which \nvariable to isolate:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Look for variables with coefficient 1 or $-1$",
+        "Look for equations already solved for a variable",
+        "Avoid creating fractions when possible"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-2.9",
+      "number": "2.9",
+      "title": "Strategic variable choice",
+      "problem": "Consider the system:\n$$\n 3x + 2y &= 12 \\\\\n x - 4y &= -1\n$$",
+      "solution": "The second equation has coefficient 1 on $x$, so we solve for $x$:\n\\[\n x = 4y - 1\n\\]\n\nThis avoids fractions. Substitute into the first equation:\n\\[\n 3(4y - 1) + 2y = 12\n\\]\n\\[\n 12y - 3 + 2y = 12\n\\]\n\\[\n 14y = 15\n\\]\n\\[\n y = \\frac{15}{14}\n\\]\n\nThen $x = 4\\left(\\frac{15}{14}\\right) - 1 = \\frac{60}{14} - \\frac{14}{14} = \\frac{46}{14} = \\frac{23}{7}$.\n\nThe solution is $\\left(\\frac{23}{7}, \\frac{15}{14}\\right)$."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 3:5--6",
+      "text": "Trust in the Lord with all your heart \nand lean not on your own understanding."
+    }
+  ]
+}

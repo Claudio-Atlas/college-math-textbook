@@ -1,0 +1,137 @@
+{
+  "id": "prob-stats-ch03-sec05",
+  "title": "Other Discrete Distributions",
+  "chapter": 3,
+  "section": 5,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "Seek and you will find; knock and it will be opened to you.",
+    "reference": "Matthew 7:7",
+    "quote": "All models are wrong, but some are useful.",
+    "quoteAuthor": "George E. P. Box"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Beyond the binomial and Poisson, several other discrete distributions \nmodel important phenomena."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Geometric Distribution"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.1",
+      "number": "3.1",
+      "title": "Geometric Distribution",
+      "content": "The **geometric distribution** \ncounts the number of trials until the first success in a sequence \nof independent Bernoulli trials.\n\nIf $X \\sim \\Geom(p)$, then:\n\\[\n P(X = k) = (1-p)^{k-1} p, \\quad k = 1, 2, 3, \\ldots\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Geometric Probability",
+      "problem": "A basketball player makes free throws with probability 0.75. What is \nthe probability that her first successful free throw is on her 3rd \nattempt?",
+      "solution": "Let $X$ = number of attempts until first success. $X \\sim \\Geom(0.75)$.\n\\[\n P(X = 3) = (0.25)^2 (0.75) = 0.0625 \\times 0.75 = 0.0469\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "Geometric Mean and Variance",
+      "content": "If $X \\sim \\Geom(p)$, then:\n\\[\n \\E[X] = \\frac{1}{p} \\qquad \\text{and} \\qquad \\Var(X) = \\frac{1-p}{p^2}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The geometric distribution is **memoryless**: \ngiven that no success has occurred in the first $k$ trials, the \ndistribution of remaining trials until success is the same as the \noriginal distribution."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Negative Binomial Distribution"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.2",
+      "number": "3.2",
+      "title": "Negative Binomial Distribution",
+      "content": "The **negative binomial distribution** \ncounts the number of trials until the $r$th success.\n\nIf $X \\sim \\text{NegBin}(r, p)$, then:\n\\[\n P(X = k) = \\binom{k-1}{r-1} p^r (1-p)^{k-r}, \\quad k = r, r+1, r+2, \\ldots\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The geometric distribution is the special case $r = 1$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Hypergeometric Distribution"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.3",
+      "number": "3.3",
+      "title": "Hypergeometric Distribution",
+      "content": "The **hypergeometric distribution** \nmodels sampling without replacement from a finite population.\n\nIf a population of size $N$ contains $K$ successes, and we draw $n$ \nitems without replacement, then $X$ = number of successes has:\n\\[\n P(X = k) = \\frac{\\binom{K}{k} \\binom{N-K}{n-k}}{\\binom{N}{n}}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Hypergeometric Probability",
+      "problem": "A deck has 52 cards including 4 aces. If 5 cards are dealt, what is \nthe probability of getting exactly 2 aces?",
+      "solution": "$N = 52$, $K = 4$ (aces), $n = 5$ (cards dealt).\n\\[\n P(X = 2) = \\frac{\\binom{4}{2} \\binom{48}{3}}{\\binom{52}{5}} \n = \\frac{6 \\times 17296}{2598960} \n \\approx 0.0399\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The hypergeometric approaches the binomial when the population is \nlarge relative to the sample size."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Summary of Discrete Distributions"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Distribution**",
+        "$\\E[X]$",
+        "$\\Var(X)$",
+        "**Application**"
+      ],
+      "rows": [
+        [
+          "$\\Binom(n, p)$",
+          "$np$",
+          "$np(1-p)$",
+          "Count successes in $n$ trials"
+        ],
+        [
+          "$\\Pois(\\lambda)$",
+          "$\\lambda$",
+          "$\\lambda$",
+          "Count rare events"
+        ],
+        [
+          "$\\Geom(p)$",
+          "$\\frac{1}{p}$",
+          "$\\frac{1-p}{p^2}$",
+          "Trials until first success"
+        ],
+        [
+          "Hypergeometric",
+          "$\\frac{nK}{N}$",
+          "—",
+          "Sampling without replacement"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "center",
+        "center",
+        "left"
+      ]
+    }
+  ]
+}

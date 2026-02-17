@@ -1,0 +1,124 @@
+{
+  "id": "abstract-algebra-ch02-sec04",
+  "title": "Subgroups of Cyclic Groups",
+  "chapter": 2,
+  "section": 4,
+  "book": "abstract-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"For we are God's handiwork, created in Christ Jesus \nto do good works, which God prepared in advance for us to do.\"*{Ephesians 2:10}{*\"The theory of numbers is the queen of mathematics.\"*}{Carl Friedrich Gauss}\n\n*\"The structure of a cyclic group is completely determined by its order.\"*{— Algebraic principle}"
+    },
+    {
+      "type": "paragraph",
+      "text": "We now develop a complete picture of the subgroup structure of cyclic \ngroups. The results are remarkably elegant: the subgroups of $\\Z$ \ncorrespond exactly to the natural numbers, and the subgroups of $\\Z_n$ \ncorrespond exactly to the divisors of $n$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Subgroups of $\\Z$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Subgroups of $\\Z$",
+      "content": "Every subgroup of $(\\Z, +)$ has the form $n\\Z = \\{nk : k \\in \\Z\\}$ for \nsome non-negative integer $n$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $H \\leq \\Z$. If $H = \\{0\\}$, then $H = 0\\Z$.\n\nOtherwise, $H$ contains positive integers (if $h \\in H$ and $h < 0$, \nthen $-h \\in H$ and $-h > 0$). Let $n$ be the smallest positive \ninteger in $H$. We claim $H = n\\Z$.\n\nSince $n \\in H$, we have $n\\Z \\subseteq H$ (closure under addition).\n\nConversely, let $h \\in H$. By division, $h = qn + r$ with $0 \\leq r < n$. \nThen $r = h - qn \\in H$. By minimality of $n$, we have $r = 0$, so \n$h = qn \\in n\\Z$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Subgroups of $\\Z_n$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The structure of subgroups of $\\Z_n$ is completely determined by divisors."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Fundamental Theorem of Cyclic Groups",
+      "content": "Let $G = \\langle g \\rangle$ be a cyclic group of order $n$.\n\n1. For each divisor $d$ of $n$, there exists exactly one subgroup \n of order $d$, namely $\\langle g^{n/d} \\rangle$.\n\n2. Every subgroup of $G$ has order dividing $n$.\n\n3. For each $k$, $|\\langle g^k \\rangle| = n / \\gcd(k, n)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "**(iii)** Let $d = \\gcd(k, n)$. Then $(g^k)^m = e$ iff $n \\mid km$ \niff $(n/d) \\mid m(k/d)$. Since $\\gcd(n/d, k/d) = 1$, this holds iff \n$(n/d) \\mid m$. Thus $|g^k| = n/d$.\n\n**(i)** If $d \\mid n$, let $k = n/d$. Then $|g^k| = n / \\gcd(n/d, n) \n= n / (n/d) = d$.\n\nFor uniqueness: if $H \\leq G$ with $|H| = d$, then $H = \\langle g^m \n\\rangle$ for some $m$ (subgroups of cyclic groups are cyclic). We have \n$|g^m| = n / \\gcd(m, n) = d$, so $\\gcd(m, n) = n/d$. Thus \n$\\langle g^m \\rangle = \\langle g^{n/d} \\rangle$.\n\n**(ii)** Every subgroup has the form $\\langle g^k \\rangle$ with \norder $n/\\gcd(k, n)$, which divides $n$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Subgroups of $\\Z_{12}$",
+      "problem": "The divisors of $12$ are $1, 2, 3, 4, 6, 12$. The unique subgroups are:\n\n- Order $1$: $\\langle 12 \\rangle = \\{0\\}$\n\n- Order $2$: $\\langle 6 \\rangle = \\{0, 6\\}$\n\n- Order $3$: $\\langle 4 \\rangle = \\{0, 4, 8\\}$\n\n- Order $4$: $\\langle 3 \\rangle = \\{0, 3, 6, 9\\}$\n\n- Order $6$: $\\langle 2 \\rangle = \\{0, 2, 4, 6, 8, 10\\}$\n\n- Order $12$: $\\langle 1 \\rangle = \\Z_{12}$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Counting Subgroups"
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-2.1",
+      "number": "2.1",
+      "title": "",
+      "content": "The number of subgroups of $\\Z_n$ equals the number of divisors of $n$, \ndenoted $\\tau(n)$ or $d(n)$.",
+      "label": "Corollary"
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Counting subgroups",
+      "problem": "- $\\Z_6$: divisors are $1, 2, 3, 6$, so $4$ subgroups.\n\n- $\\Z_{12}$: divisors are $1, 2, 3, 4, 6, 12$, so $6$ subgroups.\n\n- $\\Z_p$ (prime): divisors are $1, p$, so only $2$ subgroups.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Subgroup Lattice of $\\Z_n$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The subgroups of $\\Z_n$ form a lattice ordered by inclusion, which \nmirrors the divisibility lattice of divisors of $n$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.3",
+      "number": "2.3",
+      "title": "",
+      "content": "For $\\Z_n$, if $H$ and $K$ are subgroups with $|H| = d_1$ and $|K| = d_2$, \nthen $H \\subseteq K$ if and only if $d_1 \\mid d_2$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "List all subgroups of $\\Z_{30}$ and draw its subgroup lattice.",
+        "How many subgroups does $\\Z_{72}$ have?",
+        "Prove that $\\Z_p$ has no proper nontrivial subgroups if $p$ is \n prime.",
+        "Find all groups (up to isomorphism) with exactly two subgroups.",
+        "Let $G = \\langle g \\rangle$ have order $n = p^k$ for prime $p$. \n Describe all subgroups of $G$."
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:1",
+      "text": "There is a time for everything, and \na season for every activity under the heavens."
+    }
+  ]
+}

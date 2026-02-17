@@ -1,0 +1,284 @@
+{
+  "id": "vol1-ch02-sec04",
+  "title": "Infinite Limits and Vertical Asymptotes",
+  "chapter": 2,
+  "section": 4,
+  "book": "vol1",
+  "epigraph": {
+    "text": "Can you fathom the mysteries of God? Can you probe the limits of the Almighty? They are higher than the heavens above—what can you do? They are deeper than the depths below—what can you know?",
+    "reference": "Job 11:7--8",
+    "quote": "No one shall expel us from the paradise that Cantor has created for us.",
+    "quoteAuthor": "David Hilbert"
+  },
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "When Outputs Grow Without Bound"
+    },
+    {
+      "type": "paragraph",
+      "text": "In Sections 2.2 and 2.3, every limit we computed equaled a finite number $L$:\nthe function settled down to some definite value as $x$ approached $a$.\nBut what happens when the function *refuses* to settle down—when its\nvalues grow larger and larger without bound?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider the function $f(x) = \\dfrac{1}{x^2}$. What happens as\n$x \\to 0$? A quick table reveals the story:"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "$x$",
+        "$\\dfrac{1}{x^2}$"
+      ],
+      "rows": [
+        [
+          "$1$",
+          "$1$"
+        ],
+        [
+          "$0.1$",
+          "$100$"
+        ],
+        [
+          "$0.01$",
+          "$10{,}000$"
+        ],
+        [
+          "$0.001$",
+          "$1{,}000{,}000$"
+        ],
+        [
+          "$0.0001$",
+          "$100{,}000{,}000$"
+        ]
+      ],
+      "alignment": [
+        "right",
+        "right"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "As $x$ approaches $0$, the values of $f(x)$ do not approach any finite number.\nInstead, they explode—growing past every conceivable bound. We express this\nby writing\n\\[\n \\limto{x \\to 0} \\frac{1}{x^2} = \\infty.\n\\]"
+    },
+    {
+      "type": "warning",
+      "id": "warning-2.4",
+      "number": null,
+      "title": "A Crucial Subtlety",
+      "content": "When we write $\\limto{x \\to a} f(x) = \\infty$, we are *not* saying the\nlimit exists and equals some number called \"infinity.\" The symbol $\\infty$\nis not a real number. Rather, this notation is a precise shorthand for:\n*\"The limit does not exist, and the specific way it fails to exist is\nthat the function values grow without bound.\"* We are describing a particular\n*type* of divergence."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Infinite Limits",
+      "content": "Let $f$ be a function defined on some open interval containing $a$, except\npossibly at $a$ itself.\n\n1. We write\n \\[\n \\limto{x \\to a} f(x) = \\infty\n \\]\n to mean that for every positive number $M$, there exists a\n $\\delta > 0$ such that\n \\[\n 0 < \\abs{x - a} < \\delta \\implies f(x) > M.\n \\]\n In words: we can make $f(x)$ arbitrarily large by taking $x$ sufficiently\n close to $a$.\n\n2. We write\n \\[\n \\limto{x \\to a} f(x) = -\\infty\n \\]\n to mean that for every negative number $N$, there exists a\n $\\delta > 0$ such that\n \\[\n 0 < \\abs{x - a} < \\delta \\implies f(x) < N.\n \\]\n In words: we can make $f(x)$ arbitrarily large and negative by taking $x$\n sufficiently close to $a$."
+    },
+    {
+      "type": "paragraph",
+      "text": "We also define **one-sided infinite limits** in the natural way:\n$\\limto{x \\to a^+} f(x) = \\infty$ means $f(x) \\to \\infty$ as $x$ approaches $a$\nfrom the right, and similarly for $x \\to a^-$ and for $-\\infty$."
+    },
+    {
+      "type": "paragraph",
+      "text": "*Key point for this chapter.**\nIn an **infinite limit**, the *input* $x$ approaches a finite value $a$,\nbut the *output* $f(x)$ blows up. Do not confuse this with a\n*limit at infinity* (Section 2.5), where the *input* goes to $\\pm\\infty$\nand we ask whether the output settles down. The two ideas are, in a sense,\nmirror images:"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Concept**",
+        "**Input**",
+        "**Output**"
+      ],
+      "rows": [
+        [
+          "Infinite limit (2.4)",
+          "$x \\to a$ (finite)",
+          "$f(x) \\to \\pm\\infty$ (blows up)"
+        ],
+        [
+          "Limit at infinity (2.5)",
+          "$x \\to \\pm\\infty$",
+          "$f(x) \\to L$ (settles down)"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Vertical Asymptotes"
+    },
+    {
+      "type": "paragraph",
+      "text": "The graphical signature of an infinite limit is a **vertical asymptote**:\na vertical line that the graph approaches but never crosses (at least near\nthe trouble spot)."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "Vertical Asymptote",
+      "content": "The vertical line $x = a$ is a **vertical asymptote** of the graph\nof $f$ if at least one of the following is true:\n\\[\n \\limto{x \\to a^+} f(x) = \\pm\\infty,\n \\qquad\n \\limto{x \\to a^-} f(x) = \\pm\\infty,\n \\qquad\n \\limto{x \\to a} f(x) = \\pm\\infty.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Where do vertical asymptotes come from? Most commonly, they arise at values\nof $x$ where a denominator equals zero—but *only after all common\nfactors have been cancelled*. This distinction is critical."
+    },
+    {
+      "type": "warning",
+      "id": "warning-2.4",
+      "number": null,
+      "title": "Not Every Zero of the Denominator Is a Vertical Asymptote",
+      "content": "Consider $g(x) = \\dfrac{x^2 - 1}{x - 1}$. The denominator is zero at $x = 1$,\nbut\n\\[\n g(x) = \\frac{(x-1)(x+1)}{x-1} = x + 1 \\quad\\text{for } x \\ne 1.\n\\]\nSo $\\limto{x \\to 1} g(x) = 2$—a perfectly finite limit. The graph has a\n*hole* (removable discontinuity) at $x = 1$, not a vertical asymptote.\n\n**Rule:** Factor and cancel first, *then* check where the denominator\nis zero. Zeros that survive the cancellation are vertical asymptotes; zeros\nthat cancel produce holes."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-2.4",
+      "number": null,
+      "title": "Finding Vertical Asymptotes of a Rational Function",
+      "content": "Given $f(x) = \\dfrac{p(x)}{q(x)}$ where $p$ and $q$ are polynomials:\n\n1. Factor both $p(x)$ and $q(x)$ completely.\n\n2. Cancel any common factors.\n\n3. After cancellation, the remaining zeros of the denominator are\n vertical asymptotes.\n\n4. Any zeros that were cancelled correspond to removable\n discontinuities (holes), not vertical asymptotes."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Determining the Sign: Plus or Minus Infinity"
+    },
+    {
+      "type": "paragraph",
+      "text": "Knowing that a function has a vertical asymptote at $x = a$ is only half the\nstory. We also need to know whether $f(x) \\to +\\infty$ or $f(x) \\to -\\infty$\nfrom each side. The technique is **sign analysis**: test the sign of\nthe function at values just to the left and right of $a$."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-2.4",
+      "number": null,
+      "title": "Sign Analysis Near a Vertical Asymptote",
+      "content": "To determine the behavior of $f(x) = \\dfrac{p(x)}{q(x)}$ near a\nvertical asymptote $x = a$:\n\n1. Evaluate (or determine the sign of) $p(a)$. Since $a$ is a VA,\n $p(a) \\ne 0$ (assuming you have already cancelled common factors).\n\n2. Determine the sign of $q(x)$ for $x$ just to the left of $a$\n (i.e., $x = a^-$) and just to the right (i.e., $x = a^+$).\n\n3. The sign of $f(x)$ near $a$ is determined by\n $\\dfrac{\\text{sign of } p(a)}{\\text{sign of } q(x)}$.\n\n4. A positive result means $f(x) \\to +\\infty$; a negative result\n means $f(x) \\to -\\infty$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Common Functions with Vertical Asymptotes"
+    },
+    {
+      "type": "paragraph",
+      "text": "Several families of functions have well-known vertical asymptote behavior:"
+    },
+    {
+      "type": "paragraph",
+      "text": "*The reciprocal functions** $\\dfrac{1}{x}$ **and**\n$\\dfrac{1}{x^2}$.\nThese are the building blocks of vertical asymptote behavior."
+    },
+    {
+      "type": "paragraph",
+      "text": "$$&\\limto{x \\to 0^+} \\frac{1}{x} = +\\infty,  &\\qquad\n  &\\limto{x \\to 0^-} \\frac{1}{x} = -\\infty.  \\\\[6pt]\n  &\\limto{x \\to 0^+} \\frac{1}{x^2} = +\\infty, &\\qquad\n  &\\limto{x \\to 0^-} \\frac{1}{x^2} = +\\infty.$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Notice the crucial difference: $1/x$ has *opposite* signs on the two\nsides of the asymptote (odd power in the denominator), while $1/x^2$ goes\nto $+\\infty$ on *both* sides (even power). This pattern generalizes:\n$1/(x-a)^n$ goes to $+\\infty$ on both sides when $n$ is even, and to\n$\\pm\\infty$ (opposite signs) when $n$ is odd."
+    },
+    {
+      "type": "paragraph",
+      "text": "*Trigonometric functions.**\nThe function $\\tan x = \\dfrac{\\sin x}{\\cos x}$ has vertical asymptotes\nwherever $\\cos x = 0$, i.e., at $x = \\dfrac{\\pi}{2} + n\\pi$ for each\ninteger $n$. Similarly, $\\sec x$, $\\csc x$, and $\\cot x$ each have their\nown families of vertical asymptotes."
+    },
+    {
+      "type": "paragraph",
+      "text": "*Logarithmic functions.**\nThe natural logarithm $\\ln x$ has a vertical asymptote at $x = 0$:\n\\[\n \\limto{x \\to 0^+} \\ln x = -\\infty.\n\\]\nNote that $\\ln x$ is only defined for $x > 0$, so there is no left-hand limit."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Worked Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Finding vertical asymptotes of a rational function",
+      "problem": "Find all vertical asymptotes of $f(x) = \\dfrac{2x + 1}{x^2 - 9}$, and\nevaluate the one-sided limits at each asymptote.",
+      "solution": "We factor the denominator:\n\\[\n f(x) = \\frac{2x + 1}{(x-3)(x+3)}.\n\\]\nThe numerator $2x + 1$ has no common factors with the denominator, so the\nzeros of the denominator—$x = 3$ and $x = -3$—are both vertical\nasymptotes.\n\n**At $x = 3$:** We evaluate $p(3) = 2(3) + 1 = 7 > 0$.\n\n- As $x \\to 3^+$: the factor $(x - 3)$ is small and positive;\n $(x + 3) \\approx 6 > 0$. So the denominator is small and positive,\n and $f(x) \\to \\dfrac{7}{0^+} = +\\infty$.\n\n- As $x \\to 3^-$: the factor $(x - 3)$ is small and negative;\n $(x + 3) \\approx 6 > 0$. So the denominator is small and negative,\n and $f(x) \\to \\dfrac{7}{0^-} = -\\infty$.\n\n**At $x = -3$:** We evaluate $p(-3) = 2(-3) + 1 = -5 < 0$.\n\n- As $x \\to -3^+$: $(x + 3)$ is small and positive;\n $(x - 3) \\approx -6 < 0$. Denominator is small and negative.\n So $f(x) \\to \\dfrac{-5}{0^-} = +\\infty$.\n\n- As $x \\to -3^-$: $(x + 3)$ is small and negative;\n $(x - 3) \\approx -6 < 0$. Denominator is small and positive.\n So $f(x) \\to \\dfrac{-5}{0^+} = -\\infty$.\n\nTherefore: $\\limto{x \\to 3^+} f(x) = +\\infty$, \\;\n$\\limto{x \\to 3^-} f(x) = -\\infty$, \\;\n$\\limto{x \\to -3^+} f(x) = +\\infty$, \\;\n$\\limto{x \\to -3^-} f(x) = -\\infty$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Distinguishing a hole from a vertical asymptote",
+      "problem": "Find all vertical asymptotes and holes of\n$g(x) = \\dfrac{x^2 - 4}{x^2 - 5x + 6}$.",
+      "solution": "Factor both numerator and denominator:\n\\[\n g(x) = \\frac{(x-2)(x+2)}{(x-2)(x-3)}.\n\\]\nThe factor $(x - 2)$ is common to both. After cancellation:\n\\[\n g(x) = \\frac{x + 2}{x - 3}, \\qquad x \\ne 2.\n\\]\n\n- At $x = 2$: the factor cancelled, so there is a **hole**,\n not a vertical asymptote. The $y$-coordinate of the hole is\n $g(2) = \\dfrac{2 + 2}{2 - 3} = \\dfrac{4}{-1} = -4$.\n So the hole is at $(2, -4)$.\n\n- At $x = 3$: the denominator is zero but the numerator\n $3 + 2 = 5 \\ne 0$, so $x = 3$ is a **vertical asymptote**.\n\nFor the asymptote behavior at $x = 3$:\n\n- As $x \\to 3^+$: $\\dfrac{5}{0^+} = +\\infty$.\n\n- As $x \\to 3^-$: $\\dfrac{5}{0^-} = -\\infty$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "A rational function with two vertical asymptotes",
+      "problem": "Evaluate each one-sided limit for\n$h(x) = \\dfrac{x}{(x - 1)^2(x + 2)}$.",
+      "solution": "The denominator is zero at $x = 1$ (with multiplicity 2) and at $x = -2$\n(multiplicity 1). The numerator is nonzero at both points, so both are\nvertical asymptotes.\n\n**At $x = 1$:** The numerator is $1 > 0$. The factor $(x-1)^2$ is\nalways positive near $x = 1$ (even power!). The factor $(x + 2) \\approx 3 > 0$.\nSo the denominator is small and *positive* from both sides.\n\n\\[\n \\limto{x \\to 1^+} h(x) = \\frac{1}{0^+} = +\\infty, \\qquad\n \\limto{x \\to 1^-} h(x) = \\frac{1}{0^+} = +\\infty.\n\\]\n\nThe even power of $(x - 1)$ causes the function to go to $+\\infty$ on\n*both* sides—a characteristic U-shaped blowup.\n\n**At $x = -2$:** The numerator is $-2 < 0$. The factor\n$(x - 1)^2 \\approx 9 > 0$. The factor $(x + 2)$ changes sign:\n\n- As $x \\to -2^+$: $(x+2)$ is small and positive, so\n $h(x) \\to \\dfrac{-2}{9 \\cdot 0^+} = -\\infty$.\n\n- As $x \\to -2^-$: $(x+2)$ is small and negative, so\n $h(x) \\to \\dfrac{-2}{9 \\cdot 0^-} = +\\infty$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "Trigonometric vertical asymptotes",
+      "problem": "Evaluate $\\limto{x \\to (\\pi/2)^-} \\tan x$ and\n$\\limto{x \\to (\\pi/2)^+} \\tan x$.",
+      "solution": "Recall $\\tan x = \\dfrac{\\sin x}{\\cos x}$. At $x = \\pi/2$, we have\n$\\sin(\\pi/2) = 1$ and $\\cos(\\pi/2) = 0$.\n\nAs $x \\to (\\pi/2)^-$ (approaching from the left, i.e., from values less\nthan $\\pi/2$), the cosine is still positive (since $\\cos x > 0$ on\n$(0, \\pi/2)$) but approaching zero. Therefore:\n\\[\n \\limto{x \\to (\\pi/2)^-} \\tan x\n = \\limto{x \\to (\\pi/2)^-} \\frac{\\sin x}{\\cos x}\n = \\frac{1}{0^+} = +\\infty.\n\\]\n\nAs $x \\to (\\pi/2)^+$ (approaching from the right), the cosine becomes\nnegative (since $\\cos x < 0$ on $(\\pi/2, \\pi)$) and approaches zero.\nTherefore:\n\\[\n \\limto{x \\to (\\pi/2)^+} \\tan x\n = \\frac{1}{0^-} = -\\infty.\n\\]\n\nSo $x = \\pi/2$ is a vertical asymptote of $\\tan x$, with the function\nshooting up to $+\\infty$ from the left and plunging to $-\\infty$ from\nthe right."
+    },
+    {
+      "type": "historical",
+      "id": "historical-2.4",
+      "number": null,
+      "title": "Georg Cantor (1845--1918)",
+      "content": "The concept of infinity has fascinated mathematicians and theologians for\nmillennia. Georg Cantor, a devout Lutheran, revolutionized our understanding\nby showing that there are different *sizes* of infinity—the infinity of\nthe natural numbers is genuinely smaller than the infinity of the real numbers.\nCantor saw his mathematical work as divinely inspired, writing that the\ntransfinite numbers \"point to the Absolute,\" which he identified with God.\nHis contemporary Leopold Kronecker attacked this work, but Cantor persisted,\nbelieving he was uncovering truths placed in creation by the Creator.\nThe infinite limits we study here are a gentler encounter with infinity—a\nfunction value growing without bound—but they connect to the same deep\nmystery."
+    },
+    {
+      "type": "example",
+      "id": "example-2.5",
+      "number": "2.5",
+      "title": "Logarithmic vertical asymptote",
+      "problem": "Evaluate $\\limto{x \\to 1^+} \\ln(x - 1)$ and describe the vertical\nasymptote.",
+      "solution": "The function $\\ln(x - 1)$ is defined only for $x - 1 > 0$, i.e., $x > 1$.\nAs $x \\to 1^+$, the argument $x - 1 \\to 0^+$. Recall that $\\ln t \\to -\\infty$\nas $t \\to 0^+$. Therefore:\n\\[\n \\limto{x \\to 1^+} \\ln(x - 1) = -\\infty.\n\\]\n\nThe line $x = 1$ is a vertical asymptote of $y = \\ln(x - 1)$. Since the\ndomain is $(1, \\infty)$, there is no left-hand limit to consider.\n\nThis is an example of a vertical asymptote where the function goes to\n$-\\infty$ rather than $+\\infty$. The graph of $\\ln(x-1)$ drops steeply\ndownward as it approaches the asymptote from the right."
+    },
+    {
+      "type": "example",
+      "id": "example-2.6",
+      "number": "2.6",
+      "title": "Factor first, then identify",
+      "problem": "Find all vertical asymptotes of\n$f(x) = \\dfrac{x^3 - 8}{x^2 - 4}$\nand evaluate the limits at each.",
+      "solution": "Factor using the difference of cubes and difference of squares:\n\\[\n f(x) = \\frac{(x-2)(x^2 + 2x + 4)}{(x-2)(x+2)}.\n\\]\nCancel the common factor $(x - 2)$:\n\\[\n f(x) = \\frac{x^2 + 2x + 4}{x + 2}, \\qquad x \\ne 2.\n\\]\n\n**At $x = 2$:** The factor cancelled, so $x = 2$ is a hole.\nThe $y$-value is $\\dfrac{4 + 4 + 4}{4} = 3$, so the hole is at $(2, 3)$.\n\n**At $x = -2$:** The denominator of the simplified form is zero,\nand the numerator is $4 - 4 + 4 = 4 \\ne 0$. So $x = -2$ is a vertical\nasymptote.\n\nFor the sign analysis:\n\n- As $x \\to -2^+$: numerator $\\to 4 > 0$,\n denominator $\\to 0^+$, so $f(x) \\to +\\infty$.\n\n- As $x \\to -2^-$: numerator $\\to 4 > 0$,\n denominator $\\to 0^-$, so $f(x) \\to -\\infty$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.7",
+      "number": "2.7",
+      "title": "An infinite limit with a square root",
+      "problem": "Evaluate $\\limto{x \\to 0^+} \\dfrac{1}{\\sqrt{x}}$.",
+      "solution": "As $x \\to 0^+$, the quantity $\\sqrt{x} \\to 0^+$. Since the denominator\napproaches zero through positive values and the numerator is $1$:\n\\[\n \\limto{x \\to 0^+} \\frac{1}{\\sqrt{x}} = +\\infty.\n\\]\nNote that this limit is only one-sided because $\\sqrt{x}$ is not defined for\n$x < 0$. The line $x = 0$ is a vertical asymptote of $y = 1/\\sqrt{x}$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.8",
+      "number": "2.8",
+      "title": "Combining vertical asymptote analysis",
+      "problem": "Find all vertical asymptotes of $f(x) = \\dfrac{3x}{x^2 - x - 6}$ and\ndetermine the behavior of $f$ near each one.",
+      "solution": "Factor the denominator:\n\\[\n f(x) = \\frac{3x}{(x - 3)(x + 2)}.\n\\]\nNo common factors with the numerator, so both $x = 3$ and $x = -2$ are\nvertical asymptotes.\n\n**At $x = 3$:** Numerator: $3(3) = 9 > 0$.\n\n- $x \\to 3^+$: $(x-3) \\to 0^+$, $(x+2) \\approx 5 > 0$.\n So $f(x) \\to \\dfrac{9}{0^+} = +\\infty$.\n\n- $x \\to 3^-$: $(x-3) \\to 0^-$, $(x+2) \\approx 5 > 0$.\n So $f(x) \\to \\dfrac{9}{0^-} = -\\infty$.\n\n**At $x = -2$:** Numerator: $3(-2) = -6 < 0$.\n\n- $x \\to -2^+$: $(x+2) \\to 0^+$, $(x-3) \\approx -5 < 0$.\n Denominator $\\to 0^-$.\n So $f(x) \\to \\dfrac{-6}{0^-} = +\\infty$.\n\n- $x \\to -2^-$: $(x+2) \\to 0^-$, $(x-3) \\approx -5 < 0$.\n Denominator $\\to 0^+$.\n So $f(x) \\to \\dfrac{-6}{0^+} = -\\infty$."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 145:3",
+      "text": "Great is the Lord and most worthy of praise;\nhis greatness no one can fathom."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 55:9",
+      "text": "As the heavens are higher than the earth, so are\nmy ways higher than your ways and my thoughts than your thoughts."
+    },
+    {
+      "type": "quote",
+      "author": "Leonhard Euler (1707--1783)",
+      "text": "For since the fabric of the universe\nis most perfect and the work of a most wise Creator, nothing at all takes place\nin the universe in which some rule of maximum or minimum does not appear."
+    }
+  ]
+}

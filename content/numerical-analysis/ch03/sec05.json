@@ -1,0 +1,204 @@
+{
+  "id": "numerical-analysis-ch03-sec05",
+  "title": "Iterative Methods",
+  "chapter": 3,
+  "section": 5,
+  "book": "numerical-analysis",
+  "objectives": [
+    "Understand the distinction between direct and iterative methods",
+    "Implement the Jacobi and Gauss-Seidel iterative schemes",
+    "Apply successive over-relaxation (SOR) to accelerate convergence",
+    "Analyze convergence conditions using matrix splittings",
+    "Recognize when iterative methods are preferable to direct methods"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Direct vs. Iterative Methods"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.1",
+      "number": "3.1",
+      "title": "Direct and Iterative Methods",
+      "content": "- A **direct method** computes the exact solution (in exact \n arithmetic) in a finite number of steps.\n\n- An **iterative method** generates a sequence of approximations \n $\\mathbf{x}^{(0)}, \\mathbf{x}^{(1)}, \\mathbf{x}^{(2)}, \\ldots$ that \n converges to the solution."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Matrix Splittings"
+    },
+    {
+      "type": "paragraph",
+      "text": "Iterative methods are based on **matrix splittings**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.2",
+      "number": "3.2",
+      "title": "Matrix Splitting",
+      "content": "A **splitting** of $A$ writes $A = M - N$ where $M$ is nonsingular \nand easy to invert. The system $A\\mathbf{x} = \\mathbf{b}$ becomes:\n\\[\nM\\mathbf{x} = N\\mathbf{x} + \\mathbf{b}\n\\]\nThis suggests the iteration:\n\\[\nM\\mathbf{x}^{(k+1)} = N\\mathbf{x}^{(k)} + \\mathbf{b}\n\\]\nor equivalently:\n\\[\n\\mathbf{x}^{(k+1)} = M^{-1}N\\mathbf{x}^{(k)} + M^{-1}\\mathbf{b} = T\\mathbf{x}^{(k)} + \\mathbf{c}\n\\]\nwhere $T = M^{-1}N$ is the **iteration matrix**."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "Convergence of Iterative Methods",
+      "content": "The iteration $\\mathbf{x}^{(k+1)} = T\\mathbf{x}^{(k)} + \\mathbf{c}$ converges \nto the unique fixed point $\\mathbf{x}^* = T\\mathbf{x}^* + \\mathbf{c}$ for \nany starting vector $\\mathbf{x}^{(0)}$ if and only if:\n\\[\n\\rho(T) < 1\n\\]\nwhere $\\rho(T) = \\max\\{|\\lambda| : \\lambda \\text{ is an eigenvalue of } T\\}$ \nis the **spectral radius**.\n\nproof\nLet $\\mathbf{e}^{(k)} = \\mathbf{x}^{(k)} - \\mathbf{x}^*$ be the error. Then:\n\\[\n\\mathbf{e}^{(k+1)} = T\\mathbf{x}^{(k)} + \\mathbf{c} - (T\\mathbf{x}^* + \\mathbf{c}) = T\\mathbf{e}^{(k)}\n\\]\nBy induction, $\\mathbf{e}^{(k)} = T^k\\mathbf{e}^{(0)}$.\n\nConvergence for all $\\mathbf{e}^{(0)}$ requires $T^k \\to 0$ as $k \\to \\infty$. \nThis occurs iff $\\rho(T) < 1$.\nproof",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Jacobi Method"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.3",
+      "number": "3.3",
+      "title": "Jacobi Method",
+      "content": "Decompose $A = D - L - U$ where:\n\n- $D$ = diagonal of $A$\n\n- $-L$ = strict lower triangular part of $A$\n\n- $-U$ = strict upper triangular part of $A$\n\nThe **Jacobi iteration** uses $M = D$, $N = L + U$:\n\\[\nD\\mathbf{x}^{(k+1)} = (L + U)\\mathbf{x}^{(k)} + \\mathbf{b}\n\\]\n\nComponent form:\n\\[\nx_i^{(k+1)} = \\frac{1}{a_{ii}}\\left(b_i - \\sum_{j \\neq i} a_{ij}x_j^{(k)}\\right)\n\\]"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-3.5",
+      "number": null,
+      "title": "Jacobi Iteration",
+      "content": "algorithmic[1]\n Matrix $A$, vector $\\mathbf{b}$, initial guess $\\mathbf{x}^{(0)}$, tolerance $\\varepsilon$\n Approximate solution $\\mathbf{x}$\n $k \\gets 0$\n\n $i = 1$ **to** $n$\n $s \\gets 0$\n $j = 1$ **to** $n$\n $j \\neq i$\n $s \\gets s + a_{ij} x_j^{(k)}$\n \n \n $x_i^{(k+1)} \\gets (b_i - s) / a_{ii}$\n \n $k \\gets k + 1$\n$\\|\\mathbf{x}^{(k)} - \\mathbf{x}^{(k-1)}\\| < \\varepsilon$\n $\\mathbf{x}^{(k)}$\nalgorithmic"
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Jacobi Method",
+      "problem": "Solve using Jacobi iteration with $\\mathbf{x}^{(0)} = (0, 0, 0)^T$:\n\\[\n\\begin{pmatrix}\n4 & -1 & 0 \\\\\n-1 & 4 & -1 \\\\\n0 & -1 & 4\n\\end{pmatrix}\n\\begin{pmatrix} x_1 \\\\ x_2 \\\\ x_3 \\end{pmatrix}\n= \\begin{pmatrix} 1 \\\\ 4 \\\\ 1 \\end{pmatrix}\n\\]\n\n**Iteration 1:**\n$$\nx_1^{(1)} &= \\frac{1}{4}(1 - (-1)(0) - 0(0)) = 0.25 \\\\\nx_2^{(1)} &= \\frac{1}{4}(4 - (-1)(0) - (-1)(0)) = 1.00 \\\\\nx_3^{(1)} &= \\frac{1}{4}(1 - 0(0) - (-1)(0)) = 0.25\n$$\n\n**Iteration 2:**\n$$\nx_1^{(2)} &= \\frac{1}{4}(1 + 1.00) = 0.50 \\\\\nx_2^{(2)} &= \\frac{1}{4}(4 + 0.25 + 0.25) = 1.125 \\\\\nx_3^{(2)} &= \\frac{1}{4}(1 + 1.00) = 0.50\n$$\n\n**Iteration 3:**\n$$\nx_1^{(3)} &= \\frac{1}{4}(1 + 1.125) = 0.531 \\\\\nx_2^{(3)} &= \\frac{1}{4}(4 + 0.50 + 0.50) = 1.25 \\\\\nx_3^{(3)} &= \\frac{1}{4}(1 + 1.125) = 0.531\n$$\n\nThe exact solution is $(0.5, 1.25, 0.5)^T$. Convergence is evident.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Gauss-Seidel Method"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.4",
+      "number": "3.4",
+      "title": "Gauss-Seidel Method",
+      "content": "The **Gauss-Seidel iteration** improves on Jacobi by using updated \nvalues as soon as they are computed. Use $M = D - L$, $N = U$:\n\\[\n(D - L)\\mathbf{x}^{(k+1)} = U\\mathbf{x}^{(k)} + \\mathbf{b}\n\\]\n\nComponent form:\n\\[\nx_i^{(k+1)} = \\frac{1}{a_{ii}}\\left(b_i - \\sum_{j < i} a_{ij}x_j^{(k+1)} - \\sum_{j > i} a_{ij}x_j^{(k)}\\right)\n\\]"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-3.5",
+      "number": null,
+      "title": "Gauss-Seidel Iteration",
+      "content": "algorithmic[1]\n Matrix $A$, vector $\\mathbf{b}$, initial guess $\\mathbf{x}^{(0)}$, tolerance $\\varepsilon$\n Approximate solution $\\mathbf{x}$\n $k \\gets 0$\n\n $i = 1$ **to** $n$\n $s \\gets 0$\n $j = 1$ **to** $i-1$\n $s \\gets s + a_{ij} x_j^{(k+1)}$ Use new values\n \n $j = i+1$ **to** $n$\n $s \\gets s + a_{ij} x_j^{(k)}$ Use old values\n \n $x_i^{(k+1)} \\gets (b_i - s) / a_{ii}$\n \n $k \\gets k + 1$\n$\\|\\mathbf{x}^{(k)} - \\mathbf{x}^{(k-1)}\\| < \\varepsilon$\n $\\mathbf{x}^{(k)}$\nalgorithmic"
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Gauss-Seidel Method",
+      "problem": "Same system as before, with $\\mathbf{x}^{(0)} = (0, 0, 0)^T$:\n\n**Iteration 1:**\n$$\nx_1^{(1)} &= \\frac{1}{4}(1 + 0 + 0) = 0.25 \\\\\nx_2^{(1)} &= \\frac{1}{4}(4 + 0.25 + 0) = 1.0625 \\\\\nx_3^{(1)} &= \\frac{1}{4}(1 + 0 + 1.0625) = 0.5156\n$$\n\n**Iteration 2:**\n$$\nx_1^{(2)} &= \\frac{1}{4}(1 + 1.0625) = 0.5156 \\\\\nx_2^{(2)} &= \\frac{1}{4}(4 + 0.5156 + 0.5156) = 1.2578 \\\\\nx_3^{(2)} &= \\frac{1}{4}(1 + 1.2578) = 0.5645\n$$\n\n**Iteration 3:**\n$$\nx_1^{(3)} &= 0.5645 \\\\\nx_2^{(3)} &= 1.2822 \\\\\nx_3^{(3)} &= 0.5706\n$$\n\nGauss-Seidel converges faster than Jacobi!",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Successive Over-Relaxation (SOR)"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.5",
+      "number": "3.5",
+      "title": "SOR Method",
+      "content": "**Successive Over-Relaxation** introduces a relaxation parameter \n$\\omega > 0$:\n\\[\nx_i^{(k+1)} = (1-\\omega)x_i^{(k)} + \\frac{\\omega}{a_{ii}}\\left(b_i - \\sum_{j < i} a_{ij}x_j^{(k+1)} - \\sum_{j > i} a_{ij}x_j^{(k)}\\right)\n\\]\n\n- $\\omega = 1$: Gauss-Seidel\n\n- $0 < \\omega < 1$: Under-relaxation\n\n- $1 < \\omega < 2$: Over-relaxation"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.2",
+      "number": "3.2",
+      "title": "SOR Convergence",
+      "content": "For SOR to converge for any initial guess, we need $0 < \\omega < 2$.\n\nIf $A$ is symmetric positive definite, SOR converges for all $0 < \\omega < 2$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.3",
+      "number": "3.3",
+      "title": "Optimal SOR Parameter",
+      "content": "For certain structured matrices (e.g., consistently ordered, Property A), \nthe optimal relaxation parameter is:\n\\[\n\\omega_{\\text{opt}} = \\frac{2}{1 + \\sqrt{1 - \\rho(T_J)^2}}\n\\]\nwhere $\\rho(T_J)$ is the spectral radius of the Jacobi iteration matrix.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-3.3",
+      "number": "3.3",
+      "title": "SOR Acceleration",
+      "problem": "For the previous system, $\\rho(T_J) = 0.5$. The optimal $\\omega$ is:\n\\[\n\\omega_{\\text{opt}} = \\frac{2}{1 + \\sqrt{1 - 0.25}} = \\frac{2}{1 + 0.866} = 1.072\n\\]\n\nWith $\\omega = 1.072$, convergence is significantly faster than Gauss-Seidel.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Convergence Conditions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.6",
+      "number": "3.6",
+      "title": "Diagonal Dominance",
+      "content": "A matrix $A$ is **strictly diagonally dominant** if:\n\\[\n|a_{ii}| > \\sum_{j \\neq i} |a_{ij}| \\quad \\text{for all } i\n\\]\n\nIt is **weakly diagonally dominant** if $\\geq$ holds with strict \ninequality for at least one $i$, plus $A$ is irreducible."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.4",
+      "number": "3.4",
+      "title": "Convergence for Diagonally Dominant Matrices",
+      "content": "If $A$ is strictly diagonally dominant, then both Jacobi and Gauss-Seidel \nmethods converge for any initial guess.\n\nproof\nFor Jacobi, the iteration matrix is $T_J = D^{-1}(L+U)$. We show \n$\\|T_J\\|_\\infty < 1$:\n\\[\n\\|T_J\\|_\\infty = \\max_i \\sum_{j \\neq i} \\frac{|a_{ij}|}{|a_{ii}|} < 1\n\\]\nby diagonal dominance. Since $\\rho(T_J) \\leq \\|T_J\\|_\\infty < 1$, Jacobi converges.\n\nFor Gauss-Seidel, convergence follows from a more involved argument using \nthe Stein-Rosenberg theorem.\nproof",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.5",
+      "number": "3.5",
+      "title": "Convergence for SPD Matrices",
+      "content": "If $A$ is symmetric positive definite, then Gauss-Seidel and SOR (with \n$0 < \\omega < 2$) converge for any initial guess.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.6",
+      "number": "3.6",
+      "title": "Comparison of Jacobi and Gauss-Seidel",
+      "content": "For matrices with Property A (including tridiagonal matrices from standard \nfinite differences):\n\\[\n\\rho(T_{GS}) = \\rho(T_J)^2\n\\]\nThus Gauss-Seidel converges twice as fast as Jacobi (in terms of iterations \nto reduce error by a fixed factor).",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Practical Considerations"
+    },
+    {
+      "type": "method",
+      "id": "method-3.5",
+      "number": null,
+      "title": "Stopping Criteria",
+      "content": "Common stopping criteria for iterative methods:\n\n1. **Residual:** $\\|\\mathbf{b} - A\\mathbf{x}^{(k)}\\| < \\varepsilon$\n\n2. **Relative residual:** $\\|\\mathbf{b} - A\\mathbf{x}^{(k)}\\|/\\|\\mathbf{b}\\| < \\varepsilon$\n\n3. **Difference:** $\\|\\mathbf{x}^{(k)} - \\mathbf{x}^{(k-1)}\\| < \\varepsilon$\n\n4. **Maximum iterations:** Stop after $k_{\\max}$ iterations\nThe residual criterion is preferred because it relates to the accuracy of \nthe solution via the condition number."
+    },
+    {
+      "type": "warning",
+      "id": "warning-3.5",
+      "number": null,
+      "title": "Convergence is Not Guaranteed",
+      "content": "Iterative methods can diverge! Always check convergence criteria before \nusing Jacobi, Gauss-Seidel, or SOR. When in doubt, verify that the matrix \nis diagonally dominant or symmetric positive definite."
+    },
+    {
+      "type": "historical",
+      "id": "historical-3.5",
+      "number": null,
+      "title": "Carl Gustav Jacob Jacobi (1804--1851)",
+      "content": "Jacobi was a prolific German mathematician who made fundamental contributions \nto elliptic functions, determinants, and dynamics. The Jacobi method for \nlinear systems is just one of many algorithms bearing his name, including \nthe Jacobi eigenvalue algorithm and Jacobi's iterative method for computing \nmatrix functions."
+    }
+  ]
+}

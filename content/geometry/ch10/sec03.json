@@ -1,0 +1,289 @@
+{
+  "id": "geometry-ch10-sec03",
+  "title": "Areas of Regular Polygons",
+  "chapter": 10,
+  "section": 3,
+  "book": "geometry",
+  "epigraph": {
+    "text": "He has made everything beautiful in its time. He has also set eternity in the human heart.",
+    "reference": "Ecclesiastes 3:11"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Regular polygons—figures with all sides equal and all angles equal—have \ncaptivated mathematicians and artists for millennia. From the hexagonal \ncells of honeycombs to the octagonal stop signs on our streets, these \nshapes combine perfect symmetry with practical utility. In this section, \nwe develop a unified formula for the area of any regular polygon."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Regular Polygons Review"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Regular Polygon",
+      "content": "A **regular polygon** is a polygon that is \nboth equilateral (all sides congruent) and equiangular (all angles congruent)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Examples include the equilateral triangle (3 sides), square (4 sides), \nregular pentagon (5 sides), regular hexagon (6 sides), and so on."
+    },
+    {
+      "type": "paragraph",
+      "text": "Every regular polygon has a **center**—a point equidistant from \nall vertices. This symmetry is key to our area formula."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Center, Radius, and Apothem"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.2",
+      "number": "10.2",
+      "title": "Center and Radius",
+      "content": "The **center** of a regular polygon \nis the point equidistant from all vertices. The **radius** \nis the distance from the center to any vertex."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.3",
+      "number": "10.3",
+      "title": "Apothem",
+      "content": "The **apothem** of a regular polygon is the \nperpendicular distance from the center to the midpoint of any side."
+    },
+    {
+      "type": "paragraph",
+      "text": "The apothem is always shorter than the radius (except for a circle, \nwhere they're equal). The radius goes to a vertex; the apothem \ngoes to the middle of a side."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Central Angle"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.4",
+      "number": "10.4",
+      "title": "Central Angle",
+      "content": "The **central angle** of \na regular $n$-gon is the angle formed at the center by two adjacent radii:\n\\[\n \\theta = \\frac{360°}{n}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "For example:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Equilateral triangle ($n = 3$): $\\theta = 360°/3 = 120°$",
+        "Square ($n = 4$): $\\theta = 360°/4 = 90°$",
+        "Regular hexagon ($n = 6$): $\\theta = 360°/6 = 60°$",
+        "Regular octagon ($n = 8$): $\\theta = 360°/8 = 45°$"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Deriving the Area Formula"
+    },
+    {
+      "type": "paragraph",
+      "text": "Here is the key insight: any regular $n$-gon can be divided into \n$n$ congruent isosceles triangles by drawing all radii from the center \nto the vertices."
+    },
+    {
+      "type": "paragraph",
+      "text": "Each triangle has:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Base = one side of the polygon (length $s$)",
+        "Height = the apothem (length $a$)",
+        "Area = $\\frac{1}{2} \\cdot s \\cdot a$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Since there are $n$ such triangles, the total area is:\n\\[\n A = n \\cdot \\frac{1}{2}sa = \\frac{1}{2} \\cdot (ns) \\cdot a = \\frac{1}{2}pa\n\\]\nwhere $p = ns$ is the perimeter of the polygon."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "Regular Polygon Area",
+      "content": "The area of a regular polygon with apothem $a$ and perimeter $p$ is:\n\\[\n A = \\frac{1}{2}ap\n\\]\nEquivalently, if the polygon has $n$ sides of length $s$:\n\\[\n A = \\frac{1}{2}a \\cdot ns = \\frac{1}{2}ans\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "Area of a regular hexagon",
+      "problem": "A regular hexagon has side length 8 cm and apothem $4\\sqrt{3}$ cm. \nFind its area.",
+      "solution": "First, find the perimeter:\n\\[\n p = 6 \\cdot 8 = 48 \\text{ cm}\n\\]\nThen apply the area formula:\n\\[\n A = \\frac{1}{2}ap = \\frac{1}{2}(4\\sqrt{3})(48) = 96\\sqrt{3} \\approx 166.3 \\text{ cm}^2\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.2",
+      "number": "10.2",
+      "title": "Finding the apothem",
+      "problem": "A regular pentagon has side length 10 and area 172.05. Find the apothem.",
+      "solution": "The perimeter is $p = 5 \\cdot 10 = 50$. Using $A = \\frac{1}{2}ap$:\n\\[\n 172.05 = \\frac{1}{2}a(50) = 25a\n\\]\n\\[\n a = \\frac{172.05}{25} = 6.882\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Relating Apothem, Radius, and Side Length"
+    },
+    {
+      "type": "paragraph",
+      "text": "For a regular $n$-gon, the apothem $a$, radius $r$, and side length $s$ \nare related through trigonometry. Consider one of the $n$ isosceles \ntriangles formed by two radii."
+    },
+    {
+      "type": "paragraph",
+      "text": "The apothem bisects the central angle $\\theta = 360°/n$, creating \na right triangle with:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Hypotenuse = radius $r$",
+        "One leg = apothem $a$",
+        "Other leg = half the side length, $s/2$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "This gives us the relationships:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$a &= r \\cos\\left(\\frac{180°}{n}\\right) \\\\[0.5em]\n    \\frac{s}{2} &= r \\sin\\left(\\frac{180°}{n}\\right)$$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.3",
+      "number": "10.3",
+      "title": "Finding dimensions of a regular hexagon",
+      "problem": "A regular hexagon has radius 10. Find its side length and apothem.",
+      "solution": "For a hexagon, $n = 6$, so the half central angle is $180°/6 = 30°$.\n\nThe side length:\n\\[\n s = 2r \\sin 30° = 2(10)\\left(\\frac{1}{2}\\right) = 10\n\\]\n\nThe apothem:\n\\[\n a = r \\cos 30° = 10 \\cdot \\frac{\\sqrt{3}}{2} = 5\\sqrt{3} \\approx 8.66\n\\]\n\n(Note: For a regular hexagon, the side length equals the radius!)"
+    },
+    {
+      "type": "example",
+      "id": "example-10.4",
+      "number": "10.4",
+      "title": "Area of a regular octagon",
+      "problem": "A regular octagon is inscribed in a circle of radius 12. Find the \narea of the octagon.",
+      "solution": "For an octagon, $n = 8$, so the half central angle is $180°/8 = 22.5°$.\n\nFirst, find the side length:\n\\[\n s = 2r \\sin 22.5° = 2(12)(0.3827) \\approx 9.18\n\\]\n\nThe apothem:\n\\[\n a = r \\cos 22.5° = 12(0.9239) \\approx 11.09\n\\]\n\nThe perimeter:\n\\[\n p = 8s \\approx 8(9.18) = 73.44\n\\]\n\nThe area:\n\\[\n A = \\frac{1}{2}ap \\approx \\frac{1}{2}(11.09)(73.44) \\approx 407.3\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Special Case: Equilateral Triangle"
+    },
+    {
+      "type": "paragraph",
+      "text": "For an equilateral triangle with side $s$, we can derive a direct \narea formula. The height $h$ of an equilateral triangle is:\n\\[\n h = \\frac{s\\sqrt{3}}{2}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Therefore, the area is:\n\\[\n A = \\frac{1}{2}bh = \\frac{1}{2} \\cdot s \\cdot \\frac{s\\sqrt{3}}{2} = \\frac{s^2\\sqrt{3}}{4}\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.2",
+      "number": "10.2",
+      "title": "Equilateral Triangle Area",
+      "content": "The area of an equilateral triangle with side length $s$ is:\n\\[\n A = \\frac{s^2\\sqrt{3}}{4}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-10.5",
+      "number": "10.5",
+      "title": "Equilateral triangle",
+      "problem": "Find the area of an equilateral triangle with side length 12.",
+      "solution": "\\[\n A = \\frac{s^2\\sqrt{3}}{4} = \\frac{12^2 \\cdot \\sqrt{3}}{4} = \\frac{144\\sqrt{3}}{4} = 36\\sqrt{3} \\approx 62.35\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Special Case: Regular Hexagon"
+    },
+    {
+      "type": "paragraph",
+      "text": "A regular hexagon can be divided into 6 equilateral triangles. \nIf the hexagon has side length $s$, each triangle has area \n$\\frac{s^2\\sqrt{3}}{4}$, so:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.3",
+      "number": "10.3",
+      "title": "Regular Hexagon Area",
+      "content": "The area of a regular hexagon with side length $s$ is:\n\\[\n A = 6 \\cdot \\frac{s^2\\sqrt{3}}{4} = \\frac{3s^2\\sqrt{3}}{2}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-10.6",
+      "number": "10.6",
+      "title": "Regular hexagon area",
+      "problem": "Find the area of a regular hexagon with side length 6.",
+      "solution": "\\[\n A = \\frac{3s^2\\sqrt{3}}{2} = \\frac{3(6)^2\\sqrt{3}}{2} = \\frac{3 \\cdot 36 \\cdot \\sqrt{3}}{2} = \\frac{108\\sqrt{3}}{2} = 54\\sqrt{3} \\approx 93.5\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications"
+    },
+    {
+      "type": "example",
+      "id": "example-10.7",
+      "number": "10.7",
+      "title": "Stop sign",
+      "problem": "A standard stop sign is a regular octagon with side length 12.5 inches \nand apothem 15.1 inches. Find its area.",
+      "solution": "The perimeter is $p = 8 \\cdot 12.5 = 100$ inches. The area is:\n\\[\n A = \\frac{1}{2}ap = \\frac{1}{2}(15.1)(100) = 755 \\text{ in}^2\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.8",
+      "number": "10.8",
+      "title": "Honeycomb cells",
+      "problem": "Honeycomb cells are regular hexagons with side length approximately \n3 mm. Find the area of one cell.",
+      "solution": "\\[\n A = \\frac{3s^2\\sqrt{3}}{2} = \\frac{3(3)^2\\sqrt{3}}{2} = \\frac{27\\sqrt{3}}{2} \\approx 23.4 \\text{ mm}^2\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ezekiel 41:21",
+      "text": "The outer sanctuary had a rectangular \ndoorframe, and the one at the front of the Most Holy Place was similar."
+    },
+    {
+      "type": "scripture",
+      "reference": "Revelation 21:16",
+      "text": "The city was laid out like a square, \nas long as it was wide. He measured the city with the rod and found \nit to be 12,000 stadia in length."
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Kings 6:20",
+      "text": "The inner sanctuary was twenty cubits \nlong, twenty cubits wide and twenty cubits high."
+    },
+    {
+      "type": "scripture",
+      "reference": "Genesis 1:31",
+      "text": "God saw all that he had made, and \nit was very good."
+    }
+  ]
+}

@@ -1,0 +1,273 @@
+{
+  "id": "precalculus-ch02-sec04",
+  "title": "Zeros of Polynomial Functions",
+  "chapter": 2,
+  "section": 4,
+  "book": "precalculus",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Seek and you will find; knock and the door will be \nopened to you.\"*{Matthew 7:7}{An equation means nothing to me unless it expresses a thought of God.}{Srinivasa Ramanujan}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Finding the zeros of a polynomial is one of the oldest problems in \nalgebra, dating back to the Babylonians who solved quadratic equations \nnearly 4,000 years ago. The quest to solve higher-degree equations drove \ncenturies of mathematical development and led to some of the most \nbeautiful theories in all of mathematics."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Fundamental Theorem of Algebra"
+    },
+    {
+      "type": "paragraph",
+      "text": "The most important theorem about polynomial equations guarantees that \nsolutions always exist—if we're willing to look beyond the real numbers."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Fundamental Theorem of Algebra",
+      "content": "Every polynomial of degree $n \\ge 1$ with complex coefficients has \nexactly $n$ zeros in the complex numbers, counted with multiplicity.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This profound theorem was first proved by Carl Friedrich Gauss in his \n1799 doctoral dissertation. Despite its name suggesting algebra, every \nknown proof uses techniques from analysis or topology—the theorem \nconnects different branches of mathematics in deep ways."
+    },
+    {
+      "type": "paragraph",
+      "text": "$. Real numbers are complex numbers with $b = 0$. \nWe'll study complex numbers in more depth later.}"
+    },
+    {
+      "type": "paragraph",
+      "text": "For real polynomials, we can say:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Number of Real Zeros",
+      "content": "A polynomial of degree $n$ has at most $n$ real zeros.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The zeros might not all be real—some might be complex. But the total \ncount (real plus complex) is always exactly $n$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Counting zeros",
+      "problem": "Identify all zeros of each polynomial.\n\n1. $f(x) = x^2 - 4$\n\n2. $g(x) = x^2 + 4$\n\n3. $h(x) = (x - 1)^2(x + 3)$",
+      "solution": "1. $x^2 - 4 = (x - 2)(x + 2) = 0$ gives $x = 2$ and $x = -2$.\n \n Two distinct real zeros. (Degree 2)\n\n2. $x^2 + 4 = 0$ gives $x^2 = -4$, so $x = \\pm 2i$.\n \n Two complex zeros (no real zeros). (Degree 2)\n\n3. The zeros are $x = 1$ (multiplicity 2) and $x = -3$ \n (multiplicity 1).\n \n Total: $2 + 1 = 3$ zeros. (Degree 3)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Rational Zeros Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "For polynomials with integer coefficients, there's a powerful theorem \nthat limits where rational zeros can occur."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.3",
+      "number": "2.3",
+      "title": "Rational Zeros Theorem",
+      "content": "If $f(x) = a_n x^n + a_{n-1}x^{n-1} + \\cdots + a_1 x + a_0$ has integer \ncoefficients and $\\dfrac{p}{q}$ is a rational zero (in lowest terms), then:\n\n- $p$ divides the constant term $a_0$\n\n- $q$ divides the leading coefficient $a_n$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "they do exist. Many polynomials \nwith integer coefficients have no rational zeros at all.}"
+    },
+    {
+      "type": "paragraph",
+      "text": "The proof relies on the Factor Theorem and properties of divisibility. \nThe key insight is that if $f(p/q) = 0$, clearing denominators and \nexamining the resulting equation reveals restrictions on $p$ and $q$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-2.4",
+      "number": null,
+      "title": "Lowest Terms Required",
+      "content": "The fraction $\\frac{p}{q}$ must be in lowest terms (no common factors). \nFor example, if testing whether $\\frac{2}{4}$ is a zero, simplify to \n$\\frac{1}{2}$ first."
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Using the Rational Zeros Theorem",
+      "problem": "Find all rational zeros of $f(x) = 2x^3 - 3x^2 - 11x + 6$.",
+      "solution": "**Step 1:** List possible rational zeros.\n\n- Divisors of $a_0 = 6$: $\\pm 1, \\pm 2, \\pm 3, \\pm 6$\n\n- Divisors of $a_n = 2$: $\\pm 1, \\pm 2$\n\n- Possible rational zeros $\\frac{p}{q}$: \n $\\pm 1, \\pm 2, \\pm 3, \\pm 6, \\pm \\frac{1}{2}, \\pm \\frac{3}{2}$\n\n**Step 2:** Test candidates using synthetic division (or direct \nsubstitution).\n\nTesting $x = 3$:\n\\[\n\\begin{array}{c|cccc}\n3 & 2 & -3 & -11 & 6 \\\\\n & & 6 & 9 & -6 \\\\\n\\hline\n & 2 & 3 & -2 & 0\n\\end{array}\n\\]\n\nThe remainder is 0, so $x = 3$ is a zero!\n\n**Step 3:** Factor the quotient $2x^2 + 3x - 2$.\n\nUse the quadratic formula or factor by inspection:\n\\[\n 2x^2 + 3x - 2 = (2x - 1)(x + 2)\n\\]\n\nThe zeros of the quotient are $x = \\frac{1}{2}$ and $x = -2$.\n\n**Complete factorization:**\n\\[\n f(x) = (x - 3)(2x - 1)(x + 2) = 2(x - 3)(x - \\tfrac{1}{2})(x + 2)\n\\]\n\n**Rational zeros:** $x = 3$, $x = \\frac{1}{2}$, and $x = -2$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "A polynomial with no rational zeros",
+      "problem": "Show that $f(x) = x^3 - 2$ has no rational zeros.",
+      "solution": "Possible rational zeros: $\\pm 1, \\pm 2$.\n\n- $f(1) = 1 - 2 = -1 \\neq 0$\n\n- $f(-1) = -1 - 2 = -3 \\neq 0$\n\n- $f(2) = 8 - 2 = 6 \\neq 0$\n\n- $f(-2) = -8 - 2 = -10 \\neq 0$\n\nNone of the possible rational zeros work. Therefore, $f(x) = x^3 - 2$ \nhas no rational zeros.\n\nThe real zero is $x = \\sqrt[3]{2}$, which is irrational."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Strategies for Finding Zeros"
+    },
+    {
+      "type": "paragraph",
+      "text": "Here's a systematic approach for finding all zeros of a polynomial:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Check for obvious factors:** Common factors, difference \n of squares, sum/difference of cubes.",
+        "**Use the Rational Zeros Theorem:** List candidates and \n test systematically.",
+        "**Reduce the degree:** Once you find a zero, divide it \n out and work with the quotient.",
+        "**Handle the remaining quadratic:** Use factoring or the \n quadratic formula.",
+        "**Check for complex zeros:** If the discriminant is \n negative, the quadratic has complex zeros."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "Complete factorization",
+      "problem": "Find all zeros of $f(x) = x^4 - x^3 - 7x^2 + x + 6$.",
+      "solution": "**Step 1:** List possible rational zeros.\n\nDivisors of 6: $\\pm 1, \\pm 2, \\pm 3, \\pm 6$.\n\n**Step 2:** Test candidates.\n\n$f(1) = 1 - 1 - 7 + 1 + 6 = 0$ \n\nSo $(x - 1)$ is a factor. Divide:\n\n\\[\n\\begin{array}{c|ccccc}\n1 & 1 & -1 & -7 & 1 & 6 \\\\\n & & 1 & 0 & -7 & -6 \\\\\n\\hline\n & 1 & 0 & -7 & -6 & 0\n\\end{array}\n\\]\n\nSo $f(x) = (x - 1)(x^3 - 7x - 6)$.\n\n**Step 3:** Find zeros of $g(x) = x^3 - 7x - 6$.\n\nTest rational zeros of $g$: \n$g(-1) = -1 + 7 - 6 = 0$ \n\n\\[\n\\begin{array}{c|cccc}\n-1 & 1 & 0 & -7 & -6 \\\\\n & & -1 & 1 & 6 \\\\\n\\hline\n & 1 & -1 & -6 & 0\n\\end{array}\n\\]\n\nSo $g(x) = (x + 1)(x^2 - x - 6)$.\n\n**Step 4:** Factor the quadratic.\n\n$x^2 - x - 6 = (x - 3)(x + 2)$.\n\n**Complete factorization:**\n\\[\n f(x) = (x - 1)(x + 1)(x - 3)(x + 2)\n\\]\n\n**All zeros:** $x = 1, -1, 3, -2$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Descartes' Rule of Signs"
+    },
+    {
+      "type": "paragraph",
+      "text": "Before testing candidates, it's helpful to know how many positive and \nnegative zeros to expect. Descartes' Rule provides this information."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.4",
+      "number": "2.4",
+      "title": "Descartes' Rule of Signs",
+      "content": "Let $f(x)$ be a polynomial with real coefficients, written in \ndescending order.\n\n- The number of **positive real zeros** equals the number \n of sign changes in $f(x)$, or is less than that by an even number.\n\n- The number of **negative real zeros** equals the number \n of sign changes in $f(-x)$, or is less than that by an even number.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-2.5",
+      "number": "2.5",
+      "title": "Applying Descartes' Rule",
+      "problem": "Use Descartes' Rule to analyze the zeros of \n$f(x) = 2x^4 - 3x^3 + x^2 - x + 1$.",
+      "solution": "**Positive zeros:** Count sign changes in $f(x)$:\n\\[\n f(x) = \\underset{+}{2x^4} \\underset{-}{-3x^3} \\underset{+}{+x^2} \n \\underset{-}{-x} \\underset{+}{+1}\n\\]\nSigns: $+, -, +, -, +$\n\nTransitions: $+ \\to -$, $- \\to +$, $+ \\to -$, $- \\to +$ = 4 sign changes.\n\nPossible positive real zeros: 4, 2, or 0.\n\n**Negative zeros:** Compute $f(-x)$:\n\\[\n f(-x) = 2x^4 + 3x^3 + x^2 + x + 1\n\\]\nSigns: $+, +, +, +, +$\n\nNo sign changes.\n\nPossible negative real zeros: 0.\n\n**Summary:** The polynomial has 4, 2, or 0 positive zeros and \n0 negative zeros. Since the degree is 4, the remaining zeros (if any) \nare complex."
+    },
+    {
+      "type": "example",
+      "id": "example-2.6",
+      "number": "2.6",
+      "title": "Using Descartes' Rule to guide testing",
+      "problem": "Find all real zeros of $f(x) = x^3 + 2x^2 - 5x - 6$.",
+      "solution": "**Descartes' Rule:**\n\n$f(x) = +x^3 + 2x^2 - 5x - 6$: Signs $+, +, -, -$. One sign change.\nExactly 1 positive real zero.\n\n$f(-x) = -x^3 + 2x^2 + 5x - 6$: Signs $-, +, +, -$. Two sign changes.\nEither 2 or 0 negative real zeros.\n\n**Possible rational zeros:** $\\pm 1, \\pm 2, \\pm 3, \\pm 6$.\n\nSince there's exactly 1 positive zero, try positive values first:\n\n$f(1) = 1 + 2 - 5 - 6 = -8 \\neq 0$\n\n$f(2) = 8 + 8 - 10 - 6 = 0$ \n\nSo $x = 2$ is the (only) positive zero. Factor:\n\n\\[\n\\begin{array}{c|cccc}\n2 & 1 & 2 & -5 & -6 \\\\\n & & 2 & 8 & 6 \\\\\n\\hline\n & 1 & 4 & 3 & 0\n\\end{array}\n\\]\n\n$f(x) = (x - 2)(x^2 + 4x + 3) = (x - 2)(x + 1)(x + 3)$.\n\n**All zeros:** $x = 2, -1, -3$.\n\n(This confirms 1 positive, 2 negative—matching Descartes' Rule.)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Upper and Lower Bounds"
+    },
+    {
+      "type": "paragraph",
+      "text": "Synthetic division can tell us when we've searched far enough."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.5",
+      "number": "2.5",
+      "title": "Upper and Lower Bound Rules",
+      "content": "Let $f(x)$ be a polynomial with positive leading coefficient.\n\n**Upper Bound:** If synthetic division by $(x - c)$ with $c > 0$ \nproduces all nonnegative numbers in the bottom row, then $c$ is an \nupper bound for the real zeros.\n\n**Lower Bound:** If synthetic division by $(x - c)$ with $c < 0$ \nproduces numbers that alternate in sign (counting 0 as either sign), \nthen $c$ is a lower bound for the real zeros.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-2.7",
+      "number": "2.7",
+      "title": "Finding bounds",
+      "problem": "For $f(x) = x^3 - 2x^2 - 5x + 6$, show that all zeros lie in $[-3, 4]$.",
+      "solution": "**Upper bound test with $c = 4$:**\n\\[\n\\begin{array}{c|cccc}\n4 & 1 & -2 & -5 & 6 \\\\\n & & 4 & 8 & 12 \\\\\n\\hline\n & 1 & 2 & 3 & 18\n\\end{array}\n\\]\nBottom row: $1, 2, 3, 18$—all positive. So 4 is an upper bound.\n\n**Lower bound test with $c = -3$:**\n\\[\n\\begin{array}{c|cccc}\n-3 & 1 & -2 & -5 & 6 \\\\\n & & -3 & 15 & -30 \\\\\n\\hline\n & 1 & -5 & 10 & -24\n\\end{array}\n\\]\nBottom row: $1, -5, 10, -24$—alternating signs. So $-3$ is a lower \nbound.\n\nAll real zeros of $f(x)$ lie in $[-3, 4]$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Complex Conjugate Pairs"
+    },
+    {
+      "type": "paragraph",
+      "text": "When a polynomial has real coefficients, complex zeros have a special \nstructure."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.6",
+      "number": "2.6",
+      "title": "Conjugate Pairs Theorem",
+      "content": "If $f(x)$ is a polynomial with real coefficients and $a + bi$ (with \n$b \\neq 0$) is a zero, then its complex conjugate $a - bi$ is also a \nzero.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "In other words, complex zeros of real polynomials always come in \nconjugate pairs. This has an important consequence: a polynomial of \nodd degree with real coefficients must have at least one real zero \n(since complex zeros pair up, an odd number of zeros can't all be \ncomplex)."
+    },
+    {
+      "type": "example",
+      "id": "example-2.8",
+      "number": "2.8",
+      "title": "Finding polynomials with complex zeros",
+      "problem": "Find a polynomial of degree 3 with real coefficients having zeros \n$2$ and $1 + i$.",
+      "solution": "By the Conjugate Pairs Theorem, $1 - i$ must also be a zero.\n\nThe polynomial is:\n$$\n f(x) &= (x - 2)(x - (1+i))(x - (1-i)) \\\\\n &= (x - 2)((x - 1) - i)((x - 1) + i) \\\\\n &= (x - 2)\\left((x - 1)^2 - i^2\\right) \\\\\n &= (x - 2)\\left((x - 1)^2 + 1\\right) \\\\\n &= (x - 2)(x^2 - 2x + 1 + 1) \\\\\n &= (x - 2)(x^2 - 2x + 2)\n$$\n\nExpanding:\n$$\n f(x) &= x^3 - 2x^2 + 2x - 2x^2 + 4x - 4 \\\\\n &= x^3 - 4x^2 + 6x - 4\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-2.9",
+      "number": "2.9",
+      "title": "Factoring over the reals vs.\\ the complexes",
+      "problem": "Factor $f(x) = x^4 - 1$ completely over (a) the reals, (b) the complexes.",
+      "solution": "**(a) Over the reals:**\n$$\n x^4 - 1 &= (x^2 - 1)(x^2 + 1) \\\\\n &= (x - 1)(x + 1)(x^2 + 1)\n$$\nThe factor $x^2 + 1$ cannot be factored further over the reals (it has \nno real zeros).\n\n**(b) Over the complexes:**\nThe zeros of $x^2 + 1 = 0$ are $x = \\pm i$.\n\\[\n x^4 - 1 = (x - 1)(x + 1)(x - i)(x + i)\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Linear Factorization"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Fundamental Theorem guarantees that every polynomial can be \ncompletely factored into linear factors over the complex numbers."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.7",
+      "number": "2.7",
+      "title": "Linear Factorization Theorem",
+      "content": "If $f(x) = a_n x^n + \\cdots + a_0$ has degree $n \\ge 1$, then\n\\[\n f(x) = a_n(x - c_1)(x - c_2) \\cdots (x - c_n)\n\\]\nwhere $c_1, c_2, \\ldots, c_n$ are the zeros (not necessarily distinct, \npossibly complex).",
+      "label": "Theorem"
+    },
+    {
+      "type": "summary",
+      "id": "summary-2.4",
+      "number": null,
+      "title": "Zeros of Polynomial Functions",
+      "content": "- **Fundamental Theorem:** Degree $n$ polynomial has \n exactly $n$ complex zeros (counting multiplicity)\n\n- **Rational Zeros Theorem:** If $\\frac{p}{q}$ is a \n rational zero, then $p \\mid a_0$ and $q \\mid a_n$\n\n- **Descartes' Rule:** Sign changes limit possible \n positive/negative zeros\n\n- **Conjugate Pairs:** Complex zeros of real polynomials \n come in pairs $a \\pm bi$\n\n- **Bounds:** Synthetic division can establish upper/lower \n bounds"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 147:5",
+      "text": "Great is our Lord and mighty in power; his \nunderstanding has no limit."
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+{
+  "id": "algebra-1-ch04-sec05",
+  "title": "Absolute Value Inequalities",
+  "chapter": 4,
+  "section": 5,
+  "book": "algebra-1",
+  "epigraph": {
+    "text": "From one man he made all the nations, that they \nshould inhabit the whole earth; and he marked out their appointed \ntimes in history and the boundaries of their lands.",
+    "reference": "Acts 17:26",
+    "quote": "Mathematics knows no races or geographic boundaries.",
+    "quoteAuthor": "David Hilbert"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "{Mathematics knows no races or geographic boundaries.}{David Hilbert}"
+    },
+    {
+      "type": "paragraph",
+      "text": "In manufacturing, medicine, and engineering, we often care not just \nabout whether a measurement is above or below a target, but about \n*how far* it is from the target. A bolt that is 0.02 cm too long \nor 0.02 cm too short might both be acceptable—what matters is the \n*distance* from the ideal length. This concept of distance from \na central value is captured beautifully by **absolute value \ninequalities**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Review: What is Absolute Value?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Recall that the **absolute value** of a number is its distance \nfrom zero on the number line. Distance is always non-negative."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "Absolute Value",
+      "content": "The **absolute value** of a real number $x$, \nwritten $|x|$, is defined as:\n\\[\n |x| = \\begin{cases}\n x, & \\text{if } x \\geq 0 \\\\\n -x, & \\text{if } x < 0\n \\end{cases}\n\\]\nGeometrically, $|x|$ represents the **distance** from $x$ to $0$ \non the number line.\n\nMore generally, $|x - a|$ represents the distance from $x$ to $a$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "\"Less Than\" Absolute Value Inequalities"
+    },
+    {
+      "type": "paragraph",
+      "text": "When we say $|x| < 3$, we're asking: which numbers are *less than \n3 units away from zero*? Looking at the number line, these are all the \nnumbers between $-3$ and $3$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Absolute Value ``Less Than'' Inequalities",
+      "content": "For any positive number $c$:\n\\[\n |x| < c \\quad\\Longleftrightarrow\\quad -c < x < c\n\\]\n\\[\n |x| \\leq c \\quad\\Longleftrightarrow\\quad -c \\leq x \\leq c\n\\]\nIn words: \"The distance from $x$ to zero is less than $c$\" means \n\"$x$ is between $-c$ and $c$.\"",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Solving $|x| < 4$",
+      "problem": "Solve $|x| < 4$ and graph the solution.",
+      "solution": "By Theorem [thm:abs-less-than], $|x| < 4$ is equivalent to:\n\\[\n -4 < x < 4\n\\]\n\ncenter\ntikzpicture[scale=0.6]\n (-7,0) – (7,0);\n in {-6,-5,-4,-3,-2,-1,0,1,2,3,4,5,6} {\n (, 0.1) – (, -0.1) node[below] { $\\x$};\n }\n (-4,0) – (4,0);\n (-4,0) circle (3pt);\n (4,0) circle (3pt);\ntikzpicture\ncenter\n\nInterval notation: $(-4, 4)$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "Solving $|x - 2| \\leq 5$",
+      "problem": "Solve $|x - 2| \\leq 5$ and graph the solution.",
+      "solution": "The expression $|x - 2|$ represents the distance from $x$ to $2$. So \n$|x - 2| \\leq 5$ means \"$x$ is at most 5 units from 2.\"\n\nUsing the theorem:\n\\[\n |x - 2| \\leq 5 \\implies -5 \\leq x - 2 \\leq 5\n\\]\n\nAdd 2 to all three parts:\n\\[\n -5 + 2 \\leq x \\leq 5 + 2\n\\]\n\\[\n -3 \\leq x \\leq 7\n\\]\n\ncenter\ntikzpicture[scale=0.5]\n (-5,0) – (10,0);\n in {-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9} {\n (, 0.1) – (, -0.1);\n }\n at (-3, -0.15) { $-3$};\n at (0, -0.15) { $0$};\n at (2, -0.15) { $2$};\n at (7, -0.15) { $7$};\n (-3,0) – (7,0);\n ll[AtlasTeal] (-3,0) circle (4pt);\n ll[AtlasTeal] (7,0) circle (4pt);\n ll[AtlasWarm] (2,0) circle (4pt);\n at (2, 0.2) { center};\ntikzpicture\ncenter\n\nInterval notation: $[-3, 7]$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": "Solving $|2x + 1| < 7$",
+      "problem": "Solve $|2x + 1| < 7$.",
+      "solution": "Apply the theorem:\n\\[\n |2x + 1| < 7 \\implies -7 < 2x + 1 < 7\n\\]\n\nSubtract 1 from all parts:\n\\[\n -7 - 1 < 2x < 7 - 1\n\\]\n\\[\n -8 < 2x < 6\n\\]\n\nDivide all parts by 2:\n\\[\n -4 < x < 3\n\\]\n\nInterval notation: $(-4, 3)$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "\"Greater Than\" Absolute Value Inequalities"
+    },
+    {
+      "type": "paragraph",
+      "text": "When we say $|x| > 3$, we're asking: which numbers are *more than \n3 units away from zero*? These are numbers less than $-3$ OR greater \nthan $3$. There's no way to write this as a single interval—we need \ntwo separate pieces."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Absolute Value ``Greater Than'' Inequalities",
+      "content": "For any positive number $c$:\n\\[\n |x| > c \\quad\\Longleftrightarrow\\quad x < -c \\;\\text{ or }\\; x > c\n\\]\n\\[\n |x| \\geq c \\quad\\Longleftrightarrow\\quad x \\leq -c \\;\\text{ or }\\; x \\geq c\n\\]\nIn words: \"The distance from $x$ to zero is greater than $c$\" means \n\"$x$ is outside the interval from $-c$ to $c$.\"",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-4.4",
+      "number": "4.4",
+      "title": "Solving $|x| > 2$",
+      "problem": "Solve $|x| > 2$ and graph the solution.",
+      "solution": "By Theorem [thm:abs-greater-than], $|x| > 2$ is equivalent to:\n\\[\n x < -2 \\quad\\text{or}\\quad x > 2\n\\]\n\ncenter\ntikzpicture[scale=0.6]\n (-5,0) – (5,0);\n in {-4,-3,-2,-1,0,1,2,3,4} {\n (, 0.1) – (, -0.1) node[below] { $\\x$};\n }\n (-2,0) – (-4.8,0);\n (-2,0) circle (3pt);\n (2,0) – (4.8,0);\n (2,0) circle (3pt);\ntikzpicture\ncenter\n\nInterval notation: $(-\\infty, -2) \\cup (2, \\infty)$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.5",
+      "number": "4.5",
+      "title": "Solving $|x + 3| \\geq 4$",
+      "problem": "Solve $|x + 3| \\geq 4$ and graph the solution.",
+      "solution": "Note that $|x + 3| = |x - (-3)|$, which represents the distance from \n$x$ to $-3$.\n\nUsing the theorem:\n\\[\n |x + 3| \\geq 4 \\implies x + 3 \\leq -4 \\;\\text{ or }\\; x + 3 \\geq 4\n\\]\n\nSolve each part:\n$$\n x + 3 \\leq -4 &\\implies x \\leq -7 \\\\\n x + 3 \\geq 4 &\\implies x \\geq 1\n$$\n\nSolution: $x \\leq -7$ or $x \\geq 1$\n\ncenter\ntikzpicture[scale=0.4]\n (-10,0) – (5,0);\n in {-9,-8,-7,-6,-5,-4,-3,-2,-1,0,1,2,3,4} {\n (, 0.15) – (, -0.15);\n }\n at (-7, -0.2) { $-7$};\n at (-3, -0.2) { $-3$};\n at (0, -0.2) { $0$};\n at (1, -0.2) { $1$};\n (-7,0) – (-9.8,0);\n ll[AtlasTeal] (-7,0) circle (4pt);\n (1,0) – (4.8,0);\n ll[AtlasTeal] (1,0) circle (4pt);\n ll[AtlasWarm] (-3,0) circle (4pt);\n at (-3, 0.2) { center};\ntikzpicture\ncenter\n\nInterval notation: $(-\\infty, -7] \\cup [1, \\infty)$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.6",
+      "number": "4.6",
+      "title": "Solving $|4x - 5| > 11$",
+      "problem": "Solve $|4x - 5| > 11$.",
+      "solution": "Apply the theorem:\n\\[\n |4x - 5| > 11 \\implies 4x - 5 < -11 \\;\\text{ or }\\; 4x - 5 > 11\n\\]\n\nSolve each inequality:\n$$\n 4x - 5 < -11 &\\implies 4x < -6 \\implies x < -\\frac{3}{2} \\\\\n 4x - 5 > 11 &\\implies 4x > 16 \\implies x > 4\n$$\n\nSolution: $x < -\\frac{3}{2}$ or $x > 4$\n\nInterval notation: $\\left(-\\infty, -\\frac{3}{2}\\right) \\cup (4, \\infty)$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Special Cases"
+    },
+    {
+      "type": "paragraph",
+      "text": "Some absolute value inequalities have special solutions."
+    },
+    {
+      "type": "example",
+      "id": "example-4.7",
+      "number": "4.7",
+      "title": "No solution",
+      "problem": "Solve $|x + 2| < -3$.",
+      "solution": "Absolute value is *always* non-negative. The smallest value $|x + 2|$ \ncan be is 0. It can never be less than $-3$ (or any negative number).\n\nSolution: **No solution** ($\\emptyset$)"
+    },
+    {
+      "type": "example",
+      "id": "example-4.8",
+      "number": "4.8",
+      "title": "All real numbers",
+      "problem": "Solve $|x - 1| > -5$.",
+      "solution": "Absolute value is always non-negative, so $|x - 1| \\geq 0$. Since \n$0 > -5$, the inequality $|x - 1| > -5$ is *always true*.\n\nSolution: **All real numbers** $(-\\infty, \\infty)$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.9",
+      "number": "4.9",
+      "title": "Exactly one solution",
+      "problem": "Solve $|x - 4| \\leq 0$.",
+      "solution": "Since $|x - 4| \\geq 0$ always, the only way for $|x - 4| \\leq 0$ to be \ntrue is if $|x - 4| = 0$.\n\nThis happens when $x - 4 = 0$, so $x = 4$.\n\nSolution: $x = 4$ (a single point)"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-4.5",
+      "number": null,
+      "title": "Recognizing Special Cases",
+      "content": "Before solving an absolute value inequality:\n\n- If $|expression| < $ (negative number), there is **no solution**.\n\n- If $|expression| >$ (negative number), the solution is \n **all real numbers**.\n\n- If $|expression| \\leq 0$, the solution is where the expression \n equals zero.\n\n- If $|expression| \\geq 0$, the solution is **all real numbers**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications: Tolerance and Error"
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the most common applications of absolute value inequalities is \nin describing **tolerance**—the acceptable deviation from an \nideal value."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.2",
+      "number": "4.2",
+      "title": "Tolerance",
+      "content": "In manufacturing and engineering, **tolerance** specifies how much \na measurement can differ from the ideal value. If a measurement $x$ must \nbe within $t$ units of an ideal value $c$, this is written as:\n\\[\n |x - c| \\leq t\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-4.10",
+      "number": "4.10",
+      "title": "Manufacturing tolerance",
+      "problem": "A machine part must be 25.0 mm long with a tolerance of $\\pm 0.2$ mm. \nWrite and solve an inequality describing acceptable lengths.",
+      "solution": "The length $L$ must be within 0.2 mm of 25.0 mm:\n\\[\n |L - 25.0| \\leq 0.2\n\\]\n\nSolving:\n\\[\n -0.2 \\leq L - 25.0 \\leq 0.2\n\\]\n\\[\n 24.8 \\leq L \\leq 25.2\n\\]\n\nAcceptable lengths are between **24.8 mm and 25.2 mm**, inclusive."
+    },
+    {
+      "type": "example",
+      "id": "example-4.11",
+      "number": "4.11",
+      "title": "Temperature control",
+      "problem": "A greenhouse thermostat is set to 72°F with a sensitivity of 3°F. This \nmeans the heating turns on when the temperature drops more than 3°F \nbelow 72°F, and cooling turns on when it rises more than 3°F above 72°F. \nWhen is neither heating nor cooling active?",
+      "solution": "Neither system is active when the temperature $T$ is within 3°F of 72°F:\n\\[\n |T - 72| \\leq 3\n\\]\n\nSolving:\n\\[\n -3 \\leq T - 72 \\leq 3\n\\]\n\\[\n 69 \\leq T \\leq 75\n\\]\n\nNeither heating nor cooling is active when the temperature is between \n**69°F and 75°F**."
+    },
+    {
+      "type": "example",
+      "id": "example-4.12",
+      "number": "4.12",
+      "title": "Quality control",
+      "problem": "A beverage company fills bottles with a target of 16.9 fluid ounces. \nBottles with more than 0.3 oz deviation from target are rejected. \nWrite an inequality for rejected bottles.",
+      "solution": "Let $V$ = volume in fluid ounces. Bottles are rejected when the deviation \nexceeds 0.3 oz:\n\\[\n |V - 16.9| > 0.3\n\\]\n\nSolving:\n\\[\n V - 16.9 < -0.3 \\quad\\text{or}\\quad V - 16.9 > 0.3\n\\]\n\\[\n V < 16.6 \\quad\\text{or}\\quad V > 17.2\n\\]\n\nBottles are rejected if the volume is less than **16.6 oz** or \ngreater than **17.2 oz**."
+    },
+    {
+      "type": "historical",
+      "id": "historical-4.5",
+      "number": null,
+      "title": "The Origins of Precision Manufacturing",
+      "content": "The concept of manufacturing tolerance emerged during the Industrial \nRevolution when Eli Whitney demonstrated interchangeable parts for \nmuskets in 1801. Before this, each part was hand-fitted. The mathematical \nlanguage of tolerances—essentially absolute value inequalities—became \nessential for mass production. Today, computer chip manufacturing \nachieves tolerances measured in nanometers, requiring extraordinary \nprecision in both machinery and mathematics."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Try It Answers"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Try It .1:**"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$-6 \\leq x \\leq 6$; interval: $[-6, 6]$",
+        "$2 < x < 8$; interval: $(2, 8)$",
+        "$-\\frac{8}{3} \\leq x \\leq 4$; interval: $\\left[-\\frac{8}{3}, 4\\right]$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "**Try It .2:**"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$x \\leq -5$ or $x \\geq 5$; interval: $(-\\infty, -5] \\cup [5, \\infty)$",
+        "$x < -2$ or $x > 6$; interval: $(-\\infty, -2) \\cup (6, \\infty)$",
+        "$x \\leq -5$ or $x \\geq 2$; interval: $(-\\infty, -5] \\cup [2, \\infty)$"
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 139:7--10",
+      "text": "Where can I go from your Spirit? \nWhere can I flee from your presence? If I go up to the heavens, you \nare there; if I make my bed in the depths, you are there."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 11:7--9",
+      "text": "Can you fathom the mysteries of God? Can \nyou probe the limits of the Almighty? They are higher than the heavens \nabove—what can you do? They are deeper than the depths below—what \ncan you know?"
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 11:1",
+      "text": "A false balance is an abomination to \nthe Lord, but a just weight is his delight."
+    },
+    {
+      "type": "quote",
+      "author": "Johannes Kepler",
+      "text": "Geometry is one and eternal shining in \nthe mind of God."
+    },
+    {
+      "type": "quote",
+      "author": "G.H. Hardy",
+      "text": "A mathematician, like a painter or poet, is \na maker of patterns."
+    }
+  ]
+}

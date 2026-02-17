@@ -1,0 +1,286 @@
+{
+  "id": "precalculus-ch01-sec02",
+  "title": "Domain and Range",
+  "chapter": 1,
+  "section": 2,
+  "book": "precalculus",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Every function has natural limits on what inputs it can accept and what \noutputs it can produce. Understanding these limits is essential for working \nwith functions correctly. Asking for $\\sqrt{-4}$ or $1/0$ doesn't produce \nan error because we're breaking arbitrary rules—it produces an error \nbecause these operations genuinely don't yield real numbers."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Domain of a Function"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.1",
+      "number": "1.1",
+      "title": "Domain",
+      "content": "The **domain** of a function is the set of all inputs \nfor which the function is defined."
+    },
+    {
+      "type": "paragraph",
+      "text": "When a function is given by a formula, we typically assume its domain is \nthe largest set of real numbers for which the formula produces a real \nnumber. This is called the **natural domain** or **implied \ndomain**. Three situations commonly restrict the natural domain:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Division by zero:** We cannot divide by zero, so any value \n that makes a denominator equal to zero must be excluded from the domain.",
+        "**Even roots of negative numbers:** The square root (and any \n even root) of a negative number is not a real number. The expression \n under an even root must be nonnegative.",
+        "**Logarithms of nonpositive numbers:** Logarithms are only \n defined for positive numbers. (We will study this in Chapter 5.)"
+      ]
+    },
+    {
+      "type": "warning",
+      "id": "warning-1.2",
+      "number": null,
+      "title": "Why These Restrictions?",
+      "content": "These aren't arbitrary rules. Division by zero is undefined because no \nnumber multiplied by zero gives a nonzero result. Square roots of negative \nnumbers don't exist among real numbers because no real number squared is \nnegative. These restrictions reflect genuine mathematical impossibilities, \nnot mere conventions."
+    },
+    {
+      "type": "example",
+      "id": "example-1.1",
+      "number": "1.1",
+      "title": "Finding domains --- polynomial and rational functions",
+      "problem": "Find the domain of each function.\n\n1. $f(x) = 3x^4 - 2x^2 + 7$\n\n2. $g(x) = \\dfrac{1}{x - 4}$\n\n3. $h(x) = \\dfrac{x + 5}{x^2 - 9}$",
+      "solution": "1. This is a polynomial. We can substitute any real number for $x$ \n and compute the result—no division, no roots, no restrictions.\n \\[\n \\text{Domain: } (-\\infty, \\infty) \\text{ or equivalently } \\mathbb{R}\n \\]\n\n2. The denominator is zero when $x - 4 = 0$, i.e., when $x = 4$. \n All other real numbers are valid.\n \\[\n \\text{Domain: } \\{x \\in \\mathbb{R} : x \\neq 4\\} = (-\\infty, 4) \\cup (4, \\infty)\n \\]\n\n3. We need $x^2 - 9 \\neq 0$. Solving:\n \\[\n x^2 - 9 = 0 \\implies x^2 = 9 \\implies x = \\pm 3\n \\]\n Therefore:\n \\[\n \\text{Domain: } \\{x \\in \\mathbb{R} : x \\neq 3 \\text{ and } x \\neq -3\\} \n = (-\\infty, -3) \\cup (-3, 3) \\cup (3, \\infty)\n \\]"
+    },
+    {
+      "type": "example",
+      "id": "example-1.2",
+      "number": "1.2",
+      "title": "Finding domains --- functions with radicals",
+      "problem": "Find the domain of each function.\n\n1. $f(x) = \\sqrt{x - 3}$\n\n2. $g(x) = \\sqrt{5 - 2x}$\n\n3. $h(x) = \\sqrt[3]{x + 1}$\n\n4. $p(x) = \\sqrt{x^2 - 4}$",
+      "solution": "1. The expression under the square root must be nonnegative:\n \\[\n x - 3 \\ge 0 \\implies x \\ge 3\n \\]\n Domain: $[3, \\infty)$\n\n2. We need $5 - 2x \\ge 0$:\n \\[\n 5 - 2x \\ge 0 \\implies 5 \\ge 2x \\implies x \\le \\frac{5}{2}\n \\]\n Domain: $\\left(-\\infty, \\frac{5}{2}\\right]$\n\n3. This is a *cube* root (odd root), not a square root! Cube \n roots of negative numbers exist (for example, $\\sqrt[3]{-8} = -2$). \n There's no restriction.\n \n Domain: $(-\\infty, \\infty)$\n\n4. We need $x^2 - 4 \\ge 0$:\n \\[\n x^2 - 4 \\ge 0 \\implies x^2 \\ge 4 \\implies |x| \\ge 2 \\implies x \\le -2 \\text{ or } x \\ge 2\n \\]\n Domain: $(-\\infty, -2] \\cup [2, \\infty)$"
+    },
+    {
+      "type": "example",
+      "id": "example-1.3",
+      "number": "1.3",
+      "title": "Combining restrictions",
+      "problem": "Find the domain of each function.\n\n1. $f(x) = \\dfrac{\\sqrt{x + 2}}{x - 5}$\n\n2. $g(x) = \\dfrac{1}{\\sqrt{x - 2}}$\n\n3. $h(x) = \\sqrt{x - 1} + \\sqrt{5 - x}$",
+      "solution": "1. Two restrictions:\n itemize\n\n2. From the square root: $x + 2 \\ge 0$, so $x \\ge -2$\n\n3. From the denominator: $x \\neq 5$\n itemize\n Both conditions must hold simultaneously:\n \\[\n \\text{Domain: } [-2, 5) \\cup (5, \\infty)\n \\]\n\n4. The square root must be defined AND positive (since it's in a \n denominator). We need:\n itemize\n\n5. $x - 2 \\ge 0$ for the square root to be defined, so $x \\ge 2$\n\n6. $\\sqrt{x - 2} \\neq 0$, so $x \\neq 2$\n itemize\n Together: $x > 2$.\n \\[\n \\text{Domain: } (2, \\infty)\n \\]\n\n7. Both square roots must be defined:\n itemize\n\n8. $x - 1 \\ge 0$, so $x \\ge 1$\n\n9. $5 - x \\ge 0$, so $x \\le 5$\n itemize\n Both conditions together: $1 \\le x \\le 5$.\n \\[\n \\text{Domain: } [1, 5]\n \\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Range of a Function"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.2",
+      "number": "1.2",
+      "title": "Range",
+      "content": "The **range** of a function is the set of all outputs \nthe function actually produces as the input varies over the entire domain."
+    },
+    {
+      "type": "paragraph",
+      "text": "of the function. \nIt is a subset of the codomain (the set of *potential* outputs). \nWhile the codomain is part of the function's definition, the range is \ndetermined by what outputs actually occur.}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Finding the range algebraically is often more challenging than finding the \ndomain. Here are three useful strategies:"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Strategy 1: Analyze the function's behavior.**\nFor familiar functions, use what you know about their behavior. For \nexample, $x^2$ is always nonnegative, so the range of $f(x) = x^2$ is \n$[0, \\infty)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Strategy 2: Solve for $x$ in terms of $y$.**\nSet $y = f(x)$ and try to solve for $x$. The values of $y$ for which a \nvalid $x$ exists are in the range."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Strategy 3: Use the graph.**\nThe range is the set of all $y$-values for which there's a point on the \ngraph. Look at how high and low the graph goes."
+    },
+    {
+      "type": "example",
+      "id": "example-1.4",
+      "number": "1.4",
+      "title": "Finding range by analysis",
+      "problem": "Find the range of each function.\n\n1. $f(x) = x^2 + 3$\n\n2. $g(x) = |x| - 2$\n\n3. $h(x) = \\sqrt{x - 1}$",
+      "solution": "1. Since $x^2 \\ge 0$ for all real $x$, we have $x^2 + 3 \\ge 3$. \n The minimum value is 3 (occurring when $x = 0$), and there's no \n maximum—$f(x)$ can be arbitrarily large.\n \\[\n \\text{Range: } [3, \\infty)\n \\]\n\n2. Since $|x| \\ge 0$ for all $x$, we have $|x| - 2 \\ge -2$. The \n minimum value is $-2$ (occurring when $x = 0$), with no maximum.\n \\[\n \\text{Range: } [-2, \\infty)\n \\]\n\n3. For $x \\ge 1$, the square root $\\sqrt{x - 1}$ gives all \n nonnegative values: when $x = 1$, we get 0; as $x$ increases, \n $\\sqrt{x - 1}$ can be any positive number.\n \\[\n \\text{Range: } [0, \\infty)\n \\]"
+    },
+    {
+      "type": "example",
+      "id": "example-1.5",
+      "number": "1.5",
+      "title": "Finding range algebraically",
+      "problem": "Find the range of $f(x) = \\dfrac{2x + 1}{x - 3}$.",
+      "solution": "Let $y = \\dfrac{2x + 1}{x - 3}$ and solve for $x$:\n$$\n y(x - 3) &= 2x + 1 \\\\\n yx - 3y &= 2x + 1 \\\\\n yx - 2x &= 3y + 1 \\\\\n x(y - 2) &= 3y + 1 \\\\\n x &= \\frac{3y + 1}{y - 2}\n$$\n\nThis gives a valid $x$ for any $y$ except $y = 2$ (which would cause \ndivision by zero). We also need to verify that the $x$-value we get is \nin the domain of $f$ (i.e., $x \\neq 3$). Checking:\n\\[\n \\frac{3y + 1}{y - 2} = 3 \\implies 3y + 1 = 3(y - 2) \\implies 3y + 1 = 3y - 6 \\implies 1 = -6\n\\]\nThis is a contradiction, so there's no $y$ that produces $x = 3$. Good!\n\nTherefore:\n\\[\n \\text{Range: } (-\\infty, 2) \\cup (2, \\infty)\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-1.6",
+      "number": "1.6",
+      "title": "Finding range using completing the square",
+      "problem": "Find the range of $g(x) = x^2 - 6x + 10$.",
+      "solution": "Complete the square to rewrite in vertex form:\n$$\n g(x) &= x^2 - 6x + 10 \\\\\n &= (x^2 - 6x + 9) + 10 - 9 \\\\\n &= (x - 3)^2 + 1\n$$\n\nSince $(x - 3)^2 \\ge 0$ for all $x$, we have $(x - 3)^2 + 1 \\ge 1$. The \nminimum value is 1 (occurring when $x = 3$), with no maximum.\n\\[\n \\text{Range: } [1, \\infty)\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-1.7",
+      "number": "1.7",
+      "title": "Finding domain and range from a graph",
+      "problem": "The graph of a function $f$ is shown below. Determine the domain and range.\n\ncenter\ntikzpicture[scale=0.8]\n (-1,0) – (7,0) node[right] {$x$};\n (0,-1) – (0,5) node[above] {$y$};\n plot[smooth] \n coordinates {(0,1) (1,2) (2,4) (3,3) (4,2) (5,3) (6,4)};\n lldraw[AtlasTeal] (0,1) circle (2pt);\n lldraw[AtlasTeal] (6,4) circle (2pt);\n in {1,2,3,4,5,6} (,0.1) – (,-0.1) node[below] {$\\x$};\n in {1,2,3,4} (0.1,) – (-0.1,) node[left] {$\\y$};\ntikzpicture\ncenter",
+      "solution": "**Domain:** The graph shows $f$ is defined for $x$ from $0$ to $6$ \n(inclusive), so the domain is $[0, 6]$.\n\n**Range:** The lowest $y$-value on the graph is $1$ (at $x = 0$), \nand the highest is $4$ (at $x = 2$ and $x = 6$). By tracing the graph, \nwe can see that all $y$-values between 1 and 4 are achieved.\n\\[\n \\text{Range: } [1, 4]\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Interval Notation"
+    },
+    {
+      "type": "paragraph",
+      "text": "We use **interval notation** to describe \nsubsets of the real line efficiently. This notation is standard throughout \nmathematics and will appear constantly in this course."
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Notation**",
+        "**Inequality**",
+        "**Description**"
+      ],
+      "rows": [
+        [
+          "$(a, b)$",
+          "$a < x < b$",
+          "Open interval: endpoints excluded"
+        ],
+        [
+          "$[a, b]$",
+          "$a \\le x \\le b$",
+          "Closed interval: endpoints included"
+        ],
+        [
+          "$[a, b)$",
+          "$a \\le x < b$",
+          "Half-open: $a$ included, $b$ excluded"
+        ],
+        [
+          "$(a, b]$",
+          "$a < x \\le b$",
+          "Half-open: $a$ excluded, $b$ included"
+        ],
+        [
+          "$(a, \\infty)$",
+          "$x > a$",
+          "All numbers greater than $a$"
+        ],
+        [
+          "$[a, \\infty)$",
+          "$x \\ge a$",
+          "All numbers greater than or equal to $a$"
+        ],
+        [
+          "$(-\\infty, b)$",
+          "$x < b$",
+          "All numbers less than $b$"
+        ],
+        [
+          "$(-\\infty, b]$",
+          "$x \\le b$",
+          "All numbers less than or equal to $b$"
+        ],
+        [
+          "$(-\\infty, \\infty)$",
+          "$x \\in \\mathbb{R}$",
+          "All real numbers"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "left",
+        "left"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "; \nbrackets indicate it is *included*. Infinity always gets a parenthesis \nbecause infinity is not a number that can be reached or included.}"
+    },
+    {
+      "type": "paragraph",
+      "text": "For domains with gaps, we use the **union** symbol $\\cup$ \nto combine intervals:\n\\[\n (-\\infty, 2) \\cup (2, \\infty) = \\{x \\in \\mathbb{R} : x \\neq 2\\}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-1.8",
+      "number": "1.8",
+      "title": "Writing domains in interval notation",
+      "problem": "Express each set in interval notation.\n\n1. All $x$ such that $-3 < x \\le 7$\n\n2. All $x$ such that $x \\le 4$ or $x > 10$\n\n3. All $x$ except $x = 5$\n\n4. All $x$ except $x = -2$ and $x = 3$",
+      "solution": "1. $(-3, 7]$\n\n2. $(-\\infty, 4] \\cup (10, \\infty)$\n\n3. $(-\\infty, 5) \\cup (5, \\infty)$\n\n4. $(-\\infty, -2) \\cup (-2, 3) \\cup (3, \\infty)$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Domains in Applied Problems"
+    },
+    {
+      "type": "paragraph",
+      "text": "When a function models a real-world situation, the domain may be restricted \nby the context even if the formula would allow other inputs. These \ncontextual restrictions give us the **applied domain** (sometimes \ncalled the **practical domain**)."
+    },
+    {
+      "type": "example",
+      "id": "example-1.9",
+      "number": "1.9",
+      "title": "Applied domain: fencing problem",
+      "problem": "A farmer has 200 feet of fencing to enclose a rectangular pasture. If one \nside has length $x$ feet, express the area as a function of $x$ and \ndetermine the applied domain.",
+      "solution": "If one side has length $x$, then the opposite side also has length $x$, \nusing $2x$ feet of fencing. The remaining $200 - 2x$ feet are split \nbetween the other two sides, so each has length $\\dfrac{200 - 2x}{2} = 100 - x$.\n\nThe area is:\n\\[\n A(x) = x(100 - x) = 100x - x^2\n\\]\n\n**Mathematical domain:** The formula works for any real $x$.\n\n**Applied domain:** Both dimensions must be positive:\n\n- $x > 0$ (the side length must be positive)\n\n- $100 - x > 0$, which means $x < 100$ (the other dimension must be positive)\nTherefore, the applied domain is $(0, 100)$.\n\nNote: We could also include $x = 0$ or $x = 100$ if we consider degenerate \nrectangles (lines), but typically we want actual rectangles with positive \narea."
+    },
+    {
+      "type": "example",
+      "id": "example-1.10",
+      "number": "1.10",
+      "title": "Applied domain: projectile motion",
+      "problem": "A ball is thrown upward from a height of 6 feet with an initial velocity \nof 64 feet per second. Its height after $t$ seconds is\n\\[\n h(t) = -16t^2 + 64t + 6\n\\]\n\nDetermine the applied domain and range.",
+      "solution": "**Mathematical domain:** Any real $t$ works in the formula.\n\n**Applied domain:** Time starts at $t = 0$ (when the ball is thrown) \nand ends when the ball hits the ground ($h = 0$). Solving:\n\\[\n -16t^2 + 64t + 6 = 0 \\implies 16t^2 - 64t - 6 = 0 \\implies 8t^2 - 32t - 3 = 0\n\\]\nUsing the quadratic formula:\n\\[\n t = \\frac{32 \\pm \\sqrt{1024 + 96}}{16} = \\frac{32 \\pm \\sqrt{1120}}{16} \n = \\frac{32 \\pm 4\\sqrt{70}}{16} = \\frac{8 \\pm \\sqrt{70}}{4}\n\\]\nThe positive root is $t = \\dfrac{8 + \\sqrt{70}}{4} \\approx 4.09$ seconds.\n\nApplied domain: $[0, \\frac{8 + \\sqrt{70}}{4}]$ or approximately $[0, 4.09]$.\n\n**Applied range:** The minimum height is 0 (when it lands). The \nmaximum occurs at the vertex. Since $t = -\\dfrac{64}{2(-16)} = 2$:\n\\[\n h(2) = -16(4) + 64(2) + 6 = -64 + 128 + 6 = 70\n\\]\nApplied range: $[0, 70]$."
+    },
+    {
+      "type": "example",
+      "id": "example-1.11",
+      "number": "1.11",
+      "title": "Applied domain: business application",
+      "problem": "A company finds that if it produces $x$ thousand items, its profit (in \nthousands of dollars) is $P(x) = -2x^2 + 50x - 200$. Determine the \napplied domain (assuming the company wants nonnegative profit).",
+      "solution": "For nonnegative profit: $-2x^2 + 50x - 200 \\ge 0$\n\nDividing by $-2$ (and reversing the inequality): $x^2 - 25x + 100 \\le 0$\n\nFactoring: $(x - 5)(x - 20) \\le 0$\n\nThis quadratic is negative (or zero) between its roots:\n\\[\n 5 \\le x \\le 20\n\\]\n\nAlso, $x$ must be nonnegative (can't produce negative items).\n\nApplied domain for profitable production: $[5, 20]$ (in thousands of items, \nso 5,000 to 20,000 items)."
+    },
+    {
+      "type": "summary",
+      "id": "summary-1.2",
+      "number": null,
+      "title": "Domain and Range: Key Points",
+      "content": "- The **domain** is the set of valid inputs; the **range** \n is the set of actual outputs.\n\n- **Domain restrictions** arise from:\n itemize\n\n- Division by zero (exclude zeros of denominators)\n\n- Even roots of negatives (radicand must be $\\ge 0$)\n\n- Logarithms of nonpositives (argument must be $> 0$)\n **Finding range** often requires:\n \n\n- Analyzing function behavior\n\n- Solving for $x$ in terms of $y$\n\n- Examining the graph\n **Applied domains** incorporate physical/contextual constraints.\n Use **interval notation** with parentheses for excluded \n endpoints and brackets for included ones.\nitemize"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Finding Domains**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Finding Domain and Range**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Applications**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Challenge Problems**"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Job 38:4--5",
+      "text": "Where were you when I laid the earth's \nfoundation? Tell me, if you understand. Who marked off its dimensions?"
+    }
+  ]
+}

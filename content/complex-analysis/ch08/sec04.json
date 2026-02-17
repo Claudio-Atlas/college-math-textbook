@@ -1,0 +1,117 @@
+{
+  "id": "complex-analysis-ch08-sec04",
+  "title": "Applications of Conformal Mapping",
+  "chapter": 8,
+  "section": 4,
+  "book": "complex-analysis",
+  "epigraph": {
+    "text": "Faith by itself, if it does not have works, is dead.",
+    "reference": "James 2:17",
+    "quote": "Theory becomes practice when geometry meets physics.",
+    "quoteAuthor": "Bernhard Riemann"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Conformal maps have powerful applications in physics and engineering, \nparticularly in problems governed by Laplace's equation."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Fluid Flow"
+    },
+    {
+      "type": "paragraph",
+      "text": "In two-dimensional ideal (irrotational, incompressible) fluid flow, the \nvelocity potential $\\phi$ and stream function $\\psi$ satisfy\n\\[\n \\nabla^2\\phi = 0, \\quad \\nabla^2\\psi = 0.\n\\]\nThey form the real and imaginary parts of an analytic function \n$F(z) = \\phi + i\\psi$, called the **complex potential**."
+    },
+    {
+      "type": "paragraph",
+      "text": "If we know the flow in one domain, a conformal map transports it to \nanother domain. The flow around a complicated obstacle can be computed \nby mapping to a simpler geometry."
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Flow around a cylinder",
+      "problem": "The complex potential for uniform flow past a circular cylinder is\n\\[\n F(z) = V\\left(z + \\frac{R^2}{z}\\right),\n\\]\nwhere $V$ is the flow speed at infinity and $R$ is the cylinder radius.\n\nThe streamlines $\\im(F) = \\text{const}$ show the fluid paths. The \ncylinder corresponds to a streamline.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Electrostatics"
+    },
+    {
+      "type": "paragraph",
+      "text": "In two-dimensional electrostatics, the electric potential $\\phi$ \nsatisfies Laplace's equation. If $\\phi + i\\psi$ is analytic, conformal \nmaps transport solutions between geometries."
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "Parallel plate capacitor",
+      "problem": "Between infinite parallel plates at $y = 0$ and $y = d$, with potential \ndifference $V_0$:\n\\[\n \\phi(x, y) = \\frac{V_0 y}{d}.\n\\]\nThe electric field is uniform: $\\vec{E} = -\\nabla\\phi = -\\frac{V_0}{d}\\hat{j}$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Heat Conduction"
+    },
+    {
+      "type": "paragraph",
+      "text": "Steady-state heat flow in a two-dimensional conductor is governed by \n$\\nabla^2 T = 0$, where $T$ is temperature. This is again Laplace's \nequation, so conformal mapping applies."
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "Heat flow in a corner",
+      "problem": "The map $w = z^2$ takes a $90°$ corner to a half-plane. If we know \nthe temperature distribution in the half-plane, we can find it in the \ncorner by inverse mapping.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Joukowsky Airfoil"
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the most famous applications is the Joukowsky transformation:\n\\[\n w = z + \\frac{1}{z}.\n\\]\nThis maps circles passing through $z = -1$ (and enclosing $z = 1$) \nto airfoil-shaped curves. The resulting \"Joukowsky airfoils\" were \namong the first mathematically designed aircraft wing profiles."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Schwarz-Christoffel Transformation"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Schwarz-Christoffel Formula",
+      "content": "The conformal map from the upper half-plane to a polygon with interior \nangles $\\alpha_1\\pi, \\alpha_2\\pi, \\ldots, \\alpha_n\\pi$ at vertices \n$w_1, w_2, \\ldots, w_n$ is given by\n\\[\n f(z) = A\\int^z \\prod_{k=1}^{n}(\\zeta - x_k)^{\\alpha_k - 1}\\,d\\zeta + B,\n\\]\nwhere $x_1 < x_2 < \\cdots < x_n$ are points on the real axis mapping to \nthe vertices.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This formula allows conformal mapping onto polygonal regions."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 97:4",
+      "text": "His lightnings light up the world; the \nearth sees and trembles."
+    },
+    {
+      "type": "quote",
+      "author": "Lord Kelvin",
+      "text": "Mathematics is the only truly universal language."
+    },
+    {
+      "type": "quote",
+      "author": "Nikolai Joukowsky (1910)",
+      "text": "The theoretical foundation of \naerodynamics."
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "id": "real-analysis-ch08-sec02",
+  "title": "Interchange of Limits",
+  "chapter": 8,
+  "section": 2,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Uniform convergence allows us to exchange limit operations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Integration"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Integration of Uniform Limits",
+      "content": "If $(f_n)$ converges uniformly to $f$ on $[a, b]$ and each $f_n$ is \nintegrable, then $f$ is integrable and\n\\[\n\\int_a^b f = \\lim_{n \\to \\infty} \\int_a^b f_n.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Given $\\varepsilon > 0$, choose $N$ such that $|f_n(x) - f(x)| < \\varepsilon/(b-a)$ \nfor $n \\geq N$ and all $x$.\n\nThen:\n\\[\n\\left|\\int_a^b f_n - \\int_a^b f\\right| \\leq \\int_a^b |f_n - f| < \\frac{\\varepsilon}{b-a} \\cdot (b-a) = \\varepsilon.\n\\]"
+    },
+    {
+      "type": "warning",
+      "id": "warning-8.2",
+      "number": null,
+      "title": "Pointwise Is Not Enough",
+      "content": "Consider $f_n(x) = n^2 x(1-x)^n$ on $[0, 1]$. Then $f_n \\to 0$ pointwise, \nbut $\\int_0^1 f_n = \\frac{n^2}{(n+1)(n+2)} \\to 1 \\neq 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Differentiation"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.2",
+      "number": "8.2",
+      "title": "Differentiation of Uniform Limits",
+      "content": "Let $(f_n)$ be a sequence of functions differentiable on $[a, b]$ such that:\n\n1. $(f_n(c))$ converges for some $c \\in [a, b]$.\n\n2. $(f_n')$ converges uniformly on $[a, b]$.\nThen $(f_n)$ converges uniformly on $[a, b]$ to a differentiable function \n$f$, and $f' = \\lim f_n'$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $g = \\lim f_n'$ (uniform limit). By the FTC and integration theorem:\n\\[\nf_n(x) - f_n(c) = \\int_c^x f_n'(t)\\,dt \\to \\int_c^x g(t)\\,dt.\n\\]\nSince $f_n(c) \\to L$, define $f(x) = L + \\int_c^x g$. Then $f$ is \ndifferentiable and $f' = g$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Series of Functions"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.3",
+      "number": "8.3",
+      "title": "Term-by-Term Integration",
+      "content": "If $\\sum f_n$ converges uniformly on $[a, b]$ to $f$ and each $f_n$ is \nintegrable, then\n\\[\n\\int_a^b f = \\sum_{n=1}^{\\infty} \\int_a^b f_n.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.4",
+      "number": "8.4",
+      "title": "Term-by-Term Differentiation",
+      "content": "If $(f_n)$ are differentiable on $[a, b]$, $\\sum f_n(c)$ converges for \nsome $c$, and $\\sum f_n'$ converges uniformly, then $\\sum f_n$ converges \nuniformly to a differentiable function $f$ with $f' = \\sum f_n'$.",
+      "label": "Theorem"
+    }
+  ]
+}

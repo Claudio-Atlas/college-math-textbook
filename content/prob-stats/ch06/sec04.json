@@ -1,0 +1,65 @@
+{
+  "id": "prob-stats-ch06-sec04",
+  "title": "Sampling Distribution of the Sample Proportion",
+  "chapter": 6,
+  "section": 4,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "So the last will be first, and the first last.",
+    "reference": "Matthew 20:16",
+    "quote": "Every proportion is a probability in disguise.",
+    "quoteAuthor": "Thomas Bayes"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "For categorical data, we estimate population proportions using sample \nproportions. The sampling distribution of $\\phat$ follows from the CLT."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Sample Proportion"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Sample Proportion",
+      "content": "For a sample of $n$ independent observations, where each has probability \n$p$ of \"success,\" the **sample proportion** is:\n\\[\n \\phat = \\frac{X}{n}\n\\]\nwhere $X$ is the number of successes (so $X \\sim \\Binom(n, p)$)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Mean and Standard Error"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Sampling Distribution of $\\phat$",
+      "content": "If $\\phat$ is the sample proportion from $n$ independent trials with \nsuccess probability $p$:\n\\[\n \\E[\\phat] = p \\qquad \\text{and} \\qquad \\SE(\\phat) = \\sqrt{\\frac{p(1-p)}{n}}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Normal Approximation"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Normal Approximation for $\\phat$",
+      "content": "For large $n$ (typically $np \\geq 10$ and $n(1-p) \\geq 10$):\n\\[\n \\phat \\approx \\Normal\\left(p, \\frac{p(1-p)}{n}\\right)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Sampling Distribution of Proportion",
+      "problem": "A candidate has support from 45\\% of voters. In a poll of 400 voters, \nwhat is the probability the sample shows more than 50\\% support?",
+      "solution": "$p = 0.45$, $n = 400$.\n\nCheck conditions: $np = 180 \\geq 10$ and $n(1-p) = 220 \\geq 10$. \n\n$\\E[\\phat] = 0.45$, $\\SE(\\phat) = \\sqrt{\\frac{0.45(0.55)}{400}} = 0.0249$.\n\n\\[\n z = \\frac{0.50 - 0.45}{0.0249} = 2.01\n\\]\n\n$P(\\phat > 0.50) = P(Z > 2.01) \\approx 0.022$."
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "id": "precalculus-ch04-sec01",
+  "title": "Exponential Functions",
+  "chapter": 4,
+  "section": 1,
+  "book": "precalculus",
+  "devotional": {
+    "title": "From One to Many",
+    "scripture": "Genesis 22:17",
+    "content": "{AtlasWarmW}{hen}\nGod promised Abraham descendants as numerous as stars, He spoke of \nexponential growth—generation after generation, each multiplying into \nthe next. This chapter introduces the mathematics of such multiplication, \nwhere small beginnings lead to outcomes beyond imagination."
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"I will make your descendants as numerous as the stars \nin the sky.\"*{Genesis 26:4}{The greatest shortcoming of the human race is our inability to understand the exponential function.}{Albert Bartlett}"
+    },
+    {
+      "type": "paragraph",
+      "text": "In polynomial functions like $x^2$ or $x^3$, the variable sits in the base \nwhile the exponent remains fixed. Exponential functions flip this arrangement: \nthe base stays constant while the variable climbs into the exponent. This \nseemingly simple change produces dramatically different behavior—growth \nthat accelerates without bound, or decay that approaches but never quite \nreaches zero."
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider the difference between $x^2$ and $2^x$. When $x = 10$, the polynomial \ngives $10^2 = 100$. The exponential gives $2^{10} = 1024$. Already the \nexponential is larger. When $x = 20$, the polynomial yields $400$, while \nthe exponential explodes to $2^{20} = 1{,}048{,}576$—more than a million. \nThis explosive growth is the hallmark of exponential functions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition and Domain"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "Exponential Function",
+      "content": "An **exponential function** with base \n$b$ is a function of the form\n\\[\n f(x) = b^x\n\\]\nwhere $b > 0$ and $b \\neq 1$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The restrictions on the base $b$ are not arbitrary—they arise from \nmathematical necessity:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Why $b > 0$?** If $b$ were negative, say $b = -2$, then \n $b^{1/2} = \\sqrt{-2}$ would not be a real number. Even for some \n integer exponents, expressions like $(-2)^{1/3}$ involve complex \n numbers that lie outside our current scope. Requiring $b > 0$ ensures \n $b^x$ is defined for all real $x$.",
+        "**Why $b \\neq 1$?** If $b = 1$, then $1^x = 1$ for all $x$. \n This is simply the constant function $f(x) = 1$, which contains no \n interesting exponential behavior. We exclude it to focus on functions \n that actually grow or decay."
+      ]
+    },
+    {
+      "type": "warning",
+      "id": "warning-4.1",
+      "number": null,
+      "title": "Zero is Not a Valid Base",
+      "content": "The function $f(x) = 0^x$ is problematic: $0^0$ is undefined (or at best \nambiguous), and $0^{-1} = 1/0$ is undefined. Never use $b = 0$ as an \nexponential base."
+    },
+    {
+      "type": "paragraph",
+      "text": "The domain of $f(x) = b^x$ is all real numbers $(-\\infty, \\infty)$. You \ncan raise a positive number to any exponent—positive, negative, zero, \nor irrational. The range, however, is restricted to $(0, \\infty)$: \nexponential functions produce only positive outputs."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of Exponents"
+    },
+    {
+      "type": "paragraph",
+      "text": "Before exploring exponential functions graphically, we need fluency with \nthe algebraic rules governing exponents. These laws extend what you learned \nabout integer exponents to all real exponents."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Laws of Exponents",
+      "content": "For $b > 0$ and any real numbers $x$ and $y$:\n$$\n b^x \\cdot b^y &= b^{x+y} \\\\\n \\frac{b^x}{b^y} &= b^{x-y} \\\\\n (b^x)^y &= b^{xy} \\\\\n (ab)^x &= a^x \\cdot b^x \\\\\n \\left(\\frac{a}{b}\\right)^x &= \\frac{a^x}{b^x} \n$$\nAdditionally:\n\\[\n b^0 = 1 \\qquad b^{-x} = \\frac{1}{b^x} \\qquad b^{1/n} = \\sqrt[n]{b}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The intuition behind these laws comes from thinking about exponents as \ncounting multiplications. When you multiply $b^3 \\cdot b^2$, you're \nmultiplying three $b$'s by two $b$'s, giving five $b$'s total: $b^5$. \nThe laws generalize this reasoning to all real exponents."
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Simplifying exponential expressions",
+      "problem": "Simplify each expression, writing answers with positive exponents.\n\n1. $2^3 \\cdot 2^5$\n\n2. $\\dfrac{3^7}{3^4}$\n\n3. $(5^2)^3$\n\n4. $4^{-3/2}$\n\n5. $\\dfrac{6^5 \\cdot 6^{-2}}{6^4}$",
+      "solution": "1. Using eq:exp-product: $2^3 \\cdot 2^5 = 2^{3+5} = 2^8 = 256$\n\n2. Using eq:exp-quotient: $\\dfrac{3^7}{3^4} = 3^{7-4} = 3^3 = 27$\n\n3. Using eq:exp-power: $(5^2)^3 = 5^{2 \\cdot 3} = 5^6 = 15{,}625$\n\n4. First rewrite the negative exponent, then handle the fractional part:\n \\[\n 4^{-3/2} = \\frac{1}{4^{3/2}} = \\frac{1}{(\\sqrt{4})^3} = \\frac{1}{2^3} = \\frac{1}{8}\n \\]\n\n5. Combine laws systematically:\n \\[\n \\frac{6^5 \\cdot 6^{-2}}{6^4} = \\frac{6^{5+(-2)}}{6^4} = \\frac{6^3}{6^4} = 6^{3-4} = 6^{-1} = \\frac{1}{6}\n \\]"
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "Fractional exponents",
+      "problem": "Evaluate without a calculator.\n\n1. $8^{2/3}$\n\n2. $27^{-1/3}$\n\n3. $16^{3/4}$\n\n4. $\\left(\\dfrac{1}{32}\\right)^{2/5}$",
+      "solution": "1. $8^{2/3} = (\\sqrt[3]{8})^2 = 2^2 = 4$\n\n2. $27^{-1/3} = \\dfrac{1}{27^{1/3}} = \\dfrac{1}{\\sqrt[3]{27}} = \\dfrac{1}{3}$\n\n3. $16^{3/4} = (\\sqrt[4]{16})^3 = 2^3 = 8$\n\n4. $\\left(\\dfrac{1}{32}\\right)^{2/5} = \\dfrac{1^{2/5}}{32^{2/5}} \n = \\dfrac{1}{(\\sqrt[5]{32})^2} = \\dfrac{1}{2^2} = \\dfrac{1}{4}$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Graphs of Exponential Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "The graph of $f(x) = b^x$ takes one of two characteristic shapes depending \non whether $b > 1$ or $0 < b < 1$:"
+    },
+    {
+      "type": "summary",
+      "id": "summary-4.1",
+      "number": null,
+      "title": "Properties of $f(x) = b^x$",
+      "content": "- **Domain:** $(-\\infty, \\infty)$—defined for all real inputs\n\n- **Range:** $(0, \\infty)$—outputs are always positive\n\n- **Horizontal asymptote:** $y = 0$—the graph approaches but never touches the $x$-axis\n\n- **$y$-intercept:** $(0, 1)$—because $b^0 = 1$\n\n- **Behavior:**\n itemize\n\n- If $b > 1$: increasing (rises from left to right)\n\n- If $0 < b < 1$: decreasing (falls from left to right)\n **One-to-one:** passes horizontal line test; has an inverse\n **Continuity:** smooth curve with no breaks, holes, or jumps\nitemize"
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": "Comparing exponential bases",
+      "problem": "On the same axes, sketch $f(x) = 2^x$, $g(x) = 3^x$, and $h(x) = 10^x$. \nDescribe how the base affects the graph.",
+      "solution": "All three pass through $(0, 1)$ and have horizontal asymptote $y = 0$. \nThe differences emerge in steepness:\n\n- $f(x) = 2^x$ grows most slowly\n\n- $g(x) = 3^x$ is steeper\n\n- $h(x) = 10^x$ rises most rapidly\n\n**Pattern:** Larger bases produce steeper growth for $x > 0$. However, \nfor $x < 0$, larger bases approach zero faster.\n\nAt $x = 2$: $f(2) = 4$, $g(2) = 9$, $h(2) = 100$\n\nAt $x = -2$: $f(-2) = 0.25$, $g(-2) \\approx 0.11$, $h(-2) = 0.01$"
+    },
+    {
+      "type": "paragraph",
+      "text": "A key relationship exists between $b^x$ and $(1/b)^x$: they are reflections \nof each other across the $y$-axis. This follows from the algebra:\n\\[\n \\left(\\frac{1}{b}\\right)^x = \\frac{1}{b^x} = b^{-x}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "So $y = (1/2)^x$ and $y = 2^{-x}$ are the same function, and this graph \nis the mirror image of $y = 2^x$ across the $y$-axis."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Transformations of Exponential Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "The standard transformations apply to exponential functions just as they \ndo to any other function family. The general form is:\n\\[\n f(x) = a \\cdot b^{x-h} + k\n\\]"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Parameter**",
+        "**Effect**"
+      ],
+      "rows": [
+        [
+          "$a > 0$",
+          "Vertical stretch by factor $|a|$; reflects if $a < 0$"
+        ],
+        [
+          "$h$",
+          "Horizontal shift: right if $h > 0$, left if $h < 0$"
+        ],
+        [
+          "$k$",
+          "Vertical shift: up if $k > 0$, down if $k < 0$"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "left"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-4.4",
+      "number": "4.4",
+      "title": "Graphing with transformations",
+      "problem": "For each function, describe the transformations from $y = 2^x$, sketch \nthe graph, and identify the horizontal asymptote.\n\n1. $f(x) = 2^{x-1} + 3$\n\n2. $g(x) = -2^x + 4$\n\n3. $h(x) = 3 \\cdot 2^{x+2}$",
+      "solution": "1. $f(x) = 2^{x-1} + 3$\n \n Transformations: Shift right 1 unit, then shift up 3 units.\n \n The point $(0, 1)$ on $y = 2^x$ moves to $(1, 4)$.\n \n Horizontal asymptote: $y = 3$ (shifted up from $y = 0$)\n\n2. $g(x) = -2^x + 4$\n \n Transformations: Reflect across the $x$-axis, then shift up 4 units.\n \n The original curve rises from left to right; after reflection, it \n falls. The point $(0, 1)$ becomes $(0, -1)$, then shifts to $(0, 3)$.\n \n Horizontal asymptote: $y = 4$ (the graph approaches 4 from below)\n\n3. $h(x) = 3 \\cdot 2^{x+2}$\n \n Transformations: Shift left 2 units, then vertical stretch by factor 3.\n \n The point $(0, 1)$ moves to $(-2, 1)$, then stretches to $(-2, 3)$.\n \n Horizontal asymptote: $y = 0$ (unchanged—no vertical shift)"
+    },
+    {
+      "type": "example",
+      "id": "example-4.5",
+      "number": "4.5",
+      "title": "Finding the equation from a graph",
+      "problem": "An exponential function has asymptote $y = 2$, passes through $(0, 5)$ \nand $(1, 11)$. Find its equation in the form $f(x) = a \\cdot b^x + k$.",
+      "solution": "Since the asymptote is $y = 2$, we have $k = 2$, so $f(x) = a \\cdot b^x + 2$.\n\nUsing the point $(0, 5)$:\n\\[\n 5 = a \\cdot b^0 + 2 = a + 2 \\implies a = 3\n\\]\n\nUsing the point $(1, 11)$:\n\\[\n 11 = 3 \\cdot b^1 + 2 = 3b + 2 \\implies 3b = 9 \\implies b = 3\n\\]\n\nTherefore, $f(x) = 3 \\cdot 3^x + 2$.\n\n**Check:** $f(0) = 3(1) + 2 = 5$ $f(1) = 3(3) + 2 = 11$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving Basic Exponential Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "When both sides of an equation can be written with the same base, we can \nsolve by equating exponents. This relies on the one-to-one property of \nexponential functions:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "One-to-One Property",
+      "content": "If $b > 0$, $b \\neq 1$, then\n\\[\n b^x = b^y \\iff x = y\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-4.6",
+      "number": "4.6",
+      "title": "Solving by matching bases",
+      "problem": "Solve each equation.\n\n1. $2^x = 32$\n\n2. $3^{2x-1} = 81$\n\n3. $4^x = 8$\n\n4. $9^{x+1} = 27^x$",
+      "solution": "1. Express 32 as a power of 2: $32 = 2^5$\n \\[\n 2^x = 2^5 \\implies x = 5\n \\]\n\n2. Express 81 as a power of 3: $81 = 3^4$\n \\[\n 3^{2x-1} = 3^4 \\implies 2x - 1 = 4 \\implies x = \\frac{5}{2}\n \\]\n\n3. Here 4 and 8 aren't powers of each other, but both are powers of 2:\n \\[\n 4^x = 8 \\implies (2^2)^x = 2^3 \\implies 2^{2x} = 2^3 \\implies 2x = 3 \\implies x = \\frac{3}{2}\n \\]\n\n4. Write both 9 and 27 as powers of 3:\n \\[\n (3^2)^{x+1} = (3^3)^x \\implies 3^{2(x+1)} = 3^{3x} \\implies 2x + 2 = 3x \\implies x = 2\n \\]"
+    },
+    {
+      "type": "warning",
+      "id": "warning-4.1",
+      "number": null,
+      "title": "Equations Without Common Bases",
+      "content": "The equation $2^x = 5$ cannot be solved by matching bases—there is no \ninteger $n$ such that $2^n = 5$ or $5 = 2^n$. Such equations require \nlogarithms, which we'll develop in the next chapter."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exponential Growth Versus Polynomial Growth"
+    },
+    {
+      "type": "paragraph",
+      "text": "A central theme in mathematics is understanding how different functions \ngrow. Exponential functions eventually outpace any polynomial, no matter \nhow high its degree."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.3",
+      "number": "4.3",
+      "title": "Exponential Dominance",
+      "content": "For any base $b > 1$ and any polynomial $p(x)$:\n\\[\n \\lim_{x \\to \\infty} \\frac{p(x)}{b^x} = 0\n\\]\nIn words: exponential growth eventually overtakes polynomial growth.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-4.7",
+      "number": "4.7",
+      "title": "Comparing growth rates",
+      "problem": "Compare $f(x) = x^3$ and $g(x) = 2^x$ for large values of $x$.",
+      "solution": "| $x$ | $x^3$ | $2^x$ | Which is larger? |\n| 5 | 125 | 32 | $x^3$ |\n| 10 | 1{,}000 | 1{,}024 | $2^x$ |\n| 15 | 3{,}375 | 32{,}768 | $2^x$ |\n| 20 | 8{,}000 | 1{,}048{,}576 | $2^x$ |\n| 30 | 27{,}000 | 1{,}073{,}741{,}824 | $2^x$ |\n\nThe polynomial leads early but is overtaken around $x = 10$. By $x = 30$, \nthe exponential is nearly 40{,}000 times larger!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Computational Fluency**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Graphing**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Equations**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Conceptual Understanding**"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 147:4",
+      "text": "He determines the number of the stars and \ncalls them each by name."
+    }
+  ]
+}

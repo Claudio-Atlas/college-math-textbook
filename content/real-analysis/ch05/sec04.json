@@ -1,0 +1,67 @@
+{
+  "id": "real-analysis-ch05-sec04",
+  "title": "Discontinuities",
+  "chapter": 5,
+  "section": 4,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Classification of Discontinuities"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Types of Discontinuities",
+      "content": "Let $f$ be defined on an interval containing $c$ (except possibly at $c$ \nitself). We classify discontinuities at $c$:\n\n1. **Removable discontinuity:** \n$\\lim_{x \\to c} f(x)$ exists but either $f(c)$ is undefined or \n$f(c) \\neq \\lim_{x \\to c} f(x)$.\n\n2. **Jump discontinuity:** Both one-sided \nlimits exist but are unequal: $\\lim_{x \\to c^-} f(x) \\neq \\lim_{x \\to c^+} f(x)$.\n\n3. **Essential discontinuity:** \nAt least one of the one-sided limits fails to exist (including the case \nof infinite limits or oscillation)."
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Types of Discontinuities",
+      "problem": "1. $f(x) = \\frac{\\sin x}{x}$ has a removable discontinuity at $x = 0$ \n(the limit is $1$).\n\n2. The sign function $\\text{sgn}(x) = \\begin{cases} 1 & x > 0 \\\\ 0 & x = 0 \\\\ -1 & x < 0 \\end{cases}$ \nhas a jump discontinuity at $0$.\n\n3. $f(x) = \\sin(1/x)$ has an essential discontinuity at $0$ (oscillation).",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Monotone Functions"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Discontinuities of Monotone Functions",
+      "content": "If $f$ is monotone on $(a, b)$, then:\n\n1. At each point $c \\in (a, b)$, both one-sided limits exist.\n\n2. The only discontinuities are jump discontinuities.\n\n3. The set of discontinuities is at most countable.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(a) Assume $f$ is increasing. For $c \\in (a,b)$, the set $\\{f(x) : x < c\\}$ \nis bounded above by $f(c)$, so $\\sup\\{f(x) : x < c\\}$ exists; this is \n$\\lim_{x \\to c^-} f(x)$.\n\n(b) By (a), both one-sided limits exist, so discontinuities can only be jumps.\n\n(c) If $f$ has a jump at $c$, the \"jump interval\" \n$(\\lim_{x \\to c^-} f(x), \\lim_{x \\to c^+} f(x))$ contains a rational number. \nDifferent jumps give disjoint intervals (by monotonicity), hence different \nrationals. Since $\\mathbb{Q}$ is countable, so is the set of jumps."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Dirichlet Function"
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "The Dirichlet Function",
+      "problem": "The **Dirichlet function** is defined by\n\\[\nD(x) = \\begin{cases} 1 & x \\in \\mathbb{Q} \\\\ 0 & x \\notin \\mathbb{Q} \\end{cases}\n\\]\nThis function is discontinuous at every point.",
+      "solution": "At any $c$, both rationals and irrationals are arbitrarily close to $c$ \n(by density). So any neighborhood of $c$ contains points where $D = 1$ \nand points where $D = 0$. Thus $\\lim_{x \\to c} D(x)$ does not exist."
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Thomae's Function",
+      "problem": "**Thomae's function** is defined by\n\\[\nT(x) = \\begin{cases} 1/q & x = p/q \\text{ in lowest terms}, q > 0 \\\\ 0 & x \\notin \\mathbb{Q} \\end{cases}\n\\]\nThis function is continuous at every irrational and discontinuous at every \nrational.",
+      "solution": ""
+    }
+  ]
+}

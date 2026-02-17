@@ -1,0 +1,308 @@
+{
+  "id": "vol3-ch12-sec01",
+  "title": "Three-Dimensional Coordinate Systems",
+  "chapter": 12,
+  "section": 1,
+  "book": "vol3",
+  "epigraph": {
+    "text": "He has made everything beautiful in its time. He has also set eternity in the human heart; yet no one can fathom what God has done from beginning to end.",
+    "reference": "Ecclesiastes 3:11"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "In the plane, we locate points using two coordinates $(x, y)$. To navigate three-dimensional space, we need a third coordinate. This section introduces the **three-dimensional rectangular coordinate system** (also called the Cartesian coordinate system, after René Descartes) and the fundamental tools for measuring distances and describing regions in space."
+    },
+    {
+      "type": "paragraph",
+      "text": "The transition from two to three dimensions is more than just adding another number to our ordered pairs. It opens up an entirely new geometric universe—one where we can model the physical world we actually inhabit. Every object around you, from the coffee mug on your desk to the planets orbiting the sun, exists in three-dimensional space. The mathematical framework we develop here gives us the language to describe, analyze, and predict the behavior of objects in this richer setting."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Rectangular Coordinate System"
+    },
+    {
+      "type": "paragraph",
+      "text": "To establish a coordinate system in three dimensions, we begin with three mutually perpendicular axes intersecting at a point called the **origin**. We label these axes $x$, $y$, and $z$, and we use the **right-hand rule** to orient them: if you curl the fingers of your right hand from the positive $x$-axis toward the positive $y$-axis, your thumb points in the direction of the positive $z$-axis."
+    },
+    {
+      "type": "paragraph",
+      "text": "The three coordinate axes determine three **coordinate planes**:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "The **$xy$-plane** consists of all points with $z = 0$.",
+        "The **$xz$-plane** consists of all points with $y = 0$.",
+        "The **$yz$-plane** consists of all points with $x = 0$."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "These three planes divide all of three-dimensional space $\\R^3$ into eight regions called **octants**, just as the two coordinate axes divide the plane into four quadrants. Only the first octant (where $x > 0$, $y > 0$, and $z > 0$) has a standard name; the others are usually described by listing the signs of their coordinates."
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.1",
+      "number": "12.1",
+      "title": "Three-Dimensional Rectangular Coordinates",
+      "content": "A point $P$ in three-dimensional space is represented by an ordered triple $(x, y, z)$, where:\n\n- $x$ is the signed distance from the $yz$-plane to $P$ (positive if $P$ is in front of the plane, negative if behind)\n\n- $y$ is the signed distance from the $xz$-plane to $P$ (positive if $P$ is to the right, negative if to the left)\n\n- $z$ is the signed distance from the $xy$-plane to $P$ (positive if $P$ is above, negative if below)\nThe three coordinate planes divide space into eight regions called **octants**. The **first octant** is where $x > 0$, $y > 0$, and $z > 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.1",
+      "number": "12.1",
+      "title": "Plotting points in space",
+      "problem": "Plot the points $A(2, 3, 4)$, $B(-1, 2, 0)$, and $C(0, -2, 3)$.",
+      "solution": "To plot $A(2, 3, 4)$:\n\n1. Start at the origin $O$.\n\n2. Move 2 units in the positive $x$-direction.\n\n3. Move 3 units in the positive $y$-direction.\n\n4. Move 4 units in the positive $z$-direction.\nPoint $A$ lies in the first octant since all coordinates are positive.\n\nPoint $B(-1, 2, 0)$ lies *in* the $xy$-plane (since $z = 0$), one unit behind the $yz$-plane and two units in front of the $xz$-plane.\n\nPoint $C(0, -2, 3)$ lies *in* the $yz$-plane (since $x = 0$), below the $xz$-plane and above the $xy$-plane.\n\n*Visualization:* Imagine a room where the corner where two walls meet the floor is the origin. The $x$-axis runs along one wall at floor level, the $y$-axis runs along the other wall at floor level, and the $z$-axis goes straight up from the corner. Point $A$ would be floating 4 feet above the floor, 2 feet from one wall and 3 feet from the other."
+    },
+    {
+      "type": "example",
+      "id": "example-12.2",
+      "number": "12.2",
+      "title": "Identifying octants",
+      "problem": "In which octant or on which coordinate plane does each point lie?\n\n1. $P(-3, 2, 5)$\n\n2. $Q(4, -1, -2)$\n\n3. $R(0, 5, -1)$\n\n4. $S(-2, 0, 3)$",
+      "solution": "1. $P(-3, 2, 5)$: The signs are $(-, +, +)$. This point is in the octant behind the $yz$-plane, in front of the $xz$-plane, and above the $xy$-plane.\n\n2. $Q(4, -1, -2)$: The signs are $(+, -, -)$. This point is in the octant in front of both the $yz$-plane and the $xz$-plane, but below the $xy$-plane.\n\n3. $R(0, 5, -1)$: Since $x = 0$, point $R$ lies exactly on the $yz$-plane (not in any octant).\n\n4. $S(-2, 0, 3)$: Since $y = 0$, point $S$ lies exactly on the $xz$-plane."
+    },
+    {
+      "type": "example",
+      "id": "example-12.3",
+      "number": "12.3",
+      "title": "Projections onto coordinate planes",
+      "problem": "Find the projections of the point $P(3, 4, 5)$ onto each of the three coordinate planes.",
+      "solution": "The **projection** of a point onto a plane is the point on that plane closest to the original point—found by dropping a perpendicular from the point to the plane.\n\n- **Projection onto the $xy$-plane:** Set $z = 0$, giving $(3, 4, 0)$.\n\n- **Projection onto the $xz$-plane:** Set $y = 0$, giving $(3, 0, 5)$.\n\n- **Projection onto the $yz$-plane:** Set $x = 0$, giving $(0, 4, 5)$.\n\nGeometrically, if you shine a light straight down (parallel to the $z$-axis), the shadow of $P$ on the $xy$-plane is $(3, 4, 0)$. Similarly for the other projections."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Distance in Three Dimensions"
+    },
+    {
+      "type": "paragraph",
+      "text": "The distance formula in two dimensions, $d = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$, extends naturally to three dimensions by the Pythagorean theorem applied twice. The key insight is to break the three-dimensional problem into two two-dimensional problems."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.1",
+      "number": "12.1",
+      "title": "Distance Formula in $\\R^3$",
+      "content": "The distance between points $P_1(x_1, y_1, z_1)$ and $P_2(x_2, y_2, z_2)$ is\n\\[\n |P_1P_2| = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Consider the rectangular box with $P_1$ and $P_2$ at opposite corners and edges parallel to the coordinate axes. Let $Q$ be the corner of the box in the same horizontal plane as $P_1$, with the same $x$ and $y$ coordinates as $P_2$: $Q(x_2, y_2, z_1)$.\n\nIn the horizontal plane (at height $z_1$), the distance from $P_1$ to $Q$ is given by the two-dimensional distance formula:\n\\[\n |P_1Q| = \\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}.\n\\]\nThe segment $QP_2$ is vertical with length $|z_2 - z_1|$. Since $P_1Q$ lies in a horizontal plane and $QP_2$ is vertical, these segments are perpendicular. By the Pythagorean theorem:\n\\[\n |P_1P_2|^2 = |P_1Q|^2 + |QP_2|^2 \n = (x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2.\n\\]\nTaking the square root yields the formula."
+    },
+    {
+      "type": "example",
+      "id": "example-12.4",
+      "number": "12.4",
+      "title": "Finding distance between points",
+      "problem": "Find the distance between $A(1, -2, 3)$ and $B(4, 2, -1)$.",
+      "solution": "Using the distance formula:\n$$\n |AB| &= \\sqrt{(4-1)^2 + (2-(-2))^2 + (-1-3)^2} \\\\\n &= \\sqrt{3^2 + 4^2 + (-4)^2} \\\\\n &= \\sqrt{9 + 16 + 16} \\\\\n &= \\sqrt{41}.\n$$\nThe exact distance is $\\sqrt{41}$, which is approximately $6.40$ units."
+    },
+    {
+      "type": "example",
+      "id": "example-12.5",
+      "number": "12.5",
+      "title": "Classifying triangles in space",
+      "problem": "A triangle has vertices $A(1, 0, 0)$, $B(0, 1, 0)$, and $C(0, 0, 1)$. Classify this triangle (scalene, isosceles, or equilateral) and find its perimeter.",
+      "solution": "We compute all three side lengths:\n$$\n |AB| &= \\sqrt{(0-1)^2 + (1-0)^2 + (0-0)^2} = \\sqrt{1 + 1 + 0} = \\sqrt{2}, \\\\\n |BC| &= \\sqrt{(0-0)^2 + (0-1)^2 + (1-0)^2} = \\sqrt{0 + 1 + 1} = \\sqrt{2}, \\\\\n |CA| &= \\sqrt{(1-0)^2 + (0-0)^2 + (0-1)^2} = \\sqrt{1 + 0 + 1} = \\sqrt{2}.\n$$\n\nAll three sides have the same length $\\sqrt{2}$, so the triangle is **equilateral**.\n\nThe perimeter is $|AB| + |BC| + |CA| = 3\\sqrt{2} \\approx 4.24$ units."
+    },
+    {
+      "type": "example",
+      "id": "example-12.6",
+      "number": "12.6",
+      "title": "Finding a fourth vertex of a parallelogram",
+      "problem": "Three vertices of a parallelogram are $A(1, 2, 3)$, $B(4, 5, 6)$, and $C(2, 1, 0)$. If $A$ and $B$ are adjacent vertices (sharing a side), find the fourth vertex $D$.",
+      "solution": "In a parallelogram $ABCD$ with $A$ adjacent to $B$, the diagonal from $A$ to $C$ and the diagonal from $B$ to $D$ bisect each other. Let $M$ be this common midpoint.\n\nThe midpoint of $AC$ is:\n\\[\n M = \\left( \\frac{1+2}{2}, \\frac{2+1}{2}, \\frac{3+0}{2} \\right) = \\left( \\frac{3}{2}, \\frac{3}{2}, \\frac{3}{2} \\right).\n\\]\n\nSince $M$ is also the midpoint of $BD$, we have:\n\\[\n \\left( \\frac{4 + x_D}{2}, \\frac{5 + y_D}{2}, \\frac{6 + z_D}{2} \\right) = \\left( \\frac{3}{2}, \\frac{3}{2}, \\frac{3}{2} \\right).\n\\]\n\nSolving: $x_D = 3 - 4 = -1$, $y_D = 3 - 5 = -2$, $z_D = 3 - 6 = -3$.\n\nTherefore, $D = (-1, -2, -3)$.\n\n*Check:* We can verify that $|AB| = |DC|$ and $|AD| = |BC|$, confirming a parallelogram."
+    },
+    {
+      "type": "example",
+      "id": "example-12.7",
+      "number": "12.7",
+      "title": "Distance from a point to a coordinate plane",
+      "problem": "Find the distance from the point $P(3, -4, 7)$ to each coordinate plane.",
+      "solution": "The distance from a point to a coordinate plane is simply the absolute value of the coordinate perpendicular to that plane:\n\n- Distance to the $xy$-plane (where $z = 0$): $|7| = 7$\n\n- Distance to the $xz$-plane (where $y = 0$): $|-4| = 4$\n\n- Distance to the $yz$-plane (where $x = 0$): $|3| = 3$\n\nNote that these are the legs of a rectangular box with $P$ at one corner and the origin at the opposite corner. By the Pythagorean theorem in 3D, $|OP| = \\sqrt{3^2 + 4^2 + 7^2} = \\sqrt{74}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Midpoints"
+    },
+    {
+      "type": "paragraph",
+      "text": "The midpoint formula also extends directly from two to three dimensions. Geometrically, the midpoint is the unique point on a line segment that divides it into two equal parts."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.2",
+      "number": "12.2",
+      "title": "Midpoint Formula in $\\R^3$",
+      "content": "The midpoint of the line segment from $P_1(x_1, y_1, z_1)$ to $P_2(x_2, y_2, z_2)$ is\n\\[\n M = \\left( \\frac{x_1+x_2}{2}, \\frac{y_1+y_2}{2}, \\frac{z_1+z_2}{2} \\right).\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We verify that $M$ lies on the segment $P_1P_2$ and that $|P_1M| = |MP_2|$. Using the distance formula:\n$$\n |P_1M| &= \\sqrt{\\left(\\frac{x_1+x_2}{2} - x_1\\right)^2 + \\left(\\frac{y_1+y_2}{2} - y_1\\right)^2 + \\left(\\frac{z_1+z_2}{2} - z_1\\right)^2} \\\\\n &= \\sqrt{\\left(\\frac{x_2-x_1}{2}\\right)^2 + \\left(\\frac{y_2-y_1}{2}\\right)^2 + \\left(\\frac{z_2-z_1}{2}\\right)^2} \\\\\n &= \\frac{1}{2}\\sqrt{(x_2-x_1)^2 + (y_2-y_1)^2 + (z_2-z_1)^2} = \\frac{1}{2}|P_1P_2|.\n$$\nSimilarly, $|MP_2| = \\frac{1}{2}|P_1P_2|$, so $|P_1M| = |MP_2|$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.8",
+      "number": "12.8",
+      "title": "Finding midpoint",
+      "problem": "Find the midpoint of the segment from $P(2, -1, 5)$ to $Q(4, 3, -1)$.",
+      "solution": "\\[\n M = \\left( \\frac{2+4}{2}, \\frac{-1+3}{2}, \\frac{5+(-1)}{2} \\right)\n = \\left( \\frac{6}{2}, \\frac{2}{2}, \\frac{4}{2} \\right)\n = (3, 1, 2).\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-12.9",
+      "number": "12.9",
+      "title": "Finding an endpoint given the midpoint",
+      "problem": "The midpoint of segment $PQ$ is $M(4, -1, 3)$. If $P = (1, 2, -5)$, find $Q$.",
+      "solution": "Let $Q = (x, y, z)$. Using the midpoint formula:\n\\[\n \\left( \\frac{1+x}{2}, \\frac{2+y}{2}, \\frac{-5+z}{2} \\right) = (4, -1, 3).\n\\]\n\nSolving each coordinate equation:\n$$\n \\frac{1+x}{2} &= 4 \\implies 1 + x = 8 \\implies x = 7, \\\\\n \\frac{2+y}{2} &= -1 \\implies 2 + y = -2 \\implies y = -4, \\\\\n \\frac{-5+z}{2} &= 3 \\implies -5 + z = 6 \\implies z = 11.\n$$\n\nTherefore, $Q = (7, -4, 11)$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.10",
+      "number": "12.10",
+      "title": "Dividing a segment in a given ratio",
+      "problem": "Find the point $P$ that divides the segment from $A(1, 2, 3)$ to $B(7, 8, 9)$ in the ratio $2:1$ (meaning $|AP|:|PB| = 2:1$).",
+      "solution": "If $P$ divides $\\overline{AB}$ in the ratio $m:n$ (from $A$ to $B$), then\n\\[\n P = \\left( \\frac{n \\cdot x_A + m \\cdot x_B}{m+n}, \\frac{n \\cdot y_A + m \\cdot y_B}{m+n}, \\frac{n \\cdot z_A + m \\cdot z_B}{m+n} \\right).\n\\]\n\nWith $m = 2$, $n = 1$:\n$$\n P &= \\left( \\frac{1 \\cdot 1 + 2 \\cdot 7}{3}, \\frac{1 \\cdot 2 + 2 \\cdot 8}{3}, \\frac{1 \\cdot 3 + 2 \\cdot 9}{3} \\right) \\\\\n &= \\left( \\frac{1 + 14}{3}, \\frac{2 + 16}{3}, \\frac{3 + 18}{3} \\right) \\\\\n &= \\left( 5, 6, 7 \\right).\n$$\n\n*Check:* $|AP| = \\sqrt{(5-1)^2 + (6-2)^2 + (7-3)^2} = \\sqrt{16 + 16 + 16} = 4\\sqrt{3}$.\\\\\n$|PB| = \\sqrt{(7-5)^2 + (8-6)^2 + (9-7)^2} = \\sqrt{4 + 4 + 4} = 2\\sqrt{3}$.\\\\\nIndeed, $|AP|:|PB| = 4\\sqrt{3}:2\\sqrt{3} = 2:1$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Spheres"
+    },
+    {
+      "type": "paragraph",
+      "text": "In two dimensions, the set of all points at a fixed distance from a center is a circle. In three dimensions, this set is a **sphere**. The sphere is perhaps the most natural three-dimensional surface—planets, stars, and bubbles all tend toward spherical shapes."
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.2",
+      "number": "12.2",
+      "title": "Sphere",
+      "content": "A **sphere** is the set of all points in space at a fixed distance $r$ (the **radius**) from a fixed point $C$ (the **center**). If $C = (h, k, l)$, then the sphere consists of all points $(x, y, z)$ satisfying\n\\[\n (x-h)^2 + (y-k)^2 + (z-l)^2 = r^2.\n\\]\nThis is called the **standard equation of a sphere**."
+    },
+    {
+      "type": "paragraph",
+      "text": "Note that the equation describes the *surface* of the sphere, not the solid ball inside. The set of points with $(x-h)^2 + (y-k)^2 + (z-l)^2 < r^2$ forms the **open ball**, while $(x-h)^2 + (y-k)^2 + (z-l)^2 \\leq r^2$ describes the **closed ball** (including the boundary)."
+    },
+    {
+      "type": "example",
+      "id": "example-12.11",
+      "number": "12.11",
+      "title": "Finding the equation of a sphere",
+      "problem": "Find the equation of the sphere with center $(2, -3, 1)$ and radius $4$.",
+      "solution": "Substituting directly into the standard form:\n\\[\n (x-2)^2 + (y-(-3))^2 + (z-1)^2 = 4^2,\n\\]\nwhich simplifies to\n\\[\n (x-2)^2 + (y+3)^2 + (z-1)^2 = 16.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-12.12",
+      "number": "12.12",
+      "title": "Sphere through a given point",
+      "problem": "Find the equation of the sphere centered at the origin that passes through the point $(2, -1, 2)$.",
+      "solution": "The radius is the distance from the center (origin) to the given point:\n\\[\n r = \\sqrt{2^2 + (-1)^2 + 2^2} = \\sqrt{4 + 1 + 4} = \\sqrt{9} = 3.\n\\]\n\nThe equation is $x^2 + y^2 + z^2 = 9$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.13",
+      "number": "12.13",
+      "title": "Identifying a sphere from its equation",
+      "problem": "Show that $x^2 + y^2 + z^2 - 4x + 6y - 2z + 5 = 0$ represents a sphere, and find its center and radius.",
+      "solution": "We complete the square in each variable. Group terms:\n\\[\n (x^2 - 4x) + (y^2 + 6y) + (z^2 - 2z) = -5.\n\\]\n\nComplete the square for each:\n\n- $x^2 - 4x$: add and subtract $(4/2)^2 = 4$\n\n- $y^2 + 6y$: add and subtract $(6/2)^2 = 9$\n\n- $z^2 - 2z$: add and subtract $(2/2)^2 = 1$\n\n$$\n (x^2 - 4x + 4) + (y^2 + 6y + 9) + (z^2 - 2z + 1) &= -5 + 4 + 9 + 1 \\\\\n (x-2)^2 + (y+3)^2 + (z-1)^2 &= 9.\n$$\nThis is a sphere with center $(2, -3, 1)$ and radius $r = 3$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.14",
+      "number": "12.14",
+      "title": "Sphere with diameter endpoints",
+      "problem": "Find the equation of the sphere that has the segment from $A(1, 3, 5)$ to $B(5, 7, 1)$ as a diameter.",
+      "solution": "The center of the sphere is the midpoint of the diameter:\n\\[\n C = \\left( \\frac{1+5}{2}, \\frac{3+7}{2}, \\frac{5+1}{2} \\right) = (3, 5, 3).\n\\]\n\nThe radius is half the length of the diameter:\n\\[\n |AB| = \\sqrt{(5-1)^2 + (7-3)^2 + (1-5)^2} = \\sqrt{16 + 16 + 16} = \\sqrt{48} = 4\\sqrt{3}.\n\\]\nSo $r = 2\\sqrt{3}$ and $r^2 = 12$.\n\nThe equation is $(x-3)^2 + (y-5)^2 + (z-3)^2 = 12$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.15",
+      "number": "12.15",
+      "title": "Sphere tangent to a coordinate plane",
+      "problem": "Find the equation of the sphere with center $(3, -2, 5)$ that is tangent to the $xy$-plane.",
+      "solution": "For a sphere to be tangent to the $xy$-plane, the radius must equal the distance from the center to that plane. The distance from $(3, -2, 5)$ to the $xy$-plane (where $z = 0$) is $|5| = 5$.\n\nTherefore, $r = 5$ and the equation is\n\\[\n (x-3)^2 + (y+2)^2 + (z-5)^2 = 25.\n\\]"
+    },
+    {
+      "type": "warning",
+      "id": "warning-12.1",
+      "number": null,
+      "title": "When completing the square fails",
+      "content": "Not every quadratic equation in $x$, $y$, $z$ represents a sphere. Consider\n\\[\n x^2 + y^2 + z^2 - 4x + 6y - 2z + 20 = 0.\n\\]\nCompleting the square gives $(x-2)^2 + (y+3)^2 + (z-1)^2 = -6$. Since a sum of squares cannot be negative, this equation has no solutions—it represents the **empty set**, not a surface!\n\nIf the right side equals zero after completing the square, you get a single point (a \"degenerate sphere\" of radius zero)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Describing Regions in Space"
+    },
+    {
+      "type": "paragraph",
+      "text": "Just as inequalities describe regions in the plane, they describe regions in three-dimensional space. Understanding these descriptions is essential for setting up multiple integrals in later chapters."
+    },
+    {
+      "type": "example",
+      "id": "example-12.16",
+      "number": "12.16",
+      "title": "Half-spaces",
+      "problem": "Describe and sketch the following regions:\n\n1. $\\{(x, y, z) : z \\geq 0\\}$\n\n2. $\\{(x, y, z) : x \\leq 2\\}$\n\n3. $\\{(x, y, z) : 1 < y < 4\\}$",
+      "solution": "1. This is the set of all points with non-negative $z$-coordinate: the **upper half-space**, including the $xy$-plane as its boundary. Think of everything at or above \"ground level.\"\n\n2. This is a half-space consisting of all points at or behind the plane $x = 2$ (a plane parallel to the $yz$-plane).\n\n3. This is a **slab**—the region between the planes $y = 1$ and $y = 4$, not including the boundary planes."
+    },
+    {
+      "type": "example",
+      "id": "example-12.17",
+      "number": "12.17",
+      "title": "Spherical regions",
+      "problem": "Describe the following regions:\n\n1. $\\{(x, y, z) : x^2 + y^2 + z^2 \\leq 4\\}$\n\n2. $\\{(x, y, z) : x^2 + y^2 + z^2 > 1\\}$\n\n3. $\\{(x, y, z) : 1 \\leq x^2 + y^2 + z^2 \\leq 4\\}$",
+      "solution": "1. This is the set of all points whose distance from the origin is at most $2$: a **closed ball** of radius $2$ centered at the origin. The boundary is the sphere $x^2 + y^2 + z^2 = 4$.\n\n2. This is the **exterior** of the unit sphere—all points whose distance from the origin is greater than $1$. It's unbounded, extending to infinity.\n\n3. This is the set of points whose distance from the origin is between $1$ and $2$: a **spherical shell** (the region between two concentric spheres). Like the rind of an orange."
+    },
+    {
+      "type": "example",
+      "id": "example-12.18",
+      "number": "12.18",
+      "title": "Cylindrical regions",
+      "problem": "Describe the region $\\{(x, y, z) : x^2 + y^2 \\leq 9\\}$.",
+      "solution": "This inequality involves only $x$ and $y$, not $z$. In two dimensions, $x^2 + y^2 \\leq 9$ describes a disk of radius $3$ centered at the origin. Since there's no restriction on $z$, this disk extends vertically in both directions forever.\n\nThe region is an **infinite solid cylinder** of radius $3$ with axis along the $z$-axis.\n\nCompare: $x^2 + y^2 = 9$ (with equality) describes the cylindrical *surface*, while the inequality describes the solid cylinder."
+    },
+    {
+      "type": "example",
+      "id": "example-12.19",
+      "number": "12.19",
+      "title": "Combining inequalities",
+      "problem": "Write inequalities describing the region that is inside the sphere of radius $3$ centered at the origin and above the plane $z = 1$.",
+      "solution": "We need two conditions:\n\n- Inside the sphere: $x^2 + y^2 + z^2 \\leq 9$\n\n- Above the plane: $z \\geq 1$\n\nThe region is described by\n\\[\n \\{(x, y, z) : x^2 + y^2 + z^2 \\leq 9 \\text{ and } z \\geq 1\\}.\n\\]\n\nThis is a \"spherical cap\"—the portion of a ball cut off by a horizontal plane."
+    },
+    {
+      "type": "historical",
+      "id": "historical-12.1",
+      "number": null,
+      "title": "Ren\\'e Descartes (1596--1650)",
+      "content": "The Cartesian coordinate system is named after René Descartes, the French philosopher and mathematician who introduced the idea of using algebraic equations to describe geometric curves. In his 1637 work *La G\\'eom\\'etrie*, an appendix to his philosophical treatise *Discourse on the Method*, Descartes showed how problems in geometry could be translated into problems in algebra—a synthesis that revolutionized both fields and laid the groundwork for calculus.\n\nDescartes was also a devout Catholic who sought to prove the existence of God through rational argument. His famous declaration \"Cogito, ergo sum\" (\"I think, therefore I am\") was part of a larger project to establish certain knowledge, ultimately grounded in the existence of a non-deceiving God. For Descartes, mathematics was a model of the clear and distinct ideas that could lead to truth.\n\nDescartes sought to establish a foundation for certain knowledge through systematic doubt and rational reconstruction. His famous declaration \"Cogito, ergo sum\" (\"I think, therefore I am\") became a cornerstone of modern philosophy."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Job 38:4--5",
+      "text": "Where were you when I laid the foundation of the earth? Tell me, if you have understanding. Who determined its measurements—surely you know!"
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:22",
+      "text": "It is he who sits above the circle of the earth, and its inhabitants are like grasshoppers."
+    },
+    {
+      "type": "quote",
+      "author": "Euclid",
+      "text": "A point is that which has no part."
+    }
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "id": "real-analysis-ch02-sec01",
+  "title": "Convergence of Sequences",
+  "chapter": 2,
+  "section": 1,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Sequences and Their Limits"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Sequence",
+      "content": "A **sequence** of real numbers is a function \n$a: \\mathbb{N} \\to \\mathbb{R}$. We write $a_n$ for $a(n)$ and denote the \nsequence by $(a_n)$, $(a_n)_{n=1}^{\\infty}$, or $a_1, a_2, a_3, \\ldots$"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "Convergence",
+      "content": "A sequence $(a_n)$ **converges** to a \nreal number $L$ if for every $\\varepsilon > 0$, there exists $N \\in \\mathbb{N}$ \nsuch that\n\\[\nn \\geq N \\implies |a_n - L| < \\varepsilon.\n\\]\nWe write $\\lim_{n \\to \\infty} a_n = L$ or $a_n \\to L$.\n\nIf $(a_n)$ converges to some $L$, we say $(a_n)$ is **convergent**. \nOtherwise, it is **divergent**."
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us unpack this definition carefully. The statement $|a_n - L| < \\varepsilon$ \nmeans that $a_n$ is within distance $\\varepsilon$ of $L$. The definition says: \nno matter how small a distance $\\varepsilon$ you specify, eventually \n(for all $n \\geq N$) the sequence stays within that distance of $L$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Proving Convergence from the Definition",
+      "problem": "Prove that $\\displaystyle\\lim_{n \\to \\infty} \\frac{1}{n} = 0$.",
+      "solution": "Let $\\varepsilon > 0$ be given. We need to find $N$ such that $n \\geq N$ \nimplies $|1/n - 0| < \\varepsilon$.\n\nThe condition $|1/n| < \\varepsilon$ is equivalent to $n > 1/\\varepsilon$.\n\nBy the Archimedean property, there exists $N \\in \\mathbb{N}$ with \n$N > 1/\\varepsilon$. Then for all $n \\geq N$:\n\\[\n\\left|\\frac{1}{n} - 0\\right| = \\frac{1}{n} \\leq \\frac{1}{N} < \\varepsilon.\n\\]\nThus $1/n \\to 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Another $\\varepsilon$-$N$ Proof",
+      "problem": "Prove that $\\displaystyle\\lim_{n \\to \\infty} \\frac{3n + 1}{2n + 5} = \\frac{3}{2}$.",
+      "solution": "Let $\\varepsilon > 0$. We compute:\n\\[\n\\left|\\frac{3n + 1}{2n + 5} - \\frac{3}{2}\\right| \n= \\left|\\frac{2(3n + 1) - 3(2n + 5)}{2(2n + 5)}\\right|\n= \\left|\\frac{-13}{4n + 10}\\right|\n= \\frac{13}{4n + 10}.\n\\]\n\nWe want $\\frac{13}{4n + 10} < \\varepsilon$, i.e., $4n + 10 > 13/\\varepsilon$, \ni.e., $n > \\frac{13 - 10\\varepsilon}{4\\varepsilon}$.\n\nChoose $N$ to be any integer greater than $\\frac{13}{4\\varepsilon}$ (a simpler \nbound). Then for $n \\geq N$:\n\\[\n\\frac{13}{4n + 10} < \\frac{13}{4n} \\leq \\frac{13}{4N} < \\varepsilon. \\qedhere\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Uniqueness of Limits",
+      "content": "If a sequence converges, its limit is unique.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Suppose $a_n \\to L$ and $a_n \\to L'$ with $L \\neq L'$. Let \n$\\varepsilon = |L - L'|/2 > 0$.\n\nBy convergence to $L$: there exists $N_1$ such that $n \\geq N_1$ implies \n$|a_n - L| < \\varepsilon$.\n\nBy convergence to $L'$: there exists $N_2$ such that $n \\geq N_2$ implies \n$|a_n - L'| < \\varepsilon$.\n\nFor $n \\geq \\max\\{N_1, N_2\\}$:\n\\[\n|L - L'| \\leq |L - a_n| + |a_n - L'| < \\varepsilon + \\varepsilon = |L - L'|.\n\\]\nThis contradiction shows $L = L'$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Bounded Sequences"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.3",
+      "number": "2.3",
+      "title": "Bounded Sequence",
+      "content": "A sequence $(a_n)$ is **bounded** if there \nexists $M > 0$ such that $|a_n| \\leq M$ for all $n$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Convergent Sequences Are Bounded",
+      "content": "Every convergent sequence is bounded.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $a_n \\to L$. Taking $\\varepsilon = 1$, there exists $N$ such that \n$n \\geq N$ implies $|a_n - L| < 1$, hence $|a_n| < |L| + 1$.\n\nLet $M = \\max\\{|a_1|, |a_2|, \\ldots, |a_{N-1}|, |L| + 1\\}$.\n\nThen $|a_n| \\leq M$ for all $n$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-2.1",
+      "number": null,
+      "title": "",
+      "content": "The converse is false: not every bounded sequence converges. For example, \n$((-1)^n)$ is bounded but divergent."
+    }
+  ]
+}

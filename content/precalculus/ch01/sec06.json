@@ -1,0 +1,157 @@
+{
+  "id": "precalculus-ch01-sec06",
+  "title": "Inverse Functions",
+  "chapter": 1,
+  "section": 6,
+  "book": "precalculus",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"What has been will be again, what has been done will \nbe done again; there is nothing new under the sun.\"*{Ecclesiastes 1:9}{To every action there is always opposed an equal reaction.}{Isaac Newton}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Some functions can be \"undone.\" If a function $f$ takes an input $a$ \nand produces an output $b$, the inverse function takes $b$ back to $a$. \nThis concept is fundamental to solving equations and will be essential \nwhen we study logarithms and inverse trigonometric functions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "One-to-One Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Not every function has an inverse. For a function to be reversible, \ndifferent inputs must produce different outputs."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.1",
+      "number": "1.1",
+      "title": "One-to-One Function",
+      "content": "A function $f$ is **one-to-one** (or \n**injective**) if whenever $a \\neq b$, we have $f(a) \\neq f(b)$.\n\nEquivalently, $f$ is one-to-one if $f(a) = f(b)$ implies $a = b$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.1",
+      "number": "1.1",
+      "title": "Horizontal Line Test",
+      "content": "A function is one-to-one if and only if every horizontal line intersects \nits graph at most once.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-1.1",
+      "number": "1.1",
+      "title": "Testing for one-to-one",
+      "problem": "Determine whether each function is one-to-one.\n\n1. $f(x) = 2x + 5$\n\n2. $g(x) = x^2$\n\n3. $h(x) = x^3$",
+      "solution": "1. **Yes.** Suppose $f(a) = f(b)$:\n \\[\n 2a + 5 = 2b + 5 \\implies 2a = 2b \\implies a = b\n \\]\n The function is one-to-one.\n\n2. **No.** We have $g(-2) = 4 = g(2)$, but $-2 \\neq 2$. \n Different inputs give the same output.\n\n3. **Yes.** Suppose $h(a) = h(b)$:\n \\[\n a^3 = b^3 \\implies a = b\n \\]\n (since the cube root is unique). The function is one-to-one."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Inverse of a Function"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.2",
+      "number": "1.2",
+      "title": "Inverse Function",
+      "content": "Let $f$ be a one-to-one function with domain $A$ and range $B$. The \n**inverse function** $f^{-1}$ has domain $B$ \nand range $A$, and is defined by\n\\[\n f^{-1}(y) = x \\quad \\text{if and only if} \\quad f(x) = y\n\\]\nfor all $y$ in $B$."
+    },
+    {
+      "type": "paragraph",
+      "text": "$ does \\emph{not} mean \n$$\\frac{1}{f}$$. The superscript $-1$ indicates an inverse function, not a \nreciprocal.}"
+    },
+    {
+      "type": "paragraph",
+      "text": "The inverse function \"undoes\" what $f$ does. If $f$ takes $a$ to $b$, \nthen $f^{-1}$ takes $b$ back to $a$. This relationship is captured by \nthe equations:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$f^{-1}(f(x)) &= x \\quad \\text{for all } x \\text{ in the domain of } f \\\\\n    f(f^{-1}(y)) &= y \\quad \\text{for all } y \\text{ in the domain of } f^{-1}$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Finding an Inverse Function"
+    },
+    {
+      "type": "paragraph",
+      "text": "To find the inverse of a one-to-one function $f$:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Write $y = f(x)$.",
+        "Solve this equation for $x$ in terms of $y$.",
+        "Replace $y$ with $x$ to write $f^{-1}(x)$."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-1.2",
+      "number": "1.2",
+      "title": "Finding an inverse",
+      "problem": "Find the inverse of $f(x) = 3x - 7$.",
+      "solution": "**Step 1:** Write $y = 3x - 7$.\n\n**Step 2:** Solve for $x$:\n\\[\n y = 3x - 7 \\implies y + 7 = 3x \\implies x = \\frac{y + 7}{3}\n\\]\n\n**Step 3:** Replace $y$ with $x$:\n\\[\n f^{-1}(x) = \\frac{x + 7}{3}\n\\]\n\n**Verification:**\n\\[\n f(f^{-1}(x)) = f\\left(\\frac{x + 7}{3}\\right) = 3 \\cdot \\frac{x + 7}{3} - 7 = x + 7 - 7 = x \\quad \\checkmark\n\\]\n\\[\n f^{-1}(f(x)) = f^{-1}(3x - 7) = \\frac{(3x - 7) + 7}{3} = \\frac{3x}{3} = x \\quad \\checkmark\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-1.3",
+      "number": "1.3",
+      "title": "Finding an inverse with restricted domain",
+      "problem": "Find the inverse of $f(x) = x^2$ for $x \\ge 0$.",
+      "solution": "With the restriction $x \\ge 0$, the function is one-to-one.\n\n**Step 1:** Write $y = x^2$ with $x \\ge 0$.\n\n**Step 2:** Solve for $x$:\n\\[\n y = x^2 \\implies x = \\sqrt{y} \\quad \\text{(taking the positive root since } x \\ge 0\\text{)}\n\\]\n\n**Step 3:** Replace $y$ with $x$:\n\\[\n f^{-1}(x) = \\sqrt{x}\n\\]\n\nThe domain of $f^{-1}$ is $[0, \\infty)$, which equals the range of $f$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Graphs of Inverse Functions"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.2",
+      "number": "1.2",
+      "title": "Graph of an Inverse",
+      "content": "The graph of $f^{-1}$ is the reflection of the graph of $f$ across the \nline $y = x$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This makes sense: if $(a, b)$ is on the graph of $f$ (meaning $f(a) = b$), \nthen $(b, a)$ is on the graph of $f^{-1}$ (meaning $f^{-1}(b) = a$). \nSwitching coordinates is exactly what reflection across $y = x$ does."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Domain and Range of Inverse Functions"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.3",
+      "number": "1.3",
+      "title": "Domain and Range of Inverses",
+      "content": "If $f$ has domain $A$ and range $B$, then $f^{-1}$ has domain $B$ and \nrange $A$. That is:\n\n- Domain of $f^{-1}$ = Range of $f$\n\n- Range of $f^{-1}$ = Domain of $f$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-1.4",
+      "number": "1.4",
+      "title": "Domain and range of an inverse",
+      "problem": "Let $f(x) = \\sqrt{x - 2}$. Find $f^{-1}$ and state its domain and range.",
+      "solution": "First, note that $f$ has domain $[2, \\infty)$ and range $[0, \\infty)$.\n\nTo find $f^{-1}$:\n\\[\n y = \\sqrt{x - 2} \\implies y^2 = x - 2 \\implies x = y^2 + 2\n\\]\n\nTherefore, $f^{-1}(x) = x^2 + 2$.\n\nBut we must restrict the domain: since the range of $f$ is $[0, \\infty)$, \nthe domain of $f^{-1}$ is $[0, \\infty)$.\n\n**Summary:**\n\n- $f^{-1}(x) = x^2 + 2$ with domain $[0, \\infty)$\n\n- Range of $f^{-1}$ is $[2, \\infty)$ (which equals the domain of $f$)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 43:1",
+      "text": "Fear not, for I have redeemed you; I have \ncalled you by name; you are mine."
+    }
+  ]
+}

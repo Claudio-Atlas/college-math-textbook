@@ -1,0 +1,82 @@
+{
+  "id": "number-theory-ch06-sec03",
+  "title": "Quadratic Reciprocity",
+  "chapter": 6,
+  "section": 3,
+  "book": "number-theory",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The crown jewel of elementary number theory."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Law of Quadratic Reciprocity"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Quadratic Reciprocity",
+      "content": "Let $p$ and $q$ be distinct odd primes. Then:\n\\[\n\\left(\\frac{p}{q}\\right)\\left(\\frac{q}{p}\\right) = (-1)^{\\frac{p-1}{2} \\cdot \\frac{q-1}{2}}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Equivalently:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "If $p \\equiv 1 \\pmod{4}$ or $q \\equiv 1 \\pmod{4}$: \n$\\left(\\frac{p}{q}\\right) = \\left(\\frac{q}{p}\\right)$.",
+        "If $p \\equiv q \\equiv 3 \\pmod{4}$: \n$\\left(\\frac{p}{q}\\right) = -\\left(\\frac{q}{p}\\right)$."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Using Quadratic Reciprocity",
+      "problem": "Compute $\\left(\\frac{7}{13}\\right)$.",
+      "solution": "Since $7 \\equiv 3 \\pmod{4}$ and $13 \\equiv 1 \\pmod{4}$, we have\n\\[\n\\left(\\frac{7}{13}\\right) = \\left(\\frac{13}{7}\\right) = \\left(\\frac{6}{7}\\right) \n= \\left(\\frac{2}{7}\\right)\\left(\\frac{3}{7}\\right).\n\\]\n\n$7 \\equiv -1 \\pmod{8}$, so $\\left(\\frac{2}{7}\\right) = 1$.\n\n$\\left(\\frac{3}{7}\\right) = \\left(\\frac{7}{3}\\right)$ (since $7 \\equiv 3 \\pmod 4$, $3 \\equiv 3 \\pmod 4$, flip sign) $= -\\left(\\frac{1}{3}\\right) = -1$.\n\nThus $\\left(\\frac{7}{13}\\right) = 1 \\cdot (-1) = -1$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Jacobi Symbol"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Jacobi Symbol",
+      "content": "For odd $n = p_1^{e_1} \\cdots p_k^{e_k} > 1$ and any integer $a$:\n\\[\n\\left(\\frac{a}{n}\\right) = \\left(\\frac{a}{p_1}\\right)^{e_1} \\cdots \\left(\\frac{a}{p_k}\\right)^{e_k}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Jacobi symbol extends quadratic reciprocity to composite moduli. \nIt inherits the key properties:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Properties of Jacobi Symbol",
+      "content": "For odd $m, n > 1$:\n\n1. $\\left(\\frac{ab}{n}\\right) = \\left(\\frac{a}{n}\\right)\\left(\\frac{b}{n}\\right)$\n\n2. $\\left(\\frac{-1}{n}\\right) = (-1)^{(n-1)/2}$\n\n3. $\\left(\\frac{2}{n}\\right) = (-1)^{(n^2-1)/8}$\n\n4. $\\left(\\frac{m}{n}\\right)\\left(\\frac{n}{m}\\right) = (-1)^{\\frac{m-1}{2} \\cdot \\frac{n-1}{2}}$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Warning:** $\\left(\\frac{a}{n}\\right) = 1$ does *not* imply \n$a$ is a QR mod $n$ when $n$ is composite!"
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Jacobi Symbol Computation",
+      "problem": "$\\left(\\frac{127}{703}\\right)$ where $703 = 19 \\times 37$.",
+      "solution": "By reciprocity (since $127 \\equiv 3$, $703 \\equiv 3 \\pmod 4$):\n$\\left(\\frac{127}{703}\\right) = -\\left(\\frac{703}{127}\\right) = -\\left(\\frac{68}{127}\\right)$.\n\n$68 = 4 \\cdot 17$, so $\\left(\\frac{68}{127}\\right) = \\left(\\frac{17}{127}\\right)$.\n\n$\\left(\\frac{17}{127}\\right) = \\left(\\frac{127}{17}\\right) = \\left(\\frac{8}{17}\\right) = \\left(\\frac{2}{17}\\right)^3 = 1$.\n\nThus $\\left(\\frac{127}{703}\\right) = -1$."
+    }
+  ]
+}

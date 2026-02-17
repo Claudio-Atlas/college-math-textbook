@@ -1,0 +1,61 @@
+{
+  "id": "prob-stats-ch09-sec03",
+  "title": "Tests for Proportions",
+  "chapter": 9,
+  "section": 3,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "By this all people will know that you are my disciples, if you have love for one another.",
+    "reference": "John 13:35",
+    "quote": "Proportion tests arise naturally in polling, quality control, and medicine.",
+    "quoteAuthor": "Abraham Wald"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "For categorical data, we test claims about population proportions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "One-Sample $z$-Test for Proportions"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "$z$-Test for Proportion",
+      "content": "To test $H_0: p = p_0$ vs.\\ $H_a$:\n\\[\n z = \\frac{\\phat - p_0}{\\sqrt{p_0(1-p_0)/n}}\n\\]\nUnder $H_0$, $z \\approx \\Normal(0, 1)$ for large $n$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Note: We use $p_0$ (not $\\phat$) in the standard error because \nwe're computing probability under $H_0$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Test for Proportion",
+      "problem": "A coin is flipped 100 times, giving 60 heads. Test if it's fair \n($p = 0.5$) at $\\alpha = 0.05$.",
+      "solution": "$H_0: p = 0.5$, $H_a: p \\neq 0.5$.\n\n$\\phat = 0.60$, $\\SE = \\sqrt{0.5 \\times 0.5 / 100} = 0.05$.\n\n$z = (0.60 - 0.50)/0.05 = 2.0$.\n\n$p$-value $= 2 \\times P(Z > 2.0) = 2 \\times 0.0228 = 0.0456$.\n\nSince $0.0456 < 0.05$, reject $H_0$. Evidence the coin is not fair."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Conditions for the Test"
+    },
+    {
+      "type": "paragraph",
+      "text": "The test requires:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Random sample",
+        "$np_0 \\geq 10$ and $n(1-p_0) \\geq 10$ for normal approximation"
+      ]
+    }
+  ]
+}

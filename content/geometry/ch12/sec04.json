@@ -1,0 +1,245 @@
+{
+  "id": "geometry-ch12-sec04",
+  "title": "Dilations",
+  "chapter": 12,
+  "section": 4,
+  "book": "geometry",
+  "epigraph": {
+    "text": "Now to him who is able to do far more abundantly than all that we ask or think, according to the power at work within us.",
+    "reference": "Ephesians 3:20"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The transformations we have studied so far—translations, reflections, \nand rotations—are all isometries: they preserve distance and produce \ncongruent images. A dilation is different. It enlarges or shrinks a \nfigure, changing its size while preserving its shape."
+    },
+    {
+      "type": "paragraph",
+      "text": "When you zoom in on a photograph or look at a map of your city, you \nare seeing the effect of a dilation. Every distance is multiplied by \nthe same factor, making the image larger or smaller but maintaining \nall the proportions of the original."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Dilation Transformation"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.1",
+      "number": "12.1",
+      "title": "Dilation",
+      "content": "A **dilation** is a transformation that stretches \nor shrinks a figure from a fixed point called the **center of \ndilation**. The amount of stretching or \nshrinking is determined by the **scale factor** \n$k$."
+    },
+    {
+      "type": "paragraph",
+      "text": "For a dilation with center $C$ and scale factor $k$:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Every point $P$ maps to a point $P'$ such that $P'$ lies \n on ray $\\overrightarrow{CP}$.",
+        "The distance $CP'$ equals $|k| \\cdot CP$.",
+        "If $k > 0$, then $P'$ is on the same side of $C$ as $P$.",
+        "If $k < 0$, then $P'$ is on the opposite side of $C$ from $P$."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": ", \nmeaning \"to spread out\" or \"to enlarge.\"}"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.2",
+      "number": "12.2",
+      "title": "Enlargement and Reduction",
+      "content": "- If $|k| > 1$, the dilation is an **enlargement**%\n —the image is larger than the original.\n\n- If $0 < |k| < 1$, the dilation is a **reduction**%\n —the image is smaller than the original.\n\n- If $|k| = 1$, the image is congruent to the original \n (this is an isometry)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Dilation Coordinate Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "When the center of dilation is at the origin, the coordinate rule \nis particularly simple."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.1",
+      "number": "12.1",
+      "title": "Dilation Coordinate Rule (Center at Origin)",
+      "content": "A dilation with center at the origin and scale factor $k$ maps \npoint $(x, y)$ to:\n\\[\n (x, y) \\to (kx, ky)\n\\]\nWe write this transformation as $D_k(x, y) = (kx, ky)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-12.1",
+      "number": "12.1",
+      "title": "Dilation with $k > 1$ (enlargement)",
+      "problem": "Dilate the point $P(3, -2)$ from the origin with scale factor $k = 4$.",
+      "solution": "Using the rule $(x, y) \\to (kx, ky)$:\n\\[\n P(3, -2) \\to P'(4 \\cdot 3, 4 \\cdot (-2)) = P'(12, -8)\n\\]\n\nThe image $P'(12, -8)$ is 4 times as far from the origin as $P(3, -2)$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.2",
+      "number": "12.2",
+      "title": "Dilation with $0 < k < 1$ (reduction)",
+      "problem": "Dilate the point $A(8, -4)$ from the origin with scale factor $k = \\frac{1}{2}$.",
+      "solution": "Using the rule $(x, y) \\to (kx, ky)$:\n\\[\n A(8, -4) \\to A'\\left(\\frac{1}{2} \\cdot 8, \\frac{1}{2} \\cdot (-4)\\right) \n = A'(4, -2)\n\\]\n\nThe image $A'(4, -2)$ is half as far from the origin as $A(8, -4)$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.3",
+      "number": "12.3",
+      "title": "Dilation with negative scale factor",
+      "problem": "Dilate the point $B(2, 3)$ from the origin with scale factor $k = -2$.",
+      "solution": "Using the rule $(x, y) \\to (kx, ky)$:\n\\[\n B(2, 3) \\to B'(-2 \\cdot 2, -2 \\cdot 3) = B'(-4, -6)\n\\]\n\nWith a negative scale factor, the image is on the opposite side of \nthe center (origin) from the original point, and twice as far away.\n\ncenter\ntikzpicture[scale=0.5]\n % Grid\n (-6,-7) grid (4,5);\n (-6,0) – (4.5,0) node[right] {$x$};\n (0,-7) – (0,5.5) node[above] {$y$};\n \n % Original point\n ll[AtlasTeal] (2,3) circle (5pt);\n at (2,3) {$B(2, 3)$};\n \n % Image point\n ll[AtlasWarm] (-4,-6) circle (5pt);\n at (-4,-6) {$B'(-4, -6)$};\n \n % Origin\n ll[AtlasSage] (0,0) circle (4pt);\n at (0.2,0) {$O$};\n \n % Line through origin\n (-4,-6) – (2,3);\ntikzpicture\ncenter"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Dilating Polygons"
+    },
+    {
+      "type": "paragraph",
+      "text": "To dilate a polygon, apply the dilation to each vertex, then connect \nthe image points."
+    },
+    {
+      "type": "example",
+      "id": "example-12.4",
+      "number": "12.4",
+      "title": "Dilating a triangle",
+      "problem": "Dilate $\\triangle PQR$ with vertices $P(1, 2)$, $Q(4, 2)$, and $R(2, 5)$ \nfrom the origin with scale factor $k = 2$.",
+      "solution": "Apply $(x, y) \\to (2x, 2y)$:\n$$\n P(1, 2) &\\to P'(2, 4) \\\\\n Q(4, 2) &\\to Q'(8, 4) \\\\\n R(2, 5) &\\to R'(4, 10)\n$$\n\ncenter\ntikzpicture[scale=0.45]\n % Grid\n (-1,-1) grid (10,12);\n (-1,0) – (10.5,0) node[right] {$x$};\n (0,-1) – (0,12.5) node[above] {$y$};\n \n % Original triangle\n ll[AtlasTeal!20] (1,2) – (4,2) – (2,5) – cycle;\n (1,2) – (4,2) – (2,5) – cycle;\n ll[AtlasTeal] (1,2) circle (3pt) node[below left] {$P$};\n ll[AtlasTeal] (4,2) circle (3pt) node[below right] {$Q$};\n ll[AtlasTeal] (2,5) circle (3pt) node[above left] {$R$};\n \n % Image triangle\n ll[AtlasWarm!20] (2,4) – (8,4) – (4,10) – cycle;\n (2,4) – (8,4) – (4,10) – cycle;\n ll[AtlasWarm] (2,4) circle (3pt) node[left] {$P'$};\n ll[AtlasWarm] (8,4) circle (3pt) node[right] {$Q'$};\n ll[AtlasWarm] (4,10) circle (3pt) node[above] {$R'$};\n \n % Origin\n ll[AtlasSage] (0,0) circle (4pt) node[below left] {$O$};\n \n % Rays from origin\n (0,0) – (2,4);\n (0,0) – (8,4);\n (0,0) – (4,10);\ntikzpicture\ncenter"
+    },
+    {
+      "type": "example",
+      "id": "example-12.5",
+      "number": "12.5",
+      "title": "Dilating a quadrilateral with reduction",
+      "problem": "Dilate square $ABCD$ with vertices $A(0, 0)$, $B(6, 0)$, $C(6, 6)$, \nand $D(0, 6)$ from the origin with scale factor $k = \\frac{1}{3}$.",
+      "solution": "Apply $(x, y) \\to \\left(\\frac{1}{3}x, \\frac{1}{3}y\\right)$:\n$$\n A(0, 0) &\\to A'(0, 0) \\\\\n B(6, 0) &\\to B'(2, 0) \\\\\n C(6, 6) &\\to C'(2, 2) \\\\\n D(0, 6) &\\to D'(0, 2)\n$$\n\nNotice that $A$ is at the origin (the center of dilation), so it \nmaps to itself."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of Dilations"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.2",
+      "number": "12.2",
+      "title": "Properties of Dilations",
+      "content": "A dilation with scale factor $k$ has the following properties:\n\n1. **Preserves angle measure:** All angles are unchanged.\n\n2. **Multiplies distances by $|k|$:** If $P$ and $Q$ are \n any two points, then $P'Q' = |k| \\cdot PQ$.\n\n3. **Preserves parallelism:** Parallel lines map to \n parallel lines.\n\n4. **Maps lines to lines:** A line maps to a line \n (parallel to the original unless passing through the center).\n\n5. **Preserves orientation:** If $k > 0$, orientation \n is preserved; if $k < 0$, orientation is reversed.\n\n6. **Area is multiplied by $k^2$:** The area of the \n image is $k^2$ times the area of the original.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "an isometry (unless $|k| = 1$) \nbecause it changes distances. It is a **similarity transformation**.}"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.3",
+      "number": "12.3",
+      "title": "Similarity Transformation",
+      "content": "A **similarity transformation** \nis a transformation that preserves the shape of a figure (preserves \nangles and the ratio of distances). Dilations are similarity \ntransformations. A composition of isometries and dilations is also \na similarity transformation."
+    },
+    {
+      "type": "example",
+      "id": "example-12.6",
+      "number": "12.6",
+      "title": "Verifying that dilation multiplies distances",
+      "problem": "Verify that dilation with $k = 3$ multiplies the distance from \n$A(1, 1)$ to $B(4, 5)$ by 3.",
+      "solution": "Find $AB$:\n\\[\n AB = \\sqrt{(4-1)^2 + (5-1)^2} = \\sqrt{9 + 16} = \\sqrt{25} = 5\n\\]\n\nFind the images: $A'(3, 3)$ and $B'(12, 15)$.\n\nFind $A'B'$:\n\\[\n A'B' = \\sqrt{(12-3)^2 + (15-3)^2} = \\sqrt{81 + 144} = \\sqrt{225} = 15\n\\]\n\nCheck: $A'B' = 15 = 3 \\cdot 5 = 3 \\cdot AB$. ✓"
+    },
+    {
+      "type": "example",
+      "id": "example-12.7",
+      "number": "12.7",
+      "title": "Finding area under dilation",
+      "problem": "A triangle has area 24 square units. Find the area of its image \nafter dilation with scale factor (a) $k = 2$, (b) $k = \\frac{1}{2}$.",
+      "solution": "Area is multiplied by $k^2$.\n\n(a) With $k = 2$: Area $= 24 \\cdot 2^2 = 24 \\cdot 4 = 96$ square units.\n\n(b) With $k = \\frac{1}{2}$: Area $= 24 \\cdot \\left(\\frac{1}{2}\\right)^2 \n= 24 \\cdot \\frac{1}{4} = 6$ square units."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Dilation About Other Centers"
+    },
+    {
+      "type": "paragraph",
+      "text": "When the center of dilation is not at the origin, we use a modified rule."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.3",
+      "number": "12.3",
+      "title": "Dilation About Point $(h, k)$",
+      "content": "A dilation with center $(h, k)$ and scale factor $s$ maps point \n$(x, y)$ to:\n\\[\n (x', y') = (h + s(x - h), \\; k + s(y - k))\n\\]\nEquivalently:\n\n1. Translate so that $(h, k)$ moves to the origin\n\n2. Apply dilation with scale factor $s$ about the origin\n\n3. Translate back by adding $(h, k)$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-12.8",
+      "number": "12.8",
+      "title": "Dilation with center not at origin",
+      "problem": "Dilate the point $A(5, 3)$ by scale factor $k = 2$ from center $C(1, 1)$.",
+      "solution": "**Method 1 (Direct Formula):**\nUsing $(x', y') = (h + k(x - h), k + k(y - k))$ with center $(1, 1)$:\n$$\n x' &= 1 + 2(5 - 1) = 1 + 2(4) = 1 + 8 = 9 \\\\\n y' &= 1 + 2(3 - 1) = 1 + 2(2) = 1 + 4 = 5\n$$\nSo $A' = (9, 5)$.\n\n**Method 2 (Step-by-Step):**\n\n1. Translate: $A - C = (5 - 1, 3 - 1) = (4, 2)$\n\n2. Dilate: $(4, 2) \\to (8, 4)$\n\n3. Translate back: $(8 + 1, 4 + 1) = (9, 5)$\n\ncenter\ntikzpicture[scale=0.6]\n % Grid\n (-1,-1) grid (11,7);\n (-1,0) – (11.5,0) node[right] {$x$};\n (0,-1) – (0,7.5) node[above] {$y$};\n \n % Center of dilation\n ll[AtlasSage] (1,1) circle (4pt);\n at (1,1) {$C(1,1)$};\n \n % Original point\n ll[AtlasTeal] (5,3) circle (4pt);\n at (5,3.3) {$A(5, 3)$};\n \n % Image point\n ll[AtlasWarm] (9,5) circle (4pt);\n at (9,5.3) {$A'(9, 5)$};\n \n % Ray from center through points\n (1,1) – (9,5);\ntikzpicture\ncenter"
+    },
+    {
+      "type": "example",
+      "id": "example-12.9",
+      "number": "12.9",
+      "title": "Dilating a segment from a center",
+      "problem": "Segment $\\overline{PQ}$ has endpoints $P(2, 4)$ and $Q(6, 2)$. Dilate \nit from center $C(0, 2)$ with scale factor $k = \\frac{3}{2}$.",
+      "solution": "Apply the formula for each point:\n\nFor $P(2, 4)$:\n$$\n x' &= 0 + \\frac{3}{2}(2 - 0) = 3 \\\\\n y' &= 2 + \\frac{3}{2}(4 - 2) = 2 + 3 = 5\n$$\nSo $P' = (3, 5)$.\n\nFor $Q(6, 2)$:\n$$\n x' &= 0 + \\frac{3}{2}(6 - 0) = 9 \\\\\n y' &= 2 + \\frac{3}{2}(2 - 2) = 2 + 0 = 2\n$$\nSo $Q' = (9, 2)$.\n\nWe can verify: $PQ = \\sqrt{16 + 4} = \\sqrt{20}$ and \n$P'Q' = \\sqrt{36 + 9} = \\sqrt{45} = \\sqrt{20} \\cdot \\frac{3}{2}$. ✓"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Finding the Scale Factor"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.4",
+      "number": "12.4",
+      "title": "Finding Scale Factor",
+      "content": "If point $P$ is dilated from center $C$ to image $P'$, the scale \nfactor is:\n\\[\n k = \\frac{CP'}{CP}\n\\]\nwhere $CP$ and $CP'$ are the distances from the center to the \npre-image and image, respectively.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-12.10",
+      "number": "12.10",
+      "title": "Finding scale factor",
+      "problem": "The origin is the center of a dilation that maps $A(2, 3)$ to \n$A'(6, 9)$. Find the scale factor.",
+      "solution": "**Method 1:** Compare coordinates directly.\n\\[\n k = \\frac{6}{2} = 3 \\quad \\text{or} \\quad k = \\frac{9}{3} = 3\n\\]\n\n**Method 2:** Use distances from origin.\n$$\n OA &= \\sqrt{4 + 9} = \\sqrt{13} \\\\\n OA' &= \\sqrt{36 + 81} = \\sqrt{117} = 3\\sqrt{13}\n$$\n\\[\n k = \\frac{OA'}{OA} = \\frac{3\\sqrt{13}}{\\sqrt{13}} = 3\n\\]\nThe scale factor is 3."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Matthew 13:31--32",
+      "text": "The kingdom of heaven is like a \ngrain of mustard seed... when it has grown it is larger than all the \ngarden plants and becomes a tree."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 54:2",
+      "text": "Enlarge the place of your tent, and \nlet the curtains of your habitations be stretched out; do not hold \nback; lengthen your cords and strengthen your stakes."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 104:25",
+      "text": "Here is the sea, great and wide, \nwhich teems with creatures innumerable, living things both small \nand great."
+    },
+    {
+      "type": "scripture",
+      "reference": "Luke 19:17",
+      "text": "Well done, good servant! Because you \nhave been faithful in a very little, you shall have authority over \nten cities."
+    }
+  ]
+}

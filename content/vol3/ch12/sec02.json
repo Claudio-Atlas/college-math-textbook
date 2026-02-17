@@ -1,0 +1,396 @@
+{
+  "id": "vol3-ch12-sec02",
+  "title": "Vectors",
+  "chapter": 12,
+  "section": 2,
+  "book": "vol3",
+  "epigraph": {
+    "text": "Your word is a lamp for my feet, a light on my path.",
+    "reference": "Psalm 119:105"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Distance and position tell us *where* things are. But the physical world involves more than static positions. Forces push in directions. Velocities carry magnitude and heading. Displacements describe movement from one point to another. All of these are **vectors**—mathematical objects that capture the essential quality of having both size and direction."
+    },
+    {
+      "type": "paragraph",
+      "text": "The distinction between scalars and vectors is fundamental. Temperature, mass, and time are scalars: they are completely specified by a single number (with units). But wind velocity, gravitational force, and the displacement from your home to the grocery store are vectors: knowing the magnitude alone is insufficient. \"The wind is blowing at 20 mph\" is incomplete; we need to know which direction it blows. \"The store is 3 miles away\" leaves us wandering; we need a direction."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Vectors: Definition and Notation"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.1",
+      "number": "12.1",
+      "title": "Vector",
+      "content": "A **vector** is a quantity with both **magnitude** (length) and **direction**. We represent vectors geometrically as directed line segments (arrows) and algebraically as ordered lists of components.\n\nTwo vectors are **equal** if they have the same magnitude and direction, regardless of their initial points. This is a crucial distinction from line segments: the vector from $(0, 0, 0)$ to $(1, 2, 3)$ is the *same vector* as the one from $(5, 5, 5)$ to $(6, 7, 8)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "We denote vectors in several equivalent ways:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Bold letters: $\\vect{v}$, $\\vect{u}$, $\\vect{a}$, $\\vect{F}$",
+        "Arrow notation: $\\vec{v}$, $\\overrightarrow{AB}$",
+        "Component notation: $\\langle a, b, c \\rangle$ or $(a, b, c)$",
+        "Standard basis notation: $a\\vecti + b\\vectj + c\\vectk$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The **zero vector**, denoted $\\vect{0} = \\langle 0, 0, 0 \\rangle$, has magnitude zero and no defined direction. It is the additive identity for vector addition."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Position Vectors and Displacement Vectors"
+    },
+    {
+      "type": "paragraph",
+      "text": "The vector from point $A$ to point $B$ is denoted $\\overrightarrow{AB}$. If $A = (a_1, a_2, a_3)$ and $B = (b_1, b_2, b_3)$, then\n\\[\n \\overrightarrow{AB} = \\langle b_1 - a_1, b_2 - a_2, b_3 - a_3 \\rangle.\n\\]\nThink of this as \"terminal minus initial\" or \"end minus start.\" The components tell you how far to travel in each coordinate direction to get from $A$ to $B$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The **position vector** of a point $P(x, y, z)$ is the vector $\\overrightarrow{OP}$ from the origin to $P$:\n\\[\n \\overrightarrow{OP} = \\langle x, y, z \\rangle.\n\\]\nWe often identify a point with its position vector, writing both as $(x, y, z)$ or $\\langle x, y, z \\rangle$ depending on context."
+    },
+    {
+      "type": "example",
+      "id": "example-12.1",
+      "number": "12.1",
+      "title": "Finding a vector between points",
+      "problem": "Find the vector $\\overrightarrow{AB}$ if $A = (2, -1, 3)$ and $B = (5, 2, -1)$.",
+      "solution": "\\[\n \\overrightarrow{AB} = \\langle 5-2, 2-(-1), -1-3 \\rangle = \\langle 3, 3, -4 \\rangle.\n\\]\nThe vector points 3 units in the positive $x$-direction, 3 units in the positive $y$-direction, and 4 units in the negative $z$-direction.\n\nNote that $\\overrightarrow{BA} = \\langle 2-5, -1-2, 3-(-1) \\rangle = \\langle -3, -3, 4 \\rangle = -\\overrightarrow{AB}$. Reversing the direction negates the vector."
+    },
+    {
+      "type": "example",
+      "id": "example-12.2",
+      "number": "12.2",
+      "title": "Position vector and displacement",
+      "problem": "A particle is at position $P(3, -1, 4)$. After some time, it moves to $Q(7, 2, 1)$. Find: (a) the position vectors of $P$ and $Q$, and (b) the displacement vector from $P$ to $Q$.",
+      "solution": "1. The position vectors are simply the coordinates written as vectors:\n \\[\n \\overrightarrow{OP} = \\langle 3, -1, 4 \\rangle, \\qquad \\overrightarrow{OQ} = \\langle 7, 2, 1 \\rangle.\n \\]\n\n2. The displacement vector is:\n \\[\n \\overrightarrow{PQ} = \\langle 7-3, 2-(-1), 1-4 \\rangle = \\langle 4, 3, -3 \\rangle.\n \\]\n\nNote that $\\overrightarrow{PQ} = \\overrightarrow{OQ} - \\overrightarrow{OP}$, which gives a useful relationship: the displacement from $P$ to $Q$ equals the position of $Q$ minus the position of $P$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.3",
+      "number": "12.3",
+      "title": "Finding terminal point from initial point and vector",
+      "problem": "A vector $\\vect{v} = \\langle 2, -5, 3 \\rangle$ has its initial point at $A(1, 4, -2)$. Find the terminal point $B$.",
+      "solution": "If $\\overrightarrow{AB} = \\vect{v}$, then $B = A + \\vect{v}$ (adding component-wise):\n\\[\n B = (1 + 2, 4 + (-5), -2 + 3) = (3, -1, 1).\n\\]\n\nCheck: $\\overrightarrow{AB} = \\langle 3-1, -1-4, 1-(-2) \\rangle = \\langle 2, -5, 3 \\rangle = \\vect{v}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Magnitude of a Vector"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.2",
+      "number": "12.2",
+      "title": "Magnitude",
+      "content": "The **magnitude** (or **length** or **norm**) of a vector $\\vect{v} = \\langle v_1, v_2, v_3 \\rangle$ is\n\\[\n |\\vect{v}| = \\|\\vect{v}\\| = \\sqrt{v_1^2 + v_2^2 + v_3^2}.\n\\]\nIn two dimensions, $|\\langle v_1, v_2 \\rangle| = \\sqrt{v_1^2 + v_2^2}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The magnitude formula follows directly from the distance formula: $|\\vect{v}|$ is the distance from the origin to the point $(v_1, v_2, v_3)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Properties of magnitude:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$|\\vect{v}| \\geq 0$ for all vectors, with equality if and only if $\\vect{v} = \\vect{0}$",
+        "$|c\\vect{v}| = |c| \\cdot |\\vect{v}|$ for any scalar $c$",
+        "$|\\vect{u} + \\vect{v}| \\leq |\\vect{u}| + |\\vect{v}|$ (the triangle inequality)"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-12.4",
+      "number": "12.4",
+      "title": "Computing magnitude",
+      "problem": "Find the magnitude of each vector:\n\n1. $\\vect{v} = \\langle 3, -4, 12 \\rangle$\n\n2. $\\vect{u} = \\langle 1, 1, 1 \\rangle$\n\n3. $\\vect{w} = 2\\vecti - 3\\vectj + 6\\vectk$",
+      "solution": "1. $|\\vect{v}| = \\sqrt{3^2 + (-4)^2 + 12^2} = \\sqrt{9 + 16 + 144} = \\sqrt{169} = 13$.\n\n2. $|\\vect{u}| = \\sqrt{1^2 + 1^2 + 1^2} = \\sqrt{3}$.\n\n3. $|\\vect{w}| = \\sqrt{2^2 + (-3)^2 + 6^2} = \\sqrt{4 + 9 + 36} = \\sqrt{49} = 7$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.5",
+      "number": "12.5",
+      "title": "Finding length of a segment using vectors",
+      "problem": "Find the distance from $A(1, 2, 3)$ to $B(4, -2, 5)$ using vectors.",
+      "solution": "The displacement vector from $A$ to $B$ is:\n\\[\n \\overrightarrow{AB} = \\langle 4-1, -2-2, 5-3 \\rangle = \\langle 3, -4, 2 \\rangle.\n\\]\n\nThe distance $|AB|$ equals the magnitude of this vector:\n\\[\n |AB| = |\\overrightarrow{AB}| = \\sqrt{3^2 + (-4)^2 + 2^2} = \\sqrt{9 + 16 + 4} = \\sqrt{29}.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Vector Addition"
+    },
+    {
+      "type": "paragraph",
+      "text": "Vectors add component-wise:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.3",
+      "number": "12.3",
+      "title": "Vector Addition",
+      "content": "If $\\vect{u} = \\langle u_1, u_2, u_3 \\rangle$ and $\\vect{v} = \\langle v_1, v_2, v_3 \\rangle$, then\n\\[\n \\vect{u} + \\vect{v} = \\langle u_1 + v_1, u_2 + v_2, u_3 + v_3 \\rangle.\n\\]\n\nVector subtraction is defined as $\\vect{u} - \\vect{v} = \\vect{u} + (-\\vect{v})$, which gives:\n\\[\n \\vect{u} - \\vect{v} = \\langle u_1 - v_1, u_2 - v_2, u_3 - v_3 \\rangle.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "There are two important geometric interpretations of vector addition:"
+    },
+    {
+      "type": "paragraph",
+      "text": "**The Triangle Rule (Head-to-Tail):** To add $\\vect{u} + \\vect{v}$, place the tail of $\\vect{v}$ at the head (tip) of $\\vect{u}$. The sum $\\vect{u} + \\vect{v}$ is the vector from the tail of $\\vect{u}$ to the head of $\\vect{v}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**The Parallelogram Rule:** Place both vectors with their tails at the same point. Complete the parallelogram. The diagonal from the common tail point is $\\vect{u} + \\vect{v}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Both interpretations give the same result and are useful in different contexts. The triangle rule is natural for sequential displacements; the parallelogram rule is natural for combining simultaneous forces."
+    },
+    {
+      "type": "example",
+      "id": "example-12.6",
+      "number": "12.6",
+      "title": "Geometric interpretation of addition",
+      "problem": "A hiker walks 3 km east, then 4 km north. Find the displacement from start to finish.",
+      "solution": "Let east be the positive $x$-direction and north be the positive $y$-direction. The two legs of the journey are:\n\\[\n \\vect{u} = \\langle 3, 0 \\rangle \\text{ (3 km east)}, \\qquad \\vect{v} = \\langle 0, 4 \\rangle \\text{ (4 km north)}.\n\\]\n\nThe total displacement is:\n\\[\n \\vect{u} + \\vect{v} = \\langle 3 + 0, 0 + 4 \\rangle = \\langle 3, 4 \\rangle.\n\\]\n\nThe hiker ends up $|\\langle 3, 4 \\rangle| = \\sqrt{9 + 16} = 5$ km from the starting point, in the direction of the vector $\\langle 3, 4 \\rangle$ (northeast, at angle $\\arctan(4/3) \\approx 53°$ from east)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Scalar Multiplication"
+    },
+    {
+      "type": "paragraph",
+      "text": "Multiplying a vector by a **scalar** (a real number) stretches or shrinks it:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.4",
+      "number": "12.4",
+      "title": "Scalar Multiplication",
+      "content": "If $c$ is a scalar and $\\vect{v} = \\langle v_1, v_2, v_3 \\rangle$, then\n\\[\n c\\vect{v} = \\langle cv_1, cv_2, cv_3 \\rangle.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The geometric effect of scalar multiplication:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "If $c > 1$: The vector is stretched (longer), same direction.",
+        "If $0 < c < 1$: The vector is shrunk (shorter), same direction.",
+        "If $c = 0$: The result is the zero vector $\\vect{0}$.",
+        "If $-1 < c < 0$: The vector is shrunk and reversed.",
+        "If $c < -1$: The vector is stretched and reversed.",
+        "If $c = -1$: The vector is reversed but same length."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "In all cases, $|c\\vect{v}| = |c| \\cdot |\\vect{v}|$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.7",
+      "number": "12.7",
+      "title": "Vector operations",
+      "problem": "Let $\\vect{u} = \\langle 1, 2, -1 \\rangle$ and $\\vect{v} = \\langle 3, 0, 4 \\rangle$. Find:\n\n1. $\\vect{u} + \\vect{v}$\n\n2. $\\vect{u} - \\vect{v}$\n\n3. $3\\vect{u} - 2\\vect{v}$\n\n4. $|\\vect{u}|$ and $|2\\vect{u}|$",
+      "solution": "1. $\\vect{u} + \\vect{v} = \\langle 1+3, 2+0, -1+4 \\rangle = \\langle 4, 2, 3 \\rangle$\n\n2. $\\vect{u} - \\vect{v} = \\langle 1-3, 2-0, -1-4 \\rangle = \\langle -2, 2, -5 \\rangle$\n\n3. First compute $3\\vect{u} = \\langle 3, 6, -3 \\rangle$ and $2\\vect{v} = \\langle 6, 0, 8 \\rangle$. Then:\n \\[\n 3\\vect{u} - 2\\vect{v} = \\langle 3-6, 6-0, -3-8 \\rangle = \\langle -3, 6, -11 \\rangle.\n \\]\n\n4. $|\\vect{u}| = \\sqrt{1 + 4 + 1} = \\sqrt{6}$ and $|2\\vect{u}| = 2|\\vect{u}| = 2\\sqrt{6}$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.8",
+      "number": "12.8",
+      "title": "Linear combinations",
+      "problem": "Express $\\vect{w} = \\langle 7, 3, 1 \\rangle$ as a linear combination of $\\vect{u} = \\langle 1, 1, 1 \\rangle$ and $\\vect{v} = \\langle 2, 0, -1 \\rangle$.",
+      "solution": "We seek scalars $a$ and $b$ such that $a\\vect{u} + b\\vect{v} = \\vect{w}$:\n\\[\n a\\langle 1, 1, 1 \\rangle + b\\langle 2, 0, -1 \\rangle = \\langle 7, 3, 1 \\rangle.\n\\]\n\nThis gives the system:\n$$\n a + 2b &= 7 \\\\\n a &= 3 \\\\\n a - b &= 1\n$$\n\nFrom the second equation, $a = 3$. Substituting into the first: $3 + 2b = 7$, so $b = 2$.\n\nCheck with third equation: $3 - 2 = 1$. \n\nTherefore, $\\vect{w} = 3\\vect{u} + 2\\vect{v}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of Vector Operations"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-12.1",
+      "number": "12.1",
+      "title": "Algebraic Properties of Vectors",
+      "content": "For vectors $\\vect{u}$, $\\vect{v}$, $\\vect{w}$ in $\\R^n$ and scalars $c$, $d$:\n\n1. $\\vect{u} + \\vect{v} = \\vect{v} + \\vect{u}$ (Commutativity of addition)\n\n2. $(\\vect{u} + \\vect{v}) + \\vect{w} = \\vect{u} + (\\vect{v} + \\vect{w})$ (Associativity of addition)\n\n3. $\\vect{u} + \\vect{0} = \\vect{u}$ (Additive identity)\n\n4. $\\vect{u} + (-\\vect{u}) = \\vect{0}$ (Additive inverse)\n\n5. $c(\\vect{u} + \\vect{v}) = c\\vect{u} + c\\vect{v}$ (Distributivity over vector addition)\n\n6. $(c + d)\\vect{u} = c\\vect{u} + d\\vect{u}$ (Distributivity over scalar addition)\n\n7. $(cd)\\vect{u} = c(d\\vect{u})$ (Associativity of scalar multiplication)\n\n8. $1\\vect{u} = \\vect{u}$ (Multiplicative identity)",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "These properties follow from the corresponding properties of real numbers, since vector operations are defined component-wise. They make the set of vectors a **vector space**—an algebraic structure with rich theory and applications throughout mathematics and physics."
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\vect{u} = \\langle u_1, u_2, u_3 \\rangle$ and $\\vect{v} = \\langle v_1, v_2, v_3 \\rangle$. Then:\n$$\n \\vect{u} + \\vect{v} &= \\langle u_1 + v_1, u_2 + v_2, u_3 + v_3 \\rangle \\\\\n &= \\langle v_1 + u_1, v_2 + u_2, v_3 + u_3 \\rangle \\quad \\text{(commutativity of real addition)} \\\\\n &= \\vect{v} + \\vect{u}. \\qedhere\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Unit Vectors"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.5",
+      "number": "12.5",
+      "title": "Unit Vector",
+      "content": "A **unit vector** is a vector with magnitude $1$. If $\\vect{v} \\neq \\vect{0}$, the unit vector in the direction of $\\vect{v}$ is\n\\[\n \\hat{\\vect{v}} = \\frac{\\vect{v}}{|\\vect{v}|} = \\frac{1}{|\\vect{v}|}\\vect{v}.\n\\]\nThis process of dividing by magnitude is called **normalizing** the vector."
+    },
+    {
+      "type": "paragraph",
+      "text": "Unit vectors isolate the \"direction\" part of a vector from its magnitude. Any vector can be written as a scalar (its magnitude) times a unit vector (its direction):\n\\[\n \\vect{v} = |\\vect{v}| \\cdot \\hat{\\vect{v}}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-12.9",
+      "number": "12.9",
+      "title": "Finding a unit vector",
+      "problem": "Find the unit vector in the direction of $\\vect{v} = \\langle 2, -1, 2 \\rangle$.",
+      "solution": "First, compute the magnitude:\n\\[\n |\\vect{v}| = \\sqrt{2^2 + (-1)^2 + 2^2} = \\sqrt{4 + 1 + 4} = \\sqrt{9} = 3.\n\\]\n\nThen normalize:\n\\[\n \\hat{\\vect{v}} = \\frac{1}{3}\\langle 2, -1, 2 \\rangle = \\left\\langle \\frac{2}{3}, -\\frac{1}{3}, \\frac{2}{3} \\right\\rangle.\n\\]\n\nVerification: $|\\hat{\\vect{v}}| = \\sqrt{\\frac{4}{9} + \\frac{1}{9} + \\frac{4}{9}} = \\sqrt{\\frac{9}{9}} = 1$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.10",
+      "number": "12.10",
+      "title": "Unit vector in 2D using angle",
+      "problem": "In two dimensions, find the unit vector that makes angle $\\theta$ with the positive $x$-axis.",
+      "solution": "By basic trigonometry, the unit vector is:\n\\[\n \\hat{\\vect{u}} = \\langle \\cos\\theta, \\sin\\theta \\rangle.\n\\]\n\nFor example:\n\n- $\\theta = 0$: $\\hat{\\vect{u}} = \\langle 1, 0 \\rangle$ (points along positive $x$-axis)\n\n- $\\theta = \\pi/2$: $\\hat{\\vect{u}} = \\langle 0, 1 \\rangle$ (points along positive $y$-axis)\n\n- $\\theta = \\pi/4$: $\\hat{\\vect{u}} = \\langle \\frac{\\sqrt{2}}{2}, \\frac{\\sqrt{2}}{2} \\rangle$ (points at 45°)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Standard Basis Vectors"
+    },
+    {
+      "type": "paragraph",
+      "text": "The most important unit vectors are the **standard basis vectors**:\n\\[\n \\vecti = \\langle 1, 0, 0 \\rangle, \\qquad\n \\vectj = \\langle 0, 1, 0 \\rangle, \\qquad\n \\vectk = \\langle 0, 0, 1 \\rangle.\n\\]\nThese point along the positive $x$-, $y$-, and $z$-axes, respectively. They are mutually perpendicular unit vectors."
+    },
+    {
+      "type": "paragraph",
+      "text": "Any vector can be written as a **linear combination** of the basis vectors:\n\\[\n \\vect{v} = \\langle v_1, v_2, v_3 \\rangle = v_1\\vecti + v_2\\vectj + v_3\\vectk.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This representation is unique: there is exactly one way to write any given vector as a linear combination of $\\vecti$, $\\vectj$, and $\\vectk$."
+    },
+    {
+      "type": "example",
+      "id": "example-12.11",
+      "number": "12.11",
+      "title": "Using standard basis notation",
+      "problem": "Write $\\vect{v} = \\langle 3, -2, 5 \\rangle$ using standard basis vectors, and convert $\\vect{u} = 4\\vecti - 7\\vectk$ to component form.",
+      "solution": "\\[\n \\vect{v} = 3\\vecti + (-2)\\vectj + 5\\vectk = 3\\vecti - 2\\vectj + 5\\vectk.\n\\]\n\nFor $\\vect{u} = 4\\vecti + 0\\vectj - 7\\vectk$:\n\\[\n \\vect{u} = \\langle 4, 0, -7 \\rangle.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-12.12",
+      "number": "12.12",
+      "title": "Finding a vector of given length in a given direction",
+      "problem": "Find a vector of length $10$ in the direction of $\\vect{v} = \\langle 1, 2, -2 \\rangle$.",
+      "solution": "First, find the unit vector in the direction of $\\vect{v}$:\n\\[\n |\\vect{v}| = \\sqrt{1 + 4 + 4} = 3, \\qquad \\hat{\\vect{v}} = \\frac{1}{3}\\langle 1, 2, -2 \\rangle = \\left\\langle \\frac{1}{3}, \\frac{2}{3}, -\\frac{2}{3} \\right\\rangle.\n\\]\n\nThen multiply by the desired length:\n\\[\n 10\\hat{\\vect{v}} = 10 \\cdot \\frac{1}{3}\\langle 1, 2, -2 \\rangle = \\left\\langle \\frac{10}{3}, \\frac{20}{3}, -\\frac{20}{3} \\right\\rangle.\n\\]\n\nAlternatively: $\\frac{10}{|\\vect{v}|}\\vect{v} = \\frac{10}{3}\\langle 1, 2, -2 \\rangle$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Parallel Vectors"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.6",
+      "number": "12.6",
+      "title": "Parallel Vectors",
+      "content": "Two nonzero vectors $\\vect{u}$ and $\\vect{v}$ are **parallel** (written $\\vect{u} \\parallel \\vect{v}$) if one is a scalar multiple of the other: $\\vect{v} = c\\vect{u}$ for some scalar $c \\neq 0$.\n\n- If $c > 0$, the vectors point in the same direction (they are **like parallel**).\n\n- If $c < 0$, they point in opposite directions (they are **antiparallel**)."
+    },
+    {
+      "type": "example",
+      "id": "example-12.13",
+      "number": "12.13",
+      "title": "Checking for parallel vectors",
+      "problem": "Determine whether the following pairs of vectors are parallel:\n\n1. $\\vect{u} = \\langle 2, -4, 6 \\rangle$ and $\\vect{v} = \\langle -1, 2, -3 \\rangle$\n\n2. $\\vect{u} = \\langle 3, 1, 2 \\rangle$ and $\\vect{v} = \\langle 6, 2, 5 \\rangle$",
+      "solution": "1. Check if the ratios of corresponding components are equal:\n \\[\n \\frac{2}{-1} = -2, \\qquad \\frac{-4}{2} = -2, \\qquad \\frac{6}{-3} = -2.\n \\]\n All ratios are equal, so $\\vect{u} = -2\\vect{v}$. The vectors are **parallel** (antiparallel, pointing opposite directions).\n\n2. Check ratios: $\\frac{3}{6} = \\frac{1}{2}$, $\\frac{1}{2} = \\frac{1}{2}$, $\\frac{2}{5} = \\frac{2}{5} \\neq \\frac{1}{2}$.\n \n The ratios are not all equal, so the vectors are **not parallel**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications"
+    },
+    {
+      "type": "paragraph",
+      "text": "Vectors are the natural language for describing physical quantities that have direction."
+    },
+    {
+      "type": "example",
+      "id": "example-12.14",
+      "number": "12.14",
+      "title": "Combining forces",
+      "problem": "Three forces act on an object: $\\vect{F}_1 = \\langle 10, 0, -5 \\rangle$ N, $\\vect{F}_2 = \\langle -4, 8, 3 \\rangle$ N, and $\\vect{F}_3 = \\langle -6, -8, 2 \\rangle$ N. Find the net force and its magnitude.",
+      "solution": "The net force is the vector sum:\n$$\n \\vect{F} &= \\vect{F}_1 + \\vect{F}_2 + \\vect{F}_3 \\\\\n &= \\langle 10 + (-4) + (-6), 0 + 8 + (-8), -5 + 3 + 2 \\rangle \\\\\n &= \\langle 0, 0, 0 \\rangle.\n$$\n\nThe net force is zero—the object is in **equilibrium**. Despite three forces acting on it, their combined effect cancels out, and the object experiences no acceleration."
+    },
+    {
+      "type": "example",
+      "id": "example-12.15",
+      "number": "12.15",
+      "title": "Velocity and wind",
+      "problem": "An airplane has an airspeed of 600 km/h and is pointing due north. A wind blows from the west at 80 km/h. Find the plane's ground speed and actual direction of travel.",
+      "solution": "Let east be the positive $x$-direction and north be the positive $y$-direction.\n\nThe plane's velocity relative to the air: $\\vect{v}_{\\text{plane}} = \\langle 0, 600 \\rangle$ km/h (pointing north).\n\nThe wind velocity (from west means blowing east): $\\vect{v}_{\\text{wind}} = \\langle 80, 0 \\rangle$ km/h.\n\nThe ground velocity is the sum:\n\\[\n \\vect{v}_{\\text{ground}} = \\vect{v}_{\\text{plane}} + \\vect{v}_{\\text{wind}} = \\langle 80, 600 \\rangle \\text{ km/h}.\n\\]\n\nGround speed: $|\\vect{v}_{\\text{ground}}| = \\sqrt{80^2 + 600^2} = \\sqrt{6400 + 360000} = \\sqrt{366400} \\approx 605.3$ km/h.\n\nDirection: $\\theta = \\arctan\\left(\\frac{80}{600}\\right) \\approx 7.6°$ east of north."
+    },
+    {
+      "type": "example",
+      "id": "example-12.16",
+      "number": "12.16",
+      "title": "Particle motion",
+      "problem": "A particle starts at position $P_0(2, -1, 4)$ and moves with constant velocity $\\vect{v} = \\langle 3, 1, -2 \\rangle$ units per second. Where is the particle after $t$ seconds? Where is it after 5 seconds?",
+      "solution": "After time $t$, the displacement is $t\\vect{v}$. The new position is:\n\\[\n P(t) = P_0 + t\\vect{v} = (2 + 3t, -1 + t, 4 - 2t).\n\\]\n\nAt $t = 5$ seconds:\n\\[\n P(5) = (2 + 15, -1 + 5, 4 - 10) = (17, 4, -6).\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-12.17",
+      "number": "12.17",
+      "title": "Finding equilibrium force",
+      "problem": "Two forces $\\vect{F}_1 = \\langle 100, 50, -30 \\rangle$ N and $\\vect{F}_2 = \\langle -40, 70, 60 \\rangle$ N act on an object. What third force $\\vect{F}_3$ must be applied to produce equilibrium?",
+      "solution": "For equilibrium, the net force must be zero:\n\\[\n \\vect{F}_1 + \\vect{F}_2 + \\vect{F}_3 = \\vect{0}.\n\\]\n\nSolving for $\\vect{F}_3$:\n$$\n \\vect{F}_3 &= -(\\vect{F}_1 + \\vect{F}_2) \\\\\n &= -\\langle 100 - 40, 50 + 70, -30 + 60 \\rangle \\\\\n &= -\\langle 60, 120, 30 \\rangle \\\\\n &= \\langle -60, -120, -30 \\rangle \\text{ N}.\n$$"
+    },
+    {
+      "type": "historical",
+      "id": "historical-12.2",
+      "number": null,
+      "title": "William Rowan Hamilton (1805--1865) and the Development of Vector Algebra",
+      "content": "The Irish mathematician William Rowan Hamilton sought for years to extend complex numbers to three dimensions. He knew that complex numbers $a + bi$ could represent points in a plane and that their multiplication encoded rotations. He wanted a similar system for three-dimensional rotations.\n\nOn October 16, 1843, while walking along the Royal Canal in Dublin with his wife, Hamilton had a flash of insight: the extension required not three dimensions but *four*, and multiplication could not be commutative. He carved the fundamental equations of his \"quaternions\" into the stone of Brougham Bridge:\n\\[\n i^2 = j^2 = k^2 = ijk = -1.\n\\]\n\nThough quaternions were eventually supplanted by the simpler vector notation developed by Josiah Willard Gibbs and Oliver Heaviside in the 1880s, they remain important in computer graphics, aerospace engineering, and spacecraft navigation, where they provide a singularity-free way to represent rotations."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Exodus 13:21",
+      "text": "And the Lord went before them by day in a pillar of cloud to lead them along the way, and by night in a pillar of fire to give them light, that they might travel by day and by night."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 4:25--26",
+      "text": "Let your eyes look directly forward, and your gaze be straight before you. Ponder the path of your feet; then all your ways will be sure."
+    },
+    {
+      "type": "quote",
+      "author": "Galileo Galilei",
+      "text": "Mathematics is the language in which God has written the universe."
+    }
+  ]
+}

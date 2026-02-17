@@ -1,0 +1,191 @@
+{
+  "id": "diff-eq-ch06-sec05",
+  "title": "Inverse Transforms and Partial Fractions",
+  "chapter": 6,
+  "section": 5,
+  "book": "diff-eq",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "To solve differential equations using Laplace transforms, we must be able \nto \"undo\" the transform—to find $f(t)$ given $F(s)$. This is the \n**inverse Laplace transform**, and the primary technique for computing \nit is **partial fraction decomposition**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Inverse Laplace Transform"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Inverse Laplace Transform",
+      "content": "If $\\mathcal{L}\\{f(t)\\} = F(s)$, then $f(t)$ is called the **inverse \nLaplace transform** of $F(s)$, denoted\n\\[\nf(t) = \\mathcal{L}^{-1}\\{F(s)\\}\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Uniqueness (Lerch's Theorem)",
+      "content": "If $f(t)$ and $g(t)$ are continuous functions with $\\mathcal{L}\\{f(t)\\} = \\mathcal{L}\\{g(t)\\}$, \nthen $f(t) = g(t)$ for all $t \\geq 0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This theorem guarantees that the inverse transform is unique (among \ncontinuous functions), so finding *any* continuous function $f(t)$ \nwith $\\mathcal{L}\\{f(t)\\} = F(s)$ gives us *the* inverse transform."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Linearity of the Inverse Transform",
+      "content": "\\[\n\\mathcal{L}^{-1}\\{aF(s) + bG(s)\\} = a\\mathcal{L}^{-1}\\{F(s)\\} + b\\mathcal{L}^{-1}\\{G(s)\\}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Using the Table in Reverse"
+    },
+    {
+      "type": "paragraph",
+      "text": "The simplest approach to finding inverse transforms is to recognize them \nfrom our table of transforms."
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Direct recognition",
+      "problem": "Find $\\mathcal{L}^{-1}\\left\\{\\frac{6}{s^4}\\right\\}$.\n\n**Solution.** We know $\\mathcal{L}\\{t^n\\} = \\frac{n!}{s^{n+1}}$. Comparing \nwith $\\frac{6}{s^4} = \\frac{3!}{s^{3+1}}$, we see $n = 3$. Therefore:\n\\[\n\\mathcal{L}^{-1}\\left\\{\\frac{6}{s^4}\\right\\} = t^3\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Adjusting constants",
+      "problem": "Find $\\mathcal{L}^{-1}\\left\\{\\frac{5}{s^2 + 16}\\right\\}$.\n\n**Solution.** We know $\\mathcal{L}\\{\\sin(bt)\\} = \\frac{b}{s^2+b^2}$. \nHere $b^2 = 16$, so $b = 4$. We need $\\frac{4}{s^2+16}$, but we have \n$\\frac{5}{s^2+16}$. Write:\n\\[\n\\frac{5}{s^2 + 16} = \\frac{5}{4} \\cdot \\frac{4}{s^2 + 16}\n\\]\nTherefore:\n\\[\n\\mathcal{L}^{-1}\\left\\{\\frac{5}{s^2 + 16}\\right\\} = \\frac{5}{4}\\sin(4t)\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-6.3",
+      "number": "6.3",
+      "title": "Using the first shifting theorem in reverse",
+      "problem": "Find $\\mathcal{L}^{-1}\\left\\{\\frac{3}{(s-2)^4}\\right\\}$.\n\n**Solution.** We recognize $\\frac{3!}{s^4} = \\mathcal{L}\\{t^3\\}$. The \nshift $s \\to s-2$ corresponds to multiplication by $e^{2t}$:\n\\[\n\\mathcal{L}^{-1}\\left\\{\\frac{3}{(s-2)^4}\\right\\} = \\frac{3}{6}\\mathcal{L}^{-1}\\left\\{\\frac{6}{(s-2)^4}\\right\\} = \\frac{1}{2}e^{2t}t^3\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Partial Fraction Decomposition"
+    },
+    {
+      "type": "paragraph",
+      "text": "When $F(s)$ is a rational function (ratio of polynomials), we decompose it \ninto simpler fractions that we can recognize from our table."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.3",
+      "number": "6.3",
+      "title": "Partial Fraction Decomposition",
+      "content": "Let $F(s) = \\frac{P(s)}{Q(s)}$ where $\\deg P < \\deg Q$ and $Q(s)$ factors \ninto linear and irreducible quadratic factors. Then $F(s)$ can be uniquely \nwritten as a sum of terms of the forms:\n\n- For each linear factor $(s - a)^k$: terms $\\frac{A_1}{s-a} + \\frac{A_2}{(s-a)^2} + \\cdots + \\frac{A_k}{(s-a)^k}$\n\n- For each irreducible quadratic factor $(s^2 + bs + c)^k$: terms $\\frac{B_1s + C_1}{s^2+bs+c} + \\cdots + \\frac{B_ks + C_k}{(s^2+bs+c)^k}$",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Distinct Linear Factors"
+    },
+    {
+      "type": "example",
+      "id": "example-6.4",
+      "number": "6.4",
+      "title": "Two distinct linear factors",
+      "problem": "Find $\\mathcal{L}^{-1}\\left\\{\\frac{3s + 1}{(s-1)(s+2)}\\right\\}$.\n\n**Solution.** Decompose:\n\\[\n\\frac{3s + 1}{(s-1)(s+2)} = \\frac{A}{s-1} + \\frac{B}{s+2}\n\\]\nMultiplying both sides by $(s-1)(s+2)$:\n\\[\n3s + 1 = A(s+2) + B(s-1)\n\\]\n\n**Method 1 (Cover-up):**\n\n- Set $s = 1$: $4 = A(3)$, so $A = \\frac{4}{3}$\n\n- Set $s = -2$: $-5 = B(-3)$, so $B = \\frac{5}{3}$\n\nTherefore:\n\\[\n\\frac{3s + 1}{(s-1)(s+2)} = \\frac{4/3}{s-1} + \\frac{5/3}{s+2}\n\\]\n\nTaking the inverse transform:\n\\[\n\\mathcal{L}^{-1}\\left\\{\\frac{3s + 1}{(s-1)(s+2)}\\right\\} = \\frac{4}{3}e^{t} + \\frac{5}{3}e^{-2t}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-6.5",
+      "number": "6.5",
+      "title": "Three distinct linear factors",
+      "problem": "Find $\\mathcal{L}^{-1}\\left\\{\\frac{2s^2 + 5s - 1}{s(s-1)(s+3)}\\right\\}$.\n\n**Solution.** Decompose:\n\\[\n\\frac{2s^2 + 5s - 1}{s(s-1)(s+3)} = \\frac{A}{s} + \\frac{B}{s-1} + \\frac{C}{s+3}\n\\]\n\nUsing cover-up:\n\n- $s = 0$: $-1 = A(-1)(3) = -3A$, so $A = \\frac{1}{3}$\n\n- $s = 1$: $2 + 5 - 1 = 6 = B(1)(4)$, so $B = \\frac{3}{2}$\n\n- $s = -3$: $18 - 15 - 1 = 2 = C(-3)(-4) = 12C$, so $C = \\frac{1}{6}$\n\nTherefore:\n\\[\n\\mathcal{L}^{-1}\\left\\{\\frac{2s^2 + 5s - 1}{s(s-1)(s+3)}\\right\\} = \\frac{1}{3} + \\frac{3}{2}e^{t} + \\frac{1}{6}e^{-3t}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Repeated Linear Factors"
+    },
+    {
+      "type": "example",
+      "id": "example-6.6",
+      "number": "6.6",
+      "title": "Repeated linear factor",
+      "problem": "Find $\\mathcal{L}^{-1}\\left\\{\\frac{2s + 3}{(s-1)^2}\\right\\}$.\n\n**Solution.** Decompose:\n\\[\n\\frac{2s + 3}{(s-1)^2} = \\frac{A}{s-1} + \\frac{B}{(s-1)^2}\n\\]\nMultiply by $(s-1)^2$:\n\\[\n2s + 3 = A(s-1) + B\n\\]\n\nSetting $s = 1$: $5 = B$.\n\nFor $A$, expand: $2s + 3 = As - A + B$. Comparing coefficients of $s$: $2 = A$.\n\nTherefore:\n\\[\n\\frac{2s + 3}{(s-1)^2} = \\frac{2}{s-1} + \\frac{5}{(s-1)^2}\n\\]\n\nTaking the inverse transform (using the first shifting theorem):\n\\[\n\\mathcal{L}^{-1}\\left\\{\\frac{2s + 3}{(s-1)^2}\\right\\} = 2e^{t} + 5te^{t} = e^{t}(2 + 5t)\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-6.7",
+      "number": "6.7",
+      "title": "Higher multiplicity",
+      "problem": "Find $\\mathcal{L}^{-1}\\left\\{\\frac{1}{s(s+1)^3}\\right\\}$.\n\n**Solution.** Decompose:\n\\[\n\\frac{1}{s(s+1)^3} = \\frac{A}{s} + \\frac{B}{s+1} + \\frac{C}{(s+1)^2} + \\frac{D}{(s+1)^3}\n\\]\n\nCover-up for $A$: $s = 0$ gives $A = \\frac{1}{1} = 1$.\n\nCover-up for $D$: $s = -1$ gives $D = \\frac{1}{-1} = -1$.\n\nFor $B$ and $C$, multiply out:\n\\[\n1 = A(s+1)^3 + Bs(s+1)^2 + Cs(s+1) + Ds\n\\]\n\\[\n1 = (s+1)^3 + Bs(s+1)^2 + Cs(s+1) - s\n\\]\n\nExpanding and comparing coefficients (or using $s = 1$ and another value) gives $B = -1$, $C = 1$.\n\nTherefore:\n\\[\n\\frac{1}{s(s+1)^3} = \\frac{1}{s} - \\frac{1}{s+1} + \\frac{1}{(s+1)^2} - \\frac{1}{(s+1)^3}\n\\]\n\nTaking the inverse transform:\n\\[\n\\mathcal{L}^{-1}\\left\\{\\frac{1}{s(s+1)^3}\\right\\} = 1 - e^{-t} + te^{-t} - \\frac{t^2}{2}e^{-t} = 1 - e^{-t}\\left(1 - t + \\frac{t^2}{2}\\right)\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Irreducible Quadratic Factors"
+    },
+    {
+      "type": "paragraph",
+      "text": "When $Q(s)$ contains a quadratic factor $s^2 + bs + c$ with $b^2 - 4c < 0$ \n(no real roots), we must complete the square to put the inverse transform \nin recognizable form."
+    },
+    {
+      "type": "example",
+      "id": "example-6.8",
+      "number": "6.8",
+      "title": "Irreducible quadratic",
+      "problem": "Find $\\mathcal{L}^{-1}\\left\\{\\frac{s + 5}{s^2 + 4s + 13}\\right\\}$.\n\n**Solution.** Complete the square in the denominator:\n\\[\ns^2 + 4s + 13 = (s+2)^2 + 9\n\\]\n\nRewrite the numerator in terms of $(s+2)$:\n\\[\ns + 5 = (s + 2) + 3\n\\]\n\nTherefore:\n\\[\n\\frac{s + 5}{s^2 + 4s + 13} = \\frac{(s+2) + 3}{(s+2)^2 + 9} = \\frac{s+2}{(s+2)^2 + 9} + \\frac{3}{(s+2)^2 + 9}\n\\]\n\nNow we recognize these as shifted versions of $\\cos(3t)$ and $\\sin(3t)$:\n$$\n\\mathcal{L}^{-1}\\left\\{\\frac{s+2}{(s+2)^2 + 9}\\right\\} &= e^{-2t}\\cos(3t) \\\\\n\\mathcal{L}^{-1}\\left\\{\\frac{3}{(s+2)^2 + 9}\\right\\} &= e^{-2t}\\sin(3t)\n$$\n\nTherefore:\n\\[\n\\mathcal{L}^{-1}\\left\\{\\frac{s + 5}{s^2 + 4s + 13}\\right\\} = e^{-2t}(\\cos(3t) + \\sin(3t))\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-6.9",
+      "number": "6.9",
+      "title": "Linear and quadratic factors",
+      "problem": "Find $\\mathcal{L}^{-1}\\left\\{\\frac{5s^2 + 3s + 1}{s(s^2 + 1)}\\right\\}$.\n\n**Solution.** Decompose:\n\\[\n\\frac{5s^2 + 3s + 1}{s(s^2 + 1)} = \\frac{A}{s} + \\frac{Bs + C}{s^2 + 1}\n\\]\n\nMultiply by $s(s^2 + 1)$:\n\\[\n5s^2 + 3s + 1 = A(s^2 + 1) + (Bs + C)s\n\\]\n\\[\n5s^2 + 3s + 1 = As^2 + A + Bs^2 + Cs = (A + B)s^2 + Cs + A\n\\]\n\nComparing coefficients:\n$$\ns^2: && A + B &= 5 \\\\\ns^1: && C &= 3 \\\\\ns^0: && A &= 1\n$$\n\nSo $A = 1$, $B = 4$, $C = 3$.\n\n\\[\n\\frac{5s^2 + 3s + 1}{s(s^2 + 1)} = \\frac{1}{s} + \\frac{4s + 3}{s^2 + 1} = \\frac{1}{s} + \\frac{4s}{s^2 + 1} + \\frac{3}{s^2 + 1}\n\\]\n\nTaking the inverse transform:\n\\[\n\\mathcal{L}^{-1}\\left\\{\\frac{5s^2 + 3s + 1}{s(s^2 + 1)}\\right\\} = 1 + 4\\cos t + 3\\sin t\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Repeated Quadratic Factors"
+    },
+    {
+      "type": "example",
+      "id": "example-6.10",
+      "number": "6.10",
+      "title": "Repeated quadratic factor",
+      "problem": "Find $\\mathcal{L}^{-1}\\left\\{\\frac{1}{(s^2 + 1)^2}\\right\\}$.\n\n**Solution.** We could use partial fractions, but convolution is easier here. Write:\n\\[\n\\frac{1}{(s^2 + 1)^2} = \\frac{1}{s^2 + 1} \\cdot \\frac{1}{s^2 + 1}\n\\]\n\nBy the convolution theorem:\n\\[\n\\mathcal{L}^{-1}\\left\\{\\frac{1}{(s^2 + 1)^2}\\right\\} = \\sin t * \\sin t = \\int_0^t \\sin\\tau \\sin(t-\\tau)\\,d\\tau\n\\]\n\nUsing the identity $\\sin A \\sin B = \\frac{1}{2}[\\cos(A-B) - \\cos(A+B)]$:\n$$\n\\int_0^t \\sin\\tau \\sin(t-\\tau)\\,d\\tau &= \\frac{1}{2}\\int_0^t [\\cos(2\\tau - t) - \\cos t]\\,d\\tau \\\\\n&= \\frac{1}{2}\\left[\\frac{\\sin(2\\tau - t)}{2} - \\tau\\cos t\\right]_0^t \\\\\n&= \\frac{1}{2}\\left[\\frac{\\sin t}{2} - t\\cos t - \\frac{\\sin(-t)}{2}\\right] \\\\\n&= \\frac{1}{2}\\left[\\frac{\\sin t + \\sin t}{2} - t\\cos t\\right] \\\\\n&= \\frac{1}{2}(\\sin t - t\\cos t)\n$$\n\nTherefore:\n\\[\n\\mathcal{L}^{-1}\\left\\{\\frac{1}{(s^2 + 1)^2}\\right\\} = \\frac{1}{2}(\\sin t - t\\cos t)\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Summary of Methods"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Direct recognition:** Match $F(s)$ to entries in the table.",
+        "**Partial fractions:** Decompose rational functions.",
+        "**Completing the square:** For irreducible quadratics.",
+        "**First shifting theorem:** Replace $(s-a)$ with $s$, multiply by $e^{at}$.",
+        "**Convolution:** For products $F(s)G(s)$."
+      ]
+    }
+  ]
+}

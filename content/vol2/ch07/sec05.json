@@ -1,0 +1,228 @@
+{
+  "id": "vol2-ch07-sec05",
+  "title": "Work",
+  "chapter": 7,
+  "section": 5,
+  "book": "vol2",
+  "epigraph": {
+    "text": "Whatever you do, work at it with all your heart, as \nworking for the Lord, not for human masters.",
+    "reference": "Colossians 3:23"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "In physics, *work* is what happens when a force moves an object through \na distance. If you push a crate across a floor with a constant force of \n50 newtons over 10 meters, you do $W = 50 \\times 10 = 500$ joules of work. \nSimple enough."
+    },
+    {
+      "type": "paragraph",
+      "text": "But what if the force *varies*? A spring resists more as you stretch \nit further. The weight of a chain changes as you lift it. The pressure \non water being pumped out of a tank depends on the depth. In all these \nsituations, the force is a function of position, and we need calculus to \ncompute the total work."
+    },
+    {
+      "type": "paragraph",
+      "text": "Once again, the pattern is the same: **Slice, Approximate, Sum, \nIntegrate.**"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Work Done by a Variable Force"
+    },
+    {
+      "type": "paragraph",
+      "text": "Suppose a variable force $F(x)$ acts on an object as it moves along the \n$x$-axis from $x = a$ to $x = b$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 1: Slice.** Divide $[a,b]$ into $n$ small subintervals of \nwidth $\\Delta x$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 2: Approximate.** On each subinterval, the force is \napproximately constant at $F(x_k^*)$, so the work done over this small \ndisplacement is approximately\n\\[\n \\Delta W_k \\approx F(x_k^*)\\,\\Delta x.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 3: Sum.**\n\\[\n W \\approx \\sum_{k=1}^{n} F(x_k^*)\\,\\Delta x.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Step 4: Take the limit.**"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Work Done by a Variable Force",
+      "content": "If $F$ is a continuous force function on $[a,b]$, the \n**work** done in moving an object from $x = a$ to $x = b$ \nis\n\\[\n W = \\defint{a}{b} F(x)\\dx.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The SI unit of work is the **joule** (J): $1\\,\\text{J} = 1\\,\\text{N}\\cdot\\text{m}$. \nIn the British system, work is measured in foot-pounds (ft-lb)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Hooke's Law: Work on a Spring"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Hooke's Law** states that the force required to \nstretch (or compress) a spring $x$ units beyond its natural length is \nproportional to $x$:\n\\[\n F(x) = kx,\n\\]\nwhere $k > 0$ is the **spring constant** (in N/m or lb/ft). A stiff \nspring has a large $k$; a soft spring has a small $k$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Work to stretch a spring",
+      "problem": "A spring has a natural length of 20 cm. A force of 25 N is required to \nhold it stretched to 30 cm. How much work is done in stretching it from \n20 cm to 35 cm?",
+      "solution": "First, find the spring constant. At $x = 10\\,\\text{cm} = 0.1\\,\\text{m}$ \nbeyond natural length, $F = 25\\,\\text{N}$:\n\\[\n 25 = k(0.1) \\implies k = 250\\;\\text{N/m}.\n\\]\nThe work to stretch from $x = 0$ to $x = 0.15\\,\\text{m}$ (natural to 35 cm):\n\\[\n W = \\defint{0}{0.15} 250x\\dx = 250\\left[\\frac{x^2}{2}\\right]_0^{0.15} \n = 250\\cdot\\frac{0.0225}{2} = 2.8125\\;\\text{J}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Work between two stretched positions",
+      "problem": "Using the same spring ($k = 250$ N/m), find the work required to stretch it \nfrom 30 cm to 40 cm.",
+      "solution": "From 30 cm to 40 cm is from $x = 0.1$ m to $x = 0.2$ m beyond natural \nlength:\n$$\n W &= \\defint{0.1}{0.2} 250x\\dx = 250\\left[\\frac{x^2}{2}\\right]_{0.1}^{0.2} \\\\\n &= 125(0.04 - 0.01) = 125(0.03) = 3.75\\;\\text{J}.\n$$\nNotice this is *more* work than stretching from 20 to 30 cm \n($W = 1.25$ J), even though both intervals are 10 cm. The spring resists \nmore when it is already stretched."
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "Finding the spring constant from work",
+      "problem": "It takes 4 J of work to stretch a spring from its natural length to 0.1 m \nbeyond natural length. Find the spring constant.",
+      "solution": "\\[\n W = \\defint{0}{0.1}kx\\dx = k\\cdot\\frac{(0.1)^2}{2} = 0.005k.\n\\]\nSetting $0.005k = 4$ gives $k = 800$ N/m."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Pumping Fluids Out of Tanks"
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the most important (and most challenging) applications of the work \nintegral is computing the work required to pump fluid out of a tank. The \nforce is not constant because different layers of fluid must be lifted \ndifferent distances."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-7.5",
+      "number": null,
+      "title": "Work to Pump Fluid",
+      "content": "1. Set up a coordinate axis (usually vertical, with $y$ increasing \n upward).\n\n2. **Slice** the fluid into thin horizontal layers of \n thickness $\\Delta y$.\n\n3. For each layer at height $y$:\n itemize\n\n4. Find the **volume** of the layer: $\\Delta V = A(y)\\,\\Delta y$, \n where $A(y)$ is the cross-sectional area.\n\n5. Find the **weight** (force): \n $\\Delta F = \\rho\\,g\\,A(y)\\,\\Delta y$ (metric) or \n $\\Delta F = \\rho\\,A(y)\\,\\Delta y$ (if $\\rho$ already includes $g$).\n\n6. Find the **distance** the layer must be lifted to reach \n the top (or the spout).\n itemize\n\n7. $\\displaystyle W = \\defint{a}{b} (\\text{weight of layer}) \n \\times (\\text{lift distance})\\dy$."
+    },
+    {
+      "type": "paragraph",
+      "text": "We use the following physical constants:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Water density: $\\rho = 1000\\;\\text{kg/m}^3$ (metric) or \n $62.4\\;\\text{lb/ft}^3$ (British).",
+        "Gravity: $g = 9.8\\;\\text{m/s}^2$ (metric).",
+        "Weight density of water: $\\rho g \\approx 9800\\;\\text{N/m}^3$ (metric) \n or $62.4\\;\\text{lb/ft}^3$ (British, already includes gravity)."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "Pumping water from a cylindrical tank",
+      "problem": "A cylindrical tank of radius 3 ft and height 8 ft is full of water. \nFind the work required to pump all the water over the top of the tank. \n(Use $\\rho = 62.4$ lb/ft$^3$.)",
+      "solution": "Place the origin at the bottom of the tank with $y$ pointing up.\n\n**Slice.** A thin horizontal layer at height $y$ has thickness \n$\\Delta y$. Since the tank is a cylinder of radius 3:\n\\[\n A(y) = \\pi(3)^2 = 9\\pi \\quad\\text{(constant, independent of $y$)}.\n\\]\n**Weight** of the layer: $62.4 \\cdot 9\\pi\\,\\Delta y$.\n\n**Lift distance:** The layer at height $y$ must be lifted to $y = 8$, \na distance of $(8 - y)$.\n\n$$\n W &= \\defint{0}{8} 62.4\\cdot 9\\pi\\cdot(8-y)\\dy \n = 561.6\\pi\\defint{0}{8}(8-y)\\dy \\\\\n &= 561.6\\pi\\left[8y - \\frac{y^2}{2}\\right]_0^8 \n = 561.6\\pi(64 - 32) = 561.6\\pi\\cdot 32 \\\\\n &= 17{,}971.2\\pi \\approx 56{,}450\\;\\text{ft-lb}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.5",
+      "number": "7.5",
+      "title": "Pumping water from a conical tank",
+      "problem": "A conical tank (vertex at the bottom) has a radius of 4 m at the top and a \nheight of 10 m. It is filled with water to a depth of 8 m. Find the work \nrequired to pump all the water to the top of the tank. \n(Use $\\rho g = 9800$ N/m$^3$.)",
+      "solution": "Place the origin at the vertex (bottom of the cone), with $y$ pointing up.\n\nAt height $y$, the radius of the cross-section is determined by similar \ntriangles: $\\dfrac{r}{y} = \\dfrac{4}{10}$, so $r = \\dfrac{2y}{5}$.\n\nCross-sectional area: $A(y) = \\pi r^2 = \\pi\\left(\\dfrac{2y}{5}\\right)^2 \n= \\dfrac{4\\pi y^2}{25}$.\n\nThe layer at height $y$ must be lifted to $y = 10$, a distance of $(10-y)$.\n\n$$\n W &= \\defint{0}{8} 9800\\cdot\\frac{4\\pi y^2}{25}\\cdot(10-y)\\dy \n = \\frac{39{,}200\\pi}{25}\\defint{0}{8}y^2(10-y)\\dy \\\\\n &= 1568\\pi\\defint{0}{8}(10y^2 - y^3)\\dy \\\\\n &= 1568\\pi\\left[\\frac{10y^3}{3} - \\frac{y^4}{4}\\right]_0^8 \\\\\n &= 1568\\pi\\left(\\frac{5120}{3} - 1024\\right) \n = 1568\\pi\\cdot\\frac{2048}{3} \\\\\n &= \\frac{3{,}211{,}264\\pi}{3} \\approx 3{,}361{,}000\\;\\text{J} \n \\approx 3361\\;\\text{kJ}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.6",
+      "number": "7.6",
+      "title": "Pumping from a hemispherical tank",
+      "problem": "A hemispherical tank of radius 5 ft (flat side up) is full of water. The \nwater must be pumped to a pipe 2 ft above the top of the tank. Find the \nwork. (Use $\\rho = 62.4$ lb/ft$^3$.)",
+      "solution": "Place the origin at the center of the flat top, with $y$ pointing \n*downward* into the hemisphere. Then the hemisphere extends from \n$y = 0$ to $y = 5$. At depth $y$, the radius of the cross-section \nsatisfies $r^2 + y^2 = 25$, so $r^2 = 25 - y^2$ and \n$A(y) = \\pi(25 - y^2)$.\n\nA layer at depth $y$ below the top must be lifted $(y + 2)$ feet \n(to reach 2 ft above the top).\n\n$$\n W &= \\defint{0}{5} 62.4\\pi(25 - y^2)(y+2)\\dy \\\\\n &= 62.4\\pi\\defint{0}{5}(25y + 50 - y^3 - 2y^2)\\dy \\\\\n &= 62.4\\pi\\left[\\frac{25y^2}{2} + 50y - \\frac{y^4}{4} \n - \\frac{2y^3}{3}\\right]_0^5 \\\\\n &= 62.4\\pi\\left(\\frac{625}{2} + 250 - \\frac{625}{4} - \\frac{250}{3}\\right) \\\\\n &= 62.4\\pi\\left(\\frac{1250 + 1000 - 625}{4} - \\frac{250}{3}\\right) \\\\\n &= 62.4\\pi\\left(\\frac{1625}{4} - \\frac{250}{3}\\right) \n = 62.4\\pi\\cdot\\frac{3875}{12} \\\\\n &= 62.4\\pi\\cdot\\frac{3875}{12} = \\frac{241{,}800\\pi}{12} \n = 20{,}150\\pi \\approx 63{,}310\\;\\text{ft-lb}.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Lifting Cables and Chains"
+    },
+    {
+      "type": "paragraph",
+      "text": "When you lift a heavy cable (or chain), the amount of cable still hanging \ndecreases as you pull. Therefore, the force (weight of the remaining cable) \nchanges with position."
+    },
+    {
+      "type": "example",
+      "id": "example-7.7",
+      "number": "7.7",
+      "title": "Lifting a hanging cable",
+      "problem": "A cable weighing 2 lb/ft hangs from the top of a 100-ft building. How much \nwork is required to pull the entire cable to the top?",
+      "solution": "Let $x$ denote the distance (in feet) the cable has already been pulled up. \nWhen $x$ feet have been pulled, the remaining cable has length $(100 - x)$ ft \nand weighs $2(100 - x)$ lb.\n\n**Slice:** Pull an additional $\\Delta x$ feet. The force is \napproximately $F(x) = 2(100-x)$ during this small displacement.\n$$\n W &= \\defint{0}{100} 2(100-x)\\dx \n = 2\\left[100x - \\frac{x^2}{2}\\right]_0^{100} \\\\\n &= 2\\left(10{,}000 - 5{,}000\\right) = 10{,}000\\;\\text{ft-lb}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.8",
+      "number": "7.8",
+      "title": "Cable with a weight attached",
+      "problem": "A 50-ft cable weighing 3 lb/ft is attached to a 200-lb bucket of coal at \nthe bottom of a mine shaft. Find the work to lift the bucket and cable to \nthe top.",
+      "solution": "The work has two parts:\n\n**Part 1: Lifting the bucket.** Constant force of 200 lb over 50 ft:\n\\[\n W_1 = 200 \\times 50 = 10{,}000\\;\\text{ft-lb}.\n\\]\n\n**Part 2: Lifting the cable.** When $x$ ft have been pulled, the \nremaining cable weighs $3(50-x)$ lb:\n\\[\n W_2 = \\defint{0}{50}3(50-x)\\dx = 3\\left[50x - \\frac{x^2}{2}\\right]_0^{50} \n = 3(2500 - 1250) = 3750\\;\\text{ft-lb}.\n\\]\n\nTotal: $W = 10{,}000 + 3{,}750 = 13{,}750\\;\\text{ft-lb}$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.9",
+      "number": "7.9",
+      "title": "Pulling half the cable",
+      "problem": "Using the same cable as Example [ex:cable-basic] (2 lb/ft, 100 ft), \nhow much work is needed to pull only the *bottom half* (the first \n50 ft) to the top?",
+      "solution": "After pulling $x$ feet, the remaining cable weighs $2(100-x)$ lb. We \npull from $x = 0$ to $x = 50$:\n\\[\n W = \\defint{0}{50}2(100-x)\\dx = 2\\left[100x - \\frac{x^2}{2}\\right]_0^{50} \n = 2(5000 - 1250) = 7500\\;\\text{ft-lb}.\n\\]\nThis is $\\frac{3}{4}$ of the total work $10{,}000$ ft-lb. It makes sense: \nthe first half of the lift is harder because more cable is still hanging."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Work–Energy Connection"
+    },
+    {
+      "type": "paragraph",
+      "text": "The work–energy theorem from physics states that the net work done on an \nobject equals the change in its kinetic energy:\n\\[\n W = \\Delta KE = \\frac{1}{2}mv_f^2 - \\frac{1}{2}mv_i^2.\n\\]\nThis is a direct consequence of the Fundamental Theorem of Calculus applied \nto Newton's second law $F = ma$. Here we see once again how the integral \nconnects a *rate* (force) to a *total* (work), just as it connects \nvelocity to displacement."
+    },
+    {
+      "type": "historical",
+      "id": "historical-7.5",
+      "number": null,
+      "title": "Robert Hooke (1635--1703)",
+      "content": "Robert Hooke, a polymath and contemporary of Newton, published his law of \nelasticity in 1678 as a Latin anagram: \"ceiiinosssttuv,\" which decoded to \n\"ut tensio, sic vis\" (\"as the extension, so the force\"). Hooke was a \nbrilliant experimentalist who contributed to microscopy, astronomy, and \narchitecture. His rivalry with Newton is legendary; Newton allegedly \nsuppressed Hooke's contributions after Hooke's death. Yet Hooke's Law \nremains one of the most widely applied principles in physics and engineering."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Genesis 2:15",
+      "text": "The Lord God took the man and put him in the \nGarden of Eden to work it and take care of it."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 4:12",
+      "text": "A cord of three strands is not quickly \nbroken."
+    },
+    {
+      "type": "scripture",
+      "reference": "Exodus 15:13",
+      "text": "In your unfailing love you will lead the \npeople you have redeemed. In your strength you will guide them to your \nholy dwelling."
+    },
+    {
+      "type": "quote",
+      "author": "James Prescott Joule (1818--1889)",
+      "text": "The grand agents of nature \nare, by the Creator's fiat, indestructible."
+    },
+    {
+      "type": "quote",
+      "author": "Blaise Pascal (1623--1662)",
+      "text": "All the unhappiness of men arises \nfrom one single fact, that they cannot stay quietly in their own room."
+    },
+    {
+      "type": "quote",
+      "author": "Lord Kelvin (1824--1907)",
+      "text": "When you can measure what you are \nspeaking about, and express it in numbers, you know something about it."
+    }
+  ]
+}

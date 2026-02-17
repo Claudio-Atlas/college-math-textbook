@@ -1,0 +1,80 @@
+{
+  "id": "prob-stats-ch07-sec05",
+  "title": "Comparing Estimators",
+  "chapter": 7,
+  "section": 5,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "Test everything; hold fast what is good.",
+    "reference": "1 Thessalonians 5:21",
+    "quote": "The best estimator depends on the criterion by which we judge it.",
+    "quoteAuthor": "Erich L. Lehmann"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "When multiple estimators exist, how do we choose the best one?"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Criteria for Comparison"
+    },
+    {
+      "type": "paragraph",
+      "text": "We compare estimators based on:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Bias:** Is $\\E[\\hat{\\theta}] = \\theta$?",
+        "**Variance:** How spread out are the estimates?",
+        "**MSE:** Overall accuracy combining bias and variance",
+        "**Consistency:** Does it converge to truth as $n \\to \\infty$?",
+        "**Efficiency:** How does variance compare to the minimum possible?"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Cramér-Rao Lower Bound"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Cramér-Rao Inequality",
+      "content": "For an unbiased estimator $\\hat{\\theta}$ of $\\theta$:\n\\[\n \\Var(\\hat{\\theta}) \\geq \\frac{1}{I(\\theta)}\n\\]\nwhere $I(\\theta) = \\E\\left[\\left(\\frac{\\partial}{\\partial\\theta} \\ln f(X; \\theta)\\right)^2\\right]$ \nis the **Fisher information**.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "An estimator achieving this bound is called **efficient**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Relative Efficiency"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Relative Efficiency",
+      "content": "The **relative efficiency** of estimator \n$\\hat{\\theta}_1$ compared to $\\hat{\\theta}_2$ is:\n\\[\n \\text{RE}(\\hat{\\theta}_1, \\hat{\\theta}_2) = \\frac{\\Var(\\hat{\\theta}_2)}{\\Var(\\hat{\\theta}_1)}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "If $\\text{RE} > 1$, then $\\hat{\\theta}_1$ is more efficient."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Sample Mean vs. Sample Median",
+      "problem": "For normal data, the sample mean is more efficient than the sample \nmedian for estimating $\\mu$:\n\\[\n \\text{RE}(\\xbar, \\text{median}) = \\frac{\\pi}{2} \\approx 1.57\n\\]\nThe mean is about 57\\% more efficient.",
+      "solution": ""
+    }
+  ]
+}

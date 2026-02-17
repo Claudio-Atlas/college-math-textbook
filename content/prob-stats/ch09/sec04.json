@@ -1,0 +1,111 @@
+{
+  "id": "prob-stats-ch09-sec04",
+  "title": "Type I and Type II Errors, Power",
+  "chapter": 9,
+  "section": 4,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "Better is the poor who walks in his integrity than one who is perverse in speech and is a fool.",
+    "reference": "Proverbs 19:1",
+    "quote": "Every test of significance involves a choice between two kinds of error.",
+    "quoteAuthor": "Jerzy Neyman \\& Egon Pearson"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Every hypothesis test risks two kinds of errors. Understanding them \nis essential for responsible statistical practice."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Types of Errors"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Type I and Type II Errors",
+      "content": "- **Type I Error**: Rejecting $H_0$ when \n it is true (false positive). $P(\\text{Type I}) = \\alpha$.\n\n- **Type II Error**: Failing to reject \n $H_0$ when it is false (false negative). $P(\\text{Type II}) = \\beta$."
+    },
+    {
+      "type": "table",
+      "headers": [
+        "",
+        "$H_0$ True",
+        "$H_0$ False"
+      ],
+      "rows": [
+        [
+          "Reject $H_0$",
+          "Type I Error ($\\alpha$)",
+          "Correct! (Power)"
+        ],
+        [
+          "Fail to Reject $H_0$",
+          "Correct!",
+          "Type II Error ($\\beta$)"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Power of a Test"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Power",
+      "content": "The **power** of a test is the probability of \ncorrectly rejecting $H_0$ when it is false:\n\\[\n \\text{Power} = 1 - \\beta = P(\\text{Reject } H_0 \\mid H_0 \\text{ is false})\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Factors Affecting Power"
+    },
+    {
+      "type": "paragraph",
+      "text": "Power increases with:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Larger sample size $n$",
+        "Larger true effect size $|\\mu - \\mu_0|$",
+        "Larger significance level $\\alpha$ (but this increases Type I error)",
+        "Smaller population variance $\\sigma^2$"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Choosing Between Errors"
+    },
+    {
+      "type": "paragraph",
+      "text": "We cannot minimize both errors simultaneously. The choice depends on \nconsequences:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Medical trials: Type I error (approving harmful drug) may be worse",
+        "Screening tests: Type II error (missing disease) may be worse"
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 17:15",
+      "text": "He who justifies the wicked and he \nwho condemns the righteous are both alike an abomination to the Lord."
+    }
+  ]
+}

@@ -1,0 +1,154 @@
+{
+  "id": "numerical-analysis-ch06-sec03",
+  "title": "Romberg Integration",
+  "chapter": 6,
+  "section": 3,
+  "book": "numerical-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The Euler-Maclaurin formula reveals that the composite trapezoidal error contains only even powers of $h$. This structure enables **Richardson extrapolation**, which systematically eliminates error terms to achieve remarkably high accuracy. The resulting method, **Romberg integration**, is one of the most effective techniques for integrating smooth functions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Richardson Extrapolation"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Richardson Extrapolation",
+      "content": "Suppose an approximation $A(h)$ to a quantity $A^*$ has error expansion\n\\[\nA(h) = A^* + c_p h^p + c_{p+q} h^{p+q} + c_{p+2q} h^{p+2q} + \\cdots\n\\]\nwhere $c_p \\neq 0$ and the powers form an arithmetic progression with common difference $q$. **Richardson extrapolation** combines $A(h)$ and $A(h/2)$ to eliminate the leading error term:\n$$\n\nA_1(h) = \\frac{2^p A(h/2) - A(h)}{2^p - 1}\n$$\nThe new approximation $A_1(h) = A^* + O(h^{p+q})$ has higher-order accuracy."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Richardson Extrapolation for Trapezoidal Rule",
+      "content": "Let $T(h)$ denote the composite trapezoidal rule with step size $h$. The Richardson extrapolation\n\\[\nS(h) = \\frac{4T(h/2) - T(h)}{3}\n\\]\nequals Simpson's rule with step size $h/2$, and has error $O(h^4)$ instead of $O(h^2)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "By the Euler-Maclaurin formula:\n\\[\nT(h) = I + c_2 h^2 + c_4 h^4 + O(h^6)\n\\]\n\\[\nT(h/2) = I + c_2 \\frac{h^2}{4} + c_4 \\frac{h^4}{16} + O(h^6)\n\\]\n\nComputing the extrapolation:\n$$\n\\frac{4T(h/2) - T(h)}{3} &= \\frac{4\\left(I + \\frac{c_2 h^2}{4} + \\frac{c_4 h^4}{16} + O(h^6)\\right) - \\left(I + c_2 h^2 + c_4 h^4 + O(h^6)\\right)}{3} \\\\\n&= \\frac{4I + c_2 h^2 + \\frac{c_4 h^4}{4} - I - c_2 h^2 - c_4 h^4 + O(h^6)}{3} \\\\\n&= \\frac{3I - \\frac{3c_4 h^4}{4} + O(h^6)}{3} \\\\\n&= I - \\frac{c_4 h^4}{4} + O(h^6)\n$$\n\nThe $h^2$ term has been eliminated, leaving an $O(h^4)$ error.\n\nTo verify this equals Simpson's rule: if $T(h)$ uses nodes $x_0, x_2, x_4, \\ldots$ and $T(h/2)$ uses nodes $x_0, x_1, x_2, x_3, \\ldots$, the combination $\\frac{4T(h/2) - T(h)}{3}$ produces exactly the Simpson's rule weights."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Romberg Table"
+    },
+    {
+      "type": "paragraph",
+      "text": "Romberg integration applies Richardson extrapolation repeatedly, building a triangular table of successively more accurate approximations."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.2",
+      "number": "6.2",
+      "title": "Romberg Table",
+      "content": "Define the Romberg table entries $R_{k,j}$ for $k = 1, 2, 3, \\ldots$ and $j = 1, 2, \\ldots, k$ by:\n$$\n\nR_{k,1} = T_{2^{k-1}} = \\text{Composite trapezoidal with } 2^{k-1} \\text{ subintervals}\n$$\n$$\n\nR_{k,j} = R_{k,j-1} + \\frac{R_{k,j-1} - R_{k-1,j-1}}{4^{j-1} - 1} \\quad \\text{for } j \\geq 2\n$$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Romberg Convergence",
+      "content": "For sufficiently smooth $f$:\n\n- $R_{k,1}$ is the trapezoidal rule with error $O(h_k^2)$\n\n- $R_{k,2}$ is Simpson's rule with error $O(h_k^4)$\n\n- $R_{k,3}$ is Boole's rule with error $O(h_k^6)$\n\n- $R_{k,j}$ has error $O(h_k^{2j})$\nwhere $h_k = (b-a)/2^{k-1}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The first column has error expansion $R_{k,1} = I + c_2 h_k^2 + c_4 h_k^4 + \\cdots$\n\nThe extrapolation formula eq:romberg-recur for $j = 2$ (with $4^1 - 1 = 3$):\n\\[\nR_{k,2} = R_{k,1} + \\frac{R_{k,1} - R_{k-1,1}}{3} = \\frac{4R_{k,1} - R_{k-1,1}}{3}\n\\]\neliminates the $h^2$ term, giving $R_{k,2} = I + d_4 h_k^4 + d_6 h_k^6 + \\cdots$\n\nFor $j = 3$ (with $4^2 - 1 = 15$):\n\\[\nR_{k,3} = R_{k,2} + \\frac{R_{k,2} - R_{k-1,2}}{15}\n\\]\neliminates the $h^4$ term, giving $R_{k,3} = I + e_6 h_k^6 + \\cdots$\n\nIn general, column $j$ has leading error term $O(h^{2j})$."
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Constructing a Romberg Table",
+      "problem": "Build a Romberg table for $\\int_0^1 e^{-x^2}\\,dx$.",
+      "solution": "First compute the trapezoidal approximations:\n$$\nR_{1,1} &= T_1 = \\frac{1}{2}[f(0) + f(1)] = \\frac{1 + e^{-1}}{2} = 0.683940 \\\\\nR_{2,1} &= T_2 = \\frac{1}{4}[f(0) + 2f(0.5) + f(1)] = 0.731441 \\\\\nR_{3,1} &= T_4 = 0.742984 \\\\\nR_{4,1} &= T_8 = 0.745865\n$$\n\nApply the extrapolation formula eq:romberg-recur:\n$$\nR_{2,2} &= R_{2,1} + \\frac{R_{2,1} - R_{1,1}}{3} = 0.731441 + \\frac{0.731441 - 0.683940}{3} = 0.747274 \\\\\nR_{3,2} &= R_{3,1} + \\frac{R_{3,1} - R_{2,1}}{3} = 0.742984 + \\frac{0.042984 - 0.731441}{3} = 0.746832 \\\\\nR_{4,2} &= 0.745865 + \\frac{0.745865 - 0.742984}{3} = 0.746825\n$$\n\nContinue to column 3 (with $4^2 - 1 = 15$):\n$$\nR_{3,3} &= R_{3,2} + \\frac{R_{3,2} - R_{2,2}}{15} = 0.746832 + \\frac{0.746832 - 0.747274}{15} = 0.746803 \\\\\nR_{4,3} &= R_{4,2} + \\frac{R_{4,2} - R_{3,2}}{15} = 0.746825 + \\frac{0.746825 - 0.746832}{15} = 0.746824\n$$\n\nAnd column 4 (with $4^3 - 1 = 63$):\n\\[\nR_{4,4} = R_{4,3} + \\frac{R_{4,3} - R_{3,3}}{63} = 0.746824 + \\frac{0.746824 - 0.746803}{63} = 0.746824\n\\]\n\nThe complete table (to 6 decimal places):\n\n| $k$ | $R_{k,1}$ | $R_{k,2}$ | $R_{k,3}$ | $R_{k,4}$ |\n| $O(h^2)$ | $O(h^4)$ | $O(h^6)$ | $O(h^8)$ |\n| 1 | 0.683940 |\n| 2 | 0.731441 | 0.747274 |\n| 3 | 0.742984 | 0.746832 | 0.746803 |\n| 4 | 0.745865 | 0.746825 | 0.746824 | 0.746824 |\n\nThe exact value is $0.746824...$, achieved with only 9 function evaluations ($T_8$ requires 9 nodes)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Efficient Computation of Trapezoidal Values"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.3",
+      "number": "6.3",
+      "title": "Trapezoidal Recurrence",
+      "content": "If $R_{k,1} = T_{2^{k-1}}$ is known, then $R_{k+1,1} = T_{2^k}$ can be computed as:\n$$\n\nR_{k+1,1} = \\frac{1}{2}R_{k,1} + h_{k+1} \\sum_{i=1}^{2^{k-1}} f(a + (2i-1)h_{k+1})\n$$\nwhere $h_{k+1} = (b-a)/2^k$. This requires only $2^{k-1}$ new function evaluations.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The new nodes in $T_{2^k}$ are the midpoints of the subintervals used in $T_{2^{k-1}}$. These are exactly $a + (2i-1)h_{k+1}$ for $i = 1, 2, \\ldots, 2^{k-1}$.\n\nWriting out $T_{2^k}$ and grouping terms:\n$$\nT_{2^k} &= h_{k+1}\\left[\\frac{f(a)}{2} + \\sum_{j=1}^{2^k-1} f(a + jh_{k+1}) + \\frac{f(b)}{2}\\right] \\\\\n&= h_{k+1}\\left[\\frac{f(a)}{2} + \\sum_{\\text{even } j} f(a + jh_{k+1}) + \\sum_{\\text{odd } j} f(a + jh_{k+1}) + \\frac{f(b)}{2}\\right]\n$$\n\nThe even-indexed terms correspond to the old nodes (scaled by $h_{k+1} = h_k/2$), contributing $\\frac{1}{2}T_{2^{k-1}}$. The odd-indexed terms are the new evaluations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Romberg Algorithm"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Convergence Analysis"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.4",
+      "number": "6.4",
+      "title": "Romberg Error Estimate",
+      "content": "If $f \\in C^{2m}[a,b]$, then\n\\[\n\\left|I - R_{k,m}\\right| \\leq C h_k^{2m}\n\\]\nwhere $C$ depends on $f^{(2m)}$ and the interval, and $h_k = (b-a)/2^{k-1}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Romberg vs. Composite Simpson's",
+      "problem": "Compare the accuracy of Romberg integration and composite Simpson's rule for $\\int_0^1 \\frac{4}{1+x^2}\\,dx = \\pi$.",
+      "solution": "Using 9 function evaluations ($n = 8$ for composite Simpson's, $k = 4$ for Romberg):\n\n**Composite Simpson's:** $S_8 = 3.14159265...$, error $\\approx 3 \\times 10^{-9}$\n\n**Romberg:** $R_{4,4} = 3.14159265358979...$, error $\\approx 3 \\times 10^{-15}$\n\nRomberg achieves 6 more decimal places with the same function evaluations, by exploiting the structure of the error expansion."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "When Romberg Works Best"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.5",
+      "number": "6.5",
+      "title": "Conditions for Romberg Effectiveness",
+      "content": "Romberg integration is most effective when:\n\n1. $f$ is smooth (has many continuous derivatives)\n\n2. $f$ has no singularities in or near $[a, b]$\n\n3. The derivatives of $f$ do not grow too rapidly",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.3",
+      "number": "6.3",
+      "title": "Romberg Failure",
+      "problem": "Apply Romberg integration to $\\int_0^1 \\sqrt{x}\\,dx = \\frac{2}{3}$.",
+      "solution": "The function $f(x) = \\sqrt{x}$ has $f'(x) = \\frac{1}{2\\sqrt{x}}$, which is unbounded at $x = 0$. The Euler-Maclaurin expansion does not apply.\n\n| $k$ | $R_{k,1}$ | $R_{k,2}$ | $R_{k,3}$ | $R_{k,4}$ |\n| 1 | 0.500000 |\n| 2 | 0.603553 | 0.638071 |\n| 3 | 0.643283 | 0.656526 | 0.657758 |\n| 4 | 0.659754 | 0.665244 | 0.665826 | 0.665913 |\n\nAfter 4 levels (17 function evaluations), the error is still about $0.0007$. The high-order convergence promised by Romberg is not achieved because the error expansion involves fractional powers of $h$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Historical Note"
+    },
+    {
+      "type": "historical",
+      "id": "historical-6.3",
+      "number": null,
+      "title": "Werner Romberg (1909--2003)",
+      "content": "Werner Romberg, a German-Norwegian mathematician, published his extrapolation method in 1955 while working at the Norwegian Defense Research Establishment. The method elegantly combines two classical ideas: the trapezoidal rule (known since antiquity) and Richardson extrapolation (developed by Lewis Fry Richardson around 1910). Romberg's insight was to apply extrapolation systematically, creating a simple algorithm that achieves remarkably high accuracy for smooth integrands."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ]
+}

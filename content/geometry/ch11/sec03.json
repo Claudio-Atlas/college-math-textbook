@@ -1,0 +1,254 @@
+{
+  "id": "geometry-ch11-sec03",
+  "title": "Spheres",
+  "chapter": 11,
+  "section": 3,
+  "book": "geometry",
+  "epigraph": {
+    "text": "He has inscribed a circle on the face of the waters at the boundary between light and darkness.",
+    "reference": "Job 26:10"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The sphere is perhaps the most perfect of all solid figures. Every \npoint on its surface is equidistant from its center—a three-dimensional \nanalog of the circle's perfect symmetry. We find spheres throughout \ncreation: the sun and moon, water droplets, soap bubbles, and the \nearth itself. This ubiquity arises from a remarkable property: the \nsphere encloses the maximum volume for a given surface area, making \nit nature's preferred shape for minimizing surface tension and \ngravitational energy."
+    },
+    {
+      "type": "paragraph",
+      "text": "The formulas for the surface area and volume of a sphere were \ndiscovered by Archimedes of Syracuse (287–212 BCE), who considered \nthese discoveries among his greatest achievements. According to \nlegend, he requested that a sphere inscribed in a cylinder be \nengraved on his tombstone, commemorating his proof that the sphere \nhas exactly two-thirds the volume and surface area of its \ncircumscribing cylinder."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition and Basic Concepts"
+    },
+    {
+      "type": "definition",
+      "id": "definition-11.1",
+      "number": "11.1",
+      "title": "Sphere",
+      "content": "A **sphere** is the set of all points in \nthree-dimensional space that are equidistant from a fixed point \ncalled the **center**. The common \ndistance from the center to any point on the sphere is called \nthe **radius**."
+    },
+    {
+      "type": "paragraph",
+      "text": "Just as a circle divides a plane into interior and exterior regions, \na sphere divides space into an interior (all points closer to the \ncenter than $r$), the sphere itself (all points exactly distance $r$ \nfrom the center), and an exterior (all points farther than $r$)."
+    },
+    {
+      "type": "definition",
+      "id": "definition-11.2",
+      "number": "11.2",
+      "title": "Parts of a Sphere",
+      "content": "Let $S$ be a sphere with center $O$ and radius $r$.\n\n- A **diameter** is a chord \n that passes through the center. Its length is $d = 2r$.\n\n- A **great circle** is the \n intersection of the sphere with a plane passing through the \n center. Every great circle has radius $r$ (the same as the \n sphere) and divides the sphere into two equal hemispheres.\n\n- A **hemisphere** is half of a \n sphere, cut by a great circle.\n\n- A **small circle** is the intersection of the \n sphere with a plane that does *not* pass through the \n center. Small circles have radius less than $r$."
+    },
+    {
+      "type": "example",
+      "id": "example-11.1",
+      "number": "11.1",
+      "title": "Finding small circle radius",
+      "problem": "A sphere has radius 10. A plane intersects the sphere 6 units \nfrom the center. Find the radius of the resulting small circle.\n\ncenter\ntikzpicture[scale=0.5]\n % Cross-section view\n (0,0) circle (3);\n (-2.4,1.8) – (2.4,1.8);\n ll[AtlasTeal] (0,0) circle (3pt);\n at (0,0) {$O$};\n \n % Distance to plane\n (0,0) – (0,1.8);\n at (0,0.9) {6};\n \n % Radius of sphere\n (0,0) – (2.4,1.8);\n at (1.2,0.9) {10};\n \n % Radius of small circle\n (0,2.2) – (2.4,2.2);\n at (1.2,2.2) {$r$};\ntikzpicture\ncenter",
+      "solution": "The cross-section shows a right triangle with the sphere's radius \nas hypotenuse, the distance from center to plane as one leg, and \nthe small circle's radius as the other leg.\n\nUsing the Pythagorean Theorem:\n\\[\nr^2 + 6^2 = 10^2\n\\]\n\\[\nr^2 = 100 - 36 = 64\n\\]\n\\[\nr = 8\n\\]\n\nThe small circle has radius 8."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Surface Area of a Sphere"
+    },
+    {
+      "type": "paragraph",
+      "text": "Archimedes proved that the surface area of a sphere equals the \nlateral surface area of its circumscribing cylinder—the cylinder \nwith the same radius and height equal to the diameter of the sphere."
+    },
+    {
+      "type": "paragraph",
+      "text": "The lateral area of the cylinder is $2\\pi r \\cdot 2r = 4\\pi r^2$. \nArchimedes showed this equals the sphere's surface area."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-11.1",
+      "number": "11.1",
+      "title": "Surface Area of a Sphere",
+      "content": "The surface area of a sphere with radius $r$ is:\n\\[\nS = 4\\pi r^2\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-11.2",
+      "number": "11.2",
+      "title": "Surface area of a sphere",
+      "problem": "Find the surface area of a sphere with radius 7 cm.",
+      "solution": "\\[\nS = 4\\pi r^2 = 4\\pi(49) = 196\\pi \\text{ cm}^2 \\approx 615.8 \\text{ cm}^2\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-11.3",
+      "number": "11.3",
+      "title": "Finding radius from surface area",
+      "problem": "A basketball has a surface area of approximately $1810$ cm$^2$. \nFind its radius.",
+      "solution": "Using $S = 4\\pi r^2$:\n$$\n1810 &= 4\\pi r^2 \\\\\nr^2 &= \\frac{1810}{4\\pi} \\approx 144.03 \\\\\nr &\\approx 12 \\text{ cm}\n$$\n\nThe basketball has radius approximately 12 cm (diameter 24 cm, \nor about 9.4 inches)."
+    },
+    {
+      "type": "example",
+      "id": "example-11.4",
+      "number": "11.4",
+      "title": "Surface area of Earth",
+      "problem": "The Earth's radius is approximately 6371 km. Estimate Earth's \nsurface area.",
+      "solution": "\\[\nS = 4\\pi r^2 = 4\\pi(6371)^2 = 4\\pi(40{,}589{,}641) \\approx 510{,}000{,}000 \\text{ km}^2\n\\]\n\nEarth's surface area is approximately 510 million km$^2$."
+    },
+    {
+      "type": "example",
+      "id": "example-11.5",
+      "number": "11.5",
+      "title": "Surface area of a hemisphere",
+      "problem": "Find the total surface area of a hemisphere (half-sphere) with \nradius 5, including the circular base.",
+      "solution": "The hemisphere consists of:\n\n- Half of the sphere's curved surface: $\\frac{1}{2}(4\\pi r^2) = 2\\pi r^2$\n\n- The circular base: $\\pi r^2$\n\nTotal surface area:\n\\[\nS = 2\\pi r^2 + \\pi r^2 = 3\\pi r^2 = 3\\pi(25) = 75\\pi \\approx 235.6\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Volume of a Sphere"
+    },
+    {
+      "type": "paragraph",
+      "text": "Archimedes proved that the volume of a sphere is exactly two-thirds \nthe volume of its circumscribing cylinder. The cylinder has volume \n$\\pi r^2 \\cdot 2r = 2\\pi r^3$, so the sphere has volume \n$\\frac{2}{3}(2\\pi r^3) = \\frac{4}{3}\\pi r^3$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-11.2",
+      "number": "11.2",
+      "title": "Volume of a Sphere",
+      "content": "The volume of a sphere with radius $r$ is:\n\\[\nV = \\frac{4}{3}\\pi r^3\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Archimedes proved this using the \"method of exhaustion\"—a \nprecursor to integral calculus. He showed that the sphere can be \napproximated by stacking thin circular disks of varying radii."
+    },
+    {
+      "type": "paragraph",
+      "text": "{3}$ \n(think ``four-thirds'') and $r^3$ (cubed, since we're measuring \nthree-dimensional space).}"
+    },
+    {
+      "type": "example",
+      "id": "example-11.6",
+      "number": "11.6",
+      "title": "Volume of a sphere",
+      "problem": "Find the volume of a sphere with radius 6.",
+      "solution": "\\[\nV = \\frac{4}{3}\\pi r^3 = \\frac{4}{3}\\pi(216) = \\frac{864\\pi}{3} = 288\\pi \\approx 904.8\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-11.7",
+      "number": "11.7",
+      "title": "Finding radius from volume",
+      "problem": "A spherical balloon has a volume of $36\\pi$ cubic inches. Find \nits radius.",
+      "solution": "Using $V = \\frac{4}{3}\\pi r^3$:\n$$\n36\\pi &= \\frac{4}{3}\\pi r^3 \\\\\n36 &= \\frac{4}{3}r^3 \\\\\nr^3 &= 36 \\cdot \\frac{3}{4} = 27 \\\\\nr &= 3 \\text{ inches}\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-11.8",
+      "number": "11.8",
+      "title": "Volume of Earth",
+      "problem": "Estimate the volume of Earth (radius $\\approx 6371$ km).",
+      "solution": "\\[\nV = \\frac{4}{3}\\pi r^3 = \\frac{4}{3}\\pi(6371)^3 \\approx \\frac{4}{3}\\pi(2.586 \\times 10^{11})\n\\]\n\\[\nV \\approx 1.083 \\times 10^{12} \\text{ km}^3\n\\]\n\nEarth's volume is approximately 1.083 trillion cubic kilometers."
+    },
+    {
+      "type": "example",
+      "id": "example-11.9",
+      "number": "11.9",
+      "title": "Volume of a hemisphere",
+      "problem": "A hemispherical bowl has radius 12 cm. How much water can it hold?",
+      "solution": "The volume of a hemisphere is half the volume of a full sphere:\n\\[\nV = \\frac{1}{2} \\cdot \\frac{4}{3}\\pi r^3 = \\frac{2}{3}\\pi r^3 = \\frac{2}{3}\\pi(1728) = 1152\\pi \\approx 3619 \\text{ cm}^3\n\\]\n\nThis equals approximately 3.619 liters."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Archimedes' Theorem: Sphere and Cylinder"
+    },
+    {
+      "type": "paragraph",
+      "text": "Archimedes considered his discovery about the sphere and its \ncircumscribing cylinder to be his greatest achievement. The \nrelationship is beautifully simple:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-11.3",
+      "number": "11.3",
+      "title": "Archimedes' Theorem",
+      "content": "For a sphere inscribed in a cylinder (where the cylinder has the \nsame radius as the sphere and height equal to the sphere's diameter):\n\n1. $\\displaystyle \\frac{V_{\\text{sphere}}}{V_{\\text{cylinder}}} = \\frac{2}{3}$\n\n2. $\\displaystyle \\frac{S_{\\text{sphere}}}{S_{\\text{cylinder (lateral)}}} = 1$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let the sphere have radius $r$. The cylinder has radius $r$ and \nheight $2r$.\n\n**Volume comparison:**\n$$\nV_{\\text{sphere}} &= \\frac{4}{3}\\pi r^3 \\\\\nV_{\\text{cylinder}} &= \\pi r^2(2r) = 2\\pi r^3 \\\\\n\\frac{V_{\\text{sphere}}}{V_{\\text{cylinder}}} &= \\frac{\\frac{4}{3}\\pi r^3}{2\\pi r^3} = \\frac{4/3}{2} = \\frac{2}{3}\n$$\n\n**Surface area comparison:**\n$$\nS_{\\text{sphere}} &= 4\\pi r^2 \\\\\nS_{\\text{cylinder (lateral)}} &= 2\\pi r(2r) = 4\\pi r^2 \\\\\n\\frac{S_{\\text{sphere}}}{S_{\\text{cylinder (lateral)}}} &= \\frac{4\\pi r^2}{4\\pi r^2} = 1 \\qedhere\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-11.10",
+      "number": "11.10",
+      "title": "Verifying Archimedes' theorem",
+      "problem": "A sphere with radius 5 is inscribed in a cylinder. Find the \nvolumes of both and verify that their ratio is $\\frac{2}{3}$.",
+      "solution": "The sphere has volume:\n\\[\nV_{\\text{sphere}} = \\frac{4}{3}\\pi(125) = \\frac{500\\pi}{3}\n\\]\n\nThe cylinder has radius 5 and height 10, so:\n\\[\nV_{\\text{cylinder}} = \\pi(25)(10) = 250\\pi\n\\]\n\nThe ratio is:\n\\[\n\\frac{V_{\\text{sphere}}}{V_{\\text{cylinder}}} = \\frac{500\\pi/3}{250\\pi} = \\frac{500}{750} = \\frac{2}{3} \\checkmark\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Spherical Zones and Caps"
+    },
+    {
+      "type": "paragraph",
+      "text": "When a plane cuts through a sphere, it creates interesting regions:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-11.3",
+      "number": "11.3",
+      "title": "Spherical Cap and Zone",
+      "content": "A **spherical cap** (or **dome**) \nis the portion of a sphere cut off by a single plane.\n\nA **spherical zone** is the portion \nof a sphere between two parallel planes."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-11.4",
+      "number": "11.4",
+      "title": "Surface Area of a Spherical Zone",
+      "content": "The surface area of a spherical zone (the curved surface between \ntwo parallel planes) depends only on the sphere's radius $r$ and \nthe height $h$ of the zone (the distance between the planes):\n\\[\nS_{\\text{zone}} = 2\\pi rh\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This remarkable result means that zones of equal height on a \nsphere have equal surface areas, regardless of where they are \nlocated on the sphere!"
+    },
+    {
+      "type": "example",
+      "id": "example-11.11",
+      "number": "11.11",
+      "title": "Area of a spherical cap",
+      "problem": "A sphere has radius 10. A plane cuts through the sphere 3 units \nfrom the top. Find the surface area of the spherical cap.",
+      "solution": "The height of the cap is $h = 3$.\n\nUsing the zone formula:\n\\[\nS = 2\\pi rh = 2\\pi(10)(3) = 60\\pi\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:22",
+      "text": "It is he who sits above the circle \nof the earth, and its inhabitants are like grasshoppers."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 104:2",
+      "text": "[The Lord] covering yourself with \nlight as with a garment, stretching out the heavens like a tent."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 38:5",
+      "text": "Who determined its measurements—surely \nyou know! Or who stretched the line upon it?"
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:11",
+      "text": "He has made everything beautiful \nin its time. Also, he has put eternity into man's heart."
+    }
+  ]
+}

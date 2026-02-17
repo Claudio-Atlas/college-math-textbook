@@ -1,0 +1,130 @@
+{
+  "id": "linear-algebra-ch03-sec04",
+  "title": "Geometric Interpretation",
+  "chapter": 3,
+  "section": 4,
+  "book": "linear-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "{When I look at your heavens, the work of your fingers, the moon and the stars, which you have set in place, what is man that you are mindful of him?}{Psalm 8:3–4}\n {Geometry is the archetype of the beauty of the world.}{— Johannes Kepler}"
+    },
+    {
+      "type": "paragraph",
+      "text": "The determinant has a beautiful geometric meaning: it measures how a \nlinear transformation changes area (in 2D) or volume (in 3D)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Area and the $2 \\times 2$ Determinant"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider a matrix $A ="
+    },
+    {
+      "type": "paragraph",
+      "text": "$ \nas a transformation that maps the unit square to a parallelogram."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "Determinant as Area Scale Factor",
+      "content": "If $A$ is a $2 \\times 2$ matrix and $S$ is any region in $\\R^2$, then \nthe area of $A(S)$ (the image of $S$ under the transformation) is:\n\\[\n\\text{Area}(A(S)) = |\\det(A)| \\cdot \\text{Area}(S)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Area calculation",
+      "problem": "The matrix $A = \\begin{bmatrix} 3 & 1 \\\\ 2 & 4 \\end{bmatrix}$ has \n$\\det(A) = 12 - 2 = 10$. Thus $A$ multiplies all areas by a factor of \n$10$. A unit circle of area $\\pi$ is transformed into an ellipse of \narea $10\\pi$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Sign of the Determinant"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **sign** of the determinant indicates orientation:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$\\det(A) > 0$: The transformation preserves orientation \n (counterclockwise remains counterclockwise).",
+        "$\\det(A) < 0$: The transformation reverses orientation \n (a reflection is involved).",
+        "$\\det(A) = 0$: The transformation collapses space to a \n lower dimension."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Orientation",
+      "problem": "The rotation matrix \n$R_{90°} = \\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix}$ has \n$\\det(R) = 1$, preserving orientation and area.\n\nThe reflection $F = \\begin{bmatrix} 1 & 0 \\\\ 0 & -1 \\end{bmatrix}$ \nhas $\\det(F) = -1$, reversing orientation but preserving area.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Volume and the $3 \\times 3$ Determinant"
+    },
+    {
+      "type": "paragraph",
+      "text": "In three dimensions, the determinant measures volume:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.2",
+      "number": "3.2",
+      "title": "Determinant as Volume Scale Factor",
+      "content": "If $A$ is a $3 \\times 3$ matrix with columns $\\vect{a}_1$, \n$\\vect{a}_2$, $\\vect{a}_3$, then $|\\det(A)|$ equals the volume of \nthe parallelepiped (3D parallelogram) spanned by these vectors.\n\nFor any region $V$ in $\\R^3$:\n\\[\n\\text{Volume}(A(V)) = |\\det(A)| \\cdot \\text{Volume}(V)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-3.3",
+      "number": "3.3",
+      "title": "Volume of a parallelepiped",
+      "problem": "Find the volume of the parallelepiped with edges \n$\\vect{a} = \\begin{bmatrix} 1 \\\\ 0 \\\\ 1 \\end{bmatrix}$, \n$\\vect{b} = \\begin{bmatrix} 0 \\\\ 2 \\\\ 0 \\end{bmatrix}$, \n$\\vect{c} = \\begin{bmatrix} 1 \\\\ 1 \\\\ 2 \\end{bmatrix}$.",
+      "solution": "\\[\n\\text{Volume} = \\left|\\det\\begin{bmatrix} 1 & 0 & 1 \\\\ 0 & 2 & 1 \\\\ 1 & 0 & 2 \\end{bmatrix}\\right|\n= |1(4-0) - 0 + 1(0-2)| = |4 - 2| = 2\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Cross Product and Determinants"
+    },
+    {
+      "type": "paragraph",
+      "text": "In $\\R^3$, the **cross product** of two vectors can be computed \nusing a determinant:\n\\[\nu v ="
+    },
+    {
+      "type": "paragraph",
+      "text": "This gives a vector perpendicular to both $\\vect{u}$ and $\\vect{v}$, \nwith magnitude equal to the area of the parallelogram they span."
+    },
+    {
+      "type": "example",
+      "id": "example-3.4",
+      "number": "3.4",
+      "title": "Cross product",
+      "problem": "For $\\vect{u} = \\begin{bmatrix} 1 \\\\ 2 \\\\ 3 \\end{bmatrix}$ and \n$\\vect{v} = \\begin{bmatrix} 4 \\\\ 5 \\\\ 6 \\end{bmatrix}$:\n\\[\n\\vect{u} \\times \\vect{v} = \n\\det\\begin{bmatrix} \\vect{i} & \\vect{j} & \\vect{k} \\\\ 1 & 2 & 3 \\\\ 4 & 5 & 6 \\end{bmatrix}\n= (12-15)\\vect{i} - (6-12)\\vect{j} + (5-8)\\vect{k}\n= \\begin{bmatrix} -3 \\\\ 6 \\\\ -3 \\end{bmatrix}\n\\]",
+      "solution": ""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:12",
+      "text": "Who has measured the waters in the \nhollow of his hand and marked off the heavens with a span?"
+    },
+    {
+      "type": "quote",
+      "author": "Josiah Willard Gibbs (1839--1903)",
+      "text": "The whole is simpler \nthan the sum of its parts."
+    }
+  ]
+}

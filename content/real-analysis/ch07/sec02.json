@@ -1,0 +1,87 @@
+{
+  "id": "real-analysis-ch07-sec02",
+  "title": "Integrability Criteria",
+  "chapter": 7,
+  "section": 2,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Classes of Integrable Functions"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Continuous Functions Are Integrable",
+      "content": "If $f$ is continuous on $[a, b]$, then $f$ is Riemann integrable.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Since $f$ is continuous on the compact set $[a, b]$, it is uniformly \ncontinuous. Given $\\varepsilon > 0$, choose $\\delta > 0$ such that \n$|x - y| < \\delta$ implies $|f(x) - f(y)| < \\varepsilon/(b - a)$.\n\nTake any partition $P$ with $\\|P\\| < \\delta$. On each subinterval \n$[x_{i-1}, x_i]$, we have $M_i - m_i < \\varepsilon/(b-a)$.\n\nThus $U(f, P) - L(f, P) = \\sum (M_i - m_i)(x_i - x_{i-1}) < \\varepsilon$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "Monotone Functions Are Integrable",
+      "content": "If $f$ is monotone on $[a, b]$, then $f$ is Riemann integrable.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Assume $f$ is increasing. For the uniform partition with $n$ subintervals, \n$M_i = f(x_i)$ and $m_i = f(x_{i-1})$. Then:\n\\[\nU(f, P) - L(f, P) = \\frac{b-a}{n}\\sum_{i=1}^n (f(x_i) - f(x_{i-1})) = \\frac{(b-a)(f(b) - f(a))}{n} \\to 0.\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.3",
+      "number": "7.3",
+      "title": "Bounded Functions with Finitely Many Discontinuities",
+      "content": "If $f$ is bounded on $[a, b]$ and continuous except at finitely many points, \nthen $f$ is Riemann integrable.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of the Integral"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.4",
+      "number": "7.4",
+      "title": "Linearity of the Integral",
+      "content": "If $f$ and $g$ are integrable on $[a, b]$, then:\n\n1. $\\int_a^b (f + g) = \\int_a^b f + \\int_a^b g$\n\n2. $\\int_a^b cf = c\\int_a^b f$ for any constant $c$",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.5",
+      "number": "7.5",
+      "title": "Order Properties",
+      "content": "If $f$ and $g$ are integrable on $[a, b]$:\n\n1. If $f(x) \\geq 0$ for all $x$, then $\\int_a^b f \\geq 0$.\n\n2. If $f(x) \\leq g(x)$ for all $x$, then $\\int_a^b f \\leq \\int_a^b g$.\n\n3. $\\left|\\int_a^b f\\right| \\leq \\int_a^b |f|$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.6",
+      "number": "7.6",
+      "title": "Additivity over Intervals",
+      "content": "If $f$ is integrable on $[a, b]$ and $a < c < b$, then\n\\[\n\\int_a^b f = \\int_a^c f + \\int_c^b f.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.7",
+      "number": "7.7",
+      "title": "Mean Value Theorem for Integrals",
+      "content": "If $f$ is continuous on $[a, b]$, there exists $c \\in [a, b]$ such that\n\\[\n\\int_a^b f = f(c)(b - a).\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "By EVT, $f$ attains its min $m$ and max $M$ on $[a, b]$. Then \n$m(b-a) \\leq \\int_a^b f \\leq M(b-a)$. So $\\frac{1}{b-a}\\int_a^b f$ is \nbetween $m$ and $M$. By IVT, $f(c)$ equals this value for some $c$."
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "id": "real-analysis-ch01-sec03",
+  "title": "The Completeness Axiom",
+  "chapter": 1,
+  "section": 3,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The field and order axioms are satisfied by both $\\mathbb{Q}$ and \n$\\mathbb{R}$. What distinguishes the real numbers from the rationals \nis the *completeness axiom*—the property that makes calculus work."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Upper Bounds and Suprema"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.1",
+      "number": "1.1",
+      "title": "Bounded Sets",
+      "content": "Let $S \\subseteq \\mathbb{R}$ be a nonempty set.\n\n1. An element $u \\in \\mathbb{R}$ is an **upper bound** \nfor $S$ if $s \\leq u$ for all $s \\in S$. We say $S$ is **bounded above**.\n\n2. An element $\\ell \\in \\mathbb{R}$ is a **lower bound** \nfor $S$ if $\\ell \\leq s$ for all $s \\in S$. We say $S$ is **bounded below**.\n\n3. $S$ is **bounded** if it is both bounded above and \nbounded below."
+    },
+    {
+      "type": "example",
+      "id": "example-1.1",
+      "number": "1.1",
+      "title": "Bounded Sets",
+      "problem": "Identify upper and lower bounds for the following sets:\n\n1. $S = (0, 1)$\n\n2. $T = \\{1/n : n \\in \\mathbb{N}\\}$\n\n3. $U = \\{r \\in \\mathbb{Q} : r^2 < 2\\}$",
+      "solution": "(a) Any number $u \\geq 1$ is an upper bound; any $\\ell \\leq 0$ is a lower bound.\n\n(b) The set $T = \\{1, 1/2, 1/3, \\ldots\\}$ has upper bounds $u \\geq 1$ and \nlower bounds $\\ell \\leq 0$.\n\n(c) This set of rationals is bounded above by $2$ (since if $r^2 < 2$ then \n$|r| < 2$) and bounded below by $-2$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.2",
+      "number": "1.2",
+      "title": "Supremum and Infimum",
+      "content": "Let $S \\subseteq \\mathbb{R}$ be nonempty.\n\n1. The **supremum** (or **least upper bound**) \nof $S$, denoted $\\sup S$, is a number $\\alpha$ such that:\nenumerate[label=()]\n\n2. $\\alpha$ is an upper bound for $S$: $s \\leq \\alpha$ for all $s \\in S$.\n\n3. $\\alpha$ is the *least* upper bound: if $u$ is any upper bound \nfor $S$, then $\\alpha \\leq u$.\n The **infimum** (or **greatest lower bound**) \nof $S$, denoted $\\inf S$, is defined analogously.\nenumerate"
+    },
+    {
+      "type": "warning",
+      "id": "warning-1.3",
+      "number": null,
+      "title": "",
+      "content": "The supremum of a set $S$ may or may not belong to $S$. For example:\n\n- $\\sup(0,1) = 1$, but $1 \\notin (0,1)$\n\n- $\\sup[0,1] = 1$, and $1 \\in [0,1]$\nWhen $\\sup S \\in S$, we call it the **maximum** of $S$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Completeness Axiom"
+    },
+    {
+      "type": "paragraph",
+      "text": "Here is the axiom that distinguishes $\\mathbb{R}$ from $\\mathbb{Q}$:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.3",
+      "number": "1.3",
+      "title": "Completeness Axiom (Least Upper Bound Property)",
+      "content": "Every nonempty subset of $\\mathbb{R}$ that is bounded above has a supremum \nin $\\mathbb{R}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "This seems almost obvious—if a set is bounded above, shouldn't there be a \n\"smallest\" bound? But the rational numbers do *not* have this property."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.1",
+      "number": "1.1",
+      "title": "$\\mathbb{Q",
+      "content": "$ Is Not Complete}\n\nThe set $S = \\{r Q : r > 0 and r^2 < 2\\}$ is bounded \nabove in $Q$ but has no least upper bound in $Q$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "First, $S$ is bounded above: if $r \\in S$, then $r^2 < 2 < 4$, so $r < 2$.\n\nNow suppose, for contradiction, that $\\alpha = \\sup S$ exists in \n$\\mathbb{Q}$. We will show that $\\alpha^2 \\neq 2$ leads to a contradiction.\n\n**Case 1:** $\\alpha^2 < 2$. We will find a rational $\\alpha' > \\alpha$ \nwith $(\\alpha')^2 < 2$, contradicting that $\\alpha$ is an upper bound.\n\nLet $\\alpha' = \\alpha + \\varepsilon$ where $\\varepsilon > 0$ is small. Then\n\\[\n(\\alpha')^2 = \\alpha^2 + 2\\alpha\\varepsilon + \\varepsilon^2 < \\alpha^2 + \\varepsilon(2\\alpha + 1)\n\\]\n(taking $\\varepsilon < 1$). Choose $\\varepsilon = \\frac{2 - \\alpha^2}{2\\alpha + 1}$. \nThen $\\varepsilon$ is rational, positive, and $(\\alpha')^2 < \\alpha^2 + (2 - \\alpha^2) = 2$.\n\n**Case 2:** $\\alpha^2 > 2$. Similarly, we find a smaller upper bound.\n\n**Case 3:** $\\alpha^2 = 2$. But we proved in Section [sec:countability] \n(or you may assume) that $\\sqrt{2}$ is irrational, so this is impossible.\n\nThus no rational $\\alpha$ can be $\\sup S$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Characterizing the Supremum"
+    },
+    {
+      "type": "paragraph",
+      "text": "The following characterization of the supremum is extremely useful:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.2",
+      "number": "1.2",
+      "title": "Supremum Characterization",
+      "content": "Let $S \\subseteq \\mathbb{R}$ be nonempty and bounded above. Then $\\alpha = \\sup S$ \nif and only if:\n\n1. $\\alpha$ is an upper bound for $S$, and\n\n2. For every $\\varepsilon > 0$, there exists $s \\in S$ such that $\\alpha - \\varepsilon < s$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$(\\Rightarrow)$ Suppose $\\alpha = \\sup S$. Condition (i) holds by definition. \nFor (ii), if there were no such $s$, then $\\alpha - \\varepsilon$ would be \nan upper bound for $S$ smaller than $\\alpha$, contradicting minimality.\n\n$(\\Leftarrow)$ Suppose (i) and (ii) hold. By (i), $\\alpha$ is an upper bound. \nIf $u < \\alpha$ were also an upper bound, choose $\\varepsilon = \\alpha - u > 0$. \nBy (ii), there exists $s \\in S$ with $s > \\alpha - \\varepsilon = u$, \ncontradicting that $u$ is an upper bound. Thus $\\alpha = \\sup S$."
+    },
+    {
+      "type": "paragraph",
+      "text": "This characterization says: $\\alpha = \\sup S$ if and only if $\\alpha$ is \nan upper bound and you can get arbitrarily close to $\\alpha$ from within $S$."
+    }
+  ]
+}

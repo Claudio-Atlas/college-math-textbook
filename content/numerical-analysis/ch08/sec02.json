@@ -1,0 +1,203 @@
+{
+  "id": "numerical-analysis-ch08-sec02",
+  "title": "Finite Difference Methods",
+  "chapter": 8,
+  "section": 2,
+  "book": "numerical-analysis",
+  "objectives": [
+    "Discretize boundary value problems using finite differences",
+    "Construct and solve the resulting tridiagonal linear systems",
+    "Analyze the truncation error and convergence of finite difference methods",
+    "Handle various boundary condition types in the discretization"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Discretization of the Domain"
+    },
+    {
+      "type": "paragraph",
+      "text": "The finite difference method replaces the continuous BVP with a discrete system of algebraic equations. We divide the domain $[a, b]$ into $N$ equal subintervals with mesh points:\n\\[\nx_i = a + ih, \\quad i = 0, 1, \\ldots, N, \\quad h = \\frac{b - a}{N}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Let $y_i$ denote the approximate solution at $x_i$. The boundary points are $x_0 = a$ and $x_N = b$; the interior points are $x_1, x_2, \\ldots, x_{N-1}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Finite Difference Approximations"
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.1",
+      "number": "8.1",
+      "title": "Central Difference Formulas",
+      "content": "The **central difference** approximations for derivatives at an interior point $x_i$ are:\n$$\ny'(x_i) &\\approx \\frac{y_{i+1} - y_{i-1}}{2h} + \\bigo{h^2} \\\\[1ex]\ny''(x_i) &\\approx \\frac{y_{i+1} - 2y_i + y_{i-1}}{h^2} + \\bigo{h^2}\n$$\nThese are derived from Taylor series and have second-order accuracy."
+    },
+    {
+      "type": "proof",
+      "content": "Expand $y(x_i \\pm h)$ in Taylor series about $x_i$:\n$$\ny_{i+1} &= y_i + hy'_i + \\frac{h^2}{2}y''_i + \\frac{h^3}{6}y'''_i + \\bigo{h^4} \\\\\ny_{i-1} &= y_i - hy'_i + \\frac{h^2}{2}y''_i - \\frac{h^3}{6}y'''_i + \\bigo{h^4}\n$$\nAdding these equations:\n\\[\ny_{i+1} + y_{i-1} = 2y_i + h^2 y''_i + \\bigo{h^4}\n\\]\nSolving for $y''_i$:\n\\[\ny''_i = \\frac{y_{i+1} - 2y_i + y_{i-1}}{h^2} + \\bigo{h^2}\n\\]\nThe truncation error is $\\bigo{h^2}$, showing second-order accuracy."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Linear Boundary Value Problems"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider the general linear BVP:\n\\[\ny'' + p(x)y' + q(x)y = r(x), \\quad y(a) = \\alpha, \\quad y(b) = \\beta\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Finite Difference Discretization",
+      "content": "Applying central differences at each interior point $x_i$ gives:\n\\[\n\\frac{y_{i+1} - 2y_i + y_{i-1}}{h^2} + p_i \\frac{y_{i+1} - y_{i-1}}{2h} + q_i y_i = r_i\n\\]\nwhere $p_i = p(x_i)$, $q_i = q(x_i)$, $r_i = r(x_i)$. Multiplying by $h^2$ and rearranging:\n\\[\n\\left(1 - \\frac{hp_i}{2}\\right)y_{i-1} + (-2 + h^2 q_i)y_i + \\left(1 + \\frac{hp_i}{2}\\right)y_{i+1} = h^2 r_i\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.2",
+      "number": "8.2",
+      "title": "Tridiagonal System",
+      "content": "The finite difference equations form a **tridiagonal system** $A\\mathbf{y} = \\mathbf{b}$:\n\\[\n\\begin{pmatrix}\nd_1 & u_1 & 0 & \\cdots & 0 \\\\\nl_2 & d_2 & u_2 & \\cdots & 0 \\\\\n0 & l_3 & d_3 & \\ddots & \\vdots \\\\\n\\vdots & \\ddots & \\ddots & \\ddots & u_{N-2} \\\\\n0 & \\cdots & 0 & l_{N-1} & d_{N-1}\n\\end{pmatrix}\n\\begin{pmatrix}\ny_1 \\\\ y_2 \\\\ y_3 \\\\ \\vdots \\\\ y_{N-1}\n\\end{pmatrix}\n=\n\\begin{pmatrix}\nb_1 \\\\ b_2 \\\\ b_3 \\\\ \\vdots \\\\ b_{N-1}\n\\end{pmatrix}\n\\]\nwhere for $i = 1, \\ldots, N-1$:\n$$\nl_i &= 1 - \\frac{hp_i}{2} \\\\\nd_i &= -2 + h^2 q_i \\\\\nu_i &= 1 + \\frac{hp_i}{2} \\\\\nb_i &= h^2 r_i - \\delta_{i,1}l_1\\alpha - \\delta_{i,N-1}u_{N-1}\\beta\n$$\nThe boundary terms $\\alpha$ and $\\beta$ modify only $b_1$ and $b_{N-1}$."
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-8.2",
+      "number": null,
+      "title": "Thomas Algorithm (Tridiagonal Solver)",
+      "content": "The tridiagonal system can be solved in $\\bigo{N}$ operations using the Thomas algorithm (LU factorization specialized for tridiagonal matrices).\nalgorithmic[1]\n Tridiagonal matrix $(l_i, d_i, u_i)$ and right-hand side $b_i$\n Solution $y_i$\n Forward elimination\n $d_1' \\gets d_1$, $b_1' \\gets b_1$\n$i = 2$ to $N-1$\n $w \\gets l_i / d_{i-1}'$\n $d_i' \\gets d_i - w \\cdot u_{i-1}$\n $b_i' \\gets b_i - w \\cdot b_{i-1}'$\n\n Back substitution\n $y_{N-1} \\gets b_{N-1}' / d_{N-1}'$\n$i = N-2$ down to $1$\n $y_i \\gets (b_i' - u_i \\cdot y_{i+1}) / d_i'$\n\n $(y_1, y_2, \\ldots, y_{N-1})$\nalgorithmic"
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Finite Differences for $y'' = y$",
+      "problem": "Solve $y'' = y$ with $y(0) = 1$, $y(1) = e$ using $N = 4$ subintervals.\n\n**Solution.** Here $p(x) = 0$, $q(x) = -1$, $r(x) = 0$, $h = 0.25$.\n\nThe difference equation at each interior point:\n\\[\n\\frac{y_{i+1} - 2y_i + y_{i-1}}{h^2} = y_i \\quad \\Rightarrow \\quad y_{i-1} - (2 + h^2)y_i + y_{i+1} = 0\n\\]\n\nWith $h^2 = 0.0625$, we have $2 + h^2 = 2.0625$.\n\nInterior points $x_1 = 0.25$, $x_2 = 0.5$, $x_3 = 0.75$:\n$$\ny_0 - 2.0625\\, y_1 + y_2 &= 0 \\\\\ny_1 - 2.0625\\, y_2 + y_3 &= 0 \\\\\ny_2 - 2.0625\\, y_3 + y_4 &= 0\n$$\n\nWith $y_0 = 1$ and $y_4 = e \\approx 2.7183$:\n\\[\n\\begin{pmatrix}\n-2.0625 & 1 & 0 \\\\\n1 & -2.0625 & 1 \\\\\n0 & 1 & -2.0625\n\\end{pmatrix}\n\\begin{pmatrix}\ny_1 \\\\ y_2 \\\\ y_3\n\\end{pmatrix}\n=\n\\begin{pmatrix}\n-1 \\\\ 0 \\\\ -2.7183\n\\end{pmatrix}\n\\]\n\nUsing the Thomas algorithm:\n\n- Forward: $d_1' = -2.0625$, $d_2' = -2.0625 - 1/(-2.0625) = -1.5773$, etc.\n\n- Solving: $y_1 \\approx 1.282$, $y_2 \\approx 1.647$, $y_3 \\approx 2.116$\n\n**Comparison with exact:**\n\n| $x$ | 0.25 | 0.5 | 0.75 |\n| FD solution | 1.282 | 1.647 | 2.116 |\n| Exact $e^x$ | 1.284 | 1.649 | 2.117 |\n| Error | 0.002 | 0.002 | 0.001 |\n\nThe errors are $\\bigo{h^2} \\approx 0.06^2 = 0.004$, consistent with theory.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Error Analysis"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.2",
+      "number": "8.2",
+      "title": "Convergence of Finite Difference Method",
+      "content": "For a linear BVP with $p(x)$, $q(x)$, $r(x)$ continuous and $y(x) \\in C^4[a,b]$, the finite difference solution satisfies:\n\\[\n\\max_{1 \\leq i \\leq N-1} |y(x_i) - y_i| = \\bigo{h^2}\n\\]\nThe method is second-order accurate.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The local truncation error at each grid point is $\\bigo{h^2}$ from the difference approximations. The global error is bounded by the local truncation error times the inverse of a stability constant related to the matrix $A$. For well-posed BVPs with $q(x) \\leq 0$, the matrix is diagonally dominant and the stability constant is bounded independent of $h$, giving $\\bigo{h^2}$ global error."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.3",
+      "number": "8.3",
+      "title": "Higher-Order Methods",
+      "content": "Fourth-order accuracy can be achieved using:\n$$\ny''(x_i) &= \\frac{-y_{i+2} + 16y_{i+1} - 30y_i + 16y_{i-1} - y_{i-2}}{12h^2} + \\bigo{h^4}\n$$\nThis requires a pentadiagonal system and special treatment near boundaries.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Neumann and Robin Boundary Conditions"
+    },
+    {
+      "type": "paragraph",
+      "text": "When derivatives appear in the boundary conditions, we must approximate them using finite differences."
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "Neumann Boundary Condition",
+      "problem": "Solve $y'' = -1$ with $y'(0) = 0$ (Neumann) and $y(1) = 0$ (Dirichlet).\n\n**Solution.** The exact solution is $y = \\frac{1}{2}(1 - x^2)$.\n\nFor the Neumann condition at $x_0 = 0$, we use a centered difference:\n\\[\ny'(0) \\approx \\frac{y_1 - y_{-1}}{2h} = 0 \\quad \\Rightarrow \\quad y_{-1} = y_1\n\\]\n\nThis introduces a \"ghost point\" $y_{-1}$ outside the domain. The difference equation at $x_0 = 0$:\n\\[\n\\frac{y_1 - 2y_0 + y_{-1}}{h^2} = -1 \\quad \\Rightarrow \\quad \\frac{2y_1 - 2y_0}{h^2} = -1\n\\]\n\n\\[\ny_0 - y_1 = \\frac{h^2}{2}\n\\]\n\nThis equation, along with the interior equations and Dirichlet condition, forms the system.",
+      "solution": ""
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.3",
+      "number": "8.3",
+      "title": "Robin Boundary Condition Treatment",
+      "content": "For a Robin condition $\\gamma_1 y(a) + \\gamma_2 y'(a) = \\delta$, use:\n\\[\n\\gamma_1 y_0 + \\gamma_2 \\frac{y_1 - y_{-1}}{2h} = \\delta\n\\]\ncombined with the difference equation at $x_0$ to eliminate the ghost point $y_{-1}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Nonlinear Boundary Value Problems"
+    },
+    {
+      "type": "paragraph",
+      "text": "For nonlinear BVPs $y'' = f(x, y, y')$, the finite difference equations become nonlinear:\n\\[\n\\frac{y_{i+1} - 2y_i + y_{i-1}}{h^2} = f\\left(x_i, y_i, \\frac{y_{i+1} - y_{i-1}}{2h}\\right)\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is a system of $N-1$ nonlinear equations in $N-1$ unknowns, solved by Newton's method."
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-8.2",
+      "number": null,
+      "title": "Newton's Method for Nonlinear BVP",
+      "content": "algorithmic[1]\n Nonlinear BVP discretization $\\mathbf{F}(\\mathbf{y}) = \\mathbf{0}$, initial guess $\\mathbf{y}^{(0)}$\n Solution $\\mathbf{y}$\n$k = 0, 1, 2, \\ldots$ until convergence\n Compute residual $\\mathbf{F}(\\mathbf{y}^{(k)})$\n Compute Jacobian $J_{ij} = \\partial F_i / \\partial y_j$ at $\\mathbf{y}^{(k)}$\n Solve $J \\cdot \\boldsymbol{\\delta} = -\\mathbf{F}(\\mathbf{y}^{(k)})$ for correction $\\boldsymbol{\\delta}$\n Update $\\mathbf{y}^{(k+1)} = \\mathbf{y}^{(k)} + \\boldsymbol{\\delta}$\n $\\|\\boldsymbol{\\delta}\\| < \\varepsilon$ and $\\|\\mathbf{F}(\\mathbf{y}^{(k+1)})\\| < \\varepsilon$\n $\\mathbf{y}^{(k+1)}$\n \n\nalgorithmic"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Jacobian for the finite difference discretization is tridiagonal (or nearly so), allowing efficient solution."
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "Nonlinear Finite Differences",
+      "problem": "Discretize $y'' = e^y$ with $y(0) = 0$, $y(1) = 0$ for Newton iteration.\n\n**Solution.** The difference equations are:\n\\[\nF_i(\\mathbf{y}) = \\frac{y_{i+1} - 2y_i + y_{i-1}}{h^2} - e^{y_i} = 0, \\quad i = 1, \\ldots, N-1\n\\]\nwith $y_0 = y_N = 0$.\n\nThe Jacobian entries:\n$$\n\\frac{\\partial F_i}{\\partial y_{i-1}} &= \\frac{1}{h^2} \\\\\n\\frac{\\partial F_i}{\\partial y_i} &= \\frac{-2}{h^2} - e^{y_i} \\\\\n\\frac{\\partial F_i}{\\partial y_{i+1}} &= \\frac{1}{h^2}\n$$\n\nThis tridiagonal Jacobian is used at each Newton step to solve for the correction.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Matrix Properties and Stability"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.4",
+      "number": "8.4",
+      "title": "Diagonal Dominance",
+      "content": "For the BVP $y'' + q(x)y = r(x)$ with $q(x) \\leq 0$, the finite difference matrix $A$ is strictly diagonally dominant:\n\\[\n|d_i| = |{-2 + h^2 q_i}| = 2 - h^2 q_i > 2 = |l_i| + |u_i|\n\\]\nThis guarantees that $A$ is invertible and the Thomas algorithm is stable without pivoting.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.5",
+      "number": "8.5",
+      "title": "M-Matrix Property",
+      "content": "When $q(x) \\leq 0$, the matrix $-A$ is an M-matrix (positive diagonal, nonpositive off-diagonal, positive inverse). This implies:\n\n- The discrete maximum principle holds\n\n- Perturbations in data lead to bounded perturbations in solution\n\n- The finite difference solution is stable",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Higher Dimensions: Preview"
+    },
+    {
+      "type": "paragraph",
+      "text": "The finite difference method extends to multidimensional BVPs. For Poisson's equation $\\nabla^2 u = f$ on a rectangle, using a uniform grid with spacing $h$:\n\\[\n\\frac{u_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1} - 4u_{i,j}}{h^2} = f_{i,j}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The resulting system is sparse (banded) but no longer tridiagonal. Efficient solution requires iterative methods or sparse direct solvers."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ]
+}

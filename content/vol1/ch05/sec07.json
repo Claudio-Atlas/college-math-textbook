@@ -1,0 +1,499 @@
+{
+  "id": "vol1-ch05-sec07",
+  "title": "Antiderivatives",
+  "chapter": 5,
+  "section": 7,
+  "book": "vol1",
+  "epigraph": {
+    "text": "Remember the former things, those of long ago; I am \nGod, and there is no other.",
+    "reference": "Isaiah 46:9"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "We have spent this chapter\u2014and the two before it\u2014taking functions apart \nwith derivatives. We have asked: given a function $f$, what is $f'$? \nWe have used the answer to find tangent lines, rates of change, maximum \nand minimum values, and the shape of graphs."
+    },
+    {
+      "type": "paragraph",
+      "text": "Now we reverse the question."
+    },
+    {
+      "type": "paragraph",
+      "text": "*If we know $f'(x)$, can we recover $f(x)$?*"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is not idle curiosity. A physicist who measures acceleration wants \nvelocity. An economist who knows the marginal cost wants the total cost. \nA biologist who measures a rate of growth wants the population itself. In \neach case, we know the derivative and we want the original function."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Antiderivatives"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Antiderivative",
+      "content": "A function $F$ is called an **antiderivative** \nof $f$ on an interval $I$ if\n$$\n F'(x) = f(x) \\quad\\text{for every } x \\in I.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "A first antiderivative",
+      "problem": "Find an antiderivative of $f(x) = 2x$.",
+      "solution": "We need a function $F(x)$ whose derivative is $2x$. Experience with \ndifferentiation suggests $F(x) = x^{2}$, since $\\deriv{}{x}(x^{2}) = 2x$.\n\nBut $F(x) = x^{2} + 5$ also works: $\\deriv{}{x}(x^{2} + 5) = 2x$. So \ndoes $F(x) = x^{2} - 17$, or $F(x) = x^{2} + \\pi$. In fact, \n$F(x) = x^{2} + C$ is an antiderivative of $2x$ for *any* \nconstant $C$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Are there other antiderivatives we might have missed\u2014perhaps something \nmore exotic than $x^{2} + C$? The answer is no, and the proof uses the \nMean Value Theorem from [sec:mean-value-theorem]."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The $+C$ Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Antiderivatives Differ by a Constant",
+      "content": "If $F$ is an antiderivative of $f$ on an interval $I$, then the \n**most general** antiderivative of $f$ on $I$ is\n$$\n F(x) + C,\n$$\nwhere $C$ is an arbitrary constant.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Suppose $F$ and $G$ are both antiderivatives of $f$ on $I$. Then \n$F'(x) = f(x) = G'(x)$ for all $x \\in I$, so\n$$\n (G - F)'(x) = G'(x) - F'(x) = 0 \\quad \\text{for all } x \\in I.\n$$\nBy the corollary to the Mean Value Theorem \n([sec:mean-value-theorem]), a function whose derivative is zero on \nan interval must be constant. Therefore $G(x) - F(x) = C$ for some \nconstant $C$, which means $G(x) = F(x) + C$."
+    },
+    {
+      "type": "paragraph",
+      "text": "This is a beautiful example of how theoretical results pay practical \ndividends. The Mean Value Theorem\u2014which may have seemed purely \nabstract in [sec:mean-value-theorem]\u2014is the reason we can write \n\"$+C$\" and be *certain* that we have found *all* \nantiderivatives, not just some of them."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Integral Sign"
+    },
+    {
+      "type": "paragraph",
+      "text": "We introduce a notation for the general antiderivative."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.2",
+      "number": "5.2",
+      "title": "Indefinite Integral",
+      "content": "If $F'(x) = f(x)$, we write\n$$\n \\int f(x)\\dx = F(x) + C\n$$\nand call this the **indefinite integral** \nof $f$. The symbol $\\displaystyle\\int$ is the **integral sign**, \n$f(x)$ is the **integrand**, and $C$ is the \n**constant of integration**."
+    },
+    {
+      "type": "paragraph",
+      "text": "The elongated S ($\\int$) was introduced by Leibniz in 1675, standing for \nthe Latin word *summa* (sum). Its deep connection to summation will \nbecome clear in Chapter 6; for now, think of $\\int f(x)\\dx$ simply as \nnotation for \"the most general antiderivative of $f$.\""
+    },
+    {
+      "type": "warning",
+      "id": "warning-5.7",
+      "number": null,
+      "title": "Do not forget $+C$",
+      "content": "Every indefinite integral must include the constant of integration. \nWriting $\\int 2x\\dx = x^{2}$ is *incomplete*; the correct answer is \n$\\int 2x\\dx = x^{2} + C$. A missing $+C$ will cost you points on exams \nand, more importantly, can lead to incorrect conclusions in applied \nproblems."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Basic Antiderivative Rules"
+    },
+    {
+      "type": "paragraph",
+      "text": "Every differentiation rule we learned in Chapters 3 and 4 can be read \n\"in reverse\" to produce an antiderivative rule. Here are the most \nimportant ones."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Power Rule for Antiderivatives",
+      "content": "For any real number $n \\neq -1$,\n$$\n \\int x^{n}\\dx = \\frac{x^{n+1}}{n+1} + C.\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is the reverse of the power rule for derivatives: \n$\\deriv{}{x}\\!\\left(\\frac{x^{n+1}}{n+1}\\right) = x^{n}$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "Applying the power rule",
+      "problem": "Find each antiderivative.\n\n1. $\\displaystyle\\int x^{7}\\dx = \\frac{x^{8}}{8} + C$.\n\n2. $\\displaystyle\\int \\frac{1}{x^{3}}\\dx \n = \\int x^{-3}\\dx = \\frac{x^{-2}}{-2} + C = -\\frac{1}{2x^{2}} + C$.\n\n3. $\\displaystyle\\int \\sqrt{x}\\dx = \\int x^{1/2}\\dx \n = \\frac{x^{3/2}}{3/2} + C = \\frac{2}{3}x^{3/2} + C$.",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "The case $n = -1$ is special: $\\int x^{-1}\\dx = \\int \\frac{1}{x}\\dx \n= \\ln\\abs{x} + C$. We need the absolute value because $\\ln x$ is defined \nonly for $x > 0$, but $1/x$ is defined for all $x \\neq 0$. One can \nverify: $\\deriv{}{x}\\ln\\abs{x} = 1/x$ for both $x > 0$ and $x < 0$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The remaining basic rules come directly from reversing the derivative \nformulas of Chapter 4."
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Function**",
+        "**Antiderivative**"
+      ],
+      "rows": [
+        [
+          "$\\displaystyle\\int x^{n}\\dx$ ($n \\neq -1$)",
+          "$\\dfrac{x^{n+1}}{n+1} + C$"
+        ],
+        [
+          "$\\displaystyle\\int \\frac{1}{x}\\dx$",
+          "$\\ln\\abs{x} + C$"
+        ],
+        [
+          "$\\displaystyle\\int e^{x}\\dx$",
+          "$e^{x} + C$"
+        ],
+        [
+          "$\\displaystyle\\int \\sin x\\dx$",
+          "$-\\cos x + C$"
+        ],
+        [
+          "$\\displaystyle\\int \\cos x\\dx$",
+          "$\\sin x + C$"
+        ],
+        [
+          "$\\displaystyle\\int \\sec^{2} x\\dx$",
+          "$\\tan x + C$"
+        ],
+        [
+          "$\\displaystyle\\int \\csc^{2} x\\dx$",
+          "$-\\cot x + C$"
+        ],
+        [
+          "$\\displaystyle\\int \\sec x \\tan x\\dx$",
+          "$\\sec x + C$"
+        ],
+        [
+          "$\\displaystyle\\int \\csc x \\cot x\\dx$",
+          "$-\\csc x + C$"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "left"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Two linearity rules allow us to handle sums and constant multiples."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.3",
+      "number": "5.3",
+      "title": "Linearity of the Indefinite Integral",
+      "content": "If $F$ and $G$ are antiderivatives of $f$ and $g$, and $k$ is a constant, \nthen\n$$\n \\int [f(x) + g(x)]\\dx &= \\int f(x)\\dx + \\int g(x)\\dx, \n \\\\\n \\int k\\,f(x)\\dx &= k\\int f(x)\\dx. \n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "In words: the integral of a sum is the sum of the integrals, and constants \npass through the integral sign. These follow immediately from the \ncorresponding rules for derivatives."
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Combining the rules",
+      "problem": "Find $\\displaystyle\\int (3x^{4} - 5\\sin x + 7)\\dx$.",
+      "solution": "Apply the sum rule, constant multiple rule, and the basic formulas:\n$$\n \\int (3x^{4} - 5\\sin x + 7)\\dx \n &= 3\\int x^{4}\\dx - 5\\int \\sin x\\dx + 7\\int 1\\dx \\\\\n &= 3\\cdot\\frac{x^{5}}{5} - 5(-\\cos x) + 7x + C \\\\\n &= \\frac{3x^{5}}{5} + 5\\cos x + 7x + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.4",
+      "number": "5.4",
+      "title": "Rewriting before integrating",
+      "problem": "Find $\\displaystyle\\int \\frac{2t^{4} - t^{2} + 3}{t^{2}}\\dt$.",
+      "solution": "Divide each term by $t^{2}$ first:\n$$\n \\int \\frac{2t^{4} - t^{2} + 3}{t^{2}}\\dt \n = \\int \\!\\left(2t^{2} - 1 + 3t^{-2}\\right)\\dt \n = \\frac{2t^{3}}{3} - t - \\frac{3}{t} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.5",
+      "number": "5.5",
+      "title": "An antiderivative involving $e^{x}$",
+      "problem": "Find $\\displaystyle\\int (e^{x} + 4\\sec^{2} x)\\dx$.",
+      "solution": "$$\n \\int (e^{x} + 4\\sec^{2} x)\\dx = e^{x} + 4\\tan x + C.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Initial Value Problems"
+    },
+    {
+      "type": "paragraph",
+      "text": "The general antiderivative contains an arbitrary constant $C$. An \n**initial condition**\u2014a known value of the function at a specific \npoint\u2014lets us pin down $C$ and find the *particular* antiderivative \nthat satisfies the given condition."
+    },
+    {
+      "type": "example",
+      "id": "example-5.6",
+      "number": "5.6",
+      "title": "A basic initial value problem",
+      "problem": "Find $f(x)$ given that $f'(x) = 3x^{2} + 2$ and $f(0) = 5$.",
+      "solution": "**Step 1: Antidifferentiate.**\n$$\n f(x) = \\int (3x^{2} + 2)\\dx = x^{3} + 2x + C.\n$$\n\n**Step 2: Apply the initial condition.**\n$$\n f(0) = 0 + 0 + C = 5 \\quad\\Longrightarrow\\quad C = 5.\n$$\n\n**Answer:** $f(x) = x^{3} + 2x + 5$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.7",
+      "number": "5.7",
+      "title": "From acceleration to position",
+      "problem": "A ball is thrown upward from a height of $s_{0}$ feet with initial velocity \n$v_{0}$ ft/s. Assuming only gravity acts on it (acceleration \n$a(t) = -32$ ft/s$^{2}$), find the position function $s(t)$.",
+      "solution": "**Step 1: From acceleration to velocity.**\n$$\n v(t) = \\int a(t)\\dt = \\int (-32)\\dt = -32t + C_{1}.\n$$\nApply $v(0) = v_{0}$: $C_{1} = v_{0}$, so $v(t) = -32t + v_{0}$.\n\n**Step 2: From velocity to position.**\n$$\n s(t) = \\int v(t)\\dt = \\int (-32t + v_{0})\\dt \n = -16t^{2} + v_{0}\\,t + C_{2}.\n$$\nApply $s(0) = s_{0}$: $C_{2} = s_{0}$, so\n$$\n s(t) = -16t^{2} + v_{0}\\,t + s_{0}.\n$$\n\nThis is the familiar projectile formula from physics\u2014and now we see \nwhere it comes from: two antidifferentiations starting from constant \nacceleration."
+    },
+    {
+      "type": "example",
+      "id": "example-5.8",
+      "number": "5.8",
+      "title": "Reconstructing from the second derivative",
+      "problem": "Find $f(x)$ given that $f''(x) = 12x - 6$, $f'(0) = 1$, and $f(0) = 3$.",
+      "solution": "**Step 1: Antidifferentiate $f''$ to find $f'$.**\n$$\n f'(x) = \\int (12x - 6)\\dx = 6x^{2} - 6x + C_{1}.\n$$\n$f'(0) = C_{1} = 1$, so $f'(x) = 6x^{2} - 6x + 1$.\n\n**Step 2: Antidifferentiate $f'$ to find $f$.**\n$$\n f(x) = \\int (6x^{2} - 6x + 1)\\dx = 2x^{3} - 3x^{2} + x + C_{2}.\n$$\n$f(0) = C_{2} = 3$, so $f(x) = 2x^{3} - 3x^{2} + x + 3$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Looking Ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Everything we have done in this section amounts to \"running differentiation \nrules in reverse.\" We can antidifferentiate $x^{n}$, $\\sin x$, \n$e^{x}$, and similar functions because we *recognize* them as \nderivatives of known functions. But what about a function defined not by \na formula but by a physical process\u2014the area under a curve, for \ninstance?"
+    },
+    {
+      "type": "paragraph",
+      "text": "In Chapter 6, we will discover something astonishing: antiderivatives are \nconnected to *area*. The **Fundamental Theorem of Calculus** \nunifies the two great operations of calculus\u2014differentiation and \nintegration\u2014into a single, breathtaking theorem. It is the climax of \nthe semester, the theorem toward which every page of this book has been \nbuilding."
+    },
+    {
+      "type": "paragraph",
+      "text": "We are ready."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.1",
+      "number": "1",
+      "problem": "Find the most general antiderivative of each function.\n\n**(a)** $f(x) = 4x^{3} - 3x^{2} + 2x - 7$\n\n**(b)** $g(x) = x^{6} - 2x^{4} + x$\n\n**(c)** $h(t) = 5t^{9} - t$"
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.2",
+      "number": "2",
+      "problem": "Find the most general antiderivative.\n\n**(a)** $f(x) = 8x^{7}$\n\n**(b)** $f(x) = 12x^{2} + 6x - 4$\n\n**(c)** $f(x) = x^{2/3}$"
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.3",
+      "number": "3",
+      "problem": "Find $\\displaystyle\\int \\left(\\sqrt{x} + \\frac{1}{\\sqrt{x}}\\right)dx$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.4",
+      "number": "4",
+      "problem": "Find $\\displaystyle\\int \\left(5e^{x} - 3\\sin x\\right)dx$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.5",
+      "number": "5",
+      "problem": "Find $\\displaystyle\\int \\left(\\sec^{2}\\theta + \\csc^{2}\\theta\\right)d\\theta$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.6",
+      "number": "6",
+      "problem": "Find $\\displaystyle\\int \\left(\\frac{3}{x} + \\frac{4}{x^{2}}\\right)dx$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.7",
+      "number": "7",
+      "problem": "Find $\\displaystyle\\int \\frac{x^{3} + 2x^{2} - x + 4}{x^{2}}dx$. (Hint: divide first.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.8",
+      "number": "8",
+      "problem": "Find $\\displaystyle\\int (1 + \\tan^{2} x)dx$. (Hint: use a trigonometric identity.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.9",
+      "number": "9",
+      "problem": "Find $\\displaystyle\\int \\frac{\\sin\\theta}{\\cos^{2}\\theta}\\,d\\theta$. (Hint: rewrite in terms of $\\sec$ and $\\tan$.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.10",
+      "number": "10",
+      "problem": "Find $\\displaystyle\\int (\\sqrt[3]{t} + \\sqrt[4]{t})dt$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.11",
+      "number": "11",
+      "problem": "Find $\\displaystyle\\int \\left(2e^{x} + 3\\cos x - \\frac{5}{x}\\right)dx$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.12",
+      "number": "12",
+      "problem": "Find $f(x)$ given $f'(x) = 6x^{2} - 4x + 1$ and $f(1) = 2$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.13",
+      "number": "13",
+      "problem": "Find $f(x)$ given $f'(x) = \\cos x + \\sin x$ and $f(\\pi) = 1$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.14",
+      "number": "14",
+      "problem": "Find $f(x)$ given $f'(x) = e^{x} - 2$ and $f(0) = 3$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.15",
+      "number": "15",
+      "problem": "Find $f(x)$ given $f''(x) = 6x$, $f'(0) = -1$, and $f(0) = 2$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.16",
+      "number": "16",
+      "problem": "Find $f(x)$ given $f''(x) = 2 + \\cos x$, $f'(0) = 3$, and $f(0) = -1$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.17",
+      "number": "17",
+      "problem": "A car is traveling at 90 ft/s when the driver applies the brakes, producing a constant deceleration of $a(t) = -18$ ft/s\u00b2. How far does the car travel before it stops?"
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.18",
+      "number": "18",
+      "problem": "A stone is dropped from a bridge 400 ft above the ground. Taking $a(t) = -32$ ft/s\u00b2 and upward as positive, find:\n\n**(a)** the velocity after $t$ seconds,\n\n**(b)** the velocity when the stone hits the ground,\n\n**(c)** the time it takes to reach the ground."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.19",
+      "number": "19",
+      "challenging": true,
+      "problem": "Find $f(x)$ given $f'''(x) = \\sin x$, $f''(0) = 1$, $f'(0) = 0$, and $f(0) = -1$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.20",
+      "number": "20",
+      "challenging": true,
+      "problem": "Find the function $f$ whose graph passes through $(1, 6)$ and whose slope at any point $(x, f(x))$ is $3x^{2} + 2x - 5$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.21",
+      "number": "21",
+      "challenging": true,
+      "problem": "A particle moves along a line with velocity $v(t) = t^{2} - t - 6$ m/s. Find the displacement and the total distance traveled over the interval $[0, 5]$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.22",
+      "number": "22",
+      "challenging": true,
+      "problem": "Show that if $F'(x) = G'(x)$ for all $x$ in an interval $I$, and $F(a) = G(a)$ for some $a \\in I$, then $F(x) = G(x)$ for all $x \\in I$."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.23",
+      "number": "23",
+      "challenging": true,
+      "problem": "The acceleration due to gravity on the Moon is approximately 1.62 m/s\u00b2. An astronaut throws a ball upward from a height of 1.5 m with an initial velocity of 12 m/s. Find the maximum height reached by the ball and the time it takes to return to the surface."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.24",
+      "number": "24",
+      "challenging": true,
+      "problem": "Show that $\\displaystyle\\int |x|\\,dx = \\frac{1}{2}x|x| + C$. (Hint: consider the cases $x > 0$ and $x < 0$ separately, then verify differentiability at $x = 0$.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.25",
+      "number": "25",
+      "challenging": true,
+      "problem": "A company's marginal cost is $C'(x) = 100 - 0.02x + 0.000003x^{2}$ dollars per unit. The fixed cost is $C(0) = 50,000$. Find the cost of producing 10,000 units."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.26",
+      "number": "26",
+      "proof": true,
+      "problem": "Prove: if $f$ is continuous on $[a,b]$ and $\\int f(x)\\,dx = 0$ does not mean $f = 0$. Give an example of a nonzero continuous function on $[0, 2\\pi]$ whose antiderivative at $x = 0$ and $x = 2\\pi$ agree."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.27",
+      "number": "27",
+      "proof": true,
+      "problem": "Suppose $f$ is continuous on $\\mathbb{R}$ and $F$, $G$ are both antiderivatives of $f$. Prove that $F - G$ is a constant function. (Use the Mean Value Theorem.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.28",
+      "number": "28",
+      "proof": true,
+      "problem": "Let $f$ and $g$ be continuous on $\\mathbb{R}$. Prove that if $f(x) = g(x)$ for all $x \\neq 0$ and both are continuous at $0$, then their antiderivatives (with the same initial value at $0$) agree everywhere."
+    },
+    {
+      "type": "exercise",
+      "id": "ex5.7.29",
+      "number": "29",
+      "creation_reveals": true,
+      "problem": "The rate of photosynthesis in a leaf (in \u03bcmol CO\u2082/m\u00b2/s) varies with sunlight intensity $I$ (in \u03bcmol photons/m\u00b2/s) approximately as $P'(I) = \\frac{20}{200 + I}$. If $P(0) = 0$ (no photosynthesis in the dark), find $P(I)$ and compute the total photosynthetic rate at full sunlight ($I = 2000$)."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 7:8",
+      "text": "The end of a matter is better than its \nbeginning, and patience is better than pride."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 119:160",
+      "text": "All your words are true; all your \nrighteous laws are eternal."
+    },
+    {
+      "type": "scripture",
+      "reference": "Romans 11:33",
+      "text": "Oh, the depth of the riches of the wisdom \nand knowledge of God! How unsearchable his judgments, and his paths \nbeyond tracing out!"
+    },
+    {
+      "type": "scripture",
+      "reference": "Habakkuk 2:3",
+      "text": "For the revelation awaits an appointed \ntime; it speaks of the end and will not prove false. Though it linger, \nwait for it; it will certainly come."
+    },
+    {
+      "type": "quote",
+      "author": "Gottfried Wilhelm Leibniz (1646--1716)",
+      "text": "It is unworthy of \nexcellent men to lose hours like slaves in the labor of calculation which \ncould safely be relegated to anyone else if machines were used."
+    },
+    {
+      "type": "quote",
+      "author": "Galileo Galilei (1564--1642)",
+      "text": "The Book of Nature is written in \nthe language of mathematics."
+    }
+  ]
+}

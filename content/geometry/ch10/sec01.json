@@ -1,0 +1,252 @@
+{
+  "id": "geometry-ch10-sec01",
+  "title": "Areas of Rectangles and Parallelograms",
+  "chapter": 10,
+  "section": 1,
+  "book": "geometry",
+  "epigraph": {
+    "text": "The boundary lines have fallen for me in pleasant places; surely I have a delightful inheritance.",
+    "reference": "Psalm 16:6"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "We now turn from the study of shape and angle to the study of \n**measurement**—specifically, how much space a figure occupies. \nThe concept of area has practical roots going back to ancient \ncivilizations who needed to measure land for taxation and agriculture. \nThe very word \"geometry\" comes from the Greek *geo* (earth) \nand *metron* (measurement)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "What Is Area?"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Area",
+      "content": "The **area** of a plane figure is the number of \nsquare units needed to cover the figure completely without overlapping."
+    },
+    {
+      "type": "paragraph",
+      "text": "Area is always measured in **square units**. If we measure \nlengths in centimeters, areas are in square centimeters (cm²). \nIf lengths are in feet, areas are in square feet (ft²)."
+    },
+    {
+      "type": "paragraph",
+      "text": "To understand area, imagine covering a figure with unit squares—small \nsquares where each side has length 1. The area equals the total number \nof unit squares needed. For the rectangle above, we can count 20 unit \nsquares, or observe that there are 5 columns of 4 squares each: \n$5 \\times 4 = 20$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Perimeter"
+    },
+    {
+      "type": "paragraph",
+      "text": "Before diving deeper into area, let us also define the related \nconcept of perimeter."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.2",
+      "number": "10.2",
+      "title": "Perimeter",
+      "content": "The **perimeter** of a polygon is the total \ndistance around the figure—the sum of the lengths of all its sides."
+    },
+    {
+      "type": "paragraph",
+      "text": "While area measures the space *inside* a figure, perimeter \nmeasures the distance *around* it. Think of area as the amount \nof carpet needed to cover a floor, and perimeter as the length of \nbaseboard needed to go around the room."
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "Perimeter of a rectangle",
+      "problem": "Find the perimeter of a rectangle with length 12 cm and width 7 cm.\n\ncenter\ntikzpicture[scale=0.5]\n \n (0,0) rectangle (6,3.5);\n at (3,0) {12 cm};\n at (6,1.75) {7 cm};\ntikzpicture\ncenter",
+      "solution": "The perimeter is the sum of all four sides. Since opposite sides \nof a rectangle are equal:\n\\[\n P = 12 + 7 + 12 + 7 = 2(12) + 2(7) = 2(12 + 7) = 2(19) = 38 \\text{ cm}\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "Rectangle Perimeter",
+      "content": "The perimeter of a rectangle with length $\\ell$ and width $w$ is:\n\\[\n P = 2\\ell + 2w = 2(\\ell + w)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Area of a Rectangle"
+    },
+    {
+      "type": "paragraph",
+      "text": "The area formula for rectangles arises naturally from counting \nunit squares."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.2",
+      "number": "10.2",
+      "title": "Rectangle Area",
+      "content": "The area of a rectangle with length $\\ell$ and width $w$ is:\n\\[\n A = \\ell w\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Why does this formula work?** If we place unit squares \ninside the rectangle, we get $\\ell$ squares in each row and \n$w$ rows total, giving $\\ell \\times w$ squares."
+    },
+    {
+      "type": "example",
+      "id": "example-10.2",
+      "number": "10.2",
+      "title": "Finding rectangle area",
+      "problem": "Find the area of a rectangle with length 15 m and width 8 m.\n\ncenter\ntikzpicture[scale=0.35]\n \n (0,0) rectangle (7.5,4);\n at (3.75,0) {15 m};\n at (0,2) {8 m};\ntikzpicture\ncenter",
+      "solution": "Using the rectangle area formula:\n\\[\n A = \\ell w = 15 \\times 8 = 120 \\text{ m}^2\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.3",
+      "number": "10.3",
+      "title": "Finding a missing dimension",
+      "problem": "A rectangle has area 168 square inches and length 14 inches. \nFind its width and perimeter.",
+      "solution": "Using $A = \\ell w$, we substitute and solve for $w$:\n\\[\n 168 = 14 \\cdot w \\implies w = \\frac{168}{14} = 12 \\text{ inches}\n\\]\nNow we can find the perimeter:\n\\[\n P = 2\\ell + 2w = 2(14) + 2(12) = 28 + 24 = 52 \\text{ inches}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Area of a Square"
+    },
+    {
+      "type": "paragraph",
+      "text": "A square is a special rectangle where all sides are equal."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.3",
+      "number": "10.3",
+      "title": "Square Area and Perimeter",
+      "content": "For a square with side length $s$:\n$$\n \\text{Area:} \\quad A &= s^2 \\\\\n \\text{Perimeter:} \\quad P &= 4s\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-10.4",
+      "number": "10.4",
+      "title": "Square calculations",
+      "problem": "A square has perimeter 52 cm. Find its side length and area.",
+      "solution": "From $P = 4s$:\n\\[\n 52 = 4s \\implies s = 13 \\text{ cm}\n\\]\nTherefore, the area is:\n\\[\n A = s^2 = 13^2 = 169 \\text{ cm}^2\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Area of a Parallelogram"
+    },
+    {
+      "type": "paragraph",
+      "text": "Recall that a parallelogram is a quadrilateral with two pairs of \nparallel sides. To find its area, we use a beautiful geometric \nargument called **decomposition and rearrangement**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.3",
+      "number": "10.3",
+      "title": "Base and Height of a Parallelogram",
+      "content": "In a parallelogram:\n\n- The **base** is any side of the parallelogram.\n\n- The **height** (or altitude) \n is the perpendicular distance from the base to the opposite side."
+    },
+    {
+      "type": "paragraph",
+      "text": "The key insight is that a parallelogram can be transformed into a \nrectangle with the same base and height by \"cutting and rearranging.\""
+    },
+    {
+      "type": "paragraph",
+      "text": "By cutting the triangle on the left and moving it to the right, \nwe form a rectangle. The rectangle has the same base $b$ and \nheight $h$ as the original parallelogram, and the same area \n(since we merely rearranged pieces). Therefore:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.4",
+      "number": "10.4",
+      "title": "Parallelogram Area",
+      "content": "The area of a parallelogram with base $b$ and height $h$ is:\n\\[\n A = bh\n\\]\nwhere the height is perpendicular to the base.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Important:** The height must be *perpendicular* to the \nbase. The slant side is *not* the height!"
+    },
+    {
+      "type": "example",
+      "id": "example-10.5",
+      "number": "10.5",
+      "title": "Parallelogram area",
+      "problem": "Find the area of a parallelogram with base 12 cm and height 8 cm.\n\ncenter\ntikzpicture[scale=0.5]\n (A) at (0,0);\n (B) at (6,0);\n (C) at (7.5,4);\n (D) at (1.5,4);\n \n \n (A) – (B) – (C) – (D) – cycle;\n \n % Height\n (1.5,4) – (1.5,0);\n (1.5,0.3) – (1.8,0.3) – (1.8,0);\n \n at (3,0) {12 cm};\n at (1.5,2) {8 cm};\ntikzpicture\ncenter",
+      "solution": "Using the parallelogram area formula:\n\\[\n A = bh = 12 \\times 8 = 96 \\text{ cm}^2\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.6",
+      "number": "10.6",
+      "title": "Finding the height",
+      "problem": "A parallelogram has area 144 m² and base 16 m. Find its height.",
+      "solution": "From $A = bh$:\n\\[\n 144 = 16 \\cdot h \\implies h = \\frac{144}{16} = 9 \\text{ m}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Two Ways to Calculate Area"
+    },
+    {
+      "type": "paragraph",
+      "text": "Any side of a parallelogram can serve as the base. Each base has \na corresponding height. The area is the same regardless of which \nbase-height pair you use."
+    },
+    {
+      "type": "example",
+      "id": "example-10.7",
+      "number": "10.7",
+      "title": "Using different bases",
+      "problem": "A parallelogram has consecutive sides of length 10 and 15. \nThe height to the side of length 10 is 12. Find the height \nto the side of length 15.\n\ncenter\ntikzpicture[scale=0.4]\n (A) at (0,0);\n (B) at (7.5,0);\n (C) at (10.5,6);\n (D) at (3,6);\n \n \n (A) – (B) – (C) – (D) – cycle;\n \n % Height to base 15\n (D) – (3,0);\n (3,0.4) – (3.4,0.4) – (3.4,0);\n \n at (3.75,0) {15};\n at (1.5,3) {10};\n at (3.2,3) {12};\n at (6.75,3) {10};\n at (6.75,6) {15};\ntikzpicture\ncenter",
+      "solution": "First, find the area using base 10 and height 12:\n\\[\n A = 10 \\times 12 = 120\n\\]\nNow use this area with base 15 to find the other height $h$:\n\\[\n 120 = 15 \\cdot h \\implies h = \\frac{120}{15} = 8\n\\]\nThe height to the side of length 15 is 8 units."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications"
+    },
+    {
+      "type": "example",
+      "id": "example-10.8",
+      "number": "10.8",
+      "title": "Flooring problem",
+      "problem": "A rectangular room measures 15 feet by 12 feet. Square tiles \ncost \\$4.50 per square foot to install. What is the total cost \nto tile the floor?",
+      "solution": "First, find the area of the room:\n\\[\n A = \\ell w = 15 \\times 12 = 180 \\text{ ft}^2\n\\]\nThen calculate the total cost:\n\\[\n \\text{Cost} = 180 \\times 4.50 = \\$810\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.9",
+      "number": "10.9",
+      "title": "Garden design",
+      "problem": "A gardener wants to create a rectangular flower bed with area \nat least 100 square feet. If the width must be 8 feet (to fit \nbetween two trees), what is the minimum length?",
+      "solution": "We need $A \\geq 100$ with $w = 8$:\n\\[\n \\ell \\cdot 8 \\geq 100 \\implies \\ell \\geq \\frac{100}{8} = 12.5 \\text{ feet}\n\\]\nThe minimum length is 12.5 feet."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ezekiel 45:1",
+      "text": "When you allot the land as an \ninheritance, you shall set apart for the Lord a portion of the \nland as a holy district."
+    },
+    {
+      "type": "scripture",
+      "reference": "Exodus 27:18",
+      "text": "The courtyard shall be a hundred \ncubits long and fifty cubits wide, with curtains of finely \ntwisted linen five cubits high."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 28:17",
+      "text": "I will make justice the measuring \nline and righteousness the plumb line."
+    },
+    {
+      "type": "scripture",
+      "reference": "Nehemiah 3:1",
+      "text": "Eliashib the high priest and his \nfellow priests went to work and rebuilt the Sheep Gate. They \ndedicated it and set its doors in place."
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "id": "geometry-ch05-sec01",
+  "title": "Midsegments of Triangles",
+  "chapter": 5,
+  "section": 1,
+  "book": "geometry",
+  "epigraph": {
+    "text": "Let your moderation be known unto all men. The Lord is at hand.",
+    "reference": "Philippians 4:5"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "A midsegment connects the midpoints of two sides of a triangle. This \nsimple construction reveals remarkable properties that have fascinated \ngeometers since antiquity. When we connect midpoints, we discover \nparallel lines, proportional lengths, and elegant relationships between \nthe original triangle and the smaller triangles formed within."
+    },
+    {
+      "type": "paragraph",
+      "text": "The study of midsegments exemplifies a key principle in geometry: \nsimple constructions often yield profound truths. By finding the \n\"middle way\" in a triangle, we uncover structure that was hidden \nbut always present."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition and Construction"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Midsegment",
+      "content": "A **midsegment** of a triangle is a segment \nthat connects the midpoints of two sides of the triangle."
+    },
+    {
+      "type": "paragraph",
+      "text": "Every triangle has exactly three midsegments. If we label the midpoints \nof the sides, these three midsegments form a smaller triangle inside \nthe original—the **medial triangle**."
+    },
+    {
+      "type": "paragraph",
+      "text": "To construct a midsegment, we need only find the midpoints of two \nsides. Recall that the midpoint of a segment with endpoints $(x_1, y_1)$ \nand $(x_2, y_2)$ is:\n\\[\n M = \\left( \\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2} \\right)\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Constructing midsegments",
+      "problem": "$\\triangle ABC$ has vertices $A(-2, 0)$, $B(4, 0)$, and $C(2, 6)$. \nFind the midpoints of each side and identify the three midsegments.",
+      "solution": "Using the midpoint formula:\n\nMidpoint $D$ of $\\overline{AB}$: \n$D = \\left( \\frac{-2+4}{2}, \\frac{0+0}{2} \\right) = (1, 0)$\n\nMidpoint $E$ of $\\overline{BC}$: \n$E = \\left( \\frac{4+2}{2}, \\frac{0+6}{2} \\right) = (3, 3)$\n\nMidpoint $F$ of $\\overline{AC}$: \n$F = \\left( \\frac{-2+2}{2}, \\frac{0+6}{2} \\right) = (0, 3)$\n\nThe three midsegments are:\n\n- $\\overline{DE}$ connecting midpoints of $\\overline{AB}$ and $\\overline{BC}$\n\n- $\\overline{EF}$ connecting midpoints of $\\overline{BC}$ and $\\overline{AC}$\n\n- $\\overline{DF}$ connecting midpoints of $\\overline{AB}$ and $\\overline{AC}$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Midsegment Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The midsegment theorem reveals two remarkable properties that connect \na midsegment to the third side of the triangle."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Triangle Midsegment Theorem",
+      "content": "A midsegment of a triangle is:\n\n1. Parallel to the third side (the side it does not touch)\n\n2. Exactly half the length of the third side",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $D$ and $E$ be the midpoints of $\\overline{AC}$ and $\\overline{BC}$ \nrespectively. We will prove that $\\overline{DE} \\parallel \\overline{AB}$ \nand $DE = \\frac{1}{2}AB$.\n\nPlace the triangle in a coordinate system with $A$ at the origin:\nLet $A = (0, 0)$, $B = (2b, 0)$, and $C = (2c, 2d)$ for some real \nnumbers $b$, $c$, $d$.\n\nThen the midpoints are:\n$$\n D &= \\left( \\frac{0 + 2c}{2}, \\frac{0 + 2d}{2} \\right) = (c, d) \\\\\n E &= \\left( \\frac{2b + 2c}{2}, \\frac{0 + 2d}{2} \\right) = (b + c, d)\n$$\n\n*Parallelism:* The slope of $\\overline{DE}$ is:\n\\[\n \\text{slope of } DE = \\frac{d - d}{(b+c) - c} = \\frac{0}{b} = 0\n\\]\nThe slope of $\\overline{AB}$ is:\n\\[\n \\text{slope of } AB = \\frac{0 - 0}{2b - 0} = 0\n\\]\nSince both slopes equal 0, $\\overline{DE} \\parallel \\overline{AB}$.\n\n*Length:* Using the distance formula:\n\\[\n DE = \\sqrt{(b+c-c)^2 + (d-d)^2} = \\sqrt{b^2} = |b| = b\n\\]\n\\[\n AB = \\sqrt{(2b-0)^2 + (0-0)^2} = \\sqrt{4b^2} = 2b\n\\]\nTherefore, $DE = \\frac{1}{2}AB$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "Using the midsegment theorem",
+      "problem": "In $\\triangle ABC$, $D$ and $E$ are midpoints of $\\overline{AB}$ \nand $\\overline{AC}$ respectively. If $BC = 12$, find $DE$.",
+      "solution": "By the Midsegment Theorem, the midsegment $\\overline{DE}$ is parallel \nto $\\overline{BC}$ and half its length:\n\\[\n DE = \\frac{1}{2} \\cdot BC = \\frac{1}{2} \\cdot 12 = 6\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Working backward",
+      "problem": "In $\\triangle PQR$, $M$ is the midpoint of $\\overline{PQ}$ and $N$ \nis the midpoint of $\\overline{PR}$. If $MN = 9$, find $QR$.",
+      "solution": "By the Midsegment Theorem, $MN = \\frac{1}{2} \\cdot QR$. Solving for $QR$:\n\\[\n 9 = \\frac{1}{2} \\cdot QR \\implies QR = 18\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Medial Triangle"
+    },
+    {
+      "type": "paragraph",
+      "text": "When we draw all three midsegments, they form the **medial \ntriangle**. This inner triangle has fascinating properties."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Properties of the Medial Triangle",
+      "content": "Let $\\triangle DEF$ be the medial triangle of $\\triangle ABC$. Then:\n\n1. $\\triangle DEF \\sim \\triangle ABC$ with ratio $1:2$\n\n2. The area of $\\triangle DEF$ is $\\frac{1}{4}$ the area of $\\triangle ABC$\n\n3. The midsegments divide $\\triangle ABC$ into four congruent triangles\n\n4. Each of the four smaller triangles is similar to $\\triangle ABC$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-5.4",
+      "number": "5.4",
+      "title": "Area of the medial triangle",
+      "problem": "Triangle $ABC$ has an area of 48 square centimeters. Find the area \nof its medial triangle.",
+      "solution": "By the properties of the medial triangle, its area is $\\frac{1}{4}$ \nthe area of the original triangle:\n\\[\n \\text{Area of medial triangle} = \\frac{1}{4} \\cdot 48 = 12 \\text{ cm}^2\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications"
+    },
+    {
+      "type": "paragraph",
+      "text": "The midsegment theorem has practical applications in surveying, \nconstruction, and design."
+    },
+    {
+      "type": "example",
+      "id": "example-5.5",
+      "number": "5.5",
+      "title": "Finding missing lengths",
+      "problem": "In $\\triangle PQR$, $M$, $N$, and $O$ are midpoints of the sides. \nIf $MN = 8$, $NO = 6$, and $MO = 7$, find the perimeter of $\\triangle PQR$.",
+      "solution": "Each midsegment is half the corresponding opposite side:\n\n- If $M$ and $N$ are midpoints of $\\overline{PQ}$ and $\\overline{PR}$, \n then $MN = \\frac{1}{2} \\cdot QR$, so $QR = 16$\n\n- $NO = \\frac{1}{2} \\cdot PQ \\Rightarrow PQ = 12$\n\n- $MO = \\frac{1}{2} \\cdot PR \\Rightarrow PR = 14$\n\nPerimeter of $\\triangle PQR = 16 + 12 + 14 = 42$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.6",
+      "number": "5.6",
+      "title": "Verifying with coordinates",
+      "problem": "$\\triangle ABC$ has vertices $A(0, 0)$, $B(6, 0)$, $C(4, 8)$. Verify \nthe Midsegment Theorem for the midsegment parallel to $\\overline{BC}$.",
+      "solution": "First, find the midpoints of $\\overline{AB}$ and $\\overline{AC}$:\n\nMidpoint of $\\overline{AB}$: $D = \\left(\\frac{0+6}{2}, \\frac{0+0}{2}\\right) = (3, 0)$\n\nMidpoint of $\\overline{AC}$: $E = \\left(\\frac{0+4}{2}, \\frac{0+8}{2}\\right) = (2, 4)$\n\n**Verify parallelism:**\n$$\n \\text{Slope of } DE &= \\frac{4-0}{2-3} = \\frac{4}{-1} = -4 \\\\\n \\text{Slope of } BC &= \\frac{8-0}{4-6} = \\frac{8}{-2} = -4 \\quad \\checkmark\n$$\n\n**Verify length relationship:**\n$$\n DE &= \\sqrt{(3-2)^2 + (0-4)^2} = \\sqrt{1 + 16} = \\sqrt{17} \\\\\n BC &= \\sqrt{(6-4)^2 + (0-8)^2} = \\sqrt{4 + 64} = \\sqrt{68} = 2\\sqrt{17}\n$$\n\nIndeed, $DE = \\frac{1}{2} BC$. $\\checkmark$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.7",
+      "number": "5.7",
+      "title": "Surveying application",
+      "problem": "A surveyor needs to measure the distance across a lake from point \n$A$ to point $B$. She sets up point $C$ on land so that she can \nmeasure $\\overline{AC}$ and $\\overline{BC}$. She finds the midpoints \n$M$ of $\\overline{AC}$ and $N$ of $\\overline{BC}$, then measures \n$MN = 85$ meters. What is the distance $AB$?",
+      "solution": "By the Midsegment Theorem, $\\overline{MN}$ is parallel to $\\overline{AB}$ \nand $MN = \\frac{1}{2} \\cdot AB$.\n\nTherefore:\n\\[\n AB = 2 \\cdot MN = 2 \\cdot 85 = 170 \\text{ meters}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-5.8",
+      "number": "5.8",
+      "title": "Algebraic application",
+      "problem": "In $\\triangle ABC$, $D$ is the midpoint of $\\overline{AB}$ and $E$ \nis the midpoint of $\\overline{AC}$. If $DE = 3x - 5$ and $BC = 4x + 6$, \nfind $DE$ and $BC$.",
+      "solution": "By the Midsegment Theorem, $DE = \\frac{1}{2} \\cdot BC$:\n$$\n 3x - 5 &= \\frac{1}{2}(4x + 6) \\\\\n 3x - 5 &= 2x + 3 \\\\\n x &= 8\n$$\n\nTherefore:\n$$\n DE &= 3(8) - 5 = 19 \\\\\n BC &= 4(8) + 6 = 38\n$$\n\nCheck: $19 = \\frac{1}{2} \\cdot 38$ $\\checkmark$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Connection to Fractals: The Sierpiński Triangle"
+    },
+    {
+      "type": "paragraph",
+      "text": "A beautiful application of midsegments appears in the construction \nof the **Sierpiński triangle**, \na famous fractal shape."
+    },
+    {
+      "type": "paragraph",
+      "text": "Starting with any triangle:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Connect the midpoints of the sides to form the medial triangle",
+        "Remove the interior of the medial triangle",
+        "Repeat steps 1–2 for each of the three remaining triangles",
+        "Continue indefinitely"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "At each stage, the triangles that remain have sides half as long as \nin the previous stage—a direct consequence of the midsegment theorem."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Philippians 4:5",
+      "text": "Let your gentleness be evident to \nall. The Lord is near."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 8:20",
+      "text": "I walk in the way of righteousness, \nalong the paths of justice."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:11",
+      "text": "He has made everything beautiful \nin its time."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 22:28",
+      "text": "Do not move an ancient boundary \nstone set up by your ancestors."
+    },
+    {
+      "type": "quote",
+      "author": "Blaise Pascal",
+      "text": "Man is but a reed, the most feeble thing \nin nature; but he is a thinking reed."
+    },
+    {
+      "type": "quote",
+      "author": "Benoît Mandelbrot",
+      "text": "Clouds are not spheres, mountains \nare not cones."
+    }
+  ]
+}

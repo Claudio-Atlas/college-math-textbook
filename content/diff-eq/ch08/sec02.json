@@ -1,0 +1,188 @@
+{
+  "id": "diff-eq-ch08-sec02",
+  "title": "Improved Euler and Runge-Kutta Methods",
+  "chapter": 8,
+  "section": 2,
+  "book": "diff-eq",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Euler's method is simple but crude—its $O(h)$ global error often requires impractically small step sizes. In this section, we develop *higher-order methods* that achieve greater accuracy with fewer steps."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Improved Euler Method (Heun's Method)"
+    },
+    {
+      "type": "paragraph",
+      "text": "The key weakness of Euler's method is that it uses only the slope at the *beginning* of each interval. What if we averaged the slopes at the beginning and end?"
+    },
+    {
+      "type": "paragraph",
+      "text": "This can be written more compactly:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$k_1 &= f(t_n, y_n) \\\\\nk_2 &= f(t_n + h, y_n + h k_1) \\\\\ny_{n+1} &= y_n + \\frac{h}{2}(k_1 + k_2)$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Improved Euler for $y' = y$",
+      "problem": "Solve $y' = y$, $y(0) = 1$ with $h = 0.1$ using Improved Euler.\n\n**Step from $t=0$ to $t=0.1$:**\n$$\nk_1 &= f(0, 1) = 1 \\\\\nk_2 &= f(0.1, 1 + 0.1 \\cdot 1) = f(0.1, 1.1) = 1.1 \\\\\ny_1 &= 1 + \\frac{0.1}{2}(1 + 1.1) = 1 + 0.05(2.1) = 1.105\n$$\n\nCompare: Euler gives $y_1 = 1.10$, exact is $e^{0.1} \\approx 1.10517$.\n\nImproved Euler is already more accurate!",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Order of Improved Euler",
+      "content": "The Improved Euler method has:\n\n- Local truncation error: $O(h^3)$\n\n- Global error: $O(h^2)$\nIt is a **second-order method**.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Midpoint Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "Another second-order method samples the slope at the *midpoint* of the interval:"
+    },
+    {
+      "type": "paragraph",
+      "text": "The midpoint method also achieves $O(h^2)$ global error but uses the midpoint slope instead of averaging endpoints."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Runge-Kutta Family"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Improved Euler and Midpoint methods are examples of **Runge-Kutta methods**—a family of algorithms that achieve high accuracy by evaluating $f(t,y)$ at multiple carefully chosen points within each step."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.1",
+      "number": "8.1",
+      "title": "Runge-Kutta Method",
+      "content": "A **Runge-Kutta method** computes $y_{n+1}$ using weighted combinations of slopes $k_1, k_2, \\ldots, k_s$ evaluated at intermediate points:\n\\[\ny_{n+1} = y_n + h \\sum_{i=1}^{s} b_i k_i\n\\]\nwhere each $k_i$ depends on previously computed $k_j$ values. The number $s$ is called the **number of stages**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Classical Fourth-Order Runge-Kutta (RK4)"
+    },
+    {
+      "type": "paragraph",
+      "text": "The most widely used numerical ODE solver is the **classical fourth-order Runge-Kutta method**, often simply called \"RK4.\""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.2",
+      "number": "8.2",
+      "title": "Order of RK4",
+      "content": "The classical fourth-order Runge-Kutta method has:\n\n- Local truncation error: $O(h^5)$\n\n- Global error: $O(h^4)$\nThis means halving $h$ reduces error by a factor of approximately 16.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "RK4 for $y' = y$",
+      "problem": "Solve $y' = y$, $y(0) = 1$ from $t = 0$ to $t = 0.1$ using one step of RK4 with $h = 0.1$.\n\n$$\nk_1 &= f(0, 1) = 1 \\\\\nk_2 &= f(0.05, 1 + 0.05 \\cdot 1) = f(0.05, 1.05) = 1.05 \\\\\nk_3 &= f(0.05, 1 + 0.05 \\cdot 1.05) = f(0.05, 1.0525) = 1.0525 \\\\\nk_4 &= f(0.1, 1 + 0.1 \\cdot 1.0525) = f(0.1, 1.10525) = 1.10525 \\\\[6pt]\ny_1 &= 1 + \\frac{0.1}{6}(1 + 2(1.05) + 2(1.0525) + 1.10525) \\\\\n&= 1 + \\frac{0.1}{6}(6.31025) \\\\\n&= 1.105171\n$$\n\nExact value: $e^{0.1} = 1.105170918...$\n\nRK4 is accurate to 6 decimal places in a single step!",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Comparison of Methods"
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "Comparing Methods on $y' = y$",
+      "problem": "Solve $y' = y$, $y(0) = 1$ on $[0, 1]$ with $h = 0.1$:\n\n| $t$ | Euler | Improved Euler | RK4 | Exact |\n| 0.0 | 1.000000 | 1.000000 | 1.000000 | 1.000000 |\n| 0.2 | 1.210000 | 1.220500 | 1.221403 | 1.221403 |\n| 0.4 | 1.464100 | 1.489303 | 1.491825 | 1.491825 |\n| 0.6 | 1.771561 | 1.818079 | 1.822119 | 1.822119 |\n| 0.8 | 2.143589 | 2.220064 | 2.225541 | 2.225541 |\n| 1.0 | 2.593742 | 2.710034 | 2.718282 | 2.718282 |\n| Error at $t=1$: | 0.12454 | 0.00825 | 0.00000 |\n\nRK4 matches the exact solution to the displayed precision!",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-8.4",
+      "number": "8.4",
+      "title": "Harder Equation: $y' = t^2 + y^2$",
+      "problem": "Apply all three methods to $y' = t^2 + y^2$, $y(0) = 0$ with $h = 0.1$:\n\n| $t$ | Euler | Improved Euler | RK4 |\n| 0.0 | 0.000000 | 0.000000 | 0.000000 |\n| 0.2 | 0.001000 | 0.002667 | 0.002671 |\n| 0.4 | 0.010671 | 0.021543 | 0.021566 |\n| 0.6 | 0.050618 | 0.073439 | 0.073505 |\n| 0.8 | 0.135377 | 0.176631 | 0.176771 |\n| 1.0 | 0.284655 | 0.353138 | 0.353417 |\n\n(No closed-form solution exists; RK4 values serve as the \"benchmark.\")",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Computational Cost vs. Accuracy"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Method**",
+        "**Order**",
+        "**$f$ evals/step**",
+        "**Global Error**",
+        "**Best For**"
+      ],
+      "rows": [
+        [
+          "Euler",
+          "1",
+          "1",
+          "$O(h)$",
+          "Teaching, quick estimates"
+        ],
+        [
+          "Improved Euler",
+          "2",
+          "2",
+          "$O(h^2)$",
+          "Moderate accuracy"
+        ],
+        [
+          "RK4",
+          "4",
+          "4",
+          "$O(h^4)$",
+          "Most applications"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "center",
+        "center",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Systems of Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "All these methods extend naturally to systems. For the system\n\\[\n\\frac{d\\mathbf{y}}{dt} = \\mathbf{f}(t, \\mathbf{y}), \\quad \\mathbf{y}(t_0) = \\mathbf{y}_0\n\\]\nwhere $\\mathbf{y} = (y_1, y_2, \\ldots, y_m)^T$, simply apply the method to each component:"
+    },
+    {
+      "type": "example",
+      "id": "example-8.5",
+      "number": "8.5",
+      "title": "RK4 for a Second-Order Equation",
+      "problem": "Solve $y'' + y = 0$, $y(0) = 1$, $y'(0) = 0$ (simple harmonic motion).\n\nConvert to a system: Let $y_1 = y$, $y_2 = y'$. Then:\n\\[\n\\begin{cases}\ny_1' = y_2 \\\\\ny_2' = -y_1\n\\end{cases}\n\\]\n\nWith $\\mathbf{y} = (y_1, y_2)^T$ and $\\mathbf{f}(t, \\mathbf{y}) = (y_2, -y_1)^T$:\n\nUsing RK4 with $h = 0.1$ from $t = 0$ to $t = 2\\pi$:\n\n| $t$ | $y_1$ (RK4) | $\\cos t$ (Exact) | $y_2$ (RK4) | $-\\sin t$ (Exact) |\n| 0 | 1.000000 | 1.000000 | 0.000000 | 0.000000 |\n| $\\pi/2$ | 0.000001 | 0.000000 | $-0.999999$ | $-1.000000$ |\n| $\\pi$ | $-0.999997$ | $-1.000000$ | $-0.000002$ | 0.000000 |\n| $3\\pi/2$ | $-0.000003$ | 0.000000 | 0.999995 | 1.000000 |\n| $2\\pi$ | 0.999992 | 1.000000 | 0.000004 | 0.000000 |\n\nAfter a complete period, the error remains less than $10^{-5}$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "id": "linear-algebra-ch02-sec04",
+  "title": "Matrix Factorizations",
+  "chapter": 2,
+  "section": 4,
+  "book": "linear-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "{Unless the Lord builds the house, those who build it labor in vain.}{Psalm 127:1}\n {The object of mathematical rigor is to sanction and legitimize the conquests of intuition.}{— Jacques Hadamard}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Just as integers can be factored into primes, matrices can be factored \ninto products of simpler matrices. These **matrix factorizations** \nreveal structure and enable efficient computation."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Elementary Matrices"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Elementary Matrix",
+      "content": "An **elementary matrix** is a matrix \nobtained by performing a single elementary row operation on the \nidentity matrix."
+    },
+    {
+      "type": "paragraph",
+      "text": "There are three types, corresponding to the three row operations:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Row replacement:** $E$ has a $1$ in position $(i,j)$ \n with $i \\neq j$ (adds row $j$ to row $i$).",
+        "**Row interchange:** $E$ swaps two rows of $I$.",
+        "**Row scaling:** $E$ has a nonzero entry other than $1$ \n on the diagonal."
+      ]
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Elementary Matrices and Row Operations",
+      "content": "If $E$ is the elementary matrix for a row operation, then $EA$ gives \nthe same result as applying that operation to $A$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Elementary matrices",
+      "problem": "The operation \"add 3 times row 2 to row 1\" on a $3 \\times 3$ matrix \ncorresponds to:\n\\[\nE = \\begin{bmatrix} 1 & 3 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{bmatrix}\n\\]\nThen $EA$ performs this operation on $A$.",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "Every elementary matrix is invertible, and its inverse is also elementary:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "The inverse of \"add $k$ times row $j$ to row $i$\" is \"add \n $-k$ times row $j$ to row $i$.\"",
+        "The inverse of \"interchange rows $i$ and $j$\" is itself.",
+        "The inverse of \"multiply row $i$ by $k$\" is \"multiply row $i$ \n by $1/k$.\""
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The LU Factorization"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "LU Factorization",
+      "content": "An **LU factorization** of a matrix $A$ \nis a representation $A = LU$ where:\n\n- $L$ is **lower triangular** (all entries above the diagonal \n are zero) with ones on the diagonal.\n\n- $U$ is **upper triangular** (all entries below the diagonal \n are zero) and is in echelon form."
+    },
+    {
+      "type": "paragraph",
+      "text": "The LU factorization (when it exists) is extremely useful for solving \nsystems. To solve $A\\vect{x} = \\vect{b}$:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Factor $A = LU$.",
+        "Solve $L\\vect{y} = \\vect{b}$ (forward substitution).",
+        "Solve $U\\vect{x} = \\vect{y}$ (back substitution)."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Finding an LU factorization",
+      "problem": "Find an LU factorization of \n$A = \\begin{bmatrix} 2 & 4 & -1 \\\\ 4 & 9 & -3 \\\\ -2 & -3 & 7 \\end{bmatrix}$.",
+      "solution": "Row reduce $A$ to echelon form, recording the multipliers:\n$$\n\\begin{bmatrix} 2 & 4 & -1 \\\\ 4 & 9 & -3 \\\\ -2 & -3 & 7 \\end{bmatrix}\n&\\xrightarrow{R_2 - 2R_1}\n\\begin{bmatrix} 2 & 4 & -1 \\\\ 0 & 1 & -1 \\\\ -2 & -3 & 7 \\end{bmatrix}\n\\xrightarrow{R_3 + R_1}\n\\begin{bmatrix} 2 & 4 & -1 \\\\ 0 & 1 & -1 \\\\ 0 & 1 & 6 \\end{bmatrix} \\\\\n&\\xrightarrow{R_3 - R_2}\n\\begin{bmatrix} 2 & 4 & -1 \\\\ 0 & 1 & -1 \\\\ 0 & 0 & 7 \\end{bmatrix} = U\n$$\nThe multipliers were $2$, $-1$, and $1$. Place them in $L$:\n\\[\nL = \\begin{bmatrix} 1 & 0 & 0 \\\\ 2 & 1 & 0 \\\\ -1 & 1 & 1 \\end{bmatrix}, \\quad\nU = \\begin{bmatrix} 2 & 4 & -1 \\\\ 0 & 1 & -1 \\\\ 0 & 0 & 7 \\end{bmatrix}\n\\]\nVerify: $LU = A$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-2.4",
+      "number": null,
+      "title": "When LU fails",
+      "content": "Not every matrix has an LU factorization. If row interchanges are \nneeded during elimination, we need a permutation matrix $P$ such that \n$PA = LU$. This is the **PLU factorization**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Connection to Invertibility"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Invertibility and Elementary Matrices",
+      "content": "An $n \\times n$ matrix $A$ is invertible if and only if $A$ is a \nproduct of elementary matrices.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If $A$ is invertible, row reduction transforms $A$ to $I$: \n$E_k \\cdots E_1 A = I$. Thus $A = E_1\\inv \\cdots E_k\\inv$, a product \nof elementary matrices."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 3:11",
+      "text": "For no one can lay a foundation \nother than that which is laid, which is Jesus Christ."
+    }
+  ]
+}

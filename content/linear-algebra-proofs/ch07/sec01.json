@@ -1,0 +1,133 @@
+{
+  "id": "linear-algebra-proofs-ch07-sec01",
+  "title": "The Adjoint of a Linear Operator",
+  "chapter": 7,
+  "section": 1,
+  "book": "linear-algebra-proofs",
+  "content": [
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Existence of the Adjoint",
+      "content": "Let $V$ be a finite-dimensional inner product space and $T: V \\to V$ \na linear operator. There exists a unique linear operator $T^*: V \\to V$ \nsuch that\n\\[\n\\langle Tv, w \\rangle = \\langle v, T^*w \\rangle \\quad \\text{for all } v, w \\in V\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "For fixed $w$, the map $v \\mapsto \\langle Tv, w \\rangle$ is a linear \nfunctional on $V$. By the Riesz Representation Theorem, there exists \na unique $u \\in V$ with $\\langle Tv, w \\rangle = \\langle v, u \\rangle$ \nfor all $v$. Define $T^*(w) = u$. Linearity of $T^*$ follows from \nuniqueness in the Riesz theorem."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Adjoint",
+      "content": "The operator $T^*$ is called the **adjoint** of $T$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "Properties of the Adjoint",
+      "content": "Let $S, T$ be operators on $V$ and $\\alpha \\in \\FF$.\n\n1. $(T^*)^* = T$\n\n2. $(S + T)^* = S^* + T^*$\n\n3. $(\\alpha T)^* = \\conj{\\alpha} T^*$\n\n4. $(ST)^* = T^* S^*$\n\n5. $I^* = I$\n\n6. $\\ker T^* = (\\im T)^\\perp$\n\n7. $\\im T^* = (\\ker T)^\\perp$",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.3",
+      "number": "7.3",
+      "title": "Matrix of Adjoint",
+      "content": "If $\\mathcal{B}$ is an orthonormal basis, then $[T^*]_{\\mathcal{B}} = ([T]_{\\mathcal{B}})^*$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.2",
+      "number": "7.2",
+      "title": "Self-Adjoint",
+      "content": "An operator $T$ is **self-adjoint** (or \n**Hermitian**) if $T = T^*$.\n\nFor real inner product spaces, self-adjoint is called **symmetric**."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.4",
+      "number": "7.4",
+      "title": "Real Eigenvalues",
+      "content": "All eigenvalues of a self-adjoint operator are real.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $Tv = \\lambda v$ with $v \\neq 0$. Then\n\\[\n\\lambda \\|v\\|^2 = \\lambda \\langle v, v \\rangle = \\langle \\lambda v, v \\rangle = \\langle Tv, v \\rangle = \\langle v, T^*v \\rangle = \\langle v, Tv \\rangle = \\langle v, \\lambda v \\rangle = \\conj{\\lambda} \\|v\\|^2\n\\]\nSince $\\|v\\|^2 \\neq 0$, we have $\\lambda = \\conj{\\lambda}$, so $\\lambda \\in \\RR$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.5",
+      "number": "7.5",
+      "title": "Orthogonal Eigenspaces",
+      "content": "Eigenvectors of a self-adjoint operator corresponding to distinct \neigenvalues are orthogonal.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $Tv = \\lambda v$ and $Tw = \\mu w$ with $\\lambda \\neq \\mu$. Then\n\\[\n\\lambda \\langle v, w \\rangle = \\langle \\lambda v, w \\rangle = \\langle Tv, w \\rangle = \\langle v, Tw \\rangle = \\langle v, \\mu w \\rangle = \\mu \\langle v, w \\rangle\n\\]\nsince $\\mu \\in \\RR$. Thus $(\\lambda - \\mu)\\langle v, w \\rangle = 0$, \nand since $\\lambda \\neq \\mu$, we have $\\langle v, w \\rangle = 0$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.6",
+      "number": "7.6",
+      "title": "Spectral Theorem (Self-Adjoint)",
+      "content": "Let $T$ be a self-adjoint operator on a finite-dimensional inner \nproduct space $V$. Then there exists an orthonormal basis of $V$ \nconsisting of eigenvectors of $T$.\n\nEquivalently, $T$ is orthogonally diagonalizable.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "By induction on $\\dim V$. The case $\\dim V = 1$ is trivial.\n\nFor the inductive step: $T$ has an eigenvalue $\\lambda$ (real by the \nprevious theorem). Let $v$ be a unit eigenvector. Set $W = \\spn\\{v\\}^\\perp$.\n\nClaim: $W$ is $T$-invariant. For $w \\in W$:\n\\[\n\\langle Tw, v \\rangle = \\langle w, Tv \\rangle = \\langle w, \\lambda v \\rangle = \\lambda \\langle w, v \\rangle = 0\n\\]\nso $Tw \\in W$.\n\nThe restriction $T|_W$ is self-adjoint on $W$. By induction, $W$ has \nan orthonormal basis of eigenvectors. Together with $v$, this gives \nan orthonormal eigenvector basis for $V$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.3",
+      "number": "7.3",
+      "title": "Normal Operator",
+      "content": "An operator $T$ is **normal** if $TT^* = T^*T$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Normal Operators",
+      "problem": "1. Self-adjoint: $T = T^*$, so $TT^* = T^2 = T^*T$\n\n2. Unitary: $T^*T = TT^* = I$\n\n3. Skew-adjoint: $T^* = -T$, so $TT^* = -T^2 = T^*T$",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.7",
+      "number": "7.7",
+      "title": "Properties of Normal Operators",
+      "content": "Let $T$ be normal. Then:\n\n1. $\\|Tv\\| = \\|T^*v\\|$ for all $v$\n\n2. $\\ker T = \\ker T^*$\n\n3. If $Tv = \\lambda v$, then $T^*v = \\conj{\\lambda}v$\n\n4. Eigenvectors for distinct eigenvalues are orthogonal",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.8",
+      "number": "7.8",
+      "title": "Spectral Theorem (Normal, Complex)",
+      "content": "Let $T$ be a normal operator on a finite-dimensional complex inner \nproduct space. Then $T$ is unitarily diagonalizable: there exists \nan orthonormal basis of eigenvectors.",
+      "label": "Theorem"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.4",
+      "number": "7.4",
+      "title": "Positive Operator",
+      "content": "A self-adjoint operator $T$ is **positive** \n(or positive semidefinite) if $\\langle Tv, v \\rangle \\geq 0$ for all $v$.\n\nIt is **positive definite** if $\\langle Tv, v \\rangle > 0$ for all $v \\neq 0$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.9",
+      "number": "7.9",
+      "title": "Characterization of Positive Operators",
+      "content": "For a self-adjoint operator $T$, the following are equivalent:\n\n1. $T$ is positive\n\n2. All eigenvalues of $T$ are nonnegative\n\n3. $T = S^*S$ for some operator $S$\n\n4. $T = R^2$ for some positive self-adjoint $R$",
+      "label": "Theorem"
+    }
+  ]
+}

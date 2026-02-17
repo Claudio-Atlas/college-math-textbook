@@ -1,0 +1,99 @@
+{
+  "id": "real-analysis-ch05-sec03",
+  "title": "Uniform Continuity",
+  "chapter": 5,
+  "section": 3,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition and Examples"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Uniform Continuity",
+      "content": "A function $f: A \\to \\mathbb{R}$ is **uniformly continuous** \non $A$ if for every $\\varepsilon > 0$, there exists $\\delta > 0$ such that\n\\[\n|x - y| < \\delta \\text{ and } x, y \\in A \\implies |f(x) - f(y)| < \\varepsilon.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The key difference from ordinary continuity: $\\delta$ depends only on \n$\\varepsilon$, not on the particular point."
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Uniformly Continuous",
+      "problem": "$f(x) = 3x + 1$ is uniformly continuous on $\\mathbb{R}$.",
+      "solution": "$|f(x) - f(y)| = |3x - 3y| = 3|x - y|$. Given $\\varepsilon > 0$, choose \n$\\delta = \\varepsilon/3$; this works for all $x, y$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "Not Uniformly Continuous",
+      "problem": "$f(x) = 1/x$ is continuous but *not* uniformly continuous on $(0, 1)$.",
+      "solution": "Consider $x_n = 1/n$ and $y_n = 1/(n+1)$. Then $|x_n - y_n| = 1/(n(n+1)) \\to 0$, \nbut\n\\[\n|f(x_n) - f(y_n)| = |n - (n+1)| = 1.\n\\]\nNo single $\\delta$ works for $\\varepsilon = 1$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Not Uniformly Continuous",
+      "problem": "$f(x) = x^2$ is not uniformly continuous on $\\mathbb{R}$.",
+      "solution": "Take $x_n = n$ and $y_n = n + 1/n$. Then $|x_n - y_n| = 1/n \\to 0$, but\n\\[\n|f(x_n) - f(y_n)| = |n^2 - (n + 1/n)^2| = |2 + 1/n^2| \\to 2 \\neq 0. \\qedhere\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Uniform Continuity on Compact Sets"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Continuous Functions on Compact Sets Are Uniformly Continuous",
+      "content": "If $K$ is compact and $f: K \\to \\mathbb{R}$ is continuous, then $f$ is \nuniformly continuous on $K$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Suppose $f$ is not uniformly continuous. Then for some $\\varepsilon_0 > 0$, \nfor every $\\delta = 1/n$, there exist $x_n, y_n \\in K$ with $|x_n - y_n| < 1/n$ \nbut $|f(x_n) - f(y_n)| \\geq \\varepsilon_0$.\n\nSince $K$ is compact, $(x_n)$ has a convergent subsequence $x_{n_k} \\to c \\in K$. \nSince $|x_{n_k} - y_{n_k}| < 1/n_k \\to 0$, we also have $y_{n_k} \\to c$.\n\nBy continuity, $f(x_{n_k}) \\to f(c)$ and $f(y_{n_k}) \\to f(c)$. Thus \n$|f(x_{n_k}) - f(y_{n_k})| \\to 0$, contradicting \n$|f(x_{n_k}) - f(y_{n_k})| \\geq \\varepsilon_0$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Lipschitz Implies Uniform Continuity",
+      "content": "If $f$ satisfies $|f(x) - f(y)| \\leq M|x - y|$ for some constant $M$ and \nall $x, y$ in the domain, then $f$ is uniformly continuous.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Given $\\varepsilon > 0$, choose $\\delta = \\varepsilon/M$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Such functions are called **Lipschitz continuous**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Extension Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.3",
+      "number": "5.3",
+      "title": "Continuous Extension",
+      "content": "If $f: (a, b) \\to \\mathbb{R}$ is uniformly continuous, then $f$ extends to \na continuous function $\\tilde{f}: [a, b] \\to \\mathbb{R}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We define $\\tilde{f}(a) = \\lim_{x \\to a^+} f(x)$. We must show this limit \nexists.\n\nLet $(x_n)$ be any sequence in $(a, b)$ with $x_n \\to a$. Since $(x_n)$ is \nCauchy and $f$ is uniformly continuous, $(f(x_n))$ is Cauchy (for any \n$\\varepsilon$, the corresponding $\\delta$ makes $|f(x_n) - f(x_m)| < \\varepsilon$ \nfor large $n, m$). Thus $(f(x_n))$ converges.\n\nBy the sequential criterion, $\\lim_{x \\to a^+} f(x)$ exists. Similarly at $b$."
+    }
+  ]
+}

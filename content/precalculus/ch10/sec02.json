@@ -1,0 +1,343 @@
+{
+  "id": "precalculus-ch10-sec02",
+  "title": "The Ellipse",
+  "chapter": 10,
+  "section": 2,
+  "book": "precalculus",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"The heavens declare the glory of God; the skies \nproclaim the work of his hands.\"*{Psalm 19:1}{I discovered among my \nfigures that the orbit of Mars is an ellipse.}{Johannes Kepler}"
+    },
+    {
+      "type": "paragraph",
+      "text": "If parabolas are the curves of projectiles and reflectors, ellipses are \nthe curves of orbits. Every planet, every moon, every satellite traces \nan ellipse as it orbits its parent body. This isn't a coincidence or an \napproximation—it's a mathematical necessity, proven by Newton from the \nlaw of gravitation."
+    },
+    {
+      "type": "paragraph",
+      "text": "The ellipse looks like a \"squashed circle,\" and indeed a circle is a \nspecial case of an ellipse. But the ellipse has a richer structure, with \ntwo special points called foci instead of just one center. This duality \ngives ellipses their distinctive properties."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Geometric Definition"
+    },
+    {
+      "type": "paragraph",
+      "text": "An ellipse is defined by a sum of distances, in contrast to the parabola's \nequality of distances."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Ellipse",
+      "content": "An **ellipse** is the set of all points in a plane \nsuch that the sum of the distances from two fixed points (called \n**foci**) is constant."
+    },
+    {
+      "type": "paragraph",
+      "text": "If $F_1$ and $F_2$ are the foci and $2a$ is the constant sum, then for \nany point $P$ on the ellipse:\n\\[\n |PF_1| + |PF_2| = 2a\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Why write $2a$ instead of just some constant $k$? Because $a$ will turn \nout to be the semi-major axis—half the longest diameter of the ellipse. \nUsing $2a$ keeps the formulas clean."
+    },
+    {
+      "type": "paragraph",
+      "text": "You can draw an ellipse using a string and two pins: push pins into a \nboard at the foci, loop a string around them, pull the string taut with \na pencil, and trace the curve. The string ensures that $|PF_1| + |PF_2|$ \nremains constant—it equals the length of the string."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Anatomy of an Ellipse"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ellipses have a rich vocabulary of parts."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.2",
+      "number": "10.2",
+      "title": "Parts of an Ellipse",
+      "content": "For an ellipse:\n\n- The **center** is the midpoint of \n the segment joining the foci.\n\n- The **major axis** is the longest \n diameter, passing through both foci. Its length is $2a$.\n\n- The **minor axis** is the shortest \n diameter, perpendicular to the major axis through the center. Its \n length is $2b$.\n\n- The **vertices** are the endpoints \n of the major axis.\n\n- The **co-vertices** are the endpoints of the minor axis.\n\n- The distance from center to each focus is $c$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The parameters $a$, $b$, and $c$ are related by a fundamental equation. \nConsider a point at the end of the minor axis, say $(0, b)$ if the center \nis at the origin. The distance from $(0, b)$ to each focus at $(\\pm c, 0)$ \nis $\\sqrt{c^2 + b^2}$. The sum of distances to the foci is:\n\\[\n 2\\sqrt{c^2 + b^2} = 2a\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "So $\\sqrt{c^2 + b^2} = a$, which gives:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "The Ellipse Relationship",
+      "content": "For any ellipse with semi-major axis $a$, semi-minor axis $b$, and \nfocal distance $c$:\n\\[\n c^2 = a^2 - b^2 \\qquad \\text{or equivalently} \\qquad a^2 = b^2 + c^2\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-10.2",
+      "number": null,
+      "title": "",
+      "content": "Don't confuse this with the hyperbola relationship! For ellipses: \n$c^2 = a^2 - b^2$. For hyperbolas: $c^2 = a^2 + b^2$. The minus vs.\\ \nplus makes all the difference."
+    },
+    {
+      "type": "paragraph",
+      "text": "the curve, so $c < a$, which means $c^2 < a^2$, so \n$c^2 = a^2 - b^2$ (subtracting something positive).}"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Standard Form Equations"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.2",
+      "number": "10.2",
+      "title": "Standard Form of an Ellipse (Center at Origin)",
+      "content": "An ellipse centered at the origin has equation:\n\\[\n \\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\n\\]\n\n**If $a > b$:** Major axis is horizontal.\n\n- Vertices: $(\\pm a, 0)$\n\n- Co-vertices: $(0, \\pm b)$\n\n- Foci: $(\\pm c, 0)$ where $c = \\sqrt{a^2 - b^2}$\n\n**If $b > a$:** Major axis is vertical.\n\n- Vertices: $(0, \\pm b)$\n\n- Co-vertices: $(\\pm a, 0)$\n\n- Foci: $(0, \\pm c)$ where $c = \\sqrt{b^2 - a^2}$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Notice how the equation works: the larger denominator tells you the \ndirection of the major axis. Whichever variable has the larger denominator, \nthat axis is the major axis."
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "Analyzing an ellipse",
+      "problem": "For the ellipse $\\frac{x^2}{25} + \\frac{y^2}{9} = 1$, find the vertices, \nco-vertices, and foci.",
+      "solution": "Here $a^2 = 25$ and $b^2 = 9$, so $a = 5$ and $b = 3$.\n\nSince $a^2 > b^2$ (the larger denominator is under $x^2$), the major \naxis is horizontal.\n\n- Vertices: $(\\pm 5, 0)$, i.e., $(-5, 0)$ and $(5, 0)$\n\n- Co-vertices: $(0, \\pm 3)$, i.e., $(0, -3)$ and $(0, 3)$\n\n- $c = \\sqrt{a^2 - b^2} = \\sqrt{25 - 9} = \\sqrt{16} = 4$\n\n- Foci: $(\\pm 4, 0)$, i.e., $(-4, 0)$ and $(4, 0)$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.2",
+      "number": "10.2",
+      "title": "Vertical major axis",
+      "problem": "For the ellipse $\\frac{x^2}{4} + \\frac{y^2}{16} = 1$, find all key features.",
+      "solution": "Here $a^2 = 4$ and $b^2 = 16$, so $a = 2$ and $b = 4$.\n\nSince $b^2 > a^2$ (the larger denominator is under $y^2$), the major \naxis is vertical. The semi-major axis is $b = 4$, and the semi-minor \naxis is $a = 2$.\n\n- Vertices: $(0, \\pm 4)$\n\n- Co-vertices: $(\\pm 2, 0)$\n\n- $c = \\sqrt{b^2 - a^2} = \\sqrt{16 - 4} = \\sqrt{12} = 2\\sqrt{3} \\approx 3.46$\n\n- Foci: $(0, \\pm 2\\sqrt{3})$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Shifted Ellipses"
+    },
+    {
+      "type": "paragraph",
+      "text": "When the center is at $(h, k)$ instead of the origin, we shift the \nequation by replacing $x$ with $(x - h)$ and $y$ with $(y - k)$:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.3",
+      "number": "10.3",
+      "title": "Standard Form of an Ellipse (General Center)",
+      "content": "An ellipse centered at $(h, k)$ has equation:\n\\[\n \\frac{(x-h)^2}{a^2} + \\frac{(y-k)^2}{b^2} = 1\n\\]\n\nIf $a > b$: horizontal major axis, vertices at $(h \\pm a, k)$, foci at \n$(h \\pm c, k)$.\n\nIf $b > a$: vertical major axis, vertices at $(h, k \\pm b)$, foci at \n$(h, k \\pm c)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-10.3",
+      "number": "10.3",
+      "title": "Analyzing a shifted ellipse",
+      "problem": "Find the center, vertices, and foci of \n$\\frac{(x-3)^2}{16} + \\frac{(y+2)^2}{25} = 1$.",
+      "solution": "Comparing to the standard form:\n\n- Center: $(h, k) = (3, -2)$\n\n- $a^2 = 16$, so $a = 4$\n\n- $b^2 = 25$, so $b = 5$\n\nSince $b^2 > a^2$, the major axis is vertical.\n\n- $c = \\sqrt{b^2 - a^2} = \\sqrt{25 - 16} = 3$\n\n- Vertices: $(h, k \\pm b) = (3, -2 \\pm 5) = (3, 3)$ and $(3, -7)$\n\n- Co-vertices: $(h \\pm a, k) = (3 \\pm 4, -2) = (7, -2)$ and $(-1, -2)$\n\n- Foci: $(h, k \\pm c) = (3, -2 \\pm 3) = (3, 1)$ and $(3, -5)$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.4",
+      "number": "10.4",
+      "title": "Writing an equation from given properties",
+      "problem": "Write the equation of the ellipse with foci at $(1, 2)$ and $(7, 2)$, \nwhere the sum of distances from any point on the ellipse to the foci is 10.",
+      "solution": "The foci are at $(1, 2)$ and $(7, 2)$. Since they have the same \n$y$-coordinate, the major axis is horizontal.\n\nThe center is the midpoint of the foci:\n\\[\n (h, k) = \\left(\\frac{1+7}{2}, \\frac{2+2}{2}\\right) = (4, 2)\n\\]\n\nThe sum of distances to the foci is $2a = 10$, so $a = 5$.\n\nThe distance from center to each focus is:\n\\[\n c = |7 - 4| = 3\n\\]\n\nNow find $b$ using $c^2 = a^2 - b^2$:\n\\[\n 9 = 25 - b^2 \\implies b^2 = 16 \\implies b = 4\n\\]\n\nThe equation is:\n\\[\n \\frac{(x-4)^2}{25} + \\frac{(y-2)^2}{16} = 1\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Converting from General Form"
+    },
+    {
+      "type": "paragraph",
+      "text": "Ellipses sometimes appear in expanded form like \n$4x^2 + 9y^2 - 16x + 54y + 61 = 0$. \nTo analyze these, we complete the square."
+    },
+    {
+      "type": "example",
+      "id": "example-10.5",
+      "number": "10.5",
+      "title": "Completing the square for an ellipse",
+      "problem": "Write $4x^2 + 9y^2 - 16x + 54y + 61 = 0$ in standard form and find all \nkey features.",
+      "solution": "Group the $x$ and $y$ terms:\n\\[\n 4x^2 - 16x + 9y^2 + 54y = -61\n\\]\n\nFactor out the coefficients of the squared terms:\n\\[\n 4(x^2 - 4x) + 9(y^2 + 6y) = -61\n\\]\n\nComplete the square in each group:\n$$\n 4(x^2 - 4x + 4 - 4) + 9(y^2 + 6y + 9 - 9) &= -61 \\\\\n 4(x^2 - 4x + 4) - 16 + 9(y^2 + 6y + 9) - 81 &= -61 \\\\\n 4(x - 2)^2 + 9(y + 3)^2 &= -61 + 16 + 81 \\\\\n 4(x - 2)^2 + 9(y + 3)^2 &= 36\n$$\n\nDivide by 36 to get 1 on the right:\n\\[\n \\frac{(x - 2)^2}{9} + \\frac{(y + 3)^2}{4} = 1\n\\]\n\nNow we can read off:\n\n- Center: $(2, -3)$\n\n- $a^2 = 9$, $b^2 = 4$, so $a = 3$, $b = 2$\n\n- Since $a^2 > b^2$, major axis is horizontal\n\n- $c = \\sqrt{9 - 4} = \\sqrt{5}$\n\n- Vertices: $(2 \\pm 3, -3) = (5, -3)$ and $(-1, -3)$\n\n- Co-vertices: $(2, -3 \\pm 2) = (2, -1)$ and $(2, -5)$\n\n- Foci: $(2 \\pm \\sqrt{5}, -3)$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Eccentricity"
+    },
+    {
+      "type": "paragraph",
+      "text": "Different ellipses have different \"shapes\"—some are nearly circular, \nothers are elongated. The **eccentricity** measures this."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.3",
+      "number": "10.3",
+      "title": "Eccentricity of an Ellipse",
+      "content": "The **eccentricity** of an ellipse is:\n\\[\n e = \\frac{c}{a}\n\\]\nwhere $c$ is the distance from center to focus and $a$ is the semi-major \naxis."
+    },
+    {
+      "type": "paragraph",
+      "text": "Since the foci lie inside the ellipse (between the center and vertices), \nwe have $c < a$, which means:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.4",
+      "number": "10.4",
+      "title": "Range of Eccentricity for Ellipses",
+      "content": "For any ellipse, $0 < e < 1$.\n\n- As $e \\to 0$, the ellipse becomes more circular (foci merge \n at the center).\n\n- As $e \\to 1$, the ellipse becomes more elongated (foci approach \n the vertices).",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-10.6",
+      "number": "10.6",
+      "title": "Comparing eccentricities",
+      "problem": "Find the eccentricity of each ellipse and describe its shape.\n\n**(a)** $\\frac{x^2}{100} + \\frac{y^2}{99} = 1$ \n**(b)** $\\frac{x^2}{100} + \\frac{y^2}{36} = 1$",
+      "solution": "**(a)** Here $a^2 = 100$, $b^2 = 99$, so $a = 10$, $b = \\sqrt{99}$.\n\\[\n c = \\sqrt{100 - 99} = 1\n\\]\n\\[\n e = \\frac{c}{a} = \\frac{1}{10} = 0.1\n\\]\n\nThis eccentricity is close to 0, so the ellipse is **nearly circular**. \n(Indeed, $a$ and $b$ differ by less than 1\\%.)\n\n**(b)** Here $a^2 = 100$, $b^2 = 36$, so $a = 10$, $b = 6$.\n\\[\n c = \\sqrt{100 - 36} = \\sqrt{64} = 8\n\\]\n\\[\n e = \\frac{c}{a} = \\frac{8}{10} = 0.8\n\\]\n\nThis eccentricity is close to 1, so the ellipse is **quite elongated**. \nThe foci are 80\\% of the way from center to vertex."
+    },
+    {
+      "type": "paragraph",
+      "text": "Eccentricity has profound astronomical significance. Here are the \neccentricities of some orbits:"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Object**",
+        "**Eccentricity**"
+      ],
+      "rows": [
+        [
+          "Venus",
+          "0.007"
+        ],
+        [
+          "Earth",
+          "0.017"
+        ],
+        [
+          "Mars",
+          "0.093"
+        ],
+        [
+          "Mercury",
+          "0.206"
+        ],
+        [
+          "Pluto",
+          "0.248"
+        ],
+        [
+          "Halley's Comet",
+          "0.967"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "center"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Earth's orbit is nearly circular—you couldn't tell it apart from a \ncircle by eye. Halley's Comet, on the other hand, swings from just \ninside Earth's orbit all the way out past Neptune."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Kepler's Laws and Planetary Orbits"
+    },
+    {
+      "type": "paragraph",
+      "text": "Johannes Kepler (1571–1630) discovered three laws governing planetary \nmotion, based on meticulous analysis of astronomical observations by \nTycho Brahe. The first law directly involves ellipses:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.5",
+      "number": "10.5",
+      "title": "Kepler's First Law",
+      "content": "The orbit of each planet is an ellipse with the Sun at one focus.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This was revolutionary. For two thousand years, astronomers had assumed \nplanets moved in perfect circles (or circles upon circles). Kepler \nshowed the true shape is an ellipse—not because circles aren't \n\"good enough,\" but because the actual gravitational physics produces \nelliptical orbits."
+    },
+    {
+      "type": "example",
+      "id": "example-10.7",
+      "number": "10.7",
+      "title": "Earth's orbit",
+      "problem": "Earth's closest approach to the Sun (perihelion) is about 91.4 million \nmiles, and its farthest distance (aphelion) is about 94.5 million miles. \nFind the equation of Earth's orbit, placing the Sun at a focus.",
+      "solution": "The perihelion and aphelion are the endpoints of the major axis. Their \nsum equals the major axis length:\n\\[\n 2a = 91.4 + 94.5 = 185.9 \\text{ million miles}\n\\]\n\\[\n a = 92.95 \\text{ million miles}\n\\]\n\nThe center of the ellipse is at the midpoint of the major axis. The Sun \nis at one focus. The distance from center to Sun is:\n\\[\n c = a - \\text{perihelion} = 92.95 - 91.4 = 1.55 \\text{ million miles}\n\\]\n\n(Or equivalently: $c = \\text{aphelion} - a = 94.5 - 92.95 = 1.55$.)\n\nNow find $b$:\n\\[\n b^2 = a^2 - c^2 = (92.95)^2 - (1.55)^2 = 8639.7 - 2.4 = 8637.3\n\\]\n\\[\n b = \\sqrt{8637.3} \\approx 92.94 \\text{ million miles}\n\\]\n\nThe equation, with the center at the origin and major axis along the \n$x$-axis:\n\\[\n \\frac{x^2}{8639.7} + \\frac{y^2}{8637.3} = 1 \\quad \\text{(in millions of miles)}\n\\]\n\nThe eccentricity is:\n\\[\n e = \\frac{c}{a} = \\frac{1.55}{92.95} \\approx 0.017\n\\]\n\nThis confirms Earth's orbit is nearly circular—the semi-major and \nsemi-minor axes differ by less than 0.01 million miles."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Reflective Property of Ellipses"
+    },
+    {
+      "type": "paragraph",
+      "text": "Like parabolas, ellipses have a remarkable reflective property:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.6",
+      "number": "10.6",
+      "title": "Reflective Property of an Ellipse",
+      "content": "Any ray emanating from one focus of an ellipse, upon reflection from \nthe ellipse, passes through the other focus.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This property has a beautiful application in \"whispering galleries\"—\nelliptical rooms where a whisper at one focus can be heard clearly at \nthe other focus, even across a large room. Sound waves from one focus \nreflect off the walls and converge at the other focus. The Capitol \nBuilding in Washington, D.C., has such a gallery."
+    },
+    {
+      "type": "example",
+      "id": "example-10.8",
+      "number": "10.8",
+      "title": "Designing a whispering gallery",
+      "problem": "An elliptical whispering gallery is 80 feet long and 60 feet wide. How \nfar apart are the foci?",
+      "solution": "The major axis is 80 feet, so $a = 40$ feet.\nThe minor axis is 60 feet, so $b = 30$ feet.\n\n\\[\n c = \\sqrt{a^2 - b^2} = \\sqrt{1600 - 900} = \\sqrt{700} = 10\\sqrt{7} \\approx 26.46 \\text{ feet}\n\\]\n\nThe foci are $2c = 20\\sqrt{7} \\approx 52.9$ feet apart. Standing at \none focus, you could whisper to someone at the other focus, nearly \n53 feet away."
+    },
+    {
+      "type": "summary",
+      "id": "summary-10.2",
+      "number": null,
+      "title": "The Ellipse",
+      "content": "- An ellipse is the set of points where the sum of distances to \n two foci equals $2a$.\n\n- Standard form (center at origin): \n $\\displaystyle\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$\n\n- The larger denominator indicates the major axis direction.\n\n- Key relationship: $c^2 = a^2 - b^2$ (for ellipse, $c < a$).\n\n- Eccentricity: $e = c/a$ with $0 < e < 1$.\n itemize\n\n- Small $e$: nearly circular\n\n- Large $e$: elongated\n \n Kepler's First Law: Planets orbit in ellipses with the Sun \n at one focus.\n \n Reflective property: Rays from one focus reflect to the other.\nitemize"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Job 38:31--32",
+      "text": "Can you bind the chains of the Pleiades? \nCan you loosen Orion's belt? Can you bring forth the constellations in \ntheir seasons?"
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 147:4",
+      "text": "He determines the number of the stars and \ncalls them each by name."
+    },
+    {
+      "type": "scripture",
+      "reference": "Jeremiah 31:35",
+      "text": "This is what the Lord says, he who \nappoints the sun to shine by day, who decrees the moon and stars to \nshine by night."
+    }
+  ]
+}

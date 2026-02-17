@@ -1,0 +1,243 @@
+{
+  "id": "vol1-ch02-sec01",
+  "title": "The Tangent and Velocity Problems",
+  "chapter": 2,
+  "section": 1,
+  "book": "vol1",
+  "epigraph": {
+    "text": "For everything there is a season, and a time for every matter under heaven—a time to be born, and a time to die; a time to plant, and a time to pluck up what is planted.",
+    "reference": "Ecclesiastes 3:1--2",
+    "quote": "It is useful to solve differential equations.",
+    "quoteAuthor": "Isaac Newton"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "How fast is a stone falling at the very instant it strikes the ground? How \nquickly is a population growing *right now*, not over the last decade but \nat this precise moment? These questions—deceptively simple to \nask—launched one of the greatest intellectual revolutions in history. To \nanswer them, we need a concept that does not yet exist in our mathematical \nvocabulary: the *limit*. But before we build that powerful tool, let us \nstart with something entirely familiar."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Average Rate of Change"
+    },
+    {
+      "type": "paragraph",
+      "text": "You have been computing rates of change since algebra. When you divide the \ndistance traveled by the time elapsed, you get an average speed. When you \ncompute the slope of a line through two points, you measure how fast $y$ \nchanges relative to $x$. The idea is the same every time: *how much \ndoes the output change per unit of input?*"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Average Rate of Change",
+      "content": "Let $f$ be a function defined on an interval containing $a$ and $b$ with \n$a \\neq b$. The **average rate of change** \nof $f$ from $a$ to $b$ is\n\\[\n \\text{average rate of change} \n \\;=\\; \\frac{f(b) - f(a)}{b - a}\n \\;=\\; \\frac{\\Delta y}{\\Delta x},\n\\]\nwhere $\\Delta y = f(b) - f(a)$ denotes the change in the output and \n$\\Delta x = b - a$ denotes the change in the input."
+    },
+    {
+      "type": "paragraph",
+      "text": "There is nothing exotic here. This is the same \"rise over run\" you learned \nwhen you first studied linear functions. The only difference is that now the \nfunction need not be linear, so the rate of change depends on which two \ninput values you choose."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Average speed on a road trip",
+      "problem": "A family drives from Phoenix to San Diego. At 10:00\\,am \ntheir odometer reads $42{,}310$ miles; at 1:00\\,pm it \nreads $42{,}490$ miles. What was their average speed?",
+      "solution": "We have $\\Delta\\text{distance} = 42{,}490 - 42{,}310 = 180$ miles and \n$\\Delta\\text{time} = 3$ hours, so\n\\[\n \\text{average speed} = \\frac{180 \\text{ mi}}{3 \\text{ hr}} = 60 \\text{ mi/hr}.\n\\]\nOf course the car did not travel at exactly 60\\,mph every second. It slowed \nfor traffic, accelerated on the freeway, and stopped at a rest area. The \naverage rate of change tells us the *overall* rate, smoothing out all \nthe variation."
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Average rate of change of a quadratic",
+      "problem": "Let $f(x) = x^{2}$. Find the average rate of change of $f$ on each interval.\n\n1. From $x = 1$ to $x = 3$\n\n2. From $x = 1$ to $x = 2$\n\n3. From $x = 1$ to $x = 1.5$",
+      "solution": "We apply the formula $\\dfrac{f(b)-f(a)}{b-a}$ in each case.\n\n1. $\\displaystyle\\frac{f(3)-f(1)}{3-1} \n = \\frac{9-1}{2} = \\frac{8}{2} = 4.$\n\n2. $\\displaystyle\\frac{f(2)-f(1)}{2-1} \n = \\frac{4-1}{1} = 3.$\n\n3. $\\displaystyle\\frac{f(1.5)-f(1)}{1.5-1} \n = \\frac{2.25-1}{0.5} = \\frac{1.25}{0.5} = 2.5.$\n\nNotice that the average rate of change *decreases* as we shrink the \ninterval toward $x=1$. The values $4, 3, 2.5$ seem to be approaching \nsomething—but what? We shall return to this question shortly."
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Average rate of change from a table",
+      "problem": "The table below records the temperature $T$ (in degrees Fahrenheit) at \nvarious times $t$ (in hours after midnight) on a January morning.\n\n| $t$ (hours) | 0 | 2 | 4 | 6 | 8 | 10 |\n| $T(t)$ ( F) | 38 | 35 | 31 | 28 | 33 | 42 |\n\n Find the average rate of change of temperature from $t=0$ to \n$t=6$, and from $t=6$ to $t=10$.",
+      "solution": "From $t=0$ to $t=6$:\n\\[\n \\frac{T(6)-T(0)}{6-0} = \\frac{28-38}{6} = \\frac{-10}{6} \n \\approx -1.67\\;{}^{\\circ}\\text{F/hr}.\n\\]\nThe negative sign tells us the temperature was *falling*—on average, \nabout $1.67$ degrees per hour.\n\nFrom $t=6$ to $t=10$:\n\\[\n \\frac{T(10)-T(6)}{10-6} = \\frac{42-28}{4} = \\frac{14}{4} \n = 3.5\\;{}^{\\circ}\\text{F/hr}.\n\\]\nAfter sunrise the temperature rose at an average rate of $3.5$ degrees per \nhour."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Secant Line: A Geometric Picture"
+    },
+    {
+      "type": "paragraph",
+      "text": "Now let us look at what the average rate of change means \n*geometrically*. Consider the graph of a function $y = f(x)$ and two \npoints on it: $P = \\bigl(a,\\, f(a)\\bigr)$ and $Q = \\bigl(b,\\, f(b)\\bigr)$. \nThe line through $P$ and $Q$ is called a **secant line**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "Secant Line",
+      "content": "A **secant line** to the graph of $f$ is a line \npassing through two distinct points $\\bigl(a, f(a)\\bigr)$ and \n$\\bigl(b, f(b)\\bigr)$ on the graph. Its slope is the average rate of \nchange of $f$ from $a$ to $b$:\n\\[\n m_{\\mathrm{sec}} \n = \\frac{f(b) - f(a)}{b - a}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Notice: this is not a new formula. It is the *same* quotient from \nDefinition [def:average-rate], now recognized as the slope of a line. \nEvery time you have computed an average rate of change, you have been \ncomputing the slope of a secant line—you simply did not call it that."
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "Equation of a secant line",
+      "problem": "Let $f(x) = \\sqrt{x}$. Find the equation of the secant line through the \npoints where $x = 1$ and $x = 4$.",
+      "solution": "The two points are $P = (1, 1)$ and $Q = (4, 2)$. The slope is\n\\[\n m_{\\mathrm{sec}} = \\frac{2 - 1}{4 - 1} = \\frac{1}{3}.\n\\]\nUsing the point-slope form with the point $(1, 1)$:\n\\[\n y - 1 = \\tfrac{1}{3}(x - 1)\n \\qquad\\Longrightarrow\\qquad\n y = \\tfrac{1}{3}x + \\tfrac{2}{3}.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Tangent Problem"
+    },
+    {
+      "type": "paragraph",
+      "text": "A secant line captures the average behavior of $f$ between two points. But \nwhat if we want to know how $f$ is behaving at a *single* point? What \nis the slope of the curve *right there*?"
+    },
+    {
+      "type": "historical",
+      "id": "historical-2.1",
+      "number": null,
+      "title": "Archimedes of Syracuse (c.\\,287--212 BC)",
+      "content": "The Greek mathematician Archimedes found tangent lines to spirals more than \ntwo thousand years ago using an ingenious method of exhaustion. His \napproach—approximating a curved figure with ever-finer straight-line \nsegments—anticipates the limit process we develop here. Archimedes did \nnot have the formal language of limits, but his geometric intuition was \nremarkably close to the truth that Newton and Leibniz would formalize \ncenturies later."
+    },
+    {
+      "type": "paragraph",
+      "text": "To find the slope of a curve at a single point $P$, we take a second \npoint $Q$ on the curve and draw the secant line $PQ$. Then we slide $Q$ \ncloser and closer to $P$. As $Q$ approaches $P$, the secant line rotates \nand—if all goes well—settles into a fixed position. That limiting \nposition is the **tangent line** at $P$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.3",
+      "number": "2.3",
+      "title": "Tangent Line (Informal)",
+      "content": "The **tangent line** to the curve $y = f(x)$ at the \npoint $P = \\bigl(a, f(a)\\bigr)$ is the line through $P$ whose slope is\n\\[\n m_{\\mathrm{tan}} \n = \\lim_{x \\to a} \\frac{f(x) - f(a)}{x - a},\n\\]\nprovided this limit exists. Equivalently, writing $x = a + h$,\n\\[\n m_{\\mathrm{tan}} \n = \\limtozero{h}\\, \\frac{f(a+h) - f(a)}{h}.\n\\]\nWe will make the word \"limit\" precise in Section [sec:limit-of-function]. \nFor now, interpret it as: *the value that the expression approaches as \n$h$ gets arbitrarily close to $0$*."
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us see this in action with a concrete calculation."
+    },
+    {
+      "type": "example",
+      "id": "example-2.5",
+      "number": "2.5",
+      "title": "Tangent slope by shrinking the interval",
+      "problem": "Estimate the slope of the tangent line to $f(x) = x^{2}$ at the point \n$(1,1)$ by computing secant slopes for smaller and smaller values of $h$.",
+      "solution": "We compute\n\\[\n \\frac{f(1+h) - f(1)}{h} \n = \\frac{(1+h)^{2} - 1}{h}\n = \\frac{1 + 2h + h^{2} - 1}{h}\n = \\frac{2h + h^{2}}{h}\n = 2 + h.\n\\]\n\n| $h$ | $\\dfrac{f(1+h)-f(1)}{h}$ | Secant slope |\n| $1$ | $2 + 1$ | $3.000$ |\n| $0.5$ | $2 + 0.5$ | $2.500$ |\n| $0.1$ | $2 + 0.1$ | $2.100$ |\n| $0.01$ | $2 + 0.01$ | $2.010$ |\n| $0.001$ | $2 + 0.001$ | $2.001$ |\n| $-0.5$ | $2 + (-0.5)$ | $1.500$ |\n| $-0.1$ | $2 + (-0.1)$ | $1.900$ |\n| $-0.01$ | $2 + (-0.01)$ | $1.990$ |\n\nAs $h \\to 0$ from *both* sides, the secant slopes approach $2$. Moreover, \nthe simplified expression $2 + h$ makes the pattern undeniable: as $h$ \nbecomes $0$, the expression becomes $2$. We conclude\n\\[\n m_{\\mathrm{tan}} = \\limtozero{h}\\,(2+h) = 2.\n\\]\nThe tangent line at $(1,1)$ has slope $2$, so its equation is\n\\[\n y - 1 = 2(x - 1) \\qquad\\Longrightarrow\\qquad y = 2x - 1.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-2.6",
+      "number": "2.6",
+      "title": "Tangent line to a cubic",
+      "problem": "Find the slope of the tangent line to $f(x) = x^{3}$ at the point $(2, 8)$.",
+      "solution": "We form the difference quotient:\n\\[\n \\frac{f(2+h) - f(2)}{h}\n = \\frac{(2+h)^{3} - 8}{h}.\n\\]\nExpanding $(2+h)^{3} = 8 + 12h + 6h^{2} + h^{3}$, we obtain\n\\[\n \\frac{8 + 12h + 6h^{2} + h^{3} - 8}{h}\n = \\frac{12h + 6h^{2} + h^{3}}{h}\n = 12 + 6h + h^{2}.\n\\]\nAs $h \\to 0$, this expression approaches $12$. Therefore\n\\[\n m_{\\mathrm{tan}} = 12,\n\\]\nand the tangent line is $y - 8 = 12(x-2)$, or equivalently $y = 12x - 16$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-2.1",
+      "number": null,
+      "title": "The tangent is not always ``touching once''",
+      "content": "In elementary geometry you learned that a tangent to a circle touches the \ncircle at exactly one point. For general curves, this is *not* a valid \ndefinition. A tangent line may cross the curve elsewhere, and some lines \nthat touch a curve at a single point are not tangent lines. The correct \ndefinition involves the limit process above."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Velocity Problem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The tangent problem asks: *What is the slope of a curve at a point?* \nThe velocity problem asks the same question in a physical setting: \n*How fast is an object moving at a particular instant?*"
+    },
+    {
+      "type": "paragraph",
+      "text": "Suppose an object moves along a straight line, and its position at time $t$ \nis given by a function $s(t)$. Over a time interval from $t = a$ to \n$t = a + h$, the object's displacement is $s(a+h) - s(a)$, and the elapsed \ntime is $h$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.4",
+      "number": "2.4",
+      "title": "Average and Instantaneous Velocity",
+      "content": "The **average velocity** of an object with \nposition function $s(t)$ over the interval $[a,\\, a+h]$ is\n\\[\n v_{\\mathrm{avg}} \n = \\frac{s(a+h) - s(a)}{h}\n = \\frac{\\Delta s}{\\Delta t}.\n\\]\nThe **instantaneous velocity** at \ntime $t = a$ is\n\\[\n v(a) = \\limtozero{h}\\, \\frac{s(a+h) - s(a)}{h},\n\\]\nprovided the limit exists."
+    },
+    {
+      "type": "paragraph",
+      "text": "Compare this with Definition [def:tangent-informal]. The formulas are \nidentical! The tangent problem and the velocity problem are the \n*same* mathematical problem dressed in different clothing. This \nunification is one of the great insights of calculus."
+    },
+    {
+      "type": "example",
+      "id": "example-2.7",
+      "number": "2.7",
+      "title": "A ball thrown upward",
+      "problem": "A ball is thrown straight up from a bridge 48 feet above a river, with an \ninitial velocity of $64$ ft/s. Neglecting air resistance, its height after \n$t$ seconds is\n\\[\n s(t) = -16t^{2} + 64t + 48 \\quad\\text{(feet)}.\n\\]\n\n1. Find the average velocity over $[1, 3]$.\n\n2. Find the average velocity over $[1, 1.5]$.\n\n3. Find the instantaneous velocity at $t = 1$.",
+      "solution": "**(a)** We compute $s(1) = -16 + 64 + 48 = 96$ and \n$s(3) = -16(9) + 64(3) + 48 = -144 + 192 + 48 = 96$. Therefore\n\\[\n v_{\\mathrm{avg}} = \\frac{s(3)-s(1)}{3-1} = \\frac{96-96}{2} = 0 \\;\\text{ft/s}.\n\\]\nAn average velocity of zero! The ball is at the same height at $t=1$ and \n$t=3$—it went up and came back down.\n\n**(b)** $s(1.5) = -16(2.25) + 64(1.5) + 48 = -36 + 96 + 48 = 108$. \nSo\n\\[\n v_{\\mathrm{avg}} = \\frac{s(1.5)-s(1)}{0.5} = \\frac{108-96}{0.5} \n = \\frac{12}{0.5} = 24 \\;\\text{ft/s}.\n\\]\n\n**(c)** We compute the difference quotient:\n\\[\n \\frac{s(1+h)-s(1)}{h}\n = \\frac{\\bigl[-16(1+h)^{2}+64(1+h)+48\\bigr]-96}{h}.\n\\]\nExpanding:\n$$\n s(1+h) &= -16(1 + 2h + h^{2}) + 64 + 64h + 48 \\\\\n &= -16 - 32h - 16h^{2} + 64 + 64h + 48 \\\\\n &= 96 + 32h - 16h^{2}.\n$$\nTherefore\n\\[\n \\frac{s(1+h)-s(1)}{h} = \\frac{96 + 32h - 16h^{2} - 96}{h} \n = \\frac{32h - 16h^{2}}{h} = 32 - 16h.\n\\]\nAs $h \\to 0$:\n\\[\n v(1) = \\limtozero{h}\\,(32-16h) = 32 \\;\\text{ft/s}.\n\\]\nAt exactly $t = 1$ second, the ball is rising at 32 ft/s."
+    },
+    {
+      "type": "example",
+      "id": "example-2.8",
+      "number": "2.8",
+      "title": "When does the ball reach its peak?",
+      "problem": "Using the position function from Example [ex:ball-thrown], find the \ninstant when the ball reaches its maximum height.",
+      "solution": "At the peak, the ball is momentarily stationary: its instantaneous velocity \nis zero. We compute the velocity at a general time $t = a$:\n\\[\n \\frac{s(a+h)-s(a)}{h}\n = \\frac{\\bigl[-16(a+h)^{2}+64(a+h)+48\\bigr] \n - \\bigl[-16a^{2}+64a+48\\bigr]}{h}.\n\\]\nExpanding and simplifying (the $-16a^{2}$, $64a$, and $48$ terms cancel):\n\\[\n = \\frac{-32ah - 16h^{2} + 64h}{h} = -32a - 16h + 64.\n\\]\nTaking the limit as $h \\to 0$:\n\\[\n v(a) = -32a + 64.\n\\]\nSetting $v(a) = 0$: \\; $-32a + 64 = 0 \\;\\Longrightarrow\\; a = 2$. The ball \nreaches its peak at $t = 2$ seconds. The maximum height is \n$s(2) = -16(4) + 64(2) + 48 = 112$ feet."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Preview: The Need for Limits"
+    },
+    {
+      "type": "paragraph",
+      "text": "Both the tangent problem and the velocity problem led us to the same \nexpression:\n\\[\n \\limtozero{h}\\,\\frac{f(a+h)-f(a)}{h}.\n\\]\nIn our examples, we simplified the fraction algebraically, cancelled the $h$ \nin the denominator, and then \"set $h$ equal to zero\" in what remained. But \nthis informal approach conceals deep questions. What if the algebra does not \nsimplify so neatly? What *exactly* do we mean by \"the value the \nexpression approaches\"?"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-2.1",
+      "number": null,
+      "title": "Computing Tangent Slopes (for now)",
+      "content": "To find the slope of the tangent line to $y = f(x)$ at $x = a$:\n\n1. Form the difference quotient \n $\\displaystyle\\frac{f(a+h)-f(a)}{h}$.\n\n2. Simplify algebraically until you can cancel the $h$ in the \n denominator.\n\n3. Evaluate the simplified expression at $h = 0$ to obtain \n $m_{\\mathrm{tan}}$.\n\n4. Write the tangent line: $y - f(a) = m_{\\mathrm{tan}}(x - a)$.\nIn Section [sec:limit-of-function], we will replace step 3 with a \nrigorous definition of the limit."
+    },
+    {
+      "type": "example",
+      "id": "example-2.9",
+      "number": "2.9",
+      "title": "Tangent to a rational function",
+      "problem": "Find the slope of the tangent line to $\\displaystyle f(x) = \\frac{1}{x}$ \nat the point $\\bigl(2, \\tfrac{1}{2}\\bigr)$.",
+      "solution": "The difference quotient is\n\\[\n \\frac{f(2+h)-f(2)}{h}\n = \\frac{\\dfrac{1}{2+h} - \\dfrac{1}{2}}{h}.\n\\]\nCombining the fractions in the numerator:\n\\[\n = \\frac{\\;\\dfrac{2 - (2+h)}{2(2+h)}\\;}{h}\n = \\frac{-h}{2h(2+h)}\n = \\frac{-1}{2(2+h)}.\n\\]\nAs $h \\to 0$:\n\\[\n m_{\\mathrm{tan}} = \\frac{-1}{2(2+0)} = -\\frac{1}{4}.\n\\]\nThe tangent line at $\\bigl(2,\\tfrac{1}{2}\\bigr)$ is\n\\[\n y - \\tfrac{1}{2} = -\\tfrac{1}{4}(x-2)\n \\qquad\\Longrightarrow\\qquad\n y = -\\tfrac{1}{4}x + 1.\n\\]"
+    },
+    {
+      "type": "historical",
+      "id": "historical-2.1",
+      "number": null,
+      "title": "Isaac Newton (1642--1727) and Gottfried Wilhelm \nLeibniz (1646--1716)",
+      "content": "The tangent problem and the velocity problem were central motivations for \nthe invention of calculus. Newton, working in England, developed his \n\"method of fluxions\" in the mid-1660s, partly inspired by questions about \nplanetary motion. Leibniz, working independently in Germany, created his \nown version of calculus in the 1670s with superior notation—including the \n$\\frac{dy}{dx}$ and $\\int$ symbols we still use today. Both men saw that \nthe tangent problem and the area problem are *inverse* operations, a \ndeep connection known as the Fundamental Theorem of Calculus (Chapter 6).\n\nNewton was a devout, if unorthodox, Christian who wrote more pages of \ntheology than mathematics. He saw his scientific work as revealing the \ndesigns of the Creator: \"This most beautiful system of the sun, planets, \nand comets could only proceed from the counsel and dominion of an \nintelligent and powerful Being.\""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:31",
+      "text": "But those who hope in the Lord will renew \ntheir strength. They will soar on wings like eagles; they will run and \nnot grow weary."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 4:18",
+      "text": "The path of the righteous is like the \nmorning sun, shining ever brighter till the full light of day."
+    },
+    {
+      "type": "scripture",
+      "reference": "Romans 1:20",
+      "text": "For since the creation of the world God's \ninvisible qualities—his eternal power and divine nature—have been \nclearly seen, being understood from what has been made."
+    },
+    {
+      "type": "quote",
+      "author": "Isaac Newton",
+      "text": "If I have seen further, it is by standing \non the shoulders of giants."
+    },
+    {
+      "type": "quote",
+      "author": "Galileo Galilei",
+      "text": "Mathematics is the language with which \nGod has written the universe."
+    }
+  ]
+}

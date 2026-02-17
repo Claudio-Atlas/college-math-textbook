@@ -1,0 +1,152 @@
+{
+  "id": "algebra-1-ch05-sec01",
+  "title": "The Coordinate Plane",
+  "chapter": 5,
+  "section": 1,
+  "book": "algebra-1",
+  "epigraph": {
+    "text": "He has inscribed a circle on the face of the waters \nat the boundary between light and darkness.",
+    "reference": "Job 26:10",
+    "quote": "I think, therefore I am.",
+    "quoteAuthor": "Ren\\'e Descartes"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "{I think, therefore I am.}{Ren\\'e Descartes}"
+    },
+    {
+      "type": "paragraph",
+      "text": "To graph an equation, we need a stage on which to display it. That stage \nis the **coordinate plane**, a grid formed by two perpendicular \nnumber lines. This powerful tool, developed by René Descartes in the \nseventeenth century, allows us to represent algebraic relationships \nvisually."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Cartesian Coordinate System"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Coordinate Plane",
+      "content": "The **coordinate plane** (or **Cartesian \nplane**) consists of two perpendicular number lines:\n\n- The horizontal **$x$-axis**\n\n- The vertical **$y$-axis**\nThe point where they intersect is called the **origin**, denoted \n$(0, 0)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The two axes divide the plane into four regions called **quadrants**, \nnumbered counterclockwise starting from the upper right."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Ordered Pairs"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.2",
+      "number": "5.2",
+      "title": "Ordered Pair",
+      "content": "An **ordered pair** $(x, y)$ represents a point \nin the coordinate plane:\n\n- The first coordinate $x$ (the **abscissa**) gives the \n horizontal position.\n\n- The second coordinate $y$ (the **ordinate**) gives the \n vertical position."
+    },
+    {
+      "type": "paragraph",
+      "text": "The order matters! The point $(3, 2)$ is different from the point $(2, 3)$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Plotting ordered pairs",
+      "problem": "Plot each point and identify its quadrant (or axis).\n\n1. $A(3, 4)$\n\n2. $B(-2, 5)$\n\n3. $C(-4, -3)$\n\n4. $D(5, -2)$\n\n5. $E(0, 3)$\n\n6. $F(-4, 0)$",
+      "solution": "minipage{0.5}\ntikzpicture[scale=0.55]\n (-5,-4) grid (6,6);\n (-5.5,0) – (6.5,0) node[right] {$x$};\n (0,-4.5) – (0,6.5) node[above] {$y$};\n \n in {-5,-4,...,-1,1,2,...,6} {\n at (,-0.1) {$\\x$};\n }\n in {-4,...,-1,1,2,...,6} {\n at (-0.1,) {$\\y$};\n }\n \n ll[AtlasTeal] (3,4) circle (4pt) node[above right] { $A$};\n ll[AtlasSage] (-2,5) circle (4pt) node[above right] { $B$};\n ll[AtlasWarm] (-4,-3) circle (4pt) node[below left] { $C$};\n ll[AtlasRose] (5,-2) circle (4pt) node[below right] { $D$};\n ll[black] (0,3) circle (4pt) node[right] { $E$};\n ll[black] (-4,0) circle (4pt) node[above] { $F$};\ntikzpicture\nminipage%\nminipage{0.5}\n\n- $A(3, 4)$: Quadrant I\n\n- $B(-2, 5)$: Quadrant II\n\n- $C(-4, -3)$: Quadrant III\n\n- $D(5, -2)$: Quadrant IV\n\n- $E(0, 3)$: On the $y$-axis\n\n- $F(-4, 0)$: On the $x$-axis\nminipage\n\nPoints on the axes are not in any quadrant."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Distance Between Two Points"
+    },
+    {
+      "type": "paragraph",
+      "text": "How far apart are two points in the plane? The **distance formula** \nanswers this question using the Pythagorean theorem."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Distance Formula",
+      "content": "The distance $d$ between points $(x_1, y_1)$ and $(x_2, y_2)$ is:\n\\[\n d = \\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Draw a right triangle with the two points as endpoints of the hypotenuse. \nThe horizontal leg has length $|x_2 - x_1|$ and the vertical leg has \nlength $|y_2 - y_1|$. By the Pythagorean theorem:\n\\[\n d^2 = (x_2 - x_1)^2 + (y_2 - y_1)^2\n\\]\nTaking the positive square root gives the distance formula."
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "Finding distance",
+      "problem": "Find the distance between $P(-2, 3)$ and $Q(4, -1)$.",
+      "solution": "Using the distance formula with $(x_1, y_1) = (-2, 3)$ and \n$(x_2, y_2) = (4, -1)$:\n$$\n d &= \\sqrt{(4 - (-2))^2 + (-1 - 3)^2} \\\\\n &= \\sqrt{6^2 + (-4)^2} \\\\\n &= \\sqrt{36 + 16} \\\\\n &= \\sqrt{52} \\\\\n &= \\sqrt{4 \\cdot 13} \\\\\n &= 2\\sqrt{13}\n$$\nThe distance is $2\\sqrt{13} \\approx 7.21$ units."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Midpoint of a Segment"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.3",
+      "number": "5.3",
+      "title": "Midpoint Formula",
+      "content": "The **midpoint** of the segment connecting \n$(x_1, y_1)$ and $(x_2, y_2)$ is:\n\\[\n M = \\left( \\frac{x_1 + x_2}{2}, \\frac{y_1 + y_2}{2} \\right)\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The midpoint is simply the average of the $x$-coordinates and the \naverage of the $y$-coordinates."
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Finding midpoint",
+      "problem": "Find the midpoint of the segment with endpoints $A(1, 7)$ and $B(5, -3)$.",
+      "solution": "\\[\n M = \\left( \\frac{1 + 5}{2}, \\frac{7 + (-3)}{2} \\right) \n = \\left( \\frac{6}{2}, \\frac{4}{2} \\right)\n = (3, 2)\n\\]\nThe midpoint is $(3, 2)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Relations in Two Variables"
+    },
+    {
+      "type": "historical",
+      "id": "historical-5.1",
+      "number": null,
+      "title": "René Descartes (1596--1650)",
+      "content": "Descartes was a French philosopher and mathematician whose work \n*La Géométrie* introduced the coordinate system that bears \nhis name. His famous statement \"Cogito, ergo sum\" (I think, therefore \nI am) reflects his pursuit of certainty. By uniting algebra and geometry, \nDescartes opened the door to analytic geometry and, eventually, calculus."
+    },
+    {
+      "type": "paragraph",
+      "text": "A **relation** is any set of ordered pairs. When we graph a relation, \nwe plot each ordered pair as a point. Some relations form recognizable \npatterns; others appear scattered."
+    },
+    {
+      "type": "example",
+      "id": "example-5.4",
+      "number": "5.4",
+      "title": "Graphing a relation from a table",
+      "problem": "Graph the relation given by the table, then describe the pattern.\n\n| $x$ | $-2$ | $-1$ | $0$ | $1$ | $2$ |\n| $y$ | $-3$ | $-1$ | $1$ | $3$ | $5$ |",
+      "solution": "minipage{0.5}\ntikzpicture[scale=0.6]\n (-3,-4) grid (3,6);\n (-3.5,0) – (3.5,0) node[right] {$x$};\n (0,-4.5) – (0,6.5) node[above] {$y$};\n \n in {-3,...,-1,1,2,3} {\n at (,-0.1) {$\\x$};\n }\n in {-4,...,-1,1,2,...,6} {\n at (-0.1,) {$\\y$};\n }\n \n ll[AtlasTeal] (-2,-3) circle (4pt);\n ll[AtlasTeal] (-1,-1) circle (4pt);\n ll[AtlasTeal] (0,1) circle (4pt);\n ll[AtlasTeal] (1,3) circle (4pt);\n ll[AtlasTeal] (2,5) circle (4pt);\n \n (-2.5,-4) – (2.5,6);\ntikzpicture\nminipage%\nminipage{0.5}\nThe points lie on a straight line. The pattern shows that as $x$ increases \nby $1$, $y$ increases by $2$. The relationship can be expressed by the \nequation $y = 2x + 1$.\nminipage"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 19:1",
+      "text": "The heavens declare the glory of God; \nthe skies proclaim the work of His hands."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 4:26",
+      "text": "Give careful thought to the paths for \nyour feet and be steadfast in all your ways."
+    }
+  ]
+}

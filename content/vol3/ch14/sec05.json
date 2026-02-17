@@ -1,0 +1,231 @@
+{
+  "id": "vol3-ch14-sec05",
+  "title": "The Chain Rule",
+  "chapter": 14,
+  "section": 5,
+  "book": "vol3",
+  "epigraph": {
+    "text": "A cord of three strands is not quickly broken.",
+    "reference": "Ecclesiastes 4:12"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "When a function depends on variables that themselves depend on other variables, we need the chain rule to compute derivatives. The multivariable chain rule generalizes the familiar rule $(f \\circ g)' = f'(g(x))g'(x)$ to functions of several variables."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Case 1: One Independent Variable"
+    },
+    {
+      "type": "paragraph",
+      "text": "Suppose $z = f(x, y)$ where $x = x(t)$ and $y = y(t)$. Then $z$ is ultimately a function of $t$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.1",
+      "number": "14.1",
+      "title": "Chain Rule (Case 1)",
+      "content": "If $z = f(x, y)$ is differentiable and $x = x(t)$, $y = y(t)$ are differentiable functions of $t$, then\n\\[\n \\frac{dz}{dt} = \\frac{\\partial z}{\\partial x}\\frac{dx}{dt} + \\frac{\\partial z}{\\partial y}\\frac{dy}{dt}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-14.1",
+      "number": "14.1",
+      "title": "Chain rule with one independent variable",
+      "problem": "Let $z = x^2y + xy^3$, where $x = \\sin t$ and $y = e^t$. Find $\\dfrac{dz}{dt}$.",
+      "solution": "\\[\n \\frac{\\partial z}{\\partial x} = 2xy + y^3, \\quad \\frac{\\partial z}{\\partial y} = x^2 + 3xy^2.\n\\]\n\\[\n \\frac{dx}{dt} = \\cos t, \\quad \\frac{dy}{dt} = e^t.\n\\]\nBy the chain rule:\n\\[\n \\frac{dz}{dt} = (2xy + y^3)\\cos t + (x^2 + 3xy^2)e^t.\n\\]\nSubstituting $x = \\sin t$, $y = e^t$:\n\\[\n \\frac{dz}{dt} = (2\\sin t \\cdot e^t + e^{3t})\\cos t + (\\sin^2 t + 3\\sin t \\cdot e^{2t})e^t.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Case 2: Two Independent Variables"
+    },
+    {
+      "type": "paragraph",
+      "text": "Now suppose $z = f(x, y)$ where $x = x(s, t)$ and $y = y(s, t)$. Then $z$ depends on two independent variables $s$ and $t$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.2",
+      "number": "14.2",
+      "title": "Chain Rule (Case 2)",
+      "content": "If $z = f(x, y)$ is differentiable and $x = x(s, t)$, $y = y(s, t)$ have continuous partial derivatives, then\n$$\n \\frac{\\partial z}{\\partial s} &= \\frac{\\partial z}{\\partial x}\\frac{\\partial x}{\\partial s} + \\frac{\\partial z}{\\partial y}\\frac{\\partial y}{\\partial s}, \\\\\n \\frac{\\partial z}{\\partial t} &= \\frac{\\partial z}{\\partial x}\\frac{\\partial x}{\\partial t} + \\frac{\\partial z}{\\partial y}\\frac{\\partial y}{\\partial t}.\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-14.2",
+      "number": "14.2",
+      "title": "Chain rule with two independent variables",
+      "problem": "Let $z = e^{xy}$, where $x = s^2 - t$ and $y = st$. Find $\\dfrac{\\partial z}{\\partial s}$ and $\\dfrac{\\partial z}{\\partial t}$.",
+      "solution": "\\[\n \\frac{\\partial z}{\\partial x} = ye^{xy}, \\quad \\frac{\\partial z}{\\partial y} = xe^{xy}.\n\\]\n\\[\n \\frac{\\partial x}{\\partial s} = 2s, \\quad \\frac{\\partial x}{\\partial t} = -1, \\quad \\frac{\\partial y}{\\partial s} = t, \\quad \\frac{\\partial y}{\\partial t} = s.\n\\]\nBy the chain rule:\n$$\n \\frac{\\partial z}{\\partial s} &= ye^{xy}(2s) + xe^{xy}(t) = e^{xy}(2sy + xt), \\\\\n \\frac{\\partial z}{\\partial t} &= ye^{xy}(-1) + xe^{xy}(s) = e^{xy}(sx - y).\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Tree Diagrams"
+    },
+    {
+      "type": "paragraph",
+      "text": "Tree diagrams help visualize the chain rule. Draw the function at the top, intermediate variables in the middle, and independent variables at the bottom. Each path from top to bottom contributes one term (product of derivatives along the path)."
+    },
+    {
+      "type": "paragraph",
+      "text": "For $z = f(x, y)$ with $x = x(t)$, $y = y(t)$:"
+    },
+    {
+      "type": "paragraph",
+      "text": "The two paths give: $\\dfrac{\\partial z}{\\partial x}\\dfrac{dx}{dt} + \\dfrac{\\partial z}{\\partial y}\\dfrac{dy}{dt}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The General Chain Rule"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.3",
+      "number": "14.3",
+      "title": "General Chain Rule",
+      "content": "If $u = f(x_1, x_2, \\ldots, x_n)$ is differentiable and each $x_i = x_i(t_1, t_2, \\ldots, t_m)$ has continuous partial derivatives, then\n\\[\n \\frac{\\partial u}{\\partial t_j} = \\sum_{i=1}^{n} \\frac{\\partial u}{\\partial x_i} \\frac{\\partial x_i}{\\partial t_j}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-14.3",
+      "number": "14.3",
+      "title": "Three intermediate variables",
+      "problem": "Let $w = x^2 + y^2 + z^2$ where $x = e^t$, $y = e^t\\cos t$, $z = e^t\\sin t$. Find $\\dfrac{dw}{dt}$.",
+      "solution": "\\[\n \\frac{\\partial w}{\\partial x} = 2x, \\quad \\frac{\\partial w}{\\partial y} = 2y, \\quad \\frac{\\partial w}{\\partial z} = 2z.\n\\]\n$$\n \\frac{dx}{dt} &= e^t, \\\\\n \\frac{dy}{dt} &= e^t\\cos t - e^t\\sin t = e^t(\\cos t - \\sin t), \\\\\n \\frac{dz}{dt} &= e^t\\sin t + e^t\\cos t = e^t(\\sin t + \\cos t).\n$$\n$$\n \\frac{dw}{dt} &= 2x \\cdot e^t + 2y \\cdot e^t(\\cos t - \\sin t) + 2z \\cdot e^t(\\sin t + \\cos t) \\\\\n &= 2e^{2t} + 2e^t\\cos t \\cdot e^t(\\cos t - \\sin t) + 2e^t\\sin t \\cdot e^t(\\sin t + \\cos t) \\\\\n &= 2e^{2t} + 2e^{2t}(\\cos^2 t - \\sin t\\cos t + \\sin^2 t + \\sin t\\cos t) \\\\\n &= 2e^{2t} + 2e^{2t}(1) = 4e^{2t}.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Implicit Differentiation"
+    },
+    {
+      "type": "paragraph",
+      "text": "The chain rule provides a systematic way to perform implicit differentiation."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.4",
+      "number": "14.4",
+      "title": "Implicit Differentiation",
+      "content": "If $F(x, y) = 0$ defines $y$ implicitly as a function of $x$, and $F_y \\neq 0$, then\n\\[\n \\frac{dy}{dx} = -\\frac{F_x}{F_y}.\n\\]\nSimilarly, if $F(x, y, z) = 0$ defines $z$ implicitly as a function of $x$ and $y$, and $F_z \\neq 0$, then\n\\[\n \\frac{\\partial z}{\\partial x} = -\\frac{F_x}{F_z}, \\quad \\frac{\\partial z}{\\partial y} = -\\frac{F_y}{F_z}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If $F(x, y) = 0$ and $y = y(x)$, differentiate with respect to $x$ using the chain rule:\n\\[\n \\frac{\\partial F}{\\partial x} + \\frac{\\partial F}{\\partial y}\\frac{dy}{dx} = 0.\n\\]\nSolving: $\\dfrac{dy}{dx} = -\\dfrac{F_x}{F_y}$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.4",
+      "number": "14.4",
+      "title": "Implicit differentiation via chain rule",
+      "problem": "If $x^3 + y^3 = 6xy$, find $\\dfrac{dy}{dx}$.",
+      "solution": "Let $F(x, y) = x^3 + y^3 - 6xy = 0$.\n\\[\n F_x = 3x^2 - 6y, \\quad F_y = 3y^2 - 6x.\n\\]\n\\[\n \\frac{dy}{dx} = -\\frac{3x^2 - 6y}{3y^2 - 6x} = \\frac{6y - 3x^2}{3y^2 - 6x} = \\frac{2y - x^2}{y^2 - 2x}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-14.5",
+      "number": "14.5",
+      "title": "Implicit differentiation in three variables",
+      "problem": "If $x^2 + y^2 + z^2 = xyz$, find $\\dfrac{\\partial z}{\\partial x}$.",
+      "solution": "Let $F = x^2 + y^2 + z^2 - xyz = 0$.\n\\[\n F_x = 2x - yz, \\quad F_z = 2z - xy.\n\\]\n\\[\n \\frac{\\partial z}{\\partial x} = -\\frac{2x - yz}{2z - xy} = \\frac{yz - 2x}{2z - xy}.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Higher-Order Derivatives via Chain Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "The chain rule can be applied repeatedly to find higher-order partial derivatives."
+    },
+    {
+      "type": "example",
+      "id": "example-14.6",
+      "number": "14.6",
+      "title": "Second derivative via chain rule",
+      "problem": "If $z = f(x, y)$ where $x = r\\cos\\theta$ and $y = r\\sin\\theta$, find $\\dfrac{\\partial^2 z}{\\partial r^2}$ in terms of the partial derivatives of $f$.",
+      "solution": "First, we have:\n\\[\n \\frac{\\partial z}{\\partial r} = \\frac{\\partial f}{\\partial x}\\cos\\theta + \\frac{\\partial f}{\\partial y}\\sin\\theta.\n\\]\nNow differentiate again with respect to $r$:\n\\[\n \\frac{\\partial^2 z}{\\partial r^2} = \\frac{\\partial}{\\partial r}\\left(\\frac{\\partial f}{\\partial x}\\right)\\cos\\theta + \\frac{\\partial}{\\partial r}\\left(\\frac{\\partial f}{\\partial y}\\right)\\sin\\theta.\n\\]\nBut $\\dfrac{\\partial f}{\\partial x}$ is also a function of $x$ and $y$, so:\n\\[\n \\frac{\\partial}{\\partial r}\\left(\\frac{\\partial f}{\\partial x}\\right) = \\frac{\\partial^2 f}{\\partial x^2}\\frac{\\partial x}{\\partial r} + \\frac{\\partial^2 f}{\\partial y \\partial x}\\frac{\\partial y}{\\partial r} = f_{xx}\\cos\\theta + f_{xy}\\sin\\theta.\n\\]\nSimilarly: $\\dfrac{\\partial}{\\partial r}\\left(\\dfrac{\\partial f}{\\partial y}\\right) = f_{xy}\\cos\\theta + f_{yy}\\sin\\theta$.\n\nTherefore:\n\\[\n \\frac{\\partial^2 z}{\\partial r^2} = (f_{xx}\\cos\\theta + f_{xy}\\sin\\theta)\\cos\\theta + (f_{xy}\\cos\\theta + f_{yy}\\sin\\theta)\\sin\\theta\n\\]\n\\[\n = f_{xx}\\cos^2\\theta + 2f_{xy}\\sin\\theta\\cos\\theta + f_{yy}\\sin^2\\theta.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-14.7",
+      "number": "14.7",
+      "title": "Chain rule with substitution",
+      "problem": "Let $u = f(x, y)$ where $x = s + t$ and $y = s - t$. Express $f_{xx}$ in terms of derivatives with respect to $s$ and $t$.",
+      "solution": "We have:\n$$\n \\frac{\\partial u}{\\partial s} &= f_x + f_y, \\\\\n \\frac{\\partial u}{\\partial t} &= f_x - f_y.\n$$\nAdding: $f_x = \\dfrac{1}{2}\\left(\\dfrac{\\partial u}{\\partial s} + \\dfrac{\\partial u}{\\partial t}\\right)$.\n\nSubtracting: $f_y = \\dfrac{1}{2}\\left(\\dfrac{\\partial u}{\\partial s} - \\dfrac{\\partial u}{\\partial t}\\right)$.\n\nFor $f_{xx}$, we differentiate $f_x$ with respect to $x$, but since $x = s + t$:\n\\[\n f_{xx} = \\frac{1}{2}\\left(\\frac{\\partial}{\\partial s} + \\frac{\\partial}{\\partial t}\\right)\\left(\\frac{1}{2}\\left(u_s + u_t\\right)\\right) = \\frac{1}{4}(u_{ss} + 2u_{st} + u_{tt}).\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Additional Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-14.8",
+      "number": "14.8",
+      "title": "Rate of change along a path",
+      "problem": "The temperature at a point $(x, y)$ is given by $T(x, y) = 100 - x^2 - 2y^2$. A bug walks along the path $x = \\cos t$, $y = \\sin t$ for $t \\geq 0$. Find the rate at which the temperature changes at time $t = \\pi/4$.",
+      "solution": "By the chain rule:\n\\[\n \\frac{dT}{dt} = \\frac{\\partial T}{\\partial x}\\frac{dx}{dt} + \\frac{\\partial T}{\\partial y}\\frac{dy}{dt} = (-2x)(-\\sin t) + (-4y)(\\cos t).\n\\]\nSubstituting $x = \\cos t$, $y = \\sin t$:\n\\[\n \\frac{dT}{dt} = 2\\cos t \\sin t - 4\\sin t \\cos t = -2\\cos t \\sin t = -\\sin 2t.\n\\]\nAt $t = \\pi/4$: $\\frac{dT}{dt} = -\\sin(\\pi/2) = -1$ degree per unit time.\n\nThe bug is experiencing cooling at rate 1 degree per unit time."
+    },
+    {
+      "type": "example",
+      "id": "example-14.9",
+      "number": "14.9",
+      "title": "Related rates in 3D",
+      "problem": "A cone's radius and height are both changing with time. At the instant when $r = 3$ cm and $h = 4$ cm, we have $\\frac{dr}{dt} = 2$ cm/s and $\\frac{dh}{dt} = -1$ cm/s. Find the rate of change of volume.",
+      "solution": "$V = \\frac{1}{3}\\pi r^2 h$, so:\n\\[\n \\frac{dV}{dt} = \\frac{\\partial V}{\\partial r}\\frac{dr}{dt} + \\frac{\\partial V}{\\partial h}\\frac{dh}{dt} = \\frac{2\\pi rh}{3} \\cdot \\frac{dr}{dt} + \\frac{\\pi r^2}{3} \\cdot \\frac{dh}{dt}.\n\\]\nSubstituting values:\n\\[\n \\frac{dV}{dt} = \\frac{2\\pi(3)(4)}{3}(2) + \\frac{\\pi(9)}{3}(-1) = 16\\pi - 3\\pi = 13\\pi \\text{ cm}^3/\\text{s}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-14.10",
+      "number": "14.10",
+      "title": "Polar to Cartesian conversion",
+      "problem": "If $f(x, y)$ is a function of Cartesian coordinates, express $\\frac{\\partial f}{\\partial r}$ and $\\frac{\\partial f}{\\partial \\theta}$ in terms of $\\frac{\\partial f}{\\partial x}$ and $\\frac{\\partial f}{\\partial y}$.",
+      "solution": "With $x = r\\cos\\theta$ and $y = r\\sin\\theta$:\n\\[\n \\frac{\\partial x}{\\partial r} = \\cos\\theta, \\quad \\frac{\\partial x}{\\partial \\theta} = -r\\sin\\theta, \\quad \\frac{\\partial y}{\\partial r} = \\sin\\theta, \\quad \\frac{\\partial y}{\\partial \\theta} = r\\cos\\theta.\n\\]\nBy the chain rule:\n$$\n \\frac{\\partial f}{\\partial r} &= \\frac{\\partial f}{\\partial x}\\cos\\theta + \\frac{\\partial f}{\\partial y}\\sin\\theta, \\\\\n \\frac{\\partial f}{\\partial \\theta} &= -r\\sin\\theta\\frac{\\partial f}{\\partial x} + r\\cos\\theta\\frac{\\partial f}{\\partial y} = r\\left(-\\sin\\theta\\frac{\\partial f}{\\partial x} + \\cos\\theta\\frac{\\partial f}{\\partial y}\\right).\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-14.11",
+      "number": "14.11",
+      "title": "Changing coordinates in physics",
+      "problem": "In physics, many laws take simpler forms in appropriate coordinate systems. Show that the Laplacian $\\nabla^2 f = f_{xx} + f_{yy}$ can be written in polar coordinates as\n\\[\n \\nabla^2 f = \\frac{\\partial^2 f}{\\partial r^2} + \\frac{1}{r}\\frac{\\partial f}{\\partial r} + \\frac{1}{r^2}\\frac{\\partial^2 f}{\\partial \\theta^2}.\n\\]",
+      "solution": "This requires careful application of the chain rule. From the previous example:\n\\[\n \\frac{\\partial f}{\\partial x} = \\cos\\theta\\frac{\\partial f}{\\partial r} - \\frac{\\sin\\theta}{r}\\frac{\\partial f}{\\partial \\theta}.\n\\]\n(derived by solving the chain rule equations)\n\nApplying $\\frac{\\partial}{\\partial x}$ again and similarly for $\\frac{\\partial^2 f}{\\partial y^2}$, then adding, gives the result.\n\nThis formula is essential in solving problems with circular symmetry, such as heat flow in a circular disk or vibrations of a circular drum."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 22:6",
+      "text": "Train up a child in the way he should go; even when he is old he will not depart from it."
+    },
+    {
+      "type": "scripture",
+      "reference": "Matthew 7:17",
+      "text": "So, every healthy tree bears good fruit, but the diseased tree bears bad fruit."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 119:18",
+      "text": "Open my eyes, that I may behold wondrous things out of your law."
+    },
+    {
+      "type": "quote",
+      "author": "Leibniz",
+      "text": "Nothing is more important than to see the sources of invention, which are, in my opinion, more interesting than the inventions themselves."
+    },
+    {
+      "type": "quote",
+      "author": "Cauchy",
+      "text": "Men pass away, but their deeds abide."
+    }
+  ]
+}

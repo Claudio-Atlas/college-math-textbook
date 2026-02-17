@@ -1,0 +1,103 @@
+{
+  "id": "discrete-math-ch03-sec01",
+  "title": "What Is an Algorithm?",
+  "chapter": 3,
+  "section": 1,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"For which of you, desiring to build a tower, does not \nfirst sit down and count the cost?\"*{Luke 14:28}{We may say most aptly that the Analytical Engine weaves algebraical patterns just as the Jacquard loom weaves flowers and leaves.}{Ada Lovelace}"
+    },
+    {
+      "type": "paragraph",
+      "text": "An **algorithm** is a finite sequence of well-defined \ninstructions for solving a problem or performing a computation."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.1",
+      "number": "3.1",
+      "title": "Algorithm",
+      "content": "An **algorithm** is a finite, ordered sequence of unambiguous, \nexecutable steps that terminates after a finite amount of time, producing \na result or output."
+    },
+    {
+      "type": "paragraph",
+      "text": "Key properties of an algorithm:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Input**: Zero or more inputs from a specified set.",
+        "**Output**: One or more outputs related to the inputs.",
+        "**Definiteness**: Each step is precisely and unambiguously defined.",
+        "**Finiteness**: The algorithm terminates after finitely many steps.",
+        "**Effectiveness**: Each step is basic enough to be carried out."
+      ]
+    },
+    {
+      "type": "historical",
+      "id": "historical-3.1",
+      "number": null,
+      "title": "Muhammad ibn Musa al-Khwarizmi (c. 780--850)",
+      "content": "The word \"algorithm\" derives from the Latinized name of the Persian \nmathematician al-Khwarizmi, whose treatise on arithmetic introduced \nHindu-Arabic numerals to the West. His book on algebra (*al-Kitab \nal-mukhtasar fi hisab al-jabr wal-muqabala*) gave us the word \"algebra.\" \nAl-Khwarizmi's systematic methods for solving equations exemplified \nalgorithmic thinking a millennium before computers."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Example: Finding the Maximum"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider the problem: Given a list of numbers, find the largest one."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-3.1",
+      "number": null,
+      "title": "Maximum-Finding Algorithm",
+      "content": "1. Set $\\text{max} \\gets$ first element of the list.\n\n2. For each remaining element $x$ in the list:\n enumerate\n\n3. If $x > \\text{max}$, set $\\text{max} \\gets x$.\n Return $\\text{max}$.\nenumerate"
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Tracing the maximum algorithm",
+      "problem": "Find the maximum of $[3, 7, 2, 9, 4]$.\n\n| Step | Current element | max |\n| 1 | 3 | 3 (initial) |\n| 2 | 7 | 7 (updated: $7 > 3$) |\n| 3 | 2 | 7 (unchanged: $2 \\not> 7$) |\n| 4 | 9 | 9 (updated: $9 > 7$) |\n| 5 | 4 | 9 (unchanged: $4 \\not> 9$) |\n\nOutput: 9.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Correctness"
+    },
+    {
+      "type": "paragraph",
+      "text": "An algorithm is **correct** if it produces the \ncorrect output for every valid input. Proving correctness often involves:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Loop invariants**: properties that hold at each iteration.",
+        "**Pre/post-conditions**: conditions before and after execution.",
+        "**Termination**: proof that loops and recursion eventually stop."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Loop invariant for maximum",
+      "problem": "**Invariant**: After processing $k$ elements, $\\text{max}$ contains \nthe largest of those $k$ elements.\n\n**Initialization**: After 1 element, max equals that element (correct).\n\n**Maintenance**: If the invariant holds for $k$ elements, then after \nprocessing element $k+1$, max is updated if necessary, maintaining the \ninvariant.\n\n**Termination**: After all $n$ elements, max is the largest of all.",
+      "solution": ""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 16:9",
+      "text": "In their hearts humans plan their course, \nbut the Lord establishes their steps."
+    }
+  ]
+}

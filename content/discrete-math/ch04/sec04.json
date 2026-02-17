@@ -1,0 +1,108 @@
+{
+  "id": "discrete-math-ch04-sec04",
+  "title": "Modular Arithmetic",
+  "chapter": 4,
+  "section": 4,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"To everything there is a season, and a time to every \npurpose under the heaven.\"*{Ecclesiastes 3:1}{If $a$ and $b$ have the same remainder when divided by $n$, they are congruent modulo $n$.}{Carl Friedrich Gauss}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Modular arithmetic—\"clock arithmetic\"—deals with remainders and \ncyclic patterns. It is fundamental to modern cryptography."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "Congruence",
+      "content": "Let $m$ be a positive integer. Integers $a$ and $b$ are **congruent \nmodulo $m$**, written $a \\equiv b \\pmod{m}$, if $m$ \ndivides $a - b$.\n\nEquivalently, $a$ and $b$ have the same remainder when divided by $m$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Congruence",
+      "problem": "- $17 \\equiv 5 \\pmod{12}$ because $17 - 5 = 12 = 12 \\cdot 1$.\n\n- $-3 \\equiv 4 \\pmod{7}$ because $-3 - 4 = -7 = 7 \\cdot (-1)$.\n\n- $100 \\equiv 2 \\pmod{7}$ because $100 = 7 \\cdot 14 + 2$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of Congruence"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Congruence Properties",
+      "content": "Let $a, b, c, d$ be integers and $m > 0$. If $a \\equiv b \\pmod{m}$ and \n$c \\equiv d \\pmod{m}$, then:\n\n1. $a + c \\equiv b + d \\pmod{m}$\n\n2. $a - c \\equiv b - d \\pmod{m}$\n\n3. $ac \\equiv bd \\pmod{m}$\n\n4. $a^n \\equiv b^n \\pmod{m}$ for any positive integer $n$",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-4.4",
+      "number": null,
+      "title": "Division in Modular Arithmetic",
+      "content": "Division does not always work! $6 \\equiv 0 \\pmod{6}$ and $2 \\equiv 2 \\pmod{6}$, \nbut $6/2 = 3 \\not\\equiv 0/2 = 0 \\pmod{6}$. We can divide by $c$ only if \n$\\gcd(c, m) = 1$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "Computing large powers modulo $m$",
+      "problem": "Find $3^{100} \\mod 7$.",
+      "solution": "Compute successive powers modulo 7:\n$$\n3^1 &\\equiv 3 & 3^2 &\\equiv 2 & 3^3 &\\equiv 6 \\\\\n3^4 &\\equiv 4 & 3^5 &\\equiv 5 & 3^6 &\\equiv 1 \\pmod{7}\n$$\n\nSince $3^6 \\equiv 1$, and $100 = 6 \\cdot 16 + 4$:\n\\[ 3^{100} = (3^6)^{16} \\cdot 3^4 \\equiv 1^{16} \\cdot 4 = 4 \\pmod{7} \\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Modular Inverses"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.2",
+      "number": "4.2",
+      "title": "Modular Inverse",
+      "content": "If $\\gcd(a, m) = 1$, the **modular inverse** \nof $a$ modulo $m$ is the integer $a^{-1}$ such that:\n\\[ a \\cdot a^{-1} \\equiv 1 \\pmod{m} \\]"
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": "Finding modular inverse",
+      "problem": "Find $5^{-1} \\pmod{7}$.\n\nWe need $5x \\equiv 1 \\pmod{7}$. Testing: $5 \\cdot 3 = 15 \\equiv 1 \\pmod{7}$.\n\nSo $5^{-1} \\equiv 3 \\pmod{7}$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Fermat's Little Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Fermat's Little Theorem",
+      "content": "If $p$ is prime and $\\gcd(a, p) = 1$, then:\n\\[ a^{p-1} \\equiv 1 \\pmod{p} \\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-4.4",
+      "number": "4.4",
+      "title": "Applying Fermat's theorem",
+      "problem": "Find $2^{340} \\mod 11$.\n\nBy Fermat: $2^{10} \\equiv 1 \\pmod{11}$. Since $340 = 10 \\cdot 34$:\n\\[ 2^{340} = (2^{10})^{34} \\equiv 1^{34} = 1 \\pmod{11} \\]",
+      "solution": ""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Genesis 1:14",
+      "text": "Let there be lights in the vault of the \nsky... to serve as signs to mark sacred times, and days and years."
+    }
+  ]
+}

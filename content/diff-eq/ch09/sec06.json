@@ -1,0 +1,196 @@
+{
+  "id": "diff-eq-ch09-sec06",
+  "title": "Fourier Series",
+  "chapter": 9,
+  "section": 6,
+  "book": "diff-eq",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Throughout this chapter, we have seen that solutions to PDEs involve \ninfinite series of sines and cosines. These are **Fourier series**, \nnamed after Joseph Fourier, who discovered that remarkably general \nfunctions can be represented as sums of trigonometric functions. Fourier's \ninsight was revolutionary: even discontinuous functions like square waves \ncan be built from smooth sines and cosines."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Periodic Functions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Periodic Function",
+      "content": "A function $f$ is **periodic with period $P$** if $f(x + P) = f(x)$ \nfor all $x$. The smallest such positive $P$ is the **fundamental period**."
+    },
+    {
+      "type": "paragraph",
+      "text": "The functions $\\sin x$ and $\\cos x$ have period $2\\pi$. The function \n$\\sin(nx)$ has period $2\\pi/n$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Full Fourier Series"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Fourier Series Representation",
+      "content": "If $f(x)$ is a periodic function with period $2L$, its **Fourier series** is:\n\\[\nf(x) = \\frac{a_0}{2} + \\sum_{n=1}^{\\infty}\\left[a_n\\cos\\left(\\frac{n\\pi x}{L}\\right) + b_n\\sin\\left(\\frac{n\\pi x}{L}\\right)\\right]\n\\]\nwhere the **Fourier coefficients** are:\n$$\na_0 &= \\frac{1}{L}\\int_{-L}^{L} f(x)\\,dx\\\\\na_n &= \\frac{1}{L}\\int_{-L}^{L} f(x)\\cos\\left(\\frac{n\\pi x}{L}\\right)\\,dx\\\\\nb_n &= \\frac{1}{L}\\int_{-L}^{L} f(x)\\sin\\left(\\frac{n\\pi x}{L}\\right)\\,dx\n$$\nalign*",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The factor $1/2$ in front of $a_0$ is conventional; it makes the formula \nfor $a_0$ a special case of the formula for $a_n$ with $n = 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Orthogonality"
+    },
+    {
+      "type": "paragraph",
+      "text": "The key to deriving Fourier coefficients is **orthogonality**:"
+    },
+    {
+      "type": "lemma",
+      "id": "lemma-9.1",
+      "number": "9.1",
+      "title": "Orthogonality Relations",
+      "content": "For integers $m, n \\geq 0$:\n$$\n\\int_{-L}^{L} \\cos\\left(\\frac{m\\pi x}{L}\\right)\\cos\\left(\\frac{n\\pi x}{L}\\right)\\,dx &= \\begin{cases} 0 & m \\neq n\\\\ L & m = n \\neq 0\\\\ 2L & m = n = 0\\end{cases}\\\\\n\\int_{-L}^{L} \\sin\\left(\\frac{m\\pi x}{L}\\right)\\sin\\left(\\frac{n\\pi x}{L}\\right)\\,dx &= \\begin{cases} 0 & m \\neq n\\\\ L & m = n \\neq 0\\end{cases}\\\\\n\\int_{-L}^{L} \\cos\\left(\\frac{m\\pi x}{L}\\right)\\sin\\left(\\frac{n\\pi x}{L}\\right)\\,dx &= 0 \\quad\\text{for all } m, n\n$$",
+      "label": "Lemma"
+    },
+    {
+      "type": "paragraph",
+      "text": "To find $a_n$, multiply the Fourier series by $\\cos(n\\pi x/L)$ and integrate. \nBy orthogonality, all terms vanish except the one with the matching cosine, \nyielding the formula for $a_n$. Similarly for $b_n$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Fourier Sine and Cosine Series"
+    },
+    {
+      "type": "paragraph",
+      "text": "For functions defined on $[0, L]$, we often use half-range expansions:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Fourier Sine Series",
+      "content": "The **Fourier sine series** of $f(x)$ on $[0, L]$ is:\n\\[\nf(x) = \\sum_{n=1}^{\\infty} b_n\\sin\\left(\\frac{n\\pi x}{L}\\right), \\quad b_n = \\frac{2}{L}\\int_0^L f(x)\\sin\\left(\\frac{n\\pi x}{L}\\right)\\,dx\n\\]\nThis corresponds to extending $f$ as an **odd function** to $[-L, L]$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.3",
+      "number": "9.3",
+      "title": "Fourier Cosine Series",
+      "content": "The **Fourier cosine series** of $f(x)$ on $[0, L]$ is:\n\\[\nf(x) = \\frac{a_0}{2} + \\sum_{n=1}^{\\infty} a_n\\cos\\left(\\frac{n\\pi x}{L}\\right), \\quad a_n = \\frac{2}{L}\\int_0^L f(x)\\cos\\left(\\frac{n\\pi x}{L}\\right)\\,dx\n\\]\nThis corresponds to extending $f$ as an **even function** to $[-L, L]$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Fourier sine series of $f(x) = 1$",
+      "problem": "Find the Fourier sine series of $f(x) = 1$ on $[0, \\pi]$.\n\n**Solution.**\n\\[\nb_n = \\frac{2}{\\pi}\\int_0^\\pi 1 \\cdot \\sin(nx)\\,dx = \\frac{2}{\\pi}\\left[-\\frac{\\cos(nx)}{n}\\right]_0^\\pi = \\frac{2}{n\\pi}[1 - (-1)^n]\n\\]\n\nThis is nonzero only for odd $n$: $b_n = 4/(n\\pi)$ for $n$ odd.\n\n\\[\n\\boxed{1 = \\frac{4}{\\pi}\\left(\\sin x + \\frac{\\sin 3x}{3} + \\frac{\\sin 5x}{5} + \\cdots\\right) = \\frac{4}{\\pi}\\sum_{k=0}^{\\infty}\\frac{\\sin[(2k+1)x]}{2k+1}}\n\\]\n\nThis series converges to $1$ for $0 < x < \\pi$ and to $0$ at $x = 0, \\pi$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Fourier series of a sawtooth wave",
+      "problem": "Find the Fourier series of $f(x) = x$ on $[-\\pi, \\pi]$, extended periodically.\n\n**Solution.** Since $f(x) = x$ is an odd function, $a_n = 0$ for all $n$.\n\\[\nb_n = \\frac{1}{\\pi}\\int_{-\\pi}^{\\pi} x\\sin(nx)\\,dx = \\frac{2}{\\pi}\\int_0^\\pi x\\sin(nx)\\,dx\n\\]\nIntegration by parts:\n\\[\nb_n = \\frac{2}{\\pi}\\left[-\\frac{x\\cos(nx)}{n}\\bigg|_0^\\pi + \\frac{1}{n}\\int_0^\\pi \\cos(nx)\\,dx\\right] = \\frac{2}{\\pi}\\cdot\\frac{-\\pi(-1)^n}{n} = \\frac{-2(-1)^n}{n}\n\\]\n\n\\[\n\\boxed{x = 2\\left(\\sin x - \\frac{\\sin 2x}{2} + \\frac{\\sin 3x}{3} - \\frac{\\sin 4x}{4} + \\cdots\\right) = 2\\sum_{n=1}^{\\infty}\\frac{(-1)^{n+1}}{n}\\sin(nx)}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Fourier series of a square wave",
+      "problem": "Find the Fourier series of:\n\\[\nf(x) = \\begin{cases} -1 & -\\pi < x < 0\\\\ 1 & 0 < x < \\pi\\end{cases}\n\\]\nextended periodically with period $2\\pi$.\n\n**Solution.** This is an odd function, so $a_n = 0$.\n\\[\nb_n = \\frac{2}{\\pi}\\int_0^\\pi 1 \\cdot \\sin(nx)\\,dx = \\frac{2}{n\\pi}[1 - (-1)^n]\n\\]\nNonzero only for odd $n$: $b_n = 4/(n\\pi)$.\n\n\\[\n\\boxed{f(x) = \\frac{4}{\\pi}\\left(\\sin x + \\frac{\\sin 3x}{3} + \\frac{\\sin 5x}{5} + \\cdots\\right)}\n\\]\n\nSetting $x = \\pi/2$:\n\\[\n1 = \\frac{4}{\\pi}\\left(1 - \\frac{1}{3} + \\frac{1}{5} - \\frac{1}{7} + \\cdots\\right)\n\\]\nThus $\\pi/4 = 1 - 1/3 + 1/5 - 1/7 + \\cdots$, the famous **Leibniz formula** for $\\pi$!",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Convergence of Fourier Series"
+    },
+    {
+      "type": "paragraph",
+      "text": "Not every function has a convergent Fourier series, and even when it \nconverges, it may not converge to the original function everywhere. The \nfollowing theorem covers most cases of interest:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "Pointwise Convergence",
+      "content": "If $f(x)$ is piecewise smooth on $[-L, L]$ (meaning $f$ and $f'$ are \npiecewise continuous), then the Fourier series of $f$ converges at every \npoint to:\n\\[\n\\frac{f(x^+) + f(x^-)}{2}\n\\]\nwhere $f(x^+)$ and $f(x^-)$ are the right and left limits at $x$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "At points of continuity, this is simply $f(x)$. At jump discontinuities, \nthe series converges to the average of the left and right limits."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Gibbs Phenomenon"
+    },
+    {
+      "type": "paragraph",
+      "text": "Near a jump discontinuity, partial sums of a Fourier series overshoot the \nfunction value. This **Gibbs phenomenon** produces oscillations that \ndo not diminish in amplitude as more terms are added—they merely become \nnarrower. The overshoot approaches about $9\\%$ of the jump size."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Parseval's Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.3",
+      "number": "9.3",
+      "title": "Parseval's Theorem",
+      "content": "If $f(x)$ has Fourier coefficients $a_n$ and $b_n$, then:\n\\[\n\\frac{1}{L}\\int_{-L}^{L} |f(x)|^2\\,dx = \\frac{a_0^2}{2} + \\sum_{n=1}^{\\infty}(a_n^2 + b_n^2)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This remarkable result relates the \"energy\" of a function (left side) to \nthe sum of squared amplitudes of its frequency components (right side)."
+    },
+    {
+      "type": "example",
+      "id": "example-9.4",
+      "number": "9.4",
+      "title": "Using Parseval's theorem",
+      "problem": "Use the Fourier series of $f(x) = x$ on $[-\\pi, \\pi]$ to show that \n$\\sum_{n=1}^{\\infty} 1/n^2 = \\pi^2/6$.\n\n**Solution.** We found $a_n = 0$ and $b_n = 2(-1)^{n+1}/n$. By Parseval:\n\\[\n\\frac{1}{\\pi}\\int_{-\\pi}^{\\pi} x^2\\,dx = \\sum_{n=1}^{\\infty} b_n^2 = \\sum_{n=1}^{\\infty} \\frac{4}{n^2}\n\\]\n\nThe left side is:\n\\[\n\\frac{1}{\\pi}\\cdot\\frac{2\\pi^3}{3} = \\frac{2\\pi^2}{3}\n\\]\n\nTherefore:\n\\[\n\\frac{2\\pi^2}{3} = 4\\sum_{n=1}^{\\infty}\\frac{1}{n^2} \\implies \\boxed{\\sum_{n=1}^{\\infty}\\frac{1}{n^2} = \\frac{\\pi^2}{6}}\n\\]\n\nThis is the famous **Basel problem**, first solved by Euler in 1735.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications to PDEs"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fourier series are essential for solving PDEs with general initial or \nboundary conditions:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Solve the PDE by separation of variables to find normal modes.",
+        "The general solution is a superposition of normal modes with \n unknown coefficients.",
+        "Match initial/boundary conditions by expanding them in Fourier series.",
+        "The Fourier coefficients determine the solution coefficients."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-9.5",
+      "number": "9.5",
+      "title": "Heat equation with general initial condition",
+      "problem": "Solve $u_t = u_{xx}$ on $0 < x < \\pi$ with $u(0,t) = u(\\pi,t) = 0$ and \n$u(x,0) = x(\\pi - x)$.\n\n**Solution.** The general solution is:\n\\[\nu(x,t) = \\sum_{n=1}^{\\infty} b_n \\sin(nx) e^{-n^2 t}\n\\]\n\nAt $t = 0$:\n\\[\nx(\\pi - x) = \\sum_{n=1}^{\\infty} b_n\\sin(nx)\n\\]\n\nFrom Example 9.3.2 (or direct computation):\n\\[\nb_n = \\frac{4}{n^3\\pi}[1-(-1)^n] = \\begin{cases} 8/(n^3\\pi) & n \\text{ odd}\\\\ 0 & n \\text{ even}\\end{cases}\n\\]\n\n\\[\n\\boxed{u(x,t) = \\frac{8}{\\pi}\\sum_{k=0}^{\\infty}\\frac{\\sin[(2k+1)x]}{(2k+1)^3}e^{-(2k+1)^2 t}}\n\\]",
+      "solution": ""
+    }
+  ]
+}

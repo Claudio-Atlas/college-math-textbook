@@ -1,0 +1,363 @@
+{
+  "id": "vol1-ch01-sec02",
+  "title": "A Catalog of Essential Functions",
+  "chapter": 1,
+  "section": 2,
+  "book": "vol1",
+  "epigraph": {
+    "text": "The heavens declare the glory of God; the skies proclaim \nthe work of his hands.",
+    "reference": "Psalm 19:1"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "You already know more functions than you think. The line $y = 2x + 1$ that \nyou graphed in eighth-grade algebra? A function. The parabola \n$y = x^{2} - 4$ from your first encounter with quadratics? Also a function. \nThe sine wave you met in trigonometry? Yet another. In this section we \norganize these old friends into families, noting the distinctive shape, key \nproperties, and natural habitat of each. The goal is *recognition*: \nwhen you see a function in calculus, you should immediately know which family \nit belongs to, what its graph looks like, and what behavior to expect."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Linear Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "The simplest functions are the **linear functions**, whose graphs are \nstraight lines."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.1",
+      "number": "1.1",
+      "title": "Linear Function",
+      "content": "A **linear function** is a function of the form\n\\[\n f(x) = mx + b,\n\\]\nwhere $m$ is the **slope** and $b$ is the **$y$-intercept**. \nThe domain is $(-\\infty, \\infty)$, and the range is $(-\\infty, \\infty)$ \n(unless $m = 0$, in which case $f$ is the constant function $f(x) = b$ with \nrange $\\{b\\}$)."
+    },
+    {
+      "type": "paragraph",
+      "text": "The slope $m = \\dfrac{\\Delta y}{\\Delta x}$ measures the *rate of \nchange*: for every one-unit increase in $x$, the output changes by $m$ \nunits. A positive slope means the line rises; a negative slope means it \nfalls."
+    },
+    {
+      "type": "paragraph",
+      "text": "*Where you will see them.** Linear functions model any \nquantity that changes at a constant rate: a car traveling at constant \nspeed, a bank account with simple interest, or the cost of goods at a \nfixed price per unit. In calculus, every differentiable function \n*looks linear* when you zoom in close enough—this is the \nfoundational insight of the derivative."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Polynomials"
+    },
+    {
+      "type": "paragraph",
+      "text": "A polynomial is a sum of power terms with nonnegative integer exponents."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.2",
+      "number": "1.2",
+      "title": "Polynomial Function",
+      "content": "A **polynomial** of degree $n$ is a function \nof the form\n\\[\n P(x) = a_n x^n + a_{n-1} x^{n-1} + \\cdots + a_1 x + a_0,\n\\]\nwhere $n$ is a nonneg\\-ative integer, the coefficients $a_0, a_1, \\ldots, \na_n$ are real numbers, and $a_n \\neq 0$. The term $a_n x^n$ is the \n**leading term**, and $a_n$ is the **leading coefficient**."
+    },
+    {
+      "type": "paragraph",
+      "text": "The domain of every polynomial is $(-\\infty, \\infty)$. The end behavior \ndepends on the degree and the sign of the leading coefficient:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Even degree, $a_n > 0$:** Both ends rise \n ($y \\to +\\infty$ as $x \\to \\pm\\infty$).",
+        "**Even degree, $a_n < 0$:** Both ends fall.",
+        "**Odd degree, $a_n > 0$:** Falls left, rises right.",
+        "**Odd degree, $a_n < 0$:** Rises left, falls right."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Polynomials of low degree have familiar names:"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Degree**",
+        "**Name**",
+        "**Example**"
+      ],
+      "rows": [
+        [
+          "0",
+          "Constant",
+          "$f(x) = 5$"
+        ],
+        [
+          "1",
+          "Linear",
+          "$f(x) = 3x - 1$"
+        ],
+        [
+          "2",
+          "Quadratic",
+          "$f(x) = x^{2} - 4x + 3$"
+        ],
+        [
+          "3",
+          "Cubic",
+          "$f(x) = x^{3} - 2x$"
+        ],
+        [
+          "4",
+          "Quartic",
+          "$f(x) = x^{4} - 3x^{2} + 1$"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "left",
+        "left"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-1.1",
+      "number": "1.1",
+      "title": "Identifying end behavior",
+      "problem": "Describe the end behavior of $f(x) = -2x^{5} + 7x^{3} - x + 4$.",
+      "solution": "The degree is $5$ (odd) and the leading coefficient is $-2$ (negative). \nTherefore $f(x) \\to +\\infty$ as $x \\to -\\infty$ and $f(x) \\to -\\infty$ \nas $x \\to +\\infty$. The graph rises on the left and falls on the right."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Power Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **power function** has the form $f(x) = x^{a}$ \nwhere $a$ is a constant. We have already seen the cases $a = 2, 3, 4, \n\\ldots$ among the polynomials. The interesting new cases arise when $a$ is \na fraction or a negative integer."
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$f(x) = x^{1/2} = \\sqrt{x}$: Domain $[0,\\infty)$, range \n $[0,\\infty)$. The familiar square-root curve.",
+        "$f(x) = x^{1/3} = \\sqrt[3]{x}$: Domain $(-\\infty,\\infty)$, range \n $(-\\infty,\\infty)$. Like the square root but defined for negative \n inputs as well.",
+        "$f(x) = x^{-1} = 1/x$: Domain \n $(-\\infty, 0) \\cup (0, \\infty)$. The graph is a hyperbola with \n vertical and horizontal asymptotes.",
+        "$f(x) = x^{-2} = 1/x^{2}$: Similar shape, but always positive."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Rational Functions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.3",
+      "number": "1.3",
+      "title": "Rational Function",
+      "content": "A **rational function** is a ratio of two \npolynomials:\n\\[\n f(x) = \\frac{P(x)}{Q(x)},\n\\]\nwhere $P$ and $Q$ are polynomials and $Q$ is not the zero polynomial. The \ndomain consists of all real numbers except those where $Q(x) = 0$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Rational functions often exhibit **vertical asymptotes** (where the \ndenominator vanishes) and **horizontal asymptotes** (describing end \nbehavior). We will study asymptotic behavior rigorously in \n[ch:limits] using limits."
+    },
+    {
+      "type": "example",
+      "id": "example-1.2",
+      "number": "1.2",
+      "title": "Identifying asymptotes of a rational function",
+      "problem": "Identify the domain and asymptotes of $f(x) = \\dfrac{2x + 1}{x - 3}$.",
+      "solution": "The denominator $x - 3 = 0$ when $x = 3$, so the domain is \n$(-\\infty, 3) \\cup (3, \\infty)$.\n\n**Vertical asymptote:** $x = 3$ (the denominator vanishes here).\n\n**Horizontal asymptote:** For large $\\abs{x}$, the dominant terms \nare $2x$ in the numerator and $x$ in the denominator, so \n$f(x) \\approx \\frac{2x}{x} = 2$. The horizontal asymptote is $y = 2$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Algebraic Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "An **algebraic function** is any function \nthat can be constructed from polynomials using addition, subtraction, \nmultiplication, division, and root extraction. Examples include\n\\[\n f(x) = \\sqrt{x^{2} + 1}, \\qquad g(x) = \\frac{x^{2/3}}{1 + x}, \\qquad \n h(x) = \\bigl(x^{4} + 3x\\bigr)^{3/5}.\n\\]\nEvery polynomial is algebraic; every rational function is algebraic; but \nnot every algebraic function is a polynomial or rational function."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exponential Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Few functions in nature are as ubiquitous as the exponential."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.4",
+      "number": "1.4",
+      "title": "Exponential Function",
+      "content": "An **exponential function** has the form\n\\[\n f(x) = b^{x},\n\\]\nwhere the **base** $b$ is a positive constant with $b \\neq 1$. The \ndomain is $(-\\infty, \\infty)$ and the range is $(0, \\infty)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Key properties:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "If $b > 1$, the function is **increasing** (exponential \n growth).",
+        "If $0 < b < 1$, the function is **decreasing** (exponential \n decay).",
+        "The graph always passes through $(0, 1)$ because $b^{0} = 1$.",
+        "The $x$-axis ($y = 0$) is a horizontal asymptote."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The most important base in calculus is the **natural base** \n$e \\approx 2.71828$. The function $f(x) = e^{x}$ arises naturally in \nthe study of continuous growth and will be central to our work from \n[ch:derivative] onward. We will see in [ch:limits] that $e$ \ncan be defined as a limit:\n\\[\n e = \\limtoinf \\left(1 + \\frac{1}{n}\\right)^{n}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "*Where you will see them.** Population growth, radioactive \ndecay, compound interest, the spread of disease, Newton's law of cooling—all \nare modeled by exponential functions. In [ch:derivative] we will \ndiscover the remarkable property that makes $e^{x}$ unique: *it is its \nown derivative.*"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Logarithmic Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "The logarithm is the *inverse* of the exponential. We will study \ninverse functions formally in [sec:inverse-functions]; for now, it \nsuffices to say that the logarithm \"undoes\" exponentiation."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.5",
+      "number": "1.5",
+      "title": "Logarithmic Function",
+      "content": "The **logarithmic function** with base $b$ \n($b > 0$, $b \\neq 1$) is defined by\n\\[\n y = \\log_{b} x \\quad \\Longleftrightarrow \\quad b^{y} = x.\n\\]\nThe domain is $(0, \\infty)$ and the range is $(-\\infty, \\infty)$. The \n**natural logarithm** is the logarithm with \nbase $e$, written $\\ln x = \\log_{e} x$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Key properties:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$\\log_b 1 = 0$ because $b^0 = 1$.",
+        "$\\log_b b = 1$ because $b^1 = b$.",
+        "$\\log_b(xy) = \\log_b x + \\log_b y$.",
+        "$\\log_b(x/y) = \\log_b x - \\log_b y$.",
+        "$\\log_b(x^r) = r \\log_b x$."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "*Where you will see them.** Logarithms measure orders of \nmagnitude: earthquake intensity (Richter scale), sound volume (decibels), \nand acidity (pH) all use logarithmic scales. The natural logarithm $\\ln x$ \nwill be especially important in calculus—its derivative is the beautifully \nsimple $1/x$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Trigonometric Functions (Preview)"
+    },
+    {
+      "type": "paragraph",
+      "text": "We devote all of [sec:trig-functions] to a thorough review of the \ntrigonometric functions. For now, we simply note their place in the \ncatalog: the functions $\\sin x$, $\\cos x$, and $\\tan x$ (together with \ntheir reciprocals $\\csc x$, $\\sec x$, $\\cot x$) model *periodic* \nphenomena—oscillation, rotation, waves."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Recognizing Function Families"
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the most important skills in calculus is *recognizing* which \nfamily a function belongs to. Each family has a distinctive graphical \nsignature:"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Family**",
+        "**Telltale sign**",
+        "**Key example**"
+      ],
+      "rows": [
+        [
+          "Linear",
+          "Straight line",
+          "$f(x) = 2x + 3$"
+        ],
+        [
+          "Polynomial",
+          "Smooth, turning points",
+          "$f(x) = x^3 - 3x$"
+        ],
+        [
+          "Power",
+          "Single term $x^a$",
+          "$f(x) = x^{2/3}$"
+        ],
+        [
+          "Rational",
+          "Asymptotes, holes",
+          "$f(x) = \\frac{1}{x-1}$"
+        ],
+        [
+          "Exponential",
+          "Rapid growth/decay",
+          "$f(x) = 2^x$"
+        ],
+        [
+          "Logarithmic",
+          "Slow growth, domain $(0,\\infty)$",
+          "$f(x) = \\ln x$"
+        ],
+        [
+          "Trigonometric",
+          "Periodic oscillation",
+          "$f(x) = \\sin x$"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "left",
+        "left"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-1.3",
+      "number": "1.3",
+      "title": "Classifying functions",
+      "problem": "Classify each function by family.\n\n1. $f(x) = 5 \\cdot 3^x$\n\n2. $g(x) = \\dfrac{x^2 - 1}{x + 2}$\n\n3. $h(x) = 4\\sin(2x)$\n\n4. $k(x) = x^{4} - 2x^{2} + 7$",
+      "solution": "1. **Exponential.** The variable is in the exponent, with base \n $b = 3$.\n\n2. **Rational.** It is a ratio of two polynomials.\n\n3. **Trigonometric.** It is a scaled and compressed sine function.\n\n4. **Polynomial** (degree 4, quartic). It is a sum of terms \n with nonneg\\-ative integer powers of $x$."
+    },
+    {
+      "type": "historical",
+      "id": "historical-1.2",
+      "number": null,
+      "title": "Leonhard Euler (1707--1783)",
+      "content": "Euler was among the first to use the notation $f(x)$ for a function of $x$, \nthe symbol $e$ for the base of the natural logarithm, and $\\pi$ for the \nratio of a circle's circumference to its diameter. His *Introductio \nin Analysin Infinitorum* (1748) was one of the first textbooks to organize \nmathematics around the concept of a function rather than around geometric \nconstructions. A devout Christian, Euler once wrote: \"For since the fabric \nof the universe is most perfect and the work of a most wise Creator, nothing \nat all takes place in the universe in which some rule of maximum or minimum \ndoes not appear.\""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 3:5--6",
+      "text": "Trust in the Lord with all your heart and \nlean not on your own understanding; in all your ways submit to him, and he \nwill make your paths straight."
+    },
+    {
+      "type": "scripture",
+      "reference": "Genesis 1:28",
+      "text": "God blessed them and said to them, \"Be \nfruitful and increase in number; fill the earth and subdue it.\""
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 12:4--6",
+      "text": "There are different kinds of \ngifts, but the same Spirit distributes them. There are different kinds \nof service, but the same Lord."
+    },
+    {
+      "type": "quote",
+      "author": "Carl Friedrich Gauss",
+      "text": "Mathematics is the queen of the sciences, \nand number theory is the queen of mathematics."
+    },
+    {
+      "type": "quote",
+      "author": "Leonhard Euler",
+      "text": "Nothing takes place in the world whose meaning \nis not that of some maximum or minimum."
+    },
+    {
+      "type": "quote",
+      "author": "John Napier",
+      "text": "Seeing there is nothing that is so troublesome to \nmathematical practice…\\ than the multiplications, divisions, square and \ncubical extractions of great numbers, I began therefore to consider how I \nmight remove those hindrances."
+    }
+  ]
+}

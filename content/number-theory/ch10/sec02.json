@@ -1,0 +1,113 @@
+{
+  "id": "number-theory-ch10-sec02",
+  "title": "Sums of Two Squares",
+  "chapter": 10,
+  "section": 2,
+  "book": "number-theory",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Which positive integers can be written as the sum of two squares?"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Main Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "Fermat's Two-Square Theorem",
+      "content": "An odd prime $p$ is a sum of two squares if and only if $p \\equiv 1 \\pmod{4}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If $p = x^2 + y^2$, then modulo 4, squares are 0 or 1, so \n$p \\equiv 0, 1, \\text{ or } 2 \\pmod{4}$. Since $p$ is an odd prime, \n$p \\not\\equiv 0, 2$, so $p \\equiv 1 \\pmod{4}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The sufficiency is harder; one approach uses the fact that $-1$ is a \nquadratic residue mod $p$ when $p \\equiv 1 \\pmod{4}$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "Primes as Sums of Squares",
+      "problem": "$5 = 1^2 + 2^2$, $13 = 2^2 + 3^2$, $17 = 1^2 + 4^2$, $29 = 2^2 + 5^2$.\n\n$3, 7, 11, 19, 23$ (primes $\\equiv 3 \\pmod{4}$) are not sums of two squares.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Brahmagupta-Fibonacci Identity"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.2",
+      "number": "10.2",
+      "title": "Brahmagupta-Fibonacci Identity",
+      "content": "$(a^2 + b^2)(c^2 + d^2) = (ac - bd)^2 + (ad + bc)^2$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Expand both sides and verify equality."
+    },
+    {
+      "type": "paragraph",
+      "text": "This identity shows: if $m$ and $n$ are sums of two squares, so is $mn$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.2",
+      "number": "10.2",
+      "title": "Using the Identity",
+      "problem": "$5 = 1^2 + 2^2$ and $13 = 2^2 + 3^2$.\n\n$5 \\cdot 13 = 65 = (1 \\cdot 2 - 2 \\cdot 3)^2 + (1 \\cdot 3 + 2 \\cdot 2)^2 \n= (-4)^2 + 7^2 = 16 + 49$ $\\checkmark$\n\nOr: $(1 \\cdot 2 + 2 \\cdot 3)^2 + (1 \\cdot 3 - 2 \\cdot 2)^2 = 8^2 + 1^2 = 65$ $\\checkmark$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Complete Classification"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.3",
+      "number": "10.3",
+      "title": "Sums of Two Squares",
+      "content": "A positive integer $n$ is a sum of two squares if and only if in its \nprime factorization, every prime $p \\equiv 3 \\pmod{4}$ appears to an \neven power.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-10.3",
+      "number": "10.3",
+      "title": "Classification",
+      "problem": "$50 = 2 \\cdot 5^2 = 1^2 + 7^2$ $\\checkmark$ (no primes $\\equiv 3 \\pmod 4$)\n\n$21 = 3 \\cdot 7$: both $3 \\equiv 3$ and $7 \\equiv 3$ appear to odd powers. \nNot a sum of two squares. $\\times$\n\n$45 = 3^2 \\cdot 5$: $3^2$ has even exponent. $45 = 3^2 + 6^2$ $\\checkmark$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Four Squares Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.4",
+      "number": "10.4",
+      "title": "Lagrange's Four Squares Theorem",
+      "content": "Every positive integer is a sum of four squares.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-10.4",
+      "number": "10.4",
+      "title": "Sums of Four Squares",
+      "problem": "$7 = 1^2 + 1^2 + 1^2 + 2^2$, $15 = 1^2 + 1^2 + 2^2 + 3^2$.",
+      "solution": ""
+    }
+  ]
+}

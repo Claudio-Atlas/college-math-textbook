@@ -1,0 +1,92 @@
+{
+  "id": "prob-stats-ch06-sec02",
+  "title": "Sampling Distribution of the Sample Mean",
+  "chapter": 6,
+  "section": 2,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "A faithful witness does not lie, but a false witness breathes out lies.",
+    "reference": "Proverbs 14:5",
+    "quote": "The sample mean is the best estimator of the population mean.",
+    "quoteAuthor": "Ronald A. Fisher"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The sample mean $\\xbar$ is the most common statistic. Understanding \nits sampling distribution is fundamental to inference."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Mean and Standard Deviation of $\\xbar$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Mean and Standard Error of $\\xbar$",
+      "content": "If $X_1, X_2, \\ldots, X_n$ are a random sample from a population \nwith mean $\\mu$ and standard deviation $\\sigma$, then:\n\\[\n \\E[\\xbar] = \\mu \\qquad \\text{and} \\qquad \\SD(\\xbar) = \\frac{\\sigma}{\\sqrt{n}}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$\\xbar = \\frac{1}{n}(X_1 + \\cdots + X_n)$.\n\nBy linearity: $\\E[\\xbar] = \\frac{1}{n}(n\\mu) = \\mu$.\n\nBy independence: $\\Var(\\xbar) = \\frac{1}{n^2}(n\\sigma^2) = \\frac{\\sigma^2}{n}$.\n\nTherefore $\\SD(\\xbar) = \\frac{\\sigma}{\\sqrt{n}}$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Standard Error",
+      "content": "The **standard error** of a statistic is \nthe standard deviation of its sampling distribution.\n\nFor the sample mean: $\\SE(\\xbar) = \\frac{\\sigma}{\\sqrt{n}}$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-6.2",
+      "number": null,
+      "title": "$\\SE$ vs.\\ $\\SD$",
+      "content": "Standard deviation ($\\SD$) measures the spread of individual \nobservations. Standard error ($\\SE$) measures the spread of a \nstatistic across samples. They are related by $\\SE(\\xbar) = \\frac{\\SD}{\\sqrt{n}}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Effect of Sample Size"
+    },
+    {
+      "type": "paragraph",
+      "text": "As $n$ increases:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$\\E[\\xbar] = \\mu$ remains unchanged",
+        "$\\SE(\\xbar) = \\frac{\\sigma}{\\sqrt{n}}$ decreases"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Larger samples give more precise estimates."
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Standard Error",
+      "problem": "A population has $\\mu = 100$ and $\\sigma = 15$. Find $\\SE(\\xbar)$ for:\n\n1. $n = 9$\n\n2. $n = 36$\n\n3. $n = 225$",
+      "solution": "1. $\\SE(\\xbar) = 15/\\sqrt{9} = 15/3 = 5$\n\n2. $\\SE(\\xbar) = 15/\\sqrt{36} = 15/6 = 2.5$\n\n3. $\\SE(\\xbar) = 15/\\sqrt{225} = 15/15 = 1$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Sampling from Normal Populations"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Sampling from Normal Distribution",
+      "content": "If $X_1, \\ldots, X_n$ are a random sample from $\\Normal(\\mu, \\sigma^2)$, then:\n\\[\n \\xbar \\sim \\Normal\\left(\\mu, \\frac{\\sigma^2}{n}\\right)\n\\]\nEquivalently:\n\\[\n Z = \\frac{\\xbar - \\mu}{\\sigma/\\sqrt{n}} \\sim \\Normal(0, 1)\n\\]",
+      "label": "Theorem"
+    }
+  ]
+}

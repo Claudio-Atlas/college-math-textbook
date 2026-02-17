@@ -1,0 +1,123 @@
+{
+  "id": "complex-analysis-ch06-sec04",
+  "title": "Classification of Singularities",
+  "chapter": 6,
+  "section": 4,
+  "book": "complex-analysis",
+  "epigraph": {
+    "text": "But solid food is for the mature, for those who have their powers of discernment trained by constant practice.",
+    "reference": "Hebrews 5:14",
+    "quote": "To classify singularities is to understand the local behavior of functions.",
+    "quoteAuthor": "Karl Weierstrass"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The principal part of a Laurent series tells us what kind of singularity \na function has. We classify singularities into three types."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Isolated Singularities"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Isolated Singularity",
+      "content": "A point $z_0$ is an **isolated singularity** \nof $f$ if $f$ is analytic in some punctured disk \n$0 < |z - z_0| < R$ but not at $z_0$ itself."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.2",
+      "number": "6.2",
+      "title": "Classification of Isolated Singularities",
+      "content": "Let $z_0$ be an isolated singularity of $f$ with Laurent series \n$\\sum_{n=-\\infty}^{\\infty} a_n(z-z_0)^n$. Then $z_0$ is:\n\n1. A **removable singularity** if \n $a_n = 0$ for all $n < 0$. The principal part is zero.\n\n2. A **pole** of **order** $m$ if $a_{-m} \\neq 0$ \n but $a_n = 0$ for $n < -m$. The principal part is finite.\n\n3. An **essential singularity** if \n $a_n \\neq 0$ for infinitely many $n < 0$. The principal part is infinite."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Characterizations"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Removable Singularities",
+      "content": "The following are equivalent for an isolated singularity $z_0$:\n\n1. $z_0$ is removable.\n\n2. $\\lim_{z \\to z_0} f(z)$ exists (and is finite).\n\n3. $f$ is bounded near $z_0$.\n\n4. $(z - z_0)f(z) \\to 0$ as $z \\to z_0$.\nIf any holds, defining $f(z_0) = \\lim_{z \\to z_0} f(z)$ makes $f$ analytic.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": null,
+      "problem": "$f(z) = (\\sin z)/z$ has a removable singularity at $z = 0$ since \n$\\lim_{z \\to 0}(\\sin z)/z = 1$.",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Poles",
+      "content": "The following are equivalent:\n\n1. $z_0$ is a pole of order $m$.\n\n2. $\\lim_{z \\to z_0} |f(z)| = \\infty$.\n\n3. $f(z) = g(z)/(z-z_0)^m$ where $g$ is analytic at $z_0$ with $g(z_0) \\neq 0$.\n\n4. $(z-z_0)^m f(z)$ has a removable singularity at $z_0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.3",
+      "number": "6.3",
+      "title": "Casorati-Weierstrass Theorem",
+      "content": "If $z_0$ is an essential singularity of $f$, then for every $w \\in \\C$ \nand every $\\epsilon > 0$, there exists $z$ with $0 < |z - z_0| < \\epsilon$ \nsuch that $|f(z) - w| < \\epsilon$. In other words, $f$ comes arbitrarily \nclose to every value near an essential singularity.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The stronger **Picard's Theorem** says $f$ \nactually *attains* every value (with at most one exception) \ninfinitely often near an essential singularity."
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": null,
+      "problem": "$f(z) = e^{1/z}$ has an essential singularity at $z = 0$. Its Laurent \nseries is $\\sum_{n=0}^{\\infty} \\frac{1}{n!z^n}$, with infinitely many \nnegative powers.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Behavior at Infinity"
+    },
+    {
+      "type": "paragraph",
+      "text": "To study $f$ near $\\infty$, we examine $g(w) = f(1/w)$ near $w = 0$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.3",
+      "number": "6.3",
+      "title": "Singularity at Infinity",
+      "content": "We say $f$ has a removable singularity, pole, or essential singularity \nat $\\infty$ according to the type of singularity $g(w) = f(1/w)$ has at \n$w = 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-6.3",
+      "number": "6.3",
+      "title": null,
+      "problem": "$f(z) = z^2$ has a pole of order 2 at $\\infty$ since $g(w) = 1/w^2$ has \na pole of order 2 at $w = 0$.",
+      "solution": ""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "2 Corinthians 12:9",
+      "text": "My grace is sufficient for you, for \nmy power is made perfect in weakness."
+    },
+    {
+      "type": "quote",
+      "author": "Karl Weierstrass",
+      "text": "The character of a singularity is revealed \nby the principal part."
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "id": "abstract-algebra-ch04-sec02",
+  "title": "Lagrange's Theorem",
+  "chapter": 4,
+  "section": 2,
+  "book": "abstract-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"He determines the number of the stars and calls them \neach by name.\"*{Psalm 147:4}{*\"The order of a subgroup divides the order of the group—a truth both simple and profound.\"*}{Joseph-Louis Lagrange}\n\n*\"Mathematics is not about numbers, equations, or algorithms: it is about understanding.\"*{— William Paul Thurston}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Lagrange's Theorem is one of the most fundamental results in group \ntheory. It constrains the possible sizes of subgroups and has far-reaching \napplications in number theory, combinatorics, and beyond."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Lagrange's Theorem",
+      "content": "If $G$ is a finite group and $H \\leq G$, then $|H|$ divides $|G|$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The left cosets of $H$ partition $G$ (Theorem [thm:coset-partition]). \nEach coset has exactly $|H|$ elements (property (v)). If there are $k$ \ndistinct cosets, then:\n\\[\n |G| = k \\cdot |H|\n\\]\nThus $|H|$ divides $|G|$."
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-4.1",
+      "number": "4.1",
+      "title": "",
+      "content": "For any $g \\in G$, the order $|g|$ divides $|G|$.",
+      "label": "Corollary"
+    },
+    {
+      "type": "proof",
+      "content": "The element $g$ generates the cyclic subgroup $\\langle g \\rangle$ with \n$|\\langle g \\rangle| = |g|$. By Lagrange, $|g|$ divides $|G|$."
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-4.2",
+      "number": "4.2",
+      "title": "",
+      "content": "If $|G| = n$, then $g^n = e$ for all $g \\in G$.",
+      "label": "Corollary"
+    },
+    {
+      "type": "proof",
+      "content": "Let $|g| = d$. Then $d \\mid n$, say $n = dk$. Thus $g^n = g^{dk} = \n(g^d)^k = e^k = e$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Consequences for Group Structure"
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-4.3",
+      "number": "4.3",
+      "title": "",
+      "content": "A group of prime order $p$ is cyclic (hence isomorphic to $\\Z_p$).",
+      "label": "Corollary"
+    },
+    {
+      "type": "proof",
+      "content": "Let $|G| = p$ (prime) and let $g \\in G$ with $g \\neq e$. Then \n$|\\langle g \\rangle|$ divides $p$ and is greater than $1$ (since \n$g \\neq e$). Thus $|\\langle g \\rangle| = p = |G|$, so $G = \\langle g \n\\rangle$."
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-4.4",
+      "number": "4.4",
+      "title": "",
+      "content": "A group of prime order has no proper nontrivial subgroups.",
+      "label": "Corollary"
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Possible subgroup orders",
+      "problem": "Let $|G| = 12$. The possible subgroup orders are divisors of $12$:\n\\[\n 1, 2, 3, 4, 6, 12\n\\]\nNote: Lagrange's Theorem says only that subgroup orders must divide $|G|$. \nIt does *not* guarantee that subgroups of each divisor size exist.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "$A_4$ has no subgroup of order $6$",
+      "problem": "Although $6 \\mid 12 = |A_4|$, the group $A_4$ has no subgroup of order \n$6$. The converse of Lagrange's Theorem is false!",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Euler's Theorem and Fermat's Little Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Euler's Theorem",
+      "content": "If $\\gcd(a, n) = 1$, then $a^{\\phi(n)} \\equiv 1 \\pmod{n}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The element $[a] \\in U(n)$ has order dividing $|U(n)| = \\phi(n)$ by \nLagrange. Thus $a^{\\phi(n)} \\equiv 1 \\pmod{n}$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.3",
+      "number": "4.3",
+      "title": "Fermat's Little Theorem",
+      "content": "If $p$ is prime and $\\gcd(a, p) = 1$, then $a^{p-1} \\equiv 1 \\pmod{p}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Since $p$ is prime, $\\phi(p) = p - 1$. Apply Euler's Theorem."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Find all possible orders of elements in a group of order $20$.",
+        "Prove that every group of order $35$ is cyclic.",
+        "Use Fermat's Little Theorem to find $2^{100} \\mod 13$.",
+        "Show that if $H, K \\leq G$ with $|H| = 12$ and $|K| = 35$, then \n $H \\cap K = \\{e\\}$.",
+        "Prove that a group of order $4$ is abelian."
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 11:5",
+      "text": "As you do not know the path of the \nwind, or how the body is formed in a mother's womb, so you cannot \nunderstand the work of God, the Maker of all things."
+    },
+    {
+      "type": "quote",
+      "author": "Joseph-Louis Lagrange",
+      "text": "1736–1813, Italian-French \nmathematician."
+    }
+  ]
+}

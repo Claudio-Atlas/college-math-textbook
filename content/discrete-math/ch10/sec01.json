@@ -1,0 +1,82 @@
+{
+  "id": "discrete-math-ch10-sec01",
+  "title": "Introduction to Trees",
+  "chapter": 10,
+  "section": 1,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Blessed is the one who trusts in the Lord... They \nwill be like a tree planted by the water that sends out its roots by the \nstream.\"*{Jeremiah 17:7–8}{A tree is a connected graph with no cycles—the simplest connected structure.}{Arthur Cayley}"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **tree** combines connectivity with the absence of \ncycles—a minimal structure for linking all vertices."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Tree",
+      "content": "A **tree** is a connected graph with no cycles (simple cycles)."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.2",
+      "number": "10.2",
+      "title": "Forest",
+      "content": "A **forest** is a graph with no cycles (not necessarily \nconnected). Each connected component of a forest is a tree."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "Characterizations of Trees",
+      "content": "For a graph $G$ with $n$ vertices, the following are equivalent:\n\n1. $G$ is a tree (connected and acyclic).\n\n2. $G$ is connected and has exactly $n - 1$ edges.\n\n3. $G$ is acyclic and has exactly $n - 1$ edges.\n\n4. There is a unique path between any two vertices.\n\n5. $G$ is connected, but removing any edge disconnects it.\n\n6. $G$ is acyclic, but adding any edge creates exactly one cycle.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(1) $\\Rightarrow$ (2): Induction on $n$. Base: one vertex, zero edges. \nInductive: remove a leaf (degree-1 vertex, which must exist in a tree); \nremaining graph is a tree with $n-1$ vertices and $n-2$ edges by IH.\n\n(2) $\\Rightarrow$ (3): If connected with $n-1$ edges had a cycle, removing \na cycle edge keeps it connected with fewer edges, contradicting minimality.\n\nOther implications follow similarly."
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "Trees and non-trees",
+      "problem": "- $K_1$, $K_2$, $P_n$: trees\n\n- $K_3$, $C_n$, $K_4$: not trees (contain cycles)\n\n- Star graph $K_{1,n}$: tree (one center connected to $n$ leaves)",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Leaves"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.3",
+      "number": "10.3",
+      "title": "Leaf",
+      "content": "A **leaf** (or pendant vertex) is a vertex of degree 1."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.2",
+      "number": "10.2",
+      "title": "Leaves in Trees",
+      "content": "Every tree with $\\geq 2$ vertices has at least two leaves.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $P = v_0, v_1, \\ldots, v_k$ be a longest path in tree $T$. Then \n$v_0$ and $v_k$ are leaves: if $v_0$ had neighbor $u \\neq v_1$, either \n$u$ is on $P$ (creating a cycle) or $u, v_0, v_1, \\ldots, v_k$ is a \nlonger path. Both are contradictions. Similarly for $v_k$."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Matthew 7:17",
+      "text": "Every good tree bears good fruit."
+    }
+  ]
+}

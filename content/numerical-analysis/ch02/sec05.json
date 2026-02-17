@@ -1,0 +1,181 @@
+{
+  "id": "numerical-analysis-ch02-sec05",
+  "title": "Hybrid Methods",
+  "chapter": 2,
+  "section": 5,
+  "book": "numerical-analysis",
+  "objectives": [
+    "Understand the motivation for combining bracketing and open methods",
+    "Describe Brent's method and its key innovations",
+    "Implement safeguarded root-finding algorithms",
+    "Analyze when hybrid methods outperform pure approaches"
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Each method we've studied has trade-offs. Bisection is reliable but slow. Newton and secant are fast but can fail. **Hybrid methods** combine the best of both worlds: the guaranteed convergence of bracketing methods with the speed of interpolation-based methods."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Case for Hybrid Methods"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider the desiderata for production-quality root-finding:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Guaranteed convergence:** Given a valid bracket, always find a root.",
+        "**Fast convergence:** Achieve superlinear convergence when possible.",
+        "**Minimal function evaluations:** Don't waste expensive computations.",
+        "**Robustness:** Handle difficult functions (flat regions, sharp turns, etc.)."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "No single method achieves all four. The solution: use fast methods when they work, fall back to safe methods when they don't."
+    },
+    {
+      "type": "method",
+      "id": "method-2.5",
+      "number": null,
+      "title": "Generic Safeguarded Iteration",
+      "content": "1. Maintain a bracket $[a, b]$ with $f(a)f(b) < 0$.\n\n2. Propose a \"fast\" step using Newton, secant, or interpolation.\n\n3. If the proposed step stays within the bracket and shows progress, accept it.\n\n4. Otherwise, take a bisection step.\n\n5. Update the bracket and repeat."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Dekker's Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "Dekker's method (1969) was an early hybrid combining bisection and secant."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Dekker's Method",
+      "content": "Maintain a bracket $[b, c]$ with $f(b)f(c) < 0$ and $|f(b)| \\leq |f(c)|$ (so $b$ is the current best estimate). At each step:\n\n1. Compute the secant step: $s = b - f(b)\\frac{b-a}{f(b)-f(a)}$ where $a$ is the previous value of $b$.\n\n2. Compute the bisection step: $m = (b+c)/2$.\n\n3. Take $x = s$ if $s$ lies between $b$ and $m$; otherwise take $x = m$.\n\n4. Update: $a \\gets b$, then update $b$ and $c$ based on signs."
+    },
+    {
+      "type": "paragraph",
+      "text": "Dekker's method improves on pure secant by ensuring the iterates stay bracketed, but it can still be slow when the secant step barely improves on bisection."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Brent's Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "Brent's method (1973) refines Dekker's approach with inverse quadratic interpolation and additional safeguards. It is the gold standard for production root-finding."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "Inverse Quadratic Interpolation",
+      "content": "Given three points $(a, f(a)), (b, f(b)), (c, f(c))$ with distinct $f$-values, **inverse quadratic interpolation** fits a quadratic through these points *in the inverse direction* ($x$ as a function of $y$) and evaluates at $y = 0$:\n\\[\nx = \\frac{f(b)f(c)}{(f(a)-f(b))(f(a)-f(c))}a + \\frac{f(a)f(c)}{(f(b)-f(a))(f(b)-f(c))}b + \\frac{f(a)f(b)}{(f(c)-f(a))(f(c)-f(b))}c.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Inverse quadratic interpolation typically converges faster than the secant method near the root, achieving convergence order approximately 1.84."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Brent's Method Properties",
+      "content": "Brent's method has the following properties:\n\n1. **Guaranteed convergence:** Uses at most $\\lceil\\log_2((b-a)/\\varepsilon)\\rceil$ bisection steps.\n\n2. **Superlinear convergence:** When conditions are favorable, achieves order $\\approx 1.84$.\n\n3. **Minimal overhead:** Requires only one function evaluation per iteration (after initialization).",
+      "label": "Theorem"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-2.5",
+      "number": null,
+      "title": "Brent's Method (Simplified)",
+      "content": "algorithmic[1]\n Function $f$, bracket $[a,b]$ with $f(a)f(b) < 0$, tolerance $\\varepsilon$\n Approximate root\n Ensure $|f(a)| \\leq |f(b)|$ (swap if needed); $c \\gets a$\n $d \\gets b - a$; $e \\gets d$ $e$ is previous step size\n$|f(b)| > \\varepsilon$ **and** $|b - a| > \\varepsilon$\n $|f(c)| < |f(b)|$\n Swap $a$, $b$, $c$ so $b$ is best\n \n $m \\gets (c - b)/2$ Bisection step\n $\\text{tol} \\gets 2\\varepsilon|b| + \\varepsilon/2$\n $|m| \\leq \\text{tol}$ **or** $f(b) = 0$\n $b$\n \n $|e| \\geq \\text{tol}$ **and** $|f(a)| > |f(b)|$\n Compute interpolation step $s$ (secant or inverse quadratic)\n $s$ is acceptable (within bracket, shows sufficient progress)\n $d \\gets s$; $e \\gets s$\n \n $d \\gets m$; $e \\gets m$ Bisection\n \n \n $d \\gets m$; $e \\gets m$ Bisection\n \n $a \\gets b$ Save previous best\n $b \\gets b + d$ Update best estimate\n\n $b$\nalgorithmic"
+    },
+    {
+      "type": "paragraph",
+      "text": "The \"acceptable\" test in Brent's method is crucial. The interpolation step is accepted only if:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "It lies strictly between $b$ and the midpoint $m$, ensuring we stay in the bracket.",
+        "The step size is less than half the previous step, ensuring progress.",
+        "The step is at least $\\text{tol}$ away from $b$, avoiding stagnation."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Brent's Method in Action",
+      "problem": "Solve $f(x) = x^3 - x - 2 = 0$ on $[1, 2]$ with tolerance $10^{-10}$.\n\n| Iter | $b$ | $f(b)$ | Method used |\n| 1 | 1.00000 | $-2.000$ | (initial) |\n| 2 | 1.50000 | $-0.125$ | bisection |\n| 3 | 1.52137 | $-0.000088$ | inverse quadratic |\n| 4 | 1.52138 | $1.2\\times 10^{-9}$ | inverse quadratic |\n| 5 | 1.52138 | $< 10^{-15}$ | secant |\n\nAfter the initial bisection step locates us near the root, inverse quadratic interpolation takes over and converges rapidly. Total: 5 iterations, 6 function evaluations.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Newton with Safeguards"
+    },
+    {
+      "type": "paragraph",
+      "text": "We can also safeguard Newton's method using bracketing."
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-2.5",
+      "number": null,
+      "title": "Safeguarded Newton",
+      "content": "algorithmic[1]\n Function $f$, derivative $f'$, bracket $[a,b]$ with $f(a)f(b) < 0$\n Tolerance $\\varepsilon$, maximum iterations $N$\n Approximate root\n $x \\gets (a+b)/2$ Start at midpoint\n$n = 1$ **to** $N$\n $f_x \\gets f(x)$; $f'_x \\gets f'(x)$\n $|f_x| < \\varepsilon$\n $x$\n \n $\\text{newton} \\gets x - f_x/f'_x$\n $\\text{newton} \\in (a, b)$\n $x_{\\text{new}} \\gets \\text{newton}$\n \n $x_{\\text{new}} \\gets (a+b)/2$ Bisection fallback\n \n Update bracket: if $f(a)f(x_{\\text{new}}) < 0$, set $b \\gets x_{\\text{new}}$; else $a \\gets x_{\\text{new}}$\n $x \\gets x_{\\text{new}}$\n\n $x$\nalgorithmic"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "When to Use Hybrid Methods"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-2.5",
+      "number": null,
+      "title": "Method Selection for Production Code",
+      "content": "- **General-purpose root-finding:** Use Brent's method. It's robust, efficient, and widely available in numerical libraries (`scipy.optimize.brentq`, MATLAB's `fzero`).\n\n- **Derivatives available and reliable:** Newton with safeguards may be faster, especially for smooth functions.\n\n- **Multiple roots needed:** First locate brackets using sign changes or derivative analysis, then apply Brent to each.\n\n- **High-precision requirements:** Newton or Householder methods (which use higher derivatives) can achieve rapid convergence once near the root.\n\n- **Real-time or embedded systems:** Fixed iteration counts with bisection may be preferred for predictable timing."
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Comparing Methods on a Difficult Function",
+      "problem": "Consider $f(x) = (x-1)^5$, which has a root of multiplicity 5 at $x = 1$.\n\n| Method | Iterations to $10^{-10}$ | Notes |\n| Bisection (on $[0,2]$) | 34 | Steady, predictable |\n| Newton | 170+ | Linear convergence, rate $4/5$ |\n| Secant | 85+ | Slow due to multiple root |\n| Brent | 35 | Falls back to bisection |\n| Modified Newton ($m=5$) | 6 | Quadratic if $m$ is known |\n\nFor multiple roots, Brent is nearly as fast as bisection. Modified Newton wins if the multiplicity is known.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Ridders' Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "Another elegant hybrid is Ridders' method (1979), which achieves quadratic convergence using only function evaluations."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.3",
+      "number": "2.3",
+      "title": "Ridders' Method",
+      "content": "Given a bracket $[a, b]$, compute:\n\n1. Midpoint: $c = (a+b)/2$ and $f(c)$\n\n2. Parameter: $Q = \\sqrt{f(c)^2 - f(a)f(b)}$\n\n3. New point: $x = c + (c-a)\\frac{\\text{sign}(f(a)-f(b)) \\cdot f(c)}{Q}$\nUpdate the bracket using $x$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Ridders' method converges with order 2 (quadratic) but requires 2 function evaluations per iteration. Its efficiency index is $\\sqrt{2} \\approx 1.41$, the same as Newton."
+    }
+  ]
+}

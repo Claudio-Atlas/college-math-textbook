@@ -1,0 +1,191 @@
+{
+  "id": "diff-eq-ch09-sec04",
+  "title": "The Wave Equation",
+  "chapter": 9,
+  "section": 4,
+  "book": "diff-eq",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The **wave equation** is the prototypical hyperbolic PDE. It describes \nvibrating strings, drumheads, sound waves, electromagnetic radiation, and \ncountless other oscillatory phenomena. Unlike the heat equation, where \ndisturbances diffuse and decay, the wave equation preserves energy and \npropagates disturbances at finite speed."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Physical Derivation: The Vibrating String"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider a flexible string of length $L$, stretched between two fixed \nendpoints with tension $T$. Let $u(x,t)$ denote the vertical displacement \nof the string at position $x$ and time $t$. We assume small oscillations \nso that the string remains nearly horizontal."
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider a small element of string from $x$ to $x + \\Delta x$ with mass \n$\\rho\\Delta x$, where $\\rho$ is the linear mass density."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Forces on the element:** The tension pulls tangentially at each \nend. The vertical component of the tension force at position $x$ is \napproximately $T\\sin\\theta \\approx T\\tan\\theta = Tu_x$, where $\\theta$ \nis the angle the string makes with horizontal."
+    },
+    {
+      "type": "paragraph",
+      "text": "The net vertical force on the element is:\n\\[\nT u_x\\big|_{x+\\Delta x} - T u_x\\big|_x\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Newton's second law:** Mass times acceleration equals net force:\n\\[\n(\\rho\\Delta x)\\frac{\\partial^2 u}{\\partial t^2} = T u_x\\big|_{x+\\Delta x} - T u_x\\big|_x\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Dividing by $\\Delta x$ and taking the limit:\n\\[\n\\rho\\frac{\\partial^2 u}{\\partial t^2} = T\\frac{\\partial^2 u}{\\partial x^2}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Defining $c = \\sqrt{T/\\rho}$ (the wave speed), we obtain:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "The Wave Equation",
+      "content": "The displacement $u(x,t)$ of a vibrating string satisfies:\n\\[\n\\frac{\\partial^2 u}{\\partial t^2} = c^2\\frac{\\partial^2 u}{\\partial x^2}\n\\]\nwhere $c = \\sqrt{T/\\rho}$ is the wave propagation speed.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solution by Separation of Variables"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider the wave equation with fixed endpoints:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$u_{tt} &= c^2 u_{xx}, \\quad 0 < x < L, \\quad t > 0\\\\\nu(0,t) &= u(L,t) = 0\\\\\nu(x,0) &= f(x), \\quad u_t(x,0) = g(x)$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Setting $u(x,t) = X(x)T(t)$ leads to:\n\\[\n\\frac{T''}{c^2 T} = \\frac{X''}{X} = -\\lambda\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "With boundary conditions $X(0) = X(L) = 0$, the eigenvalues are \n$\\lambda_n = n^2\\pi^2/L^2$ with eigenfunctions $X_n = \\sin(n\\pi x/L)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The time equation $T'' + c^2\\lambda_n T = 0$ has general solution:\n\\[\nT_n(t) = A_n\\cos\\left(\\frac{n\\pi ct}{L}\\right) + B_n\\sin\\left(\\frac{n\\pi ct}{L}\\right)\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The general solution is:\n\\[\nu(x,t) = \\sum_{n=1}^{\\infty} \\sin\\left(\\frac{n\\pi x}{L}\\right)\\left[A_n\\cos\\left(\\frac{n\\pi ct}{L}\\right) + B_n\\sin\\left(\\frac{n\\pi ct}{L}\\right)\\right]\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Determining Coefficients from Initial Conditions"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Initial displacement:** $u(x,0) = f(x)$:\n\\[\n\\sum_{n=1}^{\\infty} A_n\\sin\\left(\\frac{n\\pi x}{L}\\right) = f(x)\n\\]\nThus $A_n$ are the Fourier sine coefficients of $f$:\n\\[\nA_n = \\frac{2}{L}\\int_0^L f(x)\\sin\\left(\\frac{n\\pi x}{L}\\right)\\,dx\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Initial velocity:** $u_t(x,0) = g(x)$:\n\\[\n\\sum_{n=1}^{\\infty} \\frac{n\\pi c}{L}B_n\\sin\\left(\\frac{n\\pi x}{L}\\right) = g(x)\n\\]\nThus:\n\\[\nB_n = \\frac{2}{n\\pi c}\\int_0^L g(x)\\sin\\left(\\frac{n\\pi x}{L}\\right)\\,dx\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Plucked string",
+      "problem": "A string of length $\\pi$ is fixed at both ends. It is displaced into the \nshape $f(x) = \\sin x$ and released from rest ($g(x) = 0$). Find $u(x,t)$ \nif $c = 1$.\n\n**Solution.** Since $g(x) = 0$, all $B_n = 0$. For the initial \ndisplacement, $f(x) = \\sin x$ is already a single Fourier sine term with \n$n = 1$ (since $L = \\pi$). Thus $A_1 = 1$ and $A_n = 0$ for $n > 1$.\n\nThe solution is:\n\\[\n\\boxed{u(x,t) = \\sin x \\cos t}\n\\]\n\nThis is the **fundamental mode**—the string oscillates sinusoidally \nwith frequency $\\omega_1 = c\\pi/L = 1$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "String with initial velocity",
+      "problem": "A string of length $1$ with $c = 1$ starts from rest position ($f(x) = 0$) \nwith initial velocity $g(x) = \\sin(\\pi x)$. Find $u(x,t)$.\n\n**Solution.** Since $f(x) = 0$, all $A_n = 0$. For the velocity:\n\\[\n\\sum_{n=1}^{\\infty} n\\pi B_n\\sin(n\\pi x) = \\sin(\\pi x)\n\\]\nThus $\\pi B_1 = 1$, giving $B_1 = 1/\\pi$, and $B_n = 0$ for $n > 1$.\n\nThe solution is:\n\\[\n\\boxed{u(x,t) = \\frac{1}{\\pi}\\sin(\\pi x)\\sin(\\pi t)}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Normal Modes and Standing Waves"
+    },
+    {
+      "type": "paragraph",
+      "text": "Each term in the series solution:\n\\[\nu_n(x,t) = \\sin\\left(\\frac{n\\pi x}{L}\\right)\\cos\\left(\\frac{n\\pi ct}{L}\\right)\n\\]\nis a **standing wave** or **normal mode**. The shape \n$\\sin(n\\pi x/L)$ has $n-1$ **nodes** (points of zero displacement \nbesides the endpoints) at $x = L/n, 2L/n, \\ldots, (n-1)L/n$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The angular frequency of the $n$th mode is:\n\\[\n\\omega_n = \\frac{n\\pi c}{L}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The corresponding ordinary frequency (in Hz) is:\n\\[\nf_n = \\frac{\\omega_n}{2\\pi} = \\frac{nc}{2L}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "For a string, $c = \\sqrt{T/\\rho}$, so:\n\\[\nf_n = \\frac{n}{2L}\\sqrt{\\frac{T}{\\rho}}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The fundamental frequency $f_1 = c/(2L)$ and the harmonics $f_n = nf_1$ \nare integer multiples of the fundamental. This harmonic series is the \nbasis of musical consonance."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "D'Alembert's Solution"
+    },
+    {
+      "type": "paragraph",
+      "text": "Jean le Rond d'Alembert discovered that the wave equation has a beautiful \ngeneral solution in terms of traveling waves."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "D'Alembert's Solution",
+      "content": "The general solution to $u_{tt} = c^2 u_{xx}$ on the infinite line is:\n\\[\nu(x,t) = F(x - ct) + G(x + ct)\n\\]\nwhere $F$ and $G$ are arbitrary (twice-differentiable) functions.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\xi = x - ct$ and $\\eta = x + ct$. Then by the chain rule:\n$$\nu_x &= u_\\xi + u_\\eta\\\\\nu_{xx} &= u_{\\xi\\xi} + 2u_{\\xi\\eta} + u_{\\eta\\eta}\\\\\nu_t &= -cu_\\xi + cu_\\eta\\\\\nu_{tt} &= c^2 u_{\\xi\\xi} - 2c^2 u_{\\xi\\eta} + c^2 u_{\\eta\\eta}\n$$\nSubstituting into $u_{tt} = c^2 u_{xx}$:\n\\[\nc^2(u_{\\xi\\xi} - 2u_{\\xi\\eta} + u_{\\eta\\eta}) = c^2(u_{\\xi\\xi} + 2u_{\\xi\\eta} + u_{\\eta\\eta})\n\\]\nThis simplifies to $u_{\\xi\\eta} = 0$, which means $u = F(\\xi) + G(\\eta)$ \nfor arbitrary functions $F$ and $G$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Physical interpretation:** $F(x - ct)$ is a wave traveling to the \nright at speed $c$; $G(x + ct)$ is a wave traveling to the left at speed $c$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Initial value problem on the line",
+      "problem": "Solve $u_{tt} = c^2 u_{xx}$ on $-\\infty < x < \\infty$ with $u(x,0) = f(x)$ \nand $u_t(x,0) = g(x)$.\n\n**Solution.** From $u = F(x-ct) + G(x+ct)$:\n$$\nu(x,0) &= F(x) + G(x) = f(x)\\\\\nu_t(x,0) &= -cF'(x) + cG'(x) = g(x)\n$$\n\nFrom the second equation: $G'(x) - F'(x) = g(x)/c$. Integrating:\n\\[\nG(x) - F(x) = \\frac{1}{c}\\int_0^x g(s)\\,ds\n\\]\n\nSolving:\n$$\nF(x) &= \\frac{1}{2}f(x) - \\frac{1}{2c}\\int_0^x g(s)\\,ds\\\\\nG(x) &= \\frac{1}{2}f(x) + \\frac{1}{2c}\\int_0^x g(s)\\,ds\n$$\n\nTherefore:\n\\[\n\\boxed{u(x,t) = \\frac{1}{2}[f(x-ct) + f(x+ct)] + \\frac{1}{2c}\\int_{x-ct}^{x+ct} g(s)\\,ds}\n\\]\nThis is **D'Alembert's formula**.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Energy and Conservation"
+    },
+    {
+      "type": "paragraph",
+      "text": "The total energy in a vibrating string is the sum of kinetic and potential energy:\n\\[\nE(t) = \\frac{1}{2}\\int_0^L \\rho u_t^2\\,dx + \\frac{1}{2}\\int_0^L T u_x^2\\,dx\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.3",
+      "number": "9.3",
+      "title": "Conservation of Energy",
+      "content": "For a string with fixed endpoints, the total energy $E(t)$ is constant.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This contrasts sharply with the heat equation, where energy dissipates \nover time. Wave phenomena preserve energy; diffusive phenomena disperse it."
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "id": "abstract-algebra-ch09-sec02",
+  "title": "Field of Fractions",
+  "chapter": 9,
+  "section": 2,
+  "book": "abstract-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Ask and it will be given to you; seek and you will \nfind.\"*{Matthew 7:7}{*\"Every integral domain extends to a field of fractions.\"*}{Emmy Noether}\n\n*\"Every integral domain extends to a field of fractions.\"*{— Emmy Noether}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Every integral domain can be embedded in a field, just as $\\Z$ sits \ninside $\\Q$. This field of fractions is the smallest field containing \nthe domain."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Constructing the Field of Fractions"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Field of Fractions",
+      "content": "Let $D$ be an integral domain. There exists a field $F$, unique up to \nisomorphism, such that:\n\n1. $D$ embeds in $F$ (i.e., there is an injective ring homomorphism \n $D \\hookrightarrow F$)\n\n2. Every element of $F$ can be written as $a/b$ for $a, b \\in D$ \n with $b \\neq 0$\n\n3. $F$ is minimal: any field containing a copy of $D$ contains a \n copy of $F$\nThis field $F$ is called the **field of fractions** \n(or quotient field) of $D$, denoted $\\text{Frac}(D)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Consider the set $S = D \\times (D \\setminus \\{0\\})$ with the equivalence \nrelation $(a, b) \\sim (c, d)$ iff $ad = bc$.\n\nDefine operations on equivalence classes:\n$$\n \\frac{a}{b} + \\frac{c}{d} &= \\frac{ad + bc}{bd} \\\\\n \\frac{a}{b} \\cdot \\frac{c}{d} &= \\frac{ac}{bd}\n$$\n\nThe verification that these are well-defined and satisfy the field \naxioms uses the fact that $D$ is an integral domain (no zero divisors).\n\nThe embedding $\\iota: D \\to F$ is given by $\\iota(a) = a/1$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Fields of fractions",
+      "problem": "- $\\text{Frac}(\\Z) = \\Q$\n\n- $\\text{Frac}(\\Z[x]) = \\Q(x)$ (rational functions)\n\n- $\\text{Frac}(\\Z[i]) = \\Q(i)$\n\n- $\\text{Frac}(F) = F$ for any field $F$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "Universal Property",
+      "content": "If $\\phi: D \\to F$ is an injective ring homomorphism from an integral \ndomain to a field, then there exists a unique ring homomorphism \n$\\bar{\\phi}: \\text{Frac}(D) \\to F$ extending $\\phi$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Define $\\bar{\\phi}(a/b) = \\phi(a)/\\phi(b)$. This is well-defined since \n$\\phi$ is injective and $\\phi(b) \\neq 0$ when $b \\neq 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Rational Functions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Field of Rational Functions",
+      "content": "If $F$ is a field, the **field of rational functions** \nover $F$ is\n\\[\n F(x) = \\text{Frac}(F[x]) = \\left\\{ \\frac{f(x)}{g(x)} : f, g \\in F[x], \n g \\neq 0 \\right\\}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": null,
+      "problem": "$\\R(x) = \\left\\{ \\frac{p(x)}{q(x)} : p, q \\in \\R[x], q \\neq 0 \\right\\}$\n\nFor instance, $\\frac{x^2 + 1}{x^3 - x} \\in \\R(x)$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Show that the field of fractions of $\\Z[\\sqrt{2}]$ is \n $\\Q(\\sqrt{2})$.",
+        "Prove that $\\text{Frac}(D_1 \\times D_2)$ does not exist if \n $D_1, D_2$ are nonzero integral domains (the product is not \n a domain).",
+        "Find $\\text{Frac}(\\Z[x, y])$.",
+        "If $D \\subseteq E$ are integral domains, show that \n $\\text{Frac}(D) \\subseteq \\text{Frac}(E)$.",
+        "Compute in $\\Q(x)$: $\\frac{1}{x-1} + \\frac{1}{x+1}$."
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 55:1",
+      "text": "Come, all you who are thirsty, come to \nthe waters."
+    }
+  ]
+}

@@ -1,0 +1,189 @@
+{
+  "id": "diff-eq-ch08-sec04",
+  "title": "Qualitative Analysis: Equilibria and Bifurcations",
+  "chapter": 8,
+  "section": 4,
+  "book": "diff-eq",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Numerical methods compute *specific* solutions for *specific* initial conditions. But sometimes we want the big picture: What happens to *all* solutions? Do they converge to some value? Oscillate? Explode? **Qualitative analysis** answers these questions without computing explicit solutions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Autonomous Equations and Phase Lines"
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.1",
+      "number": "8.1",
+      "title": "Autonomous Equation",
+      "content": "A first-order ODE is **autonomous** if $t$ does not appear explicitly:\n\\[\n\\frac{dy}{dt} = f(y)\n\\]\nThe slope depends only on $y$, not on $t$."
+    },
+    {
+      "type": "paragraph",
+      "text": "For autonomous equations, we can determine global behavior from the single function $f(y)$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.2",
+      "number": "8.2",
+      "title": "Phase Line",
+      "content": "The **phase line** for $\\frac{dy}{dt} = f(y)$ is a vertical axis representing $y$ with:\n\n- Points where $f(y) = 0$ marked as **equilibrium points**\n\n- Arrows pointing up where $f(y) > 0$ (solution increasing)\n\n- Arrows pointing down where $f(y) < 0$ (solution decreasing)"
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Phase Line for Logistic Growth",
+      "problem": "Consider the logistic equation:\n\\[\n\\frac{dy}{dt} = ry\\left(1 - \\frac{y}{K}\\right)\n\\]\nwith $r, K > 0$.\n\nSetting $f(y) = 0$:\n\\[\nry\\left(1 - \\frac{y}{K}\\right) = 0 \\implies y = 0 \\text{ or } y = K\n\\]\n\nThe phase line:\n\ncenter\ntikzpicture[scale=0.8]\n % Phase line\n (0,0) – (0,6);\n \n % Equilibrium points\n lldraw (0,1) circle (3pt) node[right=5pt] {$y = 0$ (unstable)};\n lldraw (0,4) circle (3pt) node[right=5pt] {$y = K$ (stable)};\n \n % Arrows\n (0,0.3) – (0,0.7);\n (0,1.3) – (0,1.7);\n (0,2) – (0,2.7);\n (0,3) – (0,3.7);\n (0,4.3) – (0,4.7);\n (0,5) – (0,5.5);\n \n % Labels\n at (0,0) {$-$};\n at (0,2.5) {$+$};\n at (0,5) {$-$};\n at (0,6) {$y$};\ntikzpicture\ncenter\n\nReading the phase line:\n\n- If $y < 0$: $y' < 0$, solution decreases (unphysical for populations)\n\n- If $0 < y < K$: $y' > 0$, solution increases toward $K$\n\n- If $y > K$: $y' < 0$, solution decreases toward $K$\n\nAll positive solutions approach $K$ as $t \\to \\infty$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Equilibrium Points and Stability"
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.3",
+      "number": "8.3",
+      "title": "Equilibrium Point",
+      "content": "An **equilibrium point** (or **critical point**, **fixed point**) is a constant solution $y^*$ satisfying\n\\[\nf(y^*) = 0\n\\]\nIf $y(t_0) = y^*$, then $y(t) = y^*$ for all $t$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.4",
+      "number": "8.4",
+      "title": "Stability Classification",
+      "content": "An equilibrium $y^*$ is:\n\n- **Stable** (attractor): Nearby solutions approach $y^*$ as $t \\to \\infty$\n\n- **Unstable** (repeller): Nearby solutions move away from $y^*$\n\n- **Semi-stable**: Stable from one side, unstable from the other"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Linear Stability Test",
+      "content": "For the autonomous equation $\\frac{dy}{dt} = f(y)$ with equilibrium $y^*$:\n\n- If $f'(y^*) < 0$, then $y^*$ is **stable**\n\n- If $f'(y^*) > 0$, then $y^*$ is **unstable**\n\n- If $f'(y^*) = 0$, the test is inconclusive (higher derivatives needed)",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Near $y^*$, expand $f(y) \\approx f(y^*) + f'(y^*)(y - y^*) = f'(y^*)(y - y^*)$.\n\nLet $u = y - y^*$ (deviation from equilibrium). Then\n\\[\n\\frac{du}{dt} = \\frac{dy}{dt} = f(y) \\approx f'(y^*) u\n\\]\n\nThis linear approximation has solution $u(t) = u(0) e^{f'(y^*)t}$.\n\n- If $f'(y^*) < 0$: $u(t) \\to 0$, so $y(t) \\to y^*$ (stable)\n\n- If $f'(y^*) > 0$: $u(t) \\to \\infty$, so $y(t)$ moves away (unstable)"
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "Stability of Logistic Equilibria",
+      "problem": "For $f(y) = ry(1 - y/K)$:\n\\[\nf'(y) = r - \\frac{2ry}{K}\n\\]\n\nAt $y^* = 0$: $f'(0) = r > 0$ → **unstable**\n\nAt $y^* = K$: $f'(K) = r - 2r = -r < 0$ → **stable**\n\nThis confirms our phase line analysis.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "Semi-stable Equilibrium",
+      "problem": "Consider $\\frac{dy}{dt} = y^2$.\n\nEquilibrium: $y^* = 0$. Since $f'(0) = 0$, the linear test is inconclusive.\n\nFrom the phase line:\n\n- If $y < 0$: $y' = y^2 > 0$ (increasing toward 0)\n\n- If $y > 0$: $y' = y^2 > 0$ (increasing away from 0)\n\nThe equilibrium is **semi-stable**: attracting from below, repelling from above.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Bifurcations"
+    },
+    {
+      "type": "paragraph",
+      "text": "When differential equations contain a **parameter**, changing that parameter can cause dramatic shifts in qualitative behavior. These transitions are called **bifurcations**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.5",
+      "number": "8.5",
+      "title": "Bifurcation",
+      "content": "A **bifurcation** occurs at a parameter value where the number or stability of equilibrium points changes."
+    },
+    {
+      "type": "paragraph",
+      "text": "Saddle-Node Bifurcation"
+    },
+    {
+      "type": "example",
+      "id": "example-8.4",
+      "number": "8.4",
+      "title": "Saddle-Node Bifurcation",
+      "problem": "Consider\n\\[\n\\frac{dy}{dt} = r + y^2\n\\]\nwhere $r$ is a parameter.\n\nEquilibria satisfy $r + y^2 = 0$, so $y^2 = -r$.\n\n- If $r > 0$: No equilibria (solutions increase without bound)\n\n- If $r = 0$: One equilibrium at $y^* = 0$ (semi-stable)\n\n- If $r < 0$: Two equilibria at $y^* = \\pm\\sqrt{-r}$\n\nAt $r = 0$, two equilibria collide and annihilate—a **saddle-node bifurcation**.",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "Transcritical Bifurcation"
+    },
+    {
+      "type": "example",
+      "id": "example-8.5",
+      "number": "8.5",
+      "title": "Transcritical Bifurcation",
+      "problem": "Consider\n\\[\n\\frac{dy}{dt} = ry - y^2 = y(r - y)\n\\]\n\nEquilibria: $y^* = 0$ and $y^* = r$.\n\nSince $f'(y) = r - 2y$:\n\n- At $y^* = 0$: $f'(0) = r$\n itemize\n\n- If $r < 0$: stable\n\n- If $r > 0$: unstable\n At $y^* = r$: $f'(r) = -r$\n \n\n- If $r < 0$: unstable\n\n- If $r > 0$: stable\nitemize\n\nAt $r = 0$, the equilibria *exchange stability*—a **transcritical bifurcation**.",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "Pitchfork Bifurcation"
+    },
+    {
+      "type": "example",
+      "id": "example-8.6",
+      "number": "8.6",
+      "title": "Supercritical Pitchfork Bifurcation",
+      "problem": "Consider\n\\[\n\\frac{dy}{dt} = ry - y^3\n\\]\n\nEquilibria: $y(r - y^2) = 0$, giving $y^* = 0$ and $y^* = \\pm\\sqrt{r}$ (for $r > 0$).\n\n- If $r < 0$: One equilibrium at $y^* = 0$ (stable)\n\n- If $r > 0$: Three equilibria—$y^* = 0$ (unstable), $y^* = \\pm\\sqrt{r}$ (both stable)\n\nThis is a **supercritical pitchfork bifurcation**, common in symmetry-breaking transitions.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Bifurcation Diagrams"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **bifurcation diagram** plots equilibrium values $y^*$ against the parameter, with solid lines for stable equilibria and dashed lines for unstable ones."
+    },
+    {
+      "type": "example",
+      "id": "example-8.7",
+      "number": "8.7",
+      "title": "Harvesting Model Bifurcation",
+      "problem": "Consider logistic growth with constant harvesting:\n\\[\n\\frac{dP}{dt} = rP\\left(1 - \\frac{P}{K}\\right) - H\n\\]\nwhere $H$ is the harvest rate.\n\nFor $r = K = 1$, this becomes $P' = P(1-P) - H$.\n\nEquilibria: $P(1-P) = H$, so $P^2 - P + H = 0$, giving\n\\[\nP^* = \\frac{1 \\pm \\sqrt{1 - 4H}}{2}\n\\]\n\n- If $H < 1/4$: Two equilibria exist\n\n- If $H = 1/4$: One equilibrium at $P^* = 1/2$\n\n- If $H > 1/4$: No equilibria—population crashes!\n\nThe critical harvest rate $H_c = 1/4$ represents **maximum sustainable yield**. Exceeding it causes collapse—a saddle-node bifurcation with ecological catastrophe.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Graphical Analysis"
+    },
+    {
+      "type": "paragraph",
+      "text": "For $y' = f(y)$, we can understand behavior by graphing $f(y)$ vs $y$:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Equilibria**: Where the graph crosses the $y$-axis",
+        "**Stable**: Graph crosses from above to below (negative slope)",
+        "**Unstable**: Graph crosses from below to above (positive slope)",
+        "**Motion**: Arrows point right where $f > 0$, left where $f < 0$"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Summary: Qualitative Analysis Toolkit"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ]
+}

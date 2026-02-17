@@ -1,0 +1,365 @@
+{
+  "id": "precalculus-ch07-sec02",
+  "title": "Sum and Difference Formulas",
+  "chapter": 7,
+  "section": 2,
+  "book": "precalculus",
+  "objectives": [
+    "Derive and understand the sum and difference formulas for sine and cosine",
+    "Apply these formulas to find exact values of trigonometric functions",
+    "Use the formulas to simplify expressions and verify identities",
+    "Develop the tangent sum and difference formulas"
+  ],
+  "content": [
+    {
+      "type": "connection",
+      "id": "connection-7.2",
+      "number": null,
+      "title": "The Whole Greater Than Its Parts",
+      "content": "When Jesus fed five thousand people, He took five loaves and two fish—and \nfrom that combination came abundance beyond what the parts suggested \n(Matthew 14:13-21). In mathematics, we often find that combining things \nproduces surprises. One might naively guess that $\\sin(\\alpha + \\beta)$ \nequals $\\sin\\alpha + \\sin\\beta$, but this is false. The actual relationship \nis far more intricate and beautiful: $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \n\\cos\\alpha\\sin\\beta$. Both angles contribute to the result, interweaving \nin an unexpected pattern. Creation often works this way—combinations \nyield richness that the separate parts don't predict."
+    },
+    {
+      "type": "paragraph",
+      "text": "Until now, we've worked with trigonometric functions of single angles. But \nwhat happens when we combine angles? If we know $\\sin 30°$ and $\\sin 45°$, \ncan we find $\\sin 75°$? The answer is yes—but not by simple addition."
+    },
+    {
+      "type": "paragraph",
+      "text": "This section develops the *sum and difference formulas*, which express \n$\\sin(\\alpha + \\beta)$, $\\cos(\\alpha + \\beta)$, and $\\tan(\\alpha + \\beta)$ in \nterms of the trigonometric functions of $\\alpha$ and $\\beta$ separately."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Deriving the Formulas"
+    },
+    {
+      "type": "paragraph",
+      "text": "We begin with the cosine difference formula because its proof is particularly \nelegant using the distance formula on the unit circle."
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider two points on the unit circle: $P$ at angle $\\alpha$ and $Q$ at \nangle $\\beta$. Their coordinates are $P = (\\cos\\alpha, \\sin\\alpha)$ and \n$Q = (\\cos\\beta, \\sin\\beta)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The distance between $P$ and $Q$, using the distance formula, is:\n\\[\nd(P, Q) = \\sqrt{(\\cos\\alpha - \\cos\\beta)^2 + (\\sin\\alpha - \\sin\\beta)^2}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Expanding the squares:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$[d(P,Q)]^2 &= \\cos^2\\alpha - 2\\cos\\alpha\\cos\\beta + \\cos^2\\beta + \n\\sin^2\\alpha - 2\\sin\\alpha\\sin\\beta + \\sin^2\\beta \\\\\n&= (\\cos^2\\alpha + \\sin^2\\alpha) + (\\cos^2\\beta + \\sin^2\\beta) - \n2(\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta) \\\\\n&= 1 + 1 - 2(\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta) \\\\\n&= 2 - 2(\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta)$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Now consider the same two points, but measure their separation by the \nangle $\\alpha - \\beta$. If we rotate the entire picture so that $Q$ lies \nat angle $0$ (on the positive $x$-axis at $(1, 0)$), then $P$ lies at \nangle $\\alpha - \\beta$. The distance from $(1, 0)$ to \n$(\\cos(\\alpha - \\beta), \\sin(\\alpha - \\beta))$ is:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$[d]^2 &= (\\cos(\\alpha - \\beta) - 1)^2 + (\\sin(\\alpha - \\beta) - 0)^2 \\\\\n&= \\cos^2(\\alpha - \\beta) - 2\\cos(\\alpha - \\beta) + 1 + \\sin^2(\\alpha - \\beta) \\\\\n&= 2 - 2\\cos(\\alpha - \\beta)$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Since rotation preserves distance, these two expressions must be equal:\n\\[\n2 - 2\\cos(\\alpha - \\beta) = 2 - 2(\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta)\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Simplifying: $\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Cosine of a Difference",
+      "content": "For any angles $\\alpha$ and $\\beta$,\n\\[\n\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "From this single formula, we can derive all the other sum and difference \nformulas using substitution and known identities."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Cosine of a Sum:** Replace $\\beta$ with $-\\beta$:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$\\cos(\\alpha + \\beta) &= \\cos(\\alpha - (-\\beta)) \\\\\n&= \\cos\\alpha\\cos(-\\beta) + \\sin\\alpha\\sin(-\\beta) \\\\\n&= \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "(using the even-odd identities: $\\cos(-\\beta) = \\cos\\beta$ and \n$\\sin(-\\beta) = -\\sin\\beta$)"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Sine of a Difference:** Use the cofunction identity \n$\\sin\\theta = \\cos\\left(\\frac{\\pi}{2} - \\theta\\right)$:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$\\sin(\\alpha - \\beta) &= \\cos\\left(\\frac{\\pi}{2} - (\\alpha - \\beta)\\right) \\\\\n&= \\cos\\left(\\left(\\frac{\\pi}{2} - \\alpha\\right) + \\beta\\right) \\\\\n&= \\cos\\left(\\frac{\\pi}{2} - \\alpha\\right)\\cos\\beta - \n\\sin\\left(\\frac{\\pi}{2} - \\alpha\\right)\\sin\\beta \\\\\n&= \\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Sine of a Sum:** Replace $\\beta$ with $-\\beta$ in the difference formula:\n\\[\n\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Complete Collection"
+    },
+    {
+      "type": "paragraph",
+      "text": "Let's gather all the formulas we've derived:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "Sum and Difference Formulas",
+      "content": "For any angles $\\alpha$ and $\\beta$:\n$$\n\\sin(\\alpha + \\beta) &= \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta \\\\\n\\sin(\\alpha - \\beta) &= \\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta \\\\[6pt]\n\\cos(\\alpha + \\beta) &= \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta \\\\\n\\cos(\\alpha - \\beta) &= \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta \\\\[6pt]\n\\tan(\\alpha + \\beta) &= \\frac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta} \\\\[6pt]\n\\tan(\\alpha - \\beta) &= \\frac{\\tan\\alpha - \\tan\\beta}{1 + \\tan\\alpha\\tan\\beta}\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "formulas, the \nsign in the middle is *opposite* to the sign in the argument. \nIn the *sine* formulas, the signs *match*.}"
+    },
+    {
+      "type": "paragraph",
+      "text": "The tangent formulas come from dividing sine by cosine:\n\\[\n\\tan(\\alpha + \\beta) = \\frac{\\sin(\\alpha + \\beta)}{\\cos(\\alpha + \\beta)} = \n\\frac{\\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta}{\\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta}\n\\]\nDividing numerator and denominator by $\\cos\\alpha\\cos\\beta$:\n\\[\n= \\frac{\\frac{\\sin\\alpha}{\\cos\\alpha} + \\frac{\\sin\\beta}{\\cos\\beta}}{1 - \\frac{\\sin\\alpha\\sin\\beta}{\\cos\\alpha\\cos\\beta}} = \n\\frac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta}\n\\]"
+    },
+    {
+      "type": "warning",
+      "id": "warning-7.2",
+      "number": null,
+      "title": "The ``Freshman's Dream'' is False",
+      "content": "It is tempting but *wrong* to assume:\n\\[\n\\sin(\\alpha + \\beta) \\neq \\sin\\alpha + \\sin\\beta\n\\]\nYou can verify this with a simple example: $\\sin(30° + 60°) = \\sin 90° = 1$, \nbut $\\sin 30° + \\sin 60° = \\frac{1}{2} + \\frac{\\sqrt{3}}{2} \\approx 1.366$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Finding Exact Values"
+    },
+    {
+      "type": "paragraph",
+      "text": "One powerful application of the sum and difference formulas is finding \nexact values for angles that aren't on our standard list. If we can \nexpress an angle as a sum or difference of familiar angles (like \n$30°, 45°, 60°$), we can compute its exact trigonometric values."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Finding $\\sin 75°$",
+      "problem": "Find the exact value of $\\sin 75°$.",
+      "solution": "We write $75° = 45° + 30°$ and apply the sine sum formula:\n$$\n\\sin 75° &= \\sin(45° + 30°) \\\\\n&= \\sin 45°\\cos 30° + \\cos 45°\\sin 30° \\\\\n&= \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} + \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2} \\\\\n&= \\frac{\\sqrt{6}}{4} + \\frac{\\sqrt{2}}{4} \\\\\n&= \\frac{\\sqrt{6} + \\sqrt{2}}{4}\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Finding $\\cos 15°$",
+      "problem": "Find the exact value of $\\cos 15°$.",
+      "solution": "We write $15° = 45° - 30°$ and apply the cosine difference formula:\n$$\n\\cos 15° &= \\cos(45° - 30°) \\\\\n&= \\cos 45°\\cos 30° + \\sin 45°\\sin 30° \\\\\n&= \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} + \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2} \\\\\n&= \\frac{\\sqrt{6}}{4} + \\frac{\\sqrt{2}}{4} \\\\\n&= \\frac{\\sqrt{6} + \\sqrt{2}}{4}\n$$\nNotice that $\\cos 15° = \\sin 75°$. This makes sense because \n$15°$ and $75°$ are complementary angles."
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "Finding $\\tan 105°$",
+      "problem": "Find the exact value of $\\tan 105°$.",
+      "solution": "We write $105° = 60° + 45°$ and apply the tangent sum formula:\n$$\n\\tan 105° &= \\tan(60° + 45°) \\\\\n&= \\frac{\\tan 60° + \\tan 45°}{1 - \\tan 60°\\tan 45°} \\\\\n&= \\frac{\\sqrt{3} + 1}{1 - \\sqrt{3} \\cdot 1} \\\\\n&= \\frac{\\sqrt{3} + 1}{1 - \\sqrt{3}}\n$$\nTo simplify, we rationalize by multiplying by the conjugate:\n$$\n&= \\frac{(\\sqrt{3} + 1)(1 + \\sqrt{3})}{(1 - \\sqrt{3})(1 + \\sqrt{3})} \\\\\n&= \\frac{\\sqrt{3} + 3 + 1 + \\sqrt{3}}{1 - 3} \\\\\n&= \\frac{4 + 2\\sqrt{3}}{-2} \\\\\n&= -2 - \\sqrt{3}\n$$\nSince $105°$ is in Quadrant II, where tangent is negative, this confirms \nour answer."
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "Using radians: $\\sin\\frac{7\\pi}{12}$",
+      "problem": "Find the exact value of $\\sin\\dfrac{7\\pi}{12}$.",
+      "solution": "First, we need to express $\\frac{7\\pi}{12}$ as a sum or difference of \nfamiliar angles. Note that $\\frac{7\\pi}{12} = \\frac{3\\pi}{12} + \\frac{4\\pi}{12} \n= \\frac{\\pi}{4} + \\frac{\\pi}{3}$.\n$$\n\\sin\\frac{7\\pi}{12} &= \\sin\\left(\\frac{\\pi}{4} + \\frac{\\pi}{3}\\right) \\\\\n&= \\sin\\frac{\\pi}{4}\\cos\\frac{\\pi}{3} + \\cos\\frac{\\pi}{4}\\sin\\frac{\\pi}{3} \\\\\n&= \\frac{\\sqrt{2}}{2} \\cdot \\frac{1}{2} + \\frac{\\sqrt{2}}{2} \\cdot \\frac{\\sqrt{3}}{2} \\\\\n&= \\frac{\\sqrt{2}}{4} + \\frac{\\sqrt{6}}{4} \\\\\n&= \\frac{\\sqrt{2} + \\sqrt{6}}{4}\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Working with Given Information"
+    },
+    {
+      "type": "paragraph",
+      "text": "Sometimes we're given information about angles without knowing the angles \nthemselves. We can still use the sum and difference formulas."
+    },
+    {
+      "type": "example",
+      "id": "example-7.5",
+      "number": "7.5",
+      "title": "Using quadrant information",
+      "problem": "If $\\sin\\alpha = \\dfrac{3}{5}$ with $\\alpha$ in Quadrant I, and \n$\\cos\\beta = -\\dfrac{12}{13}$ with $\\beta$ in Quadrant II, find \n$\\sin(\\alpha + \\beta)$.",
+      "solution": "We need all four values: $\\sin\\alpha$, $\\cos\\alpha$, $\\sin\\beta$, $\\cos\\beta$.\n\n**Finding $\\cos\\alpha$:** Since $\\alpha$ is in QI, cosine is positive.\n\\[\n\\cos\\alpha = \\sqrt{1 - \\sin^2\\alpha} = \\sqrt{1 - \\frac{9}{25}} = \n\\sqrt{\\frac{16}{25}} = \\frac{4}{5}\n\\]\n\n**Finding $\\sin\\beta$:** Since $\\beta$ is in QII, sine is positive.\n\\[\n\\sin\\beta = \\sqrt{1 - \\cos^2\\beta} = \\sqrt{1 - \\frac{144}{169}} = \n\\sqrt{\\frac{25}{169}} = \\frac{5}{13}\n\\]\n\n**Applying the formula:**\n$$\n\\sin(\\alpha + \\beta) &= \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta \\\\\n&= \\frac{3}{5} \\cdot \\left(-\\frac{12}{13}\\right) + \\frac{4}{5} \\cdot \\frac{5}{13} \\\\\n&= -\\frac{36}{65} + \\frac{20}{65} \\\\\n&= -\\frac{16}{65}\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.6",
+      "number": "7.6",
+      "title": "Finding $\\cos(\\alpha - \\beta)$",
+      "problem": "Using the same values from the previous example, find $\\cos(\\alpha - \\beta)$.",
+      "solution": "Using our values $\\sin\\alpha = \\frac{3}{5}$, $\\cos\\alpha = \\frac{4}{5}$, \n$\\sin\\beta = \\frac{5}{13}$, $\\cos\\beta = -\\frac{12}{13}$:\n$$\n\\cos(\\alpha - \\beta) &= \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta \\\\\n&= \\frac{4}{5} \\cdot \\left(-\\frac{12}{13}\\right) + \\frac{3}{5} \\cdot \\frac{5}{13} \\\\\n&= -\\frac{48}{65} + \\frac{15}{65} \\\\\n&= -\\frac{33}{65}\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Simplifying Expressions"
+    },
+    {
+      "type": "paragraph",
+      "text": "The sum and difference formulas work in reverse too: if you recognize \nthe pattern, you can collapse an expression into a single function."
+    },
+    {
+      "type": "example",
+      "id": "example-7.7",
+      "number": "7.7",
+      "title": "Collapsing an expression",
+      "problem": "Simplify: $\\sin 3x\\cos x - \\cos 3x\\sin x$",
+      "solution": "This matches the pattern $\\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta = \n\\sin(\\alpha - \\beta)$ with $\\alpha = 3x$ and $\\beta = x$.\n\\[\n\\sin 3x\\cos x - \\cos 3x\\sin x = \\sin(3x - x) = \\sin 2x\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.8",
+      "number": "7.8",
+      "title": "Another collapse",
+      "problem": "Simplify: $\\cos 5\\theta\\cos 2\\theta + \\sin 5\\theta\\sin 2\\theta$",
+      "solution": "This matches $\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta = \\cos(\\alpha - \\beta)$:\n\\[\n\\cos 5\\theta\\cos 2\\theta + \\sin 5\\theta\\sin 2\\theta = \\cos(5\\theta - 2\\theta) = \\cos 3\\theta\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Verifying Identities"
+    },
+    {
+      "type": "paragraph",
+      "text": "The sum and difference formulas are powerful tools for verifying identities."
+    },
+    {
+      "type": "example",
+      "id": "example-7.9",
+      "number": "7.9",
+      "title": "Cofunction identity",
+      "problem": "Verify: $\\sin\\left(\\dfrac{\\pi}{2} - \\theta\\right) = \\cos\\theta$",
+      "solution": "Apply the sine difference formula with $\\alpha = \\frac{\\pi}{2}$ and $\\beta = \\theta$:\n$$\n\\sin\\left(\\frac{\\pi}{2} - \\theta\\right) \n&= \\sin\\frac{\\pi}{2}\\cos\\theta - \\cos\\frac{\\pi}{2}\\sin\\theta \\\\\n&= (1)\\cos\\theta - (0)\\sin\\theta \\\\\n&= \\cos\\theta \\quad \\checkmark\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.10",
+      "number": "7.10",
+      "title": "A useful identity",
+      "problem": "Verify: $\\tan\\left(\\theta + \\dfrac{\\pi}{4}\\right) = \\dfrac{1 + \\tan\\theta}{1 - \\tan\\theta}$",
+      "solution": "Apply the tangent sum formula with $\\alpha = \\theta$ and $\\beta = \\frac{\\pi}{4}$:\n$$\n\\tan\\left(\\theta + \\frac{\\pi}{4}\\right) \n&= \\frac{\\tan\\theta + \\tan\\frac{\\pi}{4}}{1 - \\tan\\theta\\tan\\frac{\\pi}{4}} \\\\\n&= \\frac{\\tan\\theta + 1}{1 - \\tan\\theta \\cdot 1} \\\\\n&= \\frac{1 + \\tan\\theta}{1 - \\tan\\theta} \\quad \\checkmark\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.11",
+      "number": "7.11",
+      "title": "Reduction formula",
+      "problem": "Show that $\\sin(\\pi - \\theta) = \\sin\\theta$.",
+      "solution": "Using the sine difference formula:\n$$\n\\sin(\\pi - \\theta) &= \\sin\\pi\\cos\\theta - \\cos\\pi\\sin\\theta \\\\\n&= (0)\\cos\\theta - (-1)\\sin\\theta \\\\\n&= \\sin\\theta \\quad \\checkmark\n$$\nThis explains why angles in Quadrant II have the same sine value as their \nreference angles in Quadrant I."
+    },
+    {
+      "type": "remark",
+      "id": "remark-7.2",
+      "number": null,
+      "title": "Hidden Unity",
+      "content": "The reduction formulas reveal that angles related by $\\pi$ (180°) share \ndeep connections. The sine function treats $\\theta$ and $\\pi - \\theta$ \nidentically; the cosine function treats $\\theta$ and $-\\theta$ identically. \nThese symmetries aren't coincidental—they emerge from the underlying \ngeometry of the circle. In Scripture, we see similar hidden unities: \ndifferent Old Testament prophecies, written centuries apart, converge on \na single fulfillment in Christ. Pattern and connection run deeper than \nsurface appearances suggest."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "Find the exact value of each expression."
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\sin 75°$",
+        "$\\cos 75°$",
+        "$\\sin 15°$",
+        "$\\cos 105°$",
+        "$\\tan 15°$",
+        "$\\sin 165°$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Find the exact value of each expression (use radians)."
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\cos\\dfrac{5\\pi}{12}$",
+        "$\\sin\\dfrac{\\pi}{12}$",
+        "$\\tan\\dfrac{7\\pi}{12}$",
+        "$\\sin\\dfrac{11\\pi}{12}$",
+        "$\\cos\\dfrac{13\\pi}{12}$",
+        "$\\tan\\dfrac{5\\pi}{12}$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Simplify each expression to a single trigonometric function."
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\sin 4x\\cos x - \\cos 4x\\sin x$",
+        "$\\cos 2\\theta\\cos\\theta + \\sin 2\\theta\\sin\\theta$",
+        "$\\sin 7t\\cos 3t + \\cos 7t\\sin 3t$",
+        "$\\cos\\alpha\\cos 2\\alpha - \\sin\\alpha\\sin 2\\alpha$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "If $\\sin\\alpha = \\dfrac{4}{5}$ with $\\alpha$ in QI, and \n$\\cos\\beta = \\dfrac{5}{13}$ with $\\beta$ in QI, find:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\sin(\\alpha + \\beta)$",
+        "$\\cos(\\alpha + \\beta)$",
+        "$\\tan(\\alpha + \\beta)$",
+        "$\\sin(\\alpha - \\beta)$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "If $\\tan\\alpha = \\dfrac{3}{4}$ with $\\alpha$ in QI, and \n$\\tan\\beta = \\dfrac{5}{12}$ with $\\beta$ in QI, find:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\tan(\\alpha + \\beta)$",
+        "$\\tan(\\alpha - \\beta)$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Verify each identity."
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\cos\\left(\\dfrac{\\pi}{2} - \\theta\\right) = \\sin\\theta$",
+        "$\\sin(\\pi + \\theta) = -\\sin\\theta$",
+        "$\\cos(\\pi + \\theta) = -\\cos\\theta$",
+        "$\\tan(\\pi - \\theta) = -\\tan\\theta$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Verify: $\\sin(\\alpha + \\beta)\\sin(\\alpha - \\beta) = \\sin^2\\alpha - \\sin^2\\beta$"
+    }
+  ]
+}

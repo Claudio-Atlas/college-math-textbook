@@ -1,0 +1,327 @@
+{
+  "id": "vol3-ch16-sec02",
+  "title": "Line Integrals",
+  "chapter": 16,
+  "section": 2,
+  "book": "vol3",
+  "epigraph": {
+    "text": "Commit to the Lord whatever you do, and he will establish your plans.",
+    "reference": "Proverbs 16:3"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "A **line integral** integrates a function along a curve, rather than over an interval. Just as the definite integral $\\int_a^b f(x)\\,dx$ sums up contributions along the $x$-axis, a line integral sums contributions along a curved path. Line integrals are essential for computing work done by a force, circulation of a fluid, and many other quantities in physics and engineering."
+    },
+    {
+      "type": "paragraph",
+      "text": "There are two main types of line integrals:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Line integrals of scalar functions:** $\\int_C f\\,ds$ (integrating with respect to arc length)",
+        "**Line integrals of vector fields:** $\\int_C \\vect{F} \\dotp d\\vect{r}$ (integrating the tangential component)"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Line Integrals of Scalar Functions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-16.1",
+      "number": "16.1",
+      "title": "Line Integral of a Scalar Function",
+      "content": "Let $f$ be a continuous function defined on a smooth curve $C$ parametrized by $\\vect{r}(t) = \\langle x(t), y(t), z(t) \\rangle$ for $a \\leq t \\leq b$. The **line integral of $f$ along $C$ with respect to arc length** is\n\\[\n \\int_C f\\,ds = \\int_a^b f(\\vect{r}(t))|\\vect{r}'(t)|\\,dt = \\int_a^b f(x(t), y(t), z(t))\\sqrt{x'(t)^2 + y'(t)^2 + z'(t)^2}\\,dt.\n\\]\nHere $ds = |\\vect{r}'(t)|\\,dt$ is the **arc length element**."
+    },
+    {
+      "type": "paragraph",
+      "text": "The idea: partition the curve into small pieces, evaluate $f$ at sample points, multiply by the arc length of each piece, and sum. The limit gives the line integral."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Physical interpretation:** If $f(x, y, z)$ represents density (mass per unit length) along a wire shaped like $C$, then $\\int_C f\\,ds$ gives the total mass of the wire."
+    },
+    {
+      "type": "example",
+      "id": "example-16.1",
+      "number": "16.1",
+      "title": "Line integral along a line segment",
+      "problem": "Evaluate $\\int_C xy\\,ds$ where $C$ is the line segment from $(0, 0)$ to $(1, 2)$.",
+      "solution": "Parametrize the segment: $\\vect{r}(t) = \\langle t, 2t \\rangle$ for $0 \\leq t \\leq 1$.\n\nThen $\\vect{r}'(t) = \\langle 1, 2 \\rangle$ and $|\\vect{r}'(t)| = \\sqrt{1^2 + 2^2} = \\sqrt{5}$.\n\n$$\n \\int_C xy\\,ds &= \\int_0^1 (t)(2t)\\sqrt{5}\\,dt = 2\\sqrt{5}\\int_0^1 t^2\\,dt \\\\\n &= 2\\sqrt{5} \\cdot \\frac{1}{3} = \\frac{2\\sqrt{5}}{3}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-16.2",
+      "number": "16.2",
+      "title": "Line integral around a circle",
+      "problem": "Evaluate $\\int_C (x^2 + y^2)\\,ds$ where $C$ is the circle $x^2 + y^2 = 4$.",
+      "solution": "Parametrize: $\\vect{r}(t) = \\langle 2\\cos t, 2\\sin t \\rangle$ for $0 \\leq t \\leq 2\\pi$.\n\nThen $\\vect{r}'(t) = \\langle -2\\sin t, 2\\cos t \\rangle$ and $|\\vect{r}'(t)| = 2$.\n\nOn the circle, $x^2 + y^2 = 4$.\n\n$$\n \\int_C (x^2 + y^2)\\,ds &= \\int_0^{2\\pi} 4 \\cdot 2\\,dt = 8 \\cdot 2\\pi = 16\\pi.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-16.3",
+      "number": "16.3",
+      "title": "Mass of a wire",
+      "problem": "A wire has the shape of the helix $\\vect{r}(t) = \\langle \\cos t, \\sin t, t \\rangle$ for $0 \\leq t \\leq 2\\pi$. If the density at each point is $\\rho = z$, find the total mass.",
+      "solution": "$\\vect{r}'(t) = \\langle -\\sin t, \\cos t, 1 \\rangle$, so $|\\vect{r}'(t)| = \\sqrt{\\sin^2 t + \\cos^2 t + 1} = \\sqrt{2}$.\n\nThe density is $\\rho = z = t$ at parameter value $t$.\n\n$$\n M = \\int_C \\rho\\,ds &= \\int_0^{2\\pi} t \\cdot \\sqrt{2}\\,dt = \\sqrt{2}\\left[\\frac{t^2}{2}\\right]_0^{2\\pi} \\\\\n &= \\sqrt{2} \\cdot \\frac{4\\pi^2}{2} = 2\\sqrt{2}\\pi^2.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-16.4",
+      "number": "16.4",
+      "title": "Average value along a curve",
+      "problem": "Find the average value of $f(x, y) = x + y$ along the quarter circle from $(1, 0)$ to $(0, 1)$.",
+      "solution": "Parametrize: $\\vect{r}(t) = \\langle \\cos t, \\sin t \\rangle$ for $0 \\leq t \\leq \\pi/2$.\n\n$|\\vect{r}'(t)| = 1$, so $ds = dt$.\n\nArc length: $L = \\int_0^{\\pi/2} dt = \\pi/2$.\n\n$$\n \\int_C (x + y)\\,ds &= \\int_0^{\\pi/2} (\\cos t + \\sin t)\\,dt = [\\sin t - \\cos t]_0^{\\pi/2} \\\\\n &= (1 - 0) - (0 - 1) = 2.\n$$\n\nAverage value: $\\dfrac{1}{L}\\int_C f\\,ds = \\dfrac{2}{\\pi/2} = \\dfrac{4}{\\pi}$."
+    },
+    {
+      "type": "example",
+      "id": "example-16.5",
+      "number": "16.5",
+      "title": "Semicircle",
+      "problem": "Evaluate $\\int_C y\\,ds$ where $C$ is the upper half of the circle $x^2 + y^2 = 9$.",
+      "solution": "Parametrize: $\\vect{r}(t) = \\langle 3\\cos t, 3\\sin t \\rangle$ for $0 \\leq t \\leq \\pi$.\n\n$|\\vect{r}'(t)| = 3$.\n\n$$\n \\int_C y\\,ds &= \\int_0^{\\pi} (3\\sin t) \\cdot 3\\,dt = 9\\int_0^{\\pi} \\sin t\\,dt \\\\\n &= 9[-\\cos t]_0^{\\pi} = 9(1 - (-1)) = 18.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Line Integrals of Vector Fields"
+    },
+    {
+      "type": "definition",
+      "id": "definition-16.2",
+      "number": "16.2",
+      "title": "Line Integral of a Vector Field",
+      "content": "Let $\\vect{F}$ be a continuous vector field on a smooth curve $C$ parametrized by $\\vect{r}(t)$ for $a \\leq t \\leq b$. The **line integral of $\\vect{F}$ along $C$** is\n\\[\n \\int_C \\vect{F} \\dotp d\\vect{r} = \\int_a^b \\vect{F}(\\vect{r}(t)) \\dotp \\vect{r}'(t)\\,dt.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The vector $d\\vect{r} = \\vect{r}'(t)\\,dt$ is an infinitesimal displacement along the curve. The dot product $\\vect{F} \\dotp d\\vect{r}$ extracts the component of $\\vect{F}$ in the direction of motion."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Alternative notation:** If $\\vect{F} = \\langle P, Q, R \\rangle$ and $\\vect{r}(t) = \\langle x(t), y(t), z(t) \\rangle$:\n\\[\n \\int_C \\vect{F} \\dotp d\\vect{r} = \\int_C P\\,dx + Q\\,dy + R\\,dz\n\\]\nwhere $dx = x'(t)\\,dt$, etc."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Physical interpretation:** If $\\vect{F}$ is a force field, then $\\int_C \\vect{F} \\dotp d\\vect{r}$ is the **work** done by the force in moving an object along $C$."
+    },
+    {
+      "type": "example",
+      "id": "example-16.6",
+      "number": "16.6",
+      "title": "Line integral of a vector field",
+      "problem": "Evaluate $\\int_C \\vect{F} \\dotp d\\vect{r}$ where $\\vect{F} = \\langle y, x \\rangle$ and $C$ is the parabola $y = x^2$ from $(0, 0)$ to $(1, 1)$.",
+      "solution": "Parametrize: $\\vect{r}(t) = \\langle t, t^2 \\rangle$ for $0 \\leq t \\leq 1$.\n\n$\\vect{r}'(t) = \\langle 1, 2t \\rangle$.\n\n$\\vect{F}(\\vect{r}(t)) = \\langle t^2, t \\rangle$.\n\n$$\n \\int_C \\vect{F} \\dotp d\\vect{r} &= \\int_0^1 \\langle t^2, t \\rangle \\dotp \\langle 1, 2t \\rangle\\,dt \\\\\n &= \\int_0^1 (t^2 + 2t^2)\\,dt = 3\\int_0^1 t^2\\,dt = 1.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-16.7",
+      "number": "16.7",
+      "title": "Same field, different path",
+      "problem": "Evaluate $\\int_C \\vect{F} \\dotp d\\vect{r}$ where $\\vect{F} = \\langle y, x \\rangle$ and $C$ is the straight line from $(0, 0)$ to $(1, 1)$.",
+      "solution": "Parametrize: $\\vect{r}(t) = \\langle t, t \\rangle$ for $0 \\leq t \\leq 1$.\n\n$\\vect{r}'(t) = \\langle 1, 1 \\rangle$.\n\n$\\vect{F}(\\vect{r}(t)) = \\langle t, t \\rangle$.\n\n$$\n \\int_C \\vect{F} \\dotp d\\vect{r} &= \\int_0^1 \\langle t, t \\rangle \\dotp \\langle 1, 1 \\rangle\\,dt = \\int_0^1 2t\\,dt = 1.\n$$\n\nSame answer! This suggests $\\vect{F} = \\langle y, x \\rangle$ might be conservative. (It is: $f = xy$ is a potential.)"
+    },
+    {
+      "type": "example",
+      "id": "example-16.8",
+      "number": "16.8",
+      "title": "Circulation around a circle",
+      "problem": "Evaluate $\\int_C \\vect{F} \\dotp d\\vect{r}$ where $\\vect{F} = \\langle -y, x \\rangle$ and $C$ is the unit circle traversed counterclockwise.",
+      "solution": "Parametrize: $\\vect{r}(t) = \\langle \\cos t, \\sin t \\rangle$ for $0 \\leq t \\leq 2\\pi$.\n\n$\\vect{r}'(t) = \\langle -\\sin t, \\cos t \\rangle$.\n\n$\\vect{F}(\\vect{r}(t)) = \\langle -\\sin t, \\cos t \\rangle$.\n\n$$\n \\int_C \\vect{F} \\dotp d\\vect{r} &= \\int_0^{2\\pi} \\langle -\\sin t, \\cos t \\rangle \\dotp \\langle -\\sin t, \\cos t \\rangle\\,dt \\\\\n &= \\int_0^{2\\pi} (\\sin^2 t + \\cos^2 t)\\,dt = \\int_0^{2\\pi} 1\\,dt = 2\\pi.\n$$\n\nThe **circulation** of this rotational field around the circle is $2\\pi$, the circumference."
+    },
+    {
+      "type": "example",
+      "id": "example-16.9",
+      "number": "16.9",
+      "title": "Using differential notation",
+      "problem": "Evaluate $\\int_C y\\,dx + x\\,dy$ along $y = x^2$ from $(0, 0)$ to $(2, 4)$.",
+      "solution": "Let $x = t$, so $y = t^2$, for $0 \\leq t \\leq 2$.\n\n$dx = dt$, $dy = 2t\\,dt$.\n\n$$\n \\int_C y\\,dx + x\\,dy &= \\int_0^2 (t^2 \\cdot 1 + t \\cdot 2t)\\,dt = \\int_0^2 3t^2\\,dt \\\\\n &= [t^3]_0^2 = 8.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Work Done by a Force"
+    },
+    {
+      "type": "paragraph",
+      "text": "If $\\vect{F}$ is a force field, the work done in moving an object along curve $C$ is:\n\\[\n W = \\int_C \\vect{F} \\dotp d\\vect{r}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This generalizes the formula $W = Fd$ for constant force along a straight path."
+    },
+    {
+      "type": "example",
+      "id": "example-16.10",
+      "number": "16.10",
+      "title": "Work by a constant force",
+      "problem": "Find the work done by the constant force $\\vect{F} = \\langle 3, 4, 5 \\rangle$ in moving an object from $(1, 0, 0)$ to $(3, 2, 1)$ along any path.",
+      "solution": "For a constant force, work is $\\vect{F} \\dotp \\vect{d}$ where $\\vect{d}$ is the displacement:\n\\[\n \\vect{d} = \\langle 3-1, 2-0, 1-0 \\rangle = \\langle 2, 2, 1 \\rangle.\n\\]\n\\[\n W = \\langle 3, 4, 5 \\rangle \\dotp \\langle 2, 2, 1 \\rangle = 6 + 8 + 5 = 19.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-16.11",
+      "number": "16.11",
+      "title": "Work along a helix",
+      "problem": "Find the work done by $\\vect{F} = \\langle x, xy, -z \\rangle$ in moving an object along the helix $\\vect{r}(t) = \\langle \\cos t, \\sin t, t \\rangle$ from $(1,0,0)$ to $(1,0,2\\pi)$.",
+      "solution": "$\\vect{r}'(t) = \\langle -\\sin t, \\cos t, 1 \\rangle$.\n\n$\\vect{F}(\\vect{r}(t)) = \\langle \\cos t, \\cos t\\sin t, -t \\rangle$.\n\n$$\n W &= \\int_0^{2\\pi} \\langle \\cos t, \\cos t\\sin t, -t \\rangle \\dotp \\langle -\\sin t, \\cos t, 1 \\rangle\\,dt \\\\\n &= \\int_0^{2\\pi} (-\\sin t\\cos t + \\cos^2 t\\sin t - t)\\,dt.\n$$\n\nThe first two terms integrate to zero over $[0, 2\\pi]$ (symmetry):\n\n- $\\int_0^{2\\pi} \\sin t\\cos t\\,dt = 0$\n\n- $\\int_0^{2\\pi} \\cos^2 t\\sin t\\,dt = 0$\n\nThus:\n\\[\n W = -\\int_0^{2\\pi} t\\,dt = -\\frac{(2\\pi)^2}{2} = -2\\pi^2.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-16.12",
+      "number": "16.12",
+      "title": "Work against gravity",
+      "problem": "Find the work done *against* gravity $\\vect{F} = \\langle 0, 0, -mg \\rangle$ in lifting an object of mass $m$ from $(0,0,0)$ to $(1,2,h)$.",
+      "solution": "Work done *by* gravity along any path from $(0,0,0)$ to $(1,2,h)$:\n\nThe only component that contributes is $z$:\n\\[\n W_{\\text{gravity}} = \\int_C (-mg)\\,dz = -mg \\cdot h.\n\\]\n\nWork done *against* gravity is the negative:\n\\[\n W_{\\text{against}} = mgh.\n\\]\n\nThis is the familiar formula for gravitational potential energy—and it depends only on height $h$, not on the path!"
+    },
+    {
+      "type": "example",
+      "id": "example-16.13",
+      "number": "16.13",
+      "title": "Work by a position-dependent force",
+      "problem": "Find the work done by $\\vect{F} = \\langle 2x, 3y \\rangle$ along the path $y = x^2$ from $(0,0)$ to $(1,1)$.",
+      "solution": "Parametrize: $\\vect{r}(t) = \\langle t, t^2 \\rangle$, $0 \\leq t \\leq 1$.\n\n$\\vect{r}'(t) = \\langle 1, 2t \\rangle$.\n\n$\\vect{F}(\\vect{r}(t)) = \\langle 2t, 3t^2 \\rangle$.\n\n$$\n W &= \\int_0^1 \\langle 2t, 3t^2 \\rangle \\dotp \\langle 1, 2t \\rangle\\,dt \\\\\n &= \\int_0^1 (2t + 6t^3)\\,dt = [t^2 + \\frac{3t^4}{2}]_0^1 = 1 + \\frac{3}{2} = \\frac{5}{2}.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Properties of Line Integrals"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-16.1",
+      "number": "16.1",
+      "title": "Properties of Line Integrals",
+      "content": "Let $\\vect{F}$ and $\\vect{G}$ be continuous vector fields on curves $C$, $C_1$, $C_2$.\n\n1. **Linearity:**\n \\[\n \\int_C (a\\vect{F} + b\\vect{G}) \\dotp d\\vect{r} = a\\int_C \\vect{F} \\dotp d\\vect{r} + b\\int_C \\vect{G} \\dotp d\\vect{r}\n \\]\n\n2. **Orientation reversal:** If $-C$ denotes $C$ traversed in the opposite direction,\n \\[\n \\int_{-C} \\vect{F} \\dotp d\\vect{r} = -\\int_C \\vect{F} \\dotp d\\vect{r}\n \\]\n\n3. **Additivity over paths:** If $C = C_1 + C_2$ (concatenation),\n \\[\n \\int_C \\vect{F} \\dotp d\\vect{r} = \\int_{C_1} \\vect{F} \\dotp d\\vect{r} + \\int_{C_2} \\vect{F} \\dotp d\\vect{r}\n \\]\n\n4. **Independence of parametrization:** The value of $\\int_C \\vect{F} \\dotp d\\vect{r}$ depends only on $C$ and its orientation, not on the specific parametrization.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If $\\vect{r}(t)$, $a \\leq t \\leq b$, parametrizes $C$, then $\\vect{s}(u) = \\vect{r}(a + b - u)$, $a \\leq u \\leq b$, parametrizes $-C$.\n\nWe have $\\vect{s}'(u) = -\\vect{r}'(a + b - u)$.\n\n$$\n \\int_{-C} \\vect{F} \\dotp d\\vect{r} &= \\int_a^b \\vect{F}(\\vect{s}(u)) \\dotp \\vect{s}'(u)\\,du \\\\\n &= \\int_a^b \\vect{F}(\\vect{r}(a+b-u)) \\dotp (-\\vect{r}'(a+b-u))\\,du.\n$$\n\nLet $t = a + b - u$, so $dt = -du$:\n\\[\n = \\int_b^a \\vect{F}(\\vect{r}(t)) \\dotp (-\\vect{r}'(t))(-dt) = -\\int_a^b \\vect{F}(\\vect{r}(t)) \\dotp \\vect{r}'(t)\\,dt = -\\int_C \\vect{F} \\dotp d\\vect{r}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-16.14",
+      "number": "16.14",
+      "title": "Using additivity",
+      "problem": "Evaluate $\\int_C \\vect{F} \\dotp d\\vect{r}$ where $\\vect{F} = \\langle y, -x \\rangle$ and $C$ goes from $(1,0)$ to $(0,1)$ along the line $x + y = 1$, then from $(0,1)$ to $(-1,0)$ along the quarter circle $x^2 + y^2 = 1$.",
+      "solution": "**Part 1:** Line segment, $C_1$: parametrize as $\\vect{r}(t) = \\langle 1-t, t \\rangle$, $0 \\leq t \\leq 1$.\n\n$\\vect{r}'(t) = \\langle -1, 1 \\rangle$, $\\vect{F}(\\vect{r}(t)) = \\langle t, -(1-t) \\rangle$.\n\n\\[\n \\int_{C_1} = \\int_0^1 \\langle t, t-1 \\rangle \\dotp \\langle -1, 1 \\rangle\\,dt = \\int_0^1 (-t + t - 1)\\,dt = -1.\n\\]\n\n**Part 2:** Quarter circle, $C_2$: parametrize as $\\vect{r}(t) = \\langle \\cos t, \\sin t \\rangle$, $\\pi/2 \\leq t \\leq \\pi$.\n\n$\\vect{r}'(t) = \\langle -\\sin t, \\cos t \\rangle$, $\\vect{F}(\\vect{r}(t)) = \\langle \\sin t, -\\cos t \\rangle$.\n\n\\[\n \\int_{C_2} = \\int_{\\pi/2}^{\\pi} \\langle \\sin t, -\\cos t \\rangle \\dotp \\langle -\\sin t, \\cos t \\rangle\\,dt = \\int_{\\pi/2}^{\\pi} (-\\sin^2 t - \\cos^2 t)\\,dt = -\\frac{\\pi}{2}.\n\\]\n\n**Total:** $\\int_C = -1 - \\dfrac{\\pi}{2}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Line Integrals over Closed Curves"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **closed curve** starts and ends at the same point. The notation $\\oint_C$ indicates integration around a closed curve."
+    },
+    {
+      "type": "paragraph",
+      "text": "For a closed curve, the line integral $\\oint_C \\vect{F} \\dotp d\\vect{r}$ is called the **circulation** of $\\vect{F}$ around $C$."
+    },
+    {
+      "type": "example",
+      "id": "example-16.15",
+      "number": "16.15",
+      "title": "Circulation of a conservative field",
+      "problem": "Evaluate $\\oint_C \\vect{F} \\dotp d\\vect{r}$ where $\\vect{F} = \\langle 2xy, x^2 \\rangle$ and $C$ is any closed curve.",
+      "solution": "We showed earlier that $\\vect{F} = \\grad f$ where $f = x^2 y$.\n\nFor conservative fields, the line integral depends only on endpoints. Since a closed curve has the same start and end point:\n\\[\n \\oint_C \\vect{F} \\dotp d\\vect{r} = f(\\text{end}) - f(\\text{start}) = 0.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-16.16",
+      "number": "16.16",
+      "title": "Nonzero circulation",
+      "problem": "Verify that $\\oint_C \\vect{F} \\dotp d\\vect{r} = 2\\pi$ where $\\vect{F} = \\langle -y, x \\rangle$ and $C$ is the unit circle (counterclockwise).",
+      "solution": "This was computed in Example [ex:circulation]. The field $\\vect{F} = \\langle -y, x \\rangle$ is *not* conservative (the rotational field), and its circulation around the unit circle is $2\\pi$.\n\nNote: $P_y = -1$ but $Q_x = 1$, so $P_y \\neq Q_x$, confirming non-conservativity."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Relationship Between Scalar and Vector Line Integrals"
+    },
+    {
+      "type": "paragraph",
+      "text": "The two types of line integrals are related by the unit tangent vector $\\vect{T} = \\vect{r}'/|\\vect{r}'|$:\n\\[\n \\int_C \\vect{F} \\dotp d\\vect{r} = \\int_C (\\vect{F} \\dotp \\vect{T})\\,ds.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The vector line integral integrates the tangential component of $\\vect{F}$ with respect to arc length."
+    },
+    {
+      "type": "paragraph",
+      "text": "Similarly:\n\\[\n \\int_C f\\,ds = \\int_a^b f(\\vect{r}(t))|\\vect{r}'(t)|\\,dt\n\\]\nbut $\\int_C \\vect{F} \\dotp d\\vect{r}$ can be positive, negative, or zero, depending on how $\\vect{F}$ aligns with the path."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Additional Worked Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-16.17",
+      "number": "16.17",
+      "title": "Twisted cubic",
+      "problem": "Evaluate $\\int_C xyz\\,ds$ along the twisted cubic $\\vect{r}(t) = \\langle t, t^2, t^3 \\rangle$ from $(0,0,0)$ to $(1,1,1)$.",
+      "solution": "$\\vect{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle$, $|\\vect{r}'(t)| = \\sqrt{1 + 4t^2 + 9t^4}$.\n\n$f(\\vect{r}(t)) = t \\cdot t^2 \\cdot t^3 = t^6$.\n\n$$\n \\int_C xyz\\,ds &= \\int_0^1 t^6 \\sqrt{1 + 4t^2 + 9t^4}\\,dt.\n$$\n\nThis integral doesn't have a nice closed form. We could approximate numerically or leave it in this form."
+    },
+    {
+      "type": "example",
+      "id": "example-16.18",
+      "number": "16.18",
+      "title": "Vector field on a triangle",
+      "problem": "Evaluate $\\int_C x\\,dy - y\\,dx$ where $C$ is the triangle with vertices $(0,0)$, $(1,0)$, $(0,1)$, traversed counterclockwise.",
+      "solution": "$C = C_1 + C_2 + C_3$.\n\n**$C_1$:** $(0,0) \\to (1,0)$: $\\vect{r}(t) = \\langle t, 0 \\rangle$, $0 \\leq t \\leq 1$. \n$dy = 0$, $dx = dt$.\n\\[\n \\int_{C_1} = \\int_0^1 (t \\cdot 0 - 0 \\cdot 1)\\,dt = 0.\n\\]\n\n**$C_2$:** $(1,0) \\to (0,1)$: $\\vect{r}(t) = \\langle 1-t, t \\rangle$, $0 \\leq t \\leq 1$.\n$dx = -dt$, $dy = dt$.\n\\[\n \\int_{C_2} = \\int_0^1 ((1-t) \\cdot 1 - t \\cdot (-1))\\,dt = \\int_0^1 (1-t+t)\\,dt = 1.\n\\]\n\n**$C_3$:** $(0,1) \\to (0,0)$: $\\vect{r}(t) = \\langle 0, 1-t \\rangle$, $0 \\leq t \\leq 1$.\n$dx = 0$, $dy = -dt$.\n\\[\n \\int_{C_3} = \\int_0^1 (0 \\cdot (-1) - (1-t) \\cdot 0)\\,dt = 0.\n\\]\n\n**Total:** $0 + 1 + 0 = 1$.\n\nNote: By Green's Theorem (Section 16.4), $\\oint_C x\\,dy - y\\,dx = 2 \\cdot \\text{Area} = 2 \\cdot \\frac{1}{2} = 1$. $\\checkmark$"
+    },
+    {
+      "type": "example",
+      "id": "example-16.19",
+      "number": "16.19",
+      "title": "Piecewise smooth curve",
+      "problem": "Evaluate $\\int_C (x^2 + y)\\,dx + xy\\,dy$ from $(0,0)$ to $(1,1)$ along the path: $(0,0) \\to (1,0) \\to (1,1)$.",
+      "solution": "**$C_1$:** $(0,0) \\to (1,0)$: $x = t$, $y = 0$, $0 \\leq t \\leq 1$.\n\\[\n \\int_{C_1} = \\int_0^1 (t^2 + 0) \\cdot 1 + 0\\,dt = \\frac{1}{3}.\n\\]\n\n**$C_2$:** $(1,0) \\to (1,1)$: $x = 1$, $y = t$, $0 \\leq t \\leq 1$.\n$dx = 0$.\n\\[\n \\int_{C_2} = \\int_0^1 0 + 1 \\cdot t \\cdot 1\\,dt = \\frac{1}{2}.\n\\]\n\n**Total:** $\\dfrac{1}{3} + \\dfrac{1}{2} = \\dfrac{5}{6}$."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 119:105",
+      "text": "Your word is a lamp to my feet and a light to my path."
+    },
+    {
+      "type": "scripture",
+      "reference": "Colossians 1:29",
+      "text": "For this I toil, struggling with all his energy that he powerfully works within me."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 9:10",
+      "text": "Whatever your hand finds to do, do it with your might."
+    },
+    {
+      "type": "quote",
+      "author": "Cauchy",
+      "text": "One should give them the notion of the integral the way it comes from nature."
+    },
+    {
+      "type": "quote",
+      "author": "Heaviside",
+      "text": "Mathematics is an experimental science, and definitions do not come first but later on."
+    },
+    {
+      "type": "quote",
+      "author": "Abel",
+      "text": "By studying the masters, not their pupils."
+    },
+    {
+      "type": "quote",
+      "author": "Riemann",
+      "text": "The true method of foreseeing the future of mathematics is to study its history and its actual state."
+    }
+  ]
+}

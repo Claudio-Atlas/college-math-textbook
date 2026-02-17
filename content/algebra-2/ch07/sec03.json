@@ -1,0 +1,390 @@
+{
+  "id": "algebra-2-ch07-sec03",
+  "title": "Solving Logarithmic and Exponential Equations",
+  "chapter": 7,
+  "section": 3,
+  "book": "algebra-2",
+  "epigraph": {
+    "text": "Ask and it will be given to you; seek and you will find.",
+    "reference": "Matthew 7:7"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Having mastered the properties of logarithms, we now turn to solving \nequations involving logarithms and exponentials. These equations arise \nconstantly in science, finance, and engineering—whenever quantities \ngrow or decay exponentially. The key insight is that logarithms and \nexponentials are inverses: each \"undoes\" the other."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving Exponential Equations Using Logarithms"
+    },
+    {
+      "type": "paragraph",
+      "text": "In Chapter 6, we solved exponential equations like $2^x = 32$ by rewriting \nboth sides with the same base. But what about $2^x = 10$ or $5^{x+1} = 17$? \nWhen we cannot easily match bases, we use logarithms."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-7.3",
+      "number": null,
+      "title": "Solving Exponential Equations",
+      "content": "1. Isolate the exponential expression on one side\n\n2. Take the logarithm of both sides (usually $\\ln$ or $\\log$)\n\n3. Use the power rule to bring down the exponent\n\n4. Solve the resulting linear equation for the variable\n\n5. Check your answer (optional but recommended)"
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Basic exponential equation",
+      "problem": "Solve: $5^x = 12$",
+      "solution": "Take the natural log of both sides:\n\\[\n \\ln(5^x) = \\ln 12\n\\]\nApply the power rule:\n\\[\n x \\ln 5 = \\ln 12\n\\]\n\\[\n x = \\frac{\\ln 12}{\\ln 5} \\approx \\frac{2.485}{1.609} \\approx 1.544\n\\]\n\n**Check:** $5^{1.544} \\approx 12$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Exponential equation with coefficient",
+      "problem": "Solve: $3 \\cdot 2^x = 48$",
+      "solution": "First isolate the exponential:\n\\[\n 2^x = 16\n\\]\n\nThis can be solved without logarithms: $2^4 = 16$, so $x = 4$.\n\nAlternatively, using logs:\n\\[\n x = \\frac{\\ln 16}{\\ln 2} = \\frac{\\ln 2^4}{\\ln 2} = \\frac{4\\ln 2}{\\ln 2} = 4\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "Exponential with variable in exponent",
+      "problem": "Solve: $4^{2x-1} = 7$",
+      "solution": "Take $\\ln$ of both sides:\n\\[\n \\ln(4^{2x-1}) = \\ln 7\n\\]\n\\[\n (2x-1)\\ln 4 = \\ln 7\n\\]\n\\[\n 2x - 1 = \\frac{\\ln 7}{\\ln 4}\n\\]\n\\[\n 2x - 1 \\approx \\frac{1.946}{1.386} \\approx 1.404\n\\]\n\\[\n 2x \\approx 2.404\n\\]\n\\[\n x \\approx 1.202\n\\]\n\n**Exact answer:** $x = \\frac{1}{2}\\left(1 + \\frac{\\ln 7}{\\ln 4}\\right) = \\frac{1}{2} + \\frac{\\ln 7}{2\\ln 4}$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "Equation with $e$",
+      "problem": "Solve: $e^{2x+1} = 15$",
+      "solution": "Take $\\ln$ of both sides (since $\\ln$ and $e$ are inverses, this is cleanest):\n\\[\n \\ln(e^{2x+1}) = \\ln 15\n\\]\n\\[\n 2x + 1 = \\ln 15\n\\]\n\\[\n 2x = \\ln 15 - 1 \\approx 2.708 - 1 = 1.708\n\\]\n\\[\n x \\approx 0.854\n\\]\n\n**Exact answer:** $x = \\frac{\\ln 15 - 1}{2}$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.5",
+      "number": "7.5",
+      "title": "Exponential equation requiring isolation",
+      "problem": "Solve: $100e^{0.05x} = 250$",
+      "solution": "First isolate the exponential:\n\\[\n e^{0.05x} = 2.5\n\\]\n\nTake $\\ln$ of both sides:\n\\[\n 0.05x = \\ln 2.5\n\\]\n\\[\n x = \\frac{\\ln 2.5}{0.05} = 20\\ln 2.5 \\approx 20(0.916) \\approx 18.33\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.6",
+      "number": "7.6",
+      "title": "Exponential equation with two exponentials",
+      "problem": "Solve: $3^{x+2} = 5^x$",
+      "solution": "Take $\\ln$ of both sides:\n\\[\n \\ln(3^{x+2}) = \\ln(5^x)\n\\]\n\\[\n (x+2)\\ln 3 = x \\ln 5\n\\]\n\\[\n x\\ln 3 + 2\\ln 3 = x\\ln 5\n\\]\n\\[\n 2\\ln 3 = x\\ln 5 - x\\ln 3\n\\]\n\\[\n 2\\ln 3 = x(\\ln 5 - \\ln 3)\n\\]\n\\[\n x = \\frac{2\\ln 3}{\\ln 5 - \\ln 3} = \\frac{2\\ln 3}{\\ln(5/3)} \\approx \\frac{2(1.099)}{0.511} \\approx 4.301\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.7",
+      "number": "7.7",
+      "title": "Both sides with different exponentials",
+      "problem": "Solve: $2^{x-1} = 3^{2x}$",
+      "solution": "Take $\\ln$ of both sides:\n\\[\n (x-1)\\ln 2 = 2x\\ln 3\n\\]\n\\[\n x\\ln 2 - \\ln 2 = 2x\\ln 3\n\\]\n\\[\n x\\ln 2 - 2x\\ln 3 = \\ln 2\n\\]\n\\[\n x(\\ln 2 - 2\\ln 3) = \\ln 2\n\\]\n\\[\n x = \\frac{\\ln 2}{\\ln 2 - 2\\ln 3} = \\frac{\\ln 2}{\\ln 2 - \\ln 9} = \\frac{\\ln 2}{\\ln(2/9)}\n\\]\n\\[\n x \\approx \\frac{0.693}{-1.504} \\approx -0.461\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Quadratic-Type Exponential Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "Some exponential equations can be transformed into quadratic equations \nusing substitution."
+    },
+    {
+      "type": "example",
+      "id": "example-7.8",
+      "number": "7.8",
+      "title": "Quadratic in exponential form",
+      "problem": "Solve: $e^{2x} - 5e^x + 6 = 0$",
+      "solution": "Let $u = e^x$. Then $e^{2x} = (e^x)^2 = u^2$, and the equation becomes:\n\\[\n u^2 - 5u + 6 = 0\n\\]\n\\[\n (u - 2)(u - 3) = 0\n\\]\n\\[\n u = 2 \\text{ or } u = 3\n\\]\n\nBack-substitute:\n\n- $e^x = 2 \\Rightarrow x = \\ln 2 \\approx 0.693$\n\n- $e^x = 3 \\Rightarrow x = \\ln 3 \\approx 1.099$\n\n**Solutions:** $x = \\ln 2$ or $x = \\ln 3$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.9",
+      "number": "7.9",
+      "title": "Quadratic with base 2",
+      "problem": "Solve: $4^x - 6 \\cdot 2^x + 8 = 0$",
+      "solution": "Note that $4^x = (2^2)^x = 2^{2x} = (2^x)^2$.\n\nLet $u = 2^x$. The equation becomes:\n\\[\n u^2 - 6u + 8 = 0\n\\]\n\\[\n (u - 2)(u - 4) = 0\n\\]\n\\[\n u = 2 \\text{ or } u = 4\n\\]\n\nBack-substitute:\n\n- $2^x = 2 \\Rightarrow x = 1$\n\n- $2^x = 4 \\Rightarrow x = 2$\n\n**Solutions:** $x = 1$ or $x = 2$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.10",
+      "number": "7.10",
+      "title": "Quadratic with negative solution",
+      "problem": "Solve: $e^{2x} + e^x - 12 = 0$",
+      "solution": "Let $u = e^x$:\n\\[\n u^2 + u - 12 = 0\n\\]\n\\[\n (u + 4)(u - 3) = 0\n\\]\n\\[\n u = -4 \\text{ or } u = 3\n\\]\n\nBack-substitute:\n\n- $e^x = -4$: No solution (exponentials are always positive)\n\n- $e^x = 3 \\Rightarrow x = \\ln 3 \\approx 1.099$\n\n**Solution:** $x = \\ln 3$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.11",
+      "number": "7.11",
+      "title": "Exponential equation requiring factoring",
+      "problem": "Solve: $3 \\cdot 9^x - 10 \\cdot 3^x + 3 = 0$",
+      "solution": "Note that $9^x = (3^2)^x = (3^x)^2$.\n\nLet $u = 3^x$:\n\\[\n 3u^2 - 10u + 3 = 0\n\\]\n\\[\n (3u - 1)(u - 3) = 0\n\\]\n\\[\n u = \\frac{1}{3} \\text{ or } u = 3\n\\]\n\nBack-substitute:\n\n- $3^x = \\frac{1}{3} = 3^{-1} \\Rightarrow x = -1$\n\n- $3^x = 3 \\Rightarrow x = 1$\n\n**Solutions:** $x = -1$ or $x = 1$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving Logarithmic Equations"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-7.3",
+      "number": null,
+      "title": "Solving Logarithmic Equations",
+      "content": "1. Combine logarithms using properties (if needed)\n\n2. Convert to exponential form OR use the one-to-one property\n\n3. Solve the resulting equation\n\n4. **Check all solutions** for extraneous roots (arguments must be positive)"
+    },
+    {
+      "type": "important",
+      "id": "important-7.3",
+      "number": null,
+      "title": "",
+      "content": "Always check your solutions! Logarithmic equations often produce extraneous \nsolutions that make an argument negative or zero. Every solution must be \nverified in the original equation."
+    },
+    {
+      "type": "example",
+      "id": "example-7.12",
+      "number": "7.12",
+      "title": "Basic logarithmic equation",
+      "problem": "Solve: $\\log_3(2x - 1) = 4$",
+      "solution": "Convert to exponential form:\n\\[\n 2x - 1 = 3^4 = 81\n\\]\n\\[\n 2x = 82\n\\]\n\\[\n x = 41\n\\]\n\n**Check:** $\\log_3(2(41) - 1) = \\log_3 81 = 4$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.13",
+      "number": "7.13",
+      "title": "Equation with natural log",
+      "problem": "Solve: $\\ln(x - 3) = 2$",
+      "solution": "Convert to exponential form:\n\\[\n x - 3 = e^2\n\\]\n\\[\n x = e^2 + 3 \\approx 7.389 + 3 = 10.389\n\\]\n\n**Check:** $\\ln(10.389 - 3) = \\ln(7.389) = 2$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.14",
+      "number": "7.14",
+      "title": "Using the one-to-one property",
+      "problem": "Solve: $\\log_5(3x + 1) = \\log_5(x + 7)$",
+      "solution": "If $\\log_b M = \\log_b N$, then $M = N$:\n\\[\n 3x + 1 = x + 7\n\\]\n\\[\n 2x = 6\n\\]\n\\[\n x = 3\n\\]\n\n**Check:** $\\log_5(10) = \\log_5(10)$ (and both arguments are positive)"
+    },
+    {
+      "type": "example",
+      "id": "example-7.15",
+      "number": "7.15",
+      "title": "Equation requiring combination",
+      "problem": "Solve: $\\log_2 x + \\log_2(x - 2) = 3$",
+      "solution": "Combine using the product rule:\n\\[\n \\log_2[x(x - 2)] = 3\n\\]\n\nConvert to exponential form:\n\\[\n x(x - 2) = 2^3 = 8\n\\]\n\\[\n x^2 - 2x - 8 = 0\n\\]\n\\[\n (x - 4)(x + 2) = 0\n\\]\n\\[\n x = 4 \\text{ or } x = -2\n\\]\n\n**Check domain:** \n\n- For $x = 4$: $\\log_2 4$ and $\\log_2 2$ are both defined. \n\n- For $x = -2$: $\\log_2(-2)$ is undefined. 55\n\n**Solution:** $x = 4$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.16",
+      "number": "7.16",
+      "title": "Equation with quotient",
+      "problem": "Solve: $\\log(x + 5) - \\log(x - 2) = 1$",
+      "solution": "Combine using the quotient rule:\n\\[\n \\log\\left(\\frac{x + 5}{x - 2}\\right) = 1\n\\]\n\nConvert to exponential form (base 10):\n\\[\n \\frac{x + 5}{x - 2} = 10^1 = 10\n\\]\n\\[\n x + 5 = 10(x - 2)\n\\]\n\\[\n x + 5 = 10x - 20\n\\]\n\\[\n 25 = 9x\n\\]\n\\[\n x = \\frac{25}{9}\n\\]\n\n**Check:** $\\frac{25}{9} \\approx 2.78 > 2$, so both arguments are positive."
+    },
+    {
+      "type": "example",
+      "id": "example-7.17",
+      "number": "7.17",
+      "title": "Logarithm equals logarithm with different arguments",
+      "problem": "Solve: $\\ln(x + 4) = \\ln x + \\ln 4$",
+      "solution": "First simplify the right side:\n\\[\n \\ln(x + 4) = \\ln(4x)\n\\]\n\nBy the one-to-one property:\n\\[\n x + 4 = 4x\n\\]\n\\[\n 4 = 3x\n\\]\n\\[\n x = \\frac{4}{3}\n\\]\n\n**Check:** $\\ln(\\frac{4}{3} + 4) = \\ln(\\frac{16}{3})$ and \n$\\ln(\\frac{4}{3}) + \\ln 4 = \\ln(\\frac{4 \\cdot 4}{3}) = \\ln(\\frac{16}{3})$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.18",
+      "number": "7.18",
+      "title": "Equation with multiple extraneous solutions",
+      "problem": "Solve: $\\log_3(x - 1) + \\log_3(x + 5) = 3$",
+      "solution": "Combine using the product rule:\n\\[\n \\log_3[(x - 1)(x + 5)] = 3\n\\]\n\\[\n (x - 1)(x + 5) = 27\n\\]\n\\[\n x^2 + 4x - 5 = 27\n\\]\n\\[\n x^2 + 4x - 32 = 0\n\\]\n\\[\n (x + 8)(x - 4) = 0\n\\]\n\\[\n x = -8 \\text{ or } x = 4\n\\]\n\n**Check domain:**\n\n- For $x = -8$: $\\log_3(-9)$ is undefined. 55\n\n- For $x = 4$: $\\log_3(3)$ and $\\log_3(9)$ are both defined. \n\n**Verify:** $\\log_3 3 + \\log_3 9 = 1 + 2 = 3$ \n\n**Solution:** $x = 4$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Equations with Logarithms on Both Sides"
+    },
+    {
+      "type": "example",
+      "id": "example-7.19",
+      "number": "7.19",
+      "title": "Logs on both sides",
+      "problem": "Solve: $\\log_3(x^2 - 1) = \\log_3(2x + 2)$",
+      "solution": "Using the one-to-one property:\n\\[\n x^2 - 1 = 2x + 2\n\\]\n\\[\n x^2 - 2x - 3 = 0\n\\]\n\\[\n (x - 3)(x + 1) = 0\n\\]\n\\[\n x = 3 \\text{ or } x = -1\n\\]\n\n**Check domain:**\n\n- For $x = 3$: $x^2 - 1 = 8 > 0$ and $2x + 2 = 8 > 0$. \n\n- For $x = -1$: $x^2 - 1 = 0$, but $\\log_3 0$ is undefined. 55\n\n**Solution:** $x = 3$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.20",
+      "number": "7.20",
+      "title": "Different bases on each side",
+      "problem": "Solve: $\\log_2 x = 3 - \\log_2(x + 6)$",
+      "solution": "Move all logs to one side:\n\\[\n \\log_2 x + \\log_2(x + 6) = 3\n\\]\n\\[\n \\log_2[x(x + 6)] = 3\n\\]\n\\[\n x^2 + 6x = 8\n\\]\n\\[\n x^2 + 6x - 8 = 0\n\\]\n\nUsing the quadratic formula:\n\\[\n x = \\frac{-6 \\pm \\sqrt{36 + 32}}{2} = \\frac{-6 \\pm \\sqrt{68}}{2} = \\frac{-6 \\pm 2\\sqrt{17}}{2} = -3 \\pm \\sqrt{17}\n\\]\n\nSince $\\sqrt{17} \\approx 4.12$:\n\n- $x = -3 + \\sqrt{17} \\approx 1.12 > 0$ \n\n- $x = -3 - \\sqrt{17} \\approx -7.12 < 0$ 55\n\n**Solution:** $x = -3 + \\sqrt{17}$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Mixed Logarithmic-Exponential Equations"
+    },
+    {
+      "type": "example",
+      "id": "example-7.21",
+      "number": "7.21",
+      "title": "Exponential with logarithmic coefficient",
+      "problem": "Solve: $2^{\\log_2 x} = x$",
+      "solution": "By the inverse property, $2^{\\log_2 x} = x$ for all $x > 0$.\n\nThis is an identity, so the solution is **all $x > 0$**, or $(0, \\infty)$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.22",
+      "number": "7.22",
+      "title": "Equation requiring careful manipulation",
+      "problem": "Solve: $\\log_2(8^x) = 6$",
+      "solution": "Method 1: Use properties\n\\[\n \\log_2(8^x) = x \\log_2 8 = x \\cdot 3 = 3x\n\\]\nSo $3x = 6$, giving $x = 2$.\n\nMethod 2: Simplify first\n\\[\n 8^x = (2^3)^x = 2^{3x}\n\\]\n\\[\n \\log_2(2^{3x}) = 3x = 6 \\Rightarrow x = 2\n\\]\n\n**Solution:** $x = 2$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.23",
+      "number": "7.23",
+      "title": "Logarithm in exponent",
+      "problem": "Solve: $5^{1 + \\log_5 x} = 25$",
+      "solution": "Rewrite the left side:\n\\[\n 5^{1 + \\log_5 x} = 5^1 \\cdot 5^{\\log_5 x} = 5 \\cdot x = 5x\n\\]\n\nSo:\n\\[\n 5x = 25 \\Rightarrow x = 5\n\\]\n\n**Check:** $5^{1 + \\log_5 5} = 5^{1+1} = 5^2 = 25$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications"
+    },
+    {
+      "type": "context",
+      "id": "context-7.3",
+      "number": null,
+      "title": "Exponential and Logarithmic Models",
+      "content": "Many real-world phenomena follow exponential patterns:\n\n- **Finance:** Compound interest, loan amortization\n\n- **Biology:** Population growth, bacterial cultures\n\n- **Physics:** Radioactive decay, cooling/heating\n\n- **Chemistry:** Reaction rates, pH calculations\n\n- **Acoustics:** Sound intensity (decibels)\n\n- **Geology:** Earthquake magnitude (Richter scale)"
+    },
+    {
+      "type": "example",
+      "id": "example-7.24",
+      "number": "7.24",
+      "title": "Finding time in compound interest",
+      "problem": "How long does it take for \\$5000 to grow to \\$8000 at 6\\% compounded monthly?",
+      "solution": "Using $A = P(1 + r/n)^{nt}$:\n\\[\n 8000 = 5000\\left(1 + \\frac{0.06}{12}\\right)^{12t}\n\\]\n\\[\n 1.6 = (1.005)^{12t}\n\\]\n\nTake $\\ln$ of both sides:\n\\[\n \\ln 1.6 = 12t \\cdot \\ln 1.005\n\\]\n\\[\n t = \\frac{\\ln 1.6}{12 \\ln 1.005} \\approx \\frac{0.470}{12 \\times 0.00499} \\approx \\frac{0.470}{0.0599} \\approx 7.85 \\text{ years}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.25",
+      "number": "7.25",
+      "title": "Continuous compound interest",
+      "problem": "How long does it take for an investment to triple at 8\\% compounded \ncontinuously?",
+      "solution": "For continuous compounding, $A = Pe^{rt}$.\n\nSet $A = 3P$:\n\\[\n 3P = Pe^{0.08t}\n\\]\n\\[\n 3 = e^{0.08t}\n\\]\n\\[\n \\ln 3 = 0.08t\n\\]\n\\[\n t = \\frac{\\ln 3}{0.08} \\approx \\frac{1.099}{0.08} \\approx 13.73 \\text{ years}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.26",
+      "number": "7.26",
+      "title": "Population doubling time",
+      "problem": "A population grows according to $P(t) = P_0 e^{0.03t}$. Find the doubling time.",
+      "solution": "Set $P = 2P_0$:\n\\[\n 2P_0 = P_0 e^{0.03t}\n\\]\n\\[\n 2 = e^{0.03t}\n\\]\n\\[\n \\ln 2 = 0.03t\n\\]\n\\[\n t = \\frac{\\ln 2}{0.03} \\approx \\frac{0.693}{0.03} \\approx 23.1 \\text{ years}\n\\]"
+    },
+    {
+      "type": "important",
+      "id": "important-7.3",
+      "number": null,
+      "title": "",
+      "content": "For any exponentially growing quantity with growth rate $r$, the \n**doubling time** is:\n\\[\n t_{\\text{double}} = \\frac{\\ln 2}{r} \\approx \\frac{0.693}{r}\n\\]\nSimilarly, the **half-life** of a decaying quantity is:\n\\[\n t_{1/2} = \\frac{\\ln 2}{|k|}\n\\]\nwhere $k$ is the decay constant."
+    },
+    {
+      "type": "example",
+      "id": "example-7.27",
+      "number": "7.27",
+      "title": "Bacterial growth",
+      "problem": "A bacterial culture starts with 500 cells and doubles every 4 hours. \n\n1. Find the number of bacteria after 10 hours.\n\n2. When will there be 50,000 bacteria?",
+      "solution": "The growth model is $N(t) = N_0 \\cdot 2^{t/d}$ where $d$ is the doubling time.\nHere $N_0 = 500$ and $d = 4$, so $N(t) = 500 \\cdot 2^{t/4}$.\n\n1. $N(10) = 500 \\cdot 2^{10/4} = 500 \\cdot 2^{2.5} = 500 \\cdot 5.657 \\approx 2828$ bacteria\n\n2. Set $N(t) = 50000$:\n \\[\n 500 \\cdot 2^{t/4} = 50000\n \\]\n \\[\n 2^{t/4} = 100\n \\]\n \\[\n \\frac{t}{4} = \\log_2 100 = \\frac{\\ln 100}{\\ln 2} \\approx 6.644\n \\]\n \\[\n t \\approx 26.6 \\text{ hours}\n \\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.28",
+      "number": "7.28",
+      "title": "Radioactive decay",
+      "problem": "Carbon-14 has a half-life of 5730 years. A sample currently has 35\\% of \nits original carbon-14. How old is the sample?",
+      "solution": "The decay model is $N = N_0 e^{kt}$ where $k = \\frac{-\\ln 2}{5730}$.\n\nWe have $N = 0.35N_0$:\n\\[\n 0.35N_0 = N_0 e^{kt}\n\\]\n\\[\n 0.35 = e^{kt}\n\\]\n\\[\n \\ln 0.35 = kt = \\frac{-\\ln 2}{5730} \\cdot t\n\\]\n\\[\n t = \\frac{5730 \\ln 0.35}{-\\ln 2} = \\frac{5730 \\times (-1.050)}{-0.693} \\approx 8680 \\text{ years}\n\\]\n\nThe sample is approximately **8,680 years old**."
+    },
+    {
+      "type": "example",
+      "id": "example-7.29",
+      "number": "7.29",
+      "title": "Archaeological dating",
+      "problem": "An archaeological find contains 45\\% of its original carbon-14. How old \nis it?",
+      "solution": "Using $N = N_0 e^{kt}$ where $k = \\frac{-\\ln 2}{5730}$:\n\\[\n 0.45N_0 = N_0 e^{kt}\n\\]\n\\[\n 0.45 = e^{kt}\n\\]\n\\[\n \\ln 0.45 = kt = \\frac{-\\ln 2}{5730} \\cdot t\n\\]\n\\[\n t = \\frac{5730 \\ln 0.45}{-\\ln 2} = \\frac{5730 \\times (-0.799)}{-0.693} \\approx 6600 \\text{ years}\n\\]\n\nThe artifact is approximately 6,600 years old."
+    },
+    {
+      "type": "example",
+      "id": "example-7.30",
+      "number": "7.30",
+      "title": "Newton's Law of Cooling",
+      "problem": "A cup of coffee at 180°F is placed in a room at 70°F. After 10 minutes, \nthe coffee is 150°F. When will it reach 100°F?",
+      "solution": "Newton's Law of Cooling: $T(t) = T_s + (T_0 - T_s)e^{kt}$\n\nHere $T_s = 70$ (room temp), $T_0 = 180$ (initial temp).\n\nSo $T(t) = 70 + 110e^{kt}$.\n\nFind $k$ using $T(10) = 150$:\n\\[\n 150 = 70 + 110e^{10k}\n\\]\n\\[\n 80 = 110e^{10k}\n\\]\n\\[\n e^{10k} = \\frac{80}{110} = \\frac{8}{11}\n\\]\n\\[\n 10k = \\ln\\frac{8}{11} \\approx -0.318\n\\]\n\\[\n k \\approx -0.0318\n\\]\n\nNow find $t$ when $T = 100$:\n\\[\n 100 = 70 + 110e^{-0.0318t}\n\\]\n\\[\n 30 = 110e^{-0.0318t}\n\\]\n\\[\n e^{-0.0318t} = \\frac{30}{110} = \\frac{3}{11}\n\\]\n\\[\n -0.0318t = \\ln\\frac{3}{11} \\approx -1.299\n\\]\n\\[\n t \\approx 40.8 \\text{ minutes}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.31",
+      "number": "7.31",
+      "title": "Sound intensity",
+      "problem": "A sound measures 85 decibels. If the intensity is doubled, what is the \nnew decibel level?",
+      "solution": "Recall $L = 10\\log(I/I_0)$.\n\nFrom $85 = 10\\log(I/I_0)$, we get $\\log(I/I_0) = 8.5$, so $I = 10^{8.5}I_0$.\n\nWhen intensity doubles to $2I$:\n\\[\n L_{new} = 10\\log\\left(\\frac{2I}{I_0}\\right) = 10\\log\\left(\\frac{2 \\cdot 10^{8.5}I_0}{I_0}\\right)\n\\]\n\\[\n = 10\\log(2 \\cdot 10^{8.5}) = 10(\\log 2 + 8.5) \\approx 10(0.301 + 8.5) = 88.01 \\text{ dB}\n\\]\n\nDoubling the intensity adds about 3 dB."
+    },
+    {
+      "type": "example",
+      "id": "example-7.32",
+      "number": "7.32",
+      "title": "pH calculation",
+      "problem": "A solution has pH = 4.5. If the hydrogen ion concentration is reduced by \na factor of 100, what is the new pH?",
+      "solution": "Original: pH $= 4.5 = -\\log[\\text{H}^+]$, so $[\\text{H}^+] = 10^{-4.5}$.\n\nNew concentration: $[\\text{H}^+]_{new} = \\frac{10^{-4.5}}{100} = \\frac{10^{-4.5}}{10^2} = 10^{-6.5}$\n\nNew pH: $= -\\log(10^{-6.5}) = 6.5$\n\nReducing $[\\text{H}^+]$ by a factor of 100 (= $10^2$) increases pH by 2."
+    },
+    {
+      "type": "historical",
+      "id": "historical-7.3",
+      "number": null,
+      "title": "The Development of Logarithm Tables",
+      "content": "John Napier published his logarithm tables in 1614. The following year, \nHenry Briggs visited Napier and suggested using base 10, which Napier \nagreed was more practical. Briggs then spent years calculating tables \nof common logarithms to 14 decimal places.\n\nThese tables were immediately adopted by astronomers, navigators, and \nscientists. Johannes Kepler used logarithms to discover his laws of \nplanetary motion. Without logarithms, the calculations would have been \nimpossibly tedious.\n\nThe creation of accurate mathematical tables required extraordinary \npatience and precision—virtues that Colossians 3:23 calls us to in \nall our work: \"Whatever you do, work heartily, as for the Lord and \nnot for men.\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Practice Problems"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 8:17",
+      "text": "I love those who love me, and those who \nseek me diligently find me."
+    },
+    {
+      "type": "scripture",
+      "reference": "James 1:5",
+      "text": "If any of you lacks wisdom, let him ask God, \nwho gives generously to all without reproach."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 25:2",
+      "text": "It is the glory of God to conceal things, \nbut the glory of kings is to search things out."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 119:130",
+      "text": "The unfolding of your words gives light; \nit imparts understanding to the simple."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 28:29",
+      "text": "This also comes from the Lord of hosts; \nhe is wonderful in counsel and excellent in wisdom."
+    },
+    {
+      "type": "scripture",
+      "reference": "Genesis 1:28",
+      "text": "Be fruitful and multiply and fill the earth."
+    }
+  ]
+}

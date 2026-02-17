@@ -1,0 +1,158 @@
+{
+  "id": "diff-eq-ch04-sec06",
+  "title": "Variation of Parameters",
+  "chapter": 4,
+  "section": 6,
+  "book": "diff-eq",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The method of undetermined coefficients is elegant but limited to special forcing functions. **Variation of parameters** is a more general technique that works for any continuous forcing function $f(x)$, provided we can solve the associated homogeneous equation."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider the nonhomogeneous equation\n\\[\ny'' + p(x)y' + q(x)y = f(x)\n\\]\nLet $y_1$ and $y_2$ be a fundamental set for the homogeneous equation $y'' + py' + qy = 0$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Variation of Parameters",
+      "content": "A particular solution of $y'' + p(x)y' + q(x)y = f(x)$ is given by:\n$$\n\ny_p = -y_1 \\int \\frac{y_2 f}{W}\\,dx + y_2 \\int \\frac{y_1 f}{W}\\,dx\n$$\nwhere $W = W[y_1, y_2] = y_1 y_2' - y_1' y_2$ is the Wronskian.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The method of variation of parameters \"varies\" the constants in the complementary solution. We seek a particular solution of the form:\n\\[\ny_p = u_1(x)y_1(x) + u_2(x)y_2(x)\n\\]\nwhere $u_1$ and $u_2$ are functions to be determined.\n\nComputing the derivative:\n\\[\ny_p' = u_1' y_1 + u_1 y_1' + u_2' y_2 + u_2 y_2'\n\\]\n\nTo simplify calculations, we impose the condition:\n$$\n\nu_1' y_1 + u_2' y_2 = 0\n$$\n\nWith this condition:\n\\[\ny_p' = u_1 y_1' + u_2 y_2'\n\\]\n\nComputing the second derivative:\n\\[\ny_p'' = u_1' y_1' + u_1 y_1'' + u_2' y_2' + u_2 y_2''\n\\]\n\nSubstituting into the differential equation:\n$$\ny_p'' + py_p' + qy_p &= (u_1' y_1' + u_1 y_1'' + u_2' y_2' + u_2 y_2'') \\\\\n&\\quad + p(u_1 y_1' + u_2 y_2') + q(u_1 y_1 + u_2 y_2) \\\\\n&= u_1(y_1'' + py_1' + qy_1) + u_2(y_2'' + py_2' + qy_2) + u_1' y_1' + u_2' y_2'\n$$\n\nSince $y_1$ and $y_2$ satisfy the homogeneous equation, the first two parenthetical expressions vanish:\n\\[\ny_p'' + py_p' + qy_p = u_1' y_1' + u_2' y_2' = f\n\\]\n\nWe now have two equations for $u_1'$ and $u_2'$:\n$$\nu_1' y_1 + u_2' y_2 &= 0 \\\\\nu_1' y_1' + u_2' y_2' &= f \n$$\n\nSolving by Cramer's rule (or elimination):\n\\[\nu_1' = -\\frac{y_2 f}{W}, \\qquad u_2' = \\frac{y_1 f}{W}\n\\]\n\nIntegrating:\n\\[\nu_1 = -\\int \\frac{y_2 f}{W}\\,dx, \\qquad u_2 = \\int \\frac{y_1 f}{W}\\,dx\n\\]\n\nTherefore:\n\\[\ny_p = u_1 y_1 + u_2 y_2 = -y_1 \\int \\frac{y_2 f}{W}\\,dx + y_2 \\int \\frac{y_1 f}{W}\\,dx\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Step-by-Step Procedure"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Write the equation in standard form: $y'' + p(x)y' + q(x)y = f(x)$",
+        "Find a fundamental set $\\{y_1, y_2\\}$ for the homogeneous equation",
+        "Compute the Wronskian: $W = y_1 y_2' - y_1' y_2$",
+        "Find $u_1' = -y_2 f / W$ and $u_2' = y_1 f / W$",
+        "Integrate to find $u_1$ and $u_2$ (omit constants of integration)",
+        "Compute $y_p = u_1 y_1 + u_2 y_2$",
+        "General solution: $y = c_1 y_1 + c_2 y_2 + y_p$"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": null,
+      "problem": "Solve $y'' + y = \\sec x$ for $|x| < \\pi/2$.\n\n**Step 1:** Already in standard form with $f(x) = \\sec x$.\n\n**Step 2:** Homogeneous equation $y'' + y = 0$ has solutions:\n\\[\ny_1 = \\cos x, \\qquad y_2 = \\sin x\n\\]\n\n**Step 3:** Wronskian:\n\\[\nW = \\cos x \\cdot \\cos x - (-\\sin x) \\cdot \\sin x = \\cos^2 x + \\sin^2 x = 1\n\\]\n\n**Step 4:**\n$$\nu_1' &= -\\frac{y_2 f}{W} = -\\frac{\\sin x \\cdot \\sec x}{1} = -\\frac{\\sin x}{\\cos x} = -\\tan x \\\\\nu_2' &= \\frac{y_1 f}{W} = \\frac{\\cos x \\cdot \\sec x}{1} = 1\n$$\n\n**Step 5:**\n$$\nu_1 &= -\\int \\tan x\\,dx = \\ln|\\cos x| \\\\\nu_2 &= \\int 1\\,dx = x\n$$\n\n**Step 6:**\n\\[\ny_p = \\cos x \\cdot \\ln|\\cos x| + x\\sin x\n\\]\n\n**General solution:**\n\\[\n\\boxed{y = c_1 \\cos x + c_2 \\sin x + \\cos x \\ln|\\cos x| + x\\sin x}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": null,
+      "problem": "Solve $y'' + y = \\tan x$ for $|x| < \\pi/2$.\n\n**Steps 1–3:** Same as above: $y_1 = \\cos x$, $y_2 = \\sin x$, $W = 1$.\n\n**Step 4:**\n$$\nu_1' &= -\\sin x \\tan x = -\\frac{\\sin^2 x}{\\cos x} = -\\frac{1 - \\cos^2 x}{\\cos x} = \\cos x - \\sec x \\\\\nu_2' &= \\cos x \\tan x = \\sin x\n$$\n\n**Step 5:**\n$$\nu_1 &= \\int(\\cos x - \\sec x)\\,dx = \\sin x - \\ln|\\sec x + \\tan x| \\\\\nu_2 &= \\int \\sin x\\,dx = -\\cos x\n$$\n\n**Step 6:**\n$$\ny_p &= (\\sin x - \\ln|\\sec x + \\tan x|)\\cos x + (-\\cos x)\\sin x \\\\\n&= \\sin x \\cos x - \\cos x \\ln|\\sec x + \\tan x| - \\cos x \\sin x \\\\\n&= -\\cos x \\ln|\\sec x + \\tan x|\n$$\n\n**General solution:**\n\\[\n\\boxed{y = c_1 \\cos x + c_2 \\sin x - \\cos x \\ln|\\sec x + \\tan x|}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": null,
+      "problem": "Solve $y'' - 2y' + y = \\frac{e^x}{x}$ for $x > 0$.\n\n**Step 1:** Standard form with $f(x) = e^x/x$.\n\n**Step 2:** Characteristic equation: $(r-1)^2 = 0 \\implies r = 1$ (repeated)\n\\[\ny_1 = e^x, \\qquad y_2 = xe^x\n\\]\n\n**Step 3:** Wronskian:\n\\[\nW = e^x \\cdot (e^x + xe^x) - e^x \\cdot xe^x = e^{2x} + xe^{2x} - xe^{2x} = e^{2x}\n\\]\n\n**Step 4:**\n$$\nu_1' &= -\\frac{xe^x \\cdot (e^x/x)}{e^{2x}} = -\\frac{e^{2x}}{xe^{2x}} = -\\frac{1}{x} \\\\\nu_2' &= \\frac{e^x \\cdot (e^x/x)}{e^{2x}} = \\frac{e^{2x}}{xe^{2x}} = \\frac{1}{x}\n$$\n\nWait, let me recalculate $u_1'$:\n\\[\nu_1' = -\\frac{y_2 f}{W} = -\\frac{xe^x \\cdot (e^x/x)}{e^{2x}} = -\\frac{e^{2x}}{e^{2x}} = -1\n\\]\n\nAnd $u_2'$:\n\\[\nu_2' = \\frac{y_1 f}{W} = \\frac{e^x \\cdot (e^x/x)}{e^{2x}} = \\frac{e^{2x}/x}{e^{2x}} = \\frac{1}{x}\n\\]\n\n**Step 5:**\n$$\nu_1 &= -\\int 1\\,dx = -x \\\\\nu_2 &= \\int \\frac{1}{x}\\,dx = \\ln x\n$$\n\n**Step 6:**\n\\[\ny_p = (-x)e^x + (\\ln x)(xe^x) = e^x(-x + x\\ln x) = xe^x(\\ln x - 1)\n\\]\n\n**General solution:**\n\\[\n\\boxed{y = (c_1 + c_2 x)e^x + xe^x(\\ln x - 1)}\n\\]\nor equivalently: $y = (c_1 + c_2 x + x\\ln x - x)e^x = (c_1' + c_2 x + x\\ln x)e^x$ where $c_1' = c_1 - 1$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-4.4",
+      "number": "4.4",
+      "title": null,
+      "problem": "Solve $y'' + 4y' + 4y = \\frac{e^{-2x}}{x^2}$ for $x > 0$.\n\n**Step 1:** Standard form with $f(x) = e^{-2x}/x^2$.\n\n**Step 2:** $(r+2)^2 = 0 \\implies r = -2$ (repeated)\n\\[\ny_1 = e^{-2x}, \\qquad y_2 = xe^{-2x}\n\\]\n\n**Step 3:**\n$$\nW &= e^{-2x}(e^{-2x} - 2xe^{-2x}) - (-2e^{-2x})(xe^{-2x}) \\\\\n&= e^{-4x} - 2xe^{-4x} + 2xe^{-4x} = e^{-4x}\n$$\n\n**Step 4:**\n$$\nu_1' &= -\\frac{xe^{-2x} \\cdot (e^{-2x}/x^2)}{e^{-4x}} = -\\frac{e^{-4x}/x}{e^{-4x}} = -\\frac{1}{x} \\\\\nu_2' &= \\frac{e^{-2x} \\cdot (e^{-2x}/x^2)}{e^{-4x}} = \\frac{e^{-4x}/x^2}{e^{-4x}} = \\frac{1}{x^2}\n$$\n\n**Step 5:**\n$$\nu_1 &= -\\ln x \\\\\nu_2 &= -\\frac{1}{x}\n$$\n\n**Step 6:**\n\\[\ny_p = (-\\ln x)e^{-2x} + \\left(-\\frac{1}{x}\\right)xe^{-2x} = -e^{-2x}\\ln x - e^{-2x} = -e^{-2x}(\\ln x + 1)\n\\]\n\n**General solution:**\n\\[\n\\boxed{y = (c_1 + c_2 x)e^{-2x} - e^{-2x}(\\ln x + 1)}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Comparison with Undetermined Coefficients"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Undetermined Coefficients**",
+        "**Variation of Parameters**"
+      ],
+      "rows": [
+        [
+          "Only works for special $f(x)$: polynomials, exponentials, sines, cosines, and products",
+          "Works for any continuous $f(x)$"
+        ],
+        [
+          "Requires constant coefficients",
+          "Works for variable coefficients (if $y_h$ is known)"
+        ],
+        [
+          "Usually simpler when applicable",
+          "Always involves integration"
+        ],
+        [
+          "Algebraic (solve for coefficients)",
+          "Calculus-based (integration may be difficult)"
+        ]
+      ],
+      "alignment": [
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Variation of Parameters Verifies Undetermined Coefficients"
+    },
+    {
+      "type": "example",
+      "id": "example-4.5",
+      "number": "4.5",
+      "title": null,
+      "problem": "Solve $y'' - y = e^{2x}$ using variation of parameters (compare with undetermined coefficients).\n\n**By variation of parameters:**\n\n$y_1 = e^x$, $y_2 = e^{-x}$, $W = -2$.\n\n$$\nu_1' &= -\\frac{e^{-x} \\cdot e^{2x}}{-2} = \\frac{e^x}{2} \\\\\nu_2' &= \\frac{e^x \\cdot e^{2x}}{-2} = -\\frac{e^{3x}}{2}\n$$\n\n$$\nu_1 &= \\frac{e^x}{2} \\\\\nu_2 &= -\\frac{e^{3x}}{6}\n$$\n\n\\[\ny_p = \\frac{e^x}{2} \\cdot e^x - \\frac{e^{3x}}{6} \\cdot e^{-x} = \\frac{e^{2x}}{2} - \\frac{e^{2x}}{6} = \\frac{e^{2x}}{3}\n\\]\n\n**By undetermined coefficients:**\n\nTry $y_p = Ae^{2x}$. Then $y_p'' = 4Ae^{2x}$.\n\\[\n4Ae^{2x} - Ae^{2x} = e^{2x} \\implies 3A = 1 \\implies A = \\frac{1}{3}\n\\]\n\nBoth methods give $y_p = \\frac{1}{3}e^{2x}$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "An Alternative Formula"
+    },
+    {
+      "type": "paragraph",
+      "text": "Using definite integrals, the particular solution can be written as:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$y_p(x) = \\int_{x_0}^{x} \\frac{y_1(t)y_2(x) - y_1(x)y_2(t)}{W(t)} f(t)\\,dt$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "This form automatically satisfies $y_p(x_0) = 0$ and $y_p'(x_0) = 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ]
+}

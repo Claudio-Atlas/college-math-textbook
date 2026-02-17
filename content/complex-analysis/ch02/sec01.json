@@ -1,0 +1,111 @@
+{
+  "id": "complex-analysis-ch02-sec01",
+  "title": "Limits and Continuity",
+  "chapter": 2,
+  "section": 1,
+  "book": "complex-analysis",
+  "epigraph": {
+    "text": "Great is our Lord, and abundant in power; his understanding is beyond measure.",
+    "reference": "Psalm 147:5",
+    "quote": "Analysis is the art of handling infinity.",
+    "quoteAuthor": "Hermann Hankel"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Before defining the derivative, we must establish the meaning of limits \nand continuity for functions of a complex variable. The definitions mirror \nthose from real analysis, but the two-dimensional nature of $\\C$ adds \nsubtlety."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Limits of Functions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Limit of a Complex Function",
+      "content": "Let $f$ be defined on a domain $D$ containing points arbitrarily close to \n$z_0$ (though not necessarily at $z_0$ itself). We say that \n$\\lim_{z \\to z_0} f(z) = L$ if for every $\\epsilon > 0$ there exists \n$\\delta > 0$ such that\n\\[\n 0 < |z - z_0| < \\delta \\implies |f(z) - L| < \\epsilon.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The crucial difference from real limits: $z$ can approach $z_0$ from \n*any direction* in the plane, along straight lines, spirals, or any \ncurve. For the limit to exist, the approach must give the same value $L$ \nregardless of path."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "A limit that does not exist",
+      "problem": "Show that $\\lim_{z \\to 0} \\dfrac{\\conj{z}}{z}$ does not exist.",
+      "solution": "Let $z$ approach $0$ along the positive real axis: $z = x$ with $x > 0$. \nThen $\\conj{z}/z = x/x = 1$.\n\nNow let $z$ approach $0$ along the positive imaginary axis: $z = iy$ with \n$y > 0$. Then $\\conj{z}/z = (-iy)/(iy) = -1$.\n\nSince different paths give different limits, the limit does not exist."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Limit Laws",
+      "content": "If $\\lim_{z \\to z_0} f(z) = L$ and $\\lim_{z \\to z_0} g(z) = M$, then:\n\n1. $\\lim_{z \\to z_0}[f(z) + g(z)] = L + M$\n\n2. $\\lim_{z \\to z_0}[f(z) \\cdot g(z)] = L \\cdot M$\n\n3. $\\lim_{z \\to z_0}\\dfrac{f(z)}{g(z)} = \\dfrac{L}{M}$ (if $M \\neq 0$)\n\n4. $\\lim_{z \\to z_0} cf(z) = cL$ for any constant $c \\in \\C$",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Continuity"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "Continuity",
+      "content": "A function $f$ is **continuous** at $z_0$ if\n\n1. $f(z_0)$ is defined,\n\n2. $\\lim_{z \\to z_0} f(z)$ exists, and\n\n3. $\\lim_{z \\to z_0} f(z) = f(z_0)$.\nWe say $f$ is continuous on a set $S$ if it is continuous at every point \nof $S$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Polynomials in $z$ are continuous everywhere. Rational functions (quotients \nof polynomials) are continuous except where the denominator vanishes."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Algebra of Continuous Functions",
+      "content": "If $f$ and $g$ are continuous at $z_0$, then so are $f + g$, $f \\cdot g$, \nand $f/g$ (provided $g(z_0) \\neq 0$). If $f$ is continuous at $z_0$ and \n$g$ is continuous at $f(z_0)$, then $g \\circ f$ is continuous at $z_0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Limits Involving Infinity"
+    },
+    {
+      "type": "paragraph",
+      "text": "We extend the notion of limit to handle infinity in the extended complex \nplane $\\hat{\\C}$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.3",
+      "number": "2.3",
+      "title": "Limits at Infinity",
+      "content": "We write $\\lim_{z \\to \\infty} f(z) = L$ if for every $\\epsilon > 0$ there \nexists $R > 0$ such that\n\\[\n |z| > R \\implies |f(z) - L| < \\epsilon.\n\\]\nWe write $\\lim_{z \\to z_0} f(z) = \\infty$ if for every $M > 0$ there exists \n$\\delta > 0$ such that\n\\[\n 0 < |z - z_0| < \\delta \\implies |f(z)| > M.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": null,
+      "problem": "$\\displaystyle\\lim_{z \\to \\infty} \\frac{z}{z^2 + 1} = 0$ since the \ndenominator grows faster than the numerator.\n\n$\\displaystyle\\lim_{z \\to 0} \\frac{1}{z^2} = \\infty$ since $|1/z^2| \\to \\infty$ \nas $z \\to 0$.",
+      "solution": ""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Hebrews 13:8",
+      "text": "Jesus Christ is the same yesterday and \ntoday and forever."
+    },
+    {
+      "type": "quote",
+      "author": "Augustin-Louis Cauchy",
+      "text": "One must give the most precise \ndefinition to the word {limit"
+    }
+  ]
+}

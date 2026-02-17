@@ -1,0 +1,190 @@
+{
+  "id": "vol1-ch05-sec05",
+  "title": "Optimization Problems",
+  "chapter": 5,
+  "section": 5,
+  "book": "vol1",
+  "epigraph": {
+    "text": "Whatever you do, work at it with all your heart, as \nworking for the Lord, not for human masters.",
+    "reference": "Colossians 3:23"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "A farmer has 600 feet of fencing and wants to enclose the largest possible \nrectangular area. A manufacturer needs a can that holds 355 mL of soda \nusing the least material. A lifeguard spots a swimmer in trouble and must \nchoose a path—part running, part swimming—that reaches the swimmer in \nthe shortest time."
+    },
+    {
+      "type": "paragraph",
+      "text": "These are *optimization problems*: find the best possible outcome \nsubject to given constraints. They are everywhere—in engineering, \neconomics, physics, medicine, architecture—and they are the reason most \nstudents take calculus in the first place. Every optimization problem is, \nat its core, a problem we already know how to solve: find the absolute \nmaximum or minimum of a function on a given domain. The new challenge is \n*setting up* the function."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "A Strategy for Optimization"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-5.5",
+      "number": null,
+      "title": "Solving Optimization Problems",
+      "content": "1. **Read the problem carefully.** Read it again. Draw a \n picture and label all quantities with variables.\n\n2. **Identify the quantity to be optimized.** Write it as a \n function of the labeled variables. This is the *objective \n function*.\n\n3. **Identify the constraint(s).** If the objective function \n involves two (or more) variables, use a constraint equation to \n eliminate one variable, expressing the objective as a function of \n *one* variable.\n\n4. **Determine the domain.** Physical considerations (lengths \n must be positive, angles must lie in $[0, \\pi]$, etc.)\\ give a \n closed or open interval.\n\n5. **Find the critical points.** Set the derivative equal to \n zero (and check where it is undefined).\n\n6. **Verify the extremum.** Use the Closed Interval Method \n (if the domain is a closed interval), the First Derivative Test, or \n the Second Derivative Test.\n\n7. **Answer the question that was asked.** Finding the \n critical value of $x$ is not the final answer if the problem asks for \n an area, a cost, or a pair of dimensions. Go back and compute what \n was requested."
+    },
+    {
+      "type": "warning",
+      "id": "warning-5.5",
+      "number": null,
+      "title": "The most common mistake",
+      "content": "Students often skip Step 3 and try to optimize a function of two \nvariables. You cannot take $\\deriv{A}{x}$ if $A$ depends on both \n$x$ *and* $y$. Use the constraint to eliminate one variable first."
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us work through a collection of examples, starting with the simplest \nand building to genuine applications."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Worked Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Maximizing area with fixed perimeter",
+      "problem": "A farmer has 600 feet of fencing and wants to enclose a rectangular \npasture. What dimensions give the largest area?",
+      "solution": "**Draw a picture.** Let the rectangle have width $x$ and length $y$ \n(both positive).\n\n**Objective function.** We want to maximize the area:\n\\[\n A = xy.\n\\]\n\n**Constraint.** The perimeter is fixed at 600 ft:\n\\[\n 2x + 2y = 600 \\quad\\Longrightarrow\\quad y = 300 - x.\n\\]\n\n**Substitute.** Replace $y$ in the area function:\n\\[\n A(x) = x(300 - x) = 300x - x^{2}.\n\\]\n\n**Domain.** Both $x > 0$ and $y = 300 - x > 0$, so $0 < x < 300$. \nWe may work on the closed interval $[0, 300]$ since $A = 0$ at the \nendpoints.\n\n**Differentiate and solve.**\n\\[\n A'(x) = 300 - 2x = 0 \\quad\\Longrightarrow\\quad x = 150.\n\\]\n\n**Verify.** $A''(x) = -2 < 0$ for all $x$, so $x = 150$ gives an \nabsolute maximum.\n\n**Answer.** $x = 150$ ft and $y = 300 - 150 = 150$ ft. The \nlargest pasture is a **square**, with area $A = 150^{2} = \n22{,}500$ ft$^{2}$.\n\nThis result is no accident: among all rectangles with a fixed perimeter, \nthe square encloses the greatest area."
+    },
+    {
+      "type": "paragraph",
+      "text": "Virgil, *Aeneid* I{Queen Dido was promised as much \nland as could be enclosed by the hide of a bull. She cut it into thin \nstrips and enclosed a semicircle against the coast—an early optimization \nproblem.}"
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "Minimizing material for an open-top box",
+      "problem": "A rectangular storage container with an open top must have a volume of \n$10$ m$^{3}$. The length of its base is twice its width. Find the \ndimensions that minimize the amount of material used.",
+      "solution": "**Setup.** Let the width of the base be $w$, the length $2w$, and \nthe height $h$. The base area is $2w^{2}$, and there are two sides of \narea $wh$ and two of area $2wh$.\n\n**Objective (surface area, no top):**\n\\[\n S = 2w^{2} + 2(wh) + 2(2wh) = 2w^{2} + 6wh.\n\\]\n\n**Constraint (volume):**\n\\[\n V = 2w^{2}h = 10 \\quad\\Longrightarrow\\quad h = \\frac{10}{2w^{2}} \n = \\frac{5}{w^{2}}.\n\\]\n\n**Substitute:**\n\\[\n S(w) = 2w^{2} + 6w \\cdot \\frac{5}{w^{2}} = 2w^{2} + \\frac{30}{w},\n \\qquad w > 0.\n\\]\n\n**Differentiate:**\n\\[\n S'(w) = 4w - \\frac{30}{w^{2}}.\n\\]\nSet $S'(w) = 0$:\n\\[\n 4w = \\frac{30}{w^{2}} \\quad\\Longrightarrow\\quad 4w^{3} = 30 \n \\quad\\Longrightarrow\\quad w^{3} = \\frac{15}{2} \n \\quad\\Longrightarrow\\quad w = \\sqrt[3]{\\tfrac{15}{2}} \\approx 1.957 \n \\text{~m}.\n\\]\n\n**Verify.** $S''(w) = 4 + \\frac{60}{w^{3}} > 0$ for all $w > 0$, \nso this critical point is an absolute minimum.\n\n**Dimensions:**\n\\[\n w \\approx 1.957 \\text{~m}, \\qquad \n 2w \\approx 3.914 \\text{~m}, \\qquad \n h = \\frac{5}{w^{2}} \\approx 1.305 \\text{~m}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Minimizing material for a cylindrical can",
+      "problem": "A cylindrical can must hold $355$ mL ($355$ cm$^{3}$) of liquid. Find \nthe dimensions that minimize the total surface area (top, bottom, and \nlateral side).",
+      "solution": "**Setup.** Let the radius be $r$ and the height $h$ (both in cm).\n\n**Objective (total surface area):**\n\\[\n S = 2\\pi r^{2} + 2\\pi r h.\n\\]\n\n**Constraint (volume):**\n\\[\n \\pi r^{2} h = 355 \\quad\\Longrightarrow\\quad h = \\frac{355}{\\pi r^{2}}.\n\\]\n\n**Substitute:**\n\\[\n S(r) = 2\\pi r^{2} + 2\\pi r \\cdot \\frac{355}{\\pi r^{2}} \n = 2\\pi r^{2} + \\frac{710}{r}, \\qquad r > 0.\n\\]\n\n**Differentiate:**\n\\[\n S'(r) = 4\\pi r - \\frac{710}{r^{2}}.\n\\]\nSet $S'(r) = 0$:\n\\[\n 4\\pi r = \\frac{710}{r^{2}} \\quad\\Longrightarrow\\quad \n r^{3} = \\frac{710}{4\\pi} = \\frac{355}{2\\pi} \n \\quad\\Longrightarrow\\quad r = \\sqrt[3]{\\frac{355}{2\\pi}} \n \\approx 3.837 \\text{~cm}.\n\\]\n\n**Height:**\n\\[\n h = \\frac{355}{\\pi (3.837)^{2}} \\approx 7.674 \\text{~cm}.\n\\]\n\nNotice that $h = 2r$: the most efficient can has its height equal to its \ndiameter. (Real soda cans are taller and thinner—manufacturing \nconstraints and marketing considerations override pure material \nefficiency.)\n\n**Verify.** $S''(r) = 4\\pi + \\frac{1420}{r^{3}} > 0$ for $r > 0$, \nconfirming an absolute minimum."
+    },
+    {
+      "type": "example",
+      "id": "example-5.4",
+      "number": "5.4",
+      "title": "Box cut from sheet metal",
+      "problem": "A box with no lid is made from a $24 \\times 24$ cm sheet of tin by cutting \nequal squares of side $x$ from each corner and folding up the sides. Find \nthe value of $x$ that maximizes the volume.",
+      "solution": "**Setup.** After cutting squares of side $x$ from each corner, the \nbase is $(24 - 2x) \\times (24 - 2x)$ and the height is $x$.\n\n**Objective:**\n\\[\n V(x) = x(24 - 2x)^{2}.\n\\]\n\n**Domain.** We need $x > 0$ and $24 - 2x > 0$, so $0 < x < 12$.\n\n**Expand and differentiate:**\n\\[\n V(x) = x(576 - 96x + 4x^{2}) = 4x^{3} - 96x^{2} + 576x.\n\\]\n\\[\n V'(x) = 12x^{2} - 192x + 576 = 12(x^{2} - 16x + 48) \n = 12(x - 4)(x - 12).\n\\]\n\n**Critical points:** $x = 4$ and $x = 12$. Only $x = 4$ lies in \n$(0, 12)$.\n\n**Verify.** $V(0) = 0$, $V(4) = 4(16)^{2} = 1024$ cm$^{3}$, \n$V(12) = 0$. So the maximum volume is $\\mathbf{1024}$ **cm**$^{3}$, \nachieved when $x = 4$ cm."
+    },
+    {
+      "type": "example",
+      "id": "example-5.5",
+      "number": "5.5",
+      "title": "Shortest distance from a point to a curve",
+      "problem": "Find the point on the parabola $y = x^{2}$ that is closest to the point \n$(3, 0)$.",
+      "solution": "**Objective.** The distance from a point $(x, x^{2})$ on the \nparabola to $(3, 0)$ is\n\\[\n d = \\sqrt{(x-3)^{2} + (x^{2})^{2}}.\n\\]\n\n**Simplification.** Minimizing $d$ is equivalent to minimizing \n$d^{2}$ (since the square root is an increasing function). Let\n\\[\n D(x) = (x-3)^{2} + x^{4}, \\qquad x \\in \\R.\n\\]\n\n**Differentiate:**\n\\[\n D'(x) = 2(x-3) + 4x^{3} = 4x^{3} + 2x - 6.\n\\]\nWe need $4x^{3} + 2x - 6 = 0$, or $2x^{3} + x - 3 = 0$. Testing \n$x = 1$: $2 + 1 - 3 = 0$. So $x = 1$ is a root. Factor:\n\\[\n 2x^{3} + x - 3 = (x - 1)(2x^{2} + 2x + 3).\n\\]\nThe discriminant of $2x^{2} + 2x + 3$ is $4 - 24 < 0$, so $x = 1$ is the \nonly real critical point.\n\n**Verify.** $D''(x) = 12x^{2} + 2$, so $D''(1) = 14 > 0$—a \nlocal minimum. Since $D(x) \\to \\infty$ as $x \\to \\pm\\infty$, this is the \nabsolute minimum.\n\n**Answer.** The closest point is $(1, 1)$, at distance \n$\\sqrt{(1-3)^{2} + 1} = \\sqrt{5}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "—comparing a function's value at $x$ and at $x+e$, then \nletting $e$ vanish—anticipated the optimization techniques we use today.}"
+    },
+    {
+      "type": "example",
+      "id": "example-5.6",
+      "number": "5.6",
+      "title": "The cheapest path: land and water",
+      "problem": "A small island lies 2 km offshore from the nearest point $P$ on a straight \ncoastline. A cable must be laid from the island to a town $T$ that is \n6 km along the coast from $P$. It costs \\$3000/km to lay cable underwater \nand \\$2000/km to lay cable along the coast. Where should the cable meet \nthe coast to minimize cost?",
+      "solution": "**Setup.** Let $x$ be the distance along the coast from $P$ to the \npoint $Q$ where the cable comes ashore. Then the underwater distance \n(island to $Q$) is $\\sqrt{x^{2} + 4}$ (by the Pythagorean theorem), and \nthe overland distance ($Q$ to $T$) is $6 - x$.\n\ncenter\ntikzpicture[scale=0.85]\n % Coastline\n (-0.5,0) – (7.5,0);\n at (0,0) {$P$};\n at (6,0) {$T$};\n ll (0,0) circle (2pt);\n ll (6,0) circle (2pt);\n % Island\n ll (0,2) circle (2pt);\n at (0,2) {Island};\n % Point Q\n ll (3.5,0) circle (2pt);\n at (3.5,0) {$Q$};\n % Underwater cable\n (0,2) – (3.5,0);\n at (1.5,1.2) {$\\sqrt{x^{2}+4}$};\n % Overland cable\n (3.5,0) – (6,0);\n at (4.75,0.15) {$6-x$};\n % Labels\n (-0.3,0) – (-0.3,2);\n at (-0.3,1) {$2$};\n (0,-0.5) – (3.5,-0.5);\n at (1.75,-0.5) {$x$};\ntikzpicture\ncenter\n\n**Objective (cost):**\n\\[\n C(x) = 3000\\sqrt{x^{2} + 4} + 2000(6 - x), \\qquad 0 \\leq x \\leq 6.\n\\]\n\n**Differentiate:**\n\\[\n C'(x) = \\frac{3000x}{\\sqrt{x^{2} + 4}} - 2000.\n\\]\nSet $C'(x) = 0$:\n\\[\n \\frac{3000x}{\\sqrt{x^{2}+4}} = 2000 \\quad\\Longrightarrow\\quad \n \\frac{3x}{\\sqrt{x^{2}+4}} = 2 \\quad\\Longrightarrow\\quad \n 9x^{2} = 4(x^{2}+4) \\quad\\Longrightarrow\\quad \n 5x^{2} = 16.\n\\]\n\\[\n x = \\frac{4}{\\sqrt{5}} = \\frac{4\\sqrt{5}}{5} \\approx 1.789 \\text{~km}.\n\\]\n\n**Verify (Closed Interval Method):**\n$$\n C(0) &= 3000(2) + 2000(6) = 18{,}000, \\\\\n C\\!\\left(\\tfrac{4\\sqrt{5}}{5}\\right) \n &= 3000\\sqrt{\\tfrac{16}{5}+4} + 2000\\!\\left(6 - \\tfrac{4\\sqrt{5}}{5}\\right) \n = 3000\\cdot\\frac{6}{\\sqrt{5}} + 12{,}000 - \\frac{8000\\sqrt{5}}{5} \\\\\n &= \\frac{18{,}000}{\\sqrt{5}} + 12{,}000 - \\frac{8000\\sqrt{5}}{5} \n = \\frac{18{,}000\\sqrt{5}}{5} + 12{,}000 - \\frac{8000\\sqrt{5}}{5} \\\\\n &= \\frac{10{,}000\\sqrt{5}}{5} + 12{,}000 \n = 2000\\sqrt{5} + 12{,}000 \\approx 16{,}472, \\\\\n C(6) &= 3000\\sqrt{40} + 0 \\approx 18{,}974.\n$$\nThe minimum cost is approximately \\$16{,}472, achieved when the cable \ncomes ashore about $1.789$~km from $P$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.7",
+      "number": "5.7",
+      "title": "Maximizing profit",
+      "problem": "A company manufactures and sells $x$ units per week of a product. The \ndemand equation is $p = 200 - 0.5x$ (price in dollars per unit) and the \ncost function is $C(x) = 5000 + 50x$. Find the production level that \nmaximizes weekly profit.",
+      "solution": "**Revenue:** $R(x) = xp = x(200 - 0.5x) = 200x - 0.5x^{2}$.\n\n**Profit:**\n\\[\n P(x) = R(x) - C(x) = 200x - 0.5x^{2} - 5000 - 50x \n = -0.5x^{2} + 150x - 5000.\n\\]\n\n**Domain:** $0 \\leq x \\leq 400$ (since $p \\geq 0$ requires \n$x \\leq 400$).\n\n**Differentiate:**\n\\[\n P'(x) = -x + 150 = 0 \\quad\\Longrightarrow\\quad x = 150.\n\\]\n\n**Verify.** $P''(x) = -1 < 0$, confirming a maximum.\n\n**Answer.** Maximum profit at $x = 150$ units:\n\\[\n P(150) = -0.5(22{,}500) + 150(150) - 5000 \n = -11{,}250 + 22{,}500 - 5000 = \\$6{,}250 \\text{ per week}.\n\\]\nThe optimal price is $p = 200 - 0.5(150) = \\$125$ per unit."
+    },
+    {
+      "type": "example",
+      "id": "example-5.8",
+      "number": "5.8",
+      "title": "Optimal launch angle",
+      "problem": "A projectile is launched from level ground with initial speed $v_{0}$. \nIgnoring air resistance, the range (horizontal distance traveled) is\n\\[\n R(\\theta) = \\frac{v_{0}^{2}\\sin(2\\theta)}{g},\n\\]\nwhere $\\theta$ is the launch angle and $g$ is the acceleration due to \ngravity. Find the angle that maximizes the range.",
+      "solution": "**Domain:** $0 \\leq \\theta \\leq \\pi/2$.\n\n**Differentiate:**\n\\[\n R'(\\theta) = \\frac{v_{0}^{2} \\cdot 2\\cos(2\\theta)}{g} \n = \\frac{2v_{0}^{2}\\cos(2\\theta)}{g}.\n\\]\nSet $R'(\\theta) = 0$:\n\\[\n \\cos(2\\theta) = 0 \\quad\\Longrightarrow\\quad 2\\theta = \\frac{\\pi}{2} \n \\quad\\Longrightarrow\\quad \\theta = \\frac{\\pi}{4} = 45^{\\circ}.\n\\]\n\n**Verify.** $R(0) = 0$, $R(\\pi/4) = v_{0}^{2}/g$, \n$R(\\pi/2) = 0$. The maximum range is $v_{0}^{2}/g$, achieved at \n$\\theta = 45^{\\circ}$.\n\nThis classical result—familiar to artillerists since the 16th \ncentury—follows immediately from one line of calculus."
+    },
+    {
+      "type": "example",
+      "id": "example-5.9",
+      "number": "5.9",
+      "title": "Largest rectangle under a curve",
+      "problem": "Find the dimensions of the rectangle of largest area that can be inscribed \nunder the curve $y = e^{-x^{2}}$ with its base on the $x$-axis.",
+      "solution": "**Setup.** By symmetry, place the rectangle with vertices at \n$(\\pm x, 0)$ and $(\\pm x, e^{-x^{2}})$. Its width is $2x$ and its \nheight is $e^{-x^{2}}$.\n\n**Objective:**\n\\[\n A(x) = 2x \\, e^{-x^{2}}, \\qquad x > 0.\n\\]\n\n**Differentiate** (product rule):\n\\[\n A'(x) = 2e^{-x^{2}} + 2x \\cdot (-2x) e^{-x^{2}} \n = 2e^{-x^{2}}(1 - 2x^{2}).\n\\]\nSince $e^{-x^{2}} > 0$ always, set $1 - 2x^{2} = 0$:\n\\[\n x = \\frac{1}{\\sqrt{2}}.\n\\]\n\n**Verify.** $A'$ changes from positive to negative at \n$x = 1/\\sqrt{2}$, confirming a maximum.\n\n**Answer.** Width $= 2/\\sqrt{2} = \\sqrt{2}$, height \n$= e^{-1/2} = 1/\\sqrt{e}$, and maximum area \n$= \\sqrt{2/e} \\approx 0.858$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.10",
+      "number": "5.10",
+      "title": "The Norman window",
+      "problem": "A Norman window has the shape of a rectangle surmounted by a semicircle. \nIf the perimeter of the window is 12 m, find the dimensions that admit the \nmost light (maximize area).",
+      "solution": "**Setup.** Let the rectangle have width $2r$ (so the semicircle has \nradius $r$) and height $h$.\n\n**Objective (area):**\n\\[\n A = 2rh + \\tfrac{1}{2}\\pi r^{2}.\n\\]\n\n**Constraint (perimeter):** The perimeter consists of two vertical \nsides ($2h$), the bottom ($2r$), and the semicircle ($\\pi r$):\n\\[\n 2h + 2r + \\pi r = 12 \\quad\\Longrightarrow\\quad \n h = \\frac{12 - 2r - \\pi r}{2} = 6 - r - \\frac{\\pi r}{2}.\n\\]\n\n**Substitute:**\n\\[\n A(r) = 2r\\!\\left(6 - r - \\frac{\\pi r}{2}\\right) + \\frac{\\pi r^{2}}{2}\n = 12r - 2r^{2} - \\pi r^{2} + \\frac{\\pi r^{2}}{2}\n = 12r - 2r^{2} - \\frac{\\pi r^{2}}{2}.\n\\]\n\n**Differentiate:**\n\\[\n A'(r) = 12 - 4r - \\pi r = 12 - (4 + \\pi)r.\n\\]\nSet $A'(r) = 0$:\n\\[\n r = \\frac{12}{4 + \\pi} \\approx 1.680 \\text{~m}.\n\\]\n\n**Verify.** $A''(r) = -(4+\\pi) < 0$, so this is a maximum.\n\n**Answer.** \n$r = \\frac{12}{4+\\pi} \\approx 1.680$ m, so the width is $2r \\approx \n3.360$ m and the height is\n\\[\n h = 6 - r - \\frac{\\pi r}{2} \n = 6 - \\frac{12}{4+\\pi}\\!\\left(1 + \\frac{\\pi}{2}\\right) \n = 6 - \\frac{12(2+\\pi)}{2(4+\\pi)} \n = 6 - \\frac{6(2+\\pi)}{4+\\pi} \n = \\frac{24 + 6\\pi - 12 - 6\\pi}{4+\\pi} \n = \\frac{12}{4+\\pi} = r.\n\\]\nBeautifully, $h = r$: the height of the rectangular part equals the \nradius of the semicircle."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Optimization in Creation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Nature is full of optimization. The Creator has embedded efficiency into \nthe fabric of the physical world, and many of the most striking phenomena \nin biology, chemistry, and physics can be understood as solutions to \noptimization problems."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Soap bubbles** minimize surface area for a given volume of air. A \nsingle free-floating bubble assumes the shape of a sphere—the surface \nwith the least area enclosing a given volume. This fact, called the \n*isoperimetric property of the sphere*, was conjectured by the \nancients and proved rigorously only in 1884 by Hermann Schwarz."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Honeycombs.** Bees build hexagonal cells to store honey. Among \nall regular polygonal tilings of the plane, the regular hexagon encloses \nthe most area per unit perimeter. The bees' design minimizes the wax \nneeded to store a given volume of honey—an optimization problem solved \nnot by calculus but by instinct implanted by the Designer."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Light.** When light passes from one medium to another (say, air to \nwater), it bends according to *Snell's Law*. Pierre de Fermat showed \nthat this bending is exactly what you would predict if light follows the \n*path of least time*. The angle of refraction is the solution to an \noptimization problem—one structurally identical to the cable-laying \nproblem of [ex:opt-path]."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:11",
+      "text": "He has made everything beautiful in its \ntime. He has also set eternity in the human heart; yet no one can fathom \nwhat God has done from beginning to end."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:12",
+      "text": "Who has measured the waters in the hollow \nof his hand, or with the breadth of his hand marked off the heavens?"
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 16:11",
+      "text": "Honest scales and balances belong to the \nLord; all the weights in the bag are of his making."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 12:7--8",
+      "text": "But ask the animals, and they will teach you, \nor the birds in the sky, and they will tell you; or speak to the earth, \nand it will teach you."
+    },
+    {
+      "type": "quote",
+      "author": "Pierre de Fermat (1607--1665)",
+      "text": "Fermat's method of \n{adequality"
+    },
+    {
+      "type": "quote",
+      "author": "Lord Kelvin (1824--1907)",
+      "text": "When you can measure what you are \nspeaking about, and express it in numbers, you know something about it."
+    }
+  ]
+}

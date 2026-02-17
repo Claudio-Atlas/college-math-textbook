@@ -1,0 +1,232 @@
+{
+  "id": "vol3-ch14-sec07",
+  "title": "Maxima and Minima Problems",
+  "chapter": 14,
+  "section": 7,
+  "book": "vol3",
+  "epigraph": {
+    "text": "But seek first his kingdom and his righteousness, and all these things will be given to you as well.",
+    "reference": "Matthew 6:33"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Finding maximum and minimum values is one of the most important applications of calculus. In this section, we extend the techniques of single-variable optimization to functions of several variables."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Local Maxima and Minima"
+    },
+    {
+      "type": "definition",
+      "id": "definition-14.1",
+      "number": "14.1",
+      "title": "Local Extrema",
+      "content": "A function $f(x, y)$ has a **local maximum** at $(a, b)$ if $f(x, y) \\leq f(a, b)$ for all $(x, y)$ in some disk centered at $(a, b)$.\n\nA function has a **local minimum** at $(a, b)$ if $f(x, y) \\geq f(a, b)$ for all $(x, y)$ in some disk centered at $(a, b)$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.1",
+      "number": "14.1",
+      "title": "First Derivative Test (Necessary Condition)",
+      "content": "If $f$ has a local maximum or minimum at $(a, b)$, and the first partial derivatives exist there, then\n\\[\n f_x(a, b) = 0 \\quad \\text{and} \\quad f_y(a, b) = 0.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "definition",
+      "id": "definition-14.2",
+      "number": "14.2",
+      "title": "Critical Point",
+      "content": "A point $(a, b)$ is a **critical point** of $f$ if $f_x(a, b) = 0$ and $f_y(a, b) = 0$, or if one of these partial derivatives does not exist."
+    },
+    {
+      "type": "paragraph",
+      "text": "Local extrema can only occur at critical points, but not every critical point is an extremum—it could be a **saddle point**."
+    },
+    {
+      "type": "example",
+      "id": "example-14.1",
+      "number": "14.1",
+      "title": "Finding critical points",
+      "problem": "Find the critical points of $f(x, y) = x^2 + y^2 - 2x - 4y + 5$.",
+      "solution": "\\[\n f_x = 2x - 2 = 0 \\implies x = 1, \\quad f_y = 2y - 4 = 0 \\implies y = 2.\n\\]\nThe only critical point is $(1, 2)$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.2",
+      "number": "14.2",
+      "title": "Multiple critical points",
+      "problem": "Find the critical points of $f(x, y) = x^3 + y^3 - 3xy$.",
+      "solution": "\\[\n f_x = 3x^2 - 3y = 0 \\implies y = x^2, \\quad f_y = 3y^2 - 3x = 0 \\implies x = y^2.\n\\]\nSubstituting $y = x^2$ into $x = y^2$: $x = x^4 \\implies x(x^3 - 1) = 0 \\implies x = 0$ or $x = 1$.\n\nIf $x = 0$, then $y = 0$. If $x = 1$, then $y = 1$.\n\nCritical points: $(0, 0)$ and $(1, 1)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Second Derivative Test"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.2",
+      "number": "14.2",
+      "title": "Second Derivative Test",
+      "content": "Let $(a, b)$ be a critical point of $f$ with continuous second partial derivatives in a disk around $(a, b)$. Let\n\\[\n D = D(a, b) = f_{xx}(a,b)f_{yy}(a,b) - [f_{xy}(a,b)]^2.\n\\]\nThen:\n\n1. If $D > 0$ and $f_{xx}(a, b) > 0$, then $f$ has a **local minimum** at $(a, b)$.\n\n2. If $D > 0$ and $f_{xx}(a, b) < 0$, then $f$ has a **local maximum** at $(a, b)$.\n\n3. If $D < 0$, then $f$ has a **saddle point** at $(a, b)$.\n\n4. If $D = 0$, the test is inconclusive.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The quantity $D$ is the **discriminant** (also called the Hessian determinant)."
+    },
+    {
+      "type": "example",
+      "id": "example-14.3",
+      "number": "14.3",
+      "title": "Applying the second derivative test",
+      "problem": "Classify the critical points of $f(x, y) = x^2 + y^2 - 2x - 4y + 5$.",
+      "solution": "The only critical point is $(1, 2)$.\n\nSecond derivatives:\n\\[\n f_{xx} = 2, \\quad f_{yy} = 2, \\quad f_{xy} = 0.\n\\]\n\\[\n D = (2)(2) - (0)^2 = 4 > 0.\n\\]\nSince $D > 0$ and $f_{xx} = 2 > 0$, there is a local minimum at $(1, 2)$.\n\nThe minimum value is $f(1, 2) = 1 + 4 - 2 - 8 + 5 = 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.4",
+      "number": "14.4",
+      "title": "Saddle point",
+      "problem": "Classify the critical point $(0, 0)$ of $f(x, y) = x^2 - y^2$.",
+      "solution": "$f_x = 2x$, $f_y = -2y$. At $(0, 0)$: both are zero. $\\checkmark$\n\n$f_{xx} = 2$, $f_{yy} = -2$, $f_{xy} = 0$.\n\n$D = (2)(-2) - 0 = -4 < 0$.\n\nSince $D < 0$, $(0, 0)$ is a saddle point."
+    },
+    {
+      "type": "example",
+      "id": "example-14.5",
+      "number": "14.5",
+      "title": "Complete analysis",
+      "problem": "Find and classify all critical points of $f(x, y) = x^3 + y^3 - 3xy$.",
+      "solution": "We found critical points $(0, 0)$ and $(1, 1)$.\n\nSecond derivatives: $f_{xx} = 6x$, $f_{yy} = 6y$, $f_{xy} = -3$.\n\nAt $(0, 0)$: $f_{xx} = 0$, $f_{yy} = 0$, $f_{xy} = -3$.\n\\[\n D = (0)(0) - (-3)^2 = -9 < 0.\n\\]\n$(0, 0)$ is a saddle point.\n\nAt $(1, 1)$: $f_{xx} = 6$, $f_{yy} = 6$, $f_{xy} = -3$.\n\\[\n D = (6)(6) - (-3)^2 = 36 - 9 = 27 > 0.\n\\]\nSince $D > 0$ and $f_{xx} = 6 > 0$, $(1, 1)$ is a local minimum.\n\nThe local minimum value is $f(1, 1) = 1 + 1 - 3 = -1$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.6",
+      "number": "14.6",
+      "title": "Exponential function",
+      "problem": "Find and classify the critical points of $f(x, y) = (x^2 + y^2)e^{-(x^2+y^2)}$.",
+      "solution": "Let $r^2 = x^2 + y^2$. Using the product rule:\n$$\n f_x &= 2xe^{-r^2} + (x^2 + y^2)(-2x)e^{-r^2} = 2xe^{-r^2}(1 - x^2 - y^2).\n$$\nSimilarly, $f_y = 2ye^{-r^2}(1 - x^2 - y^2)$.\n\nCritical points occur when:\n\n- $x = y = 0$ (the origin), or\n\n- $x^2 + y^2 = 1$ (the entire unit circle).\n\nAt $(0, 0)$: $f(0, 0) = 0$.\n\nOn the unit circle: $f = 1 \\cdot e^{-1} = 1/e \\approx 0.368$.\n\nThe unit circle is a \"ridge\" of local maxima. The origin is a local minimum."
+    },
+    {
+      "type": "example",
+      "id": "example-14.7",
+      "number": "14.7",
+      "title": "Trigonometric function",
+      "problem": "Find and classify the critical points of $f(x, y) = \\sin x + \\sin y + \\sin(x + y)$ for $0 < x < 2\\pi$, $0 < y < 2\\pi$.",
+      "solution": "$f_x = \\cos x + \\cos(x + y) = 0$, $f_y = \\cos y + \\cos(x + y) = 0$.\n\nSubtracting: $\\cos x - \\cos y = 0$, so $\\cos x = \\cos y$, giving $y = x$ or $y = 2\\pi - x$.\n\n**Case 1:** $y = x$. Then $\\cos x + \\cos 2x = 0$.\nUsing $\\cos 2x = 2\\cos^2 x - 1$: $\\cos x + 2\\cos^2 x - 1 = 0$.\nLet $u = \\cos x$: $2u^2 + u - 1 = (2u - 1)(u + 1) = 0$.\nSo $\\cos x = 1/2$ or $\\cos x = -1$.\nThis gives $x = \\pi/3$ or $x = \\pi$.\n\nCritical points: $(\\pi/3, \\pi/3)$ and $(\\pi, \\pi)$.\n\n$f(\\pi/3, \\pi/3) = \\sin(\\pi/3) + \\sin(\\pi/3) + \\sin(2\\pi/3) = \\frac{3\\sqrt{3}}{2}$ (maximum).\n\n$f(\\pi, \\pi) = 0 + 0 + 0 = 0$ (saddle point).\n\n**Case 2:** $y = 2\\pi - x$ leads to boundary considerations."
+    },
+    {
+      "type": "example",
+      "id": "example-14.8",
+      "number": "14.8",
+      "title": "Optimal stewardship",
+      "problem": "A farmer has 1000 acres to allocate between wheat ($x$) and corn ($y$). The profit function is $P(x, y) = 100x + 120y - 0.01x^2 - 0.02y^2 - 0.01xy$. Find the allocation that maximizes profit.",
+      "solution": "$P_x = 100 - 0.02x - 0.01y = 0$\n$P_y = 120 - 0.04y - 0.01x = 0$\n\nFrom the first equation: $x = 5000 - 0.5y$.\nSubstitute: $120 - 0.04y - 0.01(5000 - 0.5y) = 0$.\n$120 - 0.04y - 50 + 0.005y = 0$\n$70 = 0.035y$, so $y = 2000$.\n\nThen $x = 5000 - 1000 = 4000$.\n\nBut we have only 1000 acres! This is a *constrained* optimization problem—we need Lagrange multipliers or boundary analysis.\n\nThe unconstrained maximum at $(4000, 2000)$ is outside the feasible region $x + y \\leq 1000$, $x, y \\geq 0$. The maximum profit occurs on the constraint boundary, illustrating wise stewardship of limited resources (Luke 12:42)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Absolute Extrema on Closed Bounded Regions"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.3",
+      "number": "14.3",
+      "title": "Extreme Value Theorem",
+      "content": "If $f$ is continuous on a closed, bounded set $D$ in $\\R^2$, then $f$ attains an absolute maximum and an absolute minimum on $D$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-14.7",
+      "number": null,
+      "title": "Finding Absolute Extrema",
+      "content": "1. Find all critical points inside $D$.\n\n2. Find the extreme values on the boundary of $D$ (this often involves single-variable optimization along each piece of the boundary).\n\n3. Evaluate $f$ at all critical points and boundary extrema.\n\n4. The largest value is the absolute maximum; the smallest is the absolute minimum."
+    },
+    {
+      "type": "example",
+      "id": "example-14.9",
+      "number": "14.9",
+      "title": "Absolute extrema on a rectangle",
+      "problem": "Find the absolute maximum and minimum of $f(x, y) = x^2 + y^2 - 2x$ on the rectangle $R = \\{(x,y) : 0 \\leq x \\leq 3, 0 \\leq y \\leq 2\\}$.",
+      "solution": "**Step 1:** Interior critical points.\n\\[\n f_x = 2x - 2 = 0 \\implies x = 1, \\quad f_y = 2y = 0 \\implies y = 0.\n\\]\nCritical point $(1, 0)$. But $y = 0$ is on the boundary, so $(1, 0)$ is actually a boundary point.\n\n**Step 2:** Boundary values.\n\n**Bottom edge** ($y = 0$, $0 \\leq x \\leq 3$): $f(x, 0) = x^2 - 2x$. \nCritical point: $2x - 2 = 0 \\implies x = 1$. $f(1, 0) = -1$.\nEndpoints: $f(0, 0) = 0$, $f(3, 0) = 3$.\n\n**Top edge** ($y = 2$, $0 \\leq x \\leq 3$): $f(x, 2) = x^2 - 2x + 4$.\nCritical point: $x = 1$. $f(1, 2) = 3$.\nEndpoints: $f(0, 2) = 4$, $f(3, 2) = 7$.\n\n**Left edge** ($x = 0$, $0 \\leq y \\leq 2$): $f(0, y) = y^2$. Min at $y = 0$: $f = 0$. Max at $y = 2$: $f = 4$.\n\n**Right edge** ($x = 3$, $0 \\leq y \\leq 2$): $f(3, y) = 3 + y^2$. Min at $y = 0$: $f = 3$. Max at $y = 2$: $f = 7$.\n\n**Step 3:** Compare all values: $-1, 0, 3, 3, 4, 7, 0, 4, 3, 7$.\n\n**Absolute minimum:** $-1$ at $(1, 0)$.\n**Absolute maximum:** $7$ at $(3, 2)$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.10",
+      "number": "14.10",
+      "title": "Absolute extrema on a disk",
+      "problem": "Find the absolute maximum and minimum of $f(x, y) = x^2 + y^2 - 2x$ on the closed disk $x^2 + y^2 \\leq 4$.",
+      "solution": "**Step 1:** Interior critical points.\n$f_x = 2x - 2 = 0 \\Rightarrow x = 1$, $f_y = 2y = 0 \\Rightarrow y = 0$.\nCritical point $(1, 0)$ is inside the disk. $f(1, 0) = 1 + 0 - 2 = -1$.\n\n**Step 2:** Boundary ($x^2 + y^2 = 4$).\nParametrize: $x = 2\\cos\\theta$, $y = 2\\sin\\theta$.\n$g(\\theta) = 4\\cos^2\\theta + 4\\sin^2\\theta - 4\\cos\\theta = 4 - 4\\cos\\theta$.\n\n$g'(\\theta) = 4\\sin\\theta = 0 \\Rightarrow \\theta = 0$ or $\\pi$.\n\n$g(0) = 4 - 4 = 0$ at $(2, 0)$.\n$g(\\pi) = 4 + 4 = 8$ at $(-2, 0)$.\n\n**Absolute minimum:** $-1$ at $(1, 0)$.\n**Absolute maximum:** $8$ at $(-2, 0)$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.11",
+      "number": "14.11",
+      "title": "Absolute extrema on a triangle",
+      "problem": "Find the absolute maximum and minimum of $f(x, y) = xy$ on the triangular region with vertices $(0, 0)$, $(4, 0)$, $(0, 4)$.",
+      "solution": "**Step 1:** Interior.\n$f_x = y = 0$ and $f_y = x = 0$ gives $(0, 0)$, which is a vertex.\n\n**Step 2:** Boundary edges.\n\n**Edge 1:** $y = 0$, $0 \\leq x \\leq 4$. $f = 0$.\n\n**Edge 2:** $x = 0$, $0 \\leq y \\leq 4$. $f = 0$.\n\n**Edge 3:** $x + y = 4$, i.e., $y = 4 - x$ for $0 \\leq x \\leq 4$.\n$g(x) = x(4 - x) = 4x - x^2$.\n$g'(x) = 4 - 2x = 0 \\Rightarrow x = 2$, $y = 2$.\n$f(2, 2) = 4$.\n\nCheck endpoints: $f(0, 4) = 0$, $f(4, 0) = 0$.\n\n**Absolute minimum:** $0$ on the two edges along the axes.\n**Absolute maximum:** $4$ at $(2, 2)$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.12",
+      "number": "14.12",
+      "title": "Noah's Ark optimization",
+      "problem": "According to Genesis 6:15, Noah's Ark was 300 cubits long, 50 cubits wide, and 30 cubits high. Suppose you want to build a rectangular box of maximum volume using 2(LW + LH + WH) = 22,600 square cubits of material (the actual surface area). What dimensions maximize volume?",
+      "solution": "We want to maximize $V = LWH$ subject to $2(LW + LH + WH) = 22,600$.\n\nUsing Lagrange multipliers (or substitution), the optimal box is a cube: $L = W = H$.\n\nThen $6L^2 = 22,600$, so $L^2 = 3766.67$, $L \\approx 61.4$ cubits.\n\nBut the Ark's dimensions $(300 \\times 50 \\times 30)$ give surface area $2(15000 + 9000 + 1500) = 51,000$ sq cubits and volume $450,000$ cubic cubits.\n\nA cube of the same surface area would be $L \\approx 92.2$ cubits with volume $\\approx 783,600$ cubic cubits—more volume but much less stable on water!\n\nThe Ark's elongated shape prioritized seaworthiness over raw volume—an example of optimal design for the actual constraints."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applied Optimization Problems"
+    },
+    {
+      "type": "example",
+      "id": "example-14.13",
+      "number": "14.13",
+      "title": "Distance from a point to a plane",
+      "problem": "Find the point on the plane $2x + y + 2z = 9$ closest to the point $(1, 1, 1)$.",
+      "solution": "Minimize $d^2 = (x-1)^2 + (y-1)^2 + (z-1)^2$ subject to $2x + y + 2z = 9$.\n\nSubstitute $z = \\frac{9 - 2x - y}{2}$:\n\\[\n f(x, y) = (x-1)^2 + (y-1)^2 + \\left(\\frac{7 - 2x - y}{2}\\right)^2.\n\\]\n\nSetting $f_x = 0$:\n\\[\n 2(x-1) + 2 \\cdot \\frac{7-2x-y}{2} \\cdot (-1) = 2(x-1) - (7-2x-y) = 4x + y - 9 = 0.\n\\]\nSetting $f_y = 0$:\n\\[\n 2(y-1) - \\frac{7-2x-y}{2} = 0 \\implies 4(y-1) = 7-2x-y \\implies 2x + 5y = 11.\n\\]\n\nSolving: $4x + y = 9$ and $2x + 5y = 11$.\n\nFrom the first: $y = 9 - 4x$. Substitute: $2x + 5(9-4x) = 11 \\implies -18x = -34 \\implies x = 17/9$.\n\nThen $y = 9 - 68/9 = 13/9$ and $z = \\frac{9 - 34/9 - 13/9}{2} = \\frac{34/9}{2} = 17/9$.\n\nThe closest point is $(17/9, 13/9, 17/9)$.\n\nDistance: $d = \\sqrt{(17/9-1)^2 + (13/9-1)^2 + (17/9-1)^2} = \\sqrt{3 \\cdot 64/81} = \\frac{8}{9}\\sqrt{3} = \\frac{8\\sqrt{3}}{9}$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.14",
+      "number": "14.14",
+      "title": "Rectangular box with maximum volume",
+      "problem": "Find the dimensions of the largest rectangular box with no top that can be made from 48 square feet of material.",
+      "solution": "Let the box have dimensions $x$, $y$, $z$ where $z$ is the height. The surface area (no top) is:\n\\[\n S = xy + 2xz + 2yz = 48.\n\\]\nMaximize $V = xyz$.\n\nSolve for $z$: $z = \\frac{48 - xy}{2(x + y)}$.\n\n\\[\n V = xy \\cdot \\frac{48 - xy}{2(x+y)} = \\frac{48xy - x^2y^2}{2(x+y)}.\n\\]\n\nSetting $V_x = 0$ and $V_y = 0$ and using symmetry (expecting $x = y$):\n\nWith $x = y$: $S = x^2 + 4xz = 48$, so $z = \\frac{48 - x^2}{4x}$.\n\n$V = x^2z = x^2 \\cdot \\frac{48 - x^2}{4x} = \\frac{48x - x^3}{4}$.\n\n$\\frac{dV}{dx} = \\frac{48 - 3x^2}{4} = 0 \\implies x^2 = 16 \\implies x = 4$.\n\nThen $z = \\frac{48 - 16}{16} = 2$.\n\nThe box is $4 \\times 4 \\times 2$ feet with volume $32$ cubic feet."
+    },
+    {
+      "type": "example",
+      "id": "example-14.15",
+      "number": "14.15",
+      "title": "Least squares line",
+      "problem": "Find the line $y = mx + b$ that best fits the data points $(0, 1)$, $(1, 2)$, $(2, 4)$ in the least-squares sense.",
+      "solution": "Minimize the sum of squared errors:\n\\[\n S(m, b) = (b - 1)^2 + (m + b - 2)^2 + (2m + b - 4)^2.\n\\]\n\nSetting $S_b = 0$:\n\\[\n 2(b-1) + 2(m+b-2) + 2(2m+b-4) = 0 \\implies 3b + 3m = 7 \\implies b + m = 7/3.\n\\]\n\nSetting $S_m = 0$:\n\\[\n 2(m+b-2) + 4(2m+b-4) = 0 \\implies 10m + 3b = 20.\n\\]\n\nFrom $b = 7/3 - m$: $10m + 7 - 3m = 20 \\implies 7m = 13 \\implies m = 13/7$.\n\nThen $b = 7/3 - 13/7 = 49/21 - 39/21 = 10/21$.\n\nThe best-fit line is $y = \\frac{13}{7}x + \\frac{10}{21}$."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Philippians 4:8",
+      "text": "Finally, brothers, whatever is true, whatever is honorable, whatever is just, whatever is pure, whatever is lovely, whatever is commendable, if there is any excellence, if there is anything worthy of praise, think about these things."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:1",
+      "text": "For everything there is a season, and a time for every matter under heaven."
+    },
+    {
+      "type": "quote",
+      "author": "Fermat",
+      "text": "I have discovered a truly marvelous proof of this, which this margin is too narrow to contain."
+    },
+    {
+      "type": "quote",
+      "author": "Fermat",
+      "text": "The minimum or maximum of a quantity occurs where its rate of change is zero."
+    }
+  ]
+}

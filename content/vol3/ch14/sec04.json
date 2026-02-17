@@ -1,0 +1,204 @@
+{
+  "id": "vol3-ch14-sec04",
+  "title": "Tangent Planes and Linear Approximations",
+  "chapter": 14,
+  "section": 4,
+  "book": "vol3",
+  "epigraph": {
+    "text": "There is a friend who sticks closer than a brother.",
+    "reference": "Proverbs 18:24"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "In single-variable calculus, the tangent line provides the best linear approximation to a curve at a point. For surfaces, the tangent *plane* plays the same role—it is the flat surface that best approximates the curved surface near a given point."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Tangent Planes to Surfaces"
+    },
+    {
+      "type": "definition",
+      "id": "definition-14.1",
+      "number": "14.1",
+      "title": "Tangent Plane",
+      "content": "If $f$ is differentiable at $(a, b)$, the **tangent plane** to the surface $z = f(x, y)$ at the point $(a, b, f(a,b))$ is\n\\[\n z = f(a, b) + f_x(a, b)(x - a) + f_y(a, b)(y - b).\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This equation has a natural interpretation: starting at height $f(a, b)$, each unit step in the $x$-direction changes $z$ by $f_x(a, b)$, and each unit step in the $y$-direction changes $z$ by $f_y(a, b)$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.1",
+      "number": "14.1",
+      "title": "Finding a tangent plane",
+      "problem": "Find the equation of the tangent plane to $z = x^2 + y^2$ at the point $(1, 2, 5)$.",
+      "solution": "We have $f(x, y) = x^2 + y^2$, so:\n\\[\n f_x = 2x, \\quad f_y = 2y.\n\\]\nAt $(1, 2)$:\n\\[\n f(1, 2) = 5, \\quad f_x(1, 2) = 2, \\quad f_y(1, 2) = 4.\n\\]\nThe tangent plane is:\n\\[\n z = 5 + 2(x - 1) + 4(y - 2) = 2x + 4y - 5.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-14.2",
+      "number": "14.2",
+      "title": "Tangent plane to a sphere",
+      "problem": "Find the tangent plane to the sphere $x^2 + y^2 + z^2 = 14$ at the point $(1, 2, 3)$.",
+      "solution": "Solve for $z$: $z = \\sqrt{14 - x^2 - y^2}$ (upper hemisphere). So:\n\\[\n \\frac{\\partial z}{\\partial x} = \\frac{-x}{\\sqrt{14 - x^2 - y^2}}, \\quad \\frac{\\partial z}{\\partial y} = \\frac{-y}{\\sqrt{14 - x^2 - y^2}}.\n\\]\nAt $(1, 2)$: $z = 3$ and\n\\[\n z_x = \\frac{-1}{3}, \\quad z_y = \\frac{-2}{3}.\n\\]\nTangent plane:\n\\[\n z = 3 - \\frac{1}{3}(x - 1) - \\frac{2}{3}(y - 2) \\implies x + 2y + 3z = 14.\n\\]\nNotice this can be written as $\\langle 1, 2, 3 \\rangle \\dotp \\langle x, y, z \\rangle = 14$, showing the normal to the sphere points radially outward."
+    },
+    {
+      "type": "example",
+      "id": "example-14.3",
+      "number": "14.3",
+      "title": "Tangent plane to a saddle surface",
+      "problem": "Find the equation of the tangent plane to the hyperbolic paraboloid $z = x^2 - y^2$ at the point $(2, 1, 3)$.",
+      "solution": "We have $f(x, y) = x^2 - y^2$, so:\n\\[\n f_x = 2x, \\quad f_y = -2y.\n\\]\nAt $(2, 1)$:\n\\[\n f(2, 1) = 4 - 1 = 3, \\quad f_x(2, 1) = 4, \\quad f_y(2, 1) = -2.\n\\]\nThe tangent plane is:\n\\[\n z = 3 + 4(x - 2) - 2(y - 1) = 4x - 2y - 3.\n\\]\n\nThis can be rewritten as $4x - 2y - z = 3$, and the normal vector is $\\langle 4, -2, -1 \\rangle$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.4",
+      "number": "14.4",
+      "title": "Horizontal tangent planes",
+      "problem": "Find all points on the surface $z = x^2 + xy + y^2 - 6x + 2$ where the tangent plane is horizontal.",
+      "solution": "A tangent plane is horizontal when it is parallel to the $xy$-plane, which occurs when both partial derivatives are zero:\n\\[\n f_x = 2x + y - 6 = 0, \\quad f_y = x + 2y = 0.\n\\]\nFrom the second equation: $x = -2y$. Substituting into the first:\n\\[\n 2(-2y) + y - 6 = 0 \\implies -3y = 6 \\implies y = -2.\n\\]\nThen $x = -2(-2) = 4$.\n\nAt $(4, -2)$: $z = 16 - 8 + 4 - 24 + 2 = -10$.\n\nThe only point with a horizontal tangent plane is $(4, -2, -10)$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.5",
+      "number": "14.5",
+      "title": "Tangent plane to terrain",
+      "problem": "A mountain has elevation given by $h(x, y) = 1000 - x^2 - 2y^2$ meters, where $x$ and $y$ are horizontal distances in hundreds of meters from the peak. Find the tangent plane at the point $(1, 2)$ and interpret it geographically.",
+      "solution": "\\[\n h_x = -2x, \\quad h_y = -4y.\n\\]\nAt $(1, 2)$:\n\\[\n h(1, 2) = 1000 - 1 - 8 = 991 \\text{ m}, \\quad h_x = -2, \\quad h_y = -8.\n\\]\nTangent plane:\n\\[\n z = 991 - 2(x - 1) - 8(y - 2) = -2x - 8y + 1009.\n\\]\n\nThe slopes are $-2$ (in the $x$-direction) and $-8$ (in the $y$-direction). The steeper descent is in the $y$-direction. A hiker at this point would find the terrain sloping downward more steeply to the north/south than to the east/west.\n\nMountains and valleys illustrate how God's creation displays beautiful mathematical structure. As Psalm 95:4 says, \"In his hand are the depths of the earth; the heights of the mountains are his also.\""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Linear Approximation (Linearization)"
+    },
+    {
+      "type": "paragraph",
+      "text": "The tangent plane gives a **linear approximation** to $f$ near $(a, b)$:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-14.2",
+      "number": "14.2",
+      "title": "Linearization",
+      "content": "The **linearization** of $f(x, y)$ at $(a, b)$ is\n\\[\n L(x, y) = f(a, b) + f_x(a, b)(x - a) + f_y(a, b)(y - b).\n\\]\nFor $(x, y)$ close to $(a, b)$:\n\\[\n f(x, y) \\approx L(x, y).\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-14.6",
+      "number": "14.6",
+      "title": "Linear approximation",
+      "problem": "Use linearization to approximate $\\sqrt{(3.02)^2 + (3.97)^2}$.",
+      "solution": "Let $f(x, y) = \\sqrt{x^2 + y^2}$. We approximate near $(3, 4)$ (since $\\sqrt{9 + 16} = 5$).\n\n\\[\n f_x = \\frac{x}{\\sqrt{x^2 + y^2}}, \\quad f_y = \\frac{y}{\\sqrt{x^2 + y^2}}.\n\\]\nAt $(3, 4)$: $f = 5$, $f_x = 3/5$, $f_y = 4/5$.\n\nLinearization:\n\\[\n L(x, y) = 5 + \\frac{3}{5}(x - 3) + \\frac{4}{5}(y - 4).\n\\]\n\\[\n L(3.02, 3.97) = 5 + \\frac{3}{5}(0.02) + \\frac{4}{5}(-0.03) = 5 + 0.012 - 0.024 = 4.988.\n\\]\n(Exact value: $\\sqrt{9.1204 + 15.7609} \\approx 4.9880$.)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Differentials"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **differential** measures the change in the linearization."
+    },
+    {
+      "type": "definition",
+      "id": "definition-14.3",
+      "number": "14.3",
+      "title": "Total Differential",
+      "content": "If $z = f(x, y)$ is differentiable, the **total differential** is\n\\[\n dz = \\frac{\\partial f}{\\partial x}\\,dx + \\frac{\\partial f}{\\partial y}\\,dy = f_x\\,dx + f_y\\,dy.\n\\]\nHere $dx$ and $dy$ are independent variables (small changes in $x$ and $y$)."
+    },
+    {
+      "type": "paragraph",
+      "text": "The differential $dz$ approximates the actual change $\\Delta z = f(x + \\Delta x, y + \\Delta y) - f(x, y)$ when $\\Delta x = dx$ and $\\Delta y = dy$ are small."
+    },
+    {
+      "type": "example",
+      "id": "example-14.7",
+      "number": "14.7",
+      "title": "Using differentials",
+      "problem": "Use differentials to approximate the change in $f(x, y) = x^2y - xy^3$ when $(x, y)$ changes from $(2, 1)$ to $(2.01, 0.98)$.",
+      "solution": "\\[\n f_x = 2xy - y^3, \\quad f_y = x^2 - 3xy^2.\n\\]\nAt $(2, 1)$: $f_x = 4 - 1 = 3$, $f_y = 4 - 6 = -2$.\n\nWith $dx = 0.01$ and $dy = -0.02$:\n\\[\n dz = (3)(0.01) + (-2)(-0.02) = 0.03 + 0.04 = 0.07.\n\\]\nThe approximate change in $f$ is $0.07$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.8",
+      "number": "14.8",
+      "title": "Error estimation",
+      "problem": "The radius of a right circular cylinder is measured as $r = 5$ cm with error $\\pm 0.02$ cm, and the height as $h = 12$ cm with error $\\pm 0.05$ cm. Estimate the maximum error in the calculated volume.",
+      "solution": "$V = \\pi r^2 h$, so:\n\\[\n \\frac{\\partial V}{\\partial r} = 2\\pi rh, \\quad \\frac{\\partial V}{\\partial h} = \\pi r^2.\n\\]\nAt $(5, 12)$: $V_r = 120\\pi$, $V_h = 25\\pi$.\n\\[\n |dV| \\leq |V_r||dr| + |V_h||dh| = 120\\pi(0.02) + 25\\pi(0.05) = 2.4\\pi + 1.25\\pi = 3.65\\pi \\approx 11.5 \\text{ cm}^3.\n\\]\nThe maximum error in volume is approximately $11.5$ cm$^3$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.9",
+      "number": "14.9",
+      "title": "Relative error and sensitivity",
+      "problem": "The period of a simple pendulum is $T = 2\\pi\\sqrt{L/g}$, where $L$ is the length and $g$ is the acceleration due to gravity. If $L$ is measured with $1\\%$ error and $g$ with $0.5\\%$ error, estimate the percentage error in $T$.",
+      "solution": "Taking the differential:\n\\[\n dT = \\frac{\\partial T}{\\partial L}\\,dL + \\frac{\\partial T}{\\partial g}\\,dg.\n\\]\n\\[\n \\frac{\\partial T}{\\partial L} = 2\\pi \\cdot \\frac{1}{2}\\sqrt{\\frac{1}{gL}} = \\frac{\\pi}{\\sqrt{gL}}, \\quad \\frac{\\partial T}{\\partial g} = 2\\pi \\cdot \\frac{1}{2}\\sqrt{\\frac{L}{g^3}} \\cdot (-1) = -\\frac{\\pi\\sqrt{L}}{g^{3/2}}.\n\\]\nThe relative error is:\n\\[\n \\frac{dT}{T} = \\frac{1}{T}\\left(\\frac{\\partial T}{\\partial L}\\,dL + \\frac{\\partial T}{\\partial g}\\,dg\\right).\n\\]\nAfter simplification:\n\\[\n \\frac{dT}{T} = \\frac{1}{2}\\frac{dL}{L} - \\frac{1}{2}\\frac{dg}{g}.\n\\]\nMaximum relative error:\n\\[\n \\left|\\frac{dT}{T}\\right| \\leq \\frac{1}{2}(0.01) + \\frac{1}{2}(0.005) = 0.0075 = 0.75\\%.\n\\]\nThe period is more sensitive to length errors than to gravity errors—but only by a factor of 2 (since both appear with coefficient $1/2$)."
+    },
+    {
+      "type": "example",
+      "id": "example-14.10",
+      "number": "14.10",
+      "title": "Three-variable differential",
+      "problem": "The volume of a rectangular box is $V = xyz$. If $x = 3$ m, $y = 4$ m, $z = 5$ m, each measured with possible error $\\pm 0.1$ m, estimate the maximum error in the computed volume.",
+      "solution": "\\[\n dV = \\frac{\\partial V}{\\partial x}\\,dx + \\frac{\\partial V}{\\partial y}\\,dy + \\frac{\\partial V}{\\partial z}\\,dz = yz\\,dx + xz\\,dy + xy\\,dz.\n\\]\nAt $(3, 4, 5)$ with $|dx| = |dy| = |dz| = 0.1$:\n\\[\n |dV| \\leq (4)(5)(0.1) + (3)(5)(0.1) + (3)(4)(0.1) = 2 + 1.5 + 1.2 = 4.7 \\text{ m}^3.\n\\]\nThe actual volume is $V = 60$ m$^3$, so the relative error is about $4.7/60 \\approx 7.8\\%$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.11",
+      "number": "14.11",
+      "title": "Error in astronomical calculations",
+      "problem": "The luminosity of a star (power output) relates to its radius $R$ and temperature $T$ by the Stefan-Boltzmann law: $L = 4\\pi R^2 \\sigma T^4$, where $\\sigma$ is a constant. If a star's radius is estimated with $5\\%$ error and temperature with $2\\%$ error, estimate the percentage error in luminosity.",
+      "solution": "Taking the differential:\n\\[\n dL = 8\\pi R\\sigma T^4\\,dR + 16\\pi R^2\\sigma T^3\\,dT.\n\\]\nThe relative error is:\n\\[\n \\frac{dL}{L} = \\frac{8\\pi R\\sigma T^4\\,dR + 16\\pi R^2\\sigma T^3\\,dT}{4\\pi R^2\\sigma T^4} = 2\\frac{dR}{R} + 4\\frac{dT}{T}.\n\\]\nMaximum relative error:\n\\[\n \\left|\\frac{dL}{L}\\right| \\leq 2(0.05) + 4(0.02) = 0.10 + 0.08 = 0.18 = 18\\%.\n\\]\n\nThe luminosity is highly sensitive to temperature (factor of 4) because of the $T^4$ dependence. This illustrates why precise temperature measurements are crucial in astrophysics. The remarkable precision with which we can measure stellar properties allows us to understand stars billions of light-years away—a testament to the mathematical intelligibility of God's creation (Psalm 19:1)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Tangent Planes to Level Surfaces"
+    },
+    {
+      "type": "paragraph",
+      "text": "For surfaces defined implicitly by $F(x, y, z) = k$, we need a different approach."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-14.1",
+      "number": "14.1",
+      "title": "Tangent Plane to a Level Surface",
+      "content": "If $F(x, y, z)$ has continuous partial derivatives and $\\nabla F(a, b, c) \\neq \\vect{0}$, then the tangent plane to the level surface $F(x, y, z) = k$ at $(a, b, c)$ is\n\\[\n F_x(a,b,c)(x-a) + F_y(a,b,c)(y-b) + F_z(a,b,c)(z-c) = 0.\n\\]\nThe gradient $\\grad F = \\langle F_x, F_y, F_z \\rangle$ is normal to the surface.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-14.12",
+      "number": "14.12",
+      "title": "Tangent plane to an ellipsoid",
+      "problem": "Find the tangent plane to the ellipsoid $\\dfrac{x^2}{4} + \\dfrac{y^2}{9} + z^2 = 1$ at $(1, 2, 1/\\sqrt{2})$.",
+      "solution": "Let $F(x, y, z) = \\dfrac{x^2}{4} + \\dfrac{y^2}{9} + z^2$. Then:\n\\[\n F_x = \\frac{x}{2}, \\quad F_y = \\frac{2y}{9}, \\quad F_z = 2z.\n\\]\nAt $(1, 2, 1/\\sqrt{2})$:\n\\[\n F_x = \\frac{1}{2}, \\quad F_y = \\frac{4}{9}, \\quad F_z = \\sqrt{2}.\n\\]\nTangent plane:\n\\[\n \\frac{1}{2}(x - 1) + \\frac{4}{9}(y - 2) + \\sqrt{2}\\left(z - \\frac{1}{\\sqrt{2}}\\right) = 0.\n\\]\nSimplifying: $\\dfrac{x}{2} + \\dfrac{4y}{9} + \\sqrt{2}z = \\dfrac{1}{2} + \\dfrac{8}{9} + 1 = \\dfrac{43}{18}$."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 28:17",
+      "text": "And I will make justice the line, and righteousness the plumb line."
+    },
+    {
+      "type": "scripture",
+      "reference": "2 Corinthians 4:17",
+      "text": "For this light momentary affliction is preparing for us an eternal weight of glory beyond all comparison."
+    },
+    {
+      "type": "quote",
+      "author": "Isaac Newton",
+      "text": "Truth is ever to be found in simplicity, and not in the multiplicity and confusion of things."
+    },
+    {
+      "type": "quote",
+      "author": "David Hilbert",
+      "text": "Mathematical science is in my opinion an indivisible whole, an organism whose vitality is conditioned upon the connection of its parts."
+    }
+  ]
+}

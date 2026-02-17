@@ -1,0 +1,128 @@
+{
+  "id": "abstract-algebra-ch04-sec03",
+  "title": "Applications of Lagrange's Theorem",
+  "chapter": 4,
+  "section": 3,
+  "book": "abstract-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"For wisdom will enter your heart, and knowledge will \nbe pleasant to your soul.\"*{Proverbs 2:10}{*\"The purpose of computing is insight, not numbers.\"*}{Richard Hamming}\n\n*\"The purpose of computing is insight, not numbers.\"*{— Richard Hamming}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Lagrange's Theorem is not merely a theoretical result; it is a powerful \ntool for solving problems. In this section, we explore several \napplications."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Proving Groups Are Cyclic"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Groups of Order $2p$ Structure",
+      "content": "Let $G$ be a group of order $2p$ where $p$ is an odd prime. Then $G$ is \neither cyclic or isomorphic to $D_p$ (the dihedral group of order $2p$).",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "We prove a simpler version:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Groups of Order $pq$",
+      "content": "Let $G$ be a group of order $pq$ where $p < q$ are primes and $p \\nmid \n(q-1)$. Then $G$ is cyclic.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The full proof uses material from later chapters (Sylow theorems), but \nthe key insight is that element orders are severely constrained."
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Group of order $15$",
+      "problem": "Any group of order $15 = 3 \\cdot 5$ must be cyclic since $3 \\nmid (5-1) \n= 4$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Counting Elements of Given Order"
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "Elements of order $5$ in $\\Z_{20}$",
+      "problem": "By Lagrange, elements of order $5$ can only exist in a group whose order \nis divisible by $5$. In $\\Z_{20}$, $5 \\mid 20$, so such elements can exist.\n\nThe subgroup of order $5$ is $\\langle 4 \\rangle = \\{0, 4, 8, 12, 16\\}$. \nThe generators of this cyclic group have order $5$:\n\\[\n \\{4, 8, 12, 16\\}\n\\]\n(all except $0$). There are $\\phi(5) = 4$ elements of order $5$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Proving Non-Existence of Subgroups"
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": "No subgroup of order $5$ in $S_4$",
+      "problem": "Since $|S_4| = 24$ and $5 \\nmid 24$, Lagrange's Theorem implies that \n$S_4$ has no subgroup of order $5$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-4.4",
+      "number": "4.4",
+      "title": "Subgroup structure from divisibility",
+      "problem": "Let $|G| = 100 = 2^2 \\cdot 5^2$. Possible subgroup orders are:\n\\[\n 1, 2, 4, 5, 10, 20, 25, 50, 100\n\\]\nThere can be no subgroup of order $3$, $6$, $7$, $8$, etc.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Application to Cryptography"
+    },
+    {
+      "type": "paragraph",
+      "text": "RSA encryption relies on the difficulty of factoring large numbers. The \ndecryption process uses Euler's theorem."
+    },
+    {
+      "type": "example",
+      "id": "example-4.5",
+      "number": "4.5",
+      "title": "RSA principle",
+      "problem": "If $n = pq$ (product of distinct primes), then $\\phi(n) = (p-1)(q-1)$. \nFor any $m$ with $\\gcd(m, n) = 1$:\n\\[\n m^{\\phi(n)} \\equiv 1 \\pmod{n}\n\\]\nIf $ed \\equiv 1 \\pmod{\\phi(n)}$, then:\n\\[\n (m^e)^d = m^{ed} = m^{1 + k\\phi(n)} = m \\cdot (m^{\\phi(n)})^k \\equiv m \\pmod{n}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "How many elements of order $7$ are in $\\Z_{49}$?",
+        "Prove that any group of order $77 = 7 \\times 11$ is cyclic.",
+        "Find $7^{222} \\mod 11$ using Fermat's Little Theorem.",
+        "Let $|G| = 24$. What are the possible orders of elements? Must \n $G$ have an element of each possible order?",
+        "If $G$ has exactly one subgroup of order $d$ for each divisor \n $d$ of $|G|$, prove that $G$ is cyclic."
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 4:7",
+      "text": "The beginning of wisdom is this: Get \nwisdom."
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "id": "number-theory-ch04-sec02",
+  "title": "Euler's $\\phi$ Function",
+  "chapter": 4,
+  "section": 2,
+  "book": "number-theory",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Euler's phi function generalizes the concept behind Fermat's Little \nTheorem to composite moduli."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition and Basic Properties"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "Euler's Phi Function",
+      "content": "For a positive integer $n$, **Euler's phi function** $\\phi(n)$ is \nthe number of integers $k$ with $1 \\leq k \\leq n$ and $\\gcd(k, n) = 1$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Values of $\\phi$",
+      "problem": "- $\\phi(1) = 1$ (just 1 itself).\n\n- $\\phi(6) = 2$ (the integers 1 and 5 are coprime to 6).\n\n- $\\phi(12) = 4$ (the integers 1, 5, 7, 11 are coprime to 12).\n\n- $\\phi(p) = p - 1$ for any prime $p$.",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Phi of a Prime Power",
+      "content": "For a prime $p$ and positive integer $k$:\n\\[\n\\phi(p^k) = p^k - p^{k-1} = p^{k-1}(p - 1).\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The integers from 1 to $p^k$ that are *not* coprime to $p^k$ are \nexactly the multiples of $p$: there are $p^{k-1}$ of these.\n\nThus $\\phi(p^k) = p^k - p^{k-1}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Multiplicativity"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Multiplicativity of $\\phi$",
+      "content": "If $\\gcd(m, n) = 1$, then $\\phi(mn) = \\phi(m)\\phi(n)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "By the Chinese Remainder Theorem, the ring $\\mathbb{Z}/mn\\mathbb{Z}$ is \nisomorphic to $\\mathbb{Z}/m\\mathbb{Z} \\times \\mathbb{Z}/n\\mathbb{Z}$.\n\nUnder this isomorphism, $a$ is a unit mod $mn$ iff $(a \\bmod m, a \\bmod n)$ \nis a unit in the product, i.e., iff $a$ is a unit mod $m$ and mod $n$.\n\nThus $|(\\mathbb{Z}/mn\\mathbb{Z})^*| = |(\\mathbb{Z}/m\\mathbb{Z})^*| \\cdot \n|(\\mathbb{Z}/n\\mathbb{Z})^*|$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Formula for $\\phi(n)$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.3",
+      "number": "4.3",
+      "title": "General Formula",
+      "content": "If $n = p_1^{e_1} p_2^{e_2} \\cdots p_k^{e_k}$, then\n\\[\n\\phi(n) = n \\prod_{p \\mid n} \\left(1 - \\frac{1}{p}\\right) \n= n \\left(1 - \\frac{1}{p_1}\\right)\\left(1 - \\frac{1}{p_2}\\right) \\cdots \n\\left(1 - \\frac{1}{p_k}\\right).\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "By multiplicativity,\n\\[\n\\phi(n) = \\phi(p_1^{e_1}) \\cdots \\phi(p_k^{e_k}) \n= p_1^{e_1-1}(p_1 - 1) \\cdots p_k^{e_k-1}(p_k - 1).\n\\]\nThis equals $n \\cdot \\frac{p_1 - 1}{p_1} \\cdots \\frac{p_k - 1}{p_k}$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "Computing $\\phi$",
+      "problem": "$\\phi(360) = \\phi(2^3 \\cdot 3^2 \\cdot 5) = 360 \\cdot (1 - 1/2)(1 - 1/3)(1 - 1/5) \n= 360 \\cdot \\frac{1}{2} \\cdot \\frac{2}{3} \\cdot \\frac{4}{5} = 96$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "A Sum Formula"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.4",
+      "number": "4.4",
+      "title": "Divisor Sum",
+      "content": "For any positive integer $n$:\n\\[\n\\sum_{d \\mid n} \\phi(d) = n.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Partition $\\{1, 2, \\ldots, n\\}$ by $\\gcd(k, n)$. For each divisor $d$ of \n$n$, there are $\\phi(n/d)$ integers $k \\leq n$ with $\\gcd(k, n) = d$. \nSumming: $\\sum_{d \\mid n} \\phi(n/d) = n$. Since $d$ runs over all divisors \nof $n$ iff $n/d$ does, $\\sum_{d \\mid n} \\phi(d) = n$."
+    }
+  ]
+}

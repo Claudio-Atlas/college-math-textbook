@@ -1,0 +1,74 @@
+{
+  "id": "real-analysis-ch09-sec01",
+  "title": "Metric Spaces: Definitions and Examples",
+  "chapter": 9,
+  "section": 1,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Definition"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Metric Space",
+      "content": "A **metric space** is a pair $(X, d)$ where $X$ \nis a set and $d: X \\times X \\to [0, \\infty)$ is a function (called a \n**metric**) satisfying:\n\n1. **Positive definiteness:** $d(x, y) = 0$ if and only if $x = y$.\n\n2. **Symmetry:** $d(x, y) = d(y, x)$ for all $x, y \\in X$.\n\n3. **Triangle inequality:** $d(x, z) \\leq d(x, y) + d(y, z)$ for \nall $x, y, z \\in X$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Standard Metrics",
+      "problem": "1. $\\mathbb{R}$ with $d(x, y) = |x - y|$.\n\n2. $\\mathbb{R}^n$ with Euclidean distance: $d(x, y) = \\sqrt{\\sum_{i=1}^n (x_i - y_i)^2}$.\n\n3. $\\mathbb{R}^n$ with taxicab distance: $d_1(x, y) = \\sum_{i=1}^n |x_i - y_i|$.\n\n4. $\\mathbb{R}^n$ with max distance: $d_\\infty(x, y) = \\max_i |x_i - y_i|$.\n\n5. $C[a, b]$ with supremum norm: $d(f, g) = \\sup_{x \\in [a,b]} |f(x) - g(x)|$.\n\n6. Any set $X$ with discrete metric: $d(x, y) = 0$ if $x = y$, $d(x, y) = 1$ otherwise.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Topology in Metric Spaces"
+    },
+    {
+      "type": "paragraph",
+      "text": "All topological concepts carry over from $\\mathbb{R}$:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Open Ball",
+      "content": "The **open ball** of radius $r > 0$ centered at $x$ is\n\\[\nB_r(x) = \\{y \\in X : d(x, y) < r\\}.\n\\]"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.3",
+      "number": "9.3",
+      "title": "Open and Closed Sets",
+      "content": "A set $O \\subseteq X$ is **open** if for each $x \\in O$, there exists \n$r > 0$ with $B_r(x) \\subseteq O$.\n\nA set $F \\subseteq X$ is **closed** if its complement is open."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.4",
+      "number": "9.4",
+      "title": "Convergence",
+      "content": "A sequence $(x_n)$ in $(X, d)$ **converges** to $x$ if \n$d(x_n, x) \\to 0$ as $n \\to \\infty$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.5",
+      "number": "9.5",
+      "title": "Continuity",
+      "content": "$f: (X, d_X) \\to (Y, d_Y)$ is **continuous** at $x$ if for every \n$\\varepsilon > 0$, there exists $\\delta > 0$ such that \n$d_X(x', x) < \\delta \\implies d_Y(f(x'), f(x)) < \\varepsilon$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Sequential Characterizations",
+      "content": "In metric spaces:\n\n1. $F$ is closed iff whenever $x_n \\in F$ and $x_n \\to x$, then $x \\in F$.\n\n2. $f$ is continuous iff $x_n \\to x$ implies $f(x_n) \\to f(x)$.",
+      "label": "Theorem"
+    }
+  ]
+}

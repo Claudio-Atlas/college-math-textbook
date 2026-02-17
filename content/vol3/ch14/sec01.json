@@ -1,0 +1,209 @@
+{
+  "id": "vol3-ch14-sec01",
+  "title": "Functions of Several Variables",
+  "chapter": 14,
+  "section": 1,
+  "book": "vol3",
+  "epigraph": {
+    "text": "The earth is the Lord's, and everything in it, the world, and all who live in it.",
+    "reference": "Psalm 24:1"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Until now, our functions have had a single input: $f(x)$ takes one number and returns one number. But the real world is multidimensional. Temperature depends on position (three coordinates) and time (one more). Profit depends on price, quantity, marketing budget, and countless other factors. To model such situations, we need functions of *several* variables."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Functions of Two Variables"
+    },
+    {
+      "type": "definition",
+      "id": "definition-14.1",
+      "number": "14.1",
+      "title": "Function of Two Variables",
+      "content": "A **function of two variables** is a rule $f$ that assigns to each ordered pair $(x, y)$ in a set $D \\subseteq \\R^2$ a unique real number $f(x, y)$. The set $D$ is the **domain**, and the set of all values $f(x, y)$ is the **range**."
+    },
+    {
+      "type": "paragraph",
+      "text": "We write $z = f(x, y)$ and call $x$ and $y$ the **independent variables** and $z$ the **dependent variable**."
+    },
+    {
+      "type": "example",
+      "id": "example-14.1",
+      "number": "14.1",
+      "title": "Evaluating a function of two variables",
+      "problem": "Let $f(x, y) = x^2 + y^2 - xy$. Find $f(2, 3)$, $f(-1, 4)$, and $f(a, a)$.",
+      "solution": "$$\n f(2, 3) &= 4 + 9 - 6 = 7, \\\\\n f(-1, 4) &= 1 + 16 - (-4) = 21, \\\\\n f(a, a) &= a^2 + a^2 - a^2 = a^2.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-14.2",
+      "number": "14.2",
+      "title": "Finding the domain",
+      "problem": "Find and sketch the domain of $f(x, y) = \\sqrt{9 - x^2 - y^2}$.",
+      "solution": "We need $9 - x^2 - y^2 \\geq 0$, or $x^2 + y^2 \\leq 9$.\n\nThe domain is the disk of radius 3 centered at the origin (including the boundary circle)."
+    },
+    {
+      "type": "example",
+      "id": "example-14.3",
+      "number": "14.3",
+      "title": "Domain with multiple restrictions",
+      "problem": "Find the domain of $g(x, y) = \\ln(y - x^2)$.",
+      "solution": "We need $y - x^2 > 0$, or $y > x^2$.\n\nThe domain is the set of all points strictly above the parabola $y = x^2$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Graphs of Functions of Two Variables"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **graph** of $z = f(x, y)$ is the set of all points $(x, y, z)$ in $\\R^3$ where $(x, y) \\in D$ and $z = f(x, y)$. This graph is typically a *surface* in three-dimensional space."
+    },
+    {
+      "type": "example",
+      "id": "example-14.4",
+      "number": "14.4",
+      "title": "Recognizing familiar surfaces",
+      "problem": "Identify the graphs of the following functions:\n\n1. $f(x, y) = \\sqrt{1 - x^2 - y^2}$\n\n2. $g(x, y) = x^2 + y^2$\n\n3. $h(x, y) = x^2 - y^2$",
+      "solution": "1. $z = \\sqrt{1 - x^2 - y^2}$ gives $z^2 = 1 - x^2 - y^2$, or $x^2 + y^2 + z^2 = 1$ with $z \\geq 0$. This is the upper hemisphere of radius 1.\n\n2. $z = x^2 + y^2$ is a circular paraboloid opening upward.\n\n3. $z = x^2 - y^2$ is a hyperbolic paraboloid (saddle surface)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Level Curves"
+    },
+    {
+      "type": "paragraph",
+      "text": "A powerful way to visualize a function $f(x, y)$ is through its **level curves**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-14.2",
+      "number": "14.2",
+      "title": "Level Curves",
+      "content": "The **level curves** of a function $f(x, y)$ are the curves in the $xy$-plane defined by $f(x, y) = k$ for various constants $k$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Level curves are like the contour lines on a topographic map. Each curve shows where the function takes a constant value—like a contour of constant elevation."
+    },
+    {
+      "type": "example",
+      "id": "example-14.5",
+      "number": "14.5",
+      "title": "Level curves of a paraboloid",
+      "problem": "Sketch several level curves of $f(x, y) = x^2 + y^2$.",
+      "solution": "Setting $f(x, y) = k$ gives $x^2 + y^2 = k$, which is:\n\n- Undefined for $k < 0$\n\n- A single point (the origin) for $k = 0$\n\n- A circle of radius $\\sqrt{k}$ for $k > 0$\nThe level curves are concentric circles centered at the origin."
+    },
+    {
+      "type": "example",
+      "id": "example-14.6",
+      "number": "14.6",
+      "title": "Level curves of a saddle",
+      "problem": "Sketch the level curves of $f(x, y) = x^2 - y^2$.",
+      "solution": "Setting $f(x, y) = k$ gives $x^2 - y^2 = k$:\n\n- For $k > 0$: hyperbolas opening left and right\n\n- For $k = 0$: the lines $y = \\pm x$ (degenerate hyperbola)\n\n- For $k < 0$: hyperbolas opening up and down\nThe family of hyperbolas shows the saddle shape of the surface."
+    },
+    {
+      "type": "example",
+      "id": "example-14.7",
+      "number": "14.7",
+      "title": "Level curves of a plane",
+      "problem": "Sketch the level curves of $f(x, y) = 2x + 3y$.",
+      "solution": "The equation $2x + 3y = k$ is a family of parallel lines with slope $-2/3$. The level curves are evenly spaced (for equal increments in $k$), indicating the surface is a plane with constant slope."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Functions of Three or More Variables"
+    },
+    {
+      "type": "paragraph",
+      "text": "Functions can depend on any number of variables."
+    },
+    {
+      "type": "definition",
+      "id": "definition-14.3",
+      "number": "14.3",
+      "title": "Functions of $n$ Variables",
+      "content": "A **function of $n$ variables** is a rule $f$ that assigns to each point $(x_1, x_2, \\ldots, x_n)$ in a set $D \\subseteq \\R^n$ a unique real number $f(x_1, x_2, \\ldots, x_n)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "For $n = 3$, we typically write $f(x, y, z)$ or $w = f(x, y, z)$."
+    },
+    {
+      "type": "example",
+      "id": "example-14.8",
+      "number": "14.8",
+      "title": "A function of three variables",
+      "problem": "Let $f(x, y, z) = x^2 + y^2 + z^2$. Find $f(1, 2, 2)$ and describe its level surfaces.",
+      "solution": "$f(1, 2, 2) = 1 + 4 + 4 = 9$.\n\nThe level surfaces $f(x, y, z) = k$ are defined by $x^2 + y^2 + z^2 = k$:\n\n- For $k > 0$: spheres of radius $\\sqrt{k}$ centered at the origin\n\n- For $k = 0$: the single point (origin)\n\n- For $k < 0$: empty"
+    },
+    {
+      "type": "paragraph",
+      "text": "For functions of three variables, we speak of **level surfaces** rather than level curves. These are the three-dimensional analogues of contour lines."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications"
+    },
+    {
+      "type": "paragraph",
+      "text": "Functions of several variables appear throughout science and economics."
+    },
+    {
+      "type": "example",
+      "id": "example-14.9",
+      "number": "14.9",
+      "title": "Temperature distribution",
+      "problem": "The temperature at a point $(x, y, z)$ in a room might be modeled by\n\\[\n T(x, y, z) = 20 + 5e^{-0.1(x^2 + y^2 + (z-2)^2)},\n\\]\nin degrees Celsius, where $(0, 0, 2)$ is the location of a heat source. This function has level surfaces that are spheres centered at the heat source.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-14.10",
+      "number": "14.10",
+      "title": "Production function",
+      "problem": "In economics, a **Cobb-Douglas production function** has the form\n\\[\n P(L, K) = cL^{\\alpha}K^{1-\\alpha},\n\\]\nwhere $L$ is labor input, $K$ is capital input, $c > 0$ is a constant, and $0 < \\alpha < 1$. The level curves $P(L, K) = k$ are called **isoquants**—they show all combinations of labor and capital that produce the same output.",
+      "solution": ""
+    },
+    {
+      "type": "historical",
+      "id": "historical-14.1",
+      "number": null,
+      "title": "The Development of Multivariable Calculus",
+      "content": "The calculus of functions of several variables developed gradually through the 18th and 19th centuries. Euler (1707–1783) worked extensively with partial derivatives, while Lagrange (1736–1813) developed the method of multipliers. Cauchy (1789–1857) rigorized the theory of limits in multiple dimensions. The geometric interpretation using level curves and surfaces became standard only in the 19th century, as mathematicians learned to think in higher dimensions."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 104:24",
+      "text": "O Lord, how manifold are your works! In wisdom have you made them all; the earth is full of your creatures."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:4",
+      "text": "Every valley shall be lifted up, and every mountain and hill be made low; the uneven ground shall become level, and the rough places a plain."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:11",
+      "text": "He has made everything beautiful in its time. Also, he has put eternity into man's heart, yet so that he cannot find out what God has done from the beginning to the end."
+    },
+    {
+      "type": "quote",
+      "author": "Bernhard Riemann",
+      "text": "God created the integers; all else is the work of man."
+    },
+    {
+      "type": "quote",
+      "author": "Emmy Noether",
+      "text": "My methods are really methods of working and thinking; this is why they have crept in everywhere anonymously."
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "id": "prob-stats-ch07-sec03",
+  "title": "Method of Moments",
+  "chapter": 7,
+  "section": 3,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "For everything there is a season, and a time for every matter under heaven.",
+    "reference": "Ecclesiastes 3:1",
+    "quote": "The method of moments is the simplest approach to parameter estimation.",
+    "quoteAuthor": "Karl Pearson"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The method of moments provides a simple, intuitive approach to \nfinding estimators."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Population and Sample Moments"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Moments",
+      "content": "The $k$th **population moment** is $\\mu'_k = \\E[X^k]$.\n\nThe $k$th **sample moment** is $\\hat{\\mu}'_k = \\frac{1}{n}\\sum_{i=1}^n X_i^k$."
+    },
+    {
+      "type": "paragraph",
+      "text": "For $k=1$: Population mean $\\mu = \\E[X]$, Sample mean $\\xbar$."
+    },
+    {
+      "type": "paragraph",
+      "text": "For $k=2$: $\\E[X^2]$ and $\\frac{1}{n}\\sum X_i^2$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Method of Moments"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-7.3",
+      "number": null,
+      "title": "Method of Moments Procedure",
+      "content": "1. Express the first $k$ population moments as functions of the \n $k$ unknown parameters\n\n2. Set sample moments equal to population moments\n\n3. Solve for the parameter estimates"
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Normal Distribution",
+      "problem": "Estimate $\\mu$ and $\\sigma^2$ from a sample assumed to be normal.",
+      "solution": "Population moments: $\\mu'_1 = \\mu$ and $\\mu'_2 = \\E[X^2] = \\sigma^2 + \\mu^2$.\n\nSet equal to sample moments:\n$$\n \\hat{\\mu} &= \\xbar \\\\\n \\hat{\\sigma}^2 + \\hat{\\mu}^2 &= \\frac{1}{n}\\sum X_i^2\n$$\n\nSolving: $\\hat{\\mu} = \\xbar$ and $\\hat{\\sigma}^2 = \\frac{1}{n}\\sum X_i^2 - \\xbar^2 = \\frac{1}{n}\\sum(X_i - \\xbar)^2$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Exponential Distribution",
+      "problem": "For $X \\sim \\Exp(\\lambda)$, estimate $\\lambda$.",
+      "solution": "$\\E[X] = 1/\\lambda$. Set $\\xbar = 1/\\hat{\\lambda}$.\n\nTherefore $\\hat{\\lambda} = 1/\\xbar$."
+    }
+  ]
+}

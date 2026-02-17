@@ -1,0 +1,310 @@
+{
+  "id": "precalculus-ch05-sec03",
+  "title": "Exponential and Logarithmic Equations",
+  "chapter": 5,
+  "section": 3,
+  "book": "precalculus",
+  "objectives": [
+    "Solve exponential equations using the same-base method",
+    "Solve exponential equations using logarithms",
+    "Solve logarithmic equations by converting to exponential form",
+    "Use properties of logarithms to solve more complex equations",
+    "Identify and reject extraneous solutions",
+    "Apply exponential and logarithmic equations to real-world problems\nitemize"
+  ],
+  "devotional": {
+    "title": "Seeking and Finding",
+    "scripture": "Jeremiah 29:13; Matthew 7:7",
+    "content": "{AtlasWarmY}{ou \nwill seek me and find me} when you seek me with all your heart.\" This \nis one of the great promises of Scripture—that God can be found by \nthose who truly seek Him. But notice: seeking comes first. Finding is \nthe reward of sincere effort.\n\nSolving equations is a form of mathematical seeking. We begin with a \nquestion—\"What value of $x$ makes this true?\"—and we pursue the \nanswer through careful reasoning. Sometimes the path is straightforward; \nother times we must try different approaches, backtrack when we hit dead \nends, and persist through complexity.\n\nExponential and logarithmic equations present a particular kind of \nchallenge: the unknown is often hidden inside an exponent or trapped \nwithin a logarithm. To find it, we must use the inverse relationship \nbetween these functions. Just as logarithms undo exponentials, applying \nthe right operation can release the hidden variable, bringing it into \nthe open where we can solve for it.\n\nThere is a spiritual parallel here. Sin often hides itself, disguising \nits true nature or burying itself beneath layers of rationalization. \nBut God's Word is like a logarithm applied to our hearts—it exposes \nwhat was hidden, brings the truth to light, and shows us where we truly \nstand. \"Ask and it will be given to you; seek and you will find.\"",
+    "reflection": "Solving equations requires persistence and the \nright tools. What hidden things in your life might God want to bring \ninto the light? How do you respond when truth reveals something \nuncomfortable?"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"If any of you lacks wisdom, you should ask God, who \ngives generously to all without finding fault.\"*{James 1:5}{The solution of every problem is another problem.}{Johann Wolfgang von Goethe}"
+    },
+    {
+      "type": "paragraph",
+      "text": "In this section, we apply everything we've learned about exponentials \nand logarithms to solve equations. The key insight is that logarithms \nand exponentials are inverses—so when a variable is stuck in an \nexponent, we use logarithms to free it, and when a variable is stuck \ninside a logarithm, we use exponentiation."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving Exponential Equations: The Same-Base Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "An exponential equation has the variable in the exponent. The simplest \napproach, when possible, is to express both sides of the equation as \npowers of the same base."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "One-to-One Property of Exponential Functions",
+      "content": "If $b > 0$ and $b \\neq 1$, then:\n\\[\n b^x = b^y \\quad \\Longleftrightarrow \\quad x = y\n\\]\nEqual bases with equal results mean equal exponents.",
+      "label": "Theorem"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-5.3",
+      "number": null,
+      "title": "Solving Exponential Equations by Matching Bases",
+      "content": "1. Rewrite each side as a power of the same base\n\n2. Set the exponents equal (using the one-to-one property)\n\n3. Solve the resulting equation\n\n4. Check your answer"
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Same base---straightforward",
+      "problem": "Solve each equation.\n\n1. $2^x = 32$\n\n2. $3^{x-1} = 27$\n\n3. $5^{2x} = 125$",
+      "solution": "1. Express 32 as a power of 2: $32 = 2^5$\n \\[\n 2^x = 2^5 \\implies x = \\boxed{5}\n \\]\n\n2. Express 27 as a power of 3: $27 = 3^3$\n \\[\n 3^{x-1} = 3^3 \\implies x - 1 = 3 \\implies x = \\boxed{4}\n \\]\n **Check:** $3^{4-1} = 3^3 = 27$ \n\n3. Express 125 as a power of 5: $125 = 5^3$\n \\[\n 5^{2x} = 5^3 \\implies 2x = 3 \\implies x = \\boxed{\\frac{3}{2}}\n \\]\n **Check:** $5^{2(3/2)} = 5^3 = 125$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "Same base---different bases in problem",
+      "problem": "Solve $4^{2x-1} = 8$.",
+      "solution": "The bases 4 and 8 are different, but both are powers of 2:\n\\[\n 4 = 2^2 \\quad \\text{and} \\quad 8 = 2^3\n\\]\n\nRewrite the equation:\n\\[\n (2^2)^{2x-1} = 2^3\n\\]\n\nSimplify the left side using $(a^m)^n = a^{mn}$:\n\\[\n 2^{2(2x-1)} = 2^3 \\implies 2^{4x-2} = 2^3\n\\]\n\nSet exponents equal:\n\\[\n 4x - 2 = 3 \\implies 4x = 5 \\implies x = \\boxed{\\frac{5}{4}}\n\\]\n\n**Check:** $4^{2(5/4)-1} = 4^{5/2-1} = 4^{3/2} = (4^{1/2})^3 = 2^3 = 8$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Same base---equation with variable on both sides",
+      "problem": "Solve $9^{x+1} = 27^x$.",
+      "solution": "Express both sides as powers of 3:\n\\[\n 9 = 3^2 \\quad \\text{and} \\quad 27 = 3^3\n\\]\n\nSo:\n\\[\n (3^2)^{x+1} = (3^3)^x \\implies 3^{2(x+1)} = 3^{3x} \\implies 3^{2x+2} = 3^{3x}\n\\]\n\nSet exponents equal:\n\\[\n 2x + 2 = 3x \\implies 2 = x \\implies x = \\boxed{2}\n\\]\n\n**Check:** $9^{2+1} = 9^3 = 729$ and $27^2 = 729$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving Exponential Equations: The Logarithm Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "When the bases can't easily be matched, or when you need a decimal \nanswer, take the logarithm of both sides."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-5.3",
+      "number": null,
+      "title": "Solving Exponential Equations Using Logarithms",
+      "content": "1. Isolate the exponential expression on one side\n\n2. Take the logarithm of both sides (usually $\\ln$ or $\\log$)\n\n3. Use the power rule to bring down the exponent\n\n4. Solve for the variable"
+    },
+    {
+      "type": "example",
+      "id": "example-5.4",
+      "number": "5.4",
+      "title": "Using logarithms---basic",
+      "problem": "Solve $5^x = 17$. Give an exact answer and a decimal approximation.",
+      "solution": "There's no way to express 17 as a nice power of 5, so we use logarithms.\n\nTake the natural log of both sides:\n\\[\n \\ln(5^x) = \\ln 17\n\\]\n\nApply the power rule:\n\\[\n x \\ln 5 = \\ln 17\n\\]\n\nSolve for $x$:\n\\[\n x = \\frac{\\ln 17}{\\ln 5}\n\\]\n\n**Exact answer:** $x = \\dfrac{\\ln 17}{\\ln 5}$ (or equivalently, \n$x = \\log_5 17$ by the change of base formula)\n\n**Decimal approximation:** $x \\approx \\dfrac{2.833}{1.609} \\approx \\boxed{1.760}$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.5",
+      "number": "5.5",
+      "title": "Using logarithms---more complex exponent",
+      "problem": "Solve $3^{2x+1} = 50$.",
+      "solution": "Take the natural log of both sides:\n\\[\n \\ln(3^{2x+1}) = \\ln 50\n\\]\n\nApply the power rule:\n\\[\n (2x + 1)\\ln 3 = \\ln 50\n\\]\n\nSolve for $x$:\nalign*\n 2x + 1 &= $\\frac{\\ln 50}{\\ln 3}$ \\\\[0.5em]\n 2x &= \\frac{\\ln 50}{\\ln 3} - 1 \\\\[0.5em]\n x &= \\frac{1}{2}\\left(\\frac{\\ln 50}{\\ln 3} - 1\\right)\n\\end{align*}\n\nUsing a calculator: $\\dfrac{\\ln 50}{\\ln 3} \\approx 3.561$, so:\n\\[\n x \\approx \\frac{1}{2}(3.561 - 1) = \\frac{1}{2}(2.561) \\approx \\boxed{1.280}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-5.6",
+      "number": "5.6",
+      "title": "Isolating the exponential first",
+      "problem": "Solve $4 \\cdot 2^x - 7 = 25$.",
+      "solution": "First, isolate the exponential term:\n$$\n 4 \\cdot 2^x - 7 &= 25 \\\\\n 4 \\cdot 2^x &= 32 \\\\\n 2^x &= 8\n$$\n\nNow we can use the same-base method: $8 = 2^3$, so:\n\\[\n 2^x = 2^3 \\implies x = \\boxed{3}\n\\]\n\n(If the answer weren't so nice, we'd use logarithms.)"
+    },
+    {
+      "type": "example",
+      "id": "example-5.7",
+      "number": "5.7",
+      "title": "Exponentials on both sides",
+      "problem": "Solve $5^x = 3^{x+2}$.",
+      "solution": "Take the natural log of both sides:\n\\[\n \\ln(5^x) = \\ln(3^{x+2})\n\\]\n\nApply the power rule:\n\\[\n x \\ln 5 = (x+2) \\ln 3\n\\]\n\nDistribute on the right:\n\\[\n x \\ln 5 = x \\ln 3 + 2 \\ln 3\n\\]\n\nCollect $x$ terms on one side:\n\\[\n x \\ln 5 - x \\ln 3 = 2 \\ln 3\n\\]\n\nFactor out $x$:\n\\[\n x(\\ln 5 - \\ln 3) = 2 \\ln 3\n\\]\n\nSolve:\n\\[\n x = \\frac{2 \\ln 3}{\\ln 5 - \\ln 3} = \\frac{2 \\ln 3}{\\ln(5/3)} \\approx \\frac{2(1.099)}{0.511} \\approx \\boxed{4.301}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Quadratic-Type Exponential Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "Some exponential equations can be transformed into quadratic equations \nusing substitution."
+    },
+    {
+      "type": "example",
+      "id": "example-5.8",
+      "number": "5.8",
+      "title": "Quadratic in exponential form",
+      "problem": "Solve $e^{2x} - 3e^x + 2 = 0$.",
+      "solution": "Notice that $e^{2x} = (e^x)^2$. Let $u = e^x$, so $u^2 = e^{2x}$.\n\nThe equation becomes:\n\\[\n u^2 - 3u + 2 = 0\n\\]\n\nFactor:\n\\[\n (u - 1)(u - 2) = 0 \\implies u = 1 \\text{ or } u = 2\n\\]\n\nBack-substitute $u = e^x$:\n\n- If $e^x = 1$: $x = \\ln 1 = 0$\n\n- If $e^x = 2$: $x = \\ln 2 \\approx 0.693$\n\n**Solutions:** $x = 0$ or $x = \\ln 2$\n\n**Check:**\n\n- $x = 0$: $e^0 - 3e^0 + 2 = 1 - 3 + 2 = 0$ \n\n- $x = \\ln 2$: $e^{2\\ln 2} - 3e^{\\ln 2} + 2 = 4 - 6 + 2 = 0$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.9",
+      "number": "5.9",
+      "title": "Watch for extraneous solutions",
+      "problem": "Solve $e^{2x} + e^x - 2 = 0$.",
+      "solution": "Let $u = e^x$:\n\\[\n u^2 + u - 2 = 0 \\implies (u + 2)(u - 1) = 0 \\implies u = -2 \\text{ or } u = 1\n\\]\n\nBack-substitute:\n\n- If $e^x = -2$: No solution! (since $e^x > 0$ always)\n\n- If $e^x = 1$: $x = 0$\n\n**Solution:** $x = 0$ only."
+    },
+    {
+      "type": "warning",
+      "id": "warning-5.3",
+      "number": null,
+      "title": "Reject Impossible Solutions",
+      "content": "When back-substituting in exponential equations, remember that $b^x > 0$ \nfor any valid base $b$. If your substitution leads to $b^x = \\text{negative}$, \nthat case has no solution."
+    },
+    {
+      "type": "example",
+      "id": "example-5.10",
+      "number": "5.10",
+      "title": "Base 2 quadratic type",
+      "problem": "Solve $4^x - 6 \\cdot 2^x + 8 = 0$.",
+      "solution": "Since $4^x = (2^2)^x = 2^{2x} = (2^x)^2$, let $u = 2^x$:\n\\[\n u^2 - 6u + 8 = 0 \\implies (u - 2)(u - 4) = 0 \\implies u = 2 \\text{ or } u = 4\n\\]\n\nBack-substitute:\n\n- If $2^x = 2$: $x = 1$\n\n- If $2^x = 4 = 2^2$: $x = 2$\n\n**Solutions:** $x = 1$ or $x = 2$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving Logarithmic Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "A logarithmic equation contains a variable inside a logarithm. The main \nstrategy is to convert to exponential form or to condense multiple \nlogarithms into one."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-5.3",
+      "number": null,
+      "title": "Solving Logarithmic Equations",
+      "content": "1. Isolate the logarithm (or condense multiple logs into one)\n\n2. Convert to exponential form: $\\log_b x = y \\Rightarrow b^y = x$\n\n3. Solve for the variable\n\n4. **Check your answer!** Reject any solutions that make \n the argument of a logarithm non-positive."
+    },
+    {
+      "type": "example",
+      "id": "example-5.11",
+      "number": "5.11",
+      "title": "Basic logarithmic equation",
+      "problem": "Solve $\\log_2(x - 3) = 4$.",
+      "solution": "Convert to exponential form:\n\\[\n x - 3 = 2^4 = 16\n\\]\n\nSolve:\n\\[\n x = 19\n\\]\n\n**Check:** $\\log_2(19 - 3) = \\log_2 16 = 4$ \n\nSince $19 - 3 = 16 > 0$, the solution is valid: $x = \\boxed{19}$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.12",
+      "number": "5.12",
+      "title": "Natural log equation",
+      "problem": "Solve $\\ln(2x - 1) = 3$.",
+      "solution": "Convert to exponential form (base $e$):\n\\[\n 2x - 1 = e^3\n\\]\n\nSolve:\n\\[\n 2x = e^3 + 1 \\implies x = \\frac{e^3 + 1}{2}\n\\]\n\nDecimal approximation: $x \\approx \\dfrac{20.086 + 1}{2} \\approx \\boxed{10.54}$\n\n**Check:** $2(10.54) - 1 = 20.08 \\approx e^3$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.13",
+      "number": "5.13",
+      "title": "Logarithm equals logarithm",
+      "problem": "Solve $\\log_5(3x + 1) = \\log_5(2x + 5)$.",
+      "solution": "When $\\log_b A = \\log_b B$ (with the same base), we can conclude $A = B$ \n(by the one-to-one property of logarithms).\n\nSo:\n\\[\n 3x + 1 = 2x + 5 \\implies x = 4\n\\]\n\n**Check:** Both arguments must be positive:\n\n- $3(4) + 1 = 13 > 0$ \n\n- $2(4) + 5 = 13 > 0$ \n\nAnd indeed, $\\log_5 13 = \\log_5 13$. Solution: $x = \\boxed{4}$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Using Properties to Solve"
+    },
+    {
+      "type": "paragraph",
+      "text": "Many logarithmic equations require combining logarithms first."
+    },
+    {
+      "type": "example",
+      "id": "example-5.14",
+      "number": "5.14",
+      "title": "Using the product rule",
+      "problem": "Solve $\\log x + \\log(x + 3) = 1$.",
+      "solution": "Combine using the product rule:\n\\[\n \\log[x(x + 3)] = 1\n\\]\n\nConvert to exponential form (base 10):\n\\[\n x(x + 3) = 10^1 = 10\n\\]\n\nExpand and solve:\n\\[\n x^2 + 3x - 10 = 0 \\implies (x + 5)(x - 2) = 0 \\implies x = -5 \\text{ or } x = 2\n\\]\n\n**Check domain requirements:**\n\n- $x = -5$: $\\log(-5)$ is undefined! **Reject.**\n\n- $x = 2$: $\\log 2$ is defined, and $\\log(2+3) = \\log 5$ is defined. \n\nVerify: $\\log 2 + \\log 5 = \\log(2 \\cdot 5) = \\log 10 = 1$ \n\n**Solution:** $x = \\boxed{2}$"
+    },
+    {
+      "type": "warning",
+      "id": "warning-5.3",
+      "number": null,
+      "title": "Always Check for Extraneous Solutions",
+      "content": "Logarithmic equations often produce extraneous solutions—values that \nsatisfy the algebraic manipulations but make the original equation \nundefined. **Every solution must be checked** against the domain \nof the original equation."
+    },
+    {
+      "type": "example",
+      "id": "example-5.15",
+      "number": "5.15",
+      "title": "Using the quotient rule",
+      "problem": "Solve $\\log_2(x + 1) - \\log_2(x - 1) = 3$.",
+      "solution": "Combine using the quotient rule:\n\\[\n \\log_2\\left(\\frac{x + 1}{x - 1}\\right) = 3\n\\]\n\nConvert to exponential form:\n\\[\n \\frac{x + 1}{x - 1} = 2^3 = 8\n\\]\n\nSolve the rational equation:\n$$\n x + 1 &= 8(x - 1) \\\\\n x + 1 &= 8x - 8 \\\\\n 9 &= 7x \\\\\n x &= \\frac{9}{7}\n$$\n\n**Check:** Is $x = \\frac{9}{7} > 1$? Yes, so both $x + 1 > 0$ and \n$x - 1 > 0$.\n\nVerify: $\\log_2\\left(\\frac{9/7 + 1}{9/7 - 1}\\right) = \\log_2\\left(\\frac{16/7}{2/7}\\right) = \\log_2 8 = 3$ \n\n**Solution:** $x = \\boxed{\\frac{9}{7}}$"
+    },
+    {
+      "type": "example",
+      "id": "example-5.16",
+      "number": "5.16",
+      "title": "Equation with multiple logarithms",
+      "problem": "Solve $2\\log_3 x = \\log_3 4 + \\log_3(x + 3)$.",
+      "solution": "Use properties to simplify each side:\n$$\n \\log_3 x^2 &= \\log_3[4(x + 3)] \\\\\n \\log_3 x^2 &= \\log_3(4x + 12)\n$$\n\nSince the logs are equal (same base), the arguments are equal:\n\\[\n x^2 = 4x + 12 \\implies x^2 - 4x - 12 = 0 \\implies (x - 6)(x + 2) = 0\n\\]\n\nSo $x = 6$ or $x = -2$.\n\n**Check:**\n\n- $x = 6$: $\\log_3 6$ and $\\log_3(6+3) = \\log_3 9$ are both defined. \n\n- $x = -2$: $\\log_3(-2)$ is undefined. **Reject.**\n\n**Solution:** $x = \\boxed{6}$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications"
+    },
+    {
+      "type": "paragraph",
+      "text": "Exponential and logarithmic equations arise naturally in many real-world \ncontexts."
+    },
+    {
+      "type": "example",
+      "id": "example-5.17",
+      "number": "5.17",
+      "title": "Compound interest---time to reach a goal",
+      "problem": "An investment of \\$5,000 earns 6\\% annual interest compounded monthly. \nHow long until the investment doubles?",
+      "solution": "The compound interest formula is:\n\\[\n A = P\\left(1 + \\frac{r}{n}\\right)^{nt}\n\\]\n\nHere $P = 5000$, $r = 0.06$, $n = 12$, and we want $A = 10000$.\n\n\\[\n 10000 = 5000\\left(1 + \\frac{0.06}{12}\\right)^{12t}\n\\]\n\nSimplify:\n\\[\n 2 = (1.005)^{12t}\n\\]\n\nTake the natural log of both sides:\n\\[\n \\ln 2 = 12t \\cdot \\ln(1.005)\n\\]\n\nSolve for $t$:\n\\[\n t = \\frac{\\ln 2}{12 \\ln(1.005)} = \\frac{0.693}{12(0.00499)} \\approx \\frac{0.693}{0.0599} \\approx \\boxed{11.58 \\text{ years}}\n\\]\n\nThe investment will double in about 11 years and 7 months."
+    },
+    {
+      "type": "example",
+      "id": "example-5.18",
+      "number": "5.18",
+      "title": "Radioactive decay",
+      "problem": "A radioactive substance decays according to $A(t) = A_0 e^{-0.02t}$, \nwhere $t$ is in years. How long until only 25\\% of the original amount \nremains?",
+      "solution": "We want $A(t) = 0.25 A_0$:\n\\[\n 0.25 A_0 = A_0 e^{-0.02t}\n\\]\n\nDivide both sides by $A_0$:\n\\[\n 0.25 = e^{-0.02t}\n\\]\n\nTake the natural log:\n\\[\n \\ln(0.25) = -0.02t\n\\]\n\nSolve:\n\\[\n t = \\frac{\\ln(0.25)}{-0.02} = \\frac{-1.386}{-0.02} = \\boxed{69.3 \\text{ years}}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-5.19",
+      "number": "5.19",
+      "title": "Population growth",
+      "problem": "A city's population grows according to $P(t) = 50000 e^{0.03t}$, where \n$t$ is years after 2020. When will the population reach 100,000?",
+      "solution": "Set $P(t) = 100000$:\n\\[\n 100000 = 50000 e^{0.03t}\n\\]\n\nDivide:\n\\[\n 2 = e^{0.03t}\n\\]\n\nTake the natural log:\n\\[\n \\ln 2 = 0.03t \\implies t = \\frac{\\ln 2}{0.03} \\approx \\frac{0.693}{0.03} \\approx 23.1\n\\]\n\nThe population will reach 100,000 about **23 years after 2020**, \nor around the year **2043**."
+    },
+    {
+      "type": "example",
+      "id": "example-5.20",
+      "number": "5.20",
+      "title": "The pH scale",
+      "problem": "The pH of a solution is defined as $\\text{pH} = -\\log[\\text{H}^+]$, \nwhere $[\\text{H}^+]$ is the hydrogen ion concentration in moles per \nliter. If a solution has pH 4.5, what is its hydrogen ion concentration?",
+      "solution": "We have:\n\\[\n 4.5 = -\\log[\\text{H}^+]\n\\]\n\nMultiply by $-1$:\n\\[\n -4.5 = \\log[\\text{H}^+]\n\\]\n\nConvert to exponential form:\n\\[\n [\\text{H}^+] = 10^{-4.5} \\approx 3.16 \\times 10^{-5} \\text{ moles/liter}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 2:4--5",
+      "text": "If you look for it as for silver and \nsearch for it as for hidden treasure, then you will understand the fear \nof the Lord and find the knowledge of God."
+    },
+    {
+      "type": "scripture",
+      "reference": "John 8:32",
+      "text": "Then you will know the truth, and the truth \nwill set you free."
+    },
+    {
+      "type": "scripture",
+      "reference": "Matthew 25:21",
+      "text": "Well done, good and faithful servant! \nYou have been faithful with a few things; I will put you in charge of \nmany things."
+    }
+  ]
+}

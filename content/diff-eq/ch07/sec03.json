@@ -1,0 +1,135 @@
+{
+  "id": "diff-eq-ch07-sec03",
+  "title": "Homogeneous Systems: Real Distinct Eigenvalues",
+  "chapter": 7,
+  "section": 3,
+  "book": "diff-eq",
+  "objectives": [
+    "Solve $\\mathbf{x}' = A\\mathbf{x}$ when $A$ has real distinct eigenvalues",
+    "Construct the general solution using eigenvalues and eigenvectors",
+    "Solve initial value problems for 2×2 and 3×3 systems",
+    "Understand the structure of solutions geometrically\nitemize"
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "We now apply the eigenvalue method to solve homogeneous linear systems with constant coefficients."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Eigenvalue Method"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Solutions via Eigenvalues",
+      "content": "Consider the system $\\mathbf{x}' = A\\mathbf{x}$ where $A$ is an $n \\times n$ constant matrix.\n\nIf $\\lambda$ is an eigenvalue of $A$ with eigenvector $\\mathbf{v}$, then\n\\[\n\\mathbf{x}(t) = e^{\\lambda t}\\mathbf{v}\n\\]\nis a solution of the system.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\mathbf{x}(t) = e^{\\lambda t}\\mathbf{v}$. Then:\n\\[\n\\mathbf{x}'(t) = \\lambda e^{\\lambda t}\\mathbf{v}\n\\]\nand\n\\[\nA\\mathbf{x}(t) = A(e^{\\lambda t}\\mathbf{v}) = e^{\\lambda t}(A\\mathbf{v}) = e^{\\lambda t}(\\lambda\\mathbf{v}) = \\lambda e^{\\lambda t}\\mathbf{v}\n\\]\nThus $\\mathbf{x}' = A\\mathbf{x}$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "General Solution with Distinct Eigenvalues",
+      "content": "If $A$ has $n$ distinct real eigenvalues $\\lambda_1, \\lambda_2, \\ldots, \\lambda_n$ with corresponding eigenvectors $\\mathbf{v}_1, \\mathbf{v}_2, \\ldots, \\mathbf{v}_n$, then the general solution of $\\mathbf{x}' = A\\mathbf{x}$ is:\n\\[\n\\mathbf{x}(t) = c_1 e^{\\lambda_1 t}\\mathbf{v}_1 + c_2 e^{\\lambda_2 t}\\mathbf{v}_2 + \\cdots + c_n e^{\\lambda_n t}\\mathbf{v}_n\n\\]\nwhere $c_1, c_2, \\ldots, c_n$ are arbitrary constants.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "2×2 Systems"
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Complete 2×2 Example",
+      "problem": "Solve the system:\n$$\nx' &= 4x + 2y \\\\\ny' &= 3x + 3y\n$$\n\n**Solution:**\n\n**Step 1: Write in matrix form.**\n\\[\n\\mathbf{x}' = A\\mathbf{x} \\quad \\text{where} \\quad A = \\begin{pmatrix} 4 & 2 \\\\ 3 & 3 \\end{pmatrix}\n\\]\n\n**Step 2: Find eigenvalues.**\n\\[\n\\det(A - \\lambda I) = \\det\\begin{pmatrix} 4-\\lambda & 2 \\\\ 3 & 3-\\lambda \\end{pmatrix} = (4-\\lambda)(3-\\lambda) - 6\n\\]\n\\[\n= \\lambda^2 - 7\\lambda + 12 - 6 = \\lambda^2 - 7\\lambda + 6 = (\\lambda - 1)(\\lambda - 6) = 0\n\\]\nEigenvalues: $\\lambda_1 = 1$ and $\\lambda_2 = 6$\n\n**Step 3: Find eigenvectors.**\n\nFor $\\lambda_1 = 1$:\n\\[\n(A - I)\\mathbf{v} = \\begin{pmatrix} 3 & 2 \\\\ 3 & 2 \\end{pmatrix}\\begin{pmatrix} v_1 \\\\ v_2 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}\n\\]\nEquation: $3v_1 + 2v_2 = 0 \\Rightarrow v_2 = -\\frac{3}{2}v_1$\n\nChoose $v_1 = 2$: $\\mathbf{v}_1 = \\begin{pmatrix} 2 \\\\ -3 \\end{pmatrix}$\n\nFor $\\lambda_2 = 6$:\n\\[\n(A - 6I)\\mathbf{v} = \\begin{pmatrix} -2 & 2 \\\\ 3 & -3 \\end{pmatrix}\\begin{pmatrix} v_1 \\\\ v_2 \\end{pmatrix} = \\begin{pmatrix} 0 \\\\ 0 \\end{pmatrix}\n\\]\nEquation: $-2v_1 + 2v_2 = 0 \\Rightarrow v_1 = v_2$\n\nChoose $v_1 = 1$: $\\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$\n\n**Step 4: Write the general solution.**\n\\[\n\\boxed{\\mathbf{x}(t) = c_1 e^{t}\\begin{pmatrix} 2 \\\\ -3 \\end{pmatrix} + c_2 e^{6t}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}}\n\\]\n\nOr in component form:\n$$\nx(t) &= 2c_1 e^{t} + c_2 e^{6t} \\\\\ny(t) &= -3c_1 e^{t} + c_2 e^{6t}\n$$",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "2×2 Initial Value Problem",
+      "problem": "Solve the IVP:\n$$\nx' &= -x + 2y, \\quad x(0) = 3 \\\\\ny' &= 2x - y, \\quad y(0) = 0\n$$\n\n**Solution:**\n\n**Step 1: Matrix form.**\n$A = \\begin{pmatrix} -1 & 2 \\\\ 2 & -1 \\end{pmatrix}$\n\n**Step 2: Eigenvalues.**\n\\[\n\\det(A - \\lambda I) = (-1-\\lambda)^2 - 4 = \\lambda^2 + 2\\lambda + 1 - 4 = \\lambda^2 + 2\\lambda - 3\n\\]\n\\[\n= (\\lambda + 3)(\\lambda - 1) = 0\n\\]\nEigenvalues: $\\lambda_1 = -3$ and $\\lambda_2 = 1$\n\n**Step 3: Eigenvectors.**\n\nFor $\\lambda_1 = -3$: $(A + 3I)\\mathbf{v} = \\begin{pmatrix} 2 & 2 \\\\ 2 & 2 \\end{pmatrix}\\mathbf{v} = \\mathbf{0}$\n\n$2v_1 + 2v_2 = 0 \\Rightarrow \\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix}$\n\nFor $\\lambda_2 = 1$: $(A - I)\\mathbf{v} = \\begin{pmatrix} -2 & 2 \\\\ 2 & -2 \\end{pmatrix}\\mathbf{v} = \\mathbf{0}$\n\n$-2v_1 + 2v_2 = 0 \\Rightarrow \\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$\n\n**Step 4: General solution.**\n\\[\n\\mathbf{x}(t) = c_1 e^{-3t}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} + c_2 e^{t}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}\n\\]\n\n**Step 5: Apply initial conditions.**\nAt $t = 0$:\n\\[\n\\begin{pmatrix} 3 \\\\ 0 \\end{pmatrix} = c_1\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} + c_2\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} c_1 + c_2 \\\\ -c_1 + c_2 \\end{pmatrix}\n\\]\n\nFrom the equations:\n$$\nc_1 + c_2 &= 3 \\\\\n-c_1 + c_2 &= 0\n$$\n\nAdding: $2c_2 = 3 \\Rightarrow c_2 = \\frac{3}{2}$\n\nSubtracting: $2c_1 = 3 \\Rightarrow c_1 = \\frac{3}{2}$\n\n**Final answer:**\n\\[\n\\boxed{\\mathbf{x}(t) = \\frac{3}{2} e^{-3t}\\begin{pmatrix} 1 \\\\ -1 \\end{pmatrix} + \\frac{3}{2} e^{t}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}}\n\\]\n\nIn component form:\n$$\nx(t) &= \\frac{3}{2}e^{-3t} + \\frac{3}{2}e^{t} \\\\\ny(t) &= -\\frac{3}{2}e^{-3t} + \\frac{3}{2}e^{t}\n$$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "3×3 Systems"
+    },
+    {
+      "type": "paragraph",
+      "text": "The method extends directly to larger systems."
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "3×3 System",
+      "problem": "Solve $\\mathbf{x}' = A\\mathbf{x}$ where $A = \\begin{pmatrix} 1 & 0 & 0 \\\\ 2 & 1 & -2 \\\\ 3 & 2 & 1 \\end{pmatrix}$.\n\n**Solution:**\n\n**Step 1: Find eigenvalues.**\n\\[\n\\det(A - \\lambda I) = \\det\\begin{pmatrix} 1-\\lambda & 0 & 0 \\\\ 2 & 1-\\lambda & -2 \\\\ 3 & 2 & 1-\\lambda \\end{pmatrix}\n\\]\n\nExpand along the first row:\n\\[\n= (1-\\lambda)\\det\\begin{pmatrix} 1-\\lambda & -2 \\\\ 2 & 1-\\lambda \\end{pmatrix} = (1-\\lambda)[(1-\\lambda)^2 + 4]\n\\]\n\\[\n= (1-\\lambda)(\\lambda^2 - 2\\lambda + 1 + 4) = (1-\\lambda)(\\lambda^2 - 2\\lambda + 5)\n\\]\n\nFor $\\lambda^2 - 2\\lambda + 5 = 0$: $\\lambda = \\frac{2 \\pm \\sqrt{4-20}}{2} = 1 \\pm 2i$ (complex)\n\nSo we have one real eigenvalue: $\\lambda_1 = 1$\n\n(The complex eigenvalues $1 \\pm 2i$ will be handled in Section [sec:complex-eigenvalues].)\n\nFor a simpler example with all real eigenvalues, consider:",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "3×3 System with Three Real Eigenvalues",
+      "problem": "Solve $\\mathbf{x}' = A\\mathbf{x}$ where $A = \\begin{pmatrix} -2 & 1 & 1 \\\\ 1 & -2 & 1 \\\\ 1 & 1 & -2 \\end{pmatrix}$.\n\n**Solution:**\n\n**Step 1: Find eigenvalues.**\nThis symmetric matrix has eigenvalues that can be found by noting that $(1, 1, 1)^T$ is clearly an eigenvector (all row sums are 0), with eigenvalue $\\lambda = 0$.\n\nThe characteristic polynomial is:\n\\[\n\\det(A - \\lambda I) = -\\lambda^3 - 6\\lambda^2 - 9\\lambda = -\\lambda(\\lambda + 3)^2\n\\]\n\nEigenvalues: $\\lambda_1 = 0$, $\\lambda_2 = \\lambda_3 = -3$ (repeated)\n\n**Step 2: Find eigenvectors.**\n\nFor $\\lambda_1 = 0$: $(A - 0I)\\mathbf{v} = A\\mathbf{v} = \\mathbf{0}$\n\nRow reduce $A$: $\\begin{pmatrix} -2 & 1 & 1 \\\\ 1 & -2 & 1 \\\\ 1 & 1 & -2 \\end{pmatrix} \\rightarrow \\begin{pmatrix} 1 & 0 & -1 \\\\ 0 & 1 & -1 \\\\ 0 & 0 & 0 \\end{pmatrix}$\n\nSo $v_1 = v_3$, $v_2 = v_3$: $\\mathbf{v}_1 = \\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix}$\n\nFor $\\lambda_2 = -3$: $(A + 3I)\\mathbf{v} = \\begin{pmatrix} 1 & 1 & 1 \\\\ 1 & 1 & 1 \\\\ 1 & 1 & 1 \\end{pmatrix}\\mathbf{v} = \\mathbf{0}$\n\nEquation: $v_1 + v_2 + v_3 = 0$. Two free variables give two eigenvectors:\n\\[\n\\mathbf{v}_2 = \\begin{pmatrix} 1 \\\\ -1 \\\\ 0 \\end{pmatrix}, \\quad \\mathbf{v}_3 = \\begin{pmatrix} 1 \\\\ 0 \\\\ -1 \\end{pmatrix}\n\\]\n\n**Step 3: General solution.**\n\\[\n\\boxed{\\mathbf{x}(t) = c_1 \\begin{pmatrix} 1 \\\\ 1 \\\\ 1 \\end{pmatrix} + c_2 e^{-3t}\\begin{pmatrix} 1 \\\\ -1 \\\\ 0 \\end{pmatrix} + c_3 e^{-3t}\\begin{pmatrix} 1 \\\\ 0 \\\\ -1 \\end{pmatrix}}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Fundamental Matrix"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Fundamental Matrix",
+      "content": "For the system $\\mathbf{x}' = A\\mathbf{x}$ with solutions $\\mathbf{x}_1(t), \\ldots, \\mathbf{x}_n(t)$ forming a fundamental set, the **fundamental matrix** is:\n\\[\n\\Phi(t) = \\begin{pmatrix} | & | & & | \\\\ \\mathbf{x}_1(t) & \\mathbf{x}_2(t) & \\cdots & \\mathbf{x}_n(t) \\\\ | & | & & | \\end{pmatrix}\n\\]\nThe general solution can then be written as $\\mathbf{x}(t) = \\Phi(t)\\mathbf{c}$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.5",
+      "number": "7.5",
+      "title": "Fundamental Matrix",
+      "problem": "For Example [ex:2x2-real-distinct], the fundamental matrix is:\n\\[\n\\Phi(t) = \\begin{pmatrix} 2e^{t} & e^{6t} \\\\ -3e^{t} & e^{6t} \\end{pmatrix}\n\\]\n\nThe Wronskian is:\n\\[\nW(t) = \\det(\\Phi(t)) = 2e^{t} \\cdot e^{6t} - e^{6t} \\cdot (-3e^{t}) = 2e^{7t} + 3e^{7t} = 5e^{7t} \\neq 0\n\\]\nconfirming that the solutions are linearly independent.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Long-Term Behavior"
+    },
+    {
+      "type": "paragraph",
+      "text": "The signs of eigenvalues determine the long-term behavior of solutions."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.3",
+      "number": "7.3",
+      "title": "Asymptotic Behavior",
+      "content": "For $\\mathbf{x}' = A\\mathbf{x}$ with real eigenvalues:\n\n- If all eigenvalues are **negative**: $\\mathbf{x}(t) \\to \\mathbf{0}$ as $t \\to \\infty$ (stable)\n\n- If any eigenvalue is **positive**: solutions grow without bound (unstable)\n\n- The solution component $e^{\\lambda t}\\mathbf{v}$ dominates when $\\lambda$ is the largest eigenvalue",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-7.6",
+      "number": "7.6",
+      "title": "Analyzing Long-Term Behavior",
+      "problem": "For Example [ex:2x2-real-distinct] with $\\lambda_1 = 1 > 0$ and $\\lambda_2 = 6 > 0$:\n\nThe general solution $\\mathbf{x}(t) = c_1 e^{t}\\mathbf{v}_1 + c_2 e^{6t}\\mathbf{v}_2$ grows without bound as $t \\to \\infty$ (unless $c_1 = c_2 = 0$).\n\nFor large $t$, the $e^{6t}$ term dominates, so trajectories eventually align with the direction of $\\mathbf{v}_2 = (1, 1)^T$.",
+      "solution": ""
+    }
+  ]
+}

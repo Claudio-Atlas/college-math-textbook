@@ -1,0 +1,231 @@
+{
+  "id": "geometry-ch09-sec04",
+  "title": "Tangent Lines",
+  "chapter": 9,
+  "section": 4,
+  "book": "geometry",
+  "epigraph": {
+    "text": "He made the moon to mark the seasons; the sun knows its time for setting.",
+    "reference": "Psalm 104:19"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "A tangent line grazes a circle at exactly one point—touching it \nwithout crossing into its interior. This seemingly simple relationship \ngives rise to elegant geometric properties. Tangent lines appear \nthroughout mathematics, physics, and engineering: in the paths of \nobjects leaving circular orbits, in the design of gears and cams, \nand in the analysis of curves in calculus."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition of a Tangent"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Tangent Line",
+      "content": "A **tangent line** (or simply **tangent**) \nto a circle is a line that intersects the circle at exactly one point. \nThis point is called the **point of tangency**."
+    },
+    {
+      "type": "paragraph",
+      "text": "In contrast, recall that a **secant** is a line that intersects \na circle at two points, and a line that does not intersect the circle \nat all is called an **external line**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Tangent-Radius Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The fundamental property of tangent lines relates them to radii."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Tangent-Radius Theorem",
+      "content": "A line is tangent to a circle if and only if it is perpendicular \nto the radius at the point of tangency.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "*Proof sketch:* Consider a tangent line $\\ell$ at point $P$ on \ncircle $O$. Let $Q$ be any other point on $\\ell$. Since $\\ell$ is tangent, \n$Q$ is outside the circle, so $OQ > OP$ (the radius). This means $P$ is \nthe point on $\\ell$ closest to $O$. But the shortest distance from a \npoint to a line is along the perpendicular. Therefore $\\overline{OP} \n\\perp \\ell$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Using the Tangent-Radius Theorem",
+      "problem": "Line $\\ell$ is tangent to circle $O$ at point $P$. If the radius \n$OP = 5$ and point $A$ is on $\\ell$ such that $PA = 12$, find $OA$.\n\ncenter\ntikzpicture[scale=0.5]\n (0,0) circle (2);\n ll[AtlasTeal] (0,0) circle (3pt) node[above left] {$O$};\n \n % Point of tangency\n ll[AtlasTeal] (2,0) circle (3pt) node[below right] {$P$};\n \n % External point\n ll[AtlasTeal] (2,4.8) circle (3pt) node[right] {$A$};\n \n % Radius\n (0,0) – (2,0);\n at (1,0) {$5$};\n \n % Tangent segment\n (2,0) – (2,4.8);\n at (2,2.4) {$12$};\n \n % Line OA\n (0,0) – (2,4.8);\n at (0.8,2.4) {$OA$};\n \n % Right angle mark\n (2,0.4) – (1.6,0.4) – (1.6,0);\ntikzpicture\ncenter",
+      "solution": "By the Tangent-Radius Theorem, $\\overline{OP} \\perp \\ell$, so \n$\\angle OPA = 90°$. Triangle $OPA$ is a right triangle with legs \n$OP = 5$ and $PA = 12$.\n\nBy the Pythagorean Theorem:\n$$\n OA^2 &= OP^2 + PA^2 \\\\\n OA^2 &= 5^2 + 12^2 \\\\\n OA^2 &= 25 + 144 = 169 \\\\\n OA &= 13\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Finding the tangent length",
+      "problem": "From external point $A$, a line is tangent to circle $O$ at point \n$P$. If $OA = 17$ and the radius of the circle is 8, find $AP$.",
+      "solution": "Since $\\overline{OP} \\perp \\overline{AP}$, triangle $OPA$ is a right \ntriangle with hypotenuse $OA = 17$ and leg $OP = 8$.\n\n$$\n AP^2 + OP^2 &= OA^2 \\\\\n AP^2 + 64 &= 289 \\\\\n AP^2 &= 225 \\\\\n AP &= 15\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Tangent Segments from an External Point"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Tangent Segment",
+      "content": "A **tangent segment** is a segment from \nan external point to the point of tangency on a circle."
+    },
+    {
+      "type": "paragraph",
+      "text": "From any external point, exactly two tangent lines can be drawn to \na circle. The tangent segments to these two points of tangency have \na remarkable property."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "Two-Tangent Theorem",
+      "content": "Tangent segments from the same external point are congruent.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "*Proof:* Let $A$ be an external point, and let $P$ and $Q$ be \nthe points of tangency of the two tangent lines from $A$ to circle $O$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Draw radii $\\overline{OP}$ and $\\overline{OQ}$. By the Tangent-Radius \nTheorem:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$\\angle OPA = 90°$",
+        "$\\angle OQA = 90°$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "In right triangles $OPA$ and $OQA$:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$OP = OQ$ (radii)",
+        "$OA = OA$ (common side)"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "By the Hypotenuse-Leg Theorem, $\\triangle OPA \\cong \\triangle OQA$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Therefore $AP = AQ$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Using the Two-Tangent Theorem",
+      "problem": "Two tangent segments from point $A$ to a circle have lengths \n$3x + 5$ and $5x - 1$. Find $x$ and the length of each tangent segment.",
+      "solution": "By the Two-Tangent Theorem, the segments are equal:\n$$\n 3x + 5 &= 5x - 1 \\\\\n 6 &= 2x \\\\\n x &= 3\n$$\n\nEach tangent segment has length:\n\\[3(3) + 5 = 14 \\qquad \\text{or} \\qquad 5(3) - 1 = 14\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Circumscribed Polygons"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.3",
+      "number": "9.3",
+      "title": "Circumscribed Polygon",
+      "content": "A polygon is **circumscribed** about \na circle if each side of the polygon is tangent to the circle. The \ncircle is called an **inscribed circle** or **incircle**."
+    },
+    {
+      "type": "paragraph",
+      "text": "The Two-Tangent Theorem is especially useful for circumscribed polygons."
+    },
+    {
+      "type": "example",
+      "id": "example-9.4",
+      "number": "9.4",
+      "title": "Circumscribed quadrilateral",
+      "problem": "A quadrilateral $ABCD$ is circumscribed about a circle. If $AB = 12$, \n$BC = 9$, and $CD = 14$, find $DA$.\n\ncenter\ntikzpicture[scale=0.6]\n % Circle\n (0,0) circle (1.5);\n \n % Quadrilateral vertices\n (A) at (-3,2);\n (B) at (3,2);\n (C) at (3.5,-2);\n (D) at (-3.5,-2);\n \n (A) – (B) – (C) – (D) – cycle;\n \n % Labels\n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n at (D) {$D$};\n \n at (0,2) {$12$};\n at (3.25,0) {$9$};\n at (0,-2) {$14$};\n at (-3.25,0) {$?$};\ntikzpicture\ncenter",
+      "solution": "Let the circle touch $\\overline{AB}$ at $P$, $\\overline{BC}$ at $Q$, \n$\\overline{CD}$ at $R$, and $\\overline{DA}$ at $S$.\n\nBy the Two-Tangent Theorem:\n\n- $AP = AS$ (tangents from $A$)\n\n- $BP = BQ$ (tangents from $B$)\n\n- $CQ = CR$ (tangents from $C$)\n\n- $DR = DS$ (tangents from $D$)\n\nLet $AP = AS = a$, $BP = BQ = b$, $CQ = CR = c$, and $DR = DS = d$.\n\nThen:\n$$\n AB &= AP + PB = a + b = 12 \\\\\n BC &= BQ + QC = b + c = 9 \\\\\n CD &= CR + RD = c + d = 14 \\\\\n DA &= DS + SA = d + a = \\, ?\n$$\n\nAdding the first and third equations: $a + b + c + d = 12 + 14 = 26$.\n\nAdding the second and fourth equations: $b + c + d + a = 9 + DA$.\n\nTherefore: $9 + DA = 26$, so $DA = 17$.\n\nAlternatively, note that for any circumscribed quadrilateral:\n\\[AB + CD = BC + DA\\]\n\\[12 + 14 = 9 + DA\\]\n\\[DA = 17\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.3",
+      "number": "9.3",
+      "title": "Circumscribed Quadrilateral Theorem",
+      "content": "If a quadrilateral is circumscribed about a circle, the sums of \nopposite sides are equal:\n\\[AB + CD = BC + DA\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Common Tangents of Two Circles"
+    },
+    {
+      "type": "paragraph",
+      "text": "Two circles can have up to four common tangent lines."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.4",
+      "number": "9.4",
+      "title": "Common Tangents",
+      "content": "A **common tangent** is a line tangent to \ntwo circles. An **internal common tangent** crosses between the \ncircles. An **external common tangent** does not cross between them."
+    },
+    {
+      "type": "paragraph",
+      "text": "The number of common tangents depends on the position of the circles:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**4 tangents**: circles are separate (don't intersect)",
+        "**3 tangents**: circles are externally tangent",
+        "**2 tangents**: circles intersect at two points",
+        "**1 tangent**: circles are internally tangent",
+        "**0 tangents**: one circle is inside the other"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-9.5",
+      "number": "9.5",
+      "title": "Common tangent length",
+      "problem": "Two circles have radii 5 and 3, and their centers are 12 apart. \nFind the length of an external common tangent.\n\ncenter\ntikzpicture[scale=0.5]\n % Circles\n (0,0) circle (2.5);\n (6,0) circle (1.5);\n \n ll[AtlasTeal] (0,0) circle (3pt) node[below] {$O_1$};\n ll[AtlasTeal] (6,0) circle (3pt) node[below] {$O_2$};\n \n % External tangent (upper)\n (0,2.5) – (6,1.5);\n \n % Radii to tangent points\n (0,0) – (0,2.5);\n (6,0) – (6,1.5);\n \n ll[AtlasTeal] (0,2.5) circle (3pt) node[above] {$P$};\n ll[AtlasTeal] (6,1.5) circle (3pt) node[above] {$Q$};\n \n % Distance between centers\n (0,-1) – (6,-1);\n at (3,-1) {$12$};\n \n at (-0.3,1.25) {$5$};\n at (6.3,0.75) {$3$};\ntikzpicture\ncenter",
+      "solution": "Draw the external common tangent touching circle 1 at $P$ and circle 2 \nat $Q$. Draw radii $O_1P = 5$ and $O_2Q = 3$, which are perpendicular \nto the tangent.\n\nFrom $O_2$, draw a line parallel to $\\overline{PQ}$ meeting $O_1P$ extended \nat point $R$. Then $O_2RPQ$ forms a rectangle (the sides $O_1P$ and $O_2Q$ \nare parallel since both are perpendicular to $PQ$).\n\nSo $O_1R = O_1P - RP = 5 - 3 = 2$ and $O_1O_2 = 12$.\n\nIn right triangle $O_1RO_2$:\n$$\n RO_2^2 + O_1R^2 &= O_1O_2^2 \\\\\n RO_2^2 + 4 &= 144 \\\\\n RO_2^2 &= 140 \\\\\n RO_2 &= \\sqrt{140} = 2\\sqrt{35}\n$$\n\nSince $RPQO_2$ is a rectangle, $PQ = RO_2 = 2\\sqrt{35}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:22",
+      "text": "It is he who sits above the circle of \nthe earth, and its inhabitants are like grasshoppers."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 26:10",
+      "text": "He has inscribed a circle on the face of \nthe waters at the boundary between light and darkness."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ezekiel 1:16",
+      "text": "The appearance of the wheels was like \nthe gleaming of beryl. And their construction was as if a wheel were \nwithin a wheel."
+    }
+  ]
+}

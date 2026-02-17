@@ -1,0 +1,70 @@
+{
+  "id": "number-theory-ch07-sec02",
+  "title": "Möbius Function and Inversion",
+  "chapter": 7,
+  "section": 2,
+  "book": "number-theory",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The Möbius function enables us to \"invert\" summations over divisors."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Möbius Function"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Möbius Function",
+      "content": "The **Möbius function** $\\mu(n)$ is defined by:\n\\[\n\\mu(n) = \n\\begin{cases}\n1 & \\text{if } n = 1 \\\\\n(-1)^k & \\text{if } n = p_1 p_2 \\cdots p_k \\text{ (distinct primes)} \\\\\n0 & \\text{if } p^2 \\mid n \\text{ for some prime } p\n\\end{cases}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Values of $\\mu$",
+      "problem": "$\\mu(1) = 1$, $\\mu(2) = -1$, $\\mu(3) = -1$, $\\mu(4) = 0$, $\\mu(5) = -1$, \n$\\mu(6) = 1$, $\\mu(7) = -1$, $\\mu(8) = 0$, $\\mu(9) = 0$, $\\mu(10) = 1$.",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Key Property of $\\mu$",
+      "content": "\\[\n\\sum_{d \\mid n} \\mu(d) = \n\\begin{cases}\n1 & \\text{if } n = 1 \\\\\n0 & \\text{if } n > 1\n\\end{cases}\n= [n = 1]\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "For $n = 1$: $\\sum_{d \\mid 1} \\mu(d) = \\mu(1) = 1$.\n\nFor $n = p_1^{e_1} \\cdots p_k^{e_k}$ with $k \\geq 1$: terms with $\\mu(d) \\neq 0$ \ncorrespond to square-free divisors. These are products of subsets of \n$\\{p_1, \\ldots, p_k\\}$:\n\\[\n\\sum_{d \\mid n} \\mu(d) = \\sum_{j=0}^{k} \\binom{k}{j}(-1)^j = (1 - 1)^k = 0. \\qedhere\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Möbius Inversion"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "Möbius Inversion Formula",
+      "content": "If $f$ and $g$ are arithmetic functions, then\n\\[\ng(n) = \\sum_{d \\mid n} f(d) \\quad \\text{for all } n\n\\]\nif and only if\n\\[\nf(n) = \\sum_{d \\mid n} \\mu(d) g(n/d) = \\sum_{d \\mid n} \\mu(n/d) g(d) \\quad \\text{for all } n.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Assuming $g(n) = \\sum_{d \\mid n} f(d)$:\n$$\n\\sum_{d \\mid n} \\mu(d) g(n/d) &= \\sum_{d \\mid n} \\mu(d) \\sum_{e \\mid (n/d)} f(e) \\\\\n&= \\sum_{e \\mid n} f(e) \\sum_{d \\mid (n/e)} \\mu(d) \\\\\n&= \\sum_{e \\mid n} f(e) [n/e = 1] = f(n).\n$$\nThe converse is similar."
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Recovering $\\phi$",
+      "problem": "Since $\\sum_{d \\mid n} \\phi(d) = n$, by Möbius inversion:\n\\[\n\\phi(n) = \\sum_{d \\mid n} \\mu(d) \\cdot \\frac{n}{d} = n \\sum_{d \\mid n} \\frac{\\mu(d)}{d}.\n\\]",
+      "solution": ""
+    }
+  ]
+}

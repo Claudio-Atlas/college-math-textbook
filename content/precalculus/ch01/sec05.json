@@ -1,0 +1,110 @@
+{
+  "id": "precalculus-ch01-sec05",
+  "title": "Combining Functions",
+  "chapter": 1,
+  "section": 5,
+  "book": "precalculus",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Two are better than one, because they have a good \nreturn for their labor.\"*{Ecclesiastes 4:9}{The whole is more than the sum of its parts.}{Aristotle}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Just as numbers can be added, subtracted, multiplied, and divided, so \ncan functions. Additionally, functions can be *composed*—one \nfunction applied to the output of another. These operations create new \nfunctions from old ones."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Arithmetic Operations on Functions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.1",
+      "number": "1.1",
+      "title": "Function Arithmetic",
+      "content": "Given functions $f$ and $g$, we define:\n$$\n (f + g)(x) &= f(x) + g(x) & \\text{(sum)} \\\\\n (f - g)(x) &= f(x) - g(x) & \\text{(difference)} \\\\\n (fg)(x) &= f(x) \\cdot g(x) & \\text{(product)} \\\\\n \\left(\\frac{f}{g}\\right)(x) &= \\frac{f(x)}{g(x)}, \\quad g(x) \\neq 0 & \\text{(quotient)}\n$$\n\nThe domain of each combined function is the intersection of the domains \nof $f$ and $g$, with additional restrictions for the quotient where \n$g(x) = 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-1.1",
+      "number": "1.1",
+      "title": "Combining functions arithmetically",
+      "problem": "Let $f(x) = x^2 - 1$ and $g(x) = x + 3$. Find each of the following and \nstate its domain.\n\n1. $(f + g)(x)$\n\n2. $(f - g)(x)$\n\n3. $(fg)(x)$\n\n4. $\\left(\\dfrac{f}{g}\\right)(x)$",
+      "solution": "1. $(f + g)(x) = (x^2 - 1) + (x + 3) = x^2 + x + 2$\n \n Domain: $(-\\infty, \\infty)$\n\n2. $(f - g)(x) = (x^2 - 1) - (x + 3) = x^2 - x - 4$\n \n Domain: $(-\\infty, \\infty)$\n\n3. $(fg)(x) = (x^2 - 1)(x + 3) = x^3 + 3x^2 - x - 3$\n \n Domain: $(-\\infty, \\infty)$\n\n4. $\\left(\\dfrac{f}{g}\\right)(x) = \\dfrac{x^2 - 1}{x + 3}$\n \n Domain: $\\{x : x \\neq -3\\} = (-\\infty, -3) \\cup (-3, \\infty)$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Composition of Functions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.2",
+      "number": "1.2",
+      "title": "Composition",
+      "content": "The **composition** of $f$ with $g$, denoted \n$f \\circ g$, is the function defined by\n\\[\n (f \\circ g)(x) = f(g(x))\n\\]\nRead: \"$f$ of $g$ of $x$\" or \"$f$ composed with $g$.\"\n\nThe domain of $f \\circ g$ consists of all $x$ in the domain of $g$ such \nthat $g(x)$ is in the domain of $f$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Think of composition as a two-stage machine: input $x$ goes into $g$, \nproducing $g(x)$; then $g(x)$ goes into $f$, producing $f(g(x))$."
+    },
+    {
+      "type": "example",
+      "id": "example-1.2",
+      "number": "1.2",
+      "title": "Computing compositions",
+      "problem": "Let $f(x) = x^2 + 1$ and $g(x) = 2x - 3$. Find:\n\n1. $(f \\circ g)(x)$\n\n2. $(g \\circ f)(x)$\n\n3. $(f \\circ g)(4)$",
+      "solution": "1. $(f \\circ g)(x) = f(g(x)) = f(2x - 3) = (2x - 3)^2 + 1$\n \\[\n = 4x^2 - 12x + 9 + 1 = 4x^2 - 12x + 10\n \\]\n\n2. $(g \\circ f)(x) = g(f(x)) = g(x^2 + 1) = 2(x^2 + 1) - 3$\n \\[\n = 2x^2 + 2 - 3 = 2x^2 - 1\n \\]\n\n3. Using the formula from part (a):\n \\[\n (f \\circ g)(4) = 4(4)^2 - 12(4) + 10 = 64 - 48 + 10 = 26\n \\]\n \n Alternatively, we can compute step by step:\n \\[\n g(4) = 2(4) - 3 = 5, \\quad f(5) = 5^2 + 1 = 26\n \\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Notice that $(f \\circ g)(x) \\neq (g \\circ f)(x)$ in general. Composition \nis *not commutative*."
+    },
+    {
+      "type": "example",
+      "id": "example-1.3",
+      "number": "1.3",
+      "title": "Domain of a composition",
+      "problem": "Let $f(x) = \\sqrt{x}$ and $g(x) = x - 4$. Find $(f \\circ g)(x)$ and its domain.",
+      "solution": "\\[\n (f \\circ g)(x) = f(g(x)) = f(x - 4) = \\sqrt{x - 4}\n\\]\n\nFor the domain: We need $x$ to be in the domain of $g$ (all real numbers), \nand we need $g(x) = x - 4$ to be in the domain of $f$ (nonnegative numbers):\n\\[\n x - 4 \\ge 0 \\implies x \\ge 4\n\\]\nDomain: $[4, \\infty)$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Decomposing Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Given a complex function, we can often express it as the composition of \nsimpler functions. This skill will be essential for the chain rule in \ncalculus."
+    },
+    {
+      "type": "example",
+      "id": "example-1.4",
+      "number": "1.4",
+      "title": "Decomposing a function",
+      "problem": "Express $h(x) = (x^2 + 3)^5$ as a composition of two functions.",
+      "solution": "We can identify an \"inner\" and \"outer\" function:\n\n- Inner function: $g(x) = x^2 + 3$ (what's inside the fifth power)\n\n- Outer function: $f(u) = u^5$ (what's done to the inner part)\n\nThen $h(x) = f(g(x)) = (f \\circ g)(x)$.\n\nWe can verify: $f(g(x)) = f(x^2 + 3) = (x^2 + 3)^5 = h(x)$."
+    },
+    {
+      "type": "example",
+      "id": "example-1.5",
+      "number": "1.5",
+      "title": "Multiple decompositions",
+      "problem": "Express $h(x) = \\sqrt{x^2 + 1}$ as a composition in two different ways.",
+      "solution": "**Option 1:**\n\n- $g(x) = x^2 + 1$\n\n- $f(u) = \\sqrt{u}$\nThen $h = f \\circ g$.\n\n**Option 2:**\n\n- $g(x) = x^2$\n\n- $f(u) = \\sqrt{u + 1}$\nThen $h = f \\circ g$.\n\nBoth are valid decompositions. The first is more natural because it \nidentifies the \"obvious\" inner and outer functions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 19:21",
+      "text": "Many are the plans in a person's heart, \nbut it is the Lord's purpose that prevails."
+    }
+  ]
+}

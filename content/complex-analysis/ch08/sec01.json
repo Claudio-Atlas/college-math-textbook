@@ -1,0 +1,93 @@
+{
+  "id": "complex-analysis-ch08-sec01",
+  "title": "Conformal Maps",
+  "chapter": 8,
+  "section": 1,
+  "book": "complex-analysis",
+  "epigraph": {
+    "text": "He who is faithful in a very little is also faithful in much.",
+    "reference": "Luke 16:10",
+    "quote": "Conformal maps preserve the shape of the infinitely small.",
+    "quoteAuthor": "Bernhard Riemann"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "A conformal map preserves angles. This seemingly simple property has \nprofound geometric and physical consequences."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition and Basic Properties"
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.1",
+      "number": "8.1",
+      "title": "Conformal Map",
+      "content": "A function $f: D \\to \\C$ is **conformal** at \n$z_0 \\in D$ if $f$ preserves angles between curves at $z_0$. That is, \nif two smooth curves through $z_0$ meet at angle $\\theta$, their images \nunder $f$ meet at the same angle $\\theta$ (in both magnitude and orientation).\n\nWe say $f$ is conformal on $D$ if it is conformal at every point of $D$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Analytic Functions are Conformal",
+      "content": "Let $f$ be analytic on a domain $D$. Then $f$ is conformal at every \npoint $z_0$ where $f'(z_0) \\neq 0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If $\\gamma(t)$ is a smooth curve with $\\gamma(0) = z_0$ and \n$\\gamma'(0) \\neq 0$, then near $t = 0$:\n\\[\n f(\\gamma(t)) \\approx f(z_0) + f'(z_0)\\gamma'(0) \\cdot t.\n\\]\nThe tangent to the image curve at $f(z_0)$ is $f'(z_0)\\gamma'(0)$.\n\nMultiplication by $f'(z_0) = |f'(z_0)|e^{i\\alpha}$ rotates by $\\alpha$ \nand scales by $|f'(z_0)|$. Since rotation is applied to all tangent \nvectors equally, angles between curves are preserved."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "The squaring function",
+      "problem": "$f(z) = z^2$ is conformal except at $z = 0$ (where $f'(0) = 0$).\n\nAt the origin, angles are *doubled*: a ray at angle $\\theta$ maps \nto a ray at angle $2\\theta$. The function is not conformal there.\n\nAway from the origin, $z^2$ maps the first quadrant to the upper half-plane, \npreserving angles at every point.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "The exponential",
+      "problem": "$f(z) = e^z$ is conformal everywhere (since $e^z \\neq 0$).\n\nIt maps horizontal lines to rays from the origin and vertical lines to \ncircles centered at the origin. The angles between these families (all \n$90°$) are preserved.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Local Behavior"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.2",
+      "number": "8.2",
+      "title": "Local Structure of Analytic Functions",
+      "content": "Let $f$ be analytic at $z_0$ with $f'(z_0) = \\cdots = f^{(n-1)}(z_0) = 0$ \nbut $f^{(n)}(z_0) \\neq 0$ (where $n \\geq 1$). Then near $z_0$:\n\n1. Angles are multiplied by $n$.\n\n2. $f$ is locally $n$-to-$1$ (except at $z_0$ itself).",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This explains why $z^2$ doubles angles at the origin: the first nonzero \nderivative is the second."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Job 38:5",
+      "text": "Who determined its measurements—surely you know!"
+    },
+    {
+      "type": "quote",
+      "author": "Bernhard Riemann",
+      "text": "The essence of a map lies in what it preserves."
+    }
+  ]
+}

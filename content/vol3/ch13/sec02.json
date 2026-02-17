@@ -1,0 +1,275 @@
+{
+  "id": "vol3-ch13-sec02",
+  "title": "Calculus of Vector-Valued Functions",
+  "chapter": 13,
+  "section": 2,
+  "book": "vol3",
+  "epigraph": {
+    "text": "For the Lord gives wisdom; from his mouth come knowledge and understanding.",
+    "reference": "Proverbs 2:6"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The great power of calculus lies in its ability to analyze change. Now we extend differentiation and integration to vector-valued functions, allowing us to study not just how fast quantities change, but in what *direction* they change. This is the mathematics of motion, of velocity, of forces acting through space."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Derivatives of Vector-Valued Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "The derivative of a vector-valued function is defined just as for scalar functions: as a limit of difference quotients."
+    },
+    {
+      "type": "definition",
+      "id": "definition-13.1",
+      "number": "13.1",
+      "title": "Derivative of a Vector-Valued Function",
+      "content": "The **derivative** of $\\vect{r}(t)$ is\n\\[\n \\vect{r}'(t) = \\lim_{\\Delta t \\to 0} \\frac{\\vect{r}(t + \\Delta t) - \\vect{r}(t)}{\\Delta t},\n\\]\nprovided the limit exists. Other notations include $\\dfrac{d\\vect{r}}{dt}$ and $\\dot{\\vect{r}}(t)$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-13.1",
+      "number": "13.1",
+      "title": "Component-wise Differentiation",
+      "content": "If $\\vect{r}(t) = \\langle f(t), g(t), h(t) \\rangle$ where $f$, $g$, and $h$ are differentiable, then\n\\[\n \\vect{r}'(t) = \\langle f'(t), g'(t), h'(t) \\rangle.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "By the definition of derivative:\n$$\n \\vect{r}'(t) &= \\lim_{\\Delta t \\to 0} \\frac{\\langle f(t+\\Delta t), g(t+\\Delta t), h(t+\\Delta t) \\rangle - \\langle f(t), g(t), h(t) \\rangle}{\\Delta t} \\\\\n &= \\lim_{\\Delta t \\to 0} \\left\\langle \\frac{f(t+\\Delta t) - f(t)}{\\Delta t}, \\frac{g(t+\\Delta t) - g(t)}{\\Delta t}, \\frac{h(t+\\Delta t) - h(t)}{\\Delta t} \\right\\rangle \\\\\n &= \\langle f'(t), g'(t), h'(t) \\rangle. \\qedhere\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-13.1",
+      "number": "13.1",
+      "title": "Finding a derivative",
+      "problem": "Let $\\vect{r}(t) = \\langle t^3, e^{2t}, \\sin t \\rangle$. Find $\\vect{r}'(t)$.",
+      "solution": "Differentiating component by component:\n\\[\n \\vect{r}'(t) = \\langle 3t^2, 2e^{2t}, \\cos t \\rangle.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-13.2",
+      "number": "13.2",
+      "title": "Derivative of a helix",
+      "problem": "Find $\\vect{r}'(t)$ for the helix $\\vect{r}(t) = \\langle \\cos t, \\sin t, t \\rangle$.",
+      "solution": "\\[\n \\vect{r}'(t) = \\langle -\\sin t, \\cos t, 1 \\rangle.\n\\]\nNote that $|\\vect{r}'(t)| = \\sqrt{\\sin^2 t + \\cos^2 t + 1} = \\sqrt{2}$, a constant. The curve is traversed at constant speed."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Tangent Vector"
+    },
+    {
+      "type": "paragraph",
+      "text": "The derivative $\\vect{r}'(t)$ has a beautiful geometric interpretation: it points in the direction of the curve at the parameter value $t$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-13.2",
+      "number": "13.2",
+      "title": "Geometric Interpretation of $\\vect{r",
+      "content": "'(t)$}\nIf $r'(t) 0$, then $r'(t)$ is a tangent vector to the curve at the point $r(t)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **unit tangent vector** is particularly useful:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-13.2",
+      "number": "13.2",
+      "title": "Unit Tangent Vector",
+      "content": "If $\\vect{r}'(t) \\neq \\vect{0}$, the **unit tangent vector** is\n\\[\n \\vect{T}(t) = \\frac{\\vect{r}'(t)}{|\\vect{r}'(t)|}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-13.3",
+      "number": "13.3",
+      "title": "Finding the unit tangent vector",
+      "problem": "Find the unit tangent vector for $\\vect{r}(t) = \\langle 2t, t^2, \\ln t \\rangle$ at $t = 1$.",
+      "solution": "First, find $\\vect{r}'(t)$:\n\\[\n \\vect{r}'(t) = \\left\\langle 2, 2t, \\frac{1}{t} \\right\\rangle.\n\\]\nAt $t = 1$:\n\\[\n \\vect{r}'(1) = \\langle 2, 2, 1 \\rangle.\n\\]\nThe magnitude is $|\\vect{r}'(1)| = \\sqrt{4 + 4 + 1} = 3$.\n\nThe unit tangent vector is:\n\\[\n \\vect{T}(1) = \\frac{1}{3}\\langle 2, 2, 1 \\rangle = \\left\\langle \\frac{2}{3}, \\frac{2}{3}, \\frac{1}{3} \\right\\rangle.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The tangent line to the curve at $\\vect{r}(t_0)$ passes through $\\vect{r}(t_0)$ in the direction of $\\vect{r}'(t_0)$:"
+    },
+    {
+      "type": "example",
+      "id": "example-13.4",
+      "number": "13.4",
+      "title": "Tangent line to a curve",
+      "problem": "Find the tangent line to $\\vect{r}(t) = \\langle t^2, 2t, t^3 \\rangle$ at $t = 1$.",
+      "solution": "The point is $\\vect{r}(1) = \\langle 1, 2, 1 \\rangle$.\n\nThe tangent direction is $\\vect{r}'(1) = \\langle 2, 2, 3 \\rangle$.\n\nThe tangent line has parametric equations:\n\\[\n x = 1 + 2s, \\quad y = 2 + 2s, \\quad z = 1 + 3s,\n\\]\nor in vector form: $\\vect{\\ell}(s) = \\langle 1, 2, 1 \\rangle + s\\langle 2, 2, 3 \\rangle$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Differentiation Rules"
+    },
+    {
+      "type": "paragraph",
+      "text": "The familiar differentiation rules extend to vector-valued functions."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-13.3",
+      "number": "13.3",
+      "title": "Differentiation Rules for Vector Functions",
+      "content": "Let $\\vect{u}(t)$ and $\\vect{v}(t)$ be differentiable vector-valued functions, $c$ a scalar, and $f(t)$ a differentiable scalar function. Then:\n\n1. $\\dfrac{d}{dt}[c\\vect{u}(t)] = c\\vect{u}'(t)$\n\n2. $\\dfrac{d}{dt}[\\vect{u}(t) + \\vect{v}(t)] = \\vect{u}'(t) + \\vect{v}'(t)$\n\n3. $\\dfrac{d}{dt}[f(t)\\vect{u}(t)] = f'(t)\\vect{u}(t) + f(t)\\vect{u}'(t)$ (Product Rule)\n\n4. $\\dfrac{d}{dt}[\\vect{u}(t) \\dotp \\vect{v}(t)] = \\vect{u}'(t) \\dotp \\vect{v}(t) + \\vect{u}(t) \\dotp \\vect{v}'(t)$ (Dot Product Rule)\n\n5. $\\dfrac{d}{dt}[\\vect{u}(t) \\crossp \\vect{v}(t)] = \\vect{u}'(t) \\crossp \\vect{v}(t) + \\vect{u}(t) \\crossp \\vect{v}'(t)$ (Cross Product Rule)\n\n6. $\\dfrac{d}{dt}[\\vect{u}(f(t))] = \\vect{u}'(f(t)) \\cdot f'(t)$ (Chain Rule)",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-13.2",
+      "number": null,
+      "title": "Order matters in cross products",
+      "content": "In rule (e), the order of factors must be preserved because the cross product is not commutative."
+    },
+    {
+      "type": "example",
+      "id": "example-13.5",
+      "number": "13.5",
+      "title": "Using the product rules",
+      "problem": "Let $\\vect{u}(t) = \\langle \\cos t, \\sin t, 1 \\rangle$ and $\\vect{v}(t) = \\langle 1, t, t^2 \\rangle$. Find $\\dfrac{d}{dt}[\\vect{u}(t) \\dotp \\vect{v}(t)]$.",
+      "solution": "**Method 1:** Compute directly:\n\\[\n \\vect{u} \\dotp \\vect{v} = \\cos t + t\\sin t + t^2.\n\\]\n\\[\n \\frac{d}{dt}(\\vect{u} \\dotp \\vect{v}) = -\\sin t + \\sin t + t\\cos t + 2t = t\\cos t + 2t.\n\\]\n\n**Method 2:** Use the dot product rule:\n\\[\n \\vect{u}' = \\langle -\\sin t, \\cos t, 0 \\rangle, \\quad \\vect{v}' = \\langle 0, 1, 2t \\rangle.\n\\]\n$$\n \\vect{u}' \\dotp \\vect{v} + \\vect{u} \\dotp \\vect{v}' &= (-\\sin t)(1) + (\\cos t)(t) + (0)(t^2) \\\\\n &\\quad + (\\cos t)(0) + (\\sin t)(1) + (1)(2t) \\\\\n &= -\\sin t + t\\cos t + \\sin t + 2t \\\\\n &= t\\cos t + 2t. \\quad \\checkmark\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "An important special case involves functions of constant magnitude:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-13.4",
+      "number": "13.4",
+      "title": "Orthogonality of $\\vect{r",
+      "content": "$ and $r'$ for Constant Magnitude}\nIf $|r(t)| = c$ (constant), then $r(t) r'(t)$ for all $t$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If $|\\vect{r}|^2 = c^2$ is constant, then:\n\\[\n \\frac{d}{dt}(\\vect{r} \\dotp \\vect{r}) = \\frac{d}{dt}(c^2) = 0.\n\\]\nBy the dot product rule:\n\\[\n \\vect{r}' \\dotp \\vect{r} + \\vect{r} \\dotp \\vect{r}' = 2(\\vect{r} \\dotp \\vect{r}') = 0.\n\\]\nThus $\\vect{r} \\dotp \\vect{r}' = 0$, meaning $\\vect{r} \\perp \\vect{r}'$."
+    },
+    {
+      "type": "paragraph",
+      "text": "This makes geometric sense: if a point moves on a sphere centered at the origin, its velocity must be tangent to the sphere—perpendicular to the radius."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Integration of Vector-Valued Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Integration of vector functions also proceeds component by component."
+    },
+    {
+      "type": "definition",
+      "id": "definition-13.3",
+      "number": "13.3",
+      "title": "Indefinite Integral",
+      "content": "If $\\vect{r}(t) = \\langle f(t), g(t), h(t) \\rangle$, then\n\\[\n \\int \\vect{r}(t)\\, dt = \\left\\langle \\int f(t)\\, dt, \\int g(t)\\, dt, \\int h(t)\\, dt \\right\\rangle.\n\\]\nThe constant of integration is a constant *vector*: $\\vect{C} = \\langle C_1, C_2, C_3 \\rangle$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-13.4",
+      "number": "13.4",
+      "title": "Definite Integral",
+      "content": "\\[\n \\int_a^b \\vect{r}(t)\\, dt = \\left\\langle \\int_a^b f(t)\\, dt, \\int_a^b g(t)\\, dt, \\int_a^b h(t)\\, dt \\right\\rangle.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-13.6",
+      "number": "13.6",
+      "title": "Indefinite integral",
+      "problem": "Find $\\displaystyle\\int \\langle 3t^2, \\cos t, e^t \\rangle \\, dt$.",
+      "solution": "\\[\n \\int \\langle 3t^2, \\cos t, e^t \\rangle \\, dt = \\langle t^3, \\sin t, e^t \\rangle + \\vect{C}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-13.7",
+      "number": "13.7",
+      "title": "Definite integral",
+      "problem": "Find $\\displaystyle\\int_0^{\\pi/2} \\langle \\sin t, \\cos t, 2t \\rangle \\, dt$.",
+      "solution": "$$\n \\int_0^{\\pi/2} \\langle \\sin t, \\cos t, 2t \\rangle \\, dt &= \\left\\langle \\Big[-\\cos t\\Big]_0^{\\pi/2}, \\Big[\\sin t\\Big]_0^{\\pi/2}, \\Big[t^2\\Big]_0^{\\pi/2} \\right\\rangle \\\\\n &= \\left\\langle 0 - (-1), 1 - 0, \\frac{\\pi^2}{4} - 0 \\right\\rangle \\\\\n &= \\left\\langle 1, 1, \\frac{\\pi^2}{4} \\right\\rangle.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-13.8",
+      "number": "13.8",
+      "title": "Finding position from velocity",
+      "problem": "A particle has velocity $\\vect{v}(t) = \\langle 2t, 3, t^2 \\rangle$ and initial position $\\vect{r}(0) = \\langle 1, 0, 2 \\rangle$. Find its position at time $t$.",
+      "solution": "Position is the integral of velocity:\n\\[\n \\vect{r}(t) = \\int \\vect{v}(t)\\, dt = \\langle t^2, 3t, \\tfrac{1}{3}t^3 \\rangle + \\vect{C}.\n\\]\nUsing the initial condition:\n\\[\n \\vect{r}(0) = \\langle 0, 0, 0 \\rangle + \\vect{C} = \\langle 1, 0, 2 \\rangle \\implies \\vect{C} = \\langle 1, 0, 2 \\rangle.\n\\]\nTherefore:\n\\[\n \\vect{r}(t) = \\left\\langle t^2 + 1, 3t, \\tfrac{1}{3}t^3 + 2 \\right\\rangle.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Additional Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-13.9",
+      "number": "13.9",
+      "title": "Position from acceleration",
+      "problem": "An object has acceleration $\\vect{a}(t) = \\langle 0, -10, 0 \\rangle$ m/s$^2$, initial velocity $\\vect{v}(0) = \\langle 5, 10, 3 \\rangle$ m/s, and initial position $\\vect{r}(0) = \\langle 0, 0, 2 \\rangle$ m. Find the position at any time $t$.",
+      "solution": "Integrate acceleration to get velocity:\n\\[\n \\vect{v}(t) = \\int \\vect{a}(t)\\,dt = \\langle 0, -10t, 0 \\rangle + \\vect{C}_1.\n\\]\nUsing $\\vect{v}(0) = \\langle 5, 10, 3 \\rangle$: $\\vect{C}_1 = \\langle 5, 10, 3 \\rangle$.\n\\[\n \\vect{v}(t) = \\langle 5, 10 - 10t, 3 \\rangle.\n\\]\n\nIntegrate velocity to get position:\n\\[\n \\vect{r}(t) = \\int \\vect{v}(t)\\,dt = \\langle 5t, 10t - 5t^2, 3t \\rangle + \\vect{C}_2.\n\\]\nUsing $\\vect{r}(0) = \\langle 0, 0, 2 \\rangle$: $\\vect{C}_2 = \\langle 0, 0, 2 \\rangle$.\n\\[\n \\vect{r}(t) = \\langle 5t, 10t - 5t^2, 3t + 2 \\rangle \\text{ m}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-13.10",
+      "number": "13.10",
+      "title": "Verifying orthogonality",
+      "problem": "Let $\\vect{r}(t) = \\langle \\cos t, \\sin t, 0 \\rangle$. Verify that $\\vect{r}(t) \\perp \\vect{r}'(t)$ for all $t$.",
+      "solution": "$\\vect{r}'(t) = \\langle -\\sin t, \\cos t, 0 \\rangle$.\n\n$\\vect{r}(t) \\dotp \\vect{r}'(t) = (\\cos t)(-\\sin t) + (\\sin t)(\\cos t) + 0 = 0$. $\\checkmark$\n\nThis is consistent with the theorem: $|\\vect{r}(t)| = \\sqrt{\\cos^2 t + \\sin^2 t + 0} = 1$ is constant, so $\\vect{r} \\perp \\vect{r}'$."
+    },
+    {
+      "type": "example",
+      "id": "example-13.11",
+      "number": "13.11",
+      "title": "Using the chain rule",
+      "problem": "Let $\\vect{r}(t) = \\langle \\cos t, \\sin t, t \\rangle$ and let $\\vect{s}(u) = \\vect{r}(u^2)$. Find $\\vect{s}'(u)$.",
+      "solution": "By the chain rule:\n\\[\n \\vect{s}'(u) = \\vect{r}'(u^2) \\cdot \\frac{d}{du}(u^2) = \\vect{r}'(u^2) \\cdot 2u.\n\\]\nSince $\\vect{r}'(t) = \\langle -\\sin t, \\cos t, 1 \\rangle$:\n\\[\n \\vect{s}'(u) = 2u \\langle -\\sin(u^2), \\cos(u^2), 1 \\rangle = \\langle -2u\\sin(u^2), 2u\\cos(u^2), 2u \\rangle.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-13.12",
+      "number": "13.12",
+      "title": "Angle between curves",
+      "problem": "Find the angle between the curves $\\vect{r}_1(t) = \\langle t, t^2, t^3 \\rangle$ and $\\vect{r}_2(t) = \\langle \\sin t, \\sin 2t, t \\rangle$ at the point where they intersect (at $t = 0$).",
+      "solution": "Both curves pass through the origin when $t = 0$.\n\nThe tangent vectors at $t = 0$:\n\\[\n \\vect{r}_1'(t) = \\langle 1, 2t, 3t^2 \\rangle \\implies \\vect{r}_1'(0) = \\langle 1, 0, 0 \\rangle.\n\\]\n\\[\n \\vect{r}_2'(t) = \\langle \\cos t, 2\\cos 2t, 1 \\rangle \\implies \\vect{r}_2'(0) = \\langle 1, 2, 1 \\rangle.\n\\]\n\nThe angle $\\theta$ between the curves satisfies:\n\\[\n \\cos\\theta = \\frac{\\vect{r}_1'(0) \\dotp \\vect{r}_2'(0)}{|\\vect{r}_1'(0)||\\vect{r}_2'(0)|} = \\frac{1 + 0 + 0}{1 \\cdot \\sqrt{1+4+1}} = \\frac{1}{\\sqrt{6}}.\n\\]\nSo $\\theta = \\arccos\\left(\\frac{1}{\\sqrt{6}}\\right) \\approx 65.9°$."
+    },
+    {
+      "type": "example",
+      "id": "example-13.13",
+      "number": "13.13",
+      "title": "Orbital motion",
+      "problem": "A planet orbits a star in an elliptical path. Near perihelion (closest approach), the position can be modeled by $\\vect{r}(t) = \\langle a\\cos(\\omega t), b\\sin(\\omega t), 0 \\rangle$ where $a > b$. Show that the planet moves faster at perihelion than at aphelion.",
+      "solution": "The velocity is:\n\\[\n \\vect{v}(t) = \\langle -a\\omega\\sin(\\omega t), b\\omega\\cos(\\omega t), 0 \\rangle.\n\\]\nSpeed: $|\\vect{v}(t)| = \\omega\\sqrt{a^2\\sin^2(\\omega t) + b^2\\cos^2(\\omega t)}$.\n\nAt perihelion ($t = 0$, where $x = a$): speed $= b\\omega$.\n\nAt aphelion ($t = \\pi/\\omega$, where $x = -a$): speed $= b\\omega$.\n\nWait—this gives the same speed! The issue is that this parametrization doesn't model Keplerian motion correctly. In true orbital motion, the planet sweeps equal areas in equal times (Kepler's second law), which requires a non-uniform parameter $t$.\n\nFor uniform circular motion ($a = b$), the speed is constant: $|\\vect{v}| = a\\omega$. For elliptical orbits, the mathematical description is more complex, involving the true anomaly rather than uniform $t$. This complexity reflects the elegant but intricate design of celestial mechanics (Psalm 19:1)."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:31",
+      "text": "But they who wait for the Lord shall renew their strength; they shall mount up with wings like eagles; they shall run and not be weary; they shall walk and not faint."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 119:105",
+      "text": "Your word is a lamp to my feet and a light to my path."
+    },
+    {
+      "type": "quote",
+      "author": "Newton",
+      "text": "If I have seen further it is by standing on the shoulders of giants."
+    },
+    {
+      "type": "quote",
+      "author": "Leibniz",
+      "text": "It is unworthy of excellent men to lose hours like slaves in the labor of calculation."
+    }
+  ]
+}

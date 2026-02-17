@@ -1,0 +1,150 @@
+{
+  "id": "precalculus-ch09-sec04",
+  "title": "Chapter Review",
+  "chapter": 9,
+  "section": 4,
+  "book": "precalculus",
+  "devotional": {
+    "title": "The Symphony of Constraints",
+    "scripture": "Psalm 119:96--97",
+    "content": "{AtlasWarmT}{o \nall perfection I see a limit,} but your commands are boundless. Oh, how \nI love your law! I meditate on it all day long.\n\nThroughout this chapter, we have explored systems of equations—collections \nof constraints that must be satisfied simultaneously. At first glance, \nconstraints might seem limiting. More equations means less freedom, more \nrequirements means fewer acceptable solutions. Yet we have discovered \nsomething remarkable: the right constraints don't imprison us—they \nreveal truth.\n\nA single linear equation in two variables has infinitely many solutions, \noffering freedom but no direction. Add a second equation, and suddenly \na unique point emerges—the intersection where both constraints are \nhonored. The constraints have not stolen possibilities; they have \nilluminated the one answer that satisfies all requirements.\n\nMatrices have shown us that organization brings clarity. What seems like \na tangled mess of equations becomes, when properly arranged, a systematic \npath to the solution. Row operations preserve truth while transforming \nappearance, like different translations of the same Scripture—the \nmeaning endures even as the form changes.\n\nThe Psalmist writes that God's commands are \"boundless\" despite being \nconstraints. This is the paradox of divine law: what appears limiting is \nactually liberating. The person who follows God's commands doesn't find \nfewer possibilities but discovers the one path that leads to life.\n\nSo it is with mathematics. Systems of equations, matrix methods, and \ndeterminants are tools for finding truth amid complexity. They teach us \nto embrace constraints as guides rather than chains.",
+    "reflection": "Systems of equations find solutions by honoring \nmultiple constraints. How does living within God's moral boundaries \nactually lead to greater freedom and flourishing than ignoring them?"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "This chapter has developed two interconnected themes: systems of \nequations as a way of modeling multiple simultaneous conditions, and \nmatrices as a powerful tool for organizing and solving such systems."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Key Concepts"
+    },
+    {
+      "type": "paragraph",
+      "text": "Systems of Linear Equations (Section 9.1)"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "A **system of equations** consists of multiple equations \n that must all be satisfied by the same solution.",
+        "**Substitution method:** Solve one equation for a variable, \n substitute into the other equation, solve, then back-substitute.",
+        "**Elimination method:** Multiply equations by constants \n to create opposite coefficients, add equations to eliminate a \n variable, solve, then back-substitute.",
+        "A system of two linear equations has exactly three possible \n outcomes:\n itemize",
+        "**One solution:** Lines intersect (consistent, independent)",
+        "**No solution:** Lines are parallel (inconsistent)",
+        "**Infinitely many solutions:** Lines coincide \n (consistent, dependent)\n itemize",
+        "The same methods extend to systems with three or more variables, \n where we systematically eliminate variables until the system is solved."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Introduction to Matrices (Section 9.2)"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "A **matrix** is a rectangular array of numbers with \n $m$ rows and $n$ columns (an $m \\times n$ matrix).",
+        "An **augmented matrix** represents a system of equations \n by separating coefficients from constants with a vertical bar.",
+        "**Elementary row operations** transform a matrix without \n changing the solution set:\n enumerate",
+        "Swap two rows ($R_i \\leftrightarrow R_j$)",
+        "Multiply a row by a nonzero constant ($kR_i \\to R_i$)",
+        "Add a multiple of one row to another ($R_i + kR_j \\to R_i$)\n enumerate",
+        "**Gaussian elimination:** Use row operations to reach \n row-echelon form, then back-substitute to find the solution.",
+        "**Gauss-Jordan elimination:** Continue to reduced \n row-echelon form (RREF), where the solution can be read directly.",
+        "A row of the form $[0 \\; 0 \\; \\cdots \\; 0 \\;|\\; c]$ with \n $c \\neq 0$ indicates **no solution** (inconsistent system).",
+        "Rows of all zeros indicate dependent equations; the system \n may have infinitely many solutions with free parameters."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Matrix Operations (Section 9.3)"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Matrix addition:** Add corresponding entries (matrices \n must have the same dimensions).",
+        "**Scalar multiplication:** Multiply every entry by the \n scalar.",
+        "**Matrix multiplication:** For $A$ ($m \\times n$) and \n $B$ ($n \\times p$), the product $AB$ is $m \\times p$, with each \n entry computed as a dot product of a row from $A$ with a column \n from $B$.",
+        "Matrix multiplication is **not commutative**: $AB \\neq BA$ \n in general.",
+        "The **identity matrix** $I_n$ satisfies $AI = IA = A$ \n for compatible matrices.",
+        "The **inverse** $A^{-1}$ of a matrix satisfies \n $AA^{-1} = A^{-1}A = I$. Not all matrices are invertible.",
+        "For a $2 \\times 2$ matrix $A = \\begin{pmatrix} a & b \\\\ c & d \n \\end{pmatrix}$:\n \\[\n A^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}\n \\quad \\text{if } ad - bc \\neq 0\n \\]",
+        "A system $AX = B$ can be solved by $X = A^{-1}B$ when $A$ is \n invertible.",
+        "The **determinant** of a square matrix determines \n invertibility: $\\det(A) \\neq 0$ means $A$ is invertible; \n $\\det(A) = 0$ means $A$ is singular (not invertible)."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Important Formulas"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Common Mistakes to Avoid"
+    },
+    {
+      "type": "warning",
+      "id": "warning-9.4",
+      "number": null,
+      "title": "Watch Out For These Errors",
+      "content": "1. **Arithmetic errors in row operations.** Each operation \n affects every entry in a row. Double-check your calculations.\n\n2. **Forgetting to check your answer.** Always substitute \n your solution back into the original equations.\n\n3. **Dimension mismatch in multiplication.** The number of \n columns in the first matrix must equal the number of rows in the \n second. A $2 \\times 3$ times $2 \\times 3$ is undefined!\n\n4. **Assuming $AB = BA$.** Matrix multiplication is not \n commutative. The order matters.\n\n5. **Dividing by a matrix.** There is no \"matrix division.\" \n Instead, multiply by the inverse: $X = A^{-1}B$, not $X = B/A$.\n\n6. **Forgetting the scalar in the inverse formula.** The \n $2 \\times 2$ inverse requires dividing by the determinant, not just \n swapping and negating entries.\n\n7. **Missing coefficients of zero.** When a variable doesn't \n appear in an equation, its coefficient is 0, not missing.\n\n8. **Confusing rows and columns.** Matrix dimensions are \n always rows $\\times$ columns. A $3 \\times 2$ matrix has 3 rows and \n 2 columns."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Review Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Section 9.1: Systems of Linear Equations**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Section 9.2: Introduction to Matrices**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Section 9.3: Matrix Operations**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Mixed Review**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Challenge Problems**"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Chapter Test"
+    },
+    {
+      "type": "paragraph",
+      "text": "*Allow approximately 50 minutes. Show all work.*"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Solve by any algebraic method:\n $\\begin{cases} 4x - 3y = 10 \\\\ 2x + y = 6 \\end{cases}$",
+        "Classify the system as consistent/inconsistent and \n independent/dependent:\n $\\begin{cases} 3x - 9y = 12 \\\\ -x + 3y = -4 \\end{cases}$",
+        "Write the augmented matrix for:\n $\\begin{cases} 2x - y + 3z = 1 \\\\ x + 4z = 5 \\\\ 3x + 2y - z = 0 \\end{cases}$",
+        "Solve using Gaussian elimination:\n \\[\n \\left(\\begin{array}{cc|c} 2 & 6 & 4 \\\\ 1 & -2 & 5 \\end{array}\\right)\n \\]",
+        "For $A = \\begin{pmatrix} 2 & -1 \\\\ 3 & 4 \\end{pmatrix}$ and \n $B = \\begin{pmatrix} 0 & 5 \\\\ -1 & 2 \\end{pmatrix}$:\n enumerate[label=()]",
+        "Find $3A - 2B$",
+        "Find $AB$\n enumerate",
+        "Find the inverse of $\\begin{pmatrix} 4 & 3 \\\\ 5 & 4 \\end{pmatrix}$.",
+        "Use the inverse matrix method to solve:\n $\\begin{cases} 4x + 3y = 5 \\\\ 5x + 4y = 6 \\end{cases}$",
+        "Find the determinant of \n $\\begin{pmatrix} 2 & 1 & 0 \\\\ 1 & 3 & 2 \\\\ 0 & 2 & 4 \\end{pmatrix}$.",
+        "A coffee blend mixes \\$9/lb beans with \\$12/lb beans. If 50 \n pounds of blend costs \\$525, how many pounds of each type are used?",
+        "(**Bonus**) If $A$ is a $2 \\times 2$ matrix with \n $\\det(A) = 3$, find $\\det(2A)$ and $\\det(A^{-1})$."
+      ]
+    }
+  ]
+}

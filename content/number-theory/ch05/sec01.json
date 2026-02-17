@@ -1,0 +1,78 @@
+{
+  "id": "number-theory-ch05-sec01",
+  "title": "Orders of Elements",
+  "chapter": 5,
+  "section": 1,
+  "book": "number-theory",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "We study the multiplicative structure of $(\\mathbb{Z}/n\\mathbb{Z})^*$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition and Properties"
+    },
+    {
+      "type": "paragraph",
+      "text": "Recall that the order of $a$ modulo $n$, denoted $\\text{ord}_n(a)$, is \nthe smallest positive integer $k$ with $a^k \\equiv 1 \\pmod{n}$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Properties of Order",
+      "content": "Let $\\gcd(a, n) = 1$ and $k = \\text{ord}_n(a)$.\n\n1. $a^j \\equiv 1 \\pmod{n}$ if and only if $k \\mid j$.\n\n2. $\\text{ord}_n(a) \\mid \\phi(n)$.\n\n3. $a^i \\equiv a^j \\pmod{n}$ if and only if $i \\equiv j \\pmod{k}$.\n\n4. The elements $a^0, a^1, \\ldots, a^{k-1}$ are distinct modulo $n$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(a) If $k \\mid j$, then $j = km$ and $a^j = (a^k)^m \\equiv 1$.\n\nConversely, write $j = qk + r$ with $0 \\leq r < k$. Then \n$a^r = a^{j-qk} = a^j (a^k)^{-q} \\equiv 1$. By minimality of $k$, $r = 0$.\n\n(b) By Euler's theorem, $a^{\\phi(n)} \\equiv 1$, so $k \\mid \\phi(n)$ by (a).\n\n(c) $a^i \\equiv a^j$ iff $a^{i-j} \\equiv 1$ iff $k \\mid (i-j)$.\n\n(d) Follows from (c)."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Primitive Root",
+      "content": "An integer $g$ is a **primitive root** modulo $n$ if \n$\\text{ord}_n(g) = \\phi(n)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Equivalently, $g$ is a primitive root iff the powers \n$g^0, g^1, \\ldots, g^{\\phi(n)-1}$ include every element of \n$(\\mathbb{Z}/n\\mathbb{Z})^*$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Primitive Root Modulo 7",
+      "problem": "For $p = 7$, $\\phi(7) = 6$. Testing $g = 3$:\n\n$3^1 = 3$, $3^2 = 9 \\equiv 2$, $3^3 = 27 \\equiv 6$, \n$3^4 \\equiv 18 \\equiv 4$, $3^5 \\equiv 12 \\equiv 5$, $3^6 \\equiv 15 \\equiv 1$.\n\nSince $3^6 \\equiv 1$ and no smaller power equals 1, $\\text{ord}_7(3) = 6$. \nThus 3 is a primitive root modulo 7.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Orders of Powers"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Order of a Power",
+      "content": "If $\\text{ord}_n(a) = k$, then\n\\[\n\\text{ord}_n(a^j) = \\frac{k}{\\gcd(j, k)}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $d = \\gcd(j, k)$ and $m = k/d$.\n\n$(a^j)^m = a^{jm} = a^{jk/d}$. Since $d \\mid j$, we have $k \\mid jk/d$, \nso $(a^j)^m \\equiv 1$.\n\nConversely, if $(a^j)^t \\equiv 1$, then $k \\mid jt$, so $(k/d) \\mid (j/d)t$. \nSince $\\gcd(k/d, j/d) = 1$, we have $(k/d) \\mid t$, i.e., $m \\mid t$."
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-5.1",
+      "number": "5.1",
+      "title": "",
+      "content": "$a^j$ is a primitive root modulo $n$ if and only if $\\gcd(j, \\phi(n)) = 1$.",
+      "label": "Corollary"
+    }
+  ]
+}

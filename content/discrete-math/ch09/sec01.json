@@ -1,0 +1,94 @@
+{
+  "id": "discrete-math-ch09-sec01",
+  "title": "Graphs and Graph Models",
+  "chapter": 9,
+  "section": 1,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"From Him the whole body, joined and held together by \nevery supporting ligament, grows and builds itself up in love.\"*{Ephesians 4:16}{Graph theory began with Euler and his bridges; it now touches every corner of mathematics and computer science.}{Leonhard Euler}"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **graph** is a mathematical structure representing \nconnections between objects."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Graph",
+      "content": "A **graph** $G = (V, E)$ consists of:\n\n- $V$: a nonempty set of **vertices** (or nodes)\n\n- $E$: a set of **edges**, each connecting two vertices\n\nAn edge between $u$ and $v$ is denoted $\\{u, v\\}$ or simply $uv$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Directed Graph",
+      "content": "A **directed graph** (digraph) has edges with \ndirection: an edge from $u$ to $v$ is denoted $(u, v)$ and is different \nfrom $(v, u)$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Social network",
+      "problem": "Let vertices represent people and edges represent friendships:\n\n$V = \\{\\text{Alice}, \\text{Bob}, \\text{Carol}, \\text{Dave}\\}$\n\n$E = \\{\\{\\text{Alice}, \\text{Bob}\\}, \\{\\text{Bob}, \\text{Carol}\\}, \\{\\text{Alice}, \\text{Carol}\\}\\}$\n\nDave has no friends in this network.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Graph Terminology"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.3",
+      "number": "9.3",
+      "title": "Basic Terms",
+      "content": "- **Adjacent**: Vertices $u$ and $v$ are adjacent if $\\{u, v\\} \\in E$.\n\n- **Incident**: Edge $e$ is incident to vertex $v$ if $v$ is an endpoint of $e$.\n\n- **Degree**: $\\deg(v)$ = number of edges incident to $v$.\n\n- **Loop**: An edge from a vertex to itself.\n\n- **Multiple edges**: More than one edge between the same pair.\n\n- **Simple graph**: No loops or multiple edges."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Handshaking Theorem",
+      "content": "In any graph $G = (V, E)$:\n\\[ \\sum_{v \\in V} \\deg(v) = 2|E| \\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Each edge contributes 2 to the total degree (one for each endpoint)."
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Handshaking corollary",
+      "problem": "In any graph, the number of vertices with odd degree is even.\n\nproof\nLet $O$ = vertices of odd degree, $E$ = vertices of even degree.\n\n$\\sum_{v \\in O} \\deg(v) + \\sum_{v \\in E} \\deg(v) = 2|E|$ (even).\n\nThe sum over $E$ is even, so the sum over $O$ must be even.\n\nSum of odd numbers is even only if there are evenly many of them.\nproof",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Special Graphs"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Complete graph** $K_n$: every pair of $n$ vertices is connected.",
+        "**Cycle** $C_n$: $n$ vertices in a ring.",
+        "**Path** $P_n$: $n$ vertices in a line.",
+        "**Bipartite graph**: vertices split into two groups; edges only between groups.",
+        "**Complete bipartite** $K_{m,n}$: all possible edges between groups of $m$ and $n$."
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 4:12",
+      "text": "A cord of three strands is not \nquickly broken."
+    }
+  ]
+}

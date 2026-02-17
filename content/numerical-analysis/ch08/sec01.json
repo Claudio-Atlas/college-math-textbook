@@ -1,0 +1,229 @@
+{
+  "id": "numerical-analysis-ch08-sec01",
+  "title": "The Shooting Method",
+  "chapter": 8,
+  "section": 1,
+  "book": "numerical-analysis",
+  "objectives": [
+    "Understand how to reformulate a BVP as a root-finding problem",
+    "Apply the shooting method with Newton and secant iteration",
+    "Handle nonlinear BVPs using shooting techniques",
+    "Recognize when shooting methods may fail or be ill-conditioned"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Shooting Concept"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **shooting method** derives its name from an artillery analogy. Imagine trying to hit a target at a known distance: you fire a shot with an initial angle (the \"guess\"), observe where it lands, and adjust your aim for the next shot. You continue until you hit the target."
+    },
+    {
+      "type": "paragraph",
+      "text": "For boundary value problems, the \"initial angle\" is the unknown initial condition, and \"hitting the target\" means satisfying the far boundary condition."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.1",
+      "number": "8.1",
+      "title": "Two-Point Boundary Value Problem",
+      "content": "A **two-point BVP** consists of:\n\n- A second-order ODE: $y'' = f(x, y, y')$ on $[a, b]$\n\n- Boundary conditions at both endpoints\nThe most common boundary condition types are:\n\n- **Dirichlet:** $y(a) = \\alpha$, $y(b) = \\beta$ (values specified)\n\n- **Neumann:** $y'(a) = \\alpha$, $y'(b) = \\beta$ (derivatives specified)\n\n- **Mixed/Robin:** $\\alpha_1 y(a) + \\alpha_2 y'(a) = \\gamma$ (linear combination)\n\n- **Periodic:** $y(a) = y(b)$, $y'(a) = y'(b)$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Unlike initial value problems, boundary value problems may have no solution, exactly one solution, or infinitely many solutions, depending on the equation and boundary conditions."
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Nonuniqueness in BVPs",
+      "problem": "Consider $y'' + y = 0$ with $y(0) = 0$ and $y(\\pi) = 0$.\n\n**Solution.** The general solution is $y = A\\cos x + B\\sin x$.\n\nFrom $y(0) = 0$: $A = 0$, so $y = B\\sin x$.\n\nFrom $y(\\pi) = B\\sin(\\pi) = 0$: satisfied for *any* $B$.\n\nThis BVP has infinitely many solutions: $y = B\\sin x$ for arbitrary $B$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "Nonexistence in BVPs",
+      "problem": "Consider $y'' + y = 0$ with $y(0) = 0$ and $y(\\pi) = 1$.\n\n**Solution.** From $y(0) = 0$: $y = B\\sin x$.\n\nFrom $y(\\pi) = B\\sin(\\pi) = 0 \\neq 1$: impossible for any $B$.\n\nThis BVP has no solution.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Linear Shooting Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "For a linear BVP with Dirichlet conditions, the shooting method becomes particularly elegant."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.2",
+      "number": "8.2",
+      "title": "Linear Two-Point BVP",
+      "content": "A **linear two-point BVP** has the form:\n\\[\ny'' + p(x)y' + q(x)y = r(x), \\quad y(a) = \\alpha, \\quad y(b) = \\beta\n\\]\nThe key property is that solutions form a two-dimensional vector space (for the homogeneous equation), allowing superposition."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Superposition for Linear BVPs",
+      "content": "Let $y_1(x)$ solve the IVP:\n\\[\ny'' + p(x)y' + q(x)y = r(x), \\quad y(a) = \\alpha, \\quad y'(a) = 0\n\\]\nand let $y_2(x)$ solve the IVP:\n\\[\ny'' + p(x)y' + q(x)y = 0, \\quad y(a) = 0, \\quad y'(a) = 1\n\\]\nIf $y_2(b) \\neq 0$, then the solution to the BVP is:\n\\[\ny(x) = y_1(x) + \\frac{\\beta - y_1(b)}{y_2(b)} y_2(x)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $y(x) = y_1(x) + cy_2(x)$ for some constant $c$. By linearity of the differential equation:\n\\[\ny'' + py' + qy = (y_1'' + py_1' + qy_1) + c(y_2'' + py_2' + qy_2) = r(x) + c \\cdot 0 = r(x)\n\\]\n\nAt $x = a$:\n\\[\ny(a) = y_1(a) + cy_2(a) = \\alpha + c \\cdot 0 = \\alpha \\quad \\checkmark\n\\]\n\nAt $x = b$, we require $y(b) = \\beta$:\n\\[\ny_1(b) + cy_2(b) = \\beta \\quad \\Rightarrow \\quad c = \\frac{\\beta - y_1(b)}{y_2(b)}\n\\]\n\nThis is well-defined provided $y_2(b) \\neq 0$."
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-8.1",
+      "number": null,
+      "title": "Linear Shooting Method",
+      "content": "algorithmic[1]\n Linear BVP: $y'' + p(x)y' + q(x)y = r(x)$, $y(a) = \\alpha$, $y(b) = \\beta$\n Solution $y(x)$ at grid points\n Solve IVP 1: $y_1'' + py_1' + qy_1 = r$, $y_1(a) = \\alpha$, $y_1'(a) = 0$\n Solve IVP 2: $y_2'' + py_2' + qy_2 = 0$, $y_2(a) = 0$, $y_2'(a) = 1$\n$|y_2(b)| < \\varepsilon$\n **Error:** BVP may have no unique solution\n\n $c \\gets (\\beta - y_1(b)) / y_2(b)$\n $y(x) = y_1(x) + c \\cdot y_2(x)$\nalgorithmic"
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "Linear Shooting Method",
+      "problem": "Solve $y'' - y = 0$ with $y(0) = 1$ and $y(1) = e$ using linear shooting.\n\n**Solution.**\n\n**IVP 1:** $y_1'' - y_1 = 0$, $y_1(0) = 1$, $y_1'(0) = 0$.\n\\[\ny_1(x) = \\frac{e^x + e^{-x}}{2} = \\cosh(x), \\quad y_1(1) = \\cosh(1) \\approx 1.5431\n\\]\n\n**IVP 2:** $y_2'' - y_2 = 0$, $y_2(0) = 0$, $y_2'(0) = 1$.\n\\[\ny_2(x) = \\frac{e^x - e^{-x}}{2} = \\sinh(x), \\quad y_2(1) = \\sinh(1) \\approx 1.1752\n\\]\n\n**Superposition:**\n\\[\nc = \\frac{e - \\cosh(1)}{\\sinh(1)} = \\frac{2.7183 - 1.5431}{1.1752} \\approx 1.0000\n\\]\n\n\\[\ny(x) = \\cosh(x) + \\sinh(x) = \\frac{e^x + e^{-x}}{2} + \\frac{e^x - e^{-x}}{2} = e^x\n\\]\n\nThe exact solution $y(x) = e^x$ is recovered.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Nonlinear Shooting with Secant Iteration"
+    },
+    {
+      "type": "paragraph",
+      "text": "For nonlinear BVPs, superposition fails, and we must iterate to find the correct initial slope."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.3",
+      "number": "8.3",
+      "title": "Shooting Function",
+      "content": "For the BVP $y'' = f(x, y, y')$ with $y(a) = \\alpha$, $y(b) = \\beta$, define the **shooting function**:\n\\[\n\\phi(s) = y(b; s) - \\beta\n\\]\nwhere $y(x; s)$ is the solution of the IVP with initial conditions $y(a) = \\alpha$, $y'(a) = s$.\n\nThe BVP is solved when $\\phi(s) = 0$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The shooting method reduces the BVP to finding roots of the nonlinear equation $\\phi(s) = 0$."
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-8.1",
+      "number": null,
+      "title": "Nonlinear Shooting with Secant Method",
+      "content": "algorithmic[1]\n BVP: $y'' = f(x,y,y')$, $y(a)=\\alpha$, $y(b)=\\beta$, tolerance $\\varepsilon$\n Solution $y(x)$\n Choose initial guesses $s_0, s_1$ for the slope $y'(a)$\n Solve IVP with $y'(a) = s_0$; compute $\\phi_0 = y(b; s_0) - \\beta$\n Solve IVP with $y'(a) = s_1$; compute $\\phi_1 = y(b; s_1) - \\beta$\n$k = 1, 2, \\ldots$ until convergence\n $s_{k+1} \\gets s_k - \\phi_k \\cdot \\dfrac{s_k - s_{k-1}}{\\phi_k - \\phi_{k-1}}$ Secant update\n Solve IVP with $y'(a) = s_{k+1}$; compute $\\phi_{k+1} = y(b; s_{k+1}) - \\beta$\n $|\\phi_{k+1}| < \\varepsilon$\n solution with slope $s_{k+1}$\n \n $s_{k-1}, \\phi_{k-1} \\gets s_k, \\phi_k$\n $s_k, \\phi_k \\gets s_{k+1}, \\phi_{k+1}$\n\nalgorithmic"
+    },
+    {
+      "type": "example",
+      "id": "example-8.4",
+      "number": "8.4",
+      "title": "Nonlinear Shooting",
+      "problem": "Solve $y'' = -e^y$ with $y(0) = 0$, $y(1) = 0$.\n\n**Solution.** This is a nonlinear BVP (the Bratu problem in 1D).\n\nLet $s = y'(0)$ be the unknown initial slope. We need $\\phi(s) = y(1; s) = 0$.\n\n**Iteration 1:** Try $s_0 = 0$.\nSolving the IVP numerically (using, e.g., RK4 with $h = 0.1$):\n\\[\ny(1; 0) \\approx -0.175 \\quad \\Rightarrow \\quad \\phi_0 = -0.175\n\\]\n\n**Iteration 2:** Try $s_1 = 1$.\n\\[\ny(1; 1) \\approx 0.189 \\quad \\Rightarrow \\quad \\phi_1 = 0.189\n\\]\n\n**Secant update:**\n\\[\ns_2 = s_1 - \\phi_1 \\cdot \\frac{s_1 - s_0}{\\phi_1 - \\phi_0} = 1 - 0.189 \\cdot \\frac{1 - 0}{0.189 - (-0.175)} = 1 - \\frac{0.189}{0.364} \\approx 0.481\n\\]\n\nContinuing iteration: $s_3 \\approx 0.494$, $s_4 \\approx 0.4937$, converging to $s^* \\approx 0.4937$.\n\nThe solution curve starts at $(0, 0)$ with slope $\\approx 0.4937$, rises to a maximum near $x = 0.5$, and returns to zero at $x = 1$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Shooting with Newton's Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "When the IVP solver provides derivative information, Newton's method offers faster convergence."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.2",
+      "number": "8.2",
+      "title": "Sensitivity Equation",
+      "content": "Let $y(x; s)$ solve $y'' = f(x, y, y')$ with $y(a) = \\alpha$, $y'(a) = s$. \nThe sensitivity $z(x) = \\frac{\\partial y}{\\partial s}(x; s)$ satisfies:\n\\[\nz'' = f_y(x, y, y')z + f_{y'}(x, y, y')z', \\quad z(a) = 0, \\quad z'(a) = 1\n\\]\nwhere $f_y$ and $f_{y'}$ are partial derivatives of $f$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Differentiate the ODE $y'' = f(x, y, y')$ with respect to $s$:\n\\[\n\\frac{\\partial}{\\partial s}(y'') = \\frac{\\partial f}{\\partial y}\\frac{\\partial y}{\\partial s} + \\frac{\\partial f}{\\partial y'}\\frac{\\partial y'}{\\partial s}\n\\]\nSince $\\frac{\\partial}{\\partial s}(y'') = z''$ and $\\frac{\\partial y'}{\\partial s} = z'$, we get the stated equation.\n\nInitial conditions: $z(a) = \\frac{\\partial}{\\partial s}[\\alpha] = 0$ and $z'(a) = \\frac{\\partial}{\\partial s}[s] = 1$."
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-8.1",
+      "number": null,
+      "title": "Newton Shooting",
+      "content": "algorithmic[1]\n BVP: $y'' = f(x,y,y')$, $y(a)=\\alpha$, $y(b)=\\beta$, tolerance $\\varepsilon$\n Solution $y(x)$\n Choose initial guess $s_0$ for the slope\n$k = 0, 1, 2, \\ldots$\n Solve the coupled system for $y(x; s_k)$ and $z(x; s_k)$:\n $y'' = f(x, y, y')$, $y(a) = \\alpha$, $y'(a) = s_k$\n $z'' = f_y z + f_{y'} z'$, $z(a) = 0$, $z'(a) = 1$\n $\\phi_k \\gets y(b; s_k) - \\beta$\n $\\phi'_k \\gets z(b; s_k)$\n $|\\phi_k| < \\varepsilon$\n solution $y(x; s_k)$\n \n $s_{k+1} \\gets s_k - \\phi_k / \\phi'_k$ Newton update\n\nalgorithmic"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Higher-Order Systems and Multiple Shooting"
+    },
+    {
+      "type": "paragraph",
+      "text": "For stiff BVPs or long intervals, the single shooting method can be ill-conditioned: small changes in $s$ cause large changes in $y(b)$, making root-finding unstable."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.4",
+      "number": "8.4",
+      "title": "Multiple Shooting",
+      "content": "**Multiple shooting** divides $[a, b]$ into subintervals $[x_0, x_1], [x_1, x_2], \\ldots, [x_{N-1}, x_N]$ where $x_0 = a$ and $x_N = b$. On each subinterval, we solve an IVP with unknown initial values. Continuity conditions at the interior points, plus the boundary conditions, form a nonlinear system to be solved simultaneously."
+    },
+    {
+      "type": "paragraph",
+      "text": "Multiple shooting improves conditioning by limiting the integration distance, at the cost of solving a larger nonlinear system."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Convergence and Stability"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.3",
+      "number": "8.3",
+      "title": "Convergence of Shooting Method",
+      "content": "For a well-posed linear BVP, the shooting method converges in one step (using exact arithmetic). For nonlinear BVPs, if the shooting function $\\phi(s)$ is smooth and $\\phi'(s^*) \\neq 0$ at the root, Newton iteration converges quadratically for sufficiently good initial guesses.",
+      "label": "Theorem"
+    },
+    {
+      "type": "remark",
+      "id": "remark-8.1",
+      "number": null,
+      "title": "",
+      "content": "The shooting method can fail when:\n\n- The BVP has no solution (shooting function has no root)\n\n- The BVP has multiple solutions (shooting function has multiple roots)\n\n- The problem is ill-conditioned (exponentially growing solutions)\n\n- The IVP solver is inaccurate (errors propagate to boundary mismatch)"
+    },
+    {
+      "type": "example",
+      "id": "example-8.5",
+      "number": "8.5",
+      "title": "Ill-Conditioned Shooting",
+      "problem": "Consider $\\varepsilon y'' - y = 0$ with $y(0) = 1$, $y(1) = e$ for small $\\varepsilon > 0$.\n\nThe general solution is $y = Ae^{x/\\sqrt{\\varepsilon}} + Be^{-x/\\sqrt{\\varepsilon}}$.\n\nFor $\\varepsilon = 0.01$, $e^{1/\\sqrt{\\varepsilon}} = e^{10} \\approx 22{,}000$. Tiny errors in the initial slope are amplified by this factor, making single shooting extremely sensitive. Multiple shooting or finite difference methods are preferable for such problems.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Implementation Considerations"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**IVP Solver Choice:** Use an adaptive method (RK45, Dormand-Prince) with error control. The shooting method's accuracy depends on the IVP solver.",
+        "**Initial Guess:** For nonlinear problems, a good initial guess for $s$ is crucial. Physical insight, continuation from nearby parameters, or a coarse finite-difference solution can help.",
+        "**Convergence Criteria:** Monitor both $|\\phi(s)|$ (boundary mismatch) and $|s_{k+1} - s_k|$ (parameter change). Stop when both are small.",
+        "**Systems of ODEs:** For $n$th-order equations or first-order systems, the shooting method extends naturally with $n$ unknown initial conditions and $n$ shooting functions."
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "id": "geometry-ch08-sec05",
+  "title": "Angles of Elevation and Depression",
+  "chapter": 8,
+  "section": 5,
+  "book": "geometry",
+  "epigraph": {
+    "text": "Lift up your eyes and look to the heavens: Who created all these? He who brings out the starry host one by one and calls forth each of them by name.",
+    "reference": "Isaiah 40:26"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "From the earliest days of civilization, humans have looked upward at \ntowers, mountains, and stars, and asked: How high? How far? The ancient \nEgyptians used trigonometry to construct the pyramids. Greek astronomers \ncalculated the distance to the Moon. Today, surveyors, engineers, \npilots, and architects all rely on the concepts of angles of elevation \nand depression to solve practical measurement problems."
+    },
+    {
+      "type": "paragraph",
+      "text": "In this section, we apply our knowledge of right triangle trigonometry \nto real-world situations involving objects above and below the observer."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Angles of Elevation and Depression"
+    },
+    {
+      "type": "paragraph",
+      "text": "When you look at an object that is higher than your eye level, you \nmust look *up*. When you look at an object below your eye level, \nyou must look *down*. The angle of your line of sight from the \nhorizontal defines these measurements."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.1",
+      "number": "8.1",
+      "title": "Angle of Elevation",
+      "content": "The **angle of elevation** is the angle \nmeasured upward from a horizontal line to the line of sight to an \nobject above the observer."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.2",
+      "number": "8.2",
+      "title": "Angle of Depression",
+      "content": "The **angle of depression** is the \nangle measured downward from a horizontal line to the line of sight \nto an object below the observer."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Alternate Interior Angle Relationship"
+    },
+    {
+      "type": "paragraph",
+      "text": "A crucial observation simplifies many problems: the horizontal line \nfrom the observer and the horizontal line from the object are parallel. \nThe line of sight acts as a transversal, creating alternate interior \nangles."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Angle of Elevation Equals Angle of Depression",
+      "content": "The angle of elevation from point $A$ to point $B$ equals the angle \nof depression from point $B$ to point $A$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This means that when solving problems, you can use either angle—they \ngive the same numerical result."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Basic Applications"
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Finding height from angle of elevation",
+      "problem": "From a point 120 feet from the base of a tree, the angle of elevation \nto the top is $28°$. How tall is the tree?\n\ncenter\ntikzpicture[scale=0.4]\n % Ground\n (-1,0) – (13,0);\n \n % Tree\n (0,0) – (0,6);\n (-0.5,6) to[out=80,in=180] (0,7) to[out=0,in=100] (0.5,6);\n \n % Observer\n ll[AtlasTeal] (12,0) circle (4pt);\n \n % Line of sight\n (12,0) – (0,6.5);\n \n % Labels\n at (6,0) {120 ft};\n at (0,3.25) {$h$};\n \n % Angle\n (10,0) arc (180:153:2);\n at (9.3,0.8) {$28°$};\ntikzpicture\ncenter",
+      "solution": "Draw the right triangle. The horizontal distance (120 ft) is adjacent \nto the $28°$ angle, and the tree height $h$ is opposite.\n\nUsing tangent:\n\\[\n\\tan 28° = \\frac{h}{120}\n\\]\n\\[\nh = 120 \\tan 28° \\approx 120(0.5317) \\approx 63.8 \\text{ feet}\n\\]\n\nThe tree is approximately 63.8 feet tall."
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "Finding distance from angle of depression",
+      "problem": "From the top of a 150-foot lighthouse, the angle of depression to a \nboat is $12°$. How far is the boat from the base of the lighthouse?\n\ncenter\ntikzpicture[scale=0.35]\n % Water\n ll[blue!15] (-2,-1) rectangle (15,0);\n \n % Lighthouse\n ll[gray!30] (-0.5,0) rectangle (0.5,8);\n (-0.5,0) – (-0.5,8) – (0.5,8) – (0.5,0);\n \n % Lamp\n ll[yellow!70] (0,8.5) circle (0.3);\n \n % Boat\n (12,-0.3) to[out=0,in=180] (13,0) to[out=0,in=180] (14,-0.3);\n (13,0) – (13,1);\n \n % Horizontal line from top\n (0.5,8) – (8,8);\n \n % Line of sight\n (0.5,8) – (13,0);\n \n % Labels\n at (-0.5,4) {150 ft};\n at (6.5,-0.3) {$d$};\n \n % Angle of depression\n (2.5,8) arc (0:-12:2);\n at (3.2,7.3) {$12°$};\ntikzpicture\ncenter",
+      "solution": "The angle of depression from the lighthouse equals the angle of \nelevation from the boat (alternate interior angles). In the right \ntriangle:\n\n- The lighthouse height (150 ft) is opposite the $12°$ angle\n\n- The horizontal distance $d$ is adjacent to the $12°$ angle\n\n\\[\n\\tan 12° = \\frac{150}{d}\n\\]\n\\[\nd = \\frac{150}{\\tan 12°} \\approx \\frac{150}{0.2126} \\approx 706 \\text{ feet}\n\\]\n\nThe boat is approximately 706 feet from the lighthouse."
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "Finding the angle",
+      "problem": "A plane is flying at an altitude of 35,000 feet. If it is 15 miles \n(79,200 feet) horizontally from the airport, what is the angle of \ndepression to the airport?",
+      "solution": "\\[\n\\tan\\theta = \\frac{35000}{79200} \\approx 0.442\n\\]\n\\[\n\\theta = \\tan^{-1}(0.442) \\approx 23.8°\n\\]\n\nThe angle of depression is approximately $23.8°$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Problems with Two Angles"
+    },
+    {
+      "type": "paragraph",
+      "text": "Some problems involve two different angles of elevation or depression, \noften from two different positions."
+    },
+    {
+      "type": "example",
+      "id": "example-8.4",
+      "number": "8.4",
+      "title": "Two angles of elevation",
+      "problem": "A surveyor measures the angle of elevation to the top of a mountain \nas $35°$. She then moves 500 meters closer (along a straight line \ntoward the mountain) and measures the angle of elevation as $42°$. \nHow tall is the mountain?\n\ncenter\ntikzpicture[scale=0.4]\n % Ground\n (-1,0) – (14,0);\n \n % Mountain\n ll[gray!30] (0,0) – (0,8) – (1,8) – (3,0) – cycle;\n (0,0) – (0,8) – (3,0);\n \n % Positions\n ll[AtlasTeal] (12,0) circle (4pt);\n ll[AtlasTeal] (7,0) circle (4pt);\n \n % Lines of sight\n (12,0) – (0,8);\n (7,0) – (0,8);\n \n % Labels\n at (9.5,0) {500 m};\n at (3.5,0) {$x$};\n at (0,4) {$h$};\n \n % Angles\n (10.5,0) arc (180:146:1.5);\n at (9.8,0.6) {$35°$};\n (5.8,0) arc (180:138:1.2);\n at (5,0.7) {$42°$};\ntikzpicture\ncenter",
+      "solution": "Let $h$ = mountain height and $x$ = distance from second position to \nmountain base.\n\nFrom the first position (distance $x + 500$):\n\\[\n\\tan 35° = \\frac{h}{x + 500}\n\\]\n\nFrom the second position (distance $x$):\n\\[\n\\tan 42° = \\frac{h}{x}\n\\]\n\nFrom the second equation: $h = x\\tan 42°$\n\nSubstitute into the first equation:\n\\[\n\\tan 35° = \\frac{x\\tan 42°}{x + 500}\n\\]\n\\[\n\\tan 35°(x + 500) = x\\tan 42°\n\\]\n\\[\nx\\tan 35° + 500\\tan 35° = x\\tan 42°\n\\]\n\\[\n500\\tan 35° = x\\tan 42° - x\\tan 35°\n\\]\n\\[\n500\\tan 35° = x(\\tan 42° - \\tan 35°)\n\\]\n\\[\nx = \\frac{500\\tan 35°}{\\tan 42° - \\tan 35°} = \\frac{500(0.7002)}{0.9004 - 0.7002} = \\frac{350.1}{0.2002} \\approx 1749 \\text{ m}\n\\]\n\nNow find $h$:\n\\[\nh = x\\tan 42° \\approx 1749(0.9004) \\approx 1575 \\text{ meters}\n\\]\n\nThe mountain is approximately 1575 meters tall."
+    },
+    {
+      "type": "example",
+      "id": "example-8.5",
+      "number": "8.5",
+      "title": "Angles from a height",
+      "problem": "From the top of a 200-foot building, the angle of depression to the \nbottom of a nearby flagpole is $50°$ and the angle of elevation to \nthe top of the flagpole is $20°$. How tall is the flagpole?\n\ncenter\ntikzpicture[scale=0.35]\n % Ground\n (-1,0) – (13,0);\n \n % Building\n ll[gray!20] (0,0) rectangle (1.5,10);\n (0,0) – (0,10) – (1.5,10) – (1.5,0);\n \n % Flagpole\n (10,0) – (10,6);\n (10,6) – (10.5,6) – (10.5,5.5);\n \n % Horizontal from building top\n (1.5,10) – (11,10);\n \n % Lines of sight\n (1.5,10) – (10,0);\n (1.5,10) – (10,6);\n \n % Labels\n at (0,5) {200 ft};\n at (10,3) {$h$};\n at (5.5,0) {$d$};\n \n % Angles\n (3.5,10) arc (0:-50:2);\n at (3.8,8.5) {$50°$};\n (4,10) arc (0:20:2.5);\n at (5.5,10.8) {$20°$};\ntikzpicture\ncenter",
+      "solution": "First, find the horizontal distance $d$ using the angle of depression \nto the bottom of the flagpole:\n\\[\n\\tan 50° = \\frac{200}{d} \\implies d = \\frac{200}{\\tan 50°} \\approx \\frac{200}{1.1918} \\approx 167.8 \\text{ ft}\n\\]\n\nNext, find how far the flagpole top is above the building roof. Let \nthis height be $y$:\n\\[\n\\tan 20° = \\frac{y}{d} \\implies y = d\\tan 20° \\approx 167.8(0.3640) \\approx 61.1 \\text{ ft}\n\\]\n\nThe total flagpole height is:\n\\[\nh = (200 - 0) + y = 200 + 61.1 = 261.1 \\text{ feet}\n\\]\n\nWait—this isn't quite right. The flagpole extends from the ground \nto above the building. The part below building-level is 200 ft minus \nwhatever is underground... Actually, let me reconsider.\n\nThe flagpole base is at ground level. The building is 200 ft tall. \nThe angle of depression to the flagpole *base* is $50°$.\n\nThe part of the flagpole that's level with the building top: the \nbuilding is 200 ft, so the flagpole is $h$ ft. The flagpole top is \n$h - 200$ feet above the building top (if $h > 200$) or below it \n(if $h < 200$).\n\nGiven the angle of *elevation* to the flagpole top is $20°$, \nthe top is above building level.\n\nHeight above building = $d\\tan 20° \\approx 61.1$ ft\n\nTotal flagpole height = $200 + 61.1 = 261.1$ feet.\n\nActually wait: I need to reconsider what 200 feet refers to. The \nbuilding is 200 feet tall, and the flagpole starts at ground level. \nSo if I'm looking down at the base of the flagpole (angle of depression \n$50°$), I'm looking at ground level, 200 feet below me.\n\nThe flagpole's height above ground = (height at building level) + \n(height above building level) = $200 + 61.1 = 261.1$ feet.\n\nHmm, but that seems too tall for a flagpole. Let me re-read the problem...\n\nThe flagpole is *nearby*, so it makes sense the top could be \nabove the 200-foot building. The height is approximately 261 feet."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications in Navigation and Surveying"
+    },
+    {
+      "type": "example",
+      "id": "example-8.6",
+      "number": "8.6",
+      "title": "Finding distance to an island",
+      "problem": "From the deck of a ship 40 feet above water level, the angle of \ndepression to the waterline of an island is $3°$. How far is the ship \nfrom the island?",
+      "solution": "\\[\n\\tan 3° = \\frac{40}{d}\n\\]\n\\[\nd = \\frac{40}{\\tan 3°} \\approx \\frac{40}{0.0524} \\approx 763 \\text{ feet}\n\\]\n\nThe ship is approximately 763 feet from the island."
+    },
+    {
+      "type": "example",
+      "id": "example-8.7",
+      "number": "8.7",
+      "title": "Airplane descent",
+      "problem": "An airplane at 30,000 feet begins its descent to an airport that is \n100 miles (528,000 feet) away. At what angle of depression should the \npilot descend?",
+      "solution": "\\[\n\\tan\\theta = \\frac{30000}{528000} \\approx 0.0568\n\\]\n\\[\n\\theta = \\tan^{-1}(0.0568) \\approx 3.3°\n\\]\n\nThe pilot should descend at approximately $3.3°$ below horizontal."
+    },
+    {
+      "type": "example",
+      "id": "example-8.8",
+      "number": "8.8",
+      "title": "Satellite dish angle",
+      "problem": "A satellite is in geostationary orbit 22,236 miles above a point on \nEarth's equator. If a dish 2,500 miles north of that point needs to \naim at the satellite, what angle of elevation should it use?",
+      "solution": "This is approximately a right triangle problem (the curvature of Earth \nintroduces small errors, but for estimation purposes):\n\\[\n\\tan\\theta = \\frac{22236}{2500} \\approx 8.89\n\\]\n\\[\n\\theta = \\tan^{-1}(8.89) \\approx 83.6°\n\\]\n\nThe dish should be aimed at approximately $83.6°$ above horizontal."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Problem-Solving Strategy"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-8.5",
+      "number": null,
+      "title": "Solving Elevation/Depression Problems",
+      "content": "1. **Draw a diagram.** Mark the horizontal lines and angles.\n\n2. **Identify the right triangle.** The horizontal and \n vertical form the legs; the line of sight is usually the hypotenuse.\n\n3. **Label known quantities** and identify what you need \n to find.\n\n4. **Remember:** Angle of elevation from $A$ to $B$ equals \n angle of depression from $B$ to $A$.\n\n5. **Choose the appropriate trig ratio** and solve."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 8:3--4",
+      "text": "When I consider your heavens, the work \nof your fingers, the moon and the stars, which you have set in place, \nwhat is mankind that you are mindful of them?"
+    },
+    {
+      "type": "scripture",
+      "reference": "Ezekiel 31:3",
+      "text": "Consider Assyria, once a cedar in \nLebanon, with beautiful branches overshadowing the forest; it towered \non high, its top above the thick foliage."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 121:1--2",
+      "text": "I lift up my eyes to the mountains—\nwhere does my help come from? My help comes from the Lord, the Maker \nof heaven and earth."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 9:8--9",
+      "text": "He alone stretches out the heavens and \ntreads on the waves of the sea. He is the Maker of the Bear and Orion, \nthe Pleiades and the constellations of the south."
+    }
+  ]
+}

@@ -1,0 +1,233 @@
+{
+  "id": "numerical-analysis-ch03-sec06",
+  "title": "Condition Number and Error Analysis",
+  "chapter": 3,
+  "section": 6,
+  "book": "numerical-analysis",
+  "objectives": [
+    "Define and compute vector and matrix norms",
+    "Understand the condition number as a measure of problem sensitivity",
+    "Derive error bounds for perturbed linear systems",
+    "Distinguish between forward error, backward error, and residual",
+    "Recognize and handle ill-conditioned systems"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Vector Norms"
+    },
+    {
+      "type": "paragraph",
+      "text": "To measure errors, we need to measure the \"size\" of vectors and matrices."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.1",
+      "number": "3.1",
+      "title": "Vector Norm",
+      "content": "A **norm** on $\\R^n$ is a function $\\|\\cdot\\|: \\R^n \\to \\R$ satisfying:\n\n1. **Positivity:** $\\|\\mathbf{x}\\| \\geq 0$, with equality iff $\\mathbf{x} = \\mathbf{0}$\n\n2. **Homogeneity:** $\\|c\\mathbf{x}\\| = |c| \\|\\mathbf{x}\\|$ for all $c \\in \\R$\n\n3. **Triangle inequality:** $\\|\\mathbf{x} + \\mathbf{y}\\| \\leq \\|\\mathbf{x}\\| + \\|\\mathbf{y}\\|$"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.2",
+      "number": "3.2",
+      "title": "Common Vector Norms",
+      "content": "For $\\mathbf{x} = (x_1, \\ldots, x_n)^T \\in \\R^n$:\n$$\n\\|\\mathbf{x}\\|_1 &= \\sum_{i=1}^{n} |x_i| & \\text{(1-norm, Manhattan norm)} \\\\[4pt]\n\\|\\mathbf{x}\\|_2 &= \\sqrt{\\sum_{i=1}^{n} x_i^2} = \\sqrt{\\mathbf{x}^T\\mathbf{x}} & \\text{(2-norm, Euclidean norm)} \\\\[4pt]\n\\|\\mathbf{x}\\|_\\infty &= \\max_{1 \\leq i \\leq n} |x_i| & \\text{(infinity norm, max norm)} \\\\[4pt]\n\\|\\mathbf{x}\\|_p &= \\left(\\sum_{i=1}^{n} |x_i|^p\\right)^{1/p} & \\text{(__MATH_BLOCK_1__-norm, __MATH_BLOCK_2__)}\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Vector Norm Computations",
+      "problem": "For $\\mathbf{x} = (3, -4, 0, 2)^T$:\n$$\n\\|\\mathbf{x}\\|_1 &= |3| + |-4| + |0| + |2| = 9 \\\\\n\\|\\mathbf{x}\\|_2 &= \\sqrt{9 + 16 + 0 + 4} = \\sqrt{29} \\approx 5.39 \\\\\n\\|\\mathbf{x}\\|_\\infty &= \\max(3, 4, 0, 2) = 4\n$$",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "Norm Equivalence",
+      "content": "All norms on $\\R^n$ are equivalent: for any norms $\\|\\cdot\\|_\\alpha$ and \n$\\|\\cdot\\|_\\beta$, there exist constants $c_1, c_2 > 0$ such that:\n\\[\nc_1 \\|\\mathbf{x}\\|_\\alpha \\leq \\|\\mathbf{x}\\|_\\beta \\leq c_2 \\|\\mathbf{x}\\|_\\alpha \\quad \\text{for all } \\mathbf{x} \\in \\R^n\n\\]\n\nFor the standard norms:\n$$\n\\|\\mathbf{x}\\|_\\infty &\\leq \\|\\mathbf{x}\\|_2 \\leq \\sqrt{n}\\|\\mathbf{x}\\|_\\infty \\\\\n\\|\\mathbf{x}\\|_2 &\\leq \\|\\mathbf{x}\\|_1 \\leq \\sqrt{n}\\|\\mathbf{x}\\|_2 \\\\\n\\|\\mathbf{x}\\|_\\infty &\\leq \\|\\mathbf{x}\\|_1 \\leq n\\|\\mathbf{x}\\|_\\infty\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Matrix Norms"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.3",
+      "number": "3.3",
+      "title": "Induced Matrix Norm",
+      "content": "Given a vector norm $\\|\\cdot\\|$ on $\\R^n$, the **induced** (or \n**operator**) **matrix norm** is:\n\\[\n\\|A\\| = \\max_{\\mathbf{x} \\neq \\mathbf{0}} \\frac{\\|A\\mathbf{x}\\|}{\\|\\mathbf{x}\\|} = \\max_{\\|\\mathbf{x}\\|=1} \\|A\\mathbf{x}\\|\n\\]\nThis measures the maximum factor by which $A$ can stretch a vector."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.2",
+      "number": "3.2",
+      "title": "Formulas for Induced Norms",
+      "content": "align*\n\\|A\\|_1 &= _{1 j n} _{i=1}^{n} |a_{ij}| & (maximum absolute column sum) \\\\[4pt]\n\\|A\\|_\\infty &= \\max_{1 \\leq i \\leq n} \\sum_{j=1}^{n} |a_{ij}| & \\text{(maximum absolute row sum)} \\\\[4pt]\n\\|A\\|_2 &= \\sqrt{\\lambda_{\\max}(A^T A)} = \\sigma_{\\max}(A) & \\text{(largest singular value)}\n\\end{align*}\n\n\\begin{proof}[Proof for $\\|A\\|_\\infty$]\nLet $\\mathbf{x}$ with $\\|\\mathbf{x}\\|_\\infty = 1$. Then:\n\\[\n|(A\\mathbf{x})_i| = \\left|\\sum_{j=1}^n a_{ij}x_j\\right| \\leq \\sum_{j=1}^n |a_{ij}||x_j| \\leq \\sum_{j=1}^n |a_{ij}|\n\\]\nSo $\\|A\\mathbf{x}\\|_\\infty \\leq \\max_i \\sum_j |a_{ij}|$.\n\nEquality is achieved by taking $x_j = \\text{sign}(a_{i^*j})$ where $i^*$ \nachieves the maximum row sum.\nproof",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Matrix Norm Computations",
+      "problem": "For $A = \\begin{pmatrix} 2 & -1 & 0 \\\\ -1 & 2 & -1 \\\\ 0 & -1 & 2 \\end{pmatrix}$:\n\n**Column sums:** $|2|+|-1|+|0| = 3$, $|-1|+|2|+|-1| = 4$, $|0|+|-1|+|2| = 3$\n\n$\\|A\\|_1 = \\max(3, 4, 3) = 4$\n\n**Row sums:** $|2|+|-1|+|0| = 3$, $|-1|+|2|+|-1| = 4$, $|0|+|-1|+|2| = 3$\n\n$\\|A\\|_\\infty = \\max(3, 4, 3) = 4$\n\nFor the 2-norm, we would need eigenvalues of $A^T A = A^2$ (since $A$ is \nsymmetric). The eigenvalues of $A$ are $2-\\sqrt{2}$, $2$, and $2+\\sqrt{2}$, \nso $\\|A\\|_2 = 2 + \\sqrt{2} \\approx 3.41$.",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.3",
+      "number": "3.3",
+      "title": "Properties of Induced Norms",
+      "content": "1. $\\|AB\\| \\leq \\|A\\| \\cdot \\|B\\|$ (submultiplicativity)\n\n2. $\\|A\\mathbf{x}\\| \\leq \\|A\\| \\cdot \\|\\mathbf{x}\\|$ (consistency)\n\n3. $\\|I\\| = 1$\n\n4. $\\rho(A) \\leq \\|A\\|$ for any induced norm",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Condition Number"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.4",
+      "number": "3.4",
+      "title": "Condition Number",
+      "content": "The **condition number** of a nonsingular matrix $A$ is:\n\\[\n\\kappa(A) = \\|A\\| \\cdot \\|A^{-1}\\|\n\\]\nWe write $\\kappa_p(A)$ when using the $p$-norm."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.4",
+      "number": "3.4",
+      "title": "Properties of the Condition Number",
+      "content": "1. $\\kappa(A) \\geq 1$ (since $1 = \\|I\\| = \\|AA^{-1}\\| \\leq \\|A\\|\\|A^{-1}\\|$)\n\n2. $\\kappa(cA) = \\kappa(A)$ for any $c \\neq 0$\n\n3. $\\kappa(A) = \\kappa(A^{-1})$\n\n4. $\\kappa_2(A) = \\sigma_{\\max}(A)/\\sigma_{\\min}(A)$ (ratio of largest to smallest singular value)\n\n5. For symmetric $A$: $\\kappa_2(A) = |\\lambda_{\\max}|/|\\lambda_{\\min}|$",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Perturbation Analysis"
+    },
+    {
+      "type": "paragraph",
+      "text": "The condition number controls how errors in the data affect errors in the solution."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.5",
+      "number": "3.5",
+      "title": "Perturbation Bound for Right-Hand Side",
+      "content": "Let $A\\mathbf{x} = \\mathbf{b}$ and $A(\\mathbf{x} + \\Delta\\mathbf{x}) = \\mathbf{b} + \\Delta\\mathbf{b}$. Then:\n\\[\n\\frac{\\|\\Delta\\mathbf{x}\\|}{\\|\\mathbf{x}\\|} \\leq \\kappa(A) \\frac{\\|\\Delta\\mathbf{b}\\|}{\\|\\mathbf{b}\\|}\n\\]\n\nproof\nFrom $A\\Delta\\mathbf{x} = \\Delta\\mathbf{b}$, we get $\\Delta\\mathbf{x} = A^{-1}\\Delta\\mathbf{b}$, so:\n\\[\n\\|\\Delta\\mathbf{x}\\| \\leq \\|A^{-1}\\| \\|\\Delta\\mathbf{b}\\|\n\\]\n\nFrom $\\mathbf{b} = A\\mathbf{x}$:\n\\[\n\\|\\mathbf{b}\\| \\leq \\|A\\| \\|\\mathbf{x}\\|, \\quad \\text{hence} \\quad \\frac{1}{\\|\\mathbf{x}\\|} \\leq \\frac{\\|A\\|}{\\|\\mathbf{b}\\|}\n\\]\n\nCombining:\n\\[\n\\frac{\\|\\Delta\\mathbf{x}\\|}{\\|\\mathbf{x}\\|} \\leq \\|A^{-1}\\| \\|\\Delta\\mathbf{b}\\| \\cdot \\frac{\\|A\\|}{\\|\\mathbf{b}\\|} = \\kappa(A) \\frac{\\|\\Delta\\mathbf{b}\\|}{\\|\\mathbf{b}\\|}\n\\]\nproof",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.6",
+      "number": "3.6",
+      "title": "Perturbation Bound for Matrix",
+      "content": "Let $A\\mathbf{x} = \\mathbf{b}$ and $(A + \\Delta A)(\\mathbf{x} + \\Delta\\mathbf{x}) = \\mathbf{b}$. \nIf $\\|A^{-1}\\|\\|\\Delta A\\| < 1$, then:\n\\[\n\\frac{\\|\\Delta\\mathbf{x}\\|}{\\|\\mathbf{x} + \\Delta\\mathbf{x}\\|} \\leq \\frac{\\kappa(A)}{1 - \\kappa(A)\\frac{\\|\\Delta A\\|}{\\|A\\|}} \\cdot \\frac{\\|\\Delta A\\|}{\\|A\\|}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.7",
+      "number": "3.7",
+      "title": "Residual Bound",
+      "content": "Let $\\tilde{\\mathbf{x}}$ be an approximate solution with residual \n$\\mathbf{r} = \\mathbf{b} - A\\tilde{\\mathbf{x}}$. Then:\n\\[\n\\frac{\\|\\mathbf{x} - \\tilde{\\mathbf{x}}\\|}{\\|\\mathbf{x}\\|} \\leq \\kappa(A) \\frac{\\|\\mathbf{r}\\|}{\\|\\mathbf{b}\\|}\n\\]\n\nproof\nSince $A(\\mathbf{x} - \\tilde{\\mathbf{x}}) = \\mathbf{b} - A\\tilde{\\mathbf{x}} = \\mathbf{r}$, \nwe have $\\mathbf{x} - \\tilde{\\mathbf{x}} = A^{-1}\\mathbf{r}$. The result \nfollows as before.\nproof",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-3.6",
+      "number": null,
+      "title": "Small Residual $\\neq$ Small Error",
+      "content": "A small residual only guarantees a small error if the condition number is \nsmall. For ill-conditioned systems, $\\|\\mathbf{r}\\|$ can be tiny while \n$\\|\\mathbf{x} - \\tilde{\\mathbf{x}}\\|$ is large."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Interpreting the Condition Number"
+    },
+    {
+      "type": "method",
+      "id": "method-3.6",
+      "number": null,
+      "title": "Rule of Thumb",
+      "content": "If $\\kappa(A) \\approx 10^k$ and computations are done in $d$-digit arithmetic:\n\n- Expect to lose about $k$ digits of accuracy\n\n- Reliable digits in solution: approximately $d - k$\n\n- If $k \\geq d$: the problem is **numerically singular**\n\nIn IEEE double precision ($d \\approx 16$):\n\n| $\\kappa(A)$ | Status |\n| $\\approx 1$ | Well-conditioned |\n| $\\approx 10^3$ | Moderately conditioned (13 digits reliable) |\n| $\\approx 10^8$ | Ill-conditioned (8 digits reliable) |\n| $\\approx 10^{16}$ | Numerically singular |"
+    },
+    {
+      "type": "example",
+      "id": "example-3.3",
+      "number": "3.3",
+      "title": "The Hilbert Matrix",
+      "problem": "The $n \\times n$ **Hilbert matrix** has entries $H_{ij} = 1/(i+j-1)$:\n\\[\nH_4 = \\begin{pmatrix}\n1 & 1/2 & 1/3 & 1/4 \\\\\n1/2 & 1/3 & 1/4 & 1/5 \\\\\n1/3 & 1/4 & 1/5 & 1/6 \\\\\n1/4 & 1/5 & 1/6 & 1/7\n\\end{pmatrix}\n\\]\n\nHilbert matrices are notoriously ill-conditioned:\n\n| $n$ | $\\kappa_2(H_n)$ | Reliable digits (double) |\n| 3 | $5.2 \\times 10^2$ | 14 |\n| 5 | $4.8 \\times 10^5$ | 11 |\n| 8 | $1.5 \\times 10^{10}$ | 6 |\n| 10 | $1.6 \\times 10^{13}$ | 3 |\n| 12 | $1.8 \\times 10^{16}$ | 0 (singular) |\n\nFor $n \\geq 12$, the Hilbert matrix cannot be inverted reliably in double \nprecision.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Forward and Backward Error"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.5",
+      "number": "3.5",
+      "title": "Forward and Backward Error",
+      "content": "For the problem of solving $A\\mathbf{x} = \\mathbf{b}$:\n\n- **Forward error:** $\\|\\mathbf{x} - \\tilde{\\mathbf{x}}\\|$ (how far is the computed solution from the true solution?)\n\n- **Backward error:** The smallest perturbation $\\|\\Delta\\mathbf{b}\\|$ such that $A\\tilde{\\mathbf{x}} = \\mathbf{b} + \\Delta\\mathbf{b}$ (what problem did we actually solve?)"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.8",
+      "number": "3.8",
+      "title": "Backward Error Interpretation",
+      "content": "The backward error in the infinity norm is exactly the residual:\n\\[\n\\Delta\\mathbf{b} = A\\tilde{\\mathbf{x}} - \\mathbf{b} = -\\mathbf{r}\n\\]\n\nA numerically stable algorithm produces small backward error. The condition \nnumber then determines how backward error translates to forward error.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Estimating the Condition Number"
+    },
+    {
+      "type": "paragraph",
+      "text": "Computing $\\kappa(A) = \\|A\\|\\|A^{-1}\\|$ exactly requires $A^{-1}$, which \ncosts $\\mathcal{O}(n^3)$ operations. Fortunately, cheap estimates suffice."
+    },
+    {
+      "type": "method",
+      "id": "method-3.6",
+      "number": null,
+      "title": "Condition Number Estimation",
+      "content": "After computing $PA = LU$:\n\n1. $\\|A\\|$ is cheap to compute directly\n\n2. Estimate $\\|A^{-1}\\|$ by solving $A\\mathbf{z} = \\mathbf{y}$ for \n several vectors $\\mathbf{y}$ and computing $\\|\\mathbf{z}\\|/\\|\\mathbf{y}\\|$\n\n3. Modern libraries use sophisticated algorithms (e.g., LAPACK's \n `\\_GECON`) that estimate $\\kappa(A)$ in $\\mathcal{O}(n^2)$ time"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Dealing with Ill-Conditioned Systems"
+    },
+    {
+      "type": "method",
+      "id": "method-3.6",
+      "number": null,
+      "title": "Strategies for Ill-Conditioning",
+      "content": "When $\\kappa(A)$ is large:\n\n1. **Check the problem:** Is the model correct? Should $A$ really be invertible?\n\n2. **Rescale:** Row and column equilibration can reduce $\\kappa$\n\n3. **Use higher precision:** Extended precision arithmetic\n\n4. **Regularization:** Solve $(A + \\lambda I)\\mathbf{x} = \\mathbf{b}$ for small $\\lambda > 0$\n\n5. **Iterative refinement:** Improve solution using the residual"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-3.6",
+      "number": null,
+      "title": "Iterative Refinement",
+      "content": "algorithmic[1]\n $A$, $\\mathbf{b}$, LU factorization of $A$, initial solution $\\tilde{\\mathbf{x}}$\n Improved solution\n\n $\\mathbf{r} \\gets \\mathbf{b} - A\\tilde{\\mathbf{x}}$ Compute in higher precision if possible\n Solve $A\\mathbf{d} = \\mathbf{r}$ using stored LU\n $\\tilde{\\mathbf{x}} \\gets \\tilde{\\mathbf{x}} + \\mathbf{d}$\n$\\|\\mathbf{d}\\|$ is small enough\n $\\tilde{\\mathbf{x}}$\nalgorithmic"
+    },
+    {
+      "type": "historical",
+      "id": "historical-3.6",
+      "number": null,
+      "title": "Alston S. Householder (1904--1993)",
+      "content": "Householder made foundational contributions to numerical linear algebra, \nincluding the Householder transformation (reflection) used in QR decomposition \nand the formalization of condition number theory. His 1964 book *The \nTheory of Matrices in Numerical Analysis* remains a classic reference."
+    }
+  ]
+}

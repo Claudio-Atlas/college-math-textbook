@@ -1,0 +1,121 @@
+{
+  "id": "discrete-math-ch06-sec02",
+  "title": "Permutations",
+  "chapter": 6,
+  "section": 2,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"For we are God's handiwork, created in Christ Jesus \nto do good works, which God prepared in advance for us to do.\"*{Ephesians 2:10}{The number of permutations of $n$ distinct objects is $n$ factorial.}{Jakob Bernoulli}"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **permutation** is an arrangement of objects \nwhere order matters."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Permutation",
+      "content": "A **permutation** of a set is an ordering of its elements. The \nnumber of permutations of $n$ distinct objects is:\n\\[ n! = n \\times (n-1) \\times (n-2) \\times \\cdots \\times 2 \\times 1 \\]"
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Arranging books",
+      "problem": "How many ways can 5 books be arranged on a shelf?",
+      "solution": "$5! = 120$ arrangements."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "$r$-Permutations"
+    },
+    {
+      "type": "paragraph",
+      "text": "Often we want to arrange only some of the objects."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.2",
+      "number": "6.2",
+      "title": "$r$-Permutation",
+      "content": "An **$r$-permutation** of $n$ objects is an ordered arrangement of \n$r$ of the $n$ objects. The number of $r$-permutations is:\n\\[ P(n, r) = \\frac{n!}{(n-r)!} = n(n-1)(n-2)\\cdots(n-r+1) \\]"
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Race finishers",
+      "problem": "In a race with 10 runners, how many ways can gold, silver, and bronze \nbe awarded?",
+      "solution": "$P(10, 3) = 10 \\times 9 \\times 8 = 720$ ways."
+    },
+    {
+      "type": "example",
+      "id": "example-6.3",
+      "number": "6.3",
+      "title": "Seating",
+      "problem": "How many ways can 6 people be seated in a row of 10 chairs?",
+      "solution": "$P(10, 6) = \\frac{10!}{4!} = 151{,}200$ ways."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Permutations with Repetition"
+    },
+    {
+      "type": "paragraph",
+      "text": "When objects are not distinct, we must avoid overcounting."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Permutations of a Multiset",
+      "content": "The number of permutations of $n$ objects where there are $n_1$ copies \nof type 1, $n_2$ copies of type 2, ..., $n_k$ copies of type $k$ (with \n$n_1 + n_2 + \\cdots + n_k = n$) is:\n\\[ \\frac{n!}{n_1! \\cdot n_2! \\cdots n_k!} \\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.4",
+      "number": "6.4",
+      "title": "Rearranging letters",
+      "problem": "How many distinct rearrangements of MISSISSIPPI?",
+      "solution": "11 letters: 1 M, 4 I's, 4 S's, 2 P's.\n\\[ \\frac{11!}{1! \\cdot 4! \\cdot 4! \\cdot 2!} = \\frac{39916800}{1 \\cdot 24 \\cdot 24 \\cdot 2} = 34{,}650 \\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Circular Permutations"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Circular Permutations",
+      "content": "The number of ways to arrange $n$ distinct objects in a circle is $(n-1)!$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "In a circle, rotations are considered the same arrangement. We \"fix\" \none object and arrange the remaining $n-1$."
+    },
+    {
+      "type": "example",
+      "id": "example-6.5",
+      "number": "6.5",
+      "title": "Round table seating",
+      "problem": "How many ways can 6 people sit at a round table?",
+      "solution": "$(6-1)! = 5! = 120$ arrangements."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 12:18",
+      "text": "But in fact God has placed the \nparts in the body, every one of them, just as He wanted them to be."
+    }
+  ]
+}

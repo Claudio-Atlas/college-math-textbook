@@ -1,0 +1,451 @@
+{
+  "id": "algebra-2-ch11-sec01",
+  "title": "Angles and Radian Measure",
+  "chapter": 11,
+  "section": 1,
+  "book": "algebra-2",
+  "devotional": {
+    "title": "Circles of Time",
+    "scripture": "Ecclesiastes 1:5--7",
+    "content": "{AtlasWarmT}{he}\nsun rises and the sun sets, and hurries back to where it rises. The \nwind blows to the south and turns to the north; round and round it goes, \never returning on its course. All streams flow into the sea, yet the \nsea is never full. To the place the streams come from, there they \nreturn again.\n\nThe Preacher observes the circular patterns of nature: the sun's daily \ncycle, the wind's circuits, the water cycle. These natural rhythms are \nmeasured in angles and rotations.\n\nRadians measure angles by the arc length traveled, connecting rotation \nto distance. The sun \"rises and sets\" as Earth rotates; its angular \nspeed of $2\\pi$ radians per day determines the linear speed at any \nlatitude on Earth's surface.\n\nThe mathematics of circles—radians, arc length, angular speed—helps \nus quantify these cycles that structure our lives. Days, seasons, years: \nall are circular measures of time, rotations of Earth that mark our \njourney through life.",
+    "reflection": "Life follows cycles—daily, seasonal, \ngenerational. How do you find meaning within these repetitive patterns? \nWhat breaks the monotony and gives purpose to the circular nature of time?"
+  },
+  "epigraph": {
+    "text": "When He set a circle on the face of the deep.",
+    "reference": "Proverbs 8:27"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Before diving into trigonometric functions, we must understand angles \nand how to measure them. The radian measure, based on the geometry of \nthe circle itself, provides a more natural and powerful way to work \nwith angles than degrees. This section establishes the foundation for \nall trigonometry that follows."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Angles in Standard Position"
+    },
+    {
+      "type": "paragraph",
+      "text": "An angle is formed by two rays sharing a common endpoint called the \n**vertex**. In trigonometry, we place angles in a coordinate system \nto analyze them systematically."
+    },
+    {
+      "type": "definition",
+      "id": "definition-11.1",
+      "number": "11.1",
+      "title": "Standard Position",
+      "content": "An angle is in **standard position** when:\n\n- Its vertex is at the origin\n\n- Its initial side lies along the positive $x$-axis\n\n- Its terminal side is determined by the rotation\n**Positive angles** rotate counterclockwise; **negative angles** \nrotate clockwise."
+    },
+    {
+      "type": "paragraph",
+      "text": "Think of the initial side as the starting position and the terminal side \nas where the angle ends after rotation. The direction of rotation determines \nthe sign of the angle."
+    },
+    {
+      "type": "example",
+      "id": "example-11.1",
+      "number": "11.1",
+      "title": "Sketching angles in standard position",
+      "problem": "Sketch each angle in standard position and identify the quadrant of the \nterminal side.\n\n1. $135°$\n\n2. $-45°$\n\n3. $300°$\n\n4. $-210°$",
+      "solution": "1. $135°$: Rotate counterclockwise $135°$ from the positive $x$-axis. \n Since $90° < 135° < 180°$, the terminal side is in **Quadrant II**.\n\n2. $-45°$: Rotate clockwise $45°$ from the positive $x$-axis. \n Since the rotation goes into the region below the $x$-axis, the \n terminal side is in **Quadrant IV**.\n\n3. $300°$: Rotate counterclockwise $300°$. Since $270° < 300° < 360°$, \n the terminal side is in **Quadrant IV**.\n\n4. $-210°$: Rotate clockwise $210°$. Going $180°$ clockwise reaches \n the negative $x$-axis; going another $30°$ enters Quadrant II. The \n terminal side is in **Quadrant II**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-11.2",
+      "number": "11.2",
+      "title": "Quadrantal Angles",
+      "content": "**Quadrantal angles** have their terminal \nside on a coordinate axis: $0°$, $90°$, $180°$, $270°$, $360°$, etc. \n(or $0$, $\\frac{\\pi}{2}$, $\\pi$, $\\frac{3\\pi}{2}$, $2\\pi$ in radians)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Quadrantal angles are special because their terminal sides don't lie in \nany quadrant but rather on the boundary between quadrants."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Coterminal Angles"
+    },
+    {
+      "type": "definition",
+      "id": "definition-11.3",
+      "number": "11.3",
+      "title": "Coterminal Angles",
+      "content": "**Coterminal angles** share the same \nterminal side when placed in standard position. Two angles are coterminal \nif they differ by a multiple of $360°$ (or $2\\pi$ radians):\n\\[\n \\theta \\text{ and } \\theta + 360°n \\quad \\text{(degrees)}\n\\]\n\\[\n \\theta \\text{ and } \\theta + 2\\pi n \\quad \\text{(radians)}\n\\]\nwhere $n$ is any integer."
+    },
+    {
+      "type": "example",
+      "id": "example-11.2",
+      "number": "11.2",
+      "title": "Finding coterminal angles",
+      "problem": "Find a positive and a negative angle coterminal with $60°$.",
+      "solution": "Add or subtract multiples of $360°$:\n\n- Positive: $60° + 360° = 420°$\n\n- Negative: $60° - 360° = -300°$\n\nBoth $420°$ and $-300°$ are coterminal with $60°$.\n\nWe could also find: $60° + 720° = 780°$, $60° - 720° = -660°$, etc."
+    },
+    {
+      "type": "example",
+      "id": "example-11.3",
+      "number": "11.3",
+      "title": "Coterminal angles in radians",
+      "problem": "Find an angle coterminal with $\\frac{11\\pi}{4}$ that lies in $[0, 2\\pi)$.",
+      "solution": "Subtract $2\\pi = \\frac{8\\pi}{4}$:\n\\[\n \\frac{11\\pi}{4} - \\frac{8\\pi}{4} = \\frac{3\\pi}{4}\n\\]\n\nSince $0 \\leq \\frac{3\\pi}{4} < 2\\pi$, the coterminal angle is $\\frac{3\\pi}{4}$."
+    },
+    {
+      "type": "example",
+      "id": "example-11.4",
+      "number": "11.4",
+      "title": "Large angle reduction",
+      "problem": "Find the angle coterminal with $-\\frac{17\\pi}{6}$ in $[0, 2\\pi)$.",
+      "solution": "First, note that $-\\frac{17\\pi}{6}$ is negative, so we need to add multiples \nof $2\\pi = \\frac{12\\pi}{6}$ until we're in $[0, 2\\pi)$.\n\n\\[\n -\\frac{17\\pi}{6} + \\frac{12\\pi}{6} = -\\frac{5\\pi}{6} \\quad \\text{(still negative)}\n\\]\n\\[\n -\\frac{5\\pi}{6} + \\frac{12\\pi}{6} = \\frac{7\\pi}{6} \\quad \\text{(in range!)}\n\\]\n\nThe coterminal angle is $\\frac{7\\pi}{6}$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Radian Measure"
+    },
+    {
+      "type": "paragraph",
+      "text": "While degrees divide a full rotation into 360 parts (an ancient Babylonian \nchoice, likely related to the approximate number of days in a year), \nradians provide a measure directly connected to the circle's geometry."
+    },
+    {
+      "type": "definition",
+      "id": "definition-11.4",
+      "number": "11.4",
+      "title": "Radian",
+      "content": "One **radian** is the measure of a central angle \nthat intercepts an arc equal in length to the radius of the circle.\n\nSince the circumference of a circle is $C = 2\\pi r$, a complete revolution \nequals $2\\pi$ radians."
+    },
+    {
+      "type": "paragraph",
+      "text": "The radian is a **dimensionless** quantity—it's the ratio of two \nlengths (arc length to radius). This makes it the natural unit for \ncalculus and advanced mathematics."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-11.1",
+      "number": "11.1",
+      "title": "Degree-Radian Conversion",
+      "content": "\\[\n 360° = 2\\pi \\text{ radians} \\qquad 180° = \\pi \\text{ radians}\n\\]\n\\[\n 1° = \\frac{\\pi}{180} \\text{ radians} \\qquad 1 \\text{ radian} = \\frac{180°}{\\pi} \\approx 57.3°\n\\]\nTo convert:\n\n- **Degrees to radians:** Multiply by $\\frac{\\pi}{180}$\n\n- **Radians to degrees:** Multiply by $\\frac{180}{\\pi}$",
+      "label": "Theorem"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "Degrees",
+        "Radians",
+        "Degrees",
+        "Radians"
+      ],
+      "rows": [
+        [
+          "$0°$",
+          "$0$",
+          "$180°$",
+          "$\\pi$"
+        ],
+        [
+          "$30°$",
+          "$\\frac{\\pi}{6}$",
+          "$210°$",
+          "$\\frac{7\\pi}{6}$"
+        ],
+        [
+          "$45°$",
+          "$\\frac{\\pi}{4}$",
+          "$225°$",
+          "$\\frac{5\\pi}{4}$"
+        ],
+        [
+          "$60°$",
+          "$\\frac{\\pi}{3}$",
+          "$240°$",
+          "$\\frac{4\\pi}{3}$"
+        ],
+        [
+          "$90°$",
+          "$\\frac{\\pi}{2}$",
+          "$270°$",
+          "$\\frac{3\\pi}{2}$"
+        ],
+        [
+          "$120°$",
+          "$\\frac{2\\pi}{3}$",
+          "$300°$",
+          "$\\frac{5\\pi}{3}$"
+        ],
+        [
+          "$135°$",
+          "$\\frac{3\\pi}{4}$",
+          "$315°$",
+          "$\\frac{7\\pi}{4}$"
+        ],
+        [
+          "$150°$",
+          "$\\frac{5\\pi}{6}$",
+          "$330°$",
+          "$\\frac{11\\pi}{6}$"
+        ]
+      ],
+      "alignment": [
+        "center",
+        "center",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-11.5",
+      "number": "11.5",
+      "title": "Converting degrees to radians",
+      "problem": "Convert to radians:\n\n1. $72°$\n\n2. $-150°$\n\n3. $540°$\n\n4. $15°$",
+      "solution": "Multiply by $\\frac{\\pi}{180}$:\n\n1. $72° \\times \\frac{\\pi}{180} = \\frac{72\\pi}{180} = \\frac{2\\pi}{5}$\n\n2. $-150° \\times \\frac{\\pi}{180} = -\\frac{150\\pi}{180} = -\\frac{5\\pi}{6}$\n\n3. $540° \\times \\frac{\\pi}{180} = \\frac{540\\pi}{180} = 3\\pi$\n\n4. $15° \\times \\frac{\\pi}{180} = \\frac{15\\pi}{180} = \\frac{\\pi}{12}$"
+    },
+    {
+      "type": "example",
+      "id": "example-11.6",
+      "number": "11.6",
+      "title": "Converting radians to degrees",
+      "problem": "Convert to degrees:\n\n1. $\\frac{5\\pi}{4}$\n\n2. $\\frac{7\\pi}{12}$\n\n3. $2.5$ radians\n\n4. $\\frac{11\\pi}{6}$",
+      "solution": "Multiply by $\\frac{180}{\\pi}$:\n\n1. $\\frac{5\\pi}{4} \\times \\frac{180}{\\pi} = \\frac{5 \\times 180}{4} = 225°$\n\n2. $\\frac{7\\pi}{12} \\times \\frac{180}{\\pi} = \\frac{7 \\times 180}{12} = 105°$\n\n3. $2.5 \\times \\frac{180}{\\pi} = \\frac{450}{\\pi} \\approx 143.2°$\n\n4. $\\frac{11\\pi}{6} \\times \\frac{180}{\\pi} = \\frac{11 \\times 180}{6} = 330°$"
+    },
+    {
+      "type": "warning",
+      "id": "warning-11.1",
+      "number": null,
+      "title": "Radians Are Often Written Without Units",
+      "content": "When an angle is written without a degree symbol, assume it's in radians.\nFor example, \"$\\theta = 2$\" means $\\theta = 2$ radians, while \n\"$\\theta = 2°$\" means two degrees."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Arc Length"
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the most elegant properties of radian measure is the simplicity \nof the arc length formula."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-11.2",
+      "number": "11.2",
+      "title": "Arc Length Formula",
+      "content": "For a circle with radius $r$, the arc length $s$ subtended by a \ncentral angle $\\theta$ (in radians) is:\n\\[\n \\boxed{s = r\\theta}\n\\]\nThis elegant formula is one reason radians are preferred in higher \nmathematics and physics.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The circumference of a full circle is $C = 2\\pi r$. An angle of $\\theta$ \nradians is the fraction $\\frac{\\theta}{2\\pi}$ of a full rotation. Therefore, \nthe corresponding arc length is:\n\\[\n s = \\frac{\\theta}{2\\pi} \\times 2\\pi r = r\\theta\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-11.7",
+      "number": "11.7",
+      "title": "Finding arc length",
+      "problem": "A circle has radius 10 cm. Find the arc length subtended by:\n\n1. A central angle of $\\frac{\\pi}{3}$ radians\n\n2. A central angle of $45°$\n\n3. A central angle of $2$ radians",
+      "solution": "1. $s = r\\theta = 10 \\times \\frac{\\pi}{3} = \\frac{10\\pi}{3} \\approx 10.47$ cm\n\n2. First convert to radians: $45° = \\frac{\\pi}{4}$\n \n $s = 10 \\times \\frac{\\pi}{4} = \\frac{10\\pi}{4} = \\frac{5\\pi}{2} \\approx 7.85$ cm\n\n3. $s = r\\theta = 10 \\times 2 = 20$ cm"
+    },
+    {
+      "type": "example",
+      "id": "example-11.8",
+      "number": "11.8",
+      "title": "Finding the angle from arc length",
+      "problem": "An arc of length 15 cm is subtended by a central angle on a circle of \nradius 6 cm. Find the angle in radians and degrees.",
+      "solution": "From $s = r\\theta$, we solve for $\\theta$:\n\\[\n \\theta = \\frac{s}{r} = \\frac{15}{6} = 2.5 \\text{ radians}\n\\]\n\nIn degrees: $2.5 \\times \\frac{180}{\\pi} \\approx 143.2°$"
+    },
+    {
+      "type": "example",
+      "id": "example-11.9",
+      "number": "11.9",
+      "title": "Finding the radius",
+      "problem": "A central angle of $\\frac{2\\pi}{5}$ radians subtends an arc of length \n$8\\pi$ meters. Find the radius of the circle.",
+      "solution": "From $s = r\\theta$:\n\\[\n r = \\frac{s}{\\theta} = \\frac{8\\pi}{\\frac{2\\pi}{5}} = 8\\pi \\times \\frac{5}{2\\pi} = 20 \\text{ meters}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Area of a Sector"
+    },
+    {
+      "type": "definition",
+      "id": "definition-11.5",
+      "number": "11.5",
+      "title": "Sector",
+      "content": "A **sector** of a circle is the region bounded by \ntwo radii and the arc between them—like a \"slice of pie.\""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-11.3",
+      "number": "11.3",
+      "title": "Sector Area Formula",
+      "content": "The area $A$ of a sector with central angle $\\theta$ (in radians) and \nradius $r$ is:\n\\[\n \\boxed{A = \\frac{1}{2}r^2\\theta}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The area of the full circle is $\\pi r^2$. A sector with angle $\\theta$ \n(in radians) is the fraction $\\frac{\\theta}{2\\pi}$ of the full circle:\n\\[\n A = \\frac{\\theta}{2\\pi} \\times \\pi r^2 = \\frac{1}{2}r^2\\theta\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-11.10",
+      "number": "11.10",
+      "title": "Finding sector area",
+      "problem": "Find the area of a sector with:\n\n1. Radius 8 m and central angle $\\frac{3\\pi}{4}$\n\n2. Radius 12 cm and central angle $60°$\n\n3. Radius 5 in and central angle $2$ radians",
+      "solution": "1. $A = \\frac{1}{2}(8)^2 \\times \\frac{3\\pi}{4} = \\frac{1}{2} \\times 64 \\times \\frac{3\\pi}{4} = 24\\pi \\approx 75.4$ m²\n\n2. Convert: $60° = \\frac{\\pi}{3}$\n \n $A = \\frac{1}{2}(12)^2 \\times \\frac{\\pi}{3} = \\frac{1}{2} \\times 144 \\times \\frac{\\pi}{3} = 24\\pi \\approx 75.4$ cm²\n\n3. $A = \\frac{1}{2}(5)^2 \\times 2 = \\frac{1}{2} \\times 25 \\times 2 = 25$ in²"
+    },
+    {
+      "type": "example",
+      "id": "example-11.11",
+      "number": "11.11",
+      "title": "Finding angle from sector area",
+      "problem": "A sector has area $50\\pi$ cm² and radius 10 cm. Find the central angle \nin radians and degrees.",
+      "solution": "From $A = \\frac{1}{2}r^2\\theta$:\n\\[\n 50\\pi = \\frac{1}{2}(10)^2\\theta = 50\\theta\n\\]\n\\[\n \\theta = \\pi \\text{ radians} = 180°\n\\]\n\nThe sector is exactly half the circle."
+    },
+    {
+      "type": "example",
+      "id": "example-11.12",
+      "number": "11.12",
+      "title": "Combined arc length and sector area",
+      "problem": "A pizza with diameter 16 inches is cut into 8 equal slices. For each slice, \nfind:\n\n1. The arc length of the crust (outer edge)\n\n2. The area of the slice",
+      "solution": "Radius = 8 inches. Each slice has central angle $\\frac{2\\pi}{8} = \\frac{\\pi}{4}$.\n\n1. $s = r\\theta = 8 \\times \\frac{\\pi}{4} = 2\\pi \\approx 6.28$ inches\n\n2. $A = \\frac{1}{2}r^2\\theta = \\frac{1}{2}(8)^2 \\times \\frac{\\pi}{4} = \\frac{64\\pi}{8} = 8\\pi \\approx 25.1$ in²"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Angular Speed and Linear Speed"
+    },
+    {
+      "type": "paragraph",
+      "text": "When objects move in circular paths—planets orbiting stars, wheels \nturning on cars, gears rotating in machines—we need to describe their \nmotion using angular and linear speed."
+    },
+    {
+      "type": "definition",
+      "id": "definition-11.6",
+      "number": "11.6",
+      "title": "Angular and Linear Speed",
+      "content": "For an object moving along a circular path:\n\n- **Angular speed** $\\omega$ (omega): the rate of rotation \n in radians per unit time:\n \\[\n \\omega = \\frac{\\theta}{t}\n \\]\n\n- **Linear speed** $v$: the rate of distance traveled along \n the arc:\n \\[\n v = \\frac{s}{t} = \\frac{r\\theta}{t} = r\\omega\n \\]\nThe relationship $v = r\\omega$ connects linear and angular speed."
+    },
+    {
+      "type": "warning",
+      "id": "warning-11.1",
+      "number": null,
+      "title": "Units for Angular Speed",
+      "content": "Common units include radians per second (rad/s), radians per minute, or \nrevolutions per minute (rpm). Remember: 1 revolution = $2\\pi$ radians."
+    },
+    {
+      "type": "example",
+      "id": "example-11.13",
+      "number": "11.13",
+      "title": "Earth's rotation",
+      "problem": "Earth rotates once every 24 hours. Find:\n\n1. Earth's angular speed in radians per hour\n\n2. The linear speed at the equator (radius ≈ 6371 km)\n\n3. The linear speed at a latitude of $40°$N (effective radius ≈ 4878 km)",
+      "solution": "1. $\\omega = \\frac{2\\pi \\text{ rad}}{24 \\text{ hr}} = \\frac{\\pi}{12} \\approx 0.262$ rad/hr\n \n In other units: $\\frac{2\\pi}{24 \\times 3600} \\approx 7.27 \\times 10^{-5}$ rad/sec\n\n2. At the equator: \n \\[\n v = r\\omega = 6371 \\times \\frac{\\pi}{12} \\approx 1667 \\text{ km/hr}\n \\]\n That's about 1036 mph!\n\n3. At $40°$N latitude:\n \\[\n v = r\\omega = 4878 \\times \\frac{\\pi}{12} \\approx 1276 \\text{ km/hr}\n \\]\n About 793 mph—slower because the effective radius is smaller."
+    },
+    {
+      "type": "example",
+      "id": "example-11.14",
+      "number": "11.14",
+      "title": "Bicycle wheel",
+      "problem": "A bicycle wheel has diameter 26 inches. If the wheel makes 120 revolutions \nper minute, find:\n\n1. The angular speed in radians per minute\n\n2. The linear speed in inches per minute\n\n3. The bicycle's speed in miles per hour",
+      "solution": "Radius = 13 inches.\n\n1. Each revolution is $2\\pi$ radians:\n \\[\n \\omega = 120 \\times 2\\pi = 240\\pi \\text{ rad/min} \\approx 754 \\text{ rad/min}\n \\]\n\n2. $v = r\\omega = 13 \\times 240\\pi = 3120\\pi$ in/min $\\approx 9802$ in/min\n\n3. Convert: \n \\[\n \\frac{9802 \\text{ in/min} \\times 60 \\text{ min/hr}}{63360 \\text{ in/mi}} \\approx 9.28 \\text{ mph}\n \\]"
+    },
+    {
+      "type": "example",
+      "id": "example-11.15",
+      "number": "11.15",
+      "title": "Clock hands",
+      "problem": "Find the angular speed of:\n\n1. The hour hand of a clock\n\n2. The minute hand of a clock\n\n3. The second hand of a clock",
+      "solution": "1. The hour hand completes one revolution ($2\\pi$ radians) in 12 hours:\n \\[\n \\omega = \\frac{2\\pi}{12} = \\frac{\\pi}{6} \\text{ rad/hr} \\approx 0.524 \\text{ rad/hr}\n \\]\n\n2. The minute hand completes one revolution in 60 minutes:\n \\[\n \\omega = \\frac{2\\pi}{60} = \\frac{\\pi}{30} \\text{ rad/min} \\approx 0.105 \\text{ rad/min}\n \\]\n\n3. The second hand completes one revolution in 60 seconds:\n \\[\n \\omega = \\frac{2\\pi}{60} = \\frac{\\pi}{30} \\text{ rad/sec} \\approx 0.105 \\text{ rad/sec}\n \\]"
+    },
+    {
+      "type": "example",
+      "id": "example-11.16",
+      "number": "11.16",
+      "title": "Pulley system",
+      "problem": "A pulley with radius 6 inches rotates at 150 rpm (revolutions per \nminute). It is connected by a belt to another pulley with radius 9 \ninches. Find:\n\n1. The angular speed of the small pulley in rad/min\n\n2. The linear speed of the belt\n\n3. The angular speed of the large pulley in rpm",
+      "solution": "1. $\\omega_1 = 150 \\times 2\\pi = 300\\pi$ rad/min\n\n2. The belt moves at the linear speed of the pulley edge:\n \\[\n v = r_1 \\omega_1 = 6 \\times 300\\pi = 1800\\pi \\text{ in/min}\n \\]\n\n3. The belt moves at the same linear speed at both pulleys:\n \\[\n v = r_2 \\omega_2 \\implies 1800\\pi = 9 \\omega_2 \\implies \\omega_2 = 200\\pi \\text{ rad/min}\n \\]\n \n Convert to rpm: $\\frac{200\\pi}{2\\pi} = 100$ rpm\n \n Note: The larger pulley rotates slower, as expected!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications"
+    },
+    {
+      "type": "example",
+      "id": "example-11.17",
+      "number": "11.17",
+      "title": "Latitude and distance on Earth",
+      "problem": "Two cities are on the same meridian (line of longitude). City A is at \nlatitude $42°$N and City B is at latitude $28°$N. Find the distance \nbetween them along Earth's surface (assume Earth's radius is 6371 km).",
+      "solution": "The difference in latitude is $42° - 28° = 14°$.\n\nConvert to radians: $14° \\times \\frac{\\pi}{180} = \\frac{7\\pi}{90}$ rad\n\nArc length (distance along the surface):\n\\[\n s = r\\theta = 6371 \\times \\frac{7\\pi}{90} \\approx 1556 \\text{ km}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-11.18",
+      "number": "11.18",
+      "title": "Navigation: Nautical miles",
+      "problem": "A nautical mile is defined as the arc length subtended by one minute \n($\\frac{1}{60}$ degree) of latitude on Earth's surface. Using Earth's \nradius of 6371 km, verify that one nautical mile $\\approx 1.852$ km.",
+      "solution": "One minute of arc = $\\frac{1}{60}$ degree = $\\frac{1}{60} \\times \\frac{\\pi}{180}$ radians = $\\frac{\\pi}{10800}$ radians\n\nArc length:\n\\[\n s = r\\theta = 6371 \\times \\frac{\\pi}{10800} = \\frac{6371\\pi}{10800} \\approx 1.853 \\text{ km}\n\\]\n\nThis matches the standard definition of 1.852 km per nautical mile."
+    },
+    {
+      "type": "example",
+      "id": "example-11.19",
+      "number": "11.19",
+      "title": "Sprinkler coverage",
+      "problem": "A lawn sprinkler rotates through an angle of $150°$ and sprays water up \nto 25 feet. Find:\n\n1. The area of lawn watered\n\n2. The length of the arc at the outer edge of the watered region",
+      "solution": "Convert: $150° = \\frac{150\\pi}{180} = \\frac{5\\pi}{6}$ radians\n\n1. $A = \\frac{1}{2}r^2\\theta = \\frac{1}{2}(25)^2 \\times \\frac{5\\pi}{6} = \\frac{625 \\times 5\\pi}{12} = \\frac{3125\\pi}{12} \\approx 818$ ft²\n\n2. $s = r\\theta = 25 \\times \\frac{5\\pi}{6} = \\frac{125\\pi}{6} \\approx 65.4$ ft"
+    },
+    {
+      "type": "example",
+      "id": "example-11.20",
+      "number": "11.20",
+      "title": "Satellite orbit",
+      "problem": "A geostationary satellite orbits Earth at an altitude of 35,786 km above \nthe equator. Given Earth's radius of 6371 km:\n\n1. Find the satellite's orbital radius\n\n2. Find the satellite's orbital speed (it completes one orbit in 24 hours)\n\n3. How far does the satellite travel in one orbit?",
+      "solution": "1. Orbital radius = Earth's radius + altitude \n \\[\n r = 6371 + 35786 = 42157 \\text{ km}\n \\]\n\n2. Angular speed: $\\omega = \\frac{2\\pi}{24} = \\frac{\\pi}{12}$ rad/hr\n \n Linear speed: $v = r\\omega = 42157 \\times \\frac{\\pi}{12} \\approx 11034$ km/hr $\\approx 3.07$ km/s\n\n3. Circumference: $C = 2\\pi r = 2\\pi \\times 42157 \\approx 264,924$ km"
+    },
+    {
+      "type": "example",
+      "id": "example-11.21",
+      "number": "11.21",
+      "title": "Windshield wiper",
+      "problem": "A windshield wiper is 20 inches long and sweeps through an angle of $120°$. \nThe wiper blade (the part that cleans) is the outer 15 inches. Find the \narea of windshield cleaned by the blade.",
+      "solution": "The cleaned region is the area between two sectors:\n\n- Outer sector: $r_2 = 20$ inches\n\n- Inner sector: $r_1 = 20 - 15 = 5$ inches\n\n- Angle: $120° = \\frac{2\\pi}{3}$ radians\n\nArea cleaned = Outer sector area $-$ Inner sector area:\n\\[\n A = \\frac{1}{2}r_2^2\\theta - \\frac{1}{2}r_1^2\\theta = \\frac{1}{2}\\theta(r_2^2 - r_1^2)\n\\]\n\\[\n A = \\frac{1}{2} \\times \\frac{2\\pi}{3} \\times (400 - 25) = \\frac{\\pi}{3} \\times 375 = 125\\pi \\approx 393 \\text{ in}^2\n\\]"
+    },
+    {
+      "type": "historical",
+      "id": "historical-11.1",
+      "number": null,
+      "title": "The Origin of 360 Degrees",
+      "content": "The Babylonians divided the circle into 360 degrees around 2000 BCE. Why \n360? Several theories exist: (1) It's close to the number of days in a \nyear (365.25). (2) It has many divisors (1, 2, 3, 4, 5, 6, 8, 9, 10, 12, \n15, 18, 20, 24, 30, 36, 40, 45, 60, 72, 90, 120, 180, 360), making \nfractions of a circle easy to compute. (3) The Babylonians used base-60 \n(sexagesimal) arithmetic, and $360 = 6 \\times 60$.\n\nRadians, introduced much later by Roger Cotes in 1714, emerge naturally \nfrom the geometry of the circle and are preferred in calculus and physics."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises 11.1"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:22",
+      "text": "He sits enthroned above the circle of \nthe earth, and its people are like grasshoppers."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 19:6",
+      "text": "It rises at one end of the heavens and \nmakes its circuit to the other."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 1:6",
+      "text": "The wind blows to the south and turns \nto the north; round and round it goes, ever returning on its course."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 8:27",
+      "text": "When He established the heavens, I was \nthere; when He drew a circle on the face of the deep."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 104:19",
+      "text": "He made the moon to mark the seasons; \nthe sun knows when to go down."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 38:5",
+      "text": "Who marked off its dimensions? Surely you \nknow! Who stretched a measuring line across it?"
+    }
+  ]
+}

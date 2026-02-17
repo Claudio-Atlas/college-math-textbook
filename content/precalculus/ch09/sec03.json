@@ -1,0 +1,390 @@
+{
+  "id": "precalculus-ch09-sec03",
+  "title": "Matrix Operations",
+  "chapter": 9,
+  "section": 3,
+  "book": "precalculus",
+  "objectives": [
+    "Add and subtract matrices of the same dimensions",
+    "Perform scalar multiplication on matrices",
+    "Multiply matrices when dimensions are compatible",
+    "Understand why matrix multiplication is not commutative",
+    "Identify and use identity matrices",
+    "Find the inverse of a $2 \\times 2$ matrix using a formula",
+    "Find the inverse of larger matrices using row operations",
+    "Solve linear systems using matrix inverses",
+    "Compute determinants of $2 \\times 2$ and $3 \\times 3$ matrices\nitemize"
+  ],
+  "devotional": {
+    "title": "Unity in Diversity",
+    "scripture": "1 Corinthians 12:12--20",
+    "content": "{AtlasWarmJ}{ust \nas a body,} though one, has many parts, but all its many parts form one \nbody, so it is with Christ. Indeed, the body is not made up of one part \nbut of many.\n\nMatrix multiplication illustrates a profound principle: combining \ndifferent elements can produce something entirely new. When we multiply \na $2 \\times 3$ matrix by a $3 \\times 4$ matrix, the result is a \n$2 \\times 4$ matrix—sharing one dimension with each parent but \nidentical to neither.\n\nThe process itself is remarkable. Each entry in the product comes from \nthe interaction of an entire row from the first matrix with an entire \ncolumn from the second. No single entry acts alone; every number \ncontributes to every part of the result. This is combination at its \ndeepest level.\n\nPaul uses the body metaphor to describe the Church: \"The eye cannot say \nto the hand, `I don't need you!\"' Each part contributes something \nessential, and the body functions only when all parts work together. \nMatrix multiplication embodies this same interdependence mathematically.\n\nThe rules for matrix multiplication—that dimensions must align, that \n$AB \\neq BA$ in general, that the product takes its shape from both \nfactors—are not arbitrary. They emerge from the meaning of the \noperation. Likewise, the diversity of gifts in the Church is not random \nbut designed for complementarity.",
+    "reflection": "Matrix multiplication requires different matrices \nto interact in specific ways to produce something new. How does the \ndiversity of gifts in a community—each person contributing \ndifferently—produce something greater than any individual could \nachieve alone?"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"So in Christ we, though many, form one body, \nand each member belongs to all the others.\"*{Romans 12:5}{In most \nsciences one generation tears down what another has built, and what one \nhas established another undoes. In mathematics alone each generation \nadds a new story to the old structure.}{Hermann Hankel}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Having learned to represent systems of equations using matrices, we now \ndevelop an algebra of matrices themselves. Matrices can be added, \nscaled, and multiplied, forming a rich algebraic structure with \napplications throughout mathematics and science."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Matrix Addition and Subtraction"
+    },
+    {
+      "type": "paragraph",
+      "text": "Two matrices can be added or subtracted only if they have exactly the \nsame dimensions. When they do, we simply add or subtract corresponding \nentries."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Matrix Addition",
+      "content": "If $A$ and $B$ are both $m \\times n$ matrices, their **sum** \n$A + B$ is the $m \\times n$ matrix whose entries are:\n\\[\n (A + B)_{ij} = a_{ij} + b_{ij}\n\\]\nMatrix subtraction is defined similarly: $(A - B)_{ij} = a_{ij} - b_{ij}$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Adding and subtracting matrices",
+      "problem": "Let $A = \\begin{pmatrix} 3 & -1 & 2 \\\\ 0 & 5 & -4 \\end{pmatrix}$ and \n$B = \\begin{pmatrix} 1 & 4 & -2 \\\\ 3 & -2 & 6 \\end{pmatrix}$.\n\nFind (a) $A + B$ and (b) $A - B$.",
+      "solution": "1. Add corresponding entries:\n \\[\n A + B = \\begin{pmatrix} 3+1 & -1+4 & 2+(-2) \\\\ 0+3 & 5+(-2) & -4+6 \\end{pmatrix}\n = \\begin{pmatrix} 4 & 3 & 0 \\\\ 3 & 3 & 2 \\end{pmatrix}\n \\]\n\n2. Subtract corresponding entries:\n \\[\n A - B = \\begin{pmatrix} 3-1 & -1-4 & 2-(-2) \\\\ 0-3 & 5-(-2) & -4-6 \\end{pmatrix}\n = \\begin{pmatrix} 2 & -5 & 4 \\\\ -3 & 7 & -10 \\end{pmatrix}\n \\]"
+    },
+    {
+      "type": "warning",
+      "id": "warning-9.3",
+      "number": null,
+      "title": "Dimension Mismatch",
+      "content": "You cannot add matrices of different sizes. A $2 \\times 3$ matrix cannot \nbe added to a $3 \\times 2$ matrix—even though both have 6 entries. \nThe dimensions must match exactly."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Scalar Multiplication"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **scalar** is simply a number (as opposed to a matrix). \nMultiplying a matrix by a scalar multiplies every entry."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Scalar Multiplication",
+      "content": "If $k$ is a scalar and $A$ is an $m \\times n$ matrix, then $kA$ is the \n$m \\times n$ matrix with entries:\n\\[\n (kA)_{ij} = k \\cdot a_{ij}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Scalar multiplication",
+      "problem": "Let $A = \\begin{pmatrix} 2 & -3 \\\\ 4 & 1 \\\\ 0 & -5 \\end{pmatrix}$.\n\nFind (a) $3A$ and (b) $-\\frac{1}{2}A$.",
+      "solution": "1. Multiply each entry by 3:\n \\[\n 3A = \\begin{pmatrix} 6 & -9 \\\\ 12 & 3 \\\\ 0 & -15 \\end{pmatrix}\n \\]\n\n2. Multiply each entry by $-\\frac{1}{2}$:\n \\[\n -\\frac{1}{2}A = \\begin{pmatrix} -1 & \\frac{3}{2} \\\\ -2 & -\\frac{1}{2} \\\\ 0 & \\frac{5}{2} \\end{pmatrix}\n \\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Combining operations",
+      "problem": "For $A = \\begin{pmatrix} 2 & -1 \\\\ 3 & 4 \\end{pmatrix}$ and \n$B = \\begin{pmatrix} 1 & 5 \\\\ -2 & 0 \\end{pmatrix}$, compute $3A - 2B$.",
+      "solution": "First compute each scalar product, then subtract:\n\\[\n3A = \\begin{pmatrix} 6 & -3 \\\\ 9 & 12 \\end{pmatrix}, \\quad\n2B = \\begin{pmatrix} 2 & 10 \\\\ -4 & 0 \\end{pmatrix}\n\\]\n\\[\n3A - 2B = \\begin{pmatrix} 6-2 & -3-10 \\\\ 9-(-4) & 12-0 \\end{pmatrix}\n= \\begin{pmatrix} 4 & -13 \\\\ 13 & 12 \\end{pmatrix}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Matrix Multiplication"
+    },
+    {
+      "type": "paragraph",
+      "text": "Matrix multiplication is more complex than addition—and far more \npowerful. It's not simply entry-by-entry multiplication; instead, rows \nof the first matrix combine with columns of the second."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.3",
+      "number": "9.3",
+      "title": "Matrix Multiplication",
+      "content": "If $A$ is an $m \\times n$ matrix and $B$ is an $n \\times p$ matrix, \ntheir **product** $AB$ is an $m \\times p$ matrix whose entry in \nrow $i$ and column $j$ is:\n\\[\n (AB)_{ij} = \\sum_{k=1}^{n} a_{ik} b_{kj} = a_{i1}b_{1j} + a_{i2}b_{2j} + \\cdots + a_{in}b_{nj}\n\\]\nThis is the **dot product** of row $i$ of $A$ with column $j$ of $B$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The key requirement: the number of **columns in $A$** must equal \nthe number of **rows in $B$**. We can remember this with the \ndimension check:\n\\[\n \\underbrace{(m \\times \\mathbf{n})}_A \\times \\underbrace{(\\mathbf{n} \\times p)}_B = (m \\times p)\n\\]\nThe inner dimensions must match; the outer dimensions give the result's size."
+    },
+    {
+      "type": "example",
+      "id": "example-9.4",
+      "number": "9.4",
+      "title": "Basic matrix multiplication",
+      "problem": "Compute $AB$ where:\n\\[\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}, \\quad \nB = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}\n\\]",
+      "solution": "Both matrices are $2 \\times 2$. The product $AB$ will also be $2 \\times 2$.\n\nCalculate each entry as a dot product:\n$$\n(AB)_{11} &= (1)(5) + (2)(7) = 5 + 14 = 19 \\\\\n(AB)_{12} &= (1)(6) + (2)(8) = 6 + 16 = 22 \\\\\n(AB)_{21} &= (3)(5) + (4)(7) = 15 + 28 = 43 \\\\\n(AB)_{22} &= (3)(6) + (4)(8) = 18 + 32 = 50\n$$\n\nTherefore:\n\\[\nAB = \\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.5",
+      "number": "9.5",
+      "title": "Multiplication with different dimensions",
+      "problem": "Let $A = \\begin{pmatrix} 2 & 1 & -1 \\\\ 0 & 3 & 2 \\end{pmatrix}$ and \n$B = \\begin{pmatrix} 1 & 4 \\\\ 2 & -1 \\\\ 0 & 3 \\end{pmatrix}$.\n\nFind $AB$.",
+      "solution": "Check dimensions: $A$ is $2 \\times \\mathbf{3}$ and $B$ is $\\mathbf{3} \\times 2$. \nThe inner dimensions match (both 3), so multiplication is possible. \nThe result will be $2 \\times 2$.\n\nCalculate each entry:\n$$\n(AB)_{11} &= 2(1) + 1(2) + (-1)(0) = 2 + 2 + 0 = 4 \\\\\n(AB)_{12} &= 2(4) + 1(-1) + (-1)(3) = 8 - 1 - 3 = 4 \\\\\n(AB)_{21} &= 0(1) + 3(2) + 2(0) = 0 + 6 + 0 = 6 \\\\\n(AB)_{22} &= 0(4) + 3(-1) + 2(3) = 0 - 3 + 6 = 3\n$$\n\n\\[\nAB = \\begin{pmatrix} 4 & 4 \\\\ 6 & 3 \\end{pmatrix}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.6",
+      "number": "9.6",
+      "title": "Matrix multiplication is not commutative",
+      "problem": "Using $A$ and $B$ from Example [ex:matrix-mult-basic], compute $BA$ \nand verify that $AB \\neq BA$.",
+      "solution": "$$\n(BA)_{11} &= 5(1) + 6(3) = 5 + 18 = 23 \\\\\n(BA)_{12} &= 5(2) + 6(4) = 10 + 24 = 34 \\\\\n(BA)_{21} &= 7(1) + 8(3) = 7 + 24 = 31 \\\\\n(BA)_{22} &= 7(2) + 8(4) = 14 + 32 = 46\n$$\n\n\\[\nBA = \\begin{pmatrix} 23 & 34 \\\\ 31 & 46 \\end{pmatrix}\n\\]\n\nCompare: $AB = \\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix} \\neq \n\\begin{pmatrix} 23 & 34 \\\\ 31 & 46 \\end{pmatrix} = BA$.\n\nIndeed, $AB \\neq BA$. Matrix multiplication is **not commutative**."
+    },
+    {
+      "type": "warning",
+      "id": "warning-9.3",
+      "number": null,
+      "title": "Order Matters!",
+      "content": "Unlike ordinary multiplication, $AB$ and $BA$ are generally different \n(when both products even exist). In some cases, $AB$ might exist while \n$BA$ does not. Always pay careful attention to the order of matrix \nmultiplication."
+    },
+    {
+      "type": "example",
+      "id": "example-9.7",
+      "number": "9.7",
+      "title": "When multiplication is impossible",
+      "problem": "Can we compute $AB$ where $A$ is $3 \\times 2$ and $B$ is $3 \\times 4$?",
+      "solution": "For $AB$ to exist, the number of columns of $A$ (which is 2) must equal \nthe number of rows of $B$ (which is 3). Since $2 \\neq 3$, the product \n$AB$ is **undefined**.\n\nNote: $BA$ would also be undefined, since $B$ has 4 columns and $A$ has \n3 rows."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Identity Matrix"
+    },
+    {
+      "type": "paragraph",
+      "text": "Just as the number 1 is the multiplicative identity for real numbers \n($1 \\cdot a = a$), matrices have their own identity."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.4",
+      "number": "9.4",
+      "title": "Identity Matrix",
+      "content": "The $n \\times n$ **identity matrix**, \ndenoted $I_n$ (or simply $I$ when the size is clear), is the square \nmatrix with 1s on the main diagonal and 0s elsewhere:\n\\[\nI_2 = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}, \\quad\nI_3 = \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix}, \\quad \\text{etc.}\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Properties of the Identity Matrix",
+      "content": "For any $m \\times n$ matrix $A$:\n\\[\n I_m A = A \\quad \\text{and} \\quad A I_n = A\n\\]\nThe identity matrix leaves any matrix unchanged under multiplication.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-9.8",
+      "number": "9.8",
+      "title": "Verifying the identity property",
+      "problem": "Verify that $I_2 A = A$ for $A = \\begin{pmatrix} 3 & -1 \\\\ 2 & 5 \\end{pmatrix}$.",
+      "solution": "\\[\nI_2 A = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} \n\\begin{pmatrix} 3 & -1 \\\\ 2 & 5 \\end{pmatrix}\n= \\begin{pmatrix} 1(3)+0(2) & 1(-1)+0(5) \\\\ 0(3)+1(2) & 0(-1)+1(5) \\end{pmatrix}\n= \\begin{pmatrix} 3 & -1 \\\\ 2 & 5 \\end{pmatrix} = A \\checkmark\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Inverse of a Matrix"
+    },
+    {
+      "type": "paragraph",
+      "text": "For real numbers, the multiplicative inverse of $a$ is $\\frac{1}{a}$ \n(or $a^{-1}$), satisfying $a \\cdot a^{-1} = 1$. Matrices have an \nanalogous concept."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.5",
+      "number": "9.5",
+      "title": "Inverse Matrix",
+      "content": "An $n \\times n$ matrix $A$ is **invertible** \n(or **nonsingular**) if there exists a matrix $A^{-1}$ such that:\n\\[\n AA^{-1} = A^{-1}A = I_n\n\\]\nThe matrix $A^{-1}$ is called the **inverse** of $A$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Not every matrix has an inverse—only square matrices can be invertible, \nand not all square matrices are. A square matrix that is not invertible \nis called **singular**."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "Inverse of a $2 \\times 2$ Matrix",
+      "content": "For a $2 \\times 2$ matrix $A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$:\n\\[\nA^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}\n\\]\nprovided that $ad - bc \\neq 0$. The quantity $ad - bc$ is called the \n**determinant** of $A$, denoted $\\det(A)$ or $|A|$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-9.9",
+      "number": "9.9",
+      "title": "Finding a $2 \\times 2$ inverse",
+      "problem": "Find the inverse of $A = \\begin{pmatrix} 3 & 1 \\\\ 5 & 2 \\end{pmatrix}$.",
+      "solution": "First, compute the determinant:\n\\[\n \\det(A) = ad - bc = (3)(2) - (1)(5) = 6 - 5 = 1\n\\]\n\nSince $\\det(A) = 1 \\neq 0$, the inverse exists:\n\\[\nA^{-1} = \\frac{1}{1} \\begin{pmatrix} 2 & -1 \\\\ -5 & 3 \\end{pmatrix}\n= \\begin{pmatrix} 2 & -1 \\\\ -5 & 3 \\end{pmatrix}\n\\]\n\n**Verify:**\n\\[\nAA^{-1} = \\begin{pmatrix} 3 & 1 \\\\ 5 & 2 \\end{pmatrix}\n\\begin{pmatrix} 2 & -1 \\\\ -5 & 3 \\end{pmatrix}\n= \\begin{pmatrix} 6-5 & -3+3 \\\\ 10-10 & -5+6 \\end{pmatrix}\n= \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix} = I_2 \\checkmark\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-9.10",
+      "number": "9.10",
+      "title": "A singular matrix",
+      "problem": "Find the inverse of $A = \\begin{pmatrix} 4 & -2 \\\\ -6 & 3 \\end{pmatrix}$.",
+      "solution": "Compute the determinant:\n\\[\n \\det(A) = (4)(3) - (-2)(-6) = 12 - 12 = 0\n\\]\n\nSince $\\det(A) = 0$, the matrix is **singular** (not invertible). \n$A^{-1}$ does not exist.\n\nGeometrically, this matrix \"collapses\" the plane onto a line—it loses \ninformation that cannot be recovered."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Finding Larger Inverses by Row Reduction"
+    },
+    {
+      "type": "paragraph",
+      "text": "For matrices larger than $2 \\times 2$, we find the inverse using row \noperations. The strategy is to augment $A$ with the identity matrix, \nthen row-reduce: when the left side becomes $I$, the right side becomes \n$A^{-1}$."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-9.3",
+      "number": null,
+      "title": "Finding an Inverse by Row Reduction",
+      "content": "To find $A^{-1}$ for an $n \\times n$ matrix $A$:\n\n1. Form the augmented matrix $(A \\mid I_n)$.\n\n2. Use row operations to reduce the left side to $I_n$.\n\n3. If successful, the right side is $A^{-1}$.\n\n4. If a row of zeros appears on the left, $A$ is singular."
+    },
+    {
+      "type": "example",
+      "id": "example-9.11",
+      "number": "9.11",
+      "title": "Finding a $3 \\times 3$ inverse",
+      "problem": "Find the inverse of $A = \\begin{pmatrix} 1 & 2 & 1 \\\\ 2 & 5 & 3 \\\\ 1 & 3 & 2 \\end{pmatrix}$.",
+      "solution": "Set up the augmented matrix:\n\\[\n\\left(\\begin{array}{ccc|ccc}\n 1 & 2 & 1 & 1 & 0 & 0 \\\\\n 2 & 5 & 3 & 0 & 1 & 0 \\\\\n 1 & 3 & 2 & 0 & 0 & 1\n\\end{array}\\right)\n\\]\n\n$R_2 - 2R_1 \\to R_2$ and $R_3 - R_1 \\to R_3$:\n\\[\n\\left(\\begin{array}{ccc|ccc}\n 1 & 2 & 1 & 1 & 0 & 0 \\\\\n 0 & 1 & 1 & -2 & 1 & 0 \\\\\n 0 & 1 & 1 & -1 & 0 & 1\n\\end{array}\\right)\n\\]\n\n$R_3 - R_2 \\to R_3$:\n\\[\n\\left(\\begin{array}{ccc|ccc}\n 1 & 2 & 1 & 1 & 0 & 0 \\\\\n 0 & 1 & 1 & -2 & 1 & 0 \\\\\n 0 & 0 & 0 & 1 & -1 & 1\n\\end{array}\\right)\n\\]\n\nThe third row on the left is all zeros, but the right side is nonzero. \nThis means $A$ is **singular**—it has no inverse.\n\n(We can verify: $\\det(A) = 1(5 \\cdot 2 - 3 \\cdot 3) - 2(2 \\cdot 2 - 3 \\cdot 1) + 1(2 \\cdot 3 - 5 \\cdot 1) = 1(1) - 2(1) + 1(1) = 0$.)"
+    },
+    {
+      "type": "example",
+      "id": "example-9.12",
+      "number": "9.12",
+      "title": "A successful $3 \\times 3$ inverse",
+      "problem": "Find the inverse of $B = \\begin{pmatrix} 1 & 0 & 2 \\\\ 2 & 1 & 5 \\\\ 1 & 1 & 4 \\end{pmatrix}$.",
+      "solution": "Augmented matrix:\n\\[\n\\left(\\begin{array}{ccc|ccc}\n 1 & 0 & 2 & 1 & 0 & 0 \\\\\n 2 & 1 & 5 & 0 & 1 & 0 \\\\\n 1 & 1 & 4 & 0 & 0 & 1\n\\end{array}\\right)\n\\]\n\n$R_2 - 2R_1 \\to R_2$ and $R_3 - R_1 \\to R_3$:\n\\[\n\\left(\\begin{array}{ccc|ccc}\n 1 & 0 & 2 & 1 & 0 & 0 \\\\\n 0 & 1 & 1 & -2 & 1 & 0 \\\\\n 0 & 1 & 2 & -1 & 0 & 1\n\\end{array}\\right)\n\\]\n\n$R_3 - R_2 \\to R_3$:\n\\[\n\\left(\\begin{array}{ccc|ccc}\n 1 & 0 & 2 & 1 & 0 & 0 \\\\\n 0 & 1 & 1 & -2 & 1 & 0 \\\\\n 0 & 0 & 1 & 1 & -1 & 1\n\\end{array}\\right)\n\\]\n\nBack-eliminate: $R_2 - R_3 \\to R_2$ and $R_1 - 2R_3 \\to R_1$:\n\\[\n\\left(\\begin{array}{ccc|ccc}\n 1 & 0 & 0 & -1 & 2 & -2 \\\\\n 0 & 1 & 0 & -3 & 2 & -1 \\\\\n 0 & 0 & 1 & 1 & -1 & 1\n\\end{array}\\right)\n\\]\n\nTherefore:\n\\[\nB^{-1} = \\begin{pmatrix} -1 & 2 & -2 \\\\ -3 & 2 & -1 \\\\ 1 & -1 & 1 \\end{pmatrix}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving Systems Using Matrix Inverses"
+    },
+    {
+      "type": "paragraph",
+      "text": "A system of linear equations can be written in matrix form as $AX = B$, \nwhere $A$ is the coefficient matrix, $X$ is the column of unknowns, \nand $B$ is the column of constants. If $A$ is invertible, we can solve \nfor $X$ directly."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.3",
+      "number": "9.3",
+      "title": "Solving $AX = B$",
+      "content": "If $A$ is an invertible $n \\times n$ matrix and $B$ is an $n \\times 1$ \ncolumn matrix, then the unique solution to $AX = B$ is:\n\\[\n X = A^{-1}B\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-9.13",
+      "number": "9.13",
+      "title": "Solving using the inverse",
+      "problem": "Use matrix inverses to solve:\n\\[\n\\begin{cases}\n 2x + 3y = 8 \\\\\n x + 2y = 5\n\\end{cases}\n\\]",
+      "solution": "Write in matrix form $AX = B$:\n\\[\n\\underbrace{\\begin{pmatrix} 2 & 3 \\\\ 1 & 2 \\end{pmatrix}}_A\n\\underbrace{\\begin{pmatrix} x \\\\ y \\end{pmatrix}}_X\n= \\underbrace{\\begin{pmatrix} 8 \\\\ 5 \\end{pmatrix}}_B\n\\]\n\nFind $A^{-1}$:\n\\[\n\\det(A) = 2(2) - 3(1) = 1, \\quad\nA^{-1} = \\begin{pmatrix} 2 & -3 \\\\ -1 & 2 \\end{pmatrix}\n\\]\n\nCompute $X = A^{-1}B$:\n\\[\nX = \\begin{pmatrix} 2 & -3 \\\\ -1 & 2 \\end{pmatrix}\n\\begin{pmatrix} 8 \\\\ 5 \\end{pmatrix}\n= \\begin{pmatrix} 2(8) + (-3)(5) \\\\ (-1)(8) + 2(5) \\end{pmatrix}\n= \\begin{pmatrix} 16 - 15 \\\\ -8 + 10 \\end{pmatrix}\n= \\begin{pmatrix} 1 \\\\ 2 \\end{pmatrix}\n\\]\n\nThe solution is $x = 1$, $y = 2$.\n\n**Check:** $2(1) + 3(2) = 8$ and $1 + 2(2) = 5$"
+    },
+    {
+      "type": "paragraph",
+      "text": "$ once, then multiply \nby each new $B$.}"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Determinants"
+    },
+    {
+      "type": "paragraph",
+      "text": "The determinant is a single number associated with a square matrix that \ncaptures important information about the matrix, including whether it's \ninvertible."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.6",
+      "number": "9.6",
+      "title": "Determinant of a $2 \\times 2$ Matrix",
+      "content": "For $A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$:\n\\[\n \\det(A) = |A| = ad - bc\n\\]"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.7",
+      "number": "9.7",
+      "title": "Determinant of a $3 \\times 3$ Matrix",
+      "content": "For $A = \\begin{pmatrix} a & b & c \\\\ d & e & f \\\\ g & h & i \\end{pmatrix}$:\n\\[\n\\det(A) = a(ei - fh) - b(di - fg) + c(dh - eg)\n\\]\nThis is expansion along the first row."
+    },
+    {
+      "type": "example",
+      "id": "example-9.14",
+      "number": "9.14",
+      "title": "Computing determinants",
+      "problem": "Find the determinant of each matrix.\n\n1. $A = \\begin{pmatrix} 5 & 3 \\\\ 2 & 4 \\end{pmatrix}$\n\n2. $B = \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{pmatrix}$",
+      "solution": "1. $\\det(A) = 5(4) - 3(2) = 20 - 6 = \\mathbf{14}$\n\n2. Expand along the first row:\n $$\n \\det(B) &= 1(5 \\cdot 9 - 6 \\cdot 8) - 2(4 \\cdot 9 - 6 \\cdot 7) + 3(4 \\cdot 8 - 5 \\cdot 7) \\\\\n &= 1(45 - 48) - 2(36 - 42) + 3(32 - 35) \\\\\n &= 1(-3) - 2(-6) + 3(-3) \\\\\n &= -3 + 12 - 9 = \\mathbf{0}\n $$\n \n Since $\\det(B) = 0$, matrix $B$ is singular (not invertible)."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.4",
+      "number": "9.4",
+      "title": "Properties of Determinants",
+      "content": "1. $A$ is invertible if and only if $\\det(A) \\neq 0$.\n\n2. $\\det(AB) = \\det(A) \\cdot \\det(B)$.\n\n3. $\\det(A^{-1}) = \\frac{1}{\\det(A)}$ (when $A$ is invertible).\n\n4. $\\det(A^T) = \\det(A)$ where $A^T$ is the transpose.\n\n5. Swapping two rows multiplies the determinant by $-1$.\n\n6. Multiplying a row by $k$ multiplies the determinant by $k$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "summary",
+      "id": "summary-9.3",
+      "number": null,
+      "title": "Matrix Operations",
+      "content": "- **Addition:** Add matrices of equal dimensions \n entry-by-entry.\n\n- **Scalar multiplication:** Multiply every entry by the \n scalar.\n\n- **Matrix multiplication:** $(m \\times n) \\cdot (n \\times p) \n = (m \\times p)$; inner dimensions must match.\n\n- Matrix multiplication is **not commutative**: $AB \\neq BA$ \n in general.\n\n- The **identity matrix** $I$ satisfies $AI = IA = A$.\n\n- $A^{-1}$ is the **inverse** if $AA^{-1} = I$.\n\n- For $2 \\times 2$: $A^{-1} = \\frac{1}{ad-bc}\\begin{pmatrix} \n d & -b \\\\ -c & a \\end{pmatrix}$ when $ad - bc \\neq 0$.\n\n- Solve $AX = B$ by $X = A^{-1}B$ when $A$ is invertible.\n\n- The **determinant** tells if a matrix is invertible \n ($\\det \\neq 0$) or singular ($\\det = 0$)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Matrix Addition and Scalar Multiplication**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Matrix Multiplication**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Identity and Inverse Matrices**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Solving Systems with Inverses**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Determinants**"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Challenge Problems**"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 4:9",
+      "text": "Two are better than one, because they \nhave a good return for their labor."
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 12:14",
+      "text": "Even so the body is not made up of \none part but of many."
+    },
+    {
+      "type": "scripture",
+      "reference": "James 1:17",
+      "text": "Every good and perfect gift is from above, \ncoming down from the Father of the heavenly lights, who does not change \nlike shifting shadows."
+    },
+    {
+      "type": "scripture",
+      "reference": "Matthew 7:7",
+      "text": "Ask and it will be given to you; seek and \nyou will find."
+    }
+  ]
+}

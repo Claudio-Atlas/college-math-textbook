@@ -1,0 +1,121 @@
+{
+  "id": "linear-algebra-ch02-sec05",
+  "title": "Applications of Matrix Operations",
+  "chapter": 2,
+  "section": 5,
+  "book": "linear-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "{For we are his workmanship, created in Christ Jesus for good works, which God prepared beforehand, that we should walk in them.}{Ephesians 2:10}\n {Mathematics is not about numbers, equations, computations, or algorithms: it is about understanding.}{— William Paul Thurston}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Matrices appear throughout modern applications. In this section, we \nexplore several contexts where matrix algebra provides essential tools."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Computer Graphics"
+    },
+    {
+      "type": "paragraph",
+      "text": "Every image on your screen is manipulated using matrix operations. \nTransformations such as rotations, scaling, and translations are \nrepresented as matrices."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "2D transformations",
+      "problem": "In 2D graphics, the following matrices are fundamental:\n\n**Rotation by angle $\\theta$:**\n\\[\nR_\\theta = \\begin{bmatrix} \\cos\\theta & -\\sin\\theta \\\\ \\sin\\theta & \\cos\\theta \\end{bmatrix}\n\\]\n\n**Scaling by factors $s_x$ and $s_y$:**\n\\[\nS = \\begin{bmatrix} s_x & 0 \\\\ 0 & s_y \\end{bmatrix}\n\\]\n\n**Reflection across the $x$-axis:**\n\\[\nF = \\begin{bmatrix} 1 & 0 \\\\ 0 & -1 \\end{bmatrix}\n\\]\n\nTo rotate a point $\\vect{p} = \\begin{bmatrix} 3 \\\\ 4 \\end{bmatrix}$ by \n$90°$ counterclockwise:\n\\[\nR_{90°}\\vect{p} = \\begin{bmatrix} 0 & -1 \\\\ 1 & 0 \\end{bmatrix}\n\\begin{bmatrix} 3 \\\\ 4 \\end{bmatrix}\n= \\begin{bmatrix} -4 \\\\ 3 \\end{bmatrix}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "To combine transformations, multiply the matrices. If you first rotate \nby $\\theta$, then scale, the combined transformation is $S \\cdot R_\\theta$ \n(applied right-to-left)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Markov Chains"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Stochastic Matrix",
+      "content": "A **stochastic matrix** (or \n**transition matrix**) is a square matrix $P$ where:\n\n- All entries are nonnegative.\n\n- Each column sums to 1."
+    },
+    {
+      "type": "paragraph",
+      "text": "Stochastic matrices model systems that evolve probabilistically."
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Weather model",
+      "problem": "A simple weather model has two states: Sunny (S) and Rainy (R). The \ntransition probabilities are:\n\n- If today is sunny, there is a 70\\% chance tomorrow is sunny.\n\n- If today is rainy, there is a 40\\% chance tomorrow is sunny.\n\nThe transition matrix is:\n\\[\nP = \\begin{bmatrix} 0.7 & 0.4 \\\\ 0.3 & 0.6 \\end{bmatrix}\n\\]\nColumn 1 gives probabilities if today is sunny; column 2 if rainy.\n\nIf today we have 60\\% chance of sun ($\\vect{x}_0 = \\begin{bmatrix} 0.6 \\\\ 0.4 \\end{bmatrix}$), \nthen tomorrow:\n\\[\n\\vect{x}_1 = P\\vect{x}_0 = \\begin{bmatrix} 0.7 & 0.4 \\\\ 0.3 & 0.6 \\end{bmatrix}\n\\begin{bmatrix} 0.6 \\\\ 0.4 \\end{bmatrix}\n= \\begin{bmatrix} 0.58 \\\\ 0.42 \\end{bmatrix}\n\\]\n\nAfter $n$ days: $\\vect{x}_n = P^n \\vect{x}_0$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Cryptography"
+    },
+    {
+      "type": "paragraph",
+      "text": "Matrices have been used for encryption since World War I."
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Hill cipher",
+      "problem": "The **Hill cipher** encrypts messages using matrix multiplication. \nConvert letters to numbers (A=0, B=1, ..., Z=25), group into vectors, \nand multiply by an invertible \"key\" matrix modulo 26.\n\nWith key $K = \\begin{bmatrix} 3 & 3 \\\\ 2 & 5 \\end{bmatrix}$ and message \n\"HI\" (H=7, I=8):\n\\[\nK\\begin{bmatrix} 7 \\\\ 8 \\end{bmatrix} = \n\\begin{bmatrix} 3 \\cdot 7 + 3 \\cdot 8 \\\\ 2 \\cdot 7 + 5 \\cdot 8 \\end{bmatrix}\n= \\begin{bmatrix} 45 \\\\ 54 \\end{bmatrix}\n\\equiv \\begin{bmatrix} 19 \\\\ 2 \\end{bmatrix} \\pmod{26}\n\\]\nThis gives \"TC.\" To decrypt, multiply by $K\\inv$ (mod 26).",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Population Models"
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "Leslie matrix",
+      "problem": "A **Leslie matrix** models population dynamics. \nConsider a species with three age classes. The first row contains \nbirth rates; subdiagonal entries are survival rates:\n\\[\nL = \\begin{bmatrix} 0 & 2 & 0.5 \\\\ 0.5 & 0 & 0 \\\\ 0 & 0.6 & 0 \\end{bmatrix}\n\\]\n\nIf the current population is \n$\\vect{x}_0 = \\begin{bmatrix} 100 \\\\ 80 \\\\ 50 \\end{bmatrix}$ (young, \nmiddle, old), then next year:\n\\[\n\\vect{x}_1 = L\\vect{x}_0 = \\begin{bmatrix} 0 + 160 + 25 \\\\ 50 + 0 + 0 \\\\ 0 + 48 + 0 \\end{bmatrix}\n= \\begin{bmatrix} 185 \\\\ 50 \\\\ 48 \\end{bmatrix}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Networks and Graphs"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **adjacency matrix** of a graph has $a_{ij} = 1$ if there is \nan edge from node $i$ to node $j$, and $0$ otherwise."
+    },
+    {
+      "type": "example",
+      "id": "example-2.5",
+      "number": "2.5",
+      "title": "Counting paths",
+      "problem": "The entry $(A^k)_{ij}$ counts the number of paths of length $k$ from \nnode $i$ to node $j$. This result, while surprising, follows from the \ndefinition of matrix multiplication.",
+      "solution": ""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 25:11",
+      "text": "A word fitly spoken is like apples \nof gold in a setting of silver."
+    },
+    {
+      "type": "quote",
+      "author": "Claude Shannon (1916--2001)",
+      "text": "The fundamental problem of \ncommunication is that of reproducing at one point either exactly or \napproximately a message selected at another point."
+    }
+  ]
+}

@@ -1,0 +1,114 @@
+{
+  "id": "discrete-math-ch09-sec03",
+  "title": "Eulerian and Hamiltonian Graphs",
+  "chapter": 9,
+  "section": 3,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"I have fought the good fight, I have finished the \nrace, I have kept the faith.\"*{2 Timothy 4:7}{A graph has an Eulerian circuit if and only if every vertex has even degree.}{Leonhard Euler}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Two classic problems ask about traversing a graph: visiting every \n*edge* (Euler) or every *vertex* (Hamilton)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Eulerian Paths and Circuits"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Euler Path and Circuit",
+      "content": "An **Euler path** traverses every edge exactly once.\n\nAn **Euler circuit** is an Euler path that \nreturns to its starting vertex."
+    },
+    {
+      "type": "historical",
+      "id": "historical-9.3",
+      "number": null,
+      "title": "Leonhard Euler (1707--1783)",
+      "content": "The great Swiss mathematician Euler founded graph theory with his 1736 \npaper on the Königsberg bridges. Despite losing sight in both eyes, Euler \nremained phenomenally productive, dictating hundreds of papers. A devout \nChristian, he defended his faith publicly and saw his mathematical work \nas revealing God's creation."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Euler's Theorem",
+      "content": "A connected graph has:\n\n- An **Euler circuit** iff every vertex has even degree.\n\n- An **Euler path** (but no circuit) iff exactly two vertices \n have odd degree (these are the endpoints).",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Königsberg bridges",
+      "problem": "The Königsberg graph has 4 vertices with degrees 3, 3, 3, 5—all odd! \nBy Euler's theorem, no Euler path exists.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Finding an Euler circuit",
+      "problem": "A graph with vertices $\\{A, B, C, D\\}$ and degrees all 4 has an Euler \ncircuit. Algorithm: follow edges, preferring non-bridges, until you return.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Hamiltonian Paths and Cycles"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Hamilton Path and Cycle",
+      "content": "A **Hamilton path** visits every vertex exactly once.\n\nA **Hamilton cycle** is a Hamilton path that \nreturns to the start."
+    },
+    {
+      "type": "paragraph",
+      "text": "Unlike Euler circuits, there is no simple characterization of which graphs \nhave Hamilton cycles. The problem is NP-complete!"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "Ore's Theorem",
+      "content": "If $G$ is a simple graph with $n \\geq 3$ vertices, and for every pair of \nnon-adjacent vertices $u, v$: $\\deg(u) + \\deg(v) \\geq n$, then $G$ has a \nHamilton cycle.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.3",
+      "number": "9.3",
+      "title": "Dirac's Theorem",
+      "content": "If $G$ is a simple graph with $n \\geq 3$ vertices and $\\deg(v) \\geq n/2$ \nfor all $v$, then $G$ has a Hamilton cycle.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Traveling Salesman Problem",
+      "problem": "Given cities with distances, find the shortest Hamilton cycle. This \noptimization problem is NP-hard and has no known efficient solution.",
+      "solution": ""
+    },
+    {
+      "type": "warning",
+      "id": "warning-9.3",
+      "number": null,
+      "title": "Euler vs. Hamilton",
+      "content": "- Euler: visit every *edge* once (polynomial-time checkable)\n\n- Hamilton: visit every *vertex* once (NP-complete to check)"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 4:26",
+      "text": "Give careful thought to the paths for \nyour feet and be steadfast in all your ways."
+    }
+  ]
+}

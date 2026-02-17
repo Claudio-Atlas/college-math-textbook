@@ -1,0 +1,262 @@
+{
+  "id": "vol3-ch13-sec05",
+  "title": "Tangent and Normal Vectors",
+  "chapter": 13,
+  "section": 5,
+  "book": "vol3",
+  "epigraph": {
+    "text": "Jesus Christ is the same yesterday and today and forever.",
+    "reference": "Hebrews 13:8"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "At each point of a smooth curve, we can construct a natural coordinate system called the **Frenet-Serret frame** (or TNB frame). This moving frame consists of three mutually perpendicular unit vectors that describe how the curve bends and twists through space. Understanding this frame deepens our geometric insight into curves and provides essential tools for applications in physics and engineering."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Unit Tangent Vector"
+    },
+    {
+      "type": "paragraph",
+      "text": "We have already met the unit tangent vector; now we explore it more deeply."
+    },
+    {
+      "type": "definition",
+      "id": "definition-13.1",
+      "number": "13.1",
+      "title": "Unit Tangent Vector (Review)",
+      "content": "The **unit tangent vector** to a smooth curve $\\vect{r}(t)$ is\n\\[\n \\vect{T}(t) = \\frac{\\vect{r}'(t)}{|\\vect{r}'(t)|}.\n\\]\nIt points in the direction of motion with magnitude 1."
+    },
+    {
+      "type": "paragraph",
+      "text": "The unit tangent vector has a crucial property: since $|\\vect{T}| = 1$ is constant, $\\vect{T}' \\perp \\vect{T}$ (as we proved earlier). This means $\\vect{T}'$ points perpendicular to the curve."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Principal Unit Normal Vector"
+    },
+    {
+      "type": "paragraph",
+      "text": "The derivative of $\\vect{T}$ tells us how the curve is turning. Normalizing this gives the principal normal."
+    },
+    {
+      "type": "definition",
+      "id": "definition-13.2",
+      "number": "13.2",
+      "title": "Principal Unit Normal Vector",
+      "content": "The **principal unit normal vector** is\n\\[\n \\vect{N}(t) = \\frac{\\vect{T}'(t)}{|\\vect{T}'(t)|},\n\\]\ndefined wherever $\\vect{T}'(t) \\neq \\vect{0}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The normal vector $\\vect{N}$ points in the direction the curve is turning—toward the center of curvature. For a particle on the curve, $\\vect{N}$ points in the direction of the centripetal force."
+    },
+    {
+      "type": "example",
+      "id": "example-13.1",
+      "number": "13.1",
+      "title": "Finding T and N for a circle",
+      "problem": "Find $\\vect{T}$ and $\\vect{N}$ for the circle $\\vect{r}(t) = \\langle 3\\cos t, 3\\sin t \\rangle$.",
+      "solution": "**Step 1:** Find $\\vect{r}'(t)$ and $|\\vect{r}'(t)|$:\n\\[\n \\vect{r}'(t) = \\langle -3\\sin t, 3\\cos t \\rangle, \\quad |\\vect{r}'| = 3.\n\\]\n\n**Step 2:** Find $\\vect{T}$:\n\\[\n \\vect{T}(t) = \\frac{1}{3}\\langle -3\\sin t, 3\\cos t \\rangle = \\langle -\\sin t, \\cos t \\rangle.\n\\]\n\n**Step 3:** Find $\\vect{T}'(t)$ and $|\\vect{T}'(t)|$:\n\\[\n \\vect{T}'(t) = \\langle -\\cos t, -\\sin t \\rangle, \\quad |\\vect{T}'| = 1.\n\\]\n\n**Step 4:** Find $\\vect{N}$:\n\\[\n \\vect{N}(t) = \\langle -\\cos t, -\\sin t \\rangle.\n\\]\nNote that $\\vect{N}$ points toward the origin—the center of the circle. Also, $\\vect{T} \\dotp \\vect{N} = \\sin t \\cos t - \\cos t \\sin t = 0$, confirming orthogonality."
+    },
+    {
+      "type": "example",
+      "id": "example-13.2",
+      "number": "13.2",
+      "title": "Finding T and N for a helix",
+      "problem": "Find $\\vect{T}$ and $\\vect{N}$ for the helix $\\vect{r}(t) = \\langle 2\\cos t, 2\\sin t, t \\rangle$.",
+      "solution": "**Step 1:**\n\\[\n \\vect{r}'(t) = \\langle -2\\sin t, 2\\cos t, 1 \\rangle, \\quad |\\vect{r}'| = \\sqrt{4 + 1} = \\sqrt{5}.\n\\]\n\n**Step 2:**\n\\[\n \\vect{T}(t) = \\frac{1}{\\sqrt{5}}\\langle -2\\sin t, 2\\cos t, 1 \\rangle.\n\\]\n\n**Step 3:**\n\\[\n \\vect{T}'(t) = \\frac{1}{\\sqrt{5}}\\langle -2\\cos t, -2\\sin t, 0 \\rangle, \\quad |\\vect{T}'| = \\frac{2}{\\sqrt{5}}.\n\\]\n\n**Step 4:**\n\\[\n \\vect{N}(t) = \\frac{\\sqrt{5}}{2} \\cdot \\frac{1}{\\sqrt{5}}\\langle -2\\cos t, -2\\sin t, 0 \\rangle = \\langle -\\cos t, -\\sin t, 0 \\rangle.\n\\]\nThe normal vector is horizontal, pointing toward the $z$-axis."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Binormal Vector"
+    },
+    {
+      "type": "paragraph",
+      "text": "The third vector of our frame is perpendicular to both $\\vect{T}$ and $\\vect{N}$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-13.3",
+      "number": "13.3",
+      "title": "Binormal Vector",
+      "content": "The **binormal vector** is\n\\[\n \\vect{B}(t) = \\vect{T}(t) \\crossp \\vect{N}(t).\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Since $\\vect{T}$ and $\\vect{N}$ are orthogonal unit vectors, $\\vect{B}$ is also a unit vector, perpendicular to both. The triple $\\{\\vect{T}, \\vect{N}, \\vect{B}\\}$ forms a right-handed orthonormal basis that moves along the curve."
+    },
+    {
+      "type": "example",
+      "id": "example-13.3",
+      "number": "13.3",
+      "title": "Finding the binormal",
+      "problem": "Find $\\vect{B}$ for the helix $\\vect{r}(t) = \\langle 2\\cos t, 2\\sin t, t \\rangle$.",
+      "solution": "From the previous example:\n\\[\n \\vect{T} = \\frac{1}{\\sqrt{5}}\\langle -2\\sin t, 2\\cos t, 1 \\rangle, \\quad \\vect{N} = \\langle -\\cos t, -\\sin t, 0 \\rangle.\n\\]\n$$\n \\vect{B} &= \\vect{T} \\crossp \\vect{N} = \\frac{1}{\\sqrt{5}} \\begin{vmatrix} \\vecti & \\vectj & \\vectk \\\\ -2\\sin t & 2\\cos t & 1 \\\\ -\\cos t & -\\sin t & 0 \\end{vmatrix} \\\\\n &= \\frac{1}{\\sqrt{5}} \\langle (2\\cos t)(0) - (1)(-\\sin t), (1)(-\\cos t) - (-2\\sin t)(0), (-2\\sin t)(-\\sin t) - (2\\cos t)(-\\cos t) \\rangle \\\\\n &= \\frac{1}{\\sqrt{5}} \\langle \\sin t, -\\cos t, 2 \\rangle.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Osculating, Normal, and Rectifying Planes"
+    },
+    {
+      "type": "paragraph",
+      "text": "The three vectors define three important planes:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-13.4",
+      "number": "13.4",
+      "title": "The Three Planes",
+      "content": "At each point of a curve:\n\n- The **osculating plane** contains $\\vect{T}$ and $\\vect{N}$, with normal $\\vect{B}$. This is the plane of local bending.\n\n- The **normal plane** contains $\\vect{N}$ and $\\vect{B}$, with normal $\\vect{T}$. It is perpendicular to the curve.\n\n- The **rectifying plane** contains $\\vect{T}$ and $\\vect{B}$, with normal $\\vect{N}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The osculating plane is the plane that best fits the curve at a point. The osculating circle lies in the osculating plane and has radius $\\rho = 1/\\kappa$."
+    },
+    {
+      "type": "example",
+      "id": "example-13.4",
+      "number": "13.4",
+      "title": "Finding the osculating plane",
+      "problem": "Find the equation of the osculating plane for $\\vect{r}(t) = \\langle t, t^2, t^3 \\rangle$ at $t = 1$.",
+      "solution": "The osculating plane passes through $\\vect{r}(1) = \\langle 1, 1, 1 \\rangle$ and has normal vector $\\vect{B}(1)$.\n\nFirst, find $\\vect{r}'$ and $\\vect{r}''$:\n\\[\n \\vect{r}'(t) = \\langle 1, 2t, 3t^2 \\rangle, \\quad \\vect{r}''(t) = \\langle 0, 2, 6t \\rangle.\n\\]\nAt $t = 1$:\n\\[\n \\vect{r}'(1) = \\langle 1, 2, 3 \\rangle, \\quad \\vect{r}''(1) = \\langle 0, 2, 6 \\rangle.\n\\]\nThe binormal is parallel to $\\vect{r}' \\crossp \\vect{r}''$:\n\\[\n \\vect{r}' \\crossp \\vect{r}'' = \\begin{vmatrix} \\vecti & \\vectj & \\vectk \\\\ 1 & 2 & 3 \\\\ 0 & 2 & 6 \\end{vmatrix} = \\langle 12-6, -(6-0), 2-0 \\rangle = \\langle 6, -6, 2 \\rangle.\n\\]\nThe osculating plane has equation:\n\\[\n 6(x-1) - 6(y-1) + 2(z-1) = 0,\n\\]\nor $6x - 6y + 2z = 2$, which simplifies to $3x - 3y + z = 1$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Torsion"
+    },
+    {
+      "type": "paragraph",
+      "text": "While curvature measures how much a curve bends, **torsion** measures how much it twists out of the osculating plane."
+    },
+    {
+      "type": "definition",
+      "id": "definition-13.5",
+      "number": "13.5",
+      "title": "Torsion",
+      "content": "The **torsion** $\\tau$ of a curve is defined by\n\\[\n \\frac{d\\vect{B}}{ds} = -\\tau\\vect{N},\n\\]\nor equivalently,\n\\[\n \\tau = -\\frac{d\\vect{B}}{ds} \\dotp \\vect{N}.\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-13.1",
+      "number": "13.1",
+      "title": "Torsion Formula",
+      "content": "\\[\n \\tau = \\frac{(\\vect{r}' \\crossp \\vect{r}'') \\dotp \\vect{r}'''}{|\\vect{r}' \\crossp \\vect{r}''|^2}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Plane curves have $\\tau = 0$ (they don't twist out of their plane).",
+        "Positive torsion: the curve twists like a right-handed helix.",
+        "Negative torsion: the curve twists like a left-handed helix."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-13.5",
+      "number": "13.5",
+      "title": "Torsion of a helix",
+      "problem": "Find the torsion of the helix $\\vect{r}(t) = \\langle a\\cos t, a\\sin t, bt \\rangle$.",
+      "solution": "$$\n \\vect{r}' &= \\langle -a\\sin t, a\\cos t, b \\rangle, \\\\\n \\vect{r}'' &= \\langle -a\\cos t, -a\\sin t, 0 \\rangle, \\\\\n \\vect{r}''' &= \\langle a\\sin t, -a\\cos t, 0 \\rangle.\n$$\nWe computed earlier: $\\vect{r}' \\crossp \\vect{r}'' = \\langle ab\\sin t, -ab\\cos t, a^2 \\rangle$.\n\\[\n |\\vect{r}' \\crossp \\vect{r}''|^2 = a^2b^2 + a^4 = a^2(a^2 + b^2).\n\\]\n\\[\n (\\vect{r}' \\crossp \\vect{r}'') \\dotp \\vect{r}''' = (ab\\sin t)(a\\sin t) + (-ab\\cos t)(-a\\cos t) + (a^2)(0) = a^2b.\n\\]\n\\[\n \\tau = \\frac{a^2b}{a^2(a^2 + b^2)} = \\frac{b}{a^2 + b^2}.\n\\]\nThe torsion is constant, positive when $b > 0$ (right-handed helix)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Frenet-Serret Formulas"
+    },
+    {
+      "type": "paragraph",
+      "text": "The derivatives of $\\vect{T}$, $\\vect{N}$, and $\\vect{B}$ (with respect to arc length) are elegantly expressed in terms of each other."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-13.2",
+      "number": "13.2",
+      "title": "Frenet-Serret Formulas",
+      "content": "$$\n \\frac{d\\vect{T}}{ds} &= \\kappa\\vect{N}, \\\\\n \\frac{d\\vect{N}}{ds} &= -\\kappa\\vect{T} + \\tau\\vect{B}, \\\\\n \\frac{d\\vect{B}}{ds} &= -\\tau\\vect{N}.\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "These formulas show that the curvature $\\kappa$ and torsion $\\tau$ completely determine the shape of a curve (up to rigid motion). Two curves with the same curvature and torsion functions differ only by a rotation and translation."
+    },
+    {
+      "type": "proof",
+      "content": "By definition of curvature using arc length parametrization:\n\\[\n \\kappa = \\left|\\frac{d\\vect{T}}{ds}\\right|.\n\\]\nSince $\\vect{T}'$ is perpendicular to $\\vect{T}$ (because $|\\vect{T}| = 1$), and since $\\vect{N}$ is defined as the unit vector in the direction of $\\vect{T}'$, we have:\n\\[\n \\frac{d\\vect{T}}{ds} = \\left|\\frac{d\\vect{T}}{ds}\\right| \\vect{N} = \\kappa \\vect{N}.\n\\]"
+    },
+    {
+      "type": "proof",
+      "content": "Since $\\vect{B} = \\vect{T} \\crossp \\vect{N}$ and $|\\vect{B}| = 1$, we have $\\vect{B}' \\perp \\vect{B}$. Thus $\\vect{B}'$ lies in the plane spanned by $\\vect{T}$ and $\\vect{N}$.\n\nDifferentiating $\\vect{B} \\dotp \\vect{T} = 0$:\n\\[\n \\vect{B}' \\dotp \\vect{T} + \\vect{B} \\dotp \\vect{T}' = 0.\n\\]\nSince $\\vect{T}' = \\kappa \\vect{N}$ (from first formula) and $\\vect{B} \\perp \\vect{N}$:\n\\[\n \\vect{B}' \\dotp \\vect{T} = -\\vect{B} \\dotp (\\kappa\\vect{N}) = 0.\n\\]\nSo $\\vect{B}' \\perp \\vect{T}$, meaning $\\vect{B}'$ is parallel to $\\vect{N}$.\n\nWe define torsion $\\tau$ by $\\vect{B}' = -\\tau\\vect{N}$ (the minus sign is conventional, chosen so that positive torsion corresponds to right-handed twisting)."
+    },
+    {
+      "type": "example",
+      "id": "example-13.6",
+      "number": "13.6",
+      "title": "Verifying Frenet-Serret formulas",
+      "problem": "For the helix $\\vect{r}(t) = \\langle a\\cos t, a\\sin t, bt \\rangle$, verify that the Frenet-Serret formulas hold.",
+      "solution": "We previously found:\n\\[\n \\vect{T} = \\frac{1}{c}\\langle -a\\sin t, a\\cos t, b \\rangle, \\quad \\vect{N} = \\langle -\\cos t, -\\sin t, 0 \\rangle, \\quad \\vect{B} = \\frac{1}{c}\\langle b\\sin t, -b\\cos t, a \\rangle,\n\\]\nwhere $c = \\sqrt{a^2 + b^2}$, with $\\kappa = a/c^2$ and $\\tau = b/c^2$.\n\nThe arc length parameter satisfies $ds/dt = c$, so $d/ds = (1/c)(d/dt)$.\n\n**Verify $d\\vect{T}/ds = \\kappa\\vect{N}$:**\n\\[\n \\frac{d\\vect{T}}{dt} = \\frac{1}{c}\\langle -a\\cos t, -a\\sin t, 0 \\rangle = \\frac{a}{c}\\langle -\\cos t, -\\sin t, 0 \\rangle = \\frac{a}{c}\\vect{N}.\n\\]\n\\[\n \\frac{d\\vect{T}}{ds} = \\frac{1}{c} \\cdot \\frac{a}{c}\\vect{N} = \\frac{a}{c^2}\\vect{N} = \\kappa\\vect{N}. \\quad \\checkmark\n\\]\n\n**Verify $d\\vect{B}/ds = -\\tau\\vect{N}$:**\n\\[\n \\frac{d\\vect{B}}{dt} = \\frac{1}{c}\\langle b\\cos t, b\\sin t, 0 \\rangle = \\frac{b}{c}\\langle \\cos t, \\sin t, 0 \\rangle = -\\frac{b}{c}\\vect{N}.\n\\]\n\\[\n \\frac{d\\vect{B}}{ds} = \\frac{1}{c} \\cdot \\left(-\\frac{b}{c}\\vect{N}\\right) = -\\frac{b}{c^2}\\vect{N} = -\\tau\\vect{N}. \\quad \\checkmark\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-13.7",
+      "number": "13.7",
+      "title": "Computing the TNB frame for a twisted cubic",
+      "problem": "Find $\\vect{T}$, $\\vect{N}$, and $\\vect{B}$ for the twisted cubic $\\vect{r}(t) = \\langle t, t^2, t^3 \\rangle$ at $t = 0$.",
+      "solution": "**Step 1: Compute derivatives.**\n$$\n \\vect{r}'(t) &= \\langle 1, 2t, 3t^2 \\rangle, & \\vect{r}'(0) &= \\langle 1, 0, 0 \\rangle, \\\\\n \\vect{r}''(t) &= \\langle 0, 2, 6t \\rangle, & \\vect{r}''(0) &= \\langle 0, 2, 0 \\rangle, \\\\\n \\vect{r}'''(t) &= \\langle 0, 0, 6 \\rangle, & \\vect{r}'''(0) &= \\langle 0, 0, 6 \\rangle.\n$$\n\n**Step 2: Find $\\vect{T}$.**\n\\[\n |\\vect{r}'(0)| = 1, \\quad \\vect{T}(0) = \\langle 1, 0, 0 \\rangle.\n\\]\n\n**Step 3: Find $\\vect{N}$.**\n\nFor $\\vect{N}$, we use the formula $\\vect{N} = (\\vect{r}'' - (\\vect{r}'' \\dotp \\vect{T})\\vect{T})/|\\dots|$.\n\nAt $t = 0$: $\\vect{r}'' \\dotp \\vect{T} = 0$, so $\\vect{r}'' - (\\vect{r}'' \\dotp \\vect{T})\\vect{T} = \\langle 0, 2, 0 \\rangle$.\n\nThus $\\vect{N}(0) = \\langle 0, 1, 0 \\rangle$.\n\n**Step 4: Find $\\vect{B}$.**\n\\[\n \\vect{B}(0) = \\vect{T}(0) \\crossp \\vect{N}(0) = \\langle 1, 0, 0 \\rangle \\crossp \\langle 0, 1, 0 \\rangle = \\langle 0, 0, 1 \\rangle.\n\\]\n\nAt the origin, the TNB frame aligns with the standard coordinate axes: $\\vect{T} = \\vecti$, $\\vect{N} = \\vectj$, $\\vect{B} = \\vectk$."
+    },
+    {
+      "type": "example",
+      "id": "example-13.8",
+      "number": "13.8",
+      "title": "Physical interpretation of the TNB frame",
+      "problem": "A roller coaster car moves along a track. Describe what each vector of the TNB frame tells the passengers.",
+      "solution": "- **$\\vect{T}$ (tangent):** Points in the direction of motion. When accelerating forward, passengers feel pushed back against their seats (opposite to $\\vect{T}$).\n\n- **$\\vect{N}$ (normal):** Points toward the center of the curve. On a right turn, $\\vect{N}$ points right, and passengers feel pushed left (opposite to $\\vect{N}$). This is the centrifugal effect.\n\n- **$\\vect{B}$ (binormal):** Perpendicular to the osculating plane. When the track is flat, $\\vect{B}$ points up. When the track twists (nonzero torsion), $\\vect{B}$ rotates, and passengers feel a corkscrew sensation.\n\nThe Frenet-Serret formulas describe how these directions change:\n\n- $d\\vect{T}/ds = \\kappa\\vect{N}$: The car's direction changes toward the center of curvature.\n\n- $d\\vect{B}/ds = -\\tau\\vect{N}$: The \"up\" direction rotates as the track twists."
+    },
+    {
+      "type": "historical",
+      "id": "historical-13.5",
+      "number": null,
+      "title": "Jean Frédéric Frenet and Joseph Alfred Serret",
+      "content": "The Frenet-Serret formulas were discovered independently by French mathematicians Jean Frédéric Frenet (1816–1900) and Joseph Alfred Serret (1819–1885) in the mid-19th century. These formulas unified the study of space curves and provided the foundation for differential geometry, the mathematical language of Einstein's general relativity."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Matthew 7:14",
+      "text": "For the gate is narrow and the way is hard that leads to life, and those who find it are few."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 8:27",
+      "text": "When he established the heavens, I was there; when he drew a circle on the face of the deep."
+    },
+    {
+      "type": "scripture",
+      "reference": "Colossians 1:17",
+      "text": "And he is before all things, and in him all things hold together."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 1:6",
+      "text": "The wind blows to the south and goes around to the north; around and around goes the wind, and on its circuits the wind returns."
+    },
+    {
+      "type": "quote",
+      "author": "Leonhard Euler",
+      "text": "Nothing takes place in the world whose meaning is not that of some maximum or minimum."
+    },
+    {
+      "type": "quote",
+      "author": "Gauss",
+      "text": "Mathematics is the queen of the sciences."
+    }
+  ]
+}

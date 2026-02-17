@@ -1,0 +1,212 @@
+{
+  "id": "numerical-analysis-ch05-sec04",
+  "title": "Numerical Stability and Optimal Step Size",
+  "chapter": 5,
+  "section": 4,
+  "book": "numerical-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "In exact arithmetic, smaller step sizes always yield more accurate \nderivative approximations. But computers use finite-precision arithmetic, \nintroducing a fundamental tension: truncation error decreases with $h$, \nwhile round-off error increases. Finding the optimal balance is both \nan art and a science."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Sources of Error"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Error Classification",
+      "content": "In numerical differentiation, two types of error are present:\n\n**Truncation error**: The error from \nreplacing the limit definition with a finite difference. This is \nthe error analyzed in exact arithmetic.\n\n**Round-off error**: The error from \nfinite-precision arithmetic, particularly catastrophic cancellation \nwhen subtracting nearly equal numbers."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Round-off Error in Subtraction",
+      "content": "Let $a$ and $b$ be floating-point numbers with $|a - b| \\ll |a|$. \nIf $\\hat{a} = a(1 + \\delta_a)$ and $\\hat{b} = b(1 + \\delta_b)$ are \nthe stored values with $|\\delta_a|, |\\delta_b| \\leq \\eps$ (machine \nepsilon), then\n\\[\n\\hat{a} - \\hat{b} = (a - b)\\left(1 + \\frac{a\\delta_a - b\\delta_b}{a-b}\\right).\n\\]\nThe relative error in $\\hat{a} - \\hat{b}$ can be as large as \n$\\frac{2|a|\\eps}{|a-b|}$, which is huge when $|a-b| \\ll |a|$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$$\n\\hat{a} - \\hat{b} &= a(1+\\delta_a) - b(1+\\delta_b) \\\\\n&= (a-b) + a\\delta_a - b\\delta_b \\\\\n&= (a-b)\\left(1 + \\frac{a\\delta_a - b\\delta_b}{a-b}\\right).\n$$\n\nThe relative error is $\\left|\\frac{a\\delta_a - b\\delta_b}{a-b}\\right| \n\\leq \\frac{|a| + |b|}{|a-b|}\\eps \\approx \\frac{2|a|}{|a-b|}\\eps$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Catastrophic Cancellation",
+      "problem": "Consider computing $f'(1)$ for $f(x) = e^x$ with $h = 10^{-15}$ in \ndouble precision ($\\eps \\approx 2.2 \\times 10^{-16}$).",
+      "solution": "In exact arithmetic:\n\\[\n\\frac{e^{1+10^{-15}} - e^1}{10^{-15}} = \\frac{e \\cdot (e^{10^{-15}} - 1)}{10^{-15}} \n\\approx \\frac{e \\cdot 10^{-15}}{10^{-15}} = e \\approx 2.71828.\n\\]\n\nIn double precision, both $e^{1.000000000000001}$ and $e^1$ round to \nthe same value (or differ by at most 1 ulp), so:\n\\[\n\\frac{\\mathrm{fl}(e^{1+10^{-15}}) - \\mathrm{fl}(e^1)}{10^{-15}} \n\\approx \\frac{0 \\text{ or } \\eps \\cdot e}{10^{-15}} \n\\approx 0 \\text{ or } 0.6.\n\\]\n\nThe result is completely wrong—not even the correct order of magnitude!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Total Error Analysis"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Total Error for Forward Difference",
+      "content": "Let $\\tilde{f}(x) = f(x)(1 + \\varepsilon(x))$ where $|\\varepsilon(x)| \\leq \\eps$ \nrepresents the error in computing $f$. The total error in the forward \ndifference is approximately:\n\\[\nE_{\\text{total}}(h) \\approx \\underbrace{\\frac{h}{2}|f''(x)|}_{\\text{truncation}} \n+ \\underbrace{\\frac{2\\eps|f(x)|}{h}}_{\\text{round-off}}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "**Truncation error**: From Theorem [thm:forward-error], \n$|D_h^+ f(x) - f'(x)| \\leq \\frac{h}{2}\\max|f''|$.\n\n**Round-off error**: The computed difference quotient is\n\\[\n\\frac{\\tilde{f}(x+h) - \\tilde{f}(x)}{h} = \\frac{f(x+h)(1+\\varepsilon_1) \n- f(x)(1+\\varepsilon_0)}{h}.\n\\]\n\nThe perturbation from round-off is\n\\[\n\\frac{f(x+h)\\varepsilon_1 - f(x)\\varepsilon_0}{h} \n\\approx \\frac{|f(x)|(\\varepsilon_1 - \\varepsilon_0)}{h}\n\\]\nwith magnitude at most $\\frac{2\\eps|f(x)|}{h}$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.3",
+      "number": "5.3",
+      "title": "Optimal Step Size for Forward Difference",
+      "content": "The optimal step size minimizing total error for the forward difference is\n\\[\nh_{\\text{opt}} = 2\\sqrt{\\frac{\\eps|f(x)|}{|f''(x)|}} \n\\approx 2\\sqrt{\\eps} \\cdot \\sqrt{\\frac{|f|}{|f''|}}.\n\\]\nThe minimum total error is approximately $2\\sqrt{\\eps |f(x)| \\cdot |f''(x)|}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $E(h) = Ah + B/h$ where $A = \\frac{1}{2}|f''(x)|$ and \n$B = 2\\eps|f(x)|$. Setting $E'(h) = A - B/h^2 = 0$ gives \n$h^2 = B/A$, so\n\\[\nh_{\\text{opt}} = \\sqrt{\\frac{B}{A}} = \\sqrt{\\frac{4\\eps|f|}{|f''|}} \n= 2\\sqrt{\\frac{\\eps|f|}{|f''|}}.\n\\]\n\nThe minimum error is\n\\[\nE(h_{\\text{opt}}) = A\\sqrt{\\frac{B}{A}} + B\\sqrt{\\frac{A}{B}} \n= 2\\sqrt{AB} = 2\\sqrt{\\eps|f| \\cdot |f''|}. \\qedhere\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "Computing Optimal Step Size",
+      "problem": "Find the optimal step size for approximating $f'(1)$ where \n$f(x) = \\sin x$, using double precision.",
+      "solution": "We have $f(1) = \\sin(1) \\approx 0.84$, $f''(1) = -\\sin(1) \\approx -0.84$, \nand $\\eps \\approx 2.2 \\times 10^{-16}$.\n\nFor the forward difference:\n\\[\nh_{\\text{opt}} = 2\\sqrt{\\frac{(2.2 \\times 10^{-16})(0.84)}{0.84}} \n= 2\\sqrt{2.2 \\times 10^{-16}} \\approx 3 \\times 10^{-8}.\n\\]\n\nExpected minimum error:\n\\[\nE_{\\min} = 2\\sqrt{(2.2 \\times 10^{-16})(0.84)(0.84)} \n\\approx 2.5 \\times 10^{-8}.\n\\]\n\nThis means we can expect at best about 7-8 correct digits from \nthe forward difference, regardless of how carefully we choose $h$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Central Difference Stability"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.4",
+      "number": "5.4",
+      "title": "Total Error for Central Difference",
+      "content": "The total error for the central difference is approximately:\n\\[\nE_{\\text{total}}(h) \\approx \\underbrace{\\frac{h^2}{6}|f'''(x)|}_{\\text{truncation}} \n+ \\underbrace{\\frac{\\eps|f(x)|}{h}}_{\\text{round-off}}.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.5",
+      "number": "5.5",
+      "title": "Optimal Step Size for Central Difference",
+      "content": "The optimal step size for the central difference is\n\\[\nh_{\\text{opt}} = \\left(\\frac{3\\eps|f(x)|}{|f'''(x)|}\\right)^{1/3} \n\\approx \\eps^{1/3} \\cdot \\left(\\frac{3|f|}{|f'''|}\\right)^{1/3}.\n\\]\nThe minimum total error is proportional to $\\eps^{2/3}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $E(h) = Ah^2 + B/h$ where $A = \\frac{1}{6}|f'''(x)|$ and \n$B = \\eps|f(x)|$. Setting $E'(h) = 2Ah - B/h^2 = 0$ gives \n$h^3 = B/(2A)$, so\n\\[\nh_{\\text{opt}} = \\left(\\frac{B}{2A}\\right)^{1/3} \n= \\left(\\frac{3\\eps|f|}{|f'''|}\\right)^{1/3}.\n\\]\n\nThe minimum error is\n\\[\nE(h_{\\text{opt}}) = Ah_{\\text{opt}}^2 + Bh_{\\text{opt}}^{-1} \n= \\frac{3}{2}Ah_{\\text{opt}}^2 = \\frac{3}{2}A\\left(\\frac{B}{2A}\\right)^{2/3} \n\\propto \\eps^{2/3}. \\qedhere\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Comparing Optimal Step Sizes",
+      "problem": "For $f(x) = e^x$ at $x = 0$ in double precision:",
+      "solution": "We have $|f| = |f''| = |f'''| = 1$ and $\\eps \\approx 2.2 \\times 10^{-16}$.\n\n**Forward difference**:\n\\[\nh_{\\text{opt}} = 2\\sqrt{\\eps} \\approx 3 \\times 10^{-8}, \\quad \nE_{\\min} \\approx 3 \\times 10^{-8}.\n\\]\n\n**Central difference**:\n\\[\nh_{\\text{opt}} = (3\\eps)^{1/3} \\approx 8.5 \\times 10^{-6}, \\quad \nE_{\\min} \\approx 5 \\times 10^{-11}.\n\\]\n\nThe central difference achieves about 10-11 correct digits, compared \nto only 7-8 for the forward difference—a gain of 3-4 digits \ndespite using a larger step size!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Stability of Higher-Order Formulas"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.6",
+      "number": "5.6",
+      "title": "General Optimal Step Size",
+      "content": "For a formula with truncation error $\\bigo{h^p}$ and round-off \nerror $\\bigo{\\eps/h}$, the optimal step size is\n\\[\nh_{\\text{opt}} \\propto \\eps^{1/(p+1)}\n\\]\nand the minimum error is $\\bigo{\\eps^{p/(p+1)}}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-5.4",
+      "number": null,
+      "title": "Diminishing Returns",
+      "content": "Higher-order formulas have larger optimal step sizes but require \nmore smoothness and use more function evaluations. Beyond 4th or \n5th order, the additional accuracy is rarely worth the cost."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Second Derivative Stability"
+    },
+    {
+      "type": "paragraph",
+      "text": "Second derivatives are more sensitive to round-off because the \nformula divides by $h^2$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.7",
+      "number": "5.7",
+      "title": "Total Error for Second Derivative",
+      "content": "For the three-point second derivative formula:\n\\[\nE_{\\text{total}}(h) \\approx \\underbrace{\\frac{h^2}{12}|f^{(4)}(x)|}_{\\text{truncation}} \n+ \\underbrace{\\frac{4\\eps|f(x)|}{h^2}}_{\\text{round-off}}.\n\\]\nThe optimal step size is\n\\[\nh_{\\text{opt}} = \\left(\\frac{12\\eps|f|}{|f^{(4)}|}\\right)^{1/4} \n\\propto \\eps^{1/4} \\approx 10^{-4}.\n\\]\nThe minimum error is $\\bigo{\\eps^{1/2}} \\approx 10^{-8}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "remark",
+      "id": "remark-5.4",
+      "number": null,
+      "title": "",
+      "content": "The second derivative formula achieves only about 8 digits of \naccuracy in double precision, compared to 11 for the first \nderivative central difference. This is a fundamental limitation."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Practical Step Size Selection"
+    },
+    {
+      "type": "paragraph",
+      "text": "In practice, we often don't know $f''$ or $f'''$ in advance, making \nit impossible to compute $h_{\\text{opt}}$ exactly. Several strategies \nhelp:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.8",
+      "number": "5.8",
+      "title": "Adaptive Step Size Selection",
+      "content": "Compute $D(h)$ for a sequence $h, h/2, h/4, \\ldots$. The optimal $h$ \nis approximately where the differences $|D(h/2) - D(h)|$ stop decreasing \nsystematically.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-5.4",
+      "number": "5.4",
+      "title": "Finding Optimal $h$ Empirically",
+      "problem": "Approximate $f'(1)$ for $f(x) = e^x$ using central differences with \ndecreasing $h$:",
+      "solution": "| $h$ | $D(h)$ | Error |\n| $10^{-1}$ | 2.718281826 | $2.6 \\times 10^{-9}$ |\n| $10^{-2}$ | 2.718281828460 | $2.6 \\times 10^{-13}$ |\n| $10^{-3}$ | 2.718281828459 | $4.4 \\times 10^{-15}$ |\n| $10^{-4}$ | 2.718281828459 | $8.9 \\times 10^{-14}$ |\n| $10^{-5}$ | 2.718281828458 | $1.1 \\times 10^{-12}$ |\n| $10^{-6}$ | 2.718281828397 | $6.2 \\times 10^{-11}$ |\n| $10^{-7}$ | 2.718281828842 | $3.8 \\times 10^{-10}$ |\n\nThe minimum error occurs around $h = 10^{-4}$ to $10^{-5}$, consistent \nwith theory. For smaller $h$, round-off dominates and error increases."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Complex Step Differentiation"
+    },
+    {
+      "type": "paragraph",
+      "text": "A remarkable technique sidesteps the round-off problem entirely for \nanalytic functions."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.9",
+      "number": "5.9",
+      "title": "Complex Step Derivative",
+      "content": "If $f$ is analytic and can be evaluated for complex arguments, then\n\\[\nf'(x) = \\frac{\\Im[f(x + ih)]}{h} + \\bigo{h^2}\n\\]\nwhere $\\Im$ denotes the imaginary part. This formula has **no \nround-off error amplification** because it involves no subtraction \nof nearly equal numbers.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "By Taylor series for complex $z$:\n\\[\nf(x + ih) = f(x) + ihf'(x) + \\frac{(ih)^2}{2}f''(x) + \\cdots\n= f(x) + ihf'(x) - \\frac{h^2}{2}f''(x) + \\cdots\n\\]\n\nTaking the imaginary part:\n\\[\n\\Im[f(x+ih)] = hf'(x) - \\frac{h^3}{6}f'''(x) + \\cdots\n\\]\n\nDividing by $h$: $f'(x) = \\frac{\\Im[f(x+ih)]}{h} + \\bigo{h^2}$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-5.4",
+      "number": null,
+      "title": "Complex Step Limitations",
+      "content": "This technique requires:\n\n- $f$ to be analytic (no branch cuts, discontinuities)\n\n- The ability to evaluate $f$ with complex arguments\n\n- A programming language with complex arithmetic\nFor \"black-box\" functions, traditional finite differences may be necessary."
+    }
+  ]
+}

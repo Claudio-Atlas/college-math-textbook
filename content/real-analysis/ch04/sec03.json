@@ -1,0 +1,68 @@
+{
+  "id": "real-analysis-ch04-sec03",
+  "title": "Connectedness",
+  "chapter": 4,
+  "section": 3,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "While compactness captures \"finiteness,\" connectedness captures \n\"oneness\"—the property of being a single piece."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Connected Sets"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "Separated Sets",
+      "content": "Two sets $A, B \\subseteq \\mathbb{R}$ are **separated** \nif $\\overline{A} \\cap B = \\emptyset$ and $A \\cap \\overline{B} = \\emptyset$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.2",
+      "number": "4.2",
+      "title": "Connected Set",
+      "content": "A set $E \\subseteq \\mathbb{R}$ is **connected** \nif it cannot be written as the union of two nonempty separated sets."
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Disconnected Set",
+      "problem": "The set $E = (0, 1) \\cup (2, 3)$ is disconnected: let $A = (0, 1)$ and \n$B = (2, 3)$. Then $\\overline{A} = [0, 1]$, $\\overline{B} = [2, 3]$, and \n$\\overline{A} \\cap B = \\overline{B} \\cap A = \\emptyset$.",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Connected Subsets of $\\mathbb{R",
+      "content": "$}\n\nA subset of $R$ is connected if and only if it is an interval.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$(\\Leftarrow)$ Let $I$ be an interval and suppose $I = A \\cup B$ where \n$A, B$ are nonempty and separated. Choose $a \\in A$ and $b \\in B$ with, \nsay, $a < b$. Let $c = \\sup(A \\cap [a, b])$.\n\nSince $A$ is closed relative to $I$ (by separation), $c \\in A$. But $c < b$ \n(since $b \\in B$, not $A$), and every neighborhood of $c$ contains points \nof $B$ (by the supremum property). This contradicts separation.\n\n$(\\Rightarrow)$ Suppose $E$ is connected but not an interval. Then there \nexist $a, b \\in E$ and $c \\notin E$ with $a < c < b$. Let \n$A = E \\cap (-\\infty, c)$ and $B = E \\cap (c, \\infty)$. Then $E = A \\cup B$ \nwith $A, B$ nonempty and separated—contradiction."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Path Connectedness"
+    },
+    {
+      "type": "paragraph",
+      "text": "In $\\mathbb{R}$, connectedness and path-connectedness coincide (since \nevery interval is path-connected). In higher dimensions, these concepts \ncan differ; we introduce the definition for completeness."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.3",
+      "number": "4.3",
+      "title": "Path Connected",
+      "content": "A set $E$ is **path connected** if for any \n$x, y \\in E$, there exists a continuous function $\\gamma: [0, 1] \\to E$ \nwith $\\gamma(0) = x$ and $\\gamma(1) = y$."
+    }
+  ]
+}

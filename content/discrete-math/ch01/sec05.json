@@ -1,0 +1,154 @@
+{
+  "id": "discrete-math-ch01-sec05",
+  "title": "Predicates and Quantifiers",
+  "chapter": 1,
+  "section": 5,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"The Lord looks down from heaven on all mankind to see \nif there are any who understand, any who seek God.\"*{Psalm 14:2}{The introduction of quantifiers marks the beginning of modern logic.}{Gottlob Frege}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Propositions allow us to express specific true-or-false statements, but \nmathematics often requires statements about *all* or *some* \nmembers of a set. For this, we need predicates and quantifiers."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Predicates"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.1",
+      "number": "1.1",
+      "title": "Predicate",
+      "content": "A **predicate** (or propositional function) is a \nstatement containing one or more variables that becomes a proposition \nwhen specific values are substituted for the variables.\n\nWe write $P(x)$ to denote a predicate $P$ with variable $x$, and $P(x, y)$ \nfor a predicate with two variables."
+    },
+    {
+      "type": "example",
+      "id": "example-1.1",
+      "number": "1.1",
+      "title": "Predicates",
+      "problem": "Let $P(x)$ be \"$x > 5$\" with domain $\\R$.\n\n- $P(3)$ is the proposition \"$3 > 5$,\" which is false.\n\n- $P(10)$ is the proposition \"$10 > 5$,\" which is true.\n\n- $P(5)$ is the proposition \"$5 > 5$,\" which is false.\n\nLet $Q(x, y)$ be \"$x + y = 10$\" with domain $\\Z$.\n\n- $Q(3, 7)$ is \"$3 + 7 = 10$,\" which is true.\n\n- $Q(4, 4)$ is \"$4 + 4 = 10$,\" which is false.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Universal Quantifier"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.2",
+      "number": "1.2",
+      "title": "Universal Quantifier",
+      "content": "The **universal quantifier** $\\forall$ \n(read \"for all\") asserts that a predicate is true for every element in \nits domain.\n\nThe statement $\\forall x\\, P(x)$ means \"For all $x$, $P(x)$ is true.\""
+    },
+    {
+      "type": "example",
+      "id": "example-1.2",
+      "number": "1.2",
+      "title": "Universal quantification",
+      "problem": "Let the domain be all real numbers.\n\n- $\\forall x\\, (x + 0 = x)$ — \"Every real number plus zero equals itself.\" (True)\n\n- $\\forall x\\, (x^2 \\geq 0)$ — \"Every real number squared is non-negative.\" (True)\n\n- $\\forall x\\, (x > 0)$ — \"Every real number is positive.\" (False; consider $x = -1$)",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "To prove $\\forall x\\, P(x)$ is **true**, you must show $P(x)$ holds \nfor *every* $x$ in the domain. To prove it is **false**, you \nneed only find one **counterexample**—a \nspecific $x$ for which $P(x)$ is false."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Existential Quantifier"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.3",
+      "number": "1.3",
+      "title": "Existential Quantifier",
+      "content": "The **existential quantifier** $\\exists$ \n(read \"there exists\") asserts that a predicate is true for at least one \nelement in its domain.\n\nThe statement $\\exists x\\, P(x)$ means \"There exists an $x$ such that \n$P(x)$ is true.\""
+    },
+    {
+      "type": "example",
+      "id": "example-1.3",
+      "number": "1.3",
+      "title": "Existential quantification",
+      "problem": "Let the domain be all integers.\n\n- $\\exists x\\, (x^2 = 4)$ — \"There exists an integer whose square is 4.\" (True; $x = 2$ or $x = -2$)\n\n- $\\exists x\\, (x + 5 = x)$ — \"There exists an integer $x$ with $x + 5 = x$.\" (False)\n\n- $\\exists x\\, (x > 1000000)$ — \"There exists an integer greater than one million.\" (True)",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "To prove $\\exists x\\, P(x)$ is **true**, you need only exhibit one \n**witness**—a specific $x$ for which $P(x)$ is true. To prove it is \n**false**, you must show $P(x)$ fails for *every* $x$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Negating Quantified Statements"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.1",
+      "number": "1.1",
+      "title": "De Morgan's Laws for Quantifiers",
+      "content": "$$\n\\lnot(\\forall x\\, P(x)) &\\equiv \\exists x\\, \\lnot P(x) \\\\\n\\lnot(\\exists x\\, P(x)) &\\equiv \\forall x\\, \\lnot P(x)\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "These laws are intuitive:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Denying \"all swans are white\" is asserting \"some swan is not white.\"",
+        "Denying \"some number is negative\" is asserting \"all numbers are non-negative.\""
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-1.4",
+      "number": "1.4",
+      "title": "Negating quantified statements",
+      "problem": "Negate the statement: \"Every student passed the exam.\"",
+      "solution": "Let $P(x)$ be \"$x$ passed the exam\" with domain all students.\n\nThe original statement is $\\forall x\\, P(x)$.\n\nIts negation is $\\exists x\\, \\lnot P(x)$: \"Some student did not pass the \nexam\" (or equivalently, \"At least one student failed\")."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Nested Quantifiers"
+    },
+    {
+      "type": "paragraph",
+      "text": "Many mathematical statements involve multiple quantifiers. The order matters!"
+    },
+    {
+      "type": "example",
+      "id": "example-1.5",
+      "number": "1.5",
+      "title": "Order of quantifiers",
+      "problem": "Let the domain be real numbers. Consider:\n\n1. $\\forall x\\, \\exists y\\, (x + y = 0)$ — \"For every $x$, there exists a $y$ such that $x + y = 0$.\"\n \n This is **true**: given any $x$, we can choose $y = -x$.\n\n2. $\\exists y\\, \\forall x\\, (x + y = 0)$ — \"There exists a $y$ such that for all $x$, $x + y = 0$.\"\n \n This is **false**: no single $y$ works for all $x$.\n\nSwitching the order of $\\forall$ and $\\exists$ changes the meaning!",
+      "solution": ""
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-1.5",
+      "number": null,
+      "title": "Reading Nested Quantifiers",
+      "content": "Read from left to right. Each quantifier's variable can depend on variables \nquantified to its left, but not to its right. In $\\forall x\\, \\exists y\\, \nP(x,y)$, the choice of $y$ can depend on $x$. In $\\exists y\\, \\forall x\\, \nP(x,y)$, $y$ must be chosen before knowing $x$."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Jeremiah 17:10",
+      "text": "I the Lord search the heart and examine \nthe mind, to reward each person according to their conduct."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 55:8",
+      "text": "For my thoughts are not your thoughts, \nneither are your ways my ways, declares the Lord."
+    }
+  ]
+}

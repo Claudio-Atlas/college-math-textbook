@@ -1,0 +1,184 @@
+{
+  "id": "prob-stats-ch01-sec05",
+  "title": "The Normal Distribution",
+  "chapter": 1,
+  "section": 5,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "For you formed my inward parts; you knitted me together in my mother's womb. I praise you, for I am fearfully and wonderfully made.",
+    "reference": "Psalm 139:13--14",
+    "quote": "The most important questions of life are indeed, for the most part, really only problems of probability.",
+    "quoteAuthor": "Pierre-Simon Laplace"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Among all possible distributions, one stands supreme in its importance \nto statistics: the **normal distribution**. Its distinctive \nbell-shaped curve appears throughout nature, from human heights to \nmeasurement errors, from IQ scores to astronomical observations."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Density Curves"
+    },
+    {
+      "type": "paragraph",
+      "text": "Before defining the normal distribution, we need the concept of a \n**density curve**—a mathematical model for a distribution."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.1",
+      "number": "1.1",
+      "title": "Density Curve",
+      "content": "A **density curve** is a curve that:\n\n1. Is always on or above the horizontal axis\n\n2. Has total area exactly 1 underneath it\nThe area under the curve over any interval represents the proportion \nof observations falling in that interval."
+    },
+    {
+      "type": "paragraph",
+      "text": "A density curve is an *idealized* model. Real data give histograms \nwith bars; the density curve is the smooth approximation we would \napproach with infinite data and infinitely narrow bins."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Normal Distribution"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.2",
+      "number": "1.2",
+      "title": "Normal Distribution",
+      "content": "A **normal distribution** is described \nby a density curve with the equation\n\\[\n f(x) = \\frac{1}{\\sigma\\sqrt{2\\pi}} \n \\exp\\left(-\\frac{(x-\\mu)^2}{2\\sigma^2}\\right)\n\\]\nwhere $\\mu$ is the mean and $\\sigma$ is the standard deviation.\n\nWe write $X \\sim \\Normal(\\mu, \\sigma^2)$ to indicate that $X$ has a \nnormal distribution with mean $\\mu$ and variance $\\sigma^2$."
+    },
+    {
+      "type": "historical",
+      "id": "historical-1.5",
+      "number": null,
+      "title": "Carl Friedrich Gauss (1777--1855)",
+      "content": "The normal distribution is sometimes called the \"Gaussian distribution\" \nafter Carl Friedrich Gauss, who used it to analyze astronomical \nobservations. Gauss proved that the normal distribution arises \nnaturally when averaging many small, independent errors—a mathematical \nresult that helps explain its ubiquity in nature. A devout Lutheran, \nGauss once said, \"There are problems to whose solution I would attach \nan infinitely greater importance than to those of mathematics, for \nexample touching ethics, or our relation to God.\""
+    },
+    {
+      "type": "paragraph",
+      "text": "Key properties of normal distributions:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Symmetric** about the mean $\\mu$",
+        "**Bell-shaped:** unimodal with tails extending to infinity",
+        "**Mean = Median = Mode** (all equal to $\\mu$)",
+        "Completely determined by two parameters: $\\mu$ (center) and \n $\\sigma$ (spread)",
+        "**Inflection points** occur at $\\mu - \\sigma$ and $\\mu + \\sigma$"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Empirical Rule (68–95–99.7 Rule)"
+    },
+    {
+      "type": "paragraph",
+      "text": "For any normal distribution:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-1.1",
+      "number": "1.1",
+      "title": "The Empirical Rule",
+      "content": "For a normal distribution $\\Normal(\\mu, \\sigma^2)$:\n\n- Approximately **68\\%** of observations fall within \n $\\mu \\pm \\sigma$\n\n- Approximately **95\\%** of observations fall within \n $\\mu \\pm 2\\sigma$\n\n- Approximately **99.7\\%** of observations fall within \n $\\mu \\pm 3\\sigma$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-1.1",
+      "number": "1.1",
+      "title": "Applying the Empirical Rule",
+      "problem": "Adult male heights in a population are approximately normal with \nmean $\\mu = 70$ inches and standard deviation $\\sigma = 3$ inches.",
+      "solution": "Using the Empirical Rule:\n\n- About 68\\% of men are between $70 \\pm 3$, or 67 to 73 inches.\n\n- About 95\\% are between $70 \\pm 6$, or 64 to 76 inches.\n\n- About 99.7\\% are between $70 \\pm 9$, or 61 to 79 inches.\nA man who is 79 inches tall (6'7\") would be unusually tall—among \nthe tallest 0.15\\% of the population."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Standard Normal Distribution"
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.3",
+      "number": "1.3",
+      "title": "Standard Normal Distribution",
+      "content": "The **standard normal distribution** is \nthe normal distribution with mean $\\mu = 0$ and standard deviation \n$\\sigma = 1$, denoted $\\Normal(0, 1)$.\n\nThe standard normal variable is typically denoted $Z$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Standardizing: The $z$-Score"
+    },
+    {
+      "type": "paragraph",
+      "text": "Any normal distribution can be transformed to the standard normal."
+    },
+    {
+      "type": "definition",
+      "id": "definition-1.4",
+      "number": "1.4",
+      "title": "$z$-Score",
+      "content": "The **$z$-score** of an observation $x$ \nfrom a distribution with mean $\\mu$ and standard deviation $\\sigma$ is\n\\[\n z = \\frac{x - \\mu}{\\sigma}\n\\]\nThe $z$-score tells how many standard deviations $x$ lies from the mean."
+    },
+    {
+      "type": "paragraph",
+      "text": "If $X \\sim \\Normal(\\mu, \\sigma^2)$, then $Z = \\frac{X - \\mu}{\\sigma} \n\\sim \\Normal(0, 1)$."
+    },
+    {
+      "type": "example",
+      "id": "example-1.2",
+      "number": "1.2",
+      "title": "Finding Probabilities",
+      "problem": "SAT scores are approximately normal with $\\mu = 1060$ and $\\sigma = 200$. \nWhat proportion of students score above 1400?",
+      "solution": "First, standardize:\n\\[\n z = \\frac{1400 - 1060}{200} = \\frac{340}{200} = 1.70\n\\]\nWe need $P(Z > 1.70)$. From the standard normal table or technology:\n\\[\n P(Z > 1.70) = 1 - P(Z \\leq 1.70) = 1 - 0.9554 = 0.0446\n\\]\nAbout 4.5\\% of students score above 1400."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Finding Values from Percentiles"
+    },
+    {
+      "type": "paragraph",
+      "text": "We can also work backward: given a percentile, find the corresponding \nvalue."
+    },
+    {
+      "type": "example",
+      "id": "example-1.3",
+      "number": "1.3",
+      "title": "Finding a Percentile Cutoff",
+      "problem": "What SAT score marks the 90th percentile?",
+      "solution": "First, find the $z$-score with area 0.90 to its left. From the table \nor technology: $z \\approx 1.28$.\n\nThen convert back to the original scale:\n\\[\n x = \\mu + z\\sigma = 1060 + 1.28(200) = 1060 + 256 = 1316\n\\]\nA score of about 1316 marks the 90th percentile."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Assessing Normality"
+    },
+    {
+      "type": "paragraph",
+      "text": "Not all data are normally distributed. Before using normal-based \nmethods, we should check whether the normal model is reasonable."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Methods for assessing normality:**"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "**Histogram:** Does it look roughly bell-shaped and symmetric?",
+        "**Empirical Rule check:** Do roughly 68\\% of values fall \n within one standard deviation of the mean?",
+        "**Normal probability plot (Q-Q plot):** If data are normal, \n points should fall approximately on a straight line."
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Romans 1:20",
+      "text": "For his invisible attributes, namely, \nhis eternal power and divine nature, have been clearly perceived, \never since the creation of the world, in the things that have been made."
+    }
+  ]
+}

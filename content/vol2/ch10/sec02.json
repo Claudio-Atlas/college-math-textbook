@@ -1,0 +1,413 @@
+{
+  "id": "vol2-ch10-sec02",
+  "title": "Properties of Power Series",
+  "chapter": 10,
+  "section": 2,
+  "book": "vol2",
+  "epigraph": {
+    "text": "All streams run to the sea, but the sea is not full; to \nthe place where the streams flow, there they flow again.",
+    "reference": "Ecclesiastes 1:7"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The Taylor polynomials of the previous section are finite approximations.\nWhat happens when we let the degree go to infinity? We arrive at a\n**power series**—an infinite polynomial. In this section, we study\nthe fundamental properties of power series: where they converge, how to find\ntheir radius of convergence, and why we can differentiate and integrate them\nterm by term."
+    },
+    {
+      "type": "paragraph",
+      "text": "Power series occupy a special place in mathematics. Unlike general infinite\nseries of functions, power series have remarkably well-behaved convergence\nproperties. They always converge on an interval (possibly just a single\npoint, possibly the entire real line), and within their interval of\nconvergence, they behave like polynomials: we can add, multiply, differentiate,\nand integrate them term by term."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition of Power Series"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Power Series",
+      "content": "A **power series centered at $a$** (or **about $a$**) is a series\nof the form\n\\[\n \\sum_{n=0}^{\\infty}c_{n}(x-a)^{n}\n = c_{0} + c_{1}(x-a) + c_{2}(x-a)^{2} + c_{3}(x-a)^{3} + \\cdots\n\\]\nwhere $c_{0}, c_{1}, c_{2}, \\ldots$ are constants called the\n**coefficients** of the series.\n\nA power series centered at $a = 0$ has the simpler form\n\\[\n \\sum_{n=0}^{\\infty}c_{n}x^{n} = c_{0} + c_{1}x + c_{2}x^{2} + c_{3}x^{3} + \\cdots\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "A power series defines a function: for each value of $x$ where the series\nconverges, we obtain a number. The natural questions are:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "For which values of $x$ does the series converge?",
+        "What function does it represent?",
+        "Can we differentiate and integrate it term by term?"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "A familiar power series",
+      "problem": "Consider the power series $\\displaystyle\\sum_{n=0}^{\\infty}x^{n} = 1 + x + x^{2} + x^{3} + \\cdots$",
+      "solution": "This is the geometric series with ratio $r = x$. From Chapter 9, we know\nit converges if and only if $|x| < 1$, and its sum is\n\\[\n \\sum_{n=0}^{\\infty}x^{n} = \\frac{1}{1-x} \\quad\\text{for}\\quad |x| < 1.\n\\]\nThe series diverges for $|x| \\geq 1$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.2",
+      "number": "10.2",
+      "title": "Power series for $e^{x}$",
+      "problem": "The power series $\\displaystyle\\sum_{n=0}^{\\infty}\\frac{x^{n}}{n!}$ converges\nfor all $x \\in \\R$.",
+      "solution": "Apply the Ratio Test:\n\\[\n \\left|\\frac{a_{n+1}}{a_{n}}\\right|\n = \\left|\\frac{x^{n+1}}{(n+1)!}\\cdot\\frac{n!}{x^{n}}\\right|\n = \\frac{|x|}{n+1} \\to 0 \\quad\\text{as}\\quad n \\to \\infty.\n\\]\nSince the limit is $0 < 1$ for every $x$, the series converges for all real\nnumbers."
+    },
+    {
+      "type": "example",
+      "id": "example-10.3",
+      "number": "10.3",
+      "title": "A series that converges only at the center",
+      "problem": "The power series $\\displaystyle\\sum_{n=0}^{\\infty}n!\\,x^{n}$ converges only\nat $x = 0$.",
+      "solution": "Apply the Ratio Test:\n\\[\n \\left|\\frac{a_{n+1}}{a_{n}}\\right|\n = \\left|\\frac{(n+1)!\\,x^{n+1}}{n!\\,x^{n}}\\right|\n = (n+1)|x| \\to \\infty\n\\]\nfor any $x \\neq 0$. The series diverges everywhere except at $x = 0$\n(where every term after the first is zero)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Radius and Interval of Convergence"
+    },
+    {
+      "type": "paragraph",
+      "text": "The examples above suggest three possible behaviors: convergence everywhere,\nconvergence only at the center, or convergence on some interval around the\ncenter. The following theorem shows these are the only possibilities."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "Convergence of Power Series",
+      "content": "For a power series $\\displaystyle\\sum_{n=0}^{\\infty}c_{n}(x-a)^{n}$, exactly\none of the following is true:\n\n1. The series converges only at $x = a$.\n\n2. The series converges for all $x \\in \\R$.\n\n3. There exists a positive number $R$ such that the series converges\n absolutely if $|x - a| < R$ and diverges if $|x - a| > R$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This theorem tells us something remarkable: the set of convergence is always\nsymmetric about the center $a$. If the series converges at $a + r$, it also\nconverges at $a - r$. The boundary between convergence and divergence forms\na \"circle\" of radius $R$ centered at $a$ (in one dimension, two points\nequidistant from $a$)."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.2",
+      "number": "10.2",
+      "title": "Radius and Interval of Convergence",
+      "content": "The number $R$ in case (iii) is called the **radius of convergence**.\nWe set:\n\n- $R = 0$ in case (i) (convergence only at the center)\n\n- $R = \\infty$ in case (ii) (convergence everywhere)\n\nThe **interval of convergence** is the set of all $x$ for which the\nseries converges. It always includes the open interval $(a - R, a + R)$.\nThe endpoints $x = a - R$ and $x = a + R$ must be checked separately."
+    },
+    {
+      "type": "warning",
+      "id": "warning-10.2",
+      "number": null,
+      "title": "Always check endpoints",
+      "content": "The Ratio and Root Tests are inconclusive at the endpoints $x = a \\pm R$.\nYou must test these separately using other convergence tests (comparison,\nalternating series, $p$-series, etc.). The interval of convergence can be:\n\n- $(a - R, a + R)$ — open at both ends\n\n- $[a - R, a + R)$ — closed at left, open at right\n\n- $(a - R, a + R]$ — open at left, closed at right\n\n- $[a - R, a + R]$ — closed at both ends"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Finding the Radius of Convergence"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Ratio Test provides the most common method for finding $R$."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-10.2",
+      "number": null,
+      "title": "Using the Ratio Test to Find $R$",
+      "content": "For the power series $\\sum c_{n}(x-a)^{n}$:\n\n1. Compute $L = \\displaystyle\\limtoinf\\left|\\frac{c_{n+1}}{c_{n}}\\right|$.\n\n2. If $L = 0$, then $R = \\infty$ (converges for all $x$).\n\n3. If $L = \\infty$, then $R = 0$ (converges only at $x = a$).\n\n4. If $0 < L < \\infty$, then $R = \\dfrac{1}{L}$.\n\n5. Check the endpoints $x = a \\pm R$ separately."
+    },
+    {
+      "type": "example",
+      "id": "example-10.4",
+      "number": "10.4",
+      "title": "Finding radius of convergence",
+      "problem": "Find the radius and interval of convergence of\n$\\displaystyle\\sum_{n=1}^{\\infty}\\frac{x^{n}}{n}$.",
+      "solution": "**Step 1.** Apply the Ratio Test:\n\\[\n \\left|\\frac{a_{n+1}}{a_{n}}\\right|\n = \\left|\\frac{x^{n+1}}{n+1}\\cdot\\frac{n}{x^{n}}\\right|\n = |x|\\cdot\\frac{n}{n+1} \\to |x| \\quad\\text{as}\\quad n \\to \\infty.\n\\]\nThe series converges when $|x| < 1$ and diverges when $|x| > 1$. Thus\n$R = 1$.\n\n**Step 2.** Check endpoints.\n\nAt $x = 1$: $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n}$ is the harmonic\nseries, which diverges.\n\nAt $x = -1$: $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{(-1)^{n}}{n}$ is the\nalternating harmonic series, which converges (conditionally).\n\n**Conclusion:** $R = 1$, interval of convergence is $[-1, 1)$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.5",
+      "number": "10.5",
+      "title": "Series with factorial coefficients",
+      "problem": "Find the radius and interval of convergence of\n$\\displaystyle\\sum_{n=0}^{\\infty}\\frac{x^{n}}{n!}$.",
+      "solution": "Apply the Ratio Test:\n\\[\n \\left|\\frac{a_{n+1}}{a_{n}}\\right|\n = \\left|\\frac{x^{n+1}}{(n+1)!}\\cdot\\frac{n!}{x^{n}}\\right|\n = \\frac{|x|}{n+1} \\to 0 \\quad\\text{as}\\quad n \\to \\infty.\n\\]\nSince the limit is $0$ for all $x$, the series converges for all $x$.\nThus $R = \\infty$, and the interval of convergence is $(-\\infty, \\infty)$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.6",
+      "number": "10.6",
+      "title": "Series with $n!$ in numerator",
+      "problem": "Find the radius of convergence of $\\displaystyle\\sum_{n=0}^{\\infty}n!\\,x^{n}$.",
+      "solution": "\\[\n \\left|\\frac{a_{n+1}}{a_{n}}\\right|\n = \\left|\\frac{(n+1)!\\,x^{n+1}}{n!\\,x^{n}}\\right|\n = (n+1)|x| \\to \\infty \\quad\\text{as}\\quad n \\to \\infty\n\\]\nfor any $x \\neq 0$. The series diverges for all $x \\neq 0$, so $R = 0$.\nThe \"interval\" of convergence is just $\\{0\\}$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.7",
+      "number": "10.7",
+      "title": "Centered at $a \\neq 0$",
+      "problem": "Find the radius and interval of convergence of\n$\\displaystyle\\sum_{n=0}^{\\infty}\\frac{(-1)^{n}(x-3)^{n}}{n+1}$.",
+      "solution": "\\[\n \\left|\\frac{a_{n+1}}{a_{n}}\\right|\n = \\left|\\frac{(x-3)^{n+1}}{n+2}\\cdot\\frac{n+1}{(x-3)^{n}}\\right|\n = |x-3|\\cdot\\frac{n+1}{n+2} \\to |x-3|.\n\\]\nConverges when $|x - 3| < 1$, i.e., $2 < x < 4$. Thus $R = 1$, centered at\n$a = 3$.\n\n**Endpoints:**\n\nAt $x = 4$: $\\displaystyle\\sum_{n=0}^{\\infty}\\frac{(-1)^{n}}{n+1}$ converges\n(alternating series).\n\nAt $x = 2$: $\\displaystyle\\sum_{n=0}^{\\infty}\\frac{(-1)^{n}(-1)^{n}}{n+1}\n= \\sum_{n=0}^{\\infty}\\frac{1}{n+1}$ diverges (harmonic).\n\nInterval of convergence: $(2, 4]$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.8",
+      "number": "10.8",
+      "title": "Using the Root Test",
+      "problem": "Find the radius of convergence of\n$\\displaystyle\\sum_{n=1}^{\\infty}\\left(\\frac{n}{2n+1}\\right)^{n}x^{n}$.",
+      "solution": "The Root Test is often easier when the coefficient involves an $n$th power.\n\\[\n \\sqrt[n]{|a_{n}|} = \\sqrt[n]{\\left(\\frac{n}{2n+1}\\right)^{n}|x|^{n}}\n = \\frac{n}{2n+1}\\cdot|x| \\to \\frac{|x|}{2}.\n\\]\nThe series converges when $\\dfrac{|x|}{2} < 1$, i.e., $|x| < 2$. Thus $R = 2$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.9",
+      "number": "10.9",
+      "title": "Radius from coefficient pattern",
+      "problem": "Find the radius of convergence of\n$\\displaystyle\\sum_{n=0}^{\\infty}\\frac{n^{2}}{3^{n}}x^{n}$.",
+      "solution": "\\[\n \\left|\\frac{a_{n+1}}{a_{n}}\\right|\n = \\left|\\frac{(n+1)^{2}}{3^{n+1}}\\cdot\\frac{3^{n}}{n^{2}}\\cdot x\\right|\n = \\frac{(n+1)^{2}}{3n^{2}}|x| \\to \\frac{|x|}{3}.\n\\]\nConverges when $|x|/3 < 1$, so $|x| < 3$. Thus $R = 3$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.10",
+      "number": "10.10",
+      "title": "Series with $n^{2}$ in denominator",
+      "problem": "Find the radius and interval of convergence of\n$\\displaystyle\\sum_{n=1}^{\\infty}\\frac{x^{n}}{n^{2}}$.",
+      "solution": "\\[\n \\left|\\frac{a_{n+1}}{a_{n}}\\right|\n = \\left|\\frac{x^{n+1}}{(n+1)^{2}}\\cdot\\frac{n^{2}}{x^{n}}\\right|\n = \\frac{n^{2}}{(n+1)^{2}}|x| \\to |x|.\n\\]\nThus $R = 1$.\n\n**Endpoints:**\n\nAt $x = 1$: $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n^{2}}$ converges\n($p$-series with $p = 2 > 1$).\n\nAt $x = -1$: $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{(-1)^{n}}{n^{2}}$\nconverges (absolutely, since $\\sum\\frac{1}{n^{2}}$ converges).\n\nInterval of convergence: $[-1, 1]$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.11",
+      "number": "10.11",
+      "title": "Power series with even powers only",
+      "problem": "Find the radius of convergence of\n$\\displaystyle\\sum_{n=0}^{\\infty}\\frac{x^{2n}}{n!}$.",
+      "solution": "Let $u = x^{2}$. The series becomes $\\displaystyle\\sum_{n=0}^{\\infty}\\frac{u^{n}}{n!}$.\nThis is the series for $e^{u}$, which converges for all $u$. Since $u = x^{2}$\ncan be any non-negative number for any real $x$, the original series converges\nfor all $x$. Thus $R = \\infty$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.12",
+      "number": "10.12",
+      "title": "Series requiring careful analysis",
+      "problem": "Find the radius and interval of convergence of\n$\\displaystyle\\sum_{n=1}^{\\infty}\\frac{(-1)^{n}x^{n}}{\\sqrt{n}}$.",
+      "solution": "\\[\n \\left|\\frac{a_{n+1}}{a_{n}}\\right|\n = \\left|\\frac{x^{n+1}}{\\sqrt{n+1}}\\cdot\\frac{\\sqrt{n}}{x^{n}}\\right|\n = |x|\\sqrt{\\frac{n}{n+1}} \\to |x|.\n\\]\nThus $R = 1$.\n\n**Endpoints:**\n\nAt $x = 1$: $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{(-1)^{n}}{\\sqrt{n}}$\nconverges (alternating series, since $1/\\sqrt{n} \\to 0$ decreasingly).\n\nAt $x = -1$: $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{(-1)^{n}(-1)^{n}}{\\sqrt{n}}\n= \\sum_{n=1}^{\\infty}\\frac{1}{\\sqrt{n}}$ diverges ($p$-series with $p = 1/2 < 1$).\n\nInterval of convergence: $(-1, 1]$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Differentiation and Integration of Power Series"
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the most remarkable properties of power series is that they can be\ndifferentiated and integrated term by term, just like polynomials."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.2",
+      "number": "10.2",
+      "title": "Term-by-Term Differentiation and Integration",
+      "content": "If $f(x) = \\displaystyle\\sum_{n=0}^{\\infty}c_{n}(x-a)^{n}$ has radius of\nconvergence $R > 0$, then on the interval $(a - R, a + R)$:\n\n1. $f$ is differentiable, and\n \\[\n f'(x) = \\sum_{n=1}^{\\infty}n\\,c_{n}(x-a)^{n-1}.\n \\]\n\n2. $f$ is integrable, and\n \\[\n \\int f(x)\\dx = C + \\sum_{n=0}^{\\infty}\\frac{c_{n}}{n+1}(x-a)^{n+1}.\n \\]\n\n3. Both the differentiated and integrated series have the same radius\n of convergence $R$ (though the behavior at endpoints may differ).",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This theorem is powerful: it says power series behave like \"infinitely\nlong polynomials\" with respect to calculus operations. Note that the\ntheorem applies within the open interval of convergence; endpoint behavior\nmust be checked separately."
+    },
+    {
+      "type": "example",
+      "id": "example-10.13",
+      "number": "10.13",
+      "title": "Differentiating the geometric series",
+      "problem": "Use term-by-term differentiation to find a power series for $\\dfrac{1}{(1-x)^{2}}$.",
+      "solution": "We know $\\dfrac{1}{1-x} = \\displaystyle\\sum_{n=0}^{\\infty}x^{n}$ for $|x| < 1$.\nDifferentiating both sides:\n\\[\n \\frac{d}{dx}\\left[\\frac{1}{1-x}\\right] = \\frac{1}{(1-x)^{2}}\n\\]\nand\n\\[\n \\frac{d}{dx}\\left[\\sum_{n=0}^{\\infty}x^{n}\\right]\n = \\sum_{n=1}^{\\infty}n\\,x^{n-1}\n = 1 + 2x + 3x^{2} + 4x^{3} + \\cdots\n\\]\nTherefore,\n\\[\n \\frac{1}{(1-x)^{2}} = \\sum_{n=1}^{\\infty}n\\,x^{n-1}\n = \\sum_{n=0}^{\\infty}(n+1)x^{n} \\quad\\text{for}\\quad |x| < 1.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.14",
+      "number": "10.14",
+      "title": "Second derivative of geometric series",
+      "problem": "Find a power series for $\\dfrac{2}{(1-x)^{3}}$.",
+      "solution": "Differentiating $\\dfrac{1}{(1-x)^{2}} = \\displaystyle\\sum_{n=1}^{\\infty}n\\,x^{n-1}$:\n\\[\n \\frac{2}{(1-x)^{3}} = \\sum_{n=2}^{\\infty}n(n-1)x^{n-2}\n = \\sum_{n=0}^{\\infty}(n+2)(n+1)x^{n}\n\\]\nfor $|x| < 1$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.15",
+      "number": "10.15",
+      "title": "Integrating to find $\\ln(1+x)$",
+      "problem": "Use term-by-term integration to find a power series for $\\ln(1+x)$.",
+      "solution": "We know $\\dfrac{1}{1+x} = \\dfrac{1}{1-(-x)} = \\displaystyle\\sum_{n=0}^{\\infty}(-x)^{n}\n= \\sum_{n=0}^{\\infty}(-1)^{n}x^{n}$ for $|x| < 1$.\n\nIntegrating both sides:\n\\[\n \\int\\frac{1}{1+x}\\dx = \\ln(1+x) + C\n\\]\nand\n\\[\n \\int\\sum_{n=0}^{\\infty}(-1)^{n}x^{n}\\dx\n = C + \\sum_{n=0}^{\\infty}\\frac{(-1)^{n}}{n+1}x^{n+1}.\n\\]\nSetting $x = 0$ shows $C = 0$. Therefore,\n\\[\n \\ln(1+x) = \\sum_{n=0}^{\\infty}\\frac{(-1)^{n}}{n+1}x^{n+1}\n = x - \\frac{x^{2}}{2} + \\frac{x^{3}}{3} - \\frac{x^{4}}{4} + \\cdots\n\\]\nfor $|x| < 1$. (The series also converges at $x = 1$ by the alternating\nseries test, giving $\\ln 2 = 1 - \\frac{1}{2} + \\frac{1}{3} - \\frac{1}{4} + \\cdots$.)"
+    },
+    {
+      "type": "example",
+      "id": "example-10.16",
+      "number": "10.16",
+      "title": "Series for $\\ln(1-x)$",
+      "problem": "Find a power series for $\\ln(1-x)$.",
+      "solution": "We have $\\dfrac{1}{1-x} = \\displaystyle\\sum_{n=0}^{\\infty}x^{n}$ for $|x| < 1$.\n\nIntegrating:\n\\[\n -\\ln(1-x) = \\int\\frac{1}{1-x}\\dx = C + \\sum_{n=0}^{\\infty}\\frac{x^{n+1}}{n+1}\n = C + x + \\frac{x^{2}}{2} + \\frac{x^{3}}{3} + \\cdots\n\\]\nSetting $x = 0$ gives $C = 0$. Therefore,\n\\[\n \\ln(1-x) = -\\sum_{n=1}^{\\infty}\\frac{x^{n}}{n}\n = -x - \\frac{x^{2}}{2} - \\frac{x^{3}}{3} - \\frac{x^{4}}{4} - \\cdots\n\\]\nfor $|x| < 1$. The series diverges at $x = 1$ (negative of harmonic series)\nbut converges at $x = -1$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.17",
+      "number": "10.17",
+      "title": "Series for $\\arctan x$",
+      "problem": "Find a power series for $\\arctan x$.",
+      "solution": "Since $\\dfrac{d}{dx}[\\arctan x] = \\dfrac{1}{1+x^{2}}$, we have\n$\\arctan x = \\displaystyle\\int\\frac{1}{1+x^{2}}\\dx$.\n\nFrom the geometric series with $-x^{2}$ in place of $x$:\n\\[\n \\frac{1}{1+x^{2}} = \\frac{1}{1-(-x^{2})} = \\sum_{n=0}^{\\infty}(-x^{2})^{n}\n = \\sum_{n=0}^{\\infty}(-1)^{n}x^{2n} = 1 - x^{2} + x^{4} - x^{6} + \\cdots\n\\]\nfor $|x| < 1$.\n\nIntegrating term by term:\n\\[\n \\arctan x = C + \\sum_{n=0}^{\\infty}\\frac{(-1)^{n}}{2n+1}x^{2n+1}\n = C + x - \\frac{x^{3}}{3} + \\frac{x^{5}}{5} - \\frac{x^{7}}{7} + \\cdots\n\\]\nSince $\\arctan(0) = 0$, we have $C = 0$. Therefore,\n\\[\n \\arctan x = \\sum_{n=0}^{\\infty}\\frac{(-1)^{n}}{2n+1}x^{2n+1}\n = x - \\frac{x^{3}}{3} + \\frac{x^{5}}{5} - \\frac{x^{7}}{7} + \\cdots\n\\]\nfor $|x| \\leq 1$. (The convergence at $x = \\pm 1$ follows from the\nalternating series test.)"
+    },
+    {
+      "type": "example",
+      "id": "example-10.18",
+      "number": "10.18",
+      "title": "Leibniz's formula for $\\pi$",
+      "problem": "Derive a series formula for $\\pi$.",
+      "solution": "From Example [ex:ps-arctan], we have\n$\\arctan x = x - \\dfrac{x^{3}}{3} + \\dfrac{x^{5}}{5} - \\dfrac{x^{7}}{7} + \\cdots$\nfor $|x| \\leq 1$.\n\nSetting $x = 1$:\n\\[\n \\arctan(1) = \\frac{\\pi}{4} = 1 - \\frac{1}{3} + \\frac{1}{5} - \\frac{1}{7} + \\cdots\n\\]\nTherefore,\n\\[\n \\pi = 4\\left(1 - \\frac{1}{3} + \\frac{1}{5} - \\frac{1}{7} + \\cdots\\right)\n = 4\\sum_{n=0}^{\\infty}\\frac{(-1)^{n}}{2n+1}.\n\\]\nThis beautiful formula, discovered by Leibniz in 1674 and independently by\nJames Gregory, expresses $\\pi$ as an infinite series of simple fractions.\n(It converges very slowly, but its elegance is undeniable.)"
+    },
+    {
+      "type": "example",
+      "id": "example-10.19",
+      "number": "10.19",
+      "title": "Series for $\\arcsin x$",
+      "problem": "Find a power series for $\\arcsin x$.",
+      "solution": "Since $\\dfrac{d}{dx}[\\arcsin x] = \\dfrac{1}{\\sqrt{1-x^{2}}}$, we need the\nseries for $(1-x^{2})^{-1/2}$.\n\nUsing the binomial series (which we'll develop fully in Section 10.3):\n\\[\n (1-u)^{-1/2} = 1 + \\frac{1}{2}u + \\frac{1\\cdot 3}{2\\cdot 4}u^{2}\n + \\frac{1\\cdot 3\\cdot 5}{2\\cdot 4\\cdot 6}u^{3} + \\cdots\n = \\sum_{n=0}^{\\infty}\\frac{(2n)!}{2^{2n}(n!)^{2}}u^{n}\n\\]\nfor $|u| < 1$.\n\nWith $u = x^{2}$:\n\\[\n \\frac{1}{\\sqrt{1-x^{2}}} = 1 + \\frac{x^{2}}{2} + \\frac{3x^{4}}{8}\n + \\frac{5x^{6}}{16} + \\cdots\n\\]\n\nIntegrating term by term:\n\\[\n \\arcsin x = x + \\frac{x^{3}}{6} + \\frac{3x^{5}}{40} + \\frac{5x^{7}}{112} + \\cdots\n = \\sum_{n=0}^{\\infty}\\frac{(2n)!}{2^{2n}(n!)^{2}(2n+1)}x^{2n+1}\n\\]\nfor $|x| \\leq 1$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.20",
+      "number": "10.20",
+      "title": "A series with multiplied coefficient",
+      "problem": "Find a power series for $\\dfrac{x}{(1-x)^{2}}$.",
+      "solution": "From Example [ex:ps-diff-geom], $\\dfrac{1}{(1-x)^{2}} = \\displaystyle\\sum_{n=0}^{\\infty}(n+1)x^{n}$.\n\nMultiplying by $x$:\n\\[\n \\frac{x}{(1-x)^{2}} = x\\sum_{n=0}^{\\infty}(n+1)x^{n}\n = \\sum_{n=0}^{\\infty}(n+1)x^{n+1}\n = \\sum_{n=1}^{\\infty}n\\,x^{n}\n = x + 2x^{2} + 3x^{3} + \\cdots\n\\]\nfor $|x| < 1$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-10.2",
+      "number": null,
+      "title": "Endpoint behavior can change",
+      "content": "Although differentiation and integration preserve the radius of convergence,\nthey may change convergence at the endpoints. For example,\n$\\displaystyle\\sum_{n=1}^{\\infty}\\frac{x^{n}}{n^{2}}$ converges at both\n$x = \\pm 1$, but its derivative $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{x^{n-1}}{n}$\nconverges only at $x = -1$.\n\nIntegration typically improves endpoint behavior (the integrated series\nconverges where the original did), while differentiation can make it worse."
+    },
+    {
+      "type": "example",
+      "id": "example-10.21",
+      "number": "10.21",
+      "title": "Series for $\\dfrac{1}{(1+x)^{2}}$",
+      "problem": "Find a power series for $\\dfrac{1}{(1+x)^{2}}$.",
+      "solution": "We have $\\dfrac{1}{1+x} = \\displaystyle\\sum_{n=0}^{\\infty}(-1)^{n}x^{n}$ for $|x| < 1$.\n\nDifferentiating both sides:\n\\[\n -\\frac{1}{(1+x)^{2}} = \\sum_{n=1}^{\\infty}(-1)^{n}n\\,x^{n-1}\n\\]\nThus\n\\[\n \\frac{1}{(1+x)^{2}} = \\sum_{n=1}^{\\infty}(-1)^{n+1}n\\,x^{n-1}\n = \\sum_{n=0}^{\\infty}(-1)^{n}(n+1)x^{n}\n = 1 - 2x + 3x^{2} - 4x^{3} + \\cdots\n\\]\nfor $|x| < 1$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Uniqueness of Power Series Representations"
+    },
+    {
+      "type": "paragraph",
+      "text": "An important question: if a function has a power series representation, is it\nunique? The answer is yes."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.3",
+      "number": "10.3",
+      "title": "Uniqueness of Power Series",
+      "content": "If $f(x) = \\displaystyle\\sum_{n=0}^{\\infty}c_{n}(x-a)^{n}$ for all $x$ in some\nopen interval containing $a$, then the coefficients are uniquely determined:\n\\[\n c_{n} = \\frac{f^{(n)}(a)}{n!}.\n\\]\nIn other words, the power series must be the Taylor series of $f$ centered at $a$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This theorem has a powerful consequence: if we can find *any* power series\nfor a function (by substitution, algebraic manipulation, integration, etc.),\nwe automatically know its Taylor series."
+    },
+    {
+      "type": "example",
+      "id": "example-10.22",
+      "number": "10.22",
+      "title": "Coefficients from uniqueness",
+      "problem": "We found that $\\dfrac{1}{1-x} = 1 + x + x^{2} + x^{3} + \\cdots$ for $|x| < 1$.\nBy uniqueness, this must be the Maclaurin series, so the derivatives at $0$\nare:\n\\[\n f^{(n)}(0) = n! \\cdot 1 = n!.\n\\]\nIndeed, direct computation shows $\\dfrac{d^{n}}{dx^{n}}\\left[\\dfrac{1}{1-x}\\right]\n= \\dfrac{n!}{(1-x)^{n+1}}$, which equals $n!$ at $x = 0$.",
+      "solution": ""
+    },
+    {
+      "type": "historical",
+      "id": "historical-10.2",
+      "number": null,
+      "title": "James Gregory (1638--1675)",
+      "content": "The Scottish mathematician James Gregory discovered the series for $\\arctan x$\nin 1671, three years before Leibniz's independent discovery. Gregory, a\ndevout Presbyterian, also discovered the reflecting telescope design that\nbears his name (the Gregorian telescope). He was one of the first to\ndistinguish between convergent and divergent series and to recognize the\nimportance of the remainder in Taylor's theorem.\n\nGregory died at only 36, before he could fully develop many of his brilliant\nideas on infinite series. His nephew David Gregory later became a professor\nof mathematics and helped preserve and publish some of his uncle's work."
+    },
+    {
+      "type": "historical",
+      "id": "historical-10.2",
+      "number": null,
+      "title": "Augustin-Louis Cauchy (1789--1857)",
+      "content": "Cauchy placed the theory of power series on rigorous foundations. Before his\nwork, mathematicians used power series freely but without careful attention\nto convergence. Cauchy established the conditions under which term-by-term\ndifferentiation and integration are valid, and he developed the theory of\nuniform convergence that justifies these operations.\n\nA devout Catholic, Cauchy saw his mathematical work as glorifying God through\nthe study of His creation. He wrote over 800 papers and books, making him one\nof the most prolific mathematicians in history."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Psalm 90:2",
+      "text": "Before the mountains were brought forth, or ever\nthou hadst formed the earth and the world, even from everlasting to\neverlasting, thou art God."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 40:28",
+      "text": "Hast thou not known? hast thou not heard, that\nthe everlasting God, the Lord, the Creator of the ends of the earth, fainteth\nnot, neither is weary? there is no searching of his understanding."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 25:2",
+      "text": "It is the glory of God to conceal a matter;\nto search out a matter is the glory of kings."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 11:7--8",
+      "text": "Can you fathom the mysteries of God? Can you\nprobe the limits of the Almighty? They are higher than the heavens above—\nwhat can you do? They are deeper than the depths below—what can you know?"
+    },
+    {
+      "type": "scripture",
+      "reference": "Romans 11:33",
+      "text": "O the depth of the riches both of the wisdom\nand knowledge of God! how unsearchable are his judgments, and his ways past\nfinding out!"
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 19:1--2",
+      "text": "The heavens declare the glory of God; and the\nfirmament sheweth his handywork. Day unto day uttereth speech, and night\nunto night sheweth knowledge."
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 2:10",
+      "text": "But God hath revealed them unto us by\nhis Spirit: for the Spirit searcheth all things, yea, the deep things of God."
+    },
+    {
+      "type": "scripture",
+      "reference": "Colossians 1:17",
+      "text": "He is before all things, and in him all\nthings hold together."
+    },
+    {
+      "type": "quote",
+      "author": "Leonhard Euler",
+      "text": "For since the fabric of the universe is most\nperfect and the work of a most wise Creator, nothing at all takes place in\nthe universe in which some rule of maximum or minimum does not appear."
+    },
+    {
+      "type": "quote",
+      "author": "Niels Henrik Abel",
+      "text": "Divergent series are the invention of the\ndevil, and it is shameful to base on them any demonstration whatsoever."
+    },
+    {
+      "type": "quote",
+      "author": "Carl Friedrich Gauss",
+      "text": "Mathematics is the queen of the sciences\nand number theory is the queen of mathematics."
+    },
+    {
+      "type": "quote",
+      "author": "Augustin-Louis Cauchy",
+      "text": "One can even say that Analysis is the\nart of separating the parts of a question."
+    },
+    {
+      "type": "quote",
+      "author": "Gottfried Wilhelm Leibniz",
+      "text": "Music is the pleasure the human mind\nexperiences from counting without being aware that it is counting."
+    },
+    {
+      "type": "quote",
+      "author": "James Gregory",
+      "text": "The series reveals what direct computation\nobscures."
+    },
+    {
+      "type": "quote",
+      "author": "Pierre-Simon Laplace",
+      "text": "The weight of evidence for an extraordinary\nclaim must be proportioned to its strangeness."
+    }
+  ]
+}

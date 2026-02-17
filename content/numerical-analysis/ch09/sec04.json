@@ -1,0 +1,178 @@
+{
+  "id": "numerical-analysis-ch09-sec04",
+  "title": "Singular Value Decomposition",
+  "chapter": 9,
+  "section": 4,
+  "book": "numerical-analysis",
+  "objectives": [
+    "State and prove the existence of the singular value decomposition",
+    "Compute the SVD and interpret singular values geometrically",
+    "Use the SVD to determine matrix rank, norms, and condition number",
+    "Apply the Eckart-Young theorem for optimal low-rank approximation",
+    "Understand the connection between SVD and principal component analysis"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The SVD Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The singular value decomposition (SVD) is perhaps the most important matrix decomposition in numerical linear algebra. It exists for *any* matrix, not just square or invertible ones."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Singular Value Decomposition",
+      "content": "Every matrix $A \\in \\mathbb{R}^{m \\times n}$ can be factored as\n\\[\nA = U \\Sigma V^T\n\\]\nwhere:\n\n- $U \\in \\mathbb{R}^{m \\times m}$ is orthogonal (columns are **left singular vectors**)\n\n- $V \\in \\mathbb{R}^{n \\times n}$ is orthogonal (columns are **right singular vectors**)\n\n- $\\Sigma \\in \\mathbb{R}^{m \\times n}$ is diagonal with entries $\\sigma_1 \\geq \\sigma_2 \\geq \\cdots \\geq \\sigma_r > 0 = \\sigma_{r+1} = \\cdots$\nThe values $\\sigma_i$ are the **singular values** of $A$, and $r = \\text{rank}(A)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Consider the symmetric positive semidefinite matrix $A^T A$. It has real eigenvalues $\\lambda_1 \\geq \\lambda_2 \\geq \\cdots \\geq \\lambda_n \\geq 0$ with orthonormal eigenvectors $v_1, \\ldots, v_n$.\n\nLet $\\sigma_i = \\sqrt{\\lambda_i}$ and $r$ be the number of positive eigenvalues. For $i \\leq r$, define\n\\[\nu_i = \\frac{1}{\\sigma_i} A v_i\n\\]\n\n**Claim:** $u_1, \\ldots, u_r$ are orthonormal.\n\n**Proof:** $u_i^T u_j = \\frac{1}{\\sigma_i \\sigma_j} v_i^T A^T A v_j = \\frac{\\lambda_j}{\\sigma_i \\sigma_j} v_i^T v_j = \\frac{\\sigma_j}{\\sigma_i} \\delta_{ij} = \\delta_{ij}$.\n\nExtend $\\{u_1, \\ldots, u_r\\}$ to an orthonormal basis $\\{u_1, \\ldots, u_m\\}$ of $\\mathbb{R}^m$.\n\nLet $U = [u_1 | \\cdots | u_m]$, $V = [v_1 | \\cdots | v_n]$, and $\\Sigma$ be $m \\times n$ with $\\Sigma_{ii} = \\sigma_i$ for $i \\leq r$.\n\nThen $A v_i = \\sigma_i u_i$ for $i \\leq r$ and $A v_i = 0$ for $i > r$ (since $A^T A v_i = 0$ implies $\\|Av_i\\|^2 = v_i^T A^T A v_i = 0$).\n\nTherefore $AV = U\\Sigma$, giving $A = U\\Sigma V^T$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Reduced SVD",
+      "content": "The **reduced SVD** (or **thin SVD**) includes only the $r$ nonzero singular values:\n\\[\nA = U_r \\Sigma_r V_r^T\n\\]\nwhere $U_r \\in \\mathbb{R}^{m \\times r}$, $\\Sigma_r \\in \\mathbb{R}^{r \\times r}$, $V_r \\in \\mathbb{R}^{n \\times r}$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Computing the SVD",
+      "problem": "Find the SVD of $A = \\begin{pmatrix} 1 & 1 \\\\ 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$.",
+      "solution": "**Step 1:** Compute $A^T A = \\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$.\n\nEigenvalues: $\\det(A^T A - \\lambda I) = (2-\\lambda)^2 - 1 = 0 \\Rightarrow \\lambda = 3, 1$.\n\nSingular values: $\\sigma_1 = \\sqrt{3}$, $\\sigma_2 = 1$.\n\n**Step 2:** Find eigenvectors of $A^T A$:\n\n- $\\lambda = 3$: $(A^T A - 3I)v = 0 \\Rightarrow v_1 = \\frac{1}{\\sqrt{2}}(1, 1)^T$\n\n- $\\lambda = 1$: $v_2 = \\frac{1}{\\sqrt{2}}(1, -1)^T$\n\nSo $V = \\frac{1}{\\sqrt{2}}\\begin{pmatrix} 1 & 1 \\\\ 1 & -1 \\end{pmatrix}$.\n\n**Step 3:** Compute left singular vectors:\n\n- $u_1 = \\frac{1}{\\sigma_1} Av_1 = \\frac{1}{\\sqrt{3}} \\cdot \\frac{1}{\\sqrt{2}}(2, 1, 1)^T = \\frac{1}{\\sqrt{6}}(2, 1, 1)^T$\n\n- $u_2 = \\frac{1}{\\sigma_2} Av_2 = \\frac{1}{\\sqrt{2}}(0, 1, -1)^T$\n\nExtend to orthonormal basis: $u_3 = \\frac{1}{\\sqrt{3}}(-1, 1, 1)^T$ (orthogonal to $u_1, u_2$).\n\n**Final result:**\n\\[\nA = \\begin{pmatrix} 2/\\sqrt{6} & 0 & -1/\\sqrt{3} \\\\ 1/\\sqrt{6} & 1/\\sqrt{2} & 1/\\sqrt{3} \\\\ 1/\\sqrt{6} & -1/\\sqrt{2} & 1/\\sqrt{3} \\end{pmatrix}\n\\begin{pmatrix} \\sqrt{3} & 0 \\\\ 0 & 1 \\\\ 0 & 0 \\end{pmatrix}\n\\begin{pmatrix} 1/\\sqrt{2} & 1/\\sqrt{2} \\\\ 1/\\sqrt{2} & -1/\\sqrt{2} \\end{pmatrix}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Geometric Interpretation"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "SVD and Matrix Image",
+      "content": "Let $A = U\\Sigma V^T$. The unit sphere in $\\mathbb{R}^n$ maps to an ellipsoid in $\\mathbb{R}^m$ with:\n\n- Principal axes in directions $u_1, \\ldots, u_r$\n\n- Semi-axis lengths $\\sigma_1, \\ldots, \\sigma_r$",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Fundamental Properties"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.3",
+      "number": "9.3",
+      "title": "SVD and Matrix Properties",
+      "content": "Let $A = U\\Sigma V^T$ with singular values $\\sigma_1 \\geq \\cdots \\geq \\sigma_r > 0$.\n\n1. **Rank:** $\\text{rank}(A) = r = \\#\\{\\text{nonzero singular values}\\}$\n\n2. **Range:** $\\text{col}(A) = \\text{span}\\{u_1, \\ldots, u_r\\}$\n\n3. **Null space:** $\\text{null}(A) = \\text{span}\\{v_{r+1}, \\ldots, v_n\\}$\n\n4. **Spectral norm:** $\\|A\\|_2 = \\sigma_1$\n\n5. **Frobenius norm:** $\\|A\\|_F = \\sqrt{\\sigma_1^2 + \\cdots + \\sigma_r^2}$\n\n6. **Condition number:** $\\kappa_2(A) = \\sigma_1 / \\sigma_r$ (for invertible $A$)",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(4) For any unit vector $x$: $\\|Ax\\|_2 = \\|U\\Sigma V^T x\\|_2 = \\|\\Sigma V^T x\\|_2 \\leq \\sigma_1 \\|V^T x\\|_2 = \\sigma_1$. Equality when $x = v_1$.\n\n(5) $\\|A\\|_F^2 = \\text{trace}(A^T A) = \\text{trace}(V\\Sigma^T U^T U\\Sigma V^T) = \\text{trace}(\\Sigma^T \\Sigma) = \\sum_i \\sigma_i^2$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Using SVD for Rank and Norms",
+      "problem": "For the matrix from the previous example with $\\sigma_1 = \\sqrt{3}$, $\\sigma_2 = 1$:\n\n- $\\text{rank}(A) = 2$ (two nonzero singular values)\n\n- $\\|A\\|_2 = \\sqrt{3} \\approx 1.73$\n\n- $\\|A\\|_F = \\sqrt{3 + 1} = 2$\n\n- $\\kappa_2(A) = \\sqrt{3}/1 \\approx 1.73$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Low-Rank Approximation"
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the most important applications of the SVD is finding optimal low-rank approximations."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.4",
+      "number": "9.4",
+      "title": "Eckart-Young-Mirsky Theorem",
+      "content": "Let $A = U\\Sigma V^T$ have singular values $\\sigma_1 \\geq \\cdots \\geq \\sigma_r$. For any $k < r$, the best rank-$k$ approximation to $A$ is\n\\[\nA_k = \\sum_{i=1}^k \\sigma_i u_i v_i^T\n\\]\nwith approximation errors:\n$$\n\\|A - A_k\\|_2 &= \\sigma_{k+1} \\\\\n\\|A - A_k\\|_F &= \\sqrt{\\sigma_{k+1}^2 + \\cdots + \\sigma_r^2}\n$$\nMoreover, $A_k$ is the *unique* best rank-$k$ approximation (in both norms) if $\\sigma_k > \\sigma_{k+1}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $B$ be any rank-$k$ matrix. Then $\\dim(\\text{null}(B)) \\geq n - k$.\n\nThe subspace $W = \\text{span}\\{v_1, \\ldots, v_{k+1}\\}$ has dimension $k+1$.\n\nBy dimension counting, $W \\cap \\text{null}(B) \\neq \\{0\\}$. Let $x \\in W \\cap \\text{null}(B)$ be a unit vector.\n\nThen $x = \\sum_{i=1}^{k+1} \\alpha_i v_i$ with $\\sum \\alpha_i^2 = 1$, and:\n\\[\n\\|A - B\\|_2 \\geq \\|(A-B)x\\|_2 = \\|Ax\\|_2 = \\left\\|\\sum_{i=1}^{k+1} \\alpha_i \\sigma_i u_i\\right\\|_2 = \\sqrt{\\sum_{i=1}^{k+1} \\alpha_i^2 \\sigma_i^2} \\geq \\sigma_{k+1}\n\\]\n\nFor $A_k$, equality is achieved with $x = v_{k+1}$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.3",
+      "number": "9.3",
+      "title": "Image Compression via SVD",
+      "problem": "A grayscale image can be represented as an $m \\times n$ matrix of pixel intensities. Full storage requires $mn$ values.\n\nThe rank-$k$ SVD approximation requires storing:\n\n- $U_k$: $m \\times k$ values\n\n- $\\Sigma_k$: $k$ values\n\n- $V_k^T$: $k \\times n$ values\n\n- Total: $k(m + n + 1)$ values\n\nFor a $1000 \\times 1000$ image: full storage is $10^6$ values, but rank-50 approximation needs only $\\approx 10^5$ values (10× compression) while capturing most visual information.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Pseudoinverse"
+    },
+    {
+      "type": "paragraph",
+      "text": "The SVD naturally defines a generalized inverse for non-square and rank-deficient matrices."
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Moore-Penrose Pseudoinverse",
+      "content": "The **pseudoinverse** of $A = U\\Sigma V^T$ is\n\\[\nA^+ = V \\Sigma^+ U^T\n\\]\nwhere $\\Sigma^+$ is obtained by transposing $\\Sigma$ and inverting all nonzero entries:\n\\[\n\\Sigma^+_{ii} = \\begin{cases} 1/\\sigma_i & \\text{if } \\sigma_i > 0 \\\\ 0 & \\text{if } \\sigma_i = 0 \\end{cases}\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.5",
+      "number": "9.5",
+      "title": "Pseudoinverse Properties",
+      "content": "The pseudoinverse $A^+$ satisfies the four Moore-Penrose conditions:\n\n1. $A A^+ A = A$\n\n2. $A^+ A A^+ = A^+$\n\n3. $(A A^+)^T = A A^+$ (i.e., $A A^+$ is symmetric)\n\n4. $(A^+ A)^T = A^+ A$ (i.e., $A^+ A$ is symmetric)\nThese conditions uniquely characterize $A^+$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.6",
+      "number": "9.6",
+      "title": "Pseudoinverse and Least Squares",
+      "content": "For the least squares problem $\\min_x \\|Ax - b\\|_2$:\n\n1. $x^+ = A^+ b$ is a solution (minimizes $\\|Ax - b\\|_2$)\n\n2. If multiple solutions exist, $x^+$ has minimum norm $\\|x\\|_2$\nThus $A^+ b$ is the minimum-norm least squares solution.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-9.4",
+      "number": "9.4",
+      "title": "Computing with the Pseudoinverse",
+      "problem": "For $A = \\begin{pmatrix} 1 & 0 \\\\ 0 & 0 \\\\ 0 & 1 \\end{pmatrix}$, find $A^+$ and solve $Ax \\approx b$ for $b = (1, 1, 1)^T$.",
+      "solution": "The SVD is $A = I \\cdot \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\\\ 0 & 0 \\end{pmatrix} \\cdot I$ (already diagonal).\n\n$\\Sigma^+ = \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\end{pmatrix}$\n\n$A^+ = \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix}$\n\n$x^+ = A^+ b = (1, 1)^T$\n\nCheck: $Ax^+ = (1, 0, 1)^T$, residual $= (0, 1, 0)^T$, $\\|Ax^+ - b\\|_2 = 1$.\n\nThe system $Ax = b$ has no exact solution (b has a component in the null space of $A^T$)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Computing the SVD"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-9.4",
+      "number": null,
+      "title": "SVD Computation (Conceptual)",
+      "content": "1. **Bidiagonalization:** Transform $A$ to bidiagonal form $B = U_1^T A V_1$\n\n2. **Bidiagonal SVD:** Apply implicit QR iterations to $B$ to find its SVD\n\n3. **Accumulate transformations:** $U = U_1 U_2$, $V = V_1 V_2$"
+    },
+    {
+      "type": "historical",
+      "id": "historical-9.4",
+      "number": null,
+      "title": "SVD History",
+      "content": "The SVD was developed in the late 19th century by Beltrami (1873), Jordan, and Sylvester. Its computational realization came with Gene Golub and William Kahan's 1965 algorithm, and it became central to numerical linear algebra through Golub and Van Loan's influential textbook. Today the SVD is fundamental to data science, machine learning, signal processing, and statistics (via principal component analysis)."
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "id": "vol1-ch04-sec02",
+  "title": "The Product and Quotient Rules",
+  "chapter": 4,
+  "section": 2,
+  "book": "vol1",
+  "epigraph": {
+    "text": "Be fruitful and increase in number; fill the earth and subdue it.",
+    "reference": "Genesis 1:28",
+    "quote": "The product rule is the Leibniz rule, and it is as beautiful as everything that man touched.",
+    "quoteAuthor": "V.I.\\ Arnold"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "You might guess that the derivative of a product is the product of the \nderivatives: $\\deriv{}{x}[f(x)\\cdot g(x)] \\stackrel{?}{=} f'(x)\\cdot g'(x)$. \nLet us test this guess."
+    },
+    {
+      "type": "paragraph",
+      "text": "We know that $\\deriv{}{x}[x^{2}] = 2x$. But $x^{2} = x \\cdot x$, so if \nthe guess were correct, we would get\n\\[\n \\deriv{}{x}[x \\cdot x] \\stackrel{?}{=} \n \\deriv{}{x}[x] \\cdot \\deriv{}{x}[x] = 1 \\cdot 1 = 1.\n\\]\nSince $2x \\neq 1$, the guess is **wrong**. Differentiation does \n*not* distribute over multiplication so simply. We need a more \ncareful rule."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Product Rule"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "The Product Rule",
+      "content": "If $f$ and $g$ are both differentiable, then\n\\[\n \\deriv{}{x}\\bigl[f(x)\\,g(x)\\bigr] = f'(x)\\,g(x) + f(x)\\,g'(x).\n\\]\nIn compact notation: $(fg)' = f'g + fg'$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "In words: the derivative of a product is the \"derivative of the first \ntimes the second, plus the first times the derivative of the second.\""
+    },
+    {
+      "type": "proof",
+      "content": "We start from the limit definition and use an algebraic trick: we \n*add and subtract* the same quantity to create two recognizable \ndifference quotients.\n$$\n \\deriv{}{x}\\bigl[f(x)\\,g(x)\\bigr]\n &= \\limtozero{h}\\frac{f(x+h)\\,g(x+h) - f(x)\\,g(x)}{h}.\n$$\nWe add and subtract $f(x+h)\\,g(x)$ in the numerator:\n$$\n &= \\limtozero{h}\\frac{f(x+h)\\,g(x+h) - f(x+h)\\,g(x) + f(x+h)\\,g(x) - f(x)\\,g(x)}{h} \\\\[6pt]\n &= \\limtozero{h}\\left[f(x+h)\\cdot\\frac{g(x+h) - g(x)}{h} + g(x)\\cdot\\frac{f(x+h) - f(x)}{h}\\right].\n$$\nSince $f$ is differentiable at $x$, it is continuous there \n(Theorem [thm:diff-implies-cont] from Chapter [ch:derivative]), \nso $\\limtozero{h} f(x+h) = f(x)$. Also, $g(x)$ does not depend on $h$. \nTherefore,\n$$\n &= f(x)\\cdot\\limtozero{h}\\frac{g(x+h) - g(x)}{h} + g(x)\\cdot\\limtozero{h}\\frac{f(x+h) - f(x)}{h} \\\\[6pt]\n &= f(x)\\,g'(x) + g(x)\\,f'(x).\n$$\nThis is equivalent to $f'(x)\\,g(x) + f(x)\\,g'(x)$, since addition is \ncommutative."
+    },
+    {
+      "type": "historical",
+      "id": "historical-4.2",
+      "number": null,
+      "title": "Gottfried Wilhelm Leibniz (1646--1716)",
+      "content": "Leibniz discovered the product rule around 1675 and published it in his \nlandmark 1684 paper, the first published work on calculus. His notation \n$d(xy) = x\\,dy + y\\,dx$ made the rule visually elegant and easy to \nremember. A devout Lutheran, Leibniz believed that mathematics revealed \nthe rational harmony God built into the universe, writing that \"the \nwisdom of God is displayed not only in the structure of the world but \nalso in the abstract sciences.\""
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us verify the Product Rule on our earlier example."
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Verifying the Product Rule",
+      "problem": "Let $f(x) = x$ and $g(x) = x$. Then $f(x)\\,g(x) = x^{2}$, whose \nderivative is $2x$. Using the Product Rule:\n\\[\n (fg)' = f'g + fg' = (1)(x) + (x)(1) = x + x = 2x. \\quad\\checkmark\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "Product of polynomial and exponential",
+      "problem": "Differentiate $y = x^{3}\\,e^{x}$.",
+      "solution": "Let $f(x) = x^{3}$ and $g(x) = e^{x}$. Then $f'(x) = 3x^{2}$ and \n$g'(x) = e^{x}$. By the Product Rule,\n$$\n y' &= f'(x)\\,g(x) + f(x)\\,g'(x) \\\\\n &= 3x^{2}\\cdot e^{x} + x^{3}\\cdot e^{x} \\\\\n &= e^{x}(3x^{2} + x^{3}) \\\\\n &= x^{2}\\,e^{x}(3 + x).\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": "Product of three factors",
+      "problem": "Differentiate $f(x) = x^{2}(2x + 1)(x - 3)$.",
+      "solution": "We could expand, but the Product Rule extends. Write \n$f = u \\cdot v \\cdot w$ where $u = x^{2}$, $v = 2x+1$, $w = x-3$. \nThe derivative is\n\\[\n f' = u'vw + uv'w + uvw'.\n\\]\nComputing: $u' = 2x$, $v' = 2$, $w' = 1$. Therefore,\n$$\n f'(x) &= 2x(2x+1)(x-3) + x^{2}(2)(x-3) + x^{2}(2x+1)(1) \\\\\n &= 2x(2x+1)(x-3) + 2x^{2}(x-3) + x^{2}(2x+1).\n$$\nIf desired, we can expand and simplify:\n$$\n &= 2x(2x^{2} - 5x - 3) + 2x^{3} - 6x^{2} + 2x^{3} + x^{2} \\\\\n &= 4x^{3} - 10x^{2} - 6x + 2x^{3} - 6x^{2} + 2x^{3} + x^{2} \\\\\n &= 8x^{3} - 15x^{2} - 6x.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Quotient Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "Having a rule for products, we naturally ask about quotients. We can \nderive the Quotient Rule from the Product Rule."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "The Quotient Rule",
+      "content": "If $f$ and $g$ are differentiable and $g(x) \\neq 0$, then\n\\[\n \\deriv{}{x}\\left[\\frac{f(x)}{g(x)}\\right] \n = \\frac{f'(x)\\,g(x) - f(x)\\,g'(x)}{\\bigl[g(x)\\bigr]^{2}}.\n\\]\nIn compact notation: $\\left(\\dfrac{f}{g}\\right)' = \\dfrac{f'g - fg'}{g^{2}}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Write $q(x) = \\dfrac{f(x)}{g(x)}$, so that $f(x) = q(x)\\,g(x)$. By the \nProduct Rule,\n\\[\n f'(x) = q'(x)\\,g(x) + q(x)\\,g'(x).\n\\]\nSolving for $q'(x)$:\n\\[\n q'(x) = \\frac{f'(x) - q(x)\\,g'(x)}{g(x)}\n = \\frac{f'(x) - \\frac{f(x)}{g(x)}\\cdot g'(x)}{g(x)}\n = \\frac{f'(x)\\,g(x) - f(x)\\,g'(x)}{[g(x)]^{2}}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "A useful mnemonic: if we call the numerator \"hi\" and the denominator \n\"lo,\" then the Quotient Rule says\n\\[\n \\left(\\frac{\\text{hi}}{\\text{lo}}\\right)' \n = \\frac{\\text{lo}\\cdot d(\\text{hi}) - \\text{hi}\\cdot d(\\text{lo})}%\n {\\text{lo}\\cdot\\text{lo}}.\n\\]\nSome students remember: \"lo dee hi minus hi dee lo, over lo lo.\""
+    },
+    {
+      "type": "warning",
+      "id": "warning-4.2",
+      "number": null,
+      "title": "Sign in the Quotient Rule",
+      "content": "The Quotient Rule has a **subtraction** in the numerator. The order \nmatters: it is $f'g - fg'$, *not* $fg' - f'g$. Many errors come \nfrom reversing this sign. Always start with the derivative of the \n*numerator*."
+    },
+    {
+      "type": "example",
+      "id": "example-4.4",
+      "number": "4.4",
+      "title": "A simple quotient",
+      "problem": "Differentiate $y = \\dfrac{x^{2}}{x + 1}$.",
+      "solution": "Let $f(x) = x^{2}$ and $g(x) = x + 1$. Then $f'(x) = 2x$ and $g'(x) = 1$.\n$$\n y' &= \\frac{f'(x)\\,g(x) - f(x)\\,g'(x)}{[g(x)]^{2}} \\\\[8pt]\n &= \\frac{2x(x+1) - x^{2}(1)}{(x+1)^{2}} \\\\[8pt]\n &= \\frac{2x^{2} + 2x - x^{2}}{(x+1)^{2}} \\\\[8pt]\n &= \\frac{x^{2} + 2x}{(x+1)^{2}} \\\\[8pt]\n &= \\frac{x(x + 2)}{(x+1)^{2}}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.5",
+      "number": "4.5",
+      "title": "Quotient involving exponential",
+      "problem": "Differentiate $f(x) = \\dfrac{e^{x}}{x^{2} + 1}$.",
+      "solution": "With numerator $e^{x}$ (derivative $e^{x}$) and denominator $x^{2} + 1$ \n(derivative $2x$):\n$$\n f'(x) &= \\frac{e^{x}(x^{2}+1) - e^{x}(2x)}{(x^{2}+1)^{2}} \\\\[8pt]\n &= \\frac{e^{x}(x^{2} + 1 - 2x)}{(x^{2}+1)^{2}} \\\\[8pt]\n &= \\frac{e^{x}(x-1)^{2}}{(x^{2}+1)^{2}}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.6",
+      "number": "4.6",
+      "title": "Finding where a quotient has a horizontal tangent",
+      "problem": "Find all points where the tangent line to $y = \\dfrac{x}{x^{2}+1}$ is horizontal.",
+      "solution": "A horizontal tangent occurs where $y' = 0$. By the Quotient Rule:\n$$\n y' &= \\frac{(1)(x^{2}+1) - x(2x)}{(x^{2}+1)^{2}}\n = \\frac{x^{2} + 1 - 2x^{2}}{(x^{2}+1)^{2}}\n = \\frac{1 - x^{2}}{(x^{2}+1)^{2}}.\n$$\nSetting $y' = 0$: the denominator $(x^{2}+1)^{2}$ is never zero, so we \nneed $1 - x^{2} = 0$, giving $x = \\pm 1$.\n\nAt $x = 1$: $y = \\frac{1}{2}$. At $x = -1$: $y = \\frac{-1}{2}$.\n\nThe tangent line is horizontal at $\\bigl(1, \\frac{1}{2}\\bigr)$ and \n$\\bigl(-1, -\\frac{1}{2}\\bigr)$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.7",
+      "number": "4.7",
+      "title": "A more complex quotient",
+      "problem": "Differentiate $g(x) = \\dfrac{x^{3} - 2x}{x^{2} + 4}$.",
+      "solution": "Let $f = x^{3} - 2x$ (so $f' = 3x^{2} - 2$) and $h = x^{2} + 4$ \n(so $h' = 2x$).\n$$\n g'(x) &= \\frac{(3x^{2}-2)(x^{2}+4) - (x^{3}-2x)(2x)}{(x^{2}+4)^{2}} \\\\[8pt]\n &= \\frac{3x^{4} + 12x^{2} - 2x^{2} - 8 - 2x^{4} + 4x^{2}}{(x^{2}+4)^{2}} \\\\[8pt]\n &= \\frac{x^{4} + 14x^{2} - 8}{(x^{2}+4)^{2}}.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.8",
+      "number": "4.8",
+      "title": "When NOT to use the Quotient Rule",
+      "problem": "Differentiate $y = \\dfrac{5x^{4} - 3x^{2}}{x}$.",
+      "solution": "We *could* use the Quotient Rule, but simplifying first is easier:\n\\[\n y = \\frac{5x^{4} - 3x^{2}}{x} = 5x^{3} - 3x.\n\\]\nTherefore $y' = 15x^{2} - 3$.\n\nThe lesson: before reaching for the Quotient Rule, check whether you can \nsimplify."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-4.2",
+      "number": null,
+      "title": "Choosing the Right Rule",
+      "content": "1. **Constant multiple, sum, or difference?** Use the basic \n linearity rules.\n\n2. **Can you simplify first?** Expanding or canceling common \n factors is often faster than the Product or Quotient Rule.\n\n3. **Product of non-simplifiable factors?** Use the Product Rule.\n\n4. **Quotient that cannot be simplified?** Use the Quotient Rule."
+    },
+    {
+      "type": "example",
+      "id": "example-4.9",
+      "number": "4.9",
+      "title": "Second derivative using the Product Rule",
+      "problem": "Find $f''(x)$ if $f(x) = x^{2}\\,e^{x}$.",
+      "solution": "**First derivative:**\n\\[\n f'(x) = 2x\\,e^{x} + x^{2}\\,e^{x} = e^{x}(2x + x^{2}).\n\\]\n**Second derivative** (apply Product Rule to $e^{x}(x^{2} + 2x)$):\n$$\n f''(x) &= e^{x}(x^{2} + 2x) + e^{x}(2x + 2) \\\\\n &= e^{x}(x^{2} + 2x + 2x + 2) \\\\\n &= e^{x}(x^{2} + 4x + 2).\n$$"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 4:9",
+      "text": "Two are better than one, because they \nhave a good return for their labor."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 2:6",
+      "text": "For the Lord gives wisdom; from his mouth \ncome knowledge and understanding."
+    },
+    {
+      "type": "scripture",
+      "reference": "James 1:5",
+      "text": "If any of you lacks wisdom, you should ask \nGod, who gives generously to all without finding fault, and it will be \ngiven to you."
+    },
+    {
+      "type": "quote",
+      "author": "Blaise Pascal",
+      "text": "The heart has its reasons which reason knows \nnothing of."
+    }
+  ]
+}

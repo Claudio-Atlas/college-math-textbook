@@ -1,0 +1,274 @@
+{
+  "id": "numerical-analysis-ch10-sec03",
+  "title": "Gradient Descent",
+  "chapter": 10,
+  "section": 3,
+  "book": "numerical-analysis",
+  "objectives": [
+    "Understand gradient descent as a first-order optimization method",
+    "Analyze step size selection strategies and their effect on convergence",
+    "Derive convergence rates for smooth and strongly convex functions",
+    "Implement line search algorithms for robust step size selection"
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Gradient descent is the workhorse of continuous optimization. Simple to understand and implement, it requires only first-order derivative information yet achieves reliable convergence for a broad class of problems. Its variants power modern machine learning, training models with billions of parameters."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Method of Steepest Descent"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Gradient Descent",
+      "content": "From an initial guess $\\mathbf{x}_0$, iterate:\n\\[\n\\mathbf{x}_{k+1} = \\mathbf{x}_k - \\alpha_k \\nabla f(\\mathbf{x}_k)\n\\]\nwhere $\\alpha_k > 0$ is the **step size** (also called **learning rate**)."
+    },
+    {
+      "type": "paragraph",
+      "text": "The negative gradient $-\\nabla f(\\mathbf{x})$ points in the direction of steepest descent at $\\mathbf{x}$—the direction along which $f$ decreases most rapidly."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "Steepest Descent Direction",
+      "content": "Among all unit vectors $\\mathbf{d}$ with $\\|\\mathbf{d}\\| = 1$, the directional derivative $D_{\\mathbf{d}} f(\\mathbf{x}) = \\nabla f(\\mathbf{x})^T \\mathbf{d}$ is minimized when\n\\[\n\\mathbf{d} = -\\frac{\\nabla f(\\mathbf{x})}{\\|\\nabla f(\\mathbf{x})\\|}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "By Cauchy-Schwarz, $|\\nabla f^T \\mathbf{d}| \\leq \\|\\nabla f\\| \\cdot \\|\\mathbf{d}\\| = \\|\\nabla f\\|$, with equality when $\\mathbf{d}$ is parallel to $\\nabla f$. The minimum (most negative) directional derivative occurs when $\\mathbf{d}$ is anti-parallel to $\\nabla f$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Step Size Selection"
+    },
+    {
+      "type": "paragraph",
+      "text": "The choice of step size $\\alpha_k$ is critical: too small leads to slow convergence, too large may cause divergence."
+    },
+    {
+      "type": "paragraph",
+      "text": "Fixed Step Size"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.2",
+      "number": "10.2",
+      "title": "Fixed Step Size",
+      "content": "Use $\\alpha_k = \\alpha$ for all $k$, where $\\alpha$ is a constant chosen based on problem properties."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.2",
+      "number": "10.2",
+      "title": "Convergence with Fixed Step Size",
+      "content": "Let $f$ be continuously differentiable with $L$-Lipschitz gradient (i.e., $\\|\\nabla f(\\mathbf{x}) - \\nabla f(\\mathbf{y})\\| \\leq L\\|\\mathbf{x} - \\mathbf{y}\\|$). If $\\alpha < 2/L$, then gradient descent decreases $f$ at each step:\n\\[\nf(\\mathbf{x}_{k+1}) \\leq f(\\mathbf{x}_k) - \\alpha\\left(1 - \\frac{L\\alpha}{2}\\right)\\|\\nabla f(\\mathbf{x}_k)\\|^2\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "Fixed Step Size Behavior",
+      "problem": "Consider $f(x) = \\frac{1}{2}ax^2$ with $f'(x) = ax$. The gradient descent iteration is:\n\\[\nx_{k+1} = x_k - \\alpha \\cdot ax_k = (1 - \\alpha a)x_k\n\\]\n\n- If $0 < \\alpha < 2/a$: $|1 - \\alpha a| < 1$, so $x_k \\to 0$ (convergence)\n\n- If $\\alpha = 1/a$: $x_1 = 0$ (one-step convergence)\n\n- If $\\alpha > 2/a$: $|1 - \\alpha a| > 1$, so $|x_k| \\to \\infty$ (divergence)",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "Exact Line Search"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.3",
+      "number": "10.3",
+      "title": "Exact Line Search",
+      "content": "Choose $\\alpha_k$ to minimize $f$ along the search direction:\n\\[\n\\alpha_k = \\arg\\min_{\\alpha > 0} f(\\mathbf{x}_k - \\alpha \\nabla f(\\mathbf{x}_k))\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This requires solving a one-dimensional optimization problem at each step—potentially expensive, but guarantees optimal progress along each direction."
+    },
+    {
+      "type": "example",
+      "id": "example-10.2",
+      "number": "10.2",
+      "title": "Exact Line Search for Quadratics",
+      "problem": "For $f(\\mathbf{x}) = \\frac{1}{2}\\mathbf{x}^T A \\mathbf{x}$, let $\\mathbf{g}_k = \\nabla f(\\mathbf{x}_k) = A\\mathbf{x}_k$. The function along the search direction is:\n\\[\n\\phi(\\alpha) = f(\\mathbf{x}_k - \\alpha \\mathbf{g}_k) = \\frac{1}{2}(\\mathbf{x}_k - \\alpha \\mathbf{g}_k)^T A (\\mathbf{x}_k - \\alpha \\mathbf{g}_k)\n\\]\nSetting $\\phi'(\\alpha) = 0$:\n\\[\n\\alpha_k = \\frac{\\mathbf{g}_k^T \\mathbf{g}_k}{\\mathbf{g}_k^T A \\mathbf{g}_k}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "Backtracking Line Search"
+    },
+    {
+      "type": "paragraph",
+      "text": "A practical compromise: start with a large step size and reduce until a sufficient decrease condition is met."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.4",
+      "number": "10.4",
+      "title": "Armijo Condition",
+      "content": "The step size $\\alpha$ satisfies the **Armijo condition** (sufficient decrease) if:\n\\[\nf(\\mathbf{x}_k - \\alpha \\nabla f(\\mathbf{x}_k)) \\leq f(\\mathbf{x}_k) - c \\alpha \\|\\nabla f(\\mathbf{x}_k)\\|^2\n\\]\nwhere $c \\in (0, 1)$ is a small constant (typically $c = 10^{-4}$)."
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-10.3",
+      "number": null,
+      "title": "Backtracking Line Search",
+      "content": "algorithmic[1]\n Current point $\\mathbf{x}$, gradient $\\mathbf{g} = \\nabla f(\\mathbf{x})$\n Parameters: initial $\\alpha_0 = 1$, reduction factor $\\rho \\in (0,1)$, $c \\in (0,1)$\n Step size $\\alpha$ satisfying Armijo condition\n $\\alpha \\gets \\alpha_0$\n$f(\\mathbf{x} - \\alpha \\mathbf{g}) > f(\\mathbf{x}) - c \\alpha \\|\\mathbf{g}\\|^2$\n $\\alpha \\gets \\rho \\alpha$ Typically $\\rho = 0.5$\n\n $\\alpha$\nalgorithmic"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Convergence Analysis"
+    },
+    {
+      "type": "paragraph",
+      "text": "Smooth Functions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.5",
+      "number": "10.5",
+      "title": "Lipschitz Gradient",
+      "content": "A function $f$ has **$L$-Lipschitz gradient** if:\n\\[\n\\|\\nabla f(\\mathbf{x}) - \\nabla f(\\mathbf{y})\\| \\leq L \\|\\mathbf{x} - \\mathbf{y}\\| \\quad \\forall \\mathbf{x}, \\mathbf{y}\n\\]\nEquivalently, the Hessian eigenvalues are bounded: $\\|H_f(\\mathbf{x})\\| \\leq L$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.3",
+      "number": "10.3",
+      "title": "Gradient Descent for Smooth Functions",
+      "content": "Let $f$ have $L$-Lipschitz gradient and $f^* = \\inf f > -\\infty$. With fixed step size $\\alpha = 1/L$, gradient descent achieves:\n\\[\n\\min_{0 \\leq j \\leq k} \\|\\nabla f(\\mathbf{x}_j)\\|^2 \\leq \\frac{2L(f(\\mathbf{x}_0) - f^*)}{k+1}\n\\]\nThe gradient norm decreases at rate $O(1/\\sqrt{k})$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This shows convergence to a stationary point, but the rate is sublinear ($O(1/\\sqrt{k})$), meaning doubling accuracy requires quadrupling iterations."
+    },
+    {
+      "type": "paragraph",
+      "text": "Strongly Convex Functions"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.6",
+      "number": "10.6",
+      "title": "Strong Convexity",
+      "content": "A function $f$ is **$\\mu$-strongly convex** if for all $\\mathbf{x}, \\mathbf{y}$:\n\\[\nf(\\mathbf{y}) \\geq f(\\mathbf{x}) + \\nabla f(\\mathbf{x})^T(\\mathbf{y} - \\mathbf{x}) + \\frac{\\mu}{2}\\|\\mathbf{y} - \\mathbf{x}\\|^2\n\\]\nEquivalently, the Hessian eigenvalues are bounded below: $H_f(\\mathbf{x}) \\succeq \\mu I$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.4",
+      "number": "10.4",
+      "title": "Linear Convergence for Strongly Convex Functions",
+      "content": "Let $f$ be $\\mu$-strongly convex with $L$-Lipschitz gradient. With step size $\\alpha = 1/L$, gradient descent converges linearly:\n\\[\nf(\\mathbf{x}_k) - f(\\mathbf{x}^*) \\leq \\left(1 - \\frac{\\mu}{L}\\right)^k (f(\\mathbf{x}_0) - f(\\mathbf{x}^*))\n\\]\nThe convergence rate is $1 - \\mu/L = 1 - 1/\\kappa$, where $\\kappa = L/\\mu$ is the **condition number**.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Strong convexity gives $f(\\mathbf{x}_k) - f^* \\geq \\frac{1}{2L}\\|\\nabla f(\\mathbf{x}_k)\\|^2$. Combined with the descent lemma:\n\\[\nf(\\mathbf{x}_{k+1}) - f^* \\leq f(\\mathbf{x}_k) - f^* - \\frac{1}{2L}\\|\\nabla f(\\mathbf{x}_k)\\|^2 \\leq \\left(1 - \\frac{\\mu}{L}\\right)(f(\\mathbf{x}_k) - f^*)\n\\]"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.7",
+      "number": "10.7",
+      "title": "Condition Number",
+      "content": "The **condition number** of a strongly convex function with Lipschitz gradient is:\n\\[\n\\kappa = \\frac{L}{\\mu} = \\frac{\\text{largest curvature}}{\\text{smallest curvature}}\n\\]\nFor a quadratic $f(\\mathbf{x}) = \\frac{1}{2}\\mathbf{x}^T A \\mathbf{x}$, this is $\\kappa(A) = \\lambda_{\\max}/\\lambda_{\\min}$."
+    },
+    {
+      "type": "example",
+      "id": "example-10.3",
+      "number": "10.3",
+      "title": "Effect of Condition Number",
+      "problem": "Consider minimizing $f(x, y) = \\frac{1}{2}(100x^2 + y^2)$. Here $L = 100$, $\\mu = 1$, $\\kappa = 100$.\n\nThe convergence rate is $1 - 1/100 = 0.99$. To reduce the error by a factor of $e^{-10} \\approx 0.00005$:\n\\[\n0.99^k \\leq 0.00005 \\quad \\Rightarrow \\quad k \\geq \\frac{10}{-\\ln(0.99)} \\approx 995 \\text{ iterations}\n\\]\n\nFor a well-conditioned problem with $\\kappa = 2$, the rate is $0.5$, needing only $k \\approx 14$ iterations.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Geometric Interpretation: The Zigzag Phenomenon"
+    },
+    {
+      "type": "paragraph",
+      "text": "For ill-conditioned problems, this orthogonality creates a zigzag pattern: the iterates bounce back and forth across a narrow valley, making slow progress toward the minimum."
+    },
+    {
+      "type": "example",
+      "id": "example-10.4",
+      "number": "10.4",
+      "title": "Visualizing the Zigzag",
+      "problem": "Consider $f(x, y) = \\frac{1}{2}(10x^2 + y^2)$ with minimum at the origin.\n\n**Contour description:** The level curves are ellipses centered at the origin with semi-axes in ratio $\\sqrt{10}:1$. The $x$-direction is the \"narrow\" direction (high curvature), the $y$-direction is \"wide\" (low curvature).\n\nStarting from $(1, 1)$, the gradient points toward the origin but mostly in the $x$-direction. The iterates form a zigzag path:\n\\[\n(1, 1) \\to (0.1, 0.1) \\to (0.01, 0.01) \\to \\cdots\n\\]\nEach step is nearly perpendicular to the previous, creating inefficient oscillation.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Complete Algorithm"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-10.3",
+      "number": null,
+      "title": "Gradient Descent with Backtracking",
+      "content": "algorithmic[1]\n Function $f$, gradient $\\nabla f$, initial $\\mathbf{x}_0$, tolerance $\\varepsilon$\n Line search parameters: $c = 10^{-4}$, $\\rho = 0.5$\n Approximate minimizer $\\mathbf{x}^*$\n $k \\gets 0$\n$\\|\\nabla f(\\mathbf{x}_k)\\| > \\varepsilon$\n $\\mathbf{g}_k \\gets \\nabla f(\\mathbf{x}_k)$\n $\\alpha \\gets 1$ Initial step size\n $f(\\mathbf{x}_k - \\alpha \\mathbf{g}_k) > f(\\mathbf{x}_k) - c \\alpha \\|\\mathbf{g}_k\\|^2$\n $\\alpha \\gets \\rho \\alpha$ Backtrack\n \n $\\mathbf{x}_{k+1} \\gets \\mathbf{x}_k - \\alpha \\mathbf{g}_k$\n $k \\gets k + 1$\n\n $\\mathbf{x}_k$\nalgorithmic"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Variants and Extensions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Momentum Methods"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.8",
+      "number": "10.8",
+      "title": "Gradient Descent with Momentum",
+      "content": "Maintain a velocity vector:\n$$\n\\mathbf{v}_{k+1} &= \\beta \\mathbf{v}_k - \\alpha \\nabla f(\\mathbf{x}_k) \\\\\n\\mathbf{x}_{k+1} &= \\mathbf{x}_k + \\mathbf{v}_{k+1}\n$$\nwhere $\\beta \\in [0, 1)$ is the momentum parameter (typically $\\beta = 0.9$)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Momentum helps accelerate convergence in the consistent direction and dampens oscillations in the zigzag directions."
+    },
+    {
+      "type": "paragraph",
+      "text": "Nesterov Accelerated Gradient"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.9",
+      "number": "10.9",
+      "title": "Nesterov Acceleration",
+      "content": "$$\n\\mathbf{y}_{k+1} &= \\mathbf{x}_k - \\alpha \\nabla f(\\mathbf{x}_k) \\\\\n\\mathbf{x}_{k+1} &= (1 + \\beta_k)\\mathbf{y}_{k+1} - \\beta_k \\mathbf{y}_k\n$$\nwith appropriate choice of $\\beta_k$. Achieves convergence rate $O(1/k^2)$ for smooth convex functions."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.5",
+      "number": "10.5",
+      "title": "Optimal First-Order Rate",
+      "content": "For smooth convex optimization, Nesterov's method achieves:\n\\[\nf(\\mathbf{x}_k) - f^* = O\\left(\\frac{1}{k^2}\\right)\n\\]\nThis is the best possible rate for methods using only gradient information.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Practical Considerations"
+    },
+    {
+      "type": "warning",
+      "id": "warning-10.3",
+      "number": null,
+      "title": "Non-Convex Functions",
+      "content": "Gradient descent can only guarantee convergence to a *stationary point*, which may be:\n\n- A local (not global) minimum\n\n- A saddle point (gradient zero but Hessian indefinite)\n\n- Rarely, a local maximum (unstable)\nFor non-convex problems, the result depends heavily on initialization."
+    }
+  ]
+}

@@ -1,0 +1,325 @@
+{
+  "id": "algebra-2-ch08-sec01",
+  "title": "Simplifying Rational Expressions",
+  "chapter": 8,
+  "section": 1,
+  "book": "algebra-2",
+  "epigraph": {
+    "text": "A false balance is an abomination to the Lord, but a \njust weight is his delight.",
+    "reference": "Proverbs 11:1"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "In this chapter, we extend our work with fractions to *rational \nexpressions*—fractions whose numerators and denominators are polynomials. \nJust as we learned to add, subtract, multiply, divide, and simplify \nnumerical fractions, we will develop the same skills with these algebraic \nfractions. The techniques you master here will prove essential when we \nstudy exponential, logarithmic, and trigonometric functions later."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "What Is a Rational Expression?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Just as a rational number is a ratio of integers, a rational expression \nis a ratio of polynomials."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.1",
+      "number": "8.1",
+      "title": "Rational Expression",
+      "content": "A **rational expression** is a fraction \nwhose numerator and denominator are polynomials:\n\\[\n \\frac{P(x)}{Q(x)} \\quad \\text{where } Q(x) \\neq 0\n\\]\nThe condition $Q(x) \\neq 0$ is essential—we cannot divide by zero."
+    },
+    {
+      "type": "paragraph",
+      "text": "Examples of rational expressions include:\n\\[\n \\frac{x + 3}{x - 2}, \\quad \\frac{x^2 - 4}{x^2 + 5x + 6}, \\quad \n \\frac{5}{x}, \\quad \\frac{3x^3 - 2x + 1}{x^2 - 9}\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Notice that every polynomial is also a rational expression (with \ndenominator 1). For instance, $x^2 + 5x + 6 = \\frac{x^2 + 5x + 6}{1}$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-8.1",
+      "number": null,
+      "title": "Rational Expression vs.\\ Rational Number",
+      "content": "Don't confuse rational expressions with rational numbers! A rational \n*number* like $\\frac{3}{4}$ is a specific value. A rational \n*expression* like $\\frac{x + 3}{x - 2}$ represents a rule that \nproduces different values depending on what number replaces $x$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Domain of Rational Expressions"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **domain** of a rational \nexpression is the set of all real numbers for which the expression is \ndefined. Since division by zero is undefined, we must exclude any values \nthat make the denominator equal to zero."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-8.1",
+      "number": null,
+      "title": "Finding the Domain of a Rational Expression",
+      "content": "1. Set the denominator equal to zero.\n\n2. Solve the resulting equation.\n\n3. The domain consists of all real numbers *except* the solutions \n found in Step 2."
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Finding domains---basic cases",
+      "problem": "Find the domain of each rational expression:\n\n1. $\\frac{x + 1}{x - 3}$\n\n2. $\\frac{x}{x^2 - 9}$\n\n3. $\\frac{x^2 + 1}{x^2 + 4}$\n\n4. $\\frac{5x}{(x-1)(x+2)(x-4)}$",
+      "solution": "Set each denominator equal to zero and solve:\n\n1. $x - 3 = 0 \\Rightarrow x = 3$\n \n **Domain:** All real numbers except $x = 3$, written as \n $\\{x \\in \\R : x \\neq 3\\}$ or $(-\\infty, 3) \\cup (3, \\infty)$.\n\n2. $x^2 - 9 = 0 \\Rightarrow (x-3)(x+3) = 0 \\Rightarrow x = 3$ or $x = -3$\n \n **Domain:** All real numbers except $x = 3$ and $x = -3$.\n\n3. $x^2 + 4 = 0 \\Rightarrow x^2 = -4$\n \n This equation has no real solutions (no real number squared gives a \n negative result). **Domain:** All real numbers, $\\R$.\n\n4. The denominator is already factored: $(x-1)(x+2)(x-4) = 0$ gives \n $x = 1$, $x = -2$, or $x = 4$.\n \n **Domain:** All real numbers except $x = 1, -2, 4$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "Domains requiring factoring",
+      "problem": "Find the domain of each expression:\n\n1. $\\frac{3x + 5}{x^2 - 5x + 6}$\n\n2. $\\frac{x^2 - 1}{x^3 - x}$\n\n3. $\\frac{2x}{x^2 + 6x + 9}$",
+      "solution": "1. Factor: $x^2 - 5x + 6 = (x - 2)(x - 3)$\n \n Set equal to zero: $x = 2$ or $x = 3$\n \n **Domain:** $\\{x \\in \\R : x \\neq 2, x \\neq 3\\}$\n\n2. Factor: $x^3 - x = x(x^2 - 1) = x(x-1)(x+1)$\n \n Set equal to zero: $x = 0$, $x = 1$, or $x = -1$\n \n **Domain:** $\\{x \\in \\R : x \\neq -1, 0, 1\\}$\n\n3. Factor: $x^2 + 6x + 9 = (x + 3)^2$\n \n Set equal to zero: $x = -3$ (a double root)\n \n **Domain:** $\\{x \\in \\R : x \\neq -3\\}$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Simplifying Rational Expressions"
+    },
+    {
+      "type": "paragraph",
+      "text": "To simplify a rational expression means to reduce it to lowest terms, \njust as we reduce $\\frac{6}{8}$ to $\\frac{3}{4}$. The key principle is \nthe same: we can cancel common *factors* (but not common terms!)."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Fundamental Property of Rational Expressions",
+      "content": "If $P$, $Q$, and $R$ are polynomials with $Q \\neq 0$ and $R \\neq 0$, then\n\\[\n \\frac{P \\cdot R}{Q \\cdot R} = \\frac{P}{Q}\n\\]\nIn words: we may cancel any common factor from the numerator and \ndenominator without changing the value of the expression (except \npossibly at points where $R = 0$).",
+      "label": "Theorem"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-8.1",
+      "number": null,
+      "title": "Simplifying Rational Expressions",
+      "content": "1. Factor the numerator completely.\n\n2. Factor the denominator completely.\n\n3. Cancel all common factors.\n\n4. State any restrictions on the variable (values excluded from the \n original domain)."
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "Basic simplification---difference of squares",
+      "problem": "Simplify: $\\frac{x^2 - 4}{x + 2}$",
+      "solution": "Factor the numerator using the difference of squares:\n\\[\n \\frac{x^2 - 4}{x + 2} = \\frac{(x+2)(x-2)}{x+2}\n\\]\n\nCancel the common factor $(x + 2)$:\n\\[\n = x - 2, \\quad x \\neq -2\n\\]\n\n**Important:** We must state $x \\neq -2$ because this value was \nexcluded from the original domain. Even though the simplified expression \n$x - 2$ is defined at $x = -2$ (giving $-4$), the original expression \n$\\frac{x^2 - 4}{x + 2}$ is not."
+    },
+    {
+      "type": "example",
+      "id": "example-8.4",
+      "number": "8.4",
+      "title": "Both numerator and denominator factor",
+      "problem": "Simplify: $\\frac{x^2 - 9}{x^2 + x - 6}$",
+      "solution": "Factor both expressions:\n$$\n \\text{Numerator: } x^2 - 9 &= (x+3)(x-3) \\\\\n \\text{Denominator: } x^2 + x - 6 &= (x+3)(x-2)\n$$\n\nRewrite and cancel:\n\\[\n \\frac{x^2 - 9}{x^2 + x - 6} = \\frac{(x+3)(x-3)}{(x+3)(x-2)} \n = \\frac{x - 3}{x - 2}, \\quad x \\neq -3\n\\]\n\nThe simplified form also requires $x \\neq 2$ (from the remaining \ndenominator), but this restriction was already present in the original."
+    },
+    {
+      "type": "example",
+      "id": "example-8.5",
+      "number": "8.5",
+      "title": "Factoring out the GCF first",
+      "problem": "Simplify: $\\frac{6x^2 + 12x}{3x^2 + 6x}$",
+      "solution": "Factor out the greatest common factor (GCF) from each:\n\\[\n \\frac{6x^2 + 12x}{3x^2 + 6x} = \\frac{6x(x + 2)}{3x(x + 2)}\n\\]\n\nCancel common factors $3x$ and $(x + 2)$:\n\\[\n = \\frac{6x}{3x} \\cdot \\frac{(x+2)}{(x+2)} = \\frac{6}{3} = 2, \\quad x \\neq 0, -2\n\\]\n\nThe expression simplifies to the constant 2 for all $x$ except 0 and $-2$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.6",
+      "number": "8.6",
+      "title": "Trinomial factoring in both",
+      "problem": "Simplify: $\\frac{x^2 + 5x + 6}{x^2 + 8x + 15}$",
+      "solution": "Factor both trinomials:\n$$\n x^2 + 5x + 6 &= (x+2)(x+3) \\\\\n x^2 + 8x + 15 &= (x+3)(x+5)\n$$\n\n\\[\n \\frac{x^2 + 5x + 6}{x^2 + 8x + 15} = \\frac{(x+2)(x+3)}{(x+3)(x+5)} \n = \\frac{x + 2}{x + 5}, \\quad x \\neq -3\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.7",
+      "number": "8.7",
+      "title": "Factoring with leading coefficient not 1",
+      "problem": "Simplify: $\\frac{2x^2 - 5x - 3}{x^2 - 9}$",
+      "solution": "Factor the numerator (use factoring by grouping or trial and error):\n\\[\n 2x^2 - 5x - 3 = (2x + 1)(x - 3)\n\\]\n\nFactor the denominator (difference of squares):\n\\[\n x^2 - 9 = (x + 3)(x - 3)\n\\]\n\n\\[\n \\frac{2x^2 - 5x - 3}{x^2 - 9} = \\frac{(2x+1)(x-3)}{(x+3)(x-3)} \n = \\frac{2x + 1}{x + 3}, \\quad x \\neq 3\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.8",
+      "number": "8.8",
+      "title": "Sum and difference of cubes",
+      "problem": "Simplify: $\\frac{x^3 - 8}{x^2 - 4}$",
+      "solution": "Recognize $x^3 - 8$ as a difference of cubes: $x^3 - 2^3$\n\nRecall: $a^3 - b^3 = (a - b)(a^2 + ab + b^2)$\n\nSo: $x^3 - 8 = (x - 2)(x^2 + 2x + 4)$\n\nFactor the denominator: $x^2 - 4 = (x - 2)(x + 2)$\n\n\\[\n \\frac{x^3 - 8}{x^2 - 4} = \\frac{(x-2)(x^2 + 2x + 4)}{(x-2)(x+2)} \n = \\frac{x^2 + 2x + 4}{x + 2}, \\quad x \\neq 2\n\\]\n\nNote: $x^2 + 2x + 4$ does not factor over the reals (check: discriminant \n$= 4 - 16 = -12 < 0$), so this is fully simplified."
+    },
+    {
+      "type": "example",
+      "id": "example-8.9",
+      "number": "8.9",
+      "title": "Sum of cubes",
+      "problem": "Simplify: $\\frac{x^3 + 27}{x^2 + 6x + 9}$",
+      "solution": "Recognize $x^3 + 27$ as a sum of cubes: $x^3 + 3^3$\n\nRecall: $a^3 + b^3 = (a + b)(a^2 - ab + b^2)$\n\nSo: $x^3 + 27 = (x + 3)(x^2 - 3x + 9)$\n\nFactor the denominator (perfect square trinomial): \n$x^2 + 6x + 9 = (x + 3)^2$\n\n\\[\n \\frac{x^3 + 27}{x^2 + 6x + 9} = \\frac{(x+3)(x^2 - 3x + 9)}{(x+3)^2} \n = \\frac{x^2 - 3x + 9}{x + 3}, \\quad x \\neq -3\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Danger of Canceling Terms"
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the most common errors in algebra is canceling *terms* that \nare added or subtracted rather than *factors* that are multiplied."
+    },
+    {
+      "type": "warning",
+      "id": "warning-8.1",
+      "number": null,
+      "title": "",
+      "content": "You can only cancel **factors**, not **terms**!\n\\[\n \\frac{x + 5}{x + 3} \\neq \\frac{5}{3} \\quad \\text{\\textbf{WRONG!}}\n\\]\nThe $x$'s are terms being added, not factors being multiplied. Compare:\n\\[\n \\frac{x \\cdot 5}{x \\cdot 3} = \\frac{5}{3} \\quad \\text{\\checkmark\\ Correct---$x$ is a factor}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.10",
+      "number": "8.10",
+      "title": "A common error",
+      "problem": "A student claims that $\\frac{x^2 + 4}{x + 2} = x + 2$. Find the error.",
+      "solution": "The student is treating this as if the numerator factored as $(x+2)(x+2)$. \nLet's check: $(x + 2)(x + 2) = x^2 + 4x + 4 \\neq x^2 + 4$.\n\nThe expression $x^2 + 4$ is a *sum* of squares, not a *difference* \nof squares, and does not factor over the reals. There is no common factor \nto cancel.\n\n**Verification:** Let $x = 2$.\n\n- Original: $\\frac{2^2 + 4}{2 + 2} = \\frac{8}{4} = 2$\n\n- Student's answer: $2 + 2 = 4$\nSince $2 \\neq 4$, the student's simplification is incorrect."
+    },
+    {
+      "type": "example",
+      "id": "example-8.11",
+      "number": "8.11",
+      "title": "Distinguishing factors from terms",
+      "problem": "Determine whether each simplification is correct or incorrect.\n\n1. $\\frac{3x + 6}{3} = x + 2$\n\n2. $\\frac{x + 6}{6} = x$\n\n3. $\\frac{x(x + 5)}{x + 5} = x$\n\n4. $\\frac{x^2 - 5x}{x} = x - 5$",
+      "solution": "1. **Correct.** We can rewrite as $\\frac{3(x + 2)}{3} = x + 2$. \n The 3 is a factor of the entire numerator.\n\n2. **Incorrect.** The 6 is not a factor of the entire numerator \n (it's only added to $x$). We cannot cancel: $\\frac{x + 6}{6} \\neq x$.\n\n3. **Correct.** The $(x + 5)$ is a common factor. Result: \n $x$, with $x \\neq -5$.\n\n4. **Correct.** Factor: $\\frac{x(x - 5)}{x} = x - 5$, with $x \\neq 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Recognizing Opposites"
+    },
+    {
+      "type": "paragraph",
+      "text": "When the numerator and denominator are **opposites** \n(negatives of each other), they simplify to $-1$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.2",
+      "number": "8.2",
+      "title": "Opposites Property",
+      "content": "For any polynomial $P$ with $P \\neq 0$:\n\\[\n \\frac{-P}{P} = \\frac{P}{-P} = -1\n\\]\nEquivalently: $a - b = -(b - a)$, so $\\frac{a - b}{b - a} = -1$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-8.12",
+      "number": "8.12",
+      "title": "Basic opposites",
+      "problem": "Simplify: $\\frac{3 - x}{x - 3}$",
+      "solution": "Notice that $3 - x$ and $x - 3$ are opposites: $3 - x = -(x - 3)$.\n\\[\n \\frac{3 - x}{x - 3} = \\frac{-(x - 3)}{x - 3} = -1, \\quad x \\neq 3\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.13",
+      "number": "8.13",
+      "title": "Opposites with factoring",
+      "problem": "Simplify: $\\frac{x^2 - 2x - 15}{9 - x^2}$",
+      "solution": "Factor both expressions:\n$$\n x^2 - 2x - 15 &= (x - 5)(x + 3) \\\\\n 9 - x^2 &= -(x^2 - 9) = -(x - 3)(x + 3)\n$$\n\n\\[\n \\frac{(x-5)(x+3)}{-(x-3)(x+3)} = -\\frac{(x-5)\\cancel{(x+3)}}{(x-3)\\cancel{(x+3)}} \n = -\\frac{x - 5}{x - 3} = \\frac{5 - x}{x - 3}\n\\]\n\nwhere $x \\neq 3, -3$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.14",
+      "number": "8.14",
+      "title": "Multiple opposite factors",
+      "problem": "Simplify: $\\frac{(2 - x)(x + 4)}{(x - 2)(4 - x)}$",
+      "solution": "Identify the opposite pairs:\n\n- $2 - x = -(x - 2)$\n\n- $4 - x = -(x - 4)$\n\n\\[\n \\frac{(2-x)(x+4)}{(x-2)(4-x)} = \\frac{-(x-2)(x+4)}{(x-2) \\cdot (-(x-4))}\n = \\frac{-(x-2)(x+4)}{-(x-2)(x-4)}\n\\]\n\nCancel $(x - 2)$ and the negative signs:\n\\[\n = \\frac{x + 4}{x - 4}, \\quad x \\neq 2, 4\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.15",
+      "number": "8.15",
+      "title": "Opposites after factoring completely",
+      "problem": "Simplify: $\\frac{6 - 2x}{x^2 - 9}$",
+      "solution": "Factor the numerator: $6 - 2x = 2(3 - x) = -2(x - 3)$\n\nFactor the denominator: $x^2 - 9 = (x - 3)(x + 3)$\n\n\\[\n \\frac{6 - 2x}{x^2 - 9} = \\frac{-2(x - 3)}{(x-3)(x+3)} \n = \\frac{-2}{x + 3}, \\quad x \\neq 3, -3\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Evaluating Rational Expressions"
+    },
+    {
+      "type": "paragraph",
+      "text": "To evaluate a rational expression for a given value, substitute the value \nand simplify—but first check that the value is in the domain!"
+    },
+    {
+      "type": "example",
+      "id": "example-8.16",
+      "number": "8.16",
+      "title": "Evaluating a rational expression",
+      "problem": "Evaluate $\\frac{x^2 - 4}{x + 3}$ for:\n\n1. $x = 5$\n\n2. $x = -3$\n\n3. $x = 2$",
+      "solution": "1. $\\frac{5^2 - 4}{5 + 3} = \\frac{25 - 4}{8} = \\frac{21}{8}$\n\n2. When $x = -3$, the denominator is $-3 + 3 = 0$. \n **Undefined**—$-3$ is not in the domain.\n\n3. $\\frac{2^2 - 4}{2 + 3} = \\frac{4 - 4}{5} = \\frac{0}{5} = 0$\n \n Note: A fraction with 0 in the numerator (and nonzero denominator) \n equals 0."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Real-World Applications"
+    },
+    {
+      "type": "paragraph",
+      "text": "Rational expressions appear naturally in many real-world contexts."
+    },
+    {
+      "type": "example",
+      "id": "example-8.17",
+      "number": "8.17",
+      "title": "Average cost",
+      "problem": "A small business has fixed monthly costs of \\$5,000 (rent, utilities, \nsalaries) and variable costs of \\$20 per item produced. The average \ncost per item is:\n\\[\n C(x) = \\frac{5000 + 20x}{x}\n\\]\nwhere $x$ is the number of items produced.\n\n1. Find the average cost when 100 items are produced.\n\n2. Find the average cost when 1,000 items are produced.\n\n3. What happens to the average cost as production increases?",
+      "solution": "1. $C(100) = \\frac{5000 + 20(100)}{100} = \\frac{7000}{100} = \\$70$ per item\n\n \\item $C(1000) = $\\frac{5000 + 20(1000)}{1000}$ = $\\frac{25000}{1000}$ = \\$25$ per item\n\n2. As $x$ increases, the fixed cost of \\$5,000 is spread over more \n items, so the average cost decreases. We can rewrite:\n __MATH_BLOCK_0__\n As $x $, the term $$\\frac{5000}{x}$ 0$, so $C(x) 20$.\n \n The average cost approaches \\$20 (the variable cost per item) but never \n quite reaches it."
+    },
+    {
+      "type": "example",
+      "id": "example-8.18",
+      "number": "8.18",
+      "title": "Concentration after dilution",
+      "problem": "A solution contains 30 grams of salt dissolved in 2 liters of water. \nIf $x$ liters of pure water are added, the concentration (in grams per \nliter) is:\n\\[\n C(x) = \\frac{30}{2 + x}\n\\]\n\n1. What is the initial concentration?\n\n2. What is the concentration after adding 4 liters of water?\n\n3. How much water must be added to reduce the concentration to 5 g/L?",
+      "solution": "1. Initial: $C(0) = \\frac{30}{2 + 0} = \\frac{30}{2} = 15$ g/L\n\n2. $C(4) = \\frac{30}{2 + 4} = \\frac{30}{6} = 5$ g/L\n\n3. Set $C(x) = 5$ and solve:\n \\[\n \\frac{30}{2 + x} = 5\n \\]\n \\[\n 30 = 5(2 + x) = 10 + 5x\n \\]\n \\[\n 20 = 5x \\Rightarrow x = 4 \\text{ liters}\n \\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.19",
+      "number": "8.19",
+      "title": "Speed and time",
+      "problem": "The time $t$ (in hours) needed to travel a distance $d$ (in miles) at \nspeed $r$ (in mph) is:\n\\[\n t = \\frac{d}{r}\n\\]\n\nIf a student lives 30 miles from school, express the commute time as a \nfunction of driving speed $r$. How long does the commute take at 40 mph? \nAt 60 mph?",
+      "solution": "The time function is:\n\\[\n t(r) = \\frac{30}{r} \\text{ hours}\n\\]\n\nAt 40 mph: $t(40) = \\frac{30}{40} = \\frac{3}{4}$ hour $= 45$ minutes\n\nAt 60 mph: $t(60) = \\frac{30}{60} = \\frac{1}{2}$ hour $= 30$ minutes\n\nThe faster you drive, the less time it takes—an inverse relationship \ncaptured by this rational expression."
+    },
+    {
+      "type": "context",
+      "id": "context-8.1",
+      "number": null,
+      "title": "Parts of a Whole",
+      "content": "Rational expressions represent parts of wholes—ratios and proportions. \nScripture frequently uses fractional language: tithes (one-tenth), \"half \nthe kingdom\" (Esther 5:3), the parable of the talents where servants \nreceived portions in the ratio 5:2:1 (Matthew 25:14-30). Understanding \nratios helps us think about proportion, fairness, and stewardship. The \nmathematics of fractions underlies questions of justice and distribution \nthat appear throughout the Bible."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Matthew 18:20",
+      "text": "For where two or three are gathered in \nmy name, there am I among them."
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 14:33",
+      "text": "For God is not a God of confusion \nbut of peace."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 4:23",
+      "text": "Keep your heart with all vigilance, \nfor from it flow the springs of life."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 14:12",
+      "text": "There is a way that seems right to a \nman, but its end is the way to death."
+    },
+    {
+      "type": "scripture",
+      "reference": "Luke 14:28",
+      "text": "For which of you, desiring to build a tower, \ndoes not first sit down and count the cost?"
+    }
+  ]
+}

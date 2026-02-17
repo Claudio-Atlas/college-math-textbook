@@ -1,0 +1,281 @@
+{
+  "id": "numerical-analysis-ch05-sec05",
+  "title": "Partial Derivatives and Vector Calculus",
+  "chapter": 5,
+  "section": 5,
+  "book": "numerical-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The techniques developed for functions of a single variable extend \nnaturally to functions of several variables. Partial derivatives, \ngradients, and the Laplacian arise constantly in physics, engineering, \nand optimization. We now develop finite difference approximations \nfor these operators."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Partial Derivatives"
+    },
+    {
+      "type": "paragraph",
+      "text": "For a function $f: \\RR^n \\to \\RR$, partial derivatives are computed \nby varying one coordinate while holding others fixed."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Partial Derivative Approximations",
+      "content": "For $f(x_1, \\ldots, x_n)$, the partial derivative with respect to \n$x_i$ can be approximated by:\n\n**Forward difference**:\n\\[\n\\frac{\\partial f}{\\partial x_i}(\\bx) \\approx \n\\frac{f(\\bx + h\\be_i) - f(\\bx)}{h}\n\\]\n\n**Central difference**:\n\\[\n\\frac{\\partial f}{\\partial x_i}(\\bx) \\approx \n\\frac{f(\\bx + h\\be_i) - f(\\bx - h\\be_i)}{2h}\n\\]\n\nwhere $\\be_i$ is the $i$-th standard basis vector."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Partial Derivative Error",
+      "content": "The central difference approximation to $\\frac{\\partial f}{\\partial x_i}$ \nsatisfies\n\\[\n\\frac{f(\\bx + h\\be_i) - f(\\bx - h\\be_i)}{2h} = \n\\frac{\\partial f}{\\partial x_i}(\\bx) + \\frac{h^2}{6}\n\\frac{\\partial^3 f}{\\partial x_i^3}(\\bxi)\n\\]\nfor some $\\bxi$ on the line segment from $\\bx - h\\be_i$ to $\\bx + h\\be_i$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Fix all coordinates except $x_i$ and apply the one-dimensional \ncentral difference theorem to $g(t) = f(\\bx + t\\be_i)$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Gradient"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.2",
+      "number": "5.2",
+      "title": "Numerical Gradient",
+      "content": "The **numerical gradient** of \n$f: \\RR^n \\to \\RR$ is the vector of partial derivative approximations:\n\\[\n\\nabla_h f(\\bx) = \\begin{pmatrix}\n\\frac{f(\\bx + h\\be_1) - f(\\bx - h\\be_1)}{2h} \\\\[4pt]\n\\vdots \\\\[4pt]\n\\frac{f(\\bx + h\\be_n) - f(\\bx - h\\be_n)}{2h}\n\\end{pmatrix}.\n\\]\nThis requires $2n$ function evaluations."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Gradient Error Bound",
+      "content": "For $f \\in C^3(\\RR^n)$:\n\\[\n\\|\\nabla_h f(\\bx) - \\nabla f(\\bx)\\| \\leq \\frac{h^2}{6}\\sqrt{n} \\cdot \n\\max_i \\left\\|\\frac{\\partial^3 f}{\\partial x_i^3}\\right\\|_\\infty.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Computing the Gradient",
+      "problem": "Compute the numerical gradient of $f(x, y) = x^2 + xy + y^2$ at \n$(1, 1)$ with $h = 0.1$.",
+      "solution": "The exact gradient is $\\nabla f = (2x + y, x + 2y)$, so \n$\\nabla f(1,1) = (3, 3)$.\n\nComputing the partial derivatives:\n$$\n\\frac{\\partial f}{\\partial x}(1,1) &\\approx \n\\frac{f(1.1, 1) - f(0.9, 1)}{0.2} \\\\\n&= \\frac{(1.21 + 1.1 + 1) - (0.81 + 0.9 + 1)}{0.2} \\\\\n&= \\frac{3.31 - 2.71}{0.2} = 3.0\n$$\n\n$$\n\\frac{\\partial f}{\\partial y}(1,1) &\\approx \n\\frac{f(1, 1.1) - f(1, 0.9)}{0.2} \\\\\n&= \\frac{(1 + 1.1 + 1.21) - (1 + 0.9 + 0.81)}{0.2} \\\\\n&= \\frac{3.31 - 2.71}{0.2} = 3.0\n$$\n\nThe numerical gradient $(3.0, 3.0)$ matches the exact gradient—as \nexpected since $f$ is a polynomial of degree 2 and central differences \nare exact for polynomials of degree $\\leq 2$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Directional Derivatives"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.3",
+      "number": "5.3",
+      "title": "Directional Derivative",
+      "content": "The **directional derivative** of \n$f$ at $\\bx$ in direction $\\bv$ (with $\\|\\bv\\| = 1$) is\n\\[\nD_\\bv f(\\bx) = \\lim_{t \\to 0} \\frac{f(\\bx + t\\bv) - f(\\bx)}{t} \n= \\nabla f(\\bx) \\cdot \\bv.\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.3",
+      "number": "5.3",
+      "title": "Numerical Directional Derivative",
+      "content": "The directional derivative can be approximated by:\n\\[\nD_\\bv f(\\bx) \\approx \\frac{f(\\bx + h\\bv) - f(\\bx - h\\bv)}{2h}\n\\]\nwith error $\\bigo{h^2}$. This requires only 2 function evaluations, \nregardless of dimension $n$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "remark",
+      "id": "remark-5.5",
+      "number": null,
+      "title": "",
+      "content": "For optimization algorithms requiring gradient information, if only \nthe directional derivative along the search direction is needed, \nthis formula is much cheaper than computing the full gradient."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Mixed Partial Derivatives"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.4",
+      "number": "5.4",
+      "title": "Mixed Partial Derivative Formula",
+      "content": "For $f \\in C^4$, the mixed second partial derivative can be approximated by:\n\\[\n\\frac{\\partial^2 f}{\\partial x \\partial y}(\\bx) \\approx \n\\frac{f(x+h, y+k) - f(x+h, y-k) - f(x-h, y+k) + f(x-h, y-k)}{4hk}\n\\]\nwith error $\\bigo{h^2 + k^2}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Apply the central difference in $x$ to the central difference in $y$:\n$$\n\\frac{\\partial^2 f}{\\partial x \\partial y} \n&\\approx \\frac{1}{2h}\\left[\\frac{\\partial f}{\\partial y}(x+h, y) \n- \\frac{\\partial f}{\\partial y}(x-h, y)\\right] \\\\\n&\\approx \\frac{1}{2h}\\left[\\frac{f(x+h, y+k) - f(x+h, y-k)}{2k} \n- \\frac{f(x-h, y+k) - f(x-h, y-k)}{2k}\\right] \\\\\n&= \\frac{f(x+h, y+k) - f(x+h, y-k) - f(x-h, y+k) + f(x-h, y-k)}{4hk}. \n\\qedhere\n$$"
+    },
+    {
+      "type": "remark",
+      "id": "remark-5.5",
+      "number": null,
+      "title": "",
+      "content": "The formula uses the four \"diagonal\" points. This four-point stencil \nis efficient but may be less accurate than using more points."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Hessian Matrix"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.4",
+      "number": "5.4",
+      "title": "Numerical Hessian",
+      "content": "The **Hessian matrix** of second partial \nderivatives can be approximated by:\n\n**Diagonal entries** ($i = j$):\n\\[\n\\frac{\\partial^2 f}{\\partial x_i^2}(\\bx) \\approx \n\\frac{f(\\bx + h\\be_i) - 2f(\\bx) + f(\\bx - h\\be_i)}{h^2}\n\\]\n\n**Off-diagonal entries** ($i \\neq j$):\n\\[\n\\frac{\\partial^2 f}{\\partial x_i \\partial x_j}(\\bx) \\approx \n\\frac{f(\\bx + h\\be_i + h\\be_j) - f(\\bx + h\\be_i - h\\be_j) \n- f(\\bx - h\\be_i + h\\be_j) + f(\\bx - h\\be_i - h\\be_j)}{4h^2}\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.5",
+      "number": "5.5",
+      "title": "Hessian Evaluation Cost",
+      "content": "Computing the full numerical Hessian requires:\n\n- $2n$ function evaluations for diagonal entries (plus 1 for $f(\\bx)$)\n\n- $2n(n-1)$ function evaluations for off-diagonal entries \n(exploiting symmetry)\nTotal: $\\bigo{n^2}$ function evaluations.",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-5.5",
+      "number": null,
+      "title": "Hessian Computation Cost",
+      "content": "For high-dimensional problems ($n \\geq 100$), computing the full \nHessian numerically is prohibitively expensive. Quasi-Newton methods \n(BFGS, L-BFGS) build Hessian approximations from gradient information instead."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Laplacian"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Laplacian is fundamental in physics, appearing in heat conduction, \nwave propagation, electrostatics, and quantum mechanics."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.5",
+      "number": "5.5",
+      "title": "Laplacian Operator",
+      "content": "The **Laplacian** of a function $f: \\RR^n \\to \\RR$ is\n\\[\n\\nabla^2 f = \\Delta f = \\sum_{i=1}^{n} \\frac{\\partial^2 f}{\\partial x_i^2}.\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.6",
+      "number": "5.6",
+      "title": "Five-Point Laplacian (2D)",
+      "content": "For $f: \\RR^2 \\to \\RR$, the Laplacian can be approximated by:\n\\[\n\\nabla^2 f(x, y) \\approx \\frac{f(x+h,y) + f(x-h,y) + f(x,y+h) + f(x,y-h) \n- 4f(x,y)}{h^2}\n\\]\nwith error $\\bigo{h^2}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Summing the three-point second derivative formulas:\n$$\n\\frac{\\partial^2 f}{\\partial x^2} &\\approx \n\\frac{f(x+h,y) - 2f(x,y) + f(x-h,y)}{h^2} \\\\\n\\frac{\\partial^2 f}{\\partial y^2} &\\approx \n\\frac{f(x,y+h) - 2f(x,y) + f(x,y-h)}{h^2}\n$$\n\nAdding these expressions gives the formula."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.6",
+      "number": "5.6",
+      "title": "Laplacian Stencil",
+      "content": "The **five-point stencil** for the \n2D Laplacian is the set of coefficients:\n\\[\n\\frac{1}{h^2}\\begin{bmatrix}\n & 1 & \\\\\n1 & -4 & 1 \\\\\n & 1 &\n\\end{bmatrix}\n\\]\nwhere the central coefficient multiplies $f(x,y)$ and the others \nmultiply the four neighboring values."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.7",
+      "number": "5.7",
+      "title": "Seven-Point Laplacian (3D)",
+      "content": "For $f: \\RR^3 \\to \\RR$:\n\\[\n\\nabla^2 f(x,y,z) \\approx \\frac{1}{h^2}\\Big[f(x+h,y,z) + f(x-h,y,z) \n+ f(x,y+h,z) + f(x,y-h,z)\n\\]\n\\[\n\\phantom{\\nabla^2 f(x,y,z) \\approx} + f(x,y,z+h) + f(x,y,z-h) - 6f(x,y,z)\\Big]\n\\]\nwith error $\\bigo{h^2}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Higher-Order Laplacian Formulas"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.8",
+      "number": "5.8",
+      "title": "Nine-Point Laplacian (2D)",
+      "content": "A fourth-order approximation to the 2D Laplacian uses nine points:\n\\[\n\\nabla^2 f \\approx \\frac{1}{6h^2}\\Big[\n4f(x\\pm h, y) + 4f(x, y\\pm h) + f(x\\pm h, y\\pm h) - 20f(x,y)\\Big]\n\\]\nwith stencil:\n\\[\n\\frac{1}{6h^2}\\begin{bmatrix}\n1 & 4 & 1 \\\\\n4 & -20 & 4 \\\\\n1 & 4 & 1\n\\end{bmatrix}\n\\]\nand error $\\bigo{h^4}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "Laplacian Computation",
+      "problem": "Compute the numerical Laplacian of $f(x,y) = x^2 + y^2$ at $(0,0)$ \nusing the five-point formula with $h = 0.5$.",
+      "solution": "The exact Laplacian is $\\nabla^2 f = 2 + 2 = 4$.\n\nUsing the five-point formula:\n$$\n\\nabla^2 f(0,0) &\\approx \\frac{f(0.5,0) + f(-0.5,0) + f(0,0.5) \n+ f(0,-0.5) - 4f(0,0)}{0.25} \\\\\n&= \\frac{0.25 + 0.25 + 0.25 + 0.25 - 0}{0.25} \\\\\n&= \\frac{1}{0.25} = 4.\n$$\n\nThe result is exact because the five-point formula is exact for \npolynomials of degree $\\leq 3$ in each variable."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications to Partial Differential Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "Finite difference approximations to partial derivatives form the \nfoundation for solving PDEs numerically."
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Heat Equation Discretization",
+      "problem": "The heat equation in 1D is\n\\[\n\\frac{\\partial u}{\\partial t} = \\alpha \\frac{\\partial^2 u}{\\partial x^2}.\n\\]\n\nUsing finite differences with spatial step $\\Delta x$ and time step $\\Delta t$:\n\\[\n\\frac{u_j^{n+1} - u_j^n}{\\Delta t} = \\alpha \n\\frac{u_{j+1}^n - 2u_j^n + u_{j-1}^n}{(\\Delta x)^2}\n\\]\nwhere $u_j^n \\approx u(j\\Delta x, n\\Delta t)$.\n\nThis gives the explicit update formula:\n\\[\nu_j^{n+1} = u_j^n + r(u_{j+1}^n - 2u_j^n + u_{j-1}^n)\n\\]\nwhere $r = \\alpha\\Delta t/(\\Delta x)^2$.",
+      "solution": ""
+    },
+    {
+      "type": "warning",
+      "id": "warning-5.5",
+      "number": null,
+      "title": "Stability Condition",
+      "content": "The explicit heat equation scheme is stable only if $r \\leq 1/2$. \nFor $r > 1/2$, the solution grows without bound. This is the \n**CFL condition**—a fundamental constraint in numerical PDEs."
+    },
+    {
+      "type": "example",
+      "id": "example-5.4",
+      "number": "5.4",
+      "title": "Laplace's Equation",
+      "problem": "Laplace's equation $\\nabla^2 u = 0$ in 2D with the five-point stencil \nbecomes:\n\\[\nu_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1} - 4u_{i,j} = 0\n\\]\nor equivalently:\n\\[\nu_{i,j} = \\frac{1}{4}(u_{i+1,j} + u_{i-1,j} + u_{i,j+1} + u_{i,j-1}).\n\\]\n\nThis is the **mean-value property**: each interior value is \nthe average of its four neighbors. This observation leads to iterative \nsolution methods like Jacobi and Gauss-Seidel iteration.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Discrete Vector Calculus"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.7",
+      "number": "5.7",
+      "title": "Discrete Gradient",
+      "content": "On a uniform 2D grid with spacing $h$, the **discrete gradient** is:\n\\[\n(\\nabla_h f)_{i,j} = \\left(\n\\frac{f_{i+1,j} - f_{i-1,j}}{2h}, \n\\frac{f_{i,j+1} - f_{i,j-1}}{2h}\n\\right).\n\\]"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.8",
+      "number": "5.8",
+      "title": "Discrete Divergence",
+      "content": "For a vector field $\\bF = (P, Q)$ on a 2D grid, the \n**discrete divergence** is:\n\\[\n(\\nabla_h \\cdot \\bF)_{i,j} = \\frac{P_{i+1,j} - P_{i-1,j}}{2h} \n+ \\frac{Q_{i,j+1} - Q_{i,j-1}}{2h}.\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.9",
+      "number": "5.9",
+      "title": "Discrete Laplacian as Divergence of Gradient",
+      "content": "For appropriate stencil choices:\n\\[\n\\nabla_h \\cdot (\\nabla_h f) = \\nabla_h^2 f + \\bigo{h^2}\n\\]\nrelating the discrete Laplacian to discrete gradient and divergence.",
+      "label": "Theorem"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.9",
+      "number": "5.9",
+      "title": "Discrete Curl (2D)",
+      "content": "For a vector field $\\bF = (P, Q)$ in 2D, the **discrete curl** is:\n\\[\n(\\nabla_h \\times \\bF)_{i,j} = \\frac{Q_{i+1,j} - Q_{i-1,j}}{2h} \n- \\frac{P_{i,j+1} - P_{i,j-1}}{2h}.\n\\]\nThis approximates the scalar \"$z$-component\" of curl in 2D."
+    },
+    {
+      "type": "paragraph",
+      "text": "These discrete operators preserve important identities from vector \ncalculus (like $\\nabla \\times \\nabla f = 0$ and $\\nabla \\cdot (\\nabla \\times \\bF) = 0$) \nto the order of the discretization, making them suitable for \ncomputational physics applications."
+    }
+  ]
+}

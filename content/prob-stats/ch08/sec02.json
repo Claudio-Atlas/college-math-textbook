@@ -1,0 +1,108 @@
+{
+  "id": "prob-stats-ch08-sec02",
+  "title": "Confidence Intervals for the Mean",
+  "chapter": 8,
+  "section": 2,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "The plans of the diligent lead surely to abundance.",
+    "reference": "Proverbs 21:5",
+    "quote": "The $t$-distribution is the small-sample counterpart to the normal.",
+    "quoteAuthor": "William Sealy Gosset (Student)"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "We now construct confidence intervals for the population mean $\\mu$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "When $\\sigma$ Is Known (z-interval)"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "$z$-Confidence Interval for $\\mu$",
+      "content": "If $X_1, \\ldots, X_n$ are from $\\Normal(\\mu, \\sigma^2)$ with $\\sigma$ known:\n\\[\n \\xbar \\pm z_{\\alpha/2} \\cdot \\frac{\\sigma}{\\sqrt{n}}\n\\]\nis a $(1-\\alpha)$ confidence interval for $\\mu$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Common critical values:"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Confidence Level**",
+        "$z_{\\alpha/2}$"
+      ],
+      "rows": [
+        [
+          "90\\%",
+          "1.645"
+        ],
+        [
+          "95\\%",
+          "1.96"
+        ],
+        [
+          "99\\%",
+          "2.576"
+        ]
+      ],
+      "alignment": [
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "When $\\sigma$ Is Unknown ($t$-interval)"
+    },
+    {
+      "type": "paragraph",
+      "text": "In practice, $\\sigma$ is rarely known. We estimate it with $S$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.2",
+      "number": "8.2",
+      "title": "$t$-Confidence Interval for $\\mu$",
+      "content": "If $X_1, \\ldots, X_n$ are from a normal population with $\\sigma$ unknown:\n\\[\n \\xbar \\pm t_{\\alpha/2, n-1} \\cdot \\frac{S}{\\sqrt{n}}\n\\]\nis a $(1-\\alpha)$ confidence interval for $\\mu$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Constructing a $t$-interval",
+      "problem": "A sample of 25 observations has $\\xbar = 82$ and $S = 10$. Find a \n95\\% confidence interval for $\\mu$.",
+      "solution": "$df = 24$, $t_{0.025, 24} = 2.064$.\n\nMargin of error: $2.064 \\times \\frac{10}{\\sqrt{25}} = 2.064 \\times 2 = 4.13$.\n\n95\\% CI: $82 \\pm 4.13 = (77.87, 86.13)$.\n\nWe are 95\\% confident $\\mu$ is between 77.87 and 86.13."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Assumptions and Robustness"
+    },
+    {
+      "type": "paragraph",
+      "text": "The $t$-interval assumes:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Random sample",
+        "Normal population (or large $n$ by CLT)",
+        "$\\sigma$ unknown"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "For large $n$ ($\\geq 30$), the interval is robust to non-normality."
+    }
+  ]
+}

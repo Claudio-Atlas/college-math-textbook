@@ -1,0 +1,373 @@
+{
+  "id": "vol2-ch08-sec03",
+  "title": "Trigonometric Substitution",
+  "chapter": 8,
+  "section": 3,
+  "book": "vol2",
+  "epigraph": {
+    "text": "Make me to know your ways, O Lord; teach me your \npaths.",
+    "reference": "Psalm 25:4"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "What about the integral\n\\[\n \\int \\frac{\\sqrt{4 - x^{2}}}{x^{2}}\\dx\\,?\n\\]\nThe presence of $\\sqrt{4 - x^{2}}$ blocks any direct $u$-substitution:\nsetting $u = 4 - x^{2}$ gives $du = -2x\\dx$, but no free factor of $x$ in\nthe numerator pairs with it. The half-angle and power-reduction techniques\nof Section [sec:trig-integrals] do not apply either. We need a\nfundamentally different idea."
+    },
+    {
+      "type": "paragraph",
+      "text": "The key observation is this: the Pythagorean identity\n$1 - \\sin^{2}\\theta = \\cos^{2}\\theta$ can eliminate a square root. If we\nsubstitute $x = 2\\sin\\theta$, then\n\\[\n \\sqrt{4 - x^{2}}\n = \\sqrt{4 - 4\\sin^{2}\\theta}\n = 2\\sqrt{1 - \\sin^{2}\\theta}\n = 2\\cos\\theta.\n\\]\nThe radical is gone."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Three Trigonometric Substitutions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Each substitution is designed to exploit one of the Pythagorean identities."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.1",
+      "number": "8.1",
+      "title": "Trigonometric Substitutions",
+      "content": "{1.6}\n\n| Expression | Substitution | Identity Used | Range of $\\theta$ |\n| $\\sqrt{a^{2} - x^{2}}$ | $x = a\\sin\\theta$ | $1 - \\sin^{2}\\theta = \\cos^{2}\\theta$ | $-\\dfrac{\\pi}{2}\\le\\theta\\le\\dfrac{\\pi}{2}$ |\n| $\\sqrt{a^{2} + x^{2}}$ | $x = a\\tan\\theta$ | $1 + \\tan^{2}\\theta = \\sec^{2}\\theta$ | $-\\dfrac{\\pi}{2}<\\theta<\\dfrac{\\pi}{2}$ |\n| $\\sqrt{x^{2} - a^{2}}$ | $x = a\\sec\\theta$ | $\\sec^{2}\\theta - 1 = \\tan^{2}\\theta$ | $0\\le\\theta<\\dfrac{\\pi}{2}$ or $\\pi\\le\\theta<\\dfrac{3\\pi}{2}$ |\n\n{1.0}\nThe restrictions on $\\theta$ ensure the substitution is one-to-one and the\nsquare root is non-negative."
+    },
+    {
+      "type": "warning",
+      "id": "warning-8.3",
+      "number": null,
+      "title": "Always convert back to $x$",
+      "content": "After integrating in terms of $\\theta$, you must express the answer in terms\nof the original variable $x$. The **reference triangle** is the\nstandard tool for this conversion."
+    },
+    {
+      "type": "warning",
+      "id": "warning-8.3",
+      "number": null,
+      "title": "Watch for radicals that aren't there",
+      "content": "Trigonometric substitution works even when there is no explicit square root,\nas long as the expression $a^{2} - x^{2}$, $a^{2} + x^{2}$, or $x^{2} - a^{2}$\nappears. For example, $\\int \\frac{dx}{(x^{2}+4)^{2}}$ benefits from\n$x = 2\\tan\\theta$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Reference Triangle"
+    },
+    {
+      "type": "paragraph",
+      "text": "After integrating in terms of $\\theta$, we need to convert back to $x$.\nThe **reference triangle** makes this conversion systematic."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-8.3",
+      "number": null,
+      "title": "Constructing the Reference Triangle",
+      "content": "1. From your substitution (e.g., $x = a\\sin\\theta$), identify\n the trig ratio: $\\sin\\theta = x/a$.\n\n2. Draw a right triangle where this ratio holds. Label the sides.\n\n3. Use the Pythagorean theorem to find the third side.\n\n4. Read off any trig function of $\\theta$ directly from the triangle."
+    },
+    {
+      "type": "paragraph",
+      "text": "For instance, if $x = 2\\sin\\theta$, then $\\sin\\theta = x/2$, so the\nopposite side is $x$ and the hypotenuse is $2$. The adjacent side is\n$\\sqrt{4 - x^{2}}$. From this triangle:\n\\[\n \\cos\\theta = \\frac{\\sqrt{4-x^{2}}}{2}, \\quad\n \\tan\\theta = \\frac{x}{\\sqrt{4-x^{2}}}, \\quad\n \\cot\\theta = \\frac{\\sqrt{4-x^{2}}}{x}.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Type 1: ${a^{2"
+    },
+    {
+      "type": "paragraph",
+      "text": "When you see $\\sqrt{a^{2} - x^{2}}$, substitute $x = a\\sin\\theta$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "$\\displaystyle\\int \\frac{\\sqrt{4 - x^{2}}}{x^{2}}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{\\sqrt{4 - x^{2}}}{x^{2}}\\dx$.",
+      "solution": "Let $x = 2\\sin\\theta$, so $dx = 2\\cos\\theta\\,d\\theta$ and\n$\\sqrt{4 - x^{2}} = 2\\cos\\theta$. Then\nalign*\n $\\sqrt{4 - x^{2}$}{x^{2}}\n &= $\\frac{2\\cos\\theta}{4\\sin^{2}$} 2\\,d\n = 4^{2}{4^{2}}\\,d \\\\[4pt]\n &= \\int \\cot^{2}\\theta\\,d\\theta\n = \\int (\\csc^{2}\\theta - 1)\\,d\\theta \\\\[4pt]\n &= -\\cot\\theta - \\theta + C.\n\\end{align*}\n\\textbf{Converting back.} Since $x = 2\\sin\\theta$, we have\n$\\sin\\theta = x/2$. Draw a right triangle with opposite side $x$,\nhypotenuse $2$, and adjacent side $\\sqrt{4-x^{2}}$. Then\n$\\cot\\theta = \\sqrt{4-x^{2}}/x$ and $\\theta = \\arcsin(x/2)$. Therefore,\n\\[\n \\int \\frac{\\sqrt{4 - x^{2}}}{x^{2}}\\dx\n = -\\frac{\\sqrt{4 - x^{2}}}{x} - \\arcsin\\!\\left(\\frac{x}{2}\\right) + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "$\\displaystyle\\int \\sqrt{9 - x^{2}}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sqrt{9 - x^{2}}\\dx$.",
+      "solution": "Let $x = 3\\sin\\theta$, $dx = 3\\cos\\theta\\,d\\theta$,\n$\\sqrt{9 - x^{2}} = 3\\cos\\theta$.\n$$\n \\int \\sqrt{9 - x^{2}}\\dx\n &= \\int 3\\cos\\theta \\cdot 3\\cos\\theta\\,d\\theta\n = 9\\int \\cos^{2}\\theta\\,d\\theta \\\\\n &= 9 \\cdot \\frac{1}{2}\\left(\\theta + \\sin\\theta\\cos\\theta\\right) + C \\\\\n &= \\frac{9\\theta}{2} + \\frac{9\\sin\\theta\\cos\\theta}{2} + C.\n$$\nConverting back: $\\sin\\theta = x/3$, $\\cos\\theta = \\sqrt{9-x^{2}}/3$,\n$\\theta = \\arcsin(x/3)$.\n\\[\n \\int \\sqrt{9 - x^{2}}\\dx = \\frac{9}{2}\\arcsin\\!\\left(\\frac{x}{3}\\right)\n + \\frac{x\\sqrt{9-x^{2}}}{2} + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "$\\displaystyle\\int \\frac{x^{2}}{\\sqrt{16 - x^{2}}}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{x^{2}}{\\sqrt{16 - x^{2}}}\\dx$.",
+      "solution": "Let $x = 4\\sin\\theta$, $dx = 4\\cos\\theta\\,d\\theta$,\n$\\sqrt{16 - x^{2}} = 4\\cos\\theta$.\n$$\n \\int \\frac{x^{2}}{\\sqrt{16 - x^{2}}}\\dx\n &= \\int \\frac{16\\sin^{2}\\theta}{4\\cos\\theta} \\cdot 4\\cos\\theta\\,d\\theta\n = 16\\int \\sin^{2}\\theta\\,d\\theta \\\\\n &= 16 \\cdot \\frac{1}{2}(\\theta - \\sin\\theta\\cos\\theta) + C \\\\\n &= 8\\theta - 8\\sin\\theta\\cos\\theta + C.\n$$\nConverting back: $\\theta = \\arcsin(x/4)$,\n$\\sin\\theta\\cos\\theta = \\frac{x}{4} \\cdot \\frac{\\sqrt{16-x^{2}}}{4}\n= \\frac{x\\sqrt{16-x^{2}}}{16}$.\n\\[\n \\int \\frac{x^{2}}{\\sqrt{16 - x^{2}}}\\dx\n = 8\\arcsin\\!\\left(\\frac{x}{4}\\right) - \\frac{x\\sqrt{16-x^{2}}}{2} + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.4",
+      "number": "8.4",
+      "title": "Area of a circle",
+      "problem": "Use integration to verify that the area of a circle of radius $r$ is\n$\\pi r^{2}$.",
+      "solution": "The upper half of the circle $x^{2} + y^{2} = r^{2}$ is $y = \\sqrt{r^{2} -\nx^{2}}$. The total area is\n\\[\n A = 2\\defint{-r}{r}\\sqrt{r^{2} - x^{2}}\\dx.\n\\]\nBy symmetry, $A = 4\\defint{0}{r}\\sqrt{r^{2}-x^{2}}\\dx$. Let\n$x = r\\sin\\theta$, $dx = r\\cos\\theta\\,d\\theta$. When $x=0$, $\\theta=0$;\nwhen $x=r$, $\\theta=\\pi/2$.\n$$\n A &= 4\\defint{0}{\\pi/2} r\\cos\\theta \\cdot r\\cos\\theta\\,d\\theta\n = 4r^{2}\\defint{0}{\\pi/2}\\cos^{2}\\theta\\,d\\theta \\\\[4pt]\n &= 4r^{2}\\cdot\\frac{\\pi}{4}\n = \\pi r^{2}.\n$$\nHere we used the result $\\defint{0}{\\pi/2}\\cos^{2}\\theta\\,d\\theta\n= \\pi/4$ from Section [sec:trig-integrals]."
+    },
+    {
+      "type": "example",
+      "id": "example-8.5",
+      "number": "8.5",
+      "title": "$\\displaystyle\\int \\frac{dx}{(a^{2} - x^{2})^{3/2}}$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{(a^{2} - x^{2})^{3/2}}$ for $|x| < a$.",
+      "solution": "Let $x = a\\sin\\theta$, $dx = a\\cos\\theta\\,d\\theta$. Then\n$(a^{2} - x^{2})^{3/2} = (a^{2}\\cos^{2}\\theta)^{3/2} = a^{3}\\cos^{3}\\theta$.\n$$\n \\int \\frac{dx}{(a^{2} - x^{2})^{3/2}}\n &= \\int \\frac{a\\cos\\theta}{a^{3}\\cos^{3}\\theta}\\,d\\theta\n = \\frac{1}{a^{2}}\\int \\sec^{2}\\theta\\,d\\theta \\\\\n &= \\frac{\\tan\\theta}{a^{2}} + C.\n$$\nFrom the triangle: $\\tan\\theta = x/\\sqrt{a^{2}-x^{2}}$.\n\\[\n \\int \\frac{dx}{(a^{2} - x^{2})^{3/2}}\n = \\frac{x}{a^{2}\\sqrt{a^{2}-x^{2}}} + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.6",
+      "number": "8.6",
+      "title": "$\\displaystyle\\int \\frac{\\sqrt{25 - x^{2}}}{x}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{\\sqrt{25 - x^{2}}}{x}\\dx$ for $x > 0$.",
+      "solution": "Let $x = 5\\sin\\theta$, $dx = 5\\cos\\theta\\,d\\theta$,\n$\\sqrt{25-x^{2}} = 5\\cos\\theta$.\n$$\n \\int \\frac{\\sqrt{25 - x^{2}}}{x}\\dx\n &= \\int \\frac{5\\cos\\theta}{5\\sin\\theta} \\cdot 5\\cos\\theta\\,d\\theta\n = 5\\int \\frac{\\cos^{2}\\theta}{\\sin\\theta}\\,d\\theta \\\\\n &= 5\\int \\frac{1 - \\sin^{2}\\theta}{\\sin\\theta}\\,d\\theta\n = 5\\int (\\csc\\theta - \\sin\\theta)\\,d\\theta \\\\\n &= 5\\bigl(-\\ln|\\csc\\theta + \\cot\\theta| + \\cos\\theta\\bigr) + C.\n$$\nFrom the triangle: $\\csc\\theta = 5/x$, $\\cot\\theta = \\sqrt{25-x^{2}}/x$,\n$\\cos\\theta = \\sqrt{25-x^{2}}/5$.\n\\[\n = -5\\ln\\!\\left|\\frac{5 + \\sqrt{25-x^{2}}}{x}\\right| + \\sqrt{25-x^{2}} + C.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Type 2: ${a^{2"
+    },
+    {
+      "type": "paragraph",
+      "text": "When you see $\\sqrt{a^{2} + x^{2}}$, substitute $x = a\\tan\\theta$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.7",
+      "number": "8.7",
+      "title": "$\\displaystyle\\int \\frac{dx}{\\sqrt{x^{2}+9}}$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{\\sqrt{x^{2}+9}}$.",
+      "solution": "Let $x = 3\\tan\\theta$, $dx = 3\\sec^{2}\\theta\\,d\\theta$, so\n$\\sqrt{x^{2}+9} = \\sqrt{9\\tan^{2}\\theta+9} = 3\\sec\\theta$. Then\nalign*\n $\\frac{dx}{\\sqrt{x^{2}$+9}}\n &= 3^{2}{3}\\,d\n = \\,d \\\\[4pt]\n &= \\ln\\abs{\\sec\\theta + \\tan\\theta} + C.\n\\end{align*}\n\\textbf{Converting back.} Since $\\tan\\theta = x/3$, the reference triangle\nhas opposite $x$, adjacent $3$, hypotenuse $\\sqrt{x^{2}+9}$. So\n$\\sec\\theta = \\sqrt{x^{2}+9}/3$. Therefore,\n\\[\n \\int \\frac{dx}{\\sqrt{x^{2}+9}}\n = \\ln\\!\\left\\lvert\\frac{\\sqrt{x^{2}+9}}{3} + \\frac{x}{3}\\right\\rvert + C\n = \\ln\\!\\left\\lvert\\sqrt{x^{2}+9} + x\\right\\rvert + C_{1},\n\\]\nwhere $C_{1} = C - \\ln 3$ absorbs the constant."
+    },
+    {
+      "type": "example",
+      "id": "example-8.8",
+      "number": "8.8",
+      "title": "$\\displaystyle\\int \\sqrt{x^{2}+4}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sqrt{x^{2}+4}\\dx$.",
+      "solution": "Let $x = 2\\tan\\theta$, $dx = 2\\sec^{2}\\theta\\,d\\theta$,\n$\\sqrt{x^{2}+4} = 2\\sec\\theta$.\n$$\n \\int \\sqrt{x^{2}+4}\\dx\n &= \\int 2\\sec\\theta \\cdot 2\\sec^{2}\\theta\\,d\\theta\n = 4\\int \\sec^{3}\\theta\\,d\\theta.\n$$\nUsing the result from Section [sec:trig-integrals]:\n\\[\n \\int \\sec^{3}\\theta\\,d\\theta\n = \\frac{1}{2}(\\sec\\theta\\tan\\theta + \\ln|\\sec\\theta + \\tan\\theta|) + C.\n\\]\nSo:\n\\[\n \\int \\sqrt{x^{2}+4}\\dx = 2\\sec\\theta\\tan\\theta\n + 2\\ln|\\sec\\theta + \\tan\\theta| + C.\n\\]\nConverting: $\\tan\\theta = x/2$, $\\sec\\theta = \\sqrt{x^{2}+4}/2$.\n\\[\n = \\frac{x\\sqrt{x^{2}+4}}{2} + 2\\ln\\!\\left|\\frac{\\sqrt{x^{2}+4}+x}{2}\\right|\n + C.\n\\]\nThis simplifies to:\n\\[\n \\int \\sqrt{x^{2}+4}\\dx = \\frac{x\\sqrt{x^{2}+4}}{2}\n + 2\\ln|\\sqrt{x^{2}+4}+x| + C_{1}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.9",
+      "number": "8.9",
+      "title": "$\\displaystyle\\int \\frac{x^{2}}{\\sqrt{x^{2}+4}}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{x^{2}}{\\sqrt{x^{2}+4}}\\dx$.",
+      "solution": "Let $x = 2\\tan\\theta$, $dx = 2\\sec^{2}\\theta\\,d\\theta$,\n$\\sqrt{x^{2}+4} = 2\\sec\\theta$. Then\n$$\n \\int \\frac{x^{2}}{\\sqrt{x^{2}+4}}\\dx\n &= \\int \\frac{4\\tan^{2}\\theta}{2\\sec\\theta}\\cdot 2\\sec^{2}\\theta\\,d\\theta\n = 4\\int \\tan^{2}\\theta\\,\\sec\\theta\\,d\\theta.\n$$\nWrite $\\tan^{2}\\theta = \\sec^{2}\\theta - 1$:\n\\[\n = 4\\int (\\sec^{3}\\theta - \\sec\\theta)\\,d\\theta.\n\\]\nUsing results from Section [sec:trig-integrals]:\nalign*\n &= 4 + C \\\\[4pt]\n &= 2\\sec\\theta\\tan\\theta\n - 2\\ln|\\sec\\theta+\\tan\\theta| + C.\n\\end{align*}\nConverting back:\n\\[\n = \\frac{x\\sqrt{x^{2}+4}}{2}\n - 2\\ln\\!\\left|\\sqrt{x^{2}+4}+x\\right| + C_{1}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.10",
+      "number": "8.10",
+      "title": "$\\displaystyle\\int \\frac{dx}{(x^{2}+4)^{3/2}}$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{(x^{2}+4)^{3/2}}$.",
+      "solution": "Let $x = 2\\tan\\theta$, $dx = 2\\sec^{2}\\theta\\,d\\theta$.\nThen $(x^{2}+4)^{3/2} = (4\\sec^{2}\\theta)^{3/2} = 8\\sec^{3}\\theta$.\n$$\n \\int \\frac{dx}{(x^{2}+4)^{3/2}}\n &= \\int \\frac{2\\sec^{2}\\theta}{8\\sec^{3}\\theta}\\,d\\theta\n = \\frac{1}{4}\\int \\cos\\theta\\,d\\theta \\\\\n &= \\frac{\\sin\\theta}{4} + C.\n$$\nFrom the triangle: $\\sin\\theta = x/\\sqrt{x^{2}+4}$.\n\\[\n \\int \\frac{dx}{(x^{2}+4)^{3/2}} = \\frac{x}{4\\sqrt{x^{2}+4}} + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.11",
+      "number": "8.11",
+      "title": "$\\displaystyle\\int \\frac{x^{3}}{\\sqrt{x^{2}+1}}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{x^{3}}{\\sqrt{x^{2}+1}}\\dx$.",
+      "solution": "Let $x = \\tan\\theta$, $dx = \\sec^{2}\\theta\\,d\\theta$,\n$\\sqrt{x^{2}+1} = \\sec\\theta$.\n$$\n \\int \\frac{x^{3}}{\\sqrt{x^{2}+1}}\\dx\n &= \\int \\frac{\\tan^{3}\\theta}{\\sec\\theta}\\sec^{2}\\theta\\,d\\theta\n = \\int \\tan^{3}\\theta\\sec\\theta\\,d\\theta.\n$$\nFrom Section [sec:trig-integrals], this equals\n$\\frac{\\sec^{3}\\theta}{3} - \\sec\\theta + C$.\n\nConverting: $\\sec\\theta = \\sqrt{x^{2}+1}$.\n\\[\n \\int \\frac{x^{3}}{\\sqrt{x^{2}+1}}\\dx\n = \\frac{(x^{2}+1)^{3/2}}{3} - \\sqrt{x^{2}+1} + C\n = \\frac{(x^{2}+1)^{3/2} - 3\\sqrt{x^{2}+1}}{3} + C.\n\\]\nThis can be factored as $\\frac{\\sqrt{x^{2}+1}(x^{2}-2)}{3} + C$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.12",
+      "number": "8.12",
+      "title": "$\\displaystyle\\defint{0}{1}\\frac{dx}{\\sqrt{x^{2}+1}}$",
+      "problem": "Evaluate $\\displaystyle\\defint{0}{1}\\frac{dx}{\\sqrt{x^{2}+1}}$.",
+      "solution": "Let $x = \\tan\\theta$, $dx = \\sec^{2}\\theta\\,d\\theta$,\n$\\sqrt{x^{2}+1} = \\sec\\theta$.\n\nWhen $x = 0$, $\\theta = 0$. When $x = 1$, $\\theta = \\pi/4$.\n$$\n \\defint{0}{1}\\frac{dx}{\\sqrt{x^{2}+1}}\n &= \\defint{0}^{\\pi/4}\\frac{\\sec^{2}\\theta}{\\sec\\theta}\\,d\\theta\n = \\defint{0}^{\\pi/4}\\sec\\theta\\,d\\theta \\\\\n &= \\bigl[\\ln|\\sec\\theta + \\tan\\theta|\\bigr]_{0}^{\\pi/4} \\\\\n &= \\ln|\\sqrt{2} + 1| - \\ln|1 + 0| = \\ln(1 + \\sqrt{2}).\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Type 3: ${x^{2"
+    },
+    {
+      "type": "paragraph",
+      "text": "When you see $\\sqrt{x^{2} - a^{2}}$, substitute $x = a\\sec\\theta$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.13",
+      "number": "8.13",
+      "title": "$\\displaystyle\\int \\frac{dx}{x^{2}\\sqrt{x^{2}-25}}$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{x^{2}\\sqrt{x^{2}-25}}$, where $x > 5$.",
+      "solution": "Let $x = 5\\sec\\theta$, $dx = 5\\sec\\theta\\,\\tan\\theta\\,d\\theta$,\n$\\sqrt{x^{2}-25} = 5\\tan\\theta$. Then\nalign*\n $\\frac{dx}{x^{2}$$\\sqrt{x^{2}$-25}}\n &= $\\frac{5\\sec\\theta\\,\\tan\\theta}{25\\sec^{2}$ 5}\n \\,d \\\\[4pt]\n &= \\frac{1}{25}\\int \\frac{1}{\\sec\\theta}\\,d\\theta\n = \\frac{1}{25}\\int \\cos\\theta\\,d\\theta \\\\[4pt]\n &= \\frac{\\sin\\theta}{25} + C.\n\\end{align*}\n\\textbf{Converting back.} Since $\\sec\\theta = x/5$, the reference triangle\nhas hypotenuse $x$, adjacent $5$, opposite $\\sqrt{x^{2}-25}$. So\n$\\sin\\theta = \\sqrt{x^{2}-25}/x$. Therefore,\n\\[\n \\int \\frac{dx}{x^{2}\\sqrt{x^{2}-25}}\n = \\frac{\\sqrt{x^{2}-25}}{25x} + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.14",
+      "number": "8.14",
+      "title": "$\\displaystyle\\int \\frac{\\sqrt{x^{2}-9}}{x}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{\\sqrt{x^{2}-9}}{x}\\dx$ for $x > 3$.",
+      "solution": "Let $x = 3\\sec\\theta$, $dx = 3\\sec\\theta\\tan\\theta\\,d\\theta$,\n$\\sqrt{x^{2}-9} = 3\\tan\\theta$.\n$$\n \\int \\frac{\\sqrt{x^{2}-9}}{x}\\dx\n &= \\int \\frac{3\\tan\\theta}{3\\sec\\theta} \\cdot 3\\sec\\theta\\tan\\theta\\,d\\theta\n = 3\\int \\tan^{2}\\theta\\,d\\theta \\\\\n &= 3(\\tan\\theta - \\theta) + C.\n$$\nConverting: $\\tan\\theta = \\sqrt{x^{2}-9}/3$,\n$\\theta = \\operatorname{arcsec}(x/3) = \\arccos(3/x)$.\n\\[\n \\int \\frac{\\sqrt{x^{2}-9}}{x}\\dx = \\sqrt{x^{2}-9} - 3\\arccos\\!\\left(\\frac{3}{x}\\right) + C.\n\\]\n(Or equivalently, $\\sqrt{x^{2}-9} - 3\\operatorname{arcsec}(x/3) + C$.)"
+    },
+    {
+      "type": "example",
+      "id": "example-8.15",
+      "number": "8.15",
+      "title": "$\\displaystyle\\int \\frac{dx}{x\\sqrt{x^{2}-1}}$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{x\\sqrt{x^{2}-1}}$ for $x > 1$.",
+      "solution": "Let $x = \\sec\\theta$, $dx = \\sec\\theta\\tan\\theta\\,d\\theta$,\n$\\sqrt{x^{2}-1} = \\tan\\theta$.\n$$\n \\int \\frac{dx}{x\\sqrt{x^{2}-1}}\n &= \\int \\frac{\\sec\\theta\\tan\\theta}{\\sec\\theta \\cdot \\tan\\theta}\\,d\\theta\n = \\int d\\theta = \\theta + C.\n$$\nSince $\\sec\\theta = x$, we have $\\theta = \\operatorname{arcsec}(x)$.\n\\[\n \\int \\frac{dx}{x\\sqrt{x^{2}-1}} = \\operatorname{arcsec}(x) + C\n = \\arccos\\!\\left(\\frac{1}{x}\\right) + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.16",
+      "number": "8.16",
+      "title": "$\\displaystyle\\int \\frac{dx}{\\sqrt{x^{2}-4}}$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{\\sqrt{x^{2}-4}}$ for $x > 2$.",
+      "solution": "Let $x = 2\\sec\\theta$, $dx = 2\\sec\\theta\\tan\\theta\\,d\\theta$,\n$\\sqrt{x^{2}-4} = 2\\tan\\theta$.\n$$\n \\int \\frac{dx}{\\sqrt{x^{2}-4}}\n &= \\int \\frac{2\\sec\\theta\\tan\\theta}{2\\tan\\theta}\\,d\\theta\n = \\int \\sec\\theta\\,d\\theta \\\\\n &= \\ln|\\sec\\theta + \\tan\\theta| + C.\n$$\nConverting: $\\sec\\theta = x/2$, $\\tan\\theta = \\sqrt{x^{2}-4}/2$.\n\\[\n \\int \\frac{dx}{\\sqrt{x^{2}-4}} = \\ln\\!\\left|\\frac{x + \\sqrt{x^{2}-4}}{2}\\right| + C\n = \\ln|x + \\sqrt{x^{2}-4}| + C_{1}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.17",
+      "number": "8.17",
+      "title": "$\\displaystyle\\int x^{3}\\sqrt{x^{2}-1}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int x^{3}\\sqrt{x^{2}-1}\\dx$ for $x > 1$.",
+      "solution": "Let $x = \\sec\\theta$, $dx = \\sec\\theta\\tan\\theta\\,d\\theta$,\n$\\sqrt{x^{2}-1} = \\tan\\theta$.\n$$\n \\int x^{3}\\sqrt{x^{2}-1}\\dx\n &= \\int \\sec^{3}\\theta \\cdot \\tan\\theta \\cdot \\sec\\theta\\tan\\theta\\,d\\theta\n = \\int \\sec^{4}\\theta\\tan^{2}\\theta\\,d\\theta.\n$$\nWrite $\\sec^{4}\\theta = \\sec^{2}\\theta(1 + \\tan^{2}\\theta)$:\n$$\n &= \\int \\sec^{2}\\theta\\tan^{2}\\theta(1 + \\tan^{2}\\theta)\\,d\\theta\n = \\int (\\tan^{2}\\theta + \\tan^{4}\\theta)\\sec^{2}\\theta\\,d\\theta.\n$$\nLet $u = \\tan\\theta$, $du = \\sec^{2}\\theta\\,d\\theta$:\n\\[\n = \\int (u^{2} + u^{4})\\,du = \\frac{u^{3}}{3} + \\frac{u^{5}}{5} + C.\n\\]\nConverting: $u = \\tan\\theta = \\sqrt{x^{2}-1}$.\n\\[\n \\int x^{3}\\sqrt{x^{2}-1}\\dx\n = \\frac{(x^{2}-1)^{3/2}}{3} + \\frac{(x^{2}-1)^{5/2}}{5} + C.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Completing the Square"
+    },
+    {
+      "type": "paragraph",
+      "text": "Many integrands contain expressions like $ax^{2} + bx + c$ under a radical.\nTo apply trig substitution, we first **complete the square** to create\none of the three standard forms."
+    },
+    {
+      "type": "example",
+      "id": "example-8.18",
+      "number": "8.18",
+      "title": "$\\displaystyle\\int \\frac{dx}{\\sqrt{x^{2}-4x+8}}$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{\\sqrt{x^{2}-4x+8}}$.",
+      "solution": "Complete the square: $x^{2}-4x+8 = (x-2)^{2}+4$. Let $w = x-2$:\n\\[\n \\int \\frac{dx}{\\sqrt{(x-2)^{2}+4}}\n = \\int \\frac{dw}{\\sqrt{w^{2}+4}}.\n\\]\nThis is of the form $\\sqrt{w^{2}+a^{2}}$ with $a = 2$. Let\n$w = 2\\tan\\theta$:\nalign*\n $\\frac{dw}{\\sqrt{w^{2}$+4}}\n &= 2^{2}{2}\\,d\n = \\,d \\\\[4pt]\n &= \\ln\\abs{\\sec\\theta+\\tan\\theta} + C.\n\\end{align*}\nConverting back: $\\tan\\theta = w/2 = (x-2)/2$,\n$\\sec\\theta = \\sqrt{w^{2}+4}/2 = \\sqrt{x^{2}-4x+8}/2$.\n\\[\n = \\ln\\!\\left\\lvert\\frac{\\sqrt{x^{2}-4x+8} + x - 2}{2}\\right\\rvert + C\n = \\ln\\bigl\\lvert\\sqrt{x^{2}-4x+8}+x-2\\bigr\\rvert + C_{1}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.19",
+      "number": "8.19",
+      "title": "$\\displaystyle\\int \\frac{dx}{\\sqrt{5+4x-x^{2}}}$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{\\sqrt{5+4x-x^{2}}}$.",
+      "solution": "Complete the square: $5+4x-x^{2} = -(x^{2}-4x-5) = -(x^{2}-4x+4-9)\n= 9 - (x-2)^{2}$. Let $w = x-2$:\n\\[\n \\int \\frac{dx}{\\sqrt{9-w^{2}}}.\n\\]\nThis is of the form $\\sqrt{a^{2}-w^{2}}$ with $a = 3$. Let\n$w = 3\\sin\\theta$, $dw = 3\\cos\\theta\\,d\\theta$:\n\\[\n \\int \\frac{3\\cos\\theta}{3\\cos\\theta}\\,d\\theta\n = \\int d\\theta = \\theta + C\n = \\arcsin\\!\\left(\\frac{w}{3}\\right) + C\n = \\arcsin\\!\\left(\\frac{x-2}{3}\\right) + C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.20",
+      "number": "8.20",
+      "title": "$\\displaystyle\\int \\frac{dx}{\\sqrt{x^{2}+6x+13}}$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{\\sqrt{x^{2}+6x+13}}$.",
+      "solution": "Complete the square: $x^{2}+6x+13 = (x+3)^{2} + 4$. Let $w = x+3$:\n\\[\n \\int \\frac{dw}{\\sqrt{w^{2}+4}}.\n\\]\nWith $w = 2\\tan\\theta$:\n\\[\n = \\ln|\\sec\\theta + \\tan\\theta| + C\n = \\ln\\!\\left|\\sqrt{w^{2}+4} + w\\right| + C_{1}\n = \\ln\\!\\left|\\sqrt{x^{2}+6x+13} + x + 3\\right| + C_{1}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.21",
+      "number": "8.21",
+      "title": "$\\displaystyle\\int \\sqrt{2x - x^{2}}\\dx$",
+      "problem": "Evaluate $\\displaystyle\\int \\sqrt{2x - x^{2}}\\dx$.",
+      "solution": "Complete the square: $2x - x^{2} = -(x^{2} - 2x) = -(x^{2} - 2x + 1 - 1)\n= 1 - (x-1)^{2}$. Let $w = x - 1$:\n\\[\n \\int \\sqrt{1 - w^{2}}\\,dw.\n\\]\nLet $w = \\sin\\theta$, $dw = \\cos\\theta\\,d\\theta$:\n$$\n \\int \\sqrt{1 - \\sin^{2}\\theta}\\cos\\theta\\,d\\theta\n &= \\int \\cos^{2}\\theta\\,d\\theta \\\\\n &= \\frac{\\theta}{2} + \\frac{\\sin\\theta\\cos\\theta}{2} + C \\\\\n &= \\frac{\\arcsin w}{2} + \\frac{w\\sqrt{1-w^{2}}}{2} + C \\\\\n &= \\frac{\\arcsin(x-1)}{2} + \\frac{(x-1)\\sqrt{2x-x^{2}}}{2} + C.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.22",
+      "number": "8.22",
+      "title": "$\\displaystyle\\int \\frac{dx}{(x^{2}+2x+5)^{3/2}}$",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{(x^{2}+2x+5)^{3/2}}$.",
+      "solution": "Complete the square: $x^{2}+2x+5 = (x+1)^{2}+4$. Let $w = x+1$:\n\\[\n \\int \\frac{dw}{(w^{2}+4)^{3/2}}.\n\\]\nLet $w = 2\\tan\\theta$, $(w^{2}+4)^{3/2} = 8\\sec^{3}\\theta$:\n$$\n \\int \\frac{2\\sec^{2}\\theta}{8\\sec^{3}\\theta}\\,d\\theta\n &= \\frac{1}{4}\\int \\cos\\theta\\,d\\theta\n = \\frac{\\sin\\theta}{4} + C.\n$$\nFrom the triangle: $\\sin\\theta = w/\\sqrt{w^{2}+4} = (x+1)/\\sqrt{x^{2}+2x+5}$.\n\\[\n \\int \\frac{dx}{(x^{2}+2x+5)^{3/2}} = \\frac{x+1}{4\\sqrt{x^{2}+2x+5}} + C.\n\\]"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-8.3",
+      "number": null,
+      "title": "Trigonometric Substitution",
+      "content": "1. **Identify the form**: $\\sqrt{a^{2}-x^{2}}$,\n $\\sqrt{a^{2}+x^{2}}$, or $\\sqrt{x^{2}-a^{2}}$.\n If none is present, try completing the square.\n\n2. **Substitute**: $x = a\\sin\\theta$, $x = a\\tan\\theta$, or\n $x = a\\sec\\theta$ as appropriate.\n\n3. **Simplify** the radical using the corresponding Pythagorean\n identity.\n\n4. **Integrate** the resulting trigonometric integral (using\n techniques from Sections [sec:integration-by-parts]\n and [sec:trig-integrals] as needed).\n\n5. **Convert back** to $x$ using a reference triangle."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "An Alternative: Hyperbolic Substitution"
+    },
+    {
+      "type": "paragraph",
+      "text": "The hyperbolic functions $\\sinh x$ and $\\cosh x$ satisfy the identity\n$\\cosh^{2}x - \\sinh^{2}x = 1$, which is analogous to the Pythagorean\nidentity. This makes them natural alternatives for Type 2 and Type 3\nsubstitutions."
+    },
+    {
+      "type": "example",
+      "id": "example-8.23",
+      "number": "8.23",
+      "title": "$\\displaystyle\\int \\frac{dx}{\\sqrt{x^{2}+a^{2}}}$ via hyperbolic substitution",
+      "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{\\sqrt{x^{2}+a^{2}}}$ using $x = a\\sinh t$.",
+      "solution": "Let $x = a\\sinh t$, so $dx = a\\cosh t\\,dt$ and\n$\\sqrt{x^{2}+a^{2}} = \\sqrt{a^{2}\\sinh^{2}t + a^{2}} = a\\cosh t$.\n$$\n \\int \\frac{dx}{\\sqrt{x^{2}+a^{2}}}\n &= \\int \\frac{a\\cosh t}{a\\cosh t}\\,dt = \\int dt = t + C \\\\\n &= \\operatorname{arcsinh}\\!\\left(\\frac{x}{a}\\right) + C\n = \\ln\\!\\left(x + \\sqrt{x^{2}+a^{2}}\\right) + C_{1}.\n$$\nThe last step uses the identity\n$\\operatorname{arcsinh}(u) = \\ln(u + \\sqrt{u^{2}+1})$."
+    },
+    {
+      "type": "historical",
+      "id": "historical-8.3",
+      "number": null,
+      "title": "Euler and Trigonometric Substitution",
+      "content": "Leonhard Euler (1707–1783) systematized the use of trigonometric and\nhyperbolic substitutions in his monumental *Introductio in analysin\ninfinitorum* (1748) and *Institutiones calculi integralis* (1768–1770).\nHis three-volume work on integral calculus catalogued techniques that\nstudents still use today. Euler, one of the most prolific mathematicians in\nhistory, was also a devout Christian who wrote on theology and apologetics.\nHis faith and his mathematics were not separate endeavors but expressions of\na single vocation."
+    },
+    {
+      "type": "historical",
+      "id": "historical-8.3",
+      "number": null,
+      "title": "The Geometry Behind the Substitutions",
+      "content": "Each trig substitution corresponds to a geometric parameterization. The\nsubstitution $x = a\\sin\\theta$ parameterizes the upper semicircle of radius\n$a$; the substitution $x = a\\tan\\theta$ parameterizes a hyperbola-like curve.\nThese connections between algebra and geometry were deeply important to\n17th-century mathematicians like Descartes, who unified the two disciplines\nin his *La G\\'eom\\'etrie* (1637)."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Isaiah 55:9",
+      "text": "For as the heavens are higher than the earth,\nso are my ways higher than your ways and my thoughts than your thoughts."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 3:5--6",
+      "text": "Trust in the Lord with all your heart, and\ndo not lean on your own understanding. In all your ways acknowledge him, and\nhe will make straight your paths."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 19:1",
+      "text": "The heavens declare the glory of God, and the\nsky above proclaims his handiwork."
+    },
+    {
+      "type": "scripture",
+      "reference": "Romans 11:33",
+      "text": "Oh, the depth of the riches and wisdom and\nknowledge of God! How unsearchable are his judgments and how inscrutable his\nways!"
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 8:3--4",
+      "text": "When I look at your heavens, the work of your\nfingers, the moon and the stars, which you have set in place, what is man\nthat you are mindful of him?"
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:11",
+      "text": "He has made everything beautiful in its\ntime. Also, he has put eternity into man's heart, yet so that he cannot find\nout what God has done from the beginning to the end."
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Kings 4:29",
+      "text": "And God gave Solomon wisdom and understanding\nbeyond measure, and breadth of mind like the sand on the seashore."
+    },
+    {
+      "type": "quote",
+      "author": "Archimedes",
+      "text": "Give me a place to stand, and I shall move the\nearth."
+    },
+    {
+      "type": "quote",
+      "author": "Carl Friedrich Gauss",
+      "text": "Mathematics is the queen of the sciences,\nand number theory is the queen of mathematics."
+    },
+    {
+      "type": "quote",
+      "author": "Leonhard Euler",
+      "text": "Mathematicians are like Frenchmen: whatever you\nsay to them they translate into their own language and forthwith it is\nsomething entirely different."
+    }
+  ]
+}

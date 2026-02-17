@@ -1,0 +1,203 @@
+{
+  "id": "geometry-ch08-sec04",
+  "title": "Solving Right Triangles",
+  "chapter": 8,
+  "section": 4,
+  "book": "geometry",
+  "epigraph": {
+    "text": "Call to me and I will answer you, and will tell you great and hidden things that you have not known.",
+    "reference": "Jeremiah 33:3"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "To \"solve\" a triangle means to find all unknown sides and angles. \nIn a right triangle, we always know one angle (the right angle), so \nwe need to find the other two angles and all three sides. With the \nPythagorean theorem and trigonometric ratios as our tools, we can \nsolve any right triangle given just two pieces of information (besides \nthe right angle)."
+    },
+    {
+      "type": "paragraph",
+      "text": "In this section, we develop systematic methods for finding unknown \nangles using *inverse trigonometric functions* and for completely \nsolving right triangles given various combinations of sides and angles."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Inverse Trigonometric Functions"
+    },
+    {
+      "type": "paragraph",
+      "text": "In Section 8.3, we used trigonometric ratios to find side lengths from \nknown angles. Now we reverse the process: given side lengths, we find \nangles."
+    },
+    {
+      "type": "paragraph",
+      "text": "If we know that $\\sin\\theta = 0.5$, what is $\\theta$? We need the \n*inverse* of the sine function."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.1",
+      "number": "8.1",
+      "title": "Inverse Trigonometric Functions",
+      "content": "The **inverse trigonometric functions** \"undo\" the regular \ntrigonometric functions:\n$$\n\\text{If } \\sin\\theta = x, \\text{ then } \\theta &= \\sin^{-1}(x) \\text{ or } \\theta = \\arcsin(x) \\\\\n\\text{If } \\cos\\theta = x, \\text{ then } \\theta &= \\cos^{-1}(x) \\text{ or } \\theta = \\arccos(x) \\\\\n\\text{If } \\tan\\theta = x, \\text{ then } \\theta &= \\tan^{-1}(x) \\text{ or } \\theta = \\arctan(x)\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "(x)$ does \\emph{not} mean \n$$\\frac{1}{\\sin(x)}$$. It means ``the angle whose sine is $x$.'' The \nnotation $(x)$ is less ambiguous.}"
+    },
+    {
+      "type": "paragraph",
+      "text": "On most calculators, the inverse functions are accessed by pressing \na \"2nd\" or \"INV\" key before the trig function button."
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Using inverse sine",
+      "problem": "Find the angle $\\theta$ if $\\sin\\theta = 0.5$.",
+      "solution": "\\[\n\\theta = \\sin^{-1}(0.5) = 30°\n\\]\n\nWe can verify: $\\sin 30° = \\frac{1}{2} = 0.5 \\checkmark$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "Using inverse tangent",
+      "problem": "Find the angle $\\theta$ if $\\tan\\theta = 1.5$. Round to the nearest \ntenth of a degree.",
+      "solution": "\\[\n\\theta = \\tan^{-1}(1.5) \\approx 56.3°\n\\]\n\nVerification: $\\tan 56.3° \\approx 1.499 \\approx 1.5 \\checkmark$"
+    },
+    {
+      "type": "example",
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "Finding angles from sides",
+      "problem": "In a right triangle, the legs measure 5 and 12. Find both acute angles.\n\ncenter\ntikzpicture[scale=0.4]\n (A) at (0,0);\n (B) at (12,0);\n (C) at (12,5);\n \n (A) – (B) – (C) – cycle;\n (11.5,0) – (11.5,0.5) – (12,0.5);\n \n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n \n at (6,0) {12};\n at (12,2.5) {5};\n \n (1.2,0) arc (0:22.6:1.2);\n at (1.8,0.4) {$\\alpha$};\ntikzpicture\ncenter",
+      "solution": "For angle $\\alpha$ at vertex $A$:\n\\[\n\\tan\\alpha = \\frac{\\text{opposite}}{\\text{adjacent}} = \\frac{5}{12}\n\\]\n\\[\n\\alpha = \\tan^{-1}\\left(\\frac{5}{12}\\right) \\approx 22.6°\n\\]\n\nFor the angle at vertex $C$:\n\\[\n\\angle C = 90° - 22.6° = 67.4°\n\\]\n\nAlternatively, we could compute directly:\n\\[\n\\angle C = \\tan^{-1}\\left(\\frac{12}{5}\\right) \\approx 67.4°\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving Right Triangles: The Complete Process"
+    },
+    {
+      "type": "paragraph",
+      "text": "A right triangle has six parts: three sides and three angles. One angle \nis always $90°$. To solve the triangle completely, we need to find the \nother five parts. Here is a systematic approach:"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-8.4",
+      "number": null,
+      "title": "Solving a Right Triangle",
+      "content": "Given a right triangle with the right angle at $C$:\n\n1. **Sketch and label** the triangle with all given information.\n\n2. **Find all angles**: If one acute angle is given, subtract \n from $90°$ to find the other. If only sides are given, use inverse trig.\n\n3. **Find all sides**: Use the Pythagorean theorem or \n trigonometric ratios.\n\n4. **Check your work**: Verify using an independent method \n (e.g., check with a different trig ratio or the Pythagorean theorem)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Case 1: Given One Acute Angle and One Side"
+    },
+    {
+      "type": "example",
+      "id": "example-8.4",
+      "number": "8.4",
+      "title": "Given angle and hypotenuse",
+      "problem": "Solve right triangle $ABC$ where $\\angle C = 90°$, $\\angle A = 35°$, \nand hypotenuse $c = 20$.\n\ncenter\ntikzpicture[scale=0.35]\n (A) at (0,0);\n (B) at (16.4,0);\n (C) at (16.4,11.5);\n \n (A) – (B) – (C) – cycle;\n (15.9,0) – (15.9,0.5) – (16.4,0.5);\n \n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n \n at (8.2,0) {$b$};\n at (16.4,5.75) {$a$};\n at (7.5,6.5) {$c = 20$};\n \n (1.5,0) arc (0:35:1.5);\n at (2.3,0.7) {$35°$};\ntikzpicture\ncenter",
+      "solution": "**Step 1: Find the other acute angle.**\n\\[\n\\angle B = 90° - 35° = 55°\n\\]\n\n**Step 2: Find side $a$ (opposite $\\angle A$).**\n\nUsing sine:\n\\[\n\\sin 35° = \\frac{a}{20} \\implies a = 20\\sin 35° \\approx 20(0.5736) \\approx 11.47\n\\]\n\n**Step 3: Find side $b$ (adjacent to $\\angle A$).**\n\nUsing cosine:\n\\[\n\\cos 35° = \\frac{b}{20} \\implies b = 20\\cos 35° \\approx 20(0.8192) \\approx 16.38\n\\]\n\n**Step 4: Check with Pythagorean theorem.**\n\\[\na^2 + b^2 = 11.47^2 + 16.38^2 \\approx 131.6 + 268.3 = 399.9 \\approx 400 = 20^2 \\checkmark\n\\]\n\n**Complete solution:**\n\\[\n\\angle A = 35°, \\quad \\angle B = 55°, \\quad \\angle C = 90°\n\\]\n\\[\na \\approx 11.47, \\quad b \\approx 16.38, \\quad c = 20\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.5",
+      "number": "8.5",
+      "title": "Given angle and leg",
+      "problem": "Solve right triangle $ABC$ where $\\angle C = 90°$, $\\angle B = 52°$, \nand $a = 15$ (the leg opposite $\\angle A$).",
+      "solution": "**Step 1: Find $\\angle A$.**\n\\[\n\\angle A = 90° - 52° = 38°\n\\]\n\n**Step 2: Find side $b$ (opposite $\\angle B$).**\n\nFrom angle $A$, side $a$ is opposite and side $b$ is adjacent:\n\\[\n\\tan 38° = \\frac{15}{b} \\implies b = \\frac{15}{\\tan 38°} \\approx \\frac{15}{0.7813} \\approx 19.20\n\\]\n\n**Step 3: Find hypotenuse $c$.**\n\nUsing sine from angle $A$:\n\\[\n\\sin 38° = \\frac{15}{c} \\implies c = \\frac{15}{\\sin 38°} \\approx \\frac{15}{0.6157} \\approx 24.36\n\\]\n\n**Step 4: Check.**\n\\[\na^2 + b^2 = 15^2 + 19.20^2 = 225 + 368.64 = 593.64 \\approx 24.36^2 = 593.4 \\checkmark\n\\]\n\n**Complete solution:**\n\\[\n\\angle A = 38°, \\quad \\angle B = 52°, \\quad \\angle C = 90°\n\\]\n\\[\na = 15, \\quad b \\approx 19.20, \\quad c \\approx 24.36\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Case 2: Given Two Sides"
+    },
+    {
+      "type": "example",
+      "id": "example-8.6",
+      "number": "8.6",
+      "title": "Given two legs",
+      "problem": "Solve right triangle $ABC$ where $\\angle C = 90°$, $a = 8$, and $b = 6$.\n\ncenter\ntikzpicture[scale=0.5]\n (A) at (0,0);\n (B) at (6,0);\n (C) at (6,8);\n \n (A) – (B) – (C) – cycle;\n (5.6,0) – (5.6,0.4) – (6,0.4);\n \n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n \n at (3,0) {$b = 6$};\n at (6,4) {$a = 8$};\n at (2.8,4.5) {$c$};\ntikzpicture\ncenter",
+      "solution": "**Step 1: Find hypotenuse $c$ using Pythagorean theorem.**\n\\[\nc = \\sqrt{a^2 + b^2} = \\sqrt{8^2 + 6^2} = \\sqrt{64 + 36} = \\sqrt{100} = 10\n\\]\n\n**Step 2: Find $\\angle A$ using inverse tangent.**\n\\[\n\\tan A = \\frac{a}{b} = \\frac{8}{6} = \\frac{4}{3}\n\\]\n\\[\n\\angle A = \\tan^{-1}\\left(\\frac{4}{3}\\right) \\approx 53.1°\n\\]\n\n**Step 3: Find $\\angle B$.**\n\\[\n\\angle B = 90° - 53.1° = 36.9°\n\\]\n\n**Complete solution:**\n\\[\n\\angle A \\approx 53.1°, \\quad \\angle B \\approx 36.9°, \\quad \\angle C = 90°\n\\]\n\\[\na = 8, \\quad b = 6, \\quad c = 10\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.7",
+      "number": "8.7",
+      "title": "Given leg and hypotenuse",
+      "problem": "Solve right triangle $ABC$ where $\\angle C = 90°$, $b = 12$, and $c = 15$.",
+      "solution": "**Step 1: Find side $a$ using Pythagorean theorem.**\n\\[\na^2 + b^2 = c^2 \\implies a^2 + 144 = 225 \\implies a^2 = 81 \\implies a = 9\n\\]\n\n**Step 2: Find $\\angle A$.**\n\\[\n\\sin A = \\frac{a}{c} = \\frac{9}{15} = \\frac{3}{5} = 0.6\n\\]\n\\[\n\\angle A = \\sin^{-1}(0.6) \\approx 36.9°\n\\]\n\n**Step 3: Find $\\angle B$.**\n\\[\n\\angle B = 90° - 36.9° = 53.1°\n\\]\n\n**Complete solution:**\n\\[\n\\angle A \\approx 36.9°, \\quad \\angle B \\approx 53.1°, \\quad \\angle C = 90°\n\\]\n\\[\na = 9, \\quad b = 12, \\quad c = 15\n\\]\n\nNote: This is a 3-4-5 triple scaled by 3!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Choosing the Right Trigonometric Ratio"
+    },
+    {
+      "type": "paragraph",
+      "text": "With three ratios to choose from, how do you decide which to use?"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-8.4",
+      "number": null,
+      "title": "Selecting a Trig Ratio",
+      "content": "1. Identify what you **know** and what you **need**.\n\n2. Choose the ratio that involves both:\n itemize\n\n3. Use **sine** when you have opposite and hypotenuse\n\n4. Use **cosine** when you have adjacent and hypotenuse\n\n5. Use **tangent** when you have opposite and adjacent\n itemize"
+    },
+    {
+      "type": "example",
+      "id": "example-8.8",
+      "number": "8.8",
+      "title": "Choosing the right ratio",
+      "problem": "In a right triangle, you know $\\angle A = 40°$ and the side adjacent \nto $\\angle A$ is 18. Which ratio would you use to find:\n\n1. The hypotenuse?\n\n2. The opposite side?",
+      "solution": "1. You have: adjacent (18) and angle (40°). You want: hypotenuse.\n \n Use **cosine**:\n \\[\n \\cos 40° = \\frac{18}{c} \\implies c = \\frac{18}{\\cos 40°} \\approx 23.5\n \\]\n\n2. You have: adjacent (18) and angle (40°). You want: opposite.\n \n Use **tangent**:\n \\[\n \\tan 40° = \\frac{a}{18} \\implies a = 18\\tan 40° \\approx 15.1\n \\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications"
+    },
+    {
+      "type": "example",
+      "id": "example-8.9",
+      "number": "8.9",
+      "title": "Height of a flagpole",
+      "problem": "From a point 50 feet from the base of a flagpole, the angle of \nelevation to the top is $32°$. How tall is the flagpole?\n\ncenter\ntikzpicture[scale=0.5]\n % Ground\n (-1,0) – (8,0);\n \n % Flagpole\n (0,0) – (0,5);\n (0,5) – (0.3,5) – (0.3,4.5);\n \n % Observer point\n ll[AtlasTeal] (7,0) circle (3pt);\n \n % Line of sight\n (7,0) – (0,5);\n \n % Distance\n at (3.5,0) {50 ft};\n \n % Height\n at (0,2.5) {$h$};\n \n % Angle\n (5.5,0) arc (180:145:1.5);\n at (5.3,0.5) {$32°$};\ntikzpicture\ncenter",
+      "solution": "We have the adjacent side (50 ft) and want the opposite side ($h$). \nUse tangent:\n\\[\n\\tan 32° = \\frac{h}{50}\n\\]\n\\[\nh = 50\\tan 32° \\approx 50(0.6249) \\approx 31.2 \\text{ feet}\n\\]\n\nThe flagpole is approximately 31.2 feet tall."
+    },
+    {
+      "type": "example",
+      "id": "example-8.10",
+      "number": "8.10",
+      "title": "Distance across a river",
+      "problem": "A surveyor stands on one bank of a river directly across from a tree \non the other bank. She walks 100 meters along the bank and finds that \nthe angle to the tree is now $62°$. How wide is the river?\n\ncenter\ntikzpicture[scale=0.4]\n % River banks\n ll[blue!10] (-1,-0.5) rectangle (12,0);\n (-1,0) – (12,0);\n (-1,5) – (12,5);\n \n % Tree\n ll[AtlasSage] (0,5) circle (4pt);\n at (0,5) {Tree};\n \n % Starting point\n ll[AtlasTeal] (0,0) circle (4pt);\n at (0,0) {Start};\n \n % End point\n ll[AtlasTeal] (10,0) circle (4pt);\n at (10,0) {End};\n \n % Distance walked\n (0,-1) – (10,-1);\n at (5,-1) {100 m};\n \n % Line of sight\n (10,0) – (0,5);\n \n % River width\n (-1.5,0) – (-1.5,5);\n at (-1.5,2.5) {$w$};\n \n % Angle\n (8,0) arc (180:153:2);\n at (7.5,0.8) {$62°$};\ntikzpicture\ncenter",
+      "solution": "Looking at the right triangle formed:\n\n- The angle at the surveyor's new position is $62°$\n\n- The side along the bank (100 m) is opposite this angle\n\n- The river width $w$ is adjacent to this angle\n\n\\[\n\\tan 62° = \\frac{100}{w}\n\\]\n\\[\nw = \\frac{100}{\\tan 62°} \\approx \\frac{100}{1.8807} \\approx 53.2 \\text{ meters}\n\\]\n\nThe river is approximately 53.2 meters wide."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 2:3--5",
+      "text": "If you call out for insight and cry \naloud for understanding, and if you look for it as for silver and \nsearch for it as for hidden treasure, then you will understand the \nfear of the Lord and find the knowledge of God."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 7:25",
+      "text": "I applied my heart to know and \nto search out and to seek wisdom and the scheme of things."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 11:7--8",
+      "text": "Can you fathom the mysteries of God? \nCan you probe the limits of the Almighty? They are higher than the \nheavens above—what can you do?"
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 102:25--27",
+      "text": "Of old you laid the foundation of \nthe earth, and the heavens are the work of your hands. They will \nperish, but you will remain."
+    }
+  ]
+}

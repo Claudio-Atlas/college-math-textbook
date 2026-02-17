@@ -1,0 +1,111 @@
+{
+  "id": "discrete-math-ch10-sec03",
+  "title": "Spanning Trees",
+  "chapter": 10,
+  "section": 3,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"The kingdom of heaven is like a mustard seed... it \nis the smallest of all seeds, yet when it grows, it is the largest of \ngarden plants and becomes a tree.\"*{Matthew 13:31–32}{A minimum spanning tree connects all vertices with the least total edge weight.}{Joseph Kruskal}"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **spanning tree** connects all vertices with \nminimal edges."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Spanning Tree",
+      "content": "A **spanning tree** of connected graph $G = (V, E)$ is a subgraph \n$T = (V, E')$ that:\n\n- Includes all vertices of $G$\n\n- Is a tree (connected and acyclic)"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "Existence of Spanning Trees",
+      "content": "Every connected graph has a spanning tree.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Start with $G$. While the graph has a cycle, remove one edge from the \ncycle (keeping the graph connected). When no cycles remain, we have a \nspanning tree."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Minimum Spanning Trees"
+    },
+    {
+      "type": "paragraph",
+      "text": "In a **weighted graph**, each edge has a \nnumerical weight (cost, distance, etc.)."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.2",
+      "number": "10.2",
+      "title": "Minimum Spanning Tree",
+      "content": "A **minimum spanning tree** (MST) of a \nweighted connected graph is a spanning tree with minimum total edge weight."
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "Network design",
+      "problem": "To connect $n$ cities with roads of varying construction costs, an MST \ngives the cheapest network connecting all cities.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Prim's Algorithm"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-10.3",
+      "number": null,
+      "title": "Prim's Algorithm",
+      "content": "1. Start with any vertex.\n\n2. Repeatedly add the minimum-weight edge connecting a tree vertex \n to a non-tree vertex.\n\n3. Stop when all vertices are in the tree."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Kruskal's Algorithm"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-10.3",
+      "number": null,
+      "title": "Kruskal's Algorithm",
+      "content": "1. Sort all edges by weight.\n\n2. For each edge in order: add it to the tree if it doesn't create \n a cycle.\n\n3. Stop when $n - 1$ edges are added."
+    },
+    {
+      "type": "example",
+      "id": "example-10.2",
+      "number": "10.2",
+      "title": "Finding MST",
+      "problem": "Graph with vertices $A, B, C, D$ and edges: $AB(1), BC(4), CD(2), AD(3), \nBD(5), AC(6)$.\n\nKruskal: Sort edges: $AB(1), CD(2), AD(3), BC(4), BD(5), AC(6)$.\n\nAdd $AB(1)$, $CD(2)$, $AD(3)$. Now $BC$ would create cycle. Done!\n\nMST weight: $1 + 2 + 3 = 6$.",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.2",
+      "number": "10.2",
+      "title": "Correctness of Greedy MST Algorithms",
+      "content": "Both Prim's and Kruskal's algorithms produce a minimum spanning tree.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The proof uses the \"cut property\": the minimum-weight edge crossing any \ncut is in some MST."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "John 12:24",
+      "text": "Unless a kernel of wheat falls to the ground \nand dies, it remains only a single seed. But if it dies, it produces \nmany seeds."
+    }
+  ]
+}

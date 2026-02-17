@@ -1,0 +1,104 @@
+{
+  "id": "complex-analysis-ch04-sec03",
+  "title": "Antiderivatives and Path Independence",
+  "chapter": 4,
+  "section": 3,
+  "book": "complex-analysis",
+  "epigraph": {
+    "text": "The steadfast love of the Lord never ceases; his mercies never come to an end.",
+    "reference": "Lamentations 3:22",
+    "quote": "When does the path not matter? When there is an antiderivative.",
+    "quoteAuthor": "Augustin-Louis Cauchy"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "In real calculus, the Fundamental Theorem tells us that integrals of \nderivatives depend only on endpoints. The same principle holds in complex \nanalysis, with profound consequences."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Antiderivatives"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "Antiderivative",
+      "content": "Let $f$ be continuous on a domain $D$. A function $F$ analytic on $D$ is \nan **antiderivative** of $f$ if $F'(z) = f(z)$ \nfor all $z \\in D$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Fundamental Theorem of Contour Integration",
+      "content": "Let $f$ be continuous on a domain $D$ and suppose $f$ has an antiderivative \n$F$ on $D$. Then for any contour $\\gamma$ in $D$ from $z_1$ to $z_2$:\n\\[\n \\int_\\gamma f(z)\\,dz = F(z_2) - F(z_1).\n\\]\nIn particular, the integral depends only on the endpoints, not on the path.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Parametrize $\\gamma: [a, b] \\to \\C$ with $\\gamma(a) = z_1$, $\\gamma(b) = z_2$.\n$$\n \\int_\\gamma f(z)\\,dz &= \\int_a^b f(\\gamma(t))\\gamma'(t)\\,dt \n = \\int_a^b F'(\\gamma(t))\\gamma'(t)\\,dt \\\\\n &= \\int_a^b \\frac{d}{dt}[F(\\gamma(t))]\\,dt = F(\\gamma(b)) - F(\\gamma(a)) \n = F(z_2) - F(z_1).\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": null,
+      "problem": "Compute $\\displaystyle\\int_\\gamma z^2\\,dz$ from $0$ to $1 + i$ along any path.",
+      "solution": "Since $F(z) = z^3/3$ is an antiderivative of $z^2$ on all of $\\C$:\n\\[\n \\int_\\gamma z^2\\,dz = \\frac{(1+i)^3}{3} - \\frac{0^3}{3} \n = \\frac{1 + 3i + 3i^2 + i^3}{3} = \\frac{1 + 3i - 3 - i}{3} \n = \\frac{-2 + 2i}{3}.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Integrals Around Closed Contours"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Closed Contour Integral",
+      "content": "If $f$ has an antiderivative on a domain $D$ and $\\gamma$ is a closed \ncontour in $D$, then\n\\[\n \\oint_\\gamma f(z)\\,dz = 0.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If $\\gamma$ starts and ends at $z_0$, then \n$\\int_\\gamma f\\,dz = F(z_0) - F(z_0) = 0$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-4.3",
+      "number": null,
+      "title": "When antiderivatives don't exist",
+      "content": "The function $f(z) = 1/z$ has no antiderivative on any domain containing \na loop around the origin. This is why $\\oint_{|z|=1} \\frac{dz}{z} = 2\\pi i \\neq 0$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Existence of Antiderivatives"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.3",
+      "number": "4.3",
+      "title": "Antiderivative Existence",
+      "content": "Let $f$ be analytic on a domain $D$. If \n$\\displaystyle\\oint_\\gamma f(z)\\,dz = 0$ for every closed contour \n$\\gamma$ in $D$, then $f$ has an antiderivative on $D$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The proof constructs $F(z) = \\int_{z_0}^z f(\\zeta)\\,d\\zeta$ along any \npath from a fixed $z_0$ to $z$; the condition ensures this is well-defined."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Matthew 11:28--29",
+      "text": "Come to me, all who labor and are \nheavy laden, and I will give you rest. Take my yoke upon you, and learn \nfrom me."
+    },
+    {
+      "type": "quote",
+      "author": "Isaac Newton",
+      "text": "If I have seen further, it is by standing on \nthe shoulders of giants."
+    }
+  ]
+}

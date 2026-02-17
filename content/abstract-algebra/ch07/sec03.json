@@ -1,0 +1,138 @@
+{
+  "id": "abstract-algebra-ch07-sec03",
+  "title": "Ring Properties",
+  "chapter": 7,
+  "section": 3,
+  "book": "abstract-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Do not store up for yourselves treasures on earth, \nwhere moths and vermin destroy.\"*{Matthew 6:19}{*\"Zero divisors obstruct cancellation; units enable it.\"*}{Ernst Kummer}\n\n*\"In ring theory, the zero divisors are the troublemakers.\"*{— Algebraic folklore}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Different rings have different structural properties. Understanding \nthese distinctions—units, zero divisors, nilpotents—is essential for \nring theory."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Units"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Unit",
+      "content": "An element $u$ of a ring $R$ with unity is a **unit** \n(or invertible element) if there exists $v \\in R$ with $uv = vu = 1$. \nWe write $v = u^{-1}$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.2",
+      "number": "7.2",
+      "title": "Group of Units",
+      "content": "The set of all units in a ring $R$ is denoted $R^*$ or $U(R)$. It forms \na group under multiplication."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Units in various rings",
+      "problem": "- $\\Z^* = \\{1, -1\\}$\n\n- $\\Q^* = \\Q \\setminus \\{0\\}$ (all nonzero rationals)\n\n- $\\Z_n^* = U(n)$ (integers coprime to $n$)\n\n- $\\Z[i]^* = \\{1, -1, i, -i\\}$\n\n- $R[x]^* = R^*$ for any integral domain $R$ (only constant \n polynomials are units)",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Zero Divisors and Integral Domains"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Zero Divisors vs Units",
+      "content": "In a ring with unity, a zero divisor cannot be a unit.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Suppose $a$ is both a unit and a zero divisor. Then $ab = 0$ for some \n$b \\neq 0$. Multiplying by $a^{-1}$: $b = a^{-1}(ab) = a^{-1} \\cdot 0 = 0$. \nContradiction."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.3",
+      "number": "7.3",
+      "title": "Integral Domain",
+      "content": "An **integral domain** is a commutative \nring with unity $1 \\neq 0$ that has no zero divisors."
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Integral domains",
+      "problem": "- $\\Z$ is an integral domain\n\n- $\\Z_p$ is an integral domain iff $p$ is prime\n\n- $\\Z[x]$ is an integral domain\n\n- $\\Z_6$ is **not** an integral domain ($2 \\cdot 3 = 0$)",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "Cancellation in Integral Domains",
+      "content": "In an integral domain, if $ab = ac$ and $a \\neq 0$, then $b = c$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$ab = ac$ implies $a(b - c) = 0$. Since $a \\neq 0$ and there are no \nzero divisors, $b - c = 0$, so $b = c$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Nilpotent and Idempotent Elements"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.4",
+      "number": "7.4",
+      "title": "Nilpotent Element",
+      "content": "An element $a \\in R$ is **nilpotent** if $a^n = 0$ \nfor some positive integer $n$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.5",
+      "number": "7.5",
+      "title": "Idempotent Element",
+      "content": "An element $e \\in R$ is **idempotent** if \n$e^2 = e$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "Nilpotent and idempotent elements",
+      "problem": "In $\\Z_{12}$:\n\n- Nilpotent: $6^2 = 36 \\equiv 0$, so $6$ is nilpotent\n\n- Idempotent: $4^2 = 16 \\equiv 4$ and $9^2 = 81 \\equiv 9$\nThe only idempotents in an integral domain are $0$ and $1$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Find all units in $\\Z_{10}$.",
+        "Prove that $\\Z[\\sqrt{2}]$ has infinitely many units. (Hint: \n Consider $(1 + \\sqrt{2})^n$.)",
+        "Find all nilpotent elements in $\\Z_{16}$.",
+        "Prove that the sum of a unit and a nilpotent is a unit.",
+        "Show that an integral domain with finitely many elements is a \n field."
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 31:10",
+      "text": "A wife of noble character who can find? \nShe is worth far more than rubies."
+    }
+  ]
+}

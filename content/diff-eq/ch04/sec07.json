@@ -1,0 +1,373 @@
+{
+  "id": "diff-eq-ch04-sec07",
+  "title": "Mechanical Vibrations",
+  "chapter": 4,
+  "section": 7,
+  "book": "diff-eq",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "This section applies everything we have learned to the analysis of vibrating mechanical systems. The mathematics of oscillation underlies not only masses on springs but also electrical circuits, acoustic systems, bridges, and countless other engineering applications."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Spring-Mass System"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider a mass $m$ attached to a spring that obeys Hooke's Law. Let $y(t)$ denote the displacement from the equilibrium position (positive direction downward). The forces acting on the mass are:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Spring force:** $F_s = -ky$ (Hooke's Law, opposing displacement)",
+        "**Damping force:** $F_d = -\\gamma y'$ (opposing velocity)",
+        "**External force:** $F_e = F(t)$ (driving force)"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "By Newton's second law ($F = ma = my''$):"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$my'' + \\gamma y' + ky = F(t)$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "This is the **general equation of motion** for a damped, driven oscillator."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "Natural Frequency and Damping Ratio",
+      "content": "Define:\n$$\n\\omega_0 &= \\sqrt{k/m} \\quad \\text{(natural angular frequency)} \\\\\n\\zeta &= \\frac{\\gamma}{2\\sqrt{km}} = \\frac{\\gamma}{2m\\omega_0} \\quad \\text{(damping ratio)}\n$$\n\nThe equation becomes:\n$$\n\ny'' + 2\\zeta\\omega_0 y' + \\omega_0^2 y = \\frac{F(t)}{m}\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Free Undamped Vibration (Simple Harmonic Motion)"
+    },
+    {
+      "type": "paragraph",
+      "text": "When $\\gamma = 0$ (no damping) and $F(t) = 0$ (no external force):"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$my'' + ky = 0 \\quad \\text{or} \\quad y'' + \\omega_0^2 y = 0$$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Simple Harmonic Motion",
+      "content": "The general solution of $y'' + \\omega_0^2 y = 0$ is:\n\\[\ny = c_1 \\cos\\omega_0 t + c_2 \\sin\\omega_0 t = A\\cos(\\omega_0 t - \\phi)\n\\]\nwhere $A = \\sqrt{c_1^2 + c_2^2}$ is the **amplitude** and $\\phi$ is the **phase angle**.",
+      "label": "Theorem"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Period:** $T = \\frac{2\\pi}{\\omega_0} = 2\\pi\\sqrt{\\frac{m}{k}}$",
+        "**Frequency:** $f = \\frac{1}{T} = \\frac{\\omega_0}{2\\pi} = \\frac{1}{2\\pi}\\sqrt{\\frac{k}{m}}$"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": null,
+      "problem": "A 4 kg mass stretches a spring 0.1 m. Find the equation of motion if the mass is released from rest at 0.2 m below equilibrium.\n\n**Solution:** First find $k$. At equilibrium, $mg = k \\cdot 0.1$:\n\\[\nk = \\frac{mg}{0.1} = \\frac{4 \\cdot 9.8}{0.1} = 392 \\text{ N/m}\n\\]\n\nNatural frequency:\n\\[\n\\omega_0 = \\sqrt{\\frac{k}{m}} = \\sqrt{\\frac{392}{4}} = \\sqrt{98} = 7\\sqrt{2} \\text{ rad/s}\n\\]\n\nGeneral solution: $y = c_1 \\cos(7\\sqrt{2}\\,t) + c_2 \\sin(7\\sqrt{2}\\,t)$\n\nInitial conditions: $y(0) = 0.2$ m, $y'(0) = 0$ (released from rest)\n$$\ny(0) = c_1 &= 0.2 \\\\\ny'(0) = 7\\sqrt{2}\\,c_2 &= 0 \\implies c_2 = 0\n$$\n\n**Equation of motion:**\n\\[\n\\boxed{y = 0.2\\cos(7\\sqrt{2}\\,t) \\text{ meters}}\n\\]\n\nPeriod: $T = \\frac{2\\pi}{7\\sqrt{2}} \\approx 0.45$ seconds.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Free Damped Vibration"
+    },
+    {
+      "type": "paragraph",
+      "text": "When $\\gamma > 0$ but $F(t) = 0$:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$my'' + \\gamma y' + ky = 0$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The characteristic equation is $mr^2 + \\gamma r + k = 0$ with discriminant:\n\\[\n\\Delta = \\gamma^2 - 4mk\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The behavior depends on the damping ratio $\\zeta = \\gamma/(2\\sqrt{km})$:"
+    },
+    {
+      "type": "paragraph",
+      "text": "Case 1: Underdamping ($\\zeta < 1$, $\\gamma^2 < 4mk$)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Complex roots: $r = -\\frac{\\gamma}{2m} \\pm i\\omega_d$ where $\\omega_d = \\omega_0\\sqrt{1-\\zeta^2}$ is the **damped frequency**."
+    },
+    {
+      "type": "paragraph",
+      "text": "$$y = e^{-\\gamma t/(2m)}(c_1\\cos\\omega_d t + c_2\\sin\\omega_d t) = Ae^{-\\gamma t/(2m)}\\cos(\\omega_d t - \\phi)$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The system oscillates with exponentially decaying amplitude."
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": null,
+      "problem": "A 1 kg mass on a spring ($k = 10$ N/m) with damping $\\gamma = 2$ kg/s is displaced 0.5 m and given initial velocity 1 m/s downward.\n\n**Solution:**\n\\[\n\\omega_0 = \\sqrt{10} \\approx 3.16, \\quad \\zeta = \\frac{2}{2\\sqrt{10}} = \\frac{1}{\\sqrt{10}} \\approx 0.316 < 1\n\\]\n\nUnderdamped. $\\omega_d = \\sqrt{10}\\sqrt{1 - 0.1} = \\sqrt{9} = 3$ rad/s.\n\nGeneral solution: $y = e^{-t}(c_1\\cos 3t + c_2\\sin 3t)$\n\nInitial conditions: $y(0) = 0.5$, $y'(0) = 1$\n$$\ny(0) &= c_1 = 0.5 \\\\\ny'(0) &= -c_1 + 3c_2 = 1 \\implies 3c_2 = 1.5 \\implies c_2 = 0.5\n$$\n\n**Answer:**\n\\[\n\\boxed{y = 0.5e^{-t}(\\cos 3t + \\sin 3t) = \\frac{\\sqrt{2}}{2}e^{-t}\\cos(3t - \\pi/4)}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "Case 2: Critical Damping ($\\zeta = 1$, $\\gamma^2 = 4mk$)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Repeated root: $r = -\\frac{\\gamma}{2m} = -\\omega_0$"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$y = (c_1 + c_2 t)e^{-\\omega_0 t}$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The system returns to equilibrium as fast as possible without oscillating."
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": null,
+      "problem": "Design a critically damped system with $m = 2$ kg and $k = 8$ N/m.\n\n**Solution:** For critical damping: $\\gamma^2 = 4mk = 4 \\cdot 2 \\cdot 8 = 64$\n\nSo $\\gamma = 8$ kg/s.\n\nThe equation is: $2y'' + 8y' + 8y = 0$ or $y'' + 4y' + 4y = 0$\n\nCharacteristic equation: $(r + 2)^2 = 0$, so $r = -2$.\n\nGeneral solution: $y = (c_1 + c_2 t)e^{-2t}$",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "Case 3: Overdamping ($\\zeta > 1$, $\\gamma^2 > 4mk$)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Two distinct negative real roots: $r_1, r_2 < 0$"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$y = c_1 e^{r_1 t} + c_2 e^{r_2 t}$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The system returns to equilibrium without oscillating, but more slowly than critical damping."
+    },
+    {
+      "type": "example",
+      "id": "example-4.4",
+      "number": "4.4",
+      "title": null,
+      "problem": "Compare underdamped, critically damped, and overdamped responses for systems with $m = 1$, $k = 1$, initial conditions $y(0) = 1$, $y'(0) = 0$, and damping $\\gamma = 0.5$, $2$, and $4$ respectively.\n\n**Underdamped ($\\gamma = 0.5$):**\n$r = -0.25 \\pm i\\sqrt{0.9375}$\n\\[\ny = e^{-0.25t}(c_1\\cos\\omega_d t + c_2\\sin\\omega_d t), \\quad \\omega_d = \\sqrt{15}/4\n\\]\nWith ICs: oscillates while decaying.\n\n**Critical ($\\gamma = 2$):**\n$r = -1$ (repeated)\n\\[\ny = (1 + t)e^{-t}\n\\]\nFastest non-oscillatory return.\n\n**Overdamped ($\\gamma = 4$):**\n$r = -2 \\pm \\sqrt{3}$, so $r_1 \\approx -0.27$, $r_2 \\approx -3.73$\n\\[\ny = c_1 e^{-0.27t} + c_2 e^{-3.73t}\n\\]\nSlow exponential decay dominated by the slower mode.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Forced Vibration without Damping"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider $my'' + ky = F_0\\cos\\omega t$ where $\\omega \\neq \\omega_0$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Forced Undamped Response",
+      "content": "The general solution is:\n\\[\ny = c_1\\cos\\omega_0 t + c_2\\sin\\omega_0 t + \\frac{F_0/m}{\\omega_0^2 - \\omega^2}\\cos\\omega t\n\\]\n\nThe particular solution represents the **steady-state response** at the driving frequency.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-4.5",
+      "number": "4.5",
+      "title": null,
+      "problem": "Solve $y'' + 4y = 3\\cos t$ with $y(0) = 0$, $y'(0) = 0$.\n\n**Solution:** Here $\\omega_0 = 2$, $\\omega = 1$.\n\nComplementary: $y_h = c_1\\cos 2t + c_2\\sin 2t$\n\nParticular (undetermined coefficients): try $y_p = A\\cos t$\n\\[\n-A\\cos t + 4A\\cos t = 3\\cos t \\implies 3A = 3 \\implies A = 1\n\\]\n\nGeneral solution: $y = c_1\\cos 2t + c_2\\sin 2t + \\cos t$\n\nInitial conditions:\n$$\ny(0) &= c_1 + 1 = 0 \\implies c_1 = -1 \\\\\ny'(0) &= 2c_2 = 0 \\implies c_2 = 0\n$$\n\n**Answer:**\n\\[\n\\boxed{y = \\cos t - \\cos 2t}\n\\]\n\nThis can be written as $y = 2\\sin\\frac{3t}{2}\\sin\\frac{t}{2}$, showing **beats** — slow amplitude modulation.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Resonance"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.2",
+      "number": "4.2",
+      "title": "Resonance",
+      "content": "**Resonance** occurs when the driving frequency equals the natural frequency ($\\omega = \\omega_0$) in an undamped system."
+    },
+    {
+      "type": "paragraph",
+      "text": "For $y'' + \\omega_0^2 y = F_0\\cos\\omega_0 t$:"
+    },
+    {
+      "type": "paragraph",
+      "text": "The forcing term matches the complementary solution, so we need the modification rule:"
+    },
+    {
+      "type": "paragraph",
+      "text": "Try $y_p = t(A\\cos\\omega_0 t + B\\sin\\omega_0 t)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "After calculation: $y_p = \\frac{F_0}{2m\\omega_0}t\\sin\\omega_0 t$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.3",
+      "number": "4.3",
+      "title": "Resonance Response",
+      "content": "The general solution of $y'' + \\omega_0^2 y = (F_0/m)\\cos\\omega_0 t$ is:\n$$\n\ny = c_1\\cos\\omega_0 t + c_2\\sin\\omega_0 t + \\frac{F_0}{2m\\omega_0}t\\sin\\omega_0 t\n$$\n\nThe amplitude grows linearly with time — unbounded oscillation.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-4.6",
+      "number": "4.6",
+      "title": "Resonance",
+      "problem": "Solve $y'' + 9y = 2\\cos 3t$ with $y(0) = 0$, $y'(0) = 0$.\n\n**Solution:** Here $\\omega_0 = 3 = \\omega$ (resonance!).\n\nParticular solution (with modification): try $y_p = t(A\\cos 3t + B\\sin 3t)$\n\nComputing:\n$$\ny_p' &= (A\\cos 3t + B\\sin 3t) + t(-3A\\sin 3t + 3B\\cos 3t) \\\\\ny_p'' &= (-3A\\sin 3t + 3B\\cos 3t) + (-3A\\sin 3t + 3B\\cos 3t) + t(-9A\\cos 3t - 9B\\sin 3t) \\\\\n&= -6A\\sin 3t + 6B\\cos 3t - 9ty_p/t\n$$\n\nWait, let me be more careful:\n\\[\ny_p'' = 6B\\cos 3t - 6A\\sin 3t - 9t(A\\cos 3t + B\\sin 3t)\n\\]\n\nSubstituting:\n\\[\ny_p'' + 9y_p = 6B\\cos 3t - 6A\\sin 3t = 2\\cos 3t\n\\]\n\nSo $6B = 2 \\implies B = 1/3$ and $A = 0$.\n\n$y_p = \\frac{t}{3}\\sin 3t$\n\nGeneral solution: $y = c_1\\cos 3t + c_2\\sin 3t + \\frac{t}{3}\\sin 3t$\n\nInitial conditions: $c_1 = 0$, $c_2 = 0$.\n\n**Answer:**\n\\[\n\\boxed{y = \\frac{t}{3}\\sin 3t}\n\\]\n\nThe amplitude $t/3$ grows without bound!",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Forced Vibration with Damping"
+    },
+    {
+      "type": "paragraph",
+      "text": "The most realistic case: $my'' + \\gamma y' + ky = F_0\\cos\\omega t$ with $\\gamma > 0$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.4",
+      "number": "4.4",
+      "title": "Damped Forced Response",
+      "content": "For $y'' + 2\\zeta\\omega_0 y' + \\omega_0^2 y = (F_0/m)\\cos\\omega t$:\n\nThe particular (steady-state) solution is:\n$$\n\ny_p = \\frac{F_0/m}{\\sqrt{(\\omega_0^2 - \\omega^2)^2 + (2\\zeta\\omega_0\\omega)^2}}\\cos(\\omega t - \\phi)\n$$\nwhere\n\\[\n\\tan\\phi = \\frac{2\\zeta\\omega_0\\omega}{\\omega_0^2 - \\omega^2}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Try $y_p = A\\cos\\omega t + B\\sin\\omega t$.\n\nAfter substituting and matching coefficients:\n$$\n(\\omega_0^2 - \\omega^2)A + 2\\zeta\\omega_0\\omega B &= F_0/m \\\\\n-2\\zeta\\omega_0\\omega A + (\\omega_0^2 - \\omega^2)B &= 0\n$$\n\nSolving this system and converting to amplitude-phase form yields the result."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.3",
+      "number": "4.3",
+      "title": "Amplitude Response and Phase",
+      "content": "The **amplitude response** is:\n\\[\n|H(\\omega)| = \\frac{1}{\\sqrt{(\\omega_0^2 - \\omega^2)^2 + (2\\zeta\\omega_0\\omega)^2}}\n\\]\n\nThe **phase lag** $\\phi$ represents how much the response lags behind the forcing."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.5",
+      "number": "4.5",
+      "title": "Damped Resonance",
+      "content": "With damping present, the amplitude is bounded. Maximum amplitude occurs near $\\omega = \\omega_0\\sqrt{1 - 2\\zeta^2}$ (for $\\zeta < 1/\\sqrt{2}$) and equals:\n\\[\n|H|_{\\max} = \\frac{1}{2\\zeta\\omega_0^2\\sqrt{1-\\zeta^2}}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-4.7",
+      "number": "4.7",
+      "title": null,
+      "problem": "A system with $m = 1$, $k = 100$, $\\gamma = 2$ is driven by $F(t) = 10\\cos\\omega t$. Find the steady-state amplitude as a function of $\\omega$ and identify the resonant frequency.\n\n**Solution:**\n\\[\n\\omega_0 = 10, \\quad \\zeta = \\frac{2}{2\\sqrt{100}} = 0.1\n\\]\n\nAmplitude:\n\\[\nA(\\omega) = \\frac{10}{\\sqrt{(100 - \\omega^2)^2 + (2\\omega)^2}} = \\frac{10}{\\sqrt{(100-\\omega^2)^2 + 4\\omega^2}}\n\\]\n\nResonant frequency: $\\omega_r = 10\\sqrt{1 - 2(0.01)} = 10\\sqrt{0.98} \\approx 9.9$ rad/s\n\nAt resonance: $A_{\\max} = \\frac{10}{2 \\cdot 0.1 \\cdot 100 \\cdot \\sqrt{0.99}} \\approx 0.503$ m\n\nAt $\\omega = 0$: $A = 10/100 = 0.1$ m (static deflection)\n\nAt $\\omega = \\omega_0 = 10$: $A = 10/20 = 0.5$ m",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Transient and Steady-State"
+    },
+    {
+      "type": "paragraph",
+      "text": "The complete solution is:\n\\[\ny = y_h + y_p = \\underbrace{e^{-\\zeta\\omega_0 t}(c_1\\cos\\omega_d t + c_2\\sin\\omega_d t)}_{\\text{transient}} + \\underbrace{A\\cos(\\omega t - \\phi)}_{\\text{steady-state}}\n\\]"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Transient:** Dies out as $t \\to \\infty$ due to damping",
+        "**Steady-state:** Persists indefinitely, oscillating at the driving frequency"
+      ]
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.6",
+      "number": "4.6",
+      "title": "Long-Term Behavior",
+      "content": "For any initial conditions, a damped forced oscillator eventually settles into steady-state motion at the driving frequency:\n\\[\n\\lim_{t \\to \\infty} y(t) = A\\cos(\\omega t - \\phi)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Summary of Vibration Types"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**System Type**",
+        "**Equation**",
+        "**Behavior**"
+      ],
+      "rows": [
+        [
+          "Free undamped",
+          "$my'' + ky = 0$",
+          "Simple harmonic motion"
+        ],
+        [
+          "Free underdamped",
+          "$my'' + \\gamma y' + ky = 0$, $\\gamma^2 < 4mk$",
+          "Decaying oscillation"
+        ],
+        [
+          "Free critically damped",
+          "$my'' + \\gamma y' + ky = 0$, $\\gamma^2 = 4mk$",
+          "Fastest non-oscillatory decay"
+        ],
+        [
+          "Free overdamped",
+          "$my'' + \\gamma y' + ky = 0$, $\\gamma^2 > 4mk$",
+          "Slow exponential decay"
+        ],
+        [
+          "Forced undamped",
+          "$my'' + ky = F\\cos\\omega t$",
+          "Beats or resonance"
+        ],
+        [
+          "Forced damped",
+          "$my'' + \\gamma y' + ky = F\\cos\\omega t$",
+          "Transient + steady-state"
+        ]
+      ],
+      "alignment": [
+        "center",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ]
+}

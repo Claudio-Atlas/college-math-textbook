@@ -1,0 +1,387 @@
+{
+  "id": "vol3-ch12-sec06",
+  "title": "Quadric Surfaces",
+  "chapter": 12,
+  "section": 6,
+  "book": "vol3",
+  "epigraph": {
+    "text": "For since the creation of the world God's invisible qualities—his eternal power and divine nature—have been clearly seen, being understood from what has been made.",
+    "reference": "Romans 1:20"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Just as conic sections (parabolas, ellipses, hyperbolas) are the curves defined by second-degree equations in two variables, **quadric surfaces** are the surfaces defined by second-degree equations in three variables. These surfaces—ellipsoids, hyperboloids, paraboloids, and cones—appear throughout physics, engineering, and architecture. Learning to recognize and sketch them is essential preparation for the multiple integrals of Chapter 15."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Cylinders"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.1",
+      "number": "12.1",
+      "title": "Cylinder",
+      "content": "A **cylinder** is a surface consisting of all lines (called **rulings**) parallel to a given line and passing through a given plane curve (called the **directrix**)."
+    },
+    {
+      "type": "paragraph",
+      "text": "In our context, a cylinder typically has its rulings parallel to one of the coordinate axes, and its equation involves only the other two variables."
+    },
+    {
+      "type": "example",
+      "id": "example-12.1",
+      "number": "12.1",
+      "title": "Recognizing cylinders",
+      "problem": "Describe the surface $x^2 + y^2 = 4$.",
+      "solution": "In the $xy$-plane, this is a circle of radius $2$ centered at the origin. Since $z$ does not appear in the equation, the surface consists of all points $(x, y, z)$ where $(x, y)$ lies on this circle—for any value of $z$. This is a **circular cylinder** of radius $2$ with axis along the $z$-axis."
+    },
+    {
+      "type": "example",
+      "id": "example-12.2",
+      "number": "12.2",
+      "title": "Parabolic cylinder",
+      "problem": "Describe the surface $z = x^2$.",
+      "solution": "In the $xz$-plane, this is a parabola. Since $y$ is absent, the surface extends infinitely in the $y$-direction: a **parabolic cylinder** with rulings parallel to the $y$-axis."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Traces"
+    },
+    {
+      "type": "paragraph",
+      "text": "The key technique for understanding quadric surfaces is analyzing their **traces**—the curves obtained by intersecting the surface with planes parallel to the coordinate planes."
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.2",
+      "number": "12.2",
+      "title": "Traces",
+      "content": "The **traces** of a surface are:\n\n- The $xy$-trace: the intersection with planes $z = k$ (horizontal cross-sections)\n\n- The $xz$-trace: the intersection with planes $y = k$\n\n- The $yz$-trace: the intersection with planes $x = k$"
+    },
+    {
+      "type": "paragraph",
+      "text": "By sketching several traces and connecting them, we can visualize the surface."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Ellipsoid"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.3",
+      "number": "12.3",
+      "title": "Ellipsoid",
+      "content": "An **ellipsoid** is the surface\n\\[\n \\frac{x^2}{a^2} + \\frac{y^2}{b^2} + \\frac{z^2}{c^2} = 1.\n\\]\nThe numbers $a$, $b$, $c$ are the **semi-axes**. If $a = b = c$, the ellipsoid is a sphere."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Traces:**"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$z = k$: ellipses $\\displaystyle\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1 - \\frac{k^2}{c^2}$ (for $|k| < c$)",
+        "$y = k$: ellipses in the $xz$-plane",
+        "$x = k$: ellipses in the $yz$-plane"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "All traces are ellipses (or degenerate to points or empty sets at the extreme values)."
+    },
+    {
+      "type": "example",
+      "id": "example-12.3",
+      "number": "12.3",
+      "title": "Sketching an ellipsoid",
+      "problem": "Sketch the ellipsoid $\\dfrac{x^2}{9} + \\dfrac{y^2}{16} + \\dfrac{z^2}{4} = 1$.",
+      "solution": "The semi-axes are $a = 3$, $b = 4$, $c = 2$. The surface extends from $x = -3$ to $x = 3$, from $y = -4$ to $y = 4$, and from $z = -2$ to $z = 2$.\n\n**Trace at $z = 0$:** $\\dfrac{x^2}{9} + \\dfrac{y^2}{16} = 1$—an ellipse with semi-axes $3$ and $4$.\n\n**Trace at $z = 1$:** $\\dfrac{x^2}{9} + \\dfrac{y^2}{16} = \\dfrac{3}{4}$—a smaller ellipse.\n\n**Trace at $z = 2$:** a single point $(0, 0, 2)$.\n\nThe surface is like a flattened sphere, widest in the $y$-direction."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Hyperboloid of One Sheet"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.4",
+      "number": "12.4",
+      "title": "Hyperboloid of One Sheet",
+      "content": "A **hyperboloid of one sheet** has the form\n\\[\n \\frac{x^2}{a^2} + \\frac{y^2}{b^2} - \\frac{z^2}{c^2} = 1.\n\\]\n(One variable appears with a negative sign.)"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Traces:**"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$z = k$: ellipses $\\displaystyle\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1 + \\frac{k^2}{c^2}$—always non-empty",
+        "$x = 0$: hyperbola $\\displaystyle\\frac{y^2}{b^2} - \\frac{z^2}{c^2} = 1$",
+        "$y = 0$: hyperbola $\\displaystyle\\frac{x^2}{a^2} - \\frac{z^2}{c^2} = 1$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The surface is connected (one piece) and resembles a cooling tower or hourglass."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Hyperboloid of Two Sheets"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.5",
+      "number": "12.5",
+      "title": "Hyperboloid of Two Sheets",
+      "content": "A **hyperboloid of two sheets** has the form\n\\[\n -\\frac{x^2}{a^2} - \\frac{y^2}{b^2} + \\frac{z^2}{c^2} = 1.\n\\]\n(Two variables appear with negative signs.)"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Traces:**"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$z = k$ (for $|k| > c$): ellipses",
+        "$z = k$ (for $|k| < c$): empty (no intersection)",
+        "Vertical traces: hyperbolas"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The surface consists of two separate pieces (\"sheets\"), one above $z = c$ and one below $z = -c$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Cone"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.6",
+      "number": "12.6",
+      "title": "Elliptic Cone",
+      "content": "An **elliptic cone** has the form\n\\[\n \\frac{x^2}{a^2} + \\frac{y^2}{b^2} = \\frac{z^2}{c^2}.\n\\]\nIf $a = b$, it is a **circular cone**."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Traces:**"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$z = k \\neq 0$: ellipses that grow with $|k|$",
+        "$z = 0$: a single point (the vertex)",
+        "Vertical traces through the origin: pairs of lines (generators of the cone)"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The cone is the boundary between the hyperboloid of one sheet (if we add $1$ to the right side) and the hyperboloid of two sheets (if we subtract $1$)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Elliptic Paraboloid"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.7",
+      "number": "12.7",
+      "title": "Elliptic Paraboloid",
+      "content": "An **elliptic paraboloid** has the form\n\\[\n z = \\frac{x^2}{a^2} + \\frac{y^2}{b^2}.\n\\]\nIf $a = b$, it is a **circular paraboloid** (paraboloid of revolution)."
+    },
+    {
+      "type": "paragraph",
+      "text": "**Traces:**"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$z = k > 0$: ellipses that grow with $k$",
+        "$z < 0$: no intersection",
+        "$y = 0$: parabola $z = x^2/a^2$",
+        "$x = 0$: parabola $z = y^2/b^2$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The surface opens upward like a bowl or satellite dish."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Hyperbolic Paraboloid"
+    },
+    {
+      "type": "definition",
+      "id": "definition-12.8",
+      "number": "12.8",
+      "title": "Hyperbolic Paraboloid",
+      "content": "A **hyperbolic paraboloid** (or **saddle surface**) has the form\n\\[\n z = \\frac{x^2}{a^2} - \\frac{y^2}{b^2}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Traces:**"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$z = k > 0$: hyperbolas opening in the $x$-direction",
+        "$z = k < 0$: hyperbolas opening in the $y$-direction",
+        "$z = 0$: two intersecting lines $y = \\pm(b/a)x$",
+        "$y = 0$: parabola $z = x^2/a^2$ opening upward",
+        "$x = 0$: parabola $z = -y^2/b^2$ opening downward"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "The surface resembles a saddle or a Pringles chip—curved upward in one direction and downward in the perpendicular direction."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Summary of Quadric Surfaces"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Surface**",
+        "**Equation**",
+        "**Key Features**"
+      ],
+      "rows": [
+        [
+          "Ellipsoid",
+          "$\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} + \\dfrac{z^2}{c^2} = 1$",
+          "Bounded, all traces ellipses"
+        ],
+        [
+          "Hyperboloid (1 sheet)",
+          "$\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} - \\dfrac{z^2}{c^2} = 1$",
+          "Connected, \"waist\" at $z = 0$"
+        ],
+        [
+          "Hyperboloid (2 sheets)",
+          "$-\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} + \\dfrac{z^2}{c^2} = 1$",
+          "Two pieces, gap at $|z| < c$"
+        ],
+        [
+          "Elliptic Cone",
+          "$\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = \\dfrac{z^2}{c^2}$",
+          "Vertex at origin, two nappes"
+        ],
+        [
+          "Elliptic Paraboloid",
+          "$z = \\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2}$",
+          "Opens upward, bowl shape"
+        ],
+        [
+          "Hyperbolic Paraboloid",
+          "$z = \\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2}$",
+          "Saddle, opens up and down"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "left",
+        "left"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Identifying Quadric Surfaces"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-12.6",
+      "number": null,
+      "title": "Identifying Quadric Surfaces",
+      "content": "1. Put the equation in standard form (complete the square if needed)\n\n2. Count the squared terms and their signs:\n itemize\n\n3. Three positive squared terms $= 1$: Ellipsoid\n\n4. Two positive, one negative $= 1$: Hyperboloid of one sheet\n\n5. One positive, two negative $= 1$: Hyperboloid of two sheets\n\n6. Two positive $=$ one linear: Elliptic paraboloid\n\n7. One positive minus one positive $=$ linear: Hyperbolic paraboloid\n\n8. Two positive $=$ one squared: Cone\n itemize\n\n9. Identify center/vertex and axis of symmetry from the standard form"
+    },
+    {
+      "type": "example",
+      "id": "example-12.4",
+      "number": "12.4",
+      "title": "Identifying a quadric",
+      "problem": "Identify and sketch: $4x^2 - y^2 + z^2 + 8x + 2z + 1 = 0$.",
+      "solution": "Complete the square:\n$$\n 4(x^2 + 2x) - y^2 + (z^2 + 2z) &= -1 \\\\\n 4(x^2 + 2x + 1) - y^2 + (z^2 + 2z + 1) &= -1 + 4 + 1 \\\\\n 4(x + 1)^2 - y^2 + (z + 1)^2 &= 4\n$$\nDividing by 4:\n\\[\n (x + 1)^2 - \\frac{y^2}{4} + \\frac{(z + 1)^2}{4} = 1.\n\\]\nRewriting: $\\dfrac{(x+1)^2}{1} + \\dfrac{(z+1)^2}{4} - \\dfrac{y^2}{4} = 1$.\n\nThis is a **hyperboloid of one sheet** centered at $(-1, 0, -1)$ with axis along the $y$-direction."
+    },
+    {
+      "type": "example",
+      "id": "example-12.5",
+      "number": "12.5",
+      "title": "Sketching a hyperbolic paraboloid",
+      "problem": "Sketch the surface $z = x^2 - y^2$ by analyzing its traces.",
+      "solution": "**Traces:**\n\n- $z = 0$: $x^2 = y^2$, which gives $y = \\pm x$—two intersecting lines through the origin.\n\n- $z = 1$: $x^2 - y^2 = 1$—a hyperbola opening along the $x$-axis.\n\n- $z = -1$: $x^2 - y^2 = -1$, or $y^2 - x^2 = 1$—a hyperbola opening along the $y$-axis.\n\n- $x = 0$: $z = -y^2$—a parabola opening downward in the $yz$-plane.\n\n- $y = 0$: $z = x^2$—a parabola opening upward in the $xz$-plane.\n\nThe surface curves upward in the $x$-direction and downward in the $y$-direction, creating a saddle shape. At the origin, it's a saddle point—neither a local maximum nor minimum.\n\nThis surface appears in architecture (some modern roofs) and in the study of critical points of functions of two variables."
+    },
+    {
+      "type": "example",
+      "id": "example-12.6",
+      "number": "12.6",
+      "title": "Volume of a region bounded by quadrics",
+      "problem": "Find the volume enclosed between the paraboloid $z = x^2 + y^2$ and the plane $z = 4$.",
+      "solution": "The intersection occurs where $x^2 + y^2 = 4$—a circle of radius 2 in the plane $z = 4$.\n\nThe volume can be computed as a double integral:\n\\[\n V = \\iint_D (4 - (x^2 + y^2))\\, dA,\n\\]\nwhere $D$ is the disk $x^2 + y^2 \\leq 4$.\n\nConverting to polar coordinates:\n$$\n V &= \\int_0^{2\\pi} \\int_0^2 (4 - r^2) \\cdot r\\, dr\\, d\\theta \\\\\n &= 2\\pi \\int_0^2 (4r - r^3)\\, dr \\\\\n &= 2\\pi \\left[ 2r^2 - \\frac{r^4}{4} \\right]_0^2 \\\\\n &= 2\\pi (8 - 4) = 8\\pi.\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-12.7",
+      "number": "12.7",
+      "title": "Cross-sections of an ellipsoid",
+      "problem": "An egg can be approximated by an ellipsoid. If an egg has semi-axes $a = 3$ cm, $b = 2$ cm, $c = 2$ cm, find the area of the cross-section through its center perpendicular to the longest axis.",
+      "solution": "The ellipsoid is $\\dfrac{x^2}{9} + \\dfrac{y^2}{4} + \\dfrac{z^2}{4} = 1$.\n\nThe cross-section at $x = 0$ (perpendicular to the longest axis) is:\n\\[\n \\frac{y^2}{4} + \\frac{z^2}{4} = 1 \\implies y^2 + z^2 = 4.\n\\]\n\nThis is a circle of radius 2, with area $\\pi r^2 = 4\\pi \\approx 12.57$ cm$^2$."
+    },
+    {
+      "type": "historical",
+      "id": "historical-12.6",
+      "number": null,
+      "title": "Apollonius of Perga (c. 262--190 BCE)",
+      "content": "The study of conic sections—and by extension, quadric surfaces—traces back to Apollonius of Perga, whose eight-volume work *Conics* systematically analyzed parabolas, ellipses, and hyperbolas. Apollonius introduced the names we still use today. His work was so thorough that it remained the definitive treatment for nearly two millennia, until the advent of analytic geometry in the 17th century."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Genesis 1:6--7",
+      "text": "And God said, \"Let there be an expanse in the midst of the waters, and let it separate the waters from the waters.\" And God made the expanse."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 104:5--6",
+      "text": "He set the earth on its foundations, so that it should never be moved. You covered it with the deep as with a garment; the waters stood above the mountains."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 2:6",
+      "text": "For the Lord gives wisdom; from his mouth come knowledge and understanding."
+    },
+    {
+      "type": "scripture",
+      "reference": "Job 38:4--5",
+      "text": "Where were you when I laid the foundation of the earth? Tell me, if you have understanding. Who determined its measurements—surely you know!"
+    },
+    {
+      "type": "quote",
+      "author": "Leonardo da Vinci",
+      "text": "Simplicity is the ultimate sophistication."
+    },
+    {
+      "type": "quote",
+      "author": "Archimedes",
+      "text": "Give me a lever long enough and a fulcrum on which to place it, and I shall move the world."
+    }
+  ]
+}

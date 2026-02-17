@@ -1,0 +1,123 @@
+{
+  "id": "discrete-math-ch06-sec01",
+  "title": "Basic Counting Principles",
+  "chapter": 6,
+  "section": 1,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Are not five sparrows sold for two pennies? Yet not \none of them is forgotten by God.\"*{Luke 12:6}{The art of counting is the art of seeing patterns in numbers.}{Blaise Pascal}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Counting is more subtle than it appears. Simple questions like \"how \nmany?\" require careful analysis to answer correctly."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Product Rule"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Product Rule",
+      "content": "If a procedure consists of $k$ stages, with $n_1$ ways to perform stage 1, \n$n_2$ ways to perform stage 2 (regardless of how stage 1 was done), and \nso on, then the total number of ways is:\n\\[ n_1 \\times n_2 \\times \\cdots \\times n_k \\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "License plates",
+      "problem": "A license plate has 3 letters followed by 3 digits. How many plates are \npossible?",
+      "solution": "26 choices for each letter, 10 for each digit.\n\\[ 26 \\times 26 \\times 26 \\times 10 \\times 10 \\times 10 = 26^3 \\times 10^3 = 17{,}576{,}000 \\]"
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Bit strings",
+      "problem": "How many 8-bit strings are there?",
+      "solution": "Each bit has 2 choices. $2^8 = 256$ strings."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Sum Rule"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Sum Rule",
+      "content": "If a task can be done in one of $k$ mutually exclusive ways, with $n_i$ \nchoices for way $i$, then the total number of ways is:\n\\[ n_1 + n_2 + \\cdots + n_k \\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.3",
+      "number": "6.3",
+      "title": "Faculty members",
+      "problem": "A committee must choose one representative from the math department \n(8 faculty) or the CS department (12 faculty). How many choices?",
+      "solution": "$8 + 12 = 20$ choices."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Subtraction Rule (Inclusion-Exclusion)"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.3",
+      "number": "6.3",
+      "title": "Subtraction Rule",
+      "content": "If a task can be done in $n$ ways, but $m$ of those are \"bad,\" then the \nnumber of \"good\" ways is $n - m$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.4",
+      "number": "6.4",
+      "title": "Passwords with at least one digit",
+      "problem": "How many 6-character passwords (letters and digits) contain at least one \ndigit?",
+      "solution": "Total passwords: $36^6$ (26 letters + 10 digits per position).\n\nAll-letter passwords: $26^6$.\n\nPasswords with at least one digit: $36^6 - 26^6 = 1{,}867{,}866{,}560$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Division Rule"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.4",
+      "number": "6.4",
+      "title": "Division Rule",
+      "content": "If a task can be done in $n$ ways, but each outcome is counted exactly \n$d$ times, then the number of distinct outcomes is $n/d$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.5",
+      "number": "6.5",
+      "title": "Handshakes",
+      "problem": "In a room of $n$ people, everyone shakes hands once with everyone else. \nHow many handshakes?",
+      "solution": "Each person shakes $n-1$ hands: $n(n-1)$ \"handshake events.\"\n\nBut each handshake involves 2 people, so we've counted each twice.\n\nHandshakes: $\\frac{n(n-1)}{2}$."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-6.1",
+      "number": null,
+      "title": "Counting Approach",
+      "content": "1. Clearly define what you're counting.\n\n2. Break the problem into stages or cases.\n\n3. Apply the product rule (sequential steps) or sum rule (alternatives).\n\n4. Watch for overcounting and use subtraction or division to correct."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Matthew 10:30",
+      "text": "And even the very hairs of your head are \nall numbered."
+    }
+  ]
+}

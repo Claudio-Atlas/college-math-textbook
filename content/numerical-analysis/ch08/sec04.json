@@ -1,0 +1,217 @@
+{
+  "id": "numerical-analysis-ch08-sec04",
+  "title": "Galerkin Methods and Finite Elements",
+  "chapter": 8,
+  "section": 4,
+  "book": "numerical-analysis",
+  "objectives": [
+    "Understand the weak formulation of boundary value problems",
+    "Apply the Galerkin method with various basis functions",
+    "Develop the finite element method as a Galerkin method with local basis",
+    "Construct element stiffness matrices and assemble global systems"
+  ],
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Weighted Residual Methods"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **method of weighted residuals** provides a unifying framework for many numerical methods. Given a BVP $\\mathcal{L}[y] = f$ with an approximate solution $y_N$, the **residual** is:\n\\[\nR(x) = \\mathcal{L}[y_N](x) - f(x)\n\\]"
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.1",
+      "number": "8.1",
+      "title": "Method of Weighted Residuals",
+      "content": "Choose $N-1$ **test functions** (or weight functions) $\\{w_1, w_2, \\ldots, w_{N-1}\\}$ and require:\n\\[\n\\int_a^b w_i(x) R(x)\\, dx = 0, \\quad i = 1, \\ldots, N-1\n\\]\nThe residual is forced to be orthogonal to each test function."
+    },
+    {
+      "type": "paragraph",
+      "text": "Different choices of test functions yield different methods:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Collocation:** $w_i(x) = \\delta(x - x_i)$ (Dirac delta) $\\Rightarrow R(x_i) = 0$",
+        "**Least squares:** $w_i = \\partial R/\\partial c_i$ (minimizes $\\int R^2\\, dx$)",
+        "**Galerkin:** $w_i = \\phi_i$ (test functions = trial functions)"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Galerkin Method"
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.2",
+      "number": "8.2",
+      "title": "Galerkin Method",
+      "content": "Let $y_N(x) = \\sum_{j=1}^{N-1} c_j \\phi_j(x)$ where each $\\phi_j$ satisfies homogeneous boundary conditions. The **Galerkin method** requires:\n\\[\n\\int_a^b \\phi_i(x) \\big[\\mathcal{L}[y_N](x) - f(x)\\big]\\, dx = 0, \\quad i = 1, \\ldots, N-1\n\\]\nThe trial functions and test functions are identical: $w_i = \\phi_i$."
+    },
+    {
+      "type": "paragraph",
+      "text": "For a linear operator $\\mathcal{L}$, the Galerkin equations become a linear system for the coefficients $c_j$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Galerkin with Sine Basis",
+      "problem": "Solve $y'' + 1 = 0$ with $y(0) = y(\\pi) = 0$ using a single sine function.\n\n**Solution.** Let $y_1(x) = c_1 \\sin x$. The residual is:\n\\[\nR(x) = y_1''(x) + 1 = -c_1 \\sin x + 1\n\\]\n\nGalerkin condition with $\\phi_1(x) = \\sin x$:\n\\[\n\\int_0^\\pi \\sin x \\cdot (-c_1 \\sin x + 1)\\, dx = 0\n\\]\n\n\\[\n-c_1 \\int_0^\\pi \\sin^2 x\\, dx + \\int_0^\\pi \\sin x\\, dx = 0\n\\]\n\n\\[\n-c_1 \\cdot \\frac{\\pi}{2} + 2 = 0 \\quad \\Rightarrow \\quad c_1 = \\frac{4}{\\pi}\n\\]\n\n**Solution:** $y_1(x) = \\frac{4}{\\pi}\\sin x \\approx 1.273\\sin x$.\n\n**Exact solution:** $y = \\frac{x(\\pi - x)}{2}$.\n\nAt $x = \\pi/2$: $y_1(\\pi/2) = \\frac{4}{\\pi} \\approx 1.273$ vs.\\ exact $y(\\pi/2) = \\frac{\\pi^2}{8} \\approx 1.234$. Error $\\approx 3\\%$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Weak Formulation"
+    },
+    {
+      "type": "paragraph",
+      "text": "For second-order BVPs, integration by parts transfers a derivative from the trial function to the test function, reducing smoothness requirements."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.3",
+      "number": "8.3",
+      "title": "Weak Form of BVP",
+      "content": "For $-y'' + q(x)y = f(x)$ with $y(a) = y(b) = 0$, the **weak form** is: Find $y$ such that for all test functions $v$ with $v(a) = v(b) = 0$:\n\\[\n\\int_a^b y'(x) v'(x)\\, dx + \\int_a^b q(x) y(x) v(x)\\, dx = \\int_a^b f(x) v(x)\\, dx\n\\]\nThis is obtained by multiplying by $v$, integrating, and using integration by parts."
+    },
+    {
+      "type": "proof",
+      "content": "Start with $-y'' + qy = f$. Multiply by test function $v$ and integrate:\n\\[\n-\\int_a^b y''(x) v(x)\\, dx + \\int_a^b q(x) y(x) v(x)\\, dx = \\int_a^b f(x) v(x)\\, dx\n\\]\n\nIntegration by parts on the first term:\n\\[\n-\\int_a^b y'' v\\, dx = -[y'v]_a^b + \\int_a^b y' v'\\, dx = \\int_a^b y' v'\\, dx\n\\]\nsince $v(a) = v(b) = 0$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.1",
+      "number": "8.1",
+      "title": "Weak Solutions",
+      "content": "A function $y$ satisfying the weak form with $y'$ square-integrable is called a **weak solution**. If $y$ is also twice differentiable, it satisfies the strong (classical) form of the BVP.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Finite Element Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "The **finite element method** (FEM) is a Galerkin method using piecewise polynomial basis functions with *local support*."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.4",
+      "number": "8.4",
+      "title": "Hat Functions",
+      "content": "On a mesh $a = x_0 < x_1 < \\cdots < x_N = b$, the **hat function** (or tent function) $\\phi_j$ is:\n\\[\n\\phi_j(x) = \\begin{cases}\n\\dfrac{x - x_{j-1}}{x_j - x_{j-1}} & x \\in [x_{j-1}, x_j] \\\\[2ex]\n\\dfrac{x_{j+1} - x}{x_{j+1} - x_j} & x \\in [x_j, x_{j+1}] \\\\[1ex]\n0 & \\text{otherwise}\n\\end{cases}\n\\]\nKey properties:\n\n- $\\phi_j(x_i) = \\delta_{ij}$ (interpolation property)\n\n- $\\phi_j$ is nonzero only on $[x_{j-1}, x_{j+1}]$ (local support)\n\n- $\\sum_{j=0}^N \\phi_j(x) = 1$ (partition of unity)"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.2",
+      "number": "8.2",
+      "title": "Properties of Hat Function Basis",
+      "content": "The finite element approximation $y_N(x) = \\sum_{j=0}^N c_j \\phi_j(x)$ satisfies $y_N(x_j) = c_j$, so the coefficients are the nodal values. The Galerkin equations involve only neighboring nodes due to local support.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Element Stiffness Matrix"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider the model problem $-y'' = f$ with $y(0) = y(1) = 0$ on a uniform mesh with $h = 1/N$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.5",
+      "number": "8.5",
+      "title": "Stiffness Matrix",
+      "content": "The weak form is $\\int_0^1 y'v'\\, dx = \\int_0^1 fv\\, dx$. With $y_N = \\sum_{j=1}^{N-1} c_j\\phi_j$ and $v = \\phi_i$:\n\\[\n\\sum_{j=1}^{N-1} c_j \\int_0^1 \\phi_j'(x)\\phi_i'(x)\\, dx = \\int_0^1 f(x)\\phi_i(x)\\, dx\n\\]\nThis is the linear system $K\\mathbf{c} = \\mathbf{f}$ where $K$ is the **stiffness matrix**:\n\\[\nK_{ij} = \\int_0^1 \\phi_j'(x)\\phi_i'(x)\\, dx\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.3",
+      "number": "8.3",
+      "title": "Hat Function Stiffness Matrix",
+      "content": "For hat functions on a uniform mesh with spacing $h$:\n\\[\nK_{ij} = \\begin{cases}\n\\dfrac{2}{h} & i = j \\\\[1ex]\n-\\dfrac{1}{h} & |i - j| = 1 \\\\[1ex]\n0 & |i - j| > 1\n\\end{cases}\n\\]\nThe stiffness matrix is tridiagonal:\n\\[\nK = \\frac{1}{h}\\begin{pmatrix}\n2 & -1 & 0 & \\cdots & 0 \\\\\n-1 & 2 & -1 & \\cdots & 0 \\\\\n0 & -1 & 2 & \\ddots & \\vdots \\\\\n\\vdots & \\ddots & \\ddots & \\ddots & -1 \\\\\n0 & \\cdots & 0 & -1 & 2\n\\end{pmatrix}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "For adjacent nodes $j$ and $j+1$ on $[x_j, x_{j+1}]$:\n\\[\n\\phi_j'(x) = -\\frac{1}{h}, \\quad \\phi_{j+1}'(x) = \\frac{1}{h}\n\\]\nSo $K_{j,j+1} = \\int_{x_j}^{x_{j+1}} \\left(-\\frac{1}{h}\\right)\\left(\\frac{1}{h}\\right)dx = -\\frac{1}{h^2} \\cdot h = -\\frac{1}{h}$.\n\nFor diagonal entries:\n\\[\nK_{jj} = \\int_{x_{j-1}}^{x_j} \\frac{1}{h^2}\\, dx + \\int_{x_j}^{x_{j+1}} \\frac{1}{h^2}\\, dx = \\frac{2}{h}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "Finite Element Solution",
+      "problem": "Solve $-y'' = 1$ with $y(0) = y(1) = 0$ using FEM with $N = 4$ elements.\n\n**Solution.** Mesh: $x_j = j/4$ for $j = 0, \\ldots, 4$, $h = 0.25$.\n\nThe stiffness matrix for interior nodes $j = 1, 2, 3$:\n\\[\nK = 4\\begin{pmatrix} 2 & -1 & 0 \\\\ -1 & 2 & -1 \\\\ 0 & -1 & 2 \\end{pmatrix}\n\\]\n\nThe load vector: $f_i = \\int_0^1 1 \\cdot \\phi_i\\, dx = h = 0.25$.\n\\[\n\\mathbf{f} = \\begin{pmatrix} 0.25 \\\\ 0.25 \\\\ 0.25 \\end{pmatrix}\n\\]\n\nSolving $K\\mathbf{c} = \\mathbf{f}$:\n\\[\n\\begin{pmatrix} 8 & -4 & 0 \\\\ -4 & 8 & -4 \\\\ 0 & -4 & 8 \\end{pmatrix}\n\\begin{pmatrix} c_1 \\\\ c_2 \\\\ c_3 \\end{pmatrix}\n= \\begin{pmatrix} 0.25 \\\\ 0.25 \\\\ 0.25 \\end{pmatrix}\n\\]\n\nSolution: $c_1 = c_3 = 0.09375$, $c_2 = 0.125$.\n\n**Exact:** $y = \\frac{x(1-x)}{2}$. At $x = 0.25$: exact = $0.09375$. At $x = 0.5$: exact = $0.125$.\n\nThe FEM solution matches the exact solution at the nodes! (Superconvergence)",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Element-by-Element Assembly"
+    },
+    {
+      "type": "paragraph",
+      "text": "For efficiency, we compute contributions from each element separately and assemble them into the global system."
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.6",
+      "number": "8.6",
+      "title": "Element Stiffness Matrix",
+      "content": "On element $[x_{e-1}, x_e]$ with local nodes 1 and 2 (mapped to global nodes $e-1$ and $e$), the local basis functions are:\n\\[\nN_1(\\xi) = 1 - \\xi, \\quad N_2(\\xi) = \\xi, \\quad \\xi \\in [0,1]\n\\]\nwhere $\\xi = (x - x_{e-1})/h_e$. The **element stiffness matrix** is:\n\\[\nK^{(e)} = \\frac{1}{h_e}\\begin{pmatrix} 1 & -1 \\\\ -1 & 1 \\end{pmatrix}\n\\]"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-8.4",
+      "number": null,
+      "title": "Finite Element Assembly",
+      "content": "algorithmic[1]\n Mesh, element stiffness matrices $K^{(e)}$, element load vectors $f^{(e)}$\n Global stiffness matrix $K$, load vector $\\mathbf{f}$\n Initialize $K = 0$, $\\mathbf{f} = 0$\neach element $e = 1, \\ldots, N$\n Identify global nodes $(i, j)$ for element $e$\n $K_{ii} \\gets K_{ii} + K^{(e)}_{11}$\n $K_{ij} \\gets K_{ij} + K^{(e)}_{12}$\n $K_{ji} \\gets K_{ji} + K^{(e)}_{21}$\n $K_{jj} \\gets K_{jj} + K^{(e)}_{22}$\n $f_i \\gets f_i + f^{(e)}_1$\n $f_j \\gets f_j + f^{(e)}_2$\n\n Apply boundary conditions (modify rows/columns)\n $K$, $\\mathbf{f}$\nalgorithmic"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Higher-Order Elements"
+    },
+    {
+      "type": "definition",
+      "id": "definition-8.7",
+      "number": "8.7",
+      "title": "Quadratic Elements",
+      "content": "Three nodes per element (endpoints plus midpoint) with quadratic Lagrange basis functions:\n$$\nN_1(\\xi) &= 2\\xi^2 - 3\\xi + 1 \\\\\nN_2(\\xi) &= 4\\xi(1-\\xi) \\\\\nN_3(\\xi) &= 2\\xi^2 - \\xi\n$$\nQuadratic elements provide $\\bigo{h^4}$ accuracy versus $\\bigo{h^2}$ for linear elements."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Error Analysis"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.4",
+      "number": "8.4",
+      "title": "FEM Error Bounds",
+      "content": "For the model problem $-y'' = f$ with linear elements:\n\n- **Energy norm error:** $\\|y - y_N\\|_E = \\bigo{h}$ where $\\|v\\|_E^2 = \\int (v')^2\\, dx$\n\n- **$L^2$ error:** $\\|y - y_N\\|_{L^2} = \\bigo{h^2}$\n\n- **Nodal error:** $|y(x_j) - y_N(x_j)| = \\bigo{h^2}$ (superconvergence)",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-8.5",
+      "number": "8.5",
+      "title": "Céa's Lemma",
+      "content": "The Galerkin approximation is quasi-optimal: if $V_h$ is the finite element space,\n\\[\n\\|y - y_N\\|_E \\leq C \\inf_{v_h \\in V_h} \\|y - v_h\\|_E\n\\]\nThe FEM error is bounded by the best approximation error in the energy norm.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "id": "numerical-analysis-ch02-sec01",
+  "title": "The Bisection Method",
+  "chapter": 2,
+  "section": 1,
+  "book": "numerical-analysis",
+  "objectives": [
+    "Understand the theoretical foundation of bisection in the Intermediate Value Theorem",
+    "Implement the bisection algorithm for root-finding",
+    "Analyze the convergence rate and predict iteration counts",
+    "Compute rigorous error bounds at each step"
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The bisection method is the simplest and most robust root-finding algorithm. It exploits the Intermediate Value Theorem directly: if a continuous function changes sign on an interval, it must have a root in that interval. By repeatedly halving the interval, we trap the root in ever-smaller regions."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Algorithm Development"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Bracketing Interval",
+      "content": "An interval $[a, b]$ is a **bracketing interval** for a root of $f$ if $f$ is continuous on $[a,b]$ and $f(a) \\cdot f(b) < 0$. The endpoints \"bracket\" at least one root."
+    },
+    {
+      "type": "paragraph",
+      "text": "The bisection method maintains a bracketing interval and shrinks it by half at each step."
+    },
+    {
+      "type": "method",
+      "id": "method-2.1",
+      "number": null,
+      "title": "Bisection Strategy",
+      "content": "Given a continuous function $f$ with $f(a)f(b) < 0$:\n\n1. Compute the midpoint $c = \\frac{a + b}{2}$.\n\n2. Evaluate $f(c)$.\n\n3. If $f(c) = 0$, we're done; $c$ is the root.\n\n4. If $f(a)f(c) < 0$, the root is in $[a,c]$; replace $b$ with $c$.\n\n5. If $f(c)f(b) < 0$, the root is in $[c,b]$; replace $a$ with $c$.\n\n6. Repeat until the interval is sufficiently small."
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-2.1",
+      "number": null,
+      "title": "Bisection Method",
+      "content": "algorithmic[1]\n Function $f$, interval $[a,b]$ with $f(a)f(b) < 0$, tolerance $\\varepsilon > 0$\n Approximate root $c$ with $|c - r| < \\varepsilon$\n $f_a \\gets f(a)$\n$\\frac{b - a}{2} > \\varepsilon$\n $c \\gets \\frac{a + b}{2}$\n $f_c \\gets f(c)$\n $f_c = 0$\n $c$ Exact root found\n $f_a \\cdot f_c < 0$\n $b \\gets c$\n \n $a \\gets c$\n $f_a \\gets f_c$ Update stored function value\n \n\n $\\frac{a + b}{2}$\nalgorithmic"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Worked Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Finding a Cube Root",
+      "problem": "Find the root of $f(x) = x^3 - 2$ in $[1, 2]$, which gives $\\sqrt[3]{2}$.\n\n**Solution.** We have $f(1) = -1 < 0$ and $f(2) = 6 > 0$, confirming a bracket.\n\n| $n$ | $a_n$ | $b_n$ | $c_n$ | $f(c_n)$ | $b_n - a_n$ |\n| 0 | 1.0000 | 2.0000 | 1.5000 | $1.375$ | 1.0 |\n| 1 | 1.0000 | 1.5000 | 1.2500 | $-0.047$ | 0.5 |\n| 2 | 1.2500 | 1.5000 | 1.3750 | $0.599$ | 0.25 |\n| 3 | 1.2500 | 1.3750 | 1.3125 | $0.261$ | 0.125 |\n| 4 | 1.2500 | 1.3125 | 1.2813 | $0.104$ | 0.0625 |\n| 5 | 1.2500 | 1.2813 | 1.2656 | $0.027$ | 0.03125 |\n| 6 | 1.2500 | 1.2656 | 1.2578 | $-0.010$ | 0.01563 |\n| 7 | 1.2578 | 1.2656 | 1.2617 | $0.009$ | 0.00781 |\n\nAfter 7 iterations, $c_7 = 1.2617$ with error bound $|c_7 - r| < 0.0039$. The true value $\\sqrt[3]{2} \\approx 1.2599$ is indeed in $[1.2578, 1.2656]$.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "A Transcendental Equation",
+      "problem": "Solve $x = \\cos x$ (i.e., find where the line $y = x$ crosses $y = \\cos x$).\n\n**Solution.** Define $f(x) = x - \\cos x$. We have:\n\n- $f(0) = 0 - 1 = -1 < 0$\n\n- $f(1) = 1 - \\cos 1 \\approx 1 - 0.5403 = 0.4597 > 0$\n\nSo there's a root in $[0, 1]$. Applying bisection:\n\n| $n$ | $c_n$ | $f(c_n)$ | Error bound |\n| 0 | 0.5 | $-0.3776$ | 0.5 |\n| 1 | 0.75 | $0.0183$ | 0.25 |\n| 2 | 0.625 | $-0.1860$ | 0.125 |\n| 3 | 0.6875 | $-0.0853$ | 0.0625 |\n| 4 | 0.71875 | $-0.0339$ | 0.03125 |\n| 5 | 0.734375 | $-0.0079$ | 0.01563 |\n| 6 | 0.7421875 | $0.0052$ | 0.00781 |\n| 7 | 0.7382813 | $-0.0014$ | 0.00391 |\n\nAfter 7 iterations, $c \\approx 0.7383$ with error $< 0.004$. The Dottie number (the exact solution) is approximately $0.739085$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Convergence Analysis"
+    },
+    {
+      "type": "paragraph",
+      "text": "The bisection method converges reliably but slowly. Let's make this precise."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Bisection Convergence",
+      "content": "Let $f$ be continuous on $[a_0, b_0]$ with $f(a_0)f(b_0) < 0$. Let $r$ be a root in $(a_0, b_0)$ and let $c_n = \\frac{a_n + b_n}{2}$ be the $n$-th bisection iterate. Then:\n\n1. The interval width after $n$ iterations is $b_n - a_n = \\frac{b_0 - a_0}{2^n}$.\n\n2. The error satisfies $|c_n - r| \\leq \\frac{b_0 - a_0}{2^{n+1}}$.\n\n3. Convergence is linear with rate $\\frac{1}{2}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(1) Each iteration replaces $[a_n, b_n]$ with an interval of half the width. By induction:\n\\[\nb_n - a_n = \\frac{1}{2}(b_{n-1} - a_{n-1}) = \\frac{1}{2^2}(b_{n-2} - a_{n-2}) = \\cdots = \\frac{b_0 - a_0}{2^n}.\n\\]\n\n(2) The root $r$ lies in $[a_n, b_n]$. The midpoint $c_n$ is at most $(b_n - a_n)/2$ from any point in the interval:\n\\[\n|c_n - r| \\leq \\frac{b_n - a_n}{2} = \\frac{b_0 - a_0}{2^{n+1}}.\n\\]\n\n(3) Letting $e_n = |c_n - r|$ denote the error, we have $e_{n+1} \\leq \\frac{1}{2}e_n$. In the worst case, the error exactly halves: $e_{n+1} = \\frac{1}{2}e_n$, giving linear convergence with rate $1/2$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "Convergence Order",
+      "content": "An iterative method has **order of convergence** $p$ if there exists a constant $C > 0$ such that\n\\[\n|x_{n+1} - r| \\leq C|x_n - r|^p\n\\]\nfor all $n$ sufficiently large. The method is:\n\n- **Linear** if $p = 1$ (and $C < 1$)\n\n- **Quadratic** if $p = 2$\n\n- **Superlinear** if $1 < p < 2$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Bisection has order 1 with $C = 1/2$. Each iteration gains approximately 0.3 decimal digits of accuracy (since $\\log_{10} 2 \\approx 0.301$)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Error Bounds and Iteration Counts"
+    },
+    {
+      "type": "paragraph",
+      "text": "We can predict exactly how many iterations are needed for a given accuracy."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Iteration Count Formula",
+      "content": "To achieve an error bound of $\\varepsilon$, bisection requires\n\\[\nn \\geq \\log_2\\left(\\frac{b_0 - a_0}{\\varepsilon}\\right) - 1 = \\frac{\\ln(b_0 - a_0) - \\ln\\varepsilon}{\\ln 2} - 1\n\\]\niterations. The exact count is $n = \\left\\lceil \\log_2\\left(\\frac{b_0 - a_0}{2\\varepsilon}\\right) \\right\\rceil$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We need $\\frac{b_0 - a_0}{2^{n+1}} \\leq \\varepsilon$, which gives $2^{n+1} \\geq \\frac{b_0 - a_0}{\\varepsilon}$. Taking logarithms:\n\\[\nn + 1 \\geq \\log_2\\left(\\frac{b_0 - a_0}{\\varepsilon}\\right), \\quad \\text{so} \\quad n \\geq \\log_2\\left(\\frac{b_0 - a_0}{\\varepsilon}\\right) - 1.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Iteration Count Prediction",
+      "problem": "How many bisection iterations are needed to find a root in $[0, 1]$ to within $10^{-10}$?\n\n**Solution.**\n\\[\nn \\geq \\log_2\\left(\\frac{1}{10^{-10}}\\right) - 1 = \\log_2(10^{10}) - 1 = 10\\log_2(10) - 1 \\approx 10(3.322) - 1 = 32.2\n\\]\n\nWe need $n = 33$ iterations. Each iteration requires one function evaluation, so 33 evaluations suffice for 10 decimal places.",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "Practical Error Estimation",
+      "problem": "Starting from $[1, 2]$, after 20 iterations of bisection, what is the guaranteed accuracy?\n\n**Solution.** The error bound is:\n\\[\n|c_{20} - r| \\leq \\frac{2 - 1}{2^{21}} = \\frac{1}{2^{21}} \\approx 4.77 \\times 10^{-7}\n\\]\n\nWe are guaranteed about 6 correct decimal places.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Advantages and Limitations"
+    },
+    {
+      "type": "warning",
+      "id": "warning-2.1",
+      "number": null,
+      "title": "Sign Changes and Even-Multiplicity Roots",
+      "content": "Bisection requires a sign change. If $f$ touches zero without crossing (e.g., $f(x) = x^2$ at $x = 0$), bisection cannot find the root. Double roots and other even-multiplicity roots are invisible to sign-change detection."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Implementation Considerations"
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-2.1",
+      "number": null,
+      "title": "Robust Bisection Implementation",
+      "content": "algorithmic[1]\n Function $f$, interval $[a,b]$ with $\\text{sign}(f(a)) \\neq \\text{sign}(f(b))$\n Tolerance $\\varepsilon > 0$, maximum iterations $N_{\\max}$\n Approximate root $c$\n $s_a \\gets \\text{sign}(f(a))$\n$n = 1$ **to** $N_{\\max}$\n $c \\gets a + (b - a)/2$ Overflow-safe midpoint\n $|b - a| < 2\\varepsilon$\n $c$\n \n $f_c \\gets f(c)$\n $s_c \\gets \\text{sign}(f_c)$\n $s_c = 0$\n $c$\n $s_a \\neq s_c$\n $b \\gets c$\n \n $a \\gets c$\n $s_a \\gets s_c$\n \n\n $c$ Maximum iterations reached\nalgorithmic"
+    }
+  ]
+}

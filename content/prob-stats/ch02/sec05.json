@@ -1,0 +1,108 @@
+{
+  "id": "prob-stats-ch02-sec05",
+  "title": "Bayes' Theorem",
+  "chapter": 2,
+  "section": 5,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "Trust in the Lord with all your heart, and do not lean on your own understanding.",
+    "reference": "Proverbs 3:5",
+    "quote": "In the long run, he who updates his beliefs with Bayes' rule cannot go far wrong.",
+    "quoteAuthor": "Harold Jeffreys"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "One of the most powerful tools in probability is the ability to \n*reverse* conditional probabilities—to go from $P(B \\mid A)$ to \n$P(A \\mid B)$. This is Bayes' Theorem."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Reversing Conditional Probability"
+    },
+    {
+      "type": "paragraph",
+      "text": "Often we know $P(A \\mid B)$ but want $P(B \\mid A)$. Medical testing \nprovides a classic example: we typically know the sensitivity \n$P(\\text{positive} \\mid \\text{disease})$, but patients want to know \n$P(\\text{disease} \\mid \\text{positive})$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Bayes' Theorem",
+      "content": "For events $A$ and $B$ with $P(B) > 0$:\n\\[\n P(A \\mid B) = \\frac{P(B \\mid A) \\cdot P(A)}{P(B)}\n\\]\nMore generally, if $A_1, A_2, \\ldots, A_k$ partition the sample space:\n\\[\n P(A_i \\mid B) = \\frac{P(B \\mid A_i) \\cdot P(A_i)}{\\sum_{j=1}^{k} P(B \\mid A_j) \\cdot P(A_j)}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "From the definition of conditional probability:\n\\[\n P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}\n\\]\nBy the multiplication rule, $P(A \\cap B) = P(B \\mid A) \\cdot P(A)$.\nSubstituting gives the result."
+    },
+    {
+      "type": "historical",
+      "id": "historical-2.5",
+      "number": null,
+      "title": "Thomas Bayes (1702--1761)",
+      "content": "Reverend Thomas Bayes was an English Presbyterian minister and \nmathematician. His famous theorem was published posthumously in \n1763, edited by his friend Richard Price. Bayes sought to solve \nthe \"inverse probability\" problem: given observed outcomes, what \ncan we infer about underlying causes? His work laid the foundation \nfor Bayesian inference, which has become increasingly influential \nin modern statistics."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Base Rate Fallacy"
+    },
+    {
+      "type": "paragraph",
+      "text": "A common error is to ignore the *prior probability* (base rate) \nwhen interpreting conditional probabilities."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Medical Testing Revisited",
+      "problem": "A disease affects 1\\% of a population. A test has 95\\% sensitivity \nand 90\\% specificity. If a person tests positive, what is the \nprobability they have the disease?",
+      "solution": "Let $D$ = \"disease\" and $+$ = \"positive test.\"\n\nGiven: $P(D) = 0.01$, $P(+ \\mid D) = 0.95$, $P(+ \\mid D^c) = 0.10$.\n\nWe want $P(D \\mid +)$.\n\nFirst, find $P(+)$ using the law of total probability:\n\\[\n P(+) = P(D) \\cdot P(+ \\mid D) + P(D^c) \\cdot P(+ \\mid D^c)\n = (0.01)(0.95) + (0.99)(0.10) = 0.1085\n\\]\n\nNow apply Bayes' theorem:\n\\[\n P(D \\mid +) = \\frac{P(+ \\mid D) \\cdot P(D)}{P(+)} \n = \\frac{(0.95)(0.01)}{0.1085} \n = \\frac{0.0095}{0.1085} \n \\approx 0.0876\n\\]\n\nOnly about 8.8\\% of positive tests actually have the disease!"
+    },
+    {
+      "type": "paragraph",
+      "text": "This surprising result illustrates the **base rate fallacy**: \nwhen the disease is rare ($P(D) = 0.01$), even a good test produces \nmany false positives because the healthy population is so large."
+    },
+    {
+      "type": "warning",
+      "id": "warning-2.5",
+      "number": null,
+      "title": "Don't Neglect Prior Probabilities",
+      "content": "The probability that a hypothesis is true given evidence depends not \nonly on how likely the evidence is under that hypothesis, but also on \nhow likely the hypothesis was *before* seeing the evidence."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Multiple Applications of Bayes' Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Bayes' theorem can be applied repeatedly as new evidence arrives, \nupdating our probability estimates. The posterior probability from \none application becomes the prior probability for the next."
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Updating with New Evidence",
+      "problem": "In the medical testing example, suppose a person who tested positive \ntakes a second, independent test and also tests positive. What is \nthe new probability of disease?",
+      "solution": "After the first positive test, $P(D) = 0.0876$ (our new prior).\n\nFor the second test:\n\\[\n P(+_2) = P(D) \\cdot P(+ \\mid D) + P(D^c) \\cdot P(+ \\mid D^c)\n = (0.0876)(0.95) + (0.9124)(0.10) \n \\approx 0.1744\n\\]\n\nApplying Bayes' theorem again:\n\\[\n P(D \\mid +_2) = \\frac{(0.95)(0.0876)}{0.1744} \\approx 0.477\n\\]\n\nAfter two positive tests, the probability of disease is about 48\\%."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Bayesian Thinking"
+    },
+    {
+      "type": "paragraph",
+      "text": "Bayes' theorem formalizes a natural way of reasoning: we start with \nprior beliefs, gather evidence, and update our beliefs accordingly. \nThis framework—prior $\\to$ evidence $\\to$ posterior—has profound \nimplications for how we learn from data."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "James 1:5",
+      "text": "If any of you lacks wisdom, let him ask God, \nwho gives generously to all without reproach, and it will be given him."
+    }
+  ]
+}

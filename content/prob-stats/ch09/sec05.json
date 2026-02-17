@@ -1,0 +1,70 @@
+{
+  "id": "prob-stats-ch09-sec05",
+  "title": "Two-Sample Tests",
+  "chapter": 9,
+  "section": 5,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "Two are better than one, because they have a good reward for their toil.",
+    "reference": "Ecclesiastes 4:9",
+    "quote": "Comparison is the basis of all scientific inference.",
+    "quoteAuthor": "John Stuart Mill"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Often we compare two groups rather than one group to a fixed value."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Two-Sample $t$-Test for Means"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Two-Sample $t$-Test",
+      "content": "To test $H_0: \\mu_1 = \\mu_2$:\n\\[\n t = \\frac{(\\xbar_1 - \\xbar_2) - 0}{\\sqrt{S_1^2/n_1 + S_2^2/n_2}}\n\\]\nwith approximate degrees of freedom from Welch's formula.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Comparing Two Means",
+      "problem": "Group 1: $n_1 = 30$, $\\xbar_1 = 84$, $S_1 = 12$.\nGroup 2: $n_2 = 35$, $\\xbar_2 = 78$, $S_2 = 10$.\n\nTest if means differ at $\\alpha = 0.05$.",
+      "solution": "$\\SE = \\sqrt{144/30 + 100/35} = \\sqrt{4.8 + 2.86} = 2.77$\n\n$t = (84 - 78)/2.77 = 2.17$\n\n$df \\approx 55$, $p$-value $\\approx 0.034$.\n\nReject $H_0$: evidence of different means."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Paired $t$-Test"
+    },
+    {
+      "type": "paragraph",
+      "text": "When observations are naturally paired (before/after, matched subjects):"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "Paired $t$-Test",
+      "content": "For paired differences $d_i = X_{1i} - X_{2i}$, test $H_0: \\mu_d = 0$:\n\\[\n t = \\frac{\\bar{d} - 0}{S_d / \\sqrt{n}}\n\\]\nwith $df = n - 1$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Two-Sample Test for Proportions"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.3",
+      "number": "9.3",
+      "title": "Two-Sample $z$-Test for Proportions",
+      "content": "To test $H_0: p_1 = p_2$:\n\\[\n z = \\frac{\\phat_1 - \\phat_2}{\\sqrt{\\phat(1-\\phat)(1/n_1 + 1/n_2)}}\n\\]\nwhere $\\phat = \\frac{X_1 + X_2}{n_1 + n_2}$ is the pooled proportion.",
+      "label": "Theorem"
+    }
+  ]
+}

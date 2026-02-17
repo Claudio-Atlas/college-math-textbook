@@ -1,0 +1,665 @@
+{
+  "id": "algebra-2-ch10-sec01",
+  "title": "Advanced Counting and Permutations",
+  "chapter": 10,
+  "section": 1,
+  "book": "algebra-2",
+  "devotional": {
+    "title": "Ordered Creation",
+    "scripture": "Genesis 1:14--18",
+    "content": "{AtlasWarmA}{nd}\nGod said, \"Let there be lights in the vault of the sky to separate the \nday from the night, and let them serve as signs to mark sacred times, \nand days and years.\"\n\nGod's creation displays order. The sun, moon, and stars follow precise \norbits. The seasons cycle in reliable sequence. Day follows night with \nunwavering regularity. This is not random arrangement but intentional \nordering.\n\nPermutations count ordered arrangements—different orderings count as \ndifferent outcomes. The order of creation in Genesis 1 matters: light \nbefore plants, plants before animals, animals before humans. The \nsequence reveals purpose.\n\nWhen we count permutations, we affirm that order matters. The same \nelements arranged differently yield different results. This mathematical \ntruth reflects a deeper reality about the meaningful ordering of \ncreation and life.",
+    "reflection": "Order matters in permutations and in life. How \ndoes the sequence of events in your life—the order of experiences, \nrelationships, lessons—shape who you are becoming?"
+  },
+  "epigraph": {
+    "text": "For You created my inmost being; You knit me together \nin my mother's womb.",
+    "reference": "Psalm 139:13"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Counting may seem elementary, but counting complex arrangements requires \nsophisticated techniques. Permutations count arrangements where order \nmatters—different orderings are counted separately. In this section, \nwe develop systematic methods for counting that will serve as the \nfoundation for probability theory."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Fundamental Counting Principle"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "Fundamental Counting Principle",
+      "content": "If one event can occur in $m$ ways and another independent event can \noccur in $n$ ways, then the two events can occur together in $m \\times n$ \nways.\n\nMore generally, if events $E_1, E_2, \\ldots, E_k$ can occur in \n$n_1, n_2, \\ldots, n_k$ ways respectively, then the events can occur \ntogether in $n_1 \\times n_2 \\times \\cdots \\times n_k$ ways.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The power of this principle lies in its simplicity: multiply the number \nof choices at each stage. This works whenever the choices are independent—the \noptions available at one stage don't depend on what was chosen earlier."
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "License plates",
+      "problem": "A license plate consists of 3 letters followed by 3 digits. How many \ndifferent plates are possible:\n\n1. With no restrictions?\n\n2. If letters and digits cannot repeat?\n\n3. If the first letter must be a vowel?",
+      "solution": "1. Each letter has 26 choices, each digit has 10 choices:\n \\[\n 26 \\times 26 \\times 26 \\times 10 \\times 10 \\times 10 = 26^3 \\times 10^3 = 17{,}576{,}000\n \\]\n\n2. Letters: $26 \\times 25 \\times 24 = 15{,}600$\n \n Digits: $10 \\times 9 \\times 8 = 720$\n \n Total: $15{,}600 \\times 720 = 11{,}232{,}000$\n\n3. Vowels (A, E, I, O, U): 5 choices for first letter\n \n $5 \\times 26 \\times 26 \\times 10 \\times 10 \\times 10 = 5 \\times 26^2 \\times 10^3 = 3{,}380{,}000$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.2",
+      "number": "10.2",
+      "title": "Menu combinations",
+      "problem": "A restaurant offers 4 appetizers, 8 main courses, 5 desserts, and 6 \ndrinks. How many different complete meals (one of each) are possible?",
+      "solution": "\\[\n 4 \\times 8 \\times 5 \\times 6 = 960 \\text{ different meals}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.3",
+      "number": "10.3",
+      "title": "Phone numbers",
+      "problem": "A phone number consists of a 3-digit area code followed by a 7-digit \nlocal number. The area code cannot start with 0 or 1, and the local \nnumber's first digit cannot be 0 or 1. How many phone numbers are possible?",
+      "solution": "Area code: First digit has 8 choices (2-9), next two have 10 each: $8 \\times 10 \\times 10 = 800$\n\nLocal number: First digit has 8 choices (2-9), remaining six have 10 each: $8 \\times 10^6 = 8{,}000{,}000$\n\nTotal: $800 \\times 8{,}000{,}000 = 6{,}400{,}000{,}000$ (6.4 billion phone numbers)"
+    },
+    {
+      "type": "example",
+      "id": "example-10.4",
+      "number": "10.4",
+      "title": "Outfits",
+      "problem": "Maria has 5 blouses, 4 skirts, and 3 pairs of shoes. She wants to choose \nan outfit for each day of the week (7 days). How many ways can she do \nthis if:\n\n1. She can repeat items?\n\n2. She must wear a different blouse each day?",
+      "solution": "1. Each day: $5 \\times 4 \\times 3 = 60$ outfit choices.\n For 7 days: $60^7 = 2{,}799{,}360{,}000{,}000$ ways.\n\n2. She can only do this for 5 days (only 5 blouses). But if we \n consider exactly 5 days: blouses can be arranged in $5! = 120$ ways, \n and each day still has $4 \\times 3 = 12$ choices for skirt and shoes.\n Total: $120 \\times 12^5 = 120 \\times 248{,}832 = 29{,}859{,}840$ ways."
+    },
+    {
+      "type": "example",
+      "id": "example-10.5",
+      "number": "10.5",
+      "title": "Binary strings",
+      "problem": "How many binary strings (sequences of 0s and 1s) of length 8 are there?",
+      "solution": "Each position has 2 choices (0 or 1):\n\\[\n 2^8 = 256 \\text{ binary strings}\n\\]\n\nThis is why a byte (8 bits) can represent 256 different values (0 through 255)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Factorials"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Factorial",
+      "content": "For any non-negative integer $n$, the **factorial** \nof $n$, written $n!$, is:\n\\[\n n! = n \\times (n-1) \\times (n-2) \\times \\cdots \\times 2 \\times 1\n\\]\nBy definition, $0! = 1$."
+    },
+    {
+      "type": "paragraph",
+      "text": "The definition $0! = 1$ may seem arbitrary, but it's essential for \nformulas to work correctly. It also makes sense combinatorially: there \nis exactly one way to arrange zero objects (do nothing)."
+    },
+    {
+      "type": "table",
+      "headers": [
+        "$n$",
+        "$n!$",
+        "Calculation"
+      ],
+      "rows": [
+        [
+          "0",
+          "1",
+          "(by definition)"
+        ],
+        [
+          "1",
+          "1",
+          "1"
+        ],
+        [
+          "2",
+          "2",
+          "$2 \\times 1$"
+        ],
+        [
+          "3",
+          "6",
+          "$3 \\times 2 \\times 1$"
+        ],
+        [
+          "4",
+          "24",
+          "$4 \\times 3 \\times 2 \\times 1$"
+        ],
+        [
+          "5",
+          "120",
+          "$5 \\times 4!$"
+        ],
+        [
+          "6",
+          "720",
+          "$6 \\times 5!$"
+        ],
+        [
+          "7",
+          "5{,}040",
+          "$7 \\times 6!$"
+        ],
+        [
+          "8",
+          "40{,}320",
+          "$8 \\times 7!$"
+        ],
+        [
+          "9",
+          "362{,}880",
+          "$9 \\times 8!$"
+        ],
+        [
+          "10",
+          "3{,}628{,}800",
+          "$10 \\times 9!$"
+        ],
+        [
+          "12",
+          "479{,}001{,}600",
+          "$12!$"
+        ],
+        [
+          "15",
+          "1{,}307{,}674{,}368{,}000",
+          "$15!$"
+        ],
+        [
+          "20",
+          "$\\approx 2.43 \\times 10^{18}$",
+          "$20!$"
+        ]
+      ],
+      "alignment": [
+        "center",
+        "right",
+        "left"
+      ]
+    },
+    {
+      "type": "historical",
+      "id": "historical-10.1",
+      "number": null,
+      "title": "The Growth of Factorials",
+      "content": "Factorials grow incredibly fast. While $10! \\approx 3.6$ million is \nmanageable, $20!$ exceeds $10^{18}$—larger than the estimated number \nof grains of sand on Earth. By $70!$, we exceed the estimated number \nof atoms in the observable universe ($\\approx 10^{80}$). This explosive \ngrowth explains why many counting problems yield astronomically large \nanswers."
+    },
+    {
+      "type": "example",
+      "id": "example-10.6",
+      "number": "10.6",
+      "title": "Simplifying factorial expressions",
+      "problem": "Simplify:\n\n1. $\\frac{8!}{6!}$\n\n2. $\\frac{10!}{7! \\cdot 3!}$\n\n3. $\\frac{(n+1)!}{n!}$\n\n4. $\\frac{(n+2)!}{n!}$",
+      "solution": "1. $\\frac{8!}{6!} = \\frac{8 \\times 7 \\times 6!}{6!} = 8 \\times 7 = 56$\n\n2. $\\frac{10!}{7! \\cdot 3!} = \\frac{10 \\times 9 \\times 8 \\times 7!}{7! \\times 6} = \\frac{720}{6} = 120$\n\n3. $\\frac{(n+1)!}{n!} = \\frac{(n+1) \\times n!}{n!} = n + 1$\n\n4. $\\frac{(n+2)!}{n!} = \\frac{(n+2)(n+1) \\times n!}{n!} = (n+2)(n+1) = n^2 + 3n + 2$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.7",
+      "number": "10.7",
+      "title": "Factorial equations",
+      "problem": "Solve for $n$:\n\n1. $\\frac{n!}{(n-2)!} = 72$\n\n2. $(n+1)! = 6 \\cdot n!$",
+      "solution": "1. $\\frac{n!}{(n-2)!} = n(n-1) = 72$\n \n $n^2 - n - 72 = 0 \\Rightarrow (n-9)(n+8) = 0$\n \n Since $n$ must be positive: $n = 9$\n\n2. $(n+1)! = (n+1) \\cdot n! = 6 \\cdot n!$\n \n Therefore $n + 1 = 6$, so $n = 5$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Permutations"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.2",
+      "number": "10.2",
+      "title": "Permutation",
+      "content": "A **permutation** is an arrangement of objects \nwhere **order matters**. The number of permutations of $n$ distinct \nobjects taken $r$ at a time is:\n\\[\n P(n, r) = \\frac{n!}{(n-r)!}\n\\]\nWhen arranging all $n$ objects: $P(n, n) = n!$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The formula $P(n,r) = \\frac{n!}{(n-r)!}$ counts ordered selections. \nThink of it as filling $r$ positions from $n$ candidates:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "First position: $n$ choices",
+        "Second position: $n-1$ choices (one already used)",
+        "Third position: $n-2$ choices",
+        "…",
+        "Position $r$: $n-r+1$ choices"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Total: $n(n-1)(n-2)\\cdots(n-r+1) = \\frac{n!}{(n-r)!}$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.8",
+      "number": "10.8",
+      "title": "Permutation calculations",
+      "problem": "Evaluate:\n\n1. $P(8, 3)$\n\n2. $P(5, 5)$\n\n3. $P(10, 2)$\n\n4. $P(6, 1)$",
+      "solution": "1. $P(8, 3) = \\frac{8!}{5!} = 8 \\times 7 \\times 6 = 336$\n\n2. $P(5, 5) = 5! = 120$\n\n3. $P(10, 2) = \\frac{10!}{8!} = 10 \\times 9 = 90$\n\n4. $P(6, 1) = 6$ (choosing 1 from 6—just the number of choices)"
+    },
+    {
+      "type": "example",
+      "id": "example-10.9",
+      "number": "10.9",
+      "title": "Seating arrangement",
+      "problem": "In how many ways can 7 people be seated in a row of 7 chairs?",
+      "solution": "This is $P(7, 7) = 7! = 5040$ arrangements.\n\nReasoning: 7 choices for the first seat, 6 for the second, and so on."
+    },
+    {
+      "type": "example",
+      "id": "example-10.10",
+      "number": "10.10",
+      "title": "Partial selection",
+      "problem": "From a group of 12 students, the teacher will select a president, \nvice-president, and secretary. How many ways can this be done?",
+      "solution": "Order matters (the positions are different), so:\n\\[\n P(12, 3) = 12 \\times 11 \\times 10 = 1320 \\text{ ways}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.11",
+      "number": "10.11",
+      "title": "Race outcomes",
+      "problem": "In a race with 10 runners, how many ways can the gold, silver, and \nbronze medals be awarded?",
+      "solution": "\\[\n P(10, 3) = 10 \\times 9 \\times 8 = 720 \\text{ ways}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.12",
+      "number": "10.12",
+      "title": "Batting order",
+      "problem": "A baseball team has 15 players, but only 9 can bat. How many different \nbatting orders are possible?",
+      "solution": "The batting order specifies both which 9 players bat AND what order \nthey bat in. This is a permutation:\n\\[\n P(15, 9) = \\frac{15!}{6!} = 1{,}816{,}214{,}400 \\text{ batting orders}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.13",
+      "number": "10.13",
+      "title": "Photo arrangement",
+      "problem": "Ten friends want to take a photo in a row. How many arrangements are \npossible if:\n\n1. No restrictions?\n\n2. Alice and Bob must stand next to each other?\n\n3. Alice and Bob must NOT stand next to each other?",
+      "solution": "1. $10! = 3{,}628{,}800$ arrangements\n\n2. Treat Alice-Bob as a single unit. Now we have 9 \"units\" to \n arrange: $9!$ ways. Alice and Bob can switch places within their \n unit: $2!$ ways. Total: $9! \\times 2 = 725{,}760$ arrangements.\n\n3. Subtract the \"together\" cases from total:\n $10! - 9! \\times 2 = 3{,}628{,}800 - 725{,}760 = 2{,}903{,}040$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Permutations with Repetition"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.2",
+      "number": "10.2",
+      "title": "Permutations of Identical Objects",
+      "content": "The number of distinguishable permutations of $n$ objects where \n$n_1$ are identical of one type, $n_2$ identical of another type, \nand so on, is:\n\\[\n \\frac{n!}{n_1! \\cdot n_2! \\cdot \\cdots \\cdot n_k!}\n\\]\nwhere $n_1 + n_2 + \\cdots + n_k = n$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Why divide by the factorials? If we have repeated items, swapping \nidentical items doesn't create a new arrangement. We divide out the \novercounting."
+    },
+    {
+      "type": "example",
+      "id": "example-10.14",
+      "number": "10.14",
+      "title": "Word arrangements",
+      "problem": "How many distinguishable arrangements are there of the letters in:\n\n1. MISSISSIPPI\n\n2. COMMITTEE\n\n3. MATHEMATICS",
+      "solution": "1. MISSISSIPPI has 11 letters: M(1), I(4), S(4), P(2)\n \\[\n \\frac{11!}{1! \\cdot 4! \\cdot 4! \\cdot 2!} = \\frac{39916800}{24 \\cdot 24 \\cdot 2} = \\frac{39916800}{1152} = 34{,}650\n \\]\n\n2. COMMITTEE has 9 letters: C(1), O(1), M(2), I(1), T(2), E(2)\n \\[\n \\frac{9!}{1! \\cdot 1! \\cdot 2! \\cdot 1! \\cdot 2! \\cdot 2!} = \\frac{362880}{8} = 45{,}360\n \\]\n\n3. MATHEMATICS has 11 letters: M(2), A(2), T(2), H(1), E(1), I(1), C(1), S(1)\n \\[\n \\frac{11!}{2! \\cdot 2! \\cdot 2!} = \\frac{39916800}{8} = 4{,}989{,}600\n \\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.15",
+      "number": "10.15",
+      "title": "Signal flags",
+      "problem": "A ship has 4 red flags, 3 blue flags, and 2 green flags to be arranged \nin a line as a signal. How many different signals are possible?",
+      "solution": "Total flags: $4 + 3 + 2 = 9$\n\nDistinguishable arrangements:\n\\[\n \\frac{9!}{4! \\cdot 3! \\cdot 2!} = \\frac{362880}{24 \\cdot 6 \\cdot 2} = \\frac{362880}{288} = 1260\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.16",
+      "number": "10.16",
+      "title": "Paths on a grid",
+      "problem": "How many shortest paths are there from corner $A$ (bottom-left) to \ncorner $B$ (top-right) on a grid that is 5 units right and 4 units up?",
+      "solution": "Any shortest path requires exactly 5 moves right (R) and 4 moves up (U)—a \ntotal of 9 moves. The question becomes: in how many ways can we arrange \nRRRRRUUUU?\n\n\\[\n \\frac{9!}{5! \\cdot 4!} = \\frac{362880}{120 \\cdot 24} = \\frac{362880}{2880} = 126 \\text{ paths}\n\\]\n\nAlternatively, we're choosing which 5 of the 9 moves are R: $\\binom{9}{5} = 126$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Circular Permutations"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.3",
+      "number": "10.3",
+      "title": "Circular Permutations",
+      "content": "The number of ways to arrange $n$ distinct objects in a circle is:\n\\[\n (n - 1)!\n\\]\nThis accounts for the fact that rotations of the same arrangement \nare considered identical.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Why $(n-1)!$ instead of $n!$? In a circle, there's no \"first\" position. \nRotating everyone one seat clockwise gives the same arrangement. Since \nthere are $n$ rotations of each arrangement, we divide: $\\frac{n!}{n} = (n-1)!$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.17",
+      "number": "10.17",
+      "title": "Round table seating",
+      "problem": "In how many ways can 6 people be seated around a circular table?",
+      "solution": "In a circle, we fix one person's position to avoid counting rotations \nas different:\n\\[\n (6 - 1)! = 5! = 120 \\text{ ways}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.18",
+      "number": "10.18",
+      "title": "Keys on a ring",
+      "problem": "In how many ways can 5 different keys be arranged on a keyring?",
+      "solution": "A keyring can be flipped, so arrangements that are reflections of each \nother are identical. This gives:\n\\[\n \\frac{(5-1)!}{2} = \\frac{24}{2} = 12 \\text{ arrangements}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.19",
+      "number": "10.19",
+      "title": "Circular seating with conditions",
+      "problem": "In how many ways can 8 people sit around a circular table if:\n\n1. Two specific people must sit together?\n\n2. Two specific people must not sit together?",
+      "solution": "1. Treat the two people as a unit. Now we have 7 \"units\" in a \n circle: $(7-1)! = 6! = 720$ ways. The two people can swap within \n their unit: $2$ ways. Total: $720 \\times 2 = 1440$ ways.\n\n2. Total arrangements minus \"together\" arrangements:\n $(8-1)! - 1440 = 5040 - 1440 = 3600$ ways."
+    },
+    {
+      "type": "example",
+      "id": "example-10.20",
+      "number": "10.20",
+      "title": "Necklace with beads",
+      "problem": "How many distinct necklaces can be made from 6 differently colored beads?",
+      "solution": "A necklace can be rotated and flipped, so we divide by 2:\n\\[\n \\frac{(6-1)!}{2} = \\frac{120}{2} = 60 \\text{ distinct necklaces}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of Permutations"
+    },
+    {
+      "type": "example",
+      "id": "example-10.21",
+      "number": "10.21",
+      "title": "Passwords",
+      "problem": "A password must be 6 characters long using uppercase letters and digits \n(36 characters total). How many passwords are possible if:\n\n1. Characters can repeat?\n\n2. No character can repeat?\n\n3. It must start with a letter and end with a digit?\n\n4. It must contain at least one digit?",
+      "solution": "1. $36^6 = 2{,}176{,}782{,}336$ passwords\n\n2. $P(36, 6) = 36 \\times 35 \\times 34 \\times 33 \\times 32 \\times 31 = 1{,}402{,}410{,}240$\n\n3. First position: 26 letters. Last position: 10 digits.\n Middle 4 positions: $36^4$ each.\n \\[\n 26 \\times 36^4 \\times 10 = 26 \\times 1{,}679{,}616 \\times 10 = 436{,}700{,}160\n \\]\n\n4. Total passwords minus all-letter passwords:\n \\[\n 36^6 - 26^6 = 2{,}176{,}782{,}336 - 308{,}915{,}776 = 1{,}867{,}866{,}560\n \\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.22",
+      "number": "10.22",
+      "title": "Book arrangement",
+      "problem": "A bookshelf has 8 different books: 3 math books, 3 science books, and \n2 history books. In how many ways can they be arranged if:\n\n1. There are no restrictions?\n\n2. All math books must be together?\n\n3. Books of the same subject must be together?\n\n4. No two math books can be adjacent?",
+      "solution": "1. $8! = 40{,}320$ arrangements\n\n2. Treat the 3 math books as one unit. Now we have 6 \"items\" to \n arrange: $6! = 720$. The math books can be arranged among \n themselves: $3! = 6$.\n \n Total: $720 \\times 6 = 4320$ arrangements\n\n3. Treat each subject group as a unit: 3 units to arrange in $3! = 6$ ways.\n Within groups: $3! \\times 3! \\times 2! = 6 \\times 6 \\times 2 = 72$ ways.\n \n Total: $6 \\times 72 = 432$ arrangements\n\n4. First, arrange the 5 non-math books: $5! = 120$ ways.\n This creates 6 gaps (before, between, and after): \\_ B \\_ B \\_ B \\_ B \\_ B \\_\n \n Choose 3 of these 6 gaps for math books: $P(6, 3) = 120$ ways.\n \n Total: $120 \\times 120 = 14{,}400$ arrangements"
+    },
+    {
+      "type": "example",
+      "id": "example-10.23",
+      "number": "10.23",
+      "title": "Genetics: DNA sequences",
+      "problem": "A strand of DNA consists of a sequence of nucleotides, each of which \nis one of four types: A (adenine), T (thymine), G (guanine), or C (cytosine).\n\n1. How many different DNA strands of length 10 are possible?\n\n2. How many contain exactly 3 A's, 3 T's, 2 G's, and 2 C's?\n\n3. A codon is a sequence of 3 nucleotides that codes for an amino \n acid. How many different codons are possible?",
+      "solution": "1. Each position has 4 choices: $4^{10} = 1{,}048{,}576$ sequences\n\n2. This is a permutation of 10 items with repetition:\n \\[\n \\frac{10!}{3! \\cdot 3! \\cdot 2! \\cdot 2!} = \\frac{3628800}{6 \\cdot 6 \\cdot 2 \\cdot 2} = \\frac{3628800}{144} = 25{,}200\n \\]\n\n3. $4^3 = 64$ codons (which is why there's redundancy in the genetic code—only about 20 amino acids)"
+    },
+    {
+      "type": "example",
+      "id": "example-10.24",
+      "number": "10.24",
+      "title": "Scheduling",
+      "problem": "A professor must schedule 5 different meetings during a day with 8 \navailable time slots. In how many ways can this be done?",
+      "solution": "Each meeting gets a different slot, and the order matters (different \nslots are different times):\n\\[\n P(8, 5) = 8 \\times 7 \\times 6 \\times 5 \\times 4 = 6720 \\text{ ways}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.25",
+      "number": "10.25",
+      "title": "Tournament seeding",
+      "problem": "A tennis tournament has 8 players who must be seeded (ranked) from 1 to 8. \nIf the top 2 players must be seeded 1st and 2nd (in some order), how \nmany seeding arrangements are possible?",
+      "solution": "Top 2 players in positions 1 and 2: $2! = 2$ arrangements.\n\nRemaining 6 players in positions 3–8: $6! = 720$ arrangements.\n\nTotal: $2 \\times 720 = 1440$ seeding arrangements."
+    },
+    {
+      "type": "example",
+      "id": "example-10.26",
+      "number": "10.26",
+      "title": "Survey question order",
+      "problem": "A survey has 12 questions. A researcher wants to give different \nrespondents different orderings to control for order effects. How many \ndifferent surveys are possible if:\n\n1. All questions can be in any order?\n\n2. The first 3 questions must stay at the beginning (in any order \n among themselves)?",
+      "solution": "1. $12! = 479{,}001{,}600$ different orderings\n\n2. First 3 questions among positions 1–3: $3! = 6$ ways.\n Remaining 9 questions in positions 4–12: $9! = 362{,}880$ ways.\n Total: $6 \\times 362{,}880 = 2{,}177{,}280$ orderings."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Addition Principle"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.4",
+      "number": "10.4",
+      "title": "Addition Principle",
+      "content": "If events $A$ and $B$ are mutually exclusive (cannot happen together), \nthen the number of ways $A$ **or** $B$ can occur is:\n\\[\n n(A \\text{ or } B) = n(A) + n(B)\n\\]\nMore generally, for mutually exclusive events $A_1, A_2, \\ldots, A_k$:\n\\[\n n(A_1 \\text{ or } A_2 \\text{ or } \\cdots \\text{ or } A_k) = n(A_1) + n(A_2) + \\cdots + n(A_k)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-10.27",
+      "number": "10.27",
+      "title": "Course selection",
+      "problem": "A student must take either a math course or a science course (but not \nboth). There are 4 math courses and 5 science courses available. How \nmany choices does the student have?",
+      "solution": "Math or Science: $4 + 5 = 9$ choices."
+    },
+    {
+      "type": "example",
+      "id": "example-10.28",
+      "number": "10.28",
+      "title": "Creating a committee",
+      "problem": "A club wants to form either a 3-person committee or a 4-person committee \nfrom its 10 members. How many different committees are possible?",
+      "solution": "3-person committees: $\\binom{10}{3} = 120$\n\n4-person committees: $\\binom{10}{4} = 210$\n\nTotal: $120 + 210 = 330$ possible committees."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Counting with Restrictions"
+    },
+    {
+      "type": "paragraph",
+      "text": "When counting with restrictions, we often use complementary counting: \ncount all arrangements, then subtract those that violate the restriction."
+    },
+    {
+      "type": "example",
+      "id": "example-10.29",
+      "number": "10.29",
+      "title": "Digits with restrictions",
+      "problem": "How many 4-digit numbers (from 1000 to 9999) have at least one repeated \ndigit?",
+      "solution": "Total 4-digit numbers: $9 \\times 10 \\times 10 \\times 10 = 9000$ (first \ndigit can't be 0).\n\nNumbers with NO repeated digits: $9 \\times 9 \\times 8 \\times 7 = 4536$ \n(first digit: 1–9; second: any except first; etc.).\n\nNumbers with at least one repeat: $9000 - 4536 = 4464$"
+    },
+    {
+      "type": "example",
+      "id": "example-10.30",
+      "number": "10.30",
+      "title": "Seating restrictions",
+      "problem": "Five boys and four girls are to be seated in a row. In how many ways \ncan this be done if no two girls sit together?",
+      "solution": "First, arrange the 5 boys: $5! = 120$ ways.\n\nThis creates 6 gaps: \\_ B \\_ B \\_ B \\_ B \\_ B \\_\n\nPlace 4 girls in 4 of these 6 gaps: $P(6, 4) = 360$ ways.\n\nTotal: $120 \\times 360 = 43{,}200$ ways."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Fundamental Counting**"
+    },
+    {
+      "type": "paragraph",
+      "text": "A cafeteria offers 3 types of soup, 5 types of sandwiches, 4 types of \nsides, and 6 types of drinks. How many different lunch combinations \nare possible (one of each)?"
+    },
+    {
+      "type": "paragraph",
+      "text": "How many 5-letter \"words\" can be formed from the 26 letters if:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Letters can repeat?",
+        "Letters cannot repeat?",
+        "The word must start with a vowel and end with a consonant?"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "A license plate has 2 letters followed by 4 digits. How many plates \nare possible if the first letter cannot be O or I (easily confused \nwith 0 and 1)?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A PIN code is 4 digits. How many PINs are possible if:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Digits can repeat?",
+        "No digit can repeat?",
+        "The PIN cannot start with 0?"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "**Factorials**"
+    },
+    {
+      "type": "paragraph",
+      "text": "Simplify without a calculator:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\frac{12!}{10!}$ (b) $\\frac{100!}{99!}$ \n (c) $\\frac{n!}{(n-3)!}$ (d) $\\frac{(2n)!}{(2n-2)!}$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "Solve for $n$:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "$\\frac{n!}{(n-2)!} = 56$",
+        "$(n+1)! = 42 \\cdot (n-1)!$"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "**Permutations**"
+    },
+    {
+      "type": "paragraph",
+      "text": "Evaluate: (a) $P(9, 4)$ (b) $P(7, 7)$ (c) $P(15, 2)$"
+    },
+    {
+      "type": "paragraph",
+      "text": "In how many ways can 6 students be seated in 6 chairs in a row?"
+    },
+    {
+      "type": "paragraph",
+      "text": "From 10 candidates, a president, vice-president, secretary, and \ntreasurer must be chosen. How many ways can this be done?"
+    },
+    {
+      "type": "paragraph",
+      "text": "How many different 3-letter radio station call letters can be formed \nif the first letter must be K or W?"
+    },
+    {
+      "type": "paragraph",
+      "text": "In a race with 12 runners, how many different ways can the top 4 \nfinishers be ordered?"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Permutations with Repetition**"
+    },
+    {
+      "type": "paragraph",
+      "text": "How many distinguishable arrangements are there of:"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "TENNESSEE",
+        "BOOKKEEPER",
+        "ABRACADABRA"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "A signal is made using 5 red flags, 3 white flags, and 2 blue flags \narranged in a line. How many different signals are possible?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A delivery truck must visit 3 stores in city A, 2 stores in city B, \nand 4 stores in city C. If the stores within each city are visited \nconsecutively, how many different routes are possible?"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Circular Permutations**"
+    },
+    {
+      "type": "paragraph",
+      "text": "In how many ways can 8 people be seated around a circular table?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Six keys are to be placed on a circular key ring. How many distinct \narrangements are possible?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A committee of 5 people sits around a round table. If two specific \nmembers must sit next to each other, how many arrangements are possible?"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Applications**"
+    },
+    {
+      "type": "paragraph",
+      "text": "A password must be 8 characters using letters (upper and lower case) \nand digits. How many passwords are possible if the password must \ncontain at least one digit?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A DNA strand of length 8 consists of nucleotides A, T, G, C. How many \nstrands have exactly 2 A's, 2 T's, 2 G's, and 2 C's?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A scientist is studying genetic sequences. A gene \nconsists of 1000 nucleotides, each of which is A, T, G, or C. Express \nthe number of possible genes as a power of 4."
+    },
+    {
+      "type": "paragraph",
+      "text": "In how many ways can the letters of PROBABILITY be arranged?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Five couples attend a dinner. In how many ways can they be seated \naround a circular table if each couple must sit together?"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Challenge Problems**"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Luke 12:7",
+      "text": "Indeed, the very hairs of your head are all \nnumbered. Don't be afraid; you are worth more than many sparrows."
+    },
+    {
+      "type": "scripture",
+      "reference": "Genesis 22:17",
+      "text": "I will surely bless you and make your \ndescendants as numerous as the stars in the sky and as the sand on \nthe seashore."
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 14:40",
+      "text": "But everything should be done in \na fitting and orderly way."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:1",
+      "text": "There is a time for everything, and \na season for every activity under the heavens."
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+{
+  "id": "complex-analysis-ch07-sec02",
+  "title": "The Residue Theorem",
+  "chapter": 7,
+  "section": 2,
+  "book": "complex-analysis",
+  "epigraph": {
+    "text": "By their fruit you will recognize them.",
+    "reference": "Matthew 7:16",
+    "quote": "The Residue Theorem is the most useful theorem in complex analysis.",
+    "quoteAuthor": "Augustin-Louis Cauchy"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The Residue Theorem unifies all our work on contour integration. It \nexpresses any closed contour integral in terms of residues."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Residue Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Residue Theorem",
+      "content": "Let $f$ be analytic inside and on a simple closed contour $\\gamma$, \nexcept for isolated singularities $z_1, z_2, \\ldots, z_n$ inside $\\gamma$. \nThen\n\\[\n \\oint_\\gamma f(z)\\,dz = 2\\pi i \\sum_{k=1}^{n} \\Res_{z_k}(f).\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Surround each $z_k$ with a small circle $C_k$. By the deformation principle:\n\\[\n \\oint_\\gamma f = \\sum_{k=1}^{n} \\oint_{C_k} f.\n\\]\nEach $\\oint_{C_k} f = 2\\pi i \\cdot \\Res_{z_k}(f)$ by the definition of \nresidue."
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": null,
+      "problem": "Compute $\\displaystyle\\oint_{|z|=2} \\frac{dz}{z^2 - 1}$.",
+      "solution": "The integrand has simple poles at $z = 1$ and $z = -1$, both inside $|z| = 2$.\n\n$\\Res_1\\left(\\frac{1}{z^2-1}\\right) = \\lim_{z \\to 1}\\frac{z-1}{z^2-1} = \\lim_{z \\to 1}\\frac{1}{z+1} = \\frac{1}{2}$.\n\n$\\Res_{-1}\\left(\\frac{1}{z^2-1}\\right) = \\lim_{z \\to -1}\\frac{z+1}{z^2-1} = \\lim_{z \\to -1}\\frac{1}{z-1} = -\\frac{1}{2}$.\n\nBy the Residue Theorem:\n\\[\n \\oint_{|z|=2} \\frac{dz}{z^2 - 1} = 2\\pi i\\left(\\frac{1}{2} - \\frac{1}{2}\\right) = 0.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "More Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": null,
+      "problem": "Compute $\\displaystyle\\oint_{|z|=2} \\frac{e^z}{z(z-1)^2}\\,dz$.",
+      "solution": "Singularities: simple pole at $z = 0$, pole of order 2 at $z = 1$.\n\nAt $z = 0$: $\\Res_0 = \\lim_{z \\to 0} z \\cdot \\frac{e^z}{z(z-1)^2} = \\frac{e^0}{(-1)^2} = 1$.\n\nAt $z = 1$: $\\Res_1 = \\frac{d}{dz}\\left[(z-1)^2 \\cdot \\frac{e^z}{z(z-1)^2}\\right]_{z=1} = \\frac{d}{dz}\\left[\\frac{e^z}{z}\\right]_{z=1}$.\n\n$\\frac{d}{dz}\\left(\\frac{e^z}{z}\\right) = \\frac{ze^z - e^z}{z^2} = \\frac{e^z(z-1)}{z^2}$.\n\nAt $z = 1$: $\\frac{e^1(0)}{1} = 0$.\n\nThus $\\oint_{|z|=2} \\frac{e^z}{z(z-1)^2}\\,dz = 2\\pi i(1 + 0) = 2\\pi i$."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 12:12",
+      "text": "For just as the body is one and \nhas many members, and all the members of the body, though many, are one \nbody, so it is with Christ."
+    },
+    {
+      "type": "quote",
+      "author": "Lars Ahlfors",
+      "text": "The residue theorem reduces integration to \nalgebra."
+    }
+  ]
+}

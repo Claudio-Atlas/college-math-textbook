@@ -1,0 +1,87 @@
+{
+  "id": "real-analysis-ch07-sec01",
+  "title": "Definition of the Riemann Integral",
+  "chapter": 7,
+  "section": 1,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Partitions and Riemann Sums"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.1",
+      "number": "7.1",
+      "title": "Partition",
+      "content": "A **partition** of $[a, b]$ is a finite set \n$P = \\{x_0, x_1, \\ldots, x_n\\}$ with\n\\[\na = x_0 < x_1 < x_2 < \\cdots < x_n = b.\n\\]\nThe **norm** or **mesh** of $P$ is \n$\\|P\\| = \\max_{1 \\leq i \\leq n} (x_i - x_{i-1})$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.2",
+      "number": "7.2",
+      "title": "Riemann Sum",
+      "content": "Given a partition $P$ and a bounded function $f$ on $[a, b]$, a \n**Riemann sum** is any sum of the form\n\\[\nS(f, P) = \\sum_{i=1}^{n} f(t_i)(x_i - x_{i-1})\n\\]\nwhere $t_i \\in [x_{i-1}, x_i]$ is a **sample point** in each subinterval."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Upper and Lower Sums"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.3",
+      "number": "7.3",
+      "title": "Upper and Lower Sums",
+      "content": "For a bounded function $f$ on $[a, b]$ and partition $P$, define:\n$$\nM_i &= \\sup\\{f(x) : x \\in [x_{i-1}, x_i]\\} \\\\\nm_i &= \\inf\\{f(x) : x \\in [x_{i-1}, x_i]\\}\n$$\nThe **upper sum** is $U(f, P) = \\sum_{i=1}^n M_i(x_i - x_{i-1})$.\n\nThe **lower sum** is $L(f, P) = \\sum_{i=1}^n m_i(x_i - x_{i-1})$."
+    },
+    {
+      "type": "paragraph",
+      "text": "For any Riemann sum with partition $P$: $L(f, P) \\leq S(f, P) \\leq U(f, P)$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Refinement Lemma",
+      "content": "If $Q$ is a refinement of $P$ (i.e., $P \\subseteq Q$), then\n\\[\nL(f, P) \\leq L(f, Q) \\leq U(f, Q) \\leq U(f, P).\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Adding a single point to $P$ cannot decrease the lower sum (we take inf \nover smaller sets) or increase the upper sum. Apply inductively."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Riemann Integral"
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.4",
+      "number": "7.4",
+      "title": "Upper and Lower Integrals",
+      "content": "The **upper integral** and **lower integral** are\n$$\n\\overline{\\int_a^b} f &= \\inf\\{U(f, P) : P \\text{ is a partition of } [a,b]\\} \\\\\n\\underline{\\int_a^b} f &= \\sup\\{L(f, P) : P \\text{ is a partition of } [a,b]\\}\n$$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "Upper Integral $\\geq$ Lower Integral",
+      "content": "For any bounded function $f$ on $[a, b]$:\n\\[\n\\underline{\\int_a^b} f \\leq \\overline{\\int_a^b} f.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "For any partitions $P$ and $Q$, let $R = P \\cup Q$. Then \n$L(f, P) \\leq L(f, R) \\leq U(f, R) \\leq U(f, Q)$. Thus every lower sum \nis $\\leq$ every upper sum. Taking sup and inf gives the result."
+    },
+    {
+      "type": "definition",
+      "id": "definition-7.5",
+      "number": "7.5",
+      "title": "Riemann Integrable",
+      "content": "A bounded function $f$ on $[a, b]$ is **Riemann integrable** \nif $\\underline{\\int_a^b} f = \\overline{\\int_a^b} f$. In this case, the common \nvalue is denoted $\\int_a^b f(x)\\,dx$ or $\\int_a^b f$."
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "id": "abstract-algebra-ch09-sec01",
+  "title": "Integral Domains",
+  "chapter": 9,
+  "section": 1,
+  "book": "abstract-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Blessed are the pure in heart, for they will see \nGod.\"*{Matthew 5:8}{*\"An integral domain admits no conspiracies: nonzero elements cannot multiply to zero.\"*}{Richard Dedekind}\n\n*\"An integral domain is a ring with integrity—no zero divisors.\"*{— Algebraic principle}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Integral domains occupy a privileged position in ring theory. They are \nrings where multiplication behaves \"honestly\"—nonzero elements cannot \nconspire to produce zero."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition and Examples"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.1",
+      "number": "9.1",
+      "title": "Integral Domain",
+      "content": "An **integral domain** is a commutative ring \nwith unity $1 \\neq 0$ that has no zero divisors. Equivalently: if \n$ab = 0$, then $a = 0$ or $b = 0$."
+    },
+    {
+      "type": "example",
+      "id": "example-9.1",
+      "number": "9.1",
+      "title": "Integral domains",
+      "problem": "- $\\Z$ — the prototypical integral domain\n\n- Any field ($\\Q$, $\\R$, $\\C$, $\\Z_p$ for prime $p$)\n\n- $\\Z[x]$ — polynomials over an integral domain\n\n- $\\Z[i]$ — the Gaussian integers\n\n- $\\Z[\\sqrt{d}]$ for $d$ square-free",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-9.2",
+      "number": "9.2",
+      "title": "Non-examples",
+      "problem": "- $\\Z_6$: $2 \\cdot 3 = 0$ but $2 \\neq 0$ and $3 \\neq 0$\n\n- $\\Z \\times \\Z$: $(1, 0) \\cdot (0, 1) = (0, 0)$\n\n- $M_n(R)$ for $n \\geq 2$: matrices with zero product exist",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Cancellation Property"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.1",
+      "number": "9.1",
+      "title": "Cancellation Law",
+      "content": "In an integral domain $D$, if $ab = ac$ and $a \\neq 0$, then $b = c$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$ab = ac$ implies $ab - ac = 0$, so $a(b - c) = 0$. Since $a \\neq 0$ \nand $D$ has no zero divisors, $b - c = 0$, hence $b = c$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Finite Integral Domains"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.2",
+      "number": "9.2",
+      "title": "Finite Integral Domain is a Field",
+      "content": "Every finite integral domain is a field.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $D$ be a finite integral domain with $|D| = n$, and let $a \\in D$ \nbe nonzero. Consider the function $\\phi: D \\to D$ defined by \n$\\phi(x) = ax$.\n\nBy cancellation, $\\phi$ is injective: if $ax = ay$, then $x = y$.\n\nSince $D$ is finite, an injection from $D$ to itself is a bijection.\n\nThus $\\phi$ is surjective: there exists $b \\in D$ with $ab = 1$.\n\nHence $a$ has a multiplicative inverse."
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-9.1",
+      "number": "9.1",
+      "title": "",
+      "content": "$\\Z_n$ is a field if and only if $n$ is prime.",
+      "label": "Corollary"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Characteristic"
+    },
+    {
+      "type": "definition",
+      "id": "definition-9.2",
+      "number": "9.2",
+      "title": "Characteristic",
+      "content": "The **characteristic** of a ring $R$, denoted \n$\\text{char}(R)$, is the smallest positive integer $n$ such that \n$n \\cdot 1 = 0$, or $0$ if no such $n$ exists."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-9.3",
+      "number": "9.3",
+      "title": "Characteristic of an Integral Domain",
+      "content": "The characteristic of an integral domain is either $0$ or a prime $p$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Suppose $\\text{char}(D) = n > 0$. If $n = ab$ with $1 < a, b < n$, then \n$(a \\cdot 1)(b \\cdot 1) = n \\cdot 1 = 0$. Since $D$ is a domain, \n$a \\cdot 1 = 0$ or $b \\cdot 1 = 0$, contradicting the minimality of $n$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Prove that $\\Z[\\sqrt{-5}]$ is an integral domain.",
+        "Find the characteristic of $\\Z_7$, $\\Q$, and $\\Z_2[x]$.",
+        "Show that a subring of an integral domain is an integral domain.",
+        "Prove that if $D$ is an integral domain, then so is $D[x]$.",
+        "Find all zero divisors in $\\Z[\\sqrt{10}]$ (there are none—prove it)."
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 11:3",
+      "text": "The integrity of the upright guides them, \nbut the unfaithful are destroyed by their duplicity."
+    }
+  ]
+}

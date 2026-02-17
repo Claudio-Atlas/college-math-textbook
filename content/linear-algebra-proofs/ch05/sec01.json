@@ -1,0 +1,146 @@
+{
+  "id": "linear-algebra-proofs-ch05-sec01",
+  "title": "Inner Products",
+  "chapter": 5,
+  "section": 1,
+  "book": "linear-algebra-proofs",
+  "content": [
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Inner Product (Real)",
+      "content": "An **inner product** on a real vector space $V$ \nis a function $\\langle \\cdot, \\cdot \\rangle: V \\times V \\to \\RR$ satisfying:\n\n1. **Symmetry:** $\\langle u, v \\rangle = \\langle v, u \\rangle$\n\n2. **Linearity in first argument:** $\\langle \\alpha u + \\beta v, w \\rangle = \\alpha\\langle u, w \\rangle + \\beta\\langle v, w \\rangle$\n\n3. **Positive definiteness:** $\\langle v, v \\rangle \\geq 0$, with equality iff $v = 0$\nA real vector space with an inner product is a **real inner product space**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.2",
+      "number": "5.2",
+      "title": "Inner Product (Complex)",
+      "content": "An **inner product** on a complex vector space $V$ is a function \n$\\langle \\cdot, \\cdot \\rangle: V \\times V \\to \\CC$ satisfying:\n\n1. **Conjugate symmetry:** $\\langle u, v \\rangle = \\overline{\\langle v, u \\rangle}$\n\n2. **Linearity in first argument:** $\\langle \\alpha u + \\beta v, w \\rangle = \\alpha\\langle u, w \\rangle + \\beta\\langle v, w \\rangle$\n\n3. **Positive definiteness:** $\\langle v, v \\rangle \\geq 0$ (real), with equality iff $v = 0$"
+    },
+    {
+      "type": "remark",
+      "id": "remark-5.1",
+      "number": null,
+      "title": "",
+      "content": "Conjugate symmetry and linearity in the first argument imply \n**conjugate-linearity** in the second: \n$\\langle u, \\alpha v + \\beta w \\rangle = \\conj{\\alpha}\\langle u, v \\rangle + \\conj{\\beta}\\langle u, w \\rangle$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Standard Inner Products",
+      "problem": "1. On $\\RR^n$: $\\langle x, y \\rangle = \\sum_{i=1}^n x_i y_i = x^T y$\n\n2. On $\\CC^n$: $\\langle x, y \\rangle = \\sum_{i=1}^n x_i \\conj{y_i} = y^* x$\n\n3. On $C([a,b])$: $\\langle f, g \\rangle = \\int_a^b f(x)g(x)\\, dx$",
+      "solution": ""
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.3",
+      "number": "5.3",
+      "title": "Norm and Distance",
+      "content": "The **norm** induced by an inner product is \n$\\|v\\| = \\sqrt{\\langle v, v \\rangle}$.\n\nThe **distance** between $u$ and $v$ is $d(u, v) = \\|u - v\\|$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.4",
+      "number": "5.4",
+      "title": "Orthogonality",
+      "content": "Vectors $u$ and $v$ are **orthogonal**, written \n$u \\perp v$, if $\\langle u, v \\rangle = 0$.\n\nA set $S$ is **orthogonal** if any two distinct vectors in $S$ \nare orthogonal. It is **orthonormal** if, \nadditionally, every vector has norm 1."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Pythagorean Theorem",
+      "content": "If $u \\perp v$, then $\\|u + v\\|^2 = \\|u\\|^2 + \\|v\\|^2$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$\\|u + v\\|^2 = \\langle u+v, u+v \\rangle = \\|u\\|^2 + 2\\Re\\langle u, v \\rangle + \\|v\\|^2 = \\|u\\|^2 + \\|v\\|^2$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Cauchy-Schwarz Inequality",
+      "content": "For all $u, v$ in an inner product space:\n\\[\n|\\langle u, v \\rangle| \\leq \\|u\\| \\cdot \\|v\\|\n\\]\nEquality holds if and only if $u$ and $v$ are linearly dependent.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If $v = 0$, both sides are 0. Otherwise, let $t = \\langle u, v \\rangle / \\|v\\|^2$. Then\n$$\n0 \\leq \\|u - tv\\|^2 &= \\|u\\|^2 - 2\\Re(t\\langle u, v \\rangle) + |t|^2\\|v\\|^2 \\\\\n&= \\|u\\|^2 - \\frac{|\\langle u, v \\rangle|^2}{\\|v\\|^2}\n$$\nRearranging gives $|\\langle u, v \\rangle|^2 \\leq \\|u\\|^2 \\|v\\|^2$.\n\nEquality holds iff $u = tv$, i.e., $u$ and $v$ are linearly dependent."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.3",
+      "number": "5.3",
+      "title": "Orthogonal Sets are Independent",
+      "content": "Any orthogonal set of nonzero vectors is linearly independent.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $(v_1, \\ldots, v_n)$ be orthogonal with each $v_i \\neq 0$. \nSuppose $\\sum \\alpha_i v_i = 0$. Taking inner product with $v_j$:\n\\[\n0 = \\left\\langle \\sum_i \\alpha_i v_i, v_j \\right\\rangle = \\sum_i \\alpha_i \\langle v_i, v_j \\rangle = \\alpha_j \\|v_j\\|^2\n\\]\nSince $\\|v_j\\|^2 \\neq 0$, we have $\\alpha_j = 0$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.4",
+      "number": "5.4",
+      "title": "Gram-Schmidt Orthonormalization",
+      "content": "Let $(v_1, \\ldots, v_n)$ be a linearly independent list in an inner \nproduct space. There exists an orthonormal list $(e_1, \\ldots, e_n)$ such that\n\\[\n\\spn\\{e_1, \\ldots, e_k\\} = \\spn\\{v_1, \\ldots, v_k\\}\n\\]\nfor each $k = 1, \\ldots, n$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We construct the $e_j$ recursively.\n\nSet $u_1 = v_1$ and $e_1 = u_1/\\|u_1\\|$.\n\nFor $j > 1$, define\n\\[\nu_j = v_j - \\sum_{i=1}^{j-1} \\langle v_j, e_i \\rangle e_i\n\\]\nand $e_j = u_j/\\|u_j\\|$.\n\nWe verify: $u_j \\neq 0$ since $v_j \\notin \\spn\\{v_1, \\ldots, v_{j-1}\\} = \\spn\\{e_1, \\ldots, e_{j-1}\\}$.\n\nFor $i < j$: $\\langle u_j, e_i \\rangle = \\langle v_j, e_i \\rangle - \\langle v_j, e_i \\rangle = 0$.\n\nThus $(e_1, \\ldots, e_n)$ is orthonormal, and the span conditions hold by construction."
+    },
+    {
+      "type": "corollary",
+      "id": "corollary-5.1",
+      "number": "5.1",
+      "title": "Orthonormal Bases Exist",
+      "content": "Every finite-dimensional inner product space has an orthonormal basis.",
+      "label": "Corollary"
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.5",
+      "number": "5.5",
+      "title": "Orthogonal Complement",
+      "content": "For a subset $S$ of an inner product space $V$:\n\\[\nS^\\perp = \\{v \\in V : \\langle v, s \\rangle = 0 \\text{ for all } s \\in S\\}\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.5",
+      "number": "5.5",
+      "title": "Properties of Orthogonal Complements",
+      "content": "Let $W$ be a finite-dimensional subspace of an inner product space $V$. Then:\n\n1. $W^\\perp$ is a subspace\n\n2. $V = W \\oplus W^\\perp$\n\n3. $(W^\\perp)^\\perp = W$\n\n4. $\\dim W + \\dim W^\\perp = \\dim V$ (when $V$ is finite-dimensional)",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "(a) Standard subspace verification using linearity of inner product.\n\n(b) First, $W \\cap W^\\perp = \\{0\\}$: if $v \\in W \\cap W^\\perp$, then \n$\\langle v, v \\rangle = 0$, so $v = 0$.\n\nFor $V = W + W^\\perp$: let $(e_1, \\ldots, e_k)$ be an orthonormal basis \nfor $W$. For any $v \\in V$, define\n\\[\nw = \\sum_{i=1}^k \\langle v, e_i \\rangle e_i \\in W\n\\]\nThen $v - w \\in W^\\perp$ (check: $\\langle v - w, e_j \\rangle = 0$), \nso $v = w + (v - w) \\in W + W^\\perp$.\n\n(c) Clearly $W \\subseteq (W^\\perp)^\\perp$. By (d), dimensions are equal.\n\n(d) Follows from $V = W \\oplus W^\\perp$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.6",
+      "number": "5.6",
+      "title": "Orthogonal Projection",
+      "content": "The **orthogonal projection** of $v$ \nonto a subspace $W$ is the unique $w \\in W$ such that $v - w \\in W^\\perp$.\n\nIf $(e_1, \\ldots, e_k)$ is an orthonormal basis for $W$:\n\\[\n\\proj_W(v) = \\sum_{i=1}^k \\langle v, e_i \\rangle e_i\n\\]"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.6",
+      "number": "5.6",
+      "title": "Best Approximation",
+      "content": "The orthogonal projection $\\proj_W(v)$ is the closest point in $W$ to $v$:\n\\[\n\\|v - \\proj_W(v)\\| \\leq \\|v - w\\| \\quad \\text{for all } w \\in W\n\\]\nwith equality iff $w = \\proj_W(v)$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $p = \\proj_W(v)$. For any $w \\in W$:\n\\[\n\\|v - w\\|^2 = \\|(v - p) + (p - w)\\|^2 = \\|v - p\\|^2 + \\|p - w\\|^2\n\\]\nby Pythagorean theorem (since $v - p \\perp W \\ni p - w$).\n\nThus $\\|v - w\\|^2 \\geq \\|v - p\\|^2$, with equality iff $p = w$."
+    }
+  ]
+}

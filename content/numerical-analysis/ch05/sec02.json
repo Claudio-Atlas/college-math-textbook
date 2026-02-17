@@ -1,0 +1,184 @@
+{
+  "id": "numerical-analysis-ch05-sec02",
+  "title": "Higher-Order Derivatives and Formulas",
+  "chapter": 5,
+  "section": 2,
+  "book": "numerical-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Many applications require approximations to the second derivative or \nhigher, and often we need first-derivative approximations more accurate \nthan $\\bigo{h^2}$. In this section, we develop systematic methods for \nconstructing finite difference formulas of arbitrary order."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Second Derivative"
+    },
+    {
+      "type": "paragraph",
+      "text": "The most important higher derivative formula approximates $f''(x)$ \nusing three symmetrically placed points."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.1",
+      "number": "5.1",
+      "title": "Three-Point Second Derivative Formula",
+      "content": "For $f \\in C^4[a,b]$ and $x \\pm h \\in [a,b]$, there exists \n$\\xi \\in (x-h, x+h)$ such that\n\\[\n\\frac{f(x+h) - 2f(x) + f(x-h)}{h^2} = f''(x) + \\frac{h^2}{12}f^{(4)}(\\xi).\n\\]\nThe truncation error is $\\bigo{h^2}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Using Taylor expansions to fourth order:\n$$\nf(x+h) &= f(x) + hf'(x) + \\frac{h^2}{2}f''(x) + \\frac{h^3}{6}f'''(x) \n+ \\frac{h^4}{24}f^{(4)}(\\xi_1), \\\\\nf(x-h) &= f(x) - hf'(x) + \\frac{h^2}{2}f''(x) - \\frac{h^3}{6}f'''(x) \n+ \\frac{h^4}{24}f^{(4)}(\\xi_2).\n$$\n\nAdding these equations:\n\\[\nf(x+h) + f(x-h) = 2f(x) + h^2 f''(x) + \\frac{h^4}{24}[f^{(4)}(\\xi_1) + f^{(4)}(\\xi_2)].\n\\]\n\nBy the Intermediate Value Theorem, there exists $\\xi \\in (x-h, x+h)$ with \n$f^{(4)}(\\xi) = \\frac{1}{2}[f^{(4)}(\\xi_1) + f^{(4)}(\\xi_2)]$. Thus:\n\\[\n\\frac{f(x+h) - 2f(x) + f(x-h)}{h^2} = f''(x) + \\frac{h^2}{12}f^{(4)}(\\xi). \\qedhere\n\\]"
+    },
+    {
+      "type": "remark",
+      "id": "remark-5.2",
+      "number": null,
+      "title": "",
+      "content": "Notice that the formula for $f''(x)$ divides by $h^2$. When $h$ is small, \nthis amplifies round-off errors even more severely than for $f'(x)$."
+    },
+    {
+      "type": "example",
+      "id": "example-5.1",
+      "number": "5.1",
+      "title": "Second Derivative Approximation",
+      "problem": "Approximate $f''(1)$ for $f(x) = e^x$ using $h = 0.1, 0.01, 0.001$.",
+      "solution": "The exact value is $f''(1) = e^1 \\approx 2.71828$.\n\nFor $h = 0.1$:\n\\[\n\\frac{e^{1.1} - 2e^1 + e^{0.9}}{0.01} = \\frac{3.00417 - 5.43656 + 2.45960}{0.01} \n= 2.7207.\n\\]\nError: $0.0024$.\n\nFor $h = 0.01$:\n\\[\n\\frac{e^{1.01} - 2e^1 + e^{0.99}}{0.0001} = 2.71831.\n\\]\nError: $0.000023$.\n\nFor $h = 0.001$:\n\\[\n\\frac{e^{1.001} - 2e^1 + e^{0.999}}{0.000001} = 2.71828.\n\\]\nError: $0.00000023$.\n\nThe error decreases by a factor of about 100 each time $h$ is divided \nby 10, confirming $\\bigo{h^2}$ convergence."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Third and Fourth Derivatives"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.2",
+      "number": "5.2",
+      "title": "Third Derivative Formulas",
+      "content": "For $f \\in C^5$, the central difference approximation to $f'''(x)$ is:\n\\[\nf'''(x) \\approx \\frac{f(x+2h) - 2f(x+h) + 2f(x-h) - f(x-2h)}{2h^3}\n\\]\nwith truncation error $\\bigo{h^2}$.\n\nUsing only forward differences:\n\\[\nf'''(x) \\approx \\frac{f(x+3h) - 3f(x+2h) + 3f(x+h) - f(x)}{h^3}\n\\]\nwith truncation error $\\bigo{h}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.3",
+      "number": "5.3",
+      "title": "Fourth Derivative Formula",
+      "content": "For $f \\in C^6$, the central difference approximation to $f^{(4)}(x)$ is:\n\\[\nf^{(4)}(x) \\approx \\frac{f(x+2h) - 4f(x+h) + 6f(x) - 4f(x-h) + f(x-2h)}{h^4}\n\\]\nwith truncation error $\\bigo{h^2}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We apply the second derivative formula recursively. Let \n$g(x) = f''(x)$. Then\n\\[\nf^{(4)}(x) = g''(x) \\approx \\frac{g(x+h) - 2g(x) + g(x-h)}{h^2}.\n\\]\n\nSubstituting the approximation $g(y) \\approx \\frac{f(y+h) - 2f(y) + f(y-h)}{h^2}$:\n$$\nf^{(4)}(x) &\\approx \\frac{1}{h^2} \\cdot \\frac{1}{h^2}\\Big[\n[f(x+2h) - 2f(x+h) + f(x)] \\\\\n&\\quad - 2[f(x+h) - 2f(x) + f(x-h)] \\\\\n&\\quad + [f(x) - 2f(x-h) + f(x-2h)]\\Big] \\\\\n&= \\frac{f(x+2h) - 4f(x+h) + 6f(x) - 4f(x-h) + f(x-2h)}{h^4}. \\qedhere\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Three-Point First Derivative Formulas"
+    },
+    {
+      "type": "paragraph",
+      "text": "Using three points, we can achieve second-order accuracy even with \none-sided formulas, which is essential near boundaries."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.4",
+      "number": "5.4",
+      "title": "Three-Point Forward Formula",
+      "content": "For $f \\in C^3$:\n\\[\nf'(x_0) = \\frac{-3f(x_0) + 4f(x_0+h) - f(x_0+2h)}{2h} + \\frac{h^2}{3}f'''(\\xi)\n\\]\nfor some $\\xi \\in (x_0, x_0+2h)$. The truncation error is $\\bigo{h^2}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $P(x)$ be the quadratic polynomial interpolating $f$ at \n$x_0$, $x_0+h$, $x_0+2h$. By Lagrange interpolation:\n\\[\nP(x) = f(x_0) \\frac{(x-x_0-h)(x-x_0-2h)}{(-h)(-2h)} \n+ f(x_0+h) \\frac{(x-x_0)(x-x_0-2h)}{h(-h)}\n+ f(x_0+2h) \\frac{(x-x_0)(x-x_0-h)}{2h \\cdot h}.\n\\]\n\nDifferentiating and evaluating at $x = x_0$:\n$$\nP'(x_0) &= f(x_0) \\frac{-h + (-2h)}{2h^2} \n+ f(x_0+h) \\frac{-2h}{-h^2}\n+ f(x_0+2h) \\frac{-h}{2h^2} \\\\\n&= f(x_0) \\cdot \\frac{-3}{2h} + f(x_0+h) \\cdot \\frac{2}{h} \n+ f(x_0+2h) \\cdot \\frac{-1}{2h} \\\\\n&= \\frac{-3f(x_0) + 4f(x_0+h) - f(x_0+2h)}{2h}.\n$$\n\nThe error follows from the interpolation error formula."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.5",
+      "number": "5.5",
+      "title": "Three-Point Backward Formula",
+      "content": "For $f \\in C^3$:\n\\[\nf'(x_0) = \\frac{f(x_0-2h) - 4f(x_0-h) + 3f(x_0)}{2h} + \\frac{h^2}{3}f'''(\\eta)\n\\]\nfor some $\\eta \\in (x_0-2h, x_0)$. The truncation error is $\\bigo{h^2}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-5.2",
+      "number": "5.2",
+      "title": "Boundary Derivative Approximation",
+      "problem": "Given $f(0) = 1$, $f(0.1) = 1.1052$, $f(0.2) = 1.2214$ for $f(x) = e^x$, \napproximate $f'(0)$.",
+      "solution": "Using the three-point forward formula:\n\\[\nf'(0) \\approx \\frac{-3(1) + 4(1.1052) - 1.2214}{0.2} \n= \\frac{-3 + 4.4208 - 1.2214}{0.2} = \\frac{0.1994}{0.2} = 0.997.\n\\]\n\nThe exact value is $f'(0) = 1$, so the error is approximately $0.003$.\n\nCompare with the two-point forward difference:\n\\[\nf'(0) \\approx \\frac{1.1052 - 1}{0.1} = 1.052,\n\\]\nwhich has error $0.052$—about 17 times larger."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Five-Point Formulas"
+    },
+    {
+      "type": "paragraph",
+      "text": "Using five points, we can achieve fourth-order accuracy."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.6",
+      "number": "5.6",
+      "title": "Five-Point Central First Derivative",
+      "content": "For $f \\in C^5$:\n\\[\nf'(x) = \\frac{f(x-2h) - 8f(x-h) + 8f(x+h) - f(x+2h)}{12h} + \\frac{h^4}{30}f^{(5)}(\\xi)\n\\]\nfor some $\\xi \\in (x-2h, x+2h)$. The truncation error is $\\bigo{h^4}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We seek coefficients $a$, $b$, $c$, $d$, $e$ such that\n\\[\nf'(x) \\approx \\frac{1}{h}[af(x-2h) + bf(x-h) + cf(x) + df(x+h) + ef(x+2h)]\n\\]\nis exact for polynomials up to degree 4. Expanding each $f(x+kh)$ in \nTaylor series and matching coefficients of $f(x)$, $f'(x)$, $f''(x)$, \n$f'''(x)$, $f^{(4)}(x)$ yields the system:\n$$\na + b + c + d + e &= 0 \\quad (\\text{coeff of } f(x)) \\\\\n-2a - b + d + 2e &= 1 \\quad (\\text{coeff of } hf'(x)) \\\\\n4a + b + d + 4e &= 0 \\quad (\\text{coeff of } h^2 f''(x)) \\\\\n-8a - b + d + 8e &= 0 \\quad (\\text{coeff of } h^3 f'''(x)) \\\\\n16a + b + d + 16e &= 0 \\quad (\\text{coeff of } h^4 f^{(4)}(x))\n$$\n\nBy symmetry, $a = -e$ and $b = -d$, and $c = 0$. Solving:\n$a = 1/12$, $b = -8/12$, $d = 8/12$, $e = -1/12$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.7",
+      "number": "5.7",
+      "title": "Five-Point Central Second Derivative",
+      "content": "For $f \\in C^6$:\n\\[\nf''(x) = \\frac{-f(x-2h) + 16f(x-h) - 30f(x) + 16f(x+h) - f(x+2h)}{12h^2} \n+ \\frac{h^4}{90}f^{(6)}(\\xi).\n\\]\nThe truncation error is $\\bigo{h^4}$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Method of Undetermined Coefficients"
+    },
+    {
+      "type": "paragraph",
+      "text": "The derivation of the five-point formula illustrates a general technique."
+    },
+    {
+      "type": "definition",
+      "id": "definition-5.1",
+      "number": "5.1",
+      "title": "Method of Undetermined Coefficients",
+      "content": "To find a formula of the form\n\\[\nf^{(m)}(x) \\approx \\frac{1}{h^m}\\sum_{k=-p}^{q} c_k f(x + kh),\n\\]\nwe expand each $f(x+kh)$ in Taylor series, substitute, and require \nthe resulting expression to match $f^{(m)}(x)$ through terms of \ndesired order."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-5.8",
+      "number": "5.8",
+      "title": "Order Conditions",
+      "content": "A formula using $n$ points can achieve at most order $n-1$ accuracy \nfor the first derivative. Specifically, to achieve order $p$, the \ncoefficients must satisfy:\n\\[\n\\sum_{k} c_k k^j = \n\\begin{cases}\n0 & j = 0, 1, \\ldots, m-1, m+1, \\ldots, p+m-1 \\\\\nm! & j = m\n\\end{cases}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-5.3",
+      "number": "5.3",
+      "title": "Deriving a Four-Point Formula",
+      "problem": "Find a formula for $f'(x_0)$ using $f(x_0)$, $f(x_0+h)$, $f(x_0+2h)$, \n$f(x_0+3h)$ that achieves maximum accuracy.",
+      "solution": "We seek $f'(x_0) \\approx \\frac{1}{h}[af_0 + bf_1 + cf_2 + df_3]$ where \n$f_k = f(x_0 + kh)$.\n\nTaylor expansions:\n$$\nf_0 &= f_0, \\\\\nf_1 &= f_0 + hf_0' + \\frac{h^2}{2}f_0'' + \\frac{h^3}{6}f_0''' + \\cdots, \\\\\nf_2 &= f_0 + 2hf_0' + 2h^2 f_0'' + \\frac{4h^3}{3}f_0''' + \\cdots, \\\\\nf_3 &= f_0 + 3hf_0' + \\frac{9h^2}{2}f_0'' + \\frac{9h^3}{2}f_0''' + \\cdots.\n$$\n\nMatching coefficients:\n$$\nf_0: \\quad & a + b + c + d = 0, \\\\\nf_0': \\quad & b + 2c + 3d = 1, \\\\\nf_0'': \\quad & \\frac{1}{2}b + 2c + \\frac{9}{2}d = 0, \\\\\nf_0''': \\quad & \\frac{1}{6}b + \\frac{4}{3}c + \\frac{9}{2}d = 0.\n$$\n\nSolving: $a = -11/6$, $b = 3$, $c = -3/2$, $d = 1/3$.\n\nThus:\n\\[\nf'(x_0) = \\frac{-11f_0 + 18f_1 - 9f_2 + 2f_3}{6h} + \\bigo{h^3}.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Summary of Common Formulas"
+    },
+    {
+      "type": "warning",
+      "id": "warning-5.2",
+      "number": null,
+      "title": "Choosing the Right Formula",
+      "content": "More points do not always mean better results! Higher-order formulas:\n\n- Require more function evaluations\n\n- Are more sensitive to noisy data\n\n- May not be applicable near boundaries\n\n- Have larger round-off error constants\nThe three-point central difference is often the best practical choice."
+    }
+  ]
+}

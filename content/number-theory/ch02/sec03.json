@@ -1,0 +1,110 @@
+{
+  "id": "number-theory-ch02-sec03",
+  "title": "Special Families of Primes",
+  "chapter": 2,
+  "section": 3,
+  "book": "number-theory",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Certain primes have special forms that have attracted particular attention."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Mersenne Primes"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Mersenne Number",
+      "content": "A **Mersenne number** is an integer of the form \n$M_n = 2^n - 1$.\n\nA Mersenne number that is prime is called a **Mersenne prime**."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "Condition for Mersenne Primes",
+      "content": "If $M_n = 2^n - 1$ is prime, then $n$ is prime.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "We prove the contrapositive. If $n = ab$ with $1 < a, b < n$, then\n\\[\n2^n - 1 = 2^{ab} - 1 = (2^a)^b - 1 = (2^a - 1)((2^a)^{b-1} + (2^a)^{b-2} + \\cdots + 1).\n\\]\nSince $1 < 2^a - 1 < 2^n - 1$, $M_n$ is composite."
+    },
+    {
+      "type": "paragraph",
+      "text": "The converse is false: $M_{11} = 2047 = 23 \\times 89$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Known Mersenne Primes",
+      "problem": "The first several Mersenne primes are:\n\\[\nM_2 = 3, \\quad M_3 = 7, \\quad M_5 = 31, \\quad M_7 = 127, \\quad M_{13} = 8191.\n\\]\nAs of 2024, only 51 Mersenne primes are known. The largest known prime is \ntypically a Mersenne prime.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Fermat Primes"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "Fermat Number",
+      "content": "A **Fermat number** is an integer of the form \n$F_n = 2^{2^n} + 1$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Condition for Fermat Numbers",
+      "content": "If $2^m + 1$ is prime for $m \\geq 1$, then $m$ is a power of 2.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If $m$ has an odd divisor $d > 1$, write $m = dk$. Then $2^m + 1 = (2^k)^d + 1$ \nis divisible by $2^k + 1$ (since $x^d + 1$ is divisible by $x + 1$ when \n$d$ is odd). Thus $2^m + 1$ is composite."
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Fermat Numbers",
+      "problem": "$$\nF_0 &= 3 & F_1 &= 5 & F_2 &= 17 \\\\\nF_3 &= 257 & F_4 &= 65537 & F_5 &= 4294967297\n$$\nFermat conjectured all $F_n$ are prime. However, Euler showed $F_5 = 641 \\times 6700417$. \nNo Fermat prime beyond $F_4$ has been found.",
+      "solution": ""
+    },
+    {
+      "type": "paragraph",
+      "text": "Fermat primes are connected to constructible regular polygons: a regular \n$n$-gon is constructible with compass and straightedge if and only if $n$ \nis a power of 2 times a product of distinct Fermat primes."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Primes in Arithmetic Progressions"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.3",
+      "number": "2.3",
+      "title": "Dirichlet's Theorem",
+      "content": "If $a$ and $d$ are relatively prime positive integers, then the arithmetic \nprogression\n\\[\na, \\, a + d, \\, a + 2d, \\, a + 3d, \\, \\ldots\n\\]\ncontains infinitely many primes.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This deep theorem, proved by Dirichlet in 1837, requires techniques from \nanalytic number theory."
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Dirichlet's Theorem",
+      "problem": "The progression $3, 7, 11, 15, 19, 23, \\ldots$ (where $a = 3$, $d = 4$) \ncontains infinitely many primes. These are exactly the primes of the form \n$4k + 3$.",
+      "solution": ""
+    }
+  ]
+}

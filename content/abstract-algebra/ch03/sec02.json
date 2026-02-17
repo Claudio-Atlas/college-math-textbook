@@ -1,0 +1,138 @@
+{
+  "id": "abstract-algebra-ch03-sec02",
+  "title": "Cycle Notation",
+  "chapter": 3,
+  "section": 2,
+  "book": "abstract-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"There is a time for everything, and a season for every \nactivity under the heavens.\"*{Ecclesiastes 3:1}{*\"By relieving the brain of all unnecessary work, a good notation sets it free to concentrate on more advanced problems.\"*}{Alfred North Whitehead}\n\n*\"Notation is an important tool of thought.\"*{— Alfred North Whitehead}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Two-row notation, while complete, is cumbersome. A more elegant and \nefficient representation is **cycle notation**, which captures the \norbit structure of a permutation."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Cycles"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.1",
+      "number": "3.1",
+      "title": "Cycle",
+      "content": "A permutation $\\sigma \\in S_n$ is called a **$k$-cycle** \n(or cycle of length $k$) if there exist distinct elements $a_1, a_2, \n\\ldots, a_k$ such that:\n\\[\n \\sigma(a_1) = a_2, \\quad \\sigma(a_2) = a_3, \\quad \\ldots, \\quad \n \\sigma(a_{k-1}) = a_k, \\quad \\sigma(a_k) = a_1\n\\]\nand $\\sigma$ fixes all other elements. We write this as \n$(a_1\\ a_2\\ \\cdots\\ a_k)$."
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Cycles in $S_5$",
+      "problem": "- $(1\\ 3\\ 5)$ is a $3$-cycle: $1 \\to 3 \\to 5 \\to 1$, and $2, 4$ \n are fixed.\n\n- $(2\\ 4)$ is a $2$-cycle (transposition): $2 \\leftrightarrow 4$.\n\n- $(1\\ 2\\ 3\\ 4\\ 5)$ is a $5$-cycle that moves every element.",
+      "solution": ""
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.2",
+      "number": "3.2",
+      "title": "Transposition",
+      "content": "A $2$-cycle $(a\\ b)$ is called a **transposition**. \nIt swaps $a$ and $b$ and fixes everything else."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Disjoint Cycles"
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.3",
+      "number": "3.3",
+      "title": "Disjoint Cycles",
+      "content": "Two cycles are **disjoint** if they have no \nelements in common."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "Disjoint Cycles Commute",
+      "content": "If $\\sigma$ and $\\tau$ are disjoint cycles, then $\\sigma\\tau = \\tau\\sigma$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\sigma = (a_1\\ \\cdots\\ a_k)$ and $\\tau = (b_1\\ \\cdots\\ b_m)$ with \nno $a_i$ equal to any $b_j$.\n\nFor any element $x$:\n\n- If $x = a_i$, then $\\sigma\\tau(x) = \\sigma(x) = a_{i+1}$ and \n $\\tau\\sigma(x) = \\tau(a_{i+1}) = a_{i+1}$.\n\n- If $x = b_j$, similarly.\n\n- If $x$ is in neither cycle, both sides equal $x$.\nThus $\\sigma\\tau = \\tau\\sigma$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Cycle Decomposition"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.2",
+      "number": "3.2",
+      "title": "Cycle Decomposition Theorem",
+      "content": "Every permutation in $S_n$ can be written as a product of disjoint \ncycles. This decomposition is unique up to the order of the cycles.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Finding cycle decomposition",
+      "problem": "Let $\\sigma = \\begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 \\\\ 3 & 5 & 1 & 6 & 2 & 4 \\end{pmatrix}$.\n\nTrace the orbits:\n\n- $1 \\to 3 \\to 1$ gives $(1\\ 3)$\n\n- $2 \\to 5 \\to 2$ gives $(2\\ 5)$\n\n- $4 \\to 6 \\to 4$ gives $(4\\ 6)$\nThus $\\sigma = (1\\ 3)(2\\ 5)(4\\ 6)$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Order of a Permutation"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.3",
+      "number": "3.3",
+      "title": "Order of a Permutation",
+      "content": "The order of a permutation is the least common multiple of the lengths \nof its disjoint cycles.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-3.3",
+      "number": "3.3",
+      "title": "Computing orders",
+      "problem": "- $|(1\\ 2\\ 3)(4\\ 5)| = \\text{lcm}(3, 2) = 6$\n\n- $|(1\\ 2\\ 3\\ 4\\ 5)| = 5$\n\n- $|(1\\ 2)(3\\ 4)(5\\ 6\\ 7)| = \\text{lcm}(2, 2, 3) = 6$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Write $(1\\ 2\\ 3)(4\\ 5)(1\\ 4\\ 3)$ as a product of disjoint cycles.",
+        "Find all permutations in $S_4$ that have order $4$.",
+        "Compute $(1\\ 3\\ 5\\ 7)(2\\ 4\\ 6)^{100}$ in $S_7$.",
+        "What is the maximum order of any element of $S_7$?",
+        "Prove that every permutation can be written as a product of \n transpositions."
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 1:6",
+      "text": "The wind blows to the south and turns \nto the north; round and round it goes, ever returning on its course."
+    },
+    {
+      "type": "quote",
+      "author": "Arthur Cayley",
+      "text": "Every permutation can be expressed as a \nproduct of disjoint cycles, unique up to order."
+    }
+  ]
+}

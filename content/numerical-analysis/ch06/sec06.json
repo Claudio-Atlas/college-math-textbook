@@ -1,0 +1,339 @@
+{
+  "id": "numerical-analysis-ch06-sec06",
+  "title": "Improper Integrals",
+  "chapter": 6,
+  "section": 6,
+  "book": "numerical-analysis",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Standard quadrature formulas assume a finite interval and a bounded integrand. **Improper integrals**—those with infinite limits or unbounded integrands—require special treatment. This section develops techniques for handling these challenging cases."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Types of Improper Integrals"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Classification of Improper Integrals",
+      "content": "An integral is **improper** if:\n\n1. **Type I (Infinite limits):** $\\int_a^{\\infty} f(x)\\,dx$, $\\int_{-\\infty}^{b} f(x)\\,dx$, or $\\int_{-\\infty}^{\\infty} f(x)\\,dx$\n\n2. **Type II (Unbounded integrand):** $\\lim_{x \\to c} |f(x)| = \\infty$ for some $c \\in [a, b]$\n\n3. **Type III (Both):** Combinations of infinite limits and singularities"
+    },
+    {
+      "type": "example",
+      "id": "example-6.1",
+      "number": "6.1",
+      "title": "Types of Improper Integrals",
+      "problem": "$$\n\\int_1^{\\infty} \\frac{1}{x^2}\\,dx &= 1 && \\text{Type I (infinite upper limit)} \\\\\n\\int_0^1 \\frac{1}{\\sqrt{x}}\\,dx &= 2 && \\text{Type II (singularity at 0)} \\\\\n\\int_0^{\\infty} e^{-x^2}\\,dx &= \\frac{\\sqrt{\\pi}}{2} && \\text{Type I} \\\\\n\\int_0^1 \\frac{\\ln x}{\\sqrt{x}}\\,dx &= -4 && \\text{Type II (singularity at 0)}\n$$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Truncation Methods"
+    },
+    {
+      "type": "paragraph",
+      "text": "The simplest approach replaces infinite limits with large finite values."
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.2",
+      "number": "6.2",
+      "title": "Truncation",
+      "content": "For $\\int_a^{\\infty} f(x)\\,dx$, choose $B$ large and approximate:\n\\[\n\\int_a^{\\infty} f(x)\\,dx \\approx \\int_a^{B} f(x)\\,dx\n\\]\nThe truncation error is $\\int_B^{\\infty} f(x)\\,dx$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Truncation Error Bound",
+      "content": "If $|f(x)| \\leq g(x)$ for $x \\geq B$ and $\\int_B^{\\infty} g(x)\\,dx$ is known, then\n\\[\n\\left|\\int_B^{\\infty} f(x)\\,dx\\right| \\leq \\int_B^{\\infty} g(x)\\,dx\n\\]\nCommon bounds:\n\n- $|f(x)| \\leq Cx^{-p}$ with $p > 1$: Error $\\leq \\frac{C}{(p-1)B^{p-1}}$\n\n- $|f(x)| \\leq Ce^{-\\alpha x}$ with $\\alpha > 0$: Error $\\leq \\frac{C}{\\alpha}e^{-\\alpha B}$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.2",
+      "number": "6.2",
+      "title": "Truncation for Exponential Decay",
+      "problem": "Compute $\\int_0^{\\infty} e^{-x^2}\\,dx$ to accuracy $10^{-10}$.",
+      "solution": "For $x \\geq B$, we have $e^{-x^2} \\leq e^{-B \\cdot x}$ (for $x \\geq B \\geq 1$), so:\n\\[\n\\int_B^{\\infty} e^{-x^2}\\,dx \\leq \\int_B^{\\infty} e^{-Bx}\\,dx = \\frac{e^{-B^2}}{B}\n\\]\n\nFor error $< 10^{-10}$: $\\frac{e^{-B^2}}{B} < 10^{-10}$ gives $B \\approx 5$.\n\nSo $\\int_0^{\\infty} e^{-x^2}\\,dx \\approx \\int_0^5 e^{-x^2}\\,dx$ with truncation error $< 10^{-10}$.\n\nApply composite Simpson's or adaptive quadrature to $\\int_0^5 e^{-x^2}\\,dx$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Variable Transformation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Transformations can map infinite intervals to finite ones."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Common Transformations for Infinite Intervals",
+      "content": "1. $\\int_0^{\\infty} f(x)\\,dx = \\int_0^1 \\frac{1}{t^2}f\\left(\\frac{1}{t} - 1\\right)dt$ (substitution $x = \\frac{1}{t} - 1$)\n\n2. $\\int_0^{\\infty} f(x)\\,dx = \\int_0^{\\pi/2} f(\\tan\\theta)\\sec^2\\theta\\,d\\theta$ (substitution $x = \\tan\\theta$)\n\n3. $\\int_{-\\infty}^{\\infty} f(x)\\,dx = \\int_{-1}^{1} \\frac{1}{(1-u^2)^2}f\\left(\\frac{u}{1-u^2}\\right)(1+u^2)du$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.3",
+      "number": "6.3",
+      "title": "Transformation to Finite Interval",
+      "problem": "Compute $\\int_1^{\\infty} \\frac{1}{x^3}\\,dx$ by transformation.",
+      "solution": "Substitute $x = 1/t$, so $dx = -dt/t^2$ and limits become $t: 1 \\to 0$:\n\\[\n\\int_1^{\\infty} \\frac{1}{x^3}\\,dx = \\int_1^0 t^3 \\cdot \\left(-\\frac{1}{t^2}\\right)dt = \\int_0^1 t\\,dt = \\frac{1}{2}\n\\]\n\nFor numerical computation, apply any standard quadrature to $\\int_0^1 t\\,dt$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.3",
+      "number": "6.3",
+      "title": "Transformation for Algebraic Decay",
+      "content": "For $\\int_1^{\\infty} f(x)\\,dx$ where $f(x) \\sim x^{-p}$ as $x \\to \\infty$ with $p > 1$:\n\n- The substitution $x = 1/t$ gives $\\int_0^1 \\frac{1}{t^2}f(1/t)\\,dt$\n\n- The new integrand behaves like $t^{p-2}$ near $t = 0$\n\n- If $p > 2$, the new integrand is smooth at $t = 0$\n\n- If $1 < p \\leq 2$, there is a singularity at $t = 0$ (but integrable)",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Gaussian Quadrature for Semi-Infinite Intervals"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.4",
+      "number": "6.4",
+      "title": "Gauss-Laguerre Quadrature",
+      "content": "For integrals of the form $\\int_0^{\\infty} e^{-x} g(x)\\,dx$:\n\\[\n\\int_0^{\\infty} e^{-x} g(x)\\,dx \\approx \\sum_{i=1}^{n} w_i g(x_i)\n\\]\nwhere $x_i$ are roots of the Laguerre polynomial $L_n(x)$ and the weights are\n\\[\nw_i = \\frac{x_i}{(n+1)^2 [L_{n+1}(x_i)]^2}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "$n$",
+        "Nodes $x_i$",
+        "Weights $w_i$"
+      ],
+      "rows": [
+        [
+          "2",
+          "0.585786",
+          "0.853553"
+        ],
+        [
+          "",
+          "3.414214",
+          "0.146447"
+        ],
+        [
+          "3",
+          "0.415775",
+          "0.711093"
+        ],
+        [
+          "",
+          "2.294280",
+          "0.278518"
+        ],
+        [
+          "",
+          "6.289945",
+          "0.010389"
+        ],
+        [
+          "4",
+          "0.322548",
+          "0.603154"
+        ],
+        [
+          "",
+          "1.745761",
+          "0.357419"
+        ],
+        [
+          "",
+          "4.536620",
+          "0.038888"
+        ],
+        [
+          "",
+          "9.395071",
+          "0.000539"
+        ]
+      ],
+      "alignment": [
+        "center",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-6.4",
+      "number": "6.4",
+      "title": "Gauss-Laguerre Application",
+      "problem": "Compute $\\int_0^{\\infty} e^{-x} \\cos x\\,dx$ using 3-point Gauss-Laguerre.",
+      "solution": "Here $g(x) = \\cos x$. Using the 3-point nodes and weights:\n$$\n\\int_0^{\\infty} e^{-x} \\cos x\\,dx &\\approx 0.711093 \\cdot \\cos(0.415775) \\\\\n&\\quad + 0.278518 \\cdot \\cos(2.294280) \\\\\n&\\quad + 0.010389 \\cdot \\cos(6.289945) \\\\\n&= 0.711093(0.9148) + 0.278518(-0.6669) + 0.010389(0.9998) \\\\\n&= 0.6506 - 0.1857 + 0.0104 = 0.4753\n$$\n\nThe exact value is $\\frac{1}{2}$, so the error is about $0.025$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Gaussian Quadrature for the Full Line"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.5",
+      "number": "6.5",
+      "title": "Gauss-Hermite Quadrature",
+      "content": "For integrals of the form $\\int_{-\\infty}^{\\infty} e^{-x^2} g(x)\\,dx$:\n\\[\n\\int_{-\\infty}^{\\infty} e^{-x^2} g(x)\\,dx \\approx \\sum_{i=1}^{n} w_i g(x_i)\n\\]\nwhere $x_i$ are roots of the Hermite polynomial $H_n(x)$ and the weights are\n\\[\nw_i = \\frac{2^{n-1} n! \\sqrt{\\pi}}{n^2 [H_{n-1}(x_i)]^2}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "$n$",
+        "Nodes $x_i$",
+        "Weights $w_i$"
+      ],
+      "rows": [
+        [
+          "2",
+          "$\\pm 0.707107$",
+          "0.886227"
+        ],
+        [
+          "3",
+          "0",
+          "1.181636"
+        ],
+        [
+          "",
+          "$\\pm 1.224745$",
+          "0.295409"
+        ],
+        [
+          "4",
+          "$\\pm 0.524648$",
+          "0.804914"
+        ],
+        [
+          "",
+          "$\\pm 1.650680$",
+          "0.081313"
+        ]
+      ],
+      "alignment": [
+        "center",
+        "center",
+        "center"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Handling Singularities"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.6",
+      "number": "6.6",
+      "title": "Singularity Subtraction",
+      "content": "If $f(x)$ has a known singularity $s(x)$ near $x = a$, write\n\\[\n\\int_a^b f(x)\\,dx = \\int_a^b [f(x) - s(x)]\\,dx + \\int_a^b s(x)\\,dx\n\\]\nIf $\\int_a^b s(x)\\,dx$ is known analytically and $f(x) - s(x)$ is smooth, standard quadrature works well.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.5",
+      "number": "6.5",
+      "title": "Singularity Subtraction",
+      "problem": "Compute $\\int_0^1 \\frac{\\sin x}{\\sqrt{x}}\\,dx$.",
+      "solution": "Near $x = 0$: $\\sin x \\approx x$, so $\\frac{\\sin x}{\\sqrt{x}} \\approx \\sqrt{x}$.\n\nWrite:\n\\[\n\\int_0^1 \\frac{\\sin x}{\\sqrt{x}}\\,dx = \\int_0^1 \\left(\\frac{\\sin x}{\\sqrt{x}} - \\sqrt{x}\\right)dx + \\int_0^1 \\sqrt{x}\\,dx\n\\]\n\nThe second integral is $\\frac{2}{3}$. The first integral has integrand:\n\\[\n\\frac{\\sin x - x}{\\sqrt{x}} = \\frac{x - x^3/6 + O(x^5) - x}{\\sqrt{x}} = -\\frac{x^{5/2}}{6} + O(x^{7/2})\n\\]\nwhich is smooth at $x = 0$. Apply standard quadrature to this integral."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.7",
+      "number": "6.7",
+      "title": "IMT (Iri-Moriguti-Takahashi) Transformation",
+      "content": "For $\\int_0^1 f(x)\\,dx$ where $f$ has an algebraic singularity at $x = 0$, the substitution\n\\[\nx = \\psi(t) = \\frac{1}{2}\\left(1 + \\tanh\\left(\\frac{\\pi}{2}\\sinh t\\right)\\right)\n\\]\ntransforms to $\\int_{-\\infty}^{\\infty} f(\\psi(t))\\psi'(t)\\,dt$ where $\\psi'(t)$ decays double-exponentially at $\\pm\\infty$, making truncation extremely efficient.",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Double Exponential (Tanh-Sinh) Quadrature"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.3",
+      "number": "6.3",
+      "title": "Tanh-Sinh Quadrature",
+      "content": "The **tanh-sinh** (or double-exponential) transformation is\n\\[\nx = \\tanh\\left(\\frac{\\pi}{2}\\sinh t\\right)\n\\]\nwhich maps $t \\in (-\\infty, \\infty)$ to $x \\in (-1, 1)$ with\n\\[\n\\frac{dx}{dt} = \\frac{\\frac{\\pi}{2}\\cosh t}{\\cosh^2\\left(\\frac{\\pi}{2}\\sinh t\\right)}\n\\]\nThe derivative decays like $\\exp(-c \\cdot e^{|t|})$ (double exponentially) as $|t| \\to \\infty$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.8",
+      "number": "6.8",
+      "title": "Tanh-Sinh for Endpoint Singularities",
+      "content": "For $\\int_{-1}^{1} f(x)\\,dx$ where $f$ has integrable singularities at $x = \\pm 1$:\n$$\n\n\\int_{-1}^{1} f(x)\\,dx = \\int_{-\\infty}^{\\infty} f(\\tanh(\\frac{\\pi}{2}\\sinh t)) \\cdot \\frac{\\frac{\\pi}{2}\\cosh t}{\\cosh^2(\\frac{\\pi}{2}\\sinh t)}\\,dt\n$$\nThe transformed integrand decays double-exponentially, so the trapezoidal rule converges exponentially fast even with singularities.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-6.6",
+      "number": "6.6",
+      "title": "Tanh-Sinh Quadrature",
+      "problem": "Compute $\\int_0^1 \\frac{1}{\\sqrt{x(1-x)}}\\,dx = \\pi$.",
+      "solution": "Transform $[0, 1]$ to $[-1, 1]$: let $u = 2x - 1$.\n\nThe integral becomes $\\int_{-1}^{1} \\frac{1}{\\sqrt{1-u^2}}\\,du = \\pi$.\n\nApply tanh-sinh transformation. With step size $h = 0.1$ and truncating at $|t| \\leq 4$:\n\\[\nI \\approx h \\sum_{k=-40}^{40} w(t_k) f(x(t_k))\n\\]\nwhere $t_k = kh$, $x(t) = \\tanh(\\frac{\\pi}{2}\\sinh t)$, and $w(t)$ is the transformed weight.\n\nWith only 81 function evaluations, the result is accurate to 15 digits."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Practical Recommendations"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "Type",
+        "Recommended Method",
+        "Alternatives"
+      ],
+      "rows": [
+        [
+          "$\\int_a^{\\infty}$, $f \\sim e^{-\\alpha x}$",
+          "Truncation",
+          "Gauss-Laguerre"
+        ],
+        [
+          "$\\int_a^{\\infty}$, $f \\sim x^{-p}$",
+          "Transform $x = 1/t$",
+          "Truncation"
+        ],
+        [
+          "$\\int_{-\\infty}^{\\infty}$, $f \\sim e^{-x^2}$",
+          "Gauss-Hermite",
+          "Truncation"
+        ],
+        [
+          "$\\int_a^b$, $f \\sim (x-a)^{-\\alpha}$",
+          "Tanh-sinh",
+          "Gauss-Jacobi"
+        ],
+        [
+          "$\\int_a^b$, $f$ has interior sing.",
+          "Split at singularity",
+          "Adaptive"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "left",
+        "left"
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ]
+}

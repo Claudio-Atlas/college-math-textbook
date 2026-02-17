@@ -1,0 +1,132 @@
+{
+  "id": "discrete-math-ch04-sec03",
+  "title": "GCD and LCM",
+  "chapter": 4,
+  "section": 3,
+  "book": "discrete-math",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Two are better than one, because they have a good \nreturn for their labor.\"*{Ecclesiastes 4:9}{The Euclidean algorithm is the granddaddy of all algorithms, the oldest nontrivial algorithm that has survived to the present day.}{Donald Knuth}"
+    },
+    {
+      "type": "paragraph",
+      "text": "The greatest common divisor and least common multiple capture the \nrelationships between pairs of integers."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "Greatest Common Divisor",
+      "content": "The **greatest common divisor** of \nintegers $a$ and $b$ (not both zero), denoted $\\gcd(a, b)$, is the largest \npositive integer that divides both $a$ and $b$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.2",
+      "number": "4.2",
+      "title": "Least Common Multiple",
+      "content": "The **least common multiple** of \npositive integers $a$ and $b$, denoted $\\lcm(a, b)$, is the smallest \npositive integer divisible by both $a$ and $b$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "GCD and LCM",
+      "problem": "- $\\gcd(12, 18) = 6$ and $\\lcm(12, 18) = 36$.\n\n- $\\gcd(17, 25) = 1$ and $\\lcm(17, 25) = 425$.\n\n- $\\gcd(100, 35) = 5$ and $\\lcm(100, 35) = 700$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Computing GCD Using Prime Factorization"
+    },
+    {
+      "type": "paragraph",
+      "text": "If $a = p_1^{a_1} p_2^{a_2} \\cdots p_k^{a_k}$ and $b = p_1^{b_1} p_2^{b_2} \\cdots p_k^{b_k}$:"
+    },
+    {
+      "type": "paragraph",
+      "text": "$$\\gcd(a, b) &= p_1^{\\min(a_1, b_1)} p_2^{\\min(a_2, b_2)} \\cdots p_k^{\\min(a_k, b_k)} \\\\\n\\lcm(a, b) &= p_1^{\\max(a_1, b_1)} p_2^{\\max(a_2, b_2)} \\cdots p_k^{\\max(a_k, b_k)}$$"
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "GCD via prime factorization",
+      "problem": "$a = 84 = 2^2 \\cdot 3 \\cdot 7$ and $b = 90 = 2 \\cdot 3^2 \\cdot 5$.\n\n$\\gcd(84, 90) = 2^1 \\cdot 3^1 \\cdot 5^0 \\cdot 7^0 = 6$.\n\n$\\lcm(84, 90) = 2^2 \\cdot 3^2 \\cdot 5^1 \\cdot 7^1 = 1260$.",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "GCD-LCM Product Theorem",
+      "content": "For any positive integers $a$ and $b$:\n\\[ \\gcd(a, b) \\cdot \\lcm(a, b) = a \\cdot b \\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Euclidean Algorithm"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Euclidean algorithm computes $\\gcd(a, b)$ efficiently without \nfactorization."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Euclidean Algorithm",
+      "content": "For integers $a \\geq b > 0$:\n\\[ \\gcd(a, b) = \\gcd(b, a \\mod b) \\]\nwith base case $\\gcd(a, 0) = a$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": "Euclidean algorithm",
+      "problem": "Compute $\\gcd(252, 105)$:\n$$\n252 &= 105 \\cdot 2 + 42 & \\gcd(252, 105) &= \\gcd(105, 42) \\\\\n105 &= 42 \\cdot 2 + 21 & &= \\gcd(42, 21) \\\\\n42 &= 21 \\cdot 2 + 0 & &= \\gcd(21, 0) = 21\n$$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Relatively Prime Integers"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.3",
+      "number": "4.3",
+      "title": "Relatively Prime",
+      "content": "Integers $a$ and $b$ are **relatively prime** \n(or **coprime**) if $\\gcd(a, b) = 1$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.4",
+      "number": "4.4",
+      "title": null,
+      "problem": "15 and 28 are relatively prime: $\\gcd(15, 28) = 1$.\n\n15 and 25 are not: $\\gcd(15, 25) = 5$.",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.3",
+      "number": "4.3",
+      "title": "Bézout's Identity",
+      "content": "For any integers $a$ and $b$ (not both zero), there exist integers $s$ \nand $t$ such that:\n\\[ as + bt = \\gcd(a, b) \\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The extended Euclidean algorithm finds $s$ and $t$."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Amos 3:3",
+      "text": "Do two walk together unless they have agreed \nto do so?"
+    }
+  ]
+}

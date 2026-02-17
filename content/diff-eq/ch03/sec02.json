@@ -1,0 +1,137 @@
+{
+  "id": "diff-eq-ch03-sec02",
+  "title": "Newton's Law of Cooling and Heating",
+  "chapter": 3,
+  "section": 2,
+  "book": "diff-eq",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "When you pour a cup of hot coffee and set it on your desk, it gradually cools. When you take a cold soda from the refrigerator, it slowly warms. These familiar experiences are governed by a simple but powerful law first articulated by Sir Isaac Newton."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Basic Model"
+    },
+    {
+      "type": "paragraph",
+      "text": "Newton observed that the rate at which an object's temperature changes is proportional to the difference between its temperature and the temperature of its surroundings."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.1",
+      "number": "3.1",
+      "title": "Newton's Law of Cooling",
+      "content": "If $T(t)$ is the temperature of an object at time $t$ and $T_m$ is the ambient (surrounding) temperature (assumed constant), then:\n\\[\n\\frac{dT}{dt} = -k(T - T_m)\n\\]\nwhere $k > 0$ is a positive constant depending on the thermal properties of the object and its environment."
+    },
+    {
+      "type": "paragraph",
+      "text": "The negative sign ensures correct behavior:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "If $T > T_m$ (object is warmer than surroundings): $T - T_m > 0$, so $dT/dt < 0$ (cooling)",
+        "If $T < T_m$ (object is cooler than surroundings): $T - T_m < 0$, so $dT/dt > 0$ (heating)"
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "This is a separable first-order linear equation. Let $u = T - T_m$, so $du/dt = dT/dt$ and:\n\\[\n\\frac{du}{dt} = -ku\n\\]\nThis is the exponential decay equation with solution $u = u_0 e^{-kt}$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-3.1",
+      "number": "3.1",
+      "title": "Solution to Newton's Law of Cooling",
+      "content": "If $T(0) = T_0$ is the initial temperature, the solution is:\n\\[\nT(t) = T_m + (T_0 - T_m)e^{-kt}\n\\]\nAs $t \\to \\infty$, $T(t) \\to T_m$: the object's temperature approaches the ambient temperature.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Cooling Coffee",
+      "problem": "A cup of coffee is initially at $95°C$ and is placed in a room at $20°C$. After 10 minutes, the coffee has cooled to $70°C$. Find:\n\n1. The cooling constant $k$\n\n2. The temperature after 20 minutes\n\n3. When the coffee cools to $40°C$\n\n**Solution.**\n\n(a) Using the solution formula with $T_0 = 95$, $T_m = 20$, and $T(10) = 70$:\n\\[\n70 = 20 + (95 - 20)e^{-10k}\n\\]\n\\[\n50 = 75e^{-10k}\n\\]\n\\[\ne^{-10k} = \\frac{50}{75} = \\frac{2}{3}\n\\]\n\\[\nk = -\\frac{1}{10}\\ln\\frac{2}{3} = \\frac{\\ln(3/2)}{10} \\approx 0.0405 \\text{ per minute}\n\\]\n\n(b) After 20 minutes:\n\\[\nT(20) = 20 + 75e^{-20k} = 20 + 75\\left(\\frac{2}{3}\\right)^2 = 20 + 75 \\cdot \\frac{4}{9} = 20 + 33.3 = 53.3°C\n\\]\n\n(c) Setting $T(t) = 40$:\n\\[\n40 = 20 + 75e^{-kt}\n\\]\n\\[\n20 = 75e^{-kt}\n\\]\n\\[\ne^{-kt} = \\frac{20}{75} = \\frac{4}{15}\n\\]\n\\[\nt = -\\frac{1}{k}\\ln\\frac{4}{15} = \\frac{\\ln(15/4)}{0.0405} = \\frac{1.322}{0.0405} \\approx 32.6 \\text{ minutes}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Warming a Cold Object",
+      "problem": "A bottle of water at $5°C$ is placed in a room at $22°C$. After 30 minutes, the water temperature is $12°C$. Find:\n\n1. The warming constant $k$\n\n2. The temperature after 1 hour\n\n3. How long until the water reaches $20°C$\n\n**Solution.**\n\n(a) Here $T_0 = 5$, $T_m = 22$, and $T(30) = 12$:\n\\[\n12 = 22 + (5 - 22)e^{-30k}\n\\]\n\\[\n12 = 22 - 17e^{-30k}\n\\]\n\\[\n17e^{-30k} = 10\n\\]\n\\[\ne^{-30k} = \\frac{10}{17}\n\\]\n\\[\nk = -\\frac{1}{30}\\ln\\frac{10}{17} = \\frac{\\ln(17/10)}{30} = \\frac{0.531}{30} \\approx 0.0177 \\text{ per minute}\n\\]\n\n(b) After 60 minutes:\n\\[\nT(60) = 22 - 17e^{-60k} = 22 - 17\\left(\\frac{10}{17}\\right)^2 = 22 - 17 \\cdot \\frac{100}{289}\n\\]\n\\[\n= 22 - \\frac{1700}{289} = 22 - 5.88 = 16.1°C\n\\]\n\n(c) Setting $T(t) = 20$:\n\\[\n20 = 22 - 17e^{-kt}\n\\]\n\\[\n17e^{-kt} = 2\n\\]\n\\[\ne^{-kt} = \\frac{2}{17}\n\\]\n\\[\nt = \\frac{\\ln(17/2)}{k} = \\frac{2.14}{0.0177} \\approx 121 \\text{ minutes} \\approx 2 \\text{ hours}\n\\]",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Time of Death Problems"
+    },
+    {
+      "type": "paragraph",
+      "text": "One of the most famous applications of Newton's Law of Cooling is in forensic science: estimating the time of death based on body temperature."
+    },
+    {
+      "type": "example",
+      "id": "example-3.3",
+      "number": "3.3",
+      "title": "Forensic Time of Death",
+      "problem": "A murder victim is found at 10:00 PM with a body temperature of $32°C$. The room temperature is a constant $20°C$. At 11:00 PM, the body temperature has fallen to $30°C$. Assuming the normal body temperature was $37°C$ at the time of death, when did death occur?\n\n**Solution.**\n\nLet $t = 0$ correspond to 10:00 PM. We have:\n\n- $T(0) = 32$ (temperature at 10:00 PM)\n\n- $T(1) = 30$ (temperature at 11:00 PM)\n\n- $T_m = 20$ (ambient temperature)\n\nFirst, find $k$ using the two measurements:\n\\[\nT(t) = 20 + (32 - 20)e^{-kt} = 20 + 12e^{-kt}\n\\]\n\\[\n30 = 20 + 12e^{-k}\n\\]\n\\[\ne^{-k} = \\frac{10}{12} = \\frac{5}{6}\n\\]\n\\[\nk = -\\ln\\frac{5}{6} = \\ln\\frac{6}{5} \\approx 0.182 \\text{ per hour}\n\\]\n\nNow, let $t = -t_d$ represent the time of death (before 10:00 PM). At death, $T(-t_d) = 37$:\n\\[\n37 = 20 + 12e^{kt_d}\n\\]\n\\[\n17 = 12e^{kt_d}\n\\]\n\\[\ne^{kt_d} = \\frac{17}{12}\n\\]\n\\[\nt_d = \\frac{\\ln(17/12)}{k} = \\frac{\\ln(17/12)}{\\ln(6/5)} = \\frac{0.348}{0.182} \\approx 1.91 \\text{ hours}\n\\]\n\nDeath occurred approximately 1 hour 55 minutes before 10:00 PM, i.e., around **8:05 PM**.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Variable Ambient Temperature"
+    },
+    {
+      "type": "paragraph",
+      "text": "In more realistic scenarios, the ambient temperature may vary with time. If $T_m = T_m(t)$, Newton's Law becomes:\n\\[\n\\frac{dT}{dt} + kT = kT_m(t)\n\\]\nThis is a first-order linear equation that can be solved using integrating factors."
+    },
+    {
+      "type": "example",
+      "id": "example-3.4",
+      "number": "3.4",
+      "title": "Sinusoidal Ambient Temperature",
+      "problem": "A building's interior temperature $T(t)$ follows Newton's Law with $k = 0.1$ per hour. The outdoor temperature varies as $T_m(t) = 20 + 10\\sin(\\pi t/12)$ (degrees Celsius), modeling a daily cycle. Find the general solution.\n\n**Solution.**\n\nThe equation is:\n\\[\n\\frac{dT}{dt} + 0.1T = 0.1(20 + 10\\sin(\\pi t/12))\n\\]\n\\[\n\\frac{dT}{dt} + 0.1T = 2 + \\sin(\\pi t/12)\n\\]\n\nThe integrating factor is $\\mu(t) = e^{0.1t}$. Multiplying:\n\\[\n\\frac{d}{dt}(e^{0.1t}T) = 2e^{0.1t} + e^{0.1t}\\sin(\\pi t/12)\n\\]\n\nIntegrating:\n\\[\ne^{0.1t}T = 20e^{0.1t} + \\int e^{0.1t}\\sin(\\pi t/12)\\,dt + C\n\\]\n\nFor the remaining integral, we use the formula:\n\\[\n\\int e^{at}\\sin(bt)\\,dt = \\frac{e^{at}(a\\sin bt - b\\cos bt)}{a^2 + b^2}\n\\]\n\nWith $a = 0.1$ and $b = \\pi/12 \\approx 0.262$:\n\\[\n\\int e^{0.1t}\\sin(\\pi t/12)\\,dt = \\frac{e^{0.1t}(0.1\\sin(\\pi t/12) - (\\pi/12)\\cos(\\pi t/12))}{0.01 + \\pi^2/144}\n\\]\n\nAfter simplification:\n\\[\nT(t) = 20 + \\frac{0.1\\sin(\\pi t/12) - (\\pi/12)\\cos(\\pi t/12)}{0.0786} + Ce^{-0.1t}\n\\]\n\nAs $t \\to \\infty$, the transient term $Ce^{-0.1t} \\to 0$, and the solution approaches a periodic steady state that oscillates with the outdoor temperature, but with a phase lag and reduced amplitude.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Compound Cooling: Multiple Materials"
+    },
+    {
+      "type": "paragraph",
+      "text": "When heat must pass through multiple layers (like a hot drink in an insulated cup), the cooling process involves coupled equations."
+    },
+    {
+      "type": "example",
+      "id": "example-3.5",
+      "number": "3.5",
+      "title": "Insulated Container",
+      "problem": "Coffee at temperature $T_1(t)$ is in an insulated cup. The cup (insulation) has temperature $T_2(t)$. The room is at $T_m = 20°C$. The heat flow equations are:\n\\[\n\\frac{dT_1}{dt} = -k_1(T_1 - T_2)\n\\]\n\\[\n\\frac{dT_2}{dt} = k_1'(T_1 - T_2) - k_2(T_2 - T_m)\n\\]\n\nWhile a full solution requires techniques from systems of equations (Chapter 7), we note that the insulation slows the cooling by adding thermal resistance—the coffee stays hotter longer than in a non-insulated cup.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Heating and Cooling in Engineering"
+    },
+    {
+      "type": "paragraph",
+      "text": "Newton's Law applies to many engineering situations: heat exchangers, electronic cooling, building climate control, and industrial processes."
+    },
+    {
+      "type": "example",
+      "id": "example-3.6",
+      "number": "3.6",
+      "title": "Server Room Cooling",
+      "problem": "A server room generates heat at a constant rate. The room's temperature $T$ satisfies:\n\\[\n\\frac{dT}{dt} = H - k(T - T_m)\n\\]\nwhere $H$ is the heat generation rate (in degrees per hour) and $T_m = 18°C$ is the cooling system's target temperature. If $H = 5°C/hr$, $k = 0.5/hr$, and the room starts at $25°C$, find the equilibrium temperature and the temperature function.\n\n**Solution.**\n\nAt equilibrium, $dT/dt = 0$:\n\\[\nH = k(T_{eq} - T_m)\n\\]\n\\[\nT_{eq} = T_m + \\frac{H}{k} = 18 + \\frac{5}{0.5} = 28°C\n\\]\n\nThe general equation is:\n\\[\n\\frac{dT}{dt} = 5 - 0.5(T - 18) = 5 - 0.5T + 9 = 14 - 0.5T\n\\]\n\nThis can be rewritten as:\n\\[\n\\frac{dT}{dt} = -0.5(T - 28)\n\\]\n\nWith $T(0) = 25$:\n\\[\nT(t) = 28 + (25 - 28)e^{-0.5t} = 28 - 3e^{-0.5t}\n\\]\n\nThe temperature rises from $25°C$ and asymptotically approaches $28°C$.",
+      "solution": ""
+    }
+  ]
+}

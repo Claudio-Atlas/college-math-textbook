@@ -1,0 +1,174 @@
+{
+  "id": "vol3-ch15-sec08",
+  "title": "Surface Area",
+  "chapter": 15,
+  "section": 8,
+  "book": "vol3",
+  "epigraph": {
+    "text": "Who has measured the waters in the hollow of his hand, or with the breadth of his hand marked off the heavens?",
+    "reference": "Isaiah 40:12"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Just as we computed arc length for curves, we can compute the **surface area** of curved surfaces in three-dimensional space. This involves integrating over the domain of the surface, with a correction factor for the \"stretching\" that occurs when the surface is not horizontal."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Surface Area of a Graph"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-15.1",
+      "number": "15.1",
+      "title": "Surface Area",
+      "content": "The surface area of the graph $z = f(x, y)$ over region $D$ is\n\\[\n S = \\iint_D \\sqrt{1 + f_x^2 + f_y^2}\\,dA = \\iint_D \\sqrt{1 + \\left(\\frac{\\partial z}{\\partial x}\\right)^2 + \\left(\\frac{\\partial z}{\\partial y}\\right)^2}\\,dA.\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "A small rectangle $dx \\times dy$ in the domain lifts to a parallelogram on the surface. The vectors along its edges are:\n\\[\n \\vect{u} = \\langle 1, 0, f_x \\rangle dx, \\quad \\vect{v} = \\langle 0, 1, f_y \\rangle dy.\n\\]\nThe area of the parallelogram is $|\\vect{u} \\times \\vect{v}| = |\\langle -f_x, -f_y, 1 \\rangle|dx\\,dy = \\sqrt{1 + f_x^2 + f_y^2}\\,dx\\,dy$."
+    },
+    {
+      "type": "example",
+      "id": "example-15.1",
+      "number": "15.1",
+      "title": "Surface area of a plane",
+      "problem": "Find the surface area of the portion of the plane $z = 2 + x + y$ over the unit square $[0,1] \\times [0,1]$.",
+      "solution": "$f_x = 1$, $f_y = 1$.\n\\[\n S = \\iint_D \\sqrt{1 + 1 + 1}\\,dA = \\sqrt{3} \\cdot 1 = \\sqrt{3}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-15.2",
+      "number": "15.2",
+      "title": "Surface area of a paraboloid",
+      "problem": "Find the surface area of $z = x^2 + y^2$ over the disk $x^2 + y^2 \\leq 1$.",
+      "solution": "$f_x = 2x$, $f_y = 2y$, so $1 + f_x^2 + f_y^2 = 1 + 4x^2 + 4y^2 = 1 + 4r^2$.\n\nUsing polar:\n$$\n S &= \\int_0^{2\\pi} \\int_0^1 \\sqrt{1 + 4r^2}\\,r\\,dr\\,d\\theta \\\\\n &= 2\\pi \\int_0^1 r\\sqrt{1 + 4r^2}\\,dr.\n$$\nLet $u = 1 + 4r^2$, $du = 8r\\,dr$:\n\\[\n S = 2\\pi \\cdot \\frac{1}{8} \\int_1^5 u^{1/2}\\,du = \\frac{\\pi}{4}\\left[\\frac{2u^{3/2}}{3}\\right]_1^5 = \\frac{\\pi}{6}(5\\sqrt{5} - 1).\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-15.3",
+      "number": "15.3",
+      "title": "Surface area of a sphere",
+      "problem": "Find the surface area of the hemisphere $z = \\sqrt{a^2 - x^2 - y^2}$ over the disk $x^2 + y^2 \\leq a^2$.",
+      "solution": "$f_x = \\dfrac{-x}{\\sqrt{a^2 - x^2 - y^2}}$, $f_y = \\dfrac{-y}{\\sqrt{a^2 - x^2 - y^2}}$.\n\n\\[\n 1 + f_x^2 + f_y^2 = 1 + \\frac{x^2 + y^2}{a^2 - x^2 - y^2} = \\frac{a^2}{a^2 - x^2 - y^2} = \\frac{a^2}{a^2 - r^2}.\n\\]\n\n$$\n S &= \\int_0^{2\\pi} \\int_0^a \\frac{a}{\\sqrt{a^2 - r^2}}\\,r\\,dr\\,d\\theta \\\\\n &= 2\\pi a \\int_0^a \\frac{r}{\\sqrt{a^2 - r^2}}\\,dr = 2\\pi a \\left[-\\sqrt{a^2 - r^2}\\right]_0^a = 2\\pi a^2.\n$$\n\nThe full sphere has surface area $4\\pi a^2$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Additional Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-15.4",
+      "number": "15.4",
+      "title": "Saddle surface",
+      "problem": "Find the surface area of the saddle $z = xy$ over the disk $x^2 + y^2 \\leq 4$.",
+      "solution": "We have $f_x = y$ and $f_y = x$, so\n\\[\n 1 + f_x^2 + f_y^2 = 1 + y^2 + x^2 = 1 + r^2.\n\\]\nConverting to polar coordinates:\n$$\n S &= \\int_0^{2\\pi} \\int_0^2 \\sqrt{1 + r^2} \\cdot r\\,dr\\,d\\theta \\\\\n &= 2\\pi \\int_0^2 r\\sqrt{1 + r^2}\\,dr.\n$$\nLet $u = 1 + r^2$, so $du = 2r\\,dr$:\n\\[\n S = 2\\pi \\cdot \\frac{1}{2} \\int_1^5 \\sqrt{u}\\,du = \\pi\\left[\\frac{2u^{3/2}}{3}\\right]_1^5 = \\frac{2\\pi}{3}(5\\sqrt{5} - 1).\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-15.5",
+      "number": "15.5",
+      "title": "Cone surface area",
+      "problem": "Find the surface area of the cone $z = 3 - \\sqrt{x^2 + y^2}$ above the $xy$-plane.",
+      "solution": "The cone extends from $z = 0$ (where $r = 3$) to $z = 3$ (at the apex). We integrate over the disk $x^2 + y^2 \\leq 9$.\n\n$f_x = \\dfrac{-x}{\\sqrt{x^2 + y^2}} = \\dfrac{-x}{r}$, $f_y = \\dfrac{-y}{\\sqrt{x^2 + y^2}} = \\dfrac{-y}{r}$.\n\n\\[\n 1 + f_x^2 + f_y^2 = 1 + \\frac{x^2}{r^2} + \\frac{y^2}{r^2} = 1 + 1 = 2.\n\\]\nThus\n\\[\n S = \\iint_D \\sqrt{2}\\,dA = \\sqrt{2} \\cdot \\pi(3)^2 = 9\\sqrt{2}\\pi.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-15.6",
+      "number": "15.6",
+      "title": "Tent of Meeting",
+      "problem": "The Tent of Meeting (Exodus 26) used curved coverings. Suppose a tent roof follows $z = h - \\frac{h}{a^2}(x^2 + y^2)$ over the disk $x^2 + y^2 \\leq a^2$. Find the surface area of this paraboloidal roof.",
+      "solution": "$f_x = -\\dfrac{2hx}{a^2}$, $f_y = -\\dfrac{2hy}{a^2}$.\n\n\\[\n 1 + f_x^2 + f_y^2 = 1 + \\frac{4h^2(x^2 + y^2)}{a^4} = 1 + \\frac{4h^2 r^2}{a^4}.\n\\]\n\n$$\n S &= \\int_0^{2\\pi} \\int_0^a \\sqrt{1 + \\frac{4h^2 r^2}{a^4}} \\cdot r\\,dr\\,d\\theta \\\\\n &= 2\\pi \\int_0^a r\\sqrt{1 + \\frac{4h^2 r^2}{a^4}}\\,dr.\n$$\nLet $u = 1 + \\dfrac{4h^2 r^2}{a^4}$, $du = \\dfrac{8h^2 r}{a^4}\\,dr$:\n\\[\n S = 2\\pi \\cdot \\frac{a^4}{8h^2} \\int_1^{1+4h^2/a^2} \\sqrt{u}\\,du = \\frac{\\pi a^4}{4h^2} \\cdot \\frac{2}{3}\\left[\\left(1 + \\frac{4h^2}{a^2}\\right)^{3/2} - 1\\right].\n\\]\nSimplifying: $S = \\dfrac{\\pi a^4}{6h^2}\\left[\\left(\\dfrac{a^2 + 4h^2}{a^2}\\right)^{3/2} - 1\\right] = \\dfrac{\\pi}{6h^2}\\left[(a^2 + 4h^2)^{3/2} - a^3\\right]$."
+    },
+    {
+      "type": "example",
+      "id": "example-15.7",
+      "number": "15.7",
+      "title": "Exponential surface",
+      "problem": "Set up the integral for the surface area of $z = e^{-(x^2+y^2)}$ over $\\R^2$. Show that the integral converges.",
+      "solution": "$f_x = -2xe^{-(x^2+y^2)}$, $f_y = -2ye^{-(x^2+y^2)}$.\n\n\\[\n 1 + f_x^2 + f_y^2 = 1 + 4(x^2 + y^2)e^{-2(x^2+y^2)} = 1 + 4r^2 e^{-2r^2}.\n\\]\n\n\\[\n S = \\int_0^{2\\pi} \\int_0^\\infty \\sqrt{1 + 4r^2 e^{-2r^2}} \\cdot r\\,dr\\,d\\theta = 2\\pi \\int_0^\\infty r\\sqrt{1 + 4r^2 e^{-2r^2}}\\,dr.\n\\]\n\nFor large $r$, $4r^2 e^{-2r^2} \\to 0$, so $\\sqrt{1 + 4r^2 e^{-2r^2}} \\approx 1$. But then the integral $\\int_0^\\infty r\\,dr$ diverges! \n\nActually, the *surface area* over all of $\\R^2$ is infinite because the surface approaches the $xy$-plane asymptotically. Over any bounded disk $r \\leq R$, the integral converges."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Parametric Surfaces"
+    },
+    {
+      "type": "paragraph",
+      "text": "For surfaces given parametrically by $\\vect{r}(u, v) = \\langle x(u,v), y(u,v), z(u,v) \\rangle$:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-15.2",
+      "number": "15.2",
+      "title": "Surface Area (Parametric)",
+      "content": "\\[\n S = \\iint_D |\\vect{r}_u \\times \\vect{r}_v|\\,dA,\n\\]\nwhere $\\vect{r}_u = \\langle x_u, y_u, z_u \\rangle$ and $\\vect{r}_v = \\langle x_v, y_v, z_v \\rangle$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-15.8",
+      "number": "15.8",
+      "title": "Surface area of a cylinder",
+      "problem": "Find the surface area of the cylinder $x^2 + y^2 = 4$ between $z = 0$ and $z = 5$.",
+      "solution": "Parametrize: $\\vect{r}(\\theta, z) = \\langle 2\\cos\\theta, 2\\sin\\theta, z \\rangle$ for $0 \\leq \\theta \\leq 2\\pi$, $0 \\leq z \\leq 5$.\n\n$\\vect{r}_\\theta = \\langle -2\\sin\\theta, 2\\cos\\theta, 0 \\rangle$, $\\vect{r}_z = \\langle 0, 0, 1 \\rangle$.\n\n\\[\n \\vect{r}_\\theta \\times \\vect{r}_z = \\begin{vmatrix} \\vecti & \\vectj & \\vectk \\\\ -2\\sin\\theta & 2\\cos\\theta & 0 \\\\ 0 & 0 & 1 \\end{vmatrix} = \\langle 2\\cos\\theta, 2\\sin\\theta, 0 \\rangle.\n\\]\n\n$|\\vect{r}_\\theta \\times \\vect{r}_z| = \\sqrt{4\\cos^2\\theta + 4\\sin^2\\theta} = 2$.\n\n\\[\n S = \\int_0^{2\\pi} \\int_0^5 2\\,dz\\,d\\theta = 2 \\cdot 5 \\cdot 2\\pi = 20\\pi.\n\\]\n\n(This matches $2\\pi r h = 2\\pi(2)(5) = 20\\pi$.)"
+    },
+    {
+      "type": "example",
+      "id": "example-15.9",
+      "number": "15.9",
+      "title": "Surface area of a sphere (parametric)",
+      "problem": "Verify the surface area of a sphere of radius $a$ using the parametric formula.",
+      "solution": "Parametrize: $\\vect{r}(\\phi, \\theta) = \\langle a\\sin\\phi\\cos\\theta, a\\sin\\phi\\sin\\theta, a\\cos\\phi \\rangle$ for $0 \\leq \\phi \\leq \\pi$, $0 \\leq \\theta \\leq 2\\pi$.\n\n$\\vect{r}_\\phi = \\langle a\\cos\\phi\\cos\\theta, a\\cos\\phi\\sin\\theta, -a\\sin\\phi \\rangle$,\n$\\vect{r}_\\theta = \\langle -a\\sin\\phi\\sin\\theta, a\\sin\\phi\\cos\\theta, 0 \\rangle$.\n\n$$\n \\vect{r}_\\phi \\times \\vect{r}_\\theta &= \\langle a^2\\sin^2\\phi\\cos\\theta, a^2\\sin^2\\phi\\sin\\theta, a^2\\sin\\phi\\cos\\phi \\rangle \\\\\n &= a^2\\sin\\phi \\langle \\sin\\phi\\cos\\theta, \\sin\\phi\\sin\\theta, \\cos\\phi \\rangle.\n$$\n\n$|\\vect{r}_\\phi \\times \\vect{r}_\\theta| = a^2\\sin\\phi \\cdot 1 = a^2\\sin\\phi$ (for $0 \\leq \\phi \\leq \\pi$).\n\n\\[\n S = \\int_0^{2\\pi} \\int_0^\\pi a^2\\sin\\phi\\,d\\phi\\,d\\theta = a^2 \\cdot 2\\pi \\cdot [-\\cos\\phi]_0^\\pi = 2\\pi a^2 \\cdot 2 = 4\\pi a^2.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-15.10",
+      "number": "15.10",
+      "title": "Torus surface area",
+      "problem": "Find the surface area of a torus with major radius $R$ and minor radius $r$.",
+      "solution": "The torus is parametrized by:\n\\[\n \\vect{r}(u, v) = \\langle (R + r\\cos v)\\cos u, (R + r\\cos v)\\sin u, r\\sin v \\rangle\n\\]\nfor $0 \\leq u \\leq 2\\pi$, $0 \\leq v \\leq 2\\pi$.\n\n$\\vect{r}_u = \\langle -(R + r\\cos v)\\sin u, (R + r\\cos v)\\cos u, 0 \\rangle$,\n$\\vect{r}_v = \\langle -r\\sin v\\cos u, -r\\sin v\\sin u, r\\cos v \\rangle$.\n\nAfter computing the cross product and its magnitude:\n\\[\n |\\vect{r}_u \\times \\vect{r}_v| = r(R + r\\cos v).\n\\]\n\n$$\n S &= \\int_0^{2\\pi} \\int_0^{2\\pi} r(R + r\\cos v)\\,dv\\,du \\\\\n &= 2\\pi \\int_0^{2\\pi} r(R + r\\cos v)\\,dv \\\\\n &= 2\\pi r [Rv + r\\sin v]_0^{2\\pi} = 2\\pi r \\cdot 2\\pi R = 4\\pi^2 Rr.\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications"
+    },
+    {
+      "type": "example",
+      "id": "example-15.11",
+      "number": "15.11",
+      "title": "Surface of revolution",
+      "problem": "Derive the formula for the surface area of revolution of $y = f(x)$ about the $x$-axis.",
+      "solution": "Parametrize the surface: $\\vect{r}(x, \\theta) = \\langle x, f(x)\\cos\\theta, f(x)\\sin\\theta \\rangle$.\n\n$\\vect{r}_x = \\langle 1, f'(x)\\cos\\theta, f'(x)\\sin\\theta \\rangle$,\n$\\vect{r}_\\theta = \\langle 0, -f(x)\\sin\\theta, f(x)\\cos\\theta \\rangle$.\n\n\\[\n \\vect{r}_x \\times \\vect{r}_\\theta = \\langle f(x)f'(x), -f(x)\\cos\\theta, -f(x)\\sin\\theta \\rangle.\n\\]\n\n$|\\vect{r}_x \\times \\vect{r}_\\theta| = f(x)\\sqrt{1 + [f'(x)]^2}$.\n\n\\[\n S = \\int_a^b \\int_0^{2\\pi} f(x)\\sqrt{1 + [f'(x)]^2}\\,d\\theta\\,dx = 2\\pi \\int_a^b f(x)\\sqrt{1 + [f'(x)]^2}\\,dx.\n\\]\n\nThis recovers the familiar formula from single-variable calculus!"
+    },
+    {
+      "type": "example",
+      "id": "example-15.12",
+      "number": "15.12",
+      "title": "Solomon's Sea",
+      "problem": "The \"Sea\" in Solomon's Temple (1 Kings 7:23–26) was a large bronze basin. Model it as a hemisphere of radius 5 cubits. Find its surface area (inside only).",
+      "solution": "A hemisphere of radius $a = 5$ has surface area $2\\pi a^2 = 2\\pi(25) = 50\\pi$ square cubits.\n\nUsing 1 cubit $\\approx$ 18 inches $= 1.5$ feet:\n\\[\n S = 50\\pi \\cdot (1.5)^2 \\approx 353 \\text{ square feet}.\n\\]\n\nThe craftsman Huram would have needed about $353$ square feet of bronze for the interior surface!"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Exodus 26:1--2",
+      "text": "You shall make the tabernacle with ten curtains of fine twined linen...the length of each curtain shall be twenty-eight cubits, and the breadth of each curtain four cubits."
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Kings 7:23",
+      "text": "Then he made the sea of cast metal. It was round, ten cubits from brim to brim, and five cubits high, and a line of thirty cubits measured its circumference."
+    },
+    {
+      "type": "quote",
+      "author": "Gauss",
+      "text": "Mathematics is the queen of the sciences."
+    }
+  ]
+}

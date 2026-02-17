@@ -1,0 +1,327 @@
+{
+  "id": "vol3-ch16-sec01",
+  "title": "Vector Fields",
+  "chapter": 16,
+  "section": 1,
+  "book": "vol3",
+  "epigraph": {
+    "text": "The heavens declare the glory of God; the skies proclaim the work of his hands. Day after day they pour forth speech; night after night they reveal knowledge.",
+    "reference": "Psalm 19:1--2"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "A **vector field** assigns a vector to each point in a region of space. Vector fields are ubiquitous in physics and engineering—they describe wind velocity, gravitational and electric forces, magnetic fields, fluid flow, temperature gradients, and many other phenomena where both magnitude and direction vary from point to point."
+    },
+    {
+      "type": "paragraph",
+      "text": "This chapter develops the calculus of vector fields. We'll learn to integrate along curves (line integrals), over surfaces (surface integrals), and discover remarkable theorems that connect these integrals to each other and to ordinary triple integrals. These results—Green's Theorem, Stokes' Theorem, and the Divergence Theorem—are among the most beautiful and practically important in all of mathematics."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition and Examples"
+    },
+    {
+      "type": "definition",
+      "id": "definition-16.1",
+      "number": "16.1",
+      "title": "Vector Field",
+      "content": "A **vector field** on a region $D$ in $\\R^2$ is a function $\\vect{F}$ that assigns to each point $(x, y)$ in $D$ a two-dimensional vector:\n\\[\n \\vect{F}(x, y) = \\langle P(x, y), Q(x, y) \\rangle = P(x, y)\\,\\vecti + Q(x, y)\\,\\vectj.\n\\]\nA **vector field** on a region $E$ in $\\R^3$ assigns to each point $(x, y, z)$ a three-dimensional vector:\n\\[\n \\vect{F}(x, y, z) = \\langle P, Q, R \\rangle = P\\,\\vecti + Q\\,\\vectj + R\\,\\vectk.\n\\]\nThe functions $P$, $Q$, and $R$ are called the **component functions** of $\\vect{F}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "To visualize a vector field, we draw arrows at representative points—each arrow positioned at a point $(x, y)$ with direction and length determined by $\\vect{F}(x, y)$. (In practice, we often scale the arrows to prevent overlap.)"
+    },
+    {
+      "type": "example",
+      "id": "example-16.1",
+      "number": "16.1",
+      "title": "Constant vector field",
+      "problem": "Describe and sketch $\\vect{F}(x, y) = \\langle 1, 0 \\rangle$.",
+      "solution": "At every point $(x, y)$, the vector is $\\langle 1, 0 \\rangle$—a unit vector pointing in the positive $x$-direction. This is a **uniform** or **constant field**. Every arrow points east with the same magnitude.\n\nPhysically, this could represent:\n\n- A steady wind blowing from west to east\n\n- A uniform electric field between parallel plates\n\n- Laminar flow in a channel"
+    },
+    {
+      "type": "example",
+      "id": "example-16.2",
+      "number": "16.2",
+      "title": "Radial expanding field",
+      "problem": "Describe and sketch $\\vect{F}(x, y) = \\langle x, y \\rangle$.",
+      "solution": "At point $(x, y)$, the vector is $\\langle x, y \\rangle$—pointing radially outward from the origin. The magnitude is $|\\vect{F}| = \\sqrt{x^2 + y^2} = r$, the distance from the origin.\n\nNear the origin, vectors are short; far from the origin, they're long. This is an **expanding radial field** or **source field**.\n\nPhysically, this could represent:\n\n- Fluid flowing outward from a source at the origin\n\n- An explosion expanding from a central point"
+    },
+    {
+      "type": "example",
+      "id": "example-16.3",
+      "number": "16.3",
+      "title": "Rotational field",
+      "problem": "Describe and sketch $\\vect{F}(x, y) = \\langle -y, x \\rangle$.",
+      "solution": "At $(x, y)$, the vector is $\\langle -y, x \\rangle$. Let's check its direction relative to the position vector $\\langle x, y \\rangle$:\n\\[\n \\langle x, y \\rangle \\dotp \\langle -y, x \\rangle = -xy + xy = 0.\n\\]\nThe vectors are perpendicular! So $\\vect{F}$ points at right angles to the radial direction.\n\nThe magnitude is $|\\vect{F}| = \\sqrt{y^2 + x^2} = r$. At point $(1, 0)$, $\\vect{F} = \\langle 0, 1 \\rangle$ (pointing up). At $(0, 1)$, $\\vect{F} = \\langle -1, 0 \\rangle$ (pointing left). The field rotates **counterclockwise** around the origin.\n\nThis is a **rotational field** or **vortex field**.\n\nPhysically:\n\n- Rigid body rotation (like a spinning disk)\n\n- A whirlpool or tornado (idealized)"
+    },
+    {
+      "type": "example",
+      "id": "example-16.4",
+      "number": "16.4",
+      "title": "Unit radial field",
+      "problem": "Describe $\\displaystyle\\vect{F}(x, y) = \\frac{\\langle x, y \\rangle}{\\sqrt{x^2 + y^2}}$ for $(x, y) \\neq (0, 0)$.",
+      "solution": "This is the radial direction with unit magnitude:\n\\[\n \\vect{F} = \\frac{\\vect{r}}{|\\vect{r}|} = \\hat{\\vect{r}}.\n\\]\nEvery vector points directly away from the origin with magnitude 1.\n\nThis is an **expanding unit radial field**. Unlike Example [ex:vf-radial], the field strength doesn't increase with distance."
+    },
+    {
+      "type": "example",
+      "id": "example-16.5",
+      "number": "16.5",
+      "title": "Inverse-square field",
+      "problem": "Describe $\\displaystyle\\vect{F}(x, y, z) = \\frac{\\langle x, y, z \\rangle}{(x^2 + y^2 + z^2)^{3/2}}$ for $(x, y, z) \\neq (0, 0, 0)$.",
+      "solution": "In terms of $\\vect{r} = \\langle x, y, z \\rangle$ and $r = |\\vect{r}|$:\n\\[\n \\vect{F} = \\frac{\\vect{r}}{r^3} = \\frac{1}{r^2}\\hat{\\vect{r}}.\n\\]\nThis is a radial field whose magnitude decreases as $1/r^2$—an **inverse-square field**.\n\nThis is the fundamental pattern for:\n\n- Gravitational fields (pointing toward the mass, so with a negative sign)\n\n- Electric fields from point charges (direction depends on charge sign)"
+    },
+    {
+      "type": "example",
+      "id": "example-16.6",
+      "number": "16.6",
+      "title": "Clockwise rotation",
+      "problem": "Find a vector field that rotates clockwise around the origin.",
+      "solution": "The counterclockwise field is $\\langle -y, x \\rangle$. To reverse direction, negate it:\n\\[\n \\vect{F}(x, y) = \\langle y, -x \\rangle.\n\\]\nCheck: At $(1, 0)$, $\\vect{F} = \\langle 0, -1 \\rangle$ (pointing down, which is clockwise motion)."
+    },
+    {
+      "type": "example",
+      "id": "example-16.7",
+      "number": "16.7",
+      "title": "Three-dimensional field",
+      "problem": "Describe $\\vect{F}(x, y, z) = \\langle 0, 0, -g \\rangle$ where $g$ is a positive constant.",
+      "solution": "This constant field points in the negative $z$-direction everywhere. If $z$ points up, this represents a uniform gravitational field—the downward pull of gravity near Earth's surface."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Gradient Fields and Conservative Fields"
+    },
+    {
+      "type": "paragraph",
+      "text": "An important class of vector fields comes from scalar functions."
+    },
+    {
+      "type": "definition",
+      "id": "definition-16.2",
+      "number": "16.2",
+      "title": "Gradient Field",
+      "content": "If $f(x, y)$ is a differentiable scalar function, its **gradient field** (or **gradient vector field**) is\n\\[\n \\vect{F} = \\grad f = \\left\\langle \\frac{\\partial f}{\\partial x}, \\frac{\\partial f}{\\partial y} \\right\\rangle.\n\\]\nIn three dimensions:\n\\[\n \\vect{F} = \\grad f = \\left\\langle \\frac{\\partial f}{\\partial x}, \\frac{\\partial f}{\\partial y}, \\frac{\\partial f}{\\partial z} \\right\\rangle.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Recall that the gradient $\\grad f$ points in the direction of maximum increase of $f$, with magnitude equal to the rate of increase."
+    },
+    {
+      "type": "definition",
+      "id": "definition-16.3",
+      "number": "16.3",
+      "title": "Conservative Field",
+      "content": "A vector field $\\vect{F}$ is called **conservative** if it is the gradient of some scalar function:\n\\[\n \\vect{F} = \\grad f\n\\]\nfor some function $f$. The function $f$ is called a **potential function** for $\\vect{F}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Conservative fields are fundamental in physics—they represent forces for which energy is conserved. Gravity and electrostatic forces are conservative; friction is not."
+    },
+    {
+      "type": "example",
+      "id": "example-16.8",
+      "number": "16.8",
+      "title": "Gradient field of a paraboloid",
+      "problem": "Find the gradient field of $f(x, y) = x^2 + y^2$.",
+      "solution": "\\[\n \\grad f = \\langle 2x, 2y \\rangle = 2\\langle x, y \\rangle.\n\\]\nThis is twice the radial field—pointing away from the origin with magnitude $2r$.\n\nThe level curves of $f$ are circles $x^2 + y^2 = c$. The gradient is perpendicular to these circles, pointing \"uphill\" on the paraboloid $z = x^2 + y^2$."
+    },
+    {
+      "type": "example",
+      "id": "example-16.9",
+      "number": "16.9",
+      "title": "Gradient field of a sphere",
+      "problem": "Find the gradient field of $f(x, y, z) = x^2 + y^2 + z^2$.",
+      "solution": "\\[\n \\grad f = \\langle 2x, 2y, 2z \\rangle = 2\\vect{r}.\n\\]\nThis points radially outward with magnitude $2r$. The level surfaces $f = c$ are spheres; the gradient is perpendicular to them."
+    },
+    {
+      "type": "example",
+      "id": "example-16.10",
+      "number": "16.10",
+      "title": "Gravitational field",
+      "problem": "The gravitational potential near a mass $M$ at the origin is\n\\[\n \\phi(x, y, z) = -\\frac{GM}{\\sqrt{x^2 + y^2 + z^2}} = -\\frac{GM}{r}.\n\\]\nFind the gravitational field $\\vect{F} = -\\grad\\phi$.",
+      "solution": "First compute $\\grad\\left(\\dfrac{1}{r}\\right)$ where $r = \\sqrt{x^2 + y^2 + z^2}$.\n\n\\[\n \\frac{\\partial}{\\partial x}\\left(\\frac{1}{r}\\right) = -\\frac{1}{r^2}\\frac{\\partial r}{\\partial x} = -\\frac{1}{r^2} \\cdot \\frac{x}{r} = -\\frac{x}{r^3}.\n\\]\n\nSimilarly for $y$ and $z$. Thus:\n\\[\n \\grad\\left(\\frac{1}{r}\\right) = -\\frac{\\langle x, y, z \\rangle}{r^3} = -\\frac{\\vect{r}}{r^3}.\n\\]\n\nThe gravitational field is:\n\\[\n \\vect{F} = -\\grad\\phi = -GM \\cdot \\left(-\\frac{\\vect{r}}{r^3}\\right) \\cdot (-1) = -\\frac{GM}{r^3}\\vect{r} = -\\frac{GM}{r^2}\\hat{\\vect{r}}.\n\\]\n\nThe negative sign shows the force is attractive—pointing toward the mass at the origin. The magnitude is $GM/r^2$, Newton's inverse-square law."
+    },
+    {
+      "type": "example",
+      "id": "example-16.11",
+      "number": "16.11",
+      "title": "Testing for a gradient field",
+      "problem": "Is $\\vect{F}(x, y) = \\langle 2xy, x^2 \\rangle$ a gradient field?",
+      "solution": "If $\\vect{F} = \\grad f = \\langle f_x, f_y \\rangle$, then:\n\\[\n f_x = 2xy \\quad \\text{and} \\quad f_y = x^2.\n\\]\n\nIntegrating the first: $f = x^2 y + g(y)$ for some function $g(y)$.\n\nThen $f_y = x^2 + g'(y)$. But we need $f_y = x^2$, so $g'(y) = 0$, meaning $g(y) = C$ (constant).\n\nThus $f(x, y) = x^2 y + C$ is a potential function. Yes, $\\vect{F}$ is a gradient field!"
+    },
+    {
+      "type": "example",
+      "id": "example-16.12",
+      "number": "16.12",
+      "title": "A non-gradient field",
+      "problem": "Is $\\vect{F}(x, y) = \\langle y, -x \\rangle$ a gradient field?",
+      "solution": "If $\\vect{F} = \\grad f$, then $f_x = y$ and $f_y = -x$.\n\nFrom $f_x = y$: $f = xy + g(y)$.\n\nThen $f_y = x + g'(y)$. But we need $f_y = -x$, so $x + g'(y) = -x$, giving $g'(y) = -2x$.\n\nThis is impossible—$g$ is a function of $y$ only, so $g'(y)$ cannot depend on $x$.\n\nTherefore $\\vect{F}$ is **not** a gradient field; it is **not conservative**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "A Criterion for Conservative Fields"
+    },
+    {
+      "type": "paragraph",
+      "text": "How can we quickly tell if a field is conservative without finding a potential function?"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-16.1",
+      "number": "16.1",
+      "title": "Clairaut's Test for Conservative Fields",
+      "content": "If $\\vect{F} = \\langle P, Q \\rangle$ is a conservative vector field on an open simply connected region, and $P$ and $Q$ have continuous first partial derivatives, then\n\\[\n \\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x}.\n\\]\nConversely, if this condition holds on a simply connected region, then $\\vect{F}$ is conservative.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If $\\vect{F} = \\grad f$, then $P = f_x$ and $Q = f_y$. By Clairaut's theorem on mixed partials:\n\\[\n \\frac{\\partial P}{\\partial y} = \\frac{\\partial^2 f}{\\partial y \\partial x} = \\frac{\\partial^2 f}{\\partial x \\partial y} = \\frac{\\partial Q}{\\partial x}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "In three dimensions, the condition becomes:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-16.2",
+      "number": "16.2",
+      "title": "Conservative Field Test in 3D",
+      "content": "If $\\vect{F} = \\langle P, Q, R \\rangle$ is conservative on a simply connected region, then\n\\[\n \\frac{\\partial P}{\\partial y} = \\frac{\\partial Q}{\\partial x}, \\quad \\frac{\\partial P}{\\partial z} = \\frac{\\partial R}{\\partial x}, \\quad \\frac{\\partial Q}{\\partial z} = \\frac{\\partial R}{\\partial y}.\n\\]\nThese conditions can be written compactly as $\\curl\\vect{F} = \\vect{0}$ (we'll define curl in Section 16.5).",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-16.13",
+      "number": "16.13",
+      "title": "Applying the test",
+      "problem": "Determine whether each field is conservative:\n\n1. $\\vect{F} = \\langle 2xy + z, x^2, x \\rangle$\n\n2. $\\vect{G} = \\langle y^2, x, z \\rangle$",
+      "solution": "1. $P = 2xy + z$, $Q = x^2$, $R = x$.\n $$\n P_y &= 2x, \\quad Q_x = 2x \\quad \\checkmark \\\\\n P_z &= 1, \\quad R_x = 1 \\quad \\checkmark \\\\\n Q_z &= 0, \\quad R_y = 0 \\quad \\checkmark\n $$\n All conditions satisfied; $\\vect{F}$ is conservative.\n\n2. $P = y^2$, $Q = x$, $R = z$.\n $$\n P_y &= 2y, \\quad Q_x = 1 \\quad \\times\n $$\n Since $P_y \\neq Q_x$, $\\vect{G}$ is **not** conservative."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Flow Lines (Integral Curves)"
+    },
+    {
+      "type": "definition",
+      "id": "definition-16.4",
+      "number": "16.4",
+      "title": "Flow Line",
+      "content": "A **flow line** (also called a **streamline** or **integral curve**) of a vector field $\\vect{F}$ is a curve $\\vect{r}(t)$ such that the velocity vector at each point equals the field:\n\\[\n \\vect{r}'(t) = \\vect{F}(\\vect{r}(t)).\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Flow lines show the paths that particles would follow if they moved according to the field. In a velocity field, flow lines are the actual paths of particles. In a force field, they show the direction of the force at each point."
+    },
+    {
+      "type": "example",
+      "id": "example-16.14",
+      "number": "16.14",
+      "title": "Flow lines of a constant field",
+      "problem": "Find the flow lines of $\\vect{F}(x, y) = \\langle a, b \\rangle$ where $a, b$ are constants.",
+      "solution": "We need $\\vect{r}'(t) = \\langle x'(t), y'(t) \\rangle = \\langle a, b \\rangle$.\n\nSolving: $x(t) = at + x_0$, $y(t) = bt + y_0$.\n\nThe flow lines are straight lines with slope $b/a$ (if $a \\neq 0$):\n\\[\n \\frac{y - y_0}{x - x_0} = \\frac{b}{a}, \\quad \\text{or} \\quad bx - ay = C.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-16.15",
+      "number": "16.15",
+      "title": "Flow lines of a radial field",
+      "problem": "Find the flow lines of $\\vect{F}(x, y) = \\langle x, y \\rangle$.",
+      "solution": "We need $x' = x$ and $y' = y$.\n\nSolutions: $x(t) = x_0 e^t$, $y(t) = y_0 e^t$.\n\nEliminating $t$: $y/x = y_0/x_0 = \\text{constant}$, so the flow lines are rays from the origin.\n\nAs $t \\to \\infty$, particles move away from the origin exponentially fast. As $t \\to -\\infty$, they approach the origin."
+    },
+    {
+      "type": "example",
+      "id": "example-16.16",
+      "number": "16.16",
+      "title": "Flow lines of a rotational field",
+      "problem": "Find the flow lines of $\\vect{F}(x, y) = \\langle -y, x \\rangle$.",
+      "solution": "We need $x' = -y$ and $y' = x$.\n\nDifferentiate the first equation: $x'' = -y' = -x$.\n\nThis gives $x'' + x = 0$, with solution $x(t) = A\\cos t + B\\sin t$.\n\nThen $y = -x' = A\\sin t - B\\cos t$.\n\nCheck: $x^2 + y^2 = A^2 + B^2 = r^2$ (constant).\n\nThe flow lines are **circles** centered at the origin, traversed counterclockwise."
+    },
+    {
+      "type": "example",
+      "id": "example-16.17",
+      "number": "16.17",
+      "title": "Flow lines from differential equations",
+      "problem": "Find the flow lines of $\\vect{F}(x, y) = \\langle 1, x \\rangle$.",
+      "solution": "We have $x' = 1$ and $y' = x$.\n\nFrom the first: $x = t + C_1$ (choosing $x_0 = 0$ for simplicity: $x = t$).\n\nThen $y' = x = t$, so $y = t^2/2 + C_2$.\n\nEliminating $t$: $y = x^2/2 + C$.\n\nThe flow lines are parabolas $y = x^2/2 + C$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Physical Examples of Vector Fields"
+    },
+    {
+      "type": "paragraph",
+      "text": "**1. Velocity fields:** The velocity of a fluid at each point is a vector field $\\vect{v}(x, y, z)$. Flow lines are the paths of fluid particles."
+    },
+    {
+      "type": "paragraph",
+      "text": "**2. Force fields:** Gravitational, electric, and magnetic forces form vector fields. The gravitational field near Earth is approximately $\\vect{F} = \\langle 0, 0, -mg \\rangle$."
+    },
+    {
+      "type": "paragraph",
+      "text": "**3. Temperature gradients:** If $T(x, y, z)$ is temperature, then $\\grad T$ points in the direction of increasing temperature."
+    },
+    {
+      "type": "paragraph",
+      "text": "**4. Electric fields:** The electric field $\\vect{E}$ exerts force $\\vect{F} = q\\vect{E}$ on a charge $q$."
+    },
+    {
+      "type": "example",
+      "id": "example-16.18",
+      "number": "16.18",
+      "title": "Fluid flow between plates",
+      "problem": "Viscous fluid flows between two parallel plates at $y = 0$ and $y = h$. The velocity profile is\n\\[\n \\vect{v}(x, y) = \\langle v_0 y(h - y), 0 \\rangle.\n\\]\nDescribe this flow.",
+      "solution": "The flow is entirely in the $x$-direction. At the plates ($y = 0$ and $y = h$), the velocity is zero (no-slip condition). Maximum velocity occurs at $y = h/2$:\n\\[\n v_{\\max} = v_0 \\cdot \\frac{h}{2} \\cdot \\frac{h}{2} = \\frac{v_0 h^2}{4}.\n\\]\nThis is **Poiseuille flow**—the parabolic velocity profile of a viscous fluid in a channel."
+    },
+    {
+      "type": "example",
+      "id": "example-16.19",
+      "number": "16.19",
+      "title": "Electric dipole field",
+      "problem": "Two point charges $+q$ at $(0, d)$ and $-q$ at $(0, -d)$ create an electric field. Near the origin, the field is approximately\n\\[\n \\vect{E} \\approx \\frac{2qd}{4\\pi\\epsilon_0} \\cdot \\frac{1}{r^3}\\langle 3xz, 3yz, 3z^2 - r^2 \\rangle.\n\\]\nThis is a **dipole field**, characteristic of many molecular structures.",
+      "solution": ""
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Genesis 8:1",
+      "text": "And God made a wind blow over the earth, and the waters subsided."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 36:9",
+      "text": "For with you is the fountain of life; in your light do we see light."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 46:4",
+      "text": "There is a river whose streams make glad the city of God."
+    },
+    {
+      "type": "quote",
+      "author": "Heaviside",
+      "text": "The scalar product is the work of the devil."
+    },
+    {
+      "type": "quote",
+      "author": "Faraday",
+      "text": "Nothing is too wonderful to be true if it be consistent with the laws of nature."
+    },
+    {
+      "type": "quote",
+      "author": "Clairaut",
+      "text": "The equality of mixed partials is the fingerprint of a conservative field."
+    },
+    {
+      "type": "quote",
+      "author": "Maxwell",
+      "text": "All the mathematical sciences are founded on relations between physical laws and laws of numbers."
+    }
+  ]
+}

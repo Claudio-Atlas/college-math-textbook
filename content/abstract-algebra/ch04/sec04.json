@@ -1,0 +1,131 @@
+{
+  "id": "abstract-algebra-ch04-sec04",
+  "title": "The Index of a Subgroup",
+  "chapter": 4,
+  "section": 4,
+  "book": "abstract-algebra",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "*\"Are not two sparrows sold for a penny? Yet not one \nof them will fall to the ground outside your Father's care.\"*{Matthew 10:29}{*\"Counting is the foundation of mathematics.\"*}{Leopold Kronecker}\n\n*\"Counting is the foundation of mathematics.\"*{— Leopold Kronecker}"
+    },
+    {
+      "type": "paragraph",
+      "text": "The number of cosets of a subgroup $H$ in $G$ is called the \n**index** of $H$ in $G$. This quantity measures how \"big\" $G$ is \nrelative to $H$ and plays a crucial role in many arguments."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition and Basic Properties"
+    },
+    {
+      "type": "definition",
+      "id": "definition-4.1",
+      "number": "4.1",
+      "title": "Index of a Subgroup",
+      "content": "The **index** of $H$ in $G$, denoted \n$[G:H]$, is the number of distinct left cosets of $H$ in $G$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Index Formula",
+      "content": "If $G$ is finite, then $[G:H] = |G|/|H|$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "From the proof of Lagrange's Theorem: $|G| = [G:H] \\cdot |H|$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "Computing indices",
+      "problem": "- $[\\Z_{12} : \\langle 3 \\rangle] = 12/4 = 3$\n\n- $[S_4 : A_4] = 24/12 = 2$\n\n- $[\\Z : 5\\Z] = \\infty$ (but there are exactly $5$ cosets, so \n we define $[\\Z : 5\\Z] = 5$)",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Index for Infinite Groups"
+    },
+    {
+      "type": "paragraph",
+      "text": "For infinite groups, we define the index as the cardinality of the set \nof cosets, which may be finite even when $G$ and $H$ are both infinite."
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "Infinite groups with finite index",
+      "problem": "$[\\Z : n\\Z] = n$ for any positive integer $n$. The cosets are \n$0 + n\\Z, 1 + n\\Z, \\ldots, (n-1) + n\\Z$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Tower Law"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.2",
+      "number": "4.2",
+      "title": "Tower Law (Index Multiplicativity)",
+      "content": "If $K \\leq H \\leq G$, then $[G:K] = [G:H] \\cdot [H:K]$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\{g_i H : i \\in I\\}$ be the left cosets of $H$ in $G$, and \n$\\{h_j K : j \\in J\\}$ be the left cosets of $K$ in $H$.\n\nWe claim the left cosets of $K$ in $G$ are exactly $\\{g_i h_j K : i \\in \nI, j \\in J\\}$.\n\nEvery $g \\in G$ belongs to some $g_i H$, so $g = g_i h$ for some $h \\in H$. \nThen $h \\in h_j K$ for some $j$, so $g = g_i h_j k$ for some $k \\in K$. \nThus $gK = g_i h_j K$.\n\nThe cosets $g_i h_j K$ are distinct: if $g_i h_j K = g_k h_\\ell K$, then \n$g_i h_j$ and $g_k h_\\ell$ are in the same $K$-coset, so $g_i H = g_k H$ \n(hence $i = k$) and $h_j K = h_\\ell K$ (hence $j = \\ell$).\n\nThus $[G:K] = |I| \\cdot |J| = [G:H] \\cdot [H:K]$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": "Applying the Tower Law",
+      "problem": "In $\\Z_{24}$, let $K = \\langle 6 \\rangle = \\{0, 6, 12, 18\\}$ and \n$H = \\langle 2 \\rangle = \\{0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22\\}$.\n\nThen $K \\leq H \\leq \\Z_{24}$ and:\n$$\n [\\Z_{24} : K] &= 24/4 = 6 \\\\\n [\\Z_{24} : H] &= 24/12 = 2 \\\\\n [H : K] &= 12/4 = 3\n$$\nCheck: $6 = 2 \\times 3$.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Index 2 Subgroups"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.3",
+      "number": "4.3",
+      "title": "Index 2 Implies Normal",
+      "content": "If $[G:H] = 2$, then $H$ is a normal subgroup of $G$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "There are exactly two left cosets: $H$ and $gH$ (for any $g \\notin H$). \nSimilarly, there are exactly two right cosets: $H$ and $Hg$.\n\nSince the cosets partition $G$, we have $gH = G \\setminus H = Hg$.\n\nFor any $g \\in G$: if $g \\in H$, then $gH = H = Hg$. If $g \\notin H$, \nthen $gH = G \\setminus H = Hg$. Thus left and right cosets coincide, \nso $H$ is normal."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "list",
+      "ordered": true,
+      "items": [
+        "Find $[U(30) : \\langle 7 \\rangle]$.",
+        "If $[G:H] = 3$ and $|H| = 7$, find $|G|$.",
+        "Use the Tower Law to show that if $H \\leq K \\leq G$ and \n $[G:H] = 30$, then $[G:K]$ divides $30$.",
+        "Prove that $A_n$ is a normal subgroup of $S_n$.",
+        "If $[G:H] = n$ and $[G:K] = m$ with $\\gcd(n,m) = 1$, prove that \n $[G : H \\cap K] = nm$."
+      ]
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Luke 12:7",
+      "text": "Indeed, the very hairs of your head are all \nnumbered."
+    }
+  ]
+}

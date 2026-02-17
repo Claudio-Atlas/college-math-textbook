@@ -1,0 +1,148 @@
+{
+  "id": "vol1-ch04-sec05",
+  "title": "Implicit Differentiation",
+  "chapter": 4,
+  "section": 5,
+  "book": "vol1",
+  "epigraph": {
+    "text": "For now we see only a reflection as in a mirror; then \nwe shall see face to face.",
+    "reference": "1 Corinthians 13:12"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Consider the circle $x^{2} + y^{2} = 25$. This is not the graph of a \nfunction—it fails the vertical line test. Yet the circle clearly has \na tangent line at every point, and that tangent line has a well-defined \nslope. How do we find it?"
+    },
+    {
+      "type": "paragraph",
+      "text": "One approach: solve for $y = \\pm\\sqrt{25 - x^{2}}$ and differentiate. \nBut this is awkward (we get two branches) and for many curves, solving \nfor $y$ explicitly is impossible."
+    },
+    {
+      "type": "paragraph",
+      "text": "A better approach is **implicit differentiation**: we differentiate \nboth sides of the equation *as they stand*, treating $y$ as a function \nof $x$ and applying the Chain Rule."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Technique of Implicit Differentiation"
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-4.5",
+      "number": null,
+      "title": "Implicit Differentiation",
+      "content": "Given an equation relating $x$ and $y$:\n\n1. Differentiate both sides with respect to $x$.\n\n2. Every time you differentiate a term involving $y$, apply the \n Chain Rule: the \"inner function\" is $y(x)$, so you multiply by \n $\\deriv{y}{x}$.\n\n3. Collect all terms containing $\\deriv{y}{x}$ on one side.\n\n4. Factor out $\\deriv{y}{x}$ and solve."
+    },
+    {
+      "type": "example",
+      "id": "example-4.1",
+      "number": "4.1",
+      "title": "The circle",
+      "problem": "Find $\\deriv{y}{x}$ for the circle $x^{2} + y^{2} = 25$.",
+      "solution": "Differentiate both sides with respect to $x$:\n\\[\n \\deriv{}{x}[x^{2}] + \\deriv{}{x}[y^{2}] = \\deriv{}{x}[25].\n\\]\nFor the term $y^{2}$, we treat $y$ as a function of $x$ and apply the \nChain Rule: $\\deriv{}{x}[y^{2}] = 2y\\,\\deriv{y}{x}$. Therefore,\n\\[\n 2x + 2y\\,\\deriv{y}{x} = 0.\n\\]\nSolving for $\\deriv{y}{x}$:\n\\[\n \\deriv{y}{x} = -\\frac{2x}{2y} = -\\frac{x}{y}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "Let us verify this result. At the point $(3, 4)$ on the circle (since \n$9 + 16 = 25$), the slope of the tangent line is\n\\[\n \\deriv{y}{x}\\bigg|_{(3,4)} = -\\frac{3}{4}.\n\\]\nThe tangent to a circle at a point is perpendicular to the radius at that \npoint. The radius from $(0,0)$ to $(3,4)$ has slope $4/3$, and indeed \n$-3/4$ is the negative reciprocal. The formula checks out beautifully."
+    },
+    {
+      "type": "example",
+      "id": "example-4.2",
+      "number": "4.2",
+      "title": "A more complex implicit equation",
+      "problem": "Find $\\deriv{y}{x}$ if $x^{3} + y^{3} = 6xy$.",
+      "solution": "This is the *folium of Descartes*, a famous curve. Differentiate \nboth sides:\n\\[\n 3x^{2} + 3y^{2}\\,\\deriv{y}{x} = 6y + 6x\\,\\deriv{y}{x}.\n\\]\nOn the right, we used the Product Rule on $6xy$: \n$\\deriv{}{x}[6xy] = 6y + 6x\\,\\deriv{y}{x}$.\n\nCollect $\\deriv{y}{x}$ terms:\n\\[\n 3y^{2}\\,\\deriv{y}{x} - 6x\\,\\deriv{y}{x} = 6y - 3x^{2}.\n\\]\nFactor and solve:\n\\[\n \\deriv{y}{x}(3y^{2} - 6x) = 6y - 3x^{2}\n \\qquad\\Longrightarrow\\qquad\n \\deriv{y}{x} = \\frac{6y - 3x^{2}}{3y^{2} - 6x} = \\frac{2y - x^{2}}{y^{2} - 2x}.\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-4.3",
+      "number": "4.3",
+      "title": "Finding a tangent line implicitly",
+      "problem": "Find the equation of the tangent line to the curve $x^{2} + xy + y^{2} = 7$ \nat the point $(1, 2)$.",
+      "solution": "First verify the point: $1 + 2 + 4 = 7$.$\\checkmark$\n\nDifferentiate implicitly:\n\\[\n 2x + \\left(y + x\\,\\deriv{y}{x}\\right) + 2y\\,\\deriv{y}{x} = 0.\n\\]\nFor the $xy$ term, we used the Product Rule: \n$\\deriv{}{x}[xy] = y + x\\,\\deriv{y}{x}$.\n\nSolve for $\\deriv{y}{x}$:\n\\[\n x\\,\\deriv{y}{x} + 2y\\,\\deriv{y}{x} = -2x - y\n \\qquad\\Longrightarrow\\qquad\n \\deriv{y}{x} = \\frac{-2x - y}{x + 2y}.\n\\]\nAt $(1, 2)$:\n\\[\n \\deriv{y}{x} = \\frac{-2 - 2}{1 + 4} = \\frac{-4}{5}.\n\\]\nThe tangent line is $y - 2 = -\\frac{4}{5}(x - 1)$, or $y = -\\frac{4}{5}x + \\frac{14}{5}$."
+    },
+    {
+      "type": "example",
+      "id": "example-4.4",
+      "number": "4.4",
+      "title": "Implicit differentiation with exponential",
+      "problem": "Find $\\deriv{y}{x}$ if $e^{y} = x + y$.",
+      "solution": "Differentiate both sides:\n\\[\n e^{y}\\,\\deriv{y}{x} = 1 + \\deriv{y}{x}.\n\\]\nCollect terms:\n\\[\n e^{y}\\,\\deriv{y}{x} - \\deriv{y}{x} = 1\n \\qquad\\Longrightarrow\\qquad\n \\deriv{y}{x}(e^{y} - 1) = 1\n \\qquad\\Longrightarrow\\qquad\n \\deriv{y}{x} = \\frac{1}{e^{y} - 1}.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Implicit Differentiation with Trigonometric Functions"
+    },
+    {
+      "type": "example",
+      "id": "example-4.5",
+      "number": "4.5",
+      "title": "Trig in an implicit equation",
+      "problem": "Find $\\deriv{y}{x}$ if $\\sin(xy) = x$.",
+      "solution": "Differentiate both sides. On the left, we need the Chain Rule: the outer \nfunction is sine, and the inner function is $xy$ (which itself requires the \nProduct Rule).\n\\[\n \\cos(xy)\\cdot\\deriv{}{x}[xy] = 1.\n\\]\nNow $\\deriv{}{x}[xy] = y + x\\,\\deriv{y}{x}$, so\n\\[\n \\cos(xy)\\left(y + x\\,\\deriv{y}{x}\\right) = 1.\n\\]\nExpand and solve:\n\\[\n y\\cos(xy) + x\\cos(xy)\\,\\deriv{y}{x} = 1\n \\qquad\\Longrightarrow\\qquad\n \\deriv{y}{x} = \\frac{1 - y\\cos(xy)}{x\\cos(xy)}.\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Proving the Power Rule for Rational Exponents"
+    },
+    {
+      "type": "paragraph",
+      "text": "Implicit differentiation lets us extend the Power Rule beyond positive \nintegers."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-4.1",
+      "number": "4.1",
+      "title": "Power Rule for Rational Exponents",
+      "content": "If $n = p/q$ where $p$ and $q$ are integers with $q \\neq 0$, then\n\\[\n \\deriv{}{x}[x^{p/q}] = \\frac{p}{q}\\,x^{p/q - 1}\n\\]\nwherever $x^{p/q}$ is defined and the derivative exists.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $y = x^{p/q}$. Then $y^{q} = x^{p}$. Differentiate both sides \nimplicitly:\n\\[\n q\\,y^{q-1}\\,\\deriv{y}{x} = p\\,x^{p-1}.\n\\]\nSolve for $\\deriv{y}{x}$:\n\\[\n \\deriv{y}{x} = \\frac{p\\,x^{p-1}}{q\\,y^{q-1}}.\n\\]\nSince $y = x^{p/q}$, we have $y^{q-1} = x^{p(q-1)/q}$. Therefore,\n\\[\n \\deriv{y}{x} = \\frac{p\\,x^{p-1}}{q\\,x^{p(q-1)/q}}\n = \\frac{p}{q}\\,x^{p-1 - p(q-1)/q}\n = \\frac{p}{q}\\,x^{p/q - 1}.\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This confirms that the Power Rule $\\deriv{}{x}[x^{n}] = nx^{n-1}$ \nholds for all rational exponents."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Higher-Order Implicit Derivatives"
+    },
+    {
+      "type": "example",
+      "id": "example-4.6",
+      "number": "4.6",
+      "title": "Second derivative implicitly",
+      "problem": "Find $\\dderiv{y}{x}$ if $x^{2} + y^{2} = 25$.",
+      "solution": "From Example [ex:implicit-circle], we have $\\deriv{y}{x} = -\\dfrac{x}{y}$.\n\nDifferentiate again using the Quotient Rule:\n$$\n \\dderiv{y}{x} \n &= \\deriv{}{x}\\left[-\\frac{x}{y}\\right]\n = -\\frac{y \\cdot 1 - x \\cdot \\deriv{y}{x}}{y^{2}} \\\\[8pt]\n &= -\\frac{y - x\\left(-\\frac{x}{y}\\right)}{y^{2}}\n = -\\frac{y + \\frac{x^{2}}{y}}{y^{2}} \\\\[8pt]\n &= -\\frac{\\frac{y^{2} + x^{2}}{y}}{y^{2}}\n = -\\frac{x^{2} + y^{2}}{y^{3}}\n = -\\frac{25}{y^{3}}.\n$$\nIn the last step, we used $x^{2} + y^{2} = 25$."
+    },
+    {
+      "type": "historical",
+      "id": "historical-4.5",
+      "number": null,
+      "title": "Ren\\'e Descartes (1596--1650)",
+      "content": "The folium of Descartes, $x^{3} + y^{3} = 6xy$, was proposed by Descartes \nin 1638 as a challenge to Pierre de Fermat. Descartes, a devout Catholic, \nis best known for his philosophy (\"I think, therefore I am\") but made \nprofound contributions to mathematics, including the coordinate system \nthat bears his name. The folium beautifully illustrates why implicit \ndifferentiation is necessary: solving $x^{3} + y^{3} = 6xy$ for $y$ \nexplicitly is extraordinarily difficult."
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Job 38:4--5",
+      "text": "Where were you when I laid the earth's \nfoundation? Tell me, if you understand. Who marked off its dimensions? \nSurely you know!"
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 25:2",
+      "text": "It is the glory of God to conceal a matter; \nto search out a matter is the glory of kings."
+    },
+    {
+      "type": "quote",
+      "author": "Ren\\'e Descartes",
+      "text": "Each problem that I solved became a rule \nwhich served afterwards to solve other problems."
+    }
+  ]
+}

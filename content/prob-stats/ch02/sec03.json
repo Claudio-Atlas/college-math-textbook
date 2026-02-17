@@ -1,0 +1,106 @@
+{
+  "id": "prob-stats-ch02-sec03",
+  "title": "Conditional Probability",
+  "chapter": 2,
+  "section": 3,
+  "book": "prob-stats",
+  "epigraph": {
+    "text": "Do not be anxious about tomorrow, for tomorrow will be anxious for itself.",
+    "reference": "Matthew 6:34",
+    "quote": "Conditional probability is the soul of statistics.",
+    "quoteAuthor": "A. W. F. Edwards"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Often, the probability of an event changes when we learn new information. \nThe probability of rain tomorrow is different if we know that a storm \nsystem is approaching. This leads to one of the most important concepts \nin probability: **conditional probability**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Concept of Conditional Probability"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Conditional Probability",
+      "content": "The **conditional probability** of \n$A$ given $B$, denoted $P(A \\mid B)$, is the probability that $A$ \noccurs given that $B$ has occurred:\n\\[\n P(A \\mid B) = \\frac{P(A \\cap B)}{P(B)}, \\quad \\text{provided } P(B) > 0\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "The intuition: once we know $B$ has occurred, the sample space \neffectively shrinks to just those outcomes in $B$. The conditional \nprobability asks what fraction of $B$ is also in $A$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Conditional Probability with Cards",
+      "problem": "A card is drawn from a standard deck. Given that the card is red, \nwhat is the probability that it is a heart?",
+      "solution": "Let $H$ = \"heart\" and $R$ = \"red.\"\n\nSince all hearts are red, $H \\cap R = H$, so $P(H \\cap R) = P(H) = \n\\frac{13}{52}$.\n\nWe have $P(R) = \\frac{26}{52}$.\n\nTherefore:\n\\[\n P(H \\mid R) = \\frac{P(H \\cap R)}{P(R)} = \\frac{13/52}{26/52} = \n \\frac{13}{26} = \\frac{1}{2}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Multiplication Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "Rearranging the definition of conditional probability gives us a rule \nfor finding the probability of an intersection."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.1",
+      "number": "2.1",
+      "title": "General Multiplication Rule",
+      "content": "For any events $A$ and $B$:\n\\[\n P(A \\cap B) = P(B) \\cdot P(A \\mid B) = P(A) \\cdot P(B \\mid A)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "This rule is essential when probability questions involve sequences \nof events."
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Sampling Without Replacement",
+      "problem": "A box contains 3 red and 5 blue balls. Two balls are drawn without \nreplacement. What is the probability that both are red?",
+      "solution": "Let $R_1$ = \"first ball is red\" and $R_2$ = \"second ball is red.\"\n\nWe want $P(R_1 \\cap R_2)$.\n\n$P(R_1) = \\frac{3}{8}$ (3 red out of 8 total).\n\n$P(R_2 \\mid R_1) = \\frac{2}{7}$ (after removing one red, 2 red remain \nout of 7 total).\n\nBy the multiplication rule:\n\\[\n P(R_1 \\cap R_2) = P(R_1) \\cdot P(R_2 \\mid R_1) = \\frac{3}{8} \\cdot \n \\frac{2}{7} = \\frac{6}{56} = \\frac{3}{28}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Tree Diagrams"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **tree diagram** is a visual tool for \norganizing conditional probability calculations."
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Medical Testing",
+      "problem": "A disease affects 1\\% of a population. A test for the disease has:\n\n- Sensitivity: $P(\\text{positive} \\mid \\text{disease}) = 0.95$\n\n- Specificity: $P(\\text{negative} \\mid \\text{no disease}) = 0.90$\n\nWhat is the probability that a randomly selected person tests positive?",
+      "solution": "Let $D$ = \"has disease\" and $+$ = \"tests positive.\"\n\nGiven: $P(D) = 0.01$, $P(+ \\mid D) = 0.95$, $P(- \\mid D^c) = 0.90$.\n\nFrom the specificity: $P(+ \\mid D^c) = 1 - 0.90 = 0.10$.\n\nUsing the tree diagram approach:\n$$\n P(+) &= P(+ \\cap D) + P(+ \\cap D^c) \\\\\n &= P(D) \\cdot P(+ \\mid D) + P(D^c) \\cdot P(+ \\mid D^c) \\\\\n &= (0.01)(0.95) + (0.99)(0.10) \\\\\n &= 0.0095 + 0.099 \\\\\n &= 0.1085\n$$\n\nAbout 10.85\\% of people test positive."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Law of Total Probability"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.2",
+      "number": "2.2",
+      "title": "Law of Total Probability",
+      "content": "If $B_1, B_2, \\ldots, B_k$ are mutually exclusive events that together \ncover the entire sample space (a *partition*), then for any event $A$:\n\\[\n P(A) = \\sum_{i=1}^{k} P(B_i) \\cdot P(A \\mid B_i)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "In the medical testing example, $D$ and $D^c$ partition the sample \nspace, so $P(+) = P(D) \\cdot P(+ \\mid D) + P(D^c) \\cdot P(+ \\mid D^c)$."
+    }
+  ]
+}

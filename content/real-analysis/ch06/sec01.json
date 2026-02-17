@@ -1,0 +1,82 @@
+{
+  "id": "real-analysis-ch06-sec01",
+  "title": "The Derivative",
+  "chapter": 6,
+  "section": 1,
+  "book": "real-analysis",
+  "content": [
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Definition"
+    },
+    {
+      "type": "definition",
+      "id": "definition-6.1",
+      "number": "6.1",
+      "title": "Derivative",
+      "content": "Let $f$ be defined on an interval containing $c$. The **derivative** \n of $f$ at $c$ is\n\\[\nf'(c) = \\lim_{x \\to c} \\frac{f(x) - f(c)}{x - c} = \\lim_{h \\to 0} \\frac{f(c + h) - f(c)}{h}\n\\]\nif this limit exists. We say $f$ is **differentiable** at $c$."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.1",
+      "number": "6.1",
+      "title": "Differentiability Implies Continuity",
+      "content": "If $f$ is differentiable at $c$, then $f$ is continuous at $c$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$\\lim_{x \\to c} (f(x) - f(c)) = \\lim_{x \\to c} \\frac{f(x) - f(c)}{x - c} \\cdot (x - c) = f'(c) \\cdot 0 = 0$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-6.1",
+      "number": null,
+      "title": "",
+      "content": "The converse is false. The function $f(x) = |x|$ is continuous at $0$ but \nnot differentiable there (the left and right derivatives differ)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Differentiation Rules"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.2",
+      "number": "6.2",
+      "title": "Algebraic Differentiation Rules",
+      "content": "If $f$ and $g$ are differentiable at $c$, then:\n\n1. $(f + g)'(c) = f'(c) + g'(c)$\n\n2. $(kf)'(c) = kf'(c)$\n\n3. **Product Rule:** $(fg)'(c) = f'(c)g(c) + f(c)g'(c)$\n\n4. **Quotient Rule:** $(f/g)'(c) = \\frac{f'(c)g(c) - f(c)g'(c)}{g(c)^2}$ (if $g(c) \\neq 0$)",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "$$\n(fg)'(c) &= \\lim_{x \\to c} \\frac{f(x)g(x) - f(c)g(c)}{x - c} \\\\\n&= \\lim_{x \\to c} \\frac{f(x)g(x) - f(x)g(c) + f(x)g(c) - f(c)g(c)}{x - c} \\\\\n&= \\lim_{x \\to c} f(x) \\cdot \\frac{g(x) - g(c)}{x - c} + \\lim_{x \\to c} g(c) \\cdot \\frac{f(x) - f(c)}{x - c} \\\\\n&= f(c)g'(c) + g(c)f'(c). \\qedhere\n$$"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.3",
+      "number": "6.3",
+      "title": "Chain Rule",
+      "content": "If $g$ is differentiable at $c$ and $f$ is differentiable at $g(c)$, then \n$f \\circ g$ is differentiable at $c$ and\n\\[\n(f \\circ g)'(c) = f'(g(c)) \\cdot g'(c).\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Define $\\phi(y) = \\frac{f(y) - f(g(c))}{y - g(c)}$ for $y \\neq g(c)$ and \n$\\phi(g(c)) = f'(g(c))$. Then $\\phi$ is continuous at $g(c)$ and \n$f(y) - f(g(c)) = \\phi(y)(y - g(c))$ for all $y$.\n\nSubstituting $y = g(x)$:\n\\[\n\\frac{f(g(x)) - f(g(c))}{x - c} = \\phi(g(x)) \\cdot \\frac{g(x) - g(c)}{x - c}.\n\\]\nTaking limits and using continuity of $\\phi \\circ g$:\n\\[\n(f \\circ g)'(c) = \\phi(g(c)) \\cdot g'(c) = f'(g(c)) \\cdot g'(c). \\qedhere\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Inverse Function Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-6.4",
+      "number": "6.4",
+      "title": "Derivative of Inverse Functions",
+      "content": "Let $f$ be continuous and strictly monotone on an interval $I$, and \ndifferentiable at $c \\in I$ with $f'(c) \\neq 0$. Then $f^{-1}$ is \ndifferentiable at $f(c)$ and\n\\[\n(f^{-1})'(f(c)) = \\frac{1}{f'(c)}.\n\\]",
+      "label": "Theorem"
+    }
+  ]
+}

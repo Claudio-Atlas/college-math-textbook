@@ -1,0 +1,206 @@
+{
+  "id": "geometry-ch07-sec05",
+  "title": "Proportions in Triangles",
+  "chapter": 7,
+  "section": 5,
+  "book": "geometry",
+  "epigraph": {
+    "text": "Divide your portion to seven, or even to eight, for you know not what disaster may happen on earth.",
+    "reference": "Ecclesiastes 11:2"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "When a line passes through a triangle parallel to one of its sides, \nsomething remarkable happens: it creates proportional segments on \nthe other two sides. This fundamental property, known since ancient \ntimes, has profound applications in architecture, surveying, and \ncountless geometric proofs."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Triangle Proportionality Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Triangle Proportionality Theorem (Side-Splitter)",
+      "content": "If a line is parallel to one side of a triangle and intersects the \nother two sides, then it divides those sides proportionally.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "If $\\overline{DE} \\parallel \\overline{BC}$ in $\\triangle ABC$, then:\n\\[\n\\frac{AD}{DB} = \\frac{AE}{EC}\n\\]"
+    },
+    {
+      "type": "proof",
+      "content": "Since $\\overline{DE} \\parallel \\overline{BC}$:\n\n- $\\angle ADE \\cong \\angle ABC$ (corresponding angles)\n\n- $\\angle AED \\cong \\angle ACB$ (corresponding angles)\n\n- $\\angle A \\cong \\angle A$ (reflexive property)\n\nBy AA Similarity, $\\triangle ADE \\sim \\triangle ABC$.\n\nFrom the similarity, corresponding sides are proportional:\n\\[\n\\frac{AD}{AB} = \\frac{AE}{AC}\n\\]\n\nSince $AB = AD + DB$ and $AC = AE + EC$:\n\\[\n\\frac{AD}{AD + DB} = \\frac{AE}{AE + EC}\n\\]\n\nUsing the property that if $\\frac{a}{b} = \\frac{c}{d}$, then \n$\\frac{a}{b-a} = \\frac{c}{d-c}$:\n\\[\n\\frac{AD}{DB} = \\frac{AE}{EC}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Using the Side-Splitter Theorem",
+      "problem": "In $\\triangle ABC$, $\\overline{DE} \\parallel \\overline{BC}$. If \n$AD = 6$, $DB = 4$, and $AE = 9$, find $EC$.\n\ncenter\ntikzpicture[scale=0.8]\n (A) at (2,3.5);\n (B) at (0,0);\n (C) at (5,0);\n (D) at (0.8,1.4);\n (E) at (3.2,1.4);\n \n (A) – (B) – (C) – cycle;\n (D) – (E);\n \n ll (A) circle (2pt);\n ll (B) circle (2pt);\n ll (C) circle (2pt);\n ll (D) circle (2pt);\n ll (E) circle (2pt);\n \n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n at (D) {$D$};\n at (E) {$E$};\n \n at (0.3,0.6) { $4$};\n at (1.2,2.5) { $6$};\n at (4.2,0.6) { $?$};\n at (2.8,2.5) { $9$};\ntikzpicture\ncenter",
+      "solution": "By the Triangle Proportionality Theorem:\n\\[\n\\frac{AD}{DB} = \\frac{AE}{EC}\n\\]\n\\[\n\\frac{6}{4} = \\frac{9}{EC}\n\\]\n\nCross multiply:\n\\[\n6 \\cdot EC = 4 \\cdot 9 = 36\n\\]\n\\[\nEC = 6\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Converse of the Triangle Proportionality Theorem"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "Converse of Triangle Proportionality",
+      "content": "If a line divides two sides of a triangle proportionally, then it \nis parallel to the third side.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "In symbols: If $\\dfrac{AD}{DB} = \\dfrac{AE}{EC}$, then $\\overline{DE} \\parallel \\overline{BC}$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "Proving lines parallel",
+      "problem": "In $\\triangle PQR$, $S$ is on $\\overline{PQ}$ and $T$ is on $\\overline{PR}$. \nIf $PS = 8$, $SQ = 12$, $PT = 6$, and $TR = 9$, is $\\overline{ST} \\parallel \\overline{QR}$?",
+      "solution": "Check if the sides are divided proportionally:\n\\[\n\\frac{PS}{SQ} = \\frac{8}{12} = \\frac{2}{3}\n\\]\n\\[\n\\frac{PT}{TR} = \\frac{6}{9} = \\frac{2}{3}\n\\]\n\nSince $\\dfrac{PS}{SQ} = \\dfrac{PT}{TR}$, by the Converse of the \nTriangle Proportionality Theorem:\n\n$\\overline{ST} \\parallel \\overline{QR}$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Equivalent Forms of the Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Triangle Proportionality Theorem can be written in several \nequivalent ways. If $\\overline{DE} \\parallel \\overline{BC}$:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.3",
+      "number": "7.3",
+      "title": "Equivalent Proportions",
+      "content": "All of the following are equivalent:\n\\[\n\\frac{AD}{DB} = \\frac{AE}{EC} \\quad \\Leftrightarrow \\quad \n\\frac{AD}{AB} = \\frac{AE}{AC} \\quad \\Leftrightarrow \\quad \n\\frac{DB}{AB} = \\frac{EC}{AC}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "Using different forms",
+      "problem": "In $\\triangle ABC$, $\\overline{DE} \\parallel \\overline{BC}$ with \n$AD = 5$, $AB = 15$, and $AC = 21$. Find $AE$ and $EC$.",
+      "solution": "Using the form $\\dfrac{AD}{AB} = \\dfrac{AE}{AC}$:\n\\[\n\\frac{5}{15} = \\frac{AE}{21}\n\\]\n\\[\nAE = \\frac{5 \\times 21}{15} = \\frac{105}{15} = 7\n\\]\n\nTherefore, $EC = AC - AE = 21 - 7 = 14$.\n\n*Check*: $\\dfrac{AD}{DB} = \\dfrac{5}{10} = \\dfrac{1}{2}$ and \n$\\dfrac{AE}{EC} = \\dfrac{7}{14} = \\dfrac{1}{2}$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Connection to the Midsegment Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Recall the Triangle Midsegment Theorem from earlier in the course: \nA midsegment of a triangle is parallel to the third side and half \nits length."
+    },
+    {
+      "type": "paragraph",
+      "text": "The midsegment is a special case of the Side-Splitter Theorem. When \n$D$ and $E$ are midpoints:\n\\[\n\\frac{AD}{DB} = \\frac{AE}{EC} = \\frac{1}{1} = 1\n\\]"
+    },
+    {
+      "type": "paragraph",
+      "text": "This confirms that connecting midpoints creates a segment parallel \nto the base."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Three Parallel Lines and Transversals"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.4",
+      "number": "7.4",
+      "title": "Corollary: Parallel Lines Cut Transversals Proportionally",
+      "content": "If three or more parallel lines intersect two transversals, then \nthey divide the transversals proportionally.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "If $\\ell_1 \\parallel \\ell_2 \\parallel \\ell_3$, then:\n\\[\n\\frac{AB}{BC} = \\frac{DE}{EF} \\quad \\text{i.e.,} \\quad \\frac{a}{b} = \\frac{c}{d}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "Three parallel lines",
+      "problem": "Three parallel lines cut two transversals. On one transversal, the \nsegments measure 4 cm and 6 cm. On the other transversal, one \nsegment measures 10 cm. Find the other segment.",
+      "solution": "Let the unknown segment be $x$. By the theorem:\n\\[\n\\frac{4}{6} = \\frac{10}{x}\n\\]\n\nCross multiply:\n\\[\n4x = 60\n\\]\n\\[\nx = 15\\text{ cm}\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Angle Bisector Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "Another important proportionality relationship in triangles involves \nangle bisectors."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.5",
+      "number": "7.5",
+      "title": "Angle Bisector Theorem",
+      "content": "If a ray bisects an angle of a triangle, then it divides the opposite \nside into segments that are proportional to the other two sides.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "If $\\overline{CD}$ bisects $\\angle C$, then:\n\\[\n\\frac{AD}{DB} = \\frac{AC}{BC} \\quad \\text{i.e.,} \\quad \\frac{m}{n} = \\frac{b}{a}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.5",
+      "number": "7.5",
+      "title": "Using the Angle Bisector Theorem",
+      "problem": "In $\\triangle ABC$, $\\overline{CD}$ bisects $\\angle C$. If $AC = 8$, \n$BC = 12$, and $AB = 15$, find $AD$ and $DB$.",
+      "solution": "By the Angle Bisector Theorem:\n\\[\n\\frac{AD}{DB} = \\frac{AC}{BC} = \\frac{8}{12} = \\frac{2}{3}\n\\]\n\nLet $AD = 2x$ and $DB = 3x$. Then:\n\\[\nAD + DB = AB\n\\]\n\\[\n2x + 3x = 15\n\\]\n\\[\n5x = 15\n\\]\n\\[\nx = 3\n\\]\n\nTherefore, $AD = 2(3) = 6$ and $DB = 3(3) = 9$.\n\n*Check*: $6 + 9 = 15$ and $\\dfrac{6}{9} = \\dfrac{2}{3} = \\dfrac{8}{12}$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.6",
+      "number": "7.6",
+      "title": "Angle bisector with unknown side",
+      "problem": "In $\\triangle PQR$, $\\overline{PS}$ bisects $\\angle P$, where $S$ is \non $\\overline{QR}$. If $PQ = 10$, $PR = 14$, and $QS = 5$, find $SR$.",
+      "solution": "By the Angle Bisector Theorem:\n\\[\n\\frac{QS}{SR} = \\frac{PQ}{PR}\n\\]\n\\[\n\\frac{5}{SR} = \\frac{10}{14}\n\\]\n\\[\n\\frac{5}{SR} = \\frac{5}{7}\n\\]\n\\[\nSR = 7\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Proof of the Angle Bisector Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "In $\\triangle ABC$, let $\\overline{CD}$ bisect $\\angle ACB$, with \n$D$ on $\\overline{AB}$.\n\nDraw a line through $A$ parallel to $\\overline{CD}$, and extend \n$\\overline{BC}$ to meet this line at $E$.\n\ncenter\ntikzpicture[scale=0.7]\n (A) at (0,0);\n (B) at (6,0);\n (C) at (2,3);\n (D) at (2.4,0);\n (E) at (-1.5,2.25);\n \n (A) – (B) – (C) – cycle;\n (C) – (D);\n (B) – (E);\n (A) – (E);\n \n ll (A) circle (2pt);\n ll (B) circle (2pt);\n ll (C) circle (2pt);\n ll (D) circle (2pt);\n ll (E) circle (2pt);\n \n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n at (D) {$D$};\n at (E) {$E$};\ntikzpicture\ncenter\n\nSince $\\overline{AE} \\parallel \\overline{CD}$:\n\n- $\\angle AEC \\cong \\angle DCB$ (corresponding angles)\n\n- $\\angle EAC \\cong \\angle DCA$ (alternate interior angles)\n\nSince $\\overline{CD}$ bisects $\\angle C$: $\\angle DCA \\cong \\angle DCB$\n\nTherefore: $\\angle EAC \\cong \\angle AEC$\n\nThis makes $\\triangle AEC$ isosceles with $EA = AC$.\n\nIn $\\triangle BEA$, since $\\overline{CD} \\parallel \\overline{EA}$:\n\\[\n\\frac{BD}{DA} = \\frac{BC}{CE} = \\frac{BC}{AC}\n\\]\n\nTaking reciprocals: $\\dfrac{AD}{DB} = \\dfrac{AC}{BC}$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 9:1",
+      "text": "Wisdom has built her house; she has \nhewn her seven pillars."
+    },
+    {
+      "type": "scripture",
+      "reference": "Isaiah 28:17",
+      "text": "I will make justice the line, and \nrighteousness the plumb line."
+    },
+    {
+      "type": "scripture",
+      "reference": "Amos 7:7-8",
+      "text": "Behold, the Lord was standing beside a \nwall built with a plumb line, with a plumb line in his hand."
+    }
+  ]
+}

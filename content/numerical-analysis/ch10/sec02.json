@@ -1,0 +1,261 @@
+{
+  "id": "numerical-analysis-ch10-sec02",
+  "title": "Newton's Method for Optimization",
+  "chapter": 10,
+  "section": 2,
+  "book": "numerical-analysis",
+  "objectives": [
+    "Derive Newton's method for optimization from quadratic approximation",
+    "Understand the role of the Hessian matrix and its positive definiteness",
+    "Analyze quadratic convergence near strict local minima",
+    "Implement safeguards for global convergence"
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Newton's method for root-finding can be adapted to optimization by applying it to the gradient equation $\\nabla f(\\mathbf{x}) = \\mathbf{0}$. This yields a powerful algorithm with quadratic convergence, but one that requires second-derivative information and careful implementation."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "From Root-Finding to Optimization"
+    },
+    {
+      "type": "paragraph",
+      "text": "Recall that a necessary condition for $\\mathbf{x}^*$ to be a local minimum is $\\nabla f(\\mathbf{x}^*) = \\mathbf{0}$. We can find critical points by solving this system of $n$ equations in $n$ unknowns."
+    },
+    {
+      "type": "method",
+      "id": "method-10.2",
+      "number": null,
+      "title": "Newton's Method via Gradient Zero-Finding",
+      "content": "Apply Newton's method to $\\mathbf{g}(\\mathbf{x}) = \\nabla f(\\mathbf{x}) = \\mathbf{0}$:\n\\[\n\\mathbf{x}_{k+1} = \\mathbf{x}_k - [J_g(\\mathbf{x}_k)]^{-1} \\mathbf{g}(\\mathbf{x}_k)\n\\]\nwhere $J_g = \\nabla^2 f = H_f$ is the Hessian of $f$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "Hessian Matrix",
+      "content": "For $f: \\R^n \\to \\R$, the **Hessian matrix** $H_f(\\mathbf{x})$ is the $n \\times n$ matrix of second partial derivatives:\n\\[\n[H_f(\\mathbf{x})]_{ij} = \\frac{\\partial^2 f}{\\partial x_i \\partial x_j}(\\mathbf{x})\n\\]\nFor twice-continuously-differentiable functions, the Hessian is symmetric: $H_f = H_f^T$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Derivation from Quadratic Approximation"
+    },
+    {
+      "type": "paragraph",
+      "text": "A more intuitive derivation comes from minimizing a local quadratic model."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "Newton Step from Quadratic Model",
+      "content": "The second-order Taylor expansion of $f$ around $\\mathbf{x}_k$ is:\n\\[\nf(\\mathbf{x}) \\approx q_k(\\mathbf{x}) = f(\\mathbf{x}_k) + \\nabla f(\\mathbf{x}_k)^T(\\mathbf{x} - \\mathbf{x}_k) + \\frac{1}{2}(\\mathbf{x} - \\mathbf{x}_k)^T H_f(\\mathbf{x}_k)(\\mathbf{x} - \\mathbf{x}_k)\n\\]\nIf $H_f(\\mathbf{x}_k)$ is positive definite, the minimizer of $q_k$ is:\n\\[\n\\mathbf{x}_{k+1} = \\mathbf{x}_k - H_f(\\mathbf{x}_k)^{-1} \\nabla f(\\mathbf{x}_k)\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "The quadratic $q_k(\\mathbf{x})$ is minimized where its gradient vanishes:\n\\[\n\\nabla q_k(\\mathbf{x}) = \\nabla f(\\mathbf{x}_k) + H_f(\\mathbf{x}_k)(\\mathbf{x} - \\mathbf{x}_k) = \\mathbf{0}\n\\]\nSolving for $\\mathbf{x}$:\n\\[\n\\mathbf{x} = \\mathbf{x}_k - H_f(\\mathbf{x}_k)^{-1} \\nabla f(\\mathbf{x}_k)\n\\]\nThis is a minimum (not maximum or saddle) precisely when $H_f(\\mathbf{x}_k)$ is positive definite."
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.2",
+      "number": "10.2",
+      "title": "Newton's Method for Optimization",
+      "content": "Given a twice-differentiable $f: \\R^n \\to \\R$ and initial guess $\\mathbf{x}_0$, iterate:\n\\[\n\\mathbf{x}_{k+1} = \\mathbf{x}_k - H_f(\\mathbf{x}_k)^{-1} \\nabla f(\\mathbf{x}_k)\n\\]\nThe vector $\\mathbf{p}_k = -H_f(\\mathbf{x}_k)^{-1} \\nabla f(\\mathbf{x}_k)$ is called the **Newton direction**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The One-Dimensional Case"
+    },
+    {
+      "type": "paragraph",
+      "text": "In one dimension, the Hessian is simply the second derivative."
+    },
+    {
+      "type": "method",
+      "id": "method-10.2",
+      "number": null,
+      "title": "Newton's Method for $f: \\R \\to \\R$",
+      "content": "\\[\nx_{k+1} = x_k - \\frac{f'(x_k)}{f''(x_k)}\n\\]\nWe seek zeros of $f'(x)$, not $f(x)$ itself."
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "Minimizing a Quartic",
+      "problem": "Find the minimum of $f(x) = x^4 - 4x^2 + 4$ near $x = 2$.\n\n**Solution.** We have $f'(x) = 4x^3 - 8x$ and $f''(x) = 12x^2 - 8$.\n\nThe Newton iteration is:\n\\[\nx_{k+1} = x_k - \\frac{4x_k^3 - 8x_k}{12x_k^2 - 8}\n\\]\n\nStarting from $x_0 = 2$:\n$$\nx_1 &= 2 - \\frac{4(8) - 16}{12(4) - 8} = 2 - \\frac{16}{40} = 1.6 \\\\\nx_2 &= 1.6 - \\frac{4(4.096) - 12.8}{12(2.56) - 8} = 1.6 - \\frac{3.584}{22.72} \\approx 1.442 \\\\\nx_3 &\\approx 1.416 \\\\\nx_4 &\\approx 1.4142135... \\approx \\sqrt{2}\n$$\n\nThe true minima are at $x = \\pm\\sqrt{2}$. Newton converges to the nearby minimum.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Multidimensional Examples"
+    },
+    {
+      "type": "example",
+      "id": "example-10.2",
+      "number": "10.2",
+      "title": "Minimizing a Quadratic",
+      "problem": "Minimize $f(x, y) = x^2 + 2y^2 - 2xy - 2x$ starting from $(0, 0)$.\n\n**Solution.** First, compute the gradient and Hessian:\n\\[\n\\nabla f = \\begin{pmatrix} 2x - 2y - 2 \\\\ 4y - 2x \\end{pmatrix}, \\quad\nH_f = \\begin{pmatrix} 2 & -2 \\\\ -2 & 4 \\end{pmatrix}\n\\]\n\nAt $\\mathbf{x}_0 = (0, 0)^T$:\n\\[\n\\nabla f(\\mathbf{x}_0) = \\begin{pmatrix} -2 \\\\ 0 \\end{pmatrix}\n\\]\n\nThe Newton direction solves $H_f \\mathbf{p} = -\\nabla f$:\n\\[\n\\begin{pmatrix} 2 & -2 \\\\ -2 & 4 \\end{pmatrix} \\mathbf{p} = \\begin{pmatrix} 2 \\\\ 0 \\end{pmatrix}\n\\]\n\nSolving: $\\mathbf{p} = (2, 1)^T$, so $\\mathbf{x}_1 = (0,0)^T + (2,1)^T = (2, 1)^T$.\n\nAt $(2, 1)$: $\\nabla f = (2(2) - 2(1) - 2, 4(1) - 2(2))^T = (0, 0)^T$.\n\n**Newton converges in one step for quadratic functions!**",
+      "solution": ""
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.2",
+      "number": "10.2",
+      "title": "Exact Minimization of Quadratics",
+      "content": "For a strictly convex quadratic $f(\\mathbf{x}) = \\frac{1}{2}\\mathbf{x}^T A\\mathbf{x} - \\mathbf{b}^T\\mathbf{x} + c$ with $A$ positive definite, Newton's method finds the exact minimum $\\mathbf{x}^* = A^{-1}\\mathbf{b}$ in one step from any starting point.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "For this $f$, $\\nabla f(\\mathbf{x}) = A\\mathbf{x} - \\mathbf{b}$ and $H_f = A$ (constant). The Newton step from any $\\mathbf{x}_0$ is:\n\\[\n\\mathbf{x}_1 = \\mathbf{x}_0 - A^{-1}(A\\mathbf{x}_0 - \\mathbf{b}) = \\mathbf{x}_0 - \\mathbf{x}_0 + A^{-1}\\mathbf{b} = A^{-1}\\mathbf{b} = \\mathbf{x}^*\n\\]"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Convergence Analysis"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.3",
+      "number": "10.3",
+      "title": "Quadratic Convergence of Newton's Method",
+      "content": "Suppose $f$ is twice continuously differentiable, $\\mathbf{x}^*$ is a local minimum with $\\nabla f(\\mathbf{x}^*) = \\mathbf{0}$ and $H_f(\\mathbf{x}^*)$ positive definite. If $\\mathbf{x}_0$ is sufficiently close to $\\mathbf{x}^*$, then Newton's method converges quadratically:\n\\[\n\\|\\mathbf{x}_{k+1} - \\mathbf{x}^*\\| \\leq C\\|\\mathbf{x}_k - \\mathbf{x}^*\\|^2\n\\]\nfor some constant $C > 0$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\mathbf{e}_k = \\mathbf{x}_k - \\mathbf{x}^*$. Taylor-expand $\\nabla f(\\mathbf{x}_k)$ around $\\mathbf{x}^*$:\n\\[\n\\nabla f(\\mathbf{x}_k) = \\nabla f(\\mathbf{x}^*) + H_f(\\mathbf{x}^*)\\mathbf{e}_k + O(\\|\\mathbf{e}_k\\|^2) = H_f(\\mathbf{x}^*)\\mathbf{e}_k + O(\\|\\mathbf{e}_k\\|^2)\n\\]\n\nSimilarly, $H_f(\\mathbf{x}_k) = H_f(\\mathbf{x}^*) + O(\\|\\mathbf{e}_k\\|)$.\n\nThe Newton step gives:\n\\[\n\\mathbf{e}_{k+1} = \\mathbf{e}_k - H_f(\\mathbf{x}_k)^{-1}\\nabla f(\\mathbf{x}_k)\n\\]\n\nSubstituting and using the fact that $H_f(\\mathbf{x}^*)^{-1}H_f(\\mathbf{x}^*) = I$:\n\\[\n\\mathbf{e}_{k+1} = O(\\|\\mathbf{e}_k\\|^2)\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-10.3",
+      "number": "10.3",
+      "title": "Quadratic Convergence in Practice",
+      "problem": "Minimizing Rosenbrock's function $f(x,y) = (1-x)^2 + 100(y-x^2)^2$ starting near the minimum $(1,1)$:\n\n| $k$ | $\\|\\mathbf{x}_k - \\mathbf{x}^*\\|$ | Ratio |\n| 0 | $1.0 \\times 10^{-1}$ | – |\n| 1 | $5.2 \\times 10^{-3}$ | 0.052 |\n| 2 | $1.4 \\times 10^{-5}$ | 0.003 |\n| 3 | $9.8 \\times 10^{-11}$ | $7 \\times 10^{-6}$ |\n\nThe error decreases dramatically faster each iteration—the hallmark of quadratic convergence.",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Challenges and Safeguards"
+    },
+    {
+      "type": "paragraph",
+      "text": "Newton's method is not always well-behaved."
+    },
+    {
+      "type": "warning",
+      "id": "warning-10.2",
+      "number": null,
+      "title": "Newton's Method Challenges",
+      "content": "1. **Hessian may not be positive definite**: Near saddle points or maxima, the Newton direction may be an ascent direction.\n\n2. **Computational cost**: Computing $H_f$ requires $n^2$ second derivatives; solving the linear system costs $O(n^3)$.\n\n3. **Convergence not guaranteed**: Far from a minimum, pure Newton may diverge or oscillate.\n\n4. **Hessian may be singular**: At degenerate critical points."
+    },
+    {
+      "type": "paragraph",
+      "text": "Modified Newton Methods"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.3",
+      "number": "10.3",
+      "title": "Modified Hessian",
+      "content": "If $H_f(\\mathbf{x}_k)$ is not positive definite, replace it with a positive definite approximation:\n\\[\n\\tilde{H}_k = H_f(\\mathbf{x}_k) + \\mu_k I\n\\]\nwhere $\\mu_k > 0$ is chosen large enough to make $\\tilde{H}_k$ positive definite."
+    },
+    {
+      "type": "paragraph",
+      "text": "This is the **Levenberg-Marquardt** modification. When $\\mu_k$ is large, the step approaches the gradient descent direction; when $\\mu_k$ is small, it approaches the Newton direction."
+    },
+    {
+      "type": "paragraph",
+      "text": "Damped Newton Method"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.4",
+      "number": "10.4",
+      "title": "Damped Newton (with Line Search)",
+      "content": "Instead of the full Newton step, use:\n\\[\n\\mathbf{x}_{k+1} = \\mathbf{x}_k + \\alpha_k \\mathbf{p}_k\n\\]\nwhere $\\mathbf{p}_k$ is the Newton direction and $\\alpha_k$ is chosen to ensure sufficient decrease, e.g., via backtracking."
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-10.2",
+      "number": null,
+      "title": "Damped Newton's Method",
+      "content": "algorithmic[1]\n Function $f$, gradient $\\nabla f$, Hessian $H_f$, initial $\\mathbf{x}_0$, tolerance $\\varepsilon$\n Approximate minimizer $\\mathbf{x}^*$\n $k \\gets 0$\n$\\|\\nabla f(\\mathbf{x}_k)\\| > \\varepsilon$\n Solve $H_f(\\mathbf{x}_k) \\mathbf{p}_k = -\\nabla f(\\mathbf{x}_k)$ Newton direction\n $\\mathbf{p}_k^T \\nabla f(\\mathbf{x}_k) \\geq 0$ Not a descent direction\n Modify $H_f$ or use gradient descent direction\n \n Choose $\\alpha_k$ by backtracking line search\n $\\mathbf{x}_{k+1} \\gets \\mathbf{x}_k + \\alpha_k \\mathbf{p}_k$\n $k \\gets k + 1$\n\n $\\mathbf{x}_k$\nalgorithmic"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Geometric Interpretation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Consider minimizing $f(x, y) = \\frac{1}{2}(100x^2 + y^2)$. The gradient is $(100x, y)^T$, pointing mostly in the $x$-direction. Gradient descent takes small steps, zigzagging toward the origin. The Hessian is $\\text{diag}(100, 1)$, so Newton's step is:\n\\[\np = -"
+    },
+    {
+      "type": "paragraph",
+      "text": "\\]\nNewton goes straight to the origin in one step!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Computational Considerations"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Newton's Method vs. Gradient Descent"
+    },
+    {
+      "type": "table",
+      "headers": [
+        "**Property**",
+        "**Newton**",
+        "**Gradient Descent**"
+      ],
+      "rows": [
+        [
+          "Convergence rate",
+          "Quadratic",
+          "Linear"
+        ],
+        [
+          "Cost per iteration",
+          "$O(n^3)$",
+          "$O(n)$"
+        ],
+        [
+          "Derivatives needed",
+          "Second (Hessian)",
+          "First (gradient)"
+        ],
+        [
+          "Memory",
+          "$O(n^2)$",
+          "$O(n)$"
+        ],
+        [
+          "Global convergence",
+          "Not guaranteed",
+          "With line search"
+        ],
+        [
+          "Best for",
+          "Small $n$, high accuracy",
+          "Large $n$, moderate accuracy"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "center",
+        "center"
+      ]
+    }
+  ]
+}

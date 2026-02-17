@@ -1,0 +1,382 @@
+{
+  "id": "algebra-2-ch07-sec02",
+  "title": "Properties of Logarithms",
+  "chapter": 7,
+  "section": 2,
+  "book": "algebra-2",
+  "epigraph": {
+    "text": "Come now, let us reason together.",
+    "reference": "Isaiah 1:18"
+  },
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "The logarithm's greatest power lies in its ability to transform multiplication \ninto addition, division into subtraction, and exponentiation into multiplication. \nThese transformations were so valuable that for 350 years—from Napier's \ninvention in 1614 until electronic calculators in the 1970s—logarithm tables \nand slide rules were essential tools for every scientist and engineer."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Product, Quotient, and Power Rules"
+    },
+    {
+      "type": "paragraph",
+      "text": "The properties of logarithms mirror the properties of exponents, because \nlogarithms are exponents."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.1",
+      "number": "7.1",
+      "title": "Laws of Logarithms",
+      "content": "For $b > 0$, $b \\neq 1$, and $M, N > 0$:\n\n1. **Product Rule:** $\\log_b(MN) = \\log_b M + \\log_b N$\n\n2. **Quotient Rule:** $\\log_b\\left(\\frac{M}{N}\\right) = \\log_b M - \\log_b N$\n\n3. **Power Rule:** $\\log_b(M^p) = p \\cdot \\log_b M$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "These laws transform:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "Multiplication $\\rightarrow$ addition",
+        "Division $\\rightarrow$ subtraction",
+        "Exponentiation $\\rightarrow$ multiplication"
+      ]
+    },
+    {
+      "type": "warning",
+      "id": "warning-7.2",
+      "number": null,
+      "title": "",
+      "content": "There is NO rule for the logarithm of a sum or difference!\n\\[\n \\log_b(M + N) \\neq \\log_b M + \\log_b N\n\\]\nThis is a common mistake. The product rule applies to $\\log(MN)$, not \n$\\log(M + N)$. Similarly, $\\log_b(M - N) \\neq \\log_b M - \\log_b N$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Proof of the Laws"
+    },
+    {
+      "type": "paragraph",
+      "text": "The laws follow from the definition of logarithm and the laws of exponents."
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\log_b M = x$ and $\\log_b N = y$. Then $b^x = M$ and $b^y = N$.\n\nTherefore:\n\\[\n MN = b^x \\cdot b^y = b^{x+y}\n\\]\n\nConverting back to logarithmic form:\n\\[\n \\log_b(MN) = x + y = \\log_b M + \\log_b N\n\\]"
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\log_b M = x$ and $\\log_b N = y$. Then $b^x = M$ and $b^y = N$.\n\nTherefore:\n\\[\n \\frac{M}{N} = \\frac{b^x}{b^y} = b^{x-y}\n\\]\n\nConverting back to logarithmic form:\n\\[\n \\log_b\\left(\\frac{M}{N}\\right) = x - y = \\log_b M - \\log_b N\n\\]"
+    },
+    {
+      "type": "proof",
+      "content": "Let $\\log_b M = x$. Then $b^x = M$.\n\nRaising both sides to the power $p$:\n\\[\n (b^x)^p = M^p\n\\]\n\\[\n b^{xp} = M^p\n\\]\n\nConverting back to logarithmic form:\n\\[\n \\log_b(M^p) = xp = p \\cdot \\log_b M\n\\]"
+    },
+    {
+      "type": "important",
+      "id": "important-7.2",
+      "number": null,
+      "title": "",
+      "content": "Understanding these proofs helps you remember the rules. The key insight \nis that since $\\log_b x$ *is* the exponent, the laws of logarithms \nare just the laws of exponents in disguise."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Expanding Logarithmic Expressions"
+    },
+    {
+      "type": "example",
+      "id": "example-7.1",
+      "number": "7.1",
+      "title": "Expanding logarithms",
+      "problem": "Expand each expression:\n\n1. $\\log_3(9x)$\n\n2. $\\ln\\left(\\frac{x^2}{y}\\right)$\n\n3. $\\log\\left(\\frac{ab^3}{c^2}\\right)$",
+      "solution": "1. $\\log_3(9x) = \\log_3 9 + \\log_3 x = 2 + \\log_3 x$\n\n2. $\\ln\\left(\\frac{x^2}{y}\\right) = \\ln x^2 - \\ln y = 2\\ln x - \\ln y$\n\n3. $\\log\\left(\\frac{ab^3}{c^2}\\right) = \\log a + \\log b^3 - \\log c^2 = \\log a + 3\\log b - 2\\log c$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.2",
+      "number": "7.2",
+      "title": "More complex expansions",
+      "problem": "Expand: $\\log_2\\left(\\frac{x^3\\sqrt{y}}{z^4}\\right)$",
+      "solution": "First, rewrite $\\sqrt{y}$ as $y^{1/2}$:\n$$\n \\log_2\\left(\\frac{x^3 y^{1/2}}{z^4}\\right) &= \\log_2(x^3 y^{1/2}) - \\log_2(z^4) \\\\\n &= \\log_2 x^3 + \\log_2 y^{1/2} - \\log_2 z^4 \\\\\n &= 3\\log_2 x + \\frac{1}{2}\\log_2 y - 4\\log_2 z\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.3",
+      "number": "7.3",
+      "title": "Expansion with roots",
+      "problem": "Expand: $\\ln\\sqrt[3]{\\frac{x^2(x+1)}{(x-1)^4}}$",
+      "solution": "The cube root means an exponent of $\\frac{1}{3}$:\n$$\n \\ln\\sqrt[3]{\\frac{x^2(x+1)}{(x-1)^4}} &= \\ln\\left(\\frac{x^2(x+1)}{(x-1)^4}\\right)^{1/3} \\\\\n &= \\frac{1}{3}\\ln\\left(\\frac{x^2(x+1)}{(x-1)^4}\\right) \\\\\n &= \\frac{1}{3}\\left[\\ln x^2 + \\ln(x+1) - \\ln(x-1)^4\\right] \\\\\n &= \\frac{1}{3}\\left[2\\ln x + \\ln(x+1) - 4\\ln(x-1)\\right] \\\\\n &= \\frac{2}{3}\\ln x + \\frac{1}{3}\\ln(x+1) - \\frac{4}{3}\\ln(x-1)\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.4",
+      "number": "7.4",
+      "title": "Expansion with numerical evaluation",
+      "problem": "Expand and simplify: $\\log_5\\left(\\frac{125x^2}{25y}\\right)$",
+      "solution": "$$\n \\log_5\\left(\\frac{125x^2}{25y}\\right) &= \\log_5(125x^2) - \\log_5(25y) \\\\\n &= \\log_5 125 + \\log_5 x^2 - (\\log_5 25 + \\log_5 y) \\\\\n &= 3 + 2\\log_5 x - 2 - \\log_5 y \\\\\n &= 1 + 2\\log_5 x - \\log_5 y\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.5",
+      "number": "7.5",
+      "title": "Expansion with fourth roots",
+      "problem": "Expand: $\\log\\sqrt[4]{\\frac{a^2b^3}{c^5d}}$",
+      "solution": "$$\n \\log\\sqrt[4]{\\frac{a^2b^3}{c^5d}} &= \\log\\left(\\frac{a^2b^3}{c^5d}\\right)^{1/4} \\\\\n &= \\frac{1}{4}\\log\\left(\\frac{a^2b^3}{c^5d}\\right) \\\\\n &= \\frac{1}{4}\\left[\\log a^2 + \\log b^3 - \\log c^5 - \\log d\\right] \\\\\n &= \\frac{1}{4}\\left[2\\log a + 3\\log b - 5\\log c - \\log d\\right] \\\\\n &= \\frac{1}{2}\\log a + \\frac{3}{4}\\log b - \\frac{5}{4}\\log c - \\frac{1}{4}\\log d\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Condensing Logarithmic Expressions"
+    },
+    {
+      "type": "paragraph",
+      "text": "The reverse of expanding is condensing: writing a sum or difference of \nlogarithms as a single logarithm. This skill is essential for solving \nlogarithmic equations."
+    },
+    {
+      "type": "example",
+      "id": "example-7.6",
+      "number": "7.6",
+      "title": "Condensing logarithms",
+      "problem": "Write as a single logarithm:\n\n1. $\\log 5 + \\log x$\n\n2. $\\ln a - \\ln b$\n\n3. $3\\log_2 x + \\log_2 y$\n\n4. $2\\ln x - 3\\ln y + \\ln z$",
+      "solution": "1. $\\log 5 + \\log x = \\log(5x)$\n\n2. $\\ln a - \\ln b = \\ln\\left(\\frac{a}{b}\\right)$\n\n3. $3\\log_2 x + \\log_2 y = \\log_2 x^3 + \\log_2 y = \\log_2(x^3 y)$\n\n4. $2\\ln x - 3\\ln y + \\ln z = \\ln x^2 - \\ln y^3 + \\ln z = \\ln\\left(\\frac{x^2 z}{y^3}\\right)$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.7",
+      "number": "7.7",
+      "title": "Complex condensation",
+      "problem": "Write as a single logarithm: $\\frac{1}{2}\\log(x+1) - 2\\log x + 3\\log(x-1)$",
+      "solution": "$$\n \\frac{1}{2}\\log(x+1) - 2\\log x + 3\\log(x-1) &= \\log(x+1)^{1/2} - \\log x^2 + \\log(x-1)^3 \\\\\n &= \\log\\sqrt{x+1} + \\log(x-1)^3 - \\log x^2 \\\\\n &= \\log\\left(\\frac{\\sqrt{x+1}(x-1)^3}{x^2}\\right)\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.8",
+      "number": "7.8",
+      "title": "Condensing with fractions",
+      "problem": "Write as a single logarithm: $\\frac{2}{3}\\ln x - \\frac{1}{2}\\ln y + \\frac{3}{4}\\ln z$",
+      "solution": "$$\n \\frac{2}{3}\\ln x - \\frac{1}{2}\\ln y + \\frac{3}{4}\\ln z &= \\ln x^{2/3} - \\ln y^{1/2} + \\ln z^{3/4} \\\\\n &= \\ln\\left(\\frac{x^{2/3} \\cdot z^{3/4}}{y^{1/2}}\\right) \\\\\n &= \\ln\\left(\\frac{\\sqrt[3]{x^2} \\cdot \\sqrt[4]{z^3}}{\\sqrt{y}}\\right)\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.9",
+      "number": "7.9",
+      "title": "Condensing with numerical values",
+      "problem": "Write as a single logarithm and simplify: $\\log 20 + \\log 5 - \\log 10$",
+      "solution": "$$\n \\log 20 + \\log 5 - \\log 10 &= \\log\\left(\\frac{20 \\cdot 5}{10}\\right) \\\\\n &= \\log\\left(\\frac{100}{10}\\right) \\\\\n &= \\log 10 \\\\\n &= 1\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.10",
+      "number": "7.10",
+      "title": "Condensing expressions with coefficients",
+      "problem": "Write as a single logarithm: $4\\log_3 x + \\frac{1}{2}\\log_3 y - 2\\log_3(x+1)$",
+      "solution": "$$\n 4\\log_3 x + \\frac{1}{2}\\log_3 y - 2\\log_3(x+1) &= \\log_3 x^4 + \\log_3 y^{1/2} - \\log_3(x+1)^2 \\\\\n &= \\log_3\\left(\\frac{x^4 \\sqrt{y}}{(x+1)^2}\\right)\n$$"
+    },
+    {
+      "type": "context",
+      "id": "context-7.2",
+      "number": null,
+      "title": "Simplification and Wisdom",
+      "content": "The logarithm properties simplify complex expressions into simpler ones. \nProverbs often presents wisdom as seeing the simple truth behind complex \nsituations. \"The wisdom of the prudent is to give thought to their ways\" \n(Proverbs 14:8). Algebraic simplification trains the mind to look for \nunderlying structure, a skill valuable far beyond mathematics."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "The Change of Base Formula"
+    },
+    {
+      "type": "paragraph",
+      "text": "Your calculator has buttons for $\\log$ (base 10) and $\\ln$ (base $e$), but \nwhat about $\\log_3$ or $\\log_7$? The change of base formula converts any \nlogarithm to one your calculator can evaluate."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-7.2",
+      "number": "7.2",
+      "title": "Change of Base Formula",
+      "content": "For any positive bases $a$ and $b$ (both $\\neq 1$) and $x > 0$:\n\\[\n \\log_b x = \\frac{\\log_a x}{\\log_a b} = \\frac{\\ln x}{\\ln b} = \\frac{\\log x}{\\log b}\n\\]",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "Let $y = \\log_b x$. Then $b^y = x$.\n\nTaking $\\log_a$ of both sides:\n\\[\n \\log_a(b^y) = \\log_a x\n\\]\n\\[\n y \\log_a b = \\log_a x\n\\]\n\\[\n y = \\frac{\\log_a x}{\\log_a b}\n\\]"
+    },
+    {
+      "type": "example",
+      "id": "example-7.11",
+      "number": "7.11",
+      "title": "Using change of base",
+      "problem": "Evaluate using a calculator:\n\n1. $\\log_3 20$\n\n2. $\\log_5 42$\n\n3. $\\log_2 1000$",
+      "solution": "1. $\\log_3 20 = \\frac{\\ln 20}{\\ln 3} \\approx \\frac{2.996}{1.099} \\approx 2.727$\n\n2. $\\log_5 42 = \\frac{\\log 42}{\\log 5} \\approx \\frac{1.623}{0.699} \\approx 2.322$\n\n3. $\\log_2 1000 = \\frac{\\ln 1000}{\\ln 2} \\approx \\frac{6.908}{0.693} \\approx 9.97$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.12",
+      "number": "7.12",
+      "title": "Change of base for simplification",
+      "problem": "Simplify: $\\log_4 8$",
+      "solution": "Using change of base with base 2:\n\\[\n \\log_4 8 = \\frac{\\log_2 8}{\\log_2 4} = \\frac{3}{2}\n\\]\nAlternatively, we can verify: $4^{3/2} = (2^2)^{3/2} = 2^3 = 8$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.13",
+      "number": "7.13",
+      "title": "Change of base with variables",
+      "problem": "Express $\\log_9 x$ in terms of $\\log_3 x$.",
+      "solution": "Using change of base:\n\\[\n \\log_9 x = \\frac{\\log_3 x}{\\log_3 9} = \\frac{\\log_3 x}{2}\n\\]\n\nThis tells us that $\\log_9 x = \\frac{1}{2}\\log_3 x$, which makes sense: \nsince $9 = 3^2$, base 9 \"counts\" in units twice as large as base 3."
+    },
+    {
+      "type": "example",
+      "id": "example-7.14",
+      "number": "7.14",
+      "title": "Proving a logarithm identity",
+      "problem": "Prove that $\\log_a b \\cdot \\log_b a = 1$.",
+      "solution": "Using change of base, write $\\log_b a = \\frac{\\ln a}{\\ln b}$.\n\nThen:\n\\[\n \\log_a b \\cdot \\log_b a = \\frac{\\ln b}{\\ln a} \\cdot \\frac{\\ln a}{\\ln b} = 1\n\\]\n\nThis elegant result shows that $\\log_a b$ and $\\log_b a$ are reciprocals."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Solving Simple Equations Using Properties"
+    },
+    {
+      "type": "example",
+      "id": "example-7.15",
+      "number": "7.15",
+      "title": "Equations with logarithm properties",
+      "problem": "Solve: $\\log_2 x + \\log_2(x + 6) = 4$",
+      "solution": "Use the product rule to combine:\n\\[\n \\log_2[x(x + 6)] = 4\n\\]\n\nConvert to exponential form:\n\\[\n x(x + 6) = 2^4 = 16\n\\]\n\\[\n x^2 + 6x - 16 = 0\n\\]\n\\[\n (x + 8)(x - 2) = 0\n\\]\n\\[\n x = -8 \\text{ or } x = 2\n\\]\n\n**Check domain:** For $\\log_2 x$, we need $x > 0$. For $\\log_2(x + 6)$, \nwe need $x > -6$. So $x = -8$ is extraneous.\n\n**Solution:** $x = 2$\n\n**Verify:** $\\log_2 2 + \\log_2 8 = 1 + 3 = 4$."
+    },
+    {
+      "type": "example",
+      "id": "example-7.16",
+      "number": "7.16",
+      "title": "Equation with quotient rule",
+      "problem": "Solve: $\\log_3(x + 4) - \\log_3(x - 2) = 2$",
+      "solution": "Use the quotient rule:\n\\[\n \\log_3\\left(\\frac{x + 4}{x - 2}\\right) = 2\n\\]\n\nConvert to exponential form:\n\\[\n \\frac{x + 4}{x - 2} = 3^2 = 9\n\\]\n\\[\n x + 4 = 9(x - 2)\n\\]\n\\[\n x + 4 = 9x - 18\n\\]\n\\[\n 22 = 8x\n\\]\n\\[\n x = \\frac{22}{8} = \\frac{11}{4}\n\\]\n\n**Check domain:** Need $x > 2$, and $\\frac{11}{4} = 2.75 > 2$. \n\n**Solution:** $x = \\frac{11}{4}$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.17",
+      "number": "7.17",
+      "title": "Equation with power rule",
+      "problem": "Solve: $\\log_5(x^2) = 4$",
+      "solution": "Method 1: Use the power rule first:\n\\[\n 2\\log_5 x = 4 \\Rightarrow \\log_5 x = 2 \\Rightarrow x = 5^2 = 25\n\\]\n\nMethod 2: Convert directly:\n\\[\n x^2 = 5^4 = 625 \\Rightarrow x = \\pm 25\n\\]\n\n**Check domain:** We need $x > 0$ for $\\log_5(x^2)$ to match our \noriginal interpretation. If $x = -25$, then $x^2 = 625 > 0$, so this \nis technically valid.\n\nActually, $\\log_5(x^2)$ is defined for all $x \\neq 0$, so $x = \\pm 25$ \nare both solutions.\n\n**Verify:** $\\log_5(25^2) = \\log_5(625) = 4$ \n$\\log_5((-25)^2) = \\log_5(625) = 4$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.18",
+      "number": "7.18",
+      "title": "Combined properties",
+      "problem": "Solve: $\\log(x + 3) + \\log(x - 3) = 1$",
+      "solution": "Combine using the product rule:\n\\[\n \\log[(x + 3)(x - 3)] = 1\n\\]\n\\[\n \\log(x^2 - 9) = 1\n\\]\n\nConvert to exponential form:\n\\[\n x^2 - 9 = 10^1 = 10\n\\]\n\\[\n x^2 = 19\n\\]\n\\[\n x = \\pm\\sqrt{19}\n\\]\n\n**Check domain:** Need $x + 3 > 0$ AND $x - 3 > 0$, so $x > 3$.\n\nSince $\\sqrt{19} \\approx 4.36 > 3$, we keep $x = \\sqrt{19}$.\nSince $-\\sqrt{19} \\approx -4.36 < 3$, we reject $x = -\\sqrt{19}$.\n\n**Solution:** $x = \\sqrt{19}$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.19",
+      "number": "7.19",
+      "title": "Triple logarithm equation",
+      "problem": "Solve: $\\log_4 x + \\log_4(x - 2) + \\log_4(x + 2) = 2$",
+      "solution": "Combine all three logarithms:\n\\[\n \\log_4[x(x - 2)(x + 2)] = 2\n\\]\n\\[\n \\log_4[x(x^2 - 4)] = 2\n\\]\n\\[\n \\log_4(x^3 - 4x) = 2\n\\]\n\nConvert to exponential form:\n\\[\n x^3 - 4x = 4^2 = 16\n\\]\n\\[\n x^3 - 4x - 16 = 0\n\\]\n\nTest possible rational roots. Try $x = 2$: $8 - 8 - 16 = -16 \\neq 0$.\nTry $x = 4$: $64 - 16 - 16 = 32 \\neq 0$.\nTry $x = -2$: $-8 + 8 - 16 = -16 \\neq 0$.\n\nUsing a graphing calculator or numerical method, we find $x \\approx 2.89$.\n\n**Check domain:** Need $x > 0$, $x > 2$, and $x > -2$, so $x > 2$.\n\nSince $2.89 > 2$, this is valid.\n\n**Solution:** $x \\approx 2.89$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Using Properties for Simplification"
+    },
+    {
+      "type": "example",
+      "id": "example-7.20",
+      "number": "7.20",
+      "title": "Simplifying with properties",
+      "problem": "Simplify completely:\n\n1. $\\log_2 8 + \\log_2 4$\n\n2. $\\log 1000 - \\log 10$\n\n3. $2\\ln e^3$\n\n4. $e^{3\\ln 2}$",
+      "solution": "1. $\\log_2 8 + \\log_2 4 = 3 + 2 = 5$ (or $\\log_2 32 = 5$)\n\n2. $\\log 1000 - \\log 10 = 3 - 1 = 2$ (or $\\log 100 = 2$)\n\n3. $2\\ln e^3 = 2 \\cdot 3 = 6$\n\n4. $e^{3\\ln 2} = e^{\\ln 2^3} = e^{\\ln 8} = 8$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.21",
+      "number": "7.21",
+      "title": "Simplifying products inside logarithms",
+      "problem": "Simplify: $\\log_2(x^2 - 4) - \\log_2(x + 2)$ for $x > 2$",
+      "solution": "First, factor $x^2 - 4 = (x+2)(x-2)$:\n$$\n \\log_2(x^2 - 4) - \\log_2(x + 2) &= \\log_2\\left(\\frac{x^2 - 4}{x + 2}\\right) \\\\\n &= \\log_2\\left(\\frac{(x+2)(x-2)}{x + 2}\\right) \\\\\n &= \\log_2(x - 2)\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-7.22",
+      "number": "7.22",
+      "title": "Working with $e$ and $\\ln$",
+      "problem": "Simplify:\n\n1. $e^{\\ln x + \\ln y}$\n\n2. $\\ln(e^x \\cdot e^y)$\n\n3. $e^{2\\ln x - \\ln y}$",
+      "solution": "1. $e^{\\ln x + \\ln y} = e^{\\ln(xy)} = xy$\n\n2. $\\ln(e^x \\cdot e^y) = \\ln(e^{x+y}) = x + y$\n\n3. $e^{2\\ln x - \\ln y} = e^{\\ln x^2 - \\ln y} = e^{\\ln(x^2/y)} = \\frac{x^2}{y}$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of Logarithm Properties"
+    },
+    {
+      "type": "context",
+      "id": "context-7.2",
+      "number": null,
+      "title": "Computing with Logarithms (Historical)",
+      "content": "Before calculators, scientists used logarithm properties to simplify \ncalculations. For example, to compute $\\sqrt[5]{48}$:\n\n1. $\\log(\\sqrt[5]{48}) = \\frac{1}{5}\\log 48$\n\n2. Look up $\\log 48 \\approx 1.6812$ in a table\n\n3. Calculate $\\frac{1}{5} \\times 1.6812 = 0.3362$\n\n4. Look up the antilog: $10^{0.3362} \\approx 2.168$\n\nThis converts the difficult fifth root into simple table lookups and one \ndivision!"
+    },
+    {
+      "type": "example",
+      "id": "example-7.23",
+      "number": "7.23",
+      "title": "Earthquake energy comparison",
+      "problem": "The energy released by an earthquake of magnitude $M$ is given by:\n\\[\n \\log E = 4.4 + 1.5M\n\\]\nwhere $E$ is in joules. How much more energy does a magnitude 8 earthquake \nrelease compared to a magnitude 6?",
+      "solution": "For magnitude 8: $\\log E_8 = 4.4 + 1.5(8) = 16.4$\n\nFor magnitude 6: $\\log E_6 = 4.4 + 1.5(6) = 13.4$\n\nThe ratio:\n\\[\n \\log\\left(\\frac{E_8}{E_6}\\right) = \\log E_8 - \\log E_6 = 16.4 - 13.4 = 3\n\\]\n\\[\n \\frac{E_8}{E_6} = 10^3 = 1000\n\\]\n\nA magnitude 8 earthquake releases **1000 times** more energy than \na magnitude 6!"
+    },
+    {
+      "type": "example",
+      "id": "example-7.24",
+      "number": "7.24",
+      "title": "Decibel addition",
+      "problem": "If one machine produces 70 dB of sound, what is the sound level when \ntwo identical machines operate together?",
+      "solution": "Recall $L = 10\\log(I/I_0)$. If one machine has $L_1 = 70$ dB, then:\n\\[\n 70 = 10\\log(I_1/I_0) \\Rightarrow \\log(I_1/I_0) = 7 \\Rightarrow I_1 = 10^7 I_0\n\\]\n\nTwo machines have total intensity $I_{total} = 2I_1 = 2 \\times 10^7 I_0$.\n\n\\[\n L_{total} = 10\\log\\left(\\frac{2 \\times 10^7 I_0}{I_0}\\right) = 10\\log(2 \\times 10^7)\n\\]\n\\[\n = 10(\\log 2 + \\log 10^7) = 10(0.301 + 7) = 10(7.301) \\approx 73 \\text{ dB}\n\\]\n\nDoubling the number of sources adds only about 3 dB!"
+    },
+    {
+      "type": "historical",
+      "id": "historical-7.2",
+      "number": null,
+      "title": "The Slide Rule",
+      "content": "The slide rule, invented around 1620 by William Oughtred, was the pocket \ncalculator of its era. It consists of two logarithmic scales that slide \nagainst each other. To multiply, you add the logarithms by physically \nsliding the scales; to divide, you subtract by sliding the other way.\n\nEngineers carried slide rules for over 350 years. NASA engineers used them \nto calculate trajectories for the Apollo missions! The slide rule finally \nbecame obsolete in the 1970s when electronic calculators became affordable.\n\nThe slide rule reminds us that mathematical insight—understanding why \nlogarithms convert multiplication to addition—creates tools that serve \nhumanity for centuries. True understanding yields lasting fruit."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Practice Problems"
+    }
+  ],
+  "marginNotes": [
+    {
+      "type": "scripture",
+      "reference": "Proverbs 2:6",
+      "text": "For the Lord gives wisdom; from his mouth \ncome knowledge and understanding."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 24:27",
+      "text": "Prepare your work outside; get \neverything ready for yourself in the field, and after that build \nyour house."
+    },
+    {
+      "type": "scripture",
+      "reference": "1 Corinthians 14:40",
+      "text": "But all things should be done \ndecently and in order."
+    },
+    {
+      "type": "scripture",
+      "reference": "Proverbs 11:1",
+      "text": "A false balance is an abomination to the \nLord, but a just weight is his delight."
+    },
+    {
+      "type": "scripture",
+      "reference": "Psalm 119:105",
+      "text": "Your word is a lamp to my feet and a \nlight to my path."
+    },
+    {
+      "type": "scripture",
+      "reference": "Colossians 2:3",
+      "text": "In whom are hidden all the treasures \nof wisdom and knowledge."
+    }
+  ]
+}
