@@ -192,8 +192,8 @@ function BookCard({ book, brand, isAtlas }: BookCardProps) {
   
   // Per-book thumbnail crop position for Meridian
   const getMeridianCropPosition = () => {
-    if (book.id === 'college-algebra') return 'center 60%';
-    return 'center 55%';
+    if (book.id === 'college-algebra') return 'center 50%';
+    return 'center 60%';
   };
 
   return (
