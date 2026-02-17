@@ -35,6 +35,14 @@ function BookDetailContent({ book, bookId }: BookDetailProps) {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Skip Link for Accessibility */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:bg-gray-900 focus:text-white focus:px-4 focus:py-2"
+      >
+        Skip to main content
+      </a>
+
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -55,11 +63,12 @@ function BookDetailContent({ book, bookId }: BookDetailProps) {
         </div>
       </header>
 
-      {/* Hero */}
-      <section 
-        className="py-12 sm:py-16"
-        style={{ backgroundColor: brand.colors.primaryLight }}
-      >
+      <main id="main-content">
+        {/* Hero */}
+        <section 
+          className="py-12 sm:py-16"
+          style={{ backgroundColor: brand.colors.primaryLight }}
+        >
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row gap-8 items-start">
             {/* Cover placeholder */}
@@ -152,6 +161,7 @@ function BookDetailContent({ book, bookId }: BookDetailProps) {
           </div>
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-8">

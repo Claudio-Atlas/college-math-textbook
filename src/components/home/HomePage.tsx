@@ -67,6 +67,14 @@ function HomeContent() {
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: brand.colors.primaryLight }}>
+      {/* Skip Link for Accessibility */}
+      <a 
+        href="#main-content" 
+        className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:bg-gray-900 focus:text-white focus:px-4 focus:py-2"
+      >
+        Skip to main content
+      </a>
+
       {/* Header */}
       <header className="bg-white shadow-sm">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -80,8 +88,9 @@ function HomeContent() {
         </div>
       </header>
 
-      {/* Hero */}
-      <section className="py-16 sm:py-24">
+      <main id="main-content">
+        {/* Hero */}
+        <section className="py-16 sm:py-24">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 mb-6">
             {brand.tagline}
@@ -149,6 +158,7 @@ function HomeContent() {
           </p>
         </div>
       </section>
+      </main>
 
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
