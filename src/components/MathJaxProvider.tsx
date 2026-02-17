@@ -1,4 +1,5 @@
-import { MathJaxContext } from 'better-react-mathjax';
+import * as BetterReactMathJax from 'better-react-mathjax';
+const { MathJaxContext } = BetterReactMathJax;
 import type { ReactNode } from 'react';
 
 interface MathJaxProviderProps {

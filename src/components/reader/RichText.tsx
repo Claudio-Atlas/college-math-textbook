@@ -1,9 +1,13 @@
-import { MathJax } from 'better-react-mathjax';
+import * as BetterReactMathJax from 'better-react-mathjax';
+const { MathJax } = BetterReactMathJax;
 
 interface RichTextProps {
   text: string;
   className?: string;
 }
+
+// Type the MathJax component props
+type MathJaxProps = ComponentProps<typeof MathJax>;
 
 /**
  * Renders text with inline math and markdown-style formatting.
