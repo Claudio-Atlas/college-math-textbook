@@ -14,9 +14,22 @@
 | Wave 1: Figure Audit | ✅ COMPLETE | 2026-02-17 09:56 MST |
 | Wave 1.5: Extract Figs to JSON | ✅ COMPLETE | 2026-02-17 10:15 MST |
 | Wave 1.6: Generate SVGs Ch3-6 | ✅ COMPLETE | 2026-02-17 10:30 MST |
+| Wave 1.7: Extract Inline Figs | ✅ COMPLETE | 2026-02-17 10:45 MST |
 | **Wave 2: Chapter QA** | ⏳ **READY** | — |
 | Wave 3: Fixes | ⏳ Pending | — |
 | Wave 4: Final Review | ⏳ Pending | — |
+
+### 🎉 ALL 113 FIGURES COMPLETE!
+
+| Chapter | Expected | Actual | Status |
+|---------|----------|--------|--------|
+| Ch 1 | 18 | 18 | ✅ |
+| Ch 2 | 47 | 47 | ✅ |
+| Ch 3 | 13 | 13 | ✅ |
+| Ch 4 | 5 | 5 | ✅ |
+| Ch 5 | 17 | 17 | ✅ |
+| Ch 6 | 13 | 13 | ✅ |
+| **Total** | **113** | **113** | ✅ |
 
 ---
 
@@ -128,7 +141,44 @@
 | Ch 5 | 6 | ✅ |
 | Ch 6 | 7 | ✅ |
 
-**All 89 figures now have SVG files!**
+**All external TikZ figures compiled!**
+
+---
+
+## Wave 1.7: Extract Inline Figures (Orchestrator)
+
+**Goal:** Extract tikzpicture environments embedded directly in section files
+
+**Status:** ✅ COMPLETE (2026-02-17 10:45 MST)
+
+**Results:**
+- [x] Created `pipeline/extract_inline_figures.py`
+- [x] Handles `\begin{tikzpicture}[options]` with options
+- [x] Added `\deriv`, `\pderiv` custom commands
+- [x] Extracted and compiled 24 inline figures
+
+| Chapter | Inline Figures |
+|---------|----------------|
+| Ch 3 | 5 |
+| Ch 4 | 2 |
+| Ch 5 | 11 |
+| Ch 6 | 6 |
+| **Total** | **24** |
+
+### Pipeline Scripts Summary
+
+For future textbooks, run in this order:
+
+```bash
+# 1. External figures (\input{figures/...})
+python extract_missing_figures.py
+
+# 2. Compile TikZ to SVG (where SVGs don't exist)
+python compile_tikz_figures.py
+
+# 3. Inline figures (tikzpicture in section files)
+python extract_inline_figures.py
+```
 
 ---
 

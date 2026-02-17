@@ -78,44 +78,121 @@ python latex_converter.py path/to/chapter.tex --output ../content/vol1/ch01/
 
 ## Phase 2: Figure Extraction (TikZ → SVG)
 
-### Command
+Figures can exist in three patterns in LaTeX. Each requires a different extraction approach.
+
+### The Three Cases
+
+| Case | Pattern | Script | Example |
+|------|---------|--------|---------|
+| **1. External Files** | `\input{figures/fig-X.Y.Z-name.tex}` | `extract_missing_figures.py` | Chapter 2 figures |
+| **2. Inline TikZ** | `\begin{tikzpicture}` directly in section | `extract_inline_figures.py` | Ch5 curve sketches |
+| **3. Manual/Existing** | Pre-converted figures | Manual | Chapter 1 figures |
+
+### Case 1: External Figure Files
+
+When sections use `\input{figures/fig-X.Y.Z-name.tex}`:
+
 ```bash
 cd ~/Desktop/Axiom-Reader/pipeline
-python extract_tikz.py path/to/chapter.tex --output ../public/figures/vol1/ch01/
+python extract_missing_figures.py [--dry-run]
 ```
 
-### Requirements
-- TinyTeX installed at `~/Library/TinyTeX/bin/universal-darwin/`
-- `pdf2svg` installed via Homebrew
+**What it does:**
+1. Scans section `.tex` files for `\input{...figures/fig-...}` patterns
+2. Opens referenced figure `.tex` files
+3. Extracts `\Description{}`, `\caption{}`, `\label{}`
+4. Copies existing SVGs from LaTeX source to `public/figures/`
+5. Adds figure blocks to JSON with alt text
 
-### What It Does
-1. Finds all `\begin{tikzpicture}` blocks
-2. Wraps each in standalone LaTeX document
-3. Compiles to PDF via `pdflatex`
-4. Converts PDF → SVG via `pdf2svg`
-5. Adds accessibility `<desc>` tags from `\Description{}` commands
+### Case 2: Inline TikZ Figures
+
+When `\begin{tikzpicture}` appears directly in section files:
+
+```bash
+cd ~/Desktop/Axiom-Reader/pipeline
+python extract_inline_figures.py [--dry-run] [--chapter N]
+```
+
+**What it does:**
+1. Finds `\begin{tikzpicture}[options]\Description{...}...\end{tikzpicture}`
+2. Compiles to PDF via `pdflatex` with standalone class
+3. Converts PDF → SVG via `pdf2svg`
+4. Adds figure blocks to JSON
+
+**Naming convention:** `fig-{chapter}.{section}-inline-{N}.svg`
+
+### Case 3: Compile TikZ to SVG
+
+For figure `.tex` files that need SVG generation (no pre-existing SVGs):
+
+```bash
+cd ~/Desktop/Axiom-Reader/pipeline
+python compile_tikz_figures.py [--dry-run] [--chapter N]
+```
+
+**What it does:**
+1. Finds `fig-*.tex` files in chapter figures directories
+2. Extracts tikzpicture content
+3. Compiles with standalone LaTeX + Atlas color definitions
+4. Outputs SVG to `public/figures/vol1/ch{NN}/`
+
+### Requirements
+
+- **TinyTeX** at `~/Library/TinyTeX/bin/universal-darwin/`
+- **pdf2svg** via Homebrew (`brew install pdf2svg`)
+
+### Custom LaTeX Commands
+
+The compilation scripts include:
+```latex
+% Atlas colors
+\definecolor{AtlasTeal}{HTML}{5BA4A4}
+\definecolor{AtlasCoral}{HTML}{F97316}
+% ... etc
+
+% Math shortcuts
+\newcommand{\dx}{\,dx}
+\newcommand{\deriv}[2]{\frac{d#1}{d#2}}
+
+% Accessibility (ignored for SVG)
+\newcommand{\Description}[1]{}
+```
+
+### Complete Workflow for New Textbook
+
+```bash
+# 1. Extract figures from \input{} references
+python extract_missing_figures.py --dry-run  # Preview
+python extract_missing_figures.py             # Execute
+
+# 2. Compile TikZ files that don't have SVGs
+python compile_tikz_figures.py --dry-run
+python compile_tikz_figures.py
+
+# 3. Extract inline figures from section files
+python extract_inline_figures.py --dry-run
+python extract_inline_figures.py
+
+# 4. Verify totals match ACCESSIBILITY-TRACKING.md
+find public/figures/vol1 -name "*.svg" | wc -l
+```
 
 ### Output Location
 ```
-public/figures/vol1/ch01/
-├── sec01-mapping-diagram.svg
-├── sec01-vertical-line-test.svg
-├── sec01-absolute-value.svg
-└── ...
+public/figures/vol1/ch{NN}/
+├── fig-X.Y.Z-descriptive-name.svg      # From TikZ files
+├── fig-X.Y-inline-N.svg                # From inline extraction
+└── sec{NN}-descriptive-name.svg        # Legacy manual naming
 ```
 
-### Figure Naming Convention
-```
-sec{NN}-{descriptive-name}.svg
-```
-
-Reference in JSON as:
+### JSON Figure Block
 ```json
 {
   "type": "figure",
-  "src": "/figures/vol1/ch01/sec01-mapping-diagram.svg",
-  "caption": "A mapping diagram for $f(x) = x^2$...",
-  "alt": "Figure: Mapping Diagram"
+  "id": "fig-2.1.1",
+  "src": "/figures/vol1/ch02/fig-2.1.1-secant-line.svg",
+  "caption": "A secant line through two points...",
+  "alt": "A coordinate plane showing a smooth curve..."
 }
 ```
 
