@@ -98,10 +98,51 @@ function BlockRenderer({ block }: { block: ContentBlock }) {
           />
           {block.caption && (
             <figcaption className="text-center text-sm text-atlas-secondary mt-2">
-              {block.caption}
+              <RichText text={block.caption} />
             </figcaption>
           )}
         </figure>
+      );
+      
+    case 'exercise':
+      return (
+        <div className="my-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <div className="flex items-start gap-3">
+            <span className="text-sm font-semibold text-blue-600 whitespace-nowrap">
+              Exercise {block.number}
+            </span>
+            <div className="flex-1">
+              <div className="text-atlas-text">
+                <RichText text={block.problem || block.content || ''} />
+              </div>
+              {block.solution && (
+                <details className="mt-4">
+                  <summary className="cursor-pointer text-sm font-medium text-blue-600 hover:text-blue-800">
+                    Show Solution
+                  </summary>
+                  <div className="mt-2 pt-2 border-t border-blue-200">
+                    <RichText text={block.solution} />
+                  </div>
+                </details>
+              )}
+            </div>
+          </div>
+        </div>
+      );
+      
+    case 'caution':
+      return (
+        <div className="my-6 p-4 bg-amber-50 border-l-4 border-amber-500 rounded-r-lg">
+          <div className="flex items-start gap-3">
+            <span className="text-amber-600 text-xl">⚠️</span>
+            <div className="flex-1">
+              <div className="text-sm font-semibold text-amber-800 mb-1">Caution</div>
+              <div className="text-amber-900">
+                <RichText text={block.content || block.text || ''} />
+              </div>
+            </div>
+          </div>
+        </div>
       );
       
     case 'list':

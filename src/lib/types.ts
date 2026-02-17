@@ -72,6 +72,7 @@ export type ContentBlock =
   | TableBlock
   | ExerciseBlock
   | WarningBlock
+  | CautionBlock
   | HistoricalBlock
   | KeyConceptBlock;
 
@@ -145,9 +146,11 @@ export interface TableBlock extends BaseBlock {
 
 export interface ExerciseBlock extends BaseBlock {
   type: 'exercise';
-  id: string;
-  number: string;
-  problem: string;
+  id?: string;
+  number?: string;
+  problem?: string;
+  content?: string;
+  solution?: string;
   hint?: string;
   answer?: string;
   proof?: boolean;
@@ -160,6 +163,14 @@ export interface WarningBlock extends BaseBlock {
   id?: string;
   title?: string;
   content: string;
+}
+
+export interface CautionBlock extends BaseBlock {
+  type: 'caution';
+  id?: string;
+  title?: string;
+  content?: string;
+  text?: string;
 }
 
 export interface HistoricalBlock extends BaseBlock {
