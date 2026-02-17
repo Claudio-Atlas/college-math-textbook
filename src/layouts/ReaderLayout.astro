@@ -1,13 +1,35 @@
 ---
 import '../styles/global.css';
+import { Sidebar } from '../components/reader/Sidebar';
+
+interface Section {
+  id: string;
+  number: number;
+  title: string;
+  slug: string;
+}
+
+interface Chapter {
+  id: string;
+  number: number;
+  title: string;
+  sections: Section[];
+}
+
+interface Book {
+  id: string;
+  title: string;
+  chapters: Chapter[];
+}
 
 interface Props {
   title: string;
-  bookTitle?: string;
-  sectionTitle?: string;
+  book?: Book;
+  currentChapter?: number;
+  currentSection?: number;
 }
 
-const { title, bookTitle, sectionTitle } = Astro.props;
+const { title, book, currentChapter, currentSection } = Astro.props;
 ---
 
 <!doctype html>
@@ -18,29 +40,106 @@ const { title, bookTitle, sectionTitle } = Astro.props;
     <meta name="description" content="Axiom Reader - Mathematics Textbooks" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
-    
-    <!-- MathJax is loaded by better-react-mathjax in ContentRenderer -->
   </head>
   <body class="min-h-screen bg-atlas-cream">
-    <!-- Header -->
-    {(bookTitle || sectionTitle) && (
-      <header class="reader-header sticky top-0 z-50">
+    <!-- Mobile Header -->
+    <header class="reader-header sticky top-0 z-50 lg:hidden">
+      <div class="flex items-center justify-between">
         <div class="flex items-center gap-3">
-          {bookTitle && (
-            <a href="/" class="text-white/80 hover:text-white text-sm">
-              ← {bookTitle}
-            </a>
-          )}
-          {sectionTitle && (
-            <h1 class="text-lg font-semibold">{sectionTitle}</h1>
+          <button 
+            id="menu-toggle"
+            class="p-2 -ml-2 text-white/80 hover:text-white"
+            aria-label="Open menu"
+            aria-controls="sidebar"
+            aria-expanded="false"
+          >
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+          {book && (
+            <span class="text-sm font-medium text-white/90">{book.title}</span>
           )}
         </div>
-      </header>
-    )}
-    
-    <!-- Main content -->
-    <main>
-      <slot />
-    </main>
+      </div>
+    </header>
+
+    <div class="flex">
+      <!-- Sidebar Overlay (mobile) -->
+      <div 
+        id="sidebar-overlay"
+        class="fixed inset-0 bg-black/50 z-40 lg:hidden hidden"
+        aria-hidden="true"
+      ></div>
+
+      <!-- Sidebar -->
+      {book && (
+        <aside 
+          id="sidebar"
+          class="
+            fixed inset-y-0 left-0 z-50 w-72
+            transform -translate-x-full transition-transform duration-300
+            lg:relative lg:translate-x-0 lg:w-80 lg:flex-shrink-0
+          "
+        >
+          <Sidebar 
+            book={book}
+            currentChapter={currentChapter}
+            currentSection={currentSection}
+            client:load
+          />
+        </aside>
+      )}
+
+      <!-- Main Content -->
+      <main class="flex-1 min-w-0">
+        <slot />
+      </main>
+    </div>
+
+    <!-- Mobile Menu Script -->
+    <script>
+      const menuToggle = document.getElementById('menu-toggle');
+      const sidebar = document.getElementById('sidebar');
+      const overlay = document.getElementById('sidebar-overlay');
+
+      function openMenu() {
+        sidebar?.classList.remove('-translate-x-full');
+        overlay?.classList.remove('hidden');
+        menuToggle?.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        sidebar?.classList.add('-translate-x-full');
+        overlay?.classList.add('hidden');
+        menuToggle?.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+      }
+
+      menuToggle?.addEventListener('click', openMenu);
+      overlay?.addEventListener('click', closeMenu);
+
+      // Close on escape key
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenu();
+      });
+
+      // Close button in sidebar (handled by React onClose prop)
+      sidebar?.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (target.closest('[aria-label="Close menu"]')) {
+          closeMenu();
+        }
+      });
+
+      // Close sidebar when clicking a link (mobile)
+      sidebar?.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        if (target.closest('a')) {
+          closeMenu();
+        }
+      });
+    </script>
   </body>
 </html>
