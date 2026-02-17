@@ -19,15 +19,28 @@ const mathJaxConfig = {
     processEnvironments: true,
     // Custom macros for Atlas textbooks
     macros: {
-      abs: ['\\left|#1\\right|', 1],
+      // Common sets
       R: '\\mathbb{R}',
       N: '\\mathbb{N}',
       Z: '\\mathbb{Z}',
       Q: '\\mathbb{Q}',
       C: '\\mathbb{C}',
+      // Absolute value
+      abs: ['\\left|#1\\right|', 1],
+      // Vectors
       vec: ['\\mathbf{#1}', 1],
+      // Differentials (used 385+ times in Vol 1)
+      dx: '\\,\\mathrm{d}x',
+      dt: '\\,\\mathrm{d}t',
+      du: '\\,\\mathrm{d}u',
+      dv: '\\,\\mathrm{d}v',
+      dy: '\\,\\mathrm{d}y',
       dd: ['\\,\\mathrm{d}#1', 1],
-      dv: ['\\frac{\\mathrm{d}#1}{\\mathrm{d}#2}', 2],
+      // Derivative notation (used 35+ times)
+      deriv: ['\\frac{\\mathrm{d}#1}{\\mathrm{d}#2}', 2],
+      // Definite integral shorthand (used 34+ times)
+      defint: ['\\int_{#1}^{#2}', 2],
+      // Partial derivatives
       pdv: ['\\frac{\\partial #1}{\\partial #2}', 2],
     },
   },

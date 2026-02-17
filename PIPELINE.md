@@ -451,6 +451,21 @@ Axiom-Reader/
 - Verify import pattern uses `import * as`
 - Check browser console for errors
 
+### Custom LaTeX macros showing as raw text
+Atlas textbooks use custom macros like `\dx`, `\deriv`, `\defint`. These must be defined in `MathJaxProvider.tsx`:
+
+```javascript
+macros: {
+  dx: '\\,\\mathrm{d}x',
+  dt: '\\,\\mathrm{d}t',
+  deriv: ['\\frac{\\mathrm{d}#1}{\\mathrm{d}#2}', 2],
+  defint: ['\\int_{#1}^{#2}', 2],
+  // ... see full list in MathJaxProvider.tsx
+}
+```
+
+If you see raw `\dx` or `\defint{a}{b}` in rendered output, the macro is missing from the config.
+
 ### Figures not loading
 - Verify path matches `/figures/vol1/ch01/...`
 - Check SVG exists in `public/figures/`
