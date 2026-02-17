@@ -1,7 +1,7 @@
 ---
 export const prerender = false;
 import ReaderLayout from '../../../layouts/ReaderLayout.astro';
-import { ContentRenderer } from '../../../components/reader/ContentRenderer';
+import { ReaderContent } from '../../../components/reader/ReaderContent';
 
 // Get params from URL
 const { bookId, chapterId, sectionId } = Astro.params;
@@ -15,9 +15,14 @@ try {
   const bookModule = await import(`../../../../content/${bookId}/book.json`);
   book = bookModule.default;
   
-  // Load section content
-  const sectionModule = await import(`../../../../content/${bookId}/${chapterId}/${sectionId}.json`);
-  section = sectionModule.default;
+  // Load section content - try src-content first, then content
+  try {
+    const sectionModule = await import(`../../../../src-content/calculus-vol1/${chapterId}/${sectionId}.json`);
+    section = sectionModule.default;
+  } catch {
+    const sectionModule = await import(`../../../../content/${bookId}/${chapterId}/${sectionId}.json`);
+    section = sectionModule.default;
+  }
 } catch (e) {
   notFound = true;
 }
@@ -86,33 +91,16 @@ if (book && section) {
         {section.chapter}.{section.section} {section.title}
       </h1>
       
-      <!-- Epigraph -->
-      {section.epigraph && (
-        <blockquote class="my-8 pl-6 border-l-4 border-atlas-teal italic text-atlas-secondary">
-          <p class="mb-2">{section.epigraph.text}</p>
-          <cite class="text-sm not-italic">— {section.epigraph.reference}</cite>
-        </blockquote>
-      )}
-      
-      <!-- Learning Objectives -->
-      {section.objectives && section.objectives.length > 0 && (
-        <div class="my-8 p-4 sm:p-6 bg-atlas-sage-light rounded-lg border border-atlas-sage">
-          <h2 class="text-lg font-semibold text-atlas-sage mb-4">Learning Objectives</h2>
-          <ul class="space-y-2">
-            {section.objectives.map((obj: string, i: number) => (
-              <li class="flex items-start gap-2 text-sm sm:text-base">
-                <span class="text-atlas-sage font-semibold whitespace-nowrap">
-                  {section.chapter}.{section.section}.{i + 1}
-                </span>
-                <span>{obj}</span>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
-      
-      <!-- Main Content -->
-      <ContentRenderer content={section.content} client:only="react" />
+      <!-- Main Content with Brand-Aware Rendering -->
+      <ReaderContent 
+        content={section.content}
+        epigraph={section.epigraph}
+        marginNotes={section.marginNotes}
+        chapter={section.chapter}
+        section={section.section}
+        objectives={section.objectives}
+        client:only="react"
+      />
       
       <!-- Navigation -->
       <nav class="mt-12 pt-8 border-t border-atlas-border flex justify-between text-sm sm:text-base">
