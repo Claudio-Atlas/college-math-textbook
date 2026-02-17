@@ -1,5 +1,7 @@
 # CLAUDE.md - Axiom Reader
 
+> **Sub-agents:** Read `PIPELINE.md` for the complete LaTeX → Web conversion process before making changes.
+
 ## Project Overview
 
 **Axiom Reader** is a web-based textbook reader for Atlas Classical Press (Christian edition) and Meridian Press (secular edition) mathematics textbooks.
@@ -55,6 +57,7 @@ Axiom-Reader/
 ├── pipeline/              # LaTeX → JSON conversion tools
 │   ├── latex_converter.py # Main converter
 │   └── extract_tikz.py    # TikZ → SVG extractor
+├── PIPELINE.md            # ⭐ Full conversion guide (READ THIS)
 └── astro.config.mjs
 ```
 
