@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/* Atlas Classical Press Brand Colors */
+@theme {
+  --color-atlas-teal: #5BA4A4;
+  --color-atlas-teal-dark: #4A8F8F;
+  --color-atlas-teal-light: #E8F4F4;
+  --color-atlas-deep: #2C5F5F;
+  --color-atlas-cream: #FAF9F7;
+  --color-atlas-sage: #7BAE7F;
+  --color-atlas-sage-light: #EDF5EE;
+  --color-atlas-warm: #D4A853;
+  --color-atlas-warm-light: #FDF6E8;
+  --color-atlas-rose: #C97B84;
+  --color-atlas-rose-light: #F9EEF0;
+  --color-atlas-text: #2D2D2D;
+  --color-atlas-secondary: #6B6B6B;
+  --color-atlas-muted: #9E9E9E;
+  --color-atlas-border: #E8E5E1;
+  --color-atlas-elevated: #F5F3F0;
+}
+
+/* Base styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Georgia', 'Times New Roman', serif;
+  color: var(--color-atlas-text);
+  background-color: var(--color-atlas-cream);
+  line-height: 1.7;
+}
+
+/* MathJax sizing */
+.MathJax {
+  font-size: 1.1em !important;
+}
+
+/* Content typography */
+.reader-content {
+  max-width: 48rem;
+  margin: 0 auto;
+}
+
+.reader-content p {
+  margin-bottom: 1.25rem;
+}
+
+.reader-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--color-atlas-deep);
+}
+
+.reader-content h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-atlas-deep);
+}
+
+/* Environment boxes */
+.env-box {
+  margin: 1.5rem 0;
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  border-left: 4px solid;
+}
+
+.env-definition {
+  background-color: var(--color-atlas-teal-light);
+  border-color: var(--color-atlas-teal);
+}
+
+.env-theorem {
+  background-color: var(--color-atlas-sage-light);
+  border-color: var(--color-atlas-sage);
+}
+
+.env-example {
+  background-color: var(--color-atlas-warm-light);
+  border-color: var(--color-atlas-warm);
+}
+
+.env-proof {
+  background-color: var(--color-atlas-elevated);
+  border-color: var(--color-atlas-border);
+}
+
+.env-warning {
+  background-color: var(--color-atlas-rose-light);
+  border-color: var(--color-atlas-rose);
+}
+
+.env-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.env-title {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 320px;
+  height: 100vh;
+  overflow-y: auto;
+  border-right: 1px solid var(--color-atlas-border);
+  background-color: white;
+}
+
+.sidebar-collapsed {
+  width: 48px;
+}
+
+/* Header */
+.reader-header {
+  background-color: var(--color-atlas-warm);
+  color: white;
+  padding: 1rem 1.5rem;
+}
+
+/* QED symbol */
+.qed {
+  float: right;
+  font-size: 1.25rem;
+}

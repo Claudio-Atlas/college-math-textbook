@@ -1,0 +1,61 @@
+---
+import ReaderLayout from '../layouts/ReaderLayout.astro';
+import { ContentRenderer } from '../components/reader/ContentRenderer';
+
+// Load a test section directly
+import sectionData from '../../content/vol1/ch01/sec01.json';
+
+const section = sectionData;
+---
+
+<ReaderLayout 
+  title={`${section.title} - Axiom Reader`}
+  bookTitle="Calculus Volume 1"
+  sectionTitle={section.title}
+>
+  <div class="flex">
+    <!-- Content Area -->
+    <article class="flex-1 px-8 py-6 max-w-4xl mx-auto">
+      <!-- Section Title -->
+      <h1 class="text-3xl font-bold text-atlas-deep mb-2">
+        {section.chapter}.{section.section} {section.title}
+      </h1>
+      
+      <!-- Epigraph -->
+      {section.epigraph && (
+        <blockquote class="my-8 pl-6 border-l-4 border-atlas-teal italic text-atlas-secondary">
+          <p class="mb-2">{section.epigraph.text}</p>
+          <cite class="text-sm not-italic">— {section.epigraph.reference}</cite>
+        </blockquote>
+      )}
+      
+      <!-- Learning Objectives -->
+      {section.objectives && section.objectives.length > 0 && (
+        <div class="my-8 p-6 bg-atlas-sage-light rounded-lg border border-atlas-sage">
+          <h2 class="text-lg font-semibold text-atlas-sage mb-4">Learning Objectives</h2>
+          <ul class="space-y-2">
+            {section.objectives.map((obj: string, i: number) => (
+              <li class="flex items-start gap-2">
+                <span class="text-atlas-sage font-semibold">{section.chapter}.{section.section}.{i + 1}</span>
+                <span>{obj}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      
+      <!-- Main Content -->
+      <ContentRenderer content={section.content} client:load />
+      
+      <!-- Navigation -->
+      <nav class="mt-12 pt-8 border-t border-atlas-border flex justify-between">
+        <a href="/" class="text-atlas-teal hover:text-atlas-teal-dark">
+          ← Previous
+        </a>
+        <a href="/" class="text-atlas-teal hover:text-atlas-teal-dark">
+          Next →
+        </a>
+      </nav>
+    </article>
+  </div>
+</ReaderLayout>
