@@ -9,7 +9,7 @@ interface Book {
   title: string;
   subtitle?: string;
   description: string;
-  coverImage?: string;
+  coverSlug?: string; // e.g., 'calculus-vol1' - will be prefixed with edition path
   chapters: number;
   available: boolean;
 }
@@ -20,7 +20,7 @@ const CATALOG: Book[] = [
     title: 'Calculus Volume 1',
     subtitle: 'Differential Calculus',
     description: 'A rigorous yet accessible introduction to differential calculus, covering limits, continuity, derivatives, and their applications. Designed for students seeking both mathematical precision and genuine understanding.',
-    coverImage: '/covers/calculus-vol1.png',
+    coverSlug: 'calculus-vol1',
     chapters: 6,
     available: true,
   },
@@ -29,7 +29,7 @@ const CATALOG: Book[] = [
     title: 'Calculus Volume 2',
     subtitle: 'Integral Calculus',
     description: 'The second volume covering integral calculus, techniques of integration, applications of integrals, and an introduction to series.',
-    coverImage: '/covers/calculus-vol2.png',
+    coverSlug: 'calculus-vol2',
     chapters: 6,
     available: false,
   },
@@ -38,7 +38,7 @@ const CATALOG: Book[] = [
     title: 'Calculus Volume 3',
     subtitle: 'Multivariable Calculus',
     description: 'The concluding volume exploring multivariable functions, partial derivatives, multiple integrals, and vector calculus.',
-    coverImage: '/covers/calculus-vol3.png',
+    coverSlug: 'calculus-vol3',
     chapters: 6,
     available: false,
   },
@@ -47,7 +47,7 @@ const CATALOG: Book[] = [
     title: 'Elementary Differential Equations',
     subtitle: 'With Applications',
     description: 'A comprehensive introduction to ordinary differential equations, covering first-order equations, linear systems, series solutions, and real-world applications in physics and engineering.',
-    coverImage: '/covers/diff-eq-thumb.png',
+    coverSlug: 'diff-eq',
     chapters: 8,
     available: false,
   },
@@ -56,7 +56,7 @@ const CATALOG: Book[] = [
     title: 'College Algebra',
     subtitle: 'With Applications',
     description: 'A thorough foundation in algebraic concepts including functions, polynomials, exponentials, logarithms, and systems of equations. Prepares students for calculus and beyond.',
-    coverImage: '/covers/college-algebra-thumb.png',
+    coverSlug: 'college-algebra',
     chapters: 10,
     available: false,
   },
@@ -130,7 +130,7 @@ function HomeContent() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {CATALOG.map((book) => (
-              <BookCard key={book.id} book={book} brand={brand} />
+              <BookCard key={book.id} book={book} brand={brand} isAtlas={isAtlas} />
             ))}
           </div>
         </div>
@@ -182,9 +182,14 @@ function HomeContent() {
 interface BookCardProps {
   book: Book;
   brand: ReturnType<typeof useBrand>['brand'];
+  isAtlas: boolean;
 }
 
-function BookCard({ book, brand }: BookCardProps) {
+function BookCard({ book, brand, isAtlas }: BookCardProps) {
+  // Construct edition-aware cover path
+  const editionFolder = isAtlas ? 'atlas' : 'meridian';
+  const coverImage = book.coverSlug ? `/covers/${editionFolder}/${book.coverSlug}.png` : null;
+
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
       {/* Cover Image Placeholder */}
@@ -192,9 +197,9 @@ function BookCard({ book, brand }: BookCardProps) {
         className="h-48 flex items-center justify-center"
         style={{ backgroundColor: brand.colors.primaryLight }}
       >
-        {book.coverImage ? (
+        {coverImage ? (
           <img 
-            src={book.coverImage} 
+            src={coverImage} 
             alt={`${book.title} cover`}
             className="w-full h-full object-cover"
           />
