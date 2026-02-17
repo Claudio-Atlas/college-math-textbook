@@ -66,13 +66,39 @@ interface MarginContainerProps {
 export function MarginContainer({ children, notes }: MarginContainerProps) {
   const { brand } = useBrand();
   
-  // Only add margin space on Atlas edition with notes
+  // Only show margin on Atlas edition with notes AND on wide screens
   const hasMarginContent = brand.showScripture && notes && notes.length > 0;
 
+  // On smaller screens or Meridian, just render children without margin
+  if (!hasMarginContent) {
+    return <>{children}</>;
+  }
+
   return (
-    <div className={`relative ${hasMarginContent ? 'xl:mr-56' : ''}`}>
-      {children}
-      {hasMarginContent && <MarginScripture notes={notes} />}
+    <div className="xl:flex xl:gap-8">
+      {/* Main content */}
+      <div className="flex-1 min-w-0">
+        {children}
+      </div>
+      
+      {/* Margin notes - only visible on xl screens */}
+      <aside className="hidden xl:block xl:w-56 xl:flex-shrink-0">
+        <div className="sticky top-24 space-y-6 text-sm text-gray-500 italic">
+          {notes?.filter(note => note.type === 'scripture' || note.type === 'quote')
+            .map((note, index) => (
+              <div 
+                key={index} 
+                className="border-l-2 border-gray-200 pl-3"
+              >
+                <p className="leading-relaxed">"{note.text}"</p>
+                <p className="mt-1 text-xs font-medium not-italic text-gray-400">
+                  {note.type === 'scripture' ? `— ${note.reference}` : `— ${note.author}`}
+                </p>
+              </div>
+            ))
+          }
+        </div>
+      </aside>
     </div>
   );
 }
