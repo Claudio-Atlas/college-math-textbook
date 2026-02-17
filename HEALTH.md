@@ -103,9 +103,36 @@ All 39 sections of Calculus Volume 1 are rendering correctly with full figure su
 
 ---
 
+## Vol 2 Status: 🟡 IN PROGRESS
+
+### Chapter 7 Figures (14 total - COMPLETE)
+
+| Section | Figures | Status |
+|---------|---------|--------|
+| sec01 - Area Between Curves | 2 | ✅ SVG ready |
+| sec02 - Disks/Washers | 2 | ✅ SVG ready |
+| sec03 - Shells | 2 | ✅ SVG ready (incl. comparison diagram) |
+| sec04 - Arc Length | 1 | ✅ SVG ready |
+| sec05 - Work | 3 | ✅ SVG ready (pump + spring + cable) |
+| sec06 - Centers of Mass | 3 | ✅ SVG ready (seesaw + strip + example) |
+| sec08 - Hyperbolic | 1 | ✅ SVG ready |
+
+**Location:** `public/figures/vol2/ch07/`
+
+### Next: Vol 2 Pipeline
+
+- [ ] Extract remaining TikZ from ch11 (31 figures - parametric/polar)
+- [ ] Convert ch07-11 LaTeX → JSON
+- [ ] Write alt text for all 39 Vol 2 figures
+- [ ] QA test all 28 Vol 2 sections
+
+---
+
 ## Next Steps
 
-1. Deploy to Vercel for preview URL
-2. Mobile responsive testing
-3. Accessibility audit
-4. Custom domain setup
+1. ~~Deploy to Vercel for preview URL~~ ✅ DONE
+2. ~~Mobile responsive testing~~ ✅ Works great
+3. ~~Accessibility fixes (skip link, landmarks)~~ ✅ DONE
+4. ~~Custom domain setup~~ ✅ atlasclassicalpress.com + meridian-press.com
+5. Vol 2 content pipeline
+6. Full WCAG 2.1 AA audit (automated tools)
