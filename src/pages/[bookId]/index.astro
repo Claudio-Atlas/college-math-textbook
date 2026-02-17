@@ -1,0 +1,77 @@
+---
+export const prerender = false;
+import '../../styles/global.css';
+
+const { bookId } = Astro.params;
+
+let book;
+let notFound = false;
+
+try {
+  const bookModule = await import(`../../../content/${bookId}/book.json`);
+  book = bookModule.default;
+} catch (e) {
+  notFound = true;
+}
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{notFound ? 'Book Not Found' : book.title} - Axiom Reader</title>
+  </head>
+  <body class="min-h-screen bg-atlas-cream">
+    {notFound ? (
+      <div class="flex items-center justify-center min-h-screen">
+        <div class="text-center">
+          <h1 class="text-2xl font-bold text-atlas-deep mb-4">Book Not Found</h1>
+          <a href="/" class="text-atlas-teal hover:text-atlas-teal-dark">← Back to Home</a>
+        </div>
+      </div>
+    ) : (
+      <div class="max-w-4xl mx-auto px-4 py-12">
+        <!-- Book Header -->
+        <header class="text-center mb-12">
+          <h1 class="text-4xl font-bold text-atlas-deep mb-2">{book.title}</h1>
+          {book.subtitle && <p class="text-xl text-atlas-secondary">{book.subtitle}</p>}
+          <p class="text-atlas-secondary mt-2">by {book.author}</p>
+        </header>
+
+        <!-- Table of Contents -->
+        <nav class="space-y-6">
+          {book.chapters.map((chapter: any) => (
+            <div class="bg-white rounded-lg shadow-sm border border-atlas-border overflow-hidden">
+              <div class="bg-atlas-teal-light px-6 py-4">
+                <h2 class="text-xl font-semibold text-atlas-deep">
+                  Chapter {chapter.number}: {chapter.title}
+                </h2>
+              </div>
+              <ul class="divide-y divide-atlas-border">
+                {chapter.sections.map((section: any) => (
+                  <li>
+                    <a 
+                      href={`/${bookId}/${chapter.id}/${section.id}`}
+                      class="block px-6 py-3 hover:bg-atlas-cream transition-colors"
+                    >
+                      <span class="font-medium text-atlas-teal">{chapter.number}.{section.number}</span>
+                      <span class="ml-2 text-atlas-text">{section.title}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </nav>
+
+        <!-- Back Link -->
+        <div class="mt-12 text-center">
+          <a href="/" class="text-atlas-teal hover:text-atlas-teal-dark">
+            ← Back to Library
+          </a>
+        </div>
+      </div>
+    )}
+  </body>
+</html>

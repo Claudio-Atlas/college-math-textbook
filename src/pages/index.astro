@@ -1,56 +1,70 @@
 ---
-import ReaderLayout from '../layouts/ReaderLayout.astro';
+import '../styles/global.css';
 
-// Sample books for the home page
+// Load available books
 const books = [
-  { id: 'vol1', title: 'Calculus Volume 1', chapters: 6 },
-  { id: 'vol2', title: 'Calculus Volume 2', chapters: 5 },
-  { id: 'vol3', title: 'Calculus Volume 3', chapters: 5 },
-  { id: 'algebra-1', title: 'Algebra 1', chapters: 10 },
-  { id: 'algebra-2', title: 'Algebra 2', chapters: 12 },
-  { id: 'precalculus', title: 'Precalculus', chapters: 10 },
-  { id: 'geometry', title: 'Geometry', chapters: 12 },
+  {
+    id: 'vol1',
+    title: 'Calculus Volume 1',
+    author: 'Atlas Classical Press',
+    chapters: 6,
+    sections: 39,
+    cover: '/covers/vol1.jpg'
+  }
 ];
 ---
 
-<ReaderLayout title="Axiom Reader - Atlas Classical Press">
-  <div class="min-h-screen bg-atlas-cream">
-    <!-- Hero -->
-    <header class="bg-atlas-deep text-white py-16 px-6">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl font-bold mb-4">Axiom Reader</h1>
-        <p class="text-xl text-white/80">
-          Mathematics textbooks by Atlas Classical Press
-        </p>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Axiom Reader - Interactive Mathematics Textbooks" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Axiom Reader - Mathematics Textbooks</title>
+  </head>
+  <body class="min-h-screen bg-atlas-cream">
+    <!-- Header -->
+    <header class="bg-atlas-deep text-white py-12">
+      <div class="max-w-6xl mx-auto px-4 text-center">
+        <h1 class="text-4xl font-bold mb-2">Axiom Reader</h1>
+        <p class="text-atlas-teal-light text-lg">Interactive Mathematics Textbooks</p>
       </div>
     </header>
-    
-    <!-- Book Grid -->
-    <main class="max-w-6xl mx-auto px-6 py-12">
-      <h2 class="text-2xl font-bold text-atlas-deep mb-8">Available Textbooks</h2>
+
+    <!-- Book Library -->
+    <main class="max-w-6xl mx-auto px-4 py-12">
+      <h2 class="text-2xl font-semibold text-atlas-deep mb-8">Available Books</h2>
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
         {books.map((book) => (
           <a 
-            href={`/books/${book.id}`}
-            class="block bg-white rounded-lg shadow-sm border border-atlas-border hover:shadow-md transition-shadow p-6"
+            href={`/${book.id}`}
+            class="block bg-white rounded-lg shadow-sm border border-atlas-border overflow-hidden hover:shadow-md transition-shadow"
           >
-            <h3 class="text-lg font-semibold text-atlas-deep mb-2">
-              {book.title}
-            </h3>
-            <p class="text-sm text-atlas-secondary">
-              {book.chapters} chapters
-            </p>
+            <!-- Cover placeholder -->
+            <div class="aspect-[3/4] bg-gradient-to-br from-atlas-teal to-atlas-deep flex items-center justify-center">
+              <span class="text-white text-6xl font-serif">∫</span>
+            </div>
+            
+            <!-- Book info -->
+            <div class="p-4">
+              <h3 class="text-lg font-semibold text-atlas-deep mb-1">{book.title}</h3>
+              <p class="text-sm text-atlas-secondary mb-2">{book.author}</p>
+              <p class="text-xs text-atlas-secondary">
+                {book.chapters} chapters • {book.sections} sections
+              </p>
+            </div>
           </a>
         ))}
       </div>
     </main>
-    
+
     <!-- Footer -->
-    <footer class="bg-atlas-elevated border-t border-atlas-border py-8 px-6 mt-12">
-      <div class="max-w-6xl mx-auto text-center text-sm text-atlas-secondary">
+    <footer class="bg-atlas-elevated border-t border-atlas-border py-8 mt-12">
+      <div class="max-w-6xl mx-auto px-4 text-center text-atlas-secondary text-sm">
         <p>© 2026 Atlas Classical Press. All rights reserved.</p>
       </div>
     </footer>
-  </div>
-</ReaderLayout>
+  </body>
+</html>

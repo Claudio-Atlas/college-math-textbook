@@ -1,0 +1,142 @@
+---
+export const prerender = false;
+import ReaderLayout from '../../../layouts/ReaderLayout.astro';
+import { ContentRenderer } from '../../../components/reader/ContentRenderer';
+
+// Get params from URL
+const { bookId, chapterId, sectionId } = Astro.params;
+
+// Dynamic imports for content
+let book, section;
+let notFound = false;
+
+try {
+  // Load book metadata
+  const bookModule = await import(`../../../../content/${bookId}/book.json`);
+  book = bookModule.default;
+  
+  // Load section content
+  const sectionModule = await import(`../../../../content/${bookId}/${chapterId}/${sectionId}.json`);
+  section = sectionModule.default;
+} catch (e) {
+  notFound = true;
+}
+
+// Get prev/next navigation
+let prevSection = null;
+let nextSection = null;
+
+if (book && section) {
+  const allSections: Array<{chapter: number, section: number, chapterId: string, sectionId: string, title: string}> = [];
+  
+  for (const ch of book.chapters) {
+    for (const sec of ch.sections) {
+      allSections.push({
+        chapter: ch.number,
+        section: sec.number,
+        chapterId: ch.id,
+        sectionId: sec.id,
+        title: sec.title
+      });
+    }
+  }
+  
+  const currentIndex = allSections.findIndex(
+    s => s.chapterId === chapterId && s.sectionId === sectionId
+  );
+  
+  if (currentIndex > 0) {
+    prevSection = allSections[currentIndex - 1];
+  }
+  if (currentIndex < allSections.length - 1) {
+    nextSection = allSections[currentIndex + 1];
+  }
+}
+---
+
+{notFound ? (
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>Section Not Found</title>
+    </head>
+    <body class="min-h-screen bg-atlas-cream flex items-center justify-center">
+      <div class="text-center">
+        <h1 class="text-2xl font-bold text-atlas-deep mb-4">Section Not Found</h1>
+        <p class="text-atlas-secondary mb-4">
+          Could not find: /{bookId}/{chapterId}/{sectionId}
+        </p>
+        <a href="/" class="text-atlas-teal hover:text-atlas-teal-dark">
+          ← Back to Home
+        </a>
+      </div>
+    </body>
+  </html>
+) : (
+  <ReaderLayout 
+    title={`${section.title} - ${book.title}`}
+    book={book}
+    currentChapter={section.chapter}
+    currentSection={section.section}
+    sectionTitle={section.title}
+  >
+    <article class="px-4 sm:px-8 py-6 max-w-4xl mx-auto">
+      <!-- Section Title -->
+      <h1 class="text-2xl sm:text-3xl font-bold text-atlas-deep mb-2">
+        {section.chapter}.{section.section} {section.title}
+      </h1>
+      
+      <!-- Epigraph -->
+      {section.epigraph && (
+        <blockquote class="my-8 pl-6 border-l-4 border-atlas-teal italic text-atlas-secondary">
+          <p class="mb-2">{section.epigraph.text}</p>
+          <cite class="text-sm not-italic">— {section.epigraph.reference}</cite>
+        </blockquote>
+      )}
+      
+      <!-- Learning Objectives -->
+      {section.objectives && section.objectives.length > 0 && (
+        <div class="my-8 p-4 sm:p-6 bg-atlas-sage-light rounded-lg border border-atlas-sage">
+          <h2 class="text-lg font-semibold text-atlas-sage mb-4">Learning Objectives</h2>
+          <ul class="space-y-2">
+            {section.objectives.map((obj: string, i: number) => (
+              <li class="flex items-start gap-2 text-sm sm:text-base">
+                <span class="text-atlas-sage font-semibold whitespace-nowrap">
+                  {section.chapter}.{section.section}.{i + 1}
+                </span>
+                <span>{obj}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+      
+      <!-- Main Content -->
+      <ContentRenderer content={section.content} client:only="react" />
+      
+      <!-- Navigation -->
+      <nav class="mt-12 pt-8 border-t border-atlas-border flex justify-between text-sm sm:text-base">
+        {prevSection ? (
+          <a 
+            href={`/${bookId}/${prevSection.chapterId}/${prevSection.sectionId}`}
+            class="text-atlas-teal hover:text-atlas-teal-dark"
+          >
+            ← {prevSection.chapter}.{prevSection.section} {prevSection.title}
+          </a>
+        ) : (
+          <span></span>
+        )}
+        {nextSection ? (
+          <a 
+            href={`/${bookId}/${nextSection.chapterId}/${nextSection.sectionId}`}
+            class="text-atlas-teal hover:text-atlas-teal-dark text-right"
+          >
+            {nextSection.chapter}.{nextSection.section} {nextSection.title} →
+          </a>
+        ) : (
+          <span></span>
+        )}
+      </nav>
+    </article>
+  </ReaderLayout>
+)}
