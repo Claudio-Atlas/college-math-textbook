@@ -57,6 +57,9 @@ TIKZ_PREAMBLE = r"""
 \definecolor{AtlasBorder}{HTML}{E8E5E1}
 \definecolor{AtlasElevated}{HTML}{F5F3F0}
 
+% Accessibility command (stub for standalone compilation)
+\newcommand{\Description}[1]{}
+
 \begin{document}
 """
 
@@ -129,6 +132,13 @@ def clean_latex(text: str) -> str:
 
 def compile_tikz_to_svg(tikz_code: str, output_path: Path) -> bool:
     """Compile TikZ code to SVG via PDF."""
+    
+    # Build environment with TinyTeX and Homebrew paths
+    env = os.environ.copy()
+    tinytex_bin = Path.home() / "Library" / "TinyTeX" / "bin" / "universal-darwin"
+    homebrew_bin = Path("/opt/homebrew/bin")
+    env["PATH"] = f"{tinytex_bin}:{homebrew_bin}:{env.get('PATH', '')}"
+    
     with tempfile.TemporaryDirectory() as tmpdir:
         tmpdir = Path(tmpdir)
         
@@ -143,7 +153,8 @@ def compile_tikz_to_svg(tikz_code: str, output_path: Path) -> bool:
                 ['pdflatex', '-interaction=nonstopmode', 'figure.tex'],
                 cwd=tmpdir,
                 capture_output=True,
-                timeout=30
+                timeout=30,
+                env=env
             )
             if result.returncode != 0:
                 print(f"  ⚠️  pdflatex failed")
@@ -163,7 +174,8 @@ def compile_tikz_to_svg(tikz_code: str, output_path: Path) -> bool:
             result = subprocess.run(
                 ['pdf2svg', str(pdf_file), str(output_path)],
                 capture_output=True,
-                timeout=30
+                timeout=30,
+                env=env
             )
             if result.returncode == 0:
                 return True
@@ -175,7 +187,8 @@ def compile_tikz_to_svg(tikz_code: str, output_path: Path) -> bool:
             result = subprocess.run(
                 ['inkscape', str(pdf_file), '--export-type=svg', f'--export-filename={output_path}'],
                 capture_output=True,
-                timeout=30
+                timeout=30,
+                env=env
             )
             if result.returncode == 0:
                 return True

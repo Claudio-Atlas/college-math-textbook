@@ -4,6 +4,7 @@ import { Definition } from '../environments/Definition';
 import { Theorem } from '../environments/Theorem';
 import { Example } from '../environments/Example';
 import { Proof } from '../environments/Proof';
+import { MathJaxProvider } from '../MathJaxProvider';
 
 interface ContentRendererProps {
   content: ContentBlock[];
@@ -20,11 +21,13 @@ export function ContentRenderer({ content, edition = 'christian' }: ContentRende
   });
   
   return (
-    <div className="reader-content">
-      {filteredContent.map((block, index) => (
-        <BlockRenderer key={index} block={block} />
-      ))}
-    </div>
+    <MathJaxProvider>
+      <div className="reader-content">
+        {filteredContent.map((block, index) => (
+          <BlockRenderer key={index} block={block} />
+        ))}
+      </div>
+    </MathJaxProvider>
   );
 }
 

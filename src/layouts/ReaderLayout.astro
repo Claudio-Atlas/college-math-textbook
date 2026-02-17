@@ -19,33 +19,7 @@ const { title, bookTitle, sectionTitle } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
     
-    <!-- MathJax Configuration -->
-    <script>
-      window.MathJax = {
-        tex: {
-          inlineMath: [['$', '$']],
-          displayMath: [['$$', '$$']],
-        },
-        options: {
-          enableMenu: true,
-          menuOptions: {
-            settings: {
-              assistiveMml: true,
-            }
-          }
-        },
-        startup: {
-          pageReady: () => {
-            return MathJax.startup.defaultPageReady();
-          }
-        }
-      };
-    </script>
-    <script 
-      id="MathJax-script" 
-      async 
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-    ></script>
+    <!-- MathJax is loaded by better-react-mathjax in ContentRenderer -->
   </head>
   <body class="min-h-screen bg-atlas-cream">
     <!-- Header -->

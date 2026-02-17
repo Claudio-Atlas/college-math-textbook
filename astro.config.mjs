@@ -9,6 +9,12 @@ export default defineConfig({
   integrations: [react()],
 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ['better-react-mathjax'],
+    },
+    ssr: {
+      noExternal: ['better-react-mathjax'],
+    },
   }
 });

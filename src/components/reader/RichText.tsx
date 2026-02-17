@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { MathJax } from 'better-react-mathjax';
 
 interface RichTextProps {
   text: string;
@@ -7,20 +7,9 @@ interface RichTextProps {
 
 /**
  * Renders text with inline math and markdown-style formatting.
- * Math is rendered by MathJax (loaded globally).
+ * Uses better-react-mathjax for proper SSR hydration.
  */
 export function RichText({ text, className = '' }: RichTextProps) {
-  const ref = useRef<HTMLSpanElement>(null);
-  
-  useEffect(() => {
-    // Trigger MathJax typesetting when content changes
-    if (ref.current && window.MathJax?.typesetPromise) {
-      window.MathJax.typesetPromise([ref.current]).catch((err: Error) => 
-        console.error('MathJax error:', err)
-      );
-    }
-  }, [text]);
-  
   // Convert markdown-style formatting to HTML
   const processText = (input: string): string => {
     let result = input;
@@ -29,7 +18,6 @@ export function RichText({ text, className = '' }: RichTextProps) {
     result = result.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
     
     // Italic: *text* -> <em>text</em> (but not inside math)
-    // Be careful not to match $...$ 
     result = result.replace(/(?<!\$)\*([^*$]+)\*(?!\$)/g, '<em>$1</em>');
     
     // Code: `text` -> <code>text</code>
@@ -41,23 +29,31 @@ export function RichText({ text, className = '' }: RichTextProps) {
     return result;
   };
   
+  const processedText = processText(text);
+  
+  // Check if text contains math ($ or $$)
+  const hasMath = /\$/.test(text);
+  
+  if (hasMath) {
+    // For MathJax, we need to render as HTML first, then let MathJax process
+    return (
+      <MathJax
+        dynamic
+        hideUntilTypeset="first"
+      >
+        <span 
+          className={className}
+          dangerouslySetInnerHTML={{ __html: processedText }}
+        />
+      </MathJax>
+    );
+  }
+  
+  // No math, just render as span
   return (
     <span 
-      ref={ref}
       className={className}
-      dangerouslySetInnerHTML={{ __html: processText(text) }}
+      dangerouslySetInnerHTML={{ __html: processedText }}
     />
   );
-}
-
-// Type declaration for MathJax
-declare global {
-  interface Window {
-    MathJax?: {
-      typesetPromise?: (elements?: HTMLElement[]) => Promise<void>;
-      startup?: {
-        defaultPageReady: () => Promise<void>;
-      };
-    };
-  }
 }
