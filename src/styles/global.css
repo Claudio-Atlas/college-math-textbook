@@ -142,3 +142,31 @@ body {
   float: right;
   font-size: 1.25rem;
 }
+
+/* Accessibility: Enhanced focus rings */
+*:focus {
+  outline: none;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-atlas-teal);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* High contrast focus for light backgrounds */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-atlas-deep);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(92, 164, 164, 0.3);
+}
+
+/* Skip link enhancement */
+.skip-link:focus {
+  position: absolute !important;
+  clip: auto !important;
+  width: auto !important;
+  height: auto !important;
+  overflow: visible !important;
+}

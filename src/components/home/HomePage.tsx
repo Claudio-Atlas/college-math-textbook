@@ -110,7 +110,7 @@ function HomeContent() {
             style={{ backgroundColor: brand.colors.primary }}
           >
             Browse Catalog
-            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
             </svg>
           </a>
@@ -205,6 +205,7 @@ function BookCard({ book, brand }: BookCardProps) {
               fill="none" 
               stroke={brand.colors.primary}
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path 
                 strokeLinecap="round" 
@@ -249,7 +250,7 @@ function BookCard({ book, brand }: BookCardProps) {
               style={{ backgroundColor: brand.colors.primary }}
             >
               Preview
-              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </a>

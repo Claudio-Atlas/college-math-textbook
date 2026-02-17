@@ -72,7 +72,7 @@ export function Sidebar({ book, currentChapter, currentSection }: SidebarProps) 
           aria-expanded={activePanel === 'contents'}
           aria-controls="contents-panel"
         >
-          <svg className="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
               d="M4 6h16M4 10h16M4 14h16M4 18h16" />
           </svg>
@@ -93,7 +93,7 @@ export function Sidebar({ book, currentChapter, currentSection }: SidebarProps) 
           aria-expanded={activePanel === 'highlights'}
           aria-controls="highlights-panel"
         >
-          <svg className="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className="w-5 h-5 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
               d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>
@@ -122,7 +122,7 @@ export function Sidebar({ book, currentChapter, currentSection }: SidebarProps) 
               className="p-1 text-atlas-secondary hover:text-atlas-deep rounded"
               aria-label="Close table of contents"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
@@ -153,6 +153,7 @@ export function Sidebar({ book, currentChapter, currentSection }: SidebarProps) 
                           className={`w-3 h-3 transition-transform ${isExpanded ? 'rotate-90' : ''}`}
                           fill="currentColor" 
                           viewBox="0 0 20 20"
+                          aria-hidden="true"
                         >
                           <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                         </svg>
@@ -242,7 +243,7 @@ export function Sidebar({ book, currentChapter, currentSection }: SidebarProps) 
               className="p-1 text-atlas-secondary hover:text-atlas-deep rounded"
               aria-label="Close highlights"
             >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
@@ -251,7 +252,7 @@ export function Sidebar({ book, currentChapter, currentSection }: SidebarProps) 
           {/* Empty State */}
           <div className="flex-1 flex items-center justify-center p-6 text-center text-atlas-secondary">
             <div>
-              <svg className="w-12 h-12 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg className="w-12 h-12 mx-auto mb-3 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} 
                   d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
