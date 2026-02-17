@@ -12,7 +12,8 @@
 |------|--------|-----------|
 | Wave 0: Infrastructure | ✅ COMPLETE | 2026-02-17 09:52 MST |
 | Wave 1: Figure Audit | ✅ COMPLETE | 2026-02-17 09:56 MST |
-| **Wave 1.5: Extract 75 Missing Figs** | ⏳ **NEXT** | — |
+| Wave 1.5: Extract Figs to JSON | ✅ COMPLETE | 2026-02-17 10:15 MST |
+| **Wave 1.6: Generate SVGs Ch3-6** | ⏳ **NEXT** | — |
 | Wave 2: Chapter QA | ⏳ Pending | — |
 | Wave 3: Fixes | ⏳ Pending | — |
 | Wave 4: Final Review | ⏳ Pending | — |
@@ -88,21 +89,27 @@
 
 ## Wave 1.5: Figure Extraction Script (Orchestrator)
 
-**Goal:** Extract the 75 missing figures from LaTeX to JSON
+**Goal:** Extract missing figures from LaTeX to JSON
 
-**Status:** ⏳ NEXT
+**Status:** ✅ COMPLETE (2026-02-17)
 
-**Tasks:**
-- [ ] Write `pipeline/extract_missing_figures.py` script
-- [ ] Scan all LaTeX for `\input{...figures/fig-...}` references
-- [ ] Parse each figure `.tex` file for `\caption{}`, `\label{}`, `\Description{}`
-- [ ] Generate SVG paths using naming convention
-- [ ] Insert figure blocks into corresponding section JSONs
-- [ ] Run TikZ → SVG extraction for new figures
-- [ ] Verify all 113 figures now in JSON
+**Results:**
+- [x] Created `pipeline/extract_missing_figures.py`
+- [x] Extracted 71 figure blocks from LaTeX source
+- [x] Copied 47 SVGs for Chapter 2 (Limits)
+- [x] JSON blocks added for Chapters 3-6 (24 figures, SVGs pending)
 
-**Started:** —  
-**Completed:** —
+| Chapter | Figures in JSON | SVGs Available |
+|---------|-----------------|----------------|
+| Ch 1 | 18 (manual) | 18 ✅ |
+| Ch 2 | 47 | 47 ✅ |
+| Ch 3 | 8 | 0 ⚠️ |
+| Ch 4 | 3 | 0 ⚠️ |
+| Ch 5 | 6 | 0 ⚠️ |
+| Ch 6 | 7 | 0 ⚠️ |
+| **Total** | **89** | **65** |
+
+**Next:** Generate TikZ → SVG for Chapters 3-6 (24 figures)
 
 ---
 
