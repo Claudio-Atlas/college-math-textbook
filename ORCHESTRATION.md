@@ -10,9 +10,9 @@
 | Asset | Status | Count |
 |-------|--------|-------|
 | Section JSONs | ✅ Complete | 39/39 |
-| TikZ → SVG Figures | ⚠️ Partial | 38 extracted |
-| Dynamic Routing | ❌ Not done | 0/1 |
-| Chapter QA | ❌ Not done | 0/6 |
+| TikZ → SVG Figures | ✅ Complete | 38/38 verified |
+| Dynamic Routing | ✅ Complete | All routes working |
+| Chapter QA | ⏳ Wave 2 | 0/6 |
 
 ---
 
@@ -34,21 +34,25 @@
 
 ### Wave 0: Infrastructure (Orchestrator Only)
 **Assigned to:** Main Session (Claudio)  
-**Status:** 🔄 In Progress
+**Status:** ✅ COMPLETE (2026-02-17 09:52 MST)
 
 **Tasks:**
 - [x] Create PIPELINE.md documentation
 - [x] Create ORCHESTRATION.md (this file)
-- [ ] Create dynamic routing (`/vol1/ch01/sec01` → loads correct JSON)
-- [ ] Test routing with all 39 sections
-- [ ] Commit routing changes
+- [x] Create dynamic routing (`/vol1/ch01/sec01` → loads correct JSON)
+- [x] Test routing with all 39 sections
+- [x] Commit routing changes
 
-**No sub-agents needed** — this is foundational work.
+**Deliverables:**
+- `src/pages/[bookId]/[chapterId]/[sectionId].astro` — dynamic section pages
+- `src/pages/[bookId]/index.astro` — book TOC
+- `src/pages/index.astro` — home/library page
+- All routes using `prerender = false` for SSR
 
 ---
 
-### Wave 1: Figure Audit & Extraction (2-3 Sub-Agents)
-**Status:** ⏳ Pending Wave 0
+### Wave 1: Figure Audit & Extraction (3 Sub-Agents)
+**Status:** ✅ COMPLETE (2026-02-17 09:56 MST)
 
 **Goal:** Ensure all figures render correctly across all sections.
 
@@ -99,7 +103,7 @@ Same process as 1A, but for:
 ---
 
 ### Wave 2: Chapter QA & Rendering Verification (3 Sub-Agents)
-**Status:** ⏳ Pending Wave 1
+**Status:** 🔄 READY TO LAUNCH
 
 **Goal:** Visit every section in the browser, verify it renders correctly.
 
@@ -214,21 +218,23 @@ sessions_spawn(
 |------|--------|-------|
 | PIPELINE.md | ✅ | Complete |
 | ORCHESTRATION.md | ✅ | This file |
-| Dynamic routing | ⏳ | Next up |
+| Dynamic routing | ✅ | All 39 sections routable |
 
 ### Wave 1
 | Sub-Agent | Chapters | Status | Report |
 |-----------|----------|--------|--------|
-| 1A | 1-2 | ⏳ | — |
-| 1B | 3-4 | ⏳ | — |
-| 1C | 5-6 | ⏳ | — |
+| 1A | 1-2 | ✅ | 18 figures, 0 missing |
+| 1B | 3-4 | ✅ | 6 figures, 0 missing |
+| 1C | 5-6 | ✅ | 14 figures, 0 missing |
+
+**Session Labels:** `axiom-wave1-figures-A`, `axiom-wave1-figures-B`, `axiom-wave1-figures-C`
 
 ### Wave 2
 | Sub-Agent | Chapters | Status | Issues Found |
 |-----------|----------|--------|--------------|
-| 2A | 1-2 | ⏳ | — |
-| 2B | 3-4 | ⏳ | — |
-| 2C | 5-6 | ⏳ | — |
+| 2A | 1-2 | ⏳ Ready | — |
+| 2B | 3-4 | ⏳ Ready | — |
+| 2C | 5-6 | ⏳ Ready | — |
 
 ---
 

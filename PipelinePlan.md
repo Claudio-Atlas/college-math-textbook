@@ -191,9 +191,9 @@
 - Ready for Wave 1
 
 **09:53** - Spawned Wave 1 sub-agents (Figure Audit)
-- 1A: Chapters 1-2 → Running
-- 1B: Chapters 3-4 → Running
-- 1C: Chapters 5-6 → Running
+- 1A: Chapters 1-2 → `axiom-wave1-figures-A`
+- 1B: Chapters 3-4 → `axiom-wave1-figures-B`
+- 1C: Chapters 5-6 → `axiom-wave1-figures-C`
 
 **09:56** - Wave 1 COMPLETE
 - 1A: 18 figures, all exist ✅
