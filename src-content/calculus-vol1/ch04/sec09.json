@@ -17,11 +17,11 @@
     },
     {
       "type": "paragraph",
-      "text": "We have been computing tangent lines since Chapter [ch:derivative]. \nBut we always treated the tangent as a geometric object—a line that \ntouches the curve. In this section, we turn the tangent line into a \n**computational tool**: we use it to *approximate* complicated \nquantities like $\\sqrt{4.02}$, $\\sin(0.01)$, and $\\ln(1.05)$ with \nnothing more than arithmetic and the derivative."
+      "text": "We have been computing tangent lines since Chapter [ch:derivative]. \nBut we always treated the tangent as a geometric object\u2014a line that \ntouches the curve. In this section, we turn the tangent line into a \n**computational tool**: we use it to *approximate* complicated \nquantities like $\\sqrt{4.02}$, $\\sin(0.01)$, and $\\ln(1.05)$ with \nnothing more than arithmetic and the derivative."
     },
     {
       "type": "paragraph",
-      "text": "This idea—replacing a complicated function by its tangent line—is \none of the most powerful in all of applied mathematics. It is the \nfoundation of error analysis, numerical methods, and much of physics."
+      "text": "This idea\u2014replacing a complicated function by its tangent line\u2014is \none of the most powerful in all of applied mathematics. It is the \nfoundation of error analysis, numerical methods, and much of physics."
     },
     {
       "type": "heading",
@@ -85,7 +85,7 @@
       "number": "4.3",
       "title": "Error bound for square root",
       "problem": "Bound the error in our earlier approximation $\\sqrt{4.02} \\approx 2.005$.",
-      "solution": "We have $f(x) = \\sqrt{x}$, $a = 4$, $x = 4.02$.\n\\[\n f''(x) = -\\frac{1}{4x^{3/2}}.\n\\]\nFor $x$ in $[4, 4.02]$:\n\\[\n \\abs{f''(x)} = \\frac{1}{4x^{3/2}} \\leq \\frac{1}{4(4)^{3/2}} \n = \\frac{1}{4 \\cdot 8} = \\frac{1}{32}.\n\\]\nTherefore:\n\\[\n \\abs{E} \\leq \\frac{1/32}{2}(0.02)^{2} = \\frac{1}{64}(0.0004) \n = 0.00000625.\n\\]\nOur approximation is guaranteed accurate to within $0.0000063$—well \nwithin five decimal places."
+      "solution": "We have $f(x) = \\sqrt{x}$, $a = 4$, $x = 4.02$.\n\\[\n f''(x) = -\\frac{1}{4x^{3/2}}.\n\\]\nFor $x$ in $[4, 4.02]$:\n\\[\n \\abs{f''(x)} = \\frac{1}{4x^{3/2}} \\leq \\frac{1}{4(4)^{3/2}} \n = \\frac{1}{4 \\cdot 8} = \\frac{1}{32}.\n\\]\nTherefore:\n\\[\n \\abs{E} \\leq \\frac{1/32}{2}(0.02)^{2} = \\frac{1}{64}(0.0004) \n = 0.00000625.\n\\]\nOur approximation is guaranteed accurate to within $0.0000063$\u2014well \nwithin five decimal places."
     },
     {
       "type": "heading",
@@ -130,7 +130,7 @@
       "number": "4.4",
       "title": "Computing with differentials",
       "problem": "Let $y = x^{3} + 2x$. Compute $dy$ when $x = 2$ and $dx = 0.1$. \nCompare with $\\Delta y$.",
-      "solution": "We have $f'(x) = 3x^{2} + 2$, so $f'(2) = 14$. The differential is\n\\[\n dy = f'(2)\\,dx = 14(0.1) = 1.4.\n\\]\nThe actual change is\n\\[\n \\Delta y = f(2.1) - f(2) = [(2.1)^{3} + 2(2.1)] - [8 + 4] \n = [9.261 + 4.2] - 12 = 13.461 - 12 = 1.461.\n\\]\nThe differential $dy = 1.4$ approximates $\\Delta y = 1.461$ with an \nerror of $0.061$—about $4\\%$."
+      "solution": "We have $f'(x) = 3x^{2} + 2$, so $f'(2) = 14$. The differential is\n\\[\n dy = f'(2)\\,dx = 14(0.1) = 1.4.\n\\]\nThe actual change is\n\\[\n \\Delta y = f(2.1) - f(2) = [(2.1)^{3} + 2(2.1)] - [8 + 4] \n = [9.261 + 4.2] - 12 = 13.461 - 12 = 1.461.\n\\]\nThe differential $dy = 1.4$ approximates $\\Delta y = 1.461$ with an \nerror of $0.061$\u2014about $4\\%$."
     },
     {
       "type": "heading",
@@ -161,7 +161,7 @@
       "number": "4.5",
       "title": "Error in a sphere's volume",
       "problem": "The radius of a sphere is measured as $r = 10$ cm with a possible error \nof $\\pm 0.05$ cm. Estimate the maximum error in the computed volume.",
-      "solution": "The volume is $V = \\dfrac{4}{3}\\pi r^{3}$, so $\\deriv{V}{r} = 4\\pi r^{2}$.\n\nThe approximate error in $V$ is\n\\[\n dV = 4\\pi r^{2}\\,dr = 4\\pi(100)(0.05) = 20\\pi \\approx 62.8 \\text{ cm}^{3}.\n\\]\nThe actual volume is $V = \\dfrac{4}{3}\\pi(1000) = \\dfrac{4000\\pi}{3} \\approx 4189$ cm$^{3}$.\n\nThe relative error is approximately\n\\[\n \\frac{dV}{V} = \\frac{20\\pi}{4000\\pi/3} = \\frac{20 \\cdot 3}{4000} \n = \\frac{60}{4000} = 0.015 = 1.5\\%.\n\\]\nA $0.5\\%$ error in the radius produces a $1.5\\%$ error in the volume. \nNotice that the factor of $3$ comes from the exponent in $r^{3}$—this \nis a general pattern."
+      "solution": "The volume is $V = \\dfrac{4}{3}\\pi r^{3}$, so $\\deriv{V}{r} = 4\\pi r^{2}$.\n\nThe approximate error in $V$ is\n\\[\n dV = 4\\pi r^{2}\\,dr = 4\\pi(100)(0.05) = 20\\pi \\approx 62.8 \\text{ cm}^{3}.\n\\]\nThe actual volume is $V = \\dfrac{4}{3}\\pi(1000) = \\dfrac{4000\\pi}{3} \\approx 4189$ cm$^{3}$.\n\nThe relative error is approximately\n\\[\n \\frac{dV}{V} = \\frac{20\\pi}{4000\\pi/3} = \\frac{20 \\cdot 3}{4000} \n = \\frac{60}{4000} = 0.015 = 1.5\\%.\n\\]\nA $0.5\\%$ error in the radius produces a $1.5\\%$ error in the volume. \nNotice that the factor of $3$ comes from the exponent in $r^{3}$\u2014this \nis a general pattern."
     },
     {
       "type": "example",
@@ -232,7 +232,7 @@
     },
     {
       "type": "paragraph",
-      "text": "The last formula deserves special notice. Setting $n = 1/2$ in \n$(1+x)^{n} \\approx 1 + nx$ gives $\\sqrt{1+x} \\approx 1 + x/2$—the \nvery formula we used to estimate $\\sqrt{4.02}$ (after writing \n$\\sqrt{4.02} = 2\\sqrt{1 + 0.005}$)."
+      "text": "The last formula deserves special notice. Setting $n = 1/2$ in \n$(1+x)^{n} \\approx 1 + nx$ gives $\\sqrt{1+x} \\approx 1 + x/2$\u2014the \nvery formula we used to estimate $\\sqrt{4.02}$ (after writing \n$\\sqrt{4.02} = 2\\sqrt{1 + 0.005}$)."
     },
     {
       "type": "heading",
@@ -250,6 +250,13 @@
     {
       "type": "paragraph",
       "text": "The rules of differentiation are your instruments. It is time to play \nthe symphony."
+    },
+    {
+      "type": "figure",
+      "id": "fig-4.9-inline-1",
+      "src": "/figures/vol1/ch04/fig-4.9-inline-1.svg",
+      "caption": "",
+      "alt": "A coordinate plane showing the difference between dy and delta y. A curved function y equals f of x is drawn in teal. At point a, f of a, a tangent line is drawn in coral. Moving a horizontal distance dx to the right, the tangent line rises by dy (shown as a vertical coral arrow), while the actual curve rises by delta y (shown as a vertical teal arrow). The differential dy is the change along the tangent line, while delta y is the actual change along the curve. When dx is small, dy approximates delta y closely."
     }
   ],
   "marginNotes": [

@@ -17,7 +17,7 @@
     },
     {
       "type": "paragraph",
-      "text": "In algebra you learned formulas for quadratic equations, and perhaps \nglimpsed the fearsome formulas for cubics and quartics. But in 1824, \nNiels Henrik Abel proved that *no* analogous formula can exist for \npolynomials of degree five and above. Many simple-looking equations—even \n$\\cos x = x$—have no closed-form solution at all."
+      "text": "In algebra you learned formulas for quadratic equations, and perhaps \nglimpsed the fearsome formulas for cubics and quartics. But in 1824, \nNiels Henrik Abel proved that *no* analogous formula can exist for \npolynomials of degree five and above. Many simple-looking equations\u2014even \n$\\cos x = x$\u2014have no closed-form solution at all."
     },
     {
       "type": "paragraph",
@@ -67,7 +67,7 @@
       "number": "5.1",
       "title": "Finding $\\sqrt{2}$",
       "problem": "Use Newton's Method to approximate $\\sqrt{2}$.",
-      "solution": "We need to find the positive root of $f(x) = x^{2} - 2$. Then \n$f'(x) = 2x$, and the iteration formula becomes\n\\[\n x_{n+1} = x_{n} - \\frac{x_{n}^{2} - 2}{2x_{n}} \n = \\frac{x_{n}}{2} + \\frac{1}{x_{n}} \n = \\frac{x_{n}^{2} + 2}{2x_{n}}.\n\\]\n\nStarting with $x_{0} = 1$:\n\n| $n$ | $x_{n}$ | $f(x_{n})$ |\n| 0 | $1.000000$ | $-1.000000$ |\n| 1 | $1.500000$ | $0.250000$ |\n| 2 | $1.416667$ | $0.006944$ |\n| 3 | $1.414216$ | $0.000006$ |\n| 4 | $1.414214$ | $0.000000$ |\n\nAfter just four iterations, we have $\\sqrt{2} \\approx 1.41421356\\ldots$ \ncorrect to eight decimal places. Notice the quadratic convergence: the \nerror drops from $0.08$ to $0.002$ to $0.000002$—each step roughly \nsquares the previous error."
+      "solution": "We need to find the positive root of $f(x) = x^{2} - 2$. Then \n$f'(x) = 2x$, and the iteration formula becomes\n\\[\n x_{n+1} = x_{n} - \\frac{x_{n}^{2} - 2}{2x_{n}} \n = \\frac{x_{n}}{2} + \\frac{1}{x_{n}} \n = \\frac{x_{n}^{2} + 2}{2x_{n}}.\n\\]\n\nStarting with $x_{0} = 1$:\n\n| $n$ | $x_{n}$ | $f(x_{n})$ |\n| 0 | $1.000000$ | $-1.000000$ |\n| 1 | $1.500000$ | $0.250000$ |\n| 2 | $1.416667$ | $0.006944$ |\n| 3 | $1.414216$ | $0.000006$ |\n| 4 | $1.414214$ | $0.000000$ |\n\nAfter just four iterations, we have $\\sqrt{2} \\approx 1.41421356\\ldots$ \ncorrect to eight decimal places. Notice the quadratic convergence: the \nerror drops from $0.08$ to $0.002$ to $0.000002$\u2014each step roughly \nsquares the previous error."
     },
     {
       "type": "example",
@@ -131,7 +131,21 @@
       "id": "historical-5.6",
       "number": null,
       "title": "Newton and Raphson",
-      "content": "Isaac Newton developed his method around 1669 in the manuscript \n*De analysi*, though he described it only for polynomial equations \nand phrased the iteration in terms of successive polynomial \napproximations rather than tangent lines. Joseph Raphson published a \ncleaner, more general version in 1690. The geometric interpretation—the \ntangent-line picture we use today—was given by Thomas Simpson in 1740. \nFor this reason, the method is sometimes called the \n*Newton–Raphson method*.\n\nWhat all three men shared was a conviction that equations *ought* to \nbe solvable, and that systematic iteration—refining an approximation \nstep by patient step—is a worthy mathematical endeavor. There is a \nlesson here beyond mathematics: progress often comes not from a single \nflash of brilliance, but from faithful, repeated refinement."
+      "content": "Isaac Newton developed his method around 1669 in the manuscript \n*De analysi*, though he described it only for polynomial equations \nand phrased the iteration in terms of successive polynomial \napproximations rather than tangent lines. Joseph Raphson published a \ncleaner, more general version in 1690. The geometric interpretation\u2014the \ntangent-line picture we use today\u2014was given by Thomas Simpson in 1740. \nFor this reason, the method is sometimes called the \n*Newton\u2013Raphson method*.\n\nWhat all three men shared was a conviction that equations *ought* to \nbe solvable, and that systematic iteration\u2014refining an approximation \nstep by patient step\u2014is a worthy mathematical endeavor. There is a \nlesson here beyond mathematics: progress often comes not from a single \nflash of brilliance, but from faithful, repeated refinement."
+    },
+    {
+      "type": "figure",
+      "id": "fig-5.6-inline-1",
+      "src": "/figures/vol1/ch05/fig-5.6-inline-1.svg",
+      "caption": "",
+      "alt": "A coordinate plane illustrating Newton's method for finding roots. A smooth curve representing f of x is drawn, crossing the x-axis at a root. Starting from an initial guess x sub 0 on the right, a tangent line is drawn at the point (x sub 0, f of x sub 0). This tangent line crosses the x-axis at x sub 1, which is closer to the root. A second tangent line is drawn at (x sub 1, f of x sub 1), crossing the x-axis at x sub 2, even closer to the root. Dotted vertical lines connect each x value to its corresponding point on the curve. The sequence x sub 0, x sub 1, x sub 2 converges rapidly toward the actual root of the function."
+    },
+    {
+      "type": "figure",
+      "id": "fig-5.6-inline-2",
+      "src": "/figures/vol1/ch05/fig-5.6-inline-2.svg",
+      "caption": "",
+      "alt": "A coordinate plane demonstrating how Newton's method can fail by oscillating. The graph shows the cubic function f of x equals x cubed minus 5x, which has roots at x equals 0, x equals the square root of 5, and x equals negative square root of 5. Starting at x sub 0 equals 1, the tangent line at that point has negative slope and crosses the x-axis at x sub 1 equals negative 1. Due to the symmetry of the odd function, the tangent line at x sub 1 equals negative 1 crosses the x-axis back at x equals 1. The iteration cycles forever between 1 and negative 1, never converging to any root. This illustrates that a poor initial guess can cause Newton's method to fail."
     }
   ],
   "marginNotes": [
