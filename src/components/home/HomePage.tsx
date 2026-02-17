@@ -197,6 +197,13 @@ function BookCard({ book, brand, isAtlas }: BookCardProps) {
     return 'center 60%';
   };
 
+  // Per-book thumbnail crop position for Atlas
+  const getAtlasCropPosition = () => {
+    if (book.id === 'college-algebra') return 'center 56%';
+    if (book.id === 'diff-eq') return 'center 56%';
+    return 'center 50%';
+  };
+
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
       {/* Cover Image Placeholder */}
@@ -209,7 +216,7 @@ function BookCard({ book, brand, isAtlas }: BookCardProps) {
             src={coverImage} 
             alt={`${book.title} cover`}
             className="w-full h-full object-cover"
-            style={!isAtlas ? { objectPosition: getMeridianCropPosition() } : undefined}
+            style={{ objectPosition: isAtlas ? getAtlasCropPosition() : getMeridianCropPosition() }}
           />
         ) : (
           <div className="text-center p-4">
