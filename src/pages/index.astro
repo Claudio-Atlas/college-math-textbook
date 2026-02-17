@@ -1,17 +1,6 @@
 ---
 import '../styles/global.css';
-
-// Load available books
-const books = [
-  {
-    id: 'vol1',
-    title: 'Calculus Volume 1',
-    author: 'Atlas Classical Press',
-    chapters: 6,
-    sections: 39,
-    cover: '/covers/vol1.jpg'
-  }
-];
+import { HomePage } from '../components/home/HomePage';
 ---
 
 <!doctype html>
@@ -19,52 +8,19 @@ const books = [
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Axiom Reader - Interactive Mathematics Textbooks" />
+    <meta name="description" content="Mathematics textbooks for classical and modern education" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Axiom Reader - Mathematics Textbooks</title>
+    <title>Mathematics Textbooks</title>
+    
+    <!-- Preload fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link 
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" 
+      rel="stylesheet" 
+    />
   </head>
-  <body class="min-h-screen bg-atlas-cream">
-    <!-- Header -->
-    <header class="bg-atlas-deep text-white py-12">
-      <div class="max-w-6xl mx-auto px-4 text-center">
-        <h1 class="text-4xl font-bold mb-2">Axiom Reader</h1>
-        <p class="text-atlas-teal-light text-lg">Interactive Mathematics Textbooks</p>
-      </div>
-    </header>
-
-    <!-- Book Library -->
-    <main class="max-w-6xl mx-auto px-4 py-12">
-      <h2 class="text-2xl font-semibold text-atlas-deep mb-8">Available Books</h2>
-      
-      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {books.map((book) => (
-          <a 
-            href={`/${book.id}`}
-            class="block bg-white rounded-lg shadow-sm border border-atlas-border overflow-hidden hover:shadow-md transition-shadow"
-          >
-            <!-- Cover placeholder -->
-            <div class="aspect-[3/4] bg-gradient-to-br from-atlas-teal to-atlas-deep flex items-center justify-center">
-              <span class="text-white text-6xl font-serif">∫</span>
-            </div>
-            
-            <!-- Book info -->
-            <div class="p-4">
-              <h3 class="text-lg font-semibold text-atlas-deep mb-1">{book.title}</h3>
-              <p class="text-sm text-atlas-secondary mb-2">{book.author}</p>
-              <p class="text-xs text-atlas-secondary">
-                {book.chapters} chapters • {book.sections} sections
-              </p>
-            </div>
-          </a>
-        ))}
-      </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="bg-atlas-elevated border-t border-atlas-border py-8 mt-12">
-      <div class="max-w-6xl mx-auto px-4 text-center text-atlas-secondary text-sm">
-        <p>© 2026 Atlas Classical Press. All rights reserved.</p>
-      </div>
-    </footer>
+  <body>
+    <HomePage client:only="react" />
   </body>
 </html>
