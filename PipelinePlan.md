@@ -15,7 +15,7 @@
 | Wave 1.5: Extract Figs to JSON | ✅ COMPLETE | 2026-02-17 10:15 MST |
 | Wave 1.6: Generate SVGs Ch3-6 | ✅ COMPLETE | 2026-02-17 10:30 MST |
 | Wave 1.7: Extract Inline Figs | ✅ COMPLETE | 2026-02-17 10:45 MST |
-| **Wave 2: Chapter QA** | ⏳ **READY** | — |
+| **Wave 2: Chapter QA** | 🔄 **RUNNING** | — |
 | Wave 3: Fixes | ⏳ Pending | — |
 | Wave 4: Final Review | ⏳ Pending | — |
 
@@ -186,14 +186,23 @@ python extract_inline_figures.py
 
 **Goal:** Visit every section, verify rendering
 
-| Agent | Chapters | Sections | Status | Issues Found |
-|-------|----------|----------|--------|--------------|
-| 2A | 1-2 | 13 | ⏳ | — |
-| 2B | 3-4 | 13 | ⏳ | — |
-| 2C | 5-6 | 13 | ⏳ | — |
+**Status:** 🔄 IN PROGRESS
 
-**Started:** —  
+| Agent | Chapters | Sections | Label | Status |
+|-------|----------|----------|-------|--------|
+| 2A | 1-2 | 13 | `axiom-wave2-qa-A` | 🔄 Running |
+| 2B | 3-4 | 13 | `axiom-wave2-qa-B` | 🔄 Running |
+| 2C | 5-6 | 13 | `axiom-wave2-qa-C` | 🔄 Running |
+
+**Started:** 2026-02-17 10:50 MST  
 **Completed:** —
+
+**Dev server:** `http://localhost:4321` (session: cool-summit)
+
+**Reports:**
+- `qa-reports/wave2-ch1-2.md`
+- `qa-reports/wave2-ch3-4.md`
+- `qa-reports/wave2-ch5-6.md`
 
 **Notes:**
 ```
