@@ -189,6 +189,12 @@ function BookCard({ book, brand, isAtlas }: BookCardProps) {
   // Construct edition-aware cover path
   const editionFolder = isAtlas ? 'atlas' : 'meridian';
   const coverImage = book.coverSlug ? `/covers/${editionFolder}/${book.coverSlug}.png` : null;
+  
+  // Per-book thumbnail crop position for Meridian
+  const getMeridianCropPosition = () => {
+    if (book.id === 'college-algebra') return 'center 60%';
+    return 'center 55%';
+  };
 
   return (
     <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
@@ -202,7 +208,7 @@ function BookCard({ book, brand, isAtlas }: BookCardProps) {
             src={coverImage} 
             alt={`${book.title} cover`}
             className="w-full h-full object-cover"
-            style={!isAtlas ? { objectPosition: 'center 55%' } : undefined}
+            style={!isAtlas ? { objectPosition: getMeridianCropPosition() } : undefined}
           />
         ) : (
           <div className="text-center p-4">
