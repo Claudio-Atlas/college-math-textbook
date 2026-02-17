@@ -202,6 +202,7 @@ function BookCard({ book, brand, isAtlas }: BookCardProps) {
             src={coverImage} 
             alt={`${book.title} cover`}
             className="w-full h-full object-cover"
+            style={!isAtlas ? { objectPosition: 'center 35%' } : undefined}
           />
         ) : (
           <div className="text-center p-4">
