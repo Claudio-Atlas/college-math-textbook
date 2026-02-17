@@ -1,141 +1,67 @@
 # GOALS.md - Axiom Reader
 
-*Last updated: 2025-02-17*
+## Mission
+
+Build an accessible, beautiful web reader for Atlas Classical Press math textbooks that meets WCAG 2.1 AA standards for government education contracts.
 
 ---
 
-## Vision
+## Milestones
 
-A beautiful, accessible web reader for Atlas Classical Press and Meridian Press math textbooks. Government-contract ready (WCAG 2.1 AA / Section 508).
+### ✅ M1: Vol 1 Reader-Ready (COMPLETE)
+*Target: Feb 17, 2025* | *Actual: Feb 17, 2025*
 
----
+- [x] All 39 sections routable
+- [x] All content types rendering (11 types)
+- [x] 113 figures with SVGs and alt text
+- [x] MathJax with custom macros
+- [x] OpenStax-style sidebar navigation
+- [x] QA verified all sections
 
-## Milestone 1: Section 1.1 Perfect ← CURRENT
+### 🔄 M2: Polish & Deploy
+*Target: Feb 24, 2025*
 
-**Target:** One section working flawlessly as our template.
+- [ ] Deploy to Vercel with preview URL
+- [ ] Mobile responsive testing & fixes
+- [ ] Accessibility audit (WCAG 2.1 AA)
+- [ ] Figure lightbox (click to enlarge)
+- [ ] Epigraph/scripture margin styling
+- [ ] Custom domain (reader.atlasclassicalpress.com?)
 
-| Goal | Status | Notes |
-|------|--------|-------|
-| All content types rendering | ✅ | 11 types working |
-| MathJax integration | ✅ | Inline + display math |
-| Definition/Theorem/Example boxes | ✅ | Styled correctly |
-| Exercise component | ✅ | With collapsible solution |
-| Real TikZ figures | 🔴 | Run extract_tikz.py |
-| Figure lightbox | 🔴 | Click to enlarge |
-| Mobile responsive | 🔴 | Test + fix |
-| Epigraph styling | 🔴 | Scripture quote |
-| Basic a11y | 🔴 | Keyboard nav, focus states |
+### 📋 M3: Production Ready
+*Target: Mar 2025*
 
-**Definition of Done:**
-- [ ] Section 1.1 renders identically on desktop + mobile
-- [ ] All 3 figures are real SVGs from TikZ
-- [ ] Figures enlarge on click
-- [ ] Passes basic keyboard navigation test
-- [ ] No console errors
+- [ ] Full WCAG 2.1 AA compliance
+- [ ] Print CSS for clean printing
+- [ ] In-book search
+- [ ] Reading progress tracking
+- [ ] Bookmarks/highlights (localStorage)
 
----
+### 🚀 M4: Multi-Volume
+*Target: Q2 2025*
 
-## Milestone 2: Navigation System
-
-**Target:** OpenStax-style sidebar + navigation.
-
-| Goal | Status | Notes |
-|------|--------|-------|
-| Collapsible TOC sidebar | 🔴 | Icon tabs like OpenStax |
-| Chapter/section hierarchy | 🔴 | Nested tree |
-| Current section highlight | 🔴 | Visual indicator |
-| Prev/Next with titles | 🔴 | Not just arrows |
-| Search box | 🔴 | In header |
-| Text size control | 🔴 | AA button |
-| Mobile drawer | 🔴 | Slide-over nav |
-
-**Definition of Done:**
-- [ ] Can navigate entire Vol 1 via sidebar
-- [ ] Search finds content across sections
-- [ ] Works on mobile (hamburger → drawer)
-
----
-
-## Milestone 3: Full Vol 1
-
-**Target:** All 6 chapters of Calculus Vol 1 readable.
-
-| Goal | Status | Notes |
-|------|--------|-------|
-| All section JSON converted | ✅ | 39 sections ready |
-| All TikZ figures extracted | 🔴 | ~100+ figures |
-| Dynamic routing | 🔴 | /books/vol1/ch01/sec01 |
-| Chapter overview pages | 🔴 | List of sections |
-| Book landing page | 🔴 | Cover + description |
-
-**Definition of Done:**
-- [ ] Can read Vol 1 start to finish
-- [ ] All figures render correctly
-- [ ] Navigation between all sections
-
----
-
-## Milestone 4: Accessibility & Compliance
-
-**Target:** WCAG 2.1 AA compliant for government contracts.
-
-| Goal | Status | Notes |
-|------|--------|-------|
-| Color contrast audit | 🔴 | 4.5:1 minimum |
-| Focus indicators | 🔴 | Visible focus rings |
-| Skip navigation link | 🔴 | Jump to content |
-| ARIA labels | 🔴 | Landmarks, roles |
-| Screen reader test | 🔴 | VoiceOver / NVDA |
-| Keyboard-only nav | 🔴 | No mouse required |
-| MathJax a11y | 🔴 | Speech, braille |
-
-**Definition of Done:**
-- [ ] Passes axe-core automated audit
-- [ ] Manual screen reader test passes
-- [ ] Lighthouse accessibility score > 95
-
----
-
-## Milestone 5: Multi-Book & Deploy
-
-**Target:** Production deployment with multiple books.
-
-| Goal | Status | Notes |
-|------|--------|-------|
-| Book index page | 🔴 | Grid of all books |
-| Edition switching | 🔴 | Domain-based |
-| Vercel deployment | 🔴 | CI/CD |
-| Custom domains | 🔴 | atlasclassicalpress.com |
-| Analytics | 🔴 | Privacy-friendly |
-| Error tracking | 🔴 | Sentry or similar |
-
-**Definition of Done:**
-- [ ] Live on atlasclassicalpress.com
-- [ ] All 20+ books accessible
-- [ ] Christian/Secular editions work via domain
-
----
-
-## Future Ideas (Backlog)
-
-- [ ] Progress tracking (localStorage)
-- [ ] Bookmarks & highlights
-- [ ] Dark mode / sepia mode
-- [ ] Offline support (PWA)
-- [ ] EPUB export
-- [ ] Interactive exercises
-- [ ] User accounts
-- [ ] LMS integration (Meridian LMS)
-- [ ] Print stylesheet
+- [ ] Vol 2 content conversion
+- [ ] Vol 3 content conversion
+- [ ] Edition toggle (Atlas/Meridian branding)
+- [ ] Instructor annotations layer
 
 ---
 
 ## Success Metrics
 
-| Metric | Target |
-|--------|--------|
-| Lighthouse Performance | > 90 |
-| Lighthouse Accessibility | > 95 |
-| Time to Interactive | < 2s |
-| Mobile usability | 100% |
-| WCAG 2.1 AA | Full compliance |
+| Metric | Target | Current |
+|--------|--------|---------|
+| Lighthouse Performance | >90 | TBD |
+| Lighthouse Accessibility | >95 | TBD |
+| Page load time | <2s | TBD |
+| Mobile usability | 100% | TBD |
+| Figure alt text coverage | 100% | 100% ✅ |
+
+---
+
+## Non-Goals (For Now)
+
+- User accounts / authentication
+- Annotation sharing / collaboration
+- EPUB export (using LaTeX for ebooks)
+- LMS integration (future Meridian LMS feature)

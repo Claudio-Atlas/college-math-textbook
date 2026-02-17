@@ -6,115 +6,75 @@ Session history and progress tracking.
 
 ## 2025-02-17
 
-### Session: Astro Reader Build
+### Session: Vol 1 Complete 🎉
 
-**Context:** Building the web reader from scratch after evaluating old project.
+**Context:** Final push to get all 39 sections reader-ready with figures.
 
 #### ✅ Completed
 
 | Task | Details |
 |------|---------|
-| Astro scaffolding | Created project with React + Tailwind |
-| Reader layout | Header bar with book/section title |
-| ContentRenderer | Main component for rendering JSON → React |
-| RichText component | Handles inline math with MathJax |
-| Definition component | Gray/sage box with teal label |
-| Theorem component | Blue box (also handles lemma, corollary, postulate) |
-| Example component | Warm/rose box with problem/solution |
-| Proof component | Light gray with QED |
-| Exercise component | Blue box with collapsible solution |
-| Caution component | Amber warning box |
-| Figure caption fix | Now renders math via RichText |
-| Placeholder SVGs | Created 3 for ch01/sec01 figures |
-| TypeScript types | Full type definitions for all content blocks |
-| Test page | /test loads Section 1.1 successfully |
+| Wave 0: Dynamic routing | All 39 sections routable via `[bookId]/[chapterId]/[sectionId]` |
+| Wave 1: Figure audit | Sub-agents verified all existing figures |
+| Wave 1.5: TikZ extraction | 71 external figure files → SVG |
+| Wave 1.6: TikZ compilation | 24 Ch3-6 figures compiled |
+| Wave 2: QA verification | 3 sub-agents tested all 39 sections |
+| Ch01 figure injection | Added 18 figures with alt text to JSON |
+| MathJax macro fix | Added `\dx`, `\dt`, `\deriv`, `\defint` |
+| GitHub push | Repo live at Claudio-Atlas/axiom-reader |
 
-#### 🎯 Section 1.1 Content Types
+#### 📊 Final Stats
 
-All 11 content types in Section 1.1 now render:
-- paragraph (19) ✅
-- heading (8) ✅
-- definition (2) ✅
-- theorem (1) ✅
-- example (7) ✅
-- exercise (30) ✅
-- figure (3) 🟡 placeholder
-- list (2) ✅
-- caution (1) ✅
-- historical (1) ✅
-- strategy (1) ✅
-
-#### 📝 Documentation Created
-
-- `GOALS.md` — Milestone tracking
-- `ROADMAP.md` — Full feature roadmap
-- Updated `HEALTH.md` — Current status
+- **39/39 sections** rendering
+- **113 figures** with SVGs and alt text
+- **0 missing** figure references
+- **All QA passed** (Wave 2 sub-agents)
 
 #### Next Steps
 
-1. Run TikZ extraction for real figures
-2. Add figure lightbox
-3. Mobile responsive check
-4. Commit progress
+- [ ] Deploy to Vercel
+- [ ] Mobile responsive testing
+- [ ] Accessibility audit (WCAG 2.1 AA)
+- [ ] Figure lightbox component
 
 ---
 
-## 2025-02-17 (Earlier)
+## 2025-02-16
 
-### Session: Project Setup
+### Session: Pipeline & Extraction
 
-**Context:** Fresh start after backing up old axiom-reader.
+**Context:** Building figure extraction pipeline for TikZ → SVG conversion.
 
 #### ✅ Completed
 
 | Task | Details |
 |------|---------|
-| Backed up content | `~/Desktop/axiom-content-backup/` |
-| Created new project | `~/Desktop/Axiom-Reader/` |
-| Preserved pipeline | `latex_converter.py`, `extract_tikz.py` |
-| Preserved content | 858 JSON files moved to new location |
-| Project docs | CLAUDE.md, HEALTH.md, PERSONAS.md, README.md |
-| Git init | Initial commit with 914 files |
-| Updated MEMORY.md | New project location documented |
+| Created `extract_missing_figures.py` | Case 1: External TikZ files |
+| Created `compile_tikz_figures.py` | Case 3: Compile TikZ to SVG |
+| Created `extract_inline_figures.py` | Case 2: Inline TikZ in sections |
+| Documented 3-case workflow | Updated PIPELINE.md |
+| Spawned figure audit sub-agents | Verified existing figures |
 
 ---
 
-## 2025-02-10
+## 2025-02-15
 
-### Session: Pipeline Work
+### Session: Content Renderer & Routing
 
-**Context:** LaTeX to JSON conversion and TikZ extraction.
+**Context:** Building the reader UI components.
 
 #### ✅ Completed
 
 | Task | Details |
 |------|---------|
-| Vol 1 figures | 38/42 TikZ diagrams extracted to SVG |
-| Pipeline fixes | Improved latex_converter.py patterns |
-| Content audit | Verified JSON output quality |
+| ContentRenderer | All 11 content types |
+| Environment components | Definition, Theorem, Example, Proof |
+| MathJax integration | Inline + display math |
+| Sidebar navigation | OpenStax-style collapsible |
+| Dynamic routing | Astro dynamic routes |
 
 ---
 
-## Template
+## Earlier Sessions
 
-```markdown
-## YYYY-MM-DD
-
-### Session: [Brief description]
-
-**Context:** [Why this session]
-
-#### ✅ Completed
-
-| Task | Details |
-|------|---------|
-
-#### ❌ Blocked
-
-| Issue | Blocker |
-|-------|---------|
-
-#### Next Steps
-
-- [ ] ...
-```
+See git history for detailed changes prior to 2025-02-15.
