@@ -12,16 +12,31 @@ const BOOK_ID_MAP: Record<string, string> = {
   'calculus-vol3': 'vol3',
 };
 
+// Books currently available for preview
+// Set to empty array to disable all previews, or list specific IDs
+const AVAILABLE_BOOKS: string[] = [
+  // 'calculus-vol1',  // Coming soon
+  // 'calculus-vol2',  // Coming soon
+];
+
 const contentId = BOOK_ID_MAP[bookId as string] || bookId;
+
+// Check if book is available for preview
+const isAvailable = AVAILABLE_BOOKS.includes(bookId as string);
 
 let book;
 let notFound = false;
+let comingSoon = false;
 
-try {
-  const bookModule = await import(`../../../content/${contentId}/book.json`);
-  book = bookModule.default;
-} catch (e) {
-  notFound = true;
+if (!isAvailable) {
+  comingSoon = true;
+} else {
+  try {
+    const bookModule = await import(`../../../content/${contentId}/book.json`);
+    book = bookModule.default;
+  } catch (e) {
+    notFound = true;
+  }
 }
 ---
 
@@ -42,7 +57,24 @@ try {
     />
   </head>
   <body>
-    {notFound ? (
+    {comingSoon ? (
+      <div class="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div class="text-center">
+          <div class="mb-6">
+            <span class="inline-block bg-amber-100 text-amber-700 px-4 py-2 rounded-full text-lg font-medium">
+              Coming Soon
+            </span>
+          </div>
+          <h1 class="text-3xl font-bold text-gray-900 mb-4">This textbook is not yet available</h1>
+          <p class="text-gray-600 mb-8 max-w-md mx-auto">
+            We're putting the finishing touches on this textbook. Check back soon for the full preview.
+          </p>
+          <a href="/" class="inline-flex items-center px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            ← Back to Catalog
+          </a>
+        </div>
+      </div>
+    ) : notFound ? (
       <div class="min-h-screen bg-gray-50 flex items-center justify-center">
         <div class="text-center">
           <h1 class="text-2xl font-bold text-gray-900 mb-4">Book Not Found</h1>
