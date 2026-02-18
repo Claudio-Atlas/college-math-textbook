@@ -75,7 +75,7 @@
       "number": "10.1",
       "title": "Computing $e$ from the series",
       "problem": "Compute $e$ using the Maclaurin series.",
-      "solution": "Setting $x = 1$:\n$$\n e &= 1 + 1 + \\frac{1}{2!} + \\frac{1}{3!} + \\frac{1}{4!} + \\frac{1}{5!} + \\frac{1}{6!} + \\frac{1}{7!} + \\cdots \\\\[4pt]\n &= 1 + 1 + 0.5 + 0.16667 + 0.04167 + 0.00833 + 0.00139 + 0.000198 + \\cdots \\\\[4pt]\n &\\approx 2.71828\\ldots\n$$\nEach term is easy to compute, and the series converges rapidly. After just\n$10$ terms, we have $e$ accurate to seven decimal places."
+      "solution": "Setting $x = 1$:\n$$\\begin{aligned}\ne &= 1 + 1 + \\frac{1}{2!} + \\frac{1}{3!} + \\frac{1}{4!} + \\frac{1}{5!} + \\frac{1}{6!} + \\frac{1}{7!} + \\cdots \\\\[4pt]\n &= 1 + 1 + 0.5 + 0.16667 + 0.04167 + 0.00833 + 0.00139 + 0.000198 + \\cdots \\\\[4pt]\n &\\approx 2.71828\\ldots\n\\end{aligned}$$\nEach term is easy to compute, and the series converges rapidly. After just\n$10$ terms, we have $e$ accurate to seven decimal places."
     },
     {
       "type": "example",
@@ -83,7 +83,7 @@
       "number": "10.2",
       "title": "Computing $e^{-1}$ from the series",
       "problem": "Compute $1/e$ using the Maclaurin series.",
-      "solution": "Setting $x = -1$:\n$$\n e^{-1} &= 1 - 1 + \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!} - \\frac{1}{5!} + \\cdots \\\\\n &= 0 + 0.5 - 0.16667 + 0.04167 - 0.00833 + 0.00139 - \\cdots \\\\\n &\\approx 0.36788\\ldots\n$$\nThis is an alternating series, so the error after stopping is bounded by the\nabsolute value of the next term."
+      "solution": "Setting $x = -1$:\n$$\\begin{aligned}\ne^{-1} &= 1 - 1 + \\frac{1}{2!} - \\frac{1}{3!} + \\frac{1}{4!} - \\frac{1}{5!} + \\cdots \\\\\n &= 0 + 0.5 - 0.16667 + 0.04167 - 0.00833 + 0.00139 - \\cdots \\\\\n &\\approx 0.36788\\ldots\n\\end{aligned}$$\nThis is an alternating series, so the error after stopping is bounded by the\nabsolute value of the next term."
     },
     {
       "type": "theorem",
@@ -122,7 +122,7 @@
       "number": "10.3",
       "title": "Verifying $\\sin'(x) = \\cos x$ via series",
       "problem": "Show that differentiating the series for $\\sin x$ gives the series for $\\cos x$.",
-      "solution": "$$\n \\frac{d}{dx}\\left[x - \\frac{x^{3}}{3!} + \\frac{x^{5}}{5!} - \\frac{x^{7}}{7!} + \\cdots\\right]\n &= 1 - \\frac{3x^{2}}{3!} + \\frac{5x^{4}}{5!} - \\frac{7x^{6}}{7!} + \\cdots \\\\\n &= 1 - \\frac{x^{2}}{2!} + \\frac{x^{4}}{4!} - \\frac{x^{6}}{6!} + \\cdots \\\\\n &= \\cos x.\n$$\nThe factorials work out perfectly: $\\dfrac{n}{n!} = \\dfrac{1}{(n-1)!}$."
+      "solution": "$$\\begin{aligned}\n\\frac{d}{dx}\\left[x - \\frac{x^{3}}{3!} + \\frac{x^{5}}{5!} - \\frac{x^{7}}{7!} + \\cdots\\right]\n &= 1 - \\frac{3x^{2}}{3!} + \\frac{5x^{4}}{5!} - \\frac{7x^{6}}{7!} + \\cdots \\\\\n &= 1 - \\frac{x^{2}}{2!} + \\frac{x^{4}}{4!} - \\frac{x^{6}}{6!} + \\cdots \\\\\n &= \\cos x.\n\\end{aligned}$$\nThe factorials work out perfectly: $\\dfrac{n}{n!} = \\dfrac{1}{(n-1)!}$."
     },
     {
       "type": "theorem",
@@ -190,7 +190,7 @@
     },
     {
       "type": "paragraph",
-      "text": "$$\\binom{1/2}{2} &= \\frac{(1/2)(1/2 - 1)}{2!} = \\frac{(1/2)(-1/2)}{2} = -\\frac{1}{8} \\\\\n  \\binom{-1}{3} &= \\frac{(-1)(-2)(-3)}{3!} = \\frac{-6}{6} = -1$$"
+      "text": "$$\\begin{aligned}\n\\binom{1/2}{2} &= \\frac{(1/2)(1/2 - 1)}{2!} = \\frac{(1/2)(-1/2)}{2} = -\\frac{1}{8} \\\\\n  \\binom{-1}{3} &= \\frac{(-1)(-2)(-3)}{3!} = \\frac{-6}{6} = -1\n\\end{aligned}$$"
     },
     {
       "type": "theorem",
@@ -202,7 +202,7 @@
     },
     {
       "type": "proof",
-      "content": "Let $f(x) = (1+x)^{k}$. Then:\n$$\n f'(x) &= k(1+x)^{k-1} \\\\\n f''(x) &= k(k-1)(1+x)^{k-2} \\\\\n f'''(x) &= k(k-1)(k-2)(1+x)^{k-3}\n$$\nIn general, $f^{(n)}(x) = k(k-1)(k-2)\\cdots(k-n+1)(1+x)^{k-n}$.\n\nAt $x = 0$: $f^{(n)}(0) = k(k-1)(k-2)\\cdots(k-n+1)$.\n\nThe Maclaurin coefficient is\n\\[\n \\frac{f^{(n)}(0)}{n!} = \\frac{k(k-1)(k-2)\\cdots(k-n+1)}{n!} = \\binom{k}{n}.\n\\]\nThe radius of convergence can be found using the Ratio Test:\n\\[\n \\left|\\frac{a_{n+1}}{a_{n}}\\right| = \\left|\\frac{k-n}{n+1}\\right||x| \\to |x|\n\\]\nas $n \\to \\infty$, giving $R = 1$."
+      "content": "Let $f(x) = (1+x)^{k}$. Then:\n$$\\begin{aligned}\nf'(x) &= k(1+x)^{k-1} \\\\\n f''(x) &= k(k-1)(1+x)^{k-2} \\\\\n f'''(x) &= k(k-1)(k-2)(1+x)^{k-3}\n\\end{aligned}$$\nIn general, $f^{(n)}(x) = k(k-1)(k-2)\\cdots(k-n+1)(1+x)^{k-n}$.\n\nAt $x = 0$: $f^{(n)}(0) = k(k-1)(k-2)\\cdots(k-n+1)$.\n\nThe Maclaurin coefficient is\n\\[\n \\frac{f^{(n)}(0)}{n!} = \\frac{k(k-1)(k-2)\\cdots(k-n+1)}{n!} = \\binom{k}{n}.\n\\]\nThe radius of convergence can be found using the Ratio Test:\n\\[\n \\left|\\frac{a_{n+1}}{a_{n}}\\right| = \\left|\\frac{k-n}{n+1}\\right||x| \\to |x|\n\\]\nas $n \\to \\infty$, giving $R = 1$."
     },
     {
       "type": "example",
@@ -218,7 +218,7 @@
       "number": "10.7",
       "title": "Series for $\\dfrac{1}{\\sqrt{1+x}}$",
       "problem": "Find the Maclaurin series for $\\dfrac{1}{\\sqrt{1+x}} = (1+x)^{-1/2}$.",
-      "solution": "With $k = -1/2$:\n$$\n \\binom{-1/2}{0} &= 1 \\\\\n \\binom{-1/2}{1} &= -\\frac{1}{2} \\\\\n \\binom{-1/2}{2} &= \\frac{(-1/2)(-3/2)}{2!} = \\frac{3}{8} \\\\\n \\binom{-1/2}{3} &= \\frac{(-1/2)(-3/2)(-5/2)}{3!} = -\\frac{5}{16}\n$$\nTherefore,\n\\[\n \\frac{1}{\\sqrt{1+x}} = 1 - \\frac{1}{2}x + \\frac{3}{8}x^{2} - \\frac{5}{16}x^{3} + \\cdots\n\\]\nfor $|x| < 1$."
+      "solution": "With $k = -1/2$:\n$$\\begin{aligned}\n\\binom{-1/2}{0} &= 1 \\\\\n \\binom{-1/2}{1} &= -\\frac{1}{2} \\\\\n \\binom{-1/2}{2} &= \\frac{(-1/2)(-3/2)}{2!} = \\frac{3}{8} \\\\\n \\binom{-1/2}{3} &= \\frac{(-1/2)(-3/2)(-5/2)}{3!} = -\\frac{5}{16}\n\\end{aligned}$$\nTherefore,\n\\[\n \\frac{1}{\\sqrt{1+x}} = 1 - \\frac{1}{2}x + \\frac{3}{8}x^{2} - \\frac{5}{16}x^{3} + \\cdots\n\\]\nfor $|x| < 1$."
     },
     {
       "type": "example",
@@ -234,7 +234,7 @@
       "number": "10.9",
       "title": "Series for $\\arcsin x$",
       "problem": "Find the Maclaurin series for $\\arcsin x$.",
-      "solution": "Since $\\dfrac{d}{dx}[\\arcsin x] = \\dfrac{1}{\\sqrt{1-x^{2}}}$, we integrate\nthe series from Example [ex:ts-arcsin-deriv]:\n$$\n \\arcsin x &= \\int\\frac{1}{\\sqrt{1-x^{2}}}\\dx \\\\\n &= C + \\int\\left(1 + \\frac{1}{2}x^{2} + \\frac{3}{8}x^{4} + \\cdots\\right)dx \\\\\n &= C + x + \\frac{x^{3}}{6} + \\frac{3x^{5}}{40} + \\frac{5x^{7}}{112} + \\cdots\n$$\nSince $\\arcsin(0) = 0$, we have $C = 0$. Therefore:\n\\[\n \\arcsin x = x + \\frac{x^{3}}{6} + \\frac{3x^{5}}{40} + \\frac{5x^{7}}{112} + \\cdots\n = \\sum_{n=0}^{\\infty}\\frac{(2n)!}{2^{2n}(n!)^{2}(2n+1)}x^{2n+1}\n\\]\nfor $|x| \\leq 1$."
+      "solution": "Since $\\dfrac{d}{dx}[\\arcsin x] = \\dfrac{1}{\\sqrt{1-x^{2}}}$, we integrate\nthe series from Example [ex:ts-arcsin-deriv]:\n$$\\begin{aligned}\n\\arcsin x &= \\int\\frac{1}{\\sqrt{1-x^{2}}}\\dx \\\\\n &= C + \\int\\left(1 + \\frac{1}{2}x^{2} + \\frac{3}{8}x^{4} + \\cdots\\right)dx \\\\\n &= C + x + \\frac{x^{3}}{6} + \\frac{3x^{5}}{40} + \\frac{5x^{7}}{112} + \\cdots\n\\end{aligned}$$\nSince $\\arcsin(0) = 0$, we have $C = 0$. Therefore:\n\\[\n \\arcsin x = x + \\frac{x^{3}}{6} + \\frac{3x^{5}}{40} + \\frac{5x^{7}}{112} + \\cdots\n = \\sum_{n=0}^{\\infty}\\frac{(2n)!}{2^{2n}(n!)^{2}(2n+1)}x^{2n+1}\n\\]\nfor $|x| \\leq 1$."
     },
     {
       "type": "example",
@@ -242,7 +242,7 @@
       "number": "10.10",
       "title": "Series for $(1+x)^{-2}$",
       "problem": "Find the Maclaurin series for $\\dfrac{1}{(1+x)^{2}}$.",
-      "solution": "With $k = -2$:\n$$\n \\binom{-2}{n} &= \\frac{(-2)(-3)(-4)\\cdots(-2-n+1)}{n!} \\\\\n &= \\frac{(-1)^{n}(2)(3)(4)\\cdots(n+1)}{n!} \\\\\n &= (-1)^{n}\\frac{(n+1)!}{n!} = (-1)^{n}(n+1)\n$$\nTherefore,\n\\[\n \\frac{1}{(1+x)^{2}} = \\sum_{n=0}^{\\infty}(-1)^{n}(n+1)x^{n}\n = 1 - 2x + 3x^{2} - 4x^{3} + 5x^{4} - \\cdots\n\\]\nfor $|x| < 1$. This agrees with differentiating $(1+x)^{-1} = \\sum(-1)^{n}x^{n}$."
+      "solution": "With $k = -2$:\n$$\\begin{aligned}\n\\binom{-2}{n} &= \\frac{(-2)(-3)(-4)\\cdots(-2-n+1)}{n!} \\\\\n &= \\frac{(-1)^{n}(2)(3)(4)\\cdots(n+1)}{n!} \\\\\n &= (-1)^{n}\\frac{(n+1)!}{n!} = (-1)^{n}(n+1)\n\\end{aligned}$$\nTherefore,\n\\[\n \\frac{1}{(1+x)^{2}} = \\sum_{n=0}^{\\infty}(-1)^{n}(n+1)x^{n}\n = 1 - 2x + 3x^{2} - 4x^{3} + 5x^{4} - \\cdots\n\\]\nfor $|x| < 1$. This agrees with differentiating $(1+x)^{-1} = \\sum(-1)^{n}x^{n}$."
     },
     {
       "type": "example",
@@ -266,12 +266,12 @@
       "id": "theorem-10.9",
       "number": "10.9",
       "title": "Maclaurin Series for $\\sinh x$ and $\\cosh x$",
-      "content": "For all $x \\in \\R$,\n$$\n \\sinh x &= \\sum_{n=0}^{\\infty}\\frac{x^{2n+1}}{(2n+1)!}\n = x + \\frac{x^{3}}{3!} + \\frac{x^{5}}{5!} + \\frac{x^{7}}{7!} + \\cdots \\\\[6pt]\n \\cosh x &= \\sum_{n=0}^{\\infty}\\frac{x^{2n}}{(2n)!}\n = 1 + \\frac{x^{2}}{2!} + \\frac{x^{4}}{4!} + \\frac{x^{6}}{6!} + \\cdots\n$$",
+      "content": "For all $x \\in \\R$,\n$$\\begin{aligned}\n\\sinh x &= \\sum_{n=0}^{\\infty}\\frac{x^{2n+1}}{(2n+1)!}\n = x + \\frac{x^{3}}{3!} + \\frac{x^{5}}{5!} + \\frac{x^{7}}{7!} + \\cdots \\\\[6pt]\n \\cosh x &= \\sum_{n=0}^{\\infty}\\frac{x^{2n}}{(2n)!}\n = 1 + \\frac{x^{2}}{2!} + \\frac{x^{4}}{4!} + \\frac{x^{6}}{6!} + \\cdots\n\\end{aligned}$$",
       "label": "Theorem"
     },
     {
       "type": "proof",
-      "content": "Since $\\sinh x = \\dfrac{e^{x} - e^{-x}}{2}$:\n$$\n \\sinh x &= \\frac{1}{2}\\left[\\left(1 + x + \\frac{x^{2}}{2!} + \\frac{x^{3}}{3!} + \\cdots\\right)\n - \\left(1 - x + \\frac{x^{2}}{2!} - \\frac{x^{3}}{3!} + \\cdots\\right)\\right] \\\\\n &= \\frac{1}{2}\\left[2x + \\frac{2x^{3}}{3!} + \\frac{2x^{5}}{5!} + \\cdots\\right]\n = x + \\frac{x^{3}}{3!} + \\frac{x^{5}}{5!} + \\cdots\n$$\nSimilarly for $\\cosh x = \\dfrac{e^{x} + e^{-x}}{2}$, the odd powers cancel."
+      "content": "Since $\\sinh x = \\dfrac{e^{x} - e^{-x}}{2}$:\n$$\\begin{aligned}\n\\sinh x &= \\frac{1}{2}\\left[\\left(1 + x + \\frac{x^{2}}{2!} + \\frac{x^{3}}{3!} + \\cdots\\right)\n - \\left(1 - x + \\frac{x^{2}}{2!} - \\frac{x^{3}}{3!} + \\cdots\\right)\\right] \\\\\n &= \\frac{1}{2}\\left[2x + \\frac{2x^{3}}{3!} + \\frac{2x^{5}}{5!} + \\cdots\\right]\n = x + \\frac{x^{3}}{3!} + \\frac{x^{5}}{5!} + \\cdots\n\\end{aligned}$$\nSimilarly for $\\cosh x = \\dfrac{e^{x} + e^{-x}}{2}$, the odd powers cancel."
     },
     {
       "type": "paragraph",
@@ -296,7 +296,7 @@
     },
     {
       "type": "proof",
-      "content": "We substitute $x = i\\theta$ into the series for $e^{x}$:\n$$\n e^{i\\theta} &= \\sum_{n=0}^{\\infty}\\frac{(i\\theta)^{n}}{n!}\n = 1 + i\\theta + \\frac{(i\\theta)^{2}}{2!} + \\frac{(i\\theta)^{3}}{3!}\n + \\frac{(i\\theta)^{4}}{4!} + \\cdots\n$$\nSince $i^{2} = -1$, $i^{3} = -i$, $i^{4} = 1$, the powers of $i$ cycle:\n$$\n e^{i\\theta} &= 1 + i\\theta - \\frac{\\theta^{2}}{2!} - i\\frac{\\theta^{3}}{3!}\n + \\frac{\\theta^{4}}{4!} + i\\frac{\\theta^{5}}{5!} - \\cdots \\\\\n &= \\left(1 - \\frac{\\theta^{2}}{2!} + \\frac{\\theta^{4}}{4!} - \\cdots\\right)\n + i\\left(\\theta - \\frac{\\theta^{3}}{3!} + \\frac{\\theta^{5}}{5!} - \\cdots\\right) \\\\\n &= \\cos\\theta + i\\sin\\theta.\n$$"
+      "content": "We substitute $x = i\\theta$ into the series for $e^{x}$:\n$$\\begin{aligned}\ne^{i\\theta} &= \\sum_{n=0}^{\\infty}\\frac{(i\\theta)^{n}}{n!}\n = 1 + i\\theta + \\frac{(i\\theta)^{2}}{2!} + \\frac{(i\\theta)^{3}}{3!}\n + \\frac{(i\\theta)^{4}}{4!} + \\cdots\n\\end{aligned}$$\nSince $i^{2} = -1$, $i^{3} = -i$, $i^{4} = 1$, the powers of $i$ cycle:\n$$\\begin{aligned}\ne^{i\\theta} &= 1 + i\\theta - \\frac{\\theta^{2}}{2!} - i\\frac{\\theta^{3}}{3!}\n + \\frac{\\theta^{4}}{4!} + i\\frac{\\theta^{5}}{5!} - \\cdots \\\\\n &= \\left(1 - \\frac{\\theta^{2}}{2!} + \\frac{\\theta^{4}}{4!} - \\cdots\\right)\n + i\\left(\\theta - \\frac{\\theta^{3}}{3!} + \\frac{\\theta^{5}}{5!} - \\cdots\\right) \\\\\n &= \\cos\\theta + i\\sin\\theta.\n\\end{aligned}$$"
     },
     {
       "type": "paragraph",

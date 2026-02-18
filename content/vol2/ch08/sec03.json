@@ -97,7 +97,7 @@
       "number": "8.2",
       "title": "$\\displaystyle\\int \\sqrt{9 - x^{2}}\\dx$",
       "problem": "Evaluate $\\displaystyle\\int \\sqrt{9 - x^{2}}\\dx$.",
-      "solution": "Let $x = 3\\sin\\theta$, $dx = 3\\cos\\theta\\,d\\theta$,\n$\\sqrt{9 - x^{2}} = 3\\cos\\theta$.\n$$\n \\int \\sqrt{9 - x^{2}}\\dx\n &= \\int 3\\cos\\theta \\cdot 3\\cos\\theta\\,d\\theta\n = 9\\int \\cos^{2}\\theta\\,d\\theta \\\\\n &= 9 \\cdot \\frac{1}{2}\\left(\\theta + \\sin\\theta\\cos\\theta\\right) + C \\\\\n &= \\frac{9\\theta}{2} + \\frac{9\\sin\\theta\\cos\\theta}{2} + C.\n$$\nConverting back: $\\sin\\theta = x/3$, $\\cos\\theta = \\sqrt{9-x^{2}}/3$,\n$\\theta = \\arcsin(x/3)$.\n\\[\n \\int \\sqrt{9 - x^{2}}\\dx = \\frac{9}{2}\\arcsin\\!\\left(\\frac{x}{3}\\right)\n + \\frac{x\\sqrt{9-x^{2}}}{2} + C.\n\\]"
+      "solution": "Let $x = 3\\sin\\theta$, $dx = 3\\cos\\theta\\,d\\theta$,\n$\\sqrt{9 - x^{2}} = 3\\cos\\theta$.\n$$\\begin{aligned}\n\\int \\sqrt{9 - x^{2}}\\dx\n &= \\int 3\\cos\\theta \\cdot 3\\cos\\theta\\,d\\theta\n = 9\\int \\cos^{2}\\theta\\,d\\theta \\\\\n &= 9 \\cdot \\frac{1}{2}\\left(\\theta + \\sin\\theta\\cos\\theta\\right) + C \\\\\n &= \\frac{9\\theta}{2} + \\frac{9\\sin\\theta\\cos\\theta}{2} + C.\n\\end{aligned}$$\nConverting back: $\\sin\\theta = x/3$, $\\cos\\theta = \\sqrt{9-x^{2}}/3$,\n$\\theta = \\arcsin(x/3)$.\n\\[\n \\int \\sqrt{9 - x^{2}}\\dx = \\frac{9}{2}\\arcsin\\!\\left(\\frac{x}{3}\\right)\n + \\frac{x\\sqrt{9-x^{2}}}{2} + C.\n\\]"
     },
     {
       "type": "example",
@@ -105,7 +105,7 @@
       "number": "8.3",
       "title": "$\\displaystyle\\int \\frac{x^{2}}{\\sqrt{16 - x^{2}}}\\dx$",
       "problem": "Evaluate $\\displaystyle\\int \\frac{x^{2}}{\\sqrt{16 - x^{2}}}\\dx$.",
-      "solution": "Let $x = 4\\sin\\theta$, $dx = 4\\cos\\theta\\,d\\theta$,\n$\\sqrt{16 - x^{2}} = 4\\cos\\theta$.\n$$\n \\int \\frac{x^{2}}{\\sqrt{16 - x^{2}}}\\dx\n &= \\int \\frac{16\\sin^{2}\\theta}{4\\cos\\theta} \\cdot 4\\cos\\theta\\,d\\theta\n = 16\\int \\sin^{2}\\theta\\,d\\theta \\\\\n &= 16 \\cdot \\frac{1}{2}(\\theta - \\sin\\theta\\cos\\theta) + C \\\\\n &= 8\\theta - 8\\sin\\theta\\cos\\theta + C.\n$$\nConverting back: $\\theta = \\arcsin(x/4)$,\n$\\sin\\theta\\cos\\theta = \\frac{x}{4} \\cdot \\frac{\\sqrt{16-x^{2}}}{4}\n= \\frac{x\\sqrt{16-x^{2}}}{16}$.\n\\[\n \\int \\frac{x^{2}}{\\sqrt{16 - x^{2}}}\\dx\n = 8\\arcsin\\!\\left(\\frac{x}{4}\\right) - \\frac{x\\sqrt{16-x^{2}}}{2} + C.\n\\]"
+      "solution": "Let $x = 4\\sin\\theta$, $dx = 4\\cos\\theta\\,d\\theta$,\n$\\sqrt{16 - x^{2}} = 4\\cos\\theta$.\n$$\\begin{aligned}\n\\int \\frac{x^{2}}{\\sqrt{16 - x^{2}}}\\dx\n &= \\int \\frac{16\\sin^{2}\\theta}{4\\cos\\theta} \\cdot 4\\cos\\theta\\,d\\theta\n = 16\\int \\sin^{2}\\theta\\,d\\theta \\\\\n &= 16 \\cdot \\frac{1}{2}(\\theta - \\sin\\theta\\cos\\theta) + C \\\\\n &= 8\\theta - 8\\sin\\theta\\cos\\theta + C.\n\\end{aligned}$$\nConverting back: $\\theta = \\arcsin(x/4)$,\n$\\sin\\theta\\cos\\theta = \\frac{x}{4} \\cdot \\frac{\\sqrt{16-x^{2}}}{4}\n= \\frac{x\\sqrt{16-x^{2}}}{16}$.\n\\[\n \\int \\frac{x^{2}}{\\sqrt{16 - x^{2}}}\\dx\n = 8\\arcsin\\!\\left(\\frac{x}{4}\\right) - \\frac{x\\sqrt{16-x^{2}}}{2} + C.\n\\]"
     },
     {
       "type": "example",
@@ -113,7 +113,7 @@
       "number": "8.4",
       "title": "Area of a circle",
       "problem": "Use integration to verify that the area of a circle of radius $r$ is\n$\\pi r^{2}$.",
-      "solution": "The upper half of the circle $x^{2} + y^{2} = r^{2}$ is $y = \\sqrt{r^{2} -\nx^{2}}$. The total area is\n\\[\n A = 2\\defint{-r}{r}\\sqrt{r^{2} - x^{2}}\\dx.\n\\]\nBy symmetry, $A = 4\\defint{0}{r}\\sqrt{r^{2}-x^{2}}\\dx$. Let\n$x = r\\sin\\theta$, $dx = r\\cos\\theta\\,d\\theta$. When $x=0$, $\\theta=0$;\nwhen $x=r$, $\\theta=\\pi/2$.\n$$\n A &= 4\\defint{0}{\\pi/2} r\\cos\\theta \\cdot r\\cos\\theta\\,d\\theta\n = 4r^{2}\\defint{0}{\\pi/2}\\cos^{2}\\theta\\,d\\theta \\\\[4pt]\n &= 4r^{2}\\cdot\\frac{\\pi}{4}\n = \\pi r^{2}.\n$$\nHere we used the result $\\defint{0}{\\pi/2}\\cos^{2}\\theta\\,d\\theta\n= \\pi/4$ from Section [sec:trig-integrals]."
+      "solution": "The upper half of the circle $x^{2} + y^{2} = r^{2}$ is $y = \\sqrt{r^{2} -\nx^{2}}$. The total area is\n\\[\n A = 2\\defint{-r}{r}\\sqrt{r^{2} - x^{2}}\\dx.\n\\]\nBy symmetry, $A = 4\\defint{0}{r}\\sqrt{r^{2}-x^{2}}\\dx$. Let\n$x = r\\sin\\theta$, $dx = r\\cos\\theta\\,d\\theta$. When $x=0$, $\\theta=0$;\nwhen $x=r$, $\\theta=\\pi/2$.\n$$\\begin{aligned}\nA &= 4\\defint{0}{\\pi/2} r\\cos\\theta \\cdot r\\cos\\theta\\,d\\theta\n = 4r^{2}\\defint{0}{\\pi/2}\\cos^{2}\\theta\\,d\\theta \\\\[4pt]\n &= 4r^{2}\\cdot\\frac{\\pi}{4}\n = \\pi r^{2}.\n\\end{aligned}$$\nHere we used the result $\\defint{0}{\\pi/2}\\cos^{2}\\theta\\,d\\theta\n= \\pi/4$ from Section [sec:trig-integrals]."
     },
     {
       "type": "example",
@@ -121,7 +121,7 @@
       "number": "8.5",
       "title": "$\\displaystyle\\int \\frac{dx}{(a^{2} - x^{2})^{3/2}}$",
       "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{(a^{2} - x^{2})^{3/2}}$ for $|x| < a$.",
-      "solution": "Let $x = a\\sin\\theta$, $dx = a\\cos\\theta\\,d\\theta$. Then\n$(a^{2} - x^{2})^{3/2} = (a^{2}\\cos^{2}\\theta)^{3/2} = a^{3}\\cos^{3}\\theta$.\n$$\n \\int \\frac{dx}{(a^{2} - x^{2})^{3/2}}\n &= \\int \\frac{a\\cos\\theta}{a^{3}\\cos^{3}\\theta}\\,d\\theta\n = \\frac{1}{a^{2}}\\int \\sec^{2}\\theta\\,d\\theta \\\\\n &= \\frac{\\tan\\theta}{a^{2}} + C.\n$$\nFrom the triangle: $\\tan\\theta = x/\\sqrt{a^{2}-x^{2}}$.\n\\[\n \\int \\frac{dx}{(a^{2} - x^{2})^{3/2}}\n = \\frac{x}{a^{2}\\sqrt{a^{2}-x^{2}}} + C.\n\\]"
+      "solution": "Let $x = a\\sin\\theta$, $dx = a\\cos\\theta\\,d\\theta$. Then\n$(a^{2} - x^{2})^{3/2} = (a^{2}\\cos^{2}\\theta)^{3/2} = a^{3}\\cos^{3}\\theta$.\n$$\\begin{aligned}\n\\int \\frac{dx}{(a^{2} - x^{2})^{3/2}}\n &= \\int \\frac{a\\cos\\theta}{a^{3}\\cos^{3}\\theta}\\,d\\theta\n = \\frac{1}{a^{2}}\\int \\sec^{2}\\theta\\,d\\theta \\\\\n &= \\frac{\\tan\\theta}{a^{2}} + C.\n\\end{aligned}$$\nFrom the triangle: $\\tan\\theta = x/\\sqrt{a^{2}-x^{2}}$.\n\\[\n \\int \\frac{dx}{(a^{2} - x^{2})^{3/2}}\n = \\frac{x}{a^{2}\\sqrt{a^{2}-x^{2}}} + C.\n\\]"
     },
     {
       "type": "example",
@@ -129,7 +129,7 @@
       "number": "8.6",
       "title": "$\\displaystyle\\int \\frac{\\sqrt{25 - x^{2}}}{x}\\dx$",
       "problem": "Evaluate $\\displaystyle\\int \\frac{\\sqrt{25 - x^{2}}}{x}\\dx$ for $x > 0$.",
-      "solution": "Let $x = 5\\sin\\theta$, $dx = 5\\cos\\theta\\,d\\theta$,\n$\\sqrt{25-x^{2}} = 5\\cos\\theta$.\n$$\n \\int \\frac{\\sqrt{25 - x^{2}}}{x}\\dx\n &= \\int \\frac{5\\cos\\theta}{5\\sin\\theta} \\cdot 5\\cos\\theta\\,d\\theta\n = 5\\int \\frac{\\cos^{2}\\theta}{\\sin\\theta}\\,d\\theta \\\\\n &= 5\\int \\frac{1 - \\sin^{2}\\theta}{\\sin\\theta}\\,d\\theta\n = 5\\int (\\csc\\theta - \\sin\\theta)\\,d\\theta \\\\\n &= 5\\bigl(-\\ln|\\csc\\theta + \\cot\\theta| + \\cos\\theta\\bigr) + C.\n$$\nFrom the triangle: $\\csc\\theta = 5/x$, $\\cot\\theta = \\sqrt{25-x^{2}}/x$,\n$\\cos\\theta = \\sqrt{25-x^{2}}/5$.\n\\[\n = -5\\ln\\!\\left|\\frac{5 + \\sqrt{25-x^{2}}}{x}\\right| + \\sqrt{25-x^{2}} + C.\n\\]"
+      "solution": "Let $x = 5\\sin\\theta$, $dx = 5\\cos\\theta\\,d\\theta$,\n$\\sqrt{25-x^{2}} = 5\\cos\\theta$.\n$$\\begin{aligned}\n\\int \\frac{\\sqrt{25 - x^{2}}}{x}\\dx\n &= \\int \\frac{5\\cos\\theta}{5\\sin\\theta} \\cdot 5\\cos\\theta\\,d\\theta\n = 5\\int \\frac{\\cos^{2}\\theta}{\\sin\\theta}\\,d\\theta \\\\\n &= 5\\int \\frac{1 - \\sin^{2}\\theta}{\\sin\\theta}\\,d\\theta\n = 5\\int (\\csc\\theta - \\sin\\theta)\\,d\\theta \\\\\n &= 5\\bigl(-\\ln|\\csc\\theta + \\cot\\theta| + \\cos\\theta\\bigr) + C.\n\\end{aligned}$$\nFrom the triangle: $\\csc\\theta = 5/x$, $\\cot\\theta = \\sqrt{25-x^{2}}/x$,\n$\\cos\\theta = \\sqrt{25-x^{2}}/5$.\n\\[\n = -5\\ln\\!\\left|\\frac{5 + \\sqrt{25-x^{2}}}{x}\\right| + \\sqrt{25-x^{2}} + C.\n\\]"
     },
     {
       "type": "heading",
@@ -161,7 +161,7 @@
       "number": "8.8",
       "title": "$\\displaystyle\\int \\sqrt{x^{2}+4}\\dx$",
       "problem": "Evaluate $\\displaystyle\\int \\sqrt{x^{2}+4}\\dx$.",
-      "solution": "Let $x = 2\\tan\\theta$, $dx = 2\\sec^{2}\\theta\\,d\\theta$,\n$\\sqrt{x^{2}+4} = 2\\sec\\theta$.\n$$\n \\int \\sqrt{x^{2}+4}\\dx\n &= \\int 2\\sec\\theta \\cdot 2\\sec^{2}\\theta\\,d\\theta\n = 4\\int \\sec^{3}\\theta\\,d\\theta.\n$$\nUsing the result from Section [sec:trig-integrals]:\n\\[\n \\int \\sec^{3}\\theta\\,d\\theta\n = \\frac{1}{2}(\\sec\\theta\\tan\\theta + \\ln|\\sec\\theta + \\tan\\theta|) + C.\n\\]\nSo:\n\\[\n \\int \\sqrt{x^{2}+4}\\dx = 2\\sec\\theta\\tan\\theta\n + 2\\ln|\\sec\\theta + \\tan\\theta| + C.\n\\]\nConverting: $\\tan\\theta = x/2$, $\\sec\\theta = \\sqrt{x^{2}+4}/2$.\n\\[\n = \\frac{x\\sqrt{x^{2}+4}}{2} + 2\\ln\\!\\left|\\frac{\\sqrt{x^{2}+4}+x}{2}\\right|\n + C.\n\\]\nThis simplifies to:\n\\[\n \\int \\sqrt{x^{2}+4}\\dx = \\frac{x\\sqrt{x^{2}+4}}{2}\n + 2\\ln|\\sqrt{x^{2}+4}+x| + C_{1}.\n\\]"
+      "solution": "Let $x = 2\\tan\\theta$, $dx = 2\\sec^{2}\\theta\\,d\\theta$,\n$\\sqrt{x^{2}+4} = 2\\sec\\theta$.\n$$\\begin{aligned}\n\\int \\sqrt{x^{2}+4}\\dx\n &= \\int 2\\sec\\theta \\cdot 2\\sec^{2}\\theta\\,d\\theta\n = 4\\int \\sec^{3}\\theta\\,d\\theta.\n\\end{aligned}$$\nUsing the result from Section [sec:trig-integrals]:\n\\[\n \\int \\sec^{3}\\theta\\,d\\theta\n = \\frac{1}{2}(\\sec\\theta\\tan\\theta + \\ln|\\sec\\theta + \\tan\\theta|) + C.\n\\]\nSo:\n\\[\n \\int \\sqrt{x^{2}+4}\\dx = 2\\sec\\theta\\tan\\theta\n + 2\\ln|\\sec\\theta + \\tan\\theta| + C.\n\\]\nConverting: $\\tan\\theta = x/2$, $\\sec\\theta = \\sqrt{x^{2}+4}/2$.\n\\[\n = \\frac{x\\sqrt{x^{2}+4}}{2} + 2\\ln\\!\\left|\\frac{\\sqrt{x^{2}+4}+x}{2}\\right|\n + C.\n\\]\nThis simplifies to:\n\\[\n \\int \\sqrt{x^{2}+4}\\dx = \\frac{x\\sqrt{x^{2}+4}}{2}\n + 2\\ln|\\sqrt{x^{2}+4}+x| + C_{1}.\n\\]"
     },
     {
       "type": "example",
@@ -169,7 +169,7 @@
       "number": "8.9",
       "title": "$\\displaystyle\\int \\frac{x^{2}}{\\sqrt{x^{2}+4}}\\dx$",
       "problem": "Evaluate $\\displaystyle\\int \\frac{x^{2}}{\\sqrt{x^{2}+4}}\\dx$.",
-      "solution": "Let $x = 2\\tan\\theta$, $dx = 2\\sec^{2}\\theta\\,d\\theta$,\n$\\sqrt{x^{2}+4} = 2\\sec\\theta$. Then\n$$\n \\int \\frac{x^{2}}{\\sqrt{x^{2}+4}}\\dx\n &= \\int \\frac{4\\tan^{2}\\theta}{2\\sec\\theta}\\cdot 2\\sec^{2}\\theta\\,d\\theta\n = 4\\int \\tan^{2}\\theta\\,\\sec\\theta\\,d\\theta.\n$$\nWrite $\\tan^{2}\\theta = \\sec^{2}\\theta - 1$:\n\\[\n = 4\\int (\\sec^{3}\\theta - \\sec\\theta)\\,d\\theta.\n\\]\nUsing results from Section [sec:trig-integrals]:\nalign*\n &= 4 + C \\\\[4pt]\n &= 2\\sec\\theta\\tan\\theta\n - 2\\ln|\\sec\\theta+\\tan\\theta| + C.\n\\end{align*}\nConverting back:\n\\[\n = \\frac{x\\sqrt{x^{2}+4}}{2}\n - 2\\ln\\!\\left|\\sqrt{x^{2}+4}+x\\right| + C_{1}.\n\\]"
+      "solution": "Let $x = 2\\tan\\theta$, $dx = 2\\sec^{2}\\theta\\,d\\theta$,\n$\\sqrt{x^{2}+4} = 2\\sec\\theta$. Then\n$$\\begin{aligned}\n\\int \\frac{x^{2}}{\\sqrt{x^{2}+4}}\\dx\n &= \\int \\frac{4\\tan^{2}\\theta}{2\\sec\\theta}\\cdot 2\\sec^{2}\\theta\\,d\\theta\n = 4\\int \\tan^{2}\\theta\\,\\sec\\theta\\,d\\theta.\n\\end{aligned}$$\nWrite $\\tan^{2}\\theta = \\sec^{2}\\theta - 1$:\n\\[\n = 4\\int (\\sec^{3}\\theta - \\sec\\theta)\\,d\\theta.\n\\]\nUsing results from Section [sec:trig-integrals]:\nalign*\n &= 4 + C \\\\[4pt]\n &= 2\\sec\\theta\\tan\\theta\n - 2\\ln|\\sec\\theta+\\tan\\theta| + C.\n\\end{align*}\nConverting back:\n\\[\n = \\frac{x\\sqrt{x^{2}+4}}{2}\n - 2\\ln\\!\\left|\\sqrt{x^{2}+4}+x\\right| + C_{1}.\n\\]"
     },
     {
       "type": "example",
@@ -177,7 +177,7 @@
       "number": "8.10",
       "title": "$\\displaystyle\\int \\frac{dx}{(x^{2}+4)^{3/2}}$",
       "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{(x^{2}+4)^{3/2}}$.",
-      "solution": "Let $x = 2\\tan\\theta$, $dx = 2\\sec^{2}\\theta\\,d\\theta$.\nThen $(x^{2}+4)^{3/2} = (4\\sec^{2}\\theta)^{3/2} = 8\\sec^{3}\\theta$.\n$$\n \\int \\frac{dx}{(x^{2}+4)^{3/2}}\n &= \\int \\frac{2\\sec^{2}\\theta}{8\\sec^{3}\\theta}\\,d\\theta\n = \\frac{1}{4}\\int \\cos\\theta\\,d\\theta \\\\\n &= \\frac{\\sin\\theta}{4} + C.\n$$\nFrom the triangle: $\\sin\\theta = x/\\sqrt{x^{2}+4}$.\n\\[\n \\int \\frac{dx}{(x^{2}+4)^{3/2}} = \\frac{x}{4\\sqrt{x^{2}+4}} + C.\n\\]"
+      "solution": "Let $x = 2\\tan\\theta$, $dx = 2\\sec^{2}\\theta\\,d\\theta$.\nThen $(x^{2}+4)^{3/2} = (4\\sec^{2}\\theta)^{3/2} = 8\\sec^{3}\\theta$.\n$$\\begin{aligned}\n\\int \\frac{dx}{(x^{2}+4)^{3/2}}\n &= \\int \\frac{2\\sec^{2}\\theta}{8\\sec^{3}\\theta}\\,d\\theta\n = \\frac{1}{4}\\int \\cos\\theta\\,d\\theta \\\\\n &= \\frac{\\sin\\theta}{4} + C.\n\\end{aligned}$$\nFrom the triangle: $\\sin\\theta = x/\\sqrt{x^{2}+4}$.\n\\[\n \\int \\frac{dx}{(x^{2}+4)^{3/2}} = \\frac{x}{4\\sqrt{x^{2}+4}} + C.\n\\]"
     },
     {
       "type": "example",
@@ -185,7 +185,7 @@
       "number": "8.11",
       "title": "$\\displaystyle\\int \\frac{x^{3}}{\\sqrt{x^{2}+1}}\\dx$",
       "problem": "Evaluate $\\displaystyle\\int \\frac{x^{3}}{\\sqrt{x^{2}+1}}\\dx$.",
-      "solution": "Let $x = \\tan\\theta$, $dx = \\sec^{2}\\theta\\,d\\theta$,\n$\\sqrt{x^{2}+1} = \\sec\\theta$.\n$$\n \\int \\frac{x^{3}}{\\sqrt{x^{2}+1}}\\dx\n &= \\int \\frac{\\tan^{3}\\theta}{\\sec\\theta}\\sec^{2}\\theta\\,d\\theta\n = \\int \\tan^{3}\\theta\\sec\\theta\\,d\\theta.\n$$\nFrom Section [sec:trig-integrals], this equals\n$\\frac{\\sec^{3}\\theta}{3} - \\sec\\theta + C$.\n\nConverting: $\\sec\\theta = \\sqrt{x^{2}+1}$.\n\\[\n \\int \\frac{x^{3}}{\\sqrt{x^{2}+1}}\\dx\n = \\frac{(x^{2}+1)^{3/2}}{3} - \\sqrt{x^{2}+1} + C\n = \\frac{(x^{2}+1)^{3/2} - 3\\sqrt{x^{2}+1}}{3} + C.\n\\]\nThis can be factored as $\\frac{\\sqrt{x^{2}+1}(x^{2}-2)}{3} + C$."
+      "solution": "Let $x = \\tan\\theta$, $dx = \\sec^{2}\\theta\\,d\\theta$,\n$\\sqrt{x^{2}+1} = \\sec\\theta$.\n$$\\begin{aligned}\n\\int \\frac{x^{3}}{\\sqrt{x^{2}+1}}\\dx\n &= \\int \\frac{\\tan^{3}\\theta}{\\sec\\theta}\\sec^{2}\\theta\\,d\\theta\n = \\int \\tan^{3}\\theta\\sec\\theta\\,d\\theta.\n\\end{aligned}$$\nFrom Section [sec:trig-integrals], this equals\n$\\frac{\\sec^{3}\\theta}{3} - \\sec\\theta + C$.\n\nConverting: $\\sec\\theta = \\sqrt{x^{2}+1}$.\n\\[\n \\int \\frac{x^{3}}{\\sqrt{x^{2}+1}}\\dx\n = \\frac{(x^{2}+1)^{3/2}}{3} - \\sqrt{x^{2}+1} + C\n = \\frac{(x^{2}+1)^{3/2} - 3\\sqrt{x^{2}+1}}{3} + C.\n\\]\nThis can be factored as $\\frac{\\sqrt{x^{2}+1}(x^{2}-2)}{3} + C$."
     },
     {
       "type": "example",
@@ -193,7 +193,7 @@
       "number": "8.12",
       "title": "$\\displaystyle\\defint{0}{1}\\frac{dx}{\\sqrt{x^{2}+1}}$",
       "problem": "Evaluate $\\displaystyle\\defint{0}{1}\\frac{dx}{\\sqrt{x^{2}+1}}$.",
-      "solution": "Let $x = \\tan\\theta$, $dx = \\sec^{2}\\theta\\,d\\theta$,\n$\\sqrt{x^{2}+1} = \\sec\\theta$.\n\nWhen $x = 0$, $\\theta = 0$. When $x = 1$, $\\theta = \\pi/4$.\n$$\n \\defint{0}{1}\\frac{dx}{\\sqrt{x^{2}+1}}\n &= \\defint{0}^{\\pi/4}\\frac{\\sec^{2}\\theta}{\\sec\\theta}\\,d\\theta\n = \\defint{0}^{\\pi/4}\\sec\\theta\\,d\\theta \\\\\n &= \\bigl[\\ln|\\sec\\theta + \\tan\\theta|\\bigr]_{0}^{\\pi/4} \\\\\n &= \\ln|\\sqrt{2} + 1| - \\ln|1 + 0| = \\ln(1 + \\sqrt{2}).\n$$"
+      "solution": "Let $x = \\tan\\theta$, $dx = \\sec^{2}\\theta\\,d\\theta$,\n$\\sqrt{x^{2}+1} = \\sec\\theta$.\n\nWhen $x = 0$, $\\theta = 0$. When $x = 1$, $\\theta = \\pi/4$.\n$$\\begin{aligned}\n\\defint{0}{1}\\frac{dx}{\\sqrt{x^{2}+1}}\n &= \\defint{0}^{\\pi/4}\\frac{\\sec^{2}\\theta}{\\sec\\theta}\\,d\\theta\n = \\defint{0}^{\\pi/4}\\sec\\theta\\,d\\theta \\\\\n &= \\bigl[\\ln|\\sec\\theta + \\tan\\theta|\\bigr]_{0}^{\\pi/4} \\\\\n &= \\ln|\\sqrt{2} + 1| - \\ln|1 + 0| = \\ln(1 + \\sqrt{2}).\n\\end{aligned}$$"
     },
     {
       "type": "heading",
@@ -225,7 +225,7 @@
       "number": "8.14",
       "title": "$\\displaystyle\\int \\frac{\\sqrt{x^{2}-9}}{x}\\dx$",
       "problem": "Evaluate $\\displaystyle\\int \\frac{\\sqrt{x^{2}-9}}{x}\\dx$ for $x > 3$.",
-      "solution": "Let $x = 3\\sec\\theta$, $dx = 3\\sec\\theta\\tan\\theta\\,d\\theta$,\n$\\sqrt{x^{2}-9} = 3\\tan\\theta$.\n$$\n \\int \\frac{\\sqrt{x^{2}-9}}{x}\\dx\n &= \\int \\frac{3\\tan\\theta}{3\\sec\\theta} \\cdot 3\\sec\\theta\\tan\\theta\\,d\\theta\n = 3\\int \\tan^{2}\\theta\\,d\\theta \\\\\n &= 3(\\tan\\theta - \\theta) + C.\n$$\nConverting: $\\tan\\theta = \\sqrt{x^{2}-9}/3$,\n$\\theta = \\operatorname{arcsec}(x/3) = \\arccos(3/x)$.\n\\[\n \\int \\frac{\\sqrt{x^{2}-9}}{x}\\dx = \\sqrt{x^{2}-9} - 3\\arccos\\!\\left(\\frac{3}{x}\\right) + C.\n\\]\n(Or equivalently, $\\sqrt{x^{2}-9} - 3\\operatorname{arcsec}(x/3) + C$.)"
+      "solution": "Let $x = 3\\sec\\theta$, $dx = 3\\sec\\theta\\tan\\theta\\,d\\theta$,\n$\\sqrt{x^{2}-9} = 3\\tan\\theta$.\n$$\\begin{aligned}\n\\int \\frac{\\sqrt{x^{2}-9}}{x}\\dx\n &= \\int \\frac{3\\tan\\theta}{3\\sec\\theta} \\cdot 3\\sec\\theta\\tan\\theta\\,d\\theta\n = 3\\int \\tan^{2}\\theta\\,d\\theta \\\\\n &= 3(\\tan\\theta - \\theta) + C.\n\\end{aligned}$$\nConverting: $\\tan\\theta = \\sqrt{x^{2}-9}/3$,\n$\\theta = \\operatorname{arcsec}(x/3) = \\arccos(3/x)$.\n\\[\n \\int \\frac{\\sqrt{x^{2}-9}}{x}\\dx = \\sqrt{x^{2}-9} - 3\\arccos\\!\\left(\\frac{3}{x}\\right) + C.\n\\]\n(Or equivalently, $\\sqrt{x^{2}-9} - 3\\operatorname{arcsec}(x/3) + C$.)"
     },
     {
       "type": "example",
@@ -233,7 +233,7 @@
       "number": "8.15",
       "title": "$\\displaystyle\\int \\frac{dx}{x\\sqrt{x^{2}-1}}$",
       "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{x\\sqrt{x^{2}-1}}$ for $x > 1$.",
-      "solution": "Let $x = \\sec\\theta$, $dx = \\sec\\theta\\tan\\theta\\,d\\theta$,\n$\\sqrt{x^{2}-1} = \\tan\\theta$.\n$$\n \\int \\frac{dx}{x\\sqrt{x^{2}-1}}\n &= \\int \\frac{\\sec\\theta\\tan\\theta}{\\sec\\theta \\cdot \\tan\\theta}\\,d\\theta\n = \\int d\\theta = \\theta + C.\n$$\nSince $\\sec\\theta = x$, we have $\\theta = \\operatorname{arcsec}(x)$.\n\\[\n \\int \\frac{dx}{x\\sqrt{x^{2}-1}} = \\operatorname{arcsec}(x) + C\n = \\arccos\\!\\left(\\frac{1}{x}\\right) + C.\n\\]"
+      "solution": "Let $x = \\sec\\theta$, $dx = \\sec\\theta\\tan\\theta\\,d\\theta$,\n$\\sqrt{x^{2}-1} = \\tan\\theta$.\n$$\\begin{aligned}\n\\int \\frac{dx}{x\\sqrt{x^{2}-1}}\n &= \\int \\frac{\\sec\\theta\\tan\\theta}{\\sec\\theta \\cdot \\tan\\theta}\\,d\\theta\n = \\int d\\theta = \\theta + C.\n\\end{aligned}$$\nSince $\\sec\\theta = x$, we have $\\theta = \\operatorname{arcsec}(x)$.\n\\[\n \\int \\frac{dx}{x\\sqrt{x^{2}-1}} = \\operatorname{arcsec}(x) + C\n = \\arccos\\!\\left(\\frac{1}{x}\\right) + C.\n\\]"
     },
     {
       "type": "example",
@@ -241,7 +241,7 @@
       "number": "8.16",
       "title": "$\\displaystyle\\int \\frac{dx}{\\sqrt{x^{2}-4}}$",
       "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{\\sqrt{x^{2}-4}}$ for $x > 2$.",
-      "solution": "Let $x = 2\\sec\\theta$, $dx = 2\\sec\\theta\\tan\\theta\\,d\\theta$,\n$\\sqrt{x^{2}-4} = 2\\tan\\theta$.\n$$\n \\int \\frac{dx}{\\sqrt{x^{2}-4}}\n &= \\int \\frac{2\\sec\\theta\\tan\\theta}{2\\tan\\theta}\\,d\\theta\n = \\int \\sec\\theta\\,d\\theta \\\\\n &= \\ln|\\sec\\theta + \\tan\\theta| + C.\n$$\nConverting: $\\sec\\theta = x/2$, $\\tan\\theta = \\sqrt{x^{2}-4}/2$.\n\\[\n \\int \\frac{dx}{\\sqrt{x^{2}-4}} = \\ln\\!\\left|\\frac{x + \\sqrt{x^{2}-4}}{2}\\right| + C\n = \\ln|x + \\sqrt{x^{2}-4}| + C_{1}.\n\\]"
+      "solution": "Let $x = 2\\sec\\theta$, $dx = 2\\sec\\theta\\tan\\theta\\,d\\theta$,\n$\\sqrt{x^{2}-4} = 2\\tan\\theta$.\n$$\\begin{aligned}\n\\int \\frac{dx}{\\sqrt{x^{2}-4}}\n &= \\int \\frac{2\\sec\\theta\\tan\\theta}{2\\tan\\theta}\\,d\\theta\n = \\int \\sec\\theta\\,d\\theta \\\\\n &= \\ln|\\sec\\theta + \\tan\\theta| + C.\n\\end{aligned}$$\nConverting: $\\sec\\theta = x/2$, $\\tan\\theta = \\sqrt{x^{2}-4}/2$.\n\\[\n \\int \\frac{dx}{\\sqrt{x^{2}-4}} = \\ln\\!\\left|\\frac{x + \\sqrt{x^{2}-4}}{2}\\right| + C\n = \\ln|x + \\sqrt{x^{2}-4}| + C_{1}.\n\\]"
     },
     {
       "type": "example",
@@ -249,7 +249,7 @@
       "number": "8.17",
       "title": "$\\displaystyle\\int x^{3}\\sqrt{x^{2}-1}\\dx$",
       "problem": "Evaluate $\\displaystyle\\int x^{3}\\sqrt{x^{2}-1}\\dx$ for $x > 1$.",
-      "solution": "Let $x = \\sec\\theta$, $dx = \\sec\\theta\\tan\\theta\\,d\\theta$,\n$\\sqrt{x^{2}-1} = \\tan\\theta$.\n$$\n \\int x^{3}\\sqrt{x^{2}-1}\\dx\n &= \\int \\sec^{3}\\theta \\cdot \\tan\\theta \\cdot \\sec\\theta\\tan\\theta\\,d\\theta\n = \\int \\sec^{4}\\theta\\tan^{2}\\theta\\,d\\theta.\n$$\nWrite $\\sec^{4}\\theta = \\sec^{2}\\theta(1 + \\tan^{2}\\theta)$:\n$$\n &= \\int \\sec^{2}\\theta\\tan^{2}\\theta(1 + \\tan^{2}\\theta)\\,d\\theta\n = \\int (\\tan^{2}\\theta + \\tan^{4}\\theta)\\sec^{2}\\theta\\,d\\theta.\n$$\nLet $u = \\tan\\theta$, $du = \\sec^{2}\\theta\\,d\\theta$:\n\\[\n = \\int (u^{2} + u^{4})\\,du = \\frac{u^{3}}{3} + \\frac{u^{5}}{5} + C.\n\\]\nConverting: $u = \\tan\\theta = \\sqrt{x^{2}-1}$.\n\\[\n \\int x^{3}\\sqrt{x^{2}-1}\\dx\n = \\frac{(x^{2}-1)^{3/2}}{3} + \\frac{(x^{2}-1)^{5/2}}{5} + C.\n\\]"
+      "solution": "Let $x = \\sec\\theta$, $dx = \\sec\\theta\\tan\\theta\\,d\\theta$,\n$\\sqrt{x^{2}-1} = \\tan\\theta$.\n$$\\begin{aligned}\n\\int x^{3}\\sqrt{x^{2}-1}\\dx\n &= \\int \\sec^{3}\\theta \\cdot \\tan\\theta \\cdot \\sec\\theta\\tan\\theta\\,d\\theta\n = \\int \\sec^{4}\\theta\\tan^{2}\\theta\\,d\\theta.\n\\end{aligned}$$\nWrite $\\sec^{4}\\theta = \\sec^{2}\\theta(1 + \\tan^{2}\\theta)$:\n$$\\begin{aligned}\n&= \\int \\sec^{2}\\theta\\tan^{2}\\theta(1 + \\tan^{2}\\theta)\\,d\\theta\n = \\int (\\tan^{2}\\theta + \\tan^{4}\\theta)\\sec^{2}\\theta\\,d\\theta.\n\\end{aligned}$$\nLet $u = \\tan\\theta$, $du = \\sec^{2}\\theta\\,d\\theta$:\n\\[\n = \\int (u^{2} + u^{4})\\,du = \\frac{u^{3}}{3} + \\frac{u^{5}}{5} + C.\n\\]\nConverting: $u = \\tan\\theta = \\sqrt{x^{2}-1}$.\n\\[\n \\int x^{3}\\sqrt{x^{2}-1}\\dx\n = \\frac{(x^{2}-1)^{3/2}}{3} + \\frac{(x^{2}-1)^{5/2}}{5} + C.\n\\]"
     },
     {
       "type": "heading",
@@ -290,7 +290,7 @@
       "number": "8.21",
       "title": "$\\displaystyle\\int \\sqrt{2x - x^{2}}\\dx$",
       "problem": "Evaluate $\\displaystyle\\int \\sqrt{2x - x^{2}}\\dx$.",
-      "solution": "Complete the square: $2x - x^{2} = -(x^{2} - 2x) = -(x^{2} - 2x + 1 - 1)\n= 1 - (x-1)^{2}$. Let $w = x - 1$:\n\\[\n \\int \\sqrt{1 - w^{2}}\\,dw.\n\\]\nLet $w = \\sin\\theta$, $dw = \\cos\\theta\\,d\\theta$:\n$$\n \\int \\sqrt{1 - \\sin^{2}\\theta}\\cos\\theta\\,d\\theta\n &= \\int \\cos^{2}\\theta\\,d\\theta \\\\\n &= \\frac{\\theta}{2} + \\frac{\\sin\\theta\\cos\\theta}{2} + C \\\\\n &= \\frac{\\arcsin w}{2} + \\frac{w\\sqrt{1-w^{2}}}{2} + C \\\\\n &= \\frac{\\arcsin(x-1)}{2} + \\frac{(x-1)\\sqrt{2x-x^{2}}}{2} + C.\n$$"
+      "solution": "Complete the square: $2x - x^{2} = -(x^{2} - 2x) = -(x^{2} - 2x + 1 - 1)\n= 1 - (x-1)^{2}$. Let $w = x - 1$:\n\\[\n \\int \\sqrt{1 - w^{2}}\\,dw.\n\\]\nLet $w = \\sin\\theta$, $dw = \\cos\\theta\\,d\\theta$:\n$$\\begin{aligned}\n\\int \\sqrt{1 - \\sin^{2}\\theta}\\cos\\theta\\,d\\theta\n &= \\int \\cos^{2}\\theta\\,d\\theta \\\\\n &= \\frac{\\theta}{2} + \\frac{\\sin\\theta\\cos\\theta}{2} + C \\\\\n &= \\frac{\\arcsin w}{2} + \\frac{w\\sqrt{1-w^{2}}}{2} + C \\\\\n &= \\frac{\\arcsin(x-1)}{2} + \\frac{(x-1)\\sqrt{2x-x^{2}}}{2} + C.\n\\end{aligned}$$"
     },
     {
       "type": "example",
@@ -298,7 +298,7 @@
       "number": "8.22",
       "title": "$\\displaystyle\\int \\frac{dx}{(x^{2}+2x+5)^{3/2}}$",
       "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{(x^{2}+2x+5)^{3/2}}$.",
-      "solution": "Complete the square: $x^{2}+2x+5 = (x+1)^{2}+4$. Let $w = x+1$:\n\\[\n \\int \\frac{dw}{(w^{2}+4)^{3/2}}.\n\\]\nLet $w = 2\\tan\\theta$, $(w^{2}+4)^{3/2} = 8\\sec^{3}\\theta$:\n$$\n \\int \\frac{2\\sec^{2}\\theta}{8\\sec^{3}\\theta}\\,d\\theta\n &= \\frac{1}{4}\\int \\cos\\theta\\,d\\theta\n = \\frac{\\sin\\theta}{4} + C.\n$$\nFrom the triangle: $\\sin\\theta = w/\\sqrt{w^{2}+4} = (x+1)/\\sqrt{x^{2}+2x+5}$.\n\\[\n \\int \\frac{dx}{(x^{2}+2x+5)^{3/2}} = \\frac{x+1}{4\\sqrt{x^{2}+2x+5}} + C.\n\\]"
+      "solution": "Complete the square: $x^{2}+2x+5 = (x+1)^{2}+4$. Let $w = x+1$:\n\\[\n \\int \\frac{dw}{(w^{2}+4)^{3/2}}.\n\\]\nLet $w = 2\\tan\\theta$, $(w^{2}+4)^{3/2} = 8\\sec^{3}\\theta$:\n$$\\begin{aligned}\n\\int \\frac{2\\sec^{2}\\theta}{8\\sec^{3}\\theta}\\,d\\theta\n &= \\frac{1}{4}\\int \\cos\\theta\\,d\\theta\n = \\frac{\\sin\\theta}{4} + C.\n\\end{aligned}$$\nFrom the triangle: $\\sin\\theta = w/\\sqrt{w^{2}+4} = (x+1)/\\sqrt{x^{2}+2x+5}$.\n\\[\n \\int \\frac{dx}{(x^{2}+2x+5)^{3/2}} = \\frac{x+1}{4\\sqrt{x^{2}+2x+5}} + C.\n\\]"
     },
     {
       "type": "strategy",
@@ -322,7 +322,7 @@
       "number": "8.23",
       "title": "$\\displaystyle\\int \\frac{dx}{\\sqrt{x^{2}+a^{2}}}$ via hyperbolic substitution",
       "problem": "Evaluate $\\displaystyle\\int \\frac{dx}{\\sqrt{x^{2}+a^{2}}}$ using $x = a\\sinh t$.",
-      "solution": "Let $x = a\\sinh t$, so $dx = a\\cosh t\\,dt$ and\n$\\sqrt{x^{2}+a^{2}} = \\sqrt{a^{2}\\sinh^{2}t + a^{2}} = a\\cosh t$.\n$$\n \\int \\frac{dx}{\\sqrt{x^{2}+a^{2}}}\n &= \\int \\frac{a\\cosh t}{a\\cosh t}\\,dt = \\int dt = t + C \\\\\n &= \\operatorname{arcsinh}\\!\\left(\\frac{x}{a}\\right) + C\n = \\ln\\!\\left(x + \\sqrt{x^{2}+a^{2}}\\right) + C_{1}.\n$$\nThe last step uses the identity\n$\\operatorname{arcsinh}(u) = \\ln(u + \\sqrt{u^{2}+1})$."
+      "solution": "Let $x = a\\sinh t$, so $dx = a\\cosh t\\,dt$ and\n$\\sqrt{x^{2}+a^{2}} = \\sqrt{a^{2}\\sinh^{2}t + a^{2}} = a\\cosh t$.\n$$\\begin{aligned}\n\\int \\frac{dx}{\\sqrt{x^{2}+a^{2}}}\n &= \\int \\frac{a\\cosh t}{a\\cosh t}\\,dt = \\int dt = t + C \\\\\n &= \\operatorname{arcsinh}\\!\\left(\\frac{x}{a}\\right) + C\n = \\ln\\!\\left(x + \\sqrt{x^{2}+a^{2}}\\right) + C_{1}.\n\\end{aligned}$$\nThe last step uses the identity\n$\\operatorname{arcsinh}(u) = \\ln(u + \\sqrt{u^{2}+1})$."
     },
     {
       "type": "historical",

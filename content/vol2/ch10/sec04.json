@@ -28,7 +28,7 @@
       "number": "10.1",
       "title": "Substitution: $e^{-x^{2}}$",
       "problem": "Find the Maclaurin series for $e^{-x^{2}}$.",
-      "solution": "We know $e^{u} = \\displaystyle\\sum_{n=0}^{\\infty}\\frac{u^{n}}{n!}$ for all $u$.\nSubstituting $u = -x^{2}$:\n$$\n e^{-x^{2}} &= \\sum_{n=0}^{\\infty}\\frac{(-x^{2})^{n}}{n!}\n = \\sum_{n=0}^{\\infty}\\frac{(-1)^{n}x^{2n}}{n!} \\\\[4pt]\n &= 1 - x^{2} + \\frac{x^{4}}{2!} - \\frac{x^{6}}{3!} + \\frac{x^{8}}{4!} - \\cdots\n$$\nThis converges for all $x \\in \\R$."
+      "solution": "We know $e^{u} = \\displaystyle\\sum_{n=0}^{\\infty}\\frac{u^{n}}{n!}$ for all $u$.\nSubstituting $u = -x^{2}$:\n$$\\begin{aligned}\ne^{-x^{2}} &= \\sum_{n=0}^{\\infty}\\frac{(-x^{2})^{n}}{n!}\n = \\sum_{n=0}^{\\infty}\\frac{(-1)^{n}x^{2n}}{n!} \\\\[4pt]\n &= 1 - x^{2} + \\frac{x^{4}}{2!} - \\frac{x^{6}}{3!} + \\frac{x^{8}}{4!} - \\cdots\n\\end{aligned}$$\nThis converges for all $x \\in \\R$."
     },
     {
       "type": "example",
@@ -69,7 +69,7 @@
       "number": "10.5",
       "title": "Multiplying series: $e^{x}\\sin x$",
       "problem": "Find the first four nonzero terms of the Maclaurin series for $e^{x}\\sin x$.",
-      "solution": "$$\n e^{x} &= 1 + x + \\frac{x^{2}}{2} + \\frac{x^{3}}{6} + \\frac{x^{4}}{24} + \\cdots \\\\[4pt]\n \\sin x &= x - \\frac{x^{3}}{6} + \\frac{x^{5}}{120} - \\cdots\n$$\nMultiplying (collecting terms by degree):\n$$\n e^{x}\\sin x &= \\left(1 + x + \\frac{x^{2}}{2} + \\frac{x^{3}}{6} + \\cdots\\right)\n \\left(x - \\frac{x^{3}}{6} + \\cdots\\right) \\\\[4pt]\n &= x + x^{2} + \\left(\\frac{1}{2} - \\frac{1}{6}\\right)x^{3}\n + \\left(\\frac{1}{6} - \\frac{1}{6}\\right)x^{4} + \\cdots \\\\[4pt]\n &= x + x^{2} + \\frac{1}{3}x^{3} - \\frac{1}{30}x^{5} + \\cdots\n$$"
+      "solution": "$$\\begin{aligned}\ne^{x} &= 1 + x + \\frac{x^{2}}{2} + \\frac{x^{3}}{6} + \\frac{x^{4}}{24} + \\cdots \\\\[4pt]\n \\sin x &= x - \\frac{x^{3}}{6} + \\frac{x^{5}}{120} - \\cdots\n\\end{aligned}$$\nMultiplying (collecting terms by degree):\n$$\\begin{aligned}\ne^{x}\\sin x &= \\left(1 + x + \\frac{x^{2}}{2} + \\frac{x^{3}}{6} + \\cdots\\right)\n \\left(x - \\frac{x^{3}}{6} + \\cdots\\right) \\\\[4pt]\n &= x + x^{2} + \\left(\\frac{1}{2} - \\frac{1}{6}\\right)x^{3}\n + \\left(\\frac{1}{6} - \\frac{1}{6}\\right)x^{4} + \\cdots \\\\[4pt]\n &= x + x^{2} + \\frac{1}{3}x^{3} - \\frac{1}{30}x^{5} + \\cdots\n\\end{aligned}$$"
     },
     {
       "type": "warning",
@@ -93,7 +93,7 @@
       "number": "10.6",
       "title": "Division: $\\tan x$",
       "problem": "Find the first three nonzero terms of the Maclaurin series for $\\tan x$.",
-      "solution": "We have $\\tan x = \\dfrac{\\sin x}{\\cos x}$. We need to divide:\n\\[\n \\frac{x - \\frac{x^{3}}{6} + \\frac{x^{5}}{120} - \\cdots}\n {1 - \\frac{x^{2}}{2} + \\frac{x^{4}}{24} - \\cdots}\n\\]\nAlternatively, if $\\tan x = a_{1}x + a_{3}x^{3} + a_{5}x^{5} + \\cdots$\n(only odd terms by symmetry), then\n\\[\n \\sin x = \\tan x \\cdot \\cos x.\n\\]\nMatching coefficients:\n$$\n &\\left(a_{1}x + a_{3}x^{3} + a_{5}x^{5} + \\cdots\\right)\n \\left(1 - \\frac{x^{2}}{2} + \\frac{x^{4}}{24} - \\cdots\\right)\n = x - \\frac{x^{3}}{6} + \\frac{x^{5}}{120} - \\cdots\n$$\n\nCoefficient of $x$: $a_{1} = 1$.\n\nCoefficient of $x^{3}$: $a_{3} - \\dfrac{a_{1}}{2} = -\\dfrac{1}{6}$,\nso $a_{3} = -\\dfrac{1}{6} + \\dfrac{1}{2} = \\dfrac{1}{3}$.\n\nCoefficient of $x^{5}$: $a_{5} - \\dfrac{a_{3}}{2} + \\dfrac{a_{1}}{24} = \\dfrac{1}{120}$,\nso $a_{5} = \\dfrac{1}{120} + \\dfrac{1}{6} - \\dfrac{1}{24}\n= \\dfrac{1}{120} + \\dfrac{20}{120} - \\dfrac{5}{120} = \\dfrac{16}{120} = \\dfrac{2}{15}$.\n\nTherefore,\n\\[\n \\tan x = x + \\frac{x^{3}}{3} + \\frac{2x^{5}}{15} + \\cdots\n\\]"
+      "solution": "We have $\\tan x = \\dfrac{\\sin x}{\\cos x}$. We need to divide:\n\\[\n \\frac{x - \\frac{x^{3}}{6} + \\frac{x^{5}}{120} - \\cdots}\n {1 - \\frac{x^{2}}{2} + \\frac{x^{4}}{24} - \\cdots}\n\\]\nAlternatively, if $\\tan x = a_{1}x + a_{3}x^{3} + a_{5}x^{5} + \\cdots$\n(only odd terms by symmetry), then\n\\[\n \\sin x = \\tan x \\cdot \\cos x.\n\\]\nMatching coefficients:\n$$\\begin{aligned}\n&\\left(a_{1}x + a_{3}x^{3} + a_{5}x^{5} + \\cdots\\right)\n \\left(1 - \\frac{x^{2}}{2} + \\frac{x^{4}}{24} - \\cdots\\right)\n = x - \\frac{x^{3}}{6} + \\frac{x^{5}}{120} - \\cdots\n\\end{aligned}$$\n\nCoefficient of $x$: $a_{1} = 1$.\n\nCoefficient of $x^{3}$: $a_{3} - \\dfrac{a_{1}}{2} = -\\dfrac{1}{6}$,\nso $a_{3} = -\\dfrac{1}{6} + \\dfrac{1}{2} = \\dfrac{1}{3}$.\n\nCoefficient of $x^{5}$: $a_{5} - \\dfrac{a_{3}}{2} + \\dfrac{a_{1}}{24} = \\dfrac{1}{120}$,\nso $a_{5} = \\dfrac{1}{120} + \\dfrac{1}{6} - \\dfrac{1}{24}\n= \\dfrac{1}{120} + \\dfrac{20}{120} - \\dfrac{5}{120} = \\dfrac{16}{120} = \\dfrac{2}{15}$.\n\nTherefore,\n\\[\n \\tan x = x + \\frac{x^{3}}{3} + \\frac{2x^{5}}{15} + \\cdots\n\\]"
     },
     {
       "type": "example",
@@ -118,7 +118,7 @@
       "number": "10.8",
       "title": "Limit: $\\displaystyle\\limtozero{x}\\frac{\\sin x - x}{x^{3}}$",
       "problem": "Evaluate $\\displaystyle\\limtozero{x}\\frac{\\sin x - x}{x^{3}}$.",
-      "solution": "Substitute the series for $\\sin x$:\n$$\n \\frac{\\sin x - x}{x^{3}}\n &= \\frac{\\left(x - \\frac{x^{3}}{6} + \\frac{x^{5}}{120} - \\cdots\\right) - x}{x^{3}} \\\\[4pt]\n &= \\frac{-\\frac{x^{3}}{6} + \\frac{x^{5}}{120} - \\cdots}{x^{3}} \\\\[4pt]\n &= -\\frac{1}{6} + \\frac{x^{2}}{120} - \\cdots\n$$\nAs $x \\to 0$, this approaches $-\\dfrac{1}{6}$."
+      "solution": "Substitute the series for $\\sin x$:\n$$\\begin{aligned}\n\\frac{\\sin x - x}{x^{3}}\n &= \\frac{\\left(x - \\frac{x^{3}}{6} + \\frac{x^{5}}{120} - \\cdots\\right) - x}{x^{3}} \\\\[4pt]\n &= \\frac{-\\frac{x^{3}}{6} + \\frac{x^{5}}{120} - \\cdots}{x^{3}} \\\\[4pt]\n &= -\\frac{1}{6} + \\frac{x^{2}}{120} - \\cdots\n\\end{aligned}$$\nAs $x \\to 0$, this approaches $-\\dfrac{1}{6}$."
     },
     {
       "type": "example",
@@ -126,7 +126,7 @@
       "number": "10.9",
       "title": "Limit: $\\displaystyle\\limtozero{x}\\frac{e^{x} - 1 - x}{x^{2}}$",
       "problem": "Evaluate $\\displaystyle\\limtozero{x}\\frac{e^{x} - 1 - x}{x^{2}}$.",
-      "solution": "$$\n \\frac{e^{x} - 1 - x}{x^{2}}\n &= \\frac{\\left(1 + x + \\frac{x^{2}}{2} + \\frac{x^{3}}{6} + \\cdots\\right) - 1 - x}{x^{2}} \\\\[4pt]\n &= \\frac{\\frac{x^{2}}{2} + \\frac{x^{3}}{6} + \\cdots}{x^{2}}\n = \\frac{1}{2} + \\frac{x}{6} + \\cdots \\to \\frac{1}{2}.\n$$"
+      "solution": "$$\\begin{aligned}\n\\frac{e^{x} - 1 - x}{x^{2}}\n &= \\frac{\\left(1 + x + \\frac{x^{2}}{2} + \\frac{x^{3}}{6} + \\cdots\\right) - 1 - x}{x^{2}} \\\\[4pt]\n &= \\frac{\\frac{x^{2}}{2} + \\frac{x^{3}}{6} + \\cdots}{x^{2}}\n = \\frac{1}{2} + \\frac{x}{6} + \\cdots \\to \\frac{1}{2}.\n\\end{aligned}$$"
     },
     {
       "type": "example",
@@ -151,7 +151,7 @@
       "number": "10.11",
       "title": "The Gaussian integral approximation",
       "problem": "Find the first four nonzero terms in the Maclaurin series for\n$\\displaystyle F(x) = \\int_{0}^{x}e^{-t^{2}}\\dt$.",
-      "solution": "From Example [ex:wt-sub-ex2]:\n\\[\n e^{-t^{2}} = 1 - t^{2} + \\frac{t^{4}}{2!} - \\frac{t^{6}}{3!} + \\cdots\n\\]\nIntegrating term by term:\n$$\n F(x) = \\int_{0}^{x}e^{-t^{2}}\\dt\n &= \\left[t - \\frac{t^{3}}{3} + \\frac{t^{5}}{5\\cdot 2!} - \\frac{t^{7}}{7\\cdot 3!} + \\cdots\\right]_{0}^{x} \\\\[4pt]\n &= x - \\frac{x^{3}}{3} + \\frac{x^{5}}{10} - \\frac{x^{7}}{42} + \\cdots\n$$\nThis series converges for all $x$ and provides an excellent way to compute\nvalues of this important function."
+      "solution": "From Example [ex:wt-sub-ex2]:\n\\[\n e^{-t^{2}} = 1 - t^{2} + \\frac{t^{4}}{2!} - \\frac{t^{6}}{3!} + \\cdots\n\\]\nIntegrating term by term:\n$$\\begin{aligned}\nF(x) = \\int_{0}^{x}e^{-t^{2}}\\dt\n &= \\left[t - \\frac{t^{3}}{3} + \\frac{t^{5}}{5\\cdot 2!} - \\frac{t^{7}}{7\\cdot 3!} + \\cdots\\right]_{0}^{x} \\\\[4pt]\n &= x - \\frac{x^{3}}{3} + \\frac{x^{5}}{10} - \\frac{x^{7}}{42} + \\cdots\n\\end{aligned}$$\nThis series converges for all $x$ and provides an excellent way to compute\nvalues of this important function."
     },
     {
       "type": "example",
@@ -167,7 +167,7 @@
       "number": "10.13",
       "title": "Computing a definite integral",
       "problem": "Estimate $\\displaystyle\\int_{0}^{1}e^{-x^{2}}\\dx$ to within $0.001$.",
-      "solution": "From our series:\n\\[\n \\int_{0}^{1}e^{-x^{2}}\\dx = 1 - \\frac{1}{3} + \\frac{1}{10} - \\frac{1}{42} + \\frac{1}{216} - \\cdots\n\\]\nThis is an alternating series, so the error is bounded by the first omitted\nterm. Computing:\n$$\n &1 - 0.333\\overline{3} + 0.1 - 0.0238\\ldots + 0.00463\\ldots - 0.00076\\ldots \\\\\n &\\approx 0.7468 + 0.00463 - 0.00076 \\approx 0.747\n$$\nThe error from stopping here is less than the next term, about $0.0001$.\nThe value is approximately $\\boxed{0.747}$."
+      "solution": "From our series:\n\\[\n \\int_{0}^{1}e^{-x^{2}}\\dx = 1 - \\frac{1}{3} + \\frac{1}{10} - \\frac{1}{42} + \\frac{1}{216} - \\cdots\n\\]\nThis is an alternating series, so the error is bounded by the first omitted\nterm. Computing:\n$$\\begin{aligned}\n&1 - 0.333\\overline{3} + 0.1 - 0.0238\\ldots + 0.00463\\ldots - 0.00076\\ldots \\\\\n &\\approx 0.7468 + 0.00463 - 0.00076 \\approx 0.747\n\\end{aligned}$$\nThe error from stopping here is less than the next term, about $0.0001$.\nThe value is approximately $\\boxed{0.747}$."
     },
     {
       "type": "heading",
@@ -184,7 +184,7 @@
       "number": "10.14",
       "title": "Airy's equation",
       "problem": "Find the first several terms of a power series solution to\n**Airy's equation**: $y'' - xy = 0$.",
-      "solution": "Assume $y = \\displaystyle\\sum_{n=0}^{\\infty}a_{n}x^{n} = a_{0} + a_{1}x + a_{2}x^{2} + a_{3}x^{3} + \\cdots$\n\nThen $y'' = \\displaystyle\\sum_{n=2}^{\\infty}n(n-1)a_{n}x^{n-2}\n= 2a_{2} + 6a_{3}x + 12a_{4}x^{2} + 20a_{5}x^{3} + \\cdots$\n\nAnd $xy = a_{0}x + a_{1}x^{2} + a_{2}x^{3} + a_{3}x^{4} + \\cdots$\n\nSubstituting into $y'' - xy = 0$:\n\\[\n (2a_{2}) + (6a_{3} - a_{0})x + (12a_{4} - a_{1})x^{2} + (20a_{5} - a_{2})x^{3} + \\cdots = 0.\n\\]\nAll coefficients must be zero:\n$$\n 2a_{2} &= 0 \\implies a_{2} = 0 \\\\\n 6a_{3} - a_{0} &= 0 \\implies a_{3} = \\frac{a_{0}}{6} \\\\\n 12a_{4} - a_{1} &= 0 \\implies a_{4} = \\frac{a_{1}}{12} \\\\\n 20a_{5} - a_{2} &= 0 \\implies a_{5} = 0 \\\\\n 30a_{6} - a_{3} &= 0 \\implies a_{6} = \\frac{a_{3}}{30} = \\frac{a_{0}}{180}\n$$\nThe general solution is\n\\[\n y = a_{0}\\left(1 + \\frac{x^{3}}{6} + \\frac{x^{6}}{180} + \\cdots\\right)\n + a_{1}\\left(x + \\frac{x^{4}}{12} + \\cdots\\right),\n\\]\nwhere $a_{0}$ and $a_{1}$ are arbitrary constants (initial conditions)."
+      "solution": "Assume $y = \\displaystyle\\sum_{n=0}^{\\infty}a_{n}x^{n} = a_{0} + a_{1}x + a_{2}x^{2} + a_{3}x^{3} + \\cdots$\n\nThen $y'' = \\displaystyle\\sum_{n=2}^{\\infty}n(n-1)a_{n}x^{n-2}\n= 2a_{2} + 6a_{3}x + 12a_{4}x^{2} + 20a_{5}x^{3} + \\cdots$\n\nAnd $xy = a_{0}x + a_{1}x^{2} + a_{2}x^{3} + a_{3}x^{4} + \\cdots$\n\nSubstituting into $y'' - xy = 0$:\n\\[\n (2a_{2}) + (6a_{3} - a_{0})x + (12a_{4} - a_{1})x^{2} + (20a_{5} - a_{2})x^{3} + \\cdots = 0.\n\\]\nAll coefficients must be zero:\n$$\\begin{aligned}\n2a_{2} &= 0 \\implies a_{2} = 0 \\\\\n 6a_{3} - a_{0} &= 0 \\implies a_{3} = \\frac{a_{0}}{6} \\\\\n 12a_{4} - a_{1} &= 0 \\implies a_{4} = \\frac{a_{1}}{12} \\\\\n 20a_{5} - a_{2} &= 0 \\implies a_{5} = 0 \\\\\n 30a_{6} - a_{3} &= 0 \\implies a_{6} = \\frac{a_{3}}{30} = \\frac{a_{0}}{180}\n\\end{aligned}$$\nThe general solution is\n\\[\n y = a_{0}\\left(1 + \\frac{x^{3}}{6} + \\frac{x^{6}}{180} + \\cdots\\right)\n + a_{1}\\left(x + \\frac{x^{4}}{12} + \\cdots\\right),\n\\]\nwhere $a_{0}$ and $a_{1}$ are arbitrary constants (initial conditions)."
     },
     {
       "type": "example",

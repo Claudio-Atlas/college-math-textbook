@@ -71,7 +71,7 @@
       "number": "7.1",
       "title": "Arc length of $y = x^{3/2}$",
       "problem": "Find the length of the curve $y = x^{3/2}$ from $x = 0$ to $x = 4$.",
-      "solution": "We have $f'(x) = \\frac{3}{2}x^{1/2}$, so \n$[f'(x)]^2 = \\frac{9}{4}x$. Thus:\n$$\n L &= \\defint{0}{4} \\sqrt{1 + \\frac{9}{4}x}\\dx.\n$$\nLet $u = 1 + \\frac{9}{4}x$, so $du = \\frac{9}{4}\\dx$, \n$\\dx = \\frac{4}{9}\\,du$. When $x = 0$, $u = 1$; when $x = 4$, $u = 10$.\n$$\n L &= \\frac{4}{9}\\defint{1}{10} u^{1/2}\\,du \n = \\frac{4}{9}\\cdot\\frac{2}{3}\\left[u^{3/2}\\right]_1^{10} \n = \\frac{8}{27}\\left(10^{3/2} - 1\\right) \\\\\n &= \\frac{8}{27}\\left(10\\sqrt{10} - 1\\right) \\approx 9.07.\n$$"
+      "solution": "We have $f'(x) = \\frac{3}{2}x^{1/2}$, so \n$[f'(x)]^2 = \\frac{9}{4}x$. Thus:\n$$\\begin{aligned}\nL &= \\defint{0}{4} \\sqrt{1 + \\frac{9}{4}x}\\dx.\n\\end{aligned}$$\nLet $u = 1 + \\frac{9}{4}x$, so $du = \\frac{9}{4}\\dx$, \n$\\dx = \\frac{4}{9}\\,du$. When $x = 0$, $u = 1$; when $x = 4$, $u = 10$.\n$$\\begin{aligned}\nL &= \\frac{4}{9}\\defint{1}{10} u^{1/2}\\,du \n = \\frac{4}{9}\\cdot\\frac{2}{3}\\left[u^{3/2}\\right]_1^{10} \n = \\frac{8}{27}\\left(10^{3/2} - 1\\right) \\\\\n &= \\frac{8}{27}\\left(10\\sqrt{10} - 1\\right) \\approx 9.07.\n\\end{aligned}$$"
     },
     {
       "type": "example",
@@ -87,7 +87,7 @@
       "number": "7.3",
       "title": "Arc length of a catenary",
       "problem": "Find the length of the catenary $y = \\cosh x = \\frac{e^x + e^{-x}}{2}$ \nfrom $x = 0$ to $x = \\ln 3$.",
-      "solution": "We have $f'(x) = \\sinh x$, so $[f'(x)]^2 = \\sinh^2 x$ and\n\\[\n 1 + \\sinh^2 x = \\cosh^2 x.\n\\]\nTherefore:\n$$\n L &= \\defint{0}{\\ln 3}\\sqrt{\\cosh^2 x}\\dx \n = \\defint{0}{\\ln 3}\\cosh x\\dx \n = \\bigl[\\sinh x\\bigr]_0^{\\ln 3} \\\\\n &= \\sinh(\\ln 3) - 0 = \\frac{e^{\\ln 3} - e^{-\\ln 3}}{2} \n = \\frac{3 - 1/3}{2} = \\frac{4}{3}.\n$$\nThe catenary—the shape of a freely hanging chain—is one of the rare \ncurves whose arc length integral simplifies beautifully."
+      "solution": "We have $f'(x) = \\sinh x$, so $[f'(x)]^2 = \\sinh^2 x$ and\n\\[\n 1 + \\sinh^2 x = \\cosh^2 x.\n\\]\nTherefore:\n$$\\begin{aligned}\nL &= \\defint{0}{\\ln 3}\\sqrt{\\cosh^2 x}\\dx \n = \\defint{0}{\\ln 3}\\cosh x\\dx \n = \\bigl[\\sinh x\\bigr]_0^{\\ln 3} \\\\\n &= \\sinh(\\ln 3) - 0 = \\frac{e^{\\ln 3} - e^{-\\ln 3}}{2} \n = \\frac{3 - 1/3}{2} = \\frac{4}{3}.\n\\end{aligned}$$\nThe catenary—the shape of a freely hanging chain—is one of the rare \ncurves whose arc length integral simplifies beautifully."
     },
     {
       "type": "historical",
@@ -102,7 +102,7 @@
       "number": "7.4",
       "title": "An arc length requiring substitution",
       "problem": "Find the length of $y = \\frac{x^2}{4} - \\frac{\\ln x}{2}$ from $x = 1$ \nto $x = e$.",
-      "solution": "Compute $f'(x) = \\frac{x}{2} - \\frac{1}{2x}$, so\n\\[\n [f'(x)]^2 = \\left(\\frac{x}{2} - \\frac{1}{2x}\\right)^2 \n = \\frac{x^2}{4} - \\frac{1}{2} + \\frac{1}{4x^2}.\n\\]\nThen $1 + [f'(x)]^2 = \\frac{x^2}{4} + \\frac{1}{2} + \\frac{1}{4x^2} \n= \\left(\\frac{x}{2} + \\frac{1}{2x}\\right)^2$. Therefore:\n$$\n L &= \\defint{1}{e}\\left(\\frac{x}{2} + \\frac{1}{2x}\\right)\\dx \n = \\left[\\frac{x^2}{4} + \\frac{\\ln x}{2}\\right]_1^e \n = \\left(\\frac{e^2}{4} + \\frac{1}{2}\\right) - \\frac{1}{4} \n = \\frac{e^2 + 1}{4}.\n$$"
+      "solution": "Compute $f'(x) = \\frac{x}{2} - \\frac{1}{2x}$, so\n\\[\n [f'(x)]^2 = \\left(\\frac{x}{2} - \\frac{1}{2x}\\right)^2 \n = \\frac{x^2}{4} - \\frac{1}{2} + \\frac{1}{4x^2}.\n\\]\nThen $1 + [f'(x)]^2 = \\frac{x^2}{4} + \\frac{1}{2} + \\frac{1}{4x^2} \n= \\left(\\frac{x}{2} + \\frac{1}{2x}\\right)^2$. Therefore:\n$$\\begin{aligned}\nL &= \\defint{1}{e}\\left(\\frac{x}{2} + \\frac{1}{2x}\\right)\\dx \n = \\left[\\frac{x^2}{4} + \\frac{\\ln x}{2}\\right]_1^e \n = \\left(\\frac{e^2}{4} + \\frac{1}{2}\\right) - \\frac{1}{4} \n = \\frac{e^2 + 1}{4}.\n\\end{aligned}$$"
     },
     {
       "type": "warning",
@@ -126,7 +126,7 @@
       "number": "7.5",
       "title": "Arc length in $y$",
       "problem": "Find the length of $x = \\frac{2}{3}y^{3/2}$ from $y = 0$ to $y = 3$.",
-      "solution": "$g'(y) = y^{1/2}$, so $[g'(y)]^2 = y$ and\n$$\n L &= \\defint{0}{3}\\sqrt{1+y}\\dy = \\left[\\frac{2}{3}(1+y)^{3/2}\\right]_0^3 \n = \\frac{2}{3}(8 - 1) = \\frac{14}{3}.\n$$"
+      "solution": "$g'(y) = y^{1/2}$, so $[g'(y)]^2 = y$ and\n$$\\begin{aligned}\nL &= \\defint{0}{3}\\sqrt{1+y}\\dy = \\left[\\frac{2}{3}(1+y)^{3/2}\\right]_0^3 \n = \\frac{2}{3}(8 - 1) = \\frac{14}{3}.\n\\end{aligned}$$"
     },
     {
       "type": "heading",
@@ -162,7 +162,7 @@
       "number": "7.6",
       "title": "Surface area of a sphere",
       "problem": "Derive the surface area of a sphere of radius $R$.",
-      "solution": "Revolve the semicircle $y = \\sqrt{R^2 - x^2}$ about the $x$-axis. We have\n\\[\n f'(x) = \\frac{-x}{\\sqrt{R^2 - x^2}}, \\qquad\n 1 + [f'(x)]^2 = 1 + \\frac{x^2}{R^2 - x^2} = \\frac{R^2}{R^2 - x^2}.\n\\]\nSo $\\sqrt{1 + [f'(x)]^2} = \\frac{R}{\\sqrt{R^2 - x^2}}$ and\n$$\n S &= 2\\pi\\defint{-R}{R}\\sqrt{R^2-x^2}\\cdot\\frac{R}{\\sqrt{R^2-x^2}}\\dx \n = 2\\pi R\\defint{-R}{R}1\\dx = 2\\pi R\\cdot 2R = 4\\pi R^2.\n$$\nThe formula you know from geometry, proven from calculus."
+      "solution": "Revolve the semicircle $y = \\sqrt{R^2 - x^2}$ about the $x$-axis. We have\n\\[\n f'(x) = \\frac{-x}{\\sqrt{R^2 - x^2}}, \\qquad\n 1 + [f'(x)]^2 = 1 + \\frac{x^2}{R^2 - x^2} = \\frac{R^2}{R^2 - x^2}.\n\\]\nSo $\\sqrt{1 + [f'(x)]^2} = \\frac{R}{\\sqrt{R^2 - x^2}}$ and\n$$\\begin{aligned}\nS &= 2\\pi\\defint{-R}{R}\\sqrt{R^2-x^2}\\cdot\\frac{R}{\\sqrt{R^2-x^2}}\\dx \n = 2\\pi R\\defint{-R}{R}1\\dx = 2\\pi R\\cdot 2R = 4\\pi R^2.\n\\end{aligned}$$\nThe formula you know from geometry, proven from calculus."
     },
     {
       "type": "example",
@@ -170,7 +170,7 @@
       "number": "7.7",
       "title": "Surface area of a cone",
       "problem": "Find the lateral surface area of a cone of radius $r$ and slant height $\\ell$.",
-      "solution": "The cone is generated by revolving $y = (r/\\ell)\\,x$ about the $x$-axis \nfrom $x = 0$ to $x = \\ell$ (viewing the axis along the slant). Actually, \nlet us set it up more naturally: revolve $y = (r/h)\\,x$ from $x = 0$ to \n$x = h$ about the $x$-axis, where $h$ is the height.\n\nWe have $f'(x) = r/h$ and $\\sqrt{1+(r/h)^2} = \\ell/h$ (since \n$\\ell = \\sqrt{r^2+h^2}$).\n$$\n S &= 2\\pi\\defint{0}{h}\\frac{r}{h}x\\cdot\\frac{\\ell}{h}\\dx \n = \\frac{2\\pi r\\ell}{h^2}\\defint{0}{h}x\\dx \n = \\frac{2\\pi r\\ell}{h^2}\\cdot\\frac{h^2}{2} = \\pi r\\ell.\n$$"
+      "solution": "The cone is generated by revolving $y = (r/\\ell)\\,x$ about the $x$-axis \nfrom $x = 0$ to $x = \\ell$ (viewing the axis along the slant). Actually, \nlet us set it up more naturally: revolve $y = (r/h)\\,x$ from $x = 0$ to \n$x = h$ about the $x$-axis, where $h$ is the height.\n\nWe have $f'(x) = r/h$ and $\\sqrt{1+(r/h)^2} = \\ell/h$ (since \n$\\ell = \\sqrt{r^2+h^2}$).\n$$\\begin{aligned}\nS &= 2\\pi\\defint{0}{h}\\frac{r}{h}x\\cdot\\frac{\\ell}{h}\\dx \n = \\frac{2\\pi r\\ell}{h^2}\\defint{0}{h}x\\dx \n = \\frac{2\\pi r\\ell}{h^2}\\cdot\\frac{h^2}{2} = \\pi r\\ell.\n\\end{aligned}$$"
     },
     {
       "type": "heading",

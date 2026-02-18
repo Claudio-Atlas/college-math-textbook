@@ -87,7 +87,7 @@
       "number": "7.1",
       "title": "Shell method --- basic",
       "problem": "Find the volume of the solid obtained by revolving the region under \n$y = x^2$ from $x = 0$ to $x = 2$ about the $y$-axis.",
-      "solution": "Each shell at position $x$ has radius $x$ and height $x^2$:\n$$\n V &= 2\\pi\\defint{0}{2} x \\cdot x^2\\dx = 2\\pi\\defint{0}{2}x^3\\dx \\\\\n &= 2\\pi\\left[\\frac{x^4}{4}\\right]_0^2 = 2\\pi\\cdot 4 = 8\\pi.\n$$\n*Check:* In Example [ex:vol-y-axis], we found $V = 8\\pi$ using \ndisks in $y$. The two methods agree, as they must."
+      "solution": "Each shell at position $x$ has radius $x$ and height $x^2$:\n$$\\begin{aligned}\nV &= 2\\pi\\defint{0}{2} x \\cdot x^2\\dx = 2\\pi\\defint{0}{2}x^3\\dx \\\\\n &= 2\\pi\\left[\\frac{x^4}{4}\\right]_0^2 = 2\\pi\\cdot 4 = 8\\pi.\n\\end{aligned}$$\n*Check:* In Example [ex:vol-y-axis], we found $V = 8\\pi$ using \ndisks in $y$. The two methods agree, as they must."
     },
     {
       "type": "example",
@@ -95,7 +95,7 @@
       "number": "7.2",
       "title": "When shells are clearly easier",
       "problem": "Find the volume of the solid obtained by revolving the region bounded by \n$y = 2x^2 - x^3$ and $y = 0$ about the $y$-axis.",
-      "solution": "First, find where the curve meets $y = 0$: $2x^2 - x^3 = x^2(2-x) = 0$, \nso $x = 0$ and $x = 2$.\n\nUsing the disk/washer method would require solving $y = 2x^2 - x^3$ for \n$x$ in terms of $y$—a cubic equation. Shells avoid this entirely.\n\nEach shell has radius $x$ and height $2x^2 - x^3$:\n$$\n V &= 2\\pi\\defint{0}{2} x(2x^2 - x^3)\\dx = 2\\pi\\defint{0}{2}(2x^3 - x^4)\\dx \\\\\n &= 2\\pi\\left[\\frac{x^4}{2} - \\frac{x^5}{5}\\right]_0^2 \n = 2\\pi\\left(8 - \\frac{32}{5}\\right) \n = 2\\pi\\cdot\\frac{8}{5} = \\frac{16\\pi}{5}.\n$$"
+      "solution": "First, find where the curve meets $y = 0$: $2x^2 - x^3 = x^2(2-x) = 0$, \nso $x = 0$ and $x = 2$.\n\nUsing the disk/washer method would require solving $y = 2x^2 - x^3$ for \n$x$ in terms of $y$—a cubic equation. Shells avoid this entirely.\n\nEach shell has radius $x$ and height $2x^2 - x^3$:\n$$\\begin{aligned}\nV &= 2\\pi\\defint{0}{2} x(2x^2 - x^3)\\dx = 2\\pi\\defint{0}{2}(2x^3 - x^4)\\dx \\\\\n &= 2\\pi\\left[\\frac{x^4}{2} - \\frac{x^5}{5}\\right]_0^2 \n = 2\\pi\\left(8 - \\frac{32}{5}\\right) \n = 2\\pi\\cdot\\frac{8}{5} = \\frac{16\\pi}{5}.\n\\end{aligned}$$"
     },
     {
       "type": "example",
@@ -103,7 +103,7 @@
       "number": "7.3",
       "title": "Shells with the region between two curves",
       "problem": "Find the volume when the region between $y = x$ and $y = x^2$ \n($0 \\le x \\le 1$) is revolved about the $y$-axis.",
-      "solution": "The shell at position $x$ has radius $x$ and height \n$(\\text{top}) - (\\text{bottom}) = x - x^2$:\n$$\n V &= 2\\pi\\defint{0}{1} x(x - x^2)\\dx = 2\\pi\\defint{0}{1}(x^2 - x^3)\\dx \\\\\n &= 2\\pi\\left[\\frac{x^3}{3} - \\frac{x^4}{4}\\right]_0^1 \n = 2\\pi\\left(\\frac{1}{3} - \\frac{1}{4}\\right) = 2\\pi\\cdot\\frac{1}{12} \n = \\frac{\\pi}{6}.\n$$"
+      "solution": "The shell at position $x$ has radius $x$ and height \n$(\\text{top}) - (\\text{bottom}) = x - x^2$:\n$$\\begin{aligned}\nV &= 2\\pi\\defint{0}{1} x(x - x^2)\\dx = 2\\pi\\defint{0}{1}(x^2 - x^3)\\dx \\\\\n &= 2\\pi\\left[\\frac{x^3}{3} - \\frac{x^4}{4}\\right]_0^1 \n = 2\\pi\\left(\\frac{1}{3} - \\frac{1}{4}\\right) = 2\\pi\\cdot\\frac{1}{12} \n = \\frac{\\pi}{6}.\n\\end{aligned}$$"
     },
     {
       "type": "heading",
@@ -129,7 +129,7 @@
       "number": "7.4",
       "title": "Shells about the $x$-axis",
       "problem": "Find the volume when the region bounded by $x = y^2$ and $x = y + 2$ \n(for $-1 \\le y \\le 2$) is revolved about the $x$-axis.",
-      "solution": "At height $y$, the shell extends from $x = y^2$ (left) to $x = y + 2$ \n(right), so the height of the shell is $(y+2) - y^2$. The radius is $|y|$.\n\nSince the region spans $y = -1$ to $y = 2$ and crosses $y = 0$, we split:\n$$\n V &= 2\\pi\\defint{0}{2} y\\bigl[(y+2) - y^2\\bigr]\\dy \n + 2\\pi\\defint{-1}{0} (-y)\\bigl[(y+2) - y^2\\bigr]\\dy.\n$$\nFor the first integral:\n$$\n &2\\pi\\defint{0}{2}(y^2 + 2y - y^3)\\dy \n = 2\\pi\\left[\\frac{y^3}{3} + y^2 - \\frac{y^4}{4}\\right]_0^2 \n = 2\\pi\\left(\\frac{8}{3} + 4 - 4\\right) = \\frac{16\\pi}{3}.\n$$\nFor the second integral:\n$$\n &2\\pi\\defint{-1}{0}(-y^2 - 2y + y^3)\\dy \n = 2\\pi\\left[-\\frac{y^3}{3} - y^2 + \\frac{y^4}{4}\\right]_{-1}^{0} \\\\\n &= 2\\pi\\left[0 - \\left(\\frac{1}{3} - 1 + \\frac{1}{4}\\right)\\right] \n = 2\\pi\\cdot\\frac{5}{12} = \\frac{5\\pi}{6}.\n$$\nTotal: $V = \\dfrac{16\\pi}{3} + \\dfrac{5\\pi}{6} = \\dfrac{32\\pi + 5\\pi}{6} = \\dfrac{37\\pi}{6}$."
+      "solution": "At height $y$, the shell extends from $x = y^2$ (left) to $x = y + 2$ \n(right), so the height of the shell is $(y+2) - y^2$. The radius is $|y|$.\n\nSince the region spans $y = -1$ to $y = 2$ and crosses $y = 0$, we split:\n$$\\begin{aligned}\nV &= 2\\pi\\defint{0}{2} y\\bigl[(y+2) - y^2\\bigr]\\dy \n + 2\\pi\\defint{-1}{0} (-y)\\bigl[(y+2) - y^2\\bigr]\\dy.\n\\end{aligned}$$\nFor the first integral:\n$$\\begin{aligned}\n&2\\pi\\defint{0}{2}(y^2 + 2y - y^3)\\dy \n = 2\\pi\\left[\\frac{y^3}{3} + y^2 - \\frac{y^4}{4}\\right]_0^2 \n = 2\\pi\\left(\\frac{8}{3} + 4 - 4\\right) = \\frac{16\\pi}{3}.\n\\end{aligned}$$\nFor the second integral:\n$$\\begin{aligned}\n&2\\pi\\defint{-1}{0}(-y^2 - 2y + y^3)\\dy \n = 2\\pi\\left[-\\frac{y^3}{3} - y^2 + \\frac{y^4}{4}\\right]_{-1}^{0} \\\\\n &= 2\\pi\\left[0 - \\left(\\frac{1}{3} - 1 + \\frac{1}{4}\\right)\\right] \n = 2\\pi\\cdot\\frac{5}{12} = \\frac{5\\pi}{6}.\n\\end{aligned}$$\nTotal: $V = \\dfrac{16\\pi}{3} + \\dfrac{5\\pi}{6} = \\dfrac{32\\pi + 5\\pi}{6} = \\dfrac{37\\pi}{6}$."
     },
     {
       "type": "heading",
@@ -146,7 +146,7 @@
       "number": "7.5",
       "title": "Shells about the line $x = 3$",
       "problem": "Find the volume when the region under $y = x^2$ from $x = 0$ to $x = 2$ \nis revolved about the line $x = 3$.",
-      "solution": "Each shell at position $x$ has radius $3 - x$ (distance from $x$ to \nthe line $x = 3$) and height $x^2$:\n$$\n V &= 2\\pi\\defint{0}{2}(3-x)\\cdot x^2\\dx \n = 2\\pi\\defint{0}{2}(3x^2 - x^3)\\dx \\\\\n &= 2\\pi\\left[x^3 - \\frac{x^4}{4}\\right]_0^2 \n = 2\\pi(8 - 4) = 8\\pi.\n$$"
+      "solution": "Each shell at position $x$ has radius $3 - x$ (distance from $x$ to \nthe line $x = 3$) and height $x^2$:\n$$\\begin{aligned}\nV &= 2\\pi\\defint{0}{2}(3-x)\\cdot x^2\\dx \n = 2\\pi\\defint{0}{2}(3x^2 - x^3)\\dx \\\\\n &= 2\\pi\\left[x^3 - \\frac{x^4}{4}\\right]_0^2 \n = 2\\pi(8 - 4) = 8\\pi.\n\\end{aligned}$$"
     },
     {
       "type": "heading",

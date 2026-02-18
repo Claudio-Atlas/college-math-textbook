@@ -42,7 +42,7 @@
       "number": "9.1",
       "title": "A simple convergent series",
       "problem": "Evaluate $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{2^{n}}$.",
-      "solution": "The partial sums are:\n$$\n s_{1} &= \\frac{1}{2}, \\\\\n s_{2} &= \\frac{1}{2} + \\frac{1}{4} = \\frac{3}{4}, \\\\\n s_{3} &= \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} = \\frac{7}{8}, \\\\\n &\\vdots \\\\\n s_{N} &= \\frac{1}{2} + \\frac{1}{4} + \\cdots + \\frac{1}{2^{N}}\n = 1 - \\frac{1}{2^{N}}.\n$$\n(We will derive this formula shortly using geometric series.)\nAs $N \\to \\infty$, $s_{N} \\to 1 - 0 = 1$. Therefore,\n\\[\n \\sum_{n=1}^{\\infty}\\frac{1}{2^{n}} = 1.\n\\]"
+      "solution": "The partial sums are:\n$$\\begin{aligned}\ns_{1} &= \\frac{1}{2}, \\\\\n s_{2} &= \\frac{1}{2} + \\frac{1}{4} = \\frac{3}{4}, \\\\\n s_{3} &= \\frac{1}{2} + \\frac{1}{4} + \\frac{1}{8} = \\frac{7}{8}, \\\\\n &\\vdots \\\\\n s_{N} &= \\frac{1}{2} + \\frac{1}{4} + \\cdots + \\frac{1}{2^{N}}\n = 1 - \\frac{1}{2^{N}}.\n\\end{aligned}$$\n(We will derive this formula shortly using geometric series.)\nAs $N \\to \\infty$, $s_{N} \\to 1 - 0 = 1$. Therefore,\n\\[\n \\sum_{n=1}^{\\infty}\\frac{1}{2^{n}} = 1.\n\\]"
     },
     {
       "type": "figure",
@@ -57,7 +57,7 @@
       "number": "9.2",
       "title": "Computing partial sums",
       "problem": "Find the first five partial sums of the series \n$\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)}$.",
-      "solution": "The terms are $a_{n} = \\frac{1}{n(n+1)}$:\n$$\ns_{1} &= \\frac{1}{1 \\cdot 2} = \\frac{1}{2}, \\\\\ns_{2} &= \\frac{1}{2} + \\frac{1}{2 \\cdot 3} = \\frac{1}{2} + \\frac{1}{6} \n= \\frac{2}{3}, \\\\\ns_{3} &= \\frac{2}{3} + \\frac{1}{3 \\cdot 4} = \\frac{2}{3} + \\frac{1}{12} \n= \\frac{3}{4}, \\\\\ns_{4} &= \\frac{3}{4} + \\frac{1}{4 \\cdot 5} = \\frac{3}{4} + \\frac{1}{20} \n= \\frac{4}{5}, \\\\\ns_{5} &= \\frac{4}{5} + \\frac{1}{5 \\cdot 6} = \\frac{4}{5} + \\frac{1}{30} \n= \\frac{5}{6}.\n$$\nWe notice the pattern: $s_{N} = \\frac{N}{N+1}$. This suggests \n$\\limto{N\\to\\infty}s_{N} = 1$, so the series converges to $1$."
+      "solution": "The terms are $a_{n} = \\frac{1}{n(n+1)}$:\n$$\\begin{aligned}\ns_{1} &= \\frac{1}{1 \\cdot 2} = \\frac{1}{2}, \\\\\ns_{2} &= \\frac{1}{2} + \\frac{1}{2 \\cdot 3} = \\frac{1}{2} + \\frac{1}{6} \n= \\frac{2}{3}, \\\\\ns_{3} &= \\frac{2}{3} + \\frac{1}{3 \\cdot 4} = \\frac{2}{3} + \\frac{1}{12} \n= \\frac{3}{4}, \\\\\ns_{4} &= \\frac{3}{4} + \\frac{1}{4 \\cdot 5} = \\frac{3}{4} + \\frac{1}{20} \n= \\frac{4}{5}, \\\\\ns_{5} &= \\frac{4}{5} + \\frac{1}{5 \\cdot 6} = \\frac{4}{5} + \\frac{1}{30} \n= \\frac{5}{6}.\n\\end{aligned}$$\nWe notice the pattern: $s_{N} = \\frac{N}{N+1}$. This suggests \n$\\limto{N\\to\\infty}s_{N} = 1$, so the series converges to $1$."
     },
     {
       "type": "heading",
@@ -150,7 +150,7 @@
       "number": "9.9",
       "title": "Telescoping series",
       "problem": "Evaluate $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)}$.",
-      "solution": "Use partial fractions:\n\\[\n \\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}.\n\\]\nThe partial sum is:\n$$\n s_{N} &= \\sum_{n=1}^{N}\\left(\\frac{1}{n} - \\frac{1}{n+1}\\right) \\\\\n &= \\left(1 - \\frac{1}{2}\\right)\n + \\left(\\frac{1}{2} - \\frac{1}{3}\\right)\n + \\left(\\frac{1}{3} - \\frac{1}{4}\\right)\n + \\cdots\n + \\left(\\frac{1}{N} - \\frac{1}{N+1}\\right) \\\\\n &= 1 - \\frac{1}{N+1}.\n$$\nMost terms cancel (telescope), leaving only the first and last. As\n$N \\to \\infty$:\n\\[\n \\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)} = 1 - 0 = 1.\n\\]"
+      "solution": "Use partial fractions:\n\\[\n \\frac{1}{n(n+1)} = \\frac{1}{n} - \\frac{1}{n+1}.\n\\]\nThe partial sum is:\n$$\\begin{aligned}\ns_{N} &= \\sum_{n=1}^{N}\\left(\\frac{1}{n} - \\frac{1}{n+1}\\right) \\\\\n &= \\left(1 - \\frac{1}{2}\\right)\n + \\left(\\frac{1}{2} - \\frac{1}{3}\\right)\n + \\left(\\frac{1}{3} - \\frac{1}{4}\\right)\n + \\cdots\n + \\left(\\frac{1}{N} - \\frac{1}{N+1}\\right) \\\\\n &= 1 - \\frac{1}{N+1}.\n\\end{aligned}$$\nMost terms cancel (telescope), leaving only the first and last. As\n$N \\to \\infty$:\n\\[\n \\sum_{n=1}^{\\infty}\\frac{1}{n(n+1)} = 1 - 0 = 1.\n\\]"
     },
     {
       "type": "example",
@@ -158,7 +158,7 @@
       "number": "9.10",
       "title": "Another telescoping series",
       "problem": "Evaluate $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{1}{n(n+2)}$.",
-      "solution": "Partial fractions:\n\\[\n \\frac{1}{n(n+2)} = \\frac{1}{2}\\left(\\frac{1}{n} - \\frac{1}{n+2}\\right).\n\\]\nThe partial sum is:\n$$\n s_{N} &= \\frac{1}{2}\\sum_{n=1}^{N}\\left(\\frac{1}{n} - \\frac{1}{n+2}\\right) \\\\\n &= \\frac{1}{2}\\left[\\left(1 - \\frac{1}{3}\\right)\n + \\left(\\frac{1}{2} - \\frac{1}{4}\\right)\n + \\left(\\frac{1}{3} - \\frac{1}{5}\\right)\n + \\cdots\n + \\left(\\frac{1}{N} - \\frac{1}{N+2}\\right)\\right].\n$$\nGrouping carefully: most terms cancel except $1$, $\\frac{1}{2}$,\n$\\frac{1}{N+1}$, and $\\frac{1}{N+2}$. As $N \\to \\infty$:\n\\[\n s_{N} \\to \\frac{1}{2}\\left(1 + \\frac{1}{2}\\right)\n = \\frac{1}{2} \\cdot \\frac{3}{2} = \\frac{3}{4}.\n\\]"
+      "solution": "Partial fractions:\n\\[\n \\frac{1}{n(n+2)} = \\frac{1}{2}\\left(\\frac{1}{n} - \\frac{1}{n+2}\\right).\n\\]\nThe partial sum is:\n$$\\begin{aligned}\ns_{N} &= \\frac{1}{2}\\sum_{n=1}^{N}\\left(\\frac{1}{n} - \\frac{1}{n+2}\\right) \\\\\n &= \\frac{1}{2}\\left[\\left(1 - \\frac{1}{3}\\right)\n + \\left(\\frac{1}{2} - \\frac{1}{4}\\right)\n + \\left(\\frac{1}{3} - \\frac{1}{5}\\right)\n + \\cdots\n + \\left(\\frac{1}{N} - \\frac{1}{N+2}\\right)\\right].\n\\end{aligned}$$\nGrouping carefully: most terms cancel except $1$, $\\frac{1}{2}$,\n$\\frac{1}{N+1}$, and $\\frac{1}{N+2}$. As $N \\to \\infty$:\n\\[\n s_{N} \\to \\frac{1}{2}\\left(1 + \\frac{1}{2}\\right)\n = \\frac{1}{2} \\cdot \\frac{3}{2} = \\frac{3}{4}.\n\\]"
     },
     {
       "type": "example",
@@ -182,7 +182,7 @@
       "number": "9.13",
       "title": "Logarithmic telescoping",
       "problem": "Evaluate $\\displaystyle\\sum_{n=2}^{\\infty}\\ln\\frac{n}{n-1}$.",
-      "solution": "Since $\\ln\\frac{n}{n-1} = \\ln n - \\ln(n-1)$, the partial sum is:\n$$\ns_{N} &= \\sum_{n=2}^{N}(\\ln n - \\ln(n-1)) \\\\\n&= (\\ln 2 - \\ln 1) + (\\ln 3 - \\ln 2) + (\\ln 4 - \\ln 3) + \\cdots + \n(\\ln N - \\ln(N-1)) \\\\\n&= \\ln N - \\ln 1 = \\ln N.\n$$\n\nAs $N \\to \\infty$, $\\ln N \\to \\infty$. The series **diverges**."
+      "solution": "Since $\\ln\\frac{n}{n-1} = \\ln n - \\ln(n-1)$, the partial sum is:\n$$\\begin{aligned}\ns_{N} &= \\sum_{n=2}^{N}(\\ln n - \\ln(n-1)) \\\\\n&= (\\ln 2 - \\ln 1) + (\\ln 3 - \\ln 2) + (\\ln 4 - \\ln 3) + \\cdots + \n(\\ln N - \\ln(N-1)) \\\\\n&= \\ln N - \\ln 1 = \\ln N.\n\\end{aligned}$$\n\nAs $N \\to \\infty$, $\\ln N \\to \\infty$. The series **diverges**."
     },
     {
       "type": "heading",
@@ -199,7 +199,7 @@
     },
     {
       "type": "proof",
-      "content": "Group the terms:\n$$\n \\sum_{n=1}^{\\infty}\\frac{1}{n}\n &= 1 + \\frac{1}{2}\n + \\left(\\frac{1}{3} + \\frac{1}{4}\\right)\n + \\left(\\frac{1}{5} + \\frac{1}{6} + \\frac{1}{7} + \\frac{1}{8}\\right)\n + \\cdots \\\\\n &> 1 + \\frac{1}{2}\n + \\left(\\frac{1}{4} + \\frac{1}{4}\\right)\n + \\left(\\frac{1}{8} + \\frac{1}{8} + \\frac{1}{8} + \\frac{1}{8}\\right)\n + \\cdots \\\\\n &= 1 + \\frac{1}{2} + \\frac{1}{2} + \\frac{1}{2} + \\cdots.\n$$\nThis last sum has infinitely many $\\frac{1}{2}$'s, so it diverges. Therefore,\nthe harmonic series diverges."
+      "content": "Group the terms:\n$$\\begin{aligned}\n\\sum_{n=1}^{\\infty}\\frac{1}{n}\n &= 1 + \\frac{1}{2}\n + \\left(\\frac{1}{3} + \\frac{1}{4}\\right)\n + \\left(\\frac{1}{5} + \\frac{1}{6} + \\frac{1}{7} + \\frac{1}{8}\\right)\n + \\cdots \\\\\n &> 1 + \\frac{1}{2}\n + \\left(\\frac{1}{4} + \\frac{1}{4}\\right)\n + \\left(\\frac{1}{8} + \\frac{1}{8} + \\frac{1}{8} + \\frac{1}{8}\\right)\n + \\cdots \\\\\n &= 1 + \\frac{1}{2} + \\frac{1}{2} + \\frac{1}{2} + \\cdots.\n\\end{aligned}$$\nThis last sum has infinitely many $\\frac{1}{2}$'s, so it diverges. Therefore,\nthe harmonic series diverges."
     },
     {
       "type": "paragraph",
@@ -262,7 +262,7 @@
       "number": "9.17",
       "title": "Evaluating a mixed series",
       "problem": "Evaluate $\\displaystyle\\sum_{n=1}^{\\infty}\\frac{2 \\cdot 3^{n} + 5}{4^{n}}$.",
-      "solution": "Split the series:\n\\[\n \\sum_{n=1}^{\\infty}\\frac{2 \\cdot 3^{n} + 5}{4^{n}}\n = 2\\sum_{n=1}^{\\infty}\\left(\\frac{3}{4}\\right)^{n}\n + 5\\sum_{n=1}^{\\infty}\\left(\\frac{1}{4}\\right)^{n}.\n\\]\nBoth are geometric series:\n$$\n \\sum_{n=1}^{\\infty}\\left(\\frac{3}{4}\\right)^{n}\n &= \\frac{3/4}{1-3/4} = 3, \\\\\n \\sum_{n=1}^{\\infty}\\left(\\frac{1}{4}\\right)^{n}\n &= \\frac{1/4}{1-1/4} = \\frac{1}{3}.\n$$\nTherefore, the sum is $2(3) + 5\\left(\\frac{1}{3}\\right) = 6 + \\frac{5}{3}\n= \\frac{23}{3}$."
+      "solution": "Split the series:\n\\[\n \\sum_{n=1}^{\\infty}\\frac{2 \\cdot 3^{n} + 5}{4^{n}}\n = 2\\sum_{n=1}^{\\infty}\\left(\\frac{3}{4}\\right)^{n}\n + 5\\sum_{n=1}^{\\infty}\\left(\\frac{1}{4}\\right)^{n}.\n\\]\nBoth are geometric series:\n$$\\begin{aligned}\n\\sum_{n=1}^{\\infty}\\left(\\frac{3}{4}\\right)^{n}\n &= \\frac{3/4}{1-3/4} = 3, \\\\\n \\sum_{n=1}^{\\infty}\\left(\\frac{1}{4}\\right)^{n}\n &= \\frac{1/4}{1-1/4} = \\frac{1}{3}.\n\\end{aligned}$$\nTherefore, the sum is $2(3) + 5\\left(\\frac{1}{3}\\right) = 6 + \\frac{5}{3}\n= \\frac{23}{3}$."
     },
     {
       "type": "example",

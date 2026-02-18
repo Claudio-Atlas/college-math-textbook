@@ -80,7 +80,7 @@
     },
     {
       "type": "proof",
-      "content": "$$\n \\cosh^2 x - \\sinh^2 x\n &= \\left(\\frac{e^x + e^{-x}}{2}\\right)^{\\!2}\n - \\left(\\frac{e^x - e^{-x}}{2}\\right)^{\\!2} \\\\\n &= \\frac{e^{2x} + 2 + e^{-2x}}{4}\n - \\frac{e^{2x} - 2 + e^{-2x}}{4}\n = \\frac{4}{4} = 1.\n$$"
+      "content": "$$\\begin{aligned}\n\\cosh^2 x - \\sinh^2 x\n &= \\left(\\frac{e^x + e^{-x}}{2}\\right)^{\\!2}\n - \\left(\\frac{e^x - e^{-x}}{2}\\right)^{\\!2} \\\\\n &= \\frac{e^{2x} + 2 + e^{-2x}}{4}\n - \\frac{e^{2x} - 2 + e^{-2x}}{4}\n = \\frac{4}{4} = 1.\n\\end{aligned}$$"
     },
     {
       "type": "paragraph",
@@ -104,7 +104,7 @@
       "id": "theorem-7.2",
       "number": "7.2",
       "title": "Hyperbolic Derivatives",
-      "content": "$$\n \\deriv{}{x}[\\sinh x] &= \\cosh x\n & \\deriv{}{x}[\\cosh x] &= \\sinh x \\\\[4pt]\n \\deriv{}{x}[\\tanh x] &= \\operatorname{sech}^2 x\n & \\deriv{}{x}[\\coth x] &= -\\operatorname{csch}^2 x \\\\[4pt]\n \\deriv{}{x}[\\operatorname{sech} x] &= -\\operatorname{sech} x\\,\\tanh x\n & \\deriv{}{x}[\\operatorname{csch} x] &= -\\operatorname{csch} x\\,\\coth x\n$$",
+      "content": "$$\\begin{aligned}\n\\deriv{}{x}[\\sinh x] &= \\cosh x\n & \\deriv{}{x}[\\cosh x] &= \\sinh x \\\\[4pt]\n \\deriv{}{x}[\\tanh x] &= \\operatorname{sech}^2 x\n & \\deriv{}{x}[\\coth x] &= -\\operatorname{csch}^2 x \\\\[4pt]\n \\deriv{}{x}[\\operatorname{sech} x] &= -\\operatorname{sech} x\\,\\tanh x\n & \\deriv{}{x}[\\operatorname{csch} x] &= -\\operatorname{csch} x\\,\\coth x\n\\end{aligned}$$",
       "label": "Theorem"
     },
     {
@@ -133,7 +133,7 @@
       "id": "definition-7.3",
       "number": "7.3",
       "title": "Inverse Hyperbolic Functions",
-      "content": "$$\n \\sinh^{-1} x &= \\ln\\!\\left(x + \\sqrt{x^2+1}\\right),\n &\\quad& x \\in \\R. \\\\\n \\cosh^{-1} x &= \\ln\\!\\left(x + \\sqrt{x^2-1}\\right),\n &\\quad& x \\ge 1. \\\\\n \\tanh^{-1} x &= \\frac{1}{2}\\ln\\!\\left(\\frac{1+x}{1-x}\\right),\n &\\quad& -1 < x < 1.\n$$"
+      "content": "$$\\begin{aligned}\n\\sinh^{-1} x &= \\ln\\!\\left(x + \\sqrt{x^2+1}\\right),\n &\\quad& x \\in \\R. \\\\\n \\cosh^{-1} x &= \\ln\\!\\left(x + \\sqrt{x^2-1}\\right),\n &\\quad& x \\ge 1. \\\\\n \\tanh^{-1} x &= \\frac{1}{2}\\ln\\!\\left(\\frac{1+x}{1-x}\\right),\n &\\quad& -1 < x < 1.\n\\end{aligned}$$"
     },
     {
       "type": "paragraph",
@@ -156,7 +156,7 @@
       "id": "theorem-7.3",
       "number": "7.3",
       "title": "Derivatives of Inverse Hyperbolic Functions",
-      "content": "$$\n \\deriv{}{x}[\\sinh^{-1} x] &= \\frac{1}{\\sqrt{x^2+1}}\n & \\deriv{}{x}[\\cosh^{-1} x] &= \\frac{1}{\\sqrt{x^2-1}},\\; x > 1 \\\\[6pt]\n \\deriv{}{x}[\\tanh^{-1} x] &= \\frac{1}{1-x^2},\\; \\abs{x} < 1\n$$",
+      "content": "$$\\begin{aligned}\n\\deriv{}{x}[\\sinh^{-1} x] &= \\frac{1}{\\sqrt{x^2+1}}\n & \\deriv{}{x}[\\cosh^{-1} x] &= \\frac{1}{\\sqrt{x^2-1}},\\; x > 1 \\\\[6pt]\n \\deriv{}{x}[\\tanh^{-1} x] &= \\frac{1}{1-x^2},\\; \\abs{x} < 1\n\\end{aligned}$$",
       "label": "Theorem"
     },
     {
@@ -189,7 +189,7 @@
       "number": "7.3",
       "title": "Arc length of a catenary",
       "problem": "Find the arc length of $y = a\\cosh(x/a)$ from $x = 0$ to $x = b$.",
-      "solution": "From Chapter 6, the arc length is $L = \\defint{0}{b}\\sqrt{1+(y')^2}\\dx$.\nWe have $y' = \\sinh(x/a)$, so\n$$\n L &= \\defint{0}{b}\\sqrt{1+\\sinh^2(x/a)}\\dx\n = \\defint{0}{b}\\sqrt{\\cosh^2(x/a)}\\dx \\\\\n &= \\defint{0}{b}\\cosh(x/a)\\dx\n = a\\sinh(x/a)\\Big|_0^b\n = a\\sinh(b/a).\n$$\nThe identity $\\cosh^2 u - \\sinh^2 u = 1$ made the square root collapse\nperfectly—a fitting conclusion to a chapter about inverse functions and\nthe beautiful relationships between them."
+      "solution": "From Chapter 6, the arc length is $L = \\defint{0}{b}\\sqrt{1+(y')^2}\\dx$.\nWe have $y' = \\sinh(x/a)$, so\n$$\\begin{aligned}\nL &= \\defint{0}{b}\\sqrt{1+\\sinh^2(x/a)}\\dx\n = \\defint{0}{b}\\sqrt{\\cosh^2(x/a)}\\dx \\\\\n &= \\defint{0}{b}\\cosh(x/a)\\dx\n = a\\sinh(x/a)\\Big|_0^b\n = a\\sinh(b/a).\n\\end{aligned}$$\nThe identity $\\cosh^2 u - \\sinh^2 u = 1$ made the square root collapse\nperfectly—a fitting conclusion to a chapter about inverse functions and\nthe beautiful relationships between them."
     }
   ],
   "marginNotes": [

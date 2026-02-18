@@ -66,7 +66,7 @@
       "number": "7.1",
       "title": "Volume of a cone",
       "problem": "Find the volume of the cone obtained by revolving the line $y = \\dfrac{r}{h}\\,x$ \nabout the $x$-axis, from $x = 0$ to $x = h$.",
-      "solution": "Each cross-sectional disk has radius $f(x) = (r/h)\\,x$.\n$$\n V &= \\pi\\defint{0}{h}\\left(\\frac{r}{h}\\,x\\right)^2\\dx \n = \\pi\\,\\frac{r^2}{h^2}\\defint{0}{h} x^2\\dx \\\\\n &= \\pi\\,\\frac{r^2}{h^2}\\cdot\\frac{h^3}{3} = \\frac{1}{3}\\pi r^2 h.\n$$\nThis confirms the classical formula: the volume of a cone is one-third the \nvolume of the enclosing cylinder."
+      "solution": "Each cross-sectional disk has radius $f(x) = (r/h)\\,x$.\n$$\\begin{aligned}\nV &= \\pi\\defint{0}{h}\\left(\\frac{r}{h}\\,x\\right)^2\\dx \n = \\pi\\,\\frac{r^2}{h^2}\\defint{0}{h} x^2\\dx \\\\\n &= \\pi\\,\\frac{r^2}{h^2}\\cdot\\frac{h^3}{3} = \\frac{1}{3}\\pi r^2 h.\n\\end{aligned}$$\nThis confirms the classical formula: the volume of a cone is one-third the \nvolume of the enclosing cylinder."
     },
     {
       "type": "example",
@@ -74,7 +74,7 @@
       "number": "7.2",
       "title": "Volume of a sphere",
       "problem": "Derive the volume of a sphere of radius $R$ by revolving a semicircle about \nthe $x$-axis.",
-      "solution": "The semicircle $y = \\sqrt{R^2 - x^2}$ extends from $x = -R$ to $x = R$. \nRevolving about the $x$-axis:\n$$\n V &= \\pi\\defint{-R}{R}\\left(\\sqrt{R^2 - x^2}\\right)^2\\dx \n = \\pi\\defint{-R}{R}(R^2 - x^2)\\dx \\\\\n &= \\pi\\left[R^2 x - \\frac{x^3}{3}\\right]_{-R}^{R} \n = \\pi\\left[\\left(R^3 - \\frac{R^3}{3}\\right) \n - \\left(-R^3 + \\frac{R^3}{3}\\right)\\right] \\\\\n &= \\pi\\left[\\frac{2R^3}{3} + \\frac{2R^3}{3}\\right] \n = \\frac{4}{3}\\pi R^3.\n$$\nThe formula you memorized in geometry—derived from first principles."
+      "solution": "The semicircle $y = \\sqrt{R^2 - x^2}$ extends from $x = -R$ to $x = R$. \nRevolving about the $x$-axis:\n$$\\begin{aligned}\nV &= \\pi\\defint{-R}{R}\\left(\\sqrt{R^2 - x^2}\\right)^2\\dx \n = \\pi\\defint{-R}{R}(R^2 - x^2)\\dx \\\\\n &= \\pi\\left[R^2 x - \\frac{x^3}{3}\\right]_{-R}^{R} \n = \\pi\\left[\\left(R^3 - \\frac{R^3}{3}\\right) \n - \\left(-R^3 + \\frac{R^3}{3}\\right)\\right] \\\\\n &= \\pi\\left[\\frac{2R^3}{3} + \\frac{2R^3}{3}\\right] \n = \\frac{4}{3}\\pi R^3.\n\\end{aligned}$$\nThe formula you memorized in geometry—derived from first principles."
     },
     {
       "type": "paragraph",
@@ -86,7 +86,7 @@
       "number": "7.3",
       "title": "Revolution of a specific curve",
       "problem": "Find the volume of the solid obtained by revolving $y = \\sqrt{x}$ about \nthe $x$-axis on $[0, 4]$.",
-      "solution": "$$\n V &= \\pi\\defint{0}{4}\\left(\\sqrt{x}\\right)^2\\dx \n = \\pi\\defint{0}{4} x\\dx \n = \\pi\\left[\\frac{x^2}{2}\\right]_0^4 \n = \\pi\\cdot 8 = 8\\pi.\n$$"
+      "solution": "$$\\begin{aligned}\nV &= \\pi\\defint{0}{4}\\left(\\sqrt{x}\\right)^2\\dx \n = \\pi\\defint{0}{4} x\\dx \n = \\pi\\left[\\frac{x^2}{2}\\right]_0^4 \n = \\pi\\cdot 8 = 8\\pi.\n\\end{aligned}$$"
     },
     {
       "type": "heading",
@@ -129,7 +129,7 @@
       "number": "7.4",
       "title": "Washer method --- basic",
       "problem": "Find the volume of the solid obtained by revolving the region between \n$y = x^2$ and $y = \\sqrt{x}$ about the $x$-axis.",
-      "solution": "The curves intersect where $x^2 = \\sqrt{x}$, i.e., $x^4 = x$, so \n$x(x^3 - 1) = 0$, giving $x = 0, 1$.\n\nOn $[0,1]$, $\\sqrt{x} \\ge x^2$ (check $x = 1/4$: $1/2 > 1/16$). \nThus $R(x) = \\sqrt{x}$ (outer) and $r(x) = x^2$ (inner).\n$$\n V &= \\pi\\defint{0}{1}\\bigl[(\\sqrt{x})^2 - (x^2)^2\\bigr]\\dx \n = \\pi\\defint{0}{1}(x - x^4)\\dx \\\\\n &= \\pi\\left[\\frac{x^2}{2} - \\frac{x^5}{5}\\right]_0^1 \n = \\pi\\left(\\frac{1}{2} - \\frac{1}{5}\\right) = \\frac{3\\pi}{10}.\n$$"
+      "solution": "The curves intersect where $x^2 = \\sqrt{x}$, i.e., $x^4 = x$, so \n$x(x^3 - 1) = 0$, giving $x = 0, 1$.\n\nOn $[0,1]$, $\\sqrt{x} \\ge x^2$ (check $x = 1/4$: $1/2 > 1/16$). \nThus $R(x) = \\sqrt{x}$ (outer) and $r(x) = x^2$ (inner).\n$$\\begin{aligned}\nV &= \\pi\\defint{0}{1}\\bigl[(\\sqrt{x})^2 - (x^2)^2\\bigr]\\dx \n = \\pi\\defint{0}{1}(x - x^4)\\dx \\\\\n &= \\pi\\left[\\frac{x^2}{2} - \\frac{x^5}{5}\\right]_0^1 \n = \\pi\\left(\\frac{1}{2} - \\frac{1}{5}\\right) = \\frac{3\\pi}{10}.\n\\end{aligned}$$"
     },
     {
       "type": "example",
@@ -137,7 +137,7 @@
       "number": "7.5",
       "title": "Volume of the region between two parabolas",
       "problem": "Find the volume when the region enclosed by $y = x$ and $y = x^2$ is \nrevolved about the $x$-axis.",
-      "solution": "Intersection: $x = x^2$ gives $x = 0, 1$. On $[0,1]$, $x \\ge x^2$, so \n$R(x) = x$ and $r(x) = x^2$.\n$$\n V &= \\pi\\defint{0}{1}(x^2 - x^4)\\dx \n = \\pi\\left[\\frac{x^3}{3} - \\frac{x^5}{5}\\right]_0^1 \n = \\pi\\left(\\frac{1}{3} - \\frac{1}{5}\\right) = \\frac{2\\pi}{15}.\n$$"
+      "solution": "Intersection: $x = x^2$ gives $x = 0, 1$. On $[0,1]$, $x \\ge x^2$, so \n$R(x) = x$ and $r(x) = x^2$.\n$$\\begin{aligned}\nV &= \\pi\\defint{0}{1}(x^2 - x^4)\\dx \n = \\pi\\left[\\frac{x^3}{3} - \\frac{x^5}{5}\\right]_0^1 \n = \\pi\\left(\\frac{1}{3} - \\frac{1}{5}\\right) = \\frac{2\\pi}{15}.\n\\end{aligned}$$"
     },
     {
       "type": "heading",
@@ -185,7 +185,7 @@
       "number": "7.7",
       "title": "Revolution about $y = 4$",
       "problem": "Find the volume of the solid obtained by revolving the region bounded by \n$y = x^2$, $y = 0$, $x = 0$, and $x = 2$ about the line $y = 4$.",
-      "solution": "For each $x$ in $[0,2]$, the cross-section perpendicular to the $x$-axis \nis a washer:\n\n- Outer radius: distance from $y = 0$ to $y = 4$: $R = 4$.\n\n- Inner radius: distance from $y = x^2$ to $y = 4$: $r = 4 - x^2$.\n$$\n V &= \\pi\\defint{0}{2}\\bigl[4^2 - (4 - x^2)^2\\bigr]\\dx \\\\\n &= \\pi\\defint{0}{2}\\bigl[16 - (16 - 8x^2 + x^4)\\bigr]\\dx \\\\\n &= \\pi\\defint{0}{2}(8x^2 - x^4)\\dx \\\\\n &= \\pi\\left[\\frac{8x^3}{3} - \\frac{x^5}{5}\\right]_0^2 \n = \\pi\\left(\\frac{64}{3} - \\frac{32}{5}\\right) \n = \\pi\\cdot\\frac{224}{15} = \\frac{224\\pi}{15}.\n$$"
+      "solution": "For each $x$ in $[0,2]$, the cross-section perpendicular to the $x$-axis \nis a washer:\n\n- Outer radius: distance from $y = 0$ to $y = 4$: $R = 4$.\n\n- Inner radius: distance from $y = x^2$ to $y = 4$: $r = 4 - x^2$.\n$$\\begin{aligned}\nV &= \\pi\\defint{0}{2}\\bigl[4^2 - (4 - x^2)^2\\bigr]\\dx \\\\\n &= \\pi\\defint{0}{2}\\bigl[16 - (16 - 8x^2 + x^4)\\bigr]\\dx \\\\\n &= \\pi\\defint{0}{2}(8x^2 - x^4)\\dx \\\\\n &= \\pi\\left[\\frac{8x^3}{3} - \\frac{x^5}{5}\\right]_0^2 \n = \\pi\\left(\\frac{64}{3} - \\frac{32}{5}\\right) \n = \\pi\\cdot\\frac{224}{15} = \\frac{224\\pi}{15}.\n\\end{aligned}$$"
     },
     {
       "type": "example",
@@ -193,7 +193,7 @@
       "number": "7.8",
       "title": "Revolution about $y = -1$",
       "problem": "Find the volume when the region between $y = \\sqrt{x}$ and $y = x$ \n($0 \\le x \\le 1$) is revolved about the line $y = -1$.",
-      "solution": "On $[0,1]$, $\\sqrt{x} \\ge x$. Each curve's distance from $y = -1$ is \nshifted up by $1$:\n\n- Outer radius: $R = \\sqrt{x} - (-1) = \\sqrt{x} + 1$.\n\n- Inner radius: $r = x - (-1) = x + 1$.\n$$\n V &= \\pi\\defint{0}{1}\\bigl[(\\sqrt{x}+1)^2 - (x+1)^2\\bigr]\\dx \\\\\n &= \\pi\\defint{0}{1}\\bigl[(x + 2\\sqrt{x} + 1) - (x^2 + 2x + 1)\\bigr]\\dx \\\\\n &= \\pi\\defint{0}{1}(x + 2\\sqrt{x} - x^2 - 2x)\\dx \\\\\n &= \\pi\\defint{0}{1}(2x^{1/2} - x - x^2)\\dx \\\\\n &= \\pi\\left[\\frac{4}{3}x^{3/2} - \\frac{x^2}{2} - \\frac{x^3}{3}\\right]_0^1 \n = \\pi\\left(\\frac{4}{3} - \\frac{1}{2} - \\frac{1}{3}\\right) \n = \\pi\\cdot\\frac{1}{2} = \\frac{\\pi}{2}.\n$$"
+      "solution": "On $[0,1]$, $\\sqrt{x} \\ge x$. Each curve's distance from $y = -1$ is \nshifted up by $1$:\n\n- Outer radius: $R = \\sqrt{x} - (-1) = \\sqrt{x} + 1$.\n\n- Inner radius: $r = x - (-1) = x + 1$.\n$$\\begin{aligned}\nV &= \\pi\\defint{0}{1}\\bigl[(\\sqrt{x}+1)^2 - (x+1)^2\\bigr]\\dx \\\\\n &= \\pi\\defint{0}{1}\\bigl[(x + 2\\sqrt{x} + 1) - (x^2 + 2x + 1)\\bigr]\\dx \\\\\n &= \\pi\\defint{0}{1}(x + 2\\sqrt{x} - x^2 - 2x)\\dx \\\\\n &= \\pi\\defint{0}{1}(2x^{1/2} - x - x^2)\\dx \\\\\n &= \\pi\\left[\\frac{4}{3}x^{3/2} - \\frac{x^2}{2} - \\frac{x^3}{3}\\right]_0^1 \n = \\pi\\left(\\frac{4}{3} - \\frac{1}{2} - \\frac{1}{3}\\right) \n = \\pi\\cdot\\frac{1}{2} = \\frac{\\pi}{2}.\n\\end{aligned}$$"
     },
     {
       "type": "example",
@@ -201,7 +201,7 @@
       "number": "7.9",
       "title": "Revolution about a vertical line",
       "problem": "Find the volume when the region bounded by $y = x^2$, $y = 0$, and $x = 2$ \nis revolved about the line $x = 3$.",
-      "solution": "We use horizontal slices (disks/washers in $y$). The region runs from \n$y = 0$ to $y = 4$. For a given $y$, $x$ ranges from $\\sqrt{y}$ to $2$.\n\nRevolving about $x = 3$:\n\n- Outer radius: $R = 3 - \\sqrt{y}$ (distance from $x=\\sqrt{y}$ to $x=3$).\n\n- Inner radius: $r = 3 - 2 = 1$ (distance from $x=2$ to $x=3$).\n$$\n V &= \\pi\\defint{0}{4}\\bigl[(3-\\sqrt{y})^2 - 1\\bigr]\\dy \\\\\n &= \\pi\\defint{0}{4}(9 - 6\\sqrt{y} + y - 1)\\dy \n = \\pi\\defint{0}{4}(8 - 6y^{1/2} + y)\\dy \\\\\n &= \\pi\\left[8y - 4y^{3/2} + \\frac{y^2}{2}\\right]_0^4 \n = \\pi(32 - 32 + 8) = 8\\pi.\n$$"
+      "solution": "We use horizontal slices (disks/washers in $y$). The region runs from \n$y = 0$ to $y = 4$. For a given $y$, $x$ ranges from $\\sqrt{y}$ to $2$.\n\nRevolving about $x = 3$:\n\n- Outer radius: $R = 3 - \\sqrt{y}$ (distance from $x=\\sqrt{y}$ to $x=3$).\n\n- Inner radius: $r = 3 - 2 = 1$ (distance from $x=2$ to $x=3$).\n$$\\begin{aligned}\nV &= \\pi\\defint{0}{4}\\bigl[(3-\\sqrt{y})^2 - 1\\bigr]\\dy \\\\\n &= \\pi\\defint{0}{4}(9 - 6\\sqrt{y} + y - 1)\\dy \n = \\pi\\defint{0}{4}(8 - 6y^{1/2} + y)\\dy \\\\\n &= \\pi\\left[8y - 4y^{3/2} + \\frac{y^2}{2}\\right]_0^4 \n = \\pi(32 - 32 + 8) = 8\\pi.\n\\end{aligned}$$"
     },
     {
       "type": "heading",
@@ -222,7 +222,7 @@
       "number": "7.10",
       "title": "Square cross-sections",
       "problem": "A solid has a circular base of radius $2$ (the disk $x^2 + y^2 \\le 4$). \nCross-sections perpendicular to the $x$-axis are squares. Find the volume.",
-      "solution": "At position $x$, the base chord has half-length $y = \\sqrt{4-x^2}$, \nso the full side length of the square is $s = 2\\sqrt{4-x^2}$. The \ncross-sectional area is $A(x) = s^2 = 4(4-x^2)$.\n$$\n V &= \\defint{-2}{2} 4(4-x^2)\\dx = 8\\defint{0}{2}(4-x^2)\\dx \n \\quad\\text{(even function)} \\\\\n &= 8\\left[4x - \\frac{x^3}{3}\\right]_0^2 \n = 8\\left(8 - \\frac{8}{3}\\right) = 8\\cdot\\frac{16}{3} = \\frac{128}{3}.\n$$"
+      "solution": "At position $x$, the base chord has half-length $y = \\sqrt{4-x^2}$, \nso the full side length of the square is $s = 2\\sqrt{4-x^2}$. The \ncross-sectional area is $A(x) = s^2 = 4(4-x^2)$.\n$$\\begin{aligned}\nV &= \\defint{-2}{2} 4(4-x^2)\\dx = 8\\defint{0}{2}(4-x^2)\\dx \n \\quad\\text{(even function)} \\\\\n &= 8\\left[4x - \\frac{x^3}{3}\\right]_0^2 \n = 8\\left(8 - \\frac{8}{3}\\right) = 8\\cdot\\frac{16}{3} = \\frac{128}{3}.\n\\end{aligned}$$"
     },
     {
       "type": "historical",

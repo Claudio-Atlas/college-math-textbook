@@ -87,7 +87,7 @@
       "number": "7.2",
       "title": "Work between two stretched positions",
       "problem": "Using the same spring ($k = 250$ N/m), find the work required to stretch it \nfrom 30 cm to 40 cm.",
-      "solution": "From 30 cm to 40 cm is from $x = 0.1$ m to $x = 0.2$ m beyond natural \nlength:\n$$\n W &= \\defint{0.1}{0.2} 250x\\dx = 250\\left[\\frac{x^2}{2}\\right]_{0.1}^{0.2} \\\\\n &= 125(0.04 - 0.01) = 125(0.03) = 3.75\\;\\text{J}.\n$$\nNotice this is *more* work than stretching from 20 to 30 cm \n($W = 1.25$ J), even though both intervals are 10 cm. The spring resists \nmore when it is already stretched."
+      "solution": "From 30 cm to 40 cm is from $x = 0.1$ m to $x = 0.2$ m beyond natural \nlength:\n$$\\begin{aligned}\nW &= \\defint{0.1}{0.2} 250x\\dx = 250\\left[\\frac{x^2}{2}\\right]_{0.1}^{0.2} \\\\\n &= 125(0.04 - 0.01) = 125(0.03) = 3.75\\;\\text{J}.\n\\end{aligned}$$\nNotice this is *more* work than stretching from 20 to 30 cm \n($W = 1.25$ J), even though both intervals are 10 cm. The spring resists \nmore when it is already stretched."
     },
     {
       "type": "example",
@@ -139,7 +139,7 @@
       "number": "7.4",
       "title": "Pumping water from a cylindrical tank",
       "problem": "A cylindrical tank of radius 3 ft and height 8 ft is full of water. \nFind the work required to pump all the water over the top of the tank. \n(Use $\\rho = 62.4$ lb/ft$^3$.)",
-      "solution": "Place the origin at the bottom of the tank with $y$ pointing up.\n\n**Slice.** A thin horizontal layer at height $y$ has thickness \n$\\Delta y$. Since the tank is a cylinder of radius 3:\n\\[\n A(y) = \\pi(3)^2 = 9\\pi \\quad\\text{(constant, independent of $y$)}.\n\\]\n**Weight** of the layer: $62.4 \\cdot 9\\pi\\,\\Delta y$.\n\n**Lift distance:** The layer at height $y$ must be lifted to $y = 8$, \na distance of $(8 - y)$.\n\n$$\n W &= \\defint{0}{8} 62.4\\cdot 9\\pi\\cdot(8-y)\\dy \n = 561.6\\pi\\defint{0}{8}(8-y)\\dy \\\\\n &= 561.6\\pi\\left[8y - \\frac{y^2}{2}\\right]_0^8 \n = 561.6\\pi(64 - 32) = 561.6\\pi\\cdot 32 \\\\\n &= 17{,}971.2\\pi \\approx 56{,}450\\;\\text{ft-lb}.\n$$"
+      "solution": "Place the origin at the bottom of the tank with $y$ pointing up.\n\n**Slice.** A thin horizontal layer at height $y$ has thickness \n$\\Delta y$. Since the tank is a cylinder of radius 3:\n\\[\n A(y) = \\pi(3)^2 = 9\\pi \\quad\\text{(constant, independent of $y$)}.\n\\]\n**Weight** of the layer: $62.4 \\cdot 9\\pi\\,\\Delta y$.\n\n**Lift distance:** The layer at height $y$ must be lifted to $y = 8$, \na distance of $(8 - y)$.\n\n$$\\begin{aligned}\nW &= \\defint{0}{8} 62.4\\cdot 9\\pi\\cdot(8-y)\\dy \n = 561.6\\pi\\defint{0}{8}(8-y)\\dy \\\\\n &= 561.6\\pi\\left[8y - \\frac{y^2}{2}\\right]_0^8 \n = 561.6\\pi(64 - 32) = 561.6\\pi\\cdot 32 \\\\\n &= 17{,}971.2\\pi \\approx 56{,}450\\;\\text{ft-lb}.\n\\end{aligned}$$"
     },
     {
       "type": "example",
@@ -147,7 +147,7 @@
       "number": "7.5",
       "title": "Pumping water from a conical tank",
       "problem": "A conical tank (vertex at the bottom) has a radius of 4 m at the top and a \nheight of 10 m. It is filled with water to a depth of 8 m. Find the work \nrequired to pump all the water to the top of the tank. \n(Use $\\rho g = 9800$ N/m$^3$.)",
-      "solution": "Place the origin at the vertex (bottom of the cone), with $y$ pointing up.\n\nAt height $y$, the radius of the cross-section is determined by similar \ntriangles: $\\dfrac{r}{y} = \\dfrac{4}{10}$, so $r = \\dfrac{2y}{5}$.\n\nCross-sectional area: $A(y) = \\pi r^2 = \\pi\\left(\\dfrac{2y}{5}\\right)^2 \n= \\dfrac{4\\pi y^2}{25}$.\n\nThe layer at height $y$ must be lifted to $y = 10$, a distance of $(10-y)$.\n\n$$\n W &= \\defint{0}{8} 9800\\cdot\\frac{4\\pi y^2}{25}\\cdot(10-y)\\dy \n = \\frac{39{,}200\\pi}{25}\\defint{0}{8}y^2(10-y)\\dy \\\\\n &= 1568\\pi\\defint{0}{8}(10y^2 - y^3)\\dy \\\\\n &= 1568\\pi\\left[\\frac{10y^3}{3} - \\frac{y^4}{4}\\right]_0^8 \\\\\n &= 1568\\pi\\left(\\frac{5120}{3} - 1024\\right) \n = 1568\\pi\\cdot\\frac{2048}{3} \\\\\n &= \\frac{3{,}211{,}264\\pi}{3} \\approx 3{,}361{,}000\\;\\text{J} \n \\approx 3361\\;\\text{kJ}.\n$$"
+      "solution": "Place the origin at the vertex (bottom of the cone), with $y$ pointing up.\n\nAt height $y$, the radius of the cross-section is determined by similar \ntriangles: $\\dfrac{r}{y} = \\dfrac{4}{10}$, so $r = \\dfrac{2y}{5}$.\n\nCross-sectional area: $A(y) = \\pi r^2 = \\pi\\left(\\dfrac{2y}{5}\\right)^2 \n= \\dfrac{4\\pi y^2}{25}$.\n\nThe layer at height $y$ must be lifted to $y = 10$, a distance of $(10-y)$.\n\n$$\\begin{aligned}\nW &= \\defint{0}{8} 9800\\cdot\\frac{4\\pi y^2}{25}\\cdot(10-y)\\dy \n = \\frac{39{,}200\\pi}{25}\\defint{0}{8}y^2(10-y)\\dy \\\\\n &= 1568\\pi\\defint{0}{8}(10y^2 - y^3)\\dy \\\\\n &= 1568\\pi\\left[\\frac{10y^3}{3} - \\frac{y^4}{4}\\right]_0^8 \\\\\n &= 1568\\pi\\left(\\frac{5120}{3} - 1024\\right) \n = 1568\\pi\\cdot\\frac{2048}{3} \\\\\n &= \\frac{3{,}211{,}264\\pi}{3} \\approx 3{,}361{,}000\\;\\text{J} \n \\approx 3361\\;\\text{kJ}.\n\\end{aligned}$$"
     },
     {
       "type": "example",
@@ -155,7 +155,7 @@
       "number": "7.6",
       "title": "Pumping from a hemispherical tank",
       "problem": "A hemispherical tank of radius 5 ft (flat side up) is full of water. The \nwater must be pumped to a pipe 2 ft above the top of the tank. Find the \nwork. (Use $\\rho = 62.4$ lb/ft$^3$.)",
-      "solution": "Place the origin at the center of the flat top, with $y$ pointing \n*downward* into the hemisphere. Then the hemisphere extends from \n$y = 0$ to $y = 5$. At depth $y$, the radius of the cross-section \nsatisfies $r^2 + y^2 = 25$, so $r^2 = 25 - y^2$ and \n$A(y) = \\pi(25 - y^2)$.\n\nA layer at depth $y$ below the top must be lifted $(y + 2)$ feet \n(to reach 2 ft above the top).\n\n$$\n W &= \\defint{0}{5} 62.4\\pi(25 - y^2)(y+2)\\dy \\\\\n &= 62.4\\pi\\defint{0}{5}(25y + 50 - y^3 - 2y^2)\\dy \\\\\n &= 62.4\\pi\\left[\\frac{25y^2}{2} + 50y - \\frac{y^4}{4} \n - \\frac{2y^3}{3}\\right]_0^5 \\\\\n &= 62.4\\pi\\left(\\frac{625}{2} + 250 - \\frac{625}{4} - \\frac{250}{3}\\right) \\\\\n &= 62.4\\pi\\left(\\frac{1250 + 1000 - 625}{4} - \\frac{250}{3}\\right) \\\\\n &= 62.4\\pi\\left(\\frac{1625}{4} - \\frac{250}{3}\\right) \n = 62.4\\pi\\cdot\\frac{3875}{12} \\\\\n &= 62.4\\pi\\cdot\\frac{3875}{12} = \\frac{241{,}800\\pi}{12} \n = 20{,}150\\pi \\approx 63{,}310\\;\\text{ft-lb}.\n$$"
+      "solution": "Place the origin at the center of the flat top, with $y$ pointing \n*downward* into the hemisphere. Then the hemisphere extends from \n$y = 0$ to $y = 5$. At depth $y$, the radius of the cross-section \nsatisfies $r^2 + y^2 = 25$, so $r^2 = 25 - y^2$ and \n$A(y) = \\pi(25 - y^2)$.\n\nA layer at depth $y$ below the top must be lifted $(y + 2)$ feet \n(to reach 2 ft above the top).\n\n$$\\begin{aligned}\nW &= \\defint{0}{5} 62.4\\pi(25 - y^2)(y+2)\\dy \\\\\n &= 62.4\\pi\\defint{0}{5}(25y + 50 - y^3 - 2y^2)\\dy \\\\\n &= 62.4\\pi\\left[\\frac{25y^2}{2} + 50y - \\frac{y^4}{4} \n - \\frac{2y^3}{3}\\right]_0^5 \\\\\n &= 62.4\\pi\\left(\\frac{625}{2} + 250 - \\frac{625}{4} - \\frac{250}{3}\\right) \\\\\n &= 62.4\\pi\\left(\\frac{1250 + 1000 - 625}{4} - \\frac{250}{3}\\right) \\\\\n &= 62.4\\pi\\left(\\frac{1625}{4} - \\frac{250}{3}\\right) \n = 62.4\\pi\\cdot\\frac{3875}{12} \\\\\n &= 62.4\\pi\\cdot\\frac{3875}{12} = \\frac{241{,}800\\pi}{12} \n = 20{,}150\\pi \\approx 63{,}310\\;\\text{ft-lb}.\n\\end{aligned}$$"
     },
     {
       "type": "heading",
@@ -179,7 +179,7 @@
       "number": "7.7",
       "title": "Lifting a hanging cable",
       "problem": "A cable weighing 2 lb/ft hangs from the top of a 100-ft building. How much \nwork is required to pull the entire cable to the top?",
-      "solution": "Let $x$ denote the distance (in feet) the cable has already been pulled up. \nWhen $x$ feet have been pulled, the remaining cable has length $(100 - x)$ ft \nand weighs $2(100 - x)$ lb.\n\n**Slice:** Pull an additional $\\Delta x$ feet. The force is \napproximately $F(x) = 2(100-x)$ during this small displacement.\n$$\n W &= \\defint{0}{100} 2(100-x)\\dx \n = 2\\left[100x - \\frac{x^2}{2}\\right]_0^{100} \\\\\n &= 2\\left(10{,}000 - 5{,}000\\right) = 10{,}000\\;\\text{ft-lb}.\n$$"
+      "solution": "Let $x$ denote the distance (in feet) the cable has already been pulled up. \nWhen $x$ feet have been pulled, the remaining cable has length $(100 - x)$ ft \nand weighs $2(100 - x)$ lb.\n\n**Slice:** Pull an additional $\\Delta x$ feet. The force is \napproximately $F(x) = 2(100-x)$ during this small displacement.\n$$\\begin{aligned}\nW &= \\defint{0}{100} 2(100-x)\\dx \n = 2\\left[100x - \\frac{x^2}{2}\\right]_0^{100} \\\\\n &= 2\\left(10{,}000 - 5{,}000\\right) = 10{,}000\\;\\text{ft-lb}.\n\\end{aligned}$$"
     },
     {
       "type": "example",
