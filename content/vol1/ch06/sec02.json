@@ -13,7 +13,7 @@
   "content": [
     {
       "type": "paragraph",
-      "text": "How do you find the area of a rectangle? Multiply base times height. A \ntriangle? Half of base times height. A circle? $\\pi r^2$. These \nformulas are ancient\u2014Euclid knew them all."
+      "text": "How do you find the area of a rectangle? Multiply base times height. A \ntriangle? Half of base times height. A circle? $\\pi r^2$. These \nformulas are ancient—Euclid knew them all."
     },
     {
       "type": "paragraph",
@@ -21,7 +21,7 @@
     },
     {
       "type": "paragraph",
-      "text": "In this section, we develop a strategy that is both simple and profound: \n*approximate the curved region with rectangles, then take better and \nbetter approximations.* This idea\u2014known as a \n**Riemann sum**\u2014is one of the most powerful in all of mathematics."
+      "text": "In this section, we develop a strategy that is both simple and profound: \n*approximate the curved region with rectangles, then take better and \nbetter approximations.* This idea—known as a \n**Riemann sum**—is one of the most powerful in all of mathematics."
     },
     {
       "type": "heading",
@@ -74,7 +74,7 @@
       "number": "6.1",
       "title": "Left and right sums with $n = 4$",
       "problem": "Approximate the area under $f(x) = x^2$ on $[0, 1]$ using $n = 4$ \nsubintervals with (a) a left Riemann sum and (b) a right Riemann sum.",
-      "solution": "With $n = 4$, we have $\\Delta x = \\frac{1}{4}$ and the partition points \nare $x_0 = 0,\\; x_1 = \\frac{1}{4},\\; x_2 = \\frac{1}{2},\\; \nx_3 = \\frac{3}{4},\\; x_4 = 1$.\n\n**(a) Left Riemann sum:** We evaluate $f$ at the left endpoints \n$x_0, x_1, x_2, x_3$:\n$$\n L_4 &= f(0)\\cdot\\tfrac{1}{4} + f(\\tfrac{1}{4})\\cdot\\tfrac{1}{4} \n + f(\\tfrac{1}{2})\\cdot\\tfrac{1}{4} \n + f(\\tfrac{3}{4})\\cdot\\tfrac{1}{4} \\\\\n &= 0\\cdot\\tfrac{1}{4} + \\tfrac{1}{16}\\cdot\\tfrac{1}{4} \n + \\tfrac{1}{4}\\cdot\\tfrac{1}{4} \n + \\tfrac{9}{16}\\cdot\\tfrac{1}{4} \\\\\n &= 0 + \\tfrac{1}{64} + \\tfrac{1}{16} + \\tfrac{9}{64} \n = \\frac{0 + 1 + 4 + 9}{64} = \\frac{14}{64} = \\frac{7}{32} \n \\approx 0.2188.\n$$\n\n**(b) Right Riemann sum:** We evaluate $f$ at the right endpoints \n$x_1, x_2, x_3, x_4$:\n$$\n R_4 &= f(\\tfrac{1}{4})\\cdot\\tfrac{1}{4} \n + f(\\tfrac{1}{2})\\cdot\\tfrac{1}{4} \n + f(\\tfrac{3}{4})\\cdot\\tfrac{1}{4} \n + f(1)\\cdot\\tfrac{1}{4} \\\\\n &= \\tfrac{1}{16}\\cdot\\tfrac{1}{4} \n + \\tfrac{1}{4}\\cdot\\tfrac{1}{4} \n + \\tfrac{9}{16}\\cdot\\tfrac{1}{4} \n + 1\\cdot\\tfrac{1}{4} \\\\\n &= \\frac{1 + 4 + 9 + 16}{64} = \\frac{30}{64} = \\frac{15}{32} \n \\approx 0.4688.\n$$\n\nThe true area lies between $L_4 = 0.2188$ and $R_4 = 0.4688$. \n(Since $f(x) = x^2$ is increasing on $[0,1]$, the left sum \nunderestimates and the right sum overestimates.)"
+      "solution": "With $n = 4$, we have $\\Delta x = \\frac{1}{4}$ and the partition points \nare $x_0 = 0,\\; x_1 = \\frac{1}{4},\\; x_2 = \\frac{1}{2},\\; \nx_3 = \\frac{3}{4},\\; x_4 = 1$.\n\n**(a) Left Riemann sum:** We evaluate $f$ at the left endpoints \n$x_0, x_1, x_2, x_3$:\n$$\\begin{aligned}\nL_4 &= f(0)\\cdot\\tfrac{1}{4} + f(\\tfrac{1}{4})\\cdot\\tfrac{1}{4} \n + f(\\tfrac{1}{2})\\cdot\\tfrac{1}{4} \n + f(\\tfrac{3}{4})\\cdot\\tfrac{1}{4} \\\\\n &= 0\\cdot\\tfrac{1}{4} + \\tfrac{1}{16}\\cdot\\tfrac{1}{4} \n + \\tfrac{1}{4}\\cdot\\tfrac{1}{4} \n + \\tfrac{9}{16}\\cdot\\tfrac{1}{4} \\\\\n &= 0 + \\tfrac{1}{64} + \\tfrac{1}{16} + \\tfrac{9}{64} \n = \\frac{0 + 1 + 4 + 9}{64} = \\frac{14}{64} = \\frac{7}{32} \n \\approx 0.2188.\n\\end{aligned}$$\n\n**(b) Right Riemann sum:** We evaluate $f$ at the right endpoints \n$x_1, x_2, x_3, x_4$:\n$$\\begin{aligned}\nR_4 &= f(\\tfrac{1}{4})\\cdot\\tfrac{1}{4} \n + f(\\tfrac{1}{2})\\cdot\\tfrac{1}{4} \n + f(\\tfrac{3}{4})\\cdot\\tfrac{1}{4} \n + f(1)\\cdot\\tfrac{1}{4} \\\\\n &= \\tfrac{1}{16}\\cdot\\tfrac{1}{4} \n + \\tfrac{1}{4}\\cdot\\tfrac{1}{4} \n + \\tfrac{9}{16}\\cdot\\tfrac{1}{4} \n + 1\\cdot\\tfrac{1}{4} \\\\\n &= \\frac{1 + 4 + 9 + 16}{64} = \\frac{30}{64} = \\frac{15}{32} \n \\approx 0.4688.\n\\end{aligned}$$\n\nThe true area lies between $L_4 = 0.2188$ and $R_4 = 0.4688$. \n(Since $f(x) = x^2$ is increasing on $[0,1]$, the left sum \nunderestimates and the right sum overestimates.)"
     },
     {
       "type": "heading",
@@ -121,7 +121,7 @@
       "id": "historical-6.2",
       "number": null,
       "title": "Carl Friedrich Gauss (1777--1855)",
-      "content": "The story goes that young Gauss, asked to sum the integers from $1$ to \n$100$ as a busywork assignment, instantly wrote $5050$ on his slate. \nHe had noticed that the numbers could be paired: $1 + 100 = 101$, \n$2 + 99 = 101$, $\\ldots$, $50 + 51 = 101$\u2014giving $50 \\times 101 = \n5050$. Gauss, a devout Lutheran, later wrote: \"There are problems to \nwhose solution I would attach an infinitely greater importance than to \nthose of mathematics, for example, those of ethics, or of our relation \nto God.\""
+      "content": "The story goes that young Gauss, asked to sum the integers from $1$ to \n$100$ as a busywork assignment, instantly wrote $5050$ on his slate. \nHe had noticed that the numbers could be paired: $1 + 100 = 101$, \n$2 + 99 = 101$, $\\ldots$, $50 + 51 = 101$—giving $50 \\times 101 = \n5050$. Gauss, a devout Lutheran, later wrote: \"There are problems to \nwhose solution I would attach an infinitely greater importance than to \nthose of mathematics, for example, those of ethics, or of our relation \nto God.\""
     },
     {
       "type": "heading",
@@ -138,7 +138,7 @@
       "number": "6.3",
       "title": "Area under $x^2$ by Riemann sums",
       "problem": "Find the area under $f(x) = x^2$ on $[0, 1]$ using the limit of right \nRiemann sums.",
-      "solution": "We have $\\Delta x = \\frac{1}{n}$ and the right endpoints are \n$x_i = \\frac{i}{n}$ for $i = 1, 2, \\ldots, n$. The right Riemann sum is:\n$$\n R_n &= \\sum_{i=1}^{n} f(x_i)\\,\\Delta x \n = \\sum_{i=1}^{n} \\left(\\frac{i}{n}\\right)^{\\!2} \\cdot \\frac{1}{n} \n = \\sum_{i=1}^{n} \\frac{i^2}{n^3} \\\\\n &= \\frac{1}{n^3} \\sum_{i=1}^{n} i^2 \n = \\frac{1}{n^3} \\cdot \\frac{n(n+1)(2n+1)}{6} \\\\\n &= \\frac{(n+1)(2n+1)}{6n^2}.\n$$\n\nLet us expand and simplify:\n$$\n R_n = \\frac{2n^2 + 3n + 1}{6n^2} \n = \\frac{2}{6} + \\frac{3}{6n} + \\frac{1}{6n^2}\n = \\frac{1}{3} + \\frac{1}{2n} + \\frac{1}{6n^2}.\n$$\n\nNow take the limit:\n$$\n A = \\lim_{n\\to\\infty} R_n \n = \\lim_{n\\to\\infty}\\left(\\frac{1}{3} + \\frac{1}{2n} \n + \\frac{1}{6n^2}\\right) \n = \\frac{1}{3}.\n$$\n\nThe area under $y = x^2$ from $x = 0$ to $x = 1$ is exactly \n$\\dfrac{1}{3}$."
+      "solution": "We have $\\Delta x = \\frac{1}{n}$ and the right endpoints are \n$x_i = \\frac{i}{n}$ for $i = 1, 2, \\ldots, n$. The right Riemann sum is:\n$$\\begin{aligned}\nR_n &= \\sum_{i=1}^{n} f(x_i)\\,\\Delta x \n = \\sum_{i=1}^{n} \\left(\\frac{i}{n}\\right)^{\\!2} \\cdot \\frac{1}{n} \n = \\sum_{i=1}^{n} \\frac{i^2}{n^3} \\\\\n &= \\frac{1}{n^3} \\sum_{i=1}^{n} i^2 \n = \\frac{1}{n^3} \\cdot \\frac{n(n+1)(2n+1)}{6} \\\\\n &= \\frac{(n+1)(2n+1)}{6n^2}.\n\\end{aligned}$$\n\nLet us expand and simplify:\n$$\n R_n = \\frac{2n^2 + 3n + 1}{6n^2} \n = \\frac{2}{6} + \\frac{3}{6n} + \\frac{1}{6n^2}\n = \\frac{1}{3} + \\frac{1}{2n} + \\frac{1}{6n^2}.\n$$\n\nNow take the limit:\n$$\n A = \\lim_{n\\to\\infty} R_n \n = \\lim_{n\\to\\infty}\\left(\\frac{1}{3} + \\frac{1}{2n} \n + \\frac{1}{6n^2}\\right) \n = \\frac{1}{3}.\n$$\n\nThe area under $y = x^2$ from $x = 0$ to $x = 1$ is exactly \n$\\dfrac{1}{3}$."
     },
     {
       "type": "paragraph",
@@ -150,7 +150,7 @@
       "number": "6.4",
       "title": "Left Riemann sum confirms the area",
       "problem": "Compute $L_n$ for $f(x) = x^2$ on $[0,1]$ and verify that \n$\\lim_{n\\to\\infty} L_n = \\frac{1}{3}$.",
-      "solution": "The left endpoints are $x_i = \\frac{i}{n}$ for $i = 0, 1, \\ldots, n-1$:\n$$\n L_n &= \\sum_{i=0}^{n-1} \\left(\\frac{i}{n}\\right)^{\\!2}\\cdot\\frac{1}{n} \n = \\frac{1}{n^3}\\sum_{i=0}^{n-1} i^2 \n = \\frac{1}{n^3}\\cdot\\frac{(n-1)n(2n-1)}{6} \\\\\n &= \\frac{(n-1)(2n-1)}{6n^2} \n = \\frac{2n^2 - 3n + 1}{6n^2} \n = \\frac{1}{3} - \\frac{1}{2n} + \\frac{1}{6n^2}.\n$$\nAs $n \\to \\infty$, we get $L_n \\to \\frac{1}{3}$. Both the left and \nright sums converge to the same value."
+      "solution": "The left endpoints are $x_i = \\frac{i}{n}$ for $i = 0, 1, \\ldots, n-1$:\n$$\\begin{aligned}\nL_n &= \\sum_{i=0}^{n-1} \\left(\\frac{i}{n}\\right)^{\\!2}\\cdot\\frac{1}{n} \n = \\frac{1}{n^3}\\sum_{i=0}^{n-1} i^2 \n = \\frac{1}{n^3}\\cdot\\frac{(n-1)n(2n-1)}{6} \\\\\n &= \\frac{(n-1)(2n-1)}{6n^2} \n = \\frac{2n^2 - 3n + 1}{6n^2} \n = \\frac{1}{3} - \\frac{1}{2n} + \\frac{1}{6n^2}.\n\\end{aligned}$$\nAs $n \\to \\infty$, we get $L_n \\to \\frac{1}{3}$. Both the left and \nright sums converge to the same value."
     },
     {
       "type": "paragraph",
@@ -167,7 +167,7 @@
       "number": "6.5",
       "title": "Area under a linear function",
       "problem": "Use right Riemann sums to find the area under $f(x) = 2x + 1$ on $[0, 3]$.",
-      "solution": "We have $\\Delta x = \\frac{3}{n}$ and $x_i = \\frac{3i}{n}$.\n$$\n R_n &= \\sum_{i=1}^{n} f\\!\\left(\\frac{3i}{n}\\right)\\cdot\\frac{3}{n}\n = \\sum_{i=1}^{n}\\left(\\frac{6i}{n} + 1\\right)\\cdot\\frac{3}{n} \\\\\n &= \\frac{3}{n}\\sum_{i=1}^{n}\\frac{6i}{n} \n + \\frac{3}{n}\\sum_{i=1}^{n} 1\n = \\frac{18}{n^2}\\cdot\\frac{n(n+1)}{2} + \\frac{3}{n}\\cdot n \\\\\n &= \\frac{9(n+1)}{n} + 3 \n = 9 + \\frac{9}{n} + 3 = 12 + \\frac{9}{n}.\n$$\nTaking the limit: $A = \\lim_{n\\to\\infty}\\bigl(12 + \\frac{9}{n}\\bigr) = 12$.\n\n**Check with geometry:** The region under $f(x) = 2x + 1$ on \n$[0, 3]$ is a trapezoid with parallel sides $f(0) = 1$ and $f(3) = 7$ \nand width $3$. The area is $\\frac{1}{2}(1 + 7)(3) = 12$."
+      "solution": "We have $\\Delta x = \\frac{3}{n}$ and $x_i = \\frac{3i}{n}$.\n$$\\begin{aligned}\nR_n &= \\sum_{i=1}^{n} f\\!\\left(\\frac{3i}{n}\\right)\\cdot\\frac{3}{n}\n = \\sum_{i=1}^{n}\\left(\\frac{6i}{n} + 1\\right)\\cdot\\frac{3}{n} \\\\\n &= \\frac{3}{n}\\sum_{i=1}^{n}\\frac{6i}{n} \n + \\frac{3}{n}\\sum_{i=1}^{n} 1\n = \\frac{18}{n^2}\\cdot\\frac{n(n+1)}{2} + \\frac{3}{n}\\cdot n \\\\\n &= \\frac{9(n+1)}{n} + 3 \n = 9 + \\frac{9}{n} + 3 = 12 + \\frac{9}{n}.\n\\end{aligned}$$\nTaking the limit: $A = \\lim_{n\\to\\infty}\\bigl(12 + \\frac{9}{n}\\bigr) = 12$.\n\n**Check with geometry:** The region under $f(x) = 2x + 1$ on \n$[0, 3]$ is a trapezoid with parallel sides $f(0) = 1$ and $f(3) = 7$ \nand width $3$. The area is $\\frac{1}{2}(1 + 7)(3) = 12$."
     },
     {
       "type": "example",
@@ -175,7 +175,7 @@
       "number": "6.6",
       "title": "Area under $x^3$",
       "problem": "Use right Riemann sums to find the area under $f(x) = x^3$ on $[0, 2]$.",
-      "solution": "Here $\\Delta x = \\frac{2}{n}$ and $x_i = \\frac{2i}{n}$.\n$$\n R_n &= \\sum_{i=1}^{n}\\left(\\frac{2i}{n}\\right)^{\\!3}\\cdot\\frac{2}{n}\n = \\frac{16}{n^4}\\sum_{i=1}^{n}i^3 \n = \\frac{16}{n^4}\\cdot\\left[\\frac{n(n+1)}{2}\\right]^{\\!2} \\\\\n &= \\frac{16}{n^4}\\cdot\\frac{n^2(n+1)^2}{4} \n = \\frac{4(n+1)^2}{n^2} = 4\\left(1 + \\frac{1}{n}\\right)^{\\!2}.\n$$\nAs $n \\to \\infty$: $A = 4(1)^2 = 4$."
+      "solution": "Here $\\Delta x = \\frac{2}{n}$ and $x_i = \\frac{2i}{n}$.\n$$\\begin{aligned}\nR_n &= \\sum_{i=1}^{n}\\left(\\frac{2i}{n}\\right)^{\\!3}\\cdot\\frac{2}{n}\n = \\frac{16}{n^4}\\sum_{i=1}^{n}i^3 \n = \\frac{16}{n^4}\\cdot\\left[\\frac{n(n+1)}{2}\\right]^{\\!2} \\\\\n &= \\frac{16}{n^4}\\cdot\\frac{n^2(n+1)^2}{4} \n = \\frac{4(n+1)^2}{n^2} = 4\\left(1 + \\frac{1}{n}\\right)^{\\!2}.\n\\end{aligned}$$\nAs $n \\to \\infty$: $A = 4(1)^2 = 4$."
     },
     {
       "type": "heading",
@@ -203,7 +203,7 @@
       "number": "6.7",
       "title": "Midpoint approximation",
       "problem": "Approximate the area under $f(x) = x^2$ on $[0, 1]$ using the midpoint \nsum with $n = 4$.",
-      "solution": "With $\\Delta x = \\frac{1}{4}$, the midpoints are $\\bar{x}_1 = \\frac{1}{8}$, \n$\\bar{x}_2 = \\frac{3}{8}$, $\\bar{x}_3 = \\frac{5}{8}$, \n$\\bar{x}_4 = \\frac{7}{8}$.\n$$\n M_4 &= \\left[\\left(\\tfrac{1}{8}\\right)^{\\!2} \n + \\left(\\tfrac{3}{8}\\right)^{\\!2} \n + \\left(\\tfrac{5}{8}\\right)^{\\!2} \n + \\left(\\tfrac{7}{8}\\right)^{\\!2}\\right]\\cdot\\tfrac{1}{4} \\\\\n &= \\left[\\tfrac{1}{64} + \\tfrac{9}{64} + \\tfrac{25}{64} \n + \\tfrac{49}{64}\\right]\\cdot\\tfrac{1}{4} \n = \\frac{84}{64}\\cdot\\frac{1}{4} = \\frac{84}{256} \n = \\frac{21}{64} \\approx 0.3281.\n$$\nThis is already quite close to the true value of $\\frac{1}{3} \\approx \n0.3333$\u2014much closer than either $L_4 \\approx 0.2188$ or \n$R_4 \\approx 0.4688$."
+      "solution": "With $\\Delta x = \\frac{1}{4}$, the midpoints are $\\bar{x}_1 = \\frac{1}{8}$, \n$\\bar{x}_2 = \\frac{3}{8}$, $\\bar{x}_3 = \\frac{5}{8}$, \n$\\bar{x}_4 = \\frac{7}{8}$.\n$$\\begin{aligned}\nM_4 &= \\left[\\left(\\tfrac{1}{8}\\right)^{\\!2} \n + \\left(\\tfrac{3}{8}\\right)^{\\!2} \n + \\left(\\tfrac{5}{8}\\right)^{\\!2} \n + \\left(\\tfrac{7}{8}\\right)^{\\!2}\\right]\\cdot\\tfrac{1}{4} \\\\\n &= \\left[\\tfrac{1}{64} + \\tfrac{9}{64} + \\tfrac{25}{64} \n + \\tfrac{49}{64}\\right]\\cdot\\tfrac{1}{4} \n = \\frac{84}{64}\\cdot\\frac{1}{4} = \\frac{84}{256} \n = \\frac{21}{64} \\approx 0.3281.\n\\end{aligned}$$\nThis is already quite close to the true value of $\\frac{1}{3} \\approx \n0.3333$—much closer than either $L_4 \\approx 0.2188$ or \n$R_4 \\approx 0.4688$."
     },
     {
       "type": "heading",
@@ -243,7 +243,7 @@
     },
     {
       "type": "paragraph",
-      "text": "For any Riemann sum $S$ with the same partition, \n$\\ell_n \\leq S \\leq U_n$. If $f$ is continuous on $[a,b]$, then as the \npartition gets finer, both upper and lower sums converge to the same \nlimit\u2014the area under the curve. This \"squeezing\" is what makes the \nRiemann integral well-defined."
+      "text": "For any Riemann sum $S$ with the same partition, \n$\\ell_n \\leq S \\leq U_n$. If $f$ is continuous on $[a,b]$, then as the \npartition gets finer, both upper and lower sums converge to the same \nlimit—the area under the curve. This \"squeezing\" is what makes the \nRiemann integral well-defined."
     },
     {
       "type": "strategy",
@@ -254,11 +254,11 @@
     },
     {
       "type": "paragraph",
-      "text": "This process works\u2014but it is laborious. Computing the area under even a \nsimple polynomial requires summation formulas and careful algebra. Surely \nthere must be a better way."
+      "text": "This process works—but it is laborious. Computing the area under even a \nsimple polynomial requires summation formulas and careful algebra. Surely \nthere must be a better way."
     },
     {
       "type": "paragraph",
-      "text": "There is. In Section [sec:definite-integral] we will give a name \nto the limit of the Riemann sum\u2014the *definite integral*. And in \nSection [sec:ftc], we will discover an astonishing shortcut: \nthe Fundamental Theorem of Calculus, which connects this area problem \nto the antiderivatives we studied in Section [sec:antiderivatives]. \nThe fragments are about to become whole."
+      "text": "There is. In Section [sec:definite-integral] we will give a name \nto the limit of the Riemann sum—the *definite integral*. And in \nSection [sec:ftc], we will discover an astonishing shortcut: \nthe Fundamental Theorem of Calculus, which connects this area problem \nto the antiderivatives we studied in Section [sec:antiderivatives]. \nThe fragments are about to become whole."
     },
     {
       "type": "figure",
@@ -442,12 +442,12 @@
     {
       "type": "scripture",
       "reference": "Genesis 15:5",
-      "text": "He took him outside and said, \"Look up \nat the sky and count the stars\u2014if indeed you can count them.\" Then \nhe said to him, \"So shall your offspring be.\""
+      "text": "He took him outside and said, \"Look up \nat the sky and count the stars—if indeed you can count them.\" Then \nhe said to him, \"So shall your offspring be.\""
     },
     {
       "type": "scripture",
       "reference": "Job 11:7--8",
-      "text": "Can you fathom the mysteries of God? \nCan you probe the limits of the Almighty? They are higher than the \nheavens above\u2014what can you do?"
+      "text": "Can you fathom the mysteries of God? \nCan you probe the limits of the Almighty? They are higher than the \nheavens above—what can you do?"
     },
     {
       "type": "scripture",
