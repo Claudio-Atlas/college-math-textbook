@@ -42,6 +42,12 @@ const mathJaxConfig = {
       defint: ['\\int_{#1}^{#2}', 2],
       // Partial derivatives
       pdv: ['\\frac{\\partial #1}{\\partial #2}', 2],
+      // Limits (used 34+ times for limto, 24+ for limtozero)
+      limto: ['\\lim_{#1}', 1],
+      limtozero: ['\\lim_{#1 \\to 0}', 1],
+      limtoinf: '\\lim_{n\\to\\infty}',
+      // Evaluation bar (e.g., F(x)|_a^b)
+      eval: ['\\bigg\\rvert_{#1}', 1],
     },
   },
   svg: {
