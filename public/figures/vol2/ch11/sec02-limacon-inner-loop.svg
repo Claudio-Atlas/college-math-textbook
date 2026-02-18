@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 220" width="280" height="220">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <!-- Axes -->
+  <line x1="30" y1="110" x2="265" y2="110" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <line x1="80" y1="200" x2="80" y2="20" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="260" y="128" font-family="serif" font-style="italic" font-size="14">x</text>
+  <text x="65" y="30" font-family="serif" font-style="italic" font-size="14">y</text>
+  
+  <!-- Limaçon r = 1 + 2cos θ with inner loop -->
+  <!-- Outer portion -->
+  <path d="M 80 110
+           C 80 50, 140 20, 200 20
+           C 240 20, 255 60, 255 110
+           C 255 160, 240 200, 200 200
+           C 140 200, 80 170, 80 110" 
+        fill="none" stroke="#5BA3A3" stroke-width="2.5"/>
+  
+  <!-- Inner loop (r goes negative between θ = 2π/3 and 4π/3) -->
+  <path d="M 80 110
+           C 70 85, 50 75, 45 110
+           C 50 145, 70 135, 80 110" 
+        fill="none" stroke="#D4A85A" stroke-width="2.5"/>
+  
+  <!-- Inner loop label -->
+  <text x="20" y="82" font-family="serif" font-size="11" fill="#D4A85A">inner loop</text>
+  
+  <!-- Equation -->
+  <text x="145" y="195" font-family="serif" font-style="italic" font-size="13">r = 1 + 2cos θ</text>
+</svg>

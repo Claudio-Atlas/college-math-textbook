@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 160" width="360" height="160">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <!-- Axes -->
+  <line x1="20" y1="130" x2="345" y2="130" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <line x1="30" y1="145" x2="30" y2="15" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="340" y="148" font-family="serif" font-style="italic" font-size="14">x</text>
+  <text x="15" y="25" font-family="serif" font-style="italic" font-size="14">y</text>
+  
+  <!-- Cycloid arch (approximate with cubic bezier) -->
+  <path d="M 30 130 
+           C 60 130, 80 50, 130 30
+           C 180 10, 200 30, 230 130" 
+        fill="none" stroke="#5BA3A3" stroke-width="2.5"/>
+  
+  <!-- Rolling circle at position t ≈ π/2 -->
+  <circle cx="80" cy="80" r="50" fill="none" stroke="#888" stroke-width="1" stroke-dasharray="4,3"/>
+  
+  <!-- Radius line to the point -->
+  <line x1="80" y1="80" x2="80" y2="30" stroke="#888" stroke-width="1" stroke-dasharray="4,3"/>
+  
+  <!-- Point on circle (the tracing point) -->
+  <circle cx="80" cy="30" r="5" fill="#D4A85A"/>
+  
+  <!-- Key points on cycloid -->
+  <circle cx="30" cy="130" r="4" fill="#5BA3A3"/>
+  <circle cx="130" cy="30" r="4" fill="#5BA3A3"/>
+  <circle cx="230" cy="130" r="4" fill="#5BA3A3"/>
+  
+  <!-- Labels -->
+  <text x="22" y="148" font-family="serif" font-style="italic" font-size="11">t=0</text>
+  <text x="115" y="22" font-family="serif" font-style="italic" font-size="11">t=π</text>
+  <text x="220" y="148" font-family="serif" font-style="italic" font-size="11">t=2π</text>
+</svg>

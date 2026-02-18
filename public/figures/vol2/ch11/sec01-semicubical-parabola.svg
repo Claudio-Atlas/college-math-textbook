@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 260 280" width="260" height="280">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+    <marker id="arrowhead-warm" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#D4A85A"/>
+    </marker>
+  </defs>
+  
+  <!-- Axes -->
+  <line x1="30" y1="140" x2="240" y2="140" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <line x1="50" y1="260" x2="50" y2="20" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="235" y="158" font-family="serif" font-style="italic" font-size="14">x</text>
+  <text x="35" y="30" font-family="serif" font-style="italic" font-size="14">y</text>
+  
+  <!-- Semicubical parabola y² = x³ (parametric: x=t², y=t³) -->
+  <!-- Upper branch -->
+  <path d="M 50 140 
+           Q 70 130 90 115
+           Q 130 80 170 45
+           Q 190 25 210 15" 
+        fill="none" stroke="#5BA3A3" stroke-width="2.5"/>
+  
+  <!-- Lower branch -->
+  <path d="M 50 140 
+           Q 70 150 90 165
+           Q 130 200 170 235
+           Q 190 255 210 265" 
+        fill="none" stroke="#5BA3A3" stroke-width="2.5"/>
+  
+  <!-- Cusp point -->
+  <circle cx="50" cy="140" r="4" fill="#5BA3A3"/>
+  
+  <!-- Direction indicator for t > 0 -->
+  <path d="M 85 120 L 100 105" fill="none" stroke="#D4A85A" stroke-width="2" marker-end="url(#arrowhead-warm)"/>
+  <text x="72" y="98" font-family="serif" font-style="italic" font-size="11">t&gt;0</text>
+  
+  <!-- Equation label -->
+  <text x="140" y="200" font-family="serif" font-style="italic" font-size="13">y² = x³</text>
+</svg>

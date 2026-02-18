@@ -38,6 +38,13 @@
       "content": "Consider the partial sums. The even partial sums form an increasing sequence:\n\\[\n s_{2} = b_{1} - b_{2} > 0,\n\\]\nand\n\\[\n s_{2n+2} - s_{2n} = -b_{2n+1} + b_{2n+2} \\leq 0,\n\\]\nso $s_{2n+2} \\leq s_{2n}$. Wait—let me redo this more carefully.\n\nGroup terms:\n\\[\n s_{2n} = (b_{1} - b_{2}) + (b_{3} - b_{4}) + \\cdots + (b_{2n-1} - b_{2n}).\n\\]\nEach parenthesis is non-negative (since $b_{k} \\geq b_{k+1}$), so\n$\\{s_{2n}\\}$ is increasing.\n\nAlso,\n\\[\n s_{2n} = b_{1} - (b_{2} - b_{3}) - (b_{4} - b_{5}) - \\cdots - b_{2n}.\n\\]\nEach parenthesis is non-negative, so $s_{2n} \\leq b_{1}$. Thus $\\{s_{2n}\\}$\nis increasing and bounded above, so it converges to some $s$.\n\nSimilarly, $s_{2n+1} = s_{2n} + b_{2n+1} \\to s + 0 = s$.\n\nSince both even and odd partial sums converge to $s$, the series converges."
     },
     {
+      "type": "figure",
+      "id": "fig-alternating-series",
+      "src": "/figures/vol2/ch09/sec06-alternating-series.svg",
+      "caption": "Partial sums of an alternating series zigzag toward the limit $S$.",
+      "alt": "A graph showing partial sums of an alternating series. The horizontal axis represents n (number of terms), and the vertical axis shows partial sums s-sub-n. The partial sums zigzag: s1 is above the limit S, s2 drops below S, s3 rises above S but less than s1, s4 drops below S but higher than s2, and so on. The zigzag pattern shows partial sums alternately overshooting and undershooting the limit S, but getting progressively closer with each term. A horizontal dashed line marks the limit S."
+    },
+    {
       "type": "example",
       "id": "example-9.1",
       "number": "9.1",

@@ -31,6 +31,13 @@
       "text": "Recall from Chapter 6 that $\\defint{a}{b}f(x)\\dx$ is defined as a limit of\nRiemann sums. Partition $[a,b]$ into $n$ equal subintervals of width\n$\\Delta x = (b-a)/n$ with endpoints $x_{0}=a, x_{1}, \\ldots, x_{n}=b$.\nThe **left** and **right Riemann sums** are\n\\[\n L_{n} = \\sum_{i=0}^{n-1}f(x_{i})\\,\\Delta x,\n \\qquad\n R_{n} = \\sum_{i=1}^{n}f(x_{i})\\,\\Delta x.\n\\]\nBoth converge to the integral as $n \\to \\infty$, but for moderate $n$ their\naccuracy is limited. We can do better."
     },
     {
+      "type": "figure",
+      "id": "fig-8.5-riemann-sums",
+      "src": "/figures/vol2/ch08/sec05-riemann-sums.svg",
+      "caption": "Left and Right Riemann Sums",
+      "alt": "Side-by-side comparison of left and right Riemann sums. Left panel shows the left Riemann sum Lₙ, where rectangles use the function value at the left endpoint of each subinterval—this underestimates the area for an increasing function. Right panel shows the right Riemann sum Rₙ, where rectangles use the function value at the right endpoint—this overestimates the area for an increasing function. Both panels show a smooth curve with rectangles underneath."
+    },
+    {
       "type": "heading",
       "level": 2,
       "text": "The Trapezoid Rule"
@@ -46,6 +53,13 @@
       "title": "The Trapezoid Rule",
       "content": "\\[\n T_{n} = \\frac{\\Delta x}{2}\n \\bigl[f(x_{0}) + 2f(x_{1}) + 2f(x_{2}) + \\cdots + 2f(x_{n-1})\n + f(x_{n})\\bigr],\n\\]\nwhere $\\Delta x = (b-a)/n$.",
       "label": "Theorem"
+    },
+    {
+      "type": "figure",
+      "id": "fig-8.5-trapezoid",
+      "src": "/figures/vol2/ch08/sec05-trapezoid-rule.svg",
+      "caption": "The Trapezoid Rule",
+      "alt": "Diagram showing the trapezoid rule for numerical integration. A smooth curve f(x) is approximated by straight line segments connecting consecutive points (x₀, f(x₀)), (x₁, f(x₁)), etc. The area under these line segments forms trapezoids. Each trapezoid has width Δx. The shaded purple region shows how the trapezoids approximate the area under the actual curve. A legend distinguishes the actual curve (solid red) from the linear approximation (dashed purple)."
     },
     {
       "type": "paragraph",
@@ -75,6 +89,13 @@
       "title": "Simpson's Rule",
       "content": "With $n$ **even** and $\\Delta x = (b-a)/n$:\n\\[\n S_{n} = \\frac{\\Delta x}{3}\n \\bigl[f(x_{0}) + 4f(x_{1}) + 2f(x_{2}) + 4f(x_{3}) + 2f(x_{4})\n + \\cdots + 4f(x_{n-1}) + f(x_{n})\\bigr].\n\\]\nThe coefficients follow the pattern $1, 4, 2, 4, 2, \\ldots, 4, 2, 4, 1$.",
       "label": "Theorem"
+    },
+    {
+      "type": "figure",
+      "id": "fig-8.5-simpsons",
+      "src": "/figures/vol2/ch08/sec05-simpsons-rule.svg",
+      "caption": "Simpson's Rule",
+      "alt": "Diagram showing Simpson's rule for numerical integration. A smooth curve f(x) is approximated by parabolic segments that pass through consecutive triples of points. The shaded orange region shows the parabolic approximations. Above each point, the coefficient weights are shown: 1, 4, 2, 4, 1 for five points, illustrating the alternating pattern. Simpson's rule achieves much higher accuracy than the trapezoid rule because parabolas fit smooth curves better than straight lines."
     },
     {
       "type": "warning",

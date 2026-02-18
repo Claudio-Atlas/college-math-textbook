@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220" width="300" height="220">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <!-- Axes -->
+  <line x1="30" y1="110" x2="285" y2="110" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <line x1="60" y1="200" x2="60" y2="20" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  
+  <!-- Axis labels -->
+  <text x="280" y="128" font-family="serif" font-style="italic" font-size="14">x</text>
+  <text x="45" y="30" font-family="serif" font-style="italic" font-size="14">y</text>
+  
+  <!-- Cardioid r = 2(1 + cos θ), scaled 40px per unit -->
+  <!-- Heart-shaped curve, cusp at origin, extends to (4,0) -->
+  <path d="M 60 110
+           C 60 70, 100 30, 140 30
+           C 180 30, 220 50, 220 110
+           C 220 170, 180 190, 140 190
+           C 100 190, 60 150, 60 110" 
+        fill="none" stroke="#5BA3A3" stroke-width="2.5"/>
+  
+  <!-- Key points -->
+  <circle cx="60" cy="110" r="4" fill="#5BA3A3"/>   <!-- Cusp at origin -->
+  <circle cx="220" cy="110" r="4" fill="#5BA3A3"/>  <!-- (4,0) -->
+  
+  <!-- Labels -->
+  <text x="225" y="105" font-family="serif" font-size="11">(4,0)</text>
+  
+  <!-- Equation -->
+  <text x="155" y="195" font-family="serif" font-style="italic" font-size="13">r = 2(1+cos θ)</text>
+</svg>

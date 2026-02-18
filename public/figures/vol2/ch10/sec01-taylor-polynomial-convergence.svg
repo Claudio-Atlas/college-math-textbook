@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 280">
+  <rect width="400" height="280" fill="white"/>
+  
+  <g transform="translate(50,30)">
+    <!-- Axes -->
+    <line x1="150" y1="0" x2="150" y2="200" stroke="#333" stroke-width="1.5"/>
+    <line x1="0" y1="150" x2="300" y2="150" stroke="#333" stroke-width="1.5"/>
+    <polygon points="300,150 294,147 294,153" fill="#333"/>
+    <polygon points="150,0 147,6 153,6" fill="#333"/>
+    <text x="305" y="154" font-family="serif" font-size="12" font-style="italic">x</text>
+    <text x="155" y="12" font-family="serif" font-size="12" font-style="italic">y</text>
+    
+    <!-- e^x curve (actual function) -->
+    <path d="M 20,195 Q 60,185 100,168 Q 130,155 150,135 Q 180,105 210,65 Q 240,25 270,5" 
+          stroke="#333" stroke-width="3" fill="none"/>
+    <text x="275" y="15" font-family="serif" font-size="14" font-weight="bold">eˣ</text>
+    
+    <!-- P1: 1 + x (linear) -->
+    <line x1="50" y1="185" x2="260" y2="65" stroke="#D4A85A" stroke-width="2"/>
+    <text x="265" y="70" font-family="serif" font-size="12" fill="#D4A85A">P₁</text>
+    
+    <!-- P2: 1 + x + x²/2 (quadratic) -->
+    <path d="M 40,175 Q 100,155 150,135 Q 200,100 260,45" 
+          stroke="#5BA3A3" stroke-width="2" fill="none"/>
+    <text x="50" y="170" font-family="serif" font-size="12" fill="#5BA3A3">P₂</text>
+    
+    <!-- P3: cubic -->
+    <path d="M 30,190 Q 80,175 120,155 Q 150,135 180,105 Q 220,55 260,20" 
+          stroke="#7BAE7B" stroke-width="2" fill="none"/>
+    <text x="35" y="195" font-family="serif" font-size="12" fill="#7BAE7B">P₃</text>
+    
+    <!-- P4: quartic -->
+    <path d="M 25,195 Q 70,180 110,160 Q 150,135 185,95 Q 230,40 265,8" 
+          stroke="#9966CC" stroke-width="2" fill="none"/>
+    <text x="20" y="200" font-family="serif" font-size="12" fill="#9966CC">P₄</text>
+    
+    <!-- Origin point -->
+    <circle cx="150" cy="135" r="4" fill="#333"/>
+    <text x="155" y="145" font-family="serif" font-size="10">(0,1)</text>
+  </g>
+  
+  <text x="200" y="260" font-family="sans-serif" font-size="12" text-anchor="middle">
+    Taylor polynomials Pₙ approximate eˣ near x = 0
+  </text>
+</svg>

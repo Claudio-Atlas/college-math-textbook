@@ -30,12 +30,26 @@
       "content": "1. If $f$ is continuous on $[a,\\infty)$, then\n \\[\n \\defint{a}{\\infty}f(x)\\dx\n = \\limto{b\\to\\infty}\\defint{a}{b}f(x)\\dx,\n \\]\n provided the limit exists.\n\n2. If $f$ is continuous on $(-\\infty,b]$, then\n \\[\n \\defint{-\\infty}{b}f(x)\\dx\n = \\limto{a\\to-\\infty}\\defint{a}{b}f(x)\\dx.\n \\]\n\n3. If $f$ is continuous on $(-\\infty,\\infty)$, then\n \\[\n \\defint{-\\infty}{\\infty}f(x)\\dx\n = \\defint{-\\infty}{c}f(x)\\dx + \\defint{c}{\\infty}f(x)\\dx\n \\]\n for any real number $c$, provided *both* integrals converge.\nIf the limit exists and is finite, the integral **converges**.\nOtherwise, it **diverges**."
     },
     {
+      "type": "figure",
+      "id": "fig-8.6-convergent",
+      "src": "/figures/vol2/ch08/sec06-convergent-integral.svg",
+      "caption": "Convergent improper integral: finite area despite infinite interval",
+      "alt": "Graph showing the curve y = 1/x² from x = 1 extending toward infinity. The shaded green region under the curve represents the area being computed. Although the region extends infinitely to the right, the total area converges to exactly 1. The curve approaches the x-axis rapidly enough that the accumulated area remains finite. A box indicates 'Area = 1 (finite), CONVERGES'."
+    },
+    {
       "type": "example",
       "id": "example-8.1",
       "number": "8.1",
       "title": "$\\displaystyle\\defint{1}{\\infty}\\frac{1}{x^{2}}\\dx$",
       "problem": "Evaluate $\\displaystyle\\defint{1}{\\infty}\\frac{1}{x^{2}}\\dx$.",
       "solution": "\\[\n \\defint{1}{\\infty}\\frac{1}{x^{2}}\\dx\n = \\limto{b\\to\\infty}\\defint{1}{b}\\frac{1}{x^{2}}\\dx\n = \\limto{b\\to\\infty}\\left[-\\frac{1}{x}\\right]_{1}^{b}\n = \\limto{b\\to\\infty}\\left(-\\frac{1}{b}+1\\right) = 1.\n\\]\nThe integral converges to $1$."
+    },
+    {
+      "type": "figure",
+      "id": "fig-8.6-divergent",
+      "src": "/figures/vol2/ch08/sec06-divergent-integral.svg",
+      "caption": "Divergent improper integral: infinite area",
+      "alt": "Graph showing the curve y = 1/x from x = 1 extending toward infinity. The shaded red region under the curve represents the area being computed. Although the curve also approaches the x-axis as x increases, it does so too slowly—the total area is infinite. A box indicates 'Area = ∞ (infinite), DIVERGES'. Comparing with the 1/x² case shows why the rate of decay matters."
     },
     {
       "type": "example",
@@ -68,6 +82,13 @@
       "number": "8.2",
       "title": "Improper Integral --- Type 2",
       "content": "1. If $f$ is continuous on $[a,b)$ and discontinuous at $b$, then\n \\[\n \\defint{a}{b}f(x)\\dx\n = \\limto{t\\to b^{-}}\\defint{a}{t}f(x)\\dx.\n \\]\n\n2. If $f$ is continuous on $(a,b]$ and discontinuous at $a$, then\n \\[\n \\defint{a}{b}f(x)\\dx\n = \\limto{t\\to a^{+}}\\defint{t}{b}f(x)\\dx.\n \\]\n\n3. If $f$ has a discontinuity at $c \\in (a,b)$, then\n \\[\n \\defint{a}{b}f(x)\\dx\n = \\defint{a}{c}f(x)\\dx + \\defint{c}{b}f(x)\\dx,\n \\]\n provided both improper integrals converge."
+    },
+    {
+      "type": "figure",
+      "id": "fig-8.6-type2",
+      "src": "/figures/vol2/ch08/sec06-type2-asymptote.svg",
+      "caption": "Type 2 improper integral: vertical asymptote",
+      "alt": "Graph showing y = 1/√x from x = 0 to x = 1. The curve has a vertical asymptote at x = 0, shooting up to infinity as x approaches 0 from the right. Despite this, the shaded purple area under the curve is finite, equaling 2. A dashed vertical line marks the asymptote at x = 0. The limit notation t→0⁺ indicates how we approach the improper bound. This illustrates that functions can blow up to infinity yet still have finite area."
     },
     {
       "type": "example",

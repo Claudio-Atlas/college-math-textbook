@@ -35,7 +35,14 @@
       "number": "11.1",
       "title": "A line segment",
       "problem": "Describe the line segment from $(1, 2)$ to $(4, 6)$ parametrically.",
-      "solution": "We seek $x = f(t)$ and $y = g(t)$ such that at $t = 0$ we are at $(1,2)$\nand at $t = 1$ we are at $(4,6)$. Linear interpolation gives:\n\\[\n x = 1 + 3t, \\qquad y = 2 + 4t, \\qquad 0 \\le t \\le 1.\n\\]\nAt $t = 0$: $(x,y) = (1,2)$. At $t = 1$: $(x,y) = (4,6)$. As $t$ increases\nfrom $0$ to $1$, the point moves from start to end.\n\ncenter\ntikzpicture[scale=0.7]\n (-0.5,0) – (5.5,0) node[right] {$x$};\n (0,-0.5) – (0,7) node[above] {$y$};\n (1,2) – (4,6);\n lldraw[AtlasTeal] (1,2) circle (2pt) node[below left] {$(1,2)$};\n lldraw[AtlasTeal] (4,6) circle (2pt) node[above right] {$(4,6)$};\n at (2.5,3.5) [right] {$t$ increases};\n % Tick marks\n in {1,2,3,4,5} (,0.1) – (,-0.1) node[below] { $\\x$};\n in {2,4,6} (0.1,) – (-0.1,) node[left] { $\\y$};\ntikzpicture\ncenter"
+      "solution": "We seek $x = f(t)$ and $y = g(t)$ such that at $t = 0$ we are at $(1,2)$\nand at $t = 1$ we are at $(4,6)$. Linear interpolation gives:\n\\[\n x = 1 + 3t, \\qquad y = 2 + 4t, \\qquad 0 \\le t \\le 1.\n\\]\nAt $t = 0$: $(x,y) = (1,2)$. At $t = 1$: $(x,y) = (4,6)$. As $t$ increases\nfrom $0$ to $1$, the point moves from start to end."
+    },
+    {
+      "type": "figure",
+      "id": "fig-line-segment",
+      "src": "/figures/vol2/ch11/sec01-line-segment.svg",
+      "caption": "A line segment from $(1,2)$ to $(4,6)$ traced as $t$ increases from 0 to 1",
+      "alt": "A coordinate plane showing a line segment from point (1,2) to point (4,6). An arrow along the segment indicates the direction of increasing parameter t, with the starting point labeled at t=0 and ending point at t=1."
     },
     {
       "type": "example",
@@ -43,7 +50,14 @@
       "number": "11.2",
       "title": "The unit circle",
       "problem": "Describe the unit circle parametrically.",
-      "solution": "The most natural parametrization uses angle:\n\\[\n x = \\cos t, \\qquad y = \\sin t, \\qquad 0 \\le t \\le 2\\pi.\n\\]\nAs $t$ increases from $0$ to $2\\pi$, the point travels counterclockwise\naround the circle, starting and ending at $(1,0)$.\n\ncenter\ntikzpicture[scale=1.3]\n (-1.5,0) – (1.5,0) node[right] {$x$};\n (0,-1.5) – (0,1.5) node[above] {$y$};\n (0,0) circle (1);\n (0.95,0.3) arc (18:60:1);\n lldraw (1,0) circle (1.5pt) node[below right] {$(1,0)$};\n lldraw (0,1) circle (1.5pt) node[above right] {$(0,1)$};\n lldraw (-1,0) circle (1.5pt) node[below left] {$(-1,0)$};\n lldraw (0,-1) circle (1.5pt) node[below right] {$(0,-1)$};\n at (0.6,0.9) {$t=\\frac{\\pi}{2}$};\n at (1.2,0) [below right] {$t=0$};\ntikzpicture\ncenter\n\n**Alternative:** To trace the circle twice, use $0 \\le t \\le 4\\pi$.\nTo trace clockwise, use $x = \\cos(-t) = \\cos t$, $y = \\sin(-t) = -\\sin t$.\nThe same geometric circle can have many parametrizations."
+      "solution": "The most natural parametrization uses angle:\n\\[\n x = \\cos t, \\qquad y = \\sin t, \\qquad 0 \\le t \\le 2\\pi.\n\\]\nAs $t$ increases from $0$ to $2\\pi$, the point travels counterclockwise\naround the circle, starting and ending at $(1,0)$.\n\n**Alternative:** To trace the circle twice, use $0 \\le t \\le 4\\pi$.\nTo trace clockwise, use $x = \\cos(-t) = \\cos t$, $y = \\sin(-t) = -\\sin t$.\nThe same geometric circle can have many parametrizations."
+    },
+    {
+      "type": "figure",
+      "id": "fig-unit-circle",
+      "src": "/figures/vol2/ch11/sec01-unit-circle.svg",
+      "caption": "The unit circle $x = \\cos t$, $y = \\sin t$ with counterclockwise orientation",
+      "alt": "The unit circle centered at the origin with radius 1. Key points are marked at (1,0), (0,1), (-1,0), and (0,-1) corresponding to t=0, π/2, π, and 3π/2 respectively. An arrow indicates counterclockwise traversal as the parameter t increases from 0 to 2π."
     },
     {
       "type": "example",
@@ -51,7 +65,14 @@
       "number": "11.3",
       "title": "An ellipse",
       "problem": "Parametrize the ellipse $\\dfrac{x^2}{9} + \\dfrac{y^2}{4} = 1$.",
-      "solution": "By analogy with the circle:\n\\[\n x = 3\\cos t, \\qquad y = 2\\sin t, \\qquad 0 \\le t \\le 2\\pi.\n\\]\nCheck: $\\dfrac{(3\\cos t)^2}{9} + \\dfrac{(2\\sin t)^2}{4}\n= \\cos^2 t + \\sin^2 t = 1$.\\;\n\ncenter\ntikzpicture[scale=0.8]\n (-4,0) – (4,0) node[right] {$x$};\n (0,-3) – (0,3) node[above] {$y$};\n (0,0) ellipse (3 and 2);\n (2.8,0.7) arc (15:60:3 and 2);\n lldraw (3,0) circle (1.5pt) node[below right] {$(3,0)$};\n lldraw (0,2) circle (1.5pt) node[above right] {$(0,2)$};\n lldraw (-3,0) circle (1.5pt) node[below left] {$(-3,0)$};\n lldraw (0,-2) circle (1.5pt) node[below right] {$(0,-2)$};\n at (0,-2.8) {$a=3$, $b=2$};\ntikzpicture\ncenter"
+      "solution": "By analogy with the circle:\n\\[\n x = 3\\cos t, \\qquad y = 2\\sin t, \\qquad 0 \\le t \\le 2\\pi.\n\\]\nCheck: $\\dfrac{(3\\cos t)^2}{9} + \\dfrac{(2\\sin t)^2}{4}\n= \\cos^2 t + \\sin^2 t = 1$.\\;"
+    },
+    {
+      "type": "figure",
+      "id": "fig-ellipse",
+      "src": "/figures/vol2/ch11/sec01-ellipse.svg",
+      "caption": "An ellipse with semi-major axis $a=3$ and semi-minor axis $b=2$",
+      "alt": "An ellipse centered at the origin with semi-major axis a=3 along the x-axis and semi-minor axis b=2 along the y-axis. The vertices at (3,0), (-3,0), (0,2), and (0,-2) are marked. An arrow indicates counterclockwise traversal as the parameter t increases from 0 to 2π."
     },
     {
       "type": "example",
@@ -67,7 +88,14 @@
       "number": "11.5",
       "title": "A semicubical parabola",
       "problem": "Sketch the curve $x = t^2$, $y = t^3$ and identify it.",
-      "solution": "From $x = t^2$, we have $t = \\pm\\sqrt{x}$. Substituting into $y = t^3$:\n\\[\n y = (\\pm\\sqrt{x})^3 = \\pm x^{3/2},\n\\]\nso $y^2 = x^3$. This is called a **semicubical parabola** or \n**Neil's parabola**.\n\ncenter\ntikzpicture[scale=0.9]\n (-0.5,0) – (3,0) node[right] {$x$};\n (0,-2.5) – (0,2.5) node[above] {$y$};\n \n plot ({()^2}, {()^3});\n lldraw (0,0) circle (1.5pt);\n at (1.5,-1.5) [right] {$y^2 = x^3$};\n (0.3,0.3) – (0.6,0.5);\n at (0.2,0.6) { $t>0$};\ntikzpicture\ncenter\n\nThe curve has a *cusp* at the origin—a point where the curve comes\nto a sharp point and reverses direction. This occurs at $t = 0$."
+      "solution": "From $x = t^2$, we have $t = \\pm\\sqrt{x}$. Substituting into $y = t^3$:\n\\[\n y = (\\pm\\sqrt{x})^3 = \\pm x^{3/2},\n\\]\nso $y^2 = x^3$. This is called a **semicubical parabola** or \n**Neil's parabola**.\n\nThe curve has a *cusp* at the origin—a point where the curve comes\nto a sharp point and reverses direction. This occurs at $t = 0$."
+    },
+    {
+      "type": "figure",
+      "id": "fig-semicubical-parabola",
+      "src": "/figures/vol2/ch11/sec01-semicubical-parabola.svg",
+      "caption": "The semicubical parabola $y^2 = x^3$",
+      "alt": "A semicubical parabola (Neil's parabola) with equation y² = x³. The curve has a cusp at the origin where both branches meet sharply. The upper branch curves upward into the first quadrant while the lower branch curves downward into the fourth quadrant, both extending to the right as x increases."
     },
     {
       "type": "heading",
@@ -94,7 +122,14 @@
       "number": "11.6",
       "title": "Sketching a parabolic path",
       "problem": "Sketch the curve $x = t^2$, $y = t$ for $-2 \\le t \\le 2$.",
-      "solution": "| $t$ | $-2$ | $-1$ | $0$ | $1$ | $2$ |\n| $x$ | $4$ | $1$ | $0$ | $1$ | $4$ |\n| $y$ | $-2$ | $-1$ | $0$ | $1$ | $2$ |\n\nThe points are $(4,-2)$, $(1,-1)$, $(0,0)$, $(1,1)$, $(4,2)$. Notice that\n$x = y^2$, so this is a *parabola opening to the right*. The direction\nof motion is from bottom to top (as $t$ increases, $y = t$ increases).\n\ncenter\ntikzpicture[scale=0.7]\n (-0.5,0) – (5,0) node[right] {$x$};\n (0,-2.5) – (0,2.5) node[above] {$y$};\n plot ({()^2}, );\n in {-2,-1,0,1,2} {\n lldraw ({()^2}, ) circle (2pt);\n }\n (1,-0.8) – (1,0.8);\n at (3,1.5) {$x = y^2$};\ntikzpicture\ncenter"
+      "solution": "| $t$ | $-2$ | $-1$ | $0$ | $1$ | $2$ |\n| $x$ | $4$ | $1$ | $0$ | $1$ | $4$ |\n| $y$ | $-2$ | $-1$ | $0$ | $1$ | $2$ |\n\nThe points are $(4,-2)$, $(1,-1)$, $(0,0)$, $(1,1)$, $(4,2)$. Notice that\n$x = y^2$, so this is a *parabola opening to the right*. The direction\nof motion is from bottom to top (as $t$ increases, $y = t$ increases)."
+    },
+    {
+      "type": "figure",
+      "id": "fig-parabola-right",
+      "src": "/figures/vol2/ch11/sec01-parabola-right.svg",
+      "caption": "A parabola opening to the right: $x = y^2$",
+      "alt": "A parabola opening to the right with equation x = y². The vertex is at the origin. Points are plotted at (4,-2), (1,-1), (0,0), (1,1), and (4,2). An arrow indicates the direction of motion from bottom to top as the parameter t increases from -2 to 2."
     },
     {
       "type": "example",
@@ -102,7 +137,14 @@
       "number": "11.7",
       "title": "A cycloid",
       "problem": "A **cycloid** is the path traced by a point on the rim\nof a circle of radius $r$ rolling along a line. Its parametric equations are:\n\\[\n x = r(t - \\sin t), \\qquad y = r(1 - \\cos t).\n\\]",
-      "solution": "For $r = 1$:\n\n| $t$ | $0$ | $\\pi/2$ | $\\pi$ | $3\\pi/2$ | $2\\pi$ |\n| $x$ | $0$ | $\\pi/2 - 1$ | $\\pi$ | $3\\pi/2 + 1$ | $2\\pi$ |\n| $y$ | $0$ | $1$ | $2$ | $1$ | $0$ |\n\nThe curve forms a series of arches, each spanning $2\\pi r$ horizontally and\nreaching height $2r$.\n\ncenter\ntikzpicture[scale=0.6]\n (-0.5,0) – (7.5,0) node[right] {$x$};\n (0,-0.5) – (0,3) node[above] {$y$};\n % One arch of cycloid\n \n plot ({( - sin( r))}, {(1 - cos( r))});\n % Rolling circle at t=pi/2\n (0.57,1) circle (1);\n lldraw[AtlasWarm] (0.57,2) circle (2pt);\n (0.57,1) – (0.57,2);\n % Key points\n lldraw (0,0) circle (2pt) node[below] { $t=0$};\n lldraw (3.14,2) circle (2pt) node[above] { $t=\\pi$};\n lldraw (6.28,0) circle (2pt) node[below] { $t=2\\pi$};\ntikzpicture\ncenter\n\nThe cycloid has remarkable physical properties: it is both the \n*brachistochrone* (curve of fastest descent) and the *tautochrone* \n(curve of equal-time descent)."
+      "solution": "For $r = 1$:\n\n| $t$ | $0$ | $\\pi/2$ | $\\pi$ | $3\\pi/2$ | $2\\pi$ |\n| $x$ | $0$ | $\\pi/2 - 1$ | $\\pi$ | $3\\pi/2 + 1$ | $2\\pi$ |\n| $y$ | $0$ | $1$ | $2$ | $1$ | $0$ |\n\nThe curve forms a series of arches, each spanning $2\\pi r$ horizontally and\nreaching height $2r$.\n\nThe cycloid has remarkable physical properties: it is both the \n*brachistochrone* (curve of fastest descent) and the *tautochrone* \n(curve of equal-time descent)."
+    },
+    {
+      "type": "figure",
+      "id": "fig-cycloid",
+      "src": "/figures/vol2/ch11/sec01-cycloid.svg",
+      "caption": "One arch of a cycloid generated by a rolling circle of radius 1",
+      "alt": "One complete arch of a cycloid curve. The curve starts at the origin, rises to a maximum height of 2 at x = π, then descends back to touch the x-axis at x = 2π. A small circle is shown rolling along the x-axis to illustrate how the curve is generated, with a point on the rim tracing the cycloid path."
     },
     {
       "type": "historical",
@@ -117,7 +159,14 @@
       "number": "11.8",
       "title": "The witch of Agnesi",
       "problem": "The **witch of Agnesi** is the curve with \nparametric equations:\n\\[\n x = 2a\\tan t, \\qquad y = 2a\\cos^2 t, \\qquad -\\frac{\\pi}{2} < t < \\frac{\\pi}{2}.\n\\]",
-      "solution": "To eliminate the parameter, note that $\\sec^2 t = 1 + \\tan^2 t = 1 + \\dfrac{x^2}{4a^2}$.\nSince $y = 2a\\cos^2 t = \\dfrac{2a}{\\sec^2 t}$:\n\\[\n y = \\frac{2a}{1 + \\frac{x^2}{4a^2}} = \\frac{8a^3}{4a^2 + x^2}.\n\\]\n\nFor $a = 1$: $y = \\dfrac{8}{4 + x^2}$. This is a bell-shaped curve with \nmaximum at $(0, 2)$, asymptotic to the $x$-axis.\n\ncenter\ntikzpicture[scale=0.6]\n (-4.5,0) – (4.5,0) node[right] {$x$};\n (0,-0.5) – (0,2.5) node[above] {$y$};\n plot (, {8/(4+()^2)});\n lldraw (0,2) circle (2pt) node[above right] {$(0,2)$};\n (-4.5,0) – (4.5,0);\ntikzpicture\ncenter"
+      "solution": "To eliminate the parameter, note that $\\sec^2 t = 1 + \\tan^2 t = 1 + \\dfrac{x^2}{4a^2}$.\nSince $y = 2a\\cos^2 t = \\dfrac{2a}{\\sec^2 t}$:\n\\[\n y = \\frac{2a}{1 + \\frac{x^2}{4a^2}} = \\frac{8a^3}{4a^2 + x^2}.\n\\]\n\nFor $a = 1$: $y = \\dfrac{8}{4 + x^2}$. This is a bell-shaped curve with \nmaximum at $(0, 2)$, asymptotic to the $x$-axis."
+    },
+    {
+      "type": "figure",
+      "id": "fig-witch-agnesi",
+      "src": "/figures/vol2/ch11/sec01-witch-agnesi.svg",
+      "caption": "The witch of Agnesi: $y = \\dfrac{8}{4 + x^2}$",
+      "alt": "The witch of Agnesi curve, a smooth bell-shaped curve symmetric about the y-axis. The curve has its maximum at the point (0, 2) and approaches the x-axis asymptotically as x approaches positive or negative infinity. The curve resembles a probability distribution but is not Gaussian."
     },
     {
       "type": "historical",
@@ -132,7 +181,14 @@
       "number": "11.9",
       "title": "Lissajous figures",
       "problem": "**Lissajous figures** have parametric equations:\n\\[\n x = A\\sin(at + \\delta), \\qquad y = B\\sin(bt).\n\\]\nSketch the curve when $A = B = 1$, $a = 3$, $b = 2$, and $\\delta = 0$.",
-      "solution": "With $x = \\sin(3t)$ and $y = \\sin(2t)$:\n\ncenter\ntikzpicture[scale=1.5]\n (-1.3,0) – (1.3,0) node[right] {$x$};\n (0,-1.3) – (0,1.3) node[above] {$y$};\n \n plot ({sin(3* r)}, {sin(2* r)});\n at (0,-1.5) {$a:b = 3:2$};\ntikzpicture\ncenter\n\nThe ratio $a:b$ determines the shape. When $a:b$ is a ratio of integers, the\ncurve closes; otherwise, it fills a rectangle densely. Lissajous figures\nappear on oscilloscopes when comparing two sinusoidal signals."
+      "solution": "With $x = \\sin(3t)$ and $y = \\sin(2t)$:\n\nThe ratio $a:b$ determines the shape. When $a:b$ is a ratio of integers, the\ncurve closes; otherwise, it fills a rectangle densely. Lissajous figures\nappear on oscilloscopes when comparing two sinusoidal signals."
+    },
+    {
+      "type": "figure",
+      "id": "fig-lissajous",
+      "src": "/figures/vol2/ch11/sec01-lissajous.svg",
+      "caption": "A Lissajous figure with frequency ratio $a:b = 3:2$",
+      "alt": "A Lissajous figure showing the curve x = sin(3t), y = sin(2t). The closed curve has a figure-eight-like appearance with three horizontal lobes and two vertical lobes, creating an intricate pattern that fits within a square from -1 to 1 on both axes. The curve crosses itself at several interior points."
     },
     {
       "type": "heading",
@@ -180,7 +236,14 @@
       "number": "11.13",
       "title": "A more challenging elimination",
       "problem": "Eliminate the parameter from $x = \\cos^3 t$, $y = \\sin^3 t$.",
-      "solution": "We have $\\cos t = x^{1/3}$ and $\\sin t = y^{1/3}$. Applying the Pythagorean\nidentity:\n\\[\n (x^{1/3})^2 + (y^{1/3})^2 = 1 \\quad\\Longrightarrow\\quad\n x^{2/3} + y^{2/3} = 1.\n\\]\nThis curve is called an **astroid**—a four-cusped\nhypocycloid.\n\ncenter\ntikzpicture[scale=1.5]\n (-1.3,0) – (1.3,0) node[right] {$x$};\n (0,-1.3) – (0,1.3) node[above] {$y$};\n \n plot ({cos( r)^3}, {sin( r)^3});\n lldraw (1,0) circle (1pt);\n lldraw (0,1) circle (1pt);\n lldraw (-1,0) circle (1pt);\n lldraw (0,-1) circle (1pt);\ntikzpicture\ncenter"
+      "solution": "We have $\\cos t = x^{1/3}$ and $\\sin t = y^{1/3}$. Applying the Pythagorean\nidentity:\n\\[\n (x^{1/3})^2 + (y^{1/3})^2 = 1 \\quad\\Longrightarrow\\quad\n x^{2/3} + y^{2/3} = 1.\n\\]\nThis curve is called an **astroid**—a four-cusped\nhypocycloid."
+    },
+    {
+      "type": "figure",
+      "id": "fig-astroid",
+      "src": "/figures/vol2/ch11/sec01-astroid.svg",
+      "caption": "An astroid: $x^{2/3} + y^{2/3} = 1$",
+      "alt": "An astroid (four-cusped hypocycloid) with equation x^(2/3) + y^(2/3) = 1. The curve has four sharp cusps located at (1,0), (-1,0), (0,1), and (0,-1), with smooth concave arcs connecting adjacent cusps. The overall shape resembles a four-pointed star inscribed in a square."
     },
     {
       "type": "warning",
@@ -232,7 +295,14 @@
       "number": "11.16",
       "title": "Horizontal and vertical tangents",
       "problem": "Find all points where the curve $x = t^3 - 3t$, $y = t^2 - 4$ has horizontal\nor vertical tangent lines.",
-      "solution": "Compute: $dx/dt = 3t^2 - 3 = 3(t^2 - 1)$ and $dy/dt = 2t$.\n\n**Horizontal tangents** occur where $dy/dt = 0$ and $dx/dt \\ne 0$:\n\\[\n 2t = 0 \\quad\\Longrightarrow\\quad t = 0.\n\\]\nAt $t = 0$: $(x,y) = (0,-4)$ and $dx/dt = -3 \\ne 0$.\\;\n\n**Vertical tangents** occur where $dx/dt = 0$ and $dy/dt \\ne 0$:\n\\[\n 3(t^2 - 1) = 0 \\quad\\Longrightarrow\\quad t = \\pm 1.\n\\]\nAt $t = 1$: $(x,y) = (-2, -3)$ and $dy/dt = 2 \\ne 0$.\\; \\\\\nAt $t = -1$: $(x,y) = (2, -3)$ and $dy/dt = -2 \\ne 0$.\\;\n\ncenter\ntikzpicture[scale=0.5]\n (-3.5,0) – (3.5,0) node[right] {$x$};\n (0,-5) – (0,2) node[above] {$y$};\n \n plot ({()^3 - 3*}, {()^2 - 4});\n % Mark special points\n lldraw[AtlasWarm] (0,-4) circle (3pt) node[below right] {horiz.};\n lldraw[AtlasSage] (-2,-3) circle (3pt) node[left] {vert.};\n lldraw[AtlasSage] (2,-3) circle (3pt) node[right] {vert.};\ntikzpicture\ncenter"
+      "solution": "Compute: $dx/dt = 3t^2 - 3 = 3(t^2 - 1)$ and $dy/dt = 2t$.\n\n**Horizontal tangents** occur where $dy/dt = 0$ and $dx/dt \\ne 0$:\n\\[\n 2t = 0 \\quad\\Longrightarrow\\quad t = 0.\n\\]\nAt $t = 0$: $(x,y) = (0,-4)$ and $dx/dt = -3 \\ne 0$.\\;\n\n**Vertical tangents** occur where $dx/dt = 0$ and $dy/dt \\ne 0$:\n\\[\n 3(t^2 - 1) = 0 \\quad\\Longrightarrow\\quad t = \\pm 1.\n\\]\nAt $t = 1$: $(x,y) = (-2, -3)$ and $dy/dt = 2 \\ne 0$.\\; \\\\\nAt $t = -1$: $(x,y) = (2, -3)$ and $dy/dt = -2 \\ne 0$.\\;"
+    },
+    {
+      "type": "figure",
+      "id": "fig-tangent-points",
+      "src": "/figures/vol2/ch11/sec01-tangent-points.svg",
+      "caption": "Horizontal and vertical tangent points on $x = t^3 - 3t$, $y = t^2 - 4$",
+      "alt": "A parametric curve x = t³ - 3t, y = t² - 4 with marked special points. The point (0, -4) is labeled as having a horizontal tangent. The points (-2, -3) and (2, -3) are labeled as having vertical tangents. Tangent lines are drawn at each of these points to illustrate the horizontal and vertical orientations."
     },
     {
       "type": "example",
@@ -363,7 +433,14 @@
       "number": "11.26",
       "title": "Surface area of a torus",
       "problem": "A **torus** is generated by revolving a circle of radius $r$\ncentered at $(R, 0)$ about the $y$-axis (where $R > r$). Find its surface area.",
-      "solution": "Parametrize the circle as $x = R + r\\cos t$, $y = r\\sin t$ for $0 \\le t \\le 2\\pi$.\nThen:\n\\[\n \\deriv{x}{t} = -r\\sin t, \\qquad \\deriv{y}{t} = r\\cos t,\n\\]\nso\n\\[\n \\sqrt{\\left(\\deriv{x}{t}\\right)^2 + \\left(\\deriv{y}{t}\\right)^2}\n = \\sqrt{r^2\\sin^2 t + r^2\\cos^2 t} = r.\n\\]\nThe surface area (revolving about the $y$-axis) is:\n$$\n S &= 2\\pi\\defint{0}{2\\pi}(R + r\\cos t)\\cdot r\\,dt \\\\\n &= 2\\pi r\\defint{0}{2\\pi}(R + r\\cos t)\\,dt \\\\\n &= 2\\pi r\\Bigl[Rt + r\\sin t\\Bigr]_0^{2\\pi} \\\\\n &= 2\\pi r(2\\pi R) = 4\\pi^2 Rr.\n$$\nThe surface area of a torus is $4\\pi^2 Rr$.\n\ncenter\ntikzpicture[scale=0.6]\n % Cross-section view\n (-4,0) – (4,0) node[right] {$x$};\n (0,-2) – (0,2) node[above] {$y$};\n % Outer circle\n (2.5,0) circle (1);\n % Labels\n (0,-0.3) – (2.5,-0.3) node[midway, below] {$R$};\n (2.5,0) – (3.5,0) node[midway, above] {$r$};\n % Axis of revolution\n (0,-2) – (0,2);\n at (0.3,-1.8) { axis};\ntikzpicture\ncenter"
+      "solution": "Parametrize the circle as $x = R + r\\cos t$, $y = r\\sin t$ for $0 \\le t \\le 2\\pi$.\nThen:\n\\[\n \\deriv{x}{t} = -r\\sin t, \\qquad \\deriv{y}{t} = r\\cos t,\n\\]\nso\n\\[\n \\sqrt{\\left(\\deriv{x}{t}\\right)^2 + \\left(\\deriv{y}{t}\\right)^2}\n = \\sqrt{r^2\\sin^2 t + r^2\\cos^2 t} = r.\n\\]\nThe surface area (revolving about the $y$-axis) is:\n$$\n S &= 2\\pi\\defint{0}{2\\pi}(R + r\\cos t)\\cdot r\\,dt \\\\\n &= 2\\pi r\\defint{0}{2\\pi}(R + r\\cos t)\\,dt \\\\\n &= 2\\pi r\\Bigl[Rt + r\\sin t\\Bigr]_0^{2\\pi} \\\\\n &= 2\\pi r(2\\pi R) = 4\\pi^2 Rr.\n$$\nThe surface area of a torus is $4\\pi^2 Rr$."
+    },
+    {
+      "type": "figure",
+      "id": "fig-torus-cross-section",
+      "src": "/figures/vol2/ch11/sec01-torus-cross-section.svg",
+      "caption": "Cross-section of a torus showing the generating circle",
+      "alt": "A cross-sectional view of a torus in the xy-plane. A circle of radius r is centered at point (R, 0) on the positive x-axis, where R > r. The y-axis represents the axis of revolution. Labels indicate the major radius R (from origin to circle center) and minor radius r (radius of the generating circle)."
     },
     {
       "type": "example",
@@ -415,7 +492,14 @@
       "number": "11.31",
       "title": "Bezier curves",
       "problem": "A **quadratic B\\'ezier curve** with control points\n$P_0 = (0,0)$, $P_1 = (1,2)$, $P_2 = (3,0)$ has parametric equations:\n\\[\n (x,y) = (1-t)^2 P_0 + 2(1-t)t P_1 + t^2 P_2, \\qquad 0 \\le t \\le 1.\n\\]\nFind the explicit equations and sketch the curve.",
-      "solution": "Expanding:\n$$\n x &= (1-t)^2(0) + 2(1-t)t(1) + t^2(3) = 2t - 2t^2 + 3t^2 = 2t + t^2, \\\\\n y &= (1-t)^2(0) + 2(1-t)t(2) + t^2(0) = 4t - 4t^2 = 4t(1-t).\n$$\n\ncenter\ntikzpicture[scale=0.8]\n (-0.5,0) – (4,0) node[right] {$x$};\n (0,-0.5) – (0,2.5) node[above] {$y$};\n % Control polygon\n (0,0) – (1,2) – (3,0);\n % Bezier curve\n \n plot ({2* + ()^2}, {4*(1-)});\n % Control points\n lldraw (0,0) circle (2pt) node[below left] {$P_0$};\n lldraw (1,2) circle (2pt) node[above] {$P_1$};\n lldraw (3,0) circle (2pt) node[below right] {$P_2$};\ntikzpicture\ncenter\n\nB\\'ezier curves are fundamental in computer graphics and font design. The\ncurve starts at $P_0$, ends at $P_2$, and is \"pulled toward\" $P_1$."
+      "solution": "Expanding:\n$$\n x &= (1-t)^2(0) + 2(1-t)t(1) + t^2(3) = 2t - 2t^2 + 3t^2 = 2t + t^2, \\\\\n y &= (1-t)^2(0) + 2(1-t)t(2) + t^2(0) = 4t - 4t^2 = 4t(1-t).\n$$\n\nB\\'ezier curves are fundamental in computer graphics and font design. The\ncurve starts at $P_0$, ends at $P_2$, and is \"pulled toward\" $P_1$."
+    },
+    {
+      "type": "figure",
+      "id": "fig-bezier-curve",
+      "src": "/figures/vol2/ch11/sec01-bezier-curve.svg",
+      "caption": "A quadratic Bézier curve with control points $P_0$, $P_1$, $P_2$",
+      "alt": "A quadratic Bézier curve starting at control point P₀ = (0,0), ending at P₂ = (3,0), and curving toward P₁ = (1,2). The control polygon (dashed lines connecting P₀ to P₁ to P₂) is shown to illustrate how the curve is 'pulled' toward P₁. The smooth parabolic curve lies entirely within the control polygon."
     },
     {
       "type": "example",

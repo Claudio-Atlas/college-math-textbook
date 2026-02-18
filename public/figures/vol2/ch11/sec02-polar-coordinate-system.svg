@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 220" width="320" height="220">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333"/>
+    </marker>
+  </defs>
+  
+  <!-- Polar axis (positive x direction) -->
+  <line x1="40" y1="150" x2="300" y2="150" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  
+  <!-- Small tick at pole -->
+  <line x1="60" y1="145" x2="60" y2="155" stroke="#333" stroke-width="1"/>
+  
+  <!-- Labels -->
+  <text x="280" y="170" font-family="serif" font-size="12">polar axis</text>
+  <text x="40" y="170" font-family="serif" font-size="11">pole</text>
+  
+  <!-- Point P -->
+  <circle cx="240" cy="70" r="5" fill="#333"/>
+  <text x="248" y="65" font-family="serif" font-style="italic" font-size="13">P = (r, θ)</text>
+  
+  <!-- Radius line from pole to P -->
+  <line x1="60" y1="150" x2="240" y2="70" stroke="#5BA3A3" stroke-width="2.5"/>
+  <text x="135" y="95" font-family="serif" font-style="italic" font-size="14" fill="#5BA3A3">r</text>
+  
+  <!-- Angle arc -->
+  <path d="M 100 150 A 40 40 0 0 0 90 122" fill="none" stroke="#333" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+  <text x="108" y="130" font-family="serif" font-style="italic" font-size="14">θ</text>
+  
+  <!-- Dashed projections to show Cartesian connection -->
+  <line x1="240" y1="70" x2="240" y2="150" stroke="#888" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="240" y1="70" x2="60" y2="70" stroke="#888" stroke-width="1" stroke-dasharray="4,3"/>
+  
+  <!-- Cartesian labels -->
+  <text x="245" y="155" font-family="serif" font-style="italic" font-size="11" fill="#888">x</text>
+  <text x="45" y="75" font-family="serif" font-style="italic" font-size="11" fill="#888">y</text>
+</svg>

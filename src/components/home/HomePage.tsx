@@ -30,8 +30,8 @@ const CATALOG: Book[] = [
     subtitle: 'Integral Calculus',
     description: 'The second volume covering integral calculus, techniques of integration, applications of integrals, and an introduction to series.',
     coverSlug: 'calculus-vol2',
-    chapters: 6,
-    available: false,
+    chapters: 5,
+    available: true,
   },
   {
     id: 'calculus-vol3',
