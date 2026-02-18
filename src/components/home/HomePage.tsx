@@ -22,7 +22,7 @@ const CATALOG: Book[] = [
     description: 'A rigorous yet accessible introduction to differential calculus, covering limits, continuity, derivatives, and their applications. Designed for students seeking both mathematical precision and genuine understanding.',
     coverSlug: 'calculus-vol1',
     chapters: 6,
-    available: true,
+    available: false, // Homework expansion in progress
   },
   {
     id: 'calculus-vol2',
@@ -31,7 +31,7 @@ const CATALOG: Book[] = [
     description: 'The second volume covering integral calculus, techniques of integration, applications of integrals, and an introduction to series.',
     coverSlug: 'calculus-vol2',
     chapters: 5,
-    available: true,
+    available: false, // Homework expansion in progress
   },
   {
     id: 'calculus-vol3',
