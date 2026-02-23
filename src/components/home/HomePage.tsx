@@ -60,6 +60,15 @@ const CATALOG: Book[] = [
     chapters: 10,
     available: false,
   },
+  {
+    id: 'precalculus',
+    title: 'Precalculus',
+    subtitle: 'With Applications',
+    description: 'A comprehensive bridge from algebra to calculus, covering functions, trigonometry, and analytical foundations. Designed to build genuine understanding and prepare students for success in calculus.',
+    coverSlug: 'precalculus',
+    chapters: 12,
+    available: false,
+  },
 ];
 
 function HomeContent() {
