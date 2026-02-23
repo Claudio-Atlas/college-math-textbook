@@ -214,7 +214,7 @@ function BookCard({ book, brand, isAtlas }: BookCardProps) {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
+    <a href={`/catalog/${book.id}`} className="block bg-white rounded-xl shadow-md overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow">
       {/* Cover Image Placeholder */}
       <div 
         className="h-48 flex items-center justify-center"
@@ -272,23 +272,19 @@ function BookCard({ book, brand, isAtlas }: BookCardProps) {
             {book.chapters} chapters
           </span>
           
-          {book.available ? (
-            <a
-              href={`/catalog/${book.id}`}
-              className="inline-flex items-center px-4 py-2 rounded-lg text-white text-sm font-medium transition-colors"
-              style={{ backgroundColor: brand.colors.primary }}
-            >
-              Preview
-              <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-              </svg>
-            </a>
-          ) : (
-            <span className="text-sm text-gray-400">Available soon</span>
-          )}
+          <a
+            href={`/catalog/${book.id}`}
+            className="inline-flex items-center px-4 py-2 rounded-lg text-white text-sm font-medium transition-colors"
+            style={{ backgroundColor: brand.colors.primary }}
+          >
+            Learn More
+            <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
         </div>
       </div>
-    </div>
+    </a>
   );
 }
 

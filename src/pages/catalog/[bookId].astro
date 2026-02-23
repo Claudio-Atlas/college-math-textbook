@@ -2,35 +2,33 @@
 export const prerender = false;
 import '../../styles/global.css';
 import { BookDetail } from '../../components/catalog/BookDetail';
+import { BookLandingPage } from '../../components/catalog/BookLandingPage';
+import { getBookLanding } from '../../lib/books';
 
 const { bookId } = Astro.params;
 
-// Map catalog IDs to actual content IDs
+// Map catalog IDs to actual content IDs (for reader preview)
 const BOOK_ID_MAP: Record<string, string> = {
   'calculus-vol1': 'vol1',
   'calculus-vol2': 'vol2',
   'calculus-vol3': 'vol3',
 };
 
-// Books currently available for preview
-// Set to empty array to disable all previews, or list specific IDs
+// Books available for full reader preview
 const AVAILABLE_BOOKS: string[] = [
-  // 'calculus-vol1',  // Coming soon
-  // 'calculus-vol2',  // Coming soon
+  // 'calculus-vol1',
 ];
 
 const contentId = BOOK_ID_MAP[bookId as string] || bookId;
-
-// Check if book is available for preview
 const isAvailable = AVAILABLE_BOOKS.includes(bookId as string);
+
+// Check if we have a landing page for this book
+const landing = getBookLanding(bookId as string);
 
 let book;
 let notFound = false;
-let comingSoon = false;
 
-if (!isAvailable) {
-  comingSoon = true;
-} else {
+if (isAvailable) {
   try {
     const bookModule = await import(`../../../content/${contentId}/book.json`);
     book = bookModule.default;
@@ -45,9 +43,9 @@ if (!isAvailable) {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={book ? `${book.title} - Mathematics Textbook` : 'Book not found'} />
+    <meta name="description" content={landing ? `${landing.title} — ${landing.description}` : book ? `${book.title} - Mathematics Textbook` : 'Book not found'} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>{book ? book.title : 'Book Not Found'}</title>
+    <title>{landing ? `${landing.title} — ${landing.subtitle || ''}` : book ? book.title : 'Book Not Found'}</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -57,7 +55,22 @@ if (!isAvailable) {
     />
   </head>
   <body>
-    {comingSoon ? (
+    {landing ? (
+      <!-- Landing page with description, TOC, Meet the Author -->
+      <BookLandingPage book={landing} client:only="react" />
+    ) : isAvailable && book ? (
+      <!-- Full reader preview -->
+      <BookDetail book={book} bookId={contentId} client:only="react" />
+    ) : notFound ? (
+      <div class="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div class="text-center">
+          <h1 class="text-2xl font-bold text-gray-900 mb-4">Book Not Found</h1>
+          <a href="/" class="text-blue-600 hover:text-blue-800">
+            ← Back to Catalog
+          </a>
+        </div>
+      </div>
+    ) : (
       <div class="min-h-screen bg-gray-50 flex items-center justify-center">
         <div class="text-center">
           <div class="mb-6">
@@ -74,17 +87,6 @@ if (!isAvailable) {
           </a>
         </div>
       </div>
-    ) : notFound ? (
-      <div class="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div class="text-center">
-          <h1 class="text-2xl font-bold text-gray-900 mb-4">Book Not Found</h1>
-          <a href="/" class="text-blue-600 hover:text-blue-800">
-            ← Back to Catalog
-          </a>
-        </div>
-      </div>
-    ) : (
-      <BookDetail book={book} bookId={contentId} client:only="react" />
     )}
   </body>
 </html>
