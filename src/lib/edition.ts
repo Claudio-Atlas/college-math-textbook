@@ -42,10 +42,10 @@ const MERIDIAN_CONFIG: BrandConfig = {
   showScripture: false,
   showEpigraphs: false,
   colors: {
-    primary: '#475569',      // Slate blue
-    primaryDark: '#334155',
-    primaryLight: '#F1F5F9',
-    accent: '#3B82F6',       // Blue
+    primary: '#8B5CF6',      // Violet (Axiom signature)
+    primaryDark: '#7C3AED',
+    primaryLight: '#F5F3FF',
+    accent: '#34D399',       // Emerald
   },
 };
 
