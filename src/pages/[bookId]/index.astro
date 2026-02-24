@@ -22,41 +22,42 @@ try {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{notFound ? 'Book Not Found' : book.title} - Axiom Reader</title>
   </head>
-  <body class="min-h-screen bg-atlas-cream">
+  <body class="min-h-screen" style="background: var(--ax-bg); color: var(--ax-text);">
     {notFound ? (
       <div class="flex items-center justify-center min-h-screen">
         <div class="text-center">
-          <h1 class="text-2xl font-bold text-atlas-deep mb-4">Book Not Found</h1>
-          <a href="/" class="text-atlas-teal hover:text-atlas-teal-dark">← Back to Home</a>
+          <h1 class="text-2xl font-bold mb-4" style="color: var(--ax-text);">Book Not Found</h1>
+          <a href="/" class="hover:underline" style="color: var(--ax-violet);">← Back to Home</a>
         </div>
       </div>
     ) : (
       <div class="max-w-4xl mx-auto px-4 py-12">
         <!-- Book Header -->
         <header class="text-center mb-12">
-          <h1 class="text-4xl font-bold text-atlas-deep mb-2">{book.title}</h1>
-          {book.subtitle && <p class="text-xl text-atlas-secondary">{book.subtitle}</p>}
-          <p class="text-atlas-secondary mt-2">by {book.author}</p>
+          <h1 class="text-4xl font-bold mb-2" style="color: var(--ax-text);">{book.title}</h1>
+          {book.subtitle && <p class="text-xl" style="color: var(--ax-text-secondary);">{book.subtitle}</p>}
+          <p class="mt-2" style="color: var(--ax-text-secondary);">by {book.author}</p>
         </header>
 
         <!-- Table of Contents -->
         <nav class="space-y-6">
           {book.chapters.map((chapter: any) => (
-            <div class="bg-white rounded-lg shadow-sm border border-atlas-border overflow-hidden">
-              <div class="bg-atlas-teal-light px-6 py-4">
-                <h2 class="text-xl font-semibold text-atlas-deep">
+            <div class="rounded-lg overflow-hidden" style="background: var(--ax-surface); border: 1px solid var(--ax-border);">
+              <div class="px-6 py-4" style="background: var(--ax-elevated);">
+                <h2 class="text-xl font-semibold" style="color: var(--ax-text);">
                   Chapter {chapter.number}: {chapter.title}
                 </h2>
               </div>
-              <ul class="divide-y divide-atlas-border">
+              <ul style="border-color: var(--ax-border);">
                 {chapter.sections.map((section: any) => (
-                  <li>
+                  <li style="border-bottom: 1px solid var(--ax-border);">
                     <a 
                       href={`/${bookId}/${chapter.id}/${section.id}`}
-                      class="block px-6 py-3 hover:bg-atlas-cream transition-colors"
+                      class="block px-6 py-3 transition-colors hover:opacity-80"
+                      style="background: var(--ax-surface);"
                     >
-                      <span class="font-medium text-atlas-teal">{chapter.number}.{section.number}</span>
-                      <span class="ml-2 text-atlas-text">{section.title}</span>
+                      <span class="font-medium" style="color: var(--ax-violet);">{chapter.number}.{section.number}</span>
+                      <span class="ml-2" style="color: var(--ax-text);">{section.title}</span>
                     </a>
                   </li>
                 ))}
@@ -67,7 +68,7 @@ try {
 
         <!-- Back Link -->
         <div class="mt-12 text-center">
-          <a href="/" class="text-atlas-teal hover:text-atlas-teal-dark">
+          <a href="/" class="hover:underline" style="color: var(--ax-violet);">
             ← Back to Library
           </a>
         </div>
