@@ -52,6 +52,24 @@ const CATALOG: Book[] = [
     chapters: 6,
     available: false,
   },
+  {
+    id: 'diff-eq',
+    title: 'Elementary Differential Equations',
+    subtitle: 'With Applications',
+    description: 'A comprehensive introduction to ordinary differential equations, covering first-order equations, linear systems, series solutions, and real-world applications in physics and engineering.',
+    coverSlug: 'diff-eq',
+    chapters: 8,
+    available: false,
+  },
+  {
+    id: 'college-algebra',
+    title: 'College Algebra',
+    subtitle: 'With Applications',
+    description: 'A thorough foundation in algebraic concepts including functions, polynomials, exponentials, logarithms, and systems of equations. Prepares students for calculus and beyond.',
+    coverSlug: 'college-algebra',
+    chapters: 10,
+    available: false,
+  },
 ];
 
 function HomeContent() {
