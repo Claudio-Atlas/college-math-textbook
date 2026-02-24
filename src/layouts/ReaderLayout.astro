@@ -1,7 +1,9 @@
 ---
 import '../styles/global.css';
 import { Sidebar } from '../components/reader/Sidebar';
-import { TextSizeControl } from '../components/reader/TextSizeControl';
+import { ReaderHeader } from '../components/reader/ReaderHeader';
+import { ProgressBar } from '../components/reader/ProgressBar';
+import { UpNextCard } from '../components/reader/UpNextCard';
 
 interface Section {
   id: string;
@@ -23,19 +25,36 @@ interface Book {
   chapters: Chapter[];
 }
 
+interface NavInfo {
+  chapterId: string;
+  sectionId: string;
+  chapter: number;
+  section: number;
+  title: string;
+}
+
 interface Props {
   title: string;
   book?: Book;
+  bookId?: string;
   currentChapter?: number;
   currentSection?: number;
   sectionTitle?: string;
+  chapterTitle?: string;
+  prevSection?: NavInfo | null;
+  nextSection?: NavInfo | null;
 }
 
-const { title, book, currentChapter, currentSection, sectionTitle } = Astro.props;
+const { 
+  title, book, bookId, 
+  currentChapter, currentSection, 
+  sectionTitle, chapterTitle,
+  prevSection, nextSection 
+} = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -43,63 +62,78 @@ const { title, book, currentChapter, currentSection, sectionTitle } = Astro.prop
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>
-  <body class="min-h-screen bg-ax-bg">
+  <body class="min-h-screen" style={`background: var(--ax-bg); color: var(--ax-text);`}>
     <!-- Skip Link -->
     <a 
       href="#main-content" 
-      class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:bg-ax-violet focus:text-white focus:px-4 focus:py-2 focus:rounded"
+      class="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-[100] focus:px-4 focus:py-2 focus:rounded"
+      style="background: var(--ax-violet); color: white;"
     >
       Skip to main content
     </a>
 
-    <!-- Top Header -->
     {book && (
-      <header class="bg-ax-sidebar border-b border-ax-sidebar-border sticky top-0 z-40">
-        <div class="flex items-center justify-between px-4 py-2.5">
-          <!-- Left: back + title -->
-          <div class="flex items-center gap-3 min-w-0">
-            <a href={`/${book.id}`} class="flex items-center gap-1.5 text-ax-sidebar-muted hover:text-white transition-colors text-sm shrink-0">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-              </svg>
-              <span class="hidden sm:inline">{book.title}</span>
-            </a>
-            {sectionTitle && (
-              <div class="flex items-center gap-2 min-w-0">
-                <span class="text-ax-sidebar-border">/</span>
-                <h1 class="text-white font-semibold text-sm truncate">{sectionTitle}</h1>
-              </div>
-            )}
-          </div>
-          
-          <!-- Right: text size + search -->
-          <div class="flex items-center gap-2">
-            <TextSizeControl client:load />
-          </div>
-        </div>
-      </header>
+      <>
+        <!-- Header -->
+        <ReaderHeader
+          bookId={bookId || book.id}
+          currentChapter={currentChapter}
+          currentSection={currentSection}
+          sectionTitle={sectionTitle}
+          chapterTitle={chapterTitle}
+          prevSection={prevSection}
+          nextSection={nextSection}
+          client:load
+        />
+
+        <!-- Progress Bar -->
+        <ProgressBar client:load />
+
+        <!-- Sidebar Overlay -->
+        <Sidebar
+          book={book}
+          bookId={bookId || book.id}
+          currentChapter={currentChapter}
+          currentSection={currentSection}
+          client:load
+        />
+      </>
     )}
 
-    <div class="flex">
-      <!-- Sidebar -->
-      {book && (
-        <aside class="sticky top-[49px] h-[calc(100vh-49px)] flex-shrink-0 z-30">
-          <Sidebar 
-            book={book}
-            currentChapter={currentChapter}
-            currentSection={currentSection}
-            client:load
-          />
-        </aside>
-      )}
+    <!-- Main Content — always centered, never shifts -->
+    <main id="main-content" class="w-full" style={`padding-top: ${book ? '50px' : '0'};`}>
+      <slot />
+    </main>
 
-      <!-- Main Content -->
-      <main id="main-content" class="flex-1 min-w-0 animate-fade-in">
-        <slot />
-      </main>
-    </div>
+    {book && nextSection && (
+      <UpNextCard
+        bookId={bookId || book.id}
+        nextSection={nextSection}
+        client:load
+      />
+    )}
+
+    <!-- Keyboard shortcuts -->
+    <script is:inline>
+      document.addEventListener('keydown', (e) => {
+        if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+        
+        if (e.key === 't' && !e.metaKey && !e.ctrlKey) {
+          e.preventDefault();
+          window.dispatchEvent(new CustomEvent('toggle-sidebar'));
+        }
+        if (e.key === 'ArrowLeft' && !e.metaKey && !e.ctrlKey) {
+          const prev = document.querySelector('[data-nav-prev]');
+          if (prev) prev.click();
+        }
+        if (e.key === 'ArrowRight' && !e.metaKey && !e.ctrlKey) {
+          const next = document.querySelector('[data-nav-next]');
+          if (next) next.click();
+        }
+      });
+    </script>
   </body>
 </html>
