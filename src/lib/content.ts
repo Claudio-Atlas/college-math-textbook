@@ -36,23 +36,12 @@ export async function getAllBooks(): Promise<string[]> {
   // Return list of available books
   // In production, this could be dynamic
   return [
+    'precalculus',
     'vol1',
     'vol2', 
     'vol3',
-    'algebra-1',
-    'algebra-2',
-    'precalculus',
-    'geometry',
-    'pre-algebra',
     'linear-algebra',
-    'diff-eq',
-    'discrete-math',
-    'prob-stats',
-    'real-analysis',
-    'complex-analysis',
-    'abstract-algebra',
-    'number-theory',
-    'numerical-analysis',
+    'linear-algebra-proofs',
   ];
 }
 

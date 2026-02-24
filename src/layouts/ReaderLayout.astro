@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import { Sidebar } from '../components/reader/Sidebar';
+import { TextSizeControl } from '../components/reader/TextSizeControl';
 
 interface Section {
   id: string;
@@ -38,40 +39,54 @@ const { title, book, currentChapter, currentSection, sectionTitle } = Astro.prop
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Axiom Reader - Mathematics Textbooks" />
+    <meta name="description" content="Axiom Reader — Mathematics Textbooks" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>{title}</title>
   </head>
-  <body class="min-h-screen bg-atlas-cream">
-    <!-- Skip Link for Accessibility -->
+  <body class="min-h-screen bg-ax-bg">
+    <!-- Skip Link -->
     <a 
       href="#main-content" 
-      class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:bg-atlas-deep focus:text-white focus:px-4 focus:py-2"
+      class="skip-link sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:bg-ax-violet focus:text-white focus:px-4 focus:py-2 focus:rounded"
     >
       Skip to main content
     </a>
 
-    <!-- Top Header (OpenStax style) -->
+    <!-- Top Header -->
     {book && (
-      <header class="bg-atlas-warm text-atlas-deep sticky top-0 z-40">
-        <div class="px-4 py-3">
-          <a href={`/${book.id}`} class="flex items-center gap-2 text-sm hover:opacity-80">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-            {book.title}
-          </a>
-          {sectionTitle && (
-            <p class="text-xl font-bold mt-1">{sectionTitle}</p>
-          )}
+      <header class="bg-ax-sidebar border-b border-ax-sidebar-border sticky top-0 z-40">
+        <div class="flex items-center justify-between px-4 py-2.5">
+          <!-- Left: back + title -->
+          <div class="flex items-center gap-3 min-w-0">
+            <a href={`/${book.id}`} class="flex items-center gap-1.5 text-ax-sidebar-muted hover:text-white transition-colors text-sm shrink-0">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+              </svg>
+              <span class="hidden sm:inline">{book.title}</span>
+            </a>
+            {sectionTitle && (
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="text-ax-sidebar-border">/</span>
+                <h1 class="text-white font-semibold text-sm truncate">{sectionTitle}</h1>
+              </div>
+            )}
+          </div>
+          
+          <!-- Right: text size + search -->
+          <div class="flex items-center gap-2">
+            <TextSizeControl client:load />
+          </div>
         </div>
       </header>
     )}
 
     <div class="flex">
-      <!-- Sidebar (icon rail + expandable panel) -->
+      <!-- Sidebar -->
       {book && (
-        <aside class="sticky top-[72px] h-[calc(100vh-72px)] flex-shrink-0 z-30">
+        <aside class="sticky top-[49px] h-[calc(100vh-49px)] flex-shrink-0 z-30">
           <Sidebar 
             book={book}
             currentChapter={currentChapter}
@@ -82,7 +97,7 @@ const { title, book, currentChapter, currentSection, sectionTitle } = Astro.prop
       )}
 
       <!-- Main Content -->
-      <main id="main-content" class="flex-1 min-w-0">
+      <main id="main-content" class="flex-1 min-w-0 animate-fade-in">
         <slot />
       </main>
     </div>

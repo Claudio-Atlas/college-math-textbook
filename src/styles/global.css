@@ -1,172 +1,279 @@
 @import "tailwindcss";
 
-/* Brand Colors (set dynamically via BrandProvider) */
+/* ─── Axiom Design System ───────────────────────────────── */
+/* Aligned with Axiom Question Bank: clean, modern, violet accents */
+
 :root {
-  --brand-primary: #5BA4A4;
-  --brand-primary-dark: #4A8F8F;
-  --brand-primary-light: #E8F4F4;
-  --brand-accent: #D4A853;
+  /* Core palette */
+  --ax-bg: #FFFFFF;
+  --ax-surface: #FAFAFA;
+  --ax-elevated: #F4F4F4;
+  --ax-border: #E5E5E5;
+  --ax-border-subtle: #F0F0F0;
+  
+  /* Text */
+  --ax-text: #171717;
+  --ax-text-secondary: #5C5E62;
+  --ax-text-muted: #8C8C8C;
+  
+  /* Accent — violet (Axiom signature) */
+  --ax-violet: #8B5CF6;
+  --ax-violet-hover: #7C3AED;
+  --ax-violet-light: #EDE9FE;
+  --ax-violet-subtle: #F5F3FF;
+  
+  /* Semantic */
+  --ax-teal: #5BA4A4;
+  --ax-teal-light: #E8F4F4;
+  --ax-sage: #7BAE7F;
+  --ax-sage-light: #EDF5EE;
+  --ax-amber: #D4A853;
+  --ax-amber-light: #FDF6E8;
+  --ax-rose: #C97B84;
+  --ax-rose-light: #F9EEF0;
+  --ax-cyan: #22D3EE;
+  
+  /* Sidebar dark */
+  --ax-sidebar-bg: #0F0F14;
+  --ax-sidebar-surface: #1A1A24;
+  --ax-sidebar-border: #2A2A3A;
+  --ax-sidebar-text: #E2E2E8;
+  --ax-sidebar-muted: #6B6B80;
+  
+  /* Reader font size (controlled by accessibility slider) */
+  --reader-font-size: 1.05rem;
+  --reader-line-height: 1.8;
 }
 
-/* Atlas Classical Press Brand Colors */
+/* ─── Tailwind Theme Extension ──────────────────────────── */
 @theme {
+  --color-ax-violet: #8B5CF6;
+  --color-ax-violet-hover: #7C3AED;
+  --color-ax-violet-light: #EDE9FE;
+  --color-ax-violet-subtle: #F5F3FF;
+  --color-ax-teal: #5BA4A4;
+  --color-ax-teal-light: #E8F4F4;
+  --color-ax-sage: #7BAE7F;
+  --color-ax-sage-light: #EDF5EE;
+  --color-ax-amber: #D4A853;
+  --color-ax-amber-light: #FDF6E8;
+  --color-ax-rose: #C97B84;
+  --color-ax-rose-light: #F9EEF0;
+  --color-ax-text: #171717;
+  --color-ax-secondary: #5C5E62;
+  --color-ax-muted: #8C8C8C;
+  --color-ax-bg: #FFFFFF;
+  --color-ax-surface: #FAFAFA;
+  --color-ax-elevated: #F4F4F4;
+  --color-ax-border: #E5E5E5;
+  --color-ax-sidebar: #0F0F14;
+  --color-ax-sidebar-surface: #1A1A24;
+  --color-ax-sidebar-border: #2A2A3A;
+  --color-ax-sidebar-text: #E2E2E8;
+  --color-ax-sidebar-muted: #6B6B80;
+  
+  /* Legacy aliases for existing components */
   --color-atlas-teal: #5BA4A4;
   --color-atlas-teal-dark: #4A8F8F;
   --color-atlas-teal-light: #E8F4F4;
-  --color-atlas-deep: #2C5F5F;
-  --color-atlas-cream: #FAF9F7;
-  --color-atlas-sage: #7BAE7F;
-  --color-atlas-sage-light: #EDF5EE;
+  --color-atlas-deep: #171717;
+  --color-atlas-cream: #FAFAFA;
   --color-atlas-warm: #D4A853;
   --color-atlas-warm-light: #FDF6E8;
+  --color-atlas-sage: #7BAE7F;
+  --color-atlas-sage-light: #EDF5EE;
   --color-atlas-rose: #C97B84;
   --color-atlas-rose-light: #F9EEF0;
-  --color-atlas-text: #2D2D2D;
-  --color-atlas-secondary: #6B6B6B;
-  --color-atlas-muted: #9E9E9E;
-  --color-atlas-border: #E8E5E1;
-  --color-atlas-elevated: #F5F3F0;
+  --color-atlas-text: #171717;
+  --color-atlas-secondary: #5C5E62;
+  --color-atlas-muted: #8C8C8C;
+  --color-atlas-border: #E5E5E5;
+  --color-atlas-elevated: #F4F4F4;
 }
 
-/* Base styles */
+/* ─── Base Styles ───────────────────────────────────────── */
 html {
   scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-  font-family: 'Georgia', 'Times New Roman', serif;
-  color: var(--color-atlas-text);
-  background-color: var(--color-atlas-cream);
-  line-height: 1.7;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--ax-text);
+  background-color: var(--ax-bg);
+  line-height: 1.6;
+  font-size: 15px;
 }
 
-/* MathJax sizing */
+/* ─── MathJax ───────────────────────────────────────────── */
 .MathJax {
-  font-size: 1.1em !important;
+  font-size: 1.05em !important;
 }
 
-/* Content typography */
+/* ─── Reader Content ────────────────────────────────────── */
 .reader-content {
-  max-width: 48rem;
+  max-width: 52rem;
   margin: 0 auto;
+  padding: 2rem 2.5rem 4rem;
+  font-size: var(--reader-font-size);
+  line-height: var(--reader-line-height);
 }
 
 .reader-content p {
   margin-bottom: 1.25rem;
+  color: var(--ax-text);
 }
 
 .reader-content h2 {
-  font-size: 1.5rem;
+  font-size: 1.65rem;
   font-weight: 700;
-  margin-top: 2.5rem;
+  margin-top: 3rem;
   margin-bottom: 1rem;
-  color: var(--color-atlas-deep);
+  color: var(--ax-text);
+  letter-spacing: -0.02em;
 }
 
 .reader-content h3 {
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 600;
-  margin-top: 2rem;
+  margin-top: 2.25rem;
   margin-bottom: 0.75rem;
-  color: var(--color-atlas-deep);
+  color: var(--ax-text);
+  letter-spacing: -0.01em;
 }
 
-/* Environment boxes */
+/* ─── Environment Boxes (modern card style) ─────────────── */
 .env-box {
-  margin: 1.5rem 0;
-  padding: 1.25rem;
-  border-radius: 0.5rem;
+  margin: 2rem 0;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 1px solid var(--ax-border);
   border-left: 4px solid;
+  background: var(--ax-bg);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
 }
 
 .env-definition {
-  background-color: var(--color-atlas-teal-light);
-  border-color: var(--color-atlas-teal);
+  background-color: var(--ax-violet-subtle);
+  border-color: var(--ax-violet);
+  border-left-color: var(--ax-violet);
 }
 
 .env-theorem {
-  background-color: var(--color-atlas-sage-light);
-  border-color: var(--color-atlas-sage);
+  background-color: var(--ax-sage-light);
+  border-color: var(--ax-sage);
+  border-left-color: var(--ax-sage);
 }
 
 .env-example {
-  background-color: var(--color-atlas-warm-light);
-  border-color: var(--color-atlas-warm);
+  background-color: var(--ax-amber-light);
+  border-color: var(--ax-amber);
+  border-left-color: var(--ax-amber);
 }
 
 .env-proof {
-  background-color: var(--color-atlas-elevated);
-  border-color: var(--color-atlas-border);
+  background-color: var(--ax-elevated);
+  border-color: var(--ax-border);
+  border-left-color: var(--ax-text-muted);
 }
 
 .env-warning {
-  background-color: var(--color-atlas-rose-light);
-  border-color: var(--color-atlas-rose);
+  background-color: var(--ax-rose-light);
+  border-color: var(--ax-rose);
+  border-left-color: var(--ax-rose);
 }
 
 .env-label {
-  font-size: 0.75rem;
+  font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   margin-bottom: 0.5rem;
+  color: var(--ax-violet);
 }
+
+.env-definition .env-label { color: var(--ax-violet); }
+.env-theorem .env-label { color: #4A8F4E; }
+.env-example .env-label { color: #B8922E; }
+.env-warning .env-label { color: var(--ax-rose); }
 
 .env-title {
   font-weight: 600;
   margin-bottom: 0.5rem;
+  color: var(--ax-text);
 }
 
-/* Sidebar */
-.sidebar {
-  width: 320px;
-  height: 100vh;
-  overflow-y: auto;
-  border-right: 1px solid var(--color-atlas-border);
-  background-color: white;
-}
-
-.sidebar-collapsed {
-  width: 48px;
-}
-
-/* Header */
+/* ─── Top Header Bar ────────────────────────────────────── */
 .reader-header {
-  background-color: var(--color-atlas-warm);
+  background: var(--ax-sidebar-bg);
   color: white;
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1.25rem;
+  border-bottom: 1px solid var(--ax-sidebar-border);
 }
 
-/* QED symbol */
+/* ─── QED ───────────────────────────────────────────────── */
 .qed {
   float: right;
   font-size: 1.25rem;
 }
 
-/* Accessibility: Enhanced focus rings */
+/* ─── Accessibility Focus Rings ─────────────────────────── */
 *:focus {
   outline: none;
 }
 
 *:focus-visible {
-  outline: 2px solid var(--color-atlas-teal);
+  outline: 2px solid var(--ax-violet);
   outline-offset: 2px;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
-/* High contrast focus for light backgrounds */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid var(--color-atlas-deep);
+  outline: 2px solid var(--ax-violet);
   outline-offset: 2px;
-  box-shadow: 0 0 0 4px rgba(92, 164, 164, 0.3);
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.2);
 }
 
-/* Skip link enhancement */
 .skip-link:focus {
   position: absolute !important;
   clip: auto !important;
   width: auto !important;
   height: auto !important;
   overflow: visible !important;
+}
+
+/* ─── Scrollbar (modern thin) ───────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--ax-border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--ax-text-muted);
+}
+
+/* ─── Selection ─────────────────────────────────────────── */
+::selection {
+  background: var(--ax-violet-light);
+  color: var(--ax-text);
+}
+
+/* ─── Animations ────────────────────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
 }
