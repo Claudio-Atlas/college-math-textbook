@@ -154,6 +154,30 @@ function BookLandingContent({ book }: BookLandingPageProps) {
           </div>
         </section>
 
+        {/* Practice Problems Placeholder */}
+        <section className="py-10 sm:py-12" style={{ background: 'var(--ax-surface)' }}>
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div
+              className="inline-flex flex-col items-center gap-3 px-8 py-6"
+              style={{
+                background: 'var(--ax-elevated)',
+                borderRadius: 'var(--ax-card-radius)',
+                border: '1px solid var(--ax-border)',
+              }}
+            >
+              <div className="flex items-center gap-2">
+                <svg className="w-5 h-5" style={{ color: brand.colors.accent }} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                </svg>
+                <span className="font-semibold" style={{ color: 'var(--ax-text)' }}>Question Bank</span>
+              </div>
+              <p className="text-sm" style={{ color: 'var(--ax-text-muted)' }}>
+                Practice problems with instant feedback — coming soon
+              </p>
+            </div>
+          </div>
+        </section>
+
         {/* Meet the Author */}
         <section className="py-12 sm:py-16" style={{ background: 'var(--ax-surface)' }}>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -184,6 +208,29 @@ function BookLandingContent({ book }: BookLandingPageProps) {
                   {book.author.institution && ` — ${book.author.institution}`}
                 </p>
 
+                {/* Fun Fact — hero callout card */}
+                {book.author.funFact && (
+                  <div
+                    className="p-5 mb-6 flex items-start gap-4"
+                    style={{
+                      background: 'var(--ax-elevated)',
+                      borderRadius: 'var(--ax-card-radius)',
+                      border: '1px solid var(--ax-border)',
+                      borderLeft: `4px solid ${brand.colors.accent}`,
+                    }}
+                  >
+                    <span className="text-3xl flex-shrink-0" aria-hidden="true">🏁</span>
+                    <div>
+                      <p className="font-bold text-base mb-1" style={{ color: 'var(--ax-text)' }}>
+                        Not your average professor
+                      </p>
+                      <p className="leading-relaxed" style={{ color: 'var(--ax-text-secondary)' }}>
+                        {book.author.funFact}
+                      </p>
+                    </div>
+                  </div>
+                )}
+
                 <div className="max-w-none mb-6">
                   {book.author.bio.split('\n\n').map((paragraph, i) => (
                     <p key={i} className="mb-3 leading-relaxed" style={{ color: 'var(--ax-text-secondary)' }}>{paragraph}</p>
@@ -191,7 +238,7 @@ function BookLandingContent({ book }: BookLandingPageProps) {
                 </div>
 
                 {/* Credentials */}
-                <div className="mb-6">
+                <div>
                   <h4 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: 'var(--ax-text-muted)' }}>
                     Credentials
                   </h4>
@@ -204,25 +251,6 @@ function BookLandingContent({ book }: BookLandingPageProps) {
                     ))}
                   </ul>
                 </div>
-
-                {/* Fun Fact — top-accent card style */}
-                {book.author.funFact && (
-                  <div
-                    className="p-4"
-                    style={{
-                      background: 'var(--ax-card-bg)',
-                      backdropFilter: 'var(--ax-card-blur)',
-                      borderRadius: 'var(--ax-card-radius)',
-                      border: '1px solid var(--ax-border)',
-                      borderTop: `2px solid ${brand.colors.accent}`,
-                    }}
-                  >
-                    <p className="text-sm font-semibold uppercase tracking-wide mb-1" style={{ color: 'var(--ax-text-muted)' }}>
-                      Beyond the Classroom
-                    </p>
-                    <p style={{ color: 'var(--ax-text-secondary)' }}>{book.author.funFact}</p>
-                  </div>
-                )}
               </div>
             </div>
           </div>
