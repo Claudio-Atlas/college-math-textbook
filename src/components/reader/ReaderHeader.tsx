@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { SettingsPanel } from './SettingsPanel';
 
 interface NavInfo {
   chapterId: string;
@@ -154,16 +155,7 @@ export function ReaderHeader({
         )}
 
         {/* Settings (Aa) */}
-        <button
-          onClick={handleSettings}
-          className="flex items-center justify-center w-8 h-8 rounded-lg ml-1"
-          style={{ color: 'var(--ax-text-secondary)', transition: 'background 150ms ease-out' }}
-          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.06)')}
-          onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
-          aria-label="Text settings"
-        >
-          <span className="text-sm font-semibold" style={{ fontFamily: 'Inter, sans-serif' }}>Aa</span>
-        </button>
+        <SettingsPanel />
       </div>
     </header>
   );
