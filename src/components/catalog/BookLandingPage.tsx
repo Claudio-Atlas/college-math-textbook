@@ -1,12 +1,13 @@
 /**
  * Book Landing Page — marketing/info page for individual books.
- * Shows description, stats, TOC, features, and Meet the Author.
+ * Uses --ax-* tokens for dark/light mode support.
+ * Env box previews use top-accent card style with 14px radius.
  */
 import { BrandProvider, useBrand } from '../brand/BrandProvider';
 import { Logo } from '../brand/Logo';
-import { MarketingNav } from '../marketing/MarketingNav';
+import { ThemeToggle } from '../brand/ThemeToggle';
 import type { BookLanding } from '../../lib/books';
-type AuthorInfo = BookLanding['author'];
+import React from 'react';
 
 interface BookLandingPageProps {
   book: BookLanding;
@@ -23,24 +24,48 @@ function BookLandingContent({ book }: BookLandingPageProps) {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen" style={{ background: 'var(--ax-bg)', color: 'var(--ax-text)' }}>
       {/* Skip Link */}
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:bg-gray-900 focus:text-white focus:px-4 focus:py-2"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-0 focus:left-0 focus:z-50 focus:px-4 focus:py-2"
+        style={{ background: 'var(--ax-violet)', color: '#fff' }}
       >
         Skip to main content
       </a>
 
-      {/* Frosted Glass Navigation */}
-      <MarketingNav backHref="/" backLabel="Back to Catalog" />
+      {/* Header — frosted glass */}
+      <header className="sticky top-0 z-40" style={{
+        background: 'var(--ax-glass)',
+        backdropFilter: 'var(--ax-frost)',
+        WebkitBackdropFilter: 'var(--ax-frost)',
+        borderBottom: '1px solid var(--ax-border)',
+      }}>
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+          <div className="flex items-center justify-between">
+            <a href="/">
+              <Logo size="md" />
+            </a>
+            <div className="flex items-center gap-3">
+              <a
+                href="/"
+                className="flex items-center gap-2 px-3 py-2 rounded-lg transition-colors hover:opacity-80"
+                style={{ color: 'var(--ax-text-secondary)' }}
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+                Back to Catalog
+              </a>
+              <ThemeToggle />
+            </div>
+          </div>
+        </div>
+      </header>
 
       <main id="main-content">
         {/* Hero Section */}
-        <section
-          className="py-12 sm:py-20"
-          style={{ backgroundColor: brand.colors.primaryLight }}
-        >
+        <section className="py-12 sm:py-20" style={{ background: 'var(--ax-elevated)' }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
               {/* Cover Image */}
@@ -48,20 +73,21 @@ function BookLandingContent({ book }: BookLandingPageProps) {
                 <img
                   src={coverImage}
                   alt={`${book.title} cover`}
-                  className="w-full rounded-lg shadow-2xl"
+                  className="w-full shadow-2xl"
+                  style={{ borderRadius: 'var(--ax-card-radius)' }}
                 />
               </div>
 
               {/* Book Info */}
               <div className="flex-1 text-center md:text-left">
-                <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-2">
+                <h1 className="text-4xl sm:text-5xl font-bold mb-2" style={{ color: 'var(--ax-text)' }}>
                   {book.title}
                 </h1>
                 {book.subtitle && (
-                  <p className="text-xl text-gray-500 mb-4">{book.subtitle}</p>
+                  <p className="text-xl mb-4" style={{ color: 'var(--ax-text-muted)' }}>{book.subtitle}</p>
                 )}
-                <p className="text-lg text-gray-600 mb-2">
-                  by <span className="font-medium text-gray-800">{book.author.name}</span>
+                <p className="text-lg mb-2" style={{ color: 'var(--ax-text-secondary)' }}>
+                  by <span className="font-medium" style={{ color: 'var(--ax-text)' }}>{book.author.name}</span>
                 </p>
 
                 {/* Stats Row */}
@@ -73,7 +99,7 @@ function BookLandingContent({ book }: BookLandingPageProps) {
                   {book.figureCount && <Stat value={`${book.figureCount}+`} label="Figures" />}
                 </div>
 
-                <p className="text-gray-600 leading-relaxed max-w-2xl">
+                <p className="leading-relaxed max-w-2xl" style={{ color: 'var(--ax-text-secondary)' }}>
                   {book.description}
                 </p>
               </div>
@@ -82,19 +108,19 @@ function BookLandingContent({ book }: BookLandingPageProps) {
         </section>
 
         {/* About the Book */}
-        <section className="py-12 sm:py-16 bg-white">
+        <section className="py-12 sm:py-16" style={{ background: 'var(--ax-surface)' }}>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">About This Book</h2>
-            <div className="prose prose-lg text-gray-600 max-w-none">
+            <h2 className="text-3xl font-bold mb-6" style={{ color: 'var(--ax-text)' }}>About This Book</h2>
+            <div className="max-w-none">
               {book.longDescription.split('\n\n').map((paragraph, i) => (
-                <p key={i} className="mb-4 leading-relaxed">{paragraph}</p>
+                <p key={i} className="mb-4 leading-relaxed text-lg" style={{ color: 'var(--ax-text-secondary)' }}>{paragraph}</p>
               ))}
             </div>
 
-            {/* Features */}
+            {/* Features — top-accent cards */}
             {book.features.length > 0 && (
               <div className="mt-10">
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Key Features</h3>
+                <h3 className="text-xl font-semibold mb-4" style={{ color: 'var(--ax-text)' }}>Key Features</h3>
                 <ul className="grid sm:grid-cols-2 gap-3">
                   {book.features.map((feature, i) => (
                     <li key={i} className="flex items-start gap-3">
@@ -111,7 +137,7 @@ function BookLandingContent({ book }: BookLandingPageProps) {
                           clipRule="evenodd"
                         />
                       </svg>
-                      <span className="text-gray-600">{feature}</span>
+                      <span style={{ color: 'var(--ax-text-secondary)' }}>{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -121,9 +147,9 @@ function BookLandingContent({ book }: BookLandingPageProps) {
         </section>
 
         {/* Table of Contents */}
-        <section className="py-12 sm:py-16" style={{ backgroundColor: brand.colors.primaryLight }}>
+        <section className="py-12 sm:py-16" style={{ background: 'var(--ax-elevated)' }}>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Table of Contents</h2>
+            <h2 className="text-3xl font-bold mb-8" style={{ color: 'var(--ax-text)' }}>Table of Contents</h2>
 
             <div className="space-y-4">
               {book.chapters.map((chapter) => (
@@ -134,12 +160,12 @@ function BookLandingContent({ book }: BookLandingPageProps) {
         </section>
 
         {/* Meet the Author */}
-        <section className="py-12 sm:py-16 bg-white">
+        <section className="py-12 sm:py-16" style={{ background: 'var(--ax-surface)' }}>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Meet the Author</h2>
+            <h2 className="text-3xl font-bold mb-8" style={{ color: 'var(--ax-text)' }}>Meet the Author</h2>
 
             <div className="flex flex-col md:flex-row gap-8">
-              {/* Author Avatar Placeholder */}
+              {/* Author Avatar */}
               <div className="flex-shrink-0 mx-auto md:mx-0">
                 <div
                   className="w-32 h-32 rounded-full flex items-center justify-center text-white text-4xl font-bold shadow-lg"
@@ -155,28 +181,28 @@ function BookLandingContent({ book }: BookLandingPageProps) {
 
               {/* Author Info */}
               <div className="flex-1">
-                <h3 className="text-2xl font-bold text-gray-900 mb-1">
+                <h3 className="text-2xl font-bold mb-1" style={{ color: 'var(--ax-text)' }}>
                   {book.author.name}
                 </h3>
-                <p className="text-gray-500 mb-4">
+                <p className="mb-4" style={{ color: 'var(--ax-text-muted)' }}>
                   {book.author.title}
                   {book.author.institution && ` — ${book.author.institution}`}
                 </p>
 
-                <div className="prose text-gray-600 max-w-none mb-6">
+                <div className="max-w-none mb-6">
                   {book.author.bio.split('\n\n').map((paragraph, i) => (
-                    <p key={i} className="mb-3 leading-relaxed">{paragraph}</p>
+                    <p key={i} className="mb-3 leading-relaxed" style={{ color: 'var(--ax-text-secondary)' }}>{paragraph}</p>
                   ))}
                 </div>
 
                 {/* Credentials */}
                 <div className="mb-6">
-                  <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-3">
+                  <h4 className="text-sm font-semibold uppercase tracking-wide mb-3" style={{ color: 'var(--ax-text-muted)' }}>
                     Credentials
                   </h4>
                   <ul className="space-y-2">
                     {book.author.credentials.map((cred, i) => (
-                      <li key={i} className="flex items-start gap-2 text-gray-600">
+                      <li key={i} className="flex items-start gap-2" style={{ color: 'var(--ax-text-secondary)' }}>
                         <span style={{ color: brand.colors.primary }} className="mt-1">•</span>
                         {cred}
                       </li>
@@ -184,19 +210,22 @@ function BookLandingContent({ book }: BookLandingPageProps) {
                   </ul>
                 </div>
 
-                {/* Fun Fact */}
+                {/* Fun Fact — top-accent card style */}
                 {book.author.funFact && (
                   <div
-                    className="rounded-lg p-4 border"
+                    className="p-4"
                     style={{
-                      backgroundColor: brand.colors.primaryLight,
-                      borderColor: brand.colors.primary + '30',
+                      background: 'var(--ax-card-bg)',
+                      backdropFilter: 'var(--ax-card-blur)',
+                      borderRadius: 'var(--ax-card-radius)',
+                      border: '1px solid var(--ax-border)',
+                      borderTop: `2px solid ${brand.colors.accent}`,
                     }}
                   >
-                    <p className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-1">
+                    <p className="text-sm font-semibold uppercase tracking-wide mb-1" style={{ color: 'var(--ax-text-muted)' }}>
                       Beyond the Classroom
                     </p>
-                    <p className="text-gray-600">{book.author.funFact}</p>
+                    <p style={{ color: 'var(--ax-text-secondary)' }}>{book.author.funFact}</p>
                   </div>
                 )}
               </div>
@@ -206,16 +235,16 @@ function BookLandingContent({ book }: BookLandingPageProps) {
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer style={{ background: 'var(--ax-surface)', borderTop: '1px solid var(--ax-border)' }} className="py-12">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div className="text-gray-400">
+            <div style={{ color: 'var(--ax-text-muted)' }}>
               © {new Date().getFullYear()} {brand.name}. All rights reserved.
             </div>
-            <div className="flex gap-6 text-gray-400">
-              <a href="#" className="hover:text-white">Contact</a>
-              <a href="#" className="hover:text-white">Privacy</a>
-              <a href="#" className="hover:text-white">Terms</a>
+            <div className="flex gap-6" style={{ color: 'var(--ax-text-muted)' }}>
+              <a href="#" className="hover:opacity-80">Contact</a>
+              <a href="#" className="hover:opacity-80">Privacy</a>
+              <a href="#" className="hover:opacity-80">Terms</a>
             </div>
           </div>
         </div>
@@ -229,8 +258,8 @@ function BookLandingContent({ book }: BookLandingPageProps) {
 function Stat({ value, label }: { value: string; label: string }) {
   return (
     <div className="text-center">
-      <div className="text-2xl font-bold text-gray-900">{value}</div>
-      <div className="text-sm text-gray-500">{label}</div>
+      <div className="text-2xl font-bold" style={{ color: 'var(--ax-text)' }}>{value}</div>
+      <div className="text-sm" style={{ color: 'var(--ax-text-muted)' }}>{label}</div>
     </div>
   );
 }
@@ -244,10 +273,15 @@ function ChapterAccordion({ chapter, brand }: ChapterAccordionProps) {
   const [open, setOpen] = React.useState(false);
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-100 overflow-hidden">
+    <div style={{
+      background: 'var(--ax-surface)',
+      borderRadius: 'var(--ax-card-radius)',
+      border: '1px solid var(--ax-border)',
+      overflow: 'hidden',
+    }}>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-6 py-4 text-left hover:bg-gray-50 transition-colors"
+        className="w-full flex items-center justify-between px-6 py-4 text-left transition-colors hover:opacity-90"
       >
         <div className="flex items-center gap-4">
           <span
@@ -256,14 +290,15 @@ function ChapterAccordion({ chapter, brand }: ChapterAccordionProps) {
           >
             {chapter.number}
           </span>
-          <span className="font-semibold text-gray-900">{chapter.title}</span>
+          <span className="font-semibold" style={{ color: 'var(--ax-text)' }}>{chapter.title}</span>
         </div>
         <div className="flex items-center gap-3">
-          <span className="text-sm text-gray-400 hidden sm:inline">
+          <span className="text-sm hidden sm:inline" style={{ color: 'var(--ax-text-muted)' }}>
             {chapter.sections.length} sections
           </span>
           <svg
-            className={`w-5 h-5 text-gray-400 transition-transform ${open ? 'rotate-180' : ''}`}
+            className={`w-5 h-5 transition-transform ${open ? 'rotate-180' : ''}`}
+            style={{ color: 'var(--ax-text-muted)' }}
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -275,14 +310,14 @@ function ChapterAccordion({ chapter, brand }: ChapterAccordionProps) {
       </button>
 
       {open && (
-        <div className="border-t border-gray-100">
+        <div style={{ borderTop: '1px solid var(--ax-border)' }}>
           {chapter.sections.map((section) => (
             <div
               key={section.number}
-              className="flex items-center px-6 py-3 hover:bg-gray-50"
+              className="flex items-center px-6 py-3 hover:opacity-80"
             >
-              <span className="text-gray-400 font-mono text-sm w-14">{section.number}</span>
-              <span className="text-gray-700">{section.title}</span>
+              <span className="font-mono text-sm w-14" style={{ color: 'var(--ax-text-muted)' }}>{section.number}</span>
+              <span style={{ color: 'var(--ax-text-secondary)' }}>{section.title}</span>
             </div>
           ))}
         </div>
@@ -290,9 +325,6 @@ function ChapterAccordion({ chapter, brand }: ChapterAccordionProps) {
     </div>
   );
 }
-
-// Need React for useState in ChapterAccordion
-import React from 'react';
 
 export function BookLandingPage({ book }: BookLandingPageProps) {
   return (

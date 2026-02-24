@@ -3,6 +3,7 @@
  */
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { detectEdition, getBrandConfig, type BrandConfig, type Edition } from '../../lib/edition';
+import { ThemeProvider } from './ThemeProvider';
 
 interface BrandContextValue {
   brand: BrandConfig;
@@ -51,7 +52,9 @@ export function BrandProvider({ children, forceEdition }: BrandProviderProps) {
 
   return (
     <BrandContext.Provider value={value}>
-      {children}
+      <ThemeProvider>
+        {children}
+      </ThemeProvider>
     </BrandContext.Provider>
   );
 }
