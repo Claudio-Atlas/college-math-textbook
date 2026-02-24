@@ -158,7 +158,7 @@ function BookLandingContent({ book }: BookLandingPageProps) {
         <section className="py-10 sm:py-12" style={{ background: 'var(--ax-surface)' }}>
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div
-              className="inline-flex flex-col items-center gap-3 px-8 py-6"
+              className="inline-flex flex-col items-center gap-3 px-6 sm:px-8 py-6"
               style={{
                 background: 'var(--ax-elevated)',
                 borderRadius: 'var(--ax-card-radius)',
