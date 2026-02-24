@@ -6,6 +6,9 @@ import { ProgressBar } from '../components/reader/ProgressBar';
 import { UpNextCard } from '../components/reader/UpNextCard';
 import { SearchProvider } from '../components/reader/SearchProvider';
 import { BottomNav } from '../components/reader/BottomNav';
+import { MiniToc } from '../components/reader/MiniToc';
+import { ScrollToTop } from '../components/reader/ScrollToTop';
+import { MarkComplete } from '../components/reader/MarkComplete';
 
 interface Section {
   id: string;
@@ -109,6 +112,12 @@ const {
           bookId={bookId || book.id}
           client:load
         />
+
+        <!-- Floating Mini-TOC (right edge) -->
+        <MiniToc client:only="react" />
+
+        <!-- Scroll to Top -->
+        <ScrollToTop client:only="react" />
       </>
     )}
 
@@ -116,6 +125,16 @@ const {
     <main id="main-content" class="w-full section-fade-in" style={`padding-top: ${book ? '50px' : '0'};`}>
       <slot />
     </main>
+
+    {book && currentChapter && currentSection && (
+      <MarkComplete
+        bookId={bookId || book.id}
+        chapterId={`ch${String(currentChapter).padStart(2, '0')}`}
+        sectionId={`sec${String(currentSection).padStart(2, '0')}`}
+        sectionTitle={sectionTitle || ''}
+        client:only="react"
+      />
+    )}
 
     {book && (prevSection || nextSection) && (
       <BottomNav

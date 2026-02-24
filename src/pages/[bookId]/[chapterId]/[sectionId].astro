@@ -97,6 +97,13 @@ const catalogId = bookId === 'vol1' ? 'calculus-vol1' : bookId;
         <h1 class="section-title">
           {section.chapter}.{section.section}&ensp;{section.title}
         </h1>
+        <div class="section-meta" style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem; font-family: var(--ax-font-sans); font-size: 0.8rem; color: var(--ax-text-muted);">
+          <span>{Math.max(1, Math.round(JSON.stringify(section.content).length / 1200))} min read</span>
+          <span style="opacity: 0.3;">·</span>
+          <span>{section.content?.filter((b: any) => b.type === 'example').length || 0} examples</span>
+          <span style="opacity: 0.3;">·</span>
+          <span>{section.content?.filter((b: any) => b.type === 'definition').length || 0} definitions</span>
+        </div>
       </div>
       
       <!-- Main Content with Brand-Aware Rendering -->
