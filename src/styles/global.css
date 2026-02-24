@@ -717,3 +717,76 @@ button:active {
     --ax-font-size: 1rem;
   }
 }
+
+/* ─── Print Stylesheet ──────────────────────────────────── */
+@media print {
+  /* Hide non-content UI */
+  nav,
+  .reader-header,
+  .frost-panel,
+  .sidebar-open,
+  .sidebar-backdrop-in,
+  .progress-bar,
+  .selection-toolbar,
+  .solution-toggle .chevron,
+  button[aria-label="Toggle theme"],
+  button[aria-label="Settings"],
+  button[aria-label="Table of Contents"],
+  .up-next-appear,
+  .badge-coming-soon {
+    display: none !important;
+  }
+
+  /* Remove decorative layers */
+  body::before,
+  body::after {
+    display: none !important;
+  }
+
+  /* Clean content area */
+  body {
+    background: white !important;
+    color: black !important;
+  }
+
+  .reader-content {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 11pt;
+    line-height: 1.6;
+    color: black;
+  }
+
+  .reader-content h1,
+  .reader-content h2,
+  .reader-content h3,
+  .reader-content h4 {
+    color: black;
+    page-break-after: avoid;
+  }
+
+  .env-box {
+    border: 1px solid #ccc;
+    border-top: 2px solid #666;
+    background: white !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+
+  a {
+    color: black !important;
+    text-decoration: underline;
+  }
+
+  /* Avoid orphaned headings */
+  h1, h2, h3, h4 {
+    page-break-after: avoid;
+  }
+
+  p, .env-box {
+    orphans: 3;
+    widows: 3;
+  }
+}
