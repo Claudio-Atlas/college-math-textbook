@@ -106,8 +106,46 @@ export function ReaderHeader({
         </span>
       </div>
 
-      {/* Right: nav + settings */}
+      {/* Right: search + nav + settings */}
       <div className="flex items-center gap-1 shrink-0">
+        {/* Search */}
+        <button
+          onClick={() => window.dispatchEvent(new CustomEvent('toggle-search'))}
+          className="hidden sm:flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 mr-1"
+          style={{
+            background: 'rgba(255,255,255,0.04)',
+            border: '1px solid var(--ax-border)',
+            color: 'var(--ax-text-muted)',
+            fontSize: 12,
+            fontFamily: 'Inter, sans-serif',
+            transition: 'border-color 150ms ease-out, color 150ms ease-out',
+            cursor: 'pointer',
+          }}
+          onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'var(--ax-text-muted)'; e.currentTarget.style.color = 'var(--ax-text-secondary)'; }}
+          onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'var(--ax-border)'; e.currentTarget.style.color = 'var(--ax-text-muted)'; }}
+          aria-label="Search sections (⌘K)"
+        >
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <span>Search</span>
+          <kbd style={{ padding: '1px 4px', borderRadius: 3, background: 'rgba(255,255,255,0.06)', fontSize: 10, fontWeight: 600 }}>⌘K</kbd>
+        </button>
+
+        {/* Mobile search icon */}
+        <button
+          onClick={() => window.dispatchEvent(new CustomEvent('toggle-search'))}
+          className="sm:hidden flex items-center justify-center w-8 h-8 rounded-lg"
+          style={{ color: 'var(--ax-text-secondary)', transition: 'background 150ms ease-out' }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(255,255,255,0.06)')}
+          onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
+          aria-label="Search sections"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+        </button>
+
         {/* Prev */}
         {prevUrl ? (
           <a

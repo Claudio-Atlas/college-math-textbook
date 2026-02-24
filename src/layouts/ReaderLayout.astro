@@ -4,6 +4,8 @@ import { Sidebar } from '../components/reader/Sidebar';
 import { ReaderHeader } from '../components/reader/ReaderHeader';
 import { ProgressBar } from '../components/reader/ProgressBar';
 import { UpNextCard } from '../components/reader/UpNextCard';
+import { SearchProvider } from '../components/reader/SearchProvider';
+import { BottomNav } from '../components/reader/BottomNav';
 
 interface Section {
   id: string;
@@ -100,13 +102,29 @@ const {
           currentSection={currentSection}
           client:load
         />
+
+        <!-- Search Modal (Cmd+K) -->
+        <SearchProvider
+          book={book}
+          bookId={bookId || book.id}
+          client:load
+        />
       </>
     )}
 
-    <!-- Main Content — always centered, never shifts -->
-    <main id="main-content" class="w-full" style={`padding-top: ${book ? '50px' : '0'};`}>
+    <!-- Main Content — always centered, never shifts, fade-in on load -->
+    <main id="main-content" class="w-full section-fade-in" style={`padding-top: ${book ? '50px' : '0'};`}>
       <slot />
     </main>
+
+    {book && (prevSection || nextSection) && (
+      <BottomNav
+        bookId={bookId || book.id}
+        prevSection={prevSection}
+        nextSection={nextSection}
+        client:load
+      />
+    )}
 
     {book && nextSection && (
       <UpNextCard
