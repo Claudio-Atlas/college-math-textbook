@@ -5,19 +5,19 @@ interface TheoremProps {
   number?: string;
   title: string;
   content: string;
-  label?: string; // "Theorem", "Lemma", "Corollary", etc.
+  label?: string;
 }
 
 export function Theorem({ id, number, title, content, label = 'Theorem' }: TheoremProps) {
   return (
     <div id={id} className="env-box env-theorem">
-      <div className="env-label text-atlas-sage">
+      <div className="env-label">
         {label} {number}
       </div>
       {title && (
-        <div className="env-title text-atlas-deep">{title}</div>
+        <div className="env-title">{title}</div>
       )}
-      <div className="text-atlas-text">
+      <div style={{ color: 'var(--ax-text)' }}>
         <RichText text={content} />
       </div>
     </div>

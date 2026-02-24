@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { RichText } from '../reader/RichText';
 
 interface ExampleProps {
@@ -11,40 +11,56 @@ interface ExampleProps {
 
 export function Example({ id, number, title, problem, solution }: ExampleProps) {
   const [showSolution, setShowSolution] = useState(false);
-  
+  const solutionRef = useRef<HTMLDivElement>(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (solutionRef.current) {
+      setHeight(solutionRef.current.scrollHeight);
+    }
+  }, [showSolution, solution]);
+
   return (
     <div id={id} className="env-box env-example">
-      <div className="env-label text-atlas-warm">
+      <div className="env-label">
         Example {number}
       </div>
       {title && (
-        <div className="env-title text-atlas-deep">{title}</div>
+        <div className="env-title">{title}</div>
       )}
-      
+
       {/* Problem */}
-      <div className="text-atlas-text mb-4">
+      <div className="mb-4" style={{ color: 'var(--ax-text)' }}>
         <RichText text={problem} />
       </div>
-      
+
       {/* Solution toggle */}
       {solution && (
         <>
           <button
             onClick={() => setShowSolution(!showSolution)}
-            className="text-sm font-medium text-atlas-warm hover:text-atlas-warm/80 flex items-center gap-1"
+            className={`solution-toggle text-sm font-medium flex items-center gap-1 ${showSolution ? 'open' : ''}`}
+            style={{ color: 'var(--ax-ex-accent)' }}
           >
-            <span className="text-lg">{showSolution ? '▼' : '▶'}</span>
+            <span className="chevron text-lg">▶</span>
             {showSolution ? 'Hide Solution' : 'Show Solution'}
           </button>
-          
-          {showSolution && (
-            <div className="mt-4 pt-4 border-t border-atlas-warm/20">
-              <div className="text-sm font-semibold text-atlas-warm mb-2">Solution</div>
-              <div className="text-atlas-text">
+
+          <div
+            ref={solutionRef}
+            style={{
+              maxHeight: showSolution ? `${height}px` : '0px',
+              overflow: 'hidden',
+              transition: 'max-height 250ms ease-out',
+            }}
+          >
+            <div className="mt-4 pt-4" style={{ borderTop: '1px solid var(--ax-border)' }}>
+              <div className="text-sm font-semibold mb-2" style={{ color: 'var(--ax-ex-accent)' }}>Solution</div>
+              <div style={{ color: 'var(--ax-text)' }}>
                 <RichText text={solution} />
               </div>
             </div>
-          )}
+          </div>
         </>
       )}
     </div>

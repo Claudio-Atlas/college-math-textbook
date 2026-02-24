@@ -10,11 +10,11 @@ interface DefinitionProps {
 export function Definition({ id, number, title, content }: DefinitionProps) {
   return (
     <div id={id} className="env-box env-definition">
-      <div className="env-label text-atlas-teal-dark">Definition {number}</div>
+      <div className="env-label">Definition {number}</div>
       {title && (
-        <div className="env-title text-atlas-deep">{title}</div>
+        <div className="env-title">{title}</div>
       )}
-      <div className="text-atlas-text">
+      <div style={{ color: 'var(--ax-text)' }}>
         <RichText text={content} />
       </div>
     </div>

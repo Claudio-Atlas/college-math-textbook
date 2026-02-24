@@ -15,14 +15,9 @@ try {
   const bookModule = await import(`../../../../content/${bookId}/book.json`);
   book = bookModule.default;
   
-  // Load section content - try src-content first, then content
-  try {
-    const sectionModule = await import(`../../../../src-content/calculus-vol1/${chapterId}/${sectionId}.json`);
-    section = sectionModule.default;
-  } catch {
-    const sectionModule = await import(`../../../../content/${bookId}/${chapterId}/${sectionId}.json`);
-    section = sectionModule.default;
-  }
+  // Load section content
+  const sectionModule = await import(`../../../../content/${bookId}/${chapterId}/${sectionId}.json`);
+  section = sectionModule.default;
 } catch (e) {
   notFound = true;
 }
@@ -95,7 +90,7 @@ const catalogId = bookId === 'vol1' ? 'calculus-vol1' : bookId;
     <article class="reader-content">
       <!-- Section Title -->
       <h1 class="section-title">
-        {section.chapter}.{section.section} {section.title}
+        {section.chapter}.{section.section}&ensp;{section.title}
       </h1>
       
       <!-- Main Content with Brand-Aware Rendering -->
