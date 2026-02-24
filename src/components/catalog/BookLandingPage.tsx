@@ -4,8 +4,7 @@
  * Env box previews use top-accent card style with 14px radius.
  */
 import { BrandProvider, useBrand } from '../brand/BrandProvider';
-import { Logo } from '../brand/Logo';
-import { ThemeToggle } from '../brand/ThemeToggle';
+import { MarketingNav } from '../marketing/MarketingNav';
 import type { BookLanding } from '../../lib/books';
 import React from 'react';
 
@@ -34,34 +33,8 @@ function BookLandingContent({ book }: BookLandingPageProps) {
         Skip to main content
       </a>
 
-      {/* Header — frosted glass */}
-      <header className="sticky top-0 z-40" style={{
-        background: 'var(--ax-glass)',
-        backdropFilter: 'var(--ax-frost)',
-        WebkitBackdropFilter: 'var(--ax-frost)',
-        borderBottom: '1px solid var(--ax-border)',
-      }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <div className="flex items-center justify-between">
-            <a href="/">
-              <Logo size="md" />
-            </a>
-            <div className="flex items-center gap-3">
-              <a
-                href="/"
-                className="flex items-center gap-2 px-3 py-2 rounded-lg transition-colors hover:opacity-80"
-                style={{ color: 'var(--ax-text-secondary)' }}
-              >
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
-                Back to Catalog
-              </a>
-              <ThemeToggle />
-            </div>
-          </div>
-        </div>
-      </header>
+      {/* Header — shared MarketingNav component */}
+      <MarketingNav backHref="/" backLabel="Back to Catalog" />
 
       <main id="main-content">
         {/* Hero Section */}
@@ -99,9 +72,23 @@ function BookLandingContent({ book }: BookLandingPageProps) {
                   {book.figureCount && <Stat value={`${book.figureCount}+`} label="Figures" />}
                 </div>
 
-                <p className="leading-relaxed max-w-2xl" style={{ color: 'var(--ax-text-secondary)' }}>
+                <p className="leading-relaxed max-w-2xl mb-8" style={{ color: 'var(--ax-text-secondary)' }}>
                   {book.description}
                 </p>
+
+                {/* Preview Section CTA */}
+                {book.chapters[0]?.sections[0] && (
+                  <a
+                    href={`/${book.id}/${book.chapters[0].id || `ch${String(book.chapters[0].number).padStart(2, '0')}`}/${book.chapters[0].sections[0].id || `sec${String(book.chapters[0].sections[0].number).padStart(2, '0')}`}`}
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-white text-sm font-medium transition-transform active:scale-[0.96]"
+                    style={{ backgroundColor: brand.colors.primary }}
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                    </svg>
+                    Preview Section {book.chapters[0].number}.{book.chapters[0].sections[0].number}
+                  </a>
+                )}
               </div>
             </div>
           </div>
@@ -314,7 +301,7 @@ function ChapterAccordion({ chapter, brand }: ChapterAccordionProps) {
           {chapter.sections.map((section) => (
             <div
               key={section.number}
-              className="flex items-center px-6 py-3 hover:opacity-80"
+              className="flex items-center px-6 py-3 hover:opacity-80 chapter-toc-item"
             >
               <span className="font-mono text-sm w-14" style={{ color: 'var(--ax-text-muted)' }}>{section.number}</span>
               <span style={{ color: 'var(--ax-text-secondary)' }}>{section.title}</span>

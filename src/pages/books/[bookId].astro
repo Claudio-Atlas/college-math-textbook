@@ -1,6 +1,7 @@
 ---
 export const prerender = false;
 import '../../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import { BookLandingPage } from '../../components/catalog/BookLandingPage';
 import { getBookLanding } from '../../lib/books';
 
@@ -16,6 +17,7 @@ const book = getBookLanding(bookId as string);
     <meta name="description" content={book ? `${book.title} — ${book.description}` : 'Book not found'} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{book ? `${book.title} | Meridian Press` : 'Book Not Found'}</title>
+    <ClientRouter />
     
     <!-- Fonts loaded via global.css (Inter + Source Serif 4) -->
   </head>

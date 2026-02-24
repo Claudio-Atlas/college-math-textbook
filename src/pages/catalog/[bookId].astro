@@ -1,6 +1,7 @@
 ---
 export const prerender = false;
 import '../../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import { BookDetail } from '../../components/catalog/BookDetail';
 import { BookLandingPage } from '../../components/catalog/BookLandingPage';
 import { getBookLanding } from '../../lib/books';
@@ -46,6 +47,7 @@ if (isAvailable) {
     <meta name="description" content={landing ? `${landing.title} — ${landing.description}` : book ? `${book.title} - Mathematics Textbook` : 'Book not found'} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{landing ? `${landing.title} — ${landing.subtitle || ''}` : book ? book.title : 'Book Not Found'}</title>
+    <ClientRouter />
     
     <!-- Fonts loaded via global.css (Inter + Source Serif 4) -->
   </head>

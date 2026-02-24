@@ -343,6 +343,106 @@ body::after {
   mix-blend-mode: multiply;
 }
 
+/* ─── Chapter TOC Stagger (Book Landing Pages) ──────────── */
+/* Applied to section items inside chapter accordions.
+   40ms initial delay, 30ms per item — Iris spec. */
+@keyframes chapter-toc-stagger {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.chapter-toc-item {
+  opacity: 0;
+  animation: chapter-toc-stagger 150ms var(--ease-spring) forwards;
+}
+
+/* Generate stagger delays: 40ms base + 30ms per item (up to 20 items) */
+.chapter-toc-item:nth-child(1)  { animation-delay: 40ms; }
+.chapter-toc-item:nth-child(2)  { animation-delay: 70ms; }
+.chapter-toc-item:nth-child(3)  { animation-delay: 100ms; }
+.chapter-toc-item:nth-child(4)  { animation-delay: 130ms; }
+.chapter-toc-item:nth-child(5)  { animation-delay: 160ms; }
+.chapter-toc-item:nth-child(6)  { animation-delay: 190ms; }
+.chapter-toc-item:nth-child(7)  { animation-delay: 220ms; }
+.chapter-toc-item:nth-child(8)  { animation-delay: 250ms; }
+.chapter-toc-item:nth-child(9)  { animation-delay: 280ms; }
+.chapter-toc-item:nth-child(10) { animation-delay: 310ms; }
+.chapter-toc-item:nth-child(11) { animation-delay: 340ms; }
+.chapter-toc-item:nth-child(12) { animation-delay: 370ms; }
+.chapter-toc-item:nth-child(13) { animation-delay: 400ms; }
+.chapter-toc-item:nth-child(14) { animation-delay: 430ms; }
+.chapter-toc-item:nth-child(15) { animation-delay: 460ms; }
+.chapter-toc-item:nth-child(16) { animation-delay: 490ms; }
+.chapter-toc-item:nth-child(17) { animation-delay: 520ms; }
+.chapter-toc-item:nth-child(18) { animation-delay: 550ms; }
+.chapter-toc-item:nth-child(19) { animation-delay: 580ms; }
+.chapter-toc-item:nth-child(20) { animation-delay: 610ms; }
+
+/* ─── Hover State Utilities (Iris: 150ms ease-out) ──────── */
+/* Consistent hover transitions for interactive elements */
+.ax-hover-lift {
+  transition: transform 150ms ease-out, box-shadow 150ms ease-out, border-color 150ms ease-out;
+}
+
+.ax-hover-lift:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.ax-hover-glow {
+  transition: color 150ms ease-out, background-color 150ms ease-out, border-color 150ms ease-out;
+}
+
+.ax-hover-glow:hover {
+  background-color: rgba(139, 92, 246, 0.08);
+}
+
+/* Nav/link hover — text brightens + subtle bg */
+.ax-nav-link {
+  transition: color 150ms ease-out, background-color 150ms ease-out;
+}
+
+.ax-nav-link:hover {
+  color: var(--ax-text);
+  background-color: rgba(139, 92, 246, 0.08);
+}
+
+/* Card hover — border brightens + subtle lift */
+.ax-card-hover {
+  transition: border-color 150ms ease-out, box-shadow 150ms ease-out, transform 150ms ease-out;
+}
+
+.ax-card-hover:hover {
+  border-color: rgba(139, 92, 246, 0.2);
+  box-shadow: 0 4px 16px rgba(139, 92, 246, 0.06);
+  transform: translateY(-1px);
+}
+
+[data-theme="light"] .ax-card-hover:hover {
+  border-color: rgba(139, 92, 246, 0.25);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* ─── View Transition Fallback Animations ───────────────── */
+/* For browsers without native View Transitions API support */
+@keyframes ax-page-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes ax-page-fade-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+::view-transition-old(root) {
+  animation: ax-page-fade-out 150ms ease-out;
+}
+
+::view-transition-new(root) {
+  animation: ax-page-fade-in 150ms ease-out;
+}
+
 /* ─── Reduced Motion ────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,

@@ -3,8 +3,7 @@
  * Uses --ax-* design tokens for dark/light mode support.
  */
 import { BrandProvider, useBrand } from '../brand/BrandProvider';
-import { Logo } from '../brand/Logo';
-import { ThemeToggle } from '../brand/ThemeToggle';
+import { MarketingNav } from '../marketing/MarketingNav';
 
 interface Book {
   id: string;
@@ -69,26 +68,13 @@ function HomeContent() {
         Skip to main content
       </a>
 
-      {/* Header — frosted glass */}
-      <header className="sticky top-0 z-40" style={{ 
-        background: 'var(--ax-glass)', 
-        backdropFilter: 'var(--ax-frost)',
-        WebkitBackdropFilter: 'var(--ax-frost)',
-        borderBottom: '1px solid var(--ax-border)' 
-      }}>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <div className="flex items-center justify-between">
-            <Logo size="lg" />
-            <div className="flex items-center gap-4">
-              <nav className="hidden sm:flex items-center gap-6">
-                <a href="#catalog" style={{ color: 'var(--ax-text-secondary)' }} className="hover:opacity-80 transition-opacity">Catalog</a>
-                <a href="#about" style={{ color: 'var(--ax-text-secondary)' }} className="hover:opacity-80 transition-opacity">About</a>
-              </nav>
-              <ThemeToggle />
-            </div>
-          </div>
-        </div>
-      </header>
+      {/* Header — shared MarketingNav component */}
+      <MarketingNav
+        links={[
+          { href: '#catalog', label: 'Catalog' },
+          { href: '#about', label: 'About' },
+        ]}
+      />
 
       <main id="main-content">
         {/* Hero */}
