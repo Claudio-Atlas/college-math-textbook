@@ -631,6 +631,88 @@ button:active {
   }
 }
 
+/* ─── Author Fun Fact Callout Card ──────────────────────── */
+.fun-fact-card {
+  position: relative;
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.25rem 1.25rem 1.5rem;
+  border-radius: var(--ax-card-radius);
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  border-left: 3px solid var(--ax-ex-accent);
+  background: var(--ax-ex-bg);
+  backdrop-filter: var(--ax-card-blur);
+  -webkit-backdrop-filter: var(--ax-card-blur);
+}
+
+.fun-fact-card::before {
+  content: '⚡';
+  position: absolute;
+  top: -0.6rem;
+  left: 1rem;
+  font-size: 1.1rem;
+  background: var(--ax-bg);
+  padding: 0 0.35rem;
+  line-height: 1;
+}
+
+[data-theme="light"] .fun-fact-card {
+  border-color: rgba(245, 158, 11, 0.25);
+  background: rgba(245, 158, 11, 0.05);
+  box-shadow: 0 1px 4px rgba(245, 158, 11, 0.06);
+}
+
+[data-theme="light"] .fun-fact-card::before {
+  background: var(--ax-bg);
+}
+
+.fun-fact-label {
+  font-family: var(--ax-font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--ax-ex-accent);
+  margin-bottom: 0.35rem;
+}
+
+.fun-fact-text {
+  font-family: var(--ax-font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ax-text);
+  line-height: 1.5;
+}
+
+/* ─── "Coming Soon" Badge / Pill ────────────────────────── */
+.badge-coming-soon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.75rem;
+  font-family: var(--ax-font-sans);
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ax-text-muted);
+  border: 1px solid var(--ax-border);
+  border-radius: 999px;
+  background: transparent;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.badge-coming-soon::before {
+  content: '◉';
+  font-size: 0.5rem;
+  opacity: 0.6;
+}
+
+[data-theme="light"] .badge-coming-soon {
+  color: var(--ax-text-muted);
+  border-color: #D1D1D6;
+}
+
 /* ─── Responsive Breakpoints ────────────────────────────── */
 @media (max-width: 768px) {
   .reader-content {
