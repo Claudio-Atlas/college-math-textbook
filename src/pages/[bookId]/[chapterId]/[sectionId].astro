@@ -91,10 +91,13 @@ const catalogId = bookId === 'vol1' ? 'calculus-vol1' : bookId;
     nextSection={nextSection}
   >
     <article class="reader-content">
-      <!-- Section Title -->
-      <h1 class="section-title">
-        {section.chapter}.{section.section}&ensp;{section.title}
-      </h1>
+      <!-- Section Hero -->
+      <div class="section-hero">
+        <span class="section-number">{section.chapter}.{section.section}</span>
+        <h1 class="section-title">
+          {section.chapter}.{section.section}&ensp;{section.title}
+        </h1>
+      </div>
       
       <!-- Main Content with Brand-Aware Rendering -->
       <ReaderContent 

@@ -23,18 +23,18 @@ export function ContentRenderer({ content, edition = 'christian' }: ContentRende
     <MathJaxProvider>
       <div>
         {filteredContent.map((block, index) => (
-          <BlockRenderer key={index} block={block} />
+          <BlockRenderer key={index} block={block} isFirstParagraph={!!(block as any)._firstParagraph} />
         ))}
       </div>
     </MathJaxProvider>
   );
 }
 
-function BlockRenderer({ block }: { block: ContentBlock }) {
+function BlockRenderer({ block, isFirstParagraph = false }: { block: ContentBlock; isFirstParagraph?: boolean }) {
   switch (block.type) {
     case 'paragraph':
       return (
-        <p className="leading-relaxed">
+        <p className={`leading-relaxed${isFirstParagraph ? ' section-first-paragraph' : ''}`}>
           <RichText text={block.text} />
         </p>
       );

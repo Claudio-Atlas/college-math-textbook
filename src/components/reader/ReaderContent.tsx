@@ -103,31 +103,40 @@ function ReaderContentInner({
       
       {/* Main content with positioned margin notes */}
       <div className="relative">
-        {content.map((block, index) => {
-          const marginNote = marginPositions.get(index);
+        {(() => {
+          let firstParagraphSeen = false;
+          return content.map((block, index) => {
+            const marginNote = marginPositions.get(index);
+            const isFirstParagraph = !firstParagraphSeen && block.type === 'paragraph';
+            if (isFirstParagraph) firstParagraphSeen = true;
           
-          return (
-            <div key={index} className="relative">
-              {/* Margin note - floats to right margin on wide screens */}
-              {marginNote && (
-                <aside 
-                  className="hidden 2xl:block float-right clear-right w-52 -mr-60 ml-6 mb-4"
-                  aria-label="Margin note"
-                >
-                  <div className="text-sm italic pl-3" style={{ color: 'var(--ax-text-muted)', borderLeft: '2px solid var(--ax-border)' }}>
-                    <p className="leading-relaxed">"{marginNote.text.replace(/\n/g, ' ')}"</p>
-                    <p className="mt-1 text-xs font-medium not-italic" style={{ color: 'var(--ax-text-muted)' }}>
-                      — {marginNote.type === 'scripture' ? marginNote.reference : marginNote.author}
-                    </p>
-                  </div>
-                </aside>
-              )}
+            return (
+              <div key={index} className="relative">
+                {/* Margin note - floats to right margin on wide screens */}
+                {marginNote && (
+                  <aside 
+                    className="hidden 2xl:block float-right clear-right w-52 -mr-60 ml-6 mb-4"
+                    aria-label="Margin note"
+                  >
+                    <div className="text-sm italic pl-3" style={{ color: 'var(--ax-text-muted)', borderLeft: '2px solid var(--ax-border)' }}>
+                      <p className="leading-relaxed">"{marginNote.text.replace(/\n/g, ' ')}"</p>
+                      <p className="mt-1 text-xs font-medium not-italic" style={{ color: 'var(--ax-text-muted)' }}>
+                        — {marginNote.type === 'scripture' ? marginNote.reference : marginNote.author}
+                      </p>
+                    </div>
+                  </aside>
+                )}
               
-              {/* Content block */}
-              <ContentRenderer content={[block]} />
-            </div>
-          );
-        })}
+                {/* Content block */}
+                {isFirstParagraph ? (
+                  <ContentRenderer content={[{...block, _firstParagraph: true}]} />
+                ) : (
+                  <ContentRenderer content={[block]} />
+                )}
+              </div>
+            );
+          });
+        })()}
       </div>
     </div>
   );
