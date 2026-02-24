@@ -155,10 +155,19 @@ function HomeContent() {
             <div style={{ color: 'var(--ax-text-muted)' }}>
               © 2025 {brand.name}. All rights reserved.
             </div>
-            <div className="flex gap-6" style={{ color: 'var(--ax-text-muted)' }}>
-              <a href="#" className="hover:opacity-80">Contact</a>
-              <a href="#" className="hover:opacity-80">Privacy</a>
-              <a href="#" className="hover:opacity-80">Terms</a>
+            <div className="flex gap-6">
+              {['Contact', 'Privacy', 'Terms'].map((label) => (
+                <a
+                  key={label}
+                  href="#"
+                  className="text-sm transition-colors"
+                  style={{ color: 'var(--ax-text-muted)' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--ax-violet)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--ax-text-muted)')}
+                >
+                  {label}
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -192,11 +201,20 @@ function BookCard({ book, brand, isAtlas }: BookCardProps) {
   return (
     <a 
       href={`/catalog/${book.id}`} 
-      className="block overflow-hidden hover:opacity-95 transition-all"
+      className="block overflow-hidden transition-all"
       style={{ 
         background: 'var(--ax-surface)', 
         borderRadius: 'var(--ax-card-radius)',
         border: '1px solid var(--ax-border)',
+        transition: 'border-color 150ms ease-out, box-shadow 150ms ease-out',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.borderColor = 'var(--ax-violet)';
+        e.currentTarget.style.boxShadow = '0 4px 16px rgba(139, 92, 246, 0.1)';
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.borderColor = 'var(--ax-border)';
+        e.currentTarget.style.boxShadow = 'none';
       }}
     >
       {/* Cover Image */}

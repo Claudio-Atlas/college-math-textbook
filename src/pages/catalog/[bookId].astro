@@ -48,6 +48,18 @@ if (isAvailable) {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{landing ? `${landing.title} — ${landing.subtitle || ''}` : book ? book.title : 'Book Not Found'}</title>
     <ClientRouter />
+    <script is:inline>
+      (function() {
+        var t = localStorage.getItem('ax-theme');
+        if (t === 'light' || t === 'dark') {
+          document.documentElement.setAttribute('data-theme', t);
+        } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
     
     <!-- Fonts loaded via global.css (Inter + Source Serif 4) -->
   </head>

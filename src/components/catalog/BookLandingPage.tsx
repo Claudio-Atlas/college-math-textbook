@@ -228,10 +228,19 @@ function BookLandingContent({ book }: BookLandingPageProps) {
             <div style={{ color: 'var(--ax-text-muted)' }}>
               © {new Date().getFullYear()} {brand.name}. All rights reserved.
             </div>
-            <div className="flex gap-6" style={{ color: 'var(--ax-text-muted)' }}>
-              <a href="#" className="hover:opacity-80">Contact</a>
-              <a href="#" className="hover:opacity-80">Privacy</a>
-              <a href="#" className="hover:opacity-80">Terms</a>
+            <div className="flex gap-6">
+              {['Contact', 'Privacy', 'Terms'].map((label) => (
+                <a
+                  key={label}
+                  href="#"
+                  className="text-sm transition-colors"
+                  style={{ color: 'var(--ax-text-muted)' }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--ax-violet)')}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--ax-text-muted)')}
+                >
+                  {label}
+                </a>
+              ))}
             </div>
           </div>
         </div>
@@ -268,7 +277,10 @@ function ChapterAccordion({ chapter, brand }: ChapterAccordionProps) {
     }}>
       <button
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between px-6 py-4 text-left transition-colors hover:opacity-90"
+        className="w-full flex items-center justify-between px-6 py-4 text-left transition-colors"
+        style={{ transition: 'background 150ms ease-out' }}
+        onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(139, 92, 246, 0.06)')}
+        onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
       >
         <div className="flex items-center gap-4">
           <span
@@ -301,7 +313,10 @@ function ChapterAccordion({ chapter, brand }: ChapterAccordionProps) {
           {chapter.sections.map((section) => (
             <div
               key={section.number}
-              className="flex items-center px-6 py-3 hover:opacity-80 chapter-toc-item"
+              className="flex items-center px-6 py-3 chapter-toc-item transition-colors"
+              style={{ transition: 'background 150ms ease-out' }}
+              onMouseEnter={(e) => (e.currentTarget.style.background = 'rgba(139, 92, 246, 0.04)')}
+              onMouseLeave={(e) => (e.currentTarget.style.background = 'transparent')}
             >
               <span className="font-mono text-sm w-14" style={{ color: 'var(--ax-text-muted)' }}>{section.number}</span>
               <span style={{ color: 'var(--ax-text-secondary)' }}>{section.title}</span>

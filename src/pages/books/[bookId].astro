@@ -14,11 +14,23 @@ const book = getBookLanding(bookId as string);
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content={book ? `${book.title} — ${book.description}` : 'Book not found'} />
+    <meta name="description" content={book ? `${book.title} - ${book.description}` : 'Book not found'} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{book ? `${book.title} | Meridian Press` : 'Book Not Found'}</title>
     <ClientRouter />
-    
+    <script is:inline>
+      (function() {
+        var t = localStorage.getItem('ax-theme');
+        if (t === 'light' || t === 'dark') {
+          document.documentElement.setAttribute('data-theme', t);
+        } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+
     <!-- Fonts loaded via global.css (Inter + Source Serif 4) -->
   </head>
   <body>
