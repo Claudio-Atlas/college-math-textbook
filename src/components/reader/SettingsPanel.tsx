@@ -5,6 +5,7 @@ const MAX_SIZE = 22;
 const DEFAULT_SIZE = 18;
 const STORAGE_KEY_SIZE = 'ax-text-size';
 const STORAGE_KEY_THEME = 'ax-theme';
+const STORAGE_KEY_FONT = 'ax-font';
 
 function getInitialSize(): number {
   if (typeof window === 'undefined') return DEFAULT_SIZE;
@@ -23,10 +24,18 @@ function getInitialTheme(): 'dark' | 'light' {
   return 'dark';
 }
 
+function getInitialFont(): 'serif' | 'sans' {
+  if (typeof window === 'undefined') return 'serif';
+  const stored = localStorage.getItem(STORAGE_KEY_FONT);
+  if (stored === 'serif' || stored === 'sans') return stored;
+  return 'serif';
+}
+
 export function SettingsPanel() {
   const [isOpen, setIsOpen] = useState(false);
   const [size, setSize] = useState(getInitialSize);
   const [theme, setTheme] = useState<'dark' | 'light'>(getInitialTheme);
+  const [font, setFont] = useState<'serif' | 'sans'>(getInitialFont);
   const panelRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -56,6 +65,13 @@ export function SettingsPanel() {
     document.documentElement.dataset.theme = theme;
     localStorage.setItem(STORAGE_KEY_THEME, theme);
   }, [theme]);
+
+  // Apply font
+  useEffect(() => {
+    const fontFamily = font === 'serif' ? 'var(--ax-font-serif)' : 'var(--ax-font-sans)';
+    document.documentElement.style.setProperty('--ax-body-font', fontFamily);
+    localStorage.setItem(STORAGE_KEY_FONT, font);
+  }, [font]);
 
   const toggleTheme = useCallback(() => {
     setTheme(t => t === 'dark' ? 'light' : 'dark');
@@ -217,6 +233,66 @@ export function SettingsPanel() {
               }}
             >
               🌙 Dark
+            </button>
+          </div>
+
+          {/* Divider */}
+          <div style={{
+            height: 1,
+            background: 'var(--ax-border, rgba(255,255,255,0.08))',
+            margin: '16px 0',
+          }} />
+
+          {/* Font Toggle */}
+          <label style={{
+            display: 'block',
+            fontSize: 12,
+            fontWeight: 600,
+            color: 'var(--ax-text-secondary, #9496A1)',
+            fontFamily: 'Inter, system-ui, sans-serif',
+            textTransform: 'uppercase',
+            letterSpacing: '0.08em',
+            marginBottom: 12,
+          }}>
+            Body Font
+          </label>
+
+          <div style={{ display: 'flex', gap: 8 }}>
+            <button
+              onClick={() => setFont('serif')}
+              style={{
+                flex: 1,
+                padding: '8px 0',
+                borderRadius: 8,
+                border: `1px solid ${font === 'serif' ? '#8B5CF6' : 'var(--ax-border, rgba(255,255,255,0.08))'}`,
+                background: font === 'serif' ? 'rgba(139, 92, 246, 0.12)' : 'transparent',
+                color: font === 'serif' ? '#8B5CF6' : 'var(--ax-text-secondary, #9496A1)',
+                cursor: 'pointer',
+                fontSize: 13,
+                fontWeight: 500,
+                fontFamily: "'Source Serif 4', Georgia, serif",
+                transition: 'all 150ms ease-out',
+              }}
+            >
+              Serif
+            </button>
+            <button
+              onClick={() => setFont('sans')}
+              style={{
+                flex: 1,
+                padding: '8px 0',
+                borderRadius: 8,
+                border: `1px solid ${font === 'sans' ? '#8B5CF6' : 'var(--ax-border, rgba(255,255,255,0.08))'}`,
+                background: font === 'sans' ? 'rgba(139, 92, 246, 0.12)' : 'transparent',
+                color: font === 'sans' ? '#8B5CF6' : 'var(--ax-text-secondary, #9496A1)',
+                cursor: 'pointer',
+                fontSize: 13,
+                fontWeight: 500,
+                fontFamily: "Inter, system-ui, sans-serif",
+                transition: 'all 150ms ease-out',
+              }}
+            >
+              Sans
             </button>
           </div>
         </div>
