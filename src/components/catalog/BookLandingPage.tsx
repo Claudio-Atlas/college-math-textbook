@@ -4,6 +4,7 @@
  */
 import { BrandProvider, useBrand } from '../brand/BrandProvider';
 import { Logo } from '../brand/Logo';
+import { MarketingNav } from '../marketing/MarketingNav';
 import type { BookLanding } from '../../lib/books';
 type AuthorInfo = BookLanding['author'];
 

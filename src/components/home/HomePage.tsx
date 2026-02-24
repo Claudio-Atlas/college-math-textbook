@@ -3,6 +3,7 @@
  */
 import { BrandProvider, useBrand } from '../brand/BrandProvider';
 import { Logo } from '../brand/Logo';
+import { MarketingNav } from '../marketing/MarketingNav';
 
 interface Book {
   id: string;
@@ -66,18 +67,13 @@ function HomeContent() {
         Skip to main content
       </a>
 
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <div className="flex items-center justify-between">
-            <Logo size="lg" />
-            <nav className="hidden sm:flex items-center gap-6">
-              <a href="#catalog" className="text-gray-600 hover:text-gray-900">Catalog</a>
-              <a href="#about" className="text-gray-600 hover:text-gray-900">About</a>
-            </nav>
-          </div>
-        </div>
-      </header>
+      {/* Frosted Glass Navigation */}
+      <MarketingNav
+        links={[
+          { href: '#catalog', label: 'Catalog' },
+          { href: '#about', label: 'About' },
+        ]}
+      />
 
       <main id="main-content">
         {/* Hero */}
