@@ -230,6 +230,119 @@
   animation: fade-in 300ms ease-out;
 }
 
+/* ─── Scroll-Reveal Animation ───────────────────────────── */
+@keyframes scroll-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.scroll-reveal {
+  opacity: 0;
+}
+
+.scroll-reveal.revealed {
+  animation: scroll-reveal 400ms var(--ease-standard) forwards;
+}
+
+/* Staggered delays for adjacent blocks */
+.scroll-reveal.revealed.delay-1 { animation-delay: 60ms; }
+.scroll-reveal.revealed.delay-2 { animation-delay: 120ms; }
+
+/* ─── Env Box Hover Lift + Glow ─────────────────────────── */
+.env-box {
+  transition: border-color 150ms ease-out, transform 200ms var(--ease-standard), box-shadow 200ms ease-out;
+}
+
+.env-box:hover {
+  transform: translateY(-2px);
+}
+
+.env-definition:hover {
+  box-shadow: var(--ax-card-shadow), 0 8px 24px rgba(139, 92, 246, 0.08);
+}
+
+.env-theorem:hover {
+  box-shadow: var(--ax-card-shadow), 0 8px 24px rgba(52, 211, 153, 0.08);
+}
+
+.env-example:hover {
+  box-shadow: var(--ax-card-shadow), 0 8px 24px rgba(245, 158, 11, 0.08);
+}
+
+.env-warning:hover {
+  box-shadow: var(--ax-card-shadow), 0 8px 24px rgba(248, 113, 113, 0.08);
+}
+
+.env-proof:hover {
+  box-shadow: var(--ax-card-shadow), 0 8px 24px rgba(100, 116, 139, 0.08);
+}
+
+[data-theme="light"] .env-box:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(139, 92, 246, 0.04);
+}
+
+/* ─── Math Equation Glow ────────────────────────────────── */
+.MathJax {
+  text-shadow: 0 0 12px rgba(139, 92, 246, 0.15);
+  transition: text-shadow 200ms ease-out;
+}
+
+.MathJax:hover {
+  text-shadow: 0 0 16px rgba(139, 92, 246, 0.25);
+}
+
+[data-theme="light"] .MathJax {
+  text-shadow: none;
+}
+
+[data-theme="light"] .MathJax:hover {
+  text-shadow: 0 0 12px rgba(139, 92, 246, 0.1);
+}
+
+/* Block-level math gets stronger glow */
+mjx-container[display="true"] {
+  text-shadow: 0 0 18px rgba(139, 92, 246, 0.12);
+}
+
+/* ─── Solution Blur-Reveal ──────────────────────────────── */
+.solution-blur-reveal {
+  filter: blur(6px);
+  opacity: 0.3;
+  transition: filter 350ms var(--ease-standard), opacity 350ms var(--ease-standard);
+  user-select: none;
+}
+
+.solution-blur-reveal.revealed {
+  filter: blur(0);
+  opacity: 1;
+  user-select: auto;
+}
+
+/* ─── Background Noise Texture ──────────────────────────── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+  mix-blend-mode: overlay;
+}
+
+[data-theme="light"] body::after {
+  opacity: 0.015;
+  mix-blend-mode: multiply;
+}
+
 /* ─── Reduced Motion ────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
   *,

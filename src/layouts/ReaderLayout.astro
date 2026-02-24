@@ -134,6 +134,42 @@ const {
       />
     )}
 
+    <!-- Scroll-reveal observer -->
+    <script is:inline>
+      (function() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+        function observeElements() {
+          const selectors = '.env-box, .reader-content h2, .reader-content h3, .reader-content figure';
+          document.querySelectorAll(selectors).forEach(el => {
+            if (!el.classList.contains('scroll-reveal')) {
+              el.classList.add('scroll-reveal');
+              observer.observe(el);
+            }
+          });
+        }
+
+        // Run after content hydrates
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => setTimeout(observeElements, 200));
+        } else {
+          setTimeout(observeElements, 200);
+        }
+
+        // Re-observe after React hydration
+        const mo = new MutationObserver(() => { setTimeout(observeElements, 100); });
+        mo.observe(document.getElementById('main-content') || document.body, { childList: true, subtree: true });
+        setTimeout(() => mo.disconnect(), 5000);
+      })();
+    </script>
+
     <!-- Keyboard shortcuts -->
     <script is:inline>
       document.addEventListener('keydown', (e) => {

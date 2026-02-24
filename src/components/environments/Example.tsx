@@ -51,13 +51,17 @@ export function Example({ id, number, title, problem, solution }: ExampleProps) 
             style={{
               maxHeight: showSolution ? `${height}px` : '0px',
               overflow: 'hidden',
-              transition: 'max-height 250ms ease-out',
+              transition: 'max-height 250ms cubic-bezier(0.4, 0, 0.2, 1)',
             }}
           >
-            <div className="mt-4 pt-4" style={{ borderTop: '1px solid var(--ax-border)' }}>
-              <div className="text-sm font-semibold mb-2" style={{ color: 'var(--ax-ex-accent)' }}>Solution</div>
-              <div style={{ color: 'var(--ax-text)' }}>
-                <RichText text={solution} />
+            <div
+              className={`solution-blur-reveal${showSolution ? ' revealed' : ''}`}
+            >
+              <div className="mt-4 pt-4" style={{ borderTop: '1px solid var(--ax-border)' }}>
+                <div className="text-sm font-semibold mb-2" style={{ color: 'var(--ax-ex-accent)' }}>Solution</div>
+                <div style={{ color: 'var(--ax-text)' }}>
+                  <RichText text={solution} />
+                </div>
               </div>
             </div>
           </div>
