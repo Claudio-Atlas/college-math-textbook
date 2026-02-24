@@ -1,0 +1,242 @@
+/* ─── Axiom Reader Animations — Iris's Locked Specs ─────── */
+
+/* ─── Easing Curves ─────────────────────────────────────── */
+:root {
+  --ease-spring: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: ease-out;
+}
+
+/* ─── Sidebar Open/Close ────────────────────────────────── */
+@keyframes sidebar-open {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+@keyframes sidebar-close {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-100%); }
+}
+
+@keyframes sidebar-backdrop-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes sidebar-backdrop-out {
+  from { opacity: 1; }
+  to   { opacity: 0; }
+}
+
+.sidebar-open {
+  animation: sidebar-open 280ms var(--ease-spring) forwards;
+}
+
+.sidebar-close {
+  animation: sidebar-close 220ms var(--ease-spring) forwards;
+}
+
+.sidebar-backdrop-in {
+  animation: sidebar-backdrop-in 280ms ease-out forwards;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.sidebar-backdrop-out {
+  animation: sidebar-backdrop-out 220ms ease-out forwards;
+}
+
+/* TOC stagger fade */
+@keyframes toc-stagger-in {
+  from { opacity: 0; transform: translateX(-8px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.toc-stagger-item {
+  opacity: 0;
+  animation: toc-stagger-in 150ms var(--ease-spring) forwards;
+}
+
+.toc-stagger-item:nth-child(1) { animation-delay: 40ms; }
+.toc-stagger-item:nth-child(2) { animation-delay: 70ms; }
+.toc-stagger-item:nth-child(3) { animation-delay: 100ms; }
+.toc-stagger-item:nth-child(4) { animation-delay: 130ms; }
+.toc-stagger-item:nth-child(5) { animation-delay: 160ms; }
+.toc-stagger-item:nth-child(6) { animation-delay: 190ms; }
+
+/* ─── Solution Expand/Collapse ──────────────────────────── */
+@keyframes solution-expand {
+  from { opacity: 0; max-height: 0; }
+  to   { opacity: 1; max-height: 2000px; }
+}
+
+@keyframes solution-content-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes solution-collapse {
+  from { opacity: 1; max-height: 2000px; }
+  to   { opacity: 0; max-height: 0; }
+}
+
+.solution-expand {
+  overflow: hidden;
+  animation: solution-expand 250ms var(--ease-standard) forwards;
+}
+
+.solution-expand > * {
+  animation: solution-content-in 180ms ease-out 80ms forwards;
+  opacity: 0;
+}
+
+.solution-collapse {
+  overflow: hidden;
+  animation: solution-collapse 150ms var(--ease-standard) forwards;
+}
+
+/* Chevron rotation */
+.chevron-rotate {
+  transition: transform 200ms ease-out;
+}
+
+.chevron-rotate.open {
+  transform: rotate(90deg);
+}
+
+/* ─── Section Fade-In Transition ────────────────────────── */
+@keyframes section-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.section-fade-in {
+  animation: section-fade-in 150ms ease-out;
+}
+
+/* ─── Up Next Card Slide-Up ─────────────────────────────── */
+@keyframes up-next-appear {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.up-next-appear {
+  animation: up-next-appear 350ms var(--ease-spring) 150ms forwards;
+  opacity: 0;
+}
+
+.up-next-card {
+  transition: border-color 200ms ease-out;
+}
+
+.up-next-card:hover .up-next-arrow {
+  transform: translateX(3px);
+  transition: transform 200ms ease-out;
+}
+
+/* ─── MathJax Fade-In ───────────────────────────────────── */
+@keyframes mathjax-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.mathjax-fade-in {
+  animation: mathjax-fade-in 120ms ease-out forwards;
+}
+
+/* ─── Selection Toolbar ─────────────────────────────────── */
+@keyframes toolbar-appear {
+  from {
+    opacity: 0;
+    transform: translateY(4px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes toolbar-disappear {
+  from {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(4px) scale(0.95);
+  }
+}
+
+.toolbar-appear {
+  animation: toolbar-appear 150ms ease-out forwards;
+}
+
+.toolbar-disappear {
+  animation: toolbar-disappear 120ms ease-out forwards;
+}
+
+/* ─── Aa Panel Dropdown ─────────────────────────────────── */
+@keyframes aa-panel-open {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes aa-panel-close {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+.aa-panel-open {
+  animation: aa-panel-open 180ms var(--ease-spring) forwards;
+}
+
+.aa-panel-close {
+  animation: aa-panel-close 150ms ease-out forwards;
+}
+
+/* Aa slider thumb */
+.aa-slider::-webkit-slider-thumb {
+  transition: transform 150ms ease-out;
+}
+
+.aa-slider:active::-webkit-slider-thumb {
+  transform: scale(1.15);
+}
+
+/* ─── Generic Fade-In Utility ───────────────────────────── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 300ms ease-out;
+}
+
+/* ─── Reduced Motion ────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
