@@ -21,7 +21,7 @@ export function ContentRenderer({ content, edition = 'christian' }: ContentRende
   
   return (
     <MathJaxProvider>
-      <div className="reader-content">
+      <div>
         {filteredContent.map((block, index) => (
           <BlockRenderer key={index} block={block} />
         ))}
@@ -34,7 +34,7 @@ function BlockRenderer({ block }: { block: ContentBlock }) {
   switch (block.type) {
     case 'paragraph':
       return (
-        <p className="mb-4 leading-relaxed">
+        <p className="leading-relaxed">
           <RichText text={block.text} />
         </p>
       );

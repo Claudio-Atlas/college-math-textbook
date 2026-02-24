@@ -78,23 +78,23 @@ function ReaderContentInner({
     : new Map();
 
   return (
-    <div className="reader-content">
+    <div>
       {/* Epigraph - only shows on Atlas edition */}
       <Epigraph epigraph={epigraph} />
       
       {/* Learning Objectives */}
       {objectives && objectives.length > 0 && (
-        <div className="my-8 p-4 sm:p-6 bg-emerald-50 rounded-lg border border-emerald-200">
-          <h2 className="text-lg font-semibold text-emerald-700 mb-4">
+        <div className="env-box env-theorem my-6">
+          <div className="env-label" style={{ color: 'var(--ax-thm-accent)' }}>
             Learning Objectives
-          </h2>
+          </div>
           <ul className="space-y-2">
             {objectives.map((obj, i) => (
               <li key={i} className="flex items-start gap-2 text-sm sm:text-base">
-                <span className="text-emerald-600 font-semibold whitespace-nowrap">
+                <span className="font-semibold whitespace-nowrap" style={{ color: 'var(--ax-thm-accent)' }}>
                   {chapter}.{section}.{i + 1}
                 </span>
-                <span>{obj}</span>
+                <span style={{ color: 'var(--ax-text)' }}>{obj}</span>
               </li>
             ))}
           </ul>
@@ -114,9 +114,9 @@ function ReaderContentInner({
                   className="hidden 2xl:block float-right clear-right w-52 -mr-60 ml-6 mb-4"
                   aria-label="Margin note"
                 >
-                  <div className="text-sm text-gray-500 italic border-l-2 border-gray-200 pl-3">
+                  <div className="text-sm italic pl-3" style={{ color: 'var(--ax-text-muted)', borderLeft: '2px solid var(--ax-border)' }}>
                     <p className="leading-relaxed">"{marginNote.text.replace(/\n/g, ' ')}"</p>
-                    <p className="mt-1 text-xs font-medium not-italic text-gray-400">
+                    <p className="mt-1 text-xs font-medium not-italic" style={{ color: 'var(--ax-text-muted)' }}>
                       — {marginNote.type === 'scripture' ? marginNote.reference : marginNote.author}
                     </p>
                   </div>
