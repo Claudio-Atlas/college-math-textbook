@@ -29,6 +29,15 @@ export function RichText({ text, className = '' }: RichTextProps) {
     
     // Line breaks: \n\n -> <br/><br/>
     result = result.replace(/\n\n/g, '<br/><br/>');
+
+    // Figure cross-references: "Figure X.Y" → clickable link
+    result = result.replace(
+      /(?:See\s+|see\s+|as shown in\s+|in\s+)?(?:Figure|Fig\.)\s+(\d+\.\d+)/g,
+      (match, num) => {
+        const figId = `fig-${num}`;
+        return `<a href="#${figId}" data-figure-ref="${figId}" style="color:var(--ax-violet);cursor:pointer;text-decoration:underline;text-decoration-color:rgba(139,92,246,0.4)">${match}</a>`;
+      }
+    );
     
     return result;
   };

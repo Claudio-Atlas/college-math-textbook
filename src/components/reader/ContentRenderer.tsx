@@ -136,7 +136,10 @@ function BlockRenderer({ block, isFirstParagraph = false }: { block: ContentBloc
             src={block.src} 
             alt={block.alt || block.caption}
             className="mx-auto max-w-full rounded-lg"
-            style={{ boxShadow: 'var(--ax-card-shadow)' }}
+            style={{ boxShadow: 'var(--ax-card-shadow)', cursor: 'zoom-in' }}
+            onClick={() => {
+              window.dispatchEvent(new CustomEvent('ax:lightbox-open', { detail: { figureId: block.id } }));
+            }}
           />
           {block.caption && (
             <figcaption className="text-center text-sm mt-2" style={{ color: 'var(--ax-text-secondary)' }}>

@@ -6,6 +6,7 @@ const DEFAULT_SIZE = 18;
 const STORAGE_KEY_SIZE = 'ax-text-size';
 const STORAGE_KEY_THEME = 'ax-theme';
 const STORAGE_KEY_FONT = 'ax-font';
+const STORAGE_KEY_CONTRAST = 'ax-contrast';
 
 function getInitialSize(): number {
   if (typeof window === 'undefined') return DEFAULT_SIZE;
@@ -36,6 +37,10 @@ export function SettingsPanel() {
   const [size, setSize] = useState(getInitialSize);
   const [theme, setTheme] = useState<'dark' | 'light'>(getInitialTheme);
   const [font, setFont] = useState<'serif' | 'sans'>(getInitialFont);
+  const [highContrast, setHighContrast] = useState(() => {
+    if (typeof window === 'undefined') return false;
+    return localStorage.getItem(STORAGE_KEY_CONTRAST) === 'true';
+  });
   const panelRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -72,6 +77,16 @@ export function SettingsPanel() {
     document.documentElement.style.setProperty('--ax-body-font', fontFamily);
     localStorage.setItem(STORAGE_KEY_FONT, font);
   }, [font]);
+
+  // Apply high contrast
+  useEffect(() => {
+    if (highContrast) {
+      document.documentElement.dataset.contrast = 'high';
+    } else {
+      delete document.documentElement.dataset.contrast;
+    }
+    localStorage.setItem(STORAGE_KEY_CONTRAST, String(highContrast));
+  }, [highContrast]);
 
   const toggleTheme = useCallback(() => {
     setTheme(t => t === 'dark' ? 'light' : 'dark');
@@ -293,6 +308,56 @@ export function SettingsPanel() {
               }}
             >
               Sans
+            </button>
+          </div>
+
+          {/* Divider */}
+          <div style={{
+            height: 1,
+            background: 'var(--ax-border, rgba(255,255,255,0.08))',
+            margin: '16px 0',
+          }} />
+
+          {/* High Contrast Toggle */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+            <label style={{
+              fontSize: 12,
+              fontWeight: 600,
+              color: 'var(--ax-text-secondary, #9496A1)',
+              fontFamily: 'Inter, system-ui, sans-serif',
+              textTransform: 'uppercase',
+              letterSpacing: '0.08em',
+            }}>
+              High Contrast
+            </label>
+            <button
+              onClick={() => setHighContrast(h => !h)}
+              role="switch"
+              aria-checked={highContrast}
+              aria-label="Toggle high contrast mode"
+              style={{
+                position: 'relative',
+                width: 40,
+                height: 22,
+                borderRadius: 11,
+                border: 'none',
+                cursor: 'pointer',
+                background: highContrast ? '#8B5CF6' : 'var(--ax-text-muted, #5D5F6B)',
+                transition: 'background 150ms ease-out',
+                padding: 0,
+              }}
+            >
+              <span style={{
+                position: 'absolute',
+                top: 2,
+                left: highContrast ? 20 : 2,
+                width: 18,
+                height: 18,
+                borderRadius: '50%',
+                background: '#fff',
+                transition: 'left 150ms ease-out',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.3)',
+              }} />
             </button>
           </div>
         </div>

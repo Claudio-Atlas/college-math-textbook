@@ -6,6 +6,10 @@ import { BrandProvider, useBrand } from '../brand/BrandProvider';
 import { MathJaxProvider } from '../MathJaxProvider';
 import { ContentRenderer } from './ContentRenderer';
 import { Epigraph } from './Epigraph';
+import { TextHighlighter } from './TextHighlighter';
+import { FigureLightbox } from './FigureLightbox';
+import { DeepLink } from './DeepLink';
+import type { FigureBlock } from '../../lib/types';
 
 interface EpigraphData {
   text: string;
@@ -26,6 +30,7 @@ interface ReaderContentProps {
   chapter: number;
   section: number;
   objectives?: string[];
+  bookId?: string;
 }
 
 /**
@@ -67,10 +72,13 @@ function ReaderContentInner({
   marginNotes,
   chapter,
   section,
-  objectives 
+  objectives,
+  bookId = 'unknown',
 }: ReaderContentProps) {
   const { brand } = useBrand();
   const showMargins = brand.showScripture && marginNotes && marginNotes.length > 0;
+  const sectionId = `${chapter}-${section}`;
+  const figures = content.filter((b: any) => b.type === 'figure') as FigureBlock[];
   
   // Distribute margin notes to positions
   const marginPositions = showMargins 
@@ -79,6 +87,11 @@ function ReaderContentInner({
 
   return (
     <div>
+      {/* Study tools */}
+      <TextHighlighter bookId={bookId} sectionId={sectionId} />
+      <FigureLightbox figures={figures} />
+      <DeepLink />
+
       {/* Epigraph - only shows on Atlas edition */}
       <Epigraph epigraph={epigraph} />
       

@@ -747,6 +747,49 @@ button:active {
   border-color: #D1D1D6;
 }
 
+/* ─── High Contrast Mode ────────────────────────────────── */
+[data-contrast="high"] {
+  --ax-text: #FFFFFF;
+  --ax-text-secondary: #D4D4D8;
+  --ax-text-muted: #A1A1AA;
+  --ax-border: rgba(255, 255, 255, 0.2);
+}
+
+[data-contrast="high"] body::before,
+[data-contrast="high"] body::after {
+  display: none !important;
+}
+
+[data-contrast="high"] .reader-content {
+  font-weight: 500;
+}
+
+[data-contrast="high"] .env-box {
+  border-width: 2px;
+  border-top-width: 3px;
+}
+
+[data-theme="light"][data-contrast="high"] {
+  --ax-text: #000000;
+  --ax-text-secondary: #333333;
+  --ax-text-muted: #555555;
+  --ax-bg: #FFFFFF;
+  --ax-surface: #FFFFFF;
+  --ax-elevated: #F5F5F5;
+  --ax-border: #666666;
+  --ax-card-bg: rgba(255, 255, 255, 0.95);
+}
+
+[data-theme="light"][data-contrast="high"] .reader-content {
+  font-weight: 500;
+}
+
+[data-theme="light"][data-contrast="high"] .env-box {
+  border-width: 2px;
+  border-top-width: 3px;
+  box-shadow: none;
+}
+
 /* ─── Responsive Breakpoints ────────────────────────────── */
 @media (max-width: 768px) {
   .reader-content {

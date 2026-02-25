@@ -1,0 +1,44 @@
+---
+export const prerender = false;
+import ReaderLayout from '../../layouts/ReaderLayout.astro';
+import { HighlightsReview } from '../../components/reader/HighlightsReview';
+
+const { bookId } = Astro.params;
+
+let book;
+let notFound = false;
+
+try {
+  const bookModule = await import(`../../../content/${bookId}/book.json`);
+  book = bookModule.default;
+} catch (e) {
+  notFound = true;
+}
+---
+
+{notFound ? (
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <title>Book Not Found</title>
+      <link rel="stylesheet" href="/src/styles/global.css" />
+    </head>
+    <body class="min-h-screen flex items-center justify-center" style="background: var(--ax-bg); color: var(--ax-text);">
+      <div class="text-center">
+        <h1 class="text-2xl font-bold mb-4">Book Not Found</h1>
+        <a href="/" style="color: var(--ax-violet);">← Back to Home</a>
+      </div>
+    </body>
+  </html>
+) : (
+  <ReaderLayout
+    title={`Highlights - ${book.title}`}
+    book={book}
+    bookId={bookId}
+    currentChapter={0}
+    currentSection={0}
+    sectionTitle="Your Highlights"
+  >
+    <HighlightsReview bookId={bookId} book={book} client:only="react" />
+  </ReaderLayout>
+)}
