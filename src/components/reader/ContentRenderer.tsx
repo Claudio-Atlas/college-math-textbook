@@ -1,4 +1,4 @@
-import type { ContentBlock, Edition } from '../../lib/types';
+import type { ContentBlock, ExerciseBlock, Edition } from '../../lib/types';
 import { RichText } from './RichText';
 import { Definition } from '../environments/Definition';
 import { Theorem } from '../environments/Theorem';
@@ -10,27 +10,59 @@ import { Algorithm } from '../environments/Algorithm';
 import { Method } from '../environments/Method';
 import { Connection } from '../environments/Connection';
 import { Tip } from '../environments/Tip';
+import { Exercise } from '../environments/Exercise';
+import { ExerciseSection } from '../environments/ExerciseSection';
 import { MathJaxProvider } from '../MathJaxProvider';
 
 interface ContentRendererProps {
   content: ContentBlock[];
   edition?: Edition;
+  bookId?: string;
+  chapterSection?: string;
 }
 
-export function ContentRenderer({ content, edition = 'christian' }: ContentRendererProps) {
+export function ContentRenderer({ content, edition = 'christian', bookId, chapterSection }: ContentRendererProps) {
   const filteredContent = content.filter((block) => {
     if ('edition' in block && block.edition === 'christian' && edition === 'secular') {
       return false;
     }
     return true;
   });
+
+  // Group consecutive exercises into ExerciseSections
+  const grouped: (ContentBlock | { type: '__exerciseGroup'; exercises: ExerciseBlock[] })[] = [];
+  for (const block of filteredContent) {
+    if (block.type === 'exercise') {
+      const last = grouped[grouped.length - 1];
+      if (last && (last as any).type === '__exerciseGroup') {
+        (last as any).exercises.push(block);
+      } else {
+        grouped.push({ type: '__exerciseGroup', exercises: [block as ExerciseBlock] });
+      }
+    } else {
+      grouped.push(block);
+    }
+  }
   
   return (
     <MathJaxProvider>
       <div>
-        {filteredContent.map((block, index) => (
-          <BlockRenderer key={index} block={block} isFirstParagraph={!!(block as any)._firstParagraph} />
-        ))}
+        {grouped.map((item, index) => {
+          if ((item as any).type === '__exerciseGroup') {
+            return (
+              <ExerciseSection
+                key={`exgroup-${index}`}
+                exercises={(item as any).exercises}
+                bookId={bookId}
+                chapterSection={chapterSection}
+              />
+            );
+          }
+          const block = item as ContentBlock;
+          return (
+            <BlockRenderer key={index} block={block} isFirstParagraph={!!(block as any)._firstParagraph} />
+          );
+        })}
       </div>
     </MathJaxProvider>
   );
@@ -115,32 +147,18 @@ function BlockRenderer({ block, isFirstParagraph = false }: { block: ContentBloc
       );
       
     case 'exercise':
+      // Exercises are grouped by ContentRenderer into ExerciseSections
+      // This fallback handles any strays
       return (
-        <div className="env-box env-proof">
-          <div className="flex items-start gap-3">
-            <span className="env-label whitespace-nowrap">
-              Exercise {block.number}
-            </span>
-            <div className="flex-1">
-              <div style={{ color: 'var(--ax-text)' }}>
-                <RichText text={block.problem || block.content || ''} />
-              </div>
-              {block.solution && (
-                <details className="mt-4">
-                  <summary
-                    className="cursor-pointer text-sm font-medium"
-                    style={{ color: 'var(--ax-proof-accent)' }}
-                  >
-                    Show Solution
-                  </summary>
-                  <div className="mt-2 pt-2" style={{ borderTop: '1px solid var(--ax-border)' }}>
-                    <RichText text={block.solution} />
-                  </div>
-                </details>
-              )}
-            </div>
-          </div>
-        </div>
+        <Exercise
+          id={block.id}
+          number={block.number}
+          problem={block.problem}
+          content={block.content}
+          hint={block.hint}
+          variant={block.variant}
+          challenging={block.challenging}
+        />
       );
       
     case 'caution':

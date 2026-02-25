@@ -1,0 +1,96 @@
+---
+export const prerender = false;
+import ReaderLayout from '../../layouts/ReaderLayout.astro';
+
+const { bookId } = Astro.params;
+
+let book: any = null;
+let answersByChapter: Map<number, Map<number, Array<{number: string; answer: string; id: string}>>> = new Map();
+
+try {
+  const bookModule = await import(`../../../content/${bookId}/book.json`);
+  book = bookModule.default;
+
+  // Iterate chapters and sections to collect answers
+  for (const chapter of book.chapters) {
+    const chapterMap = new Map<number, Array<{number: string; answer: string; id: string}>>();
+    
+    for (const sec of chapter.sections) {
+      try {
+        const sectionModule = await import(`../../../content/${bookId}/ch${chapter.number}/sec${sec.number}.json`);
+        const section = sectionModule.default;
+        const answers: Array<{number: string; answer: string; id: string}> = [];
+        
+        if (section.content) {
+          for (const block of section.content) {
+            if (block.type === 'exercise' && block.answer) {
+              const num = parseInt(block.number || '0', 10);
+              if (num % 2 === 1) {
+                answers.push({
+                  number: block.number || '?',
+                  answer: block.answer,
+                  id: `ans-${chapter.number}.${sec.number}-${block.number}`,
+                });
+              }
+            }
+          }
+        }
+        
+        if (answers.length > 0) {
+          chapterMap.set(sec.number, answers);
+        }
+      } catch {
+        // Section not found, skip
+      }
+    }
+    
+    if (chapterMap.size > 0) {
+      answersByChapter.set(chapter.number, chapterMap);
+    }
+  }
+} catch {
+  // Book not found
+}
+---
+
+<ReaderLayout title={book ? `Answers — ${book.title}` : 'Answers'}>
+  <div class="answers-page">
+    <h1>Answers to Odd-Numbered Exercises</h1>
+    
+    {!book && <p>Book not found.</p>}
+    
+    {book && answersByChapter.size === 0 && (
+      <p style="color: var(--ax-text-secondary);">No answers available yet.</p>
+    )}
+
+    {book && Array.from(answersByChapter.entries()).map(([chNum, sections]) => {
+      const chapter = book.chapters.find((c: any) => c.number === chNum);
+      return (
+        <div class="answers-chapter">
+          <h2>Chapter {chNum}{chapter ? `: ${chapter.title}` : ''}</h2>
+          {Array.from(sections.entries()).map(([secNum, answers]) => {
+            const sec = chapter?.sections?.find((s: any) => s.number === secNum);
+            return (
+              <div class="answers-section">
+                <h3>
+                  Section {chNum}.{secNum}{sec ? ` — ${sec.title}` : ''}
+                  <a class="answer-back-link" href={`/${bookId}/ch${chNum}/sec${secNum}`} style="margin-left: 0.75rem;">
+                    ← Back to section
+                  </a>
+                </h3>
+                <div class="answers-list">
+                  {answers.map((a) => (
+                    <div class="answer-item" id={a.id}>
+                      <span class="answer-num">{a.number}.</span>
+                      <Fragment set:html={a.answer} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      );
+    })}
+  </div>
+</ReaderLayout>

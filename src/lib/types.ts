@@ -159,6 +159,7 @@ export interface ExerciseBlock extends BaseBlock {
   solution?: string;
   hint?: string;
   answer?: string;
+  variant?: 'regular' | 'starred' | 'conceptual' | 'error';
   proof?: boolean;
   creation_reveals?: boolean;
   challenging?: boolean;
