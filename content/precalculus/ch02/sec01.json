@@ -4,6 +4,22 @@
   "chapter": 2,
   "section": 1,
   "book": "precalculus",
+  "objectives": [
+    "Recognize quadratic functions and identify their key features",
+    "Convert between standard form and vertex form using completing the square",
+    "Find the vertex, axis of symmetry, and intercepts of a parabola",
+    "Use the quadratic formula and discriminant to find zeros",
+    "Apply Vieta's formulas to relate zeros and coefficients",
+    "Solve quadratic inequalities using sign charts",
+    "Model and solve optimization problems involving quadratic functions"
+  ],
+  "devotional": {
+    "title": "The Arc of Providence",
+    "scripture": "Jeremiah 29:11",
+    "content": "The parabola is a curve of purpose. When you throw a stone, it doesn't \nwander aimlessly—it follows a precise mathematical path determined by \nthe laws God built into creation. The ancient Greeks discovered that this \nsame curve appears when you slice a cone at a certain angle. They had no \nidea that centuries later, Galileo would show that every projectile \ntraces a parabola through the sky.\n\nThere is something profound here. The same curve describes both a \ngeometric abstraction (slicing a cone) and physical reality (a ball in \nflight). Mathematics isn't just a human invention; it's a discovery of \npatterns woven into the fabric of the universe. As we study quadratics, \nwe're learning the grammar God used to write the laws of motion.",
+    "edition": "christian",
+    "reflection": "Consider how the same mathematical structure \nappears in such different contexts. What does this suggest about the \nunity and order underlying creation?"
+  },
   "content": [
     {
       "type": "paragraph",
@@ -23,7 +39,7 @@
       "id": "definition-2.1",
       "number": "2.1",
       "title": "Quadratic Function",
-      "content": "A **quadratic function** is a function of \nthe form\n\\[\n f(x) = ax^2 + bx + c\n\\]\nwhere $a$, $b$, and $c$ are real numbers and $a \\neq 0$."
+      "content": "A **quadratic function** is a function of \nthe form\n$$\n f(x) = ax^2 + bx + c\n$$\nwhere $a$, $b$, and $c$ are real numbers and $a \\neq 0$."
     },
     {
       "type": "paragraph",
@@ -54,13 +70,21 @@
       "content": "Students often confuse which way the parabola opens. Remember:\n\n- $a > 0$ (positive): Opens **up** like a smile $\\smile$\n\n- $a < 0$ (negative): Opens **down** like a frown $\\frown$\nThe sign of $a$ has nothing to do with whether the vertex is above or \nbelow the $x$-axis!"
     },
     {
+      "type": "figure",
+      "id": "fig:parabola-direction",
+      "src": "/figures/precalculus/fig-parabola-direction.svg",
+      "caption": "The sign of $a$ determines the direction of opening. When $a > 0$, the parabola opens upward and has a minimum at the vertex. When $a < 0$, it opens downward and has a maximum at the vertex.",
+      "alt": "The sign of $a$ determines the direction of opening. When $a > 0$, the parabola opens upward and has a minimum at the vertex. When $a < 0$, it opens downward and has a maximum at the vertex.",
+      "tikz": true
+    },
+    {
       "type": "heading",
       "level": 2,
       "text": "Vertex Form"
     },
     {
       "type": "paragraph",
-      "text": "The most revealing form for understanding a parabola is the \n**vertex form**:\n\\[\n f(x) = a(x - h)^2 + k\n\\]"
+      "text": "The most revealing form for understanding a parabola is the \n**vertex form**:\n$$\n f(x) = a(x - h)^2 + k\n$$"
     },
     {
       "type": "paragraph",
@@ -77,6 +101,14 @@
         "If $a > 0$: The smallest value of $f(x)$ occurs when \n $(x - h)^2 = 0$, giving $f(h) = k$.",
         "If $a < 0$: The largest value of $f(x)$ occurs when \n $(x - h)^2 = 0$, giving $f(h) = k$."
       ]
+    },
+    {
+      "type": "figure",
+      "id": "fig:vertex-transformation",
+      "src": "/figures/precalculus/fig-vertex-transformation.svg",
+      "caption": "The vertex form $f(x) = a(x-h)^2 + k$ shifts the parent parabola $y = x^2$ so that the vertex moves from $(0,0)$ to $(h,k)$. Here $h$ controls horizontal shift and $k$ controls vertical shift.",
+      "alt": "The vertex form $f(x) = a(x-h)^2 + k$ shifts the parent parabola $y = x^2$ so that the vertex moves from $(0,0)$ to $(h,k)$. Here $h$ controls horizontal shift and $k$ controls vertical shift.",
+      "tikz": true
     },
     {
       "type": "example",
@@ -105,7 +137,7 @@
       "number": "2.2",
       "title": "Converting to vertex form",
       "problem": "Write $f(x) = 2x^2 - 12x + 7$ in vertex form.",
-      "solution": "**Step 1:** Factor out the leading coefficient from the $x$-terms:\n\\[\n f(x) = 2(x^2 - 6x) + 7\n\\]\n\n**Step 2:** Complete the square inside the parentheses. Take half \nthe coefficient of $x$ (which is $-6$), and square it: \n$\\left(\\frac{-6}{2}\\right)^2 = (-3)^2 = 9$. Add and subtract this value \ninside the parentheses:\n\\[\n f(x) = 2(x^2 - 6x + 9 - 9) + 7 = 2((x^2 - 6x + 9) - 9) + 7\n\\]\n\n**Step 3:** Factor the perfect square trinomial and simplify:\n$$\n f(x) &= 2((x - 3)^2 - 9) + 7 \\\\\n &= 2(x - 3)^2 - 18 + 7 \\\\\n &= 2(x - 3)^2 - 11\n$$\n\nThe vertex form is $f(x) = 2(x - 3)^2 - 11$, and the vertex is at \n$(3, -11)$."
+      "solution": "**Step 1:** Factor out the leading coefficient from the $x$-terms:\n$$\n f(x) = 2(x^2 - 6x) + 7\n$$\n\n**Step 2:** Complete the square inside the parentheses. Take half \nthe coefficient of $x$ (which is $-6$), and square it: \n$\\left(\\frac{-6}{2}\\right)^2 = (-3)^2 = 9$. Add and subtract this value \ninside the parentheses:\n$$\n f(x) = 2(x^2 - 6x + 9 - 9) + 7 = 2((x^2 - 6x + 9) - 9) + 7\n$$\n\n**Step 3:** Factor the perfect square trinomial and simplify:\n$$\n f(x) &= 2((x - 3)^2 - 9) + 7 \\\\\n &= 2(x - 3)^2 - 18 + 7 \\\\\n &= 2(x - 3)^2 - 11\n$$\n\nThe vertex form is $f(x) = 2(x - 3)^2 - 11$, and the vertex is at \n$(3, -11)$."
     },
     {
       "type": "example",
@@ -113,7 +145,7 @@
       "number": "2.3",
       "title": "Completing the square with negative leading coefficient",
       "problem": "Write $g(x) = -3x^2 + 18x - 22$ in vertex form.",
-      "solution": "**Step 1:** Factor out $-3$ from the $x$-terms:\n\\[\n g(x) = -3(x^2 - 6x) - 22\n\\]\n\n**Step 2:** Complete the square. Half of $-6$ is $-3$, and \n$(-3)^2 = 9$:\n\\[\n g(x) = -3(x^2 - 6x + 9 - 9) - 22 = -3((x - 3)^2 - 9) - 22\n\\]\n\n**Step 3:** Distribute and simplify:\n$$\n g(x) &= -3(x - 3)^2 + 27 - 22 \\\\\n &= -3(x - 3)^2 + 5\n$$\n\nThe vertex is $(3, 5)$. Since $a = -3 < 0$, this is a maximum."
+      "solution": "**Step 1:** Factor out $-3$ from the $x$-terms:\n$$\n g(x) = -3(x^2 - 6x) - 22\n$$\n\n**Step 2:** Complete the square. Half of $-6$ is $-3$, and \n$(-3)^2 = 9$:\n$$\n g(x) = -3(x^2 - 6x + 9 - 9) - 22 = -3((x - 3)^2 - 9) - 22\n$$\n\n**Step 3:** Distribute and simplify:\n$$\n g(x) &= -3(x - 3)^2 + 27 - 22 \\\\\n &= -3(x - 3)^2 + 5\n$$\n\nThe vertex is $(3, 5)$. Since $a = -3 < 0$, this is a maximum."
     },
     {
       "type": "heading",
@@ -129,7 +161,7 @@
       "id": "theorem-2.1",
       "number": "2.1",
       "title": "Vertex Formula",
-      "content": "For the quadratic function $f(x) = ax^2 + bx + c$, the vertex is at\n\\[\n \\left(-\\frac{b}{2a}, f\\left(-\\frac{b}{2a}\\right)\\right)\n\\]",
+      "content": "For the quadratic function $f(x) = ax^2 + bx + c$, the vertex is at\n$$\n \\left(-\\frac{b}{2a}, f\\left(-\\frac{b}{2a}\\right)\\right)\n$$",
       "label": "Theorem"
     },
     {
@@ -146,7 +178,7 @@
       "number": "2.4",
       "title": "Using the vertex formula",
       "problem": "Find the vertex of $f(x) = -3x^2 + 6x + 2$.",
-      "solution": "Here $a = -3$, $b = 6$, $c = 2$.\n\nThe $x$-coordinate of the vertex is:\n\\[\n x = -\\frac{b}{2a} = -\\frac{6}{2(-3)} = -\\frac{6}{-6} = 1\n\\]\n\nThe $y$-coordinate is:\n\\[\n f(1) = -3(1)^2 + 6(1) + 2 = -3 + 6 + 2 = 5\n\\]\n\nThe vertex is $(1, 5)$."
+      "solution": "Here $a = -3$, $b = 6$, $c = 2$.\n\nThe $x$-coordinate of the vertex is:\n$$\n x = -\\frac{b}{2a} = -\\frac{6}{2(-3)} = -\\frac{6}{-6} = 1\n$$\n\nThe $y$-coordinate is:\n$$\n f(1) = -3(1)^2 + 6(1) + 2 = -3 + 6 + 2 = 5\n$$\n\nThe vertex is $(1, 5)$."
     },
     {
       "type": "heading",
@@ -175,7 +207,7 @@
       "number": "2.5",
       "title": "Graphing a quadratic function",
       "problem": "Sketch the graph of $f(x) = x^2 - 4x - 5$.",
-      "solution": "**Direction:** Since $a = 1 > 0$, the parabola opens upward.\n\n**Vertex:** Using the vertex formula:\n\\[\n x = -\\frac{b}{2a} = -\\frac{-4}{2(1)} = 2, \\quad \n f(2) = (2)^2 - 4(2) - 5 = 4 - 8 - 5 = -9\n\\]\nVertex: $(2, -9)$\n\n**Axis of symmetry:** $x = 2$\n\n**$y$-intercept:** $f(0) = 0 - 0 - 5 = -5$. Point: $(0, -5)$\n\n**$x$-intercepts:** Solve $x^2 - 4x - 5 = 0$:\n\\[\n (x - 5)(x + 1) = 0 \\implies x = 5 \\text{ or } x = -1\n\\]\nPoints: $(5, 0)$ and $(-1, 0)$\n\n**Symmetric point:** The point $(0, -5)$ is 2 units left of the \naxis $x = 2$. By symmetry, there's a corresponding point 2 units to the \nright: $(4, -5)$.\n\ncenter\ntikzpicture[scale=0.5]\n (-3,0) – (7,0) node[right] {$x$};\n (0,-10) – (0,3) node[above] {$y$};\n \n plot (, { - 4* - 5});\n (2,-10) – (2,2);\n lldraw (2,-9) circle (3pt) node[below right] {$(2,-9)$};\n lldraw (-1,0) circle (3pt) node[above left] {$-1$};\n lldraw (5,0) circle (3pt) node[above right] {$5$};\n lldraw (0,-5) circle (3pt) node[left] {$(0,-5)$};\n lldraw (4,-5) circle (3pt) node[right] {$(4,-5)$};\ntikzpicture\ncenter"
+      "solution": "**Direction:** Since $a = 1 > 0$, the parabola opens upward.\n\n**Vertex:** Using the vertex formula:\n$$\n x = -\\frac{b}{2a} = -\\frac{-4}{2(1)} = 2, \\quad \n f(2) = (2)^2 - 4(2) - 5 = 4 - 8 - 5 = -9\n$$\nVertex: $(2, -9)$\n\n**Axis of symmetry:** $x = 2$\n\n**$y$-intercept:** $f(0) = 0 - 0 - 5 = -5$. Point: $(0, -5)$\n\n**$x$-intercepts:** Solve $x^2 - 4x - 5 = 0$:\n$$\n (x - 5)(x + 1) = 0 \\implies x = 5 \\text{ or } x = -1\n$$\nPoints: $(5, 0)$ and $(-1, 0)$\n\n**Symmetric point:** The point $(0, -5)$ is 2 units left of the \naxis $x = 2$. By symmetry, there's a corresponding point 2 units to the \nright: $(4, -5)$.\n\ncenter\ntikzpicture[scale=0.5]\n (-3,0) – (7,0) node[right] {$x$};\n (0,-10) – (0,3) node[above] {$y$};\n \n plot (, { - 4* - 5});\n (2,-10) – (2,2);\n lldraw (2,-9) circle (3pt) node[below right] {$(2,-9)$};\n lldraw (-1,0) circle (3pt) node[above left] {$-1$};\n lldraw (5,0) circle (3pt) node[above right] {$5$};\n lldraw (0,-5) circle (3pt) node[left] {$(0,-5)$};\n lldraw (4,-5) circle (3pt) node[right] {$(4,-5)$};\ntikzpicture\ncenter"
     },
     {
       "type": "heading",
@@ -203,8 +235,8 @@
       "id": "example-2.6",
       "number": "2.6",
       "title": "Optimization: Projectile motion",
-      "problem": "A ball is thrown upward from ground level with an initial velocity of \n64 feet per second. Its height after $t$ seconds is given by\n\\[\n h(t) = -16t^2 + 64t\n\\]\nFind the maximum height and the time when it occurs.",
-      "solution": "This is a quadratic function in $t$ with $a = -16 < 0$, so it opens \ndownward and has a maximum at the vertex.\n\nThe $t$-coordinate of the vertex is:\n\\[\n t = -\\frac{b}{2a} = -\\frac{64}{2(-16)} = -\\frac{64}{-32} = 2\n\\]\n\nThe maximum height is:\n\\[\n h(2) = -16(2)^2 + 64(2) = -64 + 128 = 64 \\text{ feet}\n\\]\n\nThe ball reaches its maximum height of **64 feet** at \n$\\mathbf{t = 2}$ **seconds**."
+      "problem": "A ball is thrown upward from ground level with an initial velocity of \n64 feet per second. Its height after $t$ seconds is given by\n$$\n h(t) = -16t^2 + 64t\n$$\nFind the maximum height and the time when it occurs.",
+      "solution": "This is a quadratic function in $t$ with $a = -16 < 0$, so it opens \ndownward and has a maximum at the vertex.\n\nThe $t$-coordinate of the vertex is:\n$$\n t = -\\frac{b}{2a} = -\\frac{64}{2(-16)} = -\\frac{64}{-32} = 2\n$$\n\nThe maximum height is:\n$$\n h(2) = -16(2)^2 + 64(2) = -64 + 128 = 64 \\text{ feet}\n$$\n\nThe ball reaches its maximum height of **64 feet** at \n$\\mathbf{t = 2}$ **seconds**."
     },
     {
       "type": "example",
@@ -212,7 +244,7 @@
       "number": "2.7",
       "title": "Optimization: Maximum area",
       "problem": "A farmer has 200 meters of fencing to enclose a rectangular pen. What \ndimensions maximize the enclosed area?",
-      "solution": "Let $x$ be the width of the pen. Since the perimeter is 200 meters:\n\\[\n 2x + 2y = 200 \\implies y = 100 - x\n\\]\nwhere $y$ is the length.\n\nThe area is:\n\\[\n A(x) = xy = x(100 - x) = 100x - x^2 = -x^2 + 100x\n\\]\n\nThis is a quadratic with $a = -1 < 0$, so it has a maximum. The vertex \noccurs at:\n\\[\n x = -\\frac{100}{2(-1)} = 50\n\\]\n\nThen $y = 100 - 50 = 50$.\n\nThe maximum area is $A(50) = 50 \\times 50 = 2500$ square meters, achieved \nwhen the pen is a **50 m $\\times$ 50 m square**."
+      "solution": "Let $x$ be the width of the pen. Since the perimeter is 200 meters:\n$$\n 2x + 2y = 200 \\implies y = 100 - x\n$$\nwhere $y$ is the length.\n\nThe area is:\n$$\n A(x) = xy = x(100 - x) = 100x - x^2 = -x^2 + 100x\n$$\n\nThis is a quadratic with $a = -1 < 0$, so it has a maximum. The vertex \noccurs at:\n$$\n x = -\\frac{100}{2(-1)} = 50\n$$\n\nThen $y = 100 - 50 = 50$.\n\nThe maximum area is $A(50) = 50 \\times 50 = 2500$ square meters, achieved \nwhen the pen is a **50 m $\\times$ 50 m square**."
     },
     {
       "type": "heading",
@@ -228,7 +260,7 @@
       "id": "theorem-2.3",
       "number": "2.3",
       "title": "The Quadratic Formula",
-      "content": "The solutions to $ax^2 + bx + c = 0$ are\n\\[\n x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}\n\\]",
+      "content": "The solutions to $ax^2 + bx + c = 0$ are\n$$\n x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}\n$$",
       "label": "Theorem"
     },
     {
@@ -253,6 +285,14 @@
       "label": "Theorem"
     },
     {
+      "type": "figure",
+      "id": "fig:discriminant-cases",
+      "src": "/figures/precalculus/fig-discriminant-cases.svg",
+      "caption": "The discriminant $D = b^2 - 4ac$ determines how many times the parabola crosses the $x$-axis. When $D > 0$, there are two $x$-intercepts; when $D = 0$, the vertex touches the axis; when $D < 0$, the parabola stays entirely above (or below) the axis.",
+      "alt": "The discriminant $D = b^2 - 4ac$ determines how many times the parabola crosses the $x$-axis. When $D > 0$, there are two $x$-intercepts; when $D = 0$, the vertex touches the axis; when $D < 0$, the parabola stays entirely above (or below) the axis.",
+      "tikz": true
+    },
+    {
       "type": "example",
       "id": "example-2.8",
       "number": "2.8",
@@ -266,7 +306,7 @@
       "number": "2.9",
       "title": "Solving with the quadratic formula",
       "problem": "Solve $2x^2 - 3x - 5 = 0$ using the quadratic formula.",
-      "solution": "Here $a = 2$, $b = -3$, $c = -5$.\n\nFirst, compute the discriminant:\n\\[\n D = (-3)^2 - 4(2)(-5) = 9 + 40 = 49\n\\]\n\nSince $D > 0$, there are two distinct real solutions:\n\\[\n x = \\frac{-(-3) \\pm \\sqrt{49}}{2(2)} = \\frac{3 \\pm 7}{4}\n\\]\n\nSo $x = \\frac{3 + 7}{4} = \\frac{10}{4} = \\frac{5}{2}$ or \n$x = \\frac{3 - 7}{4} = \\frac{-4}{4} = -1$.\n\nThe solutions are $x = \\frac{5}{2}$ and $x = -1$."
+      "solution": "Here $a = 2$, $b = -3$, $c = -5$.\n\nFirst, compute the discriminant:\n$$\n D = (-3)^2 - 4(2)(-5) = 9 + 40 = 49\n$$\n\nSince $D > 0$, there are two distinct real solutions:\n$$\n x = \\frac{-(-3) \\pm \\sqrt{49}}{2(2)} = \\frac{3 \\pm 7}{4}\n$$\n\nSo $x = \\frac{3 + 7}{4} = \\frac{10}{4} = \\frac{5}{2}$ or \n$x = \\frac{3 - 7}{4} = \\frac{-4}{4} = -1$.\n\nThe solutions are $x = \\frac{5}{2}$ and $x = -1$."
     },
     {
       "type": "heading",
@@ -282,7 +322,7 @@
       "id": "theorem-2.5",
       "number": "2.5",
       "title": "Factored Form",
-      "content": "If $r$ and $s$ are the zeros of a quadratic function, then\n\\[\n f(x) = a(x - r)(x - s)\n\\]\nfor some nonzero constant $a$.",
+      "content": "If $r$ and $s$ are the zeros of a quadratic function, then\n$$\n f(x) = a(x - r)(x - s)\n$$\nfor some nonzero constant $a$.",
       "label": "Theorem"
     },
     {
@@ -291,19 +331,1131 @@
       "number": "2.10",
       "title": "Finding a quadratic from given conditions",
       "problem": "Find a quadratic function with vertex at $(3, -2)$ that passes through \nthe point $(1, 6)$.",
-      "solution": "Since we know the vertex, we use vertex form:\n\\[\n f(x) = a(x - 3)^2 + (-2) = a(x - 3)^2 - 2\n\\]\n\nNow we use the condition that $(1, 6)$ is on the graph:\n\\[\n 6 = a(1 - 3)^2 - 2 = a(4) - 2 = 4a - 2\n\\]\n\nSolving: $4a = 8$, so $a = 2$.\n\nThe function is $f(x) = 2(x - 3)^2 - 2$."
+      "solution": "Since we know the vertex, we use vertex form:\n$$\n f(x) = a(x - 3)^2 + (-2) = a(x - 3)^2 - 2\n$$\n\nNow we use the condition that $(1, 6)$ is on the graph:\n$$\n 6 = a(1 - 3)^2 - 2 = a(4) - 2 = 4a - 2\n$$\n\nSolving: $4a = 8$, so $a = 2$.\n\nThe function is $f(x) = 2(x - 3)^2 - 2$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Vieta's Formulas"
+    },
+    {
+      "type": "paragraph",
+      "text": "There is an elegant relationship between the zeros of a quadratic and its \ncoefficients. These relationships, known as **Vieta's formulas**, \nallow us to find the sum and product of the zeros without explicitly solving \nthe equation."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-2.6",
+      "number": "2.6",
+      "title": "Vieta's Formulas for Quadratics",
+      "content": "For the quadratic equation $ax^2 + bx + c = 0$ with zeros $r$ and $s$:\n$$\n r + s = -\\frac{b}{a} \\qquad \\text{and} \\qquad rs = \\frac{c}{a}\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "proof",
+      "content": "If $r$ and $s$ are zeros of $ax^2 + bx + c$, then by the Factored Form theorem:\n$$\n ax^2 + bx + c = a(x - r)(x - s)\n$$\n\nExpanding the right side:\n$$\n a(x - r)(x - s) &= a[x^2 - sx - rx + rs] \\\\\n &= a[x^2 - (r + s)x + rs] \\\\\n &= ax^2 - a(r + s)x + a \\cdot rs\n$$\n\nComparing coefficients with $ax^2 + bx + c$:\n\n- Coefficient of $x$: $b = -a(r + s)$, so $r + s = -\\dfrac{b}{a}$\n\n- Constant term: $c = a \\cdot rs$, so $rs = \\dfrac{c}{a}$"
+    },
+    {
+      "type": "example",
+      "id": "example-2.11",
+      "number": "2.11",
+      "title": "Using Vieta's formulas",
+      "problem": "Without solving, find the sum and product of the zeros of $2x^2 - 7x + 3 = 0$.",
+      "solution": "Here $a = 2$, $b = -7$, $c = 3$.\n\nBy Vieta's formulas:\n$$\n r + s = -\\frac{b}{a} = -\\frac{-7}{2} = \\frac{7}{2}\n$$\n$$\n rs = \\frac{c}{a} = \\frac{3}{2}\n$$\n\n(We can verify: the zeros are $x = 3$ and $x = \\frac{1}{2}$, and indeed \n$3 + \\frac{1}{2} = \\frac{7}{2}$ and $3 \\cdot \\frac{1}{2} = \\frac{3}{2}$.)"
+    },
+    {
+      "type": "example",
+      "id": "example-2.12",
+      "number": "2.12",
+      "title": "Finding a quadratic from sum and product of zeros",
+      "problem": "Find a quadratic equation with integer coefficients whose zeros have sum $4$ \nand product $-5$.",
+      "solution": "If $r + s = 4$ and $rs = -5$, then by Vieta's formulas we need:\n$$\n -\\frac{b}{a} = 4 \\quad \\text{and} \\quad \\frac{c}{a} = -5\n$$\n\nChoosing $a = 1$ gives $b = -4$ and $c = -5$.\n\nThe quadratic is $x^2 - 4x - 5 = 0$.\n\n(Check: $(x - 5)(x + 1) = 0$ has zeros $5$ and $-1$, with sum $4$ and \nproduct $-5$. )"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Quadratic Inequalities"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **quadratic inequality** is an inequality \nthat can be written in one of the forms:\n$$\n ax^2 + bx + c < 0, \\quad ax^2 + bx + c > 0, \\quad \n ax^2 + bx + c \\le 0, \\quad ax^2 + bx + c \\ge 0\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "To solve a quadratic inequality, we use the connection between the graph \nof $y = ax^2 + bx + c$ and the sign of the expression."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "Sign Chart Method",
+      "content": "To solve a quadratic inequality:\n\n1. Find the zeros of $f(x) = ax^2 + bx + c$ (the boundary points).\n\n2. Plot the zeros on a number line, dividing it into intervals.\n\n3. Test one value from each interval to determine the sign of $f(x)$ there.\n\n4. Select the intervals that satisfy the inequality.\n\n5. Include boundary points for $\\le$ or $\\ge$; exclude for $<$ or $>$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.13",
+      "number": "2.13",
+      "title": "Solving a quadratic inequality",
+      "problem": "Solve $x^2 - 4 > 0$.",
+      "solution": "**Step 1:** Find the zeros of $f(x) = x^2 - 4$.\n$$\n x^2 - 4 = (x - 2)(x + 2) = 0 \\implies x = -2 \\text{ or } x = 2\n$$\n\n**Step 2:** Create a sign chart with intervals $(-\\infty, -2)$, $(-2, 2)$, $(2, \\infty)$.\n\n**Step 3:** Test points from each interval:\n\n- Test $x = -3$: $(-3)^2 - 4 = 9 - 4 = 5 > 0$ \n\n- Test $x = 0$: $(0)^2 - 4 = -4 < 0$\n\n- Test $x = 3$: $(3)^2 - 4 = 9 - 4 = 5 > 0$ \n\ncenter\ntikzpicture[scale=0.9]\n (-4,0) – (4,0) node[right] {$x$};\n (-2,0.15) – (-2,-0.15) node[below] {$-2$};\n (2,0.15) – (2,-0.15) node[below] {$2$};\n at (-3, 0.5) {AtlasTeal{$+$}};\n at (0, 0.5) {AtlasRose{$-$}};\n at (3, 0.5) {AtlasTeal{$+$}};\n (-2,0) circle (3pt);\n (2,0) circle (3pt);\n (-4,0) – (-2,0);\n (2,0) – (4,0);\ntikzpicture\ncenter\n\n**Step 4:** Since we want $> 0$ (positive), we take the intervals where \n$f(x)$ is positive.\n\n**Solution:** $(-\\infty, -2) \\cup (2, \\infty)$, or equivalently $x < -2$ or $x > 2$."
+    },
+    {
+      "type": "example",
+      "id": "example-2.14",
+      "number": "2.14",
+      "title": "Quadratic inequality with $\\le$",
+      "problem": "Solve $x^2 - 2x - 8 \\le 0$.",
+      "solution": "**Step 1:** Find the zeros.\n$$\n x^2 - 2x - 8 = (x - 4)(x + 2) = 0 \\implies x = 4 \\text{ or } x = -2\n$$\n\n**Step 2:** Create intervals: $(-\\infty, -2)$, $(-2, 4)$, $(4, \\infty)$.\n\n**Step 3:** Test points:\n\n- Test $x = -3$: $(-3)^2 - 2(-3) - 8 = 9 + 6 - 8 = 7 > 0$\n\n- Test $x = 0$: $(0)^2 - 2(0) - 8 = -8 < 0$ \n\n- Test $x = 5$: $(5)^2 - 2(5) - 8 = 25 - 10 - 8 = 7 > 0$\n\ncenter\ntikzpicture[scale=0.8]\n (-4,0) – (6,0) node[right] {$x$};\n (-2,0.15) – (-2,-0.15) node[below] {$-2$};\n (4,0.15) – (4,-0.15) node[below] {$4$};\n at (-3, 0.5) {AtlasRose{$+$}};\n at (1, 0.5) {AtlasTeal{$-$}};\n at (5, 0.5) {AtlasRose{$+$}};\n lldraw[AtlasTeal] (-2,0) circle (3pt);\n lldraw[AtlasTeal] (4,0) circle (3pt);\n (-2,0) – (4,0);\ntikzpicture\ncenter\n\n**Step 4:** We want $\\le 0$ (negative or zero), so we include the middle \ninterval AND the boundary points.\n\n**Solution:** $[-2, 4]$"
+    },
+    {
+      "type": "example",
+      "id": "example-2.15",
+      "number": "2.15",
+      "title": "Graphical interpretation",
+      "problem": "Solve $-x^2 + 4x - 3 \\ge 0$ using the graph.",
+      "solution": "First, note that $f(x) = -x^2 + 4x - 3$ opens downward (since $a = -1 < 0$).\n\nFind the zeros:\n$$\n -x^2 + 4x - 3 = -(x^2 - 4x + 3) = -(x - 1)(x - 3) = 0\n$$\nSo $x = 1$ or $x = 3$.\n\ncenter\ntikzpicture[scale=0.7]\n (-0.5,0) – (5,0) node[right] {$x$};\n (0,-2) – (0,2) node[above] {$y$};\n plot (, {-(-1)*(-3)/2});\n lldraw[AtlasTeal] (1,0) circle (2.5pt);\n lldraw[AtlasTeal] (3,0) circle (2.5pt);\n (1,-1.5) – (1,0.5);\n (3,-1.5) – (3,0.5);\n at (1,-0.1) { $1$};\n at (3,-0.1) { $3$};\n (1,0) – (3,0);\n at (2, 0.7) { $f(x) \\ge 0$};\ntikzpicture\ncenter\n\nThe parabola is at or above the $x$-axis between $x = 1$ and $x = 3$.\n\n**Solution:** $[1, 3]$"
+    },
+    {
+      "type": "example",
+      "id": "example-2.16",
+      "number": "2.16",
+      "title": "Quadratic inequality with no real zeros",
+      "problem": "Solve $x^2 + 2x + 5 > 0$.",
+      "solution": "The discriminant is $D = 4 - 20 = -16 < 0$, so there are no real zeros.\n\nComplete the square: $x^2 + 2x + 5 = (x + 1)^2 + 4$.\n\nSince $(x + 1)^2 \\ge 0$ for all $x$, we have $(x + 1)^2 + 4 \\ge 4 > 0$ for all $x$.\n\n**Solution:** $(-\\infty, \\infty)$ or all real numbers.\n\n*Note:* If the inequality were $x^2 + 2x + 5 < 0$, there would be no solution."
+    },
+    {
+      "type": "warning",
+      "id": "warning-2.1",
+      "number": null,
+      "title": "Don't Divide by Variables!",
+      "content": "When solving inequalities, never divide both sides by a variable expression \nunless you know its sign. For example, to solve $x(x - 2) > 0$, use a sign \nchart—don't divide by $x$."
     },
     {
       "type": "summary",
       "id": "summary-2.1",
       "number": null,
       "title": "Quadratic Functions",
-      "content": "- **Standard form:** $f(x) = ax^2 + bx + c$ with $a \\neq 0$\n\n- **Vertex form:** $f(x) = a(x - h)^2 + k$ with vertex $(h, k)$\n\n- **Vertex formula:** $x = -\\frac{b}{2a}$\n\n- **Direction:** Opens up if $a > 0$; down if $a < 0$\n\n- **Quadratic formula:** $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$\n\n- **Discriminant:** $D = b^2 - 4ac$ determines number of real zeros"
+      "content": "- **Standard form:** $f(x) = ax^2 + bx + c$ with $a \\neq 0$\n\n- **Vertex form:** $f(x) = a(x - h)^2 + k$ with vertex $(h, k)$\n\n- **Vertex formula:** $x = -\\frac{b}{2a}$\n\n- **Direction:** Opens up if $a > 0$; down if $a < 0$\n\n- **Quadratic formula:** $x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$\n\n- **Discriminant:** $D = b^2 - 4ac$ determines number of real zeros\n\n- **Vieta's formulas:** If $r, s$ are zeros: $r + s = -\\frac{b}{a}$, $rs = \\frac{c}{a}$\n\n- **Quadratic inequalities:** Use sign charts—find zeros, test intervals, select regions based on desired sign"
     },
     {
-      "type": "heading",
-      "level": 2,
-      "text": "Exercises"
+      "type": "exercise",
+      "id": "ex-2.1-1",
+      "number": "1",
+      "problem": "Find the vertex and axis of symmetry for each quadratic function.\n\n1. $f(x) = (x - 2)^2 + 5$\n\n2. $g(x) = -3(x + 4)^2 - 1$\n\n3. $h(x) = x^2 - 6x + 8$\n\n4. $p(x) = -2x^2 + 8x - 3$\n\n5. $q(x) = 5x^2 + 10x - 2$\n\n6. $r(x) = -\\frac{1}{2}(x - 1)^2 + 7$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Basic"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-2",
+      "number": "2",
+      "problem": "Write each function in vertex form by completing the square.\n\n1. $f(x) = x^2 + 4x + 1$\n\n2. $g(x) = x^2 - 10x + 20$\n\n3. $h(x) = 3x^2 + 6x - 2$\n\n4. $p(x) = -2x^2 + 12x - 7$\n\n5. $q(x) = 2x^2 - 8x + 5$\n\n6. $r(x) = -x^2 - 4x + 3$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Basic"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-3",
+      "number": "3",
+      "problem": "Find the zeros of each quadratic function using the quadratic formula.\n\n1. $f(x) = x^2 - 5x + 4$\n\n2. $g(x) = 2x^2 + 3x - 2$\n\n3. $h(x) = x^2 - 4x + 5$\n\n4. $p(x) = 3x^2 - x - 4$\n\n5. $q(x) = x^2 - 6x + 9$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Standard"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-4",
+      "number": "4",
+      "problem": "Use the discriminant to determine the number of real solutions.\n\n1. $3x^2 - 2x + 1 = 0$\n\n2. $4x^2 - 12x + 9 = 0$\n\n3. $x^2 - 6x + 5 = 0$\n\n4. $2x^2 + 5x + 4 = 0$\n\n5. $x^2 + 4x + 4 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Standard"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-5",
+      "number": "5",
+      "problem": "Sketch the graph of each function, labeling the vertex, axis of \nsymmetry, and intercepts.\n\n1. $f(x) = x^2 - 2x - 3$\n\n2. $g(x) = -x^2 + 4x$\n\n3. $h(x) = 2x^2 - 4x + 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Standard"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-6",
+      "number": "6",
+      "problem": "A projectile is launched upward with initial velocity 80 m/s from a \nheight of 5 meters. Its height is $h(t) = -5t^2 + 80t + 5$.\n\n1. Find the maximum height.\n\n2. When does it reach maximum height?\n\n3. When does it hit the ground?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Application"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-7",
+      "number": "7",
+      "problem": "A company's profit (in thousands of dollars) from selling $x$ hundred \nunits is modeled by $P(x) = -2x^2 + 24x - 54$.\n\n1. How many units maximize profit?\n\n2. What is the maximum profit?\n\n3. For what sales levels is the profit positive?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Application"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-8",
+      "number": "8",
+      "problem": "Find a quadratic function with the given properties.\n\n1. Vertex at $(3, -2)$, passing through $(1, 6)$\n\n2. Zeros at $-1$ and $5$, passing through $(0, 10)$\n\n3. Vertex at $(-2, 4)$, $y$-intercept at $(0, 0)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Intermediate"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-9",
+      "number": "9",
+      "problem": "For what values of $k$ does $x^2 + kx + 9 = 0$ have exactly one real \nsolution?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Challenging"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-10",
+      "number": "10",
+      "problem": "For what values of $k$ does $2x^2 - 4x + k = 0$ have two distinct real \nsolutions?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Challenging"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-11",
+      "number": "11",
+      "problem": "Prove that if $f(x) = ax^2 + bx + c$ has two distinct real zeros $r$ and \n$s$, then $f(x) = a(x - r)(x - s)$.",
+      "variant": "proof",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-12",
+      "number": "12",
+      "problem": "Prove that the sum of the zeros of $ax^2 + bx + c$ is $-\\frac{b}{a}$ and \ntheir product is $\\frac{c}{a}$. (These are called Vieta's formulas.)",
+      "variant": "proof",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-13",
+      "number": "13",
+      "problem": "Show that among all rectangles with perimeter $P$, the square has the \nmaximum area.",
+      "variant": "proof",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-14",
+      "number": "14",
+      "problem": "For each function in vertex form, identify the vertex, axis of symmetry, \nand whether the parabola opens up or down.\n\n1. $f(x) = (x - 4)^2 + 3$\n\n2. $g(x) = (x + 2)^2 - 5$\n\n3. $h(x) = -(x - 1)^2 + 7$\n\n4. $k(x) = -2(x + 3)^2 - 1$\n\n5. $p(x) = 3(x - 5)^2$\n\n6. $q(x) = -\\frac{1}{2}(x + 4)^2 + 6$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-15",
+      "number": "15",
+      "problem": "For each function in vertex form, identify the vertex, axis of symmetry, \nand whether the parabola opens up or down.\n\n1. $f(x) = 4(x - 2)^2 - 8$\n\n2. $g(x) = -(x + 5)^2 + 12$\n\n3. $h(x) = \\frac{2}{3}(x - 1)^2 - 4$\n\n4. $k(x) = -5(x + 1)^2$\n\n5. $p(x) = (x - 7)^2 + 2$\n\n6. $q(x) = -3(x - 6)^2 - 9$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-16",
+      "number": "16",
+      "problem": "Write each function in vertex form by completing the square.\n\n1. $f(x) = x^2 + 6x + 5$\n\n2. $g(x) = x^2 - 8x + 12$\n\n3. $h(x) = x^2 + 2x - 8$\n\n4. $k(x) = x^2 - 10x + 21$\n\n5. $p(x) = x^2 + 4x$\n\n6. $q(x) = x^2 - 6x$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-17",
+      "number": "17",
+      "problem": "Write each function in vertex form by completing the square.\n\n1. $f(x) = 2x^2 + 8x + 3$\n\n2. $g(x) = 3x^2 - 12x + 7$\n\n3. $h(x) = -x^2 + 4x + 5$\n\n4. $k(x) = -2x^2 - 8x + 1$\n\n5. $p(x) = 4x^2 + 16x - 5$\n\n6. $q(x) = -3x^2 + 18x - 10$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-18",
+      "number": "18",
+      "problem": "Write each function in vertex form by completing the square.\n\n1. $f(x) = \\frac{1}{2}x^2 + 2x - 1$\n\n2. $g(x) = -\\frac{1}{3}x^2 + 2x + 4$\n\n3. $h(x) = 5x^2 - 20x + 17$\n\n4. $k(x) = -4x^2 + 24x - 31$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-19",
+      "number": "19",
+      "problem": "Use the vertex formula $x = -\\frac{b}{2a}$ to find the vertex.\n\n1. $f(x) = x^2 - 4x + 7$\n\n2. $g(x) = x^2 + 8x - 3$\n\n3. $h(x) = 2x^2 - 12x + 5$\n\n4. $k(x) = -3x^2 + 6x + 1$\n\n5. $p(x) = 4x^2 + 8x - 7$\n\n6. $q(x) = -x^2 - 10x + 2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-20",
+      "number": "20",
+      "problem": "Use the vertex formula to find the vertex.\n\n1. $f(x) = -5x^2 + 30x - 41$\n\n2. $g(x) = 6x^2 - 24x + 19$\n\n3. $h(x) = \\frac{1}{4}x^2 - x + 3$\n\n4. $k(x) = -\\frac{2}{3}x^2 + 4x - 2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-21",
+      "number": "21",
+      "problem": "Find the zeros by factoring.\n\n1. $f(x) = x^2 - 7x + 12$\n\n2. $g(x) = x^2 + 5x + 6$\n\n3. $h(x) = x^2 - 9$\n\n4. $k(x) = x^2 - 5x$\n\n5. $p(x) = 2x^2 - 5x - 3$\n\n6. $q(x) = 3x^2 + 7x + 2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-22",
+      "number": "22",
+      "problem": "Use the quadratic formula to find the zeros.\n\n1. $f(x) = x^2 - 3x - 5$\n\n2. $g(x) = 2x^2 + x - 4$\n\n3. $h(x) = 3x^2 - 5x + 1$\n\n4. $k(x) = x^2 + 4x + 1$\n\n5. $p(x) = 5x^2 - 3x - 1$\n\n6. $q(x) = 4x^2 + 7x - 2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-23",
+      "number": "23",
+      "problem": "Use the quadratic formula to find the zeros (some may be complex).\n\n1. $f(x) = x^2 + 2x + 5$\n\n2. $g(x) = x^2 - 4x + 7$\n\n3. $h(x) = 2x^2 + 3x + 4$\n\n4. $k(x) = 3x^2 - x + 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-24",
+      "number": "24",
+      "problem": "Use the discriminant to determine the number and type of solutions.\n\n1. $x^2 - 6x + 9 = 0$\n\n2. $x^2 - 6x + 8 = 0$\n\n3. $x^2 - 6x + 10 = 0$\n\n4. $2x^2 + 4x + 2 = 0$\n\n5. $3x^2 - 5x + 1 = 0$\n\n6. $4x^2 + 3x + 2 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-25",
+      "number": "25",
+      "problem": "Find all values of $k$ for which the equation has exactly one real solution.\n\n1. $x^2 + kx + 4 = 0$\n\n2. $x^2 - 6x + k = 0$\n\n3. $kx^2 + 8x + 2 = 0$\n\n4. $2x^2 + kx + 8 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-26",
+      "number": "26",
+      "problem": "Find all values of $k$ for which the equation has two distinct real solutions.\n\n1. $x^2 - 4x + k = 0$\n\n2. $x^2 + kx + 9 = 0$\n\n3. $2x^2 + 6x + k = 0$\n\n4. $kx^2 - 10x + 5 = 0$ (with $k > 0$)",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-27",
+      "number": "27",
+      "problem": "For each function, find the vertex, axis of symmetry, $y$-intercept, and \n$x$-intercepts (if any). Sketch the graph.\n\n1. $f(x) = x^2 - 4x + 3$\n\n2. $g(x) = x^2 + 2x - 8$\n\n3. $h(x) = -x^2 + 6x - 5$\n\n4. $k(x) = -x^2 - 2x + 3$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-28",
+      "number": "28",
+      "problem": "For each function, find the vertex, axis of symmetry, $y$-intercept, and \n$x$-intercepts (if any). Sketch the graph.\n\n1. $f(x) = 2x^2 - 8x + 6$\n\n2. $g(x) = -2x^2 + 4x + 6$\n\n3. $h(x) = x^2 - 4x + 4$\n\n4. $k(x) = x^2 + 2x + 5$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-29",
+      "number": "29",
+      "problem": "For each function, find all intercepts and sketch the graph.\n\n1. $f(x) = \\frac{1}{2}x^2 - 2x$\n\n2. $g(x) = -\\frac{1}{4}x^2 + x + 2$\n\n3. $h(x) = 3x^2 - 6x - 9$\n\n4. $k(x) = -2x^2 - 4x + 6$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-30",
+      "number": "30",
+      "problem": "Find the maximum or minimum value of each function.\n\n1. $f(x) = x^2 - 8x + 10$\n\n2. $g(x) = -x^2 + 6x - 2$\n\n3. $h(x) = 2x^2 + 4x - 5$\n\n4. $k(x) = -3x^2 - 12x + 7$\n\n5. $p(x) = 5x^2 - 20x + 17$\n\n6. $q(x) = -4x^2 + 8x + 3$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-31",
+      "number": "31",
+      "problem": "Find the maximum or minimum value and state where it occurs.\n\n1. $f(x) = -x^2 + 10x - 21$\n\n2. $g(x) = 3x^2 - 18x + 25$\n\n3. $h(x) = -2x^2 - 8x + 1$\n\n4. $k(x) = 4x^2 + 24x + 32$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-32",
+      "number": "32",
+      "problem": "Find a quadratic function with the given zeros.\n\n1. $x = 2$ and $x = 5$\n\n2. $x = -3$ and $x = 4$\n\n3. $x = 0$ and $x = 6$\n\n4. $x = -1$ and $x = -7$\n\n5. $x = \\frac{1}{2}$ and $x = 3$\n\n6. $x = -\\frac{2}{3}$ and $x = 2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-33",
+      "number": "33",
+      "problem": "Find a quadratic function with the given vertex passing through the given point.\n\n1. Vertex $(2, -3)$, passing through $(0, 5)$\n\n2. Vertex $(-1, 4)$, passing through $(2, -5)$\n\n3. Vertex $(3, 2)$, passing through $(5, 10)$\n\n4. Vertex $(0, -4)$, passing through $(2, 0)$\n\n5. Vertex $(-2, 6)$, passing through $(0, 2)$\n\n6. Vertex $(4, -1)$, passing through $(1, 8)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-34",
+      "number": "34",
+      "problem": "Find a quadratic function satisfying the given conditions.\n\n1. Zeros at $1$ and $5$, $y$-intercept at $(0, -10)$\n\n2. Zeros at $-2$ and $3$, passing through $(1, 12)$\n\n3. Vertex at $(2, 4)$, $y$-intercept at $(0, 0)$\n\n4. Axis of symmetry $x = 3$, zeros at $1$ and $5$, opens upward",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-35",
+      "number": "35",
+      "problem": "Without solving, find the sum and product of the zeros.\n\n1. $x^2 - 7x + 12 = 0$\n\n2. $x^2 + 5x - 6 = 0$\n\n3. $2x^2 - 10x + 8 = 0$\n\n4. $3x^2 + 9x - 12 = 0$\n\n5. $x^2 - 4x + 4 = 0$\n\n6. $5x^2 - 3x - 2 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-36",
+      "number": "36",
+      "problem": "Find a quadratic equation with integer coefficients having the given sum and product of zeros.\n\n1. Sum $= 5$, Product $= 6$\n\n2. Sum $= -3$, Product $= -10$\n\n3. Sum $= 0$, Product $= -9$\n\n4. Sum $= 7$, Product $= 0$\n\n5. Sum $= \\frac{1}{2}$, Product $= -\\frac{3}{4}$\n\n6. Sum $= -\\frac{2}{3}$, Product $= \\frac{1}{3}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-37",
+      "number": "37",
+      "problem": "Let $r$ and $s$ be the zeros of $x^2 - 5x + 3 = 0$. Without solving, find:\n\n1. $r + s$\n\n2. $rs$\n\n3. $\\dfrac{1}{r} + \\dfrac{1}{s}$\n\n4. $r^2 + s^2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-38",
+      "number": "38",
+      "problem": "One zero of $x^2 - 8x + k = 0$ is $2$. Use Vieta's formulas to find the other zero and the value of $k$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-39",
+      "number": "39",
+      "problem": "The zeros of $x^2 + bx + 18 = 0$ have a product of $18$ and a sum of $-9$. Find $b$ and both zeros.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-40",
+      "number": "40",
+      "problem": "A ball is thrown upward from a cliff 48 feet high with initial velocity 32 ft/s.\nIts height is $h(t) = -16t^2 + 32t + 48$.\n\n1. When does the ball reach maximum height?\n\n2. What is the maximum height?\n\n3. When does the ball hit the ground?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Projectile Motion"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-41",
+      "number": "41",
+      "problem": "A rocket is launched with height $h(t) = -4.9t^2 + 49t + 10$ meters.\n\n1. Find the maximum height.\n\n2. When is the rocket at height 100 m?\n\n3. When does it return to ground level?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Projectile Motion"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-42",
+      "number": "42",
+      "problem": "A theater charges \\$12 per ticket and sells 500 tickets. For each \\$1 \nincrease in price, 25 fewer tickets are sold. Let $x$ = number of \\$1 increases.\n\\begin{enumerate}[label=(\\alph*)]\n \\item Write the revenue function $R(x)$.\n What price maximizes revenue?\n What is the maximum revenue?\nenumerate",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Revenue"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-43",
+      "number": "43",
+      "problem": "A farmer has 300 feet of fencing to enclose a rectangular area along a river \n(no fence needed on the river side).\n\n1. Express the area as a function of the width.\n\n2. What dimensions maximize the area?\n\n3. What is the maximum area?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Fencing"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-44",
+      "number": "44",
+      "problem": "A company's profit is $P(x) = -0.5x^2 + 40x - 300$ thousand dollars, where \n$x$ is thousands of units sold.\n\n1. How many units maximize profit?\n\n2. What is the maximum profit?\n\n3. For what range of sales is profit positive?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Profit"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-45",
+      "number": "45",
+      "problem": "Two positive numbers have sum 20. Find the numbers that maximize their product.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Area"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-46",
+      "number": "46",
+      "problem": "A rectangle is inscribed in a right triangle with legs 6 and 8. One side of \nthe rectangle lies on the hypotenuse. Find the maximum area of the rectangle.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Geometry"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-47",
+      "number": "47",
+      "problem": "The power $P$ (in watts) delivered by a battery with EMF 12 V and internal \nresistance 2 ohms to an external resistance $R$ is $P = \\dfrac{144R}{(R+2)^2}$.\nRewrite this as a quadratic in terms of a substitution and find the resistance \nthat maximizes power.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Physics"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-48",
+      "number": "48",
+      "problem": "Use a graphing calculator to graph each function. Estimate the \nvertex, zeros, and range.\n\n1. $f(x) = 1.5x^2 - 4.2x + 1.7$\n\n2. $g(x) = -0.8x^2 + 3.6x + 2.1$\n\n3. $h(x) = 2.3x^2 - 6.9x + 5.2$",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-49",
+      "number": "49",
+      "problem": "Use a graphing calculator to find all values of $k$ for which \n$x^2 + kx + 4 = 0$ has:\n\n1. No real solutions\n\n2. Exactly one real solution\n\n3. Two distinct real solutions",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-50",
+      "number": "50",
+      "problem": "Graph $y = x^2$, $y = 2x^2$, $y = 0.5x^2$, and $y = -x^2$ on \nthe same screen. Describe how the coefficient $a$ affects the graph.",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-51",
+      "number": "51",
+      "problem": "True or False? Justify your answer.\n\n1. Every quadratic function has exactly two zeros.\n\n2. The vertex of a parabola is always on the axis of symmetry.\n\n3. If $a > 0$, the vertex represents a minimum.\n\n4. The $y$-intercept of $f(x) = ax^2 + bx + c$ is $(0, c)$.\n\n5. If the discriminant is negative, the parabola doesn't cross the $x$-axis.\n\n6. Two different quadratic functions cannot have the same zeros.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-52",
+      "number": "52",
+      "problem": "True or False? Justify your answer.\n\n1. If $f(x) = a(x-h)^2 + k$ with $a > 0$ and $k > 0$, then $f$ has no real zeros.\n\n2. The graphs of $y = x^2 + 2$ and $y = x^2 - 3$ have the same shape.\n\n3. Completing the square always works to find the vertex.\n\n4. If a parabola opens downward, its range is $(-\\infty, k]$ for some $k$.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-53",
+      "number": "53",
+      "problem": "Explain why the maximum or minimum of $f(x) = ax^2 + bx + c$ \noccurs at $x = -\\frac{b}{2a}$.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-54",
+      "number": "54",
+      "problem": "A quadratic function has vertex $(3, -4)$ and opens upward. \nIs it possible for $f(10)$ to be negative? Explain.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-55",
+      "number": "55",
+      "problem": "Describe and correct the error.\n\nCompleting the square for $f(x) = 2x^2 - 8x + 5$:\nquote\n\"$f(x) = 2(x^2 - 4x) + 5 = 2(x^2 - 4x + 4) + 5 = 2(x - 2)^2 + 5$\n\nSo the vertex is $(2, 5)$.\" \nquote",
+      "variant": "error",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-56",
+      "number": "56",
+      "problem": "Describe and correct the error.\n\nFinding zeros of $f(x) = x^2 + 4$:\nquote\n\"$x^2 + 4 = 0$\n\n$x^2 = -4$\n\n$x = \\pm 2$\n\nThe zeros are $2$ and $-2$.\" \nquote",
+      "variant": "error",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-57",
+      "number": "57",
+      "problem": "Describe and correct the error.\n\nFinding the vertex of $f(x) = -3(x + 2)^2 - 5$:\nquote\n\"The vertex form is $a(x - h)^2 + k$, so $h = 2$ and $k = -5$.\n\nThe vertex is $(2, -5)$.\" \nquote",
+      "variant": "error",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-58",
+      "number": "58",
+      "problem": "If the zeros of $f(x) = x^2 + bx + c$ are $r$ and $s$, express \n$r^2 + s^2$ in terms of $b$ and $c$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-59",
+      "number": "59",
+      "problem": "Find all quadratic functions $f(x) = ax^2 + bx + c$ such that \n$f(0) = f(2) = 1$ and $f(1) = 0$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-60",
+      "number": "60",
+      "problem": "The parabola $y = ax^2 + bx + c$ passes through $(-1, 6)$, \n$(1, 2)$, and $(2, 3)$. Find $a$, $b$, and $c$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-61",
+      "number": "61",
+      "problem": "Prove that for any quadratic $f(x) = ax^2 + bx + c$ with two \ndistinct real zeros, the vertex lies exactly halfway between the zeros.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-62",
+      "number": "62",
+      "problem": "Prove that if $f(x) = ax^2 + bx + c$ has zeros $r$ and $s$, \nthen $r + s = -\\frac{b}{a}$ and $rs = \\frac{c}{a}$ (Vieta's formulas).",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-63",
+      "number": "63",
+      "problem": "Prove that among all rectangles with a fixed perimeter $P$, \nthe square has the maximum area.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-64",
+      "number": "64",
+      "problem": "Find the vertex and determine if the parabola opens up or down.\n\n1. $f(x) = x^2 - 6x + 8$\n\n2. $f(x) = x^2 + 4x - 5$\n\n3. $f(x) = x^2 - 2x - 3$\n\n4. $f(x) = x^2 + 6x + 9$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-65",
+      "number": "65",
+      "problem": "Find the vertex and determine if the parabola opens up or down.\n\n1. $f(x) = -x^2 + 4x - 3$\n\n2. $f(x) = -x^2 - 2x + 8$\n\n3. $f(x) = -x^2 + 6x - 5$\n\n4. $f(x) = -x^2 - 4x - 4$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-66",
+      "number": "66",
+      "problem": "Find the vertex, axis of symmetry, and all intercepts.\n\n1. $f(x) = 2x^2 + 8x + 6$\n\n2. $f(x) = 3x^2 - 12x + 9$\n\n3. $f(x) = 2x^2 - 4x - 6$\n\n4. $f(x) = 4x^2 + 8x$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-67",
+      "number": "67",
+      "problem": "Find the vertex, axis of symmetry, and all intercepts.\n\n1. $f(x) = -2x^2 + 8x - 6$\n\n2. $f(x) = -3x^2 + 12x - 9$\n\n3. $f(x) = -\\frac{1}{2}x^2 + 2x + 4$\n\n4. $f(x) = \\frac{1}{4}x^2 - x - 3$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-68",
+      "number": "68",
+      "problem": "Write in vertex form and identify the vertex.\n\n1. $f(x) = x^2 + 10x + 21$\n\n2. $f(x) = x^2 - 4x + 7$\n\n3. $f(x) = x^2 + 8x + 12$\n\n4. $f(x) = x^2 - 6x + 5$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-69",
+      "number": "69",
+      "problem": "Write in vertex form and identify the vertex.\n\n1. $f(x) = 2x^2 - 12x + 14$\n\n2. $f(x) = -x^2 + 6x - 5$\n\n3. $f(x) = 3x^2 + 6x + 1$\n\n4. $f(x) = -2x^2 - 8x + 3$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-70",
+      "number": "70",
+      "problem": "Find the zeros (if any) and determine the number of $x$-intercepts.\n\n1. $f(x) = x^2 - x + 1$\n\n2. $f(x) = x^2 + 3x - 2$\n\n3. $f(x) = 2x^2 + 5x + 1$\n\n4. $f(x) = -x^2 + 4x + 2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-71",
+      "number": "71",
+      "problem": "Find the zeros (if any) and determine the number of $x$-intercepts.\n\n1. $f(x) = 4x^2 - 4x + 3$\n\n2. $f(x) = -3x^2 + 6x + 1$\n\n3. $f(x) = \\frac{1}{2}x^2 + 4x - 5$\n\n4. $f(x) = -\\frac{1}{3}x^2 + 2x + 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-72",
+      "number": "72",
+      "problem": "Find a quadratic function with the given vertex passing through the given point.\n\n1. Vertex $(2, 3)$, passing through $(0, 7)$\n\n2. Vertex $(-1, 4)$, passing through $(1, 0)$\n\n3. Vertex $(3, -2)$, passing through $(0, 7)$\n\n4. Vertex $(0, 5)$, passing through $(2, 1)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-73",
+      "number": "73",
+      "problem": "Find a quadratic function satisfying the given conditions.\n\n1. Vertex $(4, -3)$, passing through $(2, 5)$\n\n2. Vertex $(-2, 1)$, passing through $(0, -3)$\n\n3. $x$-intercepts at $1$ and $5$, passing through $(0, -10)$\n\n4. $x$-intercepts at $-3$ and $2$, maximum value $25$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-74",
+      "number": "74",
+      "problem": "Find a quadratic function satisfying the given conditions.\n\n1. Opens up, vertex $(1, -4)$, passes through $(3, 0)$\n\n2. Opens down, axis of symmetry $x = 2$, passes through $(0, -3)$ and $(4, -3)$\n\n3. Maximum value $6$ at $x = -1$, $y$-intercept $2$\n\n4. Minimum value $-9$ at $x = 3$, $x$-intercepts at $0$ and $6$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-75",
+      "number": "75",
+      "problem": "Find a quadratic function satisfying the given conditions.\n\n1. Zeros at $-2$ and $4$, $f(0) = 8$\n\n2. Zeros at $1$ and $-3$, $f(2) = 5$\n\n3. Double zero at $x = 3$, $f(0) = 18$\n\n4. No real zeros, vertex at $(2, 5)$, $a = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-76",
+      "number": "76",
+      "problem": "A ball is thrown upward with initial velocity 64 ft/s from a height of 6 ft.\nIts height is $h(t) = -16t^2 + 64t + 6$.\n\n1. When does the ball reach maximum height?\n\n2. What is the maximum height?\n\n3. When does the ball hit the ground?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Projectile Motion"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-77",
+      "number": "77",
+      "problem": "A rocket is launched with initial velocity 96 ft/s from ground level.\n$h(t) = -16t^2 + 96t$.\n\n1. Find the maximum height.\n\n2. How long is the rocket in the air?\n\n3. When is it at height 128 ft?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Projectile Motion"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-78",
+      "number": "78",
+      "problem": "A company's profit is $P(x) = -0.5x^2 + 40x - 300$ dollars for $x$ units.\n\n1. How many units maximize profit?\n\n2. What is the maximum profit?\n\n3. What is the break-even quantity?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Profit"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-79",
+      "number": "79",
+      "problem": "A rancher has 400 feet of fencing to enclose a rectangular corral next to a barn\n(the barn forms one side). Find the maximum area.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Fencing"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-80",
+      "number": "80",
+      "problem": "Find the $x$-intercepts, $y$-intercept, and vertex.\n\n1. $f(x) = x^2 - 9$\n\n2. $f(x) = 4x^2 - 25$\n\n3. $f(x) = x^2 - 5x$\n\n4. $f(x) = 3x^2 + 12x$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-81",
+      "number": "81",
+      "problem": "Find the $x$-intercepts, $y$-intercept, and vertex.\n\n1. $f(x) = x^2 - 3x - 10$\n\n2. $f(x) = x^2 + 7x + 12$\n\n3. $f(x) = 2x^2 - 7x + 3$\n\n4. $f(x) = 3x^2 + 5x - 2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-82",
+      "number": "82",
+      "problem": "Determine the number of $x$-intercepts using the discriminant.\n\n1. $f(x) = x^2 - 4x + 4$\n\n2. $f(x) = x^2 - 4x + 5$\n\n3. $f(x) = x^2 - 4x + 3$\n\n4. $f(x) = 2x^2 + 3x + 2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-83",
+      "number": "83",
+      "problem": "Find $k$ so that the parabola has exactly one $x$-intercept.\n\n1. $f(x) = x^2 + kx + 9$\n\n2. $f(x) = kx^2 + 8x + 4$\n\n3. $f(x) = x^2 - 6x + k$\n\n4. $f(x) = 2x^2 + kx + 8$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-84",
+      "number": "84",
+      "problem": "Find the range of each function.\n\n1. $f(x) = x^2 - 4x + 7$\n\n2. $f(x) = -x^2 + 6x - 5$\n\n3. $f(x) = 2x^2 - 8x + 3$\n\n4. $f(x) = -3x^2 + 12x + 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-85",
+      "number": "85",
+      "problem": "For each parabola, determine if it opens up or down and find the vertex.\n\n1. $y = -2(x - 3)^2 + 5$\n\n2. $y = \\frac{1}{2}(x + 1)^2 - 4$\n\n3. $y = -(x + 4)^2 + 1$\n\n4. $y = 3(x - 2)^2 - 7$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-86",
+      "number": "86",
+      "problem": "Write an equation for the parabola described.\n\n1. Vertex $(0, 4)$, opens down, passes through $(2, 0)$\n\n2. Vertex $(-3, -2)$, opens up, passes through $(0, 7)$\n\n3. $x$-intercepts $-1$ and $5$, $y$-intercept $-5$\n\n4. Axis of symmetry $x = 2$, passes through $(0, 8)$ and $(4, 8)$, minimum $-4$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-87",
+      "number": "87",
+      "problem": "Solve each inequality.\n\n1. $x^2 - 5x + 6 > 0$\n\n2. $x^2 - 4x - 5 \\leq 0$\n\n3. $2x^2 - x - 3 < 0$\n\n4. $x^2 + 2x + 1 \\geq 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-88",
+      "number": "88",
+      "problem": "Solve each inequality.\n\n1. $x^2 > 9$\n\n2. $x^2 \\leq 25$\n\n3. $x^2 - 4 < 0$\n\n4. $x^2 + 1 > 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-89",
+      "number": "89",
+      "problem": "A ball is kicked upward with initial velocity 80 ft/s from ground level.\n\n1. Write the height function $h(t)$.\n\n2. Find the maximum height.\n\n3. When does the ball hit the ground?\n\n4. When is the ball at height 64 ft?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-90",
+      "number": "90",
+      "problem": "The sum of two numbers is 20. Find the numbers if their product is maximum.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-91",
+      "number": "91",
+      "problem": "The height of a ball thrown from a cliff is $h(t) = -16t^2 + 32t + 48$.\n\n1. What is the initial height?\n\n2. When does the ball reach maximum height?\n\n3. What is the maximum height?\n\n4. When does the ball hit the ground?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-92",
+      "number": "92",
+      "problem": "A farmer has 600 meters of fencing and wants to fence a rectangular pasture next to a river (no fencing needed along the river). Find the maximum area.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-93",
+      "number": "93",
+      "problem": "The profit from selling $x$ units is $P(x) = -2x^2 + 100x - 800$. Find the number of units that maximizes profit, and the maximum profit.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-94",
+      "number": "94",
+      "problem": "Two numbers differ by 10. Find the numbers if the sum of their squares is minimum.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-95",
+      "number": "95",
+      "problem": "A rectangle is inscribed in a semicircle of radius 5. Express the area as a function of the base and find the maximum area.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-96",
+      "number": "96",
+      "problem": "The revenue function is $R(x) = 200x - x^2$ and cost function is $C(x) = 40x + 1000$. Find the break-even points and maximum profit.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-97",
+      "number": "97",
+      "problem": "Solve by completing the square.\n\n1. $x^2 + 8x + 7 = 0$\n\n2. $x^2 - 6x + 2 = 0$\n\n3. $x^2 + 4x - 1 = 0$\n\n4. $2x^2 - 12x + 7 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-98",
+      "number": "98",
+      "problem": "Solve using the quadratic formula.\n\n1. $x^2 - 3x - 2 = 0$\n\n2. $2x^2 + 5x - 1 = 0$\n\n3. $3x^2 - x + 1 = 0$\n\n4. $x^2 + x + 1 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-99",
+      "number": "99",
+      "problem": "Find the discriminant and determine the nature of the solutions.\n\n1. $x^2 - 8x + 16 = 0$\n\n2. $3x^2 - 5x + 4 = 0$\n\n3. $x^2 - 6x + 5 = 0$\n\n4. $4x^2 + 4x + 1 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-100",
+      "number": "100",
+      "problem": "For what values of $k$ does the equation have two distinct real solutions?\n\n1. $x^2 + 4x + k = 0$\n\n2. $kx^2 + 6x + 1 = 0$\n\n3. $x^2 - kx + 9 = 0$\n\n4. $2x^2 + kx + 2 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-101",
+      "number": "101",
+      "problem": "Write a quadratic equation with the given solutions.\n\n1. $x = 3$ and $x = -5$\n\n2. $x = \\frac{1}{2}$ and $x = -\\frac{2}{3}$\n\n3. $x = 2 + \\sqrt{3}$ and $x = 2 - \\sqrt{3}$\n\n4. $x = 1 + 2i$ and $x = 1 - 2i$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-102",
+      "number": "102",
+      "problem": "Convert to standard form $f(x) = ax^2 + bx + c$.\n\n1. $f(x) = 2(x - 3)^2 + 5$\n\n2. $f(x) = -(x + 1)^2 - 4$\n\n3. $f(x) = 3(x + 2)^2 - 7$\n\n4. $f(x) = -\\frac{1}{2}(x - 4)^2 + 6$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-103",
+      "number": "103",
+      "problem": "Find the axis of symmetry without graphing.\n\n1. $f(x) = x^2 - 10x + 21$\n\n2. $f(x) = -3x^2 + 12x - 5$\n\n3. $f(x) = 2x^2 + 7x - 4$\n\n4. $f(x) = -x^2 - 8x + 3$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-104",
+      "number": "104",
+      "problem": "Graph each parabola. Label vertex, axis of symmetry, and intercepts.\n\n1. $f(x) = (x - 1)^2 - 4$\n\n2. $f(x) = -(x + 2)^2 + 9$\n\n3. $f(x) = 2(x - 3)^2 - 2$\n\n4. $f(x) = -\\frac{1}{2}(x + 1)^2 + 2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-105",
+      "number": "105",
+      "problem": "A parabola passes through $(0, 5)$, $(1, 0)$, and $(5, 0)$. Find its equation.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-106",
+      "number": "106",
+      "problem": "Find the equation of the parabola with vertex $(2, -3)$ that passes through $(0, 1)$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-107",
+      "number": "107",
+      "problem": "The graph of $f(x) = ax^2 + bx + c$ has vertex $(3, 4)$ and passes through $(0, -5)$. Find $a$, $b$, and $c$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-108",
+      "number": "108",
+      "problem": "Determine if the parabola opens up or down, then find the vertex.\n\n1. $f(x) = x^2 - 8x + 15$\n\n2. $f(x) = -2x^2 + 4x + 1$\n\n3. $f(x) = 3x^2 + 6x - 2$\n\n4. $f(x) = -x^2 - 4x + 5$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-109",
+      "number": "109",
+      "problem": "A rectangle has perimeter 100 cm. Express the area as a function of width and find the maximum area.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-110",
+      "number": "110",
+      "problem": "The height of a baseball is given by $h(t) = -16t^2 + 80t + 4$ feet, where $t$ is in seconds.\n\n1. What is the initial height?\n\n2. What is the maximum height?\n\n3. When does the ball hit the ground?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.1-111",
+      "number": "111",
+      "problem": "The product of two consecutive positive integers is 156. Find the integers using a quadratic equation.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     }
   ],
   "marginNotes": [

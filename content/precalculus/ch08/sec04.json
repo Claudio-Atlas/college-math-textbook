@@ -4,6 +4,21 @@
   "chapter": 8,
   "section": 4,
   "book": "precalculus",
+  "objectives": [
+    "Plot points and convert between polar and rectangular coordinates",
+    "Graph polar equations including circles, roses, limaçons, and spirals",
+    "Write parametric equations and eliminate the parameter",
+    "Graph parametric curves and describe motion along them",
+    "Convert between rectangular and parametric forms",
+    "Apply parametric equations to projectile motion and circular motion"
+  ],
+  "devotional": {
+    "title": "Distance and Direction",
+    "scripture": "Psalm 139:7--10",
+    "content": "{AtlasWarmP}{olar}\ncoordinates locate a point by two measures: how far and which way. Every \npoint in the plane can be reached from the origin—you just need to know \nthe distance to travel and the direction to face.\n\nThe Psalmist marveled at God's omnipresence: \"Where can I go from your \nSpirit? Where can I flee from your presence? If I go up to the heavens, \nyou are there; if I make my bed in the depths, you are there.\" No \ndistance is too great, no direction leads away from God's reach.\n\nIn polar coordinates, the origin is called the *pole*—the fixed \npoint from which all measurements begin. In the spiritual life, God is \nour pole: the fixed reference point that gives meaning to every journey, \nevery direction we might travel.",
+    "edition": "christian",
+    "reflection": "What serves as your \"pole\"—your fixed reference \npoint? How does knowing God is always at the center change how you \nnavigate life's directions?"
+  },
   "content": [
     {
       "type": "paragraph",
@@ -11,19 +26,93 @@
     },
     {
       "type": "paragraph",
-      "text": "Polar coordinates describe position using distance and angle rather than \nhorizontal and vertical displacement."
+      "text": "We've been describing points as $(x, y)$—so many units right, so many \nunits up. It works. But it's not the only way, and for some curves, it's \nactually the *wrong* way."
+    },
+    {
+      "type": "paragraph",
+      "text": "Think about giving directions to a lighthouse. You could say \"go 3 miles \neast and 4 miles north.\" That's rectangular coordinates. But a sailor would \nnever say that. She'd say: \"it's 5 miles out, bearing 53°.\" Distance and \ndirection. That's how humans naturally navigate, and that's exactly what \n**polar coordinates** capture."
+    },
+    {
+      "type": "paragraph",
+      "text": "Here's where it gets interesting: some curves that look hopelessly \ncomplicated in $(x, y)$ form become almost trivially simple in polar. \nThe spiral of a nautilus shell? One clean equation. The petals of a rose? \nBeautiful. The orbit of a comet? Elegant. When you have the right \ncoordinate system, the math does the work for you."
     },
     {
       "type": "heading",
       "level": 2,
-      "text": "Polar Coordinates"
+      "text": "The Polar Coordinate System"
+    },
+    {
+      "type": "paragraph",
+      "text": "In the polar coordinate system, we fix a point called the **pole** \n(usually at the origin) and a ray from the pole called the **polar \naxis** (usually the positive $x$-axis)."
     },
     {
       "type": "definition",
       "id": "definition-8.1",
       "number": "8.1",
       "title": "Polar Coordinates",
-      "content": "The **polar coordinates** of a point are \n$(r, \\theta)$ where:\n\n- $r$ = distance from the origin (pole)\n\n- $\\theta$ = angle from the positive $x$-axis (polar axis)"
+      "content": "The **polar coordinates** of a point $P$ are \n$(r, \\theta)$ where:\n\n- $r$ = the directed distance from the pole to $P$\n\n- $\\theta$ = the angle from the polar axis to the line segment $\\overline{OP}$, \n measured counterclockwise"
+    },
+    {
+      "type": "figure",
+      "id": "fig-6647",
+      "src": "/figures/precalculus/fig-6647.svg",
+      "caption": "The polar coordinate system: A point $P$ is located by its distance $r$ from the pole (origin) and angle $\\theta$ measured counterclockwise from the polar axis (positive $x$-axis). Concentric circles show constant $r$ values; radial lines show constant $\\theta$ values.",
+      "alt": "The polar coordinate system: A point $P$ is located by its distance $r$ from the pole (origin) and angle $\\theta$ measured counterclockwise from the polar axis (positive $x$-axis). Concentric circles show constant $r$ values; radial lines show constant $\\theta$ values.",
+      "tikz": true
+    },
+    {
+      "type": "example",
+      "id": "example-8.1",
+      "number": "8.1",
+      "title": "Plotting polar points",
+      "problem": "Plot the points $A(2, \\frac{\\pi}{4})$, $B(3, \\frac{2\\pi}{3})$, \n$C(1.5, \\pi)$, and $D(2, \\frac{5\\pi}{4})$.",
+      "solution": "For each point, we move outward from the pole by distance $r$, then \nrotate counterclockwise from the polar axis by angle $\\theta$.\n\nfigure[H]\n\ntikzpicture[scale=0.9]\n % Polar grid\n (0,0) circle (1);\n (0,0) circle (2);\n (0,0) circle (3);\n in {0,45,90,135,180,225,270,315} {\n (0,0) – (:3.3);\n }\n \n % Axes\n (-3.3,0) – (3.5,0);\n (0,-3.3) – (0,3.3);\n \n % Points\n lldraw[AtlasTeal] (45:2) circle (3pt) node[above right] {$A(2, \\frac{\\pi}{4})$};\n lldraw[AtlasRose] (120:3) circle (3pt) node[above left] {$B(3, \\frac{2\\pi}{3})$};\n lldraw[AtlasWarm] (180:1.5) circle (3pt) node[left] {$C(1.5, \\pi)$};\n lldraw[AtlasSage] (225:2) circle (3pt) node[below left] {$D(2, \\frac{5\\pi}{4})$};\n \n % Pole\n lldraw (0,0) circle (2pt);\ntikzpicture\nPlotting polar points: Points $A$, $B$, $C$, and $D$ are plotted by moving outward from the pole by distance $r$, then rotating counterclockwise by angle $\\theta$ from the polar axis.\nfigure\n\n- $A$: Go out 2 units, rotate $\\frac{\\pi}{4} = 45°$\n\n- $B$: Go out 3 units, rotate $\\frac{2\\pi}{3} = 120°$\n\n- $C$: Go out 1.5 units, rotate $\\pi = 180°$\n\n- $D$: Go out 2 units, rotate $\\frac{5\\pi}{4} = 225°$",
+      "figures": [
+        {
+          "type": "figure",
+          "id": "fig-92535",
+          "src": "/figures/precalculus/fig-92535.svg",
+          "caption": "Plotting polar points: Points $A$, $B$, $C$, and $D$ are plotted by moving outward from the pole by distance $r$, then rotating counterclockwise by angle $\\theta$ from the polar axis.",
+          "alt": "Plotting polar points: Points $A$, $B$, $C$, and $D$ are plotted by moving outward from the pole by distance $r$, then rotating counterclockwise by angle $\\theta$ from the polar axis.",
+          "tikz": true
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Multiple Representations and Negative $r$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Unlike rectangular coordinates, where each point has exactly one \nrepresentation, polar coordinates allow *infinitely many* \nrepresentations for the same point."
+    },
+    {
+      "type": "summary",
+      "id": "summary-8.4",
+      "number": null,
+      "title": "Multiple Polar Representations",
+      "content": "The point $(r, \\theta)$ can also be written as:\n\n- $(r, \\theta + 2\\pi n)$ for any integer $n$ (add full rotations)\n\n- $(-r, \\theta + \\pi)$ (negative $r$ with opposite direction)"
+    },
+    {
+      "type": "paragraph",
+      "text": "When $r$ is negative, we interpret $(r, \\theta)$ as follows: face the \ndirection $\\theta$, then move $|r|$ units in the *opposite* direction."
+    },
+    {
+      "type": "figure",
+      "id": "fig-80812",
+      "src": "/figures/precalculus/fig-80812.svg",
+      "caption": "Negative $r$ values: The point $(2, \\frac{\\pi}{3})$ lies 2 units from the pole at angle $\\frac{\\pi}{3}$. The point $(-2, \\frac{\\pi}{3})$ is reached by facing angle $\\frac{\\pi}{3}$ then moving 2 units *backward*, placing it at the opposite location.",
+      "alt": "Negative $r$ values: The point $(2, \\frac{\\pi}{3})$ lies 2 units from the pole at angle $\\frac{\\pi}{3}$. The point $(-2, \\frac{\\pi}{3})$ is reached by facing angle $\\frac{\\pi}{3}$ then moving 2 units *backward*, placing it at the opposite location.",
+      "tikz": true
+    },
+    {
+      "type": "example",
+      "id": "example-8.2",
+      "number": "8.2",
+      "title": "Multiple representations",
+      "problem": "Find three other polar representations for the point $(3, \\frac{\\pi}{4})$.",
+      "solution": "Starting from $(3, \\frac{\\pi}{4})$:\n\n**Add $2\\pi$:** $(3, \\frac{\\pi}{4} + 2\\pi) = (3, \\frac{9\\pi}{4})$\n\n**Subtract $2\\pi$:** $(3, \\frac{\\pi}{4} - 2\\pi) = (3, -\\frac{7\\pi}{4})$\n\n**Use negative $r$:** $(-3, \\frac{\\pi}{4} + \\pi) = (-3, \\frac{5\\pi}{4})$\n\nAll four representations—$(3, \\frac{\\pi}{4})$, $(3, \\frac{9\\pi}{4})$, \n$(3, -\\frac{7\\pi}{4})$, and $(-3, \\frac{5\\pi}{4})$—describe the same point."
     },
     {
       "type": "heading",
@@ -31,20 +120,200 @@
       "text": "Converting Between Coordinate Systems"
     },
     {
+      "type": "paragraph",
+      "text": "Points and equations can be converted between rectangular and polar form."
+    },
+    {
       "type": "theorem",
       "id": "theorem-8.1",
       "number": "8.1",
-      "title": "Coordinate Conversion",
-      "content": "**Polar to rectangular:**\n\\[\n x = r\\cos\\theta, \\quad y = r\\sin\\theta\n\\]\n\n**Rectangular to polar:**\n\\[\n r = \\sqrt{x^2 + y^2}, \\quad \\tan\\theta = \\frac{y}{x}\n\\]",
+      "title": "Coordinate Conversion Formulas",
+      "content": "**Polar to rectangular:**\n$$\n x = r\\cos\\theta, \\quad y = r\\sin\\theta\n$$\n\n**Rectangular to polar:**\n$$\n r^2 = x^2 + y^2, \\quad \\tan\\theta = \\frac{y}{x}\n$$\nWhen finding $\\theta$, consider the quadrant of the point.",
       "label": "Theorem"
     },
     {
+      "type": "paragraph",
+      "text": "These formulas come directly from the definitions of sine and cosine in \nthe unit circle, extended to any radius $r$."
+    },
+    {
+      "type": "figure",
+      "id": "fig-43702",
+      "src": "/figures/precalculus/fig-43702.svg",
+      "caption": "Converting between coordinate systems: A point has rectangular coordinates $(x, y)$ and polar coordinates $(r, \\theta)$. The conversion formulas are $x = r\\cos\\theta$, $y = r\\sin\\theta$ (polar to rectangular) and $r = \\sqrt{x^2 + y^2}$, $\\tan\\theta = y/x$ (rectangular to polar).",
+      "alt": "Converting between coordinate systems: A point has rectangular coordinates $(x, y)$ and polar coordinates $(r, \\theta)$. The conversion formulas are $x = r\\cos\\theta$, $y = r\\sin\\theta$ (polar to rectangular) and $r = \\sqrt{x^2 + y^2}$, $\\tan\\theta = y/x$ (rectangular to polar).",
+      "tikz": true
+    },
+    {
       "type": "example",
-      "id": "example-8.1",
-      "number": "8.1",
-      "title": "Converting coordinates",
-      "problem": "Convert $(3, \\frac{\\pi}{3})$ from polar to rectangular coordinates.",
-      "solution": "$$\n x &= 3\\cos\\frac{\\pi}{3} = 3 \\cdot \\frac{1}{2} = \\frac{3}{2} \\\\\n y &= 3\\sin\\frac{\\pi}{3} = 3 \\cdot \\frac{\\sqrt{3}}{2} = \\frac{3\\sqrt{3}}{2}\n$$\nThe rectangular coordinates are $\\left(\\frac{3}{2}, \\frac{3\\sqrt{3}}{2}\\right)$."
+      "id": "example-8.3",
+      "number": "8.3",
+      "title": "Polar to rectangular",
+      "problem": "Convert $(4, \\frac{5\\pi}{6})$ from polar to rectangular coordinates.",
+      "solution": "Using $x = r\\cos\\theta$ and $y = r\\sin\\theta$:\n$$\n x &= 4\\cos\\frac{5\\pi}{6} = 4 \\cdot \\left(-\\frac{\\sqrt{3}}{2}\\right) = -2\\sqrt{3} \\\\\n y &= 4\\sin\\frac{5\\pi}{6} = 4 \\cdot \\frac{1}{2} = 2\n$$\n\nThe rectangular coordinates are $(-2\\sqrt{3}, 2)$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.4",
+      "number": "8.4",
+      "title": "Rectangular to polar",
+      "problem": "Convert $(-3, 3)$ from rectangular to polar coordinates with $r > 0$ \nand $0 \\le \\theta < 2\\pi$.",
+      "solution": "**Step 1: Find $r$.**\n$$\n r = \\sqrt{x^2 + y^2} = \\sqrt{(-3)^2 + 3^2} = \\sqrt{9 + 9} = \\sqrt{18} = 3\\sqrt{2}\n$$\n\n**Step 2: Find $\\theta$.**\n\nThe reference angle is:\n$$\n \\alpha = \\arctan\\left|\\frac{y}{x}\\right| = \\arctan\\left|\\frac{3}{-3}\\right| = \\arctan(1) = \\frac{\\pi}{4}\n$$\n\nSince $x < 0$ and $y > 0$, the point is in Quadrant II:\n$$\n \\theta = \\pi - \\frac{\\pi}{4} = \\frac{3\\pi}{4}\n$$\n\nThe polar coordinates are $\\left(3\\sqrt{2}, \\frac{3\\pi}{4}\\right)$."
+    },
+    {
+      "type": "warning",
+      "id": "warning-8.4",
+      "number": null,
+      "title": "Quadrant Matters!",
+      "content": "When converting from rectangular to polar, you must consider which quadrant \ncontains the point. The formula $\\theta = \\arctan(y/x)$ only gives angles \nin Quadrants I and IV. For points in Quadrants II or III, add $\\pi$ to the \narctangent result."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Converting Equations Between Systems"
+    },
+    {
+      "type": "paragraph",
+      "text": "The same formulas that convert points also convert equations."
+    },
+    {
+      "type": "summary",
+      "id": "summary-8.4",
+      "number": null,
+      "title": "Converting Equations",
+      "content": "**Rectangular to polar:** Replace $x$ with $r\\cos\\theta$, $y$ with \n$r\\sin\\theta$, and $x^2 + y^2$ with $r^2$.\n\n**Polar to rectangular:** Multiply by $r$ if helpful, then use \n$r\\cos\\theta = x$, $r\\sin\\theta = y$, and $r^2 = x^2 + y^2$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.5",
+      "number": "8.5",
+      "title": "Rectangular to polar equation",
+      "problem": "Convert $x^2 + y^2 = 4x$ to polar form.",
+      "solution": "Replace $x^2 + y^2$ with $r^2$ and $x$ with $r\\cos\\theta$:\n$$\n r^2 = 4r\\cos\\theta\n$$\nDivide both sides by $r$ (assuming $r \\ne 0$):\n$$\n r = 4\\cos\\theta\n$$\n\nThis is the polar equation. (We'll see shortly that this is a circle.)"
+    },
+    {
+      "type": "example",
+      "id": "example-8.6",
+      "number": "8.6",
+      "title": "Polar to rectangular equation",
+      "problem": "Convert $r = 3\\csc\\theta$ to rectangular form.",
+      "solution": "Since $\\csc\\theta = \\frac{1}{\\sin\\theta}$, we have:\n$$\n r = \\frac{3}{\\sin\\theta}\n$$\nMultiply both sides by $\\sin\\theta$:\n$$\n r\\sin\\theta = 3\n$$\nBut $r\\sin\\theta = y$, so:\n$$\n y = 3\n$$\n\nThis is simply a horizontal line!"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Graphs of Polar Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "Polar equations often describe curves that would be complicated in \nrectangular form. Let's explore the most important families."
+    },
+    {
+      "type": "summary",
+      "id": "summary-8.4",
+      "number": null,
+      "title": "Symmetry Tests for Polar Curves",
+      "content": "Before graphing, test for symmetry to reduce your workload:\n\n{1.4}\n\n| Symmetry Type | Test | Meaning |\n| Polar axis (horizontal) | Replace $\\theta$ with $-\\theta$; unchanged → symmetric | Symmetric about $x$-axis |\n| Line $\\theta = \\frac{\\pi}{2}$ (vertical) | Replace $\\theta$ with $\\pi - \\theta$; unchanged → symmetric | Symmetric about $y$-axis |\n| Pole (origin) | Replace $r$ with $-r$ OR $\\theta$ with $\\theta + \\pi$; unchanged → symmetric | 180° rotational symmetry |\n\n**Quick patterns:**\n\n- $r = f(\\cos\\theta)$: Always symmetric about the polar axis ($x$-axis)\n\n- $r = f(\\sin\\theta)$: Always symmetric about $\\theta = \\frac{\\pi}{2}$ ($y$-axis)\n\n- $r^2 = f(\\theta)$: Often symmetric about both axes\n\n**Example:** For $r = 2 + 3\\cos\\theta$:\n\n- Replace $\\theta$ with $-\\theta$: $r = 2 + 3\\cos(-\\theta) = 2 + 3\\cos\\theta$ \\\\\n Symmetric about polar axis!\n\ncenter\ntikzpicture[scale=0.5]\n % Axes\n (-3,0) – (3,0) node[right, font=] {polar axis};\n (0,-3) – (0,3) node[above, font=] {$\\theta=\\frac{\\pi}{2}$};\n \n % Symmetric curve example\n \n plot ({(1.5+1*cos())*cos()}, {(1.5+1*cos())*sin()});\n \n % Symmetry line indicator\n (-2.8,0) – (2.8,0);\n \n at (0,-3.3) {Polar axis symmetry};\ntikzpicture\n1cm\ntikzpicture[scale=0.5]\n % Axes\n (-3,0) – (3,0);\n (0,-3) – (0,3);\n \n % Symmetric curve example (sin version)\n \n plot ({(1.5+1*sin())*cos()}, {(1.5+1*sin())*sin()});\n \n % Symmetry line indicator\n (0,-2.8) – (0,2.8);\n \n at (0,-3.3) {$\\theta=\\frac{\\pi}{2}$ symmetry};\ntikzpicture\ncenter"
+    },
+    {
+      "type": "paragraph",
+      "text": "The simplest polar curves are circles."
+    },
+    {
+      "type": "summary",
+      "id": "summary-8.4",
+      "number": null,
+      "title": "Circles in Polar Form",
+      "content": "- $r = a$: Circle centered at the origin with radius $|a|$\n\n- $r = a\\cos\\theta$: Circle with diameter $|a|$ passing through \n the origin, centered at $(\\frac{a}{2}, 0)$\n\n- $r = a\\sin\\theta$: Circle with diameter $|a|$ passing through \n the origin, centered at $(0, \\frac{a}{2})$"
+    },
+    {
+      "type": "figure",
+      "id": "fig-86624",
+      "src": "/figures/precalculus/fig-86624.svg",
+      "caption": "Circles in polar coordinates: $r = a$ is a circle centered at the origin with radius $|a|$. $r = a\\cos\\theta$ is a circle passing through the origin, centered on the $x$-axis. $r = a\\sin\\theta$ is a circle passing through the origin, centered on the $y$-axis.",
+      "alt": "Circles in polar coordinates: $r = a$ is a circle centered at the origin with radius $|a|$. $r = a\\cos\\theta$ is a circle passing through the origin, centered on the $x$-axis. $r = a\\sin\\theta$ is a circle passing through the origin, centered on the $y$-axis.",
+      "tikz": true
+    },
+    {
+      "type": "example",
+      "id": "example-8.7",
+      "number": "8.7",
+      "title": "Identifying a polar circle",
+      "problem": "Show that $r = 4\\cos\\theta$ represents a circle, and find its center and \nradius.",
+      "solution": "Multiply both sides by $r$:\n$$\n r^2 = 4r\\cos\\theta\n$$\nReplace $r^2$ with $x^2 + y^2$ and $r\\cos\\theta$ with $x$:\n$$\n x^2 + y^2 = 4x\n$$\nComplete the square:\n$$\n x^2 - 4x + y^2 = 0 \\quad \\Longrightarrow \\quad (x-2)^2 + y^2 = 4\n$$\n\nThis is a circle with center $(2, 0)$ and radius $2$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Cardioids and Limaçons"
+    },
+    {
+      "type": "paragraph",
+      "text": "Curves of the form $r = a \\pm b\\cos\\theta$ or $r = a \\pm b\\sin\\theta$ \nproduce fascinating shapes depending on the ratio $\\frac{a}{b}$."
+    },
+    {
+      "type": "summary",
+      "id": "summary-8.4",
+      "number": null,
+      "title": "Limaçon Family: $r = a + b\\cos\\theta$",
+      "content": "- $\\frac{a}{b} < 1$: Limaçon with inner loop\n\n- $\\frac{a}{b} = 1$: **Cardioid** (heart-shaped)\n\n- $1 < \\frac{a}{b} < 2$: Dimpled limaçon\n\n- $\\frac{a}{b} \\ge 2$: Convex limaçon\nUsing $\\sin\\theta$ instead of $\\cos\\theta$ rotates the curve $90°$."
+    },
+    {
+      "type": "figure",
+      "id": "fig-32919",
+      "src": "/figures/precalculus/fig-32919.svg",
+      "caption": "The limaçon family $r = a + b\\cos\\theta$: Left—inner loop when $a/b < 1$. Center—cardioid (heart-shaped) when $a/b = 1$. Right—dimpled limaçon when $1 < a/b < 2$.",
+      "alt": "The limaçon family $r = a + b\\cos\\theta$: Left—inner loop when $a/b < 1$. Center—cardioid (heart-shaped) when $a/b = 1$. Right—dimpled limaçon when $1 < a/b < 2$.",
+      "tikz": true
+    },
+    {
+      "type": "example",
+      "id": "example-8.8",
+      "number": "8.8",
+      "title": "Graphing a cardioid",
+      "problem": "Sketch the curve $r = 1 + \\cos\\theta$.",
+      "solution": "Since $a = b = 1$, this is a cardioid. We build a table of values:\n\n| $\\theta$ | $0$ | $\\frac{\\pi}{3}$ | $\\frac{\\pi}{2}$ | $\\pi$ | $\\frac{3\\pi}{2}$ | $2\\pi$ |\n| $r$ | $2$ | $1.5$ | $1$ | $0$ | $1$ | $2$ |\n\nThe curve starts at $(2, 0)$, shrinks toward the pole as $\\theta$ \napproaches $\\pi$, touches the pole at $\\theta = \\pi$, then expands \nagain. The result is heart-shaped, with the \"point\" of the heart \nat the pole."
+    },
+    {
+      "type": "paragraph",
+      "text": "Rose Curves"
+    },
+    {
+      "type": "paragraph",
+      "text": "Curves of the form $r = a\\cos(n\\theta)$ or $r = a\\sin(n\\theta)$ produce \nflower-like patterns called **roses**."
+    },
+    {
+      "type": "summary",
+      "id": "summary-8.4",
+      "number": null,
+      "title": "Rose Curves: $r = a\\cos(n\\theta)$",
+      "content": "- If $n$ is odd: the rose has $n$ petals\n\n- If $n$ is even: the rose has $2n$ petals\nThe maximum petal length is $|a|$."
+    },
+    {
+      "type": "figure",
+      "id": "fig-38510",
+      "src": "/figures/precalculus/fig-38510.svg",
+      "caption": "Rose curves $r = a\\cos(n\\theta)$ or $r = a\\sin(n\\theta)$: When $n$ is odd, the rose has $n$ petals. When $n$ is even, the rose has $2n$ petals. The maximum petal length is $|a|$.",
+      "alt": "Rose curves $r = a\\cos(n\\theta)$ or $r = a\\sin(n\\theta)$: When $n$ is odd, the rose has $n$ petals. When $n$ is even, the rose has $2n$ petals. The maximum petal length is $|a|$.",
+      "tikz": true
+    },
+    {
+      "type": "paragraph",
+      "text": "**Spirals** are curves where $r$ changes continuously with $\\theta$."
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Archimedean spiral**: $r = a\\theta$ (equal spacing between turns)",
+        "**Logarithmic spiral**: $r = ae^{b\\theta}$ (appears in nature: \n nautilus shells, hurricanes, galaxies)"
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig-87034",
+      "src": "/figures/precalculus/fig-87034.svg",
+      "caption": "Spiral curves: The Archimedean spiral $r = a\\theta$ has equal spacing between turns. The logarithmic spiral $r = ae^{b\\theta}$ appears in nature—nautilus shells, hurricanes, and galaxies.",
+      "alt": "Spiral curves: The Archimedean spiral $r = a\\theta$ has equal spacing between turns. The logarithmic spiral $r = ae^{b\\theta}$ appears in nature—nautilus shells, hurricanes, and galaxies.",
+      "tikz": true
     },
     {
       "type": "heading",
@@ -52,31 +321,466 @@
       "text": "Parametric Equations"
     },
     {
+      "type": "paragraph",
+      "text": "Sometimes the relationship between $x$ and $y$ is best described \nthrough a third variable—a **parameter**—that controls both."
+    },
+    {
       "type": "definition",
       "id": "definition-8.2",
       "number": "8.2",
       "title": "Parametric Equations",
-      "content": "**Parametric equations** express both \ncoordinates as functions of a parameter $t$:\n\\[\n x = f(t), \\quad y = g(t)\n\\]"
+      "content": "**Parametric equations** express both \ncoordinates as functions of a parameter $t$:\n$$\n x = f(t), \\quad y = g(t)\n$$\nAs $t$ varies, the point $(x, y)$ traces a curve called a \n**parametric curve** or **plane curve**."
     },
     {
       "type": "example",
-      "id": "example-8.2",
-      "number": "8.2",
-      "title": "Parametric curve",
-      "problem": "Describe the curve given by $x = 2\\cos t$, $y = 2\\sin t$ for $0 \\le t \\le 2\\pi$.",
-      "solution": "Since $x^2 + y^2 = 4\\cos^2 t + 4\\sin^2 t = 4$, this is a circle of radius \n2 centered at the origin, traced counterclockwise."
+      "id": "example-8.9",
+      "number": "8.9",
+      "title": "Parametric circle",
+      "problem": "Describe the curve given by $x = 3\\cos t$, $y = 3\\sin t$ for $0 \\le t \\le 2\\pi$.",
+      "solution": "We can eliminate the parameter by using $\\cos^2 t + \\sin^2 t = 1$:\n$$\n \\left(\\frac{x}{3}\\right)^2 + \\left(\\frac{y}{3}\\right)^2 = \\cos^2 t + \\sin^2 t = 1\n$$\n$$\n x^2 + y^2 = 9\n$$\n\nThis is a circle of radius 3 centered at the origin. The parameter $t$ \nrepresents the angle, and the curve is traced counterclockwise starting \nfrom $(3, 0)$."
     },
     {
       "type": "heading",
       "level": 2,
-      "text": "Exercises"
+      "text": "Eliminating the Parameter"
+    },
+    {
+      "type": "paragraph",
+      "text": "To understand a parametric curve better, we often **eliminate the \nparameter** to find a rectangular equation."
+    },
+    {
+      "type": "example",
+      "id": "example-8.10",
+      "number": "8.10",
+      "title": "Eliminating the parameter: linear",
+      "problem": "Eliminate the parameter from $x = 2t + 1$, $y = 3t - 2$.",
+      "solution": "Solve the first equation for $t$:\n$$\n x = 2t + 1 \\quad \\Longrightarrow \\quad t = \\frac{x - 1}{2}\n$$\n\nSubstitute into the second equation:\n$$\n y = 3 \\cdot \\frac{x-1}{2} - 2 = \\frac{3x - 3}{2} - 2 = \\frac{3x - 7}{2}\n$$\n\nOr equivalently: $y = \\frac{3}{2}x - \\frac{7}{2}$. This is a line with \nslope $\\frac{3}{2}$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.11",
+      "number": "8.11",
+      "title": "Eliminating the parameter: quadratic",
+      "problem": "Eliminate the parameter from $x = t^2$, $y = t + 1$.",
+      "solution": "From the second equation: $t = y - 1$.\n\nSubstitute into the first equation:\n$$\n x = (y - 1)^2\n$$\n\nThis is a parabola opening rightward with vertex at $(0, 1)$."
+    },
+    {
+      "type": "example",
+      "id": "example-8.12",
+      "number": "8.12",
+      "title": "Ellipse in parametric form",
+      "problem": "Eliminate the parameter from $x = 4\\cos t$, $y = 2\\sin t$.",
+      "solution": "From the equations: $\\cos t = \\frac{x}{4}$ and $\\sin t = \\frac{y}{2}$.\n\nUsing $\\cos^2 t + \\sin^2 t = 1$:\n$$\n \\frac{x^2}{16} + \\frac{y^2}{4} = 1\n$$\n\nThis is an ellipse with semi-major axis 4 (along the $x$-axis) and \nsemi-minor axis 2 (along the $y$-axis)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Writing Parametric Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "Given a curve, we can write parametric equations in multiple ways."
+    },
+    {
+      "type": "example",
+      "id": "example-8.13",
+      "number": "8.13",
+      "title": "Parametric equations for a line",
+      "problem": "Write parametric equations for the line through $(1, 4)$ with slope $-2$.",
+      "solution": "The slope tells us that for every 1 unit increase in $x$, $y$ decreases \nby 2. Let $t$ represent the horizontal displacement from $(1, 4)$:\n$$\n x = 1 + t, \\quad y = 4 - 2t\n$$\n\nAs $t$ varies over all real numbers, this traces the entire line."
+    },
+    {
+      "type": "summary",
+      "id": "summary-8.4",
+      "number": null,
+      "title": "Common Parametric Forms",
+      "content": "- **Line through $(x_0, y_0)$ with slope $m$:**\n $$\n x = x_0 + t, \\quad y = y_0 + mt\n $$\n\n- **Circle of radius $r$ centered at $(h, k)$:**\n $$\n x = h + r\\cos t, \\quad y = k + r\\sin t\n $$\n\n- **Ellipse with semi-axes $a$ and $b$ centered at $(h, k)$:**\n $$\n x = h + a\\cos t, \\quad y = k + b\\sin t\n $$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Applications of Parametric Equations"
+    },
+    {
+      "type": "paragraph",
+      "text": "Parametric equations naturally describe motion, where $t$ represents time."
+    },
+    {
+      "type": "example",
+      "id": "example-8.14",
+      "number": "8.14",
+      "title": "Projectile motion",
+      "problem": "A ball is thrown with initial velocity $80$ ft/s at an angle of $60°$ \nabove the horizontal. Find parametric equations for its path, and \ndetermine:\n\n1. The maximum height\n\n2. The horizontal distance traveled (range)",
+      "solution": "The initial velocity components are:\n$$\n v_{0x} &= 80\\cos 60° = 80 \\cdot \\frac{1}{2} = 40 \\text{ ft/s} \\\\\n v_{0y} &= 80\\sin 60° = 80 \\cdot \\frac{\\sqrt{3}}{2} = 40\\sqrt{3} \\text{ ft/s}\n$$\n\nWith gravity $g = 32$ ft/s² and starting position $(0, 0)$:\n$$\n x = 40t, \\quad y = 40\\sqrt{3}\\,t - 16t^2\n$$\n\n**(a) Maximum height:** The ball reaches maximum height when \n$\\frac{dy}{dt} = 0$:\n$$\n \\frac{dy}{dt} = 40\\sqrt{3} - 32t = 0 \\quad \\Longrightarrow \\quad \n t = \\frac{40\\sqrt{3}}{32} = \\frac{5\\sqrt{3}}{4} \\approx 2.17 \\text{ s}\n$$\n\nAt this time:\n$$\n y_{\\max} = 40\\sqrt{3} \\cdot \\frac{5\\sqrt{3}}{4} - 16\\left(\\frac{5\\sqrt{3}}{4}\\right)^2\n = 150 - 75 = 75 \\text{ ft}\n$$\n\n**(b) Range:** The ball lands when $y = 0$:\n$$\n 40\\sqrt{3}\\,t - 16t^2 = 0 \\quad \\Longrightarrow \\quad t(40\\sqrt{3} - 16t) = 0\n$$\n$$\n t = 0 \\text{ (start) or } t = \\frac{40\\sqrt{3}}{16} = \\frac{5\\sqrt{3}}{2} \\approx 4.33 \\text{ s}\n$$\n\nThe horizontal distance is:\n$$\n x = 40 \\cdot \\frac{5\\sqrt{3}}{2} = 100\\sqrt{3} \\approx 173 \\text{ ft}\n$$"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-1",
+      "number": "1",
+      "problem": "Plot each point in polar coordinates.\n\n1. $(3, \\frac{\\pi}{4})$\n\n2. $(2, \\frac{\\pi}{2})$\n\n3. $(4, \\pi)$\n\n4. $(1, \\frac{3\\pi}{2})$\n\n5. $(5, 0)$\n\n6. $(2, \\frac{5\\pi}{6})$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-2",
+      "number": "2",
+      "problem": "Plot each point in polar coordinates.\n\n1. $(3, -\\frac{\\pi}{4})$\n\n2. $(-2, \\frac{\\pi}{3})$\n\n3. $(4, -\\frac{\\pi}{2})$\n\n4. $(-3, \\pi)$\n\n5. $(-1, \\frac{5\\pi}{4})$\n\n6. $(2, -\\frac{2\\pi}{3})$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-3",
+      "number": "3",
+      "problem": "Find three other polar representations for each point (use both positive and negative values of $r$).\n\n1. $(4, \\frac{\\pi}{6})$\n\n2. $(2, \\frac{\\pi}{2})$\n\n3. $(3, \\frac{5\\pi}{4})$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-4",
+      "number": "4",
+      "problem": "Convert to rectangular coordinates.\n\n1. $(6, \\frac{\\pi}{6})$\n\n2. $(4, \\frac{\\pi}{3})$\n\n3. $(8, \\frac{3\\pi}{4})$\n\n4. $(5, \\frac{5\\pi}{6})$\n\n5. $(3, \\pi)$\n\n6. $(2, \\frac{3\\pi}{2})$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-5",
+      "number": "5",
+      "problem": "Convert to rectangular coordinates.\n\n1. $(4, \\frac{7\\pi}{6})$\n\n2. $(6, \\frac{4\\pi}{3})$\n\n3. $(10, \\frac{5\\pi}{3})$\n\n4. $(8, \\frac{11\\pi}{6})$\n\n5. $(-3, \\frac{\\pi}{4})$\n\n6. $(-5, \\frac{2\\pi}{3})$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-6",
+      "number": "6",
+      "problem": "Convert to rectangular coordinates. Round to two decimal places.\n\n1. $(4, 1.2)$\n\n2. $(7, 2.5)$\n\n3. $(5, -0.8)$\n\n4. $(3, 4.7)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-7",
+      "number": "7",
+      "problem": "Convert to polar coordinates with $r > 0$ and $0 \\le \\theta < 2\\pi$.\n\n1. $(1, 1)$\n\n2. $(1, \\sqrt{3})$\n\n3. $(\\sqrt{3}, 1)$\n\n4. $(0, 5)$\n\n5. $(-3, 0)$\n\n6. $(4, 4)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-8",
+      "number": "8",
+      "problem": "Convert to polar coordinates with $r > 0$ and $0 \\le \\theta < 2\\pi$.\n\n1. $(-1, 1)$\n\n2. $(-\\sqrt{3}, -1)$\n\n3. $(2, -2)$\n\n4. $(-3, -3\\sqrt{3})$\n\n5. $(5, -5)$\n\n6. $(-4, 4\\sqrt{3})$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-9",
+      "number": "9",
+      "problem": "Convert to polar coordinates. Round to two decimal places.\n\n1. $(3, 5)$\n\n2. $(-2, 7)$\n\n3. $(4, -3)$\n\n4. $(-6, -8)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-10",
+      "number": "10",
+      "problem": "Convert the rectangular equation to polar form.\n\n1. $x = 3$\n\n2. $y = -2$\n\n3. $x^2 + y^2 = 16$\n\n4. $x^2 + y^2 = 4x$\n\n5. $y = x$\n\n6. $x^2 + y^2 = 2y$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-11",
+      "number": "11",
+      "problem": "Convert the polar equation to rectangular form.\n\n1. $r = 5$\n\n2. $\\theta = \\frac{\\pi}{4}$\n\n3. $r = 4\\cos\\theta$\n\n4. $r = 6\\sin\\theta$\n\n5. $r = 2\\sec\\theta$\n\n6. $r = 3\\csc\\theta$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-12",
+      "number": "12",
+      "problem": "Identify and sketch each polar curve.\n\n1. $r = 3$ (circle)\n\n2. $\\theta = \\frac{\\pi}{3}$ (line)\n\n3. $r = 2\\cos\\theta$ (circle)\n\n4. $r = 4\\sin\\theta$ (circle)",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-13",
+      "number": "13",
+      "problem": "Sketch each polar curve.\n\n1. $r = 1 + \\sin\\theta$ (cardioid)\n\n2. $r = 2 + 2\\cos\\theta$ (cardioid)\n\n3. $r = 2 + \\cos\\theta$ (limaçon)\n\n4. $r = 1 + 2\\sin\\theta$ (limaçon with inner loop)",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-14",
+      "number": "14",
+      "problem": "Sketch each rose curve.\n\n1. $r = 2\\cos 2\\theta$ (4-petal rose)\n\n2. $r = 3\\sin 3\\theta$ (3-petal rose)\n\n3. $r = 4\\cos 3\\theta$ (3-petal rose)\n\n4. $r = 2\\sin 2\\theta$ (4-petal rose)",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-15",
+      "number": "15",
+      "problem": "Sketch each lemniscate.\n\n1. $r^2 = 4\\cos 2\\theta$\n\n2. $r^2 = 9\\sin 2\\theta$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-16",
+      "number": "16",
+      "problem": "Without graphing, identify each polar curve as a circle, cardioid, limaçon \n(with or without inner loop), rose, lemniscate, or spiral.\n\n1. $r = 5$\n\n2. $r = 3 + 3\\sin\\theta$\n\n3. $r = 4\\cos 5\\theta$\n\n4. $r = 2 + 5\\cos\\theta$\n\n5. $r^2 = 16\\sin 2\\theta$\n\n6. $r = 3\\theta$\n\n7. $r = 6\\sin\\theta$\n\n8. $r = 1 + 3\\cos\\theta$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Identify the Curve Type"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-17",
+      "number": "17",
+      "problem": "Match each polar equation with its graph.\n\n1. $r = 2 + 2\\cos\\theta$\n\n2. $r = 3\\cos 2\\theta$\n\n3. $r = 1 + 2\\sin\\theta$\n\n4. $r = 3$\n\ncenter\ntikzpicture[scale=0.45]\n % Graph 1: r = 3 (circle)\n scope[shift={(-5,0)}]\n (-3.5,0) – (3.5,0);\n (0,-3.5) – (0,3.5);\n (0,0) circle (3);\n at (0,-3.8) {Graph 1};\n lldraw (0,0) circle (3pt);\n scope\n \n % Graph 2: r = 2 + 2cos(theta) (cardioid)\n scope[shift={(5,0)}]\n (-1,0) – (4.5,0);\n (0,-2.5) – (0,2.5);\n \n plot ({(2+2*cos())*cos()}, {(2+2*cos())*sin()});\n at (1.5,-3) {Graph 2};\n lldraw (0,0) circle (3pt);\n scope\ntikzpicture\n\n0.5cm\n\ntikzpicture[scale=0.45]\n % Graph 3: r = 3cos(2theta) (4-petal rose)\n scope[shift={(-5,0)}]\n (-3.5,0) – (3.5,0);\n (0,-3.5) – (0,3.5);\n \n plot ({3*cos(2*)*cos()}, {3*cos(2*)*sin()});\n at (0,-3.8) {Graph 3};\n lldraw (0,0) circle (3pt);\n scope\n \n % Graph 4: r = 1 + 2sin(theta) (limacon with inner loop)\n scope[shift={(5,0)}]\n (-2,0) – (2,0);\n (0,-1.5) – (0,3.5);\n \n plot ({(1+2*sin())*cos()}, {(1+2*sin())*sin()});\n at (0,-1.8) {Graph 4};\n lldraw (0,0) circle (3pt);\n scope\ntikzpicture\ncenter",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Matching: Equations to Graphs"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-18",
+      "number": "18",
+      "problem": "Write a possible polar equation for each described curve.\n\n1. A circle of radius 4 centered at the origin\n\n2. A 5-petal rose with maximum petal length 2\n\n3. A cardioid that passes through the pole when $\\theta = \\pi$\n\n4. A circle passing through the origin with center at $(0, 3)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "From Graph to Equation"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-19",
+      "number": "19",
+      "problem": "Eliminate the parameter and identify the curve.\n\n1. $x = 3t$, $y = t + 2$\n\n2. $x = t - 1$, $y = 2t + 3$\n\n3. $x = 2t + 1$, $y = t^2$\n\n4. $x = t^2$, $y = t^3$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-20",
+      "number": "20",
+      "problem": "Eliminate the parameter and identify the curve.\n\n1. $x = 3\\cos t$, $y = 3\\sin t$\n\n2. $x = 2\\cos t$, $y = 5\\sin t$\n\n3. $x = 1 + 2\\cos t$, $y = 3 + 2\\sin t$\n\n4. $x = \\sec t$, $y = \\tan t$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-21",
+      "number": "21",
+      "problem": "Eliminate the parameter and sketch the curve.\n\n1. $x = e^t$, $y = e^{2t}$\n\n2. $x = \\ln t$, $y = t^2$\n\n3. $x = \\sqrt{t}$, $y = t - 1$\n\n4. $x = t^2$, $y = t^4$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-22",
+      "number": "22",
+      "problem": "Write parametric equations for each curve.\n\n1. A line through $(1, 2)$ and $(4, 6)$\n\n2. A line through $(-2, 5)$ with slope 3\n\n3. The circle $x^2 + y^2 = 9$\n\n4. The ellipse $\\frac{x^2}{4} + \\frac{y^2}{9} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-23",
+      "number": "23",
+      "problem": "Write parametric equations for each curve.\n\n1. The parabola $y = x^2$ from $(-2, 4)$ to $(2, 4)$\n\n2. The top half of the circle $x^2 + y^2 = 25$\n\n3. The line segment from $(0, 0)$ to $(3, 4)$\n\n4. The circle centered at $(2, -1)$ with radius 3",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-24",
+      "number": "24",
+      "problem": "A ball is thrown with initial velocity 80 ft/s at an angle of 45°. The parametric equations are:\n$$\nx = 80\\cos 45° \\cdot t, \\quad y = 80\\sin 45° \\cdot t - 16t^2\n$$\n\n1. Find the position after 1 second\n\n2. Find the maximum height\n\n3. Find the horizontal distance traveled when the ball lands",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Projectile Motion"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-25",
+      "number": "25",
+      "problem": "The path traced by a point on a wheel of radius $r$ rolling along a line is called a cycloid. The parametric equations are:\n$$\nx = r(\\theta - \\sin\\theta), \\quad y = r(1 - \\cos\\theta)\n$$\nFor $r = 2$, find the position when $\\theta = \\frac{\\pi}{2}$ and when $\\theta = \\pi$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Cycloid"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-26",
+      "number": "26",
+      "problem": "The Archimedean spiral has polar equation $r = a\\theta$. For $a = 1$:\n\n1. Find the rectangular coordinates when $\\theta = \\pi$\n\n2. Find the rectangular coordinates when $\\theta = 2\\pi$\n\n3. Describe the curve as $\\theta$ increases",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Spiral"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-27",
+      "number": "27",
+      "problem": "Use a graphing calculator in polar mode to graph $r = 2\\sin 3\\theta$ for $0 \\le \\theta \\le 2\\pi$. How many petals does the rose have?",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-28",
+      "number": "28",
+      "problem": "Graph the parametric equations $x = 3\\cos t$, $y = 2\\sin t$ for $0 \\le t \\le 2\\pi$. What shape is the curve?",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-29",
+      "number": "29",
+      "problem": "Explore the family of limaçons $r = a + \\cos\\theta$ for $a = 0.5, 1, 2$. How does the shape change as $a$ increases?",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-30",
+      "number": "30",
+      "problem": "Graph the parametric equations $x = \\sin 2t$, $y = \\sin 3t$ for $0 \\le t \\le 2\\pi$. This is called a Lissajous curve.",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-31",
+      "number": "31",
+      "problem": "True or False? Justify.\n\n1. The point $(3, \\frac{\\pi}{4})$ and $(3, -\\frac{7\\pi}{4})$ represent the same location.\n\n2. Every point has a unique polar representation.\n\n3. The polar equation $r = 4$ represents a circle.\n\n4. Parametric equations always have a unique parameter.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-32",
+      "number": "32",
+      "problem": "Explain why a point can have infinitely many polar representations.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-33",
+      "number": "33",
+      "problem": "How can you determine the center and radius of a circle from its polar equation $r = a\\cos\\theta + b\\sin\\theta$?",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-34",
+      "number": "34",
+      "problem": "Why might you choose to describe a curve parametrically rather than as $y = f(x)$?",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-35",
+      "number": "35",
+      "problem": "Describe and correct the error.\n\nConverting $(-2, 5)$ to polar coordinates:\nquote\n\"$r = \\sqrt{4 + 25} = \\sqrt{29}$\n\n$\\theta = \\tan^{-1}\\frac{5}{-2} = -68.2°$\n\nSo the polar coordinates are $(\\sqrt{29}, -68.2°)$\" \nquote",
+      "variant": "error",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-36",
+      "number": "36",
+      "problem": "Describe and correct the error.\n\nConverting $r = 2\\cos\\theta$ to rectangular form:\nquote\n\"$r = 2\\cos\\theta$\n\n$r = 2 \\cdot \\frac{x}{r}$\n\n$r^2 = 2x$\n\n$x^2 + y^2 = 2x$\" (Is this correct? Simplify further.)\nquote",
+      "variant": "error",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-37",
+      "number": "37",
+      "problem": "Find the polar equation of the line through $(2, \\frac{\\pi}{4})$ and $(3, \\frac{\\pi}{2})$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-38",
+      "number": "38",
+      "problem": "The conic section with eccentricity $e$ and directrix $x = -d$ has polar equation $r = \\frac{ed}{1 - e\\cos\\theta}$. Identify the conic when $e = \\frac{1}{2}$ and $d = 4$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-8.4-39",
+      "number": "39",
+      "problem": "Show that the spiral $r = e^{\\theta}$ (logarithmic spiral) has the property that the angle between the tangent line and the radius vector is constant.\n\n Prove that the rectangular equation of $r = a\\cos\\theta$ is a circle by converting to rectangular form and completing the square.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
     }
   ],
   "marginNotes": [
     {
       "type": "scripture",
-      "reference": "Ecclesiastes 3:11",
-      "text": "He has made everything beautiful in \nits time."
+      "reference": "Song of Solomon 4:9",
+      "text": "You have captured my heart, my \nsister, my bride."
+    },
+    {
+      "type": "scripture",
+      "reference": "Ecclesiastes 3:1",
+      "text": "For everything there is a season, \nand a time for every matter under heaven."
     }
   ]
 }

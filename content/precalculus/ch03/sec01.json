@@ -10,12 +10,13 @@
     "Simplify rational expressions by factoring and canceling",
     "Perform arithmetic operations on rational functions",
     "Identify the difference between holes and vertical asymptotes",
-    "Solve equations involving rational expressions\nitemize"
+    "Solve equations involving rational expressions"
   ],
   "devotional": {
     "title": "The Mathematics of Ratio",
     "scripture": "Proverbs 11:1; Luke 16:10",
     "content": "{AtlasWarmA}{ \nfalse balance is an abomination} to the Lord, but a just weight is His \ndelight. The concept of ratio runs deep through Scripture—from the \nproportions of Noah's ark to the measurements of Solomon's temple, from \nthe feeding of thousands with a few loaves to the parables of talents \nand investment.\n\nA rational function is, at its heart, a ratio—one polynomial divided \nby another. This simple operation of division opens up vast new \nterritories of mathematical behavior. Unlike polynomials, which are \ndefined everywhere, rational functions have gaps in their domains, \nplaces where division by zero makes the function meaningless.\n\nThese forbidden values teach us something profound: not everything is \npermissible. Just as there are moral boundaries we must not cross, \nthere are mathematical boundaries we cannot cross. The domain of a \nfunction, like the law of God, tells us where we may safely walk.\n\nJesus said, \"Whoever can be trusted with very little can also be \ntrusted with much\" (Luke 16:10). The same principle applies to \nmathematics: mastering the simple ratios of arithmetic prepares us \nfor the complex rational functions of calculus and beyond. Each level \nof mathematical maturity builds on what came before.",
+    "edition": "christian",
     "reflection": "Rational functions are undefined at certain \npoints—mathematical \"no-go zones.\" How does recognizing boundaries \nin mathematics help us understand the importance of boundaries in \nlife?"
   },
   "content": [
@@ -37,7 +38,7 @@
       "id": "definition-3.1",
       "number": "3.1",
       "title": "Rational Function",
-      "content": "A **rational function** is a function of \nthe form\n\\[\n f(x) = \\frac{P(x)}{Q(x)}\n\\]\nwhere $P(x)$ and $Q(x)$ are polynomials and $Q(x)$ is not the zero \npolynomial. The polynomial $P(x)$ is called the **numerator** and \n$Q(x)$ is called the **denominator**."
+      "content": "A **rational function** is a function of \nthe form\n$$\n f(x) = \\frac{P(x)}{Q(x)}\n$$\nwhere $P(x)$ and $Q(x)$ are polynomials and $Q(x)$ is not the zero \npolynomial. The polynomial $P(x)$ is called the **numerator** and \n$Q(x)$ is called the **denominator**."
     },
     {
       "type": "paragraph",
@@ -49,6 +50,14 @@
       "number": null,
       "title": "The Development of Rational Expressions",
       "content": "The systematic study of rational expressions dates back to ancient \nBabylon and Egypt, where scribes calculated with fractions for \ncommerce, construction, and astronomy. The Greek mathematician \nDiophantus (c. 250 CE) extended this work to algebraic fractions, \ndeveloping methods that would later influence Arabic and European \nmathematicians. Today, rational functions are essential tools in \ncontrol theory, signal processing, and computational methods for \nsolving differential equations."
+    },
+    {
+      "type": "figure",
+      "id": "fig:basic-rational",
+      "src": "/figures/precalculus/fig-basic-rational.svg",
+      "caption": "The parent rational function $f(x) = \\frac{1}{x}$. The function is undefined at $x = 0$ and approaches infinity as $x$ approaches 0. The dashed lines show the asymptotes: vertical at $x = 0$ and horizontal at $y = 0$.",
+      "alt": "The parent rational function $f(x) = \\frac{1}{x}$. The function is undefined at $x = 0$ and approaches infinity as $x$ approaches 0. The dashed lines show the asymptotes: vertical at $x = 0$ and horizontal at $y = 0$.",
+      "tikz": true
     },
     {
       "type": "example",
@@ -75,12 +84,20 @@
       "content": "To find the domain of $f(x) = \\dfrac{P(x)}{Q(x)}$:\n\n1. Set the denominator equal to zero: $Q(x) = 0$\n\n2. Solve for $x$ to find all excluded values\n\n3. Write the domain in interval notation, excluding those values"
     },
     {
+      "type": "figure",
+      "id": "fig:domain-exclusion",
+      "src": "/figures/precalculus/fig-domain-exclusion.svg",
+      "caption": "Visualizing domain exclusions. The open circles mark values where the denominator equals zero. These points are excluded from the domain, shown with gaps in the number line.",
+      "alt": "Visualizing domain exclusions. The open circles mark values where the denominator equals zero. These points are excluded from the domain, shown with gaps in the number line.",
+      "tikz": true
+    },
+    {
       "type": "example",
       "id": "example-3.2",
       "number": "3.2",
       "title": "Finding domains---linear denominators",
       "problem": "Find the domain of each rational function.\n\n1. $f(x) = \\dfrac{x + 1}{x - 3}$\n\n2. $g(x) = \\dfrac{5x^2}{2x + 7}$\n\n3. $h(x) = \\dfrac{1}{x}$",
-      "solution": "1. Set $x - 3 = 0 \\Rightarrow x = 3$.\n \n Domain: $(-\\infty, 3) \\cup (3, \\infty)$, or equivalently, \n $\\{x \\in \\R : x \\neq 3\\}$\n\n2. Set $2x + 7 = 0 \\Rightarrow x = -\\frac{7}{2}$.\n \n Domain: $\\left(-\\infty, -\\frac{7}{2}\\right) \\cup \\left(-\\frac{7}{2}, \\infty\\right)$\n\n3. Set $x = 0$.\n \n Domain: $(-\\infty, 0) \\cup (0, \\infty)$"
+      "solution": "1. Set $x - 3 = 0 \\Rightarrow x = 3$.\n \n Domain: all real $x \\neq 3$, i.e., $(-\\infty, 3) \\cup (3, \\infty)$\n\n2. Set $2x + 7 = 0$, giving $x = -\\tfrac{7}{2}$.\n \n Domain: all real $x \\neq -\\tfrac{7}{2}$\n\n3. Set $x = 0$.\n \n Domain: $(-\\infty, 0) \\cup (0, \\infty)$"
     },
     {
       "type": "example",
@@ -98,12 +115,20 @@
       "content": "When finding the domain of a rational function, only the *denominator* \nmatters. The numerator can be zero—that just gives an $x$-intercept. \nBut the denominator being zero creates an undefined point. Always factor \nthe denominator completely to find all excluded values."
     },
     {
+      "type": "figure",
+      "id": "fig:behavior-near-exclusion",
+      "src": "/figures/precalculus/fig-behavior-near-exclusion.svg",
+      "caption": "Behavior near an excluded value $x = a$. As $x$ approaches $a$, the function values grow without bound (toward $+\\infty$ or $-\\infty$). The dashed line is a **vertical asymptote**—the graph gets arbitrarily close but never touches it.",
+      "alt": "Behavior near an excluded value $x = a$. As $x$ approaches $a$, the function values grow without bound (toward $+\\infty$ or $-\\infty$). The dashed line is a **vertical asymptote**—the graph gets arbitrarily close but never touches it.",
+      "tikz": true
+    },
+    {
       "type": "example",
       "id": "example-3.4",
       "number": "3.4",
       "title": "Complex domains",
       "problem": "Find the domain of $f(x) = \\dfrac{x^3 - 1}{x^4 - 5x^2 + 4}$.",
-      "solution": "Factor the denominator. Notice that $x^4 - 5x^2 + 4$ is quadratic in \n$x^2$:\n\\[\n x^4 - 5x^2 + 4 = (x^2 - 4)(x^2 - 1) = (x-2)(x+2)(x-1)(x+1)\n\\]\n\nSetting each factor to zero: $x = 2, -2, 1, -1$.\n\nDomain: $(-\\infty, -2) \\cup (-2, -1) \\cup (-1, 1) \\cup (1, 2) \\cup (2, \\infty)$"
+      "solution": "Factor the denominator. Notice that $x^4 - 5x^2 + 4$ is quadratic in \n$x^2$:\n$$\n x^4 - 5x^2 + 4 = (x^2 - 4)(x^2 - 1) = (x-2)(x+2)(x-1)(x+1)\n$$\n\nSetting each factor to zero: $x = 2, -2, 1, -1$.\n\nDomain: $(-\\infty, -2) \\cup (-2, -1) \\cup (-1, 1) \\cup (1, 2) \\cup (2, \\infty)$"
     },
     {
       "type": "heading",
@@ -119,8 +144,16 @@
       "id": "theorem-3.1",
       "number": "3.1",
       "title": "Fundamental Principle of Rational Expressions",
-      "content": "If $P$, $Q$, and $R$ are polynomials with $Q \\neq 0$ and $R \\neq 0$, then\n\\[\n \\frac{P \\cdot R}{Q \\cdot R} = \\frac{P}{Q}\n\\]\nThat is, we can cancel common factors from the numerator and denominator.",
+      "content": "If $P$, $Q$, and $R$ are polynomials with $Q \\neq 0$ and $R \\neq 0$, then\n$$\n \\frac{P \\cdot R}{Q \\cdot R} = \\frac{P}{Q}\n$$\nThat is, we can cancel common factors from the numerator and denominator.",
       "label": "Theorem"
+    },
+    {
+      "type": "figure",
+      "id": "fig:simplify-rational",
+      "src": "/figures/precalculus/fig-simplify-rational.svg",
+      "caption": "Simplifying a rational expression: factor, cancel common factors, and state restrictions. The restriction $x \\neq -2$ must be stated because that value was excluded from the original expression's domain.",
+      "alt": "Simplifying a rational expression: factor, cancel common factors, and state restrictions. The restriction $x \\neq -2$ must be stated because that value was excluded from the original expression's domain.",
+      "tikz": true
     },
     {
       "type": "example",
@@ -128,14 +161,14 @@
       "number": "3.5",
       "title": "Simplifying by factoring",
       "problem": "Simplify each expression and state any restrictions on the variable.\n\n1. $\\dfrac{x^2 - 4}{x + 2}$\n\n2. $\\dfrac{x^2 - 4x + 3}{x^2 - 1}$\n\n3. $\\dfrac{x^3 - 8}{x - 2}$",
-      "solution": "1. Factor the numerator using difference of squares:\n \\[\n \\frac{x^2 - 4}{x + 2} = \\frac{(x-2)(x+2)}{x+2} = x - 2, \\quad x \\neq -2\n \\]\n\n2. Factor both numerator and denominator:\n \\[\n \\frac{x^2 - 4x + 3}{x^2 - 1} = \\frac{(x-1)(x-3)}{(x-1)(x+1)} = \\frac{x-3}{x+1}, \\quad x \\neq 1, -1\n \\]\n\n3. Factor the numerator using difference of cubes ($a^3 - b^3 = (a-b)(a^2 + ab + b^2)$):\n \\[\n \\frac{x^3 - 8}{x - 2} = \\frac{(x-2)(x^2 + 2x + 4)}{x - 2} = x^2 + 2x + 4, \\quad x \\neq 2\n \\]"
+      "solution": "1. Factor the numerator using difference of squares:\n $$\n \\frac{x^2 - 4}{x + 2} = \\frac{(x-2)(x+2)}{x+2} = x - 2, \\quad x \\neq -2\n $$\n\n2. Factor both numerator and denominator:\n $$\n \\frac{x^2 - 4x + 3}{x^2 - 1} = \\frac{(x-1)(x-3)}{(x-1)(x+1)} = \\frac{x-3}{x+1}, \\quad x \\neq 1, -1\n $$\n\n3. Factor the numerator using difference of cubes ($a^3 - b^3 = (a-b)(a^2 + ab + b^2)$):\n $$\n \\frac{x^3 - 8}{x - 2} = \\frac{(x-2)(x^2 + 2x + 4)}{x - 2} = x^2 + 2x + 4, \\quad x \\neq 2\n $$"
     },
     {
       "type": "warning",
       "id": "warning-3.1",
       "number": null,
       "title": "Never Cancel Terms---Only Factors!",
-      "content": "A very common mistake is to cancel individual terms rather than factors. \nFor example:\n\\[\n \\frac{x + 2}{x + 5} \\neq \\frac{2}{5} \\quad \\text{(WRONG!)}\n\\]\nYou cannot cancel the $x$'s because they are *terms*, not factors. \nOnly when the entire numerator and denominator share a common factor can \nyou cancel. To verify: if $x = 1$, the left side gives $\\frac{3}{6} = \\frac{1}{2}$, \nnot $\\frac{2}{5}$."
+      "content": "A very common mistake is to cancel individual terms rather than factors. \nFor example:\n$$\n \\frac{x + 2}{x + 5} \\neq \\frac{2}{5} \\quad \\text{(WRONG!)}\n$$\nYou cannot cancel the $x$'s because they are *terms*, not factors. \nOnly when the entire numerator and denominator share a common factor can \nyou cancel. To verify: if $x = 1$, the left side gives $\\frac{3}{6} = \\frac{1}{2}$, \nnot $\\frac{2}{5}$."
     },
     {
       "type": "example",
@@ -143,7 +176,7 @@
       "number": "3.6",
       "title": "Simplifying with multiple factoring techniques",
       "problem": "Simplify $\\dfrac{2x^2 + 7x + 3}{x^2 + 4x + 3}$.",
-      "solution": "Factor the numerator: We need two numbers that multiply to $2 \\cdot 3 = 6$ \nand add to $7$. Those are $6$ and $1$.\n\\[\n 2x^2 + 7x + 3 = 2x^2 + 6x + x + 3 = 2x(x + 3) + 1(x + 3) = (2x + 1)(x + 3)\n\\]\n\nFactor the denominator:\n\\[\n x^2 + 4x + 3 = (x + 1)(x + 3)\n\\]\n\nSimplify:\n\\[\n \\frac{2x^2 + 7x + 3}{x^2 + 4x + 3} = \\frac{(2x+1)(x+3)}{(x+1)(x+3)} = \\frac{2x + 1}{x + 1}, \\quad x \\neq -3, -1\n\\]"
+      "solution": "Factor the numerator: We need two numbers that multiply to $2 \\cdot 3 = 6$ \nand add to $7$. Those are $6$ and $1$.\n$$\n 2x^2 + 7x + 3 = 2x^2 + 6x + x + 3 = 2x(x + 3) + 1(x + 3) = (2x + 1)(x + 3)\n$$\n\nFactor the denominator:\n$$\n x^2 + 4x + 3 = (x + 1)(x + 3)\n$$\n\nSimplify:\n$$\n \\frac{2x^2 + 7x + 3}{x^2 + 4x + 3} = \\frac{(2x+1)(x+3)}{(x+1)(x+3)} = \\frac{2x + 1}{x + 1}, \\quad x \\neq -3, -1\n$$"
     },
     {
       "type": "heading",
@@ -204,6 +237,14 @@
       "text": "A **complex fraction** is a fraction that \ncontains fractions in its numerator, denominator, or both. There are \ntwo main methods to simplify them."
     },
     {
+      "type": "figure",
+      "id": "fig:complex-fraction-anatomy",
+      "src": "/figures/precalculus/fig-complex-fraction-anatomy.svg",
+      "caption": "Anatomy of a complex fraction. The **main fraction bar** (highlighted in coral) separates the overall numerator from the overall denominator. Think of the complex fraction as a single fraction whose parts happen to contain smaller fractions.",
+      "alt": "Anatomy of a complex fraction. The **main fraction bar** (highlighted in coral) separates the overall numerator from the overall denominator. Think of the complex fraction as a single fraction whose parts happen to contain smaller fractions.",
+      "tikz": true
+    },
+    {
       "type": "example",
       "id": "example-3.11",
       "number": "3.11",
@@ -217,7 +258,7 @@
       "number": "3.12",
       "title": "Simplifying complex fractions---Method 2",
       "problem": "Simplify: $\\displaystyle\\frac{\\frac{2}{x+1} - 1}{\\frac{3}{x+1} + 2}$",
-      "solution": "**Method 2: Combine the numerator and denominator separately, then divide.**\n\nRewrite as single fractions:\n\\[\n \\text{Numerator: } \\frac{2}{x+1} - 1 = \\frac{2}{x+1} - \\frac{x+1}{x+1} = \\frac{2 - (x+1)}{x+1} = \\frac{1-x}{x+1}\n\\]\n\\[\n \\text{Denominator: } \\frac{3}{x+1} + 2 = \\frac{3}{x+1} + \\frac{2(x+1)}{x+1} = \\frac{3 + 2x + 2}{x+1} = \\frac{2x+5}{x+1}\n\\]\n\nNow divide:\n\\[\n \\frac{\\frac{1-x}{x+1}}{\\frac{2x+5}{x+1}} = \\frac{1-x}{x+1} \\cdot \\frac{x+1}{2x+5} = \\frac{1-x}{2x+5}\n\\]"
+      "solution": "**Method 2: Combine the numerator and denominator separately, then divide.**\n\nRewrite as single fractions:\n$$\n \\text{Numerator: } \\frac{2}{x+1} - 1 = \\frac{2}{x+1} - \\frac{x+1}{x+1} = \\frac{2 - (x+1)}{x+1} = \\frac{1-x}{x+1}\n$$\n$$\n \\text{Denominator: } \\frac{3}{x+1} + 2 = \\frac{3}{x+1} + \\frac{2(x+1)}{x+1} = \\frac{3 + 2x + 2}{x+1} = \\frac{2x+5}{x+1}\n$$\n\nNow divide:\n$$\n \\frac{\\frac{1-x}{x+1}}{\\frac{2x+5}{x+1}} = \\frac{1-x}{x+1} \\cdot \\frac{x+1}{2x+5} = \\frac{1-x}{2x+5}\n$$"
     },
     {
       "type": "heading",
@@ -241,7 +282,7 @@
       "number": "3.13",
       "title": "Solving a rational equation",
       "problem": "Solve: $\\dfrac{2}{x} + \\dfrac{3}{x-1} = 1$",
-      "solution": "The LCD is $x(x-1)$. Note that $x \\neq 0$ and $x \\neq 1$.\n\nMultiply both sides by $x(x-1)$:\nalign*\n x(x-1) $\\frac{2}{x}$ + x(x-1) $\\frac{3}{x-1}$ &= x(x-1) 1 \\\\[6pt]\n 2(x-1) + 3x &= x(x-1) \\\\[6pt]\n 2x - 2 + 3x &= x^2 - x \\\\[6pt]\n 5x - 2 &= x^2 - x \\\\[6pt]\n 0 &= x^2 - 6x + 2\n\\end{align*}\n\nUse the quadratic formula:\n\\[\n x = \\frac{6 \\pm \\sqrt{36 - 8}}{2} = \\frac{6 \\pm \\sqrt{28}}{2} = \\frac{6 \\pm 2\\sqrt{7}}{2} = 3 \\pm \\sqrt{7}\n\\]\n\nCheck: Neither $3 + \\sqrt{7}$ nor $3 - \\sqrt{7}$ equals 0 or 1, so both \nare valid solutions.\n\nSolution set: $\\{3 - \\sqrt{7}, 3 + \\sqrt{7}\\}$"
+      "solution": "The LCD is $x(x-1)$. Note that $x \\neq 0$ and $x \\neq 1$.\n\nMultiply both sides by $x(x-1)$:\nalign*\n x(x-1) $\\frac{2}{x}$ + x(x-1) $\\frac{3}{x-1}$ &= x(x-1) 1 \\$$6pt]\n 2(x-1) + 3x &= x(x-1) \\\\[6pt]\n 2x - 2 + 3x &= x^2 - x \\\\[6pt]\n 5x - 2 &= x^2 - x \\\\[6pt]\n 0 &= x^2 - 6x + 2\n\\end{align*}\n\nUse the quadratic formula:\n\\[\n x = \\frac{6 \\pm \\sqrt{36 - 8}}{2} = \\frac{6 \\pm \\sqrt{28}}{2} = \\frac{6 \\pm 2\\sqrt{7}}{2} = 3 \\pm \\sqrt{7}\n$$\n\nCheck: Neither $3 + \\sqrt{7}$ nor $3 - \\sqrt{7}$ equals 0 or 1, so both \nare valid solutions.\n\nSolution set: $\\{3 - \\sqrt{7}, 3 + \\sqrt{7}\\}$"
     },
     {
       "type": "example",
@@ -252,12 +293,20 @@
       "solution": "The LCD is $x - 2$. Note that $x \\neq 2$.\n\nMultiply both sides by $x - 2$:\n$$\n (x-2) \\cdot \\frac{x}{x-2} &= (x-2) \\cdot \\frac{2}{x-2} + (x-2) \\cdot 3 \\\\[6pt]\n x &= 2 + 3(x-2) \\\\[6pt]\n x &= 2 + 3x - 6 \\\\[6pt]\n x &= 3x - 4 \\\\[6pt]\n 4 &= 2x \\\\[6pt]\n x &= 2\n$$\n\nCheck: $x = 2$ makes the original denominators equal to zero. This is \nan **extraneous solution**.\n\nSolution set: $\\emptyset$ (no solution)"
     },
     {
+      "type": "figure",
+      "id": "fig:extraneous-solution",
+      "src": "/figures/precalculus/fig-extraneous-solution.svg",
+      "caption": "Why extraneous solutions fail. The algebra produces $x = 2$, but the graph shows $x = 2$ is a vertical asymptote—the function is undefined there. The \"solution\" is not in the domain of the original equation.",
+      "alt": "Why extraneous solutions fail. The algebra produces $x = 2$, but the graph shows $x = 2$ is a vertical asymptote—the function is undefined there. The \"solution\" is not in the domain of the original equation.",
+      "tikz": true
+    },
+    {
       "type": "example",
       "id": "example-3.15",
       "number": "3.15",
       "title": "Work problem",
       "problem": "Working alone, Alex can paint a room in 6 hours. Working alone, Beth \ncan paint the same room in 4 hours. How long will it take them to paint \nthe room if they work together?",
-      "solution": "Let $t$ be the time (in hours) to paint the room together.\n\nIn 1 hour, Alex paints $\\frac{1}{6}$ of the room and Beth paints \n$\\frac{1}{4}$ of the room. Together, they paint $\\frac{1}{6} + \\frac{1}{4}$ \nof the room per hour.\n\nIn $t$ hours, they complete the whole room (1 room):\n\\[\n t \\left(\\frac{1}{6} + \\frac{1}{4}\\right) = 1\n\\]\n\nFind the LCD (12):\n\\[\n t \\left(\\frac{2}{12} + \\frac{3}{12}\\right) = 1 \\implies t \\cdot \\frac{5}{12} = 1 \\implies t = \\frac{12}{5} = 2.4 \\text{ hours}\n\\]\n\nWorking together, they can paint the room in $2.4$ hours, or 2 hours \nand 24 minutes."
+      "solution": "Let $t$ be the time (in hours) to paint the room together.\n\nIn 1 hour, Alex paints $\\frac{1}{6}$ of the room and Beth paints \n$\\frac{1}{4}$ of the room. Together, they paint $\\frac{1}{6} + \\frac{1}{4}$ \nof the room per hour.\n\nIn $t$ hours, they complete the whole room (1 room):\n$$\n t \\left(\\frac{1}{6} + \\frac{1}{4}\\right) = 1\n$$\n\nFind the LCD (12):\n$$\n t \\left(\\frac{2}{12} + \\frac{3}{12}\\right) = 1 \\implies t \\cdot \\frac{5}{12} = 1 \\implies t = \\frac{12}{5} = 2.4 \\text{ hours}\n$$\n\nWorking together, they can paint the room in $2.4$ hours, or 2 hours \nand 24 minutes."
     },
     {
       "type": "summary",
@@ -267,37 +316,607 @@
       "content": "- A **rational function** has the form $f(x) = \\frac{P(x)}{Q(x)}$ \n where $P$ and $Q$ are polynomials.\n\n- The **domain** excludes all values where $Q(x) = 0$.\n\n- **Simplify** by factoring and canceling common factors. \n State restrictions from the original expression.\n\n- **Multiply** by multiplying numerators and denominators. \n **Divide** by multiplying by the reciprocal.\n\n- **Add/Subtract** by finding a common denominator.\n\n- **Solve** rational equations by multiplying by the LCD. \n Always check for extraneous solutions."
     },
     {
-      "type": "heading",
-      "level": 2,
-      "text": "Exercises"
+      "type": "exercise",
+      "id": "ex-3.1-1",
+      "number": "1",
+      "problem": "Find the domain of each rational function. Express your answer in \ninterval notation.\n\n1. $f(x) = \\dfrac{5}{x + 4}$\n\n2. $g(x) = \\dfrac{x}{x^2 - 9}$\n\n3. $h(x) = \\dfrac{x^2 - 1}{x^2 + 1}$\n\n4. $p(x) = \\dfrac{x + 3}{x^2 - 5x + 6}$\n\n5. $q(x) = \\dfrac{2x}{x^3 - x}$\n\n6. $r(x) = \\dfrac{x^2 + 2x + 1}{x^2 + 2x + 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Vocabulary and Concepts**"
+      "type": "exercise",
+      "id": "ex-3.1-2",
+      "number": "2",
+      "problem": "Find a value of $k$ such that the domain of $f(x) = \\dfrac{1}{x^2 + k}$ \nis all real numbers.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Finding Domains**"
+      "type": "exercise",
+      "id": "ex-3.1-3",
+      "number": "3",
+      "problem": "Simplify each expression and state restrictions.\n\n1. $\\dfrac{x^2 - 9}{x + 3}$\n\n2. $\\dfrac{x^2 - 4x + 3}{x^2 - 1}$\n\n3. $\\dfrac{x^3 - 8}{x - 2}$\n\n4. $\\dfrac{2x^2 - 5x - 3}{x^2 - 9}$\n\n5. $\\dfrac{x^3 + x^2}{x^4 - x^2}$\n\n6. $\\dfrac{x^2 - 6x + 9}{x^2 - 9}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Simplifying**"
+      "type": "exercise",
+      "id": "ex-3.1-4",
+      "number": "4",
+      "problem": "Perform the indicated operation and simplify.\n\n1. $\\dfrac{x^2 - 1}{x + 3} \\cdot \\dfrac{x + 3}{x - 1}$\n\n2. $\\dfrac{x^2 - 4}{x - 5} \\div \\dfrac{x - 2}{x^2 - 25}$\n\n3. $\\dfrac{x}{x+1} + \\dfrac{2}{x-1}$\n\n4. $\\dfrac{3}{x-2} - \\dfrac{1}{x+3}$\n\n5. $\\dfrac{2x}{x^2-4} + \\dfrac{1}{x+2}$\n\n6. $\\dfrac{x+3}{x-1} \\div \\dfrac{x^2-9}{x^2-1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Operations**"
+      "type": "exercise",
+      "id": "ex-3.1-5",
+      "number": "5",
+      "problem": "Simplify each complex fraction.\n\n1. $\\displaystyle\\frac{\\frac{1}{x} - \\frac{1}{y}}{x - y}$\n\n2. $\\displaystyle\\frac{1 + \\frac{2}{x}}{1 - \\frac{4}{x^2}}$\n\n3. $\\displaystyle\\frac{\\frac{x}{y} - \\frac{y}{x}}{\\frac{1}{x} + \\frac{1}{y}}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Complex Fractions**"
+      "type": "exercise",
+      "id": "ex-3.1-6",
+      "number": "6",
+      "problem": "Solve each equation. Check for extraneous solutions.\n\n1. $\\dfrac{2}{x} + \\dfrac{3}{x-1} = 1$\n\n2. $\\dfrac{x}{x-2} = \\dfrac{2}{x-2} + 3$\n\n3. $\\dfrac{1}{x-1} + \\dfrac{1}{x+1} = \\dfrac{4}{x^2-1}$\n\n4. $\\dfrac{3}{x+2} = \\dfrac{x}{x+2} - 2$\n\n5. $\\dfrac{2x}{x-3} + \\dfrac{6}{x+3} = \\dfrac{28}{x^2-9}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Solving Equations**"
+      "type": "exercise",
+      "id": "ex-3.1-7",
+      "number": "7",
+      "problem": "One pipe can fill a tank in 8 hours. Another pipe can fill the same \ntank in 6 hours. How long will it take to fill the tank if both pipes \nare used?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Applications**"
+      "type": "exercise",
+      "id": "ex-3.1-8",
+      "number": "8",
+      "problem": "A boat travels 24 miles upstream and 24 miles back downstream. The \nspeed of the current is 2 mph. If the total trip takes 5 hours, find \nthe speed of the boat in still water.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-9",
+      "number": "9",
+      "problem": "For what value(s) of $k$ does $\\dfrac{x^2 + kx - 6}{x + 3}$ simplify to \na polynomial?",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-10",
+      "number": "10",
+      "problem": "Create a rational function that has domain $(-\\infty, -2) \\cup (-2, 3) \\cup (3, \\infty)$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-11",
+      "number": "11",
+      "problem": "Find the domain of each rational function.\n\n1. $f(x) = \\dfrac{3}{x - 5}$\n\n2. $f(x) = \\dfrac{x + 2}{x + 4}$\n\n3. $f(x) = \\dfrac{x^2}{x^2 - 9}$\n\n4. $f(x) = \\dfrac{2x - 1}{x^2 - 4}$\n\n5. $f(x) = \\dfrac{x}{x^2 + 5x + 6}$\n\n6. $f(x) = \\dfrac{x^2 + 1}{x^2 - x - 12}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-12",
+      "number": "12",
+      "problem": "Find the domain of each rational function.\n\n1. $f(x) = \\dfrac{x - 3}{x^2 + 1}$\n\n2. $f(x) = \\dfrac{5x}{x^3 - 8}$\n\n3. $f(x) = \\dfrac{x^2 - 4}{x^2 + 4}$\n\n4. $f(x) = \\dfrac{1}{x^2 + 2x + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-13",
+      "number": "13",
+      "problem": "Find the domain of each rational function.\n\n1. $f(x) = \\dfrac{x + 7}{x^2 - 49}$\n\n2. $f(x) = \\dfrac{3x - 1}{x^2 + 3x - 10}$\n\n3. $f(x) = \\dfrac{x^2 - 16}{x^3 - 4x}$\n\n4. $f(x) = \\dfrac{2x + 5}{x^2 - 6x + 9}$\n\n5. $f(x) = \\dfrac{x}{x^4 - 16}$\n\n6. $f(x) = \\dfrac{x^2 + x + 1}{x^3 + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-14",
+      "number": "14",
+      "problem": "Find the domain. Express your answer in both interval notation and \nset-builder notation.\n\n1. $f(x) = \\dfrac{1}{x^2 - 5x}$\n\n2. $g(x) = \\dfrac{x + 1}{x^2 - 2x - 15}$\n\n3. $h(x) = \\dfrac{x^2}{x^2 + 9}$\n\n4. $p(x) = \\dfrac{3}{x^3 - x^2 - 6x}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-15",
+      "number": "15",
+      "problem": "Simplify each expression. State any restrictions on $x$.\n\n1. $\\dfrac{x^2 - 4}{x - 2}$\n\n2. $\\dfrac{x^2 - 9}{x^2 - 6x + 9}$\n\n3. $\\dfrac{x^2 + 5x + 6}{x^2 - 4}$\n\n4. $\\dfrac{x^3 - 8}{x^2 - 4}$\n\n5. $\\dfrac{x^2 - x - 6}{x^2 + x - 2}$\n\n6. $\\dfrac{2x^2 - 5x - 3}{2x^2 + 7x + 3}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-16",
+      "number": "16",
+      "problem": "Simplify each expression. State any restrictions on $x$.\n\n1. $\\dfrac{x^3 - 1}{x - 1}$\n\n2. $\\dfrac{x^2 - 4x + 4}{x^2 - 4}$\n\n3. $\\dfrac{6x^2 - x - 2}{4x^2 - 1}$\n\n4. $\\dfrac{x^3 + 27}{x^2 - 9}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-17",
+      "number": "17",
+      "problem": "Simplify each expression. State any restrictions.\n\n1. $\\dfrac{x^2 - 25}{x^2 + 10x + 25}$\n\n2. $\\dfrac{x^2 - 7x + 12}{x^2 - 16}$\n\n3. $\\dfrac{3x^2 + 5x - 2}{3x^2 - 7x + 2}$\n\n4. $\\dfrac{x^3 + 8}{x^2 + 4x + 4}$\n\n5. $\\dfrac{x^4 - 1}{x^2 + 1}$\n\n6. $\\dfrac{x^2 - 2x - 15}{x^2 - 9}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-18",
+      "number": "18",
+      "problem": "Simplify each expression. State any restrictions.\n\n1. $\\dfrac{2x^2 + x - 6}{2x^2 - 7x + 6}$\n\n2. $\\dfrac{x^3 - x^2 - 6x}{x^3 - 9x}$\n\n3. $\\dfrac{x^4 - 16}{x^2 - 4}$\n\n4. $\\dfrac{6x^2 + 7x - 3}{9x^2 - 1}$\n\n5. $\\dfrac{x^3 - 27}{x^2 - 6x + 9}$\n\n6. $\\dfrac{x^2 + 3x - 10}{x^3 + 8}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-19",
+      "number": "19",
+      "problem": "Simplify completely.\n\n1. $\\dfrac{x^3 + x^2 - 4x - 4}{x^3 - x^2 - 4x + 4}$\n\n2. $\\dfrac{x^4 - 5x^2 + 4}{x^4 - 10x^2 + 9}$\n\n3. $\\dfrac{8x^3 - 27}{4x^2 - 9}$\n\n4. $\\dfrac{x^3 + 2x^2 - x - 2}{x^3 - 2x^2 - x + 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-20",
+      "number": "20",
+      "problem": "Multiply or divide. Simplify completely.\n\n1. $\\dfrac{x + 3}{x - 2} \\cdot \\dfrac{x - 2}{x + 5}$\n\n2. $\\dfrac{x^2 - 4}{x + 3} \\cdot \\dfrac{x^2 - 9}{x - 2}$\n\n3. $\\dfrac{x^2 + x - 6}{x^2 - 4} \\cdot \\dfrac{x + 2}{x + 3}$\n\n4. $\\dfrac{x^2 - 1}{x - 3} \\div \\dfrac{x + 1}{x^2 - 9}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-21",
+      "number": "21",
+      "problem": "Multiply or divide. Simplify completely.\n\n1. $\\dfrac{x^2 - 2x - 3}{x^2 + 4x + 3} \\cdot \\dfrac{x^2 - 1}{x^2 - 9}$\n\n2. $\\dfrac{x^3 - 8}{x^2 - 4} \\div \\dfrac{x^2 + 2x + 4}{x + 2}$\n\n3. $\\dfrac{x^2 - 5x + 6}{x^2 - 4x + 4} \\cdot \\dfrac{x - 2}{x^2 - 9}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-22",
+      "number": "22",
+      "problem": "Multiply or divide. Simplify completely.\n\n1. $\\dfrac{x^2 + 2x - 8}{x^2 - 16} \\cdot \\dfrac{x^2 - 4x}{x^2 - 4}$\n\n2. $\\dfrac{x^2 - 9}{x^2 + 6x + 9} \\div \\dfrac{x - 3}{x + 3}$\n\n3. $\\dfrac{x^3 + 1}{x^2 - 1} \\cdot \\dfrac{x - 1}{x^2 - x + 1}$\n\n4. $\\dfrac{2x^2 - 5x - 3}{x^2 - 1} \\div \\dfrac{2x + 1}{x^2 + x}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-23",
+      "number": "23",
+      "problem": "Multiply or divide. Simplify completely.\n\n1. $\\dfrac{x^2 - 4}{x + 5} \\cdot \\dfrac{x^2 - 25}{x^2 + 5x + 6} \\cdot \\dfrac{x + 3}{x - 5}$\n\n2. $\\dfrac{x^2 + x - 12}{x^2 - x - 6} \\div \\dfrac{x^2 - 16}{x^2 - 4}$\n\n3. $\\dfrac{x^3 - 27}{x^2 - 9} \\cdot \\dfrac{x + 3}{x^2 + 3x + 9}$\n\n4. $\\dfrac{x^2 - 1}{x^2 + 4x + 4} \\div \\dfrac{x^2 - 2x + 1}{x^2 + 4x + 4}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-24",
+      "number": "24",
+      "problem": "Add or subtract. Simplify completely.\n\n1. $\\dfrac{3}{x} + \\dfrac{5}{x}$\n\n2. $\\dfrac{2}{x + 1} + \\dfrac{3}{x - 1}$\n\n3. $\\dfrac{x}{x - 2} - \\dfrac{2}{x - 2}$\n\n4. $\\dfrac{1}{x - 3} + \\dfrac{2}{x + 3}$\n\n5. $\\dfrac{3x}{x^2 - 4} + \\dfrac{2}{x + 2}$\n\n6. $\\dfrac{5}{x - 1} - \\dfrac{3}{x + 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-25",
+      "number": "25",
+      "problem": "Add or subtract. Simplify completely.\n\n1. $\\dfrac{2x + 1}{x^2 - 1} + \\dfrac{x - 1}{x + 1}$\n\n2. $\\dfrac{x}{x^2 - 9} - \\dfrac{3}{x^2 - 9}$\n\n3. $\\dfrac{1}{x - 2} + \\dfrac{1}{x + 2} + \\dfrac{4}{x^2 - 4}$\n\n4. $\\dfrac{2}{x^2 - 1} - \\dfrac{1}{x - 1} + \\dfrac{3}{x + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-26",
+      "number": "26",
+      "problem": "Add or subtract. Simplify completely.\n\n1. $\\dfrac{x + 1}{x^2 + 5x + 6} + \\dfrac{x - 1}{x^2 + 4x + 3}$\n\n2. $\\dfrac{3x}{x^2 - 4} - \\dfrac{2}{x - 2} + \\dfrac{1}{x + 2}$\n\n3. $\\dfrac{x}{x^2 - x - 2} + \\dfrac{2}{x + 1} - \\dfrac{1}{x - 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-27",
+      "number": "27",
+      "problem": "Add or subtract. Simplify completely.\n\n1. $\\dfrac{4}{x - 3} + \\dfrac{2}{x + 1}$\n\n2. $\\dfrac{x}{x + 4} - \\dfrac{3}{x - 2}$\n\n3. $\\dfrac{5}{x^2 - 1} + \\dfrac{2}{x + 1}$\n\n4. $\\dfrac{x + 2}{x - 3} - \\dfrac{x - 1}{x + 3}$\n\n5. $\\dfrac{3}{x^2 - 9} + \\dfrac{1}{x - 3} - \\dfrac{2}{x + 3}$\n\n6. $\\dfrac{2x}{x^2 - 4} - \\dfrac{1}{x - 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-28",
+      "number": "28",
+      "problem": "Add or subtract. Simplify completely.\n\n1. $\\dfrac{x}{x^2 - 5x + 6} + \\dfrac{2}{x - 2}$\n\n2. $\\dfrac{3}{x^2 + x - 6} - \\dfrac{1}{x - 2}$\n\n3. $\\dfrac{x + 1}{x^2 - 4} + \\dfrac{x - 1}{x^2 - 4x + 4}$\n\n4. $\\dfrac{2}{x - 1} + \\dfrac{3}{x + 2} - \\dfrac{x}{x^2 + x - 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-29",
+      "number": "29",
+      "problem": "Combine into a single fraction in lowest terms.\n\n1. $\\dfrac{1}{x} + \\dfrac{1}{x + 1} + \\dfrac{1}{x + 2}$\n\n2. $\\dfrac{x}{x - 1} - \\dfrac{x}{x + 1} + \\dfrac{2}{x^2 - 1}$\n\n3. $\\dfrac{a}{a - b} + \\dfrac{b}{a + b} - \\dfrac{2ab}{a^2 - b^2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-30",
+      "number": "30",
+      "problem": "Simplify each complex fraction.\n\n1. $\\dfrac{\\frac{1}{x} + \\frac{1}{y}}{\\frac{1}{x} - \\frac{1}{y}}$\n\n2. $\\dfrac{1 - \\frac{1}{x}}{1 + \\frac{1}{x}}$\n\n3. $\\dfrac{\\frac{x+1}{x-1}}{\\frac{x^2-1}{x}}$\n\n4. $\\dfrac{\\frac{2}{x+3} + 1}{\\frac{1}{x+3} - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-31",
+      "number": "31",
+      "problem": "Simplify each complex fraction.\n\n1. $\\dfrac{1 + \\frac{1}{x+1}}{1 - \\frac{1}{x+1}}$\n\n2. $\\dfrac{\\frac{1}{x^2} - \\frac{1}{y^2}}{\\frac{1}{x} + \\frac{1}{y}}$\n\n3. $\\dfrac{x - \\frac{9}{x}}{1 + \\frac{3}{x}}$\n\n4. $\\dfrac{\\frac{a}{b} - \\frac{b}{a}}{\\frac{1}{a} - \\frac{1}{b}}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-32",
+      "number": "32",
+      "problem": "Simplify each complex fraction.\n\n1. $\\dfrac{\\frac{2}{x} - \\frac{3}{y}}{\\frac{4}{x^2} - \\frac{9}{y^2}}$\n\n2. $\\dfrac{1 - \\frac{4}{x^2}}{1 + \\frac{2}{x}}$\n\n3. $\\dfrac{\\frac{1}{x-1} + \\frac{1}{x+1}}{\\frac{1}{x-1} - \\frac{1}{x+1}}$\n\n4. $\\dfrac{x + 1 - \\frac{2}{x}}{x - 3 + \\frac{2}{x}}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-33",
+      "number": "33",
+      "problem": "Simplify each complex fraction.\n\n1. $\\dfrac{\\frac{x}{x+2} - \\frac{2}{x}}{\\frac{1}{x} + \\frac{1}{x+2}}$\n\n2. $\\dfrac{1 + \\frac{1}{1 + \\frac{1}{x}}}{1 - \\frac{1}{1 + \\frac{1}{x}}}$\n\n3. $\\dfrac{\\frac{x+h}{(x+h)^2 - 1} - \\frac{x}{x^2-1}}{h}$ (difference quotient)",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-34",
+      "number": "34",
+      "problem": "Solve. Check for extraneous solutions.\n\n1. $\\dfrac{5}{x} = \\dfrac{3}{x - 2}$\n\n2. $\\dfrac{2}{x + 3} + \\dfrac{1}{x - 3} = \\dfrac{6}{x^2 - 9}$\n\n3. $\\dfrac{x}{x - 1} - \\dfrac{1}{x - 1} = 3$\n\n4. $\\dfrac{3}{x + 1} = \\dfrac{2}{x - 1} + 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-35",
+      "number": "35",
+      "problem": "Solve. Check for extraneous solutions.\n\n1. $\\dfrac{x + 2}{x - 2} = \\dfrac{x - 2}{x + 2}$\n\n2. $\\dfrac{1}{x} + \\dfrac{1}{x + 2} = \\dfrac{3}{4}$\n\n3. $\\dfrac{2x - 1}{x + 3} = \\dfrac{x + 1}{x - 1}$\n\n4. $\\dfrac{5}{x^2 - 4} = \\dfrac{3}{x + 2} - \\dfrac{1}{x - 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-36",
+      "number": "36",
+      "problem": "Solve. Check for extraneous solutions.\n\n1. $\\dfrac{x}{x - 3} + \\dfrac{3}{x + 3} = \\dfrac{18}{x^2 - 9}$\n\n2. $\\dfrac{2}{x - 1} - \\dfrac{1}{x + 2} = \\dfrac{9}{x^2 + x - 2}$\n\n3. $\\dfrac{x + 4}{x - 4} + \\dfrac{x - 4}{x + 4} = 2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-37",
+      "number": "37",
+      "problem": "Solve. Check for extraneous solutions.\n\n1. $\\dfrac{3}{x - 2} + \\dfrac{4}{x + 2} = \\dfrac{14}{x^2 - 4}$\n\n2. $\\dfrac{x + 1}{x - 1} = \\dfrac{2}{x - 1} + 2$\n\n3. $\\dfrac{6}{x + 3} + \\dfrac{4}{x - 3} = \\dfrac{24}{x^2 - 9}$\n\n4. $\\dfrac{x}{x + 2} + \\dfrac{2}{x - 2} = \\dfrac{8}{x^2 - 4}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-38",
+      "number": "38",
+      "problem": "Solve. Identify any extraneous solutions.\n\n1. $\\dfrac{x^2}{x - 3} = \\dfrac{9}{x - 3}$\n\n2. $\\dfrac{2x}{x + 1} - \\dfrac{3}{x - 2} = \\dfrac{5x - 9}{x^2 - x - 2}$\n\n3. $\\dfrac{1}{x - 1} + \\dfrac{x}{x + 1} = \\dfrac{2}{x^2 - 1}$\n\n4. $\\dfrac{x - 2}{x + 3} - \\dfrac{x + 2}{x - 3} = \\dfrac{4x}{x^2 - 9}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-39",
+      "number": "39",
+      "problem": "Solve for $x$.\n\n1. $\\dfrac{2}{3x} + \\dfrac{1}{6} = \\dfrac{5}{2x}$\n\n2. $\\dfrac{x + 3}{x - 3} = \\dfrac{x - 3}{x + 3} + \\dfrac{12}{x^2 - 9}$\n\n3. $\\dfrac{1}{x} + \\dfrac{1}{2x} + \\dfrac{1}{3x} = 11$\n\n4. $\\dfrac{x - 1}{x + 4} = \\dfrac{x + 1}{x - 4}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-40",
+      "number": "40",
+      "problem": "One printer can complete a job in 4 hours. Another printer can complete \nthe same job in 6 hours. How long will it take if both work together?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Work Rate"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-41",
+      "number": "41",
+      "problem": "Alex can paint a room in 5 hours. With Ben's help, they can paint it in \n3 hours. How long would it take Ben alone?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Work Rate"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-42",
+      "number": "42",
+      "problem": "A plane flies 600 miles with the wind in the same time it flies 400 miles \nagainst the wind. If the wind speed is 50 mph, find the plane's speed in \nstill air.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Distance"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-43",
+      "number": "43",
+      "problem": "A cyclist travels 30 miles at one speed, then 20 miles at a speed 5 mph \nslower. If the total time is 2.5 hours, find both speeds.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Average Speed"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-44",
+      "number": "44",
+      "problem": "A 10-liter tank contains a 20\\% salt solution. How much pure water should \nbe added to reduce the concentration to 15\\%?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Concentration"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-45",
+      "number": "45",
+      "problem": "A large pipe can fill a pool in 8 hours. A smaller pipe can fill the \nsame pool in 12 hours. A drain can empty the pool in 10 hours. If both \npipes are filling and the drain is open, how long until the pool is full?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Work Rate"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-46",
+      "number": "46",
+      "problem": "A cyclist rides 60 miles. If she had traveled 5 mph faster, the trip \nwould have taken 1 hour less. Find her actual speed.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Distance"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-47",
+      "number": "47",
+      "problem": "The sum of a number and its reciprocal is $\\dfrac{10}{3}$. Find the number.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Ratio"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-48",
+      "number": "48",
+      "problem": "Working alone, Marcus can complete a landscaping job in 6 hours. After \nworking alone for 2 hours, he is joined by Dana. Together they finish \nthe remaining work in 1.5 hours. How long would it take Dana to do the \nentire job alone?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Work Rate"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-49",
+      "number": "49",
+      "problem": "Graph each rational function. Identify domain, range, and \nany asymptotes.\n\n1. $f(x) = \\dfrac{x + 1}{x - 2}$\n\n2. $f(x) = \\dfrac{x^2 - 1}{x^2 - 4}$\n\n3. $f(x) = \\dfrac{2x}{x^2 + 1}$",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-50",
+      "number": "50",
+      "problem": "Use a graphing calculator to solve graphically:\n$\\dfrac{x + 2}{x - 1} = \\dfrac{2x - 1}{x + 3}$",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-51",
+      "number": "51",
+      "problem": "True or False? Justify your answer.\n\n1. $\\dfrac{x^2 - 4}{x - 2} = x + 2$ for all $x$.\n\n2. The domain of $\\dfrac{x}{x^2 + 1}$ is all real numbers.\n\n3. $\\dfrac{a + b}{c} = \\dfrac{a}{c} + \\dfrac{b}{c}$ always.\n\n4. $\\dfrac{a}{b + c} = \\dfrac{a}{b} + \\dfrac{a}{c}$ always.\n\n5. If $\\dfrac{2}{x - 3} = 5$, then $x = 3$ is a solution.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-52",
+      "number": "52",
+      "problem": "Explain why $\\dfrac{x^2 - 9}{x - 3}$ is not equal to \n$x + 3$ for all $x$.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-53",
+      "number": "53",
+      "problem": "In your own words, explain why dividing by zero is undefined.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-54",
+      "number": "54",
+      "problem": "What is the difference between a \"term\" and a \"factor\"? Why can \nyou cancel factors but not terms?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-55",
+      "number": "55",
+      "problem": "Explain why the expression $\\frac{x^2 - 4}{x - 2}$ is not the same as \n$x + 2$, even though they simplify to the same form.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-56",
+      "number": "56",
+      "problem": "A student claims that $\\dfrac{x^2 + 1}{x + 1}$ cannot be simplified because \n$x^2 + 1$ doesn't factor. Is this reasoning correct? Explain.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-57",
+      "number": "57",
+      "problem": "When solving rational equations, why is it necessary to check solutions \nin the original equation? Give an example where this matters.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-58",
+      "number": "58",
+      "problem": "Describe and correct the error.\n\nAdding fractions: $\\dfrac{2}{x} + \\dfrac{3}{x + 1}$\nquote\n\"$\\dfrac{2}{x} + \\dfrac{3}{x + 1} = \\dfrac{2 + 3}{x + (x + 1)} = \\dfrac{5}{2x + 1}$\" \n \nquote",
+      "variant": "error",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-59",
+      "number": "59",
+      "problem": "Describe and correct the error.\n\nSolving $\\dfrac{x}{x - 2} = \\dfrac{2}{x - 2}$:\nquote\n\"Multiply both sides by $(x - 2)$: $x = 2$. Solution is $x = 2$.\" \n \nquote",
+      "variant": "error",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-60",
+      "number": "60",
+      "problem": "Simplify: $\\dfrac{1}{1 + \\frac{1}{1 + \\frac{1}{x}}}$",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-61",
+      "number": "61",
+      "problem": "If $\\dfrac{1}{x} + \\dfrac{1}{y} = \\dfrac{1}{z}$, solve for $z$ \nin terms of $x$ and $y$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-62",
+      "number": "62",
+      "problem": "Find all values of $k$ such that $\\dfrac{x^2 + kx + 12}{x + 3}$ \nsimplifies to a polynomial.\n\n Prove that $\\dfrac{1}{a} + \\dfrac{1}{b} = \\dfrac{a + b}{ab}$ \nfor $a, b \\neq 0$.\n\n%─────────────────────────────────────────────────────────\n% BUILDING RATIONAL FUNCTIONS FROM PROPERTIES\n%─────────────────────────────────────────────────────────",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-63",
+      "number": "63",
+      "problem": "Write an equation for a rational function with the given domain.\n\n1. Domain: $(-\\infty, 5) \\cup (5, \\infty)$\n\n2. Domain: $(-\\infty, -3) \\cup (-3, \\infty)$\n\n3. Domain: $(-\\infty, -2) \\cup (-2, 2) \\cup (2, \\infty)$\n\n4. Domain: $(-\\infty, 0) \\cup (0, 4) \\cup (4, \\infty)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-64",
+      "number": "64",
+      "problem": "Write an equation for a rational function with the given properties.\n\n1. Domain excludes $x = 6$; passes through $(0, 1)$\n\n2. Domain excludes $x = -4$; $x$-intercept at $x = 2$\n\n3. Domain excludes $x = \\pm 3$; passes through origin\n\n4. Domain excludes $x = 1$ and $x = -2$; $y$-intercept at $(0, 3)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-65",
+      "number": "65",
+      "problem": "Find a rational function satisfying the conditions.\n\n1. Passes through $(0, 2)$ and $(1, 0)$; domain excludes $x = -1$\n\n2. Passes through $(0, 0)$ and $(2, 1)$; domain excludes $x = 1$\n\n3. Has $x$-intercepts at $x = 1$ and $x = -1$; domain excludes $x = 0$\n\n4. Passes through $(1, 2)$ and $(3, 0)$; domain excludes $x = 2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.1-66",
+      "number": "66",
+      "problem": "Write a rational function with each set of properties.\n\n1. Domain: all real numbers except $x = 5$; $x$-intercept at $x = 0$\n\n2. Domain: all real numbers except $x = \\pm 1$; $y$-intercept at $(0, -2)$\n\n3. $x$-intercepts at $x = 2$ and $x = -3$; domain excludes $x = 4$\n\n4. No $x$-intercepts; domain excludes $x = 5$; $f(0) = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     }
   ],
   "marginNotes": [

@@ -4,6 +4,23 @@
   "chapter": 2,
   "section": 4,
   "book": "precalculus",
+  "objectives": [
+    "Perform arithmetic operations with complex numbers",
+    "State and apply the Fundamental Theorem of Algebra",
+    "Use the Rational Zeros Theorem to list possible rational zeros",
+    "Apply Descartes' Rule of Signs to predict positive and negative zeros",
+    "Find upper and lower bounds for real zeros",
+    "Use the Conjugate Pairs Theorem for polynomials with real coefficients",
+    "Find all zeros (real and complex) of a polynomial function",
+    "Construct polynomials from given zeros"
+  ],
+  "devotional": {
+    "title": "Seeking and Finding",
+    "scripture": "Matthew 7:7",
+    "content": "Jesus promised that those who seek will find. The history of \npolynomial equations is a testament to this truth in the mathematical \nrealm. Mathematicians sought formulas for the roots of polynomials and, \nafter centuries of effort, found them—for degrees 2, 3, and 4.\n\nBut the story takes a surprising turn. In the early 1800s, Niels Henrik \nAbel and Évariste Galois proved that for degree 5 and higher, no \ngeneral formula exists using only arithmetic operations and roots. Some \ndoors, it seems, cannot be opened—at least not in the way we expected.\n\nYet this \"failure\" opened greater doors. Galois theory, born from \nunderstanding *why* the quintic has no formula, became one of the \nmost powerful tools in modern algebra. The search revealed structure \ndeeper than any formula could express.\n\nSometimes what we seek is not what we find, and what we find is better \nthan what we sought. God's answers often exceed our questions.",
+    "edition": "christian",
+    "reflection": "Have you ever sought one thing and found something \nunexpectedly greater? How might mathematical \"failure\" leading to \ndeeper understanding mirror spiritual seeking?"
+  },
   "content": [
     {
       "type": "paragraph",
@@ -16,11 +33,155 @@
     {
       "type": "heading",
       "level": 2,
+      "text": "Complex Numbers"
+    },
+    {
+      "type": "paragraph",
+      "text": "When solving quadratic equations like $x^2 + 1 = 0$, we encounter \n$x^2 = -1$, which has no real solution. To solve such equations, \nmathematicians introduced the **imaginary unit**."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.1",
+      "number": "2.1",
+      "title": "Imaginary Unit",
+      "content": "The **imaginary unit** $i$ is defined by\n$$\n i = \\sqrt{-1} \\quad \\text{or equivalently} \\quad i^2 = -1\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Using $i$, we can express the square root of any negative number:\n$$\n \\sqrt{-a} = i\\sqrt{a} \\quad \\text{for } a > 0\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-2.1",
+      "number": "2.1",
+      "title": "Simplifying square roots of negatives",
+      "problem": "Simplify each expression.\n\n1. $\\sqrt{-9}$\n\n2. $\\sqrt{-20}$\n\n3. $\\sqrt{-1} \\cdot \\sqrt{-4}$",
+      "solution": "1. $\\sqrt{-9} = \\sqrt{9} \\cdot \\sqrt{-1} = 3i$\n\n2. $\\sqrt{-20} = \\sqrt{20} \\cdot i = 2\\sqrt{5} \\cdot i = 2i\\sqrt{5}$\n\n3. $\\sqrt{-1} \\cdot \\sqrt{-4} = i \\cdot 2i = 2i^2 = 2(-1) = -2$\n \n **Warning:** $\\sqrt{-1} \\cdot \\sqrt{-4} \\neq \\sqrt{(-1)(-4)} = \\sqrt{4} = 2$. \n The rule $\\sqrt{a}\\sqrt{b} = \\sqrt{ab}$ only works when $a, b \\ge 0$."
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.2",
+      "number": "2.2",
+      "title": "Complex Numbers",
+      "content": "A **complex number** is a number of the form\n$$\n a + bi\n$$\nwhere $a$ and $b$ are real numbers. We call $a$ the **real part** \nand $b$ the **imaginary part**.\n\nThe set of all complex numbers is denoted $\\mathbb{C}$."
+    },
+    {
+      "type": "figure",
+      "id": "fig:complex-plane",
+      "src": "/figures/precalculus/fig-complex-plane.svg",
+      "caption": "The complex plane (Argand diagram). Each complex number $a + bi$ is plotted as the point $(a, b)$. Real numbers lie on the horizontal axis; pure imaginary numbers lie on the vertical axis.",
+      "alt": "The complex plane (Argand diagram). Each complex number $a + bi$ is plotted as the point $(a, b)$. Real numbers lie on the horizontal axis; pure imaginary numbers lie on the vertical axis.",
+      "tikz": true
+    },
+    {
+      "type": "paragraph",
+      "text": "Two complex numbers are equal if and only if their real parts are equal \nAND their imaginary parts are equal:\n$$\n a + bi = c + di \\quad \\Longleftrightarrow \\quad a = c \\text{ and } b = d\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Powers of $i$:**"
+    },
+    {
+      "type": "paragraph",
+      "text": "The powers of $i$ follow a cyclic pattern:\n$$\n i^1 = i, \\quad i^2 = -1, \\quad i^3 = -i, \\quad i^4 = 1, \\quad i^5 = i, \\ldots\n$$\nThe pattern repeats every 4 powers. To simplify $i^n$, divide $n$ by 4 \nand use the remainder."
+    },
+    {
+      "type": "figure",
+      "id": "fig:powers-of-i",
+      "src": "/figures/precalculus/fig-powers-of-i.svg",
+      "caption": "The powers of $i$ cycle every four steps: $i \\to -1 \\to -i \\to 1 \\to i \\to \\cdots$. To find $i^n$, divide $n$ by 4 and use the remainder.",
+      "alt": "The powers of $i$ cycle every four steps: $i \\to -1 \\to -i \\to 1 \\to i \\to \\cdots$. To find $i^n$, divide $n$ by 4 and use the remainder.",
+      "tikz": true
+    },
+    {
+      "type": "example",
+      "id": "example-2.2",
+      "number": "2.2",
+      "title": "Powers of $i$",
+      "problem": "Simplify: (a) $i^{23}$ (b) $i^{100}$",
+      "solution": "1. $23 = 4 \\cdot 5 + 3$, so $i^{23} = i^3 = -i$\n\n2. $100 = 4 \\cdot 25 + 0$, so $i^{100} = i^0 = 1$"
+    },
+    {
+      "type": "paragraph",
+      "text": "**Operations with Complex Numbers:**"
+    },
+    {
+      "type": "paragraph",
+      "text": "Complex numbers follow the same algebraic rules as real numbers, with \n$i^2 = -1$."
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Addition:** $(a + bi) + (c + di) = (a + c) + (b + d)i$",
+        "**Subtraction:** $(a + bi) - (c + di) = (a - c) + (b - d)i$",
+        "**Multiplication:** Use FOIL and $i^2 = -1$:\n $$\n (a + bi)(c + di) = ac + adi + bci + bdi^2 = (ac - bd) + (ad + bc)i\n $$"
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-2.3",
+      "number": "2.3",
+      "title": "Complex arithmetic",
+      "problem": "Perform the indicated operations.\n\n1. $(3 + 2i) + (5 - 4i)$\n\n2. $(3 + 2i)(5 - 4i)$\n\n3. $(2 + 3i)^2$",
+      "solution": "1. $(3 + 2i) + (5 - 4i) = (3 + 5) + (2 - 4)i = 8 - 2i$\n\n2. $(3 + 2i)(5 - 4i) = 15 - 12i + 10i - 8i^2 = 15 - 2i - 8(-1) = 23 - 2i$\n\n3. $(2 + 3i)^2 = 4 + 12i + 9i^2 = 4 + 12i - 9 = -5 + 12i$"
+    },
+    {
+      "type": "definition",
+      "id": "definition-2.3",
+      "number": "2.3",
+      "title": "Complex Conjugate",
+      "content": "The **complex conjugate** of $z = a + bi$ is\n$$\n \\overline{z} = a - bi\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The conjugate has important properties:"
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "$z \\cdot \\overline{z} = a^2 + b^2$ (always real and nonnegative)",
+        "$\\overline{z + w} = \\overline{z} + \\overline{w}$",
+        "$\\overline{z \\cdot w} = \\overline{z} \\cdot \\overline{w}$"
+      ]
+    },
+    {
+      "type": "figure",
+      "id": "fig:conjugate-reflection",
+      "src": "/figures/precalculus/fig-conjugate-reflection.svg",
+      "caption": "Complex conjugates $z = a + bi$ and $\\overline{z} = a - bi$ are reflections across the real axis. They have the same real part but opposite imaginary parts.",
+      "alt": "Complex conjugates $z = a + bi$ and $\\overline{z} = a - bi$ are reflections across the real axis. They have the same real part but opposite imaginary parts.",
+      "tikz": true
+    },
+    {
+      "type": "paragraph",
+      "text": "**Division:** To divide complex numbers, multiply numerator and \ndenominator by the conjugate of the denominator:"
+    },
+    {
+      "type": "example",
+      "id": "example-2.4",
+      "number": "2.4",
+      "title": "Dividing complex numbers",
+      "problem": "Simplify $\\dfrac{3 + 2i}{1 - 4i}$.",
+      "solution": "Multiply by the conjugate of the denominator:\n$$\n \\frac{3 + 2i}{1 - 4i} \\cdot \\frac{1 + 4i}{1 + 4i} \n = \\frac{(3 + 2i)(1 + 4i)}{(1 - 4i)(1 + 4i)}\n$$\n\nNumerator: $(3 + 2i)(1 + 4i) = 3 + 12i + 2i + 8i^2 = 3 + 14i - 8 = -5 + 14i$\n\nDenominator: $(1 - 4i)(1 + 4i) = 1 - 16i^2 = 1 + 16 = 17$\n\nResult: $\\dfrac{-5 + 14i}{17} = -\\dfrac{5}{17} + \\dfrac{14}{17}i$"
+    },
+    {
+      "type": "example",
+      "id": "example-2.5",
+      "number": "2.5",
+      "title": "Solving quadratics with complex solutions",
+      "problem": "Solve $x^2 - 4x + 13 = 0$.",
+      "solution": "Using the quadratic formula:\n$$\n x = \\frac{4 \\pm \\sqrt{16 - 52}}{2} = \\frac{4 \\pm \\sqrt{-36}}{2} \n = \\frac{4 \\pm 6i}{2} = 2 \\pm 3i\n$$\n\nThe solutions are $x = 2 + 3i$ and $x = 2 - 3i$.\n\nNotice they are conjugates of each other—this always happens for \nquadratics with real coefficients."
+    },
+    {
+      "type": "heading",
+      "level": 2,
       "text": "The Fundamental Theorem of Algebra"
     },
     {
       "type": "paragraph",
-      "text": "The most important theorem about polynomial equations guarantees that \nsolutions always exist—if we're willing to look beyond the real numbers."
+      "text": "Now that we understand complex numbers, we can state the most important \ntheorem about polynomial equations—it guarantees that solutions always \nexist in the complex numbers."
     },
     {
       "type": "theorem",
@@ -35,8 +196,11 @@
       "text": "This profound theorem was first proved by Carl Friedrich Gauss in his \n1799 doctoral dissertation. Despite its name suggesting algebra, every \nknown proof uses techniques from analysis or topology—the theorem \nconnects different branches of mathematics in deep ways."
     },
     {
-      "type": "paragraph",
-      "text": "$. Real numbers are complex numbers with $b = 0$. \nWe'll study complex numbers in more depth later.}"
+      "type": "remark",
+      "id": "remark-2.4",
+      "number": null,
+      "title": "Why does a degree-$n$ polynomial have exactly $n$ zeros?",
+      "content": "The theorem guarantees at least one zero exists. Once we find a zero $c$, \nwe can factor out $(x - c)$, reducing the degree by one. Repeating this \nprocess $n$ times completely factors the polynomial, yielding exactly $n$ \nlinear factors—hence exactly $n$ zeros (counting multiplicity)."
     },
     {
       "type": "paragraph",
@@ -56,8 +220,8 @@
     },
     {
       "type": "example",
-      "id": "example-2.1",
-      "number": "2.1",
+      "id": "example-2.6",
+      "number": "2.6",
       "title": "Counting zeros",
       "problem": "Identify all zeros of each polynomial.\n\n1. $f(x) = x^2 - 4$\n\n2. $g(x) = x^2 + 4$\n\n3. $h(x) = (x - 1)^2(x + 3)$",
       "solution": "1. $x^2 - 4 = (x - 2)(x + 2) = 0$ gives $x = 2$ and $x = -2$.\n \n Two distinct real zeros. (Degree 2)\n\n2. $x^2 + 4 = 0$ gives $x^2 = -4$, so $x = \\pm 2i$.\n \n Two complex zeros (no real zeros). (Degree 2)\n\n3. The zeros are $x = 1$ (multiplicity 2) and $x = -3$ \n (multiplicity 1).\n \n Total: $2 + 1 = 3$ zeros. (Degree 3)"
@@ -84,8 +248,11 @@
       "text": "they do exist. Many polynomials \nwith integer coefficients have no rational zeros at all.}"
     },
     {
-      "type": "paragraph",
-      "text": "The proof relies on the Factor Theorem and properties of divisibility. \nThe key insight is that if $f(p/q) = 0$, clearing denominators and \nexamining the resulting equation reveals restrictions on $p$ and $q$."
+      "type": "remark",
+      "id": "remark-2.4",
+      "number": null,
+      "title": "Why do we only check $p/q$ combinations?",
+      "content": "If $\\frac{p}{q}$ (in lowest terms) is a zero of $f(x) = a_n x^n + \\cdots + a_0$, \nsubstituting and clearing denominators gives:\n$a_n p^n + \\cdots + a_0 q^n = 0$.\nRearranging shows $p$ divides $a_0 q^n$, but since $\\gcd(p,q) = 1$, \nwe get $p \\mid a_0$. Similarly, $q \\mid a_n$. This limits candidates to \na finite, testable list."
     },
     {
       "type": "warning",
@@ -96,16 +263,16 @@
     },
     {
       "type": "example",
-      "id": "example-2.2",
-      "number": "2.2",
+      "id": "example-2.7",
+      "number": "2.7",
       "title": "Using the Rational Zeros Theorem",
       "problem": "Find all rational zeros of $f(x) = 2x^3 - 3x^2 - 11x + 6$.",
-      "solution": "**Step 1:** List possible rational zeros.\n\n- Divisors of $a_0 = 6$: $\\pm 1, \\pm 2, \\pm 3, \\pm 6$\n\n- Divisors of $a_n = 2$: $\\pm 1, \\pm 2$\n\n- Possible rational zeros $\\frac{p}{q}$: \n $\\pm 1, \\pm 2, \\pm 3, \\pm 6, \\pm \\frac{1}{2}, \\pm \\frac{3}{2}$\n\n**Step 2:** Test candidates using synthetic division (or direct \nsubstitution).\n\nTesting $x = 3$:\n\\[\n\\begin{array}{c|cccc}\n3 & 2 & -3 & -11 & 6 \\\\\n & & 6 & 9 & -6 \\\\\n\\hline\n & 2 & 3 & -2 & 0\n\\end{array}\n\\]\n\nThe remainder is 0, so $x = 3$ is a zero!\n\n**Step 3:** Factor the quotient $2x^2 + 3x - 2$.\n\nUse the quadratic formula or factor by inspection:\n\\[\n 2x^2 + 3x - 2 = (2x - 1)(x + 2)\n\\]\n\nThe zeros of the quotient are $x = \\frac{1}{2}$ and $x = -2$.\n\n**Complete factorization:**\n\\[\n f(x) = (x - 3)(2x - 1)(x + 2) = 2(x - 3)(x - \\tfrac{1}{2})(x + 2)\n\\]\n\n**Rational zeros:** $x = 3$, $x = \\frac{1}{2}$, and $x = -2$."
+      "solution": "**Step 1:** List possible rational zeros.\n\n- Divisors of $a_0 = 6$: $\\pm 1, \\pm 2, \\pm 3, \\pm 6$\n\n- Divisors of $a_n = 2$: $\\pm 1, \\pm 2$\n\n- Possible rational zeros $\\frac{p}{q}$: \n $\\pm 1, \\pm 2, \\pm 3, \\pm 6, \\pm \\frac{1}{2}, \\pm \\frac{3}{2}$\n\n**Step 2:** Test candidates using synthetic division (or direct \nsubstitution).\n\nTesting $x = 3$:\n$$\n\\begin{array}{c|cccc}\n3 & 2 & -3 & -11 & 6 \\\\\n & & 6 & 9 & -6 \\\\\n\\hline\n & 2 & 3 & -2 & 0\n\\end{array}\n$$\n\nThe remainder is 0, so $x = 3$ is a zero!\n\n**Step 3:** Factor the quotient $2x^2 + 3x - 2$.\n\nUse the quadratic formula or factor by inspection:\n$$\n 2x^2 + 3x - 2 = (2x - 1)(x + 2)\n$$\n\nThe zeros of the quotient are $x = \\frac{1}{2}$ and $x = -2$.\n\n**Complete factorization:**\n$$\n f(x) = (x - 3)(2x - 1)(x + 2) = 2(x - 3)(x - \\tfrac{1}{2})(x + 2)\n$$\n\n**Rational zeros:** $x = 3$, $x = \\frac{1}{2}$, and $x = -2$."
     },
     {
       "type": "example",
-      "id": "example-2.3",
-      "number": "2.3",
+      "id": "example-2.8",
+      "number": "2.8",
       "title": "A polynomial with no rational zeros",
       "problem": "Show that $f(x) = x^3 - 2$ has no rational zeros.",
       "solution": "Possible rational zeros: $\\pm 1, \\pm 2$.\n\n- $f(1) = 1 - 2 = -1 \\neq 0$\n\n- $f(-1) = -1 - 2 = -3 \\neq 0$\n\n- $f(2) = 8 - 2 = 6 \\neq 0$\n\n- $f(-2) = -8 - 2 = -10 \\neq 0$\n\nNone of the possible rational zeros work. Therefore, $f(x) = x^3 - 2$ \nhas no rational zeros.\n\nThe real zero is $x = \\sqrt[3]{2}$, which is irrational."
@@ -120,23 +287,19 @@
       "text": "Here's a systematic approach for finding all zeros of a polynomial:"
     },
     {
-      "type": "list",
-      "ordered": true,
-      "items": [
-        "**Check for obvious factors:** Common factors, difference \n of squares, sum/difference of cubes.",
-        "**Use the Rational Zeros Theorem:** List candidates and \n test systematically.",
-        "**Reduce the degree:** Once you find a zero, divide it \n out and work with the quotient.",
-        "**Handle the remaining quadratic:** Use factoring or the \n quadratic formula.",
-        "**Check for complex zeros:** If the discriminant is \n negative, the quadratic has complex zeros."
-      ]
+      "type": "algorithm",
+      "id": "algorithm-2.4",
+      "number": null,
+      "title": "Finding All Zeros of a Polynomial",
+      "content": "Given a polynomial $f(x)$ of degree $n$:\n\n1. **Check for obvious factors:** \n itemize\n\n2. Common factors ($x$ or constants)\n\n3. Difference of squares: $a^2 - b^2 = (a-b)(a+b)$\n\n4. Sum/difference of cubes\n itemize\n\n5. **List possible rational zeros** using the Rational Zeros Theorem:\n $$\n \\text{Candidates} = \\pm\\frac{\\text{factors of constant term}}{\\text{factors of leading coefficient}}\n $$\n\n6. **Test candidates efficiently:**\n itemize\n\n7. Start with $\\pm 1, \\pm 2$ (most common zeros!)\n\n8. Use synthetic division—if remainder is 0, you found a zero\n\n9. Graph the polynomial to narrow your search\n itemize\n\n10. **Reduce and repeat:** Once you find a zero $c$, work with the \n quotient polynomial (degree $n-1$) and continue.\n\n11. **Handle the final quadratic:** When you reach degree 2, use \n factoring or the quadratic formula.\n\n12. **Include complex zeros:** If the discriminant $b^2 - 4ac < 0$, \n the quadratic has conjugate complex zeros.\n\n**Efficiency tip:** The Descartes' Rule of Signs tells you the maximum \npossible positive and negative real zeros before you start testing."
     },
     {
       "type": "example",
-      "id": "example-2.4",
-      "number": "2.4",
+      "id": "example-2.9",
+      "number": "2.9",
       "title": "Complete factorization",
       "problem": "Find all zeros of $f(x) = x^4 - x^3 - 7x^2 + x + 6$.",
-      "solution": "**Step 1:** List possible rational zeros.\n\nDivisors of 6: $\\pm 1, \\pm 2, \\pm 3, \\pm 6$.\n\n**Step 2:** Test candidates.\n\n$f(1) = 1 - 1 - 7 + 1 + 6 = 0$ \n\nSo $(x - 1)$ is a factor. Divide:\n\n\\[\n\\begin{array}{c|ccccc}\n1 & 1 & -1 & -7 & 1 & 6 \\\\\n & & 1 & 0 & -7 & -6 \\\\\n\\hline\n & 1 & 0 & -7 & -6 & 0\n\\end{array}\n\\]\n\nSo $f(x) = (x - 1)(x^3 - 7x - 6)$.\n\n**Step 3:** Find zeros of $g(x) = x^3 - 7x - 6$.\n\nTest rational zeros of $g$: \n$g(-1) = -1 + 7 - 6 = 0$ \n\n\\[\n\\begin{array}{c|cccc}\n-1 & 1 & 0 & -7 & -6 \\\\\n & & -1 & 1 & 6 \\\\\n\\hline\n & 1 & -1 & -6 & 0\n\\end{array}\n\\]\n\nSo $g(x) = (x + 1)(x^2 - x - 6)$.\n\n**Step 4:** Factor the quadratic.\n\n$x^2 - x - 6 = (x - 3)(x + 2)$.\n\n**Complete factorization:**\n\\[\n f(x) = (x - 1)(x + 1)(x - 3)(x + 2)\n\\]\n\n**All zeros:** $x = 1, -1, 3, -2$."
+      "solution": "**Step 1:** List possible rational zeros.\n\nDivisors of 6: $\\pm 1, \\pm 2, \\pm 3, \\pm 6$.\n\n**Step 2:** Test candidates.\n\n$f(1) = 1 - 1 - 7 + 1 + 6 = 0$ \n\nSo $(x - 1)$ is a factor. Divide:\n\n$$\n\\begin{array}{c|ccccc}\n1 & 1 & -1 & -7 & 1 & 6 \\\\\n & & 1 & 0 & -7 & -6 \\\\\n\\hline\n & 1 & 0 & -7 & -6 & 0\n\\end{array}\n$$\n\nSo $f(x) = (x - 1)(x^3 - 7x - 6)$.\n\n**Step 3:** Find zeros of $g(x) = x^3 - 7x - 6$.\n\nTest rational zeros of $g$: \n$g(-1) = -1 + 7 - 6 = 0$ \n\n$$\n\\begin{array}{c|cccc}\n-1 & 1 & 0 & -7 & -6 \\\\\n & & -1 & 1 & 6 \\\\\n\\hline\n & 1 & -1 & -6 & 0\n\\end{array}\n$$\n\nSo $g(x) = (x + 1)(x^2 - x - 6)$.\n\n**Step 4:** Factor the quadratic.\n\n$x^2 - x - 6 = (x - 3)(x + 2)$.\n\n**Complete factorization:**\n$$\n f(x) = (x - 1)(x + 1)(x - 3)(x + 2)\n$$\n\n**All zeros:** $x = 1, -1, 3, -2$."
     },
     {
       "type": "heading",
@@ -156,20 +319,35 @@
       "label": "Theorem"
     },
     {
-      "type": "example",
-      "id": "example-2.5",
-      "number": "2.5",
-      "title": "Applying Descartes' Rule",
-      "problem": "Use Descartes' Rule to analyze the zeros of \n$f(x) = 2x^4 - 3x^3 + x^2 - x + 1$.",
-      "solution": "**Positive zeros:** Count sign changes in $f(x)$:\n\\[\n f(x) = \\underset{+}{2x^4} \\underset{-}{-3x^3} \\underset{+}{+x^2} \n \\underset{-}{-x} \\underset{+}{+1}\n\\]\nSigns: $+, -, +, -, +$\n\nTransitions: $+ \\to -$, $- \\to +$, $+ \\to -$, $- \\to +$ = 4 sign changes.\n\nPossible positive real zeros: 4, 2, or 0.\n\n**Negative zeros:** Compute $f(-x)$:\n\\[\n f(-x) = 2x^4 + 3x^3 + x^2 + x + 1\n\\]\nSigns: $+, +, +, +, +$\n\nNo sign changes.\n\nPossible negative real zeros: 0.\n\n**Summary:** The polynomial has 4, 2, or 0 positive zeros and \n0 negative zeros. Since the degree is 4, the remaining zeros (if any) \nare complex."
+      "type": "remark",
+      "id": "remark-2.4",
+      "number": null,
+      "title": "Why do sign changes indicate positive roots?",
+      "content": "Each positive real root contributes a factor $(x - r)$ with $r > 0$. \nWhen expanding, this tends to introduce sign changes in the coefficients. \nThe \"or less by an even number\" accounts for complex conjugate pairs, \nwhich contribute factors like $(x^2 + bx + c)$ that can \"absorb\" \nsign changes without creating real roots."
+    },
+    {
+      "type": "figure",
+      "id": "fig:descartes-signs",
+      "src": "/figures/precalculus/fig-descartes-signs.svg",
+      "caption": "Descartes' Rule of Signs: Count how many times the sign changes between consecutive terms. This polynomial has 4 sign changes, so it has 4, 2, or 0 positive real zeros.",
+      "alt": "Descartes' Rule of Signs: Count how many times the sign changes between consecutive terms. This polynomial has 4 sign changes, so it has 4, 2, or 0 positive real zeros.",
+      "tikz": true
     },
     {
       "type": "example",
-      "id": "example-2.6",
-      "number": "2.6",
+      "id": "example-2.10",
+      "number": "2.10",
+      "title": "Applying Descartes' Rule",
+      "problem": "Use Descartes' Rule to analyze the zeros of \n$f(x) = 2x^4 - 3x^3 + x^2 - x + 1$.",
+      "solution": "**Positive zeros:** Count sign changes in $f(x)$:\n$$\n f(x) = \\underset{+}{2x^4} \\underset{-}{-3x^3} \\underset{+}{+x^2} \n \\underset{-}{-x} \\underset{+}{+1}\n$$\nSigns: $+, -, +, -, +$\n\nTransitions: $+ \\to -$, $- \\to +$, $+ \\to -$, $- \\to +$ = 4 sign changes.\n\nPossible positive real zeros: 4, 2, or 0.\n\n**Negative zeros:** Compute $f(-x)$:\n$$\n f(-x) = 2x^4 + 3x^3 + x^2 + x + 1\n$$\nSigns: $+, +, +, +, +$\n\nNo sign changes.\n\nPossible negative real zeros: 0.\n\n**Summary:** The polynomial has 4, 2, or 0 positive zeros and \n0 negative zeros. Since the degree is 4, the remaining zeros (if any) \nare complex."
+    },
+    {
+      "type": "example",
+      "id": "example-2.11",
+      "number": "2.11",
       "title": "Using Descartes' Rule to guide testing",
       "problem": "Find all real zeros of $f(x) = x^3 + 2x^2 - 5x - 6$.",
-      "solution": "**Descartes' Rule:**\n\n$f(x) = +x^3 + 2x^2 - 5x - 6$: Signs $+, +, -, -$. One sign change.\nExactly 1 positive real zero.\n\n$f(-x) = -x^3 + 2x^2 + 5x - 6$: Signs $-, +, +, -$. Two sign changes.\nEither 2 or 0 negative real zeros.\n\n**Possible rational zeros:** $\\pm 1, \\pm 2, \\pm 3, \\pm 6$.\n\nSince there's exactly 1 positive zero, try positive values first:\n\n$f(1) = 1 + 2 - 5 - 6 = -8 \\neq 0$\n\n$f(2) = 8 + 8 - 10 - 6 = 0$ \n\nSo $x = 2$ is the (only) positive zero. Factor:\n\n\\[\n\\begin{array}{c|cccc}\n2 & 1 & 2 & -5 & -6 \\\\\n & & 2 & 8 & 6 \\\\\n\\hline\n & 1 & 4 & 3 & 0\n\\end{array}\n\\]\n\n$f(x) = (x - 2)(x^2 + 4x + 3) = (x - 2)(x + 1)(x + 3)$.\n\n**All zeros:** $x = 2, -1, -3$.\n\n(This confirms 1 positive, 2 negative—matching Descartes' Rule.)"
+      "solution": "**Descartes' Rule:**\n\n$f(x) = +x^3 + 2x^2 - 5x - 6$: Signs $+, +, -, -$. One sign change.\nExactly 1 positive real zero.\n\n$f(-x) = -x^3 + 2x^2 + 5x - 6$: Signs $-, +, +, -$. Two sign changes.\nEither 2 or 0 negative real zeros.\n\n**Possible rational zeros:** $\\pm 1, \\pm 2, \\pm 3, \\pm 6$.\n\nSince there's exactly 1 positive zero, try positive values first:\n\n$f(1) = 1 + 2 - 5 - 6 = -8 \\neq 0$\n\n$f(2) = 8 + 8 - 10 - 6 = 0$ \n\nSo $x = 2$ is the (only) positive zero. Factor:\n\n$$\n\\begin{array}{c|cccc}\n2 & 1 & 2 & -5 & -6 \\\\\n & & 2 & 8 & 6 \\\\\n\\hline\n & 1 & 4 & 3 & 0\n\\end{array}\n$$\n\n$f(x) = (x - 2)(x^2 + 4x + 3) = (x - 2)(x + 1)(x + 3)$.\n\n**All zeros:** $x = 2, -1, -3$.\n\n(This confirms 1 positive, 2 negative—matching Descartes' Rule.)"
     },
     {
       "type": "heading",
@@ -189,12 +367,20 @@
       "label": "Theorem"
     },
     {
+      "type": "figure",
+      "id": "fig:upper-lower-bounds",
+      "src": "/figures/precalculus/fig-upper-lower-bounds.svg",
+      "caption": "Upper and lower bounds bracket all real zeros of a polynomial. Once bounds are found, we only need to search for zeros within this interval.",
+      "alt": "Upper and lower bounds bracket all real zeros of a polynomial. Once bounds are found, we only need to search for zeros within this interval.",
+      "tikz": true
+    },
+    {
       "type": "example",
-      "id": "example-2.7",
-      "number": "2.7",
+      "id": "example-2.12",
+      "number": "2.12",
       "title": "Finding bounds",
       "problem": "For $f(x) = x^3 - 2x^2 - 5x + 6$, show that all zeros lie in $[-3, 4]$.",
-      "solution": "**Upper bound test with $c = 4$:**\n\\[\n\\begin{array}{c|cccc}\n4 & 1 & -2 & -5 & 6 \\\\\n & & 4 & 8 & 12 \\\\\n\\hline\n & 1 & 2 & 3 & 18\n\\end{array}\n\\]\nBottom row: $1, 2, 3, 18$—all positive. So 4 is an upper bound.\n\n**Lower bound test with $c = -3$:**\n\\[\n\\begin{array}{c|cccc}\n-3 & 1 & -2 & -5 & 6 \\\\\n & & -3 & 15 & -30 \\\\\n\\hline\n & 1 & -5 & 10 & -24\n\\end{array}\n\\]\nBottom row: $1, -5, 10, -24$—alternating signs. So $-3$ is a lower \nbound.\n\nAll real zeros of $f(x)$ lie in $[-3, 4]$."
+      "solution": "**Upper bound test with $c = 4$:**\n$$\n\\begin{array}{c|cccc}\n4 & 1 & -2 & -5 & 6 \\\\\n & & 4 & 8 & 12 \\\\\n\\hline\n & 1 & 2 & 3 & 18\n\\end{array}\n$$\nBottom row: $1, 2, 3, 18$—all positive. So 4 is an upper bound.\n\n**Lower bound test with $c = -3$:**\n$$\n\\begin{array}{c|cccc}\n-3 & 1 & -2 & -5 & 6 \\\\\n & & -3 & 15 & -30 \\\\\n\\hline\n & 1 & -5 & 10 & -24\n\\end{array}\n$$\nBottom row: $1, -5, 10, -24$—alternating signs. So $-3$ is a lower \nbound.\n\nAll real zeros of $f(x)$ lie in $[-3, 4]$."
     },
     {
       "type": "heading",
@@ -219,19 +405,19 @@
     },
     {
       "type": "example",
-      "id": "example-2.8",
-      "number": "2.8",
+      "id": "example-2.13",
+      "number": "2.13",
       "title": "Finding polynomials with complex zeros",
       "problem": "Find a polynomial of degree 3 with real coefficients having zeros \n$2$ and $1 + i$.",
       "solution": "By the Conjugate Pairs Theorem, $1 - i$ must also be a zero.\n\nThe polynomial is:\n$$\n f(x) &= (x - 2)(x - (1+i))(x - (1-i)) \\\\\n &= (x - 2)((x - 1) - i)((x - 1) + i) \\\\\n &= (x - 2)\\left((x - 1)^2 - i^2\\right) \\\\\n &= (x - 2)\\left((x - 1)^2 + 1\\right) \\\\\n &= (x - 2)(x^2 - 2x + 1 + 1) \\\\\n &= (x - 2)(x^2 - 2x + 2)\n$$\n\nExpanding:\n$$\n f(x) &= x^3 - 2x^2 + 2x - 2x^2 + 4x - 4 \\\\\n &= x^3 - 4x^2 + 6x - 4\n$$"
     },
     {
       "type": "example",
-      "id": "example-2.9",
-      "number": "2.9",
+      "id": "example-2.14",
+      "number": "2.14",
       "title": "Factoring over the reals vs.\\ the complexes",
       "problem": "Factor $f(x) = x^4 - 1$ completely over (a) the reals, (b) the complexes.",
-      "solution": "**(a) Over the reals:**\n$$\n x^4 - 1 &= (x^2 - 1)(x^2 + 1) \\\\\n &= (x - 1)(x + 1)(x^2 + 1)\n$$\nThe factor $x^2 + 1$ cannot be factored further over the reals (it has \nno real zeros).\n\n**(b) Over the complexes:**\nThe zeros of $x^2 + 1 = 0$ are $x = \\pm i$.\n\\[\n x^4 - 1 = (x - 1)(x + 1)(x - i)(x + i)\n\\]"
+      "solution": "**(a) Over the reals:**\n$$\n x^4 - 1 &= (x^2 - 1)(x^2 + 1) \\\\\n &= (x - 1)(x + 1)(x^2 + 1)\n$$\nThe factor $x^2 + 1$ cannot be factored further over the reals (it has \nno real zeros).\n\n**(b) Over the complexes:**\nThe zeros of $x^2 + 1 = 0$ are $x = \\pm i$.\n$$\n x^4 - 1 = (x - 1)(x + 1)(x - i)(x + i)\n$$"
     },
     {
       "type": "heading",
@@ -247,8 +433,16 @@
       "id": "theorem-2.7",
       "number": "2.7",
       "title": "Linear Factorization Theorem",
-      "content": "If $f(x) = a_n x^n + \\cdots + a_0$ has degree $n \\ge 1$, then\n\\[\n f(x) = a_n(x - c_1)(x - c_2) \\cdots (x - c_n)\n\\]\nwhere $c_1, c_2, \\ldots, c_n$ are the zeros (not necessarily distinct, \npossibly complex).",
+      "content": "If $f(x) = a_n x^n + \\cdots + a_0$ has degree $n \\ge 1$, then\n$$\n f(x) = a_n(x - c_1)(x - c_2) \\cdots (x - c_n)\n$$\nwhere $c_1, c_2, \\ldots, c_n$ are the zeros (not necessarily distinct, \npossibly complex).",
       "label": "Theorem"
+    },
+    {
+      "type": "figure",
+      "id": "fig:linear-factorization",
+      "src": "/figures/precalculus/fig-linear-factorization.svg",
+      "caption": "The Linear Factorization Theorem: every polynomial of degree $n$ can be \"unpacked\" into exactly $n$ linear factors $(x - c_k)$ times the leading coefficient. Complex zeros appear in conjugate pairs.",
+      "alt": "The Linear Factorization Theorem: every polynomial of degree $n$ can be \"unpacked\" into exactly $n$ linear factors $(x - c_k)$ times the leading coefficient. Complex zeros appear in conjugate pairs.",
+      "tikz": true
     },
     {
       "type": "summary",
@@ -258,9 +452,567 @@
       "content": "- **Fundamental Theorem:** Degree $n$ polynomial has \n exactly $n$ complex zeros (counting multiplicity)\n\n- **Rational Zeros Theorem:** If $\\frac{p}{q}$ is a \n rational zero, then $p \\mid a_0$ and $q \\mid a_n$\n\n- **Descartes' Rule:** Sign changes limit possible \n positive/negative zeros\n\n- **Conjugate Pairs:** Complex zeros of real polynomials \n come in pairs $a \\pm bi$\n\n- **Bounds:** Synthetic division can establish upper/lower \n bounds"
     },
     {
-      "type": "heading",
-      "level": 2,
-      "text": "Exercises"
+      "type": "exercise",
+      "id": "ex-2.4-1",
+      "number": "1",
+      "problem": "True or False? Justify your answer.\n\n1. Every polynomial of degree $n$ has exactly $n$ real zeros.\n\n2. Every polynomial of degree $n$ has exactly $n$ complex zeros \n (counting multiplicity).\n\n3. If $3 + 4i$ is a zero of a polynomial with real coefficients, \n then so is $3 - 4i$.\n\n4. If $\\sqrt{5}$ is a zero of a polynomial with integer coefficients, \n then so is $-\\sqrt{5}$.\n\n5. A polynomial of degree 5 must have at least one real zero.\n\n6. A polynomial of degree 4 can have no real zeros.\n\n7. A polynomial of degree 3 with real coefficients can have three \n complex zeros.\n\n8. If $f(x)$ has real coefficients and $2i$ is a zero, then $(x^2 + 4)$ \n is a factor.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-2",
+      "number": "2",
+      "problem": "Explain why complex zeros come in conjugate pairs for \npolynomials with real coefficients.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-3",
+      "number": "3",
+      "problem": "A polynomial of degree 4 has zeros $2, -1, 3 + i$. Can \nyou determine the fourth zero? Explain.\n\n%─────────────────────────────────────────────────────────\n% BASIC SKILLS\n%─────────────────────────────────────────────────────────",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-4",
+      "number": "4",
+      "problem": "List all possible rational zeros using the Rational Zero Theorem.\n\n1. $f(x) = x^3 - 4x^2 + x + 6$\n\n2. $f(x) = 2x^4 - x^3 - 3x + 2$\n\n3. $f(x) = 3x^3 + 7x^2 - 4$\n\n4. $f(x) = 6x^4 - x^2 + 2$\n\n5. $f(x) = 4x^3 - 2x + 3$\n\n6. $f(x) = 12x^4 - x^3 + 8$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-5",
+      "number": "5",
+      "problem": "List all possible rational zeros.\n\n1. $f(x) = x^3 + 5x^2 - 4x - 20$\n\n2. $f(x) = 5x^4 + x^2 - 10$\n\n3. $f(x) = 6x^3 + 7x^2 - x - 2$\n\n4. $f(x) = 3x^4 - 7x^3 + 2x^2 - x + 6$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-6",
+      "number": "6",
+      "problem": "Use Descartes' Rule of Signs to determine the possible numbers of positive \nand negative real zeros.\n\n1. $f(x) = x^3 - 3x + 1$\n\n2. $f(x) = x^4 + 2x^2 + 1$\n\n3. $f(x) = 2x^5 - x^4 + 3x^3 - x^2 + 2x - 1$\n\n4. $f(x) = x^3 + x^2 + x + 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-7",
+      "number": "7",
+      "problem": "Use Descartes' Rule of Signs to determine the possible numbers of positive \nand negative real zeros.\n\n1. $f(x) = x^3 - 3x^2 + 2x - 5$\n\n2. $f(x) = x^4 + 2x^3 - x^2 + 3x - 1$\n\n3. $f(x) = 3x^5 + 2x^4 - x^3 + x^2 - 4x + 1$\n\n4. $f(x) = x^4 - x^2 + 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-8",
+      "number": "8",
+      "problem": "Use synthetic division to find upper and lower bounds on the real zeros.\n\n1. $f(x) = x^3 - 3x^2 + 4$\n\n2. $f(x) = x^3 - 4x^2 + x + 2$\n\n3. $f(x) = 2x^3 + x^2 - 7x - 3$\n\n4. $f(x) = x^4 - x^3 - 5x^2 + 3x + 2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-9",
+      "number": "9",
+      "problem": "Find all rational zeros and factor completely.\n\n1. $f(x) = x^3 - 2x^2 - 5x + 6$\n\n2. $f(x) = x^3 - 6x^2 + 11x - 6$\n\n3. $f(x) = x^3 + 2x^2 - 5x - 6$\n\n4. $f(x) = x^3 - 4x^2 + x + 6$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-10",
+      "number": "10",
+      "problem": "Find all rational zeros and factor completely.\n\n1. $f(x) = 2x^3 + x^2 - 13x + 6$\n\n2. $f(x) = 3x^3 - 4x^2 - 5x + 2$\n\n3. $f(x) = 4x^3 - 8x^2 - x + 2$\n\n4. $f(x) = x^4 - x^3 - 7x^2 + x + 6$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-11",
+      "number": "11",
+      "problem": "Show that the polynomial has no rational zeros, then describe the zeros.\n\n1. $f(x) = x^3 - 3$ (Hint: The real zero is $\\sqrt[3]{3}$.)\n\n2. $f(x) = x^3 - 2$\n\n3. $f(x) = x^4 + 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-12",
+      "number": "12",
+      "problem": "Find all zeros (real and complex).\n\n1. $f(x) = x^3 - 1$\n\n2. $f(x) = x^3 + 8$\n\n3. $f(x) = x^4 - 1$\n\n4. $f(x) = x^4 - 16$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-13",
+      "number": "13",
+      "problem": "Find all zeros (real and complex).\n\n1. $f(x) = x^3 - 2x^2 + x - 2$\n\n2. $f(x) = x^3 + 2x^2 + 4x + 8$\n\n3. $f(x) = x^4 + 5x^2 + 4$\n\n4. $f(x) = x^4 - 6x^2 - 7$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-14",
+      "number": "14",
+      "problem": "Find all zeros (real and complex).\n\n1. $f(x) = x^4 + 4x^2$\n\n2. $f(x) = x^4 + 6x^2 + 9$\n\n3. $f(x) = x^4 - 2x^2 - 8$\n\n4. $f(x) = x^4 + 3x^2 - 4$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-15",
+      "number": "15",
+      "problem": "Find a polynomial of minimum degree with real coefficients having the \ngiven zeros.\n\n1. $-1, 2, 3$\n\n2. $1, -1, 2, -2$\n\n3. $0, 3, -4$ (with leading coefficient 2)\n\n4. $1$ (multiplicity 2), $-3$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-16",
+      "number": "16",
+      "problem": "Find a polynomial of minimum degree with real coefficients having the \ngiven zeros.\n\n1. $3, 2i$\n\n2. $-1, 1 + i$\n\n3. $2, 3, i$\n\n4. $1, 2 - i$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-17",
+      "number": "17",
+      "problem": "Find a polynomial of minimum degree with real coefficients having the \ngiven zeros.\n\n1. $\\sqrt{2}, -\\sqrt{2}, 3$\n\n2. $1 + \\sqrt{3}, 1 - \\sqrt{3}$\n\n3. $2, 1 - i\\sqrt{2}$\n\n4. $-1, 3i$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-18",
+      "number": "18",
+      "problem": "Given one complex zero, find all zeros of the polynomial.\n\n1. $f(x) = x^3 - 3x^2 + 4x - 12$; zero: $2i$\n\n2. $f(x) = x^3 - 4x^2 + 9x - 36$; zero: $3i$\n\n3. $f(x) = x^4 - 2x^3 + x^2 - 2x$; zero: $i$\n\n4. $f(x) = x^3 - 4x^2 + 6x - 4$; zero: $1 + i$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-19",
+      "number": "19",
+      "problem": "Given one complex zero, find all zeros.\n\n1. $f(x) = x^3 - 5x^2 + 8x - 6$; zero: $1 + i$\n\n2. $f(x) = x^4 + 2x^3 + 10x^2 + 18x + 9$; zero: $-1 + 2i$\n\n3. $f(x) = x^4 - 2x^3 + 6x^2 - 8x + 8$; zero: $2i$\n\n4. $f(x) = x^4 + 2x^3 + 6x^2 + 8x + 8$; zero: $-1 + i$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-20",
+      "number": "20",
+      "problem": "Given one zero (real or complex), find all zeros.\n\n1. $f(x) = x^3 - 2x^2 + x - 2$; zero: $2$\n\n2. $f(x) = x^4 - 4x^3 + 5x^2 - 4x + 4$; zero: $2$ (mult.\\ 2)\n\n3. $f(x) = x^3 + x^2 + 9x + 9$; zero: $3i$\n\n4. $f(x) = x^4 - 2x^3 + 10x^2 - 18x + 9$; zero: $3i$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-21",
+      "number": "21",
+      "problem": "If the given number is a zero, find all other zeros.\n\n1. $f(x) = x^3 - 5x^2 + 17x - 13$; zero: $2 + 3i$\n\n2. $f(x) = x^3 - x^2 - 4x - 6$; zero: $1 - i$\n\n3. $f(x) = x^4 - 4x^3 + 4x^2 + 4x - 5$; zero: $2 + i$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-22",
+      "number": "22",
+      "problem": "Find a polynomial with the given zeros (include complex conjugates as needed).\n\n1. Zeros: $1 + i, 1 - i, 2$ with leading coefficient 2\n\n2. Zeros: $-3, i, -i$ with $f(0) = 6$\n\n3. Zeros: $1, 2, 2 + i, 2 - i$ with leading coefficient 1\n\n4. Zeros: $-1, 1, 1 + 2i, 1 - 2i$ with $f(0) = 5$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-23",
+      "number": "23",
+      "problem": "Write a polynomial with integer coefficients having the given zeros.\n\n1. $3, 2i$\n\n2. $-1, 1 + i$\n\n3. $2, -2, 3i$\n\n4. $0, 1, 1 - i$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-24",
+      "number": "24",
+      "problem": "Find a polynomial with integer coefficients having the given zeros.\n\n1. $\\sqrt{5}$ and $-\\sqrt{5}$\n\n2. $2 + \\sqrt{3}$ and $2 - \\sqrt{3}$\n\n3. $1$, $2$, and $1 + i$\n\n4. $-1$, $\\sqrt{2}$, and $-\\sqrt{2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-25",
+      "number": "25",
+      "problem": "Find the specified polynomial.\n\n1. Degree 4 with zeros $1$, $-1$, $2i$, $-2i$ and leading coeff.\\ $3$\n\n2. Real coefficients, least degree, zeros $3 - 2i$ and $1$, with \n $f(0) = 26$\n\n3. Degree 4 with integer coefficients having $\\sqrt{3}$ and $2i$ \n as zeros",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-26",
+      "number": "26",
+      "problem": "Factor completely over the complex numbers.\n\n1. $f(x) = x^2 + 9$\n\n2. $f(x) = x^4 - 16$\n\n3. $f(x) = x^4 + 4x^2 + 4$\n\n4. $f(x) = x^3 + x$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-27",
+      "number": "27",
+      "problem": "Factor completely over the complex numbers.\n\n1. $f(x) = x^4 + 4$\n\n2. $f(x) = x^4 + x^2 + 1$\n\n3. $f(x) = x^4 - 4x^2 + 8$\n\n4. $f(x) = x^4 + 2x^2 + 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-28",
+      "number": "28",
+      "problem": "Find all real solutions of each polynomial equation.\n\n1. $x^3 - 2x^2 - 5x + 6 = 0$\n\n2. $2x^3 + x^2 - 13x + 6 = 0$\n\n3. $x^4 - x^3 - 7x^2 + x + 6 = 0$\n\n4. $x^3 - x^2 - 10x - 8 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-29",
+      "number": "29",
+      "problem": "Find all solutions (real and complex) of each polynomial equation.\n\n1. $x^3 - 8 = 0$\n\n2. $x^4 + 4x^2 + 3 = 0$\n\n3. $x^4 - 81 = 0$\n\n4. $x^3 + 27 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-30",
+      "number": "30",
+      "problem": "Find $k$ such that $(x - 3)$ is a factor of $f(x) = x^3 - 4x^2 + kx + 6$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-31",
+      "number": "31",
+      "problem": "If $f(x) = x^3 + ax^2 + bx + c$ has zeros at $1$, $2$, and $-3$, find \n$a$, $b$, and $c$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-32",
+      "number": "32",
+      "problem": "List all possible rational zeros using the Rational Zero Theorem.\n\n1. $f(x) = x^3 - 5x^2 + 2x - 10$\n\n2. $f(x) = 2x^4 + 3x^2 - 12x + 4$\n\n3. $f(x) = 3x^3 - x^2 + 6x - 2$\n\n4. $f(x) = 6x^4 - x^3 + 2x - 3$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-33",
+      "number": "33",
+      "problem": "List all possible rational zeros using the Rational Zero Theorem.\n\n1. $f(x) = x^3 + 4x^2 - 7x - 10$\n\n2. $f(x) = 4x^4 - x^3 + 3x - 6$\n\n3. $f(x) = 5x^3 + 2x^2 - x + 4$\n\n4. $f(x) = 12x^4 + x^2 - 5x + 2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-34",
+      "number": "34",
+      "problem": "Find all rational zeros and factor completely over the rationals.\n\n1. $f(x) = x^3 + 2x^2 - 5x - 6$\n\n2. $f(x) = x^3 - 4x^2 + x + 6$\n\n3. $f(x) = x^3 + 3x^2 - 4x - 12$\n\n4. $f(x) = x^3 - x^2 - 8x + 12$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-35",
+      "number": "35",
+      "problem": "Find all rational zeros and factor completely over the rationals.\n\n1. $f(x) = x^3 - 2x^2 - x + 2$\n\n2. $f(x) = x^3 + 5x^2 + 2x - 8$\n\n3. $f(x) = x^3 - 6x^2 + 11x - 6$\n\n4. $f(x) = x^3 + x^2 - 14x - 24$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-36",
+      "number": "36",
+      "problem": "Find all zeros (real and complex) of each polynomial.\n\n1. $f(x) = x^4 - 3x^3 + x^2 + 3x - 2$\n\n2. $f(x) = x^4 - 2x^3 - x^2 + 2x$\n\n3. $f(x) = x^4 + 2x^3 - 3x^2 - 4x + 4$\n\n4. $f(x) = x^4 - 4x^3 + 5x^2 - 4x + 4$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-37",
+      "number": "37",
+      "problem": "Find all zeros (real and complex) of each polynomial.\n\n1. $f(x) = x^4 - x^3 - 2x^2 + 6x - 4$\n\n2. $f(x) = x^4 + x^3 - 5x^2 - 3x + 6$\n\n3. $f(x) = x^4 - 2x^3 + 2x^2 - 2x + 1$\n\n4. $f(x) = x^4 + x^2 + 1$ (hint: factor as difference of squares first)",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-38",
+      "number": "38",
+      "problem": "A polynomial of degree 3 has zeros at $x = 2$, $x = -1$, and $x = 5$. \nIf $f(0) = 20$, find the polynomial.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-39",
+      "number": "39",
+      "problem": "A polynomial of degree 3 has zeros at $x = 1$, $x = -3$, and $x = 4$. \nIf $f(2) = -10$, find the polynomial.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-40",
+      "number": "40",
+      "problem": "A polynomial of degree 4 has zeros at $x = 1$ (multiplicity 2), $x = -2$, \nand $x = 3$. If the leading coefficient is 1, write the polynomial in \nexpanded form.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-41",
+      "number": "41",
+      "problem": "A polynomial of degree 4 has zeros at $x = -1$ (multiplicity 2), $x = 2$, \nand $x = -3$. If $f(0) = -12$, find the polynomial.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-42",
+      "number": "42",
+      "problem": "Given that $2 - 3i$ is a zero of $f(x) = x^4 - 4x^3 + 14x^2 - 4x + 13$, \nfind all zeros.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-43",
+      "number": "43",
+      "problem": "Given that $1 + 2i$ is a zero of $f(x) = x^4 - 2x^3 + 6x^2 - 2x + 5$, \nfind all zeros.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-44",
+      "number": "44",
+      "problem": "The volume of a box with a square base of side $x$ and height $h$ is 200 \ncubic inches. If the height is 3 inches more than the side length \n($h = x + 3$), find the dimensions of the box.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Geometry: Box Dimensions"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-45",
+      "number": "45",
+      "problem": "The deflection $d$ of a beam satisfies $d = 0.01x^3 - 0.3x^2 + 2x$ where \n$x$ is distance (in feet) from one end. Find where the deflection is zero.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Engineering: Beam Deflection"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-46",
+      "number": "46",
+      "problem": "A candle making kit contains 25 cubic inches of wax and a mold for a \npyramid-shaped candle with a square base. If the height of the candle \nis to be 2 inches less than the side of the base, find the dimensions \nof the mold. (Volume of pyramid: $V = \\frac{1}{3}Bh$)",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Manufacturing: Candle Mold"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-47",
+      "number": "47",
+      "problem": "A company's profit (in thousands of dollars) is modeled by \n$P(x) = -x^3 + 9x^2 - 15x - 25$ where $x$ is the number of units sold \n(in thousands). Find the sales levels at which the company breaks even \n($P(x) = 0$).",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Economics: Break-Even Analysis"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-48",
+      "number": "48",
+      "problem": "The concentration $C$ (in mg/L) of a medication in the bloodstream $t$ \nhours after injection is modeled by $C(t) = \\frac{t^3 - 6t^2 + 11t}{t + 1}$ \nfor $t \\geq 0$. At what times is the concentration zero?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Chemistry: Concentration"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-49",
+      "number": "49",
+      "problem": "Use a graphing calculator to find all real zeros to three \ndecimal places.\n\n1. $f(x) = x^3 - 3x - 1$\n\n2. $f(x) = x^4 - 2x^3 - 5x^2 + 4x + 6$\n\n3. $f(x) = 2x^5 - 7x^4 + x^3 + 10x^2 - 8x + 1$",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-50",
+      "number": "50",
+      "problem": "Graph each polynomial and verify the number of real zeros \nmatches what Descartes' Rule predicts.\n\n1. $f(x) = x^3 - 2x^2 - x + 2$\n\n2. $f(x) = x^4 - 3x^2 + 2$\n\n3. $f(x) = x^4 + 2x^2 + 1$",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-51",
+      "number": "51",
+      "problem": "For each polynomial: (a) list possible rational zeros, \n(b) use a graph to eliminate impossible candidates, (c) find all real zeros.\n\n1. $f(x) = 2x^4 - 7x^3 - 4x^2 + 27x - 18$\n\n2. $f(x) = x^4 - 4x^3 + 2x^2 + 4x - 3$\n\n%─────────────────────────────────────────────────────────\n% ERROR ANALYSIS\n%─────────────────────────────────────────────────────────",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-52",
+      "number": "52",
+      "problem": "Describe and correct the error.\n\nFinding a polynomial with zeros $2$ and $3 + i$:\nquote\n\"$f(x) = (x - 2)(x - 3 - i) = x^2 - 5x - 2i + 6 + 2i = x^2 - 5x + 6$\" \n \nquote",
+      "variant": "error",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-53",
+      "number": "53",
+      "problem": "Describe and correct the error.\n\nUsing Descartes' Rule on $f(x) = x^3 + 2x^2 - x - 2$:\nquote\n\"There are 2 sign changes, so there are exactly 2 positive real zeros.\" \n \nquote",
+      "variant": "error",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-54",
+      "number": "54",
+      "problem": "Describe and correct the error.\n\nFinding zeros of $f(x) = x^4 + 5x^2 + 4$:\nquote\n\"Let $u = x^2$. Then $u^2 + 5u + 4 = (u + 1)(u + 4) = 0$, so $u = -1$ or \n$u = -4$. Since $x^2$ cannot be negative, there are no zeros.\" \n \nquote\n\n%─────────────────────────────────────────────────────────\n% CHALLENGE PROBLEMS\n%─────────────────────────────────────────────────────────",
+      "variant": "error",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-55",
+      "number": "55",
+      "problem": "Find all zeros of $f(x) = x^4 - 2x^3 + x^2 - 2x$. \n(Hint: Factor first.)",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-56",
+      "number": "56",
+      "problem": "Find a polynomial of degree 4 with integer coefficients, \nleading coefficient 1, and zeros $1 + i$ and $1 + \\sqrt{2}$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-57",
+      "number": "57",
+      "problem": "Prove that a polynomial of degree 3 with real coefficients \nmust have at least one real zero.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-58",
+      "number": "58",
+      "problem": "If $f(x)$ has integer coefficients with $f(0) = 1$ and \n$f(1) = 1$, prove that $f(x)$ has no integer zeros.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-59",
+      "number": "59",
+      "problem": "Prove that if $\\sqrt{2}$ is a zero of a polynomial with \nrational coefficients, then $-\\sqrt{2}$ is also a zero.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-60",
+      "number": "60",
+      "problem": "Prove the Conjugate Pairs Theorem: If $f(x)$ has real \ncoefficients and $a + bi$ is a zero with $b \\neq 0$, then $a - bi$ is \nalso a zero. (Hint: Consider the complex conjugate of $f(a + bi) = 0$.)",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-61",
+      "number": "61",
+      "problem": "The polynomial $f(x) = x^5 - 1$ has one real zero ($x = 1$) \nand four complex zeros. Find all five zeros and express them in the form \n$a + bi$. (These are the \"fifth roots of unity.\")",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.4-62",
+      "number": "62",
+      "problem": "The graph of $f(x)$ has zeros at $-4$, $0$, and $5$, with \n$f(-2) = 28$. Find $f(x)$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
     }
   ],
   "marginNotes": [

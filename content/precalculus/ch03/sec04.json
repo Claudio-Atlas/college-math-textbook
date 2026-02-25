@@ -1,52 +1,754 @@
 {
   "id": "precalculus-ch03-sec04",
-  "title": "Untitled Section",
+  "title": "Partial Fraction Decomposition",
   "chapter": 3,
   "section": 4,
   "book": "precalculus",
+  "objectives": [
+    "Decompose rational expressions with distinct linear factors",
+    "Handle repeated linear factors in partial fraction decomposition",
+    "Decompose rational expressions with irreducible quadratic factors",
+    "Set up and solve systems of equations to find unknown coefficients",
+    "Apply partial fractions to simplify complex rational expressions",
+    "Recognize when partial fraction decomposition is applicable"
+  ],
+  "devotional": {
+    "title": "The Whole and Its Parts",
+    "scripture": "",
+    "content": "Partial fractions remind us that complex things can often be understood \nby examining their components. A complicated rational expression, \nintimidating at first glance, breaks down into manageable pieces.\n\nThis principle appears throughout Scripture. The body of Christ is one, \nyet composed of many members, each with distinct gifts (1 Corinthians 12). \nA diverse community, working in harmony, accomplishes what no individual \ncould alone.\n\nSimilarly, wisdom often means breaking large problems into smaller ones. \n\"Divide your portion to seven, or even to eight\"—diversify, analyze, \nunderstand the parts to master the whole.",
+    "edition": "christian"
+  },
   "content": [
     {
       "type": "paragraph",
-      "text": "Chapter 3 Review\ntoc{section}{Chapter 3 Review}"
+      "text": "*\"Divide your portion to seven, or even to eight, \nfor you do not know what misfortune may occur on the earth.\"*{Ecclesiastes 11:2}{To divide wisely is to understand the whole through its parts.}{—}"
+    },
+    {
+      "type": "paragraph",
+      "text": "Adding fractions is straightforward: find a common denominator and combine. \nBut what about the reverse process? Given a single complicated fraction, \ncan we break it into simpler pieces? This is **partial fraction \ndecomposition**—a technique \nthat expresses a rational function as a sum of simpler fractions."
+    },
+    {
+      "type": "paragraph",
+      "text": "Why does this matter? In calculus, you'll need to integrate rational \nfunctions. The integral of $\\frac{1}{x-2}$ is easy ($\\ln|x-2|$), but \n$\\frac{3x+5}{x^2-4}$ looks intimidating. Partial fractions reveals that \nthis equals $\\frac{2}{x-2} + \\frac{1}{x+2}$—two simple integrals."
+    },
+    {
+      "type": "figure",
+      "id": "fig:pf-combine-decompose",
+      "src": "/figures/precalculus/fig-pf-combine-decompose.svg",
+      "caption": "Partial fraction decomposition is the reverse of combining fractions. We work backward from a single complex fraction to find the simpler pieces that compose it.",
+      "alt": "Partial fraction decomposition is the reverse of combining fractions. We work backward from a single complex fraction to find the simpler pieces that compose it.",
+      "tikz": true
+    },
+    {
+      "type": "figure",
+      "id": "fig:pf-graphical",
+      "src": "/figures/precalculus/fig-pf-graphical.svg",
+      "caption": "Graphical interpretation of partial fractions. The original function and its decomposition share the same vertical asymptotes. Each partial fraction \"owns\" one vertical asymptote from the original function.",
+      "alt": "Graphical interpretation of partial fractions. The original function and its decomposition share the same vertical asymptotes. Each partial fraction \"owns\" one vertical asymptote from the original function.",
+      "tikz": true
     },
     {
       "type": "heading",
       "level": 2,
-      "text": "Key Concepts Summary"
+      "text": "Proper and Improper Rational Expressions"
+    },
+    {
+      "type": "paragraph",
+      "text": "Before decomposing, we must ensure the fraction is **proper**—the \ndegree of the numerator is less than the degree of the denominator."
+    },
+    {
+      "type": "definition",
+      "id": "definition-3.1",
+      "number": "3.1",
+      "title": "Proper Rational Expression",
+      "content": "A rational expression $\\frac{P(x)}{Q(x)}$ is **proper** if \n$\\deg(P) < \\deg(Q)$. Otherwise, it is **improper**."
+    },
+    {
+      "type": "warning",
+      "id": "warning-3.4",
+      "number": null,
+      "title": "Improper Fractions First",
+      "content": "If degree(numerator) $\\geq$ degree(denominator), perform polynomial \nlong division first. Partial fractions only works on proper fractions."
+    },
+    {
+      "type": "paragraph",
+      "text": "If a fraction is improper, use polynomial long division first:\n$$\n \\frac{P(x)}{Q(x)} = D(x) + \\frac{R(x)}{Q(x)}\n$$\nwhere $D(x)$ is the quotient and $R(x)$ is the remainder. The remainder \nfraction $\\frac{R(x)}{Q(x)}$ will be proper."
+    },
+    {
+      "type": "example",
+      "id": "example-3.1",
+      "number": "3.1",
+      "title": "Converting improper to proper",
+      "problem": "Write $\\dfrac{x^3 + 2x^2 - x + 3}{x^2 - 1}$ as a polynomial plus a proper fraction.\n\n**Solution:** Divide $x^3 + 2x^2 - x + 3$ by $x^2 - 1$:\n$$\n x^3 + 2x^2 - x + 3 = (x^2 - 1)(x + 2) + (3)\n$$\nWait, let me verify: $(x^2-1)(x+2) = x^3 + 2x^2 - x - 2$. \n\nSo the remainder is $(x^3 + 2x^2 - x + 3) - (x^3 + 2x^2 - x - 2) = 5$.\n\nTherefore:\n$$\n \\frac{x^3 + 2x^2 - x + 3}{x^2 - 1} = x + 2 + \\frac{5}{x^2 - 1}\n$$\nNow $\\frac{5}{x^2-1}$ is proper and can be decomposed further.",
+      "solution": ""
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-3.4",
+      "number": null,
+      "title": "Partial Fraction Decomposition",
+      "content": "To decompose a rational expression $\\dfrac{P(x)}{Q(x)}$:\n\n1. **Check proper:** If $\\deg(P) \\geq \\deg(Q)$, divide first to get \n a polynomial plus a proper fraction.\n\n2. **Factor completely:** Factor $Q(x)$ into linear factors \n $(ax + b)$ and irreducible quadratic factors $(ax^2 + bx + c)$.\n\n3. **Write the form:** For each factor, include:\n itemize\n\n4. Linear factor $(ax + b)^m$: $\\dfrac{A_1}{ax+b} + \\dfrac{A_2}{(ax+b)^2} + \\cdots + \\dfrac{A_m}{(ax+b)^m}$\n\n5. Quadratic factor $(ax^2+bx+c)^n$: $\\dfrac{B_1x + C_1}{ax^2+bx+c} + \\cdots + \\dfrac{B_nx + C_n}{(ax^2+bx+c)^n}$\n itemize\n\n6. **Clear denominators:** Multiply both sides by $Q(x)$.\n\n7. **Solve for constants:** Use substitution (plug in convenient \n $x$-values) or coefficient comparison (equate like powers of $x$)."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Case 1: Distinct Linear Factors"
+    },
+    {
+      "type": "paragraph",
+      "text": "If the denominator factors into distinct (non-repeated) linear factors:\n$$\n Q(x) = (a_1x + b_1)(a_2x + b_2) \\cdots (a_nx + b_n)\n$$\nthen the partial fraction decomposition has the form:\n$$\n \\frac{P(x)}{Q(x)} = \\frac{A_1}{a_1x + b_1} + \\frac{A_2}{a_2x + b_2} + \\cdots + \\frac{A_n}{a_nx + b_n}\n$$\nwhere $A_1, A_2, \\ldots, A_n$ are constants to be determined."
+    },
+    {
+      "type": "example",
+      "id": "example-3.2",
+      "number": "3.2",
+      "title": "Two distinct linear factors",
+      "problem": "Decompose $\\dfrac{5x - 3}{x^2 - x - 6}$.\n\n**Solution:** Factor the denominator: $x^2 - x - 6 = (x-3)(x+2)$.\n\nSet up the decomposition:\n$$\n \\frac{5x - 3}{(x-3)(x+2)} = \\frac{A}{x-3} + \\frac{B}{x+2}\n$$\n\nMultiply both sides by $(x-3)(x+2)$:\n$$\n 5x - 3 = A(x+2) + B(x-3)\n$$\n\n**Method 1 (Substitution):**\n\n- Let $x = 3$: $15 - 3 = A(5) + B(0) \\Rightarrow 12 = 5A \\Rightarrow A = \\frac{12}{5}$\n\n- Let $x = -2$: $-10 - 3 = A(0) + B(-5) \\Rightarrow -13 = -5B \\Rightarrow B = \\frac{13}{5}$\n\nTherefore:\n$$\n \\frac{5x - 3}{x^2 - x - 6} = \\frac{12/5}{x-3} + \\frac{13/5}{x+2} = \\frac{12}{5(x-3)} + \\frac{13}{5(x+2)}\n$$",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-3.3",
+      "number": "3.3",
+      "title": "Three distinct linear factors",
+      "problem": "Decompose $\\dfrac{2x^2 + x - 1}{x^3 - x}$.\n\n**Solution:** Factor: $x^3 - x = x(x-1)(x+1)$.\n\n$$\n \\frac{2x^2 + x - 1}{x(x-1)(x+1)} = \\frac{A}{x} + \\frac{B}{x-1} + \\frac{C}{x+1}\n$$\n\nMultiply through:\n$$\n 2x^2 + x - 1 = A(x-1)(x+1) + Bx(x+1) + Cx(x-1)\n$$\n\nSubstituting convenient values:\n\n- $x = 0$: $-1 = A(-1)(1) = -A \\Rightarrow A = 1$\n\n- $x = 1$: $2 + 1 - 1 = B(1)(2) = 2B \\Rightarrow B = 1$\n\n- $x = -1$: $2 - 1 - 1 = C(-1)(-2) = 2C \\Rightarrow C = 0$\n\nTherefore:\n$$\n \\frac{2x^2 + x - 1}{x^3 - x} = \\frac{1}{x} + \\frac{1}{x-1}\n$$",
+      "solution": ""
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-3.4",
+      "number": null,
+      "title": "The Heaviside Cover-Up Method",
+      "content": "For **distinct linear factors only**, there's a shortcut that avoids \nsolving systems of equations:\n\nTo find the coefficient over $(x - a)$:\n\n1. **Cover up** the factor $(x - a)$ in the denominator\n\n2. **Substitute** $x = a$ into what remains\n\n3. The result is your coefficient!\n\n**Example:** Decompose $\\dfrac{5x + 13}{(x+2)(x-3)}$.\n\n- **Coefficient over $(x+2)$:** Cover $(x+2)$, set $x = -2$:\n $$\n A = \\frac{5(-2) + 13}{(-2) - 3} = \\frac{3}{-5} = -\\frac{3}{5}\n $$\n\n- **Coefficient over $(x-3)$:** Cover $(x-3)$, set $x = 3$:\n $$\n B = \\frac{5(3) + 13}{3 + 2} = \\frac{28}{5}\n $$\n\nAnswer: $\\dfrac{5x + 13}{(x+2)(x-3)} = \\dfrac{-3/5}{x+2} + \\dfrac{28/5}{x-3}$\n\n**Why it works:** When you multiply through by $(x-a)$ and set $x = a$, \nall other terms vanish because they still have $(x-a)$ as a factor!\n\n**Limitation:** This only works for distinct linear factors. For repeated \nfactors or quadratics, use the coefficient-matching method."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Case 2: Repeated Linear Factors"
+    },
+    {
+      "type": "paragraph",
+      "text": "If a linear factor $(ax + b)$ appears $k$ times in the denominator, include \n$k$ terms with increasing powers:\n$$\n \\frac{A_1}{ax+b} + \\frac{A_2}{(ax+b)^2} + \\cdots + \\frac{A_k}{(ax+b)^k}\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-3.4",
+      "number": "3.4",
+      "title": "Repeated linear factor",
+      "problem": "Decompose $\\dfrac{3x + 5}{(x-1)^2}$.\n\n**Solution:**\n$$\n \\frac{3x + 5}{(x-1)^2} = \\frac{A}{x-1} + \\frac{B}{(x-1)^2}\n$$\n\nMultiply by $(x-1)^2$:\n$$\n 3x + 5 = A(x-1) + B\n$$\n\n- $x = 1$: $3 + 5 = B \\Rightarrow B = 8$\n\n- Compare $x$ coefficients: $3 = A$\n\nTherefore:\n$$\n \\frac{3x + 5}{(x-1)^2} = \\frac{3}{x-1} + \\frac{8}{(x-1)^2}\n$$",
+      "solution": ""
+    },
+    {
+      "type": "example",
+      "id": "example-3.5",
+      "number": "3.5",
+      "title": "Mixed: Distinct and repeated factors",
+      "problem": "Decompose $\\dfrac{x^2 + 2x + 3}{(x-1)(x+2)^2}$.\n\n**Solution:**\n$$\n \\frac{x^2 + 2x + 3}{(x-1)(x+2)^2} = \\frac{A}{x-1} + \\frac{B}{x+2} + \\frac{C}{(x+2)^2}\n$$\n\nMultiply through:\n$$\n x^2 + 2x + 3 = A(x+2)^2 + B(x-1)(x+2) + C(x-1)\n$$\n\n- $x = 1$: $1 + 2 + 3 = A(9) \\Rightarrow A = \\frac{6}{9} = \\frac{2}{3}$\n\n- $x = -2$: $4 - 4 + 3 = C(-3) \\Rightarrow C = -1$\n\n- $x = 0$: $3 = A(4) + B(-1)(2) + C(-1) = \\frac{8}{3} - 2B + 1$\n \n $3 = \\frac{11}{3} - 2B \\Rightarrow 2B = \\frac{11}{3} - 3 = \\frac{2}{3} \\Rightarrow B = \\frac{1}{3}$\n\nTherefore:\n$$\n \\frac{x^2 + 2x + 3}{(x-1)(x+2)^2} = \\frac{2}{3(x-1)} + \\frac{1}{3(x+2)} - \\frac{1}{(x+2)^2}\n$$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Case 3: Irreducible Quadratic Factors"
+    },
+    {
+      "type": "paragraph",
+      "text": "An **irreducible quadratic** is a quadratic $ax^2 + bx + c$ that \ncannot be factored over the reals (i.e., $b^2 - 4ac < 0$)."
+    },
+    {
+      "type": "paragraph",
+      "text": "For each distinct irreducible quadratic factor $ax^2 + bx + c$, include:\n$$\n \\frac{Ax + B}{ax^2 + bx + c}\n$$\nThe numerator must be linear (degree one less than the quadratic)."
+    },
+    {
+      "type": "example",
+      "id": "example-3.6",
+      "number": "3.6",
+      "title": "Irreducible quadratic factor",
+      "problem": "Decompose $\\dfrac{2x^2 - x + 4}{(x+1)(x^2+4)}$.\n\n**Solution:** Note that $x^2 + 4$ is irreducible (no real roots).\n\n$$\n \\frac{2x^2 - x + 4}{(x+1)(x^2+4)} = \\frac{A}{x+1} + \\frac{Bx + C}{x^2+4}\n$$\n\nMultiply through:\n$$\n 2x^2 - x + 4 = A(x^2+4) + (Bx+C)(x+1)\n$$\n\n- $x = -1$: $2 + 1 + 4 = A(5) \\Rightarrow A = \\frac{7}{5}$\n\nExpand the right side:\n$$\n A(x^2+4) + (Bx+C)(x+1) = Ax^2 + 4A + Bx^2 + Bx + Cx + C\n$$\n$$\n = (A+B)x^2 + (B+C)x + (4A+C)\n$$\n\nCompare coefficients with $2x^2 - x + 4$:\n\n- $x^2$: $A + B = 2 \\Rightarrow B = 2 - \\frac{7}{5} = \\frac{3}{5}$\n\n- $x^1$: $B + C = -1 \\Rightarrow C = -1 - \\frac{3}{5} = -\\frac{8}{5}$\n\n- Check $x^0$: $4A + C = 4 \\cdot \\frac{7}{5} - \\frac{8}{5} = \\frac{28-8}{5} = 4$ \n\nTherefore:\n$$\n \\frac{2x^2 - x + 4}{(x+1)(x^2+4)} = \\frac{7}{5(x+1)} + \\frac{3x - 8}{5(x^2+4)}\n$$",
+      "solution": ""
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Case 4: Repeated Quadratic Factors"
+    },
+    {
+      "type": "paragraph",
+      "text": "If an irreducible quadratic $(ax^2 + bx + c)$ appears $k$ times, include:\n$$\n \\frac{A_1x + B_1}{ax^2+bx+c} + \\frac{A_2x + B_2}{(ax^2+bx+c)^2} + \\cdots + \\frac{A_kx + B_k}{(ax^2+bx+c)^k}\n$$"
+    },
+    {
+      "type": "example",
+      "id": "example-3.7",
+      "number": "3.7",
+      "title": "Repeated quadratic factor",
+      "problem": "Decompose $\\dfrac{x^3 + x + 1}{(x^2+1)^2}$.\n\n**Solution:**\n$$\n \\frac{x^3 + x + 1}{(x^2+1)^2} = \\frac{Ax + B}{x^2+1} + \\frac{Cx + D}{(x^2+1)^2}\n$$\n\nMultiply through:\n$$\n x^3 + x + 1 = (Ax + B)(x^2+1) + Cx + D\n$$\n$$\n = Ax^3 + Ax + Bx^2 + B + Cx + D\n$$\n$$\n = Ax^3 + Bx^2 + (A+C)x + (B+D)\n$$\n\nCompare coefficients:\n\n- $x^3$: $A = 1$\n\n- $x^2$: $B = 0$\n\n- $x^1$: $A + C = 1 \\Rightarrow C = 0$\n\n- $x^0$: $B + D = 1 \\Rightarrow D = 1$\n\nTherefore:\n$$\n \\frac{x^3 + x + 1}{(x^2+1)^2} = \\frac{x}{x^2+1} + \\frac{1}{(x^2+1)^2}\n$$",
+      "solution": ""
+    },
+    {
+      "type": "figure",
+      "id": "fig:pf-flowchart",
+      "src": "/figures/precalculus/fig-pf-flowchart.svg",
+      "caption": "Choosing the decomposition form. Linear factors get constant numerators; irreducible quadratic factors get linear numerators. Repeated factors require one term for each power.",
+      "alt": "Choosing the decomposition form. Linear factors get constant numerators; irreducible quadratic factors get linear numerators. Repeated factors require one term for each power.",
+      "tikz": true
     },
     {
       "type": "summary",
       "id": "summary-3.4",
       "number": null,
-      "title": "Chapter 3: Rational Functions",
-      "content": "**Section 3.1: Rational Functions and Their Domains**\n\n- A **rational function** is $f(x) = \\frac{P(x)}{Q(x)}$ where \n $P$ and $Q$ are polynomials and $Q \\neq 0$.\n\n- The **domain** excludes all values where $Q(x) = 0$.\n\n- **Simplify** by factoring and canceling common factors; \n always state restrictions from the original expression.\n\n- Operations follow fraction rules: multiply/divide by manipulating \n numerators and denominators; add/subtract using common denominators.\n\n- Solve rational equations by multiplying by the LCD; always \n **check for extraneous solutions**.\n\n**Section 3.2: Asymptotes**\n\n- **Vertical asymptotes** occur at zeros of the denominator \n (in lowest terms). Graph approaches $\\pm\\infty$.\n\n- **Holes** occur when a factor cancels from both numerator \n and denominator. Single missing point.\n\n- **Horizontal asymptotes** (end behavior):\n itemize\n\n- $\\deg(P) < \\deg(Q)$: asymptote at $y = 0$\n\n- $\\deg(P) = \\deg(Q)$: asymptote at $y = \\frac{\\text{leading coefficients}}{}$\n\n- $\\deg(P) > \\deg(Q)$: no horizontal asymptote\n **Slant asymptotes** exist when $\\deg(P) = \\deg(Q) + 1$; \n find by polynomial long division.\nitemize\n\n**Section 3.3: Graphing Rational Functions**\n\n- Follow a systematic approach: factor, find domain, intercepts, \n asymptotes, symmetry, test points.\n\n- Test points near vertical asymptotes to determine if graph \n approaches $+\\infty$ or $-\\infty$.\n\n- Even functions (only even powers) are symmetric about the $y$-axis; \n odd functions (mixed even/odd in numerator vs denominator) are symmetric \n about the origin.\n\n- To find a function from a graph: asymptotes give denominator \n factors, intercepts give numerator factors."
+      "title": "Section 3.4 Summary",
+      "content": "- **Partial fraction decomposition** expresses a rational function \n as a sum of simpler fractions.\n\n- Always ensure the fraction is **proper** first (divide if necessary).\n\n- **Factor types determine numerator types:**\n itemize\n\n- Linear factor $(ax + b)^m$ → constant numerators $A$\n\n- Quadratic factor $(ax^2+bx+c)^n$ → linear numerators $Bx + C$\n \n **Repeated factors** require one term for each power (1 through $m$ or $n$).\n \n **Solving methods:**\n \n\n- Substitution: Plug in values that make factors zero\n\n- Coefficient comparison: Equate coefficients of like powers\n \n **Verify** by recombining the partial fractions.\nitemize"
     },
     {
-      "type": "heading",
-      "level": 2,
-      "text": "Review Exercises"
+      "type": "exercise",
+      "id": "ex-3.4-1",
+      "number": "1",
+      "problem": "A rational expression $\\dfrac{P(x)}{Q(x)}$ is called {1in} \nif the degree of $P(x)$ is less than the degree of $Q(x)$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Section 3.1 Review**"
+      "type": "exercise",
+      "id": "ex-3.4-2",
+      "number": "2",
+      "problem": "The process of writing a rational expression as a sum of simpler fractions \nis called {1in} {1in}.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Section 3.2 Review**"
+      "type": "exercise",
+      "id": "ex-3.4-3",
+      "number": "3",
+      "problem": "A quadratic that cannot be factored over $\\mathbb{R}$ is called {0.8in}.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Section 3.3 Review**"
+      "type": "exercise",
+      "id": "ex-3.4-4",
+      "number": "4",
+      "problem": "When a linear factor $(x - a)$ appears with multiplicity $k$ in the \ndenominator, the decomposition requires {0.5in} \nseparate fractions for that factor.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "heading",
-      "level": 2,
-      "text": "Mixed Review"
+      "type": "exercise",
+      "id": "ex-3.4-5",
+      "number": "5",
+      "problem": "For an irreducible quadratic factor, the numerator of the partial \nfraction must be {1in} (degree).",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "heading",
-      "level": 2,
-      "text": "Chapter 3 Test Preparation"
+      "type": "exercise",
+      "id": "ex-3.4-6",
+      "number": "6",
+      "problem": "The {1in} method finds constants by substituting \nvalues that make factors zero; the {1in} method \nequates coefficients of like powers.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-7",
+      "number": "7",
+      "problem": "True or False? Justify your answer.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-8",
+      "number": "8",
+      "problem": "1. Every proper rational expression can be decomposed into partial fractions.\n\n2. The partial fraction decomposition of a rational expression is unique.\n\n3. If the denominator has only linear factors, all numerators in \n the decomposition are constants.\n\n4. Before decomposing $\\dfrac{x^3 + 1}{x^2 - 1}$, you must first \n perform polynomial division.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-9",
+      "number": "9",
+      "problem": "1. $x^2 + 4$ is an irreducible quadratic.\n\n2. $x^2 - 4$ is an irreducible quadratic.\n\n3. The decomposition of $\\dfrac{1}{(x-1)^3}$ requires three terms.\n\n4. The decomposition of $\\dfrac{1}{(x^2+1)^2}$ requires two terms \n with linear numerators.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-10",
+      "number": "10",
+      "problem": "Without decomposing, determine how many unknown constants appear in \nthe partial fraction form of each expression.\n\n1. $\\dfrac{x}{(x-1)(x+2)}$\n\n2. $\\dfrac{x}{(x-1)^2(x+2)}$\n\n3. $\\dfrac{x}{(x-1)(x^2+1)}$\n\n4. $\\dfrac{x^2}{(x-1)^2(x^2+1)^2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-11",
+      "number": "11",
+      "problem": "Match each rational expression with the correct form of its decomposition.\n\n1. $\\dfrac{x}{(x-1)(x+2)}$\n\n2. $\\dfrac{x}{(x-1)^2}$\n\n3. $\\dfrac{x}{x^2+1}$\n\n4. $\\dfrac{x}{(x-1)(x^2+1)}$\n\n1. $\\dfrac{A}{x-1} + \\dfrac{B}{(x-1)^2}$\n\n2. $\\dfrac{A}{x-1} + \\dfrac{B}{x+2}$\n\n3. $\\dfrac{A}{x-1} + \\dfrac{Bx+C}{x^2+1}$\n\n4. Already in simplest partial fraction form",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-12",
+      "number": "12",
+      "problem": "Explain why the decomposition $\\dfrac{x^2}{(x-1)(x+1)} = \n\\dfrac{A}{x-1} + \\dfrac{B}{x+1}$ cannot be correct before even \nsolving for $A$ and $B$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-13",
+      "number": "13",
+      "problem": "1. $\\dfrac{x^2 + 1}{x^3 - x}$\n\n2. $\\dfrac{x^3 - 2x}{x^2 + 1}$\n\n3. $\\dfrac{3x + 5}{x^2 - 4}$\n\n4. $\\dfrac{x^4}{x^4 + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-14",
+      "number": "14",
+      "problem": "1. $\\dfrac{x^5 - 1}{x^3 + x}$\n\n2. $\\dfrac{2x^2 + 3}{x^3 - 8}$\n\n3. $\\dfrac{x^2 + x + 1}{x^2 - 1}$\n\n4. $\\dfrac{x^3}{x^3 + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-15",
+      "number": "15",
+      "problem": "1. $\\dfrac{x^2 + 3x + 5}{x + 1}$\n\n2. $\\dfrac{2x^3 - x^2 + 4}{x^2 + 2}$\n\n3. $\\dfrac{x^4 - 1}{x^2 - 1}$\n\n4. $\\dfrac{x^3 + 2x^2 - x - 5}{x^2 - 3}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-16",
+      "number": "16",
+      "problem": "1. $\\dfrac{x^3 + 5x^2 + 7x + 2}{x + 2}$\n\n2. $\\dfrac{2x^4 - 3x^3 + x - 5}{x^2 - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-17",
+      "number": "17",
+      "problem": "1. $\\dfrac{3}{x^2 - 9}$\n\n2. $\\dfrac{x}{x^2 - 1}$\n\n3. $\\dfrac{5x + 1}{x^2 + x - 6}$\n\n4. $\\dfrac{2x - 3}{x^2 - 3x + 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-18",
+      "number": "18",
+      "problem": "1. $\\dfrac{4x + 1}{(x-1)(x+3)}$\n\n2. $\\dfrac{x - 5}{x^2 - 5x + 6}$\n\n3. $\\dfrac{3x + 7}{x^2 + 5x + 4}$\n\n4. $\\dfrac{2x + 1}{x^2 - x - 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-19",
+      "number": "19",
+      "problem": "1. $\\dfrac{x + 14}{x^2 - 2x - 8}$\n\n2. $\\dfrac{5x - 2}{x^2 + 2x - 3}$\n\n3. $\\dfrac{6x - 1}{(2x-1)(x+2)}$\n\n4. $\\dfrac{7x - 1}{x^2 - x - 12}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-20",
+      "number": "20",
+      "problem": "1. $\\dfrac{4}{x^2 - 4x}$\n\n2. $\\dfrac{10x + 2}{(x-4)(x+1)}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-21",
+      "number": "21",
+      "problem": "(Three distinct linear factors)\n\n1. $\\dfrac{x^2 - 2}{x^3 - x}$\n\n2. $\\dfrac{x^2 + 2x - 1}{x^3 - x^2 - 2x}$\n\n3. $\\dfrac{3x^2 - 7x - 2}{x(x-1)(x+2)}$\n\n4. $\\dfrac{4x^2 - 7x - 12}{x(x-2)(x+3)}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-22",
+      "number": "22",
+      "problem": "(Three distinct linear factors)\n\n1. $\\dfrac{2x^2 + 5x - 1}{(x-1)(x+1)(x-2)}$\n\n2. $\\dfrac{x^2 + 3x + 2}{(x-1)(x-2)(x-3)}$\n\n3. $\\dfrac{x^2}{(x-1)(x+2)(x-3)}$\n\n4. $\\dfrac{6x^2 - 14x + 6}{(x-1)(x-2)(x-3)}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-23",
+      "number": "23",
+      "problem": "1. $\\dfrac{x + 3}{(x-2)^2}$\n\n2. $\\dfrac{2x - 1}{(x+1)^2}$\n\n3. $\\dfrac{2x + 7}{(x+2)^2}$\n\n4. $\\dfrac{5x + 4}{x^2(x-1)}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-24",
+      "number": "24",
+      "problem": "1. $\\dfrac{3x^2 + 2x + 1}{x^3}$\n\n2. $\\dfrac{x + 1}{(x-1)^2(x+2)}$\n\n3. $\\dfrac{x^2 - 2x + 3}{(x-1)(x+1)^2}$\n\n4. $\\dfrac{x^2 - 4x + 7}{(x-3)^2(x+1)}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-25",
+      "number": "25",
+      "problem": "1. $\\dfrac{2x^2 + x - 8}{(x+3)(x-1)^2}$\n\n2. $\\dfrac{x^2 + 5x + 2}{x(x+1)^2}$\n\n3. $\\dfrac{5x^2 + 20x + 6}{x^3 + 6x^2 + 9x}$\n\n4. $\\dfrac{x^2 + x + 2}{x^3 + 2x^2 + x}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-26",
+      "number": "26",
+      "problem": "(Higher multiplicity)\n\n1. $\\dfrac{x^3 + x^2 - x + 2}{x^2(x-1)^2}$\n\n2. $\\dfrac{3x^2 - x + 1}{(x-2)^3}$\n\n3. $\\dfrac{x^2 + 1}{x(x-1)^3}$\n\n4. $\\dfrac{5x^3 - 3x^2 + 2x - 1}{x^2(x+1)^2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-27",
+      "number": "27",
+      "problem": "1. $\\dfrac{x + 2}{x(x^2+1)}$\n\n2. $\\dfrac{2x - 3}{(x-1)(x^2+1)}$\n\n3. $\\dfrac{x^2 + 2}{(x+1)(x^2+4)}$\n\n4. $\\dfrac{4x + 3}{x^2+9}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-28",
+      "number": "28",
+      "problem": "1. $\\dfrac{3x^2 - x + 2}{x^3 + 4x}$\n\n2. $\\dfrac{x^2 - x + 3}{(x-2)(x^2+3)}$\n\n3. $\\dfrac{2x^2 - 5x + 2}{(x-2)(x^2+x+1)}$\n\n4. $\\dfrac{3x^2 + 2x + 5}{(x+1)(x^2+2x+5)}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-29",
+      "number": "29",
+      "problem": "(Two irreducible quadratics)\n\n1. $\\dfrac{x^2 + 3x - 1}{(x^2+1)(x^2+2)}$\n\n2. $\\dfrac{x^3 + 2x}{(x^2+1)(x^2+4)}$\n\n3. $\\dfrac{x^3 + x + 1}{x^4 + 5x^2 + 4}$\n\n4. $\\dfrac{x^4 + x^2 + 1}{(x^2+x+1)(x^2-x+1)}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-30",
+      "number": "30",
+      "problem": "1. $\\dfrac{5x^2 - 3x + 10}{x^3 - 2x^2 - 5x + 6}$\n\n2. $\\dfrac{3x^3 + 5x^2 + 8x + 4}{(x^2+2x+2)(x^2+1)}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-31",
+      "number": "31",
+      "problem": "1. $\\dfrac{x}{(x^2+1)^2}$\n\n2. $\\dfrac{x^2 + 2}{(x^2+1)^2}$\n\n3. $\\dfrac{x^3 - x + 1}{(x^2+4)^2}$\n\n4. $\\dfrac{2x^3 + 3x}{(x^2+2)^2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-32",
+      "number": "32",
+      "problem": "1. $\\dfrac{x^2}{x(x^2+1)^2}$\n\n2. $\\dfrac{x^4 + x^2 + 1}{(x^2+1)^3}$\n\n3. $\\dfrac{x^3 + 3x - 2}{(x^2+2)^2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-33",
+      "number": "33",
+      "problem": "1. $\\dfrac{x^3 - 3x^2 + 5x - 3}{x^2 - 3x + 2}$ (divide first)\n\n2. $\\dfrac{x^4 + 1}{x^3 + x}$\n\n3. $\\dfrac{x^3}{(x-1)^2(x^2+1)}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-34",
+      "number": "34",
+      "problem": "1. $\\dfrac{x^4 - x^3 + x^2 - x + 1}{x^3 - 1}$\n\n2. $\\dfrac{x^5}{(x^2-1)(x^2+1)}$\n\n3. $\\dfrac{x^3 - 2x^2 + x + 1}{x^4 - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-35",
+      "number": "35",
+      "problem": "1. $\\dfrac{2x^4 + 3x^3 + 7x^2 + 6x + 4}{(x^2+1)(x^2+2)}$\n\n2. $\\dfrac{x^5 + x^4 + 2x^3 + 2x^2 + x + 1}{(x^2+1)^2(x+1)}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-36",
+      "number": "36",
+      "problem": "1. $\\dfrac{x^4 + 2x^3 + 3x^2 + 2x + 1}{(x+1)^2(x^2+1)}$\n\n2. $\\dfrac{2x^3 - x^2 + 4x - 2}{(x^2+2)(x-1)^2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-37",
+      "number": "37",
+      "problem": "Verify your decomposition by adding the partial fractions back together:\n$\\dfrac{3}{x-1} - \\dfrac{2}{x+2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-38",
+      "number": "38",
+      "problem": "Find constants $A$ and $B$ such that:\n$\\dfrac{1}{n(n+1)} = \\dfrac{A}{n} + \\dfrac{B}{n+1}$\n\nThen use this to evaluate $\\displaystyle\\sum_{n=1}^{100} \\frac{1}{n(n+1)}$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-39",
+      "number": "39",
+      "problem": "Use partial fractions to show that:\n$\\dfrac{1}{n(n+2)} = \\dfrac{1}{2}\\left(\\dfrac{1}{n} - \\dfrac{1}{n+2}\\right)$\n\nThen find $\\displaystyle\\sum_{n=1}^{50} \\frac{1}{n(n+2)}$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-40",
+      "number": "40",
+      "problem": "Decompose $\\dfrac{1}{k^2-1}$ and use it to evaluate \n$\\displaystyle\\sum_{k=2}^{n} \\frac{1}{k^2-1}$ as a formula in $n$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-41",
+      "number": "41",
+      "problem": "Use partial fractions to evaluate $\\displaystyle\\sum_{k=1}^{n} \\frac{1}{k(k+1)(k+2)}$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-42",
+      "number": "42",
+      "problem": "Decompose $\\dfrac{k}{(k+1)!}$ (hint: write as $\\dfrac{(k+1)-1}{(k+1)!}$) \nand use the result to find $\\displaystyle\\sum_{k=1}^{n} \\frac{k}{(k+1)!}$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-43",
+      "number": "43",
+      "problem": "In calculus, $\\int \\dfrac{1}{x-a}\\,dx = \\ln|x-a| + C$. Use partial fractions \nto set up the integral $\\int \\dfrac{3x+5}{x^2-4}\\,dx$ as a sum of simpler \nintegrals (you don't need to evaluate them).",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Calculus Preview"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-44",
+      "number": "44",
+      "problem": "Set up $\\int \\dfrac{x^2+1}{x(x^2+4)}\\,dx$ using partial fractions. \n(Don't evaluate—just decompose.)",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Calculus Preview"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-45",
+      "number": "45",
+      "problem": "Use a CAS (computer algebra system) or graphing utility to verify your \ndecomposition of $\\dfrac{x^2 + 3x - 7}{(x-2)(x+1)(x-3)}$ by:\n\n1. Computing the partial fraction decomposition directly\n\n2. Graphing both the original and decomposed forms to confirm they match",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-46",
+      "number": "46",
+      "problem": "Use technology to decompose $\\dfrac{x^4 - 2x^3 + 3x^2 - 2x + 1}{(x^2+1)^2(x-1)}$. \nVerify by expanding and simplifying the result.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-47",
+      "number": "47",
+      "problem": "Graph $f(x) = \\dfrac{2x-1}{x^2-1}$ and its partial fractions \n$g(x) = \\dfrac{A}{x-1} + \\dfrac{B}{x+1}$ separately. How do the graphs \nof the individual partial fractions relate to the graph of $f$?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-48",
+      "number": "48",
+      "problem": "For $f(x) = \\dfrac{1}{x(x-1)(x-2)}$:\n\n1. Find the partial fraction decomposition.\n\n2. Graph each partial fraction and the original function.\n\n3. Explain how the vertical asymptotes of $f$ relate to the \n asymptotes of the partial fractions.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-49",
+      "number": "49",
+      "problem": "Describe and correct the error.",
+      "variant": "error",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-50",
+      "number": "50",
+      "problem": "Setting up the decomposition of $\\dfrac{x^2+1}{x(x-1)}$:\nquote\n\"$\\dfrac{x^2+1}{x(x-1)} = \\dfrac{A}{x} + \\dfrac{B}{x-1}$\n\nMultiply through: $x^2+1 = A(x-1) + Bx$...\" \nquote",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-51",
+      "number": "51",
+      "problem": "Decomposing $\\dfrac{3}{(x-1)^2}$:\nquote\n\"$\\dfrac{3}{(x-1)^2} = \\dfrac{A}{(x-1)^2}$\n\nSo $A = 3$ and the decomposition is $\\dfrac{3}{(x-1)^2}$.\" \nquote",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-52",
+      "number": "52",
+      "problem": "Setting up the decomposition of $\\dfrac{x+1}{(x-2)(x^2+4)}$:\nquote\n\"$\\dfrac{x+1}{(x-2)(x^2+4)} = \\dfrac{A}{x-2} + \\dfrac{B}{x^2+4}$\" \nquote",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-53",
+      "number": "53",
+      "problem": "Finding $A$ in $\\dfrac{2x+3}{(x-1)(x+2)} = \\dfrac{A}{x-1} + \\dfrac{B}{x+2}$:\nquote\n\"Let $x = 1$: $2(1)+3 = A(1+2)$, so $5 = 3A$, giving $A = \\dfrac{5}{3}$.\n\nLet $x = 1$ again to check: $5 = \\dfrac{5}{3}(3) = 5$. 51\n\nSo $A = \\dfrac{5}{3}$ and we're done.\" \nquote",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-54",
+      "number": "54",
+      "problem": "Show that for distinct values $a$ and $b$:\n$$\n \\frac{1}{(x-a)(x-b)} = \\frac{1}{a-b}\\left(\\frac{1}{x-a} - \\frac{1}{x-b}\\right)\n$$",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-55",
+      "number": "55",
+      "problem": "Derive a general partial fraction formula for \n$\\dfrac{1}{(x-a)(x-b)(x-c)}$ where $a$, $b$, $c$ are distinct.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-56",
+      "number": "56",
+      "problem": "Decompose $\\dfrac{1}{x^n - 1}$ for $n = 2, 3, 4$. What pattern \ndo you observe? Can you conjecture a general form?",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-57",
+      "number": "57",
+      "problem": "Prove the **Heaviside cover-up method**: If $\\dfrac{P(x)}{Q(x)} = \n\\dfrac{A}{x-r} + \\dfrac{\\text{other terms}}{\\text{other factors}}$ where \n$(x-r)$ is a simple factor of $Q(x)$, then $A = \\dfrac{P(r)}{Q'(r)}$ \nwhere $Q'$ is the derivative of $Q$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-58",
+      "number": "58",
+      "problem": "The function $\\dfrac{1}{1-x^2}$ can be written as $\\dfrac{A}{1-x} + \\dfrac{B}{1+x}$.\nFind $A$ and $B$, then expand each fraction as a geometric series. \nWhat is the power series for $\\dfrac{1}{1-x^2}$? For what values of $x$ \ndoes it converge?",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-59",
+      "number": "59",
+      "problem": "Prove that if $p(x)$ is a polynomial of degree less than $n$, then \nthere exist unique constants $c_0, c_1, \\ldots, c_{n-1}$ such that\n$$\n \\frac{p(x)}{(x-a)^n} = \\frac{c_0}{(x-a)^n} + \\frac{c_1}{(x-a)^{n-1}} + \\cdots + \\frac{c_{n-1}}{x-a}\n$$",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-60",
+      "number": "60",
+      "problem": "Find all rational functions $f(x) = \\dfrac{p(x)}{q(x)}$ where $\\deg(p) < \\deg(q)$ \nsuch that the partial fraction decomposition of $f$ equals $f$ itself \n(i.e., $f$ is already a \"partial fraction\").",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.4-61",
+      "number": "61",
+      "problem": "Let $f(x) = \\dfrac{1}{x^4+1}$. Factor the denominator over the reals \n(hint: $x^4+1 = (x^2+\\sqrt{2}x+1)(x^2-\\sqrt{2}x+1)$) and find the \npartial fraction decomposition.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
     }
   ]
 }

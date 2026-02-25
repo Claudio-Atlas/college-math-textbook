@@ -4,6 +4,19 @@
   "chapter": 10,
   "section": 2,
   "book": "precalculus",
+  "objectives": [
+    "Define an ellipse as a locus of points with constant sum of distances to two foci",
+    "Write equations of ellipses centered at the origin or at $(h,k)$",
+    "Identify the center, vertices, foci, and eccentricity from an equation",
+    "Graph ellipses and determine major/minor axes",
+    "Apply ellipses to planetary orbits and whispering galleries"
+  ],
+  "devotional": {
+    "title": "The Two Foci",
+    "scripture": "Matthew 6:24",
+    "content": "An ellipse is defined by its relationship to *two* fixed points, \nthe foci. Every point on the ellipse maintains a constant total distance \nto both foci. The ellipse cannot favor one focus over the other—its \nvery shape emerges from honoring both equally.\n\nIn life, we often face tensions between two goods: work and rest, justice \nand mercy, individual and community, contemplation and action. The temptation \nis to collapse to one focus, to simplify by ignoring the other. But the \nellipse teaches us that the most beautiful curves emerge from holding \nboth foci in tension.\n\nJesus himself embodied this dynamic balance: fully divine and fully human, \nspeaking truth with grace, confronting sin while offering forgiveness. \nThe Christian life, like an ellipse, is not about choosing between the \nfoci but about living in faithful relationship to both.\n\nWhen Kepler discovered that planetary orbits are ellipses rather than \ncircles, he initially felt disappointed. Circles seemed more \"perfect.\" \nBut he came to see the ellipse as revealing even greater beauty—the \nbeauty of relationship, of two foci in creative tension.",
+    "edition": "christian"
+  },
   "content": [
     {
       "type": "paragraph",
@@ -35,15 +48,37 @@
     },
     {
       "type": "paragraph",
-      "text": "If $F_1$ and $F_2$ are the foci and $2a$ is the constant sum, then for \nany point $P$ on the ellipse:\n\\[\n |PF_1| + |PF_2| = 2a\n\\]"
+      "text": "If $F_1$ and $F_2$ are the foci and $2a$ is the constant sum, then for \nany point $P$ on the ellipse:\n$$\n |PF_1| + |PF_2| = 2a\n$$"
     },
     {
       "type": "paragraph",
       "text": "Why write $2a$ instead of just some constant $k$? Because $a$ will turn \nout to be the semi-major axis—half the longest diameter of the ellipse. \nUsing $2a$ keeps the formulas clean."
     },
     {
+      "type": "figure",
+      "id": "fig:ellipse-definition",
+      "src": "/figures/precalculus/fig-ellipse-definition.svg",
+      "caption": "The definition of an ellipse. Point $P$ lies on the ellipse because the sum of its distances to the two foci, $d_1 + d_2$, equals the constant $2a$. The foci $F_1$ and $F_2$ are symmetric about the center $C$.",
+      "alt": "The definition of an ellipse. Point $P$ lies on the ellipse because the sum of its distances to the two foci, $d_1 + d_2$, equals the constant $2a$. The foci $F_1$ and $F_2$ are symmetric about the center $C$.",
+      "tikz": true
+    },
+    {
       "type": "paragraph",
       "text": "You can draw an ellipse using a string and two pins: push pins into a \nboard at the foci, loop a string around them, pull the string taut with \na pencil, and trace the curve. The string ensures that $|PF_1| + |PF_2|$ \nremains constant—it equals the length of the string."
+    },
+    {
+      "type": "remark",
+      "id": "remark-10.2",
+      "number": null,
+      "title": "The String Construction of an Ellipse",
+      "content": "The **gardener's method** (or string construction) provides both a \npractical way to draw ellipses and deep insight into their geometry:\n\n1. Place two pins (or stakes) at the foci $F_1$ and $F_2$, separated \n by distance $2c$.\n\n2. Take a string of length $2a$ (where $a > c$) and tie the ends \n to the pins.\n\n3. Pull the string taut with a pencil and trace the curve while \n keeping the string taut.\n\n**Why this works:** At any position, the pencil point $P$ satisfies \n$|PF_1| + |PF_2| = 2a$ because the total string length is fixed. This is \nprecisely the definition of an ellipse!\n\n**The string length determines the shape:**\n\n- If string length $= 2c$ (just touches both foci): degenerate case, \n the \"ellipse\" is just the line segment between foci\n\n- If string length $\\gg 2c$: nearly circular ellipse\n\n- If string length is only slightly $> 2c$: very elongated ellipse"
+    },
+    {
+      "type": "method",
+      "id": "method-10.2",
+      "number": null,
+      "title": "Deriving the Ellipse Equation from the Definition",
+      "content": "We derive $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ from the locus definition.\n\n**Setup:** Place foci at $F_1 = (-c, 0)$ and $F_2 = (c, 0)$ on the $x$-axis. \nLet $P = (x, y)$ be any point on the ellipse.\n\n**Step 1: Write the defining condition.**\n$$\n|PF_1| + |PF_2| = 2a\n$$\n\n**Step 2: Express distances using the distance formula.**\n$$\n\\sqrt{(x + c)^2 + y^2} + \\sqrt{(x - c)^2 + y^2} = 2a\n$$\n\n**Step 3: Isolate one radical and square.**\n\nLet $r_1 = \\sqrt{(x+c)^2 + y^2}$ and $r_2 = \\sqrt{(x-c)^2 + y^2}$.\n\nFrom $r_1 + r_2 = 2a$: $r_1 = 2a - r_2$\n\nSquare: $r_1^2 = 4a^2 - 4ar_2 + r_2^2$\n\nSubstitute: $(x+c)^2 + y^2 = 4a^2 - 4ar_2 + (x-c)^2 + y^2$\n\nExpand and simplify: $4cx = 4a^2 - 4ar_2 \\implies r_2 = a - \\frac{cx}{a}$\n\n**Step 4: Square again to eliminate the remaining radical.**\n\n$(x-c)^2 + y^2 = \\left(a - \\frac{cx}{a}\\right)^2$\n\nExpand both sides and use $b^2 = a^2 - c^2$:\n$$\n\\frac{x^2}{a^2} + \\frac{y^2}{a^2 - c^2} = 1 \\implies \\boxed{\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1}\n$$"
     },
     {
       "type": "heading",
@@ -62,8 +97,16 @@
       "content": "For an ellipse:\n\n- The **center** is the midpoint of \n the segment joining the foci.\n\n- The **major axis** is the longest \n diameter, passing through both foci. Its length is $2a$.\n\n- The **minor axis** is the shortest \n diameter, perpendicular to the major axis through the center. Its \n length is $2b$.\n\n- The **vertices** are the endpoints \n of the major axis.\n\n- The **co-vertices** are the endpoints of the minor axis.\n\n- The distance from center to each focus is $c$."
     },
     {
+      "type": "figure",
+      "id": "fig:ellipse-anatomy",
+      "src": "/figures/precalculus/fig-ellipse-anatomy.svg",
+      "caption": "The anatomy of an ellipse. The major axis (orange) has length $2a$ with vertices $V_1$ and $V_2$ at its endpoints. The minor axis (gray) has length $2b$ with co-vertices at its endpoints. The foci $F_1$ and $F_2$ (teal) lie on the major axis at distance $c$ from the center, where $c^2 = a^2 - b^2$.",
+      "alt": "The anatomy of an ellipse. The major axis (orange) has length $2a$ with vertices $V_1$ and $V_2$ at its endpoints. The minor axis (gray) has length $2b$ with co-vertices at its endpoints. The foci $F_1$ and $F_2$ (teal) lie on the major axis at distance $c$ from the center, where $c^2 = a^2 - b^2$.",
+      "tikz": true
+    },
+    {
       "type": "paragraph",
-      "text": "The parameters $a$, $b$, and $c$ are related by a fundamental equation. \nConsider a point at the end of the minor axis, say $(0, b)$ if the center \nis at the origin. The distance from $(0, b)$ to each focus at $(\\pm c, 0)$ \nis $\\sqrt{c^2 + b^2}$. The sum of distances to the foci is:\n\\[\n 2\\sqrt{c^2 + b^2} = 2a\n\\]"
+      "text": "The parameters $a$, $b$, and $c$ are related by a fundamental equation. \nConsider a point at the end of the minor axis, say $(0, b)$ if the center \nis at the origin. The distance from $(0, b)$ to each focus at $(\\pm c, 0)$ \nis $\\sqrt{c^2 + b^2}$. The sum of distances to the foci is:\n$$\n 2\\sqrt{c^2 + b^2} = 2a\n$$"
     },
     {
       "type": "paragraph",
@@ -74,7 +117,7 @@
       "id": "theorem-10.1",
       "number": "10.1",
       "title": "The Ellipse Relationship",
-      "content": "For any ellipse with semi-major axis $a$, semi-minor axis $b$, and \nfocal distance $c$:\n\\[\n c^2 = a^2 - b^2 \\qquad \\text{or equivalently} \\qquad a^2 = b^2 + c^2\n\\]",
+      "content": "For any ellipse with semi-major axis $a$, semi-minor axis $b$, and \nfocal distance $c$:\n$$\n c^2 = a^2 - b^2 \\qquad \\text{or equivalently} \\qquad a^2 = b^2 + c^2\n$$",
       "label": "Theorem"
     },
     {
@@ -98,7 +141,7 @@
       "id": "theorem-10.2",
       "number": "10.2",
       "title": "Standard Form of an Ellipse (Center at Origin)",
-      "content": "An ellipse centered at the origin has equation:\n\\[\n \\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\n\\]\n\n**If $a > b$:** Major axis is horizontal.\n\n- Vertices: $(\\pm a, 0)$\n\n- Co-vertices: $(0, \\pm b)$\n\n- Foci: $(\\pm c, 0)$ where $c = \\sqrt{a^2 - b^2}$\n\n**If $b > a$:** Major axis is vertical.\n\n- Vertices: $(0, \\pm b)$\n\n- Co-vertices: $(\\pm a, 0)$\n\n- Foci: $(0, \\pm c)$ where $c = \\sqrt{b^2 - a^2}$",
+      "content": "An ellipse centered at the origin has equation:\n$$\n \\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1\n$$\n\n**If $a > b$:** Major axis is horizontal.\n\n- Vertices: $(\\pm a, 0)$\n\n- Co-vertices: $(0, \\pm b)$\n\n- Foci: $(\\pm c, 0)$ where $c = \\sqrt{a^2 - b^2}$\n\n**If $b > a$:** Major axis is vertical.\n\n- Vertices: $(0, \\pm b)$\n\n- Co-vertices: $(\\pm a, 0)$\n\n- Foci: $(0, \\pm c)$ where $c = \\sqrt{b^2 - a^2}$",
       "label": "Theorem"
     },
     {
@@ -135,7 +178,7 @@
       "id": "theorem-10.3",
       "number": "10.3",
       "title": "Standard Form of an Ellipse (General Center)",
-      "content": "An ellipse centered at $(h, k)$ has equation:\n\\[\n \\frac{(x-h)^2}{a^2} + \\frac{(y-k)^2}{b^2} = 1\n\\]\n\nIf $a > b$: horizontal major axis, vertices at $(h \\pm a, k)$, foci at \n$(h \\pm c, k)$.\n\nIf $b > a$: vertical major axis, vertices at $(h, k \\pm b)$, foci at \n$(h, k \\pm c)$.",
+      "content": "An ellipse centered at $(h, k)$ has equation:\n$$\n \\frac{(x-h)^2}{a^2} + \\frac{(y-k)^2}{b^2} = 1\n$$\n\nIf $a > b$: horizontal major axis, vertices at $(h \\pm a, k)$, foci at \n$(h \\pm c, k)$.\n\nIf $b > a$: vertical major axis, vertices at $(h, k \\pm b)$, foci at \n$(h, k \\pm c)$.",
       "label": "Theorem"
     },
     {
@@ -152,7 +195,7 @@
       "number": "10.4",
       "title": "Writing an equation from given properties",
       "problem": "Write the equation of the ellipse with foci at $(1, 2)$ and $(7, 2)$, \nwhere the sum of distances from any point on the ellipse to the foci is 10.",
-      "solution": "The foci are at $(1, 2)$ and $(7, 2)$. Since they have the same \n$y$-coordinate, the major axis is horizontal.\n\nThe center is the midpoint of the foci:\n\\[\n (h, k) = \\left(\\frac{1+7}{2}, \\frac{2+2}{2}\\right) = (4, 2)\n\\]\n\nThe sum of distances to the foci is $2a = 10$, so $a = 5$.\n\nThe distance from center to each focus is:\n\\[\n c = |7 - 4| = 3\n\\]\n\nNow find $b$ using $c^2 = a^2 - b^2$:\n\\[\n 9 = 25 - b^2 \\implies b^2 = 16 \\implies b = 4\n\\]\n\nThe equation is:\n\\[\n \\frac{(x-4)^2}{25} + \\frac{(y-2)^2}{16} = 1\n\\]"
+      "solution": "The foci are at $(1, 2)$ and $(7, 2)$. Since they have the same \n$y$-coordinate, the major axis is horizontal.\n\nThe center is the midpoint of the foci:\n$$\n (h, k) = \\left(\\frac{1+7}{2}, \\frac{2+2}{2}\\right) = (4, 2)\n$$\n\nThe sum of distances to the foci is $2a = 10$, so $a = 5$.\n\nThe distance from center to each focus is:\n$$\n c = |7 - 4| = 3\n$$\n\nNow find $b$ using $c^2 = a^2 - b^2$:\n$$\n 9 = 25 - b^2 \\implies b^2 = 16 \\implies b = 4\n$$\n\nThe equation is:\n$$\n \\frac{(x-4)^2}{25} + \\frac{(y-2)^2}{16} = 1\n$$"
     },
     {
       "type": "heading",
@@ -169,7 +212,7 @@
       "number": "10.5",
       "title": "Completing the square for an ellipse",
       "problem": "Write $4x^2 + 9y^2 - 16x + 54y + 61 = 0$ in standard form and find all \nkey features.",
-      "solution": "Group the $x$ and $y$ terms:\n\\[\n 4x^2 - 16x + 9y^2 + 54y = -61\n\\]\n\nFactor out the coefficients of the squared terms:\n\\[\n 4(x^2 - 4x) + 9(y^2 + 6y) = -61\n\\]\n\nComplete the square in each group:\n$$\n 4(x^2 - 4x + 4 - 4) + 9(y^2 + 6y + 9 - 9) &= -61 \\\\\n 4(x^2 - 4x + 4) - 16 + 9(y^2 + 6y + 9) - 81 &= -61 \\\\\n 4(x - 2)^2 + 9(y + 3)^2 &= -61 + 16 + 81 \\\\\n 4(x - 2)^2 + 9(y + 3)^2 &= 36\n$$\n\nDivide by 36 to get 1 on the right:\n\\[\n \\frac{(x - 2)^2}{9} + \\frac{(y + 3)^2}{4} = 1\n\\]\n\nNow we can read off:\n\n- Center: $(2, -3)$\n\n- $a^2 = 9$, $b^2 = 4$, so $a = 3$, $b = 2$\n\n- Since $a^2 > b^2$, major axis is horizontal\n\n- $c = \\sqrt{9 - 4} = \\sqrt{5}$\n\n- Vertices: $(2 \\pm 3, -3) = (5, -3)$ and $(-1, -3)$\n\n- Co-vertices: $(2, -3 \\pm 2) = (2, -1)$ and $(2, -5)$\n\n- Foci: $(2 \\pm \\sqrt{5}, -3)$"
+      "solution": "Group the $x$ and $y$ terms:\n$$\n 4x^2 - 16x + 9y^2 + 54y = -61\n$$\n\nFactor out the coefficients of the squared terms:\n$$\n 4(x^2 - 4x) + 9(y^2 + 6y) = -61\n$$\n\nComplete the square in each group:\n$$\n 4(x^2 - 4x + 4 - 4) + 9(y^2 + 6y + 9 - 9) &= -61 \\\\\n 4(x^2 - 4x + 4) - 16 + 9(y^2 + 6y + 9) - 81 &= -61 \\\\\n 4(x - 2)^2 + 9(y + 3)^2 &= -61 + 16 + 81 \\\\\n 4(x - 2)^2 + 9(y + 3)^2 &= 36\n$$\n\nDivide by 36 to get 1 on the right:\n$$\n \\frac{(x - 2)^2}{9} + \\frac{(y + 3)^2}{4} = 1\n$$\n\nNow we can read off:\n\n- Center: $(2, -3)$\n\n- $a^2 = 9$, $b^2 = 4$, so $a = 3$, $b = 2$\n\n- Since $a^2 > b^2$, major axis is horizontal\n\n- $c = \\sqrt{9 - 4} = \\sqrt{5}$\n\n- Vertices: $(2 \\pm 3, -3) = (5, -3)$ and $(-1, -3)$\n\n- Co-vertices: $(2, -3 \\pm 2) = (2, -1)$ and $(2, -5)$\n\n- Foci: $(2 \\pm \\sqrt{5}, -3)$"
     },
     {
       "type": "heading",
@@ -185,7 +228,7 @@
       "id": "definition-10.3",
       "number": "10.3",
       "title": "Eccentricity of an Ellipse",
-      "content": "The **eccentricity** of an ellipse is:\n\\[\n e = \\frac{c}{a}\n\\]\nwhere $c$ is the distance from center to focus and $a$ is the semi-major \naxis."
+      "content": "The **eccentricity** of an ellipse is:\n$$\n e = \\frac{c}{a}\n$$\nwhere $c$ is the distance from center to focus and $a$ is the semi-major \naxis."
     },
     {
       "type": "paragraph",
@@ -205,7 +248,7 @@
       "number": "10.6",
       "title": "Comparing eccentricities",
       "problem": "Find the eccentricity of each ellipse and describe its shape.\n\n**(a)** $\\frac{x^2}{100} + \\frac{y^2}{99} = 1$ \n**(b)** $\\frac{x^2}{100} + \\frac{y^2}{36} = 1$",
-      "solution": "**(a)** Here $a^2 = 100$, $b^2 = 99$, so $a = 10$, $b = \\sqrt{99}$.\n\\[\n c = \\sqrt{100 - 99} = 1\n\\]\n\\[\n e = \\frac{c}{a} = \\frac{1}{10} = 0.1\n\\]\n\nThis eccentricity is close to 0, so the ellipse is **nearly circular**. \n(Indeed, $a$ and $b$ differ by less than 1\\%.)\n\n**(b)** Here $a^2 = 100$, $b^2 = 36$, so $a = 10$, $b = 6$.\n\\[\n c = \\sqrt{100 - 36} = \\sqrt{64} = 8\n\\]\n\\[\n e = \\frac{c}{a} = \\frac{8}{10} = 0.8\n\\]\n\nThis eccentricity is close to 1, so the ellipse is **quite elongated**. \nThe foci are 80\\% of the way from center to vertex."
+      "solution": "**(a)** Here $a^2 = 100$, $b^2 = 99$, so $a = 10$, $b = \\sqrt{99}$.\n$$\n c = \\sqrt{100 - 99} = 1\n$$\n$$\n e = \\frac{c}{a} = \\frac{1}{10} = 0.1\n$$\n\nThis eccentricity is close to 0, so the ellipse is **nearly circular**. \n(Indeed, $a$ and $b$ differ by less than 1\\%.)\n\n**(b)** Here $a^2 = 100$, $b^2 = 36$, so $a = 10$, $b = 6$.\n$$\n c = \\sqrt{100 - 36} = \\sqrt{64} = 8\n$$\n$$\n e = \\frac{c}{a} = \\frac{8}{10} = 0.8\n$$\n\nThis eccentricity is close to 1, so the ellipse is **quite elongated**. \nThe foci are 80\\% of the way from center to vertex."
     },
     {
       "type": "paragraph",
@@ -279,7 +322,7 @@
       "number": "10.7",
       "title": "Earth's orbit",
       "problem": "Earth's closest approach to the Sun (perihelion) is about 91.4 million \nmiles, and its farthest distance (aphelion) is about 94.5 million miles. \nFind the equation of Earth's orbit, placing the Sun at a focus.",
-      "solution": "The perihelion and aphelion are the endpoints of the major axis. Their \nsum equals the major axis length:\n\\[\n 2a = 91.4 + 94.5 = 185.9 \\text{ million miles}\n\\]\n\\[\n a = 92.95 \\text{ million miles}\n\\]\n\nThe center of the ellipse is at the midpoint of the major axis. The Sun \nis at one focus. The distance from center to Sun is:\n\\[\n c = a - \\text{perihelion} = 92.95 - 91.4 = 1.55 \\text{ million miles}\n\\]\n\n(Or equivalently: $c = \\text{aphelion} - a = 94.5 - 92.95 = 1.55$.)\n\nNow find $b$:\n\\[\n b^2 = a^2 - c^2 = (92.95)^2 - (1.55)^2 = 8639.7 - 2.4 = 8637.3\n\\]\n\\[\n b = \\sqrt{8637.3} \\approx 92.94 \\text{ million miles}\n\\]\n\nThe equation, with the center at the origin and major axis along the \n$x$-axis:\n\\[\n \\frac{x^2}{8639.7} + \\frac{y^2}{8637.3} = 1 \\quad \\text{(in millions of miles)}\n\\]\n\nThe eccentricity is:\n\\[\n e = \\frac{c}{a} = \\frac{1.55}{92.95} \\approx 0.017\n\\]\n\nThis confirms Earth's orbit is nearly circular—the semi-major and \nsemi-minor axes differ by less than 0.01 million miles."
+      "solution": "The perihelion and aphelion are the endpoints of the major axis. Their \nsum equals the major axis length:\n$$\n 2a = 91.4 + 94.5 = 185.9 \\text{ million miles}\n$$\n$$\n a = 92.95 \\text{ million miles}\n$$\n\nThe center of the ellipse is at the midpoint of the major axis. The Sun \nis at one focus. The distance from center to Sun is:\n$$\n c = a - \\text{perihelion} = 92.95 - 91.4 = 1.55 \\text{ million miles}\n$$\n\n(Or equivalently: $c = \\text{aphelion} - a = 94.5 - 92.95 = 1.55$.)\n\nNow find $b$:\n$$\n b^2 = a^2 - c^2 = (92.95)^2 - (1.55)^2 = 8639.7 - 2.4 = 8637.3\n$$\n$$\n b = \\sqrt{8637.3} \\approx 92.94 \\text{ million miles}\n$$\n\nThe equation, with the center at the origin and major axis along the \n$x$-axis:\n$$\n \\frac{x^2}{8639.7} + \\frac{y^2}{8637.3} = 1 \\quad \\text{(in millions of miles)}\n$$\n\nThe eccentricity is:\n$$\n e = \\frac{c}{a} = \\frac{1.55}{92.95} \\approx 0.017\n$$\n\nThis confirms Earth's orbit is nearly circular—the semi-major and \nsemi-minor axes differ by less than 0.01 million miles."
     },
     {
       "type": "heading",
@@ -299,6 +342,14 @@
       "label": "Theorem"
     },
     {
+      "type": "figure",
+      "id": "fig:ellipse-reflection",
+      "src": "/figures/precalculus/fig-ellipse-reflection.svg",
+      "caption": "The reflective property of an ellipse. Rays emanating from focus $F_1$ (orange arrows) strike the ellipse and reflect (gray arrows) through the other focus $F_2$. This property is used in whispering galleries and medical devices like lithotripters.",
+      "alt": "The reflective property of an ellipse. Rays emanating from focus $F_1$ (orange arrows) strike the ellipse and reflect (gray arrows) through the other focus $F_2$. This property is used in whispering galleries and medical devices like lithotripters.",
+      "tikz": true
+    },
+    {
       "type": "paragraph",
       "text": "This property has a beautiful application in \"whispering galleries\"—\nelliptical rooms where a whisper at one focus can be heard clearly at \nthe other focus, even across a large room. Sound waves from one focus \nreflect off the walls and converge at the other focus. The Capitol \nBuilding in Washington, D.C., has such a gallery."
     },
@@ -308,19 +359,1246 @@
       "number": "10.8",
       "title": "Designing a whispering gallery",
       "problem": "An elliptical whispering gallery is 80 feet long and 60 feet wide. How \nfar apart are the foci?",
-      "solution": "The major axis is 80 feet, so $a = 40$ feet.\nThe minor axis is 60 feet, so $b = 30$ feet.\n\n\\[\n c = \\sqrt{a^2 - b^2} = \\sqrt{1600 - 900} = \\sqrt{700} = 10\\sqrt{7} \\approx 26.46 \\text{ feet}\n\\]\n\nThe foci are $2c = 20\\sqrt{7} \\approx 52.9$ feet apart. Standing at \none focus, you could whisper to someone at the other focus, nearly \n53 feet away."
+      "solution": "The major axis is 80 feet, so $a = 40$ feet.\nThe minor axis is 60 feet, so $b = 30$ feet.\n\n$$\n c = \\sqrt{a^2 - b^2} = \\sqrt{1600 - 900} = \\sqrt{700} = 10\\sqrt{7} \\approx 26.46 \\text{ feet}\n$$\n\nThe foci are $2c = 20\\sqrt{7} \\approx 52.9$ feet apart. Standing at \none focus, you could whisper to someone at the other focus, nearly \n53 feet away."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Tangent Lines to an Ellipse"
+    },
+    {
+      "type": "paragraph",
+      "text": "A **tangent line** to an ellipse \ntouches the curve at exactly one point. The formula for tangent lines \nto ellipses mirrors what we found for parabolas."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.7",
+      "number": "10.7",
+      "title": "Tangent Line to an Ellipse",
+      "content": "For the ellipse $\\displaystyle\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$, \nthe tangent line at the point $(x_0, y_0)$ on the ellipse has equation:\n$$\n \\frac{x \\cdot x_0}{a^2} + \\frac{y \\cdot y_0}{b^2} = 1\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-10.9",
+      "number": "10.9",
+      "title": "Finding a tangent line to an ellipse",
+      "problem": "Find the equation of the tangent line to $\\displaystyle\\frac{x^2}{16} + \\frac{y^2}{9} = 1$ \nat the point $(2\\sqrt{2}, \\frac{3\\sqrt{2}}{2})$.",
+      "solution": "First verify the point is on the ellipse:\n$$\n \\frac{(2\\sqrt{2})^2}{16} + \\frac{(3\\sqrt{2}/2)^2}{9} \n = \\frac{8}{16} + \\frac{9/2}{9} \n = \\frac{1}{2} + \\frac{1}{2} = 1 \\checkmark\n$$\n\nUsing the tangent formula with $a^2 = 16$, $b^2 = 9$, $(x_0, y_0) = (2\\sqrt{2}, \\frac{3\\sqrt{2}}{2})$:\n$$\n \\frac{x \\cdot 2\\sqrt{2}}{16} + \\frac{y \\cdot \\frac{3\\sqrt{2}}{2}}{9} = 1\n$$\n$$\n \\frac{\\sqrt{2}x}{8} + \\frac{\\sqrt{2}y}{6} = 1\n$$\n\nMultiply by $\\frac{24}{\\sqrt{2}} = 12\\sqrt{2}$:\n$$\n 3x + 4y = 12\\sqrt{2}\n$$"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Parametric Equations of an Ellipse"
+    },
+    {
+      "type": "paragraph",
+      "text": "We can describe an ellipse using a parameter $t$, typically representing \nthe angle from the center."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.8",
+      "number": "10.8",
+      "title": "Parametric Equations of an Ellipse",
+      "content": "The ellipse $\\displaystyle\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ can be \nparameterized as:\n$$\n x = a\\cos t, \\qquad y = b\\sin t, \\qquad 0 \\leq t < 2\\pi\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "To verify: $\\displaystyle\\frac{(a\\cos t)^2}{a^2} + \\frac{(b\\sin t)^2}{b^2} = \\cos^2 t + \\sin^2 t = 1$."
+    },
+    {
+      "type": "paragraph",
+      "text": "the angle from the center to \nthe point (except when $a = b$, i.e., a circle). It's the angle in the \n\"auxiliary circle\" of radius $a$.}"
+    },
+    {
+      "type": "example",
+      "id": "example-10.10",
+      "number": "10.10",
+      "title": "Using parametric equations",
+      "problem": "A satellite orbits Earth in an ellipse with semi-major axis 8000 km and \nsemi-minor axis 7500 km. Write parametric equations for the orbit and \nfind the satellite's position when $t = \\frac{\\pi}{3}$.",
+      "solution": "With $a = 8000$ and $b = 7500$:\n$$\n x = 8000\\cos t, \\qquad y = 7500\\sin t\n$$\n\nWhen $t = \\frac{\\pi}{3}$:\n$$\n x = 8000\\cos\\frac{\\pi}{3} = 8000 \\cdot \\frac{1}{2} = 4000 \\text{ km}\n$$\n$$\n y = 7500\\sin\\frac{\\pi}{3} = 7500 \\cdot \\frac{\\sqrt{3}}{2} = 3750\\sqrt{3} \\approx 6495 \\text{ km}\n$$\n\nThe satellite is at approximately $(4000, 6495)$ km from the center of \nthe ellipse."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Graphing Strategy"
+    },
+    {
+      "type": "paragraph",
+      "text": "Here's a systematic approach to graphing any ellipse."
+    },
+    {
+      "type": "strategy",
+      "id": "strategy-10.2",
+      "number": null,
+      "title": "Graphing an Ellipse",
+      "content": "1. **Write in standard form.** If needed, complete the square.\n\n2. **Identify the center** $(h, k)$.\n\n3. **Identify $a^2$ and $b^2$.** The larger is $a^2$.\n\n4. **Determine major axis direction.** If $a^2$ is under $x^2$, \n the major axis is horizontal; if under $y^2$, it's vertical.\n\n5. **Find $c$** using $c^2 = a^2 - b^2$.\n\n6. **Plot center, vertices** (at distance $a$ from center along \n major axis), and **co-vertices** (at distance $b$ along minor axis).\n\n7. **Plot foci** (at distance $c$ from center along major axis).\n\n8. **Sketch the ellipse** through the four endpoints."
+    },
+    {
+      "type": "example",
+      "id": "example-10.11",
+      "number": "10.11",
+      "title": "Complete graphing example",
+      "problem": "Graph $\\displaystyle\\frac{(x+2)^2}{25} + \\frac{(y-1)^2}{9} = 1$, showing \nall key features.",
+      "solution": "**Step 1–2:** Already in standard form. Center: $(-2, 1)$.\n\n**Step 3–4:** $a^2 = 25$, $b^2 = 9$, so $a = 5$, $b = 3$. Since $a^2$ \nis under $(x+2)^2$, the major axis is **horizontal**.\n\n**Step 5:** $c = \\sqrt{25 - 9} = \\sqrt{16} = 4$.\n\n**Step 6:** \n\n- Vertices: $(-2 \\pm 5, 1) = (-7, 1)$ and $(3, 1)$\n\n- Co-vertices: $(-2, 1 \\pm 3) = (-2, -2)$ and $(-2, 4)$\n\n**Step 7:** Foci: $(-2 \\pm 4, 1) = (-6, 1)$ and $(2, 1)$.\n\nfigure[H]\n\ntikzpicture[scale=0.45]\n % Axes\n (-9,0) – (5,0) node[right] {$x$};\n (0,-4) – (0,6) node[above] {$y$};\n \n % Ellipse\n (-2,1) ellipse (5 and 3);\n \n % Center\n lldraw[AtlasSage] (-2,1) circle (4pt);\n at (-2,0.5) {$C(-2,1)$};\n \n % Vertices\n lldraw[AtlasTeal] (-7,1) circle (3pt);\n lldraw[AtlasTeal] (3,1) circle (3pt);\n at (-7,0.5) {$V_1$};\n at (3,0.5) {$V_2$};\n \n % Co-vertices\n lldraw[AtlasTeal] (-2,-2) circle (3pt);\n lldraw[AtlasTeal] (-2,4) circle (3pt);\n \n % Foci\n lldraw[AtlasWarm] (-6,1) circle (3pt);\n lldraw[AtlasWarm] (2,1) circle (3pt);\n at (-6,1.3) {$F_1$};\n at (2,1.3) {$F_2$};\ntikzpicture\nGraph of $\\frac{(x+2)^2}{25} + \\frac{(y-1)^2}{9} = 1$, an ellipse with center $(-2, 1)$, horizontal major axis of length 10, and minor axis of length 6. Vertices at $(-7, 1)$ and $(3, 1)$, foci at $(-6, 1)$ and $(2, 1)$.\n\nfigure",
+      "figures": [
+        {
+          "type": "figure",
+          "id": "fig:ellipse-shifted-example",
+          "src": "/figures/precalculus/fig-ellipse-shifted-example.svg",
+          "caption": "Graph of $\\frac{(x+2)^2}{25} + \\frac{(y-1)^2}{9} = 1$, an ellipse with center $(-2, 1)$, horizontal major axis of length 10, and minor axis of length 6. Vertices at $(-7, 1)$ and $(3, 1)$, foci at $(-6, 1)$ and $(2, 1)$.",
+          "alt": "Graph of $\\frac{(x+2)^2}{25} + \\frac{(y-1)^2}{9} = 1$, an ellipse with center $(-2, 1)$, horizontal major axis of length 10, and minor axis of length 6. Vertices at $(-7, 1)$ and $(3, 1)$, foci at $(-6, 1)$ and $(2, 1)$.",
+          "tikz": true
+        }
+      ]
     },
     {
       "type": "summary",
       "id": "summary-10.2",
       "number": null,
       "title": "The Ellipse",
-      "content": "- An ellipse is the set of points where the sum of distances to \n two foci equals $2a$.\n\n- Standard form (center at origin): \n $\\displaystyle\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$\n\n- The larger denominator indicates the major axis direction.\n\n- Key relationship: $c^2 = a^2 - b^2$ (for ellipse, $c < a$).\n\n- Eccentricity: $e = c/a$ with $0 < e < 1$.\n itemize\n\n- Small $e$: nearly circular\n\n- Large $e$: elongated\n \n Kepler's First Law: Planets orbit in ellipses with the Sun \n at one focus.\n \n Reflective property: Rays from one focus reflect to the other.\nitemize"
+      "content": "- An ellipse is the set of points where the sum of distances to \n two foci equals $2a$.\n\n- Standard form (center at origin): \n $\\displaystyle\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$\n\n- The larger denominator indicates the major axis direction.\n\n- Key relationship: $c^2 = a^2 - b^2$ (for ellipse, $c < a$).\n\n- Eccentricity: $e = c/a$ with $0 < e < 1$.\n\n- **Tangent line** at $(x_0, y_0)$: \n $\\displaystyle\\frac{x \\cdot x_0}{a^2} + \\frac{y \\cdot y_0}{b^2} = 1$\n\n- **Parametric form:** $x = a\\cos t$, $y = b\\sin t$\n\n- Kepler's First Law: Planets orbit in ellipses with the Sun \n at one focus.\n\n- Reflective property: Rays from one focus reflect to the other."
     },
     {
-      "type": "heading",
-      "level": 2,
-      "text": "Exercises"
+      "type": "exercise",
+      "id": "ex-10.2-1",
+      "number": "1",
+      "problem": "For each ellipse, find the center, vertices, co-vertices, and foci.\n\n1. $\\frac{x^2}{36} + \\frac{y^2}{25} = 1$\n\n2. $\\frac{x^2}{9} + \\frac{y^2}{49} = 1$\n\n3. $\\frac{x^2}{4} + y^2 = 1$\n\n4. $x^2 + \\frac{y^2}{16} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-2",
+      "number": "2",
+      "problem": "For each ellipse, find the center, vertices, and foci.\n\n1. $\\frac{(x-2)^2}{25} + \\frac{(y+1)^2}{16} = 1$\n\n2. $\\frac{(x+3)^2}{9} + \\frac{(y-4)^2}{36} = 1$\n\n3. $\\frac{x^2}{49} + \\frac{(y-5)^2}{25} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-3",
+      "number": "3",
+      "problem": "Write the equation of the ellipse with the given properties.\n\n1. Center $(0,0)$, vertex $(6,0)$, focus $(4,0)$\n\n2. Center $(0,0)$, vertex $(0,8)$, co-vertex $(3,0)$\n\n3. Foci $(\\pm 3, 0)$, vertices $(\\pm 5, 0)$\n\n4. Foci $(0, \\pm 4)$, major axis length 10\n\n5. Center $(2,3)$, vertex $(2,8)$, focus $(2,6)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-4",
+      "number": "4",
+      "problem": "Convert each equation to standard form and identify all key features.\n\n1. $9x^2 + 4y^2 = 36$\n\n2. $25x^2 + 4y^2 - 100 = 0$\n\n3. $x^2 + 4y^2 - 2x + 16y + 13 = 0$\n\n4. $9x^2 + 16y^2 + 54x - 32y - 47 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-5",
+      "number": "5",
+      "problem": "Find the eccentricity of each ellipse and describe its shape.\n\n1. $\\frac{x^2}{25} + \\frac{y^2}{24} = 1$\n\n2. $\\frac{x^2}{169} + \\frac{y^2}{25} = 1$\n\n3. An ellipse with $a = 10$ and $b = 6$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-6",
+      "number": "6",
+      "problem": "Mars orbits the Sun in an ellipse with semi-major axis $a = 1.524$ AU \nand eccentricity $e = 0.093$.\n\n1. Find the semi-minor axis $b$.\n\n2. Find the perihelion (closest approach) and aphelion (farthest \n distance) from the Sun.\n\n3. Write the equation of Mars's orbit.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-7",
+      "number": "7",
+      "problem": "An elliptical pool table is 8 feet long and 6 feet wide. If a ball is \nplaced at one focus and struck in any direction, where will it go after \nbouncing off the cushion?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-8",
+      "number": "8",
+      "problem": "A lithotripter (kidney stone crusher) uses an elliptical reflector. \nShock waves are generated at one focus and converge at the other focus, \nwhere the kidney stone is positioned. If the ellipse has equation \n$\\frac{x^2}{484} + \\frac{y^2}{324} = 1$ (in cm), how far apart are the \nsource and target?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-9",
+      "number": "9",
+      "problem": "Derive the equation $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$ from the \ndefinition of an ellipse. (Hint: Place foci at $(\\pm c, 0)$, let the \nsum of distances be $2a$, and simplify.)",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-10",
+      "number": "10",
+      "problem": "Prove that the eccentricity of an ellipse satisfies $0 < e < 1$. What \nhappens to the shape as $e \\to 0$? As $e \\to 1$?",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-11",
+      "number": "11",
+      "problem": "The **latus rectum** of an ellipse is \nthe chord through a focus perpendicular to the major axis. Show that \nits length is $\\frac{2b^2}{a}$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-12",
+      "number": "12",
+      "problem": "(Kepler's Second Law) Kepler's second law states that a planet sweeps \nout equal areas in equal times. For an ellipse with equation \n$\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$, the total area is $\\pi ab$. \nIf Earth takes 365.25 days to complete its orbit, how many days does it \ntake to sweep out one-twelfth of the orbital area?",
+      "variant": "starred",
+      "hint": null,
+      "answer": null,
+      "label": "$\\star\\star$"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-13",
+      "number": "13",
+      "problem": "Find center, foci, vertices, and eccentricity.\n\n1. $\\frac{x^2}{25} + \\frac{y^2}{9} = 1$\n\n2. $\\frac{x^2}{16} + \\frac{y^2}{25} = 1$\n\n3. $\\frac{x^2}{49} + \\frac{y^2}{36} = 1$\n\n4. $\\frac{x^2}{9} + \\frac{y^2}{64} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-14",
+      "number": "14",
+      "problem": "Find center, foci, vertices, and eccentricity.\n\n1. $4x^2 + 9y^2 = 36$\n\n2. $25x^2 + 16y^2 = 400$\n\n3. $9x^2 + 4y^2 = 36$\n\n4. $x^2 + 4y^2 = 16$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-15",
+      "number": "15",
+      "problem": "Write the equation of the ellipse.\n\n1. Vertices $(\\pm 6, 0)$, foci $(\\pm 4, 0)$\n\n2. Vertices $(0, \\pm 8)$, foci $(0, \\pm 5)$\n\n3. Vertices $(\\pm 5, 0)$, minor axis length 6\n\n4. Foci $(0, \\pm 3)$, major axis length 10",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-16",
+      "number": "16",
+      "problem": "Find center, foci, and vertices.\n\n1. $\\frac{(x - 2)^2}{16} + \\frac{(y + 1)^2}{9} = 1$\n\n2. $\\frac{(x + 3)^2}{25} + \\frac{(y - 4)^2}{49} = 1$\n\n3. $\\frac{(x - 1)^2}{36} + \\frac{(y - 2)^2}{16} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-17",
+      "number": "17",
+      "problem": "Convert to standard form.\n\n1. $4x^2 + 9y^2 - 16x + 18y - 11 = 0$\n\n2. $9x^2 + 4y^2 + 36x - 24y + 36 = 0$\n\n3. $25x^2 + 16y^2 - 150x + 128y + 81 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-18",
+      "number": "18",
+      "problem": "Earth's orbit is an ellipse with the sun at one focus. If the semi-major axis is 93 million miles and eccentricity is 0.017, find the closest and farthest distances from the sun.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-19",
+      "number": "19",
+      "problem": "A whispering gallery is elliptical, 100 feet long and 40 feet wide. How far from the center should people stand to hear whispers?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-20",
+      "number": "20",
+      "problem": "A bridge has a semi-elliptical arch spanning 80 feet with maximum height 25 feet. Find the height of the arch 20 feet from the center.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-21",
+      "number": "21",
+      "problem": "True or False? Justify.\n\n1. A circle is a special case of an ellipse with $a = b$.\n\n2. The foci of an ellipse are always on the major axis.\n\n3. The eccentricity of an ellipse is always less than 1.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-22",
+      "number": "22",
+      "problem": "Find the equation of the ellipse with foci at $(3, 0)$ and $(-3, 0)$ passing through $(5, 0)$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-23",
+      "number": "23",
+      "problem": "Prove that $c^2 = a^2 - b^2$ for an ellipse.\n\n%─────────────────────────────────────────────────────────\n% ADDITIONAL EXERCISES\n%─────────────────────────────────────────────────────────",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-24",
+      "number": "24",
+      "problem": "Identify the foci, vertices, and eccentricity.\n\n1. $\\frac{x^2}{25} + \\frac{y^2}{9} = 1$\n\n2. $\\frac{x^2}{16} + \\frac{y^2}{25} = 1$\n\n3. $\\frac{x^2}{49} + \\frac{y^2}{36} = 1$\n\n4. $\\frac{x^2}{100} + \\frac{y^2}{64} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-25",
+      "number": "25",
+      "problem": "Sketch each ellipse, showing foci and vertices.\n\n1. $\\frac{x^2}{36} + \\frac{y^2}{16} = 1$\n\n2. $\\frac{x^2}{9} + \\frac{y^2}{25} = 1$\n\n3. $4x^2 + 9y^2 = 36$\n\n4. $16x^2 + 25y^2 = 400$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-26",
+      "number": "26",
+      "problem": "Write the equation of the ellipse centered at the origin.\n\n1. Vertices $(\\pm 7, 0)$, co-vertices $(0, \\pm 4)$\n\n2. Vertices $(0, \\pm 10)$, foci $(0, \\pm 6)$\n\n3. Major axis on $x$-axis, $a = 8$, $c = 5$\n\n4. Minor axis length 8, foci $(\\pm 3, 0)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-27",
+      "number": "27",
+      "problem": "Find center, foci, vertices, and eccentricity.\n\n1. $\\frac{(x - 4)^2}{25} + \\frac{(y + 2)^2}{16} = 1$\n\n2. $\\frac{(x + 1)^2}{9} + \\frac{(y - 3)^2}{36} = 1$\n\n3. $\\frac{(x - 5)^2}{49} + \\frac{(y - 1)^2}{25} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-28",
+      "number": "28",
+      "problem": "Write the equation of the ellipse.\n\n1. Center $(3, -1)$, vertices $(3, 4)$ and $(3, -6)$, $c = 4$\n\n2. Center $(-2, 5)$, focus $(-2, 8)$, vertex $(-2, 10)$\n\n3. Foci $(1, 2)$ and $(7, 2)$, vertices $(-1, 2)$ and $(9, 2)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-29",
+      "number": "29",
+      "problem": "Convert to standard form and identify center, foci, vertices.\n\n1. $16x^2 + 25y^2 - 64x + 150y + 81 = 0$\n\n2. $9x^2 + 16y^2 + 54x - 64y + 1 = 0$\n\n3. $4x^2 + y^2 - 8x + 4y + 4 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-30",
+      "number": "30",
+      "problem": "Mars has an orbital semi-major axis of 228 million km and eccentricity 0.093. Find its closest and farthest distances from the Sun.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Planetary Orbit"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-31",
+      "number": "31",
+      "problem": "A running track is elliptical with major axis 200 meters and minor axis 100 meters. What is the perimeter approximately? (Use the approximation $P \\approx \\pi[3(a+b) - \\sqrt{(3a+b)(a+3b)}]$.)",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Stadium"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-32",
+      "number": "32",
+      "problem": "A lithotripter uses an elliptical reflector to focus shock waves on kidney stones. If the ellipse is 20 inches long and 12 inches wide, where should the patient be positioned?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Lithotripsy"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-33",
+      "number": "33",
+      "problem": "A tunnel has a semi-elliptical cross-section that is 30 feet wide and 10 feet high at the center. Can a truck 12 feet wide and 8 feet high pass through?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Tunnel"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-34",
+      "number": "34",
+      "problem": "Graph $\\frac{x^2}{16} + \\frac{y^2}{9} = 1$ by solving for $y$ and graphing both halves.",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-35",
+      "number": "35",
+      "problem": "Use a graphing utility to explore how changing $a$ and $b$ affects the shape of the ellipse.",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-36",
+      "number": "36",
+      "problem": "Graph ellipses with eccentricities $e = 0.2, 0.5, 0.8$. How does eccentricity affect shape?",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-37",
+      "number": "37",
+      "problem": "What happens to an ellipse as $e \\to 0$? As $e \\to 1$?",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-38",
+      "number": "38",
+      "problem": "Why is the sum of distances from any point on an ellipse to the two foci constant?",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-39",
+      "number": "39",
+      "problem": "Explain how to use a string and two pins to draw an ellipse.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-40",
+      "number": "40",
+      "problem": "If you know $a$ and $e$, can you find $b$ and $c$? Explain.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-41",
+      "number": "41",
+      "problem": "Describe and correct the error.\n\nFinding foci of $\\frac{x^2}{25} + \\frac{y^2}{36} = 1$:\nquote\n\"$a^2 = 25$, $b^2 = 36$, so $c^2 = 25 - 36 = -11$.\n\nThis is impossible, so there's no ellipse.\" \nquote",
+      "variant": "error",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-42",
+      "number": "42",
+      "problem": "An ellipse has foci at $(0, \\pm 4)$ and passes through $(3, 4)$. Find its equation.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-43",
+      "number": "43",
+      "problem": "Find the equation of the ellipse with center $(2, -1)$, one focus at $(5, -1)$, and eccentricity $\\frac{3}{5}$.\n\n Show that the reflective property of an ellipse: a ray from one focus reflects off the ellipse toward the other focus.\n\n% === Merged from exercises-additional.tex ===",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-44",
+      "number": "44",
+      "problem": "1. Vertices $(\\pm 6, 0)$, foci $(\\pm 4, 0)$\n\n2. Vertices $(0, \\pm 8)$, foci $(0, \\pm 5)$\n\n3. Vertices $(\\pm 5, 0)$, minor axis length 6\n\n4. Foci $(0, \\pm 3)$, major axis length 10",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-45",
+      "number": "45",
+      "problem": "1. Vertices $(\\pm 10, 0)$, foci $(\\pm 6, 0)$\n\n2. Vertices $(0, \\pm 7)$, foci $(0, \\pm 2)$\n\n3. Foci $(\\pm 5, 0)$, minor axis length 8\n\n4. Vertices $(0, \\pm 9)$, eccentricity $\\frac{2}{3}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-46",
+      "number": "46",
+      "problem": "1. Center at origin, major axis horizontal, $a = 8$, $c = 5$\n\n2. Center at origin, major axis vertical, $a = 6$, $b = 4$\n\n3. Vertices $(\\pm 4, 0)$, passes through $(2, 3)$\n\n4. Foci $(0, \\pm 3)$, passes through $(4, 0)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-47",
+      "number": "47",
+      "problem": "1. Eccentricity $\\frac{3}{5}$, vertices $(\\pm 5, 0)$\n\n2. Eccentricity $\\frac{1}{2}$, foci $(0, \\pm 2)$\n\n3. Sum of focal radii = 12, foci $(\\pm 4, 0)$\n\n4. Major axis length 20, minor axis length 12",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-48",
+      "number": "48",
+      "problem": "1. Vertices $(\\pm 4, 0)$, foci $(\\pm 5, 0)$\n\n2. Vertices $(0, \\pm 6)$, foci $(0, \\pm 10)$\n\n3. Vertices $(\\pm 3, 0)$, asymptotes $y = \\pm 2x$\n\n4. Foci $(0, \\pm 13)$, vertices $(0, \\pm 5)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-49",
+      "number": "49",
+      "problem": "1. Vertices $(\\pm 5, 0)$, foci $(\\pm 7, 0)$\n\n2. Vertices $(0, \\pm 4)$, foci $(0, \\pm 6)$\n\n3. Foci $(\\pm 10, 0)$, vertices $(\\pm 8, 0)$\n\n4. Asymptotes $y = \\pm \\frac{3}{4}x$, vertices $(\\pm 4, 0)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-50",
+      "number": "50",
+      "problem": "1. Vertices $(\\pm 3, 0)$, passes through $(5, 4)$\n\n2. Foci $(0, \\pm 5)$, eccentricity $\\frac{5}{3}$\n\n3. Asymptotes $y = \\pm x$, foci $(\\pm 4\\sqrt{2}, 0)$\n\n4. Center at origin, transverse axis horizontal, $a = 6$, $c = 10$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-51",
+      "number": "51",
+      "problem": "1. Eccentricity 2, vertices $(\\pm 3, 0)$\n\n2. Eccentricity $\\frac{5}{4}$, foci $(0, \\pm 5)$\n\n3. Vertices $(0, \\pm 4)$, conjugate axis length 6\n\n4. Foci $(\\pm 6, 0)$, asymptotes $y = \\pm \\frac{4}{5}x$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-52",
+      "number": "52",
+      "problem": "1. Center $(0, 0)$, radius 7\n\n2. Center $(3, -2)$, radius 5\n\n3. Center $(-4, 1)$, radius 3\n\n4. Center $(2, 5)$, radius $\\sqrt{10}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-53",
+      "number": "53",
+      "problem": "1. Center $(-4, 1)$, passing through $(0, 1)$\n\n2. Center $(2, -3)$, passing through $(5, 1)$\n\n3. Diameter endpoints $(2, 5)$ and $(8, 3)$\n\n4. Diameter endpoints $(-1, 4)$ and $(5, -2)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-54",
+      "number": "54",
+      "problem": "Use the discriminant $B^2 - 4AC$ to classify.\n\n1. $2x^2 + 3y^2 - 4x + 6y - 1 = 0$\n\n2. $x^2 - 4y^2 + 2x - 8y - 7 = 0$\n\n3. $4x^2 + 4y^2 - 8x + 16y + 4 = 0$\n\n4. $y^2 + 4x - 2y + 9 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-55",
+      "number": "55",
+      "problem": "A bridge has a semi-elliptical arch spanning 100 feet with maximum height 30 feet. Find the height of the arch 20 feet from the center.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Bridge Arch"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-56",
+      "number": "56",
+      "problem": "A semi-elliptical tunnel is 50 feet wide and 20 feet high at the center. Can a truck 12 feet wide and 15 feet tall pass through?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Tunnel"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-57",
+      "number": "57",
+      "problem": "Earth's orbit is an ellipse with the sun at one focus. If the semi-major axis is 93 million miles and eccentricity is 0.017, find the closest and farthest distances from the sun.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Planetary Orbit"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-58",
+      "number": "58",
+      "problem": "A comet has an elliptical orbit with eccentricity 0.9. If its closest approach to the sun is 1 AU, find its farthest distance.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Comet Orbit"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-59",
+      "number": "59",
+      "problem": "A whispering gallery is elliptical, 100 feet long and 40 feet wide. How far from the center should people stand to whisper to each other?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Whispering Gallery"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-60",
+      "number": "60",
+      "problem": "An elliptical pool table has foci at the pockets. If the major axis is 6 feet and minor axis is 4 feet, how far apart are the pockets?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Elliptical Pool Table"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-61",
+      "number": "61",
+      "problem": "Find the center, vertices, foci, and eccentricity.\n\n1. $\\dfrac{x^2}{36} + \\dfrac{y^2}{20} = 1$\n\n2. $\\dfrac{x^2}{16} + \\dfrac{y^2}{49} = 1$\n\n3. $\\dfrac{x^2}{81} + \\dfrac{y^2}{25} = 1$\n\n4. $\\dfrac{x^2}{9} + \\dfrac{y^2}{36} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-62",
+      "number": "62",
+      "problem": "Find the center, vertices, foci, and eccentricity.\n\n1. $\\dfrac{(x - 3)^2}{49} + \\dfrac{(y + 2)^2}{25} = 1$\n\n2. $\\dfrac{(x + 4)^2}{16} + \\dfrac{(y - 1)^2}{64} = 1$\n\n3. $\\dfrac{(x - 1)^2}{100} + \\dfrac{(y - 3)^2}{36} = 1$\n\n4. $\\dfrac{(x + 2)^2}{9} + \\dfrac{(y + 5)^2}{81} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-63",
+      "number": "63",
+      "problem": "Write the equation of the ellipse.\n\n1. Vertices $(\\pm 8, 0)$, foci $(\\pm 5, 0)$\n\n2. Vertices $(0, \\pm 10)$, foci $(0, \\pm 6)$\n\n3. Center $(0, 0)$, vertex $(7, 0)$, minor axis length 8\n\n4. Center $(0, 0)$, focus $(0, 4)$, vertex $(0, 5)$\n\n5. Vertices $(\\pm 6, 0)$, eccentricity $\\frac{1}{3}$\n\n6. Foci $(0, \\pm 3)$, eccentricity $\\frac{3}{5}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-64",
+      "number": "64",
+      "problem": "Write the equation of the ellipse.\n\n1. Center $(2, -3)$, vertex $(2, 4)$, focus $(2, 1)$\n\n2. Center $(-1, 5)$, vertex $(5, 5)$, co-vertex $(-1, 8)$\n\n3. Foci $(1, 2)$ and $(7, 2)$, major axis length 10\n\n4. Vertices $(-3, -2)$ and $(-3, 8)$, minor axis length 6",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-65",
+      "number": "65",
+      "problem": "Find the center, vertices, foci, and asymptotes.\n\n1. $\\dfrac{x^2}{25} - \\dfrac{y^2}{144} = 1$\n\n2. $\\dfrac{y^2}{49} - \\dfrac{x^2}{9} = 1$\n\n3. $\\dfrac{x^2}{64} - \\dfrac{y^2}{36} = 1$\n\n4. $\\dfrac{y^2}{100} - \\dfrac{x^2}{64} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-66",
+      "number": "66",
+      "problem": "Find the center, vertices, foci, and asymptotes.\n\n1. $\\dfrac{(x - 2)^2}{16} - \\dfrac{(y + 3)^2}{9} = 1$\n\n2. $\\dfrac{(y - 1)^2}{25} - \\dfrac{(x + 4)^2}{36} = 1$\n\n3. $\\dfrac{(x + 5)^2}{49} - \\dfrac{(y - 2)^2}{16} = 1$\n\n4. $\\dfrac{(y + 2)^2}{81} - \\dfrac{(x - 3)^2}{25} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-67",
+      "number": "67",
+      "problem": "Write the equation of the hyperbola.\n\n1. Vertices $(\\pm 6, 0)$, foci $(\\pm 8, 0)$\n\n2. Vertices $(0, \\pm 5)$, foci $(0, \\pm 7)$\n\n3. Vertices $(\\pm 4, 0)$, asymptotes $y = \\pm \\frac{3}{2}x$\n\n4. Foci $(0, \\pm 10)$, vertices $(0, \\pm 6)$\n\n5. Vertices $(\\pm 3, 0)$, eccentricity $2$\n\n6. Asymptotes $y = \\pm 2x$, foci $(\\pm \\sqrt{5}, 0)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-68",
+      "number": "68",
+      "problem": "Find the center and radius.\n\n1. $(x - 5)^2 + (y + 3)^2 = 49$\n\n2. $x^2 + (y - 7)^2 = 121$\n\n3. $(x + 2)^2 + (y - 4)^2 = 20$\n\n4. $(x - 1)^2 + (y + 1)^2 = 18$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-69",
+      "number": "69",
+      "problem": "Write the equation of the circle.\n\n1. Center $(4, -2)$, radius 6\n\n2. Center $(-3, 5)$, passing through $(1, 5)$\n\n3. Diameter endpoints $(2, 3)$ and $(10, 9)$\n\n4. Center $(0, 4)$, tangent to the $x$-axis\n\n5. Center on line $y = x$, passing through $(0, 0)$ and $(4, 2)$\n\n6. Passing through $(1, 1)$, $(1, 5)$, and $(5, 1)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-70",
+      "number": "70",
+      "problem": "Convert to standard form and find center and radius.\n\n1. $x^2 + y^2 - 12x + 4y + 15 = 0$\n\n2. $x^2 + y^2 + 6x - 10y - 2 = 0$\n\n3. $x^2 + y^2 - 8x + 2y + 13 = 0$\n\n4. $x^2 + y^2 + 5x - 3y + 2 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-71",
+      "number": "71",
+      "problem": "A parabolic arch has a height of 30 feet and a span of 40 feet. Find the height of the arch at a point 10 feet from the center.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Arch"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-72",
+      "number": "72",
+      "problem": "A whispering gallery has an elliptical ceiling 80 feet long and 40 feet wide. How far from the center should people stand to whisper to each other?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Room Acoustics"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-73",
+      "number": "73",
+      "problem": "Mars orbits the sun in an ellipse with eccentricity 0.093. If the semi-major axis is 1.52 AU, find the closest and farthest distances from the sun.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Orbit"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-74",
+      "number": "74",
+      "problem": "A comet travels in a hyperbolic path with the sun at one focus. If the closest approach is 0.5 AU and eccentricity is 1.3, find the equation of its path.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Comet"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-75",
+      "number": "75",
+      "problem": "Find the center, foci, and vertices.\n\n1. $\\dfrac{x^2}{36} + \\dfrac{y^2}{9} = 1$\n\n2. $\\dfrac{x^2}{16} + \\dfrac{y^2}{25} = 1$\n\n3. $\\dfrac{x^2}{49} + \\dfrac{y^2}{24} = 1$\n\n4. $\\dfrac{x^2}{20} + \\dfrac{y^2}{36} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-76",
+      "number": "76",
+      "problem": "Find the center, foci, and vertices.\n\n1. $\\dfrac{(x-2)^2}{25} + \\dfrac{(y+1)^2}{16} = 1$\n\n2. $\\dfrac{(x+3)^2}{9} + \\dfrac{(y-4)^2}{49} = 1$\n\n3. $\\dfrac{(x-1)^2}{36} + \\dfrac{(y-2)^2}{20} = 1$\n\n4. $\\dfrac{(x+5)^2}{16} + \\dfrac{(y+2)^2}{25} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-77",
+      "number": "77",
+      "problem": "Find the equation of the ellipse.\n\n1. Center at origin, vertices $(\\pm 6, 0)$, foci $(\\pm 4, 0)$\n\n2. Center at origin, vertices $(0, \\pm 5)$, $b = 3$\n\n3. Foci $(0, \\pm 3)$, vertices $(0, \\pm 5)$\n\n4. Vertices $(\\pm 8, 0)$, eccentricity $\\dfrac{1}{2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-78",
+      "number": "78",
+      "problem": "Find the equation of the ellipse.\n\n1. Center $(2, -1)$, vertices $(2, 4)$ and $(2, -6)$, $b = 3$\n\n2. Foci $(-1, 3)$ and $(5, 3)$, vertices $(-2, 3)$ and $(6, 3)$\n\n3. Center $(0, 3)$, vertex $(4, 3)$, focus $(2, 3)$\n\n4. Endpoints of major axis $(-3, 1)$ and $(7, 1)$, $c = 4$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-79",
+      "number": "79",
+      "problem": "Find the eccentricity of each ellipse.\n\n1. $\\dfrac{x^2}{25} + \\dfrac{y^2}{16} = 1$\n\n2. $\\dfrac{x^2}{9} + \\dfrac{y^2}{25} = 1$\n\n3. $\\dfrac{x^2}{100} + \\dfrac{y^2}{64} = 1$\n\n4. $\\dfrac{x^2}{49} + \\dfrac{y^2}{48} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-80",
+      "number": "80",
+      "problem": "Sketch each ellipse showing center, vertices, and foci.\n\n1. $\\dfrac{x^2}{16} + \\dfrac{y^2}{4} = 1$\n\n2. $\\dfrac{x^2}{9} + \\dfrac{y^2}{36} = 1$\n\n3. $\\dfrac{(x-1)^2}{25} + \\dfrac{(y+2)^2}{9} = 1$\n\n4. $4x^2 + 9y^2 = 36$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-81",
+      "number": "81",
+      "problem": "Find the center, vertices, foci, and asymptotes.\n\n1. $\\dfrac{x^2}{16} - \\dfrac{y^2}{9} = 1$\n\n2. $\\dfrac{y^2}{25} - \\dfrac{x^2}{16} = 1$\n\n3. $\\dfrac{x^2}{36} - \\dfrac{y^2}{64} = 1$\n\n4. $\\dfrac{y^2}{4} - \\dfrac{x^2}{9} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-82",
+      "number": "82",
+      "problem": "Find the center, vertices, foci, and asymptotes.\n\n1. $\\dfrac{(x-2)^2}{9} - \\dfrac{(y+1)^2}{16} = 1$\n\n2. $\\dfrac{(y-3)^2}{25} - \\dfrac{(x+2)^2}{4} = 1$\n\n3. $\\dfrac{(x+4)^2}{49} - \\dfrac{(y-1)^2}{24} = 1$\n\n4. $\\dfrac{(y+2)^2}{36} - \\dfrac{(x-5)^2}{64} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-83",
+      "number": "83",
+      "problem": "Find the equation of the hyperbola.\n\n1. Center at origin, vertices $(\\pm 4, 0)$, foci $(\\pm 5, 0)$\n\n2. Center at origin, vertices $(0, \\pm 3)$, asymptotes $y = \\pm \\dfrac{3}{4}x$\n\n3. Foci $(\\pm 6, 0)$, vertices $(\\pm 4, 0)$\n\n4. Vertices $(0, \\pm 5)$, eccentricity $\\dfrac{13}{5}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-84",
+      "number": "84",
+      "problem": "Find the equation of the hyperbola.\n\n1. Center $(1, -2)$, vertices $(1, 1)$ and $(1, -5)$, $b = 4$\n\n2. Foci $(2, 5)$ and $(2, -3)$, vertices $(2, 3)$ and $(2, -1)$\n\n3. Asymptotes $y = \\pm 2(x - 1)$, vertices $(0, 0)$ and $(2, 0)$\n\n4. Center $(-3, 2)$, vertex $(-3, 6)$, focus $(-3, 7)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-85",
+      "number": "85",
+      "problem": "Sketch each hyperbola showing center, vertices, foci, and asymptotes.\n\n1. $\\dfrac{x^2}{9} - \\dfrac{y^2}{16} = 1$\n\n2. $\\dfrac{y^2}{4} - \\dfrac{x^2}{25} = 1$\n\n3. $x^2 - y^2 = 9$\n\n4. $y^2 - 4x^2 = 16$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-86",
+      "number": "86",
+      "problem": "A parabolic arch spans 20 feet and is 10 feet high at the center. Find the height 5 feet from the center.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-87",
+      "number": "87",
+      "problem": "A whispering gallery is in the shape of an ellipse 100 feet long and 50 feet wide. Where should two people stand to hear each other's whispers?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-88",
+      "number": "88",
+      "problem": "A comet's orbit is an ellipse with the sun at one focus. If the closest approach is 50 million miles and the farthest is 200 million miles, find:\n\n1. The length of the major axis\n\n2. The eccentricity",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-89",
+      "number": "89",
+      "problem": "A suspension bridge cable hangs in a parabolic shape. If the towers are 400 feet apart and 100 feet tall, and the cable's lowest point is 10 feet above the roadway, find the cable's height 50 feet from the center.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-90",
+      "number": "90",
+      "problem": "Earth's orbit is an ellipse with the sun at one focus. If $a = 93$ million miles and $e = 0.017$:\n\n1. Find $c$ (distance from center to focus)\n\n2. Find Earth's closest and farthest distances from the sun",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-91",
+      "number": "91",
+      "problem": "A spotlight creates an elliptical pool of light on a wall. If the light is 3 feet wide and 2 feet tall, find the equation centered at the origin.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-92",
+      "number": "92",
+      "problem": "Find the equation of the conic satisfying the given conditions.\n\n1. Ellipse: foci $(0, \\pm 4)$, major axis length 10\n\n2. Hyperbola: vertices $(\\pm 3, 0)$, asymptotes $y = \\pm 2x$\n\n3. Parabola: vertex $(2, 1)$, focus $(2, 4)$\n\n4. Circle: center $(3, -2)$, tangent to the $x$-axis",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-93",
+      "number": "93",
+      "problem": "For each conic, find the eccentricity.\n\n1. $\\dfrac{x^2}{25} + \\dfrac{y^2}{9} = 1$\n\n2. $\\dfrac{x^2}{9} - \\dfrac{y^2}{16} = 1$\n\n3. $y^2 = 12x$\n\n4. $x^2 + y^2 = 49$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-94",
+      "number": "94",
+      "problem": "The eccentricity is given. Find the equation.\n\n1. Ellipse, center origin, vertices $(0, \\pm 6)$, $e = 2/3$\n\n2. Hyperbola, center origin, vertices $(\\pm 4, 0)$, $e = 5/4$\n\n3. Ellipse, foci $(\\pm 2, 0)$, $e = 1/2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-95",
+      "number": "95",
+      "problem": "Find the center, vertices, and foci: $\\dfrac{(x+1)^2}{36} + \\dfrac{(y-2)^2}{16} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-96",
+      "number": "96",
+      "problem": "Write the equation: ellipse with foci $(\\pm 3, 0)$ and vertices $(\\pm 5, 0)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-97",
+      "number": "97",
+      "problem": "Find the eccentricity of the ellipse $4x^2 + 9y^2 = 36$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-98",
+      "number": "98",
+      "problem": "Find the area of the ellipse $\\dfrac{x^2}{16} + \\dfrac{y^2}{9} = 1$. (Area = $\\pi ab$)",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-99",
+      "number": "99",
+      "problem": "Write in standard form and identify center, vertices, foci.\n\n1. $x^2 + 4y^2 - 6x + 8y + 9 = 0$\n\n2. $9x^2 + 16y^2 + 36x - 32y - 92 = 0$\n\n3. $25x^2 + 9y^2 - 100x + 54y - 44 = 0$\n\n4. $4x^2 + y^2 - 8x + 4y + 4 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-100",
+      "number": "100",
+      "problem": "Find the equation of the ellipse.\n\n1. Center origin, passing through $(4, 0)$ and $(0, 2)$\n\n2. Center $(1, 2)$, $a = 5$, $b = 3$, major axis horizontal\n\n3. Foci $(\\pm 2, 0)$, passing through $(2, 3)$\n\n4. Vertices $(0, \\pm 6)$, passing through $(4, 0)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-101",
+      "number": "101",
+      "problem": "An ellipse has foci at $(\\pm 3, 0)$ and the sum of focal radii is 10. Find the equation.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-102",
+      "number": "102",
+      "problem": "Find the length of the minor axis if the ellipse has $a = 13$ and $c = 5$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-103",
+      "number": "103",
+      "problem": "An ellipse has $a = 10$ and $e = 0.6$. Find $b$ and $c$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-104",
+      "number": "104",
+      "problem": "Find the coordinates of the endpoints of the minor axis: $\\dfrac{(x-2)^2}{25} + \\dfrac{(y+1)^2}{9} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-105",
+      "number": "105",
+      "problem": "A planet orbits a star in an ellipse. At its closest, it's 2 AU from the star; at its farthest, 8 AU. Find the eccentricity.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-106",
+      "number": "106",
+      "problem": "An arch is semi-elliptical with base 30 feet and height 10 feet. Find the height 6 feet from the center.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-107",
+      "number": "107",
+      "problem": "Write in standard form and identify center, vertices, foci, asymptotes.\n\n1. $4x^2 - 9y^2 - 8x - 36y - 68 = 0$\n\n2. $y^2 - 4x^2 + 8x - 6y - 11 = 0$\n\n3. $9x^2 - y^2 - 36x - 6y + 18 = 0$\n\n4. $4y^2 - x^2 + 8y + 4x + 4 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-108",
+      "number": "108",
+      "problem": "Find the equation of the hyperbola.\n\n1. Center origin, vertices $(\\pm 5, 0)$, passes through $(6, 4)$\n\n2. Center $(2, -1)$, focus $(2, 4)$, vertex $(2, 1)$\n\n3. Asymptotes $y = \\pm x$, passes through $(3, 2)$\n\n4. Foci $(0, \\pm 5)$, $e = 5/4$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-109",
+      "number": "109",
+      "problem": "Find the distance between the foci of $\\dfrac{x^2}{64} - \\dfrac{y^2}{36} = 1$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-110",
+      "number": "110",
+      "problem": "Find the eccentricity if $a = 8$ and $b = 6$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-111",
+      "number": "111",
+      "problem": "The discriminant $B^2 - 4AC$ determines the conic type for $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$. Classify each.\n\n1. $x^2 + 4xy + 4y^2 - 3x + y = 0$\n\n2. $2x^2 + 3xy - 2y^2 + x = 0$\n\n3. $x^2 + xy + y^2 - 1 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-112",
+      "number": "112",
+      "problem": "Write parametric equations for each conic.\n\n1. $\\dfrac{x^2}{16} + \\dfrac{y^2}{9} = 1$\n\n2. $\\dfrac{x^2}{9} - \\dfrac{y^2}{4} = 1$\n\n3. $y^2 = 8x$\n\n4. Circle: center $(2, 3)$, radius 5",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-113",
+      "number": "113",
+      "problem": "An elliptical running track has major axis 400 meters and minor axis 300 meters. Find the perimeter (use approximation $P \\approx \\pi[3(a+b) - \\sqrt{(3a+b)(a+3b)}]$).",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-114",
+      "number": "114",
+      "problem": "Halley's comet has perihelion 0.59 AU and aphelion 35.09 AU. Find:\n\n1. The semi-major axis $a$\n\n2. The eccentricity $e$\n\n3. The semi-minor axis $b$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-115",
+      "number": "115",
+      "problem": "Write the equation of the ellipse with foci at $(\\pm 4, 0)$ and minor axis length 6.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-116",
+      "number": "116",
+      "problem": "Find the area enclosed by the ellipse $\\dfrac{x^2}{25} + \\dfrac{y^2}{16} = 1$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-117",
+      "number": "117",
+      "problem": "Find center and foci: $\\dfrac{x^2}{100} + \\dfrac{y^2}{64} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-118",
+      "number": "118",
+      "problem": "Find center and foci: $\\dfrac{x^2}{36} + \\dfrac{y^2}{49} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-119",
+      "number": "119",
+      "problem": "Write the equation: ellipse, center origin, $a = 7$, $b = 4$, major axis on $x$-axis",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-120",
+      "number": "120",
+      "problem": "Write the equation: ellipse, foci $(0, \\pm 5)$, $a = 7$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-121",
+      "number": "121",
+      "problem": "Write the equation: hyperbola, vertices $(\\pm 4, 0)$, foci $(\\pm 5, 0)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-122",
+      "number": "122",
+      "problem": "Find the eccentricity: $\\dfrac{x^2}{169} + \\dfrac{y^2}{25} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-123",
+      "number": "123",
+      "problem": "Find the eccentricity: $\\dfrac{x^2}{9} - \\dfrac{y^2}{40} = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-124",
+      "number": "124",
+      "problem": "A satellite orbits Earth in an ellipse with $a = 8000$ km and $e = 0.2$. Find the closest and farthest distances from Earth's center.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.2-125",
+      "number": "125",
+      "problem": "An ellipse has vertices at $(−5, 0)$ and $(5, 0)$, and passes through $(3, 16/5)$. Find $b$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     }
   ],
   "marginNotes": [

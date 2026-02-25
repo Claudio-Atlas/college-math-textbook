@@ -1,35 +1,402 @@
 {
   "id": "precalculus-ch10-sec04",
-  "title": "Chapter Review",
+  "title": "Rotation of Conics",
   "chapter": 10,
   "section": 4,
   "book": "precalculus",
+  "objectives": [
+    "Identify the general second-degree equation",
+    "Use the discriminant to classify conics",
+    "Apply rotation of axes formulas",
+    "Eliminate the $xy$-term by rotation",
+    "Graph rotated conics"
+  ],
+  "devotional": {
+    "title": "New Perspectives",
+    "scripture": "Romans 12:2",
+    "content": "Do not conform to the pattern of this world, but be transformed by the \nrenewing of your mind. Then you will be able to test and approve what \nGod's will is—his good, pleasing and perfect will.\n\nThe mathematical technique of rotation illustrates a profound truth: \nsometimes what appears complex is actually simple when viewed from a \ndifferent angle. The equation $xy = 1$ looks unfamiliar, but rotate \nyour perspective by $45°$, and a beautiful hyperbola emerges.\n\nPaul speaks of transformation—a change not in external circumstances \nbut in how we perceive and understand. The \"renewing of your mind\" \nis a kind of rotation, a shift in perspective that reveals truth \npreviously hidden.\n\nThis is often how God works. The cross looked like defeat; from a \nrotated perspective, it was victory. Suffering looks like abandonment; \nviewed rightly, it can be refinement. The mathematics of rotation \nteaches us that the same object can look very different depending on \nour angle of view.",
+    "edition": "christian"
+  },
   "content": [
     {
-      "type": "heading",
-      "level": 2,
-      "text": "Key Concepts"
+      "type": "paragraph",
+      "text": "*\"He has made everything beautiful in its time. \nHe has also set eternity in the human heart; yet no one can fathom what \nGod has done from beginning to end.\"*{Ecclesiastes 3:11}\n{A change of perspective often reveals hidden beauty.}{Atlas Press}"
     },
     {
       "type": "paragraph",
-      "text": "**Parabola.** Set of points equidistant from focus and directrix. \nStandard form: $(x-h)^2 = 4p(y-k)$ or $(y-k)^2 = 4p(x-h)$."
+      "text": "So far, our conic sections have been \"axis-aligned\"—their axes of \nsymmetry were parallel to the coordinate axes. But what happens when a \nconic is tilted? An equation like $xy = 1$ or $x^2 + xy + y^2 = 4$ \ncontains an $xy$-term that indicates the conic is *rotated* relative \nto the standard position."
     },
     {
       "type": "paragraph",
-      "text": "**Ellipse.** Set of points with constant sum of distances to foci. \nStandard form: $\\frac{x^2}{a^2} + \\frac{y^2}{b^2} = 1$. Relationship: $c^2 = a^2 - b^2$."
-    },
-    {
-      "type": "paragraph",
-      "text": "**Hyperbola.** Set of points with constant difference of distances \nto foci. Standard form: $\\frac{x^2}{a^2} - \\frac{y^2}{b^2} = 1$. \nRelationship: $c^2 = a^2 + b^2$. Asymptotes: $y = \\pm\\frac{b}{a}x$."
-    },
-    {
-      "type": "paragraph",
-      "text": "**Eccentricity.** $e = c/a$. For ellipse: $0 < e < 1$. For \nparabola: $e = 1$. For hyperbola: $e > 1$."
+      "text": "In this section, we develop the technique of **rotation of axes**%\n to eliminate the $xy$-term and reveal the \nunderlying conic. This powerful method transforms a complicated equation \ninto a familiar standard form."
     },
     {
       "type": "heading",
       "level": 2,
-      "text": "Review Exercises"
+      "text": "The General Second-Degree Equation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Every conic section can be represented by a **general second-degree \nequation** in $x$ and $y$:"
+    },
+    {
+      "type": "definition",
+      "id": "definition-10.1",
+      "number": "10.1",
+      "title": "General Second-Degree Equation",
+      "content": "The most general form of a conic section is:\n$$\n Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0\n$$\nwhere $A$, $B$, $C$, $D$, $E$, and $F$ are real numbers with $A$, $B$, \n$C$ not all zero."
+    },
+    {
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "When $B = 0$, the axes of the conic are parallel to the \n coordinate axes (the cases we studied in Sections 10.1–10.3).",
+        "When $B \\neq 0$, the conic is **rotated**—its axes \n are tilted relative to the coordinate axes."
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-10.1",
+      "number": "10.1",
+      "title": "Identifying the $xy$-term",
+      "problem": "Determine whether each conic is rotated.\n\n1. $9x^2 + 4y^2 - 36 = 0$\n\n2. $x^2 - 4xy + y^2 + 5 = 0$\n\n3. $xy = 4$",
+      "solution": "**(a)** Here $B = 0$, so the conic is **not rotated**. \n(This is an ellipse with axes parallel to the coordinate axes.)\n\n**(b)** Here $B = -4 \\neq 0$, so the conic **is rotated**.\n\n**(c)** Writing as $xy - 4 = 0$, we have $A = 0$, $B = 1$, $C = 0$. \nSince $B \\neq 0$, the conic **is rotated**. (This is a rectangular \nhyperbola rotated $45°$.)"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Classifying Conics by the Discriminant"
+    },
+    {
+      "type": "paragraph",
+      "text": "We can determine the type of conic from its equation without graphing, \nusing the **discriminant**."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.1",
+      "number": "10.1",
+      "title": "Discriminant Test for Conics",
+      "content": "For the general second-degree equation $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$, \nthe quantity $B^2 - 4AC$ determines the type of conic:\n\n- If $B^2 - 4AC < 0$: **Ellipse** (or circle if $A = C$ and $B = 0$)\n\n- If $B^2 - 4AC = 0$: **Parabola**\n\n- If $B^2 - 4AC > 0$: **Hyperbola**\n*Note:* Degenerate cases (point, line, intersecting lines, etc.) \nare possible.",
+      "label": "Theorem"
+    },
+    {
+      "type": "paragraph",
+      "text": "—it has the same value regardless of how the coordinate \nsystem is oriented.}"
+    },
+    {
+      "type": "example",
+      "id": "example-10.2",
+      "number": "10.2",
+      "title": "Using the discriminant",
+      "problem": "Classify each conic without graphing.\n\n1. $2x^2 + 3xy - 2y^2 + x - y = 0$\n\n2. $x^2 + 4xy + 4y^2 - 6x = 0$\n\n3. $3x^2 + 2xy + 3y^2 - 8 = 0$",
+      "solution": "**(a)** $A = 2$, $B = 3$, $C = -2$.\n$$\n B^2 - 4AC = 9 - 4(2)(-2) = 9 + 16 = 25 > 0\n$$\nThis is a **hyperbola**.\n\n**(b)** $A = 1$, $B = 4$, $C = 4$.\n$$\n B^2 - 4AC = 16 - 4(1)(4) = 16 - 16 = 0\n$$\nThis is a **parabola**.\n\n**(c)** $A = 3$, $B = 2$, $C = 3$.\n$$\n B^2 - 4AC = 4 - 4(3)(3) = 4 - 36 = -32 < 0\n$$\nThis is an **ellipse**."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Rotation of Axes"
+    },
+    {
+      "type": "paragraph",
+      "text": "To eliminate the $xy$-term, we rotate the coordinate system by an angle \n$\\theta$. The new coordinates $(x', y')$ are related to the original \ncoordinates $(x, y)$ by the **rotation formulas**."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.2",
+      "number": "10.2",
+      "title": "Rotation of Axes Formulas",
+      "content": "If the coordinate axes are rotated through an angle $\\theta$, the \nrelationships between the original coordinates $(x, y)$ and the new \ncoordinates $(x', y')$ are:\n$$\n x &= x'\\cos\\theta - y'\\sin\\theta \\label{eq:rot-x} \\\\\n y &= x'\\sin\\theta + y'\\cos\\theta \\label{eq:rot-y}\n$$\nOr equivalently, solving for $x'$ and $y'$:\n$$\n x' &= x\\cos\\theta + y\\sin\\theta \\label{eq:rot-xp} \\\\\n y' &= -x\\sin\\theta + y\\cos\\theta \\label{eq:rot-yp}\n$$",
+      "label": "Theorem"
+    },
+    {
+      "type": "figure",
+      "id": "fig:rotation-axes",
+      "src": "/figures/precalculus/fig-rotation-axes.svg",
+      "caption": "Rotation of axes by angle $\\theta$. The original axes are $x$ and $y$ (black). The rotated axes are $x'$ and $y'$ (teal), obtained by rotating counterclockwise by angle $\\theta$. A point $P$ has different coordinates in each system, but represents the same location in the plane.",
+      "alt": "Rotation of axes by angle $\\theta$. The original axes are $x$ and $y$ (black). The rotated axes are $x'$ and $y'$ (teal), obtained by rotating counterclockwise by angle $\\theta$. A point $P$ has different coordinates in each system, but represents the same location in the plane.",
+      "tikz": true
+    },
+    {
+      "type": "example",
+      "id": "example-10.3",
+      "number": "10.3",
+      "title": "Using rotation formulas",
+      "problem": "A coordinate system is rotated by $\\theta = 45°$. \n\n1. Express $(x, y)$ in terms of $(x', y')$.\n\n2. Find the original coordinates of the point with $x' = 2$, $y' = 0$.",
+      "solution": "**(a)** With $\\theta = 45°$, we have $\\cos 45° = \\sin 45° = \\frac{\\sqrt{2}}{2}$.\n$$\n x &= x'\\cos 45° - y'\\sin 45° = \\frac{\\sqrt{2}}{2}(x' - y') \\\\\n y &= x'\\sin 45° + y'\\cos 45° = \\frac{\\sqrt{2}}{2}(x' + y')\n$$\n\n**(b)** With $x' = 2$ and $y' = 0$:\n$$\n x &= \\frac{\\sqrt{2}}{2}(2 - 0) = \\sqrt{2} \\\\\n y &= \\frac{\\sqrt{2}}{2}(2 + 0) = \\sqrt{2}\n$$\nThe point is $(\\sqrt{2}, \\sqrt{2})$ in the original system."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Eliminating the $xy$-Term"
+    },
+    {
+      "type": "paragraph",
+      "text": "The key question: what angle $\\theta$ eliminates the $xy$-term? \nWhen we substitute the rotation formulas into $Ax^2 + Bxy + Cy^2 + \\ldots = 0$, \nthe coefficient of $x'y'$ in the new equation is:\n$$\n B' = B\\cos 2\\theta + (C - A)\\sin 2\\theta\n$$\nSetting $B' = 0$ and solving:"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.3",
+      "number": "10.3",
+      "title": "Angle of Rotation",
+      "content": "To eliminate the $xy$-term from $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$, \nrotate through angle $\\theta$ where:\n$$\n \\cot 2\\theta = \\frac{A - C}{B} \\quad \\text{(assuming } B \\neq 0\\text{)}\n$$\nChoose $\\theta$ such that $0° < \\theta < 90°$ (or $0 < \\theta < \\frac{\\pi}{2}$).",
+      "label": "Theorem"
+    },
+    {
+      "type": "warning",
+      "id": "warning-10.4",
+      "number": null,
+      "title": "",
+      "content": "When $A = C$, we have $\\cot 2\\theta = 0$, which means $2\\theta = 90°$, \nso $\\theta = 45°$."
+    },
+    {
+      "type": "algorithm",
+      "id": "algorithm-10.4",
+      "number": null,
+      "title": "Analyzing a Rotated Conic",
+      "content": "Given an equation $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$ with $B \\neq 0$:\n\n1. **Classify the conic** using the discriminant $B^2 - 4AC$:\n itemize\n\n2. $B^2 - 4AC < 0$: Ellipse (or circle)\n\n3. $B^2 - 4AC = 0$: Parabola\n\n4. $B^2 - 4AC > 0$: Hyperbola\n itemize\n\n5. **Find the rotation angle** $\\theta$:\n $$\n \\cot 2\\theta = \\frac{A - C}{B}\n $$\n Use a reference triangle or inverse trig to find $\\cos\\theta$ and $\\sin\\theta$.\n\n6. **Find $\\cos\\theta$ and $\\sin\\theta$** using half-angle formulas:\n itemize\n\n7. If $\\cot 2\\theta \\geq 0$: use $\\cos 2\\theta = \\frac{A-C}{\\sqrt{(A-C)^2 + B^2}}$\n\n8. If $\\cot 2\\theta < 0$: use $\\cos 2\\theta = \\frac{-(A-C)}{\\sqrt{(A-C)^2 + B^2}}$\n itemize\n Then: $\\cos\\theta = \\sqrt{\\frac{1 + \\cos 2\\theta}{2}}$, \n $\\sin\\theta = \\sqrt{\\frac{1 - \\cos 2\\theta}{2}}$\n\n9. **Apply the rotation formulas**:\n $$\n x &= x'\\cos\\theta - y'\\sin\\theta \\\\\n y &= x'\\sin\\theta + y'\\cos\\theta\n $$\n\n10. **Substitute** into the original equation and simplify. \n The $x'y'$-term should vanish, leaving a standard form.\n\n11. **Analyze** the resulting equation:\n itemize\n\n12. Identify center, vertices, foci (in $x'y'$-coordinates)\n\n13. Convert back to $xy$-coordinates if needed\n itemize\n\n14. **Graph**: Sketch the rotated axes at angle $\\theta$, \n then graph the conic in standard position relative to those axes."
+    },
+    {
+      "type": "example",
+      "id": "example-10.4",
+      "number": "10.4",
+      "title": "Finding the rotation angle",
+      "problem": "Find the angle of rotation that eliminates the $xy$-term.\n\n1. $xy = 4$\n\n2. $x^2 + 2xy + y^2 - 8x + 8y = 0$\n\n3. $16x^2 - 24xy + 9y^2 + 100x - 200 = 0$",
+      "solution": "**(a)** Here $A = 0$, $B = 1$, $C = 0$.\n$$\n \\cot 2\\theta = \\frac{0 - 0}{1} = 0 \\implies 2\\theta = 90° \\implies \\theta = 45°\n$$\n\n**(b)** Here $A = 1$, $B = 2$, $C = 1$.\n$$\n \\cot 2\\theta = \\frac{1 - 1}{2} = 0 \\implies \\theta = 45°\n$$\n\n**(c)** Here $A = 16$, $B = -24$, $C = 9$.\n$$\n \\cot 2\\theta = \\frac{16 - 9}{-24} = -\\frac{7}{24}\n$$\nUsing the identity $\\cot 2\\theta = \\frac{\\cos 2\\theta}{\\sin 2\\theta}$ and \na right triangle with adjacent $= -7$, opposite $= 24$, hypotenuse $= 25$:\n$$\n \\cos 2\\theta = -\\frac{7}{25}, \\quad \\sin 2\\theta = \\frac{24}{25}\n$$\nUsing half-angle formulas:\n$$\n \\cos\\theta = \\sqrt{\\frac{1 + \\cos 2\\theta}{2}} = \\sqrt{\\frac{1 - \\frac{7}{25}}{2}} = \\sqrt{\\frac{18}{50}} = \\frac{3}{5}\n$$\n$$\n \\sin\\theta = \\sqrt{\\frac{1 - \\cos 2\\theta}{2}} = \\sqrt{\\frac{1 + \\frac{7}{25}}{2}} = \\sqrt{\\frac{32}{50}} = \\frac{4}{5}\n$$\nSo $\\theta = \\arctan\\frac{4}{3} \\approx 53.13°$."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Graphing Rotated Conics"
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.4",
+      "number": "10.4",
+      "title": "Procedure for Graphing Rotated Conics",
+      "content": "To graph $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$ when $B \\neq 0$:\n\n1. **Find** $\\theta$ using $\\cot 2\\theta = \\frac{A-C}{B}$.\n\n2. **Calculate** $\\cos\\theta$ and $\\sin\\theta$.\n\n3. **Substitute** the rotation formulas into the equation.\n\n4. **Simplify** to get an equation in $x'$ and $y'$ with no $x'y'$-term.\n\n5. **Graph** the conic in the $x'y'$-system.\n\n6. **Rotate** the graph back by drawing $x'$- and $y'$-axes at angle $\\theta$.",
+      "label": "Theorem"
+    },
+    {
+      "type": "example",
+      "id": "example-10.5",
+      "number": "10.5",
+      "title": "Graphing $xy = 4$",
+      "problem": "Graph the equation $xy = 4$.",
+      "solution": "**Step 1: Identify and classify.**\n\n$A = 0$, $B = 1$, $C = 0$. Discriminant: $B^2 - 4AC = 1 > 0$, so this \nis a **hyperbola**.\n\n**Step 2: Find $\\theta$.**\n\n$\\cot 2\\theta = \\frac{0 - 0}{1} = 0 \\implies \\theta = 45°$\n\n**Step 3: Apply rotation formulas.**\n\nWith $\\cos 45° = \\sin 45° = \\frac{\\sqrt{2}}{2}$:\n$$\n x &= \\frac{\\sqrt{2}}{2}(x' - y') \\\\\n y &= \\frac{\\sqrt{2}}{2}(x' + y')\n$$\n\n**Step 4: Substitute.**\n$$\n xy &= \\frac{\\sqrt{2}}{2}(x' - y') \\cdot \\frac{\\sqrt{2}}{2}(x' + y') \\\\\n &= \\frac{1}{2}(x'^2 - y'^2) = 4\n$$\nSo: $\\frac{x'^2}{8} - \\frac{y'^2}{8} = 1$\n\n**Step 5: Graph.**\n\nThis is a hyperbola centered at the origin with $a^2 = 8$ and $b^2 = 8$, \nopening along the $x'$-axis. The vertices are at $(\\pm 2\\sqrt{2}, 0)$ \nin the $x'y'$-system.\n\nfigure[H]\n\ntikzpicture[scale=0.5]\n % Original axes\n (-5,0) – (5,0) node[right] {$x$};\n (0,-5) – (0,5) node[above] {$y$};\n \n % Rotated axes (45 degrees)\n (-4,-4) – (4,4) node[above right] {$x'$};\n (4,-4) – (-4,4) node[above left] {$y'$};\n \n % Hyperbola xy = 4\n plot (, {4/});\n plot (, {4/});\n \n % Asymptotes (the original axes!)\n (-4.5,0) – (4.5,0);\n (0,-4.5) – (0,4.5);\n \n % Vertices\n lldraw[AtlasCoral] (2,2) circle (4pt) node[above right] {$(2,2)$};\n lldraw[AtlasCoral] (-2,-2) circle (4pt) node[below left] {$(-2,-2)$};\n \n % Label\n at (0,-6.5) {$xy = 4$ is a hyperbola rotated $45°$};\ntikzpicture\nThe rectangular hyperbola $xy = 4$. In standard position (along the rotated $x'$-axis), it has equation $\\frac{x'^2}{8} - \\frac{y'^2}{8} = 1$. The original $x$- and $y$-axes are the asymptotes. Vertices are at $(2, 2)$ and $(-2, -2)$.\n\nfigure",
+      "figures": [
+        {
+          "type": "figure",
+          "id": "fig:xy-equals-4",
+          "src": "/figures/precalculus/fig-xy-equals-4.svg",
+          "caption": "The rectangular hyperbola $xy = 4$. In standard position (along the rotated $x'$-axis), it has equation $\\frac{x'^2}{8} - \\frac{y'^2}{8} = 1$. The original $x$- and $y$-axes are the asymptotes. Vertices are at $(2, 2)$ and $(-2, -2)$.",
+          "alt": "The rectangular hyperbola $xy = 4$. In standard position (along the rotated $x'$-axis), it has equation $\\frac{x'^2}{8} - \\frac{y'^2}{8} = 1$. The original $x$- and $y$-axes are the asymptotes. Vertices are at $(2, 2)$ and $(-2, -2)$.",
+          "tikz": true
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-10.6",
+      "number": "10.6",
+      "title": "Graphing a rotated ellipse",
+      "problem": "Graph $x^2 + xy + y^2 = 3$.",
+      "solution": "**Classify:** $A = 1$, $B = 1$, $C = 1$.\n$B^2 - 4AC = 1 - 4 = -3 < 0$: **ellipse**\n\n**Find $\\theta$:** $\\cot 2\\theta = \\frac{1-1}{1} = 0 \\implies \\theta = 45°$\n\n**Substitute:** With $x = \\frac{\\sqrt{2}}{2}(x' - y')$ and $y = \\frac{\\sqrt{2}}{2}(x' + y')$:\n\n$$\n x^2 &= \\frac{1}{2}(x'^2 - 2x'y' + y'^2) \\\\\n y^2 &= \\frac{1}{2}(x'^2 + 2x'y' + y'^2) \\\\\n xy &= \\frac{1}{2}(x'^2 - y'^2)\n$$\n\nSubstituting into $x^2 + xy + y^2 = 3$:\n$$\n &\\frac{1}{2}(x'^2 - 2x'y' + y'^2) + \\frac{1}{2}(x'^2 - y'^2) + \\frac{1}{2}(x'^2 + 2x'y' + y'^2) = 3 \\\\\n &\\frac{1}{2}(3x'^2 + y'^2) = 3 \\\\\n &3x'^2 + y'^2 = 6 \\\\\n &\\frac{x'^2}{2} + \\frac{y'^2}{6} = 1\n$$\n\nThis is an ellipse with $a^2 = 6$ (along $y'$) and $b^2 = 2$ (along $x'$).\n\nfigure[H]\n\ntikzpicture[scale=0.7]\n % Original axes\n (-3.5,0) – (3.5,0) node[right] {$x$};\n (0,-3.5) – (0,3.5) node[above] {$y$};\n \n % Rotated axes\n ({-2.5*cos(45)},{-2.5*sin(45)}) – ({2.5*cos(45)},{2.5*sin(45)}) node[above right] {$x'$};\n ({2.5*sin(45)},{-2.5*cos(45)}) – ({-2.5*sin(45)},{2.5*cos(45)}) node[above left] {$y'$};\n \n % Ellipse (rotated 45 degrees)\n (0,0) ellipse ({sqrt(2)} and {sqrt(6)});\n \n % Vertices along y' axis\n {sqrt(6)}\n lldraw[AtlasCoral] ({-*sin(45)},{*cos(45)}) circle (3pt);\n lldraw[AtlasCoral] ({*sin(45)},{-*cos(45)}) circle (3pt);\n \n % Co-vertices along x' axis \n {sqrt(2)}\n lldraw[AtlasSage] ({*cos(45)},{*sin(45)}) circle (3pt);\n lldraw[AtlasSage] ({-*cos(45)},{-*sin(45)}) circle (3pt);\ntikzpicture\nThe ellipse $x^2 + xy + y^2 = 3$, rotated $45°$ from standard position. In the rotated coordinate system, the equation is $\\frac{x'^2}{2} + \\frac{y'^2}{6} = 1$. The major axis lies along $y'$ with vertices at distance $\\sqrt{6} \\approx 2.45$ from center; minor axis along $x'$ with co-vertices at distance $\\sqrt{2} \\approx 1.41$.\n\nfigure",
+      "figures": [
+        {
+          "type": "figure",
+          "id": "fig:rotated-ellipse",
+          "src": "/figures/precalculus/fig-rotated-ellipse.svg",
+          "caption": "The ellipse $x^2 + xy + y^2 = 3$, rotated $45°$ from standard position. In the rotated coordinate system, the equation is $\\frac{x'^2}{2} + \\frac{y'^2}{6} = 1$. The major axis lies along $y'$ with vertices at distance $\\sqrt{6} \\approx 2.45$ from center; minor axis along $x'$ with co-vertices at distance $\\sqrt{2} \\approx 1.41$.",
+          "alt": "The ellipse $x^2 + xy + y^2 = 3$, rotated $45°$ from standard position. In the rotated coordinate system, the equation is $\\frac{x'^2}{2} + \\frac{y'^2}{6} = 1$. The major axis lies along $y'$ with vertices at distance $\\sqrt{6} \\approx 2.45$ from center; minor axis along $x'$ with co-vertices at distance $\\sqrt{2} \\approx 1.41$.",
+          "tikz": true
+        }
+      ]
+    },
+    {
+      "type": "example",
+      "id": "example-10.7",
+      "number": "10.7",
+      "title": "Graphing a rotated parabola",
+      "problem": "Graph $x^2 + 2xy + y^2 + 4\\sqrt{2}x - 4\\sqrt{2}y = 0$.",
+      "solution": "**Classify:** $A = 1$, $B = 2$, $C = 1$.\n$B^2 - 4AC = 4 - 4 = 0$: **parabola**\n\n**Find $\\theta$:** $\\cot 2\\theta = \\frac{1-1}{2} = 0 \\implies \\theta = 45°$\n\n**Substitute and simplify:**\nAfter rotation (detailed algebra omitted), the equation becomes:\n$$\n x'^2 = -4y'\n$$\nThis is a parabola opening downward (in the $y'$-direction) with vertex \nat the origin and $p = -1$.\n\nfigure[H]\n\ntikzpicture[scale=0.5]\n % Original axes\n (-5,0) – (5,0) node[right] {$x$};\n (0,-5) – (0,5) node[above] {$y$};\n \n % Rotated axes\n ({-4*cos(45)},{-4*sin(45)}) – ({4*cos(45)},{4*sin(45)}) node[above right] {$x'$};\n ({4*sin(45)},{-4*cos(45)}) – ({-4*sin(45)},{4*cos(45)}) node[above left] {$y'$};\n \n % Parabola x'^2 = -4y', rotated 45 degrees\n % Parametric: x' = t, y' = -t^2/4\n % In original coords: x = (t - (-t^2/4))/sqrt(2), y = (t + (-t^2/4))/sqrt(2)\n \n plot ({( + /4)/sqrt(2)}, {( - /4)/sqrt(2)});\n \n % Vertex at origin\n lldraw[AtlasCoral] (0,0) circle (4pt);\ntikzpicture\nThe parabola $x^2 + 2xy + y^2 + 4\\sqrt{2}x - 4\\sqrt{2}y = 0$, which simplifies to $x'^2 = -4y'$ after a $45°$ rotation. The parabola opens in the negative $y'$-direction (toward the lower-right in original coordinates). Vertex is at the origin.\n\nfigure",
+      "figures": [
+        {
+          "type": "figure",
+          "id": "fig:rotated-parabola",
+          "src": "/figures/precalculus/fig-rotated-parabola.svg",
+          "caption": "The parabola $x^2 + 2xy + y^2 + 4\\sqrt{2}x - 4\\sqrt{2}y = 0$, which simplifies to $x'^2 = -4y'$ after a $45°$ rotation. The parabola opens in the negative $y'$-direction (toward the lower-right in original coordinates). Vertex is at the origin.",
+          "alt": "The parabola $x^2 + 2xy + y^2 + 4\\sqrt{2}x - 4\\sqrt{2}y = 0$, which simplifies to $x'^2 = -4y'$ after a $45°$ rotation. The parabola opens in the negative $y'$-direction (toward the lower-right in original coordinates). Vertex is at the origin.",
+          "tikz": true
+        }
+      ]
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Invariants Under Rotation"
+    },
+    {
+      "type": "paragraph",
+      "text": "Some quantities remain unchanged when we rotate the coordinate system."
+    },
+    {
+      "type": "theorem",
+      "id": "theorem-10.5",
+      "number": "10.5",
+      "title": "Rotation Invariants",
+      "content": "For the general conic $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$, the \nfollowing quantities are invariant under rotation:\n\n1. $A + C$ (the sum of the coefficients of $x^2$ and $y^2$)\n\n2. $B^2 - 4AC$ (the discriminant)\n\n3. $F$ (the constant term)",
+      "label": "Theorem"
+    },
+    {
+      "type": "summary",
+      "id": "summary-10.4",
+      "number": null,
+      "title": "Rotation of Conics",
+      "content": "- The **general second-degree equation** is \n $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$.\n\n- The presence of an $xy$-term ($B \\neq 0$) indicates a \n **rotated conic**.\n\n- **Discriminant classification:**\n itemize\n\n- $B^2 - 4AC < 0$: Ellipse (or circle)\n\n- $B^2 - 4AC = 0$: Parabola\n\n- $B^2 - 4AC > 0$: Hyperbola\n \n **Rotation formulas:**\n $$\n x &= x'\\cos\\theta - y'\\sin\\theta \\\\\n y &= x'\\sin\\theta + y'\\cos\\theta\n $$\n \n **Angle to eliminate $xy$-term:** $\\cot 2\\theta = \\frac{A-C}{B}$\n \n The quantities $A + C$, $B^2 - 4AC$, and $F$ are \n **invariant** under rotation.\nitemize"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-1",
+      "number": "1",
+      "problem": "Determine whether each conic is rotated (has an $xy$-term).\n\n1. $4x^2 + 9y^2 = 36$\n\n2. $xy - 2 = 0$\n\n3. $x^2 - 6xy + 9y^2 + 2x - 3y = 0$\n\n4. $y^2 - 8x = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-2",
+      "number": "2",
+      "problem": "Use the discriminant to classify each conic.\n\n1. $x^2 + 4xy + y^2 - 3 = 0$\n\n2. $x^2 + 4xy + 4y^2 + 5x - 6 = 0$\n\n3. $x^2 + 4xy + 5y^2 - 1 = 0$\n\n4. $2x^2 - 3xy - 2y^2 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-3",
+      "number": "3",
+      "problem": "Classify each conic and find the angle of rotation $\\theta$ (do not graph).\n\n1. $xy = 9$\n\n2. $5x^2 - 6xy + 5y^2 - 8 = 0$\n\n3. $9x^2 - 24xy + 16y^2 - 40x - 30y = 0$\n\n4. $3x^2 + 2\\sqrt{3}xy + y^2 + 2x - 2\\sqrt{3}y = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-4",
+      "number": "4",
+      "problem": "For a rotation of $\\theta = 30°$, express $x$ and $y$ in terms of $x'$ and $y'$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-5",
+      "number": "5",
+      "problem": "For a rotation of $\\theta = 60°$, express $x'$ and $y'$ in terms of $x$ and $y$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-6",
+      "number": "6",
+      "problem": "If the axes are rotated by $45°$, find the new coordinates of:\n\n1. $(2, 0)$\n\n2. $(0, 3)$\n\n3. $(1, 1)$\n\n4. $(-2, 2)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-7",
+      "number": "7",
+      "problem": "Rotate the axes to eliminate the $xy$-term, write the equation in standard form, and graph.\n\n1. $xy = 1$\n\n2. $xy = -2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-8",
+      "number": "8",
+      "problem": "Rotate the axes to eliminate the $xy$-term, write the equation in standard form, and graph.\n\n1. $x^2 + 2xy + y^2 - 8x + 8y = 0$\n\n2. $x^2 - 2xy + y^2 + x + y = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-9",
+      "number": "9",
+      "problem": "Rotate and graph:\n\n1. $5x^2 - 6xy + 5y^2 = 16$\n\n2. $3x^2 + 2\\sqrt{3}xy + y^2 - 8 = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-10",
+      "number": "10",
+      "problem": "Rotate and graph, identifying vertices and foci:\n\n1. $7x^2 + 6\\sqrt{3}xy + 13y^2 = 64$\n\n2. $x^2 + 2\\sqrt{3}xy + 3y^2 - 8\\sqrt{3}x + 8y = 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-11",
+      "number": "11",
+      "problem": "True or False? Justify your answer.\n\n1. Every conic with an $xy$-term is a hyperbola.\n\n2. The discriminant $B^2 - 4AC$ changes when the axes are rotated.\n\n3. A rotation of axes changes the shape of a conic.\n\n4. If $A = C$ and $B \\neq 0$, then $\\theta = 45°$ eliminates the $xy$-term.\n\n5. The equation $x^2 + y^2 = 4$ is unchanged by any rotation.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-12",
+      "number": "12",
+      "problem": "Explain why the rotation formulas can be derived using \nbasic trigonometry (hint: consider a point at distance $r$ from the origin \nat angle $\\alpha$ from the $x$-axis).",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-13",
+      "number": "13",
+      "problem": "Why is the discriminant $B^2 - 4AC$ invariant under rotation? \nWhat does this tell us about the classification of conics?",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-14",
+      "number": "14",
+      "problem": "Derive the formula $\\cot 2\\theta = \\frac{A-C}{B}$ by \nsubstituting the rotation formulas into $Ax^2 + Bxy + Cy^2$ and setting \nthe coefficient of $x'y'$ equal to zero.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-15",
+      "number": "15",
+      "problem": "Show that if the original equation is $Ax^2 + Bxy + Cy^2 + F = 0$ \n(with $D = E = 0$), then after rotation the equation becomes \n$A'x'^2 + C'y'^2 + F = 0$ where $A' + C' = A + C$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-10.4-16",
+      "number": "16",
+      "problem": "Find an equation of the conic that passes through the \nfive points $(0, 0)$, $(1, 1)$, $(2, 0)$, $(0, 2)$, and $(1, 2)$. \nIdentify the conic.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
     }
   ]
 }

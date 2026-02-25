@@ -10,12 +10,13 @@
     "Determine the behavior of a graph in each region",
     "Sketch accurate graphs of rational functions by hand",
     "Use symmetry to simplify graphing when applicable",
-    "Analyze graphs to determine possible function formulas\nitemize"
+    "Analyze graphs to determine possible function formulas"
   ],
   "devotional": {
     "title": "Seeing the Whole Picture",
     "scripture": "1 Corinthians 13:12; Psalm 119:105",
     "content": "{AtlasWarmN}{ow \nwe see only a reflection} as in a mirror; then we shall see face to face. \nNow I know in part; then I shall know fully, even as I am fully known.\n\nWhen we graph a function, we create a visual representation of an \nabstract relationship. The graph reveals patterns, boundaries, and \nbehaviors that might not be obvious from the formula alone. Yet even \nthe most detailed graph is only a partial picture—we can never draw \nevery point, never capture every nuance.\n\nGraphing rational functions requires us to consider many features: \nintercepts where the function touches the axes, asymptotes that mark \nforbidden boundaries, and the careful behavior of the curve as it \nnavigates between these constraints. Each piece of information \ncontributes to our understanding of the whole.\n\nIn the same way, our understanding of truth and meaning comes piece by \npiece. The Psalmist writes that God's word is a lamp to our feet and a \nlight to our path—not a floodlight illuminating everything at once, \nbut a lamp providing enough light for the next step. We graph our \nunderstanding of life one insight at a time.\n\nAs you work through these graphs, remember that the goal is not just \nto draw curves but to understand relationships. Each graph tells a \nstory about how one quantity depends on another.",
+    "edition": "christian",
     "reflection": "Graphing requires integrating many pieces of \ninformation into a coherent whole. How do you integrate different \nsources of knowledge—reason, experience, Scripture, community—into \na coherent understanding of truth?"
   },
   "content": [
@@ -28,9 +29,24 @@
       "text": "With asymptotes and intercepts as guides, we can sketch accurate graphs \nof rational functions by understanding their key features. This section \npresents a systematic approach to graphing."
     },
     {
+      "type": "figure",
+      "id": "fig:graphing-strategy",
+      "src": "/figures/precalculus/fig-graphing-strategy.svg",
+      "caption": "The 8-step strategy for graphing rational functions. Steps 1–4 gather information about the function; steps 5–7 analyze behavior; step 8 combines everything into the final sketch.",
+      "alt": "The 8-step strategy for graphing rational functions. Steps 1–4 gather information about the function; steps 5–7 analyze behavior; step 8 combines everything into the final sketch.",
+      "tikz": true
+    },
+    {
       "type": "heading",
       "level": 2,
       "text": "Graphing Strategy"
+    },
+    {
+      "type": "warning",
+      "id": "warning-3.3",
+      "number": null,
+      "title": "Check for Holes Before Graphing",
+      "content": "Always factor and simplify first! A common factor in numerator \nand denominator creates a hole, not an asymptote."
     },
     {
       "type": "strategy",
@@ -65,8 +81,12 @@
       "solution": "**Intercepts:** None (same reasoning as $\\frac{1}{x}$).\n\n**Asymptotes:** Vertical at $x = 0$; horizontal at $y = 0$.\n\n**Symmetry:** $g(-x) = \\frac{1}{(-x)^2} = \\frac{1}{x^2} = g(x)$. \nEven function—symmetric about the $y$-axis.\n\n**Key difference from $\\frac{1}{x}$:** Since $x^2 > 0$ for all \n$x \\neq 0$, we have $g(x) > 0$ always. Both branches are above the \n$x$-axis.\n\ncenter\ntikzpicture[scale=0.8]\n (-4,0) – (4,0) node[right] {$x$};\n (0,-0.5) – (0,4) node[above] {$y$};\n \n % Function\n plot (, {1/()});\n plot (, {1/()});\n \n % Key points\n lldraw (1,1) circle (2pt) node[right] {$(1,1)$};\n lldraw (-1,1) circle (2pt) node[left] {$(-1,1)$};\n \n % Labels\n at (2.5,2.5) {$g(x) = \\frac{1}{x^2}$};\ntikzpicture\ncenter\n\nNote how the even symmetry places both branches in the same position \nrelative to the $y$-axis, and both branches approach $+\\infty$ near the \nvertical asymptote."
     },
     {
-      "type": "paragraph",
-      "text": "{x}$ and $$\\frac{1}{x^2}$$: The odd function \nhas branches in opposite quadrants; the even function has branches in \nthe same quadrants relative to the $y$-axis.}"
+      "type": "figure",
+      "id": "fig:parent-rational-comparison",
+      "src": "/figures/precalculus/fig-parent-rational-comparison.svg",
+      "caption": "Comparing the two parent rational functions. **Left:** $f(x) = \\frac{1}{x}$ is an odd function with branches in Quadrants I and III. **Right:** $g(x) = \\frac{1}{x^2}$ is an even function with both branches above the $x$-axis (Quadrants I and II). The power in the denominator determines whether branches are in opposite or matching quadrants.",
+      "alt": "Comparing the two parent rational functions. **Left:** $f(x) = \\frac{1}{x}$ is an odd function with branches in Quadrants I and III. **Right:** $g(x) = \\frac{1}{x^2}$ is an even function with both branches above the $x$-axis (Quadrants I and II). The power in the denominator determines whether branches are in opposite or matching quadrants.",
+      "tikz": true
     },
     {
       "type": "heading",
@@ -90,6 +110,14 @@
       "solution": "**Factor:** $f(x) = \\dfrac{x - 1}{(x-2)(x+2)}$. No cancellation.\n\n**Domain:** $(-\\infty, -2) \\cup (-2, 2) \\cup (2, \\infty)$\n\n**Intercepts:**\n\n- $y$-intercept: $f(0) = \\frac{-1}{-4} = \\frac{1}{4}$. Point: $(0, \\frac{1}{4})$\n\n- $x$-intercept: $x - 1 = 0 \\Rightarrow x = 1$. Point: $(1, 0)$\n\n**Asymptotes:**\n\n- Vertical: $x = 2$ and $x = -2$\n\n- Horizontal: $y = 0$ (degree 1 < degree 2)\n\n**Behavior analysis:** Test points in each region:\n\n| Interval | Test point | $f(x)$ value | Sign |\n| $(-\\infty, -2)$ | $x = -3$ | $\\frac{-4}{5} = -0.8$ | negative |\n| $(-2, 1)$ | $x = 0$ | $\\frac{1}{4}$ | positive |\n| $(1, 2)$ | $x = 1.5$ | $\\frac{0.5}{-1.75} \\approx -0.29$ | negative |\n| $(2, \\infty)$ | $x = 3$ | $\\frac{2}{5} = 0.4$ | positive |\n\ncenter\ntikzpicture[scale=0.55]\n (-5,0) – (5,0) node[right] {$x$};\n (0,-4) – (0,4) node[above] {$y$};\n \n % Asymptotes\n (-2,-4) – (-2,4);\n (2,-4) – (2,4);\n \n % Function pieces\n \n plot (, {(-1)/((-2)*(+2))});\n \n plot (, {(-1)/((-2)*(+2))});\n \n plot (, {(-1)/((-2)*(+2))});\n \n % Key points\n lldraw (1,0) circle (3pt);\n lldraw (0,0.25) circle (3pt);\n \n at (-2,-4.5) { $x=-2$};\n at (2,-4.5) { $x=2$};\ntikzpicture\ncenter"
     },
     {
+      "type": "figure",
+      "id": "fig:sign-analysis",
+      "src": "/figures/precalculus/fig-sign-analysis.svg",
+      "caption": "Sign analysis for $f(x) = \\frac{x-1}{(x-2)(x+2)}$. Mark critical points (zeros and vertical asymptotes), then test one point in each interval. The sign tells whether the graph is above or below the $x$-axis in that region.",
+      "alt": "Sign analysis for $f(x) = \\frac{x-1}{(x-2)(x+2)}$. Mark critical points (zeros and vertical asymptotes), then test one point in each interval. The sign tells whether the graph is above or below the $x$-axis in that region.",
+      "tikz": true
+    },
+    {
       "type": "example",
       "id": "example-3.5",
       "number": "3.5",
@@ -103,7 +131,7 @@
       "number": "3.6",
       "title": "Graph with slant asymptote",
       "problem": "Sketch the graph of $h(x) = \\dfrac{x^2 - 1}{x - 2}$.",
-      "solution": "**Factor numerator:** $h(x) = \\dfrac{(x-1)(x+1)}{x-2}$. No cancellation.\n\n**Domain:** $(-\\infty, 2) \\cup (2, \\infty)$\n\n**Intercepts:**\n\n- $y$-intercept: $h(0) = \\frac{-1}{-2} = \\frac{1}{2}$. Point: $(0, \\frac{1}{2})$\n\n- $x$-intercepts: $x = 1$ and $x = -1$. Points: $(1, 0)$ and $(-1, 0)$\n\n**Asymptotes:**\n\n- Vertical: $x = 2$\n\n- Slant: Perform long division:\n \\[\n \\frac{x^2 - 1}{x - 2} = x + 2 + \\frac{3}{x - 2}\n \\]\n Slant asymptote: $y = x + 2$\n\n**Behavior near $x = 2$:**\n\n- At $x = 1.9$: $h(1.9) = \\frac{2.61}{-0.1} = -26.1 \\to -\\infty$\n\n- At $x = 2.1$: $h(2.1) = \\frac{3.41}{0.1} = 34.1 \\to +\\infty$\n\ncenter\ntikzpicture[scale=0.5]\n (-5,0) – (7,0) node[right] {$x$};\n (0,-6) – (0,8) node[above] {$y$};\n \n % Asymptotes\n (2,-6) – (2,8);\n plot (, { + 2});\n \n % Function\n \n plot (, {( - 1)/( - 2)});\n \n plot (, {( - 1)/( - 2)});\n \n % Key points\n lldraw (1,0) circle (3pt);\n lldraw (-1,0) circle (3pt);\n lldraw (0,0.5) circle (3pt);\n \n at (2,-6.5) { $x=2$};\n at (5.5,7) { $y=x+2$};\ntikzpicture\ncenter\n\nNotice how the graph approaches the slant asymptote $y = x + 2$ as \n$x \\to \\pm\\infty$, curving away near the vertical asymptote."
+      "solution": "**Factor numerator:** $h(x) = \\dfrac{(x-1)(x+1)}{x-2}$. No cancellation.\n\n**Domain:** $(-\\infty, 2) \\cup (2, \\infty)$\n\n**Intercepts:**\n\n- $y$-intercept: $h(0) = \\frac{-1}{-2} = \\frac{1}{2}$. Point: $(0, \\frac{1}{2})$\n\n- $x$-intercepts: $x = 1$ and $x = -1$. Points: $(1, 0)$ and $(-1, 0)$\n\n**Asymptotes:**\n\n- Vertical: $x = 2$\n\n- Slant: Perform long division:\n $$\n \\frac{x^2 - 1}{x - 2} = x + 2 + \\frac{3}{x - 2}\n $$\n Slant asymptote: $y = x + 2$\n\n**Behavior near $x = 2$:**\n\n- At $x = 1.9$: $h(1.9) = \\frac{2.61}{-0.1} = -26.1 \\to -\\infty$\n\n- At $x = 2.1$: $h(2.1) = \\frac{3.41}{0.1} = 34.1 \\to +\\infty$\n\ncenter\ntikzpicture[scale=0.5]\n (-5,0) – (7,0) node[right] {$x$};\n (0,-6) – (0,8) node[above] {$y$};\n \n % Asymptotes\n (2,-6) – (2,8);\n plot (, { + 2});\n \n % Function\n \n plot (, {( - 1)/( - 2)});\n \n plot (, {( - 1)/( - 2)});\n \n % Key points\n lldraw (1,0) circle (3pt);\n lldraw (-1,0) circle (3pt);\n lldraw (0,0.5) circle (3pt);\n \n at (2,-6.5) { $x=2$};\n at (5.5,7) { $y=x+2$};\ntikzpicture\ncenter\n\nNotice how the graph approaches the slant asymptote $y = x + 2$ as \n$x \\to \\pm\\infty$, curving away near the vertical asymptote."
     },
     {
       "type": "heading",
@@ -128,7 +156,7 @@
       "number": "3.7",
       "title": "Graphing with symmetry",
       "problem": "Sketch $f(x) = \\dfrac{x}{x^2 - 4}$ using symmetry.",
-      "solution": "Check for symmetry:\n\\[\n f(-x) = \\frac{-x}{(-x)^2 - 4} = \\frac{-x}{x^2 - 4} = -f(x)\n\\]\nThe function is odd (origin symmetry).\n\n**Only graph the right half, then reflect through the origin.**\n\n**For $x > 0$:**\n\n- Domain issue at $x = 2$ (vertical asymptote)\n\n- $x$-intercept at $x = 0$ (on the axis of symmetry)\n\n- Horizontal asymptote at $y = 0$\n\n- $f(1) = \\frac{1}{-3} = -\\frac{1}{3}$\n\n- $f(3) = \\frac{3}{5}$\n\ncenter\ntikzpicture[scale=0.6]\n (-5,0) – (5,0) node[right] {$x$};\n (0,-4) – (0,4) node[above] {$y$};\n \n % Asymptotes\n (2,-4) – (2,4);\n (-2,-4) – (-2,4);\n \n % Function\n \n plot (, {/(() - 4)});\n \n plot (, {/(() - 4)});\n \n plot (, {/(() - 4)});\n \n lldraw (0,0) circle (3pt);\n \n at (3.5,2.5) { odd symmetry};\ntikzpicture\ncenter"
+      "solution": "Check for symmetry:\n$$\n f(-x) = \\frac{-x}{(-x)^2 - 4} = \\frac{-x}{x^2 - 4} = -f(x)\n$$\nThe function is odd (origin symmetry).\n\n**Only graph the right half, then reflect through the origin.**\n\n**For $x > 0$:**\n\n- Domain issue at $x = 2$ (vertical asymptote)\n\n- $x$-intercept at $x = 0$ (on the axis of symmetry)\n\n- Horizontal asymptote at $y = 0$\n\n- $f(1) = \\frac{1}{-3} = -\\frac{1}{3}$\n\n- $f(3) = \\frac{3}{5}$\n\ncenter\ntikzpicture[scale=0.6]\n (-5,0) – (5,0) node[right] {$x$};\n (0,-4) – (0,4) node[above] {$y$};\n \n % Asymptotes\n (2,-4) – (2,4);\n (-2,-4) – (-2,4);\n \n % Function\n \n plot (, {/(() - 4)});\n \n plot (, {/(() - 4)});\n \n plot (, {/(() - 4)});\n \n lldraw (0,0) circle (3pt);\n \n at (3.5,2.5) { odd symmetry};\ntikzpicture\ncenter"
     },
     {
       "type": "heading",
@@ -152,7 +180,7 @@
       "number": "3.8",
       "title": "Finding a function from a graph",
       "problem": "Find a rational function with:\n\n- Vertical asymptotes at $x = -1$ and $x = 3$\n\n- $x$-intercept at $x = 1$\n\n- Horizontal asymptote at $y = 2$",
-      "solution": "From the asymptotes and intercepts:\n\n- Denominator factors: $(x + 1)(x - 3)$\n\n- Numerator factor: $(x - 1)$\n\nFor horizontal asymptote $y = 2$ with degree of numerator = degree of \ndenominator, we need the numerator to also be degree 2. Add another \nlinear factor and adjust the leading coefficient:\n\n\\[\n f(x) = \\frac{2(x - 1)(x - a)}{(x + 1)(x - 3)}\n\\]\n\nIf we want the simplest case with one $x$-intercept, we can use:\n\\[\n f(x) = \\frac{2(x - 1)^2}{(x + 1)(x - 3)}\n\\]\n\nCheck: As $x \\to \\infty$, $f(x) \\to \\frac{2x^2}{x^2} = 2$. ✓\n\nThis is one possible answer. Others exist depending on additional \nconstraints."
+      "solution": "From the asymptotes and intercepts:\n\n- Denominator factors: $(x + 1)(x - 3)$\n\n- Numerator factor: $(x - 1)$\n\nFor horizontal asymptote $y = 2$ with degree of numerator = degree of \ndenominator, we need the numerator to also be degree 2. Add another \nlinear factor and adjust the leading coefficient:\n\n$$\n f(x) = \\frac{2(x - 1)(x - a)}{(x + 1)(x - 3)}\n$$\n\nIf we want the simplest case with one $x$-intercept, we can use:\n$$\n f(x) = \\frac{2(x - 1)^2}{(x + 1)(x - 3)}\n$$\n\nCheck: As $x \\to \\infty$, $f(x) \\to \\frac{2x^2}{x^2} = 2$. 51\n\nThis is one possible answer. Others exist depending on additional \nconstraints."
     },
     {
       "type": "example",
@@ -160,7 +188,7 @@
       "number": "3.9",
       "title": "Complete reconstruction",
       "problem": "Find a rational function whose graph has:\n\n- Vertical asymptote at $x = 2$\n\n- Hole at $x = -1$\n\n- Horizontal asymptote at $y = 1$\n\n- Passes through the origin",
-      "solution": "**Step 1:** Vertical asymptote at $x = 2$ means $(x - 2)$ is in \nthe denominator (but not the numerator).\n\n**Step 2:** Hole at $x = -1$ means $(x + 1)$ is in both numerator \nand denominator.\n\n**Step 3:** For horizontal asymptote $y = 1$ with equal degrees, \nwe need equal leading coefficients.\n\nTentative form:\n\\[\n f(x) = \\frac{(x + 1)(\\text{something})}{(x + 1)(x - 2)}\n\\]\n\nFor equal degrees and leading coefficient ratio = 1, let's try:\n\\[\n f(x) = \\frac{(x + 1)(x + a)}{(x + 1)(x - 2)} = \\frac{x + a}{x - 2} \\quad (x \\neq -1)\n\\]\n\n**Step 4:** Passes through origin means $f(0) = 0$:\n\\[\n f(0) = \\frac{0 + a}{0 - 2} = \\frac{a}{-2} = 0 \\implies a = 0\n\\]\n\n**Final answer:**\n\\[\n f(x) = \\frac{x(x + 1)}{(x + 1)(x - 2)} = \\frac{x}{x - 2}, \\quad x \\neq -1\n\\]"
+      "solution": "**Step 1:** Vertical asymptote at $x = 2$ means $(x - 2)$ is in \nthe denominator (but not the numerator).\n\n**Step 2:** Hole at $x = -1$ means $(x + 1)$ is in both numerator \nand denominator.\n\n**Step 3:** For horizontal asymptote $y = 1$ with equal degrees, \nwe need equal leading coefficients.\n\nTentative form:\n$$\n f(x) = \\frac{(x + 1)(\\text{something})}{(x + 1)(x - 2)}\n$$\n\nFor equal degrees and leading coefficient ratio = 1, let's try:\n$$\n f(x) = \\frac{(x + 1)(x + a)}{(x + 1)(x - 2)} = \\frac{x + a}{x - 2} \\quad (x \\neq -1)\n$$\n\n**Step 4:** Passes through origin means $f(0) = 0$:\n$$\n f(0) = \\frac{0 + a}{0 - 2} = \\frac{a}{-2} = 0 \\implies a = 0\n$$\n\n**Final answer:**\n$$\n f(x) = \\frac{x(x + 1)}{(x + 1)(x - 2)} = \\frac{x}{x - 2}, \\quad x \\neq -1\n$$"
     },
     {
       "type": "heading",
@@ -176,7 +204,7 @@
       "id": "example-3.10",
       "number": "3.10",
       "title": "Average cost function",
-      "problem": "A company has fixed costs of \\$5000 and variable costs of \\$20 per unit. \nThe average cost per unit is:\n\\[\n \\bar{C}(x) = \\frac{5000 + 20x}{x} = \\frac{5000}{x} + 20\n\\]\nAnalyze this function graphically.",
+      "problem": "A company has fixed costs of \\$5000 and variable costs of \\$20 per unit. \nThe average cost per unit is:\n$$\n \\bar{C}(x) = \\frac{5000 + 20x}{x} = \\frac{5000}{x} + 20\n$$\nAnalyze this function graphically.",
       "solution": "**Domain:** $x > 0$ (can't produce negative units; $x = 0$ undefined)\n\n**Asymptotes:**\n\n- Vertical: $x = 0$ (can't produce zero units)\n\n- Horizontal: $y = 20$ (as production increases, average cost \n approaches variable cost)\n\n**Key points:**\nitemize\n $\\bar{C}(100) = 50 + 20 = \\$70$ per unit\n \\item $C(500) = 10 + 20 = \\$30$ per unit\n $\\bar{C}(1000) = 5 + 20 = \\$25$ per unit\n\\end{itemize}\n\n\\textbf{Interpretation:} As production increases, the fixed costs are \nspread over more units, so average cost decreases toward \\$20. This \nillustrates *economies of scale*."
     },
     {
@@ -187,37 +215,597 @@
       "content": "- Follow a systematic strategy: factor, simplify, find domain, \n intercepts, asymptotes, and test points.\n\n- Use symmetry (even or odd) to reduce graphing work.\n\n- Vertical asymptotes: graph approaches $\\pm\\infty$; test signs \n to determine direction.\n\n- Horizontal/slant asymptotes: describe end behavior.\n\n- Holes: single missing points; use simplified form to find \n coordinates.\n\n- To find a function from a graph: use asymptotes for denominator \n factors, intercepts for numerator factors."
     },
     {
-      "type": "heading",
-      "level": 2,
-      "text": "Exercises"
+      "type": "exercise",
+      "id": "ex-3.3-1",
+      "number": "1",
+      "problem": "The 8-step strategy for graphing rational functions begins with \n{1in} the numerator and denominator.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Basic Graphing**"
+      "type": "exercise",
+      "id": "ex-3.3-2",
+      "number": "2",
+      "problem": "If $f(-x) = f(x)$ for all $x$ in the domain, then $f$ is called an \n{1in} function and its graph is symmetric about the \n{1in}.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Complete Graphing**"
+      "type": "exercise",
+      "id": "ex-3.3-3",
+      "number": "3",
+      "problem": "A {1in} analysis uses test points between critical \nvalues to determine where a rational function is positive or negative.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Symmetry**"
+      "type": "exercise",
+      "id": "ex-3.3-4",
+      "number": "4",
+      "problem": "To find the $x$-intercepts of a rational function $f(x) = \\dfrac{P(x)}{Q(x)}$, \nsolve {1in} for $x$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Finding Functions**"
+      "type": "exercise",
+      "id": "ex-3.3-5",
+      "number": "5",
+      "problem": "If a rational function has the same linear factor in both numerator and \ndenominator, canceling it creates a {1in} in the graph.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Behavior Analysis**"
+      "type": "exercise",
+      "id": "ex-3.3-6",
+      "number": "6",
+      "problem": "To determine whether $f(x) \\to +\\infty$ or $f(x) \\to -\\infty$ near a \nvertical asymptote, evaluate the function at a {1in} \npoint close to the asymptote.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Applications**"
+      "type": "exercise",
+      "id": "ex-3.3-7",
+      "number": "7",
+      "problem": "True or False? Justify your answer.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Challenge Problems**"
+      "type": "exercise",
+      "id": "ex-3.3-8",
+      "number": "8",
+      "problem": "1. Every rational function has at least one asymptote.\n\n2. If the degree of the numerator exceeds the degree of the \n denominator by exactly one, the function has a slant asymptote.\n\n3. A rational function can cross its horizontal asymptote.\n\n4. A rational function can cross its vertical asymptote.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-9",
+      "number": "9",
+      "problem": "1. The graph of a rational function can have a hole and a vertical \n asymptote at the same $x$-value.\n\n2. If $f(x) = \\dfrac{p(x)}{q(x)}$ has a hole at $x = a$, then \n $p(a) = q(a) = 0$.\n\n3. A rational function with no real zeros has no $x$-intercepts.\n\n4. The sign of a rational function can only change at zeros or \n vertical asymptotes.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-10",
+      "number": "10",
+      "problem": "Match each function with the description of its graph.\n\n1. $f(x) = \\dfrac{1}{x}$\n\n2. $f(x) = \\dfrac{1}{x^2}$\n\n3. $f(x) = \\dfrac{x}{x-1}$\n\n4. $f(x) = \\dfrac{x^2}{x-1}$\n\n1. HA at $y = 1$, branches in Q I and Q III relative to asymptotes\n\n2. Odd symmetry, branches in Q I and Q III\n\n3. Even symmetry, both branches above $x$-axis\n\n4. Slant asymptote, no horizontal asymptote",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-11",
+      "number": "11",
+      "problem": "Without graphing, determine how many $x$-intercepts each function has.\n\n1. $f(x) = \\dfrac{x^2 - 4}{x + 1}$\n\n2. $g(x) = \\dfrac{x^2 + 4}{x - 2}$\n\n3. $h(x) = \\dfrac{(x-1)^2(x+3)}{x^2 - 9}$\n\n4. $p(x) = \\dfrac{x^2 - 4}{x^2 + 4}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-12",
+      "number": "12",
+      "problem": "Explain why the graph of $f(x) = \\dfrac{x}{x^2 + 1}$ has no vertical \nasymptotes. What does this tell you about the domain?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-13",
+      "number": "13",
+      "problem": "The function $f(x) = \\dfrac{x^2 - 4}{x - 2}$ simplifies to $f(x) = x + 2$ \nfor $x \\neq 2$. Explain why the graph is not simply the line $y = x + 2$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-14",
+      "number": "14",
+      "problem": "1. $f(x) = \\dfrac{x - 3}{x + 2}$\n\n2. $f(x) = \\dfrac{x + 4}{x - 1}$\n\n3. $f(x) = \\dfrac{2x - 6}{x + 5}$\n\n4. $f(x) = \\dfrac{3x + 9}{x - 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-15",
+      "number": "15",
+      "problem": "1. $f(x) = \\dfrac{x^2 - 4}{x + 3}$\n\n2. $f(x) = \\dfrac{x^2 - 9}{x - 2}$\n\n3. $f(x) = \\dfrac{x^2 - x - 6}{x + 1}$\n\n4. $f(x) = \\dfrac{x^2 + 2x - 8}{x - 3}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-16",
+      "number": "16",
+      "problem": "1. $f(x) = \\dfrac{x^2 - 1}{x^2 - 4}$\n\n2. $f(x) = \\dfrac{x^2 - 9}{x^2 + x - 2}$\n\n3. $f(x) = \\dfrac{x^2 + 5x + 6}{x^2 - 1}$\n\n4. $f(x) = \\dfrac{x^2 - 4x + 3}{x^2 - 9}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-17",
+      "number": "17",
+      "problem": "1. $f(x) = \\dfrac{x^3 - 8}{x - 2}$\n\n2. $f(x) = \\dfrac{x^2 + x}{x^2 - x - 2}$\n\n3. $f(x) = \\dfrac{2x^2 - 5x - 3}{x^2 - 9}$\n\n4. $f(x) = \\dfrac{x^3 - x}{x^2 + 2x + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-18",
+      "number": "18",
+      "problem": "1. $f(x) = \\dfrac{x^2}{x^2 + 1}$\n\n2. $f(x) = \\dfrac{x}{x^2 + 1}$\n\n3. $f(x) = \\dfrac{x^2 + 1}{x}$\n\n4. $f(x) = \\dfrac{x^3}{x^2 - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-19",
+      "number": "19",
+      "problem": "1. $f(x) = \\dfrac{x + 1}{x^2 + 1}$\n\n2. $f(x) = \\dfrac{x^2}{x^2 - 4}$\n\n3. $f(x) = \\dfrac{x^3 + x}{x^4 - 1}$\n\n4. $f(x) = \\dfrac{x^2 + x}{x^2 - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-20",
+      "number": "20",
+      "problem": "1. $f(x) = \\dfrac{1}{x - 3}$\n\n2. $f(x) = \\dfrac{-2}{(x + 1)^2}$\n\n3. $f(x) = \\dfrac{x}{x^2 - 1}$\n\n4. $f(x) = \\dfrac{(x-1)^2}{x(x+2)}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-21",
+      "number": "21",
+      "problem": "1. $f(x) = \\dfrac{x + 2}{(x - 1)^3}$\n\n2. $f(x) = \\dfrac{x^2}{(x + 3)(x - 2)}$\n\n3. $f(x) = \\dfrac{-x}{(x - 4)^2}$\n\n4. $f(x) = \\dfrac{(x - 1)(x + 2)}{x^2(x - 3)}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-22",
+      "number": "22",
+      "problem": "1. $f(x) = \\dfrac{1}{x + 3}$\n\n2. $f(x) = \\dfrac{2}{x - 1}$\n\n3. $f(x) = \\dfrac{-1}{x - 2}$\n\n4. $f(x) = \\dfrac{3}{x + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-23",
+      "number": "23",
+      "problem": "1. $f(x) = \\dfrac{x}{x - 2}$\n\n2. $f(x) = \\dfrac{x}{x + 3}$\n\n3. $f(x) = \\dfrac{x + 1}{x - 1}$\n\n4. $f(x) = \\dfrac{x - 3}{x + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-24",
+      "number": "24",
+      "problem": "1. $f(x) = \\dfrac{2}{x^2}$\n\n2. $f(x) = \\dfrac{1}{(x - 1)^2}$\n\n3. $f(x) = \\dfrac{-1}{x^2 + 1}$\n\n4. $f(x) = \\dfrac{x^2}{x^2 + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-25",
+      "number": "25",
+      "problem": "1. $f(x) = \\dfrac{2x + 1}{x - 2}$\n\n2. $f(x) = \\dfrac{3x - 6}{x}$\n\n3. $f(x) = \\dfrac{x + 5}{x - 2}$\n\n4. $f(x) = \\dfrac{4 - x}{x + 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-26",
+      "number": "26",
+      "problem": "1. $f(x) = \\dfrac{x}{x^2 - 4}$\n\n2. $f(x) = \\dfrac{x - 1}{x^2 - 1}$\n\n3. $f(x) = \\dfrac{x^2 - 1}{x^2 - 4}$\n\n4. $f(x) = \\dfrac{2x^2}{x^2 + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-27",
+      "number": "27",
+      "problem": "1. $f(x) = \\dfrac{x^2 - 4}{x - 2}$\n\n2. $f(x) = \\dfrac{x^2 - 9}{x^2 - x - 6}$\n\n3. $f(x) = \\dfrac{x^2 + x - 6}{x + 3}$\n\n4. $f(x) = \\dfrac{x^2 - x - 2}{x + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-28",
+      "number": "28",
+      "problem": "1. $f(x) = \\dfrac{x^2 - x - 2}{x^2 - 4}$\n\n2. $f(x) = \\dfrac{x^2 + 3x + 2}{x^2 - 1}$\n\n3. $f(x) = \\dfrac{2x^2 - 8}{x^2 - x - 2}$\n\n4. $f(x) = \\dfrac{x^2 - 9}{x^2 - 4x + 3}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-29",
+      "number": "29",
+      "problem": "1. $f(x) = \\dfrac{x - 4}{x^2 - 16}$\n\n2. $f(x) = \\dfrac{2x^2 - 8}{x^2 - x - 2}$\n\n3. $f(x) = \\dfrac{x^2 + x - 6}{x^2 - 9}$\n\n4. $f(x) = \\dfrac{(x - 2)(x + 1)}{(x + 3)(x - 4)}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-30",
+      "number": "30",
+      "problem": "1. $f(x) = \\dfrac{x^2}{x^2 - 9}$\n\n2. $f(x) = \\dfrac{x^2 - 4}{x + 3}$\n\n3. $f(x) = \\dfrac{3x + 6}{x - 1}$\n\n4. $f(x) = \\dfrac{x^2 + x - 6}{x^2 - 9}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-31",
+      "number": "31",
+      "problem": "1. $f(x) = \\dfrac{2x}{x + 3}$\n\n2. $f(x) = \\dfrac{x - 1}{x^2 - 4}$\n\n3. $f(x) = \\dfrac{x^2 - 1}{x - 2}$\n\n4. $f(x) = \\dfrac{x^3 - x}{x^2 - 4}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-32",
+      "number": "32",
+      "problem": "1. $f(x) = \\dfrac{x^2 - 1}{x}$\n\n2. $f(x) = \\dfrac{x^2 + 1}{x}$\n\n3. $f(x) = \\dfrac{x^2 + 2x + 1}{x - 1}$\n\n4. $f(x) = \\dfrac{2x^2 - x - 3}{x + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-33",
+      "number": "33",
+      "problem": "1. $f(x) = \\dfrac{x^2 - 4}{x + 1}$\n\n2. $f(x) = \\dfrac{x^2 + x - 2}{x - 1}$\n\n3. $f(x) = \\dfrac{2x^2 - 3x - 2}{x - 2}$\n\n4. $f(x) = \\dfrac{x^3}{x^2 - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-34",
+      "number": "34",
+      "problem": "1. $\\dfrac{x - 1}{x + 2} > 0$\n\n2. $\\dfrac{x + 3}{x - 4} \\leq 0$\n\n3. $\\dfrac{2x - 1}{x + 1} \\geq 0$\n\n4. $\\dfrac{x}{x - 3} < 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-35",
+      "number": "35",
+      "problem": "1. $\\dfrac{x^2 - 4}{x + 1} \\geq 0$\n\n2. $\\dfrac{x + 2}{x^2 - 9} < 0$\n\n3. $\\dfrac{(x - 1)(x + 3)}{(x - 2)(x + 4)} \\leq 0$\n\n4. $\\dfrac{x^2 - 1}{x^2 - 4} > 0$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-36",
+      "number": "36",
+      "problem": "1. $\\dfrac{x}{x + 1} \\geq 2$\n\n2. $\\dfrac{3}{x - 2} < \\dfrac{1}{x}$\n\n3. $\\dfrac{x + 1}{x - 1} \\leq \\dfrac{x - 1}{x + 1}$\n\n4. $\\dfrac{2x - 1}{x + 3} > 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-37",
+      "number": "37",
+      "problem": "1. $\\dfrac{x^2 - x - 6}{x + 2} \\leq 0$\n\n2. $\\dfrac{x^2 + x - 2}{x^2 - 4} > 0$\n\n3. $\\dfrac{1}{x - 1} + \\dfrac{1}{x + 1} \\geq 0$\n\n4. $\\dfrac{x^2}{x - 2} < x + 2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-38",
+      "number": "38",
+      "problem": "1. $x$-intercept at $(2, 0)$; VA at $x = -1$; HA at $y = 1$\n\n2. Hole at $x = 3$; VA at $x = -2$; HA at $y = 0$\n\n3. VAs at $x = 1$ and $x = -1$; HA at $y = 2$; passes through origin\n\n4. SA $y = x$; VA at $x = 2$; $x$-intercepts at $x = 0$ and $x = 3$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-39",
+      "number": "39",
+      "problem": "1. VA at $x = 2$; hole at $x = -1$; HA at $y = 1$; passes through origin\n\n2. VAs at $x = 0$ and $x = 3$; HA at $y = 0$; $x$-intercept at $x = 1$\n\n3. VA at $x = -2$; SA $y = x - 1$; $y$-intercept at $(0, 2)$\n\n4. Hole at $x = 2$; VA at $x = -3$; passes through $(0, 1)$ and $(1, 0)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-40",
+      "number": "40",
+      "problem": "The cost of producing $x$ items is $C(x) = 500 + 10x$ dollars.\n\n1. Find the average cost function $\\bar{C}(x) = \\dfrac{C(x)}{x}$.\n\n2. What is the average cost for 50 items? 200 items?\n\n3. What happens to average cost as $x \\to \\infty$? Interpret.\n\n4. How many items must be produced for average cost to be \\$15?\n \\item Sketch the graph of $C(x)$ for $x > 0$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Average Cost"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-41",
+      "number": "41",
+      "problem": "A drug concentration in the bloodstream $t$ hours after injection is \n$C(t) = \\dfrac{50t}{t^2 + 25}$ mg/L.\n\n1. What is the concentration at $t = 1, 2, 5, 10$ hours?\n\n2. Find the horizontal asymptote and interpret its meaning.\n\n3. Sketch the graph for $t \\geq 0$.\n\n4. When is the concentration maximum? (Use calculus or graphing utility.)",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Drug Concentration"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-42",
+      "number": "42",
+      "problem": "A company's profit function is $P(x) = \\dfrac{500x - 2000}{x + 10}$ \nthousand dollars, where $x$ is thousands of units sold.\n\n1. Find the horizontal asymptote and interpret its meaning.\n\n2. How many units must be sold to break even ($P(x) = 0$)?\n\n3. Sketch the graph for $x \\geq 0$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Profit Analysis"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-43",
+      "number": "43",
+      "problem": "When two resistors $R_1$ and $R_2$ are connected in parallel, the total \nresistance is $R = \\dfrac{R_1 \\cdot R_2}{R_1 + R_2}$. If $R_1 = 10$ ohms:\n\n1. Express $R$ as a function of $R_2$ alone.\n\n2. What is the domain in this context?\n\n3. What happens to $R$ as $R_2 \\to \\infty$? As $R_2 \\to 0^+$?\n\n4. Sketch the graph and identify any asymptotes.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Resistance"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-44",
+      "number": "44",
+      "problem": "A wildlife population is modeled by $P(t) = \\dfrac{1000t}{t + 10}$ \nwhere $t$ is years after introduction.\n\n1. What is the initial population?\n\n2. What is the population after 5 years? 20 years? 100 years?\n\n3. Find the horizontal asymptote. What does it represent?\n\n4. Sketch the graph for $t \\geq 0$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Population Model"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-45",
+      "number": "45",
+      "problem": "The number of words per minute a person can type after $t$ weeks of \npractice is modeled by $W(t) = \\dfrac{100t}{t + 5}$.\n\n1. What is the typing speed after 1 week? 5 weeks? 20 weeks?\n\n2. What is the maximum typing speed this model predicts?\n\n3. How many weeks until the person types 80 wpm?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Learning Curve"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-46",
+      "number": "46",
+      "problem": "The cost (in thousands of dollars) to remove $p$\\% of pollutants from a \nlake is modeled by $C(p) = \\dfrac{50p}{100 - p}$.\n\n1. Find the cost to remove 50\\%, 80\\%, and 95\\% of pollutants.\n\n2. What is the vertical asymptote? What does it mean in context?\n\n3. Why is 100\\% removal not achievable according to this model?\n\n4. Sketch the graph for $0 \\leq p < 100$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Cost-Benefit Analysis"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-47",
+      "number": "47",
+      "problem": "A tank contains 100 gallons of a 20\\% salt solution. Pure water is \nadded at 5 gallons per minute. The concentration after $t$ minutes is \n$C(t) = \\dfrac{20}{100 + 5t}$.\n\n1. What is the initial concentration?\n\n2. What is the concentration after 10 minutes? 30 minutes?\n\n3. Find the horizontal asymptote and interpret.\n\n4. How long until the concentration drops to 5\\%?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Mixture Problem"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-48",
+      "number": "48",
+      "problem": "Use a graphing utility to graph $f(x) = \\dfrac{x^3 - 8}{x^2 - 4}$. \nIdentify all intercepts, asymptotes, and holes. Verify algebraically.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-49",
+      "number": "49",
+      "problem": "Use a graphing utility to graph $f(x) = \\dfrac{x^4 - 1}{x^2 - 1}$ and \nidentify any holes. Where does the hole appear to be? Verify by \nsimplifying the function algebraically.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-50",
+      "number": "50",
+      "problem": "Graph $f(x) = \\dfrac{2x^3 + x^2 - 8x - 4}{x^2 - 4}$ on a graphing utility.\n\n1. Identify the slant asymptote visually.\n\n2. Verify by performing polynomial long division.\n\n3. Where are the holes (if any)?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-51",
+      "number": "51",
+      "problem": "Use a graphing utility to explore $f(x) = \\dfrac{x^2 + k}{x}$ for \n$k = -4, -1, 0, 1, 4$.\n\n1. How does the value of $k$ affect the graph?\n\n2. For what values of $k$ does the function have $x$-intercepts?\n\n3. What is the slant asymptote for all values of $k$?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-52",
+      "number": "52",
+      "problem": "Graph $f(x) = \\dfrac{x^2 - 4x + 3}{x - 2}$ and $g(x) = x - 2 + \\dfrac{-1}{x-2}$.\n\n1. Verify that these are the same function.\n\n2. Identify the slant asymptote from the second form.\n\n3. Where does the graph cross its slant asymptote?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-53",
+      "number": "53",
+      "problem": "Use a graphing utility to find all solutions to $\\dfrac{x^2 - 1}{x + 2} = \n\\dfrac{x - 3}{x - 1}$. Verify your answers algebraically.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-54",
+      "number": "54",
+      "problem": "Describe and correct the error.",
+      "variant": "error",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-55",
+      "number": "55",
+      "problem": "Finding intercepts of $f(x) = \\dfrac{x^2 - 4}{x - 2}$:\nquote\n\"$x$-intercepts: Set numerator $= 0$. \\\\\n$x^2 - 4 = 0 \\Rightarrow x = \\pm 2$ \\\\\n$x$-intercepts: $(-2, 0)$ and $(2, 0)$\" \nquote",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-56",
+      "number": "56",
+      "problem": "Solving $\\dfrac{x - 2}{x + 1} > 0$:\nquote\n\"Critical numbers: $x = 2$ and $x = -1$.\n\nTest: $x = 0$ gives $\\dfrac{-2}{1} = -2 < 0$.\n\nSince $(-1, 2)$ is negative, solution is $(-\\infty, -1) \\cup (2, \\infty)$.\" \n \nquote",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-57",
+      "number": "57",
+      "problem": "Finding the horizontal asymptote of $f(x) = \\dfrac{3x^2 + 2x - 1}{x^2 - 4}$:\nquote\n\"Degrees are equal, so HA is the ratio of leading coefficients.\\\\\nHA: $y = \\dfrac{3x^2}{x^2} = 3x^2$\" \nquote",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-58",
+      "number": "58",
+      "problem": "Graphing $f(x) = \\dfrac{x + 2}{x^2 - 4}$:\nquote\n\"Factor: $f(x) = \\dfrac{x + 2}{(x-2)(x+2)} = \\dfrac{1}{x - 2}$\n\nVA: $x = 2$ only (the $x = -2$ cancelled)\n\nGraph is $\\dfrac{1}{x-2}$ shifted right 2 units.\" \nquote",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-59",
+      "number": "59",
+      "problem": "Find all values of $k$ such that $\\dfrac{x^2 + kx + 4}{x + 2}$ \nhas a hole rather than a vertical asymptote at $x = -2$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-60",
+      "number": "60",
+      "problem": "The graph of $f(x) = \\dfrac{ax + b}{x + c}$ passes through \n$(0, 2)$ and $(2, 3)$, and has vertical asymptote $x = -1$. Find $a$, $b$, $c$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-61",
+      "number": "61",
+      "problem": "A rational function has vertical asymptotes at $x = 1$ and $x = -1$, a \nhorizontal asymptote at $y = 2$, and passes through the origin. Find \nall possible formulas if the function is also odd.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-62",
+      "number": "62",
+      "problem": "Find all rational functions $f(x)$ satisfying:\n\n- $f$ has exactly two vertical asymptotes\n\n- $f$ has horizontal asymptote $y = 0$\n\n- $f$ is an odd function\n\n- $f(2) = 1$",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-63",
+      "number": "63",
+      "problem": "Prove that if a rational function $f(x)$ has exactly one $x$-intercept \nand exactly one vertical asymptote, and no holes, then $f$ can be \nwritten in the form $f(x) = \\dfrac{a(x - r)^m}{(x - s)^n}$ for some \nconstants $a$, $r$, $s$ and positive integers $m$, $n$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-64",
+      "number": "64",
+      "problem": "Find a rational function whose graph has all of the following properties:\n\n- Horizontal asymptote $y = 2$\n\n- Vertical asymptotes at $x = -1$ and $x = 3$\n\n- Hole at $x = 2$\n\n- $x$-intercept at $x = 0$ only\n\n- $y$-intercept at $(0, 0)$\nIs your answer unique? Explain.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.3-65",
+      "number": "65",
+      "problem": "Consider $f(x) = \\dfrac{x^3 + ax^2 + bx + c}{x^2 - 1}$ where the graph \nhas a hole at $x = 1$, passes through $(0, 3)$, and has slant asymptote \n$y = x + 2$. Find $a$, $b$, and $c$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
     }
   ],
   "marginNotes": [

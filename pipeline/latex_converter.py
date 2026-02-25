@@ -248,7 +248,7 @@ class LatexConverter:
     def _extract_section_title(self, content: str) -> str:
         """Extract section title from \section{...} command."""
         # Handle nested braces in section title
-        match = re.search(r'\\section\{', content)
+        match = re.search(r'\\section\*?\{', content)
         if match:
             start = match.end()
             depth = 1
@@ -1425,6 +1425,12 @@ class BookConverter:
                             continue
                         # Skip standalone devotional files (they're parsed via the section they belong to)
                         if file_name.startswith('devotional') and 'sec' not in file_name:
+                            continue
+                        # Skip figures.tex files (they define figure commands, not sections)
+                        if file_name == 'figures.tex':
+                            continue
+                        # Skip exercises-additional.tex (exercises are in section files)
+                        if file_name.startswith('exercises-additional'):
                             continue
                         files.append(sec_file)
             except Exception:

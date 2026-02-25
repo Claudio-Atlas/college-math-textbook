@@ -10,12 +10,13 @@
     "Find horizontal asymptotes using degree comparison",
     "Find slant (oblique) asymptotes using polynomial division",
     "Determine the behavior of a function near its asymptotes",
-    "Use asymptotes to understand end behavior\nitemize"
+    "Use asymptotes to understand end behavior"
   ],
   "devotional": {
     "title": "Approaching the Infinite",
     "scripture": "Isaiah 55:8--9; Psalm 147:5",
     "content": "{AtlasWarmT}{he \nprophet Isaiah} reminds us that God's ways are higher than our ways, \nHis thoughts higher than our thoughts. The gap between finite human \nunderstanding and infinite divine wisdom is unbridgeable—we can \napproach, but never fully arrive.\n\nAsymptotes in mathematics capture this same idea. An asymptote is a \nline that a curve approaches but never reaches, getting infinitely \nclose yet forever separated. The function $f(x) = \\frac{1}{x}$ \napproaches the $x$-axis as $x$ grows large, coming within any distance \nyou name, yet never touching it.\n\nThis mathematical phenomenon points to a deep truth: some things can \nonly be approached asymptotically. Perfect virtue, complete understanding, \ninfinite love—these are asymptotes of the human soul. We grow ever \ncloser, yet the gap remains. This is not cause for despair but for \nhumility and continued striving.\n\nThe vertical asymptote presents a different picture: a boundary that \ncannot be crossed, a wall where the function explodes to infinity. \nHere we encounter the mathematical analogue of forbidden territory—the \ndivision by zero that makes no sense.\n\nGreat is our Lord and mighty in power; His understanding has no limit \n(Psalm 147:5). Where our functions have asymptotes, God's knowledge \nhas none.",
+    "edition": "christian",
     "reflection": "What are the \"asymptotes\" in your pursuit of \nwisdom and virtue? How does the concept of approaching without arriving \nshape your understanding of spiritual growth?"
   },
   "content": [
@@ -52,6 +53,14 @@
       "label": "Theorem"
     },
     {
+      "type": "figure",
+      "id": "fig:vertical-asymptote",
+      "src": "/figures/precalculus/fig-vertical-asymptote.svg",
+      "caption": "A vertical asymptote at $x = 3$. As $x$ approaches 3 from the left, $f(x) \\to -\\infty$. As $x$ approaches 3 from the right, $f(x) \\to +\\infty$. The dashed line shows the asymptote—the graph gets arbitrarily close but never touches it.",
+      "alt": "A vertical asymptote at $x = 3$. As $x$ approaches 3 from the left, $f(x) \\to -\\infty$. As $x$ approaches 3 from the right, $f(x) \\to +\\infty$. The dashed line shows the asymptote—the graph gets arbitrarily close but never touches it.",
+      "tikz": true
+    },
+    {
       "type": "example",
       "id": "example-3.1",
       "number": "3.1",
@@ -65,7 +74,7 @@
       "number": "3.2",
       "title": "Finding vertical asymptotes---factoring required",
       "problem": "Find the vertical asymptotes of $f(x) = \\dfrac{x + 2}{x^2 + 5x + 6}$.",
-      "solution": "Factor the denominator:\n\\[\n x^2 + 5x + 6 = (x + 2)(x + 3)\n\\]\n\nSet each factor to zero: $x = -2$ or $x = -3$.\n\nBut wait! The numerator is $x + 2$, which is zero when $x = -2$. So the \nfactor $(x + 2)$ cancels:\n\\[\n f(x) = \\frac{x + 2}{(x+2)(x+3)} = \\frac{1}{x + 3}, \\quad x \\neq -2\n\\]\n\nIn lowest terms, only $x = -3$ gives a zero denominator.\n\nVertical asymptote: $\\boxed{x = -3}$\n\n(At $x = -2$, there is a hole, not an asymptote—see the next subsection.)"
+      "solution": "Factor the denominator:\n$$\n x^2 + 5x + 6 = (x + 2)(x + 3)\n$$\n\nSet each factor to zero: $x = -2$ or $x = -3$.\n\nBut wait! The numerator is $x + 2$, which is zero when $x = -2$. So the \nfactor $(x + 2)$ cancels:\n$$\n f(x) = \\frac{x + 2}{(x+2)(x+3)} = \\frac{1}{x + 3}, \\quad x \\neq -2\n$$\n\nIn lowest terms, only $x = -3$ gives a zero denominator.\n\nVertical asymptote: $\\boxed{x = -3}$\n\n(At $x = -2$, there is a hole, not an asymptote—see the next subsection.)"
     },
     {
       "type": "example",
@@ -73,7 +82,7 @@
       "number": "3.3",
       "title": "Multiple asymptotes from higher-degree denominator",
       "problem": "Find all vertical asymptotes of $g(x) = \\dfrac{x}{x^3 - 4x}$.",
-      "solution": "Factor the denominator:\n\\[\n x^3 - 4x = x(x^2 - 4) = x(x-2)(x+2)\n\\]\n\nSetting each factor to zero: $x = 0$, $x = 2$, $x = -2$.\n\nCheck the numerator: $x = 0$ when $x = 0$. So the factor $x$ cancels:\n\\[\n g(x) = \\frac{x}{x(x-2)(x+2)} = \\frac{1}{(x-2)(x+2)}, \\quad x \\neq 0\n\\]\n\nVertical asymptotes: $\\boxed{x = 2 \\text{ and } x = -2}$\n\n(At $x = 0$, there is a hole.)"
+      "solution": "Factor the denominator:\n$$\n x^3 - 4x = x(x^2 - 4) = x(x-2)(x+2)\n$$\n\nSetting each factor to zero: $x = 0$, $x = 2$, $x = -2$.\n\nCheck the numerator: $x = 0$ when $x = 0$. So the factor $x$ cancels:\n$$\n g(x) = \\frac{x}{x(x-2)(x+2)} = \\frac{1}{(x-2)(x+2)}, \\quad x \\neq 0\n$$\n\nVertical asymptotes: $\\boxed{x = 2 \\text{ and } x = -2}$\n\n(At $x = 0$, there is a hole.)"
     },
     {
       "type": "heading",
@@ -93,12 +102,57 @@
       "label": "Theorem"
     },
     {
+      "type": "table",
+      "headers": [
+        "",
+        "**Hole**",
+        "**Vertical Asymptote**"
+      ],
+      "rows": [
+        [
+          "$(x-a)$ in numerator?",
+          "Yes",
+          "No"
+        ],
+        [
+          "$(x-a)$ in denominator?",
+          "Yes",
+          "Yes"
+        ],
+        [
+          "Graph behavior",
+          "Missing point $\\circ$",
+          "Goes to $\\pm\\infty$"
+        ],
+        [
+          "Limit exists?",
+          "Yes (finite)",
+          "No (infinite)"
+        ],
+        [
+          "How to find",
+          "Cancel, evaluate at $a$",
+          "Zeros of simplified denom."
+        ],
+        [
+          "On graph",
+          "Open circle",
+          "Dashed vertical line"
+        ]
+      ],
+      "alignment": [
+        "left",
+        "center",
+        "center"
+      ]
+    },
+    {
       "type": "example",
       "id": "example-3.4",
       "number": "3.4",
       "title": "Distinguishing holes from asymptotes",
       "problem": "Analyze $f(x) = \\dfrac{x^2 - 1}{x - 1}$ for holes and asymptotes.",
-      "solution": "Factor the numerator:\n\\[\n f(x) = \\frac{(x-1)(x+1)}{x-1} = x + 1, \\quad x \\neq 1\n\\]\n\nThe factor $(x - 1)$ cancels, creating a hole at $x = 1$, not a vertical \nasymptote.\n\nTo find the $y$-coordinate of the hole, use the simplified form:\n$y = 1 + 1 = 2$.\n\nThe graph is the line $y = x + 1$ with a hole at the point $(1, 2)$.\n\ncenter\ntikzpicture[scale=0.7]\n (-2,0) – (4,0) node[right] {$x$};\n (0,-1) – (0,4) node[above] {$y$};\n \n % The line y = x + 1\n plot (, { + 1});\n \n % Hole at (1, 2)\n (1,2) circle (3pt);\n \n % Labels\n at (1,2) {$(1, 2)$};\ntikzpicture\ncenter"
+      "solution": "Factor the numerator:\n$$\n f(x) = \\frac{(x-1)(x+1)}{x-1} = x + 1, \\quad x \\neq 1\n$$\n\nThe factor $(x - 1)$ cancels, creating a hole at $x = 1$, not a vertical \nasymptote.\n\nTo find the $y$-coordinate of the hole, use the simplified form:\n$y = 1 + 1 = 2$.\n\nThe graph is the line $y = x + 1$ with a hole at the point $(1, 2)$.\n\ncenter\ntikzpicture[scale=0.7]\n (-2,0) – (4,0) node[right] {$x$};\n (0,-1) – (0,4) node[above] {$y$};\n \n % The line y = x + 1\n plot (, { + 1});\n \n % Hole at (1, 2)\n (1,2) circle (3pt);\n \n % Labels\n at (1,2) {$(1, 2)$};\ntikzpicture\ncenter"
     },
     {
       "type": "example",
@@ -114,7 +168,7 @@
       "number": "3.6",
       "title": "Higher multiplicity",
       "problem": "Analyze $h(x) = \\dfrac{x^2 - 4x + 4}{x^3 - 8}$ for holes and asymptotes.",
-      "solution": "Factor:\n$$\n \\text{Numerator: } & x^2 - 4x + 4 = (x-2)^2 \\\\\n \\text{Denominator: } & x^3 - 8 = (x-2)(x^2 + 2x + 4)\n$$\n\nSo:\n\\[\n h(x) = \\frac{(x-2)^2}{(x-2)(x^2 + 2x + 4)} = \\frac{x-2}{x^2 + 2x + 4}, \\quad x \\neq 2\n\\]\n\nThe factor $(x - 2)$ cancelled once, leaving a hole at $x = 2$.\n\nCheck if $x^2 + 2x + 4 = 0$ has real solutions:\n$\\Delta = 4 - 16 = -12 < 0$. No real solutions.\n\nResult:\n\n- Hole at $x = 2$, with $y = \\dfrac{2-2}{4+4+4} = \\dfrac{0}{12} = 0$. \n Hole at $(2, 0)$.\n\n- No vertical asymptotes."
+      "solution": "Factor:\n$$\n \\text{Numerator: } & x^2 - 4x + 4 = (x-2)^2 \\\\\n \\text{Denominator: } & x^3 - 8 = (x-2)(x^2 + 2x + 4)\n$$\n\nSo:\n$$\n h(x) = \\frac{(x-2)^2}{(x-2)(x^2 + 2x + 4)} = \\frac{x-2}{x^2 + 2x + 4}, \\quad x \\neq 2\n$$\n\nThe factor $(x - 2)$ cancelled once, leaving a hole at $x = 2$.\n\nCheck if $x^2 + 2x + 4 = 0$ has real solutions:\n$\\Delta = 4 - 16 = -12 < 0$. No real solutions.\n\nResult:\n\n- Hole at $x = 2$, with $y = \\dfrac{2-2}{4+4+4} = \\dfrac{0}{12} = 0$. \n Hole at $(2, 0)$.\n\n- No vertical asymptotes."
     },
     {
       "type": "warning",
@@ -130,14 +184,26 @@
     },
     {
       "type": "paragraph",
-      "text": "While vertical asymptotes describe behavior near forbidden $x$-values, \nhorizontal asymptotes describe the **end behavior**—what \nhappens as $x \\to \\pm\\infty$."
+      "text": "While vertical asymptotes describe behavior near forbidden $x$-values,"
+    },
+    {
+      "type": "figure",
+      "id": "fig:hole-vs-asymptote",
+      "src": "/figures/precalculus/fig-hole-vs-asymptote.svg",
+      "caption": "Hole vs.\\ vertical asymptote. **Left:** When a factor cancels, the graph has a hole (open circle)—a single missing point. **Right:** When a factor doesn't cancel, the graph has a vertical asymptote—the function explodes to $\\pm\\infty$.",
+      "alt": "Hole vs.\\ vertical asymptote. **Left:** When a factor cancels, the graph has a hole (open circle)—a single missing point. **Right:** When a factor doesn't cancel, the graph has a vertical asymptote—the function explodes to $\\pm\\infty$.",
+      "tikz": true
+    },
+    {
+      "type": "paragraph",
+      "text": "horizontal asymptotes describe the **end behavior**—what \nhappens as $x \\to \\pm\\infty$."
     },
     {
       "type": "definition",
       "id": "definition-3.2",
       "number": "3.2",
       "title": "Horizontal Asymptote",
-      "content": "The line $y = b$ is a **horizontal asymptote** of the function $f$ if\n\\[\n \\lim_{x \\to \\infty} f(x) = b \\quad \\text{or} \\quad \\lim_{x \\to -\\infty} f(x) = b\n\\]"
+      "content": "The line $y = b$ is a **horizontal asymptote** of the function $f$ if\n$$\n \\lim_{x \\to \\infty} f(x) = b \\quad \\text{or} \\quad \\lim_{x \\to -\\infty} f(x) = b\n$$"
     },
     {
       "type": "paragraph",
@@ -150,6 +216,21 @@
       "title": "Finding Horizontal Asymptotes",
       "content": "For the rational function $f(x) = \\dfrac{a_n x^n + \\cdots + a_0}{b_m x^m + \\cdots + b_0}$ \nwhere $a_n \\neq 0$ and $b_m \\neq 0$:\n\n- If $n < m$ (degree of numerator less than degree of denominator): \n Horizontal asymptote at $y = 0$.\n\n- If $n = m$ (degrees equal): Horizontal asymptote at \n $y = \\dfrac{a_n}{b_m}$ (ratio of leading coefficients).\n\n- If $n > m$ (degree of numerator greater than degree of denominator): \n No horizontal asymptote.",
       "label": "Theorem"
+    },
+    {
+      "type": "figure",
+      "id": "fig:horizontal-asymptote-cases",
+      "src": "/figures/precalculus/fig-horizontal-asymptote-cases.svg",
+      "caption": "The three cases for horizontal asymptotes, determined by comparing degrees. **Left:** $\\deg < \\deg$ gives $y = 0$. **Center:** $\\deg = \\deg$ gives ratio of leading coefficients. **Right:** $\\deg > \\deg$ means no horizontal asymptote.",
+      "alt": "The three cases for horizontal asymptotes, determined by comparing degrees. **Left:** $\\deg < \\deg$ gives $y = 0$. **Center:** $\\deg = \\deg$ gives ratio of leading coefficients. **Right:** $\\deg > \\deg$ means no horizontal asymptote.",
+      "tikz": true
+    },
+    {
+      "type": "remark",
+      "id": "remark-3.2",
+      "number": null,
+      "title": "Why Degree Comparison Works",
+      "content": "To understand *why* comparing degrees determines horizontal asymptotes, \ndivide every term by the highest power of $x$ in the denominator:\n$$\n f(x) = \\frac{3x^2 - 2x + 1}{2x^2 + 5} = \n \\frac{3 - \\frac{2}{x} + \\frac{1}{x^2}}{2 + \\frac{5}{x^2}}\n$$\n\nAs $x \\to \\pm\\infty$, all the terms with $x$ in the denominator approach 0:\n$$\n f(x) \\to \\frac{3 - 0 + 0}{2 + 0} = \\frac{3}{2}\n$$\n\nThis explains the three cases:\n\n- **Degrees equal:** The constant terms survive, giving the ratio \n of leading coefficients.\n\n- **Numerator degree smaller:** The numerator's terms all have $x$ \n in their denominators after division, so they all $\\to 0$. Result: $y = 0$.\n\n- **Numerator degree larger:** The numerator still has positive \n powers of $x$ after division, so it $\\to \\pm\\infty$. No horizontal asymptote."
     },
     {
       "type": "example",
@@ -173,7 +254,7 @@
       "number": "3.9",
       "title": "Understanding end behavior",
       "problem": "Analyze the end behavior of $f(x) = \\dfrac{5x^2 - 3x + 1}{2x^2 + x - 4}$.",
-      "solution": "Both numerator and denominator have degree 2.\n\nHorizontal asymptote: $y = \\dfrac{5}{2}$\n\nTo verify, we can divide each term by $x^2$:\n\\[\n f(x) = \\frac{5 - \\frac{3}{x} + \\frac{1}{x^2}}{2 + \\frac{1}{x} - \\frac{4}{x^2}}\n\\]\n\nAs $x \\to \\pm\\infty$, the terms with $x$ in the denominator approach 0:\n\\[\n f(x) \\to \\frac{5 - 0 + 0}{2 + 0 - 0} = \\frac{5}{2}\n\\]\n\nThe graph levels off at height $y = \\frac{5}{2}$ for large $|x|$."
+      "solution": "Both numerator and denominator have degree 2.\n\nHorizontal asymptote: $y = \\dfrac{5}{2}$\n\nTo verify, we can divide each term by $x^2$:\n$$\n f(x) = \\frac{5 - \\frac{3}{x} + \\frac{1}{x^2}}{2 + \\frac{1}{x} - \\frac{4}{x^2}}\n$$\n\nAs $x \\to \\pm\\infty$, the terms with $x$ in the denominator approach 0:\n$$\n f(x) \\to \\frac{5 - 0 + 0}{2 + 0 - 0} = \\frac{5}{2}\n$$\n\nThe graph levels off at height $y = \\frac{5}{2}$ for large $|x|$."
     },
     {
       "type": "heading",
@@ -183,6 +264,13 @@
     {
       "type": "paragraph",
       "text": "When the degree of the numerator is exactly one more than the degree of \nthe denominator, the function has a **slant asymptote** (also called an **oblique asymptote**). This is a \nnon-horizontal line that the graph approaches as $x \\to \\pm\\infty$."
+    },
+    {
+      "type": "remark",
+      "id": "remark-3.2",
+      "number": null,
+      "title": "Connection to Polynomial Division (Section 2.3)",
+      "content": "To find slant asymptotes, we use the polynomial long division you learned \nin Section 2.3. Remember:\n$$\n \\frac{P(x)}{Q(x)} = \\underbrace{\\text{quotient}}_{\\text{slant asymptote}} + \\frac{\\text{remainder}}{Q(x)}\n$$\nAs $x \\to \\pm\\infty$, the remainder term $\\to 0$, so the function approaches \nthe quotient. **The quotient IS the slant asymptote!**"
     },
     {
       "type": "theorem",
@@ -198,7 +286,7 @@
       "number": "3.10",
       "title": "Finding a slant asymptote",
       "problem": "Find the slant asymptote of $f(x) = \\dfrac{x^2 + 2x + 1}{x - 1}$.",
-      "solution": "Since degree 2 = degree 1 + 1, there is a slant asymptote.\n\nPerform polynomial long division:\n\\[\n\\begin{array}{r}\nx + 3 \\\\\nx - 1 \\overline{\\smash{)} x^2 + 2x + 1} \\\\\n\\underline{-(x^2 - x)} \\\\\n3x + 1 \\\\\n\\underline{-(3x - 3)} \\\\\n4\n\\end{array}\n\\]\n\nSo $\\dfrac{x^2 + 2x + 1}{x - 1} = x + 3 + \\dfrac{4}{x - 1}$\n\nAs $x \\to \\pm\\infty$, the term $\\dfrac{4}{x-1} \\to 0$.\n\nSlant asymptote: $\\boxed{y = x + 3}$"
+      "solution": "Since degree 2 = degree 1 + 1, there is a slant asymptote.\n\nPerform polynomial long division:\n$$\n\\begin{array}{r}\nx + 3 \\\\\nx - 1 \\overline{\\smash{)} x^2 + 2x + 1} \\\\\n\\underline{-(x^2 - x)} \\\\\n3x + 1 \\\\\n\\underline{-(3x - 3)} \\\\\n4\n\\end{array}\n$$\n\nSo $\\dfrac{x^2 + 2x + 1}{x - 1} = x + 3 + \\dfrac{4}{x - 1}$\n\nAs $x \\to \\pm\\infty$, the term $\\dfrac{4}{x-1} \\to 0$.\n\nSlant asymptote: $\\boxed{y = x + 3}$"
     },
     {
       "type": "example",
@@ -206,7 +294,15 @@
       "number": "3.11",
       "title": "Another slant asymptote",
       "problem": "Find the slant asymptote of $g(x) = \\dfrac{2x^2 - 3x + 5}{x + 2}$.",
-      "solution": "Degree of numerator = 2, degree of denominator = 1. Difference is 1, so \nthere's a slant asymptote.\n\nLong division:\n\\[\n\\begin{array}{r}\n2x - 7 \\\\\nx + 2 \\overline{\\smash{)} 2x^2 - 3x + 5} \\\\\n\\underline{-(2x^2 + 4x)} \\\\\n-7x + 5 \\\\\n\\underline{-(-7x - 14)} \\\\\n19\n\\end{array}\n\\]\n\nSo $g(x) = 2x - 7 + \\dfrac{19}{x + 2}$\n\nSlant asymptote: $\\boxed{y = 2x - 7}$"
+      "solution": "Degree of numerator = 2, degree of denominator = 1. Difference is 1, so \nthere's a slant asymptote.\n\nLong division:\n$$\n\\begin{array}{r}\n2x - 7 \\\\\nx + 2 \\overline{\\smash{)} 2x^2 - 3x + 5} \\\\\n\\underline{-(2x^2 + 4x)} \\\\\n-7x + 5 \\\\\n\\underline{-(-7x - 14)} \\\\\n19\n\\end{array}\n$$\n\nSo $g(x) = 2x - 7 + \\dfrac{19}{x + 2}$\n\nSlant asymptote: $\\boxed{y = 2x - 7}$"
+    },
+    {
+      "type": "figure",
+      "id": "fig:slant-asymptote",
+      "src": "/figures/precalculus/fig-slant-asymptote.svg",
+      "caption": "A slant (oblique) asymptote}. When $\\deg(\\text{num}) = \\deg(\\text{denom}) + 1$, the graph approaches a slanted line as $x \\to \\pm\\infty$. Here the slant asymptote is $y = x + 3$, found by polynomial division.",
+      "alt": "A slant (oblique) asymptote}. When $\\deg(\\text{num}) = \\deg(\\text{denom}) + 1$, the graph approaches a slanted line as $x \\to \\pm\\infty$. Here the slant asymptote is $y = x + 3$, found by polynomial division.",
+      "tikz": true
     },
     {
       "type": "example",
@@ -214,7 +310,7 @@
       "number": "3.12",
       "title": "Slant asymptote with quadratic denominator",
       "problem": "Find the slant asymptote of $h(x) = \\dfrac{x^3 - 2x^2 + x - 1}{x^2 + 1}$.",
-      "solution": "Degree of numerator = 3, degree of denominator = 2. Difference is 1.\n\nLong division:\n\\[\n\\begin{array}{r}\nx - 2 \\\\\nx^2 + 1 \\overline{\\smash{)} x^3 - 2x^2 + x - 1} \\\\\n\\underline{-(x^3 + x)} \\\\\n-2x^2 + 0 - 1 \\\\\n\\underline{-(-2x^2 - 2)} \\\\\n1\n\\end{array}\n\\]\n\nSo $h(x) = x - 2 + \\dfrac{1}{x^2 + 1}$\n\nSlant asymptote: $\\boxed{y = x - 2}$"
+      "solution": "Degree of numerator = 3, degree of denominator = 2. Difference is 1.\n\nLong division:\n$$\n\\begin{array}{r}\nx - 2 \\\\\nx^2 + 1 \\overline{\\smash{)} x^3 - 2x^2 + x - 1} \\\\\n\\underline{-(x^3 + x)} \\\\\n-2x^2 + 0 - 1 \\\\\n\\underline{-(-2x^2 - 2)} \\\\\n1\n\\end{array}\n$$\n\nSo $h(x) = x - 2 + \\dfrac{1}{x^2 + 1}$\n\nSlant asymptote: $\\boxed{y = x - 2}$"
     },
     {
       "type": "summary",
@@ -245,7 +341,7 @@
       "number": "3.13",
       "title": "Analyzing behavior near asymptotes",
       "problem": "Describe the behavior of $f(x) = \\dfrac{1}{x - 2}$ near $x = 2$.",
-      "solution": "Test a value just less than 2: Let $x = 1.9$.\n\\[\n f(1.9) = \\frac{1}{1.9 - 2} = \\frac{1}{-0.1} = -10\n\\]\nAs $x \\to 2^-$, $f(x) \\to -\\infty$.\n\nTest a value just greater than 2: Let $x = 2.1$.\n\\[\n f(2.1) = \\frac{1}{2.1 - 2} = \\frac{1}{0.1} = 10\n\\]\nAs $x \\to 2^+$, $f(x) \\to +\\infty$.\n\nThe graph falls toward $-\\infty$ from the left and rises toward $+\\infty$ \nfrom the right."
+      "solution": "Test a value just less than 2: Let $x = 1.9$.\n$$\n f(1.9) = \\frac{1}{1.9 - 2} = \\frac{1}{-0.1} = -10\n$$\nAs $x \\to 2^-$, $f(x) \\to -\\infty$.\n\nTest a value just greater than 2: Let $x = 2.1$.\n$$\n f(2.1) = \\frac{1}{2.1 - 2} = \\frac{1}{0.1} = 10\n$$\nAs $x \\to 2^+$, $f(x) \\to +\\infty$.\n\nThe graph falls toward $-\\infty$ from the left and rises toward $+\\infty$ \nfrom the right."
     },
     {
       "type": "example",
@@ -254,6 +350,14 @@
       "title": "Even vs. odd multiplicity",
       "problem": "Compare the behavior of $f(x) = \\dfrac{1}{(x-1)^2}$ and $g(x) = \\dfrac{1}{x-1}$ \nnear $x = 1$.",
       "solution": "For $f(x) = \\dfrac{1}{(x-1)^2}$:\n\nThe denominator $(x-1)^2$ is always positive (it's a square), so $f(x) > 0$ \nfor all $x \\neq 1$.\n\nAs $x \\to 1^-$ or $x \\to 1^+$, $(x-1)^2 \\to 0^+$, so $f(x) \\to +\\infty$.\n\nThe graph approaches $+\\infty$ from **both sides**.\n\nFor $g(x) = \\dfrac{1}{x-1}$:\n\nWhen $x < 1$: $(x-1) < 0$, so $g(x) < 0$. Thus $g(x) \\to -\\infty$ as $x \\to 1^-$.\n\nWhen $x > 1$: $(x-1) > 0$, so $g(x) > 0$. Thus $g(x) \\to +\\infty$ as $x \\to 1^+$.\n\nThe graph approaches $-\\infty$ from the left and $+\\infty$ from the right."
+    },
+    {
+      "type": "figure",
+      "id": "fig:even-odd-multiplicity",
+      "src": "/figures/precalculus/fig-even-odd-multiplicity.svg",
+      "caption": "Even vs.\\ odd multiplicity in the denominator. **Left:** With $(x-1)^2$ (even power), the function approaches $+\\infty$ from both sides. **Right:** With $(x-1)^1$ (odd power), the function approaches $-\\infty$ from the left and $+\\infty$ from the right.",
+      "alt": "Even vs.\\ odd multiplicity in the denominator. **Left:** With $(x-1)^2$ (even power), the function approaches $+\\infty$ from both sides. **Right:** With $(x-1)^1$ (odd power), the function approaches $-\\infty$ from the left and $+\\infty$ from the right.",
+      "tikz": true
     },
     {
       "type": "paragraph",
@@ -282,7 +386,15 @@
       "number": "3.16",
       "title": "A function that crosses its horizontal asymptote",
       "problem": "Show that $f(x) = \\dfrac{x}{x^2 + 1}$ crosses its horizontal asymptote.",
-      "solution": "The horizontal asymptote is $y = 0$ (degree 1 < degree 2).\n\nDoes the graph cross $y = 0$? We need to solve $f(x) = 0$:\n\\[\n \\frac{x}{x^2 + 1} = 0 \\implies x = 0\n\\]\n\nYes! The graph crosses its horizontal asymptote at the origin $(0, 0)$.\n\nThe asymptote describes behavior at the extremes ($x \\to \\pm\\infty$), \nnot necessarily what happens for moderate values of $x$."
+      "solution": "The horizontal asymptote is $y = 0$ (degree 1 < degree 2).\n\nDoes the graph cross $y = 0$? We need to solve $f(x) = 0$:\n$$\n \\frac{x}{x^2 + 1} = 0 \\implies x = 0\n$$\n\nYes! The graph crosses its horizontal asymptote at the origin $(0, 0)$.\n\nThe asymptote describes behavior at the extremes ($x \\to \\pm\\infty$), \nnot necessarily what happens for moderate values of $x$."
+    },
+    {
+      "type": "figure",
+      "id": "fig:crossing-asymptote",
+      "src": "/figures/precalculus/fig-crossing-asymptote.svg",
+      "caption": "A graph can cross its horizontal asymptote. Here $f(x) = \\frac{x}{x^2+1}$ crosses the asymptote $y = 0$ at the origin. The asymptote describes behavior as $x \\to \\pm\\infty$, not for all $x$.",
+      "alt": "A graph can cross its horizontal asymptote. Here $f(x) = \\frac{x}{x^2+1}$ crosses the asymptote $y = 0$ at the origin. The asymptote describes behavior as $x \\to \\pm\\infty$, not for all $x$.",
+      "tikz": true
     },
     {
       "type": "warning",
@@ -292,6 +404,14 @@
       "content": "- A graph **never crosses** a vertical asymptote (the \n function is undefined there).\n\n- A graph **may cross** a horizontal or slant asymptote \n for finite values of $x$.\n\n- As $x \\to \\pm\\infty$, the graph approaches (but may have \n already crossed) its horizontal/slant asymptote."
     },
     {
+      "type": "figure",
+      "id": "fig:asymptote-comparison",
+      "src": "/figures/precalculus/fig-asymptote-comparison.svg",
+      "caption": "Comparing the three types of asymptotes. **Vertical:** the graph explodes to $\\pm\\infty$ at a specific $x$-value. **Horizontal:** the graph levels off to a constant as $x \\to \\pm\\infty$. **Slant (Oblique):** the graph approaches a tilted line as $x \\to \\pm\\infty$.",
+      "alt": "Comparing the three types of asymptotes. **Vertical:** the graph explodes to $\\pm\\infty$ at a specific $x$-value. **Horizontal:** the graph levels off to a constant as $x \\to \\pm\\infty$. **Slant (Oblique):** the graph approaches a tilted line as $x \\to \\pm\\infty$.",
+      "tikz": true
+    },
+    {
       "type": "summary",
       "id": "summary-3.2",
       "number": null,
@@ -299,25 +419,544 @@
       "content": "- **Vertical asymptotes** occur where the denominator (in \n lowest terms) is zero. The graph approaches $\\pm\\infty$.\n\n- **Holes** occur where a factor cancels from both numerator \n and denominator. The graph has a single missing point.\n\n- **Horizontal asymptotes** describe end behavior:\n itemize\n\n- $\\deg(P) < \\deg(Q)$: $y = 0$\n\n- $\\deg(P) = \\deg(Q)$: $y = \\frac{\\text{leading coefficients}}{}$\n\n- $\\deg(P) > \\deg(Q)$: None\n \n **Slant asymptotes** exist when $\\deg(P) = \\deg(Q) + 1$. \n Use polynomial division to find them.\n \n Test points near asymptotes to determine the sign of the function.\nitemize"
     },
     {
-      "type": "heading",
-      "level": 2,
-      "text": "Exercises"
+      "type": "exercise",
+      "id": "ex-3.2-1",
+      "number": "1",
+      "problem": "Find all vertical asymptotes.\n\n1. $f(x) = \\dfrac{1}{x + 2}$\n\n2. $g(x) = \\dfrac{x}{x^2 - 1}$\n\n3. $h(x) = \\dfrac{x - 3}{x^2 - 9}$\n\n4. $p(x) = \\dfrac{x^2}{x^2 + 4}$\n\n5. $q(x) = \\dfrac{2x + 1}{x^2 - 3x - 10}$\n\n6. $r(x) = \\dfrac{x^2 - 4}{x^3 - 4x}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Vertical Asymptotes**"
+      "type": "exercise",
+      "id": "ex-3.2-2",
+      "number": "2",
+      "problem": "Find all vertical asymptotes.\n\n1. $f(x) = \\dfrac{5}{x - 7}$\n\n2. $g(x) = \\dfrac{x + 1}{x^2 - 4x + 3}$\n\n3. $h(x) = \\dfrac{x^2 - 1}{x^3 - x}$\n\n4. $p(x) = \\dfrac{3x}{x^2 + 2x - 8}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Horizontal Asymptotes**"
+      "type": "exercise",
+      "id": "ex-3.2-3",
+      "number": "3",
+      "problem": "Identify any holes and give their coordinates.\n\n1. $f(x) = \\dfrac{x^2 - 4}{x + 2}$\n\n2. $g(x) = \\dfrac{x^2 - 5x + 6}{x - 2}$\n\n3. $h(x) = \\dfrac{x^2 - 1}{x^2 - x}$\n\n4. $k(x) = \\dfrac{x^3 - 8}{x^2 - 4}$\n\n5. $m(x) = \\dfrac{x^2 + 3x + 2}{x^2 + 5x + 6}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Slant Asymptotes**"
+      "type": "exercise",
+      "id": "ex-3.2-4",
+      "number": "4",
+      "problem": "Find any holes. If there is a hole, give its coordinates.\n\n1. $f(x) = \\dfrac{x^2 - 9}{x - 3}$\n\n2. $g(x) = \\dfrac{x^2 + x - 6}{x + 3}$\n\n3. $h(x) = \\dfrac{x^2 - 4x + 4}{x - 2}$\n\n4. $k(x) = \\dfrac{x^3 + 1}{x + 1}$\n\n5. $m(x) = \\dfrac{x^2 - 1}{x^2 - 2x + 1}$\n\n6. $n(x) = \\dfrac{x^3 - x}{x^2 - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
     },
     {
-      "type": "paragraph",
-      "text": "**Complete Analysis**"
+      "type": "exercise",
+      "id": "ex-3.2-5",
+      "number": "5",
+      "problem": "For each function, identify all holes AND all vertical asymptotes.\n\n1. $f(x) = \\dfrac{x^2 - 4}{x^2 - x - 2}$\n\n2. $g(x) = \\dfrac{x^2 - 9}{x^2 - 6x + 9}$\n\n3. $h(x) = \\dfrac{x^3 - x}{x^2 - 1}$\n\n4. $k(x) = \\dfrac{x^2 - 4x + 3}{x^2 - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-6",
+      "number": "6",
+      "problem": "Find all horizontal asymptotes.\n\n1. $f(x) = \\dfrac{3x - 1}{2x + 5}$\n\n2. $g(x) = \\dfrac{x^2 + 1}{2x^2 - 3}$\n\n3. $h(x) = \\dfrac{x^3}{x^2 + 1}$\n\n4. $p(x) = \\dfrac{5}{x^2 + 3x + 1}$\n\n5. $q(x) = \\dfrac{4x^4 - x^2}{2x^4 + 3}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-7",
+      "number": "7",
+      "problem": "Find the horizontal asymptote, or explain why none exists.\n\n1. $f(x) = \\dfrac{7x - 2}{3x + 1}$\n\n2. $g(x) = \\dfrac{x^2 - 4}{x + 2}$\n\n3. $h(x) = \\dfrac{2x^3 + 1}{x^3 - 5}$\n\n4. $p(x) = \\dfrac{x}{x^2 + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-8",
+      "number": "8",
+      "problem": "Find all slant asymptotes.\n\n1. $f(x) = \\dfrac{x^2 - 1}{x + 2}$\n\n2. $g(x) = \\dfrac{2x^2 + x - 1}{x - 3}$\n\n3. $h(x) = \\dfrac{x^3 + 2x}{x^2 - 1}$\n\n4. $p(x) = \\dfrac{x^2 + 4x + 5}{x + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-9",
+      "number": "9",
+      "problem": "Find the slant asymptote using polynomial division.\n\n1. $f(x) = \\dfrac{x^2 + 3x - 2}{x - 1}$\n\n2. $g(x) = \\dfrac{2x^2 - x + 4}{x + 3}$\n\n3. $h(x) = \\dfrac{x^3 - 1}{x^2 + 1}$\n\n4. $p(x) = \\dfrac{3x^2 + 2}{x - 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-10",
+      "number": "10",
+      "problem": "For each function, find all vertical asymptotes, holes, and horizontal \nor slant asymptotes. Describe the behavior near each vertical asymptote.\n\n1. $f(x) = \\dfrac{x + 1}{x^2 - 4}$\n\n2. $g(x) = \\dfrac{x^2 - x - 6}{x^2 - 9}$\n\n3. $h(x) = \\dfrac{x^2 + 2x + 1}{x + 1}$\n\n4. $p(x) = \\dfrac{2x^3 - 8x}{x^2 - 4}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-11",
+      "number": "11",
+      "problem": "Find a rational function with the given asymptotes.\n\n1. Vertical: $x = 2$; Horizontal: $y = 1$\n\n2. Vertical: $x = -1, x = 3$; Horizontal: $y = 0$\n\n3. Vertical: $x = 0$; Slant: $y = x + 1$\n\n4. Vertical: $x = 2$; Horizontal: $y = -3$; Hole at $x = -1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-12",
+      "number": "12",
+      "problem": "Prove that a rational function cannot have both a horizontal and a slant \nasymptote.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-13",
+      "number": "13",
+      "problem": "For what values of $a$ does $f(x) = \\dfrac{x^2 + ax + 1}{x - 2}$ have a \nhole instead of a vertical asymptote at $x = 2$?",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-14",
+      "number": "14",
+      "problem": "Create a rational function whose graph has vertical asymptotes at \n$x = 1$ and $x = -1$, a horizontal asymptote at $y = 2$, crosses its \nhorizontal asymptote at $x = 0$, and passes through $(2, 1)$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-15",
+      "number": "15",
+      "problem": "Find all vertical asymptotes.\n\n1. $f(x) = \\dfrac{1}{x - 3}$\n\n2. $f(x) = \\dfrac{x}{x + 5}$\n\n3. $f(x) = \\dfrac{2x}{x^2 - 4}$\n\n4. $f(x) = \\dfrac{x + 1}{x^2 - 9}$\n\n5. $f(x) = \\dfrac{x^2}{x^2 + x - 6}$\n\n6. $f(x) = \\dfrac{3x - 1}{x^2 - 5x + 6}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-16",
+      "number": "16",
+      "problem": "Find all vertical asymptotes.\n\n1. $f(x) = \\dfrac{x^2 - 1}{x - 1}$\n\n2. $f(x) = \\dfrac{x^2 - 4}{x^2 - x - 2}$\n\n3. $f(x) = \\dfrac{x^2 - 9}{x^2 - 6x + 9}$\n\n4. $f(x) = \\dfrac{x^3 - 8}{x - 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-17",
+      "number": "17",
+      "problem": "Find all vertical asymptotes.\n\n1. $f(x) = \\dfrac{1}{x - 2}$\n\n2. $f(x) = \\dfrac{1}{x + 5}$\n\n3. $f(x) = \\dfrac{x}{x - 4}$\n\n4. $f(x) = \\dfrac{x + 1}{x + 3}$\n\n5. $f(x) = \\dfrac{2x - 1}{x - 1}$\n\n6. $f(x) = \\dfrac{3x + 2}{x + 6}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-18",
+      "number": "18",
+      "problem": "Find all vertical asymptotes.\n\n1. $f(x) = \\dfrac{1}{x^2 - 4}$\n\n2. $f(x) = \\dfrac{x}{x^2 - 9}$\n\n3. $f(x) = \\dfrac{x + 1}{x^2 - 1}$\n\n4. $f(x) = \\dfrac{x - 2}{x^2 - 4}$\n\n5. $f(x) = \\dfrac{x}{x^2 - 16}$\n\n6. $f(x) = \\dfrac{x + 3}{x^2 - 9}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-19",
+      "number": "19",
+      "problem": "Find all vertical asymptotes and holes.\n\n1. $f(x) = \\dfrac{x - 2}{x^2 - 4}$\n\n2. $f(x) = \\dfrac{x + 3}{x^2 - 9}$\n\n3. $f(x) = \\dfrac{x^2 - 1}{x^2 - 2x - 3}$\n\n4. $f(x) = \\dfrac{x^2 - 4}{x^2 - x - 6}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-20",
+      "number": "20",
+      "problem": "Find all vertical asymptotes. State the domain.\n\n1. $f(x) = \\dfrac{x + 5}{x^2 - 25}$\n\n2. $f(x) = \\dfrac{2x - 1}{x^2 + x - 12}$\n\n3. $f(x) = \\dfrac{x^2}{x^3 - 4x}$\n\n4. $f(x) = \\dfrac{1}{x^4 - 16}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-21",
+      "number": "21",
+      "problem": "Find all vertical asymptotes and holes.\n\n1. $f(x) = \\dfrac{x^2 - 6x + 8}{x^2 - 5x + 4}$\n\n2. $f(x) = \\dfrac{x^3 - x}{x^2 + x}$\n\n3. $f(x) = \\dfrac{x^2 + 2x - 3}{x^2 - 9}$\n\n4. $f(x) = \\dfrac{x^3 - 27}{x^2 - 9}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-22",
+      "number": "22",
+      "problem": "Find the horizontal asymptote, if any.\n\n1. $f(x) = \\dfrac{3}{x + 2}$\n\n2. $f(x) = \\dfrac{2x}{x - 1}$\n\n3. $f(x) = \\dfrac{3x + 1}{2x - 5}$\n\n4. $f(x) = \\dfrac{x^2}{x - 3}$\n\n5. $f(x) = \\dfrac{x}{x^2 + 1}$\n\n6. $f(x) = \\dfrac{4x^2 - 1}{2x^2 + 3}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-23",
+      "number": "23",
+      "problem": "Find the horizontal asymptote, if any.\n\n1. $f(x) = \\dfrac{5x^3 + 2}{x^3 - 1}$\n\n2. $f(x) = \\dfrac{x^2 + 3x}{3x^2 - 2}$\n\n3. $f(x) = \\dfrac{2x^4 - x}{x^4 + 5}$\n\n4. $f(x) = \\dfrac{x^3 + 1}{x^2 - 4}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-24",
+      "number": "24",
+      "problem": "Find the horizontal asymptote.\n\n1. $f(x) = \\dfrac{1}{x}$\n\n2. $f(x) = \\dfrac{2}{x - 1}$\n\n3. $f(x) = \\dfrac{5}{x + 3}$\n\n4. $f(x) = \\dfrac{-3}{x - 4}$\n\n5. $f(x) = \\dfrac{x}{x + 1}$\n\n6. $f(x) = \\dfrac{2x}{x - 5}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-25",
+      "number": "25",
+      "problem": "Find the horizontal asymptote.\n\n1. $f(x) = \\dfrac{3x + 1}{x - 2}$\n\n2. $f(x) = \\dfrac{2x - 5}{x + 4}$\n\n3. $f(x) = \\dfrac{5x + 2}{2x - 1}$\n\n4. $f(x) = \\dfrac{4x - 3}{3x + 2}$\n\n5. $f(x) = \\dfrac{-2x + 1}{x - 3}$\n\n6. $f(x) = \\dfrac{6x}{3x + 5}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-26",
+      "number": "26",
+      "problem": "Determine if there is a horizontal asymptote. If not, explain why.\n\n1. $f(x) = \\dfrac{x^2}{x + 1}$\n\n2. $f(x) = \\dfrac{x^3}{x^2 - 1}$\n\n3. $f(x) = \\dfrac{x^2 + 1}{x - 2}$\n\n4. $f(x) = \\dfrac{x^3 - 8}{x + 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-27",
+      "number": "27",
+      "problem": "Find the horizontal asymptote of each function. Verify by evaluating $f(100)$ and $f(-100)$.\n\n1. $f(x) = \\dfrac{2x + 3}{x - 1}$\n\n2. $f(x) = \\dfrac{3x^2 - 1}{x^2 + 4}$\n\n3. $f(x) = \\dfrac{5x}{2x + 7}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-28",
+      "number": "28",
+      "problem": "For each function, state the horizontal asymptote and describe how the \nfunction approaches it (from above or below) as $x \\to +\\infty$.\n\n1. $f(x) = \\dfrac{x + 1}{x - 2}$\n\n2. $f(x) = \\dfrac{2x - 5}{x + 1}$\n\n3. $f(x) = \\dfrac{x^2}{x^2 + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-29",
+      "number": "29",
+      "problem": "Find the slant (oblique) asymptote.\n\n1. $f(x) = \\dfrac{x^2 + 2x + 1}{x - 1}$\n\n2. $f(x) = \\dfrac{2x^2 - x + 3}{x + 2}$\n\n3. $f(x) = \\dfrac{x^2 - 4}{x + 1}$\n\n4. $f(x) = \\dfrac{x^3 - 1}{x^2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-30",
+      "number": "30",
+      "problem": "Find the slant asymptote.\n\n1. $f(x) = \\dfrac{3x^2 + 5x - 2}{x - 1}$\n\n2. $f(x) = \\dfrac{x^2 + 4x + 5}{x + 2}$\n\n3. $f(x) = \\dfrac{2x^2 - 3x + 1}{2x + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-31",
+      "number": "31",
+      "problem": "Find the slant (oblique) asymptote.\n\n1. $f(x) = \\dfrac{x^2}{x - 1}$\n\n2. $f(x) = \\dfrac{x^2 + 1}{x + 2}$\n\n3. $f(x) = \\dfrac{x^2 - 4}{x - 3}$\n\n4. $f(x) = \\dfrac{x^2 + 2x}{x - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-32",
+      "number": "32",
+      "problem": "Find the slant asymptote.\n\n1. $f(x) = \\dfrac{x^2 + 3x + 2}{x + 1}$\n\n2. $f(x) = \\dfrac{x^2 - 5x + 6}{x - 2}$\n\n3. $f(x) = \\dfrac{2x^2 + x - 1}{x + 1}$\n\n4. $f(x) = \\dfrac{3x^2 - 2x + 1}{x - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-33",
+      "number": "33",
+      "problem": "Find the slant asymptote and verify by showing the remainder approaches 0.\n\n1. $f(x) = \\dfrac{x^2 - 2x + 3}{x + 1}$\n\n2. $f(x) = \\dfrac{2x^2 + 5x - 3}{x + 4}$\n\n3. $f(x) = \\dfrac{x^3 + x}{x^2 - 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-34",
+      "number": "34",
+      "problem": "For each function, determine if there is a horizontal asymptote, slant \nasymptote, or neither. Find the equation if one exists.\n\n1. $f(x) = \\dfrac{x^3 + 1}{x^2 - 4}$\n\n2. $f(x) = \\dfrac{2x^2 - 3}{x^2 + 1}$\n\n3. $f(x) = \\dfrac{x^4}{x^2 - 1}$\n\n4. $f(x) = \\dfrac{x^2 + x}{x - 5}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-35",
+      "number": "35",
+      "problem": "Find all asymptotes (vertical, horizontal, or slant).\n\n1. $f(x) = \\dfrac{x + 2}{x^2 - 1}$\n\n2. $f(x) = \\dfrac{3x^2 + 1}{x^2 - 4}$\n\n3. $f(x) = \\dfrac{x^2 - 3x + 2}{x - 3}$\n\n4. $f(x) = \\dfrac{2x^3 - x}{x^2 + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-36",
+      "number": "36",
+      "problem": "Find all asymptotes and any holes.\n\n1. $f(x) = \\dfrac{x^2 - 4}{x^2 - 5x + 6}$\n\n2. $f(x) = \\dfrac{x^2 - 1}{x^2 + 3x + 2}$\n\n3. $f(x) = \\dfrac{x^3 - 8}{x^2 - 4}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-37",
+      "number": "37",
+      "problem": "Find all asymptotes (vertical, horizontal, or slant).\n\n1. $f(x) = \\dfrac{x^2 - 1}{x}$\n\n2. $f(x) = \\dfrac{x^2 + 4}{x - 2}$\n\n3. $f(x) = \\dfrac{2x^2 - 3x + 1}{x + 3}$\n\n4. $f(x) = \\dfrac{x^3 - 1}{x^2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-38",
+      "number": "38",
+      "problem": "For each function, find: domain, vertical asymptote(s), horizontal or slant \nasymptote, $x$-intercept(s), $y$-intercept.\n\n1. $f(x) = \\dfrac{x - 1}{x + 2}$\n\n2. $f(x) = \\dfrac{2x + 4}{x - 3}$\n\n3. $f(x) = \\dfrac{x}{x^2 - 1}$\n\n4. $f(x) = \\dfrac{x^2 - 4}{x - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-39",
+      "number": "39",
+      "problem": "For each function, find: domain, all asymptotes, all intercepts, and any holes.\n\n1. $f(x) = \\dfrac{x^2 - 1}{x + 1}$\n\n2. $f(x) = \\dfrac{x^2 - 4}{x - 2}$\n\n3. $f(x) = \\dfrac{x^2 - 9}{x^2 - 6x + 9}$\n\n4. $f(x) = \\dfrac{x^2 + x - 6}{x^2 - 4}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-40",
+      "number": "40",
+      "problem": "Complete analysis: find domain, all asymptotes, holes, intercepts, and \ndescribe behavior near each vertical asymptote.\n\n1. $f(x) = \\dfrac{3x - 6}{x^2 - 4}$\n\n2. $f(x) = \\dfrac{x^2 - 9}{x^2 - 5x + 6}$\n\n3. $f(x) = \\dfrac{x^2 + 2x - 3}{x^2 - 1}$\n\n4. $f(x) = \\dfrac{2x^2 - 8}{x^2 - 6x + 8}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-41",
+      "number": "41",
+      "problem": "For each function, classify the type of each asymptote and find its equation.\n\n1. $f(x) = \\dfrac{x^2 + 1}{x - 3}$\n\n2. $f(x) = \\dfrac{2x}{x^2 - 4}$\n\n3. $f(x) = \\dfrac{x^3 - 1}{x^2 - x}$\n\n4. $f(x) = \\dfrac{4x^2 - 1}{2x^2 + x - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-42",
+      "number": "42",
+      "problem": "Describe the behavior of $f(x)$ as $x$ approaches each vertical asymptote \nfrom the left and right.\n\n1. $f(x) = \\dfrac{1}{x - 2}$\n\n2. $f(x) = \\dfrac{x}{(x + 1)^2}$\n\n3. $f(x) = \\dfrac{x - 1}{x^2 - 4}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-43",
+      "number": "43",
+      "problem": "For each function, determine whether $f(x) \\to +\\infty$ or $f(x) \\to -\\infty$ \nas $x$ approaches the vertical asymptote from each side.\n\n1. $f(x) = \\dfrac{2}{x + 3}$ as $x \\to -3^-$ and $x \\to -3^+$\n\n2. $f(x) = \\dfrac{-1}{x - 1}$ as $x \\to 1^-$ and $x \\to 1^+$\n\n3. $f(x) = \\dfrac{x}{(x - 2)^2}$ as $x \\to 2^-$ and $x \\to 2^+$\n\n4. $f(x) = \\dfrac{x + 1}{x^2 - 9}$ as $x \\to 3^-$ and $x \\to 3^+$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-44",
+      "number": "44",
+      "problem": "Use sign analysis to describe the behavior near each vertical asymptote.\n\n1. $f(x) = \\dfrac{x - 1}{(x + 2)(x - 3)}$\n\n2. $f(x) = \\dfrac{(x + 1)^2}{x(x - 2)}$\n\n3. $f(x) = \\dfrac{x^2 - 4}{x^2 - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-45",
+      "number": "45",
+      "problem": "For each function, state whether the graph approaches $+\\infty$ or $-\\infty$ \non each side of each vertical asymptote. Then sketch a rough graph.\n\n1. $f(x) = \\dfrac{1}{(x - 1)^3}$\n\n2. $f(x) = \\dfrac{-2}{(x + 2)^2}$\n\n3. $f(x) = \\dfrac{x}{x^2 - 4}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-46",
+      "number": "46",
+      "problem": "Match each function with the correct behavior description.\n\n1. $f(x) = \\dfrac{1}{x-1}$ (i) $\\to +\\infty$ from both sides of $x = 1$\n\n2. $f(x) = \\dfrac{1}{(x-1)^2}$ (ii) $\\to -\\infty$ from left, $+\\infty$ from right of $x = 1$\n\n3. $f(x) = \\dfrac{-1}{(x-1)^2}$ (iii) $\\to +\\infty$ from left, $-\\infty$ from right of $x = 1$\n\n4. $f(x) = \\dfrac{-1}{x-1}$ (iv) $\\to -\\infty$ from both sides of $x = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-47",
+      "number": "47",
+      "problem": "Find a rational function with the given asymptotes.\n\n1. Vertical: $x = 2$; Horizontal: $y = 0$\n\n2. Vertical: $x = -3$; Horizontal: $y = 1$\n\n3. Vertical: $x = 1, x = -1$; Horizontal: $y = 2$\n\n4. Vertical: $x = 4$; Slant: $y = x + 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-48",
+      "number": "48",
+      "problem": "Write an equation for a rational function with:\n\n1. Vertical asymptote $x = 2$, horizontal asymptote $y = 3$, $x$-intercept $(0, 0)$\n\n2. Vertical asymptote $x = -1$, horizontal asymptote $y = 2$, $y$-intercept $(0, 4)$\n\n3. Vertical asymptotes $x = 1, -1$, horizontal asymptote $y = 1$, $x$-intercept $(0, 0)$\n\n4. Hole at $x = 2$, vertical asymptote $x = -3$, horizontal asymptote $y = 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-49",
+      "number": "49",
+      "problem": "Write an equation for a rational function with:\n\n1. Vertical asymptote $x = 1$, slant asymptote $y = x$\n\n2. Vertical asymptote $x = -2$, slant asymptote $y = x + 1$\n\n3. Vertical asymptote $x = 3$, slant asymptote $y = 2x - 1$\n\n4. Hole at $x = 0$, vertical asymptote $x = 2$, slant asymptote $y = x$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-50",
+      "number": "50",
+      "problem": "Write an equation for a rational function satisfying:\n\n1. An odd function with vertical asymptote $x = 0$ and horizontal asymptote $y = 0$\n\n2. An even function with vertical asymptotes $x = \\pm 1$ and horizontal asymptote $y = 2$\n\n3. Crosses the horizontal asymptote $y = 1$ at $x = 0$\n\n4. Has a hole at $(2, 3)$ and vertical asymptote at $x = -1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-51",
+      "number": "51",
+      "problem": "Find a rational function with each set of properties.\n\n1. Vertical asymptotes $x = 2, x = -2$; horizontal asymptote $y = 0$; \n $x$-intercept at origin\n\n2. Vertical asymptote $x = 1$; horizontal asymptote $y = 3$; \n $y$-intercept at $(0, -3)$\n\n3. Vertical asymptote $x = -3$; slant asymptote $y = x - 2$; \n passes through $(0, 1)$\n\n4. Hole at $x = 4$; vertical asymptote $x = -2$; \n horizontal asymptote $y = 2$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-52",
+      "number": "52",
+      "problem": "Find a rational function satisfying ALL the given conditions.\n\n1. Domain: all reals except $x = 3$; HA: $y = 1$; \n $x$-intercept: $(1, 0)$; $y$-intercept: $(0, -\\frac{1}{3})$\n\n2. Domain: all reals except $x = \\pm 2$; HA: $y = 0$; \n even function; $f(0) = -\\frac{1}{4}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-53",
+      "number": "53",
+      "problem": "Use a graphing calculator to identify all asymptotes and verify \nalgebraically.\n\n1. $f(x) = \\dfrac{x^2 - 2x - 3}{x^2 - 9}$\n\n2. $f(x) = \\dfrac{2x^2 + x - 1}{x - 1}$",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-54",
+      "number": "54",
+      "problem": "Graph $f(x) = \\dfrac{x^3}{x^2 - 1}$ and find the slant asymptote. \nVerify by division.",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-55",
+      "number": "55",
+      "problem": "True or False? Justify your answer.\n\n1. A rational function can cross its horizontal asymptote.\n\n2. A rational function can cross its vertical asymptote.\n\n3. If degree(numerator) $>$ degree(denominator), there is no \n horizontal asymptote.\n\n4. A rational function can have at most one horizontal asymptote.\n\n5. A rational function can have infinitely many vertical asymptotes.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-56",
+      "number": "56",
+      "problem": "Explain why $f(x) = \\dfrac{x^2 + 1}{x^2 + 2}$ has no \nvertical asymptote.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-57",
+      "number": "57",
+      "problem": "Describe and correct the error.\n\nFinding asymptotes of $f(x) = \\dfrac{x^2 - 4}{x - 2}$:\nquote\n\"Vertical asymptote at $x = 2$ (where denominator = 0).\n\nHorizontal asymptote: degree(num) $>$ degree(denom), so none.\" \n \nquote",
+      "variant": "error",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-58",
+      "number": "58",
+      "problem": "Find a rational function with vertical asymptotes at $x = 1$ \nand $x = -2$, horizontal asymptote $y = 3$, and $x$-intercept at $x = 0$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-59",
+      "number": "59",
+      "problem": "For $f(x) = \\dfrac{ax^2 + bx + c}{x^2 - 4}$, find $a$, $b$, $c$ \nif the horizontal asymptote is $y = 2$, and $f(0) = 1$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-3.2-60",
+      "number": "60",
+      "problem": "Create a rational function that has domain $(-\\infty, -2) \\cup (-2, 3) \\cup (3, \\infty)$ \nand a horizontal asymptote at $y = 5$.\n\n Prove that if $\\deg(p) < \\deg(q)$, then $\\dfrac{p(x)}{q(x)}$ \nhas horizontal asymptote $y = 0$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
     }
   ],
   "marginNotes": [
