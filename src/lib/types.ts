@@ -74,7 +74,13 @@ export type ContentBlock =
   | WarningBlock
   | CautionBlock
   | HistoricalBlock
-  | KeyConceptBlock;
+  | KeyConceptBlock
+  | SummaryBlock
+  | RemarkBlock
+  | AlgorithmBlock
+  | MethodBlock
+  | ConnectionBlock
+  | TipBlock;
 
 interface BaseBlock {
   edition?: 'christian' | 'secular';
@@ -181,6 +187,49 @@ export interface HistoricalBlock extends BaseBlock {
 
 export interface KeyConceptBlock extends BaseBlock {
   type: 'keyconcept' | 'context' | 'strategy';
+  id?: string;
+  title?: string;
+  content: string;
+}
+
+export interface SummaryBlock extends BaseBlock {
+  type: 'summary';
+  id?: string;
+  title?: string;
+  content: string;
+}
+
+export interface RemarkBlock extends BaseBlock {
+  type: 'remark';
+  id?: string;
+  title?: string;
+  content: string;
+}
+
+export interface AlgorithmBlock extends BaseBlock {
+  type: 'algorithm';
+  id?: string;
+  number?: string;
+  title?: string;
+  content: string;
+}
+
+export interface MethodBlock extends BaseBlock {
+  type: 'method';
+  id?: string;
+  title?: string;
+  content: string;
+}
+
+export interface ConnectionBlock extends BaseBlock {
+  type: 'connection';
+  id?: string;
+  title?: string;
+  content: string;
+}
+
+export interface TipBlock extends BaseBlock {
+  type: 'tip';
   id?: string;
   title?: string;
   content: string;

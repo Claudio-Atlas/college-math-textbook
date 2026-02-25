@@ -33,6 +33,14 @@
   --ax-warn-bg: rgba(248, 113, 113, 0.06);
   --ax-proof-accent: #64748B;
   --ax-proof-bg: rgba(100, 116, 139, 0.06);
+  --ax-summary-accent: #38BDF8;
+  --ax-summary-bg: rgba(56, 189, 248, 0.06);
+  --ax-remark-accent: #94A3B8;
+  --ax-remark-bg: rgba(148, 163, 184, 0.06);
+  --ax-algo-accent: #818CF8;
+  --ax-algo-bg: rgba(129, 140, 248, 0.06);
+  --ax-tip-accent: #34D399;
+  --ax-tip-bg: rgba(52, 211, 153, 0.06);
 
   /* Environment box shared */
   --ax-card-bg: rgba(28, 29, 36, 0.5);
@@ -93,6 +101,10 @@
   --ax-ex-bg: rgba(245, 158, 11, 0.04);
   --ax-warn-bg: rgba(248, 113, 113, 0.04);
   --ax-proof-bg: rgba(100, 116, 139, 0.04);
+  --ax-summary-bg: rgba(56, 189, 248, 0.04);
+  --ax-remark-bg: rgba(148, 163, 184, 0.04);
+  --ax-algo-bg: rgba(129, 140, 248, 0.04);
+  --ax-tip-bg: rgba(52, 211, 153, 0.04);
 
   --ax-selection-bg: rgba(139, 92, 246, 0.2);
   --ax-selection-text: #1A1A1C;
@@ -121,6 +133,10 @@
     --ax-ex-bg: rgba(245, 158, 11, 0.04);
     --ax-warn-bg: rgba(248, 113, 113, 0.04);
     --ax-proof-bg: rgba(100, 116, 139, 0.04);
+    --ax-summary-bg: rgba(56, 189, 248, 0.04);
+    --ax-remark-bg: rgba(148, 163, 184, 0.04);
+    --ax-algo-bg: rgba(129, 140, 248, 0.04);
+    --ax-tip-bg: rgba(52, 211, 153, 0.04);
 
     --ax-selection-bg: rgba(139, 92, 246, 0.2);
     --ax-selection-text: #1A1A1C;
@@ -423,6 +439,36 @@ body::before {
   border-top-color: var(--ax-proof-accent);
 }
 
+.env-summary {
+  background-color: var(--ax-summary-bg);
+  border-top-color: var(--ax-summary-accent);
+}
+
+.env-remark {
+  background-color: var(--ax-remark-bg);
+  border-top-color: var(--ax-remark-accent);
+}
+
+.env-algorithm {
+  background-color: var(--ax-algo-bg);
+  border-top-color: var(--ax-algo-accent);
+}
+
+.env-method {
+  background-color: var(--ax-thm-bg);
+  border-top-color: var(--ax-thm-accent);
+}
+
+.env-connection {
+  background-color: var(--ax-ex-bg);
+  border-top-color: var(--ax-ex-accent);
+}
+
+.env-tip {
+  background-color: var(--ax-tip-bg);
+  border-top-color: var(--ax-tip-accent);
+}
+
 /* Environment labels */
 .env-label {
   font-family: var(--ax-font-sans);
@@ -438,6 +484,12 @@ body::before {
 .env-example .env-label   { color: var(--ax-ex-accent); }
 .env-warning .env-label   { color: var(--ax-warn-accent); }
 .env-proof .env-label      { color: var(--ax-proof-accent); }
+.env-summary .env-label    { color: var(--ax-summary-accent); }
+.env-remark .env-label     { color: var(--ax-remark-accent); }
+.env-algorithm .env-label  { color: var(--ax-algo-accent); }
+.env-method .env-label     { color: var(--ax-thm-accent); }
+.env-connection .env-label { color: var(--ax-ex-accent); }
+.env-tip .env-label        { color: var(--ax-tip-accent); }
 
 /* Env box icons via ::before */
 .env-definition .env-label::before { content: '◆ '; font-size: 0.65em; vertical-align: 0.1em; }

@@ -4,6 +4,12 @@ import { Definition } from '../environments/Definition';
 import { Theorem } from '../environments/Theorem';
 import { Example } from '../environments/Example';
 import { Proof } from '../environments/Proof';
+import { Summary } from '../environments/Summary';
+import { Remark } from '../environments/Remark';
+import { Algorithm } from '../environments/Algorithm';
+import { Method } from '../environments/Method';
+import { Connection } from '../environments/Connection';
+import { Tip } from '../environments/Tip';
 import { MathJaxProvider } from '../MathJaxProvider';
 
 interface ContentRendererProps {
@@ -260,6 +266,61 @@ function BlockRenderer({ block, isFirstParagraph = false }: { block: ContentBloc
       );
     }
       
+    case 'summary':
+      return (
+        <Summary
+          id={block.id}
+          title={block.title}
+          content={block.content}
+        />
+      );
+
+    case 'remark':
+      return (
+        <Remark
+          id={block.id}
+          title={block.title}
+          content={block.content}
+        />
+      );
+
+    case 'algorithm':
+      return (
+        <Algorithm
+          id={block.id}
+          number={block.number}
+          title={block.title}
+          content={block.content}
+        />
+      );
+
+    case 'method':
+      return (
+        <Method
+          id={block.id}
+          title={block.title}
+          content={block.content}
+        />
+      );
+
+    case 'connection':
+      return (
+        <Connection
+          id={block.id}
+          title={block.title}
+          content={block.content}
+        />
+      );
+
+    case 'tip':
+      return (
+        <Tip
+          id={block.id}
+          title={block.title}
+          content={block.content}
+        />
+      );
+
     default:
       console.warn('Unknown content block type:', (block as { type: string }).type);
       return null;
