@@ -2,6 +2,11 @@
 import '../styles/global.css';
 import { ClientRouter } from 'astro:transitions';
 import { HomePage } from '../components/home/HomePage';
+
+export const prerender = false;
+const host = Astro.request.headers.get('host') || 'localhost';
+const forceEdition = host.includes('meridian') ? 'meridian' as const : 'atlas' as const;
+const pageTitle = forceEdition === 'meridian' ? 'Meridian Press — Mathematics Textbooks' : 'Atlas Classical Press — Mathematics Textbooks';
 ---
 
 <!doctype html>
@@ -11,7 +16,7 @@ import { HomePage } from '../components/home/HomePage';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Mathematics textbooks for classical and modern education" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <title>Mathematics Textbooks</title>
+    <title>{pageTitle}</title>
     <ClientRouter />
     
     <!-- Fonts loaded via global.css (Inter + Source Serif 4) -->
@@ -29,6 +34,6 @@ import { HomePage } from '../components/home/HomePage';
     </script>
   </head>
   <body>
-    <HomePage client:only="react" />
+    <HomePage forceEdition={forceEdition} client:only="react" />
   </body>
 </html>

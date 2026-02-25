@@ -3,6 +3,10 @@ export const prerender = false;
 import ReaderLayout from '../../../layouts/ReaderLayout.astro';
 import { ReaderContent } from '../../../components/reader/ReaderContent';
 
+// Detect edition from hostname
+const host = Astro.request.headers.get('host') || 'localhost';
+const edition = host.includes('meridian') ? 'secular' : 'christian';
+
 // Get params from URL
 const { bookId, chapterId, sectionId } = Astro.params;
 
@@ -115,6 +119,7 @@ const catalogId = bookId === 'vol1' ? 'calculus-vol1' : bookId;
         section={section.section}
         objectives={section.objectives}
         bookId={bookId}
+        edition={edition}
         client:only="react"
       />
     </article>

@@ -307,9 +307,14 @@ function BookCard({ book, brand, isAtlas }: BookCardProps) {
   );
 }
 
-export function HomePage() {
+interface HomePageProps {
+  /** Override edition: 'atlas' or 'meridian' */
+  forceEdition?: 'atlas' | 'meridian';
+}
+
+export function HomePage({ forceEdition }: HomePageProps) {
   return (
-    <BrandProvider>
+    <BrandProvider forceEdition={forceEdition}>
       <HomeContent />
     </BrandProvider>
   );

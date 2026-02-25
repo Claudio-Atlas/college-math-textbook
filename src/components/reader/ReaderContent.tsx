@@ -9,7 +9,8 @@ import { Epigraph } from './Epigraph';
 import { TextHighlighter } from './TextHighlighter';
 import { FigureLightbox } from './FigureLightbox';
 import { DeepLink } from './DeepLink';
-import type { FigureBlock } from '../../lib/types';
+import type { FigureBlock, Edition } from '../../lib/types';
+import type { Edition as BrandEdition } from '../../lib/edition';
 
 interface EpigraphData {
   text: string;
@@ -31,6 +32,8 @@ interface ReaderContentProps {
   section: number;
   objectives?: string[];
   bookId?: string;
+  /** Content edition: 'christian' or 'secular'. Mapped from hostname. */
+  edition?: Edition;
 }
 
 /**
@@ -74,6 +77,7 @@ function ReaderContentInner({
   section,
   objectives,
   bookId = 'unknown',
+  edition = 'christian',
 }: ReaderContentProps) {
   const { brand } = useBrand();
   const showMargins = brand.showScripture && marginNotes && marginNotes.length > 0;
@@ -142,9 +146,9 @@ function ReaderContentInner({
               
                 {/* Content block */}
                 {isFirstParagraph ? (
-                  <ContentRenderer content={[{...block, _firstParagraph: true}]} />
+                  <ContentRenderer content={[{...block, _firstParagraph: true}]} edition={edition} />
                 ) : (
-                  <ContentRenderer content={[block]} />
+                  <ContentRenderer content={[block]} edition={edition} />
                 )}
               </div>
             );
@@ -155,9 +159,14 @@ function ReaderContentInner({
   );
 }
 
+/** Map content edition to brand edition */
+function toBrandEdition(edition?: Edition): BrandEdition {
+  return edition === 'secular' ? 'meridian' : 'atlas';
+}
+
 export function ReaderContent(props: ReaderContentProps) {
   return (
-    <BrandProvider>
+    <BrandProvider forceEdition={toBrandEdition(props.edition)}>
       <MathJaxProvider>
         <ReaderContentInner {...props} />
       </MathJaxProvider>

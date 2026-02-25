@@ -12,6 +12,9 @@ export default defineConfig({
   integrations: [react()],
 
   vite: {
+    server: {
+      allowedHosts: ['meridian-press.com', 'atlasclassicalpress.com'],
+    },
     plugins: [tailwindcss()],
     optimizeDeps: {
       include: ['better-react-mathjax'],
