@@ -4,6 +4,13 @@
   "chapter": 1,
   "section": 6,
   "book": "precalculus",
+  "objectives": [
+    "Determine whether a function is one-to-one using the horizontal line test",
+    "Find the inverse of a one-to-one function algebraically",
+    "Verify that two functions are inverses of each other",
+    "Graph a function and its inverse on the same axes",
+    "Find the domain and range of an inverse function"
+  ],
   "content": [
     {
       "type": "paragraph",
@@ -27,7 +34,7 @@
       "id": "definition-1.1",
       "number": "1.1",
       "title": "One-to-One Function",
-      "content": "A function $f$ is **one-to-one** (or \n**injective**) if whenever $a \\neq b$, we have $f(a) \\neq f(b)$.\n\nEquivalently, $f$ is one-to-one if $f(a) = f(b)$ implies $a = b$."
+      "content": "A function $f$ is **one-to-one** (or \n**injective**}) if whenever $a \\neq b$, we have $f(a) \\neq f(b)$.\n\nEquivalently, $f$ is one-to-one if $f(a) = f(b)$ implies $a = b$."
     },
     {
       "type": "theorem",
@@ -38,12 +45,20 @@
       "label": "Theorem"
     },
     {
+      "type": "figure",
+      "id": "fig:horizontal-line-test",
+      "src": "/figures/precalculus/fig-horizontal-line-test.svg",
+      "caption": "Horizontal line test for one-to-one functions. (a) Linear function passes: every horizontal line intersects at most once. (b) Parabola fails: the dashed horizontal line at $y = 2$ intersects twice, at $x \\approx \\pm 1.41$.",
+      "alt": "Horizontal line test for one-to-one functions. (a) Linear function passes: every horizontal line intersects at most once. (b) Parabola fails: the dashed horizontal line at $y = 2$ intersects twice, at $x \\approx \\pm 1.41$.",
+      "tikz": true
+    },
+    {
       "type": "example",
       "id": "example-1.1",
       "number": "1.1",
       "title": "Testing for one-to-one",
       "problem": "Determine whether each function is one-to-one.\n\n1. $f(x) = 2x + 5$\n\n2. $g(x) = x^2$\n\n3. $h(x) = x^3$",
-      "solution": "1. **Yes.** Suppose $f(a) = f(b)$:\n \\[\n 2a + 5 = 2b + 5 \\implies 2a = 2b \\implies a = b\n \\]\n The function is one-to-one.\n\n2. **No.** We have $g(-2) = 4 = g(2)$, but $-2 \\neq 2$. \n Different inputs give the same output.\n\n3. **Yes.** Suppose $h(a) = h(b)$:\n \\[\n a^3 = b^3 \\implies a = b\n \\]\n (since the cube root is unique). The function is one-to-one."
+      "solution": "1. **Yes.** Suppose $f(a) = f(b)$:\n $$\n 2a + 5 = 2b + 5 \\implies 2a = 2b \\implies a = b\n $$\n The function is one-to-one.\n\n2. **No.** We have $g(-2) = 4 = g(2)$, but $-2 \\neq 2$. \n Different inputs give the same output.\n\n3. **Yes.** Suppose $h(a) = h(b)$:\n $$\n a^3 = b^3 \\implies a = b\n $$\n (since the cube root is unique). The function is one-to-one."
     },
     {
       "type": "heading",
@@ -55,15 +70,33 @@
       "id": "definition-1.2",
       "number": "1.2",
       "title": "Inverse Function",
-      "content": "Let $f$ be a one-to-one function with domain $A$ and range $B$. The \n**inverse function** $f^{-1}$ has domain $B$ \nand range $A$, and is defined by\n\\[\n f^{-1}(y) = x \\quad \\text{if and only if} \\quad f(x) = y\n\\]\nfor all $y$ in $B$."
+      "content": "Let $f$ be a one-to-one function with domain $A$ and range $B$. The \n**inverse function** $f^{-1}$ has domain $B$ \nand range $A$, and is defined by\n$$\n f^{-1}(y) = x \\quad \\text{if and only if} \\quad f(x) = y\n$$\nfor all $y$ in $B$."
     },
     {
       "type": "paragraph",
       "text": "$ does \\emph{not} mean \n$$\\frac{1}{f}$$. The superscript $-1$ indicates an inverse function, not a \nreciprocal.}"
     },
     {
+      "type": "warning",
+      "id": "warning-1.6",
+      "number": null,
+      "title": "Notation Confusion: $f^{-1",
+      "content": "$ vs $$\\frac{1}{f}$$}\n\\label{warn:inverse-notation}\n\\index{inverse function!notation}\n$f^{-1}(x)$ means the inverse function, NOT $$\\frac{1}{f(x)}$$.\nFor example, $^{-1}(x) $\\frac{1}{\\sin x}$$ (that's $ x$)."
+    },
+    {
       "type": "paragraph",
-      "text": "The inverse function \"undoes\" what $f$ does. If $f$ takes $a$ to $b$, \nthen $f^{-1}$ takes $b$ back to $a$. This relationship is captured by \nthe equations:"
+      "text": "The inverse function \"undoes\" what $f$ does. If $f$ takes $a$ to $b$, \nthen $f^{-1}$ takes $b$ back to $a$."
+    },
+    {
+      "type": "remark",
+      "id": "remark-1.6",
+      "number": null,
+      "title": "Building Intuition for Inverses",
+      "content": "Think of each operation and its \"opposite\":\n\n- If $f$ **adds 3**, then $f^{-1}$ **subtracts 3**.\n\n- If $f$ **multiplies by 5**, then $f^{-1}$ **divides by 5**.\n\n- If $f$ **cubes**, then $f^{-1}$ takes the **cube root**.\n\n- If $f$ does \"multiply by 2, then add 7,\" then $f^{-1}$ does the operations in *reverse order*: \"subtract 7, then divide by 2.\"\nFor compound operations, the inverse reverses *both the operations and their order*—like taking off socks and shoes in the opposite order you put them on."
+    },
+    {
+      "type": "paragraph",
+      "text": "This relationship is captured by \nthe equations:"
     },
     {
       "type": "paragraph",
@@ -75,17 +108,11 @@
       "text": "Finding an Inverse Function"
     },
     {
-      "type": "paragraph",
-      "text": "To find the inverse of a one-to-one function $f$:"
-    },
-    {
-      "type": "list",
-      "ordered": true,
-      "items": [
-        "Write $y = f(x)$.",
-        "Solve this equation for $x$ in terms of $y$.",
-        "Replace $y$ with $x$ to write $f^{-1}(x)$."
-      ]
+      "type": "strategy",
+      "id": "strategy-1.6",
+      "number": null,
+      "title": "Finding the Inverse of a Function",
+      "content": "1. Replace $f(x)$ with $y$\n\n2. Swap $x$ and $y$\n\n3. Solve for $y$\n\n4. Replace $y$ with $f^{-1}(x)$\n\n5. Verify: Check that $f(f^{-1}(x)) = x$"
     },
     {
       "type": "example",
@@ -93,7 +120,7 @@
       "number": "1.2",
       "title": "Finding an inverse",
       "problem": "Find the inverse of $f(x) = 3x - 7$.",
-      "solution": "**Step 1:** Write $y = 3x - 7$.\n\n**Step 2:** Solve for $x$:\n\\[\n y = 3x - 7 \\implies y + 7 = 3x \\implies x = \\frac{y + 7}{3}\n\\]\n\n**Step 3:** Replace $y$ with $x$:\n\\[\n f^{-1}(x) = \\frac{x + 7}{3}\n\\]\n\n**Verification:**\n\\[\n f(f^{-1}(x)) = f\\left(\\frac{x + 7}{3}\\right) = 3 \\cdot \\frac{x + 7}{3} - 7 = x + 7 - 7 = x \\quad \\checkmark\n\\]\n\\[\n f^{-1}(f(x)) = f^{-1}(3x - 7) = \\frac{(3x - 7) + 7}{3} = \\frac{3x}{3} = x \\quad \\checkmark\n\\]"
+      "solution": "**Step 1:** Write $y = 3x - 7$.\n\n**Step 2:** Solve for $x$:\n$$\n y = 3x - 7 \\implies y + 7 = 3x \\implies x = \\frac{y + 7}{3}\n$$\n\n**Step 3:** Replace $y$ with $x$:\n$$\n f^{-1}(x) = \\frac{x + 7}{3}\n$$\n\n**Verification:**\n$$\n f(f^{-1}(x)) = f\\left(\\frac{x + 7}{3}\\right) = 3 \\cdot \\frac{x + 7}{3} - 7 = x + 7 - 7 = x \\quad \\checkmark\n$$\n$$\n f^{-1}(f(x)) = f^{-1}(3x - 7) = \\frac{(3x - 7) + 7}{3} = \\frac{3x}{3} = x \\quad \\checkmark\n$$"
     },
     {
       "type": "example",
@@ -101,7 +128,7 @@
       "number": "1.3",
       "title": "Finding an inverse with restricted domain",
       "problem": "Find the inverse of $f(x) = x^2$ for $x \\ge 0$.",
-      "solution": "With the restriction $x \\ge 0$, the function is one-to-one.\n\n**Step 1:** Write $y = x^2$ with $x \\ge 0$.\n\n**Step 2:** Solve for $x$:\n\\[\n y = x^2 \\implies x = \\sqrt{y} \\quad \\text{(taking the positive root since } x \\ge 0\\text{)}\n\\]\n\n**Step 3:** Replace $y$ with $x$:\n\\[\n f^{-1}(x) = \\sqrt{x}\n\\]\n\nThe domain of $f^{-1}$ is $[0, \\infty)$, which equals the range of $f$."
+      "solution": "With the restriction $x \\ge 0$, the function is one-to-one.\n\n**Step 1:** Write $y = x^2$ with $x \\ge 0$.\n\n**Step 2:** Solve for $x$:\n$$\n y = x^2 \\implies x = \\sqrt{y} \\quad \\text{(taking the positive root since } x \\ge 0\\text{)}\n$$\n\n**Step 3:** Replace $y$ with $x$:\n$$\n f^{-1}(x) = \\sqrt{x}\n$$\n\nThe domain of $f^{-1}$ is $[0, \\infty)$, which equals the range of $f$."
     },
     {
       "type": "heading",
@@ -119,6 +146,14 @@
     {
       "type": "paragraph",
       "text": "This makes sense: if $(a, b)$ is on the graph of $f$ (meaning $f(a) = b$), \nthen $(b, a)$ is on the graph of $f^{-1}$ (meaning $f^{-1}(b) = a$). \nSwitching coordinates is exactly what reflection across $y = x$ does."
+    },
+    {
+      "type": "figure",
+      "id": "fig:inverse-reflection",
+      "src": "/figures/precalculus/fig-inverse-reflection.svg",
+      "caption": "Graph of $f$ and its inverse $f^{-1}$ reflected across the line $y = x$. If $(a, b)$ lies on the graph of $f$, then $(b, a)$ lies on the graph of $f^{-1}$. The dotted line shows this correspondence.",
+      "alt": "Graph of $f$ and its inverse $f^{-1}$ reflected across the line $y = x$. If $(a, b)$ lies on the graph of $f$, then $(b, a)$ lies on the graph of $f^{-1}$. The dotted line shows this correspondence.",
+      "tikz": true
     },
     {
       "type": "heading",
@@ -139,12 +174,570 @@
       "number": "1.4",
       "title": "Domain and range of an inverse",
       "problem": "Let $f(x) = \\sqrt{x - 2}$. Find $f^{-1}$ and state its domain and range.",
-      "solution": "First, note that $f$ has domain $[2, \\infty)$ and range $[0, \\infty)$.\n\nTo find $f^{-1}$:\n\\[\n y = \\sqrt{x - 2} \\implies y^2 = x - 2 \\implies x = y^2 + 2\n\\]\n\nTherefore, $f^{-1}(x) = x^2 + 2$.\n\nBut we must restrict the domain: since the range of $f$ is $[0, \\infty)$, \nthe domain of $f^{-1}$ is $[0, \\infty)$.\n\n**Summary:**\n\n- $f^{-1}(x) = x^2 + 2$ with domain $[0, \\infty)$\n\n- Range of $f^{-1}$ is $[2, \\infty)$ (which equals the domain of $f$)"
+      "solution": "First, note that $f$ has domain $[2, \\infty)$ and range $[0, \\infty)$.\n\nTo find $f^{-1}$:\n$$\n y = \\sqrt{x - 2} \\implies y^2 = x - 2 \\implies x = y^2 + 2\n$$\n\nTherefore, $f^{-1}(x) = x^2 + 2$.\n\nBut we must restrict the domain: since the range of $f$ is $[0, \\infty)$, \nthe domain of $f^{-1}$ is $[0, \\infty)$.\n\n**Summary:**\n\n- $f^{-1}(x) = x^2 + 2$ with domain $[0, \\infty)$\n\n- Range of $f^{-1}$ is $[2, \\infty)$ (which equals the domain of $f$)"
     },
     {
-      "type": "heading",
-      "level": 2,
-      "text": "Exercises"
+      "type": "exercise",
+      "id": "ex-1.6-1",
+      "number": "1",
+      "problem": "1. A function $f$ is {1in} if every horizontal line \n intersects its graph at most once.\n\n2. The {1in} line test determines whether a function \n has an inverse.\n\n3. If $f(a) = b$, then $f^{-1}(b) = $ {0.5in}.\n\n4. The notation $f^{-1}$ means the {1in} of $f$, \n not the {1in} of $f(x)$.\n\n5. $(f \\circ f^{-1})(x) = $ {0.5in} and \n $(f^{-1} \\circ f)(x) = $ {0.5in}.\n\n6. The graphs of $f$ and $f^{-1}$ are symmetric about the line \n $y = $ {0.5in}.\n\n7. If $f$ has domain $A$ and range $B$, then $f^{-1}$ has domain \n {0.5in} and range {0.5in}.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-2",
+      "number": "2",
+      "problem": "True or False? Justify your answer.",
+      "variant": "conceptual",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-3",
+      "number": "3",
+      "problem": "1. Every function has an inverse function.\n\n2. If $f(2) = 5$, then $f^{-1}(2) = 5$.\n\n3. The notation $f^{-1}(x)$ means $\\dfrac{1}{f(x)}$.\n\n4. If $f$ is strictly increasing on its domain, then $f$ has an inverse.\n\n5. The domain of $f$ equals the range of $f^{-1}$.\n\n6. If $f$ and $g$ are both one-to-one, then $f \\circ g$ is one-to-one.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-4",
+      "number": "4",
+      "problem": "Explain why $f(x) = x^2$ does not have an inverse over all real numbers, \nbut does have an inverse when its domain is restricted to $[0, \\infty)$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-5",
+      "number": "5",
+      "problem": "Explain how the horizontal line test relates to the vertical line test. \nWhat does each test check for?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-6",
+      "number": "6",
+      "problem": "1. $f(x) = 5x - 3$\n\n2. $g(x) = x^2 + 1$\n\n3. $h(x) = \\dfrac{1}{x}$\n\n4. $p(x) = |x|$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-7",
+      "number": "7",
+      "problem": "1. $f(x) = x^3$\n\n2. $g(x) = \\sqrt{x}$\n\n3. $h(x) = 3x - 7$\n\n4. $k(x) = x^2 - 4$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-8",
+      "number": "8",
+      "problem": "1. $f(x) = x^4$\n\n2. $g(x) = x^3 - x$\n\n3. $h(x) = 2^x$\n\n4. $k(x) = \\sqrt[3]{x - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-9",
+      "number": "9",
+      "problem": "1. $f(x) = x^3 + x$\n\n2. $g(x) = \\dfrac{x}{x + 1}$\n\n3. $h(x) = x^2 - 4x$ on $[2, \\infty)$\n\n4. $k(x) = |x - 3|$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-10",
+      "number": "10",
+      "problem": "1. $f(x) = 4x + 7$\n\n2. $g(x) = \\dfrac{x - 2}{3}$\n\n3. $h(x) = 5 - 2x$\n\n4. $k(x) = \\dfrac{2x + 1}{3}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-11",
+      "number": "11",
+      "problem": "1. $f(x) = 3x - 5$\n\n2. $g(x) = \\dfrac{x + 4}{2}$\n\n3. $h(x) = 7 - 3x$\n\n4. $k(x) = \\dfrac{4 - x}{3}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-12",
+      "number": "12",
+      "problem": "1. $f(x) = 5x - 7$\n\n2. $g(x) = \\dfrac{x - 3}{2}$\n\n3. $h(x) = 4x - 3$\n\n4. $k(x) = \\dfrac{2x + 3}{5}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-13",
+      "number": "13",
+      "problem": "1. $f(x) = 2x + 5$\n\n2. $g(x) = \\dfrac{x - 1}{4}$\n\n3. $h(x) = 6 - 5x$\n\n4. $k(x) = \\dfrac{3x - 2}{4}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-14",
+      "number": "14",
+      "problem": "1. $f(x) = x^3$\n\n2. $g(x) = x^3 + 1$\n\n3. $h(x) = x^3 - 8$\n\n4. $k(x) = (x - 2)^3 + 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-15",
+      "number": "15",
+      "problem": "1. $f(x) = \\sqrt{x - 2}$\n\n2. $g(x) = \\sqrt{x + 5}$\n\n3. $h(x) = \\sqrt{x + 1} - 2$\n\n4. $k(x) = \\sqrt{4 - x}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-16",
+      "number": "16",
+      "problem": "1. $f(x) = \\sqrt[3]{x + 5}$\n\n2. $g(x) = \\sqrt[3]{x - 2}$\n\n3. $h(x) = \\sqrt[3]{2x - 1}$\n\n4. $k(x) = 2\\sqrt[3]{x} + 3$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-17",
+      "number": "17",
+      "problem": "1. $f(x) = x^5$\n\n2. $g(x) = \\sqrt[5]{x - 1}$\n\n3. $h(x) = (x + 3)^3 - 2$\n\n4. $k(x) = \\sqrt{x - 4}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-18",
+      "number": "18",
+      "problem": "1. $f(x) = \\dfrac{1}{x}$\n\n2. $g(x) = \\dfrac{1}{x - 1}$\n\n3. $h(x) = \\dfrac{2}{x + 3}$\n\n4. $k(x) = \\dfrac{1}{x - 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-19",
+      "number": "19",
+      "problem": "1. $f(x) = \\dfrac{x + 1}{x - 1}$\n\n2. $g(x) = \\dfrac{2x + 1}{x - 3}$\n\n3. $h(x) = \\dfrac{3x - 2}{x + 4}$\n\n4. $k(x) = \\dfrac{x}{2x + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-20",
+      "number": "20",
+      "problem": "1. $f(x) = \\dfrac{2x + 3}{x - 1}$\n\n2. $g(x) = \\dfrac{x + 5}{2x - 3}$\n\n3. $h(x) = \\dfrac{3x}{x + 2}$\n\n4. $k(x) = \\dfrac{x}{x - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-21",
+      "number": "21",
+      "problem": "1. $f(x) = \\dfrac{2x - 1}{x + 3}$\n\n2. $g(x) = \\dfrac{4x + 1}{2x - 5}$\n\n3. $h(x) = \\dfrac{1}{x + 2} - 1$\n\n4. $k(x) = \\dfrac{5 - 2x}{3x + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-22",
+      "number": "22",
+      "problem": "1. $f(x) = x^2$, $x \\geq 0$\n\n2. $g(x) = x^2 - 4$, $x \\geq 0$\n\n3. $h(x) = (x - 2)^2$, $x \\geq 2$\n\n4. $k(x) = x^2 + 2x$, $x \\geq -1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-23",
+      "number": "23",
+      "problem": "1. $f(x) = x^2 + 1$, $x \\leq 0$\n\n2. $g(x) = 4 - x^2$, $x \\geq 0$\n\n3. $h(x) = (x + 1)^2 - 3$, $x \\geq -1$\n\n4. $k(x) = (x - 3)^2 + 2$, $x \\leq 3$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-24",
+      "number": "24",
+      "problem": "1. $f(x) = x^2 + 3$, $x \\geq 0$\n\n2. $g(x) = (x + 2)^2$, $x \\leq -2$\n\n3. $h(x) = x^2 - 6x$, $x \\geq 3$\n\n4. $k(x) = |x - 1|$, $x \\geq 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-25",
+      "number": "25",
+      "problem": "For each function, (i) restrict the domain so that it is one-to-one, \nthen (ii) find the inverse on that domain.\n\n1. $f(x) = x^2 - 4$\n\n2. $g(x) = (x - 2)^2$\n\n3. $h(x) = |x - 1|$\n\n4. $k(x) = x^2 + 4x + 4$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-26",
+      "number": "26",
+      "problem": "1. $f(x) = 3x + 1$, $g(x) = \\dfrac{x - 1}{3}$\n\n2. $f(x) = 2x - 4$, $g(x) = \\dfrac{x + 4}{2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-27",
+      "number": "27",
+      "problem": "1. $f(x) = x^3 - 2$, $g(x) = \\sqrt[3]{x + 2}$\n\n2. $f(x) = x^3 - 8$, $g(x) = \\sqrt[3]{x + 8}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-28",
+      "number": "28",
+      "problem": "1. $f(x) = \\dfrac{1}{x + 1}$, $g(x) = \\dfrac{1 - x}{x}$\n\n2. $f(x) = \\dfrac{x + 2}{x - 3}$, $g(x) = \\dfrac{3x + 2}{x - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-29",
+      "number": "29",
+      "problem": "1. $f(x) = \\sqrt{x + 1}$, $g(x) = x^2 - 1$ for $x \\geq 0$\n\n2. $f(x) = \\dfrac{x + 1}{x - 1}$, $g(x) = \\dfrac{x + 1}{x - 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-30",
+      "number": "30",
+      "problem": "1. $f(x) = 2x + 6$\n\n2. $f(x) = \\sqrt{x - 3}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-31",
+      "number": "31",
+      "problem": "1. $f(x) = x^2 + 1$, $x \\geq 0$\n\n2. $f(x) = \\dfrac{1}{x - 2}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-32",
+      "number": "32",
+      "problem": "1. $f(x) = \\dfrac{3x}{x + 2}$\n\n2. $f(x) = \\sqrt{x + 4} - 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-33",
+      "number": "33",
+      "problem": "If $f$ has domain $[0, 4]$ and range $[2, 10]$, what are the domain \nand range of $f^{-1}$?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-34",
+      "number": "34",
+      "problem": "The graph of a one-to-one function $f$ passes through the points \n$(1, 5)$, $(3, 2)$, and $(4, -1)$. Find:\n\n1. $f^{-1}(5)$\n\n2. $f^{-1}(2)$\n\n3. $f^{-1}(-1)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-35",
+      "number": "35",
+      "problem": "Given that $f$ is one-to-one with $f(2) = 7$ and $f(5) = 3$:\n\n1. Find $f^{-1}(7)$\n\n2. Find $f^{-1}(3)$\n\n3. Find $(f^{-1} \\circ f)(2)$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-36",
+      "number": "36",
+      "problem": "1. If $f(3) = 7$, find $f^{-1}(7)$.\n\n2. If $f^{-1}(5) = 2$, find $f(2)$.\n\n3. If $f(x) = 2x + 3$ and $f^{-1}(a) = 4$, find $a$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-37",
+      "number": "37",
+      "problem": "If $f(2) = 5$ and $f(5) = 8$, find $f^{-1}(5)$ and $f^{-1}(8)$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-38",
+      "number": "38",
+      "problem": "The graph of $f$ passes through $(2, 5)$. What point is on the graph of $f^{-1}$?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-39",
+      "number": "39",
+      "problem": "Given the graph of $f$:\n\n1. If $(3, 5)$ is on the graph of $f$, what point is on the graph of $f^{-1}$?\n\n2. If $f(7) = 2$, find $f^{-1}(2)$.\n\n3. If $f^{-1}(4) = -1$, find $f(-1)$.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-40",
+      "number": "40",
+      "problem": "Given the table of values for $f$, create a table for $f^{-1}$.\n\n| $x$ | $-2$ | $0$ | $2$ | $4$ | $6$ |\n| $f(x)$ | $1$ | $3$ | $5$ | $7$ | $9$ |",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-41",
+      "number": "41",
+      "problem": "The formula $F(C) = \\dfrac{9}{5}C + 32$ converts Celsius to Fahrenheit.\n\n1. Find $F^{-1}$ and interpret what it computes.\n\n2. Use $F^{-1}$ to convert 98.6°F to Celsius.\n\n3. At what temperature are $F$ and $C$ equal?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Temperature Conversion"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-42",
+      "number": "42",
+      "problem": "A function converts U.S.\\ dollars to euros: $E(d) = 0.85d$.\n\n1. Find the inverse function.\n\n2. Use the inverse to convert 170 euros to dollars.\n\n3. Interpret the meaning of the inverse function.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Currency Exchange"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-43",
+      "number": "43",
+      "problem": "An employee's annual salary after $y$ years is $S(y) = 45000 + 2000y$.\n\n1. Find $S^{-1}$ and interpret what it computes.\n\n2. How many years until the salary reaches \\$65,000?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Salary"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-44",
+      "number": "44",
+      "problem": "A car's value after $t$ years is $V(t) = 25000(0.85)^t$.\n\n1. Find the inverse function.\n\n2. When will the car be worth \\$10,000?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Depreciation"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-45",
+      "number": "45",
+      "problem": "The distance $d$ (in feet) that a ball falls in $t$ seconds is $d(t) = 16t^2$ \nfor $t \\geq 0$.\n\n1. Find the inverse function $t(d)$.\n\n2. How long does it take a ball to fall 64 feet?\n\n3. How long to fall 100 feet?",
+      "variant": "regular",
+      "hint": null,
+      "answer": null,
+      "label": "Distance"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-46",
+      "number": "46",
+      "problem": "Use a graphing utility to graph $f$ and $f^{-1}$ in the same \nviewing window along with the line $y = x$. Verify that the graphs are \nreflections of each other across $y = x$.",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-47",
+      "number": "47",
+      "problem": "1. $f(x) = 3x - 2$\n\n2. $f(x) = \\dfrac{1}{2}x + 3$\n\n3. $f(x) = x^3 + 1$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-48",
+      "number": "48",
+      "problem": "1. $f(x) = \\sqrt{x + 2}$\n\n2. $f(x) = x^2 - 1$ for $x \\geq 0$\n\n3. $f(x) = \\dfrac{x}{x + 1}$",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-49",
+      "number": "49",
+      "problem": "Graph $f(x) = x^2$ and $g(x) = \\sqrt{x}$ together. Explain \nwhy $g$ is the inverse of $f$ only for $x \\geq 0$.\n\n%─────────────────────────────────────────────────────────\n% ERROR ANALYSIS\n%─────────────────────────────────────────────────────────\n\n**Error Analysis**",
+      "variant": "tech",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-50",
+      "number": "50",
+      "problem": "Describe and correct the error in each solution.",
+      "variant": "error",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-51",
+      "number": "51",
+      "problem": "Finding the inverse of $f(x) = 2x + 3$:\n\nquote\n\"$f^{-1}(x) = \\dfrac{1}{2x + 3}$\" red{55}\nquote",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-52",
+      "number": "52",
+      "problem": "Finding the inverse of $f(x) = x^2$ for all real numbers:\n\nquote\n\"$y = x^2$, so $x = \\sqrt{y}$, thus $f^{-1}(x) = \\sqrt{x}$\" \n red{55}\nquote",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-53",
+      "number": "53",
+      "problem": "Finding the inverse of $f(x) = \\dfrac{1}{x - 3}$:\n\nquote\n\"$y = \\dfrac{1}{x - 3}$, so $y(x - 3) = 1$, giving $x = \\dfrac{1}{y} + 3$. \nTherefore $f^{-1}(x) = \\dfrac{1}{x} + 3$ with domain all real numbers.\" \n red{55}\nquote",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-54",
+      "number": "54",
+      "problem": "Evaluating $f^{-1}(4)$ for $f(x) = x^2 + 1$:\n\nquote\n\"Since $f(x) = x^2 + 1$, we have $f^{-1}(x) = \\sqrt{x - 1}$. \nSo $f^{-1}(4) = \\sqrt{3}$.\" red{55}\nquote",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-55",
+      "number": "55",
+      "problem": "A function $f$ is called **self-inverse** (or **involutory**) \nif $f = f^{-1}$, meaning $f(f(x)) = x$.\n\n1. Show that $f(x) = \\dfrac{1}{x}$ is self-inverse.\n\n2. Show that $f(x) = \\dfrac{x + 1}{x - 1}$ is self-inverse.\n\n3. Verify that $f(x) = -x$ is self-inverse.",
+      "variant": "regular",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-56",
+      "number": "56",
+      "problem": "Find all linear functions $f(x) = mx + b$ that are self-inverse.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-57",
+      "number": "57",
+      "problem": "If $f(x) = \\dfrac{ax + b}{cx + d}$ is its own inverse, find \nthe relationship between $a$, $b$, $c$, and $d$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-58",
+      "number": "58",
+      "problem": "Prove that if $f$ is a strictly increasing function on its \ndomain, then $f$ is one-to-one.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-59",
+      "number": "59",
+      "problem": "Prove that if $f$ is one-to-one and increasing, then $f^{-1}$ \nis also increasing.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-60",
+      "number": "60",
+      "problem": "Prove that if $f$ is odd and has an inverse, then $f^{-1}$ \nis also odd.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-61",
+      "number": "61",
+      "problem": "Prove that if $f$ is one-to-one and has an inverse $f^{-1}$, \nthen $f^{-1}$ is also one-to-one and $(f^{-1})^{-1} = f$.",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
+    },
+    {
+      "type": "exercise",
+      "id": "ex-1.6-62",
+      "number": "62",
+      "problem": "Prove that a function can have at most one inverse.\n\n%─────────────────────────────────────────────────────────\n% SUMMARY BOX\n%─────────────────────────────────────────────────────────\n\natlassummary{Section 1.6 Summary: Inverse Functions}\n\n**Key Concepts:**\n\n- A function is **one-to-one** if $f(a) = f(b)$ implies $a = b$\n\n- Use the **horizontal line test**: $f$ is one-to-one iff every \n horizontal line intersects the graph at most once\n\n- The **inverse function** $f^{-1}$ satisfies: $f^{-1}(y) = x$ \n iff $f(x) = y$\n\n- **Verification**: $f(f^{-1}(x)) = x$ and $f^{-1}(f(x)) = x$\n\n**Finding $f^{-1}$:**\n\n1. Write $y = f(x)$\n\n2. Solve for $x$ in terms of $y$\n\n3. Switch variables: replace $y$ with $x$\n\n**Domain/Range:**\n\n- Domain of $f^{-1}$ = Range of $f$\n\n- Range of $f^{-1}$ = Domain of $f$\n\n**Graphical Property:**\nThe graph of $f^{-1}$ is the reflection of the graph of $f$ across $y = x$.\natlassummary",
+      "variant": "starred",
+      "hint": null,
+      "answer": null
     }
   ],
   "marginNotes": [

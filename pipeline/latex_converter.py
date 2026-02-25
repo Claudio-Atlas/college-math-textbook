@@ -88,7 +88,15 @@ ATLAS_ENVIRONMENTS = {
     "historicalnote": "historical",
     "proof": "proof",
     "myproof": "proof",
+    "atlastip": "tip",
+    "chapterintro": "chapterintro",
 }
+
+# Environments that indicate Christian edition content
+CHRISTIAN_ENVIRONMENTS = {"devotional", "atlasdevotional", "sectiondevotional"}
+
+# Environments to unwrap (parse inner content, discard wrapper)
+UNWRAP_ENVIRONMENTS = {"exerciseblock", "multicols"}
 
 # ═══════════════════════════════════════════════════════════════
 # DATA STRUCTURES
@@ -273,34 +281,74 @@ class LatexConverter:
         return None
     
     def _extract_devotional(self, content: str) -> Optional[Dict[str, str]]:
-        """Extract devotional environment."""
+        """Extract devotional environment (devotional, sectiondevotional, atlasdevotional)."""
+        env_names = r'(?:devotional|sectiondevotional|atlasdevotional)'
+        
+        # Try two-arg pattern first: {title}{scripture}
         match = re.search(
-            r'\\begin\{devotional\}\{([^}]*)\}\{([^}]*)\}(.*?)\\end\{devotional\}',
+            rf'\\begin\{{{env_names}\}}\{{([^}}]*)\}}\{{([^}}]*)\}}(.*?)\\end\{{{env_names}\}}',
             content, re.DOTALL
         )
         if match:
-            body = match.group(3)
-            
-            # Extract reflection if present
-            reflection_match = re.search(
-                r'\\devotionalreflection\{([^}]*)\}', body
+            title, scripture, body = match.group(1), match.group(2), match.group(3)
+        else:
+            # Try one-arg pattern: {title}
+            match = re.search(
+                rf'\\begin\{{{env_names}\}}\{{([^}}]*)\}}(.*?)\\end\{{{env_names}\}}',
+                content, re.DOTALL
             )
-            reflection = reflection_match.group(1) if reflection_match else None
-            
-            # Clean body
-            body = re.sub(r'\\devotionalreflection\{[^}]*\}', '', body)
-            body = self._clean_latex_text(body)
-            
-            result = {
-                "title": match.group(1),
-                "scripture": match.group(2),
-                "content": body.strip(),
-            }
-            if reflection:
-                result["reflection"] = self._clean_latex_text(reflection)
-            return result
-        return None
+            if match:
+                title, scripture, body = match.group(1), "", match.group(2)
+            else:
+                return None
+        
+        # Extract reflection if present
+        reflection_match = re.search(
+            r'\\devotionalreflection\{([^}]*)\}', body
+        )
+        reflection = reflection_match.group(1) if reflection_match else None
+        
+        # Clean body
+        body = re.sub(r'\\devotionalreflection\{[^}]*\}', '', body)
+        body = self._clean_latex_text(body)
+        
+        result = {
+            "title": title,
+            "scripture": scripture,
+            "content": body.strip(),
+            "edition": "christian",
+        }
+        if reflection:
+            result["reflection"] = self._clean_latex_text(reflection)
+        return result
     
+    def _extract_devotional_from_body(self, env_name: str, optional_arg: str, 
+                                       required_arg: str, body: str) -> Optional[Dict]:
+        """Extract devotional data from an already-parsed environment body."""
+        # For sectiondevotional/atlasdevotional: \begin{env}{title}{scripture}
+        # required_arg is the first {}, we need to also find the second {}
+        title = required_arg or optional_arg or ""
+        scripture = ""
+        
+        # Try to extract scripture from the start of body (second required arg)
+        sc_match = re.match(r'\{([^}]*)\}', body.strip())
+        if sc_match:
+            scripture = sc_match.group(1)
+            body = body[sc_match.end():]
+        
+        reflection_match = re.search(r'\\devotionalreflection\{([^}]*)\}', body)
+        reflection = reflection_match.group(1) if reflection_match else None
+        body = re.sub(r'\\devotionalreflection\{[^}]*\}', '', body)
+        
+        result = {
+            "title": title,
+            "scripture": scripture,
+            "content": self._clean_latex_text(body).strip(),
+        }
+        if reflection:
+            result["reflection"] = self._clean_latex_text(reflection)
+        return result
+
     def _extract_objectives(self, content: str) -> List[str]:
         """Extract learning objectives."""
         objectives = []
@@ -349,16 +397,23 @@ class LatexConverter:
         
         # Remove already-parsed elements
         content = re.sub(r'\\section\{[^}]+\}', '', content)
-        content = re.sub(r'\\label\{[^}]+\}', '', content)
+        # Note: don't strip \label globally — figures need them
         content = re.sub(r'\\scriptureepigraph\{[^}]*\}\{[^}]*\}(?:\{[^}]*\}\{[^}]*\})?', '', content)
-        content = re.sub(r'\\begin\{devotional\}.*?\\end\{devotional\}', '', content, flags=re.DOTALL)
+        content = re.sub(r'\\begin\{(?:devotional|sectiondevotional|atlasdevotional)\}.*?\\end\{(?:devotional|sectiondevotional|atlasdevotional)\}', '', content, flags=re.DOTALL)
         content = re.sub(r'\\begin\{(?:section|learning)objectives\}.*?\\end\{(?:section|learning)objectives\}', '', content, flags=re.DOTALL)
         content = re.sub(r'\\marginscripture\{[^}]*\}\{[^}]*\}', '', content)
         content = re.sub(r'\\marginquote\{[^}]*\}\{[^}]*\}', '', content)
         content = re.sub(r'\\marginnote\{[^}]*\}', '', content)
         
-        # Remove exercises section for now (handle separately if needed)
-        content = re.sub(r'\\exercises.*', '', content, flags=re.DOTALL)
+        # Remove standalone exercise commands from the "already-parsed" cleanup
+        # (they'll be parsed in the exercises section below)
+        
+        # Split exercises section from main content
+        exercise_content = ""
+        exercises_split = re.split(r'\\subsection\*\{(?:Review )?Exercises\}', content, maxsplit=1)
+        if len(exercises_split) == 2:
+            content = exercises_split[0]
+            exercise_content = exercises_split[1]
         
         # Split into chunks (environments and text between them)
         chunks = self._split_into_chunks(content)
@@ -371,6 +426,11 @@ class LatexConverter:
             elif chunk_type == 'text':
                 text_blocks = self._parse_text_chunk(chunk_content)
                 blocks.extend(text_blocks)
+        
+        # Parse exercises
+        if exercise_content:
+            exercise_blocks = self._parse_exercises(exercise_content, chapter_num, section_num)
+            blocks.extend(exercise_blocks)
         
         return blocks
     
@@ -459,6 +519,31 @@ class LatexConverter:
         else:
             body = env_content[body_start:body_end]
         
+        # Handle unwrap environments (exerciseblock, multicols) — parse inner content
+        if env_name in UNWRAP_ENVIRONMENTS:
+            inner_blocks = self._parse_text_chunk(body)
+            # Return first block or None; caller should handle multiple
+            # Actually, we need to return a single block, so wrap as a group
+            if inner_blocks:
+                return inner_blocks[0] if len(inner_blocks) == 1 else ContentBlock('group', {'blocks': [b.to_dict() for b in inner_blocks]})
+            return None
+        
+        # Handle Christian edition environments
+        if env_name in CHRISTIAN_ENVIRONMENTS:
+            # Parse like devotional but tag with edition
+            dev = self._extract_devotional_from_body(env_name, optional_arg, required_arg, body)
+            if dev:
+                dev['edition'] = 'christian'
+                return ContentBlock('devotional', dev)
+            return None
+        
+        # Handle secularintro — pass through as paragraphs
+        if env_name == 'secularintro':
+            text_blocks = self._parse_text_chunk(body)
+            if text_blocks:
+                return text_blocks[0] if len(text_blocks) == 1 else ContentBlock('group', {'blocks': [b.to_dict() for b in text_blocks]})
+            return None
+        
         # Handle different environment types
         if env_name in ATLAS_ENVIRONMENTS:
             return self._parse_atlas_environment(
@@ -514,13 +599,19 @@ class LatexConverter:
         # Handle examples with solutions
         if content_type == 'example':
             problem, solution = self._extract_solution(body)
-            return ContentBlock('example', {
+            # Extract any figures from within the example
+            figures = self._extract_inline_figures(problem + "\n" + solution)
+            
+            data = {
                 'id': block_id,
                 'number': number,
                 'title': title if title else None,
                 'problem': self._convert_latex_to_text(problem),
                 'solution': self._convert_latex_to_text(solution),
-            })
+            }
+            if figures:
+                data['figures'] = [f.to_dict() for f in figures]
+            return ContentBlock('example', data)
         
         # Handle proofs
         elif content_type == 'proof':
@@ -565,28 +656,76 @@ class LatexConverter:
         return (body.strip(), "")
     
     def _parse_figure(self, body: str) -> Optional[ContentBlock]:
-        """Parse a figure environment."""
-        # Extract image path
-        img_match = re.search(r'\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}', body)
-        if not img_match:
-            return None
+        """Parse a figure environment (supports includegraphics and TikZ)."""
+        # Extract caption (handle nested braces)
+        caption = ""
+        caption_match = re.search(r'\\caption\{', body)
+        if caption_match:
+            cap_content, _ = self._extract_braced_content(body, caption_match.end() - 1)
+            if cap_content:
+                caption = self._clean_latex_text(cap_content)
         
-        src = img_match.group(1)
-        
-        # Extract caption
-        caption_match = re.search(r'\\caption\{([^}]+)\}', body)
-        caption = self._clean_latex_text(caption_match.group(1)) if caption_match else ""
+        # Extract Description (alt text)
+        alt_text = caption  # default to caption
+        desc_match = re.search(r'\\Description\{', body)
+        if desc_match:
+            desc_content, _ = self._extract_braced_content(body, desc_match.end() - 1)
+            if desc_content:
+                alt_text = self._clean_latex_text(desc_content)
         
         # Extract label for ID
         label_match = re.search(r'\\label\{([^}]+)\}', body)
-        fig_id = label_match.group(1) if label_match else f"fig-{hash(src) % 10000}"
+        fig_id = label_match.group(1) if label_match else ""
         
-        return ContentBlock('figure', {
-            'id': fig_id,
-            'src': src,
-            'caption': caption,
-            'alt': caption,  # Use caption as alt text
-        })
+        # Check for includegraphics
+        img_match = re.search(r'\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}', body)
+        if img_match:
+            src = img_match.group(1)
+            if not fig_id:
+                fig_id = f"fig-{hash(src) % 10000}"
+            return ContentBlock('figure', {
+                'id': fig_id,
+                'src': src,
+                'caption': caption,
+                'alt': alt_text,
+            })
+        
+        # Check for TikZ or figure commands (\figXxx)
+        has_tikz = '\\begin{tikzpicture}' in body
+        fig_cmd_match = re.search(r'\\(fig[A-Z][a-zA-Z]*)', body)
+        
+        if has_tikz or fig_cmd_match:
+            # Generate placeholder SVG path from label
+            if fig_id:
+                # e.g. fig:function-machine -> fig-function-machine.svg
+                safe_name = fig_id.replace(':', '-').replace('fig-', 'fig-')
+                src = f"/figures/precalculus/{safe_name}.svg"
+            else:
+                src = f"/figures/precalculus/fig-{hash(body) % 100000}.svg"
+                fig_id = f"fig-{hash(body) % 100000}"
+            
+            data = {
+                'id': fig_id,
+                'src': src,
+                'caption': caption,
+                'alt': alt_text,
+                'tikz': True,
+            }
+            if fig_cmd_match:
+                data['figCommand'] = fig_cmd_match.group(1)
+            
+            return ContentBlock('figure', data)
+        
+        # No recognizable figure content
+        if caption:
+            return ContentBlock('figure', {
+                'id': fig_id or f"fig-{hash(body) % 10000}",
+                'src': '',
+                'caption': caption,
+                'alt': alt_text,
+            })
+        
+        return None
     
     def _parse_list(self, env_name: str, body: str) -> ContentBlock:
         """Parse enumerate/itemize environment."""
@@ -957,6 +1096,91 @@ class LatexConverter:
         
         return text
     
+    def _extract_inline_figures(self, content: str) -> List[ContentBlock]:
+        """Extract figure environments embedded within other content."""
+        figures = []
+        for m in re.finditer(r'\\begin\{figure\}(?:\[[^\]]*\])?(.*?)\\end\{figure\}', content, re.DOTALL):
+            fig = self._parse_figure(m.group(1))
+            if fig:
+                figures.append(fig)
+        return figures
+
+    def _parse_exercises(self, content: str, chapter_num: int, section_num: int) -> List[ContentBlock]:
+        """Parse exercises section into exercise content blocks."""
+        exercises = []
+        exercise_num = 0
+        
+        # Strategy: find all exercise boundaries, then extract each one
+        # Patterns:
+        # 1. \begin{exercise}[optional]...\end{exercise}
+        # 2. \exercisestar ... (standalone command, runs to next exercise/env/double-newline)
+        # 3. \exerciseconceptual ...
+        # 4. \exerciseerror ...
+        # 5. \exercisetech ...
+        
+        # First, unwrap exerciseblock and multicols environments
+        content = re.sub(r'\\begin\{exerciseblock\}(?:\{[^}]*\})?', '', content)
+        content = re.sub(r'\\end\{exerciseblock\}', '', content)
+        content = re.sub(r'\\begin\{multicols\}\{\d+\}', '', content)
+        content = re.sub(r'\\end\{multicols\}', '', content)
+        
+        # Find all exercise starts
+        # Pattern for \begin{exercise} environments
+        env_pattern = r'\\begin\{exercise\}(?:\[([^\]]*)\])?(.*?)\\end\{exercise\}'
+        # Pattern for standalone exercise commands
+        cmd_pattern = r'\\(exercisestar|exerciseconceptual|exerciseerror|exercisetech)\s+(.*?)(?=\\begin\{exercise\}|\\exercise(?:star|conceptual|error|tech)\b|\\subsection|\\section|\Z)'
+        
+        # Combine: find all exercises in order by position
+        all_exercises = []
+        
+        for m in re.finditer(env_pattern, content, re.DOTALL):
+            optional = m.group(1) or ""
+            body = m.group(2).strip()
+            variant = "regular"
+            if '$\\star$' in optional or r'\star' in optional:
+                variant = "starred"
+            elif optional.lower() in ('proof', 'show that'):
+                variant = "proof"
+            all_exercises.append((m.start(), variant, body, optional))
+        
+        for m in re.finditer(cmd_pattern, content, re.DOTALL):
+            cmd = m.group(1)
+            body = m.group(2).strip()
+            variant_map = {
+                "exercisestar": "starred",
+                "exerciseconceptual": "conceptual",
+                "exerciseerror": "error",
+                "exercisetech": "tech",
+            }
+            variant = variant_map.get(cmd, "regular")
+            all_exercises.append((m.start(), variant, body, ""))
+        
+        # Sort by position in source
+        all_exercises.sort(key=lambda x: x[0])
+        
+        for _, variant, body, label in all_exercises:
+            exercise_num += 1
+            ex_id = f"ex-{chapter_num}.{section_num}-{exercise_num}"
+            
+            problem_text = self._convert_latex_to_text(body)
+            if not problem_text.strip():
+                continue
+            
+            data = {
+                "id": ex_id,
+                "number": str(exercise_num),
+                "problem": problem_text,
+                "variant": variant,
+                "hint": None,
+                "answer": None,
+            }
+            if label and label not in ('$\\star$', r'\star', 'Proof', 'Show That'):
+                data["label"] = self._clean_latex_text(label)
+            
+            exercises.append(ContentBlock("exercise", data))
+        
+        return exercises
+
     def _clean_latex_text(self, text: str) -> str:
         """Clean LaTeX text for plain text output."""
         # Handle LaTeX accents first
@@ -1195,9 +1419,12 @@ class BookConverter:
                     if not sec_file.exists():
                         sec_file = chapter_dir.parent / input_path
                     if sec_file.exists():
-                        # Skip devotional-only files (they don't have \section)
                         file_name = sec_file.name.lower()
-                        if 'devotional' in file_name or 'frontmatter' in file_name:
+                        # Skip frontmatter and chapter.tex itself
+                        if 'frontmatter' in file_name or file_name == 'chapter.tex':
+                            continue
+                        # Skip standalone devotional files (they're parsed via the section they belong to)
+                        if file_name.startswith('devotional') and 'sec' not in file_name:
                             continue
                         files.append(sec_file)
             except Exception:
@@ -1207,10 +1434,10 @@ class BookConverter:
         if not files:
             for f in sorted(chapter_dir.iterdir()):
                 if f.is_file() and f.suffix == '.tex':
-                    if f.name != 'chapter.tex' and 'sec' in f.name.lower():
-                        # Skip devotional-only files
-                        if 'devotional' in f.name.lower():
-                            continue
+                    name = f.name.lower()
+                    if name == 'chapter.tex' or 'frontmatter' in name:
+                        continue
+                    if 'sec' in name or 'exercises-additional' in name:
                         files.append(f)
         
         return files
