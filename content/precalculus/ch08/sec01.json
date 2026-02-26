@@ -14,7 +14,7 @@
   "devotional": {
     "title": "Unity in Diversity",
     "scripture": "Romans 12:4--5",
-    "content": "\\lettrine[lines=2, loversize=0.1, nindent=0.5em]{T}{he}\nLaw of Sines reveals something profound: despite the infinite variety of \ntriangles—tall ones, squat ones, acute and obtuse—they all share a \ncommon proportional relationship. Three different ratios, yet all equal.\n\nThe Apostle Paul wrote, \"For just as each of us has one body with many \nmembers, and these members do not all have the same function, so in Christ \nwe, though many, form one body, and each member belongs to all the others.\"\n\nIn a triangle, each side is different—different length, different \nposition—yet they're bound together by a common relationship. In the \nBody of Christ, each person is different—different gifts, different \ncallings—yet we're bound together by a common Savior. Mathematics \nmirrors spiritual truth: unity doesn't require uniformity. The diversity \nof the parts serves the harmony of the whole.",
+    "content": "\\lettrine[lines=2, loversize=0.1, nindent=0.5em]{T}{he\nLaw of Sines reveals something profound: despite the infinite variety of \ntriangles—tall ones, squat ones, acute and obtuse—they all share a \ncommon proportional relationship. Three different ratios, yet all equal.\n\nThe Apostle Paul wrote, \"For just as each of us has one body with many \nmembers, and these members do not all have the same function, so in Christ \nwe, though many, form one body, and each member belongs to all the others.\"\n\nIn a triangle, each side is different—different length, different \nposition—yet they're bound together by a common relationship. In the \nBody of Christ, each person is different—different gifts, different \ncallings—yet we're bound together by a common Savior. Mathematics \nmirrors spiritual truth: unity doesn't require uniformity. The diversity \nof the parts serves the harmony of the whole.",
     "edition": "christian",
     "reflection": "Consider how different members of your community \ncontribute differently yet are bound by shared purpose. How does this \nmathematical picture of \"different yet proportionally related\" illuminate \nyour understanding of Christian community?"
   },
@@ -114,13 +114,13 @@
     },
     {
       "type": "remark",
-      "id": "remark-8.1",
+      "id": "ch08-sec01-remark",
       "title": "What About Obtuse Triangles?",
       "content": "The derivation above assumes the altitude falls *inside* the triangle \n(which happens when both base angles are acute). What if angle $A$ or $B$ \nis obtuse?\n\nWhen angle $B$ is obtuse, the altitude from $C$ still lands on line $AB$, \nand the same algebra works. For the obtuse angle, we use the identity \n$\\sin(180° - B) = \\sin B$, which holds for all angles. The Law of Sines \nis valid for *all* triangles—acute, right, or obtuse."
     },
     {
       "type": "theorem",
-      "id": "theorem-8.1",
+      "id": "ch08-sec01-theorem-8.1",
       "title": "Law of Sines",
       "content": "In any triangle with sides $a$, $b$, $c$ opposite angles $A$, $B$, $C$:\n$$\n \\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C}\n$$\nEquivalently:\n$$\n \\frac{\\sin A}{a} = \\frac{\\sin B}{b} = \\frac{\\sin C}{c}\n$$",
       "number": "8.1"
@@ -131,13 +131,13 @@
     },
     {
       "type": "warning",
-      "id": "warning-8.1",
+      "id": "ch08-sec01-warning",
       "title": "Angles Must Be in Correct Units",
       "content": "When using the Law of Sines, ensure your calculator is in the correct \nmode (degrees or radians) for your problem. Most applied problems use \ndegrees, but theoretical work often uses radians. A mismatch will give \nwildly incorrect answers."
     },
     {
       "type": "summary",
-      "id": "summary-8.1",
+      "id": "ch08-sec01-summary",
       "title": "When to Use the Law of Sines",
       "content": "Use the Law of Sines when you know:\n\n- **AAS** (Angle-Angle-Side): Two angles and a side not between them\n\n- **ASA** (Angle-Side-Angle): Two angles and the side between them\n\n- **SSA** (Side-Side-Angle): Two sides and an angle opposite one of them \n *(ambiguous case—may yield 0, 1, or 2 solutions)*\nFor **SAS** (two sides and the included angle) or **SSS** (all three sides), \nuse the Law of Cosines instead (Section 8.2)."
     },
@@ -164,7 +164,7 @@
     },
     {
       "type": "example",
-      "id": "example-8.1",
+      "id": "ch08-sec01-example-8.1",
       "number": "8.1",
       "title": "Solving an AAS triangle",
       "problem": "In triangle $ABC$, $A = 42°$, $B = 75°$, and $a = 12$. Find all remaining \nparts of the triangle.",
@@ -172,7 +172,7 @@
     },
     {
       "type": "example",
-      "id": "example-8.2",
+      "id": "ch08-sec01-example-8.2",
       "number": "8.2",
       "title": "Solving an ASA triangle",
       "problem": "Solve triangle $ABC$ if $A = 35°$, $C = 62°$, and $b = 8$.",
@@ -225,13 +225,13 @@
     },
     {
       "type": "summary",
-      "id": "summary-8.1",
+      "id": "ch08-sec01-summary",
       "title": "Analyzing the Ambiguous Case (SSA)",
       "content": "Let $h = b \\sin A$ (the altitude from $C$ if a triangle exists).\n\n**If $A$ is acute:**\n\n- $a < h$: No solution\n\n- $a = h$: One solution (right triangle at $B$)\n\n- $h < a < b$: Two solutions\n\n- $a \\geq b$: One solution\n\n**If $A$ is obtuse:**\n\n- $a \\leq b$: No solution\n\n- $a > b$: One solution"
     },
     {
       "type": "algorithm",
-      "id": "algorithm-8.1",
+      "id": "ch08-sec01-algorithm-8.1",
       "title": "The SSA Ambiguous Case Decision Flowchart",
       "content": "Given: angle $A$, side $a$ (opposite $A$), and side $b$ (adjacent to $A$).\n\n**Step 1: Compute the critical height** $h = b\\sin A$.\n\n**Step 2: Follow this decision tree:**\n\n**Quick Summary:**\n\n- **No triangle:** Side $a$ is too short to reach the opposite side\n\n- **One triangle:** Either $a$ creates a right angle, or $a \\geq b$ (acute $A$), or $a > b$ (obtuse $A$)\n\n- **Two triangles:** Only when $A$ is acute and $h < a < b$",
       "number": "8.1"
@@ -242,13 +242,13 @@
     },
     {
       "type": "summary",
-      "id": "summary-8.1",
+      "id": "ch08-sec01-summary",
       "title": "Practical Approach to SSA",
       "content": "1. Use the Law of Sines to compute $\\sin B = \\frac{b \\sin A}{a}$.\n\n2. **If $\\sin B > 1$:** No solution exists.\n\n3. **If $\\sin B = 1$:** One solution ($B = 90°$).\n\n4. **If $\\sin B < 1$:** Two potential values for $B$:\n \n- 5. $B_1 = \\arcsin(\\sin B)$ (acute angle)\n\n6. $B_2 = 180° - B_1$ (obtuse supplement)\n Check whether each value of $B$ yields a valid triangle (i.e., $A + B < 180°$)."
     },
     {
       "type": "example",
-      "id": "example-8.3",
+      "id": "ch08-sec01-example-8.3",
       "number": "8.3",
       "title": "Ambiguous case: two solutions",
       "problem": "Solve the triangle with $A = 40°$, $a = 10$, $b = 14$.",
@@ -256,7 +256,7 @@
     },
     {
       "type": "example",
-      "id": "example-8.4",
+      "id": "ch08-sec01-example-8.4",
       "number": "8.4",
       "title": "Ambiguous case: one solution",
       "problem": "Solve the triangle with $A = 60°$, $a = 10$, $b = 8$.",
@@ -264,7 +264,7 @@
     },
     {
       "type": "example",
-      "id": "example-8.5",
+      "id": "ch08-sec01-example-8.5",
       "number": "8.5",
       "title": "Ambiguous case: no solution",
       "problem": "Solve the triangle with $A = 50°$, $a = 6$, $b = 10$.",
@@ -272,7 +272,7 @@
     },
     {
       "type": "warning",
-      "id": "warning-8.1",
+      "id": "ch08-sec01-warning",
       "title": "Don't Forget the Supplement!",
       "content": "When solving SSA problems, always check the supplementary angle \n$180° - B$. Students often find one solution and stop, missing the \nsecond triangle when two solutions exist."
     },
@@ -287,7 +287,7 @@
     },
     {
       "type": "example",
-      "id": "example-8.6",
+      "id": "ch08-sec01-example-8.6",
       "number": "8.6",
       "title": "Fire tower triangulation",
       "problem": "Two fire lookout towers are positioned 30 miles apart along a straight \nroad that runs east–west. A ranger in the western tower spots smoke at \nan angle of $65°$ east of north. A ranger in the eastern tower spots the \nsame smoke at an angle of $70°$ west of north. How far is the fire from \neach tower?",
@@ -295,7 +295,7 @@
     },
     {
       "type": "example",
-      "id": "example-8.7",
+      "id": "ch08-sec01-example-8.7",
       "number": "8.7",
       "title": "Height of a mountain",
       "problem": "A surveyor wants to measure the height of a mountain peak. From point $A$ \non level ground, she measures the angle of elevation to the peak as $22°$. \nShe then walks 1000 meters directly toward the mountain to point $B$, where \nthe angle of elevation is $34°$. How high is the peak?",
@@ -303,7 +303,7 @@
     },
     {
       "type": "example",
-      "id": "example-8.8",
+      "id": "ch08-sec01-example-8.8",
       "number": "8.8",
       "title": "Sailing bearing problem",
       "problem": "A ship leaves port and sails 80 nautical miles on a bearing of N$40°$W. \nIt then changes course and sails 60 nautical miles on a bearing of S$30°$W. \nHow far is the ship from port, and what bearing would take it directly \nback to port?",
@@ -332,14 +332,14 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-8.2",
+      "id": "ch08-sec01-theorem-8.2",
       "title": "Area of a Triangle (SAS Formula)",
       "content": "The area $K$ of a triangle with sides $a$, $b$, $c$ and opposite angles $A$, $B$, $C$ is:\n$$\n K = \\frac{1}{2}bc \\sin A = \\frac{1}{2}ac \\sin B = \\frac{1}{2}ab \\sin C\n$$\nIn words: *Area equals one-half the product of two sides times the sine \nof their included angle.*",
       "number": "8.2"
     },
     {
       "type": "example",
-      "id": "example-8.9",
+      "id": "ch08-sec01-example-8.9",
       "number": "8.9",
       "title": "Finding area given SAS",
       "problem": "Find the area of a triangle with $b = 8$, $c = 12$, and $A = 62°$.",
@@ -347,7 +347,7 @@
     },
     {
       "type": "example",
-      "id": "example-8.10",
+      "id": "ch08-sec01-example-8.10",
       "number": "8.10",
       "title": "Finding area given AAS",
       "problem": "Find the area of triangle $ABC$ with $A = 35°$, $B = 68°$, and $a = 7$.",
@@ -355,7 +355,7 @@
     },
     {
       "type": "example",
-      "id": "example-8.11",
+      "id": "ch08-sec01-example-8.11",
       "number": "8.11",
       "title": "Finding a side given area",
       "problem": "A triangular plot of land has an area of 500 square meters. Two sides \nmeasure 40 m and 35 m. Find the possible measures of the included angle.",
@@ -363,7 +363,7 @@
     },
     {
       "type": "remark",
-      "id": "remark-8.1",
+      "id": "ch08-sec01-remark",
       "title": "Why the Sine Formula Works",
       "content": "The formula $K = \\frac{1}{2}ab\\sin C$ reveals something elegant: the area \ndepends not just on side lengths, but on how \"spread out\" the triangle is. \nWhen $C = 90°$, $\\sin C = 1$ and we get maximum area for those side lengths. \nAs $C$ approaches $0°$ or $180°$, the triangle \"collapses\" and the area \napproaches zero. The sine function captures this geometric reality perfectly."
     },
@@ -378,7 +378,7 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-8.3",
+      "id": "ch08-sec01-theorem-8.3",
       "title": "Law of Sines and the Circumradius",
       "content": "In any triangle $ABC$ with circumradius $R$ (the radius of the \ncircumscribed circle):\n$$\n \\frac{a}{\\sin A} = \\frac{b}{\\sin B} = \\frac{c}{\\sin C} = 2R\n$$",
       "number": "8.3"
@@ -389,321 +389,333 @@
     },
     {
       "type": "example",
-      "id": "example-8.12",
+      "id": "ch08-sec01-example-8.12",
       "number": "8.12",
       "title": "Finding the circumradius",
       "problem": "Find the radius of the circle circumscribed about a triangle with \n$A = 45°$, $B = 60°$, and $a = 10$.",
       "solution": "Using the extended Law of Sines:\n$$\n 2R = \\frac{a}{\\sin A} = \\frac{10}{\\sin 45°} = \\frac{10}{0.7071} \\approx 14.14\n$$\n$$\n R \\approx 7.07\n$$\n\nThe circumscribed circle has radius approximately $7.07$ units."
     },
     {
-      "type": "paragraph",
-      "text": "Fill in each blank.\n\n1. The Law of Sines states: $\\dfrac{a}{\\sin A} = $ $= $ .\n\n2. In a triangle, the side opposite angle $A$ is denoted .\n\n3. The case (SSA) may produce 0, 1, or 2 triangles.\n\n4. When $\\sin B > 1$ in the Law of Sines, the triangle .\n\n5. When given two angles and a side (AAS or ASA), there is always triangle(s).\n\n6. The area of a triangle with sides $a$ and $b$ and included angle $C$ is ."
+      "type": "exercise",
+      "id": "ch08-sec01-ex-1",
+      "number": "1",
+      "problem": "Fill in each blank.\n\n1. The Law of Sines states: $\\dfrac{a}{\\sin A} = $ $= $ .\n\n2. In a triangle, the side opposite angle $A$ is denoted .\n\n3. The case (SSA) may produce 0, 1, or 2 triangles.\n\n4. When $\\sin B > 1$ in the Law of Sines, the triangle .\n\n5. When given two angles and a side (AAS or ASA), there is always triangle(s).\n\n6. The area of a triangle with sides $a$ and $b$ and included angle $C$ is .",
+      "variant": "vocabulary"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-1",
-      "number": "1",
+      "id": "ch08-sec01-ex-2",
+      "number": "2",
       "problem": "Solve each triangle. Two angles and a non-included side are given.\n\n1. $A = 50°$, $B = 70°$, $a = 15$\n\n2. $B = 35°$, $C = 80°$, $c = 20$\n\n3. $A = 105°$, $C = 42°$, $c = 8$\n\n4. $A = 40°$, $B = 60°$, $a = 10$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-2",
-      "number": "2",
+      "id": "ch08-sec01-ex-3",
+      "number": "3",
       "problem": "Solve each triangle.\n\n1. $A = 65°$, $B = 55°$, $a = 25$\n\n2. $B = 72°$, $C = 48°$, $c = 8$\n\n3. $A = 25°$, $C = 115°$, $a = 5$\n\n4. $A = 42°$, $B = 73°$, $a = 18$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-3",
-      "number": "3",
+      "id": "ch08-sec01-ex-4",
+      "number": "4",
       "problem": "Solve each triangle. Two angles and the included side are given.\n\n1. $A = 48°$, $C = 63°$, $b = 18$\n\n2. $B = 55°$, $C = 75°$, $a = 24$\n\n3. $A = 110°$, $B = 32°$, $c = 15$\n\n4. $A = 50°$, $B = 70°$, $c = 20$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-4",
-      "number": "4",
+      "id": "ch08-sec01-ex-5",
+      "number": "5",
       "problem": "Solve each triangle.\n\n1. $B = 45°$, $C = 75°$, $a = 12$\n\n2. $A = 42°$, $C = 73°$, $b = 18$\n\n3. $B = 38°$, $C = 92°$, $a = 30$\n\n4. $A = 80°$, $B = 40°$, $c = 15$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-5",
-      "number": "5",
+      "id": "ch08-sec01-ex-6",
+      "number": "6",
       "problem": "Solve each triangle. Note that one angle is obtuse.\n\n1. $A = 115°$, $B = 30°$, $a = 20$\n\n2. $B = 95°$, $C = 40°$, $b = 18$\n\n3. $A = 25°$, $C = 135°$, $c = 25$\n\n4. $A = 108°$, $B = 37°$, $c = 14$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-6",
-      "number": "6",
+      "id": "ch08-sec01-ex-7",
+      "number": "7",
       "problem": "Solve each triangle. Round sides to two decimal places and angles to the nearest tenth of a degree.\n\n1. $A = 28.5°$, $B = 61.2°$, $a = 12.4$\n\n2. $A = 43.8°$, $C = 72.6°$, $c = 28.5$\n\n3. $B = 55.3°$, $C = 47.9°$, $b = 19.7$\n\n4. $A = 67.3°$, $C = 51.8°$, $a = 35.2$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-7",
-      "number": "7",
+      "id": "ch08-sec01-ex-8",
+      "number": "8",
       "problem": "Find all unknown sides and angles for each triangle shown.\n\n1. \n2. \n3.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-8",
-      "number": "8",
+      "id": "ch08-sec01-ex-9",
+      "number": "9",
       "problem": "Use the Law of Sines to find only the requested value. Do not solve the entire triangle.\n\n1. Find side $b$: $A = 42°$, $B = 68°$, $a = 15$\n\n2. Find angle $B$: $A = 35°$, $a = 11$, $b = 16$ (acute $B$)\n\n3. Find side $a$: $A = 73°$, $C = 54°$, $c = 21$\n\n4. Find angle $C$: $B = 58°$, $b = 24$, $c = 20$\n\n5. Find side $c$: $A = 48°$, $B = 67°$, $a = 30$\n\n6. Find angle $A$: $B = 82°$, $a = 19$, $b = 35$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-9",
-      "number": "9",
+      "id": "ch08-sec01-ex-10",
+      "number": "10",
       "problem": "Find only the indicated value for each triangle.\n\n1. Find $x$:\n\n2. Find $\\theta$:",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-10",
-      "number": "10",
+      "id": "ch08-sec01-ex-11",
+      "number": "11",
       "problem": "For each SSA case, determine whether there are 0, 1, or 2 possible triangles. Do not solve.\n\n1. $A = 30°$, $a = 5$, $b = 10$\n\n2. $A = 45°$, $a = 10$, $b = 10$\n\n3. $A = 60°$, $a = 20$, $b = 15$\n\n4. $A = 30°$, $a = 4$, $b = 10$\n\n5. $A = 150°$, $a = 12$, $b = 8$\n\n6. $A = 120°$, $a = 15$, $b = 10$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-11",
-      "number": "11",
+      "id": "ch08-sec01-ex-12",
+      "number": "12",
       "problem": "Determine how many triangles exist and solve each completely.\n\n1. $A = 30°$, $a = 8$, $b = 12$\n\n2. $A = 60°$, $a = 10$, $b = 8$\n\n3. $A = 45°$, $a = 5$, $b = 10$\n\n4. $A = 75°$, $a = 15$, $b = 18$\n\n5. $A = 40°$, $a = 16$, $b = 13$\n\n6. $B = 52°$, $b = 20$, $c = 25$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-12",
-      "number": "12",
+      "id": "ch08-sec01-ex-13",
+      "number": "13",
       "problem": "Solve the triangle(s) if they exist.\n\n1. $A = 35°$, $a = 10$, $b = 14$\n\n2. $B = 40°$, $b = 8$, $c = 12$\n\n3. $C = 25°$, $c = 5$, $a = 10$\n\n4. $A = 50°$, $a = 20$, $b = 18$\n\n5. $B = 35°$, $b = 6$, $c = 8$\n\n6. $B = 70°$, $b = 20$, $a = 18$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-13",
-      "number": "13",
+      "id": "ch08-sec01-ex-14",
+      "number": "14",
       "problem": "For SSA with an obtuse given angle, determine solutions and solve if they exist.\n\n1. $A = 110°$, $a = 25$, $b = 20$\n\n2. $A = 135°$, $a = 18$, $b = 15$\n\n3. $B = 100°$, $b = 30$, $c = 35$\n\n4. $A = 95°$, $a = 12$, $b = 14$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-14",
-      "number": "14",
+      "id": "ch08-sec01-ex-15",
+      "number": "15",
       "problem": "Solve each triangle. These use special angles with exact trigonometric values.\n\n1. $A = 30°$, $a = 6$, $b = 6\\sqrt{3}$\n\n2. $A = 45°$, $a = 5\\sqrt{2}$, $b = 10$\n\n3. $B = 60°$, $b = 9$, $c = 6\\sqrt{3}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-15",
-      "number": "15",
+      "id": "ch08-sec01-ex-16",
+      "number": "16",
       "problem": "Let $h = b \\sin A$ be the \"critical height.\" For the case where angle $A$ is acute:\n\n1. If $a < h$, show algebraically that $\\sin B > 1$, confirming no solution exists.\n\n2. If $a = h$, show that $\\sin B = 1$, confirming a right triangle at $B$.\n\n3. If $h < a < b$, explain geometrically why two triangles exist.\n\n4. If $a \\geq b$, explain why there is exactly one triangle.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-16",
-      "number": "16",
+      "id": "ch08-sec01-ex-17",
+      "number": "17",
       "problem": "Find the area of each triangle using $K = \\frac{1}{2}ab\\sin C$.\n\n1. $a = 10$, $b = 12$, $C = 45°$\n\n2. $a = 8$, $c = 15$, $B = 60°$\n\n3. $b = 7$, $c = 9$, $A = 30°$\n\n4. $a = 20$, $b = 25$, $C = 72°$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-17",
-      "number": "17",
+      "id": "ch08-sec01-ex-18",
+      "number": "18",
       "problem": "Find the area of each triangle. (You will need to find missing sides first.)\n\n1. $A = 40°$, $B = 60°$, $c = 15$\n\n2. $B = 55°$, $C = 45°$, $a = 20$\n\n3. $A = 35°$, $C = 75°$, $b = 18$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-18",
-      "number": "18",
+      "id": "ch08-sec01-ex-19",
+      "number": "19",
       "problem": "A triangular plot of land has sides of 50 m and 70 m with an area of 1200 m². Find the two possible measures of the included angle.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-19",
-      "number": "19",
+      "id": "ch08-sec01-ex-20",
+      "number": "20",
       "problem": "1. A triangular garden has sides of 15 ft and 20 ft meeting at an angle of $52°$. How many square feet of mulch are needed to cover it?\n\n2. A surveyor measures two sides of a triangular lot as 85 m and 110 m, with an included angle of $73°$. Find the area in square meters.\n\n3. The area of a triangle is 84 cm². Two sides are 14 cm and 15 cm. Find the possible measures of the included angle.\n\n4. A sail on a boat is triangular with sides of 12 ft and 18 ft meeting at a $65°$ angle. Find the area of fabric needed.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-20",
-      "number": "20",
+      "id": "ch08-sec01-ex-21",
+      "number": "21",
       "problem": "Find the area of each triangle.\n\n1. $A = 50°$, $B = 65°$, $a = 12$\n\n2. $B = 40°$, $C = 70°$, $c = 16$\n\n3. $A = 32°$, $C = 108°$, $b = 20$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-21",
-      "number": "21",
+      "id": "ch08-sec01-ex-22",
+      "number": "22",
       "problem": "Two fire towers are 30 miles apart. Rangers spot a fire at angles of $72°$ and $58°$ from their respective towers (angles measured from the line connecting the towers). How far is the fire from each tower?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-22",
-      "number": "22",
+      "id": "ch08-sec01-ex-23",
+      "number": "23",
       "problem": "A lighthouse is observed from two ships. From ship $A$, the lighthouse is N$35°$E. From ship $B$, which is 5 miles due east of ship $A$, the lighthouse is N$48°$W. How far is the lighthouse from each ship?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-23",
-      "number": "23",
+      "id": "ch08-sec01-ex-24",
+      "number": "24",
       "problem": "Two ranger stations A and B are 10 miles apart. A fire is spotted from both stations. From A, the bearing to the fire is N$35°$E. From B, the bearing is N$50°$W. How far is the fire from each station?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-24",
-      "number": "24",
+      "id": "ch08-sec01-ex-25",
+      "number": "25",
       "problem": "To find the distance across a lake, a surveyor marks points A, B, and C. She measures $AB = 300$ m, $\\angle A = 72°$, and $\\angle B = 58°$. Find the distance AC across the lake.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-25",
-      "number": "25",
+      "id": "ch08-sec01-ex-26",
+      "number": "26",
       "problem": "From a point $A$ on level ground, the angle of elevation to the top of a tower is $28°$. From a point $B$, which is 100 feet closer to the tower (along the ground), the angle of elevation is $45°$. Find the height of the tower.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-26",
-      "number": "26",
+      "id": "ch08-sec01-ex-27",
+      "number": "27",
       "problem": "From two points 500 feet apart on level ground, the angles of elevation to the top of a building are $25°$ and $40°$. Find the height of the building.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-27",
-      "number": "27",
+      "id": "ch08-sec01-ex-28",
+      "number": "28",
       "problem": "From a point A, the angle of elevation to the peak of a mountain is $22°$. After walking 1000 feet closer to the mountain, the angle of elevation is $35°$. Find the height of the mountain.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-28",
-      "number": "28",
+      "id": "ch08-sec01-ex-29",
+      "number": "29",
       "problem": "A surveyor stands 100 feet from the base of a building. The angle of elevation to the roof is $35°$ and to a tower on the roof is $45°$. Find the height of the tower alone (not including the building).",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-29",
-      "number": "29",
+      "id": "ch08-sec01-ex-30",
+      "number": "30",
       "problem": "An airplane flies 150 miles from city $A$ to city $B$ on a bearing of N$60°$E. It then turns and flies to city $C$ on a bearing of S$70°$E. If the angle $ABC$ (as measured within the triangle) is $50°$, how far is it from $B$ to $C$?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-30",
-      "number": "30",
+      "id": "ch08-sec01-ex-31",
+      "number": "31",
       "problem": "Two tracking stations 20 miles apart track a hot air balloon. From station A, the angle of elevation is $35°$. From station B, the angle of elevation is $28°$. If the balloon is directly between the stations (but above them), find its altitude.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-31",
-      "number": "31",
+      "id": "ch08-sec01-ex-32",
+      "number": "32",
       "problem": "A rescue helicopter is positioned between two boats in distress. The angle of depression to boat A is $55°$, and to boat B is $40°$ on the opposite side. If the boats are 2 miles apart and the helicopter is directly above the line connecting them, find the helicopter's altitude.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-32",
-      "number": "32",
+      "id": "ch08-sec01-ex-33",
+      "number": "33",
       "problem": "A surveyor is mapping a triangular property. From corner A, she measures $58°$ to corner B and $47°$ to corner C. If the distance from A to B is 150 feet, find the distances AC and BC.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-33",
-      "number": "33",
+      "id": "ch08-sec01-ex-34",
+      "number": "34",
       "problem": "Two observatories 500 km apart simultaneously observe a satellite. Observatory A measures an angle of $82°$ above the horizon toward the satellite, while Observatory B measures $76°$ (both angles measured toward each other's position). How far is the satellite from each observatory?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-34",
-      "number": "34",
+      "id": "ch08-sec01-ex-35",
+      "number": "35",
       "problem": "A roof truss has rafters that meet at an angle of $35°$ at the peak. One rafter is 14 feet long. If the angle at the base of this rafter is $72°$, find the length of the other rafter and the width of the building (span of the truss).",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-35",
-      "number": "35",
+      "id": "ch08-sec01-ex-36",
+      "number": "36",
       "problem": "A golfer's ball lands 180 yards from the hole. A tree is directly between the ball and hole, so the golfer must aim $20°$ to the left of direct line. After the shot travels 165 yards, what angle does the ball-to-hole line make with the shot direction, and how far is the ball from the hole?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-36",
-      "number": "36",
+      "id": "ch08-sec01-ex-37",
+      "number": "37",
       "problem": "For each problem, identify whether it is AAS, ASA, or SSA, then solve the triangle completely.\n\n1. $A = 55°$, $B = 48°$, $c = 22$\n\n2. $B = 62°$, $b = 15$, $c = 18$\n\n3. $A = 70°$, $C = 55°$, $a = 30$\n\n4. $C = 48°$, $c = 14$, $a = 12$\n\n5. $A = 38°$, $B = 92°$, $b = 25$\n\n6. $A = 43°$, $a = 11$, $b = 15$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-37",
-      "number": "37",
+      "id": "ch08-sec01-ex-38",
+      "number": "38",
       "problem": "Solve each problem. Some may have no solution, one solution, or two solutions.\n\n1. $A = 64°$, $B = 51°$, $a = 18$\n\n2. $B = 75°$, $b = 22$, $c = 25$\n\n3. $A = 130°$, $a = 40$, $b = 35$\n\n4. $A = 28°$, $C = 107°$, $c = 35$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-38",
-      "number": "38",
+      "id": "ch08-sec01-ex-39",
+      "number": "39",
       "problem": "1. Find the circumradius of a triangle with $A = 40°$, $B = 60°$, and $c = 12$.\n\n2. A triangle has circumradius $R = 8$. If $A = 30°$, find side $a$.\n\n3. A triangle has sides $a = 7$, $b = 8$, $c = 9$. Find the circumradius. (Use the Law of Cosines to find an angle first.)\n\n4. A triangle is inscribed in a circle of radius 10. If $A = 45°$, find the length of side $a$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-39",
-      "number": "39",
+      "id": "ch08-sec01-ex-40",
+      "number": "40",
       "problem": "1. Use a calculator to solve triangle ABC where $A = 38.7°$, $B = 54.3°$, and $c = 42.5$.\n\n2. Use a calculator to determine how many triangles exist and solve: $A = 41°$, $a = 9.2$, $b = 12.8$.\n\n3. Graph $y = \\sin x$ for $0 < x < \\pi$. Use the graph to explain why $\\sin B = 0.6$ gives two possible angles in $(0°, 180°)$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-40",
-      "number": "40",
+      "id": "ch08-sec01-ex-41",
+      "number": "41",
       "problem": "These problems require both oblique triangle methods (Law of Sines) and right triangle trigonometry.\n\n1. In triangle $ABC$, $A = 40°$, $B = 65°$, and $a = 18$. Find the length of the altitude from $C$ to side $c$.\n\n2. A triangle has $A = 52°$, $B = 71°$, and $c = 24$. Find the length of the perpendicular distance from vertex $A$ to side $a$.\n\n3. Solve triangle $ABC$ with $A = 38°$, $B = 74°$, $a = 16$. Then find the area using the altitude from $C$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-41",
-      "number": "41",
+      "id": "ch08-sec01-ex-42",
+      "number": "42",
       "problem": "1. From a point on the ground, the angle of elevation to the top of a flagpole is $55°$. After walking 40 feet directly toward the pole, the angle of elevation is $70°$. Find the height of the flagpole and your original distance from its base.\n\n2. Two roads diverge from a point at an angle of $42°$. Two cars start from this point at the same time, traveling at 50 mph and 65 mph respectively. After 30 minutes, how far apart are the cars? What angle does the line connecting them make with the slower car's road?\n\n3. A vertical cell tower stands on sloped ground that makes a $12°$ angle with the horizontal. From a point 200 feet directly downhill from the base of the tower, the angle of elevation to the top of the tower is $28°$. How tall is the tower?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-42",
-      "number": "42",
+      "id": "ch08-sec01-ex-43",
+      "number": "43",
       "problem": "Use exact trigonometric values (no calculator) for these problems.\n\n1. In triangle $ABC$, $A = 45°$, $B = 60°$, and $a = 10$. Find exact values for $b$ and $c$.\n\n2. A triangle has angles $30°$, $45°$, and $105°$. If the side opposite the $45°$ angle is $8\\sqrt{2}$, find the other two sides exactly.\n\n3. Find the exact area of a triangle with $A = 30°$, $B = 45°$, and $c = 12$.",
       "variant": "regular"
     },
     {
-      "type": "paragraph",
-      "text": "True or False? Justify your answer.\n\n1. The Law of Sines can be used to solve a triangle when given SSS.\n\n2. In the ambiguous case, if $a \\geq b$ there is exactly one triangle.\n\n3. The Law of Sines always gives a unique solution for AAS.\n\n4. If angle $A$ is obtuse in the SSA case, there can be two triangles."
+      "type": "exercise",
+      "id": "ch08-sec01-ex-44",
+      "number": "44",
+      "problem": "True or False? Justify your answer.\n\n1. The Law of Sines can be used to solve a triangle when given SSS.\n\n2. In the ambiguous case, if $a \\geq b$ there is exactly one triangle.\n\n3. The Law of Sines always gives a unique solution for AAS.\n\n4. If angle $A$ is obtuse in the SSA case, there can be two triangles.",
+      "variant": "conceptual"
     },
     {
-      "type": "paragraph",
-      "text": "Answer each question with a brief explanation.\n\n1. Explain why the Law of Sines cannot be used to solve a triangle given only SSS.\n\n2. In the ambiguous case (SSA), explain geometrically why there might be 0, 1, or 2 triangles.\n\n3. The ratio $\\frac{a}{\\sin A}$ equals the same value for all three side-angle pairs in a triangle. What does this common value represent geometrically?"
+      "type": "exercise",
+      "id": "ch08-sec01-ex-45",
+      "number": "45",
+      "problem": "Answer each question with a brief explanation.\n\n1. Explain why the Law of Sines cannot be used to solve a triangle given only SSS.\n\n2. In the ambiguous case (SSA), explain geometrically why there might be 0, 1, or 2 triangles.\n\n3. The ratio $\\frac{a}{\\sin A}$ equals the same value for all three side-angle pairs in a triangle. What does this common value represent geometrically?",
+      "variant": "conceptual"
     },
     {
-      "type": "paragraph",
-      "text": "Describe and correct the error."
+      "type": "exercise",
+      "id": "ch08-sec01-ex-46",
+      "number": "46",
+      "problem": "Describe and correct the error.",
+      "variant": "error-analysis"
     },
     {
       "type": "heading",
@@ -722,36 +734,36 @@
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-43",
-      "number": "43",
+      "id": "ch08-sec01-ex-47",
+      "number": "47",
       "problem": "1. Derive the Law of Sines using the area formula $K = \\frac{1}{2}ab\\sin C$.\n\n2. Prove that $\\frac{a}{\\sin A} = 2R$, where $R$ is the circumradius.\n\n3. Prove that the area of a triangle can be expressed as $K = \\frac{abc}{4R}$.\n\n4. Prove the area formula: $K = \\frac{a^2\\sin B\\sin C}{2\\sin A}$.",
       "variant": "starred"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-44",
-      "number": "44",
+      "id": "ch08-sec01-ex-48",
+      "number": "48",
       "problem": "In triangle ABC, $A = 30°$ and $a = 8$. Find the range of values for $b$ such that:\n\n1. No triangle exists.\n\n2. Exactly one triangle exists (two sub-cases).\n\n3. Exactly two triangles exist.",
       "variant": "starred"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-45",
-      "number": "45",
+      "id": "ch08-sec01-ex-49",
+      "number": "49",
       "problem": "Two ships leave port at the same time. Ship A sails at 20 mph on bearing N$30°$E. Ship B sails at 25 mph on bearing S$50°$E. After 2 hours:\n\n1. How far apart are the ships?\n\n2. What is the bearing from A to B?",
       "variant": "starred"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-46",
-      "number": "46",
+      "id": "ch08-sec01-ex-50",
+      "number": "50",
       "problem": "The Mollweide formulas provide useful checks when solving triangles:\n$$\n \\frac{a-b}{c} = \\frac{\\sin\\frac{A-B}{2}}{\\cos\\frac{C}{2}} \\quad \\text{and} \\quad\n \\frac{a+b}{c} = \\frac{\\cos\\frac{A-B}{2}}{\\sin\\frac{C}{2}}\n$$\n\n1. Verify these formulas for a 3-4-5 right triangle.\n\n2. Use the Law of Sines and sum-to-product identities to prove the first Mollweide formula.",
       "variant": "starred"
     },
     {
       "type": "exercise",
-      "id": "ex-8.1-47",
-      "number": "47",
+      "id": "ch08-sec01-ex-51",
+      "number": "51",
       "problem": "A satellite orbits Earth at an altitude of 400 km. An observer sees the satellite at an angle of elevation of $40°$ above the horizon. How far is the satellite from the observer? (Use Earth's radius $\\approx 6371$ km.)\n\n*Hint: Draw the Earth as a circle, the observer on the surface, and form a triangle with Earth's center.*",
       "variant": "starred"
     }
@@ -760,12 +772,14 @@
     {
       "type": "scripture",
       "reference": "Isaiah 40:12",
-      "text": "Who has measured the waters in the hollow \nof his hand, or with the breadth of his hand marked off the heavens?"
+      "text": "Who has measured the waters in the hollow \nof his hand, or with the breadth of his hand marked off the heavens?",
+      "edition": "christian"
     },
     {
       "type": "scripture",
       "reference": "Proverbs 3:5--6",
-      "text": "Trust in the Lord with all your heart \nand lean not on your own understanding; in all your ways submit to him, \nand he will make your paths straight."
+      "text": "Trust in the Lord with all your heart \nand lean not on your own understanding; in all your ways submit to him, \nand he will make your paths straight.",
+      "edition": "christian"
     }
   ]
 }

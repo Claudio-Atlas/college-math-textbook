@@ -42,7 +42,7 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-2.1",
+      "id": "ch02-sec03-theorem-2.1",
       "title": "Division Algorithm for Polynomials",
       "content": "If $f(x)$ and $d(x)$ are polynomials with $d(x) \\neq 0$, then there exist \nunique polynomials $q(x)$ (the quotient) and $r(x)$ (the remainder) such \nthat\n$$\n f(x) = d(x) \\cdot q(x) + r(x)\n$$\nwhere the degree of $r(x)$ is less than the degree of $d(x)$, or \n$r(x) = 0$.",
       "number": "2.1"
@@ -69,8 +69,8 @@
     },
     {
       "type": "figure",
-      "id": "fig:division-algorithm",
-      "src": "/figures/precalculus/ch02/fig-division-algorithm.svg",
+      "id": "fig-2.3-inline-1",
+      "src": "/figures/precalculus/ch02/fig-2.3-inline-1.svg",
       "caption": "The Division Algorithm: any polynomial $f(x)$ can be expressed as the divisor times the quotient plus a remainder, where the remainder has smaller degree than the divisor.",
       "alt": "The Division Algorithm: any polynomial $f(x)$ can be expressed as the divisor times the quotient plus a remainder, where the remainder has smaller degree than the divisor.",
       "tikz": true
@@ -102,29 +102,29 @@
     },
     {
       "type": "example",
-      "id": "example-2.1",
+      "id": "ch02-sec03-example-2.1",
       "number": "2.1",
       "title": "Polynomial long division",
       "problem": "Divide $f(x) = 2x^3 - 5x^2 + 3x - 7$ by $d(x) = x - 2$.",
-      "solution": "We set up the long division:\n\n$$\n\\polylongdiv{2x^3 - 5x^2 + 3x - 7}{x - 2}\n$$\n\n**Step 1:** Divide $2x^3$ by $x$ to get $2x^2$. Write this above.\n\n**Step 2:** Multiply $(x - 2)$ by $2x^2$ to get $2x^3 - 4x^2$. \nSubtract this from $2x^3 - 5x^2$:\n$$\n (2x^3 - 5x^2) - (2x^3 - 4x^2) = -x^2\n$$\n\n**Step 3:** Bring down the next term: $-x^2 + 3x$.\n\n**Step 4:** Divide $-x^2$ by $x$ to get $-x$. Multiply \n$(x - 2)$ by $-x$ to get $-x^2 + 2x$. Subtract:\n$$\n (-x^2 + 3x) - (-x^2 + 2x) = x\n$$\n\n**Step 5:** Bring down the next term: $x - 7$.\n\n**Step 6:** Divide $x$ by $x$ to get $1$. Multiply $(x - 2)$ by \n$1$ to get $x - 2$. Subtract:\n$$\n (x - 7) - (x - 2) = -5\n$$\n\nThe remainder is $-5$, which has degree 0, less than the degree of \n$x - 2$ (which is 1). We're done.\n\n**Result:**\n$$\n 2x^3 - 5x^2 + 3x - 7 = (x - 2)(2x^2 - x + 1) + (-5)\n$$\n\nThe quotient is $q(x) = 2x^2 - x + 1$ and the remainder is $r = -5$."
+      "solution": "We set up the long division:\n\n$$\n[polynomial long division]\n$$\n\n**Step 1:** Divide $2x^3$ by $x$ to get $2x^2$. Write this above.\n\n**Step 2:** Multiply $(x - 2)$ by $2x^2$ to get $2x^3 - 4x^2$. \nSubtract this from $2x^3 - 5x^2$:\n$$\n (2x^3 - 5x^2) - (2x^3 - 4x^2) = -x^2\n$$\n\n**Step 3:** Bring down the next term: $-x^2 + 3x$.\n\n**Step 4:** Divide $-x^2$ by $x$ to get $-x$. Multiply \n$(x - 2)$ by $-x$ to get $-x^2 + 2x$. Subtract:\n$$\n (-x^2 + 3x) - (-x^2 + 2x) = x\n$$\n\n**Step 5:** Bring down the next term: $x - 7$.\n\n**Step 6:** Divide $x$ by $x$ to get $1$. Multiply $(x - 2)$ by \n$1$ to get $x - 2$. Subtract:\n$$\n (x - 7) - (x - 2) = -5\n$$\n\nThe remainder is $-5$, which has degree 0, less than the degree of \n$x - 2$ (which is 1). We're done.\n\n**Result:**\n$$\n 2x^3 - 5x^2 + 3x - 7 = (x - 2)(2x^2 - x + 1) + (-5)\n$$\n\nThe quotient is $q(x) = 2x^2 - x + 1$ and the remainder is $r = -5$."
     },
     {
       "type": "figure",
-      "id": "fig:long-division",
-      "src": "/figures/precalculus/ch02/fig-long-division.svg",
+      "id": "fig-2.3-inline-2",
+      "src": "/figures/precalculus/ch02/fig-2.3-inline-2.svg",
       "caption": "Polynomial long division follows the same pattern as numerical long division: divide, multiply, subtract, bring down, and repeat until the remainder has lower degree than the divisor.",
       "alt": "Polynomial long division follows the same pattern as numerical long division: divide, multiply, subtract, bring down, and repeat until the remainder has lower degree than the divisor.",
       "tikz": true
     },
     {
       "type": "warning",
-      "id": "warning-2.3",
+      "id": "ch02-sec03-warning",
       "title": "Missing Terms",
       "content": "When performing long division, make sure to include terms with \ncoefficient zero as placeholders. For example, when dividing \n$x^3 - 8$ by $x - 2$, write $x^3 + 0x^2 + 0x - 8$ to keep the \ncolumns aligned."
     },
     {
       "type": "example",
-      "id": "example-2.2",
+      "id": "ch02-sec03-example-2.2",
       "number": "2.2",
       "title": "Division with missing terms",
       "problem": "Divide $f(x) = x^3 - 8$ by $d(x) = x - 2$.",
@@ -141,7 +141,7 @@
     },
     {
       "type": "example",
-      "id": "example-2.3",
+      "id": "ch02-sec03-example-2.3",
       "number": "2.3",
       "title": "Dividing by a quadratic",
       "problem": "Divide $f(x) = 2x^4 - 3x^3 + x - 5$ by $d(x) = x^2 + 1$.",
@@ -162,48 +162,48 @@
     },
     {
       "type": "figure",
-      "id": "fig:synthetic-division",
-      "src": "/figures/precalculus/ch02/fig-synthetic-division.svg",
+      "id": "fig-2.3-inline-3",
+      "src": "/figures/precalculus/ch02/fig-2.3-inline-3.svg",
       "caption": "Synthetic division is a streamlined method for dividing by $(x - c)$. Only coefficients are used: bring down the first, then repeatedly multiply by $c$ and add.",
       "alt": "Synthetic division is a streamlined method for dividing by $(x - c)$. Only coefficients are used: bring down the first, then repeatedly multiply by $c$ and add.",
       "tikz": true
     },
     {
       "type": "example",
-      "id": "example-2.4",
+      "id": "ch02-sec03-example-2.4",
       "number": "2.4",
       "title": "Synthetic division",
       "problem": "Use synthetic division to divide $f(x) = 3x^3 - 2x^2 + 5x - 4$ by \n$(x - 2)$.",
-      "solution": "Set up synthetic division with $c = 2$ and the coefficients of $f(x)$:\n\n$$\n\\begin{array}{c|cccc}\n2 & 3 & -2 & 5 & -4 \\\\\n & & 6 & 8 & 26 \\\\\n\\hline\n & 3 & 4 & 13 & 22\n\\end{array}\n$$\n\n**Process:**\n\n1. Bring down the first coefficient: $3$.\n\n2. Multiply $2 \\times 3 = 6$, write under $-2$.\n\n3. Add: $-2 + 6 = 4$.\n\n4. Multiply $2 \\times 4 = 8$, write under $5$.\n\n5. Add: $5 + 8 = 13$.\n\n6. Multiply $2 \\times 13 = 26$, write under $-4$.\n\n7. Add: $-4 + 26 = 22$.\n\nThe bottom row gives the coefficients of the quotient (all but the \nlast number) and the remainder (the last number).\n\n**Result:**\n$$\n 3x^3 - 2x^2 + 5x - 4 = (x - 2)(3x^2 + 4x + 13) + 22\n$$"
+      "solution": "Set up synthetic division with $c = 2$ and the coefficients of $f(x)$:\n\n$$\n\\begin{array}{c|cccc}\n2 & 3 & -2 & 5 & -4 \\\\\n & & 6 & 8 & 26 \\\\\n\n & 3 & 4 & 13 & 22\n\\end{array}\n$$\n\n**Process:**\n\n1. Bring down the first coefficient: $3$.\n\n2. Multiply $2 \\times 3 = 6$, write under $-2$.\n\n3. Add: $-2 + 6 = 4$.\n\n4. Multiply $2 \\times 4 = 8$, write under $5$.\n\n5. Add: $5 + 8 = 13$.\n\n6. Multiply $2 \\times 13 = 26$, write under $-4$.\n\n7. Add: $-4 + 26 = 22$.\n\nThe bottom row gives the coefficients of the quotient (all but the \nlast number) and the remainder (the last number).\n\n**Result:**\n$$\n 3x^3 - 2x^2 + 5x - 4 = (x - 2)(3x^2 + 4x + 13) + 22\n$$"
     },
     {
       "type": "algorithm",
-      "id": "algorithm-2.1",
+      "id": "ch02-sec03-algorithm-2.1",
       "title": "Synthetic Division",
       "content": "To divide $f(x)$ by $(x - c)$:\n\n1. **Write coefficients** of $f(x)$ in a row. *Include 0 for any missing terms!*\n\n2. **Write $c$** to the left (the value that makes the divisor zero).\n\n3. **Bring down** the first coefficient.\n\n4. **Multiply** by $c$, write the result under the next coefficient.\n\n5. **Add** the column.\n\n6. **Repeat** steps 4–5 until finished.\n\n7. **Read the result:** Bottom row gives quotient coefficients; the last number is the remainder.\n\n**Memory Aid:** Bring down $\\to$ Multiply $\\to$ Add $\\to$ Repeat",
       "number": "2.1"
     },
     {
       "type": "tip",
-      "id": "tip-2.3",
+      "id": "ch02-sec03-tip",
       "title": "Non-Monic Divisors",
       "content": "Synthetic division requires divisors of the form $(x - c)$, with leading coefficient 1. \nFor divisors like $(2x - 1)$, rewrite as $2\\bigl(x - \\tfrac{1}{2}\\bigr)$ and use $c = \\tfrac{1}{2}$. \nAfter dividing, remember to account for the factor of 2 in your final answer—the true quotient \nwhen dividing by $(2x - 1)$ is half of what synthetic division gives you."
     },
     {
       "type": "example",
-      "id": "example-2.5",
+      "id": "ch02-sec03-example-2.5",
       "number": "2.5",
       "title": "Synthetic division with negative $c$",
       "problem": "Divide $f(x) = x^4 + 3x^3 - 2x + 5$ by $(x + 2)$.",
-      "solution": "Since the divisor is $(x + 2) = (x - (-2))$, we use $c = -2$.\n\nDon't forget the missing $x^2$ term! Use 0 as its coefficient.\n\n$$\n\\begin{array}{c|ccccc}\n-2 & 1 & 3 & 0 & -2 & 5 \\\\\n & & -2 & -2 & 4 & -4 \\\\\n\\hline\n & 1 & 1 & -2 & 2 & 1\n\\end{array}\n$$\n\n**Result:**\n$$\n x^4 + 3x^3 - 2x + 5 = (x + 2)(x^3 + x^2 - 2x + 2) + 1\n$$"
+      "solution": "Since the divisor is $(x + 2) = (x - (-2))$, we use $c = -2$.\n\nDon't forget the missing $x^2$ term! Use 0 as its coefficient.\n\n$$\n\\begin{array}{c|ccccc}\n-2 & 1 & 3 & 0 & -2 & 5 \\\\\n & & -2 & -2 & 4 & -4 \\\\\n\n & 1 & 1 & -2 & 2 & 1\n\\end{array}\n$$\n\n**Result:**\n$$\n x^4 + 3x^3 - 2x + 5 = (x + 2)(x^3 + x^2 - 2x + 2) + 1\n$$"
     },
     {
       "type": "example",
-      "id": "example-2.6",
+      "id": "ch02-sec03-example-2.6",
       "number": "2.6",
       "title": "Synthetic division with zero remainder",
       "problem": "Divide $f(x) = x^3 - 6x^2 + 11x - 6$ by $(x - 1)$.",
-      "solution": "$$\n\\begin{array}{c|cccc}\n1 & 1 & -6 & 11 & -6 \\\\\n & & 1 & -5 & 6 \\\\\n\\hline\n & 1 & -5 & 6 & 0\n\\end{array}\n$$\n\nThe remainder is 0, which tells us $(x - 1)$ is a factor!\n\n**Result:**\n$$\n x^3 - 6x^2 + 11x - 6 = (x - 1)(x^2 - 5x + 6)\n$$\n\nWe can factor further: $x^2 - 5x + 6 = (x - 2)(x - 3)$.\n\nSo $f(x) = (x - 1)(x - 2)(x - 3)$."
+      "solution": "$$\n\\begin{array}{c|cccc}\n1 & 1 & -6 & 11 & -6 \\\\\n & & 1 & -5 & 6 \\\\\n\n & 1 & -5 & 6 & 0\n\\end{array}\n$$\n\nThe remainder is 0, which tells us $(x - 1)$ is a factor!\n\n**Result:**\n$$\n x^3 - 6x^2 + 11x - 6 = (x - 1)(x^2 - 5x + 6)\n$$\n\nWe can factor further: $x^2 - 5x + 6 = (x - 2)(x - 3)$.\n\nSo $f(x) = (x - 1)(x - 2)(x - 3)$."
     },
     {
       "type": "heading",
@@ -216,7 +216,7 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-2.2",
+      "id": "ch02-sec03-theorem-2.2",
       "title": "Remainder Theorem",
       "content": "If a polynomial $f(x)$ is divided by $(x - c)$, then the remainder \nis $f(c)$.",
       "number": "2.2"
@@ -227,19 +227,19 @@
     },
     {
       "type": "figure",
-      "id": "fig:remainder-theorem",
-      "src": "/figures/precalculus/ch02/fig-remainder-theorem.svg",
+      "id": "fig-2.3-inline-4",
+      "src": "/figures/precalculus/ch02/fig-2.3-inline-4.svg",
       "caption": "The Remainder Theorem: When dividing $f(x)$ by $(x-c)$, the remainder equals the function value $f(c)$. This connects division to evaluation.",
       "alt": "The Remainder Theorem: When dividing $f(x)$ by $(x-c)$, the remainder equals the function value $f(c)$. This connects division to evaluation.",
       "tikz": true
     },
     {
       "type": "example",
-      "id": "example-2.7",
+      "id": "ch02-sec03-example-2.7",
       "number": "2.7",
       "title": "Using the Remainder Theorem",
       "problem": "Use the Remainder Theorem to find $f(3)$ for \n$f(x) = 2x^4 - 5x^3 + 3x - 7$.",
-      "solution": "By the Remainder Theorem, $f(3)$ equals the remainder when $f(x)$ is \ndivided by $(x - 3)$.\n\n$$\n\\begin{array}{c|ccccc}\n3 & 2 & -5 & 0 & 3 & -7 \\\\\n & & 6 & 3 & 9 & 36 \\\\\n\\hline\n & 2 & 1 & 3 & 12 & 29\n\\end{array}\n$$\n\nThe remainder is 29, so $f(3) = 29$.\n\n*Verification:* \n$f(3) = 2(81) - 5(27) + 3(3) - 7 = 162 - 135 + 9 - 7 = 29$. ✓"
+      "solution": "By the Remainder Theorem, $f(3)$ equals the remainder when $f(x)$ is \ndivided by $(x - 3)$.\n\n$$\n\\begin{array}{c|ccccc}\n3 & 2 & -5 & 0 & 3 & -7 \\\\\n & & 6 & 3 & 9 & 36 \\\\\n\n & 2 & 1 & 3 & 12 & 29\n\\end{array}\n$$\n\nThe remainder is 29, so $f(3) = 29$.\n\n*Verification:* \n$f(3) = 2(81) - 5(27) + 3(3) - 7 = 162 - 135 + 9 - 7 = 29$. ✓"
     },
     {
       "type": "heading",
@@ -252,7 +252,7 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-2.3",
+      "id": "ch02-sec03-theorem-2.3",
       "title": "Factor Theorem",
       "content": "A polynomial $f(x)$ has $(x - c)$ as a factor if and only if $f(c) = 0$.",
       "number": "2.3"
@@ -267,19 +267,19 @@
     },
     {
       "type": "example",
-      "id": "example-2.8",
+      "id": "ch02-sec03-example-2.8",
       "number": "2.8",
       "title": "Using the Factor Theorem",
       "problem": "Verify that $x = 2$ is a zero of $f(x) = x^3 - 6x^2 + 11x - 6$, then \nfactor $f(x)$ completely.",
-      "solution": "**Verification:**\n$$\n f(2) = 2^3 - 6(2)^2 + 11(2) - 6 = 8 - 24 + 22 - 6 = 0 \\quad \\checkmark\n$$\n\nBy the Factor Theorem, $(x - 2)$ is a factor. Use synthetic division:\n\n$$\n\\begin{array}{c|cccc}\n2 & 1 & -6 & 11 & -6 \\\\\n & & 2 & -8 & 6 \\\\\n\\hline\n & 1 & -4 & 3 & 0\n\\end{array}\n$$\n\nSo $f(x) = (x - 2)(x^2 - 4x + 3)$.\n\nFactor the quadratic: $x^2 - 4x + 3 = (x - 1)(x - 3)$.\n\n**Complete factorization:**\n$$\n f(x) = (x - 1)(x - 2)(x - 3)\n$$"
+      "solution": "**Verification:**\n$$\n f(2) = 2^3 - 6(2)^2 + 11(2) - 6 = 8 - 24 + 22 - 6 = 0 \\quad \\checkmark\n$$\n\nBy the Factor Theorem, $(x - 2)$ is a factor. Use synthetic division:\n\n$$\n\\begin{array}{c|cccc}\n2 & 1 & -6 & 11 & -6 \\\\\n & & 2 & -8 & 6 \\\\\n\n & 1 & -4 & 3 & 0\n\\end{array}\n$$\n\nSo $f(x) = (x - 2)(x^2 - 4x + 3)$.\n\nFactor the quadratic: $x^2 - 4x + 3 = (x - 1)(x - 3)$.\n\n**Complete factorization:**\n$$\n f(x) = (x - 1)(x - 2)(x - 3)\n$$"
     },
     {
       "type": "example",
-      "id": "example-2.9",
+      "id": "ch02-sec03-example-2.9",
       "number": "2.9",
       "title": "Finding a factor by testing",
       "problem": "Factor $f(x) = 2x^3 + 3x^2 - 8x - 12$ completely.",
-      "solution": "We need to find a zero. Try simple values:\n\n$f(0) = -12 \\neq 0$\n\n$f(1) = 2 + 3 - 8 - 12 = -15 \\neq 0$\n\n$f(-1) = -2 + 3 + 8 - 12 = -3 \\neq 0$\n\n$f(2) = 16 + 12 - 16 - 12 = 0$ ✓\n\nSo $(x - 2)$ is a factor. Use synthetic division:\n\n$$\n\\begin{array}{c|cccc}\n2 & 2 & 3 & -8 & -12 \\\\\n & & 4 & 14 & 12 \\\\\n\\hline\n & 2 & 7 & 6 & 0\n\\end{array}\n$$\n\nSo $f(x) = (x - 2)(2x^2 + 7x + 6)$.\n\nFactor the quadratic (by grouping or formula):\n$$\n 2x^2 + 7x + 6 = (2x + 3)(x + 2)\n$$\n\n**Complete factorization:**\n$$\n f(x) = (x - 2)(2x + 3)(x + 2)\n$$"
+      "solution": "We need to find a zero. Try simple values:\n\n$f(0) = -12 \\neq 0$\n\n$f(1) = 2 + 3 - 8 - 12 = -15 \\neq 0$\n\n$f(-1) = -2 + 3 + 8 - 12 = -3 \\neq 0$\n\n$f(2) = 16 + 12 - 16 - 12 = 0$ ✓\n\nSo $(x - 2)$ is a factor. Use synthetic division:\n\n$$\n\\begin{array}{c|cccc}\n2 & 2 & 3 & -8 & -12 \\\\\n & & 4 & 14 & 12 \\\\\n\n & 2 & 7 & 6 & 0\n\\end{array}\n$$\n\nSo $f(x) = (x - 2)(2x^2 + 7x + 6)$.\n\nFactor the quadratic (by grouping or formula):\n$$\n 2x^2 + 7x + 6 = (2x + 3)(x + 2)\n$$\n\n**Complete factorization:**\n$$\n f(x) = (x - 2)(2x + 3)(x + 2)\n$$"
     },
     {
       "type": "heading",
@@ -288,7 +288,7 @@
     },
     {
       "type": "example",
-      "id": "example-2.10",
+      "id": "ch02-sec03-example-2.10",
       "number": "2.10",
       "title": "Finding a coefficient",
       "problem": "Find the value of $k$ so that $(x - 3)$ is a factor of \n$f(x) = x^3 - kx^2 + 2x + 12$.",
@@ -296,127 +296,142 @@
     },
     {
       "type": "example",
-      "id": "example-2.11",
+      "id": "ch02-sec03-example-2.11",
       "number": "2.11",
       "title": "Average cost",
       "problem": "A company's total cost (in dollars) to produce $x$ units of a product is \nmodeled by\n$$\n C(x) = 2x^3 - 5x^2 + 10x + 500\n$$\nFind the average cost per unit, $\\overline{C}(x) = \\dfrac{C(x)}{x}$.",
-      "solution": "To find the average cost, we divide the total cost by the number of units:\n$$\n \\overline{C}(x) = \\frac{2x^3 - 5x^2 + 10x + 500}{x}\n$$\n\nUsing long division (or simply dividing each term by $x$):\n$$\n \\overline{C}(x) = 2x^2 - 5x + 10 + \\frac{500}{x}\n$$\n\n**Interpretation:** The average cost per unit is $2x^2 - 5x + 10$ \ndollars plus a \"fixed cost contribution\" of $\\frac{500}{x}$ dollars. \nAs production increases ($x$ gets larger), the $\\frac{500}{x}$ term \ndecreases—this is the *economy of scale*. The fixed startup cost \nof $500 gets spread over more units.\n\nFor example:\n\n- At $x = 10$ units: $\\overline{C}(10) = 200 - 50 + 10 + 50 = \u0001DOLLAR\u0001210$ per unit\n\n- At $x = 100$ units: $\\overline{C}(100) = 20000 - 500 + 10 + 5 = \u0001DOLLAR\u000119{,}515$ per unit"
+      "solution": "To find the average cost, we divide the total cost by the number of units:\n$$\n \\overline{C}(x) = \\frac{2x^3 - 5x^2 + 10x + 500}{x}\n$$\n\nUsing long division (or simply dividing each term by $x$):\n$$\n \\overline{C}(x) = 2x^2 - 5x + 10 + \\frac{500}{x}\n$$\n\n**Interpretation:** The average cost per unit is $2x^2 - 5x + 10$ \ndollars plus a \"fixed cost contribution\" of $\\frac{500}{x}$ dollars. \nAs production increases ($x$ gets larger), the $\\frac{500}{x}$ term \ndecreases—this is the *economy of scale*. The fixed startup cost \nof $500 gets spread over more units.\n\nFor example:\n\n- At $x = 10$ units: $\\overline{C}(10) = 200 - 50 + 10 + 50 = $210$ per unit\n\n- At $x = 100$ units: $\\overline{C}(100) = 20000 - 500 + 10 + 5 = $19,515$ per unit"
     },
     {
       "type": "example",
-      "id": "example-2.12",
+      "id": "ch02-sec03-example-2.12",
       "number": "2.12",
       "title": "Volume and dimensions",
       "problem": "A rectangular box has volume given by $V(x) = x^3 + 6x^2 + 11x + 6$ \ncubic inches, where $x$ is a positive integer. If the height is $(x + 1)$ \ninches, find expressions for the length and width.",
-      "solution": "Since Volume = Length $\\times$ Width $\\times$ Height, we have:\n$$\n \\text{Length} \\times \\text{Width} = \\frac{V(x)}{\\text{Height}} = \n \\frac{x^3 + 6x^2 + 11x + 6}{x + 1}\n$$\n\nUse synthetic division with $c = -1$:\n$$\n\\begin{array}{c|cccc}\n-1 & 1 & 6 & 11 & 6 \\\\\n & & -1 & -5 & -6 \\\\\n\\hline\n & 1 & 5 & 6 & 0\n\\end{array}\n$$\n\nThe remainder is 0 (confirming $(x + 1)$ divides evenly), and:\n$$\n \\text{Length} \\times \\text{Width} = x^2 + 5x + 6 = (x + 2)(x + 3)\n$$\n\n**Result:** The box has dimensions $(x + 1)$, $(x + 2)$, and $(x + 3)$ \ninches. For example, if $x = 2$, the box is $3 \\times 4 \\times 5$ inches \nwith volume $60$ cubic inches.\n\n*Verification:* $V(2) = 8 + 24 + 22 + 6 = 60$. ✓"
+      "solution": "Since Volume = Length $\\times$ Width $\\times$ Height, we have:\n$$\n \\text{Length} \\times \\text{Width} = \\frac{V(x)}{\\text{Height}} = \n \\frac{x^3 + 6x^2 + 11x + 6}{x + 1}\n$$\n\nUse synthetic division with $c = -1$:\n$$\n\\begin{array}{c|cccc}\n-1 & 1 & 6 & 11 & 6 \\\\\n & & -1 & -5 & -6 \\\\\n\n & 1 & 5 & 6 & 0\n\\end{array}\n$$\n\nThe remainder is 0 (confirming $(x + 1)$ divides evenly), and:\n$$\n \\text{Length} \\times \\text{Width} = x^2 + 5x + 6 = (x + 2)(x + 3)\n$$\n\n**Result:** The box has dimensions $(x + 1)$, $(x + 2)$, and $(x + 3)$ \ninches. For example, if $x = 2$, the box is $3 \\times 4 \\times 5$ inches \nwith volume $60$ cubic inches.\n\n*Verification:* $V(2) = 8 + 24 + 22 + 6 = 60$. ✓"
     },
     {
       "type": "summary",
-      "id": "summary-2.3",
+      "id": "ch02-sec03-summary",
       "title": "Polynomial Division",
       "content": "- **Division Algorithm:** $f(x) = d(x) \\cdot q(x) + r(x)$ \n with $\\deg(r) < \\deg(d)$\n\n- **Long division:** Works for any polynomial divisor\n\n- **Synthetic division:** Fast method for dividing by $(x - c)$\n\n- **Remainder Theorem:** Remainder when dividing by $(x - c)$ \n equals $f(c)$\n\n- **Factor Theorem:** $(x - c)$ is a factor iff $f(c) = 0$"
     },
     {
-      "type": "paragraph",
-      "text": "Fill in each blank with the appropriate term.\n\n1. If $f(x) = d(x) \\cdot q(x) + r(x)$, then $d(x)$ is the \n , $q(x)$ is the , \n and $r(x)$ is the .\n\n2. The Remainder Theorem states that when $f(x)$ is divided by \n $(x - c)$, the remainder is .\n\n3. The Factor Theorem states that $(x - c)$ is a factor of $f(x)$ \n if and only if .\n\n4. Synthetic division only works when dividing by a \n polynomial of the form $(x - c)$.\n\n5. In the Division Algorithm, the remainder's degree must be \n than the divisor's degree.\n\n6. If $f(c) = 0$, then $c$ is called a of $f(x)$."
-    },
-    {
-      "type": "paragraph",
-      "text": "True or False? Justify your answer.\n\n1. If $f(3) = 0$, then $(x - 3)$ is a factor of $f(x)$.\n\n2. If $(x - 2)$ is a factor of $f(x)$, then $f(2) = 0$.\n\n3. The remainder when $f(x)$ is divided by $(x - c)$ is $f(c)$.\n\n4. Synthetic division can be used to divide by $(x^2 - 4)$.\n\n5. If the remainder is 0, then the divisor is a factor.\n\n6. If $f(x)$ has degree 5 and $d(x)$ has degree 2, the quotient has degree 3.\n\n7. The remainder when dividing by a quadratic can be a linear polynomial."
-    },
-    {
-      "type": "paragraph",
-      "text": "Explain why synthetic division is more efficient than \nlong division when dividing by $(x - c)$."
-    },
-    {
-      "type": "paragraph",
-      "text": "Why can't synthetic division be used to divide by \n$x^2 + 1$? What method must be used instead?"
-    },
-    {
-      "type": "paragraph",
-      "text": "If $f(x)$ divided by $(x - 2)$ has remainder 0, what \ndoes this tell you about the graph of $f$?"
+      "type": "exercise",
+      "id": "ch02-sec03-ex-1",
+      "number": "1",
+      "problem": "Fill in each blank with the appropriate term.\n\n1. If $f(x) = d(x) \\cdot q(x) + r(x)$, then $d(x)$ is the \n , $q(x)$ is the , \n and $r(x)$ is the .\n\n2. The Remainder Theorem states that when $f(x)$ is divided by \n $(x - c)$, the remainder is .\n\n3. The Factor Theorem states that $(x - c)$ is a factor of $f(x)$ \n if and only if .\n\n4. Synthetic division only works when dividing by a \n polynomial of the form $(x - c)$.\n\n5. In the Division Algorithm, the remainder's degree must be \n than the divisor's degree.\n\n6. If $f(c) = 0$, then $c$ is called a of $f(x)$.",
+      "variant": "vocabulary"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-1",
-      "number": "1",
+      "id": "ch02-sec03-ex-2",
+      "number": "2",
+      "problem": "True or False? Justify your answer.\n\n1. If $f(3) = 0$, then $(x - 3)$ is a factor of $f(x)$.\n\n2. If $(x - 2)$ is a factor of $f(x)$, then $f(2) = 0$.\n\n3. The remainder when $f(x)$ is divided by $(x - c)$ is $f(c)$.\n\n4. Synthetic division can be used to divide by $(x^2 - 4)$.\n\n5. If the remainder is 0, then the divisor is a factor.\n\n6. If $f(x)$ has degree 5 and $d(x)$ has degree 2, the quotient has degree 3.\n\n7. The remainder when dividing by a quadratic can be a linear polynomial.",
+      "variant": "conceptual"
+    },
+    {
+      "type": "exercise",
+      "id": "ch02-sec03-ex-3",
+      "number": "3",
+      "problem": "Explain why synthetic division is more efficient than \nlong division when dividing by $(x - c)$.",
+      "variant": "conceptual"
+    },
+    {
+      "type": "exercise",
+      "id": "ch02-sec03-ex-4",
+      "number": "4",
+      "problem": "Why can't synthetic division be used to divide by \n$x^2 + 1$? What method must be used instead?",
+      "variant": "conceptual"
+    },
+    {
+      "type": "exercise",
+      "id": "ch02-sec03-ex-5",
+      "number": "5",
+      "problem": "If $f(x)$ divided by $(x - 2)$ has remainder 0, what \ndoes this tell you about the graph of $f$?",
+      "variant": "conceptual"
+    },
+    {
+      "type": "exercise",
+      "id": "ch02-sec03-ex-6",
+      "number": "6",
       "problem": "1. $(x^3 + 2x^2 - 5x + 1) \\div (x - 1)$\n\n2. $(2x^3 - 7x^2 + 4x + 3) \\div (x - 2)$\n\n3. $(x^3 + 3x^2 - 4x - 12) \\div (x + 3)$\n\n4. $(x^3 - 5x^2 + 2x + 8) \\div (x - 2)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-2",
-      "number": "2",
+      "id": "ch02-sec03-ex-7",
+      "number": "7",
       "problem": "1. $(x^4 - 1) \\div (x - 1)$\n\n2. $(x^3 + 27) \\div (x + 3)$\n\n3. $(x^4 - 16) \\div (x - 2)$\n\n4. $(x^5 - 1) \\div (x - 1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-3",
-      "number": "3",
+      "id": "ch02-sec03-ex-8",
+      "number": "8",
       "problem": "1. $(2x^3 + 5x^2 - x - 6) \\div (x + 2)$\n\n2. $(3x^3 - 2x^2 + 4x - 1) \\div (x - 1)$\n\n3. $(x^4 - 3x^3 + 2x^2 - x + 5) \\div (x - 1)$\n\n4. $(2x^4 + x^3 - 4x + 3) \\div (x + 1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-4",
-      "number": "4",
+      "id": "ch02-sec03-ex-9",
+      "number": "9",
       "problem": "1. $(4x^3 - 8x^2 + 2x - 1) \\div (2x - 1)$\n\n2. $(6x^3 + 7x^2 - x + 2) \\div (3x + 2)$\n\n3. $(9x^3 - 3x^2 + 6x - 2) \\div (3x - 1)$\n\n4. $(8x^3 + 4x^2 - 2x + 1) \\div (2x + 1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-5",
-      "number": "5",
+      "id": "ch02-sec03-ex-10",
+      "number": "10",
       "problem": "1. $(2x^4 - 5x^3 + 3x - 4) \\div (2x - 1)$\n\n2. $(3x^4 + x^3 - 2x^2 + 5) \\div (3x + 1)$\n\n3. $(4x^3 - 6x^2 + 8x - 3) \\div (2x - 3)$\n\n4. $(6x^4 - x^2 + 2x - 1) \\div (2x - 1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-6",
-      "number": "6",
+      "id": "ch02-sec03-ex-11",
+      "number": "11",
       "problem": "1. $(2x^4 - 3x^3 + x - 5) \\div (x^2 + 1)$\n\n2. $(x^4 + 2x^3 - x - 2) \\div (x^2 - 1)$\n\n3. $(x^3 - 8) \\div (x^2 + 2x + 4)$\n\n4. $(x^4 - 2x^3 + x^2 - 3x + 2) \\div (x^2 - 1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-7",
-      "number": "7",
+      "id": "ch02-sec03-ex-12",
+      "number": "12",
       "problem": "1. $(3x^3 - 4x + 5) \\div (x^2 + 1)$\n\n2. $(x^4 + 2x^2 - 3) \\div (x^2 - 1)$\n\n3. $(2x^4 + x^3 - 3x + 5) \\div (x^2 + x + 1)$\n\n4. $(x^4 - x^2 + 1) \\div (x^2 + x + 1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-8",
-      "number": "8",
+      "id": "ch02-sec03-ex-13",
+      "number": "13",
       "problem": "1. $(x^3 - 4x^2 + 2x + 1) \\div (x - 3)$\n\n2. $(x^3 + 2x^2 - 5x - 6) \\div (x + 1)$\n\n3. $(x^3 - 7x + 6) \\div (x - 1)$\n\n4. $(x^3 + 3x^2 - 10x - 24) \\div (x + 4)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-9",
-      "number": "9",
+      "id": "ch02-sec03-ex-14",
+      "number": "14",
       "problem": "1. $(2x^3 - 5x^2 + 3x + 7) \\div (x - 2)$\n\n2. $(3x^3 + x^2 - 4x + 1) \\div (x + 1)$\n\n3. $(4x^3 - 8x^2 + x - 2) \\div (x - 2)$\n\n4. $(5x^3 + 2x - 10) \\div (x - 1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-10",
-      "number": "10",
+      "id": "ch02-sec03-ex-15",
+      "number": "15",
       "problem": "1. $(2x^4 - x^2 + 5) \\div (x + 1)$\n\n2. $(x^5 - 1) \\div (x - 1)$\n\n3. $(x^5 - 32) \\div (x - 2)$\n\n4. $(x^4 - 81) \\div (x - 3)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-11",
-      "number": "11",
+      "id": "ch02-sec03-ex-16",
+      "number": "16",
       "problem": "1. $(x^4 - 3x^3 + 2x^2 - x + 4) \\div (x - 1)$\n\n2. $(x^4 + 2x^3 - 7x^2 - 8x + 12) \\div (x + 3)$\n\n3. $(x^3 - 8) \\div (x - 2)$\n\n4. $(x^3 + 27) \\div (x + 3)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-12",
-      "number": "12",
+      "id": "ch02-sec03-ex-17",
+      "number": "17",
       "problem": "Use synthetic division to divide by a non-integer value.\n\n1. $(2x^3 - 3x^2 + x - 6) \\div (x - \\frac{3}{2})$\n\n2. $(3x^3 + x^2 - 2x + 4) \\div (x + \\frac{2}{3})$\n\n3. $(4x^3 - 5x + 2) \\div (x - \\frac{1}{2})$",
       "variant": "regular"
     },
@@ -427,29 +442,29 @@
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-13",
-      "number": "13",
+      "id": "ch02-sec03-ex-18",
+      "number": "18",
       "problem": "Use long division to find the quotient and remainder.\n\n1. $(x^3 - 6x^2 + 11x - 6) \\div (x - 1)$\n\n2. $(x^3 - 2x^2 - 5x + 6) \\div (x - 3)$\n\n3. $(x^3 + 4x^2 + x - 6) \\div (x + 2)$\n\n4. $(x^3 - x^2 - 14x + 24) \\div (x - 4)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-14",
-      "number": "14",
+      "id": "ch02-sec03-ex-19",
+      "number": "19",
       "problem": "Use long division to find the quotient and remainder.\n\n1. $(x^3 - 7x^2 + 14x - 8) \\div (x - 2)$\n\n2. $(x^3 + 5x^2 + 2x - 8) \\div (x + 4)$\n\n3. $(x^3 - 3x^2 - 10x + 24) \\div (x - 2)$\n\n4. $(x^3 + 2x^2 - 11x - 12) \\div (x + 4)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-15",
-      "number": "15",
+      "id": "ch02-sec03-ex-20",
+      "number": "20",
       "problem": "Use long division to divide. Express the result as $q(x) + \\frac{r(x)}{d(x)}$.\n\n1. $(x^4 + 3x^3 - 5x^2 + 2x - 1) \\div (x - 1)$\n\n2. $(2x^4 - x^3 + 3x^2 - 5) \\div (x + 2)$\n\n3. $(x^5 - 2x^3 + x - 3) \\div (x - 1)$\n\n4. $(3x^4 + 2x^3 - x + 4) \\div (x + 1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-16",
-      "number": "16",
+      "id": "ch02-sec03-ex-21",
+      "number": "21",
       "problem": "Use long division to divide. Express the result as $q(x) + \\frac{r(x)}{d(x)}$.\n\n1. $(x^4 - 2x^3 + 4x^2 - 3x + 5) \\div (x - 2)$\n\n2. $(2x^4 + 3x^3 - x^2 + 7) \\div (x + 3)$\n\n3. $(x^5 + x^4 - 3x^2 + 2) \\div (x - 2)$\n\n4. $(4x^4 - x^3 + 2x - 1) \\div (x + 2)$",
       "variant": "regular"
     },
@@ -460,222 +475,206 @@
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-17",
-      "number": "17",
+      "id": "ch02-sec03-ex-22",
+      "number": "22",
       "problem": "Use synthetic division to find the quotient and remainder.\n\n1. $(x^3 - 3x^2 - 4x + 12) \\div (x - 2)$\n\n2. $(x^3 + x^2 - 10x + 8) \\div (x - 2)$\n\n3. $(x^3 - 6x^2 + 3x + 10) \\div (x - 5)$\n\n4. $(x^3 + 4x^2 - 3x - 18) \\div (x + 3)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-18",
-      "number": "18",
+      "id": "ch02-sec03-ex-23",
+      "number": "23",
       "problem": "Use synthetic division to find the quotient and remainder.\n\n1. $(x^3 - 4x^2 - 7x + 10) \\div (x - 5)$\n\n2. $(x^3 + 2x^2 - 9x - 18) \\div (x + 2)$\n\n3. $(x^3 - 5x^2 - 2x + 24) \\div (x - 4)$\n\n4. $(x^3 + 6x^2 + 5x - 12) \\div (x + 4)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-19",
-      "number": "19",
+      "id": "ch02-sec03-ex-24",
+      "number": "24",
       "problem": "Use synthetic division. Note: Fill in missing terms with zero coefficients.\n\n1. $(x^3 - 27) \\div (x - 3)$\n\n2. $(x^3 + 64) \\div (x + 4)$\n\n3. $(x^4 - 16) \\div (x - 2)$\n\n4. $(x^4 - 81) \\div (x + 3)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-20",
-      "number": "20",
+      "id": "ch02-sec03-ex-25",
+      "number": "25",
       "problem": "Use synthetic division. Note: Fill in missing terms with zero coefficients.\n\n1. $(x^4 + x^2 - 2) \\div (x - 1)$\n\n2. $(x^4 - 5x^2 + 4) \\div (x + 2)$\n\n3. $(x^5 - x^3 + x) \\div (x - 1)$\n\n4. $(x^5 + 3x^3 - 2x) \\div (x + 1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-21",
-      "number": "21",
+      "id": "ch02-sec03-ex-26",
+      "number": "26",
       "problem": "Use the Remainder Theorem: Find $f(c)$ by evaluating the remainder when $f(x)$ is divided by $(x - c)$.\n\n1. $f(x) = x^3 - 4x^2 + 2x + 1$, $c = 3$\n\n2. $f(x) = 2x^3 + x^2 - 5x + 2$, $c = -2$\n\n3. $f(x) = x^4 - 3x^2 + 2$, $c = 1$\n\n4. $f(x) = x^4 + 2x^3 - x + 3$, $c = -1$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-22",
-      "number": "22",
+      "id": "ch02-sec03-ex-27",
+      "number": "27",
       "problem": "Use the Remainder Theorem: Find $f(c)$ by evaluating the remainder when $f(x)$ is divided by $(x - c)$.\n\n1. $f(x) = 3x^3 - 2x^2 + x - 5$, $c = 2$\n\n2. $f(x) = x^3 + 5x^2 - 4x - 20$, $c = -5$\n\n3. $f(x) = 2x^4 - x^2 + 3$, $c = -1$\n\n4. $f(x) = x^4 - 4x^3 + 6x^2 - 4x + 1$, $c = 1$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-23",
-      "number": "23",
+      "id": "ch02-sec03-ex-28",
+      "number": "28",
       "problem": "Use the Factor Theorem to determine whether $(x - c)$ is a factor of $f(x)$.\n\n1. $f(x) = x^3 - 3x^2 - 4x + 12$, $c = 2$\n\n2. $f(x) = x^3 + 2x^2 - 5x - 6$, $c = -3$\n\n3. $f(x) = x^4 - 5x^2 + 4$, $c = 1$\n\n4. $f(x) = 2x^3 - x^2 - 8x + 4$, $c = \\frac{1}{2}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-24",
-      "number": "24",
+      "id": "ch02-sec03-ex-29",
+      "number": "29",
       "problem": "Use the Factor Theorem to determine whether $(x - c)$ is a factor of $f(x)$.\n\n1. $f(x) = x^3 + x^2 - 10x + 8$, $c = -4$\n\n2. $f(x) = x^3 - 7x + 6$, $c = 2$\n\n3. $f(x) = x^4 - 13x^2 + 36$, $c = -2$\n\n4. $f(x) = 3x^3 + 2x^2 - 12x - 8$, $c = -\\frac{2}{3}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-25",
-      "number": "25",
+      "id": "ch02-sec03-ex-30",
+      "number": "30",
       "problem": "1. $f(x) = x^3 - 2x^2 + 5x - 7$, $c = 2$\n\n2. $f(x) = 2x^4 - 3x^3 + x - 1$, $c = -1$\n\n3. $f(x) = x^5 - 3x^3 + 2x$, $c = 3$\n\n4. $f(x) = 4x^3 - 5x + 2$, $c = \\frac{1}{2}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-26",
-      "number": "26",
+      "id": "ch02-sec03-ex-31",
+      "number": "31",
       "problem": "1. $f(x) = x^3 - 4x + 2$, $c = 3$\n\n2. $f(x) = 2x^3 + x^2 - 5x + 1$, $c = -2$\n\n3. $f(x) = x^4 - 3x^2 + 2$, $c = 2$\n\n4. $f(x) = x^5 - x^3 + x - 1$, $c = 1$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-27",
-      "number": "27",
+      "id": "ch02-sec03-ex-32",
+      "number": "32",
       "problem": "1. $f(x) = x^3 - 7x + 6$; $c = 1$\n\n2. $f(x) = x^4 - 16$; $c = 2$\n\n3. $f(x) = 2x^3 + x^2 - 5x + 2$; $c = 1$\n\n4. $f(x) = x^3 + 2x^2 - x - 2$; $c = -2$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-28",
-      "number": "28",
+      "id": "ch02-sec03-ex-33",
+      "number": "33",
       "problem": "1. $f(x) = x^3 - 6x^2 + 11x - 6$; is $(x - 1)$ a factor?\n\n2. $f(x) = x^4 - 2x^3 - 7x^2 + 8x + 12$; is $(x + 2)$ a factor?\n\n3. $f(x) = x^3 + 2x^2 - 5x - 6$; is $(x + 3)$ a factor?\n\n4. $f(x) = 2x^4 - 7x^3 + 4x^2 + 7x - 6$; is $(x - 2)$ a factor?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-29",
-      "number": "29",
+      "id": "ch02-sec03-ex-34",
+      "number": "34",
       "problem": "1. $f(x) = x^3 + 5x^2 + 2x - 8$; $c = 1$\n\n2. $f(x) = x^3 + 2x^2 - 9x - 18$; $c = -2$\n\n3. $f(x) = 2x^3 - x^2 - 7x + 6$; $c = -2$\n\n4. $f(x) = x^4 - 5x^2 + 4$; $c = 1$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-30",
-      "number": "30",
+      "id": "ch02-sec03-ex-35",
+      "number": "35",
       "problem": "1. $f(x) = x^3 - 6x^2 + 11x - 6$; zero: $x = 1$\n\n2. $f(x) = x^3 + 4x^2 + x - 6$; zero: $x = 1$\n\n3. $f(x) = x^3 - 2x^2 - 5x + 6$; zero: $x = 3$\n\n4. $f(x) = 2x^3 + x^2 - 13x + 6$; zero: $x = 2$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-31",
-      "number": "31",
+      "id": "ch02-sec03-ex-36",
+      "number": "36",
       "problem": "1. $f(x) = x^3 - 7x + 6$; zero: $x = 2$\n\n2. $f(x) = x^3 + 5x^2 + 2x - 8$; zero: $x = 1$\n\n3. $f(x) = 2x^3 - 3x^2 - 11x + 6$; zero: $x = 3$\n\n4. $f(x) = 3x^3 + 5x^2 - 26x + 8$; zero: $x = 2$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-32",
-      "number": "32",
+      "id": "ch02-sec03-ex-37",
+      "number": "37",
       "problem": "1. $f(x) = x^3 - 3x^2 - 4x + 12$\n\n2. $f(x) = x^3 + x^2 - 10x + 8$\n\n3. $f(x) = 2x^3 + 3x^2 - 11x - 6$\n\n4. $f(x) = x^3 - 4x^2 - 7x + 10$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-33",
-      "number": "33",
+      "id": "ch02-sec03-ex-38",
+      "number": "38",
       "problem": "Find $k$ so that $(x - c)$ is a factor of $f(x)$.\n\n1. $(x - 2)$ is a factor of $x^3 - kx^2 + 4x - 8$\n\n2. $(x + 1)$ is a factor of $x^3 + 3x^2 + kx + 4$\n\n3. $(x - 3)$ is a factor of $2x^3 - 5x^2 - kx + 6$\n\n4. $(x + 2)$ is a factor of $x^3 - x^2 + kx + 10$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-34",
-      "number": "34",
+      "id": "ch02-sec03-ex-39",
+      "number": "39",
       "problem": "Find $k$ so that the remainder is as specified.\n\n1. $(x^3 + kx^2 - 2x + 1) \\div (x - 2)$ has remainder 5\n\n2. $(2x^3 - x^2 + kx - 3) \\div (x + 1)$ has remainder $-7$\n\n3. $(x^4 + kx^3 + 2x - 1) \\div (x - 1)$ has remainder 0\n\n4. $(x^3 + kx^2 - 2x + 3) \\div (x - 3)$ has remainder 0",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-35",
-      "number": "35",
+      "id": "ch02-sec03-ex-40",
+      "number": "40",
       "problem": "Find $a$ and $b$ given the conditions.\n\n1. $f(x) = x^3 + ax^2 + bx + 6$ has $(x - 2)$ as a factor and \n remainder $10$ when divided by $(x - 1)$.\n\n2. $f(x) = x^3 + ax^2 + bx - 12$ has zeros at $x = 2$ and $x = -3$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-36",
-      "number": "36",
+      "id": "ch02-sec03-ex-41",
+      "number": "41",
       "problem": "1. $(x^3 - 2x^2 + 3x - 5) \\div (x - 2)$\n\n2. $(2x^3 + x^2 - 4x + 3) \\div (x + 1)$\n\n3. $(x^4 - 3x^2 + 2) \\div (x^2 + 1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-37",
-      "number": "37",
+      "id": "ch02-sec03-ex-42",
+      "number": "42",
       "problem": "1. $\\dfrac{x^3 + 2x^2 - x + 3}{x - 1}$\n\n2. $\\dfrac{2x^4 - 3x^2 + x - 5}{x + 2}$\n\n3. $\\dfrac{x^4 - 1}{x^2 + 1}$\n\n4. $\\dfrac{x^5 - x^3 + x}{x^2 - 1}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-38",
-      "number": "38",
+      "id": "ch02-sec03-ex-43",
+      "number": "43",
       "problem": "A company's total cost to produce $x$ items is $C(x) = 0.5x^3 - 2x^2 + 50x + 800$ \ndollars. Find the average cost per item $\\overline{C}(x) = \\frac{C(x)}{x}$ and \nevaluate $\\overline{C}(100)$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-39",
-      "number": "39",
+      "id": "ch02-sec03-ex-44",
+      "number": "44",
       "problem": "A rectangular box has volume $V(x) = 2x^3 + 7x^2 + 7x + 2$ cubic units. If one \ndimension is $(x + 2)$, find expressions for the other two dimensions.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-40",
-      "number": "40",
+      "id": "ch02-sec03-ex-45",
+      "number": "45",
       "problem": "A company's revenue in thousands of dollars is modeled by \n$R(t) = t^3 - 6t^2 + 9t + 14$ where $t$ is years since 2020. \n\n1. Use the Remainder Theorem to find $R(2)$ and $R(5)$.\n\n2. Interpret these values in context.\n\n3. If $R(t) = 0$ when $t = 7$, verify this and factor $R(t)$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-2.3-41",
-      "number": "41",
+      "id": "ch02-sec03-ex-46",
+      "number": "46",
       "problem": "The volume of a cylinder is $V = \\pi r^2 h$. If a cylindrical tank has \nvolume $V(r) = \\pi(r^3 + 2r^2 - 5r - 6)$ cubic feet and height $h = (r + 3)$ \nfeet, find an expression for the radius squared.",
       "variant": "regular"
     },
     {
-      "type": "paragraph",
-      "text": "Use a graphing calculator to find all real zeros, then use \nsynthetic division to factor completely.\n\n1. $f(x) = x^3 - 5x^2 + 2x + 8$\n\n2. $f(x) = x^4 - 5x^3 + 5x^2 + 5x - 6$\n\n3. $f(x) = 2x^3 + x^2 - 8x - 4$"
+      "type": "exercise",
+      "id": "ch02-sec03-ex-47",
+      "number": "47",
+      "problem": "Use a graphing calculator to find all real zeros, then use \nsynthetic division to factor completely.\n\n1. $f(x) = x^3 - 5x^2 + 2x + 8$\n\n2. $f(x) = x^4 - 5x^3 + 5x^2 + 5x - 6$\n\n3. $f(x) = 2x^3 + x^2 - 8x - 4$",
+      "variant": "technology"
     },
     {
-      "type": "paragraph",
-      "text": "Verify the division $\\frac{x^3 - 8}{x - 2} = x^2 + 2x + 4$ by \ngraphing both $y_1 = \\frac{x^3 - 8}{x - 2}$ and $y_2 = x^2 + 2x + 4$. What \ndo you observe at $x = 2$?"
+      "type": "exercise",
+      "id": "ch02-sec03-ex-48",
+      "number": "48",
+      "problem": "Verify the division $\\frac{x^3 - 8}{x - 2} = x^2 + 2x + 4$ by \ngraphing both $y_1 = \\frac{x^3 - 8}{x - 2}$ and $y_2 = x^2 + 2x + 4$. What \ndo you observe at $x = 2$?",
+      "variant": "technology"
     },
     {
-      "type": "paragraph",
-      "text": "Graph $f(x) = x^3 - 3x^2 - x + 3$ and use the graph to identify \na zero. Then use synthetic division to factor $f(x)$ completely."
+      "type": "exercise",
+      "id": "ch02-sec03-ex-49",
+      "number": "49",
+      "problem": "Graph $f(x) = x^3 - 3x^2 - x + 3$ and use the graph to identify \na zero. Then use synthetic division to factor $f(x)$ completely.",
+      "variant": "technology"
     },
     {
-      "type": "paragraph",
-      "text": "Describe and correct the error."
-    },
-    {
-      "type": "heading",
-      "level": 3,
-      "text": "Problem:"
-    },
-    {
-      "type": "heading",
-      "level": 3,
-      "text": "Student work:"
-    },
-    {
-      "type": "paragraph",
-      "text": "Describe and correct the error."
-    },
-    {
-      "type": "heading",
-      "level": 3,
-      "text": "Problem:"
-    },
-    {
-      "type": "heading",
-      "level": 3,
-      "text": "Student work:"
-    },
-    {
-      "type": "paragraph",
-      "text": "Describe and correct the error."
+      "type": "exercise",
+      "id": "ch02-sec03-ex-50",
+      "number": "50",
+      "problem": "Describe and correct the error.",
+      "variant": "error-analysis"
     },
     {
       "type": "heading",
@@ -688,8 +687,11 @@
       "text": "Student work:"
     },
     {
-      "type": "paragraph",
-      "text": "Describe and correct the error."
+      "type": "exercise",
+      "id": "ch02-sec03-ex-51",
+      "number": "51",
+      "problem": "Describe and correct the error.",
+      "variant": "error-analysis"
     },
     {
       "type": "heading",
@@ -702,43 +704,102 @@
       "text": "Student work:"
     },
     {
-      "type": "paragraph",
-      "text": "Find the remainder when $x^{100} - 2x^{51} + 1$ is divided \nby $x - 1$."
+      "type": "exercise",
+      "id": "ch02-sec03-ex-52",
+      "number": "52",
+      "problem": "Describe and correct the error.",
+      "variant": "error-analysis"
     },
     {
-      "type": "paragraph",
-      "text": "Find the quotient when $x^4 + x^3 + x^2 + x + 1$ is divided \nby $x - 1$. What do you notice about the remainder? Explain."
+      "type": "heading",
+      "level": 3,
+      "text": "Problem:"
     },
     {
-      "type": "paragraph",
-      "text": "If $f(x)$ divided by $(x - 1)$ gives remainder 3, and divided \nby $(x - 2)$ gives remainder 5, find the remainder when $f(x)$ is divided \nby $(x - 1)(x - 2)$. (Hint: The remainder has degree at most 1.)"
+      "type": "heading",
+      "level": 3,
+      "text": "Student work:"
     },
     {
-      "type": "paragraph",
-      "text": "Find the quotient and remainder when $x^4 + x^2 + 1$ is divided \nby $x^2 + x + 1$. What does the zero remainder tell you about factoring?"
+      "type": "exercise",
+      "id": "ch02-sec03-ex-53",
+      "number": "53",
+      "problem": "Describe and correct the error.",
+      "variant": "error-analysis"
     },
     {
-      "type": "paragraph",
-      "text": "**Proof.** Prove that $x - 1$ is a factor of $x^n - 1$ \nfor any positive integer $n$."
+      "type": "heading",
+      "level": 3,
+      "text": "Problem:"
     },
     {
-      "type": "paragraph",
-      "text": "**Proof.** Prove that if $n$ is odd, then $(x + a)$ is \na factor of $x^n + a^n$."
+      "type": "heading",
+      "level": 3,
+      "text": "Student work:"
     },
     {
-      "type": "paragraph",
-      "text": "**Proof.** Prove the Remainder Theorem: If $f(x)$ is \ndivided by $(x - c)$, the remainder is $f(c)$."
+      "type": "exercise",
+      "id": "ch02-sec03-ex-54",
+      "number": "54",
+      "problem": "Find the remainder when $x^{100} - 2x^{51} + 1$ is divided \nby $x - 1$.",
+      "variant": "starred"
     },
     {
-      "type": "paragraph",
-      "text": "**Exploration.** The sum of cubes factors as \n$a^3 + b^3 = (a + b)(a^2 - ab + b^2)$. Use polynomial division to verify \nthis identity by dividing $x^3 + 8$ by $x + 2$. Then explore: does a \nsimilar pattern hold for $x^4 + 16$ divided by $x + 2$?"
+      "type": "exercise",
+      "id": "ch02-sec03-ex-55",
+      "number": "55",
+      "problem": "Find the quotient when $x^4 + x^3 + x^2 + x + 1$ is divided \nby $x - 1$. What do you notice about the remainder? Explain.",
+      "variant": "starred"
+    },
+    {
+      "type": "exercise",
+      "id": "ch02-sec03-ex-56",
+      "number": "56",
+      "problem": "If $f(x)$ divided by $(x - 1)$ gives remainder 3, and divided \nby $(x - 2)$ gives remainder 5, find the remainder when $f(x)$ is divided \nby $(x - 1)(x - 2)$. (Hint: The remainder has degree at most 1.)",
+      "variant": "starred"
+    },
+    {
+      "type": "exercise",
+      "id": "ch02-sec03-ex-57",
+      "number": "57",
+      "problem": "Find the quotient and remainder when $x^4 + x^2 + 1$ is divided \nby $x^2 + x + 1$. What does the zero remainder tell you about factoring?",
+      "variant": "starred"
+    },
+    {
+      "type": "exercise",
+      "id": "ch02-sec03-ex-58",
+      "number": "58",
+      "problem": "**Proof.** Prove that $x - 1$ is a factor of $x^n - 1$ \nfor any positive integer $n$.",
+      "variant": "starred"
+    },
+    {
+      "type": "exercise",
+      "id": "ch02-sec03-ex-59",
+      "number": "59",
+      "problem": "**Proof.** Prove that if $n$ is odd, then $(x + a)$ is \na factor of $x^n + a^n$.",
+      "variant": "starred"
+    },
+    {
+      "type": "exercise",
+      "id": "ch02-sec03-ex-60",
+      "number": "60",
+      "problem": "**Proof.** Prove the Remainder Theorem: If $f(x)$ is \ndivided by $(x - c)$, the remainder is $f(c)$.",
+      "variant": "starred"
+    },
+    {
+      "type": "exercise",
+      "id": "ch02-sec03-ex-61",
+      "number": "61",
+      "problem": "**Exploration.** The sum of cubes factors as \n$a^3 + b^3 = (a + b)(a^2 - ab + b^2)$. Use polynomial division to verify \nthis identity by dividing $x^3 + 8$ by $x + 2$. Then explore: does a \nsimilar pattern hold for $x^4 + 16$ divided by $x + 2$?",
+      "variant": "starred"
     }
   ],
   "marginNotes": [
     {
       "type": "scripture",
       "reference": "Proverbs 2:3--5",
-      "text": "If you call out for insight and cry \naloud for understanding, and if you look for it as for silver and search \nfor it as for hidden treasure, then you will understand the fear of the \nLord and find the knowledge of God."
+      "text": "If you call out for insight and cry \naloud for understanding, and if you look for it as for silver and search \nfor it as for hidden treasure, then you will understand the fear of the \nLord and find the knowledge of God.",
+      "edition": "christian"
     }
   ]
 }

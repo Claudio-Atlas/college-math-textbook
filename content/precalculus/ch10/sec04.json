@@ -25,10 +25,6 @@
   "content": [
     {
       "type": "paragraph",
-      "text": "{Atlas Press}"
-    },
-    {
-      "type": "paragraph",
       "text": "So far, our conic sections have been \"axis-aligned\"—their axes of \nsymmetry were parallel to the coordinate axes. But what happens when a \nconic is tilted? An equation like $xy = 1$ or $x^2 + xy + y^2 = 4$ \ncontains an $xy$-term that indicates the conic is *rotated* relative \nto the standard position."
     },
     {
@@ -46,7 +42,7 @@
     },
     {
       "type": "definition",
-      "id": "definition-10.1",
+      "id": "ch10-sec04-definition-10.1",
       "title": "General Second-Degree Equation",
       "content": "The most general form of a conic section is:\n$$\n Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0\n$$\nwhere $A$, $B$, $C$, $D$, $E$, and $F$ are real numbers with $A$, $B$, \n$C$ not all zero.",
       "number": "10.1"
@@ -61,7 +57,7 @@
     },
     {
       "type": "example",
-      "id": "example-10.1",
+      "id": "ch10-sec04-example-10.1",
       "number": "10.1",
       "title": "Identifying the $xy$-term",
       "problem": "Determine whether each conic is rotated.\n\n1. $9x^2 + 4y^2 - 36 = 0$\n\n2. $x^2 - 4xy + y^2 + 5 = 0$\n\n3. $xy = 4$",
@@ -78,14 +74,14 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-10.1",
+      "id": "ch10-sec04-theorem-10.1",
       "title": "Discriminant Test for Conics",
       "content": "For the general second-degree equation $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$, \nthe quantity $B^2 - 4AC$ determines the type of conic:\n\n- If $B^2 - 4AC < 0$: **Ellipse** (or circle if $A = C$ and $B = 0$)\n\n- If $B^2 - 4AC = 0$: **Parabola**\n\n- If $B^2 - 4AC > 0$: **Hyperbola**\n*Note:* Degenerate cases (point, line, intersecting lines, etc.) \nare possible.",
       "number": "10.1"
     },
     {
       "type": "example",
-      "id": "example-10.2",
+      "id": "ch10-sec04-example-10.2",
       "number": "10.2",
       "title": "Using the discriminant",
       "problem": "Classify each conic without graphing.\n\n1. $2x^2 + 3xy - 2y^2 + x - y = 0$\n\n2. $x^2 + 4xy + 4y^2 - 6x = 0$\n\n3. $3x^2 + 2xy + 3y^2 - 8 = 0$",
@@ -102,22 +98,22 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-10.2",
+      "id": "ch10-sec04-theorem-10.2",
       "title": "Rotation of Axes Formulas",
-      "content": "If the coordinate axes are rotated through an angle $\\theta$, the \nrelationships between the original coordinates $(x, y)$ and the new \ncoordinates $(x', y')$ are:\n$$\\begin{aligned}\n x &= x'\\cos\\theta - y'\\sin\\theta \\label{eq:rot-x} \\\\\n y &= x'\\sin\\theta + y'\\cos\\theta \\label{eq:rot-y}\n\\end{aligned}$$\nOr equivalently, solving for $x'$ and $y'$:\n$$\\begin{aligned}\n x' &= x\\cos\\theta + y\\sin\\theta \\label{eq:rot-xp} \\\\\n y' &= -x\\sin\\theta + y\\cos\\theta \\label{eq:rot-yp}\n\\end{aligned}$$",
+      "content": "If the coordinate axes are rotated through an angle $\\theta$, the \nrelationships between the original coordinates $(x, y)$ and the new \ncoordinates $(x', y')$ are:\n$$\\begin{aligned}\n x &= x'\\cos\\theta - y'\\sin\\theta \\\\\n y &= x'\\sin\\theta + y'\\cos\\theta \n\\end{aligned}$$\nOr equivalently, solving for $x'$ and $y'$:\n$$\\begin{aligned}\n x' &= x\\cos\\theta + y\\sin\\theta \\\\\n y' &= -x\\sin\\theta + y\\cos\\theta \n\\end{aligned}$$",
       "number": "10.2"
     },
     {
       "type": "figure",
-      "id": "fig:rotation-axes",
-      "src": "/figures/precalculus/ch10/fig-rotation-axes.svg",
+      "id": "fig-10.4-inline-1",
+      "src": "/figures/precalculus/ch10/fig-10.4-inline-1.svg",
       "caption": "Rotation of axes by angle $\\theta$. The original axes are $x$ and $y$ (black). The rotated axes are $x'$ and $y'$ (teal), obtained by rotating counterclockwise by angle $\\theta$. A point $P$ has different coordinates in each system, but represents the same location in the plane.",
       "alt": "Rotation of axes by angle $\\theta$. The original axes are $x$ and $y$ (black). The rotated axes are $x'$ and $y'$ (teal), obtained by rotating counterclockwise by angle $\\theta$. A point $P$ has different coordinates in each system, but represents the same location in the plane.",
       "tikz": true
     },
     {
       "type": "example",
-      "id": "example-10.3",
+      "id": "ch10-sec04-example-10.3",
       "number": "10.3",
       "title": "Using rotation formulas",
       "problem": "A coordinate system is rotated by $\\theta = 45°$. \n\n1. Express $(x, y)$ in terms of $(x', y')$.\n\n2. Find the original coordinates of the point with $x' = 2$, $y' = 0$.",
@@ -134,27 +130,27 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-10.3",
+      "id": "ch10-sec04-theorem-10.3",
       "title": "Angle of Rotation",
       "content": "To eliminate the $xy$-term from $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$, \nrotate through angle $\\theta$ where:\n$$\n \\cot 2\\theta = \\frac{A - C}{B} \\quad \\text{(assuming } B \\neq 0\\text{)}\n$$\nChoose $\\theta$ such that $0° < \\theta < 90°$ (or $0 < \\theta < \\frac{\\pi}{2}$).",
       "number": "10.3"
     },
     {
       "type": "warning",
-      "id": "warning-10.4",
+      "id": "ch10-sec04-warning",
       "title": "",
       "content": "When $A = C$, we have $\\cot 2\\theta = 0$, which means $2\\theta = 90°$, \nso $\\theta = 45°$."
     },
     {
       "type": "algorithm",
-      "id": "algorithm-10.1",
+      "id": "ch10-sec04-algorithm-10.1",
       "title": "Analyzing a Rotated Conic",
       "content": "Given an equation $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$ with $B \\neq 0$:\n\n1. **Classify the conic** using the discriminant $B^2 - 4AC$:\n \n- 2. $B^2 - 4AC < 0$: Ellipse (or circle)\n\n3. $B^2 - 4AC = 0$: Parabola\n\n4. $B^2 - 4AC > 0$: Hyperbola\n\n5. **Find the rotation angle** $\\theta$:\n $$\n \\cot 2\\theta = \\frac{A - C}{B}\n $$\n Use a reference triangle or inverse trig to find $\\cos\\theta$ and $\\sin\\theta$.\n\n6. **Find $\\cos\\theta$ and $\\sin\\theta$** using half-angle formulas:\n \n- 7. If $\\cot 2\\theta \\geq 0$: use $\\cos 2\\theta = \\frac{A-C}{\\sqrt{(A-C)^2 + B^2}}$\n\n8. If $\\cot 2\\theta < 0$: use $\\cos 2\\theta = \\frac{-(A-C)}{\\sqrt{(A-C)^2 + B^2}}$\n Then: $\\cos\\theta = \\sqrt{\\frac{1 + \\cos 2\\theta}{2}}$, $\\sin\\theta = \\sqrt{\\frac{1 - \\cos 2\\theta}{2}}$\n\n9. **Apply the rotation formulas**:\n $$\\begin{aligned}\n x &= x'\\cos\\theta - y'\\sin\\theta \\\\\n y &= x'\\sin\\theta + y'\\cos\\theta\n \\end{aligned}$$\n\n10. **Substitute** into the original equation and simplify. \n The $x'y'$-term should vanish, leaving a standard form.\n\n11. **Analyze** the resulting equation:\n \n- 12. Identify center, vertices, foci (in $x'y'$-coordinates)\n\n13. Convert back to $xy$-coordinates if needed\n\n14. **Graph**: Sketch the rotated axes at angle $\\theta$, \n then graph the conic in standard position relative to those axes.",
       "number": "10.1"
     },
     {
       "type": "example",
-      "id": "example-10.4",
+      "id": "ch10-sec04-example-10.4",
       "number": "10.4",
       "title": "Finding the rotation angle",
       "problem": "Find the angle of rotation that eliminates the $xy$-term.\n\n1. $xy = 4$\n\n2. $x^2 + 2xy + y^2 - 8x + 8y = 0$\n\n3. $16x^2 - 24xy + 9y^2 + 100x - 200 = 0$",
@@ -167,14 +163,14 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-10.4",
+      "id": "ch10-sec04-theorem-10.4",
       "title": "Procedure for Graphing Rotated Conics",
       "content": "To graph $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$ when $B \\neq 0$:\n\n1. **Find** $\\theta$ using $\\cot 2\\theta = \\frac{A-C}{B}$.\n\n2. **Calculate** $\\cos\\theta$ and $\\sin\\theta$.\n\n3. **Substitute** the rotation formulas into the equation.\n\n4. **Simplify** to get an equation in $x'$ and $y'$ with no $x'y'$-term.\n\n5. **Graph** the conic in the $x'y'$-system.\n\n6. **Rotate** the graph back by drawing $x'$- and $y'$-axes at angle $\\theta$.",
       "number": "10.4"
     },
     {
       "type": "example",
-      "id": "example-10.5",
+      "id": "ch10-sec04-example-10.5",
       "number": "10.5",
       "title": "Graphing $xy = 4$",
       "problem": "Graph the equation $xy = 4$.",
@@ -182,7 +178,7 @@
     },
     {
       "type": "example",
-      "id": "example-10.6",
+      "id": "ch10-sec04-example-10.6",
       "number": "10.6",
       "title": "Graphing a rotated ellipse",
       "problem": "Graph $x^2 + xy + y^2 = 3$.",
@@ -190,7 +186,7 @@
     },
     {
       "type": "example",
-      "id": "example-10.7",
+      "id": "ch10-sec04-example-10.7",
       "number": "10.7",
       "title": "Graphing a rotated parabola",
       "problem": "Graph $x^2 + 2xy + y^2 + 4\\sqrt{2}x - 4\\sqrt{2}y = 0$.",
@@ -207,114 +203,135 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-10.5",
+      "id": "ch10-sec04-theorem-10.5",
       "title": "Rotation Invariants",
       "content": "For the general conic $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$, the \nfollowing quantities are invariant under rotation:\n\n1. $A + C$ (the sum of the coefficients of $x^2$ and $y^2$)\n\n2. $B^2 - 4AC$ (the discriminant)\n\n3. $F$ (the constant term)",
       "number": "10.5"
     },
     {
       "type": "summary",
-      "id": "summary-10.4",
+      "id": "ch10-sec04-summary",
       "title": "Rotation of Conics",
       "content": "- The **general second-degree equation** is \n $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$.\n\n- The presence of an $xy$-term ($B \\neq 0$) indicates a \n **rotated conic**.\n\n- **Discriminant classification:**\n \n- - $B^2 - 4AC < 0$: Ellipse (or circle)\n\n- $B^2 - 4AC = 0$: Parabola\n\n- $B^2 - 4AC > 0$: Hyperbola\n\n- **Rotation formulas:**\n $$\\begin{aligned}\n x &= x'\\cos\\theta - y'\\sin\\theta \\\\\n y &= x'\\sin\\theta + y'\\cos\\theta\n \\end{aligned}$$\n\n- **Angle to eliminate $xy$-term:** $\\cot 2\\theta = \\frac{A-C}{B}$\n\n- The quantities $A + C$, $B^2 - 4AC$, and $F$ are \n **invariant** under rotation."
     },
     {
-      "type": "paragraph",
-      "text": "Fill in the blank.\n\n1. The general second-degree equation in $x$ and $y$ is .\n\n2. If $B \\neq 0$ in the general equation, the conic is .\n\n3. The quantity $B^2 - 4AC$ is called the .\n\n4. To eliminate the $xy$-term, we use the formula $\\cot 2\\theta = $ .\n\n5. A quantity that remains unchanged under rotation is called an ."
+      "type": "exercise",
+      "id": "ch10-sec04-ex-1",
+      "number": "1",
+      "problem": "Fill in the blank.\n\n1. The general second-degree equation in $x$ and $y$ is .\n\n2. If $B \\neq 0$ in the general equation, the conic is .\n\n3. The quantity $B^2 - 4AC$ is called the .\n\n4. To eliminate the $xy$-term, we use the formula $\\cot 2\\theta = $ .\n\n5. A quantity that remains unchanged under rotation is called an .",
+      "variant": "vocabulary"
     },
     {
       "type": "exercise",
-      "id": "ex-10.4-1",
-      "number": "1",
+      "id": "ch10-sec04-ex-2",
+      "number": "2",
       "problem": "Determine whether each conic is rotated (has an $xy$-term).\n\n1. $4x^2 + 9y^2 = 36$\n\n2. $xy - 2 = 0$\n\n3. $x^2 - 6xy + 9y^2 + 2x - 3y = 0$\n\n4. $y^2 - 8x = 0$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-10.4-2",
-      "number": "2",
+      "id": "ch10-sec04-ex-3",
+      "number": "3",
       "problem": "Use the discriminant to classify each conic.\n\n1. $x^2 + 4xy + y^2 - 3 = 0$\n\n2. $x^2 + 4xy + 4y^2 + 5x - 6 = 0$\n\n3. $x^2 + 4xy + 5y^2 - 1 = 0$\n\n4. $2x^2 - 3xy - 2y^2 = 0$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-10.4-3",
-      "number": "3",
+      "id": "ch10-sec04-ex-4",
+      "number": "4",
       "problem": "Classify each conic and find the angle of rotation $\\theta$ (do not graph).\n\n1. $xy = 9$\n\n2. $5x^2 - 6xy + 5y^2 - 8 = 0$\n\n3. $9x^2 - 24xy + 16y^2 - 40x - 30y = 0$\n\n4. $3x^2 + 2\\sqrt{3}xy + y^2 + 2x - 2\\sqrt{3}y = 0$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-10.4-4",
-      "number": "4",
+      "id": "ch10-sec04-ex-5",
+      "number": "5",
       "problem": "For a rotation of $\\theta = 30°$, express $x$ and $y$ in terms of $x'$ and $y'$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-10.4-5",
-      "number": "5",
+      "id": "ch10-sec04-ex-6",
+      "number": "6",
       "problem": "For a rotation of $\\theta = 60°$, express $x'$ and $y'$ in terms of $x$ and $y$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-10.4-6",
-      "number": "6",
+      "id": "ch10-sec04-ex-7",
+      "number": "7",
       "problem": "If the axes are rotated by $45°$, find the new coordinates of:\n\n1. $(2, 0)$\n\n2. $(0, 3)$\n\n3. $(1, 1)$\n\n4. $(-2, 2)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-10.4-7",
-      "number": "7",
+      "id": "ch10-sec04-ex-8",
+      "number": "8",
       "problem": "Rotate the axes to eliminate the $xy$-term, write the equation in standard form, and graph.\n\n1. $xy = 1$\n\n2. $xy = -2$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-10.4-8",
-      "number": "8",
+      "id": "ch10-sec04-ex-9",
+      "number": "9",
       "problem": "Rotate the axes to eliminate the $xy$-term, write the equation in standard form, and graph.\n\n1. $x^2 + 2xy + y^2 - 8x + 8y = 0$\n\n2. $x^2 - 2xy + y^2 + x + y = 0$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-10.4-9",
-      "number": "9",
+      "id": "ch10-sec04-ex-10",
+      "number": "10",
       "problem": "Rotate and graph:\n\n1. $5x^2 - 6xy + 5y^2 = 16$\n\n2. $3x^2 + 2\\sqrt{3}xy + y^2 - 8 = 0$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-10.4-10",
-      "number": "10",
+      "id": "ch10-sec04-ex-11",
+      "number": "11",
       "problem": "Rotate and graph, identifying vertices and foci:\n\n1. $7x^2 + 6\\sqrt{3}xy + 13y^2 = 64$\n\n2. $x^2 + 2\\sqrt{3}xy + 3y^2 - 8\\sqrt{3}x + 8y = 0$",
       "variant": "regular"
     },
     {
-      "type": "paragraph",
-      "text": "True or False? Justify your answer.\n\n1. Every conic with an $xy$-term is a hyperbola.\n\n2. The discriminant $B^2 - 4AC$ changes when the axes are rotated.\n\n3. A rotation of axes changes the shape of a conic.\n\n4. If $A = C$ and $B \\neq 0$, then $\\theta = 45°$ eliminates the $xy$-term.\n\n5. The equation $x^2 + y^2 = 4$ is unchanged by any rotation."
+      "type": "exercise",
+      "id": "ch10-sec04-ex-12",
+      "number": "12",
+      "problem": "True or False? Justify your answer.\n\n1. Every conic with an $xy$-term is a hyperbola.\n\n2. The discriminant $B^2 - 4AC$ changes when the axes are rotated.\n\n3. A rotation of axes changes the shape of a conic.\n\n4. If $A = C$ and $B \\neq 0$, then $\\theta = 45°$ eliminates the $xy$-term.\n\n5. The equation $x^2 + y^2 = 4$ is unchanged by any rotation.",
+      "variant": "conceptual"
     },
     {
-      "type": "paragraph",
-      "text": "Explain why the rotation formulas can be derived using \nbasic trigonometry (hint: consider a point at distance $r$ from the origin \nat angle $\\alpha$ from the $x$-axis)."
+      "type": "exercise",
+      "id": "ch10-sec04-ex-13",
+      "number": "13",
+      "problem": "Explain why the rotation formulas can be derived using \nbasic trigonometry (hint: consider a point at distance $r$ from the origin \nat angle $\\alpha$ from the $x$-axis).",
+      "variant": "conceptual"
     },
     {
-      "type": "paragraph",
-      "text": "Why is the discriminant $B^2 - 4AC$ invariant under rotation? \nWhat does this tell us about the classification of conics?"
+      "type": "exercise",
+      "id": "ch10-sec04-ex-14",
+      "number": "14",
+      "problem": "Why is the discriminant $B^2 - 4AC$ invariant under rotation? \nWhat does this tell us about the classification of conics?",
+      "variant": "conceptual"
     },
     {
-      "type": "paragraph",
-      "text": "Derive the formula $\\cot 2\\theta = \\frac{A-C}{B}$ by \nsubstituting the rotation formulas into $Ax^2 + Bxy + Cy^2$ and setting \nthe coefficient of $x'y'$ equal to zero."
+      "type": "exercise",
+      "id": "ch10-sec04-ex-15",
+      "number": "15",
+      "problem": "Derive the formula $\\cot 2\\theta = \\frac{A-C}{B}$ by \nsubstituting the rotation formulas into $Ax^2 + Bxy + Cy^2$ and setting \nthe coefficient of $x'y'$ equal to zero.",
+      "variant": "starred"
     },
     {
-      "type": "paragraph",
-      "text": "Show that if the original equation is $Ax^2 + Bxy + Cy^2 + F = 0$ \n(with $D = E = 0$), then after rotation the equation becomes \n$A'x'^2 + C'y'^2 + F = 0$ where $A' + C' = A + C$."
+      "type": "exercise",
+      "id": "ch10-sec04-ex-16",
+      "number": "16",
+      "problem": "Show that if the original equation is $Ax^2 + Bxy + Cy^2 + F = 0$ \n(with $D = E = 0$), then after rotation the equation becomes \n$A'x'^2 + C'y'^2 + F = 0$ where $A' + C' = A + C$.",
+      "variant": "starred"
     },
     {
-      "type": "paragraph",
-      "text": "Find an equation of the conic that passes through the \nfive points $(0, 0)$, $(1, 1)$, $(2, 0)$, $(0, 2)$, and $(1, 2)$. \nIdentify the conic."
+      "type": "exercise",
+      "id": "ch10-sec04-ex-17",
+      "number": "17",
+      "problem": "Find an equation of the conic that passes through the \nfive points $(0, 0)$, $(1, 1)$, $(2, 0)$, $(0, 2)$, and $(1, 2)$. \nIdentify the conic.",
+      "variant": "starred"
     }
   ]
 }

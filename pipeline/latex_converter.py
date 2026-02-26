@@ -375,6 +375,7 @@ class SectionParser:
         # Phase 1: preprocess
         text = strip_comments(raw_tex)
         text = process_ifchristian(text, self.christian)
+        text = self._preprocess_strip(text)
 
         # Extract metadata before structural parse
         title = self._extract_title(text)
@@ -405,6 +406,53 @@ class SectionParser:
             sec.content.extend(self._parse_exercises(exercise_text))
 
         return sec
+
+    # ── Early Preprocessing (strip junk commands) ──────────
+
+    def _preprocess_strip(self, text: str) -> str:
+        """Strip LaTeX commands that have no meaning in web output, BEFORE any parsing."""
+        # \renewcommand{...}{...} (with any number of args)
+        # Matches \renewcommand{\arraystretch}{1.3} etc.
+        text = re.sub(r'\\renewcommand\s*\{[^}]*\}\s*\{[^}]*\}', '', text)
+
+        # \lettrine[opts]{X}{rest} → Xrest
+        text = re.sub(r'\\lettrine(?:\[[^\]]*\])*\{([^}])\}\{([^}]*)\}', r'\1\2', text)
+
+        # \addcontentsline{...}{...}{...}
+        text = re.sub(r'\\addcontentsline\{[^}]*\}\{[^}]*\}\{[^}]*\}', '', text)
+
+        # \setcounter{...}{...}
+        text = re.sub(r'\\setcounter\{[^}]*\}\{[^}]*\}', '', text)
+
+        # \label{...} outside math (we keep labels inside \begin{figure} etc for ID extraction)
+        # Actually labels are stripped later; just ensure they don't show as text
+        text = re.sub(r'\\label\{[^}]*\}', '', text)
+
+        # \index{...}
+        text = re.sub(r'\\index\{[^}]*\}', '', text)
+
+        # {Atlas Press} as standalone fragment
+        text = re.sub(r'\{Atlas Press\}', '', text)
+
+        # \textsuperscript{...} → content
+        text = re.sub(r'\\textsuperscript\{([^}]*)\}', r'\1', text)
+
+        # \polylongdiv{...}{...} → placeholder
+        text = re.sub(r'\\polylongdiv\{[^}]*\}\{[^}]*\}', '[polynomial long division]', text)
+
+        # \cancel{text} → text
+        text = re.sub(r'\\cancel\{([^}]*)\}', r'\1', text)
+
+        # \eqref{...} → strip
+        text = re.sub(r'\\eqref\{[^}]*\}', '', text)
+
+        # \hline inside align/aligned environments — strip
+        text = re.sub(r'(\\begin\{align\*?\}.*?)\\hline\s*(.*?\\end\{align\*?\})', 
+                       r'\1\2', text, flags=re.DOTALL)
+        # Also strip standalone \hline
+        text = re.sub(r'^\s*\\hline\s*$', '', text, flags=re.MULTILINE)
+
+        return text
 
     # ── Metadata Extraction ──────────────────────────────────
 
@@ -526,13 +574,19 @@ class SectionParser:
             pos = m.end() - 1
             ref, pos = extract_braced(text, pos)
             txt, pos = extract_braced(text, pos)
-            notes.append({"type": "scripture", "reference": ref, "text": self._convert_text(txt)})
+            notes.append({"type": "scripture", "reference": ref, "text": self._convert_text(txt), "edition": "christian"})
 
         for m in re.finditer(r'\\marginquote\{', text):
             pos = m.end() - 1
             author, pos = extract_braced(text, pos)
             txt, pos = extract_braced(text, pos)
-            notes.append({"type": "quote", "author": self._convert_text(author), "text": self._convert_text(txt)})
+            note = {"type": "quote", "author": self._convert_text(author), "text": self._convert_text(txt)}
+            # Check if quote contains scripture references
+            BIBLE_BOOKS = r'(?:Genesis|Exodus|Leviticus|Numbers|Deuteronomy|Joshua|Judges|Ruth|Samuel|Kings|Chronicles|Ezra|Nehemiah|Esther|Job|Psalms?|Proverbs|Ecclesiastes|Song of Solomon|Isaiah|Jeremiah|Lamentations|Ezekiel|Daniel|Hosea|Joel|Amos|Obadiah|Jonah|Micah|Nahum|Habakkuk|Zephaniah|Haggai|Zechariah|Malachi|Matthew|Mark|Luke|John|Acts|Romans|Corinthians|Galatians|Ephesians|Philippians|Colossians|Thessalonians|Timothy|Titus|Philemon|Hebrews|James|Peter|Jude|Revelation)'
+            combined = f"{author} {txt}"
+            if re.search(BIBLE_BOOKS, combined):
+                note["edition"] = "christian"
+            notes.append(note)
         return notes
 
     def _remove_extracted(self, text: str) -> str:
@@ -773,8 +827,15 @@ class SectionParser:
             para = para.strip()
             if not para:
                 continue
-            if len(para) > 2:
-                blocks.append({"type": "paragraph", "text": para})
+            if len(para) <= 2:
+                continue
+            # *{Title} or *{Title pattern → heading (lost \subsection*)
+            if para.startswith('*{') and '\n' not in para:
+                title = para[2:].rstrip('}').strip()
+                if title:
+                    blocks.append({"type": "heading", "level": 3, "text": title})
+                    continue
+            blocks.append({"type": "paragraph", "text": para})
         return blocks
 
     def _parse_environment(self, env_name: str, env_text: str) -> List[Dict]:
@@ -873,14 +934,15 @@ class SectionParser:
         """Parse an Atlas theorem/definition/example/etc environment."""
         title = req_arg or opt_arg or ""
 
-        # Increment counter
+        # Increment counter — use section-prefixed IDs to avoid duplicates
+        sec_prefix = f"ch{self.chapter_num:02d}-sec{self.section_num:02d}"
         if block_type in self.counters:
             self.counters[block_type] += 1
             number = f"{self.chapter_num}.{self.counters[block_type]}"
-            block_id = f"{block_type}-{number}"
+            block_id = f"{sec_prefix}-{block_type}-{number}"
         else:
             number = ""
-            block_id = f"{block_type}-{self.chapter_num}.{self.section_num}"
+            block_id = f"{sec_prefix}-{block_type}"
 
         # Example: split problem/solution
         if block_type == "example":
@@ -1093,12 +1155,27 @@ class SectionParser:
 
             ex_cmd = re.match(r'\\(exercisevocab|exerciseconceptual|exercisestar|exerciseerror|exercisetech)\b\s*', text[pos:])
             if ex_cmd:
-                # These are category markers; parse following text as description
+                marker_type = ex_cmd.group(1)
+                variant_map = {
+                    "exercisevocab": "vocabulary",
+                    "exerciseconceptual": "conceptual",
+                    "exercisestar": "starred",
+                    "exerciseerror": "error-analysis",
+                    "exercisetech": "technology",
+                }
+                variant = variant_map.get(marker_type, "regular")
                 pos += ex_cmd.end()
                 text_end = self._find_exercise_text_end(text, pos)
                 chunk = text[pos:text_end].strip()
                 if chunk:
-                    blocks.append({"type": "paragraph", "text": self._convert_text(chunk)})
+                    exercise_num += 1
+                    blocks.append({
+                        "type": "exercise",
+                        "id": f"ch{self.chapter_num:02d}-sec{self.section_num:02d}-ex-{exercise_num}",
+                        "number": str(exercise_num),
+                        "problem": self._convert_text(chunk),
+                        "variant": variant,
+                    })
                 pos = text_end
                 continue
 
@@ -1120,7 +1197,7 @@ class SectionParser:
 
                 blocks.append({
                     "type": "exercise",
-                    "id": f"ex-{self.chapter_num}.{self.section_num}-{exercise_num}",
+                    "id": f"ch{self.chapter_num:02d}-sec{self.section_num:02d}-ex-{exercise_num}",
                     "number": str(exercise_num),
                     "problem": self._convert_text(body),
                     "variant": variant,
@@ -1140,7 +1217,7 @@ class SectionParser:
                 problem, solution = self._split_solution(body)
                 blocks.append({
                     "type": "exercise",
-                    "id": f"ex-{self.chapter_num}.{self.section_num}-{exercise_num}",
+                    "id": f"ch{self.chapter_num:02d}-sec{self.section_num:02d}-ex-{exercise_num}",
                     "number": str(exercise_num),
                     "problem": self._convert_text(problem),
                     "solution": self._convert_text(solution),
@@ -1397,6 +1474,59 @@ class SectionParser:
         # Safety: remove any remaining placeholder markers
         text = re.sub(r'\x01MATH\d+\x01', '', text)
 
+        # Restore any \x01DOLLAR\x01 that leaked through math blocks
+        text = text.replace('\x01DOLLAR\x01', '$')
+
+        # Cross-references: [fig:...], [sec:...], [ex:...], [thm:...] → strip brackets
+        text = re.sub(r'\[(?:fig|sec|ex|thm|eq|tab|def):[^\]]*\]', '', text)
+
+        # Strip stray \hline outside math
+        text = text.replace('\\hline', '')
+
+        # {,} → , (LaTeX thousand separator)
+        text = text.replace('{,}', ',')
+
+        # Strip isolated stray closing braces (LaTeX artifacts) but NOT inside math
+        # Only strip } that follows a word char and precedes punctuation/space,
+        # and is NOT inside $...$ or $$...$$
+        def strip_stray_braces(t):
+            """Remove stray } outside math contexts."""
+            result = []
+            in_math = False
+            in_display = False
+            i = 0
+            while i < len(t):
+                if t[i:i+2] == '$$' and not in_display:
+                    in_display = True
+                    result.append('$$')
+                    i += 2
+                    continue
+                elif t[i:i+2] == '$$' and in_display:
+                    in_display = False
+                    result.append('$$')
+                    i += 2
+                    continue
+                elif t[i] == '$' and not in_display and not in_math:
+                    in_math = True
+                    result.append('$')
+                    i += 1
+                    continue
+                elif t[i] == '$' and in_math:
+                    in_math = False
+                    result.append('$')
+                    i += 1
+                    continue
+                elif t[i] == '}' and not in_math and not in_display:
+                    # Check if it's a stray brace (after word char, before punct/space)
+                    if i > 0 and result and result[-1] and result[-1][-1:].isalpha():
+                        if i + 1 >= len(t) or t[i+1] in ' \t\n),.;:!?':
+                            i += 1  # skip stray brace
+                            continue
+                result.append(t[i])
+                i += 1
+            return ''.join(result)
+        text = strip_stray_braces(text)
+
         # Final cleanup
         text = re.sub(r'[ \t]+', ' ', text)
         text = re.sub(r'\n{3,}', '\n\n', text)
@@ -1580,7 +1710,7 @@ def attach_orphan_solutions(blocks: List[Dict]) -> List[Dict]:
 
 
 def clean_empty_blocks(blocks: List[Dict]) -> List[Dict]:
-    """Remove empty/trivial blocks."""
+    """Remove empty/trivial blocks and stub headings."""
     result = []
     for block in blocks:
         btype = block.get("type", "")
@@ -1588,6 +1718,18 @@ def clean_empty_blocks(blocks: List[Dict]) -> List[Dict]:
             continue
         if btype == "list" and not block.get("items"):
             continue
+        # Strip empty heading stubs: "1.", "2.", "Bonus.", etc.
+        if btype == "heading":
+            heading_text = block.get("text", "").strip()
+            if re.match(r'^(\d+\.|Bonus\.?|[a-z]\.)$', heading_text):
+                continue
+            if not heading_text:
+                continue
+        # Strip \hline that leaked into paragraph text
+        if btype == "paragraph":
+            block["text"] = block["text"].replace('\\hline', '').strip()
+            if not block["text"]:
+                continue
         result.append(block)
     return result
 

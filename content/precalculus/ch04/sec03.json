@@ -15,7 +15,7 @@
   "devotional": {
     "title": "Stewardship and Growth",
     "scripture": "Matthew 25:14--30",
-    "content": "\\lettrine[lines=2, loversize=0.1, nindent=0.5em]{I}{n}\nthe Parable of the Talents, servants are entrusted with resources and \nexpected to grow them. The mathematics of this chapter—compound interest, \npopulation growth, radioactive decay—teaches us about the nature of \nstewardship. Small investments, given time, yield remarkable returns. \nNeglected opportunities, by the same mathematics, represent staggering \nlosses. Understanding exponential growth is understanding why wisdom \nurges us to plant seeds today.",
+    "content": "\\lettrine[lines=2, loversize=0.1, nindent=0.5em]{I}{n\nthe Parable of the Talents, servants are entrusted with resources and \nexpected to grow them. The mathematics of this chapter—compound interest, \npopulation growth, radioactive decay—teaches us about the nature of \nstewardship. Small investments, given time, yield remarkable returns. \nNeglected opportunities, by the same mathematics, represent staggering \nlosses. Understanding exponential growth is understanding why wisdom \nurges us to plant seeds today.",
     "edition": "christian"
   },
   "epigraph": {
@@ -41,7 +41,7 @@
     },
     {
       "type": "definition",
-      "id": "definition-4.1",
+      "id": "ch04-sec03-definition-4.1",
       "title": "Exponential Growth Model",
       "content": "A quantity undergoing exponential growth follows:\n$$\n A(t) = A_0 \\cdot b^{t/p} \\quad \\text{or equivalently} \\quad A(t) = A_0 \\cdot e^{kt}\n$$\nwhere:\n\n- $A_0$ = initial amount (value when $t = 0$)\n\n- $t$ = time elapsed\n\n- $b$ = growth factor per period $p$\n\n- $k$ = continuous growth rate (when $k > 0$)",
       "number": "4.1"
@@ -52,7 +52,7 @@
     },
     {
       "type": "example",
-      "id": "example-4.1",
+      "id": "ch04-sec03-example-4.1",
       "number": "4.1",
       "title": "Population growth",
       "problem": "A bacteria colony starts with 500 cells and doubles every 3 hours. \n\n1. Write a function for the population after $t$ hours.\n\n2. Find the population after 12 hours.\n\n3. Find the population after 7 hours.\n\n4. When will the population reach 50,000?",
@@ -60,7 +60,7 @@
     },
     {
       "type": "example",
-      "id": "example-4.2",
+      "id": "ch04-sec03-example-4.2",
       "number": "4.2",
       "title": "City population growth",
       "problem": "A city's population was 120,000 in 2010 and 156,000 in 2020. Assuming \nexponential growth:\n\n1. Find the annual growth rate.\n\n2. Write a model for the population $t$ years after 2010.\n\n3. Predict the population in 2030.\n\n4. When will the population reach 250,000?",
@@ -77,35 +77,35 @@
     },
     {
       "type": "definition",
-      "id": "definition-4.2",
+      "id": "ch04-sec03-definition-4.2",
       "title": "Half-Life",
       "content": "The **half-life** of a substance is the time \nrequired for half of it to decay or be eliminated.",
       "number": "4.2"
     },
     {
       "type": "definition",
-      "id": "definition-4.3",
+      "id": "ch04-sec03-definition-4.3",
       "title": "Exponential Decay Model",
       "content": "For a substance with half-life $h$:\n$$\n A(t) = A_0 \\cdot \\left(\\frac{1}{2}\\right)^{t/h} = A_0 \\cdot 2^{-t/h}\n$$\nIn continuous form: $A(t) = A_0 e^{-kt}$ where $k = \\dfrac{\\ln 2}{h} \\approx \\dfrac{0.693}{h}$",
       "number": "4.3"
     },
     {
       "type": "method",
-      "id": "method-4.3",
+      "id": "ch04-sec03-method",
       "title": "Deriving the Half-Life Formula",
       "content": "**Why does** $A(t) = A_0 \\cdot \\left(\\frac{1}{2}\\right)^{t/h}$ **model half-life decay?**\n\nStart from the definition: after one half-life ($t = h$), exactly half remains:\n$$\n A(h) = \\frac{A_0}{2}\n$$\n\nAfter two half-lives ($t = 2h$), half of the remaining half decays:\n$$\n A(2h) = \\frac{1}{2} \\cdot \\frac{A_0}{2} = \\frac{A_0}{4} = A_0 \\cdot \\left(\\frac{1}{2}\\right)^2\n$$\n\nAfter $n$ half-lives ($t = nh$):\n$$\n A(nh) = A_0 \\cdot \\left(\\frac{1}{2}\\right)^n\n$$\n\nFor any time $t$, the number of half-lives elapsed is $n = t/h$. Substituting:\n$$\n \\boxed{A(t) = A_0 \\cdot \\left(\\frac{1}{2}\\right)^{t/h}}\n$$\n\n**Converting to continuous form:** To find $k$, set the two forms equal:\n$$\n A_0 \\cdot \\left(\\frac{1}{2}\\right)^{t/h} = A_0 \\cdot e^{-kt}\n$$\n\nAt $t = h$ (one half-life), $A = A_0/2$:\n$$\n \\frac{A_0}{2} = A_0 e^{-kh} \\implies \\frac{1}{2} = e^{-kh}\n$$\n\nTaking natural logarithm of both sides:\n$$\n \\ln\\left(\\frac{1}{2}\\right) = -kh \\implies -\\ln 2 = -kh \\implies \\boxed{k = \\frac{\\ln 2}{h} \\approx \\frac{0.693}{h}}\n$$"
     },
     {
       "type": "figure",
-      "id": "fig:half-life",
-      "src": "/figures/precalculus/ch04/fig-half-life.svg",
+      "id": "fig-4.3-inline-1",
+      "src": "/figures/precalculus/ch04/fig-4.3-inline-1.svg",
       "caption": "Exponential decay with half-life $h$. Starting from initial amount $A_0$, exactly half remains after one half-life. After two half-lives, one-quarter remains. The curve never reaches zero—it only gets arbitrarily close.",
       "alt": "Exponential decay with half-life $h$. Starting from initial amount $A_0$, exactly half remains after one half-life. After two half-lives, one-quarter remains. The curve never reaches zero—it only gets arbitrarily close.",
       "tikz": true
     },
     {
       "type": "example",
-      "id": "example-4.3",
+      "id": "ch04-sec03-example-4.3",
       "number": "4.3",
       "title": "Radioactive decay",
       "problem": "Carbon-14 has a half-life of approximately 5730 years. A fossil originally \ncontained 100 micrograms of C-14.\n\n1. Write a decay model.\n\n2. How much C-14 remains after 17,190 years?\n\n3. How much remains after 10,000 years?\n\n4. When will only 5 micrograms remain?",
@@ -113,7 +113,7 @@
     },
     {
       "type": "example",
-      "id": "example-4.4",
+      "id": "ch04-sec03-example-4.4",
       "number": "4.4",
       "title": "Medication decay",
       "problem": "A patient takes 400 mg of a medication. The drug has a half-life in the \nbody of 6 hours.\n\n1. Write a model for the amount remaining after $t$ hours.\n\n2. How much remains after 15 hours?\n\n3. When should the next dose be taken if it's required when only \n 50 mg remains?",
@@ -121,21 +121,21 @@
     },
     {
       "type": "summary",
-      "id": "summary-4.3",
+      "id": "ch04-sec03-summary",
       "title": "Common Radioactive Half-Lives",
-      "content": "\\renewcommand{}{1.2}\n\n| **Isotope** | **Half-Life** | **Use** |\n| Carbon-14 | 5,730 years | Archaeological dating |\n| Uranium-238 | 4.5 billion years | Geological dating |\n| Iodine-131 | 8 days | Medical treatment |\n| Radon-222 | 3.8 days | Environmental monitoring |\n| Cobalt-60 | 5.3 years | Radiation therapy |"
+      "content": "| **Isotope** | **Half-Life** | **Use** |\n| Carbon-14 | 5,730 years | Archaeological dating |\n| Uranium-238 | 4.5 billion years | Geological dating |\n| Iodine-131 | 8 days | Medical treatment |\n| Radon-222 | 3.8 days | Environmental monitoring |\n| Cobalt-60 | 5.3 years | Radiation therapy |"
     },
     {
       "type": "summary",
-      "id": "summary-4.3",
+      "id": "ch04-sec03-summary",
       "title": "Radioactive Isotope Decay Rates",
-      "content": "The following table provides half-lives and corresponding decay constants \nfor commonly encountered radioactive isotopes:\n\n\\renewcommand{}{1.3}\n{\n| **Isotope** | **Half-Life** | **Decay Constant $k$** | **Model** |\n| Technetium-99m | 6.01 hours | 0.1153/hr | $A = A_0 e^{-0.1153t}$ |\n| Iodine-131 | 8.02 days | 0.0864/day | $A = A_0 e^{-0.0864t}$ |\n| Phosphorus-32 | 14.3 days | 0.0485/day | $A = A_0 e^{-0.0485t}$ |\n| Strontium-90 | 28.8 years | 0.0241/yr | $A = A_0 e^{-0.0241t}$ |\n| Cesium-137 | 30.2 years | 0.0230/yr | $A = A_0 e^{-0.0230t}$ |\n| Carbon-14 | 5,730 years | $1.21 \\times 10^{-4}$/yr | $A = A_0 e^{-0.000121t}$ |\n| Plutonium-239 | 24,100 years | $2.88 \\times 10^{-5}$/yr | $A = A_0 e^{-0.0000288t}$ |\n| Uranium-238 | 4.47 billion years | $1.55 \\times 10^{-10}$/yr | — |\n}\n**Note:** $k = \\ln(2)/h \\approx 0.693/h$. Units of $k$ match units of half-life."
+      "content": "The following table provides half-lives and corresponding decay constants \nfor commonly encountered radioactive isotopes:\n\n{\n| **Isotope** | **Half-Life** | **Decay Constant $k$** | **Model** |\n| Technetium-99m | 6.01 hours | 0.1153/hr | $A = A_0 e^{-0.1153t}$ |\n| Iodine-131 | 8.02 days | 0.0864/day | $A = A_0 e^{-0.0864t}$ |\n| Phosphorus-32 | 14.3 days | 0.0485/day | $A = A_0 e^{-0.0485t}$ |\n| Strontium-90 | 28.8 years | 0.0241/yr | $A = A_0 e^{-0.0241t}$ |\n| Cesium-137 | 30.2 years | 0.0230/yr | $A = A_0 e^{-0.0230t}$ |\n| Carbon-14 | 5,730 years | $1.21 \\times 10^{-4}$/yr | $A = A_0 e^{-0.000121t}$ |\n| Plutonium-239 | 24,100 years | $2.88 \\times 10^{-5}$/yr | $A = A_0 e^{-0.0000288t}$ |\n| Uranium-238 | 4.47 billion years | $1.55 \\times 10^{-10}$/yr | — |\n}\n**Note:** $k = \\ln(2)/h \\approx 0.693/h$. Units of $k$ match units of half-life."
     },
     {
       "type": "summary",
-      "id": "summary-4.3",
+      "id": "ch04-sec03-summary",
       "title": "Investment Growth Scenarios",
-      "content": "The following table shows how $10,000 grows under different interest rates \nand compounding frequencies over various time periods:\n\n\\renewcommand{}{1.3}\n**Annual Compounding: $A = P(1+r)^t$**\n\n| **Rate** | **5 years** | **10 years** | **20 years** | **30 years** |\n| 3% | $11,593 | $13,439 | $18,061 | $24,273 |\n| 5% | $12,763 | $16,289 | $26,533 | $43,219 |\n| 7% | $14,026 | $19,672 | $38,697 | $76,123 |\n| 10% | $16,105 | $25,937 | $67,275 | $174,494 |\n\n**Continuous Compounding: $A = Pe^{rt}$**\n\n| **Rate** | **5 years** | **10 years** | **20 years** | **30 years** |\n| 3% | $11,618 | $13,499 | $18,221 | $24,596 |\n| 5% | $12,840 | $16,487 | $27,183 | $44,817 |\n| 7% | $14,191 | $20,138 | $40,552 | $81,662 |\n| 10% | $16,487 | $27,183 | $73,891 | $200,855 |\n\n**Key Observation:** The difference between annual and continuous \ncompounding is modest for short periods but significant over decades. At \n10% over 30 years, continuous compounding yields $26,361 more than \nannual compounding."
+      "content": "The following table shows how $10,000 grows under different interest rates \nand compounding frequencies over various time periods:\n\n**Annual Compounding: $A = P(1+r)^t$**\n\n| **Rate** | **5 years** | **10 years** | **20 years** | **30 years** |\n| 3% | $11,593 | $13,439 | $18,061 | $24,273 |\n| 5% | $12,763 | $16,289 | $26,533 | $43,219 |\n| 7% | $14,026 | $19,672 | $38,697 | $76,123 |\n| 10% | $16,105 | $25,937 | $67,275 | $174,494 |\n\n**Continuous Compounding: $A = Pe^{rt}$**\n\n| **Rate** | **5 years** | **10 years** | **20 years** | **30 years** |\n| 3% | $11,618 | $13,499 | $18,221 | $24,596 |\n| 5% | $12,840 | $16,487 | $27,183 | $44,817 |\n| 7% | $14,191 | $20,138 | $40,552 | $81,662 |\n| 10% | $16,487 | $27,183 | $73,891 | $200,855 |\n\n**Key Observation:** The difference between annual and continuous \ncompounding is modest for short periods but significant over decades. At \n10% over 30 years, continuous compounding yields $26,361 more than \nannual compounding."
     },
     {
       "type": "heading",
@@ -148,30 +148,30 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-4.1",
+      "id": "ch04-sec03-theorem-4.1",
       "title": "Compound Interest Formulas",
       "content": "If principal $P$ is invested at annual interest rate $r$ (as a decimal):\n\n**Compounded $n$ times per year:**\n$$\n A = P\\left(1 + \\frac{r}{n}\\right)^{nt}\n$$\n\n**Compounded continuously:**\n$$\n A = Pe^{rt}\n$$\n\nwhere $A$ is the amount after $t$ years.",
       "number": "4.1"
     },
     {
       "type": "example",
-      "id": "example-4.5",
+      "id": "ch04-sec03-example-4.5",
       "number": "4.5",
       "title": "Comparing compounding methods",
       "problem": "Find the amount after 10 years if $5000 is invested at 6% interest \ncompounded: (a) annually, (b) quarterly, (c) monthly, (d) daily, \n(e) continuously.",
-      "solution": "Using $P = 5000$, $r = 0.06$, $t = 10$:\n\n1. Annually ($n = 1$):\n $$\n A = 5000(1 + 0.06)^{10} = 5000(1.06)^{10} \\approx \u0001DOLLAR\u00018954.24\n $$\n\n2. Quarterly ($n = 4$):\n $$\n A = 5000\\left(1 + \\frac{0.06}{4}\\right)^{40} = 5000(1.015)^{40} \\approx \u0001DOLLAR\u00019070.09\n $$\n\n3. Monthly ($n = 12$):\n $$\n A = 5000\\left(1 + \\frac{0.06}{12}\\right)^{120} = 5000(1.005)^{120} \\approx \u0001DOLLAR\u00019096.98\n $$\n\n4. Daily ($n = 365$):\n $$\n A = 5000\\left(1 + \\frac{0.06}{365}\\right)^{3650} \\approx \u0001DOLLAR\u00019110.14\n $$\n\n5. Continuously:\n $$\n A = 5000 \\cdot e^{0.06 \\times 10} = 5000 \\cdot e^{0.6} \\approx \u0001DOLLAR\u00019110.59\n $$\n\n**Observation:** More frequent compounding yields more money, but \nthe gains diminish. The jump from annual to continuous compounding adds \nonly about $156 over 10 years."
+      "solution": "Using $P = 5000$, $r = 0.06$, $t = 10$:\n\n1. Annually ($n = 1$):\n $$\n A = 5000(1 + 0.06)^{10} = 5000(1.06)^{10} \\approx $8954.24\n $$\n\n2. Quarterly ($n = 4$):\n $$\n A = 5000\\left(1 + \\frac{0.06}{4}\\right)^{40} = 5000(1.015)^{40} \\approx $9070.09\n $$\n\n3. Monthly ($n = 12$):\n $$\n A = 5000\\left(1 + \\frac{0.06}{12}\\right)^{120} = 5000(1.005)^{120} \\approx $9096.98\n $$\n\n4. Daily ($n = 365$):\n $$\n A = 5000\\left(1 + \\frac{0.06}{365}\\right)^{3650} \\approx $9110.14\n $$\n\n5. Continuously:\n $$\n A = 5000 \\cdot e^{0.06 \\times 10} = 5000 \\cdot e^{0.6} \\approx $9110.59\n $$\n\n**Observation:** More frequent compounding yields more money, but \nthe gains diminish. The jump from annual to continuous compounding adds \nonly about $156 over 10 years."
     },
     {
       "type": "figure",
-      "id": "fig:compound-interest-comparison",
-      "src": "/figures/precalculus/ch04/fig-compound-interest-comparison.svg",
+      "id": "fig-4.3-inline-2",
+      "src": "/figures/precalculus/ch04/fig-4.3-inline-2.svg",
       "caption": "Comparing compounding frequencies. All three curves start at $5000 with 6% interest. More frequent compounding yields slightly more, but the differences are small. The curves are nearly indistinguishable, showing why continuous compounding is a convenient approximation.",
       "alt": "Comparing compounding frequencies. All three curves start at $5000 with 6% interest. More frequent compounding yields slightly more, but the differences are small. The curves are nearly indistinguishable, showing why continuous compounding is a convenient approximation.",
       "tikz": true
     },
     {
       "type": "example",
-      "id": "example-4.6",
+      "id": "ch04-sec03-example-4.6",
       "number": "4.6",
       "title": "Finding time to reach a goal",
       "problem": "How long does it take for $10,000 to grow to $25,000 at 5% interest \ncompounded continuously?",
@@ -188,14 +188,14 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-4.2",
+      "id": "ch04-sec03-theorem-4.2",
       "title": "The Rule of 72",
       "content": "Money invested at $r\\%$ annual interest doubles in approximately \n$\\dfrac{72}{r}$ years.",
       "number": "4.2"
     },
     {
       "type": "example",
-      "id": "example-4.7",
+      "id": "ch04-sec03-example-4.7",
       "number": "4.7",
       "title": "Using the Rule of 72",
       "problem": "Estimate the doubling time for investments at: (a) 6%, (b) 9%, (c) 12%.",
@@ -212,18 +212,18 @@
     },
     {
       "type": "definition",
-      "id": "definition-4.4",
+      "id": "ch04-sec03-definition-4.4",
       "title": "Present Value",
       "content": "The **present value** of amount $A$ due in $t$ years at interest \nrate $r$ (compounded continuously) is:\n$$\n P = Ae^{-rt}\n$$",
       "number": "4.4"
     },
     {
       "type": "example",
-      "id": "example-4.8",
+      "id": "ch04-sec03-example-4.8",
       "number": "4.8",
       "title": "College fund planning",
       "problem": "You want to have $100,000 in 18 years for your child's college education. \nIf you can invest at 7% compounded continuously, how much should you \ninvest now?",
-      "solution": "$$\n P = 100000 \\cdot e^{-0.07 \\times 18} = 100000 \\cdot e^{-1.26} \\approx 100000 \\cdot 0.284 \\approx \u0001DOLLAR\u000128{,}365\n$$\n\nInvesting approximately $28,365 today will grow to $100,000 in 18 years."
+      "solution": "$$\n P = 100000 \\cdot e^{-0.07 \\times 18} = 100000 \\cdot e^{-1.26} \\approx 100000 \\cdot 0.284 \\approx $28,365\n$$\n\nInvesting approximately $28,365 today will grow to $100,000 in 18 years."
     },
     {
       "type": "heading",
@@ -236,14 +236,14 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-4.3",
+      "id": "ch04-sec03-theorem-4.3",
       "title": "Newton's Law of Cooling",
       "content": "If an object at temperature $T_0$ is placed in an environment with \nconstant temperature $T_s$, then at time $t$:\n$$\n T(t) = T_s + (T_0 - T_s)e^{-kt}\n$$\nwhere $k > 0$ is a constant that depends on the object and environment.",
       "number": "4.3"
     },
     {
       "type": "example",
-      "id": "example-4.9",
+      "id": "ch04-sec03-example-4.9",
       "number": "4.9",
       "title": "Cooling coffee",
       "problem": "A cup of coffee is brewed at 200°F and placed in a 70°F room. After 5 \nminutes, the temperature is 180°F.\n\n1. Find the cooling constant $k$.\n\n2. Find the temperature after 20 minutes.\n\n3. When will the coffee be at 100°F (a drinkable temperature)?",
@@ -251,8 +251,8 @@
     },
     {
       "type": "figure",
-      "id": "fig:newtons-cooling",
-      "src": "/figures/precalculus/ch04/fig-newtons-cooling.svg",
+      "id": "fig-4.3-inline-3",
+      "src": "/figures/precalculus/ch04/fig-4.3-inline-3.svg",
       "caption": "Newton's Law of Cooling. Coffee at 200°F cools toward room temperature (70°F). The rate of cooling is fastest when the temperature difference is greatest. The curve approaches but never quite reaches the ambient temperature.",
       "alt": "Newton's Law of Cooling. Coffee at 200°F cools toward room temperature (70°F). The rate of cooling is fastest when the temperature difference is greatest. The curve approaches but never quite reaches the ambient temperature.",
       "tikz": true
@@ -268,15 +268,15 @@
     },
     {
       "type": "definition",
-      "id": "definition-4.5",
+      "id": "ch04-sec03-definition-4.5",
       "title": "Logistic Growth Model",
       "content": "$$\n P(t) = \\frac{L}{1 + Ce^{-kt}}\n$$\nwhere:\n\n- $L$ = carrying capacity (maximum sustainable population)\n\n- $C$ = a constant determined by initial conditions\n\n- $k$ = growth rate",
       "number": "4.5"
     },
     {
       "type": "figure",
-      "id": "fig:logistic-curve",
-      "src": "/figures/precalculus/ch04/fig-logistic-curve.svg",
+      "id": "fig-4.3-inline-4",
+      "src": "/figures/precalculus/ch04/fig-4.3-inline-4.svg",
       "caption": "Logistic growth: the S-shaped (sigmoid) curve. The population starts with near-exponential growth when small, but the growth rate slows as resources become scarce. The dashed line shows the carrying capacity $L$—the maximum sustainable population that the environment can support. The curve approaches but never exceeds this limit.",
       "alt": "Logistic growth: the S-shaped (sigmoid) curve. The population starts with near-exponential growth when small, but the growth rate slows as resources become scarce. The dashed line shows the carrying capacity $L$—the maximum sustainable population that the environment can support. The curve approaches but never exceeds this limit.",
       "tikz": true
@@ -287,7 +287,7 @@
     },
     {
       "type": "example",
-      "id": "example-4.10",
+      "id": "ch04-sec03-example-4.10",
       "number": "4.10",
       "title": "Logistic population",
       "problem": "A wildlife reserve can support at most 500 deer. Initially there are 50 \ndeer, and the population follows $P(t) = \\dfrac{500}{1 + 9e^{-0.2t}}$ \nwhere $t$ is in years.\n\n1. Verify the initial population.\n\n2. Find the population after 10 years.\n\n3. What is the limiting population?",
@@ -295,9 +295,9 @@
     },
     {
       "type": "summary",
-      "id": "summary-4.3",
+      "id": "ch04-sec03-summary",
       "title": "Section 4.3 Summary: Applications of Exponential Functions",
-      "content": "**Key Formulas:**\n\n\\renewcommand{}{1.5}\n| **Model** | **Formula** |\n| Exponential growth/decay | $A(t) = A_0 \\cdot b^{t/p}$ or $A(t) = A_0 e^{kt}$ |\n| Half-life decay | $A(t) = A_0 \\cdot \\left(\\frac{1}{2}\\right)^{t/h}$ |\n| Compound interest ($n$/year) | $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$ |\n| Continuous compounding | $A = Pe^{rt}$ |\n| Newton's Law of Cooling | $T(t) = T_s + (T_0 - T_s)e^{-kt}$ |\n\n**Converting Between Forms:**\n\n- From half-life $h$ to decay constant: $k = \\frac{\\ln 2}{h} \\approx \\frac{0.693}{h}$\n\n- From doubling time $T$ to growth constant: $k = \\frac{\\ln 2}{T}$\n\n**Rule of 72:** Money doubles in approximately $\\frac{72}{r}$ years at $r$% interest.\n\n**Problem-Solving Strategy:**\n\n1. Identify: growth or decay? Discrete or continuous?\n\n2. Choose the appropriate formula\n\n3. Identify known values ($A_0$, $k$, $t$, etc.)\n\n4. Solve for the unknown\n\n5. Check: Does the answer make sense?"
+      "content": "**Key Formulas:**\n\n| **Model** | **Formula** |\n| Exponential growth/decay | $A(t) = A_0 \\cdot b^{t/p}$ or $A(t) = A_0 e^{kt}$ |\n| Half-life decay | $A(t) = A_0 \\cdot \\left(\\frac{1}{2}\\right)^{t/h}$ |\n| Compound interest ($n$/year) | $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$ |\n| Continuous compounding | $A = Pe^{rt}$ |\n| Newton's Law of Cooling | $T(t) = T_s + (T_0 - T_s)e^{-kt}$ |\n\n**Converting Between Forms:**\n\n- From half-life $h$ to decay constant: $k = \\frac{\\ln 2}{h} \\approx \\frac{0.693}{h}$\n\n- From doubling time $T$ to growth constant: $k = \\frac{\\ln 2}{T}$\n\n**Rule of 72:** Money doubles in approximately $\\frac{72}{r}$ years at $r$% interest.\n\n**Problem-Solving Strategy:**\n\n1. Identify: growth or decay? Discrete or continuous?\n\n2. Choose the appropriate formula\n\n3. Identify known values ($A_0$, $k$, $t$, etc.)\n\n4. Solve for the unknown\n\n5. Check: Does the answer make sense?"
     },
     {
       "type": "heading",
@@ -306,14 +306,14 @@
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-1",
+      "id": "ch04-sec03-ex-1",
       "number": "1",
       "problem": "Fill in the blanks.\n\n1. In the model $A(t) = A_0 e^{kt}$, $A_0$ represents the .\n\n2. If $k > 0$, the model represents exponential .\n\n3. If $k < 0$, the model represents exponential .\n\n4. The time for a quantity to halve is called the .\n\n5. Continuous compounding uses the formula $A = $ .\n\n6. The Rule of 72 estimates time.\n\n7. In Newton's Law of Cooling, $T_s$ represents the temperature.\n\n8. Carbon-14 dating uses the half-life of approximately years.\n\n9. If half-life is $h$, then $k = $ .\n\n10. The effective annual yield is always (greater/less) than the nominal rate.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-2",
+      "id": "ch04-sec03-ex-2",
       "number": "2",
       "problem": "Match each term with its definition.\n\n1. Half-life (i) Initial amount in a growth/decay model\n\n2. Doubling time (ii) Time for a quantity to halve\n\n3. $A_0$ (iii) Interest compounded infinitely often\n\n4. Continuous compounding (iv) Time for a quantity to double\n\n5. $k$ (v) Growth or decay constant\n\n6. Rule of 72 (vi) Estimates doubling time\n\n7. Carbon dating (vii) Uses C-14 half-life to find age\n\n8. Logistic model (viii) Growth limited by carrying capacity",
       "variant": "regular"
@@ -325,42 +325,42 @@
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-3",
+      "id": "ch04-sec03-ex-3",
       "number": "3",
       "problem": "A bacterial culture starts with 1000 cells and triples every 4 hours.\n\n1. Write a function for the population at time $t$ hours.\n\n2. Find the population after 10 hours.\n\n3. When will the population reach 1 million?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-4",
+      "id": "ch04-sec03-ex-4",
       "number": "4",
       "problem": "A city had population 80,000 in 2000 and 95,000 in 2020.\n\n1. Find the annual growth rate (assuming exponential growth).\n\n2. Predict the population in 2040.\n\n3. When will the population reach 150,000?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-5",
+      "id": "ch04-sec03-ex-5",
       "number": "5",
       "problem": "The world population was about 6 billion in 2000 and 8 billion in 2023. \nFind the average annual growth rate and predict the population in 2050.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-6",
+      "id": "ch04-sec03-ex-6",
       "number": "6",
       "problem": "A colony of bacteria doubles every 20 minutes.\n\n1. Write the exponential model if the initial count is 500.\n\n2. Find the count after 2 hours.\n\n3. How long until there are 1 million bacteria?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-7",
+      "id": "ch04-sec03-ex-7",
       "number": "7",
       "problem": "A town's population follows $P(t) = 12000 e^{0.03t}$, where $t$ is years \nsince 2020.\n\n1. What was the population in 2020?\n\n2. Find the population in 2030.\n\n3. When will the population reach 20,000?\n\n4. What is the annual growth rate as a percentage?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-8",
+      "id": "ch04-sec03-ex-8",
       "number": "8",
       "problem": "Two bacteria cultures start with the same population. Culture A doubles \nevery 3 hours; Culture B doubles every 5 hours.\n\n1. Write models for each culture.\n\n2. After 15 hours, how many times larger is Culture A than Culture B?\n\n3. If Culture B starts with twice as many bacteria as A, when do \n they have equal populations?",
       "variant": "regular"
@@ -372,49 +372,49 @@
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-9",
+      "id": "ch04-sec03-ex-9",
       "number": "9",
       "problem": "A radioactive substance has a half-life of 12 days. Starting with 200 grams:\n\n1. Write a decay model.\n\n2. How much remains after 30 days?\n\n3. When will only 10 grams remain?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-10",
+      "id": "ch04-sec03-ex-10",
       "number": "10",
       "problem": "Iodine-131 has a half-life of 8 days. If 50 mg is administered to a patient:\n\n1. Write a decay model.\n\n2. How much remains after 3 weeks?\n\n3. When will only 1 mg remain?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-11",
+      "id": "ch04-sec03-ex-11",
       "number": "11",
       "problem": "A fossil contains 25% of its original Carbon-14. Estimate its age \n(C-14 half-life is 5730 years).",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-12",
+      "id": "ch04-sec03-ex-12",
       "number": "12",
       "problem": "A wooden artifact contains 40% of the C-14 found in living wood. \nHow old is it?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-13",
+      "id": "ch04-sec03-ex-13",
       "number": "13",
       "problem": "Strontium-90 has a half-life of 29 years.\n\n1. Write a decay model for an initial amount $A_0$.\n\n2. Find the decay constant $k$.\n\n3. How long until 90% of the original amount has decayed?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-14",
+      "id": "ch04-sec03-ex-14",
       "number": "14",
       "problem": "Plutonium-239 has a half-life of 24,100 years.\n\n1. If a nuclear waste site contains 10 kg of Pu-239, how much \n remains after 1000 years?\n\n2. How long until only 1 gram remains?\n\n3. Why is this a concern for nuclear waste storage?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-15",
+      "id": "ch04-sec03-ex-15",
       "number": "15",
       "problem": "A radioactive isotope decays to 80% of its original amount in 5 years.\n\n1. Find the decay constant $k$.\n\n2. Find the half-life.\n\n3. How long until only 10% remains?",
       "variant": "regular"
@@ -426,56 +426,56 @@
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-16",
+      "id": "ch04-sec03-ex-16",
       "number": "16",
       "problem": "Find the amount after 15 years if $8000 is invested at 5% compounded:\n\n1. Annually\n\n2. Quarterly\n\n3. Monthly\n\n4. Continuously",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-17",
+      "id": "ch04-sec03-ex-17",
       "number": "17",
       "problem": "What principal should be invested at 4% compounded continuously to \nhave $50,000 in 20 years?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-18",
+      "id": "ch04-sec03-ex-18",
       "number": "18",
       "problem": "How long does it take $1000 to triple at 6% interest compounded \ncontinuously?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-19",
+      "id": "ch04-sec03-ex-19",
       "number": "19",
       "problem": "Compare: Which yields more after 5 years—$10,000 at 8% compounded \nquarterly, or $10,000 at 7.9% compounded continuously?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-20",
+      "id": "ch04-sec03-ex-20",
       "number": "20",
       "problem": "Use the Rule of 72 to estimate doubling time at:\n\n1. 4%\n\n2. 8%\n\n3. 10%\nThen verify using the exact formula.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-21",
+      "id": "ch04-sec03-ex-21",
       "number": "21",
       "problem": "A college fund of $25,000 is invested at 5.5% compounded continuously.\n\n1. How much will be available in 18 years?\n\n2. How long until the fund reaches $100,000?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-22",
+      "id": "ch04-sec03-ex-22",
       "number": "22",
       "problem": "You have $5000 to invest. Rank these options by final value after 10 years:\n\n1. 5.2% compounded annually\n\n2. 5.1% compounded quarterly\n\n3. 5.0% compounded monthly\n\n4. 4.9% compounded continuously",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-23",
+      "id": "ch04-sec03-ex-23",
       "number": "23",
       "problem": "An investment doubles in 9 years with continuous compounding.\n\n1. Find the interest rate.\n\n2. How long to triple?\n\n3. How long to grow to 5 times the original?",
       "variant": "regular"
@@ -487,35 +487,35 @@
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-24",
+      "id": "ch04-sec03-ex-24",
       "number": "24",
       "problem": "A pie is removed from a 350°F oven and placed in a 75°F kitchen. After \n10 minutes, the pie is at 300°F.\n\n1. Find the cooling constant $k$.\n\n2. Find the temperature after 30 minutes.\n\n3. When will the pie be at 100°F?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-25",
+      "id": "ch04-sec03-ex-25",
       "number": "25",
       "problem": "A body at 98.6°F is found in a 60°F room. After 1 hour, the temperature \nis 90°F. How long ago did death occur? (Assume body cools according to \nNewton's Law.)",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-26",
+      "id": "ch04-sec03-ex-26",
       "number": "26",
       "problem": "A cold drink at 40°F is placed in a 72°F room. After 5 minutes, the \ndrink is at 50°F.\n\n1. Find the cooling (warming) constant $k$.\n\n2. What is the temperature after 20 minutes?\n\n3. How long until the drink reaches 65°F?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-27",
+      "id": "ch04-sec03-ex-27",
       "number": "27",
       "problem": "A thermometer reading 70°F is placed in a freezer at 0°F. After 2 minutes, \nit reads 50°F.\n\n1. Find the cooling constant.\n\n2. What will it read after 10 minutes?\n\n3. When will it read 5°F?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-28",
+      "id": "ch04-sec03-ex-28",
       "number": "28",
       "problem": "Hot soup is served at 200°F in a 68°F dining room. If the soup cools to \n180°F in 3 minutes, how long until it's at a comfortable 140°F?",
       "variant": "regular"
@@ -527,284 +527,323 @@
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-29",
+      "id": "ch04-sec03-ex-29",
       "number": "29",
       "problem": "True or False? Justify each answer.\n\n1. Exponential decay eventually reaches exactly zero.\n\n2. Doubling time depends on the initial amount.\n\n3. Half-life depends on the initial amount.\n\n4. If a quantity triples every 10 years, it multiplies by 9 every 20 years.\n\n5. Continuous compounding always beats annual compounding at the same rate.\n\n6. The Rule of 72 is exact for 8% interest.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-30",
+      "id": "ch04-sec03-ex-30",
       "number": "30",
       "problem": "Explain why exponential decay never quite reaches zero. What does this \nmean physically for radioactive decay?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-31",
+      "id": "ch04-sec03-ex-31",
       "number": "31",
       "problem": "A population doubles every 5 years.\n\n1. By what factor does it increase over 20 years?\n\n2. By what factor does it increase over 50 years?\n\n3. How long until it increases by a factor of 100?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-32",
+      "id": "ch04-sec03-ex-32",
       "number": "32",
       "problem": "Derive the Rule of 72: Show that money doubles in approximately $72/r$ \nyears at $r$% interest, starting from $A = Pe^{rt}$.",
       "variant": "starred"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-33",
+      "id": "ch04-sec03-ex-33",
       "number": "33",
       "problem": "Two investments: Investment A starts with $10,000 at 5% compounded \ncontinuously. Investment B starts with $5,000 at 8% compounded \ncontinuously. When will they be equal?",
       "variant": "starred"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-34",
+      "id": "ch04-sec03-ex-34",
       "number": "34",
       "problem": "A lake contains 1 billion liters of pure water. Polluted water containing \n0.1 kg of pollutant per liter flows in at 1000 liters per hour. Well-mixed \nwater flows out at the same rate. Find the amount of pollutant in the \nlake after $t$ hours. (Hint: This is a differential equation problem; \nset up and solve $\\frac{dP}{dt} = 0.1(1000) - P \\cdot \\frac{1000}{10^9}$.)",
       "variant": "starred"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-35",
+      "id": "ch04-sec03-ex-35",
       "number": "35",
       "problem": "Find the continuous growth rate $k$ for each situation.\n\n1. Population grows from 2000 to 3500 in 8 years.\n\n2. Investment grows from $5000 to $7500 in 10 years.\n\n3. Bacteria grow from 100 to 800 in 5 hours.\n\n4. City population grows from 50,000 to 65,000 in 15 years.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-36",
+      "id": "ch04-sec03-ex-36",
       "number": "36",
       "problem": "Find the decay constant $k$ and half-life for each situation.\n\n1. Sample decays from 100 g to 35 g in 20 years.\n\n2. Drug concentration drops from 200 mg to 50 mg in 8 hours.\n\n3. Radioactive material decays to 60% of original in 5 years.\n\n4. Car value drops from $30,000 to $18,000 in 4 years.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-37",
+      "id": "ch04-sec03-ex-37",
       "number": "37",
       "problem": "An investment grew from $5000 to $8200 in 6 years with continuous \ncompounding. What was the annual rate?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-38",
+      "id": "ch04-sec03-ex-38",
       "number": "38",
       "problem": "Find the effective annual yield for each \nnominal rate:\n\n1. 6% compounded monthly\n\n2. 5.8% compounded daily\n\n3. 5.7% compounded continuously\n\n4. 7% compounded quarterly\n\n5. 4.5% compounded semiannually\n\n6. 8% compounded weekly",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-39",
+      "id": "ch04-sec03-ex-39",
       "number": "39",
       "problem": "Which investment yields more? Justify with calculations.\n\n1. 5.25% compounded quarterly vs. 5.2% compounded continuously\n\n2. 6.1% compounded monthly vs. 6.0% compounded daily\n\n3. 4.8% compounded continuously vs. 5.0% compounded annually",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-40",
+      "id": "ch04-sec03-ex-40",
       "number": "40",
       "problem": "Find the nominal rate (to 2 decimal places) that gives an effective \nannual yield of 6% when compounded:\n\n1. Monthly\n\n2. Quarterly\n\n3. Continuously",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-41",
+      "id": "ch04-sec03-ex-41",
       "number": "41",
       "problem": "A patient receives 500 mg of medication. The drug's half-life in the \nbody is 4 hours.\n\n1. Write a model for concentration $C(t)$.\n\n2. How much remains after 10 hours?\n\n3. When should the next dose be given if the therapeutic level \n requires at least 100 mg?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-42",
+      "id": "ch04-sec03-ex-42",
       "number": "42",
       "problem": "A drug follows $C(t) = 250e^{-0.35t}$ mg/L. Find:\n\n1. The half-life\n\n2. When concentration drops below 50 mg/L\n\n3. The percentage eliminated after 6 hours",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-43",
+      "id": "ch04-sec03-ex-43",
       "number": "43",
       "problem": "Match each drug model to its half-life.\n\n1. $C(t) = C_0 e^{-0.173t}$ (i) 2 hours\n\n2. $C(t) = C_0 e^{-0.347t}$ (ii) 4 hours\n\n3. $C(t) = C_0 e^{-0.116t}$ (iii) 6 hours\n\n4. $C(t) = C_0 e^{-0.087t}$ (iv) 8 hours",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-44",
+      "id": "ch04-sec03-ex-44",
       "number": "44",
       "problem": "For each drug, find the decay constant $k$ from the given half-life, then \nwrite the model $C(t) = C_0 e^{-kt}$.\n\n1. Aspirin: half-life 3.5 hours\n\n2. Caffeine: half-life 5 hours\n\n3. Ibuprofen: half-life 2 hours\n\n4. Acetaminophen: half-life 3 hours",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-45",
+      "id": "ch04-sec03-ex-45",
       "number": "45",
       "problem": "A car worth $32,000 depreciates 15% per year.\n\n1. Write a depreciation model $V(t)$.\n\n2. Find the value after 5 years.\n\n3. When is the car worth $10,000?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-46",
+      "id": "ch04-sec03-ex-46",
       "number": "46",
       "problem": "Equipment purchased for $85,000 has a value modeled by \n$V(t) = 85000 e^{-0.12t}$. Find:\n\n1. The value after 8 years\n\n2. The half-life (when value is $42,500)\n\n3. The annual depreciation rate as a percentage",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-47",
+      "id": "ch04-sec03-ex-47",
       "number": "47",
       "problem": "Compare depreciation models. A $50,000 truck depreciates either:\n\n- Model A: 20% per year (discrete)\n\n- Model B: Continuously at rate $k = 0.22$\n\n1. Write formulas for both models.\n\n2. Find the value after 5 years for each.\n\n3. Which model shows faster depreciation?\n\n4. When is each truck worth $10,000?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-48",
+      "id": "ch04-sec03-ex-48",
       "number": "48",
       "problem": "For each asset, write the depreciation model and find when the value \ndrops below $5,000.\n\n1. Computer: initial value $2,000, depreciates 25% per year\n\n2. Furniture: initial value $8,000, half-life 6 years\n\n3. Machinery: initial value $50,000, continuous rate $k = 0.15$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-49",
+      "id": "ch04-sec03-ex-49",
       "number": "49",
       "problem": "A virus spreads through a population of 10,000. Initially 100 are \ninfected, and the number doubles every 3 days.\n\n1. Write an exponential model.\n\n2. How many are infected after 2 weeks?\n\n3. Why does this model eventually fail?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-50",
+      "id": "ch04-sec03-ex-50",
       "number": "50",
       "problem": "Sound intensity decreases according to $I(d) = I_0 e^{-0.1d}$, where $d$ \nis distance in meters.\n\n1. If the initial intensity is 100 dB, find the intensity at 10 m.\n\n2. At what distance is the intensity halved?\n\n3. At what distance is the intensity 10% of the original?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-51",
+      "id": "ch04-sec03-ex-51",
       "number": "51",
       "problem": "A rumor spreads through a school of 500 students. Initially 5 students \nknow the rumor, and the number knowing doubles every hour.\n\n1. Write an exponential model.\n\n2. How many know after 4 hours?\n\n3. When do half the students know?\n\n4. Why is this model unrealistic for large $t$?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-52",
+      "id": "ch04-sec03-ex-52",
       "number": "52",
       "problem": "Lake water has temperature 45°F. A fish is placed in an aquarium at \n72°F. If the fish's body temperature follows Newton's Law of Cooling \nwith $T(t) = 72 - 27e^{-0.15t}$:\n\n1. What was the fish's initial temperature?\n\n2. What is the aquarium temperature?\n\n3. When does the fish reach 65°F?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-53",
+      "id": "ch04-sec03-ex-53",
       "number": "53",
       "problem": "Atmospheric pressure decreases exponentially with altitude. At sea level, \npressure is 101.3 kPa. At 5 km altitude, pressure is 54.0 kPa.\n\n1. Find the decay constant.\n\n2. Find the pressure at 10 km (cruising altitude).\n\n3. At what altitude is pressure half of sea level?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-54",
+      "id": "ch04-sec03-ex-54",
       "number": "54",
       "problem": "Light intensity decreases as it passes through water: $I(x) = I_0 e^{-0.14x}$, \nwhere $x$ is depth in meters.\n\n1. What fraction of surface light reaches 10 meters?\n\n2. At what depth is intensity reduced to 50%?\n\n3. At what depth is only 1% of surface light remaining?",
       "variant": "regular"
     },
     {
-      "type": "paragraph",
-      "text": "Graph $y = 1000(1.05)^t$ and $y = 1000e^{0.05t}$ together. \nExplain why they are not identical."
-    },
-    {
-      "type": "paragraph",
-      "text": "Graph $T(t) = 70 + 130e^{-0.05t}$ for $t \\in [0, 60]$. \nIdentify the initial value, limiting value, and time to reach 100."
-    },
-    {
-      "type": "paragraph",
-      "text": "Use a graphing calculator to compare decay models.\n\n1. Graph $y = 100 \\cdot (0.5)^{t/10}$ and $y = 100 e^{-0.0693t}$ together.\n\n2. Verify they represent the same half-life of 10 units.\n\n3. Find when both equal 25 (quarter-life)."
-    },
-    {
-      "type": "paragraph",
-      "text": "Use a graphing calculator to explore compound interest.\n\n1. Graph $y = 1000(1 + 0.06/n)^{nt}$ for $n = 1, 4, 12, 365$ with $t \\in [0, 20]$.\n\n2. Graph $y = 1000e^{0.06t}$ on the same axes.\n\n3. For what value of $t$ does the difference between continuous and \n annual compounding first exceed $100?"
-    },
-    {
-      "type": "paragraph",
-      "text": "Graph the logistic function $P(t) = \\dfrac{1000}{1 + 9e^{-0.3t}}$.\n\n1. Identify the carrying capacity (horizontal asymptote as $t \\to \\infty$).\n\n2. Find the initial population $P(0)$.\n\n3. Find when the population reaches half the carrying capacity.\n\n4. Describe the shape of the curve."
+      "type": "exercise",
+      "id": "ch04-sec03-ex-55",
+      "number": "55",
+      "problem": "Graph $y = 1000(1.05)^t$ and $y = 1000e^{0.05t}$ together. \nExplain why they are not identical.",
+      "variant": "technology"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-55",
-      "number": "55",
+      "id": "ch04-sec03-ex-56",
+      "number": "56",
+      "problem": "Graph $T(t) = 70 + 130e^{-0.05t}$ for $t \\in [0, 60]$. \nIdentify the initial value, limiting value, and time to reach 100.",
+      "variant": "technology"
+    },
+    {
+      "type": "exercise",
+      "id": "ch04-sec03-ex-57",
+      "number": "57",
+      "problem": "Use a graphing calculator to compare decay models.\n\n1. Graph $y = 100 \\cdot (0.5)^{t/10}$ and $y = 100 e^{-0.0693t}$ together.\n\n2. Verify they represent the same half-life of 10 units.\n\n3. Find when both equal 25 (quarter-life).",
+      "variant": "technology"
+    },
+    {
+      "type": "exercise",
+      "id": "ch04-sec03-ex-58",
+      "number": "58",
+      "problem": "Use a graphing calculator to explore compound interest.\n\n1. Graph $y = 1000(1 + 0.06/n)^{nt}$ for $n = 1, 4, 12, 365$ with $t \\in [0, 20]$.\n\n2. Graph $y = 1000e^{0.06t}$ on the same axes.\n\n3. For what value of $t$ does the difference between continuous and \n annual compounding first exceed $100?",
+      "variant": "technology"
+    },
+    {
+      "type": "exercise",
+      "id": "ch04-sec03-ex-59",
+      "number": "59",
+      "problem": "Graph the logistic function $P(t) = \\dfrac{1000}{1 + 9e^{-0.3t}}$.\n\n1. Identify the carrying capacity (horizontal asymptote as $t \\to \\infty$).\n\n2. Find the initial population $P(0)$.\n\n3. Find when the population reaches half the carrying capacity.\n\n4. Describe the shape of the curve.",
+      "variant": "technology"
+    },
+    {
+      "type": "exercise",
+      "id": "ch04-sec03-ex-60",
+      "number": "60",
       "problem": "True or False? Justify each answer.\n\n1. If a quantity has a half-life of 10 years, then after 20 years, \n none remains.\n\n2. The Rule of 72 works best for interest rates between 4% and 12%.\n\n3. In Newton's Law of Cooling, the object can never actually reach \n room temperature.\n\n4. Doubling time depends on the initial amount.\n\n5. Continuous compounding at 6% is equivalent to some higher rate \n compounded annually.\n\n6. If population doubles in 10 years, it quadruples in 20 years.\n\n7. Half-life and doubling time are reciprocals of each other.\n\n8. $A = Pe^{rt}$ and $A = P(1+r)^t$ give the same result for the same $r$ and $t$.",
       "variant": "regular"
     },
     {
-      "type": "paragraph",
-      "text": "Show that if a quantity doubles in time $T_2$ and triples \nin time $T_3$, then $\\dfrac{T_3}{T_2} = \\dfrac{\\ln 3}{\\ln 2} \\approx 1.585$."
-    },
-    {
-      "type": "paragraph",
-      "text": "Determine which grows faster for large $t$ and explain.\n\n1. $P_1(t) = 1000 e^{0.05t}$ vs. $P_2(t) = 2000 e^{0.04t}$\n\n2. $A(t) = 100 \\cdot 3^t$ vs. $B(t) = 500 \\cdot 2^t$\n\n3. $N(t) = e^{t^2}$ vs. $M(t) = t^{100}$"
-    },
-    {
-      "type": "paragraph",
-      "text": "Two radioactive substances have half-lives of 10 years and \n30 years. Initially there are equal amounts. When will the amount of the \nfirst be 10% of the second?"
-    },
-    {
-      "type": "paragraph",
-      "text": "A drug is administered continuously via IV at rate $R$ mg/hr, \nwhile the body eliminates the drug at a rate proportional to the amount \npresent (rate constant $k$). Show that the amount approaches $R/k$ as \n$t \\to \\infty$."
-    },
-    {
-      "type": "paragraph",
-      "text": "Describe and correct the error."
-    },
-    {
-      "type": "paragraph",
-      "text": "Describe and correct the error in finding the growth rate:\n\"A population triples in 10 years, so the annual growth rate is 30%.\""
-    },
-    {
-      "type": "paragraph",
-      "text": "Describe and correct the error in compound interest:\n\"Continuous compounding at 5% is the same as compounding $n$ times \nper year at $5\\%/n$ as $n \\to \\infty$.\" (Partially correct but misses a key point.)"
-    },
-    {
-      "type": "paragraph",
-      "text": "Describe and correct the error:\n\"In Newton's Law of Cooling, $T(t) = T_s + (T_0 - T_s)e^{-kt}$, the \ntemperature eventually reaches exactly $T_s$.\""
+      "type": "exercise",
+      "id": "ch04-sec03-ex-61",
+      "number": "61",
+      "problem": "Show that if a quantity doubles in time $T_2$ and triples \nin time $T_3$, then $\\dfrac{T_3}{T_2} = \\dfrac{\\ln 3}{\\ln 2} \\approx 1.585$.",
+      "variant": "starred"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-56",
-      "number": "56",
+      "id": "ch04-sec03-ex-62",
+      "number": "62",
+      "problem": "Determine which grows faster for large $t$ and explain.\n\n1. $P_1(t) = 1000 e^{0.05t}$ vs. $P_2(t) = 2000 e^{0.04t}$\n\n2. $A(t) = 100 \\cdot 3^t$ vs. $B(t) = 500 \\cdot 2^t$\n\n3. $N(t) = e^{t^2}$ vs. $M(t) = t^{100}$",
+      "variant": "starred"
+    },
+    {
+      "type": "exercise",
+      "id": "ch04-sec03-ex-63",
+      "number": "63",
+      "problem": "Two radioactive substances have half-lives of 10 years and \n30 years. Initially there are equal amounts. When will the amount of the \nfirst be 10% of the second?",
+      "variant": "starred"
+    },
+    {
+      "type": "exercise",
+      "id": "ch04-sec03-ex-64",
+      "number": "64",
+      "problem": "A drug is administered continuously via IV at rate $R$ mg/hr, \nwhile the body eliminates the drug at a rate proportional to the amount \npresent (rate constant $k$). Show that the amount approaches $R/k$ as \n$t \\to \\infty$.",
+      "variant": "starred"
+    },
+    {
+      "type": "exercise",
+      "id": "ch04-sec03-ex-65",
+      "number": "65",
+      "problem": "Describe and correct the error.",
+      "variant": "error-analysis"
+    },
+    {
+      "type": "exercise",
+      "id": "ch04-sec03-ex-66",
+      "number": "66",
+      "problem": "Describe and correct the error in finding the growth rate:\n\"A population triples in 10 years, so the annual growth rate is 30%.\"",
+      "variant": "error-analysis"
+    },
+    {
+      "type": "exercise",
+      "id": "ch04-sec03-ex-67",
+      "number": "67",
+      "problem": "Describe and correct the error in compound interest:\n\"Continuous compounding at 5% is the same as compounding $n$ times \nper year at $5\\%/n$ as $n \\to \\infty$.\" (Partially correct but misses a key point.)",
+      "variant": "error-analysis"
+    },
+    {
+      "type": "exercise",
+      "id": "ch04-sec03-ex-68",
+      "number": "68",
+      "problem": "Describe and correct the error:\n\"In Newton's Law of Cooling, $T(t) = T_s + (T_0 - T_s)e^{-kt}$, the \ntemperature eventually reaches exactly $T_s$.\"",
+      "variant": "error-analysis"
+    },
+    {
+      "type": "exercise",
+      "id": "ch04-sec03-ex-69",
+      "number": "69",
       "problem": "Classify each situation as growth or decay, then write the model.\n\n1. A population triples every 12 years, starting at 5000.\n\n2. A car loses 18% of its value each year, starting at $40,000.\n\n3. An investment earns 6% compounded continuously, starting at $10,000.\n\n4. A drug has half-life 6 hours, starting at 400 mg.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-57",
-      "number": "57",
+      "id": "ch04-sec03-ex-70",
+      "number": "70",
       "problem": "Match each scenario to the correct model.\n\n1. A substance decays with half-life 20 years\n\n2. Money doubles every 12 years\n\n3. Temperature approaches 70°F from initial 200°F\n\n4. Population grows at 4% continuously\nModels: (i) $T = 70 + 130e^{-kt}$; (ii) $A = A_0 e^{0.04t}$; \n(iii) $A = A_0 e^{-(\\ln 2/20)t}$; (iv) $A = A_0 \\cdot 2^{t/12}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-58",
-      "number": "58",
+      "id": "ch04-sec03-ex-71",
+      "number": "71",
       "problem": "For each model, find: (i) initial value, (ii) growth/decay constant, \n(iii) doubling time or half-life.\n\n1. $P(t) = 500 e^{0.08t}$\n\n2. $A(t) = 1000 \\cdot (0.5)^{t/15}$\n\n3. $N(t) = 250 e^{-0.02t}$\n\n4. $V(t) = 30000 \\cdot (0.85)^t$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-59",
-      "number": "59",
+      "id": "ch04-sec03-ex-72",
+      "number": "72",
       "problem": "Solve each application problem.\n\n1. $15,000 invested at 4.5% compounded continuously. Find the \n value after 20 years.\n\n2. Radon-222 has half-life 3.8 days. If 100 mg is present initially, \n how much remains after 2 weeks?\n\n3. A cup of tea at 185°F cools to 150°F in 5 minutes in a 70°F room. \n When will it reach 100°F?\n\n4. A bacteria population of 2000 grows at rate $k = 0.15$/hour. \n Find the population after 8 hours.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-60",
-      "number": "60",
+      "id": "ch04-sec03-ex-73",
+      "number": "73",
       "problem": "Without a calculator, determine which is larger. Explain your reasoning.\n\n1. $1000 at 5% for 10 years compounded annually vs. continuously\n\n2. Amount after 3 half-lives vs. 10% of original\n\n3. Doubling time at 7% vs. 10 years\n\n4. Population after 2 doubling periods starting at 100 vs. 350",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-4.3-61",
-      "number": "61",
+      "id": "ch04-sec03-ex-74",
+      "number": "74",
       "problem": "Write a model for each situation and answer the question.\n\n1. A city's population of 250,000 grows at 1.5% annually. Find \n the population in 2040 if current year is 2020.\n\n2. A sample of Cesium-137 (half-life 30 years) starts at 500 g. \n When will 50 g remain?\n\n3. $20,000 invested at 3.8% compounded continuously reaches \n $50,000 after how many years?\n\n4. A hot pan at 400°F cools in a 70°F kitchen with $k = 0.04$. \n When is it at 150°F?",
       "variant": "regular"
     }
@@ -813,12 +852,14 @@
     {
       "type": "scripture",
       "reference": "Genesis 1:28",
-      "text": "Be fruitful and increase in number; fill \nthe earth and subdue it."
+      "text": "Be fruitful and increase in number; fill \nthe earth and subdue it.",
+      "edition": "christian"
     },
     {
       "type": "scripture",
       "reference": "2 Peter 3:8",
-      "text": "With the Lord a day is like a thousand \nyears, and a thousand years are like a day."
+      "text": "With the Lord a day is like a thousand \nyears, and a thousand years are like a day.",
+      "edition": "christian"
     }
   ]
 }

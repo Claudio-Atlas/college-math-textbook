@@ -52,7 +52,7 @@
     },
     {
       "type": "paragraph",
-      "text": "The subscript $n$ is called the **index**, and $a_n$ is the \n$n$\\textsuperscript{th} **term** of the sequence. Common conventions:"
+      "text": "The subscript $n$ is called the **index**, and $a_n$ is the \n$n$th **term** of the sequence. Common conventions:"
     },
     {
       "type": "paragraph",
@@ -60,7 +60,7 @@
     },
     {
       "type": "paragraph",
-      "text": "- $a_n$ = general term (the $n$\\textsuperscript{th} term)"
+      "text": "- $a_n$ = general term (the $n$th term)"
     },
     {
       "type": "paragraph",
@@ -72,7 +72,7 @@
     },
     {
       "type": "example",
-      "id": "example-11.1",
+      "id": "ch11-sec01-example-11.1",
       "number": "11.1",
       "title": "Writing Terms of a Sequence",
       "problem": "Write the first five terms of the sequence $a_n = \\dfrac{(-1)^n}{n}$.",
@@ -80,10 +80,10 @@
     },
     {
       "type": "example",
-      "id": "example-11.2",
+      "id": "ch11-sec01-example-11.2",
       "number": "11.2",
       "title": "Finding a Formula from Terms",
-      "problem": "Find a formula for the $n$\\textsuperscript{th} term: $2, 6, 12, 20, 30, \\ldots$",
+      "problem": "Find a formula for the $n$th term: $2, 6, 12, 20, 30, \\ldots$",
       "solution": "Look for a pattern. The differences between consecutive \nterms are $4, 6, 8, 10, \\ldots$ (increasing by 2 each time). This suggests \na quadratic formula.\n\nNotice: $2 = 1 \\cdot 2$, $6 = 2 \\cdot 3$, $12 = 3 \\cdot 4$, $20 = 4 \\cdot 5$, \n$30 = 5 \\cdot 6$.\n\nThe pattern: $a_n = n(n+1)$.\n\nCheck: $a_1 = 1(2) = 2$ ✓, $a_5 = 5(6) = 30$ ✓."
     },
     {
@@ -97,18 +97,65 @@
     },
     {
       "type": "definition",
-      "id": "definition-11.1",
+      "id": "ch11-sec01-definition-11.1",
       "title": "Factorial",
       "content": "For a non-negative integer $n$, the **factorial** of $n$, written $n!$ \n(read \"$n$ factorial\"), is defined as:\n$$\n n! = n \\cdot (n-1) \\cdot (n-2) \\cdots 3 \\cdot 2 \\cdot 1\n$$\nBy convention, $0! = 1$.",
       "number": "11.1"
     },
     {
-      "type": "paragraph",
-      "text": "\\renewcommand{}{1.3}"
-    },
-    {
-      "type": "paragraph",
-      "text": "| $n$ | $n!$ | Value |\n| $0$ | $0!$ | $1$ |\n| $1$ | $1!$ | $1$ |\n| $2$ | $2 \\cdot 1$ | $2$ |\n| $3$ | $3 \\cdot 2 \\cdot 1$ | $6$ |\n| $4$ | $4 \\cdot 3 \\cdot 2 \\cdot 1$ | $24$ |\n| $5$ | $5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1$ | $120$ |\n| $6$ | $6!$ | $720$ |\n| $7$ | $7!$ | $5040$ |"
+      "type": "table",
+      "headers": [
+        "$n$",
+        "$n!$",
+        "Value"
+      ],
+      "rows": [
+        [
+          "$0$",
+          "$0!$",
+          "$1$"
+        ],
+        [
+          "$1$",
+          "$1!$",
+          "$1$"
+        ],
+        [
+          "$2$",
+          "$2 \\cdot 1$",
+          "$2$"
+        ],
+        [
+          "$3$",
+          "$3 \\cdot 2 \\cdot 1$",
+          "$6$"
+        ],
+        [
+          "$4$",
+          "$4 \\cdot 3 \\cdot 2 \\cdot 1$",
+          "$24$"
+        ],
+        [
+          "$5$",
+          "$5 \\cdot 4 \\cdot 3 \\cdot 2 \\cdot 1$",
+          "$120$"
+        ],
+        [
+          "$6$",
+          "$6!$",
+          "$720$"
+        ],
+        [
+          "$7$",
+          "$7!$",
+          "$5040$"
+        ]
+      ],
+      "alignment": [
+        "center",
+        "center",
+        "center"
+      ]
     },
     {
       "type": "paragraph",
@@ -116,7 +163,7 @@
     },
     {
       "type": "example",
-      "id": "example-11.3",
+      "id": "ch11-sec01-example-11.3",
       "number": "11.3",
       "title": "Simplifying Factorial Expressions",
       "problem": "Simplify each expression:\n\n(a) $\\dfrac{8!}{6!}$\n\n(b) $\\dfrac{(n+1)!}{(n-1)!}$",
@@ -124,7 +171,7 @@
     },
     {
       "type": "paragraph",
-      "text": "We will use factorials extensively in Section [sec:binomial-theorem] when \nstudying the binomial theorem and counting combinations."
+      "text": "We will use factorials extensively in Section when \nstudying the binomial theorem and counting combinations."
     },
     {
       "type": "heading",
@@ -137,32 +184,32 @@
     },
     {
       "type": "figure",
-      "id": "fig:seq-arithmetic-graph",
-      "src": "/figures/precalculus/ch11/fig-seq-arithmetic-graph.svg",
+      "id": "fig-11.1-inline-1",
+      "src": "/figures/precalculus/ch11/fig-11.1-inline-1.svg",
       "caption": "Graph of the arithmetic sequence $a_n = \\frac{n+1}{2}$. The terms \n$1, \\frac{3}{2}, 2, \\frac{5}{2}, 3, \\ldots$ form a linear pattern when plotted. \nPoints are discrete (not connected) because the domain consists only of \npositive integers.",
       "alt": "Graph of the arithmetic sequence $a_n = \\frac{n+1}{2}$. The terms \n$1, \\frac{3}{2}, 2, \\frac{5}{2}, 3, \\ldots$ form a linear pattern when plotted. \nPoints are discrete (not connected) because the domain consists only of \npositive integers.",
       "tikz": true
     },
     {
       "type": "figure",
-      "id": "fig:seq-geometric-graph",
-      "src": "/figures/precalculus/ch11/fig-seq-geometric-graph.svg",
+      "id": "fig-11.1-inline-2",
+      "src": "/figures/precalculus/ch11/fig-11.1-inline-2.svg",
       "caption": "Graph of the geometric sequence $a_n = \\frac{1}{2} \\cdot \\left(\\frac{3}{2}\\right)^{n-1}$. \nThe terms grow exponentially: $\\frac{1}{2}, \\frac{3}{4}, \\frac{9}{8}, \\frac{27}{16}, \\ldots$ \nThe curved pattern distinguishes geometric sequences from linear arithmetic sequences.",
       "alt": "Graph of the geometric sequence $a_n = \\frac{1}{2} \\cdot \\left(\\frac{3}{2}\\right)^{n-1}$. \nThe terms grow exponentially: $\\frac{1}{2}, \\frac{3}{4}, \\frac{9}{8}, \\frac{27}{16}, \\ldots$ \nThe curved pattern distinguishes geometric sequences from linear arithmetic sequences.",
       "tikz": true
     },
     {
       "type": "example",
-      "id": "example-11.4",
+      "id": "ch11-sec01-example-11.4",
       "number": "11.4",
       "title": "Comparing Arithmetic and Geometric Growth",
       "problem": "Graph the first 6 terms of both sequences on the same axes:\n\n- Arithmetic: $a_n = 2 + 3(n-1) = 3n - 1$\n\n- Geometric: $b_n = 2 \\cdot 1.5^{n-1}$",
-      "solution": "Computing the terms:\n\n\\renewcommand{}{1.3}\n\n| $n$ | 1 | 2 | 3 | 4 | 5 | 6 |\n| $a_n$ (arithmetic) | 2 | 5 | 8 | 11 | 14 | 17 |\n| $b_n$ (geometric) | 2 | 3 | 4.5 | 6.75 | 10.125 | 15.19 |\n\nBoth sequences start at $a_1 = b_1 = 2$. The arithmetic sequence grows by \na constant amount (3 each step), while the geometric sequence grows by a \nconstant factor (1.5 each step). For small $n$, the arithmetic sequence \nis larger, but geometric growth eventually dominates."
+      "solution": "Computing the terms:\n\n| $n$ | 1 | 2 | 3 | 4 | 5 | 6 |\n| $a_n$ (arithmetic) | 2 | 5 | 8 | 11 | 14 | 17 |\n| $b_n$ (geometric) | 2 | 3 | 4.5 | 6.75 | 10.125 | 15.19 |\n\nBoth sequences start at $a_1 = b_1 = 2$. The arithmetic sequence grows by \na constant amount (3 each step), while the geometric sequence grows by a \nconstant factor (1.5 each step). For small $n$, the arithmetic sequence \nis larger, but geometric growth eventually dominates."
     },
     {
       "type": "figure",
-      "id": "fig:seq-arith-vs-geom",
-      "src": "/figures/precalculus/ch11/fig-seq-arith-vs-geom.svg",
+      "id": "fig-11.1-inline-3",
+      "src": "/figures/precalculus/ch11/fig-11.1-inline-3.svg",
       "caption": "Comparison of arithmetic and geometric sequences starting from the \nsame first term. The arithmetic sequence (teal) grows linearly, adding the \nsame amount each step. The geometric sequence (orange) grows exponentially, \nmultiplying by the same factor each step. Eventually, geometric growth \nalways overtakes arithmetic growth.",
       "alt": "Comparison of arithmetic and geometric sequences starting from the \nsame first term. The arithmetic sequence (teal) grows linearly, adding the \nsame amount each step. The geometric sequence (orange) grows exponentially, \nmultiplying by the same factor each step. Eventually, geometric growth \nalways overtakes arithmetic growth.",
       "tikz": true
@@ -174,7 +221,7 @@
     },
     {
       "type": "definition",
-      "id": "definition-11.2",
+      "id": "ch11-sec01-definition-11.2",
       "title": "Arithmetic Sequence",
       "content": "An **arithmetic sequence** is a sequence \nin which each term after the first differs from the preceding term by a \nconstant called the **common difference**, denoted $d$.",
       "number": "11.2"
@@ -189,7 +236,7 @@
     },
     {
       "type": "example",
-      "id": "example-11.5",
+      "id": "ch11-sec01-example-11.5",
       "number": "11.5",
       "title": "Finding Terms of an Arithmetic Sequence",
       "problem": "An arithmetic sequence has $a_1 = 5$ and $d = 3$. Find $a_{20}$.",
@@ -197,7 +244,7 @@
     },
     {
       "type": "example",
-      "id": "example-11.6",
+      "id": "ch11-sec01-example-11.6",
       "number": "11.6",
       "title": "Finding the Common Difference",
       "problem": "In an arithmetic sequence, $a_3 = 11$ and $a_7 = 27$. Find $a_1$ and $d$.",
@@ -210,7 +257,7 @@
     },
     {
       "type": "definition",
-      "id": "definition-11.3",
+      "id": "ch11-sec01-definition-11.3",
       "title": "Geometric Sequence",
       "content": "A **geometric sequence** is a sequence in \nwhich each term after the first is obtained by multiplying the preceding \nterm by a constant called the **common ratio**, denoted $r$.",
       "number": "11.3"
@@ -225,7 +272,7 @@
     },
     {
       "type": "example",
-      "id": "example-11.7",
+      "id": "ch11-sec01-example-11.7",
       "number": "11.7",
       "title": "Finding Terms of a Geometric Sequence",
       "problem": "A geometric sequence has $a_1 = 3$ and $r = 2$. Find $a_8$.",
@@ -233,7 +280,7 @@
     },
     {
       "type": "example",
-      "id": "example-11.8",
+      "id": "ch11-sec01-example-11.8",
       "number": "11.8",
       "title": "Finding the Common Ratio",
       "problem": "In a geometric sequence, $a_2 = 6$ and $a_5 = 162$. Find $a_1$ and $r$.",
@@ -241,7 +288,7 @@
     },
     {
       "type": "example",
-      "id": "example-11.9",
+      "id": "ch11-sec01-example-11.9",
       "number": "11.9",
       "title": "Negative and Fractional Ratios",
       "problem": "Write the first five terms of each geometric sequence:\n\n(a) $a_1 = 16$, $r = -\\frac{1}{2}$\n\n(b) $a_1 = 1$, $r = -2$",
@@ -258,7 +305,7 @@
     },
     {
       "type": "example",
-      "id": "example-11.10",
+      "id": "ch11-sec01-example-11.10",
       "number": "11.10",
       "title": "The Fibonacci Sequence",
       "problem": "The Fibonacci sequence is defined by:\n$$\n F_1 = 1, \\quad F_2 = 1, \\quad F_n = F_{n-1} + F_{n-2} \\text{ for } n \\geq 3\n$$\n\nThe first ten terms: $1, 1, 2, 3, 5, 8, 13, 21, 34, 55, \\ldots$\n\nEach term (after the first two) is the sum of the two preceding terms.",
@@ -266,7 +313,7 @@
     },
     {
       "type": "example",
-      "id": "example-11.11",
+      "id": "ch11-sec01-example-11.11",
       "number": "11.11",
       "title": "Recursive to Explicit",
       "problem": "A sequence is defined by $a_1 = 2$ and $a_n = a_{n-1} + 5$ for $n \\geq 2$.\n\n(a) Write the first five terms.\n\n(b) Find an explicit formula for $a_n$.",
@@ -283,14 +330,14 @@
     },
     {
       "type": "definition",
-      "id": "definition-11.4",
+      "id": "ch11-sec01-definition-11.4",
       "title": "Monotonic Sequence",
       "content": "A sequence $\\{a_n\\}$ is:\n\n- **Increasing** if $a_{n+1} > a_n$ for all $n$\n\n- **Decreasing** if $a_{n+1} < a_n$ for all $n$\n\n- **Non-decreasing** if $a_{n+1} \\geq a_n$ for all $n$\n\n- **Non-increasing** if $a_{n+1} \\leq a_n$ for all $n$\nA sequence is **monotonic** if it is either non-decreasing or non-increasing.",
       "number": "11.4"
     },
     {
       "type": "example",
-      "id": "example-11.12",
+      "id": "ch11-sec01-example-11.12",
       "number": "11.12",
       "title": "Classifying Monotonic Behavior",
       "problem": "Classify each sequence as increasing, decreasing, or neither:\n\n(a) $a_n = 3n + 1$\n\n(b) $b_n = \\dfrac{1}{n}$\n\n(c) $c_n = (-1)^n$\n\n(d) $d_n = \\dfrac{n}{n+1}$",
@@ -298,14 +345,14 @@
     },
     {
       "type": "definition",
-      "id": "definition-11.5",
+      "id": "ch11-sec01-definition-11.5",
       "title": "Bounded Sequence",
       "content": "A sequence $\\{a_n\\}$ is:\n\n- **Bounded above** if there exists $M$ such that $a_n \\leq M$ for all $n$\n\n- **Bounded below** if there exists $m$ such that $a_n \\geq m$ for all $n$\n\n- **Bounded** if it is bounded both above and below",
       "number": "11.5"
     },
     {
       "type": "example",
-      "id": "example-11.13",
+      "id": "ch11-sec01-example-11.13",
       "number": "11.13",
       "title": "Identifying Bounded Sequences",
       "problem": "Determine whether each sequence is bounded:\n\n(a) $a_n = \\dfrac{n}{n+1}$\n\n(b) $b_n = 2^n$\n\n(c) $c_n = (-1)^n \\cdot \\dfrac{1}{n}$",
@@ -313,16 +360,16 @@
     },
     {
       "type": "figure",
-      "id": "fig:seq-convergent",
-      "src": "/figures/precalculus/ch11/fig-seq-convergent.svg",
+      "id": "fig-11.1-inline-4",
+      "src": "/figures/precalculus/ch11/fig-11.1-inline-4.svg",
       "caption": "The sequence $a_n = \\frac{n}{n+1}$ is bounded and increasing. As $n$ \ngrows larger, the terms get closer and closer to 1 (shown by the dashed line), \nbut never reach it. We say the sequence *converges* to 1. The terms are \n$\\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\frac{4}{5}, \\ldots$",
       "alt": "The sequence $a_n = \\frac{n}{n+1}$ is bounded and increasing. As $n$ \ngrows larger, the terms get closer and closer to 1 (shown by the dashed line), \nbut never reach it. We say the sequence *converges* to 1. The terms are \n$\\frac{1}{2}, \\frac{2}{3}, \\frac{3}{4}, \\frac{4}{5}, \\ldots$",
       "tikz": true
     },
     {
       "type": "figure",
-      "id": "fig:seq-alternating",
-      "src": "/figures/precalculus/ch11/fig-seq-alternating.svg",
+      "id": "fig-11.1-inline-5",
+      "src": "/figures/precalculus/ch11/fig-11.1-inline-5.svg",
       "caption": "The alternating sequence $a_n = \\frac{(-1)^n}{n}$ oscillates between \npositive and negative values: $-1, \\frac{1}{2}, -\\frac{1}{3}, \\frac{1}{4}, \\ldots$ \nAlthough not monotonic, it is bounded (all terms lie between $-1$ and $1$) and \nthe oscillations decrease in magnitude, approaching zero.",
       "alt": "The alternating sequence $a_n = \\frac{(-1)^n}{n}$ oscillates between \npositive and negative values: $-1, \\frac{1}{2}, -\\frac{1}{3}, \\frac{1}{4}, \\ldots$ \nAlthough not monotonic, it is bounded (all terms lie between $-1$ and $1$) and \nthe oscillations decrease in magnitude, approaching zero.",
       "tikz": true
@@ -349,9 +396,9 @@
     },
     {
       "type": "summary",
-      "id": "summary-11.1",
+      "id": "ch11-sec01-summary",
       "title": "Sequences",
-      "content": "**Notation:**\n\n- $\\{a_n\\}$ or $\\{a_n\\}_{n=1}^{\\infty}$ — the sequence\n\n- $a_n$ — the $n$th term (general term)\n\n- $a_1$ — the first term\n\n**Arithmetic Sequence:** \nConstant difference $d = a_{n+1} - a_n$\n$$\n\\boxed{a_n = a_1 + (n-1)d}\n$$\n\n**Geometric Sequence:** \nConstant ratio $r = \\frac{a_{n+1}}{a_n}$\n$$\n\\boxed{a_n = a_1 \\cdot r^{n-1}}\n$$\n\n**Factorial:** \n$n! = n(n-1)(n-2)\\cdots 3 \\cdot 2 \\cdot 1$, with $0! = 1$\n\n**Key Differences:**\n\\renewcommand{}{1.3}\n\n| | **Arithmetic** | **Geometric** |\n| Pattern | Add constant $d$ | Multiply by constant $r$ |\n| Growth | Linear | Exponential |\n| Graph shape | Straight line | Curve |"
+      "content": "**Notation:**\n\n- $\\{a_n\\}$ or $\\{a_n\\}_{n=1}^{\\infty}$ — the sequence\n\n- $a_n$ — the $n$th term (general term)\n\n- $a_1$ — the first term\n\n**Arithmetic Sequence:** \nConstant difference $d = a_{n+1} - a_n$\n$$\n\\boxed{a_n = a_1 + (n-1)d}\n$$\n\n**Geometric Sequence:** \nConstant ratio $r = \\frac{a_{n+1}}{a_n}$\n$$\n\\boxed{a_n = a_1 \\cdot r^{n-1}}\n$$\n\n**Factorial:** \n$n! = n(n-1)(n-2)\\cdots 3 \\cdot 2 \\cdot 1$, with $0! = 1$\n\n**Key Differences:**\n| | **Arithmetic** | **Geometric** |\n| Pattern | Add constant $d$ | Multiply by constant $r$ |\n| Growth | Linear | Exponential |\n| Graph shape | Straight line | Curve |"
     },
     {
       "type": "heading",
@@ -360,56 +407,56 @@
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-1",
+      "id": "ch11-sec01-ex-1",
       "number": "1",
       "problem": "Write the first five terms of $a_n = 2n - 1$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-2",
+      "id": "ch11-sec01-ex-2",
       "number": "2",
       "problem": "Write the first five terms of $a_n = n^2 + 1$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-3",
+      "id": "ch11-sec01-ex-3",
       "number": "3",
       "problem": "Write the first five terms of $a_n = \\dfrac{n}{n+1}$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-4",
+      "id": "ch11-sec01-ex-4",
       "number": "4",
       "problem": "Write the first five terms of $a_n = (-1)^{n+1} \\cdot n$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-5",
+      "id": "ch11-sec01-ex-5",
       "number": "5",
       "problem": "Write the first five terms of $a_n = \\dfrac{2^n}{n!}$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-6",
+      "id": "ch11-sec01-ex-6",
       "number": "6",
       "problem": "Write the first five terms of $a_n = 3 \\cdot (-2)^{n-1}$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-7",
+      "id": "ch11-sec01-ex-7",
       "number": "7",
       "problem": "Write the first six terms of $a_n = \\cos\\left(\\dfrac{n\\pi}{2}\\right)$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-8",
+      "id": "ch11-sec01-ex-8",
       "number": "8",
       "problem": "Write the first six terms of $a_n = \\sin(n\\pi)$.",
       "variant": "regular"
@@ -421,42 +468,42 @@
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-9",
+      "id": "ch11-sec01-ex-9",
       "number": "9",
       "problem": "Evaluate: $6!$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-10",
+      "id": "ch11-sec01-ex-10",
       "number": "10",
       "problem": "Evaluate: $\\dfrac{8!}{6!}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-11",
+      "id": "ch11-sec01-ex-11",
       "number": "11",
       "problem": "Evaluate: $\\dfrac{10!}{7! \\cdot 3!}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-12",
+      "id": "ch11-sec01-ex-12",
       "number": "12",
       "problem": "Simplify: $\\dfrac{(n+2)!}{n!}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-13",
+      "id": "ch11-sec01-ex-13",
       "number": "13",
       "problem": "Simplify: $\\dfrac{(2n)!}{(2n-2)!}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-14",
+      "id": "ch11-sec01-ex-14",
       "number": "14",
       "problem": "Solve for $n$: $\\dfrac{n!}{(n-2)!} = 72$",
       "variant": "regular"
@@ -468,56 +515,56 @@
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-15",
+      "id": "ch11-sec01-ex-15",
       "number": "15",
       "problem": "Find a formula for $a_n$: $1, 3, 5, 7, 9, \\ldots$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-16",
+      "id": "ch11-sec01-ex-16",
       "number": "16",
       "problem": "Find a formula for $a_n$: $2, 4, 8, 16, 32, \\ldots$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-17",
+      "id": "ch11-sec01-ex-17",
       "number": "17",
       "problem": "Find a formula for $a_n$: $1, 4, 9, 16, 25, \\ldots$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-18",
+      "id": "ch11-sec01-ex-18",
       "number": "18",
       "problem": "Find a formula for $a_n$: $\\dfrac{1}{2}, \\dfrac{2}{3}, \\dfrac{3}{4}, \\dfrac{4}{5}, \\ldots$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-19",
+      "id": "ch11-sec01-ex-19",
       "number": "19",
       "problem": "Find a formula for $a_n$: $1, -1, 1, -1, 1, \\ldots$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-20",
+      "id": "ch11-sec01-ex-20",
       "number": "20",
       "problem": "Find a formula for $a_n$: $0, 3, 8, 15, 24, \\ldots$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-21",
+      "id": "ch11-sec01-ex-21",
       "number": "21",
       "problem": "Find a formula for $a_n$: $1, \\dfrac{1}{2}, \\dfrac{1}{6}, \\dfrac{1}{24}, \\dfrac{1}{120}, \\ldots$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-22",
+      "id": "ch11-sec01-ex-22",
       "number": "22",
       "problem": "Find a formula for $a_n$: $-1, 4, -9, 16, -25, \\ldots$",
       "variant": "regular"
@@ -529,28 +576,28 @@
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-23",
+      "id": "ch11-sec01-ex-23",
       "number": "23",
       "problem": "Sketch the first 6 terms of $a_n = 2n - 1$ on a coordinate plane with \n$n$ on the horizontal axis and $a_n$ on the vertical axis.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-24",
+      "id": "ch11-sec01-ex-24",
       "number": "24",
       "problem": "Sketch the first 6 terms of $a_n = 8 \\cdot \\left(\\dfrac{1}{2}\\right)^{n-1}$ \non a coordinate plane.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-25",
+      "id": "ch11-sec01-ex-25",
       "number": "25",
       "problem": "A sequence is plotted with points $(1, 3)$, $(2, 6)$, $(3, 12)$, $(4, 24)$. \nDetermine whether the sequence is arithmetic or geometric, and find a \nformula for $a_n$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-26",
+      "id": "ch11-sec01-ex-26",
       "number": "26",
       "problem": "A sequence is plotted with points $(1, 2)$, $(2, 5)$, $(3, 8)$, $(4, 11)$. \nDetermine whether the sequence is arithmetic or geometric, and find a \nformula for $a_n$.",
       "variant": "regular"
@@ -562,84 +609,84 @@
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-27",
+      "id": "ch11-sec01-ex-27",
       "number": "27",
       "problem": "Determine if the sequence is arithmetic. If so, find $d$.\n\n1. $4, 7, 10, 13, 16, \\ldots$\n\n2. $2, 4, 8, 16, 32, \\ldots$\n\n3. $-5, -2, 1, 4, 7, \\ldots$\n\n4. $1, 1, 2, 3, 5, \\ldots$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-28",
+      "id": "ch11-sec01-ex-28",
       "number": "28",
       "problem": "Find the first term and common difference:\n\n1. $a_n = 3n + 2$\n\n2. $a_n = 7 - 4n$\n\n3. $a_n = \\frac{n+5}{2}$\n\n4. $a_n = 100 - 5n$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-29",
+      "id": "ch11-sec01-ex-29",
       "number": "29",
       "problem": "An arithmetic sequence has $a_1 = 8$ and $d = -3$. Find $a_{15}$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-30",
+      "id": "ch11-sec01-ex-30",
       "number": "30",
       "problem": "An arithmetic sequence has $a_1 = -2$ and $d = 5$. Find $a_{100}$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-31",
+      "id": "ch11-sec01-ex-31",
       "number": "31",
       "problem": "An arithmetic sequence has $a_5 = 12$ and $a_{12} = 33$. Find $a_1$ and $d$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-32",
+      "id": "ch11-sec01-ex-32",
       "number": "32",
       "problem": "An arithmetic sequence has $a_3 = 7$ and $a_8 = 22$. Find $a_{20}$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-33",
+      "id": "ch11-sec01-ex-33",
       "number": "33",
       "problem": "The 4th term of an arithmetic sequence is 15 and the 9th term is 35. \nFind the 15th term.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-34",
+      "id": "ch11-sec01-ex-34",
       "number": "34",
       "problem": "Find the number of terms in the arithmetic sequence $5, 8, 11, \\ldots, 83$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-35",
+      "id": "ch11-sec01-ex-35",
       "number": "35",
       "problem": "Insert three arithmetic means between 2 and 22.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-36",
+      "id": "ch11-sec01-ex-36",
       "number": "36",
       "problem": "Insert four arithmetic means between -3 and 17.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-37",
+      "id": "ch11-sec01-ex-37",
       "number": "37",
       "problem": "The first term of an arithmetic sequence is 3. If the sum of the 2nd and \n4th terms is 22, find the common difference.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-38",
+      "id": "ch11-sec01-ex-38",
       "number": "38",
       "problem": "Find $x$ such that $x - 2$, $x + 1$, and $3x - 1$ are consecutive terms \nof an arithmetic sequence.",
       "variant": "regular"
@@ -651,84 +698,84 @@
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-39",
+      "id": "ch11-sec01-ex-39",
       "number": "39",
       "problem": "Determine if the sequence is geometric. If so, find $r$.\n\n1. $3, 6, 12, 24, \\ldots$\n\n2. $1, -2, 4, -8, \\ldots$\n\n3. $4, 2, 1, \\frac{1}{2}, \\ldots$\n\n4. $1, 4, 9, 16, \\ldots$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-40",
+      "id": "ch11-sec01-ex-40",
       "number": "40",
       "problem": "Find the first term and common ratio:\n\n1. $a_n = 5 \\cdot 2^n$\n\n2. $a_n = 3^{n-1}$\n\n3. $a_n = 4 \\cdot \\left(\\frac{1}{2}\\right)^{n-1}$\n\n4. $a_n = (-1)^n \\cdot 2^n$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-41",
+      "id": "ch11-sec01-ex-41",
       "number": "41",
       "problem": "A geometric sequence has $a_1 = 5$ and $r = 2$. Find $a_{10}$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-42",
+      "id": "ch11-sec01-ex-42",
       "number": "42",
       "problem": "A geometric sequence has $a_1 = 64$ and $r = \\frac{1}{2}$. Find $a_8$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-43",
+      "id": "ch11-sec01-ex-43",
       "number": "43",
       "problem": "A geometric sequence has $a_1 = 2$ and $r = -3$. Find $a_6$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-44",
+      "id": "ch11-sec01-ex-44",
       "number": "44",
       "problem": "A geometric sequence has $a_3 = 12$ and $a_6 = 96$. Find $a_1$ and $r$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-45",
+      "id": "ch11-sec01-ex-45",
       "number": "45",
       "problem": "A geometric sequence has $a_2 = 10$ and $a_5 = 80$. Find $a_1$ and $r$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-46",
+      "id": "ch11-sec01-ex-46",
       "number": "46",
       "problem": "The 2nd term of a geometric sequence is 6 and the 5th term is 162. \nFind the 8th term.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-47",
+      "id": "ch11-sec01-ex-47",
       "number": "47",
       "problem": "Insert two geometric means between 2 and 54.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-48",
+      "id": "ch11-sec01-ex-48",
       "number": "48",
       "problem": "Insert three geometric means between 1 and 81.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-49",
+      "id": "ch11-sec01-ex-49",
       "number": "49",
       "problem": "Find $x$ such that $2$, $x$, and $8$ form a geometric sequence.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-50",
+      "id": "ch11-sec01-ex-50",
       "number": "50",
       "problem": "Find $x$ such that $x - 1$, $x + 2$, and $3x + 3$ are consecutive terms \nof a geometric sequence.",
       "variant": "regular"
@@ -740,42 +787,42 @@
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-51",
+      "id": "ch11-sec01-ex-51",
       "number": "51",
       "problem": "Write the first six terms: $a_1 = 3$, $a_n = a_{n-1} + 4$ for $n \\geq 2$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-52",
+      "id": "ch11-sec01-ex-52",
       "number": "52",
       "problem": "Write the first six terms: $a_1 = 2$, $a_n = 3a_{n-1}$ for $n \\geq 2$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-53",
+      "id": "ch11-sec01-ex-53",
       "number": "53",
       "problem": "Write the first six terms: $a_1 = 1$, $a_n = \\dfrac{a_{n-1}}{n}$ for $n \\geq 2$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-54",
+      "id": "ch11-sec01-ex-54",
       "number": "54",
       "problem": "Write the first six terms: $a_1 = 1$, $a_2 = 3$, $a_n = a_{n-1} - a_{n-2}$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-55",
+      "id": "ch11-sec01-ex-55",
       "number": "55",
       "problem": "Write the first eight Fibonacci numbers.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-56",
+      "id": "ch11-sec01-ex-56",
       "number": "56",
       "problem": "The Lucas sequence is defined by $L_1 = 1$, $L_2 = 3$, \n$L_n = L_{n-1} + L_{n-2}$. Write the first eight terms.",
       "variant": "regular"
@@ -787,42 +834,42 @@
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-57",
+      "id": "ch11-sec01-ex-57",
       "number": "57",
       "problem": "A ball is dropped from 100 feet. Each bounce reaches 80% of the previous \nheight. Write a sequence for the height of each bounce and find the height \nof the 6th bounce.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-58",
+      "id": "ch11-sec01-ex-58",
       "number": "58",
       "problem": "A population of bacteria doubles every hour. Starting with 500 bacteria, \nwrite a sequence for the population after each hour and find the population \nafter 8 hours.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-59",
+      "id": "ch11-sec01-ex-59",
       "number": "59",
       "problem": "An auditorium has 20 seats in the first row, 23 in the second, 26 in the \nthird, and so on. How many seats are in the 15th row?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-60",
+      "id": "ch11-sec01-ex-60",
       "number": "60",
       "problem": "You save $50 the first month and increase your savings by $10 each month. \nHow much do you save in the 12th month?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-61",
+      "id": "ch11-sec01-ex-61",
       "number": "61",
       "problem": "A car depreciates 15% of its value each year. If it's worth $30,000 new, \nwhat's it worth after 5 years?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-62",
+      "id": "ch11-sec01-ex-62",
       "number": "62",
       "problem": "A medication's concentration decreases by 20% per hour. If the initial \ndose creates a concentration of 100 mg/L, find the concentration after 6 hours.",
       "variant": "regular"
@@ -834,28 +881,28 @@
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-63",
+      "id": "ch11-sec01-ex-63",
       "number": "63",
       "problem": "Write the first five terms of $a_n = \\dfrac{n!}{2^n}$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-64",
+      "id": "ch11-sec01-ex-64",
       "number": "64",
       "problem": "Write the first five terms of $a_n = \\dfrac{2n-1}{3n+1}$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-65",
+      "id": "ch11-sec01-ex-65",
       "number": "65",
       "problem": "Write the first five terms of $a_n = \\sin\\left(\\dfrac{n\\pi}{3}\\right)$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-66",
+      "id": "ch11-sec01-ex-66",
       "number": "66",
       "problem": "Write the first five terms of $a_n = n \\cdot (-1)^{n+1} + 1$.",
       "variant": "regular"
@@ -867,14 +914,14 @@
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-67",
+      "id": "ch11-sec01-ex-67",
       "number": "67",
       "problem": "The $n$th term of a sequence is $a_n = 5 + 3n$. Find which term equals 65.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-68",
+      "id": "ch11-sec01-ex-68",
       "number": "68",
       "problem": "The $n$th term of a sequence is $a_n = 2^n - 1$. Find which term equals 1023.",
       "variant": "regular"
@@ -886,14 +933,14 @@
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-69",
+      "id": "ch11-sec01-ex-69",
       "number": "69",
       "problem": "The sum of the 3rd and 7th terms of an arithmetic sequence is 40. \nThe sum of the 5th and 11th terms is 64. Find the sequence.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-70",
+      "id": "ch11-sec01-ex-70",
       "number": "70",
       "problem": "The sum of three consecutive terms of an arithmetic sequence is 24, \nand the sum of their squares is 200. Find the terms.",
       "variant": "regular"
@@ -905,7 +952,7 @@
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-71",
+      "id": "ch11-sec01-ex-71",
       "number": "71",
       "problem": "A geometric sequence has all positive terms. If $a_3 = 8$ and $a_5 = 32$, \nfind $a_1$ and $a_7$.",
       "variant": "regular"
@@ -917,35 +964,35 @@
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-72",
+      "id": "ch11-sec01-ex-72",
       "number": "72",
       "problem": "Write the first seven terms: $a_1 = 1$, $a_n = 3a_{n-1} + 1$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-73",
+      "id": "ch11-sec01-ex-73",
       "number": "73",
       "problem": "Write the first seven terms: $a_1 = 2$, $a_2 = 5$, $a_n = 2a_{n-1} - a_{n-2}$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-74",
+      "id": "ch11-sec01-ex-74",
       "number": "74",
       "problem": "Write the first seven terms: $a_1 = 1$, $a_n = na_{n-1}$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-75",
+      "id": "ch11-sec01-ex-75",
       "number": "75",
       "problem": "The Tribonacci sequence: $T_1 = T_2 = T_3 = 1$, $T_n = T_{n-1} + T_{n-2} + T_{n-3}$. \nFind $T_{10}$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-76",
+      "id": "ch11-sec01-ex-76",
       "number": "76",
       "problem": "A sequence is defined by $a_1 = 2$ and $a_{n+1} = \\dfrac{1}{3-a_n}$. \nFind the first six terms.",
       "variant": "regular"
@@ -957,28 +1004,28 @@
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-77",
+      "id": "ch11-sec01-ex-77",
       "number": "77",
       "problem": "Classify each sequence as increasing, decreasing, or neither:\n\n1. $a_n = 5 - 2n$\n\n2. $a_n = \\dfrac{1}{n^2}$\n\n3. $a_n = (-1)^n n$\n\n4. $a_n = \\dfrac{2n}{n+1}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-78",
+      "id": "ch11-sec01-ex-78",
       "number": "78",
       "problem": "Determine whether each sequence is bounded. If bounded, give upper and \nlower bounds:\n\n1. $a_n = \\dfrac{1}{n+1}$\n\n2. $a_n = n^2$\n\n3. $a_n = \\sin\\left(\\dfrac{n\\pi}{2}\\right)$\n\n4. $a_n = \\dfrac{2n-1}{n}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-79",
+      "id": "ch11-sec01-ex-79",
       "number": "79",
       "problem": "Determine whether each sequence converges or diverges. If it converges, \nstate the value it approaches:\n\n1. $a_n = \\dfrac{3n+1}{n}$\n\n2. $a_n = \\left(\\dfrac{1}{2}\\right)^n$\n\n3. $a_n = (-1)^n$\n\n4. $a_n = \\dfrac{n^2}{n^2+1}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-11.1-80",
+      "id": "ch11-sec01-ex-80",
       "number": "80",
       "problem": "Give an example of a sequence that is:\n\n1. Increasing and bounded above\n\n2. Decreasing and bounded below\n\n3. Bounded but not monotonic\n\n4. Monotonic but not bounded",
       "variant": "regular"

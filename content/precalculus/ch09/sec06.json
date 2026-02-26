@@ -22,8 +22,9 @@
       "text": "Key Concepts"
     },
     {
-      "type": "paragraph",
-      "text": "*{Systems of Linear Equations (Section 9.1)}"
+      "type": "heading",
+      "level": 3,
+      "text": "Systems of Linear Equations (Section 9.1)"
     },
     {
       "type": "paragraph",
@@ -58,8 +59,9 @@
       "text": "- The same methods extend to systems with three or more variables, \n where we systematically eliminate variables until the system is solved."
     },
     {
-      "type": "paragraph",
-      "text": "*{Introduction to Matrices (Section 9.2)}"
+      "type": "heading",
+      "level": 3,
+      "text": "Introduction to Matrices (Section 9.2)"
     },
     {
       "type": "paragraph",
@@ -102,8 +104,9 @@
       "text": "- Rows of all zeros indicate dependent equations; the system \n may have infinitely many solutions with free parameters."
     },
     {
-      "type": "paragraph",
-      "text": "*{Matrix Operations (Section 9.3)}"
+      "type": "heading",
+      "level": 3,
+      "text": "Matrix Operations (Section 9.3)"
     },
     {
       "type": "paragraph",
@@ -146,8 +149,9 @@
       "text": "- **Cramer's Rule** expresses each variable as a ratio of \n determinants: $x = D_x/D$, $y = D_y/D$, where $D$ is the coefficient \n determinant and $D_x, D_y$ are formed by replacing columns with \n constants. Requires $D \\neq 0$."
     },
     {
-      "type": "paragraph",
-      "text": "*{Systems of Inequalities (Section 9.4)}"
+      "type": "heading",
+      "level": 3,
+      "text": "Systems of Inequalities (Section 9.4)"
     },
     {
       "type": "paragraph",
@@ -182,8 +186,9 @@
       "text": "- A region is **bounded** if it has finite area; otherwise \n it is **unbounded**."
     },
     {
-      "type": "paragraph",
-      "text": "*{Linear Programming (Section 9.5)}"
+      "type": "heading",
+      "level": 3,
+      "text": "Linear Programming (Section 9.5)"
     },
     {
       "type": "paragraph",
@@ -236,7 +241,7 @@
     },
     {
       "type": "summary",
-      "id": "summary-9.6",
+      "id": "ch09-sec06-summary",
       "title": "Chapter 9 Key Formulas Quick Reference",
       "content": "**Determinant of a $2 \\times 2$ Matrix:**\n$$\n\\det\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} = ad - bc\n$$\n\n**Inverse of a $2 \\times 2$ Matrix:**\n$$\n\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}^{-1} = \n\\frac{1}{ad-bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}\n$$\n\n**Matrix Multiplication Dimensions:**\n$$\n(m \\times \\mathbf{n}) \\cdot (\\mathbf{n} \\times p) = (m \\times p)\n$$\n\n**Solving with Inverses:** If $AX = B$, then $X = A^{-1}B$.\n\n**Determinant of a $3 \\times 3$ Matrix** (expansion along row 1):\n$$\n\\det\\begin{pmatrix} a & b & c \\\\ d & e & f \\\\ g & h & i \\end{pmatrix}\n= a(ei - fh) - b(di - fg) + c(dh - eg)\n$$\n\n**Cramer's Rule** (for $2 \\times 2$ system $\\begin{cases} ax + by = e \\\\ cx + dy = f \\end{cases}$):\n$$\nx = \\frac{\\begin{vmatrix} e & b \\\\ f & d \\end{vmatrix}}{\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix}}, \\quad\ny = \\frac{\\begin{vmatrix} a & e \\\\ c & f \\end{vmatrix}}{\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix}}\n\\quad \\text{(when } D \\neq 0\\text{)}\n$$"
     },
@@ -247,7 +252,7 @@
     },
     {
       "type": "warning",
-      "id": "warning-9.6",
+      "id": "ch09-sec06-warning",
       "title": "Watch Out For These Errors",
       "content": "1. **Arithmetic errors in row operations.** Each operation \n affects every entry in a row. Double-check your calculations.\n\n2. **Forgetting to check your answer.** Always substitute \n your solution back into the original equations.\n\n3. **Dimension mismatch in multiplication.** The number of \n columns in the first matrix must equal the number of rows in the \n second. A $2 \\times 3$ times $2 \\times 3$ is undefined!\n\n4. **Assuming $AB = BA$.** Matrix multiplication is not \n commutative. The order matters.\n\n5. **Dividing by a matrix.** There is no \"matrix division.\" \n Instead, multiply by the inverse: $X = A^{-1}B$, not $X = B/A$.\n\n6. **Forgetting the scalar in the inverse formula.** The \n $2 \\times 2$ inverse requires dividing by the determinant, not just \n swapping and negating entries.\n\n7. **Missing coefficients of zero.** When a variable doesn't \n appear in an equation, its coefficient is 0, not missing.\n\n8. **Confusing rows and columns.** Matrix dimensions are \n always rows $\\times$ columns. A $3 \\times 2$ matrix has 3 rows and \n 2 columns."
     },
@@ -258,42 +263,42 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-1",
+      "id": "ch09-sec06-ex-1",
       "number": "1",
       "problem": "Solve each system by substitution.\n\n1. $\\begin{cases} y = 2x - 5 \\\\ 3x + y = 10 \\end{cases}$\n\n2. $\\begin{cases} x - 4y = 7 \\\\ 2x + 3y = -5 \\end{cases}$\n\n3. $\\begin{cases} 5x + 2y = 4 \\\\ 3x - y = 11 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-2",
+      "id": "ch09-sec06-ex-2",
       "number": "2",
       "problem": "Solve each system by elimination.\n\n1. $\\begin{cases} 3x + 2y = 1 \\\\ 5x - 2y = 7 \\end{cases}$\n\n2. $\\begin{cases} 4x - 3y = 11 \\\\ 2x + 5y = -1 \\end{cases}$\n\n3. $\\begin{cases} 7x + 3y = 4 \\\\ 2x - 5y = -11 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-3",
+      "id": "ch09-sec06-ex-3",
       "number": "3",
       "problem": "Classify each system and find the solution set.\n\n1. $\\begin{cases} 2x - 6y = 10 \\\\ -x + 3y = -5 \\end{cases}$\n\n2. $\\begin{cases} 4x + y = 3 \\\\ 8x + 2y = 7 \\end{cases}$\n\n3. $\\begin{cases} 5x - 3y = 7 \\\\ 2x + 4y = 10 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-4",
+      "id": "ch09-sec06-ex-4",
       "number": "4",
       "problem": "Solve the three-variable system:\n$$\n\\begin{cases}\n x + 2y - z = 5 \\\\\n 2x - y + 3z = 2 \\\\\n 3x + y + 2z = 7\n\\end{cases}\n$$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-5",
+      "id": "ch09-sec06-ex-5",
       "number": "5",
       "problem": "A store sells notebooks for $3 each and pens for $1.50 each. If a \ncustomer buys 12 items totaling $27, how many of each did they buy?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-6",
+      "id": "ch09-sec06-ex-6",
       "number": "6",
       "problem": "A boat travels 24 km downstream in 2 hours and returns upstream in 3 \nhours. Find the boat's speed in still water and the current's speed.",
       "variant": "regular"
@@ -305,42 +310,42 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-7",
+      "id": "ch09-sec06-ex-7",
       "number": "7",
       "problem": "Write the augmented matrix for each system.\n\n1. $\\begin{cases} 4x - 2y = 8 \\\\ -x + 5y = -3 \\end{cases}$\n\n2. $\\begin{cases} x + y - z = 2 \\\\ 2x - 3y = 5 \\\\ y + 4z = -1 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-8",
+      "id": "ch09-sec06-ex-8",
       "number": "8",
       "problem": "Write the system of equations represented by each matrix.\n\n1. $\\left(\\begin{array}{cc|c} 3 & -1 & 5 \\\\ 2 & 7 & 0 \\end{array}\\right)$\n\n2. $\\left(\\begin{array}{ccc|c} 1 & 0 & 2 & 4 \\\\ 0 & 1 & -3 & 1 \\\\ 0 & 0 & 0 & 0 \\end{array}\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-9",
+      "id": "ch09-sec06-ex-9",
       "number": "9",
       "problem": "Perform the indicated row operations on \n$A = \\left(\\begin{array}{ccc|c} 1 & -2 & 3 & 7 \\\\ 2 & 1 & -1 & 4 \\\\ 3 & 0 & 2 & 5 \\end{array}\\right)$.\n\n1. $R_2 - 2R_1 \\to R_2$\n\n2. Starting from the result of (a): $R_3 - 3R_1 \\to R_3$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-10",
+      "id": "ch09-sec06-ex-10",
       "number": "10",
       "problem": "Determine whether each matrix is in REF, RREF, or neither.\n\n1. $\\begin{pmatrix} 1 & 0 & 5 \\\\ 0 & 1 & -2 \\\\ 0 & 0 & 0 \\end{pmatrix}$\n\n2. $\\begin{pmatrix} 1 & 2 & 0 \\\\ 0 & 1 & 3 \\\\ 0 & 0 & 1 \\end{pmatrix}$\n\n3. $\\begin{pmatrix} 0 & 1 & 2 \\\\ 1 & 0 & 3 \\\\ 0 & 0 & 0 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-11",
+      "id": "ch09-sec06-ex-11",
       "number": "11",
       "problem": "Solve using Gaussian elimination.\n\n1. $\\begin{cases} x + 3y = 5 \\\\ 2x - y = -3 \\end{cases}$\n\n2. $\\begin{cases} x - 2y + z = 3 \\\\ 2x + y - z = 4 \\\\ x + y + z = 6 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-12",
+      "id": "ch09-sec06-ex-12",
       "number": "12",
       "problem": "Reduce to RREF and state the solution.\n$$\n\\left(\\begin{array}{ccc|c}\n 1 & 1 & -1 & 0 \\\\\n 2 & -1 & 1 & 3 \\\\\n 1 & 2 & -2 & -1\n\\end{array}\\right)\n$$",
       "variant": "regular"
@@ -352,56 +357,56 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-13",
+      "id": "ch09-sec06-ex-13",
       "number": "13",
       "problem": "For $A = \\begin{pmatrix} 3 & -2 \\\\ 1 & 5 \\end{pmatrix}$, \n$B = \\begin{pmatrix} -1 & 4 \\\\ 2 & 0 \\end{pmatrix}$, and \n$C = \\begin{pmatrix} 2 & 1 \\\\ -3 & 2 \\end{pmatrix}$, compute:\n\n1. $A + B$\n\n2. $2A - 3B$\n\n3. $AB$\n\n4. $BA$\n\n5. $(AB)C$ and $A(BC)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-14",
+      "id": "ch09-sec06-ex-14",
       "number": "14",
       "problem": "Let $D = \\begin{pmatrix} 1 & 0 & 2 \\\\ 3 & 1 & -1 \\end{pmatrix}$ and \n$E = \\begin{pmatrix} 2 & -1 \\\\ 0 & 3 \\\\ 1 & 2 \\end{pmatrix}$.\n\n1. Find $DE$.\n\n2. Find $ED$.\n\n3. Why are $DE$ and $ED$ different sizes?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-15",
+      "id": "ch09-sec06-ex-15",
       "number": "15",
       "problem": "Find the inverse of each matrix, or explain why it doesn't exist.\n\n1. $\\begin{pmatrix} 5 & 2 \\\\ 3 & 1 \\end{pmatrix}$\n\n2. $\\begin{pmatrix} 6 & 4 \\\\ 9 & 6 \\end{pmatrix}$\n\n3. $\\begin{pmatrix} 2 & -3 \\\\ 4 & 5 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-16",
+      "id": "ch09-sec06-ex-16",
       "number": "16",
       "problem": "Use the inverse matrix method to solve:\n$$\n\\begin{cases}\n 5x + 2y = 12 \\\\\n 3x + y = 7\n\\end{cases}\n$$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-17",
+      "id": "ch09-sec06-ex-17",
       "number": "17",
       "problem": "Compute the determinant of each matrix.\n\n1. $\\begin{pmatrix} 7 & -2 \\\\ 3 & 4 \\end{pmatrix}$\n\n2. $\\begin{pmatrix} 1 & 2 & 1 \\\\ 0 & 3 & -1 \\\\ 2 & 1 & 4 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-18",
+      "id": "ch09-sec06-ex-18",
       "number": "18",
       "problem": "For what value(s) of $k$ is the matrix \n$\\begin{pmatrix} k & 4 \\\\ 2 & k-1 \\end{pmatrix}$ singular?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-19",
+      "id": "ch09-sec06-ex-19",
       "number": "19",
       "problem": "Use Cramer's Rule to solve each system.\n\n1. $\\begin{cases} 3x + 2y = 7 \\\\ 4x - y = 2 \\end{cases}$\n\n2. $\\begin{cases} 5x - 3y = 1 \\\\ 2x + 4y = 14 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-20",
+      "id": "ch09-sec06-ex-20",
       "number": "20",
       "problem": "Use Cramer's Rule to solve:\n$$\n\\begin{cases}\n x + y + z = 6 \\\\\n 2x - y + z = 3 \\\\\n x + 2y - z = 2\n\\end{cases}\n$$",
       "variant": "regular"
@@ -413,28 +418,28 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-21",
+      "id": "ch09-sec06-ex-21",
       "number": "21",
       "problem": "A system reduces to the matrix:\n$$\n\\left(\\begin{array}{ccc|c}\n 1 & 0 & 3 & 5 \\\\\n 0 & 1 & -2 & 1 \\\\\n 0 & 0 & 0 & 0\n\\end{array}\\right)\n$$\nWrite the complete solution using a parameter.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-22",
+      "id": "ch09-sec06-ex-22",
       "number": "22",
       "problem": "Verify that matrices $P = \\begin{pmatrix} 3 & 4 \\\\ 2 & 3 \\end{pmatrix}$ \nand $Q = \\begin{pmatrix} 3 & -4 \\\\ -2 & 3 \\end{pmatrix}$ are inverses \nof each other by showing $PQ = I$ and $QP = I$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-23",
+      "id": "ch09-sec06-ex-23",
       "number": "23",
       "problem": "A dietitian creates a meal plan using two foods. Food A contains 2 \nunits of protein and 3 units of carbs per serving. Food B contains 4 \nunits of protein and 1 unit of carbs per serving. How many servings of \neach food are needed to provide exactly 20 units of protein and 15 \nunits of carbs?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-24",
+      "id": "ch09-sec06-ex-24",
       "number": "24",
       "problem": "A factory produces three products using two machines. Product X requires \n2 hours on Machine 1 and 1 hour on Machine 2. Product Y requires 1 hour \non each machine. Product Z requires 3 hours on Machine 1 and 2 hours on \nMachine 2. If Machine 1 is available for 100 hours and Machine 2 for 60 \nhours, and the factory wants to produce equal quantities of all three \nproducts, how many of each can be made?",
       "variant": "regular"
@@ -446,42 +451,42 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-25",
+      "id": "ch09-sec06-ex-25",
       "number": "25",
       "problem": "Find all values of $a$ and $b$ for which the system\n$$\n\\begin{cases}\n x + 2y = a \\\\\n 3x + 6y = b\n\\end{cases}\n$$\nhas (a) no solution, (b) infinitely many solutions.",
       "variant": "starred"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-26",
+      "id": "ch09-sec06-ex-26",
       "number": "26",
       "problem": "If $A = \\begin{pmatrix} 0 & 1 \\\\ 1 & 0 \\end{pmatrix}$, find $A^{10}$ \nand $A^{101}$. (Hint: Compute $A^2$ first.)",
       "variant": "starred"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-27",
+      "id": "ch09-sec06-ex-27",
       "number": "27",
       "problem": "Prove that if $A$ is invertible and $AB = AC$, then $B = C$. Give an \nexample showing this can fail when $A$ is not invertible.",
       "variant": "starred"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-28",
+      "id": "ch09-sec06-ex-28",
       "number": "28",
       "problem": "The Cayley-Hamilton theorem states that every square matrix satisfies \nits own characteristic equation. For a $2 \\times 2$ matrix \n$A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$, verify that \n$A^2 - (a+d)A + (ad-bc)I = O$ (the zero matrix).",
       "variant": "starred"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-29",
+      "id": "ch09-sec06-ex-29",
       "number": "29",
       "problem": "A Markov chain has transition matrix \n$P = \\begin{pmatrix} 0.7 & 0.4 \\\\ 0.3 & 0.6 \\end{pmatrix}$. \nIf the initial state is $\\mathbf{v}_0 = \\begin{pmatrix} 1 \\\\ 0 \\end{pmatrix}$, \nfind the state after 2 steps by computing $\\mathbf{v}_2 = P^2 \\mathbf{v}_0$. \n(This models systems that transition between states probabilistically.)",
       "variant": "starred"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-30",
+      "id": "ch09-sec06-ex-30",
       "number": "30",
       "problem": "Three friends play a game where money circulates among them. In each \nround: Alice gives Bob half her money, Bob gives Carol a third of his \nmoney, and Carol gives Alice a quarter of her money. If they start with \n$24, $18, and $12 respectively, express this as a matrix equation and \nfind how much each has after one round. After two rounds?",
       "variant": "starred"
@@ -493,28 +498,28 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-31",
+      "id": "ch09-sec06-ex-31",
       "number": "31",
       "problem": "Graph each linear inequality.\n\n1. $y \\leq 3x - 2$\n\n2. $2x + y > 4$\n\n3. $x - 2y \\geq 6$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-32",
+      "id": "ch09-sec06-ex-32",
       "number": "32",
       "problem": "Graph the solution set and find the vertices.\n\n1. $\\begin{cases} x \\geq 0 \\\\ y \\geq 0 \\\\ x + y \\leq 5 \\end{cases}$\n\n2. $\\begin{cases} x \\geq 0 \\\\ y \\geq 0 \\\\ 2x + y \\leq 8 \\\\ x + 3y \\leq 9 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-33",
+      "id": "ch09-sec06-ex-33",
       "number": "33",
       "problem": "Determine if each feasible region is bounded or unbounded.\n\n1. $\\begin{cases} x + y \\geq 4 \\\\ x \\leq 6 \\\\ y \\geq 0 \\end{cases}$\n\n2. $\\begin{cases} x \\geq 0 \\\\ y \\geq 0 \\\\ x + 2y \\leq 10 \\\\ 3x + y \\leq 12 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-34",
+      "id": "ch09-sec06-ex-34",
       "number": "34",
       "problem": "A company makes two products. Product A requires 2 hours of labor and \n$30 in materials. Product B requires 3 hours of labor and $20 in \nmaterials. The company has 120 hours of labor and $1,200 for materials \navailable weekly. Write and graph the system of inequalities.",
       "variant": "regular"
@@ -526,28 +531,28 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-35",
+      "id": "ch09-sec06-ex-35",
       "number": "35",
       "problem": "Maximize $z = 5x + 3y$ subject to:\n$\\begin{cases} x + y \\leq 8 \\\\ 2x + y \\leq 13 \\\\ x \\geq 0, y \\geq 0 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-36",
+      "id": "ch09-sec06-ex-36",
       "number": "36",
       "problem": "Minimize $z = 3x + 4y$ subject to:\n$\\begin{cases} x + 2y \\geq 8 \\\\ 3x + y \\geq 9 \\\\ x \\geq 0, y \\geq 0 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-37",
+      "id": "ch09-sec06-ex-37",
       "number": "37",
       "problem": "Find the maximum and minimum of $z = 2x + 5y$ on the region:\n$\\begin{cases} x \\geq 0, y \\geq 0 \\\\ x + y \\leq 6 \\\\ x \\leq 4 \\\\ y \\leq 5 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-38",
+      "id": "ch09-sec06-ex-38",
       "number": "38",
       "problem": "A factory makes two types of gadgets. Type A requires 3 hours of labor \nand earns $50 profit. Type B requires 2 hours of labor and earns $40 \nprofit. With 24 hours of labor available and a maximum of 10 total gadgets \npossible, how many of each should be made to maximize profit?",
       "variant": "regular"
@@ -559,56 +564,56 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-39",
+      "id": "ch09-sec06-ex-39",
       "number": "39",
       "problem": "The sum of digits of a two-digit number is 11. If the digits are reversed, the new number is 27 more than the original. Find the number.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-40",
+      "id": "ch09-sec06-ex-40",
       "number": "40",
       "problem": "A company sells gadgets for $25 each. Fixed costs are $3000 and variable costs are $10 per gadget. Find the break-even point.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-41",
+      "id": "ch09-sec06-ex-41",
       "number": "41",
       "problem": "The sum of ages of a father and son is 56. Four years ago, the father was three times as old as the son. Find their current ages.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-42",
+      "id": "ch09-sec06-ex-42",
       "number": "42",
       "problem": "The supply equation is $p = 0.5q + 10$ and demand equation is $p = -0.25q + 25$. Find the equilibrium price and quantity.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-43",
+      "id": "ch09-sec06-ex-43",
       "number": "43",
       "problem": "A parabola $y = ax^2 + bx + c$ passes through $(0, 5)$, $(1, 8)$, and $(2, 17)$. Find the equation.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-44",
+      "id": "ch09-sec06-ex-44",
       "number": "44",
       "problem": "Investments in three accounts total $10,000. The accounts pay 5%, 7%, and 9%. Annual income is $760, and the amount at 9% equals the combined amounts at 5% and 7%. Find each amount.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-45",
+      "id": "ch09-sec06-ex-45",
       "number": "45",
       "problem": "A plane flies 600 miles with the wind in 2 hours and returns in 3 hours. Find the plane's speed in still air and wind speed.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-46",
+      "id": "ch09-sec06-ex-46",
       "number": "46",
       "problem": "Working together, Alice and Bob can complete a job in 6 hours. Alone, Alice takes 5 hours longer than Bob. How long does each take alone?",
       "variant": "regular"
@@ -620,35 +625,35 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-47",
+      "id": "ch09-sec06-ex-47",
       "number": "47",
       "problem": "Classify each system as consistent/inconsistent and solve if possible.\n\n1. $\\begin{cases} 3x + 2y = 1 \\\\ 6x + 4y = 3 \\end{cases}$\n\n2. $\\begin{cases} 2x + y = 1 \\\\ 4x + 2y = 2 \\end{cases}$\n\n3. $\\begin{cases} x - 2y = 5 \\\\ -2x + 4y = 3 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-48",
+      "id": "ch09-sec06-ex-48",
       "number": "48",
       "problem": "Solve using substitution: $\\begin{cases} \\frac{1}{x} + \\frac{1}{y} = 5 \\\\ \\frac{1}{x} - \\frac{1}{y} = 1 \\end{cases}$ \n(Hint: Let $u = 1/x$, $v = 1/y$)",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-49",
+      "id": "ch09-sec06-ex-49",
       "number": "49",
       "problem": "Solve: $\\begin{cases} xy = 12 \\\\ x - y = 4 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-50",
+      "id": "ch09-sec06-ex-50",
       "number": "50",
       "problem": "A rectangle has perimeter 28 cm and area 45 cm². Find the dimensions.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-51",
+      "id": "ch09-sec06-ex-51",
       "number": "51",
       "problem": "Find three numbers whose sum is 15, if the first plus twice the second equals 11, and the second plus twice the third equals 13.",
       "variant": "regular"
@@ -660,14 +665,14 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-52",
+      "id": "ch09-sec06-ex-52",
       "number": "52",
       "problem": "Solve each system by any method.\n\n1. $\\begin{cases} x + 2y = 7 \\\\ 3x - y = 7 \\end{cases}$\n\n2. $\\begin{cases} 5x + 2y = 11 \\\\ 3x - 4y = -7 \\end{cases}$\n\n3. $\\begin{cases} x - y = 4 \\\\ 2x + y = 5 \\end{cases}$\n\n4. $\\begin{cases} 4x - 3y = 1 \\\\ 2x + y = 7 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.6-53",
+      "id": "ch09-sec06-ex-53",
       "number": "53",
       "problem": "Solve each $3 \\times 3$ system.\n\n1. $\\begin{cases} 2x - y + z = 3 \\\\ x + y + z = 6 \\\\ x - 2y - z = -3 \\end{cases}$\n\n2. $\\begin{cases} x + y + z = 0 \\\\ x - y + z = 2 \\\\ 2x + y - z = 1 \\end{cases}$",
       "variant": "regular"

@@ -46,14 +46,14 @@
     },
     {
       "type": "definition",
-      "id": "definition-9.1",
+      "id": "ch09-sec03-definition-9.1",
       "title": "Matrix Addition",
       "content": "If $A$ and $B$ are both $m \\times n$ matrices, their **sum** \n$A + B$ is the $m \\times n$ matrix whose entries are:\n$$\n (A + B)_{ij} = a_{ij} + b_{ij}\n$$\nMatrix subtraction is defined similarly: $(A - B)_{ij} = a_{ij} - b_{ij}$.",
       "number": "9.1"
     },
     {
       "type": "example",
-      "id": "example-9.1",
+      "id": "ch09-sec03-example-9.1",
       "number": "9.1",
       "title": "Adding and subtracting matrices",
       "problem": "Let $A = \\begin{pmatrix} 3 & -1 & 2 \\\\ 0 & 5 & -4 \\end{pmatrix}$ and \n$B = \\begin{pmatrix} 1 & 4 & -2 \\\\ 3 & -2 & 6 \\end{pmatrix}$.\n\nFind (a) $A + B$ and (b) $A - B$.",
@@ -61,7 +61,7 @@
     },
     {
       "type": "warning",
-      "id": "warning-9.3",
+      "id": "ch09-sec03-warning",
       "title": "Dimension Mismatch",
       "content": "You cannot add matrices of different sizes. A $2 \\times 3$ matrix cannot \nbe added to a $3 \\times 2$ matrix—even though both have 6 entries. \nThe dimensions must match exactly."
     },
@@ -76,14 +76,14 @@
     },
     {
       "type": "definition",
-      "id": "definition-9.2",
+      "id": "ch09-sec03-definition-9.2",
       "title": "Scalar Multiplication",
       "content": "If $k$ is a scalar and $A$ is an $m \\times n$ matrix, then $kA$ is the \n$m \\times n$ matrix with entries:\n$$\n (kA)_{ij} = k \\cdot a_{ij}\n$$",
       "number": "9.2"
     },
     {
       "type": "example",
-      "id": "example-9.2",
+      "id": "ch09-sec03-example-9.2",
       "number": "9.2",
       "title": "Scalar multiplication",
       "problem": "Let $A = \\begin{pmatrix} 2 & -3 \\\\ 4 & 1 \\\\ 0 & -5 \\end{pmatrix}$.\n\nFind (a) $3A$ and (b) $-\\frac{1}{2}A$.",
@@ -91,7 +91,7 @@
     },
     {
       "type": "example",
-      "id": "example-9.3",
+      "id": "ch09-sec03-example-9.3",
       "number": "9.3",
       "title": "Combining operations",
       "problem": "For $A = \\begin{pmatrix} 2 & -1 \\\\ 3 & 4 \\end{pmatrix}$ and \n$B = \\begin{pmatrix} 1 & 5 \\\\ -2 & 0 \\end{pmatrix}$, compute $3A - 2B$.",
@@ -108,15 +108,15 @@
     },
     {
       "type": "definition",
-      "id": "definition-9.3",
+      "id": "ch09-sec03-definition-9.3",
       "title": "Matrix Multiplication",
       "content": "If $A$ is an $m \\times n$ matrix and $B$ is an $n \\times p$ matrix, \ntheir **product** $AB$ is an $m \\times p$ matrix whose entry in \nrow $i$ and column $j$ is:\n$$\n (AB)_{ij} = \\sum_{k=1}^{n} a_{ik} b_{kj} = a_{i1}b_{1j} + a_{i2}b_{2j} + \\cdots + a_{in}b_{nj}\n$$\nThis is the **dot product** of row $i$ of $A$ with column $j$ of $B$.",
       "number": "9.3"
     },
     {
       "type": "figure",
-      "id": "fig:matrix-multiplication",
-      "src": "/figures/precalculus/ch09/fig-matrix-multiplication.svg",
+      "id": "fig-9.3-inline-1",
+      "src": "/figures/precalculus/ch09/fig-9.3-inline-1.svg",
       "caption": "Matrix multiplication is \"row times column.\" Each entry in \nthe product is found by taking a dot product of a row from the first \nmatrix with a column from the second matrix.",
       "alt": "Matrix multiplication is \"row times column.\" Each entry in \nthe product is found by taking a dot product of a row from the first \nmatrix with a column from the second matrix.",
       "tikz": true,
@@ -128,7 +128,7 @@
     },
     {
       "type": "example",
-      "id": "example-9.4",
+      "id": "ch09-sec03-example-9.4",
       "number": "9.4",
       "title": "Basic matrix multiplication",
       "problem": "Compute $AB$ where:\n$$\nA = \\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}, \\quad \nB = \\begin{pmatrix} 5 & 6 \\\\ 7 & 8 \\end{pmatrix}\n$$",
@@ -136,7 +136,7 @@
     },
     {
       "type": "example",
-      "id": "example-9.5",
+      "id": "ch09-sec03-example-9.5",
       "number": "9.5",
       "title": "Multiplication with different dimensions",
       "problem": "Let $A = \\begin{pmatrix} 2 & 1 & -1 \\\\ 0 & 3 & 2 \\end{pmatrix}$ and \n$B = \\begin{pmatrix} 1 & 4 \\\\ 2 & -1 \\\\ 0 & 3 \\end{pmatrix}$.\n\nFind $AB$.",
@@ -144,21 +144,21 @@
     },
     {
       "type": "example",
-      "id": "example-9.6",
+      "id": "ch09-sec03-example-9.6",
       "number": "9.6",
       "title": "Matrix multiplication is not commutative",
-      "problem": "Using $A$ and $B$ from Example [ex:matrix-mult-basic], compute $BA$ \nand verify that $AB \\neq BA$.",
+      "problem": "Using $A$ and $B$ from Example , compute $BA$ \nand verify that $AB \\neq BA$.",
       "solution": "$$\\begin{aligned}\n(BA)_{11} &= 5(1) + 6(3) = 5 + 18 = 23 \\\\\n(BA)_{12} &= 5(2) + 6(4) = 10 + 24 = 34 \\\\\n(BA)_{21} &= 7(1) + 8(3) = 7 + 24 = 31 \\\\\n(BA)_{22} &= 7(2) + 8(4) = 14 + 32 = 46\n\\end{aligned}$$\n\n$$\nBA = \\begin{pmatrix} 23 & 34 \\\\ 31 & 46 \\end{pmatrix}\n$$\n\nCompare: $AB = \\begin{pmatrix} 19 & 22 \\\\ 43 & 50 \\end{pmatrix} \\neq \n\\begin{pmatrix} 23 & 34 \\\\ 31 & 46 \\end{pmatrix} = BA$.\n\nIndeed, $AB \\neq BA$. Matrix multiplication is **not commutative**."
     },
     {
       "type": "warning",
-      "id": "warning-9.3",
+      "id": "ch09-sec03-warning",
       "title": "Order Matters!",
       "content": "Unlike ordinary multiplication, $AB$ and $BA$ are generally different \n(when both products even exist). In some cases, $AB$ might exist while \n$BA$ does not. Always pay careful attention to the order of matrix \nmultiplication."
     },
     {
       "type": "example",
-      "id": "example-9.7",
+      "id": "ch09-sec03-example-9.7",
       "number": "9.7",
       "title": "When multiplication is impossible",
       "problem": "Can we compute $AB$ where $A$ is $3 \\times 2$ and $B$ is $3 \\times 4$?",
@@ -175,15 +175,15 @@
     },
     {
       "type": "definition",
-      "id": "definition-9.4",
+      "id": "ch09-sec03-definition-9.4",
       "title": "Identity Matrix",
       "content": "The $n \\times n$ **identity matrix**, \ndenoted $I_n$ (or simply $I$ when the size is clear), is the square \nmatrix with 1s on the main diagonal and 0s elsewhere:\n$$\nI_2 = \\begin{pmatrix} 1 & 0 \\\\ 0 & 1 \\end{pmatrix}, \\quad\nI_3 = \\begin{pmatrix} 1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1 \\end{pmatrix}, \\quad \\text{etc.}\n$$",
       "number": "9.4"
     },
     {
       "type": "figure",
-      "id": "fig:identity-matrix",
-      "src": "/figures/precalculus/ch09/fig-identity-matrix.svg",
+      "id": "fig-9.3-inline-2",
+      "src": "/figures/precalculus/ch09/fig-9.3-inline-2.svg",
       "caption": "The identity matrix $I_n$ has 1s on the main diagonal and 0s \neverywhere else. It acts as a multiplicative identity: $AI = IA = A$ \nfor any compatible matrix $A$.",
       "alt": "The identity matrix $I_n$ has 1s on the main diagonal and 0s \neverywhere else. It acts as a multiplicative identity: $AI = IA = A$ \nfor any compatible matrix $A$.",
       "tikz": true,
@@ -191,14 +191,14 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-9.1",
+      "id": "ch09-sec03-theorem-9.1",
       "title": "Properties of the Identity Matrix",
       "content": "For any $m \\times n$ matrix $A$:\n$$\n I_m A = A \\quad \\text{and} \\quad A I_n = A\n$$\nThe identity matrix leaves any matrix unchanged under multiplication.",
       "number": "9.1"
     },
     {
       "type": "example",
-      "id": "example-9.8",
+      "id": "ch09-sec03-example-9.8",
       "number": "9.8",
       "title": "Verifying the identity property",
       "problem": "Verify that $I_2 A = A$ for $A = \\begin{pmatrix} 3 & -1 \\\\ 2 & 5 \\end{pmatrix}$.",
@@ -215,7 +215,7 @@
     },
     {
       "type": "definition",
-      "id": "definition-9.5",
+      "id": "ch09-sec03-definition-9.5",
       "title": "Inverse Matrix",
       "content": "An $n \\times n$ matrix $A$ is **invertible** \n(or **nonsingular**}) if there exists a matrix $A^{-1}$ such that:\n$$\n AA^{-1} = A^{-1}A = I_n\n$$\nThe matrix $A^{-1}$ is called the **inverse** of $A$.",
       "number": "9.5"
@@ -226,21 +226,21 @@
     },
     {
       "type": "remark",
-      "id": "remark-9.3",
+      "id": "ch09-sec03-remark",
       "title": "What Does the Inverse \"Undo\"?",
       "content": "Think of a matrix $A$ as a *transformation* that acts on vectors. \nWhen you compute $A\\mathbf{x}$, the matrix $A$ transforms the input \n$\\mathbf{x}$ into some output $\\mathbf{y} = A\\mathbf{x}$.\n\nThe inverse $A^{-1}$ **reverses** this transformation: given the \noutput $\\mathbf{y}$, it recovers the original input $\\mathbf{x} = A^{-1}\\mathbf{y}$.\n\n**Why can't singular matrices be inverted?**\n\nA singular matrix \"loses information\" during transformation—it collapses \nmultiple inputs to the same output. For example, if $A$ sends both \n$(1, 2)$ and $(3, 4)$ to the same point $(5, 5)$, then given output \n$(5, 5)$, we cannot determine which input produced it. The transformation \nis not reversible.\n\nGeometrically, a singular $2 \\times 2$ matrix squashes the entire plane \nonto a line (or point). Once flattened, the original 2D information \ncannot be reconstructed."
     },
     {
       "type": "theorem",
-      "id": "theorem-9.2",
+      "id": "ch09-sec03-theorem-9.2",
       "title": "Inverse of a $2 \\times 2$ Matrix",
       "content": "For a $2 \\times 2$ matrix $A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$:\n$$\nA^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}\n$$\nprovided that $ad - bc \\neq 0$. The quantity $ad - bc$ is called the \n**determinant** of $A$, denoted $\\det(A)$ or $|A|$.",
       "number": "9.2"
     },
     {
       "type": "figure",
-      "id": "fig:2x2-inverse",
-      "src": "/figures/precalculus/ch09/fig-two-by-two-inverse.svg",
+      "id": "fig-9.3-inline-3",
+      "src": "/figures/precalculus/ch09/fig-9.3-inline-3.svg",
       "caption": "The three-step recipe for finding the inverse of a $2 \\times 2$ \nmatrix. Starting with matrix $A$ containing entries $a$, $b$, $c$, $d$: \n(1) swap the diagonal entries $a$ and $d$ (shown in teal), (2) negate the \noff-diagonal entries $b$ and $c$ (shown in orange), and (3) divide the \nentire result by the determinant $ad - bc$. This formula only works when \nthe determinant is nonzero; otherwise, the matrix has no inverse.",
       "alt": "The three-step recipe for finding the inverse of a $2 \\times 2$ \nmatrix. Starting with matrix $A$ containing entries $a$, $b$, $c$, $d$: \n(1) swap the diagonal entries $a$ and $d$ (shown in teal), (2) negate the \noff-diagonal entries $b$ and $c$ (shown in orange), and (3) divide the \nentire result by the determinant $ad - bc$. This formula only works when \nthe determinant is nonzero; otherwise, the matrix has no inverse.",
       "tikz": true,
@@ -248,7 +248,7 @@
     },
     {
       "type": "example",
-      "id": "example-9.9",
+      "id": "ch09-sec03-example-9.9",
       "number": "9.9",
       "title": "Finding a $2 \\times 2$ inverse",
       "problem": "Find the inverse of $A = \\begin{pmatrix} 3 & 1 \\\\ 5 & 2 \\end{pmatrix}$.",
@@ -256,7 +256,7 @@
     },
     {
       "type": "example",
-      "id": "example-9.10",
+      "id": "ch09-sec03-example-9.10",
       "number": "9.10",
       "title": "A singular matrix",
       "problem": "Find the inverse of $A = \\begin{pmatrix} 4 & -2 \\\\ -6 & 3 \\end{pmatrix}$.",
@@ -273,13 +273,13 @@
     },
     {
       "type": "strategy",
-      "id": "strategy-9.3",
+      "id": "ch09-sec03-strategy",
       "title": "Finding an Inverse by Row Reduction",
       "content": "To find $A^{-1}$ for an $n \\times n$ matrix $A$:\n\n1. Form the augmented matrix $(A \\mid I_n)$.\n\n2. Use row operations to reduce the left side to $I_n$.\n\n3. If successful, the right side is $A^{-1}$.\n\n4. If a row of zeros appears on the left, $A$ is singular."
     },
     {
       "type": "example",
-      "id": "example-9.11",
+      "id": "ch09-sec03-example-9.11",
       "number": "9.11",
       "title": "Finding a $3 \\times 3$ inverse",
       "problem": "Find the inverse of $A = \\begin{pmatrix} 1 & 2 & 1 \\\\ 2 & 5 & 3 \\\\ 1 & 3 & 2 \\end{pmatrix}$.",
@@ -287,7 +287,7 @@
     },
     {
       "type": "example",
-      "id": "example-9.12",
+      "id": "ch09-sec03-example-9.12",
       "number": "9.12",
       "title": "A successful $3 \\times 3$ inverse",
       "problem": "Find the inverse of $B = \\begin{pmatrix} 1 & 0 & 2 \\\\ 2 & 1 & 5 \\\\ 1 & 1 & 4 \\end{pmatrix}$.",
@@ -304,14 +304,14 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-9.3",
+      "id": "ch09-sec03-theorem-9.3",
       "title": "Solving $AX = B$",
       "content": "If $A$ is an invertible $n \\times n$ matrix and $B$ is an $n \\times 1$ \ncolumn matrix, then the unique solution to $AX = B$ is:\n$$\n X = A^{-1}B\n$$",
       "number": "9.3"
     },
     {
       "type": "example",
-      "id": "example-9.13",
+      "id": "ch09-sec03-example-9.13",
       "number": "9.13",
       "title": "Solving using the inverse",
       "problem": "Use matrix inverses to solve:\n$$\n\\begin{cases}\n 2x + 3y = 8 \\\\\n x + 2y = 5\n\\end{cases}\n$$",
@@ -328,15 +328,15 @@
     },
     {
       "type": "definition",
-      "id": "definition-9.6",
+      "id": "ch09-sec03-definition-9.6",
       "title": "Determinant of a $2 \\times 2$ Matrix",
       "content": "For $A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$:\n$$\n \\det(A) = |A| = ad - bc\n$$",
       "number": "9.6"
     },
     {
       "type": "figure",
-      "id": "fig:determinant-area",
-      "src": "/figures/precalculus/ch09/fig-determinant-area.svg",
+      "id": "fig-9.3-inline-4",
+      "src": "/figures/precalculus/ch09/fig-9.3-inline-4.svg",
       "caption": "Geometric interpretation of the $2 \\times 2$ determinant. The two \ncolumn vectors of a matrix define a parallelogram in the plane. The absolute \nvalue of the determinant $|ad - bc|$ equals the area of this parallelogram. \nIf the determinant is zero, the vectors are parallel and the parallelogram \ncollapses to a line segment (zero area), explaining why singular matrices \nare not invertible.",
       "alt": "Geometric interpretation of the $2 \\times 2$ determinant. The two \ncolumn vectors of a matrix define a parallelogram in the plane. The absolute \nvalue of the determinant $|ad - bc|$ equals the area of this parallelogram. \nIf the determinant is zero, the vectors are parallel and the parallelogram \ncollapses to a line segment (zero area), explaining why singular matrices \nare not invertible.",
       "tikz": true,
@@ -344,20 +344,20 @@
     },
     {
       "type": "definition",
-      "id": "definition-9.7",
+      "id": "ch09-sec03-definition-9.7",
       "title": "Determinant of a $3 \\times 3$ Matrix",
       "content": "For $A = \\begin{pmatrix} a & b & c \\\\ d & e & f \\\\ g & h & i \\end{pmatrix}$:\n$$\n\\det(A) = a(ei - fh) - b(di - fg) + c(dh - eg)\n$$\nThis is expansion along the first row.",
       "number": "9.7"
     },
     {
       "type": "remark",
-      "id": "remark-9.3",
+      "id": "ch09-sec03-remark",
       "title": "Geometric Meaning of the 3D Determinant",
       "content": "Just as the $2 \\times 2$ determinant measures the area of a parallelogram \nformed by two column vectors, the $3 \\times 3$ determinant measures the \n**signed volume** of the **parallelepiped** (a 3D parallelogram) \nformed by three column vectors.\n\nIf $A = \\begin{pmatrix} \\mathbf{v}_1 & \\mathbf{v}_2 & \\mathbf{v}_3 \\end{pmatrix}$ \nwhere each $\\mathbf{v}_i$ is a column vector in $\\mathbb{R}^3$, then:\n$$\n|\\det(A)| = \\text{Volume of the parallelepiped spanned by } \\mathbf{v}_1, \\mathbf{v}_2, \\mathbf{v}_3\n$$\n\n**Key geometric insight:** $\\det(A) = 0$ means the three vectors are \n**coplanar**—they all lie in the same plane. The parallelepiped collapses \nto a flat shape with zero volume. This is why singular matrices (with $\\det = 0$) \ncannot be inverted: they \"flatten\" 3D space onto a plane (or line, or point), \nlosing information that cannot be recovered."
     },
     {
       "type": "example",
-      "id": "example-9.14",
+      "id": "ch09-sec03-example-9.14",
       "number": "9.14",
       "title": "Computing determinants",
       "problem": "Find the determinant of each matrix.\n\n1. $A = \\begin{pmatrix} 5 & 3 \\\\ 2 & 4 \\end{pmatrix}$\n\n2. $B = \\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{pmatrix}$",
@@ -365,7 +365,7 @@
     },
     {
       "type": "theorem",
-      "id": "theorem-9.4",
+      "id": "ch09-sec03-theorem-9.4",
       "title": "Properties of Determinants",
       "content": "1. $A$ is invertible if and only if $\\det(A) \\neq 0$.\n\n2. $\\det(AB) = \\det(A) \\cdot \\det(B)$.\n\n3. $\\det(A^{-1}) = \\frac{1}{\\det(A)}$ (when $A$ is invertible).\n\n4. $\\det(A^T) = \\det(A)$ where $A^T$ is the transpose.\n\n5. Swapping two rows multiplies the determinant by $-1$.\n\n6. Multiplying a row by $k$ multiplies the determinant by $k$.",
       "number": "9.4"
@@ -381,15 +381,15 @@
     },
     {
       "type": "definition",
-      "id": "definition-9.8",
+      "id": "ch09-sec03-definition-9.8",
       "title": "Cramer's Rule for $2 \\times 2$ Systems",
       "content": "For the system\n$$\n\\begin{cases}\n a_1 x + b_1 y = c_1 \\\\\n a_2 x + b_2 y = c_2\n\\end{cases}\n$$\nif $D = \\begin{vmatrix} a_1 & b_1 \\\\ a_2 & b_2 \\end{vmatrix} \\neq 0$, \nthen the unique solution is:\n$$\nx = \\frac{D_x}{D} = \\frac{\\begin{vmatrix} c_1 & b_1 \\\\ c_2 & b_2 \\end{vmatrix}}{\\begin{vmatrix} a_1 & b_1 \\\\ a_2 & b_2 \\end{vmatrix}}, \\qquad\ny = \\frac{D_y}{D} = \\frac{\\begin{vmatrix} a_1 & c_1 \\\\ a_2 & c_2 \\end{vmatrix}}{\\begin{vmatrix} a_1 & b_1 \\\\ a_2 & b_2 \\end{vmatrix}}\n$$\nwhere $D_x$ is formed by replacing the $x$-column with the constants, \nand $D_y$ by replacing the $y$-column with the constants.",
       "number": "9.8"
     },
     {
       "type": "figure",
-      "id": "fig:cramers-rule",
-      "src": "/figures/precalculus/ch09/fig-cramers-rule.svg",
+      "id": "fig-9.3-inline-5",
+      "src": "/figures/precalculus/ch09/fig-9.3-inline-5.svg",
       "caption": "Visual representation of Cramer's Rule. The coefficient determinant \n$D$ contains the $x$-coefficients (first column, teal) and $y$-coefficients \n(second column, orange). To find $x$, form $D_x$ by replacing the $x$-column \nwith the constants (green). To find $y$, form $D_y$ by replacing the $y$-column \nwith the constants. Each variable equals its modified determinant divided by \nthe original coefficient determinant.",
       "alt": "Visual representation of Cramer's Rule. The coefficient determinant \n$D$ contains the $x$-coefficients (first column, teal) and $y$-coefficients \n(second column, orange). To find $x$, form $D_x$ by replacing the $x$-column \nwith the constants (green). To find $y$, form $D_y$ by replacing the $y$-column \nwith the constants. Each variable equals its modified determinant divided by \nthe original coefficient determinant.",
       "tikz": true,
@@ -397,7 +397,7 @@
     },
     {
       "type": "example",
-      "id": "example-9.15",
+      "id": "ch09-sec03-example-9.15",
       "number": "9.15",
       "title": "Cramer's Rule for a $2 \\times 2$ system",
       "problem": "Use Cramer's Rule to solve:\n$$\n\\begin{cases}\n 3x + 4y = 10 \\\\\n 2x - y = 3\n\\end{cases}\n$$",
@@ -405,14 +405,14 @@
     },
     {
       "type": "definition",
-      "id": "definition-9.9",
+      "id": "ch09-sec03-definition-9.9",
       "title": "Cramer's Rule for $3 \\times 3$ Systems",
       "content": "For the system\n$$\n\\begin{cases}\n a_1 x + b_1 y + c_1 z = d_1 \\\\\n a_2 x + b_2 y + c_2 z = d_2 \\\\\n a_3 x + b_3 y + c_3 z = d_3\n\\end{cases}\n$$\nif $D = \\begin{vmatrix} a_1 & b_1 & c_1 \\\\ a_2 & b_2 & c_2 \\\\ a_3 & b_3 & c_3 \\end{vmatrix} \\neq 0$, \nthen:\n$$\nx = \\frac{D_x}{D}, \\quad y = \\frac{D_y}{D}, \\quad z = \\frac{D_z}{D}\n$$\nwhere $D_x$, $D_y$, $D_z$ are formed by replacing the corresponding \ncolumn of $D$ with the constants $d_1, d_2, d_3$.",
       "number": "9.9"
     },
     {
       "type": "example",
-      "id": "example-9.16",
+      "id": "ch09-sec03-example-9.16",
       "number": "9.16",
       "title": "Cramer's Rule for a $3 \\times 3$ system",
       "problem": "Use Cramer's Rule to solve:\n$$\n\\begin{cases}\n x + 2y + z = 4 \\\\\n 2x - y + 3z = 9 \\\\\n x + y - z = 0\n\\end{cases}\n$$",
@@ -420,25 +420,25 @@
     },
     {
       "type": "warning",
-      "id": "warning-9.3",
+      "id": "ch09-sec03-warning",
       "title": "When Cramer's Rule Fails",
       "content": "Cramer's Rule requires $D \\neq 0$. If $D = 0$:\n\n- The coefficient matrix is singular (not invertible).\n\n- The system either has no solution or infinitely many solutions.\n\n- Use Gaussian elimination instead to determine which case applies."
     },
     {
       "type": "warning",
-      "id": "warning-9.3",
+      "id": "ch09-sec03-warning",
       "title": "Computational Cost of Cramer's Rule",
-      "content": "While elegant, Cramer's Rule is computationally expensive for large systems:\n\n\\renewcommand{}{1.3}\n| **Method** | **Complexity** | **For $n = 10$** |\n| Cramer's Rule (naïve) | $O(n \\cdot n!)$ | $\\approx 36$ million operations |\n| Gaussian Elimination | $O(n^3)$ | $\\approx 1000$ operations |\n\nThe factorial growth $n!$ makes Cramer's Rule impractical for $n > 4$. \nUse it only for:\n\n- Small systems ($2 \\times 2$ or $3 \\times 3$) by hand\n\n- Finding a single variable without solving the full system\n\n- Theoretical derivations where a formula is needed\nFor numerical computation, always prefer Gaussian elimination or matrix \nfactorization methods."
+      "content": "While elegant, Cramer's Rule is computationally expensive for large systems:\n\n| **Method** | **Complexity** | **For $n = 10$** |\n| Cramer's Rule (naïve) | $O(n \\cdot n!)$ | $\\approx 36$ million operations |\n| Gaussian Elimination | $O(n^3)$ | $\\approx 1000$ operations |\n\nThe factorial growth $n!$ makes Cramer's Rule impractical for $n > 4$. \nUse it only for:\n\n- Small systems ($2 \\times 2$ or $3 \\times 3$) by hand\n\n- Finding a single variable without solving the full system\n\n- Theoretical derivations where a formula is needed\nFor numerical computation, always prefer Gaussian elimination or matrix \nfactorization methods."
     },
     {
       "type": "strategy",
-      "id": "strategy-9.3",
+      "id": "ch09-sec03-strategy",
       "title": "When to Use Cramer's Rule",
       "content": "Use Cramer's Rule when:\n\n- The system is small ($2 \\times 2$ or $3 \\times 3$).\n\n- You need a formula for the solution in terms of parameters.\n\n- You only need one variable (compute just $D$ and $D_x$).\n\n- The problem specifically asks for it.\nFor larger systems or when efficiency matters, prefer Gaussian elimination \nor matrix inverses."
     },
     {
       "type": "summary",
-      "id": "summary-9.3",
+      "id": "ch09-sec03-summary",
       "title": "Matrix Operations",
       "content": "- **Addition:** Add matrices of equal dimensions \n entry-by-entry.\n\n- **Scalar multiplication:** Multiply every entry by the \n scalar.\n\n- **Matrix multiplication:** $(m \\times n) \\cdot (n \\times p) \n = (m \\times p)$; inner dimensions must match.\n\n- Matrix multiplication is **not commutative**: $AB \\neq BA$ \n in general.\n\n- The **identity matrix** $I$ satisfies $AI = IA = A$.\n\n- $A^{-1}$ is the **inverse** if $AA^{-1} = I$.\n\n- For $2 \\times 2$: $A^{-1} = \\frac{1}{ad-bc}\\begin{pmatrix} \n d & -b \\\\ -c & a \\end{pmatrix}$ when $ad - bc \\neq 0$.\n\n- Solve $AX = B$ by $X = A^{-1}B$ when $A$ is invertible.\n\n- The **determinant** tells if a matrix is invertible \n ($\\det \\neq 0$) or singular ($\\det = 0$).\n\n- **Cramer's Rule**: Solve systems using determinants—$x = D_x/D$, \n $y = D_y/D$—where $D_x, D_y$ replace columns with constants."
     },
@@ -454,56 +454,56 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-1",
+      "id": "ch09-sec03-ex-1",
       "number": "1",
       "problem": "For $A = \\begin{pmatrix} 2 & -1 \\\\ 3 & 4 \\end{pmatrix}$ and \n$B = \\begin{pmatrix} 1 & 5 \\\\ -2 & 0 \\end{pmatrix}$, find:\n\n1. $A + B$\n\n2. $A - B$\n\n3. $3A$\n\n4. $2A - 3B$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-2",
+      "id": "ch09-sec03-ex-2",
       "number": "2",
       "problem": "For $C = \\begin{pmatrix} -3 & 2 \\\\ 0 & 7 \\end{pmatrix}$ and \n$D = \\begin{pmatrix} 4 & -1 \\\\ 5 & -3 \\end{pmatrix}$, find:\n\n1. $C + D$\n\n2. $C - D$\n\n3. $-2C$\n\n4. $4C + 2D$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-3",
+      "id": "ch09-sec03-ex-3",
       "number": "3",
       "problem": "Let $P = \\begin{pmatrix} 1 & 4 & -2 \\\\ 3 & 0 & 5 \\end{pmatrix}$ and \n$Q = \\begin{pmatrix} -2 & 1 & 3 \\\\ 4 & -1 & 2 \\end{pmatrix}$. Compute:\n\n1. $P + Q$\n\n2. $2P - Q$\n\n3. $3Q - 4P$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-4",
+      "id": "ch09-sec03-ex-4",
       "number": "4",
       "problem": "Let $R = \\begin{pmatrix} 5 & -3 & 2 \\\\ 1 & 0 & -4 \\end{pmatrix}$ and \n$S = \\begin{pmatrix} -1 & 6 & 0 \\\\ 2 & -5 & 3 \\end{pmatrix}$. Compute:\n\n1. $R + S$\n\n2. $\\frac{1}{2}(R + S)$\n\n3. $2R - 3S$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-5",
+      "id": "ch09-sec03-ex-5",
       "number": "5",
       "problem": "Solve for the matrix $X$ if $2X + \\begin{pmatrix} 1 & 3 \\\\ 2 & 4 \\end{pmatrix} = \\begin{pmatrix} 5 & 7 \\\\ 0 & -2 \\end{pmatrix}$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-6",
+      "id": "ch09-sec03-ex-6",
       "number": "6",
       "problem": "Solve for the matrix $X$ if $3X - \\begin{pmatrix} 2 & -1 \\\\ 4 & 0 \\end{pmatrix} = \\begin{pmatrix} 7 & 8 \\\\ -2 & 6 \\end{pmatrix}$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-7",
+      "id": "ch09-sec03-ex-7",
       "number": "7",
       "problem": "Given $A + B = \\begin{pmatrix} 4 & 6 \\\\ 2 & 8 \\end{pmatrix}$ and $A - B = \\begin{pmatrix} 2 & 0 \\\\ -4 & 2 \\end{pmatrix}$, find matrices $A$ and $B$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-8",
+      "id": "ch09-sec03-ex-8",
       "number": "8",
       "problem": "Given $2A + 3B = \\begin{pmatrix} 11 & 7 \\\\ 1 & 13 \\end{pmatrix}$ and $A - B = \\begin{pmatrix} 1 & -1 \\\\ 3 & -2 \\end{pmatrix}$, find matrices $A$ and $B$.",
       "variant": "regular"
@@ -515,98 +515,98 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-9",
+      "id": "ch09-sec03-ex-9",
       "number": "9",
       "problem": "$\\begin{pmatrix} 2 & 3 \\\\ 1 & 4 \\end{pmatrix} \n\\begin{pmatrix} 1 & 0 \\\\ 2 & -1 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-10",
+      "id": "ch09-sec03-ex-10",
       "number": "10",
       "problem": "$\\begin{pmatrix} 3 & -1 \\\\ 2 & 5 \\end{pmatrix} \n\\begin{pmatrix} 4 & 2 \\\\ -1 & 3 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-11",
+      "id": "ch09-sec03-ex-11",
       "number": "11",
       "problem": "$\\begin{pmatrix} 1 & 2 & 3 \\end{pmatrix}\n\\begin{pmatrix} 4 \\\\ 5 \\\\ 6 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-12",
+      "id": "ch09-sec03-ex-12",
       "number": "12",
       "problem": "$\\begin{pmatrix} 4 \\\\ 5 \\\\ 6 \\end{pmatrix}\n\\begin{pmatrix} 1 & 2 & 3 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-13",
+      "id": "ch09-sec03-ex-13",
       "number": "13",
       "problem": "$\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\n\\begin{pmatrix} 5 \\\\ 6 \\\\ 7 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-14",
+      "id": "ch09-sec03-ex-14",
       "number": "14",
       "problem": "$\\begin{pmatrix} 2 & 0 & 1 \\\\ 1 & 3 & 2 \\end{pmatrix}\n\\begin{pmatrix} 1 & 4 \\\\ 0 & -1 \\\\ 2 & 3 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-15",
+      "id": "ch09-sec03-ex-15",
       "number": "15",
       "problem": "Compute $AB$ and $BA$. Are they equal?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-16",
+      "id": "ch09-sec03-ex-16",
       "number": "16",
       "problem": "Compute $BC$ and $CB$. Are they equal?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-17",
+      "id": "ch09-sec03-ex-17",
       "number": "17",
       "problem": "Compute $(AB)C$ and $A(BC)$. What property does this verify?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-18",
+      "id": "ch09-sec03-ex-18",
       "number": "18",
       "problem": "Compute $A(B + C)$ and $AB + AC$. What property does this verify?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-19",
+      "id": "ch09-sec03-ex-19",
       "number": "19",
       "problem": "If $A$ is $3 \\times 4$ and $B$ is $4 \\times 2$, what are the dimensions \nof $AB$? Is $BA$ defined?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-20",
+      "id": "ch09-sec03-ex-20",
       "number": "20",
       "problem": "If $P$ is $2 \\times 5$ and $Q$ is $5 \\times 3$, what are the dimensions \nof $PQ$? Can you compute $QP$?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-21",
+      "id": "ch09-sec03-ex-21",
       "number": "21",
       "problem": "Find matrices $A$ and $B$ such that $AB = O$ (the zero matrix) but \n$A \\neq O$ and $B \\neq O$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-22",
+      "id": "ch09-sec03-ex-22",
       "number": "22",
       "problem": "Find matrices $A$ and $B$ such that $AB \\neq BA$, with both products defined.",
       "variant": "regular"
@@ -618,84 +618,84 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-23",
+      "id": "ch09-sec03-ex-23",
       "number": "23",
       "problem": "Verify that $I_3 \\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix} = \\begin{pmatrix} a \\\\ b \\\\ c \\end{pmatrix}$ where $I_3$ is the $3 \\times 3$ identity.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-24",
+      "id": "ch09-sec03-ex-24",
       "number": "24",
       "problem": "Verify that $\\begin{pmatrix} 2 & 5 \\\\ 1 & 3 \\end{pmatrix} I_2 = \\begin{pmatrix} 2 & 5 \\\\ 1 & 3 \\end{pmatrix}$ where $I_2$ is the $2 \\times 2$ identity.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-25",
+      "id": "ch09-sec03-ex-25",
       "number": "25",
       "problem": "$\\begin{pmatrix} 4 & 7 \\\\ 2 & 3 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-26",
+      "id": "ch09-sec03-ex-26",
       "number": "26",
       "problem": "$\\begin{pmatrix} 3 & 5 \\\\ 2 & 4 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-27",
+      "id": "ch09-sec03-ex-27",
       "number": "27",
       "problem": "$\\begin{pmatrix} 6 & 9 \\\\ 4 & 6 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-28",
+      "id": "ch09-sec03-ex-28",
       "number": "28",
       "problem": "$\\begin{pmatrix} 8 & 12 \\\\ 6 & 9 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-29",
+      "id": "ch09-sec03-ex-29",
       "number": "29",
       "problem": "$\\begin{pmatrix} 1 & 1 \\\\ -1 & 1 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-30",
+      "id": "ch09-sec03-ex-30",
       "number": "30",
       "problem": "$\\begin{pmatrix} 2 & -3 \\\\ 1 & 4 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-31",
+      "id": "ch09-sec03-ex-31",
       "number": "31",
       "problem": "$\\begin{pmatrix} 5 & -3 \\\\ -10 & 6 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-32",
+      "id": "ch09-sec03-ex-32",
       "number": "32",
       "problem": "$\\begin{pmatrix} -2 & 7 \\\\ 3 & -5 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-33",
+      "id": "ch09-sec03-ex-33",
       "number": "33",
       "problem": "Verify that $\\begin{pmatrix} 2 & 1 \\\\ 5 & 3 \\end{pmatrix}$ and \n$\\begin{pmatrix} 3 & -1 \\\\ -5 & 2 \\end{pmatrix}$ are inverses of each other.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-34",
+      "id": "ch09-sec03-ex-34",
       "number": "34",
       "problem": "Verify that $\\begin{pmatrix} 4 & 3 \\\\ 3 & 2 \\end{pmatrix}$ and \n$\\begin{pmatrix} -2 & 3 \\\\ 3 & -4 \\end{pmatrix}$ are inverses of each other.",
       "variant": "regular"
@@ -707,56 +707,56 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-35",
+      "id": "ch09-sec03-ex-35",
       "number": "35",
       "problem": "$\\begin{cases} 3x + 2y = 7 \\\\ x + y = 3 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-36",
+      "id": "ch09-sec03-ex-36",
       "number": "36",
       "problem": "$\\begin{cases} 2x + 5y = 9 \\\\ x + 3y = 5 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-37",
+      "id": "ch09-sec03-ex-37",
       "number": "37",
       "problem": "$\\begin{cases} 4x - y = 5 \\\\ 3x + 2y = 12 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-38",
+      "id": "ch09-sec03-ex-38",
       "number": "38",
       "problem": "$\\begin{cases} 5x - 2y = 8 \\\\ 3x + y = 7 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-39",
+      "id": "ch09-sec03-ex-39",
       "number": "39",
       "problem": "$\\begin{cases} x + 2y = 4 \\\\ 3x + 5y = 11 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-40",
+      "id": "ch09-sec03-ex-40",
       "number": "40",
       "problem": "$\\begin{cases} 2x - 3y = -1 \\\\ 4x + y = 9 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-41",
+      "id": "ch09-sec03-ex-41",
       "number": "41",
       "problem": "A company's sales ($x$) and expenses ($y$), in thousands of dollars, \nsatisfy $3x + 2y = 26$ and $x + y = 10$. Use matrix inverses to find \nthe sales and expenses.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-42",
+      "id": "ch09-sec03-ex-42",
       "number": "42",
       "problem": "The number of adults ($a$) and children ($c$) at a movie satisfy \n$12a + 8c = 296$ and $a + c = 31$. Use matrix inverses to find the \nnumber of adults and children.",
       "variant": "regular"
@@ -768,84 +768,84 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-43",
+      "id": "ch09-sec03-ex-43",
       "number": "43",
       "problem": "$\\begin{pmatrix} 8 & 3 \\\\ 2 & 1 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-44",
+      "id": "ch09-sec03-ex-44",
       "number": "44",
       "problem": "$\\begin{pmatrix} 5 & 2 \\\\ 7 & 3 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-45",
+      "id": "ch09-sec03-ex-45",
       "number": "45",
       "problem": "$\\begin{pmatrix} -2 & 5 \\\\ 4 & -10 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-46",
+      "id": "ch09-sec03-ex-46",
       "number": "46",
       "problem": "$\\begin{pmatrix} -3 & 6 \\\\ 2 & -4 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-47",
+      "id": "ch09-sec03-ex-47",
       "number": "47",
       "problem": "$\\begin{pmatrix} 2 & 0 & 1 \\\\ 1 & 3 & 2 \\\\ 0 & 1 & 1 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-48",
+      "id": "ch09-sec03-ex-48",
       "number": "48",
       "problem": "$\\begin{pmatrix} 1 & 2 & 0 \\\\ 3 & 1 & 4 \\\\ 2 & 0 & 5 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-49",
+      "id": "ch09-sec03-ex-49",
       "number": "49",
       "problem": "$\\begin{pmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-50",
+      "id": "ch09-sec03-ex-50",
       "number": "50",
       "problem": "$\\begin{pmatrix} 2 & 1 & 3 \\\\ 0 & 4 & 1 \\\\ 5 & 2 & 0 \\end{pmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-51",
+      "id": "ch09-sec03-ex-51",
       "number": "51",
       "problem": "For what value(s) of $k$ is $\\begin{pmatrix} k & 2 \\\\ 3 & k \\end{pmatrix}$ \nsingular (not invertible)?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-52",
+      "id": "ch09-sec03-ex-52",
       "number": "52",
       "problem": "For what value(s) of $k$ is $\\begin{pmatrix} k-1 & 4 \\\\ 2 & k+1 \\end{pmatrix}$ \nsingular?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-53",
+      "id": "ch09-sec03-ex-53",
       "number": "53",
       "problem": "For what value(s) of $k$ is $\\begin{pmatrix} 2 & k \\\\ k & 8 \\end{pmatrix}$ \nsingular?",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-54",
+      "id": "ch09-sec03-ex-54",
       "number": "54",
       "problem": "For what value(s) of $k$ does $\\begin{pmatrix} k & 1 \\\\ 3 & k-2 \\end{pmatrix}$ \nhave an inverse?",
       "variant": "regular"
@@ -867,203 +867,203 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-55",
+      "id": "ch09-sec03-ex-55",
       "number": "55",
       "problem": "Find the determinant.\n\n1. $\\begin{vmatrix} 3 & 2 \\\\ 1 & 4 \\end{vmatrix}$\n\n2. $\\begin{vmatrix} 5 & -3 \\\\ 2 & 4 \\end{vmatrix}$\n\n3. $\\begin{vmatrix} -2 & 6 \\\\ 3 & -9 \\end{vmatrix}$\n\n4. $\\begin{vmatrix} 4 & 7 \\\\ 2 & 5 \\end{vmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-56",
+      "id": "ch09-sec03-ex-56",
       "number": "56",
       "problem": "Find the determinant using expansion by minors.\n\n1. $\\begin{vmatrix} 2 & 1 & 3 \\\\ 0 & 4 & 5 \\\\ 1 & 2 & 1 \\end{vmatrix}$\n\n2. $\\begin{vmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{vmatrix}$\n\n3. $\\begin{vmatrix} 3 & 0 & 1 \\\\ 2 & 1 & 4 \\\\ 5 & 2 & -1 \\end{vmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-57",
+      "id": "ch09-sec03-ex-57",
       "number": "57",
       "problem": "Find the inverse, if it exists.\n\n1. $\\begin{bmatrix} 2 & 3 \\\\ 1 & 2 \\end{bmatrix}$\n\n2. $\\begin{bmatrix} 4 & 7 \\\\ 3 & 5 \\end{bmatrix}$\n\n3. $\\begin{bmatrix} 5 & 2 \\\\ 10 & 4 \\end{bmatrix}$\n\n4. $\\begin{bmatrix} 1 & 3 \\\\ 2 & 5 \\end{bmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-58",
+      "id": "ch09-sec03-ex-58",
       "number": "58",
       "problem": "Solve using the inverse matrix.\n\n1. $\\begin{cases} 2x + 3y = 7 \\\\ x + 2y = 4 \\end{cases}$\n\n2. $\\begin{cases} 3x + 4y = 10 \\\\ 2x + 3y = 7 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-59",
+      "id": "ch09-sec03-ex-59",
       "number": "59",
       "problem": "Use Cramer's Rule to solve.\n\n1. $\\begin{cases} 2x + y = 5 \\\\ 3x - 2y = 4 \\end{cases}$\n\n2. $\\begin{cases} 4x - 3y = 6 \\\\ 2x + y = 8 \\end{cases}$\n\n3. $\\begin{cases} 5x + 2y = 9 \\\\ 3x - y = 2 \\end{cases}$\n\n4. $\\begin{cases} x - 3y = 7 \\\\ 2x + y = 9 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-60",
+      "id": "ch09-sec03-ex-60",
       "number": "60",
       "problem": "Use Cramer's Rule to solve.\n\n1. $\\begin{cases} x + y + z = 6 \\\\ 2x - y + z = 3 \\\\ x + 2y - z = 2 \\end{cases}$\n\n2. $\\begin{cases} 2x + y - z = 3 \\\\ x - y + 2z = 5 \\\\ 3x + 2y + z = 8 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-61",
+      "id": "ch09-sec03-ex-61",
       "number": "61",
       "problem": "Find the determinant.\n\n1. $\\begin{vmatrix} 7 & 3 \\\\ 2 & 5 \\end{vmatrix}$\n\n2. $\\begin{vmatrix} -4 & 6 \\\\ 2 & -3 \\end{vmatrix}$\n\n3. $\\begin{vmatrix} 8 & -2 \\\\ 4 & -1 \\end{vmatrix}$\n\n4. $\\begin{vmatrix} 5 & 10 \\\\ -3 & -6 \\end{vmatrix}$\n\n5. $\\begin{vmatrix} \\frac{1}{2} & \\frac{1}{3} \\\\ \\frac{3}{4} & \\frac{2}{3} \\end{vmatrix}$\n\n6. $\\begin{vmatrix} 0.3 & 0.4 \\\\ 0.5 & 0.6 \\end{vmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-62",
+      "id": "ch09-sec03-ex-62",
       "number": "62",
       "problem": "Find all values of $x$ for which the determinant equals zero.\n\n1. $\\begin{vmatrix} x & 2 \\\\ 3 & x \\end{vmatrix}$\n\n2. $\\begin{vmatrix} x-1 & 2 \\\\ 4 & x-1 \\end{vmatrix}$\n\n3. $\\begin{vmatrix} x & 1 \\\\ 4 & x-3 \\end{vmatrix}$\n\n4. $\\begin{vmatrix} x+2 & 3 \\\\ 3 & x-2 \\end{vmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-63",
+      "id": "ch09-sec03-ex-63",
       "number": "63",
       "problem": "Find the determinant using cofactor expansion.\n\n1. $\\begin{vmatrix} 2 & 0 & 1 \\\\ 3 & 4 & 2 \\\\ 1 & 5 & 3 \\end{vmatrix}$\n\n2. $\\begin{vmatrix} 1 & 3 & 2 \\\\ 4 & 1 & 5 \\\\ 2 & 0 & 3 \\end{vmatrix}$\n\n3. $\\begin{vmatrix} 5 & -2 & 1 \\\\ 0 & 3 & 4 \\\\ 2 & 1 & -1 \\end{vmatrix}$\n\n4. $\\begin{vmatrix} 3 & 1 & 2 \\\\ 0 & 4 & 1 \\\\ 5 & 2 & 3 \\end{vmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-64",
+      "id": "ch09-sec03-ex-64",
       "number": "64",
       "problem": "Find the determinant (look for shortcuts using zeros).\n\n1. $\\begin{vmatrix} 5 & 0 & 0 \\\\ 2 & 3 & 0 \\\\ 1 & 4 & 2 \\end{vmatrix}$\n\n2. $\\begin{vmatrix} 2 & 1 & 3 \\\\ 0 & 4 & 5 \\\\ 0 & 0 & 6 \\end{vmatrix}$\n\n3. $\\begin{vmatrix} 1 & 2 & 3 \\\\ 0 & 0 & 0 \\\\ 4 & 5 & 6 \\end{vmatrix}$\n\n4. $\\begin{vmatrix} 2 & 4 & 6 \\\\ 1 & 2 & 3 \\\\ 3 & 5 & 7 \\end{vmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-65",
+      "id": "ch09-sec03-ex-65",
       "number": "65",
       "problem": "Find the inverse using the formula $A^{-1} = \\frac{1}{\\det(A)}\\begin{bmatrix} d & -b \\\\ -c & a \\end{bmatrix}$.\n\n1. $\\begin{bmatrix} 3 & 1 \\\\ 5 & 2 \\end{bmatrix}$\n\n2. $\\begin{bmatrix} 4 & 3 \\\\ 3 & 2 \\end{bmatrix}$\n\n3. $\\begin{bmatrix} 6 & -5 \\\\ -5 & 4 \\end{bmatrix}$\n\n4. $\\begin{bmatrix} 2 & 7 \\\\ 1 & 4 \\end{bmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-66",
+      "id": "ch09-sec03-ex-66",
       "number": "66",
       "problem": "Determine whether the matrix is invertible. If so, find its inverse.\n\n1. $\\begin{bmatrix} 6 & 9 \\\\ 4 & 6 \\end{bmatrix}$\n\n2. $\\begin{bmatrix} 8 & 12 \\\\ 2 & 3 \\end{bmatrix}$\n\n3. $\\begin{bmatrix} 1 & 2 \\\\ 3 & 7 \\end{bmatrix}$\n\n4. $\\begin{bmatrix} -3 & 6 \\\\ 2 & -4 \\end{bmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-67",
+      "id": "ch09-sec03-ex-67",
       "number": "67",
       "problem": "Use Cramer's Rule to solve.\n\n1. $\\begin{cases} 3x + 2y = 8 \\\\ 5x - y = 7 \\end{cases}$\n\n2. $\\begin{cases} 4x + 5y = 23 \\\\ 2x - 3y = -5 \\end{cases}$\n\n3. $\\begin{cases} 7x - 2y = 13 \\\\ 3x + 4y = 17 \\end{cases}$\n\n4. $\\begin{cases} 2x + 9y = 25 \\\\ 5x - 3y = -4 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-68",
+      "id": "ch09-sec03-ex-68",
       "number": "68",
       "problem": "Use Cramer's Rule to solve.\n\n1. $\\begin{cases} x + 2y + z = 6 \\\\ 2x + y - z = 1 \\\\ x - y + 2z = 5 \\end{cases}$\n\n2. $\\begin{cases} 2x - y + 3z = 9 \\\\ x + 2y - z = 3 \\\\ 3x + y + 2z = 11 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-69",
+      "id": "ch09-sec03-ex-69",
       "number": "69",
       "problem": "Find the determinant.\n\n1. $\\begin{vmatrix} 5 & 2 \\\\ 3 & 4 \\end{vmatrix}$\n\n2. $\\begin{vmatrix} -3 & 6 \\\\ 2 & -4 \\end{vmatrix}$\n\n3. $\\begin{vmatrix} 7 & -1 \\\\ 2 & 3 \\end{vmatrix}$\n\n4. $\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-70",
+      "id": "ch09-sec03-ex-70",
       "number": "70",
       "problem": "Find the determinant.\n\n1. $\\begin{vmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{vmatrix}$\n\n2. $\\begin{vmatrix} 2 & 0 & 1 \\\\ 3 & 1 & 2 \\\\ 1 & 2 & 1 \\end{vmatrix}$\n\n3. $\\begin{vmatrix} 1 & 0 & 0 \\\\ 2 & 3 & 0 \\\\ 4 & 5 & 6 \\end{vmatrix}$\n\n4. $\\begin{vmatrix} 1 & 2 & 3 \\\\ 0 & 4 & 5 \\\\ 0 & 0 & 6 \\end{vmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-71",
+      "id": "ch09-sec03-ex-71",
       "number": "71",
       "problem": "Use determinants to find if the matrix is invertible.\n\n1. $\\begin{bmatrix} 3 & 6 \\\\ 2 & 4 \\end{bmatrix}$\n\n2. $\\begin{bmatrix} 5 & -2 \\\\ 3 & 1 \\end{bmatrix}$\n\n3. $\\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 10 \\end{bmatrix}$\n\n4. $\\begin{bmatrix} 1 & 0 & 2 \\\\ 0 & 1 & 3 \\\\ 0 & 0 & 1 \\end{bmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-72",
+      "id": "ch09-sec03-ex-72",
       "number": "72",
       "problem": "Find the inverse, if it exists.\n\n1. $\\begin{bmatrix} 4 & 3 \\\\ 5 & 4 \\end{bmatrix}$\n\n2. $\\begin{bmatrix} 2 & 7 \\\\ 1 & 4 \\end{bmatrix}$\n\n3. $\\begin{bmatrix} 6 & 4 \\\\ 3 & 2 \\end{bmatrix}$\n\n4. $\\begin{bmatrix} -2 & 5 \\\\ 3 & -7 \\end{bmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-73",
+      "id": "ch09-sec03-ex-73",
       "number": "73",
       "problem": "Solve using $A^{-1}$.\n\n1. $\\begin{cases} 2x + 3y = 7 \\\\ x + 2y = 4 \\end{cases}$\n\n2. $\\begin{cases} 3x - y = 5 \\\\ 2x + y = 10 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-74",
+      "id": "ch09-sec03-ex-74",
       "number": "74",
       "problem": "Use Cramer's Rule to solve.\n\n1. $\\begin{cases} 3x + 2y = 11 \\\\ x - y = 2 \\end{cases}$\n\n2. $\\begin{cases} 5x - 2y = 4 \\\\ 3x + 4y = 18 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-75",
+      "id": "ch09-sec03-ex-75",
       "number": "75",
       "problem": "Use Cramer's Rule to solve.\n\n1. $\\begin{cases} x + y + z = 6 \\\\ 2x - y + z = 3 \\\\ x + 2y - z = 1 \\end{cases}$\n\n2. $\\begin{cases} 2x + y - z = 3 \\\\ x - y + 2z = 6 \\\\ 3x + 2y + z = 9 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-76",
+      "id": "ch09-sec03-ex-76",
       "number": "76",
       "problem": "Find the determinant: $\\begin{vmatrix} 2 & 1 & 3 \\\\ 4 & 0 & 1 \\\\ 1 & 2 & 2 \\end{vmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-77",
+      "id": "ch09-sec03-ex-77",
       "number": "77",
       "problem": "Find the inverse: $\\begin{bmatrix} 2 & 1 \\\\ 5 & 3 \\end{bmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-78",
+      "id": "ch09-sec03-ex-78",
       "number": "78",
       "problem": "Find the determinant: $\\begin{vmatrix} 3 & -2 \\\\ 5 & 4 \\end{vmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-79",
+      "id": "ch09-sec03-ex-79",
       "number": "79",
       "problem": "Find the inverse: $\\begin{bmatrix} 3 & 2 \\\\ 4 & 3 \\end{bmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-80",
+      "id": "ch09-sec03-ex-80",
       "number": "80",
       "problem": "Solve using Cramer's Rule: $\\begin{cases} 2x + y = 5 \\\\ x - 3y = -8 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-81",
+      "id": "ch09-sec03-ex-81",
       "number": "81",
       "problem": "Find the determinant: $\\begin{vmatrix} 1 & 2 & 0 \\\\ 3 & 1 & 4 \\\\ 2 & 0 & 1 \\end{vmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-82",
+      "id": "ch09-sec03-ex-82",
       "number": "82",
       "problem": "Find the determinant using expansion by minors: $\\begin{vmatrix} 2 & 0 & 1 \\\\ 1 & 3 & 2 \\\\ 0 & 1 & 4 \\end{vmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-83",
+      "id": "ch09-sec03-ex-83",
       "number": "83",
       "problem": "Is $\\begin{bmatrix} 1 & 2 & 3 \\\\ 0 & 1 & 4 \\\\ 0 & 0 & 1 \\end{bmatrix}$ invertible? Find its determinant.",
       "variant": "regular"
@@ -1075,21 +1075,21 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-84",
+      "id": "ch09-sec03-ex-84",
       "number": "84",
       "problem": "Use the augmented matrix $[A \\,|\\, I]$ and row reduction to find $A^{-1}$, or show that $A$ is singular.\n\n1. $A = \\begin{bmatrix} 1 & 0 & 2 \\\\ 2 & 1 & 3 \\\\ 1 & 1 & 1 \\end{bmatrix}$\n\n2. $A = \\begin{bmatrix} 1 & 2 & 1 \\\\ 0 & 1 & 2 \\\\ 1 & 0 & -3 \\end{bmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-85",
+      "id": "ch09-sec03-ex-85",
       "number": "85",
       "problem": "Find the inverse using row reduction.\n\n1. $\\begin{bmatrix} 2 & 1 & 0 \\\\ 1 & 1 & 1 \\\\ 0 & 1 & 2 \\end{bmatrix}$\n\n2. $\\begin{bmatrix} 1 & 1 & 1 \\\\ 1 & 2 & 3 \\\\ 1 & 4 & 9 \\end{bmatrix}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-86",
+      "id": "ch09-sec03-ex-86",
       "number": "86",
       "problem": "Determine whether each matrix is invertible. If so, find its inverse using $[A \\,|\\, I] \\to [I \\,|\\, A^{-1}]$.\n\n1. $\\begin{bmatrix} 1 & 2 & 3 \\\\ 2 & 5 & 7 \\\\ 1 & 1 & 1 \\end{bmatrix}$\n\n2. $\\begin{bmatrix} 1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9 \\end{bmatrix}$\n\n3. $\\begin{bmatrix} 3 & 0 & 1 \\\\ 2 & 1 & 0 \\\\ 1 & 2 & 1 \\end{bmatrix}$",
       "variant": "regular"
@@ -1101,14 +1101,14 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-87",
+      "id": "ch09-sec03-ex-87",
       "number": "87",
       "problem": "Use Cramer's Rule to solve.\n\n1. $\\begin{cases} x + y - z = 4 \\\\ 2x - y + z = 2 \\\\ x + 2y + z = 9 \\end{cases}$\n\n2. $\\begin{cases} 2x + 3y - z = 5 \\\\ x - y + 2z = 8 \\\\ 3x + y + z = 10 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-88",
+      "id": "ch09-sec03-ex-88",
       "number": "88",
       "problem": "Use Cramer's Rule to find only the value of $y$ in the system:\n$$\n\\begin{cases} x + 2y + 3z = 14 \\\\ 2x - y + z = 3 \\\\ 3x + y - z = 4 \\end{cases}\n$$\n(Hint: You only need to compute $D$ and $D_y$.)",
       "variant": "regular"
@@ -1120,62 +1120,70 @@
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-89",
+      "id": "ch09-sec03-ex-89",
       "number": "89",
       "problem": "The area of a triangle with vertices $(x_1, y_1)$, $(x_2, y_2)$, $(x_3, y_3)$ is:\n$$\n\\text{Area} = \\frac{1}{2}\\left| \\det\\begin{pmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{pmatrix} \\right|\n$$\nFind the area of the triangle with vertices $(1, 2)$, $(4, 6)$, and $(7, 2)$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-90",
+      "id": "ch09-sec03-ex-90",
       "number": "90",
       "problem": "Three points are collinear (lie on the same line) if and only if:\n$$\n\\det\\begin{pmatrix} x_1 & y_1 & 1 \\\\ x_2 & y_2 & 1 \\\\ x_3 & y_3 & 1 \\end{pmatrix} = 0\n$$\nDetermine whether the points $(2, 3)$, $(5, 9)$, and $(8, 15)$ are collinear.",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-91",
+      "id": "ch09-sec03-ex-91",
       "number": "91",
       "problem": "In a simple Hill cipher, letters are encoded as numbers (A=0, B=1, ..., Z=25) and \nmultiplied by an encoding matrix. If $E = \\begin{bmatrix} 3 & 5 \\\\ 2 & 3 \\end{bmatrix}$ \nis the encoding matrix:\n\n1. Find the decoding matrix $E^{-1}$.\n\n2. If the encoded message pair is $\\begin{bmatrix} 13 \\\\ 9 \\end{bmatrix}$, \n decode it by computing $E^{-1}\\begin{bmatrix} 13 \\\\ 9 \\end{bmatrix}$ (mod 26).",
       "variant": "regular"
     },
     {
       "type": "exercise",
-      "id": "ex-9.3-92",
+      "id": "ch09-sec03-ex-92",
       "number": "92",
       "problem": "In an economy with two sectors (manufacturing and services), let $A$ be the \nconsumption matrix where $a_{ij}$ represents the amount of sector $i$'s output \nneeded to produce one unit of sector $j$'s output:\n$$\nA = \\begin{bmatrix} 0.2 & 0.3 \\\\ 0.4 & 0.1 \\end{bmatrix}\n$$\nIf external demand is $D = \\begin{bmatrix} 100 \\\\ 80 \\end{bmatrix}$, the production \nlevels $X$ satisfy $(I - A)X = D$.\n\n1. Find $(I - A)$.\n\n2. Find $(I - A)^{-1}$.\n\n3. Compute the required production $X = (I - A)^{-1}D$.",
       "variant": "regular"
     },
     {
-      "type": "paragraph",
-      "text": "Use a graphing calculator or computer to find the inverse of:\n$$\n\\begin{bmatrix} 2 & 1 & 3 & 1 \\\\ 1 & 0 & 2 & 1 \\\\ 0 & 1 & 1 & 2 \\\\ 1 & 2 & 0 & 1 \\end{bmatrix}\n$$\nThen verify by computing $AA^{-1}$."
+      "type": "exercise",
+      "id": "ch09-sec03-ex-93",
+      "number": "93",
+      "problem": "Use a graphing calculator or computer to find the inverse of:\n$$\n\\begin{bmatrix} 2 & 1 & 3 & 1 \\\\ 1 & 0 & 2 & 1 \\\\ 0 & 1 & 1 & 2 \\\\ 1 & 2 & 0 & 1 \\end{bmatrix}\n$$\nThen verify by computing $AA^{-1}$.",
+      "variant": "technology"
     }
   ],
   "marginNotes": [
     {
       "type": "scripture",
       "reference": "Ecclesiastes 4:9",
-      "text": "Two are better than one, because they \nhave a good return for their labor."
+      "text": "Two are better than one, because they \nhave a good return for their labor.",
+      "edition": "christian"
     },
     {
       "type": "scripture",
       "reference": "1 Corinthians 12:14",
-      "text": "Even so the body is not made up of \none part but of many."
+      "text": "Even so the body is not made up of \none part but of many.",
+      "edition": "christian"
     },
     {
       "type": "scripture",
       "reference": "James 1:17",
-      "text": "Every good and perfect gift is from above, \ncoming down from the Father of the heavenly lights, who does not change \nlike shifting shadows."
+      "text": "Every good and perfect gift is from above, \ncoming down from the Father of the heavenly lights, who does not change \nlike shifting shadows.",
+      "edition": "christian"
     },
     {
       "type": "scripture",
       "reference": "Matthew 7:7",
-      "text": "Ask and it will be given to you; seek and \nyou will find."
+      "text": "Ask and it will be given to you; seek and \nyou will find.",
+      "edition": "christian"
     },
     {
       "type": "scripture",
       "reference": "Proverbs 2:6",
-      "text": "For the Lord gives wisdom; from his mouth \ncome knowledge and understanding."
+      "text": "For the Lord gives wisdom; from his mouth \ncome knowledge and understanding.",
+      "edition": "christian"
     }
   ]
 }
