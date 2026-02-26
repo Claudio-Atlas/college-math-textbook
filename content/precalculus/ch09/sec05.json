@@ -101,12 +101,28 @@
       "solution": "**Step 1: Graph the feasible region.**\n\n**Step 2: Find vertices.**\n\nThe vertices are where boundary lines intersect:\n\n- $A(0, 0)$: intersection of $x = 0$ and $y = 0$\n\n- $B(5, 0)$: intersection of $y = 0$ and $x + y = 5$\n\n- $C(3, 2)$: intersection of $2x + 3y = 12$ and $x + y = 5$\n\n- $D(0, 4)$: intersection of $x = 0$ and $2x + 3y = 12$\n\nTo find $C$: Solve $\\begin{cases} 2x + 3y = 12 \\\\ x + y = 5 \\end{cases}$\n\nFrom $x + y = 5$: $x = 5 - y$. Substitute: $2(5-y) + 3y = 12 \\Rightarrow y = 2$, $x = 3$.\n\n**Step 3: Evaluate $z = 3x + 4y$ at each vertex.**\n\n<table><tr><th>Vertex</th><th>Coordinates</th><th>$z = 3x + 4y$</th></tr><tr><td>$A$</td><td>$(0, 0)$</td><td>$3(0) + 4(0) = 0$</td></tr><tr><td>$B$</td><td>$(5, 0)$</td><td>$3(5) + 4(0) = 15$</td></tr><tr><td>$C$</td><td>$(3, 2)$</td><td>$3(3) + 4(2) = \\mathbf{17}$</td></tr><tr><td>$D$</td><td>$(0, 4)$</td><td>$3(0) + 4(4) = 16$</td></tr></table>\n\n**Step 4: Identify the maximum.**\n\nThe maximum value is $z = 17$ at vertex $C(3, 2)$.\n\n**Conclusion:** The bakery should make **3 batches of cookies \nand 2 batches of brownies** for a maximum profit of **\\$17**."
     },
     {
+      "type": "figure",
+      "id": "fig:bakery-feasible",
+      "src": "/figures/precalculus/ch09/fig-bakery-feasible.svg",
+      "caption": "Feasible region for the bakery problem. The region is bounded by the flour constraint $2x + 3y = 12$, the batch limit $x + y = 5$, and the axes. Vertices are at $A(0,0)$, $B(5,0)$, $C(3,2)$, and $D(0,4)$.",
+      "alt": "Feasible region for the bakery problem. The region is bounded by the flour constraint $2x + 3y = 12$, the batch limit $x + y = 5$, and the axes. Vertices are at $A(0,0)$, $B(5,0)$, $C(3,2)$, and $D(0,4)$.",
+      "tikz": true
+    },
+    {
       "type": "example",
       "id": "ch09-sec05-example-9.3",
       "number": "9.3",
       "title": "Another maximization problem",
       "problem": "Maximize $z = 5x + 7y$ subject to:\n$$\n\\begin{cases}\n x + 2y \\leq 14 \\\\\n 3x + y \\leq 18 \\\\\n x \\geq 0, \\, y \\geq 0\n\\end{cases}\n$$",
       "solution": "**Step 1: Graph and find vertices.**\n\nTo find the intersection of $x + 2y = 14$ and $3x + y = 18$:\n\nFrom $3x + y = 18$: $y = 18 - 3x$. Substitute: $x + 2(18-3x) = 14 \\Rightarrow -5x = -22 \\Rightarrow x = \\frac{22}{5} = 4.4$\n\nThen $y = 18 - 3(4.4) = 4.8$. So the vertex is $(4.4, 4.8)$.\n\n**Step 2: Evaluate at vertices.**\n\n<table><tr><th>Vertex</th><th>$z = 5x + 7y$</th></tr><tr><td>$(0, 0)$</td><td>$0$</td></tr><tr><td>$(6, 0)$</td><td>$30$</td></tr><tr><td>$(4.4, 4.8)$</td><td>$5(4.4) + 7(4.8) = 22 + 33.6 = \\mathbf{55.6}$</td></tr><tr><td>$(0, 7)$</td><td>$49$</td></tr></table>\n\n**Maximum:** $z = 55.6$ at $(4.4, 4.8)$."
+    },
+    {
+      "type": "figure",
+      "id": "fig:maximize2",
+      "src": "/figures/precalculus/ch09/fig-maximize2.svg",
+      "caption": "Feasible region with vertices at $(0,0)$, $(6,0)$, $(4,5)$, and $(0,7)$. The constraints are $x + 2y \\leq 14$ and $3x + y \\leq 18$ along with non-negativity.",
+      "alt": "Feasible region with vertices at $(0,0)$, $(6,0)$, $(4,5)$, and $(0,7)$. The constraints are $x + 2y \\leq 14$ and $3x + y \\leq 18$ along with non-negativity.",
+      "tikz": true
     },
     {
       "type": "heading",
@@ -124,6 +140,14 @@
       "title": "Minimization problem",
       "problem": "A diet requires at least 40 units of protein and 30 units of iron daily. \nFood A provides 4 units of protein and 2 units of iron per serving and \ncosts \\$0.60. Food B provides 2 units of protein and 3 units of iron \nper serving and costs \\$0.40. How many servings of each minimizes cost \nwhile meeting requirements?",
       "solution": "Let $x$ = servings of Food A and $y$ = servings of Food B.\n\n**Objective function** (to minimize):\n$$\n z = 0.60x + 0.40y \\quad \\text{(cost in dollars)}\n$$\n\n**Constraints:**\n$$\\begin{aligned}\n 4x + 2y &\\geq 40 && \\text{(protein requirement)} \\\\\n 2x + 3y &\\geq 30 && \\text{(iron requirement)} \\\\\n x &\\geq 0, \\, y \\geq 0\n\\end{aligned}$$\n\n**Find intersection** of $4x + 2y = 40$ and $2x + 3y = 30$:\n\nFrom $4x + 2y = 40$: $2x + y = 20$, so $y = 20 - 2x$.\n\nSubstitute into $2x + 3y = 30$: $2x + 3(20-2x) = 30 \\Rightarrow 2x + 60 - 6x = 30 \\Rightarrow -4x = -30 \\Rightarrow x = 7.5$, and $y = 20 - 2(7.5) = 5$.\n\n**Vertices:** $(0, 20)$, $(7.5, 5)$, $(15, 0)$\n\n**Evaluate $z = 0.60x + 0.40y$:**\n\n<table><tr><th>Vertex</th><th>$z = 0.60x + 0.40y$</th></tr><tr><td>$(0, 20)$</td><td>$0.60(0) + 0.40(20) = \\$8.00$</td></tr><tr><td>$(7.5, 5)$</td><td>$0.60(7.5) + 0.40(5) = 4.50 + 2.00 = \\$\\mathbf{6.50}$</td></tr><tr><td>$(15, 0)$</td><td>$0.60(15) + 0.40(0) = \\$9.00$</td></tr></table>\n\n**Minimum:** $z = \\$6.50$ at $(7.5, 5)$.\n\n**Conclusion:** To minimize cost, use **7.5 servings of Food A \nand 5 servings of Food B** for a cost of **\\$6.50**."
+    },
+    {
+      "type": "figure",
+      "id": "fig:diet-problem",
+      "src": "/figures/precalculus/ch09/fig-diet-problem.svg",
+      "caption": "Feasible region for the diet problem. The region is unbounded (extends to infinity) but has three vertices at $(0,20)$, $(7.5, 5)$, and $(15,0)$. Shading indicates the region satisfying both \"at least\" constraints.",
+      "alt": "Feasible region for the diet problem. The region is unbounded (extends to infinity) but has three vertices at $(0,20)$, $(7.5, 5)$, and $(15,0)$. Shading indicates the region satisfying both \"at least\" constraints.",
+      "tikz": true
     },
     {
       "type": "heading",
@@ -146,6 +170,14 @@
       "title": "No maximum exists",
       "problem": "Maximize $z = 2x + y$ subject to $x - y \\leq 2$, $x \\geq 0$, $y \\geq 0$.",
       "solution": "The feasible region extends infinitely to the upper right.\n\nAs we move up and to the right, $z = 2x + y$ increases without bound. \n**No maximum exists.**"
+    },
+    {
+      "type": "figure",
+      "id": "fig:unbounded-no-max",
+      "src": "/figures/precalculus/ch09/fig-unbounded-no-max.svg",
+      "caption": "An unbounded feasible region. Since the region extends infinitely in the direction where $z = 2x + y$ increases, there is no maximum value—$z$ can be made arbitrarily large.",
+      "alt": "An unbounded feasible region. Since the region extends infinitely in the direction where $z = 2x + y$ increases, there is no maximum value—$z$ can be made arbitrarily large.",
+      "tikz": true
     },
     {
       "type": "warning",
@@ -191,6 +223,14 @@
       "title": "Production planning",
       "problem": "A furniture company makes tables and chairs. Each table requires 4 hours \nin the assembly department and 2 hours in finishing. Each chair requires \n2 hours in assembly and 2 hours in finishing. Assembly has 60 hours \navailable; finishing has 48 hours available. Tables sell for \\$200 profit \neach; chairs for \\$100 each. How many of each should be made?",
       "solution": "Let $x$ = tables, $y$ = chairs.\n\n**Objective:** Maximize $z = 200x + 100y$ (profit)\n\n**Constraints:**\n$$\\begin{aligned}\n 4x + 2y &\\leq 60 && \\text{(assembly)} \\\\\n 2x + 2y &\\leq 48 && \\text{(finishing)} \\\\\n x, y &\\geq 0\n\\end{aligned}$$\n\nSimplify: $2x + y \\leq 30$ (assembly) and $x + y \\leq 24$ (finishing)\n\nFind intersection of $2x + y = 30$ and $x + y = 24$:\n\nSubtract: $x = 6$, then $y = 24 - 6 = 18$. Vertex: $(6, 18)$\n\n**Evaluate:**\n\n<table><tr><th>Vertex</th><th>$z = 200x + 100y$</th></tr><tr><td>$(0, 0)$</td><td>\\$0</td></tr><tr><td>$(15, 0)$</td><td>\\$3,000</td></tr><tr><td>$(6, 18)$</td><td>$200(6) + 100(18) = \\$\\mathbf{3,000}$</td></tr><tr><td>$(0, 24)$</td><td>\\$2,400</td></tr></table>\n\n**Maximum profit:** \\$3,000, achieved at either $(15, 0)$ or $(6, 18)$ \n(or any point between them).\n\n**Options:** Make 15 tables and 0 chairs, OR 6 tables and 18 chairs, \nOR any combination along that edge."
+    },
+    {
+      "type": "figure",
+      "id": "fig:furniture",
+      "src": "/figures/precalculus/ch09/fig-furniture.svg",
+      "caption": "Feasible region for furniture production. Vertices occur at $(0,0)$, $(15,0)$, $(6,18)$, and $(0,24)$. The assembly constraint $2x + y = 30$ and finishing constraint $x + y = 24$ form two of the boundaries.",
+      "alt": "Feasible region for furniture production. Vertices occur at $(0,0)$, $(15,0)$, $(6,18)$, and $(0,24)$. The assembly constraint $2x + y = 30$ and finishing constraint $x + y = 24$ form two of the boundaries.",
+      "tikz": true
     },
     {
       "type": "example",

@@ -116,6 +116,14 @@
       "content": "The derivation above assumes the altitude falls *inside* the triangle \n(which happens when both base angles are acute). What if angle $A$ or $B$ \nis obtuse?\n\nWhen angle $B$ is obtuse, the altitude from $C$ still lands on line $AB$, \nand the same algebra works. For the obtuse angle, we use the identity \n$\\sin(180° - B) = \\sin B$, which holds for all angles. The Law of Sines \nis valid for *all* triangles—acute, right, or obtuse."
     },
     {
+      "type": "figure",
+      "id": "fig-8.1-inline-3",
+      "src": "/figures/precalculus/ch08/fig-8.1-inline-3.svg",
+      "caption": "Obtuse triangle case: The derivation still applies because $\\sin(180° - B) = \\sin B$.",
+      "alt": "Obtuse triangle case: The derivation still applies because $\\sin(180° - B) = \\sin B$.",
+      "tikz": true
+    },
+    {
       "type": "theorem",
       "id": "ch08-sec01-theorem-8.1",
       "title": "Law of Sines",
@@ -291,6 +299,14 @@
       "solution": "Let's set up the problem carefully. Let $W$ be the western tower, $E$ be \nthe eastern tower, and $F$ be the fire.\n\nThe interior angles at each tower are:\n\n- At $W$: The angle from the road to the fire is $90° - 65° = 25°$\n\n- At $E$: The angle from the road to the fire is $90° - 70° = 20°$\n\nThe angle at $F$ is:\n$$\n F = 180° - 25° - 20° = 135°\n$$\n\nNow we apply the Law of Sines with $WE = 30$ miles opposite angle $F$:\n$$\n \\frac{WE}{\\sin F} = \\frac{d_W}{\\sin E} = \\frac{d_E}{\\sin W}\n$$\n\nDistance from western tower to fire:\n$$\n d_W = \\frac{WE \\cdot \\sin E}{\\sin F} = \\frac{30 \\sin 20°}{\\sin 135°} = \\frac{30 \\times 0.342}{0.707} \\approx 14.5 \\text{ miles}\n$$\n\nDistance from eastern tower to fire:\n$$\n d_E = \\frac{30 \\sin 25°}{\\sin 135°} = \\frac{30 \\times 0.423}{0.707} \\approx 17.9 \\text{ miles}\n$$\n\nThe fire is approximately **14.5 miles** from the western tower \nand **17.9 miles** from the eastern tower."
     },
     {
+      "type": "figure",
+      "id": "fig-8.1-inline-6",
+      "src": "/figures/precalculus/ch08/fig-8.1-inline-6.svg",
+      "caption": "Fire tower triangulation: Two towers $W$ and $E$ are 30 miles apart on an east-west road. A fire $F$ is spotted at bearings N$65°$E from tower $W$ and N$70°$W from tower $E$. The interior triangle angles are $25°$, $20°$, and $135°$.",
+      "alt": "Fire tower triangulation: Two towers $W$ and $E$ are 30 miles apart on an east-west road. A fire $F$ is spotted at bearings N$65°$E from tower $W$ and N$70°$W from tower $E$. The interior triangle angles are $25°$, $20°$, and $135°$.",
+      "tikz": true
+    },
+    {
       "type": "example",
       "id": "ch08-sec01-example-8.7",
       "number": "8.7",
@@ -299,12 +315,28 @@
       "solution": "Let $P$ be the peak and $C$ be the point on the ground directly below $P$.\n\nIn triangle $ABP$:\n\n- Angle at $A$ is $22°$ (the angle of elevation)\n\n- Angle at $B$ is $180° - 34° = 146°$ (supplementary to elevation)\n\n- Angle at $P$ is $180° - 22° - 146° = 12°$\n\n- Side $AB = 1000$ m\n\nUsing the Law of Sines to find $BP$:\n$$\n \\frac{BP}{\\sin 22°} = \\frac{1000}{\\sin 12°}\n$$\n$$\n BP = \\frac{1000 \\sin 22°}{\\sin 12°} = \\frac{1000 \\times 0.3746}{0.2079} \\approx 1802 \\text{ m}\n$$\n\nNow in right triangle $BPC$:\n$$\n h = BP \\sin 34° = 1802 \\times 0.5592 \\approx 1008 \\text{ m}\n$$\n\nThe mountain peak is approximately **1008 meters** above the ground level."
     },
     {
+      "type": "figure",
+      "id": "fig-8.1-inline-7",
+      "src": "/figures/precalculus/ch08/fig-8.1-inline-7.svg",
+      "caption": "Mountain height determination: From point $A$, the angle of elevation to peak $P$ is $22°$. After walking 1000 m toward the mountain to point $B$, the angle of elevation increases to $34°$. The height $h$ can be found using the Law of Sines in triangle $ABP$.",
+      "alt": "Mountain height determination: From point $A$, the angle of elevation to peak $P$ is $22°$. After walking 1000 m toward the mountain to point $B$, the angle of elevation increases to $34°$. The height $h$ can be found using the Law of Sines in triangle $ABP$.",
+      "tikz": true
+    },
+    {
       "type": "example",
       "id": "ch08-sec01-example-8.8",
       "number": "8.8",
       "title": "Sailing bearing problem",
       "problem": "A ship leaves port and sails 80 nautical miles on a bearing of N$40°$W. \nIt then changes course and sails 60 nautical miles on a bearing of S$30°$W. \nHow far is the ship from port, and what bearing would take it directly \nback to port?",
       "solution": "Let $P$ be the port, $Q$ be the position after the first leg, and $R$ \nbe the final position.\n\nFirst, we need to find the angle at $Q$ in triangle $PQR$. The ship \ninitially traveled N$40°$W (so $40°$ west of north), then turned to \nS$30°$W (so $30°$ west of south).\n\nThe angle between \"north\" and \"south\" is $180°$. The angle at $Q$ \nbetween the two paths is:\n$$\n \\angle PQR = 180° - 40° - 30° = 110°\n$$\n\nWait—that's the exterior angle. The interior angle is actually the \nchange in bearing. When you're heading N$40°$W and turn to head S$30°$W, \nyou turn through:\n$$\n \\angle Q = 40° + 30° = 70° \\quad \\text{(the angle between the two course lines)}\n$$\n\nActually, let's reconsider. The angle at $Q$ measured inside the triangle \nis $180° - 70° = 110°$ (the supplement of the turn angle).\n\nHmm, let's think more carefully with a diagram:\n\nThe angle at $Q$ inside the triangle: traveling from $P$ toward $Q$, you're \nheading N$40°$W. At $Q$, if you were to continue straight, you'd still be \nheading N$40°$W. But you turn to head S$30°$W.\n\nThe angle between N$40°$W (continued) and S$30°$W:\n$$\\begin{aligned}\n \\text{N}40°\\text{W extended backward} &= \\text{S}40°\\text{E} \\\\\n \\text{Turn from S}40°\\text{E to S}30°\\text{W} &= 40° + 30° = 70°\n\\end{aligned}$$\n\nSo the interior angle at $Q$ is $180° - 70° = 110°$.\n\nUsing the Law of Cosines (which we'll study next section) would be more \ndirect, but with the Law of Sines, we can set up:\n\nActually, since we have SAS (two sides and the included angle), the Law \nof Cosines is the better tool here. Let's modify the problem.\n\n*We'll return to this type of problem after developing the Law of \nCosines in Section 8.2.*"
+    },
+    {
+      "type": "figure",
+      "id": "fig-8.1-inline-8",
+      "src": "/figures/precalculus/ch08/fig-8.1-inline-8.svg",
+      "caption": "Navigation problem: A ship leaves port $P$, sails 80 nautical miles to $Q$ on bearing N$40°$W, then sails 60 nautical miles to $R$ on bearing S$30°$W. North arrows indicate reference directions at each point.",
+      "alt": "Navigation problem: A ship leaves port $P$, sails 80 nautical miles to $Q$ on bearing N$40°$W, then sails 60 nautical miles to $R$ on bearing S$30°$W. North arrows indicate reference directions at each point.",
+      "tikz": true
     },
     {
       "type": "heading",

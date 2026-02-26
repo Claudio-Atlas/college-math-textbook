@@ -133,6 +133,14 @@
       "solution": "Divide by 2 to get standard form:\n$$\nr = \\frac{3}{1 + \\frac{1}{2}\\cos\\theta}\n$$\nSince $e = \\frac{1}{2} < 1$, this is an ellipse.\n\nEvaluate at key angles:\n<table><tr><th>$\\theta$</th><th>$0$</th><th>$\\pi/2$</th><th>$\\pi$</th><th>$3\\pi/2$</th></tr><tr><td>$r$</td><td>$\\frac{6}{2+1} = 2$</td><td>$\\frac{6}{2+0} = 3$</td><td>$\\frac{6}{2-1} = 6$</td><td>$3$</td></tr></table>\n\nThe vertices are at $(2, 0)$ and $(6, \\pi)$. The major axis has length\n$2a = 2 + 6 = 8$, so $a = 4$. The center is at distance $a - 2 = 2$ from\nthe pole along the polar axis (in the direction of $\\theta = \\pi$)."
     },
     {
+      "type": "figure",
+      "id": "fig:polar-ellipse",
+      "src": "/figures/precalculus/ch10/fig-polar-ellipse.svg",
+      "caption": "The polar ellipse $r = 6/(2 + \\cos\\theta)$ with $e = 1/2$. The focus\nis at the pole (origin), vertices at $(2, 0)$ and $(6, \\pi)$. The ellipse is\nelongated along the polar axis with center at $(-2, 0)$.",
+      "alt": "The polar ellipse $r = 6/(2 + \\cos\\theta)$ with $e = 1/2$. The focus\nis at the pole (origin), vertices at $(2, 0)$ and $(6, \\pi)$. The ellipse is\nelongated along the polar axis with center at $(-2, 0)$.",
+      "tikz": true
+    },
+    {
       "type": "example",
       "id": "ch10-sec05-example-10.3",
       "number": "10.3",
@@ -141,12 +149,28 @@
       "solution": "This is already in standard form with $e = 1$, so it's a parabola.\nThe form $1 - \\sin\\theta$ indicates the directrix is below the pole.\n\nEvaluate at key angles:\n<table><tr><th>$\\theta$</th><th>$0$</th><th>$\\pi/2$</th><th>$\\pi$</th></tr><tr><td>$r$</td><td>$\\frac{4}{1-0} = 4$</td><td>$\\frac{4}{1-1} = \\text{undefined}$</td><td>$4$</td></tr></table>\n\nAt $\\theta = 3\\pi/2$: $r = \\frac{4}{1-(-1)} = \\frac{4}{2} = 2$ (this is the vertex).\n\nThe parabola has vertex at $(2, 3\\pi/2)$ (i.e., at $(0, -2)$ in rectangular\ncoordinates), opens upward, and approaches infinity as $\\theta \\to \\pi/2$."
     },
     {
+      "type": "figure",
+      "id": "fig:polar-parabola",
+      "src": "/figures/precalculus/ch10/fig-polar-parabola.svg",
+      "caption": "The polar parabola $r = 4/(1 - \\sin\\theta)$ with $e = 1$. \nThe focus is at the pole, the vertex is at $(0, -2)$, and the \ndirectrix is $y = -4$. The parabola opens upward.",
+      "alt": "The polar parabola $r = 4/(1 - \\sin\\theta)$ with $e = 1$. \nThe focus is at the pole, the vertex is at $(0, -2)$, and the \ndirectrix is $y = -4$. The parabola opens upward.",
+      "tikz": true
+    },
+    {
       "type": "example",
       "id": "ch10-sec05-example-10.4",
       "number": "10.4",
       "title": "Graphing a Polar Hyperbola",
       "problem": "Sketch the graph of $\\displaystyle r = \\frac{9}{2 + 3\\cos\\theta}$.",
       "solution": "Divide by 2: $r = \\frac{9/2}{1 + \\frac{3}{2}\\cos\\theta}$.\n\nSince $e = \\frac{3}{2} > 1$, this is a hyperbola. The directrix is\nto the right of the pole.\n\nEvaluate at key angles:\n<table><tr><th>$\\theta$</th><th>$0$</th><th>$\\pi/2$</th><th>$\\pi$</th><th>$3\\pi/2$</th></tr><tr><td>$r$</td><td>$\\frac{9}{2+3} = \\frac{9}{5}$</td><td>$\\frac{9}{2} = 4.5$</td><td>$\\frac{9}{2-3} = -9$</td><td>$4.5$</td></tr></table>\n\nThe negative value at $\\theta = \\pi$ indicates that point is actually at\n$(9, 0)$ (plotting a negative $r$ means going in the opposite direction).\n\nThe vertices of the hyperbola are at $(\\frac{9}{5}, 0)$ and $(9, 0)$."
+    },
+    {
+      "type": "figure",
+      "id": "fig:polar-hyperbola",
+      "src": "/figures/precalculus/ch10/fig-polar-hyperbola.svg",
+      "caption": "The polar hyperbola $r = 9/(2 + 3\\cos\\theta)$ with $e = 3/2$. \nThe focus is at the pole. Both branches are shown: the right branch \nhas vertex at $(9/5, 0)$, the left passes through $(9, 0)$. \nDashed lines show the asymptotes.",
+      "alt": "The polar hyperbola $r = 9/(2 + 3\\cos\\theta)$ with $e = 3/2$. \nThe focus is at the pole. Both branches are shown: the right branch \nhas vertex at $(9/5, 0)$, the left passes through $(9, 0)$. \nDashed lines show the asymptotes.",
+      "tikz": true
     },
     {
       "type": "heading",
@@ -224,6 +248,14 @@
       "title": "Halley's Comet",
       "problem": "Halley's comet has an elliptical orbit with eccentricity $e \\approx 0.967$\nand semi-major axis $a \\approx 17.94$ AU (astronomical units, where\n1 AU $\\approx$ 93 million miles).\n\n**(a)** Find the polar equation of the orbit.\n\n**(b)** Find the perihelion and aphelion distances.",
       "solution": "**(a)** The polar equation is:\n$$\nr = \\frac{a(1-e^2)}{1 - e\\cos\\theta} = \\frac{17.94(1 - 0.967^2)}{1 - 0.967\\cos\\theta}\n$$\n\nCalculate $1 - e^2 = 1 - 0.935 = 0.065$:\n$$\nr = \\frac{17.94 \\times 0.065}{1 - 0.967\\cos\\theta} \\approx \\frac{1.17}{1 - 0.967\\cos\\theta}\n$$\n\n**(b)** Perihelion: $r_{\\min} = a(1-e) = 17.94(1 - 0.967) = 17.94 \\times 0.033 \\approx 0.59$ AU\n\nAphelion: $r_{\\max} = a(1+e) = 17.94(1 + 0.967) = 17.94 \\times 1.967 \\approx 35.3$ AU\n\nSo Halley's comet comes as close as about 55 million miles from the Sun\n(inside Venus's orbit!) and travels as far as about 3.3 billion miles\n(beyond Neptune's orbit)."
+    },
+    {
+      "type": "figure",
+      "id": "fig:halleys-comet",
+      "src": "/figures/precalculus/ch10/fig-halleys-comet.svg",
+      "caption": "Halley's comet orbit (not to scale). The extreme eccentricity\n($e = 0.967$) creates a highly elongated ellipse. The comet's perihelion\nbrings it closer to the Sun than Venus, while its aphelion takes it beyond\nNeptune. The small dashed circle represents Earth's orbit for scale.",
+      "alt": "Halley's comet orbit (not to scale). The extreme eccentricity\n($e = 0.967$) creates a highly elongated ellipse. The comet's perihelion\nbrings it closer to the Sun than Venus, while its aphelion takes it beyond\nNeptune. The small dashed circle represents Earth's orbit for scale.",
+      "tikz": true
     },
     {
       "type": "example",

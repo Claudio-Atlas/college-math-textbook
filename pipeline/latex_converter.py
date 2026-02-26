@@ -982,12 +982,13 @@ class SectionParser:
         # Atlas environments
         if env_name in ENV_TYPE_MAP:
             block_type = ENV_TYPE_MAP[env_name]
-            return [self._parse_atlas_env(block_type, env_name, opt_arg, req_arg, body)]
+            return self._parse_atlas_env(block_type, env_name, opt_arg, req_arg, body)
 
         # Solution (standalone — attach to previous example if possible)
         if env_name == "solution":
-            # Return as a special marker; caller handles attachment
-            return [{"type": "_solution", "content": self._convert_text(body)}]
+            # Extract nested figures before converting text
+            body_cleaned, sol_figs = self._extract_nested_figures(body)
+            return [{"type": "_solution", "content": self._convert_text(body_cleaned)}] + sol_figs
 
         # Secularintro — pass through as paragraphs
         if env_name == "secularintro" or env_name == "chapterintro":
@@ -995,7 +996,7 @@ class SectionParser:
 
         # Exercise environments
         if env_name in ("exercise", "exercisewithsolution"):
-            return [self._parse_exercise_env(opt_arg, body)]
+            return self._parse_exercise_env(opt_arg, body)
 
         if env_name in ("exrow", "exitem"):
             return self._parse_body(body)
@@ -1003,9 +1004,34 @@ class SectionParser:
         # Unknown env — try to parse body as content
         return self._parse_body(body)
 
+    def _extract_nested_figures(self, text: str) -> Tuple[str, List[Dict]]:
+        """Extract \\begin{figure}...\\end{figure} from text, returning (cleaned_text, figure_blocks)."""
+        figures = []
+        cleaned = text
+        # Find all figure environments and extract them
+        while True:
+            m = re.search(r'\\begin\{figure\}(?:\[[^\]]*\])?', cleaned)
+            if not m:
+                break
+            fig_start = m.start()
+            fig_end = find_env_end(cleaned, fig_start, "figure")
+            end_tag = "\\end{figure}"
+            fig_body_start = m.end()
+            # Find the end tag
+            end_pos = cleaned.find(end_tag, fig_body_start)
+            if end_pos == -1:
+                break
+            fig_body = cleaned[fig_body_start:end_pos]
+            fig_block = self._parse_figure(fig_body)
+            if fig_block:
+                figures.append(fig_block)
+            # Remove the figure from the text
+            cleaned = cleaned[:fig_start] + cleaned[end_pos + len(end_tag):]
+        return cleaned, figures
+
     def _parse_atlas_env(self, block_type: str, env_name: str,
                          opt_arg: Optional[str], req_arg: Optional[str],
-                         body: str) -> Dict:
+                         body: str) -> List[Dict]:
         """Parse an Atlas theorem/definition/example/etc environment."""
         title = req_arg or opt_arg or ""
 
@@ -1026,7 +1052,10 @@ class SectionParser:
         # Example: split problem/solution
         if block_type == "example":
             problem, solution = self._split_solution(body)
-            return {
+            # Extract nested figures from problem and solution
+            problem, prob_figs = self._extract_nested_figures(problem)
+            solution, sol_figs = self._extract_nested_figures(solution)
+            result = {
                 "type": "example",
                 "id": block_id,
                 "number": number,
@@ -1034,23 +1063,26 @@ class SectionParser:
                 "problem": self._convert_text(problem),
                 "solution": self._convert_text(solution),
             }
+            return [result] + prob_figs + sol_figs
 
         # Proof
         if block_type == "proof":
-            return {
+            body, figs = self._extract_nested_figures(body)
+            return [{
                 "type": "proof",
                 "content": self._convert_text(body),
-            }
+            }] + figs
 
         # Reflection (christian)
         if block_type == "reflection":
-            return {
+            return [{
                 "type": "paragraph",
                 "text": self._convert_text(body),
                 "edition": "christian",
-            }
+            }]
 
         # Everything else: definition, theorem, warning, etc.
+        body, figs = self._extract_nested_figures(body)
         result = {
             "type": block_type,
             "id": block_id,
@@ -1059,7 +1091,7 @@ class SectionParser:
         }
         if number:
             result["number"] = number
-        return result
+        return [result] + figs
 
     def _split_solution(self, body: str) -> Tuple[str, str]:
         """Extract \\begin{solution}...\\end{solution} from example body."""
@@ -1292,13 +1324,15 @@ class SectionParser:
                 elif opt and opt.lower() in ('proof', 'show that'):
                     variant = "conceptual"
 
+                body_cleaned, ex_figs = self._extract_nested_figures(body)
                 blocks.append({
                     "type": "exercise",
                     "id": f"ch{self.chapter_num:02d}-sec{self.section_num:02d}-ex-{exercise_num}",
                     "number": str(exercise_num),
-                    "problem": self._convert_text(body),
+                    "problem": self._convert_text(body_cleaned),
                     "variant": variant,
                 })
+                blocks.extend(ex_figs)
                 pos = env_end
                 continue
 
@@ -1312,6 +1346,8 @@ class SectionParser:
 
                 exercise_num += 1
                 problem, solution = self._split_solution(body)
+                problem, prob_figs = self._extract_nested_figures(problem)
+                solution, sol_figs = self._extract_nested_figures(solution)
                 blocks.append({
                     "type": "exercise",
                     "id": f"ch{self.chapter_num:02d}-sec{self.section_num:02d}-ex-{exercise_num}",
@@ -1320,7 +1356,23 @@ class SectionParser:
                     "solution": self._convert_text(solution),
                     "variant": "regular",
                 })
+                blocks.extend(prob_figs + sol_figs)
                 pos = env_end
+                continue
+
+            # Handle figure environments in exercises area
+            fig_env = re.match(r'\\begin\{figure\}(?:\[[^\]]*\])?\s*', text[pos:])
+            if fig_env:
+                fig_end = find_env_end(text, pos, "figure")
+                end_tag = "\\end{figure}"
+                fig_body_start = pos + fig_env.end()
+                end_pos = text.find(end_tag, fig_body_start)
+                if end_pos != -1:
+                    fig_body = text[fig_body_start:end_pos]
+                    fig_block = self._parse_figure(fig_body)
+                    if fig_block:
+                        blocks.append(fig_block)
+                pos = fig_end
                 continue
 
             # Skip other environments
@@ -1378,8 +1430,8 @@ class SectionParser:
             i += 1
         return len(text)
 
-    def _parse_exercise_env(self, opt_arg: Optional[str], body: str) -> Dict:
-        """Parse a single exercise environment."""
+    def _parse_exercise_env(self, opt_arg: Optional[str], body: str) -> List[Dict]:
+        """Parse a single exercise environment. Returns list (exercise + any nested figures)."""
         variant = "regular"
         if opt_arg and ('\\star' in opt_arg or '$\\star$' in opt_arg):
             variant = "starred"
@@ -1387,6 +1439,8 @@ class SectionParser:
             variant = "conceptual"
 
         problem, solution = self._split_solution(body)
+        problem, prob_figs = self._extract_nested_figures(problem)
+        solution, sol_figs = self._extract_nested_figures(solution)
         result = {
             "type": "exercise",
             "problem": self._convert_text(problem),
@@ -1394,7 +1448,7 @@ class SectionParser:
         }
         if solution:
             result["solution"] = self._convert_text(solution)
-        return result
+        return [result] + prob_figs + sol_figs
 
     # ── Phase 4: Text Conversion ─────────────────────────────
 
