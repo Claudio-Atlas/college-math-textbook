@@ -1,22 +1,19 @@
 #!/usr/bin/env python3
 """
-Axiom LaTeX → JSON Converter
+Axiom LaTeX → JSON Converter v2 (Token-Based)
 
-A comprehensive converter for Atlas LaTeX textbooks to JSON format
-for the Axiom Web Reader.
+A clean, token-based converter for Atlas LaTeX textbooks to JSON format
+for the Axiom Web Reader. Replaces the original regex-heavy converter.
 
-Features:
-- Parses individual section .tex files
-- Handles all Atlas theorem/definition/example environments
-- Preserves math content for KaTeX rendering
-- Handles \ifchristian blocks for edition toggling
-- Converts paragraphs, lists, figures, subsections
-- Generates structured JSON matching the reader's expected format
+Architecture:
+  Phase 1: Strip comments, handle \ifchristian
+  Phase 2: Tokenize into typed tokens (math, environments, commands, text)
+  Phase 3: Parse token stream into structured content blocks
+  Phase 4: Convert LaTeX markup in text fields to reader format
 
 Usage:
-    python latex_converter.py --book vol1
-    python latex_converter.py --book vol1 --chapter 1
-    python latex_converter.py --all
+    python latex_converter.py --book precalculus
+    python latex_converter.py --book precalculus --chapter 1
 """
 
 import argparse
@@ -25,11 +22,9 @@ import os
 import re
 from pathlib import Path
 from typing import List, Dict, Any, Optional, Tuple
-from dataclasses import dataclass, field, asdict
-from enum import Enum
+from dataclasses import dataclass, field
 import logging
 
-# Setup logging
 logging.basicConfig(level=logging.INFO, format='%(message)s')
 logger = logging.getLogger(__name__)
 
@@ -39,11 +34,12 @@ logger = logging.getLogger(__name__)
 
 TEXTBOOKS_DIR = Path.home() / "Desktop" / "Atlas-Textbooks" / "source"
 OUTPUT_DIR = Path.home() / "Desktop" / "Axiom-Reader" / "content"
+PIPELINE_DIR = Path(__file__).parent
+MANIFEST_PATH = PIPELINE_DIR / "figure_manifest.json"
 
-# Map book directory names to human-readable titles
 BOOK_TITLES = {
     "vol1": "Calculus Volume 1",
-    "vol2": "Calculus Volume 2", 
+    "vol2": "Calculus Volume 2",
     "vol3": "Calculus Volume 3",
     "college-algebra": "College Algebra",
     "precalculus": "Precalculus",
@@ -63,8 +59,8 @@ BOOK_TITLES = {
     "numerical-analysis": "Numerical Analysis",
 }
 
-# Atlas environments and their content types
-ATLAS_ENVIRONMENTS = {
+# Environment name → block type mapping
+ENV_TYPE_MAP = {
     "atlasdefinition": "definition",
     "definition": "definition",
     "atlastheorem": "theorem",
@@ -76,7 +72,7 @@ ATLAS_ENVIRONMENTS = {
     "atlaspostulate": "postulate",
     "atlasremark": "remark",
     "atlaswarning": "warning",
-    "atlascaution": "warning",
+    "atlascaution": "caution",
     "atlasimportant": "important",
     "atlasstrategy": "strategy",
     "atlasalgorithm": "algorithm",
@@ -90,1232 +86,1510 @@ ATLAS_ENVIRONMENTS = {
     "myproof": "proof",
     "atlastip": "tip",
     "chapterintro": "chapterintro",
+    "atlasreflection": "reflection",
 }
 
-# Environments that indicate Christian edition content
-CHRISTIAN_ENVIRONMENTS = {"devotional", "atlasdevotional", "sectiondevotional"}
+# Environments that should be unwrapped (parse inner content)
+UNWRAP_ENVS = {"exerciseblock", "multicols", "center", "quote"}
 
-# Environments to unwrap (parse inner content, discard wrapper)
-UNWRAP_ENVIRONMENTS = {"exerciseblock", "multicols"}
+# Environments whose content is devotional
+DEVOTIONAL_ENVS = {"devotional", "sectiondevotional", "atlasdevotional"}
+
+# Math display environments (content preserved verbatim, wrapped in $$)
+MATH_DISPLAY_ENVS = {"align", "align*", "equation", "equation*", "gather", "gather*",
+                      "multline", "multline*", "flalign", "flalign*",
+                      "alignat", "alignat*"}
+
+# Math environments that stay inside $$ (not converted to aligned)
+MATH_INNER_ENVS = {"cases", "pmatrix", "bmatrix", "vmatrix", "Vmatrix",
+                    "matrix", "array", "gathered", "aligned", "split"}
+
 
 # ═══════════════════════════════════════════════════════════════
-# DATA STRUCTURES
+# PHASE 1: PREPROCESSING
+# ═══════════════════════════════════════════════════════════════
+
+def strip_comments(text: str) -> str:
+    """Remove all LaTeX comments (% to end of line), preserving \\%."""
+    lines = text.split('\n')
+    result = []
+    for line in lines:
+        cleaned = []
+        i = 0
+        while i < len(line):
+            if line[i] == '%' and (i == 0 or line[i-1] != '\\'):
+                break  # Rest of line is comment
+            cleaned.append(line[i])
+            i += 1
+        result.append(''.join(cleaned))
+    return '\n'.join(result)
+
+
+def process_ifchristian(text: str, keep_christian: bool = True) -> str:
+    """Process \\ifchristian...\\fi blocks. Handles \\else branches too."""
+    if keep_christian:
+        # Keep christian content, remove markers
+        # But we need to handle \ifchristian...\else...\fi
+        result = []
+        pos = 0
+        while pos < len(text):
+            m = re.search(r'\\ifchristian\b', text[pos:])
+            if not m:
+                result.append(text[pos:])
+                break
+            result.append(text[pos:pos + m.start()])
+            # Find matching \fi, handling nested \if...\fi
+            inner_start = pos + m.start() + m.end() - m.start()
+            depth = 1
+            scan = inner_start
+            else_pos = None
+            while scan < len(text) and depth > 0:
+                if text[scan:scan+3] == '\\if' and (scan + 3 >= len(text) or not text[scan+3].isdigit()):
+                    # Check it's actually an \if command
+                    rest = text[scan+1:]
+                    if re.match(r'if[a-zA-Z]', rest):
+                        depth += 1
+                elif text[scan:scan+5] == '\\else' and depth == 1:
+                    else_pos = scan
+                elif text[scan:scan+3] == '\\fi' and (scan + 3 >= len(text) or not text[scan+3].isalpha()):
+                    depth -= 1
+                    if depth == 0:
+                        if else_pos is not None:
+                            result.append(text[inner_start:else_pos])
+                        else:
+                            result.append(text[inner_start:scan])
+                        pos = scan + 3
+                        # Skip trailing whitespace/newline
+                        while pos < len(text) and text[pos] in ' \t':
+                            pos += 1
+                        if pos < len(text) and text[pos] == '\n':
+                            pos += 1
+                        break
+                scan += 1
+            else:
+                # Unmatched \ifchristian — just remove the marker
+                result.append(text[inner_start:])
+                pos = len(text)
+        return ''.join(result)
+    else:
+        # Remove christian content entirely (keep \else branch if present)
+        result = []
+        pos = 0
+        while pos < len(text):
+            m = re.search(r'\\ifchristian\b', text[pos:])
+            if not m:
+                result.append(text[pos:])
+                break
+            result.append(text[pos:pos + m.start()])
+            inner_start = pos + m.start() + m.end() - m.start()
+            depth = 1
+            scan = inner_start
+            else_pos = None
+            while scan < len(text) and depth > 0:
+                if text[scan:scan+3] == '\\if' and re.match(r'if[a-zA-Z]', text[scan+1:scan+20]):
+                    depth += 1
+                elif text[scan:scan+5] == '\\else' and depth == 1:
+                    else_pos = scan
+                elif text[scan:scan+3] == '\\fi' and (scan + 3 >= len(text) or not text[scan+3].isalpha()):
+                    depth -= 1
+                    if depth == 0:
+                        if else_pos is not None:
+                            result.append(text[else_pos+5:scan])
+                        pos = scan + 3
+                        while pos < len(text) and text[pos] in ' \t':
+                            pos += 1
+                        if pos < len(text) and text[pos] == '\n':
+                            pos += 1
+                        break
+                scan += 1
+            else:
+                pos = len(text)
+        return ''.join(result)
+
+
+# ═══════════════════════════════════════════════════════════════
+# PHASE 2: BRACE-AWARE PARSING UTILITIES
+# ═══════════════════════════════════════════════════════════════
+
+def find_matching_brace(text: str, start: int) -> int:
+    """Find the position after the matching closing brace.
+    start should point to the opening '{'.
+    Returns position after '}', or -1 if unmatched."""
+    if start >= len(text) or text[start] != '{':
+        return -1
+    depth = 0
+    i = start
+    while i < len(text):
+        if text[i] == '{' and (i == 0 or text[i-1] != '\\'):
+            depth += 1
+        elif text[i] == '}' and (i == 0 or text[i-1] != '\\'):
+            depth -= 1
+            if depth == 0:
+                return i + 1
+        i += 1
+    return -1
+
+
+def extract_braced(text: str, start: int) -> Tuple[str, int]:
+    """Extract content inside {...} starting at position of '{'.
+    Returns (content, position_after_close_brace)."""
+    end = find_matching_brace(text, start)
+    if end == -1:
+        return ("", start + 1)
+    return (text[start+1:end-1], end)
+
+
+def find_env_end(text: str, start: int, env_name: str) -> int:
+    """Find the end of \\begin{env_name}...\\end{env_name}, handling nesting.
+    start should point to the '\\' of \\begin.
+    Returns position after \\end{env_name}."""
+    begin_tag = f"\\begin{{{env_name}}}"
+    end_tag = f"\\end{{{env_name}}}"
+    depth = 0
+    i = start
+    while i < len(text):
+        if text[i:i+len(begin_tag)] == begin_tag:
+            depth += 1
+            i += len(begin_tag)
+        elif text[i:i+len(end_tag)] == end_tag:
+            depth -= 1
+            if depth == 0:
+                return i + len(end_tag)
+            i += len(end_tag)
+        else:
+            i += 1
+    return len(text)
+
+
+def extract_optional_arg(text: str, pos: int) -> Tuple[Optional[str], int]:
+    """Extract optional argument [content] at position. Returns (content, new_pos)."""
+    # Skip whitespace
+    while pos < len(text) and text[pos] in ' \t\n':
+        pos += 1
+    if pos < len(text) and text[pos] == '[':
+        depth = 0
+        i = pos
+        while i < len(text):
+            if text[i] == '[':
+                depth += 1
+            elif text[i] == ']':
+                depth -= 1
+                if depth == 0:
+                    return (text[pos+1:i], i + 1)
+            i += 1
+    return (None, pos)
+
+
+def extract_required_arg(text: str, pos: int) -> Tuple[Optional[str], int]:
+    """Extract required argument {content} at position. Returns (content, new_pos)."""
+    while pos < len(text) and text[pos] in ' \t\n':
+        pos += 1
+    if pos < len(text) and text[pos] == '{':
+        return extract_braced(text, pos)
+    return (None, pos)
+
+
+# ═══════════════════════════════════════════════════════════════
+# FIGURE MANIFEST
+# ═══════════════════════════════════════════════════════════════
+
+_figure_manifest = None
+
+def get_figure_manifest() -> Dict:
+    global _figure_manifest
+    if _figure_manifest is None:
+        if MANIFEST_PATH.exists():
+            with open(MANIFEST_PATH) as f:
+                _figure_manifest = json.load(f)
+        else:
+            _figure_manifest = {}
+    return _figure_manifest
+
+
+def resolve_figure_src(book_id: str, label: str, chapter_num: int) -> str:
+    """Resolve a figure label to its SVG path using the manifest."""
+    manifest = get_figure_manifest()
+    book_figs = manifest.get(book_id, {})
+    if label in book_figs:
+        return f"/figures/{book_id}/{book_figs[label]}"
+    # Fallback: derive from label
+    svg_name = label.replace(":", "-") + ".svg"
+    return f"/figures/{book_id}/ch{chapter_num:02d}/{svg_name}"
+
+
+# ═══════════════════════════════════════════════════════════════
+# PHASE 2+3: TOKENIZE AND PARSE STRUCTURE
 # ═══════════════════════════════════════════════════════════════
 
 @dataclass
-class ContentBlock:
-    """A block of content in the section."""
-    type: str
-    data: Dict[str, Any] = field(default_factory=dict)
-    
-    def to_dict(self) -> Dict[str, Any]:
-        result = {"type": self.type}
-        result.update(self.data)
-        return result
-
-
-@dataclass
-class SectionData:
-    """Parsed section data."""
+class Section:
     id: str
     title: str
     chapter: int
     section: int
     book: str
     objectives: List[str] = field(default_factory=list)
-    devotional: Optional[Dict[str, str]] = None
-    epigraph: Optional[Dict[str, str]] = None
-    content: List[ContentBlock] = field(default_factory=list)
-    exercises: List[str] = field(default_factory=list)
-    margin_notes: List[Dict[str, str]] = field(default_factory=list)
-    
-    def to_dict(self) -> Dict[str, Any]:
-        result = {
+    devotional: Optional[Dict] = None
+    epigraph: Optional[Dict] = None
+    content: List[Dict] = field(default_factory=list)
+    margin_notes: List[Dict] = field(default_factory=list)
+
+    def to_dict(self) -> Dict:
+        d = {
             "id": self.id,
             "title": self.title,
             "chapter": self.chapter,
             "section": self.section,
             "book": self.book,
         }
-        
         if self.objectives:
-            result["objectives"] = self.objectives
+            d["objectives"] = self.objectives
         if self.devotional:
-            result["devotional"] = self.devotional
+            d["devotional"] = self.devotional
         if self.epigraph:
-            result["epigraph"] = self.epigraph
-        
-        result["content"] = [c.to_dict() for c in self.content]
-        
-        if self.exercises:
-            result["exercises"] = self.exercises
+            d["epigraph"] = self.epigraph
+        d["content"] = self.content
         if self.margin_notes:
-            result["marginNotes"] = self.margin_notes
-            
-        return result
+            d["marginNotes"] = self.margin_notes
+        return d
 
 
-# ═══════════════════════════════════════════════════════════════
-# LATEX PARSER
-# ═══════════════════════════════════════════════════════════════
+class SectionParser:
+    """Parses a single LaTeX section file into structured JSON."""
 
-class LatexConverter:
-    """
-    Converts LaTeX content to structured JSON.
-    """
-    
-    def __init__(self, christian_edition: bool = True):
-        self.christian_edition = christian_edition
-        self.counters = {}
-        
-    def parse_section_file(self, filepath: Path, book_id: str, 
-                          chapter_num: int, section_num: int) -> SectionData:
-        """Parse a section .tex file and return structured data."""
-        
-        with open(filepath, 'r', encoding='utf-8') as f:
-            content = f.read()
-        
-        # Reset counters for this section
+    def __init__(self, book_id: str, chapter_num: int, section_num: int,
+                 christian: bool = True):
+        self.book_id = book_id
+        self.chapter_num = chapter_num
+        self.section_num = section_num
+        self.christian = christian
         self.counters = {
-            "definition": 0,
-            "theorem": 0,
-            "example": 0,
-            "lemma": 0,
-            "corollary": 0,
+            "definition": 0, "theorem": 0, "example": 0,
+            "lemma": 0, "corollary": 0, "postulate": 0,
+            "algorithm": 0,
         }
-        
-        # Extract section title
-        title = self._extract_section_title(content)
-        
-        # Create section ID
-        section_id = f"{book_id}-ch{chapter_num:02d}-sec{section_num:02d}"
-        
-        section = SectionData(
-            id=section_id,
-            title=title,
-            chapter=chapter_num,
-            section=section_num,
-            book=book_id,
+        self.inline_figure_counter = 0
+
+    def parse(self, raw_tex: str) -> Section:
+        """Main entry point: raw .tex content → Section."""
+        # Phase 1: preprocess
+        text = strip_comments(raw_tex)
+        text = process_ifchristian(text, self.christian)
+
+        # Extract metadata before structural parse
+        title = self._extract_title(text)
+        section_id = f"{self.book_id}-ch{self.chapter_num:02d}-sec{self.section_num:02d}"
+
+        sec = Section(
+            id=section_id, title=title,
+            chapter=self.chapter_num, section=self.section_num,
+            book=self.book_id,
         )
-        
-        # Handle \ifchristian blocks
-        content = self._process_christian_blocks(content)
-        
-        # Extract components
-        section.epigraph = self._extract_epigraph(content)
-        section.devotional = self._extract_devotional(content)
-        section.objectives = self._extract_objectives(content)
-        section.margin_notes = self._extract_margin_notes(content)
-        
-        # Parse main content
-        section.content = self._parse_content(content, chapter_num, section_num)
-        
-        return section
-    
-    def _process_christian_blocks(self, content: str) -> str:
-        """Handle \ifchristian...\fi blocks based on edition."""
-        if self.christian_edition:
-            # Keep content inside \ifchristian...\fi blocks
-            # Remove the \ifchristian and \fi markers
-            content = re.sub(r'\\ifchristian\s*', '', content)
-            content = re.sub(r'\\fi(?:\s*%[^\n]*)?', '', content)
-        else:
-            # Remove entire \ifchristian...\fi blocks
-            # This is more complex due to nesting
-            while True:
-                match = re.search(r'\\ifchristian\b', content)
-                if not match:
-                    break
-                    
-                start = match.start()
-                depth = 1
-                pos = match.end()
-                
-                while pos < len(content) and depth > 0:
-                    if content[pos:pos+3] == '\\if':
-                        depth += 1
-                        pos += 3
-                    elif content[pos:pos+3] == '\\fi':
-                        depth -= 1
-                        pos += 3
-                    else:
-                        pos += 1
-                
-                content = content[:start] + content[pos:]
-        
-        return content
-    
-    def _extract_section_title(self, content: str) -> str:
-        """Extract section title from \section{...} command."""
-        # Handle nested braces in section title
-        match = re.search(r'\\section\*?\{', content)
-        if match:
-            start = match.end()
-            depth = 1
-            pos = start
-            while pos < len(content) and depth > 0:
-                if content[pos] == '{':
-                    depth += 1
-                elif content[pos] == '}':
-                    depth -= 1
-                pos += 1
-            title = content[start:pos-1]
-            return self._clean_latex_text(title)
+
+        sec.epigraph = self._extract_epigraph(text)
+        sec.devotional = self._extract_devotional(text)
+        sec.objectives = self._extract_objectives(text)
+        sec.margin_notes = self._extract_margin_notes(text)
+
+        # Remove already-extracted elements
+        text = self._remove_extracted(text)
+
+        # Split exercises from main content
+        text, exercise_text = self._split_exercises(text)
+
+        # Phase 2+3: parse content into blocks
+        sec.content = self._parse_body(text)
+
+        # Parse exercises
+        if exercise_text:
+            sec.content.extend(self._parse_exercises(exercise_text))
+
+        return sec
+
+    # ── Metadata Extraction ──────────────────────────────────
+
+    def _extract_title(self, text: str) -> str:
+        m = re.search(r'\\section\*?\{', text)
+        if m:
+            content, _ = extract_braced(text, m.end() - 1)
+            return self._convert_text(content)
         return "Untitled Section"
-    
-    def _extract_epigraph(self, content: str) -> Optional[Dict[str, str]]:
-        """Extract scripture epigraph."""
-        match = re.search(
-            r'\\scriptureepigraph\{([^}]*)\}\{([^}]*)\}\s*(?:\{([^}]*)\}\{([^}]*)\})?',
-            content
-        )
-        if match:
+
+    def _extract_epigraph(self, text: str) -> Optional[Dict]:
+        """Extract \\scriptureepigraph{text}{ref}{quote}{author} or \\epigraph{text}{source}."""
+        # scriptureepigraph: 4 args — {scripture_text}{reference}{secular_quote}{quote_author}
+        m = re.search(r'\\scriptureepigraph\{', text)
+        if m:
+            pos = m.end() - 1
+            arg1, pos = extract_braced(text, pos)  # scripture text
+            arg2, pos = extract_braced(text, pos)  # reference
+            arg3, pos = extract_braced(text, pos)  # secular quote
+            arg4, pos = extract_braced(text, pos)  # quote author
+
             result = {
-                "text": self._clean_latex_text(match.group(1)),
-                "reference": match.group(2),
+                "text": self._convert_text(arg1),
+                "reference": arg2.strip(),
             }
-            if match.group(3) and match.group(4):
-                result["quote"] = self._clean_latex_text(match.group(3))
-                result["quoteAuthor"] = match.group(4)
+            if arg3 and arg4:
+                result["quote"] = self._convert_text(arg3)
+                result["quoteAuthor"] = self._convert_text(arg4)
+
+            # Scripture epigraphs are christian edition content
+            result["edition"] = "christian"
+            return result
+
+        # Regular \epigraph{text}{source}
+        m = re.search(r'\\epigraph\{', text)
+        if m:
+            pos = m.end() - 1
+            arg1, pos = extract_braced(text, pos)
+            arg2, pos = extract_braced(text, pos)
+            return {
+                "text": self._convert_text(arg1),
+                "reference": self._convert_text(arg2),
+            }
+
+        # \epigraphhead[N]{...}
+        m = re.search(r'\\epigraphhead', text)
+        if m:
+            pos = m.end()
+            _, pos = extract_optional_arg(text, pos)
+            arg, pos = extract_braced(text, pos)
+            if arg:
+                return {"text": self._convert_text(arg), "reference": ""}
+
+        return None
+
+    def _extract_devotional(self, text: str) -> Optional[Dict]:
+        for env_name in DEVOTIONAL_ENVS:
+            m = re.search(rf'\\begin\{{{env_name}\}}\{{', text)
+            if not m:
+                continue
+            # Find the full environment
+            env_start = m.start()
+            env_end = find_env_end(text, env_start, env_name)
+            env_text = text[env_start:env_end]
+
+            # Extract args after \begin{env}
+            pos = m.end() - 1
+            title, pos = extract_braced(text, pos)
+
+            # Try second required arg (scripture reference)
+            scripture = ""
+            rel_pos = pos - env_start
+            if rel_pos < len(env_text):
+                sc, new_pos = extract_required_arg(text, pos)
+                if sc is not None:
+                    scripture = sc
+                    pos = new_pos
+
+            # Body is from pos to \end{env}
+            end_tag = f"\\end{{{env_name}}}"
+            body_end = text.find(end_tag, pos)
+            if body_end == -1:
+                body_end = env_end
+            body = text[pos:body_end]
+
+            # Extract reflection
+            reflection = None
+            rm = re.search(r'\\devotionalreflection\{', body)
+            if rm:
+                ref_content, _ = extract_braced(body, rm.end() - 1)
+                reflection = self._convert_text(ref_content)
+                body = body[:rm.start()] + body[_ :]  # remove it
+
+            result = {
+                "title": self._convert_text(title) if title else "",
+                "scripture": scripture,
+                "content": self._convert_text(body).strip(),
+                "edition": "christian",
+            }
+            if reflection:
+                result["reflection"] = reflection
             return result
         return None
-    
-    def _extract_devotional(self, content: str) -> Optional[Dict[str, str]]:
-        """Extract devotional environment (devotional, sectiondevotional, atlasdevotional)."""
-        env_names = r'(?:devotional|sectiondevotional|atlasdevotional)'
-        
-        # Try two-arg pattern first: {title}{scripture}
-        match = re.search(
-            rf'\\begin\{{{env_names}\}}\{{([^}}]*)\}}\{{([^}}]*)\}}(.*?)\\end\{{{env_names}\}}',
-            content, re.DOTALL
-        )
-        if match:
-            title, scripture, body = match.group(1), match.group(2), match.group(3)
-        else:
-            # Try one-arg pattern: {title}
-            match = re.search(
-                rf'\\begin\{{{env_names}\}}\{{([^}}]*)\}}(.*?)\\end\{{{env_names}\}}',
-                content, re.DOTALL
-            )
-            if match:
-                title, scripture, body = match.group(1), "", match.group(2)
-            else:
-                return None
-        
-        # Extract reflection if present
-        reflection_match = re.search(
-            r'\\devotionalreflection\{([^}]*)\}', body
-        )
-        reflection = reflection_match.group(1) if reflection_match else None
-        
-        # Clean body
-        body = re.sub(r'\\devotionalreflection\{[^}]*\}', '', body)
-        body = self._clean_latex_text(body)
-        
-        result = {
-            "title": title,
-            "scripture": scripture,
-            "content": body.strip(),
-            "edition": "christian",
-        }
-        if reflection:
-            result["reflection"] = self._clean_latex_text(reflection)
-        return result
-    
-    def _extract_devotional_from_body(self, env_name: str, optional_arg: str, 
-                                       required_arg: str, body: str) -> Optional[Dict]:
-        """Extract devotional data from an already-parsed environment body."""
-        # For sectiondevotional/atlasdevotional: \begin{env}{title}{scripture}
-        # required_arg is the first {}, we need to also find the second {}
-        title = required_arg or optional_arg or ""
-        scripture = ""
-        
-        # Try to extract scripture from the start of body (second required arg)
-        sc_match = re.match(r'\{([^}]*)\}', body.strip())
-        if sc_match:
-            scripture = sc_match.group(1)
-            body = body[sc_match.end():]
-        
-        reflection_match = re.search(r'\\devotionalreflection\{([^}]*)\}', body)
-        reflection = reflection_match.group(1) if reflection_match else None
-        body = re.sub(r'\\devotionalreflection\{[^}]*\}', '', body)
-        
-        result = {
-            "title": title,
-            "scripture": scripture,
-            "content": self._clean_latex_text(body).strip(),
-        }
-        if reflection:
-            result["reflection"] = self._clean_latex_text(reflection)
-        return result
 
-    def _extract_objectives(self, content: str) -> List[str]:
-        """Extract learning objectives."""
-        objectives = []
-        
-        # Look for sectionobjectives or learningobjectives environment
-        for env_name in ['sectionobjectives', 'learningobjectives']:
-            match = re.search(
-                rf'\\begin\{{{env_name}\}}(.*?)\\end\{{{env_name}\}}',
-                content, re.DOTALL
-            )
-            if match:
-                items = re.findall(r'\\item\s*(.*?)(?=\\item|$)', match.group(1), re.DOTALL)
-                for item in items:
-                    cleaned = self._clean_latex_text(item.strip())
-                    if cleaned:
-                        objectives.append(cleaned)
-                break
-        
-        return objectives
-    
-    def _extract_margin_notes(self, content: str) -> List[Dict[str, str]]:
-        """Extract margin scripture and quotes."""
+    def _extract_objectives(self, text: str) -> List[str]:
+        for env in ["sectionobjectives", "learningobjectives"]:
+            m = re.search(rf'\\begin\{{{env}\}}', text)
+            if not m:
+                continue
+            end = find_env_end(text, m.start(), env)
+            body = text[m.end():text.find(f"\\end{{{env}}}", m.end())]
+            items = re.split(r'\\item\s*', body)
+            return [self._convert_text(it.strip()) for it in items if it.strip()]
+        return []
+
+    def _extract_margin_notes(self, text: str) -> List[Dict]:
         notes = []
-        
-        # Margin scripture
-        for match in re.finditer(r'\\marginscripture\{([^}]*)\}\{([^}]*)\}', content):
-            notes.append({
-                "type": "scripture",
-                "reference": match.group(1),
-                "text": self._clean_latex_text(match.group(2)),
-            })
-        
-        # Margin quotes
-        for match in re.finditer(r'\\marginquote\{([^}]*)\}\{([^}]*)\}', content):
-            notes.append({
-                "type": "quote",
-                "author": match.group(1),
-                "text": self._clean_latex_text(match.group(2)),
-            })
-        
+        for m in re.finditer(r'\\marginscripture\{', text):
+            pos = m.end() - 1
+            ref, pos = extract_braced(text, pos)
+            txt, pos = extract_braced(text, pos)
+            notes.append({"type": "scripture", "reference": ref, "text": self._convert_text(txt)})
+
+        for m in re.finditer(r'\\marginquote\{', text):
+            pos = m.end() - 1
+            author, pos = extract_braced(text, pos)
+            txt, pos = extract_braced(text, pos)
+            notes.append({"type": "quote", "author": self._convert_text(author), "text": self._convert_text(txt)})
         return notes
-    
-    def _parse_content(self, content: str, chapter_num: int, section_num: int) -> List[ContentBlock]:
-        """Parse the main content of a section."""
+
+    def _remove_extracted(self, text: str) -> str:
+        """Remove already-extracted elements from text."""
+        # Remove \section{...}
+        m = re.search(r'\\section\*?\{', text)
+        if m:
+            end = find_matching_brace(text, m.end() - 1)
+            if end > 0:
+                text = text[:m.start()] + text[end:]
+
+        # Remove \label after \section
+        text = re.sub(r'\\label\{sec:[^}]*\}\s*', '', text, count=1)
+
+        # Remove scriptureepigraph
+        m = re.search(r'\\scriptureepigraph\{', text)
+        if m:
+            pos = m.start()
+            end = m.end() - 1
+            for _ in range(4):
+                _, end = extract_braced(text, end)
+            text = text[:pos] + text[end:]
+
+        # Remove \epigraph{...}{...}
+        m = re.search(r'\\epigraph\{', text)
+        if m:
+            pos = m.start()
+            end = m.end() - 1
+            _, end = extract_braced(text, end)
+            _, end = extract_braced(text, end)
+            text = text[:pos] + text[end:]
+
+        # Remove \epigraphhead
+        m = re.search(r'\\epigraphhead', text)
+        if m:
+            pos = m.start()
+            end = m.end()
+            _, end = extract_optional_arg(text, end)
+            _, end = extract_braced(text, end)
+            text = text[:pos] + text[end:]
+
+        # Remove devotional environments
+        for env in DEVOTIONAL_ENVS:
+            m = re.search(rf'\\begin\{{{env}\}}', text)
+            if m:
+                end = find_env_end(text, m.start(), env)
+                text = text[:m.start()] + text[end:]
+
+        # Remove objectives environments
+        for env in ["sectionobjectives", "learningobjectives"]:
+            m = re.search(rf'\\begin\{{{env}\}}', text)
+            if m:
+                end = find_env_end(text, m.start(), env)
+                text = text[:m.start()] + text[end:]
+
+        # Remove margin notes
+        text = re.sub(r'\\marginscripture\{[^}]*\}\{[^}]*\}', '', text)
+        # Use brace-aware removal for marginquote (text may contain nested braces)
+        while True:
+            m = re.search(r'\\marginquote\{', text)
+            if not m:
+                break
+            pos = m.end() - 1
+            _, pos = extract_braced(text, pos)
+            _, pos = extract_braced(text, pos)
+            text = text[:m.start()] + text[pos:]
+
+        # Remove \marginnote{...}
+        while True:
+            m = re.search(r'\\marginnote(?:\[[^\]]*\])?\{', text)
+            if not m:
+                break
+            pos = m.end() - 1
+            _, pos = extract_braced(text, pos)
+            text = text[:m.start()] + text[pos:]
+
+        # Remove \index{...}
+        text = re.sub(r'\\index\{[^}]*\}', '', text)
+
+        return text
+
+    def _split_exercises(self, text: str) -> Tuple[str, str]:
+        """Split content at \\subsection*{Exercises} or similar."""
+        m = re.search(r'\\subsection\*?\{(?:Review )?Exercises\}', text)
+        if m:
+            return text[:m.start()], text[m.end():]
+        return text, ""
+
+    # ── Body Parsing (Phase 2+3) ─────────────────────────────
+
+    def _parse_body(self, text: str) -> List[Dict]:
+        """Parse the main body text into content blocks."""
+        blocks = []
+        pos = 0
+
+        while pos < len(text):
+            # Skip whitespace
+            while pos < len(text) and text[pos] in ' \t\n':
+                pos += 1
+            if pos >= len(text):
+                break
+
+            # Try to match an environment
+            env_match = re.match(r'\\begin\{([^}]+)\}', text[pos:])
+            if env_match:
+                env_name = env_match.group(1)
+                env_end = find_env_end(text, pos, env_name)
+                env_text = text[pos:env_end]
+                new_blocks = self._parse_environment(env_name, env_text)
+                blocks.extend(new_blocks)
+                pos = env_end
+                continue
+
+            # Try to match a subsection heading
+            heading_match = re.match(r'\\subsection\*?\{', text[pos:])
+            if heading_match:
+                brace_start = pos + heading_match.end() - 1
+                content, end = extract_braced(text, brace_start)
+                blocks.append({
+                    "type": "heading",
+                    "level": 2,
+                    "text": self._convert_text(content),
+                })
+                pos = end
+                continue
+
+            # Try standalone exercise markers (exercisevocab, exerciseconceptual, etc.)
+            ex_marker = re.match(r'\\(exercisevocab|exerciseconceptual|exercisestar|exerciseerror|exercisetech)\b\s*', text[pos:])
+            if ex_marker:
+                # These are just category markers before exercise content
+                # Convert to heading
+                marker_names = {
+                    "exercisevocab": "Vocabulary",
+                    "exerciseconceptual": "True or False?",
+                    "exercisestar": "Challenge",
+                    "exerciseerror": "Error Analysis",
+                    "exercisetech": "Technology",
+                }
+                pos += ex_marker.end()
+                # Find the text until next paragraph break or environment
+                text_end = self._find_text_end(text, pos)
+                chunk = text[pos:text_end].strip()
+                if chunk:
+                    blocks.append({"type": "paragraph", "text": self._convert_text(chunk)})
+                pos = text_end
+                continue
+
+            # Try standalone commands that we should skip
+            skip_match = re.match(r'\\(clearpage|pagebreak|newpage|vfill|bigskip|medskip|smallskip|noindent|vspace\*?\{[^}]*\}|hspace\*?\{[^}]*\})\s*', text[pos:])
+            if skip_match:
+                pos += skip_match.end()
+                continue
+
+            # Try standalone \label{...}
+            label_match = re.match(r'\\label\{[^}]*\}\s*', text[pos:])
+            if label_match:
+                pos += label_match.end()
+                continue
+
+            # Try \textbf{Category Header} as a standalone line (exercise section headers)
+            bold_header = re.match(r'\\textbf\{([^}]+)\}\s*\n', text[pos:])
+            if bold_header:
+                header_text = self._convert_text(bold_header.group(1).strip())
+                # If it looks like a category header (title case, short), make it a heading
+                if len(header_text) < 60:
+                    blocks.append({"type": "heading", "level": 3, "text": header_text})
+                    pos += bold_header.end()
+                    continue
+
+            # Collect text until next environment or heading
+            text_end = self._find_text_end(text, pos)
+            chunk = text[pos:text_end].strip()
+            if chunk:
+                para_blocks = self._parse_text_to_paragraphs(chunk)
+                blocks.extend(para_blocks)
+            pos = text_end
+
+        return blocks
+
+    def _find_text_end(self, text: str, pos: int) -> int:
+        """Find where a text chunk ends (next structural \\begin{}, \\subsection, \\section, or EOF).
+        
+        CRITICAL: \\begin{cases} etc. inside \\[...\\] are NOT structural boundaries.
+        Only structural environments (atlas*, figure, exercise, etc.) end a text chunk.
+        """
+        STRUCTURAL_ENVS = {
+            "atlasdefinition", "atlastheorem", "atlasexample", "atlaslemma",
+            "atlascorollary", "atlaspostulate", "atlasremark", "atlaswarning",
+            "atlascaution", "atlasimportant", "atlasstrategy", "atlasalgorithm",
+            "atlassummary", "atlasmethod", "atlasconnection", "keyconcept",
+            "mathincontext", "historicalnote", "atlastip", "proof", "myproof",
+            "atlasreflection", "devotional", "sectiondevotional", "atlasdevotional",
+            "figure", "exercise", "exercisewithsolution", "exerciseblock",
+            "chapterintro", "secularintro", "solution",
+            "definition", "theorem", "example",
+        }
+        i = pos
+        while i < len(text):
+            if text[i] == '\\':
+                if text[i:].startswith('\\begin{'):
+                    # Extract env name
+                    m = re.match(r'\\begin\{([^}]+)\}', text[i:])
+                    if m and m.group(1) in STRUCTURAL_ENVS:
+                        return i
+                    # Non-structural \begin — skip past it (it's inline content like cases, align, etc.)
+                    i += len(m.group(0)) if m else i + 7
+                    continue
+                if text[i:].startswith('\\subsection'):
+                    return i
+                if text[i:].startswith('\\section'):
+                    return i
+                if re.match(r'\\(exercisevocab|exerciseconceptual|exercisestar|exerciseerror|exercisetech)\b', text[i:]):
+                    return i
+                # Skip past commands
+                i += 1
+                while i < len(text) and text[i].isalpha():
+                    i += 1
+                continue
+            i += 1
+        return len(text)
+
+    def _parse_text_to_paragraphs(self, text: str) -> List[Dict]:
+        """Split text into paragraph blocks, separated by blank lines.
+        
+        CRITICAL: Must protect display math \[...\] before splitting,
+        since they can span multiple lines and contain \begin{cases}.
+        """
         blocks = []
         
-        # Remove already-parsed elements
-        content = re.sub(r'\\section\{[^}]+\}', '', content)
-        # Note: don't strip \label globally — figures need them
-        content = re.sub(r'\\scriptureepigraph\{[^}]*\}\{[^}]*\}(?:\{[^}]*\}\{[^}]*\})?', '', content)
-        content = re.sub(r'\\begin\{(?:devotional|sectiondevotional|atlasdevotional)\}.*?\\end\{(?:devotional|sectiondevotional|atlasdevotional)\}', '', content, flags=re.DOTALL)
-        content = re.sub(r'\\begin\{(?:section|learning)objectives\}.*?\\end\{(?:section|learning)objectives\}', '', content, flags=re.DOTALL)
-        content = re.sub(r'\\marginscripture\{[^}]*\}\{[^}]*\}', '', content)
-        content = re.sub(r'\\marginquote\{[^}]*\}\{[^}]*\}', '', content)
-        content = re.sub(r'\\marginnote\{[^}]*\}', '', content)
+        # First, convert the entire chunk (this protects math spanning newlines)
+        converted = self._convert_text(text)
+        if not converted or not converted.strip():
+            return blocks
         
-        # Remove standalone exercise commands from the "already-parsed" cleanup
-        # (they'll be parsed in the exercises section below)
-        
-        # Split exercises section from main content
-        exercise_content = ""
-        exercises_split = re.split(r'\\subsection\*\{(?:Review )?Exercises\}', content, maxsplit=1)
-        if len(exercises_split) == 2:
-            content = exercises_split[0]
-            exercise_content = exercises_split[1]
-        
-        # Split into chunks (environments and text between them)
-        chunks = self._split_into_chunks(content)
-        
-        for chunk_type, chunk_content in chunks:
-            if chunk_type == 'environment':
-                # Check if this is a standalone solution block — attach to previous example
-                if re.match(r'\\begin\{solution\}', chunk_content):
-                    if blocks and blocks[-1].type == 'example' and not blocks[-1].data.get('solution'):
-                        sol_body = re.search(r'\\begin\{solution\}(.*?)\\end\{solution\}', chunk_content, re.DOTALL)
-                        if sol_body:
-                            blocks[-1].data['solution'] = self._convert_latex_to_text(sol_body.group(1).strip())
-                    continue
-                block = self._parse_environment(chunk_content, chapter_num, section_num)
-                if block:
-                    blocks.append(block)
-            elif chunk_type == 'text':
-                text_blocks = self._parse_text_chunk(chunk_content)
-                blocks.extend(text_blocks)
-        
-        # Parse exercises
-        if exercise_content:
-            exercise_blocks = self._parse_exercises(exercise_content, chapter_num, section_num)
-            blocks.extend(exercise_blocks)
-        
+        # Now split the converted text into paragraphs
+        paragraphs = re.split(r'\n\s*\n', converted)
+        for para in paragraphs:
+            para = para.strip()
+            if not para:
+                continue
+            if len(para) > 2:
+                blocks.append({"type": "paragraph", "text": para})
         return blocks
-    
-    def _split_into_chunks(self, content: str) -> List[Tuple[str, str]]:
-        """Split content into environment chunks and text chunks."""
-        chunks = []
-        pos = 0
-        
-        # Pattern for any \begin{...}
-        env_pattern = re.compile(r'\\begin\{([^}]+)\}')
-        
-        while pos < len(content):
-            match = env_pattern.search(content, pos)
-            
-            if not match:
-                # No more environments, rest is text
-                remaining = content[pos:].strip()
-                if remaining:
-                    chunks.append(('text', remaining))
-                break
-            
-            # Text before environment
-            before = content[pos:match.start()].strip()
-            if before:
-                chunks.append(('text', before))
-            
-            # Find matching \end{...}
-            env_name = match.group(1)
-            env_start = match.start()
-            env_content, env_end = self._find_environment_end(content, env_start, env_name)
-            
-            if env_content:
-                chunks.append(('environment', content[env_start:env_end]))
-                pos = env_end
-            else:
-                # Malformed environment, skip
-                pos = match.end()
-        
-        return chunks
-    
-    def _find_environment_end(self, content: str, start: int, env_name: str) -> Tuple[Optional[str], int]:
-        """Find the end of an environment, handling nesting."""
-        begin_pattern = re.compile(rf'\\begin\{{{re.escape(env_name)}\}}')
-        end_pattern = re.compile(rf'\\end\{{{re.escape(env_name)}\}}')
-        
-        depth = 0
-        pos = start
-        
-        while pos < len(content):
-            begin_match = begin_pattern.search(content, pos)
-            end_match = end_pattern.search(content, pos)
-            
-            if begin_match and (not end_match or begin_match.start() < end_match.start()):
-                depth += 1
-                pos = begin_match.end()
-            elif end_match:
-                depth -= 1
-                if depth == 0:
-                    return (content[start:end_match.end()], end_match.end())
-                pos = end_match.end()
-            else:
-                break
-        
-        return (None, start + 1)
-    
-    def _parse_environment(self, env_content: str, chapter_num: int, section_num: int) -> Optional[ContentBlock]:
-        """Parse a LaTeX environment into a content block."""
-        
-        # Extract environment name and args
-        match = re.match(
-            r'\\begin\{([^}]+)\}(?:\[([^\]]*)\])?(?:\{([^}]*)\})?',
-            env_content
-        )
-        if not match:
-            return None
-        
-        env_name = match.group(1)
-        optional_arg = match.group(2) or ""
-        required_arg = match.group(3) or ""
-        
-        # Get body content
-        body_start = match.end()
-        body_end = env_content.rfind(f'\\end{{{env_name}}}')
+
+    def _parse_environment(self, env_name: str, env_text: str) -> List[Dict]:
+        """Parse an environment into one or more content blocks."""
+        # Extract the body (between \begin{env}...\end{env})
+        begin_tag = f"\\begin{{{env_name}}}"
+        end_tag = f"\\end{{{env_name}}}"
+
+        # Position after \begin{env_name}
+        pos = len(begin_tag)
+
+        # Extract optional and required args
+        opt_arg, pos = extract_optional_arg(env_text, pos)
+        req_arg, pos = extract_required_arg(env_text, pos)
+
+        # For some envs, there may be a second required arg
+        req_arg2 = None
+        if env_name in DEVOTIONAL_ENVS:
+            req_arg2, pos = extract_required_arg(env_text, pos)
+
+        # Body
+        body_end = env_text.rfind(end_tag)
         if body_end == -1:
-            body = ""
+            body = env_text[pos:]
         else:
-            body = env_content[body_start:body_end]
-        
-        # Handle unwrap environments (exerciseblock, multicols) — parse inner content
-        if env_name in UNWRAP_ENVIRONMENTS:
-            inner_blocks = self._parse_text_chunk(body)
-            # Return first block or None; caller should handle multiple
-            # Actually, we need to return a single block, so wrap as a group
-            if inner_blocks:
-                return inner_blocks[0] if len(inner_blocks) == 1 else ContentBlock('group', {'blocks': [b.to_dict() for b in inner_blocks]})
-            return None
-        
-        # Handle Christian edition environments
-        if env_name in CHRISTIAN_ENVIRONMENTS:
-            # Parse like devotional but tag with edition
-            dev = self._extract_devotional_from_body(env_name, optional_arg, required_arg, body)
-            if dev:
-                dev['edition'] = 'christian'
-                return ContentBlock('devotional', dev)
-            return None
-        
-        # Handle secularintro — pass through as paragraphs
-        if env_name == 'secularintro':
-            text_blocks = self._parse_text_chunk(body)
-            if text_blocks:
-                return text_blocks[0] if len(text_blocks) == 1 else ContentBlock('group', {'blocks': [b.to_dict() for b in text_blocks]})
-            return None
-        
-        # Handle different environment types
-        if env_name in ATLAS_ENVIRONMENTS:
-            return self._parse_atlas_environment(
-                env_name, optional_arg, required_arg, body, chapter_num, section_num
-            )
-        elif env_name == 'figure':
-            return self._parse_figure(body, chapter_num)
-        elif env_name in ('enumerate', 'itemize'):
-            return self._parse_list(env_name, body)
-        elif env_name == 'align' or env_name == 'align*':
-            return ContentBlock('paragraph', {
-                'text': f"$$\\begin{{aligned}}{body.strip()}\\end{{aligned}}$$"
-            })
-        elif env_name == 'tikzpicture':
-            # Skip TikZ figures for now
-            return None
-        elif env_name == 'equation' or env_name == 'equation*':
-            return ContentBlock('paragraph', {
-                'text': f"$${body.strip()}$$"
-            })
-        elif env_name == 'center':
-            # Check if center contains a table
-            table_block = self._parse_center_for_table(body)
-            if table_block:
-                return table_block
-            # Otherwise, treat as normal content (skip the wrapper)
-            return None
-        elif env_name == 'tabular':
-            # Parse tabular directly
-            return self._parse_tabular(body, optional_arg)
-        
-        return None
-    
-    def _parse_atlas_environment(self, env_name: str, optional_arg: str, 
-                                  required_arg: str, body: str,
-                                  chapter_num: int, section_num: int) -> ContentBlock:
-        """Parse an Atlas theorem-style environment."""
-        content_type = ATLAS_ENVIRONMENTS[env_name]
-        
-        # Get title
-        title = required_arg or optional_arg or ""
-        
-        # Increment counter and generate ID
-        base_type = content_type
-        if base_type in self.counters:
-            self.counters[base_type] += 1
-            number = f"{chapter_num}.{self.counters[base_type]}"
-            block_id = f"{content_type}-{chapter_num}.{self.counters[base_type]}"
+            body = env_text[pos:body_end]
+
+        # ── Handle different environment types ──
+
+        # Unwrap environments: parse inner content
+        if env_name in UNWRAP_ENVS:
+            # For multicols, skip the required arg (column count)
+            return self._parse_body(body)
+
+        # Figure
+        if env_name == "figure":
+            fig = self._parse_figure(body)
+            return [fig] if fig else []
+
+        # TikZ — opaque blob, replace with figure placeholder
+        if env_name == "tikzpicture":
+            self.inline_figure_counter += 1
+            return [{
+                "type": "figure",
+                "id": f"inline-tikz-{self.chapter_num}.{self.section_num}-{self.inline_figure_counter}",
+                "src": "",
+                "caption": "",
+            }]
+
+        # Lists
+        if env_name in ("enumerate", "itemize"):
+            return [self._parse_list(env_name, body)]
+
+        # Math display environments
+        if env_name in MATH_DISPLAY_ENVS:
+            # Convert align/align* → aligned for KaTeX
+            inner_env = "aligned"
+            return [{"type": "paragraph", "text": f"$$\\begin{{{inner_env}}}{body}\\end{{{inner_env}}}$$"}]
+
+        # Standalone equation
+        if env_name in ("equation", "equation*"):
+            return [{"type": "paragraph", "text": f"$${body.strip()}$$"}]
+
+        # Tabular
+        if env_name == "tabular":
+            col_spec = req_arg or opt_arg or ""
+            return [self._parse_tabular(body, col_spec)]
+
+        # Atlas environments
+        if env_name in ENV_TYPE_MAP:
+            block_type = ENV_TYPE_MAP[env_name]
+            return [self._parse_atlas_env(block_type, env_name, opt_arg, req_arg, body)]
+
+        # Solution (standalone — attach to previous example if possible)
+        if env_name == "solution":
+            # Return as a special marker; caller handles attachment
+            return [{"type": "_solution", "content": self._convert_text(body)}]
+
+        # Secularintro — pass through as paragraphs
+        if env_name == "secularintro" or env_name == "chapterintro":
+            return self._parse_body(body)
+
+        # Exercise environments
+        if env_name in ("exercise", "exercisewithsolution"):
+            return [self._parse_exercise_env(opt_arg, body)]
+
+        if env_name in ("exrow", "exitem"):
+            return self._parse_body(body)
+
+        # Unknown env — try to parse body as content
+        return self._parse_body(body)
+
+    def _parse_atlas_env(self, block_type: str, env_name: str,
+                         opt_arg: Optional[str], req_arg: Optional[str],
+                         body: str) -> Dict:
+        """Parse an Atlas theorem/definition/example/etc environment."""
+        title = req_arg or opt_arg or ""
+
+        # Increment counter
+        if block_type in self.counters:
+            self.counters[block_type] += 1
+            number = f"{self.chapter_num}.{self.counters[block_type]}"
+            block_id = f"{block_type}-{number}"
         else:
             number = ""
-            block_id = f"{content_type}-{chapter_num}.{section_num}"
-        
-        # Handle examples with solutions
-        if content_type == 'example':
-            problem, solution = self._extract_solution(body)
-            # Extract any figures from within the example
-            figures = self._extract_inline_figures(problem + "\n" + solution, chapter_num)
-            
-            data = {
-                'id': block_id,
-                'number': number,
-                'title': title if title else None,
-                'problem': self._convert_latex_to_text(problem),
-                'solution': self._convert_latex_to_text(solution),
+            block_id = f"{block_type}-{self.chapter_num}.{self.section_num}"
+
+        # Example: split problem/solution
+        if block_type == "example":
+            problem, solution = self._split_solution(body)
+            return {
+                "type": "example",
+                "id": block_id,
+                "number": number,
+                "title": self._convert_text(title) if title else None,
+                "problem": self._convert_text(problem),
+                "solution": self._convert_text(solution),
             }
-            if figures:
-                data['figures'] = [f.to_dict() for f in figures]
-            return ContentBlock('example', data)
-        
-        # Handle proofs
-        elif content_type == 'proof':
-            return ContentBlock('proof', {
-                'content': self._convert_latex_to_text(body),
-            })
-        
-        # Handle theorems, definitions, etc.
-        else:
-            # Determine label for theorem-like environments
-            label = None
-            if content_type == 'theorem':
-                label = 'Theorem'
-            elif content_type == 'lemma':
-                label = 'Lemma'
-            elif content_type == 'corollary':
-                label = 'Corollary'
-            elif content_type == 'postulate':
-                label = 'Postulate'
-            
-            data = {
-                'id': block_id,
-                'number': number if number else None,
-                'title': title,
-                'content': self._convert_latex_to_text(body),
+
+        # Proof
+        if block_type == "proof":
+            return {
+                "type": "proof",
+                "content": self._convert_text(body),
             }
-            if label:
-                data['label'] = label
-            
-            return ContentBlock(content_type, data)
-    
-    def _extract_solution(self, body: str) -> Tuple[str, str]:
-        """Extract solution from example body."""
-        # Try \begin{solution}...\end{solution} first
-        match = re.search(
-            r'\\begin\{solution\}(.*?)\\end\{solution\}',
-            body, re.DOTALL
-        )
-        if match:
-            solution = match.group(1).strip()
-            problem = body[:match.start()].strip()
-            return (problem, solution)
-        
-        # Try \textbf{Solution:} or \textbf{Proof by Induction:} or similar
-        match = re.search(
-            r'\\textbf\{(Solution|Proof by (?:Strong )?Induction|Proof)\s*:?\}',
-            body
-        )
-        if match:
-            problem = body[:match.start()].strip()
-            solution = body[match.end():].strip()
-            return (problem, solution)
-        
-        return (body.strip(), "")
-    
-    def _parse_figure(self, body: str, chapter_num: int = 0) -> Optional[ContentBlock]:
-        """Parse a figure environment (supports includegraphics and TikZ)."""
-        ch_prefix = f"ch{chapter_num:02d}/" if chapter_num else ""
-        
-        # Extract caption (handle nested braces)
-        caption = ""
-        caption_match = re.search(r'\\caption\{', body)
-        if caption_match:
-            cap_content, _ = self._extract_braced_content(body, caption_match.end() - 1)
-            if cap_content:
-                caption = self._clean_latex_text(cap_content)
-        
-        # Extract Description (alt text)
-        alt_text = caption  # default to caption
-        desc_match = re.search(r'\\Description\{', body)
-        if desc_match:
-            desc_content, _ = self._extract_braced_content(body, desc_match.end() - 1)
-            if desc_content:
-                alt_text = self._clean_latex_text(desc_content)
-        
-        # Extract label for ID
-        label_match = re.search(r'\\label\{([^}]+)\}', body)
-        fig_id = label_match.group(1) if label_match else ""
-        
-        # Helper to generate src from fig_id
-        def src_from_label(fid):
-            safe_name = fid.replace(':', '-').replace('fig-', 'fig-')
-            return f"/figures/precalculus/{ch_prefix}{safe_name}.svg"
-        
-        # Check for includegraphics
-        img_match = re.search(r'\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}', body)
-        if img_match:
-            src = img_match.group(1)
-            # Normalize src to our path format
-            # Extract just the filename
-            src_name = os.path.basename(src)
-            if not src_name.endswith('.svg'):
-                src_name = src_name.rsplit('.', 1)[0] + '.svg' if '.' in src_name else src_name + '.svg'
-            src = f"/figures/precalculus/{ch_prefix}{src_name}"
-            if not fig_id:
-                fig_id = f"fig-{hash(src) % 10000}"
-            return ContentBlock('figure', {
-                'id': fig_id,
-                'src': src,
-                'caption': caption,
-                'alt': alt_text,
-            })
-        
-        # Check for TikZ or figure commands (\figXxx)
-        has_tikz = '\\begin{tikzpicture}' in body
-        fig_cmd_match = re.search(r'\\(fig[A-Z][a-zA-Z]*)', body)
-        
-        if has_tikz or fig_cmd_match or fig_id:
-            # Generate SVG path from label
-            if fig_id:
-                src = src_from_label(fig_id)
+
+        # Reflection (christian)
+        if block_type == "reflection":
+            return {
+                "type": "paragraph",
+                "text": self._convert_text(body),
+                "edition": "christian",
+            }
+
+        # Everything else: definition, theorem, warning, etc.
+        result = {
+            "type": block_type,
+            "id": block_id,
+            "title": self._convert_text(title) if title else "",
+            "content": self._convert_text(body),
+        }
+        if number:
+            result["number"] = number
+        return result
+
+    def _split_solution(self, body: str) -> Tuple[str, str]:
+        """Extract \\begin{solution}...\\end{solution} from example body."""
+        m = re.search(r'\\begin\{solution\}', body)
+        if m:
+            sol_start = m.end()
+            # Find matching \end{solution} handling nesting
+            sol_env_end = find_env_end(body, m.start(), "solution")
+            end_tag = "\\end{solution}"
+            sol_end_tag = body.rfind(end_tag, m.start(), sol_env_end)
+            if sol_end_tag != -1:
+                problem = body[:m.start()].strip()
+                solution = body[sol_start:sol_end_tag].strip()
+                return problem, solution
             else:
-                src = f"/figures/precalculus/{ch_prefix}fig-{hash(body) % 100000}.svg"
-                fig_id = f"fig-{hash(body) % 100000}"
-            
-            data = {
-                'id': fig_id,
-                'src': src,
-                'caption': caption,
-                'alt': alt_text,
-            }
-            if has_tikz or fig_cmd_match:
-                data['tikz'] = True
-            if fig_cmd_match:
-                data['figCommand'] = fig_cmd_match.group(1)
-            
-            return ContentBlock('figure', data)
-        
-        # No recognizable figure content — table-in-figure or similar
-        if caption:
-            return ContentBlock('figure', {
-                'id': fig_id or f"fig-{hash(body) % 10000}",
-                'src': '',
-                'caption': caption,
-                'alt': alt_text,
-            })
-        
-        return None
-    
-    def _parse_list(self, env_name: str, body: str) -> ContentBlock:
-        """Parse enumerate/itemize environment."""
-        ordered = env_name == 'enumerate'
+                problem = body[:m.start()].strip()
+                solution = body[sol_start:sol_env_end].strip()
+                return problem, solution
+        return body.strip(), ""
+
+    def _parse_figure(self, body: str) -> Optional[Dict]:
+        """Parse a figure environment body."""
+        # Extract caption (brace-aware)
+        caption = ""
+        cm = re.search(r'\\caption\{', body)
+        if cm:
+            cap_content, _ = extract_braced(body, cm.end() - 1)
+            caption = self._convert_text(cap_content)
+
+        # Extract label
+        lm = re.search(r'\\label\{([^}]+)\}', body)
+        fig_id = lm.group(1) if lm else ""
+
+        # Check for TikZ
+        has_tikz = '\\begin{tikzpicture}' in body
+
+        # Check for fig commands (\figXxx)
+        fig_cmd = re.search(r'\\(fig[A-Z][a-zA-Z]*)', body)
+
+        # Check for \includegraphics
+        img_match = re.search(r'\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}', body)
+
+        # Resolve src
+        src = ""
+        if fig_id:
+            src = resolve_figure_src(self.book_id, fig_id, self.chapter_num)
+        elif img_match:
+            img_path = img_match.group(1)
+            basename = os.path.basename(img_path)
+            name = basename.rsplit('.', 1)[0] if '.' in basename else basename
+            src = f"/figures/{self.book_id}/ch{self.chapter_num:02d}/{name}.svg"
+
+        # For TikZ figures without labels, try to generate a src
+        if not src and (has_tikz or fig_cmd):
+            self.inline_figure_counter += 1
+            src = f"/figures/{self.book_id}/ch{self.chapter_num:02d}/fig-{self.chapter_num}.{self.section_num}-inline-{self.inline_figure_counter}.svg"
+            if not fig_id:
+                fig_id = f"fig-{self.chapter_num}.{self.section_num}-inline-{self.inline_figure_counter}"
+
+        if not fig_id and not caption and not has_tikz and not fig_cmd and not img_match:
+            # Check if it's a table-in-figure or something with just a center+tabular
+            if '\\begin{tabular}' in body:
+                return self._parse_tabular_from_body(body)
+            return None
+
+        result = {
+            "type": "figure",
+            "id": fig_id or f"fig-{self.chapter_num}.{self.section_num}-{self.inline_figure_counter}",
+            "src": src,
+            "caption": caption,
+            "alt": caption,
+        }
+        if has_tikz or fig_cmd:
+            result["tikz"] = True
+        if fig_cmd:
+            result["figCommand"] = fig_cmd.group(1)
+        return result
+
+    def _parse_tabular_from_body(self, body: str) -> Optional[Dict]:
+        """Extract and parse a tabular from a figure/center body."""
+        m = re.search(r'\\begin\{tabular\}\{', body)
+        if not m:
+            return None
+        col_spec_start = m.end() - 1
+        col_spec, pos = extract_braced(body, col_spec_start)
+        tab_end = body.find('\\end{tabular}', pos)
+        if tab_end == -1:
+            return None
+        return self._parse_tabular(body[pos:tab_end], col_spec or "")
+
+    def _parse_list(self, env_name: str, body: str) -> Dict:
+        """Parse an itemize/enumerate into a list block."""
+        ordered = env_name == "enumerate"
         items = []
-        
-        # Extract items
-        item_pattern = re.compile(r'\\item(?:\[[^\]]*\])?\s*(.*?)(?=\\item|$)', re.DOTALL)
-        for match in item_pattern.finditer(body):
-            item_text = self._convert_latex_to_text(match.group(1).strip())
-            if item_text:
-                items.append(item_text)
-        
-        return ContentBlock('list', {
-            'ordered': ordered,
-            'items': items,
-        })
-    
-    def _parse_center_for_table(self, body: str) -> Optional[ContentBlock]:
-        """Check if a center environment contains a table and parse it."""
-        # Look for tabular inside center
-        # Use a more robust pattern that handles nested braces in column spec
-        match = re.search(r'\\begin\{tabular\}\{', body)
-        if match:
-            # Find matching closing brace for column spec
-            start = match.end()
-            col_spec, end_pos = self._extract_braced_content(body, start - 1)
-            if col_spec is not None:
-                # Find the tabular body (everything until \end{tabular})
-                body_start = end_pos
-                body_end = body.find(r'\end{tabular}', body_start)
-                if body_end != -1:
-                    tabular_body = body[body_start:body_end]
-                    return self._parse_tabular(tabular_body, col_spec)
-        return None
-    
-    def _extract_braced_content(self, text: str, start: int) -> Tuple[Optional[str], int]:
-        """Extract content between balanced braces starting at position start."""
-        if start >= len(text) or text[start] != '{':
-            return (None, start)
-        
-        depth = 0
-        pos = start
-        while pos < len(text):
-            if text[pos] == '{':
-                depth += 1
-            elif text[pos] == '}':
-                depth -= 1
-                if depth == 0:
-                    return (text[start + 1:pos], pos + 1)
-            pos += 1
-        return (None, start)
-    
-    def _parse_tabular(self, body: str, col_spec: str = "") -> ContentBlock:
-        """Parse a LaTeX tabular environment into a table structure."""
-        # Clean up the body
+
+        # Split on \item, handling optional args
+        parts = re.split(r'\\item(?:\[[^\]]*\])?\s*', body)
+        for part in parts:
+            part = part.strip()
+            if not part:
+                continue
+            # Check for nested environments in the item
+            converted = self._convert_text(part)
+            if converted:
+                items.append(converted)
+
+        return {"type": "list", "ordered": ordered, "items": items}
+
+    def _parse_tabular(self, body: str, col_spec: str) -> Dict:
+        """Parse tabular body into a table block."""
         body = body.strip()
-        
-        # Remove \toprule, \midrule, \bottomrule, \hline
         body = re.sub(r'\\(?:toprule|midrule|bottomrule|hline)\s*', '', body)
-        
-        # Remove \cline{...}
         body = re.sub(r'\\cline\{[^}]*\}\s*', '', body)
-        
-        # Split into rows by \\ (but not \\[ for spacing)
-        # Handle both \\ and \\[6pt] style line breaks
+
         rows_raw = re.split(r'\\\\(?:\[[^\]]*\])?\s*', body)
-        
-        # Parse each row
         all_rows = []
         for row in rows_raw:
             row = row.strip()
             if not row:
                 continue
-            
-            # Split by & to get cells
-            cells = row.split('&')
-            cells = [self._clean_table_cell(c.strip()) for c in cells]
-            
-            # Skip empty rows
-            if all(c == '' for c in cells):
-                continue
-                
-            all_rows.append(cells)
-        
+            cells = [self._convert_text(c.strip()) for c in row.split('&')]
+            if any(c for c in cells):
+                all_rows.append(cells)
+
         if not all_rows:
-            return ContentBlock('paragraph', {'text': ''})
-        
-        # Determine if first row is a header
-        # Heuristic: if there was a \midrule or \hline after first row, 
-        # or if first row looks like headers (no math, short text)
-        # For now, treat first row as headers if there are at least 2 rows
-        if len(all_rows) >= 2:
-            headers = all_rows[0]
-            data_rows = all_rows[1:]
-        else:
-            headers = []
-            data_rows = all_rows
-        
-        return ContentBlock('table', {
-            'headers': headers,
-            'rows': data_rows,
-            'alignment': self._parse_col_spec(col_spec),
-        })
-    
-    def _clean_table_cell(self, cell: str) -> str:
-        """Clean a table cell, converting LaTeX to readable text."""
-        # Handle multicolumn
-        multi_match = re.match(r'\\multicolumn\{\d+\}\{[^}]*\}\{([^}]*)\}', cell)
-        if multi_match:
-            cell = multi_match.group(1)
-        
-        # Convert LaTeX to text (preserving math)
-        cell = self._convert_latex_to_text(cell)
-        
-        # Clean up extra whitespace
-        cell = re.sub(r'\s+', ' ', cell).strip()
-        
-        return cell
-    
-    def _parse_col_spec(self, col_spec: str) -> List[str]:
-        """Parse column alignment specification (l, c, r, |, etc.)"""
+            return {"type": "paragraph", "text": ""}
+
+        headers = all_rows[0] if len(all_rows) >= 2 else []
+        data_rows = all_rows[1:] if len(all_rows) >= 2 else all_rows
+
         alignments = []
-        for char in col_spec:
-            if char == 'l':
-                alignments.append('left')
-            elif char == 'c':
-                alignments.append('center')
-            elif char == 'r':
-                alignments.append('right')
-            # Ignore | and other characters
-        return alignments
-    
-    def _parse_text_chunk(self, text: str) -> List[ContentBlock]:
-        """Parse a text chunk into paragraphs and headings."""
+        for c in col_spec:
+            if c == 'l': alignments.append('left')
+            elif c == 'c': alignments.append('center')
+            elif c == 'r': alignments.append('right')
+
+        return {
+            "type": "table",
+            "headers": headers,
+            "rows": data_rows,
+            "alignment": alignments,
+        }
+
+    # ── Exercise Parsing ─────────────────────────────────────
+
+    def _parse_exercises(self, text: str) -> List[Dict]:
+        """Parse the exercises section."""
         blocks = []
-        
-        # Split by subsection/paragraph commands
-        parts = re.split(r'(\\subsection\*?\{[^}]+\})', text)
-        
-        for part in parts:
-            part = part.strip()
-            if not part:
-                continue
-            
-            # Check for subsection
-            subsec_match = re.match(r'\\subsection\*?\{([^}]+)\}', part)
-            if subsec_match:
-                blocks.append(ContentBlock('heading', {
-                    'level': 2,
-                    'text': self._clean_latex_text(subsec_match.group(1)),
-                }))
-                continue
-            
-            # Split into paragraphs (double newlines)
-            paragraphs = re.split(r'\n\s*\n', part)
-            
-            for para in paragraphs:
-                para = para.strip()
-                if not para:
-                    continue
-                
-                # Skip comments
-                if para.startswith('%'):
-                    continue
-                
-                # Skip certain commands
-                if re.match(r'^\\(index|cref|ref|label|clearpage|pagebreak|vspace|hspace)\b', para):
-                    continue
-                
-                # Convert to text
-                text = self._convert_latex_to_text(para)
-                if text and len(text) > 10:  # Skip very short fragments
-                    blocks.append(ContentBlock('paragraph', {'text': text}))
-        
-        return blocks
-    
-    def _convert_latex_to_text(self, latex: str) -> str:
-        """Convert LaTeX content to reader-compatible text with math preserved."""
-        text = latex
-        
-        # First, protect math content by replacing with placeholders
-        math_blocks = []
-        
-        def save_math(match):
-            idx = len(math_blocks)
-            math_blocks.append(match.group(0))
-            return f"__MATH_BLOCK_{idx}__"
-        
-        # Strip tikzpicture environments (not renderable as text)
-        text = re.sub(r'\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}', '', text, flags=re.DOTALL)
-        
-        # Handle escaped dollar signs \$ (literal $) before ANY math protection
-        text = text.replace('\\$', '__ESCAPED_DOLLAR__')
-        
-        # Protect align/equation environments FIRST (before \[...\] handling)
-        # so that \\[8pt] spacing inside align blocks doesn't get caught
-        def convert_align(match):
-            content = match.group(1)
-            idx = len(math_blocks)
-            math_blocks.append(f"$$\\begin{{aligned}}{content}\\end{{aligned}}$$")
-            return f"__MATH_BLOCK_{idx}__"
-        
-        text = re.sub(r'\\begin\{align\*?\}(.*?)\\end\{align\*?\}', convert_align, text, flags=re.DOTALL)
-        text = re.sub(r'\\begin\{equation\*?\}(.*?)\\end\{equation\*?\}', convert_align, text, flags=re.DOTALL)
-        
-        # Protect display math $$...$$ and \[...\]
-        text = re.sub(r'\$\$.*?\$\$', save_math, text, flags=re.DOTALL)
-        # Handle \[...\] — use negative lookbehind to avoid matching \\[8pt] (line break with spacing)
-        text = re.sub(r'(?<!\\)\\\[(?:(?!\\\]).)*\\end\{[^}]+\}(?:(?!\\\]).)*\\\]', save_math, text, flags=re.DOTALL)
-        text = re.sub(r'(?<!\\)\\\[.*?(?<!\\)\\\]', save_math, text, flags=re.DOTALL)
-        
-        # Protect inline math $...$
-        text = re.sub(r'\$[^$]+?\$', save_math, text)
-        
-        # Restore escaped dollars
-        text = text.replace('__ESCAPED_DOLLAR__', '$')
-        
-        # Handle enumerate/itemize inside content (convert to markdown-style lists)
-        def convert_list(match):
-            list_content = match.group(2)
-            is_ordered = match.group(1) == 'enumerate'
-            items = re.findall(r'\\item(?:\[[^\]]*\])?\s*(.*?)(?=\\item|$)', list_content, re.DOTALL)
-            
-            result_lines = []
-            for i, item in enumerate(items):
-                item = item.strip()
-                if item:
-                    prefix = f"{i+1}." if is_ordered else "-"
-                    result_lines.append(f"\n\n{prefix} {item}")
-            
-            return "\n".join(result_lines)
-        
-        # Use a more robust pattern that handles optional args and nested content
-        text = re.sub(r'\\begin\{(enumerate|itemize)\}(?:\[[^\]]*\])?(.*?)\\end\{(?:enumerate|itemize)\}', 
-                      convert_list, text, flags=re.DOTALL)
-        
-        # Handle orphaned \item commands (not inside a list environment)
-        text = re.sub(r'\\item(?:\[[^\]]*\])?\s*', '\n\n- ', text)
-        # Clean up orphaned \end{itemize/enumerate} and \begin{itemize/enumerate}
-        text = re.sub(r'\\(?:begin|end)\{(?:itemize|enumerate)\}(?:\[[^\]]*\])?', '', text)
-        
-        # Handle tables inside text (center + tabular blocks)
-        # Convert them to clean text representation
-        def convert_table_to_text(match):
-            table_content = match.group(0)
-            # Extract just the tabular body - handle complex column specs with braces
-            # Find \begin{tabular}{ and then find matching }
-            tabular_start = re.search(r'\\begin\{tabular\}\{', table_content)
-            if not tabular_start:
-                return ""
-            
-            # Find matching brace for column spec
-            pos = tabular_start.end()
-            depth = 1
-            while pos < len(table_content) and depth > 0:
-                if table_content[pos] == '{':
-                    depth += 1
-                elif table_content[pos] == '}':
-                    depth -= 1
+        exercise_num = 0
+
+        # Unwrap exerciseblock, multicols
+        text = re.sub(r'\\begin\{exerciseblock\}(?:\{[^}]*\})?', '', text)
+        text = re.sub(r'\\end\{exerciseblock\}', '', text)
+        text = re.sub(r'\\begin\{multicols\}\{\d+\}', '', text)
+        text = re.sub(r'\\end\{multicols\}', '', text)
+
+        # Find exercises
+        pos = 0
+        while pos < len(text):
+            # Skip whitespace
+            while pos < len(text) and text[pos] in ' \t\n':
                 pos += 1
-            
-            # Find end of tabular
-            end_match = re.search(r'\\end\{tabular\}', table_content[pos:])
-            if not end_match:
-                return ""
-            
-            body = table_content[pos:pos + end_match.start()].strip()
-            # Remove rules
+            if pos >= len(text):
+                break
+
+            # Category headers (bold text or exercise* commands)
+            bold_match = re.match(r'\\textbf\{([^}]+)\}\s*', text[pos:])
+            if bold_match:
+                blocks.append({"type": "heading", "level": 3, "text": self._convert_text(bold_match.group(1).strip())})
+                pos += bold_match.end()
+                continue
+
+            ex_cmd = re.match(r'\\(exercisevocab|exerciseconceptual|exercisestar|exerciseerror|exercisetech)\b\s*', text[pos:])
+            if ex_cmd:
+                # These are category markers; parse following text as description
+                pos += ex_cmd.end()
+                text_end = self._find_exercise_text_end(text, pos)
+                chunk = text[pos:text_end].strip()
+                if chunk:
+                    blocks.append({"type": "paragraph", "text": self._convert_text(chunk)})
+                pos = text_end
+                continue
+
+            # \begin{exercise}
+            env_match = re.match(r'\\begin\{exercise\}', text[pos:])
+            if env_match:
+                env_end = find_env_end(text, pos, "exercise")
+                env_body_start = pos + len("\\begin{exercise}")
+                opt, env_body_start = extract_optional_arg(text, env_body_start)
+                body_end = text.rfind("\\end{exercise}", pos, env_end)
+                body = text[env_body_start:body_end] if body_end > 0 else text[env_body_start:env_end]
+
+                exercise_num += 1
+                variant = "regular"
+                if opt and ('\\star' in opt or '$\\star$' in opt):
+                    variant = "starred"
+                elif opt and opt.lower() in ('proof', 'show that'):
+                    variant = "conceptual"
+
+                blocks.append({
+                    "type": "exercise",
+                    "id": f"ex-{self.chapter_num}.{self.section_num}-{exercise_num}",
+                    "number": str(exercise_num),
+                    "problem": self._convert_text(body),
+                    "variant": variant,
+                })
+                pos = env_end
+                continue
+
+            # \begin{exercisewithsolution}
+            ewsm = re.match(r'\\begin\{exercisewithsolution\}', text[pos:])
+            if ewsm:
+                env_end = find_env_end(text, pos, "exercisewithsolution")
+                body_start = pos + len("\\begin{exercisewithsolution}")
+                body_end_pos = text.rfind("\\end{exercisewithsolution}", pos, env_end)
+                body = text[body_start:body_end_pos] if body_end_pos > 0 else text[body_start:env_end]
+
+                exercise_num += 1
+                problem, solution = self._split_solution(body)
+                blocks.append({
+                    "type": "exercise",
+                    "id": f"ex-{self.chapter_num}.{self.section_num}-{exercise_num}",
+                    "number": str(exercise_num),
+                    "problem": self._convert_text(problem),
+                    "solution": self._convert_text(solution),
+                    "variant": "regular",
+                })
+                pos = env_end
+                continue
+
+            # Skip other environments
+            other_env = re.match(r'\\begin\{([^}]+)\}', text[pos:])
+            if other_env:
+                env_end = find_env_end(text, pos, other_env.group(1))
+                pos = env_end
+                continue
+
+            # Skip standalone commands
+            cmd_match = re.match(r'\\[a-zA-Z]+\*?(?:\[[^\]]*\])?(?:\{[^}]*\})?\s*', text[pos:])
+            if cmd_match:
+                pos += cmd_match.end()
+                continue
+
+            # Skip other text
+            pos += 1
+
+        return blocks
+
+    def _find_exercise_text_end(self, text: str, pos: int) -> int:
+        """Find end of exercise description text."""
+        # End at next double newline, \begin{exercise}, or exercise command
+        i = pos
+        while i < len(text):
+            if text[i:i+2] == '\n\n':
+                return i
+            if text[i:].startswith('\\begin{exercise}'):
+                return i
+            if re.match(r'\\(exercisevocab|exerciseconceptual|exercisestar|exerciseerror|exercisetech)\b', text[i:]):
+                return i
+            i += 1
+        return len(text)
+
+    def _parse_exercise_env(self, opt_arg: Optional[str], body: str) -> Dict:
+        """Parse a single exercise environment."""
+        variant = "regular"
+        if opt_arg and ('\\star' in opt_arg or '$\\star$' in opt_arg):
+            variant = "starred"
+        elif opt_arg and opt_arg.lower() in ('proof', 'show that'):
+            variant = "conceptual"
+
+        problem, solution = self._split_solution(body)
+        result = {
+            "type": "exercise",
+            "problem": self._convert_text(problem),
+            "variant": variant,
+        }
+        if solution:
+            result["solution"] = self._convert_text(solution)
+        return result
+
+    # ── Phase 4: Text Conversion ─────────────────────────────
+
+    def _convert_text(self, latex: str) -> str:
+        """Convert LaTeX text to reader format, preserving math verbatim.
+
+        This is the heart of the converter. It:
+        1. Protects all math content (inline and display)
+        2. Replaces TikZ with figure placeholders
+        3. Converts LaTeX commands to markdown
+        4. Restores math content
+        """
+        if not latex:
+            return ""
+
+        text = latex
+        math_store: List[str] = []
+
+        def store_math(content: str) -> str:
+            idx = len(math_store)
+            math_store.append(content)
+            return f"\x01MATH{idx}\x01"
+
+        # Step 0: Handle escaped dollar signs FIRST
+        text = text.replace('\\$', '\x01DOLLAR\x01')
+
+        # Step 1: Protect TikZ environments (opaque blobs → remove)
+        def replace_tikz(m):
+            self.inline_figure_counter += 1
+            return store_math("")  # Just remove TikZ code
+        text = re.sub(r'\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}', replace_tikz, text, flags=re.DOTALL)
+
+        # Step 2: Protect math display environments (align, equation, etc.)
+        # These need to be converted: align* → aligned for KaTeX
+        for env in sorted(MATH_DISPLAY_ENVS, key=len, reverse=True):
+            pattern = re.compile(rf'\\begin\{{{re.escape(env)}\}}(.*?)\\end\{{{re.escape(env)}\}}', re.DOTALL)
+            def make_aligned(m, e=env):
+                inner = m.group(1)
+                return store_math(f"$$\\begin{{aligned}}{inner}\\end{{aligned}}$$")
+            text = pattern.sub(make_aligned, text)
+
+        # Step 3: Protect display math \[...\]
+        # CRITICAL: Use brace-depth aware scanning, not regex
+        text = self._protect_display_math(text, math_store, store_math)
+
+        # Step 4: Protect display math $$...$$
+        def save_dd(m):
+            return store_math(m.group(0))
+        text = re.sub(r'\$\$(?:(?!\$\$).)+\$\$', save_dd, text, flags=re.DOTALL)
+
+        # Step 5: Protect inline math $...$
+        # Must not match escaped dollars (already replaced)
+        def save_inline(m):
+            return store_math(m.group(0))
+        text = re.sub(r'\$(?:[^$\\]|\\.)+?\$', save_inline, text)
+
+        # Step 6: Restore escaped dollars as literal $
+        text = text.replace('\x01DOLLAR\x01', '$')
+
+        # Step 7: Convert lists inside text
+        text = self._convert_inline_lists(text)
+
+        # Step 8: Convert tables inside text
+        text = self._convert_inline_tables(text)
+
+        # Step 9: Convert figure environments inside text (remove TikZ, keep ref)
+        text = re.sub(r'\\begin\{figure\}(?:\[[^\]]*\])?.*?\\end\{figure\}', '', text, flags=re.DOTALL)
+
+        # Step 10: Text formatting commands
+        # Brace-aware replacements for \textbf, \emph, \textit, etc.
+        text = self._convert_formatting_commands(text)
+
+        # Step 11: Remove/convert remaining commands
+        # References
+        text = re.sub(r'\\(?:cref|Cref|ref)\{([^}]*)\}', r'[\1]', text)
+
+        # Labels (remove)
+        text = re.sub(r'\\label\{[^}]*\}', '', text)
+
+        # Index (remove)
+        text = re.sub(r'\\index\{[^}]*\}', '', text)
+
+        # Lettrine
+        text = re.sub(r'\\lettrine(?:\[[^\]]*\])*\{[^}]*\}\{([^}]*)\}', r'\1', text)
+
+        # Colors
+        text = re.sub(r'\\(?:color|textcolor)\{[^}]*\}\{?', '', text)
+        text = re.sub(r'\{\\color\{[^}]*\}([^}]*)\}', r'\1', text)
+
+        # Math symbols outside math
+        text = text.replace('\\R', 'ℝ')
+        text = text.replace('\\N', 'ℕ')
+        text = text.replace('\\Z', 'ℤ')
+        text = text.replace('\\Q', 'ℚ')
+        text = text.replace('\\C', 'ℂ')
+
+        # Spacing commands
+        text = re.sub(r'\\(?:quad|qquad|enspace|thinspace|;|,|!)\s*', ' ', text)
+        text = re.sub(r'\\hspace\*?\{[^}]*\}', ' ', text)
+        text = re.sub(r'\\vspace\*?\{[^}]*\}', '', text)
+
+        # Underline/fill
+        text = re.sub(r'\\underline\{\\hspace\{[^}]*\}\}', '___', text)
+        text = re.sub(r'\\underline\{([^}]*)\}', r'\1', text)
+
+        # Quotes
+        text = text.replace('``', '\u201c')
+        text = text.replace("''", '\u201d')
+        text = text.replace('`', '\u2018')
+        text = text.replace("'", '\u2019')  # careful — only curly if after letter? No, LaTeX uses `` and ''
+
+        # Actually, let's be simpler about quotes — just do the LaTeX ones
+        # Revert the single quote replacement as it breaks apostrophes
+        text = text.replace('\u2018', '`')
+        text = text.replace('\u2019', "'")
+        text = text.replace('\u201c', '"')
+        text = text.replace('\u201d', '"')
+
+        # Dashes
+        text = text.replace('---', '—')
+        text = text.replace('--', '–')
+
+        # Ellipsis
+        text = re.sub(r'\\(?:ldots|dots|cdots)', '…', text)
+
+        # Non-breaking space
+        text = text.replace('~', ' ')
+        
+        # Escaped special characters (MUST be before \\ cleanup)
+        text = text.replace('\\&', '&')
+        text = text.replace('\\%', '%')
+        text = text.replace('\\#', '#')
+        text = text.replace('\\_', '_')
+        
+        # Bare \\ outside math → newline
+        # Match \\ optionally followed by [Npt] spacing  
+        text = re.sub(r'\\\\(?:\[\d+[a-z]*\])?\s*', '\n', text)
+
+        # \text{...} (often in math, but may appear outside)
+        text = re.sub(r'\\text\{([^}]*)\}', r'\1', text)
+
+        # \mbox{...}
+        text = re.sub(r'\\mbox\{([^}]*)\}', r'\1', text)
+
+        # \phantom{...} — invisible
+        text = re.sub(r'\\phantom\{[^}]*\}', '', text)
+
+        # \vphantom{...}
+        text = re.sub(r'\\vphantom\{[^}]*\}', '', text)
+
+        # \boxed{...}
+        text = re.sub(r'\\boxed\{([^}]*)\}', r'\1', text)
+
+        # \centering
+        text = text.replace('\\centering', '')
+
+        # \ding{...} — dingbat symbols
+        text = re.sub(r'\\ding\{51\}', '✓', text)
+        text = re.sub(r'\\ding\{55\}', '✗', text)
+        text = re.sub(r'\\ding\{\d+\}', '', text)
+        
+        # \checkmark
+        text = text.replace('\\checkmark', '✓')
+
+        # \par
+        text = text.replace('\\par', '\n\n')
+
+        # Remove remaining \begin{center}\end{center} wrappers
+        text = re.sub(r'\\begin\{center\}\s*', '', text)
+        text = re.sub(r'\\end\{center\}\s*', '', text)
+
+        # Remove remaining \begin{quote}\end{quote} wrappers
+        text = re.sub(r'\\begin\{quote\}\s*', '', text)
+        text = re.sub(r'\\end\{quote\}\s*', '', text)
+
+        # Remove orphaned \end{solution}
+        text = re.sub(r'\\end\{solution\}\s*', '', text)
+
+        # Remove orphaned \end{itemize}, \end{enumerate}, \begin{itemize}, \begin{enumerate}
+        text = re.sub(r'\\end\{(?:itemize|enumerate)\}\s*', '', text)
+        text = re.sub(r'\\begin\{(?:itemize|enumerate)\}(?:\[[^\]]*\])?\s*', '', text)
+        
+        # Remove orphaned \item
+        text = re.sub(r'\\item(?:\[[^\]]*\])?\s*', '\n- ', text)
+
+        # Generic: remove remaining \command{content} → content
+        # Be careful not to eat actual structural commands
+        text = re.sub(r'\\(?:textsf|textsc|texttt|textrm|mathrm|operatorname)\{([^}]*)\}', r'\1', text)
+
+        # Remove standalone unknown commands (\foo with no args)
+        text = re.sub(r'\\[a-zA-Z]+\*?(?=\s|[^a-zA-Z{[]|$)', '', text)
+
+        # Step 12: Restore math blocks
+        for i, block in enumerate(math_store):
+            text = text.replace(f"\x01MATH{i}\x01", block)
+        
+        # Safety: remove any remaining placeholder markers
+        text = re.sub(r'\x01MATH\d+\x01', '', text)
+
+        # Final cleanup
+        text = re.sub(r'[ \t]+', ' ', text)
+        text = re.sub(r'\n{3,}', '\n\n', text)
+        text = text.strip()
+
+        return text
+
+    def _protect_display_math(self, text: str, store: List[str],
+                              store_fn) -> str:
+        """Protect \\[...\\] display math using brace-depth-aware scanning.
+
+        CRITICAL: Must distinguish \\[ (display math) from \\\\[8pt] (line break with spacing).
+        \\[ display math starts at the beginning of a context or after whitespace.
+        \\\\[8pt] is \\\\ followed by [8pt] — the \\\\ is a line break.
+        """
+        result = []
+        i = 0
+        while i < len(text):
+            # Check for \[ that is NOT \\[
+            if text[i:i+2] == '\\[':
+                # Check it's not \\[ (line break + optional spacing)
+                if i > 0 and text[i-1] == '\\':
+                    # This is \\[ — a line break with spacing, not display math
+                    result.append(text[i])
+                    i += 1
+                    continue
+
+                # This is \[ — start of display math
+                # Find matching \] handling nested \begin{cases} etc.
+                j = i + 2
+                depth = 0  # track nested environments
+                found = False
+                while j < len(text):
+                    if text[j:j+2] == '\\]' and depth == 0:
+                        # Check not \\]
+                        if j > 0 and text[j-1] == '\\':
+                            j += 1
+                            continue
+                        # Found the matching \]
+                        inner = text[i+2:j]
+                        result.append(store_fn(f"$${inner}$$"))
+                        i = j + 2
+                        found = True
+                        break
+                    elif text[j:j+7] == '\\begin{':
+                        depth += 1
+                        j += 7
+                    elif text[j:j+5] == '\\end{':
+                        depth -= 1
+                        j += 5
+                    else:
+                        j += 1
+
+                if not found:
+                    # Unmatched \[ — just keep it
+                    result.append(text[i])
+                    i += 1
+            else:
+                result.append(text[i])
+                i += 1
+
+        return ''.join(result)
+
+    def _convert_inline_lists(self, text: str) -> str:
+        """Convert \\begin{itemize/enumerate}...\\end{...} inside text to markdown lists."""
+        for env in ("enumerate", "itemize"):
+            while True:
+                m = re.search(rf'\\begin\{{{env}\}}(?:\[[^\]]*\])?', text)
+                if not m:
+                    break
+                # Find matching \end{env} handling nesting
+                env_end = find_env_end(text, m.start(), env)
+                end_tag = f"\\end{{{env}}}"
+                end_tag_start = text.rfind(end_tag, m.start(), env_end)
+                if end_tag_start == -1:
+                    end_tag_start = env_end
+                
+                # Skip optional arg after \begin{env}
+                body_start = m.end()
+                
+                body = text[body_start:end_tag_start]
+
+                items = re.split(r'\\item(?:\[[^\]]*\])?\s*', body)
+                lines = []
+                item_num = 0
+                for item in items:
+                    item = item.strip()
+                    if not item:
+                        continue
+                    item_num += 1
+                    prefix = f"{item_num}." if env == "enumerate" else "-"
+                    lines.append(f"\n{prefix} {item}")
+
+                text = text[:m.start()] + '\n'.join(lines) + text[env_end:]
+        return text
+
+    def _convert_inline_tables(self, text: str) -> str:
+        """Convert tabular environments inside text to markdown tables."""
+        while True:
+            m = re.search(r'\\begin\{tabular\}\{', text)
+            if not m:
+                break
+            col_start = m.end() - 1
+            col_spec, body_start = extract_braced(text, col_start)
+            end_pos = text.find('\\end{tabular}', body_start)
+            if end_pos == -1:
+                break
+            body = text[body_start:end_pos]
+            end_full = end_pos + len('\\end{tabular}')
+
+            # Parse into markdown table
             body = re.sub(r'\\(?:toprule|midrule|bottomrule|hline)\s*', '', body)
             body = re.sub(r'\\cline\{[^}]*\}\s*', '', body)
-            
-            # Split into rows
-            rows_raw = re.split(r'\\\\(?:\[[^\]]*\])?\s*', body)
-            
-            result_lines = ["\n"]
-            for row in rows_raw:
+            rows = re.split(r'\\\\(?:\[[^\]]*\])?\s*', body)
+
+            md_lines = []
+            for row in rows:
                 row = row.strip()
                 if not row:
                     continue
                 cells = [c.strip() for c in row.split('&')]
-                # Clean each cell (basic cleanup, avoid recursive calls)
-                # Handle multicolumn first: \multicolumn{n}{align}{content}
                 cells = [re.sub(r'\\multicolumn\{\d+\}\{[^}]*\}\{([^}]*)\}', r'\1', c) for c in cells]
-                # Then handle other LaTeX commands
-                cells = [re.sub(r'\\[a-zA-Z]+\{([^}]*)\}', r'\1', c) for c in cells]
-                cells = [c.strip() for c in cells if c.strip()]
-                if cells:
-                    result_lines.append("| " + " | ".join(cells) + " |")
-            
-            result_lines.append("")
-            return "\n".join(result_lines)
-        
-        text = re.sub(r'\\begin\{center\}.*?\\begin\{tabular\}\{[^}]*\}.*?\\end\{tabular\}.*?\\end\{center\}',
-                      convert_table_to_text, text, flags=re.DOTALL)
-        text = re.sub(r'\\begin\{tabular\}\{[^}]*\}.*?\\end\{tabular\}',
-                      convert_table_to_text, text, flags=re.DOTALL)
-        
-        # Clean up partially-stripped table remnants (from previous conversions)
-        # These patterns catch the "leaking" LaTeX we see in the current output
-        text = re.sub(r'center\s*\n*tabular\{[^}]*\}', '', text)
-        text = re.sub(r'tabular\{[^}]*\}', '', text)
-        text = re.sub(r'tabular\s*\n*center', '', text)
-        text = re.sub(r'\n(?:center|tabular)\s*\n', '\n', text)
-        # Remove lines that are just cell separators or row markers
-        text = re.sub(r'^[&\\|]+\s*$', '', text, flags=re.MULTILINE)
-        
-        # Text formatting
-        text = re.sub(r'\\textbf\{([^}]*)\}', r'**\1**', text)
-        text = re.sub(r'\\textit\{([^}]*)\}', r'*\1*', text)
-        text = re.sub(r'\\emph\{([^}]*)\}', r'*\1*', text)
-        text = re.sub(r'\\textsc\{([^}]*)\}', r'\1', text)
-        text = re.sub(r'\\textsf\{([^}]*)\}', r'\1', text)
-        text = re.sub(r'\\texttt\{([^}]*)\}', r'`\1`', text)
-        
-        # References (convert to readable text for now)
-        text = re.sub(r'\\cref\{([^}]*)\}', r'[\1]', text)
-        text = re.sub(r'\\Cref\{([^}]*)\}', r'[\1]', text)
-        text = re.sub(r'\\ref\{([^}]*)\}', r'[\1]', text)
-        
-        # Index entries (remove)
-        text = re.sub(r'\\index\{[^}]*\}', '', text)
-        
-        # Remove labels
-        text = re.sub(r'\\label\{[^}]*\}', '', text)
-        
-        # Handle common math symbols that might be outside $ $
-        text = re.sub(r'\\R\b', 'ℝ', text)
-        text = re.sub(r'\\N\b', 'ℕ', text)
-        text = re.sub(r'\\Z\b', 'ℤ', text)
-        text = re.sub(r'\\Q\b', 'ℚ', text)
-        text = re.sub(r'\\C\b', 'ℂ', text)
-        
-        # Handle \abs{...} → |...|
-        text = re.sub(r'\\abs\{([^}]*)\}', r'|\1|', text)
-        
-        # Handle \dfrac and \frac outside of math mode (wrap in $)
-        def wrap_frac(match):
-            idx = len(math_blocks)
-            math_blocks.append(f"${match.group(0)}$")
-            return f"__MATH_BLOCK_{idx}__"
-        text = re.sub(r'\\d?frac\{[^}]*\}\{[^}]*\}', wrap_frac, text)
-        
-        # Handle \sqrt outside math mode
-        def wrap_sqrt(match):
-            idx = len(math_blocks)
-            math_blocks.append(f"${match.group(0)}$")
-            return f"__MATH_BLOCK_{idx}__"
-        text = re.sub(r'\\sqrt(?:\[[^\]]*\])?\{[^}]*\}', wrap_sqrt, text)
-        
-        # Handle quotes
-        text = re.sub(r"``", '"', text)
-        text = re.sub(r"''", '"', text)
-        
-        # Handle dashes
-        text = re.sub(r'---', '—', text)
-        text = re.sub(r'--', '–', text)
-        
-        # Handle ellipsis
-        text = re.sub(r'\\ldots', '…', text)
-        text = re.sub(r'\\dots', '…', text)
-        
-        # Handle lettrine (drop cap) - just extract the text
-        text = re.sub(r'\\lettrine(?:\[[^\]]*\])?\{[^}]*\}\{([^}]*)\}', r'\1', text)
-        
-        # Handle tilde for non-breaking space
-        text = re.sub(r'~', ' ', text)
-        
-        # Remove remaining unknown commands (but preserve their arguments)
-        text = re.sub(r'\\[a-zA-Z]+\*?(?:\[[^\]]*\])?\{([^}]*)\}', r'\1', text)
-        
-        # Remove standalone commands without arguments  
-        text = re.sub(r'\\[a-zA-Z]+\*?(?:\[[^\]]*\])?(?=\s|[^a-zA-Z]|$)', '', text)
-        
-        # Restore math blocks (convert \[...\] to $$...$$ for KaTeX)
-        # Loop multiple times in case new placeholders were added during processing
-        for i in range(len(math_blocks)):
-            block = math_blocks[i]
-            # Convert \[...\] to $$...$$
-            if block.startswith('\\[') and block.endswith('\\]'):
-                block = '$$' + block[2:-2] + '$$'
-                math_blocks[i] = block
-            text = text.replace(f"__MATH_BLOCK_{i}__", block)
-        # Final safety: catch any remaining unreplaced placeholders
-        text = re.sub(r'__MATH_BLOCK_(\d+)__', lambda m: math_blocks[int(m.group(1))] if int(m.group(1)) < len(math_blocks) else '', text)
-        
-        # Safety: convert any remaining \[...\] to $$...$$ that weren't caught by regex
-        # Use negative lookbehind to avoid mangling \\[8pt] line breaks inside math
-        text = re.sub(r'(?<!\\)\\\[', '$$', text)
-        text = re.sub(r'(?<!\\)\\\]', '$$', text)
-        
-        # Safety: strip any remaining \hline (cosmetic table rules)
-        text = text.replace('\\hline', '')
-        
-        # Final pass: replace any __ESCAPED_DOLLAR__ that was inside math blocks
-        text = text.replace('__ESCAPED_DOLLAR__', '$')
-        
-        # Clean up extra whitespace (but preserve paragraph breaks)
-        text = re.sub(r'[ \t]+', ' ', text)
-        text = re.sub(r'\n{3,}', '\n\n', text)
-        text = text.strip()
-        
+                md_lines.append("| " + " | ".join(cells) + " |")
+
+            text = text[:m.start()] + '\n' + '\n'.join(md_lines) + '\n' + text[end_full:]
         return text
-    
-    def _extract_inline_figures(self, content: str, chapter_num: int = 0) -> List[ContentBlock]:
-        """Extract figure environments embedded within other content."""
-        figures = []
-        for m in re.finditer(r'\\begin\{figure\}(?:\[[^\]]*\])?(.*?)\\end\{figure\}', content, re.DOTALL):
-            fig = self._parse_figure(m.group(1), chapter_num)
-            if fig:
-                figures.append(fig)
-        return figures
 
-    def _parse_exercises(self, content: str, chapter_num: int, section_num: int) -> List[ContentBlock]:
-        """Parse exercises section into exercise content blocks."""
-        exercises = []
-        exercise_num = 0
-        
-        # Strategy: find all exercise boundaries, then extract each one
-        # Patterns:
-        # 1. \begin{exercise}[optional]...\end{exercise}
-        # 2. \exercisestar ... (standalone command, runs to next exercise/env/double-newline)
-        # 3. \exerciseconceptual ...
-        # 4. \exerciseerror ...
-        # 5. \exercisetech ...
-        
-        # First, unwrap exerciseblock and multicols environments
-        content = re.sub(r'\\begin\{exerciseblock\}(?:\{[^}]*\})?', '', content)
-        content = re.sub(r'\\end\{exerciseblock\}', '', content)
-        content = re.sub(r'\\begin\{multicols\}\{\d+\}', '', content)
-        content = re.sub(r'\\end\{multicols\}', '', content)
-        
-        # Find all exercise starts
-        # Pattern for \begin{exercise} environments
-        env_pattern = r'\\begin\{exercise\}(?:\[([^\]]*)\])?(.*?)\\end\{exercise\}'
-        # Pattern for standalone exercise commands
-        cmd_pattern = r'\\(exercisestar|exerciseconceptual|exerciseerror|exercisetech)\s+(.*?)(?=\\begin\{exercise\}|\\exercise(?:star|conceptual|error|tech)\b|\\subsection|\\section|\Z)'
-        
-        # Combine: find all exercises in order by position
-        all_exercises = []
-        
-        for m in re.finditer(env_pattern, content, re.DOTALL):
-            optional = m.group(1) or ""
-            body = m.group(2).strip()
-            variant = "regular"
-            if '$\\star$' in optional or r'\star' in optional:
-                variant = "starred"
-            elif optional.lower() in ('proof', 'show that'):
-                variant = "proof"
-            all_exercises.append((m.start(), variant, body, optional))
-        
-        for m in re.finditer(cmd_pattern, content, re.DOTALL):
-            cmd = m.group(1)
-            body = m.group(2).strip()
-            variant_map = {
-                "exercisestar": "starred",
-                "exerciseconceptual": "conceptual",
-                "exerciseerror": "error",
-                "exercisetech": "tech",
-            }
-            variant = variant_map.get(cmd, "regular")
-            all_exercises.append((m.start(), variant, body, ""))
-        
-        # Sort by position in source
-        all_exercises.sort(key=lambda x: x[0])
-        
-        for _, variant, body, label in all_exercises:
-            exercise_num += 1
-            ex_id = f"ex-{chapter_num}.{section_num}-{exercise_num}"
-            
-            problem_text = self._convert_latex_to_text(body)
-            if not problem_text.strip():
-                continue
-            
-            # Strip trailing category headers that leak from exercise group separators
-            # These are standalone bold headers like **Evaluating Functions**, **Error Analysis**, etc.
-            problem_text = re.sub(r'\n\n\*\*[A-Z][^*\n]+\*\*\s*$', '', problem_text)
-            problem_text = problem_text.rstrip()
-            
-            data = {
-                "id": ex_id,
-                "number": str(exercise_num),
-                "problem": problem_text,
-                "variant": variant,
-                "hint": None,
-                "answer": None,
-            }
-            if label and label not in ('$\\star$', r'\star', 'Proof', 'Show That'):
-                data["label"] = self._clean_latex_text(label)
-            
-            exercises.append(ContentBlock("exercise", data))
-        
-        return exercises
+    def _convert_formatting_commands(self, text: str) -> str:
+        """Convert \\textbf, \\emph, \\textit, etc. using brace-aware parsing."""
+        cmds = [
+            ('\\textbf{', '**', '**'),
+            ('\\mathbf{', '**', '**'),
+            ('\\textit{', '*', '*'),
+            ('\\emph{', '*', '*'),
+            ('\\texttt{', '`', '`'),
+            ('\\textsc{', '', ''),
+            ('\\textsf{', '', ''),
+            ('\\textrm{', '', ''),
+        ]
 
-    def _clean_latex_text(self, text: str) -> str:
-        """Clean LaTeX text for plain text output."""
-        # Handle LaTeX accents first
-        text = self._convert_accents(text)
-        
-        # First convert
-        text = self._convert_latex_to_text(text)
-        
-        # Remove remaining math delimiters for plain text
-        # (keep them in content blocks)
-        
-        return text.strip()
-    
+        for cmd, prefix, suffix in cmds:
+            while cmd in text:
+                idx = text.index(cmd)
+                brace_pos = idx + len(cmd) - 1
+                content, end_pos = extract_braced(text, brace_pos)
+                text = text[:idx] + prefix + content + suffix + text[end_pos:]
+
+        return text
+
     def _convert_accents(self, text: str) -> str:
-        """Convert LaTeX accent commands to Unicode."""
-        accent_map = {
-            # Circumflex
-            (r"\^{o}", "ô"), (r"\^{O}", "Ô"),
-            (r"\^{e}", "ê"), (r"\^{E}", "Ê"),
-            (r"\^{a}", "â"), (r"\^{A}", "Â"),
-            (r"\^{i}", "î"), (r"\^{I}", "Î"),
-            (r"\^{u}", "û"), (r"\^{U}", "Û"),
-            # Acute
-            (r"\'{e}", "é"), (r"\'{E}", "É"),
-            (r"\'{a}", "á"), (r"\'{A}", "Á"),
-            (r"\'{o}", "ó"), (r"\'{O}", "Ó"),
-            (r"\'{i}", "í"), (r"\'{I}", "Í"),
-            (r"\'{u}", "ú"), (r"\'{U}", "Ú"),
-            # Grave
-            (r"\`{e}", "è"), (r"\`{E}", "È"),
-            (r"\`{a}", "à"), (r"\`{A}", "À"),
-            (r"\`{o}", "ò"), (r"\`{O}", "Ò"),
-            # Umlaut
-            (r'\"o', "ö"), (r'\"O', "Ö"),
-            (r'\"u', "ü"), (r'\"U', "Ü"),
-            (r'\"a', "ä"), (r'\"A', "Ä"),
-            (r'\"e', "ë"), (r'\"E', "Ë"),
-            # Cedilla
-            (r"\c{c}", "ç"), (r"\c{C}", "Ç"),
-            # Tilde
-            (r"\~{n}", "ñ"), (r"\~{N}", "Ñ"),
-            (r"\~{a}", "ã"), (r"\~{A}", "Ã"),
-            (r"\~{o}", "õ"), (r"\~{O}", "Õ"),
-        }
-        
-        for pattern, replacement in accent_map:
-            text = text.replace(pattern, replacement)
-        
-        # Also handle shorthand accents without braces
-        text = re.sub(r"\\'{([aeiouAEIOU])}", lambda m: {
-            'a': 'á', 'e': 'é', 'i': 'í', 'o': 'ó', 'u': 'ú',
-            'A': 'Á', 'E': 'É', 'I': 'Í', 'O': 'Ó', 'U': 'Ú'
-        }.get(m.group(1), m.group(1)), text)
-        
-        text = re.sub(r"\\`{([aeiouAEIOU])}", lambda m: {
-            'a': 'à', 'e': 'è', 'i': 'ì', 'o': 'ò', 'u': 'ù',
-            'A': 'À', 'E': 'È', 'I': 'Ì', 'O': 'Ò', 'U': 'Ù'
-        }.get(m.group(1), m.group(1)), text)
-        
-        text = re.sub(r'\\\^{([aeiouAEIOU])}', lambda m: {
-            'a': 'â', 'e': 'ê', 'i': 'î', 'o': 'ô', 'u': 'û',
-            'A': 'Â', 'E': 'Ê', 'I': 'Î', 'O': 'Ô', 'U': 'Û'
-        }.get(m.group(1), m.group(1)), text)
-        
+        """Convert LaTeX accents to Unicode."""
+        replacements = [
+            (r"\'{e}", "é"), (r"\'{a}", "á"), (r"\'{o}", "ó"),
+            (r"\'{i}", "í"), (r"\'{u}", "ú"),
+            (r"\`{e}", "è"), (r"\`{a}", "à"), (r"\`{o}", "ò"),
+            (r"\^{o}", "ô"), (r"\^{e}", "ê"), (r"\^{a}", "â"),
+            (r'\"o', "ö"), (r'\"u', "ü"), (r'\"a', "ä"),
+            (r"\c{c}", "ç"), (r"\~{n}", "ñ"),
+        ]
+        for pat, rep in replacements:
+            text = text.replace(pat, rep)
         return text
+
+
+# ═══════════════════════════════════════════════════════════════
+# POST-PROCESSING: ATTACH ORPHAN SOLUTIONS
+# ═══════════════════════════════════════════════════════════════
+
+def attach_orphan_solutions(blocks: List[Dict]) -> List[Dict]:
+    """Attach standalone _solution blocks to the previous example."""
+    result = []
+    for block in blocks:
+        if block.get("type") == "_solution":
+            # Attach to previous example
+            if result and result[-1].get("type") == "example" and not result[-1].get("solution"):
+                result[-1]["solution"] = block["content"]
+            # Otherwise discard
+            continue
+        result.append(block)
+    return result
+
+
+def clean_empty_blocks(blocks: List[Dict]) -> List[Dict]:
+    """Remove empty/trivial blocks."""
+    result = []
+    for block in blocks:
+        btype = block.get("type", "")
+        if btype == "paragraph" and not block.get("text", "").strip():
+            continue
+        if btype == "list" and not block.get("items"):
+            continue
+        result.append(block)
+    return result
 
 
 # ═══════════════════════════════════════════════════════════════
@@ -1323,203 +1597,151 @@ class LatexConverter:
 # ═══════════════════════════════════════════════════════════════
 
 class BookConverter:
-    """Converts an entire textbook to JSON."""
-    
-    def __init__(self, christian_edition: bool = True):
-        self.converter = LatexConverter(christian_edition)
-    
+    def __init__(self, christian: bool = True):
+        self.christian = christian
+
     def convert_book(self, book_name: str, chapter_filter: Optional[int] = None) -> bool:
-        """Convert a textbook to JSON."""
         book_path = TEXTBOOKS_DIR / book_name
-        
         if not book_path.exists():
             logger.error(f"❌ Book not found: {book_path}")
             return False
-        
+
         logger.info(f"📚 Converting: {book_name}")
-        
-        # Create output directory
         output_path = OUTPUT_DIR / book_name
         output_path.mkdir(parents=True, exist_ok=True)
-        
-        # Find all chapter directories
+
         chapter_dirs = self._find_chapter_dirs(book_path)
-        
         if chapter_filter is not None:
-            chapter_dirs = [
-                d for d in chapter_dirs 
-                if self._extract_chapter_num(d.name) == chapter_filter
-            ]
-        
+            chapter_dirs = [d for d in chapter_dirs if self._chapter_num(d.name) == chapter_filter]
+
         if not chapter_dirs:
-            logger.warning(f"  ⚠️ No chapters found")
+            logger.warning("  ⚠️ No chapters found")
             return False
-        
-        # Build book manifest
+
         book_data = {
             "id": book_name,
             "title": BOOK_TITLES.get(book_name, book_name.replace("-", " ").title()),
             "subtitle": "",
             "author": "Atlas Classical Press",
-            "chapters": []
+            "chapters": [],
         }
-        
+
         for chapter_dir in chapter_dirs:
-            chapter_num = self._extract_chapter_num(chapter_dir.name)
-            if chapter_num is None:
+            ch_num = self._chapter_num(chapter_dir.name)
+            if ch_num is None:
                 continue
-            
-            logger.info(f"  📖 Chapter {chapter_num}: {chapter_dir.name}")
-            
-            # Get chapter info
-            chapter_info = self._parse_chapter_file(chapter_dir, chapter_num)
-            
-            # Create chapter output directory
-            ch_output = output_path / f"ch{chapter_num:02d}"
+
+            logger.info(f"  📖 Chapter {ch_num}: {chapter_dir.name}")
+            ch_title = self._get_chapter_title(chapter_dir)
+            ch_output = output_path / f"ch{ch_num:02d}"
             ch_output.mkdir(exist_ok=True)
-            
-            # Find and convert section files
+
             section_files = self._find_section_files(chapter_dir)
             sections_meta = []
-            
+
             for sec_num, sec_file in enumerate(section_files, start=1):
                 logger.info(f"    📄 Section {sec_num}: {sec_file.name}")
-                
                 try:
-                    section = self.converter.parse_section_file(
-                        sec_file, book_name, chapter_num, sec_num
-                    )
-                    
-                    # Write section JSON
+                    with open(sec_file, 'r', encoding='utf-8') as f:
+                        raw = f.read()
+
+                    parser = SectionParser(book_name, ch_num, sec_num, self.christian)
+                    sec = parser.parse(raw)
+
+                    # Post-process
+                    sec.content = attach_orphan_solutions(sec.content)
+                    sec.content = clean_empty_blocks(sec.content)
+
+                    # Write JSON
                     sec_output = ch_output / f"sec{sec_num:02d}.json"
                     with open(sec_output, 'w', encoding='utf-8') as f:
-                        json.dump(section.to_dict(), f, indent=2, ensure_ascii=False)
-                    
-                    # Add to chapter metadata
-                    slug = self._title_to_slug(section.title)
+                        json.dump(sec.to_dict(), f, indent=2, ensure_ascii=False)
+
+                    slug = self._title_to_slug(sec.title)
                     sections_meta.append({
                         "id": f"sec{sec_num:02d}",
                         "number": sec_num,
-                        "title": section.title,
+                        "title": sec.title,
                         "slug": slug,
                     })
-                    
                     logger.info(f"      ✅ {sec_output.name}")
-                    
+
                 except Exception as e:
                     logger.error(f"      ❌ Error: {e}")
                     import traceback
                     traceback.print_exc()
-            
-            # Add chapter to book manifest
+
             book_data["chapters"].append({
-                "id": f"ch{chapter_num:02d}",
-                "number": chapter_num,
-                "title": chapter_info.get("title", f"Chapter {chapter_num}"),
+                "id": f"ch{ch_num:02d}",
+                "number": ch_num,
+                "title": ch_title,
                 "sections": sections_meta,
             })
-        
+
         # Write book manifest
         manifest_path = output_path / "book.json"
         with open(manifest_path, 'w', encoding='utf-8') as f:
             json.dump(book_data, f, indent=2, ensure_ascii=False)
-        
+
         logger.info(f"  📋 Wrote manifest: {manifest_path}")
         logger.info(f"✅ Done: {book_name}")
-        
         return True
-    
+
     def _find_chapter_dirs(self, book_path: Path) -> List[Path]:
-        """Find all chapter directories in a book."""
         dirs = []
         for d in sorted(book_path.iterdir()):
-            if d.is_dir() and (d.name.startswith('ch') or re.match(r'ch\d', d.name)):
+            if d.is_dir() and re.match(r'ch\d', d.name):
                 dirs.append(d)
         return dirs
-    
-    def _extract_chapter_num(self, dir_name: str) -> Optional[int]:
-        """Extract chapter number from directory name."""
-        match = re.search(r'ch(\d+)', dir_name)
-        if match:
-            return int(match.group(1))
-        return None
-    
-    def _parse_chapter_file(self, chapter_dir: Path, chapter_num: int) -> Dict:
-        """Parse chapter.tex for chapter-level info."""
-        chapter_file = chapter_dir / "chapter.tex"
-        
-        info = {"title": f"Chapter {chapter_num}", "devotional": None}
-        
-        if not chapter_file.exists():
-            return info
-        
-        try:
-            with open(chapter_file, 'r', encoding='utf-8') as f:
-                content = f.read()
-            
-            # Extract chapter title
-            match = re.search(r'\\chapter\{([^}]+)\}', content)
-            if match:
-                info["title"] = self.converter._clean_latex_text(match.group(1))
-        except Exception:
-            pass
-        
-        return info
-    
-    def _find_section_files(self, chapter_dir: Path) -> List[Path]:
-        """Find all section .tex files in a chapter directory."""
-        files = []
-        
-        # First, try to find include order from chapter.tex
+
+    def _chapter_num(self, name: str) -> Optional[int]:
+        m = re.search(r'ch(\d+)', name)
+        return int(m.group(1)) if m else None
+
+    def _get_chapter_title(self, chapter_dir: Path) -> str:
         chapter_file = chapter_dir / "chapter.tex"
         if chapter_file.exists():
-            try:
-                with open(chapter_file, 'r', encoding='utf-8') as f:
-                    content = f.read()
-                
-                # Find \input commands
-                for match in re.finditer(r'\\input\{([^}]+)\}', content):
-                    input_path = match.group(1)
-                    # Handle relative paths
-                    if not input_path.endswith('.tex'):
-                        input_path += '.tex'
-                    
-                    # The path might be relative to the book root
-                    sec_file = chapter_dir / Path(input_path).name
-                    if not sec_file.exists():
-                        sec_file = chapter_dir.parent / input_path
-                    if sec_file.exists():
-                        file_name = sec_file.name.lower()
-                        # Skip frontmatter and chapter.tex itself
-                        if 'frontmatter' in file_name or file_name == 'chapter.tex':
-                            continue
-                        # Skip standalone devotional files (they're parsed via the section they belong to)
-                        if file_name.startswith('devotional') and 'sec' not in file_name:
-                            continue
-                        # Skip figures.tex files (they define figure commands, not sections)
-                        if file_name == 'figures.tex':
-                            continue
-                        # Skip exercises-additional.tex (exercises are in section files)
-                        if file_name.startswith('exercises-additional'):
-                            continue
-                        files.append(sec_file)
-            except Exception:
-                pass
-        
-        # If no files found from chapter.tex, scan directory
+            with open(chapter_file) as f:
+                content = f.read()
+            m = re.search(r'\\chapter\{([^}]+)\}', content)
+            if m:
+                return m.group(1).strip()
+        return f"Chapter {self._chapter_num(chapter_dir.name)}"
+
+    def _find_section_files(self, chapter_dir: Path) -> List[Path]:
+        """Find section files in order from chapter.tex \\input commands."""
+        chapter_file = chapter_dir / "chapter.tex"
+        files = []
+
+        if chapter_file.exists():
+            with open(chapter_file) as f:
+                content = f.read()
+            for m in re.finditer(r'\\input\{([^}]+)\}', content):
+                input_path = m.group(1)
+                if not input_path.endswith('.tex'):
+                    input_path += '.tex'
+                sec_file = chapter_dir / Path(input_path).name
+                if not sec_file.exists():
+                    sec_file = chapter_dir.parent / input_path
+                if sec_file.exists():
+                    name = sec_file.name.lower()
+                    # Skip non-section files
+                    if name in ('chapter.tex', 'figures.tex') or name.startswith('exercises-additional'):
+                        continue
+                    if 'frontmatter' in name or name.startswith('devotional'):
+                        continue
+                    files.append(sec_file)
+
         if not files:
             for f in sorted(chapter_dir.iterdir()):
-                if f.is_file() and f.suffix == '.tex':
+                if f.is_file() and f.suffix == '.tex' and f.name != 'chapter.tex':
                     name = f.name.lower()
-                    if name == 'chapter.tex' or 'frontmatter' in name:
-                        continue
-                    if 'sec' in name or 'exercises-additional' in name:
+                    if 'sec' in name and name != 'figures.tex' and not name.startswith('exercises-additional'):
                         files.append(f)
-        
+
         return files
-    
+
     def _title_to_slug(self, title: str) -> str:
-        """Convert a title to a URL slug."""
         slug = title.lower()
         slug = re.sub(r'[^a-z0-9\s-]', '', slug)
         slug = re.sub(r'\s+', '-', slug)
@@ -1535,33 +1757,14 @@ def main():
     parser = argparse.ArgumentParser(
         description="Convert Atlas LaTeX textbooks to JSON for Axiom Web Reader"
     )
-    parser.add_argument(
-        "--book", "-b",
-        help="Textbook to convert (e.g., vol1, college-algebra)"
-    )
-    parser.add_argument(
-        "--chapter", "-c",
-        type=int,
-        help="Specific chapter number to convert"
-    )
-    parser.add_argument(
-        "--all", "-a",
-        action="store_true",
-        help="Convert all textbooks"
-    )
-    parser.add_argument(
-        "--list", "-l",
-        action="store_true",
-        help="List available textbooks"
-    )
-    parser.add_argument(
-        "--secular",
-        action="store_true",
-        help="Generate secular edition (omit Christian content)"
-    )
-    
+    parser.add_argument("--book", "-b", help="Textbook to convert")
+    parser.add_argument("--chapter", "-c", type=int, help="Specific chapter")
+    parser.add_argument("--all", "-a", action="store_true", help="Convert all textbooks")
+    parser.add_argument("--list", "-l", action="store_true", help="List available textbooks")
+    parser.add_argument("--secular", action="store_true", help="Secular edition")
+
     args = parser.parse_args()
-    
+
     if args.list:
         print("Available textbooks:")
         for d in sorted(TEXTBOOKS_DIR.iterdir()):
@@ -1569,19 +1772,14 @@ def main():
                 title = BOOK_TITLES.get(d.name, "")
                 print(f"  - {d.name}" + (f" ({title})" if title else ""))
         return
-    
-    christian_edition = not args.secular
-    converter = BookConverter(christian_edition)
-    
+
+    converter = BookConverter(christian=not args.secular)
+
     if args.all:
-        books = [
-            d.name for d in TEXTBOOKS_DIR.iterdir()
-            if d.is_dir() and not d.name.startswith('.') 
-            and d.name not in ['shared', 'homework']
-        ]
+        books = [d.name for d in TEXTBOOKS_DIR.iterdir()
+                 if d.is_dir() and not d.name.startswith('.') and d.name not in ['shared', 'homework']]
         for book in sorted(books):
             converter.convert_book(book)
-            print()
     elif args.book:
         converter.convert_book(args.book, args.chapter)
     else:
