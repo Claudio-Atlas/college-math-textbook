@@ -1231,6 +1231,11 @@ class LatexConverter:
             if not problem_text.strip():
                 continue
             
+            # Strip trailing category headers that leak from exercise group separators
+            # These are standalone bold headers like **Evaluating Functions**, **Error Analysis**, etc.
+            problem_text = re.sub(r'\n\n\*\*[A-Z][^*\n]+\*\*\s*$', '', problem_text)
+            problem_text = problem_text.rstrip()
+            
             data = {
                 "id": ex_id,
                 "number": str(exercise_num),
