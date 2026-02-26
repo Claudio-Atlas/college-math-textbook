@@ -297,245 +297,280 @@
       "id": "ch11-sec04-ex-1",
       "number": "1",
       "problem": "Fill in the blanks.\n\n1. In mathematical induction, the verifies \n that the statement holds for the first value of $n$.\n\n2. The assumes the statement is true for \n $n = k$ and proves it for $n = k + 1$.\n\n3. In the inductive step, the assumption that $P(k)$ is true is called \n the .\n\n4. induction allows us to assume $P(1), P(2), \n \\ldots, P(k)$ are all true when proving $P(k+1)$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "(a) base case (b) inductive step (c) inductive hypothesis (d) Strong"
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-2",
       "number": "2",
       "problem": "True or False. Justify your answer.\n\n1. If a statement fails the base case but satisfies the inductive step, \n then it is true for all $n \\geq 2$.\n\n2. Mathematical induction can prove statements about all positive integers.\n\n3. In the inductive step, we prove $P(k)$ is true by assuming $P(k+1)$ is true.\n\n4. Strong induction is more powerful than ordinary induction (i.e., it \n can prove statements that ordinary induction cannot).",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-3",
       "number": "3",
       "problem": "Explain why the following \"proof\" is invalid:\n\n**Claim:** All horses are the same color.\n\n**\"Proof\":** Base case ($n = 1$): A single horse is trivially the same \ncolor as itself. ✓\n\nInductive step: Assume any group of $k$ horses are the same color. Consider \na group of $k + 1$ horses. Remove one horse; the remaining $k$ horses are \nthe same color (by hypothesis). Replace the removed horse and remove a \ndifferent horse; this group of $k$ horses is also the same color. Therefore, \nall $k + 1$ horses are the same color. ✓\n\nBy induction, all horses are the same color. \n\nWhere is the error?",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "The error is in the inductive step when $k = 1$. With 2 horses, removing one and then the other gives two disjoint sets of 1 horse each—there's no overlap, so the argument fails."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-4",
       "number": "4",
       "problem": "$\\displaystyle 1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2}$",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-5",
       "number": "5",
       "problem": "$\\displaystyle 2 + 4 + 6 + \\cdots + 2n = n(n+1)$",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "Base case ($n=1$): $2(1) = 2$ and $1(2) = 2$ \\checkmark. Inductive step uses $k(k+1) + 2(k+1) = (k+1)(k+2)$."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-6",
       "number": "6",
       "problem": "$\\displaystyle 1 + 3 + 5 + \\cdots + (2n-1) = n^2$",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-7",
       "number": "7",
       "problem": "$\\displaystyle 1^2 + 2^2 + 3^2 + \\cdots + n^2 = \\frac{n(n+1)(2n+1)}{6}$",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "Base case ($n=1$): $1^2 = 1$ and $\\frac{1(2)(3)}{6} = 1$ \\checkmark. Inductive step: add $(k+1)^2$ to both sides and simplify."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-8",
       "number": "8",
       "problem": "$\\displaystyle 1^3 + 2^3 + 3^3 + \\cdots + n^3 = \\left[\\frac{n(n+1)}{2}\\right]^2$",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-9",
       "number": "9",
       "problem": "$\\displaystyle \\frac{1}{1 \\cdot 2} + \\frac{1}{2 \\cdot 3} + \\frac{1}{3 \\cdot 4} + \\cdots + \\frac{1}{n(n+1)} = \\frac{n}{n+1}$",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "Base case ($n=1$): $\\frac{1}{1\\cdot 2} = \\frac{1}{2}$ and $\\frac{1}{2}$ \\checkmark. Inductive step: $\\frac{k}{k+1} + \\frac{1}{(k+1)(k+2)} = \\frac{k(k+2)+1}{(k+1)(k+2)} = \\frac{(k+1)^2}{(k+1)(k+2)} = \\frac{k+1}{k+2}$."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-10",
       "number": "10",
       "problem": "$\\displaystyle 1 \\cdot 2 + 2 \\cdot 3 + 3 \\cdot 4 + \\cdots + n(n+1) = \\frac{n(n+1)(n+2)}{3}$",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-11",
       "number": "11",
       "problem": "$\\displaystyle 1 + r + r^2 + \\cdots + r^{n-1} = \\frac{r^n - 1}{r - 1}$ (for $r \\neq 1$)",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "Base case ($n=1$): $1 = \\frac{r-1}{r-1} = 1$ \\checkmark. Inductive step: $\\frac{r^k-1}{r-1} + r^k = \\frac{r^k - 1 + r^{k+1} - r^k}{r-1} = \\frac{r^{k+1}-1}{r-1}$."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-12",
       "number": "12",
       "problem": "$\\displaystyle \\sum_{i=1}^{n} i \\cdot 2^i = (n-1) \\cdot 2^{n+1} + 2$",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-13",
       "number": "13",
       "problem": "$3^n - 1$ is divisible by $2$ for all $n \\geq 1$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "Base: $3^1 - 1 = 2$ divisible by 2. Inductive: $3^{k+1} - 1 = 3(3^k) - 1 = 3(2m+1) - 1 = 6m + 2 = 2(3m+1)$."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-14",
       "number": "14",
       "problem": "$4^n - 1$ is divisible by $3$ for all $n \\geq 1$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-15",
       "number": "15",
       "problem": "$5^n - 1$ is divisible by $4$ for all $n \\geq 1$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "Base: $5^1 - 1 = 4$ divisible by 4. Inductive: $5^{k+1} - 1 = 5(4m+1) - 1 = 20m + 4 = 4(5m+1)$."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-16",
       "number": "16",
       "problem": "$7^n - 1$ is divisible by $6$ for all $n \\geq 1$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-17",
       "number": "17",
       "problem": "$n^3 - n$ is divisible by $6$ for all $n \\geq 1$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "Base: $1^3 - 1 = 0$ divisible by 6. Inductive: $(k+1)^3 - (k+1) = (k+1)(k)(k+2)$, product of 3 consecutive integers divisible by 6."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-18",
       "number": "18",
       "problem": "$n^3 + 2n$ is divisible by $3$ for all $n \\geq 1$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-19",
       "number": "19",
       "problem": "$n^5 - n$ is divisible by $5$ for all $n \\geq 1$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "Base: $1^5 - 1 = 0$ divisible by 5. Alternative proof: $n^5 - n = n(n^4-1) = n(n^2-1)(n^2+1) = n(n-1)(n+1)(n^2+1)$, use Fermat's Little Theorem or direct induction."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-20",
       "number": "20",
       "problem": "$8^n - 3^n$ is divisible by $5$ for all $n \\geq 1$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-21",
       "number": "21",
       "problem": "$2^n > n$ for all $n \\geq 1$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "Base ($n=1$): $2^1 = 2 > 1$ \\checkmark. Inductive: $2^{k+1} = 2 \\cdot 2^k > 2k > k+1$ for $k \\geq 1$."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-22",
       "number": "22",
       "problem": "$2^n \\geq n^2$ for all $n \\geq 4$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-23",
       "number": "23",
       "problem": "$2^n > n^2$ for all $n \\geq 5$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "Base ($n=5$): $32 > 25$ \\checkmark. Inductive: $2^{k+1} = 2 \\cdot 2^k > 2k^2 > (k+1)^2$ when $k^2 > 2k+1$, true for $k \\geq 5$."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-24",
       "number": "24",
       "problem": "$n! > 2^n$ for all $n \\geq 4$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-25",
       "number": "25",
       "problem": "$n! > 3^n$ for all $n \\geq 7$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "Base ($n=7$): $5040 > 2187$ \\checkmark. Inductive: $(k+1)! = (k+1) \\cdot k! > (k+1) \\cdot 3^k > 3 \\cdot 3^k = 3^{k+1}$ when $k+1 > 3$, true for $k \\geq 7$."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-26",
       "number": "26",
       "problem": "$(1 + x)^n \\geq 1 + nx$ for all $n \\geq 1$ and $x > -1$. (Bernoulli's Inequality)",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-27",
       "number": "27",
       "problem": "$a - b$ is a factor of $a^n - b^n$ for all $n \\geq 1$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "Base ($n=1$): $a-b$ divides $a^1 - b^1 = a-b$ \\checkmark. Inductive: $a^{k+1} - b^{k+1} = a(a^k - b^k) + b^k(a-b)$. Both terms divisible by $a-b$."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-28",
       "number": "28",
       "problem": "$a + b$ is a factor of $a^{2n-1} + b^{2n-1}$ for all $n \\geq 1$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-29",
       "number": "29",
       "problem": "$\\displaystyle \\left(1 + \\frac{1}{1}\\right)\\left(1 + \\frac{1}{2}\\right)\\left(1 + \\frac{1}{3}\\right) \\cdots \\left(1 + \\frac{1}{n}\\right) = n + 1$",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "Product telescopes: $\\frac{2}{1} \\cdot \\frac{3}{2} \\cdot \\frac{4}{3} \\cdots \\frac{n+1}{n} = n+1$."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-30",
       "number": "30",
       "problem": "The number of subsets of a set with $n$ elements is $2^n$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-31",
       "number": "31",
       "problem": "$\\cos(\\theta) + \\cos(2\\theta) + \\cdots + \\cos(n\\theta) = \\dfrac{\\sin(n\\theta/2)\\cos((n+1)\\theta/2)}{\\sin(\\theta/2)}$ for $\\theta \\neq 2\\pi k$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "Base: $\\cos\\theta = \\frac{\\sin(\\theta/2)\\cos(\\theta)}{\\sin(\\theta/2)}$ \\checkmark (using $\\sin\\theta = 2\\sin(\\theta/2)\\cos(\\theta/2)$). Inductive step uses sum-to-product identities."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-32",
       "number": "32",
       "problem": "De Moivre's Theorem: $(\\cos\\theta + i\\sin\\theta)^n = \\cos(n\\theta) + i\\sin(n\\theta)$ for all $n \\geq 1$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-33",
       "number": "33",
       "problem": "A staircase has $n$ steps. You can climb either 1 or 2 steps at a time. \nLet $S_n$ be the number of ways to climb the staircase.\n\n1. Find $S_1$, $S_2$, $S_3$, and $S_4$ by listing the possibilities.\n\n2. Explain why $S_n = S_{n-1} + S_{n-2}$ for $n \\geq 3$.\n\n3. Prove by strong induction that $S_n = F_{n+1}$ (the $(n+1)$th Fibonacci number).",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "(a) $S_1 = 1$, $S_2 = 2$, $S_3 = 3$, $S_4 = 5$ (b) Either take 1 step (then $S_{n-1}$ ways remain) or take 2 steps (then $S_{n-2}$ ways remain). (c) $S_n = F_{n+1}$ where $F_k$ is Fibonacci."
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-34",
       "number": "34",
       "problem": "The Tower of Hanoi puzzle has $n$ disks of different sizes on one peg, \nstacked from largest (bottom) to smallest (top). The goal is to move all \ndisks to another peg, moving one disk at a time, never placing a larger \ndisk on a smaller one. Let $T_n$ be the minimum number of moves required.\n\n1. Find $T_1$, $T_2$, and $T_3$.\n\n2. Explain why $T_n = 2T_{n-1} + 1$ for $n \\geq 2$.\n\n3. Prove by induction that $T_n = 2^n - 1$.",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": ""
     },
     {
       "type": "exercise",
       "id": "ch11-sec04-ex-35",
       "number": "35",
       "problem": "A triangular number $T_n$ is the number of dots in a triangular array with \n$n$ rows: $T_n = 1 + 2 + 3 + \\cdots + n$.\n\n1. Prove that $T_n = \\dfrac{n(n+1)}{2}$.\n\n2. Prove that $T_n + T_{n-1} = n^2$ (square numbers are sums of consecutive triangular numbers).",
-      "variant": "regular"
+      "variant": "regular",
+      "answer": "(a) $T_n = \\frac{n(n+1)}{2}$. (b) $T_n + T_{n-1} = \\frac{n(n+1)}{2} + \\frac{(n-1)n}{2} = \\frac{n(n+1+n-1)}{2} = \\frac{2n^2}{2} = n^2$.\n\n%═══════════════════════════════════════════════════════════════════════════════\n% SECTION 11.5: THE BINOMIAL THEOREM\n%═══════════════════════════════════════════════════════════════════════════════"
     }
   ]
 }
