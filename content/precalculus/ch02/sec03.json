@@ -162,7 +162,7 @@
       "number": "2.4",
       "title": "Synthetic division",
       "problem": "Use synthetic division to divide $f(x) = 3x^3 - 2x^2 + 5x - 4$ by \n$(x - 2)$.",
-      "solution": "Set up synthetic division with $c = 2$ and the coefficients of $f(x)$:\n\n$$\n\\beginarrayc|cccc\n2 & 3 & -2 & 5 & -4 \\\\\n & & 6 & 8 & 26 \\\\\n\n & 3 & 4 & 13 & 22\n\\endarray\n$$\n\n**Process:**\n\n1. Bring down the first coefficient: $3$.\n\n2. Multiply $2 \\times 3 = 6$, write under $-2$.\n\n3. Add: $-2 + 6 = 4$.\n\n4. Multiply $2 \\times 4 = 8$, write under $5$.\n\n5. Add: $5 + 8 = 13$.\n\n6. Multiply $2 \\times 13 = 26$, write under $-4$.\n\n7. Add: $-4 + 26 = 22$.\n\nThe bottom row gives the coefficients of the quotient (all but the \nlast number) and the remainder (the last number).\n\n**Result:**\n$$\n 3x^3 - 2x^2 + 5x - 4 = (x - 2)(3x^2 + 4x + 13) + 22\n$$"
+      "solution": "Set up synthetic division with $c = 2$ and the coefficients of $f(x)$:\n\n$$\n\\begin{array}{c|cccc}\n2 & 3 & -2 & 5 & -4 \\\\\n & & 6 & 8 & 26 \\\\\n\n & 3 & 4 & 13 & 22\n\\end{array}\n$$\n\n**Process:**\n\n1. Bring down the first coefficient: $3$.\n\n2. Multiply $2 \\times 3 = 6$, write under $-2$.\n\n3. Add: $-2 + 6 = 4$.\n\n4. Multiply $2 \\times 4 = 8$, write under $5$.\n\n5. Add: $5 + 8 = 13$.\n\n6. Multiply $2 \\times 13 = 26$, write under $-4$.\n\n7. Add: $-4 + 26 = 22$.\n\nThe bottom row gives the coefficients of the quotient (all but the \nlast number) and the remainder (the last number).\n\n**Result:**\n$$\n 3x^3 - 2x^2 + 5x - 4 = (x - 2)(3x^2 + 4x + 13) + 22\n$$"
     },
     {
       "type": "algorithm",
@@ -175,7 +175,7 @@
       "type": "tip",
       "id": "ch02-sec03-tip-1",
       "title": "Non-Monic Divisors",
-      "content": "Synthetic division requires divisors of the form $(x - c)$, with leading coefficient 1. \nFor divisors like $(2x - 1)$, rewrite as $2\\bigl(x - \\tfrac12\\bigr)$ and use $c = \\tfrac1{2}$. \nAfter dividing, remember to account for the factor of 2 in your final answer—the true quotient \nwhen dividing by $(2x - 1)$ is half of what synthetic division gives you."
+      "content": "Synthetic division requires divisors of the form $(x - c)$, with leading coefficient 1. \nFor divisors like $(2x - 1)$, rewrite as $2\\bigl(x - \\tfrac{1}{2}\\bigr)$ and use $c = \\tfrac{1}{2}$. \nAfter dividing, remember to account for the factor of 2 in your final answer—the true quotient \nwhen dividing by $(2x - 1)$ is half of what synthetic division gives you."
     },
     {
       "type": "example",
@@ -183,7 +183,7 @@
       "number": "2.5",
       "title": "Synthetic division with negative $c$",
       "problem": "Divide $f(x) = x^4 + 3x^3 - 2x + 5$ by $(x + 2)$.",
-      "solution": "Since the divisor is $(x + 2) = (x - (-2))$, we use $c = -2$.\n\nDon't forget the missing $x^2$ term! Use 0 as its coefficient.\n\n$$\n\\beginarrayc|ccccc\n-2 & 1 & 3 & 0 & -2 & 5 \\\\\n & & -2 & -2 & 4 & -4 \\\\\n\n & 1 & 1 & -2 & 2 & 1\n\\endarray\n$$\n\n**Result:**\n$$\n x^4 + 3x^3 - 2x + 5 = (x + 2)(x^3 + x^2 - 2x + 2) + 1\n$$"
+      "solution": "Since the divisor is $(x + 2) = (x - (-2))$, we use $c = -2$.\n\nDon't forget the missing $x^2$ term! Use 0 as its coefficient.\n\n$$\n\\begin{array}{c|ccccc}\n-2 & 1 & 3 & 0 & -2 & 5 \\\\\n & & -2 & -2 & 4 & -4 \\\\\n\n & 1 & 1 & -2 & 2 & 1\n\\end{array}\n$$\n\n**Result:**\n$$\n x^4 + 3x^3 - 2x + 5 = (x + 2)(x^3 + x^2 - 2x + 2) + 1\n$$"
     },
     {
       "type": "example",
@@ -191,7 +191,7 @@
       "number": "2.6",
       "title": "Synthetic division with zero remainder",
       "problem": "Divide $f(x) = x^3 - 6x^2 + 11x - 6$ by $(x - 1)$.",
-      "solution": "$$\n\\beginarrayc|cccc\n1 & 1 & -6 & 11 & -6 \\\\\n & & 1 & -5 & 6 \\\\\n\n & 1 & -5 & 6 & 0\n\\endarray\n$$\n\nThe remainder is 0, which tells us $(x - 1)$ is a factor!\n\n**Result:**\n$$\n x^3 - 6x^2 + 11x - 6 = (x - 1)(x^2 - 5x + 6)\n$$\n\nWe can factor further: $x^2 - 5x + 6 = (x - 2)(x - 3)$.\n\nSo $f(x) = (x - 1)(x - 2)(x - 3)$."
+      "solution": "$$\n\\begin{array}{c|cccc}\n1 & 1 & -6 & 11 & -6 \\\\\n & & 1 & -5 & 6 \\\\\n\n & 1 & -5 & 6 & 0\n\\end{array}\n$$\n\nThe remainder is 0, which tells us $(x - 1)$ is a factor!\n\n**Result:**\n$$\n x^3 - 6x^2 + 11x - 6 = (x - 1)(x^2 - 5x + 6)\n$$\n\nWe can factor further: $x^2 - 5x + 6 = (x - 2)(x - 3)$.\n\nSo $f(x) = (x - 1)(x - 2)(x - 3)$."
     },
     {
       "type": "heading",
@@ -227,7 +227,7 @@
       "number": "2.7",
       "title": "Using the Remainder Theorem",
       "problem": "Use the Remainder Theorem to find $f(3)$ for \n$f(x) = 2x^4 - 5x^3 + 3x - 7$.",
-      "solution": "By the Remainder Theorem, $f(3)$ equals the remainder when $f(x)$ is \ndivided by $(x - 3)$.\n\n$$\n\\beginarrayc|ccccc\n3 & 2 & -5 & 0 & 3 & -7 \\\\\n & & 6 & 3 & 9 & 36 \\\\\n\n & 2 & 1 & 3 & 12 & 29\n\\endarray\n$$\n\nThe remainder is 29, so $f(3) = 29$.\n\n*Verification:* \n$f(3) = 2(81) - 5(27) + 3(3) - 7 = 162 - 135 + 9 - 7 = 29$. ✓"
+      "solution": "By the Remainder Theorem, $f(3)$ equals the remainder when $f(x)$ is \ndivided by $(x - 3)$.\n\n$$\n\\begin{array}{c|ccccc}\n3 & 2 & -5 & 0 & 3 & -7 \\\\\n & & 6 & 3 & 9 & 36 \\\\\n\n & 2 & 1 & 3 & 12 & 29\n\\end{array}\n$$\n\nThe remainder is 29, so $f(3) = 29$.\n\n*Verification:* \n$f(3) = 2(81) - 5(27) + 3(3) - 7 = 162 - 135 + 9 - 7 = 29$. ✓"
     },
     {
       "type": "heading",
@@ -259,7 +259,7 @@
       "number": "2.8",
       "title": "Using the Factor Theorem",
       "problem": "Verify that $x = 2$ is a zero of $f(x) = x^3 - 6x^2 + 11x - 6$, then \nfactor $f(x)$ completely.",
-      "solution": "**Verification:**\n$$\n f(2) = 2^3 - 6(2)^2 + 11(2) - 6 = 8 - 24 + 22 - 6 = 0 \\quad \\checkmark\n$$\n\nBy the Factor Theorem, $(x - 2)$ is a factor. Use synthetic division:\n\n$$\n\\beginarrayc|cccc\n2 & 1 & -6 & 11 & -6 \\\\\n & & 2 & -8 & 6 \\\\\n\n & 1 & -4 & 3 & 0\n\\endarray\n$$\n\nSo $f(x) = (x - 2)(x^2 - 4x + 3)$.\n\nFactor the quadratic: $x^2 - 4x + 3 = (x - 1)(x - 3)$.\n\n**Complete factorization:**\n$$\n f(x) = (x - 1)(x - 2)(x - 3)\n$$"
+      "solution": "**Verification:**\n$$\n f(2) = 2^3 - 6(2)^2 + 11(2) - 6 = 8 - 24 + 22 - 6 = 0 \\quad \\checkmark\n$$\n\nBy the Factor Theorem, $(x - 2)$ is a factor. Use synthetic division:\n\n$$\n\\begin{array}{c|cccc}\n2 & 1 & -6 & 11 & -6 \\\\\n & & 2 & -8 & 6 \\\\\n\n & 1 & -4 & 3 & 0\n\\end{array}\n$$\n\nSo $f(x) = (x - 2)(x^2 - 4x + 3)$.\n\nFactor the quadratic: $x^2 - 4x + 3 = (x - 1)(x - 3)$.\n\n**Complete factorization:**\n$$\n f(x) = (x - 1)(x - 2)(x - 3)\n$$"
     },
     {
       "type": "example",
@@ -267,7 +267,7 @@
       "number": "2.9",
       "title": "Finding a factor by testing",
       "problem": "Factor $f(x) = 2x^3 + 3x^2 - 8x - 12$ completely.",
-      "solution": "We need to find a zero. Try simple values:\n\n$f(0) = -12 \\neq 0$\n\n$f(1) = 2 + 3 - 8 - 12 = -15 \\neq 0$\n\n$f(-1) = -2 + 3 + 8 - 12 = -3 \\neq 0$\n\n$f(2) = 16 + 12 - 16 - 12 = 0$ ✓\n\nSo $(x - 2)$ is a factor. Use synthetic division:\n\n$$\n\\beginarrayc|cccc\n2 & 2 & 3 & -8 & -12 \\\\\n & & 4 & 14 & 12 \\\\\n\n & 2 & 7 & 6 & 0\n\\endarray\n$$\n\nSo $f(x) = (x - 2)(2x^2 + 7x + 6)$.\n\nFactor the quadratic (by grouping or formula):\n$$\n 2x^2 + 7x + 6 = (2x + 3)(x + 2)\n$$\n\n**Complete factorization:**\n$$\n f(x) = (x - 2)(2x + 3)(x + 2)\n$$"
+      "solution": "We need to find a zero. Try simple values:\n\n$f(0) = -12 \\neq 0$\n\n$f(1) = 2 + 3 - 8 - 12 = -15 \\neq 0$\n\n$f(-1) = -2 + 3 + 8 - 12 = -3 \\neq 0$\n\n$f(2) = 16 + 12 - 16 - 12 = 0$ ✓\n\nSo $(x - 2)$ is a factor. Use synthetic division:\n\n$$\n\\begin{array}{c|cccc}\n2 & 2 & 3 & -8 & -12 \\\\\n & & 4 & 14 & 12 \\\\\n\n & 2 & 7 & 6 & 0\n\\end{array}\n$$\n\nSo $f(x) = (x - 2)(2x^2 + 7x + 6)$.\n\nFactor the quadratic (by grouping or formula):\n$$\n 2x^2 + 7x + 6 = (2x + 3)(x + 2)\n$$\n\n**Complete factorization:**\n$$\n f(x) = (x - 2)(2x + 3)(x + 2)\n$$"
     },
     {
       "type": "heading",
@@ -287,8 +287,8 @@
       "id": "ch02-sec03-example-2.11",
       "number": "2.11",
       "title": "Average cost",
-      "problem": "A company's total cost (in dollars) to produce $x$ units of a product is \nmodeled by\n$$\n C(x) = 2x^3 - 5x^2 + 10x + 500\n$$\nFind the average cost per unit, $\\overlineC(x) = \\dfracC(x){x}$.",
-      "solution": "To find the average cost, we divide the total cost by the number of units:\n$$\n \\overlineC(x) = \\frac2x^3 - 5x^2 + 10x + 500x\n$$\n\nUsing long division (or simply dividing each term by $x$):\n$$\n \\overlineC(x) = 2x^2 - 5x + 10 + \\frac500x\n$$\n\n**Interpretation:** The average cost per unit is $2x^2 - 5x + 10$ \ndollars plus a \"fixed cost contribution\" of $\\frac500{x}$ dollars. \nAs production increases ($x$ gets larger), the $\\frac500{x}$ term \ndecreases—this is the *economy of scale*. The fixed startup cost \nof $500 gets spread over more units.\n\nFor example:\n\n- At $x = 10$ units: $\\overlineC(10) = 200 - 50 + 10 + 50 = $210$ per unit\n\n- At $x = 100$ units: $\\overlineC(100) = 20000 - 500 + 10 + 5 = $19,515$ per unit"
+      "problem": "A company's total cost (in dollars) to produce $x$ units of a product is \nmodeled by\n$$\n C(x) = 2x^3 - 5x^2 + 10x + 500\n$$\nFind the average cost per unit, $\\overline{C}(x) = \\dfrac{C(x)}{x}$.",
+      "solution": "To find the average cost, we divide the total cost by the number of units:\n$$\n \\overline{C}(x) = \\frac{2x^3 - 5x^2 + 10x + 500}{x}\n$$\n\nUsing long division (or simply dividing each term by $x$):\n$$\n \\overline{C}(x) = 2x^2 - 5x + 10 + \\frac{500}{x}\n$$\n\n**Interpretation:** The average cost per unit is $2x^2 - 5x + 10$ \ndollars plus a \"fixed cost contribution\" of $\\frac{500}{x}$ dollars. \nAs production increases ($x$ gets larger), the $\\frac{500}{x}$ term \ndecreases—this is the *economy of scale*. The fixed startup cost \nof $500 gets spread over more units.\n\nFor example:\n\n- At $x = 10$ units: $\\overline{C}(10) = 200 - 50 + 10 + 50 = $210$ per unit\n\n- At $x = 100$ units: $\\overline{C}(100) = 20000 - 500 + 10 + 5 = $19,515$ per unit"
     },
     {
       "type": "example",
@@ -296,7 +296,7 @@
       "number": "2.12",
       "title": "Volume and dimensions",
       "problem": "A rectangular box has volume given by $V(x) = x^3 + 6x^2 + 11x + 6$ \ncubic inches, where $x$ is a positive integer. If the height is $(x + 1)$ \ninches, find expressions for the length and width.",
-      "solution": "Since Volume = Length $\\times$ Width $\\times$ Height, we have:\n$$\n \\textLength \\times \\textWidth = \\fracV(x){\\textHeight} = \n \\fracx^3 + 6x^2 + 11x + 6x + 1\n$$\n\nUse synthetic division with $c = -1$:\n$$\n\\beginarrayc|cccc\n-1 & 1 & 6 & 11 & 6 \\\\\n & & -1 & -5 & -6 \\\\\n\n & 1 & 5 & 6 & 0\n\\endarray\n$$\n\nThe remainder is 0 (confirming $(x + 1)$ divides evenly), and:\n$$\n \\textLength \\times \\textWidth = x^2 + 5x + 6 = (x + 2)(x + 3)\n$$\n\n**Result:** The box has dimensions $(x + 1)$, $(x + 2)$, and $(x + 3)$ \ninches. For example, if $x = 2$, the box is $3 \\times 4 \\times 5$ inches \nwith volume $60$ cubic inches.\n\n*Verification:* $V(2) = 8 + 24 + 22 + 6 = 60$. ✓"
+      "solution": "Since Volume = Length $\\times$ Width $\\times$ Height, we have:\n$$\n \\text{Length} \\times \\text{Width} = \\frac{V(x)}{\\text{Height}} = \n \\frac{x^3 + 6x^2 + 11x + 6}{x + 1}\n$$\n\nUse synthetic division with $c = -1$:\n$$\n\\begin{array}{c|cccc}\n-1 & 1 & 6 & 11 & 6 \\\\\n & & -1 & -5 & -6 \\\\\n\n & 1 & 5 & 6 & 0\n\\end{array}\n$$\n\nThe remainder is 0 (confirming $(x + 1)$ divides evenly), and:\n$$\n \\text{Length} \\times \\text{Width} = x^2 + 5x + 6 = (x + 2)(x + 3)\n$$\n\n**Result:** The box has dimensions $(x + 1)$, $(x + 2)$, and $(x + 3)$ \ninches. For example, if $x = 2$, the box is $3 \\times 4 \\times 5$ inches \nwith volume $60$ cubic inches.\n\n*Verification:* $V(2) = 8 + 24 + 22 + 6 = 60$. ✓"
     },
     {
       "type": "summary",
@@ -435,7 +435,7 @@
       "type": "exercise",
       "id": "ch02-sec03-ex-17",
       "number": "17",
-      "problem": "Use synthetic division to divide by a non-integer value.\n\n1. $(2x^3 - 3x^2 + x - 6) \\div (x - \\frac32)$\n\n2. $(3x^3 + x^2 - 2x + 4) \\div (x + \\frac23)$\n\n3. $(4x^3 - 5x + 2) \\div (x - \\frac12)$",
+      "problem": "Use synthetic division to divide by a non-integer value.\n\n1. $(2x^3 - 3x^2 + x - 6) \\div (x - \\frac{3}{2})$\n\n2. $(3x^3 + x^2 - 2x + 4) \\div (x + \\frac{2}{3})$\n\n3. $(4x^3 - 5x + 2) \\div (x - \\frac{1}{2})$",
       "variant": "regular"
     },
     {
@@ -461,14 +461,14 @@
       "type": "exercise",
       "id": "ch02-sec03-ex-20",
       "number": "20",
-      "problem": "Use long division to divide. Express the result as $q(x) + \\fracr(x){d(x)}$.\n\n1. $(x^4 + 3x^3 - 5x^2 + 2x - 1) \\div (x - 1)$\n\n2. $(2x^4 - x^3 + 3x^2 - 5) \\div (x + 2)$\n\n3. $(x^5 - 2x^3 + x - 3) \\div (x - 1)$\n\n4. $(3x^4 + 2x^3 - x + 4) \\div (x + 1)$",
+      "problem": "Use long division to divide. Express the result as $q(x) + \\frac{r(x)}{d(x)}$.\n\n1. $(x^4 + 3x^3 - 5x^2 + 2x - 1) \\div (x - 1)$\n\n2. $(2x^4 - x^3 + 3x^2 - 5) \\div (x + 2)$\n\n3. $(x^5 - 2x^3 + x - 3) \\div (x - 1)$\n\n4. $(3x^4 + 2x^3 - x + 4) \\div (x + 1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch02-sec03-ex-21",
       "number": "21",
-      "problem": "Use long division to divide. Express the result as $q(x) + \\fracr(x){d(x)}$.\n\n1. $(x^4 - 2x^3 + 4x^2 - 3x + 5) \\div (x - 2)$\n\n2. $(2x^4 + 3x^3 - x^2 + 7) \\div (x + 3)$\n\n3. $(x^5 + x^4 - 3x^2 + 2) \\div (x - 2)$\n\n4. $(4x^4 - x^3 + 2x - 1) \\div (x + 2)$",
+      "problem": "Use long division to divide. Express the result as $q(x) + \\frac{r(x)}{d(x)}$.\n\n1. $(x^4 - 2x^3 + 4x^2 - 3x + 5) \\div (x - 2)$\n\n2. $(2x^4 + 3x^3 - x^2 + 7) \\div (x + 3)$\n\n3. $(x^5 + x^4 - 3x^2 + 2) \\div (x - 2)$\n\n4. $(4x^4 - x^3 + 2x - 1) \\div (x + 2)$",
       "variant": "regular"
     },
     {
@@ -522,14 +522,14 @@
       "type": "exercise",
       "id": "ch02-sec03-ex-28",
       "number": "28",
-      "problem": "Use the Factor Theorem to determine whether $(x - c)$ is a factor of $f(x)$.\n\n1. $f(x) = x^3 - 3x^2 - 4x + 12$, $c = 2$\n\n2. $f(x) = x^3 + 2x^2 - 5x - 6$, $c = -3$\n\n3. $f(x) = x^4 - 5x^2 + 4$, $c = 1$\n\n4. $f(x) = 2x^3 - x^2 - 8x + 4$, $c = \\frac1{2}$",
+      "problem": "Use the Factor Theorem to determine whether $(x - c)$ is a factor of $f(x)$.\n\n1. $f(x) = x^3 - 3x^2 - 4x + 12$, $c = 2$\n\n2. $f(x) = x^3 + 2x^2 - 5x - 6$, $c = -3$\n\n3. $f(x) = x^4 - 5x^2 + 4$, $c = 1$\n\n4. $f(x) = 2x^3 - x^2 - 8x + 4$, $c = \\frac{1}{2}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch02-sec03-ex-29",
       "number": "29",
-      "problem": "Use the Factor Theorem to determine whether $(x - c)$ is a factor of $f(x)$.\n\n1. $f(x) = x^3 + x^2 - 10x + 8$, $c = -4$\n\n2. $f(x) = x^3 - 7x + 6$, $c = 2$\n\n3. $f(x) = x^4 - 13x^2 + 36$, $c = -2$\n\n4. $f(x) = 3x^3 + 2x^2 - 12x - 8$, $c = -\\frac2{3}$",
+      "problem": "Use the Factor Theorem to determine whether $(x - c)$ is a factor of $f(x)$.\n\n1. $f(x) = x^3 + x^2 - 10x + 8$, $c = -4$\n\n2. $f(x) = x^3 - 7x + 6$, $c = 2$\n\n3. $f(x) = x^4 - 13x^2 + 36$, $c = -2$\n\n4. $f(x) = 3x^3 + 2x^2 - 12x - 8$, $c = -\\frac{2}{3}$",
       "variant": "regular"
     },
     {
@@ -541,7 +541,7 @@
       "type": "exercise",
       "id": "ch02-sec03-ex-30",
       "number": "30",
-      "problem": "1. $f(x) = x^3 - 2x^2 + 5x - 7$, $c = 2$\n\n2. $f(x) = 2x^4 - 3x^3 + x - 1$, $c = -1$\n\n3. $f(x) = x^5 - 3x^3 + 2x$, $c = 3$\n\n4. $f(x) = 4x^3 - 5x + 2$, $c = \\frac1{2}$",
+      "problem": "1. $f(x) = x^3 - 2x^2 + 5x - 7$, $c = 2$\n\n2. $f(x) = 2x^4 - 3x^3 + x - 1$, $c = -1$\n\n3. $f(x) = x^5 - 3x^3 + 2x$, $c = 3$\n\n4. $f(x) = 4x^3 - 5x + 2$, $c = \\frac{1}{2}$",
       "variant": "regular"
     },
     {
@@ -625,7 +625,7 @@
       "type": "exercise",
       "id": "ch02-sec03-ex-42",
       "number": "42",
-      "problem": "1. $\\dfracx^3 + 2x^2 - x + 3{x - 1}$\n\n2. $\\dfrac2x^4 - 3x^2 + x - 5{x + 2}$\n\n3. $\\dfracx^4 - 1{x^2 + 1}$\n\n4. $\\dfracx^5 - x^3 + x{x^2 - 1}$",
+      "problem": "1. $\\dfrac{x^3 + 2x^2 - x + 3}{x - 1}$\n\n2. $\\dfrac{2x^4 - 3x^2 + x - 5}{x + 2}$\n\n3. $\\dfrac{x^4 - 1}{x^2 + 1}$\n\n4. $\\dfrac{x^5 - x^3 + x}{x^2 - 1}$",
       "variant": "regular"
     },
     {
@@ -637,7 +637,7 @@
       "type": "exercise",
       "id": "ch02-sec03-ex-43",
       "number": "43",
-      "problem": "A company's total cost to produce $x$ items is $C(x) = 0.5x^3 - 2x^2 + 50x + 800$ \ndollars. Find the average cost per item $\\overlineC(x) = \\fracC(x){x}$ and \nevaluate $\\overlineC(100)$.",
+      "problem": "A company's total cost to produce $x$ items is $C(x) = 0.5x^3 - 2x^2 + 50x + 800$ \ndollars. Find the average cost per item $\\overline{C}(x) = \\frac{C(x)}{x}$ and \nevaluate $\\overline{C}(100)$.",
       "variant": "regular"
     },
     {
@@ -677,7 +677,7 @@
       "type": "exercise",
       "id": "ch02-sec03-ex-48",
       "number": "48",
-      "problem": "Verify the division $\\fracx^3 - 8x - 2 = x^2 + 2x + 4$ by \ngraphing both $y_1 = \\fracx^3 - 8{x - 2}$ and $y_2 = x^2 + 2x + 4$. What \ndo you observe at $x = 2$?",
+      "problem": "Verify the division $\\frac{x^3 - 8}{x - 2} = x^2 + 2x + 4$ by \ngraphing both $y_1 = \\frac{x^3 - 8}{x - 2}$ and $y_2 = x^2 + 2x + 4$. What \ndo you observe at $x = 2$?",
       "variant": "technology"
     },
     {
@@ -729,7 +729,7 @@
       "type": "exercise",
       "id": "ch02-sec03-ex-54",
       "number": "54",
-      "problem": "Find the remainder when $x^100 - 2x^51 + 1$ is divided \nby $x - 1$.",
+      "problem": "Find the remainder when $x^{100} - 2x^{51} + 1$ is divided \nby $x - 1$.",
       "variant": "starred"
     },
     {

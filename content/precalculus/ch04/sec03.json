@@ -15,7 +15,7 @@
   "devotional": {
     "title": "Stewardship and Growth",
     "scripture": "Matthew 25:14--30",
-    "content": "\\lettrine[lines=2, loversize=0.1, nindent=0.5em]In\nthe Parable of the Talents, servants are entrusted with resources and \nexpected to grow them. The mathematics of this chapter—compound interest, \npopulation growth, radioactive decay—teaches us about the nature of \nstewardship. Small investments, given time, yield remarkable returns. \nNeglected opportunities, by the same mathematics, represent staggering \nlosses. Understanding exponential growth is understanding why wisdom \nurges us to plant seeds today.",
+    "content": "In\nthe Parable of the Talents, servants are entrusted with resources and \nexpected to grow them. The mathematics of this chapter—compound interest, \npopulation growth, radioactive decay—teaches us about the nature of \nstewardship. Small investments, given time, yield remarkable returns. \nNeglected opportunities, by the same mathematics, represent staggering \nlosses. Understanding exponential growth is understanding why wisdom \nurges us to plant seeds today.",
     "edition": "christian"
   },
   "epigraph": {
@@ -43,12 +43,12 @@
       "type": "definition",
       "id": "ch04-sec03-definition-4.1",
       "title": "Exponential Growth Model",
-      "content": "A quantity undergoing exponential growth follows:\n$$\n A(t) = A_0 \\cdot b^t/p \\quad \\textor equivalently \\quad A(t) = A_0 \\cdot e^kt\n$$\nwhere:\n\n- $A_0$ = initial amount (value when $t = 0$)\n\n- $t$ = time elapsed\n\n- $b$ = growth factor per period $p$\n\n- $k$ = continuous growth rate (when $k > 0$)",
+      "content": "A quantity undergoing exponential growth follows:\n$$\n A(t) = A_0 \\cdot b^{t/p} \\quad \\text{or equivalently} \\quad A(t) = A_0 \\cdot e^{kt}\n$$\nwhere:\n\n- $A_0$ = initial amount (value when $t = 0$)\n\n- $t$ = time elapsed\n\n- $b$ = growth factor per period $p$\n\n- $k$ = continuous growth rate (when $k > 0$)",
       "number": "4.1"
     },
     {
       "type": "paragraph",
-      "text": "The two forms are equivalent: $A_0 b^t/p = A_0 e^(t/p)\\ln b = A_0 e^{kt}$ \nwhere $k = (\\ln b)/p$."
+      "text": "The two forms are equivalent: $A_0 b^{t/p} = A_0 e^{(t/p)\\ln b} = A_0 e^{kt}$ \nwhere $k = (\\ln b)/p$."
     },
     {
       "type": "example",
@@ -56,7 +56,7 @@
       "number": "4.1",
       "title": "Population growth",
       "problem": "A bacteria colony starts with 500 cells and doubles every 3 hours. \n\n1. Write a function for the population after $t$ hours.\n\n2. Find the population after 12 hours.\n\n3. Find the population after 7 hours.\n\n4. When will the population reach 50,000?",
-      "solution": "1. The doubling time is 3 hours, so $b = 2$ and $p = 3$:\n $$\n P(t) = 500 \\cdot 2^t/3\n $$\n\n2. At $t = 12$:\n $$\n P(12) = 500 \\cdot 2^12/3 = 500 \\cdot 2^4 = 500 \\cdot 16 = 8000 \\text cells\n $$\n\n3. At $t = 7$:\n $$\n P(7) = 500 \\cdot 2^7/3 \\approx 500 \\cdot 5.04 \\approx 2520 \\text cells\n $$\n\n4. Set $P(t) = 50000$ and solve:\n $$\n 500 \\cdot 2^t/3 = 50000 \\implies 2^t/3 = 100\n $$\n Taking logarithms (covered in detail in Chapter 5):\n $$\n \\fract3 = \\log_2 100 \\approx 6.64 \\implies t \\approx 19.9 \\text hours\n $$"
+      "solution": "1. The doubling time is 3 hours, so $b = 2$ and $p = 3$:\n $$\n P(t) = 500 \\cdot 2^{t/3}\n $$\n\n2. At $t = 12$:\n $$\n P(12) = 500 \\cdot 2^{12/3} = 500 \\cdot 2^4 = 500 \\cdot 16 = 8000 \\text{ cells}\n $$\n\n3. At $t = 7$:\n $$\n P(7) = 500 \\cdot 2^{7/3} \\approx 500 \\cdot 5.04 \\approx 2520 \\text{ cells}\n $$\n\n4. Set $P(t) = 50000$ and solve:\n $$\n 500 \\cdot 2^{t/3} = 50000 \\implies 2^{t/3} = 100\n $$\n Taking logarithms (covered in detail in Chapter 5):\n $$\n \\frac{t}{3} = \\log_2 100 \\approx 6.64 \\implies t \\approx 19.9 \\text{ hours}\n $$"
     },
     {
       "type": "example",
@@ -64,7 +64,7 @@
       "number": "4.2",
       "title": "City population growth",
       "problem": "A city's population was 120,000 in 2010 and 156,000 in 2020. Assuming \nexponential growth:\n\n1. Find the annual growth rate.\n\n2. Write a model for the population $t$ years after 2010.\n\n3. Predict the population in 2030.\n\n4. When will the population reach 250,000?",
-      "solution": "1. Using $P(t) = P_0 \\cdot b^t$ where $t$ is years after 2010:\n $$\n 156000 = 120000 \\cdot b^10\n $$\n $$\n b^10 = \\frac156000120000 = 1.3 \\implies b = 1.3^1/10 \\approx 1.0266\n $$\n The annual growth rate is approximately $2.66\\%$.\n\n2. The model is:\n $$\n P(t) = 120000 \\cdot (1.0266)^t\n $$\n or in continuous form: $P(t) = 120000 \\cdot e^{0.0263t}$\n\n3. In 2030, $t = 20$:\n $$\n P(20) = 120000 \\cdot (1.0266)^20 \\approx 120000 \\cdot 1.69 \\approx 202800\n $$\n\n4. Solve $120000 \\cdot (1.0266)^t = 250000$:\n $$\n (1.0266)^t = \\frac250000120000 \\approx 2.083\n $$\n $$\n t = \\frac\\ln 2.083\\ln 1.0266 \\approx \\frac0.7340.0263 \\approx 28 \\text years\n $$\n The population reaches 250,000 around 2038."
+      "solution": "1. Using $P(t) = P_0 \\cdot b^t$ where $t$ is years after 2010:\n $$\n 156000 = 120000 \\cdot b^{10}\n $$\n $$\n b^{10} = \\frac{156000}{120000} = 1.3 \\implies b = 1.3^{1/10} \\approx 1.0266\n $$\n The annual growth rate is approximately $2.66\\%$.\n\n2. The model is:\n $$\n P(t) = 120000 \\cdot (1.0266)^t\n $$\n or in continuous form: $P(t) = 120000 \\cdot e^{0.0263t}$\n\n3. In 2030, $t = 20$:\n $$\n P(20) = 120000 \\cdot (1.0266)^{20} \\approx 120000 \\cdot 1.69 \\approx 202800\n $$\n\n4. Solve $120000 \\cdot (1.0266)^t = 250000$:\n $$\n (1.0266)^t = \\frac{250000}{120000} \\approx 2.083\n $$\n $$\n t = \\frac{\\ln 2.083}{\\ln 1.0266} \\approx \\frac{0.734}{0.0263} \\approx 28 \\text{ years}\n $$\n The population reaches 250,000 around 2038."
     },
     {
       "type": "heading",
@@ -86,14 +86,14 @@
       "type": "definition",
       "id": "ch04-sec03-definition-4.3",
       "title": "Exponential Decay Model",
-      "content": "For a substance with half-life $h$:\n$$\n A(t) = A_0 \\cdot \\left(\\frac12\\right)^t/h = A_0 \\cdot 2^-t/h\n$$\nIn continuous form: $A(t) = A_0 e^{-kt}$ where $k = \\dfrac\\ln 2h \\approx \\dfrac0.693{h}$",
+      "content": "For a substance with half-life $h$:\n$$\n A(t) = A_0 \\cdot \\left(\\frac{1}{2}\\right)^{t/h} = A_0 \\cdot 2^{-t/h}\n$$\nIn continuous form: $A(t) = A_0 e^{-kt}$ where $k = \\dfrac{\\ln 2}{h} \\approx \\dfrac{0.693}{h}$",
       "number": "4.3"
     },
     {
       "type": "method",
       "id": "ch04-sec03-method-1",
       "title": "Deriving the Half-Life Formula",
-      "content": "**Why does** $A(t) = A_0 \\cdot \\left(\\frac12\\right)^{t/h}$ **model half-life decay?**\n\nStart from the definition: after one half-life ($t = h$), exactly half remains:\n$$\n A(h) = \\fracA_02\n$$\n\nAfter two half-lives ($t = 2h$), half of the remaining half decays:\n$$\n A(2h) = \\frac12 \\cdot \\fracA_02 = \\fracA_04 = A_0 \\cdot \\left(\\frac12\\right)^2\n$$\n\nAfter $n$ half-lives ($t = nh$):\n$$\n A(nh) = A_0 \\cdot \\left(\\frac12\\right)^n\n$$\n\nFor any time $t$, the number of half-lives elapsed is $n = t/h$. Substituting:\n$$\n \\boxed{A(t) = A_0 \\cdot \\left(\\frac12\\right)^t/h}\n$$\n\n**Converting to continuous form:** To find $k$, set the two forms equal:\n$$\n A_0 \\cdot \\left(\\frac12\\right)^t/h = A_0 \\cdot e^-kt\n$$\n\nAt $t = h$ (one half-life), $A = A_0/2$:\n$$\n \\fracA_02 = A_0 e^-kh \\implies \\frac12 = e^-kh\n$$\n\nTaking natural logarithm of both sides:\n$$\n \\ln\\left(\\frac12\\right) = -kh \\implies -\\ln 2 = -kh \\implies \\boxed{k = \\frac\\ln 2h \\approx \\frac0.693h}\n$$"
+      "content": "**Why does** $A(t) = A_0 \\cdot \\left(\\frac{1}{2}\\right)^{t/h}$ **model half-life decay?**\n\nStart from the definition: after one half-life ($t = h$), exactly half remains:\n$$\n A(h) = \\frac{A_0}{2}\n$$\n\nAfter two half-lives ($t = 2h$), half of the remaining half decays:\n$$\n A(2h) = \\frac{1}{2} \\cdot \\frac{A_0}{2} = \\frac{A_0}{4} = A_0 \\cdot \\left(\\frac{1}{2}\\right)^2\n$$\n\nAfter $n$ half-lives ($t = nh$):\n$$\n A(nh) = A_0 \\cdot \\left(\\frac{1}{2}\\right)^n\n$$\n\nFor any time $t$, the number of half-lives elapsed is $n = t/h$. Substituting:\n$$\n \\boxed{A(t) = A_0 \\cdot \\left(\\frac{1}{2}\\right)^{t/h}}\n$$\n\n**Converting to continuous form:** To find $k$, set the two forms equal:\n$$\n A_0 \\cdot \\left(\\frac{1}{2}\\right)^{t/h} = A_0 \\cdot e^{-kt}\n$$\n\nAt $t = h$ (one half-life), $A = A_0/2$:\n$$\n \\frac{A_0}{2} = A_0 e^{-kh} \\implies \\frac{1}{2} = e^{-kh}\n$$\n\nTaking natural logarithm of both sides:\n$$\n \\ln\\left(\\frac{1}{2}\\right) = -kh \\implies -\\ln 2 = -kh \\implies \\boxed{k = \\frac{\\ln 2}{h} \\approx \\frac{0.693}{h}}\n$$"
     },
     {
       "type": "figure",
@@ -109,7 +109,7 @@
       "number": "4.3",
       "title": "Radioactive decay",
       "problem": "Carbon-14 has a half-life of approximately 5730 years. A fossil originally \ncontained 100 micrograms of C-14.\n\n1. Write a decay model.\n\n2. How much C-14 remains after 17,190 years?\n\n3. How much remains after 10,000 years?\n\n4. When will only 5 micrograms remain?",
-      "solution": "1. With $A_0 = 100$ and $h = 5730$:\n $$\n A(t) = 100 \\cdot \\left(\\frac12\\right)^t/5730\n $$\n\n2. At $t = 17190$ (exactly 3 half-lives):\n $$\n A(17190) = 100 \\cdot \\left(\\frac12\\right)^17190/5730 = 100 \\cdot \\left(\\frac12\\right)^3 = 100 \\cdot \\frac18 = 12.5 \\text μ g\n $$\n\n3. At $t = 10000$:\n $$\n A(10000) = 100 \\cdot \\left(\\frac12\\right)^10000/5730 = 100 \\cdot (0.5)^1.745 \\approx 100 \\cdot 0.298 \\approx 29.8 \\text μ g\n $$\n\n4. Solve $100 \\cdot (0.5)^t/5730 = 5$:\n $$\n (0.5)^t/5730 = 0.05\n $$\n $$\n \\fract5730 = \\log_0.5 0.05 = \\frac\\ln 0.05\\ln 0.5 \\approx 4.32\n $$\n $$\n t \\approx 4.32 \\times 5730 \\approx 24760 \\text years\n $$"
+      "solution": "1. With $A_0 = 100$ and $h = 5730$:\n $$\n A(t) = 100 \\cdot \\left(\\frac{1}{2}\\right)^{t/5730}\n $$\n\n2. At $t = 17190$ (exactly 3 half-lives):\n $$\n A(17190) = 100 \\cdot \\left(\\frac{1}{2}\\right)^{17190/5730} = 100 \\cdot \\left(\\frac{1}{2}\\right)^3 = 100 \\cdot \\frac{1}{8} = 12.5 \\text{ μ g}\n $$\n\n3. At $t = 10000$:\n $$\n A(10000) = 100 \\cdot \\left(\\frac{1}{2}\\right)^{10000/5730} = 100 \\cdot (0.5)^{1.745} \\approx 100 \\cdot 0.298 \\approx 29.8 \\text{ μ g}\n $$\n\n4. Solve $100 \\cdot (0.5)^{t/5730} = 5$:\n $$\n (0.5)^{t/5730} = 0.05\n $$\n $$\n \\frac{t}{5730} = \\log_{0.5} 0.05 = \\frac{\\ln 0.05}{\\ln 0.5} \\approx 4.32\n $$\n $$\n t \\approx 4.32 \\times 5730 \\approx 24760 \\text{ years}\n $$"
     },
     {
       "type": "example",
@@ -117,7 +117,7 @@
       "number": "4.4",
       "title": "Medication decay",
       "problem": "A patient takes 400 mg of a medication. The drug has a half-life in the \nbody of 6 hours.\n\n1. Write a model for the amount remaining after $t$ hours.\n\n2. How much remains after 15 hours?\n\n3. When should the next dose be taken if it's required when only \n 50 mg remains?",
-      "solution": "1. $A(t) = 400 \\cdot (0.5)^{t/6}$\n\n2. At $t = 15$:\n $$\n A(15) = 400 \\cdot (0.5)^15/6 = 400 \\cdot (0.5)^2.5 \\approx 400 \\cdot 0.177 \\approx 70.7 \\text mg\n $$\n\n3. Solve $400 \\cdot (0.5)^t/6 = 50$:\n $$\n (0.5)^t/6 = \\frac50400 = 0.125 = \\left(\\frac12\\right)^3\n $$\n $$\n \\fract6 = 3 \\implies t = 18 \\text hours\n $$"
+      "solution": "1. $A(t) = 400 \\cdot (0.5)^{t/6}$\n\n2. At $t = 15$:\n $$\n A(15) = 400 \\cdot (0.5)^{15/6} = 400 \\cdot (0.5)^{2.5} \\approx 400 \\cdot 0.177 \\approx 70.7 \\text{ mg}\n $$\n\n3. Solve $400 \\cdot (0.5)^{t/6} = 50$:\n $$\n (0.5)^{t/6} = \\frac{50}{400} = 0.125 = \\left(\\frac{1}{2}\\right)^3\n $$\n $$\n \\frac{t}{6} = 3 \\implies t = 18 \\text{ hours}\n $$"
     },
     {
       "type": "summary",
@@ -152,7 +152,7 @@
       "type": "theorem",
       "id": "ch04-sec03-theorem-4.1",
       "title": "Compound Interest Formulas",
-      "content": "If principal $P$ is invested at annual interest rate $r$ (as a decimal):\n\n**Compounded $n$ times per year:**\n$$\n A = P\\left(1 + \\fracrn\\right)^nt\n$$\n\n**Compounded continuously:**\n$$\n A = Pe^rt\n$$\n\nwhere $A$ is the amount after $t$ years.",
+      "content": "If principal $P$ is invested at annual interest rate $r$ (as a decimal):\n\n**Compounded $n$ times per year:**\n$$\n A = P\\left(1 + \\frac{r}{n}\\right)^{nt}\n$$\n\n**Compounded continuously:**\n$$\n A = Pe^{rt}\n$$\n\nwhere $A$ is the amount after $t$ years.",
       "number": "4.1"
     },
     {
@@ -161,7 +161,7 @@
       "number": "4.5",
       "title": "Comparing compounding methods",
       "problem": "Find the amount after 10 years if $5000 is invested at 6% interest \ncompounded: (a) annually, (b) quarterly, (c) monthly, (d) daily, \n(e) continuously.",
-      "solution": "Using $P = 5000$, $r = 0.06$, $t = 10$:\n\n1. Annually ($n = 1$):\n $$\n A = 5000(1 + 0.06)^10 = 5000(1.06)^10 \\approx $8954.24\n $$\n\n2. Quarterly ($n = 4$):\n $$\n A = 5000\\left(1 + \\frac0.064\\right)^40 = 5000(1.015)^40 \\approx $9070.09\n $$\n\n3. Monthly ($n = 12$):\n $$\n A = 5000\\left(1 + \\frac0.0612\\right)^120 = 5000(1.005)^120 \\approx $9096.98\n $$\n\n4. Daily ($n = 365$):\n $$\n A = 5000\\left(1 + \\frac0.06365\\right)^3650 \\approx $9110.14\n $$\n\n5. Continuously:\n $$\n A = 5000 \\cdot e^0.06 \\times 10 = 5000 \\cdot e^0.6 \\approx $9110.59\n $$\n\n**Observation:** More frequent compounding yields more money, but \nthe gains diminish. The jump from annual to continuous compounding adds \nonly about $156 over 10 years."
+      "solution": "Using $P = 5000$, $r = 0.06$, $t = 10$:\n\n1. Annually ($n = 1$):\n $$\n A = 5000(1 + 0.06)^{10} = 5000(1.06)^{10} \\approx $8954.24\n $$\n\n2. Quarterly ($n = 4$):\n $$\n A = 5000\\left(1 + \\frac{0.06}{4}\\right)^{40} = 5000(1.015)^{40} \\approx $9070.09\n $$\n\n3. Monthly ($n = 12$):\n $$\n A = 5000\\left(1 + \\frac{0.06}{12}\\right)^{120} = 5000(1.005)^{120} \\approx $9096.98\n $$\n\n4. Daily ($n = 365$):\n $$\n A = 5000\\left(1 + \\frac{0.06}{365}\\right)^{3650} \\approx $9110.14\n $$\n\n5. Continuously:\n $$\n A = 5000 \\cdot e^{0.06 \\times 10} = 5000 \\cdot e^{0.6} \\approx $9110.59\n $$\n\n**Observation:** More frequent compounding yields more money, but \nthe gains diminish. The jump from annual to continuous compounding adds \nonly about $156 over 10 years."
     },
     {
       "type": "figure",
@@ -177,7 +177,7 @@
       "number": "4.6",
       "title": "Finding time to reach a goal",
       "problem": "How long does it take for $10,000 to grow to $25,000 at 5% interest \ncompounded continuously?",
-      "solution": "Using $A = Pe^{rt}$:\n$$\n 25000 = 10000 \\cdot e^0.05t\n$$\n$$\n 2.5 = e^0.05t\n$$\n$$\n \\ln 2.5 = 0.05t\n$$\n$$\n t = \\frac\\ln 2.50.05 = \\frac0.9160.05 \\approx 18.3 \\text years\n$$"
+      "solution": "Using $A = Pe^{rt}$:\n$$\n 25000 = 10000 \\cdot e^{0.05t}\n$$\n$$\n 2.5 = e^{0.05t}\n$$\n$$\n \\ln 2.5 = 0.05t\n$$\n$$\n t = \\frac{\\ln 2.5}{0.05} = \\frac{0.916}{0.05} \\approx 18.3 \\text{ years}\n$$"
     },
     {
       "type": "heading",
@@ -192,7 +192,7 @@
       "type": "theorem",
       "id": "ch04-sec03-theorem-4.2",
       "title": "The Rule of 72",
-      "content": "Money invested at $r\\%$ annual interest doubles in approximately \n$\\dfrac72{r}$ years.",
+      "content": "Money invested at $r\\%$ annual interest doubles in approximately \n$\\dfrac{72}{r}$ years.",
       "number": "4.2"
     },
     {
@@ -201,7 +201,7 @@
       "number": "4.7",
       "title": "Using the Rule of 72",
       "problem": "Estimate the doubling time for investments at: (a) 6%, (b) 9%, (c) 12%.",
-      "solution": "1. At 6%: $72/6 = 12$ years\n\n2. At 9%: $72/9 = 8$ years\n\n3. At 12%: $72/12 = 6$ years\n\n**Verification for (a):** Using $A = Pe^{0.06t}$, we need $e^0.06t = 2$:\n$$\n t = \\frac\\ln 20.06 = \\frac0.6930.06 \\approx 11.55 \\text years\n$$\nThe Rule of 72 gives 12 years—quite close!"
+      "solution": "1. At 6%: $72/6 = 12$ years\n\n2. At 9%: $72/9 = 8$ years\n\n3. At 12%: $72/12 = 6$ years\n\n**Verification for (a):** Using $A = Pe^{0.06t}$, we need $e^{0.06t} = 2$:\n$$\n t = \\frac{\\ln 2}{0.06} = \\frac{0.693}{0.06} \\approx 11.55 \\text{ years}\n$$\nThe Rule of 72 gives 12 years—quite close!"
     },
     {
       "type": "heading",
@@ -216,7 +216,7 @@
       "type": "definition",
       "id": "ch04-sec03-definition-4.4",
       "title": "Present Value",
-      "content": "The **present value** of amount $A$ due in $t$ years at interest \nrate $r$ (compounded continuously) is:\n$$\n P = Ae^-rt\n$$",
+      "content": "The **present value** of amount $A$ due in $t$ years at interest \nrate $r$ (compounded continuously) is:\n$$\n P = Ae^{-rt}\n$$",
       "number": "4.4"
     },
     {
@@ -225,7 +225,7 @@
       "number": "4.8",
       "title": "College fund planning",
       "problem": "You want to have $100,000 in 18 years for your child's college education. \nIf you can invest at 7% compounded continuously, how much should you \ninvest now?",
-      "solution": "$$\n P = 100000 \\cdot e^-0.07 \\times 18 = 100000 \\cdot e^-1.26 \\approx 100000 \\cdot 0.284 \\approx $28,365\n$$\n\nInvesting approximately $28,365 today will grow to $100,000 in 18 years."
+      "solution": "$$\n P = 100000 \\cdot e^{-0.07 \\times 18} = 100000 \\cdot e^{-1.26} \\approx 100000 \\cdot 0.284 \\approx $28,365\n$$\n\nInvesting approximately $28,365 today will grow to $100,000 in 18 years."
     },
     {
       "type": "heading",
@@ -240,7 +240,7 @@
       "type": "theorem",
       "id": "ch04-sec03-theorem-4.3",
       "title": "Newton's Law of Cooling",
-      "content": "If an object at temperature $T_0$ is placed in an environment with \nconstant temperature $T_s$, then at time $t$:\n$$\n T(t) = T_s + (T_0 - T_s)e^-kt\n$$\nwhere $k > 0$ is a constant that depends on the object and environment.",
+      "content": "If an object at temperature $T_0$ is placed in an environment with \nconstant temperature $T_s$, then at time $t$:\n$$\n T(t) = T_s + (T_0 - T_s)e^{-kt}\n$$\nwhere $k > 0$ is a constant that depends on the object and environment.",
       "number": "4.3"
     },
     {
@@ -249,7 +249,7 @@
       "number": "4.9",
       "title": "Cooling coffee",
       "problem": "A cup of coffee is brewed at 200°F and placed in a 70°F room. After 5 \nminutes, the temperature is 180°F.\n\n1. Find the cooling constant $k$.\n\n2. Find the temperature after 20 minutes.\n\n3. When will the coffee be at 100°F (a drinkable temperature)?",
-      "solution": "Here $T_0 = 200$, $T_s = 70$.\n\n1. Use $T(5) = 180$:\n $$\n 180 = 70 + (200 - 70)e^-5k\n $$\n $$\n 110 = 130e^-5k \\implies e^-5k = \\frac110130 \\approx 0.846\n $$\n $$\n -5k = \\ln(0.846) \\approx -0.167 \\implies k \\approx 0.0334\n $$\n\n2. The model is $T(t) = 70 + 130e^{-0.0334t}$\n \n At $t = 20$:\n $$\n T(20) = 70 + 130e^-0.668 \\approx 70 + 130(0.513) \\approx 137°F\n $$\n\n3. Solve $T(t) = 100$:\n $$\n 100 = 70 + 130e^-0.0334t\n $$\n $$\n 30 = 130e^-0.0334t \\implies e^-0.0334t = \\frac30130 \\approx 0.231\n $$\n $$\n t = \\frac-\\ln(0.231)0.0334 \\approx \\frac1.4650.0334 \\approx 44 \\text minutes\n $$"
+      "solution": "Here $T_0 = 200$, $T_s = 70$.\n\n1. Use $T(5) = 180$:\n $$\n 180 = 70 + (200 - 70)e^{-5k}\n $$\n $$\n 110 = 130e^{-5k} \\implies e^{-5k} = \\frac{110}{130} \\approx 0.846\n $$\n $$\n -5k = \\ln(0.846) \\approx -0.167 \\implies k \\approx 0.0334\n $$\n\n2. The model is $T(t) = 70 + 130e^{-0.0334t}$\n \n At $t = 20$:\n $$\n T(20) = 70 + 130e^{-0.668} \\approx 70 + 130(0.513) \\approx 137°F\n $$\n\n3. Solve $T(t) = 100$:\n $$\n 100 = 70 + 130e^{-0.0334t}\n $$\n $$\n 30 = 130e^{-0.0334t} \\implies e^{-0.0334t} = \\frac{30}{130} \\approx 0.231\n $$\n $$\n t = \\frac{-\\ln(0.231)}{0.0334} \\approx \\frac{1.465}{0.0334} \\approx 44 \\text{ minutes}\n $$"
     },
     {
       "type": "figure",
@@ -272,7 +272,7 @@
       "type": "definition",
       "id": "ch04-sec03-definition-4.5",
       "title": "Logistic Growth Model",
-      "content": "$$\n P(t) = \\fracL{1 + Ce^-kt}\n$$\nwhere:\n\n- $L$ = carrying capacity (maximum sustainable population)\n\n- $C$ = a constant determined by initial conditions\n\n- $k$ = growth rate",
+      "content": "$$\n P(t) = \\frac{L}{1 + Ce^{-kt}}\n$$\nwhere:\n\n- $L$ = carrying capacity (maximum sustainable population)\n\n- $C$ = a constant determined by initial conditions\n\n- $k$ = growth rate",
       "number": "4.5"
     },
     {
@@ -292,14 +292,14 @@
       "id": "ch04-sec03-example-4.10",
       "number": "4.10",
       "title": "Logistic population",
-      "problem": "A wildlife reserve can support at most 500 deer. Initially there are 50 \ndeer, and the population follows $P(t) = \\dfrac500{1 + 9e^-0.2t}$ \nwhere $t$ is in years.\n\n1. Verify the initial population.\n\n2. Find the population after 10 years.\n\n3. What is the limiting population?",
-      "solution": "1. At $t = 0$:\n $$\n P(0) = \\frac5001 + 9e^0 = \\frac5001 + 9 = \\frac50010 = 50 \\text deer \\checkmark\n $$\n\n2. At $t = 10$:\n $$\n P(10) = \\frac500{1 + 9e^-2} = \\frac5001 + 9(0.135) = \\frac5002.22 \\approx 225 \\text deer\n $$\n\n3. As $t \\to \\infty$, $e^-0.2t \\to 0$, so:\n $$\n \\lim_t \\to \\infty P(t) = \\frac5001 + 0 = 500 \\text deer\n $$"
+      "problem": "A wildlife reserve can support at most 500 deer. Initially there are 50 \ndeer, and the population follows $P(t) = \\dfrac{500}{1 + 9e^{-0.2t}}$ \nwhere $t$ is in years.\n\n1. Verify the initial population.\n\n2. Find the population after 10 years.\n\n3. What is the limiting population?",
+      "solution": "1. At $t = 0$:\n $$\n P(0) = \\frac{500}{1 + 9e^0} = \\frac{500}{1 + 9} = \\frac{500}{10} = 50 \\text{ deer} \\checkmark\n $$\n\n2. At $t = 10$:\n $$\n P(10) = \\frac{500}{1 + 9e^{-2}} = \\frac{500}{1 + 9(0.135)} = \\frac{500}{2.22} \\approx 225 \\text{ deer}\n $$\n\n3. As $t \\to \\infty$, $e^{-0.2t} \\to 0$, so:\n $$\n \\lim_{t \\to \\infty} P(t) = \\frac{500}{1 + 0} = 500 \\text{ deer}\n $$"
     },
     {
       "type": "summary",
       "id": "ch04-sec03-summary-4.4",
       "title": "Section 4.3 Summary: Applications of Exponential Functions",
-      "content": "**Key Formulas:**\n\n| **Model** | **Formula** |\n| Exponential growth/decay | $A(t) = A_0 \\cdot b^{t/p}$ or $A(t) = A_0 e^{kt}$ |\n| Half-life decay | $A(t) = A_0 \\cdot \\left(\\frac12\\right)^{t/h}$ |\n| Compound interest ($n$/year) | $A = P\\left(1 + \\fracrn\\right)^{nt}$ |\n| Continuous compounding | $A = Pe^{rt}$ |\n| Newton's Law of Cooling | $T(t) = T_s + (T_0 - T_s)e^{-kt}$ |\n\n**Converting Between Forms:**\n\n- From half-life $h$ to decay constant: $k = \\frac\\ln 2h \\approx \\frac0.693{h}$\n\n- From doubling time $T$ to growth constant: $k = \\frac\\ln 2{T}$\n\n**Rule of 72:** Money doubles in approximately $\\frac72{r}$ years at $r$% interest.\n\n**Problem-Solving Strategy:**\n\n1. Identify: growth or decay? Discrete or continuous?\n\n2. Choose the appropriate formula\n\n3. Identify known values ($A_0$, $k$, $t$, etc.)\n\n4. Solve for the unknown\n\n5. Check: Does the answer make sense?",
+      "content": "**Key Formulas:**\n\n| **Model** | **Formula** |\n| Exponential growth/decay | $A(t) = A_0 \\cdot b^{t/p}$ or $A(t) = A_0 e^{kt}$ |\n| Half-life decay | $A(t) = A_0 \\cdot \\left(\\frac{1}{2}\\right)^{t/h}$ |\n| Compound interest ($n$/year) | $A = P\\left(1 + \\frac{r}{n}\\right)^{nt}$ |\n| Continuous compounding | $A = Pe^{rt}$ |\n| Newton's Law of Cooling | $T(t) = T_s + (T_0 - T_s)e^{-kt}$ |\n\n**Converting Between Forms:**\n\n- From half-life $h$ to decay constant: $k = \\frac{\\ln 2}{h} \\approx \\frac{0.693}{h}$\n\n- From doubling time $T$ to growth constant: $k = \\frac{\\ln 2}{T}$\n\n**Rule of 72:** Money doubles in approximately $\\frac{72}{r}$ years at $r$% interest.\n\n**Problem-Solving Strategy:**\n\n1. Identify: growth or decay? Discrete or continuous?\n\n2. Choose the appropriate formula\n\n3. Identify known values ($A_0$, $k$, $t$, etc.)\n\n4. Solve for the unknown\n\n5. Check: Does the answer make sense?",
       "number": "4.4"
     },
     {
@@ -567,7 +567,7 @@
       "type": "exercise",
       "id": "ch04-sec03-ex-34",
       "number": "34",
-      "problem": "A lake contains 1 billion liters of pure water. Polluted water containing \n0.1 kg of pollutant per liter flows in at 1000 liters per hour. Well-mixed \nwater flows out at the same rate. Find the amount of pollutant in the \nlake after $t$ hours. (Hint: This is a differential equation problem; \nset up and solve $\\fracdPdt = 0.1(1000) - P \\cdot \\frac1000{10^9}$.)",
+      "problem": "A lake contains 1 billion liters of pure water. Polluted water containing \n0.1 kg of pollutant per liter flows in at 1000 liters per hour. Well-mixed \nwater flows out at the same rate. Find the amount of pollutant in the \nlake after $t$ hours. (Hint: This is a differential equation problem; \nset up and solve $\\frac{dP}{dt} = 0.1(1000) - P \\cdot \\frac{1000}{10^9}$.)",
       "variant": "starred"
     },
     {
@@ -772,7 +772,7 @@
       "type": "exercise",
       "id": "ch04-sec03-ex-59",
       "number": "59",
-      "problem": "Graph the logistic function $P(t) = \\dfrac1000{1 + 9e^-0.3t}$.\n\n1. Identify the carrying capacity (horizontal asymptote as $t \\to \\infty$).\n\n2. Find the initial population $P(0)$.\n\n3. Find when the population reaches half the carrying capacity.\n\n4. Describe the shape of the curve.",
+      "problem": "Graph the logistic function $P(t) = \\dfrac{1000}{1 + 9e^{-0.3t}}$.\n\n1. Identify the carrying capacity (horizontal asymptote as $t \\to \\infty$).\n\n2. Find the initial population $P(0)$.\n\n3. Find when the population reaches half the carrying capacity.\n\n4. Describe the shape of the curve.",
       "variant": "technology"
     },
     {
@@ -796,7 +796,7 @@
       "type": "exercise",
       "id": "ch04-sec03-ex-61",
       "number": "61",
-      "problem": "Show that if a quantity doubles in time $T_2$ and triples \nin time $T_3$, then $\\dfracT_3T_2 = \\dfrac\\ln 3\\ln 2 \\approx 1.585$.",
+      "problem": "Show that if a quantity doubles in time $T_2$ and triples \nin time $T_3$, then $\\dfrac{T_3}{T_2} = \\dfrac{\\ln 3}{\\ln 2} \\approx 1.585$.",
       "variant": "starred"
     },
     {
@@ -829,7 +829,7 @@
       "type": "exercise",
       "id": "ch04-sec03-ex-65",
       "number": "65",
-      "problem": "Describe and correct the error.\n\nSolving for half-life:\n> \"If $A = A_0 e^{-0.05t}$, then half-life is when $A = A_0/2$:\n\n$\\dfracA_02 = A_0 e^{-0.05t}$\n\n$\\dfrac12 = e^{-0.05t}$\n\n$t = \\dfrac12 \\cdot 0.05 = 10$ years\" ✗",
+      "problem": "Describe and correct the error.\n\nSolving for half-life:\n> \"If $A = A_0 e^{-0.05t}$, then half-life is when $A = A_0/2$:\n\n$\\dfrac{A_0}{2} = A_0 e^{-0.05t}$\n\n$\\dfrac{1}{2} = e^{-0.05t}$\n\n$t = \\dfrac{1}{2 \\cdot 0.05} = 10$ years\" ✗",
       "variant": "error-analysis"
     },
     {

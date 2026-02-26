@@ -448,10 +448,40 @@ class SectionParser:
             return t
         text = _strip_renewcommand(text)
 
-        # \lettrine[opts]{X}{rest} → Xrest  OR  \lettrine[opts]X → X
-        text = re.sub(r'\\lettrine(?:\[[^\]]*\])*\{([^}])\}\{([^}]*)\}', r'\1\2', text)
-        text = re.sub(r'\\lettrine(?:\[[^\]]*\])*\{([^}])\}', r'\1', text)
-        text = re.sub(r'\\lettrine(?:\[[^\]]*\])*([A-Z])', r'\1', text)
+        # \lettrine[opts]{...}{...} → extract drop cap letter + rest (brace-aware)
+        def _strip_lettrine(t):
+            while '\\lettrine' in t:
+                idx = t.index('\\lettrine')
+                pos = idx + len('\\lettrine')
+                # skip optional args [...]
+                while pos < len(t) and t[pos] == '[':
+                    bracket_end = t.find(']', pos)
+                    if bracket_end == -1:
+                        break
+                    pos = bracket_end + 1
+                # skip whitespace
+                while pos < len(t) and t[pos] in ' \t\n':
+                    pos += 1
+                if pos < len(t) and t[pos] == '{':
+                    # First braced arg: contains the drop cap letter (possibly with \color{})
+                    arg1, pos = extract_braced(t, pos)
+                    # Extract just the letter from arg1 (strip \color{...} etc)
+                    letter = re.sub(r'\\color\{[^}]*\}', '', arg1).strip()
+                    if not letter:
+                        letter = ''
+                    # Check for second braced arg
+                    rest = ''
+                    if pos < len(t) and t[pos] == '{':
+                        rest, pos = extract_braced(t, pos)
+                    t = t[:idx] + letter + rest + t[pos:]
+                elif pos < len(t) and t[pos].isalpha():
+                    # Bare letter form: \lettrine[opts]X
+                    t = t[:idx] + t[pos:]
+                else:
+                    # Can't parse, just remove the command
+                    t = t[:idx] + t[pos:]
+            return t
+        text = _strip_lettrine(text)
 
         # \addcontentsline{...}{...}{...}
         text = re.sub(r'\\addcontentsline\{[^}]*\}\{[^}]*\}\{[^}]*\}', '', text)
@@ -1434,10 +1464,31 @@ class SectionParser:
         # Index (remove)
         text = re.sub(r'\\index\{[^}]*\}', '', text)
 
-        # Lettrine (all forms)
-        text = re.sub(r'\\lettrine(?:\[[^\]]*\])*\{([^}])\}\{([^}]*)\}', r'\1\2', text)
-        text = re.sub(r'\\lettrine(?:\[[^\]]*\])*\{([^}])\}', r'\1', text)
-        text = re.sub(r'\\lettrine(?:\[[^\]]*\])*([A-Z])', r'\1', text)
+        # Lettrine (brace-aware)
+        def _strip_lettrine_inline(t):
+            while '\\lettrine' in t:
+                idx = t.index('\\lettrine')
+                pos = idx + len('\\lettrine')
+                while pos < len(t) and t[pos] == '[':
+                    bracket_end = t.find(']', pos)
+                    if bracket_end == -1:
+                        break
+                    pos = bracket_end + 1
+                while pos < len(t) and t[pos] in ' \t\n':
+                    pos += 1
+                if pos < len(t) and t[pos] == '{':
+                    arg1, pos = extract_braced(t, pos)
+                    letter = re.sub(r'\\color\{[^}]*\}', '', arg1).strip()
+                    rest = ''
+                    if pos < len(t) and t[pos] == '{':
+                        rest, pos = extract_braced(t, pos)
+                    t = t[:idx] + letter + rest + t[pos:]
+                elif pos < len(t) and t[pos].isalpha():
+                    t = t[:idx] + t[pos:]
+                else:
+                    t = t[:idx] + t[pos:]
+            return t
+        text = _strip_lettrine_inline(text)
 
         # Colors
         text = re.sub(r'\\(?:color|textcolor)\{[^}]*\}\{?', '', text)
@@ -1566,10 +1617,6 @@ class SectionParser:
 
         # {,} → , (LaTeX thousand separator)
         text = text.replace('{,}', ',')
-
-        # Strip remaining orphaned braces that aren't in math
-        # (e.g., {\bfseries text} → after command stripping, left with {text})
-        text = re.sub(r'(?<!\$)\{([^{}$]+)\}(?!\$)', r'\1', text)
 
         # Strip isolated stray closing braces (LaTeX artifacts) but NOT inside math
         # Only strip } that follows a word char and precedes punctuation/space,

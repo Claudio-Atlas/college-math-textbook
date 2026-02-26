@@ -54,7 +54,7 @@
       "number": "9.1",
       "title": "Setting up a linear programming problem",
       "problem": "A bakery makes cookies and brownies. Each batch of cookies requires \n2 cups of flour and yields $3 profit. Each batch of brownies requires \n3 cups of flour and yields $4 profit. The bakery has 12 cups of flour \nand can make at most 5 batches total. How many batches of each should \nthey make to maximize profit?",
-      "solution": "Let $x$ = batches of cookies and $y$ = batches of brownies.\n\n**Objective function** (to maximize):\n$$\n z = 3x + 4y \\quad \\text(profit in dollars)\n$$\n\n**Constraints:**\n$$\\beginaligned\n 2x + 3y &\\leq 12 && \\text(flour constraint) \\\\\n x + y &\\leq 5 && \\text(total batches constraint) \\\\\n x &\\geq 0 && \\text(non-negativity) \\\\\n y &\\geq 0 && \\text(non-negativity)\n\\end{aligned}$$\n\nThe complete linear programming problem is:\n$$\n\\boxed{\n\\beginarrayll\n \\textMaximize & z = 3x + 4y \\\\\n \\textsubject to & 2x + 3y \\leq 12 \\\\\n & x + y \\leq 5 \\\\\n & x \\geq 0, \\, y \\geq 0\n\\endarray\n}\n$$"
+      "solution": "Let $x$ = batches of cookies and $y$ = batches of brownies.\n\n**Objective function** (to maximize):\n$$\n z = 3x + 4y \\quad \\text{(profit in dollars)}\n$$\n\n**Constraints:**\n$$\\begin{aligned}\n 2x + 3y &\\leq 12 && \\text{(flour constraint)} \\\\\n x + y &\\leq 5 && \\text{(total batches constraint)} \\\\\n x &\\geq 0 && \\text{(non-negativity)} \\\\\n y &\\geq 0 && \\text{(non-negativity)}\n\\end{aligned}$$\n\nThe complete linear programming problem is:\n$$\n\\boxed{\n\\begin{array}{ll}\n \\text{Maximize} & z = 3x + 4y \\\\\n \\text{subject to} & 2x + 3y \\leq 12 \\\\\n & x + y \\leq 5 \\\\\n & x \\geq 0, \\, y \\geq 0\n\\end{array}\n}\n$$"
     },
     {
       "type": "heading",
@@ -97,16 +97,16 @@
       "id": "ch09-sec05-example-9.2",
       "number": "9.2",
       "title": "Maximization problem",
-      "problem": "Solve the linear programming problem from Example :\n$$\n\\beginarrayll\n \\textMaximize & z = 3x + 4y \\\\\n \\textsubject to & 2x + 3y \\leq 12 \\\\\n & x + y \\leq 5 \\\\\n & x \\geq 0, \\, y \\geq 0\n\\endarray\n$$",
-      "solution": "**Step 1: Graph the feasible region.**\n\n**Step 2: Find vertices.**\n\nThe vertices are where boundary lines intersect:\n\n- $A(0, 0)$: intersection of $x = 0$ and $y = 0$\n\n- $B(5, 0)$: intersection of $y = 0$ and $x + y = 5$\n\n- $C(3, 2)$: intersection of $2x + 3y = 12$ and $x + y = 5$\n\n- $D(0, 4)$: intersection of $x = 0$ and $2x + 3y = 12$\n\nTo find $C$: Solve $\\begincases 2x + 3y = 12 \\\\ x + y = 5 \\end{cases}$\n\nFrom $x + y = 5$: $x = 5 - y$. Substitute: $2(5-y) + 3y = 12 \\Rightarrow y = 2$, $x = 3$.\n\n**Step 3: Evaluate $z = 3x + 4y$ at each vertex.**\n\n| Vertex | Coordinates | $z = 3x + 4y$ |\n| $A$ | $(0, 0)$ | $3(0) + 4(0) = 0$ |\n| $B$ | $(5, 0)$ | $3(5) + 4(0) = 15$ |\n| $C$ | $(3, 2)$ | $3(3) + 4(2) = \\mathbf{17}$ |\n| $D$ | $(0, 4)$ | $3(0) + 4(4) = 16$ |\n\n**Step 4: Identify the maximum.**\n\nThe maximum value is $z = 17$ at vertex $C(3, 2)$.\n\n**Conclusion:** The bakery should make **3 batches of cookies \nand 2 batches of brownies** for a maximum profit of **$17**."
+      "problem": "Solve the linear programming problem from Example :\n$$\n\\begin{array}{ll}\n \\text{Maximize} & z = 3x + 4y \\\\\n \\text{subject to} & 2x + 3y \\leq 12 \\\\\n & x + y \\leq 5 \\\\\n & x \\geq 0, \\, y \\geq 0\n\\end{array}\n$$",
+      "solution": "**Step 1: Graph the feasible region.**\n\n**Step 2: Find vertices.**\n\nThe vertices are where boundary lines intersect:\n\n- $A(0, 0)$: intersection of $x = 0$ and $y = 0$\n\n- $B(5, 0)$: intersection of $y = 0$ and $x + y = 5$\n\n- $C(3, 2)$: intersection of $2x + 3y = 12$ and $x + y = 5$\n\n- $D(0, 4)$: intersection of $x = 0$ and $2x + 3y = 12$\n\nTo find $C$: Solve $\\begin{cases} 2x + 3y = 12 \\\\ x + y = 5 \\end{cases}$\n\nFrom $x + y = 5$: $x = 5 - y$. Substitute: $2(5-y) + 3y = 12 \\Rightarrow y = 2$, $x = 3$.\n\n**Step 3: Evaluate $z = 3x + 4y$ at each vertex.**\n\n| Vertex | Coordinates | $z = 3x + 4y$ |\n| $A$ | $(0, 0)$ | $3(0) + 4(0) = 0$ |\n| $B$ | $(5, 0)$ | $3(5) + 4(0) = 15$ |\n| $C$ | $(3, 2)$ | $3(3) + 4(2) = \\mathbf{17}$ |\n| $D$ | $(0, 4)$ | $3(0) + 4(4) = 16$ |\n\n**Step 4: Identify the maximum.**\n\nThe maximum value is $z = 17$ at vertex $C(3, 2)$.\n\n**Conclusion:** The bakery should make **3 batches of cookies \nand 2 batches of brownies** for a maximum profit of **$17**."
     },
     {
       "type": "example",
       "id": "ch09-sec05-example-9.3",
       "number": "9.3",
       "title": "Another maximization problem",
-      "problem": "Maximize $z = 5x + 7y$ subject to:\n$$\n\\begincases\n x + 2y \\leq 14 \\\\\n 3x + y \\leq 18 \\\\\n x \\geq 0, \\, y \\geq 0\n\\endcases\n$$",
-      "solution": "**Step 1: Graph and find vertices.**\n\nTo find the intersection of $x + 2y = 14$ and $3x + y = 18$:\n\nFrom $3x + y = 18$: $y = 18 - 3x$. Substitute: $x + 2(18-3x) = 14 \\Rightarrow -5x = -22 \\Rightarrow x = \\frac225 = 4.4$\n\nThen $y = 18 - 3(4.4) = 4.8$. So the vertex is $(4.4, 4.8)$.\n\n**Step 2: Evaluate at vertices.**\n\n| Vertex | $z = 5x + 7y$ |\n| $(0, 0)$ | $0$ |\n| $(6, 0)$ | $30$ |\n| $(4.4, 4.8)$ | $5(4.4) + 7(4.8) = 22 + 33.6 = \\mathbf{55.6}$ |\n| $(0, 7)$ | $49$ |\n\n**Maximum:** $z = 55.6$ at $(4.4, 4.8)$."
+      "problem": "Maximize $z = 5x + 7y$ subject to:\n$$\n\\begin{cases}\n x + 2y \\leq 14 \\\\\n 3x + y \\leq 18 \\\\\n x \\geq 0, \\, y \\geq 0\n\\end{cases}\n$$",
+      "solution": "**Step 1: Graph and find vertices.**\n\nTo find the intersection of $x + 2y = 14$ and $3x + y = 18$:\n\nFrom $3x + y = 18$: $y = 18 - 3x$. Substitute: $x + 2(18-3x) = 14 \\Rightarrow -5x = -22 \\Rightarrow x = \\frac{22}{5} = 4.4$\n\nThen $y = 18 - 3(4.4) = 4.8$. So the vertex is $(4.4, 4.8)$.\n\n**Step 2: Evaluate at vertices.**\n\n| Vertex | $z = 5x + 7y$ |\n| $(0, 0)$ | $0$ |\n| $(6, 0)$ | $30$ |\n| $(4.4, 4.8)$ | $5(4.4) + 7(4.8) = 22 + 33.6 = \\mathbf{55.6}$ |\n| $(0, 7)$ | $49$ |\n\n**Maximum:** $z = 55.6$ at $(4.4, 4.8)$."
     },
     {
       "type": "heading",
@@ -123,7 +123,7 @@
       "number": "9.4",
       "title": "Minimization problem",
       "problem": "A diet requires at least 40 units of protein and 30 units of iron daily. \nFood A provides 4 units of protein and 2 units of iron per serving and \ncosts $0.60. Food B provides 2 units of protein and 3 units of iron \nper serving and costs $0.40. How many servings of each minimizes cost \nwhile meeting requirements?",
-      "solution": "Let $x$ = servings of Food A and $y$ = servings of Food B.\n\n**Objective function** (to minimize):\n$$\n z = 0.60x + 0.40y \\quad \\text(cost in dollars)\n$$\n\n**Constraints:**\n$$\\beginaligned\n 4x + 2y &\\geq 40 && \\text(protein requirement) \\\\\n 2x + 3y &\\geq 30 && \\text(iron requirement) \\\\\n x &\\geq 0, \\, y \\geq 0\n\\end{aligned}$$\n\n**Find intersection** of $4x + 2y = 40$ and $2x + 3y = 30$:\n\nFrom $4x + 2y = 40$: $2x + y = 20$, so $y = 20 - 2x$.\n\nSubstitute into $2x + 3y = 30$: $2x + 3(20-2x) = 30 \\Rightarrow 2x + 60 - 6x = 30 \\Rightarrow -4x = -30 \\Rightarrow x = 7.5$, and $y = 20 - 2(7.5) = 5$.\n\n**Vertices:** $(0, 20)$, $(7.5, 5)$, $(15, 0)$\n\n**Evaluate $z = 0.60x + 0.40y$:**\n\n| Vertex | $z = 0.60x + 0.40y$ |\n| $(0, 20)$ | $0.60(0) + 0.40(20) = $8.00$ |\n| $(7.5, 5)$ | $0.60(7.5) + 0.40(5) = 4.50 + 2.00 = $\\mathbf{6.50}$ |\n| $(15, 0)$ | $0.60(15) + 0.40(0) = $9.00$ |\n\n**Minimum:** $z = $6.50$ at $(7.5, 5)$.\n\n**Conclusion:** To minimize cost, use **7.5 servings of Food A \nand 5 servings of Food B** for a cost of **$6.50**."
+      "solution": "Let $x$ = servings of Food A and $y$ = servings of Food B.\n\n**Objective function** (to minimize):\n$$\n z = 0.60x + 0.40y \\quad \\text{(cost in dollars)}\n$$\n\n**Constraints:**\n$$\\begin{aligned}\n 4x + 2y &\\geq 40 && \\text{(protein requirement)} \\\\\n 2x + 3y &\\geq 30 && \\text{(iron requirement)} \\\\\n x &\\geq 0, \\, y \\geq 0\n\\end{aligned}$$\n\n**Find intersection** of $4x + 2y = 40$ and $2x + 3y = 30$:\n\nFrom $4x + 2y = 40$: $2x + y = 20$, so $y = 20 - 2x$.\n\nSubstitute into $2x + 3y = 30$: $2x + 3(20-2x) = 30 \\Rightarrow 2x + 60 - 6x = 30 \\Rightarrow -4x = -30 \\Rightarrow x = 7.5$, and $y = 20 - 2(7.5) = 5$.\n\n**Vertices:** $(0, 20)$, $(7.5, 5)$, $(15, 0)$\n\n**Evaluate $z = 0.60x + 0.40y$:**\n\n| Vertex | $z = 0.60x + 0.40y$ |\n| $(0, 20)$ | $0.60(0) + 0.40(20) = $8.00$ |\n| $(7.5, 5)$ | $0.60(7.5) + 0.40(5) = 4.50 + 2.00 = $\\mathbf{6.50}$ |\n| $(15, 0)$ | $0.60(15) + 0.40(0) = $9.00$ |\n\n**Minimum:** $z = $6.50$ at $(7.5, 5)$.\n\n**Conclusion:** To minimize cost, use **7.5 servings of Food A \nand 5 servings of Food B** for a cost of **$6.50**."
     },
     {
       "type": "heading",
@@ -131,8 +131,9 @@
       "text": "Special Cases"
     },
     {
-      "type": "paragraph",
-      "text": "*No Optimal Solution (Unbounded)"
+      "type": "heading",
+      "level": 3,
+      "text": "No Optimal Solution (Unbounded)"
     },
     {
       "type": "paragraph",
@@ -153,8 +154,9 @@
       "content": "An unbounded region may still have a minimum (or maximum in the opposite \ndirection). Always check whether the objective function is bounded in \nthe direction you care about."
     },
     {
-      "type": "paragraph",
-      "text": "*Multiple Optimal Solutions"
+      "type": "heading",
+      "level": 3,
+      "text": "Multiple Optimal Solutions"
     },
     {
       "type": "paragraph",
@@ -165,12 +167,13 @@
       "id": "ch09-sec05-example-9.6",
       "number": "9.6",
       "title": "Multiple optimal solutions",
-      "problem": "Maximize $z = 2x + 4y$ subject to:\n$$\n\\begincases\n x + 2y \\leq 8 \\\\\n x + y \\leq 5 \\\\\n x \\geq 0, \\, y \\geq 0\n\\endcases\n$$",
+      "problem": "Maximize $z = 2x + 4y$ subject to:\n$$\n\\begin{cases}\n x + 2y \\leq 8 \\\\\n x + y \\leq 5 \\\\\n x \\geq 0, \\, y \\geq 0\n\\end{cases}\n$$",
       "solution": "The constraint $x + 2y = 8$ can be rewritten as $z = 2(x + 2y) = 2 \\cdot 8 = 16$ \nalong that boundary. Since the objective function is $z = 2x + 4y = 2(x + 2y)$, \nit's parallel to this constraint.\n\nVertices: $(0, 0)$, $(5, 0)$, $(2, 3)$, $(0, 4)$\n\n| Vertex | $z = 2x + 4y$ |\n| $(0, 0)$ | $0$ |\n| $(5, 0)$ | $10$ |\n| $(2, 3)$ | $2(2) + 4(3) = \\mathbf{16}$ |\n| $(0, 4)$ | $2(0) + 4(4) = \\mathbf{16}$ |\n\nBoth $(2, 3)$ and $(0, 4)$ give $z = 16$. Since these are adjacent \nvertices, **every point on the segment from $(0, 4)$ to $(2, 3)$ \nis also optimal.**"
     },
     {
-      "type": "paragraph",
-      "text": "*Empty Feasible Region"
+      "type": "heading",
+      "level": 3,
+      "text": "Empty Feasible Region"
     },
     {
       "type": "paragraph",
@@ -187,7 +190,7 @@
       "number": "9.7",
       "title": "Production planning",
       "problem": "A furniture company makes tables and chairs. Each table requires 4 hours \nin the assembly department and 2 hours in finishing. Each chair requires \n2 hours in assembly and 2 hours in finishing. Assembly has 60 hours \navailable; finishing has 48 hours available. Tables sell for $200 profit \neach; chairs for $100 each. How many of each should be made?",
-      "solution": "Let $x$ = tables, $y$ = chairs.\n\n**Objective:** Maximize $z = 200x + 100y$ (profit)\n\n**Constraints:**\n$$\\beginaligned\n 4x + 2y &\\leq 60 && \\text(assembly) \\\\\n 2x + 2y &\\leq 48 && \\text(finishing) \\\\\n x, y &\\geq 0\n\\end{aligned}$$\n\nSimplify: $2x + y \\leq 30$ (assembly) and $x + y \\leq 24$ (finishing)\n\nFind intersection of $2x + y = 30$ and $x + y = 24$:\n\nSubtract: $x = 6$, then $y = 24 - 6 = 18$. Vertex: $(6, 18)$\n\n**Evaluate:**\n\n| Vertex | $z = 200x + 100y$ |\n| $(0, 0)$ | $0 |\n| $(15, 0)$ | $3,000 |\n| $(6, 18)$ | $200(6) + 100(18) = $\\mathbf{3,000}$ |\n| $(0, 24)$ | $2,400 |\n\n**Maximum profit:** $3,000, achieved at either $(15, 0)$ or $(6, 18)$ \n(or any point between them).\n\n**Options:** Make 15 tables and 0 chairs, OR 6 tables and 18 chairs, \nOR any combination along that edge."
+      "solution": "Let $x$ = tables, $y$ = chairs.\n\n**Objective:** Maximize $z = 200x + 100y$ (profit)\n\n**Constraints:**\n$$\\begin{aligned}\n 4x + 2y &\\leq 60 && \\text{(assembly)} \\\\\n 2x + 2y &\\leq 48 && \\text{(finishing)} \\\\\n x, y &\\geq 0\n\\end{aligned}$$\n\nSimplify: $2x + y \\leq 30$ (assembly) and $x + y \\leq 24$ (finishing)\n\nFind intersection of $2x + y = 30$ and $x + y = 24$:\n\nSubtract: $x = 6$, then $y = 24 - 6 = 18$. Vertex: $(6, 18)$\n\n**Evaluate:**\n\n| Vertex | $z = 200x + 100y$ |\n| $(0, 0)$ | $0 |\n| $(15, 0)$ | $3,000 |\n| $(6, 18)$ | $200(6) + 100(18) = $\\mathbf{3,000}$ |\n| $(0, 24)$ | $2,400 |\n\n**Maximum profit:** $3,000, achieved at either $(15, 0)$ or $(6, 18)$ \n(or any point between them).\n\n**Options:** Make 15 tables and 0 chairs, OR 6 tables and 18 chairs, \nOR any combination along that edge."
     },
     {
       "type": "example",
@@ -195,7 +198,7 @@
       "number": "9.8",
       "title": "Transportation problem",
       "problem": "A company ships products from two warehouses to a store. Warehouse A \ncan ship at most 50 units at $4 per unit. Warehouse B can ship at most \n70 units at $3 per unit. The store needs at least 80 units. How should \nshipments be allocated to minimize cost?",
-      "solution": "Let $x$ = units from A, $y$ = units from B.\n\n**Objective:** Minimize $z = 4x + 3y$ (cost)\n\n**Constraints:**\n$$\\beginaligned\n x &\\leq 50 && \\text(A capacity) \\\\\n y &\\leq 70 && \\text(B capacity) \\\\\n x + y &\\geq 80 && \\text(store requirement) \\\\\n x, y &\\geq 0\n\\end{aligned}$$\n\n**Vertices:** $(50, 30)$, $(50, 70)$, $(10, 70)$\n\n| Vertex | $z = 4x + 3y$ |\n| $(50, 30)$ | $4(50) + 3(30) = 200 + 90 = $290$ |\n| $(50, 70)$ | $4(50) + 3(70) = 200 + 210 = $410$ |\n| $(10, 70)$ | $4(10) + 3(70) = 40 + 210 = $\\mathbf{250}$ |\n\n**Minimum cost:** $250, shipping 10 units from A and 70 from B."
+      "solution": "Let $x$ = units from A, $y$ = units from B.\n\n**Objective:** Minimize $z = 4x + 3y$ (cost)\n\n**Constraints:**\n$$\\begin{aligned}\n x &\\leq 50 && \\text{(A capacity)} \\\\\n y &\\leq 70 && \\text{(B capacity)} \\\\\n x + y &\\geq 80 && \\text{(store requirement)} \\\\\n x, y &\\geq 0\n\\end{aligned}$$\n\n**Vertices:** $(50, 30)$, $(50, 70)$, $(10, 70)$\n\n| Vertex | $z = 4x + 3y$ |\n| $(50, 30)$ | $4(50) + 3(30) = 200 + 90 = $290$ |\n| $(50, 70)$ | $4(50) + 3(70) = 200 + 210 = $410$ |\n| $(10, 70)$ | $4(10) + 3(70) = 40 + 210 = $\\mathbf{250}$ |\n\n**Minimum cost:** $250, shipping 10 units from A and 70 from B."
     },
     {
       "type": "summary",
@@ -231,42 +234,42 @@
       "type": "exercise",
       "id": "ch09-sec05-ex-3",
       "number": "3",
-      "problem": "Maximize $z = 4x + 3y$ subject to:\n$\\begincases x + y \\leq 6 \\\\ 2x + y \\leq 9 \\\\ x \\geq 0, y \\geq 0 \\end{cases}$",
+      "problem": "Maximize $z = 4x + 3y$ subject to:\n$\\begin{cases} x + y \\leq 6 \\\\ 2x + y \\leq 9 \\\\ x \\geq 0, y \\geq 0 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch09-sec05-ex-4",
       "number": "4",
-      "problem": "Maximize $z = 3x + 5y$ subject to:\n$\\begincases x + 2y \\leq 10 \\\\ 3x + y \\leq 12 \\\\ x \\geq 0, y \\geq 0 \\end{cases}$",
+      "problem": "Maximize $z = 3x + 5y$ subject to:\n$\\begin{cases} x + 2y \\leq 10 \\\\ 3x + y \\leq 12 \\\\ x \\geq 0, y \\geq 0 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch09-sec05-ex-5",
       "number": "5",
-      "problem": "Minimize $z = 2x + 5y$ subject to:\n$\\begincases x + y \\geq 6 \\\\ 2x + y \\geq 9 \\\\ x \\geq 0, y \\geq 0 \\end{cases}$",
+      "problem": "Minimize $z = 2x + 5y$ subject to:\n$\\begin{cases} x + y \\geq 6 \\\\ 2x + y \\geq 9 \\\\ x \\geq 0, y \\geq 0 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch09-sec05-ex-6",
       "number": "6",
-      "problem": "Minimize $z = 5x + 4y$ subject to:\n$\\begincases 3x + 2y \\geq 18 \\\\ x + y \\geq 7 \\\\ x \\geq 0, y \\geq 0 \\end{cases}$",
+      "problem": "Minimize $z = 5x + 4y$ subject to:\n$\\begin{cases} 3x + 2y \\geq 18 \\\\ x + y \\geq 7 \\\\ x \\geq 0, y \\geq 0 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch09-sec05-ex-7",
       "number": "7",
-      "problem": "Maximize $z = 2x + 3y$ subject to:\n$\\begincases x + y \\leq 8 \\\\ 2x + y \\leq 12 \\\\ x + 2y \\leq 12 \\\\ x \\geq 0, y \\geq 0 \\end{cases}$",
+      "problem": "Maximize $z = 2x + 3y$ subject to:\n$\\begin{cases} x + y \\leq 8 \\\\ 2x + y \\leq 12 \\\\ x + 2y \\leq 12 \\\\ x \\geq 0, y \\geq 0 \\end{cases}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch09-sec05-ex-8",
       "number": "8",
-      "problem": "Find the maximum and minimum values of $z = x + 2y$ on the region defined by:\n$\\begincases x \\geq 1 \\\\ y \\geq 2 \\\\ x + y \\leq 8 \\\\ 2x + y \\leq 12 \\end{cases}$",
+      "problem": "Find the maximum and minimum values of $z = x + 2y$ on the region defined by:\n$\\begin{cases} x \\geq 1 \\\\ y \\geq 2 \\\\ x + y \\leq 8 \\\\ 2x + y \\leq 12 \\end{cases}$",
       "variant": "regular"
     },
     {

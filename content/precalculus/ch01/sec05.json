@@ -32,7 +32,7 @@
       "type": "definition",
       "id": "ch01-sec05-definition-1.1",
       "title": "Function Arithmetic",
-      "content": "Given functions $f$ and $g$, we define:\n$$\\beginaligned\n (f + g)(x) &= f(x) + g(x) & \\text(sum) \\\\\n (f - g)(x) &= f(x) - g(x) & \\text(difference) \\\\\n (fg)(x) &= f(x) \\cdot g(x) & \\text(product) \\\\\n \\left(\\fracfg\\right)(x) &= \\fracf(x)g(x), \\quad g(x) \\neq 0 & \\text(quotient)\n\\end{aligned}$$\n\nThe domain of each combined function is the intersection of the domains \nof $f$ and $g$, with additional restrictions for the quotient where \n$g(x) = 0$.",
+      "content": "Given functions $f$ and $g$, we define:\n$$\\begin{aligned}\n (f + g)(x) &= f(x) + g(x) & \\text{(sum)} \\\\\n (f - g)(x) &= f(x) - g(x) & \\text{(difference)} \\\\\n (fg)(x) &= f(x) \\cdot g(x) & \\text{(product)} \\\\\n \\left(\\frac{f}{g}\\right)(x) &= \\frac{f(x)}{g(x)}, \\quad g(x) \\neq 0 & \\text{(quotient)}\n\\end{aligned}$$\n\nThe domain of each combined function is the intersection of the domains \nof $f$ and $g$, with additional restrictions for the quotient where \n$g(x) = 0$.",
       "number": "1.1"
     },
     {
@@ -40,8 +40,8 @@
       "id": "ch01-sec05-example-1.1",
       "number": "1.1",
       "title": "Combining functions arithmetically",
-      "problem": "Let $f(x) = x^2 - 1$ and $g(x) = x + 3$. Find each of the following and \nstate its domain.\n\n1. $(f + g)(x)$\n\n2. $(f - g)(x)$\n\n3. $(fg)(x)$\n\n4. $\\left(\\dfracfg\\right)(x)$",
-      "solution": "1. $(f + g)(x) = (x^2 - 1) + (x + 3) = x^2 + x + 2$\n \n Domain: $(-\\infty, \\infty)$\n\n2. $(f - g)(x) = (x^2 - 1) - (x + 3) = x^2 - x - 4$\n \n Domain: $(-\\infty, \\infty)$\n\n3. $(fg)(x) = (x^2 - 1)(x + 3) = x^3 + 3x^2 - x - 3$\n \n Domain: $(-\\infty, \\infty)$\n\n4. $\\left(\\dfracfg\\right)(x) = \\dfracx^2 - 1{x + 3}$\n \n Domain: $\\x : x \\neq -3\\ = (-\\infty, -3) \\cup (-3, \\infty)$"
+      "problem": "Let $f(x) = x^2 - 1$ and $g(x) = x + 3$. Find each of the following and \nstate its domain.\n\n1. $(f + g)(x)$\n\n2. $(f - g)(x)$\n\n3. $(fg)(x)$\n\n4. $\\left(\\dfrac{f}{g}\\right)(x)$",
+      "solution": "1. $(f + g)(x) = (x^2 - 1) + (x + 3) = x^2 + x + 2$\n \n Domain: $(-\\infty, \\infty)$\n\n2. $(f - g)(x) = (x^2 - 1) - (x + 3) = x^2 - x - 4$\n \n Domain: $(-\\infty, \\infty)$\n\n3. $(fg)(x) = (x^2 - 1)(x + 3) = x^3 + 3x^2 - x - 3$\n \n Domain: $(-\\infty, \\infty)$\n\n4. $\\left(\\dfrac{f}{g}\\right)(x) = \\dfrac{x^2 - 1}{x + 3}$\n \n Domain: $\\{x : x \\neq -3\\} = (-\\infty, -3) \\cup (-3, \\infty)$"
     },
     {
       "type": "paragraph",
@@ -103,7 +103,7 @@
       "number": "1.3",
       "title": "Domain of a composition",
       "problem": "Let $f(x) = \\sqrt{x}$ and $g(x) = x - 4$. Find $(f \\circ g)(x)$ and its domain.",
-      "solution": "$$\n (f \\circ g)(x) = f(g(x)) = f(x - 4) = \\sqrtx - 4\n$$\n\nFor the domain: We need $x$ to be in the domain of $g$ (all real numbers), \nand we need $g(x) = x - 4$ to be in the domain of $f$ (nonnegative numbers):\n$$\n x - 4 \\ge 0 \\implies x \\ge 4\n$$\nDomain: $[4, \\infty)$"
+      "solution": "$$\n (f \\circ g)(x) = f(g(x)) = f(x - 4) = \\sqrt{x - 4}\n$$\n\nFor the domain: We need $x$ to be in the domain of $g$ (all real numbers), \nand we need $g(x) = x - 4$ to be in the domain of $f$ (nonnegative numbers):\n$$\n x - 4 \\ge 0 \\implies x \\ge 4\n$$\nDomain: $[4, \\infty)$"
     },
     {
       "type": "heading",
@@ -118,7 +118,7 @@
       "type": "strategy",
       "id": "ch01-sec05-strategy-1",
       "title": "Decomposition Heuristic",
-      "content": "To decompose $h(x)$ as $f(g(x))$:\n\n1. **Look for the \"outermost\" operation.** This becomes your outer function $f$.\n\n2. **Everything else becomes the inner function $g$.**\n\n**Quick patterns:**\n\n- $h(x) = (\\textstuff)^n$ → outer: $f(u) = u^n$, inner: $g(x) = \\text{stuff}$\n\n- $h(x) = \\sqrt{\\textstuff}$ → outer: $f(u) = \\sqrt{u}$, inner: $g(x) = \\text{stuff}$\n\n- $h(x) = \\dfrac1{\\textstuff}$ → outer: $f(u) = \\dfrac1{u}$, inner: $g(x) = \\text{stuff}$\n\n- $h(x) = e^{\\textstuff}$ → outer: $f(u) = e^u$, inner: $g(x) = \\text{stuff}$\n\n**Test yourself:** \"If I fed $g(x)$ into $f$, would I get $h(x)$?\""
+      "content": "To decompose $h(x)$ as $f(g(x))$:\n\n1. **Look for the \"outermost\" operation.** This becomes your outer function $f$.\n\n2. **Everything else becomes the inner function $g$.**\n\n**Quick patterns:**\n\n- $h(x) = (\\text{stuff})^n$ → outer: $f(u) = u^n$, inner: $g(x) = \\text{stuff}$\n\n- $h(x) = \\sqrt{\\text{stuff}}$ → outer: $f(u) = \\sqrt{u}$, inner: $g(x) = \\text{stuff}$\n\n- $h(x) = \\dfrac{1}{\\text{stuff}}$ → outer: $f(u) = \\dfrac{1}{u}$, inner: $g(x) = \\text{stuff}$\n\n- $h(x) = e^{\\text{stuff}}$ → outer: $f(u) = e^u$, inner: $g(x) = \\text{stuff}$\n\n**Test yourself:** \"If I fed $g(x)$ into $f$, would I get $h(x)$?\""
     },
     {
       "type": "example",
@@ -140,7 +140,7 @@
       "type": "summary",
       "id": "ch01-sec05-summary-1",
       "title": "Combining Functions",
-      "content": "- **Arithmetic combinations:** Given functions $f$ and $g$:\n $$\\beginaligned\n (f + g)(x) &= f(x) + g(x) \\\\\n (f - g)(x) &= f(x) - g(x) \\\\\n (fg)(x) &= f(x) \\cdot g(x) \\\\\n (f/g)(x) &= f(x)/g(x), \\quad g(x) \\neq 0\n \\end{aligned}$$\n\n- **Domain:** The domain of $f + g$, $f - g$, and $fg$ is the \n intersection of the domains of $f$ and $g$. For $f/g$, also exclude \n where $g(x) = 0$.\n\n- **Composition:** $(f \\circ g)(x) = f(g(x))$\n\n- **Domain of composition:** All $x$ in domain of $g$ such \n that $g(x)$ is in domain of $f$.\n\n- **Order matters:** $(f \\circ g)(x) \\neq (g \\circ f)(x)$ in general.\n\n- **Decomposition:** Express $h(x)$ as $f(g(x))$ by identifying \n the \"inner\" function $g$ and \"outer\" function $f$."
+      "content": "- **Arithmetic combinations:** Given functions $f$ and $g$:\n $$\\begin{aligned}\n (f + g)(x) &= f(x) + g(x) \\\\\n (f - g)(x) &= f(x) - g(x) \\\\\n (fg)(x) &= f(x) \\cdot g(x) \\\\\n (f/g)(x) &= f(x)/g(x), \\quad g(x) \\neq 0\n \\end{aligned}$$\n\n- **Domain:** The domain of $f + g$, $f - g$, and $fg$ is the \n intersection of the domains of $f$ and $g$. For $f/g$, also exclude \n where $g(x) = 0$.\n\n- **Composition:** $(f \\circ g)(x) = f(g(x))$\n\n- **Domain of composition:** All $x$ in domain of $g$ such \n that $g(x)$ is in domain of $f$.\n\n- **Order matters:** $(f \\circ g)(x) \\neq (g \\circ f)(x)$ in general.\n\n- **Decomposition:** Express $h(x)$ as $f(g(x))$ by identifying \n the \"inner\" function $g$ and \"outer\" function $f$."
     },
     {
       "type": "heading",
@@ -151,7 +151,7 @@
       "type": "exercise",
       "id": "ch01-sec05-ex-1",
       "number": "1",
-      "problem": "Fill in each blank.\n\n1. $(f + g)(x) = $ \n\n2. $(f - g)(x) = $ \n\n3. $(fg)(x) = $ \n\n4. $\\left(\\dfracfg\\right)(x) = $ , provided \n\n5. $(f \\circ g)(x) = $ \n\n6. The domain of $f \\circ g$ consists of all $x$ in the domain of \n such that $g(x)$ is in the domain of .",
+      "problem": "Fill in each blank.\n\n1. $(f + g)(x) = $ \n\n2. $(f - g)(x) = $ \n\n3. $(fg)(x) = $ \n\n4. $\\left(\\dfrac{f}{g}\\right)(x) = $ , provided \n\n5. $(f \\circ g)(x) = $ \n\n6. The domain of $f \\circ g$ consists of all $x$ in the domain of \n such that $g(x)$ is in the domain of .",
       "variant": "vocabulary"
     },
     {
@@ -203,7 +203,7 @@
       "type": "exercise",
       "id": "ch01-sec05-ex-7",
       "number": "7",
-      "problem": "Let $f(x) = \\dfrac1{x}$ and $g(x) = x^2 - 1$. Find each function and its domain.\n\n1. $f + g$\n\n2. $fg$\n\n3. $f/g$\n\n4. $g/f$",
+      "problem": "Let $f(x) = \\dfrac{1}{x}$ and $g(x) = x^2 - 1$. Find each function and its domain.\n\n1. $f + g$\n\n2. $fg$\n\n3. $f/g$\n\n4. $g/f$",
       "variant": "regular"
     },
     {
@@ -276,7 +276,7 @@
       "type": "exercise",
       "id": "ch01-sec05-ex-16",
       "number": "16",
-      "problem": "Let $f(x) = \\dfrac1{x}$ and $g(x) = x + 2$. Find each composite function and its domain.\n\n1. $(f \\circ g)(x)$\n\n2. $(g \\circ f)(x)$\n\n3. $(f \\circ f)(x)$",
+      "problem": "Let $f(x) = \\dfrac{1}{x}$ and $g(x) = x + 2$. Find each composite function and its domain.\n\n1. $(f \\circ g)(x)$\n\n2. $(g \\circ f)(x)$\n\n3. $(f \\circ f)(x)$",
       "variant": "regular"
     },
     {
@@ -290,14 +290,14 @@
       "type": "exercise",
       "id": "ch01-sec05-ex-18",
       "number": "18",
-      "problem": "Find the domain of each composition.\n\n1. $f(x) = \\sqrt{x}$, $g(x) = x - 3$; find domain of $f \\circ g$\n\n2. $f(x) = \\dfrac1{x}$, $g(x) = x + 1$; find domain of $f \\circ g$\n\n3. $f(x) = x^2$, $g(x) = \\sqrt{x}$; find domain of $f \\circ g$\n\n4. $f(x) = \\sqrt{x - 2}$, $g(x) = x^2$; find domain of $f \\circ g$",
+      "problem": "Find the domain of each composition.\n\n1. $f(x) = \\sqrt{x}$, $g(x) = x - 3$; find domain of $f \\circ g$\n\n2. $f(x) = \\dfrac{1}{x}$, $g(x) = x + 1$; find domain of $f \\circ g$\n\n3. $f(x) = x^2$, $g(x) = \\sqrt{x}$; find domain of $f \\circ g$\n\n4. $f(x) = \\sqrt{x - 2}$, $g(x) = x^2$; find domain of $f \\circ g$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch01-sec05-ex-19",
       "number": "19",
-      "problem": "Find the domain of each composition.\n\n1. $f(x) = \\sqrt{x + 1}$, $g(x) = \\dfrac1{x}$; find domain of $f \\circ g$\n\n2. $f(x) = \\dfrac1{x - 2}$, $g(x) = \\sqrt{x}$; find domain of $f \\circ g$\n\n3. $f(x) = \\dfrac1{\\sqrtx}$, $g(x) = x - 5$; find domain of $f \\circ g$",
+      "problem": "Find the domain of each composition.\n\n1. $f(x) = \\sqrt{x + 1}$, $g(x) = \\dfrac{1}{x}$; find domain of $f \\circ g$\n\n2. $f(x) = \\dfrac{1}{x - 2}$, $g(x) = \\sqrt{x}$; find domain of $f \\circ g$\n\n3. $f(x) = \\dfrac{1}{\\sqrt{x}}$, $g(x) = x - 5$; find domain of $f \\circ g$",
       "variant": "regular"
     },
     {
@@ -309,42 +309,42 @@
       "type": "exercise",
       "id": "ch01-sec05-ex-20",
       "number": "20",
-      "problem": "Write each function as a composition $h = f \\circ g$ of two simpler functions.\n\n1. $h(x) = (x + 2)^3$\n\n2. $h(x) = \\sqrt{x - 5}$\n\n3. $h(x) = |3x + 1|$\n\n4. $h(x) = \\dfrac1{x^2 + 1}$",
+      "problem": "Write each function as a composition $h = f \\circ g$ of two simpler functions.\n\n1. $h(x) = (x + 2)^3$\n\n2. $h(x) = \\sqrt{x - 5}$\n\n3. $h(x) = |3x + 1|$\n\n4. $h(x) = \\dfrac{1}{x^2 + 1}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch01-sec05-ex-21",
       "number": "21",
-      "problem": "Write each function as a composition $h = f \\circ g$ of two simpler functions.\n\n1. $h(x) = (x^2 + 4)^5$\n\n2. $h(x) = \\sqrt[3]{2x - 7}$\n\n3. $h(x) = \\dfrac1{\\sqrtx + 3}$\n\n4. $h(x) = |x^2 - 9|$",
+      "problem": "Write each function as a composition $h = f \\circ g$ of two simpler functions.\n\n1. $h(x) = (x^2 + 4)^5$\n\n2. $h(x) = \\sqrt[3]{2x - 7}$\n\n3. $h(x) = \\dfrac{1}{\\sqrt{x + 3}}$\n\n4. $h(x) = |x^2 - 9|$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch01-sec05-ex-22",
       "number": "22",
-      "problem": "Find functions $f$ and $g$ such that $h(x) = (f \\circ g)(x)$.\n\n1. $h(x) = \\dfrac1{(x-3)^2}$\n\n2. $h(x) = \\sqrt[3]{x + 2}$\n\n3. $h(x) = (2x + 1)^5$\n\n4. $h(x) = \\dfracx{x+1}$",
+      "problem": "Find functions $f$ and $g$ such that $h(x) = (f \\circ g)(x)$.\n\n1. $h(x) = \\dfrac{1}{(x-3)^2}$\n\n2. $h(x) = \\sqrt[3]{x + 2}$\n\n3. $h(x) = (2x + 1)^5$\n\n4. $h(x) = \\dfrac{x}{x+1}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch01-sec05-ex-23",
       "number": "23",
-      "problem": "Write each function as a composition $f \\circ g \\circ h$ of three functions.\n\n1. $F(x) = \\sqrt{(x + 1)^2}$\n\n2. $F(x) = |2x - 3|^4$\n\n3. $F(x) = \\dfrac1{(x^2 + 1)^3}$\n\n4. $F(x) = \\dfrac3{(x-1)^2}$",
+      "problem": "Write each function as a composition $f \\circ g \\circ h$ of three functions.\n\n1. $F(x) = \\sqrt{(x + 1)^2}$\n\n2. $F(x) = |2x - 3|^4$\n\n3. $F(x) = \\dfrac{1}{(x^2 + 1)^3}$\n\n4. $F(x) = \\dfrac{3}{(x-1)^2}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch01-sec05-ex-24",
       "number": "24",
-      "problem": "Write each function as a composition $h = f \\circ g$ of two simpler functions.\n\n1. $h(x) = (5x - 2)^4$\n\n2. $h(x) = \\sqrt{x^2 + 16}$\n\n3. $h(x) = \\dfrac3{x - 7}$\n\n4. $h(x) = (x^3 - 2)^{10}$",
+      "problem": "Write each function as a composition $h = f \\circ g$ of two simpler functions.\n\n1. $h(x) = (5x - 2)^4$\n\n2. $h(x) = \\sqrt{x^2 + 16}$\n\n3. $h(x) = \\dfrac{3}{x - 7}$\n\n4. $h(x) = (x^3 - 2)^{10}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch01-sec05-ex-25",
       "number": "25",
-      "problem": "Find functions $f$ and $g$ such that $h(x) = (f \\circ g)(x)$.\n\n1. $h(x) = |4x - 3|$\n\n2. $h(x) = \\sqrtx - 2 + 5$\n\n3. $h(x) = \\dfrac2{(x + 4)^3}$\n\n4. $h(x) = e^{x^2}$",
+      "problem": "Find functions $f$ and $g$ such that $h(x) = (f \\circ g)(x)$.\n\n1. $h(x) = |4x - 3|$\n\n2. $h(x) = \\sqrt{x - 2} + 5$\n\n3. $h(x) = \\dfrac{2}{(x + 4)^3}$\n\n4. $h(x) = e^{x^2}$",
       "variant": "regular"
     },
     {
@@ -408,7 +408,7 @@
       "type": "exercise",
       "id": "ch01-sec05-ex-32",
       "number": "32",
-      "problem": "Let $f(x) = \\dfrac1{x - 1}$ and $g(x) = \\dfracx + 1{x}$. Find each composition and its domain.\n\n1. $(f \\circ g)(x)$\n\n2. $(g \\circ f)(x)$",
+      "problem": "Let $f(x) = \\dfrac{1}{x - 1}$ and $g(x) = \\dfrac{x + 1}{x}$. Find each composition and its domain.\n\n1. $(f \\circ g)(x)$\n\n2. $(g \\circ f)(x)$",
       "variant": "regular"
     },
     {
@@ -434,14 +434,14 @@
       "type": "exercise",
       "id": "ch01-sec05-ex-35",
       "number": "35",
-      "problem": "Find the domain of each arithmetic combination.\n\n1. $f(x) = \\sqrt{x - 2}$, $g(x) = \\sqrt{6 - x}$; find domain of $f + g$\n\n2. $f(x) = \\dfrac1{x}$, $g(x) = \\dfrac1{x - 3}$; find domain of $fg$\n\n3. $f(x) = \\sqrt{x}$, $g(x) = x^2 - 4$; find domain of $f/g$",
+      "problem": "Find the domain of each arithmetic combination.\n\n1. $f(x) = \\sqrt{x - 2}$, $g(x) = \\sqrt{6 - x}$; find domain of $f + g$\n\n2. $f(x) = \\dfrac{1}{x}$, $g(x) = \\dfrac{1}{x - 3}$; find domain of $fg$\n\n3. $f(x) = \\sqrt{x}$, $g(x) = x^2 - 4$; find domain of $f/g$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch01-sec05-ex-36",
       "number": "36",
-      "problem": "Find the domain of each arithmetic combination.\n\n1. $f(x) = \\sqrt{x + 1}$, $g(x) = \\sqrt{5 - x}$; find domain of $f - g$\n\n2. $f(x) = \\dfrac1{x + 2}$, $g(x) = \\dfrac1{x - 4}$; find domain of $f + g$\n\n3. $f(x) = \\sqrt{x - 1}$, $g(x) = x^2 - 9$; find domain of $g/f$",
+      "problem": "Find the domain of each arithmetic combination.\n\n1. $f(x) = \\sqrt{x + 1}$, $g(x) = \\sqrt{5 - x}$; find domain of $f - g$\n\n2. $f(x) = \\dfrac{1}{x + 2}$, $g(x) = \\dfrac{1}{x - 4}$; find domain of $f + g$\n\n3. $f(x) = \\sqrt{x - 1}$, $g(x) = x^2 - 9$; find domain of $g/f$",
       "variant": "regular"
     },
     {
@@ -460,21 +460,21 @@
       "type": "exercise",
       "id": "ch01-sec05-ex-38",
       "number": "38",
-      "problem": "Express each function as a composition $h(x) = (f \\circ g)(x)$. Give two different decompositions for each.\n\n1. $h(x) = \\dfrac1{(x - 2)^3}$\n\n2. $h(x) = |x^2 + 3x|$",
+      "problem": "Express each function as a composition $h(x) = (f \\circ g)(x)$. Give two different decompositions for each.\n\n1. $h(x) = \\dfrac{1}{(x - 2)^3}$\n\n2. $h(x) = |x^2 + 3x|$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch01-sec05-ex-39",
       "number": "39",
-      "problem": "For each function, find $f$, $g$, and $h$ such that $F(x) = (f \\circ g \\circ h)(x)$.\n\n1. $F(x) = \\sqrt{(2x + 1)^3}$\n\n2. $F(x) = \\dfrac1{|x - 4|^2}$\n\n3. $F(x) = ((x^2 + 1)^3 - 5)^4$",
+      "problem": "For each function, find $f$, $g$, and $h$ such that $F(x) = (f \\circ g \\circ h)(x)$.\n\n1. $F(x) = \\sqrt{(2x + 1)^3}$\n\n2. $F(x) = \\dfrac{1}{|x - 4|^2}$\n\n3. $F(x) = ((x^2 + 1)^3 - 5)^4$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch01-sec05-ex-40",
       "number": "40",
-      "problem": "For each function, find $f$, $g$, and $h$ such that $F(x) = (f \\circ g \\circ h)(x)$.\n\n1. $F(x) = \\sqrt[3]{(3x - 2)^2}$\n\n2. $F(x) = \\dfrac1{(x^2 + 4)^3}$\n\n3. $F(x) = |((x - 1)^2 + 3)^4|$",
+      "problem": "For each function, find $f$, $g$, and $h$ such that $F(x) = (f \\circ g \\circ h)(x)$.\n\n1. $F(x) = \\sqrt[3]{(3x - 2)^2}$\n\n2. $F(x) = \\dfrac{1}{(x^2 + 4)^3}$\n\n3. $F(x) = |((x - 1)^2 + 3)^4|$",
       "variant": "regular"
     },
     {
@@ -505,7 +505,7 @@
       "type": "exercise",
       "id": "ch01-sec05-ex-43",
       "number": "43",
-      "problem": "Let $C(x) = \\dfrac59(x - 32)$ convert Fahrenheit to Celsius, and \nlet $K(x) = x + 273$ convert Celsius to Kelvin.\n\n1. Find $(K \\circ C)(x)$, which converts Fahrenheit to Kelvin.\n\n2. Convert 212°F to Kelvin.\n\n3. Convert 98.6°F (body temperature) to Kelvin.",
+      "problem": "Let $C(x) = \\dfrac{5}{9}(x - 32)$ convert Fahrenheit to Celsius, and \nlet $K(x) = x + 273$ convert Celsius to Kelvin.\n\n1. Find $(K \\circ C)(x)$, which converts Fahrenheit to Kelvin.\n\n2. Convert 212°F to Kelvin.\n\n3. Convert 98.6°F (body temperature) to Kelvin.",
       "variant": "regular"
     },
     {
@@ -526,14 +526,14 @@
       "type": "exercise",
       "id": "ch01-sec05-ex-46",
       "number": "46",
-      "problem": "The distance (in feet) a car travels during the driver's reaction time is \n$R(x) = \\dfrac3x{4}$, where $x$ is the speed in mph. The braking distance \nis $B(x) = \\dfracx^2{15}$.\n\n1. Find the total stopping distance function $T(x) = R(x) + B(x)$.\n\n2. Calculate $T(30)$, $T(60)$, and $T(90)$.\n\n3. Which contributes more to total stopping distance at low speeds? \n At high speeds?",
+      "problem": "The distance (in feet) a car travels during the driver's reaction time is \n$R(x) = \\dfrac{3x}{4}$, where $x$ is the speed in mph. The braking distance \nis $B(x) = \\dfrac{x^2}{15}$.\n\n1. Find the total stopping distance function $T(x) = R(x) + B(x)$.\n\n2. Calculate $T(30)$, $T(60)$, and $T(90)$.\n\n3. Which contributes more to total stopping distance at low speeds? \n At high speeds?",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch01-sec05-ex-47",
       "number": "47",
-      "problem": "Verify that $f$ and $g$ are inverses by showing $f(g(x)) = x$ and $g(f(x)) = x$.\n\n1. $f(x) = 5x - 2$, $g(x) = \\dfracx + 2{5}$\n\n2. $f(x) = x^3$, $g(x) = \\sqrt[3]{x}$\n\n3. $f(x) = \\dfrac1{x}$, $g(x) = \\dfrac1{x}$",
+      "problem": "Verify that $f$ and $g$ are inverses by showing $f(g(x)) = x$ and $g(f(x)) = x$.\n\n1. $f(x) = 5x - 2$, $g(x) = \\dfrac{x + 2}{5}$\n\n2. $f(x) = x^3$, $g(x) = \\sqrt[3]{x}$\n\n3. $f(x) = \\dfrac{1}{x}$, $g(x) = \\dfrac{1}{x}$",
       "variant": "regular"
     },
     {
@@ -559,14 +559,14 @@
       "type": "exercise",
       "id": "ch01-sec05-ex-50",
       "number": "50",
-      "problem": "Let $f(x) = x$ and $g(x) = \\dfrac1{x}$ for $x > 0$. Graph \n$f$, $g$, and $f + g$ in the same window.\n\n1. Which function contributes most to the sum when $0 < x < 1$?\n\n2. Which function contributes most when $x > 1$?\n\n3. For what value of $x$ do $f$ and $g$ contribute equally?",
+      "problem": "Let $f(x) = x$ and $g(x) = \\dfrac{1}{x}$ for $x > 0$. Graph \n$f$, $g$, and $f + g$ in the same window.\n\n1. Which function contributes most to the sum when $0 < x < 1$?\n\n2. Which function contributes most when $x > 1$?\n\n3. For what value of $x$ do $f$ and $g$ contribute equally?",
       "variant": "technology"
     },
     {
       "type": "exercise",
       "id": "ch01-sec05-ex-51",
       "number": "51",
-      "problem": "Let $f(x) = 2x$ and $g(x) = \\dfracx^2{4}$. Graph $f$, $g$, \nand $f + g$ in the same window for $0 \\leq x \\leq 10$.\n\n1. Which function dominates when $x$ is small (near 0)?\n\n2. Which function dominates when $x$ is large?\n\n3. Estimate where $f(x) = g(x)$.",
+      "problem": "Let $f(x) = 2x$ and $g(x) = \\dfrac{x^2}{4}$. Graph $f$, $g$, \nand $f + g$ in the same window for $0 \\leq x \\leq 10$.\n\n1. Which function dominates when $x$ is small (near 0)?\n\n2. Which function dominates when $x$ is large?\n\n3. Estimate where $f(x) = g(x)$.",
       "variant": "technology"
     },
     {
