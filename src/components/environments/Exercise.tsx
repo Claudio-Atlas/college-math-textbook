@@ -29,8 +29,11 @@ export function Exercise({
   const num = parseInt(number || '0', 10);
   const isOdd = num % 2 === 1;
 
+  // Heuristic: span both columns for long exercises (word problems, multi-part)
+  const isLong = text.length > 200 || text.includes('\\begin{') || (text.match(/\([a-z]\)/g)?.length ?? 0) >= 2;
+
   return (
-    <div id={id} className="exercise-card">
+    <div id={id} className={`exercise-card${isLong ? ' exercise-card-wide' : ''}`}>
       <div className="exercise-card-inner">
         <span className="exercise-badge">{number || '?'}</span>
         <div className="exercise-body">

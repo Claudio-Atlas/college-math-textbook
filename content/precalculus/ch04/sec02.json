@@ -15,7 +15,7 @@
   "devotional": {
     "title": "Hidden Order",
     "scripture": "Romans 1:20",
-    "content": "\\lettrine[lines=2, loversize=0.1, nindent=0.5em]{T}{he\nnumber $e$ appears uninvited across mathematics—in compound interest, \nin probability, in the shape of hanging chains, in the spirals of shells. \nIts presence hints at a hidden order underlying creation, a mathematical \nfingerprint of the divine. \"For since the creation of the world, God's \ninvisible qualities have been clearly seen.\"",
+    "content": "\\lettrine[lines=2, loversize=0.1, nindent=0.5em]The\nnumber $e$ appears uninvited across mathematics—in compound interest, \nin probability, in the shape of hanging chains, in the spirals of shells. \nIts presence hints at a hidden order underlying creation, a mathematical \nfingerprint of the divine. \"For since the creation of the world, God's \ninvisible qualities have been clearly seen.\"",
     "edition": "christian"
   },
   "epigraph": {
@@ -57,7 +57,7 @@
     },
     {
       "type": "strategy",
-      "id": "ch04-sec02-strategy",
+      "id": "ch04-sec02-strategy-1",
       "title": "Discovering $e$ Through Compound Interest",
       "content": "Imagine you deposit $1 in a bank that offers the unusual deal of 100% annual \ninterest. Your goal: maximize your balance by choosing how often to compound.\n\n**Complete the table and answer the questions.**\n\n| **Compounding** | **$n$** | **Calculation** | **Balance** |\n| Annually | 1 | $(1 + 1/1)^1$ | $2.00 |\n| Semiannually | 2 | $(1 + 1/2)^2$ | |\n| Quarterly | 4 | $(1 + 1/4)^4$ | |\n| Monthly | 12 | $(1 + 1/12)^{12}$ | |\n| Daily | 365 | $(1 + 1/365)^{365}$ | |\n| Hourly | 8760 | $(1 + 1/8760)^{8760}$ | |\n| Every second | 31,536,000 | $(1 + 1/n)^n$ | |\n\n**Questions:**\n\n1. As $n$ increases, what happens to the balance?\n\n2. Does the balance grow without bound, or approach a limit?\n\n3. What value does $(1 + 1/n)^n$ approach as $n \\to \\infty$?\n\n4. Why can't you earn infinitely more by compounding infinitely often?\n\n**The Discovery:** No matter how frequently you compound, your $1 \ncan never grow beyond approximately $2.718... in one year. This limiting \nvalue is the mathematical constant $e$."
     },
@@ -65,7 +65,7 @@
       "type": "definition",
       "id": "ch04-sec02-definition-4.1",
       "title": "The Number $e$",
-      "content": "The number $e$ is defined as\n$$\n e = \\lim_{n \\to \\infty} \\left(1 + \\frac{1}{n}\\right)^n \\approx 2.71828182845904523536\\ldots\n$$",
+      "content": "The number $e$ is defined as\n$$\n e = \\lim_n \\to \\infty \\left(1 + \\frac1n\\right)^n \\approx 2.71828182845904523536\\ldots\n$$",
       "number": "4.1"
     },
     {
@@ -77,8 +77,8 @@
       "id": "ch04-sec02-example-4.1",
       "number": "4.1",
       "title": "Computing approximations to $e$",
-      "problem": "Calculate $\\left(1 + \\frac{1}{n}\\right)^n$ for $n = 10, 100, 1000, 10000$ \nand observe convergence to $e$.",
-      "solution": "| $n$ | $\\left(1 + \\frac{1}{n}\\right)^n$ |\n| 10 | 2.5937424601 |\n| 100 | 2.7048138294 |\n| 1,000 | 2.7169239322 |\n| 10,000 | 2.7181459268 |\n| 100,000 | 2.7182682372 |\n| 1,000,000 | 2.7182804691 |\n\nThe values approach $e \\approx 2.71828$ from below, getting one more \naccurate decimal place roughly every two orders of magnitude."
+      "problem": "Calculate $\\left(1 + \\frac1n\\right)^n$ for $n = 10, 100, 1000, 10000$ \nand observe convergence to $e$.",
+      "solution": "| $n$ | $\\left(1 + \\frac1n\\right)^n$ |\n| 10 | 2.5937424601 |\n| 100 | 2.7048138294 |\n| 1,000 | 2.7169239322 |\n| 10,000 | 2.7181459268 |\n| 100,000 | 2.7182682372 |\n| 1,000,000 | 2.7182804691 |\n\nThe values approach $e \\approx 2.71828$ from below, getting one more \naccurate decimal place roughly every two orders of magnitude."
     },
     {
       "type": "heading",
@@ -93,12 +93,12 @@
       "type": "theorem",
       "id": "ch04-sec02-theorem-4.1",
       "title": "Equivalent Definitions of $e$",
-      "content": "The following all define the same number $e \\approx 2.71828$:\n\n1. $e = \\lim_{n \\to \\infty} \\left(1 + \\frac{1}{n}\\right)^n$ (compound interest)\n\n2. $e = \\sum_{n=0}^{\\infty} \\frac{1}{n!} = 1 + 1 + \\frac{1}{2} + \\frac{1}{6} + \\frac{1}{24} + \\cdots$ (infinite series)\n\n3. $e$ is the unique number such that $\\lim_{h \\to 0} \\frac{e^h - 1}{h} = 1$ (calculus)\n\n4. $e$ is the base for which $\\frac{d}{dx}[b^x] = b^x$ when $b = e$ (self-derivative)",
+      "content": "The following all define the same number $e \\approx 2.71828$:\n\n1. $e = \\lim_n \\to \\infty \\left(1 + \\frac1n\\right)^n$ (compound interest)\n\n2. $e = \\sum_n=0^\\infty \\frac1n! = 1 + 1 + \\frac12 + \\frac16 + \\frac124 + \\cdots$ (infinite series)\n\n3. $e$ is the unique number such that $\\lim_h \\to 0 \\frace^h - 1h = 1$ (calculus)\n\n4. $e$ is the base for which $\\fracddx[b^x] = b^x$ when $b = e$ (self-derivative)",
       "number": "4.1"
     },
     {
       "type": "paragraph",
-      "text": "The series definition (ii) is particularly useful for computation. Let's \nverify it gives the same value:\n$$\n 1 + 1 + \\frac{1}{2} + \\frac{1}{6} + \\frac{1}{24} + \\frac{1}{120} + \\frac{1}{720} + \\cdots = 2.71828...\n$$"
+      "text": "The series definition (ii) is particularly useful for computation. Let's \nverify it gives the same value:\n$$\n 1 + 1 + \\frac12 + \\frac16 + \\frac124 + \\frac1120 + \\frac1720 + \\cdots = 2.71828...\n$$"
     },
     {
       "type": "example",
@@ -106,7 +106,7 @@
       "number": "4.2",
       "title": "Using the series to approximate $e$",
       "problem": "Use the first 8 terms of the factorial series to approximate $e$.",
-      "solution": "$$\\begin{aligned}\n e &\\approx \\frac{1}{0!} + \\frac{1}{1!} + \\frac{1}{2!} + \\frac{1}{3!} + \\frac{1}{4!} + \\frac{1}{5!} + \\frac{1}{6!} + \\frac{1}{7!} \\\\\n &= 1 + 1 + 0.5 + 0.1\\overline{6} + 0.041\\overline{6} + 0.008\\overline{3} + 0.00138\\overline{8} + 0.000198... \\\\\n &\\approx 2.71825...\n\\end{aligned}$$\n\nThis is already accurate to four decimal places!"
+      "solution": "$$\\beginaligned\n e &\\approx \\frac10! + \\frac11! + \\frac12! + \\frac13! + \\frac14! + \\frac15! + \\frac16! + \\frac17! \\\\\n &= 1 + 1 + 0.5 + 0.1\\overline6 + 0.041\\overline6 + 0.008\\overline3 + 0.00138\\overline8 + 0.000198... \\\\\n &\\approx 2.71825...\n\\end{aligned}$$\n\nThis is already accurate to four decimal places!"
     },
     {
       "type": "heading",
@@ -126,7 +126,7 @@
     },
     {
       "type": "summary",
-      "id": "ch04-sec02-summary",
+      "id": "ch04-sec02-summary-1",
       "title": "Properties of $f(x) = e^x$",
       "content": "- **Domain:** $(-\\infty, \\infty)$\n\n- **Range:** $(0, \\infty)$\n\n- **Horizontal asymptote:** $y = 0$\n\n- **$y$-intercept:** $(0, 1)$\n\n- **Key points:** $(1, e) \\approx (1, 2.718)$ and $(-1, 1/e) \\approx (-1, 0.368)$\n\n- **Always increasing:** $e > 1$, so this is an exponential growth function\n\n- **One-to-one:** has an inverse function (the natural logarithm)"
     },
@@ -149,7 +149,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Consider the slope of $f(x) = b^x$ at $x = 0$. Using the definition of \nderivative (which we approximate here):\n$$\n f'(0) = \\lim_{h \\to 0} \\frac{b^h - b^0}{h} = \\lim_{h \\to 0} \\frac{b^h - 1}{h}\n$$"
+      "text": "Consider the slope of $f(x) = b^x$ at $x = 0$. Using the definition of \nderivative (which we approximate here):\n$$\n f'(0) = \\lim_h \\to 0 \\fracb^h - b^0h = \\lim_h \\to 0 \\fracb^h - 1h\n$$"
     },
     {
       "type": "paragraph",
@@ -168,7 +168,7 @@
       "type": "theorem",
       "id": "ch04-sec02-theorem-4.2",
       "title": "The Self-Derivative Property",
-      "content": "The function $f(x) = e^x$ is its own derivative:\n$$\n \\frac{d}{dx}[e^x] = e^x\n$$\nThis property is unique to $e^x$ (and its constant multiples).",
+      "content": "The function $f(x) = e^x$ is its own derivative:\n$$\n \\fracddx[e^x] = e^x\n$$\nThis property is unique to $e^x$ (and its constant multiples).",
       "number": "4.2"
     },
     {
@@ -180,8 +180,8 @@
       "id": "ch04-sec02-example-4.3",
       "number": "4.3",
       "title": "Verifying the slope at $(0,1)$",
-      "problem": "Use small values of $h$ to approximate $\\dfrac{e^h - 1}{h}$ and verify \nit approaches 1.",
-      "solution": "| $h$ | $\\dfrac{e^h - 1}{h}$ |\n| 0.1 | 1.05171 |\n| 0.01 | 1.00502 |\n| 0.001 | 1.00050 |\n| 0.0001 | 1.00005 |\n\nAs $h \\to 0$, the ratio approaches exactly 1, confirming the slope of \n$e^x$ at $x = 0$ is 1."
+      "problem": "Use small values of $h$ to approximate $\\dfrace^h - 1{h}$ and verify \nit approaches 1.",
+      "solution": "| $h$ | $\\dfrace^h - 1{h}$ |\n| 0.1 | 1.05171 |\n| 0.01 | 1.00502 |\n| 0.001 | 1.00050 |\n| 0.0001 | 1.00005 |\n\nAs $h \\to 0$, the ratio approaches exactly 1, confirming the slope of \n$e^x$ at $x = 0$ is 1."
     },
     {
       "type": "heading",
@@ -196,7 +196,7 @@
       "type": "definition",
       "id": "ch04-sec02-definition-4.3",
       "title": "Continuous Growth/Decay Model",
-      "content": "For continuous exponential growth or decay:\n$$\n A(t) = A_0 e^{kt}\n$$\nwhere:\n\n- $A_0$ is the initial amount (at $t = 0$)\n\n- $k$ is the continuous growth/decay rate\n\n- $k > 0$ represents growth; $k < 0$ represents decay\n\n- $t$ is time",
+      "content": "For continuous exponential growth or decay:\n$$\n A(t) = A_0 e^kt\n$$\nwhere:\n\n- $A_0$ is the initial amount (at $t = 0$)\n\n- $k$ is the continuous growth/decay rate\n\n- $k > 0$ represents growth; $k < 0$ represents decay\n\n- $t$ is time",
       "number": "4.3"
     },
     {
@@ -207,8 +207,8 @@
       "type": "list",
       "ordered": false,
       "items": [
-        "If quantity doubles in time $T$, then $k = \\dfrac{\\ln 2}{T} \\approx \\dfrac{0.693}{T}$",
-        "If quantity has half-life $h$, then $k = -\\dfrac{\\ln 2}{h} \\approx -\\dfrac{0.693}{h}$",
+        "If quantity doubles in time $T$, then $k = \\dfrac\\ln 2T \\approx \\dfrac0.693{T}$",
+        "If quantity has half-life $h$, then $k = -\\dfrac\\ln 2h \\approx -\\dfrac0.693{h}$",
         "If annual growth rate is $r$, then $k = \\ln(1 + r)$"
       ]
     },
@@ -218,7 +218,7 @@
       "number": "4.4",
       "title": "From doubling time to continuous rate",
       "problem": "A bacterial population doubles every 3 hours. Express its growth using \nthe continuous model $P(t) = P_0 e^{kt}$.",
-      "solution": "The doubling time is $T = 3$ hours. The continuous rate is:\n$$\n k = \\frac{\\ln 2}{3} \\approx \\frac{0.693}{3} \\approx 0.231\n$$\n\nSo the model is $P(t) = P_0 e^{0.231t}$, where $t$ is in hours.\n\n**Verification:** After 3 hours:\n$$\n P(3) = P_0 e^{0.231 \\cdot 3} = P_0 e^{0.693} \\approx P_0 \\cdot 2\n$$\nThe population indeed doubles. ✓"
+      "solution": "The doubling time is $T = 3$ hours. The continuous rate is:\n$$\n k = \\frac\\ln 23 \\approx \\frac0.6933 \\approx 0.231\n$$\n\nSo the model is $P(t) = P_0 e^{0.231t}$, where $t$ is in hours.\n\n**Verification:** After 3 hours:\n$$\n P(3) = P_0 e^0.231 \\cdot 3 = P_0 e^0.693 \\approx P_0 \\cdot 2\n$$\nThe population indeed doubles. ✓"
     },
     {
       "type": "heading",
@@ -243,13 +243,13 @@
       "number": "4.5",
       "title": "Graphing natural exponential functions",
       "problem": "Sketch each function, describe its transformations from $y = e^x$, and \nidentify key features.\n\n1. $f(x) = e^{-x}$\n\n2. $g(x) = e^x - 2$\n\n3. $h(x) = 3e^{x+1}$\n\n4. $p(x) = -e^x + 4$",
-      "solution": "1. $f(x) = e^{-x}$\n \n **Transformation:** Reflection across the $y$-axis.\n \n This is exponential decay—the graph decreases from left to right. \n Domain: $(-\\infty, \\infty)$; Range: $(0, \\infty)$; Asymptote: $y = 0$\n \n Note: $e^{-x} = 1/e^x$, so this function can also be written as $(1/e)^x$.\n\n2. $g(x) = e^x - 2$\n \n **Transformation:** Shift down 2 units.\n \n Domain: $(-\\infty, \\infty)$; Range: $(-2, \\infty)$; Asymptote: $y = -2$\n \n The $y$-intercept is now $(0, e^0 - 2) = (0, -1)$.\n\n3. $h(x) = 3e^{x+1}$\n \n **Transformations:** Shift left 1 unit, then vertical stretch by 3.\n \n Domain: $(-\\infty, \\infty)$; Range: $(0, \\infty)$; Asymptote: $y = 0$\n \n The $y$-intercept: $h(0) = 3e^{0+1} = 3e \\approx 8.15$\n\n4. $p(x) = -e^x + 4$\n \n **Transformations:** Reflect across $x$-axis, then shift up 4.\n \n Domain: $(-\\infty, \\infty)$; Range: $(-\\infty, 4)$; Asymptote: $y = 4$\n \n This function is decreasing, approaching $y = 4$ from below as $x \\to -\\infty$."
+      "solution": "1. $f(x) = e^{-x}$\n \n **Transformation:** Reflection across the $y$-axis.\n \n This is exponential decay—the graph decreases from left to right. \n Domain: $(-\\infty, \\infty)$; Range: $(0, \\infty)$; Asymptote: $y = 0$\n \n Note: $e^-x = 1/e^x$, so this function can also be written as $(1/e)^x$.\n\n2. $g(x) = e^x - 2$\n \n **Transformation:** Shift down 2 units.\n \n Domain: $(-\\infty, \\infty)$; Range: $(-2, \\infty)$; Asymptote: $y = -2$\n \n The $y$-intercept is now $(0, e^0 - 2) = (0, -1)$.\n\n3. $h(x) = 3e^{x+1}$\n \n **Transformations:** Shift left 1 unit, then vertical stretch by 3.\n \n Domain: $(-\\infty, \\infty)$; Range: $(0, \\infty)$; Asymptote: $y = 0$\n \n The $y$-intercept: $h(0) = 3e^0+1 = 3e \\approx 8.15$\n\n4. $p(x) = -e^x + 4$\n \n **Transformations:** Reflect across $x$-axis, then shift up 4.\n \n Domain: $(-\\infty, \\infty)$; Range: $(-\\infty, 4)$; Asymptote: $y = 4$\n \n This function is decreasing, approaching $y = 4$ from below as $x \\to -\\infty$."
     },
     {
       "type": "warning",
-      "id": "ch04-sec02-warning",
+      "id": "ch04-sec02-warning-1",
       "title": "Don't Confuse Shifts with Rate Changes",
-      "content": "The function $e^{2x}$ is **not** a horizontal shift of $e^x$—it \ngrows twice as fast. Compare:\n\n- $e^{x-2}$: horizontal shift right by 2 (same growth rate)\n\n- $e^{2x}$: horizontal compression by $\\frac{1}{2}$ (faster growth)"
+      "content": "The function $e^{2x}$ is **not** a horizontal shift of $e^x$—it \ngrows twice as fast. Compare:\n\n- $e^{x-2}$: horizontal shift right by 2 (same growth rate)\n\n- $e^{2x}$: horizontal compression by $\\frac1{2}$ (faster growth)"
     },
     {
       "type": "heading",
@@ -264,7 +264,7 @@
       "type": "theorem",
       "id": "ch04-sec02-theorem-4.3",
       "title": "Base Conversion",
-      "content": "For any base $b > 0$:\n$$\n b^x = e^{x \\ln b}\n$$\nwhere $\\ln b$ is the natural logarithm of $b$ (covered in Chapter 5).",
+      "content": "For any base $b > 0$:\n$$\n b^x = e^x \\ln b\n$$\nwhere $\\ln b$ is the natural logarithm of $b$ (covered in Chapter 5).",
       "number": "4.3"
     },
     {
@@ -275,9 +275,9 @@
       "type": "list",
       "ordered": false,
       "items": [
-        "$2^x = e^{x \\ln 2} \\approx e^{0.693x}$",
-        "$10^x = e^{x \\ln 10} \\approx e^{2.303x}$",
-        "$(1/2)^x = e^{x \\ln(1/2)} = e^{-0.693x}$"
+        "$2^x = e^x \\ln 2 \\approx e^{0.693x}$",
+        "$10^x = e^x \\ln 10 \\approx e^{2.303x}$",
+        "$(1/2)^x = e^x \\ln(1/2) = e^{-0.693x}$"
       ]
     },
     {
@@ -286,7 +286,7 @@
       "number": "4.6",
       "title": "Rewriting with base $e$",
       "problem": "A population follows $P(t) = 500 \\cdot 2^{t/3}$ where $t$ is in years. \nRewrite this using base $e$.",
-      "solution": "Using $2 = e^{\\ln 2} \\approx e^{0.693}$:\n$$\n P(t) = 500 \\cdot 2^{t/3} = 500 \\cdot \\left(e^{\\ln 2}\\right)^{t/3} = 500 \\cdot e^{(t/3)\\ln 2}\n$$\n$$\n = 500 \\cdot e^{(\\ln 2/3) t} \\approx 500 \\cdot e^{0.231 t}\n$$\n\nThe continuous growth rate is approximately $k = 0.231$ per year, or \nabout 23.1% continuous growth."
+      "solution": "Using $2 = e^\\ln 2 \\approx e^{0.693}$:\n$$\n P(t) = 500 \\cdot 2^t/3 = 500 \\cdot \\left(e^\\ln 2\\right)^t/3 = 500 \\cdot e^(t/3)\\ln 2\n$$\n$$\n = 500 \\cdot e^(\\ln 2/3) t \\approx 500 \\cdot e^0.231 t\n$$\n\nThe continuous growth rate is approximately $k = 0.231$ per year, or \nabout 23.1% continuous growth."
     },
     {
       "type": "heading",
@@ -299,7 +299,7 @@
     },
     {
       "type": "paragraph",
-      "text": "$$\n f(x) = e^{-x^2}\n$$"
+      "text": "$$\n f(x) = e^-x^2\n$$"
     },
     {
       "type": "paragraph",
@@ -315,9 +315,10 @@
     },
     {
       "type": "summary",
-      "id": "ch04-sec02-summary",
+      "id": "ch04-sec02-summary-4.2",
       "title": "Section 4.2 Summary: The Natural Exponential Function",
-      "content": "**The Number $e$:**\n$$\n e = \\lim_{n \\to \\infty} \\left(1 + \\frac{1}{n}\\right)^n \\approx 2.71828...\n$$\nAlso: $e = 1 + 1 + \\frac{1}{2!} + \\frac{1}{3!} + \\frac{1}{4!} + \\cdots$\n\n**Properties of $f(x) = e^x$:**\n\n- Domain: $(-\\infty, \\infty)$; Range: $(0, \\infty)$\n\n- Horizontal asymptote: $y = 0$\n\n- Key points: $(0, 1)$, $(1, e) \\approx (1, 2.718)$, $(-1, 1/e) \\approx (-1, 0.368)$\n\n- Always increasing; one-to-one\n\n**Why $e$ is Special:**\n\n- Self-derivative: $\\frac{d}{dx}[e^x] = e^x$\n\n- Natural base for continuous growth/decay\n\n**Continuous Growth/Decay Model:**\n$$\n A(t) = A_0 e^{kt}\n$$\n\n- $k > 0$: continuous growth at rate $k$\n\n- $k < 0$: continuous decay at rate $|k|$\n\n- Doubling time: $T = \\frac{\\ln 2}{k}$; Half-life: $h = \\frac{\\ln 2}{|k|}$\n\n**Transformations of** $f(x) = ae^{x-h} + k$:\n\n- Same rules as general exponentials\n\n- Asymptote: $y = k$\n\n- Note: $e^{2x} \\neq$ shift of $e^x$; it's a horizontal compression"
+      "content": "**The Number $e$:**\n$$\n e = \\lim_n \\to \\infty \\left(1 + \\frac1n\\right)^n \\approx 2.71828...\n$$\nAlso: $e = 1 + 1 + \\frac12! + \\frac13! + \\frac14! + \\cdots$\n\n**Properties of $f(x) = e^x$:**\n\n- Domain: $(-\\infty, \\infty)$; Range: $(0, \\infty)$\n\n- Horizontal asymptote: $y = 0$\n\n- Key points: $(0, 1)$, $(1, e) \\approx (1, 2.718)$, $(-1, 1/e) \\approx (-1, 0.368)$\n\n- Always increasing; one-to-one\n\n**Why $e$ is Special:**\n\n- Self-derivative: $\\fracddx[e^x] = e^x$\n\n- Natural base for continuous growth/decay\n\n**Continuous Growth/Decay Model:**\n$$\n A(t) = A_0 e^kt\n$$\n\n- $k > 0$: continuous growth at rate $k$\n\n- $k < 0$: continuous decay at rate $|k|$\n\n- Doubling time: $T = \\frac\\ln 2{k}$; Half-life: $h = \\frac\\ln 2{|k|}$\n\n**Transformations of** $f(x) = ae^x-h + k$:\n\n- Same rules as general exponentials\n\n- Asymptote: $y = k$\n\n- Note: $e^2x \\neq$ shift of $e^x$; it's a horizontal compression",
+      "number": "4.2"
     },
     {
       "type": "heading",
@@ -335,7 +336,7 @@
       "type": "exercise",
       "id": "ch04-sec02-ex-2",
       "number": "2",
-      "problem": "Match the term with its definition.\n\n1. Natural base (i) $e \\approx 2.71828...$\n\n2. Continuous compounding (ii) $A = Pe^{rt}$\n\n3. Transcendental number (iii) Cannot be root of polynomial with integer coefficients\n\n4. Self-derivative property (iv) $\\frac{d}{dx}[e^x] = e^x$",
+      "problem": "Match the term with its definition.\n\n1. Natural base (i) $e \\approx 2.71828...$\n\n2. Continuous compounding (ii) $A = Pe^{rt}$\n\n3. Transcendental number (iii) Cannot be root of polynomial with integer coefficients\n\n4. Self-derivative property (iv) $\\fracddx[e^x] = e^x$",
       "variant": "regular"
     },
     {
@@ -347,14 +348,14 @@
       "type": "exercise",
       "id": "ch04-sec02-ex-3",
       "number": "3",
-      "problem": "Calculate $\\left(1 + \\frac{1}{n}\\right)^n$ for $n = 5, 50, 500, 5000$ and \ncompare to $e \\approx 2.71828$.",
+      "problem": "Calculate $\\left(1 + \\frac1n\\right)^n$ for $n = 5, 50, 500, 5000$ and \ncompare to $e \\approx 2.71828$.",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-4",
       "number": "4",
-      "problem": "Use the factorial series $e = \\sum_{n=0}^{\\infty} \\frac{1}{n!}$ to compute \n$e$ using:\n\n1. The first 5 terms\n\n2. The first 8 terms\n\n3. The first 10 terms\nHow many terms are needed for 6 decimal places of accuracy?",
+      "problem": "Use the factorial series $e = \\sum_n=0^\\infty \\frac1{n!}$ to compute \n$e$ using:\n\n1. The first 5 terms\n\n2. The first 8 terms\n\n3. The first 10 terms\nHow many terms are needed for 6 decimal places of accuracy?",
       "variant": "regular"
     },
     {
@@ -373,7 +374,7 @@
       "type": "exercise",
       "id": "ch04-sec02-ex-6",
       "number": "6",
-      "problem": "Sketch the graph and identify the asymptote, domain, and range.\n\n1. $f(x) = e^x + 1$\n\n2. $g(x) = e^{x-2}$\n\n3. $h(x) = -e^x$\n\n4. $p(x) = e^{-x} + 3$\n\n5. $q(x) = 2e^x - 1$\n\n6. $r(x) = -e^{x+1} + 2$",
+      "problem": "Sketch the graph and identify the asymptote, domain, and range.\n\n1. $f(x) = e^x + 1$\n\n2. $g(x) = e^{x-2}$\n\n3. $h(x) = -e^x$\n\n4. $p(x) = e^-x + 3$\n\n5. $q(x) = 2e^x - 1$\n\n6. $r(x) = -e^x+1 + 2$",
       "variant": "regular"
     },
     {
@@ -387,7 +388,7 @@
       "type": "exercise",
       "id": "ch04-sec02-ex-8",
       "number": "8",
-      "problem": "For each function, state whether it represents growth or decay, and find \nthe $y$-intercept.\n\n1. $f(x) = 5e^{0.3x}$\n\n2. $g(x) = 100e^{-0.05x}$\n\n3. $h(x) = 2e^{-x} + 1$\n\n4. $p(x) = -3e^{2x}$",
+      "problem": "For each function, state whether it represents growth or decay, and find \nthe $y$-intercept.\n\n1. $f(x) = 5e^{0.3x}$\n\n2. $g(x) = 100e^{-0.05x}$\n\n3. $h(x) = 2e^-x + 1$\n\n4. $p(x) = -3e^{2x}$",
       "variant": "regular"
     },
     {
@@ -446,29 +447,34 @@
       "type": "exercise",
       "id": "ch04-sec02-ex-15",
       "number": "15",
-      "problem": "Show that $e^{x+y} = e^x \\cdot e^y$ using properties of exponents.",
+      "problem": "Show that $e^x+y = e^x \\cdot e^y$ using properties of exponents.",
       "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-16",
       "number": "16",
-      "problem": "Verify numerically that $\\lim_{h \\to 0} \\dfrac{e^h - 1}{h} = 1$ by computing \nthe expression for $h = 0.1, 0.01, 0.001, 0.0001$.",
+      "problem": "Verify numerically that $\\lim_h \\to 0 \\dfrace^h - 1h = 1$ by computing \nthe expression for $h = 0.1, 0.01, 0.001, 0.0001$.",
       "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-17",
       "number": "17",
-      "problem": "The hyperbolic functions are defined as:\n$$\n \\cosh x = \\frac{e^x + e^{-x}}{2} \\qquad \\sinh x = \\frac{e^x - e^{-x}}{2}\n$$\nVerify that $\\cosh^2 x - \\sinh^2 x = 1$.",
+      "problem": "The hyperbolic functions are defined as:\n$$\n \\cosh x = \\frac{e^x + e^-x}2 \\qquad \\sinh x = \\frac{e^x - e^-x}2\n$$\nVerify that $\\cosh^2 x - \\sinh^2 x = 1$.",
       "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-18",
       "number": "18",
-      "problem": "Prove that $e = \\lim_{n \\to \\infty} \\left(1 + \\frac{1}{n}\\right)^n$ and \n$e = \\sum_{k=0}^{\\infty} \\frac{1}{k!}$ give the same value by showing \nboth expressions satisfy the same differential equation.",
+      "problem": "Prove that $e = \\lim_n \\to \\infty \\left(1 + \\frac1n\\right)^n$ and \n$e = \\sum_k=0^\\infty \\frac1{k!}$ give the same value by showing \nboth expressions satisfy the same differential equation.",
       "variant": "starred"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Evaluating Natural Exponential"
     },
     {
       "type": "exercise",
@@ -481,28 +487,28 @@
       "type": "exercise",
       "id": "ch04-sec02-ex-20",
       "number": "20",
-      "problem": "Use a calculator to evaluate to 4 decimal places.\n\n1. $e^{0.1}$\n\n2. $e^{-0.1}$\n\n3. $e^{2.5}$\n\n4. $e^{-1.5}$\n\n5. $e^{\\sqrt{2}}$\n\n6. $e^{1/3}$\n\n7. $e^{-\\pi}$\n\n8. $e^{0.05}$",
+      "problem": "Use a calculator to evaluate to 4 decimal places.\n\n1. $e^{0.1}$\n\n2. $e^{-0.1}$\n\n3. $e^{2.5}$\n\n4. $e^{-1.5}$\n\n5. $e^{\\sqrt2}$\n\n6. $e^{1/3}$\n\n7. $e^{-\\pi}$\n\n8. $e^{0.05}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-21",
       "number": "21",
-      "problem": "Evaluate each expression without a calculator.\n\n1. $e^0 + e^0$\n\n2. $e^1 - e$\n\n3. $\\dfrac{e^3}{e^3}$\n\n4. $e^0 \\cdot e^5$\n\n5. $(e^2)^0$\n\n6. $e^{a-a}$ for any $a$",
+      "problem": "Evaluate each expression without a calculator.\n\n1. $e^0 + e^0$\n\n2. $e^1 - e$\n\n3. $\\dfrace^3{e^3}$\n\n4. $e^0 \\cdot e^5$\n\n5. $(e^2)^0$\n\n6. $e^{a-a}$ for any $a$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-22",
       "number": "22",
-      "problem": "Simplify each expression.\n\n1. $e^3 \\cdot e^2$\n\n2. $\\dfrac{e^5}{e^2}$\n\n3. $(e^2)^3$\n\n4. $e^x \\cdot e^{2x}$\n\n5. $\\dfrac{e^{3x}}{e^x}$\n\n6. $(e^{x+1})^2$",
+      "problem": "Simplify each expression.\n\n1. $e^3 \\cdot e^2$\n\n2. $\\dfrace^5{e^2}$\n\n3. $(e^2)^3$\n\n4. $e^x \\cdot e^{2x}$\n\n5. $\\dfrac{e^3x}{e^x}$\n\n6. $(e^x+1)^2$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-23",
       "number": "23",
-      "problem": "Simplify each expression. Leave answers in terms of $e$.\n\n1. $\\dfrac{e^{4x}}{e^{2x}}$\n\n2. $e^{2x} \\cdot e^{-x}$\n\n3. $(e^3)^{-2}$\n\n4. $\\sqrt{e^6}$\n\n5. $\\dfrac{e^{x+2}}{e^2}$\n\n6. $(e^x)^2 \\cdot e^{-x}$",
+      "problem": "Simplify each expression. Leave answers in terms of $e$.\n\n1. $\\dfrac{e^4x}{e^2x}$\n\n2. $e^2x \\cdot e^{-x}$\n\n3. $(e^3)^{-2}$\n\n4. $\\sqrt{e^6}$\n\n5. $\\dfrac{e^x+2}{e^2}$\n\n6. $(e^x)^2 \\cdot e^{-x}$",
       "variant": "regular"
     },
     {
@@ -511,6 +517,11 @@
       "number": "24",
       "problem": "Evaluate without a calculator. (Hint: $e^0 = 1$)\n\n1. $e^0$\n\n2. $e^1 / e$\n\n3. $e^2 / e^2$\n\n4. $(e^0)^{100}$",
       "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Graphing Natural Exponential"
     },
     {
       "type": "exercise",
@@ -523,43 +534,48 @@
       "type": "exercise",
       "id": "ch04-sec02-ex-26",
       "number": "26",
-      "problem": "Describe the transformations and sketch.\n\n1. $f(x) = 2e^x$\n\n2. $f(x) = e^{x-1} + 2$\n\n3. $f(x) = 3 - e^{-x}$\n\n4. $f(x) = e^{2x} - 1$",
+      "problem": "Describe the transformations and sketch.\n\n1. $f(x) = 2e^x$\n\n2. $f(x) = e^x-1 + 2$\n\n3. $f(x) = 3 - e^{-x}$\n\n4. $f(x) = e^2x - 1$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-27",
       "number": "27",
-      "problem": "For each function, identify: (i) horizontal asymptote, (ii) domain, (iii) range, (iv) increasing or decreasing.\n\n1. $f(x) = e^x - 5$\n\n2. $f(x) = -e^x + 1$\n\n3. $f(x) = e^{-x} + 2$\n\n4. $f(x) = 4 - 2e^x$",
+      "problem": "For each function, identify: (i) horizontal asymptote, (ii) domain, (iii) range, (iv) increasing or decreasing.\n\n1. $f(x) = e^x - 5$\n\n2. $f(x) = -e^x + 1$\n\n3. $f(x) = e^-x + 2$\n\n4. $f(x) = 4 - 2e^x$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-28",
       "number": "28",
-      "problem": "Find the $y$-intercept of each function.\n\n1. $f(x) = e^x$\n\n2. $f(x) = 3e^x$\n\n3. $f(x) = e^x - 4$\n\n4. $f(x) = 2e^{x+1}$\n\n5. $f(x) = e^{2x} + 5$\n\n6. $f(x) = -e^x + 3$",
+      "problem": "Find the $y$-intercept of each function.\n\n1. $f(x) = e^x$\n\n2. $f(x) = 3e^x$\n\n3. $f(x) = e^x - 4$\n\n4. $f(x) = 2e^{x+1}$\n\n5. $f(x) = e^2x + 5$\n\n6. $f(x) = -e^x + 3$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-29",
       "number": "29",
-      "problem": "Use the One-to-One Property of exponential functions: if $e^a = e^b$, then $a = b$.\nSolve for $x$.\n\n1. $e^{x+3} = e^7$\n\n2. $e^{2x} = e^{x+5}$\n\n3. $e^{x^2} = e^{4}$\n\n4. $e^{3x-1} = e^{2x+4}$",
+      "problem": "Use the One-to-One Property of exponential functions: if $e^a = e^b$, then $a = b$.\nSolve for $x$.\n\n1. $e^x+3 = e^7$\n\n2. $e^2x = e^{x+5}$\n\n3. $e^x^2 = e^{4}$\n\n4. $e^3x-1 = e^{2x+4}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-30",
       "number": "30",
-      "problem": "Use the One-to-One Property to solve for $x$.\n\n1. $e^{5x} = e^{15}$\n\n2. $e^{x-4} = e^{2x+1}$\n\n3. $e^{x^2-3x} = e^{-2}$\n\n4. $e^{4x+2} = e^{x+11}$\n\n5. $e^{x^2} = e^{9}$\n\n6. $e^{2x-7} = e^{x}$",
+      "problem": "Use the One-to-One Property to solve for $x$.\n\n1. $e^5x = e^{15}$\n\n2. $e^x-4 = e^{2x+1}$\n\n3. $e^x^2-3x = e^{-2}$\n\n4. $e^4x+2 = e^{x+11}$\n\n5. $e^x^2 = e^{9}$\n\n6. $e^2x-7 = e^{x}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-31",
       "number": "31",
-      "problem": "Use the One-to-One Property and factoring to solve.\n\n1. $e^{x^2-4} = e^0$ (Hint: $e^0 = 1$)\n\n2. $e^{x^2+2x} = e^{3}$\n\n3. $e^{x^2-5x+6} = e^0$\n\n4. $e^{2x^2-x} = e^{x}$",
+      "problem": "Use the One-to-One Property and factoring to solve.\n\n1. $e^x^2-4 = e^0$ (Hint: $e^0 = 1$)\n\n2. $e^x^2+2x = e^{3}$\n\n3. $e^x^2-5x+6 = e^0$\n\n4. $e^2x^2-x = e^{x}$",
       "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Compound Interest"
     },
     {
       "type": "exercise",
@@ -588,6 +604,11 @@
       "number": "35",
       "problem": "A population of 500 bacteria grows continuously at rate $k = 0.15$ per hour.\n\n1. Write the population model $P(t) = P_0 e^{kt}$.\n\n2. Find the population after 3 hours.\n\n3. Find the population after 8 hours.\n\n4. By what factor does the population grow each hour?",
       "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Applications"
     },
     {
       "type": "exercise",
@@ -628,7 +649,7 @@
       "type": "exercise",
       "id": "ch04-sec02-ex-41",
       "number": "41",
-      "problem": "Light intensity decreases as it passes through water according to \n$I(d) = I_0 e^{-0.15d}$, where $d$ is depth in meters.\n\n1. What percentage of light remains at 5 meters deep?\n\n2. What percentage of light remains at 20 meters deep?\n\n3. At what depth is the intensity approximately half the surface intensity?\n (Hint: $e^{-0.693} \\approx 0.5$)",
+      "problem": "Light intensity decreases as it passes through water according to \n$I(d) = I_0 e^{-0.15d}$, where $d$ is depth in meters.\n\n1. What percentage of light remains at 5 meters deep?\n\n2. What percentage of light remains at 20 meters deep?\n\n3. At what depth is the intensity approximately half the surface intensity?\n (Hint: $e^-0.693 \\approx 0.5$)",
       "variant": "regular"
     },
     {
@@ -637,6 +658,11 @@
       "number": "42",
       "problem": "The value of a car depreciates according to $V(t) = 35000e^{-0.15t}$, where \n$t$ is time in years.\n\n1. What was the initial value of the car?\n\n2. Find the value after 3 years.\n\n3. Find the value after 7 years.\n\n4. By what percentage does the value decrease each year approximately?",
       "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Graphing Utility"
     },
     {
       "type": "exercise",
@@ -656,22 +682,27 @@
       "type": "exercise",
       "id": "ch04-sec02-ex-45",
       "number": "45",
-      "problem": "Use a graphing calculator to graph $y = e^x$ and $y = e^{-x}$ on the same axes.\n\n1. Describe the relationship between these graphs.\n\n2. For what value of $x$ are the two functions equal?\n\n3. Graph $y = \\frac{e^x + e^{-x}}{2}$ (this is $\\cosh x$). Describe its shape.",
+      "problem": "Use a graphing calculator to graph $y = e^x$ and $y = e^{-x}$ on the same axes.\n\n1. Describe the relationship between these graphs.\n\n2. For what value of $x$ are the two functions equal?\n\n3. Graph $y = \\frac{e^x + e^-x}{2}$ (this is $\\cosh x$). Describe its shape.",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-46",
       "number": "46",
-      "problem": "Use a graphing calculator to explore horizontal asymptotes.\n\n1. Graph $y = e^{-x} + 3$ and identify the horizontal asymptote.\n\n2. Graph $y = 5 - e^x$ and identify the horizontal asymptote.\n\n3. Graph $y = \\frac{10}{1 + e^{-x}}$. What are the horizontal asymptotes as $x \\to \\infty$ and $x \\to -\\infty$?",
+      "problem": "Use a graphing calculator to explore horizontal asymptotes.\n\n1. Graph $y = e^-x + 3$ and identify the horizontal asymptote.\n\n2. Graph $y = 5 - e^x$ and identify the horizontal asymptote.\n\n3. Graph $y = \\frac10{1 + e^-x}$. What are the horizontal asymptotes as $x \\to \\infty$ and $x \\to -\\infty$?",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-47",
       "number": "47",
-      "problem": "Use a graphing calculator to estimate solutions.\n\n1. Find the $x$-value where $e^x = 10$ (intersection of $y = e^x$ and $y = 10$).\n\n2. Find the $x$-value where $e^{-x} = 0.1$.\n\n3. Find where $e^x = x + 2$ (two solutions exist).",
+      "problem": "Use a graphing calculator to estimate solutions.\n\n1. Find the $x$-value where $e^x = 10$ (intersection of $y = e^x$ and $y = 10$).\n\n2. Find the $x$-value where $e^-x = 0.1$.\n\n3. Find where $e^x = x + 2$ (two solutions exist).",
       "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Conceptual Exercises"
     },
     {
       "type": "exercise",
@@ -698,21 +729,26 @@
       "type": "exercise",
       "id": "ch04-sec02-ex-51",
       "number": "51",
-      "problem": "Match each equation with its graph type:\n\n1. $y = 3e^{0.2x}$ (i) Exponential decay approaching $y = 0$\n\n2. $y = 5e^{-0.1x}$ (ii) Exponential growth from $y$-intercept 3\n\n3. $y = -2e^x + 4$ (iii) Decreasing, approaching $y = 4$ from below\n\n4. $y = e^{-x} - 1$ (iv) Exponential decay approaching $y = -1$",
+      "problem": "Match each equation with its graph type:\n\n1. $y = 3e^{0.2x}$ (i) Exponential decay approaching $y = 0$\n\n2. $y = 5e^{-0.1x}$ (ii) Exponential growth from $y$-intercept 3\n\n3. $y = -2e^x + 4$ (iii) Decreasing, approaching $y = 4$ from below\n\n4. $y = e^-x - 1$ (iv) Exponential decay approaching $y = -1$",
       "variant": "conceptual"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Error Analysis"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-52",
       "number": "52",
-      "problem": "Describe and correct the error.\n\nFinding time to double at 6% continuous:\n> \"$2P = Pe^{0.06t}$\n\n$2 = e^{0.06t}$\n\n$t = \\dfrac{2}{0.06} \\approx 33.3$ years\" ✗",
+      "problem": "Describe and correct the error.\n\nFinding time to double at 6% continuous:\n> \"$2P = Pe^{0.06t}$\n\n$2 = e^{0.06t}$\n\n$t = \\dfrac20.06 \\approx 33.3$ years\" ✗",
       "variant": "error-analysis"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-53",
       "number": "53",
-      "problem": "Describe and correct the error in evaluating $e^2 \\cdot e^3$:\n> \"$e^2 \\cdot e^3 = e^{2 \\cdot 3} = e^6$\" ✗",
+      "problem": "Describe and correct the error in evaluating $e^2 \\cdot e^3$:\n> \"$e^2 \\cdot e^3 = e^2 \\cdot 3 = e^6$\" ✗",
       "variant": "error-analysis"
     },
     {
@@ -737,10 +773,15 @@
       "variant": "error-analysis"
     },
     {
+      "type": "heading",
+      "level": 3,
+      "text": "Mixed Review"
+    },
+    {
       "type": "exercise",
       "id": "ch04-sec02-ex-57",
       "number": "57",
-      "problem": "Classify each function as growth or decay, find the $y$-intercept, and \nidentify the horizontal asymptote.\n\n1. $f(x) = 4e^{0.2x}$\n\n2. $g(x) = 100e^{-0.05x}$\n\n3. $h(x) = -3e^x + 7$\n\n4. $p(x) = 2e^{-x} - 1$\n\n5. $q(x) = 5 - 2e^{0.1x}$\n\n6. $r(x) = e^{2x} + 4$",
+      "problem": "Classify each function as growth or decay, find the $y$-intercept, and \nidentify the horizontal asymptote.\n\n1. $f(x) = 4e^{0.2x}$\n\n2. $g(x) = 100e^{-0.05x}$\n\n3. $h(x) = -3e^x + 7$\n\n4. $p(x) = 2e^-x - 1$\n\n5. $q(x) = 5 - 2e^{0.1x}$\n\n6. $r(x) = e^2x + 4$",
       "variant": "regular"
     },
     {
@@ -754,14 +795,19 @@
       "type": "exercise",
       "id": "ch04-sec02-ex-59",
       "number": "59",
-      "problem": "Solve using the One-to-One Property or by simplifying.\n\n1. $e^{2x} = e^8$\n\n2. $e^{x-1} = e^{3x+5}$\n\n3. $e^{x^2-1} = e^{0}$\n\n4. $\\dfrac{e^{5x}}{e^{2x}} = e^9$\n\n5. $(e^x)^3 = e^{12}$\n\n6. $e^{x} \\cdot e^{2x} = e^{15}$",
+      "problem": "Solve using the One-to-One Property or by simplifying.\n\n1. $e^2x = e^8$\n\n2. $e^x-1 = e^{3x+5}$\n\n3. $e^x^2-1 = e^{0}$\n\n4. $\\dfrac{e^5x}{e^2x} = e^9$\n\n5. $(e^x)^3 = e^{12}$\n\n6. $e^x \\cdot e^2x = e^{15}$",
       "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Challenge Problems"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-60",
       "number": "60",
-      "problem": "Prove: $\\lim_{n \\to \\infty} (1 + \\frac{1}{n})^n = e$",
+      "problem": "Prove: $\\lim_n \\to \\infty (1 + \\frac1n)^n = e$",
       "variant": "starred"
     },
     {
@@ -775,21 +821,21 @@
       "type": "exercise",
       "id": "ch04-sec02-ex-62",
       "number": "62",
-      "problem": "The hyperbolic cosine and sine are defined as \n$\\cosh x = \\frac{e^x + e^{-x}}{2}$ and $\\sinh x = \\frac{e^x - e^{-x}}{2}$.\nShow that $\\frac{d}{dx}[\\cosh x] = \\sinh x$ using the derivative of $e^x$.",
+      "problem": "The hyperbolic cosine and sine are defined as \n$\\cosh x = \\frac{e^x + e^-x}{2}$ and $\\sinh x = \\frac{e^x - e^-x}{2}$.\nShow that $\\fracddx[\\cosh x] = \\sinh x$ using the derivative of $e^x$.",
       "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-63",
       "number": "63",
-      "problem": "Determine whether each statement is always, sometimes, or \nnever true. Justify your reasoning.\n\n1. $e^x > 0$\n\n2. $e^x > 1$\n\n3. $e^x > e^y$ when $x > y$\n\n4. $e^{x+y} = e^x + e^y$\n\n5. $e^{-x} < e^x$\n\n6. $(e^x)^2 = e^{2x}$",
+      "problem": "Determine whether each statement is always, sometimes, or \nnever true. Justify your reasoning.\n\n1. $e^x > 0$\n\n2. $e^x > 1$\n\n3. $e^x > e^y$ when $x > y$\n\n4. $e^x+y = e^x + e^y$\n\n5. $e^-x < e^x$\n\n6. $(e^x)^2 = e^{2x}$",
       "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-64",
       "number": "64",
-      "problem": "The function $f(x) = \\dfrac{e^x - e^{-x}}{e^x + e^{-x}}$ \nis called the hyperbolic tangent, written $\\tanh x$.\n\n1. Show that $\\tanh 0 = 0$.\n\n2. Find $\\lim_{x \\to \\infty} \\tanh x$ by dividing numerator and denominator by $e^x$.\n\n3. Find $\\lim_{x \\to -\\infty} \\tanh x$.\n\n4. Sketch the graph of $y = \\tanh x$.\n\n5. Show that $\\tanh(-x) = -\\tanh x$ (odd function).",
+      "problem": "The function $f(x) = \\dfrac{e^x - e^-x}{e^x + e^-x}$ \nis called the hyperbolic tangent, written $\\tanh x$.\n\n1. Show that $\\tanh 0 = 0$.\n\n2. Find $\\lim_x \\to \\infty \\tanh x$ by dividing numerator and denominator by $e^x$.\n\n3. Find $\\lim_x \\to -\\infty \\tanh x$.\n\n4. Sketch the graph of $y = \\tanh x$.\n\n5. Show that $\\tanh(-x) = -\\tanh x$ (odd function).",
       "variant": "starred"
     }
   ],

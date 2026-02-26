@@ -100,7 +100,7 @@
       "type": "theorem",
       "id": "ch10-sec04-theorem-10.2",
       "title": "Rotation of Axes Formulas",
-      "content": "If the coordinate axes are rotated through an angle $\\theta$, the \nrelationships between the original coordinates $(x, y)$ and the new \ncoordinates $(x', y')$ are:\n$$\\begin{aligned}\n x &= x'\\cos\\theta - y'\\sin\\theta \\label{eq:rot-x} \\\\\n y &= x'\\sin\\theta + y'\\cos\\theta \\label{eq:rot-y}\n\\end{aligned}$$\nOr equivalently, solving for $x'$ and $y'$:\n$$\\begin{aligned}\n x' &= x\\cos\\theta + y\\sin\\theta \\label{eq:rot-xp} \\\\\n y' &= -x\\sin\\theta + y\\cos\\theta \\label{eq:rot-yp}\n\\end{aligned}$$",
+      "content": "If the coordinate axes are rotated through an angle $\\theta$, the \nrelationships between the original coordinates $(x, y)$ and the new \ncoordinates $(x', y')$ are:\n$$\\beginaligned\n x &= x'\\cos\\theta - y'\\sin\\theta \\labeleq:rot-x \\\\\n y &= x'\\sin\\theta + y'\\cos\\theta \\labeleq:rot-y\n\\end{aligned}$$\nOr equivalently, solving for $x'$ and $y'$:\n$$\\beginaligned\n x' &= x\\cos\\theta + y\\sin\\theta \\labeleq:rot-xp \\\\\n y' &= -x\\sin\\theta + y\\cos\\theta \\labeleq:rot-yp\n\\end{aligned}$$",
       "number": "10.2"
     },
     {
@@ -117,7 +117,7 @@
       "number": "10.3",
       "title": "Using rotation formulas",
       "problem": "A coordinate system is rotated by $\\theta = 45°$. \n\n1. Express $(x, y)$ in terms of $(x', y')$.\n\n2. Find the original coordinates of the point with $x' = 2$, $y' = 0$.",
-      "solution": "**(a)** With $\\theta = 45°$, we have $\\cos 45° = \\sin 45° = \\frac{\\sqrt{2}}{2}$.\n$$\\begin{aligned}\n x &= x'\\cos 45° - y'\\sin 45° = \\frac{\\sqrt{2}}{2}(x' - y') \\\\\n y &= x'\\sin 45° + y'\\cos 45° = \\frac{\\sqrt{2}}{2}(x' + y')\n\\end{aligned}$$\n\n**(b)** With $x' = 2$ and $y' = 0$:\n$$\\begin{aligned}\n x &= \\frac{\\sqrt{2}}{2}(2 - 0) = \\sqrt{2} \\\\\n y &= \\frac{\\sqrt{2}}{2}(2 + 0) = \\sqrt{2}\n\\end{aligned}$$\nThe point is $(\\sqrt{2}, \\sqrt{2})$ in the original system."
+      "solution": "**(a)** With $\\theta = 45°$, we have $\\cos 45° = \\sin 45° = \\frac{\\sqrt2}{2}$.\n$$\\beginaligned\n x &= x'\\cos 45° - y'\\sin 45° = \\frac{\\sqrt2}2(x' - y') \\\\\n y &= x'\\sin 45° + y'\\cos 45° = \\frac{\\sqrt2}2(x' + y')\n\\end{aligned}$$\n\n**(b)** With $x' = 2$ and $y' = 0$:\n$$\\beginaligned\n x &= \\frac{\\sqrt2}2(2 - 0) = \\sqrt2 \\\\\n y &= \\frac{\\sqrt2}2(2 + 0) = \\sqrt2\n\\end{aligned}$$\nThe point is $(\\sqrt2, \\sqrt2)$ in the original system."
     },
     {
       "type": "heading",
@@ -132,12 +132,12 @@
       "type": "theorem",
       "id": "ch10-sec04-theorem-10.3",
       "title": "Angle of Rotation",
-      "content": "To eliminate the $xy$-term from $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$, \nrotate through angle $\\theta$ where:\n$$\n \\cot 2\\theta = \\frac{A - C}{B} \\quad \\text{(assuming } B \\neq 0\\text{)}\n$$\nChoose $\\theta$ such that $0° < \\theta < 90°$ (or $0 < \\theta < \\frac{\\pi}{2}$).",
+      "content": "To eliminate the $xy$-term from $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$, \nrotate through angle $\\theta$ where:\n$$\n \\cot 2\\theta = \\fracA - CB \\quad \\text(assuming B \\neq 0\\text)\n$$\nChoose $\\theta$ such that $0° < \\theta < 90°$ (or $0 < \\theta < \\frac\\pi{2}$).",
       "number": "10.3"
     },
     {
       "type": "warning",
-      "id": "ch10-sec04-warning",
+      "id": "ch10-sec04-warning-1",
       "title": "",
       "content": "When $A = C$, we have $\\cot 2\\theta = 0$, which means $2\\theta = 90°$, \nso $\\theta = 45°$."
     },
@@ -145,7 +145,7 @@
       "type": "algorithm",
       "id": "ch10-sec04-algorithm-10.1",
       "title": "Analyzing a Rotated Conic",
-      "content": "Given an equation $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$ with $B \\neq 0$:\n\n1. **Classify the conic** using the discriminant $B^2 - 4AC$:\n \n- 2. $B^2 - 4AC < 0$: Ellipse (or circle)\n\n3. $B^2 - 4AC = 0$: Parabola\n\n4. $B^2 - 4AC > 0$: Hyperbola\n\n5. **Find the rotation angle** $\\theta$:\n $$\n \\cot 2\\theta = \\frac{A - C}{B}\n $$\n Use a reference triangle or inverse trig to find $\\cos\\theta$ and $\\sin\\theta$.\n\n6. **Find $\\cos\\theta$ and $\\sin\\theta$** using half-angle formulas:\n \n- 7. If $\\cot 2\\theta \\geq 0$: use $\\cos 2\\theta = \\frac{A-C}{\\sqrt{(A-C)^2 + B^2}}$\n\n8. If $\\cot 2\\theta < 0$: use $\\cos 2\\theta = \\frac{-(A-C)}{\\sqrt{(A-C)^2 + B^2}}$\n Then: $\\cos\\theta = \\sqrt{\\frac{1 + \\cos 2\\theta}{2}}$, $\\sin\\theta = \\sqrt{\\frac{1 - \\cos 2\\theta}{2}}$\n\n9. **Apply the rotation formulas**:\n $$\\begin{aligned}\n x &= x'\\cos\\theta - y'\\sin\\theta \\\\\n y &= x'\\sin\\theta + y'\\cos\\theta\n \\end{aligned}$$\n\n10. **Substitute** into the original equation and simplify. \n The $x'y'$-term should vanish, leaving a standard form.\n\n11. **Analyze** the resulting equation:\n \n- 12. Identify center, vertices, foci (in $x'y'$-coordinates)\n\n13. Convert back to $xy$-coordinates if needed\n\n14. **Graph**: Sketch the rotated axes at angle $\\theta$, \n then graph the conic in standard position relative to those axes.",
+      "content": "Given an equation $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$ with $B \\neq 0$:\n\n1. **Classify the conic** using the discriminant $B^2 - 4AC$:\n \n- 2. $B^2 - 4AC < 0$: Ellipse (or circle)\n\n3. $B^2 - 4AC = 0$: Parabola\n\n4. $B^2 - 4AC > 0$: Hyperbola\n\n5. **Find the rotation angle** $\\theta$:\n $$\n \\cot 2\\theta = \\fracA - CB\n $$\n Use a reference triangle or inverse trig to find $\\cos\\theta$ and $\\sin\\theta$.\n\n6. **Find $\\cos\\theta$ and $\\sin\\theta$** using half-angle formulas:\n \n- 7. If $\\cot 2\\theta \\geq 0$: use $\\cos 2\\theta = \\fracA-C{\\sqrt(A-C)^2 + B^2}$\n\n8. If $\\cot 2\\theta < 0$: use $\\cos 2\\theta = \\frac-(A-C){\\sqrt(A-C)^2 + B^2}$\n Then: $\\cos\\theta = \\sqrt{\\frac1 + \\cos 2\\theta2}$, $\\sin\\theta = \\sqrt{\\frac1 - \\cos 2\\theta2}$\n\n9. **Apply the rotation formulas**:\n $$\\beginaligned\n x &= x'\\cos\\theta - y'\\sin\\theta \\\\\n y &= x'\\sin\\theta + y'\\cos\\theta\n \\end{aligned}$$\n\n10. **Substitute** into the original equation and simplify. \n The $x'y'$-term should vanish, leaving a standard form.\n\n11. **Analyze** the resulting equation:\n \n- 12. Identify center, vertices, foci (in $x'y'$-coordinates)\n\n13. Convert back to $xy$-coordinates if needed\n\n14. **Graph**: Sketch the rotated axes at angle $\\theta$, \n then graph the conic in standard position relative to those axes.",
       "number": "10.1"
     },
     {
@@ -154,7 +154,7 @@
       "number": "10.4",
       "title": "Finding the rotation angle",
       "problem": "Find the angle of rotation that eliminates the $xy$-term.\n\n1. $xy = 4$\n\n2. $x^2 + 2xy + y^2 - 8x + 8y = 0$\n\n3. $16x^2 - 24xy + 9y^2 + 100x - 200 = 0$",
-      "solution": "**(a)** Here $A = 0$, $B = 1$, $C = 0$.\n$$\n \\cot 2\\theta = \\frac{0 - 0}{1} = 0 \\implies 2\\theta = 90° \\implies \\theta = 45°\n$$\n\n**(b)** Here $A = 1$, $B = 2$, $C = 1$.\n$$\n \\cot 2\\theta = \\frac{1 - 1}{2} = 0 \\implies \\theta = 45°\n$$\n\n**(c)** Here $A = 16$, $B = -24$, $C = 9$.\n$$\n \\cot 2\\theta = \\frac{16 - 9}{-24} = -\\frac{7}{24}\n$$\nUsing the identity $\\cot 2\\theta = \\frac{\\cos 2\\theta}{\\sin 2\\theta}$ and \na right triangle with adjacent $= -7$, opposite $= 24$, hypotenuse $= 25$:\n$$\n \\cos 2\\theta = -\\frac{7}{25}, \\quad \\sin 2\\theta = \\frac{24}{25}\n$$\nUsing half-angle formulas:\n$$\n \\cos\\theta = \\sqrt{\\frac{1 + \\cos 2\\theta}{2}} = \\sqrt{\\frac{1 - \\frac{7}{25}}{2}} = \\sqrt{\\frac{18}{50}} = \\frac{3}{5}\n$$\n$$\n \\sin\\theta = \\sqrt{\\frac{1 - \\cos 2\\theta}{2}} = \\sqrt{\\frac{1 + \\frac{7}{25}}{2}} = \\sqrt{\\frac{32}{50}} = \\frac{4}{5}\n$$\nSo $\\theta = \\arctan\\frac{4}{3} \\approx 53.13°$."
+      "solution": "**(a)** Here $A = 0$, $B = 1$, $C = 0$.\n$$\n \\cot 2\\theta = \\frac0 - 01 = 0 \\implies 2\\theta = 90° \\implies \\theta = 45°\n$$\n\n**(b)** Here $A = 1$, $B = 2$, $C = 1$.\n$$\n \\cot 2\\theta = \\frac1 - 12 = 0 \\implies \\theta = 45°\n$$\n\n**(c)** Here $A = 16$, $B = -24$, $C = 9$.\n$$\n \\cot 2\\theta = \\frac16 - 9-24 = -\\frac724\n$$\nUsing the identity $\\cot 2\\theta = \\frac\\cos 2\\theta{\\sin 2\\theta}$ and \na right triangle with adjacent $= -7$, opposite $= 24$, hypotenuse $= 25$:\n$$\n \\cos 2\\theta = -\\frac725, \\quad \\sin 2\\theta = \\frac2425\n$$\nUsing half-angle formulas:\n$$\n \\cos\\theta = \\sqrt{\\frac1 + \\cos 2\\theta2} = \\sqrt{\\frac{1 - \\frac725}2} = \\sqrt{\\frac1850} = \\frac35\n$$\n$$\n \\sin\\theta = \\sqrt{\\frac1 - \\cos 2\\theta2} = \\sqrt{\\frac{1 + \\frac725}2} = \\sqrt{\\frac3250} = \\frac45\n$$\nSo $\\theta = \\arctan\\frac43 \\approx 53.13°$."
     },
     {
       "type": "heading",
@@ -165,7 +165,7 @@
       "type": "theorem",
       "id": "ch10-sec04-theorem-10.4",
       "title": "Procedure for Graphing Rotated Conics",
-      "content": "To graph $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$ when $B \\neq 0$:\n\n1. **Find** $\\theta$ using $\\cot 2\\theta = \\frac{A-C}{B}$.\n\n2. **Calculate** $\\cos\\theta$ and $\\sin\\theta$.\n\n3. **Substitute** the rotation formulas into the equation.\n\n4. **Simplify** to get an equation in $x'$ and $y'$ with no $x'y'$-term.\n\n5. **Graph** the conic in the $x'y'$-system.\n\n6. **Rotate** the graph back by drawing $x'$- and $y'$-axes at angle $\\theta$.",
+      "content": "To graph $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$ when $B \\neq 0$:\n\n1. **Find** $\\theta$ using $\\cot 2\\theta = \\fracA-C{B}$.\n\n2. **Calculate** $\\cos\\theta$ and $\\sin\\theta$.\n\n3. **Substitute** the rotation formulas into the equation.\n\n4. **Simplify** to get an equation in $x'$ and $y'$ with no $x'y'$-term.\n\n5. **Graph** the conic in the $x'y'$-system.\n\n6. **Rotate** the graph back by drawing $x'$- and $y'$-axes at angle $\\theta$.",
       "number": "10.4"
     },
     {
@@ -174,7 +174,7 @@
       "number": "10.5",
       "title": "Graphing $xy = 4$",
       "problem": "Graph the equation $xy = 4$.",
-      "solution": "**Step 1: Identify and classify.**\n\n$A = 0$, $B = 1$, $C = 0$. Discriminant: $B^2 - 4AC = 1 > 0$, so this \nis a **hyperbola**.\n\n**Step 2: Find $\\theta$.**\n\n$\\cot 2\\theta = \\frac{0 - 0}{1} = 0 \\implies \\theta = 45°$\n\n**Step 3: Apply rotation formulas.**\n\nWith $\\cos 45° = \\sin 45° = \\frac{\\sqrt{2}}{2}$:\n$$\\begin{aligned}\n x &= \\frac{\\sqrt{2}}{2}(x' - y') \\\\\n y &= \\frac{\\sqrt{2}}{2}(x' + y')\n\\end{aligned}$$\n\n**Step 4: Substitute.**\n$$\\begin{aligned}\n xy &= \\frac{\\sqrt{2}}{2}(x' - y') \\cdot \\frac{\\sqrt{2}}{2}(x' + y') \\\\\n &= \\frac{1}{2}(x'^2 - y'^2) = 4\n\\end{aligned}$$\nSo: $\\frac{x'^2}{8} - \\frac{y'^2}{8} = 1$\n\n**Step 5: Graph.**\n\nThis is a hyperbola centered at the origin with $a^2 = 8$ and $b^2 = 8$, \nopening along the $x'$-axis. The vertices are at $(\\pm 2\\sqrt{2}, 0)$ \nin the $x'y'$-system."
+      "solution": "**Step 1: Identify and classify.**\n\n$A = 0$, $B = 1$, $C = 0$. Discriminant: $B^2 - 4AC = 1 > 0$, so this \nis a **hyperbola**.\n\n**Step 2: Find $\\theta$.**\n\n$\\cot 2\\theta = \\frac0 - 01 = 0 \\implies \\theta = 45°$\n\n**Step 3: Apply rotation formulas.**\n\nWith $\\cos 45° = \\sin 45° = \\frac{\\sqrt2}{2}$:\n$$\\beginaligned\n x &= \\frac{\\sqrt2}2(x' - y') \\\\\n y &= \\frac{\\sqrt2}2(x' + y')\n\\end{aligned}$$\n\n**Step 4: Substitute.**\n$$\\beginaligned\n xy &= \\frac{\\sqrt2}2(x' - y') \\cdot \\frac{\\sqrt2}2(x' + y') \\\\\n &= \\frac12(x'^2 - y'^2) = 4\n\\end{aligned}$$\nSo: $\\fracx'^28 - \\fracy'^28 = 1$\n\n**Step 5: Graph.**\n\nThis is a hyperbola centered at the origin with $a^2 = 8$ and $b^2 = 8$, \nopening along the $x'$-axis. The vertices are at $(\\pm 2\\sqrt2, 0)$ \nin the $x'y'$-system."
     },
     {
       "type": "example",
@@ -182,15 +182,15 @@
       "number": "10.6",
       "title": "Graphing a rotated ellipse",
       "problem": "Graph $x^2 + xy + y^2 = 3$.",
-      "solution": "**Classify:** $A = 1$, $B = 1$, $C = 1$.\n$B^2 - 4AC = 1 - 4 = -3 < 0$: **ellipse**\n\n**Find $\\theta$:** $\\cot 2\\theta = \\frac{1-1}{1} = 0 \\implies \\theta = 45°$\n\n**Substitute:** With $x = \\frac{\\sqrt{2}}{2}(x' - y')$ and $y = \\frac{\\sqrt{2}}{2}(x' + y')$:\n\n$$\\begin{aligned}\n x^2 &= \\frac{1}{2}(x'^2 - 2x'y' + y'^2) \\\\\n y^2 &= \\frac{1}{2}(x'^2 + 2x'y' + y'^2) \\\\\n xy &= \\frac{1}{2}(x'^2 - y'^2)\n\\end{aligned}$$\n\nSubstituting into $x^2 + xy + y^2 = 3$:\n$$\\begin{aligned}\n &\\frac{1}{2}(x'^2 - 2x'y' + y'^2) + \\frac{1}{2}(x'^2 - y'^2) + \\frac{1}{2}(x'^2 + 2x'y' + y'^2) = 3 \\\\\n &\\frac{1}{2}(3x'^2 + y'^2) = 3 \\\\\n &3x'^2 + y'^2 = 6 \\\\\n &\\frac{x'^2}{2} + \\frac{y'^2}{6} = 1\n\\end{aligned}$$\n\nThis is an ellipse with $a^2 = 6$ (along $y'$) and $b^2 = 2$ (along $x'$)."
+      "solution": "**Classify:** $A = 1$, $B = 1$, $C = 1$.\n$B^2 - 4AC = 1 - 4 = -3 < 0$: **ellipse**\n\n**Find $\\theta$:** $\\cot 2\\theta = \\frac1-11 = 0 \\implies \\theta = 45°$\n\n**Substitute:** With $x = \\frac{\\sqrt2}2(x' - y')$ and $y = \\frac{\\sqrt2}2(x' + y')$:\n\n$$\\beginaligned\n x^2 &= \\frac12(x'^2 - 2x'y' + y'^2) \\\\\n y^2 &= \\frac12(x'^2 + 2x'y' + y'^2) \\\\\n xy &= \\frac12(x'^2 - y'^2)\n\\end{aligned}$$\n\nSubstituting into $x^2 + xy + y^2 = 3$:\n$$\\beginaligned\n &\\frac12(x'^2 - 2x'y' + y'^2) + \\frac12(x'^2 - y'^2) + \\frac12(x'^2 + 2x'y' + y'^2) = 3 \\\\\n &\\frac12(3x'^2 + y'^2) = 3 \\\\\n &3x'^2 + y'^2 = 6 \\\\\n &\\fracx'^22 + \\fracy'^26 = 1\n\\end{aligned}$$\n\nThis is an ellipse with $a^2 = 6$ (along $y'$) and $b^2 = 2$ (along $x'$)."
     },
     {
       "type": "example",
       "id": "ch10-sec04-example-10.7",
       "number": "10.7",
       "title": "Graphing a rotated parabola",
-      "problem": "Graph $x^2 + 2xy + y^2 + 4\\sqrt{2}x - 4\\sqrt{2}y = 0$.",
-      "solution": "**Classify:** $A = 1$, $B = 2$, $C = 1$.\n$B^2 - 4AC = 4 - 4 = 0$: **parabola**\n\n**Find $\\theta$:** $\\cot 2\\theta = \\frac{1-1}{2} = 0 \\implies \\theta = 45°$\n\n**Substitute and simplify:**\nAfter rotation (detailed algebra omitted), the equation becomes:\n$$\n x'^2 = -4y'\n$$\nThis is a parabola opening downward (in the $y'$-direction) with vertex \nat the origin and $p = -1$."
+      "problem": "Graph $x^2 + 2xy + y^2 + 4\\sqrt2x - 4\\sqrt2y = 0$.",
+      "solution": "**Classify:** $A = 1$, $B = 2$, $C = 1$.\n$B^2 - 4AC = 4 - 4 = 0$: **parabola**\n\n**Find $\\theta$:** $\\cot 2\\theta = \\frac1-12 = 0 \\implies \\theta = 45°$\n\n**Substitute and simplify:**\nAfter rotation (detailed algebra omitted), the equation becomes:\n$$\n x'^2 = -4y'\n$$\nThis is a parabola opening downward (in the $y'$-direction) with vertex \nat the origin and $p = -1$."
     },
     {
       "type": "heading",
@@ -210,9 +210,9 @@
     },
     {
       "type": "summary",
-      "id": "ch10-sec04-summary",
+      "id": "ch10-sec04-summary-1",
       "title": "Rotation of Conics",
-      "content": "- The **general second-degree equation** is \n $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$.\n\n- The presence of an $xy$-term ($B \\neq 0$) indicates a \n **rotated conic**.\n\n- **Discriminant classification:**\n \n- - $B^2 - 4AC < 0$: Ellipse (or circle)\n\n- $B^2 - 4AC = 0$: Parabola\n\n- $B^2 - 4AC > 0$: Hyperbola\n\n- **Rotation formulas:**\n $$\\begin{aligned}\n x &= x'\\cos\\theta - y'\\sin\\theta \\\\\n y &= x'\\sin\\theta + y'\\cos\\theta\n \\end{aligned}$$\n\n- **Angle to eliminate $xy$-term:** $\\cot 2\\theta = \\frac{A-C}{B}$\n\n- The quantities $A + C$, $B^2 - 4AC$, and $F$ are \n **invariant** under rotation."
+      "content": "- The **general second-degree equation** is \n $Ax^2 + Bxy + Cy^2 + Dx + Ey + F = 0$.\n\n- The presence of an $xy$-term ($B \\neq 0$) indicates a \n **rotated conic**.\n\n- **Discriminant classification:**\n \n- - $B^2 - 4AC < 0$: Ellipse (or circle)\n\n- $B^2 - 4AC = 0$: Parabola\n\n- $B^2 - 4AC > 0$: Hyperbola\n\n- **Rotation formulas:**\n $$\\beginaligned\n x &= x'\\cos\\theta - y'\\sin\\theta \\\\\n y &= x'\\sin\\theta + y'\\cos\\theta\n \\end{aligned}$$\n\n- **Angle to eliminate $xy$-term:** $\\cot 2\\theta = \\fracA-C{B}$\n\n- The quantities $A + C$, $B^2 - 4AC$, and $F$ are \n **invariant** under rotation."
     },
     {
       "type": "exercise",
@@ -220,6 +220,11 @@
       "number": "1",
       "problem": "Fill in the blank.\n\n1. The general second-degree equation in $x$ and $y$ is .\n\n2. If $B \\neq 0$ in the general equation, the conic is .\n\n3. The quantity $B^2 - 4AC$ is called the .\n\n4. To eliminate the $xy$-term, we use the formula $\\cot 2\\theta = $ .\n\n5. A quantity that remains unchanged under rotation is called an .",
       "variant": "vocabulary"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Identifying and Classifying"
     },
     {
       "type": "exercise",
@@ -239,8 +244,13 @@
       "type": "exercise",
       "id": "ch10-sec04-ex-4",
       "number": "4",
-      "problem": "Classify each conic and find the angle of rotation $\\theta$ (do not graph).\n\n1. $xy = 9$\n\n2. $5x^2 - 6xy + 5y^2 - 8 = 0$\n\n3. $9x^2 - 24xy + 16y^2 - 40x - 30y = 0$\n\n4. $3x^2 + 2\\sqrt{3}xy + y^2 + 2x - 2\\sqrt{3}y = 0$",
+      "problem": "Classify each conic and find the angle of rotation $\\theta$ (do not graph).\n\n1. $xy = 9$\n\n2. $5x^2 - 6xy + 5y^2 - 8 = 0$\n\n3. $9x^2 - 24xy + 16y^2 - 40x - 30y = 0$\n\n4. $3x^2 + 2\\sqrt3xy + y^2 + 2x - 2\\sqrt3y = 0$",
       "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Rotation Formulas"
     },
     {
       "type": "exercise",
@@ -264,6 +274,11 @@
       "variant": "regular"
     },
     {
+      "type": "heading",
+      "level": 3,
+      "text": "Graphing Rotated Conics"
+    },
+    {
       "type": "exercise",
       "id": "ch10-sec04-ex-8",
       "number": "8",
@@ -281,15 +296,20 @@
       "type": "exercise",
       "id": "ch10-sec04-ex-10",
       "number": "10",
-      "problem": "Rotate and graph:\n\n1. $5x^2 - 6xy + 5y^2 = 16$\n\n2. $3x^2 + 2\\sqrt{3}xy + y^2 - 8 = 0$",
+      "problem": "Rotate and graph:\n\n1. $5x^2 - 6xy + 5y^2 = 16$\n\n2. $3x^2 + 2\\sqrt3xy + y^2 - 8 = 0$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch10-sec04-ex-11",
       "number": "11",
-      "problem": "Rotate and graph, identifying vertices and foci:\n\n1. $7x^2 + 6\\sqrt{3}xy + 13y^2 = 64$\n\n2. $x^2 + 2\\sqrt{3}xy + 3y^2 - 8\\sqrt{3}x + 8y = 0$",
+      "problem": "Rotate and graph, identifying vertices and foci:\n\n1. $7x^2 + 6\\sqrt3xy + 13y^2 = 64$\n\n2. $x^2 + 2\\sqrt3xy + 3y^2 - 8\\sqrt3x + 8y = 0$",
       "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Conceptual Exercises"
     },
     {
       "type": "exercise",
@@ -313,10 +333,15 @@
       "variant": "conceptual"
     },
     {
+      "type": "heading",
+      "level": 3,
+      "text": "Challenge Problems"
+    },
+    {
       "type": "exercise",
       "id": "ch10-sec04-ex-15",
       "number": "15",
-      "problem": "Derive the formula $\\cot 2\\theta = \\frac{A-C}{B}$ by \nsubstituting the rotation formulas into $Ax^2 + Bxy + Cy^2$ and setting \nthe coefficient of $x'y'$ equal to zero.",
+      "problem": "Derive the formula $\\cot 2\\theta = \\fracA-C{B}$ by \nsubstituting the rotation formulas into $Ax^2 + Bxy + Cy^2$ and setting \nthe coefficient of $x'y'$ equal to zero.",
       "variant": "starred"
     },
     {

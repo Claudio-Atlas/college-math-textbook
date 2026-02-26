@@ -28,18 +28,18 @@
   "content": [
     {
       "type": "paragraph",
-      "text": "Given the sine of an angle, can we find the angle itself? This is the \nfundamental question that leads us to *inverse trigonometric functions*. \nIf $\\sin\\theta = \\frac{1}{2}$, what is $\\theta$? The inverse sine function \ngives us the answer."
+      "text": "Given the sine of an angle, can we find the angle itself? This is the \nfundamental question that leads us to *inverse trigonometric functions*. \nIf $\\sin\\theta = \\frac1{2}$, what is $\\theta$? The inverse sine function \ngives us the answer."
     },
     {
       "type": "paragraph",
-      "text": "However, there's a complication. Since $\\sin 30° = \\sin 150° = \\frac{1}{2}$, \nand infinitely many other angles also have sine equal to $\\frac{1}{2}$, \nwe must be careful about how we define inverses. The key is to \n*restrict the domain* of the original function so that it becomes \none-to-one."
+      "text": "However, there's a complication. Since $\\sin 30° = \\sin 150° = \\frac1{2}$, \nand infinitely many other angles also have sine equal to $\\frac1{2}$, \nwe must be careful about how we define inverses. The key is to \n*restrict the domain* of the original function so that it becomes \none-to-one."
     },
     {
       "type": "figure",
       "id": "fig:hlt-inverse-trig",
       "src": "/figures/precalculus/ch06/fig-hlt-inverse-trig.svg",
-      "caption": "Why domain restriction is necessary for inverse trig functions. \n**Left:** The unrestricted sine function fails the horizontal line test—the \nline $y = 0.5$ crosses the curve at infinitely many points (two shown). \nThis means $\\sin^{-1}(0.5)$ would have infinitely many answers!\n**Right:** Restricting the domain to $[-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$ makes \nsine one-to-one. Now each horizontal line crosses at most once, so each \n$y$-value corresponds to exactly one $x$-value. This allows us to define \na proper inverse function.",
-      "alt": "Why domain restriction is necessary for inverse trig functions. \n**Left:** The unrestricted sine function fails the horizontal line test—the \nline $y = 0.5$ crosses the curve at infinitely many points (two shown). \nThis means $\\sin^{-1}(0.5)$ would have infinitely many answers!\n**Right:** Restricting the domain to $[-\\frac{\\pi}{2}, \\frac{\\pi}{2}]$ makes \nsine one-to-one. Now each horizontal line crosses at most once, so each \n$y$-value corresponds to exactly one $x$-value. This allows us to define \na proper inverse function.",
+      "caption": "Why domain restriction is necessary for inverse trig functions. \n**Left:** The unrestricted sine function fails the horizontal line test—the \nline $y = 0.5$ crosses the curve at infinitely many points (two shown). \nThis means $\\sin^-1(0.5)$ would have infinitely many answers!\n**Right:** Restricting the domain to $[-\\frac\\pi2, \\frac\\pi2]$ makes \nsine one-to-one. Now each horizontal line crosses at most once, so each \n$y$-value corresponds to exactly one $x$-value. This allows us to define \na proper inverse function.",
+      "alt": "Why domain restriction is necessary for inverse trig functions. \n**Left:** The unrestricted sine function fails the horizontal line test—the \nline $y = 0.5$ crosses the curve at infinitely many points (two shown). \nThis means $\\sin^-1(0.5)$ would have infinitely many answers!\n**Right:** Restricting the domain to $[-\\frac\\pi2, \\frac\\pi2]$ makes \nsine one-to-one. Now each horizontal line crosses at most once, so each \n$y$-value corresponds to exactly one $x$-value. This allows us to define \na proper inverse function.",
       "tikz": true
     },
     {
@@ -49,28 +49,28 @@
     },
     {
       "type": "paragraph",
-      "text": "The sine function is not one-to-one over its entire domain—many different \nangles have the same sine value. To create an inverse, we restrict sine \nto the interval $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$, where it \nis one-to-one and takes on all values from $-1$ to $1$."
+      "text": "The sine function is not one-to-one over its entire domain—many different \nangles have the same sine value. To create an inverse, we restrict sine \nto the interval $\\left[-\\frac\\pi2, \\frac\\pi2\\right]$, where it \nis one-to-one and takes on all values from $-1$ to $1$."
     },
     {
       "type": "definition",
       "id": "ch06-sec05-definition-6.1",
       "title": "Inverse Sine Function",
-      "content": "The **inverse sine function**, denoted $\\sin^{-1}x$ or $\\arcsin x$, \nis defined by:\n$$\n y = \\sin^{-1}x \\quad \\text{if and only if} \\quad \\sin y = x\n$$\nwhere $-1 \\leq x \\leq 1$ and $-\\frac{\\pi}{2} \\leq y \\leq \\frac{\\pi}{2}$.\n\n| **Domain:** | $[-1, 1]$ |\n| **Range:** | $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$ (or $[-90°, 90°]$) |",
+      "content": "The **inverse sine function**, denoted $\\sin^-1x$ or $\\arcsin x$, \nis defined by:\n$$\n y = \\sin^-1x \\quad \\textif and only if \\quad \\sin y = x\n$$\nwhere $-1 \\leq x \\leq 1$ and $-\\frac\\pi2 \\leq y \\leq \\frac\\pi{2}$.\n\n| **Domain:** | $[-1, 1]$ |\n| **Range:** | $\\left[-\\frac\\pi2, \\frac\\pi2\\right]$ (or $[-90°, 90°]$) |",
       "number": "6.1"
     },
     {
       "type": "warning",
-      "id": "ch06-sec05-warning",
+      "id": "ch06-sec05-warning-1",
       "title": "",
-      "content": "The notation $\\sin^{-1}x$ means the inverse sine of $x$, NOT $\\frac{1}{\\sin x}$. \nThe reciprocal of sine is cosecant: $\\frac{1}{\\sin x} = \\csc x$."
+      "content": "The notation $\\sin^-1x$ means the inverse sine of $x$, NOT $\\frac1{\\sin x}$. \nThe reciprocal of sine is cosecant: $\\frac1\\sin x = \\csc x$."
     },
     {
       "type": "example",
       "id": "ch06-sec05-example-6.1",
       "number": "6.1",
       "title": "Evaluating Inverse Sine",
-      "problem": "Find the exact value of each expression.\n\n1. $\\sin^{-1}\\left(\\frac{1}{2}\\right)$\n\n2. $\\arcsin\\left(-\\frac{\\sqrt{2}}{2}\\right)$\n\n3. $\\sin^{-1}(1)$",
-      "solution": "1. We need an angle $y$ in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$ \n such that $\\sin y = \\frac{1}{2}$. This angle is $y = \\frac{\\pi}{6}$.\n \n Therefore, $\\sin^{-1}\\left(\\frac{1}{2}\\right) = \\frac{\\pi}{6}$.\n\n2. We need an angle $y$ in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$ \n such that $\\sin y = -\\frac{\\sqrt{2}}{2}$. Since the sine is negative and \n we're restricted to $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$, the \n angle must be in QIV (between $-\\frac{\\pi}{2}$ and $0$).\n \n Therefore, $\\arcsin\\left(-\\frac{\\sqrt{2}}{2}\\right) = -\\frac{\\pi}{4}$.\n\n3. We need $y$ such that $\\sin y = 1$. This occurs at $y = \\frac{\\pi}{2}$.\n \n Therefore, $\\sin^{-1}(1) = \\frac{\\pi}{2}$."
+      "problem": "Find the exact value of each expression.\n\n1. $\\sin^-1\\left(\\frac12\\right)$\n\n2. $\\arcsin\\left(-\\frac{\\sqrt2}2\\right)$\n\n3. $\\sin^-1(1)$",
+      "solution": "1. We need an angle $y$ in $\\left[-\\frac\\pi2, \\frac\\pi2\\right]$ \n such that $\\sin y = \\frac1{2}$. This angle is $y = \\frac\\pi{6}$.\n \n Therefore, $\\sin^-1\\left(\\frac12\\right) = \\frac\\pi{6}$.\n\n2. We need an angle $y$ in $\\left[-\\frac\\pi2, \\frac\\pi2\\right]$ \n such that $\\sin y = -\\frac{\\sqrt2}{2}$. Since the sine is negative and \n we're restricted to $\\left[-\\frac\\pi2, \\frac\\pi2\\right]$, the \n angle must be in QIV (between $-\\frac\\pi{2}$ and $0$).\n \n Therefore, $\\arcsin\\left(-\\frac{\\sqrt2}2\\right) = -\\frac\\pi{4}$.\n\n3. We need $y$ such that $\\sin y = 1$. This occurs at $y = \\frac\\pi{2}$.\n \n Therefore, $\\sin^-1(1) = \\frac\\pi{2}$."
     },
     {
       "type": "heading",
@@ -85,7 +85,7 @@
       "type": "definition",
       "id": "ch06-sec05-definition-6.2",
       "title": "Inverse Cosine Function",
-      "content": "The **inverse cosine function**, denoted $\\cos^{-1}x$ or $\\arccos x$, \nis defined by:\n$$\n y = \\cos^{-1}x \\quad \\text{if and only if} \\quad \\cos y = x\n$$\nwhere $-1 \\leq x \\leq 1$ and $0 \\leq y \\leq \\pi$.\n\n| **Domain:** | $[-1, 1]$ |\n| **Range:** | $[0, \\pi]$ (or $[0°, 180°]$) |",
+      "content": "The **inverse cosine function**, denoted $\\cos^-1x$ or $\\arccos x$, \nis defined by:\n$$\n y = \\cos^-1x \\quad \\textif and only if \\quad \\cos y = x\n$$\nwhere $-1 \\leq x \\leq 1$ and $0 \\leq y \\leq \\pi$.\n\n| **Domain:** | $[-1, 1]$ |\n| **Range:** | $[0, \\pi]$ (or $[0°, 180°]$) |",
       "number": "6.2"
     },
     {
@@ -93,8 +93,8 @@
       "id": "ch06-sec05-example-6.2",
       "number": "6.2",
       "title": "Evaluating Inverse Cosine",
-      "problem": "Find the exact value of each expression.\n\n1. $\\cos^{-1}\\left(\\frac{\\sqrt{3}}{2}\\right)$\n\n2. $\\arccos\\left(-\\frac{1}{2}\\right)$\n\n3. $\\cos^{-1}(0)$",
-      "solution": "1. We need an angle $y$ in $[0, \\pi]$ such that $\\cos y = \\frac{\\sqrt{3}}{2}$.\n \n This angle is $y = \\frac{\\pi}{6}$.\n\n2. We need $y$ in $[0, \\pi]$ such that $\\cos y = -\\frac{1}{2}$. Since \n cosine is negative, $y$ must be in QII.\n \n Therefore, $\\arccos\\left(-\\frac{1}{2}\\right) = \\frac{2\\pi}{3}$.\n\n3. We need $y$ such that $\\cos y = 0$. This occurs at $y = \\frac{\\pi}{2}$."
+      "problem": "Find the exact value of each expression.\n\n1. $\\cos^-1\\left(\\frac{\\sqrt3}2\\right)$\n\n2. $\\arccos\\left(-\\frac12\\right)$\n\n3. $\\cos^-1(0)$",
+      "solution": "1. We need an angle $y$ in $[0, \\pi]$ such that $\\cos y = \\frac{\\sqrt3}{2}$.\n \n This angle is $y = \\frac\\pi{6}$.\n\n2. We need $y$ in $[0, \\pi]$ such that $\\cos y = -\\frac1{2}$. Since \n cosine is negative, $y$ must be in QII.\n \n Therefore, $\\arccos\\left(-\\frac12\\right) = \\frac2\\pi{3}$.\n\n3. We need $y$ such that $\\cos y = 0$. This occurs at $y = \\frac\\pi{2}$."
     },
     {
       "type": "heading",
@@ -103,13 +103,13 @@
     },
     {
       "type": "paragraph",
-      "text": "For the inverse tangent, we restrict tangent to the interval \n$\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$, where it is one-to-one \nand takes on all real values."
+      "text": "For the inverse tangent, we restrict tangent to the interval \n$\\left(-\\frac\\pi2, \\frac\\pi2\\right)$, where it is one-to-one \nand takes on all real values."
     },
     {
       "type": "definition",
       "id": "ch06-sec05-definition-6.3",
       "title": "Inverse Tangent Function",
-      "content": "The **inverse tangent function**, denoted $\\tan^{-1}x$ or $\\arctan x$, \nis defined by:\n$$\n y = \\tan^{-1}x \\quad \\text{if and only if} \\quad \\tan y = x\n$$\nwhere $x \\in \\mathbb{R}$ and $-\\frac{\\pi}{2} < y < \\frac{\\pi}{2}$.\n\n| **Domain:** | $(-\\infty, \\infty)$ |\n| **Range:** | $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$ (or $(-90°, 90°)$) |",
+      "content": "The **inverse tangent function**, denoted $\\tan^-1x$ or $\\arctan x$, \nis defined by:\n$$\n y = \\tan^-1x \\quad \\textif and only if \\quad \\tan y = x\n$$\nwhere $x \\in \\mathbb{R}$ and $-\\frac\\pi2 < y < \\frac\\pi{2}$.\n\n| **Domain:** | $(-\\infty, \\infty)$ |\n| **Range:** | $\\left(-\\frac\\pi2, \\frac\\pi2\\right)$ (or $(-90°, 90°)$) |",
       "number": "6.3"
     },
     {
@@ -117,8 +117,8 @@
       "id": "ch06-sec05-example-6.3",
       "number": "6.3",
       "title": "Evaluating Inverse Tangent",
-      "problem": "Find the exact value of each expression.\n\n1. $\\tan^{-1}(1)$\n\n2. $\\arctan(-\\sqrt{3})$\n\n3. $\\tan^{-1}(0)$",
-      "solution": "1. We need $y$ in $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$ such \n that $\\tan y = 1$.\n \n This angle is $y = \\frac{\\pi}{4}$.\n\n2. We need $y$ such that $\\tan y = -\\sqrt{3}$. Since tangent is negative \n and $y$ must be in $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$, we need \n $y$ in QIV (negative angle).\n \n Therefore, $\\arctan(-\\sqrt{3}) = -\\frac{\\pi}{3}$.\n\n3. We need $y$ such that $\\tan y = 0$. This occurs at $y = 0$."
+      "problem": "Find the exact value of each expression.\n\n1. $\\tan^-1(1)$\n\n2. $\\arctan(-\\sqrt3)$\n\n3. $\\tan^-1(0)$",
+      "solution": "1. We need $y$ in $\\left(-\\frac\\pi2, \\frac\\pi2\\right)$ such \n that $\\tan y = 1$.\n \n This angle is $y = \\frac\\pi{4}$.\n\n2. We need $y$ such that $\\tan y = -\\sqrt{3}$. Since tangent is negative \n and $y$ must be in $\\left(-\\frac\\pi2, \\frac\\pi2\\right)$, we need \n $y$ in QIV (negative angle).\n \n Therefore, $\\arctan(-\\sqrt3) = -\\frac\\pi{3}$.\n\n3. We need $y$ such that $\\tan y = 0$. This occurs at $y = 0$."
     },
     {
       "type": "heading",
@@ -135,21 +135,21 @@
       ],
       "rows": [
         [
-          "$y = \\sin^{-1}x$",
+          "$y = \\sin^-1x$",
           "$[-1, 1]$",
-          "$\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$",
+          "$\\left[-\\frac\\pi2, \\frac\\pi2\\right]$",
           "QI, QIV"
         ],
         [
-          "$y = \\cos^{-1}x$",
+          "$y = \\cos^-1x$",
           "$[-1, 1]$",
           "$[0, \\pi]$",
           "QI, QII"
         ],
         [
-          "$y = \\tan^{-1}x$",
+          "$y = \\tan^-1x$",
           "$(-\\infty, \\infty)$",
-          "$\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$",
+          "$\\left(-\\frac\\pi2, \\frac\\pi2\\right)$",
           "QI, QIV"
         ]
       ],
@@ -190,22 +190,23 @@
       "type": "theorem",
       "id": "ch06-sec05-theorem-6.1",
       "title": "Inverse Properties of Trigonometric Functions",
-      "content": "**For sine and arcsine:**\n\n- $\\sin(\\sin^{-1}x) = x$ for $-1 \\leq x \\leq 1$\n\n- $\\sin^{-1}(\\sin x) = x$ for $-\\frac{\\pi}{2} \\leq x \\leq \\frac{\\pi}{2}$\n\n**For cosine and arccosine:**\n\n- $\\cos(\\cos^{-1}x) = x$ for $-1 \\leq x \\leq 1$\n\n- $\\cos^{-1}(\\cos x) = x$ for $0 \\leq x \\leq \\pi$\n\n**For tangent and arctangent:**\n\n- $\\tan(\\tan^{-1}x) = x$ for all $x$\n\n- $\\tan^{-1}(\\tan x) = x$ for $-\\frac{\\pi}{2} < x < \\frac{\\pi}{2}$",
+      "content": "**For sine and arcsine:**\n\n- $\\sin(\\sin^-1x) = x$ for $-1 \\leq x \\leq 1$\n\n- $\\sin^-1(\\sin x) = x$ for $-\\frac\\pi2 \\leq x \\leq \\frac\\pi{2}$\n\n**For cosine and arccosine:**\n\n- $\\cos(\\cos^-1x) = x$ for $-1 \\leq x \\leq 1$\n\n- $\\cos^-1(\\cos x) = x$ for $0 \\leq x \\leq \\pi$\n\n**For tangent and arctangent:**\n\n- $\\tan(\\tan^-1x) = x$ for all $x$\n\n- $\\tan^-1(\\tan x) = x$ for $-\\frac\\pi2 < x < \\frac\\pi{2}$",
       "number": "6.1"
     },
     {
       "type": "warning",
-      "id": "ch06-sec05-warning",
+      "id": "ch06-sec05-warning-6.2",
       "title": "",
-      "content": "These inverse properties only work when $x$ is in the appropriate range! \nFor example, $\\sin^{-1}(\\sin \\frac{5\\pi}{6}) \\neq \\frac{5\\pi}{6}$ because \n$\\frac{5\\pi}{6}$ is not in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$."
+      "content": "These inverse properties only work when $x$ is in the appropriate range! \nFor example, $\\sin^-1(\\sin \\frac5\\pi6) \\neq \\frac5\\pi{6}$ because \n$\\frac5\\pi{6}$ is not in $\\left[-\\frac\\pi2, \\frac\\pi2\\right]$.",
+      "number": "6.2"
     },
     {
       "type": "example",
       "id": "ch06-sec05-example-6.4",
       "number": "6.4",
       "title": "Using Inverse Properties",
-      "problem": "Find the exact value.\n\n1. $\\sin(\\sin^{-1}(0.7))$\n\n2. $\\tan^{-1}(\\tan \\frac{\\pi}{5})$\n\n3. $\\sin^{-1}\\left(\\sin \\frac{5\\pi}{6}\\right)$",
-      "solution": "1. Since $0.7$ is in $[-1, 1]$, the inverse property applies directly:\n $$\n \\sin(\\sin^{-1}(0.7)) = 0.7\n $$\n\n2. Since $\\frac{\\pi}{5}$ is in $\\left(-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right)$, \n the inverse property applies:\n $$\n \\tan^{-1}\\left(\\tan \\frac{\\pi}{5}\\right) = \\frac{\\pi}{5}\n $$\n\n3. Here $\\frac{5\\pi}{6}$ is NOT in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$, \n so we cannot directly apply the inverse property.\n \n Instead, we evaluate: $\\sin \\frac{5\\pi}{6} = \\frac{1}{2}$.\n \n Then: $\\sin^{-1}\\left(\\frac{1}{2}\\right) = \\frac{\\pi}{6}$.\n \n So $\\sin^{-1}\\left(\\sin \\frac{5\\pi}{6}\\right) = \\frac{\\pi}{6}$."
+      "problem": "Find the exact value.\n\n1. $\\sin(\\sin^-1(0.7))$\n\n2. $\\tan^-1(\\tan \\frac\\pi5)$\n\n3. $\\sin^-1\\left(\\sin \\frac5\\pi6\\right)$",
+      "solution": "1. Since $0.7$ is in $[-1, 1]$, the inverse property applies directly:\n $$\n \\sin(\\sin^-1(0.7)) = 0.7\n $$\n\n2. Since $\\frac\\pi{5}$ is in $\\left(-\\frac\\pi2, \\frac\\pi2\\right)$, \n the inverse property applies:\n $$\n \\tan^-1\\left(\\tan \\frac\\pi5\\right) = \\frac\\pi5\n $$\n\n3. Here $\\frac5\\pi{6}$ is NOT in $\\left[-\\frac\\pi2, \\frac\\pi2\\right]$, \n so we cannot directly apply the inverse property.\n \n Instead, we evaluate: $\\sin \\frac5\\pi6 = \\frac1{2}$.\n \n Then: $\\sin^-1\\left(\\frac12\\right) = \\frac\\pi{6}$.\n \n So $\\sin^-1\\left(\\sin \\frac5\\pi6\\right) = \\frac\\pi{6}$."
     },
     {
       "type": "heading",
@@ -214,16 +215,15 @@
     },
     {
       "type": "paragraph",
-      "text": "A powerful application is evaluating expressions like $\\cos(\\sin^{-1}\\frac{3}{5})$. \nThe strategy: let $\\theta = \\sin^{-1}\\frac{3}{5}$, draw a **reference triangle**, \nthen find the desired trigonometric value."
-    },
-    {
-      "type": "heading",
-      "level": 3,
-      "text": "The Reference Triangle Method"
+      "text": "A powerful application is evaluating expressions like $\\cos(\\sin^-1\\frac35)$. \nThe strategy: let $\\theta = \\sin^-1\\frac3{5}$, draw a **reference triangle**, \nthen find the desired trigonometric value."
     },
     {
       "type": "paragraph",
-      "text": "When we have an inverse trig expression like $\\sin^{-1}\\frac{3}{5}$, we can \nvisualize it as an angle $\\theta$ in a right triangle. This is called a \n**reference triangle**."
+      "text": "*The Reference Triangle Method"
+    },
+    {
+      "type": "paragraph",
+      "text": "When we have an inverse trig expression like $\\sin^-1\\frac3{5}$, we can \nvisualize it as an angle $\\theta$ in a right triangle. This is called a \n**reference triangle**."
     },
     {
       "type": "figure",
@@ -235,311 +235,311 @@
     },
     {
       "type": "strategy",
-      "id": "ch06-sec05-strategy",
+      "id": "ch06-sec05-strategy-1",
       "title": "Reference Triangle Method",
-      "content": "To evaluate a composition like $\\cos(\\sin^{-1}x)$:\n\n1. Let $\\theta$ equal the inverse trig expression (e.g., $\\theta = \\sin^{-1}x$).\n\n2. Identify which ratio equals the input ($\\sin\\theta = x$).\n\n3. Draw a right triangle with sides matching that ratio.\n\n4. Use the Pythagorean theorem to find the missing side.\n\n5. Read off the desired trig function from the triangle.\n\n6. Consider the sign based on the quadrant of $\\theta$."
+      "content": "To evaluate a composition like $\\cos(\\sin^-1x)$:\n\n1. Let $\\theta$ equal the inverse trig expression (e.g., $\\theta = \\sin^-1x$).\n\n2. Identify which ratio equals the input ($\\sin\\theta = x$).\n\n3. Draw a right triangle with sides matching that ratio.\n\n4. Use the Pythagorean theorem to find the missing side.\n\n5. Read off the desired trig function from the triangle.\n\n6. Consider the sign based on the quadrant of $\\theta$."
     },
     {
       "type": "example",
       "id": "ch06-sec05-example-6.5",
       "number": "6.5",
       "title": "Composition: Finding Cosine from Arcsine",
-      "problem": "Find the exact value of $\\cos\\left(\\sin^{-1}\\frac{3}{5}\\right)$.",
-      "solution": "Let $\\theta = \\sin^{-1}\\frac{3}{5}$. Then $\\sin\\theta = \\frac{3}{5}$ and \n$\\theta$ is in $\\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$.\n\nSince $\\sin\\theta = \\frac{3}{5} > 0$, the angle $\\theta$ is in QI.\n\nDraw a right triangle with $\\sin\\theta = \\frac{\\text{opp}}{\\text{hyp}} = \\frac{3}{5}$:\n\nUsing the Pythagorean theorem: $\\text{adj} = \\sqrt{5^2 - 3^2} = \\sqrt{16} = 4$.\n\nTherefore:\n$$\n \\cos\\left(\\sin^{-1}\\frac{3}{5}\\right) = \\cos\\theta = \\frac{\\text{adj}}{\\text{hyp}} = \\frac{4}{5}\n$$"
+      "problem": "Find the exact value of $\\cos\\left(\\sin^-1\\frac35\\right)$.",
+      "solution": "Let $\\theta = \\sin^-1\\frac3{5}$. Then $\\sin\\theta = \\frac3{5}$ and \n$\\theta$ is in $\\left[-\\frac\\pi2, \\frac\\pi2\\right]$.\n\nSince $\\sin\\theta = \\frac35 > 0$, the angle $\\theta$ is in QI.\n\nDraw a right triangle with $\\sin\\theta = \\frac{\\textopp}{\\texthyp} = \\frac3{5}$:\n\nUsing the Pythagorean theorem: $\\textadj = \\sqrt5^2 - 3^2 = \\sqrt16 = 4$.\n\nTherefore:\n$$\n \\cos\\left(\\sin^-1\\frac35\\right) = \\cos\\theta = \\frac{\\textadj}{\\texthyp} = \\frac45\n$$"
     },
     {
       "type": "example",
       "id": "ch06-sec05-example-6.6",
       "number": "6.6",
       "title": "Composition: Finding Tangent from Arccosine",
-      "problem": "Find the exact value of $\\tan\\left(\\cos^{-1}\\left(-\\frac{5}{13}\\right)\\right)$.",
-      "solution": "Let $\\theta = \\cos^{-1}\\left(-\\frac{5}{13}\\right)$. Then $\\cos\\theta = -\\frac{5}{13}$ \nand $\\theta$ is in $[0, \\pi]$.\n\nSince $\\cos\\theta < 0$, the angle $\\theta$ is in QII.\n\nIn QII, cosine is negative (adjacent is negative) and sine is positive.\n\nUsing $|\\text{adj}| = 5$, hyp $= 13$: \n$|\\text{opp}| = \\sqrt{13^2 - 5^2} = \\sqrt{144} = 12$.\n\nIn QII, opposite is positive, so opp $= 12$.\n\nTherefore:\n$$\n \\tan\\left(\\cos^{-1}\\left(-\\frac{5}{13}\\right)\\right) = \\tan\\theta \n = \\frac{\\text{opp}}{\\text{adj}} = \\frac{12}{-5} = -\\frac{12}{5}\n$$"
+      "problem": "Find the exact value of $\\tan\\left(\\cos^-1\\left(-\\frac513\\right)\\right)$.",
+      "solution": "Let $\\theta = \\cos^-1\\left(-\\frac513\\right)$. Then $\\cos\\theta = -\\frac5{13}$ \nand $\\theta$ is in $[0, \\pi]$.\n\nSince $\\cos\\theta < 0$, the angle $\\theta$ is in QII.\n\nIn QII, cosine is negative (adjacent is negative) and sine is positive.\n\nUsing $|\\textadj| = 5$, hyp $= 13$: \n$|\\textopp| = \\sqrt13^2 - 5^2 = \\sqrt144 = 12$.\n\nIn QII, opposite is positive, so opp $= 12$.\n\nTherefore:\n$$\n \\tan\\left(\\cos^-1\\left(-\\frac513\\right)\\right) = \\tan\\theta \n = \\frac{\\textopp}{\\textadj} = \\frac12-5 = -\\frac125\n$$"
     },
     {
       "type": "example",
       "id": "ch06-sec05-example-6.7",
       "number": "6.7",
       "title": "Composition with Variable",
-      "problem": "Simplify $\\cos(\\sin^{-1}x)$ for $-1 \\leq x \\leq 1$.",
-      "solution": "Let $\\theta = \\sin^{-1}x$. Then $\\sin\\theta = x$ and $\\theta \\in \\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$.\n\nIn a right triangle with $\\sin\\theta = \\frac{x}{1}$, we have opp $= x$ and hyp $= 1$.\n\nBy the Pythagorean theorem: $\\text{adj} = \\sqrt{1 - x^2}$.\n\nSince $\\theta \\in \\left[-\\frac{\\pi}{2}, \\frac{\\pi}{2}\\right]$, cosine is always non-negative \nin this range. Therefore:\n$$\n \\cos(\\sin^{-1}x) = \\frac{\\sqrt{1-x^2}}{1} = \\sqrt{1-x^2}\n$$"
+      "problem": "Simplify $\\cos(\\sin^-1x)$ for $-1 \\leq x \\leq 1$.",
+      "solution": "Let $\\theta = \\sin^-1x$. Then $\\sin\\theta = x$ and $\\theta \\in \\left[-\\frac\\pi2, \\frac\\pi2\\right]$.\n\nIn a right triangle with $\\sin\\theta = \\fracx{1}$, we have opp $= x$ and hyp $= 1$.\n\nBy the Pythagorean theorem: $\\textadj = \\sqrt{1 - x^2}$.\n\nSince $\\theta \\in \\left[-\\frac\\pi2, \\frac\\pi2\\right]$, cosine is always non-negative \nin this range. Therefore:\n$$\n \\cos(\\sin^-1x) = \\frac{\\sqrt1-x^2}1 = \\sqrt1-x^2\n$$"
     },
     {
       "type": "summary",
-      "id": "ch06-sec05-summary",
+      "id": "ch06-sec05-summary-1",
       "title": "Inverse Trigonometric Functions",
-      "content": "- **Inverse sine:** $y = \\sin^{-1}x$ means $\\sin y = x$ where \n $-1 \\leq x \\leq 1$ and $-\\frac{\\pi}{2} \\leq y \\leq \\frac{\\pi}{2}$.\n\n- **Inverse cosine:** $y = \\cos^{-1}x$ means $\\cos y = x$ where \n $-1 \\leq x \\leq 1$ and $0 \\leq y \\leq \\pi$.\n\n- **Inverse tangent:** $y = \\tan^{-1}x$ means $\\tan y = x$ where \n $x \\in \\mathbb{R}$ and $-\\frac{\\pi}{2} < y < \\frac{\\pi}{2}$.\n\n- **Inverse properties:**\n \n- - $\\sin(\\sin^{-1}x) = x$ for $x \\in [-1, 1]$\n\n- $\\cos(\\cos^{-1}x) = x$ for $x \\in [-1, 1]$\n\n- $\\tan(\\tan^{-1}x) = x$ for all $x$\n\n- **Compositions:** Use reference triangles to evaluate \n expressions like $\\cos(\\sin^{-1}x)$."
+      "content": "- **Inverse sine:** $y = \\sin^-1x$ means $\\sin y = x$ where \n $-1 \\leq x \\leq 1$ and $-\\frac\\pi2 \\leq y \\leq \\frac\\pi{2}$.\n\n- **Inverse cosine:** $y = \\cos^-1x$ means $\\cos y = x$ where \n $-1 \\leq x \\leq 1$ and $0 \\leq y \\leq \\pi$.\n\n- **Inverse tangent:** $y = \\tan^-1x$ means $\\tan y = x$ where \n $x \\in \\mathbb{R}$ and $-\\frac\\pi2 < y < \\frac\\pi{2}$.\n\n- **Inverse properties:**\n \n- - $\\sin(\\sin^-1x) = x$ for $x \\in [-1, 1]$\n\n- $\\cos(\\cos^-1x) = x$ for $x \\in [-1, 1]$\n\n- $\\tan(\\tan^-1x) = x$ for all $x$\n\n- **Compositions:** Use reference triangles to evaluate \n expressions like $\\cos(\\sin^-1x)$."
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-1",
       "number": "1",
-      "problem": "Fill in the blank with the appropriate term.\n\n1. The notation $\\sin^{-1}x$ is read as \" .\"\n\n2. The range of $y = \\arcsin x$ is .\n\n3. The domain of $y = \\arccos x$ is .\n\n4. The range of $y = \\arctan x$ is .\n\n5. $\\sin^{-1}x$ does NOT mean $\\dfrac{1}{\\sin x}$; the reciprocal of sine is .\n\n6. The graph of $y = \\tan^{-1}x$ has horizontal asymptotes at $y = $ .\n\n*{Evaluating Inverse Sine",
+      "problem": "Fill in the blank with the appropriate term.\n\n1. The notation $\\sin^-1x$ is read as \" .\"\n\n2. The range of $y = \\arcsin x$ is .\n\n3. The domain of $y = \\arccos x$ is .\n\n4. The range of $y = \\arctan x$ is .\n\n5. $\\sin^-1x$ does NOT mean $\\dfrac1{\\sin x}$; the reciprocal of sine is .\n\n6. The graph of $y = \\tan^-1x$ has horizontal asymptotes at $y = $ .\n\n*Evaluating Inverse Sine",
       "variant": "vocabulary"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-2",
       "number": "2",
-      "problem": "Find the exact value.\n\n1. $\\sin^{-1}\\dfrac{1}{2}$\n\n2. $\\sin^{-1}\\dfrac{\\sqrt{2}}{2}$\n\n3. $\\sin^{-1}\\dfrac{\\sqrt{3}}{2}$\n\n4. $\\sin^{-1}(0)$\n\n5. $\\sin^{-1}(1)$\n\n6. $\\sin^{-1}(-1)$",
+      "problem": "Find the exact value.\n\n1. $\\sin^-1\\dfrac1{2}$\n\n2. $\\sin^-1\\dfrac{\\sqrt2}{2}$\n\n3. $\\sin^-1\\dfrac{\\sqrt3}{2}$\n\n4. $\\sin^-1(0)$\n\n5. $\\sin^-1(1)$\n\n6. $\\sin^-1(-1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-3",
       "number": "3",
-      "problem": "Find the exact value.\n\n1. $\\sin^{-1}\\left(-\\dfrac{1}{2}\\right)$\n\n2. $\\sin^{-1}\\left(-\\dfrac{\\sqrt{2}}{2}\\right)$\n\n3. $\\sin^{-1}\\left(-\\dfrac{\\sqrt{3}}{2}\\right)$\n\n4. $\\arcsin\\dfrac{\\sqrt{3}}{2}$\n\n5. $\\arcsin(0)$\n\n6. $\\arcsin(-1)$",
+      "problem": "Find the exact value.\n\n1. $\\sin^-1\\left(-\\dfrac12\\right)$\n\n2. $\\sin^-1\\left(-\\dfrac{\\sqrt2}2\\right)$\n\n3. $\\sin^-1\\left(-\\dfrac{\\sqrt3}2\\right)$\n\n4. $\\arcsin\\dfrac{\\sqrt3}{2}$\n\n5. $\\arcsin(0)$\n\n6. $\\arcsin(-1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-4",
       "number": "4",
-      "problem": "Find the exact value.\n\n1. $\\cos^{-1}\\dfrac{1}{2}$\n\n2. $\\cos^{-1}\\dfrac{\\sqrt{2}}{2}$\n\n3. $\\cos^{-1}\\dfrac{\\sqrt{3}}{2}$\n\n4. $\\cos^{-1}(0)$\n\n5. $\\cos^{-1}(1)$\n\n6. $\\cos^{-1}(-1)$",
+      "problem": "Find the exact value.\n\n1. $\\cos^-1\\dfrac1{2}$\n\n2. $\\cos^-1\\dfrac{\\sqrt2}{2}$\n\n3. $\\cos^-1\\dfrac{\\sqrt3}{2}$\n\n4. $\\cos^-1(0)$\n\n5. $\\cos^-1(1)$\n\n6. $\\cos^-1(-1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-5",
       "number": "5",
-      "problem": "Find the exact value.\n\n1. $\\cos^{-1}\\left(-\\dfrac{1}{2}\\right)$\n\n2. $\\cos^{-1}\\left(-\\dfrac{\\sqrt{2}}{2}\\right)$\n\n3. $\\cos^{-1}\\left(-\\dfrac{\\sqrt{3}}{2}\\right)$\n\n4. $\\arccos\\dfrac{1}{2}$\n\n5. $\\arccos(0)$\n\n6. $\\arccos(-1)$",
+      "problem": "Find the exact value.\n\n1. $\\cos^-1\\left(-\\dfrac12\\right)$\n\n2. $\\cos^-1\\left(-\\dfrac{\\sqrt2}2\\right)$\n\n3. $\\cos^-1\\left(-\\dfrac{\\sqrt3}2\\right)$\n\n4. $\\arccos\\dfrac1{2}$\n\n5. $\\arccos(0)$\n\n6. $\\arccos(-1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-6",
       "number": "6",
-      "problem": "Find the exact value.\n\n1. $\\tan^{-1}(1)$\n\n2. $\\tan^{-1}(\\sqrt{3})$\n\n3. $\\tan^{-1}\\dfrac{\\sqrt{3}}{3}$\n\n4. $\\tan^{-1}(0)$\n\n5. $\\tan^{-1}(-1)$\n\n6. $\\tan^{-1}(-\\sqrt{3})$",
+      "problem": "Find the exact value.\n\n1. $\\tan^-1(1)$\n\n2. $\\tan^-1(\\sqrt3)$\n\n3. $\\tan^-1\\dfrac{\\sqrt3}{3}$\n\n4. $\\tan^-1(0)$\n\n5. $\\tan^-1(-1)$\n\n6. $\\tan^-1(-\\sqrt3)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-7",
       "number": "7",
-      "problem": "Find the exact value.\n\n1. $\\arctan(1)$\n\n2. $\\arctan\\left(-\\dfrac{\\sqrt{3}}{3}\\right)$\n\n3. $\\arctan(\\sqrt{3})$\n\n4. $\\arctan(-\\sqrt{3})$\n\n5. $\\arctan(0)$\n\n6. $\\arctan\\dfrac{1}{\\sqrt{3}}$",
+      "problem": "Find the exact value.\n\n1. $\\arctan(1)$\n\n2. $\\arctan\\left(-\\dfrac{\\sqrt3}3\\right)$\n\n3. $\\arctan(\\sqrt3)$\n\n4. $\\arctan(-\\sqrt3)$\n\n5. $\\arctan(0)$\n\n6. $\\arctan\\dfrac1{\\sqrt3}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-8",
       "number": "8",
-      "problem": "Find the exact value.\n\n1. $\\sin^{-1}\\left(-\\dfrac{1}{2}\\right)$\n\n2. $\\cos^{-1}\\left(-\\dfrac{\\sqrt{2}}{2}\\right)$\n\n3. $\\tan^{-1}(-1)$\n\n4. $\\arcsin\\left(-\\dfrac{\\sqrt{3}}{2}\\right)$\n\n5. $\\arccos\\left(\\dfrac{\\sqrt{3}}{2}\\right)$\n\n6. $\\arctan\\left(\\dfrac{\\sqrt{3}}{3}\\right)$",
+      "problem": "Find the exact value.\n\n1. $\\sin^-1\\left(-\\dfrac12\\right)$\n\n2. $\\cos^-1\\left(-\\dfrac{\\sqrt2}2\\right)$\n\n3. $\\tan^-1(-1)$\n\n4. $\\arcsin\\left(-\\dfrac{\\sqrt3}2\\right)$\n\n5. $\\arccos\\left(\\dfrac{\\sqrt3}2\\right)$\n\n6. $\\arctan\\left(\\dfrac{\\sqrt3}3\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-9",
       "number": "9",
-      "problem": "Find the exact value.\n\n1. $\\sin^{-1}(0) + \\cos^{-1}(0)$\n\n2. $\\arcsin(1) - \\arccos(1)$\n\n3. $\\arctan(0) + \\arctan(1)$\n\n4. $\\sin^{-1}\\left(\\dfrac{\\sqrt{3}}{2}\\right) + \\cos^{-1}\\left(\\dfrac{\\sqrt{3}}{2}\\right)$\n\n5. $\\tan^{-1}(\\sqrt{3}) - \\tan^{-1}\\left(\\dfrac{\\sqrt{3}}{3}\\right)$\n\n6. $2\\arcsin\\left(\\dfrac{1}{2}\\right)$",
+      "problem": "Find the exact value.\n\n1. $\\sin^-1(0) + \\cos^-1(0)$\n\n2. $\\arcsin(1) - \\arccos(1)$\n\n3. $\\arctan(0) + \\arctan(1)$\n\n4. $\\sin^-1\\left(\\dfrac{\\sqrt3}2\\right) + \\cos^-1\\left(\\dfrac{\\sqrt3}2\\right)$\n\n5. $\\tan^-1(\\sqrt3) - \\tan^-1\\left(\\dfrac{\\sqrt3}3\\right)$\n\n6. $2\\arcsin\\left(\\dfrac12\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-10",
       "number": "10",
-      "problem": "Find the exact value (use a calculator if needed).\n\n1. $\\sin^{-1}(0.3)$\n\n2. $\\cos^{-1}(-0.6)$\n\n3. $\\tan^{-1}(2.5)$\n\n4. $\\arcsin(0.75)$\n\n5. $\\arccos(0.15)$\n\n6. $\\arctan(-4)$",
+      "problem": "Find the exact value (use a calculator if needed).\n\n1. $\\sin^-1(0.3)$\n\n2. $\\cos^-1(-0.6)$\n\n3. $\\tan^-1(2.5)$\n\n4. $\\arcsin(0.75)$\n\n5. $\\arccos(0.15)$\n\n6. $\\arctan(-4)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-11",
       "number": "11",
-      "problem": "Convert from degrees to radians, or state that the expression is undefined.\n\n1. $\\sin^{-1}\\left(\\sin 45°\\right)$ in radians\n\n2. $\\cos^{-1}\\left(\\cos 120°\\right)$ in radians\n\n3. $\\tan^{-1}\\left(\\tan 60°\\right)$ in radians\n\n4. $\\sin^{-1}\\left(\\sin 210°\\right)$ in radians",
+      "problem": "Convert from degrees to radians, or state that the expression is undefined.\n\n1. $\\sin^-1\\left(\\sin 45°\\right)$ in radians\n\n2. $\\cos^-1\\left(\\cos 120°\\right)$ in radians\n\n3. $\\tan^-1\\left(\\tan 60°\\right)$ in radians\n\n4. $\\sin^-1\\left(\\sin 210°\\right)$ in radians",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-12",
       "number": "12",
-      "problem": "Evaluate using inverse properties.\n\n1. $\\sin(\\sin^{-1}0.5)$\n\n2. $\\cos(\\cos^{-1}(-0.3))$\n\n3. $\\tan(\\tan^{-1}(100))$\n\n4. $\\sin^{-1}(\\sin\\dfrac{\\pi}{5})$\n\n5. $\\cos^{-1}(\\cos\\dfrac{\\pi}{3})$\n\n6. $\\tan^{-1}(\\tan\\dfrac{\\pi}{4})$",
+      "problem": "Evaluate using inverse properties.\n\n1. $\\sin(\\sin^-10.5)$\n\n2. $\\cos(\\cos^-1(-0.3))$\n\n3. $\\tan(\\tan^-1(100))$\n\n4. $\\sin^-1(\\sin\\dfrac\\pi5)$\n\n5. $\\cos^-1(\\cos\\dfrac\\pi3)$\n\n6. $\\tan^-1(\\tan\\dfrac\\pi4)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-13",
       "number": "13",
-      "problem": "Find the exact value. Be careful—some may require additional work.\n\n1. $\\sin^{-1}\\left(\\sin\\dfrac{2\\pi}{3}\\right)$\n\n2. $\\cos^{-1}\\left(\\cos\\dfrac{5\\pi}{4}\\right)$\n\n3. $\\tan^{-1}\\left(\\tan\\dfrac{5\\pi}{6}\\right)$\n\n4. $\\sin^{-1}\\left(\\sin\\left(-\\dfrac{\\pi}{4}\\right)\\right)$\n\n5. $\\cos^{-1}\\left(\\cos\\left(-\\dfrac{\\pi}{3}\\right)\\right)$\n\n6. $\\tan^{-1}\\left(\\tan\\dfrac{3\\pi}{4}\\right)$",
+      "problem": "Find the exact value. Be careful—some may require additional work.\n\n1. $\\sin^-1\\left(\\sin\\dfrac2\\pi3\\right)$\n\n2. $\\cos^-1\\left(\\cos\\dfrac5\\pi4\\right)$\n\n3. $\\tan^-1\\left(\\tan\\dfrac5\\pi6\\right)$\n\n4. $\\sin^-1\\left(\\sin\\left(-\\dfrac\\pi4\\right)\\right)$\n\n5. $\\cos^-1\\left(\\cos\\left(-\\dfrac\\pi3\\right)\\right)$\n\n6. $\\tan^-1\\left(\\tan\\dfrac3\\pi4\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-14",
       "number": "14",
-      "problem": "Find the exact value. Watch for angles outside the principal range.\n\n1. $\\sin^{-1}\\left(\\sin\\dfrac{7\\pi}{6}\\right)$\n\n2. $\\cos^{-1}\\left(\\cos\\dfrac{7\\pi}{4}\\right)$\n\n3. $\\tan^{-1}\\left(\\tan\\dfrac{4\\pi}{3}\\right)$\n\n4. $\\sin^{-1}\\left(\\sin\\dfrac{11\\pi}{6}\\right)$\n\n5. $\\cos^{-1}\\left(\\cos 3\\pi\\right)$\n\n6. $\\tan^{-1}\\left(\\tan\\left(-\\dfrac{5\\pi}{4}\\right)\\right)$",
+      "problem": "Find the exact value. Watch for angles outside the principal range.\n\n1. $\\sin^-1\\left(\\sin\\dfrac7\\pi6\\right)$\n\n2. $\\cos^-1\\left(\\cos\\dfrac7\\pi4\\right)$\n\n3. $\\tan^-1\\left(\\tan\\dfrac4\\pi3\\right)$\n\n4. $\\sin^-1\\left(\\sin\\dfrac11\\pi6\\right)$\n\n5. $\\cos^-1\\left(\\cos 3\\pi\\right)$\n\n6. $\\tan^-1\\left(\\tan\\left(-\\dfrac5\\pi4\\right)\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-15",
       "number": "15",
-      "problem": "Evaluate the expression.\n\n1. $\\sin\\left(\\sin^{-1}\\dfrac{2}{3} + \\cos^{-1}0\\right)$\n\n2. $\\cos\\left(\\sin^{-1}\\dfrac{1}{2} + \\cos^{-1}\\dfrac{1}{2}\\right)$\n\n3. $\\sin\\left(2\\sin^{-1}\\dfrac{3}{5}\\right)$\n\n4. $\\cos\\left(2\\cos^{-1}\\dfrac{4}{5}\\right)$",
+      "problem": "Evaluate the expression.\n\n1. $\\sin\\left(\\sin^-1\\dfrac23 + \\cos^-10\\right)$\n\n2. $\\cos\\left(\\sin^-1\\dfrac12 + \\cos^-1\\dfrac12\\right)$\n\n3. $\\sin\\left(2\\sin^-1\\dfrac35\\right)$\n\n4. $\\cos\\left(2\\cos^-1\\dfrac45\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-16",
       "number": "16",
-      "problem": "Find the exact value.\n\n1. $\\cos\\left(\\sin^{-1}\\dfrac{3}{5}\\right)$\n\n2. $\\sin\\left(\\cos^{-1}\\dfrac{4}{5}\\right)$\n\n3. $\\tan\\left(\\sin^{-1}\\dfrac{5}{13}\\right)$\n\n4. $\\cos\\left(\\tan^{-1}\\dfrac{3}{4}\\right)$",
+      "problem": "Find the exact value.\n\n1. $\\cos\\left(\\sin^-1\\dfrac35\\right)$\n\n2. $\\sin\\left(\\cos^-1\\dfrac45\\right)$\n\n3. $\\tan\\left(\\sin^-1\\dfrac513\\right)$\n\n4. $\\cos\\left(\\tan^-1\\dfrac34\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-17",
       "number": "17",
-      "problem": "Find the exact value.\n\n1. $\\tan\\left(\\cos^{-1}\\dfrac{5}{13}\\right)$\n\n2. $\\sin\\left(\\tan^{-1}\\dfrac{4}{3}\\right)$\n\n3. $\\cos\\left(\\sin^{-1}\\left(-\\dfrac{3}{5}\\right)\\right)$\n\n4. $\\cot\\left(\\sin^{-1}\\dfrac{7}{25}\\right)$",
+      "problem": "Find the exact value.\n\n1. $\\tan\\left(\\cos^-1\\dfrac513\\right)$\n\n2. $\\sin\\left(\\tan^-1\\dfrac43\\right)$\n\n3. $\\cos\\left(\\sin^-1\\left(-\\dfrac35\\right)\\right)$\n\n4. $\\cot\\left(\\sin^-1\\dfrac725\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-18",
       "number": "18",
-      "problem": "Find the exact value.\n\n1. $\\sin\\left(\\cos^{-1}\\left(-\\dfrac{7}{25}\\right)\\right)$\n\n2. $\\sec\\left(\\sin^{-1}\\dfrac{12}{13}\\right)$\n\n3. $\\csc\\left(\\tan^{-1}\\dfrac{5}{12}\\right)$\n\n4. $\\tan\\left(\\cos^{-1}\\left(-\\dfrac{8}{17}\\right)\\right)$",
+      "problem": "Find the exact value.\n\n1. $\\sin\\left(\\cos^-1\\left(-\\dfrac725\\right)\\right)$\n\n2. $\\sec\\left(\\sin^-1\\dfrac1213\\right)$\n\n3. $\\csc\\left(\\tan^-1\\dfrac512\\right)$\n\n4. $\\tan\\left(\\cos^-1\\left(-\\dfrac817\\right)\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-19",
       "number": "19",
-      "problem": "Find the exact value.\n\n1. $\\sin\\left(\\arccos\\dfrac{12}{13}\\right)$\n\n2. $\\cos\\left(\\arcsin\\dfrac{4}{5}\\right)$\n\n3. $\\tan\\left(\\arcsin\\dfrac{8}{17}\\right)$\n\n4. $\\cos\\left(\\arctan\\dfrac{7}{24}\\right)$",
+      "problem": "Find the exact value.\n\n1. $\\sin\\left(\\arccos\\dfrac1213\\right)$\n\n2. $\\cos\\left(\\arcsin\\dfrac45\\right)$\n\n3. $\\tan\\left(\\arcsin\\dfrac817\\right)$\n\n4. $\\cos\\left(\\arctan\\dfrac724\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-20",
       "number": "20",
-      "problem": "Find the exact value using a reference triangle.\n\n1. $\\sec\\left(\\sin^{-1}\\dfrac{5}{13}\\right)$\n\n2. $\\csc\\left(\\cos^{-1}\\dfrac{3}{5}\\right)$\n\n3. $\\cot\\left(\\tan^{-1}\\dfrac{8}{15}\\right)$\n\n4. $\\sin\\left(\\tan^{-1}\\dfrac{12}{5}\\right)$",
+      "problem": "Find the exact value using a reference triangle.\n\n1. $\\sec\\left(\\sin^-1\\dfrac513\\right)$\n\n2. $\\csc\\left(\\cos^-1\\dfrac35\\right)$\n\n3. $\\cot\\left(\\tan^-1\\dfrac815\\right)$\n\n4. $\\sin\\left(\\tan^-1\\dfrac125\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-21",
       "number": "21",
-      "problem": "Find the exact value. Be careful with negative inputs.\n\n1. $\\tan\\left(\\sin^{-1}\\left(-\\dfrac{7}{25}\\right)\\right)$\n\n2. $\\sin\\left(\\cos^{-1}\\left(-\\dfrac{4}{5}\\right)\\right)$\n\n3. $\\cos\\left(\\tan^{-1}\\left(-\\dfrac{5}{12}\\right)\\right)$\n\n4. $\\sec\\left(\\sin^{-1}\\left(-\\dfrac{8}{17}\\right)\\right)$",
+      "problem": "Find the exact value. Be careful with negative inputs.\n\n1. $\\tan\\left(\\sin^-1\\left(-\\dfrac725\\right)\\right)$\n\n2. $\\sin\\left(\\cos^-1\\left(-\\dfrac45\\right)\\right)$\n\n3. $\\cos\\left(\\tan^-1\\left(-\\dfrac512\\right)\\right)$\n\n4. $\\sec\\left(\\sin^-1\\left(-\\dfrac817\\right)\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-22",
       "number": "22",
-      "problem": "Find the exact value.\n\n1. $\\tan\\left(\\arccos\\dfrac{9}{41}\\right)$\n\n2. $\\sin\\left(\\arctan\\dfrac{20}{21}\\right)$\n\n3. $\\cos\\left(\\arcsin\\dfrac{15}{17}\\right)$\n\n4. $\\csc\\left(\\arctan\\dfrac{3}{4}\\right)$",
+      "problem": "Find the exact value.\n\n1. $\\tan\\left(\\arccos\\dfrac941\\right)$\n\n2. $\\sin\\left(\\arctan\\dfrac2021\\right)$\n\n3. $\\cos\\left(\\arcsin\\dfrac1517\\right)$\n\n4. $\\csc\\left(\\arctan\\dfrac34\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-23",
       "number": "23",
-      "problem": "Simplify each expression in terms of $x$.\n\n1. $\\sin(\\tan^{-1}x)$\n\n2. $\\cos(\\sin^{-1}x)$\n\n3. $\\tan(\\cos^{-1}x)$\n\n4. $\\sec(\\tan^{-1}x)$",
+      "problem": "Simplify each expression in terms of $x$.\n\n1. $\\sin(\\tan^-1x)$\n\n2. $\\cos(\\sin^-1x)$\n\n3. $\\tan(\\cos^-1x)$\n\n4. $\\sec(\\tan^-1x)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-24",
       "number": "24",
-      "problem": "Simplify each expression.\n\n1. $\\sin(\\cos^{-1}x)$\n\n2. $\\cos(\\tan^{-1}x)$\n\n3. $\\tan(\\sin^{-1}x)$\n\n4. $\\cot(\\cos^{-1}x)$",
+      "problem": "Simplify each expression.\n\n1. $\\sin(\\cos^-1x)$\n\n2. $\\cos(\\tan^-1x)$\n\n3. $\\tan(\\sin^-1x)$\n\n4. $\\cot(\\cos^-1x)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-25",
       "number": "25",
-      "problem": "Simplify each expression. Assume $x > 0$.\n\n1. $\\csc(\\tan^{-1}x)$\n\n2. $\\sec(\\sin^{-1}x)$\n\n3. $\\cot(\\sin^{-1}x)$\n\n4. $\\sin(\\sec^{-1}x)$ where $x \\geq 1$",
+      "problem": "Simplify each expression. Assume $x > 0$.\n\n1. $\\csc(\\tan^-1x)$\n\n2. $\\sec(\\sin^-1x)$\n\n3. $\\cot(\\sin^-1x)$\n\n4. $\\sin(\\sec^-1x)$ where $x \\geq 1$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-26",
       "number": "26",
-      "problem": "Simplify each expression in terms of $x$.\n\n1. $\\cos\\left(\\sin^{-1}\\dfrac{x}{3}\\right)$\n\n2. $\\sin\\left(\\tan^{-1}\\dfrac{x}{4}\\right)$\n\n3. $\\tan\\left(\\cos^{-1}\\dfrac{x}{5}\\right)$\n\n4. $\\cos\\left(\\tan^{-1}\\dfrac{2x}{3}\\right)$",
+      "problem": "Simplify each expression in terms of $x$.\n\n1. $\\cos\\left(\\sin^-1\\dfracx3\\right)$\n\n2. $\\sin\\left(\\tan^-1\\dfracx4\\right)$\n\n3. $\\tan\\left(\\cos^-1\\dfracx5\\right)$\n\n4. $\\cos\\left(\\tan^-1\\dfrac2x3\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-27",
       "number": "27",
-      "problem": "Find the domain and range of each function.\n\n1. $y = 2\\arcsin(x - 1)$\n\n2. $y = \\arccos(2x)$\n\n3. $y = \\arctan(x + 3)$\n\n4. $y = \\arcsin(x) + \\dfrac{\\pi}{2}$",
+      "problem": "Find the domain and range of each function.\n\n1. $y = 2\\arcsin(x - 1)$\n\n2. $y = \\arccos(2x)$\n\n3. $y = \\arctan(x + 3)$\n\n4. $y = \\arcsin(x) + \\dfrac\\pi{2}$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-28",
       "number": "28",
-      "problem": "Find the domain and range of each function.\n\n1. $y = \\arctan(2x) + \\dfrac{\\pi}{4}$\n\n2. $y = 3\\arccos(x) - 1$\n\n3. $y = -\\arcsin(x - 2)$\n\n4. $y = \\arctan\\left(\\dfrac{x}{2}\\right)$",
+      "problem": "Find the domain and range of each function.\n\n1. $y = \\arctan(2x) + \\dfrac\\pi{4}$\n\n2. $y = 3\\arccos(x) - 1$\n\n3. $y = -\\arcsin(x - 2)$\n\n4. $y = \\arctan\\left(\\dfracx2\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-29",
       "number": "29",
-      "problem": "Use a calculator to find each value. Round to four decimal places.\n\n1. $\\sin^{-1}(0.4)$\n\n2. $\\cos^{-1}(-0.75)$\n\n3. $\\tan^{-1}(3.2)$\n\n4. $\\arcsin(-0.62)$\n\n5. $\\arccos(0.28)$\n\n6. $\\arctan(-1.5)$",
+      "problem": "Use a calculator to find each value. Round to four decimal places.\n\n1. $\\sin^-1(0.4)$\n\n2. $\\cos^-1(-0.75)$\n\n3. $\\tan^-1(3.2)$\n\n4. $\\arcsin(-0.62)$\n\n5. $\\arccos(0.28)$\n\n6. $\\arctan(-1.5)$",
       "variant": "technology"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-30",
       "number": "30",
-      "problem": "Graph $y = \\sin x$ and $y = \\sin^{-1}x$ together. Verify that they \nare reflections of each other across $y = x$.",
+      "problem": "Graph $y = \\sin x$ and $y = \\sin^-1x$ together. Verify that they \nare reflections of each other across $y = x$.",
       "variant": "technology"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-31",
       "number": "31",
-      "problem": "Graph $y = \\cos^{-1}x$ and $y = \\sin^{-1}x$ together. Find where \n$\\cos^{-1}x = \\sin^{-1}x$.\n\n*{Conceptual Exercises",
+      "problem": "Graph $y = \\cos^-1x$ and $y = \\sin^-1x$ together. Find where \n$\\cos^-1x = \\sin^-1x$.\n\n*Conceptual Exercises",
       "variant": "technology"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-32",
       "number": "32",
-      "problem": "True or False? Justify your answer.\n\n1. $\\sin^{-1}(2)$ is defined.\n\n2. $\\tan^{-1}(1000)$ is defined.\n\n3. $\\sin^{-1}(\\sin\\pi) = \\pi$\n\n4. $\\cos(\\cos^{-1}(0.5)) = 0.5$\n\n5. The range of $y = \\arctan x$ includes $\\dfrac{\\pi}{2}$.\n\n6. $\\sin^{-1}(-x) = -\\sin^{-1}x$ for all $x$ in $[-1, 1]$.",
+      "problem": "True or False? Justify your answer.\n\n1. $\\sin^-1(2)$ is defined.\n\n2. $\\tan^-1(1000)$ is defined.\n\n3. $\\sin^-1(\\sin\\pi) = \\pi$\n\n4. $\\cos(\\cos^-1(0.5)) = 0.5$\n\n5. The range of $y = \\arctan x$ includes $\\dfrac\\pi{2}$.\n\n6. $\\sin^-1(-x) = -\\sin^-1x$ for all $x$ in $[-1, 1]$.",
       "variant": "conceptual"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-33",
       "number": "33",
-      "problem": "Explain why:\n\n1. The domain of $\\sin^{-1}x$ must be restricted to $[-1, 1]$.\n\n2. The range of $\\cos^{-1}x$ is $[0, \\pi]$ rather than $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$.\n\n3. $\\arctan x$ has horizontal asymptotes but $\\arcsin x$ does not.\n\n4. $\\sin^{-1}x \\neq \\dfrac{1}{\\sin x}$.\n\n*{Error Analysis",
+      "problem": "Explain why:\n\n1. The domain of $\\sin^-1x$ must be restricted to $[-1, 1]$.\n\n2. The range of $\\cos^-1x$ is $[0, \\pi]$ rather than $\\left[-\\dfrac\\pi2, \\dfrac\\pi2\\right]$.\n\n3. $\\arctan x$ has horizontal asymptotes but $\\arcsin x$ does not.\n\n4. $\\sin^-1x \\neq \\dfrac1{\\sin x}$.\n\n*Error Analysis",
       "variant": "conceptual"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-34",
       "number": "34",
-      "problem": "Describe and correct the error.\n\nFinding $\\sin^{-1}\\left(\\sin\\dfrac{5\\pi}{4}\\right)$:\n> \"Since $\\sin$ and $\\sin^{-1}$ are inverses, $\\sin^{-1}\\left(\\sin\\dfrac{5\\pi}{4}\\right) = \\dfrac{5\\pi}{4}$\" ✗",
+      "problem": "Describe and correct the error.\n\nFinding $\\sin^-1\\left(\\sin\\dfrac5\\pi4\\right)$:\n> \"Since $\\sin$ and $\\sin^{-1}$ are inverses, $\\sin^-1\\left(\\sin\\dfrac5\\pi4\\right) = \\dfrac5\\pi{4}$\" ✗",
       "variant": "error-analysis"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-35",
       "number": "35",
-      "problem": "Describe and correct the error.\n\nFinding $\\cos\\left(\\sin^{-1}\\dfrac{3}{5}\\right)$:\n> \"$\\cos\\left(\\sin^{-1}\\dfrac{3}{5}\\right) = \\dfrac{1}{\\sin\\left(\\sin^{-1}\\dfrac{3}{5}\\right)} = \\dfrac{1}{3/5} = \\dfrac{5}{3}$\" ✗",
+      "problem": "Describe and correct the error.\n\nFinding $\\cos\\left(\\sin^-1\\dfrac35\\right)$:\n> \"$\\cos\\left(\\sin^-1\\dfrac35\\right) = \\dfrac1{\\sin\\left(\\sin^-1\\dfrac35\\right)} = \\dfrac13/5 = \\dfrac5{3}$\" ✗",
       "variant": "error-analysis"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-36",
       "number": "36",
-      "problem": "Describe and correct the error.\n\nFinding $\\cos^{-1}\\left(\\cos\\dfrac{7\\pi}{4}\\right)$:\n> \"Since cosine and arccosine are inverses, $\\cos^{-1}\\left(\\cos\\dfrac{7\\pi}{4}\\right) = \\dfrac{7\\pi}{4}$\" ✗\n*{Mixed Practice",
+      "problem": "Describe and correct the error.\n\nFinding $\\cos^-1\\left(\\cos\\dfrac7\\pi4\\right)$:\n> \"Since cosine and arccosine are inverses, $\\cos^-1\\left(\\cos\\dfrac7\\pi4\\right) = \\dfrac7\\pi{4}$\" ✗\n*Mixed Practice",
       "variant": "error-analysis"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-37",
       "number": "37",
-      "problem": "Find the exact value. Use any appropriate method.\n\n1. $\\arcsin\\left(\\sin\\dfrac{\\pi}{7}\\right)$\n\n2. $\\cos\\left(\\tan^{-1}\\dfrac{5}{12}\\right)$\n\n3. $\\tan^{-1}(\\tan 1)$\n\n4. $\\sin\\left(\\cos^{-1}\\dfrac{8}{17}\\right)$\n\n5. $\\cos^{-1}\\left(\\cos\\dfrac{9\\pi}{4}\\right)$\n\n6. $\\arctan\\left(\\tan\\left(-\\dfrac{\\pi}{6}\\right)\\right)$",
+      "problem": "Find the exact value. Use any appropriate method.\n\n1. $\\arcsin\\left(\\sin\\dfrac\\pi7\\right)$\n\n2. $\\cos\\left(\\tan^-1\\dfrac512\\right)$\n\n3. $\\tan^-1(\\tan 1)$\n\n4. $\\sin\\left(\\cos^-1\\dfrac817\\right)$\n\n5. $\\cos^-1\\left(\\cos\\dfrac9\\pi4\\right)$\n\n6. $\\arctan\\left(\\tan\\left(-\\dfrac\\pi6\\right)\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-38",
       "number": "38",
-      "problem": "Find the exact value.\n\n1. $\\tan\\left(\\arcsin\\dfrac{7}{25}\\right)$\n\n2. $\\sin^{-1}\\left(\\cos\\dfrac{\\pi}{3}\\right)$\n\n3. $\\cos\\left(\\arctan(-2)\\right)$\n\n4. $\\sin\\left(\\arccos\\left(-\\dfrac{5}{13}\\right)\\right)$\n\n5. $\\tan\\left(\\arccos 0\\right)$\n\n6. $\\cot\\left(\\arcsin\\dfrac{3}{5}\\right)$",
+      "problem": "Find the exact value.\n\n1. $\\tan\\left(\\arcsin\\dfrac725\\right)$\n\n2. $\\sin^-1\\left(\\cos\\dfrac\\pi3\\right)$\n\n3. $\\cos\\left(\\arctan(-2)\\right)$\n\n4. $\\sin\\left(\\arccos\\left(-\\dfrac513\\right)\\right)$\n\n5. $\\tan\\left(\\arccos 0\\right)$\n\n6. $\\cot\\left(\\arcsin\\dfrac35\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-39",
       "number": "39",
-      "problem": "Simplify the expression.\n\n1. $\\sin\\left(\\arctan x + \\arctan\\dfrac{1}{x}\\right)$ for $x > 0$\n\n2. $\\cos\\left(\\arcsin x - \\arccos x\\right)$\n\n3. $\\tan\\left(2\\arctan x\\right)$\n\n4. $\\sin\\left(\\arccos x + \\arcsin x\\right)$",
+      "problem": "Simplify the expression.\n\n1. $\\sin\\left(\\arctan x + \\arctan\\dfrac1x\\right)$ for $x > 0$\n\n2. $\\cos\\left(\\arcsin x - \\arccos x\\right)$\n\n3. $\\tan\\left(2\\arctan x\\right)$\n\n4. $\\sin\\left(\\arccos x + \\arcsin x\\right)$",
       "variant": "regular"
     },
     {
@@ -581,7 +581,7 @@
       "type": "exercise",
       "id": "ch06-sec05-ex-45",
       "number": "45",
-      "problem": "A photographer takes a picture of a 6-foot-tall painting. The camera is positioned 4 feet below the bottom edge of the painting. At horizontal distance $x$ from the painting:\n\n1. Write the angle $\\theta$ subtended by the painting as a function of $x$. \n [Hint: $\\theta = \\arctan\\dfrac{10}{x} - \\arctan\\dfrac{4}{x}$]\n\n2. Find $\\theta$ when $x = 8$ feet.",
+      "problem": "A photographer takes a picture of a 6-foot-tall painting. The camera is positioned 4 feet below the bottom edge of the painting. At horizontal distance $x$ from the painting:\n\n1. Write the angle $\\theta$ subtended by the painting as a function of $x$. \n [Hint: $\\theta = \\arctan\\dfrac10x - \\arctan\\dfrac4{x}$]\n\n2. Find $\\theta$ when $x = 8$ feet.",
       "variant": "regular"
     },
     {
@@ -609,7 +609,7 @@
       "type": "exercise",
       "id": "ch06-sec05-ex-49",
       "number": "49",
-      "problem": "You are standing $x$ feet from a movie screen that is 20 feet tall with its bottom edge 5 feet above your eye level.\n\n1. Write the viewing angle $\\theta$ subtended by the screen as a function of $x$.\n [Hint: $\\theta = \\arctan\\dfrac{25}{x} - \\arctan\\dfrac{5}{x}$]\n\n2. Find $\\theta$ when $x = 30$ feet.\n\n3. Use a calculator to find the value of $x$ that maximizes $\\theta$.",
+      "problem": "You are standing $x$ feet from a movie screen that is 20 feet tall with its bottom edge 5 feet above your eye level.\n\n1. Write the viewing angle $\\theta$ subtended by the screen as a function of $x$.\n [Hint: $\\theta = \\arctan\\dfrac25x - \\arctan\\dfrac5{x}$]\n\n2. Find $\\theta$ when $x = 30$ feet.\n\n3. Use a calculator to find the value of $x$ that maximizes $\\theta$.",
       "variant": "regular"
     },
     {
@@ -630,42 +630,42 @@
       "type": "exercise",
       "id": "ch06-sec05-ex-52",
       "number": "52",
-      "problem": "The inverse cotangent function $y = \\text{arccot}\\, x$ (or $\\cot^{-1}x$) is defined with range $(0, \\pi)$. Find the exact value.\n\n1. $\\text{arccot}(1)$\n\n2. $\\text{arccot}(\\sqrt{3})$\n\n3. $\\text{arccot}(-1)$",
+      "problem": "The inverse cotangent function $y = \\textarccot\\, x$ (or $\\cot^-1x$) is defined with range $(0, \\pi)$. Find the exact value.\n\n1. $\\textarccot(1)$\n\n2. $\\textarccot(\\sqrt3)$\n\n3. $\\textarccot(-1)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-53",
       "number": "53",
-      "problem": "The inverse secant function $y = \\text{arcsec}\\, x$ is defined for $|x| \\geq 1$ with range $[0, \\pi]$, $y \\neq \\dfrac{\\pi}{2}$. Find the exact value.\n\n1. $\\text{arcsec}(2)$\n\n2. $\\text{arcsec}(\\sqrt{2})$\n\n3. $\\text{arcsec}(-2)$",
+      "problem": "The inverse secant function $y = \\textarcsec\\, x$ is defined for $|x| \\geq 1$ with range $[0, \\pi]$, $y \\neq \\dfrac\\pi{2}$. Find the exact value.\n\n1. $\\textarcsec(2)$\n\n2. $\\textarcsec(\\sqrt2)$\n\n3. $\\textarcsec(-2)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-54",
       "number": "54",
-      "problem": "The inverse cosecant function $y = \\text{arccsc}\\, x$ is defined for $|x| \\geq 1$ with range $\\left[-\\dfrac{\\pi}{2}, \\dfrac{\\pi}{2}\\right]$, $y \\neq 0$. Find the exact value.\n\n1. $\\text{arccsc}(2)$\n\n2. $\\text{arccsc}(-\\sqrt{2})$\n\n3. $\\text{arccsc}\\left(\\dfrac{2\\sqrt{3}}{3}\\right)$",
+      "problem": "The inverse cosecant function $y = \\textarccsc\\, x$ is defined for $|x| \\geq 1$ with range $\\left[-\\dfrac\\pi2, \\dfrac\\pi2\\right]$, $y \\neq 0$. Find the exact value.\n\n1. $\\textarccsc(2)$\n\n2. $\\textarccsc(-\\sqrt2)$\n\n3. $\\textarccsc\\left(\\dfrac{2\\sqrt3}3\\right)$",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-55",
       "number": "55",
-      "problem": "Prove that $\\sin^{-1}x + \\cos^{-1}x = \\dfrac{\\pi}{2}$ for all $x$ in $[-1, 1]$.",
+      "problem": "Prove that $\\sin^-1x + \\cos^-1x = \\dfrac\\pi{2}$ for all $x$ in $[-1, 1]$.",
       "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-56",
       "number": "56",
-      "problem": "Find all solutions to $\\sin^{-1}x = \\cos^{-1}x$.",
+      "problem": "Find all solutions to $\\sin^-1x = \\cos^-1x$.",
       "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-57",
       "number": "57",
-      "problem": "Show that $\\tan^{-1}x + \\tan^{-1}\\dfrac{1}{x} = \\dfrac{\\pi}{2}$ for $x > 0$.",
+      "problem": "Show that $\\tan^-1x + \\tan^-1\\dfrac1x = \\dfrac\\pi{2}$ for $x > 0$.",
       "variant": "starred"
     },
     {
@@ -679,28 +679,28 @@
       "type": "exercise",
       "id": "ch06-sec05-ex-59",
       "number": "59",
-      "problem": "If $\\sin^{-1}x + \\sin^{-1}y = \\dfrac{\\pi}{2}$, express $y$ in terms of $x$.",
+      "problem": "If $\\sin^-1x + \\sin^-1y = \\dfrac\\pi{2}$, express $y$ in terms of $x$.",
       "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-60",
       "number": "60",
-      "problem": "Prove that $\\tan^{-1}\\dfrac{1}{2} + \\tan^{-1}\\dfrac{1}{3} = \\dfrac{\\pi}{4}$.\n[Hint: Use the tangent addition formula.]",
+      "problem": "Prove that $\\tan^-1\\dfrac12 + \\tan^-1\\dfrac13 = \\dfrac\\pi{4}$.\n[Hint: Use the tangent addition formula.]",
       "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-61",
       "number": "61",
-      "problem": "Evaluate $\\sin\\left(\\arcsin\\dfrac{3}{5} + \\arccos\\dfrac{5}{13}\\right)$.",
+      "problem": "Evaluate $\\sin\\left(\\arcsin\\dfrac35 + \\arccos\\dfrac513\\right)$.",
       "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ch06-sec05-ex-62",
       "number": "62",
-      "problem": "Prove that $2\\tan^{-1}x = \\cos^{-1}\\dfrac{1-x^2}{1+x^2}$ for $|x| \\leq 1$.",
+      "problem": "Prove that $2\\tan^-1x = \\cos^-1\\dfrac1-x^2{1+x^2}$ for $|x| \\leq 1$.",
       "variant": "starred"
     }
   ]

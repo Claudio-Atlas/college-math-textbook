@@ -411,47 +411,12 @@ class SectionParser:
 
     def _preprocess_strip(self, text: str) -> str:
         """Strip LaTeX commands that have no meaning in web output, BEFORE any parsing."""
-        # \renewcommand{...}{...} and \newcommand{...}{...} (with any number of args)
-        # Use brace-aware stripping for nested content
-        def _strip_renewcommand(t):
-            for cmd in ['\\renewcommand', '\\newcommand']:
-                while cmd in t:
-                    idx = t.index(cmd)
-                    pos = idx + len(cmd)
-                    # skip optional * 
-                    if pos < len(t) and t[pos] == '*':
-                        pos += 1
-                    # skip whitespace
-                    while pos < len(t) and t[pos] in ' \t\n':
-                        pos += 1
-                    # consume braced args (at least 2)
-                    args_consumed = 0
-                    while pos < len(t) and t[pos] == '{':
-                        end = find_matching_brace(t, pos)
-                        if end == -1:
-                            break
-                        pos = end
-                        args_consumed += 1
-                    # skip optional [nargs]
-                    if pos < len(t) and t[pos] == '[':
-                        bracket_end = t.find(']', pos)
-                        if bracket_end != -1:
-                            pos = bracket_end + 1
-                    # consume more braced args
-                    while pos < len(t) and t[pos] == '{':
-                        end = find_matching_brace(t, pos)
-                        if end == -1:
-                            break
-                        pos = end
-                        args_consumed += 1
-                    t = t[:idx] + t[pos:]
-            return t
-        text = _strip_renewcommand(text)
+        # \renewcommand{...}{...} (with any number of args)
+        # Matches \renewcommand{\arraystretch}{1.3} etc.
+        text = re.sub(r'\\renewcommand\s*\{[^}]*\}\s*\{[^}]*\}', '', text)
 
-        # \lettrine[opts]{X}{rest} → Xrest  OR  \lettrine[opts]X → X
+        # \lettrine[opts]{X}{rest} → Xrest
         text = re.sub(r'\\lettrine(?:\[[^\]]*\])*\{([^}])\}\{([^}]*)\}', r'\1\2', text)
-        text = re.sub(r'\\lettrine(?:\[[^\]]*\])*\{([^}])\}', r'\1', text)
-        text = re.sub(r'\\lettrine(?:\[[^\]]*\])*([A-Z])', r'\1', text)
 
         # \addcontentsline{...}{...}{...}
         text = re.sub(r'\\addcontentsline\{[^}]*\}\{[^}]*\}\{[^}]*\}', '', text)
@@ -465,14 +430,11 @@ class SectionParser:
         # \index{...}
         text = re.sub(r'\\index\{[^}]*\}', '', text)
 
-        # \textmu → μ
-        text = text.replace('\\textmu', 'μ')
-
         # {Atlas Press} as standalone fragment
         text = re.sub(r'\{Atlas Press\}', '', text)
 
-        # \textsuperscript{...} → <sup>content</sup>
-        text = re.sub(r'\\textsuperscript\{([^}]*)\}', r'<sup>\1</sup>', text)
+        # \textsuperscript{...} → content
+        text = re.sub(r'\\textsuperscript\{([^}]*)\}', r'\1', text)
 
         # \polylongdiv{...}{...} → placeholder
         text = re.sub(r'\\polylongdiv\{[^}]*\}\{[^}]*\}', '[polynomial long division]', text)
@@ -979,12 +941,8 @@ class SectionParser:
             number = f"{self.chapter_num}.{self.counters[block_type]}"
             block_id = f"{sec_prefix}-{block_type}-{number}"
         else:
-            # Use a counter even for non-numbered types to avoid duplicate IDs
-            if block_type not in self.counters:
-                self.counters[block_type] = 0
-            self.counters[block_type] += 1
             number = ""
-            block_id = f"{sec_prefix}-{block_type}-{self.counters[block_type]}"
+            block_id = f"{sec_prefix}-{block_type}"
 
         # Example: split problem/solution
         if block_type == "example":
@@ -1191,13 +1149,6 @@ class SectionParser:
                 pos += 1
             if pos >= len(text):
                 break
-
-            # Category headers: \subsection*{...}
-            subsec_match = re.match(r'\\subsection\*?\{([^}]+)\}\s*', text[pos:])
-            if subsec_match:
-                blocks.append({"type": "heading", "level": 3, "text": self._convert_text(subsec_match.group(1).strip())})
-                pos += subsec_match.end()
-                continue
 
             # Category headers (bold text or exercise* commands)
             bold_match = re.match(r'\\textbf\{([^}]+)\}\s*', text[pos:])
@@ -1422,11 +1373,8 @@ class SectionParser:
         text = self._convert_formatting_commands(text)
 
         # Step 11: Remove/convert remaining commands
-        # References — strip all cross-ref commands
-        text = re.sub(r'\\(?:cref|Cref|ref|pageref|eqref)\{[^}]*\}', '', text)
-        
-        # \textmu → μ
-        text = text.replace('\\textmu', 'μ')
+        # References
+        text = re.sub(r'\\(?:cref|Cref|ref)\{([^}]*)\}', r'[\1]', text)
 
         # Labels (remove)
         text = re.sub(r'\\label\{[^}]*\}', '', text)
@@ -1434,10 +1382,8 @@ class SectionParser:
         # Index (remove)
         text = re.sub(r'\\index\{[^}]*\}', '', text)
 
-        # Lettrine (all forms)
-        text = re.sub(r'\\lettrine(?:\[[^\]]*\])*\{([^}])\}\{([^}]*)\}', r'\1\2', text)
-        text = re.sub(r'\\lettrine(?:\[[^\]]*\])*\{([^}])\}', r'\1', text)
-        text = re.sub(r'\\lettrine(?:\[[^\]]*\])*([A-Z])', r'\1', text)
+        # Lettrine
+        text = re.sub(r'\\lettrine(?:\[[^\]]*\])*\{[^}]*\}\{([^}]*)\}', r'\1', text)
 
         # Colors
         text = re.sub(r'\\(?:color|textcolor)\{[^}]*\}\{?', '', text)
@@ -1567,10 +1513,6 @@ class SectionParser:
         # {,} → , (LaTeX thousand separator)
         text = text.replace('{,}', ',')
 
-        # Strip remaining orphaned braces that aren't in math
-        # (e.g., {\bfseries text} → after command stripping, left with {text})
-        text = re.sub(r'(?<!\$)\{([^{}$]+)\}(?!\$)', r'\1', text)
-
         # Strip isolated stray closing braces (LaTeX artifacts) but NOT inside math
         # Only strip } that follows a word char and precedes punctuation/space,
         # and is NOT inside $...$ or $$...$$
@@ -1602,13 +1544,11 @@ class SectionParser:
                     i += 1
                     continue
                 elif t[i] == '}' and not in_math and not in_display:
-                    # Check if it's a stray brace (after word/formatting char, before punct/space/end)
-                    if i > 0 and result and result[-1]:
-                        last_char = result[-1][-1:]
-                        if last_char.isalpha() or last_char in '*`_)':
-                            if i + 1 >= len(t) or t[i+1] in ' \t\n),.;:!?-':
-                                i += 1  # skip stray brace
-                                continue
+                    # Check if it's a stray brace (after word char, before punct/space)
+                    if i > 0 and result and result[-1] and result[-1][-1:].isalpha():
+                        if i + 1 >= len(t) or t[i+1] in ' \t\n),.;:!?':
+                            i += 1  # skip stray brace
+                            continue
                 result.append(t[i])
                 i += 1
             return ''.join(result)
