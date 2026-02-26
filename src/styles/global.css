@@ -1118,3 +1118,47 @@ button:active {
 .answer-back-link:hover {
   color: var(--ax-violet);
 }
+
+/* ─── Dark Mode SVG Figure Inversion ────────────────────── */
+/* SVGs have dark axes/labels invisible against dark bg */
+:root:not([data-theme="light"]) img[src$=".svg"],
+:root:not([data-theme="light"]) img[src*="/figures/"] {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) img[src$=".svg"],
+  :root:not([data-theme]) img[src*="/figures/"] {
+    filter: none;
+  }
+}
+
+/* ─── Figure Fallback Placeholder ───────────────────────── */
+.figure-fallback {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 160px;
+  padding: 2rem;
+  border-radius: var(--ax-card-radius);
+  border: 1px dashed var(--ax-border);
+  background: var(--ax-card-bg);
+  color: var(--ax-text-muted);
+  font-family: var(--ax-font-sans);
+  font-size: 0.875rem;
+  text-align: center;
+  gap: 0.5rem;
+}
+
+.figure-fallback-icon {
+  font-size: 1.5rem;
+  opacity: 0.5;
+}
+
+.figure-fallback-caption {
+  font-size: 0.8rem;
+  color: var(--ax-text-secondary);
+  font-style: italic;
+  margin-top: 0.25rem;
+}

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import type { ContentBlock, ExerciseBlock, Edition } from '../../lib/types';
 import { RichText } from './RichText';
 import { Definition } from '../environments/Definition';
@@ -131,22 +132,7 @@ function BlockRenderer({ block, isFirstParagraph = false }: { block: ContentBloc
       
     case 'figure':
       return (
-        <figure id={block.id} className="my-6">
-          <img 
-            src={block.src} 
-            alt={block.alt || block.caption}
-            className="mx-auto max-w-full rounded-lg"
-            style={{ boxShadow: 'var(--ax-card-shadow)', cursor: 'zoom-in' }}
-            onClick={() => {
-              window.dispatchEvent(new CustomEvent('ax:lightbox-open', { detail: { figureId: block.id } }));
-            }}
-          />
-          {block.caption && (
-            <figcaption className="text-center text-sm mt-2" style={{ color: 'var(--ax-text-secondary)' }}>
-              <RichText text={block.caption} />
-            </figcaption>
-          )}
-        </figure>
+        <FigureBlock key={block.id || index} block={block} />
       );
       
     case 'exercise':
@@ -346,4 +332,49 @@ function BlockRenderer({ block, isFirstParagraph = false }: { block: ContentBloc
       console.warn('Unknown content block type:', (block as { type: string }).type);
       return null;
   }
+}
+
+function FigureBlock({ block }: { block: any }) {
+  const [failed, setFailed] = useState(false);
+
+  if (failed) {
+    return (
+      <figure id={block.id} className="my-6">
+        <div className="figure-fallback">
+          <span className="figure-fallback-icon">🖼️</span>
+          <span>Figure not available</span>
+          {block.caption && (
+            <span className="figure-fallback-caption">
+              {block.caption.replace(/\$[^$]*\$/g, '[math]')}
+            </span>
+          )}
+        </div>
+        {block.caption && (
+          <figcaption className="text-center text-sm mt-2" style={{ color: 'var(--ax-text-secondary)' }}>
+            <RichText text={block.caption} />
+          </figcaption>
+        )}
+      </figure>
+    );
+  }
+
+  return (
+    <figure id={block.id} className="my-6">
+      <img
+        src={block.src}
+        alt={block.alt || block.caption}
+        className="mx-auto max-w-full rounded-lg"
+        style={{ boxShadow: 'var(--ax-card-shadow)', cursor: 'zoom-in' }}
+        onError={() => setFailed(true)}
+        onClick={() => {
+          window.dispatchEvent(new CustomEvent('ax:lightbox-open', { detail: { figureId: block.id } }));
+        }}
+      />
+      {block.caption && (
+        <figcaption className="text-center text-sm mt-2" style={{ color: 'var(--ax-text-secondary)' }}>
+          <RichText text={block.caption} />
+        </figcaption>
+      )}
+    </figure>
+  );
 }

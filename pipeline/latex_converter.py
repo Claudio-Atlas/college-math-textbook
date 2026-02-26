@@ -1451,8 +1451,8 @@ class SectionParser:
             return store_math(m.group(0))
         text = re.sub(r'\$(?:[^$\\]|\\.)+?\$', save_inline, text)
 
-        # Step 6: Restore escaped dollars as literal $
-        text = text.replace('\x01DOLLAR\x01', '$')
+        # Step 6: Restore escaped dollars as \$ (MathJax-safe literal dollar)
+        text = text.replace('\x01DOLLAR\x01', '\\$')
 
         # Step 7: Convert lists inside text
         text = self._convert_inline_lists(text)
@@ -1626,7 +1626,10 @@ class SectionParser:
         text = re.sub(r'\x01MATH\d+\x01', '', text)
 
         # Restore any \x01DOLLAR\x01 that leaked through math blocks
-        text = text.replace('\x01DOLLAR\x01', '$')
+        text = text.replace('\x01DOLLAR\x01', '\\$')
+
+        # Convert any remaining markdown pipe tables to HTML tables
+        text = self._pipe_tables_to_html(text)
 
         # Cross-references: [fig:...], [sec:...], [ex:...], [thm:...] → strip brackets
         text = re.sub(r'\[(?:fig|sec|ex|thm|eq|tab|def):[^\]]*\]', '', text)
@@ -1796,17 +1799,49 @@ class SectionParser:
             body = re.sub(r'\\cline\{[^}]*\}\s*', '', body)
             rows = re.split(r'\\\\(?:\[[^\]]*\])?\s*', body)
 
-            md_lines = []
-            for row in rows:
+            html_rows = []
+            for i_row, row in enumerate(rows):
                 row = row.strip()
                 if not row:
                     continue
                 cells = [c.strip() for c in row.split('&')]
                 cells = [re.sub(r'\\multicolumn\{\d+\}\{[^}]*\}\{([^}]*)\}', r'\1', c) for c in cells]
-                md_lines.append("| " + " | ".join(cells) + " |")
+                tag = 'th' if i_row == 0 else 'td'
+                html_cells = ''.join(f'<{tag}>{c}</{tag}>' for c in cells)
+                html_rows.append(f'<tr>{html_cells}</tr>')
 
-            text = text[:m.start()] + '\n' + '\n'.join(md_lines) + '\n' + text[end_full:]
+            html_table = '<table>' + ''.join(html_rows) + '</table>'
+            text = text[:m.start()] + '\n' + html_table + '\n' + text[end_full:]
         return text
+
+    def _pipe_tables_to_html(self, text: str) -> str:
+        """Convert markdown pipe tables in text to HTML tables."""
+        lines = text.split('\n')
+        result = []
+        i = 0
+        while i < len(lines):
+            line = lines[i].strip()
+            if line.startswith('|') and line.endswith('|') and '|' in line[1:-1]:
+                # Collect consecutive pipe-table lines
+                table_lines = []
+                while i < len(lines) and lines[i].strip().startswith('|') and lines[i].strip().endswith('|'):
+                    stripped = lines[i].strip()
+                    # Skip separator lines like |---|---|
+                    if not re.match(r'^\|[\s\-:|]+\|$', stripped):
+                        table_lines.append(stripped)
+                    i += 1
+                # Convert to HTML
+                html_rows = []
+                for j, tl in enumerate(table_lines):
+                    cells = [c.strip() for c in tl.strip('|').split('|')]
+                    tag = 'th' if j == 0 else 'td'
+                    html_cells = ''.join(f'<{tag}>{c}</{tag}>' for c in cells)
+                    html_rows.append(f'<tr>{html_cells}</tr>')
+                result.append('<table>' + ''.join(html_rows) + '</table>')
+            else:
+                result.append(lines[i])
+                i += 1
+        return '\n'.join(result)
 
     def _convert_formatting_commands(self, text: str) -> str:
         """Convert \\textbf, \\emph, \\textit, etc. using brace-aware parsing."""

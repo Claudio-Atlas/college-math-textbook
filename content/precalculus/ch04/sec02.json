@@ -37,11 +37,11 @@
     },
     {
       "type": "paragraph",
-      "text": "Imagine investing $1 at 100% annual interest. How much do you have \nafter one year? It depends on how often the interest compounds."
+      "text": "Imagine investing \\$1 at 100% annual interest. How much do you have \nafter one year? It depends on how often the interest compounds."
     },
     {
       "type": "paragraph",
-      "text": "| **Compounding** | **$n$** | **Formula** | **Amount** |\n| Annually | 1 | $(1 + 1)^1$ | $2.00 |\n| Semiannually | 2 | $(1 + 0.5)^2$ | $2.25 |\n| Quarterly | 4 | $(1 + 0.25)^4$ | $2.4414... |\n| Monthly | 12 | $(1 + 1/12)^{12}$ | $2.6130... |\n| Daily | 365 | $(1 + 1/365)^{365}$ | $2.7146... |\n| Hourly | 8760 | $(1 + 1/8760)^{8760}$ | $2.7181... |\n| Every second | 31,536,000 | $\\cdots$ | $2.71828... |"
+      "text": "<table><tr><th>**Compounding**</th><th>**$n$**</th><th>**Formula**</th><th>**Amount**</th></tr><tr><td>Annually</td><td>1</td><td>$(1 + 1)^1$</td><td>\\$2.00</td></tr><tr><td>Semiannually</td><td>2</td><td>$(1 + 0.5)^2$</td><td>\\$2.25</td></tr><tr><td>Quarterly</td><td>4</td><td>$(1 + 0.25)^4$</td><td>\\$2.4414...</td></tr><tr><td>Monthly</td><td>12</td><td>$(1 + 1/12)^{12}$</td><td>\\$2.6130...</td></tr><tr><td>Daily</td><td>365</td><td>$(1 + 1/365)^{365}$</td><td>\\$2.7146...</td></tr><tr><td>Hourly</td><td>8760</td><td>$(1 + 1/8760)^{8760}$</td><td>\\$2.7181...</td></tr><tr><td>Every second</td><td>31,536,000</td><td>$\\cdots$</td><td>\\$2.71828...</td></tr></table>"
     },
     {
       "type": "paragraph",
@@ -59,7 +59,7 @@
       "type": "strategy",
       "id": "ch04-sec02-strategy-1",
       "title": "Discovering $e$ Through Compound Interest",
-      "content": "Imagine you deposit $1 in a bank that offers the unusual deal of 100% annual \ninterest. Your goal: maximize your balance by choosing how often to compound.\n\n**Complete the table and answer the questions.**\n\n| **Compounding** | **$n$** | **Calculation** | **Balance** |\n| Annually | 1 | $(1 + 1/1)^1$ | $2.00 |\n| Semiannually | 2 | $(1 + 1/2)^2$ | |\n| Quarterly | 4 | $(1 + 1/4)^4$ | |\n| Monthly | 12 | $(1 + 1/12)^{12}$ | |\n| Daily | 365 | $(1 + 1/365)^{365}$ | |\n| Hourly | 8760 | $(1 + 1/8760)^{8760}$ | |\n| Every second | 31,536,000 | $(1 + 1/n)^n$ | |\n\n**Questions:**\n\n1. As $n$ increases, what happens to the balance?\n\n2. Does the balance grow without bound, or approach a limit?\n\n3. What value does $(1 + 1/n)^n$ approach as $n \\to \\infty$?\n\n4. Why can't you earn infinitely more by compounding infinitely often?\n\n**The Discovery:** No matter how frequently you compound, your $1 \ncan never grow beyond approximately $2.718... in one year. This limiting \nvalue is the mathematical constant $e$."
+      "content": "Imagine you deposit \\$1 in a bank that offers the unusual deal of 100% annual \ninterest. Your goal: maximize your balance by choosing how often to compound.\n\n**Complete the table and answer the questions.**\n\n<table><tr><th>**Compounding**</th><th>**$n$**</th><th>**Calculation**</th><th>**Balance**</th></tr><tr><td>Annually</td><td>1</td><td>$(1 + 1/1)^1$</td><td>\\$2.00</td></tr><tr><td>Semiannually</td><td>2</td><td>$(1 + 1/2)^2$</td><td> </td></tr><tr><td>Quarterly</td><td>4</td><td>$(1 + 1/4)^4$</td><td> </td></tr><tr><td>Monthly</td><td>12</td><td>$(1 + 1/12)^{12}$</td><td> </td></tr><tr><td>Daily</td><td>365</td><td>$(1 + 1/365)^{365}$</td><td> </td></tr><tr><td>Hourly</td><td>8760</td><td>$(1 + 1/8760)^{8760}$</td><td> </td></tr><tr><td>Every second</td><td>31,536,000</td><td>$(1 + 1/n)^n$</td><td> </td></tr></table>\n\n**Questions:**\n\n1. As $n$ increases, what happens to the balance?\n\n2. Does the balance grow without bound, or approach a limit?\n\n3. What value does $(1 + 1/n)^n$ approach as $n \\to \\infty$?\n\n4. Why can't you earn infinitely more by compounding infinitely often?\n\n**The Discovery:** No matter how frequently you compound, your \\$1 \ncan never grow beyond approximately \\$2.718... in one year. This limiting \nvalue is the mathematical constant $e$."
     },
     {
       "type": "definition",
@@ -78,7 +78,7 @@
       "number": "4.1",
       "title": "Computing approximations to $e$",
       "problem": "Calculate $\\left(1 + \\frac{1}{n}\\right)^n$ for $n = 10, 100, 1000, 10000$ \nand observe convergence to $e$.",
-      "solution": "| $n$ | $\\left(1 + \\frac{1}{n}\\right)^n$ |\n| 10 | 2.5937424601 |\n| 100 | 2.7048138294 |\n| 1,000 | 2.7169239322 |\n| 10,000 | 2.7181459268 |\n| 100,000 | 2.7182682372 |\n| 1,000,000 | 2.7182804691 |\n\nThe values approach $e \\approx 2.71828$ from below, getting one more \naccurate decimal place roughly every two orders of magnitude."
+      "solution": "<table><tr><th>$n$</th><th>$\\left(1 + \\frac{1}{n}\\right)^n$</th></tr><tr><td>10</td><td>2.5937424601</td></tr><tr><td>100</td><td>2.7048138294</td></tr><tr><td>1,000</td><td>2.7169239322</td></tr><tr><td>10,000</td><td>2.7181459268</td></tr><tr><td>100,000</td><td>2.7182682372</td></tr><tr><td>1,000,000</td><td>2.7182804691</td></tr></table>\n\nThe values approach $e \\approx 2.71828$ from below, getting one more \naccurate decimal place roughly every two orders of magnitude."
     },
     {
       "type": "heading",
@@ -181,7 +181,7 @@
       "number": "4.3",
       "title": "Verifying the slope at $(0,1)$",
       "problem": "Use small values of $h$ to approximate $\\dfrac{e^h - 1}{h}$ and verify \nit approaches 1.",
-      "solution": "| $h$ | $\\dfrac{e^h - 1}{h}$ |\n| 0.1 | 1.05171 |\n| 0.01 | 1.00502 |\n| 0.001 | 1.00050 |\n| 0.0001 | 1.00005 |\n\nAs $h \\to 0$, the ratio approaches exactly 1, confirming the slope of \n$e^x$ at $x = 0$ is 1."
+      "solution": "<table><tr><th>$h$</th><th>$\\dfrac{e^h - 1}{h}$</th></tr><tr><td>0.1</td><td>1.05171</td></tr><tr><td>0.01</td><td>1.00502</td></tr><tr><td>0.001</td><td>1.00050</td></tr><tr><td>0.0001</td><td>1.00005</td></tr></table>\n\nAs $h \\to 0$, the ratio approaches exactly 1, confirming the slope of \n$e^x$ at $x = 0$ is 1."
     },
     {
       "type": "heading",
@@ -400,14 +400,14 @@
       "type": "exercise",
       "id": "ch04-sec02-ex-9",
       "number": "9",
-      "problem": "If $1 is invested at 100% annual interest, find the amount after 1 year \nwith:\n\n1. Quarterly compounding\n\n2. Monthly compounding\n\n3. Weekly compounding\n\n4. Continuous compounding",
+      "problem": "If \\$1 is invested at 100% annual interest, find the amount after 1 year \nwith:\n\n1. Quarterly compounding\n\n2. Monthly compounding\n\n3. Weekly compounding\n\n4. Continuous compounding",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-10",
       "number": "10",
-      "problem": "If $1000 is invested at 6% annual interest, find the amount after 10 \nyears with:\n\n1. Annual compounding\n\n2. Monthly compounding\n\n3. Daily compounding\n\n4. Continuous compounding",
+      "problem": "If \\$1000 is invested at 6% annual interest, find the amount after 10 \nyears with:\n\n1. Annual compounding\n\n2. Monthly compounding\n\n3. Daily compounding\n\n4. Continuous compounding",
       "variant": "regular"
     },
     {
@@ -581,21 +581,21 @@
       "type": "exercise",
       "id": "ch04-sec02-ex-32",
       "number": "32",
-      "problem": "Find the amount $A$ for each investment using $A = P(1 + r/n)^{nt}$.\n\n1. $P = $1000$, $r = 5\\%$, $n = 1$ (annual), $t = 10$ years\n\n2. $P = $1000$, $r = 5\\%$, $n = 4$ (quarterly), $t = 10$ years\n\n3. $P = $1000$, $r = 5\\%$, $n = 12$ (monthly), $t = 10$ years\n\n4. $P = $1000$, $r = 5\\%$, $n = 365$ (daily), $t = 10$ years",
+      "problem": "Find the amount $A$ for each investment using $A = P(1 + r/n)^{nt}$.\n\n1. $P = \\$1000$, $r = 5\\%$, $n = 1$ (annual), $t = 10$ years\n\n2. $P = \\$1000$, $r = 5\\%$, $n = 4$ (quarterly), $t = 10$ years\n\n3. $P = \\$1000$, $r = 5\\%$, $n = 12$ (monthly), $t = 10$ years\n\n4. $P = \\$1000$, $r = 5\\%$, $n = 365$ (daily), $t = 10$ years",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-33",
       "number": "33",
-      "problem": "Find the amount using continuous compounding $A = Pe^{rt}$.\n\n1. $P = $5000$, $r = 4\\%$, $t = 5$ years\n\n2. $P = $8000$, $r = 6\\%$, $t = 10$ years\n\n3. $P = $10000$, $r = 3.5\\%$, $t = 20$ years",
+      "problem": "Find the amount using continuous compounding $A = Pe^{rt}$.\n\n1. $P = \\$5000$, $r = 4\\%$, $t = 5$ years\n\n2. $P = \\$8000$, $r = 6\\%$, $t = 10$ years\n\n3. $P = \\$10000$, $r = 3.5\\%$, $t = 20$ years",
       "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ch04-sec02-ex-34",
       "number": "34",
-      "problem": "Compare discrete and continuous compounding. For $P = $2000$, $r = 5\\%$, \n$t = 15$ years, find the amount with:\n\n1. Annual compounding\n\n2. Quarterly compounding\n\n3. Monthly compounding\n\n4. Continuous compounding\n\n5. How much more does continuous yield than annual?",
+      "problem": "Compare discrete and continuous compounding. For $P = \\$2000$, $r = 5\\%$, \n$t = 15$ years, find the amount with:\n\n1. Annual compounding\n\n2. Quarterly compounding\n\n3. Monthly compounding\n\n4. Continuous compounding\n\n5. How much more does continuous yield than annual?",
       "variant": "regular"
     },
     {
@@ -788,7 +788,7 @@
       "type": "exercise",
       "id": "ch04-sec02-ex-58",
       "number": "58",
-      "problem": "For each scenario, write a continuous exponential model $A(t) = A_0 e^{kt}$ \nand answer the question.\n\n1. A population of 5000 grows at a continuous rate of 3% per year. \n Find the population after 10 years.\n\n2. An investment of $8000 earns 4.5% compounded continuously. \n Find the value after 15 years.\n\n3. A radioactive sample of 200 grams decays at a continuous rate of \n 2% per year. Find the amount remaining after 25 years.\n\n4. A hot object at 150°C cools in a 25°C room with $k = 0.08$. \n Find the temperature after 20 minutes.",
+      "problem": "For each scenario, write a continuous exponential model $A(t) = A_0 e^{kt}$ \nand answer the question.\n\n1. A population of 5000 grows at a continuous rate of 3% per year. \n Find the population after 10 years.\n\n2. An investment of \\$8000 earns 4.5% compounded continuously. \n Find the value after 15 years.\n\n3. A radioactive sample of 200 grams decays at a continuous rate of \n 2% per year. Find the amount remaining after 25 years.\n\n4. A hot object at 150°C cools in a 25°C room with $k = 0.08$. \n Find the temperature after 20 minutes.",
       "variant": "regular"
     },
     {
