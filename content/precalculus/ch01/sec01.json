@@ -153,7 +153,7 @@
       "number": "1.2",
       "title": "Evaluating functions",
       "problem": "Let $g(t) = \\dfrac{t - 1}{t + 2}$. Find each of the following.\n\n1. $g(5)$\n\n2. $g(-1)$\n\n3. $g(a^2)$\n\n4. $g(x + h) - g(x)$",
-      "solution": "1. $g(5) = \\dfrac{5 - 1}{5 + 2} = \\dfrac{4}{7}$\n\n2. $g(-1) = \\dfrac{-1 - 1}{-1 + 2} = \\dfrac{-2}{1} = -2$\n\n3. $g(a^2) = \\dfrac{a^2 - 1}{a^2 + 2}$\n \n Note that we simply replace every $t$ with $a^2$.\n\n4. We compute each term separately:\n $$\n g(x + h) = \\dfrac{(x + h) - 1}{(x + h) + 2} = \\dfrac{x + h - 1}{x + h + 2}\n $$\n $$\n g(x) = \\dfrac{x - 1}{x + 2}\n $$\n Therefore:\n align*\n g(x + h) - g(x) &= $\\dfrac{x + h - 1}{x + h + 2}$ - $\\dfrac{x - 1}{x + 2}$ \\$$6pt]\n &= \\dfrac{(x + h - 1)(x + 2) - (x - 1)(x + h + 2)}{(x + h + 2)(x + 2)}\n \\end{align*}\n Expanding the numerator:\n \\begin{align*}\n &(x + h - 1)(x + 2) = x^2 + 2x + hx + 2h - x - 2 \\\\\n &\\qquad = x^2 + x + hx + 2h - 2 \\$$4pt]\n &(x - 1)(x + h + 2) = x^2 + hx + 2x - x - h - 2 \\\\\n &\\qquad = x^2 + hx + x - h - 2\n \\end{align*}\n Subtracting:\n $$\n (x^2 + x + hx + 2h - 2) - (x^2 + hx + x - h - 2) = 3h\n $$\n Therefore:\n $$\n g(x + h) - g(x) = \\frac{3h}{(x + h + 2)(x + 2)}\n $$"
+      "solution": "1. $g(5) = \\dfrac{5 - 1}{5 + 2} = \\dfrac{4}{7}$\n\n2. $g(-1) = \\dfrac{-1 - 1}{-1 + 2} = \\dfrac{-2}{1} = -2$\n\n3. $g(a^2) = \\dfrac{a^2 - 1}{a^2 + 2}$\n \n Note that we simply replace every $t$ with $a^2$.\n\n4. We compute each term separately:\n $$\n g(x + h) = \\dfrac{(x + h) - 1}{(x + h) + 2} = \\dfrac{x + h - 1}{x + h + 2}\n $$\n $$\n g(x) = \\dfrac{x - 1}{x + 2}\n $$\n Therefore:\n $$\\begin{aligned}\n g(x + h) - g(x) &= \\dfrac{x + h - 1}{x + h + 2} - \\dfrac{x - 1}{x + 2} \\\\[6pt]\n &= \\dfrac{(x + h - 1)(x + 2) - (x - 1)(x + h + 2)}{(x + h + 2)(x + 2)}\n \\end{aligned}$$\n Expanding the numerator:\n $$\\begin{aligned}\n &(x + h - 1)(x + 2) = x^2 + 2x + hx + 2h - x - 2 \\\\\n &\\qquad = x^2 + x + hx + 2h - 2 \\\\[4pt]\n &(x - 1)(x + h + 2) = x^2 + hx + 2x - x - h - 2 \\\\\n &\\qquad = x^2 + hx + x - h - 2\n \\end{aligned}$$\n Subtracting:\n $$\n (x^2 + x + hx + 2h - 2) - (x^2 + hx + x - h - 2) = 3h\n $$\n Therefore:\n $$\n g(x + h) - g(x) = \\frac{3h}{(x + h + 2)(x + 2)}\n $$"
     },
     {
       "type": "example",
@@ -189,7 +189,7 @@
       "number": "1.4",
       "title": "Computing a difference quotient",
       "problem": "Find the difference quotient for $f(x) = x^2 - 3x$ and simplify.",
-      "solution": "We begin by computing $f(x + h)$:\n$$\\begin{aligned}\n f(x + h) &= (x + h)^2 - 3(x + h) \\\\\n &= x^2 + 2xh + h^2 - 3x - 3h\n\\end{aligned}$$\n\nNow we compute the difference quotient:\n$$\\begin{aligned}\n \\frac{f(x + h) - f(x)}{h} &= \\frac{(x^2 + 2xh + h^2 - 3x - 3h) - (x^2 - 3x)}{h} \\$$6pt]\n &= \\frac{x^2 + 2xh + h^2 - 3x - 3h - x^2 + 3x}{h} \\$$6pt]\n &= \\frac{2xh + h^2 - 3h}{h} \\$$6pt]\n &= \\frac{h(2x + h - 3)}{h} \\$$6pt]\n &= 2x + h - 3\n\\end{aligned}$$\n\nNotice that we could cancel the $h$ in the last step because we assumed \n$h \\neq 0$ in the definition of the difference quotient."
+      "solution": "We begin by computing $f(x + h)$:\n$$\\begin{aligned}\n f(x + h) &= (x + h)^2 - 3(x + h) \\\\\n &= x^2 + 2xh + h^2 - 3x - 3h\n\\end{aligned}$$\n\nNow we compute the difference quotient:\n$$\\begin{aligned}\n \\frac{f(x + h) - f(x)}{h} &= \\frac{(x^2 + 2xh + h^2 - 3x - 3h) - (x^2 - 3x)}{h} \\\\[6pt]\n &= \\frac{x^2 + 2xh + h^2 - 3x - 3h - x^2 + 3x}{h} \\\\[6pt]\n &= \\frac{2xh + h^2 - 3h}{h} \\\\[6pt]\n &= \\frac{h(2x + h - 3)}{h} \\\\[6pt]\n &= 2x + h - 3\n\\end{aligned}$$\n\nNotice that we could cancel the $h$ in the last step because we assumed \n$h \\neq 0$ in the definition of the difference quotient."
     },
     {
       "type": "example",
@@ -262,7 +262,7 @@
     },
     {
       "type": "paragraph",
-      "text": "A familiar and important piecewise function is the \n**absolute value function**:\n$$\n |x| ="
+      "text": "A familiar and important piecewise function is the \n**absolute value function**:\n$$\n |x| = \\begin{cases}\n    x & \\text{if } x \\ge 0 \\\\\n    -x & \\text{if } x < 0\n\\end{cases}\n$$\n\nThe absolute value of $x$ is the distance from $x$ to zero on the number line. It is always nonnegative."
     },
     {
       "type": "paragraph",
@@ -327,7 +327,7 @@
       "type": "exercise",
       "id": "ex-1.1-5",
       "number": "5",
-      "problem": "True or False? Justify your answer.\n\n1. The range of a function is always a subset of the real numbers.\n\n2. If $(a, b)$ is on the graph of $f$, then $f(a) = b$.\n\n3. The function $f(x) = |x|$ can be written as a piecewise function.\n\n4. A function can have two different inputs that produce the same output.\n\n5. Every set of ordered pairs defines a function.\n\n%─────────────────────────────────────────────────────────\n% 3. EVALUATING FUNCTIONS - Basic\n%─────────────────────────────────────────────────────────\n\n**Evaluating Functions**",
+      "problem": "True or False? Justify your answer.\n\n1. The range of a function is always a subset of the real numbers.\n\n2. If $(a, b)$ is on the graph of $f$, then $f(a) = b$.\n\n3. The function $f(x) = |x|$ can be written as a piecewise function.\n\n4. A function can have two different inputs that produce the same output.\n\n5. Every set of ordered pairs defines a function.\n\n\n**Evaluating Functions**",
       "variant": "conceptual",
       "hint": null,
       "answer": null
@@ -715,7 +715,7 @@
       "type": "exercise",
       "id": "ex-1.1-48",
       "number": "48",
-      "problem": "Write a piecewise formula for each function.\n\n1. $f(x) = |x - 2|$\n\n2. $g(x) = |3x + 1|$\n\n3. A parking garage charges $5 for the first hour or fraction \n thereof, and $3 for each additional hour or fraction thereof.\n\n4. Income tax: 10\\% on income up to $10,000; 15\\% on income between \n $10,000 and $40,000; 25\\% on income over $40,000.",
+      "problem": "Write a piecewise formula for each function.\n\n1. $f(x) = |x - 2|$\n\n2. $g(x) = |3x + 1|$\n\n3. A parking garage charges $5 for the first hour or fraction \n thereof, and $3 for each additional hour or fraction thereof.\n\n4. Income tax: 10% on income up to $10,000; 15% on income between \n $10,000 and $40,000; 25% on income over $40,000.",
       "variant": "regular",
       "hint": null,
       "answer": null
@@ -880,7 +880,7 @@
       "type": "exercise",
       "id": "ex-1.1-65",
       "number": "65",
-      "problem": "Use a graphing utility to graph each function and find all \nvalues of $x$ where $f(x) = 2$.\n\n1. $f(x) = x^2 - 3$\n\n2. $f(x) = |x - 1| + 1$\n\n3. $f(x) = \\sqrt{x + 3}$\n\n4. $f(x) = x^3 - x$\n\n%─────────────────────────────────────────────────────────\n% 10. ERROR ANALYSIS\n%─────────────────────────────────────────────────────────\n\n**Error Analysis**",
+      "problem": "Use a graphing utility to graph each function and find all \nvalues of $x$ where $f(x) = 2$.\n\n1. $f(x) = x^2 - 3$\n\n2. $f(x) = |x - 1| + 1$\n\n3. $f(x) = \\sqrt{x + 3}$\n\n4. $f(x) = x^3 - x$\n\n\n**Error Analysis**",
       "variant": "tech",
       "hint": null,
       "answer": null
@@ -907,7 +907,7 @@
       "type": "exercise",
       "id": "ex-1.1-68",
       "number": "68",
-      "problem": "Describe and correct the error.\n\n**(c)** Find the difference quotient for $f(x) = x^2$.\nquote\n$\\dfrac{f(x+h) - f(x)}{h} = \\dfrac{(x+h)^2 - x^2}{h} = \\dfrac{x^2 + h^2 - x^2}{h} = \\dfrac{h^2}{h} = h$ \nquote\n\n%─────────────────────────────────────────────────────────\n% 11. CHALLENGE PROBLEMS\n%─────────────────────────────────────────────────────────\n\n**Challenge Problems**",
+      "problem": "Describe and correct the error.\n\n**(c)** Find the difference quotient for $f(x) = x^2$.\nquote\n$\\dfrac{f(x+h) - f(x)}{h} = \\dfrac{(x+h)^2 - x^2}{h} = \\dfrac{x^2 + h^2 - x^2}{h} = \\dfrac{h^2}{h} = h$ \nquote\n\n\n**Challenge Problems**",
       "variant": "error",
       "hint": null,
       "answer": null

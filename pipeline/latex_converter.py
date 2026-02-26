@@ -952,20 +952,8 @@ class LatexConverter:
         # Handle escaped dollar signs \$ (literal $) before ANY math protection
         text = text.replace('\\$', '__ESCAPED_DOLLAR__')
         
-        # Protect display math $$...$$ and \[...\]
-        text = re.sub(r'\$\$.*?\$\$', save_math, text, flags=re.DOTALL)
-        # Handle \[...\] with nested environments first (greedy enough to capture \begin{cases}...\end{cases} etc.)
-        text = re.sub(r'\\\[(?:(?!\\\]).)*\\end\{[^}]+\}(?:(?!\\\]).)*\\\]', save_math, text, flags=re.DOTALL)
-        # Then handle simple \[...\]
-        text = re.sub(r'\\\[.*?\\\]', save_math, text, flags=re.DOTALL)
-        
-        # Protect inline math $...$
-        text = re.sub(r'\$[^$]+?\$', save_math, text)
-        
-        # Restore escaped dollars
-        text = text.replace('__ESCAPED_DOLLAR__', '$')
-        
-        # Protect align/equation environments (convert to display math)
+        # Protect align/equation environments FIRST (before \[...\] handling)
+        # so that \\[8pt] spacing inside align blocks doesn't get caught
         def convert_align(match):
             content = match.group(1)
             idx = len(math_blocks)
@@ -974,6 +962,18 @@ class LatexConverter:
         
         text = re.sub(r'\\begin\{align\*?\}(.*?)\\end\{align\*?\}', convert_align, text, flags=re.DOTALL)
         text = re.sub(r'\\begin\{equation\*?\}(.*?)\\end\{equation\*?\}', convert_align, text, flags=re.DOTALL)
+        
+        # Protect display math $$...$$ and \[...\]
+        text = re.sub(r'\$\$.*?\$\$', save_math, text, flags=re.DOTALL)
+        # Handle \[...\] — use negative lookbehind to avoid matching \\[8pt] (line break with spacing)
+        text = re.sub(r'(?<!\\)\\\[(?:(?!\\\]).)*\\end\{[^}]+\}(?:(?!\\\]).)*\\\]', save_math, text, flags=re.DOTALL)
+        text = re.sub(r'(?<!\\)\\\[.*?(?<!\\)\\\]', save_math, text, flags=re.DOTALL)
+        
+        # Protect inline math $...$
+        text = re.sub(r'\$[^$]+?\$', save_math, text)
+        
+        # Restore escaped dollars
+        text = text.replace('__ESCAPED_DOLLAR__', '$')
         
         # Handle enumerate/itemize inside content (convert to markdown-style lists)
         def convert_list(match):
@@ -1144,8 +1144,9 @@ class LatexConverter:
         text = re.sub(r'__MATH_BLOCK_(\d+)__', lambda m: math_blocks[int(m.group(1))] if int(m.group(1)) < len(math_blocks) else '', text)
         
         # Safety: convert any remaining \[...\] to $$...$$ that weren't caught by regex
-        text = re.sub(r'\\\[', '$$', text)
-        text = re.sub(r'\\\]', '$$', text)
+        # Use negative lookbehind to avoid mangling \\[8pt] line breaks inside math
+        text = re.sub(r'(?<!\\)\\\[', '$$', text)
+        text = re.sub(r'(?<!\\)\\\]', '$$', text)
         
         # Safety: strip any remaining \hline (cosmetic table rules)
         text = text.replace('\\hline', '')
