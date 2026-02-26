@@ -54,7 +54,7 @@
     {
       "type": "figure",
       "id": "fig:focus-directrix",
-      "src": "/figures/precalculus/fig-focus-directrix.svg",
+      "src": "/figures/precalculus/ch10/fig-focus-directrix.svg",
       "caption": "The focus-directrix definition of conics. For each conic, $P$ is a\npoint on the curve, $F$ is the focus, and the dashed line is the directrix.\nThe ratio $PF/PD$ equals the eccentricity $e$. When $e < 1$, points stay\ncloser to the focus than the directrix (ellipse). When $e = 1$, distances\nare equal (parabola). When $e > 1$, points are farther from the directrix\nthan the focus (hyperbola).",
       "alt": "The focus-directrix definition of conics. For each conic, $P$ is a\npoint on the curve, $F$ is the focus, and the dashed line is the directrix.\nThe ratio $PF/PD$ equals the eccentricity $e$. When $e < 1$, points stay\ncloser to the focus than the directrix (ellipse). When $e = 1$, distances\nare equal (parabola). When $e > 1$, points are farther from the directrix\nthan the focus (hyperbola).",
       "tikz": true
@@ -79,7 +79,7 @@
     {
       "type": "figure",
       "id": "fig:polar-derivation",
-      "src": "/figures/precalculus/fig-polar-derivation.svg",
+      "src": "/figures/precalculus/ch10/fig-polar-derivation.svg",
       "caption": "Deriving the polar equation. The focus $F$ is at the pole, and the\ndirectrix is the vertical line $x = p$ at distance $p$ from the pole. For point\n$P = (r, \\theta)$, the distance to the focus is $r$, and the perpendicular\ndistance to the directrix is $p - r\\cos\\theta$.",
       "alt": "Deriving the polar equation. The focus $F$ is at the pole, and the\ndirectrix is the vertical line $x = p$ at distance $p$ from the pole. For point\n$P = (r, \\theta)$, the distance to the focus is $r$, and the perpendicular\ndistance to the directrix is $p - r\\cos\\theta$.",
       "tikz": true
@@ -149,7 +149,7 @@
       "number": "10.1",
       "title": "Identifying a Conic from Its Polar Equation",
       "problem": "Identify the conic given by each equation and describe its features.\n\n**(a)** $\\displaystyle r = \\frac{15}{3 - 2\\cos\\theta}$\n\n**(b)** $\\displaystyle r = \\frac{6}{2 + 2\\sin\\theta}$\n\n**(c)** $\\displaystyle r = \\frac{12}{2 - 3\\cos\\theta}$",
-      "solution": ""
+      "solution": "To identify the conic, we first convert each equation to standard form\nby dividing numerator and denominator so the constant term in the\ndenominator is 1.\n\n**(a)** Divide numerator and denominator by 3:\n$$\nr = \\frac{15}{3 - 2\\cos\\theta} = \\frac{5}{1 - \\frac{2}{3}\\cos\\theta}\n$$\nHere $e = \\frac{2}{3} < 1$, so this is an **ellipse**. The form\n$1 - e\\cos\\theta$ indicates the directrix is to the left of the pole.\nSince $ep = 5$ and $e = \\frac{2}{3}$, we have $p = \\frac{15}{2}$.\n\n**(b)** Divide by 2:\n$$\nr = \\frac{6}{2 + 2\\sin\\theta} = \\frac{3}{1 + \\sin\\theta}\n$$\nHere $e = 1$, so this is a **parabola**. The form $1 + e\\sin\\theta$\nindicates the directrix is above the pole at $y = 3$.\n\n**(c)** Divide by 2:\n$$\nr = \\frac{12}{2 - 3\\cos\\theta} = \\frac{6}{1 - \\frac{3}{2}\\cos\\theta}\n$$\nHere $e = \\frac{3}{2} > 1$, so this is a **hyperbola**. The directrix\nis to the left of the pole."
     },
     {
       "type": "heading",
@@ -166,7 +166,7 @@
       "number": "10.2",
       "title": "Graphing a Polar Ellipse",
       "problem": "Sketch the graph of $\\displaystyle r = \\frac{6}{2 + \\cos\\theta}$.",
-      "solution": ""
+      "solution": "Divide by 2 to get standard form:\n$$\nr = \\frac{3}{1 + \\frac{1}{2}\\cos\\theta}\n$$\nSince $e = \\frac{1}{2} < 1$, this is an ellipse.\n\nEvaluate at key angles:\n\n| $\\theta$ | $0$ | $\\pi/2$ | $\\pi$ | $3\\pi/2$ |\n| $r$ | $\\frac{6}{2+1} = 2$ | $\\frac{6}{2+0} = 3$ | $\\frac{6}{2-1} = 6$ | $3$ |\n\nThe vertices are at $(2, 0)$ and $(6, \\pi)$. The major axis has length\n$2a = 2 + 6 = 8$, so $a = 4$. The center is at distance $a - 2 = 2$ from\nthe pole along the polar axis (in the direction of $\\theta = \\pi$).\n\nfigure[H]\n\nThe polar ellipse $r = 6/(2 + \\cos\\theta)$ with $e = 1/2$. The focus\nis at the pole (origin), vertices at $(2, 0)$ and $(6, \\pi)$. The ellipse is\nelongated along the polar axis with center at $(-2, 0)$.\n\nfigure"
     },
     {
       "type": "example",
@@ -174,7 +174,7 @@
       "number": "10.3",
       "title": "Graphing a Polar Parabola",
       "problem": "Sketch the graph of $\\displaystyle r = \\frac{4}{1 - \\sin\\theta}$.",
-      "solution": ""
+      "solution": "This is already in standard form with $e = 1$, so it's a parabola.\nThe form $1 - \\sin\\theta$ indicates the directrix is below the pole.\n\nEvaluate at key angles:\n\n| $\\theta$ | $0$ | $\\pi/2$ | $\\pi$ |\n| $r$ | $\\frac{4}{1-0} = 4$ | $\\frac{4}{1-1} = \\text{undefined}$ | $4$ |\n\nAt $\\theta = 3\\pi/2$: $r = \\frac{4}{1-(-1)} = \\frac{4}{2} = 2$ (this is the vertex).\n\nThe parabola has vertex at $(2, 3\\pi/2)$ (i.e., at $(0, -2)$ in rectangular\ncoordinates), opens upward, and approaches infinity as $\\theta \\to \\pi/2$.\n\nfigure[H]\n\nThe polar parabola $r = 4/(1 - \\sin\\theta)$ with $e = 1$. \nThe focus is at the pole, the vertex is at $(0, -2)$, and the \ndirectrix is $y = -4$. The parabola opens upward.\n\nfigure"
     },
     {
       "type": "example",
@@ -182,7 +182,7 @@
       "number": "10.4",
       "title": "Graphing a Polar Hyperbola",
       "problem": "Sketch the graph of $\\displaystyle r = \\frac{9}{2 + 3\\cos\\theta}$.",
-      "solution": ""
+      "solution": "Divide by 2: $r = \\frac{9/2}{1 + \\frac{3}{2}\\cos\\theta}$.\n\nSince $e = \\frac{3}{2} > 1$, this is a hyperbola. The directrix is\nto the right of the pole.\n\nEvaluate at key angles:\n\n| $\\theta$ | $0$ | $\\pi/2$ | $\\pi$ | $3\\pi/2$ |\n| $r$ | $\\frac{9}{2+3} = \\frac{9}{5}$ | $\\frac{9}{2} = 4.5$ | $\\frac{9}{2-3} = -9$ | $4.5$ |\n\nThe negative value at $\\theta = \\pi$ indicates that point is actually at\n$(9, 0)$ (plotting a negative $r$ means going in the opposite direction).\n\nThe vertices of the hyperbola are at $(\\frac{9}{5}, 0)$ and $(9, 0)$.\n\nfigure[H]\n\nThe polar hyperbola $r = 9/(2 + 3\\cos\\theta)$ with $e = 3/2$. \nThe focus is at the pole. Both branches are shown: the right branch \nhas vertex at $(9/5, 0)$, the left passes through $(9, 0)$. \nDashed lines show the asymptotes.\n\nfigure"
     },
     {
       "type": "heading",
@@ -199,7 +199,7 @@
       "number": "10.5",
       "title": "Finding a Polar Equation",
       "problem": "Find a polar equation for each conic with focus at the pole.\n\n**(a)** A parabola with directrix $y = 3$\n\n**(b)** An ellipse with eccentricity $\\frac{1}{2}$ and directrix $x = -4$\n\n**(c)** An ellipse with vertices at $(2, \\pi/2)$ and $(6, 3\\pi/2)$",
-      "solution": ""
+      "solution": "**(a)** For a parabola, $e = 1$. The directrix $y = 3$ is a horizontal\nline above the pole, so we use the form $1 + \\sin\\theta$. The distance\n$p = 3$, giving:\n$$\nr = \\frac{(1)(3)}{1 + \\sin\\theta} = \\frac{3}{1 + \\sin\\theta}\n$$\n\n**(b)** We have $e = \\frac{1}{2}$. The directrix $x = -4$ is a vertical\nline to the left of the pole, so we use $1 - \\cos\\theta$. Here $p = 4$:\n$$\nr = \\frac{\\frac{1}{2} \\cdot 4}{1 - \\frac{1}{2}\\cos\\theta} = \\frac{2}{1 - \\frac{1}{2}\\cos\\theta}\n$$\nor equivalently: $r = \\frac{4}{2 - \\cos\\theta}$.\n\n**(c)** The vertices are on the line $\\theta = \\pi/2$, indicating\nthe major axis is vertical. Use the form $1 + e\\sin\\theta$.\n\nAt vertex $(2, \\pi/2)$: $r = \\frac{ep}{1 + e\\sin(\\pi/2)} = \\frac{ep}{1+e} = 2$\n\nAt vertex $(6, 3\\pi/2)$: $r = \\frac{ep}{1 + e\\sin(3\\pi/2)} = \\frac{ep}{1-e} = 6$\n\nFrom these: $ep = 2(1+e)$ and $ep = 6(1-e)$.\n\nSetting them equal: $2(1+e) = 6(1-e)$, so $2 + 2e = 6 - 6e$, giving $8e = 4$,\nhence $e = \\frac{1}{2}$.\n\nSince $e < 1$, this confirms we have an ellipse. Now find $p$:\nfrom $ep = 2(1+e) = 2(1 + \\frac{1}{2}) = 3$, we get $p = 6$.\n\nThe polar equation is:\n$$\nr = \\frac{3}{1 + \\frac{1}{2}\\sin\\theta} = \\frac{6}{2 + \\sin\\theta}\n$$"
     },
     {
       "type": "heading",
@@ -216,7 +216,7 @@
       "number": "10.6",
       "title": "Converting to Rectangular Form",
       "problem": "Convert $\\displaystyle r = \\frac{6}{2 - \\sin\\theta}$ to rectangular form.",
-      "solution": ""
+      "solution": "Multiply both sides by $(2 - \\sin\\theta)$:\n$$\nr(2 - \\sin\\theta) = 6\n$$\n$$\n2r - r\\sin\\theta = 6\n$$\nSince $r\\sin\\theta = y$ and $r = \\sqrt{x^2 + y^2}$:\n$$\n2\\sqrt{x^2 + y^2} - y = 6\n$$\n$$\n2\\sqrt{x^2 + y^2} = y + 6\n$$\nSquaring both sides:\n$$\n4(x^2 + y^2) = y^2 + 12y + 36\n$$\n$$\n4x^2 + 4y^2 = y^2 + 12y + 36\n$$\n$$\n4x^2 + 3y^2 - 12y = 36\n$$\nCompleting the square:\n$$\n4x^2 + 3(y^2 - 4y + 4) = 36 + 12\n$$\n$$\n4x^2 + 3(y-2)^2 = 48\n$$\n$$\n\\frac{x^2}{12} + \\frac{(y-2)^2}{16} = 1\n$$\nThis is an ellipse with center $(0, 2)$, $a = 4$, $b = 2\\sqrt{3}$."
     },
     {
       "type": "heading",
@@ -261,7 +261,7 @@
       "number": "10.7",
       "title": "Halley's Comet",
       "problem": "Halley's comet has an elliptical orbit with eccentricity $e \\approx 0.967$\nand semi-major axis $a \\approx 17.94$ AU (astronomical units, where\n1 AU $\\approx$ 93 million miles).\n\n**(a)** Find the polar equation of the orbit.\n\n**(b)** Find the perihelion and aphelion distances.",
-      "solution": ""
+      "solution": "**(a)** The polar equation is:\n$$\nr = \\frac{a(1-e^2)}{1 - e\\cos\\theta} = \\frac{17.94(1 - 0.967^2)}{1 - 0.967\\cos\\theta}\n$$\n\nCalculate $1 - e^2 = 1 - 0.935 = 0.065$:\n$$\nr = \\frac{17.94 \\times 0.065}{1 - 0.967\\cos\\theta} \\approx \\frac{1.17}{1 - 0.967\\cos\\theta}\n$$\n\n**(b)** Perihelion: $r_{\\min} = a(1-e) = 17.94(1 - 0.967) = 17.94 \\times 0.033 \\approx 0.59$ AU\n\nAphelion: $r_{\\max} = a(1+e) = 17.94(1 + 0.967) = 17.94 \\times 1.967 \\approx 35.3$ AU\n\nSo Halley's comet comes as close as about 55 million miles from the Sun\n(inside Venus's orbit!) and travels as far as about 3.3 billion miles\n(beyond Neptune's orbit).\n\nfigure[H]\n\nHalley's comet orbit (not to scale). The extreme eccentricity\n($e = 0.967$) creates a highly elongated ellipse. The comet's perihelion\nbrings it closer to the Sun than Venus, while its aphelion takes it beyond\nNeptune. The small dashed circle represents Earth's orbit for scale.\n\nfigure"
     },
     {
       "type": "example",
@@ -269,7 +269,7 @@
       "number": "10.8",
       "title": "Earth's Orbit",
       "problem": "Earth's orbit has semi-major axis $a = 1$ AU and eccentricity $e \\approx 0.0167$.\nFind the polar equation and the variation in Earth's distance from the Sun.",
-      "solution": ""
+      "solution": "The polar equation is:\n$$\nr = \\frac{1(1 - 0.0167^2)}{1 - 0.0167\\cos\\theta} \\approx \\frac{0.99972}{1 - 0.0167\\cos\\theta}\n$$\n\nPerihelion: $r_{\\min} = 1(1 - 0.0167) = 0.9833$ AU $\\approx$ 91.4 million miles\n\nAphelion: $r_{\\max} = 1(1 + 0.0167) = 1.0167$ AU $\\approx$ 94.5 million miles\n\nEarth's distance from the Sun varies by about 3.1 million miles over the\ncourse of a year. Interestingly, Earth is closest to the Sun in early\nJanuary (during Northern Hemisphere winter) and farthest in early July!"
     },
     {
       "type": "summary",

@@ -420,6 +420,13 @@ class LatexConverter:
         
         for chunk_type, chunk_content in chunks:
             if chunk_type == 'environment':
+                # Check if this is a standalone solution block — attach to previous example
+                if re.match(r'\\begin\{solution\}', chunk_content):
+                    if blocks and blocks[-1].type == 'example' and not blocks[-1].data.get('solution'):
+                        sol_body = re.search(r'\\begin\{solution\}(.*?)\\end\{solution\}', chunk_content, re.DOTALL)
+                        if sol_body:
+                            blocks[-1].data['solution'] = self._convert_latex_to_text(sol_body.group(1).strip())
+                    continue
                 block = self._parse_environment(chunk_content, chapter_num, section_num)
                 if block:
                     blocks.append(block)
@@ -550,7 +557,7 @@ class LatexConverter:
                 env_name, optional_arg, required_arg, body, chapter_num, section_num
             )
         elif env_name == 'figure':
-            return self._parse_figure(body)
+            return self._parse_figure(body, chapter_num)
         elif env_name in ('enumerate', 'itemize'):
             return self._parse_list(env_name, body)
         elif env_name == 'align' or env_name == 'align*':
@@ -645,6 +652,7 @@ class LatexConverter:
     
     def _extract_solution(self, body: str) -> Tuple[str, str]:
         """Extract solution from example body."""
+        # Try \begin{solution}...\end{solution} first
         match = re.search(
             r'\\begin\{solution\}(.*?)\\end\{solution\}',
             body, re.DOTALL
@@ -653,10 +661,23 @@ class LatexConverter:
             solution = match.group(1).strip()
             problem = body[:match.start()].strip()
             return (problem, solution)
+        
+        # Try \textbf{Solution:} or \textbf{Proof by Induction:} or similar
+        match = re.search(
+            r'\\textbf\{(Solution|Proof by (?:Strong )?Induction|Proof)\s*:?\}',
+            body
+        )
+        if match:
+            problem = body[:match.start()].strip()
+            solution = body[match.end():].strip()
+            return (problem, solution)
+        
         return (body.strip(), "")
     
-    def _parse_figure(self, body: str) -> Optional[ContentBlock]:
+    def _parse_figure(self, body: str, chapter_num: int = 0) -> Optional[ContentBlock]:
         """Parse a figure environment (supports includegraphics and TikZ)."""
+        ch_prefix = f"ch{chapter_num:02d}/" if chapter_num else ""
+        
         # Extract caption (handle nested braces)
         caption = ""
         caption_match = re.search(r'\\caption\{', body)
@@ -677,10 +698,21 @@ class LatexConverter:
         label_match = re.search(r'\\label\{([^}]+)\}', body)
         fig_id = label_match.group(1) if label_match else ""
         
+        # Helper to generate src from fig_id
+        def src_from_label(fid):
+            safe_name = fid.replace(':', '-').replace('fig-', 'fig-')
+            return f"/figures/precalculus/{ch_prefix}{safe_name}.svg"
+        
         # Check for includegraphics
         img_match = re.search(r'\\includegraphics(?:\[[^\]]*\])?\{([^}]+)\}', body)
         if img_match:
             src = img_match.group(1)
+            # Normalize src to our path format
+            # Extract just the filename
+            src_name = os.path.basename(src)
+            if not src_name.endswith('.svg'):
+                src_name = src_name.rsplit('.', 1)[0] + '.svg' if '.' in src_name else src_name + '.svg'
+            src = f"/figures/precalculus/{ch_prefix}{src_name}"
             if not fig_id:
                 fig_id = f"fig-{hash(src) % 10000}"
             return ContentBlock('figure', {
@@ -694,14 +726,12 @@ class LatexConverter:
         has_tikz = '\\begin{tikzpicture}' in body
         fig_cmd_match = re.search(r'\\(fig[A-Z][a-zA-Z]*)', body)
         
-        if has_tikz or fig_cmd_match:
-            # Generate placeholder SVG path from label
+        if has_tikz or fig_cmd_match or fig_id:
+            # Generate SVG path from label
             if fig_id:
-                # e.g. fig:function-machine -> fig-function-machine.svg
-                safe_name = fig_id.replace(':', '-').replace('fig-', 'fig-')
-                src = f"/figures/precalculus/{safe_name}.svg"
+                src = src_from_label(fig_id)
             else:
-                src = f"/figures/precalculus/fig-{hash(body) % 100000}.svg"
+                src = f"/figures/precalculus/{ch_prefix}fig-{hash(body) % 100000}.svg"
                 fig_id = f"fig-{hash(body) % 100000}"
             
             data = {
@@ -709,14 +739,15 @@ class LatexConverter:
                 'src': src,
                 'caption': caption,
                 'alt': alt_text,
-                'tikz': True,
             }
+            if has_tikz or fig_cmd_match:
+                data['tikz'] = True
             if fig_cmd_match:
                 data['figCommand'] = fig_cmd_match.group(1)
             
             return ContentBlock('figure', data)
         
-        # No recognizable figure content
+        # No recognizable figure content — table-in-figure or similar
         if caption:
             return ContentBlock('figure', {
                 'id': fig_id or f"fig-{hash(body) % 10000}",
@@ -1111,6 +1142,9 @@ class LatexConverter:
             text = text.replace(f"__MATH_BLOCK_{i}__", block)
         # Final safety: catch any remaining unreplaced placeholders
         text = re.sub(r'__MATH_BLOCK_(\d+)__', lambda m: math_blocks[int(m.group(1))] if int(m.group(1)) < len(math_blocks) else '', text)
+        
+        # Final pass: replace any __ESCAPED_DOLLAR__ that was inside math blocks
+        text = text.replace('__ESCAPED_DOLLAR__', '$')
         
         # Clean up extra whitespace (but preserve paragraph breaks)
         text = re.sub(r'[ \t]+', ' ', text)

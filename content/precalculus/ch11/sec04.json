@@ -56,7 +56,7 @@
     {
       "type": "figure",
       "id": "fig:domino-induction",
-      "src": "/figures/precalculus/fig-domino-induction.svg",
+      "src": "/figures/precalculus/ch11/fig-domino-induction.svg",
       "caption": "The domino analogy for mathematical induction. The base case \"pushes\" the first domino. The inductive step guarantees that each falling domino knocks down the next one. Together, they ensure all dominoes fall.",
       "alt": "The domino analogy for mathematical induction. The base case \"pushes\" the first domino. The inductive step guarantees that each falling domino knocks down the next one. Together, they ensure all dominoes fall.",
       "tikz": true
@@ -89,13 +89,13 @@
       "id": "example-11.1",
       "number": "11.1",
       "title": "Sum of the First $n$ Positive Integers",
-      "problem": "Prove that for all positive integers $n$:\n$$\n 1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2}\n$$\n\n**Proof by Induction:**\n\nLet $P(n)$ be the statement: $\\displaystyle\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$.\n\n**Base Case ($n = 1$):**\n$$\n \\text{Left side: } 1 \\qquad \\text{Right side: } \\frac{1(1+1)}{2} = \\frac{2}{2} = 1 \\quad \\checkmark\n$$\n$P(1)$ is true.\n\n**Inductive Step:**\n\nAssume $P(k)$ is true for some positive integer $k$. That is, assume:\n$$\n 1 + 2 + 3 + \\cdots + k = \\frac{k(k+1)}{2} \\quad \\text{(Inductive Hypothesis)}\\index{inductive hypothesis}\n$$\n\nWe must prove $P(k+1)$ is true, i.e., that:\n$$\n 1 + 2 + 3 + \\cdots + k + (k+1) = \\frac{(k+1)(k+2)}{2}\n$$\n\nStarting with the left side:\n$$\\begin{aligned}\n 1 + 2 + \\cdots + k + (k+1) &= \\underbrace{(1 + 2 + \\cdots + k)}_{\\text{use inductive hypothesis}} + (k+1) \\\\\n &= \\frac{k(k+1)}{2} + (k+1) \\\\\n &= \\frac{k(k+1)}{2} + \\frac{2(k+1)}{2} \\\\\n &= \\frac{k(k+1) + 2(k+1)}{2} \\\\\n &= \\frac{(k+1)(k+2)}{2}\n\\end{aligned}$$\n\nThis is exactly the right side of $P(k+1)$. \n\n**Conclusion:** By the Principle of Mathematical Induction, the formula \nholds for all positive integers $n$. \nsolution",
-      "solution": ""
+      "problem": "Prove that for all positive integers $n$:\n$$\n 1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2}\n$$",
+      "solution": "Let $P(n)$ be the statement: $\\displaystyle\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$.\n\n**Base Case ($n = 1$):**\n$$\n \\text{Left side: } 1 \\qquad \\text{Right side: } \\frac{1(1+1)}{2} = \\frac{2}{2} = 1 \\quad \\checkmark\n$$\n$P(1)$ is true.\n\n**Inductive Step:**\n\nAssume $P(k)$ is true for some positive integer $k$. That is, assume:\n$$\n 1 + 2 + 3 + \\cdots + k = \\frac{k(k+1)}{2} \\quad \\text{(Inductive Hypothesis)}\\index{inductive hypothesis}\n$$\n\nWe must prove $P(k+1)$ is true, i.e., that:\n$$\n 1 + 2 + 3 + \\cdots + k + (k+1) = \\frac{(k+1)(k+2)}{2}\n$$\n\nStarting with the left side:\n$$\\begin{aligned}\n 1 + 2 + \\cdots + k + (k+1) &= \\underbrace{(1 + 2 + \\cdots + k)}_{\\text{use inductive hypothesis}} + (k+1) \\\\\n &= \\frac{k(k+1)}{2} + (k+1) \\\\\n &= \\frac{k(k+1)}{2} + \\frac{2(k+1)}{2} \\\\\n &= \\frac{k(k+1) + 2(k+1)}{2} \\\\\n &= \\frac{(k+1)(k+2)}{2}\n\\end{aligned}$$\n\nThis is exactly the right side of $P(k+1)$. \n\n**Conclusion:** By the Principle of Mathematical Induction, the formula \nholds for all positive integers $n$. \nsolution"
     },
     {
       "type": "figure",
       "id": "fig:induction-structure",
-      "src": "/figures/precalculus/fig-induction-structure.svg",
+      "src": "/figures/precalculus/ch11/fig-induction-structure.svg",
       "caption": "The structure of a proof by mathematical induction. First, establish the base case. Then, assume the statement holds for $k$ (inductive hypothesis) and use this assumption to prove it holds for $k+1$ (inductive step). The conclusion follows by the Principle of Mathematical Induction.",
       "alt": "The structure of a proof by mathematical induction. First, establish the base case. Then, assume the statement holds for $k$ (inductive hypothesis) and use this assumption to prove it holds for $k+1$ (inductive step). The conclusion follows by the Principle of Mathematical Induction.",
       "tikz": true
@@ -105,16 +105,16 @@
       "id": "example-11.2",
       "number": "11.2",
       "title": "Sum of the First $n$ Squares",
-      "problem": "Prove that for all positive integers $n$:\n$$\n 1^2 + 2^2 + 3^2 + \\cdots + n^2 = \\frac{n(n+1)(2n+1)}{6}\n$$\n\n**Proof by Induction:**\n\n**Base Case ($n = 1$):**\n$$\n \\text{Left: } 1^2 = 1 \\qquad \\text{Right: } \\frac{1(2)(3)}{6} = 1 \\quad \\checkmark\n$$\n\n**Inductive Step:**\n\nAssume: $\\displaystyle 1^2 + 2^2 + \\cdots + k^2 = \\frac{k(k+1)(2k+1)}{6}$\n\nProve: $\\displaystyle 1^2 + 2^2 + \\cdots + k^2 + (k+1)^2 = \\frac{(k+1)(k+2)(2k+3)}{6}$\n\n$$\\begin{aligned}\n 1^2 + \\cdots + k^2 + (k+1)^2 &= \\frac{k(k+1)(2k+1)}{6} + (k+1)^2 \\\\\n &= \\frac{k(k+1)(2k+1) + 6(k+1)^2}{6} \\\\\n &= \\frac{(k+1)[k(2k+1) + 6(k+1)]}{6} \\\\\n &= \\frac{(k+1)[2k^2 + k + 6k + 6]}{6} \\\\\n &= \\frac{(k+1)(2k^2 + 7k + 6)}{6} \\\\\n &= \\frac{(k+1)(k+2)(2k+3)}{6} \\quad \\checkmark\n\\end{aligned}$$\n\nBy induction, the formula holds for all positive integers $n$. \nsolution",
-      "solution": ""
+      "problem": "Prove that for all positive integers $n$:\n$$\n 1^2 + 2^2 + 3^2 + \\cdots + n^2 = \\frac{n(n+1)(2n+1)}{6}\n$$",
+      "solution": "**Base Case ($n = 1$):**\n$$\n \\text{Left: } 1^2 = 1 \\qquad \\text{Right: } \\frac{1(2)(3)}{6} = 1 \\quad \\checkmark\n$$\n\n**Inductive Step:**\n\nAssume: $\\displaystyle 1^2 + 2^2 + \\cdots + k^2 = \\frac{k(k+1)(2k+1)}{6}$\n\nProve: $\\displaystyle 1^2 + 2^2 + \\cdots + k^2 + (k+1)^2 = \\frac{(k+1)(k+2)(2k+3)}{6}$\n\n$$\\begin{aligned}\n 1^2 + \\cdots + k^2 + (k+1)^2 &= \\frac{k(k+1)(2k+1)}{6} + (k+1)^2 \\\\\n &= \\frac{k(k+1)(2k+1) + 6(k+1)^2}{6} \\\\\n &= \\frac{(k+1)[k(2k+1) + 6(k+1)]}{6} \\\\\n &= \\frac{(k+1)[2k^2 + k + 6k + 6]}{6} \\\\\n &= \\frac{(k+1)(2k^2 + 7k + 6)}{6} \\\\\n &= \\frac{(k+1)(k+2)(2k+3)}{6} \\quad \\checkmark\n\\end{aligned}$$\n\nBy induction, the formula holds for all positive integers $n$. \nsolution"
     },
     {
       "type": "example",
       "id": "example-11.3",
       "number": "11.3",
       "title": "Sum of a Geometric Series",
-      "problem": "Prove that for all positive integers $n$ and $r \\neq 1$:\n$$\n 1 + r + r^2 + \\cdots + r^{n-1} = \\frac{r^n - 1}{r - 1}\n$$\n\n**Proof by Induction:**\n\n**Base Case ($n = 1$):**\n$$\n \\text{Left: } r^0 = 1 \\qquad \\text{Right: } \\frac{r^1 - 1}{r - 1} = \\frac{r - 1}{r - 1} = 1 \\quad \\checkmark\n$$\n\n**Inductive Step:**\n\nAssume: $\\displaystyle 1 + r + r^2 + \\cdots + r^{k-1} = \\frac{r^k - 1}{r - 1}$\n\nProve: $\\displaystyle 1 + r + r^2 + \\cdots + r^{k-1} + r^k = \\frac{r^{k+1} - 1}{r - 1}$\n\n$$\\begin{aligned}\n 1 + r + \\cdots + r^{k-1} + r^k &= \\frac{r^k - 1}{r - 1} + r^k \\\\\n &= \\frac{r^k - 1 + r^k(r - 1)}{r - 1} \\\\\n &= \\frac{r^k - 1 + r^{k+1} - r^k}{r - 1} \\\\\n &= \\frac{r^{k+1} - 1}{r - 1} \\quad \\checkmark\n\\end{aligned}$$\n\nBy induction, the formula holds for all positive integers $n$. \nsolution",
-      "solution": ""
+      "problem": "Prove that for all positive integers $n$ and $r \\neq 1$:\n$$\n 1 + r + r^2 + \\cdots + r^{n-1} = \\frac{r^n - 1}{r - 1}\n$$",
+      "solution": "**Base Case ($n = 1$):**\n$$\n \\text{Left: } r^0 = 1 \\qquad \\text{Right: } \\frac{r^1 - 1}{r - 1} = \\frac{r - 1}{r - 1} = 1 \\quad \\checkmark\n$$\n\n**Inductive Step:**\n\nAssume: $\\displaystyle 1 + r + r^2 + \\cdots + r^{k-1} = \\frac{r^k - 1}{r - 1}$\n\nProve: $\\displaystyle 1 + r + r^2 + \\cdots + r^{k-1} + r^k = \\frac{r^{k+1} - 1}{r - 1}$\n\n$$\\begin{aligned}\n 1 + r + \\cdots + r^{k-1} + r^k &= \\frac{r^k - 1}{r - 1} + r^k \\\\\n &= \\frac{r^k - 1 + r^k(r - 1)}{r - 1} \\\\\n &= \\frac{r^k - 1 + r^{k+1} - r^k}{r - 1} \\\\\n &= \\frac{r^{k+1} - 1}{r - 1} \\quad \\checkmark\n\\end{aligned}$$\n\nBy induction, the formula holds for all positive integers $n$. \nsolution"
     },
     {
       "type": "heading",
@@ -130,24 +130,24 @@
       "id": "example-11.4",
       "number": "11.4",
       "title": "$3^n - 1$ is Divisible by 2",
-      "problem": "Prove that $3^n - 1$ is divisible by $2$ for all positive integers $n$.\n\n**Proof by Induction:**\n\n**Base Case ($n = 1$):**\n$3^1 - 1 = 2$, which is divisible by $2$. \n\n**Inductive Step:**\n\nAssume $3^k - 1$ is divisible by $2$, so $3^k - 1 = 2m$ for some integer $m$.\n\nThen $3^k = 2m + 1$.\n\nConsider $3^{k+1} - 1$:\n$$\\begin{aligned}\n 3^{k+1} - 1 &= 3 \\cdot 3^k - 1 \\\\\n &= 3(2m + 1) - 1 \\\\\n &= 6m + 3 - 1 \\\\\n &= 6m + 2 \\\\\n &= 2(3m + 1)\n\\end{aligned}$$\n\nSince $3m + 1$ is an integer, $3^{k+1} - 1$ is divisible by $2$. \n\nBy induction, $3^n - 1$ is divisible by $2$ for all positive integers $n$. \nsolution",
-      "solution": ""
+      "problem": "Prove that $3^n - 1$ is divisible by $2$ for all positive integers $n$.",
+      "solution": "**Base Case ($n = 1$):**\n$3^1 - 1 = 2$, which is divisible by $2$. \n\n**Inductive Step:**\n\nAssume $3^k - 1$ is divisible by $2$, so $3^k - 1 = 2m$ for some integer $m$.\n\nThen $3^k = 2m + 1$.\n\nConsider $3^{k+1} - 1$:\n$$\\begin{aligned}\n 3^{k+1} - 1 &= 3 \\cdot 3^k - 1 \\\\\n &= 3(2m + 1) - 1 \\\\\n &= 6m + 3 - 1 \\\\\n &= 6m + 2 \\\\\n &= 2(3m + 1)\n\\end{aligned}$$\n\nSince $3m + 1$ is an integer, $3^{k+1} - 1$ is divisible by $2$. \n\nBy induction, $3^n - 1$ is divisible by $2$ for all positive integers $n$. \nsolution"
     },
     {
       "type": "example",
       "id": "example-11.5",
       "number": "11.5",
       "title": "$n^3 - n$ is Divisible by 6",
-      "problem": "Prove that $n^3 - n$ is divisible by $6$ for all positive integers $n$.\n\n**Proof by Induction:**\n\n**Base Case ($n = 1$):**\n$1^3 - 1 = 0$, which is divisible by $6$ (since $0 = 6 \\cdot 0$). \n\n**Inductive Step:**\n\nAssume $k^3 - k$ is divisible by $6$, so $k^3 - k = 6m$ for some integer $m$.\n\nConsider $(k+1)^3 - (k+1)$:\n$$\\begin{aligned}\n (k+1)^3 - (k+1) &= (k+1)[(k+1)^2 - 1] \\\\\n &= (k+1)(k^2 + 2k + 1 - 1) \\\\\n &= (k+1)(k^2 + 2k) \\\\\n &= (k+1) \\cdot k \\cdot (k + 2) \\\\\n &= k(k+1)(k+2)\n\\end{aligned}$$\n\nThis is the product of three consecutive integers. Among any three consecutive \nintegers, one is divisible by $3$ and at least one is divisible by $2$. \nTherefore, the product is divisible by $6$. \n\nBy induction, $n^3 - n$ is divisible by $6$ for all positive integers $n$. \nsolution",
-      "solution": ""
+      "problem": "Prove that $n^3 - n$ is divisible by $6$ for all positive integers $n$.",
+      "solution": "**Base Case ($n = 1$):**\n$1^3 - 1 = 0$, which is divisible by $6$ (since $0 = 6 \\cdot 0$). \n\n**Inductive Step:**\n\nAssume $k^3 - k$ is divisible by $6$, so $k^3 - k = 6m$ for some integer $m$.\n\nConsider $(k+1)^3 - (k+1)$:\n$$\\begin{aligned}\n (k+1)^3 - (k+1) &= (k+1)[(k+1)^2 - 1] \\\\\n &= (k+1)(k^2 + 2k + 1 - 1) \\\\\n &= (k+1)(k^2 + 2k) \\\\\n &= (k+1) \\cdot k \\cdot (k + 2) \\\\\n &= k(k+1)(k+2)\n\\end{aligned}$$\n\nThis is the product of three consecutive integers. Among any three consecutive \nintegers, one is divisible by $3$ and at least one is divisible by $2$. \nTherefore, the product is divisible by $6$. \n\nBy induction, $n^3 - n$ is divisible by $6$ for all positive integers $n$. \nsolution"
     },
     {
       "type": "example",
       "id": "example-11.6",
       "number": "11.6",
       "title": "$4^n - 1$ is Divisible by 3",
-      "problem": "Prove that $4^n - 1$ is divisible by $3$ for all positive integers $n$.\n\n**Proof by Induction:**\n\n**Base Case ($n = 1$):**\n$4^1 - 1 = 3$, which is divisible by $3$. \n\n**Inductive Step:**\n\nAssume $4^k - 1 = 3m$ for some integer $m$, so $4^k = 3m + 1$.\n\n$$\\begin{aligned}\n 4^{k+1} - 1 &= 4 \\cdot 4^k - 1 \\\\\n &= 4(3m + 1) - 1 \\\\\n &= 12m + 4 - 1 \\\\\n &= 12m + 3 \\\\\n &= 3(4m + 1)\n\\end{aligned}$$\n\nSince $4m + 1$ is an integer, $4^{k+1} - 1$ is divisible by $3$. \n\nBy induction, $4^n - 1$ is divisible by $3$ for all $n \\geq 1$. \nsolution",
-      "solution": ""
+      "problem": "Prove that $4^n - 1$ is divisible by $3$ for all positive integers $n$.",
+      "solution": "**Base Case ($n = 1$):**\n$4^1 - 1 = 3$, which is divisible by $3$. \n\n**Inductive Step:**\n\nAssume $4^k - 1 = 3m$ for some integer $m$, so $4^k = 3m + 1$.\n\n$$\\begin{aligned}\n 4^{k+1} - 1 &= 4 \\cdot 4^k - 1 \\\\\n &= 4(3m + 1) - 1 \\\\\n &= 12m + 4 - 1 \\\\\n &= 12m + 3 \\\\\n &= 3(4m + 1)\n\\end{aligned}$$\n\nSince $4m + 1$ is an integer, $4^{k+1} - 1$ is divisible by $3$. \n\nBy induction, $4^n - 1$ is divisible by $3$ for all $n \\geq 1$. \nsolution"
     },
     {
       "type": "heading",
@@ -163,21 +163,21 @@
       "id": "example-11.7",
       "number": "11.7",
       "title": "Exponential vs. Polynomial Growth",
-      "problem": "Prove that $2^n > n^2$ for all integers $n \\geq 5$.\n\n**Proof by Induction:**\n\n**Base Case ($n = 5$):**\n$2^5 = 32$ and $5^2 = 25$. Since $32 > 25$, the inequality holds. \n\n**Inductive Step:**\n\nAssume $2^k > k^2$ for some integer $k \\geq 5$.\n\nWe must prove $2^{k+1} > (k+1)^2$.\n\n$$\\begin{aligned}\n 2^{k+1} &= 2 \\cdot 2^k \\\\\n &> 2k^2 \\quad \\text{(by the inductive hypothesis)}\n\\end{aligned}$$\n\nWe need to show $2k^2 > (k+1)^2 = k^2 + 2k + 1$.\n\nThis is equivalent to: $k^2 > 2k + 1$, or $k^2 - 2k - 1 > 0$.\n\nFor $k \\geq 5$: $k^2 - 2k - 1 = (k-1)^2 - 2 \\geq (4)^2 - 2 = 14 > 0$. \n\nTherefore, $2^{k+1} > 2k^2 > (k+1)^2$. \n\nBy induction, $2^n > n^2$ for all integers $n \\geq 5$. \nsolution",
-      "solution": ""
+      "problem": "Prove that $2^n > n^2$ for all integers $n \\geq 5$.",
+      "solution": "**Base Case ($n = 5$):**\n$2^5 = 32$ and $5^2 = 25$. Since $32 > 25$, the inequality holds. \n\n**Inductive Step:**\n\nAssume $2^k > k^2$ for some integer $k \\geq 5$.\n\nWe must prove $2^{k+1} > (k+1)^2$.\n\n$$\\begin{aligned}\n 2^{k+1} &= 2 \\cdot 2^k \\\\\n &> 2k^2 \\quad \\text{(by the inductive hypothesis)}\n\\end{aligned}$$\n\nWe need to show $2k^2 > (k+1)^2 = k^2 + 2k + 1$.\n\nThis is equivalent to: $k^2 > 2k + 1$, or $k^2 - 2k - 1 > 0$.\n\nFor $k \\geq 5$: $k^2 - 2k - 1 = (k-1)^2 - 2 \\geq (4)^2 - 2 = 14 > 0$. \n\nTherefore, $2^{k+1} > 2k^2 > (k+1)^2$. \n\nBy induction, $2^n > n^2$ for all integers $n \\geq 5$. \nsolution"
     },
     {
       "type": "example",
       "id": "example-11.8",
       "number": "11.8",
       "title": "$n! > 2^n$ for Large $n$",
-      "problem": "Prove that $n! > 2^n$ for all integers $n \\geq 4$.\n\n**Proof by Induction:**\n\n**Base Case ($n = 4$):**\n$4! = 24$ and $2^4 = 16$. Since $24 > 16$, the inequality holds. \n\n**Inductive Step:**\n\nAssume $k! > 2^k$ for some integer $k \\geq 4$.\n\nConsider $(k+1)!$:\n$$\\begin{aligned}\n (k+1)! &= (k+1) \\cdot k! \\\\\n &> (k+1) \\cdot 2^k \\quad \\text{(by the inductive hypothesis)}\n\\end{aligned}$$\n\nSince $k \\geq 4$, we have $k + 1 \\geq 5 > 2$, so:\n$$\n (k+1) \\cdot 2^k > 2 \\cdot 2^k = 2^{k+1}\n$$\n\nTherefore, $(k+1)! > 2^{k+1}$. \n\nBy induction, $n! > 2^n$ for all integers $n \\geq 4$. \nsolution",
-      "solution": ""
+      "problem": "Prove that $n! > 2^n$ for all integers $n \\geq 4$.",
+      "solution": "**Base Case ($n = 4$):**\n$4! = 24$ and $2^4 = 16$. Since $24 > 16$, the inequality holds. \n\n**Inductive Step:**\n\nAssume $k! > 2^k$ for some integer $k \\geq 4$.\n\nConsider $(k+1)!$:\n$$\\begin{aligned}\n (k+1)! &= (k+1) \\cdot k! \\\\\n &> (k+1) \\cdot 2^k \\quad \\text{(by the inductive hypothesis)}\n\\end{aligned}$$\n\nSince $k \\geq 4$, we have $k + 1 \\geq 5 > 2$, so:\n$$\n (k+1) \\cdot 2^k > 2 \\cdot 2^k = 2^{k+1}\n$$\n\nTherefore, $(k+1)! > 2^{k+1}$. \n\nBy induction, $n! > 2^n$ for all integers $n \\geq 4$. \nsolution"
     },
     {
       "type": "figure",
       "id": "fig:exponential-polynomial",
-      "src": "/figures/precalculus/fig-exponential-polynomial.svg",
+      "src": "/figures/precalculus/ch11/fig-exponential-polynomial.svg",
       "caption": "Comparison of $2^n$ and $n^2$. For small $n$, the polynomial $n^2$ may exceed $2^n$, but exponential growth eventually dominates. The crossover occurs at $n = 5$, after which $2^n > n^2$ for all larger values.",
       "alt": "Comparison of $2^n$ and $n^2$. For small $n$, the polynomial $n^2$ may exceed $2^n$, but exponential growth eventually dominates. The crossover occurs at $n = 5$, after which $2^n > n^2$ for all larger values.",
       "tikz": true
@@ -204,16 +204,16 @@
       "id": "example-11.9",
       "number": "11.9",
       "title": "Every Integer $\\geq 2$ Has a Prime Factor",
-      "problem": "Prove that every integer $n \\geq 2$ has at least one prime factor.\n\n**Proof by Strong Induction:**\n\n**Base Case ($n = 2$):**\n$2$ is prime, so it has itself as a prime factor. \n\n**Strong Inductive Step:**\n\nAssume every integer from $2$ to $k$ has a prime factor.\n\nConsider $k + 1$:\n\n- If $k + 1$ is prime, then it has itself as a prime factor. \n\n- If $k + 1$ is composite, then $k + 1 = ab$ where $2 \\leq a, b < k + 1$.\n \n By the inductive hypothesis, $a$ has a prime factor $p$.\n \n Since $p$ divides $a$ and $a$ divides $k + 1$, we have $p$ divides $k + 1$. \n\nBy strong induction, every integer $n \\geq 2$ has a prime factor. \nsolution",
-      "solution": ""
+      "problem": "Prove that every integer $n \\geq 2$ has at least one prime factor.",
+      "solution": "**Base Case ($n = 2$):**\n$2$ is prime, so it has itself as a prime factor. \n\n**Strong Inductive Step:**\n\nAssume every integer from $2$ to $k$ has a prime factor.\n\nConsider $k + 1$:\n\n- If $k + 1$ is prime, then it has itself as a prime factor. \n\n- If $k + 1$ is composite, then $k + 1 = ab$ where $2 \\leq a, b < k + 1$.\n \n By the inductive hypothesis, $a$ has a prime factor $p$.\n \n Since $p$ divides $a$ and $a$ divides $k + 1$, we have $p$ divides $k + 1$. \n\nBy strong induction, every integer $n \\geq 2$ has a prime factor. \nsolution"
     },
     {
       "type": "example",
       "id": "example-11.10",
       "number": "11.10",
       "title": "Fibonacci Identity",
-      "problem": "Prove that $F_1 + F_2 + \\cdots + F_n = F_{n+2} - 1$ for all $n \\geq 1$, \nwhere $F_k$ is the $k$th Fibonacci number.\n\n**Proof by Strong Induction:**\n\n**Base Cases:**\n\n- $n = 1$: $F_1 = 1$ and $F_3 - 1 = 2 - 1 = 1$. \n\n- $n = 2$: $F_1 + F_2 = 1 + 1 = 2$ and $F_4 - 1 = 3 - 1 = 2$. \n\n**Strong Inductive Step:**\n\nAssume the formula holds for all values from $1$ to $k$ (where $k \\geq 2$).\n\n$$\\begin{aligned}\n F_1 + F_2 + \\cdots + F_k + F_{k+1} &= (F_{k+2} - 1) + F_{k+1} \n \\quad \\text{(by inductive hypothesis)} \\\\\n &= F_{k+1} + F_{k+2} - 1 \\\\\n &= F_{k+3} - 1 \\quad \\text{(by Fibonacci recurrence)}\n\\end{aligned}$$\n\nThis is $F_{(k+1)+2} - 1$, which is what we needed. \n\nBy strong induction, the formula holds for all $n \\geq 1$. \nsolution",
-      "solution": ""
+      "problem": "Prove that $F_1 + F_2 + \\cdots + F_n = F_{n+2} - 1$ for all $n \\geq 1$, \nwhere $F_k$ is the $k$th Fibonacci number.",
+      "solution": "**Base Cases:**\n\n- $n = 1$: $F_1 = 1$ and $F_3 - 1 = 2 - 1 = 1$. \n\n- $n = 2$: $F_1 + F_2 = 1 + 1 = 2$ and $F_4 - 1 = 3 - 1 = 2$. \n\n**Strong Inductive Step:**\n\nAssume the formula holds for all values from $1$ to $k$ (where $k \\geq 2$).\n\n$$\\begin{aligned}\n F_1 + F_2 + \\cdots + F_k + F_{k+1} &= (F_{k+2} - 1) + F_{k+1} \n \\quad \\text{(by inductive hypothesis)} \\\\\n &= F_{k+1} + F_{k+2} - 1 \\\\\n &= F_{k+3} - 1 \\quad \\text{(by Fibonacci recurrence)}\n\\end{aligned}$$\n\nThis is $F_{(k+1)+2} - 1$, which is what we needed. \n\nBy strong induction, the formula holds for all $n \\geq 1$. \nsolution"
     },
     {
       "type": "heading",
