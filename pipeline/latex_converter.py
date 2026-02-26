@@ -607,7 +607,7 @@ class LatexConverter:
         if content_type == 'example':
             problem, solution = self._extract_solution(body)
             # Extract any figures from within the example
-            figures = self._extract_inline_figures(problem + "\n" + solution)
+            figures = self._extract_inline_figures(problem + "\n" + solution, chapter_num)
             
             data = {
                 'id': block_id,
@@ -1143,6 +1143,13 @@ class LatexConverter:
         # Final safety: catch any remaining unreplaced placeholders
         text = re.sub(r'__MATH_BLOCK_(\d+)__', lambda m: math_blocks[int(m.group(1))] if int(m.group(1)) < len(math_blocks) else '', text)
         
+        # Safety: convert any remaining \[...\] to $$...$$ that weren't caught by regex
+        text = re.sub(r'\\\[', '$$', text)
+        text = re.sub(r'\\\]', '$$', text)
+        
+        # Safety: strip any remaining \hline (cosmetic table rules)
+        text = text.replace('\\hline', '')
+        
         # Final pass: replace any __ESCAPED_DOLLAR__ that was inside math blocks
         text = text.replace('__ESCAPED_DOLLAR__', '$')
         
@@ -1153,11 +1160,11 @@ class LatexConverter:
         
         return text
     
-    def _extract_inline_figures(self, content: str) -> List[ContentBlock]:
+    def _extract_inline_figures(self, content: str, chapter_num: int = 0) -> List[ContentBlock]:
         """Extract figure environments embedded within other content."""
         figures = []
         for m in re.finditer(r'\\begin\{figure\}(?:\[[^\]]*\])?(.*?)\\end\{figure\}', content, re.DOTALL):
-            fig = self._parse_figure(m.group(1))
+            fig = self._parse_figure(m.group(1), chapter_num)
             if fig:
                 figures.append(fig)
         return figures
