@@ -1137,6 +1137,10 @@ class SectionParser:
         text = re.sub(r'\\begin\{multicols\}\{\d+\}', '', text)
         text = re.sub(r'\\end\{multicols\}', '', text)
 
+        # Inline quote blocks so they become part of exercise text flow
+        text = re.sub(r'\n*\\begin\{quote\}\s*', '\n> ', text)
+        text = re.sub(r'\s*\\end\{quote\}\s*', '\n', text)
+
         # Find exercises
         pos = 0
         while pos < len(text):
@@ -1245,16 +1249,37 @@ class SectionParser:
         return blocks
 
     def _find_exercise_text_end(self, text: str, pos: int) -> int:
-        """Find end of exercise description text."""
-        # End at next double newline, \begin{exercise}, or exercise command
+        """Find end of exercise description text.
+        
+        Stops at the next exercise marker/environment, NOT at blank lines,
+        since error-analysis exercises span multiple paragraphs with quote blocks.
+        """
         i = pos
         while i < len(text):
-            if text[i:i+2] == '\n\n':
-                return i
             if text[i:].startswith('\\begin{exercise}'):
+                return i
+            if text[i:].startswith('\\begin{exercisewithsolution}'):
                 return i
             if re.match(r'\\(exercisevocab|exerciseconceptual|exercisestar|exerciseerror|exercisetech)\b', text[i:]):
                 return i
+            # Stop at section-level markers
+            if text[i:].startswith('\\subsection'):
+                return i
+            if text[i:].startswith('\\textbf{') and i > pos:
+                # Check if this is a standalone category header like "Challenge Problems"
+                m = re.match(r'\\textbf\{([^}]+)\}', text[i:])
+                if m:
+                    header_text = m.group(1).strip()
+                    # Only treat as boundary if it's a short category name (not exercise content)
+                    # Skip things like \textbf{(a)}, \textbf{Problem:}, \textbf{Student work:}
+                    if (not re.match(r'\([a-z]\)', header_text) and
+                        ':' not in header_text and
+                        len(header_text) < 40 and
+                        header_text[0].isupper()):
+                        line_start = text.rfind('\n', pos, i)
+                        before = text[line_start+1:i].strip() if line_start >= 0 else text[pos:i].strip()
+                        if not before:
+                            return i
             i += 1
         return len(text)
 
@@ -1436,8 +1461,10 @@ class SectionParser:
         text = re.sub(r'\\ding\{55\}', '✗', text)
         text = re.sub(r'\\ding\{\d+\}', '', text)
         
-        # \checkmark
+        # \checkmark, \cmark, \xmark
         text = text.replace('\\checkmark', '✓')
+        text = text.replace('\\cmark', '✓')
+        text = text.replace('\\xmark', '✗')
 
         # \par
         text = text.replace('\\par', '\n\n')
@@ -1446,9 +1473,9 @@ class SectionParser:
         text = re.sub(r'\\begin\{center\}\s*', '', text)
         text = re.sub(r'\\end\{center\}\s*', '', text)
 
-        # Remove remaining \begin{quote}\end{quote} wrappers
-        text = re.sub(r'\\begin\{quote\}\s*', '', text)
-        text = re.sub(r'\\end\{quote\}\s*', '', text)
+        # Convert remaining \begin{quote}\end{quote} to blockquote
+        text = re.sub(r'\\begin\{quote\}\s*', '\n> ', text)
+        text = re.sub(r'\\end\{quote\}\s*', '\n', text)
 
         # Remove orphaned \end{solution}
         text = re.sub(r'\\end\{solution\}\s*', '', text)
