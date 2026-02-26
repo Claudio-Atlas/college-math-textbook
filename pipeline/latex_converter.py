@@ -453,6 +453,9 @@ class SectionParser:
             while '\\lettrine' in t:
                 idx = t.index('\\lettrine')
                 pos = idx + len('\\lettrine')
+                # skip whitespace before optional args
+                while pos < len(t) and t[pos] in ' \t\n':
+                    pos += 1
                 # skip optional args [...]
                 while pos < len(t) and t[pos] == '[':
                     bracket_end = t.find(']', pos)
@@ -537,9 +540,13 @@ class SectionParser:
         if m:
             pos = m.end() - 1
             arg1, pos = extract_braced(text, pos)  # scripture text
-            arg2, pos = extract_braced(text, pos)  # reference
-            arg3, pos = extract_braced(text, pos)  # secular quote
-            arg4, pos = extract_braced(text, pos)  # quote author
+            arg2, pos = extract_required_arg(text, pos)  # reference
+            arg3, pos = extract_required_arg(text, pos)  # secular quote
+            arg4, pos = extract_required_arg(text, pos)  # quote author
+            # extract_required_arg returns (None, pos) on failure
+            arg2 = arg2 or ""
+            arg3 = arg3 or ""
+            arg4 = arg4 or ""
 
             result = {
                 "text": self._convert_text(arg1),
@@ -674,7 +681,7 @@ class SectionParser:
             pos = m.start()
             end = m.end() - 1
             for _ in range(4):
-                _, end = extract_braced(text, end)
+                _, end = extract_required_arg(text, end)
             text = text[:pos] + text[end:]
 
         # Remove \epigraph{...}{...}
@@ -1209,6 +1216,12 @@ class SectionParser:
         text = re.sub(r'\\begin\{multicols\}\{\d+\}', '', text)
         text = re.sub(r'\\end\{multicols\}', '', text)
 
+        # Strip \subsection*{...} category headers that aren't "Exercises" 
+        # (those are already split out). Keep as headings by replacing with a marker.
+        # Also handle bare *{...} fragments from partial parsing.
+        text = re.sub(r'\\subsection\s*\*\s*\{([^}]+)\}', r'\\exercisecategoryheader{\1}', text)
+        text = re.sub(r'\*\{([^}]*)\}', '', text)  # bare *{...} fragments
+
         # Inline quote blocks so they become part of exercise text flow
         text = re.sub(r'\n*\\begin\{quote\}\s*', '\n> ', text)
         text = re.sub(r'\s*\\end\{quote\}\s*', '\n', text)
@@ -1222,10 +1235,11 @@ class SectionParser:
             if pos >= len(text):
                 break
 
-            # Category headers: \subsection*{...}
-            subsec_match = re.match(r'\\subsection\*?\{([^}]+)\}\s*', text[pos:])
+            # Category headers: \subsection*{...} or \exercisecategoryheader{...}
+            subsec_match = re.match(r'(?:\\subsection\s*\*?\s*\{([^}]+)\}|\\exercisecategoryheader\{([^}]+)\})\s*', text[pos:])
             if subsec_match:
-                blocks.append({"type": "heading", "level": 3, "text": self._convert_text(subsec_match.group(1).strip())})
+                header_text = (subsec_match.group(1) or subsec_match.group(2)).strip()
+                blocks.append({"type": "heading", "level": 3, "text": self._convert_text(header_text)})
                 pos += subsec_match.end()
                 continue
 
@@ -1344,6 +1358,8 @@ class SectionParser:
             # Stop at section-level markers
             if text[i:].startswith('\\subsection'):
                 return i
+            if text[i:].startswith('\\exercisecategoryheader'):
+                return i
             if text[i:].startswith('\\textbf{') and i > pos:
                 # Check if this is a standalone category header like "Challenge Problems"
                 m = re.match(r'\\textbf\{([^}]+)\}', text[i:])
@@ -1416,7 +1432,7 @@ class SectionParser:
         for env in sorted(MATH_DISPLAY_ENVS, key=len, reverse=True):
             pattern = re.compile(rf'\\begin\{{{re.escape(env)}\}}(.*?)\\end\{{{re.escape(env)}\}}', re.DOTALL)
             def make_aligned(m, e=env):
-                inner = m.group(1)
+                inner = re.sub(r'\\label\{[^}]*\}', '', m.group(1))
                 return store_math(f"$$\\begin{{aligned}}{inner}\\end{{aligned}}$$")
             text = pattern.sub(make_aligned, text)
 
@@ -1469,6 +1485,9 @@ class SectionParser:
             while '\\lettrine' in t:
                 idx = t.index('\\lettrine')
                 pos = idx + len('\\lettrine')
+                # skip whitespace before optional args
+                while pos < len(t) and t[pos] in ' \t\n':
+                    pos += 1
                 while pos < len(t) and t[pos] == '[':
                     bracket_end = t.find(']', pos)
                     if bracket_end == -1:
@@ -1701,6 +1720,7 @@ class SectionParser:
                             continue
                         # Found the matching \]
                         inner = text[i+2:j]
+                        inner = re.sub(r'\\label\{[^}]*\}', '', inner)
                         result.append(store_fn(f"$${inner}$$"))
                         i = j + 2
                         found = True
