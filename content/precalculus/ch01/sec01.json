@@ -32,16 +32,28 @@
       "text": "Before diving into formal definitions, let's build intuition with everyday \nexamples. Consider the following scenarios:"
     },
     {
-      "type": "list",
-      "ordered": false,
-      "items": [
-        "A taxicab charges $3.00 for the first mile and $2.50 for each \n additional mile. The total fare depends on the distance traveled.",
-        "The temperature of a cup of coffee depends on how long it has \n been sitting on the counter.",
-        "Each student in a class has exactly one student ID number.",
-        "The area of a circle depends on its radius.",
-        "Your grade on an exam depends on the number of questions you \n answer correctly.",
-        "The amount of daylight depends on the day of the year."
-      ]
+      "type": "paragraph",
+      "text": "- A taxicab charges $3.00 for the first mile and $2.50 for each \n additional mile. The total fare depends on the distance traveled."
+    },
+    {
+      "type": "paragraph",
+      "text": "- The temperature of a cup of coffee depends on how long it has \n been sitting on the counter."
+    },
+    {
+      "type": "paragraph",
+      "text": "- Each student in a class has exactly one student ID number."
+    },
+    {
+      "type": "paragraph",
+      "text": "- The area of a circle depends on its radius."
+    },
+    {
+      "type": "paragraph",
+      "text": "- Your grade on an exam depends on the number of questions you \n answer correctly."
+    },
+    {
+      "type": "paragraph",
+      "text": "- The amount of daylight depends on the day of the year."
     },
     {
       "type": "paragraph",
@@ -59,9 +71,9 @@
     {
       "type": "definition",
       "id": "definition-1.1",
-      "number": "1.1",
       "title": "Function",
-      "content": "A **function** from a set $A$ to a set $B$ is a rule \nthat assigns to each element in $A$ exactly one element in $B$.\n\nThe set $A$ is called the **domain** of the function. \nThe set $B$ is called the **codomain**.\n\nIf $f$ is a function and $x$ is an element of its domain, we write $f(x)$ \n(read \"$f$ of $x$\") to denote the unique element assigned to $x$. This \noutput is called the **value** of $f$ at $x$, \nor the **image** of $x$ under $f$."
+      "content": "A **function** from a set $A$ to a set $B$ is a rule \nthat assigns to each element in $A$ exactly one element in $B$.\n\nThe set $A$ is called the **domain** of the function. \nThe set $B$ is called the **codomain**.\n\nIf $f$ is a function and $x$ is an element of its domain, we write $f(x)$ \n(read \"$f$ of $x$\") to denote the unique element assigned to $x$. This \noutput is called the **value** of $f$ at $x$, \nor the **image** of $x$ under $f$.",
+      "number": "1.1"
     },
     {
       "type": "paragraph",
@@ -102,7 +114,6 @@
     {
       "type": "warning",
       "id": "warning-1.1",
-      "number": null,
       "title": "Functions vs. Relations",
       "content": "Not every mathematical relationship is a function. A **relation** \nis any pairing of inputs with outputs; a **function** is a special \nrelation where each input is paired with exactly one output. Every \nfunction is a relation, but not every relation is a function. The equation \n$x^2 + y^2 = 25$ describes a relation (a circle), but $y$ is not a \nfunction of $x$ because most $x$-values correspond to two $y$-values."
     },
@@ -129,19 +140,11 @@
     },
     {
       "type": "paragraph",
-      "text": "To evaluate the function at a specific input, we substitute that value for \n$x$. For instance, if $f(x) = x^2 + 1$:"
+      "text": "To evaluate the function at a specific input, we substitute that value for \n$x$. For instance, if $f(x) = x^2 + 1$:\n$$\\begin{aligned}\n f(3) &= 3^2 + 1 = 9 + 1 = 10 \\\\\n f(-2) &= (-2)^2 + 1 = 4 + 1 = 5 \\\\\n f(0) &= 0^2 + 1 = 0 + 1 = 1\n\\end{aligned}$$"
     },
     {
       "type": "paragraph",
-      "text": "$$\\begin{aligned}f(3) &= 3^2 + 1 = 9 + 1 = 10 \\\\\n    f(-2) &= (-2)^2 + 1 = 4 + 1 = 5 \\\\\n    f(0) &= 0^2 + 1 = 0 + 1 = 1\\end{aligned}$$"
-    },
-    {
-      "type": "paragraph",
-      "text": "We can also substitute expressions, not just numbers:"
-    },
-    {
-      "type": "paragraph",
-      "text": "$$\\begin{aligned}f(a) &= a^2 + 1 \\\\\n    f(a + h) &= (a + h)^2 + 1 = a^2 + 2ah + h^2 + 1 \\\\\n    f(2x) &= (2x)^2 + 1 = 4x^2 + 1 \\\\\n    f(x^2) &= (x^2)^2 + 1 = x^4 + 1\\end{aligned}$$"
+      "text": "We can also substitute expressions, not just numbers:\n$$\\begin{aligned}\n f(a) &= a^2 + 1 \\\\\n f(a + h) &= (a + h)^2 + 1 = a^2 + 2ah + h^2 + 1 \\\\\n f(2x) &= (2x)^2 + 1 = 4x^2 + 1 \\\\\n f(x^2) &= (x^2)^2 + 1 = x^4 + 1\n\\end{aligned}$$"
     },
     {
       "type": "paragraph",
@@ -175,13 +178,18 @@
     {
       "type": "definition",
       "id": "definition-1.2",
-      "number": "1.2",
       "title": "Difference Quotient",
-      "content": "For a function $f$ and nonzero number $h$, the **difference quotient** is\n$$\n \\frac{f(x + h) - f(x)}{h}\n$$"
+      "content": "For a function $f$ and nonzero number $h$, the **difference quotient** is\n$$\n \\frac{f(x + h) - f(x)}{h}\n$$",
+      "number": "1.2"
     },
     {
       "type": "paragraph",
       "text": "The difference quotient measures the average rate of change of the function \nover an interval of width $h$. Geometrically, it represents the slope of \nthe line connecting two points on the graph of $f$: the point $(x, f(x))$ \nand the point $(x + h, f(x + h))$. This line is called a **secant \nline**."
+    },
+    {
+      "type": "paragraph",
+      "text": "The difference quotient captures change—how much a function's output \nshifts when its input shifts. In our spiritual lives, growth often happens \nincrementally, and we may not notice the \"difference quotient\" of our \nown sanctification day by day. Yet over time, these small changes compound \ninto transformation. \"Being confident of this, that he who began a good \nwork in you will carry it on to completion\" (Philippians 1:6).",
+      "edition": "christian"
     },
     {
       "type": "example",
@@ -209,14 +217,28 @@
       "text": "Functions can be represented in four main ways, each with its own strengths:"
     },
     {
-      "type": "list",
-      "ordered": true,
-      "items": [
-        "**Verbally:** Using words to describe the relationship. \n \n Example: \"The fare is $3 plus $2.50 per mile after the first mile.\"",
-        "**Algebraically:** Using an equation or formula. \n \n Example: $f(x) = 2.50x + 0.50$ (for $x \\geq 1$)",
-        "**Numerically:** Using a table of values.\n \n\n| $x$ (miles) | $f(x)$ (dollars) |\n| 1 | 3.00 |\n| 2 | 5.50 |\n| 3 | 8.00 |\n| 4 | 10.50 |\n| 5 | 13.00 |",
-        "**Graphically:** Using a visual plot of input-output pairs."
-      ]
+      "type": "paragraph",
+      "text": "1. **Verbally:** Using words to describe the relationship."
+    },
+    {
+      "type": "paragraph",
+      "text": "Example: \"The fare is $3 plus $2.50 per mile after the first mile.\""
+    },
+    {
+      "type": "paragraph",
+      "text": "2. **Algebraically:** Using an equation or formula."
+    },
+    {
+      "type": "paragraph",
+      "text": "Example: $f(x) = 2.50x + 0.50$ (for $x \\geq 1$)"
+    },
+    {
+      "type": "paragraph",
+      "text": "3. **Numerically:** Using a table of values.\n | $x$ (miles) | $f(x)$ (dollars) |\n| 1 | 3.00 |\n| 2 | 5.50 |\n| 3 | 8.00 |\n| 4 | 10.50 |\n| 5 | 13.00 |"
+    },
+    {
+      "type": "paragraph",
+      "text": "4. **Graphically:** Using a visual plot of input-output pairs."
     },
     {
       "type": "paragraph",
@@ -228,7 +250,7 @@
       "number": "1.6",
       "title": "Converting between representations",
       "problem": "A cell phone plan charges $40 per month for 500 minutes, plus $0.35 for \neach additional minute.\n\n1. Write a formula for the monthly cost $C$ as a function of minutes \n used $m$, assuming $m \\geq 500$.\n\n2. Create a table of values for $m = 500, 550, 600, 650, 700$.\n\n3. What does $C(575) = 66.25$ tell us in practical terms?",
-      "solution": "1. For $m \\geq 500$ minutes, the cost is the base $40 plus $0.35 \n for each minute over 500:\n $$\n C(m) = 40 + 0.35(m - 500) = 40 + 0.35m - 175 = 0.35m - 135\n $$\n\n2. Computing values:\n \n\n| $m$ (minutes) | $C(m)$ (dollars) |\n| 500 | 40.00 |\n| 550 | 57.50 |\n| 600 | 75.00 |\n| 650 | 92.50 |\n| 700 | 110.00 |\n\n3. $C(575) = 66.25$ means that if you use 575 minutes in a month, \n your bill will be $66.25."
+      "solution": "1. For $m \\geq 500$ minutes, the cost is the base $40 plus $0.35 \n for each minute over 500:\n $$\n C(m) = 40 + 0.35(m - 500) = 40 + 0.35m - 175 = 0.35m - 135\n $$\n\n2. Computing values:\n | $m$ (minutes) | $C(m)$ (dollars) |\n| 500 | 40.00 |\n| 550 | 57.50 |\n| 600 | 75.00 |\n| 650 | 92.50 |\n| 700 | 110.00 |\n\n 3. $C(575) = 66.25$ means that if you use 575 minutes in a month, \n your bill will be $66.25."
     },
     {
       "type": "heading",
@@ -262,7 +284,11 @@
     },
     {
       "type": "paragraph",
-      "text": "A familiar and important piecewise function is the \n**absolute value function**:\n$$\n|x| = \\begin{cases}\n    x & \\text{if } x \\ge 0 \\\\\n    -x & \\text{if } x < 0\n\\end{cases}\n$$\n\nThe absolute value of $x$ is the distance from $x$ to zero on the number line. It is always nonnegative."
+      "text": "A familiar and important piecewise function is the \n**absolute value function**:\n$$\n |x| = \\begin{cases}\n x & \\text{if } x \\ge 0 \\\\\n -x & \\text{if } x < 0\n \\end{cases}\n$$"
+    },
+    {
+      "type": "paragraph",
+      "text": "The absolute value of $x$ is the distance from $x$ to zero on the number \nline. It is always nonnegative. Notice that when $x$ is negative, $|x| = -x$ \nis positive (since negating a negative gives a positive)."
     },
     {
       "type": "example",
@@ -279,724 +305,598 @@
     {
       "type": "summary",
       "id": "summary-1.1",
-      "number": null,
       "title": "Key Concepts: Functions",
       "content": "- A **function** assigns exactly one output to each input.\n\n- The **domain** is the set of all valid inputs.\n\n- The notation $f(x)$ represents the output when input is $x$.\n\n- To evaluate $f(a)$, substitute $a$ for every occurrence of $x$.\n\n- The **difference quotient** $\\dfrac{f(x+h) - f(x)}{h}$ \n measures average rate of change.\n\n- Functions can be represented verbally, algebraically, numerically, \n or graphically.\n\n- **Piecewise functions** use different rules on different \n parts of the domain."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Vocabulary"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fill in each blank with the appropriate term."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Conceptual Understanding"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-1",
       "number": "1",
       "problem": "Determine whether each rule defines a function. Explain your reasoning.\n\n1. To each real number, assign its cube.\n\n2. To each real number, assign all numbers whose square equals it.\n\n3. To each country, assign its capital city.\n\n4. To each city, assign the country it is in.\n\n5. To each nonnegative real number, assign its principal square root.\n\n6. To each letter of the alphabet, assign its position (A=1, B=2, etc.).",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-2",
       "number": "2",
       "problem": "Explain in your own words why the \"exactly one output\" requirement is \nessential to the definition of a function. What would go wrong if we \nallowed multiple outputs for a single input?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-3",
       "number": "3",
       "problem": "Give three examples of functions from everyday life that are not \nmathematical. For each, identify the input, output, and why it qualifies \nas a function.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "paragraph",
+      "text": "True or False? Justify your answer.\n\n1. If $f(a) = f(b)$, then $a = b$.\n\n2. If $f$ is a function, then $f(a + b) = f(a) + f(b)$.\n\n3. The domain of $f(x) = \\sqrt{x}$ is $[0, \\infty)$.\n\n4. Every function has a formula.\n\n5. A vertical line can intersect the graph of a function at most once."
+    },
+    {
+      "type": "paragraph",
+      "text": "True or False? Justify your answer.\n\n1. The range of a function is always a subset of the real numbers.\n\n2. If $(a, b)$ is on the graph of $f$, then $f(a) = b$.\n\n3. The function $f(x) = |x|$ can be written as a piecewise function.\n\n4. A function can have two different inputs that produce the same output.\n\n5. Every set of ordered pairs defines a function."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Evaluating Functions"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-4",
       "number": "4",
-      "problem": "True or False? Justify your answer.\n\n1. If $f(a) = f(b)$, then $a = b$.\n\n2. If $f$ is a function, then $f(a + b) = f(a) + f(b)$.\n\n3. The domain of $f(x) = \\sqrt{x}$ is $[0, \\infty)$.\n\n4. Every function has a formula.\n\n5. A vertical line can intersect the graph of a function at most once.",
-      "variant": "conceptual",
-      "hint": null,
-      "answer": null
+      "problem": "Let $f(x) = 3x - 5$. Evaluate:\n\n1. $f(2)$\n\n2. $f(-3)$\n\n3. $f(0)$\n\n4. $f(a)$\n\n5. $f(a + 1)$\n\n6. $f(2x)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-5",
       "number": "5",
-      "problem": "True or False? Justify your answer.\n\n1. The range of a function is always a subset of the real numbers.\n\n2. If $(a, b)$ is on the graph of $f$, then $f(a) = b$.\n\n3. The function $f(x) = |x|$ can be written as a piecewise function.\n\n4. A function can have two different inputs that produce the same output.\n\n5. Every set of ordered pairs defines a function.\n\n%─────────────────────────────────────────────────────────\n% 3. EVALUATING FUNCTIONS - Basic\n%─────────────────────────────────────────────────────────",
-      "variant": "conceptual",
-      "hint": null,
-      "answer": null
+      "problem": "Let $f(x) = 2x^2 - 5x + 3$. Evaluate each expression.\n\n1. $f(1)$\n\n2. $f(-2)$\n\n3. $f(0)$\n\n4. $f(3)$\n\n5. $f(-x)$\n\n6. $-f(x)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-6",
       "number": "6",
-      "problem": "Let $f(x) = 3x - 5$. Evaluate:\n\n1. $f(2)$\n\n2. $f(-3)$\n\n3. $f(0)$\n\n4. $f(a)$\n\n5. $f(a + 1)$\n\n6. $f(2x)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $g(x) = x^2 - 4x + 3$. Evaluate:\n\n1. $g(0)$\n\n2. $g(3)$\n\n3. $g(-2)$\n\n4. $g(a)$\n\n5. $g(x + h)$\n\n6. $g(x + h) - g(x)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-7",
       "number": "7",
-      "problem": "Let $f(x) = 2x^2 - 5x + 3$. Evaluate each expression.\n\n1. $f(1)$\n\n2. $f(-2)$\n\n3. $f(0)$\n\n4. $f(3)$\n\n5. $f(-x)$\n\n6. $-f(x)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $g(x) = 4x^2 + 3x - 1$. Evaluate each expression.\n\n1. $g(2)$\n\n2. $g(-1)$\n\n3. $g(0)$\n\n4. $g(-3)$\n\n5. $g(-x)$\n\n6. $-g(x)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-8",
       "number": "8",
-      "problem": "Let $g(x) = x^2 - 4x + 3$. Evaluate:\n\n1. $g(0)$\n\n2. $g(3)$\n\n3. $g(-2)$\n\n4. $g(a)$\n\n5. $g(x + h)$\n\n6. $g(x + h) - g(x)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $f(x) = 3x^2 - 2x + 1$. Evaluate each of the following.\n\n1. $f(0)$\n\n2. $f(-1)$\n\n3. $f(2)$\n\n4. $f(a)$\n\n5. $f(x + h)$\n\n6. $f(2x) - 2f(x)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-9",
       "number": "9",
-      "problem": "Let $g(x) = 4x^2 + 3x - 1$. Evaluate each expression.\n\n1. $g(2)$\n\n2. $g(-1)$\n\n3. $g(0)$\n\n4. $g(-3)$\n\n5. $g(-x)$\n\n6. $-g(x)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $f(x) = \\sqrt{x + 5}$. Evaluate each expression if possible.\n\n1. $f(4)$\n\n2. $f(-1)$\n\n3. $f(-5)$\n\n4. $f(-6)$\n\n5. $f(x - 5)$\n\n6. $f(x^2 - 5)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-10",
       "number": "10",
-      "problem": "Let $f(x) = 3x^2 - 2x + 1$. Evaluate each of the following.\n\n1. $f(0)$\n\n2. $f(-1)$\n\n3. $f(2)$\n\n4. $f(a)$\n\n5. $f(x + h)$\n\n6. $f(2x) - 2f(x)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $h(t) = \\sqrt{t + 4}$. Evaluate:\n\n1. $h(0)$\n\n2. $h(5)$\n\n3. $h(-4)$\n\n4. $h(x^2)$\n\n5. $[h(t)]^2$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-11",
       "number": "11",
-      "problem": "Let $f(x) = \\sqrt{x + 5}$. Evaluate each expression if possible.\n\n1. $f(4)$\n\n2. $f(-1)$\n\n3. $f(-5)$\n\n4. $f(-6)$\n\n5. $f(x - 5)$\n\n6. $f(x^2 - 5)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $f(x) = \\sqrt{x - 3}$. Evaluate:\n\n1. $f(3)$\n\n2. $f(7)$\n\n3. $f(12)$\n\n4. $f(4)$\n\n5. $f(x + 3)$\n\n6. $f(x^2 + 3)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-12",
       "number": "12",
-      "problem": "Let $h(t) = \\sqrt{t + 4}$. Evaluate:\n\n1. $h(0)$\n\n2. $h(5)$\n\n3. $h(-4)$\n\n4. $h(x^2)$\n\n5. $[h(t)]^2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $g(x) = \\sqrt{2x - 8}$. Evaluate each expression if possible.\n\n1. $g(4)$\n\n2. $g(6)$\n\n3. $g(8)$\n\n4. $g(3)$\n\n5. $g(x + 4)$\n\n6. $[g(x)]^2 + 8$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-13",
       "number": "13",
-      "problem": "Let $f(x) = \\sqrt{x - 3}$. Evaluate:\n\n1. $f(3)$\n\n2. $f(7)$\n\n3. $f(12)$\n\n4. $f(4)$\n\n5. $f(x + 3)$\n\n6. $f(x^2 + 3)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $g(x) = \\dfrac{x}{x - 3}$. Find each of the following.\n\n1. $g(0)$\n\n2. $g(5)$\n\n3. $g(-1)$\n\n4. $g(3)$ (or explain why it is undefined)\n\n5. $g(a + 3)$\n\n6. $g\\left(\\dfrac{1}{x}\\right)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-14",
       "number": "14",
-      "problem": "Let $g(x) = \\sqrt{2x - 8}$. Evaluate each expression if possible.\n\n1. $g(4)$\n\n2. $g(6)$\n\n3. $g(8)$\n\n4. $g(3)$\n\n5. $g(x + 4)$\n\n6. $[g(x)]^2 + 8$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $h(x) = \\dfrac{x + 1}{x - 2}$. Evaluate each expression.\n\n1. $h(0)$\n\n2. $h(3)$\n\n3. $h(-1)$\n\n4. $h(2)$\n\n5. $h(a + 2)$\n\n6. $h\\left(\\dfrac{1}{x}\\right)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-15",
       "number": "15",
-      "problem": "Let $g(x) = \\dfrac{x}{x - 3}$. Find each of the following.\n\n1. $g(0)$\n\n2. $g(5)$\n\n3. $g(-1)$\n\n4. $g(3)$ (or explain why it is undefined)\n\n5. $g(a + 3)$\n\n6. $g\\left(\\dfrac{1}{x}\\right)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $f(x) = \\dfrac{2x - 3}{x + 4}$. Evaluate each expression.\n\n1. $f(1)$\n\n2. $f(-2)$\n\n3. $f(0)$\n\n4. $f(-4)$\n\n5. $f(a - 4)$\n\n6. $f\\left(\\dfrac{3}{2}\\right)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-16",
       "number": "16",
-      "problem": "Let $h(x) = \\dfrac{x + 1}{x - 2}$. Evaluate each expression.\n\n1. $h(0)$\n\n2. $h(3)$\n\n3. $h(-1)$\n\n4. $h(2)$\n\n5. $h(a + 2)$\n\n6. $h\\left(\\dfrac{1}{x}\\right)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $f(x) = |2x - 5|$. Evaluate each expression.\n\n1. $f(0)$\n\n2. $f(3)$\n\n3. $f(2.5)$\n\n4. $f(-1)$\n\n5. $f(5)$\n\n6. $f(x + 2.5)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-17",
       "number": "17",
-      "problem": "Let $f(x) = \\dfrac{2x - 3}{x + 4}$. Evaluate each expression.\n\n1. $f(1)$\n\n2. $f(-2)$\n\n3. $f(0)$\n\n4. $f(-4)$\n\n5. $f(a - 4)$\n\n6. $f\\left(\\dfrac{3}{2}\\right)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $f(x) = |2x - 1|$. Evaluate:\n\n1. $f(0)$\n\n2. $f(1)$\n\n3. $f(-2)$\n\n4. $f(3)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-18",
       "number": "18",
-      "problem": "Let $f(x) = |2x - 5|$. Evaluate each expression.\n\n1. $f(0)$\n\n2. $f(3)$\n\n3. $f(2.5)$\n\n4. $f(-1)$\n\n5. $f(5)$\n\n6. $f(x + 2.5)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $g(x) = |x + 3| - 4$. Evaluate each expression.\n\n1. $g(0)$\n\n2. $g(1)$\n\n3. $g(-3)$\n\n4. $g(-7)$\n\n5. $g(4)$\n\n6. Solve $g(x) = 0$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-19",
       "number": "19",
-      "problem": "Let $f(x) = |2x - 1|$. Evaluate:\n\n1. $f(0)$\n\n2. $f(1)$\n\n3. $f(-2)$\n\n4. $f(3)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $f(x) = 2x^2 - 3x + 1$. Find:\n\n1. $f(0)$\n\n2. $f(-1)$\n\n3. $f(2)$\n\n4. $f(a + b)$\n\n5. $f(x) - f(a)$\n\n6. $\\dfrac{f(x) - f(a)}{x - a}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-20",
       "number": "20",
-      "problem": "Let $g(x) = |x + 3| - 4$. Evaluate each expression.\n\n1. $g(0)$\n\n2. $g(1)$\n\n3. $g(-3)$\n\n4. $g(-7)$\n\n5. $g(4)$\n\n6. Solve $g(x) = 0$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $g(x) = \\dfrac{x}{x + 1}$. Find:\n\n1. $g(2)$\n\n2. $g(-2)$\n\n3. $g(1/2)$\n\n4. $g(0)$\n\n5. $g(a - 1)$\n\n6. $g(1/x)$",
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Determining Whether Relations Are Functions"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-21",
       "number": "21",
-      "problem": "Let $f(x) = 2x^2 - 3x + 1$. Find:\n\n1. $f(0)$\n\n2. $f(-1)$\n\n3. $f(2)$\n\n4. $f(a + b)$\n\n5. $f(x) - f(a)$\n\n6. $\\dfrac{f(x) - f(a)}{x - a}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Determine whether each equation defines $y$ as a function of $x$. \nJustify your answer.\n\n1. $y = x^3 - 2x$\n\n2. $x^2 + y^2 = 16$\n\n3. $y^2 = x + 4$\n\n4. $|y| = x$\n\n5. $y = \\sqrt{x - 1}$\n\n6. $x = y^3$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-22",
       "number": "22",
-      "problem": "Let $g(x) = \\dfrac{x}{x + 1}$. Find:\n\n1. $g(2)$\n\n2. $g(-2)$\n\n3. $g(1/2)$\n\n4. $g(0)$\n\n5. $g(a - 1)$\n\n6. $g(1/x)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Determine whether each equation defines $y$ as a function of $x$.\n\n1. $3x + 2y = 6$\n\n2. $x^2 - y^2 = 1$\n\n3. $y = |x - 3|$\n\n4. $x = |y| + 1$\n\n5. $xy = 4$\n\n6. $x^2 + y = 5$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-23",
       "number": "23",
-      "problem": "Determine whether each equation defines $y$ as a function of $x$. \nJustify your answer.\n\n1. $y = x^3 - 2x$\n\n2. $x^2 + y^2 = 16$\n\n3. $y^2 = x + 4$\n\n4. $|y| = x$\n\n5. $y = \\sqrt{x - 1}$\n\n6. $x = y^3$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "For each set of ordered pairs, determine whether the relation is a function.\n\n1. $\\{(1, 2), (2, 3), (3, 4), (4, 5)\\}$\n\n2. $\\{(1, 2), (1, 3), (2, 4), (3, 5)\\}$\n\n3. $\\{(-1, 1), (0, 0), (1, 1), (2, 4)\\}$\n\n4. $\\{(0, 1), (0, -1), (1, 2), (1, -2)\\}$\n\n5. $\\{(a, b), (b, c), (c, d), (d, a)\\}$\n\n6. $\\{(1, 1), (2, 1), (3, 1), (4, 1)\\}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-24",
       "number": "24",
-      "problem": "Determine whether each equation defines $y$ as a function of $x$.\n\n1. $3x + 2y = 6$\n\n2. $x^2 - y^2 = 1$\n\n3. $y = |x - 3|$\n\n4. $x = |y| + 1$\n\n5. $xy = 4$\n\n6. $x^2 + y = 5$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "For each set of ordered pairs, determine whether the relation is a function.\n\n1. $\\{(2, 4), (3, 9), (4, 16), (5, 25)\\}$\n\n2. $\\{(4, 2), (4, -2), (9, 3), (9, -3)\\}$\n\n3. $\\{(x, x^2) : x \\in \\{-2, -1, 0, 1, 2\\}\\}$\n\n4. $\\{(x^2, x) : x \\in \\{-2, -1, 0, 1, 2\\}\\}$",
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Difference Quotients"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-25",
       "number": "25",
-      "problem": "For each set of ordered pairs, determine whether the relation is a function.\n\n1. $\\{(1, 2), (2, 3), (3, 4), (4, 5)\\}$\n\n2. $\\{(1, 2), (1, 3), (2, 4), (3, 5)\\}$\n\n3. $\\{(-1, 1), (0, 0), (1, 1), (2, 4)\\}$\n\n4. $\\{(0, 1), (0, -1), (1, 2), (1, -2)\\}$\n\n5. $\\{(a, b), (b, c), (c, d), (d, a)\\}$\n\n6. $\\{(1, 1), (2, 1), (3, 1), (4, 1)\\}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find and simplify the difference quotient $\\dfrac{f(x+h) - f(x)}{h}$, $h \\neq 0$.\n\n1. $f(x) = 7x + 2$\n\n2. $f(x) = -3x + 5$\n\n3. $f(x) = 4 - 2x$\n\n4. $f(x) = \\dfrac{x}{3} + 1$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-26",
       "number": "26",
-      "problem": "For each set of ordered pairs, determine whether the relation is a function.\n\n1. $\\{(2, 4), (3, 9), (4, 16), (5, 25)\\}$\n\n2. $\\{(4, 2), (4, -2), (9, 3), (9, -3)\\}$\n\n3. $\\{(x, x^2) : x \\in \\{-2, -1, 0, 1, 2\\}\\}$\n\n4. $\\{(x^2, x) : x \\in \\{-2, -1, 0, 1, 2\\}\\}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find and simplify the difference quotient $\\dfrac{f(x+h) - f(x)}{h}$, $h \\neq 0$.\n\n1. $f(x) = x^2 - 3$\n\n2. $f(x) = 2x^2 + x$\n\n3. $f(x) = x^2 - 4x + 1$\n\n4. $f(x) = -x^2 + 3x - 2$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-27",
       "number": "27",
-      "problem": "Find and simplify the difference quotient $\\dfrac{f(x+h) - f(x)}{h}$, $h \\neq 0$.\n\n1. $f(x) = 7x + 2$\n\n2. $f(x) = -3x + 5$\n\n3. $f(x) = 4 - 2x$\n\n4. $f(x) = \\dfrac{x}{3} + 1$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the difference quotient $\\dfrac{f(x + h) - f(x)}{h}$ and simplify.\n\n1. $f(x) = 5x - 3$\n\n2. $f(x) = x^2 + 2x$\n\n3. $f(x) = 3x^2 - x + 4$\n\n4. $f(x) = \\dfrac{1}{x}$\n\n5. $f(x) = \\dfrac{2}{x + 1}$\n\n6. $f(x) = \\sqrt{x}$ (Hint: Rationalize the numerator.)",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-28",
       "number": "28",
-      "problem": "Find and simplify the difference quotient $\\dfrac{f(x+h) - f(x)}{h}$, $h \\neq 0$.\n\n1. $f(x) = x^2 - 3$\n\n2. $f(x) = 2x^2 + x$\n\n3. $f(x) = x^2 - 4x + 1$\n\n4. $f(x) = -x^2 + 3x - 2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find and simplify the difference quotient $\\dfrac{f(x+h) - f(x)}{h}$, $h \\neq 0$.\n\n1. $f(x) = x^3$\n\n2. $f(x) = \\dfrac{2}{x}$\n\n3. $f(x) = \\dfrac{1}{x^2}$\n\n4. $f(x) = \\sqrt{x + 1}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-29",
       "number": "29",
-      "problem": "Find the difference quotient $\\dfrac{f(x + h) - f(x)}{h}$ and simplify.\n\n1. $f(x) = 5x - 3$\n\n2. $f(x) = x^2 + 2x$\n\n3. $f(x) = 3x^2 - x + 4$\n\n4. $f(x) = \\dfrac{1}{x}$\n\n5. $f(x) = \\dfrac{2}{x + 1}$\n\n6. $f(x) = \\sqrt{x}$ (Hint: Rationalize the numerator.)",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find and simplify the difference quotient $\\dfrac{g(a+h) - g(a)}{h}$, $h \\neq 0$.\n\n1. $g(a) = 3a^2 - 2a$\n\n2. $g(a) = a^2 + 5a - 3$\n\n3. $g(a) = \\dfrac{1}{a + 1}$\n\n4. $g(a) = \\sqrt{2a}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-30",
       "number": "30",
-      "problem": "Find and simplify the difference quotient $\\dfrac{f(x+h) - f(x)}{h}$, $h \\neq 0$.\n\n1. $f(x) = x^3$\n\n2. $f(x) = \\dfrac{2}{x}$\n\n3. $f(x) = \\dfrac{1}{x^2}$\n\n4. $f(x) = \\sqrt{x + 1}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Given $f(x) = x^2 + 1$, find and simplify:\n\n1. $f(x + h)$\n\n2. $\\dfrac{f(x + h) - f(x)}{h}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-31",
       "number": "31",
-      "problem": "Find and simplify the difference quotient $\\dfrac{g(a+h) - g(a)}{h}$, $h \\neq 0$.\n\n1. $g(a) = 3a^2 - 2a$\n\n2. $g(a) = a^2 + 5a - 3$\n\n3. $g(a) = \\dfrac{1}{a + 1}$\n\n4. $g(a) = \\sqrt{2a}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Given $g(x) = \\dfrac{1}{x}$, find and simplify:\n\n1. $g(x + h)$\n\n2. $\\dfrac{g(x + h) - g(x)}{h}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-32",
       "number": "32",
-      "problem": "Given $f(x) = x^2 + 1$, find and simplify:\n\n1. $f(x + h)$\n\n2. $\\dfrac{f(x + h) - f(x)}{h}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Given $f(x) = \\sqrt{x}$, find and simplify:\n\n1. $f(x + h)$\n\n2. $\\dfrac{f(x + h) - f(x)}{h}$ (Hint: Rationalize.)",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-33",
       "number": "33",
-      "problem": "Given $g(x) = \\dfrac{1}{x}$, find and simplify:\n\n1. $g(x + h)$\n\n2. $\\dfrac{g(x + h) - g(x)}{h}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the average rate of change of $f(x) = x^2 - 4$ from $x = 1$ to $x = 3$.",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-34",
       "number": "34",
-      "problem": "Given $f(x) = \\sqrt{x}$, find and simplify:\n\n1. $f(x + h)$\n\n2. $\\dfrac{f(x + h) - f(x)}{h}$ (Hint: Rationalize.)",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the average rate of change of $g(x) = \\sqrt{x}$ from $x = 4$ to $x = 9$.",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-35",
       "number": "35",
-      "problem": "Find the average rate of change of $f(x) = x^2 - 4$ from $x = 1$ to $x = 3$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the average rate of change of each function over the given interval.\n\n1. $f(x) = 3x - 7$ from $x = 2$ to $x = 5$\n\n2. $g(x) = x^2 + 2x$ from $x = -1$ to $x = 3$\n\n3. $h(x) = x^3$ from $x = 1$ to $x = 2$\n\n4. $k(x) = \\dfrac{1}{x}$ from $x = 1$ to $x = 4$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-36",
       "number": "36",
-      "problem": "Find the average rate of change of $g(x) = \\sqrt{x}$ from $x = 4$ to $x = 9$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the average rate of change of each function over the given interval.\n\n1. $f(x) = x^2 - 3x + 1$ from $x = 0$ to $x = 4$\n\n2. $g(x) = \\sqrt{2x + 1}$ from $x = 0$ to $x = 4$\n\n3. $h(x) = |x - 2|$ from $x = 0$ to $x = 5$\n\n4. $k(x) = x^3 - x$ from $x = -2$ to $x = 2$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-37",
       "number": "37",
-      "problem": "Find the average rate of change of each function over the given interval.\n\n1. $f(x) = 3x - 7$ from $x = 2$ to $x = 5$\n\n2. $g(x) = x^2 + 2x$ from $x = -1$ to $x = 3$\n\n3. $h(x) = x^3$ from $x = 1$ to $x = 2$\n\n4. $k(x) = \\dfrac{1}{x}$ from $x = 1$ to $x = 4$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find and simplify the difference quotient $\\dfrac{f(x+h) - f(x)}{h}$, $h \\neq 0$.\n\n1. $f(x) = 4x - 3$\n\n2. $f(x) = x^2 - 2x + 5$\n\n3. $f(x) = 2x^2 + 3x - 1$\n\n4. $f(x) = \\dfrac{2}{x}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-38",
       "number": "38",
-      "problem": "Find the average rate of change of each function over the given interval.\n\n1. $f(x) = x^2 - 3x + 1$ from $x = 0$ to $x = 4$\n\n2. $g(x) = \\sqrt{2x + 1}$ from $x = 0$ to $x = 4$\n\n3. $h(x) = |x - 2|$ from $x = 0$ to $x = 5$\n\n4. $k(x) = x^3 - x$ from $x = -2$ to $x = 2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find and simplify the difference quotient $\\dfrac{f(x+h) - f(x)}{h}$, $h \\neq 0$.\n\n1. $f(x) = x^3$\n\n2. $f(x) = \\dfrac{1}{x + 3}$\n\n3. $f(x) = \\sqrt{x + 2}$ (Hint: Rationalize.)\n\n4. $f(x) = \\dfrac{x}{x + 1}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-39",
       "number": "39",
-      "problem": "Find and simplify the difference quotient $\\dfrac{f(x+h) - f(x)}{h}$, $h \\neq 0$.\n\n1. $f(x) = 4x - 3$\n\n2. $f(x) = x^2 - 2x + 5$\n\n3. $f(x) = 2x^2 + 3x - 1$\n\n4. $f(x) = \\dfrac{2}{x}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "The distance $d$ (in miles) traveled by a car after $t$ hours is given by \n$d(t) = 60t + 5t^2$ for $0 \\leq t \\leq 4$.\n\n1. Find the average rate of change (average speed) from $t = 0$ to $t = 2$.\n\n2. Find the average rate of change from $t = 2$ to $t = 4$.\n\n3. Explain why the average speed is increasing.",
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Piecewise Functions"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-40",
       "number": "40",
-      "problem": "Find and simplify the difference quotient $\\dfrac{f(x+h) - f(x)}{h}$, $h \\neq 0$.\n\n1. $f(x) = x^3$\n\n2. $f(x) = \\dfrac{1}{x + 3}$\n\n3. $f(x) = \\sqrt{x + 2}$ (Hint: Rationalize.)\n\n4. $f(x) = \\dfrac{x}{x + 1}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $f(x) = \\begin{cases} 2x + 3 & \\text{if } x \\le 1 \\\\ x^2 - 1 & \\text{if } x > 1 \\end{cases}$\n\nFind: (a) $f(-2)$ (b) $f(0)$ (c) $f(1)$ (d) $f(2)$ (e) $f(4)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-41",
       "number": "41",
-      "problem": "The distance $d$ (in miles) traveled by a car after $t$ hours is given by \n$d(t) = 60t + 5t^2$ for $0 \\leq t \\leq 4$.\n\n1. Find the average rate of change (average speed) from $t = 0$ to $t = 2$.\n\n2. Find the average rate of change from $t = 2$ to $t = 4$.\n\n3. Explain why the average speed is increasing.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Distance Traveled"
+      "problem": "Let $g(x) = \\begin{cases} |x| & \\text{if } x < 2 \\\\ 5 - x & \\text{if } x \\ge 2 \\end{cases}$\n\nFind: (a) $g(-3)$ (b) $g(0)$ (c) $g(2)$ (d) $g(5)$ (e) $g(10)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-42",
       "number": "42",
-      "problem": "Let $f(x) = \\begin{cases} 2x + 3 & \\text{if } x \\le 1 \\\\ x^2 - 1 & \\text{if } x > 1 \\end{cases}$\n\nFind: (a) $f(-2)$ (b) $f(0)$ (c) $f(1)$ (d) $f(2)$ (e) $f(4)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Evaluate each piecewise function at the indicated values.\n\n$f(x) = \\begin{cases} x + 5 & \\text{if } x < 0 \\\\ x^2 & \\text{if } x \\geq 0 \\end{cases}$\n\n1. $f(-3)$\n\n2. $f(-1)$\n\n3. $f(0)$\n\n4. $f(2)$\n\n5. $f(4)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-43",
       "number": "43",
-      "problem": "Let $g(x) = \\begin{cases} |x| & \\text{if } x < 2 \\\\ 5 - x & \\text{if } x \\ge 2 \\end{cases}$\n\nFind: (a) $g(-3)$ (b) $g(0)$ (c) $g(2)$ (d) $g(5)$ (e) $g(10)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Evaluate each piecewise function at the indicated values.\n\n$g(x) = \\begin{cases} 2x - 1 & \\text{if } x \\leq 2 \\\\ x^2 - 3 & \\text{if } x > 2 \\end{cases}$\n\n1. $g(-2)$\n\n2. $g(0)$\n\n3. $g(2)$\n\n4. $g(3)$\n\n5. $g(5)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-44",
       "number": "44",
-      "problem": "Evaluate each piecewise function at the indicated values.\n\n$f(x) = \\begin{cases} x + 5 & \\text{if } x < 0 \\\\ x^2 & \\text{if } x \\geq 0 \\end{cases}$\n\n1. $f(-3)$\n\n2. $f(-1)$\n\n3. $f(0)$\n\n4. $f(2)$\n\n5. $f(4)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Evaluate each piecewise function.\n\n$h(x) = \\begin{cases} -x & \\text{if } x < -1 \\\\ 1 & \\text{if } -1 \\leq x \\leq 1 \\\\ x & \\text{if } x > 1 \\end{cases}$\n\n1. $h(-5)$\n\n2. $h(-1)$\n\n3. $h(0)$\n\n4. $h(1)$\n\n5. $h(3)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-45",
       "number": "45",
-      "problem": "Evaluate each piecewise function at the indicated values.\n\n$g(x) = \\begin{cases} 2x - 1 & \\text{if } x \\leq 2 \\\\ x^2 - 3 & \\text{if } x > 2 \\end{cases}$\n\n1. $g(-2)$\n\n2. $g(0)$\n\n3. $g(2)$\n\n4. $g(3)$\n\n5. $g(5)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Evaluate each piecewise function.\n\n$f(x) = \\begin{cases} |x| & \\text{if } x < 1 \\\\ \\sqrt{x} & \\text{if } x \\geq 1 \\end{cases}$\n\n1. $f(-4)$\n\n2. $f(0)$\n\n3. $f(1)$\n\n4. $f(4)$\n\n5. $f(9)$",
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Writing Piecewise Functions"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-46",
       "number": "46",
-      "problem": "Evaluate each piecewise function.\n\n$h(x) = \\begin{cases} -x & \\text{if } x < -1 \\\\ 1 & \\text{if } -1 \\leq x \\leq 1 \\\\ x & \\text{if } x > 1 \\end{cases}$\n\n1. $h(-5)$\n\n2. $h(-1)$\n\n3. $h(0)$\n\n4. $h(1)$\n\n5. $h(3)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Write a piecewise formula for each function.\n\n1. $f(x) = |x - 2|$\n\n2. $g(x) = |3x + 1|$\n\n3. A parking garage charges $5 for the first hour or fraction \n thereof, and $3 for each additional hour or fraction thereof.\n\n4. Income tax: 10% on income up to $10,000; 15% on income between \n $10,000 and $40,000; 25% on income over $40,000.",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-47",
       "number": "47",
-      "problem": "Evaluate each piecewise function.\n\n$f(x) = \\begin{cases} |x| & \\text{if } x < 1 \\\\ \\sqrt{x} & \\text{if } x \\geq 1 \\end{cases}$\n\n1. $f(-4)$\n\n2. $f(0)$\n\n3. $f(1)$\n\n4. $f(4)$\n\n5. $f(9)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Write a piecewise function for each absolute value expression.\n\n1. $f(x) = |x + 4|$\n\n2. $f(x) = |2x - 6|$\n\n3. $f(x) = |x| + x$\n\n4. $f(x) = |x| - x$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-48",
       "number": "48",
-      "problem": "Write a piecewise formula for each function.\n\n1. $f(x) = |x - 2|$\n\n2. $g(x) = |3x + 1|$\n\n3. A parking garage charges $5 for the first hour or fraction \n thereof, and $3 for each additional hour or fraction thereof.\n\n4. Income tax: 10\\% on income up to $10,000; 15\\% on income between \n $10,000 and $40,000; 25\\% on income over $40,000.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Write a piecewise function for each absolute value expression.\n\n1. $g(x) = |x - 1| + |x + 1|$\n\n2. $g(x) = |x| + |x - 2|$\n\n3. $g(x) = |x + 3| - x$\n\n4. $g(x) = x - |x - 4|$",
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Applications"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-49",
       "number": "49",
-      "problem": "Write a piecewise function for each absolute value expression.\n\n1. $f(x) = |x + 4|$\n\n2. $f(x) = |2x - 6|$\n\n3. $f(x) = |x| + x$\n\n4. $f(x) = |x| - x$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "The relationship between Celsius and Fahrenheit temperatures is given by \n$F(C) = \\dfrac{9}{5}C + 32$.\n\n1. Find $F(0)$, $F(100)$, and $F(-40)$. Interpret each result.\n\n2. At what temperature are the Celsius and Fahrenheit readings equal?\n\n3. Express $C$ as a function of $F$.",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-50",
       "number": "50",
-      "problem": "Write a piecewise function for each absolute value expression.\n\n1. $g(x) = |x - 1| + |x + 1|$\n\n2. $g(x) = |x| + |x - 2|$\n\n3. $g(x) = |x + 3| - x$\n\n4. $g(x) = x - |x - 4|$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "A traveler exchanges dollars for euros at a rate where $E(d) = 0.85d - 5$, \nwhere $d$ is dollars and the $5$ represents a service fee.\n\n1. Find $E(100)$ and interpret.\n\n2. What is the minimum number of dollars needed to receive any euros?\n\n3. How many dollars are needed to receive 200 euros?",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-51",
       "number": "51",
-      "problem": "The relationship between Celsius and Fahrenheit temperatures is given by \n$F(C) = \\dfrac{9}{5}C + 32$.\n\n1. Find $F(0)$, $F(100)$, and $F(-40)$. Interpret each result.\n\n2. At what temperature are the Celsius and Fahrenheit readings equal?\n\n3. Express $C$ as a function of $F$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Temperature Conversion"
+      "problem": "The surface area $S$ of a sphere is a function of its radius $r$: \n$S(r) = 4\\pi r^2$.\n\n1. Find $S(2)$ and interpret the result.\n\n2. Find $S(2r)/S(r)$ and interpret.\n\n3. If the radius is doubled, by what factor does the surface area increase?\n\n4. If the radius is tripled, by what factor does the surface area increase?",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-52",
       "number": "52",
-      "problem": "A traveler exchanges dollars for euros at a rate where $E(d) = 0.85d - 5$, \nwhere $d$ is dollars and the $5$ represents a service fee.\n\n1. Find $E(100)$ and interpret.\n\n2. What is the minimum number of dollars needed to receive any euros?\n\n3. How many dollars are needed to receive 200 euros?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Currency Exchange"
+      "problem": "A company's profit $P$ (in thousands of dollars) from selling $x$ units \nof a product is given by $P(x) = -0.01x^2 + 40x - 3000$.\n\n1. Find $P(1000)$ and $P(2000)$. Interpret these values.\n\n2. Find $P(2000) - P(1000)$. What does this represent?\n\n3. Find $\\dfrac{P(x+h) - P(x)}{h}$ and simplify.",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-53",
       "number": "53",
-      "problem": "The surface area $S$ of a sphere is a function of its radius $r$: \n$S(r) = 4\\pi r^2$.\n\n1. Find $S(2)$ and interpret the result.\n\n2. Find $S(2r)/S(r)$ and interpret.\n\n3. If the radius is doubled, by what factor does the surface area increase?\n\n4. If the radius is tripled, by what factor does the surface area increase?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Surface Area"
+      "problem": "A taxi charges $3.50 for the first mile and $2.25 for each additional \nmile or fraction thereof. Write a piecewise function $C(m)$ that gives \nthe cost of a ride of $m$ miles for $0 < m \\leq 5$.",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-54",
       "number": "54",
-      "problem": "A company's profit $P$ (in thousands of dollars) from selling $x$ units \nof a product is given by $P(x) = -0.01x^2 + 40x - 3000$.\n\n1. Find $P(1000)$ and $P(2000)$. Interpret these values.\n\n2. Find $P(2000) - P(1000)$. What does this represent?\n\n3. Find $\\dfrac{P(x+h) - P(x)}{h}$ and simplify.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Profit Function"
+      "problem": "A cell phone plan costs $45 per month for 500 minutes, plus $0.35 for \neach minute over 500.\n\n1. Write a piecewise function $C(m)$ for the monthly cost based on \n $m$ minutes used.\n\n2. Find $C(450)$, $C(500)$, and $C(650)$.\n\n3. How many minutes can you use if your budget is $80?",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-55",
       "number": "55",
-      "problem": "A taxi charges $3.50 for the first mile and $2.25 for each additional \nmile or fraction thereof. Write a piecewise function $C(m)$ that gives \nthe cost of a ride of $m$ miles for $0 < m \\leq 5$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Taxi Fare"
+      "problem": "First-class postage is $0.55 for the first ounce and $0.20 for each \nadditional ounce or fraction thereof.\n\n1. Write a function $P(w)$ for the postage of a letter weighing \n $w$ ounces, where $0 < w \\leq 5$.\n\n2. Find $P(0.5)$, $P(1)$, $P(1.2)$, and $P(3.7)$.\n\n3. What is the maximum weight of a letter that costs $1.15?",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-56",
       "number": "56",
-      "problem": "A cell phone plan costs $45 per month for 500 minutes, plus $0.35 for \neach minute over 500.\n\n1. Write a piecewise function $C(m)$ for the monthly cost based on \n $m$ minutes used.\n\n2. Find $C(450)$, $C(500)$, and $C(650)$.\n\n3. How many minutes can you use if your budget is $80?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Phone Plan"
+      "problem": "An open box is made from a square piece of cardboard by cutting equal \nsquares from each corner and folding up the sides. If the cardboard is \n12 inches on each side and squares of side $x$ are cut out:\n\n1. Express the volume $V$ as a function of $x$.\n\n2. What is the domain of $V$?\n\n3. Find $V(1)$, $V(2)$, and $V(3)$.\n\n4. Use a graphing utility to estimate the value of $x$ that \n maximizes $V$.",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-57",
       "number": "57",
-      "problem": "First-class postage is $0.55 for the first ounce and $0.20 for each \nadditional ounce or fraction thereof.\n\n1. Write a function $P(w)$ for the postage of a letter weighing \n $w$ ounces, where $0 < w \\leq 5$.\n\n2. Find $P(0.5)$, $P(1)$, $P(1.2)$, and $P(3.7)$.\n\n3. What is the maximum weight of a letter that costs $1.15?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Postal Rates"
+      "problem": "A company's revenue from selling $x$ units is $R(x) = 50x - 0.01x^2$ and \nits cost is $C(x) = 10x + 5000$.\n\n1. Write the profit function $P(x) = R(x) - C(x)$.\n\n2. Find $P(1000)$ and interpret.\n\n3. How many units must be sold to break even?",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-58",
       "number": "58",
-      "problem": "An open box is made from a square piece of cardboard by cutting equal \nsquares from each corner and folding up the sides. If the cardboard is \n12 inches on each side and squares of side $x$ are cut out:\n\n1. Express the volume $V$ as a function of $x$.\n\n2. What is the domain of $V$?\n\n3. Find $V(1)$, $V(2)$, and $V(3)$.\n\n4. Use a graphing utility to estimate the value of $x$ that \n maximizes $V$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Volume of a Box"
+      "problem": "A farmer has 400 feet of fencing to enclose a rectangular field.\n\n1. If $x$ is the width of the field, express the length $l$ as a \n function of $x$.\n\n2. Express the area $A$ as a function of $x$.\n\n3. What is the domain of $A$?\n\n4. Find $A(50)$, $A(100)$, and $A(150)$.",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-59",
       "number": "59",
-      "problem": "A company's revenue from selling $x$ units is $R(x) = 50x - 0.01x^2$ and \nits cost is $C(x) = 10x + 5000$.\n\n1. Write the profit function $P(x) = R(x) - C(x)$.\n\n2. Find $P(1000)$ and interpret.\n\n3. How many units must be sold to break even?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Profit Function"
+      "problem": "The cost to rent a car is $50 plus $0.25 per mile. \n\n1. Write a function $C(m)$ for the total cost of driving $m$ miles.\n\n2. Find the cost of driving 200 miles.\n\n3. How many miles can you drive for $100?",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-60",
       "number": "60",
-      "problem": "A farmer has 400 feet of fencing to enclose a rectangular field.\n\n1. If $x$ is the width of the field, express the length $l$ as a \n function of $x$.\n\n2. Express the area $A$ as a function of $x$.\n\n3. What is the domain of $A$?\n\n4. Find $A(50)$, $A(100)$, and $A(150)$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Area Function"
+      "problem": "A cylindrical can must hold 500 cm³. The volume formula is $V = \\pi r^2 h$.\n\n1. Express the height $h$ as a function of the radius $r$.\n\n2. Express the surface area $S = 2\\pi r^2 + 2\\pi rh$ as a function of $r$ only.",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-61",
       "number": "61",
-      "problem": "The cost to rent a car is $50 plus $0.25 per mile. \n\n1. Write a function $C(m)$ for the total cost of driving $m$ miles.\n\n2. Find the cost of driving 200 miles.\n\n3. How many miles can you drive for $100?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Car Rental"
+      "problem": "If $f(x) = ax + b$ and $f(2) = 7$ and $f(5) = 16$, find $a$ and $b$.",
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Graphing Utility Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "Use a graphing utility to graph each function. Then determine \nthe domain and range from the graph.\n\n1. $f(x) = \\sqrt{9 - x^2}$\n\n2. $g(x) = \\sqrt{x^2 - 4}$\n\n3. $h(x) = \\dfrac{x}{x^2 + 1}$\n\n4. $k(x) = \\dfrac{x^2}{x^2 - 4}$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Use a graphing utility to graph each function and find all \nvalues of $x$ where $f(x) = 2$.\n\n1. $f(x) = x^2 - 3$\n\n2. $f(x) = |x - 1| + 1$\n\n3. $f(x) = \\sqrt{x + 3}$\n\n4. $f(x) = x^3 - x$"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Error Analysis"
+    },
+    {
+      "type": "paragraph",
+      "text": "Describe and correct the error in evaluating the function."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "(a)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Describe and correct the error."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "(b)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Describe and correct the error."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "(c)"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Challenge Problems"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-62",
       "number": "62",
-      "problem": "A cylindrical can must hold 500 cm³. The volume formula is $V = \\pi r^2 h$.\n\n1. Express the height $h$ as a function of the radius $r$.\n\n2. Express the surface area $S = 2\\pi r^2 + 2\\pi rh$ as a function of $r$ only.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Cylinder"
+      "problem": "Find all values of $x$ such that $f(x) = f(x + 2)$ if $f(x) = x^2 - 4x + 1$.",
+      "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-63",
       "number": "63",
-      "problem": "If $f(x) = ax + b$ and $f(2) = 7$ and $f(5) = 16$, find $a$ and $b$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Let $f(x) = x^2$. Show that $f(a + b) \\neq f(a) + f(b)$ in general, but find \nconditions on $a$ and $b$ under which equality holds.",
+      "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-64",
       "number": "64",
-      "problem": "Use a graphing utility to graph each function. Then determine \nthe domain and range from the graph.\n\n1. $f(x) = \\sqrt{9 - x^2}$\n\n2. $g(x) = \\sqrt{x^2 - 4}$\n\n3. $h(x) = \\dfrac{x}{x^2 + 1}$\n\n4. $k(x) = \\dfrac{x^2}{x^2 - 4}$",
-      "variant": "tech",
-      "hint": null,
-      "answer": null
+      "problem": "Define $f(x) = x - \\lfloor x \\rfloor$, where $\\lfloor x \\rfloor$ is the \ngreatest integer less than or equal to $x$. (This is called the \n*fractional part* of $x$.)\n\n1. Find $f(3.7)$, $f(-2.3)$, and $f(5)$.\n\n2. What is the domain of $f$?\n\n3. What is the range of $f$?\n\n4. Sketch the graph of $f$ for $-2 \\le x \\le 3$.",
+      "variant": "starred"
+    },
+    {
+      "type": "paragraph",
+      "text": "Let $f(x) = \\dfrac{1}{x}$. Show that \n$\\dfrac{f(x+h) - f(x)}{h} = \\dfrac{-1}{x(x+h)}$ and explain the \nsignificance of this result as $h$ approaches 0."
+    },
+    {
+      "type": "paragraph",
+      "text": "Let $f(x) = ax^2 + bx + c$ where $a \\neq 0$. \n\n1. Show that $f(x + h) - f(x) = h(2ax + ah + b)$.\n\n2. Use this to find a formula for the difference quotient.\n\n3. What value does the difference quotient approach as $h \\to 0$?"
+    },
+    {
+      "type": "paragraph",
+      "text": "A function $f$ satisfies $f(x + y) = f(x) + f(y)$ for all real \nnumbers $x$ and $y$.\n\n1. Prove that $f(0) = 0$.\n\n2. Prove that $f(-x) = -f(x)$ for all $x$.\n\n3. Prove that $f(nx) = nf(x)$ for any positive integer $n$.\n\n4. If $f(1) = 3$, find $f(5)$ and $f(-2)$."
     },
     {
       "type": "exercise",
       "id": "ex-1.1-65",
       "number": "65",
-      "problem": "Use a graphing utility to graph each function and find all \nvalues of $x$ where $f(x) = 2$.\n\n1. $f(x) = x^2 - 3$\n\n2. $f(x) = |x - 1| + 1$\n\n3. $f(x) = \\sqrt{x + 3}$\n\n4. $f(x) = x^3 - x$\n\n%─────────────────────────────────────────────────────────\n% 10. ERROR ANALYSIS\n%─────────────────────────────────────────────────────────",
-      "variant": "tech",
-      "hint": null,
-      "answer": null
+      "problem": "Prove that if $f(x) = mx + b$ is a linear function with $m \\neq 0$, then \nthe difference quotient $\\dfrac{f(x+h) - f(x)}{h}$ equals $m$ for all \n$x$ and all nonzero $h$. What does this tell you about linear functions?",
+      "variant": "conceptual"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-66",
       "number": "66",
-      "problem": "Describe and correct the error in evaluating the function.\n\n**(a)** Let $f(x) = x^2 - 3x$. Find $f(a + 1)$.\nquote\n$f(a + 1) = a^2 + 1 - 3a + 1 = a^2 - 3a + 2$ \nquote",
-      "variant": "error",
-      "hint": null,
-      "answer": null
+      "problem": "Prove that if $f(x) = ax^2 + bx + c$ is a quadratic function, then the \ndifference quotient equals $2ax + ah + b$. What happens to this expression \nas $h$ approaches zero?",
+      "variant": "conceptual"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-67",
       "number": "67",
-      "problem": "Describe and correct the error.\n\n**(b)** Determine whether $y^2 = x$ defines $y$ as a function of $x$.\nquote\n\"Since we can solve for $y$ to get $y = \\sqrt{x}$, yes it is a function.\" \n \nquote",
-      "variant": "error",
-      "hint": null,
-      "answer": null
+      "problem": "Show that if $f$ and $g$ are functions with the same domain, \nand $f(x) = g(x)$ for all $x$ in the domain, then $f$ and $g$ are the \nsame function.",
+      "variant": "conceptual"
     },
     {
       "type": "exercise",
       "id": "ex-1.1-68",
       "number": "68",
-      "problem": "Describe and correct the error.\n\n**(c)** Find the difference quotient for $f(x) = x^2$.\nquote\n$\\dfrac{f(x+h) - f(x)}{h} = \\dfrac{(x+h)^2 - x^2}{h} = \\dfrac{x^2 + h^2 - x^2}{h} = \\dfrac{h^2}{h} = h$ \nquote\n\n%─────────────────────────────────────────────────────────\n% 11. CHALLENGE PROBLEMS\n%─────────────────────────────────────────────────────────",
-      "variant": "error",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-1.1-69",
-      "number": "69",
-      "problem": "Find all values of $x$ such that $f(x) = f(x + 2)$ if $f(x) = x^2 - 4x + 1$.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-1.1-70",
-      "number": "70",
-      "problem": "Let $f(x) = x^2$. Show that $f(a + b) \\neq f(a) + f(b)$ in general, but find \nconditions on $a$ and $b$ under which equality holds.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-1.1-71",
-      "number": "71",
-      "problem": "Define $f(x) = x - \\lfloor x \\rfloor$, where $\\lfloor x \\rfloor$ is the \ngreatest integer less than or equal to $x$. (This is called the \n*fractional part* of $x$.)\n\n1. Find $f(3.7)$, $f(-2.3)$, and $f(5)$.\n\n2. What is the domain of $f$?\n\n3. What is the range of $f$?\n\n4. Sketch the graph of $f$ for $-2 \\le x \\le 3$.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-1.1-72",
-      "number": "72",
-      "problem": "Let $f(x) = \\dfrac{1}{x}$. Show that \n$\\dfrac{f(x+h) - f(x)}{h} = \\dfrac{-1}{x(x+h)}$ and explain the \nsignificance of this result as $h$ approaches 0.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-1.1-73",
-      "number": "73",
-      "problem": "Let $f(x) = ax^2 + bx + c$ where $a \\neq 0$. \n\n1. Show that $f(x + h) - f(x) = h(2ax + ah + b)$.\n\n2. Use this to find a formula for the difference quotient.\n\n3. What value does the difference quotient approach as $h \\to 0$?",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-1.1-74",
-      "number": "74",
-      "problem": "A function $f$ satisfies $f(x + y) = f(x) + f(y)$ for all real \nnumbers $x$ and $y$.\n\n1. Prove that $f(0) = 0$.\n\n2. Prove that $f(-x) = -f(x)$ for all $x$.\n\n3. Prove that $f(nx) = nf(x)$ for any positive integer $n$.\n\n4. If $f(1) = 3$, find $f(5)$ and $f(-2)$.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-1.1-75",
-      "number": "75",
-      "problem": "Prove that if $f(x) = mx + b$ is a linear function with $m \\neq 0$, then \nthe difference quotient $\\dfrac{f(x+h) - f(x)}{h}$ equals $m$ for all \n$x$ and all nonzero $h$. What does this tell you about linear functions?",
-      "variant": "proof",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-1.1-76",
-      "number": "76",
-      "problem": "Prove that if $f(x) = ax^2 + bx + c$ is a quadratic function, then the \ndifference quotient equals $2ax + ah + b$. What happens to this expression \nas $h$ approaches zero?",
-      "variant": "proof",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-1.1-77",
-      "number": "77",
-      "problem": "Show that if $f$ and $g$ are functions with the same domain, \nand $f(x) = g(x)$ for all $x$ in the domain, then $f$ and $g$ are the \nsame function.",
-      "variant": "proof",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-1.1-78",
-      "number": "78",
       "problem": "Let $f(x) = \\dfrac{x}{|x|}$ for $x \\neq 0$. \n\n1. Write $f$ as a piecewise function without absolute values.\n\n2. What is the range of $f$?\n\n3. Graph $f$ and explain why it is sometimes called the \n \"sign function.\"",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     }
   ],
   "marginNotes": [
@@ -1012,7 +912,7 @@
     },
     {
       "type": "quote",
-      "author": "Leonhard Euler (1707--1783)",
+      "author": "Leonhard Euler (1707–1783)",
       "text": "If a quantity depends on another \nquantity in such a way that if the latter is changed, the former undergoes \nchange, then the former quantity is called a function of the latter."
     }
   ]

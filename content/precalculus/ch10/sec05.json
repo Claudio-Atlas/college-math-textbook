@@ -34,22 +34,25 @@
     {
       "type": "definition",
       "id": "definition-10.1",
-      "number": "10.1",
-      "title": "Conic Section---Focus-Directrix Definition",
-      "content": "A **conic section** is the set of all points $P$ in the plane such\nthat the ratio of the distance from $P$ to a fixed point (the **focus**)\nto the distance from $P$ to a fixed line (the **directrix**) is a\npositive constant $e$, called the **eccentricity**:\n$$\n\\frac{PF}{PD} = e\n$$\nwhere $PF$ is the distance from $P$ to the focus $F$, and $PD$ is the\nperpendicular distance from $P$ to the directrix."
+      "title": "Conic Section—Focus-Directrix Definition",
+      "content": "A **conic section** is the set of all points $P$ in the plane such\nthat the ratio of the distance from $P$ to a fixed point (the **focus**)\nto the distance from $P$ to a fixed line (the **directrix**) is a\npositive constant $e$, called the **eccentricity**:\n$$\n\\frac{PF}{PD} = e\n$$\nwhere $PF$ is the distance from $P$ to the focus $F$, and $PD$ is the\nperpendicular distance from $P$ to the directrix.",
+      "number": "10.1"
     },
     {
       "type": "paragraph",
       "text": "The value of $e$ determines which conic we obtain:"
     },
     {
-      "type": "list",
-      "ordered": false,
-      "items": [
-        "If $0 < e < 1$, the conic is an **ellipse**.",
-        "If $e = 1$, the conic is a **parabola**.",
-        "If $e > 1$, the conic is a **hyperbola**."
-      ]
+      "type": "paragraph",
+      "text": "- If $0 < e < 1$, the conic is an **ellipse**."
+    },
+    {
+      "type": "paragraph",
+      "text": "- If $e = 1$, the conic is a **parabola**."
+    },
+    {
+      "type": "paragraph",
+      "text": "- If $e > 1$, the conic is a **hyperbola**."
     },
     {
       "type": "figure",
@@ -90,58 +93,26 @@
     },
     {
       "type": "paragraph",
-      "text": "Solving for $r$:"
-    },
-    {
-      "type": "paragraph",
-      "text": "$$\\begin{aligned}r &= e(p - r\\cos\\theta) \\\\\nr &= ep - er\\cos\\theta \\\\\nr + er\\cos\\theta &= ep \\\\\nr(1 + e\\cos\\theta) &= ep\\end{aligned}$$"
+      "text": "Solving for $r$:\n$$\\begin{aligned}\nr &= e(p - r\\cos\\theta) \\\\\nr &= ep - er\\cos\\theta \\\\\nr + er\\cos\\theta &= ep \\\\\nr(1 + e\\cos\\theta) &= ep\n\\end{aligned}$$"
     },
     {
       "type": "theorem",
       "id": "theorem-10.1",
-      "number": "10.1",
       "title": "Polar Equations of Conics",
       "content": "The graph of a polar equation of the form\n$$\nr = \\frac{ep}{1 \\pm e\\cos\\theta} \\quad \\text{or} \\quad r = \\frac{ep}{1 \\pm e\\sin\\theta}\n$$\nis a conic section, where $e > 0$ is the eccentricity and $p > 0$ is the\ndistance from the focus (at the pole) to the directrix.",
-      "label": "Theorem"
+      "number": "10.1"
     },
     {
       "type": "paragraph",
       "text": "The choice of $\\pm$ and $\\cos\\theta$ versus $\\sin\\theta$ determines the\norientation:"
     },
     {
-      "type": "table",
-      "headers": [
-        "**Equation**",
-        "**Directrix Location**",
-        "**Symmetry**"
-      ],
-      "rows": [
-        [
-          "$r = \\dfrac{ep}{1 + e\\cos\\theta}$",
-          "Vertical, right of pole ($x = p$)",
-          "Polar axis"
-        ],
-        [
-          "$r = \\dfrac{ep}{1 - e\\cos\\theta}$",
-          "Vertical, left of pole ($x = -p$)",
-          "Polar axis"
-        ],
-        [
-          "$r = \\dfrac{ep}{1 + e\\sin\\theta}$",
-          "Horizontal, above pole ($y = p$)",
-          "Line $\\theta = \\pi/2$"
-        ],
-        [
-          "$r = \\dfrac{ep}{1 - e\\sin\\theta}$",
-          "Horizontal, below pole ($y = -p$)",
-          "Line $\\theta = \\pi/2$"
-        ]
-      ],
-      "alignment": [
-        "left",
-        "left",
-        "left"
-      ]
+      "type": "paragraph",
+      "text": "\\renewcommand{}{1.3}"
+    },
+    {
+      "type": "paragraph",
+      "text": "| **Equation** | **Directrix Location** | **Symmetry** |\n| $r = \\dfrac{ep}{1 + e\\cos\\theta}$ | Vertical, right of pole ($x = p$) | Polar axis |\n| $r = \\dfrac{ep}{1 - e\\cos\\theta}$ | Vertical, left of pole ($x = -p$) | Polar axis |\n| $r = \\dfrac{ep}{1 + e\\sin\\theta}$ | Horizontal, above pole ($y = p$) | Line $\\theta = \\pi/2$ |\n| $r = \\dfrac{ep}{1 - e\\sin\\theta}$ | Horizontal, below pole ($y = -p$) | Line $\\theta = \\pi/2$ |"
     },
     {
       "type": "example",
@@ -166,7 +137,7 @@
       "number": "10.2",
       "title": "Graphing a Polar Ellipse",
       "problem": "Sketch the graph of $\\displaystyle r = \\frac{6}{2 + \\cos\\theta}$.",
-      "solution": "Divide by 2 to get standard form:\n$$\nr = \\frac{3}{1 + \\frac{1}{2}\\cos\\theta}\n$$\nSince $e = \\frac{1}{2} < 1$, this is an ellipse.\n\nEvaluate at key angles:\n\n| $\\theta$ | $0$ | $\\pi/2$ | $\\pi$ | $3\\pi/2$ |\n| $r$ | $\\frac{6}{2+1} = 2$ | $\\frac{6}{2+0} = 3$ | $\\frac{6}{2-1} = 6$ | $3$ |\n\nThe vertices are at $(2, 0)$ and $(6, \\pi)$. The major axis has length\n$2a = 2 + 6 = 8$, so $a = 4$. The center is at distance $a - 2 = 2$ from\nthe pole along the polar axis (in the direction of $\\theta = \\pi$).\n\nfigure[H]\n\nThe polar ellipse $r = 6/(2 + \\cos\\theta)$ with $e = 1/2$. The focus\nis at the pole (origin), vertices at $(2, 0)$ and $(6, \\pi)$. The ellipse is\nelongated along the polar axis with center at $(-2, 0)$.\n\nfigure"
+      "solution": "Divide by 2 to get standard form:\n$$\nr = \\frac{3}{1 + \\frac{1}{2}\\cos\\theta}\n$$\nSince $e = \\frac{1}{2} < 1$, this is an ellipse.\n\nEvaluate at key angles:\n\\renewcommand{}{1.3}\n\n| $\\theta$ | $0$ | $\\pi/2$ | $\\pi$ | $3\\pi/2$ |\n| $r$ | $\\frac{6}{2+1} = 2$ | $\\frac{6}{2+0} = 3$ | $\\frac{6}{2-1} = 6$ | $3$ |\n\nThe vertices are at $(2, 0)$ and $(6, \\pi)$. The major axis has length\n$2a = 2 + 6 = 8$, so $a = 4$. The center is at distance $a - 2 = 2$ from\nthe pole along the polar axis (in the direction of $\\theta = \\pi$)."
     },
     {
       "type": "example",
@@ -174,7 +145,7 @@
       "number": "10.3",
       "title": "Graphing a Polar Parabola",
       "problem": "Sketch the graph of $\\displaystyle r = \\frac{4}{1 - \\sin\\theta}$.",
-      "solution": "This is already in standard form with $e = 1$, so it's a parabola.\nThe form $1 - \\sin\\theta$ indicates the directrix is below the pole.\n\nEvaluate at key angles:\n\n| $\\theta$ | $0$ | $\\pi/2$ | $\\pi$ |\n| $r$ | $\\frac{4}{1-0} = 4$ | $\\frac{4}{1-1} = \\text{undefined}$ | $4$ |\n\nAt $\\theta = 3\\pi/2$: $r = \\frac{4}{1-(-1)} = \\frac{4}{2} = 2$ (this is the vertex).\n\nThe parabola has vertex at $(2, 3\\pi/2)$ (i.e., at $(0, -2)$ in rectangular\ncoordinates), opens upward, and approaches infinity as $\\theta \\to \\pi/2$.\n\nfigure[H]\n\nThe polar parabola $r = 4/(1 - \\sin\\theta)$ with $e = 1$. \nThe focus is at the pole, the vertex is at $(0, -2)$, and the \ndirectrix is $y = -4$. The parabola opens upward.\n\nfigure"
+      "solution": "This is already in standard form with $e = 1$, so it's a parabola.\nThe form $1 - \\sin\\theta$ indicates the directrix is below the pole.\n\nEvaluate at key angles:\n\\renewcommand{}{1.3}\n\n| $\\theta$ | $0$ | $\\pi/2$ | $\\pi$ |\n| $r$ | $\\frac{4}{1-0} = 4$ | $\\frac{4}{1-1} = \\text{undefined}$ | $4$ |\n\nAt $\\theta = 3\\pi/2$: $r = \\frac{4}{1-(-1)} = \\frac{4}{2} = 2$ (this is the vertex).\n\nThe parabola has vertex at $(2, 3\\pi/2)$ (i.e., at $(0, -2)$ in rectangular\ncoordinates), opens upward, and approaches infinity as $\\theta \\to \\pi/2$."
     },
     {
       "type": "example",
@@ -182,7 +153,7 @@
       "number": "10.4",
       "title": "Graphing a Polar Hyperbola",
       "problem": "Sketch the graph of $\\displaystyle r = \\frac{9}{2 + 3\\cos\\theta}$.",
-      "solution": "Divide by 2: $r = \\frac{9/2}{1 + \\frac{3}{2}\\cos\\theta}$.\n\nSince $e = \\frac{3}{2} > 1$, this is a hyperbola. The directrix is\nto the right of the pole.\n\nEvaluate at key angles:\n\n| $\\theta$ | $0$ | $\\pi/2$ | $\\pi$ | $3\\pi/2$ |\n| $r$ | $\\frac{9}{2+3} = \\frac{9}{5}$ | $\\frac{9}{2} = 4.5$ | $\\frac{9}{2-3} = -9$ | $4.5$ |\n\nThe negative value at $\\theta = \\pi$ indicates that point is actually at\n$(9, 0)$ (plotting a negative $r$ means going in the opposite direction).\n\nThe vertices of the hyperbola are at $(\\frac{9}{5}, 0)$ and $(9, 0)$.\n\nfigure[H]\n\nThe polar hyperbola $r = 9/(2 + 3\\cos\\theta)$ with $e = 3/2$. \nThe focus is at the pole. Both branches are shown: the right branch \nhas vertex at $(9/5, 0)$, the left passes through $(9, 0)$. \nDashed lines show the asymptotes.\n\nfigure"
+      "solution": "Divide by 2: $r = \\frac{9/2}{1 + \\frac{3}{2}\\cos\\theta}$.\n\nSince $e = \\frac{3}{2} > 1$, this is a hyperbola. The directrix is\nto the right of the pole.\n\nEvaluate at key angles:\n\\renewcommand{}{1.3}\n\n| $\\theta$ | $0$ | $\\pi/2$ | $\\pi$ | $3\\pi/2$ |\n| $r$ | $\\frac{9}{2+3} = \\frac{9}{5}$ | $\\frac{9}{2} = 4.5$ | $\\frac{9}{2-3} = -9$ | $4.5$ |\n\nThe negative value at $\\theta = \\pi$ indicates that point is actually at\n$(9, 0)$ (plotting a negative $r$ means going in the opposite direction).\n\nThe vertices of the hyperbola are at $(\\frac{9}{5}, 0)$ and $(9, 0)$."
     },
     {
       "type": "heading",
@@ -230,10 +201,9 @@
     {
       "type": "theorem",
       "id": "theorem-10.2",
-      "number": "10.2",
       "title": "Kepler's Laws of Planetary Motion",
       "content": "1. **Law of Ellipses:** Each planet moves in an elliptical\n orbit with the Sun at one focus.\n\n2. **Law of Equal Areas:** A line segment from the Sun to a\n planet sweeps out equal areas in equal times.\n\n3. **Harmonic Law:** The square of a planet's orbital period\n is proportional to the cube of its semi-major axis: $T^2 \\propto a^3$.",
-      "label": "Theorem"
+      "number": "10.2"
     },
     {
       "type": "paragraph",
@@ -250,10 +220,9 @@
     {
       "type": "theorem",
       "id": "theorem-10.3",
-      "number": "10.3",
       "title": "Orbital Distances",
       "content": "For an elliptical orbit with semi-major axis $a$ and eccentricity $e$:\n\n- **Perihelion** (closest approach): $r_{\\min} = a(1 - e)$\n\n- **Aphelion** (farthest distance): $r_{\\max} = a(1 + e)$",
-      "label": "Theorem"
+      "number": "10.3"
     },
     {
       "type": "example",
@@ -261,7 +230,7 @@
       "number": "10.7",
       "title": "Halley's Comet",
       "problem": "Halley's comet has an elliptical orbit with eccentricity $e \\approx 0.967$\nand semi-major axis $a \\approx 17.94$ AU (astronomical units, where\n1 AU $\\approx$ 93 million miles).\n\n**(a)** Find the polar equation of the orbit.\n\n**(b)** Find the perihelion and aphelion distances.",
-      "solution": "**(a)** The polar equation is:\n$$\nr = \\frac{a(1-e^2)}{1 - e\\cos\\theta} = \\frac{17.94(1 - 0.967^2)}{1 - 0.967\\cos\\theta}\n$$\n\nCalculate $1 - e^2 = 1 - 0.935 = 0.065$:\n$$\nr = \\frac{17.94 \\times 0.065}{1 - 0.967\\cos\\theta} \\approx \\frac{1.17}{1 - 0.967\\cos\\theta}\n$$\n\n**(b)** Perihelion: $r_{\\min} = a(1-e) = 17.94(1 - 0.967) = 17.94 \\times 0.033 \\approx 0.59$ AU\n\nAphelion: $r_{\\max} = a(1+e) = 17.94(1 + 0.967) = 17.94 \\times 1.967 \\approx 35.3$ AU\n\nSo Halley's comet comes as close as about 55 million miles from the Sun\n(inside Venus's orbit!) and travels as far as about 3.3 billion miles\n(beyond Neptune's orbit).\n\nfigure[H]\n\nHalley's comet orbit (not to scale). The extreme eccentricity\n($e = 0.967$) creates a highly elongated ellipse. The comet's perihelion\nbrings it closer to the Sun than Venus, while its aphelion takes it beyond\nNeptune. The small dashed circle represents Earth's orbit for scale.\n\nfigure"
+      "solution": "**(a)** The polar equation is:\n$$\nr = \\frac{a(1-e^2)}{1 - e\\cos\\theta} = \\frac{17.94(1 - 0.967^2)}{1 - 0.967\\cos\\theta}\n$$\n\nCalculate $1 - e^2 = 1 - 0.935 = 0.065$:\n$$\nr = \\frac{17.94 \\times 0.065}{1 - 0.967\\cos\\theta} \\approx \\frac{1.17}{1 - 0.967\\cos\\theta}\n$$\n\n**(b)** Perihelion: $r_{\\min} = a(1-e) = 17.94(1 - 0.967) = 17.94 \\times 0.033 \\approx 0.59$ AU\n\nAphelion: $r_{\\max} = a(1+e) = 17.94(1 + 0.967) = 17.94 \\times 1.967 \\approx 35.3$ AU\n\nSo Halley's comet comes as close as about 55 million miles from the Sun\n(inside Venus's orbit!) and travels as far as about 3.3 billion miles\n(beyond Neptune's orbit)."
     },
     {
       "type": "example",
@@ -274,454 +243,351 @@
     {
       "type": "summary",
       "id": "summary-10.5",
-      "number": null,
       "title": "Polar Equations of Conics",
-      "content": "**Standard Forms:** A conic with focus at the pole and directrix at distance $p$:\n$$\nr = \\frac{ep}{1 \\pm e\\cos\\theta} \\quad \\text{or} \\quad r = \\frac{ep}{1 \\pm e\\sin\\theta}\n$$\n\n**Conic Type by Eccentricity:**\n\n| $0 < e < 1$ | Ellipse (closed curve) |\n| $e = 1$ | Parabola (one branch, opens to infinity) |\n| $e > 1$ | Hyperbola (two branches) |\n\n**Directrix Orientation:**\n\n- $1 + e\\cos\\theta$: vertical directrix to the *right* of pole\n\n- $1 - e\\cos\\theta$: vertical directrix to the *left* of pole\n\n- $1 + e\\sin\\theta$: horizontal directrix *above* pole\n\n- $1 - e\\sin\\theta$: horizontal directrix *below* pole\n\n**Orbital Mechanics:** For elliptical orbits with semi-major axis $a$:\n$$\nr = \\frac{a(1-e^2)}{1 - e\\cos\\theta}, \\quad r_{\\min} = a(1-e), \\quad r_{\\max} = a(1+e)\n$$"
+      "content": "**Standard Forms:** A conic with focus at the pole and directrix at distance $p$:\n$$\nr = \\frac{ep}{1 \\pm e\\cos\\theta} \\quad \\text{or} \\quad r = \\frac{ep}{1 \\pm e\\sin\\theta}\n$$\n\n**Conic Type by Eccentricity:**\n\\renewcommand{}{1.3}\n\n| $0 < e < 1$ | Ellipse (closed curve) |\n| $e = 1$ | Parabola (one branch, opens to infinity) |\n| $e > 1$ | Hyperbola (two branches) |\n\n**Directrix Orientation:**\n\n- $1 + e\\cos\\theta$: vertical directrix to the *right* of pole\n\n- $1 - e\\cos\\theta$: vertical directrix to the *left* of pole\n\n- $1 + e\\sin\\theta$: horizontal directrix *above* pole\n\n- $1 - e\\sin\\theta$: horizontal directrix *below* pole\n\n**Orbital Mechanics:** For elliptical orbits with semi-major axis $a$:\n$$\nr = \\frac{a(1-e^2)}{1 - e\\cos\\theta}, \\quad r_{\\min} = a(1-e), \\quad r_{\\max} = a(1+e)\n$$"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-1",
       "number": "1",
-      "problem": "Fill in the blanks.\n\n1. A conic with eccentricity $e < 1$ is an {1in}.\n\n2. A conic with eccentricity $e = 1$ is a {1in}.\n\n3. A conic with eccentricity $e > 1$ is a {1in}.\n\n4. In the polar equation $r = \\frac{ep}{1 + e\\cos\\theta}$, the directrix\n is a {0.5in} line located to the {0.5in}\n of the pole.\n\n5. The closest point of a planet's orbit to the Sun is called the\n {1in}.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Fill in the blanks.\n\n1. A conic with eccentricity $e < 1$ is an .\n\n2. A conic with eccentricity $e = 1$ is a .\n\n3. A conic with eccentricity $e > 1$ is a .\n\n4. In the polar equation $r = \\frac{ep}{1 + e\\cos\\theta}$, the directrix\n is a line located to the \n of the pole.\n\n5. The closest point of a planet's orbit to the Sun is called the\n .",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-2",
       "number": "2",
       "problem": "True or False. Justify your answer.\n\n1. The polar equations $r = \\frac{4}{1+\\cos\\theta}$ and\n $r = \\frac{4}{1-\\cos\\theta}$ represent the same parabola.\n\n2. Every conic can be written in the form $r = \\frac{ep}{1 \\pm e\\cos\\theta}$\n or $r = \\frac{ep}{1 \\pm e\\sin\\theta}$.\n\n3. If $e = 0.5$, then the conic is an ellipse.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-3",
       "number": "3",
       "problem": "$\\displaystyle r = \\frac{4}{1 + \\cos\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-4",
       "number": "4",
       "problem": "$\\displaystyle r = \\frac{6}{1 - 2\\sin\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-5",
       "number": "5",
       "problem": "$\\displaystyle r = \\frac{10}{5 + 3\\cos\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-6",
       "number": "6",
       "problem": "$\\displaystyle r = \\frac{8}{2 - 2\\sin\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-7",
       "number": "7",
       "problem": "$\\displaystyle r = \\frac{12}{3 + 4\\cos\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-8",
       "number": "8",
       "problem": "$\\displaystyle r = \\frac{15}{5 - 5\\sin\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-9",
       "number": "9",
       "problem": "$\\displaystyle r = \\frac{9}{3 - 2\\cos\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-10",
       "number": "10",
       "problem": "$\\displaystyle r = \\frac{1}{1 + \\sin\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-11",
       "number": "11",
       "problem": "$\\displaystyle r = \\frac{3}{1 - \\cos\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-12",
       "number": "12",
       "problem": "$\\displaystyle r = \\frac{5}{1 + \\sin\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-13",
       "number": "13",
       "problem": "$\\displaystyle r = \\frac{6}{2 + \\cos\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-14",
       "number": "14",
       "problem": "$\\displaystyle r = \\frac{12}{3 - \\sin\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-15",
       "number": "15",
       "problem": "$\\displaystyle r = \\frac{4}{1 + 2\\cos\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-16",
       "number": "16",
       "problem": "$\\displaystyle r = \\frac{6}{2 - 3\\sin\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-17",
       "number": "17",
       "problem": "$\\displaystyle r = \\frac{8}{4 + 3\\sin\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-18",
       "number": "18",
       "problem": "$\\displaystyle r = \\frac{10}{2 + 2\\cos\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-19",
       "number": "19",
       "problem": "Parabola; directrix: $x = 4$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-20",
       "number": "20",
       "problem": "Parabola; directrix: $y = -2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-21",
       "number": "21",
       "problem": "Ellipse; $e = \\frac{1}{2}$; directrix: $x = 4$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-22",
       "number": "22",
       "problem": "Ellipse; $e = \\frac{2}{3}$; directrix: $y = 6$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-23",
       "number": "23",
       "problem": "Hyperbola; $e = 2$; directrix: $x = -3$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-24",
       "number": "24",
       "problem": "Hyperbola; $e = \\frac{3}{2}$; directrix: $y = 4$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-25",
       "number": "25",
       "problem": "Ellipse; vertices at $(5, 0)$ and $(1, \\pi)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-26",
       "number": "26",
       "problem": "Ellipse; vertices at $(2, \\pi/2)$ and $(6, 3\\pi/2)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-27",
       "number": "27",
       "problem": "Hyperbola; vertices at $(2, 0)$ and $(8, 0)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-28",
       "number": "28",
       "problem": "Parabola; vertex at $(3, \\pi/2)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-29",
       "number": "29",
       "problem": "$\\displaystyle r = \\frac{4}{1 + \\cos\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-30",
       "number": "30",
       "problem": "$\\displaystyle r = \\frac{6}{2 - \\sin\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-31",
       "number": "31",
       "problem": "$\\displaystyle r = \\frac{8}{2 + 2\\cos\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-32",
       "number": "32",
       "problem": "$\\displaystyle r = \\frac{12}{3 + \\sin\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-33",
       "number": "33",
       "problem": "$\\displaystyle r = \\frac{15}{5 - 3\\cos\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-34",
       "number": "34",
       "problem": "$\\displaystyle r = \\frac{6}{1 + 2\\sin\\theta}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-35",
       "number": "35",
       "problem": "$y^2 = 8x$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-36",
       "number": "36",
       "problem": "$\\displaystyle \\frac{x^2}{9} + \\frac{y^2}{4} = 1$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-37",
       "number": "37",
       "problem": "$\\displaystyle \\frac{x^2}{16} - \\frac{y^2}{9} = 1$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-38",
       "number": "38",
       "problem": "$x^2 + y^2 - 4x = 0$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-39",
       "number": "39",
       "problem": "Mars has an orbital eccentricity of $e \\approx 0.0934$ and semi-major axis\n$a \\approx 1.524$ AU.\n\n1. Find the polar equation of Mars's orbit.\n\n2. Find the perihelion and aphelion distances.\n\n3. How much does Mars's distance from the Sun vary?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Mars's Orbit"
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-40",
       "number": "40",
       "problem": "Mercury has the most eccentric orbit of any planet, with $e \\approx 0.2056$\nand $a \\approx 0.387$ AU.\n\n1. Find the polar equation of Mercury's orbit.\n\n2. Find the perihelion and aphelion distances in millions of miles.\n\n3. By what percentage does Mercury's distance from the Sun vary?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Mercury's Orbit"
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-41",
       "number": "41",
       "problem": "A comet has a highly eccentric elliptical orbit with perihelion 0.5 AU\nand aphelion 50 AU.\n\n1. Find the semi-major axis $a$.\n\n2. Find the eccentricity $e$.\n\n3. Write the polar equation of the orbit.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Comet's Orbit"
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-42",
       "number": "42",
       "problem": "A spacecraft leaving Earth follows a hyperbolic trajectory relative to\nthe Sun with eccentricity $e = 1.3$ and closest approach (perihelion)\nof 1 AU.\n\n1. Find the value of $a$ (note: for hyperbolas, $a = r_{\\min}/(e-1)$).\n\n2. Write the polar equation of the trajectory.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Escape Trajectory"
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-43",
       "number": "43",
       "problem": "Explain why the polar form of a conic with focus at the pole is simpler\nthan the rectangular form for orbital mechanics applications.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-44",
       "number": "44",
       "problem": "For the equation $r = \\frac{ep}{1 - e\\cos\\theta}$:\n\n1. What happens to the graph as $e$ increases from 0 toward 1?\n\n2. What happens at $e = 1$?\n\n3. What happens as $e$ increases beyond 1?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-45",
       "number": "45",
       "problem": "Explain why a comet in a hyperbolic orbit ($e > 1$) will never return\nto the inner solar system.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-46",
       "number": "46",
       "problem": "Prove that for an ellipse with polar equation $r = \\frac{a(1-e^2)}{1-e\\cos\\theta}$:\n\n1. The sum $r_{\\min} + r_{\\max} = 2a$.\n\n2. The product $r_{\\min} \\cdot r_{\\max} = b^2$, where $b$ is the semi-minor axis.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-47",
       "number": "47",
       "problem": "A satellite is in an elliptical orbit with Earth at one focus. The perigee\n(closest approach) is 200 miles above Earth's surface, and the apogee\n(farthest point) is 1000 miles above the surface. If Earth's radius is\napproximately 4000 miles:\n\n1. Find the semi-major axis of the orbit (measured from Earth's center).\n\n2. Find the eccentricity of the orbit.\n\n3. Write a polar equation for the orbit with Earth's center at the pole.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-48",
       "number": "48",
       "problem": "Kepler's Second Law states that a planet sweeps out equal areas in equal\ntimes. For an ellipse with polar equation $r = \\frac{a(1-e^2)}{1-e\\cos\\theta}$,\nthe area swept from angle $\\theta_1$ to $\\theta_2$ is:\n$$\nA = \\frac{1}{2}\\int_{\\theta_1}^{\\theta_2} r^2 \\, d\\theta\n$$\nShow that the rate at which area is swept (with respect to time) is\nconstant if and only if the angular momentum is constant.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ex-10.5-49",
       "number": "49",
       "problem": "Two comets have orbits with the same semi-major axis $a$ but different\neccentricities $e_1 < e_2$. Both orbits have the same focus (the Sun).\n\n1. Which comet comes closer to the Sun?\n\n2. Which comet goes farther from the Sun?\n\n3. Do the orbits have the same period? (Hint: Use Kepler's Third Law.)",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "variant": "starred"
     }
   ]
 }

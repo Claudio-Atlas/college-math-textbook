@@ -17,11 +17,14 @@
     "content": "The binomial coefficients $\\binom{n}{k}$ count the number of ways to \nchoose $k$ items from $n$ items. This is *combinatorics*—the \nmathematics of counting possibilities.\n\nConsider: how many ways can you choose 3 apostles from the 12? The answer \nis $\\binom{12}{3} = 220$. How many ways can you select a 5-person committee \nfrom a church of 100 members? The answer is $\\binom{100}{5} = 75,287,520$.\n\nThese numbers appear when we expand $(a+b)^n$ because each term in the \nexpansion corresponds to a choice: how many of the $n$ factors contribute \nan $a$ versus a $b$?\n\nPascal's triangle, which displays these coefficients in a beautiful \nsymmetric pattern, was discovered independently by mathematicians in \nChina, Persia, and Europe. The same structure appears wherever we look: \nin probability, in algebra, in the counting of subsets. This universality \npoints to a deeper order in creation.",
     "edition": "christian"
   },
+  "epigraph": {
+    "text": "*\"He telleth the number of the stars; he calleth \nthem all by their names.\"*",
+    "reference": "Psalm 147:4",
+    "quote": "To count is divine—and the \nbinomial coefficients count the ways things can be chosen.",
+    "quoteAuthor": "—",
+    "edition": "christian"
+  },
   "content": [
-    {
-      "type": "paragraph",
-      "text": "*\"He telleth the number of the stars; he calleth \nthem all by their names.\"*{Psalm 147:4}{To count is divine—and the \nbinomial coefficients count the ways things can be chosen.}{—}"
-    },
     {
       "type": "paragraph",
       "text": "How do we expand $(a + b)^n$ for large $n$? For $n = 2$, we know \n$(a+b)^2 = a^2 + 2ab + b^2$. But what about $(a+b)^{10}$ or $(a+b)^{100}$? \nThe **binomial theorem** provides a formula for any positive integer \n$n$, revealing a beautiful pattern encoded in Pascal's triangle."
@@ -34,9 +37,9 @@
     {
       "type": "definition",
       "id": "definition-11.1",
-      "number": "11.1",
       "title": "Factorial",
-      "content": "For a non-negative integer $n$, the **factorial** \n$n!$ is defined as:\n$$\n n! = n \\cdot (n-1) \\cdot (n-2) \\cdots 3 \\cdot 2 \\cdot 1\n$$\nBy convention, $0! = 1$."
+      "content": "For a non-negative integer $n$, the **factorial** \n$n!$ is defined as:\n$$\n n! = n \\cdot (n-1) \\cdot (n-2) \\cdots 3 \\cdot 2 \\cdot 1\n$$\nBy convention, $0! = 1$.",
+      "number": "11.1"
     },
     {
       "type": "paragraph",
@@ -45,9 +48,9 @@
     {
       "type": "definition",
       "id": "definition-11.2",
-      "number": "11.2",
       "title": "Binomial Coefficient",
-      "content": "The **binomial coefficient**} \n\"$n$ choose $k$\" is:\n$$\n \\binom{n}{k} = \\frac{n!}{k!(n-k)!}\n$$\nThis counts the number of ways to choose $k$ objects from $n$ objects \n(order doesn't matter). This is also called a **combination**."
+      "content": "The **binomial coefficient**} \n\"$n$ choose $k$\" is:\n$$\n \\binom{n}{k} = \\frac{n!}{k!(n-k)!}\n$$\nThis counts the number of ways to choose $k$ objects from $n$ objects \n(order doesn't matter). This is also called a **combination**.",
+      "number": "11.2"
     },
     {
       "type": "example",
@@ -58,8 +61,9 @@
       "solution": "(a) $\\binom{5}{2} = \\frac{5!}{2! \\cdot 3!} = \\frac{120}{2 \\cdot 6} = \\frac{120}{12} = 10$\n\n(b) $\\binom{8}{3} = \\frac{8!}{3! \\cdot 5!} = \\frac{8 \\cdot 7 \\cdot 6}{3 \\cdot 2 \\cdot 1} = \\frac{336}{6} = 56$\n\n(c) $\\binom{10}{0} = \\frac{10!}{0! \\cdot 10!} = 1$\n\n(d) $\\binom{7}{7} = \\frac{7!}{7! \\cdot 0!} = 1$"
     },
     {
-      "type": "paragraph",
-      "text": "**Key Properties:**"
+      "type": "heading",
+      "level": 3,
+      "text": "Key Properties:"
     },
     {
       "type": "list",
@@ -92,10 +96,9 @@
     {
       "type": "theorem",
       "id": "theorem-11.1",
-      "number": "11.1",
       "title": "The Binomial Theorem",
       "content": "For any positive integer $n$:\n$$\n \\boxed{(a + b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^k}\n$$\nExpanded:\n$$\n (a+b)^n = \\binom{n}{0}a^n + \\binom{n}{1}a^{n-1}b + \\binom{n}{2}a^{n-2}b^2 + \\cdots + \\binom{n}{n}b^n\n$$",
-      "label": "Theorem"
+      "number": "11.1"
     },
     {
       "type": "example",
@@ -135,8 +138,13 @@
       "text": "Special Cases and Applications"
     },
     {
+      "type": "heading",
+      "level": 3,
+      "text": "Setting $a = b = 1$:"
+    },
+    {
       "type": "paragraph",
-      "text": "**Setting $a = b = 1$:**\n$$\n 2^n = (1+1)^n = \\sum_{k=0}^{n} \\binom{n}{k}\n$$\nThe sum of the entries in row $n$ of Pascal's triangle is $2^n$."
+      "text": "$$\n 2^n = (1+1)^n = \\sum_{k=0}^{n} \\binom{n}{k}\n$$\nThe sum of the entries in row $n$ of Pascal's triangle is $2^n$."
     },
     {
       "type": "paragraph",
@@ -158,10 +166,9 @@
     {
       "type": "theorem",
       "id": "theorem-11.2",
-      "number": "11.2",
       "title": "Binomial Theorem, Proof",
-      "content": "For all positive integers $n$:\n$$\n(a + b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^k\n$$\n\n**Proof by Induction:**\n\n**Base Case ($n = 1$):**\n$$\n(a + b)^1 = a + b = \\binom{1}{0}a^1b^0 + \\binom{1}{1}a^0b^1 = a + b \\quad \\checkmark\n$$\n\n**Inductive Step:**\n\nAssume the theorem holds for some positive integer $m$:\n$$\n(a + b)^m = \\sum_{k=0}^{m} \\binom{m}{k} a^{m-k} b^k\n$$\n\nWe must prove it holds for $m + 1$:\n$$\\begin{aligned}\n(a + b)^{m+1} &= (a + b)(a + b)^m \\\\\n&= (a + b) \\sum_{k=0}^{m} \\binom{m}{k} a^{m-k} b^k \\\\\n&= a \\sum_{k=0}^{m} \\binom{m}{k} a^{m-k} b^k + b \\sum_{k=0}^{m} \\binom{m}{k} a^{m-k} b^k \\\\\n&= \\sum_{k=0}^{m} \\binom{m}{k} a^{m+1-k} b^k + \\sum_{k=0}^{m} \\binom{m}{k} a^{m-k} b^{k+1}\n\\end{aligned}$$\n\nReindex the second sum by letting $j = k + 1$:\n$$\n= \\sum_{k=0}^{m} \\binom{m}{k} a^{m+1-k} b^k + \\sum_{j=1}^{m+1} \\binom{m}{j-1} a^{m+1-j} b^{j}\n$$\n\nCombining terms with the same power pattern and using Pascal's identity \n$\\binom{m}{k} + \\binom{m}{k-1} = \\binom{m+1}{k}$:\n$$\n= a^{m+1} + \\sum_{k=1}^{m} \\left[\\binom{m}{k} + \\binom{m}{k-1}\\right] a^{m+1-k} b^k + b^{m+1}\n$$\n$$\n= a^{m+1} + \\sum_{k=1}^{m} \\binom{m+1}{k} a^{m+1-k} b^k + b^{m+1} = \\sum_{k=0}^{m+1} \\binom{m+1}{k} a^{m+1-k} b^k\n$$\n\nThis is exactly the Binomial Theorem for $n = m + 1$. \n\nBy induction, the theorem holds for all positive integers $n$.",
-      "label": "Theorem"
+      "content": "For all positive integers $n$:\n$$\n(a + b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^k\n$$\n\n**Proof by Induction:**\n\n**Base Case ($n = 1$):**\n$$\n(a + b)^1 = a + b = \\binom{1}{0}a^1b^0 + \\binom{1}{1}a^0b^1 = a + b \\quad \\checkmark\n$$\n\n**Inductive Step:**\n\nAssume the theorem holds for some positive integer $m$:\n$$\n(a + b)^m = \\sum_{k=0}^{m} \\binom{m}{k} a^{m-k} b^k\n$$\n\nWe must prove it holds for $m + 1$:\n$$\\begin{aligned}\n(a + b)^{m+1} &= (a + b)(a + b)^m \\\\\n&= (a + b) \\sum_{k=0}^{m} \\binom{m}{k} a^{m-k} b^k \\\\\n&= a \\sum_{k=0}^{m} \\binom{m}{k} a^{m-k} b^k + b \\sum_{k=0}^{m} \\binom{m}{k} a^{m-k} b^k \\\\\n&= \\sum_{k=0}^{m} \\binom{m}{k} a^{m+1-k} b^k + \\sum_{k=0}^{m} \\binom{m}{k} a^{m-k} b^{k+1}\n\\end{aligned}$$\n\nReindex the second sum by letting $j = k + 1$:\n$$\n= \\sum_{k=0}^{m} \\binom{m}{k} a^{m+1-k} b^k + \\sum_{j=1}^{m+1} \\binom{m}{j-1} a^{m+1-j} b^{j}\n$$\n\nCombining terms with the same power pattern and using Pascal's identity \n$\\binom{m}{k} + \\binom{m}{k-1} = \\binom{m+1}{k}$:\n$$\n= a^{m+1} + \\sum_{k=1}^{m} \\left[\\binom{m}{k} + \\binom{m}{k-1}\\right] a^{m+1-k} b^k + b^{m+1}\n$$\n$$\n= a^{m+1} + \\sum_{k=1}^{m} \\binom{m+1}{k} a^{m+1-k} b^k + b^{m+1} = \\sum_{k=0}^{m+1} \\binom{m+1}{k} a^{m+1-k} b^k\n$$\n\nThis is exactly the Binomial Theorem for $n = m + 1$. ✓\n\nBy induction, the theorem holds for all positive integers $n$.",
+      "number": "11.2"
     },
     {
       "type": "heading",
@@ -175,7 +182,6 @@
     {
       "type": "method",
       "id": "method-11.5",
-      "number": null,
       "title": "Binomial Probability",
       "content": "Consider an experiment with two outcomes: \"success\" (probability $p$) \nand \"failure\" (probability $q = 1 - p$). If the experiment is repeated \n$n$ independent times:\n\n**The probability of exactly $k$ successes in $n$ trials is:**\n$$\n\\boxed{P(X = k) = \\binom{n}{k} p^k q^{n-k} = \\binom{n}{k} p^k (1-p)^{n-k}}\n$$\n\n**Why this formula?**\n\n- $\\binom{n}{k}$ = number of ways to choose *which* $k$ trials are successes\n\n- $p^k$ = probability of $k$ successes\n\n- $(1-p)^{n-k}$ = probability of $n-k$ failures"
     },
@@ -185,15 +191,15 @@
       "number": "11.6",
       "title": "Coin Flipping",
       "problem": "A fair coin is flipped 10 times. What is the probability of getting exactly \n6 heads?",
-      "solution": "Here $n = 10$, $k = 6$, and $p = \\frac{1}{2}$.\n$$\nP(X = 6) = \\binom{10}{6} \\left(\\frac{1}{2}\\right)^6 \\left(\\frac{1}{2}\\right)^{4} \n= 210 \\cdot \\frac{1}{1024} = \\frac{210}{1024} = \\frac{105}{512} \\approx 0.205\n$$\n\nAbout 20.5\\% chance of getting exactly 6 heads."
+      "solution": "Here $n = 10$, $k = 6$, and $p = \\frac{1}{2}$.\n$$\nP(X = 6) = \\binom{10}{6} \\left(\\frac{1}{2}\\right)^6 \\left(\\frac{1}{2}\\right)^{4} \n= 210 \\cdot \\frac{1}{1024} = \\frac{210}{1024} = \\frac{105}{512} \\approx 0.205\n$$\n\nAbout 20.5% chance of getting exactly 6 heads."
     },
     {
       "type": "example",
       "id": "example-11.7",
       "number": "11.7",
       "title": "Quality Control",
-      "problem": "A machine produces items that are 95\\% defect-free. In a batch of 8 items, \nwhat is the probability that exactly 7 are defect-free?",
-      "solution": "Let \"success\" = defect-free. Then $n = 8$, $k = 7$, $p = 0.95$.\n$$\nP(X = 7) = \\binom{8}{7} (0.95)^7 (0.05)^1 = 8 \\cdot (0.6983) \\cdot (0.05) \\approx 0.279\n$$\n\nAbout 27.9\\% chance that exactly 7 of 8 items are defect-free."
+      "problem": "A machine produces items that are 95% defect-free. In a batch of 8 items, \nwhat is the probability that exactly 7 are defect-free?",
+      "solution": "Let \"success\" = defect-free. Then $n = 8$, $k = 7$, $p = 0.95$.\n$$\nP(X = 7) = \\binom{8}{7} (0.95)^7 (0.05)^1 = 8 \\cdot (0.6983) \\cdot (0.05) \\approx 0.279\n$$\n\nAbout 27.9% chance that exactly 7 of 8 items are defect-free."
     },
     {
       "type": "example",
@@ -201,597 +207,512 @@
       "number": "11.8",
       "title": "Multiple-Choice Test",
       "problem": "A student randomly guesses on a 5-question multiple-choice test where each \nquestion has 4 options. What is the probability of getting at least 3 correct?",
-      "solution": "Here $p = \\frac{1}{4}$, $q = \\frac{3}{4}$, $n = 5$.\n\n\"At least 3\" means $k = 3, 4,$ or $5$:\n$$\\begin{aligned}\nP(X \\geq 3) &= P(X=3) + P(X=4) + P(X=5) \\\\\n&= \\binom{5}{3}\\left(\\frac{1}{4}\\right)^3\\left(\\frac{3}{4}\\right)^2 + \\binom{5}{4}\\left(\\frac{1}{4}\\right)^4\\left(\\frac{3}{4}\\right)^1 + \\binom{5}{5}\\left(\\frac{1}{4}\\right)^5 \\\\\n&= 10 \\cdot \\frac{9}{1024} + 5 \\cdot \\frac{3}{1024} + 1 \\cdot \\frac{1}{1024} \\\\\n&= \\frac{90 + 15 + 1}{1024} = \\frac{106}{1024} \\approx 0.104\n\\end{aligned}$$\n\nAbout 10.4\\% chance of passing with at least 3 correct by pure guessing."
+      "solution": "Here $p = \\frac{1}{4}$, $q = \\frac{3}{4}$, $n = 5$.\n\n\"At least 3\" means $k = 3, 4,$ or $5$:\n$$\\begin{aligned}\nP(X \\geq 3) &= P(X=3) + P(X=4) + P(X=5) \\\\\n&= \\binom{5}{3}\\left(\\frac{1}{4}\\right)^3\\left(\\frac{3}{4}\\right)^2 + \\binom{5}{4}\\left(\\frac{1}{4}\\right)^4\\left(\\frac{3}{4}\\right)^1 + \\binom{5}{5}\\left(\\frac{1}{4}\\right)^5 \\\\\n&= 10 \\cdot \\frac{9}{1024} + 5 \\cdot \\frac{3}{1024} + 1 \\cdot \\frac{1}{1024} \\\\\n&= \\frac{90 + 15 + 1}{1024} = \\frac{106}{1024} \\approx 0.104\n\\end{aligned}$$\n\nAbout 10.4% chance of passing with at least 3 correct by pure guessing."
     },
     {
       "type": "remark",
       "id": "remark-11.5",
-      "number": null,
       "title": "Connection to Pascal's Triangle",
       "content": "Notice that when $p = \\frac{1}{2}$ (like a fair coin), the probabilities are:\n$$\nP(X = k) = \\binom{n}{k} \\cdot \\frac{1}{2^n}\n$$\nThis means the probabilities are proportional to Pascal's triangle entries! \nThe most likely outcome is near the middle of the row, explaining why \ngetting \"about half heads\" is most probable when flipping a fair coin."
     },
     {
       "type": "summary",
       "id": "summary-11.5",
-      "number": null,
       "title": "The Binomial Theorem",
       "content": "**Binomial Coefficient:**\n$$\n\\binom{n}{k} = \\frac{n!}{k!(n-k)!} \\quad \\text{``$n$ choose $k$''}\n$$\n\n**The Binomial Theorem:**\n$$\n\\boxed{(a + b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^{n-k} b^k}\n$$\n$$\n= \\binom{n}{0}a^n + \\binom{n}{1}a^{n-1}b + \\binom{n}{2}a^{n-2}b^2 + \\cdots + \\binom{n}{n}b^n\n$$\n\n**Pascal's Triangle:**\n\n- Row $n$ contains coefficients $\\binom{n}{0}, \\binom{n}{1}, \\ldots, \\binom{n}{n}$\n\n- Each entry = sum of two entries above it\n\n- Pascal's identity: $\\binom{n}{k} + \\binom{n}{k+1} = \\binom{n+1}{k+1}$\n\n**Key Properties:**\n\n- $\\binom{n}{k} = \\binom{n}{n-k}$ (symmetry)\n\n- $\\displaystyle\\sum_{k=0}^{n} \\binom{n}{k} = 2^n$ (row sum)\n\n- General term ($(k+1)$th term): $\\binom{n}{k} a^{n-k} b^k$\n\n**Binomial Probability:**\n$P(\\text{exactly } k \\text{ successes in } n \\text{ trials}) = \\binom{n}{k} p^k (1-p)^{n-k}$"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Factorials"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-1",
       "number": "1",
       "problem": "Evaluate: $7!$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-2",
       "number": "2",
       "problem": "Evaluate: $\\dfrac{10!}{8!}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-3",
       "number": "3",
       "problem": "Evaluate: $\\dfrac{12!}{9! \\cdot 3!}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-4",
       "number": "4",
       "problem": "Simplify: $\\dfrac{(n+1)!}{n!}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-5",
       "number": "5",
       "problem": "Simplify: $\\dfrac{(n+2)!}{(n-1)!}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-6",
       "number": "6",
       "problem": "Solve for $n$: $\\dfrac{n!}{(n-2)!} = 56$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Binomial Coefficients"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-7",
       "number": "7",
       "problem": "Evaluate:\n\n1. $\\binom{6}{2}$\n\n2. $\\binom{7}{4}$\n\n3. $\\binom{9}{0}$\n\n4. $\\binom{10}{10}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-8",
       "number": "8",
       "problem": "Evaluate:\n\n1. $\\binom{8}{5}$\n\n2. $\\binom{12}{3}$\n\n3. $\\binom{15}{1}$\n\n4. $\\binom{20}{18}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-9",
       "number": "9",
       "problem": "Verify: $\\binom{7}{2} = \\binom{7}{5}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-10",
       "number": "10",
       "problem": "Verify Pascal's identity: $\\binom{5}{2} + \\binom{5}{3} = \\binom{6}{3}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-11",
       "number": "11",
       "problem": "Find $n$ if $\\binom{n}{2} = 28$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-12",
       "number": "12",
       "problem": "Find $n$ if $\\binom{n}{3} = 84$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-13",
       "number": "13",
       "problem": "Simplify: $\\binom{n}{k} + \\binom{n}{k-1}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-14",
       "number": "14",
       "problem": "Show that $\\binom{n}{0} + \\binom{n}{1} + \\binom{n}{2} + \\cdots + \\binom{n}{n} = 2^n$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Pascal's Triangle"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-15",
       "number": "15",
       "problem": "Write out row 7 of Pascal's triangle.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-16",
       "number": "16",
       "problem": "Write out row 8 of Pascal's triangle.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-17",
       "number": "17",
       "problem": "Find the sum of the entries in row 10 of Pascal's triangle.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-18",
       "number": "18",
       "problem": "Find the sum of the entries in row 15 of Pascal's triangle.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-19",
       "number": "19",
       "problem": "In Pascal's triangle, find the entry that equals 126. What are its row \nand position?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-20",
       "number": "20",
       "problem": "Find all rows of Pascal's triangle where some entry equals 10.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Binomial Expansion"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-21",
       "number": "21",
       "problem": "Expand $(a + b)^5$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-22",
       "number": "22",
       "problem": "Expand $(a + b)^6$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-23",
       "number": "23",
       "problem": "Expand $(x - 1)^4$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-24",
       "number": "24",
       "problem": "Expand $(2x + 1)^4$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-25",
       "number": "25",
       "problem": "Expand $(x - 2y)^5$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-26",
       "number": "26",
       "problem": "Expand $(3a + 2b)^4$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-27",
       "number": "27",
       "problem": "Expand $\\left(x + \\dfrac{1}{x}\\right)^4$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-28",
       "number": "28",
       "problem": "Expand $\\left(x^2 - \\dfrac{1}{x}\\right)^3$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-29",
       "number": "29",
       "problem": "Expand $(1 + 2i)^3$ where $i = \\sqrt{-1}$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-30",
       "number": "30",
       "problem": "Expand $(\\sqrt{2} + 1)^4$ and simplify.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Finding Specific Terms"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-31",
       "number": "31",
       "problem": "Find the coefficient of $x^3$ in $(x + 2)^5$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-32",
       "number": "32",
       "problem": "Find the coefficient of $x^4$ in $(2x - 1)^6$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-33",
       "number": "33",
       "problem": "Find the coefficient of $x^5$ in $(x + 3)^8$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-34",
       "number": "34",
       "problem": "Find the term containing $x^3$ in $(3x - 2)^5$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-35",
       "number": "35",
       "problem": "Find the constant term in $\\left(x + \\dfrac{2}{x}\\right)^6$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-36",
       "number": "36",
       "problem": "Find the coefficient of $x^2$ in $\\left(x^2 - \\dfrac{1}{x}\\right)^6$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-37",
       "number": "37",
       "problem": "Find the middle term of $(2x - 3y)^8$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-38",
       "number": "38",
       "problem": "Find the two middle terms of $(a + 2b)^7$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-39",
       "number": "39",
       "problem": "Find the 4th term of $(x - 2y)^9$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-40",
       "number": "40",
       "problem": "Find the 6th term of $(2a + b)^{10}$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-41",
       "number": "41",
       "problem": "Find the constant term in $\\left(2x - \\dfrac{1}{x}\\right)^8$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-42",
       "number": "42",
       "problem": "Find the term containing $x^3$ in $\\left(x - \\dfrac{2}{x^2}\\right)^9$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-43",
       "number": "43",
       "problem": "Find the middle term of $(a - 2b)^{10}$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-44",
       "number": "44",
       "problem": "Find the 7th term of $(2x - y)^{12}$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Applications"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-45",
       "number": "45",
       "problem": "Use the binomial theorem to evaluate $(1.01)^5$ exactly.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-46",
       "number": "46",
       "problem": "Approximate $(0.98)^6$ using the first four terms of the binomial expansion.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-47",
       "number": "47",
       "problem": "How many subsets of 3 elements can be chosen from a set of 8 elements?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-48",
       "number": "48",
       "problem": "A committee of 5 must be chosen from 12 people. How many different \ncommittees are possible?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-49",
       "number": "49",
       "problem": "In how many ways can you answer a 10-question true/false test?\n\n*Hint: Think of this as $(T + F)^{10}$.*",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-50",
       "number": "50",
       "problem": "A coin is flipped 8 times. In how many ways can you get exactly 5 heads?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Additional Practice: Binomial Coefficients"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-51",
       "number": "51",
       "problem": "Evaluate: $\\binom{10}{4} + \\binom{10}{5}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-52",
       "number": "52",
       "problem": "Evaluate: $\\binom{12}{4} - \\binom{11}{4}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-53",
       "number": "53",
       "problem": "Find $n$ if $\\binom{n}{4} = 70$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-54",
       "number": "54",
       "problem": "Find $n$ if $\\binom{n}{2} + \\binom{n}{3} = 20$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-55",
       "number": "55",
       "problem": "Verify: $\\binom{n}{r} = \\binom{n}{n-r}$ for $n = 8$, $r = 3$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-56",
       "number": "56",
       "problem": "Show that $\\binom{n}{0} + \\binom{n}{2} + \\binom{n}{4} + \\cdots = 2^{n-1}$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Additional Practice: Finding Coefficients"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-57",
       "number": "57",
       "problem": "Find the coefficient of $x^5$ in $(1 + x)^{10}$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-58",
       "number": "58",
       "problem": "Find the coefficient of $a^4b^6$ in $(a + b)^{10}$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-59",
       "number": "59",
       "problem": "Find the coefficient of $x^6$ in $(2x - 3)^8$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-60",
       "number": "60",
       "problem": "Find the coefficient of $x^4y^5$ in $(x + y)^9$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-61",
       "number": "61",
       "problem": "In the expansion of $(1 + x)^n$, the coefficient of $x^3$ is 56. Find $n$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-62",
       "number": "62",
       "problem": "The coefficients of the 5th and 6th terms in $(1 + x)^n$ are equal. Find $n$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Additional Practice: Approximations"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-63",
       "number": "63",
       "problem": "Use the binomial theorem to compute $1.02^5$ exactly.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.5-64",
       "number": "64",
       "problem": "Approximate $(1.01)^{10}$ using the first four terms of the binomial expansion.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     }
   ]
 }

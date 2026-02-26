@@ -17,11 +17,14 @@
     "content": "Mathematical induction is an act of faith—not blind faith, but reasoned \nfaith. We prove a statement for infinitely many numbers without checking \neach one individually. Instead, we establish a *pattern of truth* that \nwe know will continue forever.\n\nThe base case is like the foundation of a house: we verify that the statement \nholds for the first case. The inductive step is like a promise: if the \nstatement holds for any case, it must hold for the next. Together, they \ncreate an unbreakable chain of truth stretching to infinity.\n\nThis mirrors how we approach faith itself. We cannot see every step of the \npath ahead, but we trust the One who has proven faithful at the beginning \nand promises to be faithful at each step forward. \"Now faith is confidence \nin what we hope for and assurance about what we do not see.\" (Hebrews 11:1)",
     "edition": "christian"
   },
+  "epigraph": {
+    "text": "*\"The Lord gave me this message: `Before I formed \nyou in the womb I knew you, before you were born I set you apart.\"'*",
+    "reference": "Jeremiah 1:4--5",
+    "quote": "Mathematical induction proves statements for infinitely many cases \nby establishing a pattern that propagates forever.",
+    "quoteAuthor": "—",
+    "edition": "christian"
+  },
   "content": [
-    {
-      "type": "paragraph",
-      "text": "*\"The Lord gave me this message: `Before I formed \nyou in the womb I knew you, before you were born I set you apart.\"'*{Jeremiah 1:4–5}{Mathematical induction proves statements for infinitely many cases \nby establishing a pattern that propagates forever.}{—}"
-    },
     {
       "type": "paragraph",
       "text": "How can we prove that a statement is true for *every* positive integer? \nWe cannot check infinitely many cases one by one. Mathematical induction \nprovides an elegant solution: prove the statement works for $n = 1$, then \nprove that whenever it works for some integer $k$, it must also work for $k + 1$. \nLike dominoes falling in sequence, the truth propagates from $1$ to $2$ to $3$ \nand onward forever."
@@ -34,24 +37,29 @@
     {
       "type": "theorem",
       "id": "theorem-11.1",
-      "number": "11.1",
       "title": "Principle of Mathematical Induction",
       "content": "Let $P(n)$ be a statement involving a positive integer $n$. If:\n\n1. **Base Case:** $P(1)$ is true, and\n\n2. **Inductive Step:** For every positive \n integer $k$, if $P(k)$ is true, then $P(k+1)$ is true,\nthen $P(n)$ is true for all positive integers $n$.",
-      "label": "Theorem"
+      "number": "11.1"
     },
     {
       "type": "paragraph",
       "text": "The logic is straightforward:"
     },
     {
-      "type": "list",
-      "ordered": false,
-      "items": [
-        "$P(1)$ is true (base case).",
-        "Since $P(1)$ is true, $P(2)$ must be true (inductive step with $k=1$).",
-        "Since $P(2)$ is true, $P(3)$ must be true (inductive step with $k=2$).",
-        "This continues indefinitely: $P(4)$, $P(5)$, $P(6)$, $\\ldots$"
-      ]
+      "type": "paragraph",
+      "text": "- $P(1)$ is true (base case)."
+    },
+    {
+      "type": "paragraph",
+      "text": "- Since $P(1)$ is true, $P(2)$ must be true (inductive step with $k=1$)."
+    },
+    {
+      "type": "paragraph",
+      "text": "- Since $P(2)$ is true, $P(3)$ must be true (inductive step with $k=2$)."
+    },
+    {
+      "type": "paragraph",
+      "text": "- This continues indefinitely: $P(4)$, $P(5)$, $P(6)$, $\\ldots$"
     },
     {
       "type": "figure",
@@ -64,16 +72,15 @@
     {
       "type": "warning",
       "id": "warning-11.4",
-      "number": null,
       "title": "",
       "content": "Both parts are essential. The base case without the inductive step is like \npushing the first domino with no others behind it. The inductive step without \nthe base case is like having a line of dominoes but never pushing the first one."
     },
     {
       "type": "algorithm",
-      "id": "algorithm-11.4",
-      "number": null,
+      "id": "algorithm-11.1",
       "title": "Writing a Proof by Induction",
-      "content": "center\n\ncenter\n\n**Key technique for Step 4:** Start with $P(k+1)$'s left side, manipulate \nto use $P(k)$ (the inductive hypothesis), then show you reach $P(k+1)$'s right side."
+      "content": "**Key technique for Step 4:** Start with $P(k+1)$'s left side, manipulate \nto use $P(k)$ (the inductive hypothesis), then show you reach $P(k+1)$'s right side.",
+      "number": "11.1"
     },
     {
       "type": "heading",
@@ -89,8 +96,8 @@
       "id": "example-11.1",
       "number": "11.1",
       "title": "Sum of the First $n$ Positive Integers",
-      "problem": "Prove that for all positive integers $n$:\n$$\n 1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2}\n$$",
-      "solution": "Let $P(n)$ be the statement: $\\displaystyle\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$.\n\n**Base Case ($n = 1$):**\n$$\n \\text{Left side: } 1 \\qquad \\text{Right side: } \\frac{1(1+1)}{2} = \\frac{2}{2} = 1 \\quad \\checkmark\n$$\n$P(1)$ is true.\n\n**Inductive Step:**\n\nAssume $P(k)$ is true for some positive integer $k$. That is, assume:\n$$\n 1 + 2 + 3 + \\cdots + k = \\frac{k(k+1)}{2} \\quad \\text{(Inductive Hypothesis)}\\index{inductive hypothesis}\n$$\n\nWe must prove $P(k+1)$ is true, i.e., that:\n$$\n 1 + 2 + 3 + \\cdots + k + (k+1) = \\frac{(k+1)(k+2)}{2}\n$$\n\nStarting with the left side:\n$$\\begin{aligned}\n 1 + 2 + \\cdots + k + (k+1) &= \\underbrace{(1 + 2 + \\cdots + k)}_{\\text{use inductive hypothesis}} + (k+1) \\\\\n &= \\frac{k(k+1)}{2} + (k+1) \\\\\n &= \\frac{k(k+1)}{2} + \\frac{2(k+1)}{2} \\\\\n &= \\frac{k(k+1) + 2(k+1)}{2} \\\\\n &= \\frac{(k+1)(k+2)}{2}\n\\end{aligned}$$\n\nThis is exactly the right side of $P(k+1)$. \n\n**Conclusion:** By the Principle of Mathematical Induction, the formula \nholds for all positive integers $n$. \nsolution"
+      "problem": "Prove that for all positive integers $n$:\n$$\n 1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2}\n$$\n\n**Proof by Induction:**\n\nLet $P(n)$ be the statement: $\\displaystyle\\sum_{i=1}^{n} i = \\frac{n(n+1)}{2}$.\n\n**Base Case ($n = 1$):**\n$$\n \\text{Left side: } 1 \\qquad \\text{Right side: } \\frac{1(1+1)}{2} = \\frac{2}{2} = 1 \\quad \\checkmark\n$$\n$P(1)$ is true.\n\n**Inductive Step:**\n\nAssume $P(k)$ is true for some positive integer $k$. That is, assume:\n$$\n 1 + 2 + 3 + \\cdots + k = \\frac{k(k+1)}{2} \\quad \\text{(Inductive Hypothesis)}\n$$\n\nWe must prove $P(k+1)$ is true, i.e., that:\n$$\n 1 + 2 + 3 + \\cdots + k + (k+1) = \\frac{(k+1)(k+2)}{2}\n$$\n\nStarting with the left side:\n$$\\begin{aligned}\n 1 + 2 + \\cdots + k + (k+1) &= \\underbrace{(1 + 2 + \\cdots + k)}_{\\text{use inductive hypothesis}} + (k+1) \\\\\n &= \\frac{k(k+1)}{2} + (k+1) \\\\\n &= \\frac{k(k+1)}{2} + \\frac{2(k+1)}{2} \\\\\n &= \\frac{k(k+1) + 2(k+1)}{2} \\\\\n &= \\frac{(k+1)(k+2)}{2}\n\\end{aligned}$$\n\nThis is exactly the right side of $P(k+1)$. ✓\n\n**Conclusion:** By the Principle of Mathematical Induction, the formula \nholds for all positive integers $n$.",
+      "solution": ""
     },
     {
       "type": "figure",
@@ -105,16 +112,16 @@
       "id": "example-11.2",
       "number": "11.2",
       "title": "Sum of the First $n$ Squares",
-      "problem": "Prove that for all positive integers $n$:\n$$\n 1^2 + 2^2 + 3^2 + \\cdots + n^2 = \\frac{n(n+1)(2n+1)}{6}\n$$",
-      "solution": "**Base Case ($n = 1$):**\n$$\n \\text{Left: } 1^2 = 1 \\qquad \\text{Right: } \\frac{1(2)(3)}{6} = 1 \\quad \\checkmark\n$$\n\n**Inductive Step:**\n\nAssume: $\\displaystyle 1^2 + 2^2 + \\cdots + k^2 = \\frac{k(k+1)(2k+1)}{6}$\n\nProve: $\\displaystyle 1^2 + 2^2 + \\cdots + k^2 + (k+1)^2 = \\frac{(k+1)(k+2)(2k+3)}{6}$\n\n$$\\begin{aligned}\n 1^2 + \\cdots + k^2 + (k+1)^2 &= \\frac{k(k+1)(2k+1)}{6} + (k+1)^2 \\\\\n &= \\frac{k(k+1)(2k+1) + 6(k+1)^2}{6} \\\\\n &= \\frac{(k+1)[k(2k+1) + 6(k+1)]}{6} \\\\\n &= \\frac{(k+1)[2k^2 + k + 6k + 6]}{6} \\\\\n &= \\frac{(k+1)(2k^2 + 7k + 6)}{6} \\\\\n &= \\frac{(k+1)(k+2)(2k+3)}{6} \\quad \\checkmark\n\\end{aligned}$$\n\nBy induction, the formula holds for all positive integers $n$. \nsolution"
+      "problem": "Prove that for all positive integers $n$:\n$$\n 1^2 + 2^2 + 3^2 + \\cdots + n^2 = \\frac{n(n+1)(2n+1)}{6}\n$$\n\n**Proof by Induction:**\n\n**Base Case ($n = 1$):**\n$$\n \\text{Left: } 1^2 = 1 \\qquad \\text{Right: } \\frac{1(2)(3)}{6} = 1 \\quad \\checkmark\n$$\n\n**Inductive Step:**\n\nAssume: $\\displaystyle 1^2 + 2^2 + \\cdots + k^2 = \\frac{k(k+1)(2k+1)}{6}$\n\nProve: $\\displaystyle 1^2 + 2^2 + \\cdots + k^2 + (k+1)^2 = \\frac{(k+1)(k+2)(2k+3)}{6}$\n\n$$\\begin{aligned}\n 1^2 + \\cdots + k^2 + (k+1)^2 &= \\frac{k(k+1)(2k+1)}{6} + (k+1)^2 \\\\\n &= \\frac{k(k+1)(2k+1) + 6(k+1)^2}{6} \\\\\n &= \\frac{(k+1)[k(2k+1) + 6(k+1)]}{6} \\\\\n &= \\frac{(k+1)[2k^2 + k + 6k + 6]}{6} \\\\\n &= \\frac{(k+1)(2k^2 + 7k + 6)}{6} \\\\\n &= \\frac{(k+1)(k+2)(2k+3)}{6} \\quad \\checkmark\n\\end{aligned}$$\n\nBy induction, the formula holds for all positive integers $n$.",
+      "solution": ""
     },
     {
       "type": "example",
       "id": "example-11.3",
       "number": "11.3",
       "title": "Sum of a Geometric Series",
-      "problem": "Prove that for all positive integers $n$ and $r \\neq 1$:\n$$\n 1 + r + r^2 + \\cdots + r^{n-1} = \\frac{r^n - 1}{r - 1}\n$$",
-      "solution": "**Base Case ($n = 1$):**\n$$\n \\text{Left: } r^0 = 1 \\qquad \\text{Right: } \\frac{r^1 - 1}{r - 1} = \\frac{r - 1}{r - 1} = 1 \\quad \\checkmark\n$$\n\n**Inductive Step:**\n\nAssume: $\\displaystyle 1 + r + r^2 + \\cdots + r^{k-1} = \\frac{r^k - 1}{r - 1}$\n\nProve: $\\displaystyle 1 + r + r^2 + \\cdots + r^{k-1} + r^k = \\frac{r^{k+1} - 1}{r - 1}$\n\n$$\\begin{aligned}\n 1 + r + \\cdots + r^{k-1} + r^k &= \\frac{r^k - 1}{r - 1} + r^k \\\\\n &= \\frac{r^k - 1 + r^k(r - 1)}{r - 1} \\\\\n &= \\frac{r^k - 1 + r^{k+1} - r^k}{r - 1} \\\\\n &= \\frac{r^{k+1} - 1}{r - 1} \\quad \\checkmark\n\\end{aligned}$$\n\nBy induction, the formula holds for all positive integers $n$. \nsolution"
+      "problem": "Prove that for all positive integers $n$ and $r \\neq 1$:\n$$\n 1 + r + r^2 + \\cdots + r^{n-1} = \\frac{r^n - 1}{r - 1}\n$$\n\n**Proof by Induction:**\n\n**Base Case ($n = 1$):**\n$$\n \\text{Left: } r^0 = 1 \\qquad \\text{Right: } \\frac{r^1 - 1}{r - 1} = \\frac{r - 1}{r - 1} = 1 \\quad \\checkmark\n$$\n\n**Inductive Step:**\n\nAssume: $\\displaystyle 1 + r + r^2 + \\cdots + r^{k-1} = \\frac{r^k - 1}{r - 1}$\n\nProve: $\\displaystyle 1 + r + r^2 + \\cdots + r^{k-1} + r^k = \\frac{r^{k+1} - 1}{r - 1}$\n\n$$\\begin{aligned}\n 1 + r + \\cdots + r^{k-1} + r^k &= \\frac{r^k - 1}{r - 1} + r^k \\\\\n &= \\frac{r^k - 1 + r^k(r - 1)}{r - 1} \\\\\n &= \\frac{r^k - 1 + r^{k+1} - r^k}{r - 1} \\\\\n &= \\frac{r^{k+1} - 1}{r - 1} \\quad \\checkmark\n\\end{aligned}$$\n\nBy induction, the formula holds for all positive integers $n$.",
+      "solution": ""
     },
     {
       "type": "heading",
@@ -130,24 +137,24 @@
       "id": "example-11.4",
       "number": "11.4",
       "title": "$3^n - 1$ is Divisible by 2",
-      "problem": "Prove that $3^n - 1$ is divisible by $2$ for all positive integers $n$.",
-      "solution": "**Base Case ($n = 1$):**\n$3^1 - 1 = 2$, which is divisible by $2$. \n\n**Inductive Step:**\n\nAssume $3^k - 1$ is divisible by $2$, so $3^k - 1 = 2m$ for some integer $m$.\n\nThen $3^k = 2m + 1$.\n\nConsider $3^{k+1} - 1$:\n$$\\begin{aligned}\n 3^{k+1} - 1 &= 3 \\cdot 3^k - 1 \\\\\n &= 3(2m + 1) - 1 \\\\\n &= 6m + 3 - 1 \\\\\n &= 6m + 2 \\\\\n &= 2(3m + 1)\n\\end{aligned}$$\n\nSince $3m + 1$ is an integer, $3^{k+1} - 1$ is divisible by $2$. \n\nBy induction, $3^n - 1$ is divisible by $2$ for all positive integers $n$. \nsolution"
+      "problem": "Prove that $3^n - 1$ is divisible by $2$ for all positive integers $n$.\n\n**Proof by Induction:**\n\n**Base Case ($n = 1$):**\n$3^1 - 1 = 2$, which is divisible by $2$. ✓\n\n**Inductive Step:**\n\nAssume $3^k - 1$ is divisible by $2$, so $3^k - 1 = 2m$ for some integer $m$.\n\nThen $3^k = 2m + 1$.\n\nConsider $3^{k+1} - 1$:\n$$\\begin{aligned}\n 3^{k+1} - 1 &= 3 \\cdot 3^k - 1 \\\\\n &= 3(2m + 1) - 1 \\\\\n &= 6m + 3 - 1 \\\\\n &= 6m + 2 \\\\\n &= 2(3m + 1)\n\\end{aligned}$$\n\nSince $3m + 1$ is an integer, $3^{k+1} - 1$ is divisible by $2$. ✓\n\nBy induction, $3^n - 1$ is divisible by $2$ for all positive integers $n$.",
+      "solution": ""
     },
     {
       "type": "example",
       "id": "example-11.5",
       "number": "11.5",
       "title": "$n^3 - n$ is Divisible by 6",
-      "problem": "Prove that $n^3 - n$ is divisible by $6$ for all positive integers $n$.",
-      "solution": "**Base Case ($n = 1$):**\n$1^3 - 1 = 0$, which is divisible by $6$ (since $0 = 6 \\cdot 0$). \n\n**Inductive Step:**\n\nAssume $k^3 - k$ is divisible by $6$, so $k^3 - k = 6m$ for some integer $m$.\n\nConsider $(k+1)^3 - (k+1)$:\n$$\\begin{aligned}\n (k+1)^3 - (k+1) &= (k+1)[(k+1)^2 - 1] \\\\\n &= (k+1)(k^2 + 2k + 1 - 1) \\\\\n &= (k+1)(k^2 + 2k) \\\\\n &= (k+1) \\cdot k \\cdot (k + 2) \\\\\n &= k(k+1)(k+2)\n\\end{aligned}$$\n\nThis is the product of three consecutive integers. Among any three consecutive \nintegers, one is divisible by $3$ and at least one is divisible by $2$. \nTherefore, the product is divisible by $6$. \n\nBy induction, $n^3 - n$ is divisible by $6$ for all positive integers $n$. \nsolution"
+      "problem": "Prove that $n^3 - n$ is divisible by $6$ for all positive integers $n$.\n\n**Proof by Induction:**\n\n**Base Case ($n = 1$):**\n$1^3 - 1 = 0$, which is divisible by $6$ (since $0 = 6 \\cdot 0$). ✓\n\n**Inductive Step:**\n\nAssume $k^3 - k$ is divisible by $6$, so $k^3 - k = 6m$ for some integer $m$.\n\nConsider $(k+1)^3 - (k+1)$:\n$$\\begin{aligned}\n (k+1)^3 - (k+1) &= (k+1)[(k+1)^2 - 1] \\\\\n &= (k+1)(k^2 + 2k + 1 - 1) \\\\\n &= (k+1)(k^2 + 2k) \\\\\n &= (k+1) \\cdot k \\cdot (k + 2) \\\\\n &= k(k+1)(k+2)\n\\end{aligned}$$\n\nThis is the product of three consecutive integers. Among any three consecutive \nintegers, one is divisible by $3$ and at least one is divisible by $2$. \nTherefore, the product is divisible by $6$. ✓\n\nBy induction, $n^3 - n$ is divisible by $6$ for all positive integers $n$.",
+      "solution": ""
     },
     {
       "type": "example",
       "id": "example-11.6",
       "number": "11.6",
       "title": "$4^n - 1$ is Divisible by 3",
-      "problem": "Prove that $4^n - 1$ is divisible by $3$ for all positive integers $n$.",
-      "solution": "**Base Case ($n = 1$):**\n$4^1 - 1 = 3$, which is divisible by $3$. \n\n**Inductive Step:**\n\nAssume $4^k - 1 = 3m$ for some integer $m$, so $4^k = 3m + 1$.\n\n$$\\begin{aligned}\n 4^{k+1} - 1 &= 4 \\cdot 4^k - 1 \\\\\n &= 4(3m + 1) - 1 \\\\\n &= 12m + 4 - 1 \\\\\n &= 12m + 3 \\\\\n &= 3(4m + 1)\n\\end{aligned}$$\n\nSince $4m + 1$ is an integer, $4^{k+1} - 1$ is divisible by $3$. \n\nBy induction, $4^n - 1$ is divisible by $3$ for all $n \\geq 1$. \nsolution"
+      "problem": "Prove that $4^n - 1$ is divisible by $3$ for all positive integers $n$.\n\n**Proof by Induction:**\n\n**Base Case ($n = 1$):**\n$4^1 - 1 = 3$, which is divisible by $3$. ✓\n\n**Inductive Step:**\n\nAssume $4^k - 1 = 3m$ for some integer $m$, so $4^k = 3m + 1$.\n\n$$\\begin{aligned}\n 4^{k+1} - 1 &= 4 \\cdot 4^k - 1 \\\\\n &= 4(3m + 1) - 1 \\\\\n &= 12m + 4 - 1 \\\\\n &= 12m + 3 \\\\\n &= 3(4m + 1)\n\\end{aligned}$$\n\nSince $4m + 1$ is an integer, $4^{k+1} - 1$ is divisible by $3$. ✓\n\nBy induction, $4^n - 1$ is divisible by $3$ for all $n \\geq 1$.",
+      "solution": ""
     },
     {
       "type": "heading",
@@ -163,16 +170,16 @@
       "id": "example-11.7",
       "number": "11.7",
       "title": "Exponential vs. Polynomial Growth",
-      "problem": "Prove that $2^n > n^2$ for all integers $n \\geq 5$.",
-      "solution": "**Base Case ($n = 5$):**\n$2^5 = 32$ and $5^2 = 25$. Since $32 > 25$, the inequality holds. \n\n**Inductive Step:**\n\nAssume $2^k > k^2$ for some integer $k \\geq 5$.\n\nWe must prove $2^{k+1} > (k+1)^2$.\n\n$$\\begin{aligned}\n 2^{k+1} &= 2 \\cdot 2^k \\\\\n &> 2k^2 \\quad \\text{(by the inductive hypothesis)}\n\\end{aligned}$$\n\nWe need to show $2k^2 > (k+1)^2 = k^2 + 2k + 1$.\n\nThis is equivalent to: $k^2 > 2k + 1$, or $k^2 - 2k - 1 > 0$.\n\nFor $k \\geq 5$: $k^2 - 2k - 1 = (k-1)^2 - 2 \\geq (4)^2 - 2 = 14 > 0$. \n\nTherefore, $2^{k+1} > 2k^2 > (k+1)^2$. \n\nBy induction, $2^n > n^2$ for all integers $n \\geq 5$. \nsolution"
+      "problem": "Prove that $2^n > n^2$ for all integers $n \\geq 5$.\n\n**Proof by Induction:**\n\n**Base Case ($n = 5$):**\n$2^5 = 32$ and $5^2 = 25$. Since $32 > 25$, the inequality holds. ✓\n\n**Inductive Step:**\n\nAssume $2^k > k^2$ for some integer $k \\geq 5$.\n\nWe must prove $2^{k+1} > (k+1)^2$.\n\n$$\\begin{aligned}\n 2^{k+1} &= 2 \\cdot 2^k \\\\\n &> 2k^2 \\quad \\text{(by the inductive hypothesis)}\n\\end{aligned}$$\n\nWe need to show $2k^2 > (k+1)^2 = k^2 + 2k + 1$.\n\nThis is equivalent to: $k^2 > 2k + 1$, or $k^2 - 2k - 1 > 0$.\n\nFor $k \\geq 5$: $k^2 - 2k - 1 = (k-1)^2 - 2 \\geq (4)^2 - 2 = 14 > 0$. ✓\n\nTherefore, $2^{k+1} > 2k^2 > (k+1)^2$. ✓\n\nBy induction, $2^n > n^2$ for all integers $n \\geq 5$.",
+      "solution": ""
     },
     {
       "type": "example",
       "id": "example-11.8",
       "number": "11.8",
       "title": "$n! > 2^n$ for Large $n$",
-      "problem": "Prove that $n! > 2^n$ for all integers $n \\geq 4$.",
-      "solution": "**Base Case ($n = 4$):**\n$4! = 24$ and $2^4 = 16$. Since $24 > 16$, the inequality holds. \n\n**Inductive Step:**\n\nAssume $k! > 2^k$ for some integer $k \\geq 4$.\n\nConsider $(k+1)!$:\n$$\\begin{aligned}\n (k+1)! &= (k+1) \\cdot k! \\\\\n &> (k+1) \\cdot 2^k \\quad \\text{(by the inductive hypothesis)}\n\\end{aligned}$$\n\nSince $k \\geq 4$, we have $k + 1 \\geq 5 > 2$, so:\n$$\n (k+1) \\cdot 2^k > 2 \\cdot 2^k = 2^{k+1}\n$$\n\nTherefore, $(k+1)! > 2^{k+1}$. \n\nBy induction, $n! > 2^n$ for all integers $n \\geq 4$. \nsolution"
+      "problem": "Prove that $n! > 2^n$ for all integers $n \\geq 4$.\n\n**Proof by Induction:**\n\n**Base Case ($n = 4$):**\n$4! = 24$ and $2^4 = 16$. Since $24 > 16$, the inequality holds. ✓\n\n**Inductive Step:**\n\nAssume $k! > 2^k$ for some integer $k \\geq 4$.\n\nConsider $(k+1)!$:\n$$\\begin{aligned}\n (k+1)! &= (k+1) \\cdot k! \\\\\n &> (k+1) \\cdot 2^k \\quad \\text{(by the inductive hypothesis)}\n\\end{aligned}$$\n\nSince $k \\geq 4$, we have $k + 1 \\geq 5 > 2$, so:\n$$\n (k+1) \\cdot 2^k > 2 \\cdot 2^k = 2^{k+1}\n$$\n\nTherefore, $(k+1)! > 2^{k+1}$. ✓\n\nBy induction, $n! > 2^n$ for all integers $n \\geq 4$.",
+      "solution": ""
     },
     {
       "type": "figure",
@@ -194,26 +201,25 @@
     {
       "type": "theorem",
       "id": "theorem-11.2",
-      "number": "11.2",
       "title": "Principle of Strong Induction",
       "content": "Let $P(n)$ be a statement involving a positive integer $n$. If:\n\n1. **Base Case:** $P(1)$ is true, and\n\n2. **Strong Inductive Step:** For every positive integer $k$, \n if $P(1), P(2), \\ldots, P(k)$ are all true, then $P(k+1)$ is true,\nthen $P(n)$ is true for all positive integers $n$.",
-      "label": "Theorem"
+      "number": "11.2"
     },
     {
       "type": "example",
       "id": "example-11.9",
       "number": "11.9",
       "title": "Every Integer $\\geq 2$ Has a Prime Factor",
-      "problem": "Prove that every integer $n \\geq 2$ has at least one prime factor.",
-      "solution": "**Base Case ($n = 2$):**\n$2$ is prime, so it has itself as a prime factor. \n\n**Strong Inductive Step:**\n\nAssume every integer from $2$ to $k$ has a prime factor.\n\nConsider $k + 1$:\n\n- If $k + 1$ is prime, then it has itself as a prime factor. \n\n- If $k + 1$ is composite, then $k + 1 = ab$ where $2 \\leq a, b < k + 1$.\n \n By the inductive hypothesis, $a$ has a prime factor $p$.\n \n Since $p$ divides $a$ and $a$ divides $k + 1$, we have $p$ divides $k + 1$. \n\nBy strong induction, every integer $n \\geq 2$ has a prime factor. \nsolution"
+      "problem": "Prove that every integer $n \\geq 2$ has at least one prime factor.\n\n**Proof by Strong Induction:**\n\n**Base Case ($n = 2$):**\n$2$ is prime, so it has itself as a prime factor. ✓\n\n**Strong Inductive Step:**\n\nAssume every integer from $2$ to $k$ has a prime factor.\n\nConsider $k + 1$:\n\n- If $k + 1$ is prime, then it has itself as a prime factor. ✓\n\n- If $k + 1$ is composite, then $k + 1 = ab$ where $2 \\leq a, b < k + 1$.\n \n By the inductive hypothesis, $a$ has a prime factor $p$.\n \n Since $p$ divides $a$ and $a$ divides $k + 1$, we have $p$ divides $k + 1$. ✓\n\nBy strong induction, every integer $n \\geq 2$ has a prime factor.",
+      "solution": ""
     },
     {
       "type": "example",
       "id": "example-11.10",
       "number": "11.10",
       "title": "Fibonacci Identity",
-      "problem": "Prove that $F_1 + F_2 + \\cdots + F_n = F_{n+2} - 1$ for all $n \\geq 1$, \nwhere $F_k$ is the $k$th Fibonacci number.",
-      "solution": "**Base Cases:**\n\n- $n = 1$: $F_1 = 1$ and $F_3 - 1 = 2 - 1 = 1$. \n\n- $n = 2$: $F_1 + F_2 = 1 + 1 = 2$ and $F_4 - 1 = 3 - 1 = 2$. \n\n**Strong Inductive Step:**\n\nAssume the formula holds for all values from $1$ to $k$ (where $k \\geq 2$).\n\n$$\\begin{aligned}\n F_1 + F_2 + \\cdots + F_k + F_{k+1} &= (F_{k+2} - 1) + F_{k+1} \n \\quad \\text{(by inductive hypothesis)} \\\\\n &= F_{k+1} + F_{k+2} - 1 \\\\\n &= F_{k+3} - 1 \\quad \\text{(by Fibonacci recurrence)}\n\\end{aligned}$$\n\nThis is $F_{(k+1)+2} - 1$, which is what we needed. \n\nBy strong induction, the formula holds for all $n \\geq 1$. \nsolution"
+      "problem": "Prove that $F_1 + F_2 + \\cdots + F_n = F_{n+2} - 1$ for all $n \\geq 1$, \nwhere $F_k$ is the $k$th Fibonacci number.\n\n**Proof by Strong Induction:**\n\n**Base Cases:**\n\n- $n = 1$: $F_1 = 1$ and $F_3 - 1 = 2 - 1 = 1$. ✓\n\n- $n = 2$: $F_1 + F_2 = 1 + 1 = 2$ and $F_4 - 1 = 3 - 1 = 2$. ✓\n\n**Strong Inductive Step:**\n\nAssume the formula holds for all values from $1$ to $k$ (where $k \\geq 2$).\n\n$$\\begin{aligned}\n F_1 + F_2 + \\cdots + F_k + F_{k+1} &= (F_{k+2} - 1) + F_{k+1} \n \\quad \\text{(by inductive hypothesis)} \\\\\n &= F_{k+1} + F_{k+2} - 1 \\\\\n &= F_{k+3} - 1 \\quad \\text{(by Fibonacci recurrence)}\n\\end{aligned}$$\n\nThis is $F_{(k+1)+2} - 1$, which is what we needed. ✓\n\nBy strong induction, the formula holds for all $n \\geq 1$.",
+      "solution": ""
     },
     {
       "type": "heading",
@@ -223,21 +229,18 @@
     {
       "type": "warning",
       "id": "warning-11.4",
-      "number": null,
       "title": "",
       "content": "**Forgetting the Base Case.** \nWithout verifying that the statement is true for $n = 1$ (or the starting value), \nthe inductive step proves nothing. For example, the false statement \"$n = n + 1$\" \nsatisfies the inductive step (if $k = k + 1$, then $k + 1 = k + 2$), but fails \nthe base case."
     },
     {
       "type": "warning",
       "id": "warning-11.4",
-      "number": null,
       "title": "",
       "content": "**Circular Reasoning.**\nIn the inductive step, you must prove $P(k+1)$ is true, not assume it. \nA common error is to manipulate the formula for $P(k+1)$ into the form of $P(k)$, \nrather than building $P(k+1)$ from $P(k)$."
     },
     {
       "type": "warning",
       "id": "warning-11.4",
-      "number": null,
       "title": "",
       "content": "**Wrong Base Case.**\nSome formulas are only valid for $n \\geq 2$, $n \\geq 4$, or another starting \nvalue. Always check where the statement begins to be true and verify the \nappropriate base case."
     },
@@ -253,7 +256,6 @@
     {
       "type": "method",
       "id": "method-11.4",
-      "number": null,
       "title": "First and Second Differences",
       "content": "Given a sequence $a_1, a_2, a_3, \\ldots$:\n\n**First differences:** $\\Delta a_n = a_{n+1} - a_n$\n\n**Second differences:** $\\Delta^2 a_n = \\Delta a_{n+1} - \\Delta a_n$\n\n**Key insight:**\n\n- If first differences are *constant*, the formula is **linear**: \n $a_n = An + B$\n\n- If second differences are *constant*, the formula is **quadratic**: \n $a_n = An^2 + Bn + C$\n\n- If $k$th differences are constant, the formula is a polynomial of degree $k$"
     },
@@ -263,7 +265,7 @@
       "number": "11.11",
       "title": "Finding a Linear Formula",
       "problem": "Find a formula for the sequence $3, 7, 11, 15, 19, \\ldots$",
-      "solution": "{1.3}\n\n| Sequence: | 3 | 7 | 11 | 15 | 19 |\n| First differences: | 4 | 4 | 4 | 4 |\n\nFirst differences are constant (4), so the formula is linear: $a_n = An + B$.\n\nFrom the constant difference: $A = 4$.\n\nFrom $a_1 = 3$: $4(1) + B = 3 \\Rightarrow B = -1$.\n\n**Formula:** $a_n = 4n - 1$. \n\n**Verify:** $a_5 = 4(5) - 1 = 19$"
+      "solution": "\\renewcommand{}{1.3}\n| Sequence: | 3 | 7 | 11 | 15 | 19 |\n| First differences: | | 4 | 4 | 4 | 4 |\n\nFirst differences are constant (4), so the formula is linear: $a_n = An + B$.\n\nFrom the constant difference: $A = 4$.\n\nFrom $a_1 = 3$: $4(1) + B = 3 \\Rightarrow B = -1$.\n\n**Formula:** $a_n = 4n - 1$. \n\n**Verify:** $a_5 = 4(5) - 1 = 19$ ✓"
     },
     {
       "type": "example",
@@ -271,7 +273,7 @@
       "number": "11.12",
       "title": "Finding a Quadratic Formula",
       "problem": "Find a formula for the sequence $2, 5, 10, 17, 26, \\ldots$",
-      "solution": "{1.3}\n\n| Sequence: | 2 | 5 | 10 | 17 | 26 |\n| First differences: | 3 | 5 | 7 | 9 |\n| Second differences: | 2 | 2 | 2 |\n\nSecond differences are constant (2), so the formula is quadratic: \n$a_n = An^2 + Bn + C$.\n\n**Finding coefficients:**\n\nFor quadratics, if the second difference is $d$, then $A = \\frac{d}{2} = \\frac{2}{2} = 1$.\n\nSo $a_n = n^2 + Bn + C$.\n\nUsing $a_1 = 2$: $1 + B + C = 2 \\Rightarrow B + C = 1$.\n\nUsing $a_2 = 5$: $4 + 2B + C = 5 \\Rightarrow 2B + C = 1$.\n\nSubtracting: $B = 0$, so $C = 1$.\n\n**Formula:** $a_n = n^2 + 1$.\n\n**Verify:** $a_5 = 25 + 1 = 26$"
+      "solution": "\\renewcommand{}{1.3}\n| Sequence: | 2 | 5 | 10 | 17 | 26 |\n| First differences: | | 3 | 5 | 7 | 9 |\n| Second differences: | | | 2 | 2 | 2 |\n\nSecond differences are constant (2), so the formula is quadratic: \n$a_n = An^2 + Bn + C$.\n\n**Finding coefficients:**\n\nFor quadratics, if the second difference is $d$, then $A = \\frac{d}{2} = \\frac{2}{2} = 1$.\n\nSo $a_n = n^2 + Bn + C$.\n\nUsing $a_1 = 2$: $1 + B + C = 2 \\Rightarrow B + C = 1$.\n\nUsing $a_2 = 5$: $4 + 2B + C = 5 \\Rightarrow 2B + C = 1$.\n\nSubtracting: $B = 0$, so $C = 1$.\n\n**Formula:** $a_n = n^2 + 1$.\n\n**Verify:** $a_5 = 25 + 1 = 26$ ✓"
     },
     {
       "type": "example",
@@ -279,19 +281,17 @@
       "number": "11.13",
       "title": "The Triangular Numbers",
       "problem": "The triangular numbers are $1, 3, 6, 10, 15, 21, \\ldots$ \n\nUse differences to discover the formula.",
-      "solution": "{1.3}\n\n| Sequence: | 1 | 3 | 6 | 10 | 15 | 21 |\n| First differences: | 2 | 3 | 4 | 5 | 6 |\n| Second differences: | 1 | 1 | 1 | 1 |\n\nSecond differences are constant, so $a_n = An^2 + Bn + C$ with $A = \\frac{1}{2}$.\n\nUsing $a_1 = 1$: $\\frac{1}{2} + B + C = 1$.\n\nUsing $a_2 = 3$: $2 + 2B + C = 3 \\Rightarrow 2B + C = 1$.\n\nSubtracting: $B = \\frac{1}{2}$, so $C = 0$.\n\n**Formula:** $a_n = \\frac{1}{2}n^2 + \\frac{1}{2}n = \\frac{n(n+1)}{2}$.\n\nThis is exactly the formula for the sum $1 + 2 + \\cdots + n$ from Theorem [thm:arith-series]!"
+      "solution": "\\renewcommand{}{1.3}\n| Sequence: | 1 | 3 | 6 | 10 | 15 | 21 |\n| First differences: | | 2 | 3 | 4 | 5 | 6 |\n| Second differences: | | | 1 | 1 | 1 | 1 |\n\nSecond differences are constant, so $a_n = An^2 + Bn + C$ with $A = \\frac{1}{2}$.\n\nUsing $a_1 = 1$: $\\frac{1}{2} + B + C = 1$.\n\nUsing $a_2 = 3$: $2 + 2B + C = 3 \\Rightarrow 2B + C = 1$.\n\nSubtracting: $B = \\frac{1}{2}$, so $C = 0$.\n\n**Formula:** $a_n = \\frac{1}{2}n^2 + \\frac{1}{2}n = \\frac{n(n+1)}{2}$.\n\nThis is exactly the formula for the sum $1 + 2 + \\cdots + n$ from Theorem [thm:arith-series]!"
     },
     {
       "type": "remark",
       "id": "remark-11.4",
-      "number": null,
       "title": "The Power of This Method",
       "content": "The method of differences works because:\n\n- Taking differences of a polynomial of degree $d$ gives a polynomial of \n degree $d - 1$\n\n- After $d$ differences, a degree-$d$ polynomial becomes constant\n\n- The constant equals $d! \\cdot$ (leading coefficient)\n\nThis technique is valuable for:\n\n- Guessing formulas to prove by induction\n\n- Checking if a sequence is polynomial (and finding its degree)\n\n- Predicting the next term in a pattern"
     },
     {
       "type": "summary",
       "id": "summary-11.4",
-      "number": null,
       "title": "Mathematical Induction",
       "content": "**The Principle:** To prove $P(n)$ for all positive integers $n$:\n\n1. **Base Case:** Prove $P(1)$ is true\n\n2. **Inductive Hypothesis:** Assume $P(k)$ is true for some $k$\n\n3. **Inductive Step:** Prove $P(k) \\Rightarrow P(k+1)$\nThen $P(n)$ is true for all $n \\geq 1$.\n\n**Strong Induction:** \nAssume $P(1), P(2), \\ldots, P(k)$ are ALL true, then prove $P(k+1)$.\n\n**Common Applications:**\n\n- Sum formulas: $1 + 2 + \\cdots + n = \\frac{n(n+1)}{2}$\n\n- Divisibility: $4^n - 1$ divisible by $3$\n\n- Inequalities: $2^n > n^2$ for $n \\geq 5$\n\n- Fibonacci identities, recursive definitions\n\n**Critical Reminders:**\n\n- Both base case AND inductive step are required\n\n- The inductive hypothesis is an *assumption*, not what you prove\n\n- Some statements require $n \\geq 2$, $n \\geq 4$, etc.—use appropriate base case"
     },
@@ -299,316 +299,246 @@
       "type": "exercise",
       "id": "ex-11.4-1",
       "number": "1",
-      "problem": "Fill in the blanks.\n\n1. In mathematical induction, the {1.5in} verifies \n that the statement holds for the first value of $n$.\n\n2. The {1.5in} assumes the statement is true for \n $n = k$ and proves it for $n = k + 1$.\n\n3. In the inductive step, the assumption that $P(k)$ is true is called \n the {1.5in}.\n\n4. {1.5in} induction allows us to assume $P(1), P(2), \n \\ldots, P(k)$ are all true when proving $P(k+1)$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Fill in the blanks.\n\n1. In mathematical induction, the verifies \n that the statement holds for the first value of $n$.\n\n2. The assumes the statement is true for \n $n = k$ and proves it for $n = k + 1$.\n\n3. In the inductive step, the assumption that $P(k)$ is true is called \n the .\n\n4. induction allows us to assume $P(1), P(2), \n \\ldots, P(k)$ are all true when proving $P(k+1)$.",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-2",
       "number": "2",
       "problem": "True or False. Justify your answer.\n\n1. If a statement fails the base case but satisfies the inductive step, \n then it is true for all $n \\geq 2$.\n\n2. Mathematical induction can prove statements about all positive integers.\n\n3. In the inductive step, we prove $P(k)$ is true by assuming $P(k+1)$ is true.\n\n4. Strong induction is more powerful than ordinary induction (i.e., it \n can prove statements that ordinary induction cannot).",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-3",
       "number": "3",
-      "problem": "Explain why the following \"proof\" is invalid:\n\n**Claim:** All horses are the same color.\n\n**\"Proof\":** Base case ($n = 1$): A single horse is trivially the same \ncolor as itself. \n\nInductive step: Assume any group of $k$ horses are the same color. Consider \na group of $k + 1$ horses. Remove one horse; the remaining $k$ horses are \nthe same color (by hypothesis). Replace the removed horse and remove a \ndifferent horse; this group of $k$ horses is also the same color. Therefore, \nall $k + 1$ horses are the same color. \n\nBy induction, all horses are the same color. \n\nWhere is the error?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Explain why the following \"proof\" is invalid:\n\n**Claim:** All horses are the same color.\n\n**\"Proof\":** Base case ($n = 1$): A single horse is trivially the same \ncolor as itself. ✓\n\nInductive step: Assume any group of $k$ horses are the same color. Consider \na group of $k + 1$ horses. Remove one horse; the remaining $k$ horses are \nthe same color (by hypothesis). Replace the removed horse and remove a \ndifferent horse; this group of $k$ horses is also the same color. Therefore, \nall $k + 1$ horses are the same color. ✓\n\nBy induction, all horses are the same color. \n\nWhere is the error?",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-4",
       "number": "4",
       "problem": "$\\displaystyle 1 + 2 + 3 + \\cdots + n = \\frac{n(n+1)}{2}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-5",
       "number": "5",
       "problem": "$\\displaystyle 2 + 4 + 6 + \\cdots + 2n = n(n+1)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-6",
       "number": "6",
       "problem": "$\\displaystyle 1 + 3 + 5 + \\cdots + (2n-1) = n^2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-7",
       "number": "7",
       "problem": "$\\displaystyle 1^2 + 2^2 + 3^2 + \\cdots + n^2 = \\frac{n(n+1)(2n+1)}{6}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-8",
       "number": "8",
       "problem": "$\\displaystyle 1^3 + 2^3 + 3^3 + \\cdots + n^3 = \\left[\\frac{n(n+1)}{2}\\right]^2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-9",
       "number": "9",
       "problem": "$\\displaystyle \\frac{1}{1 \\cdot 2} + \\frac{1}{2 \\cdot 3} + \\frac{1}{3 \\cdot 4} + \\cdots + \\frac{1}{n(n+1)} = \\frac{n}{n+1}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-10",
       "number": "10",
       "problem": "$\\displaystyle 1 \\cdot 2 + 2 \\cdot 3 + 3 \\cdot 4 + \\cdots + n(n+1) = \\frac{n(n+1)(n+2)}{3}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-11",
       "number": "11",
       "problem": "$\\displaystyle 1 + r + r^2 + \\cdots + r^{n-1} = \\frac{r^n - 1}{r - 1}$ (for $r \\neq 1$)",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-12",
       "number": "12",
       "problem": "$\\displaystyle \\sum_{i=1}^{n} i \\cdot 2^i = (n-1) \\cdot 2^{n+1} + 2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-13",
       "number": "13",
       "problem": "$3^n - 1$ is divisible by $2$ for all $n \\geq 1$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-14",
       "number": "14",
       "problem": "$4^n - 1$ is divisible by $3$ for all $n \\geq 1$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-15",
       "number": "15",
       "problem": "$5^n - 1$ is divisible by $4$ for all $n \\geq 1$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-16",
       "number": "16",
       "problem": "$7^n - 1$ is divisible by $6$ for all $n \\geq 1$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-17",
       "number": "17",
       "problem": "$n^3 - n$ is divisible by $6$ for all $n \\geq 1$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-18",
       "number": "18",
       "problem": "$n^3 + 2n$ is divisible by $3$ for all $n \\geq 1$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-19",
       "number": "19",
       "problem": "$n^5 - n$ is divisible by $5$ for all $n \\geq 1$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-20",
       "number": "20",
       "problem": "$8^n - 3^n$ is divisible by $5$ for all $n \\geq 1$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-21",
       "number": "21",
       "problem": "$2^n > n$ for all $n \\geq 1$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-22",
       "number": "22",
       "problem": "$2^n \\geq n^2$ for all $n \\geq 4$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-23",
       "number": "23",
       "problem": "$2^n > n^2$ for all $n \\geq 5$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-24",
       "number": "24",
       "problem": "$n! > 2^n$ for all $n \\geq 4$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-25",
       "number": "25",
       "problem": "$n! > 3^n$ for all $n \\geq 7$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-26",
       "number": "26",
       "problem": "$(1 + x)^n \\geq 1 + nx$ for all $n \\geq 1$ and $x > -1$. (Bernoulli's Inequality)",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-27",
       "number": "27",
       "problem": "$a - b$ is a factor of $a^n - b^n$ for all $n \\geq 1$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-28",
       "number": "28",
       "problem": "$a + b$ is a factor of $a^{2n-1} + b^{2n-1}$ for all $n \\geq 1$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-29",
       "number": "29",
       "problem": "$\\displaystyle \\left(1 + \\frac{1}{1}\\right)\\left(1 + \\frac{1}{2}\\right)\\left(1 + \\frac{1}{3}\\right) \\cdots \\left(1 + \\frac{1}{n}\\right) = n + 1$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-30",
       "number": "30",
       "problem": "The number of subsets of a set with $n$ elements is $2^n$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-31",
       "number": "31",
       "problem": "$\\cos(\\theta) + \\cos(2\\theta) + \\cdots + \\cos(n\\theta) = \\dfrac{\\sin(n\\theta/2)\\cos((n+1)\\theta/2)}{\\sin(\\theta/2)}$ for $\\theta \\neq 2\\pi k$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-32",
       "number": "32",
       "problem": "De Moivre's Theorem: $(\\cos\\theta + i\\sin\\theta)^n = \\cos(n\\theta) + i\\sin(n\\theta)$ for all $n \\geq 1$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-33",
       "number": "33",
       "problem": "A staircase has $n$ steps. You can climb either 1 or 2 steps at a time. \nLet $S_n$ be the number of ways to climb the staircase.\n\n1. Find $S_1$, $S_2$, $S_3$, and $S_4$ by listing the possibilities.\n\n2. Explain why $S_n = S_{n-1} + S_{n-2}$ for $n \\geq 3$.\n\n3. Prove by strong induction that $S_n = F_{n+1}$ (the $(n+1)$th Fibonacci number).",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-34",
       "number": "34",
       "problem": "The Tower of Hanoi puzzle has $n$ disks of different sizes on one peg, \nstacked from largest (bottom) to smallest (top). The goal is to move all \ndisks to another peg, moving one disk at a time, never placing a larger \ndisk on a smaller one. Let $T_n$ be the minimum number of moves required.\n\n1. Find $T_1$, $T_2$, and $T_3$.\n\n2. Explain why $T_n = 2T_{n-1} + 1$ for $n \\geq 2$.\n\n3. Prove by induction that $T_n = 2^n - 1$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.4-35",
       "number": "35",
       "problem": "A triangular number $T_n$ is the number of dots in a triangular array with \n$n$ rows: $T_n = 1 + 2 + 3 + \\cdots + n$.\n\n1. Prove that $T_n = \\dfrac{n(n+1)}{2}$.\n\n2. Prove that $T_n + T_{n-1} = n^2$ (square numbers are sums of consecutive triangular numbers).",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     }
   ]
 }

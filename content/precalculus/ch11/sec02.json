@@ -17,11 +17,14 @@
     "content": "A series is a sequence accumulated—each term added to what came before. \nOur lives are like this. Each day is a term in the sequence of our existence, \nand the sum of our days constitutes our life's work.\n\nMoses prayed, \"Teach us to number our days, that we may gain a heart of \nwisdom\" (Psalm 90:12). There is mathematical wisdom here: knowing that \nour days form a finite series should shape how we spend each term.\n\nThe remarkable fact that infinite series can have finite sums points to \nsomething profound. Infinitely many acts of faithfulness, each smaller \nthan the last, can sum to a complete life of service. Even the smallest \nkindnesses accumulate.",
     "edition": "christian"
   },
+  "epigraph": {
+    "text": "*\"The heavens declare the glory of God; the skies \nproclaim the work of his hands. Day after day they pour forth speech; night \nafter night they reveal knowledge.\"*",
+    "reference": "Psalm 19:1--2",
+    "quote": "Day after day—an \nunending series of divine revelation.",
+    "quoteAuthor": "—",
+    "edition": "christian"
+  },
   "content": [
-    {
-      "type": "paragraph",
-      "text": "*\"The heavens declare the glory of God; the skies \nproclaim the work of his hands. Day after day they pour forth speech; night \nafter night they reveal knowledge.\"*{Psalm 19:1–2}{Day after day—an \nunending series of divine revelation.}{—}"
-    },
     {
       "type": "paragraph",
       "text": "When we add the terms of a sequence, we obtain a **series**. The \nsequence $1, 2, 3, 4, 5$ gives the series $1 + 2 + 3 + 4 + 5 = 15$. \nMathematicians have developed a compact notation for writing sums, using \nthe Greek letter sigma ($\\Sigma$). This **summation notation** is \nessential for calculus, statistics, and advanced mathematics."
@@ -34,9 +37,9 @@
     {
       "type": "definition",
       "id": "definition-11.1",
-      "number": "11.1",
       "title": "Series",
-      "content": "Given a sequence $\\{a_n\\}$, the corresponding **series** \nis the sum of its terms:\n$$\n a_1 + a_2 + a_3 + \\cdots\n$$\nThe **$n$th partial sum** $S_n$ is the sum of the \nfirst $n$ terms:\n$$\n S_n = a_1 + a_2 + a_3 + \\cdots + a_n\n$$"
+      "content": "Given a sequence $\\{a_n\\}$, the corresponding **series** \nis the sum of its terms:\n$$\n a_1 + a_2 + a_3 + \\cdots\n$$\nThe **$n$th partial sum** $S_n$ is the sum of the \nfirst $n$ terms:\n$$\n S_n = a_1 + a_2 + a_3 + \\cdots + a_n\n$$",
+      "number": "11.1"
     },
     {
       "type": "figure",
@@ -113,10 +116,9 @@
     {
       "type": "theorem",
       "id": "theorem-11.1",
-      "number": "11.1",
       "title": "Properties of Summation",
       "content": "For sequences $\\{a_k\\}$ and $\\{b_k\\}$ and constant $c$:\n\n1. **Constant multiple:** \n $\\displaystyle\\sum_{k=1}^{n} c \\cdot a_k = c \\sum_{k=1}^{n} a_k$\n\n2. **Sum/Difference:** \n $\\displaystyle\\sum_{k=1}^{n} (a_k \\pm b_k) = \\sum_{k=1}^{n} a_k \\pm \\sum_{k=1}^{n} b_k$\n\n3. **Constant sum:** \n $\\displaystyle\\sum_{k=1}^{n} c = nc$",
-      "label": "Theorem"
+      "number": "11.1"
     },
     {
       "type": "example",
@@ -129,7 +131,6 @@
     {
       "type": "method",
       "id": "method-11.2",
-      "number": null,
       "title": "Index Shifting",
       "content": "Sometimes we need to rewrite a sum with a different starting index—for \nexample, to apply a formula that assumes the sum starts at $k = 1$. The \nkey principle: **a sum is determined by its terms, not its index**.\n\n**Technique:** To shift from $\\sum_{k=m}^{n}$ to $\\sum_{j=1}^{?}$, \nsubstitute $j = k - m + 1$ (so $k = j + m - 1$):\n$$\n\\sum_{k=m}^{n} a_k = \\sum_{j=1}^{n-m+1} a_{j+m-1}\n$$\n\n**Example 1: Shift starting index from 0 to 1**\n$$\n\\sum_{k=0}^{5} k^2 = \\sum_{j=1}^{6} (j-1)^2\n$$\nBoth equal $0^2 + 1^2 + 2^2 + 3^2 + 4^2 + 5^2 = 55$.\n\n**Example 2: Shift starting index from 3 to 1**\n$$\n\\sum_{k=3}^{7} (2k+1) = \\sum_{j=1}^{5} (2(j+2)+1) = \\sum_{j=1}^{5} (2j+5)\n$$\nCheck: Both equal $7 + 9 + 11 + 13 + 15 = 55$.\n\n**Example 3: Converting to standard form**\n\nEvaluate $\\displaystyle\\sum_{k=4}^{10} k$ using the formula $\\sum_{k=1}^{n} k = \\frac{n(n+1)}{2}$.\n\n**Method 1 (Subtraction):**\n$$\n\\sum_{k=4}^{10} k = \\sum_{k=1}^{10} k - \\sum_{k=1}^{3} k = \\frac{10 \\cdot 11}{2} - \\frac{3 \\cdot 4}{2} = 55 - 6 = 49\n$$\n\n**Method 2 (Index shift):** Let $j = k - 3$, so $k = j + 3$, and when \n$k = 4$, $j = 1$; when $k = 10$, $j = 7$:\n$$\n\\sum_{k=4}^{10} k = \\sum_{j=1}^{7} (j+3) = \\sum_{j=1}^{7} j + \\sum_{j=1}^{7} 3 = \\frac{7 \\cdot 8}{2} + 21 = 28 + 21 = 49\n$$"
     },
@@ -145,10 +146,9 @@
     {
       "type": "theorem",
       "id": "theorem-11.2",
-      "number": "11.2",
       "title": "Standard Summation Formulas",
       "content": "1. $\\displaystyle\\sum_{k=1}^{n} 1 = n$\n\n2. $\\displaystyle\\sum_{k=1}^{n} k = \\frac{n(n+1)}{2}$\n\n3. $\\displaystyle\\sum_{k=1}^{n} k^2 = \\frac{n(n+1)(2n+1)}{6}$\n\n4. $\\displaystyle\\sum_{k=1}^{n} k^3 = \\left[\\frac{n(n+1)}{2}\\right]^2$",
-      "label": "Theorem"
+      "number": "11.2"
     },
     {
       "type": "paragraph",
@@ -238,648 +238,560 @@
     {
       "type": "summary",
       "id": "summary-11.2",
-      "number": null,
       "title": "Series and Summation Notation",
       "content": "**Definitions:**\n\n- **Series:** Sum of a sequence's terms: $a_1 + a_2 + a_3 + \\cdots$\n\n- **Partial sum:** $S_n = a_1 + a_2 + \\cdots + a_n$\n\n- **Sigma notation:** $\\displaystyle\\sum_{k=1}^{n} a_k = a_1 + a_2 + \\cdots + a_n$\n\n**Properties of Summation:**\n$$\\begin{aligned}\n\\sum_{k=1}^{n} c \\cdot a_k &= c \\sum_{k=1}^{n} a_k \\quad \\text{(constant multiple)} \\\\\n\\sum_{k=1}^{n} (a_k \\pm b_k) &= \\sum_{k=1}^{n} a_k \\pm \\sum_{k=1}^{n} b_k \\quad \\text{(sum/difference)} \\\\\n\\sum_{k=1}^{n} c &= nc \\quad \\text{(constant sum)}\n\\end{aligned}$$\n\n**Standard Formulas:**\n$$\\begin{aligned}\n\\sum_{k=1}^{n} k &= \\frac{n(n+1)}{2} & \\sum_{k=1}^{n} k^2 &= \\frac{n(n+1)(2n+1)}{6} \\\\[6pt]\n\\sum_{k=1}^{n} k^3 &= \\left[\\frac{n(n+1)}{2}\\right]^2\n\\end{aligned}$$\n\n**Telescoping:** $\\displaystyle\\sum_{k=1}^{n} (a_k - a_{k-1}) = a_n - a_0$"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Partial Sums"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-1",
       "number": "1",
       "problem": "Find $S_1, S_2, S_3, S_4, S_5$ for $a_n = n$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-2",
       "number": "2",
       "problem": "Find $S_1, S_2, S_3, S_4, S_5$ for $a_n = 2^{n-1}$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-3",
       "number": "3",
       "problem": "Find $S_1, S_2, S_3, S_4, S_5$ for $a_n = \\dfrac{1}{n(n+1)}$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-4",
       "number": "4",
       "problem": "Find $S_1, S_2, S_3, S_4, S_5$ for $a_n = (-1)^{n+1} n$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-5",
       "number": "5",
       "problem": "A sequence has partial sums $S_n = n^2 + n$. Find $a_1, a_2, a_3, a_4$.\n\n*Hint: $a_n = S_n - S_{n-1}$ for $n \\geq 2$.*",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-6",
       "number": "6",
       "problem": "A sequence has partial sums $S_n = 2^n - 1$. Find $a_1, a_2, a_3, a_4$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Evaluating Sigma Notation"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-7",
       "number": "7",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{4} (2k - 1)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-8",
       "number": "8",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{5} k^2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-9",
       "number": "9",
       "problem": "Evaluate: $\\displaystyle\\sum_{i=1}^{6} (i + 1)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-10",
       "number": "10",
       "problem": "Evaluate: $\\displaystyle\\sum_{j=0}^{4} 3^j$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-11",
       "number": "11",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{5} \\frac{1}{k}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-12",
       "number": "12",
       "problem": "Evaluate: $\\displaystyle\\sum_{n=1}^{4} \\frac{n}{n+1}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-13",
       "number": "13",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=0}^{3} (-1)^k k^2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-14",
       "number": "14",
       "problem": "Evaluate: $\\displaystyle\\sum_{i=1}^{4} 2^i$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-15",
       "number": "15",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=2}^{5} (k^2 - 1)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-16",
       "number": "16",
       "problem": "Evaluate: $\\displaystyle\\sum_{n=1}^{3} n!$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-17",
       "number": "17",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{4} \\frac{(-1)^{k+1}}{k}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-18",
       "number": "18",
       "problem": "Evaluate: $\\displaystyle\\sum_{i=0}^{5} \\binom{5}{i}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Writing in Sigma Notation"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-19",
       "number": "19",
       "problem": "Write using sigma notation: $1 + 2 + 3 + 4 + 5$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-20",
       "number": "20",
       "problem": "Write using sigma notation: $2 + 4 + 6 + 8 + 10$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-21",
       "number": "21",
       "problem": "Write using sigma notation: $1 + 4 + 9 + 16 + 25$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-22",
       "number": "22",
       "problem": "Write using sigma notation: $\\dfrac{1}{3} + \\dfrac{1}{9} + \\dfrac{1}{27} + \\dfrac{1}{81}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-23",
       "number": "23",
       "problem": "Write using sigma notation: $1 - 2 + 3 - 4 + 5 - 6$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-24",
       "number": "24",
       "problem": "Write using sigma notation: $\\dfrac{1}{2} + \\dfrac{2}{3} + \\dfrac{3}{4} + \\cdots + \\dfrac{99}{100}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-25",
       "number": "25",
       "problem": "Write using sigma notation: $1 + x + x^2 + x^3 + \\cdots + x^n$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-26",
       "number": "26",
       "problem": "Write using sigma notation: $\\dfrac{1}{1 \\cdot 2} + \\dfrac{1}{2 \\cdot 3} + \\dfrac{1}{3 \\cdot 4} + \\cdots + \\dfrac{1}{99 \\cdot 100}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Using Summation Properties"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-27",
       "number": "27",
       "problem": "Evaluate using properties: $\\displaystyle\\sum_{k=1}^{10} 3$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-28",
       "number": "28",
       "problem": "Evaluate using properties: $\\displaystyle\\sum_{k=1}^{20} 2k$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-29",
       "number": "29",
       "problem": "Evaluate using properties: $\\displaystyle\\sum_{k=1}^{15} (k + 1)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-30",
       "number": "30",
       "problem": "Evaluate using properties: $\\displaystyle\\sum_{k=1}^{10} (2k - 3)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-31",
       "number": "31",
       "problem": "Evaluate using properties: $\\displaystyle\\sum_{k=1}^{5} (k^2 + k)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-32",
       "number": "32",
       "problem": "Evaluate using properties: $\\displaystyle\\sum_{k=1}^{8} (3k^2 - 2k + 1)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Using Summation Formulas"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-33",
       "number": "33",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{50} k$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-34",
       "number": "34",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{100} k$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-35",
       "number": "35",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{10} k^2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-36",
       "number": "36",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{6} k^3$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-37",
       "number": "37",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{n} (2k)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-38",
       "number": "38",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{n} (k^2 - k)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-39",
       "number": "39",
       "problem": "Find $n$ if $\\displaystyle\\sum_{k=1}^{n} k = 78$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-40",
       "number": "40",
       "problem": "Find $n$ if $\\displaystyle\\sum_{k=1}^{n} k = 210$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Mixed Problems"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-41",
       "number": "41",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=5}^{15} k$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-42",
       "number": "42",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=10}^{20} k^2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-43",
       "number": "43",
       "problem": "Express as a single sum: $\\displaystyle\\sum_{k=1}^{n} k^2 - \\sum_{k=1}^{n} k$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-44",
       "number": "44",
       "problem": "Simplify: $\\displaystyle\\sum_{k=1}^{n} (a_k - a_{k-1})$ where $a_0 = 0$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-45",
       "number": "45",
       "problem": "Show that $\\displaystyle\\sum_{k=1}^{n} (2k - 1) = n^2$ using summation formulas.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-46",
       "number": "46",
       "problem": "Show that $\\displaystyle\\sum_{k=1}^{n} \\frac{1}{k(k+1)} = \\frac{n}{n+1}$ by partial fractions.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Telescoping Sums"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-47",
       "number": "47",
       "problem": "Evaluate by telescoping: $\\displaystyle\\sum_{k=1}^{20} \\left(\\frac{1}{k} - \\frac{1}{k+1}\\right)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-48",
       "number": "48",
       "problem": "Use partial fractions to evaluate: $\\displaystyle\\sum_{i=1}^{5} \\frac{1}{i(i+1)}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-49",
       "number": "49",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{n} \\frac{1}{k(k+1)}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-50",
       "number": "50",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{n} \\frac{1}{(2k-1)(2k+1)}$\n\n*Hint: Use partial fractions.*",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-51",
       "number": "51",
       "problem": "Simplify: $\\displaystyle\\sum_{k=1}^{n} [(k+1)^3 - k^3]$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-52",
       "number": "52",
       "problem": "Simplify: $\\displaystyle\\sum_{k=1}^{n} [\\sqrt{k+1} - \\sqrt{k}]$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Additional Practice: Evaluating Sums"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-53",
       "number": "53",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{6} \\frac{k}{k+1}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-54",
       "number": "54",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=2}^{6} (k^2 - k)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-55",
       "number": "55",
       "problem": "Evaluate: $\\displaystyle\\sum_{j=0}^{5} (-1)^j (j+1)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-56",
       "number": "56",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{4} k \\cdot 2^k$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-57",
       "number": "57",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{25} (4k - 3)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-58",
       "number": "58",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{12} (k^2 - 2k + 1)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-59",
       "number": "59",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=10}^{30} k^2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-60",
       "number": "60",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=1}^{n} (2k-1)^2$ in terms of $n$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-61",
       "number": "61",
       "problem": "Evaluate: $\\displaystyle\\sum_{k=0}^{5} \\binom{5}{k} \\cdot 2^k$\n\n*Hint: Think binomial theorem.*",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Additional Practice: Writing in Sigma Notation"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-62",
       "number": "62",
       "problem": "Write using sigma notation: $\\frac{1}{1 \\cdot 3} + \\frac{1}{3 \\cdot 5} + \\frac{1}{5 \\cdot 7} + \\cdots + \\frac{1}{99 \\cdot 101}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-63",
       "number": "63",
       "problem": "Write using sigma notation: $1 - \\frac{1}{2} + \\frac{1}{3} - \\frac{1}{4} + \\cdots + \\frac{1}{99} - \\frac{1}{100}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-64",
       "number": "64",
       "problem": "Write using sigma notation: $x - x^3 + x^5 - x^7 + \\cdots + (-1)^n x^{2n+1}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Additional Practice: Finding n"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-65",
       "number": "65",
       "problem": "Find $n$ if $\\displaystyle\\sum_{k=1}^{n} (3k + 1) = 400$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-66",
       "number": "66",
       "problem": "The sum of the first $n$ odd positive integers is 441. Find $n$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-67",
       "number": "67",
       "problem": "If $\\displaystyle\\sum_{k=1}^{n} a_k = 2n^2 + n$, find $a_n$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Applications"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-68",
       "number": "68",
       "problem": "Find the sum of all two-digit multiples of 7.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-69",
       "number": "69",
       "problem": "Find the sum of all integers from 50 to 150.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-70",
       "number": "70",
       "problem": "Find the sum of all even integers between 21 and 99.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-11.2-71",
       "number": "71",
       "problem": "Find the sum of all positive integers less than 500 that are divisible by 11.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     }
   ]
 }

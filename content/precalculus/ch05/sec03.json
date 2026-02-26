@@ -15,25 +15,28 @@
   "devotional": {
     "title": "Seeking and Finding",
     "scripture": "Jeremiah 29:13; Matthew 7:7",
-    "content": "{AtlasWarmY}{ou \nwill seek me and find me} when you seek me with all your heart.\" This \nis one of the great promises of Scripture—that God can be found by \nthose who truly seek Him. But notice: seeking comes first. Finding is \nthe reward of sincere effort.\n\nSolving equations is a form of mathematical seeking. We begin with a \nquestion—\"What value of $x$ makes this true?\"—and we pursue the \nanswer through careful reasoning. Sometimes the path is straightforward; \nother times we must try different approaches, backtrack when we hit dead \nends, and persist through complexity.\n\nExponential and logarithmic equations present a particular kind of \nchallenge: the unknown is often hidden inside an exponent or trapped \nwithin a logarithm. To find it, we must use the inverse relationship \nbetween these functions. Just as logarithms undo exponentials, applying \nthe right operation can release the hidden variable, bringing it into \nthe open where we can solve for it.\n\nThere is a spiritual parallel here. Sin often hides itself, disguising \nits true nature or burying itself beneath layers of rationalization. \nBut God's Word is like a logarithm applied to our hearts—it exposes \nwhat was hidden, brings the truth to light, and shows us where we truly \nstand. \"Ask and it will be given to you; seek and you will find.\"",
+    "content": "\\lettrine[lines=2, loversize=0.1, nindent=0.5em]{Y}{ou \nwill seek me and find me} when you seek me with all your heart.\" This \nis one of the great promises of Scripture—that God can be found by \nthose who truly seek Him. But notice: seeking comes first. Finding is \nthe reward of sincere effort.\n\nSolving equations is a form of mathematical seeking. We begin with a \nquestion—\"What value of $x$ makes this true?\"—and we pursue the \nanswer through careful reasoning. Sometimes the path is straightforward; \nother times we must try different approaches, backtrack when we hit dead \nends, and persist through complexity.\n\nExponential and logarithmic equations present a particular kind of \nchallenge: the unknown is often hidden inside an exponent or trapped \nwithin a logarithm. To find it, we must use the inverse relationship \nbetween these functions. Just as logarithms undo exponentials, applying \nthe right operation can release the hidden variable, bringing it into \nthe open where we can solve for it.\n\nThere is a spiritual parallel here. Sin often hides itself, disguising \nits true nature or burying itself beneath layers of rationalization. \nBut God's Word is like a logarithm applied to our hearts—it exposes \nwhat was hidden, brings the truth to light, and shows us where we truly \nstand. \"Ask and it will be given to you; seek and you will find.\"",
     "edition": "christian",
     "reflection": "Solving equations requires persistence and the \nright tools. What hidden things in your life might God want to bring \ninto the light? How do you respond when truth reveals something \nuncomfortable?"
   },
+  "epigraph": {
+    "text": "*\"If any of you lacks wisdom, you should ask God, who \ngives generously to all without finding fault.\"*",
+    "reference": "James 1:5",
+    "quote": "The solution of every problem is another problem.",
+    "quoteAuthor": "Johann Wolfgang von Goethe",
+    "edition": "christian"
+  },
   "content": [
-    {
-      "type": "paragraph",
-      "text": "*\"If any of you lacks wisdom, you should ask God, who \ngives generously to all without finding fault.\"*{James 1:5}{The solution of every problem is another problem.}{Johann Wolfgang von Goethe}"
-    },
     {
       "type": "paragraph",
       "text": "In this section, we apply everything we've learned about exponentials \nand logarithms to solve equations. The key insight is that logarithms \nand exponentials are inverses—so when a variable is stuck in an \nexponent, we use logarithms to free it, and when a variable is stuck \ninside a logarithm, we use exponentiation."
     },
     {
       "type": "algorithm",
-      "id": "algorithm-5.3",
-      "number": null,
+      "id": "algorithm-5.1",
       "title": "Choosing a Strategy for Exponential Equations",
-      "content": "{1.4}\ncenter\n\ncenter\n\n**Quick decision guide:**\n\n- **See $4^x = 8$?** Both are powers of 2 → **Same-base method**\n\n- **See $3^x = 17$?** Can't match bases → **Take logarithm**\n\n- **See $e^{2x} - 5e^x + 6 = 0$?** Quadratic pattern → **Substitution**\n\n- **See $2^x = 3^{x+1}$?** Different bases, both have $x$ → **Take logarithm**"
+      "content": "\\renewcommand{}{1.4}\n\n**Quick decision guide:**\n\n- **See $4^x = 8$?** Both are powers of 2 → **Same-base method**\n\n- **See $3^x = 17$?** Can't match bases → **Take logarithm**\n\n- **See $e^{2x} - 5e^x + 6 = 0$?** Quadratic pattern → **Substitution**\n\n- **See $2^x = 3^{x+1}$?** Different bases, both have $x$ → **Take logarithm**",
+      "number": "5.1"
     },
     {
       "type": "heading",
@@ -47,15 +50,13 @@
     {
       "type": "theorem",
       "id": "theorem-5.1",
-      "number": "5.1",
       "title": "One-to-One Property of Exponential Functions",
       "content": "If $b > 0$ and $b \\neq 1$, then:\n$$\n b^x = b^y \\quad \\Longleftrightarrow \\quad x = y\n$$\nEqual bases with equal results mean equal exponents.",
-      "label": "Theorem"
+      "number": "5.1"
     },
     {
       "type": "strategy",
       "id": "strategy-5.3",
-      "number": null,
       "title": "Solving Exponential Equations by Matching Bases",
       "content": "1. Rewrite each side as a power of the same base\n\n2. Set the exponents equal (using the one-to-one property)\n\n3. Solve the resulting equation\n\n4. Check your answer"
     },
@@ -63,25 +64,25 @@
       "type": "example",
       "id": "example-5.1",
       "number": "5.1",
-      "title": "Same base---straightforward",
+      "title": "Same base—straightforward",
       "problem": "Solve each equation.\n\n1. $2^x = 32$\n\n2. $3^{x-1} = 27$\n\n3. $5^{2x} = 125$",
-      "solution": "1. Express 32 as a power of 2: $32 = 2^5$\n $$\n 2^x = 2^5 \\implies x = \\boxed{5}\n $$\n\n2. Express 27 as a power of 3: $27 = 3^3$\n $$\n 3^{x-1} = 3^3 \\implies x - 1 = 3 \\implies x = \\boxed{4}\n $$\n **Check:** $3^{4-1} = 3^3 = 27$ \n\n3. Express 125 as a power of 5: $125 = 5^3$\n $$\n 5^{2x} = 5^3 \\implies 2x = 3 \\implies x = \\boxed{\\frac{3}{2}}\n $$\n **Check:** $5^{2(3/2)} = 5^3 = 125$"
+      "solution": "1. Express 32 as a power of 2: $32 = 2^5$\n $$\n 2^x = 2^5 \\implies x = \\boxed{5}\n $$\n\n2. Express 27 as a power of 3: $27 = 3^3$\n $$\n 3^{x-1} = 3^3 \\implies x - 1 = 3 \\implies x = \\boxed{4}\n $$\n **Check:** $3^{4-1} = 3^3 = 27$ ✓\n\n3. Express 125 as a power of 5: $125 = 5^3$\n $$\n 5^{2x} = 5^3 \\implies 2x = 3 \\implies x = \\boxed{\\frac{3}{2}}\n $$\n **Check:** $5^{2(3/2)} = 5^3 = 125$ ✓"
     },
     {
       "type": "example",
       "id": "example-5.2",
       "number": "5.2",
-      "title": "Same base---different bases in problem",
+      "title": "Same base—different bases in problem",
       "problem": "Solve $4^{2x-1} = 8$.",
-      "solution": "The bases 4 and 8 are different, but both are powers of 2:\n$$\n 4 = 2^2 \\quad \\text{and} \\quad 8 = 2^3\n$$\n\nRewrite the equation:\n$$\n (2^2)^{2x-1} = 2^3\n$$\n\nSimplify the left side using $(a^m)^n = a^{mn}$:\n$$\n 2^{2(2x-1)} = 2^3 \\implies 2^{4x-2} = 2^3\n$$\n\nSet exponents equal:\n$$\n 4x - 2 = 3 \\implies 4x = 5 \\implies x = \\boxed{\\frac{5}{4}}\n$$\n\n**Check:** $4^{2(5/4)-1} = 4^{5/2-1} = 4^{3/2} = (4^{1/2})^3 = 2^3 = 8$"
+      "solution": "The bases 4 and 8 are different, but both are powers of 2:\n$$\n 4 = 2^2 \\quad \\text{and} \\quad 8 = 2^3\n$$\n\nRewrite the equation:\n$$\n (2^2)^{2x-1} = 2^3\n$$\n\nSimplify the left side using $(a^m)^n = a^{mn}$:\n$$\n 2^{2(2x-1)} = 2^3 \\implies 2^{4x-2} = 2^3\n$$\n\nSet exponents equal:\n$$\n 4x - 2 = 3 \\implies 4x = 5 \\implies x = \\boxed{\\frac{5}{4}}\n$$\n\n**Check:** $4^{2(5/4)-1} = 4^{5/2-1} = 4^{3/2} = (4^{1/2})^3 = 2^3 = 8$ ✓"
     },
     {
       "type": "example",
       "id": "example-5.3",
       "number": "5.3",
-      "title": "Same base---equation with variable on both sides",
+      "title": "Same base—equation with variable on both sides",
       "problem": "Solve $9^{x+1} = 27^x$.",
-      "solution": "Express both sides as powers of 3:\n$$\n 9 = 3^2 \\quad \\text{and} \\quad 27 = 3^3\n$$\n\nSo:\n$$\n (3^2)^{x+1} = (3^3)^x \\implies 3^{2(x+1)} = 3^{3x} \\implies 3^{2x+2} = 3^{3x}\n$$\n\nSet exponents equal:\n$$\n 2x + 2 = 3x \\implies 2 = x \\implies x = \\boxed{2}\n$$\n\n**Check:** $9^{2+1} = 9^3 = 729$ and $27^2 = 729$"
+      "solution": "Express both sides as powers of 3:\n$$\n 9 = 3^2 \\quad \\text{and} \\quad 27 = 3^3\n$$\n\nSo:\n$$\n (3^2)^{x+1} = (3^3)^x \\implies 3^{2(x+1)} = 3^{3x} \\implies 3^{2x+2} = 3^{3x}\n$$\n\nSet exponents equal:\n$$\n 2x + 2 = 3x \\implies 2 = x \\implies x = \\boxed{2}\n$$\n\n**Check:** $9^{2+1} = 9^3 = 729$ and $27^2 = 729$ ✓"
     },
     {
       "type": "heading",
@@ -103,7 +104,6 @@
     {
       "type": "strategy",
       "id": "strategy-5.3",
-      "number": null,
       "title": "Solving Exponential Equations Using Logarithms",
       "content": "1. Isolate the exponential expression on one side\n\n2. Take the logarithm of both sides (usually $\\ln$ or $\\log$)\n\n3. Use the power rule to bring down the exponent\n\n4. Solve for the variable"
     },
@@ -111,7 +111,7 @@
       "type": "example",
       "id": "example-5.4",
       "number": "5.4",
-      "title": "Using logarithms---basic",
+      "title": "Using logarithms—basic",
       "problem": "Solve $5^x = 17$. Give an exact answer and a decimal approximation.",
       "solution": "There's no way to express 17 as a nice power of 5, so we use logarithms.\n\nTake the natural log of both sides:\n$$\n \\ln(5^x) = \\ln 17\n$$\n\nApply the power rule:\n$$\n x \\ln 5 = \\ln 17\n$$\n\nSolve for $x$:\n$$\n x = \\frac{\\ln 17}{\\ln 5}\n$$\n\n**Exact answer:** $x = \\dfrac{\\ln 17}{\\ln 5}$ (or equivalently, \n$x = \\log_5 17$ by the change of base formula)\n\n**Decimal approximation:** $x \\approx \\dfrac{2.833}{1.609} \\approx \\boxed{1.760}$"
     },
@@ -119,7 +119,7 @@
       "type": "example",
       "id": "example-5.5",
       "number": "5.5",
-      "title": "Using logarithms---more complex exponent",
+      "title": "Using logarithms—more complex exponent",
       "problem": "Solve $3^{2x+1} = 50$.",
       "solution": "Take the natural log of both sides:\n$$\n \\ln(3^{2x+1}) = \\ln 50\n$$\n\nApply the power rule:\n$$\n (2x + 1)\\ln 3 = \\ln 50\n$$\n\nSolve for $x$:\n$$\\begin{aligned}\n 2x + 1 &= \\frac{\\ln 50}{\\ln 3} \\\\[0.5em]\n 2x &= \\frac{\\ln 50}{\\ln 3} - 1 \\\\[0.5em]\n x &= \\frac{1}{2}\\left(\\frac{\\ln 50}{\\ln 3} - 1\\right)\n\\end{aligned}$$\n\nUsing a calculator: $\\dfrac{\\ln 50}{\\ln 3} \\approx 3.561$, so:\n$$\n x \\approx \\frac{1}{2}(3.561 - 1) = \\frac{1}{2}(2.561) \\approx \\boxed{1.280}\n$$"
     },
@@ -154,7 +154,7 @@
       "number": "5.8",
       "title": "Quadratic in exponential form",
       "problem": "Solve $e^{2x} - 3e^x + 2 = 0$.",
-      "solution": "Notice that $e^{2x} = (e^x)^2$. Let $u = e^x$, so $u^2 = e^{2x}$.\n\nThe equation becomes:\n$$\n u^2 - 3u + 2 = 0\n$$\n\nFactor:\n$$\n (u - 1)(u - 2) = 0 \\implies u = 1 \\text{ or } u = 2\n$$\n\nBack-substitute $u = e^x$:\n\n- If $e^x = 1$: $x = \\ln 1 = 0$\n\n- If $e^x = 2$: $x = \\ln 2 \\approx 0.693$\n\n**Solutions:** $x = 0$ or $x = \\ln 2$\n\n**Check:**\n\n- $x = 0$: $e^0 - 3e^0 + 2 = 1 - 3 + 2 = 0$ \n\n- $x = \\ln 2$: $e^{2\\ln 2} - 3e^{\\ln 2} + 2 = 4 - 6 + 2 = 0$"
+      "solution": "Notice that $e^{2x} = (e^x)^2$. Let $u = e^x$, so $u^2 = e^{2x}$.\n\nThe equation becomes:\n$$\n u^2 - 3u + 2 = 0\n$$\n\nFactor:\n$$\n (u - 1)(u - 2) = 0 \\implies u = 1 \\text{ or } u = 2\n$$\n\nBack-substitute $u = e^x$:\n\n- If $e^x = 1$: $x = \\ln 1 = 0$\n\n- If $e^x = 2$: $x = \\ln 2 \\approx 0.693$\n\n**Solutions:** $x = 0$ or $x = \\ln 2$\n\n**Check:**\n\n- $x = 0$: $e^0 - 3e^0 + 2 = 1 - 3 + 2 = 0$ ✓\n\n- $x = \\ln 2$: $e^{2\\ln 2} - 3e^{\\ln 2} + 2 = 4 - 6 + 2 = 0$ ✓"
     },
     {
       "type": "example",
@@ -167,7 +167,6 @@
     {
       "type": "warning",
       "id": "warning-5.3",
-      "number": null,
       "title": "Reject Impossible Solutions",
       "content": "When back-substituting in exponential equations, remember that $b^x > 0$ \nfor any valid base $b$. If your substitution leads to $b^x = \\text{negative}$, \nthat case has no solution."
     },
@@ -199,7 +198,6 @@
     {
       "type": "strategy",
       "id": "strategy-5.3",
-      "number": null,
       "title": "Solving Logarithmic Equations",
       "content": "1. Isolate the logarithm (or condense multiple logs into one)\n\n2. Convert to exponential form: $\\log_b x = y \\Rightarrow b^y = x$\n\n3. Solve for the variable\n\n4. **Check your answer!** Reject any solutions that make \n the argument of a logarithm non-positive."
     },
@@ -209,7 +207,7 @@
       "number": "5.11",
       "title": "Basic logarithmic equation",
       "problem": "Solve $\\log_2(x - 3) = 4$.",
-      "solution": "Convert to exponential form:\n$$\n x - 3 = 2^4 = 16\n$$\n\nSolve:\n$$\n x = 19\n$$\n\n**Check:** $\\log_2(19 - 3) = \\log_2 16 = 4$ \n\nSince $19 - 3 = 16 > 0$, the solution is valid: $x = \\boxed{19}$"
+      "solution": "Convert to exponential form:\n$$\n x - 3 = 2^4 = 16\n$$\n\nSolve:\n$$\n x = 19\n$$\n\n**Check:** $\\log_2(19 - 3) = \\log_2 16 = 4$ ✓\n\nSince $19 - 3 = 16 > 0$, the solution is valid: $x = \\boxed{19}$"
     },
     {
       "type": "example",
@@ -217,7 +215,7 @@
       "number": "5.12",
       "title": "Natural log equation",
       "problem": "Solve $\\ln(2x - 1) = 3$.",
-      "solution": "Convert to exponential form (base $e$):\n$$\n 2x - 1 = e^3\n$$\n\nSolve:\n$$\n 2x = e^3 + 1 \\implies x = \\frac{e^3 + 1}{2}\n$$\n\nDecimal approximation: $x \\approx \\dfrac{20.086 + 1}{2} \\approx \\boxed{10.54}$\n\n**Check:** $2(10.54) - 1 = 20.08 \\approx e^3$"
+      "solution": "Convert to exponential form (base $e$):\n$$\n 2x - 1 = e^3\n$$\n\nSolve:\n$$\n 2x = e^3 + 1 \\implies x = \\frac{e^3 + 1}{2}\n$$\n\nDecimal approximation: $x \\approx \\dfrac{20.086 + 1}{2} \\approx \\boxed{10.54}$\n\n**Check:** $2(10.54) - 1 = 20.08 \\approx e^3$ ✓"
     },
     {
       "type": "example",
@@ -225,7 +223,7 @@
       "number": "5.13",
       "title": "Logarithm equals logarithm",
       "problem": "Solve $\\log_5(3x + 1) = \\log_5(2x + 5)$.",
-      "solution": "When $\\log_b A = \\log_b B$ (with the same base), we can conclude $A = B$ \n(by the one-to-one property of logarithms).\n\nSo:\n$$\n 3x + 1 = 2x + 5 \\implies x = 4\n$$\n\n**Check:** Both arguments must be positive:\n\n- $3(4) + 1 = 13 > 0$ \n\n- $2(4) + 5 = 13 > 0$ \n\nAnd indeed, $\\log_5 13 = \\log_5 13$. Solution: $x = \\boxed{4}$"
+      "solution": "When $\\log_b A = \\log_b B$ (with the same base), we can conclude $A = B$ \n(by the one-to-one property of logarithms).\n\nSo:\n$$\n 3x + 1 = 2x + 5 \\implies x = 4\n$$\n\n**Check:** Both arguments must be positive:\n\n- $3(4) + 1 = 13 > 0$ ✓\n\n- $2(4) + 5 = 13 > 0$ ✓\n\nAnd indeed, $\\log_5 13 = \\log_5 13$. Solution: $x = \\boxed{4}$"
     },
     {
       "type": "heading",
@@ -242,12 +240,11 @@
       "number": "5.14",
       "title": "Using the product rule",
       "problem": "Solve $\\log x + \\log(x + 3) = 1$.",
-      "solution": "Combine using the product rule:\n$$\n \\log[x(x + 3)] = 1\n$$\n\nConvert to exponential form (base 10):\n$$\n x(x + 3) = 10^1 = 10\n$$\n\nExpand and solve:\n$$\n x^2 + 3x - 10 = 0 \\implies (x + 5)(x - 2) = 0 \\implies x = -5 \\text{ or } x = 2\n$$\n\n**Check domain requirements:**\n\n- $x = -5$: $\\log(-5)$ is undefined! **Reject.**\n\n- $x = 2$: $\\log 2$ is defined, and $\\log(2+3) = \\log 5$ is defined. \n\nVerify: $\\log 2 + \\log 5 = \\log(2 \\cdot 5) = \\log 10 = 1$ \n\n**Solution:** $x = \\boxed{2}$"
+      "solution": "Combine using the product rule:\n$$\n \\log[x(x + 3)] = 1\n$$\n\nConvert to exponential form (base 10):\n$$\n x(x + 3) = 10^1 = 10\n$$\n\nExpand and solve:\n$$\n x^2 + 3x - 10 = 0 \\implies (x + 5)(x - 2) = 0 \\implies x = -5 \\text{ or } x = 2\n$$\n\n**Check domain requirements:**\n\n- $x = -5$: $\\log(-5)$ is undefined! **Reject.**\n\n- $x = 2$: $\\log 2$ is defined, and $\\log(2+3) = \\log 5$ is defined. ✓\n\nVerify: $\\log 2 + \\log 5 = \\log(2 \\cdot 5) = \\log 10 = 1$ ✓\n\n**Solution:** $x = \\boxed{2}$"
     },
     {
       "type": "warning",
       "id": "warning-5.3",
-      "number": null,
       "title": "Always Check for Extraneous Solutions",
       "content": "Logarithmic equations often produce extraneous solutions—values that \nsatisfy the algebraic manipulations but make the original equation \nundefined. **Every solution must be checked** against the domain \nof the original equation."
     },
@@ -257,7 +254,7 @@
       "number": "5.15",
       "title": "Using the quotient rule",
       "problem": "Solve $\\log_2(x + 1) - \\log_2(x - 1) = 3$.",
-      "solution": "Combine using the quotient rule:\n$$\n \\log_2\\left(\\frac{x + 1}{x - 1}\\right) = 3\n$$\n\nConvert to exponential form:\n$$\n \\frac{x + 1}{x - 1} = 2^3 = 8\n$$\n\nSolve the rational equation:\n$$\\begin{aligned}\n x + 1 &= 8(x - 1) \\\\\n x + 1 &= 8x - 8 \\\\\n 9 &= 7x \\\\\n x &= \\frac{9}{7}\n\\end{aligned}$$\n\n**Check:** Is $x = \\frac{9}{7} > 1$? Yes, so both $x + 1 > 0$ and \n$x - 1 > 0$.\n\nVerify: $\\log_2\\left(\\frac{9/7 + 1}{9/7 - 1}\\right) = \\log_2\\left(\\frac{16/7}{2/7}\\right) = \\log_2 8 = 3$ \n\n**Solution:** $x = \\boxed{\\frac{9}{7}}$"
+      "solution": "Combine using the quotient rule:\n$$\n \\log_2\\left(\\frac{x + 1}{x - 1}\\right) = 3\n$$\n\nConvert to exponential form:\n$$\n \\frac{x + 1}{x - 1} = 2^3 = 8\n$$\n\nSolve the rational equation:\n$$\\begin{aligned}\n x + 1 &= 8(x - 1) \\\\\n x + 1 &= 8x - 8 \\\\\n 9 &= 7x \\\\\n x &= \\frac{9}{7}\n\\end{aligned}$$\n\n**Check:** Is $x = \\frac{9}{7} > 1$? Yes, so both $x + 1 > 0$ and \n$x - 1 > 0$.\n\nVerify: $\\log_2\\left(\\frac{9/7 + 1}{9/7 - 1}\\right) = \\log_2\\left(\\frac{16/7}{2/7}\\right) = \\log_2 8 = 3$ ✓\n\n**Solution:** $x = \\boxed{\\frac{9}{7}}$"
     },
     {
       "type": "example",
@@ -265,7 +262,7 @@
       "number": "5.16",
       "title": "Equation with multiple logarithms",
       "problem": "Solve $2\\log_3 x = \\log_3 4 + \\log_3(x + 3)$.",
-      "solution": "Use properties to simplify each side:\n$$\\begin{aligned}\n \\log_3 x^2 &= \\log_3[4(x + 3)] \\\\\n \\log_3 x^2 &= \\log_3(4x + 12)\n\\end{aligned}$$\n\nSince the logs are equal (same base), the arguments are equal:\n$$\n x^2 = 4x + 12 \\implies x^2 - 4x - 12 = 0 \\implies (x - 6)(x + 2) = 0\n$$\n\nSo $x = 6$ or $x = -2$.\n\n**Check:**\n\n- $x = 6$: $\\log_3 6$ and $\\log_3(6+3) = \\log_3 9$ are both defined. \n\n- $x = -2$: $\\log_3(-2)$ is undefined. **Reject.**\n\n**Solution:** $x = \\boxed{6}$"
+      "solution": "Use properties to simplify each side:\n$$\\begin{aligned}\n \\log_3 x^2 &= \\log_3[4(x + 3)] \\\\\n \\log_3 x^2 &= \\log_3(4x + 12)\n\\end{aligned}$$\n\nSince the logs are equal (same base), the arguments are equal:\n$$\n x^2 = 4x + 12 \\implies x^2 - 4x - 12 = 0 \\implies (x - 6)(x + 2) = 0\n$$\n\nSo $x = 6$ or $x = -2$.\n\n**Check:**\n\n- $x = 6$: $\\log_3 6$ and $\\log_3(6+3) = \\log_3 9$ are both defined. ✓\n\n- $x = -2$: $\\log_3(-2)$ is undefined. **Reject.**\n\n**Solution:** $x = \\boxed{6}$"
     },
     {
       "type": "heading",
@@ -280,8 +277,8 @@
       "type": "example",
       "id": "example-5.17",
       "number": "5.17",
-      "title": "Compound interest---time to reach a goal",
-      "problem": "An investment of $5,000 earns 6\\% annual interest compounded monthly. \nHow long until the investment doubles?",
+      "title": "Compound interest—time to reach a goal",
+      "problem": "An investment of $5,000 earns 6% annual interest compounded monthly. \nHow long until the investment doubles?",
       "solution": "The compound interest formula is:\n$$\n A = P\\left(1 + \\frac{r}{n}\\right)^{nt}\n$$\n\nHere $P = 5000$, $r = 0.06$, $n = 12$, and we want $A = 10000$.\n\n$$\n 10000 = 5000\\left(1 + \\frac{0.06}{12}\\right)^{12t}\n$$\n\nSimplify:\n$$\n 2 = (1.005)^{12t}\n$$\n\nTake the natural log of both sides:\n$$\n \\ln 2 = 12t \\cdot \\ln(1.005)\n$$\n\nSolve for $t$:\n$$\n t = \\frac{\\ln 2}{12 \\ln(1.005)} = \\frac{0.693}{12(0.00499)} \\approx \\frac{0.693}{0.0599} \\approx \\boxed{11.58 \\text{ years}}\n$$\n\nThe investment will double in about 11 years and 7 months."
     },
     {
@@ -289,15 +286,15 @@
       "id": "example-5.18",
       "number": "5.18",
       "title": "Radioactive decay",
-      "problem": "A radioactive substance decays according to $A(t) = A_0 e^{-0.02t}$, \nwhere $t$ is in years. How long until only 25\\% of the original amount \nremains?",
+      "problem": "A radioactive substance decays according to $A(t) = A_0 e^{-0.02t}$, \nwhere $t$ is in years. How long until only 25% of the original amount \nremains?",
       "solution": "We want $A(t) = 0.25 A_0$:\n$$\n 0.25 A_0 = A_0 e^{-0.02t}\n$$\n\nDivide both sides by $A_0$:\n$$\n 0.25 = e^{-0.02t}\n$$\n\nTake the natural log:\n$$\n \\ln(0.25) = -0.02t\n$$\n\nSolve:\n$$\n t = \\frac{\\ln(0.25)}{-0.02} = \\frac{-1.386}{-0.02} = \\boxed{69.3 \\text{ years}}\n$$"
     },
     {
       "type": "figure",
       "id": "fig:decay-solve-graphical",
       "src": "/figures/precalculus/ch05/fig-decay-solve-graphical.svg",
-      "caption": "Solving a decay problem graphically. To find when $A(t) = 0.25A_0$, we locate where the decay curve crosses the horizontal line at $0.25A_0$. The $t$-coordinate of this intersection is the solution: $t = \\frac{\\ln 0.25}{-k}$. Note that two half-lives ($2t_{1/2}$) gives 25\\% remaining.",
-      "alt": "Solving a decay problem graphically. To find when $A(t) = 0.25A_0$, we locate where the decay curve crosses the horizontal line at $0.25A_0$. The $t$-coordinate of this intersection is the solution: $t = \\frac{\\ln 0.25}{-k}$. Note that two half-lives ($2t_{1/2}$) gives 25\\% remaining.",
+      "caption": "Solving a decay problem graphically. To find when $A(t) = 0.25A_0$, we locate where the decay curve crosses the horizontal line at $0.25A_0$. The $t$-coordinate of this intersection is the solution: $t = \\frac{\\ln 0.25}{-k}$. Note that two half-lives ($2t_{1/2}$) gives 25% remaining.",
+      "alt": "Solving a decay problem graphically. To find when $A(t) = 0.25A_0$, we locate where the decay curve crosses the horizontal line at $0.25A_0$. The $t$-coordinate of this intersection is the solution: $t = \\frac{\\ln 0.25}{-k}$. Note that two half-lives ($2t_{1/2}$) gives 25% remaining.",
       "tikz": true
     },
     {
@@ -319,609 +316,452 @@
     {
       "type": "summary",
       "id": "summary-5.3",
-      "number": null,
       "title": "Section 5.3 Summary: Exponential and Logarithmic Equations",
-      "content": "**Solving Exponential Equations:**\n\n{1.4}\n\n| Method | When to Use |\n| Same-base method | Both sides can be written as powers of same base |\n| $4^{2x} = 8 \\Rightarrow 2^{4x} = 2^3 \\Rightarrow 4x = 3$ |\n| Take logarithm | Cannot match bases; isolate exponential first |\n| $3^x = 17 \\Rightarrow x = \\log_3 17 = \\frac{\\ln 17}{\\ln 3}$ |\n| Substitution | Quadratic in form: $e^{2x} - 5e^x + 6 = 0$ |\n| Let $u = e^x$, solve $u^2 - 5u + 6 = 0$ |\n\n**Solving Logarithmic Equations:**\n\n1. Condense to a single logarithm (if needed)\n\n2. Convert to exponential form: $\\log_b x = c \\Rightarrow x = b^c$\n\n3. Solve the resulting equation\n\n4. **Check all solutions!** Reject if they make any argument $\\le 0$\n\n**Key Inverse Properties:**\n$$\n \\log_b(b^x) = x \\qquad b^{\\log_b x} = x\n$$\n\n**Warning:** Logarithmic equations can produce **extraneous solutions**. \nAlways verify that each solution makes all logarithm arguments positive!"
+      "content": "**Solving Exponential Equations:**\n\n\\renewcommand{}{1.4}\n| **Method** | **When to Use** |\n| Same-base method | Both sides can be written as powers of same base |\n| | $4^{2x} = 8 \\Rightarrow 2^{4x} = 2^3 \\Rightarrow 4x = 3$ |\n| Take logarithm | Cannot match bases; isolate exponential first |\n| | $3^x = 17 \\Rightarrow x = \\log_3 17 = \\frac{\\ln 17}{\\ln 3}$ |\n| Substitution | Quadratic in form: $e^{2x} - 5e^x + 6 = 0$ |\n| | Let $u = e^x$, solve $u^2 - 5u + 6 = 0$ |\n\n**Solving Logarithmic Equations:**\n\n1. Condense to a single logarithm (if needed)\n\n2. Convert to exponential form: $\\log_b x = c \\Rightarrow x = b^c$\n\n3. Solve the resulting equation\n\n4. **Check all solutions!** Reject if they make any argument $\\le 0$\n\n**Key Inverse Properties:**\n$$\n \\log_b(b^x) = x \\qquad b^{\\log_b x} = x\n$$\n\n**Warning:** Logarithmic equations can produce **extraneous solutions**. \nAlways verify that each solution makes all logarithm arguments positive!"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-1",
       "number": "1",
-      "problem": "Determine whether each $x$-value is a solution of the equation.\n\n1. $3^{2x-1} = 27$\n \n\n2. $x = 1$\n\n3. $x = 2$\n\n4. $x = \\frac{1}{2}(\\log_3 27 + 1)$\n \n\n- $\\log_4(3x) = 2$\n \n\n1. $x = 16$\n\n2. $x = \\frac{16}{3}$\n\n3. $x = 4$\n \n\n- $\\ln(x - 1) = 3.8$\n \n\n1. $x = 1 + e^{3.8}$\n\n2. $x \\approx 45.7$\n\n3. $x = 1 + \\ln 3.8$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Determine whether each $x$-value is a solution of the equation.\n\n1. $3^{2x-1} = 27$\n \n1. 2. $x = 1$\n\n3. $x = 2$\n\n4. $x = \\frac{1}{2}(\\log_3 27 + 1)$\n\n5. $\\log_4(3x) = 2$\n \n1. 6. $x = 16$\n\n7. $x = \\frac{16}{3}$\n\n8. $x = 4$\n\n9. $\\ln(x - 1) = 3.8$\n \n1. 10. $x = 1 + e^{3.8}$\n\n11. $x \\approx 45.7$\n\n12. $x = 1 + \\ln 3.8$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-2",
       "number": "2",
       "problem": "Solve each exponential equation using the same-base method.\n\n1. $2^x = 64$\n\n2. $3^{x-2} = 81$\n\n3. $5^{2x+1} = 125$\n\n4. $4^{x} = 32$\n\n5. $9^{x-1} = 27^x$\n\n6. $8^{2x} = 4^{3x+1}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-3",
       "number": "3",
       "problem": "Solve using logarithms. Give exact answers and decimal approximations.\n\n1. $3^x = 20$\n\n2. $5^{x-1} = 12$\n\n3. $e^{2x} = 15$\n\n4. $2^{3x+1} = 7$\n\n5. $4 \\cdot 3^x = 100$\n\n6. $e^{x-1} = 10$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-4",
       "number": "4",
       "problem": "Solve each equation. (Hint: Try substitution.)\n\n1. $e^{2x} - 5e^x + 6 = 0$\n\n2. $e^{2x} - e^x - 6 = 0$\n\n3. $4^x - 5 \\cdot 2^x + 4 = 0$\n\n4. $9^x - 4 \\cdot 3^x + 3 = 0$\n\n5. $e^{2x} + 2e^x - 3 = 0$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-5",
       "number": "5",
       "problem": "Solve each logarithmic equation. Check for extraneous solutions.\n\n1. $\\log_3 x = 4$\n\n2. $\\log(2x + 1) = 2$\n\n3. $\\ln(x - 4) = 0$\n\n4. $\\log_2(x - 1) = 5$\n\n5. $\\log_5(3x + 2) = 2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-6",
       "number": "6",
       "problem": "Solve each equation.\n\n1. $\\log x + \\log(x + 2) = \\log 15$\n\n2. $\\log_3(x + 4) - \\log_3 x = 2$\n\n3. $\\ln x + \\ln(x - 2) = \\ln 3$\n\n4. $2\\log x = \\log(5x - 6)$\n\n5. $\\log_2(x + 3) + \\log_2(x - 3) = 4$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-7",
       "number": "7",
-      "problem": "An investment of $8,000 earns 5\\% annual interest compounded quarterly.\n\n1. Write the formula for the value after $t$ years.\n\n2. How long until the investment is worth $12,000?\n\n3. How long until it triples?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "An investment of $8,000 earns 5% annual interest compounded quarterly.\n\n1. Write the formula for the value after $t$ years.\n\n2. How long until the investment is worth $12,000?\n\n3. How long until it triples?",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-8",
       "number": "8",
       "problem": "Carbon-14 has a half-life of about 5,730 years. If a sample originally \ncontained 100 grams:\n\n1. Write a formula for the amount remaining after $t$ years.\n\n2. How much remains after 10,000 years?\n\n3. How long until only 10 grams remain?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-9",
       "number": "9",
       "problem": "The decibel level of a sound is given by $D = 10\\log(I/I_0)$, where \n$I$ is the intensity and $I_0 = 10^{-12}$ watts/m$^2$ is the threshold \nof hearing.\n\n1. A normal conversation has intensity $10^{-6}$ W/m$^2$. Find \n the decibel level.\n\n2. A rock concert is 120 dB. Find the intensity.\n\n3. How many times more intense is the rock concert than conversation?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-10",
       "number": "10",
       "problem": "Solve: $\\log_2 x + \\log_4 x = 6$\n\n*Hint: Convert to the same base.*",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-11",
       "number": "11",
       "problem": "Solve: $\\log_3(x - 2) + \\log_9(x - 2) = \\frac{3}{2}$",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-12",
       "number": "12",
       "problem": "Solve for $x$: $2^x + 2^{-x} = 3$\n\n*Hint: Let $u = 2^x$ and multiply through by $u$.*",
-      "variant": "starred",
-      "hint": null,
-      "answer": null,
-      "label": "$\\star\\star$"
+      "variant": "starred"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-13",
       "number": "13",
       "problem": "Solve each equation.\n\n1. $\\log_2 x = 4$\n\n2. $\\log_3 x = -2$\n\n3. $\\log x = 2$\n\n4. $\\ln x = 3$\n\n5. $\\log_5 x = \\frac{1}{2}$\n\n6. $\\log_4 x = -\\frac{3}{2}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-14",
       "number": "14",
       "problem": "Solve each equation.\n\n1. $\\log_2(x + 3) = 5$\n\n2. $\\log_3(2x - 1) = 2$\n\n3. $\\ln(x - 4) = 0$\n\n4. $\\log(3x + 2) = 1$\n\n5. $\\log_5(x^2) = 2$\n\n6. $\\ln(2x + 1) = -1$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-15",
       "number": "15",
       "problem": "Solve. Check for extraneous solutions.\n\n1. $\\log x + \\log(x - 3) = 1$\n\n2. $\\log_2 x + \\log_2(x - 2) = 3$\n\n3. $\\ln x + \\ln(x + 2) = \\ln 15$\n\n4. $\\log(x + 5) - \\log x = \\log 4$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-16",
       "number": "16",
       "problem": "Solve. Check for extraneous solutions.\n\n1. $\\log_2(x + 1) + \\log_2(x - 1) = 3$\n\n2. $\\log_3(x + 4) - \\log_3(x - 2) = 1$\n\n3. $\\ln(x + 3) + \\ln(x - 1) = \\ln 21$\n\n4. $\\log(2x + 1) - \\log(x - 2) = 1$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-17",
       "number": "17",
       "problem": "Solve. Check for extraneous solutions.\n\n1. $\\log_2(x^2 - 4) - \\log_2(x + 2) = 2$\n\n2. $2\\log x - \\log(x - 1) = \\log 4$\n\n3. $\\log_3 x + \\log_3(x + 6) = 3$\n\n4. $\\ln x - \\ln(x + 1) = \\ln(x - 2)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-18",
       "number": "18",
       "problem": "Solve. Give exact and approximate answers.\n\n1. $2^x = 10$\n\n2. $3^x = 20$\n\n3. $5^x = 8$\n\n4. $7^x = 15$\n\n5. $e^x = 12$\n\n6. $10^x = 45$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-19",
       "number": "19",
       "problem": "Solve. Give exact and approximate answers.\n\n1. $2^{x+1} = 7$\n\n2. $3^{2x} = 15$\n\n3. $5^{x-2} = 12$\n\n4. $e^{3x} = 25$\n\n5. $4^{x/2} = 9$\n\n6. $10^{2x-1} = 50$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-20",
       "number": "20",
       "problem": "Solve each equation.\n\n1. $4 \\cdot 2^x = 100$\n\n2. $3e^{2x} = 45$\n\n3. $5 \\cdot 3^x - 2 = 43$\n\n4. $100e^{-0.5x} = 20$\n\n5. $2^{x+3} - 5 = 27$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-21",
       "number": "21",
       "problem": "Solve each equation.\n\n1. $3^{x+2} = 5^x$\n\n2. $2^x = 3^{x-1}$\n\n3. $4^x \\cdot 2^{x+1} = 64$\n\n4. $e^{2x} - 5e^x + 6 = 0$\n\n5. $e^{2x} + e^x - 6 = 0$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-22",
       "number": "22",
-      "problem": "How long to double an investment at:\n\n1. 5\\% compounded annually\n\n2. 6\\% compounded quarterly\n\n3. 7\\% compounded continuously",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Compound Interest"
+      "problem": "How long to double an investment at:\n\n1. 5% compounded annually\n\n2. 6% compounded quarterly\n\n3. 7% compounded continuously",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-23",
       "number": "23",
       "problem": "A population grows according to $P(t) = 1000e^{0.05t}$.\n\n1. When will the population reach 2000?\n\n2. When will it reach 5000?\n\n3. What is the doubling time?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Population"
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-24",
       "number": "24",
-      "problem": "A substance decays: $A(t) = A_0 e^{-0.03t}$.\n\n1. Find the half-life.\n\n2. When will 20\\% remain?\n\n3. When will 1\\% remain?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Radioactive Decay"
+      "problem": "A substance decays: $A(t) = A_0 e^{-0.03t}$.\n\n1. Find the half-life.\n\n2. When will 20% remain?\n\n3. When will 1% remain?",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-25",
       "number": "25",
       "problem": "$\\text{pH} = -\\log[H^+]$.\n\n1. Find pH if $[H^+] = 3.2 \\times 10^{-4}$\n\n2. Find $[H^+]$ if pH = 7.4\n\n3. How many times more acidic is pH 3 than pH 5?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "pH"
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-26",
       "number": "26",
       "problem": "$D = 10\\log\\frac{I}{I_0}$.\n\n1. Find dB if $I = 10^8 I_0$\n\n2. Find intensity ratio for 75 dB\n\n3. How many times more intense is 80 dB than 60 dB?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Decibels"
+      "variant": "regular"
+    },
+    {
+      "type": "paragraph",
+      "text": "Use a graphing calculator to solve:\n\n1. $\\log x = 2 - x$\n\n2. $e^x = x + 2$\n\n3. $\\ln x = x - 3$"
+    },
+    {
+      "type": "paragraph",
+      "text": "True or False? Justify.\n\n1. $\\log x = 2$ has exactly one solution.\n\n2. $\\log(x - 1) + \\log(x + 1) = \\log(x^2 - 1)$ for all $x$.\n\n3. If $e^x = e^y$, then $x = y$.\n\n4. The equation $\\log x = -5$ has no solution."
+    },
+    {
+      "type": "paragraph",
+      "text": "Describe and correct the error."
+    },
+    {
+      "type": "paragraph",
+      "text": "Solve: $\\log_2 x + \\log_4 x + \\log_8 x = 11$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Solve: $\\log_3(\\log_2 x) = 2$"
+    },
+    {
+      "type": "paragraph",
+      "text": "If $2^a = 3^b = 6^c$, prove that $\\frac{1}{c} = \\frac{1}{a} + \\frac{1}{b}$."
     },
     {
       "type": "exercise",
       "id": "ex-5.3-27",
       "number": "27",
-      "problem": "Use a graphing calculator to solve:\n\n1. $\\log x = 2 - x$\n\n2. $e^x = x + 2$\n\n3. $\\ln x = x - 3$",
-      "variant": "tech",
-      "hint": null,
-      "answer": null
+      "problem": "Solve each equation.\n\n1. $\\log_2 x = 5$\n\n2. $\\log_3 x = -2$\n\n3. $\\log x = 3$\n\n4. $\\ln x = 2$\n\n5. $\\log_5 x = \\dfrac{1}{2}$\n\n6. $\\log_4 x = -\\dfrac{3}{2}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-28",
       "number": "28",
-      "problem": "True or False? Justify.\n\n1. $\\log x = 2$ has exactly one solution.\n\n2. $\\log(x - 1) + \\log(x + 1) = \\log(x^2 - 1)$ for all $x$.\n\n3. If $e^x = e^y$, then $x = y$.\n\n4. The equation $\\log x = -5$ has no solution.",
-      "variant": "conceptual",
-      "hint": null,
-      "answer": null
+      "problem": "Solve each equation.\n\n1. $\\log_2(x+3) = 4$\n\n2. $\\log_3(2x-1) = 2$\n\n3. $\\ln(x-5) = 0$\n\n4. $\\log(3x+2) = 1$\n\n5. $\\log_5(x^2) = 2$\n\n6. $\\ln(x^2-3) = \\ln 6$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-29",
       "number": "29",
-      "problem": "Describe and correct the error.\n\nSolving $\\log(x - 1) + \\log(x + 1) = 1$:\nquote\n\"$\\log[(x-1)(x+1)] = 1$\n\n$x^2 - 1 = 10$\n\n$x^2 = 11$\n\n$x = \\pm\\sqrt{11}$\" \nquote",
-      "variant": "error",
-      "hint": null,
-      "answer": null
+      "problem": "Solve each equation.\n\n1. $\\log_3 x = 2\\log_3 4 - \\log_3 2$\n\n2. $\\log x = \\dfrac{1}{2}\\log 9 + \\log 2$\n\n3. $\\ln x = 2\\ln 3 - \\ln 6$\n\n4. $\\log_2 x = 3\\log_2 2 - \\log_2 4$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-30",
       "number": "30",
-      "problem": "Solve: $\\log_2 x + \\log_4 x + \\log_8 x = 11$",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "problem": "Solve. Give exact answer and decimal approximation.\n\n1. $2^x = 10$\n\n2. $3^x = 20$\n\n3. $5^x = 8$\n\n4. $7^x = 15$\n\n5. $e^x = 12$\n\n6. $10^x = 45$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-31",
       "number": "31",
-      "problem": "Solve: $\\log_3(\\log_2 x) = 2$",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "problem": "Solve. Give exact answer and decimal approximation.\n\n1. $2^{x+1} = 7$\n\n2. $3^{2x} = 15$\n\n3. $5^{x-2} = 12$\n\n4. $e^{3x} = 25$\n\n5. $4^{x/2} = 9$\n\n6. $10^{2x-1} = 50$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-32",
       "number": "32",
-      "problem": "If $2^a = 3^b = 6^c$, prove that $\\frac{1}{c} = \\frac{1}{a} + \\frac{1}{b}$.\n\n% === Merged from exercises-additional.tex ===",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "problem": "Solve each equation.\n\n1. $4 \\cdot 2^x = 100$\n\n2. $3e^{2x} = 45$\n\n3. $5 \\cdot 3^x - 2 = 43$\n\n4. $100e^{-0.5x} = 20$\n\n5. $2^{x+3} - 5 = 27$\n\n6. $e^{2x} - 4e^x + 3 = 0$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-33",
       "number": "33",
-      "problem": "Solve each equation.\n\n1. $\\log_2 x = 5$\n\n2. $\\log_3 x = -2$\n\n3. $\\log x = 3$\n\n4. $\\ln x = 2$\n\n5. $\\log_5 x = \\dfrac{1}{2}$\n\n6. $\\log_4 x = -\\dfrac{3}{2}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve each equation.\n\n1. $3^{x+2} = 5^x$\n\n2. $2^x = 3^{x-1}$\n\n3. $4^x \\cdot 2^{x+1} = 64$\n\n4. $e^{2x} - 5e^x + 6 = 0$\n\n5. $e^{2x} + e^x - 6 = 0$\n\n6. $2^{2x} - 6 \\cdot 2^x + 8 = 0$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-34",
       "number": "34",
-      "problem": "Solve each equation.\n\n1. $\\log_2(x+3) = 4$\n\n2. $\\log_3(2x-1) = 2$\n\n3. $\\ln(x-5) = 0$\n\n4. $\\log(3x+2) = 1$\n\n5. $\\log_5(x^2) = 2$\n\n6. $\\ln(x^2-3) = \\ln 6$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve. Give exact and decimal answers.\n\n1. $5 \\cdot 2^{3x} = 80$\n\n2. $2e^{4x} - 3 = 15$\n\n3. $100(1.06)^t = 250$\n\n4. $500(0.95)^t = 100$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-35",
       "number": "35",
-      "problem": "Solve each equation.\n\n1. $\\log_3 x = 2\\log_3 4 - \\log_3 2$\n\n2. $\\log x = \\dfrac{1}{2}\\log 9 + \\log 2$\n\n3. $\\ln x = 2\\ln 3 - \\ln 6$\n\n4. $\\log_2 x = 3\\log_2 2 - \\log_2 4$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve.\n\n1. $4^{x+1} = 3^{2x}$\n\n2. $5^{2x} = 7^{x+1}$\n\n3. $e^{2x} = 3e^x + 10$\n\n4. $4^x - 10 \\cdot 2^x + 16 = 0$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-36",
       "number": "36",
-      "problem": "Solve. Give exact answer and decimal approximation.\n\n1. $2^x = 10$\n\n2. $3^x = 20$\n\n3. $5^x = 8$\n\n4. $7^x = 15$\n\n5. $e^x = 12$\n\n6. $10^x = 45$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve. Round to 3 decimal places.\n\n1. $3^x = 50$\n\n2. $4^x = 75$\n\n3. $6^x = 200$\n\n4. $9^x = 500$\n\n5. $e^x = 100$\n\n6. $10^x = 250$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-37",
       "number": "37",
-      "problem": "Solve. Give exact answer and decimal approximation.\n\n1. $2^{x+1} = 7$\n\n2. $3^{2x} = 15$\n\n3. $5^{x-2} = 12$\n\n4. $e^{3x} = 25$\n\n5. $4^{x/2} = 9$\n\n6. $10^{2x-1} = 50$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve. Round to 3 decimal places.\n\n1. $2^{x-1} = 15$\n\n2. $3^{x+2} = 50$\n\n3. $5^{2x} = 100$\n\n4. $4^{x/3} = 25$\n\n5. $e^{2x+1} = 30$\n\n6. $10^{x-2} = 75$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-38",
       "number": "38",
-      "problem": "Solve each equation.\n\n1. $4 \\cdot 2^x = 100$\n\n2. $3e^{2x} = 45$\n\n3. $5 \\cdot 3^x - 2 = 43$\n\n4. $100e^{-0.5x} = 20$\n\n5. $2^{x+3} - 5 = 27$\n\n6. $e^{2x} - 4e^x + 3 = 0$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve.\n\n1. $5 \\cdot 3^x = 45$\n\n2. $2 \\cdot 5^x = 250$\n\n3. $4e^{2x} = 100$\n\n4. $3 \\cdot 10^x = 300$\n\n5. $6 \\cdot 2^{x-1} = 48$\n\n6. $10e^{-x} = 2$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-39",
       "number": "39",
-      "problem": "Solve each equation.\n\n1. $3^{x+2} = 5^x$\n\n2. $2^x = 3^{x-1}$\n\n3. $4^x \\cdot 2^{x+1} = 64$\n\n4. $e^{2x} - 5e^x + 6 = 0$\n\n5. $e^{2x} + e^x - 6 = 0$\n\n6. $2^{2x} - 6 \\cdot 2^x + 8 = 0$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve.\n\n1. $2^{x+1} = 3^x$\n\n2. $5^x = 2^{x+3}$\n\n3. $3^{2x-1} = 4^x$\n\n4. $e^x = 2^{x+1}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-40",
       "number": "40",
-      "problem": "Solve. Give exact and decimal answers.\n\n1. $5 \\cdot 2^{3x} = 80$\n\n2. $2e^{4x} - 3 = 15$\n\n3. $100(1.06)^t = 250$\n\n4. $500(0.95)^t = 100$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve.\n\n1. $e^{2x} - 7e^x + 12 = 0$\n\n2. $e^{2x} - 4e^x - 5 = 0$\n\n3. $e^{2x} + 2e^x - 8 = 0$\n\n4. $e^{2x} - 6e^x + 8 = 0$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-41",
       "number": "41",
-      "problem": "Solve.\n\n1. $4^{x+1} = 3^{2x}$\n\n2. $5^{2x} = 7^{x+1}$\n\n3. $e^{2x} = 3e^x + 10$\n\n4. $4^x - 10 \\cdot 2^x + 16 = 0$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve.\n\n1. $2^{2x} - 5 \\cdot 2^x + 4 = 0$\n\n2. $3^{2x} - 4 \\cdot 3^x + 3 = 0$\n\n3. $4^x - 6 \\cdot 2^x + 8 = 0$\n\n4. $9^x - 4 \\cdot 3^x + 3 = 0$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-42",
       "number": "42",
-      "problem": "Solve. Round to 3 decimal places.\n\n1. $3^x = 50$\n\n2. $4^x = 75$\n\n3. $6^x = 200$\n\n4. $9^x = 500$\n\n5. $e^x = 100$\n\n6. $10^x = 250$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve.\n\n1. $2^x = 5$\n\n2. $3^x = 10$\n\n3. $5^x = 20$\n\n4. $4^x = 30$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-43",
       "number": "43",
-      "problem": "Solve. Round to 3 decimal places.\n\n1. $2^{x-1} = 15$\n\n2. $3^{x+2} = 50$\n\n3. $5^{2x} = 100$\n\n4. $4^{x/3} = 25$\n\n5. $e^{2x+1} = 30$\n\n6. $10^{x-2} = 75$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve.\n\n1. $e^x = 10$\n\n2. $e^x = 50$\n\n3. $e^{2x} = 20$\n\n4. $e^{-x} = 5$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-44",
       "number": "44",
-      "problem": "Solve.\n\n1. $5 \\cdot 3^x = 45$\n\n2. $2 \\cdot 5^x = 250$\n\n3. $4e^{2x} = 100$\n\n4. $3 \\cdot 10^x = 300$\n\n5. $6 \\cdot 2^{x-1} = 48$\n\n6. $10e^{-x} = 2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve.\n\n1. $2 \\cdot 3^x = 18$\n\n2. $5 \\cdot 2^x = 80$\n\n3. $3e^x = 21$\n\n4. $4e^{2x} = 100$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-45",
       "number": "45",
-      "problem": "Solve.\n\n1. $2^{x+1} = 3^x$\n\n2. $5^x = 2^{x+3}$\n\n3. $3^{2x-1} = 4^x$\n\n4. $e^x = 2^{x+1}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve.\n\n1. $2^{x+1} = 3^x$\n\n2. $3^x = 5^{x-1}$\n\n3. $4^{2x} = 5^x$\n\n4. $e^x = 3^{x-1}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-46",
       "number": "46",
-      "problem": "Solve.\n\n1. $e^{2x} - 7e^x + 12 = 0$\n\n2. $e^{2x} - 4e^x - 5 = 0$\n\n3. $e^{2x} + 2e^x - 8 = 0$\n\n4. $e^{2x} - 6e^x + 8 = 0$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve.\n\n1. $2^{2x} - 5 \\cdot 2^x + 4 = 0$\n\n2. $e^{2x} - 3e^x - 10 = 0$\n\n3. $3^{2x} - 12 \\cdot 3^x + 27 = 0$\n\n4. $4^x - 6 \\cdot 2^x + 8 = 0$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-47",
       "number": "47",
-      "problem": "Solve.\n\n1. $2^{2x} - 5 \\cdot 2^x + 4 = 0$\n\n2. $3^{2x} - 4 \\cdot 3^x + 3 = 0$\n\n3. $4^x - 6 \\cdot 2^x + 8 = 0$\n\n4. $9^x - 4 \\cdot 3^x + 3 = 0$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve. Round to 3 decimal places.\n\n1. $5^{x-1} = 12$\n\n2. $3 \\cdot 2^{2x} = 50$\n\n3. $e^{x+2} = 15$\n\n4. $100(0.9)^t = 30$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-48",
       "number": "48",
-      "problem": "Solve.\n\n1. $2^x = 5$\n\n2. $3^x = 10$\n\n3. $5^x = 20$\n\n4. $4^x = 30$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve. Round to 3 decimal places.\n\n1. $7^x = 50$\n\n2. $8^x = 100$\n\n3. $1.5^x = 10$\n\n4. $0.75^x = 0.3$\n\n5. $e^{3x} = 40$\n\n6. $10^{2x} = 500$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-49",
       "number": "49",
-      "problem": "Solve.\n\n1. $e^x = 10$\n\n2. $e^x = 50$\n\n3. $e^{2x} = 20$\n\n4. $e^{-x} = 5$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve. Round to 3 decimal places.\n\n1. $4 \\cdot 5^x = 100$\n\n2. $3 \\cdot 7^x = 150$\n\n3. $5e^{2x} = 75$\n\n4. $8 \\cdot 10^x = 200$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-50",
       "number": "50",
-      "problem": "Solve.\n\n1. $2 \\cdot 3^x = 18$\n\n2. $5 \\cdot 2^x = 80$\n\n3. $3e^x = 21$\n\n4. $4e^{2x} = 100$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve.\n\n1. $3^{x+2} = 5^x$\n\n2. $2^{2x} = 7^x$\n\n3. $5^{x-1} = 3^{x+1}$\n\n4. $4^x = 3^{2x-1}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-51",
       "number": "51",
-      "problem": "Solve.\n\n1. $2^{x+1} = 3^x$\n\n2. $3^x = 5^{x-1}$\n\n3. $4^{2x} = 5^x$\n\n4. $e^x = 3^{x-1}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve.\n\n1. $e^{2x} - 8e^x + 15 = 0$\n\n2. $e^{2x} + e^x - 12 = 0$\n\n3. $e^{2x} - 5e^x + 4 = 0$\n\n4. $e^{2x} - 2e^x - 3 = 0$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-52",
       "number": "52",
-      "problem": "Solve.\n\n1. $2^{2x} - 5 \\cdot 2^x + 4 = 0$\n\n2. $e^{2x} - 3e^x - 10 = 0$\n\n3. $3^{2x} - 12 \\cdot 3^x + 27 = 0$\n\n4. $4^x - 6 \\cdot 2^x + 8 = 0$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve.\n\n1. $2^{2x} - 9 \\cdot 2^x + 8 = 0$\n\n2. $3^{2x} - 10 \\cdot 3^x + 9 = 0$\n\n3. $4^x - 5 \\cdot 2^x + 4 = 0$\n\n4. $9^x - 6 \\cdot 3^x + 5 = 0$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-53",
       "number": "53",
-      "problem": "Solve. Round to 3 decimal places.\n\n1. $5^{x-1} = 12$\n\n2. $3 \\cdot 2^{2x} = 50$\n\n3. $e^{x+2} = 15$\n\n4. $100(0.9)^t = 30$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve each equation. Check for extraneous solutions.\n\n1. $\\log_2(x^2 - 4) = 3$\n\n2. $\\log_3(x^2 + 2x) = 2$\n\n3. $\\ln(x^2 - 1) = \\ln(x+1) + \\ln 3$\n\n4. $\\log(x^2) = (\\log x)^2$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-54",
       "number": "54",
-      "problem": "Solve. Round to 3 decimal places.\n\n1. $7^x = 50$\n\n2. $8^x = 100$\n\n3. $1.5^x = 10$\n\n4. $0.75^x = 0.3$\n\n5. $e^{3x} = 40$\n\n6. $10^{2x} = 500$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve each equation.\n\n1. $\\log_4(x+2) + \\log_4(x-1) = 1$\n\n2. $\\log_5(2x+3) - \\log_5(x-1) = 1$\n\n3. $\\log_2 x + \\log_4 x = 6$\n\n4. $\\log_3 x + \\log_9 x = 3$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-55",
       "number": "55",
-      "problem": "Solve. Round to 3 decimal places.\n\n1. $4 \\cdot 5^x = 100$\n\n2. $3 \\cdot 7^x = 150$\n\n3. $5e^{2x} = 75$\n\n4. $8 \\cdot 10^x = 200$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve each equation for $x$.\n\n1. $2^{2x} - 5 \\cdot 2^x + 4 = 0$\n\n2. $3^{2x} - 4 \\cdot 3^x + 3 = 0$\n\n3. $e^{2x} - 7e^x + 12 = 0$\n\n4. $4^x - 6 \\cdot 2^x + 8 = 0$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-56",
       "number": "56",
-      "problem": "Solve.\n\n1. $3^{x+2} = 5^x$\n\n2. $2^{2x} = 7^x$\n\n3. $5^{x-1} = 3^{x+1}$\n\n4. $4^x = 3^{2x-1}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve each equation. (Hint: Let $u = \\log x$ or $u = \\ln x$.)\n\n1. $(\\log x)^2 - 5\\log x + 6 = 0$\n\n2. $(\\ln x)^2 - 4\\ln x + 3 = 0$\n\n3. $(\\log x)^2 + \\log x - 2 = 0$\n\n4. $2(\\ln x)^2 - 5\\ln x + 2 = 0$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-57",
       "number": "57",
-      "problem": "Solve.\n\n1. $e^{2x} - 8e^x + 15 = 0$\n\n2. $e^{2x} + e^x - 12 = 0$\n\n3. $e^{2x} - 5e^x + 4 = 0$\n\n4. $e^{2x} - 2e^x - 3 = 0$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve each equation algebraically.\n\n1. $5^{x-1} = 125$\n\n2. $2^{3x+2} = 64$\n\n3. $9^x = 27$\n\n4. $4^{2x-1} = 8^x$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-58",
       "number": "58",
-      "problem": "Solve.\n\n1. $2^{2x} - 9 \\cdot 2^x + 8 = 0$\n\n2. $3^{2x} - 10 \\cdot 3^x + 9 = 0$\n\n3. $4^x - 5 \\cdot 2^x + 4 = 0$\n\n4. $9^x - 6 \\cdot 3^x + 5 = 0$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve for $x$. Give exact answers.\n\n1. $e^{2x-1} = 7$\n\n2. $3^{x+2} = 5^{x-1}$\n\n3. $2 \\cdot 5^{3x} = 11$\n\n4. $e^{x} + e^{-x} = 3$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-59",
       "number": "59",
-      "problem": "Solve each equation. Check for extraneous solutions.\n\n1. $\\log_2(x^2 - 4) = 3$\n\n2. $\\log_3(x^2 + 2x) = 2$\n\n3. $\\ln(x^2 - 1) = \\ln(x+1) + \\ln 3$\n\n4. $\\log(x^2) = (\\log x)^2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve each logarithmic equation.\n\n1. $\\log_4(3x-5) = 2$\n\n2. $\\log_2(x+3) + \\log_2(x-3) = 4$\n\n3. $\\ln(x+4) - \\ln(x-2) = \\ln 3$\n\n4. $\\log_3(x+6) - \\log_3(x-2) = 2$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-5.3-60",
       "number": "60",
-      "problem": "Solve each equation.\n\n1. $\\log_4(x+2) + \\log_4(x-1) = 1$\n\n2. $\\log_5(2x+3) - \\log_5(x-1) = 1$\n\n3. $\\log_2 x + \\log_4 x = 6$\n\n4. $\\log_3 x + \\log_9 x = 3$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-5.3-61",
-      "number": "61",
-      "problem": "Solve each equation for $x$.\n\n1. $2^{2x} - 5 \\cdot 2^x + 4 = 0$\n\n2. $3^{2x} - 4 \\cdot 3^x + 3 = 0$\n\n3. $e^{2x} - 7e^x + 12 = 0$\n\n4. $4^x - 6 \\cdot 2^x + 8 = 0$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-5.3-62",
-      "number": "62",
-      "problem": "Solve each equation. (Hint: Let $u = \\log x$ or $u = \\ln x$.)\n\n1. $(\\log x)^2 - 5\\log x + 6 = 0$\n\n2. $(\\ln x)^2 - 4\\ln x + 3 = 0$\n\n3. $(\\log x)^2 + \\log x - 2 = 0$\n\n4. $2(\\ln x)^2 - 5\\ln x + 2 = 0$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-5.3-63",
-      "number": "63",
-      "problem": "Solve each equation algebraically.\n\n1. $5^{x-1} = 125$\n\n2. $2^{3x+2} = 64$\n\n3. $9^x = 27$\n\n4. $4^{2x-1} = 8^x$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-5.3-64",
-      "number": "64",
-      "problem": "Solve for $x$. Give exact answers.\n\n1. $e^{2x-1} = 7$\n\n2. $3^{x+2} = 5^{x-1}$\n\n3. $2 \\cdot 5^{3x} = 11$\n\n4. $e^{x} + e^{-x} = 3$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-5.3-65",
-      "number": "65",
-      "problem": "Solve each logarithmic equation.\n\n1. $\\log_4(3x-5) = 2$\n\n2. $\\log_2(x+3) + \\log_2(x-3) = 4$\n\n3. $\\ln(x+4) - \\ln(x-2) = \\ln 3$\n\n4. $\\log_3(x+6) - \\log_3(x-2) = 2$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-5.3-66",
-      "number": "66",
       "problem": "The Clausius-Clapeyron equation relates vapor pressure to temperature: $\\ln\\dfrac{P_2}{P_1} = \\dfrac{\\Delta H}{R}\\left(\\dfrac{1}{T_1} - \\dfrac{1}{T_2}\\right)$.\n\nFor water with $\\Delta H = 40.7$ kJ/mol and $R = 8.314$ J/(mol·K):\n\n1. If $P = 1$ atm at $T = 373$ K, find pressure at 350 K.\n\n2. At what temperature is the vapor pressure 0.5 atm?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "variant": "regular"
     }
   ],
   "marginNotes": [

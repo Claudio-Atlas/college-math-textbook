@@ -17,7 +17,6 @@
     {
       "type": "connection",
       "id": "connection-7.2",
-      "number": null,
       "title": "The Whole Greater Than Its Parts",
       "content": "When Jesus fed five thousand people, He took five loaves and two fish—and \nfrom that combination came abundance beyond what the parts suggested \n(Matthew 14:13-21). In mathematics, we often find that combining things \nproduces surprises. One might naively guess that $\\sin(\\alpha + \\beta)$ \nequals $\\sin\\alpha + \\sin\\beta$, but this is false. The actual relationship \nis far more intricate and beautiful: $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \n\\cos\\alpha\\sin\\beta$. Both angles contribute to the result, interweaving \nin an unexpected pattern. Creation often works this way—combinations \nyield richness that the separate parts don't predict."
     },
@@ -47,7 +46,9 @@
       "id": "fig:cosine-difference",
       "src": "/figures/precalculus/ch07/fig-cosine-difference.svg",
       "caption": "Deriving the cosine difference formula. Points $A$ and $B$ are \nseparated by angle $\\alpha - \\beta$. The chord length $|AB|$ equals the \nchord length $|CD|$, where $C$ is at angle $\\alpha - \\beta$ and $D$ is \nat $(1, 0)$.",
-      "alt": "Deriving the cosine difference formula. Points $A$ and $B$ are \nseparated by angle $\\alpha - \\beta$. The chord length $|AB|$ equals the \nchord length $|CD|$, where $C$ is at angle $\\alpha - \\beta$ and $D$ is \nat $(1, 0)$."
+      "alt": "Deriving the cosine difference formula. Points $A$ and $B$ are \nseparated by angle $\\alpha - \\beta$. The chord length $|AB|$ equals the \nchord length $|CD|$, where $C$ is at angle $\\alpha - \\beta$ and $D$ is \nat $(1, 0)$.",
+      "tikz": true,
+      "figCommand": "figCosineDifference"
     },
     {
       "type": "paragraph",
@@ -55,19 +56,11 @@
     },
     {
       "type": "paragraph",
-      "text": "Expanding the squares:"
+      "text": "Expanding the squares:\n$$\\begin{aligned}\n[d(P,Q)]^2 &= \\cos^2\\alpha - 2\\cos\\alpha\\cos\\beta + \\cos^2\\beta + \n\\sin^2\\alpha - 2\\sin\\alpha\\sin\\beta + \\sin^2\\beta \\\\\n&= (\\cos^2\\alpha + \\sin^2\\alpha) + (\\cos^2\\beta + \\sin^2\\beta) - \n2(\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta) \\\\\n&= 1 + 1 - 2(\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta) \\\\\n&= 2 - 2(\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta)\n\\end{aligned}$$"
     },
     {
       "type": "paragraph",
-      "text": "$$\\begin{aligned}[d(P,Q)]^2 &= \\cos^2\\alpha - 2\\cos\\alpha\\cos\\beta + \\cos^2\\beta + \n\\sin^2\\alpha - 2\\sin\\alpha\\sin\\beta + \\sin^2\\beta \\\\\n&= (\\cos^2\\alpha + \\sin^2\\alpha) + (\\cos^2\\beta + \\sin^2\\beta) - \n2(\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta) \\\\\n&= 1 + 1 - 2(\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta) \\\\\n&= 2 - 2(\\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta)\\end{aligned}$$"
-    },
-    {
-      "type": "paragraph",
-      "text": "Now consider the same two points, but measure their separation by the \nangle $\\alpha - \\beta$. If we rotate the entire picture so that $Q$ lies \nat angle $0$ (on the positive $x$-axis at $(1, 0)$), then $P$ lies at \nangle $\\alpha - \\beta$. The distance from $(1, 0)$ to \n$(\\cos(\\alpha - \\beta), \\sin(\\alpha - \\beta))$ is:"
-    },
-    {
-      "type": "paragraph",
-      "text": "$$\\begin{aligned}[d]^2 &= (\\cos(\\alpha - \\beta) - 1)^2 + (\\sin(\\alpha - \\beta) - 0)^2 \\\\\n&= \\cos^2(\\alpha - \\beta) - 2\\cos(\\alpha - \\beta) + 1 + \\sin^2(\\alpha - \\beta) \\\\\n&= 2 - 2\\cos(\\alpha - \\beta)\\end{aligned}$$"
+      "text": "Now consider the same two points, but measure their separation by the \nangle $\\alpha - \\beta$. If we rotate the entire picture so that $Q$ lies \nat angle $0$ (on the positive $x$-axis at $(1, 0)$), then $P$ lies at \nangle $\\alpha - \\beta$. The distance from $(1, 0)$ to \n$(\\cos(\\alpha - \\beta), \\sin(\\alpha - \\beta))$ is:\n$$\\begin{aligned}\n[d]^2 &= (\\cos(\\alpha - \\beta) - 1)^2 + (\\sin(\\alpha - \\beta) - 0)^2 \\\\\n&= \\cos^2(\\alpha - \\beta) - 2\\cos(\\alpha - \\beta) + 1 + \\sin^2(\\alpha - \\beta) \\\\\n&= 2 - 2\\cos(\\alpha - \\beta)\n\\end{aligned}$$"
     },
     {
       "type": "paragraph",
@@ -80,10 +73,9 @@
     {
       "type": "theorem",
       "id": "theorem-7.1",
-      "number": "7.1",
       "title": "Cosine of a Difference",
       "content": "For any angles $\\alpha$ and $\\beta$,\n$$\n\\cos(\\alpha - \\beta) = \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta\n$$",
-      "label": "Theorem"
+      "number": "7.1"
     },
     {
       "type": "paragraph",
@@ -91,23 +83,11 @@
     },
     {
       "type": "paragraph",
-      "text": "**Cosine of a Sum:** Replace $\\beta$ with $-\\beta$:"
+      "text": "**Cosine of a Sum:** Replace $\\beta$ with $-\\beta$:\n$$\\begin{aligned}\n\\cos(\\alpha + \\beta) &= \\cos(\\alpha - (-\\beta)) \\\\\n&= \\cos\\alpha\\cos(-\\beta) + \\sin\\alpha\\sin(-\\beta) \\\\\n&= \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta\n\\end{aligned}$$\n(using the even-odd identities: $\\cos(-\\beta) = \\cos\\beta$ and \n$\\sin(-\\beta) = -\\sin\\beta$)"
     },
     {
       "type": "paragraph",
-      "text": "$$\\begin{aligned}\\cos(\\alpha + \\beta) &= \\cos(\\alpha - (-\\beta)) \\\\\n&= \\cos\\alpha\\cos(-\\beta) + \\sin\\alpha\\sin(-\\beta) \\\\\n&= \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta\\end{aligned}$$"
-    },
-    {
-      "type": "paragraph",
-      "text": "(using the even-odd identities: $\\cos(-\\beta) = \\cos\\beta$ and \n$\\sin(-\\beta) = -\\sin\\beta$)"
-    },
-    {
-      "type": "paragraph",
-      "text": "**Sine of a Difference:** Use the cofunction identity \n$\\sin\\theta = \\cos\\left(\\frac{\\pi}{2} - \\theta\\right)$:"
-    },
-    {
-      "type": "paragraph",
-      "text": "$$\\begin{aligned}\\sin(\\alpha - \\beta) &= \\cos\\left(\\frac{\\pi}{2} - (\\alpha - \\beta)\\right) \\\\\n&= \\cos\\left(\\left(\\frac{\\pi}{2} - \\alpha\\right) + \\beta\\right) \\\\\n&= \\cos\\left(\\frac{\\pi}{2} - \\alpha\\right)\\cos\\beta - \n\\sin\\left(\\frac{\\pi}{2} - \\alpha\\right)\\sin\\beta \\\\\n&= \\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta\\end{aligned}$$"
+      "text": "**Sine of a Difference:** Use the cofunction identity \n$\\sin\\theta = \\cos\\left(\\frac{\\pi}{2} - \\theta\\right)$:\n$$\\begin{aligned}\n\\sin(\\alpha - \\beta) &= \\cos\\left(\\frac{\\pi}{2} - (\\alpha - \\beta)\\right) \\\\\n&= \\cos\\left(\\left(\\frac{\\pi}{2} - \\alpha\\right) + \\beta\\right) \\\\\n&= \\cos\\left(\\frac{\\pi}{2} - \\alpha\\right)\\cos\\beta - \n\\sin\\left(\\frac{\\pi}{2} - \\alpha\\right)\\sin\\beta \\\\\n&= \\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta\n\\end{aligned}$$"
     },
     {
       "type": "paragraph",
@@ -125,14 +105,9 @@
     {
       "type": "theorem",
       "id": "theorem-7.2",
-      "number": "7.2",
       "title": "Sum and Difference Formulas",
       "content": "For any angles $\\alpha$ and $\\beta$:\n$$\\begin{aligned}\n\\sin(\\alpha + \\beta) &= \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta \\\\\n\\sin(\\alpha - \\beta) &= \\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta \\\\[6pt]\n\\cos(\\alpha + \\beta) &= \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta \\\\\n\\cos(\\alpha - \\beta) &= \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta \\\\[6pt]\n\\tan(\\alpha + \\beta) &= \\frac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta} \\\\[6pt]\n\\tan(\\alpha - \\beta) &= \\frac{\\tan\\alpha - \\tan\\beta}{1 + \\tan\\alpha\\tan\\beta}\n\\end{aligned}$$",
-      "label": "Theorem"
-    },
-    {
-      "type": "paragraph",
-      "text": "formulas, the \nsign in the middle is *opposite* to the sign in the argument. \nIn the *sine* formulas, the signs *match*.}"
+      "number": "7.2"
     },
     {
       "type": "paragraph",
@@ -141,8 +116,7 @@
     {
       "type": "warning",
       "id": "warning-7.2",
-      "number": null,
-      "title": "The ``Freshman's Dream'' is False",
+      "title": "The \"Freshman's Dream\" is False",
       "content": "It is tempting but *wrong* to assume:\n$$\n\\sin(\\alpha + \\beta) \\neq \\sin\\alpha + \\sin\\beta\n$$\nYou can verify this with a simple example: $\\sin(30° + 60°) = \\sin 90° = 1$, \nbut $\\sin 30° + \\sin 60° = \\frac{1}{2} + \\frac{\\sqrt{3}}{2} \\approx 1.366$."
     },
     {
@@ -154,7 +128,9 @@
       "id": "fig:sum-diff-angles",
       "src": "/figures/precalculus/ch07/fig-sum-difference-angles.svg",
       "caption": "Visualizing $\\alpha + \\beta$ and $\\alpha - \\beta$ on the unit circle. \nStarting from angle $\\alpha$, adding $\\beta$ rotates counterclockwise to \n$\\alpha + \\beta$, while subtracting $\\beta$ rotates clockwise to $\\alpha - \\beta$.",
-      "alt": "Visualizing $\\alpha + \\beta$ and $\\alpha - \\beta$ on the unit circle. \nStarting from angle $\\alpha$, adding $\\beta$ rotates counterclockwise to \n$\\alpha + \\beta$, while subtracting $\\beta$ rotates clockwise to $\\alpha - \\beta$."
+      "alt": "Visualizing $\\alpha + \\beta$ and $\\alpha - \\beta$ on the unit circle. \nStarting from angle $\\alpha$, adding $\\beta$ rotates counterclockwise to \n$\\alpha + \\beta$, while subtracting $\\beta$ rotates clockwise to $\\alpha - \\beta$.",
+      "tikz": true,
+      "figCommand": "figSumDifferenceAngles"
     },
     {
       "type": "heading",
@@ -283,7 +259,6 @@
     {
       "type": "remark",
       "id": "remark-7.2",
-      "number": null,
       "title": "Hidden Unity",
       "content": "The reduction formulas reveal that angles related by $\\pi$ (180°) share \ndeep connections. The sine function treats $\\theta$ and $\\pi - \\theta$ \nidentically; the cosine function treats $\\theta$ and $-\\theta$ identically. \nThese symmetries aren't coincidental—they emerge from the underlying \ngeometry of the circle. In Scripture, we see similar hidden unities: \ndifferent Old Testament prophecies, written centuries apart, converge on \na single fulfillment in Christ. Pattern and connection run deeper than \nsurface appearances suggest."
     },
@@ -306,7 +281,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Angle Between Two Lines"
+      "text": "*{Angle Between Two Lines}"
     },
     {
       "type": "paragraph",
@@ -317,7 +292,9 @@
       "id": "fig:angle-lines",
       "src": "/figures/precalculus/ch07/fig-angle-between-lines.svg",
       "caption": "Two lines with slopes $m_1$ and $m_2$ make angles $\\alpha_1$ and \n$\\alpha_2$ with the positive $x$-axis. The angle $\\theta$ between the lines \nis the difference $\\alpha_2 - \\alpha_1$.",
-      "alt": "Two lines with slopes $m_1$ and $m_2$ make angles $\\alpha_1$ and \n$\\alpha_2$ with the positive $x$-axis. The angle $\\theta$ between the lines \nis the difference $\\alpha_2 - \\alpha_1$."
+      "alt": "Two lines with slopes $m_1$ and $m_2$ make angles $\\alpha_1$ and \n$\\alpha_2$ with the positive $x$-axis. The angle $\\theta$ between the lines \nis the difference $\\alpha_2 - \\alpha_1$.",
+      "tikz": true,
+      "figCommand": "figAngleBetweenLines"
     },
     {
       "type": "paragraph",
@@ -330,10 +307,9 @@
     {
       "type": "theorem",
       "id": "theorem-7.3",
-      "number": "7.3",
       "title": "Angle Between Two Lines",
       "content": "If two non-perpendicular lines have slopes $m_1$ and $m_2$, the acute \nangle $\\theta$ between them satisfies:\n$$\n\\tan\\theta = \\left|\\frac{m_1 - m_2}{1 + m_1 m_2}\\right|\n$$",
-      "label": "Theorem"
+      "number": "7.3"
     },
     {
       "type": "example",
@@ -354,7 +330,11 @@
     },
     {
       "type": "paragraph",
-      "text": "Deriving the Formula"
+      "text": "This result is fundamental in physics (wave interference, oscillations), \nelectrical engineering (AC circuits), and solving certain trigonometric \nequations."
+    },
+    {
+      "type": "paragraph",
+      "text": "*{Deriving the Formula}"
     },
     {
       "type": "paragraph",
@@ -366,11 +346,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Comparing with $A\\sin x + B\\cos x$, we need:"
-    },
-    {
-      "type": "paragraph",
-      "text": "$$\\begin{aligned}A &= k\\cos\\phi \\\\\nB &= k\\sin\\phi\\end{aligned}$$"
+      "text": "Comparing with $A\\sin x + B\\cos x$, we need:\n$$\\begin{aligned}\nA &= k\\cos\\phi \\\\\nB &= k\\sin\\phi\n\\end{aligned}$$"
     },
     {
       "type": "paragraph",
@@ -387,10 +363,9 @@
     {
       "type": "theorem",
       "id": "theorem-7.4",
-      "number": "7.4",
       "title": "Harmonic Addition Theorem",
       "content": "For any constants $A$ and $B$ (not both zero):\n$$\n\\boxed{A\\sin x + B\\cos x = k\\sin(x + \\phi)}\n$$\nwhere:\n\n- $k = \\sqrt{A^2 + B^2}$ (amplitude)\n\n- $\\tan\\phi = \\dfrac{B}{A}$ (phase shift, with $\\phi$ in the appropriate quadrant)\n\n Equivalently, we can write:\n$$\nA\\sin x + B\\cos x = k\\cos(x - \\psi)\n$$\nwhere $\\tan\\psi = \\dfrac{A}{B}$ and the same $k = \\sqrt{A^2 + B^2}$.",
-      "label": "Theorem"
+      "number": "7.4"
     },
     {
       "type": "example",
@@ -409,7 +384,9 @@
       "id": "fig:harmonic-addition",
       "src": "/figures/precalculus/ch07/fig-harmonic-addition.svg",
       "caption": "Combining $3\\sin x$ (blue) and $4\\cos x$ (green) produces \n$5\\sin(x + \\phi)$ (red). The amplitude of the combined wave is \n$\\sqrt{3^2 + 4^2} = 5$, and the phase shift is $\\phi = \\arctan(4/3)$.",
-      "alt": "Combining $3\\sin x$ (blue) and $4\\cos x$ (green) produces \n$5\\sin(x + \\phi)$ (red). The amplitude of the combined wave is \n$\\sqrt{3^2 + 4^2} = 5$, and the phase shift is $\\phi = \\arctan(4/3)$."
+      "alt": "Combining $3\\sin x$ (blue) and $4\\cos x$ (green) produces \n$5\\sin(x + \\phi)$ (red). The amplitude of the combined wave is \n$\\sqrt{3^2 + 4^2} = 5$, and the phase shift is $\\phi = \\arctan(4/3)$.",
+      "tikz": true,
+      "figCommand": "figHarmonicAddition"
     },
     {
       "type": "example",
@@ -417,7 +394,7 @@
       "number": "7.15",
       "title": "Solving an equation using harmonic addition",
       "problem": "Solve $\\sin x + \\sqrt{3}\\cos x = 2$ for $x \\in [0, 2\\pi)$.",
-      "solution": "**Step 1: Rewrite as a single sinusoid.**\n\nHere $A = 1$ and $B = \\sqrt{3}$.\n$$\nk = \\sqrt{1 + 3} = \\sqrt{4} = 2\n$$\n$$\n\\tan\\phi = \\frac{\\sqrt{3}}{1} = \\sqrt{3} \\implies \\phi = \\frac{\\pi}{3}\n$$\n(Both $A$ and $B$ positive, so $\\phi$ is in QI.)\n\nTherefore:\n$$\n\\sin x + \\sqrt{3}\\cos x = 2\\sin\\left(x + \\frac{\\pi}{3}\\right)\n$$\n\n**Step 2: Solve the simplified equation.**\n$$\n2\\sin\\left(x + \\frac{\\pi}{3}\\right) = 2 \\implies \\sin\\left(x + \\frac{\\pi}{3}\\right) = 1\n$$\n\nThe sine function equals $1$ when the angle equals $\\frac{\\pi}{2}$:\n$$\nx + \\frac{\\pi}{3} = \\frac{\\pi}{2} \\implies x = \\frac{\\pi}{2} - \\frac{\\pi}{3} = \\frac{\\pi}{6}\n$$\n\n**Check:** $\\sin\\frac{\\pi}{6} + \\sqrt{3}\\cos\\frac{\\pi}{6} = \\frac{1}{2} + \\sqrt{3} \\cdot \\frac{\\sqrt{3}}{2} = \\frac{1}{2} + \\frac{3}{2} = 2$ \n\nThe solution in $[0, 2\\pi)$ is $\\boxed{x = \\frac{\\pi}{6}}$."
+      "solution": "**Step 1: Rewrite as a single sinusoid.**\n\nHere $A = 1$ and $B = \\sqrt{3}$.\n$$\nk = \\sqrt{1 + 3} = \\sqrt{4} = 2\n$$\n$$\n\\tan\\phi = \\frac{\\sqrt{3}}{1} = \\sqrt{3} \\implies \\phi = \\frac{\\pi}{3}\n$$\n(Both $A$ and $B$ positive, so $\\phi$ is in QI.)\n\nTherefore:\n$$\n\\sin x + \\sqrt{3}\\cos x = 2\\sin\\left(x + \\frac{\\pi}{3}\\right)\n$$\n\n**Step 2: Solve the simplified equation.**\n$$\n2\\sin\\left(x + \\frac{\\pi}{3}\\right) = 2 \\implies \\sin\\left(x + \\frac{\\pi}{3}\\right) = 1\n$$\n\nThe sine function equals $1$ when the angle equals $\\frac{\\pi}{2}$:\n$$\nx + \\frac{\\pi}{3} = \\frac{\\pi}{2} \\implies x = \\frac{\\pi}{2} - \\frac{\\pi}{3} = \\frac{\\pi}{6}\n$$\n\n**Check:** $\\sin\\frac{\\pi}{6} + \\sqrt{3}\\cos\\frac{\\pi}{6} = \\frac{1}{2} + \\sqrt{3} \\cdot \\frac{\\sqrt{3}}{2} = \\frac{1}{2} + \\frac{3}{2} = 2$ ✓\n\nThe solution in $[0, 2\\pi)$ is $\\boxed{x = \\frac{\\pi}{6}}$."
     },
     {
       "type": "example",
@@ -430,7 +407,6 @@
     {
       "type": "remark",
       "id": "remark-7.2",
-      "number": null,
       "title": "Unity from Diversity",
       "content": "The Harmonic Addition Theorem reveals that what appears to be the \ninterference of two distinct waves is actually a single, unified wave \nin disguise. This mathematical truth echoes a spiritual principle: \napparent complexity often masks underlying unity. Just as $3\\sin x + 4\\cos x$ \nis secretly $5\\sin(x + \\phi)$, the diverse gifts described in \n1 Corinthians 12 work together as one body. The mathematics of wave \nsuperposition reflects this deeper truth—many voices, one harmony."
     },
@@ -445,7 +421,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Product-to-Sum Formulas"
+      "text": "*{Product-to-Sum Formulas}"
     },
     {
       "type": "paragraph",
@@ -453,11 +429,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Consider the sum and difference formulas for cosine:"
-    },
-    {
-      "type": "paragraph",
-      "text": "$$\\begin{aligned}\\cos(\\alpha - \\beta) &= \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta \\\\\n\\cos(\\alpha + \\beta) &= \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta\\end{aligned}$$"
+      "text": "Consider the sum and difference formulas for cosine:\n$$\\begin{aligned}\n\\cos(\\alpha - \\beta) &= \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta \\\\\n\\cos(\\alpha + \\beta) &= \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta\n\\end{aligned}$$"
     },
     {
       "type": "paragraph",
@@ -474,10 +446,9 @@
     {
       "type": "theorem",
       "id": "theorem-7.5",
-      "number": "7.5",
       "title": "Product-to-Sum Formulas",
       "content": "$$\\begin{aligned}\n\\cos\\alpha\\cos\\beta &= \\frac{1}{2}\\left[\\cos(\\alpha - \\beta) + \\cos(\\alpha + \\beta)\\right] \\\\[6pt]\n\\sin\\alpha\\sin\\beta &= \\frac{1}{2}\\left[\\cos(\\alpha - \\beta) - \\cos(\\alpha + \\beta)\\right] \\\\[6pt]\n\\sin\\alpha\\cos\\beta &= \\frac{1}{2}\\left[\\sin(\\alpha + \\beta) + \\sin(\\alpha - \\beta)\\right] \\\\[6pt]\n\\cos\\alpha\\sin\\beta &= \\frac{1}{2}\\left[\\sin(\\alpha + \\beta) - \\sin(\\alpha - \\beta)\\right]\n\\end{aligned}$$",
-      "label": "Theorem"
+      "number": "7.5"
     },
     {
       "type": "example",
@@ -497,7 +468,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Sum-to-Product Formulas"
+      "text": "*{Sum-to-Product Formulas}"
     },
     {
       "type": "paragraph",
@@ -506,14 +477,9 @@
     {
       "type": "theorem",
       "id": "theorem-7.6",
-      "number": "7.6",
       "title": "Sum-to-Product Formulas",
       "content": "$$\\begin{aligned}\n\\sin u + \\sin v &= 2\\sin\\frac{u + v}{2}\\cos\\frac{u - v}{2} \\\\[6pt]\n\\sin u - \\sin v &= 2\\cos\\frac{u + v}{2}\\sin\\frac{u - v}{2} \\\\[6pt]\n\\cos u + \\cos v &= 2\\cos\\frac{u + v}{2}\\cos\\frac{u - v}{2} \\\\[6pt]\n\\cos u - \\cos v &= -2\\sin\\frac{u + v}{2}\\sin\\frac{u - v}{2}\n\\end{aligned}$$",
-      "label": "Theorem"
-    },
-    {
-      "type": "paragraph",
-      "text": "osine **D**ifference brings a **D**owner\" \n(negative sign).}"
+      "number": "7.6"
     },
     {
       "type": "example",
@@ -542,501 +508,333 @@
     {
       "type": "remark",
       "id": "remark-7.2",
-      "number": null,
       "title": "Transformation and Equivalence",
       "content": "The product-to-sum and sum-to-product formulas remind us that the same \nmathematical reality can be expressed in radically different forms. \nA product becomes a sum; a sum becomes a product. Neither form is \n\"more true\" than the other—they are equivalent descriptions of the \nsame relationship. Similarly, Scripture presents truth through multiple \ngenres (narrative, poetry, prophecy, epistle), each revealing different \nfacets of the same divine reality. Mathematical transformation, like \ntheological interpretation, requires recognizing unity beneath apparent \ndiversity."
     },
     {
       "type": "summary",
       "id": "summary-7.2",
-      "number": null,
       "title": "Sum and Difference Formulas Reference",
       "content": "**Sum and Difference Formulas:**\n$$\\begin{aligned}\n\\sin(\\alpha + \\beta) &= \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta \\\\\n\\sin(\\alpha - \\beta) &= \\sin\\alpha\\cos\\beta - \\cos\\alpha\\sin\\beta \\\\\n\\cos(\\alpha + \\beta) &= \\cos\\alpha\\cos\\beta - \\sin\\alpha\\sin\\beta \\\\\n\\cos(\\alpha - \\beta) &= \\cos\\alpha\\cos\\beta + \\sin\\alpha\\sin\\beta \\\\\n\\tan(\\alpha + \\beta) &= \\frac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta} \\\\[4pt]\n\\tan(\\alpha - \\beta) &= \\frac{\\tan\\alpha - \\tan\\beta}{1 + \\tan\\alpha\\tan\\beta}\n\\end{aligned}$$\n\n**Product-to-Sum Formulas:**\n$$\\begin{aligned}\n\\cos\\alpha\\cos\\beta &= \\tfrac{1}{2}[\\cos(\\alpha - \\beta) + \\cos(\\alpha + \\beta)] \\\\\n\\sin\\alpha\\sin\\beta &= \\tfrac{1}{2}[\\cos(\\alpha - \\beta) - \\cos(\\alpha + \\beta)] \\\\\n\\sin\\alpha\\cos\\beta &= \\tfrac{1}{2}[\\sin(\\alpha + \\beta) + \\sin(\\alpha - \\beta)] \\\\\n\\cos\\alpha\\sin\\beta &= \\tfrac{1}{2}[\\sin(\\alpha + \\beta) - \\sin(\\alpha - \\beta)]\n\\end{aligned}$$\n\n**Sum-to-Product Formulas:**\n$$\\begin{aligned}\n\\sin u + \\sin v &= 2\\sin\\tfrac{u + v}{2}\\cos\\tfrac{u - v}{2} \\\\\n\\sin u - \\sin v &= 2\\cos\\tfrac{u + v}{2}\\sin\\tfrac{u - v}{2} \\\\\n\\cos u + \\cos v &= 2\\cos\\tfrac{u + v}{2}\\cos\\tfrac{u - v}{2} \\\\\n\\cos u - \\cos v &= -2\\sin\\tfrac{u + v}{2}\\sin\\tfrac{u - v}{2}\n\\end{aligned}$$\n\n**Harmonic Addition Theorem:**\n$$\nA\\sin x + B\\cos x = k\\sin(x + \\phi)\n$$\nwhere $k = \\sqrt{A^2 + B^2}$ and $\\tan\\phi = \\dfrac{B}{A}$ (with $\\phi$ in the appropriate quadrant)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Fill in the blank.\n\n1. The formula $\\sin(\\alpha + \\beta) = \\sin\\alpha\\cos\\beta + \\cos\\alpha\\sin\\beta$ is called the formula for sine.\n\n2. In the cosine sum formula, the sign in the middle is to the sign in the argument.\n\n3. The cofunction identity states that $\\sin\\theta = \\cos\\bigl($ $\\bigr)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Fill in the blank.\n\n1. To find $\\sin 75°$ exactly, we can write $75° = $ $+$ .\n\n2. The product-to-sum formula converts $\\sin\\alpha\\cos\\beta$ into .\n\n3. The sum-to-product formula converts $\\sin u + \\sin v$ into ."
+    },
+    {
+      "type": "paragraph",
+      "text": "True or False? Justify your answer.\n\n1. $\\sin(A + B) = \\sin A + \\sin B$\n\n2. $\\cos(90° - \\theta) = \\sin\\theta$\n\n3. $\\tan(A + B) = \\dfrac{\\tan A + \\tan B}{1 - \\tan A\\tan B}$\n\n4. $\\sin(\\pi - x) = -\\sin x$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Without calculating, explain why $\\sin 75° > \\sin 45°$."
+    },
+    {
+      "type": "paragraph",
+      "text": "For what values of $A$ and $B$ does $\\sin(A + B) = \\sin A + \\sin B$? Give at least two examples."
+    },
+    {
+      "type": "paragraph",
+      "text": "The tangent sum formula $\\tan(A + B) = \\dfrac{\\tan A + \\tan B}{1 - \\tan A\\tan B}$ has denominator $1 - \\tan A\\tan B$.\n\n1. When is this denominator equal to zero?\n\n2. What happens to $\\tan(A + B)$ in that case?\n\n3. Why does this make sense geometrically?"
+    },
+    {
+      "type": "paragraph",
+      "text": "Explain why the product-to-sum formulas are useful for integration in calculus."
     },
     {
       "type": "exercise",
       "id": "ex-7.2-1",
       "number": "1",
-      "problem": "True or False? Justify your answer.\n\n1. $\\sin(A + B) = \\sin A + \\sin B$\n\n2. $\\cos(90° - \\theta) = \\sin\\theta$\n\n3. $\\tan(A + B) = \\dfrac{\\tan A + \\tan B}{1 - \\tan A\\tan B}$\n\n4. $\\sin(\\pi - x) = -\\sin x$",
-      "variant": "conceptual",
-      "hint": null,
-      "answer": null
+      "problem": "Find the exact value using sum or difference formulas.\n\n1. $\\sin 75°$\n\n2. $\\cos 75°$\n\n3. $\\tan 75°$\n\n4. $\\sin 15°$\n\n5. $\\cos 15°$\n\n6. $\\tan 15°$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-2",
       "number": "2",
-      "problem": "Without calculating, explain why $\\sin 75° > \\sin 45°$.",
-      "variant": "conceptual",
-      "hint": null,
-      "answer": null
+      "problem": "Find the exact value.\n\n1. $\\sin 105°$\n\n2. $\\cos 105°$\n\n3. $\\tan 105°$\n\n4. $\\sin 165°$\n\n5. $\\sin(-15°)$\n\n6. $\\cos(-75°)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-3",
       "number": "3",
-      "problem": "For what values of $A$ and $B$ does $\\sin(A + B) = \\sin A + \\sin B$? Give at least two examples.",
-      "variant": "conceptual",
-      "hint": null,
-      "answer": null
+      "problem": "Find the exact value.\n\n1. $\\sin\\dfrac{\\pi}{12}$\n\n2. $\\cos\\dfrac{\\pi}{12}$\n\n3. $\\tan\\dfrac{\\pi}{12}$\n\n4. $\\sin\\dfrac{5\\pi}{12}$\n\n5. $\\cos\\dfrac{5\\pi}{12}$\n\n6. $\\tan\\dfrac{5\\pi}{12}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-4",
       "number": "4",
-      "problem": "The tangent sum formula $\\tan(A + B) = \\dfrac{\\tan A + \\tan B}{1 - \\tan A\\tan B}$ has denominator $1 - \\tan A\\tan B$.\n\n1. When is this denominator equal to zero?\n\n2. What happens to $\\tan(A + B)$ in that case?\n\n3. Why does this make sense geometrically?",
-      "variant": "conceptual",
-      "hint": null,
-      "answer": null
+      "problem": "Find the exact value.\n\n1. $\\sin\\dfrac{7\\pi}{12}$\n\n2. $\\cos\\dfrac{7\\pi}{12}$\n\n3. $\\sin\\dfrac{11\\pi}{12}$\n\n4. $\\cos\\dfrac{13\\pi}{12}$\n\n5. $\\tan\\dfrac{7\\pi}{12}$\n\n6. $\\cos\\dfrac{19\\pi}{12}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-5",
       "number": "5",
-      "problem": "Explain why the product-to-sum formulas are useful for integration in calculus.\n\n%═══════════════════════════════════════════════════════════════════════════════\n% BASIC SKILLS: EXACT VALUES — DEGREES (2 exercises, 12 parts)\n%═══════════════════════════════════════════════════════════════════════════════",
-      "variant": "conceptual",
-      "hint": null,
-      "answer": null
+      "problem": "Simplify to a single trigonometric function.\n\n1. $\\sin 40°\\cos 20° + \\cos 40°\\sin 20°$\n\n2. $\\cos 50°\\cos 10° - \\sin 50°\\sin 10°$\n\n3. $\\sin 80°\\cos 35° - \\cos 80°\\sin 35°$\n\n4. $\\cos 25°\\cos 35° + \\sin 25°\\sin 35°$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-6",
       "number": "6",
-      "problem": "Find the exact value using sum or difference formulas.\n\n1. $\\sin 75°$\n\n2. $\\cos 75°$\n\n3. $\\tan 75°$\n\n4. $\\sin 15°$\n\n5. $\\cos 15°$\n\n6. $\\tan 15°$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Simplify to a single trigonometric function.\n\n1. $\\sin 3x\\cos 2x + \\cos 3x\\sin 2x$\n\n2. $\\cos 5x\\cos 3x + \\sin 5x\\sin 3x$\n\n3. $\\sin 4x\\cos x - \\cos 4x\\sin x$\n\n4. $\\cos 2\\theta\\cos\\theta - \\sin 2\\theta\\sin\\theta$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-7",
       "number": "7",
-      "problem": "Find the exact value.\n\n1. $\\sin 105°$\n\n2. $\\cos 105°$\n\n3. $\\tan 105°$\n\n4. $\\sin 165°$\n\n5. $\\sin(-15°)$\n\n6. $\\cos(-75°)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Evaluate without a calculator.\n\n1. $\\dfrac{\\tan 50° + \\tan 40°}{1 - \\tan 50°\\tan 40°}$\n\n2. $\\dfrac{\\tan 70° - \\tan 25°}{1 + \\tan 70°\\tan 25°}$\n\n3. $\\sin 20°\\cos 40° + \\cos 20°\\sin 40°$\n\n4. $\\cos 110°\\cos 20° + \\sin 110°\\sin 20°$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-8",
       "number": "8",
-      "problem": "Find the exact value.\n\n1. $\\sin\\dfrac{\\pi}{12}$\n\n2. $\\cos\\dfrac{\\pi}{12}$\n\n3. $\\tan\\dfrac{\\pi}{12}$\n\n4. $\\sin\\dfrac{5\\pi}{12}$\n\n5. $\\cos\\dfrac{5\\pi}{12}$\n\n6. $\\tan\\dfrac{5\\pi}{12}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "If $\\sin\\alpha = \\dfrac{4}{5}$ with $\\alpha$ in QI, and $\\cos\\beta = \\dfrac{5}{13}$ with $\\beta$ in QI, find:\n\n1. $\\sin(\\alpha + \\beta)$\n\n2. $\\cos(\\alpha + \\beta)$\n\n3. $\\tan(\\alpha + \\beta)$\n\n4. $\\sin(\\alpha - \\beta)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-9",
       "number": "9",
-      "problem": "Find the exact value.\n\n1. $\\sin\\dfrac{7\\pi}{12}$\n\n2. $\\cos\\dfrac{7\\pi}{12}$\n\n3. $\\sin\\dfrac{11\\pi}{12}$\n\n4. $\\cos\\dfrac{13\\pi}{12}$\n\n5. $\\tan\\dfrac{7\\pi}{12}$\n\n6. $\\cos\\dfrac{19\\pi}{12}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "If $\\sin\\alpha = \\dfrac{3}{5}$ with $\\alpha$ in QI, and $\\cos\\beta = -\\dfrac{5}{13}$ with $\\beta$ in QII, find:\n\n1. $\\sin(\\alpha + \\beta)$\n\n2. $\\cos(\\alpha + \\beta)$\n\n3. $\\sin(\\alpha - \\beta)$\n\n4. $\\cos(\\alpha - \\beta)$\n\n5. The quadrant of $\\alpha + \\beta$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-10",
       "number": "10",
-      "problem": "Simplify to a single trigonometric function.\n\n1. $\\sin 40°\\cos 20° + \\cos 40°\\sin 20°$\n\n2. $\\cos 50°\\cos 10° - \\sin 50°\\sin 10°$\n\n3. $\\sin 80°\\cos 35° - \\cos 80°\\sin 35°$\n\n4. $\\cos 25°\\cos 35° + \\sin 25°\\sin 35°$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "If $\\cos\\alpha = \\dfrac{3}{5}$ with $\\alpha$ in QIV, and $\\sin\\beta = -\\dfrac{12}{13}$ with $\\beta$ in QIII, find:\n\n1. $\\sin(\\alpha + \\beta)$\n\n2. $\\cos(\\alpha - \\beta)$\n\n3. $\\tan(\\alpha + \\beta)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-11",
       "number": "11",
-      "problem": "Simplify to a single trigonometric function.\n\n1. $\\sin 3x\\cos 2x + \\cos 3x\\sin 2x$\n\n2. $\\cos 5x\\cos 3x + \\sin 5x\\sin 3x$\n\n3. $\\sin 4x\\cos x - \\cos 4x\\sin x$\n\n4. $\\cos 2\\theta\\cos\\theta - \\sin 2\\theta\\sin\\theta$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "If $\\tan\\alpha = \\dfrac{4}{3}$ with $\\alpha$ in QI, and $\\tan\\beta = \\dfrac{5}{12}$ with $\\beta$ in QI, find:\n\n1. $\\tan(\\alpha + \\beta)$\n\n2. $\\tan(\\alpha - \\beta)$\n\n3. The quadrant of $\\alpha + \\beta$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-12",
       "number": "12",
-      "problem": "Evaluate without a calculator.\n\n1. $\\dfrac{\\tan 50° + \\tan 40°}{1 - \\tan 50°\\tan 40°}$\n\n2. $\\dfrac{\\tan 70° - \\tan 25°}{1 + \\tan 70°\\tan 25°}$\n\n3. $\\sin 20°\\cos 40° + \\cos 20°\\sin 40°$\n\n4. $\\cos 110°\\cos 20° + \\sin 110°\\sin 20°$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Expand using sum/difference formulas, then simplify.\n\n1. $\\sin\\left(x + \\dfrac{\\pi}{4}\\right)$\n\n2. $\\cos\\left(x - \\dfrac{\\pi}{6}\\right)$\n\n3. $\\tan\\left(x + \\dfrac{\\pi}{4}\\right)$\n\n4. $\\sin\\left(x - \\dfrac{\\pi}{6}\\right)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-13",
       "number": "13",
-      "problem": "If $\\sin\\alpha = \\dfrac{4}{5}$ with $\\alpha$ in QI, and $\\cos\\beta = \\dfrac{5}{13}$ with $\\beta$ in QI, find:\n\n1. $\\sin(\\alpha + \\beta)$\n\n2. $\\cos(\\alpha + \\beta)$\n\n3. $\\tan(\\alpha + \\beta)$\n\n4. $\\sin(\\alpha - \\beta)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Simplify to a single trigonometric function of $x$.\n\n1. $\\sin(x + 90°)$\n\n2. $\\cos(x + 90°)$\n\n3. $\\sin(x + 180°)$\n\n4. $\\cos(x + 180°)$\n\n5. $\\sin(x + 270°)$\n\n6. $\\cos(x - 90°)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-14",
       "number": "14",
-      "problem": "If $\\sin\\alpha = \\dfrac{3}{5}$ with $\\alpha$ in QI, and $\\cos\\beta = -\\dfrac{5}{13}$ with $\\beta$ in QII, find:\n\n1. $\\sin(\\alpha + \\beta)$\n\n2. $\\cos(\\alpha + \\beta)$\n\n3. $\\sin(\\alpha - \\beta)$\n\n4. $\\cos(\\alpha - \\beta)$\n\n5. The quadrant of $\\alpha + \\beta$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Verify each cofunction identity.\n\n1. $\\sin\\left(\\dfrac{\\pi}{2} - x\\right) = \\cos x$\n\n2. $\\cos\\left(\\dfrac{\\pi}{2} - x\\right) = \\sin x$\n\n3. $\\tan\\left(\\dfrac{\\pi}{2} - x\\right) = \\cot x$\n\n4. $\\cot\\left(\\dfrac{\\pi}{2} - x\\right) = \\tan x$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-15",
       "number": "15",
-      "problem": "If $\\cos\\alpha = \\dfrac{3}{5}$ with $\\alpha$ in QIV, and $\\sin\\beta = -\\dfrac{12}{13}$ with $\\beta$ in QIII, find:\n\n1. $\\sin(\\alpha + \\beta)$\n\n2. $\\cos(\\alpha - \\beta)$\n\n3. $\\tan(\\alpha + \\beta)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Verify each reduction formula.\n\n1. $\\sin(\\pi - x) = \\sin x$\n\n2. $\\cos(\\pi - x) = -\\cos x$\n\n3. $\\sin(\\pi + x) = -\\sin x$\n\n4. $\\cos(\\pi + x) = -\\cos x$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-16",
       "number": "16",
-      "problem": "If $\\tan\\alpha = \\dfrac{4}{3}$ with $\\alpha$ in QI, and $\\tan\\beta = \\dfrac{5}{12}$ with $\\beta$ in QI, find:\n\n1. $\\tan(\\alpha + \\beta)$\n\n2. $\\tan(\\alpha - \\beta)$\n\n3. The quadrant of $\\alpha + \\beta$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Verify each identity.\n\n1. $\\tan\\left(x + \\dfrac{\\pi}{4}\\right) = \\dfrac{1 + \\tan x}{1 - \\tan x}$\n\n2. $\\tan\\left(x - \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan x - 1}{\\tan x + 1}$\n\n3. $\\tan(\\pi - x) = -\\tan x$\n\n4. $\\tan(\\pi + x) = \\tan x$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-17",
       "number": "17",
-      "problem": "Expand using sum/difference formulas, then simplify.\n\n1. $\\sin\\left(x + \\dfrac{\\pi}{4}\\right)$\n\n2. $\\cos\\left(x - \\dfrac{\\pi}{6}\\right)$\n\n3. $\\tan\\left(x + \\dfrac{\\pi}{4}\\right)$\n\n4. $\\sin\\left(x - \\dfrac{\\pi}{6}\\right)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Verify each identity.\n\n1. $\\sin(x + y) + \\sin(x - y) = 2\\sin x\\cos y$\n\n2. $\\sin(x + y) - \\sin(x - y) = 2\\cos x\\sin y$\n\n3. $\\cos(x + y) + \\cos(x - y) = 2\\cos x\\cos y$\n\n4. $\\cos(x - y) - \\cos(x + y) = 2\\sin x\\sin y$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-18",
       "number": "18",
-      "problem": "Simplify to a single trigonometric function of $x$.\n\n1. $\\sin(x + 90°)$\n\n2. $\\cos(x + 90°)$\n\n3. $\\sin(x + 180°)$\n\n4. $\\cos(x + 180°)$\n\n5. $\\sin(x + 270°)$\n\n6. $\\cos(x - 90°)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Write each product as a sum or difference.\n\n1. $\\sin 5x \\cos 3x$\n\n2. $\\cos 4x \\cos 2x$\n\n3. $\\sin 3x \\sin x$\n\n4. $\\cos 6x \\sin 2x$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-19",
       "number": "19",
-      "problem": "Verify each cofunction identity.\n\n1. $\\sin\\left(\\dfrac{\\pi}{2} - x\\right) = \\cos x$\n\n2. $\\cos\\left(\\dfrac{\\pi}{2} - x\\right) = \\sin x$\n\n3. $\\tan\\left(\\dfrac{\\pi}{2} - x\\right) = \\cot x$\n\n4. $\\cot\\left(\\dfrac{\\pi}{2} - x\\right) = \\tan x$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Write each product as a sum or difference.\n\n1. $2\\sin 50° \\cos 20°$\n\n2. $2\\cos 75° \\cos 15°$\n\n3. $\\cos 7\\theta \\cos 3\\theta$\n\n4. $\\sin 8x \\sin 2x$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-20",
       "number": "20",
-      "problem": "Verify each reduction formula.\n\n1. $\\sin(\\pi - x) = \\sin x$\n\n2. $\\cos(\\pi - x) = -\\cos x$\n\n3. $\\sin(\\pi + x) = -\\sin x$\n\n4. $\\cos(\\pi + x) = -\\cos x$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Write each sum or difference as a product.\n\n1. $\\sin 7x + \\sin 3x$\n\n2. $\\sin 5x - \\sin x$\n\n3. $\\cos 4\\theta + \\cos 2\\theta$\n\n4. $\\cos 2\\theta - \\cos 8\\theta$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-21",
       "number": "21",
-      "problem": "Verify each identity.\n\n1. $\\tan\\left(x + \\dfrac{\\pi}{4}\\right) = \\dfrac{1 + \\tan x}{1 - \\tan x}$\n\n2. $\\tan\\left(x - \\dfrac{\\pi}{4}\\right) = \\dfrac{\\tan x - 1}{\\tan x + 1}$\n\n3. $\\tan(\\pi - x) = -\\tan x$\n\n4. $\\tan(\\pi + x) = \\tan x$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Simplify using sum-to-product formulas.\n\n1. $\\dfrac{\\sin 3x + \\sin x}{\\cos 3x + \\cos x}$\n\n2. $\\dfrac{\\sin 5x - \\sin 3x}{\\cos 5x - \\cos 3x}$\n\n3. $\\dfrac{\\cos x - \\cos 3x}{\\sin 3x - \\sin x}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-22",
       "number": "22",
-      "problem": "Verify each identity.\n\n1. $\\sin(x + y) + \\sin(x - y) = 2\\sin x\\cos y$\n\n2. $\\sin(x + y) - \\sin(x - y) = 2\\cos x\\sin y$\n\n3. $\\cos(x + y) + \\cos(x - y) = 2\\cos x\\cos y$\n\n4. $\\cos(x - y) - \\cos(x + y) = 2\\sin x\\sin y$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Write each expression as a single sinusoid $k\\sin(x + \\phi)$ or $k\\cos(x - \\psi)$.\n\n1. $\\sin x + \\cos x$\n\n2. $3\\sin x + 4\\cos x$\n\n3. $5\\sin x + 12\\cos x$\n\n4. $\\sin x - \\cos x$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-23",
       "number": "23",
-      "problem": "Write each product as a sum or difference.\n\n1. $\\sin 5x \\cos 3x$\n\n2. $\\cos 4x \\cos 2x$\n\n3. $\\sin 3x \\sin x$\n\n4. $\\cos 6x \\sin 2x$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Write each expression as a single sinusoid.\n\n1. $\\sqrt{3}\\sin x + \\cos x$\n\n2. $\\sin x + \\sqrt{3}\\cos x$\n\n3. $\\sin x - \\sqrt{3}\\cos x$\n\n4. $-\\sin x + \\cos x$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-24",
       "number": "24",
-      "problem": "Write each product as a sum or difference.\n\n1. $2\\sin 50° \\cos 20°$\n\n2. $2\\cos 75° \\cos 15°$\n\n3. $\\cos 7\\theta \\cos 3\\theta$\n\n4. $\\sin 8x \\sin 2x$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Solve each equation on $[0, 2\\pi)$ using the harmonic addition theorem.\n\n1. $\\sin x + \\cos x = 1$\n\n2. $\\sin x + \\sqrt{3}\\cos x = 2$\n\n3. $\\sqrt{3}\\sin x + \\cos x = \\sqrt{3}$\n\n4. $\\sin x - \\cos x = -1$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-25",
       "number": "25",
-      "problem": "Write each sum or difference as a product.\n\n1. $\\sin 7x + \\sin 3x$\n\n2. $\\sin 5x - \\sin x$\n\n3. $\\cos 4\\theta + \\cos 2\\theta$\n\n4. $\\cos 2\\theta - \\cos 8\\theta$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the maximum and minimum values of each function.\n\n1. $f(x) = 3\\sin x + 4\\cos x$\n\n2. $g(x) = 5\\sin x - 12\\cos x$\n\n3. $h(x) = 2\\sin x + 2\\cos x$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-26",
       "number": "26",
-      "problem": "Simplify using sum-to-product formulas.\n\n1. $\\dfrac{\\sin 3x + \\sin x}{\\cos 3x + \\cos x}$\n\n2. $\\dfrac{\\sin 5x - \\sin 3x}{\\cos 5x - \\cos 3x}$\n\n3. $\\dfrac{\\cos x - \\cos 3x}{\\sin 3x - \\sin x}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Two sound waves are modeled by $y_1 = A\\sin(kx - \\omega t)$ and $y_2 = A\\sin(kx + \\omega t)$. \nUse the sum-to-product formulas to show that their sum $y_1 + y_2 = 2A\\sin(kx)\\cos(\\omega t)$ \nrepresents a standing wave.",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-27",
       "number": "27",
-      "problem": "Write each expression as a single sinusoid $k\\sin(x + \\phi)$ or $k\\cos(x - \\psi)$.\n\n1. $\\sin x + \\cos x$\n\n2. $3\\sin x + 4\\cos x$\n\n3. $5\\sin x + 12\\cos x$\n\n4. $\\sin x - \\cos x$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Two tuning forks produce sound waves $y_1 = 3\\sin 400\\pi t$ and $y_2 = 3\\sin 404\\pi t$.\n\n1. Use sum-to-product to write $y_1 + y_2$ as a product.\n\n2. What is the beat frequency?\n\n3. At what times is the combined amplitude maximum?",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-28",
       "number": "28",
-      "problem": "Write each expression as a single sinusoid.\n\n1. $\\sqrt{3}\\sin x + \\cos x$\n\n2. $\\sin x + \\sqrt{3}\\cos x$\n\n3. $\\sin x - \\sqrt{3}\\cos x$\n\n4. $-\\sin x + \\cos x$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "When a point $(x, y)$ is rotated counterclockwise by angle $\\theta$ about the origin, the new coordinates are:\n$$\\begin{aligned}\nx' &= x\\cos\\theta - y\\sin\\theta \\\\\ny' &= x\\sin\\theta + y\\cos\\theta\n\\end{aligned}$$\nFind the new coordinates when $(3, 4)$ is rotated by $60°$.",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-29",
       "number": "29",
-      "problem": "Solve each equation on $[0, 2\\pi)$ using the harmonic addition theorem.\n\n1. $\\sin x + \\cos x = 1$\n\n2. $\\sin x + \\sqrt{3}\\cos x = 2$\n\n3. $\\sqrt{3}\\sin x + \\cos x = \\sqrt{3}$\n\n4. $\\sin x - \\cos x = -1$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "In AC circuits, two voltages are $V_1 = 120\\sin(\\omega t)$ and $V_2 = 120\\sin\\left(\\omega t + \\dfrac{\\pi}{3}\\right)$. \nFind $V_1 + V_2$ in the form $A\\sin(\\omega t + \\phi)$.",
+      "variant": "regular"
+    },
+    {
+      "type": "paragraph",
+      "text": "Graph $y = \\sin\\left(x + \\dfrac{\\pi}{4}\\right)$ and $y = \\dfrac{\\sqrt{2}}{2}(\\sin x + \\cos x)$ on the same axes. What do you observe? Explain using the sum formula."
+    },
+    {
+      "type": "paragraph",
+      "text": "Use a graphing utility to verify that $\\sin 75° = \\sin(45° + 30°) = \\sin 45°\\cos 30° + \\cos 45°\\sin 30°$ by computing both sides numerically."
+    },
+    {
+      "type": "paragraph",
+      "text": "Graph $y = \\sin 5x + \\sin 3x$ and $y = 2\\sin 4x\\cos x$ on the same axes. What do you observe? Explain using sum-to-product formulas."
+    },
+    {
+      "type": "paragraph",
+      "text": "Describe and correct the error in finding $\\sin 75°$:\n\"$\\sin 75° = \\sin(45° + 30°) = \\sin 45° + \\sin 30° = \\dfrac{\\sqrt{2}}{2} + \\dfrac{1}{2}$\""
+    },
+    {
+      "type": "paragraph",
+      "text": "Describe and correct the error in finding $\\cos 15°$:\n\"$\\cos 15° = \\cos(45° - 30°) = \\cos 45° - \\cos 30° = \\dfrac{\\sqrt{2}}{2} - \\dfrac{\\sqrt{3}}{2}$\""
+    },
+    {
+      "type": "paragraph",
+      "text": "Describe and correct the error in finding $\\tan(\\alpha + \\beta)$ when $\\tan\\alpha = 2$ and $\\tan\\beta = 3$:\n\"$\\tan(\\alpha + \\beta) = \\tan\\alpha + \\tan\\beta = 2 + 3 = 5$\""
+    },
+    {
+      "type": "paragraph",
+      "text": "If $\\sin\\alpha = \\dfrac{5}{13}$ with $\\alpha$ in QII, and $\\tan\\beta = -\\dfrac{3}{4}$ with $\\beta$ in QIV, find $\\cos(\\alpha + \\beta)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Verify: $\\sin(\\alpha + \\beta)\\sin(\\alpha - \\beta) = \\sin^2\\alpha - \\sin^2\\beta$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Verify: $\\cos(\\alpha + \\beta)\\cos(\\alpha - \\beta) = \\cos^2\\alpha - \\sin^2\\beta$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Verify: $\\dfrac{\\sin(\\alpha + \\beta)}{\\sin(\\alpha - \\beta)} = \\dfrac{\\tan\\alpha + \\tan\\beta}{\\tan\\alpha - \\tan\\beta}$"
+    },
+    {
+      "type": "paragraph",
+      "text": "Find $\\sin(\\alpha + \\beta + \\gamma)$ in terms of sines and cosines of $\\alpha$, $\\beta$, and $\\gamma$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Prove: $\\tan(A + B + C) = \\dfrac{\\tan A + \\tan B + \\tan C - \\tan A\\tan B\\tan C}{1 - \\tan A\\tan B - \\tan B\\tan C - \\tan A\\tan C}$"
+    },
+    {
+      "type": "paragraph",
+      "text": "If $\\alpha + \\beta + \\gamma = \\pi$ (as in a triangle), prove that $\\tan\\alpha + \\tan\\beta + \\tan\\gamma = \\tan\\alpha\\tan\\beta\\tan\\gamma$.\n*Hint: Start with $\\tan(\\alpha + \\beta) = \\tan(\\pi - \\gamma) = -\\tan\\gamma$.*"
+    },
+    {
+      "type": "paragraph",
+      "text": "Find $\\sin 18°$ exactly using the identity $\\sin 3\\theta = \\sin 2\\theta$ when $\\theta = 18°$.\n*Hint: Use double and triple angle formulas, then solve for $\\sin 18°$.*"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-30",
       "number": "30",
-      "problem": "Find the maximum and minimum values of each function.\n\n1. $f(x) = 3\\sin x + 4\\cos x$\n\n2. $g(x) = 5\\sin x - 12\\cos x$\n\n3. $h(x) = 2\\sin x + 2\\cos x$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Write each expression as a trigonometric function of $\\theta$ only.\n\n1. $\\cos\\left(\\dfrac{3\\pi}{2} - \\theta\\right)$\n\n2. $\\sin(\\pi + \\theta)$\n\n3. $\\tan(\\theta - \\pi)$\n\n4. $\\csc\\left(\\dfrac{3\\pi}{2} + \\theta\\right)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-31",
       "number": "31",
-      "problem": "Two sound waves are modeled by $y_1 = A\\sin(kx - \\omega t)$ and $y_2 = A\\sin(kx + \\omega t)$. \nUse the sum-to-product formulas to show that their sum $y_1 + y_2 = 2A\\sin(kx)\\cos(\\omega t)$ \nrepresents a standing wave.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Sound Waves"
+      "problem": "Write each trigonometric expression as an algebraic expression in $x$.\n\n1. $\\sin(\\arcsin x + \\arccos x)$\n\n2. $\\cos(\\arccos x + \\arcsin x)$\n\n3. $\\sin(\\arctan 2x - \\arccos x)$\n\n4. $\\cos(\\arcsin x - \\arctan x)$\n*Hint: For (c) and (d), draw right triangles to find the needed values.*",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-32",
       "number": "32",
-      "problem": "Two tuning forks produce sound waves $y_1 = 3\\sin 400\\pi t$ and $y_2 = 3\\sin 404\\pi t$.\n\n1. Use sum-to-product to write $y_1 + y_2$ as a product.\n\n2. What is the beat frequency?\n\n3. At what times is the combined amplitude maximum?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Beat Frequency"
+      "problem": "The angle $\\theta$ between two non-perpendicular lines with slopes $m_1$ and $m_2$ is given by\n$$\n\\tan\\theta = \\left|\\frac{m_1 - m_2}{1 + m_1 m_2}\\right|\n$$\nFind the angle between the given pair of lines. Express your answer in degrees.\n\n1. $y = x$ and $y = \\sqrt{3}x$\n\n2. $y = 2x + 1$ and $y = 3x - 4$\n\n3. $y = \\dfrac{1}{2}x$ and $y = -x + 3$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-7.2-33",
       "number": "33",
-      "problem": "When a point $(x, y)$ is rotated counterclockwise by angle $\\theta$ about the origin, the new coordinates are:\n$$\\begin{aligned}\nx' &= x\\cos\\theta - y\\sin\\theta \\\\\ny' &= x\\sin\\theta + y\\cos\\theta\n\\end{aligned}$$\nFind the new coordinates when $(3, 4)$ is rotated by $60°$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Rotation"
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-34",
-      "number": "34",
-      "problem": "In AC circuits, two voltages are $V_1 = 120\\sin(\\omega t)$ and $V_2 = 120\\sin\\left(\\omega t + \\dfrac{\\pi}{3}\\right)$. \nFind $V_1 + V_2$ in the form $A\\sin(\\omega t + \\phi)$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "AC Circuits"
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-35",
-      "number": "35",
-      "problem": "Graph $y = \\sin\\left(x + \\dfrac{\\pi}{4}\\right)$ and $y = \\dfrac{\\sqrt{2}}{2}(\\sin x + \\cos x)$ on the same axes. What do you observe? Explain using the sum formula.",
-      "variant": "tech",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-36",
-      "number": "36",
-      "problem": "Use a graphing utility to verify that $\\sin 75° = \\sin(45° + 30°) = \\sin 45°\\cos 30° + \\cos 45°\\sin 30°$ by computing both sides numerically.",
-      "variant": "tech",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-37",
-      "number": "37",
-      "problem": "Graph $y = \\sin 5x + \\sin 3x$ and $y = 2\\sin 4x\\cos x$ on the same axes. What do you observe? Explain using sum-to-product formulas.\n\n%═══════════════════════════════════════════════════════════════════════════════\n% ERROR ANALYSIS (3 exercises)\n%═══════════════════════════════════════════════════════════════════════════════",
-      "variant": "tech",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-38",
-      "number": "38",
-      "problem": "Describe and correct the error in finding $\\sin 75°$:\nquote\n\"$\\sin 75° = \\sin(45° + 30°) = \\sin 45° + \\sin 30° = \\dfrac{\\sqrt{2}}{2} + \\dfrac{1}{2}$\" \nquote",
-      "variant": "error",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-39",
-      "number": "39",
-      "problem": "Describe and correct the error in finding $\\cos 15°$:\nquote\n\"$\\cos 15° = \\cos(45° - 30°) = \\cos 45° - \\cos 30° = \\dfrac{\\sqrt{2}}{2} - \\dfrac{\\sqrt{3}}{2}$\" \nquote",
-      "variant": "error",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-40",
-      "number": "40",
-      "problem": "Describe and correct the error in finding $\\tan(\\alpha + \\beta)$ when $\\tan\\alpha = 2$ and $\\tan\\beta = 3$:\nquote\n\"$\\tan(\\alpha + \\beta) = \\tan\\alpha + \\tan\\beta = 2 + 3 = 5$\" \nquote\n\n%═══════════════════════════════════════════════════════════════════════════════\n% CHALLENGE (8 exercises)\n%═══════════════════════════════════════════════════════════════════════════════",
-      "variant": "error",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-41",
-      "number": "41",
-      "problem": "If $\\sin\\alpha = \\dfrac{5}{13}$ with $\\alpha$ in QII, and $\\tan\\beta = -\\dfrac{3}{4}$ with $\\beta$ in QIV, find $\\cos(\\alpha + \\beta)$.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-42",
-      "number": "42",
-      "problem": "Verify: $\\sin(\\alpha + \\beta)\\sin(\\alpha - \\beta) = \\sin^2\\alpha - \\sin^2\\beta$",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-43",
-      "number": "43",
-      "problem": "Verify: $\\cos(\\alpha + \\beta)\\cos(\\alpha - \\beta) = \\cos^2\\alpha - \\sin^2\\beta$",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-44",
-      "number": "44",
-      "problem": "Verify: $\\dfrac{\\sin(\\alpha + \\beta)}{\\sin(\\alpha - \\beta)} = \\dfrac{\\tan\\alpha + \\tan\\beta}{\\tan\\alpha - \\tan\\beta}$",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-45",
-      "number": "45",
-      "problem": "Find $\\sin(\\alpha + \\beta + \\gamma)$ in terms of sines and cosines of $\\alpha$, $\\beta$, and $\\gamma$.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-46",
-      "number": "46",
-      "problem": "Prove: $\\tan(A + B + C) = \\dfrac{\\tan A + \\tan B + \\tan C - \\tan A\\tan B\\tan C}{1 - \\tan A\\tan B - \\tan B\\tan C - \\tan A\\tan C}$",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-47",
-      "number": "47",
-      "problem": "If $\\alpha + \\beta + \\gamma = \\pi$ (as in a triangle), prove that $\\tan\\alpha + \\tan\\beta + \\tan\\gamma = \\tan\\alpha\\tan\\beta\\tan\\gamma$.\n*Hint: Start with $\\tan(\\alpha + \\beta) = \\tan(\\pi - \\gamma) = -\\tan\\gamma$.*",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-48",
-      "number": "48",
-      "problem": "Find $\\sin 18°$ exactly using the identity $\\sin 3\\theta = \\sin 2\\theta$ when $\\theta = 18°$.\n*Hint: Use double and triple angle formulas, then solve for $\\sin 18°$.*\n\n%═══════════════════════════════════════════════════════════════════════════════\n% ADDITIONAL SKILL BUILDERS (5 exercises) — Larson parity\n%═══════════════════════════════════════════════════════════════════════════════",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-49",
-      "number": "49",
-      "problem": "Write each expression as a trigonometric function of $\\theta$ only.\n\n1. $\\cos\\left(\\dfrac{3\\pi}{2} - \\theta\\right)$\n\n2. $\\sin(\\pi + \\theta)$\n\n3. $\\tan(\\theta - \\pi)$\n\n4. $\\csc\\left(\\dfrac{3\\pi}{2} + \\theta\\right)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Reduction Formulas"
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-50",
-      "number": "50",
-      "problem": "Write each trigonometric expression as an algebraic expression in $x$.\n\n1. $\\sin(\\arcsin x + \\arccos x)$\n\n2. $\\cos(\\arccos x + \\arcsin x)$\n\n3. $\\sin(\\arctan 2x - \\arccos x)$\n\n4. $\\cos(\\arcsin x - \\arctan x)$\n*Hint: For (c) and (d), draw right triangles to find the needed values.*",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Algebraic Expressions with Inverse Functions"
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-51",
-      "number": "51",
-      "problem": "The angle $\\theta$ between two non-perpendicular lines with slopes $m_1$ and $m_2$ is given by\n$$\n\\tan\\theta = \\left|\\frac{m_1 - m_2}{1 + m_1 m_2}\\right|\n$$\nFind the angle between the given pair of lines. Express your answer in degrees.\n\n1. $y = x$ and $y = \\sqrt{3}x$\n\n2. $y = 2x + 1$ and $y = 3x - 4$\n\n3. $y = \\dfrac{1}{2}x$ and $y = -x + 3$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Angle Between Two Lines"
-    },
-    {
-      "type": "exercise",
-      "id": "ex-7.2-52",
-      "number": "52",
       "problem": "Find all solutions in the interval $[0, 2\\pi)$.\n\n1. $\\sin\\left(x + \\dfrac{\\pi}{4}\\right) + \\sin\\left(x - \\dfrac{\\pi}{4}\\right) = -1$\n\n2. $\\cos\\left(x + \\dfrac{\\pi}{6}\\right) - \\cos\\left(x - \\dfrac{\\pi}{6}\\right) = 1$\n\n3. $\\tan(x + \\pi) + 2\\sin(x + \\pi) = 0$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Solving Equations"
+      "variant": "regular"
     },
     {
-      "type": "exercise",
-      "id": "ex-7.2-53",
-      "number": "53",
-      "problem": "**Graphical Reasoning.** Use a graphing utility to graph $y_1$ and $y_2$ in the same window. Determine whether $y_1 = y_2$. If not, find a value of $x$ for which they differ.\n\n1. $y_1 = \\cos(x + 2)$, $y_2 = \\cos x + \\cos 2$\n\n2. $y_1 = \\sin(x + 4)$, $y_2 = \\sin x + \\sin 4$\n\n3. $y_1 = \\sin x \\cos\\dfrac{\\pi}{4} + \\cos x \\sin\\dfrac{\\pi}{4}$, $y_2 = \\sin\\left(x + \\dfrac{\\pi}{4}\\right)$\n\n%═══════════════════════════════════════════════════════════════════════════════\n% PROOFS (4 exercises)\n%═══════════════════════════════════════════════════════════════════════════════\n\n Derive the formula for $\\cos(\\alpha + \\beta)$ directly from the distance formula approach, without first deriving $\\cos(\\alpha - \\beta)$.\n\n Derive the formula for $\\tan(\\alpha - \\beta)$ from the formula for $\\tan(\\alpha + \\beta)$.\n\n Show that the tangent sum formula $\\tan(\\alpha + \\beta) = \\dfrac{\\tan\\alpha + \\tan\\beta}{1 - \\tan\\alpha\\tan\\beta}$ is undefined precisely when $\\alpha + \\beta$ is an odd multiple of $\\dfrac{\\pi}{2}$, which is exactly when $\\tan(\\alpha + \\beta)$ itself is undefined.\n\n Derive the sum-to-product formula $\\sin u + \\sin v = 2\\sin\\dfrac{u+v}{2}\\cos\\dfrac{u-v}{2}$ from the product-to-sum formulas.",
-      "variant": "tech",
-      "hint": null,
-      "answer": null
+      "type": "paragraph",
+      "text": "**Graphical Reasoning.** Use a graphing utility to graph $y_1$ and $y_2$ in the same window. Determine whether $y_1 = y_2$. If not, find a value of $x$ for which they differ.\n\n1. $y_1 = \\cos(x + 2)$, $y_2 = \\cos x + \\cos 2$\n\n2. $y_1 = \\sin(x + 4)$, $y_2 = \\sin x + \\sin 4$\n\n3. $y_1 = \\sin x \\cos\\dfrac{\\pi}{4} + \\cos x \\sin\\dfrac{\\pi}{4}$, $y_2 = \\sin\\left(x + \\dfrac{\\pi}{4}\\right)$"
     }
   ]
 }

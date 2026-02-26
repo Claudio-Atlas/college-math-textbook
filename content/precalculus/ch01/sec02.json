@@ -30,27 +30,29 @@
     {
       "type": "definition",
       "id": "definition-1.1",
-      "number": "1.1",
       "title": "Domain",
-      "content": "The **domain** of a function is the set of all inputs \nfor which the function is defined."
+      "content": "The **domain** of a function is the set of all inputs \nfor which the function is defined.",
+      "number": "1.1"
     },
     {
       "type": "paragraph",
       "text": "When a function is given by a formula, we typically assume its domain is \nthe largest set of real numbers for which the formula produces a real \nnumber. This is called the **natural domain** or **implied \ndomain**. Three situations commonly restrict the natural domain:"
     },
     {
-      "type": "list",
-      "ordered": true,
-      "items": [
-        "**Division by zero:** We cannot divide by zero, so any value \n that makes a denominator equal to zero must be excluded from the domain.",
-        "**Even roots of negative numbers:** The square root (and any \n even root) of a negative number is not a real number. The expression \n under an even root must be nonnegative.",
-        "**Logarithms of nonpositive numbers:** Logarithms are only \n defined for positive numbers. (We will study this in Chapter 5.)"
-      ]
+      "type": "paragraph",
+      "text": "1. **Division by zero:** We cannot divide by zero, so any value \n that makes a denominator equal to zero must be excluded from the domain."
+    },
+    {
+      "type": "paragraph",
+      "text": "2. **Even roots of negative numbers:** The square root (and any \n even root) of a negative number is not a real number. The expression \n under an even root must be nonnegative."
+    },
+    {
+      "type": "paragraph",
+      "text": "3. **Logarithms of nonpositive numbers:** Logarithms are only \n defined for positive numbers. (We will study this in Chapter 5.)"
     },
     {
       "type": "warning",
       "id": "warning-1.2",
-      "number": null,
       "title": "Why These Restrictions?",
       "content": "These aren't arbitrary rules. Division by zero is undefined because no \nnumber multiplied by zero gives a nonzero result. Square roots of negative \nnumbers don't exist among real numbers because no real number squared is \nnegative. These restrictions reflect genuine mathematical impossibilities, \nnot mere conventions."
     },
@@ -58,7 +60,7 @@
       "type": "example",
       "id": "example-1.1",
       "number": "1.1",
-      "title": "Finding domains --- polynomial and rational functions",
+      "title": "Finding domains — polynomial and rational functions",
       "problem": "Find the domain of each function.\n\n1. $f(x) = 3x^4 - 2x^2 + 7$\n\n2. $g(x) = \\dfrac{1}{x - 4}$\n\n3. $h(x) = \\dfrac{x + 5}{x^2 - 9}$",
       "solution": "1. This is a polynomial. We can substitute any real number for $x$ \n and compute the result—no division, no roots, no restrictions.\n $$\n \\text{Domain: } (-\\infty, \\infty) \\text{ or equivalently } \\mathbb{R}\n $$\n\n2. The denominator is zero when $x - 4 = 0$, i.e., when $x = 4$. \n All other real numbers are valid.\n $$\n \\text{Domain: } \\{x \\in \\mathbb{R} : x \\neq 4\\} = (-\\infty, 4) \\cup (4, \\infty)\n $$\n\n3. We need $x^2 - 9 \\neq 0$. Solving:\n $$\n x^2 - 9 = 0 \\implies x^2 = 9 \\implies x = \\pm 3\n $$\n Therefore:\n $$\n \\text{Domain: } \\{x \\in \\mathbb{R} : x \\neq 3 \\text{ and } x \\neq -3\\} \n = (-\\infty, -3) \\cup (-3, 3) \\cup (3, \\infty)\n $$"
     },
@@ -66,7 +68,7 @@
       "type": "example",
       "id": "example-1.2",
       "number": "1.2",
-      "title": "Finding domains --- functions with radicals",
+      "title": "Finding domains — functions with radicals",
       "problem": "Find the domain of each function.\n\n1. $f(x) = \\sqrt{x - 3}$\n\n2. $g(x) = \\sqrt{5 - 2x}$\n\n3. $h(x) = \\sqrt[3]{x + 1}$\n\n4. $p(x) = \\sqrt{x^2 - 4}$",
       "solution": "1. The expression under the square root must be nonnegative:\n $$\n x - 3 \\ge 0 \\implies x \\ge 3\n $$\n Domain: $[3, \\infty)$\n\n2. We need $5 - 2x \\ge 0$:\n $$\n 5 - 2x \\ge 0 \\implies 5 \\ge 2x \\implies x \\le \\frac{5}{2}\n $$\n Domain: $\\left(-\\infty, \\frac{5}{2}\\right]$\n\n3. This is a *cube* root (odd root), not a square root! Cube \n roots of negative numbers exist (for example, $\\sqrt[3]{-8} = -2$). \n There's no restriction.\n \n Domain: $(-\\infty, \\infty)$\n\n4. We need $x^2 - 4 \\ge 0$:\n $$\n x^2 - 4 \\ge 0 \\implies x^2 \\ge 4 \\implies |x| \\ge 2 \\implies x \\le -2 \\text{ or } x \\ge 2\n $$\n Domain: $(-\\infty, -2] \\cup [2, \\infty)$"
     },
@@ -76,7 +78,7 @@
       "number": "1.3",
       "title": "Combining restrictions",
       "problem": "Find the domain of each function.\n\n1. $f(x) = \\dfrac{\\sqrt{x + 2}}{x - 5}$\n\n2. $g(x) = \\dfrac{1}{\\sqrt{x - 2}}$\n\n3. $h(x) = \\sqrt{x - 1} + \\sqrt{5 - x}$",
-      "solution": "1. Two restrictions:\n \n\n2. From the square root: $x + 2 \\ge 0$, so $x \\ge -2$\n\n3. From the denominator: $x \\neq 5$\n Both conditions must hold simultaneously:\n $$\n \\text{Domain: } [-2, 5) \\cup (5, \\infty)\n $$\n \n \n\n- The square root must be defined AND positive (since it's in a \n denominator). We need:\n \n\n- $x - 2 \\ge 0$ for the square root to be defined, so $x \\ge 2$\n\n- $\\sqrt{x - 2} \\neq 0$, so $x \\neq 2$\n Together: $x > 2$.\n $$\n \\text{Domain: } (2, \\infty)\n $$\n \n \n\n- Both square roots must be defined:\n \n\n- $x - 1 \\ge 0$, so $x \\ge 1$\n\n- $5 - x \\ge 0$, so $x \\le 5$\n Both conditions together: $1 \\le x \\le 5$.\n $$\n \\text{Domain: } [1, 5]\n $$"
+      "solution": "1. Two restrictions:\n \n- 2. From the square root: $x + 2 \\ge 0$, so $x \\ge -2$\n\n3. From the denominator: $x \\neq 5$\n Both conditions must hold simultaneously:\n $$\n \\text{Domain: } [-2, 5) \\cup (5, \\infty)\n $$\n\n4. The square root must be defined AND positive (since it's in a \n denominator). We need:\n \n- 5. $x - 2 \\ge 0$ for the square root to be defined, so $x \\ge 2$\n\n6. $\\sqrt{x - 2} \\neq 0$, so $x \\neq 2$\n Together: $x > 2$.\n $$\n \\text{Domain: } (2, \\infty)\n $$\n\n7. Both square roots must be defined:\n \n- 8. $x - 1 \\ge 0$, so $x \\ge 1$\n\n9. $5 - x \\ge 0$, so $x \\le 5$\n Both conditions together: $1 \\le x \\le 5$.\n $$\n \\text{Domain: } [1, 5]\n $$"
     },
     {
       "type": "heading",
@@ -86,13 +88,9 @@
     {
       "type": "definition",
       "id": "definition-1.2",
-      "number": "1.2",
       "title": "Range",
-      "content": "The **range** of a function is the set of all outputs \nthe function actually produces as the input varies over the entire domain."
-    },
-    {
-      "type": "paragraph",
-      "text": "of the function. \nIt is a subset of the codomain (the set of *potential* outputs). \nWhile the codomain is part of the function's definition, the range is \ndetermined by what outputs actually occur.}"
+      "content": "The **range** of a function is the set of all outputs \nthe function actually produces as the input varies over the entire domain.",
+      "number": "1.2"
     },
     {
       "type": "paragraph",
@@ -139,18 +137,8 @@
       "id": "example-1.7",
       "number": "1.7",
       "title": "Finding domain and range from a graph",
-      "problem": "The graph of a function $f$ is shown below. Determine the domain and range.\n\nfigure[H]\n\nGraph of a function $f$ with domain $[0, 6]$ and range $[1, 4]$. The curve passes through points $(0,1)$, $(1,2)$, $(2,4)$, $(3,3)$, $(4,2)$, $(5,3)$, and $(6,4)$.\n\nfigure",
-      "solution": "**Domain:** The graph shows $f$ is defined for $x$ from $0$ to $6$ \n(inclusive), so the domain is $[0, 6]$.\n\n**Range:** The lowest $y$-value on the graph is $1$ (at $x = 0$), \nand the highest is $4$ (at $x = 2$ and $x = 6$). By tracing the graph, \nwe can see that all $y$-values between 1 and 4 are achieved.\n$$\n \\text{Range: } [1, 4]\n$$",
-      "figures": [
-        {
-          "type": "figure",
-          "id": "fig:domain-range-graph",
-          "src": "/figures/precalculus/ch01/fig-domain-range-graph.svg",
-          "caption": "Graph of a function $f$ with domain $[0, 6]$ and range $[1, 4]$. The curve passes through points $(0,1)$, $(1,2)$, $(2,4)$, $(3,3)$, $(4,2)$, $(5,3)$, and $(6,4)$.",
-          "alt": "Graph of a function $f$ with domain $[0, 6]$ and range $[1, 4]$. The curve passes through points $(0,1)$, $(1,2)$, $(2,4)$, $(3,3)$, $(4,2)$, $(5,3)$, and $(6,4)$.",
-          "tikz": true
-        }
-      ]
+      "problem": "The graph of a function $f$ is shown below. Determine the domain and range.",
+      "solution": "**Domain:** The graph shows $f$ is defined for $x$ from $0$ to $6$ \n(inclusive), so the domain is $[0, 6]$.\n\n**Range:** The lowest $y$-value on the graph is $1$ (at $x = 0$), \nand the highest is $4$ (at $x = 2$ and $x = 6$). By tracing the graph, \nwe can see that all $y$-values between 1 and 4 are achieved.\n$$\n \\text{Range: } [1, 4]\n$$"
     },
     {
       "type": "heading",
@@ -162,64 +150,12 @@
       "text": "We use **interval notation** to describe \nsubsets of the real line efficiently. This notation is standard throughout \nmathematics and will appear constantly in this course."
     },
     {
-      "type": "table",
-      "headers": [
-        "**Notation**",
-        "**Inequality**",
-        "**Description**"
-      ],
-      "rows": [
-        [
-          "$(a, b)$",
-          "$a < x < b$",
-          "Open interval: endpoints excluded"
-        ],
-        [
-          "$[a, b]$",
-          "$a \\le x \\le b$",
-          "Closed interval: endpoints included"
-        ],
-        [
-          "$[a, b)$",
-          "$a \\le x < b$",
-          "Half-open: $a$ included, $b$ excluded"
-        ],
-        [
-          "$(a, b]$",
-          "$a < x \\le b$",
-          "Half-open: $a$ excluded, $b$ included"
-        ],
-        [
-          "$(a, \\infty)$",
-          "$x > a$",
-          "All numbers greater than $a$"
-        ],
-        [
-          "$[a, \\infty)$",
-          "$x \\ge a$",
-          "All numbers greater than or equal to $a$"
-        ],
-        [
-          "$(-\\infty, b)$",
-          "$x < b$",
-          "All numbers less than $b$"
-        ],
-        [
-          "$(-\\infty, b]$",
-          "$x \\le b$",
-          "All numbers less than or equal to $b$"
-        ],
-        [
-          "$(-\\infty, \\infty)$",
-          "$x \\in \\mathbb{R}$",
-          "All real numbers"
-        ]
-      ],
-      "alignment": [
-        "left",
-        "left",
-        "left"
-      ]
+      "type": "paragraph",
+      "text": "\\renewcommand{}{1.3}"
+    },
+    {
+      "type": "paragraph",
+      "text": "| **Notation** | **Inequality** | **Description** |\n| $(a, b)$ | $a < x < b$ | Open interval: endpoints excluded |\n| $[a, b]$ | $a \\le x \\le b$ | Closed interval: endpoints included |\n| $[a, b)$ | $a \\le x < b$ | Half-open: $a$ included, $b$ excluded |\n| $(a, b]$ | $a < x \\le b$ | Half-open: $a$ excluded, $b$ included |\n| $(a, \\infty)$ | $x > a$ | All numbers greater than $a$ |\n| $[a, \\infty)$ | $x \\ge a$ | All numbers greater than or equal to $a$ |\n| $(-\\infty, b)$ | $x < b$ | All numbers less than $b$ |\n| $(-\\infty, b]$ | $x \\le b$ | All numbers less than or equal to $b$ |\n| $(-\\infty, \\infty)$ | $x \\in \\mathbb{R}$ | All real numbers |"
     },
     {
       "type": "paragraph",
@@ -232,10 +168,6 @@
       "caption": "Number line representations of interval notation. From top to bottom: open interval $(a,b)$ with hollow endpoints; closed interval $[a,b]$ with filled endpoints; half-open interval $[a,b)$; unbounded interval $[a,\\infty)$; and unbounded interval $(-\\infty,b)$.",
       "alt": "Number line representations of interval notation. From top to bottom: open interval $(a,b)$ with hollow endpoints; closed interval $[a,b]$ with filled endpoints; half-open interval $[a,b)$; unbounded interval $[a,\\infty)$; and unbounded interval $(-\\infty,b)$.",
       "tikz": true
-    },
-    {
-      "type": "paragraph",
-      "text": "; \nbrackets indicate it is *included*. Infinity always gets a parenthesis \nbecause infinity is not a number that can be reached or included.}"
     },
     {
       "type": "paragraph",
@@ -259,44 +191,12 @@
       "text": "While interval notation is compact and widely used, \n**set-builder notation** provides a more \nexplicit way to describe sets using conditions. The general form is:\n$$\n \\{x \\mid \\text{condition on } x\\} \\quad \\text{or} \\quad \n \\{x : \\text{condition on } x\\}\n$$\nRead this as \"the set of all $x$ such that [condition].\" The vertical \nbar $\\mid$ or colon $:$ means \"such that.\""
     },
     {
-      "type": "table",
-      "headers": [
-        "**Interval Notation**",
-        "**Set-Builder Notation**",
-        "**Description**"
-      ],
-      "rows": [
-        [
-          "$[2, 5]$",
-          "$\\{x \\mid 2 \\le x \\le 5\\}$",
-          "$x$ between 2 and 5, inclusive"
-        ],
-        [
-          "$(0, \\infty)$",
-          "$\\{x \\mid x > 0\\}$",
-          "All positive real numbers"
-        ],
-        [
-          "$(-\\infty, 3) \\cup (3, \\infty)$",
-          "$\\{x \\mid x \\neq 3\\}$",
-          "All reals except 3"
-        ],
-        [
-          "$[0, \\infty)$",
-          "$\\{x \\mid x \\ge 0\\}$",
-          "All nonnegative reals"
-        ],
-        [
-          "$(-\\infty, \\infty)$",
-          "$\\{x \\mid x \\in \\mathbb{R}\\}$",
-          "All real numbers"
-        ]
-      ],
-      "alignment": [
-        "left",
-        "left",
-        "left"
-      ]
+      "type": "paragraph",
+      "text": "\\renewcommand{}{1.3}"
+    },
+    {
+      "type": "paragraph",
+      "text": "| **Interval Notation** | **Set-Builder Notation** | **Description** |\n| $[2, 5]$ | $\\{x \\mid 2 \\le x \\le 5\\}$ | $x$ between 2 and 5, inclusive |\n| $(0, \\infty)$ | $\\{x \\mid x > 0\\}$ | All positive real numbers |\n| $(-\\infty, 3) \\cup (3, \\infty)$ | $\\{x \\mid x \\neq 3\\}$ | All reals except 3 |\n| $[0, \\infty)$ | $\\{x \\mid x \\ge 0\\}$ | All nonnegative reals |\n| $(-\\infty, \\infty)$ | $\\{x \\mid x \\in \\mathbb{R}\\}$ | All real numbers |"
     },
     {
       "type": "example",
@@ -304,7 +204,7 @@
       "number": "1.9",
       "title": "Converting between notations",
       "problem": "Write each domain in both interval notation and set-builder notation.\n\n1. The domain of $f(x) = \\sqrt{x - 4}$\n\n2. The domain of $g(x) = \\dfrac{1}{x + 2}$\n\n3. The domain of $h(x) = \\dfrac{\\sqrt{x}}{x - 3}$",
-      "solution": "1. We need $x - 4 \\ge 0$, so $x \\ge 4$.\n \n\n2. Interval notation: $[4, \\infty)$\n\n3. Set-builder notation: $\\{x \\mid x \\ge 4\\}$\n \n \n\n- We need $x + 2 \\neq 0$, so $x \\neq -2$.\n \n\n- Interval notation: $(-\\infty, -2) \\cup (-2, \\infty)$\n\n- Set-builder notation: $\\{x \\mid x \\neq -2\\}$\n \n \n\n- Two restrictions: $x \\ge 0$ (for the square root) and $x \\neq 3$ \n (for the denominator). Together: $x \\ge 0$ and $x \\neq 3$.\n \n\n- Interval notation: $[0, 3) \\cup (3, \\infty)$\n\n- Set-builder notation: $\\{x \\mid x \\ge 0 \\text{ and } x \\neq 3\\}$"
+      "solution": "1. We need $x - 4 \\ge 0$, so $x \\ge 4$.\n \n- 2. Interval notation: $[4, \\infty)$\n\n3. Set-builder notation: $\\{x \\mid x \\ge 4\\}$\n\n4. We need $x + 2 \\neq 0$, so $x \\neq -2$.\n \n- 5. Interval notation: $(-\\infty, -2) \\cup (-2, \\infty)$\n\n6. Set-builder notation: $\\{x \\mid x \\neq -2\\}$\n\n7. Two restrictions: $x \\ge 0$ (for the square root) and $x \\neq 3$ \n (for the denominator). Together: $x \\ge 0$ and $x \\neq 3$.\n \n- 8. Interval notation: $[0, 3) \\cup (3, \\infty)$\n\n9. Set-builder notation: $\\{x \\mid x \\ge 0 \\text{ and } x \\neq 3\\}$"
     },
     {
       "type": "example",
@@ -317,7 +217,6 @@
     {
       "type": "tip",
       "id": "tip-1.2",
-      "number": null,
       "title": "When to Use Each Notation",
       "content": "- Use **interval notation** when the domain is a continuous \n interval or union of intervals—it's more compact.\n\n- Use **set-builder notation** when the condition is easier \n to state than to convert to intervals (e.g., \"$x \\neq 5$\" is simpler \n than \"$(-\\infty, 5) \\cup (5, \\infty)$\").\n\n- Both notations are acceptable in most contexts; choose whichever \n communicates most clearly."
     },
@@ -329,6 +228,11 @@
     {
       "type": "paragraph",
       "text": "When a function models a real-world situation, the domain may be restricted \nby the context even if the formula would allow other inputs. These \ncontextual restrictions give us the **applied domain** (sometimes \ncalled the **practical domain**)."
+    },
+    {
+      "type": "paragraph",
+      "text": "Context shapes meaning. A number that makes mathematical sense might be \nphysically meaningless—you can't have $-3$ apples or a rectangle with \nnegative dimensions. Similarly, Scripture read without its proper context \ncan be misapplied. The wisdom to know what constraints apply—mathematical, \nphysical, or spiritual—is part of understanding truth rightly.",
+      "edition": "christian"
     },
     {
       "type": "example",
@@ -357,542 +261,438 @@
     {
       "type": "strategy",
       "id": "strategy-1.2",
-      "number": null,
       "title": "How to Find the Domain",
       "content": "Follow these steps to find the domain of a function:\n\n1. **Start with all real numbers.**\n\n2. **Check for denominators:** Set each denominator $\\neq 0$ and exclude those $x$-values.\n\n3. **Check for even roots:** Set each radicand $\\geq 0$ and solve.\n\n4. **Check for logarithms:** Set each argument $> 0$ and solve.\n\n5. **Combine all restrictions:** The domain is the intersection of all valid regions.\n\n**Quick Decision Guide:**\n\n- **Polynomial?** → Domain is $(-\\infty, \\infty)$\n\n- **Fraction?** → Exclude zeros of denominator\n\n- **Square root (or even root)?** → Radicand must be $\\geq 0$\n\n- **Cube root (or odd root)?** → Domain is $(-\\infty, \\infty)$\n\n- **Logarithm?** → Argument must be $> 0$"
     },
     {
       "type": "figure",
       "id": "tab:common-domains",
-      "src": "",
+      "src": "/figures/precalculus/ch01/tab-common-domains.svg",
       "caption": "Quick reference: Common function types and their natural domains. For combined functions, find the intersection of all individual restrictions.",
-      "alt": "Table: Common domains"
+      "alt": "Quick reference: Common function types and their natural domains. For combined functions, find the intersection of all individual restrictions."
     },
     {
       "type": "summary",
       "id": "summary-1.2",
-      "number": null,
       "title": "Domain and Range: Key Points",
-      "content": "- The **domain** is the set of valid inputs; the **range** \n is the set of actual outputs.\n\n- **Domain restrictions** arise from:\n \n\n- Division by zero (exclude zeros of denominators)\n\n- Even roots of negatives (radicand must be $\\ge 0$)\n\n- Logarithms of nonpositives (argument must be $> 0$)\n \n\n- **Finding range** often requires:\n \n\n- Analyzing function behavior\n\n- Solving for $x$ in terms of $y$\n\n- Examining the graph\n \n\n- **Applied domains** incorporate physical/contextual constraints.\n \n\n- Use **interval notation** with parentheses for excluded \n endpoints and brackets for included ones."
+      "content": "- The **domain** is the set of valid inputs; the **range** \n is the set of actual outputs.\n\n- **Domain restrictions** arise from:\n \n- - Division by zero (exclude zeros of denominators)\n\n- Even roots of negatives (radicand must be $\\ge 0$)\n\n- Logarithms of nonpositives (argument must be $> 0$)\n\n- **Finding range** often requires:\n \n- - Analyzing function behavior\n\n- Solving for $x$ in terms of $y$\n\n- Examining the graph\n\n- **Applied domains** incorporate physical/contextual constraints.\n\n- Use **interval notation** with parentheses for excluded \n endpoints and brackets for included ones."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Vocabulary"
+    },
+    {
+      "type": "paragraph",
+      "text": "Fill in each blank.\n\n1. The of a function is the set of all \n possible input values.\n\n2. The of a function is the set of all \n output values.\n\n3. A value $c$ is excluded from the domain of $f(x) = \\dfrac{1}{g(x)}$ \n when $g(c) = $ .\n\n4. The domain of $f(x) = \\sqrt{g(x)}$ requires that $g(x) \\geq $ \n .\n\n5. Interval notation uses brackets for \n endpoints that are included in the set.\n\n6. In set-builder notation, $\\{x \\mid x > 3\\}$ is read as \"the set \n of all $x$ $x > 3$.\""
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Conceptual Understanding"
+    },
+    {
+      "type": "paragraph",
+      "text": "True or False? Justify your answer.\n\n1. The domain of any polynomial is all real numbers.\n\n2. If $f(x) = \\sqrt{g(x)}$, then the domain of $f$ is where $g(x) \\geq 0$.\n\n3. The range of $f(x) = x^2$ is $[0, \\infty)$.\n\n4. If 3 is not in the domain of $f$, then $f(3)$ is undefined.\n\n5. The domain of $f(x) = \\sqrt[3]{x}$ is $[0, \\infty)$."
+    },
+    {
+      "type": "paragraph",
+      "text": "True or False? Justify your answer.\n\n1. Every function has both a domain and a range.\n\n2. The domain and range of $f(x) = x$ are the same.\n\n3. If the domain of $f$ is $[0, 5]$, the range must also be $[0, 5]$.\n\n4. The function $f(x) = \\dfrac{1}{x}$ has range $(-\\infty, 0) \\cup (0, \\infty)$.\n\n5. $\\{x \\mid x \\neq 5\\}$ and $(-\\infty, 5) \\cup (5, \\infty)$ represent the same set."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Interval and Set-Builder Notation"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-1",
       "number": "1",
-      "problem": "True or False? Justify your answer.\n\n1. The domain of any polynomial is all real numbers.\n\n2. If $f(x) = \\sqrt{g(x)}$, then the domain of $f$ is where $g(x) \\geq 0$.\n\n3. The range of $f(x) = x^2$ is $[0, \\infty)$.\n\n4. If 3 is not in the domain of $f$, then $f(3)$ is undefined.\n\n5. The domain of $f(x) = \\sqrt[3]{x}$ is $[0, \\infty)$.",
-      "variant": "conceptual",
-      "hint": null,
-      "answer": null
+      "problem": "Convert each interval notation to set-builder notation.\n\n1. $[2, 7)$\n\n2. $(-\\infty, 5]$\n\n3. $(3, \\infty)$\n\n4. $(-\\infty, -2) \\cup (2, \\infty)$\n\n5. $[0, 4] \\cup [6, 10]$\n\n6. $(-\\infty, 1) \\cup (1, 3) \\cup (3, \\infty)$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-2",
       "number": "2",
-      "problem": "True or False? Justify your answer.\n\n1. Every function has both a domain and a range.\n\n2. The domain and range of $f(x) = x$ are the same.\n\n3. If the domain of $f$ is $[0, 5]$, the range must also be $[0, 5]$.\n\n4. The function $f(x) = \\dfrac{1}{x}$ has range $(-\\infty, 0) \\cup (0, \\infty)$.\n\n5. $\\{x \\mid x \\neq 5\\}$ and $(-\\infty, 5) \\cup (5, \\infty)$ represent the same set.\n\n%─────────────────────────────────────────────────────────\n% 3. INTERVAL AND SET-BUILDER NOTATION\n%─────────────────────────────────────────────────────────",
-      "variant": "conceptual",
-      "hint": null,
-      "answer": null
+      "problem": "Convert each set-builder notation to interval notation.\n\n1. $\\{x \\mid x \\geq -3\\}$\n\n2. $\\{x \\mid x < 4\\}$\n\n3. $\\{x \\mid -1 < x \\leq 5\\}$\n\n4. $\\{x \\mid x \\neq 0\\}$\n\n5. $\\{x \\mid x \\neq 2 \\text{ and } x \\neq -2\\}$\n\n6. $\\{x \\mid x \\leq 1 \\text{ or } x > 4\\}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-3",
       "number": "3",
-      "problem": "Convert each interval notation to set-builder notation.\n\n1. $[2, 7)$\n\n2. $(-\\infty, 5]$\n\n3. $(3, \\infty)$\n\n4. $(-\\infty, -2) \\cup (2, \\infty)$\n\n5. $[0, 4] \\cup [6, 10]$\n\n6. $(-\\infty, 1) \\cup (1, 3) \\cup (3, \\infty)$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Express the domain of each function in both interval and set-builder notation.\n\n1. $f(x) = \\sqrt{x - 4}$\n\n2. $g(x) = \\dfrac{1}{x + 3}$\n\n3. $h(x) = \\dfrac{\\sqrt{x}}{x - 2}$\n\n4. $k(x) = \\sqrt{x - 1} + \\sqrt{4 - x}$",
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Finding Domains of Polynomial Functions"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-4",
       "number": "4",
-      "problem": "Convert each set-builder notation to interval notation.\n\n1. $\\{x \\mid x \\geq -3\\}$\n\n2. $\\{x \\mid x < 4\\}$\n\n3. $\\{x \\mid -1 < x \\leq 5\\}$\n\n4. $\\{x \\mid x \\neq 0\\}$\n\n5. $\\{x \\mid x \\neq 2 \\text{ and } x \\neq -2\\}$\n\n6. $\\{x \\mid x \\leq 1 \\text{ or } x > 4\\}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each polynomial function.\n\n1. $f(x) = 5x^2 - 3x + 7$\n\n2. $g(x) = x^4 - 2x^2 + 1$\n\n3. $h(x) = -2x^3 + x$\n\n4. $k(x) = x^5 - x^3 + x - 1$",
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Finding Domains of Rational Functions"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-5",
       "number": "5",
-      "problem": "Express the domain of each function in both interval and set-builder notation.\n\n1. $f(x) = \\sqrt{x - 4}$\n\n2. $g(x) = \\dfrac{1}{x + 3}$\n\n3. $h(x) = \\dfrac{\\sqrt{x}}{x - 2}$\n\n4. $k(x) = \\sqrt{x - 1} + \\sqrt{4 - x}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function. Express in interval notation.\n\n1. $f(x) = \\dfrac{1}{x}$\n\n2. $g(x) = \\dfrac{1}{x - 4}$\n\n3. $h(x) = \\dfrac{x + 1}{x - 3}$\n\n4. $k(x) = \\dfrac{2x}{x + 5}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-6",
       "number": "6",
-      "problem": "Find the domain of each polynomial function.\n\n1. $f(x) = 5x^2 - 3x + 7$\n\n2. $g(x) = x^4 - 2x^2 + 1$\n\n3. $h(x) = -2x^3 + x$\n\n4. $k(x) = x^5 - x^3 + x - 1$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function.\n\n1. $f(x) = \\dfrac{1}{x^2 - 9}$\n\n2. $g(x) = \\dfrac{x}{x^2 - 4}$\n\n3. $h(x) = \\dfrac{x + 2}{x^2 - x - 6}$\n\n4. $k(x) = \\dfrac{3x - 1}{x^2 + 5x + 6}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-7",
       "number": "7",
-      "problem": "Find the domain of each function. Express in interval notation.\n\n1. $f(x) = \\dfrac{1}{x}$\n\n2. $g(x) = \\dfrac{1}{x - 4}$\n\n3. $h(x) = \\dfrac{x + 1}{x - 3}$\n\n4. $k(x) = \\dfrac{2x}{x + 5}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function.\n\n1. $f(x) = \\dfrac{x^2 + 1}{x^2 - 1}$\n\n2. $g(x) = \\dfrac{x - 3}{x^2 + 4}$\n\n3. $h(x) = \\dfrac{5}{x^2 + 2x + 1}$\n\n4. $k(x) = \\dfrac{x}{x^3 - 8}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-8",
       "number": "8",
-      "problem": "Find the domain of each function.\n\n1. $f(x) = \\dfrac{1}{x^2 - 9}$\n\n2. $g(x) = \\dfrac{x}{x^2 - 4}$\n\n3. $h(x) = \\dfrac{x + 2}{x^2 - x - 6}$\n\n4. $k(x) = \\dfrac{3x - 1}{x^2 + 5x + 6}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function. Express in interval notation.\n\n1. $f(x) = \\dfrac{2x + 1}{x^2 - 5x + 6}$\n\n2. $g(x) = \\dfrac{x^2 - 4}{x^2 + x - 12}$\n\n3. $h(x) = \\dfrac{x + 7}{x^3 - x}$\n\n4. $k(x) = \\dfrac{3x}{x^2 - 2x - 15}$",
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Finding Domains of Radical Functions"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-9",
       "number": "9",
-      "problem": "Find the domain of each function.\n\n1. $f(x) = \\dfrac{x^2 + 1}{x^2 - 1}$\n\n2. $g(x) = \\dfrac{x - 3}{x^2 + 4}$\n\n3. $h(x) = \\dfrac{5}{x^2 + 2x + 1}$\n\n4. $k(x) = \\dfrac{x}{x^3 - 8}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function.\n\n1. $f(x) = \\sqrt{x - 5}$\n\n2. $g(x) = \\sqrt{3x + 12}$\n\n3. $h(x) = \\sqrt{2 - x}$\n\n4. $k(x) = \\sqrt{-x}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-10",
       "number": "10",
-      "problem": "Find the domain of each function. Express in interval notation.\n\n1. $f(x) = \\dfrac{2x + 1}{x^2 - 5x + 6}$\n\n2. $g(x) = \\dfrac{x^2 - 4}{x^2 + x - 12}$\n\n3. $h(x) = \\dfrac{x + 7}{x^3 - x}$\n\n4. $k(x) = \\dfrac{3x}{x^2 - 2x - 15}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function.\n\n1. $f(x) = \\sqrt{x^2 - 16}$\n\n2. $g(x) = \\sqrt{9 - x^2}$\n\n3. $h(x) = \\sqrt{x^2 + 4}$\n\n4. $k(x) = \\sqrt{x^2 - 2x - 3}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-11",
       "number": "11",
-      "problem": "Find the domain of each function.\n\n1. $f(x) = \\sqrt{x - 5}$\n\n2. $g(x) = \\sqrt{3x + 12}$\n\n3. $h(x) = \\sqrt{2 - x}$\n\n4. $k(x) = \\sqrt{-x}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function (note even vs odd roots).\n\n1. $f(x) = \\sqrt[3]{x - 2}$\n\n2. $g(x) = \\sqrt[4]{x + 1}$\n\n3. $h(x) = \\sqrt[5]{3x - 6}$\n\n4. $k(x) = \\sqrt[6]{x^2 - 1}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-12",
       "number": "12",
-      "problem": "Find the domain of each function.\n\n1. $f(x) = \\sqrt{x^2 - 16}$\n\n2. $g(x) = \\sqrt{9 - x^2}$\n\n3. $h(x) = \\sqrt{x^2 + 4}$\n\n4. $k(x) = \\sqrt{x^2 - 2x - 3}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function.\n\n1. $f(x) = \\sqrt{2x + 10}$\n\n2. $g(x) = \\sqrt{x^2 - 25}$\n\n3. $h(x) = \\sqrt{6 - x - x^2}$\n\n4. $k(x) = \\sqrt{x^2 + 4x + 3}$",
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Finding Domains with Combined Restrictions"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-13",
       "number": "13",
-      "problem": "Find the domain of each function (note even vs odd roots).\n\n1. $f(x) = \\sqrt[3]{x - 2}$\n\n2. $g(x) = \\sqrt[4]{x + 1}$\n\n3. $h(x) = \\sqrt[5]{3x - 6}$\n\n4. $k(x) = \\sqrt[6]{x^2 - 1}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function.\n\n1. $f(x) = \\sqrt{x} + \\sqrt{x - 1}$\n\n2. $g(x) = \\sqrt{x - 2} + \\sqrt{4 - x}$\n\n3. $h(x) = \\sqrt{x - 1} \\cdot \\sqrt{x + 1}$\n\n4. $k(x) = \\dfrac{1}{\\sqrt{x - 3}}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-14",
       "number": "14",
-      "problem": "Find the domain of each function.\n\n1. $f(x) = \\sqrt{2x + 10}$\n\n2. $g(x) = \\sqrt{x^2 - 25}$\n\n3. $h(x) = \\sqrt{6 - x - x^2}$\n\n4. $k(x) = \\sqrt{x^2 + 4x + 3}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function.\n\n1. $f(x) = \\dfrac{\\sqrt{x}}{x - 4}$\n\n2. $g(x) = \\dfrac{\\sqrt{x - 2}}{x - 5}$\n\n3. $h(x) = \\dfrac{x + 1}{\\sqrt{x - 3}}$\n\n4. $k(x) = \\dfrac{\\sqrt{x + 4}}{\\sqrt{x - 1}}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-15",
       "number": "15",
-      "problem": "Find the domain of each function.\n\n1. $f(x) = \\sqrt{x} + \\sqrt{x - 1}$\n\n2. $g(x) = \\sqrt{x - 2} + \\sqrt{4 - x}$\n\n3. $h(x) = \\sqrt{x - 1} \\cdot \\sqrt{x + 1}$\n\n4. $k(x) = \\dfrac{1}{\\sqrt{x - 3}}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function.\n\n1. $f(x) = \\dfrac{\\sqrt{9 - x^2}}{x}$\n\n2. $g(x) = \\sqrt{\\dfrac{x - 1}{x + 2}}$\n\n3. $h(x) = \\sqrt{\\dfrac{x + 3}{x - 3}}$\n\n4. $k(x) = \\sqrt{x - 1} + \\dfrac{1}{x - 4}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-16",
       "number": "16",
-      "problem": "Find the domain of each function.\n\n1. $f(x) = \\dfrac{\\sqrt{x}}{x - 4}$\n\n2. $g(x) = \\dfrac{\\sqrt{x - 2}}{x - 5}$\n\n3. $h(x) = \\dfrac{x + 1}{\\sqrt{x - 3}}$\n\n4. $k(x) = \\dfrac{\\sqrt{x + 4}}{\\sqrt{x - 1}}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function.\n\n1. $f(x) = \\dfrac{\\sqrt{x + 6}}{x^2 - 9}$\n\n2. $g(x) = \\sqrt{\\dfrac{2x - 4}{x + 5}}$\n\n3. $h(x) = \\dfrac{1}{\\sqrt{x^2 - 4}}$\n\n4. $k(x) = \\sqrt{x + 2} \\cdot \\sqrt{6 - x}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-17",
       "number": "17",
-      "problem": "Find the domain of each function.\n\n1. $f(x) = \\dfrac{\\sqrt{9 - x^2}}{x}$\n\n2. $g(x) = \\sqrt{\\dfrac{x - 1}{x + 2}}$\n\n3. $h(x) = \\sqrt{\\dfrac{x + 3}{x - 3}}$\n\n4. $k(x) = \\sqrt{x - 1} + \\dfrac{1}{x - 4}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function.\n\n1. $f(x) = \\dfrac{\\sqrt{x - 3}}{\\sqrt{7 - x}}$\n\n2. $g(x) = \\sqrt{x} + \\dfrac{1}{\\sqrt{4 - x}}$\n\n3. $h(x) = \\dfrac{x + 1}{\\sqrt{x^2 - 1}}$\n\n4. $k(x) = \\sqrt[4]{\\dfrac{x - 2}{x + 3}}$",
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "More Domain Practice"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-18",
       "number": "18",
-      "problem": "Find the domain of each function.\n\n1. $f(x) = \\dfrac{\\sqrt{x + 6}}{x^2 - 9}$\n\n2. $g(x) = \\sqrt{\\dfrac{2x - 4}{x + 5}}$\n\n3. $h(x) = \\dfrac{1}{\\sqrt{x^2 - 4}}$\n\n4. $k(x) = \\sqrt{x + 2} \\cdot \\sqrt{6 - x}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function. Express your answer in interval notation.\n\n1. $f(x) = \\dfrac{5}{x - 7}$\n\n2. $g(x) = \\dfrac{x + 2}{x + 6}$\n\n3. $h(x) = \\dfrac{2x - 1}{3x + 9}$\n\n4. $k(x) = \\dfrac{x^2 + 1}{x^2 - 16}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-19",
       "number": "19",
-      "problem": "Find the domain of each function.\n\n1. $f(x) = \\dfrac{\\sqrt{x - 3}}{\\sqrt{7 - x}}$\n\n2. $g(x) = \\sqrt{x} + \\dfrac{1}{\\sqrt{4 - x}}$\n\n3. $h(x) = \\dfrac{x + 1}{\\sqrt{x^2 - 1}}$\n\n4. $k(x) = \\sqrt[4]{\\dfrac{x - 2}{x + 3}}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function. Express your answer in interval notation.\n\n1. $f(x) = \\dfrac{3}{2x + 8}$\n\n2. $g(x) = \\dfrac{x - 4}{x + 1}$\n\n3. $h(x) = \\dfrac{4x + 3}{2x - 10}$\n\n4. $k(x) = \\dfrac{x^2 - 9}{x^2 - 25}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-20",
       "number": "20",
-      "problem": "Find the domain of each function. Express your answer in interval notation.\n\n1. $f(x) = \\dfrac{5}{x - 7}$\n\n2. $g(x) = \\dfrac{x + 2}{x + 6}$\n\n3. $h(x) = \\dfrac{2x - 1}{3x + 9}$\n\n4. $k(x) = \\dfrac{x^2 + 1}{x^2 - 16}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function.\n\n1. $f(x) = \\sqrt{5 - x}$\n\n2. $g(x) = \\sqrt{2x - 6}$\n\n3. $h(x) = \\sqrt{-3x + 12}$\n\n4. $k(x) = \\sqrt{4x + 8}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-21",
       "number": "21",
-      "problem": "Find the domain of each function. Express your answer in interval notation.\n\n1. $f(x) = \\dfrac{3}{2x + 8}$\n\n2. $g(x) = \\dfrac{x - 4}{x + 1}$\n\n3. $h(x) = \\dfrac{4x + 3}{2x - 10}$\n\n4. $k(x) = \\dfrac{x^2 - 9}{x^2 - 25}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function.\n\n1. $f(x) = \\sqrt{7 - x}$\n\n2. $g(x) = \\sqrt{3x - 9}$\n\n3. $h(x) = \\sqrt{-2x + 10}$\n\n4. $k(x) = \\sqrt{5x + 15}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-22",
       "number": "22",
-      "problem": "Find the domain of each function.\n\n1. $f(x) = \\sqrt{5 - x}$\n\n2. $g(x) = \\sqrt{2x - 6}$\n\n3. $h(x) = \\sqrt{-3x + 12}$\n\n4. $k(x) = \\sqrt{4x + 8}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function. Pay attention to multiple restrictions.\n\n1. $f(x) = \\dfrac{\\sqrt{x - 1}}{x - 5}$\n\n2. $g(x) = \\dfrac{\\sqrt{2x + 4}}{x + 1}$\n\n3. $h(x) = \\sqrt{x + 3} + \\dfrac{1}{x - 2}$\n\n4. $k(x) = \\dfrac{x}{\\sqrt{x - 4}}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-23",
       "number": "23",
-      "problem": "Find the domain of each function.\n\n1. $f(x) = \\sqrt{7 - x}$\n\n2. $g(x) = \\sqrt{3x - 9}$\n\n3. $h(x) = \\sqrt{-2x + 10}$\n\n4. $k(x) = \\sqrt{5x + 15}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each function. Pay attention to multiple restrictions.\n\n1. $f(x) = \\dfrac{\\sqrt{x - 3}}{x - 7}$\n\n2. $g(x) = \\dfrac{\\sqrt{3x + 6}}{x + 4}$\n\n3. $h(x) = \\sqrt{x + 5} + \\dfrac{1}{x - 1}$\n\n4. $k(x) = \\dfrac{x + 2}{\\sqrt{x - 6}}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-24",
       "number": "24",
-      "problem": "Find the domain of each function. Pay attention to multiple restrictions.\n\n1. $f(x) = \\dfrac{\\sqrt{x - 1}}{x - 5}$\n\n2. $g(x) = \\dfrac{\\sqrt{2x + 4}}{x + 1}$\n\n3. $h(x) = \\sqrt{x + 3} + \\dfrac{1}{x - 2}$\n\n4. $k(x) = \\dfrac{x}{\\sqrt{x - 4}}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each absolute value function.\n\n1. $f(x) = |x - 3|$\n\n2. $g(x) = \\dfrac{1}{|x| - 2}$\n\n3. $h(x) = \\sqrt{|x| - 1}$\n\n4. $k(x) = \\dfrac{|x + 1|}{x^2 - 4}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-25",
       "number": "25",
-      "problem": "Find the domain of each function. Pay attention to multiple restrictions.\n\n1. $f(x) = \\dfrac{\\sqrt{x - 3}}{x - 7}$\n\n2. $g(x) = \\dfrac{\\sqrt{3x + 6}}{x + 4}$\n\n3. $h(x) = \\sqrt{x + 5} + \\dfrac{1}{x - 1}$\n\n4. $k(x) = \\dfrac{x + 2}{\\sqrt{x - 6}}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain of each absolute value function.\n\n1. $f(x) = |2x + 5|$\n\n2. $g(x) = \\dfrac{1}{|x| - 5}$\n\n3. $h(x) = \\sqrt{|x| - 3}$\n\n4. $k(x) = \\dfrac{|x - 2|}{x^2 - 9}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-26",
       "number": "26",
-      "problem": "Find the domain of each absolute value function.\n\n1. $f(x) = |x - 3|$\n\n2. $g(x) = \\dfrac{1}{|x| - 2}$\n\n3. $h(x) = \\sqrt{|x| - 1}$\n\n4. $k(x) = \\dfrac{|x + 1|}{x^2 - 4}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Determine the domain of each piecewise function.\n\n1. $f(x) = \\begin{cases} x + 2 & \\text{if } x < 0 \\\\ \\sqrt{x} & \\text{if } x \\geq 0 \\end{cases}$\n\n2. $g(x) = \\begin{cases} \\dfrac{1}{x} & \\text{if } x < 1 \\\\ x^2 & \\text{if } x \\geq 1 \\end{cases}$\n\n3. $h(x) = \\begin{cases} \\sqrt{x + 4} & \\text{if } x < 0 \\\\ \\dfrac{1}{x - 2} & \\text{if } x \\geq 0 \\end{cases}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-27",
       "number": "27",
-      "problem": "Find the domain of each absolute value function.\n\n1. $f(x) = |2x + 5|$\n\n2. $g(x) = \\dfrac{1}{|x| - 5}$\n\n3. $h(x) = \\sqrt{|x| - 3}$\n\n4. $k(x) = \\dfrac{|x - 2|}{x^2 - 9}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Determine the domain of each piecewise function.\n\n1. $f(x) = \\begin{cases} x - 1 & \\text{if } x < 0 \\\\ \\sqrt{x - 1} & \\text{if } x \\geq 1 \\end{cases}$\n\n2. $g(x) = \\begin{cases} \\dfrac{1}{x + 1} & \\text{if } x < 2 \\\\ x^2 - 4 & \\text{if } x \\geq 2 \\end{cases}$\n\n3. $h(x) = \\begin{cases} \\sqrt{x + 9} & \\text{if } x < 0 \\\\ \\dfrac{1}{x - 3} & \\text{if } x \\geq 0 \\end{cases}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-28",
       "number": "28",
-      "problem": "Determine the domain of each piecewise function.\n\n1. $f(x) = \\begin{cases} x + 2 & \\text{if } x < 0 \\\\ \\sqrt{x} & \\text{if } x \\geq 0 \\end{cases}$\n\n2. $g(x) = \\begin{cases} \\dfrac{1}{x} & \\text{if } x < 1 \\\\ x^2 & \\text{if } x \\geq 1 \\end{cases}$\n\n3. $h(x) = \\begin{cases} \\sqrt{x + 4} & \\text{if } x < 0 \\\\ \\dfrac{1}{x - 2} & \\text{if } x \\geq 0 \\end{cases}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "For each pair of functions, find (i) the domain of $f$, (ii) the domain of $g$, and (iii) the domain of $f + g$.\n\n1. $f(x) = \\sqrt{x}$, $g(x) = \\sqrt{4 - x}$\n\n2. $f(x) = \\dfrac{1}{x}$, $g(x) = \\dfrac{1}{x - 2}$\n\n3. $f(x) = \\sqrt{x - 1}$, $g(x) = \\dfrac{1}{x - 3}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-29",
       "number": "29",
-      "problem": "Determine the domain of each piecewise function.\n\n1. $f(x) = \\begin{cases} x - 1 & \\text{if } x < 0 \\\\ \\sqrt{x - 1} & \\text{if } x \\geq 1 \\end{cases}$\n\n2. $g(x) = \\begin{cases} \\dfrac{1}{x + 1} & \\text{if } x < 2 \\\\ x^2 - 4 & \\text{if } x \\geq 2 \\end{cases}$\n\n3. $h(x) = \\begin{cases} \\sqrt{x + 9} & \\text{if } x < 0 \\\\ \\dfrac{1}{x - 3} & \\text{if } x \\geq 0 \\end{cases}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "For each pair of functions, find (i) the domain of $f$, (ii) the domain of $g$, and (iii) the domain of $f \\cdot g$.\n\n1. $f(x) = \\sqrt{x + 2}$, $g(x) = \\sqrt{3 - x}$\n\n2. $f(x) = \\dfrac{1}{x + 1}$, $g(x) = \\dfrac{1}{x - 1}$\n\n3. $f(x) = \\sqrt{x}$, $g(x) = \\dfrac{1}{x - 4}$",
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Finding Range"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-30",
       "number": "30",
-      "problem": "For each pair of functions, find (i) the domain of $f$, (ii) the domain of $g$, and (iii) the domain of $f + g$.\n\n1. $f(x) = \\sqrt{x}$, $g(x) = \\sqrt{4 - x}$\n\n2. $f(x) = \\dfrac{1}{x}$, $g(x) = \\dfrac{1}{x - 2}$\n\n3. $f(x) = \\sqrt{x - 1}$, $g(x) = \\dfrac{1}{x - 3}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain and range of each function.\n\n1. $f(x) = 3x - 7$\n\n2. $g(x) = x^2 + 1$\n\n3. $h(x) = -x^2 + 4$\n\n4. $p(x) = |x - 4|$\n\n5. $q(x) = \\sqrt{x + 2}$\n\n6. $r(x) = -\\sqrt{x} + 3$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-31",
       "number": "31",
-      "problem": "For each pair of functions, find (i) the domain of $f$, (ii) the domain of $g$, and (iii) the domain of $f \\cdot g$.\n\n1. $f(x) = \\sqrt{x + 2}$, $g(x) = \\sqrt{3 - x}$\n\n2. $f(x) = \\dfrac{1}{x + 1}$, $g(x) = \\dfrac{1}{x - 1}$\n\n3. $f(x) = \\sqrt{x}$, $g(x) = \\dfrac{1}{x - 4}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the range of each function with the given restricted domain.\n\n1. $f(x) = 3x + 2$, domain: $[0, 5]$\n\n2. $g(x) = x^2$, domain: $[-2, 3]$\n\n3. $h(x) = |x - 1|$, domain: $[-3, 5]$\n\n4. $k(x) = \\sqrt{x}$, domain: $[0, 16]$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-32",
       "number": "32",
-      "problem": "Find the domain and range of each function.\n\n1. $f(x) = 3x - 7$\n\n2. $g(x) = x^2 + 1$\n\n3. $h(x) = -x^2 + 4$\n\n4. $p(x) = |x - 4|$\n\n5. $q(x) = \\sqrt{x + 2}$\n\n6. $r(x) = -\\sqrt{x} + 3$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the range of each function by completing the square.\n\n1. $f(x) = x^2 + 4x + 7$\n\n2. $g(x) = x^2 - 6x + 10$\n\n3. $h(x) = -x^2 + 8x - 10$\n\n4. $p(x) = 2x^2 - 12x + 20$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-33",
       "number": "33",
-      "problem": "Find the range of each function with the given restricted domain.\n\n1. $f(x) = 3x + 2$, domain: $[0, 5]$\n\n2. $g(x) = x^2$, domain: $[-2, 3]$\n\n3. $h(x) = |x - 1|$, domain: $[-3, 5]$\n\n4. $k(x) = \\sqrt{x}$, domain: $[0, 16]$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the domain and range of each function.\n\n1. $f(x) = \\dfrac{1}{x^2}$\n\n2. $g(x) = \\dfrac{1}{x^2 + 1}$\n\n3. $h(x) = \\dfrac{x - 1}{x + 2}$\n\n4. $p(x) = \\sqrt{16 - x^2}$",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-34",
       "number": "34",
-      "problem": "Find the range of each function by completing the square.\n\n1. $f(x) = x^2 + 4x + 7$\n\n2. $g(x) = x^2 - 6x + 10$\n\n3. $h(x) = -x^2 + 8x - 10$\n\n4. $p(x) = 2x^2 - 12x + 20$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "Find the range of each function.\n\n1. $f(x) = \\dfrac{1}{x}$, $x > 0$\n\n2. $g(x) = \\dfrac{1}{x^2}$\n\n3. $h(x) = \\dfrac{x}{x + 1}$\n\n4. $k(x) = \\dfrac{x^2}{x^2 + 1}$",
+      "variant": "regular"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Applications"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-35",
       "number": "35",
-      "problem": "Find the domain and range of each function.\n\n1. $f(x) = \\dfrac{1}{x^2}$\n\n2. $g(x) = \\dfrac{1}{x^2 + 1}$\n\n3. $h(x) = \\dfrac{x - 1}{x + 2}$\n\n4. $p(x) = \\sqrt{16 - x^2}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "The area of a circle is $A(r) = \\pi r^2$.\n\n1. What is the domain if $r$ represents a physical radius?\n\n2. What is the range?\n\n3. Find the radius when the area is $25\\pi$.",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-36",
       "number": "36",
-      "problem": "Find the range of each function.\n\n1. $f(x) = \\dfrac{1}{x}$, $x > 0$\n\n2. $g(x) = \\dfrac{1}{x^2}$\n\n3. $h(x) = \\dfrac{x}{x + 1}$\n\n4. $k(x) = \\dfrac{x^2}{x^2 + 1}$",
-      "variant": "regular",
-      "hint": null,
-      "answer": null
+      "problem": "A ball is thrown upward from a height of 48 feet with an initial velocity \nof 32 feet per second. Its height after $t$ seconds is given by\n$$\n h(t) = -16t^2 + 32t + 48\n$$\n\n1. What is the mathematical domain?\n\n2. Find when the ball hits the ground and state the applied domain.\n\n3. Find the maximum height and state the applied range.",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-37",
       "number": "37",
-      "problem": "The area of a circle is $A(r) = \\pi r^2$.\n\n1. What is the domain if $r$ represents a physical radius?\n\n2. What is the range?\n\n3. Find the radius when the area is $25\\pi$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Area"
+      "problem": "A manufacturer's cost function is $C(x) = 500 + 15x - 0.01x^2$ for \n$0 \\leq x \\leq 500$ units.\n\n1. What is the domain?\n\n2. Find $C(0)$, $C(100)$, and $C(500)$.\n\n3. What is the practical range?",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-38",
       "number": "38",
-      "problem": "A ball is thrown upward from a height of 48 feet with an initial velocity \nof 32 feet per second. Its height after $t$ seconds is given by\n$$\n h(t) = -16t^2 + 32t + 48\n$$\n\n1. What is the mathematical domain?\n\n2. Find when the ball hits the ground and state the applied domain.\n\n3. Find the maximum height and state the applied range.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Projectile Motion"
+      "problem": "A rectangular box with a square base and open top is to be made from \n48 square inches of cardboard. Let $x$ be the side length of the base.\n\n1. Show that the height $h$ of the box is $h = \\dfrac{48 - x^2}{4x}$.\n\n2. Express the volume $V$ as a function of $x$.\n\n3. Determine the applied domain for $x$.",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-39",
       "number": "39",
-      "problem": "A manufacturer's cost function is $C(x) = 500 + 15x - 0.01x^2$ for \n$0 \\leq x \\leq 500$ units.\n\n1. What is the domain?\n\n2. Find $C(0)$, $C(100)$, and $C(500)$.\n\n3. What is the practical range?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Cost Function"
+      "problem": "The speed of sound in air at temperature $T$ (in Celsius) is approximately \n$v(T) = 331.4 + 0.6T$ meters per second.\n\n1. What is a reasonable domain for typical Earth temperatures?\n\n2. Find the speed at $20°$C and $-10°$C.\n\n3. At what temperature is the speed 350 m/s?",
+      "variant": "regular"
     },
     {
       "type": "exercise",
       "id": "ex-1.2-40",
       "number": "40",
-      "problem": "A rectangular box with a square base and open top is to be made from \n48 square inches of cardboard. Let $x$ be the side length of the base.\n\n1. Show that the height $h$ of the box is $h = \\dfrac{48 - x^2}{4x}$.\n\n2. Express the volume $V$ as a function of $x$.\n\n3. Determine the applied domain for $x$.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Box Construction"
-    },
-    {
-      "type": "exercise",
-      "id": "ex-1.2-41",
-      "number": "41",
-      "problem": "The speed of sound in air at temperature $T$ (in Celsius) is approximately \n$v(T) = 331.4 + 0.6T$ meters per second.\n\n1. What is a reasonable domain for typical Earth temperatures?\n\n2. Find the speed at $20°$C and $-10°$C.\n\n3. At what temperature is the speed 350 m/s?",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Speed of Sound"
-    },
-    {
-      "type": "exercise",
-      "id": "ex-1.2-42",
-      "number": "42",
       "problem": "A company determines that its daily revenue from selling $x$ items is \n$R(x) = 100x - 0.1x^2$ and its daily cost is $C(x) = 50x + 1000$.\n\n1. Write the profit function $P(x) = R(x) - C(x)$.\n\n2. Find the applied domain (for which production is profitable).\n\n3. Find the applied range of the profit function on this domain.",
-      "variant": "regular",
-      "hint": null,
-      "answer": null,
-      "label": "Profit Analysis"
+      "variant": "regular"
     },
     {
-      "type": "exercise",
-      "id": "ex-1.2-43",
-      "number": "43",
-      "problem": "Use a graphing utility to graph each function and estimate \nthe domain and range.\n\n1. $f(x) = \\sqrt{16 - x^4}$\n\n2. $g(x) = \\dfrac{x^2 - 1}{x^2 + 1}$\n\n3. $h(x) = x\\sqrt{4 - x}$\n\n4. $k(x) = \\dfrac{|x - 2|}{x - 2}$",
-      "variant": "tech",
-      "hint": null,
-      "answer": null
+      "type": "heading",
+      "level": 3,
+      "text": "Graphing Utility Exercises"
     },
     {
-      "type": "exercise",
-      "id": "ex-1.2-44",
-      "number": "44",
-      "problem": "Use a graphing utility to find where each function is undefined \n(vertical asymptotes or holes).\n\n1. $f(x) = \\dfrac{x^2 - 4}{x^2 - 5x + 6}$\n\n2. $g(x) = \\dfrac{x^3 - 8}{x - 2}$\n\n3. $h(x) = \\dfrac{\\sqrt{x} - 2}{x - 4}$\n\n%─────────────────────────────────────────────────────────\n% 11. ERROR ANALYSIS\n%─────────────────────────────────────────────────────────",
-      "variant": "tech",
-      "hint": null,
-      "answer": null
+      "type": "paragraph",
+      "text": "Use a graphing utility to graph each function and estimate \nthe domain and range.\n\n1. $f(x) = \\sqrt{16 - x^4}$\n\n2. $g(x) = \\dfrac{x^2 - 1}{x^2 + 1}$\n\n3. $h(x) = x\\sqrt{4 - x}$\n\n4. $k(x) = \\dfrac{|x - 2|}{x - 2}$"
     },
     {
-      "type": "exercise",
-      "id": "ex-1.2-45",
-      "number": "45",
-      "problem": "Describe and correct the error.\n\nFinding the domain of $f(x) = \\sqrt{x - 3}$:\nquote\n\"Set $x - 3 > 0$, so $x > 3$. Domain: $(3, \\infty)$.\" \nquote",
-      "variant": "error",
-      "hint": null,
-      "answer": null
+      "type": "paragraph",
+      "text": "Use a graphing utility to find where each function is undefined \n(vertical asymptotes or holes).\n\n1. $f(x) = \\dfrac{x^2 - 4}{x^2 - 5x + 6}$\n\n2. $g(x) = \\dfrac{x^3 - 8}{x - 2}$\n\n3. $h(x) = \\dfrac{\\sqrt{x} - 2}{x - 4}$"
     },
     {
-      "type": "exercise",
-      "id": "ex-1.2-46",
-      "number": "46",
-      "problem": "Describe and correct the error.\n\nFinding the domain of $g(x) = \\dfrac{1}{x^2 + 4}$:\nquote\n\"Set $x^2 + 4 \\neq 0$, so $x \\neq \\pm 2$. Domain: all real numbers except $\\pm 2$.\" \n \nquote",
-      "variant": "error",
-      "hint": null,
-      "answer": null
+      "type": "heading",
+      "level": 3,
+      "text": "Error Analysis"
     },
     {
-      "type": "exercise",
-      "id": "ex-1.2-47",
-      "number": "47",
-      "problem": "Describe and correct the error.\n\nFinding the range of $h(x) = x^2 - 4$ on domain $[-1, 3]$:\nquote\n\"$h(-1) = -3$ and $h(3) = 5$, so the range is $[-3, 5]$.\" \nquote\n\n%─────────────────────────────────────────────────────────\n% 12. CHALLENGE PROBLEMS\n%─────────────────────────────────────────────────────────",
-      "variant": "error",
-      "hint": null,
-      "answer": null
+      "type": "paragraph",
+      "text": "Describe and correct the error."
     },
     {
-      "type": "exercise",
-      "id": "ex-1.2-48",
-      "number": "48",
-      "problem": "Find the domain of $f(x) = \\sqrt{x - \\sqrt{x - 1}}$.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "type": "paragraph",
+      "text": "Describe and correct the error."
     },
     {
-      "type": "exercise",
-      "id": "ex-1.2-49",
-      "number": "49",
-      "problem": "Find the domain of $g(x) = \\sqrt{\\dfrac{x^2 - 4}{x^2 - 9}}$.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "type": "paragraph",
+      "text": "Describe and correct the error."
     },
     {
-      "type": "exercise",
-      "id": "ex-1.2-50",
-      "number": "50",
-      "problem": "Find all values of $k$ for which the function $f(x) = \\sqrt{x^2 - 4x + k}$ \nhas domain equal to all real numbers.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "type": "heading",
+      "level": 3,
+      "text": "Challenge Problems"
     },
     {
-      "type": "exercise",
-      "id": "ex-1.2-51",
-      "number": "51",
-      "problem": "If the domain of $f(x) = \\sqrt{ax + b}$ is $[-3, \\infty)$, \nfind the relationship between $a$ and $b$.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "type": "paragraph",
+      "text": "Find the domain of $f(x) = \\sqrt{x - \\sqrt{x - 1}}$."
     },
     {
-      "type": "exercise",
-      "id": "ex-1.2-52",
-      "number": "52",
-      "problem": "The range of $f(x) = ax^2 + bx + c$ with $a > 0$ is $[k, \\infty)$ for \nsome $k$. Express $k$ in terms of $a$, $b$, and $c$.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "type": "paragraph",
+      "text": "Find the domain of $g(x) = \\sqrt{\\dfrac{x^2 - 4}{x^2 - 9}}$."
     },
     {
-      "type": "exercise",
-      "id": "ex-1.2-53",
-      "number": "53",
-      "problem": "Suppose $f$ has domain $[0, 4]$ and range $[-1, 5]$. What can you say about \nthe domain and range of $g(x) = f(x + 2)$? Of $h(x) = f(x) + 3$?",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "type": "paragraph",
+      "text": "Find all values of $k$ for which the function $f(x) = \\sqrt{x^2 - 4x + k}$ \nhas domain equal to all real numbers."
     },
     {
-      "type": "exercise",
-      "id": "ex-1.2-54",
-      "number": "54",
-      "problem": "Find the domain and range of $f(x) = \\dfrac{3x}{x^2 + 1}$. \n(Hint for range: Let $y = f(x)$ and solve for $x$. Under what conditions \non $y$ does a real solution exist?)",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "type": "paragraph",
+      "text": "If the domain of $f(x) = \\sqrt{ax + b}$ is $[-3, \\infty)$, \nfind the relationship between $a$ and $b$."
     },
     {
-      "type": "exercise",
-      "id": "ex-1.2-55",
-      "number": "55",
-      "problem": "Prove that the range of $f(x) = \\dfrac{x}{x^2 + 1}$ is the interval \n$\\left[-\\dfrac{1}{2}, \\dfrac{1}{2}\\right]$.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "type": "paragraph",
+      "text": "The range of $f(x) = ax^2 + bx + c$ with $a > 0$ is $[k, \\infty)$ for \nsome $k$. Express $k$ in terms of $a$, $b$, and $c$."
     },
     {
-      "type": "exercise",
-      "id": "ex-1.2-56",
-      "number": "56",
-      "problem": "Prove that if $f(x) = \\dfrac{ax + b}{cx + d}$ with $c \\neq 0$ \nand $ad - bc \\neq 0$, then the range of $f$ is all real numbers except \n$\\dfrac{a}{c}$.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "type": "paragraph",
+      "text": "Suppose $f$ has domain $[0, 4]$ and range $[-1, 5]$. What can you say about \nthe domain and range of $g(x) = f(x + 2)$? Of $h(x) = f(x) + 3$?"
     },
     {
-      "type": "exercise",
-      "id": "ex-1.2-57",
-      "number": "57",
-      "problem": "Let $f(x) = x^2 + bx + c$. Prove that the range of $f$ is \n$\\left[\\dfrac{4c - b^2}{4}, \\infty\\right)$.",
-      "variant": "starred",
-      "hint": null,
-      "answer": null
+      "type": "paragraph",
+      "text": "Find the domain and range of $f(x) = \\dfrac{3x}{x^2 + 1}$. \n(Hint for range: Let $y = f(x)$ and solve for $x$. Under what conditions \non $y$ does a real solution exist?)"
+    },
+    {
+      "type": "paragraph",
+      "text": "Prove that the range of $f(x) = \\dfrac{x}{x^2 + 1}$ is the interval \n$\\left[-\\dfrac{1}{2}, \\dfrac{1}{2}\\right]$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Prove that if $f(x) = \\dfrac{ax + b}{cx + d}$ with $c \\neq 0$ \nand $ad - bc \\neq 0$, then the range of $f$ is all real numbers except \n$\\dfrac{a}{c}$."
+    },
+    {
+      "type": "paragraph",
+      "text": "Let $f(x) = x^2 + bx + c$. Prove that the range of $f$ is \n$\\left[\\dfrac{4c - b^2}{4}, \\infty\\right)$."
     }
   ],
   "marginNotes": [
