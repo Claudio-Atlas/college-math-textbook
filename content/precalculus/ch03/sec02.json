@@ -55,7 +55,7 @@
     {
       "type": "figure",
       "id": "fig:vertical-asymptote",
-      "src": "/figures/precalculus/ch03/fig-vertical-asymptote.svg",
+      "src": "/figures/precalculus/fig-vertical-asymptote.svg",
       "caption": "A vertical asymptote at $x = 3$. As $x$ approaches 3 from the left, $f(x) \\to -\\infty$. As $x$ approaches 3 from the right, $f(x) \\to +\\infty$. The dashed line shows the asymptote—the graph gets arbitrarily close but never touches it.",
       "alt": "A vertical asymptote at $x = 3$. As $x$ approaches 3 from the left, $f(x) \\to -\\infty$. As $x$ approaches 3 from the right, $f(x) \\to +\\infty$. The dashed line shows the asymptote—the graph gets arbitrarily close but never touches it.",
       "tikz": true
@@ -152,7 +152,7 @@
       "number": "3.4",
       "title": "Distinguishing holes from asymptotes",
       "problem": "Analyze $f(x) = \\dfrac{x^2 - 1}{x - 1}$ for holes and asymptotes.",
-      "solution": "Factor the numerator:\n$$\n f(x) = \\frac{(x-1)(x+1)}{x-1} = x + 1, \\quad x \\neq 1\n$$\n\nThe factor $(x - 1)$ cancels, creating a hole at $x = 1$, not a vertical \nasymptote.\n\nTo find the $y$-coordinate of the hole, use the simplified form:\n$y = 1 + 1 = 2$.\n\nThe graph is the line $y = x + 1$ with a hole at the point $(1, 2)$.\n\ncenter\ntikzpicture[scale=0.7]\n (-2,0) – (4,0) node[right] {$x$};\n (0,-1) – (0,4) node[above] {$y$};\n \n % The line y = x + 1\n plot (, { + 1});\n \n % Hole at (1, 2)\n (1,2) circle (3pt);\n \n % Labels\n at (1,2) {$(1, 2)$};\ntikzpicture\ncenter"
+      "solution": "Factor the numerator:\n$$\n f(x) = \\frac{(x-1)(x+1)}{x-1} = x + 1, \\quad x \\neq 1\n$$\n\nThe factor $(x - 1)$ cancels, creating a hole at $x = 1$, not a vertical \nasymptote.\n\nTo find the $y$-coordinate of the hole, use the simplified form:\n$y = 1 + 1 = 2$.\n\nThe graph is the line $y = x + 1$ with a hole at the point $(1, 2)$.\n\ncenter\n\ncenter"
     },
     {
       "type": "example",
@@ -160,7 +160,7 @@
       "number": "3.5",
       "title": "Function with both a hole and an asymptote",
       "problem": "Find all holes and vertical asymptotes of $g(x) = \\dfrac{x^2 - 9}{x^2 - x - 6}$.",
-      "solution": "Factor completely:\n$$\n g(x) &= \\frac{(x-3)(x+3)}{(x-3)(x+2)}\n$$\n\nThe factor $(x - 3)$ appears in both numerator and denominator, so \n$x = 3$ is a **hole**.\n\nThe factor $(x + 2)$ appears only in the denominator, so $x = -2$ is a \n**vertical asymptote**.\n\nSimplified form: $g(x) = \\dfrac{x+3}{x+2}$, $x \\neq 3$\n\nHole coordinates: At $x = 3$, $y = \\dfrac{3+3}{3+2} = \\dfrac{6}{5}$. \nHole at $\\left(3, \\dfrac{6}{5}\\right)$."
+      "solution": "Factor completely:\n$$\\begin{aligned}\n g(x) &= \\frac{(x-3)(x+3)}{(x-3)(x+2)}\n\\end{aligned}$$\n\nThe factor $(x - 3)$ appears in both numerator and denominator, so \n$x = 3$ is a **hole**.\n\nThe factor $(x + 2)$ appears only in the denominator, so $x = -2$ is a \n**vertical asymptote**.\n\nSimplified form: $g(x) = \\dfrac{x+3}{x+2}$, $x \\neq 3$\n\nHole coordinates: At $x = 3$, $y = \\dfrac{3+3}{3+2} = \\dfrac{6}{5}$. \nHole at $\\left(3, \\dfrac{6}{5}\\right)$."
     },
     {
       "type": "example",
@@ -168,7 +168,7 @@
       "number": "3.6",
       "title": "Higher multiplicity",
       "problem": "Analyze $h(x) = \\dfrac{x^2 - 4x + 4}{x^3 - 8}$ for holes and asymptotes.",
-      "solution": "Factor:\n$$\n \\text{Numerator: } & x^2 - 4x + 4 = (x-2)^2 \\\\\n \\text{Denominator: } & x^3 - 8 = (x-2)(x^2 + 2x + 4)\n$$\n\nSo:\n$$\n h(x) = \\frac{(x-2)^2}{(x-2)(x^2 + 2x + 4)} = \\frac{x-2}{x^2 + 2x + 4}, \\quad x \\neq 2\n$$\n\nThe factor $(x - 2)$ cancelled once, leaving a hole at $x = 2$.\n\nCheck if $x^2 + 2x + 4 = 0$ has real solutions:\n$\\Delta = 4 - 16 = -12 < 0$. No real solutions.\n\nResult:\n\n- Hole at $x = 2$, with $y = \\dfrac{2-2}{4+4+4} = \\dfrac{0}{12} = 0$. \n Hole at $(2, 0)$.\n\n- No vertical asymptotes."
+      "solution": "Factor:\n$$\\begin{aligned}\n \\text{Numerator: } & x^2 - 4x + 4 = (x-2)^2 \\\\\n \\text{Denominator: } & x^3 - 8 = (x-2)(x^2 + 2x + 4)\n\\end{aligned}$$\n\nSo:\n$$\n h(x) = \\frac{(x-2)^2}{(x-2)(x^2 + 2x + 4)} = \\frac{x-2}{x^2 + 2x + 4}, \\quad x \\neq 2\n$$\n\nThe factor $(x - 2)$ cancelled once, leaving a hole at $x = 2$.\n\nCheck if $x^2 + 2x + 4 = 0$ has real solutions:\n$\\Delta = 4 - 16 = -12 < 0$. No real solutions.\n\nResult:\n\n- Hole at $x = 2$, with $y = \\dfrac{2-2}{4+4+4} = \\dfrac{0}{12} = 0$. \n Hole at $(2, 0)$.\n\n- No vertical asymptotes."
     },
     {
       "type": "warning",
@@ -189,7 +189,7 @@
     {
       "type": "figure",
       "id": "fig:hole-vs-asymptote",
-      "src": "/figures/precalculus/ch03/fig-hole-vs-asymptote.svg",
+      "src": "/figures/precalculus/fig-hole-vs-asymptote.svg",
       "caption": "Hole vs.\\ vertical asymptote. **Left:** When a factor cancels, the graph has a hole (open circle)—a single missing point. **Right:** When a factor doesn't cancel, the graph has a vertical asymptote—the function explodes to $\\pm\\infty$.",
       "alt": "Hole vs.\\ vertical asymptote. **Left:** When a factor cancels, the graph has a hole (open circle)—a single missing point. **Right:** When a factor doesn't cancel, the graph has a vertical asymptote—the function explodes to $\\pm\\infty$.",
       "tikz": true
@@ -220,7 +220,7 @@
     {
       "type": "figure",
       "id": "fig:horizontal-asymptote-cases",
-      "src": "/figures/precalculus/ch03/fig-horizontal-asymptote-cases.svg",
+      "src": "/figures/precalculus/fig-horizontal-asymptote-cases.svg",
       "caption": "The three cases for horizontal asymptotes, determined by comparing degrees. **Left:** $\\deg < \\deg$ gives $y = 0$. **Center:** $\\deg = \\deg$ gives ratio of leading coefficients. **Right:** $\\deg > \\deg$ means no horizontal asymptote.",
       "alt": "The three cases for horizontal asymptotes, determined by comparing degrees. **Left:** $\\deg < \\deg$ gives $y = 0$. **Center:** $\\deg = \\deg$ gives ratio of leading coefficients. **Right:** $\\deg > \\deg$ means no horizontal asymptote.",
       "tikz": true
@@ -299,7 +299,7 @@
     {
       "type": "figure",
       "id": "fig:slant-asymptote",
-      "src": "/figures/precalculus/ch03/fig-slant-asymptote.svg",
+      "src": "/figures/precalculus/fig-slant-asymptote.svg",
       "caption": "A slant (oblique) asymptote}. When $\\deg(\\text{num}) = \\deg(\\text{denom}) + 1$, the graph approaches a slanted line as $x \\to \\pm\\infty$. Here the slant asymptote is $y = x + 3$, found by polynomial division.",
       "alt": "A slant (oblique) asymptote}. When $\\deg(\\text{num}) = \\deg(\\text{denom}) + 1$, the graph approaches a slanted line as $x \\to \\pm\\infty$. Here the slant asymptote is $y = x + 3$, found by polynomial division.",
       "tikz": true
@@ -354,7 +354,7 @@
     {
       "type": "figure",
       "id": "fig:even-odd-multiplicity",
-      "src": "/figures/precalculus/ch03/fig-even-odd-multiplicity.svg",
+      "src": "/figures/precalculus/fig-even-odd-multiplicity.svg",
       "caption": "Even vs.\\ odd multiplicity in the denominator. **Left:** With $(x-1)^2$ (even power), the function approaches $+\\infty$ from both sides. **Right:** With $(x-1)^1$ (odd power), the function approaches $-\\infty$ from the left and $+\\infty$ from the right.",
       "alt": "Even vs.\\ odd multiplicity in the denominator. **Left:** With $(x-1)^2$ (even power), the function approaches $+\\infty$ from both sides. **Right:** With $(x-1)^1$ (odd power), the function approaches $-\\infty$ from the left and $+\\infty$ from the right.",
       "tikz": true
@@ -391,7 +391,7 @@
     {
       "type": "figure",
       "id": "fig:crossing-asymptote",
-      "src": "/figures/precalculus/ch03/fig-crossing-asymptote.svg",
+      "src": "/figures/precalculus/fig-crossing-asymptote.svg",
       "caption": "A graph can cross its horizontal asymptote. Here $f(x) = \\frac{x}{x^2+1}$ crosses the asymptote $y = 0$ at the origin. The asymptote describes behavior as $x \\to \\pm\\infty$, not for all $x$.",
       "alt": "A graph can cross its horizontal asymptote. Here $f(x) = \\frac{x}{x^2+1}$ crosses the asymptote $y = 0$ at the origin. The asymptote describes behavior as $x \\to \\pm\\infty$, not for all $x$.",
       "tikz": true
@@ -406,7 +406,7 @@
     {
       "type": "figure",
       "id": "fig:asymptote-comparison",
-      "src": "/figures/precalculus/ch03/fig-asymptote-comparison.svg",
+      "src": "/figures/precalculus/fig-asymptote-comparison.svg",
       "caption": "Comparing the three types of asymptotes. **Vertical:** the graph explodes to $\\pm\\infty$ at a specific $x$-value. **Horizontal:** the graph levels off to a constant as $x \\to \\pm\\infty$. **Slant (Oblique):** the graph approaches a tilted line as $x \\to \\pm\\infty$.",
       "alt": "Comparing the three types of asymptotes. **Vertical:** the graph explodes to $\\pm\\infty$ at a specific $x$-value. **Horizontal:** the graph levels off to a constant as $x \\to \\pm\\infty$. **Slant (Oblique):** the graph approaches a tilted line as $x \\to \\pm\\infty$.",
       "tikz": true
@@ -416,7 +416,7 @@
       "id": "summary-3.2",
       "number": null,
       "title": "Section 3.2 Summary",
-      "content": "- **Vertical asymptotes** occur where the denominator (in \n lowest terms) is zero. The graph approaches $\\pm\\infty$.\n\n- **Holes** occur where a factor cancels from both numerator \n and denominator. The graph has a single missing point.\n\n- **Horizontal asymptotes** describe end behavior:\n itemize\n\n- $\\deg(P) < \\deg(Q)$: $y = 0$\n\n- $\\deg(P) = \\deg(Q)$: $y = \\frac{\\text{leading coefficients}}{}$\n\n- $\\deg(P) > \\deg(Q)$: None\n \n **Slant asymptotes** exist when $\\deg(P) = \\deg(Q) + 1$. \n Use polynomial division to find them.\n \n Test points near asymptotes to determine the sign of the function.\nitemize"
+      "content": "- **Vertical asymptotes** occur where the denominator (in \n lowest terms) is zero. The graph approaches $\\pm\\infty$.\n\n- **Holes** occur where a factor cancels from both numerator \n and denominator. The graph has a single missing point.\n\n- **Horizontal asymptotes** describe end behavior:\n \n\n- $\\deg(P) < \\deg(Q)$: $y = 0$\n\n- $\\deg(P) = \\deg(Q)$: $y = \\frac{\\text{leading coefficients}}{}$\n\n- $\\deg(P) > \\deg(Q)$: None\n \n \n\n- **Slant asymptotes** exist when $\\deg(P) = \\deg(Q) + 1$. \n Use polynomial division to find them.\n \n \n\n- Test points near asymptotes to determine the sign of the function."
     },
     {
       "type": "exercise",

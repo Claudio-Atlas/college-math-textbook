@@ -163,7 +163,7 @@
       "number": "2.1",
       "title": "Transforming power functions",
       "problem": "Describe the transformations and sketch the graph.\n\n1. $f(x) = (x - 2)^3$\n\n2. $g(x) = -x^4 + 3$\n\n3. $h(x) = 2(x + 1)^3 - 4$",
-      "solution": "1. $f(x) = (x - 2)^3$: Start with $y = x^3$, shift **right 2**.\n \n The inflection point moves from $(0, 0)$ to $(2, 0)$.\n\n2. $g(x) = -x^4 + 3$: Start with $y = x^4$, **reflect** \n across the $x$-axis, then shift **up 3**.\n \n The vertex moves from $(0, 0)$ to $(0, 3)$, and the parabola-like \n curve now opens *downward*.\n\n3. $h(x) = 2(x + 1)^3 - 4$: Start with $y = x^3$, **stretch \n vertically by 2**, shift **left 1**, shift **down 4**.\n \n The inflection point moves to $(-1, -4)$, and the curve is steeper \n than $y = x^3$.\n\ncenter\ntikzpicture[scale=0.5]\n % Part (a)\n scope\n (-1,0) – (5,0) node[right] { $x$};\n (0,-3) – (0,3) node[above] { $y$};\n \n plot (, {(-2)*(-2)*(-2)/2});\n lldraw (2,0) circle (3pt);\n at (2, -3.5) { (a) $(x-2)^3$};\n scope\n % Part (b)\n scope[xshift=7cm]\n (-3,0) – (3,0) node[right] { $x$};\n (0,-3) – (0,4) node[above] { $y$};\n \n plot (, {- + 3});\n lldraw (0,3) circle (3pt);\n at (0, -3.5) { (b) $-x^4 + 3$};\n scope\n % Part (c)\n scope[xshift=14cm]\n (-4,0) – (2,0) node[right] { $x$};\n (0,-6) – (0,3) node[above] { $y$};\n \n plot (, {2*(+1)*(+1)*(+1) - 4});\n lldraw (-1,-4) circle (3pt);\n at (-1, -7) { (c) $2(x+1)^3 - 4$};\n scope\ntikzpicture\ncenter"
+      "solution": "1. $f(x) = (x - 2)^3$: Start with $y = x^3$, shift **right 2**.\n \n The inflection point moves from $(0, 0)$ to $(2, 0)$.\n\n2. $g(x) = -x^4 + 3$: Start with $y = x^4$, **reflect** \n across the $x$-axis, then shift **up 3**.\n \n The vertex moves from $(0, 0)$ to $(0, 3)$, and the parabola-like \n curve now opens *downward*.\n\n3. $h(x) = 2(x + 1)^3 - 4$: Start with $y = x^3$, **stretch \n vertically by 2**, shift **left 1**, shift **down 4**.\n \n The inflection point moves to $(-1, -4)$, and the curve is steeper \n than $y = x^3$.\n\ncenter\n\ncenter"
     },
     {
       "type": "heading",
@@ -180,7 +180,7 @@
     },
     {
       "type": "paragraph",
-      "text": "$$\\text{Leading term: } & 2(100)^4 = 200{,}000{,}000 \\\\\n    \\text{Next term: } & -3(100)^2 = -30{,}000 \\\\\n    \\text{Remaining terms: } & 100 - 5 = 95$$"
+      "text": "$$\\begin{aligned}\\text{Leading term: } & 2(100)^4 = 200{,}000{,}000 \\\\\n    \\text{Next term: } & -3(100)^2 = -30{,}000 \\\\\n    \\text{Remaining terms: } & 100 - 5 = 95\\end{aligned}$$"
     },
     {
       "type": "paragraph",
@@ -237,7 +237,7 @@
       "id": "remark-2.2",
       "number": null,
       "title": "Vocabulary Bridge: Three Names, One Concept",
-      "content": "Mathematicians use three different terms that all describe the same $x$-values:\ncenter\ntikzpicture\n % Triangle\n (zeros) at (0, 1.5) {**Zeros of $f$**};\n (roots) at (-2, 0) {**Roots of $f(x)=0$**};\n (intercepts) at (2, 0) {**$x$-intercepts of $y=f(x)$**};\n \n (zeros) – (roots);\n (zeros) – (intercepts);\n (roots) – (intercepts);\n \n at (0, -0.8) { Function perspective};\n at (-2.5, 0.75) { Equation};\n at (-2.5, 0.4) { perspective};\n at (2.5, 0.75) { Graph};\n at (2.5, 0.4) { perspective};\ntikzpicture\ncenter\n\n**If $c$ is any one of these, it is automatically all three:**\n\n- $c$ is a **zero** of $f$ means $f(c) = 0$\n\n- $c$ is a **root** of the equation $f(x) = 0$ means $c$ solves the equation\n\n- $(c, 0)$ is an **$x$-intercept** of the graph $y = f(x)$\n\nFor example, if $f(x) = x^2 - 4$, then $x = 2$:\n\n- is a zero of $f$ (since $f(2) = 0$)\n\n- is a root of $x^2 - 4 = 0$ (since $2^2 - 4 = 0$)\n\n- gives the $x$-intercept $(2, 0)$ on the graph"
+      "content": "Mathematicians use three different terms that all describe the same $x$-values:\ncenter\n\ncenter\n\n**If $c$ is any one of these, it is automatically all three:**\n\n- $c$ is a **zero** of $f$ means $f(c) = 0$\n\n- $c$ is a **root** of the equation $f(x) = 0$ means $c$ solves the equation\n\n- $(c, 0)$ is an **$x$-intercept** of the graph $y = f(x)$\n\nFor example, if $f(x) = x^2 - 4$, then $x = 2$:\n\n- is a zero of $f$ (since $f(2) = 0$)\n\n- is a root of $x^2 - 4 = 0$ (since $2^2 - 4 = 0$)\n\n- gives the $x$-intercept $(2, 0)$ on the graph"
     },
     {
       "type": "definition",
@@ -264,7 +264,7 @@
       "number": "2.3",
       "title": "Zeros and their multiplicities",
       "problem": "Find the zeros and their multiplicities for each polynomial, and \ndescribe the behavior at each zero.\n\n1. $f(x) = (x + 1)^2(x - 2)(x - 3)^3$\n\n2. $g(x) = x^3(x - 4)^2$",
-      "solution": "1. The zeros are:\n itemize\n\n2. $x = -1$ with multiplicity 2 (even: graph touches, \n doesn't cross)\n\n3. $x = 2$ with multiplicity 1 (odd: graph crosses)\n\n4. $x = 3$ with multiplicity 3 (odd: graph crosses, but flatly)\n itemize\n\n The degree is $2 + 1 + 3 = 6$. The leading coefficient is positive \n (product of leading coefficients in each factor is $1 \\cdot 1 \\cdot 1 = 1$).\n\n5. The zeros are:\n itemize\n\n6. $x = 0$ with multiplicity 3 (odd: graph crosses flatly)\n\n7. $x = 4$ with multiplicity 2 (even: graph touches and bounces)\n itemize\n \n The degree is $3 + 2 = 5$."
+      "solution": "1. The zeros are:\n \n\n2. $x = -1$ with multiplicity 2 (even: graph touches, \n doesn't cross)\n\n3. $x = 2$ with multiplicity 1 (odd: graph crosses)\n\n4. $x = 3$ with multiplicity 3 (odd: graph crosses, but flatly)\n\n The degree is $2 + 1 + 3 = 6$. The leading coefficient is positive \n (product of leading coefficients in each factor is $1 \\cdot 1 \\cdot 1 = 1$).\n \n \n\n- The zeros are:\n \n\n- $x = 0$ with multiplicity 3 (odd: graph crosses flatly)\n\n- $x = 4$ with multiplicity 2 (even: graph touches and bounces)\n \n The degree is $3 + 2 = 5$."
     },
     {
       "type": "example",
@@ -318,7 +318,7 @@
     {
       "type": "figure",
       "id": "fig:turning-points",
-      "src": "/figures/precalculus/ch02/fig-turning-points.svg",
+      "src": "/figures/precalculus/fig-turning-points.svg",
       "caption": "A polynomial of degree $n$ has at most $n-1$ turning points. Red dots mark each turning point (local maximum or minimum).",
       "alt": "A polynomial of degree $n$ has at most $n-1$ turning points. Red dots mark each turning point (local maximum or minimum).",
       "tikz": true
@@ -358,7 +358,7 @@
       "number": "2.7",
       "title": "Using the Intermediate Value Theorem",
       "problem": "Show that $f(x) = x^3 - 2x - 5$ has a zero between $x = 2$ and $x = 3$.",
-      "solution": "Calculate $f(2)$ and $f(3)$:\n$$\n f(2) &= 2^3 - 2(2) - 5 = 8 - 4 - 5 = -1 < 0 \\\\\n f(3) &= 3^3 - 2(3) - 5 = 27 - 6 - 5 = 16 > 0\n$$\n\nSince $f(2) < 0$ and $f(3) > 0$, and $f$ is continuous (being a \npolynomial), the Intermediate Value Theorem guarantees at least one \nzero in the interval $(2, 3)$."
+      "solution": "Calculate $f(2)$ and $f(3)$:\n$$\\begin{aligned}\n f(2) &= 2^3 - 2(2) - 5 = 8 - 4 - 5 = -1 < 0 \\\\\n f(3) &= 3^3 - 2(3) - 5 = 27 - 6 - 5 = 16 > 0\n\\end{aligned}$$\n\nSince $f(2) < 0$ and $f(3) > 0$, and $f$ is continuous (being a \npolynomial), the Intermediate Value Theorem guarantees at least one \nzero in the interval $(2, 3)$."
     },
     {
       "type": "heading",
@@ -384,7 +384,7 @@
     {
       "type": "figure",
       "id": "fig:complete-polynomial-graph",
-      "src": "/figures/precalculus/ch02/fig-complete-polynomial-graph.svg",
+      "src": "/figures/precalculus/fig-complete-polynomial-graph.svg",
       "caption": "A complete polynomial graph with all key features labeled: end behavior (determined by degree and leading coefficient), $x$-intercepts (zeros), behavior at each zero (crosses or touches based on multiplicity), $y$-intercept, and turning points.",
       "alt": "A complete polynomial graph with all key features labeled: end behavior (determined by degree and leading coefficient), $x$-intercepts (zeros), behavior at each zero (crosses or touches based on multiplicity), $y$-intercept, and turning points.",
       "tikz": true
@@ -395,7 +395,7 @@
       "number": "2.8",
       "title": "Sketching a polynomial graph",
       "problem": "Sketch the graph of $f(x) = -x^3 + 4x$.",
-      "solution": "**End behavior:** Degree 3 (odd), leading coefficient $-1$ \n(negative). The graph rises on the left and falls on the right.\n\n**Zeros:** Factor: $f(x) = -x(x^2 - 4) = -x(x-2)(x+2)$.\nZeros at $x = -2, 0, 2$, each with multiplicity 1 (graph crosses \nat each).\n\n**$y$-intercept:** $f(0) = 0$. The graph passes through the \norigin.\n\n**Additional points:**\n\n- $f(-1) = -(-1)^3 + 4(-1) = 1 - 4 = -3$\n\n- $f(1) = -(1)^3 + 4(1) = -1 + 4 = 3$\n\ncenter\ntikzpicture[scale=0.7]\n (-3.5,0) – (3.5,0) node[right] {$x$};\n (0,-4.5) – (0,4.5) node[above] {$y$};\n \n plot (, {- + 4*});\n lldraw (-2,0) circle (2pt) node[below] { $-2$};\n lldraw (0,0) circle (2pt);\n lldraw (2,0) circle (2pt) node[below] { $2$};\n lldraw (-1,-3) circle (2pt) node[left] { $(-1,-3)$};\n lldraw (1,3) circle (2pt) node[right] { $(1,3)$};\ntikzpicture\ncenter"
+      "solution": "**End behavior:** Degree 3 (odd), leading coefficient $-1$ \n(negative). The graph rises on the left and falls on the right.\n\n**Zeros:** Factor: $f(x) = -x(x^2 - 4) = -x(x-2)(x+2)$.\nZeros at $x = -2, 0, 2$, each with multiplicity 1 (graph crosses \nat each).\n\n**$y$-intercept:** $f(0) = 0$. The graph passes through the \norigin.\n\n**Additional points:**\n\n- $f(-1) = -(-1)^3 + 4(-1) = 1 - 4 = -3$\n\n- $f(1) = -(1)^3 + 4(1) = -1 + 4 = 3$\n\ncenter\n\ncenter"
     },
     {
       "type": "example",
@@ -403,7 +403,7 @@
       "number": "2.9",
       "title": "Graphing with mixed multiplicities",
       "problem": "Sketch the graph of $f(x) = (x + 1)^2(x - 2)$.",
-      "solution": "**End behavior:** Expand the leading terms: $(x)^2(x) = x^3$. \nDegree 3 (odd), positive leading coefficient. Falls left, rises right.\n\n**Zeros:**\n\n- $x = -1$ with multiplicity 2 (touches)\n\n- $x = 2$ with multiplicity 1 (crosses)\n\n**$y$-intercept:** $f(0) = (0+1)^2(0-2) = (1)(-2) = -2$.\n\n**Additional points:**\n\n- $f(-2) = (-2+1)^2(-2-2) = (1)(-4) = -4$\n\n- $f(1) = (1+1)^2(1-2) = (4)(-1) = -4$\n\nThe graph comes from the lower left, touches the $x$-axis at $x = -1$ \nand bounces back down, reaches a minimum somewhere between $-1$ and \n$2$, then rises to cross the $x$-axis at $x = 2$, and continues \nupward to the right.\n\ncenter\ntikzpicture[scale=0.55]\n (-3.5,0) – (4,0) node[right] {$x$};\n (0,-6) – (0,5) node[above] {$y$};\n \n plot (, {(+1)*(+1)*(-2)});\n lldraw (-1,0) circle (2.5pt) node[above] { $-1$};\n lldraw (2,0) circle (2.5pt) node[above right] { $2$};\n lldraw (0,-2) circle (2.5pt) node[right] { $(0,-2)$};\ntikzpicture\ncenter"
+      "solution": "**End behavior:** Expand the leading terms: $(x)^2(x) = x^3$. \nDegree 3 (odd), positive leading coefficient. Falls left, rises right.\n\n**Zeros:**\n\n- $x = -1$ with multiplicity 2 (touches)\n\n- $x = 2$ with multiplicity 1 (crosses)\n\n**$y$-intercept:** $f(0) = (0+1)^2(0-2) = (1)(-2) = -2$.\n\n**Additional points:**\n\n- $f(-2) = (-2+1)^2(-2-2) = (1)(-4) = -4$\n\n- $f(1) = (1+1)^2(1-2) = (4)(-1) = -4$\n\nThe graph comes from the lower left, touches the $x$-axis at $x = -1$ \nand bounces back down, reaches a minimum somewhere between $-1$ and \n$2$, then rises to cross the $x$-axis at $x = 2$, and continues \nupward to the right.\n\ncenter\n\ncenter"
     },
     {
       "type": "heading",
@@ -427,7 +427,7 @@
       "number": "2.10",
       "title": "Solving a cubic inequality",
       "problem": "Solve $x^3 - 4x > 0$.",
-      "solution": "**Step 1:** Factor: $x^3 - 4x = x(x^2 - 4) = x(x-2)(x+2)$.\n\n**Step 2:** Find zeros: $x = -2, 0, 2$.\n\n**Step 3:** Create intervals: $(-\\infty, -2)$, $(-2, 0)$, $(0, 2)$, $(2, \\infty)$.\n\n**Step 4:** Test points:\n\n- $x = -3$: $(-3)(-5)(-1) = -15 < 0$\n\n- $x = -1$: $(-1)(-3)(1) = 3 > 0$ \n\n- $x = 1$: $(1)(-1)(3) = -3 < 0$\n\n- $x = 3$: $(3)(1)(5) = 15 > 0$ \n\ncenter\ntikzpicture[scale=0.7]\n (-4,0) – (4,0) node[right] {$x$};\n (-2,0.15) – (-2,-0.15) node[below] {$-2$};\n (0,0.15) – (0,-0.15) node[below] {$0$};\n (2,0.15) – (2,-0.15) node[below] {$2$};\n at (-3, 0.5) {AtlasRose{$-$}};\n at (-1, 0.5) {AtlasTeal{$+$}};\n at (1, 0.5) {AtlasRose{$-$}};\n at (3, 0.5) {AtlasTeal{$+$}};\n (-2,0) circle (3pt);\n (0,0) circle (3pt);\n (2,0) circle (3pt);\n (-2,0) – (0,0);\n (2,0) – (3.8,0);\ntikzpicture\ncenter\n\n**Solution:** $(-2, 0) \\cup (2, \\infty)$"
+      "solution": "**Step 1:** Factor: $x^3 - 4x = x(x^2 - 4) = x(x-2)(x+2)$.\n\n**Step 2:** Find zeros: $x = -2, 0, 2$.\n\n**Step 3:** Create intervals: $(-\\infty, -2)$, $(-2, 0)$, $(0, 2)$, $(2, \\infty)$.\n\n**Step 4:** Test points:\n\n- $x = -3$: $(-3)(-5)(-1) = -15 < 0$\n\n- $x = -1$: $(-1)(-3)(1) = 3 > 0$ \n\n- $x = 1$: $(1)(-1)(3) = -3 < 0$\n\n- $x = 3$: $(3)(1)(5) = 15 > 0$ \n\ncenter\n\ncenter\n\n**Solution:** $(-2, 0) \\cup (2, \\infty)$"
     },
     {
       "type": "example",
@@ -435,7 +435,7 @@
       "number": "2.11",
       "title": "Inequality with repeated zeros",
       "problem": "Solve $(x - 1)^2(x + 3) \\le 0$.",
-      "solution": "**Zeros:** $x = 1$ (multiplicity 2) and $x = -3$ (multiplicity 1).\n\n**Intervals:** $(-\\infty, -3)$, $(-3, 1)$, $(1, \\infty)$.\n\n**Sign analysis using multiplicity:**\n\nFor large positive $x$, $(x-1)^2 > 0$ and $(x+3) > 0$, so the product \nis positive. Now track sign changes:\n\n- At $x = 1$ (even mult.): sign does NOT change\n\n- At $x = -3$ (odd mult.): sign DOES change\n\nWorking backwards from positive in $(1, \\infty)$:\n\n- $(1, \\infty)$: $+$\n\n- $(-3, 1)$: $+$ (no change at $x = 1$)\n\n- $(-\\infty, -3)$: $-$ (change at $x = -3$)\n\nWait—let's verify with test points:\n\n- $x = 2$: $(1)^2(5) = 5 > 0$\n\n- $x = 0$: $(1)(3) = 3 > 0$\n\n- $x = -4$: $(25)(-1) = -25 < 0$ \n\ncenter\ntikzpicture[scale=0.7]\n (-5,0) – (3,0) node[right] {$x$};\n (-3,0.15) – (-3,-0.15) node[below] {$-3$};\n (1,0.15) – (1,-0.15) node[below] {$1$};\n at (-4, 0.5) {AtlasTeal{$-$}};\n at (-1, 0.5) {AtlasRose{$+$}};\n at (2, 0.5) {AtlasRose{$+$}};\n lldraw[AtlasTeal] (-3,0) circle (3pt);\n lldraw[AtlasTeal] (1,0) circle (3pt);\n (-4.8,0) – (-3,0);\ntikzpicture\ncenter\n\n**Solution:** $(-\\infty, -3]$ (include $-3$ and $1$ since $\\le$, \nbut $x = 1$ gives zero which satisfies $\\le 0$).\n\nActually, we should include both boundary points: $(-\\infty, -3] \\cup \\{1\\}$."
+      "solution": "**Zeros:** $x = 1$ (multiplicity 2) and $x = -3$ (multiplicity 1).\n\n**Intervals:** $(-\\infty, -3)$, $(-3, 1)$, $(1, \\infty)$.\n\n**Sign analysis using multiplicity:**\n\nFor large positive $x$, $(x-1)^2 > 0$ and $(x+3) > 0$, so the product \nis positive. Now track sign changes:\n\n- At $x = 1$ (even mult.): sign does NOT change\n\n- At $x = -3$ (odd mult.): sign DOES change\n\nWorking backwards from positive in $(1, \\infty)$:\n\n- $(1, \\infty)$: $+$\n\n- $(-3, 1)$: $+$ (no change at $x = 1$)\n\n- $(-\\infty, -3)$: $-$ (change at $x = -3$)\n\nWait—let's verify with test points:\n\n- $x = 2$: $(1)^2(5) = 5 > 0$\n\n- $x = 0$: $(1)(3) = 3 > 0$\n\n- $x = -4$: $(25)(-1) = -25 < 0$ \n\ncenter\n\ncenter\n\n**Solution:** $(-\\infty, -3]$ (include $-3$ and $1$ since $\\le$, \nbut $x = 1$ gives zero which satisfies $\\le 0$).\n\nActually, we should include both boundary points: $(-\\infty, -3] \\cup \\{1\\}$."
     },
     {
       "type": "example",
@@ -443,7 +443,7 @@
       "number": "2.12",
       "title": "Higher-degree polynomial",
       "problem": "Solve $x^4 - 5x^2 + 4 \\ge 0$.",
-      "solution": "**Step 1:** Factor as a quadratic in $x^2$:\n$$\n x^4 - 5x^2 + 4 = (x^2 - 4)(x^2 - 1) = (x-2)(x+2)(x-1)(x+1)\n$$\n\n**Zeros:** $x = -2, -1, 1, 2$ (all multiplicity 1).\n\n**Intervals:** $(-\\infty, -2)$, $(-2, -1)$, $(-1, 1)$, $(1, 2)$, $(2, \\infty)$.\n\n**Test points:**\n\n- $x = -3$: $(-5)(-1)(-4)(-2) = 40 > 0$ \n\n- $x = -1.5$: $(-3.5)(-0.5)(-2.5)(-0.5) < 0$\n\n- $x = 0$: $(-2)(2)(-1)(1) = 4 > 0$ \n\n- $x = 1.5$: $(-0.5)(3.5)(0.5)(2.5) < 0$\n\n- $x = 3$: $(1)(5)(2)(4) = 40 > 0$ \n\ncenter\ntikzpicture[scale=0.6]\n (-4,0) – (4,0) node[right] {$x$};\n (-2,0.15) – (-2,-0.15) node[below] { $-2$};\n (-1,0.15) – (-1,-0.15) node[below] { $-1$};\n (1,0.15) – (1,-0.15) node[below] { $1$};\n (2,0.15) – (2,-0.15) node[below] { $2$};\n at (-3, 0.5) {AtlasTeal{$+$}};\n at (-1.5, 0.5) {AtlasRose{$-$}};\n at (0, 0.5) {AtlasTeal{$+$}};\n at (1.5, 0.5) {AtlasRose{$-$}};\n at (3, 0.5) {AtlasTeal{$+$}};\n lldraw[AtlasTeal] (-2,0) circle (3pt);\n lldraw[AtlasTeal] (-1,0) circle (3pt);\n lldraw[AtlasTeal] (1,0) circle (3pt);\n lldraw[AtlasTeal] (2,0) circle (3pt);\n (-3.8,0) – (-2,0);\n (-1,0) – (1,0);\n (2,0) – (3.8,0);\ntikzpicture\ncenter\n\n**Solution:** $(-\\infty, -2] \\cup [-1, 1] \\cup [2, \\infty)$"
+      "solution": "**Step 1:** Factor as a quadratic in $x^2$:\n$$\n x^4 - 5x^2 + 4 = (x^2 - 4)(x^2 - 1) = (x-2)(x+2)(x-1)(x+1)\n$$\n\n**Zeros:** $x = -2, -1, 1, 2$ (all multiplicity 1).\n\n**Intervals:** $(-\\infty, -2)$, $(-2, -1)$, $(-1, 1)$, $(1, 2)$, $(2, \\infty)$.\n\n**Test points:**\n\n- $x = -3$: $(-5)(-1)(-4)(-2) = 40 > 0$ \n\n- $x = -1.5$: $(-3.5)(-0.5)(-2.5)(-0.5) < 0$\n\n- $x = 0$: $(-2)(2)(-1)(1) = 4 > 0$ \n\n- $x = 1.5$: $(-0.5)(3.5)(0.5)(2.5) < 0$\n\n- $x = 3$: $(1)(5)(2)(4) = 40 > 0$ \n\ncenter\n\ncenter\n\n**Solution:** $(-\\infty, -2] \\cup [-1, 1] \\cup [2, \\infty)$"
     },
     {
       "type": "theorem",

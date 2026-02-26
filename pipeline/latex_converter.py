@@ -555,7 +555,7 @@ class LatexConverter:
             return self._parse_list(env_name, body)
         elif env_name == 'align' or env_name == 'align*':
             return ContentBlock('paragraph', {
-                'text': f"$${body.strip()}$$"
+                'text': f"$$\\begin{{aligned}}{body.strip()}\\end{{aligned}}$$"
             })
         elif env_name == 'tikzpicture':
             # Skip TikZ figures for now
@@ -915,18 +915,30 @@ class LatexConverter:
             math_blocks.append(match.group(0))
             return f"__MATH_BLOCK_{idx}__"
         
+        # Strip tikzpicture environments (not renderable as text)
+        text = re.sub(r'\\begin\{tikzpicture\}.*?\\end\{tikzpicture\}', '', text, flags=re.DOTALL)
+        
+        # Handle escaped dollar signs \$ (literal $) before ANY math protection
+        text = text.replace('\\$', '__ESCAPED_DOLLAR__')
+        
         # Protect display math $$...$$ and \[...\]
         text = re.sub(r'\$\$.*?\$\$', save_math, text, flags=re.DOTALL)
+        # Handle \[...\] with nested environments first (greedy enough to capture \begin{cases}...\end{cases} etc.)
+        text = re.sub(r'\\\[(?:(?!\\\]).)*\\end\{[^}]+\}(?:(?!\\\]).)*\\\]', save_math, text, flags=re.DOTALL)
+        # Then handle simple \[...\]
         text = re.sub(r'\\\[.*?\\\]', save_math, text, flags=re.DOTALL)
         
         # Protect inline math $...$
         text = re.sub(r'\$[^$]+?\$', save_math, text)
         
+        # Restore escaped dollars
+        text = text.replace('__ESCAPED_DOLLAR__', '$')
+        
         # Protect align/equation environments (convert to display math)
         def convert_align(match):
             content = match.group(1)
             idx = len(math_blocks)
-            math_blocks.append(f"$${content}$$")
+            math_blocks.append(f"$$\\begin{{aligned}}{content}\\end{{aligned}}$$")
             return f"__MATH_BLOCK_{idx}__"
         
         text = re.sub(r'\\begin\{align\*?\}(.*?)\\end\{align\*?\}', convert_align, text, flags=re.DOTALL)
@@ -947,8 +959,14 @@ class LatexConverter:
             
             return "\n".join(result_lines)
         
-        text = re.sub(r'\\begin\{(enumerate|itemize)\}(?:\[[^\]]*\])?(.*?)\\end\{\1\}', 
+        # Use a more robust pattern that handles optional args and nested content
+        text = re.sub(r'\\begin\{(enumerate|itemize)\}(?:\[[^\]]*\])?(.*?)\\end\{(?:enumerate|itemize)\}', 
                       convert_list, text, flags=re.DOTALL)
+        
+        # Handle orphaned \item commands (not inside a list environment)
+        text = re.sub(r'\\item(?:\[[^\]]*\])?\s*', '\n\n- ', text)
+        # Clean up orphaned \end{itemize/enumerate} and \begin{itemize/enumerate}
+        text = re.sub(r'\\(?:begin|end)\{(?:itemize|enumerate)\}(?:\[[^\]]*\])?', '', text)
         
         # Handle tables inside text (center + tabular blocks)
         # Convert them to clean text representation
@@ -1083,11 +1101,16 @@ class LatexConverter:
         text = re.sub(r'\\[a-zA-Z]+\*?(?:\[[^\]]*\])?(?=\s|[^a-zA-Z]|$)', '', text)
         
         # Restore math blocks (convert \[...\] to $$...$$ for KaTeX)
-        for i, block in enumerate(math_blocks):
+        # Loop multiple times in case new placeholders were added during processing
+        for i in range(len(math_blocks)):
+            block = math_blocks[i]
             # Convert \[...\] to $$...$$
             if block.startswith('\\[') and block.endswith('\\]'):
                 block = '$$' + block[2:-2] + '$$'
+                math_blocks[i] = block
             text = text.replace(f"__MATH_BLOCK_{i}__", block)
+        # Final safety: catch any remaining unreplaced placeholders
+        text = re.sub(r'__MATH_BLOCK_(\d+)__', lambda m: math_blocks[int(m.group(1))] if int(m.group(1)) < len(math_blocks) else '', text)
         
         # Clean up extra whitespace (but preserve paragraph breaks)
         text = re.sub(r'[ \t]+', ' ', text)

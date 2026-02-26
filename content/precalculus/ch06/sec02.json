@@ -57,7 +57,7 @@
     {
       "type": "figure",
       "id": "fig:unit-circle-definition",
-      "src": "/figures/precalculus/ch06/fig-unit-circle-definition.svg",
+      "src": "/figures/precalculus/fig-unit-circle-definition.svg",
       "caption": "The unit circle definition of sine and cosine. For any angle $\\theta$ in standard position, the terminal side intersects the unit circle at point $P = (\\cos\\theta, \\sin\\theta)$. The $x$-coordinate is $\\cos\\theta$ and the $y$-coordinate is $\\sin\\theta$.",
       "alt": "The unit circle definition of sine and cosine. For any angle $\\theta$ in standard position, the terminal side intersects the unit circle at point $P = (\\cos\\theta, \\sin\\theta)$. The $x$-coordinate is $\\cos\\theta$ and the $y$-coordinate is $\\sin\\theta$.",
       "tikz": true
@@ -319,7 +319,7 @@
       "id": "algorithm-6.2",
       "number": null,
       "title": "Finding Reference Angles",
-      "content": "Given any angle $\\theta$, follow this flowchart to find its reference angle $\\hat{\\theta}$:\n\ncenter\ntikzpicture[scale=0.95,\n node distance=0.8cm,\n decision/.style={diamond, draw, fill=AtlasTeal!20, text width=2.6cm, \n align=center, inner sep=2pt, aspect=2},\n process/.style={rectangle, draw, rounded corners, fill=AtlasCoral!15, \n text width=3.2cm, align=center, minimum height=0.7cm, font=},\n result/.style={rectangle, draw, rounded corners, fill=AtlasSage!20, \n text width=2.3cm, align=center, minimum height=0.6cm, font=},\n arrow/.style={->, thick}\n]\n % Start\n (start) at (0,0) {Start with angle $\\theta$};\n \n % Decision: Is angle in [0, 2pi)?\n (d0) {Is $\\theta$ in $[0, 2\\pi)$?};\n \n % No branch - make coterminal\n (coterm) {Add/subtract $2\\pi$ until in $[0, 2\\pi)$};\n \n % Decision: Which quadrant?\n (dq) {Which quadrant?};\n \n % Four quadrant results\n (q1) {QI: $\\hat{\\theta} = \\theta$};\n (q2) {QII: $\\hat{\\theta} = \\pi - \\theta$};\n (q3) {QIII: $\\hat{\\theta} = \\theta - \\pi$};\n (q4) {QIV: $\\hat{\\theta} = 2\\pi - \\theta$};\n \n % Arrows\n (start) – (d0);\n (d0) – node[above] { No} (coterm);\n (d0) – node[left] { Yes} (dq);\n (coterm) |- (dq);\n (dq) – (q1);\n (dq) – (q2);\n (dq) – (q3);\n (dq) – (q4);\ntikzpicture\ncenter\n\n**Quick quadrant check (for angles in $[0, 2\\pi)$):**\n\n- QI: $0 \\le \\theta < \\frac{\\pi}{2}$ (or $0° \\le \\theta < 90°$)\n\n- QII: $\\frac{\\pi}{2} < \\theta < \\pi$ (or $90° < \\theta < 180°$)\n\n- QIII: $\\pi < \\theta < \\frac{3\\pi}{2}$ (or $180° < \\theta < 270°$)\n\n- QIV: $\\frac{3\\pi}{2} < \\theta < 2\\pi$ (or $270° < \\theta < 360°$)\n\n**Memory aid:** The reference angle always measures from the terminal \nside to the *nearest* part of the $x$-axis (not the $y$-axis!)."
+      "content": "Given any angle $\\theta$, follow this flowchart to find its reference angle $\\hat{\\theta}$:\n\ncenter\n\ncenter\n\n**Quick quadrant check (for angles in $[0, 2\\pi)$):**\n\n- QI: $0 \\le \\theta < \\frac{\\pi}{2}$ (or $0° \\le \\theta < 90°$)\n\n- QII: $\\frac{\\pi}{2} < \\theta < \\pi$ (or $90° < \\theta < 180°$)\n\n- QIII: $\\pi < \\theta < \\frac{3\\pi}{2}$ (or $180° < \\theta < 270°$)\n\n- QIV: $\\frac{3\\pi}{2} < \\theta < 2\\pi$ (or $270° < \\theta < 360°$)\n\n**Memory aid:** The reference angle always measures from the terminal \nside to the *nearest* part of the $x$-axis (not the $y$-axis!)."
     },
     {
       "type": "example",
@@ -368,7 +368,7 @@
       "id": "theorem-6.4",
       "number": "6.4",
       "title": "Even-Odd Identities",
-      "content": "For all angles $\\theta$:\n$$\n \\cos(-\\theta) &= \\cos\\theta \\qquad \\text{(cosine is \\textbf{even})} \\\\\n \\sin(-\\theta) &= -\\sin\\theta \\qquad \\text{(sine is \\textbf{odd})}\n$$",
+      "content": "For all angles $\\theta$:\n$$\\begin{aligned}\n \\cos(-\\theta) &= \\cos\\theta \\qquad \\text{(cosine is \\textbf{even})} \\\\\n \\sin(-\\theta) &= -\\sin\\theta \\qquad \\text{(sine is \\textbf{odd})}\n\\end{aligned}$$",
       "label": "Theorem"
     },
     {
@@ -402,7 +402,7 @@
     {
       "type": "figure",
       "id": "fig:periodicity",
-      "src": "/figures/precalculus/ch06/fig-periodicity.svg",
+      "src": "/figures/precalculus/fig-periodicity.svg",
       "caption": "Periodicity: The angles $\\theta$ and $\\theta + 2\\pi$ have the same terminal point $P$ on the unit circle, so $\\sin(\\theta + 2\\pi) = \\sin\\theta$ and $\\cos(\\theta + 2\\pi) = \\cos\\theta$.",
       "alt": "Periodicity: The angles $\\theta$ and $\\theta + 2\\pi$ have the same terminal point $P$ on the unit circle, so $\\sin(\\theta + 2\\pi) = \\sin\\theta$ and $\\cos(\\theta + 2\\pi) = \\cos\\theta$.",
       "tikz": true
@@ -412,7 +412,7 @@
       "id": "theorem-6.5",
       "number": "6.5",
       "title": "Period of Sine and Cosine",
-      "content": "Sine and cosine are periodic with period $2\\pi$:\n$$\n \\sin(\\theta + 2\\pi) &= \\sin\\theta \\\\\n \\cos(\\theta + 2\\pi) &= \\cos\\theta\n$$\nMore generally, for any integer $n$:\n$$\n \\sin(\\theta + 2\\pi n) &= \\sin\\theta \\\\\n \\cos(\\theta + 2\\pi n) &= \\cos\\theta\n$$",
+      "content": "Sine and cosine are periodic with period $2\\pi$:\n$$\\begin{aligned}\n \\sin(\\theta + 2\\pi) &= \\sin\\theta \\\\\n \\cos(\\theta + 2\\pi) &= \\cos\\theta\n\\end{aligned}$$\nMore generally, for any integer $n$:\n$$\\begin{aligned}\n \\sin(\\theta + 2\\pi n) &= \\sin\\theta \\\\\n \\cos(\\theta + 2\\pi n) &= \\cos\\theta\n\\end{aligned}$$",
       "label": "Theorem"
     },
     {
@@ -449,7 +449,7 @@
       "id": "theorem-6.7",
       "number": "6.7",
       "title": "Using Reference Angles",
-      "content": "The sine and cosine of any angle equal (in absolute value) the sine \nand cosine of its reference angle. The sign is determined by the quadrant:\n$$\n \\sin\\theta &= \\pm\\sin\\hat{\\theta} \\\\\n \\cos\\theta &= \\pm\\cos\\hat{\\theta}\n$$\nwhere the sign is positive if that function is positive in $\\theta$'s \nquadrant, negative otherwise.",
+      "content": "The sine and cosine of any angle equal (in absolute value) the sine \nand cosine of its reference angle. The sign is determined by the quadrant:\n$$\\begin{aligned}\n \\sin\\theta &= \\pm\\sin\\hat{\\theta} \\\\\n \\cos\\theta &= \\pm\\cos\\hat{\\theta}\n\\end{aligned}$$\nwhere the sign is positive if that function is positive in $\\theta$'s \nquadrant, negative otherwise.",
       "label": "Theorem"
     },
     {
@@ -466,7 +466,7 @@
       "number": "6.7",
       "title": "Complete evaluation",
       "problem": "Find all six trigonometric values for $\\theta = \\dfrac{4\\pi}{3}$.",
-      "solution": "**Step 1: Identify quadrant and reference angle.**\n\n$\\dfrac{4\\pi}{3} = \\dfrac{4 \\times 180°}{3} = 240°$, which is in QIII.\n\nReference angle: $\\dfrac{4\\pi}{3} - \\pi = \\dfrac{\\pi}{3}$ (or $240° - 180° = 60°$).\n\n**Step 2: Find sine and cosine.**\n\nIn QIII, both sine and cosine are negative.\n$$\n \\sin\\frac{4\\pi}{3} &= -\\sin\\frac{\\pi}{3} = -\\frac{\\sqrt{3}}{2} \\\\\n \\cos\\frac{4\\pi}{3} &= -\\cos\\frac{\\pi}{3} = -\\frac{1}{2}\n$$\n\n**Step 3: Find the other functions.**\n$$\n \\tan\\frac{4\\pi}{3} &= \\frac{\\sin(4\\pi/3)}{\\cos(4\\pi/3)} = \\frac{-\\sqrt{3}/2}{-1/2} = \\sqrt{3} \\\\[4pt]\n \\csc\\frac{4\\pi}{3} &= \\frac{1}{\\sin(4\\pi/3)} = \\frac{1}{-\\sqrt{3}/2} = -\\frac{2}{\\sqrt{3}} = -\\frac{2\\sqrt{3}}{3} \\\\[4pt]\n \\sec\\frac{4\\pi}{3} &= \\frac{1}{\\cos(4\\pi/3)} = \\frac{1}{-1/2} = -2 \\\\[4pt]\n \\cot\\frac{4\\pi}{3} &= \\frac{1}{\\tan(4\\pi/3)} = \\frac{1}{\\sqrt{3}} = \\frac{\\sqrt{3}}{3}\n$$"
+      "solution": "**Step 1: Identify quadrant and reference angle.**\n\n$\\dfrac{4\\pi}{3} = \\dfrac{4 \\times 180°}{3} = 240°$, which is in QIII.\n\nReference angle: $\\dfrac{4\\pi}{3} - \\pi = \\dfrac{\\pi}{3}$ (or $240° - 180° = 60°$).\n\n**Step 2: Find sine and cosine.**\n\nIn QIII, both sine and cosine are negative.\n$$\\begin{aligned}\n \\sin\\frac{4\\pi}{3} &= -\\sin\\frac{\\pi}{3} = -\\frac{\\sqrt{3}}{2} \\\\\n \\cos\\frac{4\\pi}{3} &= -\\cos\\frac{\\pi}{3} = -\\frac{1}{2}\n\\end{aligned}$$\n\n**Step 3: Find the other functions.**\n$$\\begin{aligned}\n \\tan\\frac{4\\pi}{3} &= \\frac{\\sin(4\\pi/3)}{\\cos(4\\pi/3)} = \\frac{-\\sqrt{3}/2}{-1/2} = \\sqrt{3} \\\\[4pt]\n \\csc\\frac{4\\pi}{3} &= \\frac{1}{\\sin(4\\pi/3)} = \\frac{1}{-\\sqrt{3}/2} = -\\frac{2}{\\sqrt{3}} = -\\frac{2\\sqrt{3}}{3} \\\\[4pt]\n \\sec\\frac{4\\pi}{3} &= \\frac{1}{\\cos(4\\pi/3)} = \\frac{1}{-1/2} = -2 \\\\[4pt]\n \\cot\\frac{4\\pi}{3} &= \\frac{1}{\\tan(4\\pi/3)} = \\frac{1}{\\sqrt{3}} = \\frac{\\sqrt{3}}{3}\n\\end{aligned}$$"
     },
     {
       "type": "heading",
@@ -505,7 +505,7 @@
     {
       "type": "figure",
       "id": "fig:complete-unit-circle",
-      "src": "/figures/precalculus/ch06/fig-complete-unit-circle.svg",
+      "src": "/figures/precalculus/fig-complete-unit-circle.svg",
       "caption": "The complete unit circle showing all 16 special angles with their coordinates. Each point $(\\cos\\theta, \\sin\\theta)$ can be determined from the first quadrant values using reference angles and quadrant signs.",
       "alt": "The complete unit circle showing all 16 special angles with their coordinates. Each point $(\\cos\\theta, \\sin\\theta)$ can be determined from the first quadrant values using reference angles and quadrant signs.",
       "tikz": true
@@ -893,7 +893,7 @@
       "type": "exercise",
       "id": "ex-6.2-42",
       "number": "42",
-      "problem": "Use the figure below showing an angle $\\theta$ in standard position with \nterminal point $P$ on the unit circle in Quadrant III.\ncenter\ntikzpicture[scale=1.8]\n (-1.3,0) – (1.3,0) node[right] {$x$};\n (0,-1.3) – (0,1.3) node[above] {$y$};\n (0,0) circle (1);\n (0,0) – (-0.6,-0.8);\n lldraw[AtlasTeal] (-0.6,-0.8) circle (1.5pt) node[below left] {$P$};\n (0.3,0) arc (0:233:0.3);\n at (0.15,-0.25) {$\\theta$};\ntikzpicture\ncenter\n\n1. Are all six trigonometric functions of $\\theta$ defined? Explain.\n\n2. For each trigonometric function that is defined, is it positive or negative? Explain.\n\n3. Is $\\sin\\theta$ greater than or less than $\\cos\\theta$? Explain using the coordinates of $P$.",
+      "problem": "Use the figure below showing an angle $\\theta$ in standard position with \nterminal point $P$ on the unit circle in Quadrant III.\ncenter\n\ncenter\n\n1. Are all six trigonometric functions of $\\theta$ defined? Explain.\n\n2. For each trigonometric function that is defined, is it positive or negative? Explain.\n\n3. Is $\\sin\\theta$ greater than or less than $\\cos\\theta$? Explain using the coordinates of $P$.",
       "variant": "regular",
       "hint": null,
       "answer": null,
@@ -903,7 +903,7 @@
       "type": "exercise",
       "id": "ex-6.2-43",
       "number": "43",
-      "problem": "The figure below shows two angles, $\\alpha$ and $\\beta$, in standard position \non the unit circle.\ncenter\ntikzpicture[scale=1.8]\n (-1.3,0) – (1.3,0) node[right] {$x$};\n (0,-1.3) – (0,1.3) node[above] {$y$};\n (0,0) circle (1);\n % Alpha in QI\n (0,0) – (0.707,0.707);\n lldraw[AtlasTeal] (0.707,0.707) circle (1.5pt);\n at (0.85,0.85) {$P_\\alpha$};\n (0.25,0) arc (0:45:0.25);\n at (0.38,0.12) {$\\alpha$};\n % Beta in QII\n (0,0) – (-0.707,0.707);\n lldraw[AtlasRose] (-0.707,0.707) circle (1.5pt);\n at (-0.85,0.85) {$P_\\beta$};\n (0.4,0) arc (0:135:0.4);\n at (-0.15,0.45) {$\\beta$};\ntikzpicture\ncenter\n\n1. Based on the figure, what appears to be the relationship between \n $\\sin\\alpha$ and $\\sin\\beta$?\n\n2. What is the relationship between $\\cos\\alpha$ and $\\cos\\beta$?\n\n3. If $\\alpha = \\dfrac{\\pi}{4}$, what is $\\beta$?\n\n4. Make a conjecture: For any angle $\\alpha$ in QI, if $\\beta = \\pi - \\alpha$, \n then $\\sin\\beta = \\_\\_\\_$ and $\\cos\\beta = \\_\\_\\_$.",
+      "problem": "The figure below shows two angles, $\\alpha$ and $\\beta$, in standard position \non the unit circle.\ncenter\n\ncenter\n\n1. Based on the figure, what appears to be the relationship between \n $\\sin\\alpha$ and $\\sin\\beta$?\n\n2. What is the relationship between $\\cos\\alpha$ and $\\cos\\beta$?\n\n3. If $\\alpha = \\dfrac{\\pi}{4}$, what is $\\beta$?\n\n4. Make a conjecture: For any angle $\\alpha$ in QI, if $\\beta = \\pi - \\alpha$, \n then $\\sin\\beta = \\_\\_\\_$ and $\\cos\\beta = \\_\\_\\_$.",
       "variant": "regular",
       "hint": null,
       "answer": null,

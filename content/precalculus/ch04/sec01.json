@@ -80,7 +80,7 @@
       "id": "theorem-4.1",
       "number": "4.1",
       "title": "Laws of Exponents",
-      "content": "For $b > 0$ and any real numbers $x$ and $y$:\n$$\n b^x \\cdot b^y &= b^{x+y} \\label{eq:exp-product}\\\\\n \\frac{b^x}{b^y} &= b^{x-y} \\label{eq:exp-quotient}\\\\\n (b^x)^y &= b^{xy} \\label{eq:exp-power}\\\\\n (ab)^x &= a^x \\cdot b^x \\label{eq:exp-product-base}\\\\\n \\left(\\frac{a}{b}\\right)^x &= \\frac{a^x}{b^x} \\label{eq:exp-quotient-base}\n$$\nAdditionally:\n$$\n b^0 = 1 \\qquad b^{-x} = \\frac{1}{b^x} \\qquad b^{1/n} = \\sqrt[n]{b}\n$$",
+      "content": "For $b > 0$ and any real numbers $x$ and $y$:\n$$\\begin{aligned}\n b^x \\cdot b^y &= b^{x+y} \\label{eq:exp-product}\\\\\n \\frac{b^x}{b^y} &= b^{x-y} \\label{eq:exp-quotient}\\\\\n (b^x)^y &= b^{xy} \\label{eq:exp-power}\\\\\n (ab)^x &= a^x \\cdot b^x \\label{eq:exp-product-base}\\\\\n \\left(\\frac{a}{b}\\right)^x &= \\frac{a^x}{b^x} \\label{eq:exp-quotient-base}\n\\end{aligned}$$\nAdditionally:\n$$\n b^0 = 1 \\qquad b^{-x} = \\frac{1}{b^x} \\qquad b^{1/n} = \\sqrt[n]{b}\n$$",
       "label": "Theorem"
     },
     {
@@ -122,7 +122,7 @@
     {
       "type": "figure",
       "id": "fig:exp-growth-decay",
-      "src": "/figures/precalculus/ch04/fig-exp-growth-decay.svg",
+      "src": "/figures/precalculus/fig-exp-growth-decay.svg",
       "caption": "The two types of exponential functions. \n**Left:** When $b > 1$, the function increases (exponential growth). \n**Right:** When $0 < b < 1$, the function decreases (exponential decay). \nBoth pass through $(0, 1)$ with asymptote $y = 0$.",
       "alt": "The two types of exponential functions. \n**Left:** When $b > 1$, the function increases (exponential growth). \n**Right:** When $0 < b < 1$, the function decreases (exponential decay). \nBoth pass through $(0, 1)$ with asymptote $y = 0$.",
       "tikz": true
@@ -132,7 +132,7 @@
       "id": "summary-4.1",
       "number": null,
       "title": "Properties of $f(x) = b^x$",
-      "content": "- **Domain:** $(-\\infty, \\infty)$—defined for all real inputs\n\n- **Range:** $(0, \\infty)$—outputs are always positive\n\n- **Horizontal asymptote:** $y = 0$—the graph approaches but never touches the $x$-axis\n\n- **$y$-intercept:** $(0, 1)$—because $b^0 = 1$\n\n- **Behavior:**\n itemize\n\n- If $b > 1$: increasing (rises from left to right)\n\n- If $0 < b < 1$: decreasing (falls from left to right)\n **One-to-one:** passes horizontal line test; has an inverse\n **Continuity:** smooth curve with no breaks, holes, or jumps\nitemize"
+      "content": "- **Domain:** $(-\\infty, \\infty)$—defined for all real inputs\n\n- **Range:** $(0, \\infty)$—outputs are always positive\n\n- **Horizontal asymptote:** $y = 0$—the graph approaches but never touches the $x$-axis\n\n- **$y$-intercept:** $(0, 1)$—because $b^0 = 1$\n\n- **Behavior:**\n \n\n- If $b > 1$: increasing (rises from left to right)\n\n- If $0 < b < 1$: decreasing (falls from left to right)\n \n\n- **One-to-one:** passes horizontal line test; has an inverse\n \n\n- **Continuity:** smooth curve with no breaks, holes, or jumps"
     },
     {
       "type": "strategy",
@@ -152,7 +152,7 @@
     {
       "type": "figure",
       "id": "fig:comparing-bases",
-      "src": "/figures/precalculus/ch04/fig-comparing-bases.svg",
+      "src": "/figures/precalculus/fig-comparing-bases.svg",
       "caption": "Comparing exponential bases. All three pass through $(0,1)$ with asymptote $y = 0$. Larger bases grow faster for $x > 0$.",
       "alt": "Comparing exponential bases. All three pass through $(0,1)$ with asymptote $y = 0$. Larger bases grow faster for $x > 0$.",
       "tikz": true
@@ -218,7 +218,7 @@
     {
       "type": "figure",
       "id": "fig:exp-transformations-gallery",
-      "src": "/figures/precalculus/ch04/fig-exp-transformations-gallery.svg",
+      "src": "/figures/precalculus/fig-exp-transformations-gallery.svg",
       "caption": "Transformations of $y = 2^x$. \nConstants shift the graph; negative coefficients reflect it.",
       "alt": "Transformations of $y = 2^x$. \nConstants shift the graph; negative coefficients reflect it.",
       "tikz": true
@@ -228,7 +228,7 @@
       "id": "algorithm-4.1",
       "number": null,
       "title": "Graphing Exponential Transformations",
-      "content": "Given $f(x) = a \\cdot b^{x-h} + k$, follow these steps to sketch the graph:\n\n{1.4}\ncenter\ntikzpicture[\n node distance=0.9cm,\n stepbox/.style={rectangle, draw, rounded corners, fill=AtlasTeal!15, \n text width=10cm, align=left, minimum height=0.9cm, font=},\n arrow/.style={->, thick}\n]\n (s1) {**Step 1: Identify parameters**\\\\\n $a$ = vertical stretch/reflection $b$ = base $h$ = horizontal shift $k$ = vertical shift};\n \n (s2) {**Step 2: Draw the horizontal asymptote**\\\\\n The asymptote is $y = k$. Draw it as a dashed line first.};\n \n (s3) {**Step 3: Find the anchor point**\\\\\n The anchor point is $(h, a + k)$. This replaces $(0, 1)$ from the parent.};\n \n (s4) {**Step 4: Find one point to the right**\\\\\n At $x = h + 1$: $f(h+1) = a \\cdot b + k$. Plot $(h+1, ab+k)$.};\n \n (s5) {**Step 5: Determine direction**\\\\\n If $a > 0$ and $b > 1$: growth (rises right) If $a > 0$ and $0 < b < 1$: decay (falls right)\\\\\n If $a < 0$: flip the curve vertically (approaches asymptote from opposite side)};\n \n (s6) {**Step 6: Sketch the curve**\\\\\n Draw smooth curve through points, approaching (never crossing) the asymptote.};\n \n (s1) – (s2);\n (s2) – (s3);\n (s3) – (s4);\n (s4) – (s5);\n (s5) – (s6);\ntikzpicture\ncenter\n\n**Example:** Graph $f(x) = -2 \\cdot 3^{x-1} + 4$\n\n- Parameters: $a = -2$, $b = 3$, $h = 1$, $k = 4$\n\n- Asymptote: $y = 4$\n\n- Anchor: $(1, -2 + 4) = (1, 2)$\n\n- One right: $(2, -2 \\cdot 3 + 4) = (2, -2)$\n\n- Direction: $a < 0$ means reflected; curve approaches $y = 4$ from below"
+      "content": "Given $f(x) = a \\cdot b^{x-h} + k$, follow these steps to sketch the graph:\n\n{1.4}\ncenter\n\ncenter\n\n**Example:** Graph $f(x) = -2 \\cdot 3^{x-1} + 4$\n\n- Parameters: $a = -2$, $b = 3$, $h = 1$, $k = 4$\n\n- Asymptote: $y = 4$\n\n- Anchor: $(1, -2 + 4) = (1, 2)$\n\n- One right: $(2, -2 \\cdot 3 + 4) = (2, -2)$\n\n- Direction: $a < 0$ means reflected; curve approaches $y = 4$ from below"
     },
     {
       "type": "heading",
@@ -250,7 +250,7 @@
     {
       "type": "figure",
       "id": "fig:exp-horizontal-line-test",
-      "src": "/figures/precalculus/ch04/fig-exp-horizontal-line-test.svg",
+      "src": "/figures/precalculus/fig-exp-horizontal-line-test.svg",
       "caption": "The horizontal line test. Every horizontal line $y = c$ (where $c > 0$) intersects the graph of $y = b^x$ at exactly one point. This proves exponential functions are one-to-one: each output corresponds to exactly one input.",
       "alt": "The horizontal line test. Every horizontal line $y = c$ (where $c > 0$) intersects the graph of $y = b^x$ at exactly one point. This proves exponential functions are one-to-one: each output corresponds to exactly one input.",
       "tikz": true
@@ -298,7 +298,7 @@
     {
       "type": "figure",
       "id": "fig:exp-vs-polynomial",
-      "src": "/figures/precalculus/ch04/fig-exp-vs-polynomial.svg",
+      "src": "/figures/precalculus/fig-exp-vs-polynomial.svg",
       "caption": "Exponential vs polynomial growth. Near the origin, $y = x^2$ may exceed $y = 2^x$. But exponential growth eventually dominates: the gap widens without bound as $x$ increases. This holds for *any* polynomial vs *any* exponential with base $b > 1$.",
       "alt": "Exponential vs polynomial growth. Near the origin, $y = x^2$ may exceed $y = 2^x$. But exponential growth eventually dominates: the gap widens without bound as $x$ increases. This holds for *any* polynomial vs *any* exponential with base $b > 1$.",
       "tikz": true
@@ -576,7 +576,7 @@
       "type": "exercise",
       "id": "ex-4.1-30",
       "number": "30",
-      "problem": "A car worth \\$25,000 depreciates by 15\\% per year.\n\\begin{enumerate}[label=(\\alph*)]\n \\item Write the value function $V(t)$.\n Find the value after 5 years.\n When will the car be worth half its original value?\nenumerate",
+      "problem": "A car worth $25,000 depreciates by 15\\% per year.\n\n1. Write the value function $V(t)$.\n\n2. Find the value after 5 years.\n\n3. When will the car be worth half its original value?",
       "variant": "regular",
       "hint": null,
       "answer": null,
@@ -626,7 +626,7 @@
       "type": "exercise",
       "id": "ex-4.1-35",
       "number": "35",
-      "problem": "A product costs \\$50 today. If inflation averages 3\\% per year:\n\\begin{enumerate}[label=(\\alph*)]\n \\item Write a function $C(t)$ for the cost after $t$ years.\n \\item Find the cost in 10 years.\n \\item When will the product cost \\$100?\nenumerate",
+      "problem": "A product costs $50 today. If inflation averages 3\\% per year:\n\n1. Write a function $C(t)$ for the cost after $t$ years.\n\n2. Find the cost in 10 years.\n\n3. When will the product cost $100?",
       "variant": "regular",
       "hint": null,
       "answer": null,
@@ -636,7 +636,7 @@
       "type": "exercise",
       "id": "ex-4.1-36",
       "number": "36",
-      "problem": "A computer costs \\$1200 and loses 25\\% of its value each year.\n\\begin{enumerate}[label=(\\alph*)]\n \\item Write the value function $V(t)$.\n \\item What is it worth after 3 years?\n \\item When is it worth less than \\$200?\nenumerate",
+      "problem": "A computer costs $1200 and loses 25\\% of its value each year.\n\n1. Write the value function $V(t)$.\n\n2. What is it worth after 3 years?\n\n3. When is it worth less than $200?",
       "variant": "regular",
       "hint": null,
       "answer": null,
@@ -646,7 +646,7 @@
       "type": "exercise",
       "id": "ex-4.1-37",
       "number": "37",
-      "problem": "An investment of \\$2000 grows at 6\\% per year (simple annual compounding).\n\\begin{enumerate}[label=(\\alph*)]\n \\item Write the value function $A(t) = P(1+r)^t$.\n \\item Find the value after 8 years.\n \\item When will it be worth \\$5000?\nenumerate",
+      "problem": "An investment of $2000 grows at 6\\% per year (simple annual compounding).\n\n1. Write the value function $A(t) = P(1+r)^t$.\n\n2. Find the value after 8 years.\n\n3. When will it be worth $5000?",
       "variant": "regular",
       "hint": null,
       "answer": null,

@@ -54,8 +54,8 @@
     },
     {
       "type": "figure",
-      "id": "fig-10809",
-      "src": "/figures/precalculus/ch08/fig-8.2-fig-1.svg",
+      "id": "fig-8164",
+      "src": "/figures/precalculus/fig-8164.svg",
       "caption": "Deriving the Law of Cosines: Triangle $ABC$ is placed in a coordinate system with $C$ at the origin and side $b$ along the positive $x$-axis. Vertex $B$ has coordinates $(a\\cos C, a\\sin C)$. The distance formula gives the length of side $c$.",
       "alt": "Deriving the Law of Cosines: Triangle $ABC$ is placed in a coordinate system with $C$ at the origin and side $b$ along the positive $x$-axis. Vertex $B$ has coordinates $(a\\cos C, a\\sin C)$. The distance formula gives the length of side $c$.",
       "tikz": true
@@ -66,7 +66,7 @@
     },
     {
       "type": "paragraph",
-      "text": "$$c^2 &= (a\\cos C - b)^2 + (a\\sin C - 0)^2 \\\\\n    &= a^2\\cos^2 C - 2ab\\cos C + b^2 + a^2\\sin^2 C \\\\\n    &= a^2(\\cos^2 C + \\sin^2 C) + b^2 - 2ab\\cos C \\\\\n    &= a^2 \\cdot 1 + b^2 - 2ab\\cos C \\\\\n    &= a^2 + b^2 - 2ab\\cos C$$"
+      "text": "$$\\begin{aligned}c^2 &= (a\\cos C - b)^2 + (a\\sin C - 0)^2 \\\\\n    &= a^2\\cos^2 C - 2ab\\cos C + b^2 + a^2\\sin^2 C \\\\\n    &= a^2(\\cos^2 C + \\sin^2 C) + b^2 - 2ab\\cos C \\\\\n    &= a^2 \\cdot 1 + b^2 - 2ab\\cos C \\\\\n    &= a^2 + b^2 - 2ab\\cos C\\end{aligned}$$"
     },
     {
       "type": "paragraph",
@@ -77,7 +77,7 @@
       "id": "theorem-8.1",
       "number": "8.1",
       "title": "Law of Cosines",
-      "content": "In any triangle with sides $a$, $b$, $c$ opposite angles $A$, $B$, $C$:\n$$\n a^2 &= b^2 + c^2 - 2bc\\cos A \\\\\n b^2 &= a^2 + c^2 - 2ac\\cos B \\\\\n c^2 &= a^2 + b^2 - 2ab\\cos C\n$$",
+      "content": "In any triangle with sides $a$, $b$, $c$ opposite angles $A$, $B$, $C$:\n$$\\begin{aligned}\n a^2 &= b^2 + c^2 - 2bc\\cos A \\\\\n b^2 &= a^2 + c^2 - 2ac\\cos B \\\\\n c^2 &= a^2 + b^2 - 2ab\\cos C\n\\end{aligned}$$",
       "label": "Theorem"
     },
     {
@@ -113,14 +113,14 @@
       "id": "summary-8.2",
       "number": null,
       "title": "Choosing the Right Law: Complete Decision Guide",
-      "content": "Use this table to determine which law to use based on the given information:\n\n{1.5}\n\n| Given | Case | Use | Notes |\n| 2 angles, 1 side | AAS/ASA | Law of Sines | Find 3rd angle first |\n| 2 sides, opp.\\ angle | SSA | Law of Sines | Ambiguous! 0, 1, or 2 solutions |\n| 2 sides, incl.\\ angle | SAS | Law of Cosines | Find 3rd side first |\n| 3 sides | SSS | Law of Cosines | Find largest angle first |\n\n**Quick mnemonic:**\n\n- **Law of Sines:** Need an **opposite pair** (angle and its opposite side)\n\n- **Law of Cosines:** Need an **included** setup (SAS) or all sides (SSS)\n\n**Decision flowchart:**\ncenter\ntikzpicture[\n node distance=0.8cm,\n decision/.style={diamond, draw, fill=AtlasTeal!20, text width=2.5cm, align=center, inner sep=1pt, font=},\n process/.style={rectangle, draw, rounded corners, fill=AtlasCoral!20, text width=2.2cm, align=center, minimum height=0.6cm, font=},\n arrow/.style={->, thick}\n]\n (start) {Do you know an angle-side opposite pair?};\n (sines) {Law of Sines};\n (d2) {Do you know 2 sides + included angle?};\n (sas) {Law of Cosines (SAS)};\n (sss) {Law of Cosines (SSS)};\n \n (start) – node[above, font=] {Yes} (sines);\n (start) – node[left, font=] {No} (d2);\n (d2) – node[above, font=] {Yes} (sas);\n (d2) – node[left, font=] {No: 3 sides} (sss);\ntikzpicture\ncenter"
+      "content": "Use this table to determine which law to use based on the given information:\n\n{1.5}\n\n| Given | Case | Use | Notes |\n| 2 angles, 1 side | AAS/ASA | Law of Sines | Find 3rd angle first |\n| 2 sides, opp.\\ angle | SSA | Law of Sines | Ambiguous! 0, 1, or 2 solutions |\n| 2 sides, incl.\\ angle | SAS | Law of Cosines | Find 3rd side first |\n| 3 sides | SSS | Law of Cosines | Find largest angle first |\n\n**Quick mnemonic:**\n\n- **Law of Sines:** Need an **opposite pair** (angle and its opposite side)\n\n- **Law of Cosines:** Need an **included** setup (SAS) or all sides (SSS)\n\n**Decision flowchart:**\ncenter\n\ncenter"
     },
     {
       "type": "strategy",
       "id": "strategy-8.2",
       "number": null,
       "title": "Choosing Between Law of Sines and Law of Cosines",
-      "content": "**Ask yourself these questions in order:**\n\n1. **Do I have an angle-side opposite pair?**\n itemize\n\n2. YES $\\to$ Use **Law of Sines**\n\n3. NO $\\to$ Continue to step 2\n itemize\n\n4. **What information do I have?**\n itemize\n\n5. **SSS** (three sides) $\\to$ Use Law of Cosines to find the *largest* angle first (opposite the longest side), then switch to Law of Sines\n\n6. **SAS** (two sides + included angle) $\\to$ Use Law of Cosines to find the third side, then Law of Sines for angles\n itemize\n\n**Why find the largest angle first in SSS?**\\\\\nThe largest angle is opposite the longest side. If the triangle has an obtuse angle, it will be this one. Finding it first avoids ambiguity issues when using the Law of Sines for the remaining angles (since the other angles must be acute)."
+      "content": "**Ask yourself these questions in order:**\n\n1. **Do I have an angle-side opposite pair?**\n \n\n2. YES $\\to$ Use **Law of Sines**\n\n3. NO $\\to$ Continue to step 2\n \n \n\n- **What information do I have?**\n \n\n- **SSS** (three sides) $\\to$ Use Law of Cosines to find the *largest* angle first (opposite the longest side), then switch to Law of Sines\n\n- **SAS** (two sides + included angle) $\\to$ Use Law of Cosines to find the third side, then Law of Sines for angles\n\n**Why find the largest angle first in SSS?**\\\\\nThe largest angle is opposite the longest side. If the triangle has an obtuse angle, it will be this one. Finding it first avoids ambiguity issues when using the Law of Sines for the remaining angles (since the other angles must be acute)."
     },
     {
       "type": "heading",
@@ -137,7 +137,7 @@
       "number": "8.1",
       "title": "SAS triangle",
       "problem": "In triangle $ABC$, $a = 8$, $b = 11$, and $C = 50°$. Find all remaining \nparts of the triangle.",
-      "solution": "**Step 1: Find side $c$ using the Law of Cosines.**\n$$\n c^2 &= a^2 + b^2 - 2ab\\cos C \\\\\n &= 8^2 + 11^2 - 2(8)(11)\\cos 50° \\\\\n &= 64 + 121 - 176(0.6428) \\\\\n &= 185 - 113.13 \\\\\n &= 71.87\n$$\n$$\n c = \\sqrt{71.87} \\approx 8.48\n$$\n\n**Step 2: Find angle $A$.**\n\nWe can use either law. The Law of Sines is often easier for finding angles:\n$$\n \\frac{\\sin A}{a} = \\frac{\\sin C}{c} \\quad \\Longrightarrow \\quad \n \\sin A = \\frac{a \\sin C}{c} = \\frac{8 \\sin 50°}{8.48}\n$$\n$$\n \\sin A = \\frac{8 \\times 0.7660}{8.48} = \\frac{6.128}{8.48} \\approx 0.7227\n$$\n$$\n A = \\arcsin(0.7227) \\approx 46.3°\n$$\n\n**Note:** Since $a < c$, angle $A$ must be smaller than angle $C = 50°$, \nconfirming $A \\approx 46.3°$ (not its supplement $133.7°$).\n\n**Step 3: Find angle $B$.**\n$$\n B = 180° - A - C = 180° - 46.3° - 50° = 83.7°\n$$\n\n**Summary:**\n$$\n c \\approx 8.48, \\quad A \\approx 46.3°, \\quad B \\approx 83.7°\n$$"
+      "solution": "**Step 1: Find side $c$ using the Law of Cosines.**\n$$\\begin{aligned}\n c^2 &= a^2 + b^2 - 2ab\\cos C \\\\\n &= 8^2 + 11^2 - 2(8)(11)\\cos 50° \\\\\n &= 64 + 121 - 176(0.6428) \\\\\n &= 185 - 113.13 \\\\\n &= 71.87\n\\end{aligned}$$\n$$\n c = \\sqrt{71.87} \\approx 8.48\n$$\n\n**Step 2: Find angle $A$.**\n\nWe can use either law. The Law of Sines is often easier for finding angles:\n$$\n \\frac{\\sin A}{a} = \\frac{\\sin C}{c} \\quad \\Longrightarrow \\quad \n \\sin A = \\frac{a \\sin C}{c} = \\frac{8 \\sin 50°}{8.48}\n$$\n$$\n \\sin A = \\frac{8 \\times 0.7660}{8.48} = \\frac{6.128}{8.48} \\approx 0.7227\n$$\n$$\n A = \\arcsin(0.7227) \\approx 46.3°\n$$\n\n**Note:** Since $a < c$, angle $A$ must be smaller than angle $C = 50°$, \nconfirming $A \\approx 46.3°$ (not its supplement $133.7°$).\n\n**Step 3: Find angle $B$.**\n$$\n B = 180° - A - C = 180° - 46.3° - 50° = 83.7°\n$$\n\n**Summary:**\n$$\n c \\approx 8.48, \\quad A \\approx 46.3°, \\quad B \\approx 83.7°\n$$"
     },
     {
       "type": "warning",
@@ -152,7 +152,7 @@
       "number": "8.2",
       "title": "SAS with an obtuse angle",
       "problem": "Solve triangle $ABC$ if $b = 15$, $c = 9$, and $A = 115°$.",
-      "solution": "**Step 1: Find side $a$.**\n$$\n a^2 &= b^2 + c^2 - 2bc\\cos A \\\\\n &= 15^2 + 9^2 - 2(15)(9)\\cos 115° \\\\\n &= 225 + 81 - 270(-0.4226) \\\\\n &= 306 + 114.1 \\\\\n &= 420.1\n$$\n$$\n a = \\sqrt{420.1} \\approx 20.50\n$$\n\nNotice that $a^2 > b^2 + c^2$ because $A$ is obtuse, making $\\cos A$ negative.\n\n**Step 2: Find angle $B$ using the Law of Cosines.**\n\nTo avoid any ambiguity, we'll use the Law of Cosines:\n$$\n \\cos B = \\frac{a^2 + c^2 - b^2}{2ac} = \\frac{420.1 + 81 - 225}{2(20.50)(9)}\n = \\frac{276.1}{369} \\approx 0.7482\n$$\n$$\n B = \\arccos(0.7482) \\approx 41.6°\n$$\n\n**Step 3: Find angle $C$.**\n$$\n C = 180° - 115° - 41.6° = 23.4°\n$$\n\n**Summary:**\n$$\n a \\approx 20.50, \\quad B \\approx 41.6°, \\quad C \\approx 23.4°\n$$"
+      "solution": "**Step 1: Find side $a$.**\n$$\\begin{aligned}\n a^2 &= b^2 + c^2 - 2bc\\cos A \\\\\n &= 15^2 + 9^2 - 2(15)(9)\\cos 115° \\\\\n &= 225 + 81 - 270(-0.4226) \\\\\n &= 306 + 114.1 \\\\\n &= 420.1\n\\end{aligned}$$\n$$\n a = \\sqrt{420.1} \\approx 20.50\n$$\n\nNotice that $a^2 > b^2 + c^2$ because $A$ is obtuse, making $\\cos A$ negative.\n\n**Step 2: Find angle $B$ using the Law of Cosines.**\n\nTo avoid any ambiguity, we'll use the Law of Cosines:\n$$\n \\cos B = \\frac{a^2 + c^2 - b^2}{2ac} = \\frac{420.1 + 81 - 225}{2(20.50)(9)}\n = \\frac{276.1}{369} \\approx 0.7482\n$$\n$$\n B = \\arccos(0.7482) \\approx 41.6°\n$$\n\n**Step 3: Find angle $C$.**\n$$\n C = 180° - 115° - 41.6° = 23.4°\n$$\n\n**Summary:**\n$$\n a \\approx 20.50, \\quad B \\approx 41.6°, \\quad C \\approx 23.4°\n$$"
     },
     {
       "type": "heading",
@@ -168,7 +168,7 @@
       "id": "summary-8.2",
       "number": null,
       "title": "Law of Cosines for Finding Angles",
-      "content": "$$\n \\cos A &= \\frac{b^2 + c^2 - a^2}{2bc} \\\\[6pt]\n \\cos B &= \\frac{a^2 + c^2 - b^2}{2ac} \\\\[6pt]\n \\cos C &= \\frac{a^2 + b^2 - c^2}{2ab}\n$$"
+      "content": "$$\\begin{aligned}\n \\cos A &= \\frac{b^2 + c^2 - a^2}{2bc} \\\\[6pt]\n \\cos B &= \\frac{a^2 + c^2 - b^2}{2ac} \\\\[6pt]\n \\cos C &= \\frac{a^2 + b^2 - c^2}{2ab}\n\\end{aligned}$$"
     },
     {
       "type": "example",
@@ -220,7 +220,7 @@
       "number": "8.5",
       "title": "Heron's formula",
       "problem": "Find the area of a triangle with sides $a = 5$, $b = 7$, $c = 10$.",
-      "solution": "**Step 1: Find the semi-perimeter.**\n$$\n s = \\frac{a + b + c}{2} = \\frac{5 + 7 + 10}{2} = 11\n$$\n\n**Step 2: Compute the factors.**\n$$\n s - a &= 11 - 5 = 6 \\\\\n s - b &= 11 - 7 = 4 \\\\\n s - c &= 11 - 10 = 1\n$$\n\n**Step 3: Apply Heron's formula.**\n$$\n K = \\sqrt{s(s-a)(s-b)(s-c)} = \\sqrt{11 \\cdot 6 \\cdot 4 \\cdot 1} = \\sqrt{264} \\approx 16.25\n$$\n\nThe area is approximately **16.25 square units**."
+      "solution": "**Step 1: Find the semi-perimeter.**\n$$\n s = \\frac{a + b + c}{2} = \\frac{5 + 7 + 10}{2} = 11\n$$\n\n**Step 2: Compute the factors.**\n$$\\begin{aligned}\n s - a &= 11 - 5 = 6 \\\\\n s - b &= 11 - 7 = 4 \\\\\n s - c &= 11 - 10 = 1\n\\end{aligned}$$\n\n**Step 3: Apply Heron's formula.**\n$$\n K = \\sqrt{s(s-a)(s-b)(s-c)} = \\sqrt{11 \\cdot 6 \\cdot 4 \\cdot 1} = \\sqrt{264} \\approx 16.25\n$$\n\nThe area is approximately **16.25 square units**."
     },
     {
       "type": "example",
@@ -245,12 +245,12 @@
       "number": "8.7",
       "title": "Distance across a lake",
       "problem": "A surveyor needs to measure the distance across a lake from point $A$ to \npoint $B$. She identifies a point $C$ on land where she can see both $A$ \nand $B$. She measures $CA = 350$ meters, $CB = 450$ meters, and angle \n$ACB = 72°$. What is the distance $AB$?",
-      "solution": "This is an SAS problem. We have two sides and the included angle.\n\nfigure[H]\n\ntikzpicture[scale=0.7]\n % Lake (shaded)\n ll[AtlasTeal!20] (0,0) ellipse (3 and 1.5);\n at (0,0) { Lake};\n \n % Points\n (A) at (-2.5,1);\n (B) at (2.8,0.8);\n (C) at (0.5,3);\n \n % Triangle\n (A) – (C) – (B);\n (A) – (B);\n \n % Labels\n lldraw (A) circle (2pt) node[left] {$A$};\n lldraw (B) circle (2pt) node[right] {$B$};\n lldraw (C) circle (2pt) node[above] {$C$};\n \n % Side labels\n at ($(A)!0.5!(C)$) {350 m};\n at ($(B)!0.5!(C)$) {450 m};\n at ($(A)!0.5!(B)$) {?};\n \n % Angle\n ($(C)!0.4!(A)$) arc (215:323:0.6);\n at (0.5,2.3) { $72°$};\ntikzpicture\nSurveying a lake: A surveyor needs to find the distance $AB$ across a lake. From point $C$, she measures $CA = 350$ m, $CB = 450$ m, and angle $ACB = 72°$. This is an SAS problem solved with the Law of Cosines.\nfigure\n\nUsing the Law of Cosines with $a = CB = 450$, $b = CA = 350$, and $C = 72°$:\n$$\n AB^2 &= CA^2 + CB^2 - 2(CA)(CB)\\cos C \\\\\n &= 350^2 + 450^2 - 2(350)(450)\\cos 72° \\\\\n &= 122500 + 202500 - 315000(0.309) \\\\\n &= 325000 - 97335 \\\\\n &= 227665\n$$\n$$\n AB = \\sqrt{227665} \\approx 477.1 \\text{ meters}\n$$\n\nThe distance across the lake is approximately **477 meters**.",
+      "solution": "This is an SAS problem. We have two sides and the included angle.\n\nfigure[H]\n\nSurveying a lake: A surveyor needs to find the distance $AB$ across a lake. From point $C$, she measures $CA = 350$ m, $CB = 450$ m, and angle $ACB = 72°$. This is an SAS problem solved with the Law of Cosines.\nfigure\n\nUsing the Law of Cosines with $a = CB = 450$, $b = CA = 350$, and $C = 72°$:\n$$\\begin{aligned}\n AB^2 &= CA^2 + CB^2 - 2(CA)(CB)\\cos C \\\\\n &= 350^2 + 450^2 - 2(350)(450)\\cos 72° \\\\\n &= 122500 + 202500 - 315000(0.309) \\\\\n &= 325000 - 97335 \\\\\n &= 227665\n\\end{aligned}$$\n$$\n AB = \\sqrt{227665} \\approx 477.1 \\text{ meters}\n$$\n\nThe distance across the lake is approximately **477 meters**.",
       "figures": [
         {
           "type": "figure",
-          "id": "fig-21706",
-          "src": "/figures/precalculus/fig-21706.svg",
+          "id": "fig-49796",
+          "src": "/figures/precalculus/fig-49796.svg",
           "caption": "Surveying a lake: A surveyor needs to find the distance $AB$ across a lake. From point $C$, she measures $CA = 350$ m, $CB = 450$ m, and angle $ACB = 72°$. This is an SAS problem solved with the Law of Cosines.",
           "alt": "Surveying a lake: A surveyor needs to find the distance $AB$ across a lake. From point $C$, she measures $CA = 350$ m, $CB = 450$ m, and angle $ACB = 72°$. This is an SAS problem solved with the Law of Cosines.",
           "tikz": true
@@ -263,12 +263,12 @@
       "number": "8.8",
       "title": "Navigation problem",
       "problem": "A ship leaves port and sails 80 nautical miles on a bearing of N$40°$W. \nIt then changes course and sails 60 nautical miles on a bearing of S$30°$W. \nFind the ship's distance and bearing from the port.",
-      "solution": "Let $P$ be the port, $Q$ be the position after the first leg, and $R$ be \nthe final position.\n\n**Step 1: Find the angle at $Q$.**\n\nAt $Q$, the ship was heading N$40°$W (its direction of travel from $P$). \nIt then turns to head S$30°$W.\n\nTo find the angle $PQR$ inside the triangle, we need to determine the \nturn angle. Drawing a north line at $Q$:\n\nfigure[H]\n\ntikzpicture[scale=0.04]\n % Coordinates (computed from bearings)\n (P) at (0,0);\n (Q) at (-51.4,61.3); % 80 at N40W\n (R) at (-81.4,9.4); % 60 more at S30W\n \n % Triangle\n (P) – (Q) – (R) – cycle;\n \n % North arrows\n (P) – (0,90) node[above] { N};\n (Q) – (-51.4,140);\n (Q) – (-51.4,-20);\n \n % Labels\n at (P) {$P$};\n at (Q) {$Q$};\n at (R) {$R$};\n \n % Distances\n at ($(P)!0.5!(Q)$) {80 nm};\n at ($(Q)!0.5!(R)$) {60 nm};\n \n % Bearing angles at Q\n at (-35,80) { $40°$};\n at (-70,30) { $30°$};\ntikzpicture\nShip navigation with bearings: A ship sails from port $P$ to $Q$ (80 nm on bearing N$40°$W), then from $Q$ to $R$ (60 nm on bearing S$30°$W). North reference lines are shown at each point. The interior angle at $Q$ is $70°$.\nfigure\n\nThe direction from $P$ to $Q$ is N$40°$W. If continued, the line from $Q$ \nback toward $P$ points S$40°$E. The new heading S$30°$W differs from S$40°$E \nby $40° + 30° = 70°$.\n\nSo the interior angle at $Q$ is:\n$$\n \\angle PQR = 70°\n$$\n\n**Step 2: Find distance $PR$ using the Law of Cosines.**\n$$\n PR^2 &= PQ^2 + QR^2 - 2(PQ)(QR)\\cos Q \\\\\n &= 80^2 + 60^2 - 2(80)(60)\\cos 70° \\\\\n &= 6400 + 3600 - 9600(0.342) \\\\\n &= 10000 - 3283 \\\\\n &= 6717\n$$\n$$\n PR = \\sqrt{6717} \\approx 82.0 \\text{ nautical miles}\n$$\n\n**Step 3: Find the bearing from $P$ to $R$.**\n\nWe need angle $P$ in the triangle. Using the Law of Sines:\n$$\n \\frac{\\sin P}{QR} = \\frac{\\sin Q}{PR} \\quad \\Longrightarrow \\quad \n \\sin P = \\frac{60 \\sin 70°}{82.0} = \\frac{60 \\times 0.940}{82.0} \\approx 0.688\n$$\n$$\n P = \\arcsin(0.688) \\approx 43.4°\n$$\n\nThe angle $P$ is measured from the $PQ$ direction. Since $PQ$ goes N$40°$W \nfrom $P$, the direction to $R$ is:\n$$\n 40° + 43.4° = 83.4° \\text{ west of north}\n$$\n\nThe bearing from port to the ship is **N$83.4°$W** (or approximately \n**W$6.6°$N**).\n\n**Summary:** The ship is approximately **82 nautical miles** from \nport at a bearing of approximately **N$83°$W**.",
+      "solution": "Let $P$ be the port, $Q$ be the position after the first leg, and $R$ be \nthe final position.\n\n**Step 1: Find the angle at $Q$.**\n\nAt $Q$, the ship was heading N$40°$W (its direction of travel from $P$). \nIt then turns to head S$30°$W.\n\nTo find the angle $PQR$ inside the triangle, we need to determine the \nturn angle. Drawing a north line at $Q$:\n\nfigure[H]\n\nShip navigation with bearings: A ship sails from port $P$ to $Q$ (80 nm on bearing N$40°$W), then from $Q$ to $R$ (60 nm on bearing S$30°$W). North reference lines are shown at each point. The interior angle at $Q$ is $70°$.\nfigure\n\nThe direction from $P$ to $Q$ is N$40°$W. If continued, the line from $Q$ \nback toward $P$ points S$40°$E. The new heading S$30°$W differs from S$40°$E \nby $40° + 30° = 70°$.\n\nSo the interior angle at $Q$ is:\n$$\n \\angle PQR = 70°\n$$\n\n**Step 2: Find distance $PR$ using the Law of Cosines.**\n$$\\begin{aligned}\n PR^2 &= PQ^2 + QR^2 - 2(PQ)(QR)\\cos Q \\\\\n &= 80^2 + 60^2 - 2(80)(60)\\cos 70° \\\\\n &= 6400 + 3600 - 9600(0.342) \\\\\n &= 10000 - 3283 \\\\\n &= 6717\n\\end{aligned}$$\n$$\n PR = \\sqrt{6717} \\approx 82.0 \\text{ nautical miles}\n$$\n\n**Step 3: Find the bearing from $P$ to $R$.**\n\nWe need angle $P$ in the triangle. Using the Law of Sines:\n$$\n \\frac{\\sin P}{QR} = \\frac{\\sin Q}{PR} \\quad \\Longrightarrow \\quad \n \\sin P = \\frac{60 \\sin 70°}{82.0} = \\frac{60 \\times 0.940}{82.0} \\approx 0.688\n$$\n$$\n P = \\arcsin(0.688) \\approx 43.4°\n$$\n\nThe angle $P$ is measured from the $PQ$ direction. Since $PQ$ goes N$40°$W \nfrom $P$, the direction to $R$ is:\n$$\n 40° + 43.4° = 83.4° \\text{ west of north}\n$$\n\nThe bearing from port to the ship is **N$83.4°$W** (or approximately \n**W$6.6°$N**).\n\n**Summary:** The ship is approximately **82 nautical miles** from \nport at a bearing of approximately **N$83°$W**.",
       "figures": [
         {
           "type": "figure",
-          "id": "fig-98355",
-          "src": "/figures/precalculus/fig-98355.svg",
+          "id": "fig-16554",
+          "src": "/figures/precalculus/fig-16554.svg",
           "caption": "Ship navigation with bearings: A ship sails from port $P$ to $Q$ (80 nm on bearing N$40°$W), then from $Q$ to $R$ (60 nm on bearing S$30°$W). North reference lines are shown at each point. The interior angle at $Q$ is $70°$.",
           "alt": "Ship navigation with bearings: A ship sails from port $P$ to $Q$ (80 nm on bearing N$40°$W), then from $Q$ to $R$ (60 nm on bearing S$30°$W). North reference lines are shown at each point. The interior angle at $Q$ is $70°$.",
           "tikz": true
@@ -281,12 +281,12 @@
       "number": "8.9",
       "title": "Physics: Force parallelogram",
       "problem": "Two forces of magnitude 50 N and 70 N act on an object at an angle of \n$65°$ to each other. Find the magnitude of the resultant force.",
-      "solution": "When two forces act at an angle, the resultant is the diagonal of the \nparallelogram they form. This diagonal can be found using the Law of \nCosines.\n\nThe angle between the forces is $65°$, but in the triangle formed by the \ntwo forces and the resultant, the relevant angle is the *supplement* \nof the angle between them: $180° - 65° = 115°$.\n\nfigure[H]\n\ntikzpicture[scale=0.04]\n (O) at (0,0);\n (A) at (50,0);\n (B) at (29.5,63.4);\n (C) at (79.5,63.4);\n \n % Parallelogram\n (O) – (A) node[midway, below] {50 N};\n (O) – (B) node[midway, left] {70 N};\n (A) – (C) – (B);\n \n % Resultant\n (O) – (C) node[midway, above right] {$R$};\n \n % Angle\n (15,0) arc (0:65:15);\n at (22,15) {$65°$};\ntikzpicture\nForce parallelogram: Two forces of 50 N and 70 N act at an angle of $65°$. The resultant force $R$ is the diagonal of the parallelogram formed by the force vectors. The Law of Cosines finds $R$ using the supplementary angle $115°$.\nfigure\n\nHmm, actually for the parallelogram method, the resultant $R$ is the \ndiagonal from $O$ to $C$. In triangle $OAC$:\n- $OA = 50$\n- $AC = 70$ (parallel to $OB$)\n- Angle $OAC = 180° - 65° = 115°$\n\nUsing the Law of Cosines:\n$$\n R^2 &= 50^2 + 70^2 - 2(50)(70)\\cos 115° \\\\\n &= 2500 + 4900 - 7000(-0.4226) \\\\\n &= 7400 + 2958 \\\\\n &= 10358\n$$\n$$\n R = \\sqrt{10358} \\approx 101.8 \\text{ N}\n$$\n\nThe resultant force has magnitude approximately **102 N**.",
+      "solution": "When two forces act at an angle, the resultant is the diagonal of the \nparallelogram they form. This diagonal can be found using the Law of \nCosines.\n\nThe angle between the forces is $65°$, but in the triangle formed by the \ntwo forces and the resultant, the relevant angle is the *supplement* \nof the angle between them: $180° - 65° = 115°$.\n\nfigure[H]\n\nForce parallelogram: Two forces of 50 N and 70 N act at an angle of $65°$. The resultant force $R$ is the diagonal of the parallelogram formed by the force vectors. The Law of Cosines finds $R$ using the supplementary angle $115°$.\nfigure\n\nHmm, actually for the parallelogram method, the resultant $R$ is the \ndiagonal from $O$ to $C$. In triangle $OAC$:\n- $OA = 50$\n- $AC = 70$ (parallel to $OB$)\n- Angle $OAC = 180° - 65° = 115°$\n\nUsing the Law of Cosines:\n$$\\begin{aligned}\n R^2 &= 50^2 + 70^2 - 2(50)(70)\\cos 115° \\\\\n &= 2500 + 4900 - 7000(-0.4226) \\\\\n &= 7400 + 2958 \\\\\n &= 10358\n\\end{aligned}$$\n$$\n R = \\sqrt{10358} \\approx 101.8 \\text{ N}\n$$\n\nThe resultant force has magnitude approximately **102 N**.",
       "figures": [
         {
           "type": "figure",
-          "id": "fig-22431",
-          "src": "/figures/precalculus/fig-22431.svg",
+          "id": "fig-11767",
+          "src": "/figures/precalculus/fig-11767.svg",
           "caption": "Force parallelogram: Two forces of 50 N and 70 N act at an angle of $65°$. The resultant force $R$ is the diagonal of the parallelogram formed by the force vectors. The Law of Cosines finds $R$ using the supplementary angle $115°$.",
           "alt": "Force parallelogram: Two forces of 50 N and 70 N act at an angle of $65°$. The resultant force $R$ is the diagonal of the parallelogram formed by the force vectors. The Law of Cosines finds $R$ using the supplementary angle $115°$.",
           "tikz": true
@@ -299,7 +299,7 @@
       "number": "8.10",
       "title": "Land surveying: Finding area",
       "problem": "A triangular plot of land has sides measuring 120 m, 150 m, and 200 m. \nFind the area of the plot in square meters and in acres (1 acre $\\approx$ \n4047 m$^2$).",
-      "solution": "Using Heron's formula with $a = 120$, $b = 150$, $c = 200$:\n$$\n s = \\frac{120 + 150 + 200}{2} = 235\n$$\n$$\n K &= \\sqrt{s(s-a)(s-b)(s-c)} \\\\\n &= \\sqrt{235 \\times 115 \\times 85 \\times 35} \\\\\n &= \\sqrt{235 \\times 115 \\times 85 \\times 35}\n$$\n\nLet's compute step by step:\n$$\n 235 \\times 115 &= 27025 \\\\\n 85 \\times 35 &= 2975 \\\\\n 27025 \\times 2975 &= 80{,}399{,}375\n$$\n$$\n K = \\sqrt{80399375} \\approx 8966.6 \\text{ m}^2\n$$\n\nConverting to acres:\n$$\n \\frac{8966.6}{4047} \\approx 2.22 \\text{ acres}\n$$\n\nThe plot has an area of approximately **8967 m$^2$** or about \n**2.2 acres**."
+      "solution": "Using Heron's formula with $a = 120$, $b = 150$, $c = 200$:\n$$\n s = \\frac{120 + 150 + 200}{2} = 235\n$$\n$$\\begin{aligned}\n K &= \\sqrt{s(s-a)(s-b)(s-c)} \\\\\n &= \\sqrt{235 \\times 115 \\times 85 \\times 35} \\\\\n &= \\sqrt{235 \\times 115 \\times 85 \\times 35}\n\\end{aligned}$$\n\nLet's compute step by step:\n$$\\begin{aligned}\n 235 \\times 115 &= 27025 \\\\\n 85 \\times 35 &= 2975 \\\\\n 27025 \\times 2975 &= 80{,}399{,}375\n\\end{aligned}$$\n$$\n K = \\sqrt{80399375} \\approx 8966.6 \\text{ m}^2\n$$\n\nConverting to acres:\n$$\n \\frac{8966.6}{4047} \\approx 2.22 \\text{ acres}\n$$\n\nThe plot has an area of approximately **8967 m$^2$** or about \n**2.2 acres**."
     },
     {
       "type": "exercise",
@@ -385,7 +385,7 @@
       "type": "exercise",
       "id": "ex-8.2-9",
       "number": "9",
-      "problem": "Find all unknown sides and angles for each triangle.\n\n1. center\ntikzpicture[scale=0.7]\n (A) at (0,0);\n (B) at (5,0);\n (C) at (1.5,2.5);\n (A) – (B) – (C) – cycle;\n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n at (2.5,0) {$c = 12$};\n at (0.75,1.25) {$b = 8$};\n at (3.25,1.25) {$a$};\n (1.5,2) arc (250:290:0.6);\n at (1.5,1.5) { $65°$};\ntikzpicture\ncenter\n\n2. center\ntikzpicture[scale=0.7]\n (A) at (0,0);\n (B) at (4.5,0);\n (C) at (2,3);\n (A) – (B) – (C) – cycle;\n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n at (2.25,0) {$c = 15$};\n at (1,1.5) {$b = 10$};\n at (3.25,1.5) {$a = 12$};\ntikzpicture\ncenter",
+      "problem": "Find all unknown sides and angles for each triangle.\n\n1. center\n\ncenter\n\n2. center\n\ncenter",
       "variant": "regular",
       "hint": null,
       "answer": null,

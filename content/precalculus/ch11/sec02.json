@@ -41,7 +41,7 @@
     {
       "type": "figure",
       "id": "fig:partial-sums",
-      "src": "/figures/precalculus/ch11/fig-partial-sums.svg",
+      "src": "/figures/precalculus/fig-partial-sums.svg",
       "caption": "The partial sums $S_1, S_2, S_3, \\ldots$ of a series form a new sequence. \nHere, $S_n = \\frac{1}{2} + \\frac{1}{4} + \\cdots + \\frac{1}{2^n} = 1 - \\frac{1}{2^n}$. \nAs $n$ increases, the partial sums approach the limit $S = 1$ (dashed line), \nso this infinite series converges to 1.",
       "alt": "The partial sums $S_1, S_2, S_3, \\ldots$ of a series form a new sequence. \nHere, $S_n = \\frac{1}{2} + \\frac{1}{4} + \\cdots + \\frac{1}{2^n} = 1 - \\frac{1}{2^n}$. \nAs $n$ increases, the partial sums approach the limit $S = 1$ (dashed line), \nso this infinite series converges to 1.",
       "tikz": true
@@ -52,7 +52,7 @@
       "number": "11.1",
       "title": "Partial Sums of a Sequence",
       "problem": "Find $S_1, S_2, S_3, S_4, S_5$ for the sequence $a_n = 2n - 1$.",
-      "solution": "The sequence is $1, 3, 5, 7, 9, \\ldots$ (odd numbers).\n$$\n S_1 &= 1 = 1 \\\\\n S_2 &= 1 + 3 = 4 \\\\\n S_3 &= 1 + 3 + 5 = 9 \\\\\n S_4 &= 1 + 3 + 5 + 7 = 16 \\\\\n S_5 &= 1 + 3 + 5 + 7 + 9 = 25\n$$\nNotice: $S_n = n^2$. The sum of the first $n$ odd numbers is $n^2$."
+      "solution": "The sequence is $1, 3, 5, 7, 9, \\ldots$ (odd numbers).\n$$\\begin{aligned}\n S_1 &= 1 = 1 \\\\\n S_2 &= 1 + 3 = 4 \\\\\n S_3 &= 1 + 3 + 5 = 9 \\\\\n S_4 &= 1 + 3 + 5 + 7 = 16 \\\\\n S_5 &= 1 + 3 + 5 + 7 + 9 = 25\n\\end{aligned}$$\nNotice: $S_n = n^2$. The sum of the first $n$ odd numbers is $n^2$."
     },
     {
       "type": "heading",
@@ -66,7 +66,7 @@
     {
       "type": "figure",
       "id": "fig:sigma-anatomy",
-      "src": "/figures/precalculus/ch11/fig-sigma-anatomy.svg",
+      "src": "/figures/precalculus/fig-sigma-anatomy.svg",
       "caption": "Anatomy of summation notation. The sigma symbol ($\\Sigma$) indicates \na sum. The index $k$ starts at the lower limit (here, $k=1$) and increases \nby 1 until reaching the upper limit $n$. At each step, we add the summand $a_k$.",
       "alt": "Anatomy of summation notation. The sigma symbol ($\\Sigma$) indicates \na sum. The index $k$ starts at the lower limit (here, $k=1$) and increases \nby 1 until reaching the upper limit $n$. At each step, we add the summand $a_k$.",
       "tikz": true
@@ -124,7 +124,7 @@
       "number": "11.4",
       "title": "Using Summation Properties",
       "problem": "Evaluate $\\displaystyle\\sum_{k=1}^{10} (3k + 2)$.",
-      "solution": "$$\n \\sum_{k=1}^{10} (3k + 2) &= \\sum_{k=1}^{10} 3k + \\sum_{k=1}^{10} 2 \\\\\n &= 3\\sum_{k=1}^{10} k + 2(10) \\\\\n &= 3 \\cdot \\frac{10(11)}{2} + 20 \\\\\n &= 3(55) + 20 = 165 + 20 = 185\n$$"
+      "solution": "$$\\begin{aligned}\n \\sum_{k=1}^{10} (3k + 2) &= \\sum_{k=1}^{10} 3k + \\sum_{k=1}^{10} 2 \\\\\n &= 3\\sum_{k=1}^{10} k + 2(10) \\\\\n &= 3 \\cdot \\frac{10(11)}{2} + 20 \\\\\n &= 3(55) + 20 = 165 + 20 = 185\n\\end{aligned}$$"
     },
     {
       "type": "method",
@@ -157,7 +157,7 @@
     {
       "type": "figure",
       "id": "fig:triangular-numbers",
-      "src": "/figures/precalculus/ch11/fig-triangular-numbers.svg",
+      "src": "/figures/precalculus/fig-triangular-numbers.svg",
       "caption": "Triangular numbers $T_n = 1 + 2 + 3 + \\cdots + n$. Each triangle \ncontains $T_n = \\frac{n(n+1)}{2}$ dots. The name comes from arranging dots \nin equilateral triangle patterns with $n$ rows.",
       "alt": "Triangular numbers $T_n = 1 + 2 + 3 + \\cdots + n$. Each triangle \ncontains $T_n = \\frac{n(n+1)}{2}$ dots. The name comes from arranging dots \nin equilateral triangle patterns with $n$ rows.",
       "tikz": true
@@ -172,12 +172,12 @@
       "number": "11.5",
       "title": "Deriving the Sum Formula (Gauss's Method)",
       "problem": "Prove that $\\displaystyle\\sum_{k=1}^{n} k = \\frac{n(n+1)}{2}$.",
-      "solution": "Let $S = 1 + 2 + 3 + \\cdots + n$. Write the sum twice, \nonce forward and once backward:\n$$\n S &= 1 + 2 + 3 + \\cdots + (n-1) + n \\\\\n S &= n + (n-1) + (n-2) + \\cdots + 2 + 1\n$$\nAdding these equations column by column:\n$$\n 2S = (n+1) + (n+1) + (n+1) + \\cdots + (n+1) = n(n+1)\n$$\nThere are $n$ pairs, each summing to $(n+1)$. Therefore:\n$$\n S = \\frac{n(n+1)}{2}\n$$"
+      "solution": "Let $S = 1 + 2 + 3 + \\cdots + n$. Write the sum twice, \nonce forward and once backward:\n$$\\begin{aligned}\n S &= 1 + 2 + 3 + \\cdots + (n-1) + n \\\\\n S &= n + (n-1) + (n-2) + \\cdots + 2 + 1\n\\end{aligned}$$\nAdding these equations column by column:\n$$\n 2S = (n+1) + (n+1) + (n+1) + \\cdots + (n+1) = n(n+1)\n$$\nThere are $n$ pairs, each summing to $(n+1)$. Therefore:\n$$\n S = \\frac{n(n+1)}{2}\n$$"
     },
     {
       "type": "figure",
       "id": "fig:gauss-pairing",
-      "src": "/figures/precalculus/ch11/fig-gauss-pairing.svg",
+      "src": "/figures/precalculus/fig-gauss-pairing.svg",
       "caption": "Gauss's pairing trick for $n = 5$. Writing the sum forward (bottom, teal) \nand backward (top, orange), each column sums to $n+1$. With $n$ columns, \n$2S = n(n+1)$, giving $S = \\frac{n(n+1)}{2}$.",
       "alt": "Gauss's pairing trick for $n = 5$. Writing the sum forward (bottom, teal) \nand backward (top, orange), each column sums to $n+1$. With $n$ columns, \n$2S = n(n+1)$, giving $S = \\frac{n(n+1)}{2}$.",
       "tikz": true
@@ -213,7 +213,7 @@
       "number": "11.8",
       "title": "A Basic Telescoping Sum",
       "problem": "Evaluate $\\displaystyle\\sum_{k=1}^{n} (a_k - a_{k-1})$ where $a_0 = 0$.",
-      "solution": "Write out the terms:\n$$\n \\sum_{k=1}^{n} (a_k - a_{k-1}) &= (a_1 - a_0) + (a_2 - a_1) + (a_3 - a_2) + \\cdots + (a_n - a_{n-1}) \\\\\n &= -a_0 + \\cancel{a_1} - \\cancel{a_1} + \\cancel{a_2} - \\cancel{a_2} + \\cdots + \\cancel{a_{n-1}} - \\cancel{a_{n-1}} + a_n \\\\\n &= a_n - a_0 = a_n\n$$\nMost terms cancel in pairs, leaving only the first and last."
+      "solution": "Write out the terms:\n$$\\begin{aligned}\n \\sum_{k=1}^{n} (a_k - a_{k-1}) &= (a_1 - a_0) + (a_2 - a_1) + (a_3 - a_2) + \\cdots + (a_n - a_{n-1}) \\\\\n &= -a_0 + \\cancel{a_1} - \\cancel{a_1} + \\cancel{a_2} - \\cancel{a_2} + \\cdots + \\cancel{a_{n-1}} - \\cancel{a_{n-1}} + a_n \\\\\n &= a_n - a_0 = a_n\n\\end{aligned}$$\nMost terms cancel in pairs, leaving only the first and last."
     },
     {
       "type": "paragraph",
@@ -225,7 +225,7 @@
       "number": "11.9",
       "title": "Telescoping with Partial Fractions",
       "problem": "Evaluate $\\displaystyle\\sum_{k=1}^{n} \\frac{1}{k(k+1)}$.",
-      "solution": "Use partial fractions to decompose the summand:\n$$\n \\frac{1}{k(k+1)} = \\frac{A}{k} + \\frac{B}{k+1}\n$$\nMultiplying both sides by $k(k+1)$: $1 = A(k+1) + Bk$.\n\nSetting $k = 0$: $1 = A$. Setting $k = -1$: $1 = -B$, so $B = -1$.\n\nThus: $\\dfrac{1}{k(k+1)} = \\dfrac{1}{k} - \\dfrac{1}{k+1}$\n\nNow the sum telescopes:\n$$\n \\sum_{k=1}^{n} \\frac{1}{k(k+1)} &= \\sum_{k=1}^{n} \\left(\\frac{1}{k} - \\frac{1}{k+1}\\right) \\\\\n &= \\left(1 - \\frac{1}{2}\\right) + \\left(\\frac{1}{2} - \\frac{1}{3}\\right) + \\left(\\frac{1}{3} - \\frac{1}{4}\\right) + \\cdots + \\left(\\frac{1}{n} - \\frac{1}{n+1}\\right) \\\\\n &= 1 - \\frac{1}{n+1} = \\frac{n}{n+1}\n$$"
+      "solution": "Use partial fractions to decompose the summand:\n$$\n \\frac{1}{k(k+1)} = \\frac{A}{k} + \\frac{B}{k+1}\n$$\nMultiplying both sides by $k(k+1)$: $1 = A(k+1) + Bk$.\n\nSetting $k = 0$: $1 = A$. Setting $k = -1$: $1 = -B$, so $B = -1$.\n\nThus: $\\dfrac{1}{k(k+1)} = \\dfrac{1}{k} - \\dfrac{1}{k+1}$\n\nNow the sum telescopes:\n$$\\begin{aligned}\n \\sum_{k=1}^{n} \\frac{1}{k(k+1)} &= \\sum_{k=1}^{n} \\left(\\frac{1}{k} - \\frac{1}{k+1}\\right) \\\\\n &= \\left(1 - \\frac{1}{2}\\right) + \\left(\\frac{1}{2} - \\frac{1}{3}\\right) + \\left(\\frac{1}{3} - \\frac{1}{4}\\right) + \\cdots + \\left(\\frac{1}{n} - \\frac{1}{n+1}\\right) \\\\\n &= 1 - \\frac{1}{n+1} = \\frac{n}{n+1}\n\\end{aligned}$$"
     },
     {
       "type": "example",
@@ -233,14 +233,14 @@
       "number": "11.10",
       "title": "Another Telescoping Sum",
       "problem": "Evaluate $\\displaystyle\\sum_{k=1}^{n} \\frac{1}{k(k+2)}$.",
-      "solution": "Partial fractions give:\n$$\n \\frac{1}{k(k+2)} = \\frac{1}{2}\\left(\\frac{1}{k} - \\frac{1}{k+2}\\right)\n$$\n\nThe sum becomes:\n$$\n \\sum_{k=1}^{n} \\frac{1}{k(k+2)} &= \\frac{1}{2}\\sum_{k=1}^{n} \\left(\\frac{1}{k} - \\frac{1}{k+2}\\right) \\\\\n &= \\frac{1}{2}\\left[\\left(1 - \\frac{1}{3}\\right) + \\left(\\frac{1}{2} - \\frac{1}{4}\\right) + \\left(\\frac{1}{3} - \\frac{1}{5}\\right) + \\cdots\\right]\n$$\nTerms cancel with those two positions later. What survives:\n$$\n = \\frac{1}{2}\\left(1 + \\frac{1}{2} - \\frac{1}{n+1} - \\frac{1}{n+2}\\right) = \\frac{1}{2}\\left(\\frac{3}{2} - \\frac{1}{n+1} - \\frac{1}{n+2}\\right)\n$$"
+      "solution": "Partial fractions give:\n$$\n \\frac{1}{k(k+2)} = \\frac{1}{2}\\left(\\frac{1}{k} - \\frac{1}{k+2}\\right)\n$$\n\nThe sum becomes:\n$$\\begin{aligned}\n \\sum_{k=1}^{n} \\frac{1}{k(k+2)} &= \\frac{1}{2}\\sum_{k=1}^{n} \\left(\\frac{1}{k} - \\frac{1}{k+2}\\right) \\\\\n &= \\frac{1}{2}\\left[\\left(1 - \\frac{1}{3}\\right) + \\left(\\frac{1}{2} - \\frac{1}{4}\\right) + \\left(\\frac{1}{3} - \\frac{1}{5}\\right) + \\cdots\\right]\n\\end{aligned}$$\nTerms cancel with those two positions later. What survives:\n$$\n = \\frac{1}{2}\\left(1 + \\frac{1}{2} - \\frac{1}{n+1} - \\frac{1}{n+2}\\right) = \\frac{1}{2}\\left(\\frac{3}{2} - \\frac{1}{n+1} - \\frac{1}{n+2}\\right)\n$$"
     },
     {
       "type": "summary",
       "id": "summary-11.2",
       "number": null,
       "title": "Series and Summation Notation",
-      "content": "**Definitions:**\n\n- **Series:** Sum of a sequence's terms: $a_1 + a_2 + a_3 + \\cdots$\n\n- **Partial sum:** $S_n = a_1 + a_2 + \\cdots + a_n$\n\n- **Sigma notation:** $\\displaystyle\\sum_{k=1}^{n} a_k = a_1 + a_2 + \\cdots + a_n$\n\n**Properties of Summation:**\n$$\n\\sum_{k=1}^{n} c \\cdot a_k &= c \\sum_{k=1}^{n} a_k \\quad \\text{(constant multiple)} \\\\\n\\sum_{k=1}^{n} (a_k \\pm b_k) &= \\sum_{k=1}^{n} a_k \\pm \\sum_{k=1}^{n} b_k \\quad \\text{(sum/difference)} \\\\\n\\sum_{k=1}^{n} c &= nc \\quad \\text{(constant sum)}\n$$\n\n**Standard Formulas:**\n$$\n\\sum_{k=1}^{n} k &= \\frac{n(n+1)}{2} & \\sum_{k=1}^{n} k^2 &= \\frac{n(n+1)(2n+1)}{6} \\\\[6pt]\n\\sum_{k=1}^{n} k^3 &= \\left[\\frac{n(n+1)}{2}\\right]^2\n$$\n\n**Telescoping:** $\\displaystyle\\sum_{k=1}^{n} (a_k - a_{k-1}) = a_n - a_0$"
+      "content": "**Definitions:**\n\n- **Series:** Sum of a sequence's terms: $a_1 + a_2 + a_3 + \\cdots$\n\n- **Partial sum:** $S_n = a_1 + a_2 + \\cdots + a_n$\n\n- **Sigma notation:** $\\displaystyle\\sum_{k=1}^{n} a_k = a_1 + a_2 + \\cdots + a_n$\n\n**Properties of Summation:**\n$$\\begin{aligned}\n\\sum_{k=1}^{n} c \\cdot a_k &= c \\sum_{k=1}^{n} a_k \\quad \\text{(constant multiple)} \\\\\n\\sum_{k=1}^{n} (a_k \\pm b_k) &= \\sum_{k=1}^{n} a_k \\pm \\sum_{k=1}^{n} b_k \\quad \\text{(sum/difference)} \\\\\n\\sum_{k=1}^{n} c &= nc \\quad \\text{(constant sum)}\n\\end{aligned}$$\n\n**Standard Formulas:**\n$$\\begin{aligned}\n\\sum_{k=1}^{n} k &= \\frac{n(n+1)}{2} & \\sum_{k=1}^{n} k^2 &= \\frac{n(n+1)(2n+1)}{6} \\\\[6pt]\n\\sum_{k=1}^{n} k^3 &= \\left[\\frac{n(n+1)}{2}\\right]^2\n\\end{aligned}$$\n\n**Telescoping:** $\\displaystyle\\sum_{k=1}^{n} (a_k - a_{k-1}) = a_n - a_0$"
     },
     {
       "type": "exercise",

@@ -33,7 +33,7 @@
       "id": "algorithm-5.3",
       "number": null,
       "title": "Choosing a Strategy for Exponential Equations",
-      "content": "{1.4}\ncenter\ntikzpicture[\n node distance=1.2cm,\n decision/.style={diamond, draw, fill=AtlasTeal!20, text width=3.5cm, align=center, inner sep=2pt},\n process/.style={rectangle, draw, rounded corners, fill=AtlasCoral!20, text width=4cm, align=center, minimum height=0.8cm},\n arrow/.style={->, thick}\n]\n % Start\n (start) {Exponential equation\\\\(variable in exponent)};\n \n % Decision 1\n (d1) {Can both sides be written as powers of the **same base**?};\n \n % Yes branch - same base\n (samebase) {**Same-Base Method**\\ exponents:\\\\$b^{f(x)} = b^{g(x)} \\Rightarrow f(x) = g(x)$};\n \n % No branch - continue\n (d2) {Is the equation **quadratic in form**?\\\\(e.g., $e^{2x} - 5e^x + 6 = 0$)};\n \n % Yes branch - substitution\n (subst) {**Substitution Method**\\ $u = b^x$, solve quadratic,\\-substitute};\n \n % No branch - take log\n (takelog) {**Take Logarithm Method**\\ $\\ln$ (or $\\log$) of both sides,\\ power rule to bring down exponent};\n \n % Arrows\n (start) – (d1);\n (d1) – node[above] {Yes} (samebase);\n (d1) – node[left] {No} (d2);\n (d2) – node[above] {Yes} (subst);\n (d2) – node[left] {No} (takelog);\ntikzpicture\ncenter\n\n**Quick decision guide:**\n\n- **See $4^x = 8$?** Both are powers of 2 → **Same-base method**\n\n- **See $3^x = 17$?** Can't match bases → **Take logarithm**\n\n- **See $e^{2x} - 5e^x + 6 = 0$?** Quadratic pattern → **Substitution**\n\n- **See $2^x = 3^{x+1}$?** Different bases, both have $x$ → **Take logarithm**"
+      "content": "{1.4}\ncenter\n\ncenter\n\n**Quick decision guide:**\n\n- **See $4^x = 8$?** Both are powers of 2 → **Same-base method**\n\n- **See $3^x = 17$?** Can't match bases → **Take logarithm**\n\n- **See $e^{2x} - 5e^x + 6 = 0$?** Quadratic pattern → **Substitution**\n\n- **See $2^x = 3^{x+1}$?** Different bases, both have $x$ → **Take logarithm**"
     },
     {
       "type": "heading",
@@ -95,7 +95,7 @@
     {
       "type": "figure",
       "id": "fig:exp-equation-graphical",
-      "src": "/figures/precalculus/ch05/fig-exp-equation-graphical.svg",
+      "src": "/figures/precalculus/fig-exp-equation-graphical.svg",
       "caption": "Solving $2^x = 5$ graphically. The solution $x = \\log_2 5 \\approx 2.32$ is where the exponential curve intersects the horizontal line $y = 5$.",
       "alt": "Solving $2^x = 5$ graphically. The solution $x = \\log_2 5 \\approx 2.32$ is where the exponential curve intersects the horizontal line $y = 5$.",
       "tikz": true
@@ -129,7 +129,7 @@
       "number": "5.6",
       "title": "Isolating the exponential first",
       "problem": "Solve $4 \\cdot 2^x - 7 = 25$.",
-      "solution": "First, isolate the exponential term:\n$$\n 4 \\cdot 2^x - 7 &= 25 \\\\\n 4 \\cdot 2^x &= 32 \\\\\n 2^x &= 8\n$$\n\nNow we can use the same-base method: $8 = 2^3$, so:\n$$\n 2^x = 2^3 \\implies x = \\boxed{3}\n$$\n\n(If the answer weren't so nice, we'd use logarithms.)"
+      "solution": "First, isolate the exponential term:\n$$\\begin{aligned}\n 4 \\cdot 2^x - 7 &= 25 \\\\\n 4 \\cdot 2^x &= 32 \\\\\n 2^x &= 8\n\\end{aligned}$$\n\nNow we can use the same-base method: $8 = 2^3$, so:\n$$\n 2^x = 2^3 \\implies x = \\boxed{3}\n$$\n\n(If the answer weren't so nice, we'd use logarithms.)"
     },
     {
       "type": "example",
@@ -191,7 +191,7 @@
     {
       "type": "figure",
       "id": "fig:log-equation-graphical",
-      "src": "/figures/precalculus/ch05/fig-log-equation-graphical.svg",
+      "src": "/figures/precalculus/fig-log-equation-graphical.svg",
       "caption": "Solving $\\ln x = 1$ graphically. The solution $x = e \\approx 2.718$ is where the logarithmic curve crosses the horizontal line $y = 1$. Note the vertical asymptote at $x = 0$—this is why we must reject any solution $x \\leq 0$.",
       "alt": "Solving $\\ln x = 1$ graphically. The solution $x = e \\approx 2.718$ is where the logarithmic curve crosses the horizontal line $y = 1$. Note the vertical asymptote at $x = 0$—this is why we must reject any solution $x \\leq 0$.",
       "tikz": true
@@ -257,7 +257,7 @@
       "number": "5.15",
       "title": "Using the quotient rule",
       "problem": "Solve $\\log_2(x + 1) - \\log_2(x - 1) = 3$.",
-      "solution": "Combine using the quotient rule:\n$$\n \\log_2\\left(\\frac{x + 1}{x - 1}\\right) = 3\n$$\n\nConvert to exponential form:\n$$\n \\frac{x + 1}{x - 1} = 2^3 = 8\n$$\n\nSolve the rational equation:\n$$\n x + 1 &= 8(x - 1) \\\\\n x + 1 &= 8x - 8 \\\\\n 9 &= 7x \\\\\n x &= \\frac{9}{7}\n$$\n\n**Check:** Is $x = \\frac{9}{7} > 1$? Yes, so both $x + 1 > 0$ and \n$x - 1 > 0$.\n\nVerify: $\\log_2\\left(\\frac{9/7 + 1}{9/7 - 1}\\right) = \\log_2\\left(\\frac{16/7}{2/7}\\right) = \\log_2 8 = 3$ \n\n**Solution:** $x = \\boxed{\\frac{9}{7}}$"
+      "solution": "Combine using the quotient rule:\n$$\n \\log_2\\left(\\frac{x + 1}{x - 1}\\right) = 3\n$$\n\nConvert to exponential form:\n$$\n \\frac{x + 1}{x - 1} = 2^3 = 8\n$$\n\nSolve the rational equation:\n$$\\begin{aligned}\n x + 1 &= 8(x - 1) \\\\\n x + 1 &= 8x - 8 \\\\\n 9 &= 7x \\\\\n x &= \\frac{9}{7}\n\\end{aligned}$$\n\n**Check:** Is $x = \\frac{9}{7} > 1$? Yes, so both $x + 1 > 0$ and \n$x - 1 > 0$.\n\nVerify: $\\log_2\\left(\\frac{9/7 + 1}{9/7 - 1}\\right) = \\log_2\\left(\\frac{16/7}{2/7}\\right) = \\log_2 8 = 3$ \n\n**Solution:** $x = \\boxed{\\frac{9}{7}}$"
     },
     {
       "type": "example",
@@ -265,7 +265,7 @@
       "number": "5.16",
       "title": "Equation with multiple logarithms",
       "problem": "Solve $2\\log_3 x = \\log_3 4 + \\log_3(x + 3)$.",
-      "solution": "Use properties to simplify each side:\n$$\n \\log_3 x^2 &= \\log_3[4(x + 3)] \\\\\n \\log_3 x^2 &= \\log_3(4x + 12)\n$$\n\nSince the logs are equal (same base), the arguments are equal:\n$$\n x^2 = 4x + 12 \\implies x^2 - 4x - 12 = 0 \\implies (x - 6)(x + 2) = 0\n$$\n\nSo $x = 6$ or $x = -2$.\n\n**Check:**\n\n- $x = 6$: $\\log_3 6$ and $\\log_3(6+3) = \\log_3 9$ are both defined. \n\n- $x = -2$: $\\log_3(-2)$ is undefined. **Reject.**\n\n**Solution:** $x = \\boxed{6}$"
+      "solution": "Use properties to simplify each side:\n$$\\begin{aligned}\n \\log_3 x^2 &= \\log_3[4(x + 3)] \\\\\n \\log_3 x^2 &= \\log_3(4x + 12)\n\\end{aligned}$$\n\nSince the logs are equal (same base), the arguments are equal:\n$$\n x^2 = 4x + 12 \\implies x^2 - 4x - 12 = 0 \\implies (x - 6)(x + 2) = 0\n$$\n\nSo $x = 6$ or $x = -2$.\n\n**Check:**\n\n- $x = 6$: $\\log_3 6$ and $\\log_3(6+3) = \\log_3 9$ are both defined. \n\n- $x = -2$: $\\log_3(-2)$ is undefined. **Reject.**\n\n**Solution:** $x = \\boxed{6}$"
     },
     {
       "type": "heading",
@@ -281,7 +281,7 @@
       "id": "example-5.17",
       "number": "5.17",
       "title": "Compound interest---time to reach a goal",
-      "problem": "An investment of \\$5,000 earns 6\\% annual interest compounded monthly. \nHow long until the investment doubles?",
+      "problem": "An investment of $5,000 earns 6\\% annual interest compounded monthly. \nHow long until the investment doubles?",
       "solution": "The compound interest formula is:\n$$\n A = P\\left(1 + \\frac{r}{n}\\right)^{nt}\n$$\n\nHere $P = 5000$, $r = 0.06$, $n = 12$, and we want $A = 10000$.\n\n$$\n 10000 = 5000\\left(1 + \\frac{0.06}{12}\\right)^{12t}\n$$\n\nSimplify:\n$$\n 2 = (1.005)^{12t}\n$$\n\nTake the natural log of both sides:\n$$\n \\ln 2 = 12t \\cdot \\ln(1.005)\n$$\n\nSolve for $t$:\n$$\n t = \\frac{\\ln 2}{12 \\ln(1.005)} = \\frac{0.693}{12(0.00499)} \\approx \\frac{0.693}{0.0599} \\approx \\boxed{11.58 \\text{ years}}\n$$\n\nThe investment will double in about 11 years and 7 months."
     },
     {
@@ -295,7 +295,7 @@
     {
       "type": "figure",
       "id": "fig:decay-solve-graphical",
-      "src": "/figures/precalculus/ch05/fig-decay-solve-graphical.svg",
+      "src": "/figures/precalculus/fig-decay-solve-graphical.svg",
       "caption": "Solving a decay problem graphically. To find when $A(t) = 0.25A_0$, we locate where the decay curve crosses the horizontal line at $0.25A_0$. The $t$-coordinate of this intersection is the solution: $t = \\frac{\\ln 0.25}{-k}$. Note that two half-lives ($2t_{1/2}$) gives 25\\% remaining.",
       "alt": "Solving a decay problem graphically. To find when $A(t) = 0.25A_0$, we locate where the decay curve crosses the horizontal line at $0.25A_0$. The $t$-coordinate of this intersection is the solution: $t = \\frac{\\ln 0.25}{-k}$. Note that two half-lives ($2t_{1/2}$) gives 25\\% remaining.",
       "tikz": true
@@ -327,7 +327,7 @@
       "type": "exercise",
       "id": "ex-5.3-1",
       "number": "1",
-      "problem": "Determine whether each $x$-value is a solution of the equation.\n\n1. $3^{2x-1} = 27$\n enumerate[label=()]\n\n2. $x = 1$\n\n3. $x = 2$\n\n4. $x = \\frac{1}{2}(\\log_3 27 + 1)$\n $\\log_4(3x) = 2$\n \n\n1. $x = 16$\n\n2. $x = \\frac{16}{3}$\n\n3. $x = 4$\n $\\ln(x - 1) = 3.8$\n \n\n1. $x = 1 + e^{3.8}$\n\n2. $x \\approx 45.7$\n\n3. $x = 1 + \\ln 3.8$\nenumerate",
+      "problem": "Determine whether each $x$-value is a solution of the equation.\n\n1. $3^{2x-1} = 27$\n \n\n2. $x = 1$\n\n3. $x = 2$\n\n4. $x = \\frac{1}{2}(\\log_3 27 + 1)$\n \n\n- $\\log_4(3x) = 2$\n \n\n1. $x = 16$\n\n2. $x = \\frac{16}{3}$\n\n3. $x = 4$\n \n\n- $\\ln(x - 1) = 3.8$\n \n\n1. $x = 1 + e^{3.8}$\n\n2. $x \\approx 45.7$\n\n3. $x = 1 + \\ln 3.8$",
       "variant": "regular",
       "hint": null,
       "answer": null
@@ -381,7 +381,7 @@
       "type": "exercise",
       "id": "ex-5.3-7",
       "number": "7",
-      "problem": "An investment of \\$8,000 earns 5\\% annual interest compounded quarterly.\n\\begin{enumerate}[label=(\\alph*)]\n \\item Write the formula for the value after $t$ years.\n \\item How long until the investment is worth \\$12,000?\n How long until it triples?\nenumerate",
+      "problem": "An investment of $8,000 earns 5\\% annual interest compounded quarterly.\n\n1. Write the formula for the value after $t$ years.\n\n2. How long until the investment is worth $12,000?\n\n3. How long until it triples?",
       "variant": "regular",
       "hint": null,
       "answer": null

@@ -57,7 +57,7 @@
     {
       "type": "figure",
       "id": "fig:parabola-definition",
-      "src": "/figures/precalculus/ch10/fig-parabola-definition.svg",
+      "src": "/figures/precalculus/fig-parabola-definition.svg",
       "caption": "The definition of a parabola. Point $P$ lies on the parabola because its distance to the focus $F$ (labeled $d_1$) equals its perpendicular distance to the directrix (labeled $d_2$). The vertex $V$ is the point on the parabola closest to the directrix, lying exactly halfway between focus and directrix.",
       "alt": "The definition of a parabola. Point $P$ lies on the parabola because its distance to the focus $F$ (labeled $d_1$) equals its perpendicular distance to the directrix (labeled $d_2$). The vertex $V$ is the point on the parabola closest to the directrix, lying exactly halfway between focus and directrix.",
       "tikz": true
@@ -238,7 +238,7 @@
     {
       "type": "figure",
       "id": "fig:parabola-reflection",
-      "src": "/figures/precalculus/ch10/fig-parabola-reflection.svg",
+      "src": "/figures/precalculus/fig-parabola-reflection.svg",
       "caption": "The reflective property of a parabola. Five parallel rays (gray arrows) traveling downward along the axis strike the parabola and reflect (orange arrows) through the focus $F$. This property is used in satellite dishes, flashlights, and solar collectors.",
       "alt": "The reflective property of a parabola. Five parallel rays (gray arrows) traveling downward along the axis strike the parabola and reflect (orange arrows) through the focus $F$. This property is used in satellite dishes, flashlights, and solar collectors.",
       "tikz": true
@@ -281,7 +281,7 @@
     },
     {
       "type": "paragraph",
-      "text": "$$x(t) &= (v_0 \\cos\\theta)t \\\\\n    y(t) &= (v_0 \\sin\\theta)t - \\frac{1}{2}gt^2$$"
+      "text": "$$\\begin{aligned}x(t) &= (v_0 \\cos\\theta)t \\\\\n    y(t) &= (v_0 \\sin\\theta)t - \\frac{1}{2}gt^2\\end{aligned}$$"
     },
     {
       "type": "paragraph",
@@ -297,7 +297,7 @@
       "number": "10.7",
       "title": "Trajectory of a ball",
       "problem": "A ball is thrown from ground level at 64 ft/s at an angle of $45°$. \nFind the equation of its trajectory and its maximum height.",
-      "solution": "With $v_0 = 64$ ft/s, $\\theta = 45°$, and $g = 32$ ft/s$^2$:\n$$\n x &= (64 \\cos 45°)t = 64 \\cdot \\frac{\\sqrt{2}}{2} \\cdot t = 32\\sqrt{2}\\, t \\\\\n y &= (64 \\sin 45°)t - 16t^2 = 32\\sqrt{2}\\, t - 16t^2\n$$\n\nFrom the first equation, $t = \\frac{x}{32\\sqrt{2}}$. Substituting into \nthe second:\n$$\n y = 32\\sqrt{2} \\cdot \\frac{x}{32\\sqrt{2}} - 16 \\left(\\frac{x}{32\\sqrt{2}}\\right)^2\n$$\n$$\n y = x - 16 \\cdot \\frac{x^2}{2048} = x - \\frac{x^2}{128}\n$$\n\nThis is a downward-opening parabola. To find the maximum height, note \nthat this is a quadratic in $x$:\n$$\n y = -\\frac{1}{128}x^2 + x\n$$\n\nThe vertex is at $x = -\\frac{b}{2a} = -\\frac{1}{2(-1/128)} = 64$ feet.\n\nAt $x = 64$: $y = 64 - \\frac{64^2}{128} = 64 - 32 = 32$ feet.\n\n**Maximum height: 32 feet**, achieved when the horizontal distance \nis 64 feet."
+      "solution": "With $v_0 = 64$ ft/s, $\\theta = 45°$, and $g = 32$ ft/s$^2$:\n$$\\begin{aligned}\n x &= (64 \\cos 45°)t = 64 \\cdot \\frac{\\sqrt{2}}{2} \\cdot t = 32\\sqrt{2}\\, t \\\\\n y &= (64 \\sin 45°)t - 16t^2 = 32\\sqrt{2}\\, t - 16t^2\n\\end{aligned}$$\n\nFrom the first equation, $t = \\frac{x}{32\\sqrt{2}}$. Substituting into \nthe second:\n$$\n y = 32\\sqrt{2} \\cdot \\frac{x}{32\\sqrt{2}} - 16 \\left(\\frac{x}{32\\sqrt{2}}\\right)^2\n$$\n$$\n y = x - 16 \\cdot \\frac{x^2}{2048} = x - \\frac{x^2}{128}\n$$\n\nThis is a downward-opening parabola. To find the maximum height, note \nthat this is a quadratic in $x$:\n$$\n y = -\\frac{1}{128}x^2 + x\n$$\n\nThe vertex is at $x = -\\frac{b}{2a} = -\\frac{1}{2(-1/128)} = 64$ feet.\n\nAt $x = 64$: $y = 64 - \\frac{64^2}{128} = 64 - 32 = 32$ feet.\n\n**Maximum height: 32 feet**, achieved when the horizontal distance \nis 64 feet."
     },
     {
       "type": "heading",
@@ -325,7 +325,7 @@
       "number": "10.8",
       "title": "Using the latus rectum for graphing",
       "problem": "Graph the parabola $x^2 = 12y$, using the latus rectum.",
-      "solution": "From $x^2 = 12y$, we have $4p = 12$, so $p = 3$.\n\nKey features:\n\n- Vertex: $(0, 0)$\n\n- Focus: $(0, 3)$\n\n- Directrix: $y = -3$\n\n- Latus rectum length: $|4p| = 12$\n\nThe latus rectum passes through the focus $(0, 3)$, horizontally. Its \nlength is 12, so it extends 6 units on each side of the focus. The \nendpoints are $(-6, 3)$ and $(6, 3)$.\n\nfigure[H]\n\ntikzpicture[scale=0.4]\n % Axes\n (-8,0) – (8,0) node[right] {$x$};\n (0,-4) – (0,8) node[above] {$y$};\n \n % Grid\n in {-6,-4,-2,2,4,6}\n (,0.1) – (,-0.1) node[below] { $\\x$};\n in {-2,2,4,6}\n (0.1,) – (-0.1,) node[left] { $\\y$};\n \n % Parabola\n \n plot (, {/12});\n \n % Focus\n lldraw[AtlasTeal] (0,3) circle (4pt);\n at (1,3.5) {$F$};\n \n % Directrix\n (-7,-3) – (7,-3);\n at (8,-3) {$y=-3$};\n \n % Latus rectum\n (-6,3) – (6,3);\n lldraw[AtlasWarm] (-6,3) circle (3pt);\n lldraw[AtlasWarm] (6,3) circle (3pt);\n \n % Vertex\n lldraw (0,0) circle (3pt);\ntikzpicture\nGraph of $x^2 = 12y$, a parabola opening upward with vertex at the origin, focus at $(0, 3)$, and directrix $y = -3$. The horizontal orange segment is the latus rectum, passing through the focus with endpoints at $(-6, 3)$ and $(6, 3)$, showing the width of the parabola at the focal level.\n\nfigure\n\nThe parabola passes through the vertex $(0, 0)$ and through the endpoints \nof the latus rectum, $(-6, 3)$ and $(6, 3)$.",
+      "solution": "From $x^2 = 12y$, we have $4p = 12$, so $p = 3$.\n\nKey features:\n\n- Vertex: $(0, 0)$\n\n- Focus: $(0, 3)$\n\n- Directrix: $y = -3$\n\n- Latus rectum length: $|4p| = 12$\n\nThe latus rectum passes through the focus $(0, 3)$, horizontally. Its \nlength is 12, so it extends 6 units on each side of the focus. The \nendpoints are $(-6, 3)$ and $(6, 3)$.\n\nfigure[H]\n\nGraph of $x^2 = 12y$, a parabola opening upward with vertex at the origin, focus at $(0, 3)$, and directrix $y = -3$. The horizontal orange segment is the latus rectum, passing through the focus with endpoints at $(-6, 3)$ and $(6, 3)$, showing the width of the parabola at the focal level.\n\nfigure\n\nThe parabola passes through the vertex $(0, 0)$ and through the endpoints \nof the latus rectum, $(-6, 3)$ and $(6, 3)$.",
       "figures": [
         {
           "type": "figure",
@@ -445,7 +445,7 @@
       "number": "10.12",
       "title": "Complete graphing example",
       "problem": "Graph $(y + 1)^2 = -8(x - 2)$, showing all key features.",
-      "solution": "**Step 1:** This is $(y-k)^2 = 4p(x-h)$ form (horizontal axis).\n\n**Step 2:** Vertex is $(h, k) = (2, -1)$.\n\n**Step 3:** $4p = -8$, so $p = -2$.\n\n**Step 4:** Since $p < 0$, the parabola opens **left**.\n\n**Step 5:** Focus is at $(h + p, k) = (2 + (-2), -1) = (0, -1)$.\n\n**Step 6:** Directrix is $x = h - p = 2 - (-2) = 4$.\n\n**Step 7:** Latus rectum has length $|4p| = 8$, so it extends 4 \nunits above and below the focus. Endpoints: $(0, 3)$ and $(0, -5)$.\n\nfigure[H]\n\ntikzpicture[scale=0.45]\n % Axes\n (-5,0) – (6,0) node[right] {$x$};\n (0,-6) – (0,5) node[above] {$y$};\n \n % Grid\n in {-4,-2,2,4}\n (,0.1) – (,-0.1) node[below] { $\\x$};\n in {-4,-2,2,4}\n (0.1,) – (-0.1,) node[left] { $\\y$};\n \n % Parabola (y+1)^2 = -8(x-2), so x = 2 - (y+1)^2/8\n \n plot ({2 - (+1)*(+1)/8}, );\n \n % Vertex\n lldraw[AtlasSage] (2,-1) circle (4pt);\n at (2.3,-1) {$V(2,-1)$};\n \n % Focus\n lldraw[AtlasTeal] (0,-1) circle (4pt);\n at (0,-1.5) {$F(0,-1)$};\n \n % Directrix\n (4,-5.5) – (4,4.5);\n at (4.1,4) {$x=4$};\n \n % Latus rectum\n (0,-5) – (0,3);\n lldraw[AtlasWarm] (0,3) circle (3pt);\n lldraw[AtlasWarm] (0,-5) circle (3pt);\n at (-0.3,3) { $(0,3)$};\n at (-0.3,-5) { $(0,-5)$};\ntikzpicture\nGraph of $(y+1)^2 = -8(x-2)$, a parabola opening to the left with vertex at $(2, -1)$, focus at $(0, -1)$, and directrix $x = 4$. The vertical orange segment is the latus rectum with endpoints $(0, 3)$ and $(0, -5)$.\n\nfigure",
+      "solution": "**Step 1:** This is $(y-k)^2 = 4p(x-h)$ form (horizontal axis).\n\n**Step 2:** Vertex is $(h, k) = (2, -1)$.\n\n**Step 3:** $4p = -8$, so $p = -2$.\n\n**Step 4:** Since $p < 0$, the parabola opens **left**.\n\n**Step 5:** Focus is at $(h + p, k) = (2 + (-2), -1) = (0, -1)$.\n\n**Step 6:** Directrix is $x = h - p = 2 - (-2) = 4$.\n\n**Step 7:** Latus rectum has length $|4p| = 8$, so it extends 4 \nunits above and below the focus. Endpoints: $(0, 3)$ and $(0, -5)$.\n\nfigure[H]\n\nGraph of $(y+1)^2 = -8(x-2)$, a parabola opening to the left with vertex at $(2, -1)$, focus at $(0, -1)$, and directrix $x = 4$. The vertical orange segment is the latus rectum with endpoints $(0, 3)$ and $(0, -5)$.\n\nfigure",
       "figures": [
         {
           "type": "figure",
@@ -463,7 +463,7 @@
       "number": "10.13",
       "title": "Graphing from general form",
       "problem": "Graph $y^2 + 6y - 4x + 1 = 0$.",
-      "solution": "**Convert to standard form** by completing the square:\n$$\n y^2 + 6y = 4x - 1\n$$\n$$\n y^2 + 6y + 9 = 4x - 1 + 9\n$$\n$$\n (y + 3)^2 = 4x + 8\n$$\n$$\n (y + 3)^2 = 4(x + 2)\n$$\n\nThis is $(y-k)^2 = 4p(x-h)$ with:\n\n- Vertex: $(h, k) = (-2, -3)$\n\n- $4p = 4$, so $p = 1$\n\n- Opens right (since $p > 0$)\n\n- Focus: $(-2 + 1, -3) = (-1, -3)$\n\n- Directrix: $x = -2 - 1 = -3$\n\n- Latus rectum endpoints: $(-1, -3 \\pm 2) = (-1, -1)$ and $(-1, -5)$\n\nfigure[H]\n\ntikzpicture[scale=0.5]\n % Axes\n (-5,0) – (4,0) node[right] {$x$};\n (0,-7) – (0,2) node[above] {$y$};\n \n % Parabola (y+3)^2 = 4(x+2), so x = (y+3)^2/4 - 2\n \n plot ({(+3)*(+3)/4 - 2}, );\n \n % Vertex\n lldraw[AtlasSage] (-2,-3) circle (4pt);\n \n % Focus\n lldraw[AtlasTeal] (-1,-3) circle (4pt);\n \n % Directrix\n (-3,-6.5) – (-3,1.5);\n \n % Latus rectum\n (-1,-5) – (-1,-1);\n lldraw[AtlasWarm] (-1,-1) circle (3pt);\n lldraw[AtlasWarm] (-1,-5) circle (3pt);\ntikzpicture\nGraph of $(y+3)^2 = 4(x+2)$, converted from general form $y^2 + 6y - 4x + 1 = 0$. This parabola opens to the right with vertex at $(-2, -3)$ (green dot), focus at $(-1, -3)$ (teal dot), and directrix $x = -3$ (dashed line). The latus rectum endpoints are $(-1, -1)$ and $(-1, -5)$.\n\nfigure",
+      "solution": "**Convert to standard form** by completing the square:\n$$\n y^2 + 6y = 4x - 1\n$$\n$$\n y^2 + 6y + 9 = 4x - 1 + 9\n$$\n$$\n (y + 3)^2 = 4x + 8\n$$\n$$\n (y + 3)^2 = 4(x + 2)\n$$\n\nThis is $(y-k)^2 = 4p(x-h)$ with:\n\n- Vertex: $(h, k) = (-2, -3)$\n\n- $4p = 4$, so $p = 1$\n\n- Opens right (since $p > 0$)\n\n- Focus: $(-2 + 1, -3) = (-1, -3)$\n\n- Directrix: $x = -2 - 1 = -3$\n\n- Latus rectum endpoints: $(-1, -3 \\pm 2) = (-1, -1)$ and $(-1, -5)$\n\nfigure[H]\n\nGraph of $(y+3)^2 = 4(x+2)$, converted from general form $y^2 + 6y - 4x + 1 = 0$. This parabola opens to the right with vertex at $(-2, -3)$ (green dot), focus at $(-1, -3)$ (teal dot), and directrix $x = -3$ (dashed line). The latus rectum endpoints are $(-1, -1)$ and $(-1, -5)$.\n\nfigure",
       "figures": [
         {
           "type": "figure",
@@ -509,7 +509,7 @@
       "number": "10.14",
       "title": "Finding a focal chord",
       "problem": "For the parabola $x^2 = 8y$, find the endpoints and length of the focal \nchord with slope $1$.",
-      "solution": "From $x^2 = 8y$, we have $4p = 8$, so $p = 2$. The focus is at $(0, 2)$.\n\nA line through $(0, 2)$ with slope $1$ has equation $y - 2 = 1(x - 0)$, \nor $y = x + 2$.\n\nSubstitute into the parabola equation:\n$$\n x^2 = 8(x + 2) = 8x + 16\n$$\n$$\n x^2 - 8x - 16 = 0\n$$\n\nUsing the quadratic formula:\n$$\n x = \\frac{8 \\pm \\sqrt{64 + 64}}{2} = \\frac{8 \\pm 8\\sqrt{2}}{2} = 4 \\pm 4\\sqrt{2}\n$$\n\nSo $x_1 = 4 - 4\\sqrt{2} \\approx -1.66$ and $x_2 = 4 + 4\\sqrt{2} \\approx 9.66$.\n\nThe corresponding $y$-values are:\n$$\n y_1 &= x_1 + 2 = 6 - 4\\sqrt{2} \\approx 0.34 \\\\\n y_2 &= x_2 + 2 = 6 + 4\\sqrt{2} \\approx 11.66\n$$\n\n**Verification:** $x_1 x_2 = (4 - 4\\sqrt{2})(4 + 4\\sqrt{2}) = 16 - 32 = -16 = -4p^2$ \n\n**Length:** Using the distance formula or the property:\n$$\n \\text{Length} = y_1 + y_2 + 2p = (6 - 4\\sqrt{2}) + (6 + 4\\sqrt{2}) + 4 = 16\n$$"
+      "solution": "From $x^2 = 8y$, we have $4p = 8$, so $p = 2$. The focus is at $(0, 2)$.\n\nA line through $(0, 2)$ with slope $1$ has equation $y - 2 = 1(x - 0)$, \nor $y = x + 2$.\n\nSubstitute into the parabola equation:\n$$\n x^2 = 8(x + 2) = 8x + 16\n$$\n$$\n x^2 - 8x - 16 = 0\n$$\n\nUsing the quadratic formula:\n$$\n x = \\frac{8 \\pm \\sqrt{64 + 64}}{2} = \\frac{8 \\pm 8\\sqrt{2}}{2} = 4 \\pm 4\\sqrt{2}\n$$\n\nSo $x_1 = 4 - 4\\sqrt{2} \\approx -1.66$ and $x_2 = 4 + 4\\sqrt{2} \\approx 9.66$.\n\nThe corresponding $y$-values are:\n$$\\begin{aligned}\n y_1 &= x_1 + 2 = 6 - 4\\sqrt{2} \\approx 0.34 \\\\\n y_2 &= x_2 + 2 = 6 + 4\\sqrt{2} \\approx 11.66\n\\end{aligned}$$\n\n**Verification:** $x_1 x_2 = (4 - 4\\sqrt{2})(4 + 4\\sqrt{2}) = 16 - 32 = -16 = -4p^2$ \n\n**Length:** Using the distance formula or the property:\n$$\n \\text{Length} = y_1 + y_2 + 2p = (6 - 4\\sqrt{2}) + (6 + 4\\sqrt{2}) + 4 = 16\n$$"
     },
     {
       "type": "heading",
@@ -553,7 +553,7 @@
       "id": "summary-10.1",
       "number": null,
       "title": "The Parabola",
-      "content": "- A parabola is the set of points equidistant from a focus and a \n directrix. It has **eccentricity $e = 1$**.\n\n- **Vertical axis:** $(x-h)^2 = 4p(y-k)$\n itemize\n\n- Vertex: $(h, k)$\n\n- Focus: $(h, k+p)$\n\n- Directrix: $y = k-p$\n\n- Opens up if $p > 0$, down if $p < 0$\n\n- Tangent at $(x_0, y_0)$: $x \\cdot x_0 = 2p(y + y_0)$\n \n **Horizontal axis:** $(y-k)^2 = 4p(x-h)$\n \n\n- Vertex: $(h, k)$\n\n- Focus: $(h+p, k)$\n\n- Directrix: $x = h-p$\n\n- Opens right if $p > 0$, left if $p < 0$\n\n- Tangent at $(x_0, y_0)$: $y \\cdot y_0 = 2p(x + x_0)$\n \n The reflective property: parallel rays reflect through the focus.\n \n The latus rectum has length $|4p|$.\n \n **Focal chord:** Any chord through the focus. For endpoints \n $(x_1, y_1)$ and $(x_2, y_2)$: $x_1 x_2 = -4p^2$, $y_1 y_2 = p^2$.\n \n **Parametric form:** $x^2 = 4py$ can be written as \n $x = 2pt$, $y = pt^2$.\n \n **Eccentricity:** $e = 1$ for all parabolas (ellipse: $e < 1$, \n hyperbola: $e > 1$).\nitemize"
+      "content": "- A parabola is the set of points equidistant from a focus and a \n directrix. It has **eccentricity $e = 1$**.\n\n- **Vertical axis:** $(x-h)^2 = 4p(y-k)$\n \n\n- Vertex: $(h, k)$\n\n- Focus: $(h, k+p)$\n\n- Directrix: $y = k-p$\n\n- Opens up if $p > 0$, down if $p < 0$\n\n- Tangent at $(x_0, y_0)$: $x \\cdot x_0 = 2p(y + y_0)$\n \n \n\n- **Horizontal axis:** $(y-k)^2 = 4p(x-h)$\n \n\n- Vertex: $(h, k)$\n\n- Focus: $(h+p, k)$\n\n- Directrix: $x = h-p$\n\n- Opens right if $p > 0$, left if $p < 0$\n\n- Tangent at $(x_0, y_0)$: $y \\cdot y_0 = 2p(x + x_0)$\n \n \n\n- The reflective property: parallel rays reflect through the focus.\n \n \n\n- The latus rectum has length $|4p|$.\n \n \n\n- **Focal chord:** Any chord through the focus. For endpoints \n $(x_1, y_1)$ and $(x_2, y_2)$: $x_1 x_2 = -4p^2$, $y_1 y_2 = p^2$.\n \n \n\n- **Parametric form:** $x^2 = 4py$ can be written as \n $x = 2pt$, $y = pt^2$.\n \n \n\n- **Eccentricity:** $e = 1$ for all parabolas (ellipse: $e < 1$, \n hyperbola: $e > 1$)."
     },
     {
       "type": "exercise",
@@ -595,7 +595,7 @@
       "type": "exercise",
       "id": "ex-10.1-5",
       "number": "5",
-      "problem": "Match each equation with its graph.\n\n1. $x^2 = 4y$\n\n2. $x^2 = -4y$\n\n3. $y^2 = 4x$\n\n4. $y^2 = -4x$\n\n5. $(x-1)^2 = 4(y+2)$\n\n6. $(y-1)^2 = -4(x+2)$\n\nfigure[H]\n\ntikzpicture[scale=0.28]\n% Graph (i) - opens up\nscope[shift={(0,0)}]\n (-3,0) – (3,0);\n (0,-1) – (0,4);\n plot (, {/4});\n at (0,-2) {(i)};\nscope\n% Graph (ii) - opens down\nscope[shift={(8,0)}]\n (-3,0) – (3,0);\n (0,-4) – (0,1);\n plot (, {-/4});\n at (0,-5) {(ii)};\nscope\n% Graph (iii) - opens right\nscope[shift={(16,0)}]\n (-1,0) – (4,0);\n (0,-3) – (0,3);\n plot ({/4}, );\n at (1.5,-4) {(iii)};\nscope\n% Graph (iv) - opens left\nscope[shift={(24,0)}]\n (-4,0) – (1,0);\n (0,-3) – (0,3);\n plot ({-/4}, );\n at (-1.5,-4) {(iv)};\nscope\n% Graph (v) - shifted, opens up\nscope[shift={(32,0)}]\n (-2,0) – (4,0);\n (0,-4) – (0,3);\n plot (, {(-1)*(-1)/4 - 2});\n lldraw (1,-2) circle (3pt);\n at (1,-5) {(v)};\nscope\n% Graph (vi) - shifted, opens left\nscope[shift={(40,0)}]\n (-5,0) – (1,0);\n (0,-2) – (0,4);\n plot ({-(-1)*(-1)/4 - 2}, );\n lldraw (-2,1) circle (3pt);\n at (-2,-3) {(vi)};\nscope\ntikzpicture\nSix parabolas for matching: (i) opens up, vertex at origin; \n(ii) opens down, vertex at origin; (iii) opens right, vertex at origin; \n(iv) opens left, vertex at origin; (v) opens up, vertex at $(1, -2)$; \n(vi) opens left, vertex at $(-2, 1)$.\n\nfigure",
+      "problem": "Match each equation with its graph.\n\n1. $x^2 = 4y$\n\n2. $x^2 = -4y$\n\n3. $y^2 = 4x$\n\n4. $y^2 = -4x$\n\n5. $(x-1)^2 = 4(y+2)$\n\n6. $(y-1)^2 = -4(x+2)$\n\nfigure[H]\n\nSix parabolas for matching: (i) opens up, vertex at origin; \n(ii) opens down, vertex at origin; (iii) opens right, vertex at origin; \n(iv) opens left, vertex at origin; (v) opens up, vertex at $(1, -2)$; \n(vi) opens left, vertex at $(-2, 1)$.\n\nfigure",
       "variant": "regular",
       "hint": null,
       "answer": null

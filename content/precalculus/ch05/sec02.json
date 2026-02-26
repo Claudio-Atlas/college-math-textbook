@@ -42,7 +42,7 @@
       "id": "theorem-5.1",
       "number": "5.1",
       "title": "Basic Logarithmic Identities",
-      "content": "For any valid base $b$ (that is, $b > 0$ and $b \\neq 1$):\n$$\n \\log_b 1 &= 0 \\qquad \\text{because } b^0 = 1 \\\\[0.5em]\n \\log_b b &= 1 \\qquad \\text{because } b^1 = b\n$$",
+      "content": "For any valid base $b$ (that is, $b > 0$ and $b \\neq 1$):\n$$\\begin{aligned}\n \\log_b 1 &= 0 \\qquad \\text{because } b^0 = 1 \\\\[0.5em]\n \\log_b b &= 1 \\qquad \\text{because } b^1 = b\n\\end{aligned}$$",
       "label": "Theorem"
     },
     {
@@ -63,7 +63,7 @@
       "id": "theorem-5.2",
       "number": "5.2",
       "title": "Properties of Logarithms",
-      "content": "For $b > 0$, $b \\neq 1$, and positive numbers $M$ and $N$:\n\n$$\n \\log_b(MN) &= \\log_b M + \\log_b N && \\text{(Product Rule)} \\label{eq:log-product}\\\\[0.5em]\n \\log_b\\left(\\frac{M}{N}\\right) &= \\log_b M - \\log_b N && \\text{(Quotient Rule)} \\label{eq:log-quotient}\\\\[0.5em]\n \\log_b(M^p) &= p \\cdot \\log_b M && \\text{(Power Rule)} \\label{eq:log-power}\n$$",
+      "content": "For $b > 0$, $b \\neq 1$, and positive numbers $M$ and $N$:\n\n$$\\begin{aligned}\n \\log_b(MN) &= \\log_b M + \\log_b N && \\text{(Product Rule)} \\label{eq:log-product}\\\\[0.5em]\n \\log_b\\left(\\frac{M}{N}\\right) &= \\log_b M - \\log_b N && \\text{(Quotient Rule)} \\label{eq:log-quotient}\\\\[0.5em]\n \\log_b(M^p) &= p \\cdot \\log_b M && \\text{(Power Rule)} \\label{eq:log-power}\n\\end{aligned}$$",
       "label": "Theorem"
     },
     {
@@ -122,7 +122,7 @@
     {
       "type": "figure",
       "id": "fig:log-expansion-tree",
-      "src": "/figures/precalculus/ch05/fig-log-expansion-tree.svg",
+      "src": "/figures/precalculus/fig-log-expansion-tree.svg",
       "caption": "Expanding a logarithm step by step. First apply the quotient rule (teal → rose), then the product rule (rose → sage), finally the power rule (sage → white).",
       "alt": "Expanding a logarithm step by step. First apply the quotient rule (teal → rose), then the product rule (rose → sage), finally the power rule (sage → white).",
       "tikz": true
@@ -133,7 +133,7 @@
       "number": "5.1",
       "title": "Expanding logarithms---basic",
       "problem": "Expand each logarithm completely.\n\n1. $\\log_2(8x)$\n\n2. $\\ln\\left(\\dfrac{x}{e^2}\\right)$\n\n3. $\\log_5(25x^3)$",
-      "solution": "1. Using the product rule:\n $$\n \\log_2(8x) = \\log_2 8 + \\log_2 x = 3 + \\log_2 x\n $$\n (since $\\log_2 8 = 3$)\n\n2. Using the quotient rule, then simplifying:\n $$\n \\ln\\left(\\frac{x}{e^2}\\right) &= \\ln x - \\ln e^2 \\\\\n &= \\ln x - 2\n $$\n (since $\\ln e^2 = 2$)\n\n3. Using product and power rules:\n $$\n \\log_5(25x^3) &= \\log_5 25 + \\log_5 x^3 \\\\\n &= 2 + 3\\log_5 x\n $$\n (since $\\log_5 25 = 2$)"
+      "solution": "1. Using the product rule:\n $$\n \\log_2(8x) = \\log_2 8 + \\log_2 x = 3 + \\log_2 x\n $$\n (since $\\log_2 8 = 3$)\n\n2. Using the quotient rule, then simplifying:\n $$\\begin{aligned}\n \\ln\\left(\\frac{x}{e^2}\\right) &= \\ln x - \\ln e^2 \\\\\n &= \\ln x - 2\n \\end{aligned}$$\n (since $\\ln e^2 = 2$)\n\n3. Using product and power rules:\n $$\\begin{aligned}\n \\log_5(25x^3) &= \\log_5 25 + \\log_5 x^3 \\\\\n &= 2 + 3\\log_5 x\n \\end{aligned}$$\n (since $\\log_5 25 = 2$)"
     },
     {
       "type": "example",
@@ -141,7 +141,7 @@
       "number": "5.2",
       "title": "Expanding logarithms---complex",
       "problem": "Expand each logarithm completely. Assume all variables represent positive \nnumbers.\n\n1. $\\ln\\left(\\dfrac{x^3}{y^2}\\right)$\n\n2. $\\log\\sqrt{xy}$\n\n3. $\\log_2\\left(\\dfrac{x^2 y}{z^3}\\right)$\n\n4. $\\ln\\sqrt[4]{\\dfrac{x^3}{y^2 z}}$",
-      "solution": "1. Apply the quotient rule, then the power rule:\n $$\n \\ln\\left(\\frac{x^3}{y^2}\\right) &= \\ln x^3 - \\ln y^2 \\\\\n &= 3\\ln x - 2\\ln y\n $$\n\n2. First rewrite the radical as an exponent:\n $$\n \\log\\sqrt{xy} &= \\log(xy)^{1/2} \\\\\n &= \\frac{1}{2}\\log(xy) \\\\\n &= \\frac{1}{2}(\\log x + \\log y) \\\\\n &= \\frac{1}{2}\\log x + \\frac{1}{2}\\log y\n $$\n\n3. Apply quotient and product rules:\n $$\n \\log_2\\left(\\frac{x^2 y}{z^3}\\right) &= \\log_2(x^2 y) - \\log_2 z^3 \\\\\n &= \\log_2 x^2 + \\log_2 y - \\log_2 z^3 \\\\\n &= 2\\log_2 x + \\log_2 y - 3\\log_2 z\n $$\n\n4. This one has nested operations. Work from outside in:\n $$\n \\ln\\sqrt[4]{\\frac{x^3}{y^2 z}} &= \\ln\\left(\\frac{x^3}{y^2 z}\\right)^{1/4} \\\\\n &= \\frac{1}{4}\\ln\\left(\\frac{x^3}{y^2 z}\\right) \\\\\n &= \\frac{1}{4}\\left(\\ln x^3 - \\ln(y^2 z)\\right) \\\\\n &= \\frac{1}{4}\\left(\\ln x^3 - \\ln y^2 - \\ln z\\right) \\\\\n &= \\frac{1}{4}\\left(3\\ln x - 2\\ln y - \\ln z\\right) \\\\\n &= \\frac{3}{4}\\ln x - \\frac{1}{2}\\ln y - \\frac{1}{4}\\ln z\n $$"
+      "solution": "1. Apply the quotient rule, then the power rule:\n $$\\begin{aligned}\n \\ln\\left(\\frac{x^3}{y^2}\\right) &= \\ln x^3 - \\ln y^2 \\\\\n &= 3\\ln x - 2\\ln y\n \\end{aligned}$$\n\n2. First rewrite the radical as an exponent:\n $$\\begin{aligned}\n \\log\\sqrt{xy} &= \\log(xy)^{1/2} \\\\\n &= \\frac{1}{2}\\log(xy) \\\\\n &= \\frac{1}{2}(\\log x + \\log y) \\\\\n &= \\frac{1}{2}\\log x + \\frac{1}{2}\\log y\n \\end{aligned}$$\n\n3. Apply quotient and product rules:\n $$\\begin{aligned}\n \\log_2\\left(\\frac{x^2 y}{z^3}\\right) &= \\log_2(x^2 y) - \\log_2 z^3 \\\\\n &= \\log_2 x^2 + \\log_2 y - \\log_2 z^3 \\\\\n &= 2\\log_2 x + \\log_2 y - 3\\log_2 z\n \\end{aligned}$$\n\n4. This one has nested operations. Work from outside in:\n $$\\begin{aligned}\n \\ln\\sqrt[4]{\\frac{x^3}{y^2 z}} &= \\ln\\left(\\frac{x^3}{y^2 z}\\right)^{1/4} \\\\\n &= \\frac{1}{4}\\ln\\left(\\frac{x^3}{y^2 z}\\right) \\\\\n &= \\frac{1}{4}\\left(\\ln x^3 - \\ln(y^2 z)\\right) \\\\\n &= \\frac{1}{4}\\left(\\ln x^3 - \\ln y^2 - \\ln z\\right) \\\\\n &= \\frac{1}{4}\\left(3\\ln x - 2\\ln y - \\ln z\\right) \\\\\n &= \\frac{3}{4}\\ln x - \\frac{1}{2}\\ln y - \\frac{1}{4}\\ln z\n \\end{aligned}$$"
     },
     {
       "type": "heading",
@@ -173,7 +173,7 @@
       "number": "5.4",
       "title": "Condensing logarithms---complex",
       "problem": "Write each expression as a single logarithm with coefficient 1.\n\n1. $\\log x + 2\\log y$\n\n2. $3\\ln a - \\ln b - 2\\ln c$\n\n3. $\\frac{1}{2}(\\log x - 3\\log y + \\log z)$\n\n4. $2\\log_3 x + \\log_3(x-1) - \\log_3 5$",
-      "solution": "1. First apply the power rule to the coefficient:\n $$\n \\log x + 2\\log y = \\log x + \\log y^2 = \\log(xy^2)\n $$\n\n2. Apply power rule first, then combine:\n $$\n 3\\ln a - \\ln b - 2\\ln c &= \\ln a^3 - \\ln b - \\ln c^2 \\\\\n &= \\ln a^3 - (\\ln b + \\ln c^2) \\\\\n &= \\ln a^3 - \\ln(bc^2) \\\\\n &= \\ln\\left(\\frac{a^3}{bc^2}\\right)\n $$\n\n3. Work inside the parentheses first:\n $$\n \\frac{1}{2}(\\log x - 3\\log y + \\log z) &= \\frac{1}{2}(\\log x - \\log y^3 + \\log z) \\\\\n &= \\frac{1}{2}\\log\\left(\\frac{xz}{y^3}\\right) \\\\\n &= \\log\\left(\\frac{xz}{y^3}\\right)^{1/2} \\\\\n &= \\log\\sqrt{\\frac{xz}{y^3}}\n $$\n\n4. Step by step:\n $$\n 2\\log_3 x + \\log_3(x-1) - \\log_3 5 &= \\log_3 x^2 + \\log_3(x-1) - \\log_3 5 \\\\\n &= \\log_3\\left(\\frac{x^2(x-1)}{5}\\right)\n $$"
+      "solution": "1. First apply the power rule to the coefficient:\n $$\n \\log x + 2\\log y = \\log x + \\log y^2 = \\log(xy^2)\n $$\n\n2. Apply power rule first, then combine:\n $$\\begin{aligned}\n 3\\ln a - \\ln b - 2\\ln c &= \\ln a^3 - \\ln b - \\ln c^2 \\\\\n &= \\ln a^3 - (\\ln b + \\ln c^2) \\\\\n &= \\ln a^3 - \\ln(bc^2) \\\\\n &= \\ln\\left(\\frac{a^3}{bc^2}\\right)\n \\end{aligned}$$\n\n3. Work inside the parentheses first:\n $$\\begin{aligned}\n \\frac{1}{2}(\\log x - 3\\log y + \\log z) &= \\frac{1}{2}(\\log x - \\log y^3 + \\log z) \\\\\n &= \\frac{1}{2}\\log\\left(\\frac{xz}{y^3}\\right) \\\\\n &= \\log\\left(\\frac{xz}{y^3}\\right)^{1/2} \\\\\n &= \\log\\sqrt{\\frac{xz}{y^3}}\n \\end{aligned}$$\n\n4. Step by step:\n $$\\begin{aligned}\n 2\\log_3 x + \\log_3(x-1) - \\log_3 5 &= \\log_3 x^2 + \\log_3(x-1) - \\log_3 5 \\\\\n &= \\log_3\\left(\\frac{x^2(x-1)}{5}\\right)\n \\end{aligned}$$"
     },
     {
       "type": "example",
@@ -207,7 +207,7 @@
     {
       "type": "figure",
       "id": "fig:change-of-base",
-      "src": "/figures/precalculus/ch05/fig-change-of-base.svg",
+      "src": "/figures/precalculus/fig-change-of-base.svg",
       "caption": "The change of base formula converts any logarithm to base 10 (common log) or base $e$ (natural log), which calculators can evaluate directly.",
       "alt": "The change of base formula converts any logarithm to base 10 (common log) or base $e$ (natural log), which calculators can evaluate directly.",
       "tikz": true
@@ -226,7 +226,7 @@
     {
       "type": "figure",
       "id": "fig:change-of-base-visual",
-      "src": "/figures/precalculus/ch05/fig-change-of-base-visual.svg",
+      "src": "/figures/precalculus/fig-change-of-base-visual.svg",
       "caption": "Visualizing the change of base formula. On any logarithmic scale (base $a$), \nthe value $\\log_b x$ represents how many times the \"unit\" $\\log_a b$ fits \ninto $\\log_a x$. This ratio is independent of which base $a$ we choose.",
       "alt": "Visualizing the change of base formula. On any logarithmic scale (base $a$), \nthe value $\\log_b x$ represents how many times the \"unit\" $\\log_a b$ fits \ninto $\\log_a x$. This ratio is independent of which base $a$ we choose.",
       "tikz": true

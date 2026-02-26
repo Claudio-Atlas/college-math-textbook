@@ -55,8 +55,8 @@
     },
     {
       "type": "figure",
-      "id": "fig-32349",
-      "src": "/figures/precalculus/ch08/fig-8.1-fig-1.svg",
+      "id": "fig-57477",
+      "src": "/figures/precalculus/fig-57477.svg",
       "caption": "Standard triangle notation: vertices labeled with capital letters $A$, $B$, $C$, and each side labeled with the lowercase letter of its opposite vertex. Side $a$ is opposite angle $A$, side $b$ is opposite angle $B$, and side $c$ is opposite angle $C$.",
       "alt": "Standard triangle notation: vertices labeled with capital letters $A$, $B$, $C$, and each side labeled with the lowercase letter of its opposite vertex. Side $a$ is opposite angle $A$, side $b$ is opposite angle $B$, and side $c$ is opposite angle $C$.",
       "tikz": true
@@ -80,8 +80,8 @@
     },
     {
       "type": "figure",
-      "id": "fig-83086",
-      "src": "/figures/precalculus/ch08/fig-8.1-fig-2.svg",
+      "id": "fig-5821",
+      "src": "/figures/precalculus/fig-5821.svg",
       "caption": "Deriving the Law of Sines: An altitude $h$ is dropped from vertex $C$ to side $c$, creating two right triangles $ACD$ and $BCD$. The altitude can be expressed as $h = b\\sin A$ from the left triangle and $h = a\\sin B$ from the right triangle.",
       "alt": "Deriving the Law of Sines: An altitude $h$ is dropped from vertex $C$ to side $c$, creating two right triangles $ACD$ and $BCD$. The altitude can be expressed as $h = b\\sin A$ from the left triangle and $h = a\\sin B$ from the right triangle.",
       "tikz": true
@@ -115,7 +115,7 @@
       "id": "remark-8.1",
       "number": null,
       "title": "What About Obtuse Triangles?",
-      "content": "The derivation above assumes the altitude falls *inside* the triangle \n(which happens when both base angles are acute). What if angle $A$ or $B$ \nis obtuse?\n\nfigure[H]\n\ntikzpicture[scale=1.4]\n % Obtuse triangle - angle B is obtuse\n (A) at (0,0);\n (B) at (4,0);\n (C) at (1.2,2);\n (D) at (1.2,0); % foot of altitude\n \n % Extended base (dashed)\n (A) – (-0.5,0);\n \n % Draw triangle\n (A) – (B) – (C) – cycle;\n \n % Draw altitude\n (C) – (D);\n \n % Right angle marker\n (1.2,0.2) – (1.4,0.2) – (1.4,0);\n \n % Labels\n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n \n % Side labels\n at ($(A)!0.5!(C)$) {$b$};\n at ($(B)!0.5!(C)$) {$a$};\n at ($(A)!0.5!(B)$) {$c$};\n \n % Altitude label\n at ($(C)!0.5!(D)$) {$h$};\n \n % Angle B (obtuse)\n (3.5,0) arc (180:117:0.5);\n at (3.15,0.35) { $B$};\ntikzpicture\nObtuse triangle case: The derivation still applies because $\\sin(180° - B) = \\sin B$.\nfigure\n\nWhen angle $B$ is obtuse, the altitude from $C$ still lands on line $AB$, \nand the same algebra works. For the obtuse angle, we use the identity \n$\\sin(180° - B) = \\sin B$, which holds for all angles. The Law of Sines \nis valid for *all* triangles—acute, right, or obtuse."
+      "content": "The derivation above assumes the altitude falls *inside* the triangle \n(which happens when both base angles are acute). What if angle $A$ or $B$ \nis obtuse?\n\nfigure[H]\n\nObtuse triangle case: The derivation still applies because $\\sin(180° - B) = \\sin B$.\nfigure\n\nWhen angle $B$ is obtuse, the altitude from $C$ still lands on line $AB$, \nand the same algebra works. For the obtuse angle, we use the identity \n$\\sin(180° - B) = \\sin B$, which holds for all angles. The Law of Sines \nis valid for *all* triangles—acute, right, or obtuse."
     },
     {
       "type": "theorem",
@@ -216,8 +216,8 @@
     },
     {
       "type": "figure",
-      "id": "fig-40712",
-      "src": "/figures/precalculus/ch08/fig-8.1-fig-3.svg",
+      "id": "fig-88024",
+      "src": "/figures/precalculus/fig-88024.svg",
       "caption": "The four cases of the ambiguous case (SSA) when angle $A$ is acute. Top left: $a < h$ yields no solution (side $a$ cannot reach the ray). Top right: $a = h$ yields one right triangle. Bottom left: $h < a < b$ yields two distinct triangles $AB_1C$ and $AB_2C$. Bottom right: $a > b$ yields exactly one solution.",
       "alt": "The four cases of the ambiguous case (SSA) when angle $A$ is acute. Top left: $a < h$ yields no solution (side $a$ cannot reach the ray). Top right: $a = h$ yields one right triangle. Bottom left: $h < a < b$ yields two distinct triangles $AB_1C$ and $AB_2C$. Bottom right: $a > b$ yields exactly one solution.",
       "tikz": true
@@ -238,7 +238,7 @@
       "id": "algorithm-8.1",
       "number": null,
       "title": "The SSA Ambiguous Case Decision Flowchart",
-      "content": "Given: angle $A$, side $a$ (opposite $A$), and side $b$ (adjacent to $A$).\n\n**Step 1: Compute the critical height** $h = b\\sin A$.\n\n**Step 2: Follow this decision tree:**\n\ncenter\ntikzpicture[\n node distance=0.6cm and 0.8cm,\n decision/.style={diamond, draw, fill=AtlasTeal!15, text width=1.8cm, align=center, inner sep=1pt, font=},\n result/.style={rectangle, draw, rounded corners, fill=AtlasCoral!20, text width=2cm, align=center, minimum height=0.6cm, font=},\n stepbox/.style={rectangle, draw, fill=gray!10, text width=2cm, align=center, minimum height=0.5cm, font=},\n arrow/.style={->, thick, >=stealth}\n]\n % Top decision: Is A acute or obtuse?\n (start) {Is $A$ acute?};\n \n % Acute branch (left side)\n (comp1) {Compare $a$ to $h$};\n \n % Results for acute case\n (r1) {$a < h$\\\\**No triangle**};\n (r2) {$a = h$\\\\**One triangle**\\\\(right $\\triangle$)};\n (comp2) {Is $a < b$?};\n \n (r3) {Yes\\\\**Two triangles**};\n (r4) {No\\\\**One triangle**};\n \n % Obtuse branch (right side)\n (comp3) {Is $a > b$?};\n \n (r5) {No\\\\**No triangle**};\n (r6) {Yes\\\\**One triangle**};\n \n % Arrows\n (start) – node[above left, font=] {Yes} (comp1);\n (start) – node[above right, font=] {No (obtuse)} (comp3);\n \n (comp1) – node[left, font=] {$a < h$} (r1);\n (comp1) – node[right, font=] {$a = h$} (r2);\n (comp1) – node[right, font=] {$a > h$} (comp2);\n \n (comp2) – (r3);\n (comp2) – (r4);\n \n (comp3) – (r5);\n (comp3) – (r6);\ntikzpicture\ncenter\n\n**Quick Summary:**\n\n- **No triangle:** Side $a$ is too short to reach the opposite side\n\n- **One triangle:** Either $a$ creates a right angle, or $a \\geq b$ (acute $A$), or $a > b$ (obtuse $A$)\n\n- **Two triangles:** Only when $A$ is acute and $h < a < b$"
+      "content": "Given: angle $A$, side $a$ (opposite $A$), and side $b$ (adjacent to $A$).\n\n**Step 1: Compute the critical height** $h = b\\sin A$.\n\n**Step 2: Follow this decision tree:**\n\ncenter\n\ncenter\n\n**Quick Summary:**\n\n- **No triangle:** Side $a$ is too short to reach the opposite side\n\n- **One triangle:** Either $a$ creates a right angle, or $a \\geq b$ (acute $A$), or $a > b$ (obtuse $A$)\n\n- **Two triangles:** Only when $A$ is acute and $h < a < b$"
     },
     {
       "type": "paragraph",
@@ -249,7 +249,7 @@
       "id": "summary-8.1",
       "number": null,
       "title": "Practical Approach to SSA",
-      "content": "1. Use the Law of Sines to compute $\\sin B = \\frac{b \\sin A}{a}$.\n\n2. **If $\\sin B > 1$:** No solution exists.\n\n3. **If $\\sin B = 1$:** One solution ($B = 90°$).\n\n4. **If $\\sin B < 1$:** Two potential values for $B$:\n itemize\n\n5. $B_1 = \\arcsin(\\sin B)$ (acute angle)\n\n6. $B_2 = 180° - B_1$ (obtuse supplement)\n itemize\n Check whether each value of $B$ yields a valid triangle (i.e., $A + B < 180°$)."
+      "content": "1. Use the Law of Sines to compute $\\sin B = \\frac{b \\sin A}{a}$.\n\n2. **If $\\sin B > 1$:** No solution exists.\n\n3. **If $\\sin B = 1$:** One solution ($B = 90°$).\n\n4. **If $\\sin B < 1$:** Two potential values for $B$:\n \n\n5. $B_1 = \\arcsin(\\sin B)$ (acute angle)\n\n6. $B_2 = 180° - B_1$ (obtuse supplement)\n Check whether each value of $B$ yields a valid triangle (i.e., $A + B < 180°$)."
     },
     {
       "type": "example",
@@ -297,12 +297,12 @@
       "number": "8.6",
       "title": "Fire tower triangulation",
       "problem": "Two fire lookout towers are positioned 30 miles apart along a straight \nroad that runs east–west. A ranger in the western tower spots smoke at \nan angle of $65°$ east of north. A ranger in the eastern tower spots the \nsame smoke at an angle of $70°$ west of north. How far is the fire from \neach tower?",
-      "solution": "Let's set up the problem carefully. Let $W$ be the western tower, $E$ be \nthe eastern tower, and $F$ be the fire.\n\nfigure[H]\n\ntikzpicture[scale=0.9]\n (W) at (0,0);\n (E) at (6,0);\n (F) at (2.5,4);\n \n % Road\n (-0.5,0) – (6.5,0);\n \n % Triangle\n (W) – (E) – (F) – cycle;\n \n % North arrows\n (W) – (0,2.5);\n (E) – (6,2.5);\n at (0,2.3) { N};\n at (6,2.3) { N};\n \n % Angle markers\n (0,0.7) arc (90:58:0.7);\n at (0.35,1.1) { $65°$};\n \n (6,0.7) arc (90:122:0.7);\n at (5.6,1.1) { $70°$};\n \n % Interior angles\n (0.6,0) arc (0:58:0.6);\n at (0.9,0.3) { $25°$};\n \n (5.4,0) arc (180:122:0.6);\n at (5.1,0.3) { $20°$};\n \n % Labels\n at (W) {$W$};\n at (E) {$E$};\n at (F) {$F$};\n at (3,0) {30 mi};\n \n % Distance labels\n at ($(W)!0.5!(F)$) {$d_W$};\n at ($(E)!0.5!(F)$) {$d_E$};\ntikzpicture\nFire tower triangulation: Two towers $W$ and $E$ are 30 miles apart on an east-west road. A fire $F$ is spotted at bearings N$65°$E from tower $W$ and N$70°$W from tower $E$. The interior triangle angles are $25°$, $20°$, and $135°$.\nfigure\n\nThe interior angles at each tower are:\n\n- At $W$: The angle from the road to the fire is $90° - 65° = 25°$\n\n- At $E$: The angle from the road to the fire is $90° - 70° = 20°$\n\nThe angle at $F$ is:\n$$\n F = 180° - 25° - 20° = 135°\n$$\n\nNow we apply the Law of Sines with $WE = 30$ miles opposite angle $F$:\n$$\n \\frac{WE}{\\sin F} = \\frac{d_W}{\\sin E} = \\frac{d_E}{\\sin W}\n$$\n\nDistance from western tower to fire:\n$$\n d_W = \\frac{WE \\cdot \\sin E}{\\sin F} = \\frac{30 \\sin 20°}{\\sin 135°} = \\frac{30 \\times 0.342}{0.707} \\approx 14.5 \\text{ miles}\n$$\n\nDistance from eastern tower to fire:\n$$\n d_E = \\frac{30 \\sin 25°}{\\sin 135°} = \\frac{30 \\times 0.423}{0.707} \\approx 17.9 \\text{ miles}\n$$\n\nThe fire is approximately **14.5 miles** from the western tower \nand **17.9 miles** from the eastern tower.",
+      "solution": "Let's set up the problem carefully. Let $W$ be the western tower, $E$ be \nthe eastern tower, and $F$ be the fire.\n\nfigure[H]\n\nFire tower triangulation: Two towers $W$ and $E$ are 30 miles apart on an east-west road. A fire $F$ is spotted at bearings N$65°$E from tower $W$ and N$70°$W from tower $E$. The interior triangle angles are $25°$, $20°$, and $135°$.\nfigure\n\nThe interior angles at each tower are:\n\n- At $W$: The angle from the road to the fire is $90° - 65° = 25°$\n\n- At $E$: The angle from the road to the fire is $90° - 70° = 20°$\n\nThe angle at $F$ is:\n$$\n F = 180° - 25° - 20° = 135°\n$$\n\nNow we apply the Law of Sines with $WE = 30$ miles opposite angle $F$:\n$$\n \\frac{WE}{\\sin F} = \\frac{d_W}{\\sin E} = \\frac{d_E}{\\sin W}\n$$\n\nDistance from western tower to fire:\n$$\n d_W = \\frac{WE \\cdot \\sin E}{\\sin F} = \\frac{30 \\sin 20°}{\\sin 135°} = \\frac{30 \\times 0.342}{0.707} \\approx 14.5 \\text{ miles}\n$$\n\nDistance from eastern tower to fire:\n$$\n d_E = \\frac{30 \\sin 25°}{\\sin 135°} = \\frac{30 \\times 0.423}{0.707} \\approx 17.9 \\text{ miles}\n$$\n\nThe fire is approximately **14.5 miles** from the western tower \nand **17.9 miles** from the eastern tower.",
       "figures": [
         {
           "type": "figure",
-          "id": "fig-94880",
-          "src": "/figures/precalculus/fig-94880.svg",
+          "id": "fig-57973",
+          "src": "/figures/precalculus/fig-57973.svg",
           "caption": "Fire tower triangulation: Two towers $W$ and $E$ are 30 miles apart on an east-west road. A fire $F$ is spotted at bearings N$65°$E from tower $W$ and N$70°$W from tower $E$. The interior triangle angles are $25°$, $20°$, and $135°$.",
           "alt": "Fire tower triangulation: Two towers $W$ and $E$ are 30 miles apart on an east-west road. A fire $F$ is spotted at bearings N$65°$E from tower $W$ and N$70°$W from tower $E$. The interior triangle angles are $25°$, $20°$, and $135°$.",
           "tikz": true
@@ -315,12 +315,12 @@
       "number": "8.7",
       "title": "Height of a mountain",
       "problem": "A surveyor wants to measure the height of a mountain peak. From point $A$ \non level ground, she measures the angle of elevation to the peak as $22°$. \nShe then walks 1000 meters directly toward the mountain to point $B$, where \nthe angle of elevation is $34°$. How high is the peak?",
-      "solution": "Let $P$ be the peak and $C$ be the point on the ground directly below $P$.\n\nfigure[H]\n\ntikzpicture[scale=0.8]\n (A) at (0,0);\n (B) at (3,0);\n (C) at (7,0);\n (P) at (7,3.5);\n \n % Ground line\n (-0.5,0) – (7.5,0);\n \n % Triangle ABP\n (A) – (P) – (B);\n (P) – (C);\n \n % Angle markers\n (0.8,0) arc (0:22:0.8);\n at (1.2,0.25) { $22°$};\n \n (3.8,0) arc (0:34:0.8);\n at (4.3,0.35) { $34°$};\n \n % Right angle\n (7,0.3) – (6.7,0.3) – (6.7,0);\n \n % Labels\n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n at (P) {$P$};\n at (1.5,0) {1000 m};\n at (7,1.75) {$h$};\ntikzpicture\nMountain height determination: From point $A$, the angle of elevation to peak $P$ is $22°$. After walking 1000 m toward the mountain to point $B$, the angle of elevation increases to $34°$. The height $h$ can be found using the Law of Sines in triangle $ABP$.\nfigure\n\nIn triangle $ABP$:\n\n- Angle at $A$ is $22°$ (the angle of elevation)\n\n- Angle at $B$ is $180° - 34° = 146°$ (supplementary to elevation)\n\n- Angle at $P$ is $180° - 22° - 146° = 12°$\n\n- Side $AB = 1000$ m\n\nUsing the Law of Sines to find $BP$:\n$$\n \\frac{BP}{\\sin 22°} = \\frac{1000}{\\sin 12°}\n$$\n$$\n BP = \\frac{1000 \\sin 22°}{\\sin 12°} = \\frac{1000 \\times 0.3746}{0.2079} \\approx 1802 \\text{ m}\n$$\n\nNow in right triangle $BPC$:\n$$\n h = BP \\sin 34° = 1802 \\times 0.5592 \\approx 1008 \\text{ m}\n$$\n\nThe mountain peak is approximately **1008 meters** above the ground level.",
+      "solution": "Let $P$ be the peak and $C$ be the point on the ground directly below $P$.\n\nfigure[H]\n\nMountain height determination: From point $A$, the angle of elevation to peak $P$ is $22°$. After walking 1000 m toward the mountain to point $B$, the angle of elevation increases to $34°$. The height $h$ can be found using the Law of Sines in triangle $ABP$.\nfigure\n\nIn triangle $ABP$:\n\n- Angle at $A$ is $22°$ (the angle of elevation)\n\n- Angle at $B$ is $180° - 34° = 146°$ (supplementary to elevation)\n\n- Angle at $P$ is $180° - 22° - 146° = 12°$\n\n- Side $AB = 1000$ m\n\nUsing the Law of Sines to find $BP$:\n$$\n \\frac{BP}{\\sin 22°} = \\frac{1000}{\\sin 12°}\n$$\n$$\n BP = \\frac{1000 \\sin 22°}{\\sin 12°} = \\frac{1000 \\times 0.3746}{0.2079} \\approx 1802 \\text{ m}\n$$\n\nNow in right triangle $BPC$:\n$$\n h = BP \\sin 34° = 1802 \\times 0.5592 \\approx 1008 \\text{ m}\n$$\n\nThe mountain peak is approximately **1008 meters** above the ground level.",
       "figures": [
         {
           "type": "figure",
-          "id": "fig-37824",
-          "src": "/figures/precalculus/fig-37824.svg",
+          "id": "fig-36224",
+          "src": "/figures/precalculus/fig-36224.svg",
           "caption": "Mountain height determination: From point $A$, the angle of elevation to peak $P$ is $22°$. After walking 1000 m toward the mountain to point $B$, the angle of elevation increases to $34°$. The height $h$ can be found using the Law of Sines in triangle $ABP$.",
           "alt": "Mountain height determination: From point $A$, the angle of elevation to peak $P$ is $22°$. After walking 1000 m toward the mountain to point $B$, the angle of elevation increases to $34°$. The height $h$ can be found using the Law of Sines in triangle $ABP$.",
           "tikz": true
@@ -333,12 +333,12 @@
       "number": "8.8",
       "title": "Sailing bearing problem",
       "problem": "A ship leaves port and sails 80 nautical miles on a bearing of N$40°$W. \nIt then changes course and sails 60 nautical miles on a bearing of S$30°$W. \nHow far is the ship from port, and what bearing would take it directly \nback to port?",
-      "solution": "Let $P$ be the port, $Q$ be the position after the first leg, and $R$ \nbe the final position.\n\nFirst, we need to find the angle at $Q$ in triangle $PQR$. The ship \ninitially traveled N$40°$W (so $40°$ west of north), then turned to \nS$30°$W (so $30°$ west of south).\n\nThe angle between \"north\" and \"south\" is $180°$. The angle at $Q$ \nbetween the two paths is:\n$$\n \\angle PQR = 180° - 40° - 30° = 110°\n$$\n\nWait—that's the exterior angle. The interior angle is actually the \nchange in bearing. When you're heading N$40°$W and turn to head S$30°$W, \nyou turn through:\n$$\n \\angle Q = 40° + 30° = 70° \\quad \\text{(the angle between the two course lines)}\n$$\n\nActually, let's reconsider. The angle at $Q$ measured inside the triangle \nis $180° - 70° = 110°$ (the supplement of the turn angle).\n\nHmm, let's think more carefully with a diagram:\n\nfigure[H]\n\ntikzpicture[scale=0.06]\n (P) at (0,0);\n (Q) at (-51.4,61.3);\n (R) at (-81.4,9.4);\n \n % Triangle\n (P) – (Q) – (R) – cycle;\n \n % North arrows\n (P) – (0,40);\n (Q) – (-51.4,101.3);\n \n % Labels\n at (P) {$P$};\n at (Q) {$Q$};\n at (R) {$R$};\n \n % Distances\n at (-25,35) {80};\n at (-70,40) {60};\ntikzpicture\nNavigation problem: A ship leaves port $P$, sails 80 nautical miles to $Q$ on bearing N$40°$W, then sails 60 nautical miles to $R$ on bearing S$30°$W. North arrows indicate reference directions at each point.\nfigure\n\nThe angle at $Q$ inside the triangle: traveling from $P$ toward $Q$, you're \nheading N$40°$W. At $Q$, if you were to continue straight, you'd still be \nheading N$40°$W. But you turn to head S$30°$W.\n\nThe angle between N$40°$W (continued) and S$30°$W:\n$$\n \\text{N}40°\\text{W extended backward} &= \\text{S}40°\\text{E} \\\\\n \\text{Turn from S}40°\\text{E to S}30°\\text{W} &= 40° + 30° = 70°\n$$\n\nSo the interior angle at $Q$ is $180° - 70° = 110°$.\n\nUsing the Law of Cosines (which we'll study next section) would be more \ndirect, but with the Law of Sines, we can set up:\n\nActually, since we have SAS (two sides and the included angle), the Law \nof Cosines is the better tool here. Let's modify the problem.\n\n*We'll return to this type of problem after developing the Law of \nCosines in Section 8.2.*",
+      "solution": "Let $P$ be the port, $Q$ be the position after the first leg, and $R$ \nbe the final position.\n\nFirst, we need to find the angle at $Q$ in triangle $PQR$. The ship \ninitially traveled N$40°$W (so $40°$ west of north), then turned to \nS$30°$W (so $30°$ west of south).\n\nThe angle between \"north\" and \"south\" is $180°$. The angle at $Q$ \nbetween the two paths is:\n$$\n \\angle PQR = 180° - 40° - 30° = 110°\n$$\n\nWait—that's the exterior angle. The interior angle is actually the \nchange in bearing. When you're heading N$40°$W and turn to head S$30°$W, \nyou turn through:\n$$\n \\angle Q = 40° + 30° = 70° \\quad \\text{(the angle between the two course lines)}\n$$\n\nActually, let's reconsider. The angle at $Q$ measured inside the triangle \nis $180° - 70° = 110°$ (the supplement of the turn angle).\n\nHmm, let's think more carefully with a diagram:\n\nfigure[H]\n\nNavigation problem: A ship leaves port $P$, sails 80 nautical miles to $Q$ on bearing N$40°$W, then sails 60 nautical miles to $R$ on bearing S$30°$W. North arrows indicate reference directions at each point.\nfigure\n\nThe angle at $Q$ inside the triangle: traveling from $P$ toward $Q$, you're \nheading N$40°$W. At $Q$, if you were to continue straight, you'd still be \nheading N$40°$W. But you turn to head S$30°$W.\n\nThe angle between N$40°$W (continued) and S$30°$W:\n$$\\begin{aligned}\n \\text{N}40°\\text{W extended backward} &= \\text{S}40°\\text{E} \\\\\n \\text{Turn from S}40°\\text{E to S}30°\\text{W} &= 40° + 30° = 70°\n\\end{aligned}$$\n\nSo the interior angle at $Q$ is $180° - 70° = 110°$.\n\nUsing the Law of Cosines (which we'll study next section) would be more \ndirect, but with the Law of Sines, we can set up:\n\nActually, since we have SAS (two sides and the included angle), the Law \nof Cosines is the better tool here. Let's modify the problem.\n\n*We'll return to this type of problem after developing the Law of \nCosines in Section 8.2.*",
       "figures": [
         {
           "type": "figure",
-          "id": "fig-56605",
-          "src": "/figures/precalculus/fig-56605.svg",
+          "id": "fig-23126",
+          "src": "/figures/precalculus/fig-23126.svg",
           "caption": "Navigation problem: A ship leaves port $P$, sails 80 nautical miles to $Q$ on bearing N$40°$W, then sails 60 nautical miles to $R$ on bearing S$30°$W. North arrows indicate reference directions at each point.",
           "alt": "Navigation problem: A ship leaves port $P$, sails 80 nautical miles to $Q$ on bearing N$40°$W, then sails 60 nautical miles to $R$ on bearing S$30°$W. North arrows indicate reference directions at each point.",
           "tikz": true
@@ -360,7 +360,7 @@
     },
     {
       "type": "paragraph",
-      "text": "$$\\text{Area} &= \\frac{1}{2} \\times \\text{base} \\times \\text{height} \\\\\n    &= \\frac{1}{2} \\cdot c \\cdot h = \\frac{1}{2} \\cdot c \\cdot (b \\sin A) = \\frac{1}{2}bc \\sin A$$"
+      "text": "$$\\begin{aligned}\\text{Area} &= \\frac{1}{2} \\times \\text{base} \\times \\text{height} \\\\\n    &= \\frac{1}{2} \\cdot c \\cdot h = \\frac{1}{2} \\cdot c \\cdot (b \\sin A) = \\frac{1}{2}bc \\sin A\\end{aligned}$$"
     },
     {
       "type": "paragraph",
@@ -502,7 +502,7 @@
       "type": "exercise",
       "id": "ex-8.1-7",
       "number": "7",
-      "problem": "Find all unknown sides and angles for each triangle shown.\n\n1. center\ntikzpicture[scale=0.8]\n (A) at (0,0);\n (B) at (5,0);\n (C) at (1.5,2.5);\n (A) – (B) – (C) – cycle;\n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n at (2.5,0) {$c = 14$};\n at (0.75,1.25) {$b$};\n at (3.25,1.25) {$a$};\n (0.6,0) arc (0:59:0.6);\n at (1,0.4) { $52°$};\n (4.3,0) arc (180:135:0.7);\n at (3.85,0.4) { $68°$};\ntikzpicture\ncenter\n\n2. center\ntikzpicture[scale=0.8]\n (A) at (0,0);\n (B) at (4.5,0);\n (C) at (3.8,2.8);\n (A) – (B) – (C) – cycle;\n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n at (2.25,0) {$c$};\n at (1.9,1.4) {$b = 18$};\n at (4.15,1.4) {$a$};\n (0.7,0) arc (0:36:0.7);\n at (1.1,0.3) { $35°$};\n at (3.4,2.3) { $78°$};\ntikzpicture\ncenter\n\n3. center\ntikzpicture[scale=0.8]\n (A) at (0,0);\n (B) at (5.5,0);\n (C) at (2,3);\n (A) – (B) – (C) – cycle;\n at (A) {$A$};\n at (B) {$B$};\n at (C) {$C$};\n at (2.75,0) {$c$};\n at (1,1.5) {$b$};\n at (3.75,1.5) {$a = 22$};\n (0.6,0) arc (0:56:0.6);\n at (1,0.4) { $A$};\n (4.8,0) arc (180:139:0.7);\n at (4.35,0.45) { $48°$};\n at (2,2.3) { $105°$};\ntikzpicture\ncenter",
+      "problem": "Find all unknown sides and angles for each triangle shown.\n\n1. center\n\ncenter\n\n2. center\n\ncenter\n\n3. center\n\ncenter",
       "variant": "regular",
       "hint": null,
       "answer": null,
@@ -522,7 +522,7 @@
       "type": "exercise",
       "id": "ex-8.1-9",
       "number": "9",
-      "problem": "Find only the indicated value for each triangle.\n\n1. Find $x$:\ncenter\ntikzpicture[scale=0.7]\n (A) at (0,0);\n (B) at (4,0);\n (C) at (1.2,2.2);\n (A) – (B) – (C) – cycle;\n at (2,0) {$x$};\n at (0.6,1.1) {$12$};\n (0.5,0) arc (0:61:0.5);\n at (0.9,0.35) { $55°$};\n (3.4,0) arc (180:130:0.6);\n at (3,0.4) { $72°$};\ntikzpicture\ncenter\n\n2. Find $\\theta$:\ncenter\ntikzpicture[scale=0.7]\n (A) at (0,0);\n (B) at (5,0);\n (C) at (1.8,2.6);\n (A) – (B) – (C) – cycle;\n at (2.5,0) {$20$};\n at (3.4,1.3) {$15$};\n (0.6,0) arc (0:55:0.6);\n at (1,0.35) { $48°$};\n (4.3,0) arc (180:125:0.7);\n at (3.85,0.5) { $\\theta$};\ntikzpicture\ncenter",
+      "problem": "Find only the indicated value for each triangle.\n\n1. Find $x$:\ncenter\n\ncenter\n\n2. Find $\\theta$:\ncenter\n\ncenter",
       "variant": "regular",
       "hint": null,
       "answer": null,

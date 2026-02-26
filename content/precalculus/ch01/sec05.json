@@ -30,7 +30,7 @@
       "id": "definition-1.1",
       "number": "1.1",
       "title": "Function Arithmetic",
-      "content": "Given functions $f$ and $g$, we define:\n$$\n (f + g)(x) &= f(x) + g(x) & \\text{(sum)} \\\\\n (f - g)(x) &= f(x) - g(x) & \\text{(difference)} \\\\\n (fg)(x) &= f(x) \\cdot g(x) & \\text{(product)} \\\\\n \\left(\\frac{f}{g}\\right)(x) &= \\frac{f(x)}{g(x)}, \\quad g(x) \\neq 0 & \\text{(quotient)}\n$$\n\nThe domain of each combined function is the intersection of the domains \nof $f$ and $g$, with additional restrictions for the quotient where \n$g(x) = 0$."
+      "content": "Given functions $f$ and $g$, we define:\n$$\\begin{aligned}\n (f + g)(x) &= f(x) + g(x) & \\text{(sum)} \\\\\n (f - g)(x) &= f(x) - g(x) & \\text{(difference)} \\\\\n (fg)(x) &= f(x) \\cdot g(x) & \\text{(product)} \\\\\n \\left(\\frac{f}{g}\\right)(x) &= \\frac{f(x)}{g(x)}, \\quad g(x) \\neq 0 & \\text{(quotient)}\n\\end{aligned}$$\n\nThe domain of each combined function is the intersection of the domains \nof $f$ and $g$, with additional restrictions for the quotient where \n$g(x) = 0$."
     },
     {
       "type": "example",
@@ -47,7 +47,7 @@
     {
       "type": "figure",
       "id": "fig:function-sum",
-      "src": "/figures/precalculus/ch01/fig-function-sum.svg",
+      "src": "/figures/precalculus/fig-function-sum.svg",
       "caption": "Graphical addition of functions. At each $x$, the $y$-value of $(f+g)(x)$ equals the sum of the $y$-values of $f(x)$ and $g(x)$. Here $f(x) = x^2 - 1$ (parabola), $g(x) = x + 1$ (line), and $(f+g)(x) = x^2 + x$.",
       "alt": "Graphical addition of functions. At each $x$, the $y$-value of $(f+g)(x)$ equals the sum of the $y$-values of $f(x)$ and $g(x)$. Here $f(x) = x^2 - 1$ (parabola), $g(x) = x + 1$ (line), and $(f+g)(x) = x^2 + x$.",
       "tikz": true
@@ -78,7 +78,7 @@
     {
       "type": "figure",
       "id": "fig:composition-machine",
-      "src": "/figures/precalculus/ch01/fig-composition-machine.svg",
+      "src": "/figures/precalculus/fig-composition-machine.svg",
       "caption": "Composition as a two-stage machine. Input $x$ enters function $g$, producing intermediate value $g(x)$, which then enters function $f$ to produce the final output $f(g(x))$.",
       "alt": "Composition as a two-stage machine. Input $x$ enters function $g$, producing intermediate value $g(x)$, which then enters function $f$ to produce the final output $f(g(x))$.",
       "tikz": true
@@ -140,7 +140,7 @@
       "id": "summary-1.5",
       "number": null,
       "title": "Combining Functions",
-      "content": "- **Arithmetic combinations:** Given functions $f$ and $g$:\n $$\n (f + g)(x) &= f(x) + g(x) \\\\\n (f - g)(x) &= f(x) - g(x) \\\\\n (fg)(x) &= f(x) \\cdot g(x) \\\\\n (f/g)(x) &= f(x)/g(x), \\quad g(x) \\neq 0\n $$\n\n- **Domain:** The domain of $f + g$, $f - g$, and $fg$ is the \n intersection of the domains of $f$ and $g$. For $f/g$, also exclude \n where $g(x) = 0$.\n\n- **Composition:** $(f \\circ g)(x) = f(g(x))$\n\n- **Domain of composition:** All $x$ in domain of $g$ such \n that $g(x)$ is in domain of $f$.\n\n- **Order matters:** $(f \\circ g)(x) \\neq (g \\circ f)(x)$ in general.\n\n- **Decomposition:** Express $h(x)$ as $f(g(x))$ by identifying \n the \"inner\" function $g$ and \"outer\" function $f$."
+      "content": "- **Arithmetic combinations:** Given functions $f$ and $g$:\n $$\\begin{aligned}\n (f + g)(x) &= f(x) + g(x) \\\\\n (f - g)(x) &= f(x) - g(x) \\\\\n (fg)(x) &= f(x) \\cdot g(x) \\\\\n (f/g)(x) &= f(x)/g(x), \\quad g(x) \\neq 0\n \\end{aligned}$$\n\n- **Domain:** The domain of $f + g$, $f - g$, and $fg$ is the \n intersection of the domains of $f$ and $g$. For $f/g$, also exclude \n where $g(x) = 0$.\n\n- **Composition:** $(f \\circ g)(x) = f(g(x))$\n\n- **Domain of composition:** All $x$ in domain of $g$ such \n that $g(x)$ is in domain of $f$.\n\n- **Order matters:** $(f \\circ g)(x) \\neq (g \\circ f)(x)$ in general.\n\n- **Decomposition:** Express $h(x)$ as $f(g(x))$ by identifying \n the \"inner\" function $g$ and \"outer\" function $f$."
     },
     {
       "type": "exercise",
@@ -506,7 +506,7 @@
       "type": "exercise",
       "id": "ex-1.5-41",
       "number": "41",
-      "problem": "A store offers a 20\\% discount, and there is a 7\\% sales tax.\nLet $D(x) = 0.8x$ (discount) and $T(x) = 1.07x$ (tax).\n\n1. Find $(T \\circ D)(x)$ and interpret.\n\n2. Find $(D \\circ T)(x)$ and interpret.\n\n3. Which saves the customer more money?\n\n4. Calculate the final price of a \\$200 item both ways.",
+      "problem": "A store offers a 20\\% discount, and there is a 7\\% sales tax.\nLet $D(x) = 0.8x$ (discount) and $T(x) = 1.07x$ (tax).\n\n1. Find $(T \\circ D)(x)$ and interpret.\n\n2. Find $(D \\circ T)(x)$ and interpret.\n\n3. Which saves the customer more money?\n\n4. Calculate the final price of a $200 item both ways.",
       "variant": "regular",
       "hint": null,
       "answer": null,

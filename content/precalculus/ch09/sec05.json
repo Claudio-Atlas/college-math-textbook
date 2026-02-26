@@ -45,15 +45,15 @@
       "id": "definition-9.1",
       "number": "9.1",
       "title": "Components of a Linear Programming Problem",
-      "content": "1. An **objective function**: \n A linear expression $z = ax + by$ (or with more variables) that we \n want to maximize or minimize.\n\n2. **Constraints**: A system of linear \n inequalities that define the feasible region. These typically include:\n itemize\n\n3. Resource limitations (e.g., $2x + 3y \\leq 100$)\n\n4. Non-negativity constraints (e.g., $x \\geq 0$, $y \\geq 0$)\n itemize\nThe goal is to find values of $x$ and $y$ in the feasible region that \ngive the optimal (maximum or minimum) value of $z$."
+      "content": "1. An **objective function**: \n A linear expression $z = ax + by$ (or with more variables) that we \n want to maximize or minimize.\n\n2. **Constraints**: A system of linear \n inequalities that define the feasible region. These typically include:\n \n\n3. Resource limitations (e.g., $2x + 3y \\leq 100$)\n\n4. Non-negativity constraints (e.g., $x \\geq 0$, $y \\geq 0$)\n\nThe goal is to find values of $x$ and $y$ in the feasible region that \ngive the optimal (maximum or minimum) value of $z$."
     },
     {
       "type": "example",
       "id": "example-9.1",
       "number": "9.1",
       "title": "Setting up a linear programming problem",
-      "problem": "A bakery makes cookies and brownies. Each batch of cookies requires \n2 cups of flour and yields \\$3 profit. Each batch of brownies requires \n3 cups of flour and yields \\$4 profit. The bakery has 12 cups of flour \nand can make at most 5 batches total. How many batches of each should \nthey make to maximize profit?",
-      "solution": "Let $x$ = batches of cookies and $y$ = batches of brownies.\n\n**Objective function** (to maximize):\n$$\n z = 3x + 4y \\quad \\text{(profit in dollars)}\n$$\n\n**Constraints:**\n$$\n 2x + 3y &\\leq 12 && \\text{(flour constraint)} \\\\\n x + y &\\leq 5 && \\text{(total batches constraint)} \\\\\n x &\\geq 0 && \\text{(non-negativity)} \\\\\n y &\\geq 0 && \\text{(non-negativity)}\n$$\n\nThe complete linear programming problem is:\n$$\n\\boxed{\n\\begin{array}{ll}\n \\text{Maximize} & z = 3x + 4y \\\\\n \\text{subject to} & 2x + 3y \\leq 12 \\\\\n & x + y \\leq 5 \\\\\n & x \\geq 0, \\, y \\geq 0\n\\end{array}\n}\n$$"
+      "problem": "A bakery makes cookies and brownies. Each batch of cookies requires \n2 cups of flour and yields $3 profit. Each batch of brownies requires \n3 cups of flour and yields $4 profit. The bakery has 12 cups of flour \nand can make at most 5 batches total. How many batches of each should \nthey make to maximize profit?",
+      "solution": "Let $x$ = batches of cookies and $y$ = batches of brownies.\n\n**Objective function** (to maximize):\n$$\n z = 3x + 4y \\quad \\text{(profit in dollars)}\n$$\n\n**Constraints:**\n$$\\begin{aligned}\n 2x + 3y &\\leq 12 && \\text{(flour constraint)} \\\\\n x + y &\\leq 5 && \\text{(total batches constraint)} \\\\\n x &\\geq 0 && \\text{(non-negativity)} \\\\\n y &\\geq 0 && \\text{(non-negativity)}\n\\end{aligned}$$\n\nThe complete linear programming problem is:\n$$\n\\boxed{\n\\begin{array}{ll}\n \\text{Maximize} & z = 3x + 4y \\\\\n \\text{subject to} & 2x + 3y \\leq 12 \\\\\n & x + y \\leq 5 \\\\\n & x \\geq 0, \\, y \\geq 0\n\\end{array}\n}\n$$"
     },
     {
       "type": "heading",
@@ -75,7 +75,7 @@
     {
       "type": "figure",
       "id": "fig:corner-point-theorem",
-      "src": "/figures/precalculus/ch09/fig-corner-point-theorem.svg",
+      "src": "/figures/precalculus/fig-corner-point-theorem.svg",
       "caption": "The Corner Point Theorem illustrated. The feasible region (shaded) has five vertices labeled $A$ through $E$. Dashed lines show level curves of the objective function $z$, which increases in the direction of the arrow. The maximum occurs at vertex $C$ where the highest level curve touches the feasible region. We only need to evaluate $z$ at the five vertices to find the optimum.",
       "alt": "The Corner Point Theorem illustrated. The feasible region (shaded) has five vertices labeled $A$ through $E$. Dashed lines show level curves of the objective function $z$, which increases in the direction of the arrow. The maximum occurs at vertex $C$ where the highest level curve touches the feasible region. We only need to evaluate $z$ at the five vertices to find the optimum.",
       "tikz": true
@@ -99,7 +99,7 @@
       "number": "9.2",
       "title": "Maximization problem",
       "problem": "Solve the linear programming problem from Example [ex:setup-lp]:\n$$\n\\begin{array}{ll}\n \\text{Maximize} & z = 3x + 4y \\\\\n \\text{subject to} & 2x + 3y \\leq 12 \\\\\n & x + y \\leq 5 \\\\\n & x \\geq 0, \\, y \\geq 0\n\\end{array}\n$$",
-      "solution": "**Step 1: Graph the feasible region.**\n\nfigure[H]\n\ntikzpicture[scale=0.6]\n % Feasible region\n ll[AtlasTeal!30] (0,0) – (5,0) – (3,2) – (0,4) – cycle;\n \n (-0.5,0) – (7,0) node[right] {$x$};\n (0,-0.5) – (0,5.5) node[above] {$y$};\n \n % Constraint lines\n (0,4) – (6,0); % 2x + 3y = 12\n (0,5) – (5,0); % x + y = 5\n \n % Vertices\n lldraw[AtlasCoral] (0,0) circle (4pt) node[below left] {$A(0,0)$};\n lldraw[AtlasCoral] (5,0) circle (4pt) node[below right] {$B(5,0)$};\n lldraw[AtlasCoral] (3,2) circle (4pt) node[above right] {$C(3,2)$};\n lldraw[AtlasCoral] (0,4) circle (4pt) node[above left] {$D(0,4)$};\n \n % Labels\n at (4.5,2.5) {$2x+3y=12$};\n at (1.5,4.5) {$x+y=5$};\n \n % Grid marks\n in {1,2,3,4,5,6} (,0.1) – (,-0.1) node[below] {};\n in {1,2,3,4,5} (0.1,) – (-0.1,) node[left] {};\ntikzpicture\nFeasible region for the bakery problem. The region is bounded by the flour constraint $2x + 3y = 12$, the batch limit $x + y = 5$, and the axes. Vertices are at $A(0,0)$, $B(5,0)$, $C(3,2)$, and $D(0,4)$.\n\nfigure\n\n**Step 2: Find vertices.**\n\nThe vertices are where boundary lines intersect:\n\n- $A(0, 0)$: intersection of $x = 0$ and $y = 0$\n\n- $B(5, 0)$: intersection of $y = 0$ and $x + y = 5$\n\n- $C(3, 2)$: intersection of $2x + 3y = 12$ and $x + y = 5$\n\n- $D(0, 4)$: intersection of $x = 0$ and $2x + 3y = 12$\n\nTo find $C$: Solve $\\begin{cases} 2x + 3y = 12 \\\\ x + y = 5 \\end{cases}$\n\nFrom $x + y = 5$: $x = 5 - y$. Substitute: $2(5-y) + 3y = 12 \\Rightarrow y = 2$, $x = 3$.\n\n**Step 3: Evaluate $z = 3x + 4y$ at each vertex.**\n\n| Vertex | Coordinates | $z = 3x + 4y$ |\n| $A$ | $(0, 0)$ | $3(0) + 4(0) = 0$ |\n| $B$ | $(5, 0)$ | $3(5) + 4(0) = 15$ |\n| $C$ | $(3, 2)$ | $3(3) + 4(2) = \\mathbf{17}$ |\n| $D$ | $(0, 4)$ | $3(0) + 4(4) = 16$ |\n\n**Step 4: Identify the maximum.**\n\nThe maximum value is $z = 17$ at vertex $C(3, 2)$.\n\n**Conclusion:** The bakery should make **3 batches of cookies \nand 2 batches of brownies** for a maximum profit of **\\$17**.",
+      "solution": "**Step 1: Graph the feasible region.**\n\nfigure[H]\n\nFeasible region for the bakery problem. The region is bounded by the flour constraint $2x + 3y = 12$, the batch limit $x + y = 5$, and the axes. Vertices are at $A(0,0)$, $B(5,0)$, $C(3,2)$, and $D(0,4)$.\n\nfigure\n\n**Step 2: Find vertices.**\n\nThe vertices are where boundary lines intersect:\n\n- $A(0, 0)$: intersection of $x = 0$ and $y = 0$\n\n- $B(5, 0)$: intersection of $y = 0$ and $x + y = 5$\n\n- $C(3, 2)$: intersection of $2x + 3y = 12$ and $x + y = 5$\n\n- $D(0, 4)$: intersection of $x = 0$ and $2x + 3y = 12$\n\nTo find $C$: Solve $\\begin{cases} 2x + 3y = 12 \\\\ x + y = 5 \\end{cases}$\n\nFrom $x + y = 5$: $x = 5 - y$. Substitute: $2(5-y) + 3y = 12 \\Rightarrow y = 2$, $x = 3$.\n\n**Step 3: Evaluate $z = 3x + 4y$ at each vertex.**\n\n| Vertex | Coordinates | $z = 3x + 4y$ |\n| $A$ | $(0, 0)$ | $3(0) + 4(0) = 0$ |\n| $B$ | $(5, 0)$ | $3(5) + 4(0) = 15$ |\n| $C$ | $(3, 2)$ | $3(3) + 4(2) = \\mathbf{17}$ |\n| $D$ | $(0, 4)$ | $3(0) + 4(4) = 16$ |\n\n**Step 4: Identify the maximum.**\n\nThe maximum value is $z = 17$ at vertex $C(3, 2)$.\n\n**Conclusion:** The bakery should make **3 batches of cookies \nand 2 batches of brownies** for a maximum profit of **$17**.",
       "figures": [
         {
           "type": "figure",
@@ -117,7 +117,7 @@
       "number": "9.3",
       "title": "Another maximization problem",
       "problem": "Maximize $z = 5x + 7y$ subject to:\n$$\n\\begin{cases}\n x + 2y \\leq 14 \\\\\n 3x + y \\leq 18 \\\\\n x \\geq 0, \\, y \\geq 0\n\\end{cases}\n$$",
-      "solution": "**Step 1: Graph and find vertices.**\n\nfigure[H]\n\ntikzpicture[scale=0.4]\n % Feasible region\n ll[AtlasTeal!30] (0,0) – (6,0) – (4,6) – (0,7) – cycle;\n \n (-0.5,0) – (8,0) node[right] {$x$};\n (0,-0.5) – (0,9) node[above] {$y$};\n \n % Constraint lines\n (0,7) – (14,0); % x + 2y = 14\n (0,18) – (6,0); % 3x + y = 18\n \n % Vertices\n lldraw[AtlasCoral] (0,0) circle (5pt) node[below left] {$(0,0)$};\n lldraw[AtlasCoral] (6,0) circle (5pt) node[below right] {$(6,0)$};\n lldraw[AtlasCoral] (4,6) circle (5pt) node[above right] {$(4,5)$};\n lldraw[AtlasCoral] (0,7) circle (5pt) node[left] {$(0,7)$};\n \n % Grid\n in {2,4,6} (,0.2) – (,-0.2) node[below] {};\n in {2,4,6} (0.2,) – (-0.2,) node[left] {};\ntikzpicture\nFeasible region with vertices at $(0,0)$, $(6,0)$, $(4,5)$, and $(0,7)$. The constraints are $x + 2y \\leq 14$ and $3x + y \\leq 18$ along with non-negativity.\n\nfigure\n\nTo find the intersection of $x + 2y = 14$ and $3x + y = 18$:\n\nFrom $3x + y = 18$: $y = 18 - 3x$. Substitute: $x + 2(18-3x) = 14 \\Rightarrow -5x = -22 \\Rightarrow x = \\frac{22}{5} = 4.4$\n\nThen $y = 18 - 3(4.4) = 4.8$. So the vertex is $(4.4, 4.8)$.\n\n**Step 2: Evaluate at vertices.**\n\n| Vertex | $z = 5x + 7y$ |\n| $(0, 0)$ | $0$ |\n| $(6, 0)$ | $30$ |\n| $(4.4, 4.8)$ | $5(4.4) + 7(4.8) = 22 + 33.6 = \\mathbf{55.6}$ |\n| $(0, 7)$ | $49$ |\n\n**Maximum:** $z = 55.6$ at $(4.4, 4.8)$.",
+      "solution": "**Step 1: Graph and find vertices.**\n\nfigure[H]\n\nFeasible region with vertices at $(0,0)$, $(6,0)$, $(4,5)$, and $(0,7)$. The constraints are $x + 2y \\leq 14$ and $3x + y \\leq 18$ along with non-negativity.\n\nfigure\n\nTo find the intersection of $x + 2y = 14$ and $3x + y = 18$:\n\nFrom $3x + y = 18$: $y = 18 - 3x$. Substitute: $x + 2(18-3x) = 14 \\Rightarrow -5x = -22 \\Rightarrow x = \\frac{22}{5} = 4.4$\n\nThen $y = 18 - 3(4.4) = 4.8$. So the vertex is $(4.4, 4.8)$.\n\n**Step 2: Evaluate at vertices.**\n\n| Vertex | $z = 5x + 7y$ |\n| $(0, 0)$ | $0$ |\n| $(6, 0)$ | $30$ |\n| $(4.4, 4.8)$ | $5(4.4) + 7(4.8) = 22 + 33.6 = \\mathbf{55.6}$ |\n| $(0, 7)$ | $49$ |\n\n**Maximum:** $z = 55.6$ at $(4.4, 4.8)$.",
       "figures": [
         {
           "type": "figure",
@@ -143,8 +143,8 @@
       "id": "example-9.4",
       "number": "9.4",
       "title": "Minimization problem",
-      "problem": "A diet requires at least 40 units of protein and 30 units of iron daily. \nFood A provides 4 units of protein and 2 units of iron per serving and \ncosts \\$0.60. Food B provides 2 units of protein and 3 units of iron \nper serving and costs \\$0.40. How many servings of each minimizes cost \nwhile meeting requirements?",
-      "solution": "Let $x$ = servings of Food A and $y$ = servings of Food B.\n\n**Objective function** (to minimize):\n$$\n z = 0.60x + 0.40y \\quad \\text{(cost in dollars)}\n$$\n\n**Constraints:**\n$$\n 4x + 2y &\\geq 40 && \\text{(protein requirement)} \\\\\n 2x + 3y &\\geq 30 && \\text{(iron requirement)} \\\\\n x &\\geq 0, \\, y \\geq 0\n$$\n\nfigure[H]\n\ntikzpicture[scale=0.35]\n % Feasible region (unbounded)\n ll[AtlasTeal!30] (0,20) – (7.5,5) – (15,0) – (20,0) – (20,25) – (0,25) – cycle;\n \n (-1,0) – (22,0) node[right] {$x$};\n (0,-1) – (0,26) node[above] {$y$};\n \n % Constraint lines\n (0,20) – (10,0); % 4x + 2y = 40\n (0,10) – (15,0); % 2x + 3y = 30\n \n % Vertices\n lldraw[AtlasCoral] (0,20) circle (6pt) node[left] {$(0,20)$};\n lldraw[AtlasCoral] (7.5,5) circle (6pt) node[above right] {$(7.5, 5)$};\n lldraw[AtlasCoral] (15,0) circle (6pt) node[below] {$(15,0)$};\n \n % Labels\n at (7,12) {$4x+2y=40$};\n at (12,5) {$2x+3y=30$};\n \n % Grid\n in {5,10,15,20} (,0.3) – (,-0.3) node[below] {};\n in {5,10,15,20} (0.3,) – (-0.3,) node[left] {};\ntikzpicture\nFeasible region for the diet problem. The region is unbounded (extends to infinity) but has three vertices at $(0,20)$, $(7.5, 5)$, and $(15,0)$. Shading indicates the region satisfying both \"at least\" constraints.\n\nfigure\n\n**Find intersection** of $4x + 2y = 40$ and $2x + 3y = 30$:\n\nFrom $4x + 2y = 40$: $2x + y = 20$, so $y = 20 - 2x$.\n\nSubstitute into $2x + 3y = 30$: $2x + 3(20-2x) = 30 \\Rightarrow 2x + 60 - 6x = 30 \\Rightarrow -4x = -30 \\Rightarrow x = 7.5$, and $y = 20 - 2(7.5) = 5$.\n\n**Vertices:** $(0, 20)$, $(7.5, 5)$, $(15, 0)$\n\n**Evaluate $z = 0.60x + 0.40y$:**\n\ncenter\n{1.3}\ntabular{c|c}\nVertex & $z = 0.60x + 0.40y$ \\\\ \n$(0, 20)$ & $0.60(0) + 0.40(20) = \\$8.00$ \\\\\n$(7.5, 5)$ & $0.60(7.5) + 0.40(5) = 4.50 + 2.00 = \\$\\mathbf{6.50}$ \\\\\n$(15, 0)$ & $0.60(15) + 0.40(0) = \\$9.00$\n\\end{tabular}\n\\end{center}\n\n\\textbf{Minimum:} $z = \\$6.50$ at $(7.5, 5)$.\n\n**Conclusion:** To minimize cost, use **7.5 servings of Food A \nand 5 servings of Food B** for a cost of **\\$6.50**.",
+      "problem": "A diet requires at least 40 units of protein and 30 units of iron daily. \nFood A provides 4 units of protein and 2 units of iron per serving and \ncosts $0.60. Food B provides 2 units of protein and 3 units of iron \nper serving and costs $0.40. How many servings of each minimizes cost \nwhile meeting requirements?",
+      "solution": "Let $x$ = servings of Food A and $y$ = servings of Food B.\n\n**Objective function** (to minimize):\n$$\n z = 0.60x + 0.40y \\quad \\text{(cost in dollars)}\n$$\n\n**Constraints:**\n$$\\begin{aligned}\n 4x + 2y &\\geq 40 && \\text{(protein requirement)} \\\\\n 2x + 3y &\\geq 30 && \\text{(iron requirement)} \\\\\n x &\\geq 0, \\, y \\geq 0\n\\end{aligned}$$\n\nfigure[H]\n\nFeasible region for the diet problem. The region is unbounded (extends to infinity) but has three vertices at $(0,20)$, $(7.5, 5)$, and $(15,0)$. Shading indicates the region satisfying both \"at least\" constraints.\n\nfigure\n\n**Find intersection** of $4x + 2y = 40$ and $2x + 3y = 30$:\n\nFrom $4x + 2y = 40$: $2x + y = 20$, so $y = 20 - 2x$.\n\nSubstitute into $2x + 3y = 30$: $2x + 3(20-2x) = 30 \\Rightarrow 2x + 60 - 6x = 30 \\Rightarrow -4x = -30 \\Rightarrow x = 7.5$, and $y = 20 - 2(7.5) = 5$.\n\n**Vertices:** $(0, 20)$, $(7.5, 5)$, $(15, 0)$\n\n**Evaluate $z = 0.60x + 0.40y$:**\n\n| Vertex | $z = 0.60x + 0.40y$ |\n| $(0, 20)$ | $0.60(0) + 0.40(20) = __ESCAPED_DOLLAR__8.00$ |\n| $(7.5, 5)$ | $0.60(7.5) + 0.40(5) = 4.50 + 2.00 = __ESCAPED_DOLLAR__\\mathbf{6.50}$ |\n| $(15, 0)$ | $0.60(15) + 0.40(0) = __ESCAPED_DOLLAR__9.00$ |\n\n**Minimum:** $z = __ESCAPED_DOLLAR__6.50$ at $(7.5, 5)$.\n\n**Conclusion:** To minimize cost, use **7.5 servings of Food A \nand 5 servings of Food B** for a cost of **$6.50**.",
       "figures": [
         {
           "type": "figure",
@@ -175,7 +175,7 @@
       "number": "9.5",
       "title": "No maximum exists",
       "problem": "Maximize $z = 2x + y$ subject to $x - y \\leq 2$, $x \\geq 0$, $y \\geq 0$.",
-      "solution": "The feasible region extends infinitely to the upper right.\n\nfigure[H]\n\ntikzpicture[scale=0.5]\n % Feasible region (unbounded)\n ll[AtlasTeal!30] (0,0) – (2,0) – (6,4) – (6,6) – (0,6) – cycle;\n \n (-0.5,0) – (7,0) node[right] {$x$};\n (0,-0.5) – (0,7) node[above] {$y$};\n \n % Constraint line\n (0,-2) – (6,4);\n \n % Arrow showing unbounded\n (4,5) – (5.5,6.5);\n at (6,6.8) {$\\infty$};\n \n at (3,-1.5) {No maximum: region unbounded};\ntikzpicture\nAn unbounded feasible region. Since the region extends infinitely in the direction where $z = 2x + y$ increases, there is no maximum value—$z$ can be made arbitrarily large.\n\nfigure\n\nAs we move up and to the right, $z = 2x + y$ increases without bound. \n**No maximum exists.**",
+      "solution": "The feasible region extends infinitely to the upper right.\n\nfigure[H]\n\nAn unbounded feasible region. Since the region extends infinitely in the direction where $z = 2x + y$ increases, there is no maximum value—$z$ can be made arbitrarily large.\n\nfigure\n\nAs we move up and to the right, $z = 2x + y$ increases without bound. \n**No maximum exists.**",
       "figures": [
         {
           "type": "figure",
@@ -228,8 +228,8 @@
       "id": "example-9.7",
       "number": "9.7",
       "title": "Production planning",
-      "problem": "A furniture company makes tables and chairs. Each table requires 4 hours \nin the assembly department and 2 hours in finishing. Each chair requires \n2 hours in assembly and 2 hours in finishing. Assembly has 60 hours \navailable; finishing has 48 hours available. Tables sell for \\$200 profit \neach; chairs for \\$100 each. How many of each should be made?",
-      "solution": "Let $x$ = tables, $y$ = chairs.\n\n**Objective:** Maximize $z = 200x + 100y$ (profit)\n\n**Constraints:**\n$$\n 4x + 2y &\\leq 60 && \\text{(assembly)} \\\\\n 2x + 2y &\\leq 48 && \\text{(finishing)} \\\\\n x, y &\\geq 0\n$$\n\nSimplify: $2x + y \\leq 30$ (assembly) and $x + y \\leq 24$ (finishing)\n\nfigure[H]\n\ntikzpicture[scale=0.22]\n % Feasible region\n ll[AtlasTeal!30] (0,0) – (15,0) – (6,18) – (0,24) – cycle;\n \n (-1,0) – (20,0) node[right] {$x$};\n (0,-1) – (0,32) node[above] {$y$};\n \n % Constraint lines\n (0,30) – (15,0); % 2x + y = 30\n (0,24) – (24,0); % x + y = 24\n \n % Vertices\n lldraw[AtlasCoral] (0,0) circle (8pt);\n lldraw[AtlasCoral] (15,0) circle (8pt) node[below] {$(15,0)$};\n lldraw[AtlasCoral] (6,18) circle (8pt) node[above right] {$(6,18)$};\n lldraw[AtlasCoral] (0,24) circle (8pt) node[left] {$(0,24)$};\n \n % Grid\n in {5,10,15} (,0.5) – (,-0.5) node[below] {};\n in {10,20,30} (0.5,) – (-0.5,) node[left] {};\ntikzpicture\nFeasible region for furniture production. Vertices occur at $(0,0)$, $(15,0)$, $(6,18)$, and $(0,24)$. The assembly constraint $2x + y = 30$ and finishing constraint $x + y = 24$ form two of the boundaries.\n\nfigure\n\nFind intersection of $2x + y = 30$ and $x + y = 24$:\n\nSubtract: $x = 6$, then $y = 24 - 6 = 18$. Vertex: $(6, 18)$\n\n**Evaluate:**\n\n| Vertex | $z = 200x + 100y$ |\n| $(0, 0)$ | \\$0 \\\\\n$(15, 0)$ & \\$3,000 |\n| $(6, 18)$ | $200(6) + 100(18) = \\$3,000$ \\\\\n$(0, 24)$ & \\$2,400 |\n\n**Maximum profit:** \\$3,000, achieved at either $(15, 0)$ or $(6, 18)$ \n(or any point between them).\n\n**Options:** Make 15 tables and 0 chairs, OR 6 tables and 18 chairs, \nOR any combination along that edge.",
+      "problem": "A furniture company makes tables and chairs. Each table requires 4 hours \nin the assembly department and 2 hours in finishing. Each chair requires \n2 hours in assembly and 2 hours in finishing. Assembly has 60 hours \navailable; finishing has 48 hours available. Tables sell for $200 profit \neach; chairs for $100 each. How many of each should be made?",
+      "solution": "Let $x$ = tables, $y$ = chairs.\n\n**Objective:** Maximize $z = 200x + 100y$ (profit)\n\n**Constraints:**\n$$\\begin{aligned}\n 4x + 2y &\\leq 60 && \\text{(assembly)} \\\\\n 2x + 2y &\\leq 48 && \\text{(finishing)} \\\\\n x, y &\\geq 0\n\\end{aligned}$$\n\nSimplify: $2x + y \\leq 30$ (assembly) and $x + y \\leq 24$ (finishing)\n\nfigure[H]\n\nFeasible region for furniture production. Vertices occur at $(0,0)$, $(15,0)$, $(6,18)$, and $(0,24)$. The assembly constraint $2x + y = 30$ and finishing constraint $x + y = 24$ form two of the boundaries.\n\nfigure\n\nFind intersection of $2x + y = 30$ and $x + y = 24$:\n\nSubtract: $x = 6$, then $y = 24 - 6 = 18$. Vertex: $(6, 18)$\n\n**Evaluate:**\n\n| Vertex | $z = 200x + 100y$ |\n| $(0, 0)$ | $0 |\n| $(15, 0)$ | $3,000 |\n| $(6, 18)$ | $200(6) + 100(18) = __ESCAPED_DOLLAR__\\mathbf{3,000}$ |\n| $(0, 24)$ | $2,400 |\n\n**Maximum profit:** $3,000, achieved at either $(15, 0)$ or $(6, 18)$ \n(or any point between them).\n\n**Options:** Make 15 tables and 0 chairs, OR 6 tables and 18 chairs, \nOR any combination along that edge.",
       "figures": [
         {
           "type": "figure",
@@ -246,21 +246,21 @@
       "id": "example-9.8",
       "number": "9.8",
       "title": "Transportation problem",
-      "problem": "A company ships products from two warehouses to a store. Warehouse A \ncan ship at most 50 units at \\$4 per unit. Warehouse B can ship at most \n70 units at \\$3 per unit. The store needs at least 80 units. How should \nshipments be allocated to minimize cost?",
-      "solution": "Let $x$ = units from A, $y$ = units from B.\n\n**Objective:** Minimize $z = 4x + 3y$ (cost)\n\n**Constraints:**\n$$\n x &\\leq 50 && \\text{(A capacity)} \\\\\n y &\\leq 70 && \\text{(B capacity)} \\\\\n x + y &\\geq 80 && \\text{(store requirement)} \\\\\n x, y &\\geq 0\n$$\n\n**Vertices:** $(50, 30)$, $(50, 70)$, $(10, 70)$\n\ncenter\n{1.3}\ntabular{c|c}\nVertex & $z = 4x + 3y$ \\\\ \n$(50, 30)$ & $4(50) + 3(30) = 200 + 90 = \\$290$ \\\\\n$(50, 70)$ & $4(50) + 3(70) = 200 + 210 = \\$410$ \\\\\n$(10, 70)$ & $4(10) + 3(70) = 40 + 210 = \\$250$\n\\end{tabular}\n\\end{center}\n\n\\textbf{Minimum cost:} \\$250, shipping 10 units from A and 70 from B."
+      "problem": "A company ships products from two warehouses to a store. Warehouse A \ncan ship at most 50 units at $4 per unit. Warehouse B can ship at most \n70 units at $3 per unit. The store needs at least 80 units. How should \nshipments be allocated to minimize cost?",
+      "solution": "Let $x$ = units from A, $y$ = units from B.\n\n**Objective:** Minimize $z = 4x + 3y$ (cost)\n\n**Constraints:**\n$$\\begin{aligned}\n x &\\leq 50 && \\text{(A capacity)} \\\\\n y &\\leq 70 && \\text{(B capacity)} \\\\\n x + y &\\geq 80 && \\text{(store requirement)} \\\\\n x, y &\\geq 0\n\\end{aligned}$$\n\n**Vertices:** $(50, 30)$, $(50, 70)$, $(10, 70)$\n\n| Vertex | $z = 4x + 3y$ |\n| $(50, 30)$ | $4(50) + 3(30) = 200 + 90 = __ESCAPED_DOLLAR__290$ |\n| $(50, 70)$ | $4(50) + 3(70) = 200 + 210 = __ESCAPED_DOLLAR__410$ |\n| $(10, 70)$ | $4(10) + 3(70) = 40 + 210 = __ESCAPED_DOLLAR__\\mathbf{250}$ |\n\n**Minimum cost:** $250, shipping 10 units from A and 70 from B."
     },
     {
       "type": "summary",
       "id": "summary-9.5",
       "number": null,
       "title": "Linear Programming",
-      "content": "- A **linear programming problem** consists of:\n itemize\n\n- An **objective function** $z = ax + by$ to maximize or minimize\n\n- **Constraints** (system of linear inequalities)\n \n The **Corner Point Theorem**: Optimal values occur at \n vertices of the feasible region.\n \n **Solution method:**\n \n\n1. Graph the feasible region\n\n2. Find all vertices\n\n3. Evaluate the objective function at each vertex\n\n4. Select the maximum (or minimum)\n \n **Special cases:**\n \n\n- Unbounded region → may have no maximum/minimum\n\n- Objective parallel to boundary → multiple optimal solutions\n\n- Contradictory constraints → no feasible solution\nitemize"
+      "content": "- A **linear programming problem** consists of:\n \n\n- An **objective function** $z = ax + by$ to maximize or minimize\n\n- **Constraints** (system of linear inequalities)\n \n \n\n- The **Corner Point Theorem**: Optimal values occur at \n vertices of the feasible region.\n \n \n\n- **Solution method:**\n \n\n1. Graph the feasible region\n\n2. Find all vertices\n\n3. Evaluate the objective function at each vertex\n\n4. Select the maximum (or minimum)\n \n \n\n- **Special cases:**\n \n\n- Unbounded region → may have no maximum/minimum\n\n- Objective parallel to boundary → multiple optimal solutions\n\n- Contradictory constraints → no feasible solution"
     },
     {
       "type": "exercise",
       "id": "ex-9.5-1",
       "number": "1",
-      "problem": "Write the objective function and constraints (do not solve).\n\n1. Maximize profit if Product A yields \\$5 profit and Product B \n yields \\$8 profit. Each A requires 2 hours of labor; each B requires \n 3 hours. Total labor available: 24 hours. At most 6 of Product B \n can be sold.\n\n2. Minimize cost if Ingredient X costs \\$2/unit and Ingredient Y \n costs \\$3/unit. A recipe requires at least 10 units of X, at least \n 8 units of Y, and at least 30 total units.",
+      "problem": "Write the objective function and constraints (do not solve).\n\n1. Maximize profit if Product A yields $5 profit and Product B \n yields $8 profit. Each A requires 2 hours of labor; each B requires \n 3 hours. Total labor available: 24 hours. At most 6 of Product B \n can be sold.\n\n2. Minimize cost if Ingredient X costs $2/unit and Ingredient Y \n costs $3/unit. A recipe requires at least 10 units of X, at least \n 8 units of Y, and at least 30 total units.",
       "variant": "regular",
       "hint": null,
       "answer": null
@@ -323,7 +323,7 @@
       "type": "exercise",
       "id": "ex-9.5-8",
       "number": "8",
-      "problem": "A company makes standard and deluxe widgets. Standard widgets require \n2 hours of machine time and 1 hour of assembly, yielding \\$10 profit. \nDeluxe widgets require 1 hour of machine time and 2 hours of assembly, \nyielding \\$15 profit. Available: 100 machine hours and 80 assembly hours.\n\n1. Set up the linear programming problem.\n\n2. Find the optimal production plan.\n\n3. What is the maximum profit?",
+      "problem": "A company makes standard and deluxe widgets. Standard widgets require \n2 hours of machine time and 1 hour of assembly, yielding $10 profit. \nDeluxe widgets require 1 hour of machine time and 2 hours of assembly, \nyielding $15 profit. Available: 100 machine hours and 80 assembly hours.\n\n1. Set up the linear programming problem.\n\n2. Find the optimal production plan.\n\n3. What is the maximum profit?",
       "variant": "regular",
       "hint": null,
       "answer": null,
@@ -333,7 +333,7 @@
       "type": "exercise",
       "id": "ex-9.5-9",
       "number": "9",
-      "problem": "A farmer has 100 acres for wheat and corn. Wheat requires 2 workers \nper acre and yields \\$200 profit per acre. Corn requires 3 workers per \nacre and yields \\$250 profit per acre. The farmer can hire at most 240 \nworkers. How many acres of each crop should be planted?",
+      "problem": "A farmer has 100 acres for wheat and corn. Wheat requires 2 workers \nper acre and yields $200 profit per acre. Corn requires 3 workers per \nacre and yields $250 profit per acre. The farmer can hire at most 240 \nworkers. How many acres of each crop should be planted?",
       "variant": "regular",
       "hint": null,
       "answer": null,
@@ -343,7 +343,7 @@
       "type": "exercise",
       "id": "ex-9.5-10",
       "number": "10",
-      "problem": "A dietitian plans meals using Food A (3g protein, 1g fat, costs \\$0.50) \nand Food B (2g protein, 2g fat, costs \\$0.40). Daily requirements: at \nleast 24g protein, at most 16g fat. How many servings of each minimize cost?",
+      "problem": "A dietitian plans meals using Food A (3g protein, 1g fat, costs $0.50) \nand Food B (2g protein, 2g fat, costs $0.40). Daily requirements: at \nleast 24g protein, at most 16g fat. How many servings of each minimize cost?",
       "variant": "regular",
       "hint": null,
       "answer": null,
@@ -353,7 +353,7 @@
       "type": "exercise",
       "id": "ex-9.5-11",
       "number": "11",
-      "problem": "An investor has \\$50,000 to invest in stocks and bonds. Stocks are expected \nto return 10\\% but are risky, so at most 60\\% should be in stocks. Bonds \nreturn 6\\%. At least \\$10,000 must be in bonds. How should the investment \nbe allocated to maximize return?",
+      "problem": "An investor has $50,000 to invest in stocks and bonds. Stocks are expected \nto return 10\\% but are risky, so at most 60\\% should be in stocks. Bonds \nreturn 6\\%. At least $10,000 must be in bonds. How should the investment \nbe allocated to maximize return?",
       "variant": "regular",
       "hint": null,
       "answer": null,
@@ -363,7 +363,7 @@
       "type": "exercise",
       "id": "ex-9.5-12",
       "number": "12",
-      "problem": "A company ships goods from two plants to a warehouse. Plant A can ship \nup to 400 units at \\$5 per unit. Plant B can ship up to 500 units at \n\\$4 per unit. The warehouse needs at least 600 units. Minimize shipping cost.",
+      "problem": "A company ships goods from two plants to a warehouse. Plant A can ship \nup to 400 units at $5 per unit. Plant B can ship up to 500 units at \n$4 per unit. The warehouse needs at least 600 units. Minimize shipping cost.",
       "variant": "regular",
       "hint": null,
       "answer": null,
@@ -400,7 +400,7 @@
       "type": "exercise",
       "id": "ex-9.5-16",
       "number": "16",
-      "problem": "A company makes three products with the following data:\n\n| Product 1 | Product 2 | Product 3 |\n| Machine hours | 2 | 1 | 3 |\n| Labor hours | 3 | 2 | 1 |\n| Profit | \\$30 & \\$20 | \\$40 |\n\nAvailable: 100 machine hours, 90 labor hours. Set up and solve the \nthree-variable linear programming problem.",
+      "problem": "A company makes three products with the following data:\n\n| Product 1 | Product 2 | Product 3 |\n| Machine hours | 2 | 1 | 3 |\n| Labor hours | 3 | 2 | 1 |\n| Profit | $30 | $20 | $40 |\n\nAvailable: 100 machine hours, 90 labor hours. Set up and solve the \nthree-variable linear programming problem.",
       "variant": "starred",
       "hint": null,
       "answer": null
