@@ -27,36 +27,18 @@
       "text": "Systems of Linear Equations (Section 9.1)"
     },
     {
-      "type": "paragraph",
-      "text": "- A **system of equations** consists of multiple equations \n that must all be satisfied by the same solution."
-    },
-    {
-      "type": "paragraph",
-      "text": "- **Substitution method:** Solve one equation for a variable, \n substitute into the other equation, solve, then back-substitute."
-    },
-    {
-      "type": "paragraph",
-      "text": "- **Elimination method:** Multiply equations by constants \n to create opposite coefficients, add equations to eliminate a \n variable, solve, then back-substitute."
-    },
-    {
-      "type": "paragraph",
-      "text": "- A system of two linear equations has exactly three possible \n outcomes:"
-    },
-    {
-      "type": "paragraph",
-      "text": "- - **One solution:** Lines intersect (consistent, independent)"
-    },
-    {
-      "type": "paragraph",
-      "text": "- **No solution:** Lines are parallel (inconsistent)"
-    },
-    {
-      "type": "paragraph",
-      "text": "- **Infinitely many solutions:** Lines coincide \n (consistent, dependent)"
-    },
-    {
-      "type": "paragraph",
-      "text": "- The same methods extend to systems with three or more variables, \n where we systematically eliminate variables until the system is solved."
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "A **system of equations** consists of multiple equations \n that must all be satisfied by the same solution.",
+        "**Substitution method:** Solve one equation for a variable, \n substitute into the other equation, solve, then back-substitute.",
+        "**Elimination method:** Multiply equations by constants \n to create opposite coefficients, add equations to eliminate a \n variable, solve, then back-substitute.",
+        "A system of two linear equations has exactly three possible \n outcomes:",
+        "**One solution:** Lines intersect (consistent, independent)",
+        "**No solution:** Lines are parallel (inconsistent)",
+        "**Infinitely many solutions:** Lines coincide \n (consistent, dependent)",
+        "The same methods extend to systems with three or more variables, \n where we systematically eliminate variables until the system is solved."
+      ]
     },
     {
       "type": "heading",
@@ -64,44 +46,20 @@
       "text": "Introduction to Matrices (Section 9.2)"
     },
     {
-      "type": "paragraph",
-      "text": "- A **matrix** is a rectangular array of numbers with \n $m$ rows and $n$ columns (an $m \\times n$ matrix)."
-    },
-    {
-      "type": "paragraph",
-      "text": "- An **augmented matrix** represents a system of equations \n by separating coefficients from constants with a vertical bar."
-    },
-    {
-      "type": "paragraph",
-      "text": "- **Elementary row operations** transform a matrix without \n changing the solution set:"
-    },
-    {
-      "type": "paragraph",
-      "text": "1. Swap two rows ($R_i \\leftrightarrow R_j$)"
-    },
-    {
-      "type": "paragraph",
-      "text": "2. Multiply a row by a nonzero constant ($kR_i \\to R_i$)"
-    },
-    {
-      "type": "paragraph",
-      "text": "3. Add a multiple of one row to another ($R_i + kR_j \\to R_i$)"
-    },
-    {
-      "type": "paragraph",
-      "text": "- **Gaussian elimination:** Use row operations to reach \n row-echelon form, then back-substitute to find the solution."
-    },
-    {
-      "type": "paragraph",
-      "text": "- **Gauss-Jordan elimination:** Continue to reduced \n row-echelon form (RREF), where the solution can be read directly."
-    },
-    {
-      "type": "paragraph",
-      "text": "- A row of the form $[0 \\; 0 \\; \\cdots \\; 0 \\;|\\; c]$ with \n $c \\neq 0$ indicates **no solution** (inconsistent system)."
-    },
-    {
-      "type": "paragraph",
-      "text": "- Rows of all zeros indicate dependent equations; the system \n may have infinitely many solutions with free parameters."
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "A **matrix** is a rectangular array of numbers with \n $m$ rows and $n$ columns (an $m \\times n$ matrix).",
+        "An **augmented matrix** represents a system of equations \n by separating coefficients from constants with a vertical bar.",
+        "**Elementary row operations** transform a matrix without \n changing the solution set:",
+        "Swap two rows ($R_i \\leftrightarrow R_j$)",
+        "Multiply a row by a nonzero constant ($kR_i \\to R_i$)",
+        "Add a multiple of one row to another ($R_i + kR_j \\to R_i$)",
+        "**Gaussian elimination:** Use row operations to reach \n row-echelon form, then back-substitute to find the solution.",
+        "**Gauss-Jordan elimination:** Continue to reduced \n row-echelon form (RREF), where the solution can be read directly.",
+        "A row of the form $[0 \\; 0 \\; \\cdots \\; 0 \\;|\\; c]$ with \n $c \\neq 0$ indicates **no solution** (inconsistent system).",
+        "Rows of all zeros indicate dependent equations; the system \n may have infinitely many solutions with free parameters."
+      ]
     },
     {
       "type": "heading",
@@ -109,44 +67,20 @@
       "text": "Matrix Operations (Section 9.3)"
     },
     {
-      "type": "paragraph",
-      "text": "- **Matrix addition:** Add corresponding entries (matrices \n must have the same dimensions)."
-    },
-    {
-      "type": "paragraph",
-      "text": "- **Scalar multiplication:** Multiply every entry by the \n scalar."
-    },
-    {
-      "type": "paragraph",
-      "text": "- **Matrix multiplication:** For $A$ ($m \\times n$) and \n $B$ ($n \\times p$), the product $AB$ is $m \\times p$, with each \n entry computed as a dot product of a row from $A$ with a column \n from $B$."
-    },
-    {
-      "type": "paragraph",
-      "text": "- Matrix multiplication is **not commutative**: $AB \\neq BA$ \n in general."
-    },
-    {
-      "type": "paragraph",
-      "text": "- The **identity matrix** $I_n$ satisfies $AI = IA = A$ \n for compatible matrices."
-    },
-    {
-      "type": "paragraph",
-      "text": "- The **inverse** $A^{-1}$ of a matrix satisfies \n $AA^{-1} = A^{-1}A = I$. Not all matrices are invertible."
-    },
-    {
-      "type": "paragraph",
-      "text": "- For a $2 \\times 2$ matrix $A = \\begin{pmatrix} a & b \\\\ c & d \n \\end{pmatrix}$:\n $$\n A^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}\n \\quad \\text{if } ad - bc \\neq 0\n $$"
-    },
-    {
-      "type": "paragraph",
-      "text": "- A system $AX = B$ can be solved by $X = A^{-1}B$ when $A$ is \n invertible."
-    },
-    {
-      "type": "paragraph",
-      "text": "- The **determinant** of a square matrix determines \n invertibility: $\\det(A) \\neq 0$ means $A$ is invertible; \n $\\det(A) = 0$ means $A$ is singular (not invertible)."
-    },
-    {
-      "type": "paragraph",
-      "text": "- **Cramer's Rule** expresses each variable as a ratio of \n determinants: $x = D_x/D$, $y = D_y/D$, where $D$ is the coefficient \n determinant and $D_x, D_y$ are formed by replacing columns with \n constants. Requires $D \\neq 0$."
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "**Matrix addition:** Add corresponding entries (matrices \n must have the same dimensions).",
+        "**Scalar multiplication:** Multiply every entry by the \n scalar.",
+        "**Matrix multiplication:** For $A$ ($m \\times n$) and \n $B$ ($n \\times p$), the product $AB$ is $m \\times p$, with each \n entry computed as a dot product of a row from $A$ with a column \n from $B$.",
+        "Matrix multiplication is **not commutative**: $AB \\neq BA$ \n in general.",
+        "The **identity matrix** $I_n$ satisfies $AI = IA = A$ \n for compatible matrices.",
+        "The **inverse** $A^{-1}$ of a matrix satisfies \n $AA^{-1} = A^{-1}A = I$. Not all matrices are invertible.",
+        "For a $2 \\times 2$ matrix $A = \\begin{pmatrix} a & b \\\\ c & d \n \\end{pmatrix}$:\n $$\n A^{-1} = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}\n \\quad \\text{if } ad - bc \\neq 0\n $$",
+        "A system $AX = B$ can be solved by $X = A^{-1}B$ when $A$ is \n invertible.",
+        "The **determinant** of a square matrix determines \n invertibility: $\\det(A) \\neq 0$ means $A$ is invertible; \n $\\det(A) = 0$ means $A$ is singular (not invertible).",
+        "**Cramer's Rule** expresses each variable as a ratio of \n determinants: $x = D_x/D$, $y = D_y/D$, where $D$ is the coefficient \n determinant and $D_x, D_y$ are formed by replacing columns with \n constants. Requires $D \\neq 0$."
+      ]
     },
     {
       "type": "heading",
@@ -154,36 +88,18 @@
       "text": "Systems of Inequalities (Section 9.4)"
     },
     {
-      "type": "paragraph",
-      "text": "- A **linear inequality** in two variables: $ax + by < c$ \n (or $\\leq$, $>$, $\\geq$)."
-    },
-    {
-      "type": "paragraph",
-      "text": "- The graph is a **half-plane** bounded by the line $ax + by = c$."
-    },
-    {
-      "type": "paragraph",
-      "text": "- - Use a **dashed line** for strict inequalities ($<$, $>$)"
-    },
-    {
-      "type": "paragraph",
-      "text": "- Use a **solid line** for non-strict inequalities ($\\leq$, $\\geq$)"
-    },
-    {
-      "type": "paragraph",
-      "text": "- Use a **test point** (often $(0,0)$) to determine which \n half-plane to shade."
-    },
-    {
-      "type": "paragraph",
-      "text": "- The **solution set** of a system of inequalities is the \n intersection of all half-planes, called the **feasible region**."
-    },
-    {
-      "type": "paragraph",
-      "text": "- **Vertices** (corner points) are found by solving pairs \n of boundary line equations and checking all inequalities."
-    },
-    {
-      "type": "paragraph",
-      "text": "- A region is **bounded** if it has finite area; otherwise \n it is **unbounded**."
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "A **linear inequality** in two variables: $ax + by < c$ \n (or $\\leq$, $>$, $\\geq$).",
+        "The graph is a **half-plane** bounded by the line $ax + by = c$.",
+        "Use a **dashed line** for strict inequalities ($<$, $>$)",
+        "Use a **solid line** for non-strict inequalities ($\\leq$, $\\geq$)",
+        "Use a **test point** (often $(0,0)$) to determine which \n half-plane to shade.",
+        "The **solution set** of a system of inequalities is the \n intersection of all half-planes, called the **feasible region**.",
+        "**Vertices** (corner points) are found by solving pairs \n of boundary line equations and checking all inequalities.",
+        "A region is **bounded** if it has finite area; otherwise \n it is **unbounded**."
+      ]
     },
     {
       "type": "heading",
@@ -191,48 +107,21 @@
       "text": "Linear Programming (Section 9.5)"
     },
     {
-      "type": "paragraph",
-      "text": "- A **linear programming problem** seeks to maximize or \n minimize an **objective function** $z = ax + by$ subject to \n linear **constraints**."
-    },
-    {
-      "type": "paragraph",
-      "text": "- The **Corner Point Theorem**: If an optimal solution \n exists, it occurs at a vertex (corner point) of the feasible region."
-    },
-    {
-      "type": "paragraph",
-      "text": "- **Solution method:**"
-    },
-    {
-      "type": "paragraph",
-      "text": "1. Graph the feasible region"
-    },
-    {
-      "type": "paragraph",
-      "text": "2. Find all vertices"
-    },
-    {
-      "type": "paragraph",
-      "text": "3. Evaluate the objective function at each vertex"
-    },
-    {
-      "type": "paragraph",
-      "text": "4. Select the maximum (or minimum) value"
-    },
-    {
-      "type": "paragraph",
-      "text": "- **Special cases:**"
-    },
-    {
-      "type": "paragraph",
-      "text": "- - Unbounded region: may have no max/min"
-    },
-    {
-      "type": "paragraph",
-      "text": "- Parallel objective: multiple optimal solutions"
-    },
-    {
-      "type": "paragraph",
-      "text": "- Empty feasible region: no solution exists"
+      "type": "list",
+      "ordered": false,
+      "items": [
+        "A **linear programming problem** seeks to maximize or \n minimize an **objective function** $z = ax + by$ subject to \n linear **constraints**.",
+        "The **Corner Point Theorem**: If an optimal solution \n exists, it occurs at a vertex (corner point) of the feasible region.",
+        "**Solution method:**",
+        "Graph the feasible region",
+        "Find all vertices",
+        "Evaluate the objective function at each vertex",
+        "Select the maximum (or minimum) value",
+        "**Special cases:**",
+        "Unbounded region: may have no max/min",
+        "Parallel objective: multiple optimal solutions",
+        "Empty feasible region: no solution exists"
+      ]
     },
     {
       "type": "heading",

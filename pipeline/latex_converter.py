@@ -424,9 +424,8 @@ class SectionParser:
         # \setcounter{...}{...}
         text = re.sub(r'\\setcounter\{[^}]*\}\{[^}]*\}', '', text)
 
-        # \label{...} outside math (we keep labels inside \begin{figure} etc for ID extraction)
-        # Actually labels are stripped later; just ensure they don't show as text
-        text = re.sub(r'\\label\{[^}]*\}', '', text)
+        # NOTE: Do NOT strip \label{} here — _parse_figure needs them for manifest lookup.
+        # Labels are stripped later in _remove_extracted and _convert_text.
 
         # \index{...}
         text = re.sub(r'\\index\{[^}]*\}', '', text)
@@ -782,6 +781,7 @@ class SectionParser:
             "figure", "exercise", "exercisewithsolution", "exerciseblock",
             "chapterintro", "secularintro", "solution",
             "definition", "theorem", "example",
+            "itemize", "enumerate",
         }
         i = pos
         while i < len(text):

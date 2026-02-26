@@ -121,38 +121,38 @@ function ReaderContentInner({
       {/* Main content with positioned margin notes */}
       <div className="relative">
         {(() => {
+          // Mark first paragraph for drop cap, then pass ALL content to ContentRenderer
+          // so it can group consecutive exercises into ExerciseSections
           let firstParagraphSeen = false;
-          return content.map((block, index) => {
-            const marginNote = marginPositions.get(index);
+          const annotatedContent = content.map((block, index) => {
             const isFirstParagraph = !firstParagraphSeen && block.type === 'paragraph';
             if (isFirstParagraph) firstParagraphSeen = true;
-          
-            return (
-              <div key={index} className="relative">
-                {/* Margin note - floats to right margin on wide screens */}
-                {marginNote && (
-                  <aside 
-                    className="hidden 2xl:block float-right clear-right w-52 -mr-60 ml-6 mb-4"
-                    aria-label="Margin note"
-                  >
-                    <div className="text-sm italic pl-3" style={{ color: 'var(--ax-text-muted)', borderLeft: '2px solid var(--ax-border)' }}>
-                      <p className="leading-relaxed">"{marginNote.text.replace(/\n/g, ' ')}"</p>
-                      <p className="mt-1 text-xs font-medium not-italic" style={{ color: 'var(--ax-text-muted)' }}>
-                        — {marginNote.type === 'scripture' ? marginNote.reference : marginNote.author}
-                      </p>
-                    </div>
-                  </aside>
-                )}
-              
-                {/* Content block */}
-                {isFirstParagraph ? (
-                  <ContentRenderer content={[{...block, _firstParagraph: true}]} edition={edition} />
-                ) : (
-                  <ContentRenderer content={[block]} edition={edition} />
-                )}
-              </div>
-            );
+            return isFirstParagraph ? { ...block, _firstParagraph: true } : block;
           });
+
+          // Render margin notes as standalone asides at their positions
+          const marginNoteElements = Array.from(marginPositions.entries()).map(([position, note]) => (
+            <aside
+              key={`margin-${position}`}
+              className="hidden 2xl:block float-right clear-right w-52 -mr-60 ml-6 mb-4"
+              aria-label="Margin note"
+              style={{ order: position }}
+            >
+              <div className="text-sm italic pl-3" style={{ color: 'var(--ax-text-muted)', borderLeft: '2px solid var(--ax-border)' }}>
+                <p className="leading-relaxed">"{note.text.replace(/\n/g, ' ')}"</p>
+                <p className="mt-1 text-xs font-medium not-italic" style={{ color: 'var(--ax-text-muted)' }}>
+                  — {note.type === 'scripture' ? note.reference : note.author}
+                </p>
+              </div>
+            </aside>
+          ));
+
+          return (
+            <>
+              {marginNoteElements}
+              <ContentRenderer content={annotatedContent} edition={edition} bookId={bookId} chapterSection={`${chapter}.${section}`} />
+            </>
+          );
         })()}
       </div>
     </div>
