@@ -28,7 +28,7 @@ export function Logo({ size = 'md', className = '' }: LogoProps) {
         ) : (
           <>
             <span className="tracking-wide">MERIDIAN</span>
-            <span className="font-normal text-gray-600 ml-1">Press</span>
+            <span className="font-normal text-gray-600 ml-1">Math</span>
           </>
         )}
       </span>
