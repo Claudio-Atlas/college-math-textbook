@@ -143,7 +143,7 @@ function HomeContent() {
                 Rigorous content presented with clarity, rooted in the classical tradition.</>
               ) : (
                 <>Clear, accessible mathematics textbooks designed to meet students where they are. 
-                Built by educators who understand where students struggle — and how to help them succeed.</>
+                Built by educators who understand where students struggle, and supported by videos, practice problems, and an AI tutor to help every student succeed.</>
               )}
             </p>
             <a 
