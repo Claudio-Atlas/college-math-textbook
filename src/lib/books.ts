@@ -422,12 +422,13 @@ Every topic is presented with clarity and purpose, connecting new ideas to what 
         { number: '2.4', title: 'Systems of Three Variables' },
       ]},
       { number: 3, title: 'Quadratic Functions', sections: [
-        { number: '3.1', title: 'Quadratic Graphs' },
+        { number: '3.1', title: 'Quadratic Graphs and Transformations' },
         { number: '3.2', title: 'Solving Quadratics' },
         { number: '3.3', title: 'Completing the Square' },
         { number: '3.4', title: 'The Quadratic Formula' },
         { number: '3.5', title: 'Complex Numbers' },
-        { number: '3.6', title: 'Quadratic Applications' },
+        { number: '3.6', title: 'Quadratic Inequalities' },
+        { number: '3.7', title: 'Quadratic Applications' },
       ]},
       { number: 4, title: 'Polynomial Functions', sections: [
         { number: '4.1', title: 'Polynomial Basics' },
@@ -444,10 +445,11 @@ Every topic is presented with clarity and purpose, connecting new ideas to what 
         { number: '5.5', title: 'Graphing Radical Functions and Inverses' },
       ]},
       { number: 6, title: 'Exponential Functions', sections: [
-        { number: '6.1', title: 'Exponential Functions' },
-        { number: '6.2', title: 'The Natural Base' },
-        { number: '6.3', title: 'Compound Interest' },
-        { number: '6.4', title: 'Growth and Decay' },
+        { number: '6.1', title: 'Composite and Inverse Functions' },
+        { number: '6.2', title: 'Exponential Functions and Graphs' },
+        { number: '6.3', title: 'The Natural Base' },
+        { number: '6.4', title: 'Compound Interest' },
+        { number: '6.5', title: 'Growth and Decay' },
       ]},
       { number: 7, title: 'Logarithmic Functions', sections: [
         { number: '7.1', title: 'Introduction to Logarithms' },
@@ -463,8 +465,9 @@ Every topic is presented with clarity and purpose, connecting new ideas to what 
       ]},
       { number: 9, title: 'Sequences and Series', sections: [
         { number: '9.1', title: 'Arithmetic Sequences' },
-        { number: '9.2', title: 'Geometric Sequences' },
+        { number: '9.2', title: 'Geometric Sequences and Series' },
         { number: '9.3', title: 'Sigma Notation' },
+        { number: '9.4', title: 'The Binomial Theorem' },
       ]},
       { number: 10, title: 'Probability and Statistics', sections: [
         { number: '10.1', title: 'Counting and Permutations' },
