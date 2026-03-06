@@ -243,6 +243,7 @@ function BookCard({ book, brand, isAtlas }: BookCardProps) {
   const getMeridianCropPosition = () => {
     if (book.id === 'pre-algebra') return 'center 40%';
     if (book.id === 'algebra-1') return 'center 40%';
+    if (book.id === 'algebra-2') return 'center 40%';
     if (book.id === 'college-algebra') return 'center 50%';
     if (book.id === 'calculus-vol3') return 'center 57%';
     return 'center 60%';

@@ -437,9 +437,11 @@ Every topic is presented with clarity and purpose, connecting new ideas to what 
         { number: '4.5', title: 'Graphing Polynomials' },
       ]},
       { number: 5, title: 'Radical Functions', sections: [
-        { number: '5.1', title: 'Radicals and Exponents' },
-        { number: '5.2', title: 'Graphing Radical Functions' },
-        { number: '5.3', title: 'Inverse Functions' },
+        { number: '5.1', title: 'Simplifying Radicals' },
+        { number: '5.2', title: 'Operations with Radicals' },
+        { number: '5.3', title: 'Rational Exponents' },
+        { number: '5.4', title: 'Solving Radical Equations' },
+        { number: '5.5', title: 'Graphing Radical Functions and Inverses' },
       ]},
       { number: 6, title: 'Exponential Functions', sections: [
         { number: '6.1', title: 'Exponential Functions' },
@@ -454,8 +456,10 @@ Every topic is presented with clarity and purpose, connecting new ideas to what 
       ]},
       { number: 8, title: 'Rational Functions', sections: [
         { number: '8.1', title: 'Simplifying Rational Expressions' },
-        { number: '8.2', title: 'Operations with Rational Expressions' },
-        { number: '8.3', title: 'Solving Rational Equations' },
+        { number: '8.2', title: 'Multiplying and Dividing Rational Expressions' },
+        { number: '8.3', title: 'Adding and Subtracting Rational Expressions' },
+        { number: '8.4', title: 'Solving Rational Equations' },
+        { number: '8.5', title: 'Direct and Inverse Variation' },
       ]},
       { number: 9, title: 'Sequences and Series', sections: [
         { number: '9.1', title: 'Arithmetic Sequences' },
