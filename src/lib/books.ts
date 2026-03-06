@@ -273,6 +273,18 @@ From the real number system through linear equations, graphing, systems, polynom
         { number: '10.5', title: 'Linear Functions' },
         { number: '10.6', title: 'Quadratic Functions' },
       ]},
+      { number: 11, title: 'Introduction to Exponential Functions', sections: [
+        { number: '11.1', title: 'Exponential Growth and Decay' },
+        { number: '11.2', title: 'Graphing Exponential Functions' },
+        { number: '11.3', title: 'Compound Interest' },
+        { number: '11.4', title: 'Geometric Sequences' },
+      ]},
+      { number: 12, title: 'Statistics and Data Analysis', sections: [
+        { number: '12.1', title: 'Scatter Plots and Correlation' },
+        { number: '12.2', title: 'Line of Best Fit' },
+        { number: '12.3', title: 'Two-Way Tables' },
+        { number: '12.4', title: 'Interpreting Data in Context' },
+      ]},
     ],
   },
   geometry: {

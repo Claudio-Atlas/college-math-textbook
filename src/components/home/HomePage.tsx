@@ -29,9 +29,9 @@ const CATALOG: Book[] = [
     id: 'algebra-1',
     title: 'Algebra 1',
     subtitle: 'Core Algebraic Thinking',
-    description: 'From real numbers through linear equations, inequalities, graphing, systems of equations, polynomials, factoring, quadratics, and an introduction to functions.',
+    description: 'From real numbers through linear equations, inequalities, graphing, systems of equations, polynomials, factoring, quadratics, functions, exponentials, and statistics.',
     coverSlug: 'algebra-1',
-    chapters: 10,
+    chapters: 12,
     available: false,
   },
   {
