@@ -77,26 +77,34 @@ function BookLandingContent({ book }: BookLandingPageProps) {
                 </p>
 
                 {/* Preview Section CTA */}
-                {book.chapters[0]?.sections[0] && (() => {
-                  const ch = book.chapters[0];
-                  const sec = ch.sections[0];
-                  const chId = `ch${String(ch.number).padStart(2, '0')}`;
-                  // Section number may be "1.1" — extract the part after the dot for the URL
-                  const secNum = String(sec.number).includes('.') ? String(sec.number).split('.')[1] : String(sec.number);
-                  const secId = `sec${secNum.padStart(2, '0')}`;
-                  return (
-                    <a
-                      href={`/${book.id}/${chId}/${secId}`}
-                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-white text-sm font-medium transition-transform active:scale-[0.96]"
-                      style={{ backgroundColor: brand.colors.primary }}
-                    >
-                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                      </svg>
-                      Try Chapter {sec.number}
-                    </a>
-                  );
-                })()}
+                {book.available ? (
+                  book.chapters[0]?.sections[0] && (() => {
+                    const ch = book.chapters[0];
+                    const sec = ch.sections[0];
+                    const chId = `ch${String(ch.number).padStart(2, '0')}`;
+                    const secNum = String(sec.number).includes('.') ? String(sec.number).split('.')[1] : String(sec.number);
+                    const secId = `sec${secNum.padStart(2, '0')}`;
+                    return (
+                      <a
+                        href={`/${book.id}/${chId}/${secId}`}
+                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-white text-sm font-medium transition-transform active:scale-[0.96]"
+                        style={{ backgroundColor: brand.colors.primary }}
+                      >
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        Try Chapter {sec.number}
+                      </a>
+                    );
+                  })()
+                ) : (
+                  <span
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-medium"
+                    style={{ backgroundColor: 'var(--ax-surface)', color: 'var(--ax-text-muted)', border: '1px solid var(--ax-border)' }}
+                  >
+                    Coming Soon
+                  </span>
+                )}
               </div>
             </div>
           </div>

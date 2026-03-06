@@ -36,6 +36,7 @@ export interface BookLanding {
   pageCount?: number;
   exerciseCount?: number;
   figureCount?: number;
+  available?: boolean;
 }
 
 // ─── Authors ────────────────────────────────────────────
@@ -456,6 +457,7 @@ Every topic is presented with clarity and purpose, connecting new ideas to what 
   },
   precalculus: {
     id: 'precalculus',
+    available: true,
     title: 'Precalculus',
     subtitle: 'With Applications',
     description: 'A comprehensive bridge from algebra to calculus, covering functions, trigonometry, and analytical foundations.',
