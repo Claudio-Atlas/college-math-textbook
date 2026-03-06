@@ -142,8 +142,8 @@ function HomeContent() {
                 <>Mathematics textbooks that honor both truth and beauty. 
                 Rigorous content presented with clarity, rooted in the classical tradition.</>
               ) : (
-                <>Professional mathematics textbooks designed for clarity and rigor. 
-                Clean, accessible content for modern learners.</>
+                <>Clear, accessible mathematics textbooks designed to meet students where they are. 
+                Built by educators who understand where students struggle — and how to help them succeed.</>
               )}
             </p>
             <a 
@@ -166,7 +166,7 @@ function HomeContent() {
             <p className="mb-12" style={{ color: 'var(--ax-text-secondary)' }}>
               {isAtlas 
                 ? 'Textbooks crafted with care for the classical educator.'
-                : 'Professional textbooks for modern mathematics education.'
+                : 'Clear, accessible textbooks designed to help every student succeed.'
               }
             </p>
 
