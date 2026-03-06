@@ -20,9 +20,9 @@ const CATALOG: Book[] = [
     id: 'pre-algebra',
     title: 'Pre-Algebra',
     subtitle: 'Building Mathematical Foundations',
-    description: 'A comprehensive foundation covering whole numbers, fractions, decimals, ratios, percents, integers, variables, equations, geometry basics, and data analysis.',
+    description: 'A comprehensive foundation from whole numbers through polynomials and graphing — everything students need to enter Algebra 1 with confidence.',
     coverSlug: 'pre-algebra',
-    chapters: 10,
+    chapters: 12,
     available: false,
   },
   {
