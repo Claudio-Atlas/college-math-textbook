@@ -1,0 +1,95 @@
+---
+import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
+
+export const prerender = false;
+const host = Astro.request.headers.get('host') || 'localhost';
+const isMeridian = host.includes('meridian');
+const brandName = isMeridian ? 'Meridian Press' : 'Atlas Classical Press';
+const domain = isMeridian ? 'meridian-press.com' : 'atlasclassicalpress.com';
+const contactEmail = 'contact@onyxenterprises.org';
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={`${brandName} Privacy Policy`} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>Privacy Policy — {brandName}</title>
+    <ClientRouter />
+    <script is:inline>
+      (function() {
+        var t = localStorage.getItem('ax-theme');
+        if (t === 'light' || t === 'dark') {
+          document.documentElement.setAttribute('data-theme', t);
+        } else if (window.matchMedia('(prefers-color-scheme: light)').matches) {
+          document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-[var(--bg-primary)] text-[var(--text-primary)]">
+    <div class="max-w-3xl mx-auto px-6 py-16">
+      <a href="/" class="text-sm text-[var(--text-secondary)] hover:underline mb-8 inline-block">&larr; Back to Home</a>
+      
+      <h1 class="text-3xl font-bold mb-2">Privacy Policy</h1>
+      <p class="text-sm text-[var(--text-secondary)] mb-10">Last updated: March 6, 2026</p>
+
+      <div class="prose prose-invert max-w-none space-y-6 text-[var(--text-secondary)] leading-relaxed">
+        <h2 class="text-xl font-semibold text-[var(--text-primary)]">1. Who We Are</h2>
+        <p>{brandName} is a division of Onyx Enterprises, LLC. When we say "we," "us," or "our," we mean {brandName} and Onyx Enterprises.</p>
+
+        <h2 class="text-xl font-semibold text-[var(--text-primary)]">2. Information We Collect</h2>
+        <p><strong>Information you provide:</strong> When you create an account, contact us, or subscribe to updates, we may collect your name, email address, and institutional affiliation.</p>
+        <p><strong>Usage data:</strong> We automatically collect information about how you interact with our platform, including pages visited, reading progress, exercises attempted, and time spent. This data helps us improve our courses and personalize your learning experience.</p>
+        <p><strong>Device information:</strong> We collect standard technical data such as browser type, operating system, and screen resolution to ensure our content displays correctly.</p>
+
+        <h2 class="text-xl font-semibold text-[var(--text-primary)]">3. How We Use Your Information</h2>
+        <p>We use your information to:</p>
+        <ul class="list-disc pl-6 space-y-1">
+          <li>Provide and improve our digital textbooks, video lessons, practice problems, and AI tutoring features</li>
+          <li>Track your learning progress and provide personalized recommendations</li>
+          <li>Communicate with you about your account and our services</li>
+          <li>Generate anonymized, aggregate analytics to improve our programs</li>
+          <li>Comply with legal obligations</li>
+        </ul>
+
+        <h2 class="text-xl font-semibold text-[var(--text-primary)]">4. Student Data and FERPA</h2>
+        <p>We take student privacy seriously. When our platform is used through an educational institution, we act as a "school official" under FERPA and process student education records solely on behalf of the institution. We do not sell student data. We do not use student data for advertising or marketing purposes unrelated to educational services.</p>
+
+        <h2 class="text-xl font-semibold text-[var(--text-primary)]">5. COPPA Compliance</h2>
+        <p>Our platform is designed for use in educational settings. When students under 13 access our platform through their school, the school provides consent on behalf of the student's parent or guardian in accordance with COPPA. We do not knowingly collect personal information from children under 13 outside of a school setting.</p>
+
+        <h2 class="text-xl font-semibold text-[var(--text-primary)]">6. AI Tutoring</h2>
+        <p>Our AI tutor processes student questions and responses to provide personalized math help. Student interactions with the AI tutor are used solely to deliver the tutoring service and improve its quality. We do not use these interactions for purposes unrelated to the educational service.</p>
+
+        <h2 class="text-xl font-semibold text-[var(--text-primary)]">7. Data Sharing</h2>
+        <p>We do not sell your personal information. We may share data with:</p>
+        <ul class="list-disc pl-6 space-y-1">
+          <li>Service providers who help us operate our platform (hosting, analytics)</li>
+          <li>Educational institutions that have adopted our programs, limited to their students' progress data</li>
+          <li>Law enforcement when required by law</li>
+        </ul>
+
+        <h2 class="text-xl font-semibold text-[var(--text-primary)]">8. Data Security</h2>
+        <p>We use industry-standard security measures including encryption in transit (TLS) and at rest. Access to personal data is restricted to authorized personnel who need it to provide our services.</p>
+
+        <h2 class="text-xl font-semibold text-[var(--text-primary)]">9. Data Retention</h2>
+        <p>We retain your information for as long as your account is active or as needed to provide our services. If an institution terminates its agreement with us, we will delete or anonymize student data within 90 days unless otherwise required by law.</p>
+
+        <h2 class="text-xl font-semibold text-[var(--text-primary)]">10. Your Rights</h2>
+        <p>You may request access to, correction of, or deletion of your personal information at any time by contacting us. Parents may review and request deletion of their child's information. California residents have additional rights under the CCPA.</p>
+
+        <h2 class="text-xl font-semibold text-[var(--text-primary)]">11. Changes to This Policy</h2>
+        <p>We may update this policy from time to time. We will notify you of material changes by posting the new policy on this page and updating the "Last updated" date.</p>
+
+        <h2 class="text-xl font-semibold text-[var(--text-primary)]">12. Contact Us</h2>
+        <p>If you have questions about this privacy policy or our data practices, contact us at <a href={`mailto:${contactEmail}`} class="text-blue-400 hover:underline">{contactEmail}</a>.</p>
+      </div>
+    </div>
+  </body>
+</html>

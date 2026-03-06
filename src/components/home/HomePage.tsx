@@ -142,8 +142,8 @@ function HomeContent() {
                 <>Mathematics textbooks that honor both truth and beauty. 
                 Rigorous content presented with clarity, rooted in the classical tradition.</>
               ) : (
-                <>Clear, accessible mathematics textbooks designed to meet students where they are. 
-                Built by educators who understand where students struggle, and supported by videos, practice problems, and an AI tutor to help every student succeed.</>
+                <>Complete mathematics programs designed to meet students where they are. 
+                Each course includes a digital textbook, video walkthroughs, thousands of practice problems, and a personal AI tutor. Built by educators who understand where students struggle, and everything they need to succeed.</>
               )}
             </p>
             <a 
@@ -166,7 +166,7 @@ function HomeContent() {
             <p className="mb-12" style={{ color: 'var(--ax-text-secondary)' }}>
               {isAtlas 
                 ? 'Textbooks crafted with care for the classical educator.'
-                : 'Clear, accessible textbooks designed to help every student succeed.'
+                : 'Complete math programs with digital textbooks, video lessons, practice problems, and AI tutoring.'
               }
             </p>
 
@@ -207,13 +207,17 @@ function HomeContent() {
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
             <div style={{ color: 'var(--ax-text-muted)' }}>
-              © 2025 {brand.name}. All rights reserved.
+              © 2026 {brand.name}. All rights reserved.
             </div>
             <div className="flex gap-6">
-              {['Contact', 'Privacy', 'Terms'].map((label) => (
+              {[
+                { label: 'Contact', href: 'mailto:contact@onyxenterprises.org' },
+                { label: 'Privacy', href: '/privacy' },
+                { label: 'Terms', href: '/terms' },
+              ].map(({ label, href }) => (
                 <a
                   key={label}
-                  href="#"
+                  href={href}
                   className="text-sm transition-colors"
                   style={{ color: 'var(--ax-text-muted)' }}
                   onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--ax-violet)')}
