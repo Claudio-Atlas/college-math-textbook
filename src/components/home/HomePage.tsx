@@ -191,11 +191,12 @@ function HomeContent() {
                 exposition, thoughtful problems, and reflections on the deeper meaning 
                 of mathematical truth.</>
               ) : (
-                <>We produce high-quality mathematics textbooks focused on clarity, 
-                rigor, and accessibility. Our content is designed to meet the needs 
-                of diverse learners and institutions, with careful attention to 
-                modern pedagogical standards and accessibility requirements. Every 
-                textbook undergoes rigorous review to ensure accuracy and effectiveness.</>
+                <>Meridian Math provides complete mathematics programs, not just textbooks. 
+                Each course includes a digital textbook, video walkthroughs, thousands of 
+                auto-graded practice problems, and a personal AI tutor that adapts to every 
+                student. Built by educators with real classroom experience, our programs are 
+                designed to meet students where they are and give teachers the real-time data 
+                they need to help every learner succeed.</>
               )}
             </p>
           </div>

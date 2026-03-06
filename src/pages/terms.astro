@@ -5,8 +5,8 @@ import { ClientRouter } from 'astro:transitions';
 export const prerender = false;
 const host = Astro.request.headers.get('host') || 'localhost';
 const isMeridian = host.includes('meridian');
-const brandName = isMeridian ? 'Meridian Press' : 'Atlas Classical Press';
-const domain = isMeridian ? 'meridian-press.com' : 'atlasclassicalpress.com';
+const brandName = isMeridian ? 'Meridian Math' : 'Atlas Classical Press';
+const domain = isMeridian ? 'meridian-math.org' : 'atlasclassicalpress.com';
 const contactEmail = 'contact@onyxenterprises.org';
 ---
 
@@ -34,12 +34,16 @@ const contactEmail = 'contact@onyxenterprises.org';
   </head>
   <body class="bg-[var(--bg-primary)] text-[var(--text-primary)]">
     <div class="max-w-3xl mx-auto px-6 py-16">
-      <a href="/" class="text-sm text-[var(--text-secondary)] hover:underline mb-8 inline-block">&larr; Back to Home</a>
+      <a href="/" class="inline-flex items-center gap-2 text-sm text-[var(--text-secondary)] hover:text-[#8B5CF6] transition-colors mb-10 group">
+        <span class="group-hover:-translate-x-1 transition-transform">&larr;</span> Back to Home
+      </a>
       
-      <h1 class="text-3xl font-bold mb-2">Terms of Service</h1>
-      <p class="text-sm text-[var(--text-secondary)] mb-10">Last updated: March 6, 2026</p>
+      <div class="mb-12 pb-8 border-b border-[var(--text-secondary)]/10">
+        <h1 class="text-4xl font-bold mb-3 bg-gradient-to-r from-[#8B5CF6] to-[#14B8A6] bg-clip-text text-transparent">Terms of Service</h1>
+        <p class="text-sm text-[var(--text-secondary)]">Last updated: March 6, 2026</p>
+      </div>
 
-      <div class="prose prose-invert max-w-none space-y-6 text-[var(--text-secondary)] leading-relaxed">
+      <div class="prose prose-invert max-w-none space-y-8 text-[var(--text-secondary)] leading-relaxed">
         <h2 class="text-xl font-semibold text-[var(--text-primary)]">1. Acceptance of Terms</h2>
         <p>By accessing or using {brandName} ("the Platform"), operated by Onyx Enterprises, LLC, you agree to be bound by these Terms of Service. If you are using the Platform on behalf of an educational institution, you represent that you have the authority to bind that institution to these terms.</p>
 

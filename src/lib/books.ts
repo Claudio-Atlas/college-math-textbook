@@ -62,13 +62,13 @@ His students consistently praise his ability to make complex topics approachable
 const CLAYTON: Author = {
   name: 'Clayton Ragsdale',
   title: 'Mathematics Instructor & EdTech Founder',
-  bio: `Clayton Ragsdale is a mathematician, textbook author, and education technology founder with over six years of experience teaching mathematics at both four-year universities and community colleges, online and on ground. He holds an MS in Mathematics from Grand Canyon University and dual bachelor's degrees in Mathematics and Economics from Chapman University. After years in the classroom seeing firsthand where students struggle, he founded Meridian Press to build the textbooks and tools he wished existed — clear, accessible, and designed to meet students where they are.`,
+  bio: `Clayton Ragsdale is a mathematician, textbook author, and education technology founder with over six years of experience teaching mathematics at both four-year universities and community colleges, online and on ground. He holds an MS in Mathematics from Grand Canyon University and dual bachelor's degrees in Mathematics and Economics from Chapman University. After years in the classroom seeing firsthand where students struggle, he founded Meridian Math to build the programs and tools he wished existed, clear, accessible, and designed to meet students where they are.`,
   credentials: [
     'MS Mathematics, Grand Canyon University',
     'BS Mathematics & BA Economics, Chapman University',
     'Member, Society of Actuaries',
     '6+ years teaching mathematics (university & community college)',
-    'Founder, Meridian Press',
+    'Founder, Meridian Math',
     '98,000+ math problems authored',
   ],
   funFact: 'He played basketball for over 20 years at the collegiate level and remains a huge basketball fan at all levels.',

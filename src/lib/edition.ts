@@ -2,7 +2,7 @@
  * Edition detection and brand configuration
  * 
  * Determines whether to show Atlas Classical Press (Christian)
- * or Meridian Press (Secular) based on hostname.
+ * or Meridian Math (Secular) based on hostname.
  */
 
 export type Edition = 'atlas' | 'meridian';
@@ -37,7 +37,7 @@ const ATLAS_CONFIG: BrandConfig = {
 
 const MERIDIAN_CONFIG: BrandConfig = {
   edition: 'meridian',
-  name: 'Meridian Press',
+  name: 'Meridian Math',
   tagline: 'Clear. Accessible. Simplified.',
   showScripture: false,
   showEpigraphs: false,
