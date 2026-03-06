@@ -17,6 +17,42 @@ interface Book {
 
 const CATALOG: Book[] = [
   {
+    id: 'pre-algebra',
+    title: 'Pre-Algebra',
+    subtitle: 'Building Mathematical Foundations',
+    description: 'A comprehensive foundation covering whole numbers, fractions, decimals, ratios, percents, integers, variables, equations, geometry basics, and data analysis.',
+    coverSlug: 'pre-algebra',
+    chapters: 10,
+    available: false,
+  },
+  {
+    id: 'algebra-1',
+    title: 'Algebra 1',
+    subtitle: 'Core Algebraic Thinking',
+    description: 'From real numbers through linear equations, inequalities, graphing, systems of equations, polynomials, factoring, quadratics, and an introduction to functions.',
+    coverSlug: 'algebra-1',
+    chapters: 10,
+    available: false,
+  },
+  {
+    id: 'geometry',
+    title: 'Geometry',
+    subtitle: 'Reasoning and Spatial Thinking',
+    description: 'Foundations of proof, parallel and perpendicular lines, congruence, similarity, right triangle trigonometry, circles, area, volume, and transformations.',
+    coverSlug: 'geometry',
+    chapters: 12,
+    available: false,
+  },
+  {
+    id: 'algebra-2',
+    title: 'Algebra 2',
+    subtitle: 'Advanced Algebraic Concepts',
+    description: 'Equations, linear systems, quadratic and polynomial functions, radicals, exponentials, logarithms, rational functions, sequences, probability, trigonometry, and conics.',
+    coverSlug: 'algebra-2',
+    chapters: 12,
+    available: false,
+  },
+  {
     id: 'precalculus',
     title: 'Precalculus',
     subtitle: 'With Applications',
