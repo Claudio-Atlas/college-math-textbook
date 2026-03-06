@@ -38,7 +38,7 @@ const ATLAS_CONFIG: BrandConfig = {
 const MERIDIAN_CONFIG: BrandConfig = {
   edition: 'meridian',
   name: 'Meridian Press',
-  tagline: 'Clear. Accessible. Effective.',
+  tagline: 'Clear. Accessible. Simplified.',
   showScripture: false,
   showEpigraphs: false,
   colors: {
