@@ -468,48 +468,203 @@ function NeuralNetScene() {
 // ---------------------------------------------------------------------------
 
 function CSSFallback() {
+  // Simplified 2D neural network using SVG for mobile
+  // 5 layers: Input(3) → Hidden1(4) → Hidden2(5) → Hidden3(4) → Output(3)
+  const mobileLayers = [
+    { count: 3, color: '#bf5fff', label: 'Input' },
+    { count: 4, color: '#00d4ff', label: 'Analysis' },
+    { count: 5, color: '#00d4ff', label: 'Mapping' },
+    { count: 4, color: '#00d4ff', label: 'Detection' },
+    { count: 3, color: '#bf5fff', label: 'Output' },
+  ];
+
+  const svgW = 360;
+  const svgH = 500;
+  const layerSpacing = svgW / (mobileLayers.length + 1);
+  const nodeRadius = 6;
+
+  // Calculate node positions
+  const nodePositions: { x: number; y: number; color: string; layer: number }[] = [];
+  mobileLayers.forEach((layer, li) => {
+    const x = layerSpacing * (li + 1);
+    const totalH = (layer.count - 1) * 60;
+    const startY = (svgH - totalH) / 2;
+    for (let ni = 0; ni < layer.count; ni++) {
+      nodePositions.push({ x, y: startY + ni * 60, color: layer.color, layer: li });
+    }
+  });
+
+  // Build connections between adjacent layers
+  const connections: { x1: number; y1: number; x2: number; y2: number; delay: number }[] = [];
+  let connIdx = 0;
+  mobileLayers.forEach((layer, li) => {
+    if (li >= mobileLayers.length - 1) return;
+    const nextLayer = mobileLayers[li + 1];
+    const curNodes = nodePositions.filter((n) => n.layer === li);
+    const nextNodes = nodePositions.filter((n) => n.layer === li + 1);
+    curNodes.forEach((cn) => {
+      nextNodes.forEach((nn) => {
+        connections.push({ x1: cn.x, y1: cn.y, x2: nn.x, y2: nn.y, delay: connIdx * 0.05 });
+        connIdx++;
+      });
+    });
+  });
+
   return (
     <div
       style={{
         position: 'absolute',
         inset: 0,
         background: 'linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 30%, #0a1628 60%, #0a0a1a 100%)',
-        backgroundSize: '400% 400%',
-        animation: 'neuralGradient 12s ease infinite',
       }}
     >
       <style>{`
-        @keyframes neuralGradient {
-          0% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
-          100% { background-position: 0% 50%; }
+        @keyframes mobileNodePulse {
+          0%, 100% { opacity: 0.7; filter: drop-shadow(0 0 4px currentColor); }
+          50% { opacity: 1; filter: drop-shadow(0 0 12px currentColor); }
+        }
+        @keyframes mobileConnPulse {
+          0%, 100% { opacity: 0.08; }
+          50% { opacity: 0.25; }
+        }
+        @keyframes mobileParticle {
+          0% { offset-distance: 0%; opacity: 0; }
+          10% { opacity: 1; }
+          90% { opacity: 1; }
+          100% { offset-distance: 100%; opacity: 0; }
         }
       `}</style>
-      {/* Decorative dots */}
-      <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', opacity: 0.15 }}>
-        {Array.from({ length: 30 }).map((_, i) => (
-          <div
-            key={i}
+      <svg
+        viewBox={`0 0 ${svgW} ${svgH}`}
+        style={{
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
+          width: '90%',
+          maxWidth: '400px',
+          height: 'auto',
+          maxHeight: '70vh',
+        }}
+        preserveAspectRatio="xMidYMid meet"
+      >
+        {/* Connections */}
+        {connections.map((c, i) => (
+          <line
+            key={`conn-${i}`}
+            x1={c.x1}
+            y1={c.y1}
+            x2={c.x2}
+            y2={c.y2}
+            stroke="#00d4ff"
+            strokeWidth={0.8}
             style={{
-              position: 'absolute',
-              width: 4,
-              height: 4,
-              borderRadius: '50%',
-              background: i % 3 === 0 ? '#00d4ff' : i % 3 === 1 ? '#ff00ff' : '#8b5cf6',
-              left: `${5 + (i * 37) % 90}%`,
-              top: `${10 + (i * 23) % 80}%`,
-              animation: `neuralDotPulse ${2 + (i % 3)}s ease-in-out infinite`,
-              animationDelay: `${i * 0.2}s`,
+              animation: `mobileConnPulse ${2 + (i % 3)}s ease-in-out infinite`,
+              animationDelay: `${c.delay}s`,
             }}
           />
         ))}
-      </div>
-      <style>{`
-        @keyframes neuralDotPulse {
-          0%, 100% { opacity: 0.3; transform: scale(1); }
-          50% { opacity: 1; transform: scale(1.8); }
-        }
-      `}</style>
+
+        {/* Data flow particles — a subset of connections */}
+        {connections
+          .filter((_, i) => i % 4 === 0)
+          .map((c, i) => {
+            const pathId = `particle-path-${i}`;
+            return (
+              <g key={`particle-${i}`}>
+                <path
+                  id={pathId}
+                  d={`M${c.x1},${c.y1} L${c.x2},${c.y2}`}
+                  fill="none"
+                  stroke="none"
+                />
+                <circle
+                  r={2.5}
+                  fill="#00d4ff"
+                  style={{
+                    offsetPath: `path('M${c.x1},${c.y1} L${c.x2},${c.y2}')`,
+                    animation: `mobileParticle ${2 + (i % 2)}s linear infinite`,
+                    animationDelay: `${i * 0.3}s`,
+                    filter: 'drop-shadow(0 0 3px #00d4ff)',
+                  }}
+                />
+              </g>
+            );
+          })}
+
+        {/* Phase rectangles around middle 3 layers */}
+        {mobileLayers.slice(1, 4).map((layer, i) => {
+          const li = i + 1;
+          const layerNodes = nodePositions.filter((n) => n.layer === li);
+          const x = layerNodes[0].x;
+          const minY = Math.min(...layerNodes.map((n) => n.y));
+          const maxY = Math.max(...layerNodes.map((n) => n.y));
+          const pad = 20;
+          return (
+            <rect
+              key={`phase-${i}`}
+              x={x - pad}
+              y={minY - pad}
+              width={pad * 2}
+              height={maxY - minY + pad * 2}
+              rx={8}
+              fill="rgba(0,212,255,0.05)"
+              stroke="rgba(0,212,255,0.25)"
+              strokeWidth={1}
+            />
+          );
+        })}
+
+        {/* Nodes */}
+        {nodePositions.map((node, i) => (
+          <g key={`node-${i}`}>
+            {/* Glow halo */}
+            <circle
+              cx={node.x}
+              cy={node.y}
+              r={nodeRadius * 2.5}
+              fill={node.color}
+              opacity={0.15}
+              style={{
+                animation: `mobileNodePulse ${2 + (i % 3) * 0.5}s ease-in-out infinite`,
+                animationDelay: `${i * 0.1}s`,
+              }}
+            />
+            {/* Core node */}
+            <circle
+              cx={node.x}
+              cy={node.y}
+              r={nodeRadius}
+              fill={node.color}
+              style={{
+                color: node.color,
+                animation: `mobileNodePulse ${2 + (i % 3) * 0.5}s ease-in-out infinite`,
+                animationDelay: `${i * 0.1}s`,
+              }}
+            />
+          </g>
+        ))}
+
+        {/* Layer labels */}
+        {mobileLayers.map((layer, i) => {
+          const x = layerSpacing * (i + 1);
+          return (
+            <text
+              key={`label-${i}`}
+              x={x}
+              y={svgH - 20}
+              textAnchor="middle"
+              fill={layer.color}
+              fontSize={9}
+              fontWeight={500}
+              letterSpacing="0.05em"
+              opacity={0.7}
+            >
+              {layer.label}
+            </text>
+          );
+        })}
+      </svg>
     </div>
   );
 }
@@ -576,14 +731,28 @@ export function NeuralNetHero({ brand, isAtlas }: NeuralNetHeroProps) {
         }}
       />
 
-      {/* Layer labels overlay — positioned to match 3D layer positions */}
+      {/* Bottom fade — blends dark hero into whatever theme is below */}
       <div
+        style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '120px',
+          zIndex: 2,
+          background: 'linear-gradient(to bottom, transparent, var(--ax-bg))',
+          pointerEvents: 'none',
+        }}
+      />
+
+      {/* Layer labels overlay — positioned to match 3D layer positions (hidden on mobile, SVG has its own) */}
+      <div
+        className="hidden sm:flex"
         style={{
           position: 'absolute',
           inset: 0,
           zIndex: 2,
           pointerEvents: 'none',
-          display: 'flex',
           alignItems: 'flex-end',
           justifyContent: 'center',
           paddingBottom: '8vh',
@@ -622,16 +791,17 @@ export function NeuralNetHero({ brand, isAtlas }: NeuralNetHeroProps) {
 
       {/* Headline — positioned in top third */}
       <div
-        className="relative"
-        style={{ zIndex: 3, paddingTop: '12vh', textAlign: 'center' }}
+        className="relative px-4"
+        style={{ zIndex: 3, paddingTop: '10vh', textAlign: 'center' }}
       >
         <h1
-          className="text-4xl sm:text-5xl lg:text-6xl font-bold"
+          className="text-3xl sm:text-5xl lg:text-6xl font-bold"
           style={{ color: '#ffffff' }}
         >
           {brand.tagline}
         </h1>
         <p
+          className="hidden sm:block"
           style={{
             marginTop: '0.75rem',
             fontSize: '0.85rem',
@@ -642,15 +812,26 @@ export function NeuralNetHero({ brand, isAtlas }: NeuralNetHeroProps) {
         >
           Powered by Adaptive AI
         </p>
+        {/* Compact mobile version */}
+        <p
+          className="block sm:hidden"
+          style={{
+            marginTop: '0.5rem',
+            fontSize: '0.7rem',
+            letterSpacing: '0.12em',
+            textTransform: 'uppercase',
+            color: 'rgba(0,212,255,0.5)',
+          }}
+        >
+          Powered by Adaptive AI
+        </p>
       </div>
 
       {/* CTA — positioned above the layer labels */}
       <div
+        className="absolute w-full text-center"
         style={{
-          position: 'absolute',
           bottom: '14vh',
-          width: '100%',
-          textAlign: 'center',
           zIndex: 3,
         }}
       >
@@ -708,15 +889,15 @@ export function DescriptionSection({ isAtlas, brandColor }: DescriptionSectionPr
   return (
     <section
       style={{
-        background: '#0a0a1a',
-        borderTop: '1px solid rgba(255,255,255,0.06)',
+        background: 'var(--ax-bg)',
+        borderTop: '1px solid var(--ax-border)',
         padding: '4rem 1.5rem',
       }}
     >
       <div className="max-w-3xl mx-auto text-center">
         <p
           className="text-lg sm:text-xl leading-relaxed"
-          style={{ color: 'rgba(255,255,255,0.8)' }}
+          style={{ color: 'var(--ax-text-secondary)' }}
         >
           {isAtlas ? (
             <>
