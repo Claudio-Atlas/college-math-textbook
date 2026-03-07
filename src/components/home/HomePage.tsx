@@ -317,8 +317,13 @@ function BookCard({ book, brand, isAtlas }: BookCardProps) {
           </span>
           
           <span
-            className="inline-flex items-center px-4 py-2 rounded-lg text-white text-sm font-medium"
-            style={{ backgroundColor: brand.colors.primary }}
+            className="inline-flex items-center px-4 py-2 rounded-full text-white text-sm font-medium transition-all"
+            style={{
+              background: 'rgba(139,92,246,0.15)',
+              border: '1px solid rgba(139,92,246,0.4)',
+              backdropFilter: 'blur(4px)',
+              letterSpacing: '0.03em',
+            }}
           >
             Learn More
             <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
