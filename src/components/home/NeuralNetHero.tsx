@@ -39,11 +39,13 @@ interface ParticleData {
 // ---------------------------------------------------------------------------
 
 const LAYERS: LayerConfig[] = [
+  { label: 'Input', nodeCount: 3, x: -9 },
   { label: 'Student Input', nodeCount: 4, x: -6 },
   { label: 'Pattern Recognition', nodeCount: 6, x: -3 },
   { label: 'Concept Mapping', nodeCount: 8, x: 0 },
   { label: 'Misconception Detection', nodeCount: 6, x: 3 },
   { label: 'Adaptive Path', nodeCount: 4, x: 6 },
+  { label: 'Output', nodeCount: 3, x: 9 },
 ];
 
 const COLORS = {
@@ -51,6 +53,7 @@ const COLORS = {
   magenta: new THREE.Color('#ff00ff'),
   purple: new THREE.Color('#8b5cf6'),
   pink: new THREE.Color('#ff6b9d'),
+  violet: new THREE.Color('#bf5fff'),
 };
 
 const CONNECTION_COLORS = [COLORS.cyan, COLORS.magenta, COLORS.pink, COLORS.purple];
@@ -95,13 +98,26 @@ function buildConnections(nodes: NodeData[]): ConnectionData[] {
 // Scene sub-components
 // ---------------------------------------------------------------------------
 
-/** Glowing node spheres with pulsing animation */
+/** Glowing node spheres — middle layers pulse size, input/output are static size */
 function Nodes({ nodes }: { nodes: NodeData[] }) {
+  const lastLayer = LAYERS.length - 1;
+  const middleNodes = useMemo(() => nodes.filter(n => n.layerIndex !== 0 && n.layerIndex !== lastLayer), [nodes, lastLayer]);
+  const edgeNodes = useMemo(() => nodes.filter(n => n.layerIndex === 0 || n.layerIndex === lastLayer), [nodes, lastLayer]);
+
+  return (
+    <>
+      <MiddleNodes nodes={middleNodes} />
+      <EdgeNodes nodes={edgeNodes} />
+    </>
+  );
+}
+
+/** Middle layer nodes — cyan, size pulses */
+function MiddleNodes({ nodes }: { nodes: NodeData[] }) {
   const meshRef = useRef<THREE.InstancedMesh>(null!);
   const dummy = useMemo(() => new THREE.Object3D(), []);
   const count = nodes.length;
 
-  // Set initial positions
   useEffect(() => {
     nodes.forEach((node, i) => {
       dummy.position.copy(node.position);
@@ -112,7 +128,6 @@ function Nodes({ nodes }: { nodes: NodeData[] }) {
     meshRef.current.instanceMatrix.needsUpdate = true;
   }, [nodes, dummy]);
 
-  // Pulsing animation
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
     nodes.forEach((node, i) => {
@@ -128,13 +143,65 @@ function Nodes({ nodes }: { nodes: NodeData[] }) {
   return (
     <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
       <sphereGeometry args={[1, 16, 16]} />
-      <meshBasicMaterial color={COLORS.cyan} transparent opacity={0.95} />
+      <meshBasicMaterial color={COLORS.cyan} transparent opacity={1.0} />
+    </instancedMesh>
+  );
+}
+
+/** Input/Output nodes — neon violet, static size, brightness pulses */
+function EdgeNodes({ nodes }: { nodes: NodeData[] }) {
+  const meshRef = useRef<THREE.InstancedMesh>(null!);
+  const matRef = useRef<THREE.MeshBasicMaterial>(null!);
+  const dummy = useMemo(() => new THREE.Object3D(), []);
+  const count = nodes.length;
+
+  useEffect(() => {
+    nodes.forEach((node, i) => {
+      dummy.position.copy(node.position);
+      dummy.scale.setScalar(0.18);
+      dummy.updateMatrix();
+      meshRef.current.setMatrixAt(i, dummy.matrix);
+    });
+    meshRef.current.instanceMatrix.needsUpdate = true;
+  }, [nodes, dummy]);
+
+  // Pulse the color brightness, not the size
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime();
+    const pulse = 0.7 + 0.3 * Math.sin(t * 2.0);
+    if (matRef.current) {
+      matRef.current.color.setRGB(
+        0.75 * pulse,
+        0.37 * pulse,
+        1.0 * pulse
+      );
+    }
+  });
+
+  return (
+    <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
+      <sphereGeometry args={[1, 16, 16]} />
+      <meshBasicMaterial ref={matRef} color={COLORS.violet} transparent opacity={1.0} />
     </instancedMesh>
   );
 }
 
 /** Glow halos around each node */
 function NodeGlows({ nodes }: { nodes: NodeData[] }) {
+  const lastLayer = LAYERS.length - 1;
+  const middleNodes = useMemo(() => nodes.filter(n => n.layerIndex !== 0 && n.layerIndex !== lastLayer), [nodes, lastLayer]);
+  const edgeNodes = useMemo(() => nodes.filter(n => n.layerIndex === 0 || n.layerIndex === lastLayer), [nodes, lastLayer]);
+
+  return (
+    <>
+      <GlowGroup nodes={middleNodes} color={COLORS.cyan} />
+      <EdgeGlowGroup nodes={edgeNodes} />
+    </>
+  );
+}
+
+/** Cyan glow for middle layers — size pulses */
+function GlowGroup({ nodes, color }: { nodes: NodeData[]; color: THREE.Color }) {
   const meshRef = useRef<THREE.InstancedMesh>(null!);
   const dummy = useMemo(() => new THREE.Object3D(), []);
   const count = nodes.length;
@@ -164,7 +231,40 @@ function NodeGlows({ nodes }: { nodes: NodeData[] }) {
   return (
     <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
       <sphereGeometry args={[1, 16, 16]} />
-      <meshBasicMaterial color={COLORS.cyan} transparent opacity={0.12} />
+      <meshBasicMaterial color={color} transparent opacity={0.3} />
+    </instancedMesh>
+  );
+}
+
+/** Violet glow for input/output — static size, brightness pulses */
+function EdgeGlowGroup({ nodes }: { nodes: NodeData[] }) {
+  const meshRef = useRef<THREE.InstancedMesh>(null!);
+  const matRef = useRef<THREE.MeshBasicMaterial>(null!);
+  const dummy = useMemo(() => new THREE.Object3D(), []);
+  const count = nodes.length;
+
+  useEffect(() => {
+    nodes.forEach((node, i) => {
+      dummy.position.copy(node.position);
+      dummy.scale.setScalar(0.5);
+      dummy.updateMatrix();
+      meshRef.current.setMatrixAt(i, dummy.matrix);
+    });
+    meshRef.current.instanceMatrix.needsUpdate = true;
+  }, [nodes, dummy]);
+
+  useFrame(({ clock }) => {
+    const t = clock.getElapsedTime();
+    const pulse = 0.15 + 0.2 * Math.sin(t * 2.0);
+    if (matRef.current) {
+      matRef.current.opacity = pulse;
+    }
+  });
+
+  return (
+    <instancedMesh ref={meshRef} args={[undefined, undefined, count]}>
+      <sphereGeometry args={[1, 16, 16]} />
+      <meshBasicMaterial ref={matRef} color={COLORS.violet} transparent opacity={0.3} />
     </instancedMesh>
   );
 }
@@ -181,7 +281,8 @@ function Connections({ connections }: { connections: ConnectionData[] }) {
       const material = new THREE.LineBasicMaterial({
         color,
         transparent: true,
-        opacity: conn.weight * 0.25,
+        opacity: conn.weight * 0.55,
+        linewidth: 1, // Note: WebGL limits this to 1 on most GPUs
       });
       return { geometry, material, key: i };
     });
@@ -247,7 +348,7 @@ function DataParticles({ connections }: { connections: ConnectionData[] }) {
       dummy.position.lerpVectors(conn.start, conn.end, p.progress);
       // Scale: fade in/out at edges
       const edgeFade = Math.sin(p.progress * Math.PI);
-      dummy.scale.setScalar(0.06 * edgeFade);
+      dummy.scale.setScalar(0.1 * edgeFade);
       dummy.updateMatrix();
       meshRef.current.setMatrixAt(i, dummy.matrix);
     });
@@ -265,7 +366,9 @@ function DataParticles({ connections }: { connections: ConnectionData[] }) {
 /** Phase rectangles - semi-transparent outlines around each layer */
 function PhaseRectangles({ nodes }: { nodes: NodeData[] }) {
   const rectangles = useMemo(() => {
-    return LAYERS.map((layer, li) => {
+    // Skip first (Input) and last (Output) layers — they're bare nodes
+    return LAYERS.slice(1, -1).map((layer, idx) => {
+      const li = idx + 1; // offset by 1 since we sliced
       const layerNodes = nodes.filter((n) => n.layerIndex === li);
       const ys = layerNodes.map((n) => n.position.y);
       const zs = layerNodes.map((n) => n.position.z);
@@ -290,14 +393,14 @@ function PhaseRectangles({ nodes }: { nodes: NodeData[] }) {
               <meshBasicMaterial
                 color={color}
                 transparent
-                opacity={0.04}
+                opacity={0.1}
                 side={THREE.DoubleSide}
               />
             </mesh>
             {/* Border using EdgesGeometry */}
             <lineSegments>
               <edgesGeometry args={[new THREE.PlaneGeometry(rect.width, rect.height)]} />
-              <lineBasicMaterial color={color} transparent opacity={0.3} />
+              <lineBasicMaterial color={color} transparent opacity={0.6} />
             </lineSegments>
           </group>
         );
@@ -448,7 +551,7 @@ export function NeuralNetHero({ brand, isAtlas }: NeuralNetHeroProps) {
         {useWebGL ? (
           <Suspense fallback={<CSSFallback />}>
             <Canvas
-              camera={{ position: [0, 0, 12], fov: 50 }}
+              camera={{ position: [0, 0, 16], fov: 50 }}
               style={{ background: '#0a0a1a', pointerEvents: 'none' }}
               dpr={[1, 1.5]}
               gl={{ antialias: true, alpha: false }}
@@ -468,63 +571,167 @@ export function NeuralNetHero({ brand, isAtlas }: NeuralNetHeroProps) {
           inset: 0,
           zIndex: 1,
           background:
-            'radial-gradient(ellipse at center, rgba(10,10,26,0.3) 0%, rgba(10,10,26,0.7) 100%)',
+            'radial-gradient(ellipse at center, rgba(10,10,26,0.1) 0%, rgba(10,10,26,0.5) 100%)',
           pointerEvents: 'none',
         }}
       />
 
-      {/* Text overlay */}
+      {/* Layer labels overlay — positioned to match 3D layer positions */}
       <div
-        className="relative flex items-center justify-center"
-        style={{ minHeight: '100vh', zIndex: 2 }}
+        style={{
+          position: 'absolute',
+          inset: 0,
+          zIndex: 2,
+          pointerEvents: 'none',
+          display: 'flex',
+          alignItems: 'flex-end',
+          justifyContent: 'center',
+          paddingBottom: '8vh',
+        }}
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6"
-            style={{ color: '#ffffff' }}
-          >
-            {brand.tagline}
-          </h1>
-          <p
-            className="text-xl max-w-2xl mx-auto mb-8"
-            style={{ color: 'rgba(255,255,255,0.75)' }}
-          >
-            {isAtlas ? (
-              <>
-                Mathematics textbooks that honor both truth and beauty. Rigorous content presented
-                with clarity, rooted in the classical tradition.
-              </>
-            ) : (
-              <>
-                Complete mathematics programs designed to meet students where they are. Each course
-                includes a digital textbook, video walkthroughs, thousands of practice problems, and
-                a personal AI tutor. Built by educators who understand where students struggle, and
-                everything they need to succeed.
-              </>
-            )}
-          </p>
-          <a
-            href="#catalog"
-            className="inline-flex items-center px-6 py-3 rounded-lg text-white font-medium transition-colors"
-            style={{ backgroundColor: brand.colors.primary }}
-          >
-            Browse Catalog
-            <svg
-              className="ml-2 w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            width: '80%',
+            maxWidth: '900px',
+          }}
+        >
+          {LAYERS.map((layer, i) => (
+            <div
+              key={i}
+              style={{
+                textAlign: 'center',
+                fontSize: '0.65rem',
+                fontWeight: 500,
+                letterSpacing: '0.05em',
+                textTransform: 'uppercase',
+                color:
+                  i === 0 || i === LAYERS.length - 1
+                    ? 'rgba(191,95,255,0.7)'
+                    : 'rgba(0,212,255,0.6)',
+                maxWidth: '90px',
+                lineHeight: 1.3,
+              }}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-          </a>
+              {layer.label}
+            </div>
+          ))}
         </div>
+      </div>
+
+      {/* Headline — positioned in top third */}
+      <div
+        className="relative"
+        style={{ zIndex: 3, paddingTop: '12vh', textAlign: 'center' }}
+      >
+        <h1
+          className="text-4xl sm:text-5xl lg:text-6xl font-bold"
+          style={{ color: '#ffffff' }}
+        >
+          {brand.tagline}
+        </h1>
+        <p
+          style={{
+            marginTop: '0.75rem',
+            fontSize: '0.85rem',
+            letterSpacing: '0.15em',
+            textTransform: 'uppercase',
+            color: 'rgba(0,212,255,0.6)',
+          }}
+        >
+          Powered by Adaptive AI
+        </p>
+      </div>
+
+      {/* CTA — positioned above the layer labels */}
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '14vh',
+          width: '100%',
+          textAlign: 'center',
+          zIndex: 3,
+        }}
+      >
+        <a
+          href="#catalog"
+          className="inline-flex items-center px-8 py-3 rounded-full text-white font-medium transition-all"
+          style={{
+            background: 'rgba(139,92,246,0.15)',
+            border: '1px solid rgba(139,92,246,0.5)',
+            backdropFilter: 'blur(8px)',
+            letterSpacing: '0.05em',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'rgba(139,92,246,0.3)';
+            e.currentTarget.style.borderColor = 'rgba(139,92,246,0.8)';
+            e.currentTarget.style.boxShadow = '0 0 20px rgba(139,92,246,0.3)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'rgba(139,92,246,0.15)';
+            e.currentTarget.style.borderColor = 'rgba(139,92,246,0.5)';
+            e.currentTarget.style.boxShadow = 'none';
+          }}
+        >
+          Browse Catalog
+          <svg
+            className="ml-2 w-5 h-5"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
+        </a>
+      </div>
+    </section>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Description section — sits below the hero
+// ---------------------------------------------------------------------------
+
+interface DescriptionSectionProps {
+  isAtlas: boolean;
+  brandColor: string;
+}
+
+export function DescriptionSection({ isAtlas, brandColor }: DescriptionSectionProps) {
+  return (
+    <section
+      style={{
+        background: '#0a0a1a',
+        borderTop: '1px solid rgba(255,255,255,0.06)',
+        padding: '4rem 1.5rem',
+      }}
+    >
+      <div className="max-w-3xl mx-auto text-center">
+        <p
+          className="text-lg sm:text-xl leading-relaxed"
+          style={{ color: 'rgba(255,255,255,0.8)' }}
+        >
+          {isAtlas ? (
+            <>
+              Mathematics textbooks that honor both truth and beauty. Rigorous content presented
+              with clarity, rooted in the classical tradition.
+            </>
+          ) : (
+            <>
+              Complete mathematics programs powered by adaptive AI. Each course includes a digital
+              textbook, video walkthroughs, thousands of practice problems, and a personal AI tutor
+              that learns how you think — identifying misconceptions, tracking mastery, and building
+              a personalized path to success.
+            </>
+          )}
+        </p>
       </div>
     </section>
   );

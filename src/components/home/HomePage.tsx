@@ -4,7 +4,7 @@
  */
 import { BrandProvider, useBrand } from '../brand/BrandProvider';
 import { MarketingNav } from '../marketing/MarketingNav';
-import { NeuralNetHero } from './NeuralNetHero';
+import { NeuralNetHero, DescriptionSection } from './NeuralNetHero';
 
 interface Book {
   id: string;
@@ -134,6 +134,9 @@ function HomeContent() {
       <main id="main-content">
         {/* Hero — 3D Neural Network Visualization */}
         <NeuralNetHero brand={brand} isAtlas={isAtlas} />
+
+        {/* Description — below hero */}
+        <DescriptionSection isAtlas={isAtlas} brandColor={brand.colors.primary} />
 
         {/* Book Catalog */}
         <section id="catalog" className="py-16" style={{ background: 'var(--ax-surface)' }}>
