@@ -4,6 +4,7 @@
  */
 import { BrandProvider, useBrand } from '../brand/BrandProvider';
 import { MarketingNav } from '../marketing/MarketingNav';
+import { NeuralNetHero } from './NeuralNetHero';
 
 interface Book {
   id: string;
@@ -131,33 +132,8 @@ function HomeContent() {
       />
 
       <main id="main-content">
-        {/* Hero */}
-        <section className="py-16 sm:py-24">
-          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6" style={{ color: 'var(--ax-text)' }}>
-              {brand.tagline}
-            </h1>
-            <p className="text-xl max-w-2xl mx-auto mb-8" style={{ color: 'var(--ax-text-secondary)' }}>
-              {isAtlas ? (
-                <>Mathematics textbooks that honor both truth and beauty. 
-                Rigorous content presented with clarity, rooted in the classical tradition.</>
-              ) : (
-                <>Complete mathematics programs designed to meet students where they are. 
-                Each course includes a digital textbook, video walkthroughs, thousands of practice problems, and a personal AI tutor. Built by educators who understand where students struggle, and everything they need to succeed.</>
-              )}
-            </p>
-            <a 
-              href="#catalog"
-              className="inline-flex items-center px-6 py-3 rounded-lg text-white font-medium transition-colors"
-              style={{ backgroundColor: brand.colors.primary }}
-            >
-              Browse Catalog
-              <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </a>
-          </div>
-        </section>
+        {/* Hero — 3D Neural Network Visualization */}
+        <NeuralNetHero brand={brand} isAtlas={isAtlas} />
 
         {/* Book Catalog */}
         <section id="catalog" className="py-16" style={{ background: 'var(--ax-surface)' }}>
