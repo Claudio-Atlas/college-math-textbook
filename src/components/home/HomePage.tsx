@@ -170,12 +170,15 @@ function HomeContent() {
                 exposition, thoughtful problems, and reflections on the deeper meaning 
                 of mathematical truth.</>
               ) : (
-                <>Meridian Math provides complete mathematics programs, not just textbooks. 
-                Each course includes a digital textbook, video walkthroughs, thousands of 
-                auto-graded practice problems, and a personal AI tutor that adapts to every 
-                student. Built by educators with real classroom experience, our programs are 
-                designed to meet students where they are and give teachers the real-time data 
-                they need to help every learner succeed.</>
+                <>Meridian Math is building the future of mathematics education. Every course 
+                includes a digital textbook, video walkthroughs, and thousands of practice 
+                problems — but what sets us apart is what's underneath: a Student Knowledge 
+                State Model that maps how each learner thinks. Our adaptive AI identifies 
+                misconceptions in real time, tracks mastery across every concept, and builds 
+                a personalized path to success. Built by educators with real classroom 
+                experience and powered by the same neural network architecture you see on 
+                this page, we're creating programs that don't just teach math — they 
+                understand each student.</>
               )}
             </p>
           </div>
