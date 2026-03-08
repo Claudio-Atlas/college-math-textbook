@@ -827,51 +827,6 @@ export function NeuralNetHero({ brand, isAtlas }: NeuralNetHeroProps) {
         </p>
       </div>
 
-      {/* CTA — positioned above the layer labels */}
-      <div
-        className="absolute w-full text-center"
-        style={{
-          bottom: '14vh',
-          zIndex: 3,
-        }}
-      >
-        <a
-          href="#catalog"
-          className="inline-flex items-center px-8 py-3 rounded-full text-white font-medium transition-all"
-          style={{
-            background: 'rgba(139,92,246,0.15)',
-            border: '1px solid rgba(139,92,246,0.5)',
-            backdropFilter: 'blur(8px)',
-            letterSpacing: '0.05em',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(139,92,246,0.3)';
-            e.currentTarget.style.borderColor = 'rgba(139,92,246,0.8)';
-            e.currentTarget.style.boxShadow = '0 0 20px rgba(139,92,246,0.3)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'rgba(139,92,246,0.15)';
-            e.currentTarget.style.borderColor = 'rgba(139,92,246,0.5)';
-            e.currentTarget.style.boxShadow = 'none';
-          }}
-        >
-          Browse Catalog
-          <svg
-            className="ml-2 w-5 h-5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            aria-hidden="true"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </a>
-      </div>
     </section>
   );
 }
@@ -891,10 +846,50 @@ export function DescriptionSection({ isAtlas, brandColor }: DescriptionSectionPr
       style={{
         background: 'var(--ax-bg)',
         borderTop: '1px solid var(--ax-border)',
-        padding: '4rem 1.5rem',
+        padding: '2.5rem 1.5rem 4rem',
       }}
     >
       <div className="max-w-3xl mx-auto text-center">
+        {/* Browse Catalog CTA */}
+        <div style={{ marginBottom: '2.5rem' }}>
+          <a
+            href="#catalog"
+            className="inline-flex items-center px-8 py-3 rounded-full font-medium transition-all"
+            style={{
+              background: 'rgba(139,92,246,0.15)',
+              border: '1px solid rgba(139,92,246,0.5)',
+              backdropFilter: 'blur(8px)',
+              letterSpacing: '0.05em',
+              color: 'var(--ax-text)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(139,92,246,0.3)';
+              e.currentTarget.style.borderColor = 'rgba(139,92,246,0.8)';
+              e.currentTarget.style.boxShadow = '0 0 20px rgba(139,92,246,0.3)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(139,92,246,0.15)';
+              e.currentTarget.style.borderColor = 'rgba(139,92,246,0.5)';
+              e.currentTarget.style.boxShadow = 'none';
+            }}
+          >
+            Browse Catalog
+            <svg
+              className="ml-2 w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M19 9l-7 7-7-7"
+              />
+            </svg>
+          </a>
+        </div>
         <p
           className="text-lg sm:text-xl leading-relaxed"
           style={{ color: 'var(--ax-text-secondary)' }}
