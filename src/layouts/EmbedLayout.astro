@@ -31,6 +31,20 @@ const { title, bookId, currentChapter, currentSection, sectionTitle } = Astro.pr
     <!-- LTI embed: always use light theme for Canvas compatibility -->
     <script is:inline>
       document.documentElement.setAttribute('data-theme', 'light');
+      // Set access cookie from hash or query param
+      (function() {
+        var h = window.location.hash;
+        if (h && h.indexOf('#key=') === 0) {
+          var key = h.substring(5);
+          document.cookie = 'ax_key=' + key + ';path=/;max-age=86400;SameSite=Lax';
+          window.location.replace(window.location.pathname + window.location.search);
+        }
+        var params = new URLSearchParams(window.location.search);
+        var qkey = params.get('key');
+        if (qkey && !document.cookie.match('ax_key=')) {
+          document.cookie = 'ax_key=' + qkey + ';path=/;max-age=86400;SameSite=Lax';
+        }
+      })();
     </script>
     <style>
       /* Embed-specific overrides */

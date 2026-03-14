@@ -14,7 +14,11 @@ const isEmbed = url.searchParams.get('embed') === 'true';
 
 // Access key for gated content (server-side only, never exposed to client)
 const accessKey = url.searchParams.get('key') || '';
-const VALID_ACCESS_KEY = process.env.READER_ACCESS_KEY ?? '';
+const cookieHeader = Astro.request.headers.get('cookie') || '';
+const cookieKey = cookieHeader.match(/ax_key=([^;]+)/)?.[1] || '';
+// Astro SSR: import.meta.env includes ALL env vars on server side
+// For Vercel: also try runtime access via globalThis
+const VALID_ACCESS_KEY = import.meta.env.READER_ACCESS_KEY || '';
 
 // Get params from URL
 const { bookId, chapterId, sectionId } = Astro.params;
@@ -24,7 +28,7 @@ const isFreePreview = chapterId === 'ch01' && sectionId === 'sec01';
 
 // Determine if access is granted
 const isLocal = host.includes('localhost') || host.includes('127.0.0.1');
-const hasValidKey = VALID_ACCESS_KEY !== '' && accessKey === VALID_ACCESS_KEY;
+const hasValidKey = VALID_ACCESS_KEY !== '' && (accessKey === VALID_ACCESS_KEY || cookieKey === VALID_ACCESS_KEY);
 const isAccessGranted = isFreePreview || hasValidKey || isLocal;
 
 // Dynamic imports for content
@@ -100,6 +104,23 @@ const catalogId = bookId === 'vol1' ? 'calculus-vol1' : bookId;
       <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet" />
       <script is:inline>
         document.documentElement.setAttribute('data-theme', 'light');
+        // Check for access key in hash fragment (#key=TOKEN)
+        // Canvas strips query params but can't touch hash fragments
+        (function() {
+          var h = window.location.hash;
+          if (h && h.indexOf('#key=') === 0) {
+            var key = h.substring(5);
+            document.cookie = 'ax_key=' + key + ';path=/;max-age=86400;SameSite=Lax';
+            // Remove hash and reload — server will read the cookie
+            window.location.replace(window.location.pathname + window.location.search);
+          }
+          // Also check if key is in query param (direct access)
+          var params = new URLSearchParams(window.location.search);
+          var qkey = params.get('key');
+          if (qkey && !document.cookie.match('ax_key=')) {
+            document.cookie = 'ax_key=' + qkey + ';path=/;max-age=86400;SameSite=Lax';
+          }
+        })();
       </script>
       <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
