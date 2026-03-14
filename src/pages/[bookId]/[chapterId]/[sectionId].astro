@@ -280,17 +280,26 @@ const catalogId = bookId === 'vol1' ? 'calculus-vol1' : bookId;
           </div>
         )}
 
-        <a href={`/${bookId}/ch01/sec01`} class="gate-cta">
+        <!-- Primary CTA: Access through LMS -->
+        <a href="#" class="gate-cta" onclick="alert('Open this section through your course\\'s learning management system (e.g., Canvas, Blackboard, or Google Classroom). If you\\'re enrolled, navigate to your course and find this section in your modules.'); return false;">
           <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.331 0 4.47.89 6.042 2.346m0-14.304A8.966 8.966 0 0118 3.75c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6.042 2.346M12 6.042V18.346" />
           </svg>
-          Preview Section 1.1 Free
+          Access Section {section.chapter}.{section.section} Through Your Course
         </a>
+
+        <!-- Secondary: Free preview -->
+        <div style="margin-top: 0.75rem;">
+          <a href={`/${bookId}/ch01/sec01`} class="gate-preview-link">
+            👀 Preview Section 1.1 free
+          </a>
+        </div>
         
-        <a href="https://meridian-math.org" class="gate-preview-link">
-          ← Back to Meridian Press
-        </a>
+        <div style="margin-top: 0.5rem;">
+          <a href="https://meridian-math.org" class="gate-preview-link">
+            ← Back to Meridian Press
+          </a>
+        </div>
         
         <div class="gate-footer">
           <p>Powered by <a href="https://meridian-math.org">Meridian Press</a></p>
