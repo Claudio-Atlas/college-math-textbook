@@ -1,0 +1,115 @@
+---
+/**
+ * EmbedLayout — Lightweight layout for LTI iframe embedding in Canvas.
+ * No sidebar, no header, no keyboard shortcuts, no progress bar.
+ * Just the content with proper fonts, MathJax, and theme support.
+ */
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  bookId?: string;
+  currentChapter?: number;
+  currentSection?: number;
+  sectionTitle?: string;
+}
+
+const { title, bookId, currentChapter, currentSection, sectionTitle } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={`${sectionTitle || title} — Meridian Precalculus`} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet" />
+    <title>{title}</title>
+    <!-- LTI embed: always use light theme for Canvas compatibility -->
+    <script is:inline>
+      document.documentElement.setAttribute('data-theme', 'light');
+    </script>
+    <style>
+      /* Embed-specific overrides */
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .embed-container {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem 2rem;
+      }
+      .embed-branding {
+        text-align: center;
+        padding: 0.75rem 0;
+        margin-top: 2rem;
+        border-top: 1px solid var(--ax-border, #e2e8f0);
+        font-family: var(--ax-font-sans, 'Inter', sans-serif);
+        font-size: 0.75rem;
+        color: var(--ax-text-muted, #94a3b8);
+      }
+      .embed-branding a {
+        color: var(--ax-violet, #7c3aed);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .embed-branding a:hover {
+        text-decoration: underline;
+      }
+      /* Hide elements that don't make sense in embed */
+      .embed-container .section-number {
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen" style="background: var(--ax-bg); color: var(--ax-text);">
+    <div class="embed-container">
+      <slot />
+    </div>
+    
+    <div class="embed-branding">
+      Powered by <a href="https://meridian-math.org" target="_blank">Meridian Press</a>
+      {bookId && currentChapter && currentSection && (
+        <span>
+          &nbsp;·&nbsp;
+          <a href={`https://meridian-math.org/${bookId}/ch${String(currentChapter).padStart(2, '0')}/sec${String(currentSection).padStart(2, '0')}`} target="_blank">
+            Open full reader ↗
+          </a>
+        </span>
+      )}
+    </div>
+
+    <!-- Scroll-reveal observer (simplified for embed) -->
+    <script is:inline>
+      (function() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+        function observeElements() {
+          document.querySelectorAll('.env-box, .reader-content h2, .reader-content h3, .reader-content figure').forEach(el => {
+            if (!el.classList.contains('scroll-reveal')) {
+              el.classList.add('scroll-reveal');
+              observer.observe(el);
+            }
+          });
+        }
+
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', () => setTimeout(observeElements, 200));
+        } else {
+          setTimeout(observeElements, 200);
+        }
+      })();
+    </script>
+  </body>
+</html>
