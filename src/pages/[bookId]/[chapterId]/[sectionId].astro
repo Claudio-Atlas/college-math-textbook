@@ -3,6 +3,7 @@ export const prerender = false;
 import ReaderLayout from '../../../layouts/ReaderLayout.astro';
 import EmbedLayout from '../../../layouts/EmbedLayout.astro';
 import { ReaderContent } from '../../../components/reader/ReaderContent';
+import { isAccessGranted as checkAccess } from '../../../lib/access';
 
 // Detect edition from hostname
 const host = Astro.request.headers.get('host') || 'localhost';
@@ -12,24 +13,16 @@ const edition = host.includes('meridian') ? 'secular' : 'christian';
 const url = new URL(Astro.request.url);
 const isEmbed = url.searchParams.get('embed') === 'true';
 
-// Access key for gated content (server-side only, never exposed to client)
+// Access key from query param or cookie
 const accessKey = url.searchParams.get('key') || '';
 const cookieHeader = Astro.request.headers.get('cookie') || '';
 const cookieKey = cookieHeader.match(/ax_key=([^;]+)/)?.[1] || '';
-// Astro SSR: import.meta.env includes ALL env vars on server side
-// For Vercel: also try runtime access via globalThis
-const VALID_ACCESS_KEY = import.meta.env.READER_ACCESS_KEY || '';
 
 // Get params from URL
 const { bookId, chapterId, sectionId } = Astro.params;
 
-// Determine if this is the free preview section (1.1)
-const isFreePreview = chapterId === 'ch01' && sectionId === 'sec01';
-
-// Determine if access is granted
-const isLocal = host.includes('localhost') || host.includes('127.0.0.1');
-const hasValidKey = VALID_ACCESS_KEY !== '' && (accessKey === VALID_ACCESS_KEY || cookieKey === VALID_ACCESS_KEY);
-const isAccessGranted = isFreePreview || hasValidKey || isLocal;
+// Check access using server-side access control
+const isAccessGranted = checkAccess(chapterId!, sectionId!, accessKey, cookieKey, host);
 
 // Dynamic imports for content
 let book, section;
