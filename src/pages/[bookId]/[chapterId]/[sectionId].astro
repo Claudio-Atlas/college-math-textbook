@@ -12,57 +12,55 @@ const edition = host.includes('meridian') ? 'secular' : 'christian';
 const url = new URL(Astro.request.url);
 const isEmbed = url.searchParams.get('embed') === 'true';
 
+// Access key for gated content (server-side only, never exposed to client)
+const accessKey = url.searchParams.get('key') || '';
+const VALID_ACCESS_KEY = process.env.READER_ACCESS_KEY ?? '';
+
 // Get params from URL
 const { bookId, chapterId, sectionId } = Astro.params;
+
+// Determine if this is the free preview section (1.1)
+const isFreePreview = chapterId === 'ch01' && sectionId === 'sec01';
+
+// Determine if access is granted
+const isLocal = host.includes('localhost') || host.includes('127.0.0.1');
+const hasValidKey = VALID_ACCESS_KEY !== '' && accessKey === VALID_ACCESS_KEY;
+const isAccessGranted = isFreePreview || hasValidKey || isLocal;
 
 // Dynamic imports for content
 let book, section;
 let notFound = false;
 
 try {
-  // Load book metadata
   const bookModule = await import(`../../../../content/${bookId}/book.json`);
   book = bookModule.default;
-  
-  // Load section content
   const sectionModule = await import(`../../../../content/${bookId}/${chapterId}/${sectionId}.json`);
   section = sectionModule.default;
 } catch (e) {
   notFound = true;
 }
 
-// Get prev/next navigation
+// Get prev/next navigation (only for full reader, not embed)
 let prevSection = null;
 let nextSection = null;
 
-if (book && section) {
+if (book && section && !isEmbed) {
   const allSections: Array<{chapter: number, section: number, chapterId: string, sectionId: string, title: string}> = [];
-  
   for (const ch of book.chapters) {
     for (const sec of ch.sections) {
       allSections.push({
-        chapter: ch.number,
-        section: sec.number,
-        chapterId: ch.id,
-        sectionId: sec.id,
-        title: sec.title
+        chapter: ch.number, section: sec.number,
+        chapterId: ch.id, sectionId: sec.id, title: sec.title
       });
     }
   }
-  
   const currentIndex = allSections.findIndex(
     s => s.chapterId === chapterId && s.sectionId === sectionId
   );
-  
-  if (currentIndex > 0) {
-    prevSection = allSections[currentIndex - 1];
-  }
-  if (currentIndex < allSections.length - 1) {
-    nextSection = allSections[currentIndex + 1];
-  }
+  if (currentIndex > 0) prevSection = allSections[currentIndex - 1];
+  if (currentIndex < allSections.length - 1) nextSection = allSections[currentIndex + 1];
 }
 
-// Map for catalog links
 const catalogId = bookId === 'vol1' ? 'calculus-vol1' : bookId;
 ---
 
@@ -88,7 +86,222 @@ const catalogId = bookId === 'vol1' ? 'calculus-vol1' : bookId;
       </div>
     </body>
   </html>
+
+) : !isAccessGranted ? (
+  <!-- GATED CONTENT — Section is locked -->
+  <html lang="en">
+    <head>
+      <meta charset="UTF-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <title>{section.chapter}.{section.section} {section.title} — Meridian Precalculus</title>
+      <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap" rel="stylesheet" />
+      <script is:inline>
+        document.documentElement.setAttribute('data-theme', 'light');
+      </script>
+      <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+          font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+          background: #fafbfc;
+          color: #1a1a2e;
+          min-height: 100vh;
+        }
+        .gate-container {
+          max-width: 640px;
+          margin: 0 auto;
+          padding: 3rem 1.5rem;
+          text-align: center;
+        }
+        .gate-icon {
+          width: 80px;
+          height: 80px;
+          margin: 0 auto 1.5rem;
+          background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+          border-radius: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0 8px 32px rgba(124, 58, 237, 0.25);
+        }
+        .gate-icon svg {
+          width: 40px;
+          height: 40px;
+          color: white;
+        }
+        .gate-badge {
+          display: inline-block;
+          background: linear-gradient(135deg, #7c3aed, #6d28d9);
+          color: white;
+          font-size: 0.7rem;
+          font-weight: 700;
+          letter-spacing: 0.1em;
+          text-transform: uppercase;
+          padding: 0.3rem 0.8rem;
+          border-radius: 999px;
+          margin-bottom: 1rem;
+        }
+        .gate-title {
+          font-family: 'Source Serif 4', Georgia, serif;
+          font-size: 1.75rem;
+          font-weight: 700;
+          color: #1a1a2e;
+          margin-bottom: 0.5rem;
+          line-height: 1.3;
+        }
+        .gate-section-num {
+          color: #7c3aed;
+        }
+        .gate-description {
+          font-size: 1rem;
+          color: #64748b;
+          line-height: 1.6;
+          margin-bottom: 2rem;
+        }
+        .gate-card {
+          background: white;
+          border: 1px solid #e2e8f0;
+          border-radius: 16px;
+          padding: 2rem;
+          margin-bottom: 2rem;
+          box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .gate-card h3 {
+          font-size: 1rem;
+          font-weight: 700;
+          color: #1a1a2e;
+          margin-bottom: 1rem;
+        }
+        .gate-topics {
+          list-style: none;
+          text-align: left;
+        }
+        .gate-topics li {
+          padding: 0.5rem 0;
+          border-bottom: 1px solid #f1f5f9;
+          color: #475569;
+          font-size: 0.9rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+        .gate-topics li:last-child { border-bottom: none; }
+        .gate-topics li::before {
+          content: '';
+          width: 6px;
+          height: 6px;
+          background: #7c3aed;
+          border-radius: 50%;
+          flex-shrink: 0;
+        }
+        .gate-stats {
+          display: flex;
+          justify-content: center;
+          gap: 2rem;
+          margin-bottom: 2rem;
+          color: #94a3b8;
+          font-size: 0.85rem;
+        }
+        .gate-cta {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+          color: white;
+          font-weight: 600;
+          font-size: 1rem;
+          padding: 0.85rem 2rem;
+          border-radius: 999px;
+          text-decoration: none;
+          box-shadow: 0 4px 16px rgba(124, 58, 237, 0.3);
+          transition: transform 0.2s, box-shadow 0.2s;
+          margin-bottom: 1rem;
+        }
+        .gate-cta:hover {
+          transform: translateY(-1px);
+          box-shadow: 0 6px 24px rgba(124, 58, 237, 0.4);
+        }
+        .gate-preview-link {
+          display: block;
+          color: #7c3aed;
+          font-size: 0.85rem;
+          text-decoration: none;
+          font-weight: 500;
+        }
+        .gate-preview-link:hover { text-decoration: underline; }
+        .gate-footer {
+          margin-top: 3rem;
+          padding-top: 1.5rem;
+          border-top: 1px solid #e2e8f0;
+          color: #94a3b8;
+          font-size: 0.75rem;
+        }
+        .gate-footer a { color: #7c3aed; text-decoration: none; }
+        .gate-footer a:hover { text-decoration: underline; }
+      </style>
+    </head>
+    <body>
+      <div class="gate-container">
+        <div class="gate-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.331 0 4.47.89 6.042 2.346m0-14.304A8.966 8.966 0 0118 3.75c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6.042 2.346M12 6.042V18.346" />
+          </svg>
+        </div>
+        
+        <span class="gate-badge">Premium Content</span>
+        
+        <h1 class="gate-title">
+          <span class="gate-section-num">{section.chapter}.{section.section}</span>&ensp;{section.title}
+        </h1>
+        
+        <div class="gate-stats">
+          <span>{Math.max(1, Math.round(JSON.stringify(section.content).length / 1200))} min read</span>
+          <span>·</span>
+          <span>{section.content?.filter((b: any) => b.type === 'example').length || 0} worked examples</span>
+          <span>·</span>
+          <span>{section.content?.filter((b: any) => b.type === 'definition').length || 0} definitions</span>
+        </div>
+        
+        <p class="gate-description">
+          This section is available to students enrolled through a participating institution. 
+          Access the full interactive textbook, worked examples, and practice problems through your course's learning management system.
+        </p>
+        
+        {section.objectives && section.objectives.length > 0 && (
+          <div class="gate-card">
+            <h3>📋 What You'll Learn</h3>
+            <ul class="gate-topics">
+              {section.objectives.map((obj: string) => (
+                <li>{obj}</li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        <a href={`/${bookId}/ch01/sec01`} class="gate-cta">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+          Preview Section 1.1 Free
+        </a>
+        
+        <a href="https://meridian-math.org" class="gate-preview-link">
+          ← Back to Meridian Press
+        </a>
+        
+        <div class="gate-footer">
+          <p>Powered by <a href="https://meridian-math.org">Meridian Press</a></p>
+          <p style="margin-top: 0.5rem;">Interested in adopting Meridian for your institution? <a href="mailto:contact@meridian-math.org">Contact us</a></p>
+        </div>
+      </div>
+    </body>
+  </html>
+
 ) : isEmbed ? (
+  <!-- EMBED MODE — Clean layout for Canvas iframe -->
   <EmbedLayout
     title={`${section.title} - ${book.title}`}
     bookId={bookId}
@@ -122,7 +335,9 @@ const catalogId = bookId === 'vol1' ? 'calculus-vol1' : bookId;
       />
     </article>
   </EmbedLayout>
+
 ) : (
+  <!-- FULL READER — Public site with sidebar/nav (only Section 1.1 reaches here) -->
   <ReaderLayout 
     title={`${section.title} - ${book.title}`}
     book={book}
