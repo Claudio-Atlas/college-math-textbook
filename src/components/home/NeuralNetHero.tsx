@@ -903,8 +903,10 @@ export function DescriptionSection({ isAtlas, brandColor }: DescriptionSectionPr
             <>
               Complete mathematics programs powered by adaptive AI. Each course includes a digital
               textbook, video walkthroughs, thousands of practice problems, and a personal AI tutor
-              that learns how you think — identifying misconceptions, tracking mastery, and building
-              a personalized path to success.
+              that learns how you think. Powered by our Axiom Question Engine — 500+ templates with
+              seeded randomization that generate unique problems for every student — and backed by a
+              Student Knowledge State Model that tracks mastery across every concept, identifies
+              misconceptions in real time, and builds a personalized path to success.
             </>
           )}
         </p>

@@ -2,6 +2,7 @@
  * Homepage component - Book catalog showroom
  * Uses --ax-* design tokens for dark/light mode support.
  */
+import React from 'react';
 import { BrandProvider, useBrand } from '../brand/BrandProvider';
 import { MarketingNav } from '../marketing/MarketingNav';
 import { NeuralNetHero, DescriptionSection } from './NeuralNetHero';
@@ -138,6 +139,9 @@ function HomeContent() {
         {/* Description — below hero */}
         <DescriptionSection isAtlas={isAtlas} brandColor={brand.colors.primary} />
 
+        {/* For Schools & Educators — only on Meridian */}
+        {!isAtlas && <EducatorsSection />}
+
         {/* Book Catalog */}
         <section id="catalog" className="py-16" style={{ background: 'var(--ax-surface)' }}>
           <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -216,6 +220,218 @@ function HomeContent() {
     </div>
   );
 }
+
+// ---------------------------------------------------------------------------
+// For Schools & Educators Section
+// ---------------------------------------------------------------------------
+
+const EDUCATOR_FEATURES = [
+  {
+    icon: '📚',
+    title: 'Digital Textbooks',
+    description:
+      'Comprehensive, professionally authored math textbooks available as interactive digital readers. Students access content directly through your LMS.',
+  },
+  {
+    icon: '🧮',
+    title: 'Adaptive Question Engine',
+    description:
+      '500+ question templates with seeded randomization and expression equivalence validation. Every student gets unique problems — graded instantly.',
+  },
+  {
+    icon: '🔗',
+    title: 'Canvas LTI Integration',
+    description:
+      'Full LTI 1.3 integration with Canvas. Students launch assignments from Canvas, complete work in our platform, and grades pass back automatically.',
+  },
+  {
+    icon: '🏗️',
+    title: 'Custom Course Building',
+    description:
+      'Complete Canvas course shells built to your specifications — mini-lesson pages, discussions, quizzes, exams, and pacing guides. Ready to teach from day one.',
+  },
+];
+
+const PIPELINE_STEPS = [
+  'Textbook',
+  'Question Engine',
+  'Canvas Course',
+  'Grade Passback',
+  'AI Tutoring (Coming Soon)',
+];
+
+function EducatorsSection() {
+  return (
+    <section
+      style={{
+        background: 'var(--ax-elevated)',
+        borderTop: '1px solid var(--ax-border)',
+        borderBottom: '1px solid var(--ax-border)',
+        padding: '5rem 1.5rem',
+      }}
+    >
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h2
+            className="text-3xl sm:text-4xl font-bold mb-3"
+            style={{ color: 'var(--ax-text)' }}
+          >
+            Built for Schools &amp; Educators
+          </h2>
+          <p
+            className="text-lg"
+            style={{ color: 'var(--ax-text-secondary)' }}
+          >
+            Everything your math program needs — from one provider.
+          </p>
+        </div>
+
+        {/* Feature Cards */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
+            gap: '1.5rem',
+            marginBottom: '3.5rem',
+          }}
+        >
+          {EDUCATOR_FEATURES.map((feat) => (
+            <div
+              key={feat.title}
+              style={{
+                background: 'var(--ax-surface)',
+                border: '1px solid var(--ax-border)',
+                borderRadius: 'var(--ax-card-radius)',
+                padding: '2rem 1.5rem',
+                transition: 'border-color 150ms ease-out, box-shadow 150ms ease-out',
+              }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = 'var(--ax-violet)';
+                (e.currentTarget as HTMLElement).style.boxShadow =
+                  '0 4px 16px rgba(139, 92, 246, 0.1)';
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.borderColor = 'var(--ax-border)';
+                (e.currentTarget as HTMLElement).style.boxShadow = 'none';
+              }}
+            >
+              <div style={{ fontSize: '2.5rem', marginBottom: '0.75rem' }}>{feat.icon}</div>
+              <h3
+                className="text-lg font-bold mb-2"
+                style={{ color: 'var(--ax-text)' }}
+              >
+                {feat.title}
+              </h3>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: 'var(--ax-text-secondary)' }}
+              >
+                {feat.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+        {/* Pipeline Visual */}
+        <div className="text-center mb-10">
+          <h3
+            className="text-xl sm:text-2xl font-bold mb-6"
+            style={{ color: 'var(--ax-text)' }}
+          >
+            One Ecosystem. Zero Friction.
+          </h3>
+
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexWrap: 'wrap',
+              gap: '0.5rem 0',
+            }}
+          >
+            {PIPELINE_STEPS.map((step, i) => (
+              <React.Fragment key={step}>
+                <span
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '9999px',
+                    fontSize: '0.85rem',
+                    fontWeight: 600,
+                    whiteSpace: 'nowrap',
+                    background: 'rgba(139, 92, 246, 0.12)',
+                    border: '1px solid rgba(139, 92, 246, 0.35)',
+                    color: 'var(--ax-text)',
+                  }}
+                >
+                  {step}
+                </span>
+                {i < PIPELINE_STEPS.length - 1 && (
+                  <span
+                    style={{
+                      color: '#8B5CF6',
+                      fontSize: '1.25rem',
+                      fontWeight: 700,
+                      padding: '0 0.35rem',
+                    }}
+                    aria-hidden="true"
+                  >
+                    →
+                  </span>
+                )}
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+
+        {/* CTA */}
+        <div className="text-center">
+          <a
+            href="mailto:contact@onyxenterprises.org"
+            className="inline-flex items-center px-8 py-3 rounded-full font-medium transition-all"
+            style={{
+              background: '#8B5CF6',
+              color: '#fff',
+              letterSpacing: '0.03em',
+              boxShadow: '0 0 20px rgba(139, 92, 246, 0.25)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = '#7C3AED';
+              e.currentTarget.style.boxShadow = '0 0 30px rgba(139, 92, 246, 0.4)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = '#8B5CF6';
+              e.currentTarget.style.boxShadow = '0 0 20px rgba(139, 92, 246, 0.25)';
+            }}
+          >
+            Partner With Us
+            <svg
+              className="ml-2 w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Book Card
+// ---------------------------------------------------------------------------
 
 interface BookCardProps {
   book: Book;
