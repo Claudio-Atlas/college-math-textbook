@@ -20,7 +20,14 @@ const PROBLEMS: Problem[] = [
     label: 'Evaluate f(−2)',
     prompt: 'Given f(x) = 3x² − 2x + 1, evaluate f(−2).',
     context:
-      'The problem is: Given f(x) = 3x² − 2x + 1, evaluate f(−2). The correct answer is 17. The student must substitute −2 for x: 3(−2)² − 2(−2) + 1 = 3(4) + 4 + 1 = 12 + 4 + 1 = 17.',
+      `The problem is: Given f(x) = 3x² − 2x + 1, evaluate f(−2).
+The correct answer is 17.
+Step-by-step: Substitute −2 for every x: 3(−2)² − 2(−2) + 1 = 3(4) − 2(−2) + 1 = 12 + 4 + 1 = 17.
+
+Common wrong answers to watch for:
+- 9 → Student computed −2² = −4 instead of (−2)² = 4. The exponent applies to the entire value including the negative sign because we're substituting (−2). Guide them: "What is (−2)²? Remember, you're squaring the entire value −2."
+- 5 → Student likely did 3(4) − 2(2) + 1 = 12 − 4 + 1, dropping the negative on −2(−2). Guide them: "What is −2 times −2? Watch the signs."
+- If student answers just a sub-step like "4" (for (−2)²), that is correct for that step — celebrate it.`,
   },
   {
     id: 'is-function',
@@ -28,7 +35,15 @@ const PROBLEMS: Problem[] = [
     prompt:
       'Determine whether the relation {(1, 3), (2, 5), (3, 3), (4, 7)} is a function. Explain why or why not.',
     context:
-      'The problem is: Is {(1, 3), (2, 5), (3, 3), (4, 7)} a function? The correct answer is YES — it is a function because each input (1, 2, 3, 4) maps to exactly one output. No input repeats with a different output.',
+      `The problem is: Is {(1, 3), (2, 5), (3, 3), (4, 7)} a function?
+The correct answer is YES — it IS a function.
+
+Why: Each INPUT (first number in each pair: 1, 2, 3, 4) maps to exactly one output. No input appears twice with different outputs.
+
+CRITICAL MISCONCEPTION to watch for:
+- Student says "No, because 3 appears twice" → They are confusing inputs with outputs! The number 3 appears as an OUTPUT in (1,3) and as an INPUT in (3,3). Two different inputs CAN map to the same output — that's perfectly fine. What would NOT be a function is if the same INPUT appeared with different outputs, like (1,3) and (1,5). Guide them: "Look at the first number in each pair — those are the inputs. Does any input appear more than once?"
+- Student says "yes" without explanation → Ask them to explain WHY. They need to demonstrate understanding, not just guess.
+- Accept variations like: "yes because each x has one y", "yes, no repeated x-values", "yes, passes vertical line test" — all valid.`,
   },
   {
     id: 'domain-sqrt',
@@ -36,7 +51,17 @@ const PROBLEMS: Problem[] = [
     prompt:
       'Find the domain of g(x) = √(x − 4). Write your answer in interval notation.',
     context:
-      'The problem is: Find the domain of g(x) = √(x − 4). The correct answer is [4, ∞). The expression under the square root must be ≥ 0, so x − 4 ≥ 0, meaning x ≥ 4.',
+      `The problem is: Find the domain of g(x) = √(x − 4).
+The correct answer is [4, ∞) in interval notation.
+
+Step-by-step: The expression under the square root must be ≥ 0. So x − 4 ≥ 0, which gives x ≥ 4. In interval notation: [4, ∞).
+
+Common wrong answers to watch for:
+- (4, ∞) with open bracket → Student forgot that x = 4 IS valid (√0 = 0 is defined). Guide: "What happens when x = 4? Is √(4−4) = √0 defined?"
+- (−∞, 4] → Student reversed the inequality. Guide: "If x = 0, what's under the square root? Is √(−4) a real number?"
+- "x ≥ 4" → This is mathematically correct but not in interval notation as requested. Say: "That's the right inequality! Now can you write it in interval notation? Hint: use brackets and ∞."
+- [4, inf) or [4, infinity) → ACCEPT THIS AS CORRECT. Text equivalents for ∞ are fine.
+- {x | x ≥ 4} → Set-builder notation. Accept as correct understanding but ask: "That's correct in set-builder notation! Can you also write it in interval notation?"`,
   },
 ];
 

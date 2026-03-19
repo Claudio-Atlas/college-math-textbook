@@ -2,9 +2,10 @@ import type { APIRoute } from 'astro';
 import OpenAI from 'openai';
 
 // ---------------------------------------------------------------------------
-// In-memory rate limiter: 20 requests per day per IP
+// In-memory rate limiter: 7 requests per day per IP
 // ---------------------------------------------------------------------------
 const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const MAX_REQUESTS_PER_DAY = 7;
 
 function isRateLimited(ip: string): boolean {
   const now = Date.now();
@@ -15,10 +16,50 @@ function isRateLimited(ip: string): boolean {
     return false;
   }
 
-  if (entry.count >= 20) return true;
+  if (entry.count >= MAX_REQUESTS_PER_DAY) return true;
 
   entry.count++;
   return false;
+}
+
+// ---------------------------------------------------------------------------
+// Bot protection: honeypot + timing + basic validation
+// ---------------------------------------------------------------------------
+const MIN_REQUEST_INTERVAL_MS = 1500; // Humans can't type and submit in < 1.5s
+const lastRequestMap = new Map<string, number>();
+
+function isSuspiciousBot(ip: string, body: any): { blocked: boolean; reason?: string } {
+  const now = Date.now();
+
+  // Timing check: too fast between requests
+  const lastReq = lastRequestMap.get(ip) || 0;
+  if (now - lastReq < MIN_REQUEST_INTERVAL_MS) {
+    return { blocked: true, reason: 'too_fast' };
+  }
+  lastRequestMap.set(ip, now);
+
+  // Honeypot field check (frontend should never send this)
+  if (body._hp !== undefined) {
+    return { blocked: true, reason: 'honeypot' };
+  }
+
+  // Answer length sanity (no human answer should be > 500 chars for these problems)
+  if (typeof body.student_answer === 'string' && body.student_answer.length > 500) {
+    return { blocked: true, reason: 'answer_too_long' };
+  }
+
+  // History length sanity (max 20 messages in a conversation)
+  if (Array.isArray(body.history) && body.history.length > 20) {
+    return { blocked: true, reason: 'history_too_long' };
+  }
+
+  // Valid problem_id check
+  const validProblems = ['eval-f-neg2', 'is-function', 'domain-sqrt'];
+  if (!validProblems.includes(body.problem_id)) {
+    return { blocked: true, reason: 'invalid_problem' };
+  }
+
+  return { blocked: false };
 }
 
 // ---------------------------------------------------------------------------
@@ -64,6 +105,7 @@ export const POST: APIRoute = async ({ request }) => {
     problem_id: string;
     student_answer: string;
     history: Array<{ role: string; content: string }>;
+    _hp?: string;
   };
 
   try {
@@ -73,6 +115,15 @@ export const POST: APIRoute = async ({ request }) => {
       status: 400,
       headers: { 'Content-Type': 'application/json' },
     });
+  }
+
+  // Bot protection checks
+  const botCheck = isSuspiciousBot(ip, body);
+  if (botCheck.blocked) {
+    return new Response(
+      JSON.stringify({ error: 'Request blocked', reason: botCheck.reason }),
+      { status: 403, headers: { 'Content-Type': 'application/json' } },
+    );
   }
 
   const { problem_id, student_answer, history = [] } = body;
