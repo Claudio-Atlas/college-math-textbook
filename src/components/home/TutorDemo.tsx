@@ -26,7 +26,7 @@ Step-by-step: Substitute −2 for every x: 3(−2)² − 2(−2) + 1 = 3(4) − 
 
 Common wrong answers to watch for:
 - 9 → Student computed −2² = −4 instead of (−2)² = 4. The exponent applies to the entire value including the negative sign because we're substituting (−2). Guide them: "What is (−2)²? Remember, you're squaring the entire value −2."
-- 5 → Student likely did 3(4) − 2(2) + 1 = 12 − 4 + 1, dropping the negative on −2(−2). Guide them: "What is −2 times −2? Watch the signs."
+- 5 → Student likely did 3(4) − 2(2) + 1 = 12 − 4 + 1, treating −2(−2) as −4 instead of +4. Note: −2(−2) = +4 because negative times negative is positive. If a student answers "4" for the step "what is −2(−2)?", that IS correct — 4 and +4 are the same thing.
 - If student answers just a sub-step like "4" (for (−2)²), that is correct for that step — celebrate it.`,
   },
   {
