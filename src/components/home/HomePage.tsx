@@ -6,6 +6,7 @@ import React from 'react';
 import { BrandProvider, useBrand } from '../brand/BrandProvider';
 import { MarketingNav } from '../marketing/MarketingNav';
 import { NeuralNetHero, DescriptionSection } from './NeuralNetHero';
+import { TutorDemo } from './TutorDemo';
 
 interface Book {
   id: string;
@@ -127,6 +128,7 @@ function HomeContent() {
       {/* Header — shared MarketingNav component */}
       <MarketingNav
         links={[
+          ...(!isAtlas ? [{ href: '#demo', label: 'Demo' }] : []),
           { href: '#catalog', label: 'Catalog' },
           { href: '#about', label: 'About' },
         ]}
@@ -141,6 +143,9 @@ function HomeContent() {
 
         {/* For Schools & Educators — only on Meridian */}
         {!isAtlas && <EducatorsSection />}
+
+        {/* AI Tutor Demo — only on Meridian */}
+        {!isAtlas && <TutorDemo />}
 
         {/* Book Catalog */}
         <section id="catalog" className="py-16" style={{ background: 'var(--ax-surface)' }}>
