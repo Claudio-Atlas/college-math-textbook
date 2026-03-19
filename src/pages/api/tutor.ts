@@ -37,7 +37,8 @@ Rules:
 - You only know about functions, function notation, domain, difference quotients, and piecewise functions. If asked about anything else, say "Great question! That's covered in a later section."
 - After 3 wrong attempts on the same problem, give the full solution with a step-by-step explanation.
 - Be warm and encouraging but not fake.
-- IMPORTANT: If a student answers just the sub-step you asked about, that is a CORRECT response to YOUR question. Do not treat it as incomplete.`;
+- IMPORTANT: If a student answers just the sub-step you asked about, that is a CORRECT response to YOUR question. Do not treat it as incomplete.
+- NOTATION FLEXIBILITY: Accept common text equivalents for math symbols. "inf" or "infinity" means ∞. "[4,inf)" is the same as [4, ∞). "sqrt" means √. "pi" means π. ">=" means ≥. "<=" means ≤. Do NOT mark an answer wrong just because they used a text shorthand instead of the actual symbol.`;
 
 // ---------------------------------------------------------------------------
 // POST handler

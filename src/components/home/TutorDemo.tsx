@@ -293,7 +293,52 @@ export function TutorDemo() {
               maxHeight: '500px',
             }}
           >
-            {/* Input area — on top */}
+            {/* Math symbol toolbar */}
+            <div
+              style={{
+                borderBottom: '1px solid var(--ax-border)',
+                padding: '0.4rem 1rem',
+                display: 'flex',
+                flexWrap: 'wrap',
+                gap: '0.25rem',
+              }}
+            >
+              {['∞', '√', 'π', '≥', '≤', '≠', '±', '²', '³', '∈', '∪', '∩', '[', ']', '(', ')'].map((sym) => (
+                <button
+                  key={sym}
+                  type="button"
+                  onClick={() => {
+                    setInput((prev) => prev + sym);
+                    inputRef.current?.focus();
+                  }}
+                  className="transition-all"
+                  style={{
+                    background: 'var(--ax-elevated)',
+                    border: '1px solid var(--ax-border)',
+                    borderRadius: '6px',
+                    color: 'var(--ax-text-secondary)',
+                    padding: '0.2rem 0.5rem',
+                    fontSize: '0.85rem',
+                    cursor: 'pointer',
+                    minWidth: '2rem',
+                    textAlign: 'center',
+                    fontFamily: "'Cambria Math', 'Latin Modern Math', serif",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.5)';
+                    e.currentTarget.style.color = 'var(--ax-text)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = 'var(--ax-border)';
+                    e.currentTarget.style.color = 'var(--ax-text-secondary)';
+                  }}
+                >
+                  {sym}
+                </button>
+              ))}
+            </div>
+
+            {/* Input area */}
             <div
               style={{
                 borderBottom: '1px solid var(--ax-border)',
