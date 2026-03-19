@@ -86,14 +86,16 @@ export function TutorDemo() {
   const [attempts, setAttempts] = useState(0);
   const [rateLimited, setRateLimited] = useState(false);
   const [solved, setSolved] = useState(false);
-  const chatEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
   const problem = PROBLEMS[activeProblem];
 
-  // Scroll chat to bottom on new messages
+  // Scroll chat container to bottom on new messages (without jumping the page)
+  const chatContainerRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (chatContainerRef.current) {
+      chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
+    }
   }, [messages, loading]);
 
   // Reset when switching problems
@@ -291,8 +293,63 @@ export function TutorDemo() {
               maxHeight: '500px',
             }}
           >
-            {/* Messages area */}
+            {/* Input area — on top */}
             <div
+              style={{
+                borderBottom: '1px solid var(--ax-border)',
+                padding: '0.75rem 1rem',
+                display: 'flex',
+                gap: '0.5rem',
+              }}
+            >
+              <input
+                ref={inputRef}
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleKeyDown}
+                placeholder={
+                  rateLimited
+                    ? 'Demo limit reached'
+                    : solved
+                      ? 'Problem solved! Try another →'
+                      : 'Type your answer…'
+                }
+                disabled={loading || rateLimited || solved}
+                className="flex-1 text-sm rounded-lg px-3 py-2 outline-none"
+                style={{
+                  background: 'var(--ax-elevated)',
+                  border: '1px solid var(--ax-border)',
+                  color: 'var(--ax-text)',
+                }}
+              />
+              <button
+                onClick={send}
+                disabled={loading || !input.trim() || rateLimited || solved}
+                className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                style={{
+                  background:
+                    loading || !input.trim() || rateLimited || solved
+                      ? 'rgba(139, 92, 246, 0.1)'
+                      : '#8B5CF6',
+                  color:
+                    loading || !input.trim() || rateLimited || solved
+                      ? 'var(--ax-text-muted)'
+                      : '#fff',
+                  cursor:
+                    loading || !input.trim() || rateLimited || solved
+                      ? 'not-allowed'
+                      : 'pointer',
+                  border: 'none',
+                }}
+              >
+                Send
+              </button>
+            </div>
+
+            {/* Messages area — below input */}
+            <div
+              ref={chatContainerRef}
               style={{
                 flex: 1,
                 overflowY: 'auto',
@@ -394,61 +451,6 @@ export function TutorDemo() {
                 </div>
               )}
 
-              <div ref={chatEndRef} />
-            </div>
-
-            {/* Input area */}
-            <div
-              style={{
-                borderTop: '1px solid var(--ax-border)',
-                padding: '0.75rem 1rem',
-                display: 'flex',
-                gap: '0.5rem',
-              }}
-            >
-              <input
-                ref={inputRef}
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder={
-                  rateLimited
-                    ? 'Demo limit reached'
-                    : solved
-                      ? 'Problem solved! Try another →'
-                      : 'Type your answer…'
-                }
-                disabled={loading || rateLimited || solved}
-                className="flex-1 text-sm rounded-lg px-3 py-2 outline-none"
-                style={{
-                  background: 'var(--ax-elevated)',
-                  border: '1px solid var(--ax-border)',
-                  color: 'var(--ax-text)',
-                }}
-              />
-              <button
-                onClick={send}
-                disabled={loading || !input.trim() || rateLimited || solved}
-                className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                style={{
-                  background:
-                    loading || !input.trim() || rateLimited || solved
-                      ? 'rgba(139, 92, 246, 0.1)'
-                      : '#8B5CF6',
-                  color:
-                    loading || !input.trim() || rateLimited || solved
-                      ? 'var(--ax-text-muted)'
-                      : '#fff',
-                  cursor:
-                    loading || !input.trim() || rateLimited || solved
-                      ? 'not-allowed'
-                      : 'pointer',
-                  border: 'none',
-                }}
-              >
-                Send
-              </button>
             </div>
           </div>
         </div>
