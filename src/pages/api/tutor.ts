@@ -25,7 +25,7 @@ function isRateLimited(ip: string): boolean {
 // ---------------------------------------------------------------------------
 // Bot protection: honeypot + timing + basic validation
 // ---------------------------------------------------------------------------
-const MIN_REQUEST_INTERVAL_MS = 1500; // Humans can't type and submit in < 1.5s
+const MIN_REQUEST_INTERVAL_MS = 800; // Humans can't type and submit in < 0.8s
 const lastRequestMap = new Map<string, number>();
 
 function isSuspiciousBot(ip: string, body: any): { blocked: boolean; reason?: string } {
@@ -43,8 +43,8 @@ function isSuspiciousBot(ip: string, body: any): { blocked: boolean; reason?: st
     return { blocked: true, reason: 'honeypot' };
   }
 
-  // Answer length sanity (no human answer should be > 500 chars for these problems)
-  if (typeof body.student_answer === 'string' && body.student_answer.length > 500) {
+  // Answer length sanity (student_answer includes problem context prefix, so allow up to 3000)
+  if (typeof body.student_answer === 'string' && body.student_answer.length > 3000) {
     return { blocked: true, reason: 'answer_too_long' };
   }
 
