@@ -1,6 +1,8 @@
 /**
  * TutorDemo — Interactive AI tutor demo for the Meridian homepage.
  * Client-side problem generation with 3 topic areas + AI chat via /api/tutor.
+ *
+ * Flow: idle → wrong1 (hint) → attempt 2 → wrong2 (solution + chat option) | correct
  */
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
@@ -101,7 +103,6 @@ function generatePrecalculus(seed: number): GeneratedProblem {
   const answer = a * k * k + b * k + c;
   const kShow = k < 0 ? `(${k})` : `${k}`;
 
-  // Build substitution display
   const aTermStr = `${a}(${kShow})²`;
   const bTermStr = b > 0 ? `+ ${b}(${kShow})` : `- ${Math.abs(b)}(${kShow})`;
   const cTermStr = c === 0 ? '' : c > 0 ? `+ ${c}` : `- ${Math.abs(c)}`;
@@ -140,18 +141,15 @@ function generateCalculus(seed: number): GeneratedProblem {
   const m = rng.int(1, 2);
   const c = rng.intExcluding(-12, 12, [0]);
 
-  // Build f(x)
   const xnStr = `x^${n}`;
   const xmStr = m === 1 ? 'x' : `x^${m}`;
   const fExpr = `${a}${xnStr} ${signedTerm(b, xmStr)} ${signedConst(c)}`.trim();
 
-  // Derivative coefficients
   const da = a * n;
   const dn = n - 1;
   const db = b * m;
   const dm = m - 1;
 
-  // Build f'(x) string
   const term1 = dn === 1 ? `${da}x` : `${da}x^${dn}`;
   let fpExpr: string;
   if (dm === 0) {
@@ -227,16 +225,10 @@ function generateProblem(topic: Topic, seed: number): GeneratedProblem {
 // Validation
 // ---------------------------------------------------------------------------
 
-/** Parse a simple polynomial expression and evaluate at x */
 function evaluateExpression(expr: string, x: number): number | null {
-  // Normalize: remove spaces, handle ^ for exponents
   let s = expr.replace(/\s+/g, '');
-
-  // Split into terms: split on + or - keeping the sign
-  // First, normalize: replace '−' with '-', handle leading minus
   s = s.replace(/−/g, '-');
 
-  // Tokenize into terms
   const terms: string[] = [];
   let current = '';
   for (let i = 0; i < s.length; i++) {
@@ -252,7 +244,6 @@ function evaluateExpression(expr: string, x: number): number | null {
 
   let result = 0;
   for (const term of terms) {
-    // Parse coefficient and power: forms like "24x^3", "-7x", "10", "x^2", "x"
     const m = term.match(/^([+-]?\d*\.?\d*)(x?)(?:\^(\d+))?$/);
     if (!m) return null;
 
@@ -282,7 +273,6 @@ function validateAnswer(problem: GeneratedProblem, studentAnswer: string): boole
     return Math.abs(parsed - correct) < problem.tolerance;
   }
 
-  // Expression validation: evaluate at 3 test points
   const testPoints = [1, 2, 3];
   for (const x of testPoints) {
     const studentVal = evaluateExpression(trimmed, x);
@@ -302,7 +292,7 @@ interface ChatMessage {
 }
 
 // ---------------------------------------------------------------------------
-// Math rendering helper: convert backtick-wrapped math to styled <code>
+// Math rendering helper
 // ---------------------------------------------------------------------------
 function renderMathText(text: string): React.ReactNode[] {
   const parts = text.split(/`([^`]+)`/g);
@@ -328,14 +318,15 @@ function renderMathText(text: string): React.ReactNode[] {
 }
 
 // ---------------------------------------------------------------------------
-// State machine
+// State machine: idle → wrong1 → (attempt2 via idle) → wrong2 → chatOpen
+//                                                     → correct
 // ---------------------------------------------------------------------------
-type DemoState = 'idle' | 'wrong1' | 'chatOpen' | 'wrong2' | 'correct' | 'solved';
+type DemoState = 'idle' | 'wrong1' | 'wrong2' | 'correct' | 'chatOpen';
 
-const TOPICS: { key: Topic; label: string }[] = [
-  { key: 'precalculus', label: 'Precalculus' },
-  { key: 'calculus', label: 'Calculus' },
-  { key: 'statistics', label: 'Statistics' },
+const TOPICS: { key: Topic; label: string; badge: string }[] = [
+  { key: 'precalculus', label: 'Precalculus', badge: 'Section 1.1 · Introduction to Functions' },
+  { key: 'calculus', label: 'Calculus', badge: 'Calculus · Power Rule' },
+  { key: 'statistics', label: 'Statistics', badge: 'Statistics · Descriptive Statistics' },
 ];
 
 const SYMBOLS = ['∞', '√', 'π', '≥', '≤', '≠', '±', '²', '³', '∈', '∪', '∩', '[', ']', '(', ')'];
@@ -348,18 +339,20 @@ export function TutorDemo() {
   const [seed, setSeed] = useState(() => Date.now());
   const [state, setState] = useState<DemoState>('idle');
   const [input, setInput] = useState('');
+  const [attemptCount, setAttemptCount] = useState(0);
+
+  // Chat state
   const [chatInput, setChatInput] = useState('');
   const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
   const [chatLoading, setChatLoading] = useState(false);
   const [rateLimited, setRateLimited] = useState(false);
-  const [attemptCount, setAttemptCount] = useState(0);
 
   const inputRef = useRef<HTMLInputElement>(null);
   const chatInputRef = useRef<HTMLInputElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
 
-  // Generate problem from current topic + seed
   const problem = generateProblem(topic, seed);
+  const topicMeta = TOPICS.find((t) => t.key === topic)!;
 
   // Scroll chat to bottom
   useEffect(() => {
@@ -368,33 +361,30 @@ export function TutorDemo() {
     }
   }, [chatMessages, chatLoading]);
 
-  // Switch topic
   const switchTopic = useCallback((t: Topic) => {
     setTopic(t);
     setSeed(Date.now());
     setState('idle');
     setInput('');
+    setAttemptCount(0);
     setChatInput('');
     setChatMessages([]);
-    setAttemptCount(0);
   }, []);
 
-  // Try another problem (same or different topic)
   const tryAnother = useCallback(() => {
     setSeed(Date.now());
     setState('idle');
     setInput('');
+    setAttemptCount(0);
     setChatInput('');
     setChatMessages([]);
-    setAttemptCount(0);
     setTimeout(() => inputRef.current?.focus(), 100);
   }, []);
 
-  // Submit answer
   const submitAnswer = useCallback(() => {
     const trimmed = input.trim();
     if (!trimmed) return;
-    if (state === 'wrong2' || state === 'correct' || state === 'solved') return;
+    if (state === 'wrong2' || state === 'correct' || state === 'chatOpen') return;
 
     const isCorrect = validateAnswer(problem, trimmed);
     const attempt = attemptCount + 1;
@@ -406,24 +396,15 @@ export function TutorDemo() {
       setState('wrong2');
     } else {
       setState('wrong1');
+      setInput('');
     }
-    setInput('');
   }, [input, state, problem, attemptCount]);
 
-  // Try again after first wrong attempt
-  const tryAgain = useCallback(() => {
-    setState('idle');
-    setInput('');
-    setTimeout(() => inputRef.current?.focus(), 100);
-  }, []);
-
-  // Open chat
   const openChat = useCallback(() => {
     setState('chatOpen');
     setTimeout(() => chatInputRef.current?.focus(), 100);
   }, []);
 
-  // Send chat message to AI
   const sendChat = useCallback(async () => {
     const text = chatInput.trim();
     if (!text || chatLoading || rateLimited) return;
@@ -435,11 +416,10 @@ export function TutorDemo() {
     setChatLoading(true);
 
     try {
-      // Build context for the AI
       const contextPrefix = `[Problem context: The problem is: ${problem.questionText.replace(/`/g, '')}. The correct answer is ${problem.correctAnswer}. Hint: ${problem.hint}]`;
 
       const body = {
-        problem_id: 'eval-f-neg2', // Use valid ID for bot protection pass-through
+        problem_id: 'eval-f-neg2',
         student_answer:
           updated.length === 1
             ? `${contextPrefix}\n\nStudent's message: ${text}`
@@ -504,16 +484,19 @@ export function TutorDemo() {
     }
   };
 
-  // Determine what to show
-  const showInput = state === 'idle' || state === 'chatOpen';
-  const showFeedbackWrong1 = state === 'wrong1';
+  // Determine what to show in the interaction area
+  const showInput = state === 'idle' || state === 'wrong1';
+  const showHint = state === 'wrong1';
+  const showSolution = state === 'wrong2' || state === 'correct' || state === 'chatOpen';
+  const isCorrect = state === 'correct';
+  const showChatButton = state === 'wrong2';
   const showChat = state === 'chatOpen';
-  const showSolution = state === 'wrong2' || state === 'correct' || state === 'solved';
-  const isCorrect = state === 'correct' || state === 'solved';
+
+  const currentAttempt = state === 'wrong1' ? 2 : attemptCount + 1;
 
   return (
     <section id="demo" style={{ background: 'var(--ax-bg)', padding: '5rem 1.5rem' }}>
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
           <h2
@@ -549,449 +532,416 @@ export function TutorDemo() {
           ))}
         </div>
 
-        {/* Problem Card */}
+        {/* ── Two-column grid layout ── */}
         <div
-          style={{
-            background: 'var(--ax-surface)',
-            border: '1px solid var(--ax-border)',
-            borderRadius: 'var(--ax-card-radius)',
-            padding: '2rem',
-            marginBottom: '1rem',
-          }}
+          style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '1.5rem' }}
+          className="lg:grid-cols-[380px_1fr]"
         >
-          {/* Topic label */}
-          <div
-            className="text-xs font-semibold uppercase tracking-wider mb-3"
-            style={{ color: '#8B5CF6' }}
-          >
-            {topic === 'precalculus' && 'Precalculus · Function Evaluation'}
-            {topic === 'calculus' && 'Calculus · Power Rule Derivatives'}
-            {topic === 'statistics' && 'Statistics · Measures of Center'}
-          </div>
-
-          {/* Question */}
-          <p
-            className="text-lg leading-relaxed mb-6"
-            style={{ color: 'var(--ax-text)', fontFamily: "'Georgia', serif" }}
-          >
-            {renderMathText(problem.questionText)}
-          </p>
-
-          {/* Symbol toolbar */}
-          {showInput && (
-            <>
-              <div
-                style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '0.25rem',
-                  marginBottom: '0.75rem',
-                }}
-              >
-                {SYMBOLS.map((sym) => (
-                  <button
-                    key={sym}
-                    type="button"
-                    onClick={() => {
-                      setInput((prev) => prev + sym);
-                      inputRef.current?.focus();
-                    }}
-                    className="transition-all"
-                    style={{
-                      background: 'var(--ax-elevated)',
-                      border: '1px solid var(--ax-border)',
-                      borderRadius: '6px',
-                      color: 'var(--ax-text-secondary)',
-                      padding: '0.2rem 0.5rem',
-                      fontSize: '0.85rem',
-                      cursor: 'pointer',
-                      minWidth: '2rem',
-                      textAlign: 'center',
-                      fontFamily: "'Cambria Math', 'Latin Modern Math', serif",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.5)';
-                      e.currentTarget.style.color = 'var(--ax-text)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderColor = 'var(--ax-border)';
-                      e.currentTarget.style.color = 'var(--ax-text-secondary)';
-                    }}
-                  >
-                    {sym}
-                  </button>
-                ))}
-              </div>
-
-              {/* Answer input + Submit */}
-              <div style={{ display: 'flex', gap: '0.5rem' }}>
-                <input
-                  ref={inputRef}
-                  type="text"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={handleInputKeyDown}
-                  placeholder="Type your answer…"
-                  className="flex-1 text-sm rounded-lg px-3 py-2 outline-none"
-                  style={{
-                    background: 'var(--ax-elevated)',
-                    border: '1px solid var(--ax-border)',
-                    color: 'var(--ax-text)',
-                  }}
-                />
-                <button
-                  onClick={submitAnswer}
-                  disabled={!input.trim()}
-                  className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                  style={{
-                    background: !input.trim() ? 'rgba(139, 92, 246, 0.1)' : '#8B5CF6',
-                    color: !input.trim() ? 'var(--ax-text-muted)' : '#fff',
-                    cursor: !input.trim() ? 'not-allowed' : 'pointer',
-                    border: 'none',
-                  }}
-                >
-                  Submit
-                </button>
-              </div>
-
-              {/* Attempt indicator */}
-              <div
-                className="mt-3 text-xs"
-                style={{ color: 'var(--ax-text-muted)' }}
-              >
-                Attempt {attemptCount + 1} of 2
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* Wrong on attempt 1 feedback */}
-        {showFeedbackWrong1 && (
-          <div
-            style={{
-              background: 'var(--ax-surface)',
-              border: '1px solid rgba(248, 113, 113, 0.3)',
-              borderRadius: 'var(--ax-card-radius)',
-              padding: '1.25rem 1.5rem',
-              marginBottom: '1rem',
-            }}
-          >
-            <p className="text-sm mb-3" style={{ color: '#f87171' }}>
-              ❌ Not quite. You have one more try.
-            </p>
-            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-              <button
-                onClick={openChat}
-                className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                style={{
-                  background: 'rgba(139, 92, 246, 0.15)',
-                  border: '1px solid rgba(139, 92, 246, 0.4)',
-                  color: 'var(--ax-text)',
-                  cursor: 'pointer',
-                }}
-              >
-                💬 Chat with AI Tutor
-              </button>
-              <button
-                onClick={tryAgain}
-                className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                style={{
-                  background: 'var(--ax-elevated)',
-                  border: '1px solid var(--ax-border)',
-                  color: 'var(--ax-text-secondary)',
-                  cursor: 'pointer',
-                }}
-              >
-                Try Again
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* AI Chat Panel */}
-        {showChat && (
+          {/* ─── LEFT: Problem Card ─── */}
           <div
             style={{
               background: 'var(--ax-surface)',
               border: '1px solid var(--ax-border)',
               borderRadius: 'var(--ax-card-radius)',
-              marginBottom: '1rem',
-              display: 'flex',
-              flexDirection: 'column',
-              maxHeight: '400px',
+              padding: '2rem',
+              alignSelf: 'start',
             }}
           >
-            {/* Chat header */}
+            {/* Section badge */}
             <div
-              style={{
-                padding: '0.75rem 1rem',
-                borderBottom: '1px solid var(--ax-border)',
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}
+              className="text-xs font-semibold uppercase tracking-wider mb-4"
+              style={{ color: '#8B5CF6' }}
             >
-              <span className="text-sm font-medium" style={{ color: 'var(--ax-text)' }}>
-                🤖 AI Tutor Chat
-              </span>
-              <span className="text-xs" style={{ color: 'var(--ax-text-muted)' }}>
-                7/day limit
-              </span>
+              {topicMeta.badge}
             </div>
 
-            {/* Messages */}
-            <div
-              ref={chatContainerRef}
-              style={{ flex: 1, overflowY: 'auto', padding: '1rem' }}
+            {/* Question */}
+            <p
+              className="text-lg leading-relaxed"
+              style={{ color: 'var(--ax-text)', fontFamily: "'Georgia', serif" }}
             >
-              {chatMessages.length === 0 && !rateLimited && (
-                <div
-                  className="text-sm text-center"
-                  style={{ color: 'var(--ax-text-muted)', padding: '2rem 0' }}
-                >
-                  Ask the AI tutor for a hint or explain your thinking.
-                </div>
-              )}
+              {renderMathText(problem.questionText)}
+            </p>
+          </div>
 
-              {chatMessages.map((msg, i) => (
+          {/* ─── RIGHT: Interaction Area ─── */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+
+            {/* ── Input area (idle & wrong1) ── */}
+            {showInput && (
+              <div
+                style={{
+                  background: 'var(--ax-surface)',
+                  border: '1px solid var(--ax-border)',
+                  borderRadius: 'var(--ax-card-radius)',
+                  padding: '1.5rem',
+                }}
+              >
+                {/* Hint box (only after first wrong attempt) */}
+                {showHint && (
+                  <div
+                    style={{
+                      borderLeft: '2px solid #f59e0b',
+                      background: 'rgba(245, 158, 11, 0.06)',
+                      padding: '0.75rem 1rem',
+                      borderRadius: '0 8px 8px 0',
+                      marginBottom: '1rem',
+                    }}
+                  >
+                    <p className="text-sm font-medium mb-1" style={{ color: '#f59e0b' }}>
+                      ❌ Not quite — here's a hint:
+                    </p>
+                    <p className="text-sm" style={{ color: 'var(--ax-text-secondary)' }}>
+                      {renderMathText(problem.hint)}
+                    </p>
+                  </div>
+                )}
+
+                {/* Symbol toolbar */}
                 <div
-                  key={i}
                   style={{
                     display: 'flex',
-                    justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start',
+                    flexWrap: 'wrap',
+                    gap: '0.25rem',
                     marginBottom: '0.75rem',
                   }}
                 >
-                  <div
-                    style={{
-                      maxWidth: '80%',
-                      padding: '0.75rem 1rem',
-                      borderRadius: '12px',
-                      fontSize: '0.9rem',
-                      lineHeight: '1.5',
-                      background:
-                        msg.role === 'user'
-                          ? 'rgba(139, 92, 246, 0.2)'
-                          : 'var(--ax-elevated)',
-                      border:
-                        msg.role === 'user'
-                          ? '1px solid rgba(139, 92, 246, 0.35)'
-                          : '1px solid var(--ax-border)',
-                      color: 'var(--ax-text)',
-                      borderBottomRightRadius: msg.role === 'user' ? '4px' : '12px',
-                      borderBottomLeftRadius: msg.role === 'assistant' ? '4px' : '12px',
-                    }}
-                  >
-                    {renderMathText(msg.content)}
-                  </div>
+                  {SYMBOLS.map((sym) => (
+                    <button
+                      key={sym}
+                      type="button"
+                      onClick={() => {
+                        setInput((prev) => prev + sym);
+                        inputRef.current?.focus();
+                      }}
+                      className="transition-all"
+                      style={{
+                        background: 'var(--ax-elevated)',
+                        border: '1px solid var(--ax-border)',
+                        borderRadius: '6px',
+                        color: 'var(--ax-text-secondary)',
+                        padding: '0.2rem 0.5rem',
+                        fontSize: '0.85rem',
+                        cursor: 'pointer',
+                        minWidth: '2rem',
+                        textAlign: 'center',
+                        fontFamily: "'Cambria Math', 'Latin Modern Math', serif",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.5)';
+                        e.currentTarget.style.color = 'var(--ax-text)';
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.borderColor = 'var(--ax-border)';
+                        e.currentTarget.style.color = 'var(--ax-text-secondary)';
+                      }}
+                    >
+                      {sym}
+                    </button>
+                  ))}
                 </div>
-              ))}
 
-              {chatLoading && (
-                <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '0.75rem' }}>
-                  <div
+                {/* Answer input + Submit */}
+                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={handleInputKeyDown}
+                    placeholder="Type your answer…"
+                    className="flex-1 text-sm rounded-lg px-3 py-2 outline-none"
                     style={{
-                      padding: '0.75rem 1rem',
-                      borderRadius: '12px',
-                      borderBottomLeftRadius: '4px',
                       background: 'var(--ax-elevated)',
                       border: '1px solid var(--ax-border)',
-                      color: 'var(--ax-text-muted)',
-                      fontSize: '0.9rem',
+                      color: 'var(--ax-text)',
+                    }}
+                  />
+                  <button
+                    onClick={submitAnswer}
+                    disabled={!input.trim()}
+                    className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                    style={{
+                      background: !input.trim() ? 'rgba(139, 92, 246, 0.1)' : '#8B5CF6',
+                      color: !input.trim() ? 'var(--ax-text-muted)' : '#fff',
+                      cursor: !input.trim() ? 'not-allowed' : 'pointer',
+                      border: 'none',
                     }}
                   >
-                    <span className="tutor-dots">
-                      <span>•</span><span>•</span><span>•</span>
-                    </span>
-                  </div>
+                    Submit
+                  </button>
                 </div>
-              )}
 
-              {rateLimited && (
+                {/* Attempt indicator */}
+                <div
+                  className="mt-3 text-xs"
+                  style={{ color: 'var(--ax-text-muted)' }}
+                >
+                  Attempt {currentAttempt} of 2
+                </div>
+              </div>
+            )}
+
+            {/* ── Solution panel (wrong2, correct, chatOpen) ── */}
+            {showSolution && (
+              <div
+                style={{
+                  background: 'var(--ax-surface)',
+                  border: `1px solid ${isCorrect ? 'rgba(52, 211, 153, 0.3)' : 'rgba(248, 113, 113, 0.3)'}`,
+                  borderRadius: 'var(--ax-card-radius)',
+                  padding: '1.5rem 2rem',
+                }}
+              >
+                {/* Result header */}
+                <div className="mb-4">
+                  {isCorrect ? (
+                    <p className="text-lg font-semibold" style={{ color: '#34d399' }}>
+                      ✅ Correct!
+                    </p>
+                  ) : (
+                    <p className="text-lg font-semibold" style={{ color: '#f87171' }}>
+                      ❌ Let&apos;s work through this.
+                    </p>
+                  )}
+                </div>
+
+                {/* Step-by-step solution */}
                 <div
                   style={{
-                    textAlign: 'center',
-                    padding: '1rem',
-                    color: 'var(--ax-text-secondary)',
-                    fontSize: '0.9rem',
+                    borderLeft: '2px solid var(--ax-accent, #06b6d4)',
+                    paddingLeft: '1rem',
+                    marginBottom: '1.25rem',
                   }}
                 >
-                  <p style={{ marginBottom: '0.5rem' }}>
-                    You've reached today's demo limit!
+                  <p
+                    className="text-xs font-semibold uppercase tracking-wider mb-2"
+                    style={{ color: 'var(--ax-accent, #06b6d4)' }}
+                  >
+                    🧠 Step-by-Step Solution
                   </p>
-                  <a href="mailto:contact@onyxenterprises.org" style={{ color: '#8B5CF6', textDecoration: 'underline' }}>
-                    Sign up to get unlimited access →
-                  </a>
+                  {problem.solution.split('\n').map((line, i) => (
+                    <p
+                      key={i}
+                      className="text-sm leading-relaxed mb-1"
+                      style={{ color: 'var(--ax-text-secondary)' }}
+                    >
+                      {renderMathText(line)}
+                    </p>
+                  ))}
                 </div>
-              )}
-            </div>
 
-            {/* Chat input */}
-            <div
-              style={{
-                padding: '0.75rem 1rem',
-                borderTop: '1px solid var(--ax-border)',
-                display: 'flex',
-                gap: '0.5rem',
-              }}
-            >
-              <input
-                ref={chatInputRef}
-                type="text"
-                value={chatInput}
-                onChange={(e) => setChatInput(e.target.value)}
-                onKeyDown={handleChatKeyDown}
-                placeholder={rateLimited ? 'Demo limit reached' : 'Ask for a hint…'}
-                disabled={chatLoading || rateLimited}
-                className="flex-1 text-sm rounded-lg px-3 py-2 outline-none"
-                style={{
-                  background: 'var(--ax-elevated)',
-                  border: '1px solid var(--ax-border)',
-                  color: 'var(--ax-text)',
-                }}
-              />
-              <button
-                onClick={sendChat}
-                disabled={chatLoading || !chatInput.trim() || rateLimited}
-                className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                style={{
-                  background:
-                    chatLoading || !chatInput.trim() || rateLimited
-                      ? 'rgba(139, 92, 246, 0.1)'
-                      : '#8B5CF6',
-                  color:
-                    chatLoading || !chatInput.trim() || rateLimited
-                      ? 'var(--ax-text-muted)'
-                      : '#fff',
-                  cursor:
-                    chatLoading || !chatInput.trim() || rateLimited
-                      ? 'not-allowed'
-                      : 'pointer',
-                  border: 'none',
-                }}
-              >
-                Send
-              </button>
-            </div>
-
-            {/* Submit attempt 2 while chatting */}
-            <div
-              style={{
-                padding: '0.75rem 1rem',
-                borderTop: '1px solid var(--ax-border)',
-                display: 'flex',
-                gap: '0.5rem',
-                alignItems: 'center',
-              }}
-            >
-              <span className="text-xs" style={{ color: 'var(--ax-text-muted)', whiteSpace: 'nowrap' }}>
-                Attempt 2:
-              </span>
-              <input
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleInputKeyDown}
-                placeholder="Submit your final answer…"
-                className="flex-1 text-sm rounded-lg px-3 py-2 outline-none"
-                style={{
-                  background: 'var(--ax-elevated)',
-                  border: '1px solid var(--ax-border)',
-                  color: 'var(--ax-text)',
-                }}
-              />
-              <button
-                onClick={submitAnswer}
-                disabled={!input.trim()}
-                className="px-3 py-2 rounded-lg text-sm font-medium transition-all"
-                style={{
-                  background: !input.trim() ? 'rgba(139, 92, 246, 0.1)' : '#8B5CF6',
-                  color: !input.trim() ? 'var(--ax-text-muted)' : '#fff',
-                  cursor: !input.trim() ? 'not-allowed' : 'pointer',
-                  border: 'none',
-                }}
-              >
-                Submit
-              </button>
-            </div>
-          </div>
-        )}
-
-        {/* Solution Reveal */}
-        {showSolution && (
-          <div
-            style={{
-              background: 'var(--ax-surface)',
-              border: `1px solid ${isCorrect ? 'rgba(52, 211, 153, 0.3)' : 'rgba(248, 113, 113, 0.3)'}`,
-              borderRadius: 'var(--ax-card-radius)',
-              padding: '1.5rem 2rem',
-              marginBottom: '1rem',
-            }}
-          >
-            {/* Result header */}
-            <div className="mb-4">
-              {isCorrect ? (
-                <p className="text-lg font-semibold" style={{ color: '#34d399' }}>
-                  🎉 Correct!
-                </p>
-              ) : (
-                <p className="text-lg font-semibold" style={{ color: '#f87171' }}>
-                  Not quite — here's the solution:
-                </p>
-              )}
-            </div>
-
-            {/* Step-by-step solution */}
-            <div
-              style={{
-                borderLeft: '2px solid #8B5CF6',
-                paddingLeft: '1rem',
-                marginBottom: '1.25rem',
-              }}
-            >
-              <p
-                className="text-xs font-semibold uppercase tracking-wider mb-2"
-                style={{ color: '#8B5CF6' }}
-              >
-                🧠 Step-by-Step Solution
-              </p>
-              {problem.solution.split('\n').map((line, i) => (
-                <p
-                  key={i}
-                  className="text-sm leading-relaxed mb-1"
-                  style={{ color: 'var(--ax-text-secondary)' }}
+                {/* Correct answer */}
+                <div
+                  className="text-sm font-medium mb-4"
+                  style={{ color: '#34d399' }}
                 >
-                  {renderMathText(line)}
-                </p>
-              ))}
-            </div>
+                  ✅ Correct Answer: {renderMathText(`\`${problem.correctAnswer}\``)}
+                </div>
 
-            {/* Correct answer */}
-            <div
-              className="text-sm font-medium mb-4"
-              style={{ color: '#34d399' }}
-            >
-              ✅ Correct Answer: {renderMathText(`\`${problem.correctAnswer}\``)}
-            </div>
+                {/* Action buttons */}
+                <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+                  <button
+                    onClick={tryAnother}
+                    className="px-5 py-2.5 rounded-lg text-sm font-medium transition-all"
+                    style={{
+                      background: '#8B5CF6',
+                      color: '#fff',
+                      border: 'none',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Try Another Problem →
+                  </button>
 
-            {/* Try another */}
-            <button
-              onClick={tryAnother}
-              className="px-5 py-2.5 rounded-lg text-sm font-medium transition-all"
-              style={{
-                background: '#8B5CF6',
-                color: '#fff',
-                border: 'none',
-                cursor: 'pointer',
-              }}
-            >
-              Try Another Problem →
-            </button>
+                  {showChatButton && (
+                    <button
+                      onClick={openChat}
+                      className="px-5 py-2.5 rounded-lg text-sm font-medium transition-all"
+                      style={{
+                        background: 'rgba(139, 92, 246, 0.15)',
+                        border: '1px solid rgba(139, 92, 246, 0.4)',
+                        color: 'var(--ax-text)',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      💬 Still have questions? Chat with AI Tutor
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* ── Chat panel (only from wrong2 → chatOpen) ── */}
+            {showChat && (
+              <div
+                style={{
+                  background: 'var(--ax-surface)',
+                  border: '1px solid var(--ax-border)',
+                  borderRadius: 'var(--ax-card-radius)',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  maxHeight: '400px',
+                }}
+              >
+                {/* Chat header */}
+                <div
+                  style={{
+                    padding: '0.75rem 1rem',
+                    borderBottom: '1px solid var(--ax-border)',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
+                  <span className="text-sm font-medium" style={{ color: 'var(--ax-text)' }}>
+                    🤖 AI Tutor Chat
+                  </span>
+                  <span className="text-xs" style={{ color: 'var(--ax-text-muted)' }}>
+                    7/day limit
+                  </span>
+                </div>
+
+                {/* Chat input (on top) */}
+                <div
+                  style={{
+                    padding: '0.75rem 1rem',
+                    borderBottom: '1px solid var(--ax-border)',
+                    display: 'flex',
+                    gap: '0.5rem',
+                  }}
+                >
+                  <input
+                    ref={chatInputRef}
+                    type="text"
+                    value={chatInput}
+                    onChange={(e) => setChatInput(e.target.value)}
+                    onKeyDown={handleChatKeyDown}
+                    placeholder={rateLimited ? 'Demo limit reached' : 'Ask for help…'}
+                    disabled={chatLoading || rateLimited}
+                    className="flex-1 text-sm rounded-lg px-3 py-2 outline-none"
+                    style={{
+                      background: 'var(--ax-elevated)',
+                      border: '1px solid var(--ax-border)',
+                      color: 'var(--ax-text)',
+                    }}
+                  />
+                  <button
+                    onClick={sendChat}
+                    disabled={chatLoading || !chatInput.trim() || rateLimited}
+                    className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                    style={{
+                      background:
+                        chatLoading || !chatInput.trim() || rateLimited
+                          ? 'rgba(139, 92, 246, 0.1)'
+                          : '#8B5CF6',
+                      color:
+                        chatLoading || !chatInput.trim() || rateLimited
+                          ? 'var(--ax-text-muted)'
+                          : '#fff',
+                      cursor:
+                        chatLoading || !chatInput.trim() || rateLimited
+                          ? 'not-allowed'
+                          : 'pointer',
+                      border: 'none',
+                    }}
+                  >
+                    Send
+                  </button>
+                </div>
+
+                {/* Messages */}
+                <div
+                  ref={chatContainerRef}
+                  style={{ flex: 1, overflowY: 'auto', padding: '1rem' }}
+                >
+                  {chatMessages.length === 0 && !rateLimited && (
+                    <div
+                      className="text-sm text-center"
+                      style={{ color: 'var(--ax-text-muted)', padding: '2rem 0' }}
+                    >
+                      Ask the AI tutor to explain any step or clarify your confusion.
+                    </div>
+                  )}
+
+                  {chatMessages.map((msg, i) => (
+                    <div
+                      key={i}
+                      style={{
+                        display: 'flex',
+                        justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start',
+                        marginBottom: '0.75rem',
+                      }}
+                    >
+                      <div
+                        style={{
+                          maxWidth: '80%',
+                          padding: '0.75rem 1rem',
+                          borderRadius: '12px',
+                          fontSize: '0.9rem',
+                          lineHeight: '1.5',
+                          background:
+                            msg.role === 'user'
+                              ? 'rgba(139, 92, 246, 0.2)'
+                              : 'var(--ax-elevated)',
+                          border:
+                            msg.role === 'user'
+                              ? '1px solid rgba(139, 92, 246, 0.35)'
+                              : '1px solid var(--ax-border)',
+                          color: 'var(--ax-text)',
+                          borderBottomRightRadius: msg.role === 'user' ? '4px' : '12px',
+                          borderBottomLeftRadius: msg.role === 'assistant' ? '4px' : '12px',
+                        }}
+                      >
+                        {renderMathText(msg.content)}
+                      </div>
+                    </div>
+                  ))}
+
+                  {chatLoading && (
+                    <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '0.75rem' }}>
+                      <div
+                        style={{
+                          padding: '0.75rem 1rem',
+                          borderRadius: '12px',
+                          borderBottomLeftRadius: '4px',
+                          background: 'var(--ax-elevated)',
+                          border: '1px solid var(--ax-border)',
+                          color: 'var(--ax-text-muted)',
+                          fontSize: '0.9rem',
+                        }}
+                      >
+                        <span className="tutor-dots">
+                          <span>•</span><span>•</span><span>•</span>
+                        </span>
+                      </div>
+                    </div>
+                  )}
+
+                  {rateLimited && (
+                    <div
+                      style={{
+                        textAlign: 'center',
+                        padding: '1rem',
+                        color: 'var(--ax-text-secondary)',
+                        fontSize: '0.9rem',
+                      }}
+                    >
+                      <p style={{ marginBottom: '0.5rem' }}>
+                        You&apos;ve reached today&apos;s demo limit!
+                      </p>
+                      <a href="mailto:contact@onyxenterprises.org" style={{ color: '#8B5CF6', textDecoration: 'underline' }}>
+                        Sign up to get unlimited access →
+                      </a>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
 
-      {/* Loading dots animation */}
+      {/* Loading dots animation + grid media query */}
       <style>{`
         .tutor-dots span {
           animation: tutorBounce 1.4s ease-in-out infinite;
@@ -1003,6 +953,11 @@ export function TutorDemo() {
         @keyframes tutorBounce {
           0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
           30% { transform: translateY(-4px); opacity: 1; }
+        }
+        @media (min-width: 1024px) {
+          .lg\\:grid-cols-\\[380px_1fr\\] {
+            grid-template-columns: 380px 1fr;
+          }
         }
       `}</style>
     </section>
