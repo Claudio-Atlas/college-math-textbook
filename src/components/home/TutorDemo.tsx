@@ -228,6 +228,9 @@ function generateProblem(topic: Topic, seed: number): GeneratedProblem {
 function evaluateExpression(expr: string, x: number): number | null {
   let s = expr.replace(/\s+/g, '');
   s = s.replace(/−/g, '-');
+  // Convert Unicode superscripts to caret notation
+  s = s.replace(/²/g, '^2').replace(/³/g, '^3').replace(/⁴/g, '^4').replace(/⁵/g, '^5')
+       .replace(/⁶/g, '^6').replace(/⁷/g, '^7').replace(/⁸/g, '^8').replace(/⁹/g, '^9');
 
   const terms: string[] = [];
   let current = '';
@@ -400,10 +403,60 @@ export function TutorDemo() {
     }
   }, [input, state, problem, attemptCount]);
 
-  const openChat = useCallback(() => {
+  const openChat = useCallback(async () => {
     setState('chatOpen');
-    setTimeout(() => chatInputRef.current?.focus(), 100);
-  }, []);
+
+    // Auto-send a contextual first message
+    const autoMsg: ChatMessage = {
+      role: 'user',
+      content: "I've seen the solution but I'm still confused about the approach. Can you walk me through the thinking?",
+    };
+    setChatMessages([autoMsg]);
+    setChatLoading(true);
+
+    try {
+      const contextPrefix = `[Problem context: The problem is: ${problem.questionText.replace(/`/g, '')}. The correct answer is ${problem.correctAnswer}. Solution: ${problem.solution}. Hint: ${problem.hint}]`;
+
+      const body = {
+        problem_id: 'eval-f-neg2',
+        student_answer: `${contextPrefix}\n\nStudent's message: ${autoMsg.content}`,
+        history: [],
+      };
+
+      const res = await fetch('/api/tutor', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body),
+      });
+
+      if (res.status === 429) {
+        setRateLimited(true);
+        setChatLoading(false);
+        return;
+      }
+
+      const data = await res.json();
+      if (data.error) {
+        setChatMessages((prev) => [
+          ...prev,
+          { role: 'assistant', content: 'Something went wrong — please try again.' },
+        ]);
+      } else {
+        setChatMessages((prev) => [
+          ...prev,
+          { role: 'assistant', content: data.response },
+        ]);
+      }
+    } catch {
+      setChatMessages((prev) => [
+        ...prev,
+        { role: 'assistant', content: 'Network error — please try again.' },
+      ]);
+    } finally {
+      setChatLoading(false);
+      setTimeout(() => chatInputRef.current?.focus(), 100);
+    }
+  }, [problem]);
 
   const sendChat = useCallback(async () => {
     const text = chatInput.trim();
