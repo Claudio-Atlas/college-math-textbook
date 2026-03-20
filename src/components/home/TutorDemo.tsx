@@ -739,7 +739,8 @@ export function TutorDemo() {
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'center',
-                        boxShadow: '0 0 12px rgba(139, 92, 246, 0.15), inset 0 0 0 1px rgba(139, 92, 246, 0.1)',
+                        borderColor: 'rgba(139, 92, 246, 0.5)',
+                        boxShadow: '0 0 20px rgba(139, 92, 246, 0.35), 0 0 6px rgba(139, 92, 246, 0.25)',
                       }}
                     >
                       <span style={{ fontSize: '0.55rem', color: 'var(--ax-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.25rem' }}>Preview</span>
