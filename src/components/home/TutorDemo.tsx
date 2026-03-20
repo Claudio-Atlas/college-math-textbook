@@ -335,6 +335,22 @@ const TOPICS: { key: Topic; label: string; badge: string }[] = [
 const SYMBOLS = ['^', '/', '√', 'π', '∞', '±', '≥', '≤', '≠', '(', ')', '[', ']'];
 const SYMBOL_LABELS: Record<string, string> = { '^': 'xⁿ', '/': 'a/b' };
 
+// Live preview: convert typed math to pretty display
+function prettyMath(raw: string): string {
+  let s = raw;
+  // Superscripts: x^3 → x³, x^12 → x¹²
+  const superMap: Record<string, string> = { '0':'⁰','1':'¹','2':'²','3':'³','4':'⁴','5':'⁵','6':'⁶','7':'⁷','8':'⁸','9':'⁹','-':'⁻' };
+  s = s.replace(/\^(\d+)/g, (_, digits: string) => digits.split('').map((d: string) => superMap[d] || d).join(''));
+  s = s.replace(/\^([a-z])/g, (_, v: string) => { const m: Record<string,string> = { n:'ⁿ' }; return m[v] || `^${v}`; });
+  // sqrt → √
+  s = s.replace(/sqrt\(/g, '√(');
+  // pi → π
+  s = s.replace(/\bpi\b/g, 'π');
+  // inf → ∞
+  s = s.replace(/\binf(inity)?\b/g, '∞');
+  return s;
+}
+
 // ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
@@ -695,8 +711,8 @@ export function TutorDemo() {
                   ))}
                 </div>
 
-                {/* Answer input + Submit */}
-                <div style={{ display: 'flex', gap: '0.5rem' }}>
+                {/* Answer input + Preview + Submit */}
+                <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'stretch' }}>
                   <input
                     ref={inputRef}
                     type="text"
@@ -711,6 +727,28 @@ export function TutorDemo() {
                       color: 'var(--ax-text)',
                     }}
                   />
+                  {/* Live preview */}
+                  {input.trim() && (
+                    <div
+                      style={{
+                        minWidth: '80px',
+                        maxWidth: '180px',
+                        padding: '0.4rem 0.75rem',
+                        borderRadius: '8px',
+                        background: 'var(--ax-surface)',
+                        border: '1px solid var(--ax-border)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        overflow: 'hidden',
+                      }}
+                    >
+                      <span style={{ fontSize: '0.6rem', color: 'var(--ax-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Preview</span>
+                      <span style={{ fontSize: '0.95rem', color: 'var(--ax-text)', fontFamily: "'Cambria Math', 'Latin Modern Math', Georgia, serif", whiteSpace: 'nowrap' }}>
+                        {prettyMath(input)}
+                      </span>
+                    </div>
+                  )}
                   <button
                     onClick={submitAnswer}
                     disabled={!input.trim()}
