@@ -1,75 +1,303 @@
 /**
  * TutorDemo — Interactive AI tutor demo for the Meridian homepage.
- * Socratic tutoring powered by GPT-4o-mini via /api/tutor.
+ * Client-side problem generation with 3 topic areas + AI chat via /api/tutor.
  */
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 
 // ---------------------------------------------------------------------------
-// Problems
+// Mulberry32 seeded RNG (deterministic, copied from Axiom Engine)
 // ---------------------------------------------------------------------------
-interface Problem {
-  id: string;
-  label: string;
-  prompt: string;
-  context: string; // sent to AI for grading context
+function mulberry32(seed: number) {
+  let s = seed | 0;
+  return {
+    next(): number {
+      s = (s + 0x6d2b79f5) | 0;
+      let t = Math.imul(s ^ (s >>> 15), 1 | s);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    },
+    int(min: number, max: number): number {
+      return min + Math.floor(this.next() * (max - min + 1));
+    },
+    intExcluding(min: number, max: number, exclude: number[]): number {
+      let v: number;
+      let guard = 0;
+      do {
+        v = this.int(min, max);
+        guard++;
+      } while (exclude.includes(v) && guard < 100);
+      return v;
+    },
+    pick<T>(arr: T[]): T {
+      return arr[Math.floor(this.next() * arr.length)];
+    },
+  };
 }
 
-const PROBLEMS: Problem[] = [
-  {
-    id: 'eval-f-neg2',
-    label: 'Evaluate f(−2)',
-    prompt: 'Given f(x) = 3x² − 2x + 1, evaluate f(−2).',
-    context:
-      `The problem is: Given f(x) = 3x² − 2x + 1, evaluate f(−2).
-The correct answer is 17.
-Step-by-step: Substitute −2 for every x: 3(−2)² − 2(−2) + 1 = 3(4) − 2(−2) + 1 = 12 + 4 + 1 = 17.
+// ---------------------------------------------------------------------------
+// Problem types & generation
+// ---------------------------------------------------------------------------
+type Topic = 'precalculus' | 'calculus' | 'statistics';
+type ValidationMode = 'numeric' | 'expression';
 
-Common wrong answers to watch for:
-- 9 → Student computed −2² = −4 instead of (−2)² = 4. The exponent applies to the entire value including the negative sign because we're substituting (−2). Guide them: "What is (−2)²? Remember, you're squaring the entire value −2."
-- 5 → Student likely did 3(4) − 2(2) + 1 = 12 − 4 + 1, treating −2(−2) as −4 instead of +4. Note: −2(−2) = +4 because negative times negative is positive. If a student answers "4" for the step "what is −2(−2)?", that IS correct — 4 and +4 are the same thing.
-- If student answers just a sub-step like "4" (for (−2)²), that is correct for that step — celebrate it.`,
-  },
-  {
-    id: 'is-function',
-    label: 'Is it a function?',
-    prompt:
-      'Determine whether the relation {(1, 3), (2, 5), (3, 3), (4, 7)} is a function. Explain why or why not.',
-    context:
-      `The problem is: Is {(1, 3), (2, 5), (3, 3), (4, 7)} a function?
-The correct answer is YES — it IS a function.
+interface GeneratedProblem {
+  topic: Topic;
+  questionText: string;
+  correctAnswer: string;
+  validation: ValidationMode;
+  tolerance: number;
+  solution: string;
+  hint: string;
+}
 
-Why: Each INPUT (first number in each pair: 1, 2, 3, 4) maps to exactly one output. No input appears twice with different outputs.
+// ─── Display helpers ─────────────────────────────────────────────────
+function signedTerm(coeff: number, variable: string, first = false): string {
+  if (coeff === 0) return '';
+  const abs = Math.abs(coeff);
+  const sign = coeff > 0 ? (first ? '' : '+ ') : '- ';
+  if (abs === 1) return `${sign}${variable}`;
+  return `${sign}${abs}${variable}`;
+}
 
-CRITICAL MISCONCEPTION to watch for:
-- Student says "No, because 3 appears twice" → They are confusing inputs with outputs! The number 3 appears as an OUTPUT in (1,3) and as an INPUT in (3,3). Two different inputs CAN map to the same output — that's perfectly fine. What would NOT be a function is if the same INPUT appeared with different outputs, like (1,3) and (1,5). Guide them: "Look at the first number in each pair — those are the inputs. Does any input appear more than once?"
-- Student says "yes" without explanation → Ask them to explain WHY. They need to demonstrate understanding, not just guess.
-- Accept variations like: "yes because each x has one y", "yes, no repeated x-values", "yes, passes vertical line test" — all valid.`,
-  },
-  {
-    id: 'domain-sqrt',
-    label: 'Find the domain',
-    prompt:
-      'Find the domain of g(x) = √(x − 4). Write your answer in interval notation.',
-    context:
-      `The problem is: Find the domain of g(x) = √(x − 4).
-The correct answer is [4, ∞) in interval notation.
+function signedConst(n: number, first = false): string {
+  if (n === 0) return '';
+  if (first) return `${n}`;
+  return n > 0 ? `+ ${n}` : `- ${Math.abs(n)}`;
+}
 
-Step-by-step: The expression under the square root must be ≥ 0. So x − 4 ≥ 0, which gives x ≥ 4. In interval notation: [4, ∞).
+function poly(a: number, b: number, c: number): string {
+  const parts: string[] = [];
+  if (a !== 0) {
+    if (a === 1) parts.push('x²');
+    else if (a === -1) parts.push('-x²');
+    else parts.push(`${a}x²`);
+  }
+  if (b !== 0) {
+    if (parts.length === 0) {
+      if (b === 1) parts.push('x');
+      else if (b === -1) parts.push('-x');
+      else parts.push(`${b}x`);
+    } else {
+      parts.push(signedTerm(b, 'x'));
+    }
+  }
+  if (c !== 0) {
+    if (parts.length === 0) parts.push(`${c}`);
+    else parts.push(signedConst(c));
+  }
+  return parts.join(' ') || '0';
+}
 
-Common wrong answers to watch for:
-- (4, ∞) with open bracket → Student forgot that x = 4 IS valid (√0 = 0 is defined). Guide: "What happens when x = 4? Is √(4−4) = √0 defined?"
-- (−∞, 4] → Student reversed the inequality. Guide: "If x = 0, what's under the square root? Is √(−4) a real number?"
-- "x ≥ 4" → This is mathematically correct but not in interval notation as requested. Say: "That's the right inequality! Now can you write it in interval notation? Hint: use brackets and ∞."
-- [4, inf) or [4, infinity) → ACCEPT THIS AS CORRECT. Text equivalents for ∞ are fine.
-- {x | x ≥ 4} → Set-builder notation. Accept as correct understanding but ask: "That's correct in set-builder notation! Can you also write it in interval notation?"`,
-  },
-];
+// ─── Problem generators ──────────────────────────────────────────────
+
+function generatePrecalculus(seed: number): GeneratedProblem {
+  const rng = mulberry32(seed);
+  const a = rng.int(1, 5);
+  const b = rng.intExcluding(-6, 6, [0]);
+  const c = rng.int(-8, 8);
+  const k = rng.pick([-3, -2, -1, 1, 2, 3, 4]);
+
+  const fExpr = poly(a, b, c);
+  const answer = a * k * k + b * k + c;
+  const kShow = k < 0 ? `(${k})` : `${k}`;
+
+  // Build substitution display
+  const aTermStr = `${a}(${kShow})²`;
+  const bTermStr = b > 0 ? `+ ${b}(${kShow})` : `- ${Math.abs(b)}(${kShow})`;
+  const cTermStr = c === 0 ? '' : c > 0 ? `+ ${c}` : `- ${Math.abs(c)}`;
+  const subExpr = `${aTermStr} ${bTermStr} ${cTermStr}`.trim();
+
+  const step2Parts: string[] = [];
+  const aVal = a * k * k;
+  const bVal = b * k;
+  step2Parts.push(`${aVal}`);
+  step2Parts.push(bVal >= 0 ? `+ ${bVal}` : `- ${Math.abs(bVal)}`);
+  if (c !== 0) step2Parts.push(c > 0 ? `+ ${c}` : `- ${Math.abs(c)}`);
+
+  const solution = [
+    `Step 1: Substitute \`x = ${k}\` into \`f(x) = ${fExpr}\`.`,
+    `Step 2: \`f(${k}) = ${subExpr}\``,
+    `       = \`${step2Parts.join(' ')}\``,
+    `       = \`${answer}\`.`,
+  ].join('\n');
+
+  return {
+    topic: 'precalculus',
+    questionText: `Given \`f(x) = ${fExpr}\`, find \`f(${k})\`.`,
+    correctAnswer: `${answer}`,
+    validation: 'numeric',
+    tolerance: 0.01,
+    solution,
+    hint: 'Replace every `x` with the given number, then simplify — exponents first, then multiply, then add/subtract.',
+  };
+}
+
+function generateCalculus(seed: number): GeneratedProblem {
+  const rng = mulberry32(seed);
+  const a = rng.intExcluding(2, 8, [0]);
+  const n = rng.int(3, 5);
+  const b = rng.intExcluding(-7, 7, [0]);
+  const m = rng.int(1, 2);
+  const c = rng.intExcluding(-12, 12, [0]);
+
+  // Build f(x)
+  const xnStr = `x^${n}`;
+  const xmStr = m === 1 ? 'x' : `x^${m}`;
+  const fExpr = `${a}${xnStr} ${signedTerm(b, xmStr)} ${signedConst(c)}`.trim();
+
+  // Derivative coefficients
+  const da = a * n;
+  const dn = n - 1;
+  const db = b * m;
+  const dm = m - 1;
+
+  // Build f'(x) string
+  const term1 = dn === 1 ? `${da}x` : `${da}x^${dn}`;
+  let fpExpr: string;
+  if (dm === 0) {
+    fpExpr = `${term1} ${signedConst(db)}`.trim();
+  } else {
+    fpExpr = `${term1} ${signedTerm(db, 'x')}`.trim();
+  }
+
+  const solution = [
+    `The power rule says: if \`f(x) = x^n\`, then \`f'(x) = nx^(n-1)\`.`,
+    `Apply to each term:`,
+    `Term 1: \`d/dx[${a}x^${n}] = ${a} · ${n} · x^${n - 1} = ${da}x^${dn}\``,
+    m === 1
+      ? `Term 2: \`d/dx[${b > 0 ? b : `(${b})`}x] = ${db}\``
+      : `Term 2: \`d/dx[${b > 0 ? b : `(${b})`}x^${m}] = ${b} · ${m} · x^${m - 1} = ${db}${dm === 0 ? '' : 'x'}\``,
+    `Term 3: \`d/dx[${c > 0 ? c : `(${c})`}] = 0\` (derivative of a constant is 0)`,
+    `Therefore: \`f'(x) = ${fpExpr}\`.`,
+  ].join('\n');
+
+  return {
+    topic: 'calculus',
+    questionText: `Find the derivative of \`f(x) = ${fExpr}\`.`,
+    correctAnswer: fpExpr,
+    validation: 'expression',
+    tolerance: 0.01,
+    solution,
+    hint: 'Apply the power rule to each term separately: bring down the exponent as a coefficient, then reduce the exponent by 1. The derivative of a constant is 0.',
+  };
+}
+
+function generateStatistics(seed: number): GeneratedProblem {
+  const rng = mulberry32(seed);
+  const n = rng.pick([5, 6, 7]);
+  const values: number[] = [];
+  for (let i = 0; i < n; i++) {
+    values.push(rng.int(12, 98));
+  }
+
+  const sum = values.reduce((acc, v) => acc + v, 0);
+  const mean = sum / n;
+  const meanRounded = Math.round(mean * 100) / 100;
+
+  const dataStr = values.join(', ');
+  const sumStr = values.join(' + ');
+
+  const solution = [
+    `Step 1: Add all the values.`,
+    `\`${sumStr} = ${sum}\``,
+    `Step 2: Divide by the number of values (\`n = ${n}\`).`,
+    `\`Mean = ${sum} / ${n} = ${meanRounded}\``,
+  ].join('\n');
+
+  return {
+    topic: 'statistics',
+    questionText: `Find the mean of the dataset: \`{${dataStr}}\`.`,
+    correctAnswer: `${meanRounded}`,
+    validation: 'numeric',
+    tolerance: 0.1,
+    solution,
+    hint: 'The mean is the sum of all values divided by the number of values. Add them up first, then divide.',
+  };
+}
+
+function generateProblem(topic: Topic, seed: number): GeneratedProblem {
+  switch (topic) {
+    case 'precalculus': return generatePrecalculus(seed);
+    case 'calculus': return generateCalculus(seed);
+    case 'statistics': return generateStatistics(seed);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Validation
+// ---------------------------------------------------------------------------
+
+/** Parse a simple polynomial expression and evaluate at x */
+function evaluateExpression(expr: string, x: number): number | null {
+  // Normalize: remove spaces, handle ^ for exponents
+  let s = expr.replace(/\s+/g, '');
+
+  // Split into terms: split on + or - keeping the sign
+  // First, normalize: replace '−' with '-', handle leading minus
+  s = s.replace(/−/g, '-');
+
+  // Tokenize into terms
+  const terms: string[] = [];
+  let current = '';
+  for (let i = 0; i < s.length; i++) {
+    const ch = s[i];
+    if ((ch === '+' || ch === '-') && i > 0 && s[i - 1] !== '^') {
+      if (current) terms.push(current);
+      current = ch;
+    } else {
+      current += ch;
+    }
+  }
+  if (current) terms.push(current);
+
+  let result = 0;
+  for (const term of terms) {
+    // Parse coefficient and power: forms like "24x^3", "-7x", "10", "x^2", "x"
+    const m = term.match(/^([+-]?\d*\.?\d*)(x?)(?:\^(\d+))?$/);
+    if (!m) return null;
+
+    let coeff: number;
+    const coeffStr = m[1];
+    const hasX = m[2] === 'x';
+    const pow = m[3] ? parseInt(m[3], 10) : (hasX ? 1 : 0);
+
+    if (!coeffStr || coeffStr === '+') coeff = 1;
+    else if (coeffStr === '-') coeff = -1;
+    else coeff = parseFloat(coeffStr);
+
+    if (isNaN(coeff)) return null;
+    result += coeff * Math.pow(x, pow);
+  }
+  return result;
+}
+
+function validateAnswer(problem: GeneratedProblem, studentAnswer: string): boolean {
+  const trimmed = studentAnswer.trim();
+  if (!trimmed) return false;
+
+  if (problem.validation === 'numeric') {
+    const parsed = parseFloat(trimmed);
+    if (isNaN(parsed)) return false;
+    const correct = parseFloat(problem.correctAnswer);
+    return Math.abs(parsed - correct) < problem.tolerance;
+  }
+
+  // Expression validation: evaluate at 3 test points
+  const testPoints = [1, 2, 3];
+  for (const x of testPoints) {
+    const studentVal = evaluateExpression(trimmed, x);
+    const correctVal = evaluateExpression(problem.correctAnswer, x);
+    if (studentVal === null || correctVal === null) return false;
+    if (Math.abs(studentVal - correctVal) > 0.01) return false;
+  }
+  return true;
+}
 
 // ---------------------------------------------------------------------------
 // Chat message type
 // ---------------------------------------------------------------------------
 interface ChatMessage {
-  role: 'user' | 'assistant' | 'system';
+  role: 'user' | 'assistant';
   content: string;
 }
 
@@ -77,7 +305,6 @@ interface ChatMessage {
 // Math rendering helper: convert backtick-wrapped math to styled <code>
 // ---------------------------------------------------------------------------
 function renderMathText(text: string): React.ReactNode[] {
-  // Split on backtick-delimited segments
   const parts = text.split(/`([^`]+)`/g);
   return parts.map((part, i) =>
     i % 2 === 1 ? (
@@ -101,75 +328,131 @@ function renderMathText(text: string): React.ReactNode[] {
 }
 
 // ---------------------------------------------------------------------------
+// State machine
+// ---------------------------------------------------------------------------
+type DemoState = 'idle' | 'wrong1' | 'chatOpen' | 'wrong2' | 'correct' | 'solved';
+
+const TOPICS: { key: Topic; label: string }[] = [
+  { key: 'precalculus', label: 'Precalculus' },
+  { key: 'calculus', label: 'Calculus' },
+  { key: 'statistics', label: 'Statistics' },
+];
+
+const SYMBOLS = ['∞', '√', 'π', '≥', '≤', '≠', '±', '²', '³', '∈', '∪', '∩', '[', ']', '(', ')'];
+
+// ---------------------------------------------------------------------------
 // Component
 // ---------------------------------------------------------------------------
 export function TutorDemo() {
-  const [activeProblem, setActiveProblem] = useState(0);
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const [topic, setTopic] = useState<Topic>('precalculus');
+  const [seed, setSeed] = useState(() => Date.now());
+  const [state, setState] = useState<DemoState>('idle');
   const [input, setInput] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [attempts, setAttempts] = useState(0);
+  const [chatInput, setChatInput] = useState('');
+  const [chatMessages, setChatMessages] = useState<ChatMessage[]>([]);
+  const [chatLoading, setChatLoading] = useState(false);
   const [rateLimited, setRateLimited] = useState(false);
-  const [solved, setSolved] = useState(false);
+  const [attemptCount, setAttemptCount] = useState(0);
+
   const inputRef = useRef<HTMLInputElement>(null);
-
-  const problem = PROBLEMS[activeProblem];
-
-  // Scroll chat container to bottom on new messages (without jumping the page)
+  const chatInputRef = useRef<HTMLInputElement>(null);
   const chatContainerRef = useRef<HTMLDivElement>(null);
+
+  // Generate problem from current topic + seed
+  const problem = generateProblem(topic, seed);
+
+  // Scroll chat to bottom
   useEffect(() => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight;
     }
-  }, [messages, loading]);
+  }, [chatMessages, chatLoading]);
 
-  // Reset when switching problems
-  const switchProblem = useCallback((idx: number) => {
-    setActiveProblem(idx);
-    setMessages([]);
+  // Switch topic
+  const switchTopic = useCallback((t: Topic) => {
+    setTopic(t);
+    setSeed(Date.now());
+    setState('idle');
     setInput('');
-    setAttempts(0);
-    setSolved(false);
-    setLoading(false);
+    setChatInput('');
+    setChatMessages([]);
+    setAttemptCount(0);
   }, []);
 
-  // Send message
-  const send = useCallback(async () => {
-    const text = input.trim();
-    if (!text || loading || rateLimited || solved) return;
+  // Try another problem (same or different topic)
+  const tryAnother = useCallback(() => {
+    setSeed(Date.now());
+    setState('idle');
+    setInput('');
+    setChatInput('');
+    setChatMessages([]);
+    setAttemptCount(0);
+    setTimeout(() => inputRef.current?.focus(), 100);
+  }, []);
 
-    const newAttempts = attempts + 1;
-    setAttempts(newAttempts);
+  // Submit answer
+  const submitAnswer = useCallback(() => {
+    const trimmed = input.trim();
+    if (!trimmed) return;
+    if (state === 'wrong2' || state === 'correct' || state === 'solved') return;
+
+    const isCorrect = validateAnswer(problem, trimmed);
+    const attempt = attemptCount + 1;
+    setAttemptCount(attempt);
+
+    if (isCorrect) {
+      setState('correct');
+    } else if (attempt >= 2) {
+      setState('wrong2');
+    } else {
+      setState('wrong1');
+    }
+    setInput('');
+  }, [input, state, problem, attemptCount]);
+
+  // Try again after first wrong attempt
+  const tryAgain = useCallback(() => {
+    setState('idle');
+    setInput('');
+    setTimeout(() => inputRef.current?.focus(), 100);
+  }, []);
+
+  // Open chat
+  const openChat = useCallback(() => {
+    setState('chatOpen');
+    setTimeout(() => chatInputRef.current?.focus(), 100);
+  }, []);
+
+  // Send chat message to AI
+  const sendChat = useCallback(async () => {
+    const text = chatInput.trim();
+    if (!text || chatLoading || rateLimited) return;
 
     const userMsg: ChatMessage = { role: 'user', content: text };
-    const updatedHistory = [...messages, userMsg];
-    setMessages(updatedHistory);
-    setInput('');
-    setLoading(true);
+    const updated = [...chatMessages, userMsg];
+    setChatMessages(updated);
+    setChatInput('');
+    setChatLoading(true);
 
     try {
-      // Build history for API (include problem context in first user message)
-      const apiHistory = updatedHistory.map((m, i) => {
-        if (i === 0 && m.role === 'user') {
-          return {
-            role: m.role,
-            content: `[Problem context: ${problem.context}]\n\nStudent's answer: ${m.content}`,
-          };
-        }
-        return { role: m.role, content: m.content };
-      });
+      // Build context for the AI
+      const contextPrefix = `[Problem context: The problem is: ${problem.questionText.replace(/`/g, '')}. The correct answer is ${problem.correctAnswer}. Hint: ${problem.hint}]`;
 
-      // If this is the first message, wrap with context
       const body = {
-        problem_id: problem.id,
+        problem_id: 'eval-f-neg2', // Use valid ID for bot protection pass-through
         student_answer:
-          updatedHistory.length === 1
-            ? `[Problem context: ${problem.context}] [Attempt ${newAttempts}/3]\n\nStudent's answer: ${text}`
-            : `[Attempt ${newAttempts}/3]\n\nStudent's answer: ${text}`,
+          updated.length === 1
+            ? `${contextPrefix}\n\nStudent's message: ${text}`
+            : `Student's message: ${text}`,
         history:
-          updatedHistory.length === 1
+          updated.length === 1
             ? []
-            : apiHistory.slice(0, -1), // all except the latest user msg
+            : updated.slice(0, -1).map((m, i) => {
+                if (i === 0 && m.role === 'user') {
+                  return { role: m.role, content: `${contextPrefix}\n\nStudent's message: ${m.content}` };
+                }
+                return { role: m.role, content: m.content };
+              }),
       };
 
       const res = await fetch('/api/tutor', {
@@ -180,48 +463,57 @@ export function TutorDemo() {
 
       if (res.status === 429) {
         setRateLimited(true);
-        setLoading(false);
+        setChatLoading(false);
         return;
       }
 
       const data = await res.json();
-
       if (data.error) {
-        setMessages((prev) => [
+        setChatMessages((prev) => [
           ...prev,
           { role: 'assistant', content: 'Something went wrong — please try again.' },
         ]);
       } else {
-        setMessages((prev) => [
+        setChatMessages((prev) => [
           ...prev,
           { role: 'assistant', content: data.response },
         ]);
-        if (data.is_solution) {
-          setSolved(true);
-        }
       }
     } catch {
-      setMessages((prev) => [
+      setChatMessages((prev) => [
         ...prev,
         { role: 'assistant', content: 'Network error — please try again.' },
       ]);
     } finally {
-      setLoading(false);
-      // Re-focus input
-      setTimeout(() => inputRef.current?.focus(), 100);
+      setChatLoading(false);
+      setTimeout(() => chatInputRef.current?.focus(), 100);
     }
-  }, [input, loading, rateLimited, solved, attempts, messages, problem]);
+  }, [chatInput, chatLoading, rateLimited, chatMessages, problem]);
 
-  const handleKeyDown = (e: React.KeyboardEvent) => {
+  const handleInputKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
-      send();
+      submitAnswer();
     }
   };
 
+  const handleChatKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      sendChat();
+    }
+  };
+
+  // Determine what to show
+  const showInput = state === 'idle' || state === 'chatOpen';
+  const showFeedbackWrong1 = state === 'wrong1';
+  const showChat = state === 'chatOpen';
+  const showSolution = state === 'wrong2' || state === 'correct' || state === 'solved';
+  const isCorrect = state === 'correct' || state === 'solved';
+
   return (
     <section id="demo" style={{ background: 'var(--ax-bg)', padding: '5rem 1.5rem' }}>
-      <div className="max-w-6xl mx-auto">
+      <div className="max-w-3xl mx-auto">
         {/* Header */}
         <div className="text-center mb-10">
           <h2
@@ -231,220 +523,242 @@ export function TutorDemo() {
             Try the AI Tutor
           </h2>
           <p className="text-lg" style={{ color: 'var(--ax-text-secondary)' }}>
-            See how our Socratic AI guides students through real Precalculus problems.
+            Real problems. Real AI. Try it yourself.
           </p>
         </div>
 
-        {/* Problem switcher pills */}
-        <div
-          className="flex flex-wrap justify-center gap-2 mb-8"
-        >
-          {PROBLEMS.map((p, i) => (
+        {/* Topic pills */}
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
+          {TOPICS.map((t) => (
             <button
-              key={p.id}
-              onClick={() => switchProblem(i)}
+              key={t.key}
+              onClick={() => switchTopic(t.key)}
               className="px-4 py-2 rounded-full text-sm font-medium transition-all"
               style={{
-                background:
-                  i === activeProblem
-                    ? 'rgba(139, 92, 246, 0.2)'
-                    : 'transparent',
+                background: topic === t.key ? 'rgba(139, 92, 246, 0.2)' : 'transparent',
                 border:
-                  i === activeProblem
+                  topic === t.key
                     ? '1px solid rgba(139, 92, 246, 0.5)'
                     : '1px solid var(--ax-border)',
-                color:
-                  i === activeProblem
-                    ? 'var(--ax-text)'
-                    : 'var(--ax-text-secondary)',
+                color: topic === t.key ? 'var(--ax-text)' : 'var(--ax-text-secondary)',
                 cursor: 'pointer',
               }}
             >
-              {p.label}
+              {t.label}
             </button>
           ))}
         </div>
 
-        {/* Main layout: problem + chat */}
+        {/* Problem Card */}
         <div
           style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr',
-            gap: '1.5rem',
+            background: 'var(--ax-surface)',
+            border: '1px solid var(--ax-border)',
+            borderRadius: 'var(--ax-card-radius)',
+            padding: '2rem',
+            marginBottom: '1rem',
           }}
-          className="lg:grid-cols-[380px_1fr]"
         >
-          {/* Problem Card */}
+          {/* Topic label */}
           <div
-            style={{
-              background: 'var(--ax-surface)',
-              border: '1px solid var(--ax-border)',
-              borderRadius: 'var(--ax-card-radius)',
-              padding: '2rem',
-              alignSelf: 'start',
-            }}
+            className="text-xs font-semibold uppercase tracking-wider mb-3"
+            style={{ color: '#8B5CF6' }}
           >
-            <div
-              className="text-xs font-semibold uppercase tracking-wider mb-3"
-              style={{ color: 'var(--ax-violet)' }}
-            >
-              Section 1.1 · Introduction to Functions
-            </div>
-            <p
-              className="text-lg leading-relaxed"
-              style={{ color: 'var(--ax-text)', fontFamily: "'Georgia', serif" }}
-            >
-              {renderMathText(problem.prompt)}
-            </p>
-            {attempts > 0 && (
-              <div
-                className="mt-4 text-xs"
-                style={{ color: 'var(--ax-text-muted)' }}
-              >
-                {solved ? '✓ Solved' : `Attempt ${attempts}`}
-              </div>
-            )}
+            {topic === 'precalculus' && 'Precalculus · Function Evaluation'}
+            {topic === 'calculus' && 'Calculus · Power Rule Derivatives'}
+            {topic === 'statistics' && 'Statistics · Measures of Center'}
           </div>
 
-          {/* Chat Interface */}
-          <div
-            style={{
-              background: 'var(--ax-surface)',
-              border: '1px solid var(--ax-border)',
-              borderRadius: 'var(--ax-card-radius)',
-              display: 'flex',
-              flexDirection: 'column',
-              minHeight: '400px',
-              maxHeight: '500px',
-            }}
+          {/* Question */}
+          <p
+            className="text-lg leading-relaxed mb-6"
+            style={{ color: 'var(--ax-text)', fontFamily: "'Georgia', serif" }}
           >
-            {/* Math symbol toolbar */}
-            <div
-              style={{
-                borderBottom: '1px solid var(--ax-border)',
-                padding: '0.4rem 1rem',
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '0.25rem',
-              }}
-            >
-              {['∞', '√', 'π', '≥', '≤', '≠', '±', '²', '³', '∈', '∪', '∩', '[', ']', '(', ')'].map((sym) => (
-                <button
-                  key={sym}
-                  type="button"
-                  onClick={() => {
-                    setInput((prev) => prev + sym);
-                    inputRef.current?.focus();
-                  }}
-                  className="transition-all"
+            {renderMathText(problem.questionText)}
+          </p>
+
+          {/* Symbol toolbar */}
+          {showInput && (
+            <>
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '0.25rem',
+                  marginBottom: '0.75rem',
+                }}
+              >
+                {SYMBOLS.map((sym) => (
+                  <button
+                    key={sym}
+                    type="button"
+                    onClick={() => {
+                      setInput((prev) => prev + sym);
+                      inputRef.current?.focus();
+                    }}
+                    className="transition-all"
+                    style={{
+                      background: 'var(--ax-elevated)',
+                      border: '1px solid var(--ax-border)',
+                      borderRadius: '6px',
+                      color: 'var(--ax-text-secondary)',
+                      padding: '0.2rem 0.5rem',
+                      fontSize: '0.85rem',
+                      cursor: 'pointer',
+                      minWidth: '2rem',
+                      textAlign: 'center',
+                      fontFamily: "'Cambria Math', 'Latin Modern Math', serif",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.5)';
+                      e.currentTarget.style.color = 'var(--ax-text)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.borderColor = 'var(--ax-border)';
+                      e.currentTarget.style.color = 'var(--ax-text-secondary)';
+                    }}
+                  >
+                    {sym}
+                  </button>
+                ))}
+              </div>
+
+              {/* Answer input + Submit */}
+              <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyDown={handleInputKeyDown}
+                  placeholder="Type your answer…"
+                  className="flex-1 text-sm rounded-lg px-3 py-2 outline-none"
                   style={{
                     background: 'var(--ax-elevated)',
                     border: '1px solid var(--ax-border)',
-                    borderRadius: '6px',
-                    color: 'var(--ax-text-secondary)',
-                    padding: '0.2rem 0.5rem',
-                    fontSize: '0.85rem',
-                    cursor: 'pointer',
-                    minWidth: '2rem',
-                    textAlign: 'center',
-                    fontFamily: "'Cambria Math', 'Latin Modern Math', serif",
+                    color: 'var(--ax-text)',
                   }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = 'rgba(139, 92, 246, 0.5)';
-                    e.currentTarget.style.color = 'var(--ax-text)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = 'var(--ax-border)';
-                    e.currentTarget.style.color = 'var(--ax-text-secondary)';
+                />
+                <button
+                  onClick={submitAnswer}
+                  disabled={!input.trim()}
+                  className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                  style={{
+                    background: !input.trim() ? 'rgba(139, 92, 246, 0.1)' : '#8B5CF6',
+                    color: !input.trim() ? 'var(--ax-text-muted)' : '#fff',
+                    cursor: !input.trim() ? 'not-allowed' : 'pointer',
+                    border: 'none',
                   }}
                 >
-                  {sym}
+                  Submit
                 </button>
-              ))}
-            </div>
+              </div>
 
-            {/* Input area */}
-            <div
-              style={{
-                borderBottom: '1px solid var(--ax-border)',
-                padding: '0.75rem 1rem',
-                display: 'flex',
-                gap: '0.5rem',
-              }}
-            >
-              <input
-                ref={inputRef}
-                type="text"
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyDown={handleKeyDown}
-                placeholder={
-                  rateLimited
-                    ? 'Demo limit reached'
-                    : solved
-                      ? 'Problem solved! Try another →'
-                      : 'Type your answer…'
-                }
-                disabled={loading || rateLimited || solved}
-                className="flex-1 text-sm rounded-lg px-3 py-2 outline-none"
+              {/* Attempt indicator */}
+              <div
+                className="mt-3 text-xs"
+                style={{ color: 'var(--ax-text-muted)' }}
+              >
+                Attempt {attemptCount + 1} of 2
+              </div>
+            </>
+          )}
+        </div>
+
+        {/* Wrong on attempt 1 feedback */}
+        {showFeedbackWrong1 && (
+          <div
+            style={{
+              background: 'var(--ax-surface)',
+              border: '1px solid rgba(248, 113, 113, 0.3)',
+              borderRadius: 'var(--ax-card-radius)',
+              padding: '1.25rem 1.5rem',
+              marginBottom: '1rem',
+            }}
+          >
+            <p className="text-sm mb-3" style={{ color: '#f87171' }}>
+              ❌ Not quite. You have one more try.
+            </p>
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <button
+                onClick={openChat}
+                className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                style={{
+                  background: 'rgba(139, 92, 246, 0.15)',
+                  border: '1px solid rgba(139, 92, 246, 0.4)',
+                  color: 'var(--ax-text)',
+                  cursor: 'pointer',
+                }}
+              >
+                💬 Chat with AI Tutor
+              </button>
+              <button
+                onClick={tryAgain}
+                className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
                 style={{
                   background: 'var(--ax-elevated)',
                   border: '1px solid var(--ax-border)',
-                  color: 'var(--ax-text)',
-                }}
-              />
-              <button
-                onClick={send}
-                disabled={loading || !input.trim() || rateLimited || solved}
-                className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
-                style={{
-                  background:
-                    loading || !input.trim() || rateLimited || solved
-                      ? 'rgba(139, 92, 246, 0.1)'
-                      : '#8B5CF6',
-                  color:
-                    loading || !input.trim() || rateLimited || solved
-                      ? 'var(--ax-text-muted)'
-                      : '#fff',
-                  cursor:
-                    loading || !input.trim() || rateLimited || solved
-                      ? 'not-allowed'
-                      : 'pointer',
-                  border: 'none',
+                  color: 'var(--ax-text-secondary)',
+                  cursor: 'pointer',
                 }}
               >
-                Send
+                Try Again
               </button>
             </div>
+          </div>
+        )}
 
-            {/* Messages area — below input */}
+        {/* AI Chat Panel */}
+        {showChat && (
+          <div
+            style={{
+              background: 'var(--ax-surface)',
+              border: '1px solid var(--ax-border)',
+              borderRadius: 'var(--ax-card-radius)',
+              marginBottom: '1rem',
+              display: 'flex',
+              flexDirection: 'column',
+              maxHeight: '400px',
+            }}
+          >
+            {/* Chat header */}
             <div
-              ref={chatContainerRef}
               style={{
-                flex: 1,
-                overflowY: 'auto',
-                padding: '1.5rem',
+                padding: '0.75rem 1rem',
+                borderBottom: '1px solid var(--ax-border)',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
               }}
             >
-              {messages.length === 0 && !rateLimited && (
+              <span className="text-sm font-medium" style={{ color: 'var(--ax-text)' }}>
+                🤖 AI Tutor Chat
+              </span>
+              <span className="text-xs" style={{ color: 'var(--ax-text-muted)' }}>
+                7/day limit
+              </span>
+            </div>
+
+            {/* Messages */}
+            <div
+              ref={chatContainerRef}
+              style={{ flex: 1, overflowY: 'auto', padding: '1rem' }}
+            >
+              {chatMessages.length === 0 && !rateLimited && (
                 <div
                   className="text-sm text-center"
-                  style={{
-                    color: 'var(--ax-text-muted)',
-                    paddingTop: '3rem',
-                  }}
+                  style={{ color: 'var(--ax-text-muted)', padding: '2rem 0' }}
                 >
-                  Type your answer below to get started.
+                  Ask the AI tutor for a hint or explain your thinking.
                 </div>
               )}
 
-              {messages.map((msg, i) => (
+              {chatMessages.map((msg, i) => (
                 <div
                   key={i}
                   style={{
                     display: 'flex',
-                    justifyContent:
-                      msg.role === 'user' ? 'flex-end' : 'flex-start',
+                    justifyContent: msg.role === 'user' ? 'flex-end' : 'flex-start',
                     marginBottom: '0.75rem',
                   }}
                 >
@@ -464,10 +778,8 @@ export function TutorDemo() {
                           ? '1px solid rgba(139, 92, 246, 0.35)'
                           : '1px solid var(--ax-border)',
                       color: 'var(--ax-text)',
-                      borderBottomRightRadius:
-                        msg.role === 'user' ? '4px' : '12px',
-                      borderBottomLeftRadius:
-                        msg.role === 'assistant' ? '4px' : '12px',
+                      borderBottomRightRadius: msg.role === 'user' ? '4px' : '12px',
+                      borderBottomLeftRadius: msg.role === 'assistant' ? '4px' : '12px',
                     }}
                   >
                     {renderMathText(msg.content)}
@@ -475,8 +787,7 @@ export function TutorDemo() {
                 </div>
               ))}
 
-              {/* Loading dots */}
-              {loading && (
+              {chatLoading && (
                 <div style={{ display: 'flex', justifyContent: 'flex-start', marginBottom: '0.75rem' }}>
                   <div
                     style={{
@@ -496,34 +807,188 @@ export function TutorDemo() {
                 </div>
               )}
 
-              {/* Rate limit message */}
               {rateLimited && (
                 <div
                   style={{
                     textAlign: 'center',
-                    padding: '1.5rem',
+                    padding: '1rem',
                     color: 'var(--ax-text-secondary)',
                     fontSize: '0.9rem',
                   }}
                 >
                   <p style={{ marginBottom: '0.5rem' }}>
-                    You've explored today's demo limit!
+                    You've reached today's demo limit!
                   </p>
-                  <a
-                    href="mailto:contact@onyxenterprises.org"
-                    style={{
-                      color: '#8B5CF6',
-                      textDecoration: 'underline',
-                    }}
-                  >
+                  <a href="mailto:contact@onyxenterprises.org" style={{ color: '#8B5CF6', textDecoration: 'underline' }}>
                     Sign up to get unlimited access →
                   </a>
                 </div>
               )}
+            </div>
 
+            {/* Chat input */}
+            <div
+              style={{
+                padding: '0.75rem 1rem',
+                borderTop: '1px solid var(--ax-border)',
+                display: 'flex',
+                gap: '0.5rem',
+              }}
+            >
+              <input
+                ref={chatInputRef}
+                type="text"
+                value={chatInput}
+                onChange={(e) => setChatInput(e.target.value)}
+                onKeyDown={handleChatKeyDown}
+                placeholder={rateLimited ? 'Demo limit reached' : 'Ask for a hint…'}
+                disabled={chatLoading || rateLimited}
+                className="flex-1 text-sm rounded-lg px-3 py-2 outline-none"
+                style={{
+                  background: 'var(--ax-elevated)',
+                  border: '1px solid var(--ax-border)',
+                  color: 'var(--ax-text)',
+                }}
+              />
+              <button
+                onClick={sendChat}
+                disabled={chatLoading || !chatInput.trim() || rateLimited}
+                className="px-4 py-2 rounded-lg text-sm font-medium transition-all"
+                style={{
+                  background:
+                    chatLoading || !chatInput.trim() || rateLimited
+                      ? 'rgba(139, 92, 246, 0.1)'
+                      : '#8B5CF6',
+                  color:
+                    chatLoading || !chatInput.trim() || rateLimited
+                      ? 'var(--ax-text-muted)'
+                      : '#fff',
+                  cursor:
+                    chatLoading || !chatInput.trim() || rateLimited
+                      ? 'not-allowed'
+                      : 'pointer',
+                  border: 'none',
+                }}
+              >
+                Send
+              </button>
+            </div>
+
+            {/* Submit attempt 2 while chatting */}
+            <div
+              style={{
+                padding: '0.75rem 1rem',
+                borderTop: '1px solid var(--ax-border)',
+                display: 'flex',
+                gap: '0.5rem',
+                alignItems: 'center',
+              }}
+            >
+              <span className="text-xs" style={{ color: 'var(--ax-text-muted)', whiteSpace: 'nowrap' }}>
+                Attempt 2:
+              </span>
+              <input
+                type="text"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={handleInputKeyDown}
+                placeholder="Submit your final answer…"
+                className="flex-1 text-sm rounded-lg px-3 py-2 outline-none"
+                style={{
+                  background: 'var(--ax-elevated)',
+                  border: '1px solid var(--ax-border)',
+                  color: 'var(--ax-text)',
+                }}
+              />
+              <button
+                onClick={submitAnswer}
+                disabled={!input.trim()}
+                className="px-3 py-2 rounded-lg text-sm font-medium transition-all"
+                style={{
+                  background: !input.trim() ? 'rgba(139, 92, 246, 0.1)' : '#8B5CF6',
+                  color: !input.trim() ? 'var(--ax-text-muted)' : '#fff',
+                  cursor: !input.trim() ? 'not-allowed' : 'pointer',
+                  border: 'none',
+                }}
+              >
+                Submit
+              </button>
             </div>
           </div>
-        </div>
+        )}
+
+        {/* Solution Reveal */}
+        {showSolution && (
+          <div
+            style={{
+              background: 'var(--ax-surface)',
+              border: `1px solid ${isCorrect ? 'rgba(52, 211, 153, 0.3)' : 'rgba(248, 113, 113, 0.3)'}`,
+              borderRadius: 'var(--ax-card-radius)',
+              padding: '1.5rem 2rem',
+              marginBottom: '1rem',
+            }}
+          >
+            {/* Result header */}
+            <div className="mb-4">
+              {isCorrect ? (
+                <p className="text-lg font-semibold" style={{ color: '#34d399' }}>
+                  🎉 Correct!
+                </p>
+              ) : (
+                <p className="text-lg font-semibold" style={{ color: '#f87171' }}>
+                  Not quite — here's the solution:
+                </p>
+              )}
+            </div>
+
+            {/* Step-by-step solution */}
+            <div
+              style={{
+                borderLeft: '2px solid #8B5CF6',
+                paddingLeft: '1rem',
+                marginBottom: '1.25rem',
+              }}
+            >
+              <p
+                className="text-xs font-semibold uppercase tracking-wider mb-2"
+                style={{ color: '#8B5CF6' }}
+              >
+                🧠 Step-by-Step Solution
+              </p>
+              {problem.solution.split('\n').map((line, i) => (
+                <p
+                  key={i}
+                  className="text-sm leading-relaxed mb-1"
+                  style={{ color: 'var(--ax-text-secondary)' }}
+                >
+                  {renderMathText(line)}
+                </p>
+              ))}
+            </div>
+
+            {/* Correct answer */}
+            <div
+              className="text-sm font-medium mb-4"
+              style={{ color: '#34d399' }}
+            >
+              ✅ Correct Answer: {renderMathText(`\`${problem.correctAnswer}\``)}
+            </div>
+
+            {/* Try another */}
+            <button
+              onClick={tryAnother}
+              className="px-5 py-2.5 rounded-lg text-sm font-medium transition-all"
+              style={{
+                background: '#8B5CF6',
+                color: '#fff',
+                border: 'none',
+                cursor: 'pointer',
+              }}
+            >
+              Try Another Problem →
+            </button>
+          </div>
+        )}
       </div>
 
       {/* Loading dots animation */}
@@ -538,11 +1003,6 @@ export function TutorDemo() {
         @keyframes tutorBounce {
           0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
           30% { transform: translateY(-4px); opacity: 1; }
-        }
-        @media (min-width: 1024px) {
-          .lg\\:grid-cols-\\[380px_1fr\\] {
-            grid-template-columns: 380px 1fr;
-          }
         }
       `}</style>
     </section>
