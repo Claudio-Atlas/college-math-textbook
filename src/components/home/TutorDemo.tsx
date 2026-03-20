@@ -332,7 +332,8 @@ const TOPICS: { key: Topic; label: string; badge: string }[] = [
   { key: 'statistics', label: 'Statistics', badge: 'Statistics · Descriptive Statistics' },
 ];
 
-const SYMBOLS = ['∞', '√', 'π', '≥', '≤', '≠', '±', '²', '³', '∈', '∪', '∩', '[', ']', '(', ')'];
+const SYMBOLS = ['^', '/', '√', 'π', '∞', '±', '≥', '≤', '≠', '(', ')', '[', ']'];
+const SYMBOL_LABELS: Record<string, string> = { '^': 'xⁿ', '/': 'a/b' };
 
 // ---------------------------------------------------------------------------
 // Component
@@ -689,7 +690,7 @@ export function TutorDemo() {
                         e.currentTarget.style.color = 'var(--ax-text-secondary)';
                       }}
                     >
-                      {sym}
+                      {SYMBOL_LABELS[sym] || sym}
                     </button>
                   ))}
                 </div>
