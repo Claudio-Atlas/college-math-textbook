@@ -731,20 +731,19 @@ export function TutorDemo() {
                   {input.trim() && (
                     <div
                       style={{
-                        minWidth: '80px',
-                        maxWidth: '180px',
-                        padding: '0.4rem 0.75rem',
+                        minWidth: '120px',
+                        padding: '0.5rem 1rem',
                         borderRadius: '8px',
-                        background: 'var(--ax-surface)',
+                        background: 'var(--ax-elevated)',
                         border: '1px solid var(--ax-border)',
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'center',
-                        overflow: 'hidden',
+                        boxShadow: '0 0 12px rgba(139, 92, 246, 0.15), inset 0 0 0 1px rgba(139, 92, 246, 0.1)',
                       }}
                     >
-                      <span style={{ fontSize: '0.6rem', color: 'var(--ax-text-muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>Preview</span>
-                      <span style={{ fontSize: '0.95rem', color: 'var(--ax-text)', fontFamily: "'Cambria Math', 'Latin Modern Math', Georgia, serif", whiteSpace: 'nowrap' }}>
+                      <span style={{ fontSize: '0.55rem', color: 'var(--ax-text-muted)', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '0.25rem' }}>Preview</span>
+                      <span style={{ fontSize: '1.1rem', color: 'var(--ax-text)', fontFamily: "'Cambria Math', 'Latin Modern Math', Georgia, serif" }}>
                         {prettyMath(input)}
                       </span>
                     </div>
