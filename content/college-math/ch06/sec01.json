@@ -1,0 +1,106 @@
+{
+  "_locked": false,
+  "_pass": "Pass 1",
+  "id": "college-math-ch06-sec01",
+  "title": "What probability is, and the favorable-over-total ratio",
+  "chapter": 6,
+  "section": 1,
+  "book": "college-math",
+  "deck": "Probability is a number between 0 and 1 that measures how likely an event is to occur. For simple events with equally-likely outcomes, the math reduces to one ratio: favorable outcomes over total outcomes.",
+  "objectives": [
+    "Compute the probability of a simple event as the ratio of favorable outcomes to total outcomes, and express the answer as a fraction in lowest terms, a decimal, or a percent."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Open any newspaper and probability statements are everywhere. The weather app says &ldquo;70% chance of rain tomorrow.&rdquo; A pharmaceutical company reports that a drug is &ldquo;95% effective at preventing infection.&rdquo; A casino game advertises a &ldquo;1-in-38 chance of hitting your number.&rdquo; A friend offers to settle an argument by flipping a coin, dismissing the result in advance as &ldquo;50/50.&rdquo; Three different scenarios with three very different stakes, but underneath each statement is the same mathematical object: a number between zero and one that measures how likely something is to happen."
+    },
+    {
+      "type": "paragraph",
+      "text": "This chapter develops the machinery to read those statements precisely and to compute them for ourselves. We begin in this section with the simplest case, in which an experiment has a small finite number of equally-likely outcomes. From this starting point the rest of the chapter generalizes: Section 6.2 handles the case in which the sample space is too large to list, Section 6.3 combines two events with <em>OR</em>, Section 6.4 distinguishes ordered selections from unordered ones, Section 6.5 turns probabilities into a single long-run average called the <em>expected value</em>, and Section 6.6 compares predictions from the math with results from the data."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.1.1  The sample space and the probability ratio"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">An experiment</span> is any process whose outcome cannot be predicted with certainty: rolling a die, drawing a card from a shuffled deck, flipping a coin, spinning a wheel, or even (with a longer view) recording tomorrow's high temperature. The set of all possible outcomes of an experiment is called the <em>sample space</em>. For a single fair six-sided die, the sample space is the set <em>S</em> = {1, 2, 3, 4, 5, 6}; for a single coin flip it is {H, T}; for drawing one card from a deck it is the set of all 52 named cards. An <em>event</em> is any subset of the sample space, that is, any collection of outcomes we wish to count as &ldquo;yes.&rdquo;"
+    },
+    {
+      "type": "figure",
+      "id": "fig-6.1",
+      "svg": "<svg viewBox=\"0 0 620 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">THE PROBABILITY SCALE</text>\n  <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">every probability lives between 0 (impossible) and 1 (certain)</text>\n  <line x1=\"60\" y1=\"130\" x2=\"560\" y2=\"130\" stroke=\"#F4F2F8\" stroke-width=\"2\"/>\n  <line x1=\"60\" y1=\"120\" x2=\"60\" y2=\"140\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n  <line x1=\"185\" y1=\"120\" x2=\"185\" y2=\"140\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n  <line x1=\"310\" y1=\"120\" x2=\"310\" y2=\"140\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n  <line x1=\"435\" y1=\"120\" x2=\"435\" y2=\"140\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n  <line x1=\"560\" y1=\"120\" x2=\"560\" y2=\"140\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n  <text x=\"60\" y=\"160\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">0</text>\n  <text x=\"185\" y=\"160\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">0.25</text>\n  <text x=\"310\" y=\"160\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">0.5</text>\n  <text x=\"435\" y=\"160\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">0.75</text>\n  <text x=\"560\" y=\"160\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">1</text>\n  <text x=\"60\" y=\"182\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">impossible</text>\n  <text x=\"185\" y=\"182\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">unlikely</text>\n  <text x=\"310\" y=\"182\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">even chance</text>\n  <text x=\"435\" y=\"182\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">likely</text>\n  <text x=\"560\" y=\"182\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">certain</text>\n  <line x1=\"395\" y1=\"105\" x2=\"395\" y2=\"140\" stroke=\"#5BE3C9\" stroke-width=\"2.5\"/>\n  <text x=\"395\" y=\"96\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"14\" fill=\"#5BE3C9\" letter-spacing=\"1\">P(rain) = 0.70</text>\n  <text x=\"310\" y=\"220\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">a 70 percent chance of rain places the day's probability on the &ldquo;likely&rdquo; side of the scale</text>\n</svg>",
+      "caption": "Figure 6.1. The probability scale runs from 0 (the event cannot happen) to 1 (the event is guaranteed). Every probability statement that arises in this chapter sits somewhere on this number line."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 6.1.</span> Let <em>S</em> be the sample space of an experiment in which every outcome is equally likely, and let <em>A</em> be an event (a subset of <em>S</em>). The <em>probability</em> of <em>A</em> is the number <em>P(A) = n(A) / n(S)</em>, where <em>n(A)</em> is the number of outcomes in the event and <em>n(S)</em> is the number of outcomes in the sample space. The value <em>P(A)</em> always satisfies <em>0 &le; P(A) &le; 1</em>.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Two boundary values deserve special attention. When the event contains no outcomes at all (it is the empty set), the probability is exactly <em>0</em>; the event is <em>impossible</em>. When the event contains every outcome in the sample space, the probability is exactly <em>1</em>; the event is <em>certain</em>. Every other probability sits strictly between these two extremes."
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>The convention that probabilities live in <em>[0, 1]</em> is one of the three Kolmogorov axioms, laid down in 1933, that form the modern foundation of the subject. Before Kolmogorov, the field had been worked on for centuries (Cardano, Pascal, Fermat, Bernoulli, Laplace) without a fully rigorous setup.</aside>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.1.2  Counting favorable outcomes"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The whole calculation</span> reduces to two counts. We must count the outcomes in the sample space, then count the outcomes inside the event of interest, and divide. The arithmetic is elementary; the work, in any nontrivial probability problem, is in setting up the counts correctly. Three habits make a difference. First, list the sample space explicitly when it is small (six faces of a die, fifty-two cards in a deck), so that we know exactly what we are dividing by. Second, identify the event in plain English and translate it into a subset before counting. Third, reduce the resulting fraction to lowest terms unless the problem specifies otherwise."
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">The probability of an event is a count divided by a count. Get the two counts right and the math falls out automatically.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Counting outcomes that are not equally likely. The formula <em>P(A) = n(A) / n(S)</em> assumes that every outcome in <em>S</em> has the same chance of occurring. If a coin is weighted so heads is twice as likely as tails, then we cannot say <em>P(H) = 1/2</em> just because the sample space has two elements. When outcomes are unequal, we weight each outcome by its individual probability (this is exactly the idea behind <em>expected value</em> in Section 6.5).</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 6.1. The ALEKS letter card.</div><p>A box contains eight cards labeled <em>P, Q, R, S, T, U, V,</em> and <em>W</em>. One card will be chosen at random. Find the probability of choosing a card whose letter is between <em>P</em> and <em>T</em> inclusive.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. Identify the sample space.</strong> The eight cards form the sample space <em>S</em> = {P, Q, R, S, T, U, V, W}, so <em>n(S)</em> = 8.</p><p><strong>Step 2. Identify the event.</strong> &ldquo;A letter from <em>P</em> to <em>T</em>&rdquo; means the subset {P, Q, R, S, T}, which has five elements; so <em>n(A)</em> = 5.</p><p><strong>Step 3. Form the ratio.</strong></p><div class=\"cm-display-math\">P(A) = n(A) / n(S) = 5 / 8</div><p><strong>Step 4. Reduce if possible.</strong> The numerator 5 is prime and shares no factor greater than 1 with the denominator 8 = 2&middot;2&middot;2, so the fraction is already in lowest terms.</p><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>The probability that a random card lies in the interval <em>P</em>&ndash;<em>T</em> is <strong>5/8</strong>, or in decimal form 0.625, which on the probability scale of Figure 6.1 sits between &ldquo;even chance&rdquo; and &ldquo;likely.&rdquo;</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>Weather forecasters report probabilities of precipitation with the same favorable-over-total interpretation, applied to outcomes the model considers equally consistent with the available atmospheric data. A &ldquo;70 percent chance of rain&rdquo; means that of the ensemble of plausible weather trajectories the model has simulated, roughly 70 percent end with measurable rainfall at the forecast location during the forecast window. Probability shows up in modern meteorology, in epidemiology, in actuarial science, in artificial intelligence, in genomics, and in nearly every quantitative field where uncertainty is intrinsic to the question.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.1.3  The complement rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">For every event</span> <em>A</em> there is a companion event <em>A<sup>c</sup></em>, called the <em>complement</em> of <em>A</em>, that consists of every outcome in the sample space that is <em>not</em> in <em>A</em>. Since every outcome is either in <em>A</em> or in <em>A<sup>c</sup></em> and no outcome can be in both, the two probabilities must sum to one: <em>P(A) + P(A<sup>c</sup>) = 1</em>. Rearranged, this gives the <em>complement rule</em>: <em>P(A<sup>c</sup>) = 1 &minus; P(A)</em>. The rule is most useful when counting the &ldquo;not&rdquo; outcomes is easier than counting the &ldquo;yes&rdquo; outcomes. If a weather report says <em>P(rain) = 0.7</em>, then <em>P(no rain) = 1 &minus; 0.7 = 0.3</em>, no further reasoning required."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>A fair six-sided die is rolled once. What is the probability of rolling an even number? Write your answer as a fraction in lowest terms.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 1/2. The sample space {1, 2, 3, 4, 5, 6} has six equally-likely outcomes; the event &ldquo;even&rdquo; is {2, 4, 6} with three outcomes. The probability is <em>3/6 = 1/2</em>.</p></details></li><li><p>A standard 52-card deck is shuffled and one card is drawn at random. What is the probability that it is a heart?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 1/4. The deck has 13 hearts out of 52 cards, so the probability is <em>13/52 = 1/4</em>.</p></details></li><li><p>A bag contains 4 red marbles, 6 blue marbles, and 10 green marbles. One marble is drawn at random. What is the probability that it is blue?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 3/10. The bag contains <em>4 + 6 + 10 = 20</em> marbles, of which 6 are blue. So the probability is <em>6/20 = 3/10</em>.</p></details></li><li><p>Which of the following values <em>cannot</em> be the probability of any event?</p><ol type=\"A\"><li>0</li><li>1/3</li><li>1.4</li><li>0.95</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> C. Probabilities live in <em>[0, 1]</em>. A value of 1.4 lies outside this range and so cannot represent the probability of any event.</p></details></li><li><p>If <em>P(A) = 0.65</em>, what is <em>P(A<sup>c</sup>)</em>, the probability that <em>A</em> does <em>not</em> occur?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 0.35. By the complement rule, <em>P(A<sup>c</sup>) = 1 &minus; P(A) = 1 &minus; 0.65 = 0.35</em>.</p></details></li><li><p>A raffle has 200 tickets sold, and the winning ticket is chosen at random from a drum that contains them all. You bought 15 tickets. What is the probability that you win? Write your answer as a fraction in lowest terms.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 3/40. The probability is <em>15/200 = 3/40</em>, after dividing numerator and denominator by their greatest common factor 5.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Everything in the rest of the chapter is built on the favorable-over-total ratio of this section. Section 6.2 takes up the question of <em>how to count the outcomes</em> when the sample space is too large to write down by hand, by introducing the fundamental counting principle. Once we can count, the remaining sections develop the tools to combine events with <em>OR</em> and <em>AND</em> (Section 6.3), to distinguish ordered from unordered selections (Section 6.4), to summarize a random process by a single long-run average (Section 6.5), and to compare predictions with data (Section 6.6)."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">6.1</div>"
+    }
+  ]
+}

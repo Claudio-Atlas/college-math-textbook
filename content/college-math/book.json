@@ -1,0 +1,902 @@
+{
+  "id": "college-math",
+  "title": "College Mathematics",
+  "subtitle": "A companion textbook",
+  "author": "Clayton Ragsdale",
+  "chapters": [
+    {
+      "id": "ch01",
+      "number": 1,
+      "title": "Linear Functions",
+      "desc": "Functions, slope, and linear modeling — plus the Excel moves (formulas, cell references, basic graphs) you'll lean on the rest of the term.",
+      "intro_html": "<p>This week is about three ideas that show up everywhere once you notice them: <strong>functions</strong>, <strong>slope</strong>, and <strong>linear modeling</strong>. By Sunday you'll write functions, read slope from a table, and use a linear equation to predict numbers your gut already half-knows.</p><p>You'll also start using <strong>Excel</strong>. The Excel moves are small but they make every other week of this course possible. If Excel feels rusty, lean on the Scribe walkthroughs.</p>",
+      "objectives": [
+        "Explore the basics of functions and their uses.",
+        "Use spreadsheet applications: functions, cell references, and basic graphing.",
+        "Use rounding and estimation to solve application problems.",
+        "Apply deductive and inductive reasoning to solve problems.",
+        "Define the slope as a rate of change.",
+        "Use linear modeling to predict outcomes from data."
+      ],
+      "glossary": [
+        {
+          "term": "Function",
+          "definition": "The rule itself. We name it with a letter, usually <span class=\"lesson-math\">f</span>, but <span class=\"lesson-math\">g</span> and <span class=\"lesson-math\">h</span> show up too."
+        },
+        {
+          "term": "Input",
+          "definition": "The value you feed in. Almost always called <span class=\"lesson-math\">x</span>."
+        },
+        {
+          "term": "Output",
+          "definition": "What comes out. Often called <span class=\"lesson-math\">y</span>, or written as <span class=\"lesson-math\">f(x)</span>."
+        },
+        {
+          "term": "f(x)",
+          "definition": "Read out loud as <em>\"f of x.\"</em> It means: \"the output of the function f when the input is x.\" It does <strong>not</strong> mean f times x."
+        },
+        {
+          "term": "Evaluate",
+          "definition": "To compute a function's output for a specific input. <em>\"Evaluate f at x = 7\"</em> means: substitute 7 wherever you see x in the rule, then simplify. Same idea as plugging a value in."
+        },
+        {
+          "term": "Domain",
+          "definition": "All inputs that are allowed. (Working 0 hours makes sense. Working −5 hours doesn't.)"
+        },
+        {
+          "term": "Range",
+          "definition": "All possible outputs you can actually get out."
+        },
+        {
+          "term": "Deductive",
+          "definition": "Top-down. Apply a general rule to a specific case. <em>\"All large drinks are $5.50. This is large. So it costs $5.50.\"</em>"
+        },
+        {
+          "term": "Inductive",
+          "definition": "Bottom-up. Generalize a pattern from specific examples. <em>\"My large drink has been $5.50 every time. Probably it'll be $5.50 today.\"</em>"
+        },
+        {
+          "term": "Conjecture",
+          "definition": "A pattern-based guess from inductive reasoning. Not yet proven, but reasonable."
+        },
+        {
+          "term": "Counterexample",
+          "definition": "A single case that breaks a conjecture. One counterexample is enough, it only takes one black swan to disprove \"all swans are white.\""
+        },
+        {
+          "term": "Premise",
+          "definition": "A starting statement assumed true. Deductive reasoning chains premises to a conclusion."
+        },
+        {
+          "term": "Conclusion",
+          "definition": "What you end up with. In deduction, it's certain. In induction, it's probable."
+        },
+        {
+          "term": "Place value",
+          "definition": "A digit's position. In <span class=\"lesson-math\">4,587</span>: 4 is thousands, 5 is hundreds, 8 is tens, 7 is ones. To the <em>right</em> of the decimal point, the places keep going: in <span class=\"lesson-math\">7.4839</span>, the 4 is tenths, 8 is hundredths, 3 is thousandths, 9 is ten-thousandths."
+        },
+        {
+          "term": "Round up / down",
+          "definition": "Replace a number with the nearest higher or lower \"nice\" value. Look at the digit just to the right of your target place, <em>5 or more, round up; less than 5, round down.</em> The rule is the same whether you're rounding 4,587 to the nearest hundred or 7.4839 to the nearest hundredth."
+        },
+        {
+          "term": "Estimate",
+          "definition": "An approximate answer. Faster than the exact calculation, and good enough most of the time."
+        },
+        {
+          "term": "Compatible numbers",
+          "definition": "Numbers chosen because they're easy to combine in your head. <span class=\"lesson-math\">27 + 38</span> becomes <span class=\"lesson-math\">30 + 40 = 70</span>."
+        },
+        {
+          "term": "Order of magnitude",
+          "definition": "The rough size of a number. Is the answer in the tens? Hundreds? Thousands? This is what your gut catches when something feels \"way off.\""
+        },
+        {
+          "term": "Sanity check",
+          "definition": "A fast estimate you do <em>after</em> a calculation to confirm the answer isn't absurd. If your calculator says $4,892 for groceries, your sanity check should scream."
+        },
+        {
+          "term": "Slope (m)",
+          "definition": "A number that describes how steep a line is and which direction it tilts. The letter <em>m</em> is the standard symbol, there's no deep reason for it, it's just tradition."
+        },
+        {
+          "term": "Rise",
+          "definition": "The vertical change between two points. Up is positive, down is negative."
+        },
+        {
+          "term": "Run",
+          "definition": "The horizontal change between two points. Right is positive, left is negative."
+        },
+        {
+          "term": "Rate of change",
+          "definition": "The plain-English version of slope. <em>\"60 mph,\"</em> <em>\"$15 per hour,\"</em> <em>\"3 inches per year\"</em>, all rates of change."
+        },
+        {
+          "term": "Δ (delta)",
+          "definition": "A Greek letter meaning \"change in.\" So <span class=\"lesson-math\">Δy / Δx</span> reads as \"change in y over change in x\", slope, in two characters."
+        },
+        {
+          "term": "Ordered pair",
+          "definition": "A point on a graph, written <span class=\"lesson-math\">(x, y)</span>. Slope needs two of them, that's why the formula has subscripts 1 and 2."
+        },
+        {
+          "term": "Linear model",
+          "definition": "An equation that describes how one quantity changes at a constant rate as another quantity changes. Always takes the form <span class=\"lesson-math\">y = mx + b</span>."
+        },
+        {
+          "term": "Slope-intercept form",
+          "definition": "The format <span class=\"lesson-math\">y = mx + b</span>. It's called this because <em>m</em> is the slope and <em>b</em> is the y-intercept, both ingredients are right there in the equation, no rearranging needed."
+        },
+        {
+          "term": "y-intercept (b)",
+          "definition": "Where the line crosses the y-axis, the value of <em>y</em> when <em>x = 0</em>. In word problems, it's the <em>starting amount</em>, <em>base fee</em>, or <em>fixed cost</em>."
+        },
+        {
+          "term": "Independent variable",
+          "definition": "The input. The thing you control or that \"drives\" the change. Goes on the x-axis."
+        },
+        {
+          "term": "Dependent variable",
+          "definition": "The output. The thing that depends on the input. Goes on the y-axis."
+        },
+        {
+          "term": "Extrapolation",
+          "definition": "Using your model to predict <em>beyond</em> your data. Powerful, but also where models go wrong if the underlying pattern changes."
+        },
+        {
+          "term": "Cell",
+          "definition": "A single box in the grid. Can hold text, a number, or a formula."
+        },
+        {
+          "term": "Cell reference",
+          "definition": "The address of a cell, like <span class=\"lesson-math\">B2</span>. Column letter first, row number second."
+        },
+        {
+          "term": "Formula",
+          "definition": "Anything that starts with <span class=\"lesson-math\">=</span>. Excel calculates the result. Examples: <span class=\"lesson-math\">=A1+5</span>, <span class=\"lesson-math\">=B2*3</span>, <span class=\"lesson-math\">=A2*0.10+25</span>."
+        },
+        {
+          "term": "Function (Excel)",
+          "definition": "A built-in shortcut, like <span class=\"lesson-math\">=SUM(A1:A10)</span>, <span class=\"lesson-math\">=AVERAGE(B2:B20)</span>, <span class=\"lesson-math\">=SLOPE(y, x)</span>, or <span class=\"lesson-math\">=INTERCEPT(y, x)</span>. Same framing as the math <em>f(x)</em> from Lesson 1 (give it inputs, get one output), but more specific: each Excel function is a named tool with a fixed behavior. Use them when you'd rather not write the math by hand."
+        },
+        {
+          "term": "Fill / drag-down",
+          "definition": "Click a cell with a formula, grab the small square at its corner, drag it down. Excel copies the formula to every cell you drag over. adjusting cell references automatically."
+        },
+        {
+          "term": "Trendline",
+          "definition": "A best-fit line drawn through scattered data points on a chart. Right-click a data series → <em>Add Trendline</em> → choose <em>Linear</em>. Check <em>Display Equation on chart</em> to see <span class=\"lesson-math\">y = mx + b</span> printed alongside it. The fastest way to read slope and intercept off real data."
+        },
+        {
+          "term": "Chart",
+          "definition": "A graph generated from your cells. Select the data, click <em>Insert Chart</em>, choose Scatter or Line. Excel draws it for you."
+        }
+      ],
+      "summary_html": "<section style=\"margin-top:24px;\">\n<h2 style=\"font-family:var(--pub-font-serif);font-size:24px;color:var(--pub-text);font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;\">Key formulas</h2>\n<p style=\"font-family:var(--pub-font-serif);color:var(--pub-text-secondary);margin-bottom:18px;\">The moves to memorize. Each one shows up multiple times across the topic.</p>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Function notation</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--pub-text);\">\n<span style=\"color:var(--topic-accent);\">f(x)</span> = the rule applied to input x\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">To evaluate <code>f(2)</code>, substitute 2 wherever you see x in the rule. <code>f(x) = 3x + 5</code> means <code>f(2) = 3(2) + 5 = 11</code>. Same input, same output, every time — that's the definition of a function.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Slope (rate of change)</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--pub-text);text-align:center;padding:8px 0;\">\nm = <span class=\"lesson-frac\"><span class=\"num\">y<sub>2</sub> − y<sub>1</sub></span><span class=\"den\">x<sub>2</sub> − x<sub>1</sub></span></span>\n&nbsp;=&nbsp;\n<span class=\"lesson-frac\"><span class=\"num\">rise</span><span class=\"den\">run</span></span>\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">Pick any two points on the line. Slope is \"how much y changes for every one-unit change in x.\" Positive m = rising left-to-right; negative m = falling.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Slope-intercept form</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:20px;color:var(--pub-text);text-align:center;padding:6px 0;\">\ny = <span style=\"color:var(--topic-accent);\">m</span>x + <span style=\"color:var(--topic-accent);\">b</span>\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\"><strong>m</strong> is the slope (multiplier of x). <strong>b</strong> is the y-intercept (where the line crosses the y-axis). Plug both in and you've described a line.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Three forms of a linear equation</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:1.9;\">\n<strong>Slope-intercept:</strong> &nbsp;y = mx + b<br>\n<strong>Point-slope:</strong> &nbsp;y − y<sub>1</sub> = m(x − x<sub>1</sub>)<br>\n<strong>Standard:</strong> &nbsp;Ax + By = C\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">Slope-intercept is the easiest to graph. Point-slope is best when you have a slope and one point. Standard is what ALEKS sometimes asks you to convert TO or FROM.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Rounding</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--pub-text);\">\ndigit is <span style=\"color:var(--topic-accent);\">5 or more</span> → round up<br>\ndigit is <span style=\"color:var(--topic-accent);\">4 or less</span> → round down\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">Find the rounding place first, then look ONE digit to its right. The digit to the right decides; the rest of the trailing digits don't matter.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Ratio</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--pub-text);\">\n\"A to B\" → <span class=\"lesson-frac\"><span class=\"num\">A</span><span class=\"den\">B</span></span>\n&nbsp;then reduce by GCF\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\"><em>Order matters.</em> \"Green to red\" puts green on top, not red. After writing the ratio, reduce by dividing top and bottom by their greatest common factor (6/9 → 2/3).</div>\n</div>\n</section>\n\n<section style=\"margin-top:42px;\">\n<h2 style=\"font-family:var(--pub-font-serif);font-size:24px;color:var(--pub-text);font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;\">Common mistakes</h2>\n<p style=\"font-family:var(--pub-font-serif);color:var(--pub-text-secondary);margin-bottom:18px;\">The traps that cost real points. Memorize these as much as the formulas.</p>\n\n<ol style=\"font-family:var(--pub-font-serif);font-size:15.5px;line-height:1.7;color:var(--pub-text-secondary);padding-left:24px;\">\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Calling a non-function a function.</strong> If one input maps to two different outputs (like {(1, 2), (1, 5)}), it's NOT a function. Same x = same y, every time.</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Looking at the wrong digit when rounding.</strong> \"Round to the tenth\" means look at the <em>hundredths</em> digit (the one after tenths). Identify the rounding place first, then look one step right.</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Slope sign mistakes.</strong> A line that falls left-to-right has NEGATIVE slope. If your computed slope is positive but the line clearly falls, you swapped (y<sub>2</sub>−y<sub>1</sub>) order.</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Rise/run reversed.</strong> Rise is the vertical change (Δy). Run is the horizontal change (Δx). If your slope is \"1/4\" but should be \"4,\" check which one you put on top.</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Confusing slope and y-intercept.</strong> In <code>y = 2x + 5</code>, slope is 2 and y-intercept is 5. The slope is the multiplier of x; the intercept is the constant added on.</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Plotting slope wrong from the intercept.</strong> Start at the y-intercept, then go UP THE RISE and OVER THE RUN to find a second point. Negative slopes go DOWN and over.</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Ratio in the wrong order.</strong> \"Green to red\" is green/red, not red/green. Read the prompt twice before writing.</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Forgetting to reduce a fraction.</strong> 6/9 is correct as a raw ratio but if the prompt says \"lowest terms,\" divide top and bottom by their GCF: 2/3.</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Function evaluation parentheses.</strong> <code>f(2x)</code> is NOT <code>2·f(x)</code>. Substitute carefully — wherever you see x in the rule, replace it with the entire input.</li>\n<li style=\"margin-bottom:0;\"><strong style=\"color:var(--pub-text);\">Excel: forgot the = sign.</strong> Every formula in Excel starts with <code>=</code>. <code>A2+B2</code> is just text; <code>=A2+B2</code> is the calculation.</li>\n</ol>\n</section>\n\n<section style=\"margin-top:42px;\">\n<h2 style=\"font-family:var(--pub-font-serif);font-size:24px;color:var(--pub-text);font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;\">Quick reference</h2>\n<p style=\"font-family:var(--pub-font-serif);color:var(--pub-text-secondary);margin-bottom:18px;\">The visual + Excel patterns worth keeping at hand.</p>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:10px;text-transform:uppercase;\">Special slopes</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:1.9;\">\n<strong>m = 0</strong> &nbsp;→&nbsp; horizontal line (no rise)<br>\n<strong>m = undefined</strong> &nbsp;→&nbsp; vertical line (no run, division by zero)<br>\n<strong>m &gt; 0</strong> &nbsp;→&nbsp; line rises left-to-right<br>\n<strong>m &lt; 0</strong> &nbsp;→&nbsp; line falls left-to-right\n</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:10px;text-transform:uppercase;\">Reading slope from a graph or table</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:15px;color:var(--pub-text);line-height:1.7;\">\n<strong>From a graph:</strong> pick two clear lattice points. Count rise (vertical) and run (horizontal). Slope = rise/run, with sign matching the direction.<br>\n<strong>From a table:</strong> for any two rows, slope = (Δy)/(Δx). If x-values are equally spaced, slope = the constant difference in y divided by that x-step.\n</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:10px;text-transform:uppercase;\">Function vocabulary</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);line-height:1.7;\">\n<strong>Function</strong> — the rule, named with a letter (f, g, h)<br>\n<strong>Input</strong> — the value you feed in (typically x)<br>\n<strong>Output</strong> — what comes out (typically y or f(x))<br>\n<strong>Evaluate</strong> — plug a specific value in for x<br>\n<strong>Domain</strong> — the set of valid inputs<br>\n<strong>Range</strong> — the set of resulting outputs\n</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:10px;text-transform:uppercase;\">Excel basics</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--pub-text);line-height:1.9;\">\n<strong>=A2+B2</strong> &nbsp;sum two cells<br>\n<strong>=SUM(A2:A10)</strong> &nbsp;sum a range<br>\n<strong>=AVERAGE(B2:B10)</strong> &nbsp;average a range<br>\n<strong>=SLOPE(y_range, x_range)</strong> &nbsp;best-fit slope<br>\n<strong>=INTERCEPT(y_range, x_range)</strong> &nbsp;best-fit y-intercept<br>\n<strong>$A$1</strong> &nbsp;absolute reference (won't shift on copy)\n</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:10px;text-transform:uppercase;\">Two ways to reason</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);line-height:1.7;\">\n<strong>Deductive</strong> — apply a known rule to get a guaranteed answer (the slope formula, plugging into a function)<br>\n<strong>Inductive</strong> — spot a pattern from examples and predict (figuring out a function rule from a table of values)\n</div>\n</div>\n</section>",
+      "sections": [
+        {
+          "id": "sec01",
+          "number": 1,
+          "title": "What is a function?",
+          "slug": "sec01",
+          "objective": "Explore the basics of functions and their uses.",
+          "deck": "A function is one of the simplest, most useful ideas in math, and you've been using them your whole life without knowing the name."
+        },
+        {
+          "id": "sec02",
+          "number": 2,
+          "title": "Two ways to reason",
+          "slug": "sec02",
+          "objective": "Apply deductive and inductive reasoning to solve problems.",
+          "deck": "Every problem you solve uses one of two reasoning moves. Knowing which is which makes you a sharper thinker, in math, and in everything else."
+        },
+        {
+          "id": "sec03",
+          "number": 3,
+          "title": "Close enough",
+          "slug": "sec03",
+          "objective": "Use rounding and estimation to solve application problems.",
+          "deck": "Rounding makes hard numbers easy. Estimation strings them together to predict, and protect you from, every total you'll ever calculate."
+        },
+        {
+          "id": "sec04",
+          "number": 4,
+          "title": "Slope as a rate of change",
+          "slug": "sec04",
+          "objective": "Define the slope as a rate of change.",
+          "deck": "Every \"per\" you've ever said (dollars per hour, miles per gallon, feet per second) is a slope. It's how mathematicians measure change."
+        },
+        {
+          "id": "sec05",
+          "number": 5,
+          "title": "Linear modeling and prediction",
+          "slug": "sec05",
+          "objective": "Use linear modeling to predict outcomes from data.",
+          "deck": "A linear model is just slope plus a starting point. It's everything you've learned in this topic, packed into a single line of math, and it's how a number becomes a forecast."
+        },
+        {
+          "id": "sec06",
+          "number": 6,
+          "title": "Spreadsheets, the finale",
+          "slug": "sec06",
+          "objective": "Use spreadsheet applications: functions, cell references, and basic graphing.",
+          "deck": "You learned the math. Now learn to automate it. A spreadsheet is just a giant grid of functions, and you already know how to write functions."
+        }
+      ]
+    },
+    {
+      "id": "ch02",
+      "number": 2,
+      "title": "Conversions & Budgeting",
+      "desc": "Percent, unit conversions, and building a budget you could actually use — anchored by the first Major Assignment.",
+      "intro_html": "<p>This week is about three moves that show up in adult life everywhere: <strong>percent</strong>, <strong>conversions</strong>, and <strong>budgeting</strong>. By Sunday you'll compute tip and tax in your head, convert any unit to any other unit, and have a real budget you could plug your own numbers into.</p><p>The math is mostly arithmetic. What you're really learning is how to set things up — in your head, on paper, and in Excel — so the math works for you.</p>",
+      "objectives": [
+        "Solve application problems involving percent.",
+        "Convert units using dimensional analysis.",
+        "Convert between fractions, decimals, and percentages.",
+        "Use budgeting techniques to help develop financial literacy skills."
+      ],
+      "glossary": [
+        {
+          "term": "Percent",
+          "definition": "A fraction whose denominator is 100. The <strong>%</strong> symbol means \"divide by 100.\""
+        },
+        {
+          "term": "Base",
+          "definition": "The whole, the 100% reference. In \"$60, 25% off,\" the base is <strong>$60</strong>."
+        },
+        {
+          "term": "Part",
+          "definition": "The piece you're computing or comparing to the base. In the same example, the part (the discount amount) is <strong>$15</strong>."
+        },
+        {
+          "term": "Decimal form",
+          "definition": "A percent rewritten without the % sign. <span class=\"lesson-math\">25% = 0.25</span>. Always shift the decimal two places to the left."
+        },
+        {
+          "term": "Fraction",
+          "definition": "A ratio: top over bottom (numerator over denominator). <span class=\"lesson-math\">1/4</span> means 1 part out of 4 equal parts."
+        },
+        {
+          "term": "Decimal",
+          "definition": "Place value to the right of the decimal point: tenths, hundredths, thousandths. <span class=\"lesson-math\">0.25</span> means two tenths plus five hundredths."
+        },
+        {
+          "term": "Conversion",
+          "definition": "The move you make to rewrite a number from one form to another. The recipes: fraction to decimal = divide top by bottom; decimal to percent = multiply by 100; percent to decimal = divide by 100."
+        },
+        {
+          "term": "Markup",
+          "definition": "An <em>increase</em> added to a base price. A store buys an item for $20, marks it up 50%, and sells it for $30."
+        },
+        {
+          "term": "Discount",
+          "definition": "A <em>decrease</em> taken off a base price. A $60 sweater on sale at 30% off costs $42."
+        },
+        {
+          "term": "Tip",
+          "definition": "A percent <em>added</em> to a restaurant bill, usually 15%-20% in the U.S. Math is the same as sales tax."
+        },
+        {
+          "term": "Sales tax",
+          "definition": "A percent <em>added</em> to a purchase price by the state or city. Rates vary, often between 5% and 9%."
+        },
+        {
+          "term": "Percent change",
+          "definition": "The catch-all term for any move that increases or decreases a base by a percent. ALEKS uses this language often."
+        },
+        {
+          "term": "Conversion factor",
+          "definition": "A fraction whose numerator and denominator are equivalent quantities in different units, e.g. <span class=\"lesson-math\">5280 ft / 1 mi</span> or <span class=\"lesson-math\">2.54 cm / 1 in</span>. Always equals 1."
+        },
+        {
+          "term": "Dimensional analysis",
+          "definition": "The formal name for this technique. Set up a chain of conversion factors so the original unit cancels and the target unit survives."
+        },
+        {
+          "term": "Numerator / Denominator",
+          "definition": "Top of the fraction / bottom of the fraction. Which slot a unit lives in determines whether it cancels or survives."
+        },
+        {
+          "term": "Equivalent quantities",
+          "definition": "Two measurements that name the same physical amount: 12 inches and 1 foot, 1000 grams and 1 kilogram, 4 quarts and 1 gallon."
+        },
+        {
+          "term": "Chain",
+          "definition": "Two or more conversion factors multiplied in a row. Cancellation propagates link by link until the surviving unit matches the target."
+        },
+        {
+          "term": "Compound unit",
+          "definition": "A unit that's a ratio of two units: <span class=\"lesson-math\">mph</span> (miles/hour), <span class=\"lesson-math\">$/gal</span> (dollars/gallon), <span class=\"lesson-math\">kg/L</span> (kilograms/liter). Convert the top and the bottom separately."
+        },
+        {
+          "term": "Currency conversion",
+          "definition": "Just unit conversion with money. The exchange rate IS the conversion factor. <span class=\"lesson-math\">1 USD = 0.92 EUR</span> means the factor is <span class=\"lesson-math\">0.92 EUR / 1 USD</span>."
+        },
+        {
+          "term": "Income",
+          "definition": "Money coming in: paycheck, side hustle, gifts. Use <em>take-home</em> pay (after tax) for budgeting, not <em>gross</em>."
+        },
+        {
+          "term": "Expenses",
+          "definition": "Money going out, broken into categories. Rent, food, transport, subscriptions, discretionary spending. Each category is a line item."
+        },
+        {
+          "term": "Fixed vs. variable",
+          "definition": "<strong>Fixed</strong> expenses are the same every month (rent, phone bill, insurance). <strong>Variable</strong> expenses change (groceries, gas, eating out)."
+        },
+        {
+          "term": "Savings rate",
+          "definition": "Savings as a percent of income. <span class=\"lesson-math\">savings / income × 100%</span>. Higher is better. 10-20% is solid for an early-career budget."
+        }
+      ],
+      "summary_html": "<section style=\"margin-top:24px;\">\n<h2 style=\"font-family:var(--pub-font-serif);font-size:24px;color:var(--pub-text);font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;\">Key formulas</h2>\n<p style=\"font-family:var(--pub-font-serif);color:var(--pub-text-secondary);margin-bottom:18px;\">The moves to memorize. Each one shows up multiple times across the topic.</p>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Percent ↔ decimal</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--pub-text);\">\nshift the decimal <strong>two places</strong>:\n<span style=\"color:var(--topic-accent);\">25%</span> ↔ <span style=\"color:var(--topic-accent);\">0.25</span>\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">Decimal → percent: shift right (number gets bigger). Percent → decimal: shift left (number gets smaller). Always two places, never one.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Three percent shapes</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:1.9;\">\nFind the part: <span style=\"color:var(--topic-accent);\">part = rate × base</span> &nbsp;(20% of 50 = 10)<br>\nFind the percent: <span style=\"color:var(--topic-accent);\">rate = part ÷ base × 100</span> &nbsp;(12 is 24% of 50)<br>\nFind the whole: <span style=\"color:var(--topic-accent);\">base = part ÷ rate</span> &nbsp;(8 is 25% of 32)\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">Always convert the percent to a decimal first. Always identify which piece is missing before you decide multiply vs. divide.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Multiplier shortcut</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--pub-text);\">\nPercent <strong>ON</strong>: × <span style=\"color:var(--topic-accent);\">(1 + rate)</span> &nbsp;|&nbsp;\nPercent <strong>OFF</strong>: × <span style=\"color:var(--topic-accent);\">(1 − rate)</span>\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">Tip 18% → ×1.18. Sale 25% off → ×0.75. Stack moves on a single price: $120 × 0.75 × 1.07 = $96.30.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Unit conversion (multiply by 1)</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--pub-text);\">\nA conversion factor (e.g. <span style=\"color:var(--topic-accent);\">5280 ft / 1 mi</span>) equals 1.<br>\nSet it up so the <strong>unwanted unit cancels</strong> on the bottom.<br>\nChain factors when one isn't enough: 5 mi × (5280 ft/mi) × (12 in/ft) = 316,800 in.\n</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Temperature (the exception)</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--pub-text);text-align:center;padding:6px 0;\">\nF = <span style=\"color:var(--topic-accent);\">(9/5) × C + 32</span> &nbsp;|&nbsp; C = <span style=\"color:var(--topic-accent);\">(5/9) × (F − 32)</span>\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">Different zero points means dimensional analysis breaks. Use the formula. Multiply BEFORE you add or subtract.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Budget</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:16px;color:var(--pub-text);\">\nincome = expenses + savings<br>\nsavings rate = <span style=\"color:var(--topic-accent);\">savings ÷ income × 100</span>\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">10–20% savings rate is solid for an early-career budget.</div>\n</div>\n</section>\n\n<section style=\"margin-top:42px;\">\n<h2 style=\"font-family:var(--pub-font-serif);font-size:24px;color:var(--pub-text);font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;\">Common mistakes</h2>\n<p style=\"font-family:var(--pub-font-serif);color:var(--pub-text-secondary);margin-bottom:18px;\">The traps that cost real points. Memorize these as much as the formulas.</p>\n\n<ol style=\"font-family:var(--pub-font-serif);font-size:15.5px;line-height:1.7;color:var(--pub-text-secondary);padding-left:24px;\">\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Forgetting to convert percent to decimal.</strong> 7% of 80 is 0.07 × 80 = 5.6, not 7 × 80 = 560. Always strip the % sign first.</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Shifting the decimal one place instead of two.</strong> 0.4 = 40%, not 4%. 28.5% = 0.285, not 2.85.</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Wrong direction on a discount.</strong> \"30% off\" means you PAY 70%, not 30%. The discount AMOUNT is 30% of price; the FINAL price is what you pay.</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Tax on the wrong price.</strong> When stacking discount + tax, tax applies to the SALE price, not the original. Discount first, then tax.</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Conversion factor upside down.</strong> If you got an answer in weird units (ft²/in or kg²/lb), the fraction was backwards. The unit you want to cancel goes on the BOTTOM.</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Compound units only converted on top.</strong> Converting mph to ft/sec needs BOTH conversions: mi → ft on top, hr → sec on the bottom. Don't forget the time piece.</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Squared units only converted once.</strong> in² to cm² needs the in/cm factor TWICE. The hint to look for: \"one factor is applied twice.\"</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">F↔C order of operations.</strong> Multiply by 9/5 (or 5/9) BEFORE adding or subtracting 32. The parentheses in the formula are not optional.</li>\n<li style=\"margin-bottom:14px;\"><strong style=\"color:var(--pub-text);\">Rounding too early.</strong> When ALEKS says \"do not round,\" carry full precision through every step. Rounding 1.6 to 2 in a speed conversion will throw the answer off by 25%.</li>\n<li style=\"margin-bottom:0;\"><strong style=\"color:var(--pub-text);\">Hand-typing numbers in Excel.</strong> Always reference cells (<code>=A2*0.07</code> or <code>=$B$1*A2</code>) so the formula updates if any input changes. The grader and your future self will thank you.</li>\n</ol>\n</section>\n\n<section style=\"margin-top:42px;\">\n<h2 style=\"font-family:var(--pub-font-serif);font-size:24px;color:var(--pub-text);font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;\">Quick reference</h2>\n<p style=\"font-family:var(--pub-font-serif);color:var(--pub-text-secondary);margin-bottom:18px;\">Conversion factors worth memorizing. ALEKS gives you these in the prompt, but knowing them speeds you up.</p>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:10px;text-transform:uppercase;\">Distance</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:1.9;\">\n1 mi = 5,280 ft &nbsp;·&nbsp; 1 ft = 12 in &nbsp;·&nbsp; 1 yd = 3 ft<br>\n1 in = 2.54 cm &nbsp;·&nbsp; 1 m = 3.28 ft &nbsp;·&nbsp; 1 km = 0.621 mi\n</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:10px;text-transform:uppercase;\">Weight</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:1.9;\">\n1 lb = 16 oz &nbsp;·&nbsp; 1 T = 2,000 lb &nbsp;·&nbsp; 1 kg = 2.2 lb<br>\n1 oz ≈ 28.35 g &nbsp;·&nbsp; 1 g = 1,000 mg\n</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:10px;text-transform:uppercase;\">Volume</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:1.9;\">\n1 gal = 4 qt &nbsp;·&nbsp; 1 qt = 2 pt &nbsp;·&nbsp; 1 cup = 8 fl oz<br>\n1 L ≈ 33.81 fl oz &nbsp;·&nbsp; 1 L ≈ 0.264 gal &nbsp;·&nbsp; 1 tsp ≈ 4.93 mL\n</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:10px;text-transform:uppercase;\">Time</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:1.9;\">\n1 d = 24 h &nbsp;·&nbsp; 1 h = 60 min &nbsp;·&nbsp; 1 min = 60 sec<br>\n1 h = 3,600 sec &nbsp;·&nbsp; 1 yr = 365 d\n</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:10px;text-transform:uppercase;\">Common percents</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:1.9;\">\n50% = 0.5 = 1/2 &nbsp;·&nbsp; 25% = 0.25 = 1/4 &nbsp;·&nbsp; 75% = 0.75 = 3/4<br>\n20% = 0.2 = 1/5 &nbsp;·&nbsp; 33.3% ≈ 0.333 = 1/3 &nbsp;·&nbsp; 10% = 0.1 = 1/10\n</div>\n</div>\n</section>",
+      "sections": [
+        {
+          "id": "sec01",
+          "number": 1,
+          "title": "What is a percent, really?",
+          "slug": "sec01",
+          "objective": "Solve application problems involving percent.",
+          "deck": "Percent is just a fancy way of saying \"out of 100.\" Once that clicks, every percent problem becomes the same simple recipe."
+        },
+        {
+          "id": "sec02",
+          "number": 2,
+          "title": "Three masks, one number.",
+          "slug": "sec02",
+          "objective": "Convert between fractions, decimals, and percentages.",
+          "deck": "Fractions, decimals, and percents are three ways to write the same number. Once you can switch between them on demand, you can pick the form that makes the math easiest."
+        },
+        {
+          "id": "sec03",
+          "number": 3,
+          "title": "Percent in the wild.",
+          "slug": "sec03",
+          "objective": "Apply percent to real-world increase, decrease, tip, and tax.",
+          "deck": "Tip, sales tax, raises, discounts, markup. Different stories, same recipe. This lesson teaches you the move and the one-step shortcut that pays off all term."
+        },
+        {
+          "id": "sec04",
+          "number": 4,
+          "title": "Multiply by 1, in disguise.",
+          "slug": "sec04",
+          "objective": "Convert units using dimensional analysis.",
+          "deck": "Every unit conversion uses the same elegant move: multiply by a fraction equal to 1, written so the unwanted unit cancels. Once you see it, you can convert anything."
+        },
+        {
+          "id": "sec05",
+          "number": 5,
+          "title": "Chain the move.",
+          "slug": "sec05",
+          "objective": "Chain conversions and convert compound units.",
+          "deck": "When one factor isn't enough, stack several. Each one cancels a unit until what's left matches your target. Same recipe as Lesson 4, scaled up."
+        },
+        {
+          "id": "sec06",
+          "number": 6,
+          "title": "Tell your money what to do.",
+          "slug": "sec06",
+          "objective": "Use budgeting techniques to develop financial literacy skills.",
+          "deck": "A budget is a math instrument. It tells your dollars where to go before they vanish. Once you set it up in a spreadsheet, the percent and conversion tricks from this whole topic do the heavy lifting."
+        }
+      ]
+    },
+    {
+      "id": "ch03",
+      "number": 3,
+      "title": "Savings",
+      "desc": "Simple vs. compound interest, the CPI and inflation, and annuity formulas for planning how money grows over time.",
+      "intro_html": "<p>This week is about <strong>how money grows over time</strong>. By Sunday you'll know the difference between simple and compound interest, how an annuity adds up over years of monthly deposits, and why starting earlier matters more than saving more.</p><p>You'll meet three formulas you'll use the rest of the course: simple interest (<em>FV = P(1+rt)</em>), compound interest (<em>FV = P(1+r/n)<sup>nt</sup></em>), and annuity future value. The shapes look heavy on the page; the moves are small.</p>",
+      "objectives": [
+        "Use simple and compound interest formulas to analyze financial issues.",
+        "Explore the relationship between the Consumer Price Index (CPI) and inflation.",
+        "Use the lump sum and annuity formulas to explore methods of financial savings.",
+        "Analyze systems of investments to help develop financial literacy skills."
+      ],
+      "glossary": [
+        {
+          "term": "Principal (P)",
+          "definition": "The starting amount: what you borrowed or deposited. Every formula starts here."
+        },
+        {
+          "term": "Rate (r)",
+          "definition": "The <em>annual</em> interest rate, written as a decimal. 5% becomes <strong>0.05</strong> before it goes into a formula."
+        },
+        {
+          "term": "Time (t)",
+          "definition": "The term of the loan or investment, <em>in years</em>. Six months is 0.5; a decade is 10."
+        },
+        {
+          "term": "Interest (I)",
+          "definition": "The dollar amount of interest itself — the growth in the pile, separate from the principal."
+        },
+        {
+          "term": "Future value (A)",
+          "definition": "The whole pile after interest: principal plus interest. Most ALEKS questions ask for A, not I."
+        },
+        {
+          "term": "Simple interest",
+          "definition": "Interest computed only on the original principal. Doesn't compound."
+        },
+        {
+          "term": "Linear growth",
+          "definition": "Equal additions in equal time periods. The graph is a straight line."
+        },
+        {
+          "term": "Treasury bill (T-bill)",
+          "definition": "Short-term U.S. government debt — typically 4, 13, 26, or 52 weeks. Standard real-world use of simple interest."
+        },
+        {
+          "term": "Term",
+          "definition": "How long the principal is lent or invested, in years. Convert months and days to years before plugging into the formula."
+        },
+        {
+          "term": "Accumulated amount (A)",
+          "definition": "Principal plus interest. <strong>A = P + I</strong>, which factors to <strong>P(1 + rt)</strong>."
+        },
+        {
+          "term": "Compound interest",
+          "definition": "Interest paid on principal plus previously earned interest. The pile grows on itself."
+        },
+        {
+          "term": "Compounding period",
+          "definition": "The interval at which interest is added to the principal. Annual, monthly, daily, or continuous."
+        },
+        {
+          "term": "Compounding frequency (n)",
+          "definition": "Number of compounding periods <em>per year</em>. Annual = 1, semiannual = 2, quarterly = 4, monthly = 12, daily = 365."
+        },
+        {
+          "term": "Continuous compounding",
+          "definition": "The limit case where interest is added instantaneously and continuously. Uses <span class=\"lesson-math\">A = Pe<sup>rt</sup></span>."
+        },
+        {
+          "term": "Euler's number (e)",
+          "definition": "An irrational constant, approximately 2.71828. Appears whenever something grows or decays continuously."
+        },
+        {
+          "term": "APY (Effective Annual Yield)",
+          "definition": "What an account actually pays in a year, with compounding factored in. Always &ge; APR for any n &gt; 1."
+        },
+        {
+          "term": "APR (Nominal rate)",
+          "definition": "The advertised annual rate, before compounding effect. Also called the <em>stated</em> or <em>nominal</em> rate."
+        },
+        {
+          "term": "CPI (Consumer Price Index)",
+          "definition": "The U.S. Bureau of Labor Statistics index tracking the cost of a basket of household goods. The data source for inflation."
+        },
+        {
+          "term": "Inflation",
+          "definition": "The annual percent increase in prices. Computed from CPI: <span class=\"lesson-math\">(CPI<sub>new</sub> / CPI<sub>old</sub>) &minus; 1</span>."
+        },
+        {
+          "term": "Nominal vs. real return",
+          "definition": "<strong>Nominal</strong> is the headline rate. <strong>Real</strong> is what's left after subtracting inflation. Real is what your <em>purchasing power</em> actually did."
+        },
+        {
+          "term": "Lump sum",
+          "definition": "One deposit, left to grow. Future value comes from the compound interest formula."
+        },
+        {
+          "term": "Annuity",
+          "definition": "A series of equal periodic payments — weekly, monthly, or annually — into a savings or investment account."
+        },
+        {
+          "term": "Periodic payment (M)",
+          "definition": "The amount of each regular deposit. The ALEKS dictionary uses <em>M</em>; some textbooks use <em>PMT</em>."
+        },
+        {
+          "term": "Time horizon",
+          "definition": "How long the money has to grow. Lengthening <em>t</em> beats raising <em>r</em> for long-term saving."
+        },
+        {
+          "term": "Emergency fund",
+          "definition": "3 to 6 months of expenses, kept liquid. The first savings goal — before any longer-term investing makes sense."
+        },
+        {
+          "term": "HYSA (high-yield savings account)",
+          "definition": "An online savings account paying APYs near the federal funds rate. Where short-term savings live."
+        },
+        {
+          "term": "CD (certificate of deposit)",
+          "definition": "A time deposit with a fixed term and rate. Can't withdraw early without penalty. Used for mid-term goals."
+        },
+        {
+          "term": "IRA / 401(k)",
+          "definition": "Retirement accounts with tax advantages. Where long-term savings compound for decades. Topic 7 covers what to put inside them."
+        }
+      ],
+      "summary_html": "<section style=\"margin-top:24px;margin-bottom:36px;\">\n<div style=\"border:1px solid var(--pub-border);border-left:3px solid var(--topic-accent);background:var(--pub-surface);border-radius:6px;padding:20px 26px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:8px;\">Compute, don't memorize</div>\n<p style=\"font-family:var(--pub-font-serif);font-size:16px;color:var(--pub-text);line-height:1.55;margin:0 0 14px;max-width:64ch;\">Plug in your numbers and get the answer in either direction. The web tool solves for any variable; the Excel workbook is yours to keep.</p>\n<div class=\"lesson-tool-cta-wrap\" style=\"display:flex;flex-wrap:wrap;gap:18px;margin-top:0;\">\n<a class=\"lesson-tool-cta\" href=\"/tools/financial-formulas\">\n<span class=\"arrow\">▸</span> Open the Financial Formulas Calculator\n</a>\n<a class=\"lesson-tool-cta\" href=\"/static/templates/financial_formulas.xlsx\" download>\n<span class=\"arrow\">▼</span> Download the Excel workbook\n</a>\n</div>\n</div>\n</section><section style=\"margin-top:24px;\">\n<h2 style=\"font-family:var(--pub-font-serif);font-size:24px;color:var(--pub-text);font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;\">Key formulas (ALEKS dictionary)</h2>\n<p style=\"font-family:var(--pub-font-serif);color:var(--pub-text-secondary);margin-bottom:18px;\">The exact formulas the ALEKS test expects. Variable names match the on-screen reference so you can jump from this page to the dictionary without re-mapping anything.</p>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Simple interest</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--pub-text);line-height:1.7;\">\nI = Prt &nbsp;·&nbsp; A = P(1 + rt)\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">No compounding. Use for short-term loans, T-bills, and most ALEKS warmup problems.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Compound interest</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--pub-text);line-height:1.7;\">\nA = P(1 + r/n)<sup>nt</sup>\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">Discrete compounding. <em>n</em> = periods per year (annual = 1, monthly = 12, daily = 365).</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Continuous compounding</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--pub-text);line-height:1.7;\">\nA = Pe<sup>rt</sup>\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">The limit of compound interest as <em>n</em> → ∞. <em>e</em> ≈ 2.71828 is Euler's number.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Future value of an annuity</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--pub-text);line-height:1.7;\">\nA = M[(1 + r/n)<sup>nt</sup> − 1] / (r/n)\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">A series of equal payments <em>M</em> compounded over <em>nt</em> periods. Use for monthly contributions to a retirement account.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Effective annual yield (APY)</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--pub-text);line-height:1.7;\">\nY = (1 + r/n)<sup>n</sup> − 1\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">What a savings account <em>actually</em> pays in a year, with compounding factored in. Use APY (not APR) to compare two accounts.</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px dashed var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Loan amortization → Topic 4</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:1.7;\">\nM = P(r/12) / (1 − (1 + r/12)<sup>−12t</sup>)\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">In the dictionary but lives in <strong>Topic 4 (Loans)</strong> — see that topic's cheat sheet for the worked version.</div>\n</div>\n</section>\n\n<section style=\"margin-top:32px;\">\n<h2 style=\"font-family:var(--pub-font-serif);font-size:24px;color:var(--pub-text);font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;\">Variable legend</h2>\n<p style=\"font-family:var(--pub-font-serif);color:var(--pub-text-secondary);margin-bottom:18px;\">Same names as the ALEKS dictionary so the formulas above read identically on the test.</p>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:2;\">\n<strong>P</strong> = principal &nbsp;·&nbsp; <strong>I</strong> = simple interest &nbsp;·&nbsp; <strong>r</strong> = annual interest rate (decimal)<br>\n<strong>t</strong> = time, in years &nbsp;·&nbsp; <strong>A</strong> = future value or amount accumulated<br>\n<strong>n</strong> = compounding periods per year &nbsp;·&nbsp; <strong>e</strong> = Euler's number (≈ 2.71828)<br>\n<strong>M</strong> = installment payment or periodic deposit &nbsp;·&nbsp; <strong>Y</strong> = effective annual yield (APY)\n</div>\n</div>\n</section>\n\n<section style=\"margin-top:32px;\">\n<h2 style=\"font-family:var(--pub-font-serif);font-size:24px;color:var(--pub-text);font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;\">Common compounding values of <em>n</em></h2>\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:1.9;\">\nannually = 1 &nbsp;·&nbsp; semiannually = 2 &nbsp;·&nbsp; quarterly = 4<br>\nmonthly = 12 &nbsp;·&nbsp; weekly = 52 &nbsp;·&nbsp; daily = 365<br>\ncontinuously → use A = Pe<sup>rt</sup> instead\n</div>\n</div>\n</section>\n\n<section style=\"margin-top:32px;\">\n<h2 style=\"font-family:var(--pub-font-serif);font-size:24px;color:var(--pub-text);font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;\">Common slips</h2>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Forgot to convert the rate</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text);\">5% goes into the formula as <strong>0.05</strong>, not 5. Always.</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Mixed up A and I</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text);\"><em>I</em> is just the interest, <em>A</em> is principal + interest. ALEKS questions usually ask for <em>A</em>.</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Months instead of years</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text);\"><em>t</em> is in <strong>years</strong>. 18 months is 1.5, not 18. Convert before plugging in.</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Compared APRs instead of APYs</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text);\">Two accounts with different compounding schedules need APY for a fair compare. APR alone hides the compounding difference.</div>\n</div>\n</section>",
+      "sections": [
+        {
+          "id": "sec01",
+          "number": 1,
+          "title": "What interest actually is.",
+          "slug": "sec01",
+          "objective": "Set up interest problems by identifying principal, rate, and time, and distinguish simple interest from the total accumulated amount.",
+          "deck": "Before any formula, four words: principal, rate, time, interest. Once you name them, every calculation in this topic becomes a recipe."
+        },
+        {
+          "id": "sec02",
+          "number": 2,
+          "title": "Simple interest, the warmup formula.",
+          "slug": "sec02",
+          "objective": "Apply the simple interest formula I = Prt and the accumulated-amount formula A = P(1 + rt) to short-term lending and saving problems.",
+          "deck": "Multiply principal by rate by time. That's it. Simple interest grows in a straight line — no compounding, no surprises."
+        },
+        {
+          "id": "sec03",
+          "number": 3,
+          "title": "Compound interest, and where it leads.",
+          "slug": "sec03",
+          "objective": "Apply the compound interest formula at any compounding frequency, and recognize continuous compounding as its limit.",
+          "deck": "Interest earning interest. Run the same formula at four different compounding frequencies and watch the values converge — toward continuous compounding, the limit case."
+        },
+        {
+          "id": "sec04",
+          "number": 4,
+          "title": "The rate you really earn.",
+          "slug": "sec04",
+          "objective": "Compute the effective annual yield (APY) and use CPI data to find the real (inflation-adjusted) return on a savings account.",
+          "deck": "The advertised rate isn't what you get. APY adjusts for compounding frequency. Real return adjusts for inflation. Two flavors of the same insight."
+        },
+        {
+          "id": "sec05",
+          "number": 5,
+          "title": "Lump sum vs. annuity.",
+          "slug": "sec05",
+          "objective": "Use the lump-sum and annuity future-value formulas to project savings forward across long time horizons.",
+          "deck": "One deposit or many. Both grow with compound interest, but the formulas look different because of how the deposits stack up over time."
+        },
+        {
+          "id": "sec06",
+          "number": 6,
+          "title": "Build a savings plan.",
+          "slug": "sec06",
+          "objective": "Plan for short-, medium-, and long-term financial goals using lump-sum and annuity formulas inside savings vehicles.",
+          "deck": "Three goals, three formulas, three time horizons. Emergency fund, mid-term goals, retirement — each one a savings problem with the math you've already learned."
+        }
+      ]
+    },
+    {
+      "id": "ch04",
+      "number": 4,
+      "title": "Loans",
+      "desc": "Short- and long-term loans — auto loans, credit cards, student loans, and mortgages — plus an APA-style written analysis. The heaviest week of the course.",
+      "intro_html": "<p>This week is <strong>loans</strong>. The flip side of savings: instead of money growing for you, money is growing against you on a balance you owe. By Sunday you'll be able to read a monthly payment, total cost, and total interest for any fixed-rate loan &mdash; auto, credit card, student, or mortgage.</p><p>The central formula is the amortization formula: <em>M = P(r/12) / (1 − (1+r/12)<sup>−12t</sup>)</em>. Once you can read it, every loan in your life becomes a known quantity. Topic 3 was the math of growth; Topic 4 is the math of paying it back.</p>",
+      "objectives": [
+        "Compute monthly payments and interest costs of short-term loans such as auto loans or credit cards.",
+        "Find the interest, the balance due, and the minimum monthly payment for loans.",
+        "Analyze the various aspects of long-term loans such as student loans and home mortgages."
+      ],
+      "glossary": [
+        {
+          "term": "Principal (P)",
+          "definition": "The amount you borrowed — the loan amount. Sticker price minus any down payment."
+        },
+        {
+          "term": "Annual rate (r)",
+          "definition": "The annual interest rate as a decimal. 6.5% becomes <strong>0.065</strong>. The amortization formula uses r/12 internally to convert to a monthly periodic rate."
+        },
+        {
+          "term": "Term (t)",
+          "definition": "The length of the loan in <em>years</em>. Auto loans are usually 3-7; mortgages are 15 or 30; credit cards have no fixed term."
+        },
+        {
+          "term": "Monthly payment (M)",
+          "definition": "The fixed amount you pay each month. The amortization formula in Lesson 2 computes this from the other three pieces."
+        },
+        {
+          "term": "Amortize",
+          "definition": "To pay off a loan in fixed payments over time. Each payment is <em>interest first, principal second</em>."
+        },
+        {
+          "term": "Loan amortization formula",
+          "definition": "The expression above. The only formula in the ALEKS dictionary not introduced in T3."
+        },
+        {
+          "term": "Periodic rate (r/12)",
+          "definition": "The monthly interest rate. Annual rate divided by 12 because there are 12 monthly compounding periods per year."
+        },
+        {
+          "term": "Total payments (12t)",
+          "definition": "The total number of monthly payments over the life of the loan. A 5-year auto loan has 60 payments; a 30-year mortgage has 360."
+        },
+        {
+          "term": "Negative exponent",
+          "definition": "<span class=\"lesson-math\">(1 + r/12)<sup>&minus;12t</sup></span> = <span class=\"lesson-math\">1 / (1 + r/12)<sup>12t</sup></span>. Most calculators handle the minus sign correctly; in Excel the syntax is <code>^(-12*t)</code>."
+        },
+        {
+          "term": "Total cost / total interest",
+          "definition": "Total cost of a loan = M &times; 12 &times; t (every payment summed). Total interest = total cost &minus; principal. Both grow fast as <em>t</em> increases."
+        },
+        {
+          "term": "Auto loan",
+          "definition": "A fixed-term loan to buy a vehicle. Term typically 3-7 years; rate depends on credit score and current rates."
+        },
+        {
+          "term": "Down payment",
+          "definition": "Money paid up front. Reduces the principal you finance and the monthly payment that results. Usually 10-20% of sticker price."
+        },
+        {
+          "term": "Sticker price (total cost)",
+          "definition": "The full price of the vehicle. Equals down payment plus the loan amount."
+        },
+        {
+          "term": "Amount financed (P)",
+          "definition": "The principal of the loan. Sticker price minus down payment. This is the P that goes into the amortization formula."
+        },
+        {
+          "term": "Term length",
+          "definition": "The loan duration in years. Longer term means lower monthly payment but more total interest paid."
+        },
+        {
+          "term": "Revolving credit",
+          "definition": "A loan with no fixed term &mdash; you can borrow more, pay down, repeat. Credit cards and home-equity lines of credit are the common examples."
+        },
+        {
+          "term": "APR (credit card)",
+          "definition": "The annual rate the card charges on unpaid balances. Typical range: 18-29%. Divide by 12 for the monthly periodic rate."
+        },
+        {
+          "term": "Minimum payment",
+          "definition": "The smallest payment the card issuer requires each month. Usually 1-3% of balance, plus the interest charged that month. Pays the loan off agonizingly slowly."
+        },
+        {
+          "term": "Interest portion",
+          "definition": "The part of your payment that covers the month's interest charge. Computed first; what's left goes to principal."
+        },
+        {
+          "term": "Principal portion",
+          "definition": "The part of your payment that actually reduces the balance. Equals payment &minus; interest portion."
+        },
+        {
+          "term": "Subsidized loan",
+          "definition": "Federal loan where the government pays interest during in-school years and deferment. Only available to students with demonstrated financial need."
+        },
+        {
+          "term": "Unsubsidized loan",
+          "definition": "Federal loan where interest accrues from disbursement. Available regardless of need."
+        },
+        {
+          "term": "Capitalization",
+          "definition": "Accrued in-school interest gets added to the principal at the start of repayment, increasing the amount you'll pay back. ALEKS uses simple interest (I = Prt) for the in-school accrual; real federal loans accrue daily."
+        },
+        {
+          "term": "Deferment",
+          "definition": "A pause in repayment (e.g. while in school). Subsidized loans don't accrue interest during deferment; unsubsidized loans do."
+        },
+        {
+          "term": "Standard vs Income-Driven Repayment",
+          "definition": "Standard: 10-year fixed term, computed by the L2 formula. IBR (income-driven): monthly payment is a percent of discretionary income, term up to 25 years, with possible forgiveness of remaining balance."
+        },
+        {
+          "term": "Mortgage",
+          "definition": "A long-term loan secured by real estate. Standard terms are 15 or 30 years; the home itself is collateral."
+        },
+        {
+          "term": "Principal/interest split",
+          "definition": "How each monthly payment breaks down. Front-loaded toward interest in early years, back-loaded toward principal in later years."
+        },
+        {
+          "term": "Amortization schedule",
+          "definition": "A row-by-row table of every payment, the interest portion, the principal portion, and the remaining balance. The full visual record of how the loan gets paid off."
+        },
+        {
+          "term": "Escrow",
+          "definition": "An account the lender holds to pay your property taxes and homeowner's insurance. You pay 1/12 of the annual amount each month as part of your mortgage payment."
+        },
+        {
+          "term": "PITI",
+          "definition": "<strong>P</strong>rincipal + <strong>I</strong>nterest + <strong>T</strong>axes + <strong>I</strong>nsurance &mdash; the four components of a typical mortgage payment. When people say &quot;my mortgage&quot; they usually mean PITI."
+        },
+        {
+          "term": "Refinancing",
+          "definition": "Replacing an existing mortgage with a new one, usually at a lower rate. Resets the amortization clock."
+        }
+      ],
+      "summary_html": "<section style=\"margin-top:24px;margin-bottom:36px;\">\n<div style=\"border:1px solid var(--pub-border);border-left:3px solid var(--topic-accent);background:var(--pub-surface);border-radius:6px;padding:20px 26px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.16em;text-transform:uppercase;margin-bottom:8px;\">Compute, don't memorize</div>\n<p style=\"font-family:var(--pub-font-serif);font-size:16px;color:var(--pub-text);line-height:1.55;margin:0 0 14px;max-width:64ch;\">Plug in your numbers and get the answer in either direction. The web tool solves for any variable; the Excel workbook is yours to keep.</p>\n<div class=\"lesson-tool-cta-wrap\" style=\"display:flex;flex-wrap:wrap;gap:18px;margin-top:0;\">\n<a class=\"lesson-tool-cta\" href=\"/tools/financial-formulas\">\n<span class=\"arrow\">▸</span> Open the Financial Formulas Calculator\n</a>\n<a class=\"lesson-tool-cta\" href=\"/static/templates/financial_formulas.xlsx\" download>\n<span class=\"arrow\">▼</span> Download the Excel workbook\n</a>\n</div>\n</div>\n</section><section style=\"margin-top:24px;\">\n<h2 style=\"font-family:var(--pub-font-serif);font-size:24px;color:var(--pub-text);font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;\">Key formulas</h2>\n<p style=\"font-family:var(--pub-font-serif);color:var(--pub-text-secondary);margin-bottom:18px;\">The amortization formula is the only ALEKS dictionary formula we didn't already use in T3. Everything else is per-payment arithmetic built on top of it.</p>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Loan amortization (the central T4 formula)</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--pub-text);line-height:1.7;\">\nM = P(r/12) / (1 &minus; (1 + r/12)<sup>&minus;12t</sup>)\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">P = loan amount, r = annual rate (decimal), t = years. Output: fixed monthly payment M.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Total cost &amp; total interest</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:18px;color:var(--pub-text);line-height:1.7;\">\ntotal cost = M &times; 12 &times; t<br>\ntotal interest = total cost &minus; P\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">A 30-year mortgage at 7% on $300K pays roughly $419K in interest alone &mdash; more than the loan itself.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Per-payment split (mortgage / amortization schedule)</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:1.9;\">\ninterest portion = balance &times; (r/12)<br>\nprincipal portion = M &minus; interest portion<br>\nnew balance = balance &minus; principal portion\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">Apply once for ALEKS Q5 (one mortgage payment). Apply 360 times to build a 30-year amortization schedule.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Credit card statement (one statement period)</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:1.9;\">\ninterest = balance &times; (r/12)<br>\nnew balance = balance + interest &minus; payment\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">Same per-payment split as a mortgage, but applied to a revolving balance with no fixed term. Minimum payments are typically 1-3% of balance, often barely covering the interest charge.</div>\n</div>\n\n<div class=\"lesson-cs-formula\" style=\"border:1px solid var(--topic-accent-strong);background:var(--topic-accent-soft);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--topic-accent);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Down payment &amp; loan amount</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:1.9;\">\nloan amount = sticker price &minus; down payment<br>\nloan amount also = down% × sticker  (when given as %)\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">P in the amortization formula is the amount financed, not the sticker price. Auto loan: 10-20% down typical. Mortgage: 20% conventionally, less with PMI.</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px dashed var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Carry-forward from Topic 3</div>\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:1.7;\">\nA = P(1 + r/n)<sup>nt</sup>  (compound interest)\n</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text-secondary);margin-top:8px;\">Used in <strong>Lesson 5</strong> for unsubsidized student loan interest capitalization. Run T3's compound formula across the in-school years to find the new P for the amortization formula. Full version on the <a href=\"/topics/3/cheat-sheet\" style=\"color:var(--topic-accent);\">Topic 3 cheat sheet</a>.</div>\n</div>\n</section>\n\n<section style=\"margin-top:32px;\">\n<h2 style=\"font-family:var(--pub-font-serif);font-size:24px;color:var(--pub-text);font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;\">Variable legend</h2>\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--pub-text);line-height:2;\">\n<strong>P</strong> = principal (loan amount) &nbsp;·&nbsp; <strong>r</strong> = annual rate (decimal)<br>\n<strong>t</strong> = term in years &nbsp;·&nbsp; <strong>M</strong> = monthly payment<br>\n<strong>r/12</strong> = monthly periodic rate &nbsp;·&nbsp; <strong>12t</strong> = total monthly payments<br>\n<strong>balance</strong> = remaining principal at any point during the loan\n</div>\n</div>\n</section>\n\n<section style=\"margin-top:32px;\">\n<h2 style=\"font-family:var(--pub-font-serif);font-size:24px;color:var(--pub-text);font-weight:600;letter-spacing:-0.01em;margin-bottom:10px;\">Common slips</h2>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Forgot the negative exponent</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text);\">The formula has <em>(1 + r/12)<sup>&minus;12t</sup></em> in the denominator. In Excel that's <code>(1+r/12)^(-12*t)</code>. Drop the minus sign and the answer is wildly off.</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Used the sticker price as P</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text);\">P is the <strong>amount financed</strong>, not the sticker price. Subtract the down payment first.</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Used annual rate where monthly was needed</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text);\">In credit card and mortgage per-payment split: interest = balance × (r/12), <em>not</em> balance × r. The per-period rate is monthly.</div>\n</div>\n\n<div class=\"lesson-cs-ref\" style=\"border:1px solid var(--pub-border);background:var(--pub-surface);border-radius:6px;padding:18px 22px;margin-bottom:14px;\">\n<div style=\"font-family:var(--pub-font-display);font-size:11px;font-weight:600;color:var(--pub-text-muted);letter-spacing:0.12em;margin-bottom:8px;text-transform:uppercase;\">Computed total cost as just M × t (missing × 12)</div>\n<div style=\"font-family:var(--pub-font-serif);font-size:14px;color:var(--pub-text);\">There are <em>12</em> payments per year. Total cost = M &times; 12 &times; t, not M &times; t.</div>\n</div>\n</section>",
+      "sections": [
+        {
+          "id": "sec01",
+          "number": 1,
+          "title": "What a loan is, and what amortization means.",
+          "slug": "sec01",
+          "objective": "Identify the four components of a loan (principal, annual rate, term, monthly payment) and explain how amortization gradually pays down principal over time.",
+          "deck": "Before any formula: four pieces (P, r, t, M) and a concept (amortization). A loan is principal you pay back in fixed monthly chunks; each chunk is part interest, part principal, until the principal hits zero."
+        },
+        {
+          "id": "sec02",
+          "number": 2,
+          "title": "The amortization formula, anatomized.",
+          "slug": "sec02",
+          "objective": "Apply the loan amortization formula to compute the monthly payment given principal, annual rate, and term, and recognize why the formula has a negative exponent in its denominator.",
+          "deck": "M = P(r/12) / (1 − (1+r/12)^(−12t)). Five pieces, one negative exponent, and the whole topic depends on it. Walk through what each part does."
+        },
+        {
+          "id": "sec03",
+          "number": 3,
+          "title": "Auto loans: the standard amortizing loan.",
+          "slug": "sec03",
+          "objective": "Compute monthly payment, total cost, and total interest for an auto loan; analyze the impact of term length and down payment on the loan.",
+          "deck": "Fixed monthly payment, fixed term (typically 3-7 years). Two new pieces enter: down payment, and the difference between sticker price and amount financed."
+        },
+        {
+          "id": "sec04",
+          "number": 4,
+          "title": "Credit cards: the minimum-payment trap.",
+          "slug": "sec04",
+          "objective": "Compute the unpaid balance after a credit card payment and identify why minimum payments dramatically extend the time and total cost of paying off a balance.",
+          "deck": "Revolving credit, no fixed term. The monthly math is deceptively simple — interest portion + principal portion — but minimum payments at 24% APR can trap a $5,000 balance for decades."
+        },
+        {
+          "id": "sec05",
+          "number": 5,
+          "title": "Student loans: subsidized, unsubsidized, repayment plans.",
+          "slug": "sec05",
+          "objective": "Compare subsidized and unsubsidized federal student loans, analyze the effect of interest capitalization on the monthly payment, and identify the standard repayment options.",
+          "deck": "Federal student loans amortize the same way as auto loans, with two twists: interest can accrue during school (unsubsidized) or not (subsidized), and there are multiple repayment plans you can pick at payback."
+        },
+        {
+          "id": "sec06",
+          "number": 6,
+          "title": "Mortgages: 30 years, dollar by dollar.",
+          "slug": "sec06",
+          "objective": "Analyze a mortgage payment as a split between interest and principal, explain how that split shifts over the life of the loan, and identify the major components of total homeownership cost beyond the loan itself.",
+          "deck": "The longest, biggest amortizing loan most people will ever sign for. The new math: the principal/interest split per payment, and what it means that early payments are mostly interest."
+        }
+      ]
+    },
+    {
+      "id": "ch06",
+      "number": 6,
+      "title": "Probability",
+      "desc": "Counting, permutations and combinations, theoretical and experimental probability, and expected value. The math of uncertainty — and the engine behind every insurance premium, lottery ticket, and game of chance.",
+      "intro_html": "<p>This chapter is <strong>probability</strong> &mdash; the math of uncertainty. By the end you'll be fluent in the probability ratio (favorable / total), the fundamental counting principle that powers every &quot;how many possible outcomes&quot; question, permutations vs combinations (does order matter?), and the <em>expected value</em> machine that puts a fair price on any game of chance.</p><p>Chapter 6 is the second half of the data side of the course. Chapter 5 was descriptive &mdash; how to read a data set you already have. Chapter 6 is predictive &mdash; what to expect from a process whose outcome isn't decided yet. Together they give you the tools to read polls, studies, and games of chance with the same fluency a statistician has.</p>",
+      "objectives": [
+        "Compare, compute, and interpret theoretical and empirical probabilities.",
+        "Develop and use the fundamental counting principle.",
+        "Develop a procedure for finding expected value.",
+        "Compute and interpret expected values."
+      ],
+      "glossary": [
+        {
+          "term": "Experiment",
+          "definition": "Any process with an uncertain outcome — rolling a die, drawing a card, spinning a wheel, flipping a coin."
+        },
+        {
+          "term": "Outcome",
+          "definition": "A single possible result of an experiment. A die roll has six outcomes; a card draw has 52."
+        },
+        {
+          "term": "Sample space",
+          "definition": "The set of all possible outcomes of an experiment."
+        },
+        {
+          "term": "Event",
+          "definition": "A subset of the sample space — the outcomes counted as &quot;yes&quot; for a given question."
+        },
+        {
+          "term": "Probability (theoretical)",
+          "definition": "For equally-likely outcomes, P(A) = n(A) / n(S), the count of favorable outcomes divided by the total. Always in [0, 1]."
+        },
+        {
+          "term": "Complement",
+          "definition": "The event A<sup>c</sup> consisting of every outcome not in A. P(A<sup>c</sup>) = 1 &minus; P(A)."
+        },
+        {
+          "term": "Fundamental counting principle",
+          "definition": "For a multi-step process with independent steps, the total number of outcomes is the product of the number of choices at each step."
+        },
+        {
+          "term": "Union (A or B)",
+          "definition": "The event that A or B (or both) occurs. A &cup; B."
+        },
+        {
+          "term": "Intersection (A and B)",
+          "definition": "The event that A and B both occur. A &cap; B."
+        },
+        {
+          "term": "Mutually exclusive",
+          "definition": "Two events that cannot both occur on the same trial. Their intersection is empty, so P(A &cap; B) = 0."
+        },
+        {
+          "term": "Addition rule",
+          "definition": "P(A &cup; B) = P(A) + P(B) &minus; P(A &cap; B). Subtract the overlap once to avoid double-counting."
+        },
+        {
+          "term": "Independent events",
+          "definition": "Two events whose occurrence does not affect each other. For independent A and B, P(A &cap; B) = P(A) &middot; P(B)."
+        },
+        {
+          "term": "Factorial (n!)",
+          "definition": "The product n &middot; (n&minus;1) &middot; ... &middot; 1. Counts the number of orderings of n distinct objects. 0! = 1 by convention."
+        },
+        {
+          "term": "Permutation P(n, r)",
+          "definition": "Number of ordered selections of r items from n distinct items. P(n, r) = n! / (n &minus; r)!."
+        },
+        {
+          "term": "Combination C(n, r)",
+          "definition": "Number of unordered selections of r items from n distinct items. C(n, r) = n! / [(n &minus; r)! &middot; r!]."
+        },
+        {
+          "term": "Random variable",
+          "definition": "A numerical quantity whose value depends on the outcome of a random experiment."
+        },
+        {
+          "term": "Expected value E(X)",
+          "definition": "The probability-weighted average of a random variable: &Sigma; x &middot; P(x). The long-run average per trial."
+        },
+        {
+          "term": "Fair game",
+          "definition": "A game with E(X) = 0; neither player nor opponent has a long-run advantage."
+        },
+        {
+          "term": "Experimental probability",
+          "definition": "The proportion of trials, in a sequence of n repetitions of an experiment, on which the event occurred. Depends on the data, not the structure."
+        },
+        {
+          "term": "Law of Large Numbers",
+          "definition": "As the number of trials grows, the experimental probability of an event converges to the theoretical probability. Convergence, not equality."
+        },
+        {
+          "term": "Standard 52-card deck",
+          "definition": "Four suits (spades, clubs, hearts, diamonds), 13 ranks each. Hearts and diamonds are red; spades and clubs are black. Face cards are the J, Q, K (12 total)."
+        }
+      ],
+      "sections": [
+        {
+          "id": "sec01",
+          "number": 1,
+          "title": "What probability is, and the favorable-over-total ratio",
+          "slug": "sec01",
+          "objective": "Compute the probability of a simple event as the ratio of favorable outcomes to total outcomes, and express the answer as a fraction in lowest terms, a decimal, or a percent.",
+          "deck": "Probability is a number between 0 and 1 that measures how likely an event is to occur. For simple events with equally-likely outcomes, the math reduces to one ratio: favorable outcomes over total outcomes."
+        },
+        {
+          "id": "sec02",
+          "number": 2,
+          "title": "The fundamental counting principle",
+          "slug": "sec02",
+          "objective": "Apply the fundamental counting principle to determine the number of possible outcomes for a multi-step procedure by multiplying the number of choices at each step.",
+          "deck": "When a process has several independent steps, the total number of possible outcomes is the product of the number of choices at each step. The single most-used move in the topic."
+        },
+        {
+          "id": "sec03",
+          "number": 3,
+          "title": "Sample spaces and the addition rule",
+          "slug": "sec03",
+          "objective": "Build a sample space for a single experiment and compute P(A or B) using the addition rule, including the correction for overlap when events are not mutually exclusive.",
+          "deck": "P(A or B) = P(A) + P(B) &minus; P(A and B). Subtracting the overlap once prevents counting the shared outcomes twice. The standard 52-card deck is the canonical training ground."
+        },
+        {
+          "id": "sec04",
+          "number": 4,
+          "title": "Permutations and combinations",
+          "slug": "sec04",
+          "objective": "Distinguish between permutations (order matters) and combinations (order does not), and apply the P(n, r) and C(n, r) formulas to standard selection problems.",
+          "deck": "When choices are made without replacement, the counting principle yields shrinking products. Permutations count ordered arrangements; combinations count unordered selections; the two differ by a factor of r!."
+        },
+        {
+          "id": "sec05",
+          "number": 5,
+          "title": "Expected value",
+          "slug": "sec05",
+          "objective": "Compute the expected value of a discrete random variable as the sum of value &times; probability across all outcomes, and interpret the result as the long-run average per trial.",
+          "deck": "E(X) = &Sigma; x &middot; P(x). The single number that summarizes the long-run average payout of a random process. The math of fair games, insurance premiums, and casino edges."
+        },
+        {
+          "id": "sec06",
+          "number": 6,
+          "title": "Theoretical and experimental probability",
+          "slug": "sec06",
+          "objective": "Compute both theoretical and experimental probability for compound independent events, compare the two, and describe how they converge as the number of trials increases (the Law of Large Numbers).",
+          "deck": "Theoretical probability comes from the structure of the experiment; experimental probability comes from the data of running it. The Law of Large Numbers says that as trials accumulate, the two converge."
+        }
+      ]
+    }
+  ]
+}

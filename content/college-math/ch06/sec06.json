@@ -1,0 +1,114 @@
+{
+  "_locked": false,
+  "_pass": "Pass 1",
+  "id": "college-math-ch06-sec06",
+  "title": "Theoretical and experimental probability",
+  "chapter": 6,
+  "section": 6,
+  "book": "college-math",
+  "deck": "Theoretical probability comes from the structure of the experiment; experimental probability comes from the data of running it. The Law of Large Numbers says that as trials accumulate, the two converge.",
+  "objectives": [
+    "Compute both theoretical and experimental probability for compound independent events, compare the two, and describe how they converge as the number of trials increases (the Law of Large Numbers)."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Every probability statement in the chapters so far has been a <em>theoretical</em> statement, computed from the structure of the experiment itself. The probability that a fair coin lands heads is <em>1/2</em> because the sample space has two equally-likely outcomes and one of them is heads, full stop; we do not need to flip the coin even once to make the claim. But there is a second, distinct sense in which the word &ldquo;probability&rdquo; is used in scientific practice: the <em>experimental</em> probability, computed from the data of actually running the experiment many times and counting how often the event in question occurs."
+    },
+    {
+      "type": "paragraph",
+      "text": "Both quantities are useful, and they answer different questions. Theoretical probability is the prediction; experimental probability is the observation. The two are connected by a deep result called the <em>Law of Large Numbers</em>, which says (in plain English) that as the number of trials grows, the experimental probability of any event converges toward the theoretical probability. This closing section develops both definitions, the multiplication rule for compound events that makes theoretical computations possible at scale, and the long-run agreement that ties experimental observation to theoretical prediction."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.6.1  Two definitions of probability"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The theoretical probability</span> of an event was defined in Section 6.1 as the ratio of favorable outcomes to total outcomes in the sample space, under the assumption that every outcome is equally likely. This is sometimes called the <em>classical</em> or <em>a priori</em> definition: we compute the probability before any data is collected, using only the structure of the experiment."
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The experimental probability</span> of the same event is defined differently: it is the proportion of trials, in a sequence of actual repetitions of the experiment, on which the event occurred. If a coin is flipped 200 times and lands heads on 109 of those flips, the experimental probability of heads in <em>that data set</em> is <em>109/200 = 0.545</em>. The experimental probability depends on the data; a different run of 200 flips would almost certainly produce a different number."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 6.7.</span> The <em>experimental probability</em> of an event <em>A</em>, based on a sequence of <em>n</em> trials of the underlying experiment, is the ratio <em>(number of trials on which A occurred) / n</em>. The experimental probability depends on the particular sequence of trials; the theoretical probability does not.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.6.2  The multiplication rule for independent events"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Two events</span> <em>A</em> and <em>B</em> are called <em>independent</em> when the occurrence of one does not change the probability of the other. Drawing a card from a deck and rolling a die are independent events; the card draw cannot affect the die. Flipping two coins is independent; the first coin's outcome cannot affect the second. By contrast, drawing two cards from the same deck without replacement is not independent; the first draw changes what is available for the second."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Theorem 6.2.</span> <em>(Multiplication rule for independent events.)</em> If two events <em>A</em> and <em>B</em> are independent, then <em>P(A &cap; B) = P(A) &middot; P(B)</em>. The probability that both occur is the product of the individual probabilities.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "The multiplication rule turns many compound probabilities into routine theoretical computations. The probability of rolling two even numbers on two dice is <em>P(even on die 1) &middot; P(even on die 2) = (1/2)(1/2) = 1/4</em>. The probability of drawing an odd ball from {1, 2, 3} and a K-or-J card from {K, Q, J} is <em>P(odd ball) &middot; P(K or J) = (2/3)(2/3) = 4/9</em>. In each case the structure of the experiment supplies the individual probabilities, and the multiplication rule supplies the compound one."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.6.3  The Law of Large Numbers"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The Law of Large Numbers</span> ties the experimental probability of any event to its theoretical probability: as the number of trials grows without bound, the experimental probability of the event approaches the theoretical probability. The statement is not a guarantee about any single run of trials; even after a million trials there will be a small residual difference. The convergence is statistical, not algebraic; the gap shrinks but does not, in any single finite run, vanish."
+    },
+    {
+      "type": "figure",
+      "id": "fig-6.6",
+      "svg": "<svg viewBox=\"0 0 620 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">EXPERIMENTAL CONVERGES TO THEORETICAL</text>\n  <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">the wobbly experimental line settles toward the theoretical line as n grows</text>\n  <line x1=\"60\" y1=\"190\" x2=\"560\" y2=\"190\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n  <line x1=\"60\" y1=\"70\" x2=\"60\" y2=\"190\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n  <line x1=\"60\" y1=\"130\" x2=\"560\" y2=\"130\" stroke=\"#FFB347\" stroke-width=\"2\" stroke-dasharray=\"4,4\"/>\n  <text x=\"570\" y=\"134\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#FFB347\">P = 4/9</text>\n  <path d=\"M 60 80 L 90 175 L 120 105 L 150 160 L 180 115 L 210 150 L 240 122 L 270 142 L 300 128 L 330 138 L 360 130 L 390 135 L 420 131 L 450 134 L 480 131 L 510 133 L 540 132\" fill=\"none\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n  <text x=\"50\" y=\"74\" text-anchor=\"end\" font-family=\"JetBrains Mono, monospace\" font-size=\"9\" fill=\"#5BE3C9\">1.0</text>\n  <text x=\"50\" y=\"134\" text-anchor=\"end\" font-family=\"JetBrains Mono, monospace\" font-size=\"9\" fill=\"#5BE3C9\">0.5</text>\n  <text x=\"50\" y=\"194\" text-anchor=\"end\" font-family=\"JetBrains Mono, monospace\" font-size=\"9\" fill=\"#5BE3C9\">0.0</text>\n  <text x=\"60\" y=\"208\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"9\" fill=\"#95929F\">1</text>\n  <text x=\"180\" y=\"208\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"9\" fill=\"#95929F\">10</text>\n  <text x=\"300\" y=\"208\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"9\" fill=\"#95929F\">100</text>\n  <text x=\"420\" y=\"208\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"9\" fill=\"#95929F\">1,000</text>\n  <text x=\"540\" y=\"208\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"9\" fill=\"#95929F\">10,000</text>\n  <text x=\"310\" y=\"228\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">number of trials (log scale)</text>\n</svg>",
+      "caption": "Figure 6.6. The Law of Large Numbers, plotted. The teal curve is the experimental probability of a single event as more and more trials accumulate; the dashed orange line is the theoretical probability. The experimental curve fluctuates wildly at small <em>n</em> and settles closer to the theoretical line as <em>n</em> grows."
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>The Law of Large Numbers was first proved (in the special case of binary outcomes) by Jacob Bernoulli around 1689 and published posthumously in <em>Ars Conjectandi</em> (1713). The general form was tightened in the twentieth century; the modern textbook versions distinguish between the &ldquo;weak&rdquo; and &ldquo;strong&rdquo; laws, which differ in the precise notion of convergence used.</aside>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">The theoretical probability is the prediction. The experimental probability is the observation. The Law of Large Numbers is the promise that, given enough data, the observation will match the prediction.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Claiming that the Law of Large Numbers guarantees exact equality between the experimental and theoretical probabilities. It does not. The two probabilities <em>approach</em> each other as <em>n</em> grows, but a small residual difference is essentially always present. The correct verbal statement is &ldquo;closer, not equal.&rdquo; A related fallacy is the so-called <em>gambler's fallacy</em>, which holds that an unusual streak of one outcome makes the opposite outcome &ldquo;due&rdquo; on the next trial. The Law of Large Numbers makes no such claim; each future trial is governed by the theoretical probability independently of the past.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 6.6. Balls and cards: both probabilities.</div><p>A bag contains three balls numbered 1, 2, 3. A pack contains three cards labeled K, Q, J. On each trial, one ball is chosen and one card is drawn. After 70 trials, the outcomes (ball-card) are: 1K = 11, 2K = 8, 3K = 9, 1Q = 10, 2Q = 5, 3Q = 8, 1J = 8, 2J = 5, 3J = 6. Find the experimental and theoretical probability that the ball is odd <em>and</em> the card is either K or J.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. Experimental probability.</strong> The favorable outcomes are 1K, 3K, 1J, 3J (odd ball and K-or-J card), with counts <em>11 + 9 + 8 + 6 = 34</em>. The total trials is 70.</p><div class=\"cm-display-math\">P(experimental) = 34/70 &asymp; 0.486</div><p><strong>Step 2. Theoretical probability.</strong> Two independent events: ball is odd, card is K or J. By the multiplication rule:</p><div class=\"cm-display-math\">P(theoretical) = P(odd ball) &middot; P(K or J) = (2/3) &middot; (2/3) = 4/9 &asymp; 0.444</div><p><strong>Step 3. Compare.</strong> The experimental value <em>0.486</em> is close to the theoretical value <em>0.444</em>, off by about <em>0.04</em>. By the Law of Large Numbers, this gap should shrink (in expectation) as the number of trials grows.</p><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>Both numbers are valid probabilities, but they answer different questions. The experimental value reports what actually happened in this particular 70-trial run; the theoretical value reports what should happen in any sufficiently long run.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>Insurance actuaries, public-health epidemiologists, and quality-control engineers all rely on the Law of Large Numbers to keep their organizations solvent. A single coin flip is unpredictable; ten thousand coin flips are highly predictable in aggregate. The same principle scales up: a single insurance claim is unpredictable in timing and size; ten thousand claims across the company's book of business have an aggregate behavior the actuary can price against. Casinos depend on the same convergence: every single bet has high variance, but a million bets settled at the same edge produce a remarkably consistent profit margin.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>A coin is flipped 200 times; it lands heads on 109 of the flips. Compute the experimental probability of heads, rounded to the nearest thousandth.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 0.545. <em>109/200 = 0.545</em>. Slightly above the theoretical 0.500; the gap should shrink with more flips.</p></details></li><li><p>Two fair dice are rolled. Compute the theoretical probability that both show even numbers.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 1/4. The two events are independent: <em>P(both even) = (1/2)(1/2) = 1/4 = 0.250</em>.</p></details></li><li><p>True or false: the Law of Large Numbers guarantees that the experimental and theoretical probabilities will eventually be exactly equal.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> False. The Law of Large Numbers guarantees convergence, not equality. Even at very large <em>n</em>, a small residual difference is essentially always present.</p></details></li><li><p>If <em>P(A) = 0.4</em>, <em>P(B) = 0.5</em>, and <em>A</em> and <em>B</em> are independent, find <em>P(A and B)</em>.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 0.2. By the multiplication rule for independent events: <em>P(A &cap; B) = (0.4)(0.5) = 0.2</em>.</p></details></li><li><p>A spinner with 5 equal slices (numbered 1 through 5) is spun 80 times and lands on 4 a total of 21 times. Compute the absolute difference <em>|experimental P − theoretical P|</em> for the event &ldquo;land on 4,&rdquo; rounded to the nearest thousandth.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 0.063. The experimental probability is <em>21/80 = 0.2625</em>; the theoretical probability is <em>1/5 = 0.2000</em>; the absolute difference is <em>0.0625</em>, which rounds to 0.063.</p></details></li><li><p>A coin is flipped 10 times and lands heads 6 times. Which probability does the value 0.6 represent: the theoretical probability of heads, the experimental probability of heads, or neither?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> The experimental probability of heads, since <em>6/10 = 0.6</em> was computed from the data. The theoretical probability of heads for a fair coin is <em>0.5</em>, independent of any particular run.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "This section closes the chapter, but probability does not stop at the boundaries of Chapter 6. The expected-value machinery of Section 6.5 reappears in financial mathematics, in actuarial science, and in any decision-theoretic setting where outcomes are uncertain. The Law of Large Numbers underwrites the convergence theorems of inferential statistics. The same favorable-over-total ratio that opened this chapter sits at the heart of hypothesis testing, Bayesian updating, and machine-learning classifiers. Probability is the language in which uncertainty is made quantitative, and every numerate discipline now speaks it."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">6.6</div>"
+    }
+  ]
+}

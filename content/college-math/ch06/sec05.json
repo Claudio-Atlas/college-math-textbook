@@ -1,0 +1,97 @@
+{
+  "_locked": false,
+  "_pass": "Pass 1",
+  "id": "college-math-ch06-sec05",
+  "title": "Expected value",
+  "chapter": 6,
+  "section": 5,
+  "book": "college-math",
+  "deck": "E(X) = Σ x · P(x). The single number that summarizes the long-run average payout of a random process. The math of fair games, insurance premiums, and casino edges.",
+  "objectives": [
+    "Compute the expected value of a discrete random variable as the sum of value × probability across all outcomes, and interpret the result as the long-run average per trial."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "A spinner has six equal slices numbered 1 through 6. Lands on 1, the player wins $1; on 2, $3; on 3, $5; on 4, $7. Lands on 5 or 6, the player loses $8. Four of the six outcomes pay money, so the game appears favorable to the player at first glance. But the two losing outcomes each pay <em>negative</em> eight dollars, a sum more than twice as large in magnitude as any single winning amount. Whether the game is actually a good deal for the player depends on whether the four wins or the two losses come out ahead <em>on average</em>, summed over many spins."
+    },
+    {
+      "type": "paragraph",
+      "text": "The single number that answers this question is the <em>expected value</em>, the probability-weighted average of the outcomes. For the spinner described above, the expected value works out to exactly zero dollars: the game is fair, and a player who runs it many times will finish near their starting balance. We develop the definition, the calculation, and the interpretation in turn."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.5.1  Random variables and expected value"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">A random variable</span> is a numerical quantity whose value depends on the outcome of a random experiment. The payout per spin in the game above is a random variable; the number of heads in ten coin flips is a random variable; the price of a stock at market close tomorrow is a (more complicated) random variable. The random variable takes different values on different trials of the experiment, and each possible value has a probability that reflects how often that outcome occurs."
+    },
+    {
+      "type": "figure",
+      "id": "fig-6.5",
+      "svg": "<svg viewBox=\"0 0 620 260\" xmlns=\"http://www.w3.org/2000/svg\">\n  <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">EXPECTED VALUE TABLE</text>\n  <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">multiply each payoff by its probability, then sum</text>\n  <g font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#95929F\">\n    <text x=\"150\" y=\"70\">slice</text>\n    <text x=\"260\" y=\"70\">payoff x</text>\n    <text x=\"370\" y=\"70\">P(x)</text>\n    <text x=\"480\" y=\"70\">x &middot; P(x)</text>\n  </g>\n  <line x1=\"130\" y1=\"78\" x2=\"540\" y2=\"78\" stroke=\"rgba(255,255,255,0.18)\" stroke-width=\"1\"/>\n  <g font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">\n    <text x=\"150\" y=\"96\">1</text><text x=\"260\" y=\"96\">+$1</text><text x=\"370\" y=\"96\">1/6</text><text x=\"480\" y=\"96\" fill=\"#5BE3C9\">+$0.17</text>\n    <text x=\"150\" y=\"116\">2</text><text x=\"260\" y=\"116\">+$3</text><text x=\"370\" y=\"116\">1/6</text><text x=\"480\" y=\"116\" fill=\"#5BE3C9\">+$0.50</text>\n    <text x=\"150\" y=\"136\">3</text><text x=\"260\" y=\"136\">+$5</text><text x=\"370\" y=\"136\">1/6</text><text x=\"480\" y=\"136\" fill=\"#5BE3C9\">+$0.83</text>\n    <text x=\"150\" y=\"156\">4</text><text x=\"260\" y=\"156\">+$7</text><text x=\"370\" y=\"156\">1/6</text><text x=\"480\" y=\"156\" fill=\"#5BE3C9\">+$1.17</text>\n    <text x=\"150\" y=\"176\">5</text><text x=\"260\" y=\"176\" fill=\"#FF6B8A\">&minus;$8</text><text x=\"370\" y=\"176\">1/6</text><text x=\"480\" y=\"176\" fill=\"#FF6B8A\">&minus;$1.33</text>\n    <text x=\"150\" y=\"196\">6</text><text x=\"260\" y=\"196\" fill=\"#FF6B8A\">&minus;$8</text><text x=\"370\" y=\"196\">1/6</text><text x=\"480\" y=\"196\" fill=\"#FF6B8A\">&minus;$1.33</text>\n  </g>\n  <line x1=\"130\" y1=\"208\" x2=\"540\" y2=\"208\" stroke=\"rgba(255,255,255,0.18)\" stroke-width=\"1\"/>\n  <text x=\"150\" y=\"228\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#FFB347\">SUM:</text>\n  <text x=\"480\" y=\"228\" font-family=\"VT323, monospace\" font-size=\"16\" fill=\"#FFB347\">$0.00</text>\n  <text x=\"310\" y=\"252\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">the four winning contributions cancel the two losing contributions exactly</text>\n</svg>",
+      "caption": "Figure 6.5. The expected-value calculation for the spinner game in Example 6.5, organized as a table. Each row contributes one term <em>x &middot; P(x)</em>; the sum across all six rows is the expected value."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 6.6.</span> Let <em>X</em> be a discrete random variable that takes the values <em>x<sub>1</sub>, x<sub>2</sub>, &middot;&middot;&middot;, x<sub>n</sub></em> with probabilities <em>P(x<sub>1</sub>), P(x<sub>2</sub>), &middot;&middot;&middot;, P(x<sub>n</sub>)</em>, respectively. The <em>expected value</em> of <em>X</em>, written <em>E(X)</em> or sometimes <em>&mu;<sub>X</sub></em>, is the probability-weighted sum <em>E(X) = x<sub>1</sub> &middot; P(x<sub>1</sub>) + x<sub>2</sub> &middot; P(x<sub>2</sub>) + &middot;&middot;&middot; + x<sub>n</sub> &middot; P(x<sub>n</sub>) = &Sigma;<sub>i</sub> x<sub>i</sub> &middot; P(x<sub>i</sub>)</em>. The expected value has the same units as the random variable.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>Expected value is often called the <em>mean</em> of the random variable. The word is the same one used for the average of a list of numbers, and the formula is the natural extension: a finite list with each value occurring equally often is averaged by adding the values and dividing by the count, which is exactly the special case of the expected-value formula with uniform probabilities.</aside>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.5.2  The long-run interpretation"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">A common misreading</span> of expected value is to treat it as the most likely outcome of a single trial, or the typical outcome, or some other single-trial summary. It is none of these. The spinner above has an expected value of zero, but no single spin produces zero; every spin pays an amount in the set <em>{+1, +3, +5, +7, &minus;8, &minus;8}</em>. The expected value is the long-run average <em>across many trials</em>, the number that the running average of the payouts will approach as the player keeps spinning."
+    },
+    {
+      "type": "paragraph",
+      "text": "The sign of <em>E(X)</em> classifies the game from the player's point of view. A positive expected value means the player is, on average, ahead after many trials (a favorable game). A negative expected value means the player is, on average, losing money (an unfavorable game). An expected value of exactly zero is a <em>fair</em> game; neither player nor opponent has a long-run advantage."
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">Expected value is not what you should expect to win on any single trial. It is what you should expect, on average, after very many trials.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Confusing expected value with maximum payoff, or with the most-likely outcome, or with the probability of winning. None of these is correct. Expected value is a probability-weighted average of every possible outcome, with the same units as the underlying random variable. A lottery ticket might have a maximum payoff of $1,000,000 and an expected value of <em>&minus;$1.60</em>; the two numbers answer different questions.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 6.5. Debra's spinner.</div><p>Debra spins a spinner with six equal slices numbered 1 through 6. She wins $1 if the spinner stops on 1, $3 on 2, $5 on 3, $7 on 4, and loses $8 if the spinner stops on 5 or 6. Find the expected value per spin and interpret the result.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. List outcomes, payoffs, and probabilities.</strong> Each of the six slices has probability <em>1/6</em>; the payoffs are <em>+1, +3, +5, +7, &minus;8, &minus;8</em>.</p><p><strong>Step 2. Multiply and sum.</strong></p><div class=\"cm-display-math\">E(X) = (+1)(1/6) + (+3)(1/6) + (+5)(1/6) + (+7)(1/6) + (&minus;8)(1/6) + (&minus;8)(1/6) = (1 + 3 + 5 + 7 &minus; 8 &minus; 8) / 6 = 0/6 = $0</div><p><strong>Step 3. Interpret.</strong> The expected value is exactly zero, so the spinner is a fair game; Debra can expect, on average, to break even over many spins.</p><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>On any single spin, Debra wins or loses money; the running balance fluctuates from spin to spin. Across many spins, the average balance change per spin approaches zero, which is the meaning of an expected value of $0.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>Insurance premiums are priced to make the expected value of each policy slightly positive for the insurance company, after accounting for administrative costs and the desired profit margin. State lotteries are run with expected value sharply negative for the buyer, so that the difference between ticket sales and prize payouts funds government revenue. Casino games sit somewhere between, with small negative expected value for the player on every wager, but high variance that creates occasional large individual wins to keep play exciting. In all three cases the mathematics is the same: list outcomes, weight by probability, sum.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>You roll a fair six-sided die. You win $3 if it lands on 1, 2, or 3 and lose $2 if it lands on 4, 5, or 6. Find the expected value of one roll.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> $0.50. <em>E(X) = (3)(3/6) + (&minus;2)(3/6) = (9 &minus; 6)/6 = 3/6 = 0.50</em>. Positive expected value, favorable to the player.</p></details></li><li><p>A coin is flipped. You win $5 on heads and lose $3 on tails. What is the expected value of one flip?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> $1.00. <em>E(X) = (+5)(1/2) + (&minus;3)(1/2) = (5 &minus; 3)/2 = 1.00</em>.</p></details></li><li><p>A lottery ticket costs $2. There is a 1-in-500 chance of winning $200. What is the expected value of buying one ticket, net of the ticket price?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> &minus;$1.60. Net payoff is <em>+$198</em> with probability <em>1/500</em> and <em>&minus;$2</em> with probability <em>499/500</em>: <em>E(X) = 198/500 &minus; 998/500 = &minus;800/500 = &minus;$1.60</em>.</p></details></li><li><p>An insurance company sells a 1-year policy for $300 with a 0.02 probability of paying out a $10,000 benefit. What is the expected value to the company per policy?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> +$100. The company collects $300 always and pays out an expected <em>$10,000 &middot; 0.02 = $200</em>; net <em>E = 300 &minus; 200 = +$100</em>.</p></details></li><li><p>If the expected value of a game is <em>&minus;$0.50</em> per play, what is the player's expected net outcome after 1,000 plays?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> A loss of approximately $500. Expected value is the long-run average per trial; multiplied by 1,000 trials, the expected total is <em>&minus;$500</em>.</p></details></li><li><p>True or false: a game with expected value zero will produce exactly zero net winnings every time it is played. Justify your answer.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> False. A fair game produces zero <em>on average</em> in the long run, but any single trial almost certainly produces a non-zero outcome. The expected value describes the long-run mean, not the single-trial value.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Expected value summarizes a random process by a single number computed from the theoretical probabilities of its outcomes. The closing section of the chapter compares those <em>theoretical</em> probabilities with the <em>experimental</em> probabilities obtained by actually running the experiment many times, and shows how the two are connected by the Law of Large Numbers."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">6.5</div>"
+    }
+  ]
+}

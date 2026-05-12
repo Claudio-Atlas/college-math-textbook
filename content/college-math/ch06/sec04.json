@@ -1,0 +1,114 @@
+{
+  "_locked": false,
+  "_pass": "Pass 1",
+  "id": "college-math-ch06-sec04",
+  "title": "Permutations and combinations",
+  "chapter": 6,
+  "section": 4,
+  "book": "college-math",
+  "deck": "When choices are made without replacement, the counting principle yields shrinking products. Permutations count ordered arrangements; combinations count unordered selections; the two differ by a factor of r!.",
+  "objectives": [
+    "Distinguish between permutations (order matters) and combinations (order does not), and apply the P(n, r) and C(n, r) formulas to standard selection problems."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Fifty athletes compete in a single race; gold, silver, and bronze medals are awarded to the first three finishers. In how many distinct ways can the three medals be distributed? The first-place finisher can be any of the 50 athletes; once gold is decided, second place can be any of the remaining 49; once silver is decided, third can be any of the remaining 48. The product is <em>50 &middot; 49 &middot; 48 = 117,600</em>."
+    },
+    {
+      "type": "paragraph",
+      "text": "Now consider the seemingly similar question: in how many ways can a three-person <em>subcommittee</em> be chosen from the same 50 athletes, with no roles assigned (all three members are equal)? The committee {Alice, Bob, Carol} is the same committee as {Carol, Bob, Alice}, since the seats are interchangeable. Each committee of three was counted six times by the medal calculation (once for each of the <em>3! = 6</em> ways to assign three medals to three specific people), so the committee count is <em>117,600 / 6 = 19,600</em>."
+    },
+    {
+      "type": "paragraph",
+      "text": "The same 50 athletes and the same 3 selections produce two very different answers, because the two questions ask for two different counts. The first counts <em>ordered</em> arrangements (permutations); the second counts <em>unordered</em> selections (combinations). This section develops both formulas and the single litmus test that decides which to apply."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.4.1  Factorials"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The factorial</span> of a non-negative integer <em>n</em>, written <em>n!</em>, is the product of all positive integers from 1 up to <em>n</em>. Thus <em>1! = 1</em>, <em>2! = 2</em>, <em>3! = 6</em>, <em>4! = 24</em>, <em>5! = 120</em>, and so on; the factorials grow very quickly. By convention, <em>0! = 1</em>, a definition that simplifies the formulas of this section. The factorial <em>n!</em> counts the number of ways to arrange <em>n</em> distinct objects in a row: the first slot can be any of the <em>n</em> objects, the second any of the remaining <em>n &minus; 1</em>, and so on down to the last slot, which is forced."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 6.3.</span> For any non-negative integer <em>n</em>, the <em>factorial</em> of <em>n</em> is <em>n! = n &middot; (n &minus; 1) &middot; (n &minus; 2) &middot; &middot;&middot;&middot; &middot; 1</em>, with the convention that <em>0! = 1</em>. The factorial <em>n!</em> is the number of ways to arrange <em>n</em> distinct objects in a row.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.4.2  Permutations: ordered selections"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">A permutation</span> of <em>r</em> items chosen from a pool of <em>n</em> distinct items is an ordered selection: the first item picked, the second item picked, and so on. By the fundamental counting principle, the number of permutations is the product of <em>r</em> shrinking factors starting at <em>n</em>: <em>n &middot; (n &minus; 1) &middot; &middot;&middot;&middot; &middot; (n &minus; r + 1)</em>. This product has a tidy factorial-quotient form."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 6.4.</span> For non-negative integers <em>n</em> and <em>r</em> with <em>r &le; n</em>, the number of <em>permutations</em> of <em>r</em> objects chosen from <em>n</em> distinct objects is <em>P(n, r) = n! / (n &minus; r)! = n &middot; (n &minus; 1) &middot; &middot;&middot;&middot; &middot; (n &minus; r + 1)</em>. The right-hand product has exactly <em>r</em> factors.</div>"
+    },
+    {
+      "type": "figure",
+      "id": "fig-6.4",
+      "svg": "<svg viewBox=\"0 0 620 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">PERMUTATION VS COMBINATION</text>\n  <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">does swapping two picks give a different answer?</text>\n  <text x=\"155\" y=\"70\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#FFB347\" letter-spacing=\"2\">PERMUTATION · ORDER MATTERS</text>\n  <circle cx=\"90\" cy=\"115\" r=\"22\" fill=\"rgba(255,179,71,0.55)\" stroke=\"#FFB347\" stroke-width=\"2\"/>\n  <text x=\"90\" y=\"120\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"16\" fill=\"#1A1628\">G</text>\n  <circle cx=\"155\" cy=\"115\" r=\"22\" fill=\"rgba(149,146,159,0.55)\" stroke=\"#95929F\" stroke-width=\"2\"/>\n  <text x=\"155\" y=\"120\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"16\" fill=\"#1A1628\">S</text>\n  <circle cx=\"220\" cy=\"115\" r=\"22\" fill=\"rgba(196,142,76,0.55)\" stroke=\"#C48E4C\" stroke-width=\"2\"/>\n  <text x=\"220\" y=\"120\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"16\" fill=\"#1A1628\">B</text>\n  <text x=\"155\" y=\"165\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"14\" fill=\"#F4F2F8\">50 &times; 49 &times; 48 = 117,600</text>\n  <text x=\"155\" y=\"190\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#FFB347\">P(50, 3) = 50! / 47!</text>\n  <line x1=\"310\" y1=\"60\" x2=\"310\" y2=\"210\" stroke=\"rgba(255,255,255,0.10)\" stroke-width=\"1\" stroke-dasharray=\"3,4\"/>\n  <text x=\"465\" y=\"70\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#5BE3C9\" letter-spacing=\"2\">COMBINATION · ORDER DOES NOT</text>\n  <rect x=\"400\" y=\"95\" width=\"40\" height=\"40\" fill=\"rgba(91,227,201,0.45)\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n  <text x=\"420\" y=\"122\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"14\" fill=\"#5BE3C9\">&bull;</text>\n  <rect x=\"460\" y=\"95\" width=\"40\" height=\"40\" fill=\"rgba(91,227,201,0.45)\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n  <text x=\"480\" y=\"122\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"14\" fill=\"#5BE3C9\">&bull;</text>\n  <rect x=\"520\" y=\"95\" width=\"40\" height=\"40\" fill=\"rgba(91,227,201,0.45)\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n  <text x=\"540\" y=\"122\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"14\" fill=\"#5BE3C9\">&bull;</text>\n  <text x=\"465\" y=\"165\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"14\" fill=\"#F4F2F8\">117,600 / 3! = 19,600</text>\n  <text x=\"465\" y=\"190\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#5BE3C9\">C(50, 3) = 50! / (47! &middot; 3!)</text>\n</svg>",
+      "caption": "Figure 6.4. The same population of 50 athletes yields two different counts. Three distinguishable medals produce <em>P(50, 3) = 117,600</em> ordered awards; three interchangeable committee seats produce <em>C(50, 3) = 19,600</em> unordered selections. The combination count is the permutation count divided by <em>r! = 3! = 6</em>."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.4.3  Combinations: unordered selections"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">A combination</span> of <em>r</em> items chosen from <em>n</em> is an unordered selection: the set of items picked, with no regard for the sequence in which they were picked. Every combination of <em>r</em> items corresponds to <em>r!</em> different permutations of those items (the <em>r!</em> ways to arrange them in a row). To count combinations, we count permutations and then divide by <em>r!</em> to collapse the redundant orderings into single selections."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 6.5.</span> For non-negative integers <em>n</em> and <em>r</em> with <em>r &le; n</em>, the number of <em>combinations</em> of <em>r</em> objects chosen from <em>n</em> distinct objects is <em>C(n, r) = n! / [(n &minus; r)! &middot; r!] = P(n, r) / r!</em>. The notation <em>C(n, r)</em> is sometimes written <em>&binom;(n, r)</em> or &ldquo;<em>n</em> choose <em>r</em>.&rdquo;</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>The combination count <em>C(n, r)</em> is often called a <em>binomial coefficient</em>. It is the same number that appears as the coefficient of the term <em>x<sup>r</sup>y<sup>n&minus;r</sup></em> in the expansion of <em>(x + y)<sup>n</sup></em>, a relationship known as the Binomial Theorem. The connection is not a coincidence; both interpretations are counting the same set of selections, just dressed in different algebraic clothing.</aside>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">The first question to ask on any &ldquo;how many ways?&rdquo; problem: does swapping two of my picks give me a different answer? If yes, permutation. If no, combination.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Treating a permutation problem as a combination and vice versa. The phrase &ldquo;in how many ways&rdquo; is genuinely ambiguous and decides nothing on its own; the deciding feature is whether the positions or labels in the selection are distinguishable. Medals are distinguishable (gold ≠ silver ≠ bronze) so the medal problem is a permutation; committee seats with no titles are interchangeable so the committee problem is a combination. Always apply the swap test before reaching for a formula.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 6.4. Distributing three medals.</div><p>Fifty athletes run a race; gold, silver, and bronze medals are awarded to the first three finishers. Assuming no ties, in how many distinct ways can the three medals be distributed?</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. Apply the swap test.</strong> Swapping the gold and silver medalists changes who receives the gold medal, so it produces a different outcome. Order matters; the problem is a permutation.</p><p><strong>Step 2. Identify n and r.</strong> Choosing three medalists from 50 athletes gives <em>n = 50</em> and <em>r = 3</em>.</p><p><strong>Step 3. Compute P(n, r).</strong></p><div class=\"cm-display-math\">P(50, 3) = 50 &middot; 49 &middot; 48 = 117,600</div><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>There are <strong>117,600</strong> distinct medal distributions for a single 50-athlete race. If the same three athletes had been chosen for a committee with no roles, the count would have been <em>C(50, 3) = 117,600 / 6 = 19,600</em>, smaller by exactly the factor <em>3!</em>.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>Many lotteries publish their odds in terms of combinations. A typical 6/49 lottery requires the player to choose 6 distinct numbers from 1 to 49; the order of selection is irrelevant. The total number of possible tickets is <em>C(49, 6) = 13,983,816</em>, so the probability of winning the jackpot on a single ticket is roughly 1 in 14 million. The same combinatorial machinery underwrites poker probabilities (a five-card hand is <em>C(52, 5) = 2,598,960</em>), DNA sequence counts in genomics, and pricing of certain financial derivatives.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>Aldo has 15 European cities he would like to visit, but his next vacation has time for only three: one on Monday, one on Tuesday, and one on Wednesday. He will not visit the same city more than once. How many different schedules are possible?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 2,730. The days are distinguishable, so order matters: <em>P(15, 3) = 15 &middot; 14 &middot; 13 = 2,730</em>.</p></details></li><li><p>A club has 12 members and selects a 3-person subcommittee in which all three roles are equal. How many subcommittees are possible?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 220. The seats are interchangeable, so order does not matter: <em>C(12, 3) = (12 &middot; 11 &middot; 10) / 6 = 1,320 / 6 = 220</em>.</p></details></li><li><p>A pizzeria offers 10 toppings. How many different 3-topping pizzas can be made, assuming all toppings are added at once and order does not matter?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 120. <em>C(10, 3) = (10 &middot; 9 &middot; 8) / 6 = 120</em>.</p></details></li><li><p>Compute <em>P(8, 2)</em> and <em>C(8, 2)</em>. How are the two numbers related?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> <em>P(8, 2) = 56</em> and <em>C(8, 2) = 28</em>. They differ by a factor of <em>2! = 2</em>, since each combination of 2 items corresponds to 2 different ordered arrangements.</p></details></li><li><p>Which of the following is a permutation problem (order matters)?</p><ol type=\"A\"><li>Choosing 5 books from a shelf to read on vacation</li><li>Selecting a 4-card hand from a deck of 52</li><li>Assigning 1st, 2nd, and 3rd place to three runners in a race</li><li>Picking 3 toppings for a pizza</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> C. The three places are distinguishable, so swapping two assignments produces a different result.</p></details></li><li><p>A class of 25 elects a President, Vice President, and Secretary; no student holds more than one office. How many ways can the three offices be filled?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 13,800. <em>P(25, 3) = 25 &middot; 24 &middot; 23 = 13,800</em>.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "We now have the tools to count almost any probability sample space we are likely to encounter. Section 6.5 changes register: rather than counting outcomes, we will summarize a random process by a single number, the <em>expected value</em>, that captures the long-run average payout per trial. Expected value is the engine behind insurance pricing, casino edges, and any decision under uncertainty that values long-run outcomes over single-trial ones."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">6.4</div>"
+    }
+  ]
+}

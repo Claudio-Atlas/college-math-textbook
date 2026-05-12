@@ -1,0 +1,97 @@
+{
+  "_locked": false,
+  "_pass": "Pass 1",
+  "id": "college-math-ch06-sec03",
+  "title": "Sample spaces and the addition rule",
+  "chapter": 6,
+  "section": 3,
+  "book": "college-math",
+  "deck": "P(A or B) = P(A) + P(B) − P(A and B). Subtracting the overlap once prevents counting the shared outcomes twice. The standard 52-card deck is the canonical training ground.",
+  "objectives": [
+    "Build a sample space for a single experiment and compute P(A or B) using the addition rule, including the correction for overlap when events are not mutually exclusive."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "A single card is drawn from a shuffled 52-card deck. What is the probability that the card is red <em>or</em> a face card? It is tempting to add the two probabilities directly: red cards make up 26 of the 52, face cards make up 12 of the 52, so the answer might appear to be <em>26/52 + 12/52 = 38/52</em>. That answer is wrong, and the reason it is wrong is the central lesson of this section: six of the cards in the deck are both red <em>and</em> face cards (the jack, queen, and king of hearts; the jack, queen, and king of diamonds), and the naive sum has counted each of those six cards once as a red card and a second time as a face card."
+    },
+    {
+      "type": "paragraph",
+      "text": "The correction is straightforward: subtract the count of the overlap once, so each shared outcome is counted exactly once instead of twice. That correction is the <em>addition rule</em>, the workhorse formula for every question involving the word <em>or</em>."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.3.1  Union, intersection, and the addition rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Given any two events</span> <em>A</em> and <em>B</em> in the same sample space, the <em>union</em> <em>A &cup; B</em> is the event &ldquo;<em>A</em> happens or <em>B</em> happens (or both),&rdquo; the set of all outcomes that lie in at least one of the two events. The <em>intersection</em> <em>A &cap; B</em> is the event &ldquo;<em>A</em> and <em>B</em> both happen,&rdquo; the set of outcomes that lie in both. With this vocabulary in hand, the relationship between the three probabilities is easy to state."
+    },
+    {
+      "type": "figure",
+      "id": "fig-6.3",
+      "svg": "<svg viewBox=\"0 0 620 260\" xmlns=\"http://www.w3.org/2000/svg\">\n  <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">P(A OR B) WITH OVERLAP</text>\n  <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">add the two pieces, then subtract the overlap once</text>\n  <circle cx=\"240\" cy=\"140\" r=\"75\" fill=\"rgba(255,107,138,0.20)\" stroke=\"#FF6B8A\" stroke-width=\"2.5\"/>\n  <circle cx=\"360\" cy=\"140\" r=\"75\" fill=\"rgba(91,227,201,0.20)\" stroke=\"#5BE3C9\" stroke-width=\"2.5\"/>\n  <text x=\"195\" y=\"144\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"18\" fill=\"#FF6B8A\">red only</text>\n  <text x=\"195\" y=\"164\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">20 cards</text>\n  <text x=\"300\" y=\"144\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"18\" fill=\"#F4F2F8\">both</text>\n  <text x=\"300\" y=\"164\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">6 cards</text>\n  <text x=\"405\" y=\"144\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"18\" fill=\"#5BE3C9\">face only</text>\n  <text x=\"405\" y=\"164\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">6 cards</text>\n  <text x=\"180\" y=\"70\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#FF6B8A\" letter-spacing=\"2\">A = RED</text>\n  <text x=\"420\" y=\"70\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#5BE3C9\" letter-spacing=\"2\">B = FACE</text>\n  <text x=\"310\" y=\"230\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"18\" fill=\"#FFB347\">P(A or B) = 26/52 + 12/52 &minus; 6/52 = 32/52 = 8/13</text>\n  <text x=\"310\" y=\"252\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">subtracting the overlap of six red face cards prevents counting them twice</text>\n</svg>",
+      "caption": "Figure 6.3. The deck split two ways. The 26 red cards form one set, the 12 face cards form another, and the intersection (the J, Q, and K of hearts and diamonds) sits at the overlap. The union has 32 cards in total: <em>26 + 12 − 6 = 32</em>."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Theorem 6.1.</span> <em>(The addition rule.)</em> For any two events <em>A</em> and <em>B</em> in the same sample space, <em>P(A &cup; B) = P(A) + P(B) &minus; P(A &cap; B)</em>. The first two terms count every outcome in either event; the subtraction removes the double-counting of outcomes that lie in both.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "Two events are called <em>mutually exclusive</em> when they cannot both occur on the same trial; equivalently, their intersection is empty. For mutually-exclusive events the overlap term in the addition rule is exactly zero, and the rule simplifies to <em>P(A &cup; B) = P(A) + P(B)</em>. Rolling a 3 and rolling a 5 on a single die roll are mutually exclusive (the die shows only one face). Drawing a card and rolling a die are independent of one another, but the two events do happen at the same time, so they are not mutually exclusive."
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>The addition rule is a special case of the more general <em>inclusion-exclusion principle</em>, which extends the same alternating add-and-subtract logic to three or more events. For three events <em>A</em>, <em>B</em>, <em>C</em>: <em>P(A &cup; B &cup; C) = P(A) + P(B) + P(C) &minus; P(A &cap; B) &minus; P(A &cap; C) &minus; P(B &cap; C) + P(A &cap; B &cap; C)</em>. The pattern continues for more events; this textbook stops at two.</aside>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.3.2  The standard 52-card deck"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The standard deck</span> is the most-tested sample space in introductory probability. It contains four <em>suits</em> (spades &spadesuit;, clubs &clubsuit;, hearts &hearts;, and diamonds &diams;) of thirteen cards each; the thirteen <em>ranks</em> are the numbers 2 through 10 and the four named cards Ace, Jack, Queen, and King. Hearts and diamonds are colored red; spades and clubs are colored black. The Jack, Queen, and King are called <em>face cards</em>, three in each suit, twelve in the whole deck. The Ace is not a face card in standard usage. With this structure in mind, single-card draws translate easily into events: &ldquo;red&rdquo; has 26 cards, &ldquo;heart&rdquo; has 13, &ldquo;face&rdquo; has 12, &ldquo;king&rdquo; has 4, &ldquo;red face&rdquo; has 6, and so on."
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">Before you add two probabilities, ask whether the events can both happen. If yes, subtract the overlap. If no, the events are mutually exclusive and the subtraction is not needed.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Forgetting the overlap correction when the two events can both occur. The most-tested instance is <em>P(red or face)</em>: adding 26/52 and 12/52 directly gives 38/52, which counts the six red face cards twice. The correct calculation subtracts <em>P(red and face) = 6/52</em>, yielding 32/52 = 8/13. The same trap appears with <em>P(king or heart)</em>, <em>P(ace or spade)</em>, and any other two-property card question.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 6.3. Face, red, face or red.</div><p>One card is drawn at random from a standard 52-card deck. Find <em>P(face)</em>, <em>P(red)</em>, and <em>P(face or red)</em>. Write each answer as a fraction in lowest terms.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. Compute P(face).</strong> The deck has 12 face cards (three per suit times four suits): <em>P(face) = 12/52 = 3/13</em>.</p><p><strong>Step 2. Compute P(red).</strong> Two of the four suits are red (hearts and diamonds), yielding 26 red cards: <em>P(red) = 26/52 = 1/2</em>.</p><p><strong>Step 3. Identify the overlap.</strong> The cards that are both face and red are the Jack, Queen, and King of hearts and of diamonds, six cards in total: <em>P(face and red) = 6/52 = 3/26</em>.</p><p><strong>Step 4. Apply the addition rule.</strong></p><div class=\"cm-display-math\">P(face or red) = P(face) + P(red) &minus; P(face and red) = 12/52 + 26/52 &minus; 6/52 = 32/52 = 8/13</div><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>The union contains 32 cards: the 26 red cards plus the 6 black face cards (the Jack, Queen, and King of spades and of clubs). The fraction <em>32/52</em> reduces to <em>8/13</em>, completing the calculation.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>Public-health agencies use the addition rule routinely. When a regional report says &ldquo;X percent of adults have diabetes <em>or</em> high blood pressure,&rdquo; the percentage is computed by adding the two prevalences and subtracting the overlap (those who have both). Without that subtraction the headline number would substantially overstate the affected population. The same correction shows up in any survey or census question that asks about two overlapping categories.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>A fair six-sided die is rolled once. What is the probability of rolling a 2 or a 5? Write your answer as a fraction in lowest terms.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 1/3. The two events are mutually exclusive on a single roll, so <em>P(2 or 5) = 1/6 + 1/6 = 2/6 = 1/3</em>.</p></details></li><li><p>One card is drawn from a standard 52-card deck. Find <em>P(king or heart)</em>.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 4/13. By the addition rule, <em>P(king or heart) = 4/52 + 13/52 &minus; 1/52 = 16/52 = 4/13</em>; the single overlap card is the king of hearts.</p></details></li><li><p>One card is drawn from a 52-card deck. Find <em>P(spade or club)</em>.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 1/2. Spades and clubs are mutually exclusive, so <em>P(spade or club) = 13/52 + 13/52 = 26/52 = 1/2</em>.</p></details></li><li><p>Of 30 students in a class, 18 play soccer, 12 play basketball, and 7 play both. A student is chosen at random. Find the probability that the student plays soccer or basketball.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 23/30. <em>P(S or B) = 18/30 + 12/30 &minus; 7/30 = 23/30</em>; the fraction does not reduce.</p></details></li><li><p>If <em>P(A) = 0.4</em>, <em>P(B) = 0.5</em>, and <em>P(A and B) = 0.2</em>, find <em>P(A or B)</em>.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 0.7. By the addition rule, <em>P(A &cup; B) = 0.4 + 0.5 &minus; 0.2 = 0.7</em>.</p></details></li><li><p>True or false: if two events are mutually exclusive, then their probabilities must sum to 1. Justify your answer.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> False. Mutually-exclusive events have an empty intersection, but their probabilities can sum to anything from 0 to 1. They sum to 1 only when the two events together cover the entire sample space (in which case the events are also <em>complementary</em>).</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "The addition rule handles the connective <em>or</em>; in Section 6.4 we turn to questions where the structure is selection without replacement and the connective <em>and</em>. Two related but distinct counts arise from those questions: the count of <em>ordered</em> selections (permutations) and the count of <em>unordered</em> ones (combinations). The factorial function, which the next section introduces, organizes both."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">6.3</div>"
+    }
+  ]
+}

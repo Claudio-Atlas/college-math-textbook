@@ -1,0 +1,102 @@
+{
+  "_locked": false,
+  "_pass": "Pass 1",
+  "id": "college-math-ch06-sec02",
+  "title": "The fundamental counting principle",
+  "chapter": 6,
+  "section": 2,
+  "book": "college-math",
+  "deck": "When a process has several independent steps, the total number of possible outcomes is the product of the number of choices at each step. The single most-used move in the topic.",
+  "objectives": [
+    "Apply the fundamental counting principle to determine the number of possible outcomes for a multi-step procedure by multiplying the number of choices available at each step."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "How many different license plates can a state issue if every plate consists of three letters followed by three digits, and any letter or digit can appear in any position? Listing the sample space outcome by outcome would take longer than the working life of any human alphabetizer; the plates already exist, but no one ever wrote them all down. And yet we can compute the count in one line of arithmetic, because the structure of the problem makes the direct enumeration unnecessary."
+    },
+    {
+      "type": "paragraph",
+      "text": "The mechanism behind this kind of shortcut is the <em>fundamental counting principle</em>, the single most-used tool in all of combinatorics. The principle generalizes a piece of reasoning so commonsense that it is easy to overlook: when a process is built out of independent steps, the number of ways to perform the whole process equals the product of the number of ways to perform each individual step."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.2.1  Multi-step processes and the product rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">A multi-step process</span> is one that can be described by a sequence of choices, each made independently of the others. A diner offering 5 appetizers, 8 entrees, and 4 desserts presents three independent steps; the choice of appetizer does not constrain the choice of entree, and so on. A bank PIN consists of four digits chosen independently; the first digit's value does not change which digits are available for the second. A multi-character license plate is the same idea on a larger scale: six character slots, each filled independently from a fixed alphabet of choices."
+    },
+    {
+      "type": "figure",
+      "id": "fig-6.2",
+      "svg": "<svg viewBox=\"0 0 620 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">SIX SLOTS · MULTIPLY THE CHOICES</text>\n  <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">three letter slots and three digit slots make one license plate</text>\n  <rect x=\"50\" y=\"60\" width=\"70\" height=\"70\" fill=\"rgba(107,199,255,0.15)\" stroke=\"#6BC7FF\" stroke-width=\"2\"/>\n  <text x=\"85\" y=\"95\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"22\" fill=\"#6BC7FF\">26</text>\n  <text x=\"85\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">letters</text>\n  <rect x=\"130\" y=\"60\" width=\"70\" height=\"70\" fill=\"rgba(107,199,255,0.15)\" stroke=\"#6BC7FF\" stroke-width=\"2\"/>\n  <text x=\"165\" y=\"95\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"22\" fill=\"#6BC7FF\">26</text>\n  <text x=\"165\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">letters</text>\n  <rect x=\"210\" y=\"60\" width=\"70\" height=\"70\" fill=\"rgba(107,199,255,0.15)\" stroke=\"#6BC7FF\" stroke-width=\"2\"/>\n  <text x=\"245\" y=\"95\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"22\" fill=\"#6BC7FF\">26</text>\n  <text x=\"245\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">letters</text>\n  <rect x=\"310\" y=\"60\" width=\"70\" height=\"70\" fill=\"rgba(255,179,71,0.15)\" stroke=\"#FFB347\" stroke-width=\"2\"/>\n  <text x=\"345\" y=\"95\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"22\" fill=\"#FFB347\">10</text>\n  <text x=\"345\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">digits</text>\n  <rect x=\"390\" y=\"60\" width=\"70\" height=\"70\" fill=\"rgba(255,179,71,0.15)\" stroke=\"#FFB347\" stroke-width=\"2\"/>\n  <text x=\"425\" y=\"95\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"22\" fill=\"#FFB347\">10</text>\n  <text x=\"425\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">digits</text>\n  <rect x=\"470\" y=\"60\" width=\"70\" height=\"70\" fill=\"rgba(255,179,71,0.15)\" stroke=\"#FFB347\" stroke-width=\"2\"/>\n  <text x=\"505\" y=\"95\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"22\" fill=\"#FFB347\">10</text>\n  <text x=\"505\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">digits</text>\n  <text x=\"125\" y=\"100\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"#95929F\">&times;</text>\n  <text x=\"205\" y=\"100\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"#95929F\">&times;</text>\n  <text x=\"295\" y=\"100\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"#95929F\">&times;</text>\n  <text x=\"385\" y=\"100\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"#95929F\">&times;</text>\n  <text x=\"465\" y=\"100\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"18\" fill=\"#95929F\">&times;</text>\n  <text x=\"310\" y=\"175\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"22\" fill=\"#F4F2F8\">26&sup3; &times; 10&sup3; = 17,576,000</text>\n  <text x=\"310\" y=\"205\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">one plate for every combination of three letters followed by three digits</text>\n</svg>",
+      "caption": "Figure 6.2. The license-plate decomposition. Three slots of 26 letters each and three slots of 10 digits each multiply to 17,576,000 total plates. Each slot is filled independently of the others, which is exactly the condition the fundamental counting principle requires."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 6.2.</span> <em>(Fundamental counting principle.)</em> If a process consists of <em>k</em> independent steps, and step <em>i</em> can be performed in <em>n<sub>i</sub></em> ways, then the total number of distinct ways to perform the entire process is the product <em>n<sub>1</sub> &middot; n<sub>2</sub> &middot; &middot;&middot;&middot; &middot; n<sub>k</sub></em>. The word <em>independent</em> here means that the choice made at any one step does not change the number of choices available at any other step.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>The principle is sometimes called the <em>multiplication rule</em> or the <em>rule of product</em>. All three names refer to the same statement, and all of them point at the same intuition: when independent choices stack, the number of possibilities multiplies rather than adds.</aside>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.2.2  When independence fails"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The phrase &ldquo;independent steps&rdquo;</span> in the principle is doing real work. Consider the variation in which the license-plate problem forbids repeating any character. Now the first slot still has 26 choices, but the second slot has only 25 (any letter except the first), the third has 24, the fourth has 10 digits but the fifth has 9, and so on. The choices are no longer independent: each one reduces the pool available to the next. The counting principle still applies, but with shrinking factors, <em>26 &middot; 25 &middot; 24 &middot; 10 &middot; 9 &middot; 8</em>, instead of the constant ones. This shrinking-choices version is the start of <em>permutations</em>, which we develop in Section 6.4."
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">When choices are independent, multiply the counts. When each choice removes an option from the next, multiply the shrinking counts.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Adding the per-step counts instead of multiplying them. A diner with 5 appetizers, 8 entrees, and 4 desserts does <em>not</em> offer <em>5 + 8 + 4 = 17</em> meals; that count answers the unrelated question &ldquo;how many menu items are listed in total?&rdquo; The number of complete <em>meals</em>, one of each course, is the product <em>5 &middot; 8 &middot; 4 = 160</em>. The error is almost always traceable to ambiguity in the underlying English: &ldquo;or&rdquo; usually means add, &ldquo;and&rdquo; usually means multiply.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 6.2. License plates.</div><p>Each license plate in a certain state consists of six characters: the first three are letters of the English alphabet (26 letters available) and the last three are digits 0 through 9 (10 available). Repeats are allowed in every slot. How many different license plates are possible?</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. Identify the steps.</strong> The plate has six character positions; each one is filled independently of the others. There are six steps.</p><p><strong>Step 2. Count the choices at each step.</strong> Slots one through three have 26 letter choices each. Slots four through six have 10 digit choices each.</p><p><strong>Step 3. Multiply.</strong></p><div class=\"cm-display-math\">total plates = 26 &middot; 26 &middot; 26 &middot; 10 &middot; 10 &middot; 10 = 26&sup3; &middot; 10&sup3; = 17,576 &middot; 1,000 = 17,576,000</div><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>The state can issue just over 17.5 million distinct plates under this format, far more than any single state has ever needed.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>The counting principle quietly underwrites the security analysis of every PIN, password, and key length in modern computing. A 4-digit ATM PIN has <em>10&#x2074; = 10,000</em> possible values, which is why an attacker with physical access to the card can in principle try them all in a few hours. An 8-character password drawn from the 95 printable ASCII characters has <em>95&#x2078; &asymp; 6.6 &middot; 10&#x00B9;&#x2075;</em> possibilities; doubling the length to 16 characters squares that number, which is why length is the single most important password-security knob.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "6.2.3  Tree diagrams for small cases"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">A useful visual</span> for small multi-step problems is the <em>tree diagram</em>: a branching structure with one layer of branches per step, and one leaf at the bottom of each complete path. Flipping a coin twice produces a tree with two branches at the first level (H, T) and two branches at each child (H, T again), for a total of <em>2 &middot; 2 = 4</em> leaves: HH, HT, TH, TT. The tree both confirms the counting-principle multiplication and makes the structure of the sample space transparent. For three or more steps, drawing the full tree becomes impractical and we lean entirely on the multiplication."
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>A bank PIN consists of 4 digits, each from 0 through 9, with repeats allowed. How many distinct PINs are possible?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 10,000. Four independent slots, 10 choices each: <em>10&#x2074; = 10,000</em>.</p></details></li><li><p>A restaurant offers 5 appetizers, 8 entrees, and 4 desserts. A complete meal is one of each. How many distinct meals are possible?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 160. Three independent steps: <em>5 &middot; 8 &middot; 4 = 160</em> meals.</p></details></li><li><p>A 7-digit phone number begins with a digit between 2 and 9 (inclusive) and is followed by six digits each between 0 and 9. How many distinct phone numbers are possible?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 8,000,000. The first slot has 8 choices (digits 2 through 9); each of the next six slots has 10 choices: <em>8 &middot; 10&#x2076; = 8,000,000</em>.</p></details></li><li><p>Two coins are flipped, one after the other. How many distinct ordered outcomes are possible?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 4. Two independent flips, two outcomes each: <em>2 &middot; 2 = 4</em>. The sample space is {HH, HT, TH, TT}.</p></details></li><li><p>True or false: the fundamental counting principle requires that the number of choices at each step be the same. Justify your answer.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> False. The principle only requires that the steps be independent; the per-step counts may vary. A meal with 5 appetizers, 8 entrees, and 4 desserts still has <em>5 &middot; 8 &middot; 4</em> total combinations.</p></details></li><li><p>An outfit consists of one shirt and one pair of pants. A closet has 7 shirts and 3 pairs of pants. How many distinct outfits are possible?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 21. <em>7 &middot; 3 = 21</em> outfits.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Counting outcomes is half the battle. Section 6.3 takes up the question of how to <em>combine</em> two events with the connective <em>or</em>, leading to the addition rule and a correction term for events that overlap. Section 6.4 returns to the counting question with the case of selections without replacement, distinguishing ordered selections (permutations) from unordered ones (combinations)."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">6.2</div>"
+    }
+  ]
+}
