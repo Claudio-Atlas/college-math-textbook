@@ -1,0 +1,93 @@
+{
+  "_locked": false,
+  "_pass": "Pass 1",
+  "id": "college-math-ch07-sec02",
+  "title": "Tax brackets and the marginal rate",
+  "chapter": 7,
+  "section": 2,
+  "book": "college-math",
+  "deck": "Moving into a higher bracket does not mean all your income gets taxed at the higher rate. Only the dollars above the bracket threshold do. The math behind one of the most-misunderstood ideas in personal finance.",
+  "objectives": [
+    "Apply the U.S. progressive income-tax system: identify the marginal tax rate for a given taxable income, distinguish marginal from effective rate, and compute the total tax owed across multiple brackets."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "A co-worker is offered a raise from $46,000 to $48,000 and frets: <em>&ldquo;That will push me into the 22% bracket. I might end up with less take-home pay than before.&rdquo;</em> It is one of the most widespread misconceptions in personal finance, repeated in family dinners and break-room conversations across the country &mdash; and it is mathematically wrong."
+    },
+    {
+      "type": "paragraph",
+      "text": "The U.S. federal income tax is a <em>progressive</em> tax. Each successive slice of income is taxed at its own rate, and moving into a higher bracket affects only the dollars above that bracket's threshold. The dollars below the threshold continue to be taxed exactly as they were. A raise from $46,000 to $48,000 cannot reduce take-home pay; the new $2,000 is taxed at a higher rate than the old earnings, but the old earnings are unaffected. This section develops the bracket math precisely, distinguishes the <em>marginal</em> rate (the rate of the top bracket reached) from the <em>effective</em> rate (total tax divided by total income), and shows why the effective rate is always less than the marginal rate."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "7.2.1  The progressive bracket structure"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The U.S. federal income tax</span> divides each filer's <em>taxable income</em> into slices by bracket thresholds and taxes each slice at its own rate. For a single filer in 2024 the brackets are approximately as follows: 10% on the first $11,600 of taxable income; 12% from $11,600 to $47,150; 22% from $47,150 to $100,525; 24% from $100,525 to $191,950; 32% from $191,950 to $243,725; 35% from $243,725 to $609,350; and 37% above $609,350. (The thresholds are roughly doubled for married-filing-jointly returns and adjusted annually for inflation; the rate schedule has stayed largely fixed since the 2017 Tax Cuts and Jobs Act.)"
+    },
+    {
+      "type": "figure",
+      "id": "fig-7.2",
+      "svg": "<svg viewBox=\"0 0 620 300\" xmlns=\"http://www.w3.org/2000/svg\">\n  <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">THE BRACKET STAIRCASE</text>\n  <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">each slice of income taxed at its own rate &middot; $60,000 example</text>\n  <line x1=\"60\" y1=\"240\" x2=\"560\" y2=\"240\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n  <line x1=\"60\" y1=\"80\" x2=\"60\" y2=\"240\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n  <rect x=\"60\" y=\"200\" width=\"83\" height=\"40\" fill=\"rgba(91,227,201,0.35)\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n  <text x=\"102\" y=\"223\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"13\" fill=\"#5BE3C9\">10%</text>\n  <rect x=\"143\" y=\"180\" width=\"254\" height=\"60\" fill=\"rgba(107,199,255,0.35)\" stroke=\"#6BC7FF\" stroke-width=\"2\"/>\n  <text x=\"270\" y=\"213\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"13\" fill=\"#6BC7FF\">12%</text>\n  <rect x=\"397\" y=\"130\" width=\"92\" height=\"110\" fill=\"rgba(255,179,71,0.45)\" stroke=\"#FFB347\" stroke-width=\"2\"/>\n  <text x=\"443\" y=\"185\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"13\" fill=\"#FFB347\">22%</text>\n  <g font-family=\"JetBrains Mono, monospace\" font-size=\"9\" fill=\"#95929F\" text-anchor=\"middle\">\n    <text x=\"102\" y=\"258\">$0–$11.6K</text>\n    <text x=\"270\" y=\"258\">$11.6K–$47.15K</text>\n    <text x=\"443\" y=\"258\">$47.15K–$60K</text>\n  </g>\n  <line x1=\"489\" y1=\"80\" x2=\"489\" y2=\"130\" stroke=\"#FFB347\" stroke-width=\"2\"/>\n  <text x=\"489\" y=\"74\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"14\" fill=\"#FFB347\" letter-spacing=\"1\">income = $60,000</text>\n  <text x=\"310\" y=\"288\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"14\" fill=\"#F4F2F8\">total tax = $1,160 + $4,266 + $2,827 = <tspan fill=\"#FFB347\">$8,253</tspan></text>\n</svg>",
+      "caption": "Figure 7.2. The bracket staircase. A $60,000 taxable income is split across three brackets: $11,600 taxed at 10%, $35,550 taxed at 12%, and the remaining $12,850 taxed at 22%. The total tax owed is the sum of the three slices."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 7.2.</span> The <em>marginal tax rate</em> is the rate of the highest bracket the taxpayer's income reaches &mdash; equivalently, the rate at which the next dollar earned would be taxed. The <em>effective tax rate</em> is total tax owed divided by total taxable income. In a progressive system, the effective rate is always less than (or equal to) the marginal rate.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "7.2.2  Stair-step calculation"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Computing total tax</span> for a given taxable income is a stair-step calculation: tax each bracket-width slice at that bracket's rate, then sum the results. For an income of $60,000 (still using the 2024 single-filer brackets): the first $11,600 is taxed at 10%, producing $1,160 of tax; the next $35,550 (from $11,600 to $47,150) is taxed at 12%, producing $4,266 of tax; the final $12,850 (from $47,150 to $60,000) is taxed at 22%, producing $2,827 of tax. The total is <em>1,160 + 4,266 + 2,827 = $8,253</em>. The marginal rate is 22% (the top bracket reached). The effective rate is <em>8,253 / 60,000 &asymp; 13.76%</em>, well below the headline &ldquo;22% bracket&rdquo; figure."
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">The marginal rate is what the next dollar costs. The effective rate is what every dollar so far has cost on average. The two are always different in a progressive system.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>State income tax (in most states) layers on top of the federal calculation, often with its own progressive bracket structure. Combining federal + state + FICA, the total marginal rate for a typical middle-class earner is often in the 25%-35% range &mdash; the cumulative tax cost of the next dollar earned. Tax-deferred retirement accounts (401(k)s, traditional IRAs) shield contributions from this combined marginal rate, deferring tax until retirement when the worker is often in a lower bracket.</aside>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Applying a single rate to the entire income. Multiplying $60,000 by 22% gives $13,200, which is what you would owe if the U.S. used a flat tax. The actual progressive calculation gives $8,253 &mdash; almost $5,000 less. Always stair-step across the brackets rather than applying a single rate.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 7.2. Computing tax on $60,000 of taxable income.</div><p>A single filer reports $60,000 of taxable income. Using the 2024 brackets (10% to $11,600; 12% to $47,150; 22% to $100,525), compute the total federal income tax owed, the marginal rate, and the effective rate.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1.</strong> Identify the top bracket reached. $60,000 falls in the 22% bracket, so the marginal rate is 22%. Three brackets are touched.</p><p><strong>Step 2.</strong> Stair-step the tax: 10% &times; $11,600 = $1,160; 12% &times; ($47,150 &minus; $11,600) = 12% &times; $35,550 = $4,266; 22% &times; ($60,000 &minus; $47,150) = 22% &times; $12,850 = $2,827.</p><div class=\"cm-display-math\">total tax = $1,160 + $4,266 + $2,827 = $8,253</div><p><strong>Step 3.</strong> Effective rate = <em>$8,253 / $60,000 &asymp; 0.1376 = 13.76%</em>.</p><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>The taxpayer's headline bracket (22%) and their actual rate of taxation (13.76%) are very different numbers. The headline rate matters for decisions about whether to earn more; the effective rate matters for understanding the overall tax burden.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>The current U.S. bracket structure has seven brackets and dates in roughly its current form to the Tax Cuts and Jobs Act of 2017, with annual inflation adjustments to the thresholds. Pre-2017, the top bracket was 39.6%; the 2017 law reduced it to 37%. The progressive bracket system itself dates to the Sixteenth Amendment to the Constitution (1913), which authorized the federal income tax. Before 1913, the federal government raised most of its revenue from tariffs and excise taxes, and there was no individual income tax in peacetime.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>A single filer has $40,000 of taxable income. Using the 2024 brackets (10% to $11,600; 12% to $47,150), compute the total federal income tax owed.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> $4,568. <em>10% &times; 11,600 = $1,160</em>; <em>12% &times; (40,000 &minus; 11,600) = 12% &times; 28,400 = $3,408</em>; total $4,568.</p></details></li><li><p>What is the marginal rate for a single filer with $75,000 of taxable income (using the 2024 brackets)?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 22%. $75,000 falls inside the 22% bracket (which runs from $47,150 to $100,525), so the rate of the highest bracket reached is 22%.</p></details></li><li><p>True or false: if a raise pushes you into a higher tax bracket, all of your income is taxed at the new higher rate.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> False. Only the income above the bracket threshold is taxed at the new rate; the lower slices continue to be taxed at their original rates. A raise can never reduce take-home pay through bracket effects alone.</p></details></li><li><p>For the single filer with $60,000 of taxable income from Example 7.2, by how much does the effective rate differ from the marginal rate?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 8.24 percentage points. The effective rate is 13.76% and the marginal rate is 22%, a difference of <em>22 &minus; 13.76 = 8.24</em> percentage points.</p></details></li><li><p>Compute the total federal income tax for a single filer with $30,000 of taxable income.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> $3,368. <em>10% &times; $11,600 = $1,160</em>; <em>12% &times; (30,000 &minus; 11,600) = 12% &times; $18,400 = $2,208</em>; total <em>$3,368</em>.</p></details></li><li><p>Which is the correct relationship between the marginal rate and the effective rate in a progressive system?</p><ol type=\"A\"><li>Marginal &lt; effective always</li><li>Effective &lt; marginal always</li><li>The two are equal</li><li>No relationship</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. The effective rate is always less than the marginal rate in a progressive system (with equality only when income lies entirely within the first bracket).</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "The bracket math determines what an individual filer owes for the year. Section 7.3 closes the income-tax half of the chapter by reconciling that owed amount against the withholding accumulated across all the year's paychecks, settling up on April 15 with either a refund or an additional payment."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">7.2</div>"
+    }
+  ]
+}

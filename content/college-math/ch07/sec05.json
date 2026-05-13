@@ -1,0 +1,101 @@
+{
+  "_locked": false,
+  "_pass": "Pass 1",
+  "id": "college-math-ch07-sec05",
+  "title": "Bonds: face value, coupon, yield",
+  "chapter": 7,
+  "section": 5,
+  "book": "college-math",
+  "deck": "A bond is a loan made to a company or government, in exchange for regular interest payments and the return of principal at maturity. The flip side of a stock: lender, not owner.",
+  "objectives": [
+    "Read a bond quote: identify face (par) value, coupon rate, maturity date, and current yield. Compute the annual interest payment and total return on a bond held to maturity."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "When a company wants to raise money, it has two basic options: sell shares of itself (Section 7.4) or sell bonds. Selling bonds means borrowing money from investors in exchange for a promise to pay regular interest and return the principal at a specified future date. Governments do the same: U.S. Treasury bonds, municipal bonds, sovereign debt issued by other countries &mdash; all are the same financial instrument applied at different scales and with different credit profiles."
+    },
+    {
+      "type": "paragraph",
+      "text": "A bond is fundamentally simpler than a stock. When you buy a $1,000 face-value bond with a 5% coupon rate and a 10-year maturity, the terms of the contract are fixed in advance: every year for ten years you receive $50 in interest, and at the end of year ten you get your $1,000 back. The company is contractually obligated to make those payments; if it cannot, it is in default, and you (as a creditor) have legal claims on its assets that stockholders do not. This predictability is the bond's main appeal and the source of its lower expected return compared to stocks."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "7.5.1  Face value, coupon, maturity"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Three numbers</span> fully describe a typical fixed-rate bond. The <em>face value</em> (or <em>par value</em>) is the amount the issuer promises to return at maturity &mdash; almost always $1,000 for U.S. corporate bonds, regardless of what the bond actually trades for. The <em>coupon rate</em> is the annual interest rate, expressed as a percentage of face value; a 5% coupon on a $1,000 bond pays <em>0.05 &times; 1,000 = $50</em> per year. The <em>maturity date</em> (or term, in years) is when the issuer returns the face value and the bond expires."
+    },
+    {
+      "type": "paragraph",
+      "text": "Coupon payments are often made semiannually (half the annual amount every six months), though introductory treatments simplify to annual payments. The coupon rate is set at issuance and does not change for the life of the bond; the bond's market price, however, can drift above or below face value in response to changes in prevailing interest rates."
+    },
+    {
+      "type": "figure",
+      "id": "fig-7.5",
+      "svg": "<svg viewBox=\"0 0 620 300\" xmlns=\"http://www.w3.org/2000/svg\">\n  <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">THE LIFE OF A BOND</text>\n  <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">$1,000 face value &middot; 5% coupon &middot; 10-year maturity</text>\n  <line x1=\"60\" y1=\"200\" x2=\"560\" y2=\"200\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n  <line x1=\"60\" y1=\"190\" x2=\"60\" y2=\"210\" stroke=\"#FFB347\" stroke-width=\"2\"/>\n  <text x=\"60\" y=\"225\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#FFB347\">Year 0</text>\n  <text x=\"60\" y=\"180\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#FFB347\" letter-spacing=\"2\">BUY</text>\n  <text x=\"60\" y=\"160\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"13\" fill=\"#FF6B8A\">&minus;$1,000</text>\n  <g>\n    <line x1=\"110\" y1=\"194\" x2=\"110\" y2=\"206\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n    <text x=\"110\" y=\"187\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"11\" fill=\"#5BE3C9\">+$50</text>\n    <line x1=\"160\" y1=\"194\" x2=\"160\" y2=\"206\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n    <text x=\"160\" y=\"187\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"11\" fill=\"#5BE3C9\">+$50</text>\n    <line x1=\"210\" y1=\"194\" x2=\"210\" y2=\"206\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n    <line x1=\"260\" y1=\"194\" x2=\"260\" y2=\"206\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n    <text x=\"310\" y=\"187\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">$50 every year</text>\n    <line x1=\"360\" y1=\"194\" x2=\"360\" y2=\"206\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n    <line x1=\"410\" y1=\"194\" x2=\"410\" y2=\"206\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n    <text x=\"410\" y=\"187\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"11\" fill=\"#5BE3C9\">+$50</text>\n  </g>\n  <line x1=\"460\" y1=\"190\" x2=\"460\" y2=\"210\" stroke=\"#FFB347\" stroke-width=\"2\"/>\n  <text x=\"460\" y=\"225\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#FFB347\">Year 10</text>\n  <text x=\"510\" y=\"170\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#FFB347\" letter-spacing=\"2\">MATURITY</text>\n  <text x=\"510\" y=\"150\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"13\" fill=\"#5BE3C9\">+$50</text>\n  <text x=\"510\" y=\"130\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"14\" fill=\"#5BE3C9\">+$1,000</text>\n  <text x=\"310\" y=\"260\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"16\" fill=\"#F4F2F8\">total received: 10 &times; $50 + $1,000 = <tspan fill=\"#FFB347\">$1,500</tspan></text>\n  <text x=\"310\" y=\"282\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">$500 of interest earned over 10 years on $1,000 lent</text>\n</svg>",
+      "caption": "Figure 7.5. The life of a typical $1,000 face-value bond with a 5% coupon rate and 10-year maturity. The bondholder pays $1,000 at purchase, receives $50 each year in coupon payments, and receives the $1,000 face value back at maturity. The total received is $1,500."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 7.5.</span> A <em>bond</em> is a fixed-income security: the issuer promises to pay regular <em>coupon</em> payments equal to <em>face value &times; coupon rate</em> per year and to return the <em>face value</em> at maturity. The <em>current yield</em> of a bond is <em>annual coupon / current market price</em>, expressed as a percent; it may differ from the coupon rate if the bond's market price differs from face value.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "7.5.2  Current yield, premium, discount"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">A bond's market price</span> can drift above or below face value in the secondary market, depending on prevailing interest rates. When rates rise, existing bonds with lower coupons become less attractive, and their prices fall (<em>discount bonds</em>, price &lt; $1,000); when rates fall, existing bonds with higher coupons become more attractive, and their prices rise (<em>premium bonds</em>, price &gt; $1,000)."
+    },
+    {
+      "type": "paragraph",
+      "text": "The <em>current yield</em> tracks this price drift. For a discount bond, the fixed annual coupon divided by the discounted price produces a current yield <em>above</em> the coupon rate. For a premium bond, the same coupon divided by the premium price produces a current yield <em>below</em> the coupon rate. A bond trading exactly at face value has a current yield equal to its coupon rate."
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">Coupon rate is fixed at issuance and never changes. Current yield moves inversely with the bond's market price.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>The bond market is enormous &mdash; substantially larger than the stock market by total value outstanding. The U.S. Treasury bond market alone is over $25 trillion. Corporate, municipal, and international bond markets add several trillion more each. Most of this trading is done by institutions (pension funds, insurance companies, mutual funds) rather than individual investors, who typically access bonds through bond mutual funds or exchange-traded funds (ETFs) rather than buying individual issues.</aside>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Confusing coupon rate with current yield. The coupon rate is a fixed feature of the bond contract; it determines the dollar coupon payment. The current yield is a market-derived percent that changes as the bond's price moves. A 5% coupon bond trading at $950 has a current yield of <em>$50/$950 &asymp; 5.26%</em>, not 5%. Reports of &ldquo;bond yields&rdquo; in financial news typically refer to current yield (or yield-to-maturity, a more refined version), not coupon rate.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 7.5. A standard $1,000 corporate bond.</div><p>An investor buys a corporate bond with face value $1,000, coupon rate 5%, and 10-year maturity. The bond currently trades on the secondary market at $950 (a discount). Compute the annual coupon payment, the total interest earned over 10 years if held to maturity, the total amount received, and the current yield.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1.</strong> Annual coupon = <em>face value &times; coupon rate = $1,000 &times; 0.05 = $50</em>.</p><p><strong>Step 2.</strong> Total interest over 10 years = <em>10 &times; $50 = $500</em>.</p><p><strong>Step 3.</strong> Total amount received at maturity = interest + face value = <em>$500 + $1,000 = $1,500</em>.</p><p><strong>Step 4.</strong> Current yield at the discount price = <em>$50 / $950 &asymp; 0.0526 = 5.26%</em>.</p><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>The discount price means a new buyer today earns 5.26% effective yield on their $950 investment, slightly higher than the bond's 5% coupon rate. Plus, at maturity they receive the $1,000 face value back &mdash; a $50 capital gain on top of the coupons collected.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>U.S. Treasury bonds carry effectively zero credit risk (the federal government can print dollars to pay them, and never has defaulted on its debt obligations) and serve as the &ldquo;risk-free rate&rdquo; against which other interest rates are measured. Investment-grade corporate bonds (rated BBB or higher by credit-rating agencies) trade at a small premium above Treasuries to compensate for slightly higher default risk; high-yield (&ldquo;junk&rdquo;) bonds (rated below BBB) trade at substantially higher yields to compensate for meaningful default risk. The spread between corporate and Treasury yields is a closely watched indicator of stress in the credit markets.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>A corporate bond has face value $1,000 and coupon rate 4.5%. What is the annual coupon payment?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> $45. <em>$1,000 &times; 0.045 = $45</em>.</p></details></li><li><p>A bond has face value $1,000, coupon rate 6%, and 8-year maturity. What is the total amount received if held to maturity?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> $1,480. Annual coupon $60 × 8 years = $480 in coupons, plus $1,000 face value = $1,480.</p></details></li><li><p>A bond with face value $1,000 and coupon rate 6% currently trades at $1,050. What is the current yield (to two decimal places)?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 5.71%. <em>$60 / $1,050 = 0.0571 = 5.71%</em>. The premium price produces a current yield below the 6% coupon rate.</p></details></li><li><p>True or false: buying a bond means you become a partial owner of the issuing company.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> False. Buying a bond means lending money to the company; the bondholder is a creditor, not an owner.</p></details></li><li><p>A bond's annual coupon payment is computed against which of the following?</p><ol type=\"A\"><li>Current market price</li><li>Face value</li><li>Current yield</li><li>Maturity date</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. The annual coupon is locked at issuance: <em>face value &times; coupon rate</em>. It does not change as the bond's market price moves. The current yield is the moving number.</p></details></li><li><p>If a bond trades at a discount (price below face value), is the current yield higher or lower than the coupon rate? Explain.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> Higher. The annual coupon is fixed (face × rate); dividing by a smaller denominator (the discounted price) produces a larger yield. The opposite is true for premium bonds.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Stocks and bonds are the two major asset classes. Section 7.6 closes the chapter and the book by combining them into a diversified portfolio. The single biggest decision in personal investing is the <em>asset allocation</em> &mdash; the percentages held in stocks versus bonds &mdash; tuned to the investor's time horizon and tolerance for volatility."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">7.5</div>"
+    }
+  ]
+}

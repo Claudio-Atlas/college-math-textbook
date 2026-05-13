@@ -1,0 +1,97 @@
+{
+  "_locked": false,
+  "_pass": "Pass 1",
+  "id": "college-math-ch07-sec04",
+  "title": "Stocks: shares, dividends, return",
+  "chapter": 7,
+  "section": 4,
+  "book": "college-math",
+  "deck": "A stock is a tiny ownership stake in a company. Its price moves, and along the way the company may pay dividends. The return on an investment is the sum of both pieces.",
+  "objectives": [
+    "Read a stock quote, compute return on investment as the sum of capital gain and dividend income, and distinguish a stock's price from its underlying business value."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "When a company sells <em>shares</em> of itself to the public, every buyer becomes a partial owner. Apple has approximately 15 billion shares outstanding; owning 100 of them makes you a 15-billionth owner of the company, entitled to your proportional sliver of its profits and a vote at its annual meeting. Most individual investors will never come close to a controlling stake in anything, but the math of ownership scales linearly: 100 shares is 100 times what 1 share is, and the return on a thousand-dollar investment scales accordingly."
+    },
+    {
+      "type": "paragraph",
+      "text": "Two things can happen between the day you buy a share of stock and the day you sell it. The price can <em>move</em> &mdash; up if the market thinks the company is worth more than it did when you bought, down if it thinks less. And the company may <em>pay dividends</em> &mdash; regular cash payments to shareholders, funded out of profits. Your <em>total return</em> on the investment is the sum of both effects. This section develops the share-price math, the dividend math, and the combined return-on-investment calculation that lets one compare stock investments to bond investments (Section 7.5) and to any other use of the same capital."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "7.4.1  Shares, price, dividends"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">A share</span> is a unit of corporate ownership. Multiplying the number of shares owned by the current price per share gives the dollar value of the position: 100 shares at $50 per share equals $5,000. The share price moves moment-to-moment in the open market, set by the highest price buyers are willing to pay matched against the lowest price sellers are willing to accept."
+    },
+    {
+      "type": "paragraph",
+      "text": "<em>Dividends</em> are regular cash payments the company makes to each shareholder, usually quarterly, on a per-share basis. If a company pays $0.50 per share each quarter for a year, the annual dividend per share is $2.00, and a holder of 100 shares receives $200 in dividends over the year. Not every company pays dividends; younger, growth-focused companies often reinvest profits internally instead. Mature companies with stable cash flows (utilities, consumer staples, large banks) typically pay substantial dividends."
+    },
+    {
+      "type": "figure",
+      "id": "fig-7.4",
+      "svg": "<svg viewBox=\"0 0 620 300\" xmlns=\"http://www.w3.org/2000/svg\">\n  <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">TOTAL RETURN = CAPITAL GAIN + DIVIDENDS</text>\n  <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">$5,000 invested &middot; one year later</text>\n  <rect x=\"40\" y=\"80\" width=\"160\" height=\"80\" rx=\"8\" fill=\"rgba(107,199,255,0.15)\" stroke=\"#6BC7FF\" stroke-width=\"2\"/>\n  <text x=\"120\" y=\"100\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#6BC7FF\" letter-spacing=\"2\">PURCHASE</text>\n  <text x=\"120\" y=\"125\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"16\" fill=\"#F4F2F8\">100 shares</text>\n  <text x=\"120\" y=\"143\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"14\" fill=\"#6BC7FF\">@ $50 = $5,000</text>\n  <line x1=\"200\" y1=\"120\" x2=\"280\" y2=\"120\" stroke=\"#FFB347\" stroke-width=\"2\"/>\n  <text x=\"240\" y=\"112\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#FFB347\">one year</text>\n  <rect x=\"290\" y=\"70\" width=\"290\" height=\"50\" rx=\"6\" fill=\"rgba(91,227,201,0.15)\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n  <text x=\"310\" y=\"90\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#5BE3C9\" letter-spacing=\"2\">CAPITAL GAIN</text>\n  <text x=\"570\" y=\"90\" text-anchor=\"end\" font-family=\"VT323, monospace\" font-size=\"14\" fill=\"#5BE3C9\">+$800</text>\n  <text x=\"310\" y=\"108\" font-family=\"Inter, sans-serif\" font-size=\"9\" font-style=\"italic\" fill=\"#95929F\">price moved $50 &rarr; $58</text>\n  <rect x=\"290\" y=\"130\" width=\"290\" height=\"50\" rx=\"6\" fill=\"rgba(255,179,71,0.15)\" stroke=\"#FFB347\" stroke-width=\"2\"/>\n  <text x=\"310\" y=\"150\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#FFB347\" letter-spacing=\"2\">DIVIDENDS</text>\n  <text x=\"570\" y=\"150\" text-anchor=\"end\" font-family=\"VT323, monospace\" font-size=\"14\" fill=\"#FFB347\">+$200</text>\n  <text x=\"310\" y=\"168\" font-family=\"Inter, sans-serif\" font-size=\"9\" font-style=\"italic\" fill=\"#95929F\">$2.00 per share for the year</text>\n  <line x1=\"290\" y1=\"200\" x2=\"580\" y2=\"200\" stroke=\"rgba(255,255,255,0.30)\" stroke-width=\"1\"/>\n  <text x=\"310\" y=\"222\" font-family=\"JetBrains Mono, monospace\" font-size=\"13\" fill=\"#F4F2F8\">total return</text>\n  <text x=\"570\" y=\"222\" text-anchor=\"end\" font-family=\"VT323, monospace\" font-size=\"18\" fill=\"#F4F2F8\">$1,000</text>\n  <text x=\"310\" y=\"272\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"20\" fill=\"#5BE3C9\">ROI = $1,000 / $5,000 = 20%</text>\n</svg>",
+      "caption": "Figure 7.4. A year of stock ownership decomposed. $5,000 buys 100 shares at $50 per share. A year later the price is $58 (capital gain $800) and the company has paid $2 per share in dividends ($200 total). The combined return on the $5,000 investment is $1,000, a 20% return on investment."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "7.4.2  Capital gain, total return, ROI"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The capital gain</span> on a stock position is the change in share price multiplied by the number of shares: <em>(sale price &minus; purchase price) &times; shares</em>. The capital gain is <em>unrealized</em> while the shares are still held and <em>realized</em> (and taxable) when sold. The total return on the investment over the holding period is the sum of capital gain and dividends received. Dividing total return by the amount originally invested gives the <em>return on investment</em>, expressed as a percent."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 7.4.</span> The <em>capital gain</em> on a position is <em>(sale price − purchase price) &times; shares</em>; the <em>dividend income</em> is <em>annual dividend per share &times; shares</em>. The <em>total return</em> is their sum, and the <em>return on investment (ROI)</em> is <em>total return / amount invested</em>, expressed as a percent.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">ROI is the comparable percentage that lets you weigh one investment against another, regardless of the dollar size.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>Realized capital gains are taxed. The federal capital-gains tax rate is generally lower than the ordinary-income rate (Section 7.2) for long-term holdings (held more than one year); short-term gains (held one year or less) are taxed as ordinary income. Dividends received are typically taxed at the long-term capital-gains rate if the underlying stock has been held long enough; if not, they are taxed as ordinary income. The tax treatment is one of several reasons buy-and-hold investing tends to outperform frequent trading.</aside>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Reporting return based only on capital gain, ignoring dividends. The price-chart story is highly visible (it is in every financial news ticker), but dividends are real cash flowing into the shareholder's brokerage account every quarter. A stock whose price is flat for the year but pays a 3% dividend has a 3% total return for the year, not a 0% return.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 7.4. $5,000 in XYZ stock for one year.</div><p>You buy 100 shares of XYZ Corp at $50 per share. One year later, the share price has risen to $58, and during the year XYZ paid $0.50 per share each quarter in dividends. Compute the capital gain, the total dividend income, the total return, and the return on investment.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1.</strong> Amount invested = <em>100 &times; $50 = $5,000</em>.</p><p><strong>Step 2.</strong> Capital gain = <em>($58 − $50) &times; 100 = $800</em>.</p><p><strong>Step 3.</strong> Annual dividend per share = <em>4 &times; $0.50 = $2.00</em>; total dividends = <em>$2.00 &times; 100 = $200</em>.</p><p><strong>Step 4.</strong> Total return = <em>$800 + $200 = $1,000</em>.</p><p><strong>Step 5.</strong> ROI = <em>$1,000 / $5,000 = 0.20 = 20%</em>.</p><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>A 20% single-year return is excellent, well above the long-run S&amp;P 500 average of about 10% per year. The decomposition reveals that 80% of the return came from price movement and 20% from dividends, a typical mix for a dividend-paying stock in a good year.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>The long-run average return on the broad U.S. stock market (the S&amp;P 500 index, a basket of the 500 largest publicly-traded U.S. companies) is approximately 10% per year since World War II, including reinvested dividends. The number masks substantial year-to-year variation: some years up 30%, others down 30% or more. The 10% average is what holds across long periods; any individual year is highly unpredictable. The principle that long-run averages are reliable while individual years are not is the same Law of Large Numbers introduced in Section 6.6.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>An investor buys 50 shares of ABC at $30 per share. A year later the price is $36 and ABC paid no dividends. Compute the ROI.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 20%. Amount invested $1,500; capital gain <em>(36 − 30) × 50 = $300</em>; ROI <em>= 300 / 1,500 = 0.20 = 20%</em>.</p></details></li><li><p>An investor buys 200 shares of DEF at $25 per share. A year later the price is $28 and DEF paid $1.50 per share in dividends over the year. Compute the total return in dollars.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> $900. Capital gain <em>(28 − 25) × 200 = $600</em>; dividends <em>1.50 × 200 = $300</em>; total <em>$900</em>.</p></details></li><li><p>An investor buys 40 shares of GHI at $75 per share. A year later the price has fallen to $68, but GHI paid $2.50 per share in dividends. Compute the ROI (to one decimal place).</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> &minus;6.0%. Capital loss <em>(68 − 75) × 40 = &minus;$280</em>; dividends <em>2.50 × 40 = +$100</em>; total return <em>&minus;$180</em>; ROI <em>= &minus;180 / 3,000 = &minus;0.06 = &minus;6.0%</em>.</p></details></li><li><p>What does owning a share of a company entitle you to?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> A partial ownership stake. The shareholder is entitled to a proportional sliver of the company's profits (if and when paid as dividends), to vote at the annual meeting, and to a claim on residual assets if the company is dissolved (after all creditors are paid).</p></details></li><li><p>True or false: if a stock's price stays the same from purchase to sale but the company pays $1.20 per share in dividends, the investor's total return is zero.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> False. The total return is positive, equal to the dividend income alone. The price-flat scenario simply means the capital-gain piece is zero; the dividend piece is still real.</p></details></li><li><p>Why is ROI a more useful comparison metric than total dollar return when comparing two investments of different sizes?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> ROI is scale-invariant. A $200 gain on a $1,000 investment (20% ROI) outperforms a $1,000 gain on a $20,000 investment (5% ROI), even though the second has a larger dollar gain. The percent return tells you which investment used capital more efficiently.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Stocks are ownership. Section 7.5 introduces the other major asset class, <em>bonds</em>, in which the investor is a lender rather than an owner. The math is different and so is the risk profile; understanding both is the foundation for the diversified-portfolio math of Section 7.6."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">7.4</div>"
+    }
+  ]
+}
