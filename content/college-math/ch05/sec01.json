@@ -1,0 +1,97 @@
+{
+  "_locked": false,
+  "_pass": "Pass 1",
+  "id": "college-math-ch05-sec01",
+  "title": "What statistics is, really",
+  "chapter": 5,
+  "section": 1,
+  "book": "college-math",
+  "deck": "Two kinds of statistics. Descriptive describes the data we have; inferential makes claims about a population from a sample. Naming the difference is the move that makes the rest of the chapter make sense.",
+  "objectives": [
+    "Differentiate between descriptive and inferential statistics, and identify which kind of claim a given statement is making."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "A poll headline scrolls past during the evening news: <em>&ldquo;45% of Americans favor the new bill, &plusmn;3%.&rdquo;</em> Two sentences worth of math are hiding inside that single line. The 45% is what the pollsters actually <em>measured</em> in a specific group of people they called; the &plusmn;3% is what they <em>claim</em> the percentage would be if they had called every adult in the country. The two numbers answer two different questions, and both questions are settled by what we call &ldquo;statistics.&rdquo;"
+    },
+    {
+      "type": "paragraph",
+      "text": "This chapter develops the math behind both kinds of statements. The descriptive side is settled in Sections 5.2 and 5.3, where we compute the center and the spread of a data set we already have in hand. The inferential side is settled in Sections 5.5 and 5.6, where the normal distribution and its <em>Empirical Rule</em> make it possible to project from a sample to a population. Section 5.4 sits in between, showing how to read the standard data displays that summarize either kind of statistical claim visually."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "5.1.1  Two kinds of statistics"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Statistics begins with a data set</span>: a list of numerical measurements collected by an experiment, a survey, or an observational study. Once a data set is in hand, two very different kinds of statistical claims can be made about it. A <em>descriptive</em> claim summarizes the data set itself: the average weight of these ten patients, the median income of those eighty households, the most common score on this twenty-five-student exam. Descriptive claims are exact for the data they describe, with no margin of error, because they are about a known group whose members can be counted one by one."
+    },
+    {
+      "type": "paragraph",
+      "text": "An <em>inferential</em> claim, by contrast, uses the data set as a stand-in &mdash; a <em>sample</em> &mdash; for a much larger group that was not measured directly. The pollster who calls 1,000 voters and reports a 45% approval rate is not really making a claim about those 1,000 individuals; their interest is in projecting that finding onto the roughly 150 million Americans who will eventually vote. The leap from the sample to the population is the inferential move, and it always carries a margin of error, because the sample may not perfectly mirror the larger group."
+    },
+    {
+      "type": "figure",
+      "id": "fig-5.1",
+      "svg": "<svg viewBox=\"0 0 620 260\" xmlns=\"http://www.w3.org/2000/svg\">\n  <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">TWO KINDS OF STATISTICAL CLAIM</text>\n  <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">same data, two very different statements about it</text>\n  <g>\n    <rect x=\"40\" y=\"70\" width=\"240\" height=\"150\" rx=\"8\" fill=\"rgba(91,227,201,0.10)\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n    <text x=\"160\" y=\"94\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#5BE3C9\" letter-spacing=\"2\">DESCRIPTIVE</text>\n    <text x=\"160\" y=\"122\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"15\" fill=\"#F4F2F8\">&ldquo;the median weight</text>\n    <text x=\"160\" y=\"140\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"15\" fill=\"#F4F2F8\">of these 10 patients</text>\n    <text x=\"160\" y=\"158\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"15\" fill=\"#F4F2F8\">is 162 pounds&rdquo;</text>\n    <text x=\"160\" y=\"190\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">exact &mdash; no margin of error</text>\n    <text x=\"160\" y=\"206\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">the data set itself</text>\n  </g>\n  <g>\n    <rect x=\"340\" y=\"70\" width=\"240\" height=\"150\" rx=\"8\" fill=\"rgba(255,179,71,0.10)\" stroke=\"#FFB347\" stroke-width=\"2\"/>\n    <text x=\"460\" y=\"94\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#FFB347\" letter-spacing=\"2\">INFERENTIAL</text>\n    <text x=\"460\" y=\"122\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"15\" fill=\"#F4F2F8\">&ldquo;the median weight</text>\n    <text x=\"460\" y=\"140\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"15\" fill=\"#F4F2F8\">of all US 11th graders</text>\n    <text x=\"460\" y=\"158\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"15\" fill=\"#F4F2F8\">is about 162 &plusmn; 5&rdquo;</text>\n    <text x=\"460\" y=\"190\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">approximate &mdash; carries &plusmn;</text>\n    <text x=\"460\" y=\"206\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">leap to a larger population</text>\n  </g>\n  <text x=\"310\" y=\"246\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#F4F2F8\">the same data set powers both claims; the difference is what we are claiming with it</text>\n</svg>",
+      "caption": "Figure 5.1. The two halves of statistics. The descriptive side reports an exact summary of the data actually collected; the inferential side stretches that summary into a claim about a larger, unmeasured population, with a margin of error attached."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 5.1.</span> A <em>descriptive statistic</em> is a numerical summary of a data set, computed directly from the values in that data set. An <em>inferential statistic</em> uses a data set as a sample from a larger <em>population</em> and makes a claim about that population's value; every inferential claim carries an associated <em>margin of error</em>.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>The two-way split between descriptive and inferential statistics was formalized by John Tukey in the 1960s, but the underlying distinction goes back at least to the work of Gauss on errors of observation in the early 1800s. Tukey's contribution was the modern vocabulary of <em>exploratory</em> and <em>confirmatory</em> data analysis, which roughly maps onto the descriptive and inferential traditions.</aside>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "5.1.2  The vocabulary you actually need"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Five terms</span> recur throughout this chapter. A <em>data set</em> is the actual collection of numbers in hand: 10 weights, 12 class sizes, 7 dog measurements. A <em>population</em> is the full group whose properties we would ideally like to know: all American voters, all 11th-grade boys, all dogs in a city. Usually a population is too large to measure directly. A <em>sample</em> is a subset of the population that we can measure: a poll of 1,000 voters, a class of 25 students. A <em>descriptive claim</em> is a statement about the data set itself; an <em>inferential claim</em> is a statement about the population, supported by the data set as a sample."
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">Descriptive statistics describe the data we have. Inferential statistics infer claims about data we do not have, from data we do.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Treating an inferential claim as if it were exact. When a poll reports &ldquo;45%, &plusmn;3%,&rdquo; the &plusmn;3% is part of the claim &mdash; not optional fine print. Dropping it converts a careful inferential statement into an overconfident descriptive-sounding one, and creates a false impression of precision the underlying data does not support. Inferential claims always carry margins of error; reporting them without that margin misrepresents the math.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 5.1. Same number, two claims.</div><p>A high school basketball coach measures the height of every player on the team. The 15 players average 6 feet 1 inch. The coach posts the average on the team bulletin board, and a few days later tells a reporter, &ldquo;The average high school basketball player in our state is about 6 feet 1.&rdquo; Classify each of these two statements as descriptive or inferential.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>The bulletin-board statement</strong> reports the average height of the 15 players on the team. That is a summary of the data set itself (the 15 measurements). It is exact for that team and carries no margin of error: <em>descriptive</em>.</p><p><strong>The statement to the reporter</strong> uses the same 15 measurements but stretches them to a claim about the population of all high-school basketball players in the state &mdash; a group of thousands, of whom the team is one sample. The stretch is the inferential move. An honest version of the same claim would include a margin of error: <em>inferential</em>.</p><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>Notice that the same data and the same numerical answer (6 feet 1) power both statements. The difference is not in the computation; it is in what is being claimed.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>Every news headline reporting a survey, poll, or scientific study is making an inferential claim, and every such headline should be read with the &plusmn; in mind. &ldquo;Voters favor candidate X by 6 points&rdquo; sounds decisive, but if the margin of error is &plusmn;4%, the actual statistical statement is &ldquo;the gap is between 2 and 10 points&rdquo; &mdash; which is much less decisive. Major polling organizations publish the margin of error alongside their headline numbers; popular reporting often does not, which is one of the most common sources of statistical misunderstanding in public life.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>Classify each as descriptive or inferential: &ldquo;The 28 students in this class averaged 84% on the midterm.&rdquo;</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> Descriptive. The claim summarizes the data set (the 28 midterm scores); no extrapolation to a larger group.</p></details></li><li><p>Classify: &ldquo;52% of likely U.S. voters favor the candidate, &plusmn;3%.&rdquo; The poll surveyed 1,200 people.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> Inferential. The 1,200 people are a sample; the claim is about the much larger population of likely U.S. voters, with a margin of error attached.</p></details></li><li><p>A drug company tests its new medicine on 200 volunteers and reports: &ldquo;Patients in the trial experienced an average 15% reduction in symptoms.&rdquo; Descriptive or inferential?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> Descriptive. The claim is bounded to the 200 trial participants, who are the data set itself. If the company said &ldquo;this drug reduces symptoms by 15% in patients&rdquo; without the qualifier, that would be an inferential claim.</p></details></li><li><p>Identify the population and the sample in the following scenario: a market researcher surveys 500 grocery shoppers in Phoenix and reports that 38% prefer Brand A over Brand B.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> The sample is the 500 surveyed shoppers; the population is (depending on the researcher's intended claim) all grocery shoppers in Phoenix, or possibly all grocery shoppers nationally.</p></details></li><li><p>True or false: a descriptive statistic always carries a margin of error.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> False. Descriptive statistics are exact for the data set they describe. Margins of error attach to inferential statistics.</p></details></li><li><p>A nutrition study weighs every student in a specific high school and reports the mean weight as 152 pounds. The principal then tells the school board, &ldquo;The average high-school student in our city weighs about 152 pounds.&rdquo; What kind of claim is the principal making, and what is missing from it?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> The principal is making an inferential claim &mdash; extending a result from one school to all high-school students in the city. The honest version of the claim should include a margin of error, since the school may not be representative of the city as a whole.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "With the descriptive-vs-inferential vocabulary in hand, the rest of the chapter is a structured tour. Sections 5.2 and 5.3 develop the descriptive tools (mean, median, mode, range, standard deviation). Section 5.4 introduces the four standard visual displays that summarize data sets at a glance. Section 5.5 takes up the normal distribution and the Empirical Rule that powers most inferential machinery. Section 5.6 closes the chapter with the margin-of-error formula behind every poll headline."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">5.1</div>"
+    }
+  ]
+}

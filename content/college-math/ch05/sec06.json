@@ -1,0 +1,97 @@
+{
+  "_locked": false,
+  "_pass": "Pass 1",
+  "id": "college-math-ch05-sec06",
+  "title": "Surveys and the margin of error",
+  "chapter": 5,
+  "section": 6,
+  "book": "college-math",
+  "deck": "The chapter closer. A sample of size n estimates a population proportion with a margin of error of roughly 1/√n. Shrinking the margin requires quadrupling the sample.",
+  "objectives": [
+    "Compute the margin of error for a sample proportion at 95% confidence; read a poll headline (e.g., &ldquo;45%, &plusmn;3%&rdquo;) as a confidence interval; explain why quadrupling the sample size halves the margin of error."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Every poll headline in modern public life carries a tiny number that almost nobody reads: the margin of error. &ldquo;45% of Americans favor the policy, &plusmn;3%&rdquo; is a statistical claim with two halves. The 45% is what the pollsters measured in their sample; the &plusmn;3% is the size of the interval inside which the true population percentage almost certainly sits. The pollster who interviewed 1,000 people did not actually find out what all 150 million voters think; they made an inferential leap, and the &plusmn; is the honesty tax on that leap."
+    },
+    {
+      "type": "paragraph",
+      "text": "This section closes the chapter by developing the math behind that <em>margin of error</em>. The formula is surprisingly simple &mdash; for a sample proportion at 95% confidence, the margin of error is approximately one over the square root of the sample size &mdash; and it has a useful consequence: cutting the margin in half requires quadrupling the sample. Once you can compute and interpret a margin of error, you can read any poll, any clinical trial, any market-research headline with the same fluency a statistician brings to the same numbers."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "5.6.1  Sample proportion and the rule of thumb"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Suppose</span> a pollster interviews <em>n</em> people from a population and finds that a fraction <em>p&#x0302;</em> (the &ldquo;sample proportion,&rdquo; pronounced &ldquo;p-hat&rdquo;) holds a particular opinion. The unknown <em>population proportion</em> <em>p</em> is what we are really after; <em>p&#x0302;</em> is our best estimate of it, but it is almost certainly not exactly equal to <em>p</em>. The question is: how confident can we be that <em>p</em> lies inside some specified interval around <em>p&#x0302;</em>? At the <em>95% confidence level</em>, an excellent rule of thumb gives a clean answer:"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 5.8.</span> The <em>margin of error</em> (<em>MOE</em>) for a sample proportion at 95% confidence is approximately <em>1 / &radic;n</em>, where <em>n</em> is the sample size. The <em>95% confidence interval</em> is <em>p&#x0302; &plusmn; MOE</em>; we say we are &ldquo;95% confident&rdquo; the true population proportion <em>p</em> lies inside this interval.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "For a sample of <em>n</em> = 1,000, the margin of error is <em>1/&radic;1000 &asymp; 0.0316 &asymp; 3%</em>. For <em>n</em> = 100, it is <em>1/&radic;100 = 0.10 = 10%</em>. For <em>n</em> = 10,000, it is <em>1/&radic;10000 = 0.01 = 1%</em>. The pattern is the source of the rule's most useful consequence: to halve the margin of error, you must quadruple the sample, because the square root of 4 is 2."
+    },
+    {
+      "type": "figure",
+      "id": "fig-5.6",
+      "svg": "<svg viewBox=\"0 0 620 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">MARGIN OF ERROR · 1 / √n</text>\n  <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">larger samples shrink the margin, but the gain slows</text>\n  <line x1=\"60\" y1=\"190\" x2=\"560\" y2=\"190\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n  <line x1=\"60\" y1=\"60\" x2=\"60\" y2=\"190\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n  <path d=\"M 60 70 L 100 130 L 180 165 L 300 178 L 420 184 L 540 188\" fill=\"none\" stroke=\"#FFB347\" stroke-width=\"2.5\"/>\n  <g font-family=\"JetBrains Mono, monospace\" font-size=\"9\" fill=\"#95929F\">\n    <text x=\"60\" y=\"208\" text-anchor=\"middle\">100</text>\n    <text x=\"180\" y=\"208\" text-anchor=\"middle\">400</text>\n    <text x=\"300\" y=\"208\" text-anchor=\"middle\">1,000</text>\n    <text x=\"420\" y=\"208\" text-anchor=\"middle\">2,500</text>\n    <text x=\"540\" y=\"208\" text-anchor=\"middle\">10,000</text>\n  </g>\n  <text x=\"310\" y=\"230\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">sample size n</text>\n  <g font-family=\"JetBrains Mono, monospace\" font-size=\"9\" fill=\"#FFB347\" text-anchor=\"end\">\n    <text x=\"55\" y=\"73\">10%</text>\n    <text x=\"55\" y=\"133\">5%</text>\n    <text x=\"55\" y=\"169\">3%</text>\n    <text x=\"55\" y=\"187\">1%</text>\n  </g>\n  <g>\n    <circle cx=\"60\" cy=\"70\" r=\"4\" fill=\"#FFB347\"/>\n    <text x=\"75\" y=\"66\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#F4F2F8\">n = 100 → ±10%</text>\n    <circle cx=\"180\" cy=\"165\" r=\"4\" fill=\"#FFB347\"/>\n    <text x=\"195\" y=\"159\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#F4F2F8\">n = 400 → ±5%</text>\n    <circle cx=\"300\" cy=\"178\" r=\"4\" fill=\"#FFB347\"/>\n    <text x=\"315\" y=\"172\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#F4F2F8\">n = 1,000 → ±3%</text>\n  </g>\n</svg>",
+      "caption": "Figure 5.6. The margin of error for a sample proportion at 95% confidence is approximately <em>1/&radic;n</em>. The curve falls steeply at first and flattens out: each new doubling-then-doubling of <em>n</em> halves the margin, but the absolute gain shrinks quickly past <em>n</em> = 1,000."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "5.6.2  Confidence intervals and the 95% language"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The interval</span> <em>p&#x0302; &plusmn; MOE</em> is called the <em>95% confidence interval</em> for the population proportion. The phrase &ldquo;we are 95% confident&rdquo; has a precise technical meaning that is easy to misinterpret. It does <em>not</em> mean that there is a 95% chance the true population proportion lies inside the specific interval computed from this particular sample; under the standard frequentist interpretation, the population proportion is a fixed (unknown) number, not a random variable. The correct interpretation is that the <em>procedure</em> used to construct the interval has a 95% long-run success rate: if many samples were drawn and a 95% confidence interval were computed from each, about 95% of those intervals would contain the true population proportion."
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>The 95% number is conventional, not mandatory. Other common confidence levels are 90% (smaller MOE, weaker guarantee) and 99% (larger MOE, stronger guarantee). The 95% level corresponds to approximately two standard deviations of the sampling distribution &mdash; the 1.96 that appears in the more precise margin-of-error formula <em>MOE = 1.96 &middot; &radic;(p(1&minus;p)/n)</em>. The simpler <em>1/&radic;n</em> rule of thumb is an upper bound on the more careful formula, accurate enough for most purposes.</aside>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">The &plusmn; on every poll headline is not optional fine print. It is the inferential half of the statistical claim, and without it the headline cannot be properly read.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Treating two poll percentages whose intervals overlap as significantly different. If candidate A is at 48%, &plusmn;3% and candidate B is at 45%, &plusmn;3%, the two confidence intervals are [45, 51] and [42, 48] &mdash; overlapping. A statistician would say the race is &ldquo;within the margin of error&rdquo; or &ldquo;statistically tied,&rdquo; not that A is ahead. A small headline gap between two candidates whose intervals overlap is consistent with either one actually leading.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 5.6. Reading the poll headline.</div><p>A national poll of 1,067 likely voters reports that 45% favor a new policy. Compute the approximate margin of error at 95% confidence, write the 95% confidence interval, and interpret the result.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. Apply the rule of thumb.</strong> <em>MOE &asymp; 1/&radic;n = 1/&radic;1067 &asymp; 1/32.7 &asymp; 0.0306</em>, or about <strong>3%</strong>.</p><p><strong>Step 2. Build the interval.</strong> The 95% confidence interval is <em>p&#x0302; &plusmn; MOE = 45% &plusmn; 3% = [42%, 48%]</em>.</p><p><strong>Step 3. Interpret.</strong> We are 95% confident that between 42% and 48% of all likely voters favor the policy &mdash; or more carefully, the method used to produce this interval has a 95% long-run success rate at containing the true population proportion. A second poll on the same population could plausibly produce a sample proportion anywhere in this range; differences within the interval should not be over-interpreted.</p><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>Notice the symmetry between the prose of the poll headline (&ldquo;45%, &plusmn;3%&rdquo;) and the structure of the math: the headline number is the sample proportion, the &plusmn; is the margin of error, and the implicit confidence level is 95%.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>Political polls publish their margin of error in fine print at the bottom of the report. National polling organizations such as Gallup, Pew Research, and the major newspapers' polling units typically sample between 1,000 and 2,500 likely voters, producing margins of error in the 2&ndash;3% range. Larger surveys (the U.S. Census, for example) sample millions of households and have margins of error well under 1% for most measurements. The same machinery underwrites confidence intervals in clinical trials (where <em>p&#x0302;</em> is the success rate of a new drug), market research (where <em>p&#x0302;</em> is a customer-preference rate), and public health (where <em>p&#x0302;</em> is the prevalence of a condition).</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>Compute the approximate margin of error at 95% confidence for a poll of 400 people.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About 5%. <em>1/&radic;400 = 1/20 = 0.05</em>.</p></details></li><li><p>A survey of 2,500 customers finds that 62% are satisfied. What is the approximate margin of error, and what is the 95% confidence interval?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> MOE &asymp; <em>1/&radic;2500 = 1/50 = 0.02 = 2%</em>. The 95% confidence interval is <em>62% &plusmn; 2% = [60%, 64%]</em>.</p></details></li><li><p>If you wish to cut the margin of error of a poll in half, by what factor must you multiply the sample size?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 4. Because <em>MOE &asymp; 1/&radic;n</em>, halving the MOE requires multiplying <em>n</em> by 4 (the square of 2).</p></details></li><li><p>True or false: a 95% confidence interval guarantees that the true population proportion lies inside the computed interval.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> False. The 95% refers to the long-run success rate of the procedure, not to a probability about the specific interval computed from one sample. In practice, the distinction matters more in research statistics than in everyday reading.</p></details></li><li><p>Candidate A polls at 50%, &plusmn;3%; Candidate B polls at 47%, &plusmn;3%. Is A statistically ahead of B?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> Not at 95% confidence. The two intervals are [47, 53] for A and [44, 50] for B; they overlap. The result is consistent with either candidate actually leading; statisticians would call the race &ldquo;within the margin of error.&rdquo;</p></details></li><li><p>A pollster wishes to estimate a population proportion to within &plusmn;1%. What sample size <em>n</em> is needed at 95% confidence?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About 10,000. Setting <em>1/&radic;n = 0.01</em> and solving gives <em>n = 1/(0.01)<sup>2</sup> = 10,000</em>.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "This chapter closes the descriptive and introductory inferential side of statistics. The next chapter takes up <em>probability</em>, the math of uncertainty itself: how to compute the likelihood of events, how to combine those probabilities, and how the long-run averages of random processes (expected value, the Law of Large Numbers) underwrite every prediction we make about an outcome that has not happened yet. Statistics and probability are the two halves of one subject: this chapter has been about reading data that exists, and the next is about predicting data that has not yet been collected."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">5.6</div>"
+    }
+  ]
+}

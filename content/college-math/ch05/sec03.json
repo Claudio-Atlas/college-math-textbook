@@ -1,0 +1,106 @@
+{
+  "_locked": false,
+  "_pass": "Pass 1",
+  "id": "college-math-ch05-sec03",
+  "title": "Range and standard deviation",
+  "chapter": 5,
+  "section": 3,
+  "book": "college-math",
+  "deck": "Where the measures of center ask &ldquo;where,&rdquo; the measures of spread ask &ldquo;how wide.&rdquo; The range is max minus min; the standard deviation is the typical distance from the mean. Together with center, they describe almost any data set.",
+  "objectives": [
+    "Compute the range and standard deviation of a data set, distinguishing between sample and population formulas; interpret the standard deviation in context."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Two classes take the same midterm and both score a mean of 75. Class A's scores cluster tightly: every student is between 73 and 77, with most right around 75. Class B's scores are spread wide: a few in the 50s, several in the 90s, with the high and low balancing to the same mean. Center alone cannot distinguish these two distributions, because the mean is the same. To tell them apart, we need a second descriptive number: a <em>measure of spread</em>."
+    },
+    {
+      "type": "paragraph",
+      "text": "This section develops two such measures. The <em>range</em> is the simpler one: max minus min, the width of the gap between the largest and smallest values. The <em>standard deviation</em> is the more informative one: the typical distance of a value from the mean, with the same units as the data. Together, center and spread describe almost any data set well enough to support every inferential move in the rest of the chapter."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "5.3.1  Range: the simplest spread"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The range</span> of a data set is the maximum value minus the minimum value. For the data set <em>{12, 9, 15, 11, 8, 14, 10}</em>, the maximum is 15 and the minimum is 8, so the range is <em>15 &minus; 8 = 7</em>. The range is always non-negative; it has the same units as the data; and it answers the question &ldquo;how wide is the gap between the largest and smallest values?&rdquo; in a single subtraction."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 5.4.</span> The <em>range</em> of a data set is the difference between the largest and smallest values: <em>range = max &minus; min</em>. The range has the same units as the data and is always non-negative.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>The range is extremely sensitive to outliers, because it is determined entirely by the two extreme values. A single very-high or very-low data point can move the range substantially without changing the rest of the data at all. For this reason, range is a quick first-look measure of spread, not a final summary &mdash; the standard deviation, which uses every data point in its calculation, is more informative when used alongside.</aside>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "5.3.2  Standard deviation: typical distance from the mean"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The standard deviation</span> measures the <em>typical distance</em> of a data point from the mean of the data set. The formula is a four-step recipe: subtract the mean from every value (the <em>deviations</em>), square each deviation, average the squared deviations, then take the square root. The final number has the same units as the original data, which makes it directly interpretable: a standard deviation of 3 inches means the typical observation is about 3 inches above or below the mean."
+    },
+    {
+      "type": "figure",
+      "id": "fig-5.3",
+      "svg": "<svg viewBox=\"0 0 620 240\" xmlns=\"http://www.w3.org/2000/svg\">\n  <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">SAME MEAN, DIFFERENT SPREAD</text>\n  <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">two classes, both averaging 75; standard deviation tells them apart</text>\n  <g>\n    <text x=\"160\" y=\"70\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#5BE3C9\" letter-spacing=\"2\">CLASS A · TIGHT</text>\n    <line x1=\"60\" y1=\"110\" x2=\"260\" y2=\"110\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n    <line x1=\"160\" y1=\"100\" x2=\"160\" y2=\"120\" stroke=\"#FFB347\" stroke-width=\"2\"/>\n    <text x=\"160\" y=\"94\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#FFB347\">mean = 75</text>\n    <g fill=\"rgba(91,227,201,0.55)\" stroke=\"#5BE3C9\" stroke-width=\"1\">\n      <circle cx=\"146\" cy=\"110\" r=\"4\"/>\n      <circle cx=\"152\" cy=\"110\" r=\"4\"/>\n      <circle cx=\"158\" cy=\"110\" r=\"4\"/>\n      <circle cx=\"162\" cy=\"110\" r=\"4\"/>\n      <circle cx=\"166\" cy=\"110\" r=\"4\"/>\n      <circle cx=\"172\" cy=\"110\" r=\"4\"/>\n    </g>\n    <text x=\"160\" y=\"140\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">range = 5</text>\n    <text x=\"160\" y=\"158\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">SD ≈ 1.8</text>\n  </g>\n  <line x1=\"310\" y1=\"60\" x2=\"310\" y2=\"200\" stroke=\"rgba(255,255,255,0.10)\" stroke-width=\"1\" stroke-dasharray=\"3,4\"/>\n  <g>\n    <text x=\"460\" y=\"70\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#FF6B8A\" letter-spacing=\"2\">CLASS B · SPREAD</text>\n    <line x1=\"340\" y1=\"110\" x2=\"580\" y2=\"110\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n    <line x1=\"460\" y1=\"100\" x2=\"460\" y2=\"120\" stroke=\"#FFB347\" stroke-width=\"2\"/>\n    <text x=\"460\" y=\"94\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#FFB347\">mean = 75</text>\n    <g fill=\"rgba(255,107,138,0.55)\" stroke=\"#FF6B8A\" stroke-width=\"1\">\n      <circle cx=\"360\" cy=\"110\" r=\"4\"/>\n      <circle cx=\"395\" cy=\"110\" r=\"4\"/>\n      <circle cx=\"430\" cy=\"110\" r=\"4\"/>\n      <circle cx=\"480\" cy=\"110\" r=\"4\"/>\n      <circle cx=\"525\" cy=\"110\" r=\"4\"/>\n      <circle cx=\"560\" cy=\"110\" r=\"4\"/>\n    </g>\n    <text x=\"460\" y=\"140\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">range = 28</text>\n    <text x=\"460\" y=\"158\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">SD ≈ 13.5</text>\n  </g>\n  <text x=\"310\" y=\"218\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">center summarizes &ldquo;where&rdquo; the data sits; spread summarizes &ldquo;how widely&rdquo; it scatters</text>\n</svg>",
+      "caption": "Figure 5.3. Two data sets with the same mean (75) and very different spread. The range and standard deviation are the standard ways to capture that difference in a single number. Tight Class A has a small range and small SD; spread-out Class B has both much larger."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 5.5.</span> The <em>sample standard deviation</em> of a data set with values <em>x<sub>1</sub>, &middot;&middot;&middot;, x<sub>n</sub></em> and mean <em>x&#x0304;</em> is <em>s = &radic;(&Sigma;(x<sub>i</sub> &minus; x&#x0304;)<sup>2</sup> / (n &minus; 1))</em>. The <em>population standard deviation</em> uses the same formula but divides by <em>n</em> instead of <em>n &minus; 1</em>; it is written <em>&sigma;</em>. The squared standard deviation is called the <em>variance</em>.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "5.3.3  Sample versus population"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The choice of divisor</span> &mdash; <em>n</em> versus <em>n &minus; 1</em> &mdash; encodes the difference between describing an entire population and estimating a population's spread from a sample. When the data set is a complete enumeration of the population (every student in the school, every patient in the trial), the divisor is <em>n</em> and the result is the <em>population standard deviation</em> <em>&sigma;</em>. When the data set is a sample drawn from a larger population whose spread we wish to estimate, the divisor is <em>n &minus; 1</em> and the result is the <em>sample standard deviation</em> <em>s</em>. Most real data sets are samples, so the sample formula is the default in introductory texts and in Excel's default <code>=STDEV.S()</code> function. Excel offers <code>=STDEV.P()</code> for the population case."
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">Center and spread together describe almost any data set well enough for the inferential machinery of Sections 5.5 and 5.6 to take over.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Confusing standard deviation with variance, or forgetting the final square root. The variance is the average of the squared deviations; its units are the original units <em>squared</em>, which makes it awkward to interpret directly (square dollars, square pounds). The standard deviation is the square root of the variance and returns to the original units. Excel's <code>=VAR.S()</code> returns the variance and <code>=STDEV.S()</code> returns its square root; do not mix the two up.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 5.3. ATM transactions: range and standard deviation.</div><p>USH Financial recorded the number of transactions made at its midtown ATM each of the past 9 days: <em>39, 46, 37, 9, 45, 10, 46, 39, 20</em>. Find the range and the sample standard deviation of the data set.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. Range.</strong> The maximum is 46 (appearing twice, but value 46 counts once for the range). The minimum is 9. The range is <em>46 &minus; 9 = 37</em>.</p><p><strong>Step 2. Mean.</strong> Sum is <em>39+46+37+9+45+10+46+39+20 = 291</em>; mean is <em>291/9 &asymp; 32.33</em>.</p><p><strong>Step 3. Squared deviations.</strong> For each value, compute <em>(x &minus; 32.33)<sup>2</sup></em>: approximately 44.4, 186.8, 21.8, 544.4, 161.2, 498.8, 186.8, 44.4, 151.9. Sum &asymp; 1,840.5.</p><p><strong>Step 4. Sample SD.</strong> Divide by <em>n &minus; 1 = 8</em> and take the square root: <em>s &asymp; &radic;(1840.5/8) &asymp; &radic;230.1 &asymp; 15.2</em>.</p><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>The mean number of transactions per day is about 32, with a typical day differing from that average by about 15 transactions. The range of 37 indicates the busiest day (46) and slowest day (9) were 37 apart.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>Standard deviation underwrites the entire field of quality control. A manufacturer producing cans of soda labeled &ldquo;12 fluid ounces&rdquo; cannot fill every can to exactly 12.000 ounces; some natural variation always exists. The mean fill is calibrated to 12, but the company also reports a small standard deviation (perhaps 0.05 ounces) to characterize how much fills typically vary. Quality control rejects cans whose fill is more than three standard deviations from the mean &mdash; an idea that connects directly to the Empirical Rule introduced in Section 5.5.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>Find the range of the data set <em>72, 68, 81, 55, 79, 64, 70, 73</em>.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 26. Maximum 81, minimum 55, range <em>81 &minus; 55 = 26</em>.</p></details></li><li><p>Find the range of <em>3.2, 5.8, 1.5, 7.4, 2.9, 4.6, 6.1</em>.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 5.9. Max 7.4, min 1.5, range <em>7.4 &minus; 1.5 = 5.9</em>.</p></details></li><li><p>True or false: the range of a data set is always at least as large as its standard deviation.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> True. The range is the distance between the two extreme values; the standard deviation is the typical distance from the mean, which is always less than or equal to the spread between the extremes.</p></details></li><li><p>What are the units of the variance if the data is measured in dollars?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> Dollars squared. Variance is the average squared deviation, so its units are the data's units squared. Taking the square root yields the standard deviation in the original units (dollars).</p></details></li><li><p>Two classes both have a mean test score of 80. Class X has a standard deviation of 4; Class Y has a standard deviation of 12. Which class has scores more tightly clustered around the mean?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> Class X. A smaller standard deviation means data values typically sit closer to the mean; the SD of 4 versus 12 indicates Class X's scores are much more tightly clustered.</p></details></li><li><p>Which Excel function computes the sample standard deviation: <code>=STDEV.S</code>, <code>=STDEV.P</code>, or <code>=VAR.S</code>?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> <code>=STDEV.S</code>. The <code>.S</code> variant divides by <em>n &minus; 1</em> (the sample formula); <code>.P</code> divides by <em>n</em> (population). <code>=VAR.S</code> computes the variance (squared SD), not the SD itself.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "With both center and spread defined, the descriptive toolkit is complete: any data set is summarized to first approximation by its mean (or median) and its standard deviation (or range). Section 5.4 turns from numerical summaries to visual ones, introducing the four standard data displays that translate raw numbers into shapes the eye can interpret at a glance."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">5.3</div>"
+    }
+  ]
+}

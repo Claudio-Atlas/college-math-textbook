@@ -1,0 +1,105 @@
+{
+  "_locked": false,
+  "_pass": "Pass 1",
+  "id": "college-math-ch05-sec05",
+  "title": "Normal distribution and the Empirical Rule",
+  "chapter": 5,
+  "section": 5,
+  "book": "college-math",
+  "deck": "The bell-shaped distribution that powers most inferential statistics. The Empirical Rule fixes three numerical landmarks: 68% within one standard deviation of the mean, 95% within two, and 99.7% within three.",
+  "objectives": [
+    "Identify the normal distribution by its bell shape, locate the mean and one-/two-/three-sigma boundaries, and apply the 68-95-99.7 Empirical Rule to read percentages off the curve."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Many real-world data sets, when plotted as a histogram with small bins, fall into the same characteristic shape: symmetric around a central peak, falling smoothly to either side, with thin tails at both ends. Adult heights, IQ scores, SAT scores, manufacturing tolerances, errors in scientific measurements, daily returns on broad stock indices, the heights of bell curves themselves on a histogram of many such curves &mdash; all approximately fit this single shape, called the <em>normal distribution</em> or the <em>Gaussian distribution</em> after Carl Friedrich Gauss, who studied it in the early 1800s in the context of astronomical observation errors."
+    },
+    {
+      "type": "paragraph",
+      "text": "Two parameters fully specify a normal distribution: the mean <em>&mu;</em>, which sets the center, and the standard deviation <em>&sigma;</em>, which sets the spread. Together they answer almost every probability question about the distribution, and a single rule of thumb &mdash; the <em>Empirical Rule</em> &mdash; gives three numerical landmarks that show up everywhere from ALEKS review problems to industrial quality control to the headlines of national polls."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "5.5.1  The bell curve and its parameters"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">A normal distribution</span> is characterized by two numbers. The first is the <em>mean</em> <em>&mu;</em> (the Greek letter mu), which sits directly under the peak of the bell. The mean of a normal distribution coincides with both its median and its mode, since the distribution is symmetric. The second is the <em>standard deviation</em> <em>&sigma;</em> (the Greek letter sigma), which controls how wide the bell is. A larger <em>&sigma;</em> spreads the bell out; a smaller <em>&sigma;</em> makes it tall and narrow. Two normal distributions with the same <em>&mu;</em> but different <em>&sigma;</em> have the same center but different widths."
+    },
+    {
+      "type": "figure",
+      "id": "fig-5.5",
+      "svg": "<svg viewBox=\"0 0 620 260\" xmlns=\"http://www.w3.org/2000/svg\">\n  <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">THE EMPIRICAL RULE · 68-95-99.7</text>\n  <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">three concentric bands around the mean, three landmark percentages</text>\n  <path d=\"M 60 200 Q 130 200 180 170 Q 250 100 310 90 Q 370 100 440 170 Q 490 200 560 200\" fill=\"rgba(107,199,255,0.10)\" stroke=\"#6BC7FF\" stroke-width=\"2\"/>\n  <line x1=\"310\" y1=\"90\" x2=\"310\" y2=\"200\" stroke=\"#FFB347\" stroke-width=\"2\"/>\n  <text x=\"310\" y=\"80\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"14\" fill=\"#FFB347\">μ</text>\n  <line x1=\"260\" y1=\"120\" x2=\"260\" y2=\"200\" stroke=\"#5BE3C9\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\"/>\n  <line x1=\"360\" y1=\"120\" x2=\"360\" y2=\"200\" stroke=\"#5BE3C9\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\"/>\n  <line x1=\"210\" y1=\"150\" x2=\"210\" y2=\"200\" stroke=\"#FFB347\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\"/>\n  <line x1=\"410\" y1=\"150\" x2=\"410\" y2=\"200\" stroke=\"#FFB347\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\"/>\n  <line x1=\"160\" y1=\"180\" x2=\"160\" y2=\"200\" stroke=\"#FF6B8A\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\"/>\n  <line x1=\"460\" y1=\"180\" x2=\"460\" y2=\"200\" stroke=\"#FF6B8A\" stroke-width=\"1.5\" stroke-dasharray=\"3,3\"/>\n  <text x=\"310\" y=\"140\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"16\" fill=\"#5BE3C9\" letter-spacing=\"1\">68%</text>\n  <text x=\"310\" y=\"166\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"14\" fill=\"#FFB347\" letter-spacing=\"1\">95%</text>\n  <text x=\"310\" y=\"190\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"12\" fill=\"#FF6B8A\" letter-spacing=\"1\">99.7%</text>\n  <text x=\"260\" y=\"220\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#5BE3C9\">μ−σ</text>\n  <text x=\"360\" y=\"220\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#5BE3C9\">μ+σ</text>\n  <text x=\"210\" y=\"220\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#FFB347\">μ−2σ</text>\n  <text x=\"410\" y=\"220\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#FFB347\">μ+2σ</text>\n  <text x=\"160\" y=\"220\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#FF6B8A\">μ−3σ</text>\n  <text x=\"460\" y=\"220\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#FF6B8A\">μ+3σ</text>\n  <text x=\"310\" y=\"248\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">the three landmarks of every normal distribution, regardless of μ and σ</text>\n</svg>",
+      "caption": "Figure 5.5. The Empirical Rule for any normal distribution. The inner band (&plusmn;1&sigma;) contains about 68% of the data; the middle band (&plusmn;2&sigma;) contains about 95%; the outer band (&plusmn;3&sigma;) contains about 99.7%. The three percentages do not depend on the specific values of &mu; or &sigma; &mdash; they are universal."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 5.7.</span> A <em>normal distribution</em> is a continuous probability distribution that is symmetric and bell-shaped, characterized by its mean <em>&mu;</em> and standard deviation <em>&sigma;</em>. The density curve is highest at <em>x = &mu;</em>, falls symmetrically on either side, and has inflection points at <em>x = &mu; &plusmn; &sigma;</em>.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "5.5.2  The Empirical Rule"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The single most useful fact</span> about the normal distribution is the <em>Empirical Rule</em> (sometimes called the <em>68-95-99.7 Rule</em>). It pins down three concentric bands of data around the mean, each with a known percentage of the total area under the bell:"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ul><li><strong>About 68%</strong> of the data falls within one standard deviation of the mean: between <em>&mu; &minus; &sigma;</em> and <em>&mu; + &sigma;</em>.</li><li><strong>About 95%</strong> of the data falls within two standard deviations of the mean: between <em>&mu; &minus; 2&sigma;</em> and <em>&mu; + 2&sigma;</em>.</li><li><strong>About 99.7%</strong> of the data falls within three standard deviations: between <em>&mu; &minus; 3&sigma;</em> and <em>&mu; + 3&sigma;</em>.</li></ul>"
+    },
+    {
+      "type": "paragraph",
+      "text": "These three percentages do not depend on what <em>&mu;</em> and <em>&sigma;</em> actually are; the Empirical Rule applies to every normal distribution. A test with mean 76.5 and standard deviation 5.2 has about 68% of its scores between 71.3 and 81.7; about 95% between 66.1 and 86.9; about 99.7% between 60.9 and 92.1. The mean and standard deviation supply the boundaries; the rule supplies the percentages."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Theorem 5.1.</span> <em>(Empirical Rule.)</em> For any normal distribution with mean <em>&mu;</em> and standard deviation <em>&sigma;</em>, approximately 68% of values fall within <em>&plusmn; &sigma;</em> of <em>&mu;</em>, approximately 95% within <em>&plusmn; 2&sigma;</em>, and approximately 99.7% within <em>&plusmn; 3&sigma;</em>.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>The Empirical Rule numbers (68%, 95%, 99.7%) are rounded values of the actual percentages, which are 68.27%, 95.45%, and 99.73%. The rule is exact for any normal distribution and approximate for distributions that are roughly bell-shaped. For more precise probabilities, statisticians use the standard normal distribution table (also called the <em>z-table</em>), which gives the cumulative probability for any number of standard deviations from the mean.</aside>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">The Empirical Rule turns the two-parameter normal distribution into three numerical landmarks. Once you can locate &mu; and read off &sigma;, the rest of the bell follows automatically.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Applying the Empirical Rule to a distribution that is not normal. The 68-95-99.7 percentages depend on the bell shape; they do not hold for sharply skewed or bimodal distributions. Before invoking the rule, check (visually or by computation) that the data is at least approximately bell-shaped. Modern statistical software offers formal &ldquo;normality tests&rdquo; for cases where this matters; in a math course, a histogram inspection is usually enough.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 5.5. Standardized test scores.</div><p>The scores on a standardized test for a certain year are modeled by a normal distribution with mean <em>&mu;</em> = 76.5 points and standard deviation <em>&sigma;</em> = 5.2 points. Find the values of U and W that are each three standard deviations from the mean, and identify the percentage of scores between U and W.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. Identify the peak.</strong> The mean is the value at the peak: <em>V = &mu; = 76.5</em>.</p><p><strong>Step 2. Compute the three-sigma boundaries.</strong> <em>U = &mu; &minus; 3&sigma; = 76.5 &minus; 3(5.2) = 76.5 &minus; 15.6 = 60.9</em>, and <em>W = &mu; + 3&sigma; = 76.5 + 15.6 = 92.1</em>.</p><p><strong>Step 3. Apply the Empirical Rule.</strong> The interval <em>U</em> to <em>W</em> is <em>&plusmn; 3&sigma;</em> around the mean, so about <strong>99.7%</strong> of test scores fall inside it.</p><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>Out of, say, 10,000 test takers, only about 30 (0.3%) would score outside the interval [60.9, 92.1]. The three-sigma band captures almost everyone.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>The Six Sigma quality-management methodology (Motorola, late 1980s) takes its name from the goal of producing fewer than 3.4 defects per million opportunities &mdash; a tolerance corresponding to six standard deviations from the mean of the process distribution, far beyond the Empirical Rule's three-sigma landmark. The same mathematics underwrites confidence intervals in clinical trials, control charts in manufacturing, and the &ldquo;risk-on, risk-off&rdquo; standard-deviation-based vocabulary of modern finance.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>For a normal distribution with mean 100 and standard deviation 15 (the classic IQ-test parameters), approximately what percentage of values fall between 85 and 115?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About 68%. The interval [85, 115] is <em>&mu; &plusmn; &sigma;</em>, so the Empirical Rule's 68% landmark applies.</p></details></li><li><p>For the same distribution, what percentage falls between 70 and 130?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About 95%. The interval [70, 130] is <em>&mu; &plusmn; 2&sigma;</em>.</p></details></li><li><p>Adult male heights in a certain city are approximately normal with mean 70 inches and standard deviation 3 inches. Between what two heights would you expect about 95% of adult males to fall?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> Between 64 and 76 inches. Two standard deviations on each side of the mean: <em>70 &plusmn; 2(3) = 70 &plusmn; 6</em>.</p></details></li><li><p>A normal distribution has mean 200 and standard deviation 25. What is the approximate probability of an observation lying outside the interval [125, 275]?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About 0.3%. The interval is <em>&plusmn; 3&sigma;</em> around the mean (200 &plusmn; 75), which captures about 99.7% of the distribution; about 0.3% falls outside.</p></details></li><li><p>True or false: the Empirical Rule applies to every probability distribution, not just normal ones.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> False. The 68-95-99.7 percentages are specific to bell-shaped (normal or approximately normal) distributions. For other distributions, the percentages can be very different.</p></details></li><li><p>If a normal distribution has mean 50 and standard deviation 5, what is the value of <em>&mu; + &sigma;</em>? What about <em>&mu; &minus; 2&sigma;</em>?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> <em>&mu; + &sigma; = 55</em>; <em>&mu; &minus; 2&sigma; = 50 &minus; 10 = 40</em>. The arithmetic is straightforward once <em>&mu;</em> and <em>&sigma;</em> are known.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "The Empirical Rule supplies the inferential side of statistics with most of its machinery. The final section of the chapter introduces a closely-related tool &mdash; the <em>margin of error</em> &mdash; that uses the same normal-distribution math to put a precise &plusmn; on every poll headline. By the end of Section 5.6, the &ldquo;45%, &plusmn; 3%&rdquo; that opened this chapter will be a statement you can read and write fluently."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">5.5</div>"
+    }
+  ]
+}
