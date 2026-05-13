@@ -1,0 +1,93 @@
+{
+  "_locked": true,
+  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish",
+  "id": "college-math-ch04-sec04",
+  "title": "Credit cards: the minimum-payment trap",
+  "chapter": 4,
+  "section": 4,
+  "book": "college-math",
+  "deck": "Revolving credit, no fixed term. The monthly arithmetic is short, but minimum payments at credit-card rates can stretch a moderate balance into a decade-long debt.",
+  "objectives": [
+    "Compute the unpaid balance after a credit card payment and identify why minimum payments dramatically extend the time and total cost of paying off a balance."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Imagine carrying a $5,000 balance on a credit card at 24% APR, and paying $100 toward it every month. A quick guess would say the balance is dropping by $100 per statement and will be paid off in about fifty months. The actual outcome is much worse than that. After the first month's interest is added, the $100 payment exactly cancels the interest charge, the balance stays at $5,000, and the slow drain never even begins."
+    },
+    {
+      "type": "paragraph",
+      "text": "Credit cards differ from auto loans in two important ways. First, there is no fixed term: the cardholder decides how much to pay each month, and the bank only requires a small <em>minimum</em>. Second, the amortization formula from Section 4.2 does not apply directly, because there is no agreement to drain the balance to zero by a specific date. Instead, the monthly math is a short two-line update, and this section walks through that update and shows why minimum-only payments are one of the most expensive financial decisions in the consumer credit world."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "4.4.1  Each statement: two short lines"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Every credit-card</span> statement updates the balance using a simple two-step rule. First, the bank charges interest on the balance from the previous statement: <em>interest = balance &times; r/12</em>. Second, the cardholder's payment is subtracted, and any new purchases since the last statement are added. The result is the new balance carried into next month, and the cycle repeats."
+    },
+    {
+      "type": "figure",
+      "id": "fig-4.4",
+      "svg": "<svg viewBox=\"0 0 620 280\" xmlns=\"http://www.w3.org/2000/svg\">\n    <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">ONE CREDIT-CARD STATEMENT, IN ARITHMETIC</text>\n    <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">$5,000 balance · 24% APR · $200 payment this month</text>\n    <g>\n        <rect x=\"20\" y=\"70\" width=\"120\" height=\"80\" rx=\"6\" fill=\"rgba(255,107,138,0.06)\" stroke=\"#FF6B8A\" stroke-width=\"1.5\"/>\n        <text x=\"80\" y=\"90\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">OLD BALANCE</text>\n        <text x=\"80\" y=\"120\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"22\" fill=\"#F4F2F8\">$5,000</text>\n    </g>\n    <g>\n        <text x=\"170\" y=\"100\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"20\" fill=\"#FF6B8A\">+</text>\n        <text x=\"170\" y=\"125\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#FF6B8A\" font-weight=\"600\">interest</text>\n        <text x=\"170\" y=\"140\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"13\" fill=\"#F4F2F8\">$100</text>\n        <text x=\"170\" y=\"156\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">5,000×0.02</text>\n    </g>\n    <g>\n        <text x=\"240\" y=\"100\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"20\" fill=\"#FF6B8A\">−</text>\n        <text x=\"240\" y=\"125\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#FF6B8A\" font-weight=\"600\">payment</text>\n        <text x=\"240\" y=\"140\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"13\" fill=\"#F4F2F8\">$200</text>\n        <text x=\"240\" y=\"156\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">your payment</text>\n    </g>\n    <text x=\"296\" y=\"115\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"22\" fill=\"#F4F2F8\">=</text>\n    <g>\n        <rect x=\"320\" y=\"70\" width=\"120\" height=\"80\" rx=\"6\" fill=\"rgba(255,107,138,0.18)\" stroke=\"#FF6B8A\" stroke-width=\"2\"/>\n        <text x=\"380\" y=\"90\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#FF6B8A\" letter-spacing=\"2\">NEW BALANCE</text>\n        <text x=\"380\" y=\"120\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"22\" fill=\"#FF6B8A\">$4,900</text>\n    </g>\n    <g>\n        <rect x=\"465\" y=\"80\" width=\"135\" height=\"60\" rx=\"4\" fill=\"rgba(255,255,255,0.04)\" stroke=\"rgba(255,255,255,0.10)\" stroke-width=\"1\" stroke-dasharray=\"2,3\"/>\n        <text x=\"532\" y=\"100\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" font-weight=\"600\" letter-spacing=\"1.5\" fill=\"#95929F\">ONE STATEMENT</text>\n        <text x=\"532\" y=\"118\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"#F4F2F8\">balance drops by</text>\n        <text x=\"532\" y=\"132\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"#F4F2F8\">only $100</text>\n    </g>\n    <line x1=\"40\" y1=\"180\" x2=\"580\" y2=\"180\" stroke=\"rgba(255,255,255,0.10)\" stroke-width=\"1\"/>\n    <text x=\"310\" y=\"206\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">YOUR $200 PAYMENT, SPLIT</text>\n    <rect x=\"160\" y=\"220\" width=\"150\" height=\"28\" fill=\"rgba(149,146,159,0.40)\" stroke=\"#95929F\" stroke-width=\"1\"/>\n    <text x=\"235\" y=\"239\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"12\" fill=\"#F4F2F8\">$100 interest</text>\n    <rect x=\"310\" y=\"220\" width=\"150\" height=\"28\" fill=\"rgba(255,107,138,0.55)\" stroke=\"#FF6B8A\" stroke-width=\"1\"/>\n    <text x=\"385\" y=\"239\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"12\" fill=\"#F4F2F8\">$100 principal</text>\n    <text x=\"310\" y=\"270\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">half your payment was just rent on the balance</text>\n</svg>",
+      "caption": "Figure 4.4. One statement on a $5,000 balance at 24% APR. The $200 payment splits exactly in half: $100 covers the new interest and only $100 pays down principal. The balance drops to $4,900, not $4,800."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 4.4.</span> For a credit-card statement period with starting balance <em>B</em>, annual rate <em>r</em>, and payment <em>M</em> (with no new purchases),\n<div class=\"cm-display-math\">interest = B · [r] / [12]</div>\n<div class=\"cm-display-math\">new balance = B + interest &minus; M</div>The <em>minimum payment</em> is the smallest payment the bank will accept on a statement, typically 1&ndash;3% of the current balance.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>Most credit-card agreements compute interest on the <em>average daily balance</em> rather than the statement-closing balance, and they compound daily, which makes the effective monthly interest charge slightly higher than the headline <em>r/12</em>. For introductory work we will keep using <em>r/12</em>; the trade-off is a small overestimate of the principal paid down each month.</aside>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "4.4.2  The minimum-payment trap"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">A minimum payment</span> is the smallest amount the cardholder can pay without triggering late fees or a delinquency notice. For most cards, the minimum is set to roughly the previous month's interest plus 1% of the principal. Paying only the minimum keeps the account in good standing, but the principal barely moves, the next statement's interest charge is barely smaller, and the cycle can stretch into years."
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">A minimum payment buys time. It does not buy progress.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Treating the minimum payment as a recommended payment. The minimum is designed to keep the account current; it is not designed to pay off the balance in any reasonable amount of time. A $5,000 balance at 24% APR, paid only the minimum, can take more than twenty years to retire, with thousands of dollars of additional interest along the way.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 4.4. $5,000 at 24% APR, $200 a month.</div><p>A cardholder owes $5,000 on a credit card with a 24% APR. The minimum payment is around $130 a month, but the cardholder commits to a flat $200 per month and stops using the card for new purchases. We want the new balance after the first statement, and a quick sense of how long the full balance will take to pay off.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. Compute this month's interest.</strong> The monthly rate is <em>r/12 = 0.24/12 = 0.02</em>, so:</p><div class=\"cm-display-math\">interest = 5,000 × 0.02 = $100</div><p><strong>Step 2. Update the balance.</strong> Add the interest, subtract the payment:</p><div class=\"cm-display-math\">new balance = 5,000 + 100 &minus; 200 = $4,900</div><p><strong>Step 3. Interpret the split.</strong> The cardholder paid $200, but only $100 went to principal; the other $100 was rent on the borrowed money. Exactly half of the payment did no work to reduce the debt.</p><p><strong>Step 4. Estimate the payoff horizon.</strong> If the cardholder keeps paying $200 per month, the time to fully retire the balance turns out to be about thirty-two months, with total interest paid of roughly $1,375. Paying only the (declining) minimum payment, on the other hand, takes more than twenty years and produces close to $13,000 of total interest. The same $5,000 debt becomes a totally different cost depending only on the chosen monthly payment.</p><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>The lesson is not arithmetic. It is that the gap between paying a comfortable round number every month and paying the minimum is the difference between a few years of debt and a generation of it. The numbers can be checked using the Excel function <code>=NPER(rate, &minus;payment, balance)</code>, which returns the number of months to payoff at any fixed payment.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>The Federal Reserve's Survey of Consumer Finances estimates that the median US household carries a few thousand dollars of revolving credit-card debt. At the average new-card APR of about 22%, paying only the minimum on that median balance translates to decades of interest and one of the highest effective borrowing rates the average consumer ever encounters. The arithmetic in this section is, in the most literal sense, a financial-literacy intervention.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>A credit card has a balance of $3,000 and an APR of 18%. What is this month's interest charge?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> $45. The monthly rate is <em>0.18/12 = 0.015</em>, and <em>3,000 &times; 0.015 = 45</em>.</p></details></li><li><p>Using the same balance and APR, suppose the cardholder pays $150 this month and makes no new purchases. What is the new balance after the payment?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> $2,895. The new balance is <em>3,000 + 45 &minus; 150 = 2,895</em>.</p></details></li><li><p>For a $5,000 balance at 24% APR with a $100 monthly payment and no new purchases, what is the new balance after one statement period?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> $5,000. The interest is <em>5,000 &times; 0.02 = $100</em>, and the new balance is <em>5,000 + 100 &minus; 100 = 5,000</em>. The payment exactly cancels the interest; the principal does not move at all.</p></details></li><li><p>Why does paying only the minimum on a high-APR credit card take so long to retire a balance?</p><ol type=\"A\"><li>The minimum payment is computed to barely exceed the interest charge.</li><li>The bank charges extra fees.</li><li>The principal increases each month.</li><li>The APR rises automatically.</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> A. Minimum payments are designed to keep the account current; very little of each payment reduces principal.</p></details></li><li><p>Which Excel function computes the number of months to fully repay a credit-card balance at a fixed monthly payment?</p><ol type=\"A\"><li><code>=PMT()</code></li><li><code>=PV()</code></li><li><code>=NPER()</code></li><li><code>=FV()</code></li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> C. <code>NPER()</code> returns the number of periods required, given the rate, payment, and present-value balance.</p></details></li><li><p>A $4,000 balance at 21% APR is paid down with $250 per month. What is the new balance after one statement?</p><ol type=\"A\"><li>$3,750</li><li>$3,820</li><li>$3,930</li><li>$4,070</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B ($3,820). The monthly rate is <em>0.21/12 = 0.0175</em>, the interest is <em>4,000 &times; 0.0175 = $70</em>, and the new balance is <em>4,000 + 70 &minus; 250 = $3,820</em>. Option A is the trap of ignoring the interest charge; option D would be the balance after no payment at all.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Credit cards reveal what happens when the borrower controls the payment. Student loans are the opposite case, where federal rules dictate everything from the interest rate to the repayment schedule. Section 4.5 picks them up next, introducing the subsidized/unsubsidized distinction and showing how interest that accrues during school can quietly enlarge the loan before the first payment is ever made."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">4.4</div>"
+    }
+  ]
+}

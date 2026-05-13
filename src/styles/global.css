@@ -66,7 +66,7 @@
   --ax-heading-line-height: 1.3;
 
   /* Spacing */
-  --ax-content-max: 48rem;
+  --ax-content-max: 64rem;
   --ax-content-px: 2.5rem;
   --ax-content-py: 3rem;
   --ax-paragraph-gap: 1.25rem;
@@ -1133,6 +1133,25 @@ button:active {
   }
 }
 
+/* ─── Inline-SVG Figures (converter emits block.svg) ─────
+   Without an explicit width constraint, an inline SVG with a tall-narrow
+   viewBox (e.g. fig 2.1 at 260×320) will stretch to the full prose column
+   width and balloon vertically. Cap the visual height and let the
+   SVG scale down proportionally to fit. */
+.figure-svg-wrap {
+  margin-inline: auto;
+  max-width: 100%;
+}
+
+.figure-svg-wrap > svg {
+  display: block;
+  max-width: 100%;
+  max-height: 420px;
+  height: auto;
+  width: auto;
+  margin-inline: auto;
+}
+
 /* ─── Figure Fallback Placeholder ───────────────────────── */
 .figure-fallback {
   display: flex;
@@ -1161,4 +1180,1209 @@ button:active {
   color: var(--ax-text-secondary);
   font-style: italic;
   margin-top: 0.25rem;
+}
+
+/* ─── College Math additions: compact vocab grid + inline self-check ─── */
+
+/* Vocab grid — replaces a stack of full-width Definition cards.
+   The converter emits a single paragraph block with .cm-vocab-grid
+   wrapping multiple .cm-vocab-card children. */
+.cm-vocab-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.875rem;
+  margin: 1.5rem 0 2rem;
+}
+.cm-vocab-card {
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--ax-border);
+  border-left: 2px solid var(--ax-violet);
+  border-radius: 8px;
+  background: rgba(139, 92, 246, 0.04);
+  font-family: var(--ax-font-serif);
+}
+.cm-vocab-card .cm-vocab-term {
+  font-family: var(--ax-font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ax-violet);
+  margin-bottom: 0.25rem;
+  display: block;
+}
+.cm-vocab-card .cm-vocab-def {
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ax-text);
+}
+
+/* Self-check exercise card — inline prompt + collapsible <details> answer.
+   Replaces the original Exercise/ExerciseSection machinery for the
+   College Math try-it and quick-check blocks (where the answer should
+   reveal in place, not link to a separate answer-key page). */
+.cm-self-check {
+  margin: 1.25rem 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--ax-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.025);
+  font-family: var(--ax-font-serif);
+}
+.cm-self-check-head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.625rem;
+  margin-bottom: 0.5rem;
+}
+.cm-self-check-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.6rem;
+  height: 1.6rem;
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: var(--ax-violet);
+  color: white;
+  font-family: var(--ax-font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.cm-self-check-label {
+  font-family: var(--ax-font-sans);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ax-text-muted);
+}
+.cm-self-check-prompt {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ax-text);
+}
+.cm-self-check-prompt p { margin: 0.4rem 0; }
+.cm-self-check-prompt ol.cm-options {
+  margin: 0.6rem 0 0 1.5rem;
+  padding: 0;
+}
+.cm-self-check-prompt ol.cm-options li {
+  margin: 0.25rem 0;
+  font-size: 0.95rem;
+}
+
+.cm-self-check details {
+  margin-top: 0.75rem;
+}
+.cm-self-check details > summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--ax-font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--ax-violet);
+  padding: 0.3rem 0.7rem;
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  border-radius: 5px;
+  transition: background 150ms ease-out;
+}
+.cm-self-check details > summary:hover {
+  background: rgba(139, 92, 246, 0.10);
+}
+.cm-self-check details > summary::-webkit-details-marker { display: none; }
+.cm-self-check details > summary::before { content: '+ Show answer'; }
+.cm-self-check details[open] > summary::before { content: '− Hide answer'; }
+
+.cm-self-check details .cm-answer-body {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px dashed var(--ax-border);
+  font-family: var(--ax-font-serif);
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--ax-text);
+}
+.cm-self-check details .cm-answer-body .cm-explanation {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--ax-text-secondary);
+  line-height: 1.6;
+}
+
+/* Light-mode adjustments */
+[data-theme="light"] .cm-vocab-card {
+  background: rgba(139, 92, 246, 0.05);
+}
+[data-theme="light"] .cm-self-check {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+/* ─── Level 1 textbook-feel patterns ─────────────────────────────── */
+
+/* Inline prose definition — primary term flows into the reading.
+   Replaces the heavy "DEFINITION 1.1" boxed card. Just a quiet left
+   rule and a slightly elevated font; the term itself is italicized
+   inside the source HTML. */
+.cm-prose-definition {
+  margin: 1.5rem 0;
+  padding: 0.875rem 0 0.875rem 1.25rem;
+  border-left: 2px solid var(--ax-violet);
+  font-family: var(--ax-font-serif);
+  font-size: 1.075rem;
+  line-height: 1.7;
+  color: var(--ax-text);
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.03) 0%, transparent 60%);
+}
+.cm-prose-definition strong,
+.cm-prose-definition em {
+  color: var(--ax-violet);
+  font-style: italic;
+  font-weight: 600;
+}
+
+/* Worked example, inline (no collapse). Editorial layout:
+   small "Worked Example" kicker, italicized scenario, then numbered
+   steps as a continuous reading flow. */
+.cm-worked-example {
+  margin: 2rem 0;
+  padding: 1.5rem 1.75rem;
+  border: 1px solid var(--ax-border);
+  border-top: 2px solid var(--ax-ex-accent);
+  border-radius: 12px;
+  background: rgba(245, 158, 11, 0.04);
+  font-family: var(--ax-font-serif);
+}
+.cm-worked-example-label {
+  font-family: var(--ax-font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ax-ex-accent);
+  margin-bottom: 0.5rem;
+}
+.cm-worked-example-label::before { content: '✎ '; font-size: 0.85em; }
+.cm-worked-example-title {
+  font-family: var(--ax-font-sans);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ax-text);
+  margin-bottom: 0.5rem;
+}
+.cm-worked-example-scenario {
+  font-family: var(--ax-font-serif);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--ax-text);
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.18);
+  border-left: 2px solid var(--ax-ex-accent);
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+.cm-worked-step {
+  display: grid;
+  grid-template-columns: 2.1rem 1fr;
+  gap: 0.875rem;
+  padding: 0.875rem 0;
+  border-top: 1px solid var(--ax-border);
+}
+.cm-worked-step:first-of-type { border-top: 1px dashed var(--ax-border); }
+.cm-worked-step-num {
+  font-family: var(--ax-font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ax-ex-accent);
+  background: rgba(245, 158, 11, 0.12);
+  border-radius: 50%;
+  width: 1.8rem;
+  height: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.cm-worked-step-body h4 {
+  font-family: var(--ax-font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ax-text);
+  margin: 0.1rem 0 0.4rem;
+}
+.cm-worked-step-body p { margin: 0.25rem 0 0.5rem; font-size: 0.975rem; line-height: 1.6; }
+.cm-worked-step-math {
+  font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  font-size: 0.9rem;
+  line-height: 1.7;
+  padding: 0.75rem 1rem;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid var(--ax-border);
+  border-radius: 6px;
+  margin: 0.5rem 0;
+  white-space: pre-wrap;
+  color: var(--ax-text);
+}
+.cm-worked-step-annot {
+  font-family: var(--ax-font-sans);
+  font-size: 0.8rem;
+  color: var(--ax-ex-accent);
+  font-style: italic;
+  margin-top: 0.4rem;
+}
+
+/* End-of-section glossary — compact <dl> layout. */
+.cm-glossary-wrap {
+  margin: 2rem 0 0;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid var(--ax-border);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+}
+.cm-glossary-heading {
+  font-family: var(--ax-font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--ax-text-muted);
+  margin: 0 0 0.875rem;
+}
+.cm-glossary {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.6rem;
+}
+.cm-glossary dt {
+  font-family: var(--ax-font-sans);
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--ax-violet);
+  margin-top: 0.3rem;
+}
+.cm-glossary dt:first-of-type { margin-top: 0; }
+.cm-glossary dd {
+  font-family: var(--ax-font-serif);
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--ax-text);
+  margin: 0 0 0.3rem 0;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px dashed var(--ax-border);
+}
+.cm-glossary dd:last-of-type { border-bottom: none; }
+
+/* End-of-section exercises — a numbered list of self-check cards. */
+.cm-exercise-list-heading {
+  font-family: var(--ax-font-sans);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin: 2.5rem 0 1rem;
+  letter-spacing: -0.02em;
+}
+
+/* Application & connection — quiet closing paragraph(s), no card */
+.cm-appconn-prose {
+  margin: 2.5rem 0 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--ax-border);
+  font-family: var(--ax-font-serif);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--ax-text);
+}
+.cm-appconn-prose p { margin: 0.75rem 0; }
+.cm-appconn-kicker {
+  font-family: var(--ax-font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--ax-text-muted);
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+/* ─── Level 3 textbook environments (cm-tx-*) ────────────────────
+   Inline, prose-first treatment for hand-edited sections.
+   Used in section JSON when _locked is true. */
+
+/* Numbered Definition. Small inline block, label inline-bold, content
+   continues as prose. No heavy boxing — reads like a real textbook. */
+.cm-tx-definition {
+  margin: 1.5rem 0;
+  padding: 0.75rem 0 0.75rem 1rem;
+  border-left: 3px solid var(--ax-violet);
+  font-family: var(--ax-font-serif);
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--ax-text);
+}
+.cm-tx-def-label {
+  font-family: var(--ax-font-serif);
+  font-weight: 700;
+  color: var(--ax-violet);
+  margin-right: 0.35em;
+}
+
+/* Numbered Example. Light tinted background with a leading label line.
+   Solution shown inline (not collapsed); reads as continuous prose. */
+.cm-tx-example {
+  margin: 2rem 0;
+  padding: 1.25rem 1.5rem;
+  background: rgba(245, 158, 11, 0.04);
+  border-left: 3px solid var(--ax-ex-accent);
+  border-radius: 0 8px 8px 0;
+  font-family: var(--ax-font-serif);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.cm-tx-example p { margin: 0.6rem 0; }
+.cm-tx-example p:first-of-type { margin-top: 0; }
+.cm-tx-example p:last-of-type { margin-bottom: 0; }
+.cm-tx-ex-label {
+  font-family: var(--ax-font-sans);
+  font-weight: 700;
+  color: var(--ax-ex-accent);
+  letter-spacing: -0.005em;
+  margin-bottom: 0.6rem;
+  font-size: 0.95rem;
+}
+.cm-tx-ex-solution-label {
+  margin-top: 0.875rem !important;
+  color: var(--ax-text-secondary);
+}
+
+/* Display math line — centered, monospaced, slightly larger. */
+.cm-display-math {
+  font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 0.75rem 0;
+  margin: 0.875rem 0;
+  color: var(--ax-text);
+  letter-spacing: 0.01em;
+}
+
+/* Tables inside examples and exercises. */
+.cm-tx-table {
+  border-collapse: collapse;
+  margin: 1rem auto;
+  font-family: var(--ax-font-serif);
+  font-size: 0.95rem;
+  min-width: 280px;
+}
+.cm-tx-table-narrow { min-width: 160px; max-width: 280px; }
+.cm-tx-table thead tr {
+  border-bottom: 2px solid var(--ax-border);
+}
+.cm-tx-table th {
+  font-family: var(--ax-font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ax-text-secondary);
+  text-align: left;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+}
+.cm-tx-table td {
+  padding: 0.45rem 1rem;
+  border-bottom: 1px solid var(--ax-border);
+  color: var(--ax-text);
+}
+.cm-tx-table tbody tr:last-child td { border-bottom: none; }
+
+/* End-of-section exercises — numbered list, inline italic answers. */
+.cm-tx-exercises {
+  list-style: decimal;
+  margin: 1rem 0 2rem 1.5rem;
+  padding: 0;
+  font-family: var(--ax-font-serif);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+.cm-tx-exercises > li {
+  margin: 1.25rem 0;
+  padding-left: 0.5rem;
+}
+.cm-tx-exercises > li::marker {
+  color: var(--ax-violet);
+  font-weight: 700;
+}
+.cm-tx-exercises p { margin: 0.5rem 0; }
+.cm-tx-answer {
+  margin-top: 0.4rem !important;
+  padding-left: 0.875rem;
+  border-left: 2px solid rgba(139, 92, 246, 0.3);
+  color: var(--ax-text-secondary);
+  font-size: 0.95rem;
+}
+.cm-tx-answer em {
+  color: var(--ax-violet);
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* Click-to-reveal answer dropdown. Each Exercises item wraps the
+   .cm-tx-answer paragraph in <details class="cm-tx-answer-details">
+   so the student sees the question first and can choose to reveal. */
+.cm-tx-answer-details {
+  margin-top: 0.6rem;
+}
+.cm-tx-answer-details > summary {
+  list-style: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--ax-font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ax-violet);
+  padding: 0.3rem 0.7rem;
+  border: 1px solid rgba(139, 92, 246, 0.35);
+  border-radius: 999px;
+  background: rgba(139, 92, 246, 0.06);
+  user-select: none;
+  transition: background 120ms ease, border-color 120ms ease;
+}
+.cm-tx-answer-details > summary::-webkit-details-marker { display: none; }
+.cm-tx-answer-details > summary::marker { display: none; content: ""; }
+.cm-tx-answer-details > summary::before {
+  content: "▸";
+  display: inline-block;
+  transition: transform 160ms ease;
+  font-size: 0.7rem;
+  line-height: 1;
+}
+.cm-tx-answer-details[open] > summary::before {
+  transform: rotate(90deg);
+}
+.cm-tx-answer-details[open] > summary {
+  background: rgba(139, 92, 246, 0.12);
+  border-color: rgba(139, 92, 246, 0.55);
+}
+.cm-tx-answer-details > summary:hover {
+  background: rgba(139, 92, 246, 0.14);
+  border-color: rgba(139, 92, 246, 0.55);
+}
+.cm-tx-answer-details > .cm-tx-answer {
+  margin-top: 0.5rem !important;
+}
+
+[data-theme="light"] .cm-tx-example {
+  background: rgba(245, 158, 11, 0.05);
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Round 1 — visual rhythm for the textbook reading column
+   ──────────────────────────────────────────────────────────────── */
+
+/* Drop cap — first letter of section opener. The
+   ContentRenderer already tags the first paragraph with the
+   `section-first-paragraph` class; this rule overrides the base
+   one in Axiom's global.css with a more textbook-presence size
+   and adds a subtle background card behind the letter. */
+.reader-content .section-first-paragraph::first-letter {
+  float: left;
+  font-family: var(--ax-font-serif);
+  font-weight: 700;
+  font-size: 4.2em;
+  line-height: 0.85;
+  color: var(--ax-violet);
+  padding: 0.05em 0.12em 0 0.02em;
+  margin-right: 0.08em;
+  margin-top: 0.04em;
+  background: linear-gradient(180deg, rgba(139,92,246,0.10), rgba(139,92,246,0));
+  border-radius: 4px;
+}
+
+/* Heavier H3 subsection headings with a violet number badge.
+   The hand-edited JSON uses headings like "1.1.1  The big idea..."
+   so this targets the H3 inside reader-content. */
+.reader-content h3 {
+  font-family: var(--ax-font-sans);
+  font-size: 1.4rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  margin: 2.5rem 0 1rem;
+  padding: 0.6rem 0 0.6rem 1.1rem;
+  border-left: 4px solid var(--ax-violet);
+  color: var(--ax-text);
+  position: relative;
+  line-height: 1.3;
+}
+
+/* Section dividers — small ornamental break between subsections.
+   Renders as ⌇ / · · · between major beats. We add it via the
+   ::after on each H3 except the first one. */
+.reader-content h3:not(:first-of-type)::before {
+  content: '· · ·';
+  display: block;
+  position: absolute;
+  top: -1.6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--ax-font-sans);
+  font-size: 1rem;
+  color: var(--ax-text-muted);
+  letter-spacing: 0.6em;
+  opacity: 0.5;
+  border-left: none;
+}
+
+/* Display math — give it real typographic dignity. */
+.cm-display-math {
+  font-family: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+  font-size: 1.35rem;
+  text-align: center;
+  padding: 1.25rem 1rem;
+  margin: 1.5rem auto;
+  color: var(--ax-text);
+  letter-spacing: 0.02em;
+  background: rgba(139, 92, 246, 0.04);
+  border-top: 1px solid rgba(139, 92, 246, 0.15);
+  border-bottom: 1px solid rgba(139, 92, 246, 0.15);
+  max-width: 36rem;
+}
+
+/* Icon glyphs on environment labels. ◆ Definition  ✎ Example  ⚠ Caution  ✦ Note */
+.cm-tx-def-label::before {
+  content: '◆ ';
+  font-size: 0.85em;
+  vertical-align: 0.05em;
+}
+.cm-tx-ex-label::before {
+  content: '✎ ';
+  font-size: 0.9em;
+}
+
+/* Bigger / more present Example label */
+.cm-tx-ex-label {
+  font-size: 1.05rem !important;
+  letter-spacing: -0.005em;
+  margin-bottom: 0.875rem !important;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px dashed rgba(245, 158, 11, 0.25);
+}
+
+/* Slightly tinted background for Examples so they pop more */
+.cm-tx-example {
+  background: rgba(245, 158, 11, 0.05);
+  padding: 1.5rem 1.75rem 1.25rem;
+  border-left-width: 4px;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Round 2 — new content environments (margin note, callouts, pull quote)
+   ──────────────────────────────────────────────────────────────── */
+
+/* Margin-style note — on desktop floats to the right; on mobile
+   becomes an inline aside. Used for short asides next to the
+   reading column. */
+.cm-tx-margin {
+  margin: 1.5rem 0;
+  padding: 0.875rem 1rem;
+  background: rgba(255, 255, 255, 0.025);
+  border: 1px solid var(--ax-border);
+  border-left: 2px solid var(--ax-text-muted);
+  border-radius: 0 6px 6px 0;
+  font-family: var(--ax-font-serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ax-text-secondary);
+}
+.cm-tx-margin .cm-tx-margin-label {
+  display: block;
+  font-family: var(--ax-font-sans);
+  font-style: normal;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ax-text-muted);
+  margin-bottom: 0.35rem;
+}
+@media (min-width: 1280px) {
+  .cm-tx-margin {
+    float: right;
+    clear: right;
+    width: 18rem;
+    margin: 0.4rem -20rem 1rem 1.25rem;
+  }
+}
+
+/* Common-error / heads-up callout — yellow accent, ⚠ glyph */
+.cm-tx-warn {
+  margin: 1.5rem 0;
+  padding: 0.875rem 1.1rem;
+  background: rgba(248, 113, 113, 0.05);
+  border: 1px solid rgba(248, 113, 113, 0.18);
+  border-left: 3px solid var(--ax-warn-accent);
+  border-radius: 0 8px 8px 0;
+  font-family: var(--ax-font-serif);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ax-text);
+}
+.cm-tx-warn-label {
+  display: block;
+  font-family: var(--ax-font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ax-warn-accent);
+  margin-bottom: 0.4rem;
+}
+.cm-tx-warn-label::before { content: '⚠ '; font-size: 0.9em; }
+
+/* In-the-wild callout — sky-blue accent, ✦ glyph. Real-world tie-in. */
+.cm-tx-wild {
+  margin: 1.5rem 0;
+  padding: 0.875rem 1.1rem;
+  background: rgba(56, 189, 248, 0.05);
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-left: 3px solid var(--ax-summary-accent);
+  border-radius: 0 8px 8px 0;
+  font-family: var(--ax-font-serif);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ax-text);
+}
+.cm-tx-wild-label {
+  display: block;
+  font-family: var(--ax-font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ax-summary-accent);
+  margin-bottom: 0.4rem;
+}
+.cm-tx-wild-label::before { content: '✦ '; font-size: 0.9em; }
+
+/* Pull quote — lifted sentence, larger and italicized. Used sparingly. */
+.cm-tx-pullquote {
+  margin: 2rem 0;
+  padding: 1rem 1.5rem;
+  font-family: var(--ax-font-serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  line-height: 1.45;
+  color: var(--ax-text);
+  border-left: 3px solid var(--ax-violet);
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.05), transparent 70%);
+}
+.cm-tx-pullquote::before {
+  content: '"';
+  font-family: Georgia, serif;
+  font-size: 2em;
+  line-height: 0.5;
+  vertical-align: -0.2em;
+  color: var(--ax-violet);
+  opacity: 0.6;
+  margin-right: 0.1em;
+}
+
+[data-theme="light"] .cm-display-math { background: rgba(139, 92, 246, 0.05); }
+[data-theme="light"] .cm-tx-margin { background: rgba(0, 0, 0, 0.02); }
+[data-theme="light"] .cm-tx-warn { background: rgba(248, 113, 113, 0.06); }
+[data-theme="light"] .cm-tx-wild { background: rgba(56, 189, 248, 0.06); }
+
+/* ────────────────────────────────────────────────────────────────
+   Round 3 — page rhythm
+   ──────────────────────────────────────────────────────────────── */
+
+/* Lead-in phrase — first 2-4 words of a subsection-opening paragraph.
+   Bolder, slightly violet, slightly larger. Establishes a visual
+   anchor at the start of each section beat. */
+.cm-tx-lead {
+  font-weight: 600;
+  color: var(--ax-violet);
+  font-size: 1.06em;
+  letter-spacing: -0.005em;
+}
+
+/* Stronger section-number watermark in the hero. Axiom default was
+   6% opacity, which got lost on the dark backdrop. Bump it. */
+.reader-content .section-hero .section-number {
+  opacity: 0.10;
+  font-weight: 800;
+}
+[data-theme="light"] .reader-content .section-hero .section-number {
+  opacity: 0.12;
+}
+
+/* Example frame — softer card feel with a deliberate shadow that
+   sits the example on the page rather than against it. */
+.cm-tx-example {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.03),
+    0 8px 24px rgba(0, 0, 0, 0.18);
+  border-radius: 0 12px 12px 0;
+  position: relative;
+}
+[data-theme="light"] .cm-tx-example {
+  box-shadow:
+    inset 0 1px 0 rgba(0, 0, 0, 0.01),
+    0 4px 12px rgba(245, 158, 11, 0.10);
+}
+
+/* Internal dividers inside an Example block. Separates problem
+   statement from Solution, and Solution from any closing remarks.
+   Renders as a thin amber-tinted dashed rule. */
+.cm-tx-example hr.cm-tx-ex-divider {
+  border: none;
+  border-top: 1px dashed rgba(245, 158, 11, 0.28);
+  margin: 0.875rem 0;
+}
+.cm-tx-example hr.cm-tx-ex-divider.cm-tx-ex-divider-closing {
+  border-top-style: solid;
+  border-top-color: rgba(245, 158, 11, 0.18);
+  margin: 1rem 0 0.75rem;
+}
+
+/* ────────────────────────────────────────────────────────────────
+   Round 3b — final polish
+   ──────────────────────────────────────────────────────────────── */
+
+/* Small-caps treatment on environment labels. font-variant gives a
+   true small-caps look that reads more like an academic press than
+   the current uppercase-letter-spaced version. */
+.cm-tx-def-label,
+.cm-tx-ex-label,
+.cm-tx-margin-label,
+.cm-tx-warn-label,
+.cm-tx-wild-label {
+  font-variant: small-caps;
+  text-transform: none;
+  font-family: var(--ax-font-sans);
+  font-feature-settings: 'smcp' 1;
+}
+
+/* Slightly bigger hero with more breathing room. */
+.reader-content .section-hero {
+  padding-top: 1.5rem;
+  padding-bottom: 2.75rem;
+  margin-bottom: 2.75rem;
+}
+
+/* Stronger, more present deck (italic line under hero title) with
+   a thin violet rule under it as a structural anchor. */
+.cm-section-opener {
+  font-size: 1.2rem !important;
+  color: var(--ax-text) !important;
+  max-width: 44rem !important;
+  margin: 1rem 0 1.5rem !important;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(139, 92, 246, 0.2);
+}
+.cm-section-opener::after {
+  content: '';
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--ax-violet);
+  opacity: 0.5;
+  border-radius: 1px;
+  margin-top: 1.25rem;
+}
+
+/* Replace the · · · subsection divider with a single asterism /
+   fleuron ornament. Centered, violet, with a touch of breathing
+   room above. Reads as an old-book section break. */
+.reader-content h3:not(:first-of-type)::before {
+  content: '⁂' !important;       /* asterism U+2042 */
+  font-size: 1rem !important;
+  letter-spacing: 0 !important;
+  color: var(--ax-violet) !important;
+  opacity: 0.5 !important;
+  top: -1.4rem !important;
+  font-family: var(--ax-font-serif) !important;
+}
+
+/* Section signature — small centered violet § mark at the end of
+   the section, like a pilcrow or end-of-chapter mark. The section
+   page can include this as a final block; we render it just before
+   the bottom nav. */
+.cm-section-end-mark {
+  display: block;
+  text-align: center;
+  font-family: var(--ax-font-serif);
+  font-size: 1.15rem;
+  color: var(--ax-violet);
+  opacity: 0.55;
+  margin: 3rem 0 1rem;
+  letter-spacing: 0.15em;
+  font-style: italic;
+}
+.cm-section-end-mark::before {
+  content: '§';
+  margin-right: 0.35em;
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* Section opener — italic framing line directly under the section
+   hero, before the first content block. Sourced from lesson.deck. */
+.cm-section-opener {
+  font-family: var(--ax-font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: var(--ax-text-secondary);
+  margin: 0.75rem 0 0.5rem;
+  max-width: 42rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Book landing (cm-book-landing) ─────────────────────────────── */
+.cm-book-landing {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+  font-family: var(--ax-font-serif);
+}
+.cm-back-link {
+  display: inline-block;
+  font-family: var(--ax-font-sans);
+  font-size: 0.8rem;
+  color: var(--ax-text-secondary);
+  text-decoration: none;
+  margin-bottom: 1.25rem;
+  transition: color 150ms ease-out;
+}
+.cm-back-link:hover { color: var(--ax-violet); }
+.cm-book-hero {
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--ax-border);
+  margin-bottom: 3rem;
+}
+.cm-book-eyebrow {
+  font-family: var(--ax-font-sans);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ax-violet);
+  margin-bottom: 0.875rem;
+}
+.cm-book-title {
+  font-family: var(--ax-font-sans);
+  font-size: 2.75rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin: 0 0 0.5rem;
+  color: var(--ax-text);
+  line-height: 1.1;
+}
+.cm-book-sub {
+  font-family: var(--ax-font-serif);
+  font-style: italic;
+  font-size: 1.125rem;
+  color: var(--ax-text-secondary);
+  margin: 0 0 0.5rem;
+}
+.cm-book-byline {
+  font-family: var(--ax-font-sans);
+  font-size: 0.875rem;
+  color: var(--ax-text-secondary);
+  margin: 0;
+}
+
+.cm-chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.cm-chapter-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 1.5rem;
+  background: var(--ax-card-bg, rgba(28, 29, 36, 0.5));
+  border: 1px solid var(--ax-border);
+  border-radius: 14px;
+  transition: border-color 150ms ease-out, transform 150ms ease-out;
+  backdrop-filter: var(--ax-card-blur, blur(12px));
+  -webkit-backdrop-filter: var(--ax-card-blur, blur(12px));
+}
+.cm-chapter-card:hover {
+  border-color: var(--ax-violet);
+  transform: translateY(-2px);
+}
+.cm-chapter-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.625rem;
+}
+.cm-chapter-card-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--ax-violet);
+}
+.cm-chapter-card-count {
+  font-family: var(--ax-font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ax-text-muted);
+}
+.cm-chapter-card-title {
+  font-family: var(--ax-font-sans);
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+  color: var(--ax-text);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+}
+.cm-chapter-card-desc {
+  font-family: var(--ax-font-serif);
+  font-size: 0.95rem;
+  color: var(--ax-text-secondary);
+  line-height: 1.55;
+  margin: 0 0 1rem;
+}
+.cm-chapter-card-cta {
+  display: block;
+  font-family: var(--ax-font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--ax-violet);
+}
+
+/* ─── Chapter page (cm-chapter-page) ─────────────────────────────── */
+.cm-chapter-page .section-hero { padding-bottom: 1.5rem; }
+.cm-chapter-eyebrow {
+  font-family: var(--ax-font-sans);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ax-violet);
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+.cm-chapter-desc {
+  font-family: var(--ax-font-serif);
+  font-size: 1.1rem;
+  color: var(--ax-text-secondary);
+  line-height: 1.65;
+  margin: 0.75rem 0 0;
+  max-width: 36rem;
+  position: relative;
+  z-index: 1;
+}
+.cm-chapter-intro {
+  font-family: var(--ax-font-serif);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: var(--ax-text);
+  margin: 0 0 2.5rem;
+}
+.cm-chapter-intro p { margin: 0.8rem 0; }
+.cm-chapter-intro strong { color: var(--ax-violet); font-weight: 600; }
+
+.cm-section-h2 {
+  font-family: var(--ax-font-sans);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 2.5rem 0 1rem;
+  letter-spacing: -0.02em;
+  position: relative;
+  padding-top: 0.75rem;
+  color: var(--ax-text);
+}
+.cm-section-h2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--ax-violet);
+  opacity: 0.4;
+}
+
+/* Objectives list — numbered like 1.1 / 1.2 / 1.3 */
+.cm-objectives-list {
+  list-style: none;
+  margin: 0 0 2.5rem;
+  padding: 0;
+}
+.cm-objectives-list li {
+  display: grid;
+  grid-template-columns: 2.75rem 1fr;
+  gap: 0.875rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px dashed var(--ax-border);
+  font-family: var(--ax-font-serif);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+.cm-objectives-list li:last-child { border-bottom: none; }
+.cm-obj-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ax-violet);
+}
+.cm-obj-text { color: var(--ax-text); }
+
+/* Section list on chapter page */
+.cm-section-list {
+  list-style: none;
+  margin: 0 0 2.5rem;
+  padding: 0;
+}
+.cm-section-row {
+  border-bottom: 1px solid var(--ax-border);
+}
+.cm-section-row-link {
+  display: grid;
+  grid-template-columns: 3.5rem 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  text-decoration: none;
+  color: inherit;
+  transition: background 150ms ease-out, padding 150ms ease-out;
+}
+.cm-section-row-link:hover {
+  background: rgba(139, 92, 246, 0.06);
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-radius: 8px;
+}
+.cm-section-row-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  color: var(--ax-violet);
+  font-weight: 700;
+}
+.cm-section-row-title {
+  display: block;
+  font-family: var(--ax-font-serif);
+  font-size: 1.075rem;
+  color: var(--ax-text);
+  line-height: 1.4;
+}
+.cm-section-row-obj {
+  display: block;
+  font-family: var(--ax-font-sans);
+  font-size: 0.8125rem;
+  color: var(--ax-text-secondary);
+  margin-top: 0.25rem;
+  line-height: 1.45;
+}
+.cm-section-row-cta {
+  font-family: var(--ax-font-sans);
+  font-size: 0.75rem;
+  color: var(--ax-text-muted);
+  letter-spacing: 0.06em;
+}
+
+.cm-chapter-cta {
+  margin: 2rem 0 3rem;
+  text-align: center;
+}
+.cm-chapter-cta-btn {
+  display: inline-block;
+  padding: 0.875rem 1.75rem;
+  background: var(--ax-violet);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-family: var(--ax-font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: background 150ms ease-out, transform 80ms ease-out;
+}
+.cm-chapter-cta-btn:hover { background: var(--ax-violet-hover); }
+.cm-chapter-cta-btn:active { transform: scale(0.97); }
+
+/* Chapter summary — formulas + reference card pulled from source
+   cheat_sheet HTML. Sits above the glossary. */
+.cm-chapter-summary {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ax-border);
+}
+.cm-summary-blurb {
+  font-family: var(--ax-font-serif);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ax-text-secondary);
+  margin: 0 0 1.5rem;
+}
+.cm-summary-body {
+  font-family: var(--ax-font-serif);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--ax-text);
+  /* Reset margins for content authored as standalone cheat-sheet
+     HTML (h2, lesson-cs-formula cards, etc.) */
+}
+.cm-summary-body h2 {
+  font-family: var(--ax-font-sans);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--ax-text);
+  margin: 1.5rem 0 0.875rem;
+}
+.cm-summary-body h2:first-child { margin-top: 0; }
+.cm-summary-body .lesson-cs-formula {
+  margin: 1rem 0 !important;
+  border: 1px solid var(--ax-border) !important;
+  background: rgba(139, 92, 246, 0.04) !important;
+  border-left: 3px solid var(--ax-violet) !important;
+  border-radius: 8px;
+  padding: 1rem 1.25rem !important;
+}
+
+/* Chapter glossary at end of chapter page — same shape as section
+   glossary but a touch larger and with intro blurb. */
+.cm-chapter-glossary {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--ax-border);
+}
+.cm-glossary-blurb {
+  font-family: var(--ax-font-serif);
+  font-size: 0.95rem;
+  font-style: italic;
+  color: var(--ax-text-secondary);
+  margin: 0 0 1.25rem;
+}
+.cm-glossary--chapter {
+  grid-template-columns: 1fr;
+  gap: 0.875rem;
+  margin: 0;
+  padding: 0;
+}
+
+[data-theme="light"] .cm-prose-definition {
+  background: linear-gradient(90deg, rgba(139, 92, 246, 0.05) 0%, transparent 60%);
+}
+[data-theme="light"] .cm-worked-example {
+  background: rgba(245, 158, 11, 0.04);
+}
+[data-theme="light"] .cm-glossary-wrap,
+[data-theme="light"] .cm-self-check {
+  background: rgba(0, 0, 0, 0.02);
 }

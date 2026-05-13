@@ -6,21 +6,18 @@ import vercel from '@astrojs/vercel';
 
 // https://astro.build/config
 export default defineConfig({
-  output: 'server',
-  adapter: vercel(),
-  
-  integrations: [react()],
+    output: 'server',
+    adapter: vercel(),
 
-  vite: {
-    server: {
-      allowedHosts: ['meridian-press.com', 'atlasclassicalpress.com'],
+    integrations: [react()],
+
+    vite: {
+        plugins: [tailwindcss()],
+        optimizeDeps: {
+            include: ['better-react-mathjax'],
+        },
+        ssr: {
+            noExternal: ['better-react-mathjax'],
+        },
     },
-    plugins: [tailwindcss()],
-    optimizeDeps: {
-      include: ['better-react-mathjax'],
-    },
-    ssr: {
-      noExternal: ['better-react-mathjax'],
-    },
-  }
 });

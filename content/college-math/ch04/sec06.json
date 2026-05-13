@@ -1,0 +1,102 @@
+{
+  "_locked": true,
+  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish",
+  "id": "college-math-ch04-sec06",
+  "title": "Mortgages: 30 years, dollar by dollar",
+  "chapter": 4,
+  "section": 6,
+  "book": "college-math",
+  "deck": "The longest, largest amortizing loan most people ever sign. Each monthly payment splits between interest and principal, and that split shifts month by month across 360 months.",
+  "objectives": [
+    "Analyze a mortgage payment as a split between interest and principal, explain how that split shifts over the life of the loan, and identify the major components of total homeownership cost beyond the loan itself."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Imagine signing a thirty-year mortgage on a $300,000 house at 7%, with a fixed monthly payment of $1,995.91. The first payment is due on the first of the following month. We send the check, watch the bank deposit it, and pull up the new statement two weeks later. The remaining balance has dropped to $299,754.09. That is the entire month's contribution to paying off the house: a reduction of less than two hundred and fifty dollars on a balance of three hundred thousand."
+    },
+    {
+      "type": "paragraph",
+      "text": "That is not a mistake or a hidden fee. It is amortization, with the interest piled to the front of the loan. The first payment on a mortgage is overwhelmingly interest; only a sliver of it pays down principal. The split shifts gradually over the life of the loan, until the final few payments are nearly all principal. This section closes the chapter with the longest, biggest amortizing loan most people will ever sign for, and explains why early payments feel like they barely move the needle."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "4.6.1  Two lines, every month, for 360 months"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Every mortgage payment</span> splits into two precisely defined parts. The <em>interest portion</em> is the current outstanding balance times the monthly periodic rate <em>r/12</em>. The <em>principal portion</em> is whatever is left of the payment <em>M</em> after the interest is taken out. The principal portion reduces the balance for next month, and the cycle repeats. Because the balance is largest in month one, that is when the interest portion is largest and the principal portion is smallest. As the balance shrinks, the interest portion shrinks with it and the principal portion grows."
+    },
+    {
+      "type": "figure",
+      "id": "fig-4.6",
+      "svg": "<svg viewBox=\"0 0 620 300\" xmlns=\"http://www.w3.org/2000/svg\">\n    <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">$300K MORTGAGE · 7% · 30 YEARS · MONTH 1</text>\n    <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">where does each $1,995.91 payment go?</text>\n    <text x=\"60\" y=\"76\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"1.5\">YOUR PAYMENT</text>\n    <text x=\"560\" y=\"76\" text-anchor=\"end\" font-family=\"JetBrains Mono, monospace\" font-size=\"13\" fill=\"#F4F2F8\">$1,995.91</text>\n    <rect x=\"60\" y=\"86\" width=\"438\" height=\"38\" fill=\"rgba(149,146,159,0.45)\" stroke=\"#95929F\" stroke-width=\"1\"/>\n    <text x=\"279\" y=\"111\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"14\" fill=\"#F4F2F8\">$1,750.00 interest</text>\n    <rect x=\"498\" y=\"86\" width=\"62\" height=\"38\" fill=\"rgba(255,107,138,0.55)\" stroke=\"#FF6B8A\" stroke-width=\"1\"/>\n    <text x=\"529\" y=\"111\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">$245.91</text>\n    <text x=\"529\" y=\"138\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#FF6B8A\">principal</text>\n    <text x=\"279\" y=\"151\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">87.7% of your first payment is rent on the balance</text>\n    <line x1=\"40\" y1=\"172\" x2=\"580\" y2=\"172\" stroke=\"rgba(255,255,255,0.10)\" stroke-width=\"1\"/>\n    <text x=\"310\" y=\"196\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">PER-PAYMENT SPLIT, IN ARITHMETIC</text>\n    <g font-family=\"JetBrains Mono, monospace\" font-size=\"12\" fill=\"#F4F2F8\">\n        <text x=\"60\" y=\"222\">interest = balance × (r/12)</text>\n        <text x=\"60\" y=\"244\">         = 300,000 × (0.07/12)</text>\n        <text x=\"60\" y=\"266\">         = $1,750.00</text>\n    </g>\n    <g font-family=\"JetBrains Mono, monospace\" font-size=\"12\" fill=\"#F4F2F8\">\n        <text x=\"320\" y=\"222\">principal = M − interest</text>\n        <text x=\"320\" y=\"244\">          = 1,995.91 − 1,750.00</text>\n        <text x=\"320\" y=\"266\">          = $245.91</text>\n    </g>\n    <text x=\"310\" y=\"290\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"#FF6B8A\">→ new balance: 300,000 − 245.91 = $299,754.09</text>\n</svg>",
+      "caption": "Figure 4.6. Month one of a $300,000 mortgage at 7% over 30 years. The fixed monthly payment of $1,995.91 splits into $1,750 of interest and only $245.91 of principal, dropping the balance by less than a tenth of a percent."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 4.6.</span> An <em>amortization schedule</em> is a month-by-month table showing every payment of an amortizing loan, with each row containing the interest portion, the principal portion, and the remaining balance after the payment. For any given month with starting balance <em>B</em> and fixed payment <em>M</em>:\n<div class=\"cm-display-math\">interest portion = B · [r] / [12],; principal portion = M &minus; interest portion</div>\n<div class=\"cm-display-math\">new balance = B &minus; principal portion</div></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>An amortization schedule for a 30-year mortgage has 360 rows. Banks generate the schedule once at closing and provide it to the borrower; tax-time accountants reuse it to compute mortgage-interest deductions. The same table can be built in Excel with two formulas and a drag.</aside>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "4.6.2  Why early payments feel useless"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">In month one</span> of a 30-year mortgage at 7%, the interest portion is approximately 87.7% of the total payment, and only 12.3% reduces principal. The crossover point, the month when principal first exceeds interest, comes more than two-thirds of the way through the loan, around month 250. The reason is mechanical: interest in any month is computed on the current balance, and the balance is largest at the beginning. The first payment is paying interest on essentially the full principal."
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">In a 30-year mortgage, the first payment is 88% interest. The last payment is almost all principal. The crossover point lives 250 months in.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Assuming that each payment reduces the balance by the same amount. The monthly payment <em>M</em> is constant, but the split between interest and principal shifts month by month. Reading the first payment as if it were the average payment leads to dramatically wrong predictions about how the balance behaves.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 4.6. Month one of a $300K mortgage at 7%, 30 years.</div><p>A homeowner closes on a $300,000 mortgage at 7% annual interest, fixed monthly payments over a 30-year term. We want the monthly payment, the split of the first payment into interest and principal, and the new balance after that single payment.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. Compute the monthly payment.</strong> With <em>P</em> = 300,000, <em>r/12</em> &asymp; 0.005833, and <em>12t</em> = 360:</p><div class=\"cm-display-math\">M = 300,000 · [0.005833] / [1 &minus; (1.005833)<sup>-360</sup>] ≈ $1,995.91</div><p><strong>Step 2. Split the first payment into interest and principal.</strong></p><div class=\"cm-display-math\">interest portion = 300,000 × 0.005833 = $1,750.00</div><div class=\"cm-display-math\">principal portion = 1,995.91 &minus; 1,750.00 = $245.91</div><p><strong>Step 3. Compute the new balance.</strong></p><div class=\"cm-display-math\">new balance = 300,000 &minus; 245.91 = $299,754.09</div><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>The homeowner sends $1,995.91 to the bank, watches the balance drop by $245.91, and notices that $1,750 of the payment went to interest. Over the full life of the loan, the total of all 360 payments is <em>1,995.91 &times; 360 &approx; $718,528</em>, of which approximately <em>718,528 &minus; 300,000 = $418,528</em> is interest, more than the original price of the house.</p></div>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "4.6.3  Beyond the loan: the rest of homeownership"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The monthly mortgage payment</span> is only one slice of the true monthly cost of owning a home. Property taxes, homeowner's insurance, mortgage insurance (for low-down-payment loans), HOA fees, utilities, and routine maintenance all sit on top of the loan. Lenders bundle the first three into the monthly payment via an <em>escrow account</em>, which is why the actual amount charged each month is often labeled PITI: <em>principal, interest, taxes, insurance</em>. A homeowner planning a budget should always think in PITI dollars, not in raw amortization dollars."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>Tax law in many countries (the United States included) allows homeowners to deduct mortgage interest from taxable income, which is one reason the early-payment interest pile-up is more bearable than it looks. The same interest, however, is also money that does not build equity in the home. The trade-off between renting and buying is sensitive to exactly these calculations: how much of each monthly payment is going to principal, how much is going to interest, and how those numbers compare to the rent the homeowner would otherwise pay.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>A $200,000 mortgage at 6% per year has a monthly payment of $1,199.10 on a 30-year term. What is the interest portion of the first payment?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> $1,000. The monthly rate is <em>0.06/12 = 0.005</em>, and the interest on the first payment is <em>200,000 &times; 0.005 = 1,000</em>.</p></details></li><li><p>For the loan in the previous problem, what is the principal portion of the first payment, and the new balance after that payment?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> Principal portion: $199.10 (the difference <em>1,199.10 &minus; 1,000</em>). New balance: <em>200,000 &minus; 199.10 = 199,800.90</em>.</p></details></li><li><p>For the same loan, what is the total amount paid over the life of the mortgage, and the total interest paid?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> Total paid: <em>1,199.10 &times; 360 &approx; 431,676</em>. Total interest: <em>431,676 &minus; 200,000 &approx; 231,676</em>. The mortgage borrower pays the bank more in interest than the original price of the home.</p></details></li><li><p>Why is the interest portion of a mortgage payment so much larger early in the loan than late?</p><ol type=\"A\"><li>Banks charge higher interest in the early years by contract.</li><li>The outstanding balance is largest in the early months, so the interest on that balance is largest.</li><li>Mortgage rates rise automatically over time.</li><li>The amortization formula has a bug.</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. Interest each month is <em>balance &times; r/12</em>; the balance is largest at the start of the loan, so the interest portion is largest there too.</p></details></li><li><p>What does the acronym PITI stand for in the context of monthly homeownership costs?</p><ol type=\"A\"><li>Principal, Interest, Taxes, Insurance</li><li>Principal, Income, Taxes, Investment</li><li>Property, Interest, Time, Insurance</li><li>Periodic Interest Tax Index</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> A. PITI bundles the loan-related amounts (principal and interest) with property taxes and homeowner's insurance, the four pieces typically collected together via an escrow account.</p></details></li><li><p>An amortization schedule has 360 rows for a 30-year mortgage. In which range of months does the principal portion of the payment first exceed the interest portion?</p><ol type=\"A\"><li>Within the first 12 months</li><li>Around month 100</li><li>Around month 250</li><li>Only in the final 12 months</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> C. For a 30-year mortgage at typical rates, the crossover lands roughly two-thirds of the way through the term, around month 250.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Six sections ago, the word &ldquo;loan&rdquo; was a single term that covered an enormous range of products. We can now read any of them with the same toolkit: name the four pieces, apply the amortization formula or the credit-card update, split each payment into interest and principal, and compute the total cost honestly. The four chapters of College Mathematics, functions, percent, interest, and loans, hand us a small but real set of tools for thinking about everyday money decisions with the same precision a mathematician would bring."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">4.6</div>"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "_locked": true,
+  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish",
+  "id": "college-math-ch03-sec03",
+  "title": "Compound interest, and where it leads",
+  "chapter": 3,
+  "section": 3,
+  "book": "college-math",
+  "deck": "Interest earning interest. Run the same formula at four different compounding frequencies and watch the totals converge toward continuous compounding, the limit at the heart of the chapter.",
+  "objectives": [
+    "Apply the compound interest formula at any compounding frequency, and recognize continuous compounding as its limit."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Imagine a thought experiment that has fascinated mathematicians since the 1600s. Suppose we hand a bank one dollar. The bank promises to pay an outrageous interest rate of 100% per year, but it offers us a choice: the rate can be paid out once at the end of the year, or split into halves paid every six months, or split into twelfths paid every month, or split into 365 daily slivers, or split as finely as we like."
+    },
+    {
+      "type": "paragraph",
+      "text": "Paid once a year, the dollar grows to $2.00. Paid monthly, it climbs to $2.61. Paid daily, it reaches $2.71. Paid every <em>moment</em>, in the limit of perfectly continuous compounding, the dollar grows to <em>e</em>, the famous constant <em>e</em> &asymp;  2.71828. This section explains the formula behind that pattern, runs it at four different speeds, and shows why the same dollar at the same rate can produce a different answer depending only on how often the compounding clock ticks."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "3.3.1  Compound interest pays interest on interest"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Compound interest</span> differs from simple interest in one small but transformative way. After each compounding period, the interest just earned is added to the principal, and the new (slightly larger) balance is the one that earns interest in the next period. Period one earns interest on <em>P</em>. Period two earns interest on <em>P plus a small bit of new interest</em>. Period three on the larger balance still. Over many periods, the balance grows like a curve, not a line."
+    },
+    {
+      "type": "figure",
+      "id": "fig-3.3",
+      "svg": "<svg viewBox=\"0 0 600 300\" xmlns=\"http://www.w3.org/2000/svg\">\n    <text x=\"300\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">$1,000 AT 5% FOR 10 YEARS</text>\n    <text x=\"300\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">how often you compound vs. how much you get</text>\n    <line x1=\"80\" y1=\"60\" x2=\"80\" y2=\"240\" stroke=\"#95929F\" stroke-opacity=\"0.4\" stroke-width=\"1\"/>\n    <line x1=\"80\" y1=\"240\" x2=\"540\" y2=\"240\" stroke=\"#95929F\" stroke-opacity=\"0.4\" stroke-width=\"1\"/>\n    <text x=\"75\" y=\"65\" text-anchor=\"end\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#95929F\">$1,650</text>\n    <text x=\"75\" y=\"105\" text-anchor=\"end\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#95929F\">$1,640</text>\n    <text x=\"75\" y=\"145\" text-anchor=\"end\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#95929F\">$1,630</text>\n    <text x=\"75\" y=\"245\" text-anchor=\"end\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#95929F\">$1,000</text>\n    <line x1=\"80\" y1=\"60\" x2=\"540\" y2=\"60\" stroke=\"#F5C16C\" stroke-width=\"1.5\" stroke-dasharray=\"4,3\"/>\n    <text x=\"540\" y=\"56\" text-anchor=\"end\" font-family=\"JetBrains Mono, monospace\" font-size=\"10\" fill=\"#F5C16C\">limit &asymp; $1,648.72</text>\n    <rect x=\"115\" y=\"65\" width=\"80\" height=\"175\" fill=\"rgba(245,193,108,0.20)\" stroke=\"#F5C16C\" stroke-width=\"1.5\"/>\n    <text x=\"155\" y=\"170\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">$1,628.89</text>\n    <text x=\"155\" y=\"258\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#95929F\">n = 1</text>\n    <text x=\"155\" y=\"272\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">annual</text>\n    <rect x=\"225\" y=\"61\" width=\"80\" height=\"179\" fill=\"rgba(245,193,108,0.30)\" stroke=\"#F5C16C\" stroke-width=\"1.5\"/>\n    <text x=\"265\" y=\"170\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">$1,647.01</text>\n    <text x=\"265\" y=\"258\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#95929F\">n = 12</text>\n    <text x=\"265\" y=\"272\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">monthly</text>\n    <rect x=\"335\" y=\"60\" width=\"80\" height=\"180\" fill=\"rgba(245,193,108,0.45)\" stroke=\"#F5C16C\" stroke-width=\"1.5\"/>\n    <text x=\"375\" y=\"170\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">$1,648.66</text>\n    <text x=\"375\" y=\"258\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#95929F\">n = 365</text>\n    <text x=\"375\" y=\"272\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">daily</text>\n    <rect x=\"445\" y=\"60\" width=\"80\" height=\"180\" fill=\"rgba(245,193,108,0.65)\" stroke=\"#F5C16C\" stroke-width=\"2\"/>\n    <text x=\"485\" y=\"170\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">$1,648.72</text>\n    <text x=\"485\" y=\"258\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" fill=\"#F5C16C\">n → ∞</text>\n    <text x=\"485\" y=\"272\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#F5C16C\">continuous</text>\n</svg>",
+      "caption": "Figure 3.3. The same $1,000 at 5% over 10 years, compounded at four different speeds. Annual sits at $1,628.89; monthly bumps to $1,647.01; daily reaches $1,648.66; and continuous compounding (the dashed ceiling) caps out at $1,648.72."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 3.3.</span> With principal <em>P</em>, decimal annual rate <em>r</em>, and <em>n</em> compounding periods per year, the future value after <em>t</em> years is\n<div class=\"cm-display-math\">A = P (1 + r/n)<sup>n t</sup></div>As <em>n</em> grows without bound, the future value approaches the <em>continuous-compounding</em> limit\n<div class=\"cm-display-math\">A = P e<sup>r t</sup></div>where <em>e</em> &asymp;  2.71828 is the base of the natural exponential.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>The constant <em>e</em> is named for Leonhard Euler, who studied it in the 1730s. The very thought experiment that opens this section, $1 at 100% interest compounded ever more frequently, is the calculation that produced <em>e</em> in Jacob Bernoulli's notebooks in 1683. Continuous compounding is not an abstract curiosity; it is one of two distinct historical origins of the most famous irrational number after <em>&pi; </em>.</aside>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "3.3.2  Plugging in n: annual, monthly, daily"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Every banking product</span> tells us its compounding frequency, sometimes in the fine print rather than the headline. Annual is <em>n</em> = 1, semiannual is <em>n</em> = 2, quarterly is <em>n</em> = 4, monthly is <em>n</em> = 12, daily is <em>n</em> = 365. The formula does not care which one we use; it only requires the matching numbers in the right slots."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Using a per-period rate (<em>r/n</em>) and forgetting to also use a per-period time count (<em>n t</em>). Both pieces have to switch together. A monthly account at 6% per year, run for 10 years, uses 0.06/12 per month for 12 &times;  10 = 120 months, not 0.06 per period for 10 periods.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 3.3. $1,000 at 5% for 10 years, four ways.</div><p>We deposit $1,000 into an account paying 5% per year, leave it for ten years, and compare the future value at four compounding frequencies: annual, monthly, daily, and continuous.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Annual compounding (n = 1).</strong></p><div class=\"cm-display-math\">A = 1000(1 + 0.05/1)<sup>1 &middot;  10</sup> = 1000(1.05)<sup>10</sup> &asymp;  1,628.89</div><p><strong>Monthly compounding (n = 12).</strong></p><div class=\"cm-display-math\">A = 1000(1 + 0.05/12)<sup>12 &middot;  10</sup> &asymp;  1,647.01</div><p><strong>Daily compounding (n = 365).</strong></p><div class=\"cm-display-math\">A = 1000(1 + 0.05/365)<sup>365 &middot;  10</sup> &asymp;  1,648.66</div><p><strong>Continuous compounding (n &rarr;  &infin; ).</strong></p><div class=\"cm-display-math\">A = 1000 e<sup>0.05 &middot;  10</sup> = 1000 e<sup>0.5</sup> &asymp;  1,648.72</div><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>The most important pattern here is the speed at which the four answers converge. Going from annual to monthly added about $18. Going from monthly to daily added only $1.65. Going from daily to <em>continuous</em>, the theoretical limit, added a mere six cents. Compounding more often always helps, but the marginal benefit shrinks dramatically once we are already past monthly.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">More frequent compounding always pays more. Past monthly, the extra is pocket change.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>Most US savings accounts and CDs compound daily and credit interest monthly. Most credit-card balances compound daily. Bonds compound semiannually by convention. The Black-Scholes options-pricing model and most theoretical finance use continuous compounding, partly for mathematical convenience and partly because the answer is almost the same as daily anyway.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>$1,000 is deposited at 4% per year, compounded annually, for 5 years. What is the future value? Round to the nearest cent.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> $1,216.65. Using <em>A = 1000(1.04)<sup>5</sup></em> gives roughly $1,216.65.</p></details></li><li><p>$2,000 is deposited at 6% per year, compounded monthly, for 3 years. What is the future value? Round to the nearest cent.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About $2,393.86. <em>A = 2000(1 + 0.06/12)<sup>12 &middot;  3</sup> = 2000(1.005)<sup>36</sup> &approx  2,393.86</em>.</p></details></li><li><p>$500 is deposited at 5% per year, compounded continuously, for 4 years. What is the future value? Round to the nearest cent.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About $610.70. <em>A = 500 e<sup>0.05 &middot;  4</sup> = 500 e<sup>0.2</sup> &approx  610.70</em>.</p></details></li><li><p>Two accounts both quote 6% annual interest. Account A compounds annually, Account B compounds monthly. Which one finishes with a larger balance after several years?</p><ol type=\"A\"><li>Account A</li><li>Account B</li><li>They tie exactly.</li><li>It depends on the principal.</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. More frequent compounding always pays more (at the same headline rate), because the bank starts paying interest on previously earned interest sooner.</p></details></li><li><p>What value does the constant <em>e</em> represent?</p><ol type=\"A\"><li>An exact rational number near 2.7</li><li>The base of the natural exponential, an irrational constant &asymp;  2.71828</li><li>A made-up Excel function name</li><li>Anything you want; the letter has no fixed value</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. The constant <em>e</em> is irrational, like <em>&pi; </em>, with a decimal expansion that never repeats. It appears naturally in continuous compounding and many other places in mathematics.</p></details></li><li><p>In the formula <em>A = P(1 + r/n)<sup>nt</sup></em>, the exponent <em>nt</em> represents&hellip; </p><ol type=\"A\"><li>The interest rate</li><li>The number of compounding periods in the term</li><li>The principal divided by the rate</li><li>The number of years only</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. The exponent counts the total number of compounding periods over the entire term: <em>n</em> periods per year times <em>t</em> years.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Compounding frequency is exactly the kind of fine-print detail that makes the advertised rate misleading. Two banks can both advertise 5%, but the one that compounds more often actually pays more. Section 3.4 introduces the standard fair-comparison metric for savings accounts: APY, the rate one would receive if all of the compounding effects were rolled up into a single number. It also introduces the rate that <em>really</em> matters once inflation is taken into account."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">3.3</div>"
+    }
+  ]
+}

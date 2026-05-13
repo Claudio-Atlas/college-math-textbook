@@ -1,0 +1,93 @@
+{
+  "_locked": true,
+  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish",
+  "id": "college-math-ch04-sec03",
+  "title": "Auto loans: the standard amortizing loan",
+  "chapter": 4,
+  "section": 3,
+  "book": "college-math",
+  "deck": "Fixed term, fixed monthly payment, fixed rate. Auto loans are the cleanest place to see the amortization formula at work, with two new variables: the down payment and the amount actually financed.",
+  "objectives": [
+    "Compute monthly payment, total cost, and total interest for an auto loan; analyze the impact of term length and down payment on the loan."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Imagine standing under fluorescent lights in the finance office of a car dealership. The sticker on the SUV out on the lot says $35,000. The salesperson asks whether we plan to put any cash down today, and whether we would prefer a 60-month or an 84-month financing term. Two questions, two numbers, and from there the bank's computer can quote an exact monthly payment in under thirty seconds."
+    },
+    {
+      "type": "paragraph",
+      "text": "Auto loans are the cleanest application of the amortization formula we built in Section 4.2. They have a fixed principal, a fixed annual interest rate, a fixed term (typically three to seven years), and a single fixed monthly payment that fully repays the loan at the end. This section adds the only two pieces specific to vehicles, the <em>down payment</em> and the <em>amount financed</em>, and then watches the formula do its job, including the consequential trade-off between a longer term and a higher total cost."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "4.3.1  Down payment, amount financed"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Most auto loans</span> involve some cash up front. The <em>down payment</em> is the amount the buyer pays in cash on the day of purchase. The <em>amount financed</em>, which is the principal <em>P</em> we drop into the amortization formula, is the sticker price minus the down payment (and, if applicable, minus the value of any trade-in). The bank does not lend on the full sticker; it lends on whatever the buyer does not pay up front."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 4.3.</span> An <em>auto loan</em> is a fixed-term, fixed-rate amortizing loan typically of length three to seven years. Given the sticker price, the down payment, and any trade-in value, the principal that enters the amortization formula is\n<div class=\"cm-display-math\">P = sticker price &minus; down payment &minus; trade-in value</div></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>A down payment of 20% is the long-standing personal-finance rule of thumb for car purchases. Putting less down often pushes the buyer into a position called &ldquo;upside down on the loan,&rdquo; in which the car depreciates faster than the principal is paid off, leaving the borrower owing more than the car is worth.</aside>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "4.3.2  Term length: the central trade-off"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The most consequential choice</span> a buyer makes at the financing desk is the length of the term. A shorter term concentrates the principal into fewer payments, raising the monthly payment but reducing the total interest paid over the life of the loan. A longer term spreads the principal across more payments, lowering the monthly but raising the total cost. Both choices are mathematically valid; the question is which trade-off fits the buyer's budget."
+    },
+    {
+      "type": "figure",
+      "id": "fig-4.3",
+      "svg": "<svg viewBox=\"0 0 620 320\" xmlns=\"http://www.w3.org/2000/svg\">\n    <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">$30,000 AT 6% — TERM TRADEOFF</text>\n    <text x=\"310\" y=\"40\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" fill=\"#95929F\">stretch the term, lower the monthly, pay more in total</text>\n    <g>\n        <text x=\"170\" y=\"76\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">5-YEAR TERM</text>\n        <text x=\"100\" y=\"108\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">monthly</text>\n        <rect x=\"78\" y=\"120\" width=\"44\" height=\"100\" fill=\"rgba(255,107,138,0.55)\" stroke=\"#FF6B8A\" stroke-width=\"1.5\"/>\n        <text x=\"100\" y=\"240\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">$579.98</text>\n        <text x=\"100\" y=\"256\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">/month</text>\n        <text x=\"222\" y=\"108\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">total cost</text>\n        <rect x=\"200\" y=\"138\" width=\"44\" height=\"82\" fill=\"rgba(255,107,138,0.20)\" stroke=\"#FF6B8A\" stroke-width=\"1\"/>\n        <text x=\"222\" y=\"240\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#F4F2F8\">$34,799</text>\n        <text x=\"222\" y=\"256\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">+$4,799 interest</text>\n    </g>\n    <line x1=\"310\" y1=\"80\" x2=\"310\" y2=\"280\" stroke=\"rgba(255,255,255,0.12)\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n    <g>\n        <text x=\"450\" y=\"76\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#FF6B8A\" letter-spacing=\"2\">7-YEAR TERM</text>\n        <text x=\"380\" y=\"108\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">monthly</text>\n        <rect x=\"358\" y=\"144\" width=\"44\" height=\"76\" fill=\"rgba(255,107,138,0.55)\" stroke=\"#FF6B8A\" stroke-width=\"1.5\"/>\n        <text x=\"380\" y=\"240\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#FF6B8A\">$438.27</text>\n        <text x=\"380\" y=\"256\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#FF6B8A\">/month (lower!)</text>\n        <text x=\"502\" y=\"108\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\">total cost</text>\n        <rect x=\"480\" y=\"124\" width=\"44\" height=\"96\" fill=\"rgba(255,107,138,0.45)\" stroke=\"#FF6B8A\" stroke-width=\"2\"/>\n        <text x=\"502\" y=\"240\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"11\" fill=\"#FF6B8A\">$36,815</text>\n        <text x=\"502\" y=\"256\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#FF6B8A\">+$6,815 interest</text>\n    </g>\n    <line x1=\"40\" y1=\"278\" x2=\"580\" y2=\"278\" stroke=\"rgba(255,255,255,0.10)\" stroke-width=\"1\"/>\n    <text x=\"310\" y=\"298\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"#FF6B8A\" font-weight=\"600\">7-yr: $141.71 less per month · but $2,016 more total interest paid</text>\n</svg>",
+      "caption": "Figure 4.3. The same $30,000 loan at 6%, financed over five or seven years. The longer term lowers the monthly payment by $142 but raises the total interest by about $2,000."
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">A longer term lowers the monthly payment we feel and raises the total cost we don't.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Picking the term based on the monthly payment alone. Two loans on the same car can have monthly payments only $100 apart and total costs that differ by thousands. The honest comparison is always <em>monthly payment &times; number of months</em>, which exposes the longer term as the more expensive choice.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 4.3. A $35K SUV, 15% down, 5 years at 5.5%.</div><p>A buyer chooses an SUV with a $35,000 sticker price, makes a 15% down payment, and finances the rest over 5 years at 5.5% annual interest. We want the down payment, the amount financed, the monthly payment, the total amount paid (including the down payment), and the total interest charged.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. Compute the down payment.</strong></p><div class=\"cm-display-math\">down payment = 0.15 × 35,000 = $5,250</div><p><strong>Step 2. Compute the amount financed.</strong></p><div class=\"cm-display-math\">P = 35,000 &minus; 5,250 = $29,750</div><p><strong>Step 3. Apply the amortization formula.</strong> With <em>r</em> = 0.055, <em>r/12</em> &asymp; 0.004583, and <em>12t</em> = 60:</p><div class=\"cm-display-math\">M = 29,750 · [0.004583] / [1 &minus; (1.004583)<sup>-60</sup>] ≈ $568.04</div><p><strong>Step 4. Compute the total paid and the total interest.</strong> The total of the loan payments is the monthly payment times the number of months:</p><div class=\"cm-display-math\">loan payments = 568.04 × 60 ≈ $34,082</div><p>Adding the down payment gives the all-in cost, and subtracting the original principal gives the interest:</p><div class=\"cm-display-math\">all-in = 34,082 + 5,250 = $39,332</div><div class=\"cm-display-math\">interest = 34,082 &minus; 29,750 ≈ $4,332</div><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>The buyer drives off the lot paying $5,250 in cash today, and then $568.04 every month for sixty months. The total cost of ownership over the life of the loan, ignoring fuel, insurance, and maintenance, is about $39,332, of which $4,332 is interest paid to the bank.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>Modern auto-financing offices use the same formula but also try to maximize the &ldquo;back end&rdquo;: warranties, dealer add-ons, and other products that increase the amount financed without changing the visible monthly payment by much. A small bump in the amount financed at the same monthly payment usually conceals a longer term and a meaningfully higher total cost. The lever to watch, always, is <em>total paid</em>.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>A buyer chooses a $28,000 car with a 20% down payment. What is the amount financed?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> $22,400. The down payment is <em>0.20 &times; 28,000 = $5,600</em>, and the amount financed is <em>28,000 &minus; 5,600 = $22,400</em>.</p></details></li><li><p>Compute the monthly payment on a $22,400 auto loan at 6.5% APR over a 5-year term. Round to the nearest cent.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About $438.41. With <em>r/12</em> = 0.005417 and <em>12t</em> = 60, the denominator is <em>1 &minus; (1.005417)<sup>&minus;60</sup> &approx; 0.2768</em>, and <em>M = 22,400 &times; 0.005417 / 0.2768 &approx; 438.41</em>.</p></details></li><li><p>For the loan in the previous problem, what is the total interest paid over the life of the loan?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About $3,905. The total paid is <em>438.41 &times; 60 &approx; 26,305</em>, and the interest is <em>26,305 &minus; 22,400 = 3,905</em>.</p></details></li><li><p>Same $30,000 car financed at 6% for either 4 years or 6 years. Which loan has the lower monthly payment, and which has the higher total interest?</p><ol type=\"A\"><li>4-year: lower monthly, higher total interest</li><li>4-year: higher monthly, lower total interest</li><li>6-year: lower monthly, lower total interest</li><li>They are equal.</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. A shorter term raises the monthly payment but reduces total interest, because the principal is killed off faster.</p></details></li><li><p>What is the relationship between down payment, sticker price, and amount financed for an auto loan with no trade-in?</p><ol type=\"A\"><li>Amount financed = sticker + down payment</li><li>Amount financed = sticker &minus; down payment</li><li>Amount financed = sticker &times; down payment</li><li>Amount financed = sticker / down payment</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. The down payment is the cash paid on the spot; the bank only lends the remainder.</p></details></li><li><p>Why is the &ldquo;monthly payment&rdquo; alone a misleading way to compare auto loans?</p><ol type=\"A\"><li>It does not account for the rate.</li><li>It does not account for the term.</li><li>It does not account for the total interest paid.</li><li>All of the above.</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> D. The honest comparison is <em>total paid &times; total interest</em>, which exposes how a longer term can lower the monthly payment while raising the total cost dramatically.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Auto loans are the most disciplined of the consumer-credit family: fixed term, fixed payment, balance drained to zero by design. Credit cards behave very differently. They have no fixed term, no fixed monthly payment, and a borrower paying only the minimum can take decades to retire a moderate balance. Section 4.4 introduces the credit-card math, and the trap that hides inside its deceptively simple monthly schedule."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">4.3</div>"
+    }
+  ]
+}

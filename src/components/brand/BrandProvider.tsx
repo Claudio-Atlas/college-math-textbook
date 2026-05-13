@@ -1,76 +1,60 @@
 /**
- * React context for brand/edition information
+ * BrandProvider — single-brand for the College Mathematics reader.
+ *
+ * The original Axiom reader supported a dual-edition pattern (Atlas
+ * Classical Press / Meridian Press, christian/secular). For College
+ * Mathematics we collapse to one brand. The exported API
+ * (BrandProvider, useBrand) is preserved so existing reader
+ * components don't need changes.
  */
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
-import { detectEdition, getBrandConfig, type BrandConfig, type Edition } from '../../lib/edition';
-import { ThemeProvider } from './ThemeProvider';
+import { createContext, useContext, type ReactNode } from 'react';
 
-interface BrandContextValue {
-  brand: BrandConfig;
-  edition: Edition;
-  isAtlas: boolean;
-  isMeridian: boolean;
+export interface BrandColors {
+    primary: string;
+    accent: string;
 }
 
-const BrandContext = createContext<BrandContextValue | null>(null);
+export interface Brand {
+    name: string;
+    fullName: string;
+    /** Whether to render scripture margin notes. Always false for College Math. */
+    showScripture: boolean;
+    /** Whether to render section-opening epigraphs. Optional decoration. */
+    showEpigraphs: boolean;
+    colors: BrandColors;
+}
+
+export const COLLEGE_MATH_BRAND: Brand = {
+    name: 'College Mathematics',
+    fullName: 'College Mathematics',
+    showScripture: false,
+    showEpigraphs: false,
+    colors: {
+        primary: '#8B5CF6',
+        accent: '#A78BFA',
+    },
+};
+
+const BrandContext = createContext<{ brand: Brand; isAtlas: boolean; isMeridian: boolean }>({
+    brand: COLLEGE_MATH_BRAND,
+    isAtlas: false,
+    isMeridian: true,
+});
 
 interface BrandProviderProps {
-  children: ReactNode;
-  /** Override edition detection (useful for SSR or testing) */
-  forceEdition?: Edition;
+    children: ReactNode;
+    /** Kept for backwards-compat. Ignored — College Math is single-brand. */
+    forceEdition?: string;
 }
 
-export function BrandProvider({ children, forceEdition }: BrandProviderProps) {
-  const [edition, setEdition] = useState<Edition>(forceEdition ?? 'atlas');
-
-  useEffect(() => {
-    if (!forceEdition && typeof window !== 'undefined') {
-      const detected = detectEdition(window.location.hostname);
-      setEdition(detected);
-    }
-  }, [forceEdition]);
-
-  const brand = getBrandConfig(edition);
-
-  const value: BrandContextValue = {
-    brand,
-    edition,
-    isAtlas: edition === 'atlas',
-    isMeridian: edition === 'meridian',
-  };
-
-  // Inject CSS custom properties for brand colors
-  useEffect(() => {
-    if (typeof document !== 'undefined') {
-      const root = document.documentElement;
-      root.style.setProperty('--brand-primary', brand.colors.primary);
-      root.style.setProperty('--brand-primary-dark', brand.colors.primaryDark);
-      root.style.setProperty('--brand-primary-light', brand.colors.primaryLight);
-      root.style.setProperty('--brand-accent', brand.colors.accent);
-    }
-  }, [brand]);
-
-  return (
-    <BrandContext.Provider value={value}>
-      <ThemeProvider>
-        {children}
-      </ThemeProvider>
-    </BrandContext.Provider>
-  );
+export function BrandProvider({ children }: BrandProviderProps) {
+    return (
+        <BrandContext.Provider value={{ brand: COLLEGE_MATH_BRAND, isAtlas: false, isMeridian: true }}>
+            {children}
+        </BrandContext.Provider>
+    );
 }
 
-export function useBrand(): BrandContextValue {
-  const context = useContext(BrandContext);
-  if (!context) {
-    throw new Error('useBrand must be used within a BrandProvider');
-  }
-  return context;
-}
-
-/**
- * Hook to check if scripture/religious content should be shown
- */
-export function useShowScripture(): boolean {
-  const { brand } = useBrand();
-  return brand.showScripture;
+export function useBrand() {
+    return useContext(BrandContext);
 }

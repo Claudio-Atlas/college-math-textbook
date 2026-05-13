@@ -1,78 +1,71 @@
 ---
+/**
+ * Book landing page — College Mathematics.
+ *
+ * Routes:   /[bookId]   (e.g. /college-math)
+ *
+ * Shows a card grid of all chapters, each linking to its
+ * chapter page at /[bookId]/[chapterId]. The per-chapter
+ * section list lives on the chapter page, not here — this
+ * page is a compact "all chapters at a glance" view.
+ */
 export const prerender = false;
 import '../../styles/global.css';
 
 const { bookId } = Astro.params;
 
-let book;
+let book: any = null;
 let notFound = false;
 
 try {
-  const bookModule = await import(`../../../content/${bookId}/book.json`);
-  book = bookModule.default;
+    const bookModule = await import(`../../../content/${bookId}/book.json`);
+    book = bookModule.default;
 } catch (e) {
-  notFound = true;
+    notFound = true;
 }
 ---
 
 <!doctype html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{notFound ? 'Book Not Found' : book.title} - Axiom Reader</title>
-  </head>
-  <body class="min-h-screen" style="background: var(--ax-bg); color: var(--ax-text);">
+    <title>{notFound ? 'Book Not Found' : `${book.title} — Companion Textbook`}</title>
+</head>
+<body class="min-h-screen" style="background: var(--ax-bg); color: var(--ax-text);">
     {notFound ? (
-      <div class="flex items-center justify-center min-h-screen">
-        <div class="text-center">
-          <h1 class="text-2xl font-bold mb-4" style="color: var(--ax-text);">Book Not Found</h1>
-          <a href="/" class="hover:underline" style="color: var(--ax-violet);">← Back to Home</a>
-        </div>
-      </div>
-    ) : (
-      <div class="max-w-4xl mx-auto px-4 py-12">
-        <!-- Book Header -->
-        <header class="text-center mb-12">
-          <h1 class="text-4xl font-bold mb-2" style="color: var(--ax-text);">{book.title}</h1>
-          {book.subtitle && <p class="text-xl" style="color: var(--ax-text-secondary);">{book.subtitle}</p>}
-          <p class="mt-2" style="color: var(--ax-text-secondary);">by {book.author}</p>
-        </header>
-
-        <!-- Table of Contents -->
-        <nav class="space-y-6">
-          {book.chapters.map((chapter: any) => (
-            <div class="rounded-lg overflow-hidden" style="background: var(--ax-surface); border: 1px solid var(--ax-border);">
-              <div class="px-6 py-4" style="background: var(--ax-elevated);">
-                <h2 class="text-xl font-semibold" style="color: var(--ax-text);">
-                  Chapter {chapter.number}: {chapter.title}
-                </h2>
-              </div>
-              <ul style="border-color: var(--ax-border);">
-                {chapter.sections.map((section: any) => (
-                  <li style="border-bottom: 1px solid var(--ax-border);">
-                    <a 
-                      href={`/${bookId}/${chapter.id}/${section.id}`}
-                      class="block px-6 py-3 transition-colors hover:opacity-80"
-                      style="background: var(--ax-surface);"
-                    >
-                      <span class="font-medium" style="color: var(--ax-violet);">{chapter.number}.{section.number}</span>
-                      <span class="ml-2" style="color: var(--ax-text);">{section.title}</span>
-                    </a>
-                  </li>
-                ))}
-              </ul>
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="text-center">
+                <h1 class="text-2xl font-bold mb-4">Book Not Found</h1>
+                <a href="/" style="color: var(--ax-violet);">← Back to cover</a>
             </div>
-          ))}
-        </nav>
-
-        <!-- Back Link -->
-        <div class="mt-12 text-center">
-          <a href="/" class="hover:underline" style="color: var(--ax-violet);">
-            ← Back to Library
-          </a>
         </div>
-      </div>
+    ) : (
+        <div class="cm-book-landing">
+            <header class="cm-book-hero">
+                <a href="/" class="cm-back-link">← Cover</a>
+                <div class="cm-book-eyebrow">Table of Contents</div>
+                <h1 class="cm-book-title">{book.title}</h1>
+                {book.subtitle && <p class="cm-book-sub">{book.subtitle}</p>}
+                {book.author && <p class="cm-book-byline">by {book.author}</p>}
+            </header>
+
+            <section class="cm-chapter-grid">
+                {book.chapters.map((chapter: any) => (
+                    <a href={`/${bookId}/${chapter.id}`} class="cm-chapter-card">
+                        <div class="cm-chapter-card-head">
+                            <span class="cm-chapter-card-num">Ch&nbsp;{String(chapter.number).padStart(2, '0')}</span>
+                            <span class="cm-chapter-card-count">{chapter.sections.length} sections</span>
+                        </div>
+                        <h2 class="cm-chapter-card-title">{chapter.title}</h2>
+                        {chapter.desc && (
+                            <p class="cm-chapter-card-desc">{chapter.desc}</p>
+                        )}
+                        <span class="cm-chapter-card-cta">Read chapter →</span>
+                    </a>
+                ))}
+            </section>
+        </div>
     )}
-  </body>
+</body>
 </html>

@@ -1,37 +1,22 @@
 /**
- * Brand logo component - text-based for now, can swap in images later
+ * Logo — single-brand "College Mathematics" wordmark.
  */
-import { useBrand } from './BrandProvider';
-
 interface LogoProps {
-  size?: 'sm' | 'md' | 'lg';
-  className?: string;
+    size?: 'sm' | 'md' | 'lg';
+    className?: string;
 }
 
 export function Logo({ size = 'md', className = '' }: LogoProps) {
-  const { brand, isAtlas } = useBrand();
+    const sizeClasses = {
+        sm: 'text-base',
+        md: 'text-lg',
+        lg: 'text-2xl',
+    };
 
-  const sizeClasses = {
-    sm: 'text-lg',
-    md: 'text-xl',
-    lg: 'text-2xl',
-  };
-
-  return (
-    <div className={`font-serif font-bold ${sizeClasses[size]} ${className}`}>
-      <span style={{ color: brand.colors.primary }}>
-        {isAtlas ? (
-          <>
-            <span className="tracking-wide">ATLAS</span>
-            <span className="font-normal text-gray-600 ml-1">Classical Press</span>
-          </>
-        ) : (
-          <>
-            <span className="tracking-wide" style={{ color: '#a78bfa' }}>MERIDIAN</span>
-            <span className="font-normal ml-1" style={{ color: 'rgba(255,255,255,0.6)' }}>Math</span>
-          </>
-        )}
-      </span>
-    </div>
-  );
+    return (
+        <div className={`font-serif font-bold ${sizeClasses[size]} ${className}`}>
+            <span className="tracking-wide" style={{ color: '#a78bfa' }}>COLLEGE</span>
+            <span className="font-normal ml-1" style={{ color: 'var(--ax-text-secondary)' }}>Mathematics</span>
+        </div>
+    );
 }

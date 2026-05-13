@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import type { ContentBlock, ExerciseBlock, Edition } from '../../lib/types';
+import type { ContentBlock, ExerciseBlock } from '../../lib/types';
 import { RichText } from './RichText';
 import { Definition } from '../environments/Definition';
 import { Theorem } from '../environments/Theorem';
@@ -17,18 +17,13 @@ import { MathJaxProvider } from '../MathJaxProvider';
 
 interface ContentRendererProps {
   content: ContentBlock[];
-  edition?: Edition;
   bookId?: string;
   chapterSection?: string;
 }
 
-export function ContentRenderer({ content, edition = 'christian', bookId, chapterSection }: ContentRendererProps) {
-  const filteredContent = content.filter((block) => {
-    if ('edition' in block && block.edition === 'christian' && edition === 'secular') {
-      return false;
-    }
-    return true;
-  });
+export function ContentRenderer({ content, bookId, chapterSection }: ContentRendererProps) {
+  // No edition filtering — College Math is single-brand. All blocks render.
+  const filteredContent = content;
 
   // Group consecutive exercises into ExerciseSections
   const grouped: (ContentBlock | { type: '__exerciseGroup'; exercises: ExerciseBlock[] })[] = [];
@@ -336,6 +331,25 @@ function BlockRenderer({ block, isFirstParagraph = false }: { block: ContentBloc
 
 function FigureBlock({ block }: { block: any }) {
   const [failed, setFailed] = useState(false);
+
+  // Inline-SVG variant (used by the College Math converter — figures
+  // come over from MAT-144 lesson dicts as embedded <svg> markup).
+  if (block.svg) {
+    return (
+      <figure id={block.id} className="my-6">
+        <div
+          className="figure-svg-wrap mx-auto"
+          style={{ maxWidth: '100%', textAlign: 'center' }}
+          dangerouslySetInnerHTML={{ __html: block.svg }}
+        />
+        {block.caption && (
+          <figcaption className="text-center text-sm mt-2" style={{ color: 'var(--ax-text-secondary)' }}>
+            <RichText text={block.caption} />
+          </figcaption>
+        )}
+      </figure>
+    );
+  }
 
   if (failed) {
     return (

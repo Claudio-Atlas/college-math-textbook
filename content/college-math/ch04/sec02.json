@@ -1,0 +1,97 @@
+{
+  "_locked": true,
+  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish",
+  "id": "college-math-ch04-sec02",
+  "title": "The amortization formula, anatomized",
+  "chapter": 4,
+  "section": 2,
+  "book": "college-math",
+  "deck": "M = P (r/12) / (1 − (1 + r/12)^(−12t)). Five pieces, one negative exponent, and the whole chapter depends on it.",
+  "objectives": [
+    "Apply the loan amortization formula to compute the monthly payment given principal, annual rate, and term, and recognize why the formula has a negative exponent in its denominator."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Imagine being handed a single equation and told that every auto loan, student loan, and mortgage in the country uses it. That is, in fact, the situation. The amortization formula is the only equation in this chapter we actually need to memorize, and the half-dozen real-world applications that follow are all variations on which numbers we drop into which slot."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-display-math\">M = P (r/12) / (1 &minus; (1 + r/12)<sup>&minus;12t</sup>)</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "It looks intimidating on first sight. It is, in fact, a perfectly sensible piece of machinery once we know what each character is doing. This section breaks the formula into five named pieces, runs it once with realistic numbers, and explains the role of the negative exponent that, more than anything else, gives the formula its forbidding appearance."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "4.2.1  Five pieces, each doing one job"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Every symbol</span> in the amortization formula plays a single, well-defined role. <em>M</em> is what we are solving for: the fixed monthly payment that drains the balance to exactly zero on the final installment. <em>P</em> is the principal we borrowed. The combination <em>r/12</em> is the monthly periodic interest rate, the annual rate divided into twelve equal monthly slices. The combination <em>12t</em> is the total number of monthly payments, twelve per year times the number of years in the term. The negative exponent <em>&minus;12t</em> is the &ldquo;discount factor&rdquo; that converts a future stream of payments back to today's dollars."
+    },
+    {
+      "type": "figure",
+      "id": "fig-4.2",
+      "svg": "<svg viewBox=\"0 0 620 320\" xmlns=\"http://www.w3.org/2000/svg\">\n    <text x=\"310\" y=\"22\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-weight=\"600\" fill=\"#95929F\" letter-spacing=\"2\">THE AMORTIZATION FORMULA, ANATOMIZED</text>\n    <g font-family=\"JetBrains Mono, monospace\" font-size=\"22\">\n        <text x=\"60\" y=\"80\" fill=\"#FF6B8A\" font-weight=\"600\">M</text>\n        <text x=\"92\" y=\"80\" fill=\"#F4F2F8\">=</text>\n        <text x=\"125\" y=\"80\" fill=\"#FF6B8A\">P</text>\n        <text x=\"148\" y=\"80\" fill=\"#F4F2F8\">·</text>\n        <text x=\"170\" y=\"80\" fill=\"#F4F2F8\">(</text>\n        <text x=\"186\" y=\"80\" fill=\"#FF6B8A\">r/12</text>\n        <text x=\"245\" y=\"80\" fill=\"#F4F2F8\">)</text>\n        <text x=\"265\" y=\"80\" fill=\"#F4F2F8\">/</text>\n        <text x=\"285\" y=\"80\" fill=\"#F4F2F8\">(1 −</text>\n        <text x=\"345\" y=\"80\" fill=\"#F4F2F8\">(1 + </text>\n        <text x=\"406\" y=\"80\" fill=\"#FF6B8A\">r/12</text>\n        <text x=\"467\" y=\"80\" fill=\"#F4F2F8\">)</text>\n        <text x=\"478\" y=\"68\" fill=\"#FF6B8A\" font-size=\"14\" font-weight=\"600\">−12t</text>\n        <text x=\"540\" y=\"80\" fill=\"#F4F2F8\">)</text>\n    </g>\n    <line x1=\"40\" y1=\"100\" x2=\"580\" y2=\"100\" stroke=\"rgba(255,255,255,0.10)\" stroke-width=\"1\"/>\n    <g>\n        <text x=\"80\" y=\"128\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" font-weight=\"600\" letter-spacing=\"2\" fill=\"#FF6B8A\">M</text>\n        <text x=\"80\" y=\"148\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"#F4F2F8\">monthly</text>\n        <text x=\"80\" y=\"164\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"#F4F2F8\">payment</text>\n        <text x=\"80\" y=\"182\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\" font-style=\"italic\">the answer</text>\n    </g>\n    <g>\n        <text x=\"200\" y=\"128\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" font-weight=\"600\" letter-spacing=\"2\" fill=\"#FF6B8A\">P</text>\n        <text x=\"200\" y=\"148\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"#F4F2F8\">principal</text>\n        <text x=\"200\" y=\"164\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"#F4F2F8\">(loan amount)</text>\n        <text x=\"200\" y=\"182\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\" font-style=\"italic\">what you borrowed</text>\n    </g>\n    <g>\n        <text x=\"320\" y=\"128\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" font-weight=\"600\" letter-spacing=\"2\" fill=\"#FF6B8A\">r / 12</text>\n        <text x=\"320\" y=\"148\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"#F4F2F8\">monthly</text>\n        <text x=\"320\" y=\"164\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"#F4F2F8\">periodic rate</text>\n        <text x=\"320\" y=\"182\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\" font-style=\"italic\">annual ÷ 12</text>\n    </g>\n    <g>\n        <text x=\"440\" y=\"128\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" font-weight=\"600\" letter-spacing=\"2\" fill=\"#FF6B8A\">12 t</text>\n        <text x=\"440\" y=\"148\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"#F4F2F8\">total</text>\n        <text x=\"440\" y=\"164\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"#F4F2F8\">payments</text>\n        <text x=\"440\" y=\"182\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\" font-style=\"italic\">12 × years</text>\n    </g>\n    <g>\n        <text x=\"560\" y=\"128\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" font-weight=\"600\" letter-spacing=\"2\" fill=\"#FF6B8A\">−12t</text>\n        <text x=\"560\" y=\"148\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"#F4F2F8\">negative</text>\n        <text x=\"560\" y=\"164\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" fill=\"#F4F2F8\">exponent</text>\n        <text x=\"560\" y=\"182\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"9\" fill=\"#95929F\" font-style=\"italic\">discount factor</text>\n    </g>\n    <line x1=\"40\" y1=\"208\" x2=\"580\" y2=\"208\" stroke=\"rgba(255,255,255,0.10)\" stroke-width=\"1\"/>\n    <text x=\"310\" y=\"232\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-weight=\"600\" letter-spacing=\"2\" fill=\"#95929F\">PLUG IN $20,000 AT 5% FOR 4 YEARS</text>\n    <text x=\"310\" y=\"258\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"14\" fill=\"#F4F2F8\">20,000 × (0.05/12) / (1 − (1 + 0.05/12)<tspan font-size=\"11\" dy=\"-3\">−48</tspan><tspan dy=\"3\">)</tspan></text>\n    <text x=\"310\" y=\"286\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"20\" fill=\"#FF6B8A\">M ≈ $460.59 / month</text>\n    <text x=\"310\" y=\"306\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"10\" font-style=\"italic\" fill=\"#95929F\">total paid $22,108 · interest $2,108</text>\n</svg>",
+      "caption": "Figure 4.2. Five named pieces, each with one job. The negative exponent in the denominator is what discounts the future stream of payments back to a present-day principal."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 4.2.</span> The <em>loan amortization formula</em> computes the fixed monthly payment that fully repays a loan of principal <em>P</em>, annual interest rate <em>r</em> (as a decimal), and term <em>t</em> (in years):\n<div class=\"cm-display-math\">M = P · [r/12] / [1 &minus; (1 + r/12)<sup>-12 t</sup>]</div>The payment <em>M</em> is constant from month to month, but the way each payment splits between interest and principal shifts gradually over the life of the loan, a behavior we will explore in Section 4.6.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>The negative exponent comes from the same compound-interest formula that powered Chapter 3. It encodes the idea that a dollar paid five years from now is worth less to the lender than a dollar paid today, by a factor of <em>(1 + r/12)<sup>&minus;n</sup></em> for the <em>n</em>-th month's payment. Summing that geometric series gives the formula's denominator.</aside>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "4.2.2  Plugging in the four inputs"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The four inputs</span> to the formula are <em>P</em>, <em>r</em>, <em>t</em>, and the calculator we trust to handle the negative exponent. On paper, the cleanest sequence is to compute <em>r/12</em> first, then <em>1 + r/12</em>, then <em>(1 + r/12)<sup>&minus;12t</sup></em>, then <em>1 &minus;</em> that, then divide the numerator by that quantity. Done in that order, the arithmetic never gets unmanageable."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Forgetting the negative sign on the exponent. <em>(1 + r/12)<sup>12t</sup></em> is the <em>future-value</em> factor from Chapter 3; <em>(1 + r/12)<sup>&minus;12t</sup></em> is the <em>present-value</em> factor we need here. Swapping the sign gives an answer that is wildly off.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 4.2. $20,000 at 5% APR for 4 years.</div><p>A driver finances a $20,000 car at 5% annual interest over a 4-year term. We want the monthly payment, the total paid, and the total interest charged.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. Identify the inputs.</strong> <em>P</em> = $20,000, <em>r</em> = 0.05, <em>t</em> = 4. So <em>r/12</em> &asymp; 0.004167 and <em>12t</em> = 48 months.</p><p><strong>Step 2. Compute the discount factor.</strong></p><div class=\"cm-display-math\">(1 + r/12)<sup>-12t</sup> = (1.004167)<sup>-48</sup> ≈ 0.81940</div><p><strong>Step 3. Compute the denominator.</strong></p><div class=\"cm-display-math\">1 &minus; 0.81940 = 0.18060</div><p><strong>Step 4. Compute the monthly payment.</strong></p><div class=\"cm-display-math\">M = 20,000 · [0.004167] / [0.18060] ≈ $460.59</div><p><strong>Step 5. Compute the total paid and the total interest.</strong></p><div class=\"cm-display-math\">total paid = 460.59 × 48 ≈ $22,108</div><div class=\"cm-display-math\">total interest = 22,108 &minus; 20,000 = $2,108</div><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>The borrower pays $460.59 every month for forty-eight months and finishes the loan having paid an additional $2,108 of interest beyond the principal. Sanity check: $20,000 at 5% for a single year would generate about $1,000 of simple interest; over four years with a declining balance, the total interest of about $2,100 lands in exactly the right ballpark.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">One formula. Four inputs. Every loan in this chapter is a variation on the same calculation.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>Every online &ldquo;loan calculator,&rdquo; from Bankrate to NerdWallet to the form on a dealership's website, calls this exact formula behind the scenes. Excel implements it as <code>=PMT(rate, nper, &minus;principal)</code>, where <code>rate</code> is <em>r/12</em>, <code>nper</code> is <em>12t</em>, and the leading minus sign on the principal is a sign-convention quirk that has nothing to do with the underlying math.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>Compute the monthly payment on a $15,000 auto loan at 6% APR for 5 years. Round to the nearest cent.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About $289.99. Inputs: <em>P</em> = 15,000, <em>r</em> = 0.06, <em>t</em> = 5, so <em>r/12</em> = 0.005 and <em>12t</em> = 60. The denominator is <em>1 &minus; (1.005)<sup>&minus;60</sup> &approx; 1 &minus; 0.74137 = 0.25863</em>, and <em>M = 15,000 &times; 0.005 / 0.25863 &approx; 289.99</em>.</p></details></li><li><p>Compute the monthly payment on a $200,000 mortgage at 7% APR for 30 years. Round to the nearest cent.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About $1,330.60. Inputs: <em>r/12</em> = 0.00583, <em>12t</em> = 360. The denominator is <em>1 &minus; (1.00583)<sup>&minus;360</sup> &approx; 1 &minus; 0.12345 = 0.87655</em>, and <em>M = 200,000 &times; 0.00583 / 0.87655 &approx; 1,330.60</em>.</p></details></li><li><p>For the mortgage in the previous problem, what is the total interest paid over the life of the loan?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About $279,016. The total paid is <em>1,330.60 &times; 360 &approx; 479,016</em>, and the total interest is <em>479,016 &minus; 200,000 = 279,016</em>. The borrower pays roughly 1.4 times the home's price in interest alone.</p></details></li><li><p>In the amortization formula, what is the role of the <em>&minus;12t</em> exponent?</p><ol type=\"A\"><li>It computes the future value of the loan.</li><li>It discounts the future stream of payments back to today's dollars.</li><li>It increases the monthly payment for longer terms.</li><li>It has no effect; it could be replaced by 12t.</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. The negative exponent represents the present-value factor; without it, the formula would compute a future value, not a monthly payment.</p></details></li><li><p>Suppose two loans have identical principal and interest rate, but loan A has term 5 years and loan B has term 7 years. Which loan has the larger monthly payment, and which has the larger total interest?</p><ol type=\"A\"><li>A has larger monthly payment; B has larger total interest.</li><li>B has larger monthly payment; A has larger total interest.</li><li>Both are equal.</li><li>Cannot tell without more information.</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> A. The shorter term concentrates the principal into fewer payments, raising the monthly payment but reducing total interest because the balance is killed off faster.</p></details></li><li><p>In Excel, the function <code>=PMT(rate, nper, &minus;P)</code> implements the amortization formula. Which arguments correspond to <em>r/12</em> and <em>12t</em> respectively?</p><ol type=\"A\"><li><code>rate</code> = <em>r</em>; <code>nper</code> = <em>t</em></li><li><code>rate</code> = <em>r/12</em>; <code>nper</code> = <em>12t</em></li><li><code>rate</code> = <em>r &times; 12</em>; <code>nper</code> = <em>t / 12</em></li><li><code>rate</code> = <em>r</em>; <code>nper</code> = <em>12t</em></li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. Excel's <code>PMT()</code> uses the period rate and total number of periods, matching the formula exactly.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Sections 4.3 through 4.6 each apply this single formula to a different real-world loan product. Auto loans pair the formula with a down-payment calculation. Credit cards remove the fixed term and trap the unwary in interest-only payments. Student loans add the subsidized/unsubsidized distinction. Mortgages stretch the formula across thirty years and reveal the surprising principal-versus-interest split that occurs early in the schedule. The math is constant; the applications are where the story gets interesting."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">4.2</div>"
+    }
+  ]
+}

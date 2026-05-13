@@ -13,8 +13,12 @@ const mathJaxConfig = {
   },
   tex: {
     packages: { '[+]': ['ams', 'newcommand', 'mathtools'] },
-    inlineMath: [['$', '$']],
-    displayMath: [['$$', '$$']],
+    // Only treat explicit LaTeX delimiters as math. The default
+    // ['$','$'] inline delimiter clashes with currency text in
+    // College Mathematics ("$15/hour", "$90"), so we disable it
+    // and use \(...\) / \[...\] instead.
+    inlineMath: [['\\(', '\\)']],
+    displayMath: [['\\[', '\\]']],
     processEscapes: true,
     processEnvironments: true,
     // Custom macros for Atlas textbooks

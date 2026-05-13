@@ -1,0 +1,102 @@
+{
+  "_locked": true,
+  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish",
+  "id": "college-math-ch02-sec05",
+  "title": "Chain the move",
+  "chapter": 2,
+  "section": 5,
+  "book": "college-math",
+  "deck": "When one conversion factor is not enough, we stack several. Each link cancels a unit, until only the target unit is left. Same move as Section 2.4, scaled up.",
+  "objectives": [
+    "Chain conversions and convert compound units."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Imagine seeing 130 km/h on a German road sign and wanting to know how fast that is in miles per hour. Or hearing about an eight-minute mile and wanting the same speed expressed as miles per hour. Or exchanging fifty US dollars for British pounds by routing the money through euros first. Each of these conversions involves more than one unit change, and the single-factor recipe of the previous section can no longer carry the whole load on its own."
+    },
+    {
+      "type": "paragraph",
+      "text": "The solution is delightfully simple: chain conversion factors together. Each factor still equals 1, each factor still cancels one pair of units, and the calculation still resolves to a single multiplication at the end. We are not learning a new move; we are stacking the move we already know. This section shows how, and includes the one important exception, temperature, where the &ldquo;multiply by 1&rdquo; trick has to be replaced with a formula."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "2.5.1  Stacking factors"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">When a single</span> conversion factor will not take us from the starting unit to the target unit, we line up two or more factors in sequence. Each factor is oriented so that its denominator cancels the numerator (or starting unit) of the previous link. Middle units appear in the chain and then disappear, like stepping stones, leaving only the starting unit and the target unit at the ends."
+    },
+    {
+      "type": "figure",
+      "id": "fig-2.5",
+      "svg": "<svg viewBox=\"0 0 720 240\" xmlns=\"http://www.w3.org/2000/svg\">\n    <text x=\"40\" y=\"118\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"22\" fill=\"#F4F2F8\">5 <tspan fill=\"#95929F\" opacity=\"0.55\">mi</tspan></text>\n    <line x1=\"42\" y1=\"111\" x2=\"62\" y2=\"111\" stroke=\"#95929F\" stroke-width=\"1.5\" opacity=\"0.7\"/>\n    <text x=\"100\" y=\"118\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"22\" fill=\"#5BE3C9\">×</text>\n    <rect x=\"130\" y=\"58\" width=\"150\" height=\"120\" rx=\"8\" fill=\"rgba(91,227,201,0.10)\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n    <text x=\"205\" y=\"98\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"20\" fill=\"#F4F2F8\">5280 <tspan fill=\"#95929F\" opacity=\"0.55\">ft</tspan></text>\n    <line x1=\"220\" y1=\"91\" x2=\"237\" y2=\"91\" stroke=\"#95929F\" stroke-width=\"1.5\" opacity=\"0.7\"/>\n    <line x1=\"155\" y1=\"118\" x2=\"255\" y2=\"118\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n    <text x=\"205\" y=\"148\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"20\" fill=\"#F4F2F8\">1 <tspan fill=\"#95929F\" opacity=\"0.55\">mi</tspan></text>\n    <line x1=\"210\" y1=\"141\" x2=\"230\" y2=\"141\" stroke=\"#95929F\" stroke-width=\"1.5\" opacity=\"0.7\"/>\n    <text x=\"305\" y=\"118\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"22\" fill=\"#5BE3C9\">×</text>\n    <rect x=\"335\" y=\"58\" width=\"150\" height=\"120\" rx=\"8\" fill=\"rgba(91,227,201,0.10)\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n    <text x=\"410\" y=\"98\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"20\" fill=\"#F4F2F8\">12 <tspan fill=\"#5BE3C9\" font-weight=\"600\">in</tspan></text>\n    <line x1=\"360\" y1=\"118\" x2=\"460\" y2=\"118\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n    <text x=\"410\" y=\"148\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"20\" fill=\"#F4F2F8\">1 <tspan fill=\"#95929F\" opacity=\"0.55\">ft</tspan></text>\n    <line x1=\"416\" y1=\"141\" x2=\"432\" y2=\"141\" stroke=\"#95929F\" stroke-width=\"1.5\" opacity=\"0.7\"/>\n    <text x=\"505\" y=\"118\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"22\" fill=\"#5BE3C9\">=</text>\n    <text x=\"610\" y=\"118\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"22\" fill=\"#F4F2F8\">316,800 <tspan fill=\"#5BE3C9\" font-weight=\"600\">in</tspan></text>\n    <text x=\"360\" y=\"220\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-style=\"italic\" fill=\"#95929F\">mi cancels in the first factor. ft cancels in the second. only in survives.</text>\n</svg>",
+      "caption": "Figure 2.5. Two factors stacked: 5 mi × (5,280 ft / 1 mi) × (12 in / 1 ft) = 316,800 in. Three units appear in the chain; two of them cancel in pairs; only inches survive."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 2.5.</span> A <em>conversion chain</em> is a product of two or more conversion factors, each oriented so that its denominator cancels the previous numerator. The chain converts a starting measurement to a target unit through one or more intermediate units.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>The order in which we write the factors does not affect the final number, since multiplication is commutative; but writing them in cancellation order (so each factor visibly cancels the previous one) makes the chain much easier to read and debug.</aside>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "2.5.2  A two-link chain"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Most college math problems</span> involve chains of two or three factors. The general workflow is to plan the path through units first (miles &rarr; feet &rarr; inches), set up one factor per arrow, and then run a single multiplication at the end."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 2.5. Five miles in inches.</div><p>No single equivalence converts miles directly into inches, but we know 1 mi = 5,280 ft and 1 ft = 12 in. Chain the two.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. Plan the chain.</strong> Start at miles and march toward inches through the intermediate unit feet:</p><div class=\"cm-display-math\">mi &nbsp;&rarr;&nbsp; ft &nbsp;&rarr;&nbsp; in</div><p><strong>Step 2. Set up the first factor.</strong> Put miles on the bottom so they cancel with the starting 5 mi:</p><div class=\"cm-display-math\">5 mi &times; (5,280 ft / 1 mi)</div><p>After this single factor, the units have shifted from miles to feet.</p><p><strong>Step 3. Set up the second factor.</strong> Now put feet on the bottom so they cancel with the feet that survived the first factor:</p><div class=\"cm-display-math\">5 mi &times; (5,280 ft / 1 mi) &times; (12 in / 1 ft)</div><p>Now the only surviving unit is inches.</p><p><strong>Step 4. Multiply the numbers.</strong></p><div class=\"cm-display-math\">5 &times; 5,280 &times; 12 = 316,800</div><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>So 5 miles is 316,800 inches. The same pattern handles three-link chains (mph to m/s, for example) and currency conversions through an intermediate currency.</p></div>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "2.5.3  Compound units: convert top and bottom separately"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Compound units</span> like miles per hour or dollars per gallon are fractions in their own right; the rate has a numerator unit and a denominator unit. To convert a compound unit, we convert the top and the bottom <em>separately</em>, using a chain in each. For example, converting 60 mph to feet per second uses one factor for miles &rarr; feet on top and a second factor for hours &rarr; seconds on the bottom."
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">If the unit has a slash in it, the conversion has at least two factors: one for the top, one for the bottom.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Trying to use the multiply-by-1 trick for temperature. Fahrenheit and Celsius scales have different <em>zero points</em>, not just different sizes of degree, so no fraction of the form &ldquo;X &deg;F / Y &deg;C&rdquo; equals 1. Temperatures convert by formula instead: <em>C = (5/9)(F &minus; 32)</em> and <em>F = (9/5) C + 32</em>.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>Speed limits, fuel economy, currency markets, lab protocols, and competitive running times all live in compound units. A runner's pace in minutes per mile, a car's efficiency in miles per gallon, and a chemist's concentration in milligrams per liter are all conversion problems waiting to happen; each one resolves through a small chain of factors arranged so that the unwanted units cancel.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>Convert 2 hours to seconds, using 1 hr = 60 min and 1 min = 60 sec.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 7,200 sec. Two-link chain: 2 hr &times; (60 min / 1 hr) &times; (60 sec / 1 min) = 7,200 sec.</p></details></li><li><p>Convert 60 mph to feet per second, using 1 mi = 5,280 ft and 1 hr = 3,600 sec.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 88 ft/sec. Compound conversion: 60 (mi/hr) &times; (5,280 ft / 1 mi) &times; (1 hr / 3,600 sec) = 88 ft/sec. The miles cancel on top and the hours cancel on the bottom.</p></details></li><li><p>Convert 50 USD to GBP via euros, using 1 USD = 0.92 EUR and 1 EUR = 0.87 GBP. Round to two decimals.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 40.02 GBP. Chain: 50 USD &times; (0.92 EUR / 1 USD) &times; (0.87 GBP / 1 EUR) &asymp; 40.02 GBP.</p></details></li><li><p>In the chain 5 mi &times; (5,280 ft / 1 mi) &times; (12 in / 1 ft), what unit does the final answer carry?</p><ol type=\"A\"><li>mi</li><li>mi &times; in</li><li>in</li><li>ft &times; in</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> C (in). Miles cancel with the first factor's denominator; feet cancel with the second factor's denominator; only inches remain.</p></details></li><li><p>When converting 60 mph to ft/sec, which of the following must be done?</p><ol type=\"A\"><li>Convert miles to feet only.</li><li>Convert miles to feet AND hours to seconds.</li><li>Convert hours to feet.</li><li>Just multiply 60 by 5,280.</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. The compound unit mph has &ldquo;mi&rdquo; on top and &ldquo;hr&rdquo; on the bottom; to reach ft/sec, both pieces must change.</p></details></li><li><p>Why does cancellation work along a chain?</p><ol type=\"A\"><li>Each factor equals 1, so the product is unchanged in magnitude.</li><li>Multiplying adds units together.</li><li>Matching units on top and bottom of a multiplication cancel.</li><li>Both A and C are true.</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> D. (A) explains why the magnitude survives unchanged; (C) explains why the units shift. The two facts together justify the entire technique.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "The last five sections have given us percent, conversions, and the multiplier shortcut. Section 2.6 puts every one of those tools to work on a single real-world problem: a personal budget. Income comes in at the top, expenses go out in slices, and a savings rate falls out as a percent. The same Excel patterns from Chapter 1 reappear here, scaled up to a full monthly plan."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">2.5</div>"
+    }
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "_locked": true,
+  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish",
+  "id": "college-math-ch02-sec04",
+  "title": "Multiply by 1, in disguise",
+  "chapter": 2,
+  "section": 4,
+  "book": "college-math",
+  "deck": "Every unit conversion uses the same elegant move: multiply by a fraction equal to 1, written so the unwanted unit cancels. Once we see it, we can convert almost anything.",
+  "objectives": [
+    "Convert units using dimensional analysis."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Imagine following a recipe that calls for 16 ounces of flour, while the only kitchen scale in the apartment reads in grams. Or driving on a German Autobahn where the speed limit is 130 km/h while the rental car's speedometer shows mph. Or buying lumber sold in feet for a deck whose plans were drawn in meters. In every case the problem is the same: we have a number measured in one unit, and we need the same physical quantity expressed in a different unit."
+    },
+    {
+      "type": "paragraph",
+      "text": "Mathematicians solve this with one of the most elegant moves in the discipline: multiply by 1, in disguise. By writing a conversion factor as a fraction whose top and bottom describe the same physical quantity in different units, the fraction itself equals 1. Multiplying by 1 does not change the value, only the way it is written. This section unpacks the move, gives it a name, and walks through a single-factor conversion from start to finish."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "2.4.1  A conversion factor is a fraction that equals 1"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Because</span> 5,280 feet and 1 mile are exactly the same physical distance, the fraction 5,280 ft / 1 mi describes a length divided by itself; numerically, it equals 1. Multiplying any quantity by 1 leaves its magnitude unchanged, but it lets us swap one unit for another. The trick is to write the fraction so that the unit we want to <em>get rid of</em> is on the bottom, where it can cancel."
+    },
+    {
+      "type": "figure",
+      "id": "fig-2.4",
+      "svg": "<svg viewBox=\"0 0 600 220\" xmlns=\"http://www.w3.org/2000/svg\">\n    <text x=\"60\" y=\"108\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"28\" fill=\"#F4F2F8\">4 <tspan fill=\"#95929F\" opacity=\"0.55\">mi</tspan></text>\n    <line x1=\"62\" y1=\"100\" x2=\"84\" y2=\"100\" stroke=\"#95929F\" stroke-width=\"2\" opacity=\"0.7\"/>\n    <text x=\"125\" y=\"108\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"24\" fill=\"#5BE3C9\">×</text>\n    <rect x=\"160\" y=\"40\" width=\"180\" height=\"120\" rx=\"8\" fill=\"rgba(91,227,201,0.10)\" stroke=\"#5BE3C9\" stroke-width=\"2\"/>\n    <text x=\"250\" y=\"82\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"22\" fill=\"#F4F2F8\">5280 <tspan fill=\"#5BE3C9\" font-weight=\"600\">ft</tspan></text>\n    <line x1=\"180\" y1=\"100\" x2=\"320\" y2=\"100\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n    <text x=\"250\" y=\"132\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"22\" fill=\"#F4F2F8\">1 <tspan fill=\"#95929F\" opacity=\"0.55\">mi</tspan></text>\n    <line x1=\"259\" y1=\"125\" x2=\"280\" y2=\"125\" stroke=\"#95929F\" stroke-width=\"2\" opacity=\"0.7\"/>\n    <text x=\"250\" y=\"180\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-style=\"italic\" fill=\"#5BE3C9\">this fraction equals 1</text>\n    <text x=\"375\" y=\"108\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"24\" fill=\"#5BE3C9\">=</text>\n    <text x=\"490\" y=\"108\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"28\" fill=\"#F4F2F8\">21,120 <tspan fill=\"#5BE3C9\" font-weight=\"600\">ft</tspan></text>\n    <text x=\"300\" y=\"205\" text-anchor=\"middle\" font-family=\"Inter, sans-serif\" font-size=\"11\" font-style=\"italic\" fill=\"#95929F\">mi cancels (top × bottom = 1). ft survives as the new unit.</text>\n</svg>",
+      "caption": "Figure 2.4. The conversion factor 5,280 ft / 1 mi equals 1. Multiplying 4 mi by this fraction lets the miles cancel and feet survive, giving 21,120 ft."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 2.4.</span> A <em>conversion factor</em> is a fraction whose numerator and denominator describe the same physical quantity in different units, so that the fraction itself equals 1. <em>Dimensional analysis</em> is the technique of multiplying a measurement by one or more conversion factors, arranged so that unwanted units cancel and only the target unit remains.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>Engineers call this technique &ldquo;factor-label method&rdquo; or simply &ldquo;the cancellation method.&rdquo; In chemistry classrooms it is often introduced as the very first algebraic move of the term, before students have even seen molecules; it is that fundamental.</aside>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "2.4.2  How units cancel"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Units</span> behave algebraically just like numbers: <em>mi</em> on top cancels <em>mi</em> on the bottom, the same way the number 4 on top would cancel the number 4 on the bottom. The orientation of the fraction is what determines the cancellation. To go from miles to feet, miles must end up on the bottom of the conversion factor. To go from feet to miles, feet must end up on the bottom."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Setting up the fraction upside down. The unwanted unit must be on the <em>bottom</em> of the conversion factor; only then does it cancel. If we wrote 4 mi &times; (1 mi / 5,280 ft), the units would not cancel and the resulting number would have nonsensical units (mi&sup2;/ft). Whenever the units in the answer look strange, the fraction is upside down.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 2.4. Four miles in feet.</div><p>A runner logs four miles on the morning loop. A fitness app records distance in feet. We want the same distance expressed in feet.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. Identify the conversion factor.</strong> The known equivalence is 1 mile = 5,280 feet. The corresponding factor is</p><div class=\"cm-display-math\">5,280 ft / 1 mi = 1</div><p><strong>Step 2. Orient the fraction to cancel miles.</strong> We start with miles and want to end with feet, so the unwanted unit is miles. Place miles on the bottom of the factor.</p><p><strong>Step 3. Multiply and cancel.</strong> Setting up the calculation:</p><div class=\"cm-display-math\">4 mi &times; (5,280 ft / 1 mi)</div><p>The <em>mi</em> in &ldquo;4 mi&rdquo; cancels with the <em>mi</em> in the bottom of the factor, leaving only feet.</p><p><strong>Step 4. Multiply the numbers.</strong></p><div class=\"cm-display-math\">4 &times; 5,280 = 21,120</div><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>The runner covered 21,120 feet. Sanity check: feet are much smaller than miles, so we should expect a fairly large number, and 21,120 is well above the 5,280 we would get from a single mile.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">Set up the units first, then the numbers will sort themselves out.</blockquote>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>Dimensional analysis runs through chemistry, physics, engineering, nursing, and pharmacy. A nurse computing a drug dose from milligrams per kilogram of body weight uses this exact move. A construction quote that converts square feet to square meters uses it twice. Whenever the input and the answer carry different units, dimensional analysis is the bridge.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>Convert 3 feet to inches, using 1 ft = 12 in.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 36 in. We compute 3 ft &times; (12 in / 1 ft) = 36 in; the feet cancel and inches survive.</p></details></li><li><p>A football field is 100 yards. How many feet is that, using 1 yd = 3 ft?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 300 ft. We have 100 yd &times; (3 ft / 1 yd) = 300 ft.</p></details></li><li><p>Convert 200 grams to ounces, using 1 oz &asymp; 28.35 g. Round the answer to two decimals.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 7.05 oz. Setting up so grams cancel: 200 g &times; (1 oz / 28.35 g) = 200 / 28.35 &asymp; 7.05 oz.</p></details></li><li><p>Which of these conversion factors actually equals 1?</p><ol type=\"A\"><li>5,280 ft / 1 mi</li><li>1 mi / 1 ft</li><li>12 in / 5,280 ft</li><li>1 mi / 5,280 m</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> A. The numerator and denominator of A describe exactly the same distance in different units, so the fraction equals 1. The other pairs equate non-equivalent quantities.</p></details></li><li><p>To convert 8 feet to inches, the correct conversion factor to multiply by is&hellip;</p><ol type=\"A\"><li>1 ft / 12 in</li><li>12 in / 1 ft</li><li>1 ft / 1 in</li><li>12 ft / 1 in</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. We want feet to cancel and inches to survive, so feet must be on the bottom: 8 ft &times; (12 in / 1 ft) = 96 in.</p></details></li><li><p>If we set up the calculation 100 cm &times; (1 in / 2.54 cm), what unit does the answer carry?</p><ol type=\"A\"><li>cm</li><li>in</li><li>cm &times; in</li><li>cm / in</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B (in). The centimeters in &ldquo;100 cm&rdquo; and in &ldquo;2.54 cm&rdquo; cancel, leaving only inches on top.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Many real conversions cannot be done with a single factor. To turn miles per hour into meters per second we need to convert miles into meters <em>and</em> hours into seconds, in the same calculation. Section 2.5 chains conversion factors together, so that a long string of unit changes still resolves into a single number with the right units attached."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">2.4</div>"
+    }
+  ]
+}

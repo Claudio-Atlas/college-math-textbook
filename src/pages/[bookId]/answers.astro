@@ -4,10 +4,6 @@ import ReaderLayout from '../../layouts/ReaderLayout.astro';
 
 const { bookId } = Astro.params;
 
-// Detect edition from hostname
-const host = Astro.request.headers.get('host') || 'localhost';
-const edition = host.includes('meridian') ? 'secular' : 'christian';
-
 let book: any = null;
 let answersByChapter: Map<number, Map<number, Array<{number: string; answer: string; id: string}>>> = new Map();
 
@@ -27,8 +23,6 @@ try {
         
         if (section.content) {
           for (const block of section.content) {
-            // Skip christian-only exercises in secular edition
-            if (block.edition === 'christian' && edition === 'secular') continue;
             if (block.type === 'exercise' && block.answer) {
               const num = parseInt(block.number || '0', 10);
               if (num % 2 === 1) {

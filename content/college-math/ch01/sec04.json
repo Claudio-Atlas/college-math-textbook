@@ -1,0 +1,106 @@
+{
+  "_locked": true,
+  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish",
+  "id": "college-math-ch01-sec04",
+  "title": "Slope as a rate of change",
+  "chapter": 1,
+  "section": 4,
+  "book": "college-math",
+  "deck": "Every \"per\" we have ever said, dollars per hour, miles per gallon, feet per second, is a slope in disguise. Slope is how mathematicians measure change.",
+  "objectives": [
+    "Define the slope as a rate of change."
+  ],
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Imagine driving home from campus for spring break, 240 miles between us and the front door. The trip takes four hours of steady highway driving, and we glide into the driveway just before sunset. Without thinking about it, we have averaged 60 miles per hour."
+    },
+    {
+      "type": "paragraph",
+      "text": "That single number, 60, has a name in mathematics: it is the <em>slope</em> of the trip. Distance changed by 240 miles. Time changed by 4 hours. The slope is the ratio of those two changes, 60 miles per hour. Every &ldquo;per&rdquo; phrase we have ever spoken, dollars per hour, miles per gallon, students per classroom, feet per second, is a slope wearing a different costume. This section gives the idea its formal definition and shows how to compute it in any setting."
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "1.4.1  Rise over run"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">On a graph</span>, the slope of a straight line measures how steep the line is. More usefully, it tells us how much the vertical quantity changes whenever the horizontal quantity changes by one unit. To compute the slope from any two points on the line, we measure the <em>rise</em>, the vertical change between the two points, and the <em>run</em>, the horizontal change between them, and divide."
+    },
+    {
+      "type": "paragraph",
+      "text": "Figure 1.4 makes the picture concrete. Two points sit on a line. We draw a horizontal segment and a vertical segment between them to form a right triangle. The vertical leg is the rise; the horizontal leg is the run. Their quotient is the slope."
+    },
+    {
+      "type": "figure",
+      "id": "fig-1.4",
+      "svg": "<svg viewBox=\"0 0 560 320\" xmlns=\"http://www.w3.org/2000/svg\" role=\"img\" aria-label=\"Coordinate plane showing a line passing through points (1,2) and (5,8). A right triangle illustrates the rise of 6 units up and the run of 4 units right, giving a slope of 6 over 4 or 1.5.\">\n    <g stroke=\"rgba(255,255,255,0.06)\" stroke-width=\"1\">\n        <line x1=\"60\" y1=\"60\" x2=\"500\" y2=\"60\"/>\n        <line x1=\"60\" y1=\"100\" x2=\"500\" y2=\"100\"/>\n        <line x1=\"60\" y1=\"140\" x2=\"500\" y2=\"140\"/>\n        <line x1=\"60\" y1=\"180\" x2=\"500\" y2=\"180\"/>\n        <line x1=\"60\" y1=\"220\" x2=\"500\" y2=\"220\"/>\n        <line x1=\"60\" y1=\"260\" x2=\"500\" y2=\"260\"/>\n        <line x1=\"100\" y1=\"60\" x2=\"100\" y2=\"280\"/>\n        <line x1=\"160\" y1=\"60\" x2=\"160\" y2=\"280\"/>\n        <line x1=\"220\" y1=\"60\" x2=\"220\" y2=\"280\"/>\n        <line x1=\"280\" y1=\"60\" x2=\"280\" y2=\"280\"/>\n        <line x1=\"340\" y1=\"60\" x2=\"340\" y2=\"280\"/>\n        <line x1=\"400\" y1=\"60\" x2=\"400\" y2=\"280\"/>\n        <line x1=\"460\" y1=\"60\" x2=\"460\" y2=\"280\"/>\n    </g>\n    <line x1=\"60\" y1=\"280\" x2=\"510\" y2=\"280\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n    <polygon points=\"510,280 504,276 504,284\" fill=\"#F4F2F8\"/>\n    <text x=\"510\" y=\"298\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"13\" fill=\"#B8B5C4\">x</text>\n    <line x1=\"60\" y1=\"280\" x2=\"60\" y2=\"50\" stroke=\"#F4F2F8\" stroke-width=\"1.5\"/>\n    <polygon points=\"60,50 56,56 64,56\" fill=\"#F4F2F8\"/>\n    <text x=\"44\" y=\"58\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"13\" fill=\"#B8B5C4\">y</text>\n    <line x1=\"60\" y1=\"240\" x2=\"430\" y2=\"40\" stroke=\"#B59BFF\" stroke-width=\"2.5\" stroke-linecap=\"round\"/>\n    <line x1=\"100\" y1=\"200\" x2=\"340\" y2=\"200\" stroke=\"#F5C16C\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/>\n    <line x1=\"340\" y1=\"200\" x2=\"340\" y2=\"80\" stroke=\"#F5C16C\" stroke-width=\"2\" stroke-dasharray=\"6 4\"/>\n    <polyline points=\"328,200 328,212 340,212\" fill=\"none\" stroke=\"#F5C16C\" stroke-width=\"1.5\"/>\n    <circle cx=\"100\" cy=\"200\" r=\"6\" fill=\"#B59BFF\" stroke=\"#0A0812\" stroke-width=\"2\"/>\n    <text x=\"100\" y=\"222\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"13\" fill=\"#F4F2F8\">(1, 2)</text>\n    <circle cx=\"340\" cy=\"80\" r=\"6\" fill=\"#B59BFF\" stroke=\"#0A0812\" stroke-width=\"2\"/>\n    <text x=\"378\" y=\"76\" text-anchor=\"middle\" font-family=\"JetBrains Mono, monospace\" font-size=\"13\" fill=\"#F4F2F8\">(5, 8)</text>\n    <text x=\"220\" y=\"220\" text-anchor=\"middle\" font-family=\"VT323, monospace\" font-size=\"20\" fill=\"#F5C16C\" letter-spacing=\"1\">RUN = 4</text>\n    <text x=\"362\" y=\"145\" font-family=\"VT323, monospace\" font-size=\"20\" fill=\"#F5C16C\" letter-spacing=\"1\">RISE = 6</text>\n    <g>\n        <text x=\"80\" y=\"85\" font-family=\"VT323, monospace\" font-size=\"18\" fill=\"#B59BFF\" letter-spacing=\"1\">SLOPE</text>\n        <text x=\"80\" y=\"108\" font-family=\"JetBrains Mono, monospace\" font-size=\"16\" fill=\"#F4F2F8\">= 6/4 = 1.5</text>\n    </g>\n</svg>",
+      "caption": "Figure 1.4. Pick two points on the line. Measure the rise (vertical change) and the run (horizontal change). Their quotient is the slope."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 1.4.</span> The <em>slope</em> of the line through two points <em>(x<sub>1</sub>, y<sub>1</sub>)</em> and <em>(x<sub>2</sub>, y<sub>2</sub>)</em> is <em>m</em>, defined by\n<div class=\"cm-display-math\">m = (y<sub>2</sub> &minus; y<sub>1</sub>) / (x<sub>2</sub> &minus; x<sub>1</sub>)</div>That is, the change in <em>y</em> divided by the change in <em>x</em>.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<aside class=\"cm-tx-margin\"><span class=\"cm-tx-margin-label\">Margin note</span>The letter <em>m</em> is the long-standing convention for slope. Some historians trace it to the French <em>monter</em>, &ldquo;to climb,&rdquo; though no one is sure. What matters is that <em>m</em> always plays this role: the rate of change of <em>y</em> with respect to <em>x</em>.</aside>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "1.4.2  The formula in three motions"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">Using the slope formula</span> is a three-step move. First, write the two points as ordered pairs <em>(x, y)</em>. Second, label them as <em>(x<sub>1</sub>, y<sub>1</sub>)</em> and <em>(x<sub>2</sub>, y<sub>2</sub>)</em>. It does not matter which point gets which label as long as we are consistent on the top and bottom of the fraction. Third, substitute and simplify."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-warn\"><span class=\"cm-tx-warn-label\">Common mistake</span>Mixing up the order: writing <em>(y<sub>1</sub> &minus; y<sub>2</sub>) / (x<sub>2</sub> &minus; x<sub>1</sub>)</em>. If we flip the sign on top, we must flip it on the bottom as well. Otherwise the slope picks up the wrong sign.</div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-example\"><div class=\"cm-tx-ex-label\">Example 1.4. How fast is the savings account growing?</div><p>We have been working a part-time job and saving a portion of each paycheck. On day 10 the account had $180 in it. On day 30 it had $480. We would like to know the savings rate in dollars per day, which is the slope of the savings line.</p><hr class=\"cm-tx-ex-divider\"><p class=\"cm-tx-ex-solution-label\"><em>Solution.</em></p><p><strong>Step 1. Write the two points.</strong> Time is the input and dollars is the output, so the ordered pairs are <em>(10, 180)</em> and <em>(30, 480)</em>.</p><p><strong>Step 2. Label them.</strong> Let <em>(x<sub>1</sub>, y<sub>1</sub>) = (10, 180)</em> and <em>(x<sub>2</sub>, y<sub>2</sub>) = (30, 480)</em>.</p><p><strong>Step 3. Substitute and simplify.</strong></p><div class=\"cm-display-math\">m = (480 &minus; 180) / (30 &minus; 10) = 300 / 20 = 15</div><hr class=\"cm-tx-ex-divider cm-tx-ex-divider-closing\"><p>The slope is 15. Looking at the axes tells us the units: the rise was measured in dollars and the run in days, so the rate is <strong>15 dollars per day</strong>. That &ldquo;per&rdquo; phrase is the whole point of slope. Always carry the units along; they are part of the answer.</p></div>"
+    },
+    {
+      "type": "paragraph",
+      "text": "<blockquote class=\"cm-tx-pullquote\">Slope without units is just a number. Slope with units is a rate.</blockquote>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "1.4.3  Positive, negative, zero, and undefined slopes"
+    },
+    {
+      "type": "paragraph",
+      "text": "<span class=\"cm-tx-lead\">The sign of the slope</span> tells the direction of change. A positive slope means <em>y</em> increases as <em>x</em> increases (the savings example above). A negative slope means <em>y</em> decreases as <em>x</em> increases, like a tank that loses water over time. A slope of zero means <em>y</em> never changes, the line is flat. And when the two points share the same <em>x</em>-coordinate, the line is vertical and the slope is <em>undefined</em>, because we would be dividing by zero in the formula."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-tx-wild\"><span class=\"cm-tx-wild-label\">In the wild</span>Road signs that read &ldquo;6% grade&rdquo; are stating a slope: the road climbs (or drops) 6 vertical units for every 100 horizontal units. A 6% grade is steep enough to require runaway-truck ramps in mountainous country; a 1% grade is barely noticeable. Slope as a rate is exactly the same idea, just dressed up in the language of highways.</div>"
+    },
+    {
+      "type": "heading",
+      "level": 2,
+      "text": "Exercises"
+    },
+    {
+      "type": "paragraph",
+      "text": "<ol class=\"cm-tx-exercises\"><li><p>Find the slope of the line through <em>(2, 5)</em> and <em>(6, 17)</em>.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> <em>m = (17 &minus; 5) / (6 &minus; 2) = 12 / 4 = 3</em>. The line rises three units for every one unit it runs.</p></details></li><li><p>A line passes through <em>(0, 1)</em> and <em>(4, 3)</em>. Find its slope.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> <em>m = (3 &minus; 1) / (4 &minus; 0) = 2 / 4 = 1/2</em>. Written as a decimal, the slope is 0.5.</p></details></li><li><p>Find the slope of the line through <em>(&minus;3, 7)</em> and <em>(5, &minus;1)</em>.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> <em>m = (&minus;1 &minus; 7) / (5 &minus; (&minus;3)) = &minus;8 / 8 = &minus;1</em>. The sign is negative, so the line drops one unit for every one unit it runs.</p></details></li><li><p>A car drives 180 miles in 3 hours at a steady speed. What is the slope of its distance-versus-time graph?</p><ol type=\"A\"><li>3 hours per mile</li><li>60 miles per hour</li><li>180 miles</li><li>540 miles per hour</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. The rise is 180 miles, the run is 3 hours, and 180 &divide; 3 = 60 miles per hour. The units come straight from the axes.</p></details></li><li><p>What is the slope of the line through <em>(3, 7)</em> and <em>(8, 7)</em>?</p><ol type=\"A\"><li>0</li><li>5</li><li>undefined</li><li>14/11</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> A. The two points share the same <em>y</em>, so the rise is zero. Zero in the numerator gives a slope of zero, a horizontal line. (Zero in the <em>denominator</em>, by contrast, would give an undefined slope, a vertical line.)</p></details></li><li><p>An espresso machine costs $80 per repair visit, plus a $50 trip fee that is charged once whenever the technician comes out. If <em>x</em> is the number of repair visits and <em>y</em> is the total cost, what is the slope?</p><ol type=\"A\"><li>130</li><li>50</li><li>30</li><li>80</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> D ($80 per visit). The slope is the rate per visit, $80. The $50 trip fee is the part that does not depend on the rate; it will reappear in Section 1.5 as the <em>y</em>-intercept.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "Looking ahead"
+    },
+    {
+      "type": "paragraph",
+      "text": "Slope tells us how fast a line climbs, but it does not tell us where the line sits on the graph. The same slope can describe a line that begins high or a line that begins low. Section 1.5 pairs the slope with a <em>starting value</em> to produce a complete linear model, and uses that model to make precise predictions about everything from savings accounts to rent forecasts."
+    },
+    {
+      "type": "paragraph",
+      "text": "<div class=\"cm-section-end-mark\">1.4</div>"
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+---
+/**
+ * Chapter page — College Mathematics.
+ *
+ * Routes:   /[bookId]/[chapterId]   (e.g. /college-math/ch01)
+ *
+ * Reads chapter metadata from content/[bookId]/book.json (populated
+ * by the converter from the source MAT-144 topic dicts) and renders:
+ *   - Hero with chapter number + title + intro prose
+ *   - Learning objectives list
+ *   - Section list with title + objective + "Read →" links
+ *   - Chapter glossary (consolidated vocab from all sections)
+ */
+export const prerender = false;
+import ReaderLayout from '../../../layouts/ReaderLayout.astro';
+
+const { bookId, chapterId } = Astro.params;
+
+let book: any = null;
+let chapter: any = null;
+let notFound = false;
+
+try {
+    const bookModule = await import(`../../../../content/${bookId}/book.json`);
+    book = bookModule.default;
+    chapter = book.chapters.find((c: any) => c.id === chapterId) || null;
+    if (!chapter) notFound = true;
+} catch (e) {
+    notFound = true;
+}
+
+// First section in the chapter — used by the "Start reading →" CTA
+const firstSection = !notFound && chapter?.sections?.length ? chapter.sections[0] : null;
+---
+
+{notFound ? (
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <title>Chapter Not Found</title>
+            <link rel="stylesheet" href="/src/styles/global.css" />
+        </head>
+        <body class="min-h-screen flex items-center justify-center" style="background: var(--ax-bg); color: var(--ax-text);">
+            <div class="text-center p-8">
+                <h1 class="text-2xl font-bold mb-4">Chapter Not Found</h1>
+                <p class="mb-4" style="color: var(--ax-text-secondary);">
+                    Could not find: /{bookId}/{chapterId}
+                </p>
+                <a href="/" style="color: var(--ax-violet); text-decoration: underline;">← Back to cover</a>
+            </div>
+        </body>
+    </html>
+) : (
+    <ReaderLayout
+        title={`Chapter ${chapter.number}: ${chapter.title} — ${book.title}`}
+        book={book}
+        bookId={bookId}
+        currentChapter={chapter.number}
+        currentSection={0}
+        chapterTitle={chapter.title}
+        sectionTitle="Chapter overview"
+    >
+        <article class="reader-content cm-chapter-page">
+            <header class="section-hero">
+                <span class="section-number">{chapter.number}</span>
+                <div class="cm-chapter-eyebrow">Chapter {chapter.number}</div>
+                <h1 class="section-title">{chapter.title}</h1>
+                {chapter.desc && (
+                    <p class="cm-chapter-desc">{chapter.desc}</p>
+                )}
+            </header>
+
+            {/* Intro paragraph(s) from the source start_blurb */}
+            {chapter.intro_html && (
+                <div class="cm-chapter-intro" set:html={chapter.intro_html} />
+            )}
+
+            {/* Objectives — what students will be able to do by chapter's end */}
+            {chapter.objectives && chapter.objectives.length > 0 && (
+                <section class="cm-chapter-objectives">
+                    <h2 class="cm-section-h2">By the end of this chapter, you'll be able to…</h2>
+                    <ul class="cm-objectives-list">
+                        {chapter.objectives.map((obj: string, i: number) => (
+                            <li>
+                                <span class="cm-obj-num">{chapter.number}.{i + 1}</span>
+                                <span class="cm-obj-text">{obj}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </section>
+            )}
+
+            {/* Section list — links to /[bookId]/[chapterId]/[sectionId] */}
+            <section class="cm-chapter-sections">
+                <h2 class="cm-section-h2">Sections</h2>
+                <ol class="cm-section-list">
+                    {chapter.sections.map((s: any) => (
+                        <li class="cm-section-row">
+                            <a
+                                href={`/${bookId}/${chapterId}/${s.id}`}
+                                class="cm-section-row-link"
+                            >
+                                <span class="cm-section-row-num">{chapter.number}.{s.number}</span>
+                                <span class="cm-section-row-body">
+                                    <span class="cm-section-row-title">{s.title}</span>
+                                    {/* Prefer deck (richer preview) over objective.
+                                        Falls back to objective if deck is empty. */}
+                                    {(s.deck || s.objective) && (
+                                        <span class="cm-section-row-obj">{s.deck || s.objective}</span>
+                                    )}
+                                </span>
+                                <span class="cm-section-row-cta">Read →</span>
+                            </a>
+                        </li>
+                    ))}
+                </ol>
+            </section>
+
+            {/* Start CTA */}
+            {firstSection && (
+                <div class="cm-chapter-cta">
+                    <a href={`/${bookId}/${chapterId}/${firstSection.id}`} class="cm-chapter-cta-btn">
+                        Start with §{chapter.number}.{firstSection.number} →
+                    </a>
+                </div>
+            )}
+
+            {/* Chapter summary — pulls the cheat sheet HTML from the
+                source topic's cheat_sheet field. Provides the formula
+                reference card students study from. */}
+            {chapter.summary_html && (
+                <section class="cm-chapter-summary">
+                    <h2 class="cm-section-h2">Chapter summary</h2>
+                    <p class="cm-summary-blurb">Formulas, key concepts, and the kind of one-page reference you'd want during a problem set.</p>
+                    <div class="cm-summary-body" set:html={chapter.summary_html} />
+                </section>
+            )}
+
+            {/* Consolidated chapter glossary */}
+            {chapter.glossary && chapter.glossary.length > 0 && (
+                <section class="cm-chapter-glossary">
+                    <h2 class="cm-section-h2">Chapter glossary</h2>
+                    <p class="cm-glossary-blurb">All key terms introduced across this chapter, in the order they appear in the reading.</p>
+                    <dl class="cm-glossary cm-glossary--chapter">
+                        {chapter.glossary.map((v: any) => (
+                            <>
+                                <dt>{v.term}</dt>
+                                <dd set:html={v.definition} />
+                            </>
+                        ))}
+                    </dl>
+                </section>
+            )}
+        </article>
+    </ReaderLayout>
+)}
