@@ -13,6 +13,7 @@ import { Connection } from '../environments/Connection';
 import { Tip } from '../environments/Tip';
 import { Exercise } from '../environments/Exercise';
 import { ExerciseSection } from '../environments/ExerciseSection';
+import { DisplayMath } from '../environments/DisplayMath';
 import { MathJaxProvider } from '../MathJaxProvider';
 
 interface ContentRendererProps {
@@ -129,7 +130,16 @@ function BlockRenderer({ block, isFirstParagraph = false }: { block: ContentBloc
       return (
         <FigureBlock key={block.id || index} block={block} />
       );
-      
+
+    case 'display_math':
+      return (
+        <DisplayMath
+          id={block.id}
+          latex={block.latex}
+          label={block.label}
+        />
+      );
+
     case 'exercise':
       // Exercises are grouped by ContentRenderer into ExerciseSections
       // This fallback handles any strays

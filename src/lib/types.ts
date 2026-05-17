@@ -80,7 +80,8 @@ export type ContentBlock =
   | AlgorithmBlock
   | MethodBlock
   | ConnectionBlock
-  | TipBlock;
+  | TipBlock
+  | DisplayMathBlock;
 
 interface BaseBlock {
   edition?: 'christian' | 'secular';
@@ -134,6 +135,13 @@ export interface FigureBlock extends BaseBlock {
   src: string;
   caption: string;
   alt?: string;
+}
+
+export interface DisplayMathBlock extends BaseBlock {
+  type: 'display_math';
+  id?: string;
+  latex: string;
+  label?: string;
 }
 
 export interface ListBlock extends BaseBlock {
