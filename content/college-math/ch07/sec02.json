@@ -1,6 +1,6 @@
 {
   "_locked": false,
-  "_pass": "Pass 1 + worked examples v2 + polish v1",
+  "_pass": "Pass 1 + worked examples v2 + polish v1 + def promotion + method block + LA trim",
   "id": "college-math-ch07-sec02",
   "title": "Tax brackets and the marginal rate",
   "chapter": 7,
@@ -35,8 +35,17 @@
       "caption": "Figure 7.2. The bracket staircase. A $60,000 taxable income is split across three brackets: $11,600 taxed at 10%, $35,550 taxed at 12%, and the remaining $12,850 taxed at 22%. The total tax owed is the sum of the three slices."
     },
     {
-      "type": "paragraph",
-      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 7.2.</span> The <em>marginal tax rate</em> is the rate of the highest bracket the taxpayer's income reaches &mdash; equivalently, the rate at which the next dollar earned would be taxed. The <em>effective tax rate</em> is total tax owed divided by total taxable income. In a progressive system, the effective rate is always less than (or equal to) the marginal rate.</div>"
+      "type": "definition",
+      "id": "def-7.2",
+      "number": "7.2",
+      "title": "Marginal and effective tax rates",
+      "content": "The **marginal tax rate** is the rate applied to the *next* dollar of taxable income \u2014 the bracket the top of your income sits in.\n\nThe **effective tax rate** is the *average* rate across your whole taxable income: total federal tax divided by taxable income.\n\nBecause the bottom brackets are taxed at lower rates, the effective rate is always **lower** than the marginal rate. A taxpayer in the 22% bracket might have an effective rate around 13-14%."
+    },
+    {
+      "type": "method",
+      "id": "method-7.2",
+      "title": "Walking the brackets, bottom-up",
+      "content": "<ol class=\"list-decimal ml-6 mt-2 space-y-2\"><li>Start with taxable income (gross minus standard or itemized deduction).</li><li>Look up the bracket schedule for your filing status.</li><li>For each bracket from the bottom up, compute the <strong>slice</strong> of income that falls inside that bracket.</li><li>Multiply each slice by that bracket's marginal rate.</li><li>Sum the per-bracket tax amounts. That sum is your total federal income tax.</li></ol>"
     },
     {
       "type": "heading",
@@ -161,7 +170,7 @@
     },
     {
       "type": "paragraph",
-      "text": "The bracket math determines what an individual filer owes for the year. Section 7.3 closes the income-tax half of the chapter by reconciling that owed amount against the withholding accumulated across all the year's paychecks, settling up on April 15 with either a refund or an additional payment."
+      "text": "The bracket math determines what an individual filer owes for the year."
     },
     {
       "type": "paragraph",

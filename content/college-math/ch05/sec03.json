@@ -1,6 +1,6 @@
 {
   "_locked": false,
-  "_pass": "Pass 1 + worked examples v2 + display math",
+  "_pass": "Pass 1 + worked examples v2 + display math + def promotion + method block + LA trim",
   "id": "college-math-ch05-sec03",
   "title": "Range and standard deviation",
   "chapter": 5,
@@ -18,6 +18,12 @@
     {
       "type": "paragraph",
       "text": "This section develops two such measures. The <em>range</em> is the simpler one: max minus min, the width of the gap between the largest and smallest values. The <em>standard deviation</em> is the more informative one: the typical distance of a value from the mean, with the same units as the data. Together, center and spread describe almost any data set well enough to support every inferential move in the rest of the chapter."
+    },
+    {
+      "type": "method",
+      "id": "method-5.3",
+      "title": "Sample standard deviation, step by step",
+      "content": "<ol class=\"list-decimal ml-6 mt-2 space-y-2\"><li>Compute the mean <strong>x\u0304</strong> of the data set.</li><li>For each value <em>x<sub>i</sub></em>, compute the deviation <strong>x<sub>i</sub> \u2212 x\u0304</strong>.</li><li>Square each deviation.</li><li>Sum the squared deviations.</li><li>Divide by <strong>n \u2212 1</strong> (sample SD) \u2014 not by <em>n</em>. This is the <em>sample variance</em>.</li><li>Take the square root. That is the sample standard deviation <strong>s</strong>.</li></ol>"
     },
     {
       "type": "heading",
@@ -52,8 +58,11 @@
       "caption": "Figure 5.3. Two data sets with the same mean (75) and very different spread. The range and standard deviation are the standard ways to capture that difference in a single number. Tight Class A has a small range and small SD; spread-out Class B has both much larger."
     },
     {
-      "type": "paragraph",
-      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 5.5.</span> The <em>sample standard deviation</em> of a data set with values <em>x<sub>1</sub>, &middot;&middot;&middot;, x<sub>n</sub></em> and mean <em>x&#x0304;</em> is <em>s = &radic;(&Sigma;(x<sub>i</sub> &minus; x&#x0304;)<sup>2</sup> / (n &minus; 1))</em>. The <em>population standard deviation</em> uses the same formula but divides by <em>n</em> instead of <em>n &minus; 1</em>; it is written <em>&sigma;</em>. The squared standard deviation is called the <em>variance</em>.</div>"
+      "type": "definition",
+      "id": "def-5.3",
+      "number": "5.3",
+      "title": "Standard deviation",
+      "content": "The **standard deviation** measures how far values typically deviate from the mean. For a *sample* of size **n** with mean **x\u0304**:\n\n**s = \u221a( \u03a3(x<sub>i</sub> \u2212 x\u0304)\u00b2 / (n \u2212 1) )**\n\nSmall SD \u21d2 values cluster tightly around the mean. Large SD \u21d2 values are spread out. Standard deviation is the workhorse measure of spread in statistics \u2014 used in the empirical rule, the normal distribution, and margin of error."
     },
     {
       "type": "heading",
@@ -129,7 +138,7 @@
     },
     {
       "type": "paragraph",
-      "text": "With both center and spread defined, the descriptive toolkit is complete: any data set is summarized to first approximation by its mean (or median) and its standard deviation (or range). Section 5.4 turns from numerical summaries to visual ones, introducing the four standard data displays that translate raw numbers into shapes the eye can interpret at a glance."
+      "text": "With both center and spread defined, the descriptive toolkit is complete: any data set is summarized to first approximation by its mean (or median) and its standard deviation (or range)."
     },
     {
       "type": "paragraph",

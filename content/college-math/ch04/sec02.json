@@ -1,6 +1,6 @@
 {
   "_locked": true,
-  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish + worked examples v2 + display math",
+  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish + worked examples v2 + display math + def promotion + method block + LA trim",
   "id": "college-math-ch04-sec02",
   "title": "The amortization formula, anatomized",
   "chapter": 4,
@@ -39,8 +39,17 @@
       "caption": "Figure 4.2. Five named pieces, each with one job. The negative exponent in the denominator is what discounts the future stream of payments back to a present-day principal."
     },
     {
-      "type": "paragraph",
-      "text": "<div class=\"cm-tx-definition\"><span class=\"cm-tx-def-label\">Definition 4.2.</span> The <em>loan amortization formula</em> computes the fixed monthly payment that fully repays a loan of principal <em>P</em>, annual interest rate <em>r</em> (as a decimal), and term <em>t</em> (in years):\n<div class=\"cm-display-math\">M = P \u00b7 [r/12] / [1 &minus; (1 + r/12)<sup>-12 t</sup>]</div>The payment <em>M</em> is constant from month to month, but the way each payment splits between interest and principal shifts gradually over the life of the loan, a behavior we will explore in Section 4.6.</div>"
+      "type": "definition",
+      "id": "def-4.2",
+      "number": "4.2",
+      "title": "Loan amortization formula",
+      "content": "The **amortization formula** computes the fixed monthly payment that fully repays a loan in equal installments. For principal **P**, annual rate **r** (decimal), and term **t** (years):\n\n**M = P \u00b7 (r/12) / [ 1 \u2212 (1 + r/12)<sup>\u221212 t</sup> ]**\n\nThe payment **M** is constant from month to month, but the way each payment splits between interest and principal shifts over time: early payments are mostly interest, late payments are mostly principal."
+    },
+    {
+      "type": "method",
+      "id": "method-4.2",
+      "title": "Computing the amortization formula by hand",
+      "content": "<ol class=\"list-decimal ml-6 mt-2 space-y-2\"><li>Compute the monthly periodic rate: <strong>r/12</strong>.</li><li>Compute <strong>1 + r/12</strong>.</li><li>Raise the result to the <strong>\u221212t</strong> power. The negative exponent is essential.</li><li>Subtract that from 1 to form the denominator.</li><li>Compute the numerator: <strong>P \u00d7 (r/12)</strong>.</li><li>Divide numerator by denominator. That is <strong>M</strong>, the fixed monthly payment.</li></ol>"
     },
     {
       "type": "paragraph",
@@ -120,7 +129,7 @@
     },
     {
       "type": "paragraph",
-      "text": "Sections 4.3 through 4.6 each apply this single formula to a different real-world loan product. Auto loans pair the formula with a down-payment calculation. Credit cards remove the fixed term and trap the unwary in interest-only payments. Student loans add the subsidized/unsubsidized distinction. Mortgages stretch the formula across thirty years and reveal the surprising principal-versus-interest split that occurs early in the schedule. The math is constant; the applications are where the story gets interesting."
+      "text": "Sections 4.3 through 4.6 each apply this single formula to a different real-world loan product."
     },
     {
       "type": "paragraph",
