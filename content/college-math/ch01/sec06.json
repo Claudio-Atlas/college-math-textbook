@@ -1,6 +1,6 @@
 {
   "_locked": true,
-  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish",
+  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish + worked examples v2",
   "id": "college-math-ch01-sec06",
   "title": "Spreadsheets, the finale",
   "chapter": 1,
@@ -99,6 +99,33 @@
     {
       "type": "paragraph",
       "text": "<ol class=\"cm-tx-exercises\"><li><p>A small spreadsheet has the header <em>Week</em> in cell A1 and <em>Savings</em> in cell B1. Rows 2, 3, and 4 contain (0, 200), (1, 275), and (2, 350) respectively. What is the cell address of the cell that contains 350?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B4. Column B is the &ldquo;Savings&rdquo; column, row 4 is the third data row. Column letter first, row number second, the same convention as <em>(x, y)</em>.</p></details></li><li><p>A phone plan charges $0.10 per minute plus a $25 base fee. Cell A2 holds the number of minutes used. Write the formula for cell B2 that computes the total bill.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> <em>=0.10*A2 + 25</em>. The 0.10 multiplies the input cell A2; the 25 is the fixed base fee. This is <em>y = mx + b</em> with a cell reference standing in for <em>x</em>.</p></details></li><li><p>Cells A2:A11 hold the year (1 through 10). Cells B2:B11 hold the corresponding home values. Write the Excel formula that returns the slope of the best-fit line.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> <em>=SLOPE(B2:B11, A2:A11)</em>. <em>y</em>-values (home values, column B) come first, <em>x</em>-values (years, column A) come second. Reversing the order would compute years per dollar instead of dollars per year.</p></details></li><li><p>Why does every Excel formula begin with <em>=</em>?</p><ol type=\"A\"><li>It is stylistic; the formula would still work without it.</li><li>The <em>=</em> tells Excel to compute the cell instead of displaying its contents as text.</li><li>It marks the cell as locked from editing.</li><li>It indicates which row the cell is in.</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. Without the equals sign, Excel reads the contents as a literal piece of text and shows the characters exactly as typed.</p></details></li><li><p>Cell A1 contains the number 50, and cell A2 contains the formula <em>=A1*2</em>. If we change A1 to 80, what happens to A2?</p><ol type=\"A\"><li>A2 stays at 100; the formula was already evaluated.</li><li>A2 shows an error because A1 changed.</li><li>A2 automatically updates to 160.</li><li>The formula in A2 must be retyped.</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> C. Cell references are live; whenever A1 changes, every formula that depends on A1 is recomputed.</p></details></li><li><p>The formula <em>=A2 + 10</em> is written in cell B2 and dragged down to B5. What formula ends up in cell B5?</p><ol type=\"A\"><li><em>=A2 + 10</em></li><li><em>=B2 + 10</em></li><li><em>=A2 + 40</em></li><li><em>=A5 + 10</em></li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> D. Dragging a formula down shifts the row numbers in the cell references: B2 becomes B5, A2 becomes A5. The literal 10 stays put because it is not a reference. That auto-adjustment is exactly why one formula can power twenty-five rows.</p></details></li></ol>"
+    },
+    {
+      "type": "heading",
+      "level": 3,
+      "text": "More worked examples"
+    },
+    {
+      "type": "example",
+      "id": "ex-1.6.1",
+      "number": "1.6.1",
+      "title": "Translate a formula into an Excel cell",
+      "problem": "A budget tracks monthly grocery spending in cells **B2 through B7** (six months of data). Write the Excel formula that computes the **average monthly grocery spending**, and the formula that gives the **total spent so far**.",
+      "solution": "**Translate each calculation into a formula.** Every Excel formula starts with **=**.\n\n**Average:** `=AVERAGE(B2:B7)`\n\n**Total:** `=SUM(B2:B7)`\n\nBoth formulas reference the *cell range* B2:B7 rather than typing the numbers themselves. If any month's value is updated later, the formula updates automatically \u2014 that is exactly the value Excel adds over a paper budget."
+    },
+    {
+      "type": "example",
+      "id": "ex-1.6.2",
+      "number": "1.6.2",
+      "title": "Absolute vs relative references \u2014 the $ trick",
+      "problem": "A column of prices is in cells **A2 through A10**. Cell **B1** contains the sales tax rate (e.g., 0.07). Write a single formula for B2 that computes the tax amount on the A2 price, and explain why **`=$B$1*A2`** is the right form when dragging it down through B3, B4, \u2026, B10.",
+      "solution": "**Write the formula.** The tax on the A2 price is price \u00d7 rate: `=$B$1*A2`.\n\n**Why the dollar signs matter.** When you drag a formula down through B3, B4, etc., Excel auto-shifts *relative* references. Without the dollar signs, dragging would change `B1` to `B2` in cell B2's formula, then `B3` in B3's, and so on \u2014 pointing to the wrong cell.\n\nThe **$** marks signal *absolute* reference: **$B$1** locks both the column and the row, so the formula always reads the tax rate from B1 no matter where it is dragged. Meanwhile, **A2** is relative \u2014 it correctly shifts to A3, A4, \u2026 as you drag.\n\n*Rule of thumb.* Use absolute references for **constants** (rates, fixed thresholds, anchor cells). Use relative references for **per-row** values (prices, names, dates that change row by row)."
+    },
+    {
+      "type": "summary",
+      "id": "sum-1.6",
+      "title": "Summary",
+      "content": "Every Excel formula starts with **=**. Range functions like `=SUM(A2:A10)` and `=AVERAGE(A2:A10)` operate on whole blocks of cells. Mixing **absolute** (`$A$1`) and **relative** (`A1`) references is what makes a formula behave correctly when dragged. Spreadsheets are the practical engine on which every later topic of the course will rest."
     },
     {
       "type": "heading",
