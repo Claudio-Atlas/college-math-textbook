@@ -1,6 +1,6 @@
 {
   "_locked": true,
-  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish + worked examples v1",
+  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish + worked examples v1 + chapter completion v1",
   "id": "college-math-ch02-sec05",
   "title": "Chain the move",
   "chapter": 2,
@@ -99,6 +99,19 @@
       "text": "<div class=\"cm-section-end-mark\">2.5</div>"
     },
     {
+      "type": "definition",
+      "id": "def-2.5.1",
+      "number": "2.5.1",
+      "title": "Compound unit",
+      "content": "A **compound unit** is a quantity expressed as a ratio of two simpler units. Examples include speed (miles per hour, meters per second), price (dollars per pound, cents per kilowatt-hour), and density (kilograms per cubic meter, grams per millilitre).\n\nConverting a compound unit usually requires **two** conversion factors: one to change the numerator unit, one to change the denominator unit."
+    },
+    {
+      "type": "method",
+      "id": "method-2.5",
+      "title": "Chained conversions",
+      "content": "**1.** Identify both the numerator and the denominator unit you need to change.\n\n**2.** Find a conversion factor for each.\n\n**3.** Multiply, arranging each factor so the unwanted unit appears in the denominator (so it cancels).\n\n**4.** Multiply through, leaving only the target units.\n\nWorked: 60 mi/hr \u00d7 (5,280 ft / 1 mi) \u00d7 (1 hr / 3,600 sec) = 88 ft/sec."
+    },
+    {
       "type": "heading",
       "level": 2,
       "text": "Worked examples"
@@ -118,6 +131,48 @@
       "title": "Fahrenheit to Celsius \u2014 the exception that needs a formula",
       "problem": "The thermostat reads **77\u00b0F**. Convert this to **Celsius**.",
       "solution": "**Why this is not dimensional analysis.** Most conversions use a factor (1 km = 1,000 m), but temperature scales have *different zero points*: 0\u00b0C corresponds to 32\u00b0F, not to 0\u00b0F. The zero offset breaks the multiplicative trick, so we use a formula instead:\n\nC = (5/9)(F \u2212 32)\n\n**Plug in F = 77.**\n\nC = (5/9)(77 \u2212 32) = (5/9)(45) = 5 \u00d7 5 = **25\u00b0C**\n\nThe thermostat is reading **25\u00b0C**.\n\n*The order-of-operations trap.* The parentheses are not decorative. The formula subtracts first, *then* multiplies by 5/9. If we accidentally compute (5/9) \u00d7 77 \u2212 32 instead, we get 42.78 \u2212 32 = 10.78, which is roughly the temperature of a refrigerator \u2014 clearly wrong for a thermostat. Trust the parentheses; do the subtraction first."
+    },
+    {
+      "type": "caution",
+      "id": "caut-2.5.1",
+      "content": "**Temperature** is the exception that breaks dimensional analysis. The Fahrenheit and Celsius scales have different zero points (0\u00b0C = 32\u00b0F, not 0\u00b0F), so a multiplicative conversion factor cannot work. Use the formula instead:\n\nC = (5/9)(F \u2212 32) &nbsp;&nbsp;|&nbsp;&nbsp; F = (9/5)C + 32\n\n**Order of operations matters**: subtract first, then multiply by 5/9 (or 9/5). The parentheses in the formula are not decorative."
+    },
+    {
+      "type": "caution",
+      "id": "caut-2.5.2",
+      "content": "When converting a **compound** unit like miles per hour to feet per second, you must convert **both** the numerator and the denominator. A common slip is to convert only the numerator and forget the time piece \u2014 leaving the answer in ft/hr, which is wildly off."
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.5-1",
+      "number": "1",
+      "problem": "Convert **45 miles per hour** to **feet per second**.",
+      "answer": "**66 ft/sec**. 45 \u00d7 5,280 / 3,600 = 237,600 / 3,600 = 66 ft/sec."
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.5-2",
+      "number": "2",
+      "problem": "Convert **30 meters per second** to **kilometers per hour**. (1 km = 1,000 m.)"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.5-3",
+      "number": "3",
+      "problem": "The temperature outside is **41\u00b0F**. What is this in Celsius?",
+      "answer": "**5\u00b0C**. C = (5/9)(41 \u2212 32) = (5/9)(9) = 5. Subtraction first, then multiplication."
+    },
+    {
+      "type": "exercise",
+      "id": "ex-2.5-4",
+      "number": "4",
+      "problem": "A grocery store sells coffee at **$8.00 per pound**. What is the price per ounce? (1 lb = 16 oz.)"
+    },
+    {
+      "type": "summary",
+      "id": "sum-2.5",
+      "title": "Summary",
+      "content": "Most conversions chain together as products of unit fractions: one factor per unit being changed. Temperature is the exception \u2014 the scales have different zero points, so a formula is required. In every case, the structure of the units is its own correctness check."
     }
   ]
 }
