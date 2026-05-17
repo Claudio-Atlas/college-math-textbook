@@ -1,6 +1,6 @@
 {
   "_locked": false,
-  "_pass": "Pass 1 + worked examples v2 + LA trim",
+  "_pass": "Pass 1 + worked examples v2 + LA trim + apps + extra exercises",
   "id": "college-math-ch06-sec03",
   "title": "Sample spaces and the addition rule",
   "chapter": 6,
@@ -77,6 +77,19 @@
       "text": "Exercises"
     },
     {
+      "type": "exercise",
+      "id": "ex-app-6.3-1",
+      "number": "1",
+      "problem": "From a 52-card deck, what is **P(red card or ace)**? Remember: 26 red cards, 4 aces, and 2 red aces.",
+      "answer": "P(red or ace) = P(red) + P(ace) \u2212 P(red and ace) = 26/52 + 4/52 \u2212 2/52 = 28/52 = **7/13 \u2248 53.8%**."
+    },
+    {
+      "type": "exercise",
+      "id": "ex-app-6.3-2",
+      "number": "2",
+      "problem": "In a class of 30 students, 18 take Spanish, 12 take French, and 5 take both. What is the probability that a randomly chosen student takes Spanish OR French?"
+    },
+    {
       "type": "paragraph",
       "text": "<ol class=\"cm-tx-exercises\"><li><p>A fair six-sided die is rolled once. What is the probability of rolling a 2 or a 5? Write your answer as a fraction in lowest terms.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 1/3. The two events are mutually exclusive on a single roll, so <em>P(2 or 5) = 1/6 + 1/6 = 2/6 = 1/3</em>.</p></details></li><li><p>One card is drawn from a standard 52-card deck. Find <em>P(king or heart)</em>.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 4/13. By the addition rule, <em>P(king or heart) = 4/52 + 13/52 &minus; 1/52 = 16/52 = 4/13</em>; the single overlap card is the king of hearts.</p></details></li><li><p>One card is drawn from a 52-card deck. Find <em>P(spade or club)</em>.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 1/2. Spades and clubs are mutually exclusive, so <em>P(spade or club) = 13/52 + 13/52 = 26/52 = 1/2</em>.</p></details></li><li><p>Of 30 students in a class, 18 play soccer, 12 play basketball, and 7 play both. A student is chosen at random. Find the probability that the student plays soccer or basketball.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 23/30. <em>P(S or B) = 18/30 + 12/30 &minus; 7/30 = 23/30</em>; the fraction does not reduce.</p></details></li><li><p>If <em>P(A) = 0.4</em>, <em>P(B) = 0.5</em>, and <em>P(A and B) = 0.2</em>, find <em>P(A or B)</em>.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 0.7. By the addition rule, <em>P(A &cup; B) = 0.4 + 0.5 &minus; 0.2 = 0.7</em>.</p></details></li><li><p>True or false: if two events are mutually exclusive, then their probabilities must sum to 1. Justify your answer.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> False. Mutually-exclusive events have an empty intersection, but their probabilities can sum to anything from 0 to 1. They sum to 1 only when the two events together cover the entire sample space (in which case the events are also <em>complementary</em>).</p></details></li></ol>"
     },
@@ -106,6 +119,12 @@
       "id": "sum-6.3",
       "title": "Summary",
       "content": "The addition rule answers \"what is the probability of A *or* B?\" When A and B cannot both happen (mutually exclusive), just add. When they can (overlapping), add and subtract the overlap so it isn't counted twice. Always check whether the events overlap before reaching for the simple version."
+    },
+    {
+      "type": "context",
+      "id": "ctx-6.3",
+      "title": "Addition rule in classification",
+      "content": "Modern AI classifiers \u2014 the system flagging spam, the moderation tool deciding what content to remove, the credit-card fraud detector \u2014 all rely on probability calculations that combine multiple signals. The addition rule (\"the email is spam OR contains a suspicious link\") appears in every layered classification rule. Sometimes the events are independent (the rules don't depend on each other); sometimes they overlap (some emails are both spam AND have suspicious links). Knowing when to subtract the overlap is the difference between a classifier that's accurate and one that double-counts evidence."
     },
     {
       "type": "heading",

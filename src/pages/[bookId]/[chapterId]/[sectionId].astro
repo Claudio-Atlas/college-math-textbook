@@ -27,6 +27,20 @@ try {
     notFound = true;
 }
 
+// Filter exercise-related blocks out of the body content. Exercises
+// live on a dedicated /exercises sub-page so the main section reads
+// like a textbook chapter and the practice problems get their own
+// "page-turn." Mirror the filter logic in [sectionId]/exercises.astro.
+const isExerciseBlock = (b: any) => {
+    if (!b) return false;
+    if (b.type === 'exercise') return true;
+    if (b.type === 'heading' && (b.text || '').toLowerCase().trim() === 'exercises') return true;
+    if (b.type === 'paragraph' && (b.text || '').includes('cm-tx-exercises')) return true;
+    return false;
+};
+const bodyContent = (section?.content || []).filter((b: any) => !isExerciseBlock(b));
+const hasExercises = (section?.content || []).some(isExerciseBlock);
+
 // Build prev/next navigation
 let prevSection = null;
 let nextSection = null;
@@ -97,7 +111,7 @@ if (book && section) {
                 </div>
             </div>
             <ReaderContent
-                content={section.content}
+                content={bodyContent}
                 epigraph={section.epigraph}
                 marginNotes={section.marginNotes}
                 chapter={section.chapter}
@@ -106,6 +120,28 @@ if (book && section) {
                 bookId={bookId}
                 client:only="react"
             />
+
+            {hasExercises && (
+                <div
+                    class="mt-12 p-6 rounded"
+                    style="border: 1px solid var(--ax-border); background: var(--ax-surface); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;"
+                >
+                    <div style="font-family: var(--ax-font-serif); color: var(--ax-text);">
+                        <div style="font-family: var(--ax-font-sans); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; color: var(--ax-ex-accent); text-transform: uppercase; margin-bottom: 0.25rem;">
+                            End of Section {section.chapter}.{section.section}
+                        </div>
+                        <div style="font-size: 1.05rem; line-height: 1.4;">
+                            Ready to practice? Try the exercises for this section.
+                        </div>
+                    </div>
+                    <a
+                        href={`/${bookId}/${chapterId}/${sectionId}/exercises`}
+                        style="display: inline-block; padding: 0.6rem 1.2rem; border-radius: 6px; background: var(--ax-violet); color: white; font-family: var(--ax-font-sans); font-weight: 600; text-decoration: none; font-size: 0.95rem; white-space: nowrap;"
+                    >
+                        Continue to exercises →
+                    </a>
+                </div>
+            )}
         </article>
     </ReaderLayout>
 )}

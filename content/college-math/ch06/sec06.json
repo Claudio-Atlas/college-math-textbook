@@ -1,6 +1,6 @@
 {
   "_locked": false,
-  "_pass": "Pass 1 + worked examples v2 + LA trim",
+  "_pass": "Pass 1 + worked examples v2 + LA trim + apps + extra exercises",
   "id": "college-math-ch06-sec06",
   "title": "Theoretical and experimental probability",
   "chapter": 6,
@@ -94,6 +94,19 @@
       "text": "Exercises"
     },
     {
+      "type": "exercise",
+      "id": "ex-app-6.6-1",
+      "number": "1",
+      "problem": "An A/B test of two button colors on a checkout page: Group A (5,000 users) has a click-through rate of **0.42**. Group B (5,000 users) has **0.45**. (a) State each rate as a percent. (b) Is the difference experimental or theoretical?",
+      "answer": "(a) Group A: **42%**. Group B: **45%**. (b) Both are **experimental** rates \u2014 measured from observed clicks, not computed from theory. To know if the 3-point gap is real or noise, you'd compute a margin of error."
+    },
+    {
+      "type": "exercise",
+      "id": "ex-app-6.6-2",
+      "number": "2",
+      "problem": "A coin is flipped 200 times and lands heads 108 times. (a) What is the experimental probability? (b) What is the theoretical probability for a fair coin? (c) Is the result consistent with a fair coin, or does it suggest the coin is biased?"
+    },
+    {
       "type": "paragraph",
       "text": "<ol class=\"cm-tx-exercises\"><li><p>A coin is flipped 200 times; it lands heads on 109 of the flips. Compute the experimental probability of heads, rounded to the nearest thousandth.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 0.545. <em>109/200 = 0.545</em>. Slightly above the theoretical 0.500; the gap should shrink with more flips.</p></details></li><li><p>Two fair dice are rolled. Compute the theoretical probability that both show even numbers.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 1/4. The two events are independent: <em>P(both even) = (1/2)(1/2) = 1/4 = 0.250</em>.</p></details></li><li><p>True or false: the Law of Large Numbers guarantees that the experimental and theoretical probabilities will eventually be exactly equal.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> False. The Law of Large Numbers guarantees convergence, not equality. Even at very large <em>n</em>, a small residual difference is essentially always present.</p></details></li><li><p>If <em>P(A) = 0.4</em>, <em>P(B) = 0.5</em>, and <em>A</em> and <em>B</em> are independent, find <em>P(A and B)</em>.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 0.2. By the multiplication rule for independent events: <em>P(A &cap; B) = (0.4)(0.5) = 0.2</em>.</p></details></li><li><p>A spinner with 5 equal slices (numbered 1 through 5) is spun 80 times and lands on 4 a total of 21 times. Compute the absolute difference <em>|experimental P \u2212 theoretical P|</em> for the event &ldquo;land on 4,&rdquo; rounded to the nearest thousandth.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> 0.063. The experimental probability is <em>21/80 = 0.2625</em>; the theoretical probability is <em>1/5 = 0.2000</em>; the absolute difference is <em>0.0625</em>, which rounds to 0.063.</p></details></li><li><p>A coin is flipped 10 times and lands heads 6 times. Which probability does the value 0.6 represent: the theoretical probability of heads, the experimental probability of heads, or neither?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> The experimental probability of heads, since <em>6/10 = 0.6</em> was computed from the data. The theoretical probability of heads for a fair coin is <em>0.5</em>, independent of any particular run.</p></details></li></ol>"
     },
@@ -123,6 +136,12 @@
       "id": "sum-6.6",
       "title": "Summary",
       "content": "Theoretical probability comes from the structure of the problem. Experimental probability comes from observed data. The Law of Large Numbers links them: as the sample grows, the experimental value converges on the theoretical one. Short-term streaks do not 'self-correct' \u2014 the convergence is in the long-run average, not in individual outcomes."
+    },
+    {
+      "type": "context",
+      "id": "ctx-6.6",
+      "title": "Why long-run averages matter in product testing",
+      "content": "When TikTok rolls out a new algorithm change, they run an A/B test: half of users see the change, half don't, and the company measures the experimental probability of an outcome (re-open within 24 hours) in each group. Theoretical probability \u2014 \"if the algorithm is just as good, the rates should be equal\" \u2014 is what the experimental rates are compared to. The law of large numbers is why the test takes time: with too few users, the experimental rates are too noisy to trust. Same math: short-run experimental values bounce around; long-run experimental values converge to the truth."
     },
     {
       "type": "heading",

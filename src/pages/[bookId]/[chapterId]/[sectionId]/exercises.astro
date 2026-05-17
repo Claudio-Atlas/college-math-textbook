@@ -1,0 +1,156 @@
+---
+/**
+ * Section exercises page — College Mathematics reader.
+ *
+ * Mirrors the section page but filters content to ONLY the
+ * exercise-related blocks (typed exercise blocks + the inline
+ * cm-tx-exercises paragraph + the "Exercises" heading). Renders at
+ * /college-math/{chapterId}/{sectionId}/exercises and is reached from
+ * a "Continue to exercises →" link at the bottom of the main section
+ * page.
+ */
+export const prerender = false;
+import ReaderLayout from '../../../../layouts/ReaderLayout.astro';
+import { ReaderContent } from '../../../../components/reader/ReaderContent';
+
+const { bookId, chapterId, sectionId } = Astro.params;
+
+let book: any, section: any;
+let notFound = false;
+
+try {
+    const bookModule = await import(`../../../../../content/${bookId}/book.json`);
+    book = bookModule.default;
+    const sectionModule = await import(`../../../../../content/${bookId}/${chapterId}/${sectionId}.json`);
+    section = sectionModule.default;
+} catch (e) {
+    notFound = true;
+}
+
+// Build prev/next navigation that lands on the *exercises* page of
+// the adjacent section, not the body. (Sticking with the "every
+// section has its own exercises page" mental model.)
+let prevSection = null;
+let nextSection = null;
+if (book && section) {
+    const allSections: Array<{
+        chapter: number; section: number;
+        chapterId: string; sectionId: string; title: string;
+    }> = [];
+    for (const ch of book.chapters) {
+        for (const sec of ch.sections) {
+            allSections.push({
+                chapter: ch.number, section: sec.number,
+                chapterId: ch.id, sectionId: sec.id, title: sec.title,
+            });
+        }
+    }
+    const currentIndex = allSections.findIndex(
+        (s) => s.chapterId === chapterId && s.sectionId === sectionId
+    );
+    if (currentIndex > 0) prevSection = allSections[currentIndex - 1];
+    if (currentIndex < allSections.length - 1) nextSection = allSections[currentIndex + 1];
+}
+
+// Filter the section content down to exercise-related blocks only.
+// We keep:
+//   - the "Exercises" heading (h2)
+//   - any paragraph whose HTML contains cm-tx-exercises
+//   - any block of type 'exercise'
+const isExerciseBlock = (b: any) => {
+    if (!b) return false;
+    if (b.type === 'exercise') return true;
+    if (b.type === 'heading' && (b.text || '').toLowerCase().trim() === 'exercises') return true;
+    if (b.type === 'paragraph' && (b.text || '').includes('cm-tx-exercises')) return true;
+    return false;
+};
+
+const exercisesContent = (section?.content || []).filter(isExerciseBlock);
+---
+
+{notFound ? (
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <title>Section Not Found</title>
+            <link rel="stylesheet" href="/src/styles/global.css" />
+        </head>
+        <body class="min-h-screen flex items-center justify-center" style="background: var(--ax-bg); color: var(--ax-text);">
+            <div class="text-center p-8">
+                <h1 class="text-2xl font-bold mb-4" style="color: var(--ax-text);">Section Not Found</h1>
+                <p class="mb-4" style="color: var(--ax-text-secondary);">
+                    Could not find: /{bookId}/{chapterId}/{sectionId}/exercises
+                </p>
+                <a href="/" style="color: var(--ax-violet); text-decoration: underline;">
+                    ← Back to cover
+                </a>
+            </div>
+        </body>
+    </html>
+) : (
+    <ReaderLayout
+        title={`Exercises — ${section.title} — ${book.title}`}
+        book={book}
+        bookId={bookId}
+        currentChapter={section.chapter}
+        currentSection={section.section}
+        sectionTitle={`${section.title} — Exercises`}
+        prevSection={prevSection}
+        nextSection={nextSection}
+    >
+        <article class="reader-content">
+            <div class="section-hero">
+                <span class="section-number">{section.chapter}.{section.section}</span>
+                <h1 class="section-title">
+                    {section.chapter}.{section.section}&ensp;Exercises
+                </h1>
+                <p class="cm-section-opener">
+                    Practice problems for <em>{section.title}</em>. Click "Show answer" / "Show Hint" to reveal the worked answer. Odd-numbered exercises also appear in the back-of-book answer key.
+                </p>
+                <div class="section-meta" style="margin-top: 0.75rem;">
+                    <a
+                        href={`/${bookId}/${chapterId}/${sectionId}`}
+                        style="color: var(--ax-violet); text-decoration: none; font-family: var(--ax-font-sans); font-size: 0.9rem;"
+                    >
+                        ← Back to section reading
+                    </a>
+                </div>
+            </div>
+
+            {exercisesContent.length === 0 ? (
+                <div class="my-12 text-center" style="color: var(--ax-text-secondary);">
+                    <p>No exercises authored for this section yet.</p>
+                    <p class="mt-4">
+                        <a href={`/${bookId}/${chapterId}/${sectionId}`} style="color: var(--ax-violet);">
+                            Return to the section
+                        </a>
+                    </p>
+                </div>
+            ) : (
+                <ReaderContent
+                    content={exercisesContent}
+                    chapter={section.chapter}
+                    section={section.section}
+                    bookId={bookId}
+                    client:only="react"
+                />
+            )}
+
+            <div class="mt-12 pt-8" style="border-top: 1px solid var(--ax-border);">
+                <p style="font-family: var(--ax-font-sans); font-size: 0.9rem; color: var(--ax-text-secondary);">
+                    <a href={`/${bookId}/${chapterId}/${sectionId}`} style="color: var(--ax-violet); text-decoration: none;">
+                        ← Back to {section.chapter}.{section.section} reading
+                    </a>
+                    {nextSection && (
+                        <span>
+                            &nbsp;·&nbsp;
+                            <a href={`/${bookId}/${nextSection.chapterId}/${nextSection.sectionId}`} style="color: var(--ax-violet); text-decoration: none;">
+                                Continue to Section {nextSection.chapter}.{nextSection.section} →
+                            </a>
+                        </span>
+                    )}
+                </p>
+            </div>
+        </article>
+    </ReaderLayout>
+)}

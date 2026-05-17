@@ -1,6 +1,6 @@
 {
   "_locked": true,
-  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish + worked examples v2 + display math + def promotion + method block + LA trim",
+  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish + worked examples v2 + display math + def promotion + method block + LA trim + apps + extra exercises",
   "id": "college-math-ch04-sec02",
   "title": "The amortization formula, anatomized",
   "chapter": 4,
@@ -86,6 +86,19 @@
       "text": "Exercises"
     },
     {
+      "type": "exercise",
+      "id": "ex-app-4.2-1",
+      "number": "1",
+      "problem": "Compute the monthly payment on a **$18,000** auto loan at **5% APR for 4 years**. Round to the nearest cent.",
+      "answer": "P = 18,000, r = 0.05, t = 4. r/12 \u2248 0.004167, 12t = 48. (1.004167)^(-48) \u2248 0.8191. Denominator = 1 \u2212 0.8191 = 0.1809. Numerator = 18,000 \u00d7 0.004167 = 75. M \u2248 75 / 0.1809 \u2248 **$414.59/month**."
+    },
+    {
+      "type": "exercise",
+      "id": "ex-app-4.2-2",
+      "number": "2",
+      "problem": "Same loan as Example 4.2.1 ($18,000 at 5% for 4 years, $414.59/month). Compute the **total cost** and **total interest** paid."
+    },
+    {
       "type": "paragraph",
       "text": "<ol class=\"cm-tx-exercises\"><li><p>Compute the monthly payment on a $15,000 auto loan at 6% APR for 5 years. Round to the nearest cent.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About $289.99. Inputs: <em>P</em> = 15,000, <em>r</em> = 0.06, <em>t</em> = 5, so <em>r/12</em> = 0.005 and <em>12t</em> = 60. The denominator is <em>1 &minus; (1.005)<sup>&minus;60</sup> &approx; 1 &minus; 0.74137 = 0.25863</em>, and <em>M = 15,000 &times; 0.005 / 0.25863 &approx; 289.99</em>.</p></details></li><li><p>Compute the monthly payment on a $200,000 mortgage at 7% APR for 30 years. Round to the nearest cent.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About $1,330.60. Inputs: <em>r/12</em> = 0.00583, <em>12t</em> = 360. The denominator is <em>1 &minus; (1.00583)<sup>&minus;360</sup> &approx; 1 &minus; 0.12345 = 0.87655</em>, and <em>M = 200,000 &times; 0.00583 / 0.87655 &approx; 1,330.60</em>.</p></details></li><li><p>For the mortgage in the previous problem, what is the total interest paid over the life of the loan?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About $279,016. The total paid is <em>1,330.60 &times; 360 &approx; 479,016</em>, and the total interest is <em>479,016 &minus; 200,000 = 279,016</em>. The borrower pays roughly 1.4 times the home's price in interest alone.</p></details></li><li><p>In the amortization formula, what is the role of the <em>&minus;12t</em> exponent?</p><ol type=\"A\"><li>It computes the future value of the loan.</li><li>It discounts the future stream of payments back to today's dollars.</li><li>It increases the monthly payment for longer terms.</li><li>It has no effect; it could be replaced by 12t.</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. The negative exponent represents the present-value factor; without it, the formula would compute a future value, not a monthly payment.</p></details></li><li><p>Suppose two loans have identical principal and interest rate, but loan A has term 5 years and loan B has term 7 years. Which loan has the larger monthly payment, and which has the larger total interest?</p><ol type=\"A\"><li>A has larger monthly payment; B has larger total interest.</li><li>B has larger monthly payment; A has larger total interest.</li><li>Both are equal.</li><li>Cannot tell without more information.</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> A. The shorter term concentrates the principal into fewer payments, raising the monthly payment but reducing total interest because the balance is killed off faster.</p></details></li><li><p>In Excel, the function <code>=PMT(rate, nper, &minus;P)</code> implements the amortization formula. Which arguments correspond to <em>r/12</em> and <em>12t</em> respectively?</p><ol type=\"A\"><li><code>rate</code> = <em>r</em>; <code>nper</code> = <em>t</em></li><li><code>rate</code> = <em>r/12</em>; <code>nper</code> = <em>12t</em></li><li><code>rate</code> = <em>r &times; 12</em>; <code>nper</code> = <em>t / 12</em></li><li><code>rate</code> = <em>r</em>; <code>nper</code> = <em>12t</em></li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. Excel's <code>PMT()</code> uses the period rate and total number of periods, matching the formula exactly.</p></details></li></ol>"
     },
@@ -121,6 +134,12 @@
       "id": "sum-4.2",
       "title": "Summary",
       "content": "The amortization formula M = P(r/12) / (1 \u2212 (1+r/12)^(\u221212t)) is the central calculation of the whole chapter. Once M is known, two derived numbers \u2014 **total cost** (M \u00d7 12 \u00d7 t) and **total interest** (total cost \u2212 P) \u2014 answer the questions that matter when comparing loans."
+    },
+    {
+      "type": "context",
+      "id": "ctx-4.2",
+      "title": "The mortgage calculator pattern",
+      "content": "Every mortgage shopper has typed numbers into Bankrate, Rocket Mortgage, or Zillow's mortgage calculator and watched the monthly payment recompute. Behind that responsive UI is the amortization formula evaluated in JavaScript on the page. Move the **rate** slider, the formula runs again. Adjust the **down payment**, the formula runs again with a different P. Stretch the **term** to 30 years, the exponent changes. Knowing the formula yourself is the difference between blindly trusting the website and being able to recompute when something looks off."
     },
     {
       "type": "heading",

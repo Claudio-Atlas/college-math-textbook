@@ -1,6 +1,6 @@
 {
   "_locked": true,
-  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish + worked examples v2 + LA trim",
+  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish + worked examples v2 + LA trim + apps + extra exercises",
   "id": "college-math-ch03-sec06",
   "title": "Build a savings plan",
   "chapter": 3,
@@ -69,6 +69,19 @@
       "text": "Exercises"
     },
     {
+      "type": "exercise",
+      "id": "ex-app-3.6-1",
+      "number": "1",
+      "problem": "You want **$30,000** for a wedding in **4 years**. The savings account pays **4% APR compounded monthly**. How much per month must you save?",
+      "answer": "Solve A = M \u00d7 [(1 + r/n)^(nt) \u2212 1] / (r/n) for M, with A=30,000, r=0.04, n=12, t=4. (1.00333)^48 \u2248 1.1729. M \u2248 30,000 / [(0.1729 / 0.00333)] \u2248 30,000 / 51.93 \u2248 **$577.66/month**."
+    },
+    {
+      "type": "exercise",
+      "id": "ex-app-3.6-2",
+      "number": "2",
+      "problem": "Inflation has averaged **3% per year**. If your retirement target is **$1,000,000** in *today's* dollars and you're retiring in **30 years**, approximately how much *future* dollars do you actually need?"
+    },
+    {
       "type": "paragraph",
       "text": "<ol class=\"cm-tx-exercises\"><li><p>Sara wants $10,000 in an emergency fund three years from today. Her HYSA pays 4% APY, compounded monthly. What single lump sum, deposited today, reaches that goal? Round to the nearest cent.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About $8,870.93. Solving <em>10,000 = P(1 + 0.04/12)<sup>36</sup></em> gives <em>P &approx  10,000 / 1.12716 &approx  8,870.93</em>.</p></details></li><li><p>Marcus saves $200 a month into a 4% APY savings account, compounded monthly. What is the balance after 5 years? Round to the nearest cent.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About $13,259.74. <em>A = 200 &middot;  [(1 + 0.04/12)<sup>60</sup> &minus;  1] / (0.04/12) &approx  13,259.74</em>.</p></details></li><li><p>A retirement account currently holds $20,000 and earns 7% per year, compounded monthly. How much will it be worth in 30 years if no further deposits are made? Round to the nearest cent.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> About $162,265. <em>A = 20,000(1 + 0.07/12)<sup>360</sup> &approx  162,265</em>. Even with no further contributions, the compound-interest formula nearly does an 8&times;  multiplier over thirty years.</p></details></li><li><p>Which formula is the right one to use when the goal is a single deposit growing untouched for many years?</p><ol type=\"A\"><li>Simple interest <em>A = P(1 + rt)</em></li><li>Lump-sum compound <em>A = P(1 + r/n)<sup>nt</sup></em></li><li>Annuity <em>A = PMT &middot;  [(1 + r/n)<sup>nt</sup> &minus;  1] / (r/n)</em></li><li>Continuous compounding <em>A = Pe<sup>rt</sup></em></li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B (or D, for the same scenario with continuous compounding). The annuity formula is for repeated deposits; the simple-interest formula is for short-term arrangements without compounding.</p></details></li><li><p>Which feature of a long-term savings plan has the largest effect on the final balance, all else equal?</p><ol type=\"A\"><li>Doubling the monthly contribution</li><li>Increasing the rate by 1 percentage point</li><li>Saving for ten more years</li><li>Switching between weekly and monthly compounding</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> C. Time enters the formula as an exponent, so additional years produce the largest single boost. Compounding frequency, by Section 3.3, makes only a tiny difference once we are past monthly.</p></details></li><li><p>Sara is choosing between an HYSA and a long-term CD for an emergency fund she may need within the next year. Which is the better fit, and why?</p><ol type=\"A\"><li>The CD, because it pays a slightly higher APY</li><li>The HYSA, because liquidity matters more than yield for short-horizon money</li><li>Either; the math is identical</li><li>A 30-year retirement account, to maximize compounding</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. CDs lock up money for the term and charge an early-withdrawal penalty; HYSAs are fully liquid. For a fund that might be needed on short notice, the slightly lower APY is the right trade-off.</p></details></li></ol>"
     },
@@ -98,6 +111,12 @@
       "id": "sum-3.6",
       "title": "Summary",
       "content": "Building a savings plan is the inverse problem of computing future value: pick the target, then solve for M. The annuity formula is the workhorse. Inflation should always be subtracted from nominal returns when judging real purchasing power decades into the future."
+    },
+    {
+      "type": "context",
+      "id": "ctx-3.6",
+      "title": "Backing into a target",
+      "content": "Buying-a-house calculators on Zillow or Rocket Mortgage all run the same inverse calculation: \"You want a $400,000 house with 20% down. How much do you need to save each month for 3 years to reach the down payment?\" The math is the annuity formula solved for M instead of A. Modern fintech apps (Ellevest, Wealthfront, Betterment) gamify this \u2014 you set a goal, the app tells you the monthly number, and it auto-debits. Every one of those flows is this section's math wrapped in product UI. The skill: do this calculation yourself so you know what the app is doing \u2014 and so you can adjust the assumptions when its defaults don't fit your life."
     },
     {
       "type": "heading",
