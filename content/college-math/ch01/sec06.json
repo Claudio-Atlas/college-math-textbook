@@ -1,6 +1,6 @@
 {
   "_locked": true,
-  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish + worked examples v2 + polish v1 + LA trim + apps + extra exercises",
+  "_pass": "Level 3 Pass 1 + Rounds 1-3 visual polish + worked examples v2 + polish v1 + LA trim + apps + extra exercises + exercises unify v2",
   "id": "college-math-ch01-sec06",
   "title": "Spreadsheets, the finale",
   "chapter": 1,
@@ -98,20 +98,58 @@
     },
     {
       "type": "exercise",
+      "id": "ex-comp-1.6-1",
+      "problem": "A small spreadsheet has the header <em>Week</em> in cell A1 and <em>Savings</em> in cell B1. Rows 2, 3, and 4 contain (0, 200), (1, 275), and (2, 350) respectively. What is the cell address of the cell that contains 350?",
+      "answer": "B4. Column B is the \u201cSavings\u201d column, row 4 is the third data row. Column letter first, row number second, the same convention as <em>(x, y)</em>.",
+      "number": "1"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-comp-1.6-2",
+      "problem": "A phone plan charges $0.10 per minute plus a $25 base fee. Cell A2 holds the number of minutes used. Write the formula for cell B2 that computes the total bill.",
+      "answer": "<em>=0.10*A2 + 25</em>. The 0.10 multiplies the input cell A2; the 25 is the fixed base fee. This is <em>y = mx + b</em> with a cell reference standing in for <em>x</em>.",
+      "number": "2"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-comp-1.6-3",
+      "problem": "Cells A2:A11 hold the year (1 through 10). Cells B2:B11 hold the corresponding home values. Write the Excel formula that returns the slope of the best-fit line.",
+      "answer": "<em>=SLOPE(B2:B11, A2:A11)</em>. <em>y</em>-values (home values, column B) come first, <em>x</em>-values (years, column A) come second. Reversing the order would compute years per dollar instead of dollars per year.",
+      "number": "3"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-comp-1.6-4",
+      "problem": "<p>Why does every Excel formula begin with <em>=</em>?</p><ol type=\"A\"><li>It is stylistic; the formula would still work without it.</li><li>The <em>=</em> tells Excel to compute the cell instead of displaying its contents as text.</li><li>It marks the cell as locked from editing.</li><li>It indicates which row the cell is in.</li></ol>",
+      "answer": "B. Without the equals sign, Excel reads the contents as a literal piece of text and shows the characters exactly as typed.",
+      "number": "4"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-comp-1.6-5",
+      "problem": "<p>Cell A1 contains the number 50, and cell A2 contains the formula <em>=A1*2</em>. If we change A1 to 80, what happens to A2?</p><ol type=\"A\"><li>A2 stays at 100; the formula was already evaluated.</li><li>A2 shows an error because A1 changed.</li><li>A2 automatically updates to 160.</li><li>The formula in A2 must be retyped.</li></ol>",
+      "answer": "C. Cell references are live; whenever A1 changes, every formula that depends on A1 is recomputed.",
+      "number": "5"
+    },
+    {
+      "type": "exercise",
+      "id": "ex-comp-1.6-6",
+      "problem": "<p>The formula <em>=A2 + 10</em> is written in cell B2 and dragged down to B5. What formula ends up in cell B5?</p><ol type=\"A\"><li><em>=A2 + 10</em></li><li><em>=B2 + 10</em></li><li><em>=A2 + 40</em></li><li><em>=A5 + 10</em></li></ol>",
+      "answer": "D. Dragging a formula down shifts the row numbers in the cell references: B2 becomes B5, A2 becomes A5. The literal 10 stays put because it is not a reference. That auto-adjustment is exactly why one formula can power twenty-five rows.",
+      "number": "6"
+    },
+    {
+      "type": "exercise",
       "id": "ex-app-1.6-1",
-      "number": "1",
+      "number": "7",
       "problem": "You're tracking a small budget in Excel. Column A holds category labels (A2:A8), column B holds dollar amounts (B2:B8). Write the Excel formula to compute the **total** of all spending.",
       "answer": "**=SUM(B2:B8)**. The formula starts with =, calls SUM, and references the range of cells holding dollar amounts."
     },
     {
       "type": "exercise",
       "id": "ex-app-1.6-2",
-      "number": "2",
+      "number": "8",
       "problem": "Cell C1 holds your hourly wage. Column A (rows 2\u201310) holds hours worked each day. Write the Excel formula for cell B2 that computes daily pay, set up so you can drag the formula down through B10."
-    },
-    {
-      "type": "paragraph",
-      "text": "<ol class=\"cm-tx-exercises\"><li><p>A small spreadsheet has the header <em>Week</em> in cell A1 and <em>Savings</em> in cell B1. Rows 2, 3, and 4 contain (0, 200), (1, 275), and (2, 350) respectively. What is the cell address of the cell that contains 350?</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B4. Column B is the &ldquo;Savings&rdquo; column, row 4 is the third data row. Column letter first, row number second, the same convention as <em>(x, y)</em>.</p></details></li><li><p>A phone plan charges $0.10 per minute plus a $25 base fee. Cell A2 holds the number of minutes used. Write the formula for cell B2 that computes the total bill.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> <em>=0.10*A2 + 25</em>. The 0.10 multiplies the input cell A2; the 25 is the fixed base fee. This is <em>y = mx + b</em> with a cell reference standing in for <em>x</em>.</p></details></li><li><p>Cells A2:A11 hold the year (1 through 10). Cells B2:B11 hold the corresponding home values. Write the Excel formula that returns the slope of the best-fit line.</p><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> <em>=SLOPE(B2:B11, A2:A11)</em>. <em>y</em>-values (home values, column B) come first, <em>x</em>-values (years, column A) come second. Reversing the order would compute years per dollar instead of dollars per year.</p></details></li><li><p>Why does every Excel formula begin with <em>=</em>?</p><ol type=\"A\"><li>It is stylistic; the formula would still work without it.</li><li>The <em>=</em> tells Excel to compute the cell instead of displaying its contents as text.</li><li>It marks the cell as locked from editing.</li><li>It indicates which row the cell is in.</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> B. Without the equals sign, Excel reads the contents as a literal piece of text and shows the characters exactly as typed.</p></details></li><li><p>Cell A1 contains the number 50, and cell A2 contains the formula <em>=A1*2</em>. If we change A1 to 80, what happens to A2?</p><ol type=\"A\"><li>A2 stays at 100; the formula was already evaluated.</li><li>A2 shows an error because A1 changed.</li><li>A2 automatically updates to 160.</li><li>The formula in A2 must be retyped.</li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> C. Cell references are live; whenever A1 changes, every formula that depends on A1 is recomputed.</p></details></li><li><p>The formula <em>=A2 + 10</em> is written in cell B2 and dragged down to B5. What formula ends up in cell B5?</p><ol type=\"A\"><li><em>=A2 + 10</em></li><li><em>=B2 + 10</em></li><li><em>=A2 + 40</em></li><li><em>=A5 + 10</em></li></ol><details class=\"cm-tx-answer-details\"><summary>Show answer</summary><p class=\"cm-tx-answer\"><em>Answer.</em> D. Dragging a formula down shifts the row numbers in the cell references: B2 becomes B5, A2 becomes A5. The literal 10 stays put because it is not a reference. That auto-adjustment is exactly why one formula can power twenty-five rows.</p></details></li></ol>"
     },
     {
       "type": "heading",
